@@ -503,6 +503,10 @@ void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 	connect(project->embeddedElementCollection(),
 		&XmlElementCollection::directoryRemoved,
 		this, &ElementsCollectionModel::itemRemovedFromCollection);
+	connect(project, &QETProject::projectTitleChanged,
+		this, &ElementsCollectionModel::projectNameChanged);
+	connect(project, &QETProject::projectFilePathChanged,
+		this, &ElementsCollectionModel::projectNameChanged);
 }
 
 /**
@@ -534,6 +538,10 @@ void ElementsCollectionModel::removeProject(QETProject *project)
 			   &XmlElementCollection::directoryRemoved,
 			   this,
 			   &ElementsCollectionModel::itemRemovedFromCollection);
+		disconnect(project, &QETProject::projectTitleChanged,
+			   this, &ElementsCollectionModel::projectNameChanged);
+		disconnect(project, &QETProject::projectFilePathChanged,
+			   this, &ElementsCollectionModel::projectNameChanged);
 	}
 }
 
@@ -773,4 +781,16 @@ void ElementsCollectionModel::updateItem(const QString& path)
 		eci->clearData();
 		eci->setUpData();
 	}
+}
+
+/**
+	@brief ElementsCollectionModel::projectNameChanged
+	Update the displayed name of the collection of project,
+	when its title or its file path changed.
+	@param project
+*/
+void ElementsCollectionModel::projectNameChanged(QETProject *project)
+{
+	if (XmlProjectElementCollectionItem *xpeci = m_project_hash.value(project))
+		xpeci->updateProjectName();
 }
