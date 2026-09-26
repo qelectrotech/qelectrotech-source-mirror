@@ -84,6 +84,12 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+# bordercelllabels.h is header-only too.
+add_executable(tst_bordercelllabels tst_bordercelllabels.cpp)
+add_test(NAME tst_bordercelllabels COMMAND tst_bordercelllabels)
+target_include_directories(tst_bordercelllabels PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_bordercelllabels PRIVATE Qt::Test)
+
 # contactusage.h is a header-only helper holding the contact counting
 # rules, so this test builds independently of the rest of the QET sources.
 add_executable(tst_contactusage tst_contactusage.cpp)
