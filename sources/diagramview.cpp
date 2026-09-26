@@ -30,6 +30,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "ui/diagrampropertiesdialog.h"
 #include "ui/multipastedialog.h"
@@ -124,6 +125,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_top_ruler = new CellRuler(Qt::Horizontal, this);
 	m_side_ruler = new CellRuler(Qt::Vertical, this);
 	m_cell_rulers_shown = QSettings().value("diagrameditor/cell_rulers", false).toBool();
+	m_cell_lines_shown = QSettings().value("diagrameditor/cell_lines", false).toBool();
 	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::borderChanged, this, &DiagramView::updateCellRulers);
 	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::displayChanged, this, &DiagramView::updateCellRulers);
 	updateCellRulers();
@@ -1408,6 +1410,72 @@ void DiagramView::paintingInverted(bool inverted)
 }
 
 /**
+	@brief DiagramView::setCellLinesShown
+	Show or hide the lines that mark the columns and the rows of the folio
+	border across the drawing, in this view only: printing and exporting
+	never draw them.
+	@param shown
+*/
+void DiagramView::setCellLinesShown(bool shown)
+{
+	m_cell_lines_shown = shown;
+	viewport()->update();
+}
+
+/**
+	@brief DiagramView::drawBackground
+	Reimplemented from PaletteGraphicsView: over the folio background, the
+	cell lines when they are shown. Dashed and faint, so they do not read
+	as conductors, and under every item.
+	@param painter
+	@param rect
+*/
+void DiagramView::drawBackground(QPainter *painter, const QRectF &rect)
+{
+	PaletteGraphicsView::drawBackground(painter, rect);
+
+	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	if (!m_cell_lines_shown || !border.borderIsDisplayed()) {
+		return;
+	}
+
+		//Where the border draws its cells, whether or not the other
+		//header is displayed
+	const QPointF origin(Diagram::margin + border.rowsHeaderWidth(),
+			     Diagram::margin + border.columnsHeaderHeight());
+	const qreal right = origin.x() + border.columnsCount() * border.columnsWidth();
+	const qreal bottom = origin.y() + border.rowsCount() * border.rowsHeight();
+
+	QPainter *p = scenePainter(painter);
+	p->save();
+	p->setRenderHint(QPainter::Antialiasing, false);
+	QColor color = QET::Palette::gridDotColor(Diagram::background_color,
+						  invertsLightness());
+	color.setAlpha(70);
+	QPen pen(color, 1, Qt::DashLine);
+	pen.setCosmetic(true);
+	p->setPen(pen);
+
+	if (border.columnsAreDisplayed()) {
+		for (int i = 1 ; i < border.columnsCount() ; ++i) {
+			const qreal x = origin.x() + i * border.columnsWidth();
+			if (x >= rect.left() && x <= rect.right()) {
+				p->drawLine(QPointF(x, origin.y()), QPointF(x, bottom));
+			}
+		}
+	}
+	if (border.rowsAreDisplayed()) {
+		for (int i = 1 ; i < border.rowsCount() ; ++i) {
+			const qreal y = origin.y() + i * border.rowsHeight();
+			if (y >= rect.top() && y <= rect.bottom()) {
+				p->drawLine(QPointF(origin.x(), y), QPointF(right, y));
+			}
+		}
+	}
+	p->restore();
+}
+
+/**
 	@brief DiagramView::setCellRulersShown
 	Show or hide the rulers that keep the column numbers and the row
 	letters of the folio border in sight along the edges of this view.
@@ -1421,17 +1489,24 @@ void DiagramView::setCellRulersShown(bool shown)
 
 /**
 	@brief DiagramView::updateCellRulers
-	Show each ruler when the rulers are wanted and the folio shows the
-	matching header, and give it room in the margins of the view. The
-	part of the folio in sight stays in sight when the viewport resizes.
+	Show each ruler when the rulers are wanted, the folio shows the
+	matching header and that header is not already wholly in sight, and
+	give it room in the margins of the view. The drawing does not move on
+	screen when a ruler comes or goes: the ruler covers or uncovers the
+	edge of the viewport, as if it lay over it.
 */
 void DiagramView::updateCellRulers()
 {
 	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	const QRectF in_sight = mapToScene(viewport()->rect()).boundingRect();
+	const QRectF columns = border.columnsRect();
+	const QRectF rows = border.rowsRect();
 	const bool top = m_cell_rulers_shown
-			 && border.borderIsDisplayed() && border.columnsAreDisplayed();
+			 && border.borderIsDisplayed() && border.columnsAreDisplayed()
+			 && (columns.top() < in_sight.top() || columns.bottom() > in_sight.bottom());
 	const bool side = m_cell_rulers_shown
-			  && border.borderIsDisplayed() && border.rowsAreDisplayed();
+			  && border.borderIsDisplayed() && border.rowsAreDisplayed()
+			  && (rows.left() < in_sight.left() || rows.right() > in_sight.right());
 	const int thickness = m_top_ruler->thickness();
 
 	m_top_ruler->setVisible(top);
@@ -1440,9 +1515,12 @@ void DiagramView::updateCellRulers()
 
 	const QMargins margins(side ? thickness : 0, top ? thickness : 0, 0, 0);
 	if (margins != viewportMargins()) {
-		const QPointF centre = mapToScene(viewport()->rect().center());
+		const QPointF origin = mapToScene(viewport()->rect().center());
+		const QPoint before = viewport()->mapToGlobal(mapFromScene(origin));
 		setViewportMargins(margins);
-		centerOn(centre);
+		const QPoint moved = viewport()->mapToGlobal(mapFromScene(origin)) - before;
+		horizontalScrollBar()->setValue(horizontalScrollBar()->value() + moved.x());
+		verticalScrollBar()->setValue(verticalScrollBar()->value() + moved.y());
 	}
 	placeCellRulers();
 	m_top_ruler->update();
@@ -1492,11 +1570,17 @@ void DiagramView::paintEvent(QPaintEvent *event)
 {
 	PaletteGraphicsView::paintEvent(event);
 
-		//Scrolling and zooming both repaint the viewport: follow them
+		//Scrolling and zooming both repaint the viewport: follow them.
+		//Showing or hiding a ruler resizes the viewport, which cannot be
+		//done while it paints.
 	if (viewportTransform() != m_rulers_transform) {
 		m_rulers_transform = viewportTransform();
 		m_top_ruler->update();
 		m_side_ruler->update();
+		if (m_cell_rulers_shown) {
+			QMetaObject::invokeMethod(this, &DiagramView::updateCellRulers,
+						  Qt::QueuedConnection);
+		}
 	}
 
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
