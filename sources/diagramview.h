@@ -85,6 +85,10 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+	
+		bool startElementPlacement(const ElementsLocation &location,
+					   const QPointF &scene_pos);
+		QPointF defaultPlacementPos() const;
 		void setCellRulersShown(bool shown);
 		void setCellLinesShown(bool shown);
 
@@ -145,6 +149,9 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when free rubberband changed.
 			/// When free rubberband selection ends this signal will be emitted with null value.
 		void freeRubberBandChanged(QPolygonF polygon);
+			/// Signal emitted when the placement mode is entered for an
+			/// element (not a macro), whether from a drop or not.
+		void elementPlacementStarted(const ElementsLocation &);
 	
 	public slots:
 		void setVisualisationMode();
