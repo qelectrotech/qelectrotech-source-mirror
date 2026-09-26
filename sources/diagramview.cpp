@@ -37,6 +37,9 @@
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
+#include "diagramcontexttoolbar.h"
+#include "shortcutbarsettings.h"
+#include "shortcutmanager.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
@@ -103,6 +106,13 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		m_separators << new QAction(this);
 		m_separators.last()->setSeparator(true);
 	}
+
+	m_context_toolbar = new DiagramContextToolbar(viewport());
+	connect(m_diagram, &QGraphicsScene::selectionChanged, this, [this]() {
+		if (m_diagram->selectedItems().isEmpty()) {
+			m_context_toolbar->hide();
+		}
+	});
 
 	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
@@ -621,6 +631,10 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
+	if (e->button() == Qt::LeftButton) {
+		m_press_pos = e->position().toPoint();
+	}
+
 		//Start drag view when hold the middle button
 	if (e->button() == Qt::MiddleButton)
 	{
@@ -777,7 +791,46 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		e->accept();
 	}
 	else
+	{
 		QGraphicsView::mouseReleaseEvent(e);
+
+			//A click, not a drag: moving items or a rubber band selection
+			//should not be followed by a toolbar under the mouse.
+		const QPoint pos = e->position().toPoint();
+		if (e->button() == Qt::LeftButton
+		    && (pos - m_press_pos).manhattanLength() < QApplication::startDragDistance()) {
+			showContextToolbar(pos);
+		}
+	}
+}
+
+/**
+	@brief DiagramView::showContextToolbar
+	After a click that leaves something selected, show the shortcut bar's
+	commands for that selection beside the cursor. Not while placing or
+	drawing, nor on a read-only folio, nor when switched off in the
+	configuration.
+	@param viewport_pos : where the click was
+*/
+void DiagramView::showContextToolbar(const QPoint &viewport_pos)
+{
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	QETDiagramEditor *qde = diagramEditor();
+	if (selection.isEmpty() || !qde
+	    || m_diagram->isReadOnly() || m_diagram->eventInterfaceIsRunning()
+	    || !DiagramContextToolbar::isEnabled()) {
+		m_context_toolbar->hide();
+		return;
+	}
+
+	QList<QAction *> actions;
+	const auto context = ShortcutBarSettings::contextFor(selection);
+	for (const QString &id : ShortcutBarSettings::ids(context)) {
+		if (QAction *action = ShortcutManager::instance().action(id, qde)) {
+			actions << action;
+		}
+	}
+	m_context_toolbar->showAt(viewport_pos, actions);
 }
 
 /**

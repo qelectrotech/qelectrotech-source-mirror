@@ -3157,16 +3157,8 @@ void QETDiagramEditor::showShortcutBar()
 		return;
 	}
 
-	const QList<QGraphicsItem *> selection = dv->diagram()->selectedItems();
-	ShortcutBarSettings::Context context = ShortcutBarSettings::Canvas;
-	if (!selection.isEmpty())
-	{
-		const bool only_conductors = std::all_of(
-			selection.cbegin(), selection.cend(),
-			[](QGraphicsItem *item) { return item->type() == Conductor::Type; });
-		context = only_conductors ? ShortcutBarSettings::Conductor
-					  : ShortcutBarSettings::Selection;
-	}
+	const ShortcutBarSettings::Context context =
+		ShortcutBarSettings::contextFor(dv->diagram()->selectedItems());
 
 	elementPicker()->popUpShortcutBar(QCursor::pos(), context);
 }

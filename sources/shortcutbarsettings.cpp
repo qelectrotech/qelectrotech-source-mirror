@@ -17,9 +17,11 @@
 */
 #include "shortcutbarsettings.h"
 
+#include "qetgraphicsitem/conductor.h"
 #include "shortcutmanager.h"
 
 #include <QCoreApplication>
+#include <algorithm>
 #include <QSettings>
 
 namespace {
@@ -44,6 +46,22 @@ QString settingsKey(ShortcutBarSettings::Context context)
 QList<ShortcutBarSettings::Context> ShortcutBarSettings::contexts()
 {
 	return {Canvas, Selection, Conductor};
+}
+
+/**
+	@return the context for @a selection: Canvas when empty, Conductor when
+	it holds only conductors, Selection otherwise
+*/
+ShortcutBarSettings::Context ShortcutBarSettings::contextFor(
+		const QList<QGraphicsItem *> &selection)
+{
+	if (selection.isEmpty()) {
+		return Canvas;
+	}
+	const bool only_conductors = std::all_of(
+		selection.cbegin(), selection.cend(),
+		[](QGraphicsItem *item) { return item->type() == Conductor::Type; });
+	return only_conductors ? Conductor : Selection;
 }
 
 /**
