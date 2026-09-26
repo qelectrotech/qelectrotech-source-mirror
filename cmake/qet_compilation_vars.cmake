@@ -287,6 +287,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/shortcutbarsettings.cpp
   ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/commandsearchpopup.cpp
+  ${QET_DIR}/sources/commandsearchpopup.h
   ${QET_DIR}/sources/titleblockcell.cpp
   ${QET_DIR}/sources/titleblockcell.h
   ${QET_DIR}/sources/titleblockproperties.cpp

@@ -25,6 +25,7 @@
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
 #include "qetgraphicsitem/conductor.h"
+#include "commandsearchpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
@@ -545,6 +546,18 @@ void QETDiagramEditor::setUpActions()
 				dv->setCellRulersShown(checked);
 	});
 
+		//Draw the limits of the folio columns and rows across the drawing
+	m_cell_lines = new QAction(tr("Afficher les limites des cases"), this);
+	m_cell_lines->setStatusTip(tr("Trace les limites des colonnes et des lignes du folio sur le schéma, à l'écran seulement"));
+	m_cell_lines->setCheckable(true);
+	m_cell_lines->setChecked(settings.value("diagrameditor/cell_lines", false).toBool());
+	connect(m_cell_lines, &QAction::triggered, [this](bool checked) {
+		QSettings().setValue("diagrameditor/cell_lines", checked);
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (DiagramView *dv, prjv->diagram_views())
+				dv->setCellLinesShown(checked);
+	});
+
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
 	ShortcutManager::instance().registerAction(m_edit_diagram_properties, "diagrameditor.edit_diagram_properties", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_L);
@@ -826,6 +839,26 @@ void QETDiagramEditor::setUpActions()
 	connect(m_insert_last_element, &QAction::triggered,
 		this, &QETDiagramEditor::insertLastElement);
 	addAction(m_insert_last_element);
+		//Type to find and run any command, as SolidWorks' "Search Commands"
+		//and the command palette of many editors. Ctrl+Shift+P, the key those
+		//editors use, is taken by the autonumbering dock; M for "menu".
+	m_command_search = new QAction(tr("Rechercher une commande…"), this);
+	m_command_search->setStatusTip(
+		tr("Tapez une partie du nom d'une commande et appuyez sur Entrée pour la lancer",
+		   "status bar tip"));
+	ShortcutManager::instance().registerAction(
+		m_command_search, "diagrameditor.command_search",
+		tr("Éditeur de schémas"), Qt::CTRL | Qt::SHIFT | Qt::Key_M);
+	connect(m_command_search, &QAction::triggered, this, [this]() {
+		if (!m_command_search_popup) {
+			m_command_search_popup = new CommandSearchPopup(this);
+		}
+		const QRect area = geometry();
+		m_command_search_popup->popUpAt(
+			area.contains(QCursor::pos()) ? QCursor::pos()
+						      : area.center());
+	});
+	addAction(m_command_search);
 
 		//Cursor-anchored picker. Insert is unbound anywhere in the tree and
 		//reads correctly for the action, which keeps A free for the far more
@@ -988,8 +1021,9 @@ void QETDiagramEditor::setUpActions()
 	add_path->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
-		//No default key, but an id: they can then be bound in the Shortcuts
-		//page and placed on the shortcut bar, like every other command.
+		//No default key, but an id: they can then be found by the command
+		//search, bound in the Shortcuts page and placed on the shortcut bar,
+		//like every other command.
 	for (QAction *action : m_add_item_actions_group.actions()) {
 		ShortcutManager::instance().registerAction(
 			action, "diagrameditor.add_" + action->data().toString(),
@@ -1151,6 +1185,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_insert_last_element);
 	menu_edition -> addAction(m_show_element_picker);
 	menu_edition -> addAction(m_show_shortcut_bar);
+	menu_edition -> addAction(m_command_search);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
 		//which left them unreachable for anyone working without a mouse: a
@@ -1231,6 +1266,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_cell_rulers);
+	menu_affichage -> addAction(m_cell_lines);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -2066,6 +2102,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
 	m_cell_rulers->                 setEnabled(opened_diagram);
+	m_cell_lines->                  setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
