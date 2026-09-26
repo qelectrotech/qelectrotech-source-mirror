@@ -117,11 +117,11 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 	{
 		case Conductor::Type: //1001
 		{
-			//Feature toggle (#500): when disabled in the View menu, selecting a
-			//conductor brings up nothing in the dock. Default enabled.
+			//Off unless enabled in the preferences (General page): selecting
+			//a conductor then brings up nothing in the dock, as before.
 			if (!QSettings().value(
 					QStringLiteral("diagrameditor/conductor_properties_panel"),
-					true).toBool()) {
+					false).toBool()) {
 				return nullptr;
 			}
 			//Prototype (#500): single-conductor editing in the dock.
