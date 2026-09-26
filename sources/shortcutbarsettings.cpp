@@ -160,3 +160,31 @@ bool ShortcutBarSettings::hasElements(Context context)
 	const QStringList list = ids(context);
 	return std::any_of(list.cbegin(), list.cend(), &ShortcutBarSettings::isElement);
 }
+
+/**
+	@return the width the user gave the bar with its size grip, or 0 when
+	they never did: the tiles then stay on one row
+*/
+int ShortcutBarSettings::barWidth()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/shortcut_bar/width"), 0).toInt();
+}
+
+void ShortcutBarSettings::setBarWidth(int width)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/shortcut_bar/width"), width);
+}
+
+/**
+	@return the size the user left the customising window at, or an invalid
+	size when it was never opened
+*/
+QSize ShortcutBarSettings::editorSize()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/shortcut_bar/editor_size")).toSize();
+}
+
+void ShortcutBarSettings::setEditorSize(const QSize &size)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/shortcut_bar/editor_size"), size);
+}

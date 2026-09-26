@@ -21,6 +21,7 @@
 #include <QList>
 #include <QString>
 #include <QStringList>
+#include <QSize>
 
 /**
 	@brief The commands shown on the diagram editor's shortcut bar.
@@ -52,6 +53,10 @@ class ShortcutBarSettings
 		static QStringList availableIds();
 		static bool isElement(const QString &id);
 		static bool hasElements(Context context);
+		static int barWidth();
+		static void setBarWidth(int width);
+		static QSize editorSize();
+		static void setEditorSize(const QSize &size);
 };
 
 #endif // SHORTCUTBARSETTINGS_H

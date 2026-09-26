@@ -27,17 +27,22 @@
 #include <QPushButton>
 #include <QToolButton>
 #include <QCloseEvent>
+#include <QCursor>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
 #include <QScreen>
+#include <QSizeGrip>
 #include <QStandardItemModel>
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QDir>
 #include <QFileInfo>
 #include <QSettings>
+
+#include <limits>
 
 #include "../qetapp.h"
 #include "../shortcutmanager.h"
@@ -219,11 +224,22 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 
 	m_hint = new QLabel(tr("Entrée pour insérer · Échap pour fermer"), this);
 	m_hint->setEnabled(false);
+		//Wrapped rather than cut off when the bar is made narrow
+	m_hint->setWordWrap(true);
+
+		//The bar's width is the user's: dragging the grip wraps the tiles
+		//onto more rows, and the width is kept for next time
+	m_grip = new QSizeGrip(this);
+	m_grip->setToolTip(tr("Glisser pour changer la largeur de la barre"));
+	m_grip->installEventFilter(this);
+	auto *hint_row = new QHBoxLayout();
+	hint_row->addWidget(m_hint, 1);
+	hint_row->addWidget(m_grip, 0, Qt::AlignBottom | Qt::AlignRight);
 
 	layout->addWidget(m_commands);
 	layout->addWidget(m_search);
 	layout->addWidget(m_view);
-	layout->addWidget(m_hint);
+	layout->addLayout(hint_row);
 	layout->addWidget(m_editor);
 
 		//Search as you type, after a short idle: shorter than the dock's
@@ -303,6 +319,16 @@ void ElementPickerPopup::show(const QPoint &global_pos)
 void ElementPickerPopup::keepOnScreen(const QPoint &global_pos)
 {
 	adjustSize();
+		//The sizes the user gave the customising window and the bar
+	if (m_customising) {
+		const QSize size = ShortcutBarSettings::editorSize();
+		if (size.isValid()) {
+			resize(size.expandedTo(minimumSizeHint()));
+		}
+	} else if (m_bar_mode && ShortcutBarSettings::barWidth() > 0) {
+		resize(qMax(ShortcutBarSettings::barWidth(), minimumSizeHint().width()),
+		       height());
+	}
 	QPoint pos = global_pos;
 
 	if (QScreen *screen = QGuiApplication::screenAt(global_pos)) {
@@ -335,6 +361,11 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 		delete item->widget();
 		delete item;
 	}
+	qDeleteAll(m_tiles);
+	m_tiles.clear();
+	m_tile_rows = new QVBoxLayout();
+	m_tile_rows->setSpacing(2);
+	m_commands_layout->addLayout(m_tile_rows);
 
 	for (const QString &id : ids)
 	{
@@ -354,7 +385,7 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 				hide();
 				emit elementChosen(location);
 			});
-			m_commands_layout->addWidget(button);
+			m_tiles << button;
 			continue;
 		}
 
@@ -383,7 +414,7 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 			hide();
 			action->trigger();
 		});
-		m_commands_layout->addWidget(button);
+		m_tiles << button;
 	}
 	m_commands_layout->addStretch();
 	if (m_bar_mode)
@@ -394,10 +425,101 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 		customise->setToolTip(tr("Personnaliser la barre…"));
 		customise->setFocusPolicy(Qt::NoFocus);
 		connect(customise, &QToolButton::clicked, this, &ElementPickerPopup::startCustomising);
-		m_commands_layout->addWidget(customise);
+		m_commands_layout->addWidget(customise, 0, Qt::AlignTop);
 	}
+	layoutTiles(ShortcutBarSettings::barWidth());
+	m_grip->setVisible(m_bar_mode);
 		//An empty bar still shows, so it can be customised back
 	m_commands->setVisible(m_bar_mode || !ids.isEmpty());
+}
+
+/**
+	@brief ElementPickerPopup::layoutTiles
+	Put the bar's tiles in rows no wider than the bar at @a bar_width, in
+	their order, as many per row as fit. A @a bar_width of 0 or less, the
+	width the user never set, keeps them on one row.
+*/
+void ElementPickerPopup::layoutTiles(int bar_width)
+{
+	if (!m_tile_rows) {
+		return;
+	}
+		//Emptying a row layout leaves its buttons alone; they go into the
+		//new rows below
+	while (QLayoutItem *item = m_tile_rows->takeAt(0)) {
+		delete item->layout();
+	}
+
+		//Room left beside the tiles: the popup's margins and the "…" button
+	const int limit = bar_width > 0
+			? bar_width - 12 - 30
+			: std::numeric_limits<int>::max();
+	QHBoxLayout *row = nullptr;
+	int used = 0;
+	for (QToolButton *tile : std::as_const(m_tiles))
+	{
+		const int w = tile->sizeHint().width() + m_tile_rows->spacing();
+		if (!row || (used + w > limit && used > 0)) {
+			row = new QHBoxLayout();
+			row->setSpacing(2);
+			row->addStretch();
+			m_tile_rows->addLayout(row);
+			used = 0;
+		}
+			//Before the stretch, which stays last so the row is left-aligned
+		row->insertWidget(row->count() - 1, tile);
+		used += w;
+	}
+}
+
+/**
+	@brief ElementPickerPopup::eventFilter
+	Drive the size grip by hand. QSizeGrip asks the window manager to do the
+	resize, and a popup is a window the window manager does not manage, so
+	on X11 nothing would happen. Only the width follows the mouse: the tiles
+	re-flow into rows as it changes, the height follows the rows, and the
+	width is saved when the grip is let go.
+*/
+bool ElementPickerPopup::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched != m_grip) {
+		return QFrame::eventFilter(watched, event);
+	}
+	switch (event->type())
+	{
+		case QEvent::MouseButtonPress: {
+			auto *me = static_cast<QMouseEvent *>(event);
+			if (me->button() != Qt::LeftButton) {
+				break;
+			}
+			m_grip_active = true;
+			m_grip_press_x = me->globalPosition().toPoint().x();
+			m_grip_press_width = width();
+			return true;
+		}
+		case QEvent::MouseMove: {
+			if (!m_grip_active) {
+				break;
+			}
+			auto *me = static_cast<QMouseEvent *>(event);
+			const int w = qMax(minimumWidth(), m_grip_press_width
+					   + me->globalPosition().toPoint().x() - m_grip_press_x);
+			layoutTiles(w);
+			layout()->activate();
+			resize(w, sizeHint().height());
+			return true;
+		}
+		case QEvent::MouseButtonRelease:
+			if (!m_grip_active) {
+				break;
+			}
+			m_grip_active = false;
+			ShortcutBarSettings::setBarWidth(width());
+			return true;
+		default:
+			break;
+	}
+	return QFrame::eventFilter(watched, event);
 }
 
 /**
@@ -451,6 +573,7 @@ void ElementPickerPopup::startCustomising()
 	fillCustomising(ShortcutBarSettings::ids(m_context));
 	m_commands->hide();
 	setPickerVisible(false);
+	m_grip->hide();
 		//Elements are pinned to the empty-folio bar only: with something
 		//selected, the bar is for acting on it, not for adding more
 	m_edit_symbols_search->clear();
@@ -516,7 +639,8 @@ void ElementPickerPopup::runSymbolSearch()
 /**
 	@brief ElementPickerPopup::finishCustomising
 	Leave the edit, saving the bar row when @a save, and show the bar again
-	where it was so the result can be seen and used straight away.
+	at the cursor so the result can be seen and used straight away. The
+	window's size is kept either way.
 */
 void ElementPickerPopup::finishCustomising(bool save)
 {
@@ -529,14 +653,15 @@ void ElementPickerPopup::finishCustomising(bool save)
 		ShortcutBarSettings::setIds(m_context, ids);
 	}
 
-	const QPoint where = pos();
+	ShortcutBarSettings::setEditorSize(size());
 	m_customising = false;
 	hide();
 	m_editor->hide();
 	setPickerVisible(true);
 	setWindowFlags(Qt::Popup);
 	setWindowTitle(QString());
-	popUpShortcutBar(where, m_context);
+		//At the cursor, like any other opening of the bar
+	popUpShortcutBar(QCursor::pos(), m_context);
 }
 
 /**
