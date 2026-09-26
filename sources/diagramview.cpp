@@ -1210,17 +1210,24 @@ void DiagramView::setCellRulersShown(bool shown)
 
 /**
 	@brief DiagramView::updateCellRulers
-	Show each ruler when the rulers are wanted and the folio shows the
-	matching header, and give it room in the margins of the view. The
-	part of the folio in sight stays in sight when the viewport resizes.
+	Show each ruler when the rulers are wanted, the folio shows the
+	matching header and that header is not already wholly in sight, and
+	give it room in the margins of the view. The drawing does not move on
+	screen when a ruler comes or goes: the ruler covers or uncovers the
+	edge of the viewport, as if it lay over it.
 */
 void DiagramView::updateCellRulers()
 {
 	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	const QRectF in_sight = mapToScene(viewport()->rect()).boundingRect();
+	const QRectF columns = border.columnsRect();
+	const QRectF rows = border.rowsRect();
 	const bool top = m_cell_rulers_shown
-			 && border.borderIsDisplayed() && border.columnsAreDisplayed();
+			 && border.borderIsDisplayed() && border.columnsAreDisplayed()
+			 && (columns.top() < in_sight.top() || columns.bottom() > in_sight.bottom());
 	const bool side = m_cell_rulers_shown
-			  && border.borderIsDisplayed() && border.rowsAreDisplayed();
+			  && border.borderIsDisplayed() && border.rowsAreDisplayed()
+			  && (rows.left() < in_sight.left() || rows.right() > in_sight.right());
 	const int thickness = m_top_ruler->thickness();
 
 	m_top_ruler->setVisible(top);
@@ -1229,9 +1236,12 @@ void DiagramView::updateCellRulers()
 
 	const QMargins margins(side ? thickness : 0, top ? thickness : 0, 0, 0);
 	if (margins != viewportMargins()) {
-		const QPointF centre = mapToScene(viewport()->rect().center());
+		const QPointF origin = mapToScene(viewport()->rect().center());
+		const QPoint before = viewport()->mapToGlobal(mapFromScene(origin));
 		setViewportMargins(margins);
-		centerOn(centre);
+		const QPoint moved = viewport()->mapToGlobal(mapFromScene(origin)) - before;
+		horizontalScrollBar()->setValue(horizontalScrollBar()->value() + moved.x());
+		verticalScrollBar()->setValue(verticalScrollBar()->value() + moved.y());
 	}
 	placeCellRulers();
 	m_top_ruler->update();
@@ -1281,11 +1291,17 @@ void DiagramView::paintEvent(QPaintEvent *event)
 {
 	PaletteGraphicsView::paintEvent(event);
 
-		//Scrolling and zooming both repaint the viewport: follow them
+		//Scrolling and zooming both repaint the viewport: follow them.
+		//Showing or hiding a ruler resizes the viewport, which cannot be
+		//done while it paints.
 	if (viewportTransform() != m_rulers_transform) {
 		m_rulers_transform = viewportTransform();
 		m_top_ruler->update();
 		m_side_ruler->update();
+		if (m_cell_rulers_shown) {
+			QMetaObject::invokeMethod(this, &DiagramView::updateCellRulers,
+						  Qt::QueuedConnection);
+		}
 	}
 
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
