@@ -31,6 +31,7 @@ class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
 class QGestureEvent;
+class QMenu;
 
 /**
 	This class provides a widget to render an electric diagram in an editable,
@@ -55,6 +56,7 @@ class DiagramView : public PaletteGraphicsView
 		QAction          *m_paste_here = nullptr;
 		QAction			 *m_multi_paste = nullptr;
 		QAction          *m_create_template = nullptr;
+		QMenu            *m_folio_report_menu = nullptr;
 		QPoint            m_paste_here_pos;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
@@ -118,6 +120,7 @@ class DiagramView : public PaletteGraphicsView
 	
 	private:
 		void handleElementDrop(QDropEvent *);
+		void updateFolioReportMenu();
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
 		void scrollOnMovement(QKeyEvent *);

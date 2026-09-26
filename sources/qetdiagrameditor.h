@@ -177,7 +177,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_edit_diagram_properties, ///< Show a dialog to edit diagram properties
 		*m_conductor_reset,         ///< Reset paths of selected conductors
 		*m_cut,                     ///< Cut selection to clipboard
-		*m_copy;                    ///< Copy selection to clipboard
+		*m_copy,                    ///< Copy selection to clipboard
+		*m_insert_last_element = nullptr; ///< Place the last placed element again
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -274,7 +275,6 @@ class QETDiagramEditor : public QETMainWindow
 		ElementsCollectionWidget *m_element_collection_widget;
 			/// Last element placed from the collection, for "insert last"
 		ElementsLocation m_last_inserted_element;
-		QAction *m_insert_last_element = nullptr;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
 			/// Elements panel
