@@ -22,6 +22,9 @@
 #include <QCoreApplication>
 #include <QToolButton>
 #include "ElementsCollection/elementscollectionwidget.h"
+#include "ElementsCollection/elementpickerpopup.h"
+#include "shortcutbarsettings.h"
+#include "qetgraphicsitem/conductor.h"
 #include "commandsearchpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -76,6 +79,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QTimer>
+#include <algorithm>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -228,6 +232,13 @@ void QETDiagramEditor::setUpElementsCollectionWidget()
 	m_element_collection_widget = new ElementsCollectionWidget(m_qdw_elmt_collection);
 	m_qdw_elmt_collection->setWidget(m_element_collection_widget);
 	m_element_collection_widget->expandFirstItems();
+
+		//The widget does not know which view should receive the element -- it
+		//is also used by the picker popup, which has no editor ancestor -- so
+		//the host decides.
+	connect(m_element_collection_widget,
+		&ElementsCollectionWidget::insertElementRequested,
+		this, &QETDiagramEditor::insertElementFromCollection);
 
 	addDockWidget(Qt::RightDockWidgetArea, m_qdw_elmt_collection);
 }
@@ -809,6 +820,25 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
+		//Re-enter placement mode with the element placed last. Bare A rather
+		//than Space: Space already rotates the pending element *inside*
+		//placement mode (diagrameventaddelement.cpp), and is taken three times
+		//over in this editor besides. A matches KiCad's add-symbol key and
+		//reads correctly in the source language ("Ajouter"). ShortcutManager
+		//makes it a default, not a commitment -- it appears in the Shortcuts
+		//preference page like every other binding.
+	m_insert_last_element = new QAction(QET::Icons::ElementNew,
+					    tr("Insérer le dernier élément"), this);
+	m_insert_last_element->setStatusTip(
+		tr("Place à nouveau le dernier élément inséré", "status bar tip"));
+	m_insert_last_element->setData("insert_last_element");
+	m_insert_last_element->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_insert_last_element, "diagrameditor.insert_last_element",
+		tr("Éditeur de schémas"), Qt::Key_A);
+	connect(m_insert_last_element, &QAction::triggered,
+		this, &QETDiagramEditor::insertLastElement);
+	addAction(m_insert_last_element);
 		//Type to find and run any command, as SolidWorks' "Search Commands"
 		//and the command palette of many editors. Ctrl+Shift+P, the key those
 		//editors use, is taken by the autonumbering dock; M for "menu".
@@ -829,6 +859,36 @@ void QETDiagramEditor::setUpActions()
 						      : area.center());
 	});
 	addAction(m_command_search);
+
+		//Cursor-anchored picker. Insert is unbound anywhere in the tree and
+		//reads correctly for the action, which keeps A free for the far more
+		//frequent "place the same symbol again".
+	m_show_element_picker = new QAction(QET::Icons::Add,
+					    tr("Insérer un élément…"), this);
+	m_show_element_picker->setStatusTip(
+		tr("Ouvre le sélecteur d'éléments à la position du curseur",
+		   "status bar tip"));
+	m_show_element_picker->setData("show_element_picker");
+	ShortcutManager::instance().registerAction(
+		m_show_element_picker, "diagrameditor.show_element_picker",
+		tr("Éditeur de schémas"), Qt::Key_Insert);
+	connect(m_show_element_picker, &QAction::triggered,
+		this, &QETDiagramEditor::showElementPicker);
+	addAction(m_show_element_picker);
+
+		//The picker with a row of commands above it, chosen by what is
+		//selected -- the SolidWorks "S" shortcut bar. S is unbound in this
+		//editor.
+	m_show_shortcut_bar = new QAction(tr("Barre de raccourcis"), this);
+	m_show_shortcut_bar->setStatusTip(
+		tr("Ouvre à la position du curseur les commandes utiles pour la sélection, et le sélecteur d'éléments",
+		   "status bar tip"));
+	ShortcutManager::instance().registerAction(
+		m_show_shortcut_bar, "diagrameditor.show_shortcut_bar",
+		tr("Éditeur de schémas"), Qt::Key_S);
+	connect(m_show_shortcut_bar, &QAction::triggered,
+		this, &QETDiagramEditor::showShortcutBar);
+	addAction(m_show_shortcut_bar);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
@@ -962,7 +1022,8 @@ void QETDiagramEditor::setUpActions()
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
-		//search and bound in the Shortcuts page, like every other command.
+		//search, bound in the Shortcuts page and placed on the shortcut bar,
+		//like every other command.
 	for (QAction *action : m_add_item_actions_group.actions()) {
 		ShortcutManager::instance().registerAction(
 			action, "diagrameditor.add_" + action->data().toString(),
@@ -1121,6 +1182,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
+	menu_edition -> addAction(m_insert_last_element);
+	menu_edition -> addAction(m_show_element_picker);
+	menu_edition -> addAction(m_show_shortcut_bar);
 	menu_edition -> addAction(m_command_search);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
@@ -2030,6 +2094,9 @@ void QETDiagramEditor::slot_updateActions()
 	m_zoom_actions_group.           setEnabled(opened_diagram);
 	m_select_actions_group.         setEnabled(opened_diagram);
 	m_add_item_actions_group.       setEnabled(editable_project);
+	m_insert_last_element->         setEnabled(opened_diagram && editable_project && !m_last_inserted_element.isNull());
+	m_show_element_picker->         setEnabled(opened_diagram && editable_project);
+	m_show_shortcut_bar->           setEnabled(opened_diagram && editable_project);
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_background_color_button->    setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
@@ -2925,6 +2992,7 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::selectionChanged,
 		Qt::DirectConnection);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
+	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
 }
 
 /**
@@ -3033,6 +3101,119 @@ void QETDiagramEditor::selectionChanged()
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }
 
+
+/**
+	@brief QETDiagramEditor::insertElementFromCollection
+	Place @a location on the current folio using the interactive placement
+	mode -- the same mode a drag and drop ends in, entered without the drag.
+	@param location
+*/
+void QETDiagramEditor::insertElementFromCollection(const ElementsLocation &location)
+{
+	DiagramView *dv = currentDiagramView();
+	if (dv && dv->startElementPlacement(location, dv->defaultPlacementPos())) {
+		return;
+	}
+
+		//Nowhere to place it: no folio open, or a read-only project. Do what
+		//a double click did before it placed, rather than nothing.
+	m_element_collection_widget->editLocation(location);
+}
+
+/**
+	@brief QETDiagramEditor::rememberPlacedElement
+	Remember @a location for "insert last element". Connected to every view,
+	so an element placed by drag and drop counts as well as one placed from
+	the collection without a drag. Macros never reach here: the view does not
+	report them, since re-entering their placement mode from a shortcut has
+	not been thought through.
+	@param location
+*/
+void QETDiagramEditor::rememberPlacedElement(const ElementsLocation &location)
+{
+	m_last_inserted_element = location;
+	m_insert_last_element->setEnabled(true);
+}
+
+/**
+	@brief QETDiagramEditor::insertLastElement
+	Re-enter placement mode with the element placed most recently, so a run of
+	the same symbol can be dropped without returning to the collection.
+*/
+void QETDiagramEditor::insertLastElement()
+{
+	if (!m_last_inserted_element.isElement()
+	    || !m_last_inserted_element.exist()) {
+		return;
+	}
+	insertElementFromCollection(m_last_inserted_element);
+}
+
+/**
+	@brief QETDiagramEditor::elementPicker
+	@return the element picker, built on first use: most sessions never open
+	it, and it holds a list view and a model of its own.
+*/
+ElementPickerPopup *QETDiagramEditor::elementPicker()
+{
+	if (!m_element_picker)
+	{
+		m_element_picker = new ElementPickerPopup(m_element_collection_widget,
+							  this);
+		connect(m_element_picker, &ElementPickerPopup::elementChosen,
+			this, &QETDiagramEditor::insertElementFromCollection);
+	}
+	return m_element_picker;
+}
+
+/**
+	@brief QETDiagramEditor::showElementPicker
+	Open the element picker where the mouse is.
+*/
+void QETDiagramEditor::showElementPicker()
+{
+	if (!currentDiagramView()) {
+		return;
+	}
+
+	elementPicker()->popUpAt(QCursor::pos());
+}
+
+/**
+	@brief QETDiagramEditor::showShortcutBar
+	Open the element picker where the mouse is, with a row of commands above
+	it chosen by what is selected: the folio's commands with nothing
+	selected, conductor commands when only conductors are, and selection
+	commands otherwise. The commands are ShortcutManager ids, listed in
+	ShortcutBarSettings and editable in the configuration dialog.
+*/
+void QETDiagramEditor::showShortcutBar()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv) {
+		return;
+	}
+
+	const QList<QGraphicsItem *> selection = dv->diagram()->selectedItems();
+	ShortcutBarSettings::Context context = ShortcutBarSettings::Canvas;
+	if (!selection.isEmpty())
+	{
+		const bool only_conductors = std::all_of(
+			selection.cbegin(), selection.cend(),
+			[](QGraphicsItem *item) { return item->type() == Conductor::Type; });
+		context = only_conductors ? ShortcutBarSettings::Conductor
+					  : ShortcutBarSettings::Selection;
+	}
+
+	QList<QAction *> commands;
+	for (const QString &id : ShortcutBarSettings::ids(context)) {
+		if (QAction *action = ShortcutManager::instance().action(id, this)) {
+			commands << action;
+		}
+	}
+
+	elementPicker()->popUpAt(QCursor::pos(), commands);
+}
 
 /**
 	@brief QETDiagramEditor::generateTerminalBlock
