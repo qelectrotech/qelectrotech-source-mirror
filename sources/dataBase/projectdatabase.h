@@ -29,7 +29,6 @@ class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
-struct sqlite3;
 
 /**
 	@brief The projectDataBase class
@@ -155,12 +154,6 @@ class projectDataBase : public QObject
 				  m_cascade_remove_terminal_query,
 				  m_cascade_remove_conductor_query,
 				  m_cascade_remove_element_query;
-
-	public:
-		// Deliberately outside the QET_EXPORT_PROJECT_DB guard below:
-		// newQuery() needs the raw connection to ask SQLite whether a
-		// query only reads, and that check runs in every build.
-		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

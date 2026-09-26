@@ -18,26 +18,26 @@
 #ifndef SQLREADONLY_H
 #define SQLREADONLY_H
 
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QString>
 
-struct sqlite3;
-
 /**
-	Deciding whether a piece of SQL only reads.
+	Running a piece of SQL only if it reads.
 
-	Deliberately its own translation unit, depending on nothing but QString
-	and SQLite: it is the enforcement point for every query QElectroTech
-	runs against a project database, including queries that arrive from
-	outside the application (a .qet file's saved report/table query), so it
-	is worth being able to test it in isolation -- see
+	Deliberately its own translation unit, depending on nothing but Qt SQL:
+	it is the enforcement point for every query QElectroTech runs against a
+	project database, including queries that arrive from outside the
+	application (a .qet file's saved report/table query), so it is worth
+	being able to test it in isolation -- see
 	tests/qttest/tst_sqlreadonly.cpp, which links this file and nothing
 	else of QElectroTech.
 */
 namespace QETSql {
 
-	bool isSingleReadOnlyStatement(sqlite3 *handle,
-				       const QString &query,
-				       QString *error = nullptr);
+	QSqlQuery execReadOnly(const QSqlDatabase &db,
+			       const QString &query,
+			       QString *error = nullptr);
 }
 
 #endif // SQLREADONLY_H
