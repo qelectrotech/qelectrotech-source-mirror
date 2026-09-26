@@ -963,6 +963,18 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 				focusNextChild();
 			}
 			return;
+		case Qt::Key_Return:
+		case Qt::Key_Enter:
+				//Repeat the last drawing or placing command, as SolidWorks
+				//does. Not while a tool is running or a text has the focus:
+				//both use Enter themselves.
+			if (e->modifiers() == Qt::NoModifier
+			    && !m_diagram->eventInterfaceIsRunning()
+			    && !m_diagram->focusItem()
+			    && diagramEditor()->repeatLastCommand()) {
+				return;
+			}
+			break;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;

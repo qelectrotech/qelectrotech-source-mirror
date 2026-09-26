@@ -857,6 +857,21 @@ void QETDiagramEditor::setUpActions()
 		this, &QETDiagramEditor::showShortcutBar);
 	addAction(m_show_shortcut_bar);
 
+		//Enter on the folio repeats it (DiagramView::keyPressEvent). That is
+		//handled by the view rather than bound here, so Enter keeps working
+		//in the search fields, the collection tree and every dialog.
+	m_repeat_last_command = new QAction(tr("Répéter la dernière commande"), this);
+	m_repeat_last_command->setStatusTip(
+		tr("Relance le dernier outil de dessin ou la dernière insertion d'élément (Entrée sur le folio)",
+		   "status bar tip"));
+	m_repeat_last_command->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_repeat_last_command, "diagrameditor.repeat_last_command",
+		tr("Éditeur de schémas"), QKeySequence());
+	connect(m_repeat_last_command, &QAction::triggered,
+		this, &QETDiagramEditor::repeatLastCommand);
+	addAction(m_repeat_last_command);
+
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
 	m_rotate_group_selection->setStatusTip( tr("Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place", "status bar tip"));
@@ -1151,6 +1166,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_insert_last_element);
 	menu_edition -> addAction(m_show_element_picker);
 	menu_edition -> addAction(m_show_shortcut_bar);
+	menu_edition -> addAction(m_repeat_last_command);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
 		//which left them unreachable for anyone working without a mouse: a
@@ -1865,6 +1881,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		return;
 	}
 
+	setLastCommand(action);
+
 	DiagramEventInterface *diagram_event = nullptr;
 
 	if (value == "line")
@@ -2061,6 +2079,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_insert_last_element->         setEnabled(opened_diagram && editable_project && !m_last_inserted_element.isNull());
 	m_show_element_picker->         setEnabled(opened_diagram && editable_project);
 	m_show_shortcut_bar->           setEnabled(opened_diagram && editable_project);
+	m_repeat_last_command->         setEnabled(opened_diagram && editable_project
+						   && m_last_command && m_last_command->isEnabled());
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_background_color_button->    setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
@@ -3096,6 +3116,41 @@ void QETDiagramEditor::rememberPlacedElement(const ElementsLocation &location)
 {
 	m_last_inserted_element = location;
 	m_insert_last_element->setEnabled(true);
+	setLastCommand(m_insert_last_element);
+}
+
+/**
+	@brief QETDiagramEditor::setLastCommand
+	Remember @a action as the command Enter repeats, and name it in the
+	Édition menu entry so it is clear what will happen.
+*/
+void QETDiagramEditor::setLastCommand(QAction *action)
+{
+	m_last_command = action;
+	m_repeat_last_command->setText(
+		action == m_insert_last_element
+		? tr("Répéter : insérer « %1 »").arg(m_last_inserted_element.name())
+		: tr("Répéter : %1").arg(action->text().remove(QLatin1Char('&'))));
+	slot_updateActions();
+}
+
+/**
+	@brief QETDiagramEditor::repeatLastCommand
+	Run the last drawing or placing command again -- a line, a text field,
+	the last element -- as Enter does in SolidWorks.
+	@return true if a command was run
+*/
+bool QETDiagramEditor::repeatLastCommand()
+{
+	if (!m_last_command || !m_repeat_last_command->isEnabled()) {
+		return false;
+	}
+		//A tool that is still on would be switched off by triggering it
+	if (m_last_command->isCheckable() && m_last_command->isChecked()) {
+		return false;
+	}
+	m_last_command->trigger();
+	return true;
 }
 
 /**

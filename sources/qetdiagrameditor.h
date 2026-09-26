@@ -25,6 +25,7 @@
 #include <QCloseEvent>
 #include <QDir>
 #include <QMdiArea>
+#include <QPointer>
 #include <QSignalMapper>
 #include <QUndoGroup>
 
@@ -133,6 +134,7 @@ class QETDiagramEditor : public QETMainWindow
 		void rememberPlacedElement(const ElementsLocation &location);
 		void showElementPicker();
 		void showShortcutBar();
+		bool repeatLastCommand();
 		void generateTerminalBlock();
 		void setWindowedMode();
 		void setTabbedMode();
@@ -277,6 +279,10 @@ class QETDiagramEditor : public QETMainWindow
 		ElementPickerPopup *elementPicker();
 		QAction *m_show_element_picker = nullptr;
 		QAction *m_show_shortcut_bar = nullptr;
+		QAction *m_repeat_last_command = nullptr;
+			/// What Enter on the folio repeats
+		QPointer<QAction> m_last_command;
+		void setLastCommand(QAction *action);
 		ElementPickerPopup *m_element_picker = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			/// Last element placed from the collection, for "insert last"
