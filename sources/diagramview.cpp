@@ -43,6 +43,7 @@
 #include <QDropEvent>
 #include <QPainter>
 #include <QPointer>
+#include <algorithm>
 
 /**
 	Constructeur
@@ -1316,10 +1317,15 @@ QList<QAction *> DiagramView::contextMenuActions() const
 	{
 		if (m_diagram->selectedItems().isEmpty())
 		{
+				//Drawing comes first. The row and column actions change
+				//the folio's layout and are rarely wanted, so they sit one
+				//level down where a stray click cannot reach them.
 			list << m_paste_here;
 			list << m_separators.at(0);
+			list << qde->m_add_item_menu->menuAction();
+			list << m_separators.at(1);
 			list << qde->m_edit_diagram_properties;
-			list << qde->m_row_column_actions_group.actions();
+			list << qde->m_row_column_menu->menuAction();
 		}
 		else
 		{
@@ -1335,11 +1341,19 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_depth_action_group->actions();
 		}
 
-			//Remove from the context menu the actions which are disabled.
+			//Remove from the context menu the actions which are disabled,
+			//and the submenus in which every action is disabled.
 		const QList<QAction *> actions = list;
 		for(QAction *action : actions)
 		{
-			if (!action->isEnabled()) {
+			bool usable = action->isEnabled();
+			if (usable && action->menu())
+			{
+				const QList<QAction *> sub_actions = action->menu()->actions();
+				usable = std::any_of(sub_actions.cbegin(), sub_actions.cend(),
+									 [](QAction *a) { return a->isEnabled(); });
+			}
+			if (!usable) {
 				list.removeAll(action);
 			}
 		}

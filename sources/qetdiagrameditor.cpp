@@ -1044,9 +1044,9 @@ void QETDiagramEditor::setUpMenu()
 		//toolbar button has no key, so text fields, images and every drawing
 		//shape simply could not be added. m_depth_action_group below has
 		//always been in both places; this brings these into line with it.
-	QMenu *menu_add_item = menu_edition -> addMenu(tr("A&jouter"));
-	menu_add_item -> setIcon(QET::Icons::Add);
-	menu_add_item -> addActions(m_add_item_actions_group.actions());
+	m_add_item_menu = menu_edition -> addMenu(tr("A&jouter"));
+	m_add_item_menu -> setIcon(QET::Icons::Add);
+	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
@@ -1056,6 +1056,12 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_edit_diagram_properties);
 	menu_edition -> addActions(m_row_column_actions_group.actions());
+		//Not added to a menu here: it exists so the folio's context menu can
+		//hold the row and column actions one level down (see
+		//DiagramView::contextMenuActions()).
+	m_row_column_menu = new QMenu(tr("Lignes et colonnes"), this);
+	m_row_column_menu -> setIcon(QET::Icons::EditTableInsertColumnRight);
+	m_row_column_menu -> addActions(m_row_column_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_depth_action_group->actions());
 	menu_edition -> addSeparator();
