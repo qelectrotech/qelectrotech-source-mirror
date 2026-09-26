@@ -640,33 +640,43 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	}
 
 		//Right button: a click opens the context menu on release, a drag is
-		//a gesture (DiagramGestureOverlay). Left alone while a tool runs --
-		//a right click cancels or finishes it -- and while a text is edited.
+		//a gesture (DiagramGestureOverlay). Left alone while a text is edited.
 	m_swallow_native_menu = false;
+	m_gesture_over_tool = false;
 	if (e->button() == Qt::RightButton
 	    && DiagramGestureOverlay::isEnabled()
-	    && !m_diagram->eventInterfaceIsRunning()
 	    && !m_diagram->focusItem())
 	{
 		m_gesture_tracking = true;
-		m_swallow_native_menu = true;
 		m_gesture_origin = e->position().toPoint();
 		m_context_toolbar->hide();
 
-			//Select what is under the mouse, as the context menu does, so
-			//a gesture acts on it
-		if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-			if (!item->isSelected()) {
-				m_diagram->clearSelection();
-					//Clearing the selection can delete handler items, so
-					//look the item up again (see contextMenuEvent)
-				if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-					again->setSelected(true);
+			//A tool is running, often one a gesture just started. A right
+			//click still goes to it -- it cancels or finishes the tool -- so
+			//the press carries on to the scene. A drag ends the tool and
+			//shows the ring (see mouseMoveEvent).
+		if (m_diagram->eventInterfaceIsRunning()) {
+			m_gesture_over_tool = true;
+		}
+		else
+		{
+			m_swallow_native_menu = true;
+
+				//Select what is under the mouse, as the context menu does, so
+				//a gesture acts on it
+			if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+				if (!item->isSelected()) {
+					m_diagram->clearSelection();
+						//Clearing the selection can delete handler items, so
+						//look the item up again (see contextMenuEvent)
+					if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+						again->setSelected(true);
+					}
 				}
 			}
+			e->accept();
+			return;
 		}
-		e->accept();
-		return;
 	}
 
 		//Start drag view when hold the middle button
@@ -725,13 +735,24 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		const QPoint pos = e->position().toPoint();
 		if (!m_gesture_overlay->isVisible()
 		    && (pos - m_gesture_origin).manhattanLength() > 2 * QApplication::startDragDistance()) {
+			if (m_gesture_over_tool) {
+					//The drag is a gesture: end the tool, and ignore the
+					//platform's right-click menu like any other gesture
+				m_diagram->clearEventInterface();
+				m_swallow_native_menu = true;
+			}
 			m_gesture_overlay->showAt(m_gesture_origin, selectionCommands());
 		}
 		if (m_gesture_overlay->isVisible()) {
 			m_gesture_overlay->setPointer(pos);
+			e->accept();
+			return;
 		}
-		e->accept();
-		return;
+			//Not a drag yet: a running tool keeps following the mouse
+		if (!m_gesture_over_tool) {
+			e->accept();
+			return;
+		}
 	}
 
 		// Drag the view
@@ -795,7 +816,10 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
-	if (m_gesture_tracking && e->button() == Qt::RightButton)
+		//A plain right click on a running tool falls through: the tool
+		//handles it, as it always has
+	if (m_gesture_tracking && e->button() == Qt::RightButton
+	    && !(m_gesture_over_tool && !m_gesture_overlay->isVisible()))
 	{
 		m_gesture_tracking = false;
 		const QPoint pos = e->position().toPoint();
@@ -821,6 +845,9 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		}
 		e->accept();
 		return;
+	}
+	if (e->button() == Qt::RightButton) {
+		m_gesture_tracking = false;
 	}
 
 		// Stop drag view

@@ -66,6 +66,8 @@ class DiagramView : public PaletteGraphicsView
 			/// the view opens the menu itself on release
 		bool              m_swallow_native_menu = false;
 		bool              m_menu_from_gesture = false;
+			/// The right press went to a running tool; a drag ends the tool
+		bool              m_gesture_over_tool = false;
 		QPoint            m_gesture_origin;
 		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
