@@ -20,6 +20,7 @@
 #include "scripting/qetscripting.h"
 #endif
 #include <QCoreApplication>
+#include <QToolButton>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -48,6 +49,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
+#include "textgrid.h"
 #include "shortcutmanager.h"
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
@@ -488,6 +490,33 @@ void QETDiagramEditor::setUpActions()
 			}
 	});
 
+		//Snap step for dragged texts, as a fraction of the folio grid
+	m_text_grid_menu = new QMenu(tr("Grille des textes"), this);
+	m_text_grid_menu->setIcon(QET::Icons::Grid);
+	m_text_grid_menu->setToolTipsVisible(true);
+	m_text_grid_button = new QToolButton(this);
+	m_text_grid_button->setMenu(m_text_grid_menu);
+	m_text_grid_button->setPopupMode(QToolButton::InstantPopup);
+	m_text_grid_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_text_grid_button->setToolTip(tr("Grille d'accrochage des textes déplacés à la souris.\n"
+									  "Maintenir Ctrl pendant le déplacement pour placer librement."));
+	auto text_grid_group = new QActionGroup(this);
+	for (const qreal divisor : TextGrid::divisors)
+	{
+		QAction *action = m_text_grid_menu->addAction(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"));
+		action->setCheckable(true);
+		action->setData(divisor);
+		text_grid_group->addAction(action);
+	}
+	connect(text_grid_group, &QActionGroup::triggered, this, [](QAction *action) {
+		QSettings().setValue(TextGrid::settings_key, action->data());
+		emit QETApp::instance()->textGridChanged();
+	});
+	connect(QETApp::instance(), &QETApp::textGridChanged,
+			this, &QETDiagramEditor::updateTextGridButton);
+	updateTextGridButton();
+
 	// Draw or not the custom guides
 	m_draw_guides = new QAction ( QIcon::fromTheme("guides"), tr("Afficher les guides"), this);
 	m_draw_guides->setStatusTip(tr("Affiche ou masque les guides"));
@@ -498,6 +527,18 @@ void QETDiagramEditor::setUpActions()
 			foreach (Diagram *d, prjv->project()->diagrams()) {
 				d->setDisplayGuides(checked);
 			}
+	});
+
+		//Keep the column numbers and row letters of the folio in sight
+	m_cell_rulers = new QAction(tr("Garder les en-têtes visibles"), this);
+	m_cell_rulers->setStatusTip(tr("Garde les numéros de colonne et les lettres de ligne du folio visibles au bord de la vue"));
+	m_cell_rulers->setCheckable(true);
+	m_cell_rulers->setChecked(settings.value("diagrameditor/cell_rulers", false).toBool());
+	connect(m_cell_rulers, &QAction::triggered, [this](bool checked) {
+		QSettings().setValue("diagrameditor/cell_rulers", checked);
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (DiagramView *dv, prjv->diagram_views())
+				dv->setCellRulersShown(checked);
 	});
 
 		//Edit current diagram properties
@@ -983,6 +1024,7 @@ void QETDiagramEditor::setUpToolBar()
 	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addAction(m_draw_grid);
+	view_tool_bar -> addWidget(m_text_grid_button);
 	view_tool_bar -> addAction(m_draw_guides);
 	view_tool_bar -> addWidget(m_background_color_button);
 	view_tool_bar -> addSeparator();
@@ -1072,9 +1114,9 @@ void QETDiagramEditor::setUpMenu()
 		//toolbar button has no key, so text fields, images and every drawing
 		//shape simply could not be added. m_depth_action_group below has
 		//always been in both places; this brings these into line with it.
-	QMenu *menu_add_item = menu_edition -> addMenu(tr("A&jouter"));
-	menu_add_item -> setIcon(QET::Icons::Add);
-	menu_add_item -> addActions(m_add_item_actions_group.actions());
+	m_add_item_menu = menu_edition -> addMenu(tr("A&jouter"));
+	m_add_item_menu -> setIcon(QET::Icons::Add);
+	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
@@ -1084,6 +1126,12 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_edit_diagram_properties);
 	menu_edition -> addActions(m_row_column_actions_group.actions());
+		//Not added to a menu here: it exists so the folio's context menu can
+		//hold the row and column actions one level down (see
+		//DiagramView::contextMenuActions()).
+	m_row_column_menu = new QMenu(tr("Lignes et colonnes"), this);
+	m_row_column_menu -> setIcon(QET::Icons::EditTableInsertColumnRight);
+	m_row_column_menu -> addActions(m_row_column_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_depth_action_group->actions());
 	menu_edition -> addSeparator();
@@ -1137,7 +1185,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
+	menu_affichage -> addAction(m_cell_rulers);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -1970,6 +2020,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_background_color_button->    setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
+	m_cell_rulers->                 setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
@@ -3301,3 +3352,23 @@ void QETDiagramEditor::slot_runScript() {
 	QetScripting::runOnProject(script_path, project, currentDiagramView());
 }
 #endif
+
+/**
+	@brief QETDiagramEditor::updateTextGridButton
+	Show the current text grid on its toolbar button and check it in its menu.
+*/
+void QETDiagramEditor::updateTextGridButton()
+{
+	const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
+	for (QAction *action : m_text_grid_menu->actions())
+	{
+		if (qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
+		{
+			action->setChecked(true);
+			m_text_grid_button->setText(tr("Textes %1").arg(action->text()));
+			return;
+		}
+	}
+		//A divisor the menu does not offer, set by hand in the config file
+	m_text_grid_button->setText(tr("Textes %1").arg(TextGrid::ratioLabel(divisor)));
+}

@@ -84,12 +84,25 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+# bordercelllabels.h is header-only too.
+add_executable(tst_bordercelllabels tst_bordercelllabels.cpp)
+add_test(NAME tst_bordercelllabels COMMAND tst_bordercelllabels)
+target_include_directories(tst_bordercelllabels PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_bordercelllabels PRIVATE Qt::Test)
+
 # contactusage.h is a header-only helper holding the contact counting
 # rules, so this test builds independently of the rest of the QET sources.
 add_executable(tst_contactusage tst_contactusage.cpp)
 add_test(NAME tst_contactusage COMMAND tst_contactusage)
 target_include_directories(tst_contactusage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_contactusage PRIVATE Qt::Test)
+
+# textgrid.h is a header-only helper holding the text snap rules, so this
+# test builds independently of the rest of the QET sources.
+add_executable(tst_textgrid tst_textgrid.cpp)
+add_test(NAME tst_textgrid COMMAND tst_textgrid)
+target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
 add_executable(
   tst_qetpalette

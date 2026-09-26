@@ -23,6 +23,7 @@
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
+#include "../../textgrid.h"
 #include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
 #include <QFontDialog>
@@ -71,6 +72,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_collection_dblclick_edits->setChecked(!settings.value("elementscollection/double-click-inserts", true).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+	for (const qreal divisor : TextGrid::divisors)
+		ui->DiagramEditor_textGrid_cb->addItem(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"),
+					divisor);
+	int text_grid_index = ui->DiagramEditor_textGrid_cb->findData(
+				settings.value(TextGrid::settings_key, 1).toReal());
+	if (text_grid_index < 0)
+		text_grid_index = ui->DiagramEditor_textGrid_cb->findData(qreal(1));
+	ui->DiagramEditor_textGrid_cb->setCurrentIndex(text_grid_index);
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
@@ -291,6 +301,7 @@ void GeneralConfigurationPage::applyConf()
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
+	settings.setValue(TextGrid::settings_key, ui->DiagramEditor_textGrid_cb->currentData());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());

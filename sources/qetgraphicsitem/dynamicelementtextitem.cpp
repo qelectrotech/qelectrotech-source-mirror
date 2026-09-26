@@ -639,7 +639,7 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				//DiagramTextItem::mouseMoveEvent() for independent texts.
 				//Without it this was the only text move in the editor that
 				//ignored the grid.
-			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
