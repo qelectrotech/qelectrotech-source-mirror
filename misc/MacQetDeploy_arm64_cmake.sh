@@ -99,6 +99,7 @@ fi
 
 cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
     -DQT_VERSION_MAJOR=$QT_MAJOR \
     -DBUILD_WITH_KF=$BUILD_WITH_KF \
     -DBUILD_KF=OFF \
@@ -258,6 +259,7 @@ echo "Install Info.plist and app icon:"
 cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
 cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion 14.0.0" "$BUNDLE/Contents/Info.plist"
 
 ### add missing files ###############################################
 echo
