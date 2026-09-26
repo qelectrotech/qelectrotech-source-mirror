@@ -73,7 +73,7 @@ void CellRuler::paintEvent(QPaintEvent *event)
 	Q_UNUSED(event)
 
 	QPainter painter(this);
-	painter.fillRect(rect(), palette().color(QPalette::Button));
+	painter.fillRect(rect(), background());
 
 	const bool horizontal = m_orientation == Qt::Horizontal;
 	const int length = horizontal ? width() : height();
@@ -165,6 +165,25 @@ void CellRuler::paintEvent(QPaintEvent *event)
 	if (m_leading_space > 0) {
 		painter.fillRect(horizontal ? QRect(0, 0, m_leading_space, depth - 1)
 					    : QRect(0, 0, depth - 1, m_leading_space),
-				 palette().color(QPalette::Button));
+				 background());
 	}
+}
+
+/**
+	@brief CellRuler::background
+	@return the button colour laid over the window colour, always opaque.
+	The Windows 11 style gives buttons a translucent colour; filled with it
+	as is, a ruler (painted with Qt::WA_OpaquePaintEvent, so never cleared
+	first) would let every previous frame show through, and zooming would
+	leave a shadow of the old labels behind the new ones.
+*/
+QColor CellRuler::background() const
+{
+	const QColor window = palette().color(QPalette::Window);
+	const QColor button = palette().color(QPalette::Button);
+	const qreal alpha = button.alphaF();
+	return QColor::fromRgbF(
+		button.redF()   * alpha + window.redF()   * (1 - alpha),
+		button.greenF() * alpha + window.greenF() * (1 - alpha),
+		button.blueF()  * alpha + window.blueF()  * (1 - alpha));
 }
