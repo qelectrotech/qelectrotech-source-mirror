@@ -534,6 +534,18 @@ void QETDiagramEditor::setUpActions()
 				dv->setCellRulersShown(checked);
 	});
 
+		//Draw the limits of the folio columns and rows across the drawing
+	m_cell_lines = new QAction(tr("Afficher les limites des cases"), this);
+	m_cell_lines->setStatusTip(tr("Trace les limites des colonnes et des lignes du folio sur le schéma, à l'écran seulement"));
+	m_cell_lines->setCheckable(true);
+	m_cell_lines->setChecked(settings.value("diagrameditor/cell_lines", false).toBool());
+	connect(m_cell_lines, &QAction::triggered, [this](bool checked) {
+		QSettings().setValue("diagrameditor/cell_lines", checked);
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (DiagramView *dv, prjv->diagram_views())
+				dv->setCellLinesShown(checked);
+	});
+
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
 	ShortcutManager::instance().registerAction(m_edit_diagram_properties, "diagrameditor.edit_diagram_properties", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_L);
@@ -1160,6 +1172,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_cell_rulers);
+	menu_affichage -> addAction(m_cell_lines);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -1992,6 +2005,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
 	m_cell_rulers->                 setEnabled(opened_diagram);
+	m_cell_lines->                  setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);

@@ -30,6 +30,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "ui/diagrampropertiesdialog.h"
 #include "ui/multipastedialog.h"
@@ -112,6 +113,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_top_ruler = new CellRuler(Qt::Horizontal, this);
 	m_side_ruler = new CellRuler(Qt::Vertical, this);
 	m_cell_rulers_shown = QSettings().value("diagrameditor/cell_rulers", false).toBool();
+	m_cell_lines_shown = QSettings().value("diagrameditor/cell_lines", false).toBool();
 	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::borderChanged, this, &DiagramView::updateCellRulers);
 	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::displayChanged, this, &DiagramView::updateCellRulers);
 	updateCellRulers();
@@ -1194,6 +1196,72 @@ bool DiagramView::event(QEvent *e) {
 void DiagramView::paintingInverted(bool inverted)
 {
 	m_diagram->setInvertedLightness(inverted);
+}
+
+/**
+	@brief DiagramView::setCellLinesShown
+	Show or hide the lines that mark the columns and the rows of the folio
+	border across the drawing, in this view only: printing and exporting
+	never draw them.
+	@param shown
+*/
+void DiagramView::setCellLinesShown(bool shown)
+{
+	m_cell_lines_shown = shown;
+	viewport()->update();
+}
+
+/**
+	@brief DiagramView::drawBackground
+	Reimplemented from PaletteGraphicsView: over the folio background, the
+	cell lines when they are shown. Dashed and faint, so they do not read
+	as conductors, and under every item.
+	@param painter
+	@param rect
+*/
+void DiagramView::drawBackground(QPainter *painter, const QRectF &rect)
+{
+	PaletteGraphicsView::drawBackground(painter, rect);
+
+	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	if (!m_cell_lines_shown || !border.borderIsDisplayed()) {
+		return;
+	}
+
+		//Where the border draws its cells, whether or not the other
+		//header is displayed
+	const QPointF origin(Diagram::margin + border.rowsHeaderWidth(),
+			     Diagram::margin + border.columnsHeaderHeight());
+	const qreal right = origin.x() + border.columnsCount() * border.columnsWidth();
+	const qreal bottom = origin.y() + border.rowsCount() * border.rowsHeight();
+
+	QPainter *p = scenePainter(painter);
+	p->save();
+	p->setRenderHint(QPainter::Antialiasing, false);
+	QColor color = QET::Palette::gridDotColor(Diagram::background_color,
+						  invertsLightness());
+	color.setAlpha(70);
+	QPen pen(color, 1, Qt::DashLine);
+	pen.setCosmetic(true);
+	p->setPen(pen);
+
+	if (border.columnsAreDisplayed()) {
+		for (int i = 1 ; i < border.columnsCount() ; ++i) {
+			const qreal x = origin.x() + i * border.columnsWidth();
+			if (x >= rect.left() && x <= rect.right()) {
+				p->drawLine(QPointF(x, origin.y()), QPointF(x, bottom));
+			}
+		}
+	}
+	if (border.rowsAreDisplayed()) {
+		for (int i = 1 ; i < border.rowsCount() ; ++i) {
+			const qreal y = origin.y() + i * border.rowsHeight();
+			if (y >= rect.top() && y <= rect.bottom()) {
+				p->drawLine(QPointF(origin.x(), y), QPointF(right, y));
+			}
+		}
+	}
+	p->restore();
 }
 
 /**
