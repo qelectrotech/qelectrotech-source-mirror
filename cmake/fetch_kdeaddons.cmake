@@ -17,11 +17,15 @@
 message(" - fetch_kdeaddons")
 
 if(BUILD_WITH_KF)
-  Include(FetchContent)
-
   option(BUILD_KF "Build KF libraries, use system ones otherwise" YES)
+  option(
+    BUILD_KF_MINIMAL
+    "Build only the bundled minimal set of KF libraries"
+    OFF)
 
-  if(BUILD_KF)
+  if(BUILD_KF AND NOT BUILD_KF_MINIMAL)
+    message(VERBOSE "Building KF libraries from KDE git repository")
+    Include(FetchContent)
 
     # v6.10.0 is a more or less random version, taken as an conservative
     # approach. Pinned to the commits v6.10.0 points at, not to the tags
@@ -63,7 +67,7 @@ if(BUILD_WITH_KF)
       # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
       set(KDE_SKIP_TEST_SETTINGS ON)
       set(BUILD_TESTING OFF)
-    
+
       # QElectroTech is a plain QtWidgets application with no QML anywhere in
       # it; these disable optional features of the fetched KF modules that
       # would otherwise pull in extra Qt6 components (e.g. Qt6Qml) we don't
@@ -92,7 +96,34 @@ if(BUILD_WITH_KF)
       FetchContent_MakeAvailable(kwidgetsaddons)
     endfunction()
     qet_make_kf_available()
-  else()
+
+  elseif(BUILD_KF AND BUILD_KF_MINIMAL)
+    message(WARNING "BUILD_KF_MINIMAL is experimental and may not work as expected.")
+    if(NOT TARGET KF6::CoreAddons)
+      message(
+        VERBOSE
+        "Building bundled minimal kcoreaddons")
+      add_subdirectory(${QET_DIR}/thirdparty/kcoreaddons)
+    else()
+      message(
+        VERBOSE
+        "Target KF6::CoreAddons already exists, skipping build")
+    endif()
+    if(NOT TARGET KF6::WidgetsAddons)
+      message(
+        VERBOSE
+        "Building bundled minimal kwidgetsaddons")
+      add_subdirectory(${QET_DIR}/thirdparty/kwidgetsaddons)
+    else()
+      message(
+        VERBOSE
+        "Target KF6::KWidgetsAddons already exists, skipping build")
+    endif()
+
+  elseif(NOT BUILD_KF)
+    message(
+      VERBOSE
+      "Using system KF libraries")
     find_package(KF6CoreAddons REQUIRED)
     find_package(KF6WidgetsAddons REQUIRED)
   endif()

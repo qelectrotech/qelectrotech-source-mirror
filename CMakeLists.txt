@@ -357,7 +357,22 @@ if (NOT MINGW)
     install(DIRECTORY elements    DESTINATION share/qelectrotech)
     install(DIRECTORY examples    DESTINATION share/qelectrotech)
     install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
-    install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
+    install(FILES
+        LICENSE
+        ELEMENTS.LICENSE
+        CREDIT
+        README
+        ChangeLog
+        DESTINATION share/doc/qelectrotech
+    )
+    if(BUILD_KF_MINIMAL)
+        install(FILES
+            licenses/KDE-Frameworks.LICENSE
+            licenses/KDE-Frameworks.NOTICE
+            DESTINATION share/doc/qelectrotech
+        )
+    endif()
+
     if(UNIX AND NOT APPLE)
         install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
         install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
