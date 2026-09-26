@@ -45,6 +45,7 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
 
@@ -268,6 +269,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		QAction *m_command_search = nullptr;
+		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
