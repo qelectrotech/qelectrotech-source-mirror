@@ -165,7 +165,7 @@ Keep interactive GUI/runtime status separate from PLC/CAE feature work and docum
 
 ## Pending
 - Decide later whether and how to mark the verified baseline.
-- Full interactive GUI smoke test remains unverified and should only run with the user present for any macOS permission prompts.
+- Interactive GUI startup is partially verified: user-controlled manual `open -n build/baseline/qelectrotech.app` launch started successfully. Further smoke behavior should only run with the user present for any macOS permission prompts.
 - A later optional Runtime-QA/installation slice may verify startup interactively, but it must be handled separately from PLC/CAE feature work.
 - Runtime-QA/installation slice scope, if approved later: clarify the exact bundle path, perform a controlled local install or bundle launch test, let the user handle any macOS dialogs, and document the observed result.
 - Dedicated deep dives still pending for UI/domain coupling, project database lifecycle, export equivalence, terminal-strip/potential integration tests, and automated regression coverage design.
@@ -176,7 +176,7 @@ Keep interactive GUI/runtime status separate from PLC/CAE feature work and docum
 - Phase 9 backlog remains a specification only; no test files, fixtures, helpers, or CMake registrations were created.
 - Phase 10 first-slice plan remains a specification only; no test harness, helpers, fixtures, CMake registrations, or documentation files were created.
 - Full P0 fixture matrix, export equivalence tests, master/slave tests, terminal-strip tests, autonum/undo tests, cable/conductor-field tests, PDF checks, and large smoke examples remain unimplemented.
-- Interactive GUI behavior remains unverified.
+- Interactive GUI startup is partially verified by the user-controlled `open -n build/baseline/qelectrotech.app` launch. Clean installation, embedded Qt/deploy step, codesign, packaging, and `/Applications` installation remain unverified/open.
 - Full CTest suite has not been re-run after the PLC warning extension.
 - Default KF/ECM build behavior remains open because the active baseline uses `-DBUILD_WITH_KF=OFF`.
 
@@ -265,6 +265,8 @@ Keep interactive GUI/runtime status separate from PLC/CAE feature work and docum
 ## Known Issues
 - A crash report from a Codex/ChatGPT launch context showed a very early Qt/Cocoa/AppKit startup abort before project, CAE, or PLC logic was reached. Treat this as a start-context/uninstalled-dev-bundle finding, not as evidence of a PLC/CAE defect.
 - The project is not installed yet; any GUI/runtime conclusion requires a controlled separate Runtime-QA/installation check.
+- Runtime-QA bundle inspection found an existing local build bundle at `build/baseline/qelectrotech.app` with `Contents/MacOS/qelectrotech` and `Contents/Info.plist`, but no embedded Qt frameworks/plugins under `Contents`; dependencies still resolve to Homebrew Qt paths such as `/opt/homebrew/opt/qtbase`, `/opt/homebrew/opt/qtsvg`, and `/opt/homebrew/opt/qtwebengine`. `codesign --display` reports an ad-hoc linker signature, while `codesign --verify --deep --strict` fails because the bundle has no resources despite the signature expecting them. Treat this as a dev/test bundle requiring packaging/deploy/signing work before any real installation claim.
+- User-controlled manual launch of `build/baseline/qelectrotech.app` via `open -n` started successfully. Treat the earlier Codex/ChatGPT-context crash as a launch-context/dev-bundle finding, not as evidence of a PLC/CAE defect.
 - `.gitignore` already has a local modification intentionally adding `.DS_Store` and `Handout.md`.
 - `Handout.md` is a local unversioned project instruction file and must remain ignored/unversioned unless the user later explicitly decides to version a redacted/project-safe equivalent.
 - CMake configure initialized/fetched project submodules as part of the existing project build flow.
@@ -273,7 +275,7 @@ Keep interactive GUI/runtime status separate from PLC/CAE feature work and docum
 - Build warnings observed in unchanged upstream source: self-assignment warning in `elementsmover.cpp`, ignored `nodiscard` result in `qet.cpp`, and an existing TODO pragma message in `openelmtcommand.cpp`.
 
 ## Next Planned Step
-If runtime confidence is needed, run a separate optional Runtime-QA/installation slice: clarify bundle path, test local install or bundle launch under user supervision, have the user answer any macOS dialogs, and document the result. Do not mix this with PLC/CAE feature work.
+If runtime confidence beyond the successful user-controlled dev-bundle launch is needed, follow with a separate packaging/deploy/signing slice before any `/Applications` installation claim. Do not mix this with PLC/CAE feature work.
 
 ## Change Log
 - 2026-09-21: Created baseline progress record and documented repository/remotes.
@@ -320,3 +322,5 @@ If runtime confidence is needed, run a separate optional Runtime-QA/installation
 - 2026-09-22: Completed PLC IO semantics analysis/spec slice in `Spec_PLC_IO_Semantics_ReadOnly.md`. Boundary: PLC truth remains `ElementData::PlcIO` plus master/slave `group_index`; slave `plc_*` fields are projection copies only; next implementation should be a warning-only `PlcIoProjectionService` extension.
 - 2026-09-22: Implemented the smallest PLC IO read-only projection slice: normalized direction, terminal count/labels, and deterministic warning flags/messages for unlinked rows, out-of-range and duplicate `group_index`, empty addresses, and terminal-count/label mismatch; focused `tst_plcioprojectionservice` build/CTest passed.
 - 2026-09-22: Documented that GUI remains unverified; the early Qt/Cocoa/AppKit crash report is a start-context/uninstalled-dev-bundle finding before project/CAE/PLC logic, and any runtime check belongs in a separate controlled Runtime-QA/installation slice.
+- 2026-09-26: Completed read-only Runtime-QA bundle inspection for `build/baseline/qelectrotech.app`; found a dev bundle with executable and Info.plist only, external Homebrew Qt dependencies, ad-hoc linker signature, and failing strict codesign verification; no GUI launch, install, code change, test implementation, commit, reset, push, or `/Applications` mutation was performed.
+- 2026-09-26: Recorded user-controlled manual `open -n build/baseline/qelectrotech.app` launch as successful; GUI startup is partially verified, the earlier Codex/ChatGPT crash remains a launch-context/dev-bundle finding, and clean install/deploy/codesign/packaging remain open.
