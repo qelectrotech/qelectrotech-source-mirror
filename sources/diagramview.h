@@ -28,6 +28,7 @@ class CellRuler;
 class Conductor;
 class Diagram;
 class DiagramContextToolbar;
+class DiagramGestureOverlay;
 class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
@@ -59,6 +60,14 @@ class DiagramView : public PaletteGraphicsView
 		QPoint            m_paste_here_pos;
 		QPoint            m_press_pos;
 		DiagramContextToolbar *m_context_toolbar = nullptr;
+			/// Right-drag gestures: tracking since the right button went down
+		bool              m_gesture_tracking = false;
+			/// The platform's own right-click menu event is to be ignored:
+			/// the view opens the menu itself on release
+		bool              m_swallow_native_menu = false;
+		bool              m_menu_from_gesture = false;
+		QPoint            m_gesture_origin;
+		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
@@ -131,6 +140,7 @@ class DiagramView : public PaletteGraphicsView
 		void updateCellRulers();
 		void placeCellRulers();
 		void showContextToolbar(const QPoint &viewport_pos);
+		QList<QAction *> selectionCommands() const;
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which
