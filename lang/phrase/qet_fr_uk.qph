@@ -1,0 +1,2815 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="uk">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; для переміщення</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Контакти: НР: %1, НЗ: %2, перемикачі: %3, інші: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Контакти: НР: %1/%2, НЗ: %3/%4, перемикачі: %5/%6, інші: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                Визначити теку даних
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl під час перетягування = вільна позиція, без прив&apos;язки до сітки)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(вже використано)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : режим %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; червона точка: перетягніть, щоб перемістити центр обертання</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; бірюзова точка: дуга</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; край: нахил</target>
+</phrase>
+<phrase>
+    <source> [lecture seule]</source>
+    <target>[лише для читання]</target>
+    <definition>window title tag</definition>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>мм</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Клацання: режим %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 год %2 хв</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>&amp;Закрити цей редактор</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(уже призначено)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(кількість контактів не відповідає)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(підтип не відповідає)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(стан не відповідає)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = створити маркери</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = відокремити в полілінію</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ Тоді відкриття всього документа або його частини може не вдатися.
+Що ви бажаєте зробити?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (екран)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (друк)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (висока якість)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Помилка&lt;/b&gt; :&lt;br&gt;Визначення провідника може мати лише одну клему.&lt;br&gt;&lt;b&gt;Рішення&lt;/b&gt; :&lt;br&gt;Перевірте, щоб елемент мав лише одну клему</target>
+</phrase>
+<phrase>
+    <source>[Modifié]</source>
+    <target>[Змінено]</target>
+    <definition>window title tag</definition>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Дія</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Адреса</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>Адреса PLC</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Показ сітки</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque la grille des folios</source>
+    <target>Показує або приховує сітку аркушів</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Показує або приховує напрямні</target>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>Показати довідку</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Показувати сітку типово (застосується при наступному запуску)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Показати назву</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Показувати заголовки на аркуші</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Показати напрямні</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Показувати напрямні типово (застосується при наступному запуску)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Показувати номери клем у перехресних посиланнях</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Показати або приховати заголовки стовпців таблиці ПЛК на аркуші</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Показати/сховати рамку позначки</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Показати/сховати назву клеми</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>Щоб зробити його повністю сумісним, відкрийте цей самий проєкт у версії 0.8 або 0.80 QElectroTech, збережіть проєкт і відкрийте його знову у цій версії.
+Що ви бажаєте зробити?</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>Додає план клемника на поточний аркуш</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Додає криву Безьє на поточний аркуш</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Додає сторінку PDF на поточний аркуш</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Додати</target>
+</phrase>
+<phrase>
+    <source>Ajouter le plan de bornes suivant :</source>
+    <target>Додати наступний план клем:</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Додати аркуш</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Додати PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>Додати план клем</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Додати точку до кривої</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Додати криву</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Додати користувацьку властивість</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Вирівнювання</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Алфавітна</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Буквено-цифрова (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Кут</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Кутовий</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Скасувати</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Попередній перегляд</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Попередній перегляд:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Заокруглити кути %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Перейти до елемента</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Увага: сума відносних ширин перевищує 100%% загальної ширини, цей шаблон рамки не може бути задоволений за жодної ширини.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Увага: стовпці фіксованої ширини не можуть вміститися в залишковій ширині, цей шаблон рамки не може бути задоволений за жодної ширини.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Лише призначені</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Немає</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Контролер (ПЛК)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Контролери (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Автоматична нумерація клем</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Автонумерування</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Інший</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>ПОПЕРЕДЖЕННЯ:
+Будь-яке значення, крім ‘Без округлення’, може спричинити помилки відображення проєкту залежно від:
+
+1 - вибраного значення 
+2 - dpi екрана 
+3 - редагування проєкту на іншому комп&apos;ютері та/або екрані з іншими параметрами пунктів 1 і 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Попередження — Імпорт файлу EPLAN (.edz)</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>Допоміжний блок 3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>Допоміжний блок 4</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Клема 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Клема 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>Клема рівня 0 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>Клема рівня 1 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>Клема рівня 2 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>Клема рівня 3 :</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Клеми</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Клемники</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>Тут ви можете визначити, як нумеруватимуться нові елементи.
+-Нумерація складається з мінімальної змінної.
+-Ви можете додати або видалити змінну нумерації за допомогою кнопок - та +.
+-Змінна нумерації містить: тип, значення та приріст.
+
+-типи "Цифра 1", "Цифра 01" та "Цифра 001" представляють числовий тип, визначений у полі "Значення", який збільшується з кожним новим провідником на значення поля "Приріст".
+-"Цифра 01" та "Цифра 001" представлені на схемі відповідно двома та трьома цифрами мінімум.
+Якщо число, визначене в полі Значення, має менше цифр, ніж вибраний тип, перед ним буде додано один або два 0, щоб відповідати його типу.
+
+-Тип "Текст" представляє фіксований текст.
+Поле "Приріст" не використовується.
+
+-Тип "№ аркуша" представляє номер поточного аркуша.
+Інші поля не використовуються.
+
+-Тип "Аркуш" представляє назву поточного аркуша.
+Інші поля не використовуються.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Не вдалося прочитати %1</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>Картриджі компанії</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Категорія</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>Цей документ, схоже, було збережено у версії %1
+, яка новіша за вашу версію! 
+Зараз ви використовуєте QElectroTech версії %2</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Цей формат не підтримує прозорість: зображення буде збережено таким, яким воно було до застосування прозорого кольору. Продовжити?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Це скорочення також використовується: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Це містить останні повідомлення журналу цього сеансу. Перевірте вміст, перш ніж долучати його до публічного звіту про помилку.</target>
+</phrase>
+<phrase>
+    <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+    <target>Це колекція company рамок -- використовуйте її для створення, зберігання та редагування власних рамок.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>По центру</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Цей елемент уже зв&apos;язано</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Ця функція нумерує клеми проєкту відповідно до їхнього положення. Порожні або заблоковані клеми ігноруються. Маркування клем потрібно попередньо налаштувати так: &apos;-X:AB&apos;. Частина перед двокрапкою (клемник) може мати довільну назву. &apos;AB&apos; може складатися з цифр або літер."</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Текстове поле</target>
+</phrase>
+<phrase>
+    <source>Chemin de la collection company</source>
+    <target>Шлях до колекції company</target>
+</phrase>
+<phrase>
+    <source>Chemin des cartouches company</source>
+    <target>Шлях до рамок company</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Шлях до користувацьких макросів</target>
+</phrase>
+<phrase>
+    <source>Chinois</source>
+    <target>Китайська</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Виберіть місце, у якому потрібно зберегти шаблон.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Клацання: розмістити в початковому розмірі. Перетягування: розмістити та змінити розмір. Правий клік: повернути на 90°. Ctrl+колесо: налаштувати розмір.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Лівий клік: наступна точка; подвійний клік або Enter: завершити; правий клік: скасувати останню точку</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Лівий клік: розмістити протилежний кут (Shift = квадрат, Ctrl = від центру + вільне розміщення, Ctrl+Shift = центрований квадрат); правий клік: скасувати</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Лівий клік: розмістити протилежний кут (Shift = коло, Ctrl = від центру + вільне розміщення, Ctrl+Shift = центроване коло); правий клік: скасувати</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Лівий клік: розмістити початкову точку (Ctrl = вільне розміщення)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Лівий клік: розмістити кінцеву точку (Ctrl = вільне розміщення); правий клік: скасувати</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Лівий клік: розмістити перший кут (Ctrl = центральна точка, вільне розміщення)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Лівий клік: розмістити першу точку (Ctrl = вільне розміщення)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Клацання: кутова точка. Перетягування: крива точка. Клацання на першій точці: замкнути. Esc/Enter: завершити. Правий клік: скасувати останню точку.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Клацнути</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Клацнути: режим %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Натисніть, щоб вибрати колір</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Клацніть на зображенні, щоб додати колір. Налаштуйте допуск кожного кольору його повзунком або клацніть ×, щоб видалити його.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Клацніть на зображенні, щоб вибрати колір</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Заокруглені кути</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>Колекція компанії</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Колекції</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Вставити з буфера обміну</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Коментар</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>Коментар PLC</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Спільний (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Компонент 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Компонент 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>Конфігурація ПЛК</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Налаштувати шрифт заголовків стовпців</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Налаштувати шрифт тексту в комірках</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Лише конфлікти</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>З&apos;єднати</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Контакт</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Контакти</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Перетворити %1 на криву Безьє</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Перетворити %1 на полілінію</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Перетворити на криву Безьє</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Перетворити на полілінію</target>
+</phrase>
+<phrase>
+    <source>Convertisseur d&apos;élément DXF</source>
+    <target>Конвертер елементів DXF</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Копіювати та вставити</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Корейська</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Не вдалося створити тимчасовий каталог: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Колір</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Колір :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Колір проводу</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Прозорий колір</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Прозорий колір...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Автоматично розділяти наявні провідники під час розміщення елемента</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Автоматичне розділення провідників</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Номінальний струм</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Створити шаблон</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Створити резервну копію?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Циклічна (модуло)</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Перемістити центр обертання</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>Допоміжний текстовий опис 1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>Допоміжний текстовий опис 2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>Допоміжний текстовий опис 3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>Допоміжний текстовий опис 4</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Малювати назви клем</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Діалог</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>напрямок</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>Типове розташування</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Відстань у пікселях між позначкою та перехресним посиланням веденого</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Відстань до позначки - ведений:</target>
+</phrase>
+<phrase>
+    <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+    <target>Двічі клацніть, щоб згорнути або розгорнути колекцію company рамок</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Праворуч</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Помилка: переконайтеся, що файл %1 є дійсним файлом .dxf</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>Вертикальне зміщення</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Зніміть позначки з клемників, нумерацію яких потрібно виключити</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Задати максимальну кількість ведених елементів</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Задати ведені елементи</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Задати прозорий колір</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Визначення провідника</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Деформувати криву</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Від&apos;єднати</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Перемістити центр обертання зображення</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Перемістити позначення клеми</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Перемістити аркуші</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Перемістити аркуш</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Розблоковано: ширину та висоту можна змінювати незалежно. Клацніть, щоб заблокувати.</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Редактор</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>Елемент Автонумерація</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>У заголовку :</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Обрамити текст</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Зберегти оригінальне зображення як...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Зберегти зображення як...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Зберегти звіт діагностики</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Зберегти звіт діагностики...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Зберегти шаблон</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Зберегти...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>Введіть коефіцієнт масштабу</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Аналоговий вхід</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Цифровий вхід</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Універсальний вхід</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Помилка</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>Ведений елемент ПЛК</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>Проміжок :</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Виключити зі специфікації</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Виключити з автонумерування</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Експорт успішний</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Експортувати у SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Експортувати план з&apos;єднань</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>Допоміжний виробник 1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>Допоміжний виробник 2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>Допоміжний виробник 3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>Допоміжний виробник 4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>Коефіцієнт X:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Коефіцієнт Y:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Обертати %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Повернути зображення</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Перетягніть маркери або внутрішню частину рамки, щоб налаштувати область, яку потрібно зберегти.</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>Закрити цей редактор</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>Файли CSV (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>Файли PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Текстові файли (*.txt);;Усі файли (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Провід</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Файл не знайдено: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Фільтрувати скорочення…</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Точне обертання</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Перевернути</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Аркуш</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Функція</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>Функція PLC</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Експериментальна функція</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Форма</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Формат відображення: послідовність нулів задає мінімальну кількість цифр (00 = 07, 000 = 007). Порожньо = природна ширина типу.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Замкнена форма</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>Допоміжний постачальник 1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>Допоміжний постачальник 2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>Допоміжний постачальник 3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>Допоміжний постачальник 4</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Ліворуч</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Перетягніть %1: обертання (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетягніть: налаштувати дугу (Ctrl = вільна позиція, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Перетягніть: заокруглити кути (Ctrl = вільна позиція)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Перетягніть: деформувати криву (Ctrl = вільна позиція, Alt = розірвати дотичну)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Перетягніть: перемістити цю точку</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Перетягнути: перемістити центр обертання</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Перетягніть: перемістити точку (Ctrl = вільна позиція</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетягніть: нахил (Ctrl = вільна позиція, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Перетягнути: нахилити (Shift = кроком 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Перетягнути: повернути (Shift = кроком 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Перетягніть: змінити розмір (Ctrl = від центру + вільна позиція, Shift = пропорції</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Перетягнути: змінити розмір (Shift = зберегти пропорції, Ctrl = від центру)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Перетягніть: перемістити центр обертання (Ctrl = вільна позиція)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетягніть: обертання (Ctrl = вільна позиція, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Перетягніть фіолетову точку: заокруглити кути</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Перетягнути кут: повернути (Shift = кроком 15°); перетягнути край: нахилити (Shift = кроком 15°); червона точка: перемістити центр обертання</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Перетягнути кут/край: змінити розмір (Ctrl = від центру, Shift = зберегти пропорції)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Перетягніть кут/край: змінити розмір (Ctrl = від центру, Shift = пропорції, Alt = відокремити в полілінію)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Перетягніть точку: перемістити її</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Перетягніть кінець: перемістити його</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Перетягніть маркер або криву: деформувати (Alt = розірвати дотичну) ; Alt+перетягування кутової точки: створити маркери ; клацання правою кнопкою: меню найближчого вузла</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>на одну сторінку ліворуч</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>на одну сторінку праворуч</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Напрямні</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Створює звіт з останніми повідомленнями журналу, щоб долучити його до звіту про помилку</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Загальні</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Геометрія</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>В. рядка:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Висота</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Горизонтально</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>горизонтально + вертикально</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Зображення BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Файли зображень (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Зображення JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Зображення PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Вихідне зображення</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Зображення SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Зображення не включено до експорту DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>Імпорт EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Імпортувати</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>імпортувати елемент для масштабування</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Імпортувати виріб EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Імпортувати виріб EPLAN (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Не вдалося зберегти зображення в цьому місці.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;élément</source>
+    <target>Не вдалося зберегти елемент</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Не вдалося зберегти специфікацію в %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>Не вдалося зберегти шаблон «%1».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Не вдалося імпортувати цей виріб:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Не вдалося відкрити файл для запису.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>Не вдалося записати у файл «%1».</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Не вдалося завантажити зображення.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>Не вдалося завантажити файл PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>Не вдалося визначити розмір сторінки PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Не вдалося прочитати структуру проєкту в пам&apos;яті.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>Не вдалося відобразити сторінку PDF.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Нахил X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Нахил Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Нахилити %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Нахилити зображення</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Невідомий</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Крок</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Крок: значення, що додається до лічильника під час кожного нового нумерування</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Записати інформацію про компоненти</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Вставити аркуш вище</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Вставити аркуш нижче</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Перемикач</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Доступні IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Я прочитав і приймаю ці умови.</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Для імпорту dxf потрібне програмне забезпечення dxf2elmt.
+Будь ласка, завантажте його за посиланням нижче та розпакуйте в теку встановлення</target>
+</phrase>
+<phrase>
+    <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
+    <target>Сітка має бути увімкнена, щоб бачити зміни.</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Досягнуто встановленої межі для цього головного елемента (Межа: %1).
+
+Все одно зв&apos;язати цей допоміжний контакт?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Видалення неможливе, оскільки вибране містить одну або кілька з&apos;єднаних клем та/або належить до багаторівневої клеми.
+Роз&apos;єднайте та/або видаліть рівні відповідних клем, щоб мати змогу їх видалити</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Позначення</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Ширина</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Не вдалося записати файл.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>Файл PDF не містить жодної сторінки.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>Файл «%1» відсутній або нечитабельний: не вдалося прочитати перекладену назву цієї теки, тому показано її назву теки.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>Формат .edz може походити з двох різних джерел:
+
+• Портал EPLAN Data Portal (dataportal.eplan.com), що підпадає під умови використання середовища EPLAN Cloud;
+• Сайт виробника компонентів (або дистриб&apos;ютора), який надає свої файли .edz безпосередньо, згідно з власними умовами.
+
+QElectroTech не може автоматично визначити походження файлу, який ви імпортуєте, ані умови, що до нього застосовуються.
+
+Імпортуючи цей файл, ви підтверджуєте, що:
+
+• ви знаєте його походження та маєте право використовувати його в цьому контексті, з огляду на умови, застосовні до цього джерела;
+• цей імпорт здійснюється на ваш власний ризик і під вашу відповідальність;
+• ні QElectroTech, ні його супровідники, ні його учасники не можуть нести відповідальності за використання цих даних не за призначенням.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Формат DXF, використаний тут (AC1006), не дозволяє включати зображення. Зображення будуть представлені лише прямокутником контуру (позиція, розмір, обертання та нахил збережені), без вмісту зображення.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Для масштабування елементів потрібне програмне забезпечення QET_ElementScaler.
+Будь ласка, завантажте його за посиланням нижче та розпакуйте в теку встановлення</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Шаблон успішно збережено в:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>Назва «%1» недійсна: вона не повинна містити такі символи: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Новий елемент визначає групи контактів-залежних.
+Наявні залежні елементи не буде призначено автоматично. Вам доведеться вручну з&apos;єднати залежні та призначити групи контактів.
+
+Продовжити?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Схему з&apos;єднань успішно експортовано!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>Проєкт, який ви намагаєтеся відкрити, частково сумісний з вашою версією %1 QElectroTech.
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Шаблон уже існує. Бажаєте його перезаписати?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Лише малі літери, цифри, дефіс і підкреслення</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Ліцензії</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Згладжений</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Список з&apos;єднань</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Список з&apos;єднань (база даних)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Зв&apos;язано з: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Довжина</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Максимальна довжина</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Максимальна довжина: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Довжина не обмежена.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Макроси</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Макс. частин у списку редактора елементів</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>макс.:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Встановіть 0 для цифри, яка збільшується лише перенесенням наступної циклічної цифри (напр.: "0" у "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>мін.:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>Дзеркало вибраного</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Дзеркально по горизонталі</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Дзеркальне відображення зображення по горизонталі</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Горизонтальне дзеркальне відображення %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Дзеркальне відображення неможливе: нахил занадто екстремальний для цієї форми</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Дзеркально по вертикалі</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Дзеркальне відображення зображення по вертикалі</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Вертикальне дзеркальне відображення %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Дзеркало</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>мод.</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Змінити вирівнювання текстового поля</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Змінити вирівнювання позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Змінити кут дуги</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Змінити кут форми</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Змінити кут зображення</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Змінити нахил зображення</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Змінити індекс позначки майстра</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Змінити позначку майстра</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Змінити колір позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Змінити кривизну %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Змінити форму %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Змінити висоту зображення</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Змінити ширину зображення</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Змінити довжину лінії</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Змінити шрифт позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Змінити положення позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Змінити обертання позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Змінити розмір форми</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Змінити розмір шрифту позначки</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Змінити назву клеми</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Змінити точку обертання текстового поля</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Змінити тип вузла</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Змінити зображення</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>Модуль ПЛК</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Шаблон</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Шаблон збережено</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Шаблони</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>К-сть</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>К-сть клем</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>К-сть контактів</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>Усередині .edz не знайдено *.part.xml</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Ім&apos;я файлу елемента</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Ім&apos;я файлу елемента: лише цифри, малі літери, «-», «_» та «.». 
+Відображувана назва елемента змінюється окремо у властивостях елемента.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Назва клеми</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Назва нового шаблону</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Власна назва стовпця (порожньо = типово)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Назва, позначення або інформація про елемент…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>ім_я_властивості</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Неправильна кількість клем</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Кількість використаних допоміжних контактів: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Досягнуто максимальної кількості допоміжних.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Максимальна кількість визначених допоміжних контактів: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Максимальна кількість визначених допоміжних контактів: не визначено
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Ні</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Лише непризначені</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Нормально замкнений</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Нормально розімкнений</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Не є дійсним пакетом .edz (нерозпізнаний формат архіву).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Примітки</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Лише цифрова (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>Допоміжний номер артикула 1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>Допоміжний номер артикула 2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>Допоміжний номер артикула 3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>Допоміжний номер артикула 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>Допоміжний номер замовлення 1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>Допоміжний номер замовлення 2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>Допоміжний номер замовлення 3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>Допоміжний номер замовлення 4</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>Допоміжний внутрішній номер 1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>Допоміжний внутрішній номер 2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>Допоміжний внутрішній номер 3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>Допоміжний внутрішній номер 4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Автоматична нумерація клем</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Автоматично нумерувати провідник</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Автоматично нумерувати елемент</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Нумерувати також літери</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Найближчий вузол</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>Гаразд</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Орієнтація</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Вертикальний початок</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Так</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outil de traduction d&apos;éléments</source>
+    <target>Інструмент перекладу елементів</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Ouvrir un fichier</source>
+    <target>Відкрити файл</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Сторінка</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Сторінка для імпорту:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Панель елементів</target>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Обертає вибране як групу навколо її центра, а не кожен елемент на місці</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter la selection</source>
+    <target>Обертати вибране</target>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Обертати групу</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>повернути/нахилити</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>Вироби EPLAN (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>план клем</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Точка прив&apos;язки тексту та вирівнювання рядків між собою</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>Точка перемички</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Шрифт</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Шрифт :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Шрифт заголовків</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Шрифт заголовків стовпців</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Шрифт заголовків: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Шрифт тексту</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Шрифт тексту комірок</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Шрифт тексту: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Шрифти проєкту</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Позиція</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Пріоритет осей</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Пріоритет осі X (горизонтальній)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Пріоритет осі Y (вертикальній)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Наступне значення, яке буде застосовано з цим кроком</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Глибина</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Властивості тексту</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Попередній перегляд :</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Потужність</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech не завершився коректно під час останнього запуску.
+Ось останні повідомлення, збережені перед завершенням -- ви можете зберегти їх, щоб долучити до звіту про помилку.</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+додаткова інформація про імпорт / масштабування %1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>Допоміжна кількість 1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>Допоміжна кількість 2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>Допоміжна кількість 3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>Допоміжна кількість 4</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Скорочення</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Скорочення</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Звіт діагностики</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Звіт про збій</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Радіус X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Радіус Y</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Пошук</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Швидко знаходить і вибирає елемент на аркуші</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Пошук...</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>змінити розмір</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Змінити розмір %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Змінити розмір зображення</target>
+</phrase>
+<phrase>
+    <source>Redimensionneur d&apos;éléments</source>
+    <target>Зміна розмірів елементів</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Примітка: головні елементи, що досягли максимальної кількості допоміжних, приховані.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Замінити зображення...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Замінити зображення</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Взяти з майстра</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Відновити пропорції</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Відновити пропорції зображення</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Видалити цей колір</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>Перевернути елемент:</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>Перевернути вибране</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Повернутися до повного зображення, без обрізання</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Обрізати зображення</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Обрізати зображення</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Обрізати...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Обертання :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Обертання/Нахил</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Поз.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Перехресне посилання</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>Перехресне посилання PLC</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Перехресне посилання</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Скинути</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Скинути це скорочення</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Скинути до початкового значення</target>
+</phrase>
+<phrase>
+    <source>Répertoire de la collection company</source>
+    <target>Каталог колекції company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des cartouches company</source>
+    <target>Каталог рамок company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Каталог користувацьких макросів</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Роздільна здатність:</target>
+</phrase>
+<phrase>
+    <source>sans</source>
+    <target>без</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Пропуск %1 після:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Переріз проводу</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Докладніше дивіться тут:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Вибрати зображення...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Простий</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Аналоговий вихід</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Цифровий вихід</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Універсальний вихід</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Бажаєте створити резервну копію?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Підтип</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Далі</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Відстежувати час, витрачений на цей проєкт (зберігається лише локально в цьому файлі)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Неможливо видалити клему</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Видалити</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Видалити %1 аркушів</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Видалити цю властивість</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Видалити найближчий вузол</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Видалити аркуші</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Видалити аркуш</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Видалити точку з кривої</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>Шведська</target>
+</phrase>
+<phrase>
+    <source>SVG: fond transparent</source>
+    <target>SVG: прозорий фон</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Симетричний</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Систему контактів змінено</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Вибрати файл PDF...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Виберіть групу контактів</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Вибрати IO ПЛК</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Вибрати сторінку</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Виберіть групу контактів, яку потрібно призначити цьому веденому елементу:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Розділення потенціалів</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>Таблиця PLC</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>Таблиця PLC (порожня)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Розмір</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Розмір :</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Розмір точок сітки редактора схем: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Розмір точок сітки редактора елементів: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Tchèque</source>
+    <target>Чеська</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>З затримкою на відпускання</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>З затримкою на спрацювання</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>З затримкою на спрацювання та відпускання</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Час, витрачений на цей проєкт:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Напруга / Протокол</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Номінальна напруга</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Текст клеми</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Текст заголовка</target>
+</phrase>
+<phrase>
+    <source>Textes</source>
+    <target>Тексти</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Цей .edz є пакетом у форматі zip, який ще не підтримується (можна імпортувати лише файли .edz формату 7-Zip).</target>
+</phrase>
+<phrase>
+    <source>To high values might lead to crashes of the application.</source>
+    <target>Завищені значення можуть призвести до збоїв програми.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>Щоб встановити плагін qet_tb_generator&lt;br&gt;Відвідайте :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Перше встановлення на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Встановіть, за потреби, лише пакет python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Запустіть скрипт Profile.command&lt;br&gt;оскільки програма використовує жорстко заданий PATH для пошуку плагіна qet-tb-generator &lt;br&gt; Відвідайте :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Оновлення на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Допуск для цього кольору</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Обертати навколо власного центру</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Усі</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Усі файли (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Скинути все</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Переклад корейською</target>
+</phrase>
+<phrase>
+    <source>Traduction en japonais</source>
+    <target>Переклад японською</target>
+</phrase>
+<phrase>
+    <source>Traduction en mongol</source>
+    <target>Переклад монгольською</target>
+</phrase>
+<phrase>
+    <source>Traduction en norvégien</source>
+    <target>Переклад норвезькою</target>
+</phrase>
+<phrase>
+    <source>Traduction en serbe</source>
+    <target>Переклад сербською</target>
+</phrase>
+<phrase>
+    <source>Traduction en slovène</source>
+    <target>Переклад словенською</target>
+</phrase>
+<phrase>
+    <source>Traduction en ukrainien</source>
+    <target>Переклад українською</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Перетворити %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Прозорість не збережено</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>Забагато примітивів, список не створено: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Тип</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Тип нумерації</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>Тип PLC</target>
+</phrase>
+<phrase>
+    <source>Ukrainien</source>
+    <target>Українська</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>дуга</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>кут</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>точку</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>крива</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>кінець</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>зображення</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>Допоміжна одиниця 1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>Допоміжна одиниця 2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>Допоміжна одиниця 3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>Допоміжна одиниця 4</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Значення</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Поточне значення лічильника. Введіть нове значення та підтвердьте, щоб змінити його.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Значення, при якому ця цифра повертається до 0 під час інкременту попередньої цифри (0 = без циклу)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Заблокувати автоматичне нумерування</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Заблокувати позицію</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Заблоковано: зміна ширини або висоти коригує іншу для збереження пропорцій. Клацніть, щоб розблокувати.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Вертикально</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Видимий</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Переглянути цей елемент</target>
+</phrase>
+<phrase>
+    <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
+    <target>Тут ви можете визначити типовий вигляд різних текстів QElectroTech</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Не вдалося зберегти</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Не вдалося експортувати</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Перезаписати шаблон?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Редактор елемента</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Редактор картриджа</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Редактор схем</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Редактор тексту</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Редагування вузлів</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>Елементи QElectroTech (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
+    <target>Елементи QElectroTech (*.elmt);;Файли XML (*.xml);;Усі файли (*)</target>
+    <definition>filetypes allowed when opening an element file</definition>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Позначка майстра</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Ви впевнені, що хочете видалити цей аркуш?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Ви впевнені, що хочете видалити цей аркуш з проєкту?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Ви впевнені, що хочете видалити вибрані аркуші (%1)?</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>шафа</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>котушка</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>клема</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>клемник</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>кабель</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>номінал</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>основний напис</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>колекція</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>провідник</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>контактор</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>струм</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>автоматичний вимикач</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>тека</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>елемент</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>ведений</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>запобіжник</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>сітка</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>вимикач</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>ведучий</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>шаблон</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>двигун</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>нейтраль</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>специфікація</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>нумерація</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>фаза</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>потенціал</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>проєкт</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>реле</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>перехресне посилання на аркуш</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>позначення</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>перехресне посилання на аркуш</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>схема</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>переріз</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>зміст</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>напруга</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>земля</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>текст</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>трансформатор</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

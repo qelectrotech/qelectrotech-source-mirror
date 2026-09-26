@@ -80,6 +80,11 @@ class PaletteGraphicsView : public QGraphicsView
 			nothing by default.
 		*/
 		virtual void paintingInverted(bool inverted);
+		/// @return the painter the scene really paints with: the
+		/// off-screen image's while painting inverted, else \a painter.
+		/// For subclasses that draw more in drawBackground().
+		QPainter *scenePainter(QPainter *painter)
+		{ return m_inverting ? &m_buffer_painter : painter; }
 
 	private:
 		void paintInverted(QPaintEvent *event);

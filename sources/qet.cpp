@@ -16,9 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qet.h"
+#include "qetapp.h"
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
+#include <cmath>
 #include <limits>
 #include <QBuffer>
 #include <QColorDialog>
@@ -243,8 +245,31 @@ bool QET::attributeIsAReal(
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
+	// QString::toDouble() sets ok=true for "nan"/"inf"/"-inf" -- these
+	// parse successfully but are not usable coordinates. A non-finite
+	// element/terminal position reaches Conductor::shape() during load
+	// and hangs there at 100% CPU inside QPainterPathStroker::createStroke(),
+	// confirmed with gdb: not a blocked wait, genuine unbounded computation.
+	if (!std::isfinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
+}
+
+/**
+	@brief QET::infoFlagIsTrue
+	@see the header comment for why this exists rather than a bare
+	== "true" comparison.
+	@param value the raw elementInformations string to test
+	@return true if @p value, trimmed and case-folded, is one of the
+	truthy spellings this codebase already accepts elsewhere
+*/
+bool QET::infoFlagIsTrue(const QString &value)
+{
+	const QString v = value.trimmed().toLower();
+	return v == QLatin1String("true")
+		|| v == QLatin1String("1")
+		|| v == QLatin1String("yes")
+		|| v == QLatin1String("on");
 }
 
 /**
@@ -276,7 +301,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n élément(s)",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				elements_count
 			)
 		);
@@ -286,7 +311,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n conducteur(s)",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				conductors_count
 			)
 		);
@@ -296,7 +321,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n champ(s) de texte",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				texts_count
 			)
 		);
@@ -306,7 +331,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n image(s)",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				images_count
 			)
 		);
@@ -316,7 +341,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n forme(s)",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				shapes_count
 			)
 		);
@@ -326,7 +351,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n texte(s) d'élément",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				element_text_count
 			)
 		);
@@ -336,7 +361,7 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n tableau(s)",
-				"part of a enumerative partial sentence listing the content of diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				tables_count
 			)
 		);
@@ -346,13 +371,13 @@ QString QET::ElementsAndConductorsSentence(
 		parts.append(
 			QObject::tr(
 				"%n plan(s) de bornes",
-				"part of a enumerative partial sentence listing the content of a diagram",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				terminal_strip_count
 			)
 		);
 	}
 
-	return QLocale().createSeparatedList(parts);
+	return QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts);
 }
 
 /**

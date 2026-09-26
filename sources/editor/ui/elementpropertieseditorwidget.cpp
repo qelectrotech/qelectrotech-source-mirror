@@ -17,6 +17,7 @@
 */
 #include "elementpropertieseditorwidget.h"
 
+#include "../../qet.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "ui_elementpropertieseditorwidget.h"
@@ -185,13 +186,13 @@ void ElementPropertiesEditorWidget::upDateInterface()
 
 		const DiagramContext &info = m_data.m_informations;
 		ui->m_auto_num_locked_cb->setChecked(
-			info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString()));
 		ui->m_potential_isolating_cb->setChecked(
-			info.value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("potential_isolating")).toString()));
 	}
 
 	ui->m_exclude_from_bom_cb->setChecked(
-		m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString() == QLatin1String("true"));
+		QET::infoFlagIsTrue(m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString()));
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
@@ -587,6 +588,29 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 		contact_ct->setMaximum(20);
 		contact_ct->setValue(group.contactCount);
 		ui->m_slave_groups_table->setCellWidget(i, 2, contact_ct);
+
+		// When the contact count changes, keep the terminal count in step
+		// with it, otherwise the two drift apart (both are edited
+		// independently): the stored terminals-per-contact ratio is kept,
+		// or the contact type default (2, 3 for a switch) is used when the
+		// stored values don't divide evenly (inconsistent legacy data).
+		const int old_contacts = group.contactCount;
+		const int old_terminals = group.terminalCount;
+		connect(contact_ct, QOverload<int>::of(&QSpinBox::valueChanged),
+			this, [this, i, old_contacts, old_terminals](int val) {
+				if (i < m_data.m_slave_contact_groups.size()) {
+					readSlaveGroupsFromTable();
+					auto &group = m_data.m_slave_contact_groups[i];
+					int per_pole = old_terminals / qMax(1, old_contacts);
+					if (per_pole < 1 || old_terminals % qMax(1, old_contacts) != 0)
+						per_pole = group.type == ElementData::SW ? 3 : 2;
+					else if (group.type == ElementData::SW && per_pole < 3)
+						per_pole = 3; //a switch needs common, NC and NO
+					group.contactCount = val;
+					group.terminalCount = val * per_pole;
+					populateSlaveGroupsTable();
+				}
+		});
 
 		// Terminal count
 		auto *terminal_ct = new QSpinBox(ui->m_slave_groups_table);

@@ -22,6 +22,8 @@
 #include "logging/eventloopwatchdog.h"
 #include "logging/qetlogger.h"
 #include "machine_info.h"
+#include "diagram.h"
+#include "palettegraphicsview.h"
 #include "qet.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
@@ -31,6 +33,7 @@
 
 #include <QApplication>
 #include <QDomImplementation>
+#include <QFont>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -105,6 +108,19 @@ int main(int argc, char **argv)
 	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
 	QDomImplementation::setInvalidDataPolicy(
 		QDomImplementation::ReturnNullNode);
+
+#ifdef Q_OS_WIN
+	// "MS Shell Dlg 2" is not a font but a Windows alias, and many projects
+	// and settings saved on Windows carry it. Qt 5's GDI font backend let
+	// Windows resolve it to Tahoma; Qt 6's DirectWrite backend does not know
+	// the alias and falls back to Arial, so those texts come out heavier on
+	// screen and in exported PDFs (bugtracker #340). Resolve both aliases
+	// the way Windows does. Done before any application object exists so
+	// that the headless export and scripting runs below get it too.
+	QFont::insertSubstitution("MS Shell Dlg 2", "Tahoma");
+	QFont::insertSubstitution("MS Shell Dlg", "Microsoft Sans Serif");
+#endif
+
 	//Creation and execution of the application
 	//HighDPI
 	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
@@ -142,6 +158,22 @@ int main(int argc, char **argv)
 			return QetScripting::run(script_app.arguments());
 		}
 #endif
+	}
+
+	// Re-apply the sheet background last picked in the diagram editor, so
+	// every project opened from here on -- existing or new, whichever one
+	// it is -- draws that background instead of the built-in default that
+	// would otherwise force the user to pick it again after each start.
+	//
+	// Done here rather than in main()'s first lines on purpose: the
+	// headless export and scripting runs above return before reaching
+	// this point and must keep rendering on plain white. It also has to
+	// happen before QETApp is constructed below, since that constructor
+	// already loads the projects given on the command line.
+	{
+		const QetSettings::SheetBackground sheet_background = QetSettings::sheetBackground();
+		PaletteGraphicsView::setCustomBackgroundColor(sheet_background.custom);
+		Diagram::background_color = sheet_background.color;
 	}
 
 	// Resolve the logger's state (log directory, session filename, open

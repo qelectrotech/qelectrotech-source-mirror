@@ -16,12 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
+#include "../qet.h"
 #include <QCheckBox>
 #include <QPushButton>
 #include "../diagram.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/element.h"
+#include "../dataBase/projectdatabase.h"
 #include "../qetinformation.h"
+#include "../qetproject.h"
 #include "../ui_elementinfowidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
 #include "customelementinfopartwidget.h"
@@ -330,6 +333,55 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 }
 
 /**
+	@brief ElementInfoWidget::updateSuggestions
+	Offer, for each information, the values already used by the other
+	elements of the project (supplier, manufacturer...), so they can be
+	picked instead of typed again.
+	The values come from the project database rather than from the
+	diagrams, which already holds them in the element_info table.
+*/
+void ElementInfoWidget::updateSuggestions()
+{
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	QETProject *project = diagram ? diagram->project() : nullptr;
+	if (!project || !project->dataBase()) {
+		return;
+	}
+
+		//Only a column of element_info can be queried. The key is checked
+		//against that list rather than trusted, because it becomes part of
+		//the SQL text.
+	const QStringList columns = QETInformation::elementInfoKeys();
+	const QString uuid = m_element->uuid().toString();
+
+	for (ElementInfoPartWidget *eipw : m_eipw_list)
+	{
+		const QString key = eipw->key();
+			//A label identifies one element, suggesting the others is noise
+		if (key == QETInformation::ELMT_LABEL || !columns.contains(key)) {
+			continue;
+		}
+
+			//"Schneider" and "schneider" are offered once, spelled the way
+			//most elements spell it: SQLite takes the bare column v from
+			//the row that holds MAX(n).
+		QStringList values;
+		auto query = project->dataBase()->newQuery(QStringLiteral(
+			"SELECT v, MAX(n) FROM ("
+				"SELECT \"%1\" AS v, COUNT(*) AS n FROM element_info "
+				"WHERE \"%1\" IS NOT NULL AND \"%1\" != '' "
+				"AND element_uuid != '%2' "
+				"GROUP BY \"%1\") "
+			"GROUP BY v COLLATE NOCASE "
+			"ORDER BY v COLLATE NOCASE").arg(key, uuid));
+		while (query.next()) {
+			values << query.value(0).toString();
+		}
+		eipw->setSuggestions(values);
+	}
+}
+
+/**
 	@brief ElementInfoWidget::updateUi
 	fill information fetch in m_element_info to the
 	corresponding line edit
@@ -348,6 +400,7 @@ void ElementInfoWidget::updateUi()
 	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw -> setText (element_info[eipw->key()].toString());
 	}
+	updateSuggestions();
 
 	// Rebuild the custom-property rows to match whatever
 	// user-defined keys this element currently carries.
@@ -366,18 +419,18 @@ void ElementInfoWidget::updateUi()
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
-		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+		ui->m_auto_num_locked_cb->setChecked(QET::infoFlagIsTrue(lock_value));
 
 		// English: Load the potential isolating status from the element information mapping
 		if (m_potential_isolating_cb) {
 			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
-			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
+			m_potential_isolating_cb->setChecked(QET::infoFlagIsTrue(isolating_value));
 		}
 	}
 	// English: Load the BOM exclusion status from the element information mapping
 	if (m_exclude_from_bom_cb) {
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
-		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
+		m_exclude_from_bom_cb->setChecked(QET::infoFlagIsTrue(exclude_bom_value));
 	}
 
 	if (m_live_edit) {

@@ -43,6 +43,10 @@
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#ifdef QET_SPACEMOUSE_SUPPORT
+#	include "spacemouse/spacemouselistener.h"
+#	include "ui/configpage/spacemouseconfigpage.h"
+#endif
 #include "logging/qetlogger.h"
 #include "logging/ui/diagnosticsreportdialog.h"
 
@@ -163,8 +167,25 @@ QETApp::QETApp() :
 	if (m_splash_screen) {
 		m_splash_screen -> hide();
 	}
+    
+#ifdef QET_SPACEMOUSE_SUPPORT
+		//Always safe to construct: it silently does nothing when spacenavd
+		//isn't running or no device is attached, which is the common case
+		//even in a build with this feature compiled in. See
+		//SpaceMouseListener's class comment.
+	m_space_mouse_listener = new SpaceMouseListener(this);
+#endif
 
-	checkBackupFiles();
+		//Deferred so this constructor returns before the prompts appear.
+		//checkBackupFiles() opens modal dialogs, and main() still has work to
+		//do once we return -- in particular connecting
+		//SingleApplication::receivedMessage to receiveMessage(). While those
+		//prompts were up that connection did not exist yet, so a file handed
+		//to the already-running instance during start-up was accepted by the
+		//socket and then dropped on the floor.
+	QMetaObject::invokeMethod(this, [this]() {
+		checkBackupFiles();
+	}, Qt::QueuedConnection);
 }
 
 /**
@@ -236,7 +257,7 @@ QString QETApp::loadedQtTranslationFile()
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 	
-	QLocale::setDefault(QLocale(desired_language));
+	m_interface_language = desired_language;
 
 	// load Qt library translations
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
@@ -1817,6 +1838,81 @@ void QETApp::useSystemPalette(bool use) {
 }
 
 /**
+	@brief QETApp::useCustomPalette
+	Apply a user-chosen color as the application-wide palette.
+	Builds a full QPalette from \a color, keeping the system palette
+	as a fallback for roles we don't touch.
+	@param color the user-chosen base color
+*/
+void QETApp::useCustomPalette(const QColor &color) {
+	if (!color.isValid())
+		return;
+
+	// Derive readable text colors from the chosen color.
+	const bool dark = color.lightness() < 128;
+	const QColor text = dark ? QColor(220, 220, 220) : QColor(30, 30, 30);
+	const QColor disabled_text = dark ? QColor(175, 175, 175) : QColor(128, 128, 128);
+
+	// Slightly lighter/darker for button and window shading.
+	QColor button = color;
+	button = QColor::fromHslF(color.hslHueF(),
+				  color.hslSaturationF(),
+				  dark ? qMin(color.lightnessF() + 0.08, 1.0)
+				       : qMax(color.lightnessF() - 0.08, 0.0));
+	QColor light = QColor::fromHslF(color.hslHueF(),
+					color.hslSaturationF(),
+					dark ? qMin(color.lightnessF() + 0.15, 1.0)
+					     : qMax(color.lightnessF() - 0.15, 0.0));
+	QColor mid = QColor::fromHslF(color.hslHueF(),
+				     color.hslSaturationF(),
+				     dark ? qMin(color.lightnessF() + 0.04, 1.0)
+				          : qMax(color.lightnessF() - 0.04, 0.0));
+	QColor dark_c = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.04, 1.0)
+					      : qMax(color.lightnessF() - 0.12, 0.0));
+	QColor shadow = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.10, 1.0)
+					      : qMax(color.lightnessF() - 0.20, 0.0));
+
+	QPalette p;
+	// Active and Inactive get the same colors; only Disabled differs.
+	for (auto group : {QPalette::Active, QPalette::Inactive}) {
+		p.setColor(group, QPalette::Window,          color);
+		p.setColor(group, QPalette::WindowText,      text);
+		p.setColor(group, QPalette::Base,            color);
+		p.setColor(group, QPalette::AlternateBase,   button);
+		p.setColor(group, QPalette::Text,            text);
+		p.setColor(group, QPalette::Button,          button);
+		p.setColor(group, QPalette::ButtonText,      text);
+		p.setColor(group, QPalette::BrightText,      dark ? QColor(255,90,90) : Qt::white);
+		p.setColor(group, QPalette::Highlight,       QColor(30, 96, 176));
+		p.setColor(group, QPalette::HighlightedText, Qt::white);
+		p.setColor(group, QPalette::ToolTipBase,     button);
+		p.setColor(group, QPalette::ToolTipText,     text);
+		p.setColor(group, QPalette::Light,           light);
+		p.setColor(group, QPalette::Midlight,        mid);
+		p.setColor(group, QPalette::Mid,             mid);
+		p.setColor(group, QPalette::Dark,            dark_c);
+		p.setColor(group, QPalette::Shadow,          shadow);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+		p.setColor(group, QPalette::Accent,          QColor(30, 96, 176));
+#endif
+	}
+	p.setColor(QPalette::Disabled, QPalette::WindowText, disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
+
+	qApp->setPalette(p);
+	qApp->setStyleSheet(QString());
+
+	// Switch icon theme to match light/dark.
+	applyIconTheme(p);
+	QET::Palette::refreshStyleSheets();
+}
+
+/**
 	@brief QETApp::quitQET
 	Request the closing of all windows;
 	if the user accepts them, the application quits
@@ -2117,6 +2213,9 @@ void QETApp::configureQET()
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
 	cd.addPage(new ShortcutsConfigPage());
+#ifdef QET_SPACEMOUSE_SUPPORT
+	cd.addPage(new SpaceMouseConfigPage());
+#endif
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent
@@ -2132,6 +2231,13 @@ void QETApp::configureQET()
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
 	cd.setParent(nullptr, cd.windowFlags());
+	emit textGridChanged();
+
+#ifdef QET_SPACEMOUSE_SUPPORT
+	if (m_space_mouse_listener) {
+		m_space_mouse_listener->reloadSettings();
+	}
+#endif
 }
 
 /**
@@ -2404,7 +2510,13 @@ void QETApp::initStyle()
 
 	//Apply or not the system style
 	QSettings settings;
-	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	if (settings.value("usesystemcolors", true).toBool()) {
+		useSystemPalette(true);
+	} else if (settings.contains("customapplicationcolor")) {
+		useCustomPalette(QColor(settings.value("customapplicationcolor").toString()));
+	} else {
+		useSystemPalette(false);
+	}
 
 #if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	// Setting an application palette stops Qt from following the OS
@@ -3045,3 +3157,5 @@ int QETApp::projectId(const QETProject *project) {
 	}
 	return(-1);
 }
+
+QString QETApp::m_interface_language;

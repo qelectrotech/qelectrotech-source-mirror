@@ -23,6 +23,7 @@
 #include "../qetdiagrameditor.h"
 #include "../projectview.h"
 #include "../qetproject.h"
+#include "../utils/qetsettings.h"
 
 #include <QApplication>
 #include <QColorDialog>
@@ -62,8 +63,28 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 	setStatusTip(tr("Choisir la couleur de fond du folio",
 		"status bar tip"));
 
-	m_is_system_color = true;
-	m_current = QApplication::palette().color(QPalette::Base);
+		//main() already restored the stored choice onto the global
+		//Diagram::background_color and PaletteGraphicsView flag; mirror it
+		//here so the button opens on what the editor actually draws, rather
+		//than always claiming "system colour" as it used to.
+	if (PaletteGraphicsView::customBackgroundColor()) {
+		m_is_system_color = false;
+		m_current = Diagram::background_color;
+	} else {
+		m_is_system_color = true;
+		m_current = QApplication::palette().color(QPalette::Base);
+	}
+	for (const QString &name : QetSettings::sheetBackgroundRecentColors())
+	{
+		const QColor c(name);
+		if (c.isValid()) {
+			m_recent.append(c);
+		}
+	}
+	while (m_recent.size() > MAX_RECENT) {
+		m_recent.removeLast();
+	}
+
 	setMenu(new QMenu(this));
 	rebuildMenu();
 	setSwatch(m_current);
@@ -123,6 +144,7 @@ void DiagramBgColorToolButton::applyColor(const QColor &color)
 
 	PaletteGraphicsView::setCustomBackgroundColor(true);
 	Diagram::background_color = color;
+	QetSettings::setSheetBackground(QetSettings::SheetBackground{color, true});
 
 	QETDiagramEditor *editor = m_editor;
 	if (!editor) {
@@ -146,6 +168,8 @@ void DiagramBgColorToolButton::applySystemColor()
 
 	PaletteGraphicsView::setCustomBackgroundColor(false);
 	Diagram::background_color = Qt::white;
+	QetSettings::setSheetBackground(
+				QetSettings::SheetBackground{QColor(Qt::white), false});
 
 	QETDiagramEditor *editor = m_editor;
 	if (!editor) {
@@ -187,6 +211,21 @@ void DiagramBgColorToolButton::rememberRecent(const QColor &color)
 		m_recent.removeLast();
 	}
 	rebuildMenu();
+	persistRecent();
+}
+
+/**
+	@brief DiagramBgColorToolButton::persistRecent
+	Write the "recently used" colours back to the settings, so they are
+	still there on the next start instead of starting out empty.
+*/
+void DiagramBgColorToolButton::persistRecent()
+{
+	QStringList names;
+	for (const QColor &c : std::as_const(m_recent)) {
+		names << c.name();
+	}
+	QetSettings::setSheetBackgroundRecentColors(names);
 }
 
 /**

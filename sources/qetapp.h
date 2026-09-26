@@ -48,6 +48,9 @@ class QETProject;
 class QETTitleBlockTemplateEditor;
 class QTextOrientationSpinBoxWidget;
 class RecentFiles;
+#ifdef QET_SPACEMOUSE_SUPPORT
+class SpaceMouseListener;
+#endif
 
 /**
 	@brief The QETApp class
@@ -68,6 +71,7 @@ class QETApp : public QObject
 	public:
 		static QETApp *instance();
 		void setLanguage(const QString &);
+		static QString interfaceLanguage() { return m_interface_language; }
 		static QString langFromSetting ();
 		void switchLayout(Qt::LayoutDirection);
 		static void printHelp();
@@ -228,6 +232,13 @@ class QETApp : public QObject
 		static TitleBlockTemplatesFilesCollection *m_company_tbt_collection;
 		static TitleBlockTemplatesFilesCollection *m_custom_tbt_collection;
 		static ElementsCollectionCache *collections_cache_;
+#ifdef QET_SPACEMOUSE_SUPPORT
+			/// One per application, not per window: a physical 6-DOF device
+			/// is a single ambient input source, and motion is applied to
+			/// whichever DiagramView is currently active. See
+			/// SpaceMouseListener's class comment.
+		SpaceMouseListener *m_space_mouse_listener = nullptr;
+#endif
 		static QMap<uint, QETProject *> registered_projects_;
 		static uint next_project_id;
 		static RecentFiles *m_projects_recent_files;
@@ -246,7 +257,13 @@ class QETApp : public QObject
 		static QString m_user_company_tbt_dir;
 		static QString m_user_custom_tbt_dir;
 		static QString m_user_macros_dir;
+		
+		static QString m_interface_language;
 	
+	signals:
+			/// The text grid setting changed, see TextGrid.
+		void textGridChanged();
+
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
 		void reduceEveryEditor();
@@ -263,6 +280,7 @@ class QETApp : public QObject
 		void setMainWindowVisible(QMainWindow *, bool);
 		void invertMainWindowVisibility(QWidget *);
 		void useSystemPalette(bool);
+		void useCustomPalette(const QColor &color);
 		void quitQET();
 		void checkRemainingWindows();
 		void openFiles(const QETArguments &);

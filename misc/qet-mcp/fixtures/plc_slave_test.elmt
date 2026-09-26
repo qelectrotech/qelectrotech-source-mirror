@@ -1,0 +1,16 @@
+<definition version="0.100.0" type="element" link_type="slave" width="20" height="60" hotspot_x="9" hotspot_y="30">
+    <uuid uuid="{94d56f06-6814-5561-9148-2da3a9c4f900}"/>
+    <names>
+        <name lang="en">PLC Slave Test</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">plc</kindInformation>
+        <kindInformation name="state">NO</kindInformation>
+        <kindInformation name="number">1</kindInformation>
+    </kindInformations>
+    <description>
+        <rect x="0" y="-8" width="6" height="16" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{6a87c921-6f5d-4f5c-8673-228a6d13c500}" name="1" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{2904e5fa-6bbe-4127-acdd-f92feadd6e00}" name="2" x="0" y="-20" orientation="n" type="Generic"/>
+    </description>
+</definition>

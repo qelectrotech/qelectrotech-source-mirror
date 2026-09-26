@@ -39,7 +39,9 @@
 #include "elementtextitemgroup.h"
 #include "iostream"
 
+#include <QApplication>
 #include <QCollator>
+#include <QScreen>
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -209,6 +211,21 @@ void Element::editProperty()
 		//with the "text" tab of ElementPropertiesWidget,
 		//the ui freeze, until user press escape key
 		dialog.setWindowModality(Qt::WindowModal);
+
+		// A PLC master carries a 6-column IO table: without an explicit
+		// size the dialog falls back to its (cramped) sizeHint, so open it
+		// at three times its natural width instead. The height stays at
+		// the natural one, and the width never exceeds the screen.
+		const ElementData data = elementData();
+		if (data.m_type == ElementData::Master
+			&& data.m_master_type == ElementData::PLC) {
+			const QSize natural = dialog.sizeHint();
+			int width = natural.width() * 3;
+			if (QScreen *screen = QApplication::primaryScreen())
+				width = qMin(width, screen->availableGeometry().width());
+			dialog.resize(width, natural.height());
+		}
+
 		dialog.exec();
 	}
 }
@@ -1370,6 +1387,33 @@ void Element::initLink(QETProject *prj)
 }
 
 /**
+	@brief Element::initLink
+	Overload resolving tmp_uuids_link against @p candidates instead of a
+	project-wide ElementProvider search -- see the header comment for
+	why the search has to be scoped this way right after a paste or
+	folio-duplication XML round-trip, before uuids are renewed.
+	@param candidates the elements to search for a link partner in
+*/
+void Element::initLink(const QList<Element *> &candidates)
+{
+		// if nothing to link return now
+	if (tmp_uuids_link.isEmpty()) return;
+
+	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+		for (Element *elmt : candidates) {
+			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+				elmt->linkToElement(this);
+				if (tmp_uuids_link[i].group_index >= 0) {
+					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				}
+				break;
+			}
+		}
+	}
+	tmp_uuids_link.clear();
+}
+
+/**
  * @brief Element::linkTypeToString
  * \deprecated use instead ElementData::typeToString
  * \todo remove this function
@@ -1662,6 +1706,31 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 
 	m_mouse_over = false;
 	update();
+}
+
+/**
+	@brief Element::itemChange
+	On ItemSelectedHasChanged, tell each of this element's own dynamic texts
+	to re-check whether its resize handles should be showing --
+	DynamicElementTextItem::refreshResizeHandlesVisibility() shows them when
+	either the text itself or its parent (this) is selected. An ordinary
+	click with no Shift selects the parent, not the text
+	(DynamicElementTextItem::mousePressEvent() forwards it), so without this
+	a plain click on a symbol never showed the resize handles this PR adds
+	to its texts (qelectrotech#591, reported by @arummler) -- only
+	Shift+click or a right-click's context menu did, since those are the
+	paths that leave the text itself selected.
+*/
+QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSelectedHasChanged)
+	{
+		const QList<DynamicElementTextItem *> texts = dynamicTextItems();
+		for (DynamicElementTextItem *deti : texts) {
+			deti->refreshResizeHandlesVisibility();
+		}
+	}
+	return QetGraphicsItem::itemChange(change, value);
 }
 
 /**

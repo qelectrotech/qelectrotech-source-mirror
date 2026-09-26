@@ -26,6 +26,7 @@
 #include <QStringList>
 
 class QObject;
+class QAction;
 
 /**
 	@brief The ShortcutManager class
@@ -70,6 +71,21 @@ class ShortcutManager
 		void setSequence(const QString &id, const QKeySequence &sequence);
 		void resetToDefault(const QString &id);
 		void resetAllToDefaults();
+
+			/// Activate the first still-alive target registered under \a id
+			/// -- QAction::trigger() or QAbstractButton::click(), whichever
+			/// it turns out to be -- for an input source other than the
+			/// keyboard (e.g. a 3D mouse button) that wants to invoke a
+			/// named action without knowing or caring which of the two it
+			/// is. Deliberately not disambiguated by the currently active
+			/// window when an id has several live targets: a target's
+			/// owning top-level window isn't reliably discoverable from a
+			/// bare QAction. Correct in the overwhelming common case of one
+			/// open editor window; a known simplification in the rarer
+			/// multi-window case, not a guaranteed-correct dispatch.
+			/// @return whether a live target was found and triggered.
+		bool trigger(const QString &id) const;
+		QAction *action(const QString &id, const QObject *owner) const;
 
 	private:
 		ShortcutManager() = default;

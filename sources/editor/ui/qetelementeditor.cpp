@@ -25,6 +25,8 @@
 #include "../../qetapp.h"
 #include "../../qetmainwindow.h"
 #include "../../recentfiles.h"
+#include "../../elementscollectioncache.h"
+#include "../../factory/elementpicturefactory.h"
 #include "../graphicspart/customelementpart.h"
 #include "../elementitemeditor.h"
 #include "../styleeditor.h"
@@ -348,6 +350,24 @@ bool QETElementEditor::toLocation(const ElementsLocation &location)
 									 tr("Impossible d'enregistrer l'élément", "message box content"));
 		return(false);
 	}
+
+		//setXml() just wrote the new drawing to disk, but the preview shown
+		//in the elements panel comes from two caches keyed by path+uuid that
+		//nothing here has told about the change: ElementPictureFactory's
+		//in-memory picture cache and ElementsCollectionCache's on-disk
+		//SQLite cache (see ElementsLocation::icon()). locationWasSaved()
+		//(elementscollectionwidget.cpp) re-reads the icon right after this
+		//call returns, but both caches still hand back the pre-edit pixmap,
+		//so the panel keeps showing the stale preview until the whole
+		//collection is reloaded. Drop and rebuild them here.
+	ElementPictureFactory::instance()->dropCache(location);
+	if (ElementsCollectionCache *cache = QETApp::collectionCache()) {
+		if (cache->fetchData(location)) {
+			cache->cacheName(location.toString(), location.uuid());
+			cache->cachePixmap(location.toString(), location.uuid());
+		}
+	}
+
 	return(true);
 }
 

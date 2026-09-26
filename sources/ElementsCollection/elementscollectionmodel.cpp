@@ -49,6 +49,14 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 */
 ElementsCollectionModel::~ElementsCollectionModel()
 {
+	// Without cancel(), the wait below runs the whole queued
+	// QtConcurrent::map() to completion, so closing this dialog on a
+	// large collection blocks until every remaining item has been
+	// processed -- a visible hang on the button pressed precisely to
+	// stop the work. cancel() drops the not-yet-started items so the
+	// wait that follows (still needed, so an in-flight item can't
+	// dereference this object after it's gone) is short.
+	m_future.cancel();
 	m_future.waitForFinished();
 }
 
@@ -431,7 +439,7 @@ void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 											   collection_name);
 		}
 	}
-	// ANPASSUNG: Makros und Custom Collection werden hier behandelt!
+	// Macros and Custom Collection are handled here
 	else if (location.isCustomCollection() || location.isMacrosCollection()) {
 		QList <ElementCollectionItem *> child_list;
 
@@ -495,6 +503,10 @@ void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 	connect(project->embeddedElementCollection(),
 		&XmlElementCollection::directoryRemoved,
 		this, &ElementsCollectionModel::itemRemovedFromCollection);
+	connect(project, &QETProject::projectTitleChanged,
+		this, &ElementsCollectionModel::projectNameChanged);
+	connect(project, &QETProject::projectFilePathChanged,
+		this, &ElementsCollectionModel::projectNameChanged);
 }
 
 /**
@@ -526,6 +538,10 @@ void ElementsCollectionModel::removeProject(QETProject *project)
 			   &XmlElementCollection::directoryRemoved,
 			   this,
 			   &ElementsCollectionModel::itemRemovedFromCollection);
+		disconnect(project, &QETProject::projectTitleChanged,
+			   this, &ElementsCollectionModel::projectNameChanged);
+		disconnect(project, &QETProject::projectFilePathChanged,
+			   this, &ElementsCollectionModel::projectNameChanged);
 	}
 }
 
@@ -647,7 +663,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 		if (eci->type() == FileElementCollectionItem::Type) {
 			if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
 
-				// ANPASSUNG: Makro-Prüfung hinzugefügt, damit das Modell den Pfad im Baum findet!
+				// Macro check added so the model finds the path in the tree
 				if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
 					(location.isCompanyCollection() && feci->isCompanyCollection()) ||
 					(location.isMacrosCollection() && feci->isMacrosCollection()) ||
@@ -765,4 +781,16 @@ void ElementsCollectionModel::updateItem(const QString& path)
 		eci->clearData();
 		eci->setUpData();
 	}
+}
+
+/**
+	@brief ElementsCollectionModel::projectNameChanged
+	Update the displayed name of the collection of project,
+	when its title or its file path changed.
+	@param project
+*/
+void ElementsCollectionModel::projectNameChanged(QETProject *project)
+{
+	if (XmlProjectElementCollectionItem *xpeci = m_project_hash.value(project))
+		xpeci->updateProjectName();
 }

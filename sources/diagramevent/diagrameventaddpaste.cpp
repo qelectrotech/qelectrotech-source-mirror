@@ -22,6 +22,7 @@
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetproject.h"
 
 #include <QSettings>
 
@@ -51,28 +52,50 @@
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 
+		//Batch the database work the same way project loading does
+		//(QETProject::readProjectXml): without this, every addItem()
+		//below emits dataBaseUpdated(), which makes each connected
+		//table model re-run its full SQL query -- ~77 queries for a
+		//typical paste, i.e. the multi-second stall on Ctrl+V.
+	auto *db = m_diagram->project() ? m_diagram->project()->dataBase() : nullptr;
+	if (db) {
+		db->blockSignals(true);
+		db->setUpdateBlocked(true);
+	}
+
 		//Load items at their original XML coordinates.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+
+	if (db) {
+		db->blockSignals(false);
+		db->setUpdateBlocked(false);
+		db->updateDB();
+	}
 	if (!m_content.count()) return;
 
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
 	if (movable.isEmpty()) return;
 
-		//Compute the top-left of all items' positions (not bounding
-		//rects) and snap to grid: this is the point that gets placed
-		//under the cursor, and the baseline moveTo() measures from.
-	QPointF top_left;
-	bool first = true;
+		//Compute the top-left of all items' actual on-screen bounding
+		//boxes (not their raw pos()) and snap to grid: this is the point
+		//that gets placed under the cursor, and the baseline moveTo()
+		//measures from. mapToScene(boundingRect()) matters here, not
+		//pos() alone: pos() is the scene location of an item's local
+		//origin, but for anything with a pivot-centered transform (a
+		//scaled or rotated image, in particular) that origin can sit far
+		//from where the item is actually drawn -- pivot + scale*(0 -
+		//pivot) is nowhere near (0, 0) once scale is well under 1. Using
+		//pos() here silently pasted content at the right *delta* from a
+		//point that wasn't actually where the content visually was,
+		//producing a constant, scale-dependent offset between the cursor
+		//and the pasted picture. Diagram::fromXml()'s own position
+		//parameter already gets this right the same way, for the same
+		//reason.
+	QRectF items_rect;
 	for (auto *item : movable) {
-		const QPointF p = item->pos();
-		if (first) {
-			top_left = p;
-			first = false;
-		} else {
-			if (p.x() < top_left.x()) top_left.setX(p.x());
-			if (p.y() < top_left.y()) top_left.setY(p.y());
-		}
+		items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 	}
+	const QPointF top_left = items_rect.topLeft();
 	QSettings settings;
 	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
 					  Diagram::xGrid).toInt();
@@ -83,35 +106,40 @@
 			qRound(p.x() / xGrid) * xGrid,
 			qRound(p.y() / yGrid) * yGrid);
 	};
-	const QPointF grid_origin = snapGrid(top_left);
+	const QPointF grid_origin = snapGrid(start_pos);
 
-		//Move the group to the cursor, rather than the cursor to the
-		//group. Both put the copy under the pointer, but warping the
-		//pointer also drags it back to the original's position, so the
-		//copy appears exactly on top of what was copied until the mouse
-		//is moved -- which is the thing pasting under the cursor was
-		//meant to avoid (issue #913). Taking the pointer away from
-		//where the user put it is also its own surprise.
-	m_group_origin = snapGrid(start_pos);
-	const QPointF offset = m_group_origin - grid_origin;
+		//Land the pasted content under the cursor immediately, rather than
+		//leaving it at the copied source's own coordinates: fromXml() above
+		//loads items at their original position purely because it doesn't
+		//know the target yet, not because that is where a paste should end
+		//up. The previous approach instead left items there and warped the
+		//OS cursor to match -- QCursor::setPos() is silently ignored by
+		//many window managers and compositors (Wayland in particular), so
+		//on any of those the warp simply never happened and the paste was
+		//left wherever it had originally been copied from, which could be
+		//anywhere on the folio -- exactly the "far from the cursor" bug.
+	const QPointF initial_delta = grid_origin - snapGrid(top_left);
+	for (auto *item : movable) {
+		item->setPos(item->pos() + initial_delta);
+	}
 
-		//Store each item's position after the move. moveTo() applies a
+		//Store each item's now-placed position.  moveTo() applies a
 		//grid-snapped delta from the baseline to these, so items
 		//preserve their layout and move in whole grid steps.
 	for (auto *item : movable) {
-		item->setPos(item->pos() + offset);
 		m_relative_pos.insert(item, item->pos());
 	}
+	m_group_origin = grid_origin;
 
-		//The conductors were laid out against the old terminal
+		//The conductors were laid out against the original terminal
 		//positions, so re-route them before anything is drawn.
 	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
 	for (auto *conductor : conductors) {
 		conductor->updatePath();
 	}
 
-		//The baseline is known now, so moveTo() does not have to
-		//capture one from the first mouse movement.
+		//The baseline is the group's grid-snapped origin, so moveTo()
+		//does not have to capture one from the first mouse movement.
 	m_initial_cursor = m_group_origin;
 	m_baseline_captured = true;
 

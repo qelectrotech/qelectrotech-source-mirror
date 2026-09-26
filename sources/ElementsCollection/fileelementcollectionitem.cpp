@@ -162,7 +162,7 @@ QString FileElementCollectionItem::localName()
 			else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
 			else if (m_path == macrosPath)
-				setText(QObject::tr("Makros"));
+				setText(QObject::tr("Macros"));
 			else
 				setText(QObject::tr("Collection inconnue"));
 		}

@@ -18,7 +18,9 @@
 #include "conductorcreator.h"
 
 #include "../conductorautonumerotation.h"
+#include "../dataBase/projectdatabase.h"
 #include "../diagram.h"
+#include "../qetproject.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
@@ -68,6 +70,15 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	
 	for(Conductor *c : c_list) {
 		c->refreshText();
+			//refreshText() resolves an auto-numbering formula into
+			//properties.text without emitting propertiesChange, which is
+			//what the project database listens to. The row was inserted
+			//while text was still the raw formula ("W%sequ_1"), so without
+			//this the wiring list and BOM read the formula, not "W1",
+			//until something forces a full rebuild.
+		if (d->project() && d->project()->dataBase()) {
+			d->project()->dataBase()->updateConductor(c);
+		}
 	}
 }
 

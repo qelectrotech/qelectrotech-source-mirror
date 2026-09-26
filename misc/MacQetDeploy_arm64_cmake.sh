@@ -99,11 +99,14 @@ fi
 
 cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
     -DQT_VERSION_MAJOR=$QT_MAJOR \
     -DBUILD_WITH_KF=$BUILD_WITH_KF \
     -DBUILD_KF=OFF \
     -DQET_EXPORT_PROJECT_DB=ON \
-    -DPACKAGE_TESTS=OFF
+    -DPACKAGE_TESTS=OFF \
+    -DQET_ENABLE_SPACEMOUSE=ON \
+    -DQET_SPACEMOUSE_BACKEND=hid 
 
 if [ $? -ne 0 ]; then
     echo "ERROR: cmake configure failed."
@@ -256,6 +259,7 @@ echo "Install Info.plist and app icon:"
 cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
 cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion 14.0.0" "$BUNDLE/Contents/Info.plist"
 
 ### add missing files ###############################################
 echo
@@ -396,10 +400,12 @@ done
 
 echo "-- Signing main executable..."
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$BUNDLE/Contents/MacOS/$APPNAME"
 
 echo "-- Signing bundle..."
-codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" "$BUNDLE"
 
 echo
 echo "Verifying bundle signature..."
@@ -500,8 +506,10 @@ find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" 
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE"
 
 echo "Verifying bundle signature inside DMG..."

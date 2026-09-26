@@ -23,6 +23,8 @@
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
+#include "../../textgrid.h"
+#include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QSettings>
@@ -67,6 +69,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+	for (const qreal divisor : TextGrid::divisors)
+		ui->DiagramEditor_textGrid_cb->addItem(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"),
+					divisor);
+	int text_grid_index = ui->DiagramEditor_textGrid_cb->findData(
+				settings.value(TextGrid::settings_key, 1).toReal());
+	if (text_grid_index < 0)
+		text_grid_index = ui->DiagramEditor_textGrid_cb->findData(qreal(1));
+	ui->DiagramEditor_textGrid_cb->setCurrentIndex(text_grid_index);
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
@@ -74,6 +85,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
 	ui->DiagramEditor_Grid_PointSize_max_sb->setValue(settings.value("diagrameditor/grid_pointsize_max", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	bool sysColors = ui->m_use_system_color_cb->isChecked();
+	ui->m_custom_app_color_kpb->setEnabled(!sysColors);
+	if (settings.contains("customapplicationcolor"))
+		ui->m_custom_app_color_kpb->setColor(QColor(settings.value("customapplicationcolor").toString()));
+	else
+		ui->m_custom_app_color_kpb->setColor(QApplication::palette().color(QPalette::Window));
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
@@ -82,6 +99,25 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
+	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
+#ifdef QET_HAS_SCRIPTING
+	if (QetSettings::scriptingForcedByEnvironment()) {
+			//QET_ENABLE_SCRIPTING wins over the stored value, so let the box
+			//say so rather than offer a tick that changes nothing.
+		ui->m_enable_scripting->setEnabled(false);
+		ui->m_enable_scripting->setToolTip(
+					tr("Activé par la variable d'environnement "
+					   "QET_ENABLE_SCRIPTING ; ce réglage est sans effet "
+					   "tant qu'elle est définie."));
+	}
+#else
+		//Built without Qt Qml: there is no scripting to allow. Disabled as
+		//well as hidden, so applyConf() leaves the stored value alone --
+		//a hidden box still reports its state, and writing it here would
+		//quietly clear a preference set on a build that does have Qml.
+	ui->m_enable_scripting->setVisible(false);
+	ui->m_enable_scripting->setEnabled(false);
+#endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
@@ -206,7 +242,17 @@ void GeneralConfigurationPage::applyConf()
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
 	settings.setValue("usesystemcolors", must_use_system_colors);
 	if (was_using_system_colors != must_use_system_colors) {
-		QETApp::instance()->useSystemPalette(must_use_system_colors);
+		if (must_use_system_colors) {
+			QETApp::instance()->useSystemPalette(true);
+		} else {
+			QColor custom_color = ui->m_custom_app_color_kpb->color();
+			settings.setValue("customapplicationcolor", custom_color.name());
+			QETApp::instance()->useCustomPalette(custom_color);
+		}
+	} else if (!must_use_system_colors) {
+		QColor custom_color = ui->m_custom_app_color_kpb->color();
+		settings.setValue("customapplicationcolor", custom_color.name());
+		QETApp::instance()->useCustomPalette(custom_color);
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
@@ -227,6 +273,14 @@ void GeneralConfigurationPage::applyConf()
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 
+		//SCRIPTING
+		//Left alone while the environment forces it on: the box is disabled
+		//in that case and writing its state would silently clear the user's
+		//real preference the first time this dialog is accepted.
+	if (ui->m_enable_scripting->isEnabled()) {
+		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
+	}
+
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
 
@@ -243,6 +297,7 @@ void GeneralConfigurationPage::applyConf()
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
+	settings.setValue(TextGrid::settings_key, ui->DiagramEditor_textGrid_cb->currentData());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
@@ -623,5 +678,16 @@ void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
 	}
 	ui->m_hdpi_round_label->setEnabled(checked);
 	ui->m_hdpi_round_policy_cb->setEnabled(checked);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_use_system_color_cb_toggled
+	Enable/disable the custom color picker when the system color
+	checkbox is toggled.
+	@param checked
+*/
+void GeneralConfigurationPage::on_m_use_system_color_cb_toggled(bool checked)
+{
+	ui->m_custom_app_color_kpb->setEnabled(!checked);
 }
 

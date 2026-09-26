@@ -42,7 +42,10 @@
 #include "qetinformation.h"
 #include "qetproject.h"
 #include "diagramsortkeys.h"
+#include "textgrid.h"
+#include <QTextStream>
 #include <algorithm>
+#include <climits>
 #include <cassert>
 #include <math.h>
 
@@ -98,6 +101,43 @@ namespace {
 		QString a = terminalSortKey(cond->terminal1);
 		QString b = terminalSortKey(cond->terminal2);
 		return (a <= b) ? (a + QLatin1Char('>') + b) : (b + QLatin1Char('>') + a);
+	}
+
+	/// Serialize @p items and append them to a new @p tag block of @p root,
+	/// in stacking order (@p stack_rank). items() cannot be trusted for
+	/// this: with NoIndex, the first removeItem() on the scene sorts Qt's
+	/// item list by pointer address, so from then on items() hands them over
+	/// in a per-run order (bugtracker #343). Stacking order is what reloading
+	/// the file rebuilds, so the drawing is unchanged and a resave is stable.
+	template <typename T>
+	void appendInStackingOrder(QDomDocument &document, QDomElement &root,
+							   const QString &tag, const QVector<T *> &items,
+							   const QHash<const QGraphicsItem *, int> &stack_rank)
+	{
+		if (items.isEmpty())
+			return;
+		struct Entry { int rank; QString xml_text; QDomElement xml; };
+		QVector<Entry> sorted;
+		for (T *item : items) {
+			Entry entry{stack_rank.value(item, INT_MAX), QString(),
+						item->toXml(document)};
+				// Only an item the stacking query missed needs a tiebreak.
+			if (entry.rank == INT_MAX) {
+				QTextStream stream(&entry.xml_text);
+				entry.xml.save(stream, 0);
+			}
+			sorted.append(entry);
+		}
+		std::stable_sort(sorted.begin(), sorted.end(),
+			[](const Entry &a, const Entry &b) {
+				return a.rank != b.rank ? a.rank < b.rank
+										: a.xml_text < b.xml_text;
+			});
+
+		auto block = document.createElement(tag);
+		for (const auto &entry : sorted)
+			block.appendChild(entry.xml);
+		root.appendChild(block);
 	}
 }
 
@@ -1223,37 +1263,20 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		dom_root.appendChild(dom_conductors);
 	}
 
-	if (!list_texts.isEmpty()) {
-		auto dom_texts = document.createElement(QStringLiteral("inputs"));
-		for (auto dti : list_texts) {
-			dom_texts.appendChild(dti->toXml(document));
-		}
-		dom_root.appendChild(dom_texts);
+		// A rect query, unlike items(), returns true stacking order (z, then
+		// insertion order) even with NoIndex.
+	QHash<const QGraphicsItem *, int> stack_rank;
+	{
+		const QList<QGraphicsItem *> stacked = items(
+					QRectF(-1e9, -1e9, 2e9, 2e9), Qt::IntersectsItemBoundingRect,
+					Qt::AscendingOrder);
+		for (int i = 0 ; i < stacked.size() ; ++i)
+			stack_rank.insert(stacked.at(i), i);
 	}
-
-	if (!list_images.isEmpty()) {
-		auto dom_images = document.createElement(QStringLiteral("images"));
-		for (auto dii : list_images) {
-			dom_images.appendChild(dii->toXml(document));
-		}
-		dom_root.appendChild(dom_images);
-	}
-
-	if (!list_shapes.isEmpty()) {
-		auto dom_shapes = document.createElement(QStringLiteral("shapes"));
-		for (auto dii : list_shapes) {
-			dom_shapes.appendChild(dii -> toXml(document));
-		}
-		dom_root.appendChild(dom_shapes);
-	}
-
-	if (table_vector.size()) {
-		auto tables = document.createElement(QStringLiteral("tables"));
-		for (auto table : table_vector) {
-			tables.appendChild(table->toXml(document));
-		}
-		dom_root.appendChild(tables);
-	}
+	appendInStackingOrder(document, dom_root, QStringLiteral("inputs"), list_texts, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("images"), list_images, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("shapes"), list_shapes, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("tables"), table_vector, stack_rank);
 
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
@@ -2660,6 +2683,29 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	int p_x = qRound(p.x() / xGrid) * xGrid;
 	int p_y = qRound(p.y() / yGrid) * yGrid;
 	return (QPointF(p_x, p_y));
+}
+
+/**
+	@brief Diagram::snapToTextGrid
+	Return the nearest point of p on the text grid, see TextGrid.
+	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	@param p point to find the nearest snapped point
+	@return
+*/
+QPointF Diagram::snapToTextGrid(const QPointF &p)
+{
+	QSettings settings;
+	const qreal divisor =
+		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+			? 0
+			: settings.value(TextGrid::settings_key, 1).toReal();
+
+	return TextGrid::snap(p,
+						  settings.value(QStringLiteral("diagrameditor/Xgrid"),
+										 Diagram::xGrid).toInt(),
+						  settings.value(QStringLiteral("diagrameditor/Ygrid"),
+										 Diagram::yGrid).toInt(),
+						  divisor);
 }
 
 

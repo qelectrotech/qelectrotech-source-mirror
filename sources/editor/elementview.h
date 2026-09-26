@@ -41,6 +41,7 @@ class ElementView : public QGraphicsView {
 	ElementScene *scene() const;
 	void setScene(ElementScene *);
 	QRectF viewedSceneRect() const;
+	void zoom(qreal zoom_factor);
 	
 	protected:
 	void mousePressEvent(QMouseEvent *) override;

@@ -1,0 +1,2260 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="cs">
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Kontakty: NO: %1, NC: %2, přepínací: %3, ostatní: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Kontakty: NO: %1/%2, NC: %3/%4, přepínací: %5/%6, ostatní: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl během tažení = volná poloha, bez přichycení k mřížce)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(již použito)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : režim %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; červený bod: tažením přesunout střed otáčení</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; tyrkysový bod: oblouk</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; okraj: náklon</target>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>mm</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Kliknutí: režim %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 h %2 min</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(již přiřazeno)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(počet kontaktů neodpovídá)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(podtyp neodpovídá)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(stav neodpovídá)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = vytvořit úchytky</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = oddělit na křivku</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (obrazovka)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (tisk)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (vysoká kvalita)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Chyba&lt;/b&gt;:&lt;br&gt;Definice vodiče může mít pouze jednu svorku.&lt;br&gt;&lt;b&gt;Řešení&lt;/b&gt;:&lt;br&gt;Zkontrolujte, že prvek má pouze jednu svorku</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Akce</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Adresa</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>Adresa PLC</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Zobrazí nebo skryje vodicí linky</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Zobrazit výchozí mřížku (použije se při příštím spuštění)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Zobrazit název</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Zobrazit záhlaví na listu</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Zobrazit vodicí linky</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Zobrazit výchozí vodicí linky (použije se při příštím spuštění)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Zobrazit čísla svorek v křížových odkazech</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Zobrazit nebo skrýt záhlaví sloupců tabulky PLC na listu</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Zobrazit/skrýt rámeček popisku</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Zobrazit/skrýt název svorky</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Přidá Bézierovu křivku na aktuální list</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Přidá stránku PDF na aktuální list</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Přidat</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Přidat list</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Přidat PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Přidat bod ke křivce</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Přidat křivku</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Přidat vlastní vlastnost</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Zarovnání</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Alfabetické</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Alfanumerické (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Úhel</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Hranatý</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Zrušit</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Náhled</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Náhled:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Zaoblit rohy %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Přejít na prvek</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Pozor: součet relativních šířek přesahuje 100%% celkové šířky, tomuto vzoru rámečku nemůže vyhovět žádná šířka.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Pozor: sloupce s pevnou šířkou se nevejdou do zbývající šířky, tomuto vzoru rámečku nemůže vyhovět žádná šířka.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Pouze přiřazené</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Žádné</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Automat (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Automaty (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Automatické číslování svorek</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Automatické číslování</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Jiný</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>UPOZORNĚNÍ:
+Jakákoli jiná hodnota než „Žádné zaokrouhlení“ může způsobit chyby ve vykreslení projektu v závislosti na:
+
+1 - zvolené hodnotě 
+2 - DPI obrazovky 
+3 - úpravě projektu na jiném počítači a/nebo obrazovce s odlišnými parametry bodů 1 a 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Upozornění — Import souboru EPLAN (.edz)</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Svorka 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Svorka 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Svorky</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Svorkovnice</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Nelze číst %1</target>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Kategorie</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Tento formát nepodporuje průhlednost: obrázek bude uložen tak, jak byl před použitím průhledné barvy. Pokračovat?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Tuto zkratku používá také: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Obsahuje poslední zprávy protokolování z této relace. Před přiložením k veřejnému hlášení o chybě zkontrolujte obsah.</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Tento prvek je již propojen</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Tato funkce očísluje svorky projektu podle jejich polohy. Prázdné nebo uzamčené svorky jsou ignorovány. Označení svorek musí být předem nastaveno takto: &apos;-X:AB&apos;. Část před dvojtečkou (svorkovnice) může být pojmenována libovolně. &apos;AB&apos; může být složeno z číslic nebo písmen."</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Textové pole</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Cesta k uživatelským makrům</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Zvolte umístění, do kterého chcete šablonu uložit.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Kliknutí: umístit v původní velikosti. Tažení: umístit a změnit velikost. Pravé kliknutí: otočit o 90°. Ctrl+kolečko: upravit velikost.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Levé kliknutí: další bod; dvojité kliknutí nebo Enter: dokončit; pravé kliknutí: zrušit poslední bod</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Levé kliknutí: umístit protilehlý roh (Shift = čtverec, Ctrl = ze středu + volná poloha, Ctrl+Shift = čtverec se středem) ; pravé kliknutí: zrušit</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Levé kliknutí: umístit protilehlý roh (Shift = kružnice, Ctrl = ze středu + volná poloha, Ctrl+Shift = kružnice se středem) ; pravé kliknutí: zrušit</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Levé kliknutí: umístit počáteční bod (Ctrl = volná poloha)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Levé kliknutí: umístit koncový bod (Ctrl = volná poloha); pravé kliknutí: zrušit</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Levé kliknutí: umístit první roh (Ctrl = středový bod, volná poloha)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Levé kliknutí: umístit první bod (Ctrl = volná poloha)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Kliknutí: lomený bod. Tažení: křivkový bod. Kliknutí na první bod: uzavřít. Esc/Enter: dokončit. Pravé kliknutí: zrušit poslední bod.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Kliknout</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Kliknutí: režim %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Kliknutím vyberte barvu</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Kliknutím na obrázek přidáte barvu. Tolerance každé barvy upravte jejím posuvníkem, nebo kliknutím na × ji odeberte.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Kliknutím na obrázek zvolte barvu</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Zaoblené rohy</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Kolekce</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Vložit ze schránky</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Komentář</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>Komentář PLC</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Společný (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Komponenta 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Komponenta 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>Konfigurace PLC</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Nastavit písmo záhlaví sloupců</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Nastavit písmo textu v buňkách</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Pouze konflikty</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Připojit</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Kontakt</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Kontakty</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Převést %1 na Bézierovu křivku</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Převést %1 na křivku</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Převést na Bézierovu křivku</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Převést na křivku</target>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Kopírovat a vložit</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Korejština</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Nelze vytvořit dočasný adresář: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Barva</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Barva :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Barva vodiče</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Barva průhlednosti</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Průhledná barva...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Automaticky přerušit stávající vodiče při umístění prvku</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Automatické přerušení vodičů</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Jmenovitý proud</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Vytvořit šablonu</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Vytvořit záložní kopii?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Cyklické (modulo)</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Přesunout střed otáčení</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Kreslit názvy svorek</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Vzdálenost v pixelech mezi štítkem a křížovým odkazem podřízeného</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Vzdálenost štítku - podřízený:</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Zrušte zaškrtnutí svorkovnic, jejichž číslování má být vyloučeno</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Nastavit maximální počet podřízených prvků</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Nastavit podřízené prvky</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Nastavit průhlednou barvu</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Definice vodiče</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Deformovat křivku</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Odpojit</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Přesunout střed otáčení obrázku</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Přesunout označení svorky</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Přesunout listy</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Přesunout list</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Odemčeno: šířku a výšku lze měnit nezávisle. Kliknutím uzamknete.</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Orámovat text</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Uložit původní obrázek jako...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Uložit obrázek jako...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Uložit diagnostický protokol</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Uložit diagnostický protokol...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Uložit šablonu</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Uložit...</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Analogový vstup</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Digitální vstup</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Univerzální vstup</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Chyba</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>Podřízený prvek PLC</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Vyloučit z kusovníku</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Vyloučit z automatického číslování</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Export úspěšný</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Exportovat do SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Exportovat plán zapojení</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Otočit %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Otočit obrázek</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Tažením úchytů nebo vnitřku rámečku upravte oblast, která má zůstat zachována.</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>Soubory CSV (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>Soubory PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Textové soubory (*.txt);;Všechny soubory (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Vodič</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Soubor nenalezen: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Filtrovat klávesové zkratky…</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Jemné otočení</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Flip</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>List</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Funkce</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>Funkce PLC</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Experimentální funkce</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Formát zobrazení: posloupnost nul udává minimální počet číslic (00 = 07, 000 = 007). Prázdné = přirozená šířka typu.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Uzavřený tvar</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Tažením %1: otočení (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Tažení: upravit oblouk (Ctrl = volná poloha, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Tažení: zaoblit rohy (Ctrl = volná poloha)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Tažení: deformovat křivku (Ctrl = volná poloha, Alt = přerušit tečnu)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Tažení: přesunout tento bod</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Tažení: přesunout střed otáčení</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Tažení: přesunout bod (Ctrl = volná poloha</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Tažení: náklon (Ctrl = volná poloha, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Tažení: naklonit (Shift = po krocích 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Tažení: otočit (Shift = po krocích 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Tažení: změnit velikost (Ctrl = ze středu + volná poloha, Shift = zachovat poměr</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Tažení: změnit velikost (Shift = zachovat poměr stran, Ctrl = ze středu)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Tažení: přesunout střed otáčení (Ctrl = volná poloha)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Tažení: otočení (Ctrl = volná poloha, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Tažením fialového bodu: zaoblit rohy</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Tažení rohu: otočit (Shift = po krocích 15°) ; tažení okraje: naklonit (Shift = po krocích 15°) ; červený bod: přesunout střed otáčení</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Tažení rohu/okraje: změnit velikost (Ctrl = ze středu, Shift = zachovat poměr stran)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Tažením rohu/okraje: změnit velikost (Ctrl = ze středu, Shift = zachovat poměr, Alt = oddělit na křivku)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Tažením bodu: přesunout</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Tažením koncového bodu: přesunout</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Tažením úchytu nebo křivky: deformovat (Alt = přerušit tečnu) ; Alt+tažení hranatého bodu: vytvořit úchytky ; kliknutí pravým tlačítkem: nabídka nejbližšího uzlu</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>go one page left</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>go one page right</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Vodicí linky</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Vytvoří protokol s posledními zprávami protokolování, který lze přiložit k hlášení chyby</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Obecné</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Geometrie</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>Výška řádku:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Výška</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Vodorovně</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Obrázek BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Obrázkové soubory (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Obrázek JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Obrázek PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Zdrojový obrázek</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Obrázek SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Obrázky nejsou zahrnuty do exportu DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>Import EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Importovat</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Importovat díl EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Importovat díl EPLAN (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Obrázek nelze uložit na toto místo.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Nelze uložit kusovník do %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>Šablonu „%1“ nelze uložit.</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Tento díl nelze importovat:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Nelze otevřít soubor pro zápis.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>Nelze zapisovat do souboru „%1“.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Obrázek nelze načíst.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>Soubor PDF nelze načíst.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>Velikost stránky PDF nelze určit.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Nelze načíst strukturu projektu v paměti.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>Stránku PDF nelze vykreslit.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Sklon X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Sklon Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Naklonit %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Naklonit obrázek</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Neznámý</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Přírůstek</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Přírůstek: hodnota přičtená k čítači při každém novém číslování</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Zapsat informace o součástkách</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Vložit list nad</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Vložit list pod</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Přepínač</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Dostupné IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Přečetl jsem si tyto podmínky a souhlasím s nimi.</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Bylo dosaženo limitu nastaveného pro tento hlavní prvek (Limit: %1).
+
+Přejete si přesto tento pomocný kontakt propojit?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Odstranění nelze provést, protože výběr obsahuje jednu nebo více svorek propojených můstkem a/nebo patřících k víceúrovňové svorce.
+Odstraňte můstky a/nebo úrovně příslušných svorek, abyste je mohli odstranit</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Označení</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Šířka</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Soubor nebylo možné zapsat.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>Soubor PDF neobsahuje žádnou stránku.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>Soubor „%1“ chybí nebo je nečitelný: přeložený název této složky nebylo možné přečíst, místo něj se zobrazuje název složky.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>Formát .edz může pocházet ze dvou různých zdrojů:
+
+• Portál EPLAN Data Portal (dataportal.eplan.com), podléhající podmínkám použití prostředí EPLAN Cloud;
+• Web výrobce součástek (nebo distributora), který své soubory .edz poskytuje přímo, podle vlastních podmínek.
+
+QElectroTech nemůže automaticky určit původ importovaného souboru ani podmínky, které se na něj vztahují.
+
+Importem tohoto souboru potvrzujete, že:
+
+• znáte jeho původ a jste oprávněni jej v tomto kontextu použít s ohledem na podmínky platné pro daný zdroj;
+• tento import provádíte na vlastní riziko a odpovědnost;
+• ani QElectroTech, ani jeho správci, ani přispěvatelé nemohou být odpovědni za použití těchto dat v rozporu s podmínkami.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Zde použitý formát DXF (AC1006) neumožňuje zahrnout obrázky. Obrázky budou znázorněny pouze obdélníkem obrysu (poloha, velikost, otočení a sklon zůstávají zachovány), bez obsahu obrázku.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Šablona byla úspěšně uložena pod:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>Název „%1“ není platný: nesmí obsahovat následující znaky: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Nový prvek definuje skupiny podřízených kontaktů.
+Existující podřízené prvky nebudou automaticky přiřazeny. Budete muset ručně propojit podřízené prvky a přiřadit skupiny kontaktů.
+
+Chcete pokračovat?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Plán zapojení byl úspěšně exportován!</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Šablona již existuje. Přejete si ji přepsat?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Pouze malá písmena, číslice, pomlčka a podtržítko</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Hladký</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Seznam zapojení</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Seznam zapojení (databáze)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Propojeno s: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Délka</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Maximální délka</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Maximální délka: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Délka neomezena.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Makra</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Nastavte na 0 pro číslici, která se posouvá pouze přenosem následující cyklické číslice (např. „0“ v „0.7“)</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Vodorovné zrcadlení</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Vodorovné zrcadlení obrázku</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Vodorovné zrcadlení %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Zrcadlení není možné: náklon je pro tento tvar příliš extrémní</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Svislé zrcadlení</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Svislé zrcadlení obrázku</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Svislé zrcadlení %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Mirror</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>mod.</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Změnit zarovnání textového pole</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Změnit zarovnání popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Změnit úhel oblouku</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Změnit úhel tvaru</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Změnit úhel obrázku</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Změnit sklon obrázku</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Změnit index označení hlavního prvku</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Změnit označení hlavního prvku</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Změnit barvu popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Změnit zakřivení %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Změnit tvar %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Změnit výšku obrázku</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Změnit šířku obrázku</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Změnit délku čáry</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Změnit písmo popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Změnit polohu popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Změnit otočení popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Změnit velikost tvaru</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Změnit velikost písma popisku</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Změnit název svorky</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Změnit bod otáčení textového pole</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Změnit typ uzlu</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Upravit obrázek</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>Modul PLC</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Šablona</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Šablona uložena</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Šablony</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Počet</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>Počet svorek</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>Počet kontaktů</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>V souboru .edz nebyl nalezen žádný *.part.xml</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Název souboru prvku</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Název souboru prvku: pouze číslice, malá písmena, „-“, „_“ a „.“.
+Zobrazovaný název prvku se mění samostatně ve vlastnostech prvku.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Název svorky</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Název nové šablony</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Vlastní název sloupce (prázdné = výchozí)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Název, označení nebo informace o prvku…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>nazev_vlastnosti</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Nesprávný počet svorek</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Počet použitých pomocných kontaktů: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Bylo dosaženo maximálního počtu pomocných kontaktů.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Maximální počet definovaných pomocných kontaktů: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Maximální počet definovaných pomocných kontaktů: nedefinováno
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Ne</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Pouze nepřiřazené</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Normálně zavřený</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Normálně otevřený</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Neplatný balíček .edz (nerozpoznaný formát archivu).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Poznámky</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Pouze číselné (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Automatické číslování svorek</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Automaticky očíslovat vodič</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Automaticky očíslovat prvek</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Číslovat také písmena</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Nejbližší uzel</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Orientace</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Vertikální počátek</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Ano</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Stránka</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Stránka k importu:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Panel prvků</target>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Otočí výběr jako skupinu kolem jeho středu namísto každého prvku na místě</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Otočit skupinu</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>otočit/naklonit</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>Díly EPLAN (*.edz)</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Bod ukotvení textu a zarovnání řádků mezi sebou</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Písmo</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Písmo:</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Písmo záhlaví</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Písmo záhlaví sloupců</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Písmo záhlaví: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Písmo textu</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Písmo textu buněk</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Písmo textu: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Písma projektu</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Poloha</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Priorita os</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Priorita osy X (horizontální)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Priorita osy Y (vertikální)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Další hodnota, která bude použita s tímto přírůstkem</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Hloubka</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Vlastnosti textu</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Výkonový</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech se při posledním spuštění správně neukončil.
+Zde jsou poslední zprávy zaznamenané před ukončením -- můžete je uložit a přiložit k hlášení o chybě.</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Klávesová zkratka</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Klávesové zkratky</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Hlášení o diagnostice</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Hlášení o selhání</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Poloměr X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Poloměr Y</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Hledání</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Rychle vyhledá a vybere prvek na listu</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Hledat...</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>změnit velikost</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Změnit velikost %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Změnit velikost obrázku</target>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Poznámka: hlavní prvky, které dosáhly maximálního počtu pomocných kontaktů, jsou skryty.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Nahradit obrázek...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Nahradit obrázek</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Převzít z předlohy</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Obnovit poměr stran</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Obnovit poměr stran obrázku</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Odebrat tuto barvu</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Návrat k celému obrázku bez oříznutí</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Oříznout obrázek</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Oříznout obrázek</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Oříznout...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Otočení :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Otočení/Náklon</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Ozn.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Křížový odkaz</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>Křížový odkaz PLC</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Křížový odkaz</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Obnovit</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Obnovit tuto zkratku</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Obnovit na počáteční hodnotu</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Adresář uživatelských maker</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Rozlišení:</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Zalomení %1 po:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Průřez vodiče</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Vybrat obrázek...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Jednoduchý</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Analogový výstup</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Digitální výstup</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Univerzální výstup</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Přejete si vytvořit záložní kopii?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Podtyp</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Další</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Sledovat čas strávený na tomto projektu (ukládá se pouze lokálně v tomto souboru)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Svorku nelze odstranit</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Odebrat</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Odstranit %1 listů</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Odstranit tuto vlastnost</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Odstranit nejbližší uzel</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Odstranit listy</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Odstranit list</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Odstranit bod z křivky</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Symetrický</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Systém kontaktů změněn</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Vybrat soubor PDF...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Vybrat skupinu kontaktů</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Vybrat IO PLC</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Vybrat stránku</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Vyberte skupinu kontaktů, která má být přiřazena tomuto podřízenému prvku:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Oddělení potenciálu</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>Tabulka PLC</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>Tabulka PLC (prázdná)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Velikost</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Velikost:</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>Zpožděný při vypnutí</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>Zpožděný při zapnutí</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>Zpožděný při zapnutí &amp; vypnutí</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Čas strávený na tomto projektu:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Napětí / Protokol</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Jmenovité napětí</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Text svorky</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Text záhlaví</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Tento .edz je balíček ve formátu zip, který zatím není podporován (lze importovat pouze soubory .edz ve formátu 7-Zip).</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Tolerance pro tuto barvu</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Otáčet kolem vlastního středu</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Vše</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Všechny soubory (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Obnovit vše</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Překlad do korejštiny</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Transformovat %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Průhlednost nebude zachována</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Typ</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Typ číslování</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>Typ PLC</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>oblouk</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>roh</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>bod</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>křivka</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>koncový bod</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>obrázek</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Hodnota</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Aktuální hodnota čítače. Zadejte novou hodnotu a potvrďte pro její změnu.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Hodnota, na kterou se tato číslice vrátí na 0 při inkrementaci předchozí číslice (0 = žádný cyklus)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Uzamknout automatické číslování</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Uzamknout polohu</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Uzamčeno: změna šířky nebo výšky upraví druhou hodnotu tak, aby zůstaly zachovány proporce. Kliknutím odemknete.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Svisle</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Viditelné</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Zobrazit tento prvek</target>
+</phrase>
+<phrase>
+    <source>X :</source>
+    <target>X :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>Y :</source>
+    <target>Y :</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Uložení se nezdařilo</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Export se nezdařil</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Přepsat šablonu?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Editor prvků</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Editor rámečku</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Editor schémat</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Editor textu</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Úprava uzlů</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Štítek předlohy</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Opravdu chcete tento list odstranit?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Opravdu chcete tento list odstranit z projektu?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Opravdu chcete odstranit %1 vybraných listů?</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>rozváděč</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>cívka</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>svorka</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>svorkovnice</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>kabel</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>jmenovitá hodnota</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>rámeček</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>knihovna</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>vodič</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>stykač</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>proud</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>jistič</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>složka</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>prvek</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>pomocný</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>pojistka</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>mřížka</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>přepínač</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>hlavní</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>šablona</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>nulový vodič</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>kusovník</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>číslování</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>fáze</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>potenciál</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>projekt</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>relé</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>odkaz na list</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>označení</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>odkaz na list</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>schema</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>průřez</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>souhrn</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>napětí</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>zem</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>text</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>transformátor</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

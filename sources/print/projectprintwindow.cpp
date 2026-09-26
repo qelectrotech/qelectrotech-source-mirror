@@ -874,6 +874,7 @@ void ProjectPrintWindow::print()
 			// Convert URI link annotations into native internal GoTo/FitR
 			// actions so cross-references jump inside the document.
 			PdfLinks::convertUriToGoTo(pdfFile);
+			PdfLinks::removeUnusedPdfxNamespace(pdfFile);
 
 			this->close();
 		});

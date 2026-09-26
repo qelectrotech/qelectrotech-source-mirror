@@ -17,6 +17,8 @@
 */
 #include "shortcutmanager.h"
 
+#include <QAbstractButton>
+#include <QAction>
 #include <QObject>
 #include <QSettings>
 #include <QVariant>
@@ -165,4 +167,66 @@ void ShortcutManager::resetAllToDefaults()
 	for (const QString &id : m_order) {
 		resetToDefault(id);
 	}
+}
+
+/**
+	@brief ShortcutManager::trigger
+	@param id
+	@return see the declaration's doc comment
+*/
+bool ShortcutManager::trigger(const QString &id) const
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return false;
+	}
+
+	for (const QPointer<QObject> &target : qAsConst(it->targets))
+	{
+		if (!target) {
+			continue;
+		}
+		if (auto *action = qobject_cast<QAction *>(target.data())) {
+			action->trigger();
+			return true;
+		}
+		if (auto *button = qobject_cast<QAbstractButton *>(target.data())) {
+			button->click();
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@return the QAction registered under @a id that belongs to @a owner --
+	that is, has @a owner among its ancestors -- or nullptr. Several windows
+	of the same kind each register their own action under one id, so a
+	window asking for "its" action has to say which window it is.
+	@param id
+	@param owner : the window, or nullptr for the first live action
+*/
+QAction *ShortcutManager::action(const QString &id, const QObject *owner) const
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return nullptr;
+	}
+
+	for (const QPointer<QObject> &target : qAsConst(it->targets))
+	{
+		auto *action = qobject_cast<QAction *>(target.data());
+		if (!action) {
+			continue;
+		}
+		if (!owner) {
+			return action;
+		}
+		for (const QObject *o = action->parent(); o; o = o->parent()) {
+			if (o == owner) {
+				return action;
+			}
+		}
+	}
+	return nullptr;
 }

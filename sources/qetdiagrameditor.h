@@ -28,6 +28,8 @@
 #include <QSignalMapper>
 #include <QUndoGroup>
 
+class QToolButton;
+
 class QMdiSubWindow;
 class QETProject;
 class QETResult;
@@ -43,6 +45,7 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
 
@@ -164,6 +167,7 @@ class QETDiagramEditor : public QETMainWindow
 		void subWindowActivated(QMdiSubWindow *subWindows);
 
 	private slots:
+		void updateTextGridButton();
 		void selectionChanged();
 
 	public:
@@ -177,6 +181,10 @@ class QETDiagramEditor : public QETMainWindow
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
 		m_selection_actions_group,  ///Action related to edit a selected item
 		*m_depth_action_group = nullptr;
+
+		QMenu
+		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
+		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
 	
 	private:
 		QActionGroup
@@ -199,10 +207,14 @@ class QETDiagramEditor : public QETMainWindow
 		*undo,				///< Cancel the latest action
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
+		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
+		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
+		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
@@ -242,6 +254,8 @@ class QETDiagramEditor : public QETMainWindow
 		ConductorColorToolButton *m_conductor_color_button = nullptr;
 		///< Diagram background color picker, in the "Affichage" toolbar
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
+		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QToolButton *m_text_grid_button = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 
@@ -256,6 +270,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		QAction *m_command_search = nullptr;
+		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;

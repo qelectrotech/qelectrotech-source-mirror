@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "cellruler.h"
 #include "lastusedstyle.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
@@ -29,6 +30,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "ui/diagrampropertiesdialog.h"
 #include "ui/multipastedialog.h"
@@ -43,6 +45,7 @@
 #include <QDropEvent>
 #include <QPainter>
 #include <QPointer>
+#include <algorithm>
 
 /**
 	Constructeur
@@ -106,6 +109,14 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
 	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
 	connect(diagram, &Diagram::findElementRequired, this, &DiagramView::findElementRequired);
+
+	m_top_ruler = new CellRuler(Qt::Horizontal, this);
+	m_side_ruler = new CellRuler(Qt::Vertical, this);
+	m_cell_rulers_shown = QSettings().value("diagrameditor/cell_rulers", false).toBool();
+	m_cell_lines_shown = QSettings().value("diagrameditor/cell_lines", false).toBool();
+	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::borderChanged, this, &DiagramView::updateCellRulers);
+	connect(&m_diagram->border_and_titleblock, &BorderTitleBlock::displayChanged, this, &DiagramView::updateCellRulers);
+	updateCellRulers();
 
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
 	connect(edit_conductor_color_shortcut, &QShortcut::activated, [this]()
@@ -386,6 +397,23 @@ void DiagramView::zoomReset()
 }
 
 /**
+	@brief DiagramView::zoomToRect
+	Adjust zoom to fit \a rect, in scene coordinate, in the view.
+	@param rect
+*/
+void DiagramView::zoomToRect(const QRectF &rect)
+{
+	fitInView(rect, Qt::KeepAspectRatio);
+		//Zooming in makes the scroll bars appear, which resizes the viewport
+		//from a queued call; that resize is anchored under the mouse and
+		//would scroll away from rect, so center again once it has run.
+	QMetaObject::invokeMethod(this, [this, rect]() {
+		centerOn(rect.center());
+	}, Qt::QueuedConnection);
+	adjustGridToZoom();
+}
+
+/**
 	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
 	Copies the selected elements from the diagram to the clipboard and then deletes them
 */
@@ -443,6 +471,82 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 void DiagramView::pasteHere()
 {
 	paste(mapToScene(m_paste_here_pos));
+}
+
+/**
+	@brief DiagramView::duplicate
+	Copy the current selection and place the copy at @p stepOffset grid
+	steps from it, landing immediately rather than following the cursor
+	like Ctrl+V does (bugtracker #991). @p stepOffset comes from
+	DuplicateOffsetDialog: (1, 0) is one grid step right, (0, -1) is one
+	grid step up, and so on -- QET's own scene axes, X right and Y down.
+
+	No interactive placement step on purpose: the point of a duplicate
+	shortcut is unattended, repeatable stamping (configure the offset
+	once, then tap Ctrl+D to lay out a row), which following the cursor
+	would interrupt on every press. QET already reselects whatever a
+	paste just added (see PasteDiagramCommand::redo()), so the next
+	Ctrl+D naturally continues from the copy just placed, not the
+	original -- a press-and-hold row falls out of that for free, with no
+	special-casing needed here for "keep going from the last one".
+
+	The offset is applied by hand rather than by asking paste()/
+	Diagram::fromXml() to place the copy at a target position. Both of
+	those feed the position through Diagram::snapToGrid(), which reads
+	QApplication::keyboardModifiers() and rounds to the nearest PIXEL
+	instead of the grid whenever Ctrl is held -- and Ctrl is always held
+	here, this action's own shortcut being Ctrl+D. Measured the hard way
+	before settling on this: routing the offset through paste() first
+	produced copies off-grid on both axes, by an amount that tracked the
+	selection's own bounding-box geometry rather than being a fixed
+	error. fromXml() is instead called with no position at all, which
+	leaves every item at its source coordinates (landing the copy
+	exactly on top of the originals -- (0, 0) is not a position, this is
+	"keep the source coordinates"), and the offset is added directly
+	with setPos(). A plain addition cannot be off by a rounding rule
+	that never runs.
+
+	Conductors are not in the translated set: fromXml() itself does not
+	reposition them either -- they are loaded from XML after elements
+	are already in their final place and take their geometry from their
+	terminals, which have already moved with the elements that own
+	them. Likewise dynamic element texts are not translated separately:
+	they are children of their element and move with it under Qt's
+	normal parent-child transform.
+*/
+void DiagramView::duplicate(const QPoint &stepOffset)
+{
+	if (!isInteractive() || m_diagram->isReadOnly()) return;
+
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	if (selection.isEmpty()) return;
+
+	QSettings settings;
+	const int x_grid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
+									  Diagram::xGrid).toInt();
+	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
+									  Diagram::yGrid).toInt();
+	const QPointF offset(stepOffset.x() * x_grid, stepOffset.y() * y_grid);
+
+	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
+	// should not clobber whatever the user last copied with Ctrl+C.
+	QDomDocument document = m_diagram->toXml(false, true);
+
+	DiagramContent pasted;
+	// No position argument -- see the function comment above for why
+	// the offset is not passed here.
+	m_diagram->fromXml(document, QPointF(), false, &pasted);
+	if (!pasted.count()) return;
+
+	const int movable = DiagramContent::Elements | DiagramContent::TextFields
+					   | DiagramContent::Images | DiagramContent::Shapes
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+	for (QGraphicsItem *item : pasted.items(movable))
+		item->setPos(item->pos() + offset);
+
+	m_diagram->clearSelection();
+	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted));
+	adjustSceneRect();
 }
 
 /**
@@ -508,6 +612,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 */
 void DiagramView::mouseMoveEvent(QMouseEvent *e)
 {
+	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
@@ -1094,6 +1199,158 @@ void DiagramView::paintingInverted(bool inverted)
 }
 
 /**
+	@brief DiagramView::setCellLinesShown
+	Show or hide the lines that mark the columns and the rows of the folio
+	border across the drawing, in this view only: printing and exporting
+	never draw them.
+	@param shown
+*/
+void DiagramView::setCellLinesShown(bool shown)
+{
+	m_cell_lines_shown = shown;
+	viewport()->update();
+}
+
+/**
+	@brief DiagramView::drawBackground
+	Reimplemented from PaletteGraphicsView: over the folio background, the
+	cell lines when they are shown. Dashed and faint, so they do not read
+	as conductors, and under every item.
+	@param painter
+	@param rect
+*/
+void DiagramView::drawBackground(QPainter *painter, const QRectF &rect)
+{
+	PaletteGraphicsView::drawBackground(painter, rect);
+
+	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	if (!m_cell_lines_shown || !border.borderIsDisplayed()) {
+		return;
+	}
+
+		//Where the border draws its cells, whether or not the other
+		//header is displayed
+	const QPointF origin(Diagram::margin + border.rowsHeaderWidth(),
+			     Diagram::margin + border.columnsHeaderHeight());
+	const qreal right = origin.x() + border.columnsCount() * border.columnsWidth();
+	const qreal bottom = origin.y() + border.rowsCount() * border.rowsHeight();
+
+	QPainter *p = scenePainter(painter);
+	p->save();
+	p->setRenderHint(QPainter::Antialiasing, false);
+	QColor color = QET::Palette::gridDotColor(Diagram::background_color,
+						  invertsLightness());
+	color.setAlpha(70);
+	QPen pen(color, 1, Qt::DashLine);
+	pen.setCosmetic(true);
+	p->setPen(pen);
+
+	if (border.columnsAreDisplayed()) {
+		for (int i = 1 ; i < border.columnsCount() ; ++i) {
+			const qreal x = origin.x() + i * border.columnsWidth();
+			if (x >= rect.left() && x <= rect.right()) {
+				p->drawLine(QPointF(x, origin.y()), QPointF(x, bottom));
+			}
+		}
+	}
+	if (border.rowsAreDisplayed()) {
+		for (int i = 1 ; i < border.rowsCount() ; ++i) {
+			const qreal y = origin.y() + i * border.rowsHeight();
+			if (y >= rect.top() && y <= rect.bottom()) {
+				p->drawLine(QPointF(origin.x(), y), QPointF(right, y));
+			}
+		}
+	}
+	p->restore();
+}
+
+/**
+	@brief DiagramView::setCellRulersShown
+	Show or hide the rulers that keep the column numbers and the row
+	letters of the folio border in sight along the edges of this view.
+	@param shown
+*/
+void DiagramView::setCellRulersShown(bool shown)
+{
+	m_cell_rulers_shown = shown;
+	updateCellRulers();
+}
+
+/**
+	@brief DiagramView::updateCellRulers
+	Show each ruler when the rulers are wanted, the folio shows the
+	matching header and that header is not already wholly in sight, and
+	give it room in the margins of the view. The drawing does not move on
+	screen when a ruler comes or goes: the ruler covers or uncovers the
+	edge of the viewport, as if it lay over it.
+*/
+void DiagramView::updateCellRulers()
+{
+	const BorderTitleBlock &border = m_diagram->border_and_titleblock;
+	const QRectF in_sight = mapToScene(viewport()->rect()).boundingRect();
+	const QRectF columns = border.columnsRect();
+	const QRectF rows = border.rowsRect();
+	const bool top = m_cell_rulers_shown
+			 && border.borderIsDisplayed() && border.columnsAreDisplayed()
+			 && (columns.top() < in_sight.top() || columns.bottom() > in_sight.bottom());
+	const bool side = m_cell_rulers_shown
+			  && border.borderIsDisplayed() && border.rowsAreDisplayed()
+			  && (rows.left() < in_sight.left() || rows.right() > in_sight.right());
+	const int thickness = m_top_ruler->thickness();
+
+	m_top_ruler->setVisible(top);
+	m_side_ruler->setVisible(side);
+	m_side_ruler->setLeadingSpace(top ? thickness : 0);
+
+	const QMargins margins(side ? thickness : 0, top ? thickness : 0, 0, 0);
+	if (margins != viewportMargins()) {
+		const QPointF origin = mapToScene(viewport()->rect().center());
+		const QPoint before = viewport()->mapToGlobal(mapFromScene(origin));
+		setViewportMargins(margins);
+		const QPoint moved = viewport()->mapToGlobal(mapFromScene(origin)) - before;
+		horizontalScrollBar()->setValue(horizontalScrollBar()->value() + moved.x());
+		verticalScrollBar()->setValue(verticalScrollBar()->value() + moved.y());
+	}
+	placeCellRulers();
+	m_top_ruler->update();
+	m_side_ruler->update();
+}
+
+/**
+	@brief DiagramView::placeCellRulers
+	Lay the rulers along the top and the left edges of the viewport, the
+	side ruler covering the corner too when both are shown.
+*/
+void DiagramView::placeCellRulers()
+{
+	if (!m_top_ruler) {
+		return;
+	}
+	const QRect viewport_rect = viewport()->geometry();
+	const int thickness = m_top_ruler->thickness();
+	const int corner = m_top_ruler->isHidden() ? 0 : thickness;
+	m_top_ruler->setGeometry(viewport_rect.left(), viewport_rect.top() - thickness,
+				 viewport_rect.width(), thickness);
+	m_side_ruler->setGeometry(viewport_rect.left() - thickness, viewport_rect.top() - corner,
+				  thickness, viewport_rect.height() + corner);
+}
+
+/**
+	@brief DiagramView::viewportEvent
+	Keep the rulers along the viewport when it resizes, which it also does
+	without the view resizing, when the scroll bars come and go.
+	@param event
+	@return what QGraphicsView::viewportEvent() returns
+*/
+bool DiagramView::viewportEvent(QEvent *event)
+{
+	if (event->type() == QEvent::Resize) {
+		placeCellRulers();
+	}
+	return PaletteGraphicsView::viewportEvent(event);
+}
+
+/**
 	@brief DiagramView::paintEvent
 	Reimplemented from QGraphicsView
 	@param event
@@ -1101,6 +1358,19 @@ void DiagramView::paintingInverted(bool inverted)
 void DiagramView::paintEvent(QPaintEvent *event)
 {
 	PaletteGraphicsView::paintEvent(event);
+
+		//Scrolling and zooming both repaint the viewport: follow them.
+		//Showing or hiding a ruler resizes the viewport, which cannot be
+		//done while it paints.
+	if (viewportTransform() != m_rulers_transform) {
+		m_rulers_transform = viewportTransform();
+		m_top_ruler->update();
+		m_side_ruler->update();
+		if (m_cell_rulers_shown) {
+			QMetaObject::invokeMethod(this, &DiagramView::updateCellRulers,
+						  Qt::QueuedConnection);
+		}
+	}
 
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
 	{
@@ -1222,10 +1492,15 @@ QList<QAction *> DiagramView::contextMenuActions() const
 	{
 		if (m_diagram->selectedItems().isEmpty())
 		{
+				//Drawing comes first. The row and column actions change
+				//the folio's layout and are rarely wanted, so they sit one
+				//level down where a stray click cannot reach them.
 			list << m_paste_here;
 			list << m_separators.at(0);
+			list << qde->m_add_item_menu->menuAction();
+			list << m_separators.at(1);
 			list << qde->m_edit_diagram_properties;
-			list << qde->m_row_column_actions_group.actions();
+			list << qde->m_row_column_menu->menuAction();
 		}
 		else
 		{
@@ -1241,11 +1516,19 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_depth_action_group->actions();
 		}
 
-			//Remove from the context menu the actions which are disabled.
+			//Remove from the context menu the actions which are disabled,
+			//and the submenus in which every action is disabled.
 		const QList<QAction *> actions = list;
 		for(QAction *action : actions)
 		{
-			if (!action->isEnabled()) {
+			bool usable = action->isEnabled();
+			if (usable && action->menu())
+			{
+				const QList<QAction *> sub_actions = action->menu()->actions();
+				usable = std::any_of(sub_actions.cbegin(), sub_actions.cend(),
+									 [](QAction *a) { return a->isEnabled(); });
+			}
+			if (!usable) {
 				list.removeAll(action);
 			}
 		}
@@ -1401,7 +1684,7 @@ void DiagramView::createTemplateFromSelection()
 
 				collection_node.appendChild(collection_elmt);
 			} else {
-				qDebug() << "Warnung: Konnte XML-Definition für" << old_type << "nicht laden.";
+				qDebug() << "Warning: could not load XML definition for" << old_type;
 			}
 		}
 	}

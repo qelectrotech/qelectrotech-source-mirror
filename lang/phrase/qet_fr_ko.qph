@@ -1,0 +1,2729 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="ko">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; 이동</target>
+</phrase>
+<phrase>
+    <source>
+Couleur du conducteur : %1</source>
+    <target>
+도체 색상: %1</target>
+</phrase>
+<phrase>
+    <source>
+Fonction : %1</source>
+    <target>
+기능: %1</target>
+</phrase>
+<phrase>
+    <source>
+Numéro : %1</source>
+    <target>
+번호: %1</target>
+</phrase>
+<phrase>
+    <source>
+Section du conducteur : %1</source>
+    <target>
+도체 단면적: %1</target>
+</phrase>
+<phrase>
+    <source>
+Tension/protocole : %1</source>
+    <target>
+전압/프로토콜: %1</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>접점: NO: %1, NC: %2, 전환: %3, 기타: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>접점: NO: %1/%2, NC: %3/%4, 전환: %5/%6, 기타: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
+</source>
+    <target>--common-elements-dir=DIR     요소 컬렉션 폴더 지정
+</target>
+</phrase>
+<phrase>
+    <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
+</source>
+    <target>--common-tbt-dir=DIR          표제란 템플릿 컬렉션 폴더 지정
+</target>
+</phrase>
+<phrase>
+    <source>  --config-dir=DIR              Definir le dossier de configuration
+</source>
+    <target>--config-dir=DIR              설정 폴더 지정
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                데이터 폴더 지정
+</target>
+</phrase>
+<phrase>
+    <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
+</source>
+    <target>--lang-dir=DIR                언어 파일이 있는 폴더 지정
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(드래그 중 Ctrl = 자유 위치, 그리드에 맞춤 없음)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(이미 사용됨)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : %2 모드</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; 빨간색 점: 드래그하여 회전 중심 재배치</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; 청록색 점: 호</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; 가장자리: 기울기</target>
+</phrase>
+<phrase>
+    <source> [options] [fichier]...
+
+</source>
+    <target>[옵션] [파일]...
+
+</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— 클릭: %1 모드</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1시간 %2분</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(이미 할당됨)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(접점 수가 일치하지 않음)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(하위 유형이 일치하지 않음)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(상태가 일치하지 않음)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = 핸들 생성</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = 폴리라인으로 분리</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ 따라서 이 문서의 전체 또는 일부를 여는 데 실패할 수 있습니다.
+어떻게 하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (화면)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (인쇄)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (고품질)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;오류&lt;/b&gt; :&lt;br&gt;도체 정의는 단자를 하나만 가질 수 있습니다.&lt;br&gt;&lt;b&gt;해결 방법&lt;/b&gt; :&lt;br&gt;요소에 단자가 하나만 있는지 확인하십시오</target>
+</phrase>
+<phrase>
+    <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
+ il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
+    <target>&lt;center&gt;주의:&lt;/center&gt;
+ 모든 정보를 표시하려면 %1줄이 부족합니다</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>동작</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>주소</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>PLC 주소</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>안내선을 표시하거나 숨깁니다</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>기본 그리드 표시 (다음 실행 시 적용)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>이름 표시</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>시트에 머리글 표시</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>안내선 표시</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>기본 안내선 표시 (다음 실행 시 적용)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Xref에 단자 번호 표시</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>시트에 PLC 표의 열 머리글 표시 또는 숨기기</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>레이블 테두리 표시/숨기기</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>단자 이름 표시/숨기기</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>완전한 호환성을 위해 동일한 프로젝트를 QElectroTech 0.8 또는 0.80 버전으로 열어 저장한 후 이 버전으로 다시 여십시오.
+어떻게 하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>현재 도면에 베지어 곡선 추가</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>현재 도면에 PDF 페이지 추가</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>추가</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>도면 추가</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>PDF 추가</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>곡선에 점 추가</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>곡선 추가</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>사용자 지정 속성 추가</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>정렬</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>알파벳</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>영숫자 (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>각도</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>각진</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>취소</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>미리보기</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>미리보기:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>%1의 모서리 둥글게</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>요소로 이동</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>주의: 상대 너비의 합이 전체 너비의 100%%를 초과하므로, 이 카트리지 템플릿은 어떤 너비로도 만족시킬 수 없습니다.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>주의: 고정 너비 열이 남은 너비에 들어갈 수 없으므로, 이 카트리지 템플릿은 어떤 너비로도 만족시킬 수 없습니다.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>할당됨만</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>없음</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>자동화 (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>자동화 (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>단자 자동 번호 매기기</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>자동 번호 매기기</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>기타</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>경고:
+&apos;반올림 없음&apos; 이외의 값은 다음에 따라 프로젝트 렌더링 오류를 일으킬 수 있습니다:
+
+1 - 선택한 값
+2 - 화면 dpi
+3 - 1과 2의 설정이 다른 다른 컴퓨터 및/또는 화면에서 프로젝트를 수정하는 경우.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>경고 — EPLAN 파일(.edz) 가져오기</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>단자 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>단자 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>단자</target>
+</phrase>
+<phrase>
+    <source>Bornes : %1
+</source>
+    <target>단자: %1
+</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>단자대</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>여기에서 새 도체의 번호를 매기는 방법을 정의할 수 있습니다.
+-번호 매기기는 최소 하나의 변수로 구성됩니다.
+-- 및 + 버튼을 통해 번호 매기기 변수를 추가하거나 삭제할 수 있습니다.
+-번호 매기기 변수는 유형, 값, 증분으로 구성됩니다.
+
+-"숫자 1", "숫자 01", "숫자 001" 유형은 "값" 필드에 정의된 숫자 유형을 나타내며, 새 도체마다 "증분" 필드의 값만큼 증가합니다.
+-"숫자 01"과 "숫자 001"은 각각 최소 두 자리와 세 자리로 도면에 표시됩니다.
+값 필드에 정의된 숫자가 선택한 유형보다 자릿수가 적으면, 해당 유형을 맞추기 위해 앞에 0이 하나 또는 두 개 붙습니다.
+
+-"텍스트" 유형은 고정 텍스트를 나타냅니다.
+"증분" 필드는 사용되지 않습니다.
+
+-"도면 번호" 유형은 현재 도면의 번호를 나타냅니다.
+다른 필드는 사용되지 않습니다.
+
+-"도면" 유형은 현재 도면의 이름을 나타냅니다.
+다른 필드는 사용되지 않습니다.</target>
+    <definition>help dialog about the conductor autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>여기에서 새 요소의 번호를 매기는 방법을 정의할 수 있습니다.
+-번호 매기기는 최소 하나의 변수로 구성됩니다.
+-- 및 + 버튼을 통해 번호 매기기 변수를 추가하거나 삭제할 수 있습니다.
+-번호 매기기 변수는 유형, 값, 증분으로 구성됩니다.
+
+-"숫자 1", "숫자 01", "숫자 001" 유형은 "값" 필드에 정의된 숫자 유형을 나타내며, 새 도체마다 "증분" 필드의 값만큼 증가합니다.
+-"숫자 01"과 "숫자 001"은 각각 최소 두 자리와 세 자리로 도면에 표시됩니다.
+값 필드에 정의된 숫자가 선택한 유형보다 자릿수가 적으면, 해당 유형을 맞추기 위해 앞에 0이 하나 또는 두 개 붙습니다.
+
+-"텍스트" 유형은 고정 텍스트를 나타냅니다.
+"증분" 필드는 사용되지 않습니다.
+
+-"도면 번호" 유형은 현재 도면의 번호를 나타냅니다.
+다른 필드는 사용되지 않습니다.
+
+-"도면" 유형은 현재 도면의 이름을 나타냅니다.
+다른 필드는 사용되지 않습니다.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau folio de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+</source>
+    <target>여기에서 새 도면의 번호를 매기는 방식을 정의할 수 있습니다.
+-번호 매기기는 최소 하나의 변수로 구성됩니다.
+-번호 매기기 변수는 - 및 + 버튼으로 추가하거나 삭제할 수 있습니다.
+-번호 매기기 변수는 유형, 값, 증가로 구성됩니다.
+
+-"숫자 1", "숫자 01", "숫자 001" 유형은 "값" 필드에 정의된 숫자 유형을 나타내며, 새 도면마다 "증가" 필드의 값만큼 증가합니다.
+-"숫자 01"과 "숫자 001"은 도면에서 각각 최소 두 자리와 세 자리로 표시됩니다.
+값 필드에 정의된 숫자가 선택한 유형보다 자릿수가 적으면, 유형에 맞게 앞에 0이 하나 또는 두 개 붙습니다.
+
+-"텍스트" 유형은 고정 텍스트를 나타냅니다.
+"증가" 필드는 사용되지 않습니다.
+</target>
+    <definition>help dialog about the folio autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>%1을(를) 읽을 수 없음</target>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>카테고리</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>이 문서는 사용 중인 버전보다 최신인 %1 버전으로
+저장된 것 같습니다! 
+현재 QElectroTech 버전 %2을(를) 사용 중입니다</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>이 형식은 투명도를 지원하지 않습니다: 투명 색상을 적용하기 전 상태로 이미지가 저장됩니다. 계속하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>이 단축키는 다음에서도 사용됩니다: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>여기에는 이 세션의 마지막 로그 메시지가 포함되어 있습니다. 공개 버그 보고서에 첨부하기 전에 내용을 확인하세요.</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>이 요소는 이미 연결되어 있습니다</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>이 기능은 위치에 따라 프로젝트의 단자에 번호를 매깁니다. 비어 있거나 잠긴 단자는 무시됩니다.단자 표시는 다음과 같이 미리 구성해야 합니다: &apos;-X:AB&apos;. 콜론 앞 부분(단자대)은 원하는 대로 이름을 지정할 수 있습니다. &apos;AB&apos;는 숫자나 문자로 구성할 수 있습니다."</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>텍스트 필드</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>사용자 매크로 경로</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>템플릿을 저장할 위치를 선택하십시오.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>클릭: 원래 크기로 배치. 클릭-드래그: 배치 및 크기 조정. 오른쪽 클릭: 90° 회전. Ctrl+휠: 크기 조정.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>왼쪽 클릭: 다음 점; 더블 클릭 또는 Enter: 완료; 오른쪽 클릭: 마지막 점 취소</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>왼쪽 클릭: 반대쪽 모서리 배치 (Shift = 정사각형, Ctrl = 중심에서 + 자유 위치, Ctrl+Shift = 중심 정사각형); 오른쪽 클릭: 취소</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>왼쪽 클릭: 반대쪽 모서리 배치 (Shift = 원, Ctrl = 중심에서 + 자유 위치, Ctrl+Shift = 중심 원); 오른쪽 클릭: 취소</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>왼쪽 클릭: 시작점 배치 (Ctrl = 자유 위치)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>왼쪽 클릭: 끝점 배치 (Ctrl = 자유 위치); 오른쪽 클릭: 취소</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>왼쪽 클릭: 첫 번째 모서리 배치 (Ctrl = 중심점, 자유 위치)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>왼쪽 클릭: 첫 번째 점 배치 (Ctrl = 자유 위치)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>클릭: 꺾인 점. 클릭-드래그: 곡선 점. 첫 번째 점 클릭: 닫기. Esc/Enter: 완료. 오른쪽 클릭: 마지막 점 취소.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>클릭</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>클릭: %1 모드</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>클릭하여 색상 선택</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>이미지를 클릭하여 색상을 추가하세요. 각 색상의 허용 오차는 슬라이더로 조정하거나 ×를 클릭하여 제거하세요.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>이미지를 클릭하여 색상 선택</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>모서리 둥글게</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>컬렉션</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>클립보드에서 붙여넣기</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>주석</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>PLC 주석</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>공통 (SW 접점)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>구성 요소 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>구성 요소 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>PLC 구성</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>열 머리글 글꼴 구성</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>셀 안의 텍스트 글꼴 구성</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>충돌만</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>연결</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>접점</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>접점</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>%1을(를) 베지어 곡선으로 변환</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>%1을(를) 폴리라인으로 변환</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>베지어 곡선으로 변환</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>폴리라인으로 변환</target>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>복사 및 붙여넣기</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>한국어</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>임시 디렉터리를 만들 수 없습니다: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>색상</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>색상 :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>전선 색상</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>투명 색상</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>투명 색상...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>요소를 배치할 때 기존 도체를 자동으로 절단</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>도체 자동 절단</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>정격 전류</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>템플릿 만들기</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>백업 복사본을 만들까요?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%l : le numéro de ligne
+%c : le numéro de colonne
+%M: Installation 
+%LM: Localisation </source>
+    <target>다음 변수를 사용하여 고유한 텍스트를 만드세요:
+%f : 도면 번호 
+%F: 도면 레이블
+%l : 행 번호
+%c : 열 번호
+%M: 설비 
+%LM: 위치</target>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>순환 (모듈로)</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>회전 중심 이동</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>단자 이름 그리기</target>
+</phrase>
+<phrase>
+    <source>Dimensions : %1*%2
+</source>
+    <target>크기: %1*%2
+</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %folio pour les modèles de cartouches
+Les variables suivantes sont utilisables :
+- %id : numéro du folio courant dans le projet 
+- %total : nombre total de folios dans le projet 
+- %autonum : Folio Auto Numeration</source>
+    <target>카트리지 템플릿에서 %folio로 사용할 수 있습니다
+다음 변수를 사용할 수 있습니다:
+- %id : 프로젝트 내 현재 도면의 번호 
+- %total : 프로젝트 내 전체 도면 수 
+- %autonum : 도면 자동 번호 매기기</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>라벨과 슬레이브 상호 참조 사이의 픽셀 단위 거리</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>레이블 - 슬레이브 거리 :</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+오류: %1 파일이 유효한 .dxf 파일인지 확인하십시오</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>번호 매기기에서 제외할 단자대의 선택을 해제하세요</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>최대 종속 요소 수 설정</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>종속 요소 설정</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>투명 색상 지정</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>도체 정의</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>곡선 변형</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>연결 해제</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>이미지 회전 중심 이동</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>단자의 레이블 이동</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>도면 이동</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>도면 이동</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>잠금 해제됨: 너비와 높이를 독립적으로 수정할 수 있습니다. 잠그려면 클릭하세요.</target>
+</phrase>
+<phrase>
+    <source>Emplacement : %1
+</source>
+    <target>배치: %1
+</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>텍스트에 테두리</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>원본 이미지를 다른 이름으로 저장...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>다른 이름으로 이미지 저장...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>진단 보고서 저장</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>진단 보고서 저장...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>템플릿 저장</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>저장...</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>아날로그 입력</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>디지털 입력</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>범용 입력</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>오류</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>PLC 종속</target>
+</phrase>
+<phrase>
+    <source>Ex.</source>
+    <target>예.</target>
+    <definition>Short example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>부품 목록에서 제외</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>자동 번호 매기기에서 제외</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>내보내기 성공</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>SVG로 내보내기</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>배선도 내보내기</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>%1 회전</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>이미지 회전</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>유지할 영역을 조정하려면 핸들이나 프레임 내부를 드래그하세요.</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>CSV 파일 (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>PDF 파일 (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>텍스트 파일 (*.txt);;모든 파일 (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>전선</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>파일을 찾을 수 없음: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>단축키 필터…</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>도면</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio : %1
+</source>
+    <target>도면: %1
+</target>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>기능</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>PLC 기능</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>실험적 기능</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>표시 형식: 0을 연속으로 쓰면 최소 자릿수를 나타냅니다 (00 = 07, 000 = 007). 비어 있으면 유형의 자연스러운 너비입니다.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>닫힌 도형</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>%1 드래그: 회전 (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>드래그: 호 조정 (Ctrl = 자유 위치, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>드래그: 모서리 둥글게 (Ctrl = 자유 위치)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>드래그: 곡선 변형 (Ctrl = 자유 위치, Alt = 접선 끊기)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>드래그: 이 점 이동</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>드래그: 회전 중심 이동</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>드래그: 점 이동 (Ctrl = 자유 위치</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>드래그: 기울기 (Ctrl = 자유 위치, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>드래그: 기울이기 (Shift = 15° 단위)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>드래그: 회전 (Shift = 15° 단위)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>드래그: 크기 조정 (Ctrl = 중심 기준 + 자유 위치, Shift = 비율 유지</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>드래그: 크기 조정 (Shift = 비율 유지, Ctrl = 중심에서)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>드래그: 회전 중심 재배치 (Ctrl = 자유 위치)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>드래그: 회전 (Ctrl = 자유 위치, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>보라색 점 드래그: 모서리 둥글게</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>모서리 드래그: 회전 (Shift = 15° 단위); 가장자리 드래그: 기울이기 (Shift = 15° 단위); 빨간 점: 회전 중심 이동</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>모서리/가장자리 드래그: 크기 조정 (Ctrl = 중심에서, Shift = 비율 유지)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>모서리/가장자리 드래그: 크기 조정 (Ctrl = 중심 기준, Shift = 비율 유지, Alt = 폴리라인으로 분리)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>점 드래그: 이동</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>끝점 드래그: 이동</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>핸들이나 곡선 드래그: 변형 (Alt = 접선 끊기) ; Alt+각진 점 드래그: 핸들 생성 ; 마우스 오른쪽 버튼: 가장 가까운 노드 메뉴</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>한 페이지 왼쪽으로 이동</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>한 페이지 오른쪽으로 이동</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>안내선</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>버그 보고서에 포함할 수 있도록 최근 로그 메시지가 담긴 보고서를 생성합니다</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>일반</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>기하</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>가로줄:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>높이</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>가로</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP 이미지 (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>이미지 파일 (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG 이미지 (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG 이미지 (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>원본 이미지</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG 이미지 (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>DXF 내보내기에 포함되지 않는 이미지</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLAN 가져오기</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>가져오기</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>EPLAN 부품 가져오기</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>EPLAN 부품(.edz) 가져오기…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>이 위치에 이미지를 저장할 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>%1에 부품 목록을 저장할 수 없습니다.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>템플릿 « %1 »을(를) 저장할 수 없습니다.</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>이 부품을 가져올 수 없습니다:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>쓰기 위해 파일을 열 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>"%1" 파일에 쓸 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>이미지를 불러올 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>PDF 파일을 불러올 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>PDF 페이지 크기를 확인할 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>프로젝트의 메모리 구조를 읽을 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Impossible de remplacer le fichier!
+
+</source>
+    <target>파일을 바꿀 수 없습니다!
+
+</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>PDF 페이지를 렌더링할 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>X 기울기</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Y 기울기</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>%1 기울이기</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>이미지 기울이기</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>알 수 없음</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>증가분</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>증가분: 새 번호를 매길 때마다 카운터에 더해지는 값</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>부품 정보 기록</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>위에 도면 삽입</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>아래에 도면 삽입</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>전환</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>사용 가능한 IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>위 조건을 읽었으며 이에 동의합니다.</target>
+</phrase>
+<phrase>
+    <source>L&apos;enregistrement à échoué,
+les conditions requises ne sont pas valides</source>
+    <target>저장에 실패했습니다.
+필수 조건이 유효하지 않습니다</target>
+</phrase>
+<phrase>
+    <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+    <target>용량이 큰 dxf를 가져오는 데 시간이 걸릴 수 있습니다.
+가져오는 동안 기다려 주십시오...</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>dxf 가져오기에는 dxf2elmt 소프트웨어가 필요합니다.
+아래 링크에서 다운로드하여 설치 폴더에 압축을 푸십시오</target>
+</phrase>
+<phrase>
+    <source>La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.
+Veuillez saisir une formule compatible pour ce potentiel.
+Les variables suivantes sont incompatibles :
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
+    <target>새 전위의 수식에 도면 참조와 호환되지 않는 변수가 포함되어 있습니다.
+이 전위에 호환되는 수식을 입력하세요.
+다음 변수는 호환되지 않습니다:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>이 마스터 요소에 설정된 한도에 도달했습니다 (한도: %1).
+
+그래도 이 종속 접점을 연결하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>선택 항목에 브리지된 단자 및/또는 다중 레벨 단자에 속한 단자가 하나 이상 있으므로 삭제할 수 없습니다.
+해당 단자의 브리지를 해제하거나 레벨을 삭제한 후 삭제하십시오</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>레이블</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>너비</target>
+</phrase>
+<phrase>
+    <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
+Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
+    <target>텍스트의 내용, 크기 및 글꼴은 html로 서식이 지정되어 있어 수정할 수 없습니다.
+이 경우 고급 편집기를 사용하세요.</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>파일을 쓸 수 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>PDF 파일에 페이지가 없습니다.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>« %1 » 파일이 없거나 읽을 수 없습니다. 이 폴더의 번역된 이름을 읽을 수 없어 폴더 이름을 대신 표시합니다.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>.edz 형식은 두 가지 다른 출처에서 나올 수 있습니다:
+
+• EPLAN Data Portal(dataportal.eplan.com) — EPLAN Cloud 환경의 이용 약관이 적용됩니다.
+• 부품 제조사(또는 유통사)의 웹사이트에서 자체 조건에 따라 .edz 파일을 직접 제공하는 경우.
+
+QElectroTech는 가져오는 파일의 출처나 그에 적용되는 조건을 자동으로 판단할 수 없습니다.
+
+이 파일을 가져오면 다음을 확인하는 것입니다:
+
+• 해당 출처에 적용되는 조건에 비추어 파일의 출처를 알고 있으며 이 맥락에서 사용할 권한이 있습니다.
+• 이 가져오기는 본인의 위험과 책임하에 수행됩니다.
+• QElectroTech, 그 유지관리자 및 기여자는 이러한 데이터의 부적절한 사용에 대해 책임을 지지 않습니다.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>여기에서 사용하는 DXF 형식(AC1006)은 이미지를 포함할 수 없습니다. 이미지는 이미지 내용 없이 윤곽 사각형(위치, 크기, 회전 및 기울기 유지)으로만 표시됩니다.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>요소 크기를 조정하려면 QET_ElementScaler 소프트웨어가 필요합니다.
+아래 링크에서 다운로드하여 설치 폴더에 압축을 푸십시오</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>템플릿이 다음 위치에 성공적으로 저장되었습니다:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>« %1 » 이름이 유효하지 않습니다. 다음 문자를 포함할 수 없습니다: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>새 요소가 슬레이브 접점 그룹을 정의합니다.
+기존 슬레이브 요소는 자동으로 할당되지 않습니다. 슬레이브를 수동으로 연결하고 접점 그룹을 할당해야 합니다.
+
+계속하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>배선도가 성공적으로 내보내졌습니다!</target>
+</phrase>
+<phrase>
+    <source>Le projet à été modifié.
+Voulez-vous enregistrer les modifications ?</source>
+    <target>프로젝트가 수정되었습니다.
+변경 사항을 저장하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>템플릿이 이미 존재합니다. 덮어쓰시겠습니까?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Les caractères autorisés sont : 
+ - les chiffres [0-9]
+ - les minuscules [a-z]
+ - le tiret [-], l&apos;underscore [_] et le point [.]
+</source>
+    <target>사용 가능한 문자: 
+ - 숫자 [0-9]
+ - 소문자 [a-z]
+ - 하이픈 [-], 밑줄 [_], 마침표 [.]
+</target>
+    <definition>tooltip content when editing a filename</definition>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
+Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>표시할 정보가 표로 표시할 수 있는 최대 수량을 초과했습니다.
+모든 정보를 표시하려면 새 표를 추가하거나 기존 표를 조정하십시오.</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
+Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>표시할 정보가 표로 표시할 수 있는 최대 수량을 초과했습니다.
+모든 정보를 표시하려면 새 표를 추가하거나 기존 표를 조정하십시오.</target>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>소문자, 숫자, 하이픈 및 밑줄만 사용</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>매끄럽게</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>배선 목록</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>배선 목록 (데이터베이스)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>연결 대상: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>길이</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>최대 길이</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>최대 길이: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur minimale : %1px
+</source>
+    <target>최소 길이: %1px
+</target>
+    <definition>tooltip showing the minimum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>길이 제한 없음.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>매크로</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>다음 순환 숫자의 이월로만 증가하는 숫자는 0으로 설정 (예: "0.7"의 "0")</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>가로 대칭</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>이미지 가로 대칭</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>%1의 수평 대칭</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>대칭 불가: 이 도형에는 기울기가 너무 극단적입니다</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>세로 대칭</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>이미지 세로 대칭</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>%1의 수직 대칭</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>텍스트 필드 정렬 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>레이블 정렬 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>호 각도 변경</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>도형의 각도 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>이미지 각도 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>이미지 기울기 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>마스터 레이블 인덱스 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>마스터 레이블 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>레이블 색상 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>%1의 곡률 변경</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>%1의 모양 변경</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>이미지 높이 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>이미지 너비 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>선의 길이 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>레이블 글꼴 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>레이블 위치 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>레이블 회전 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>도형의 크기 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>레이블 글꼴 크기 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>단자 이름 수정</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>텍스트 필드의 회전점 편집</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>노드 유형 변경</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>이미지 편집</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>PLC 모듈</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>모델</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>템플릿 저장됨</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>템플릿</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>수</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>단자 수</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>접점 수</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (SW 접점)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (SW 접점)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>.edz 안에 *.part.xml이 없습니다</target>
+</phrase>
+<phrase>
+    <source>Nom : %1
+</source>
+    <target>이름: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>요소 파일 이름</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>요소 파일 이름: 숫자, 소문자, "-", "_" 및 "."만 사용하십시오.
+요소의 표시 이름은 요소 속성에서 별도로 변경합니다.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>단자 이름</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>새 템플릿 이름</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>열의 사용자 지정 이름 (비어 있으면 기본값)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>요소의 이름, 레이블 또는 정보…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>속성_이름</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>단자 수가 잘못됨</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>사용된 종속 접점 수: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>최대 종속 접점 수에 도달했습니다.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>정의된 최대 종속 접점 수: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>정의된 최대 종속 접점 수: 정의되지 않음
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>아니요</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>할당되지 않음만</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>상시 닫힘</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>상시 열림</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>유효한 .edz 패키지가 아닙니다 (인식할 수 없는 압축 형식).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>비고</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>숫자만 (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>단자 자동 번호 매기기</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>도체 자동 번호 매기기</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>요소 자동 번호 매기기</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>문자에도 번호 매기기</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>가장 가까운 노드</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>확인</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>방향</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>세로 원점</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>예</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>페이지</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>가져올 페이지:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>요소 패널</target>
+</phrase>
+<phrase>
+    <source>Pink : Pink</source>
+    <target>핑크 : 핑크</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>각 요소를 제자리에서 회전하는 대신 선택 항목을 중심을 기준으로 그룹으로 회전</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>그룹 회전</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>회전/기울이기</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>EPLAN 부품 (*.edz)</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>텍스트 앵커 지점 및 줄 간 정렬</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>글꼴</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>글꼴 :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>머리글 글꼴</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>열 머리글 글꼴</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>머리글 글꼴: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>텍스트 글꼴</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>셀 텍스트 글꼴</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>텍스트 글꼴: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>프로젝트 글꼴</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>위치</target>
+</phrase>
+<phrase>
+    <source>Position : %1
+</source>
+    <target>위치: %1
+</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>축 우선순위</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>X축 우선 (가로)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Y축 우선 (세로)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>이 증가분으로 적용될 다음 값</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>깊이</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>텍스트 속성</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>전력</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech가 지난 실행에서 제대로 종료되지 않았습니다.
+다음은 종료 전에 기록된 마지막 메시지입니다 -- 버그 보고서에 첨부할 수 있도록 저장할 수 있습니다.</target>
+</phrase>
+<phrase>
+    <source>QElectroTech, une application de réalisation de schémas électriques.
+
+Options disponibles : 
+  --help                        Afficher l&apos;aide sur les options
+  -v, --version                 Afficher la version
+  --license                     Afficher la licence
+</source>
+    <target>QElectroTech, 전기 도면 작성 애플리케이션.
+
+사용 가능한 옵션:
+  --help                        옵션 도움말 표시
+  -v, --version                 버전 표시
+  --license                     라이선스 표시
+</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+%1 가져오기 / 크기 조정에 대한 추가 정보</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>단축키</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>단축키</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>진단 보고서</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>충돌 보고서</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>X 반지름</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Y 반지름</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>검색</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>도면의 요소를 빠르게 검색하고 선택</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>검색...</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>크기 조정</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>%1 크기 조정</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>이미지 크기 조정</target>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>참고: 최대 종속 접점 수에 도달한 마스터 요소는 숨겨집니다.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>이미지 교체...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>이미지 교체</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>마스터에서 가져오기</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>비율 복원</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>이미지 비율 복원</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>이 색상 제거</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>자르기 없이 전체 이미지로 되돌리기</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>이미지 자르기</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>이미지 자르기</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>자르기...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>회전 :</target>
+</phrase>
+<phrase>
+    <source>Rotation : %1°
+</source>
+    <target>회전: %1°
+</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>회전/기울기</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>참조</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>상호 참조</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>PLC 상호 참조</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>상호 참조</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>초기화</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>이 단축키 초기화</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>초기값으로 재설정</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>사용자 매크로 디렉터리</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>해상도:</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>%1 다음에 줄 바꿈:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>전선 단면적</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>이미지 선택...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>단순</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>아날로그 출력</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>디지털 출력</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>범용 출력</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>백업 복사본을 만드시겠습니까?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>하위 유형</target>
+</phrase>
+<phrase>
+    <source>Sous-type : %1
+</source>
+    <target>하위 유형: %1
+</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>다음</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>이 프로젝트에 소요된 시간 추적 (이 파일에 로컬로만 저장됨)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>단자를 삭제할 수 없음</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>삭제</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>%1개 도면 삭제</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>이 속성 삭제</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>가장 가까운 노드 삭제</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>도면 삭제</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>도면 삭제</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>곡선에서 점 삭제</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>대칭</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>접점 시스템 변경됨</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>PDF 파일 선택...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>접점 그룹 선택</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>PLC IO 선택</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>페이지 선택</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>이 종속 요소에 할당할 접점 그룹을 선택하십시오:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>전위 분리</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>PLC 표</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>PLC 표 (비어 있음)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>크기</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>크기 :</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>복귀 지연</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>작동 지연</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>작동 및 복귀 지연</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>이 프로젝트에 소요된 시간:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>전압 / 프로토콜</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>정격 전압</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>단자 텍스트</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>머리글 텍스트</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>이 .edz는 zip 형식 패키지로, 아직 지원되지 않습니다 (7-Zip .edz 파일만 가져올 수 있습니다).</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>이 색상의 허용 오차</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>자체 중심을 기준으로 회전</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>전체</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>모든 파일 (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>모두 초기화</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>한국어 번역</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>%1 변환</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>투명도 유지 안 됨</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>유형</target>
+</phrase>
+<phrase>
+    <source>Type : %1
+</source>
+    <target>유형: %1
+</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>번호 매기기 유형</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLC 유형</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>호</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>모서리</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>점</target>
+</phrase>
+<phrase>
+    <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
+Voulez-vous la remplacer ?</source>
+    <target>&lt;&lt; %1 &gt;&gt;(이)라는 텍스트 구성이 이미 있습니다.
+바꾸시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>곡선</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>끝점</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>이미지</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>값</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>카운터의 현재 값입니다. 새 값을 입력하고 확인하면 변경됩니다.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>이전 숫자를 증가시킬 때 이 숫자가 0으로 돌아가는 값 (0 = 순환 없음)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>자동 번호 매기기 잠금</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>위치 잠금</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>잠김: 너비나 높이를 수정하면 비율을 유지하기 위해 다른 쪽이 조정됩니다. 잠금을 해제하려면 클릭하세요.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>세로</target>
+</phrase>
+<phrase>
+    <source>Veuillez choisir un potentiel électrique de la liste 
+à utiliser pour le nouveau potentiel</source>
+    <target>새 전위에 사용할 전기 전위를 목록에서
+선택하세요</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>표시</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>이 요소 보기</target>
+</phrase>
+<phrase>
+    <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+associer le nom "volta" et la valeur "1745" remplacera %{volta} par 1745 dans le cartouche.</source>
+    <target>여기에서 사용자 정의 이름/값 쌍을 정의하여 카트리지에 반영되도록 할 수 있습니다. 예:
+이름 "volta"와 값 "1745"를 연결하면 카트리지에서 %{volta}가 1745로 대체됩니다.</target>
+</phrase>
+<phrase>
+    <source>Vous pouvez définir un label personnalisé pour les reports de folio.
+Créer votre propre texte en vous aidant des variables suivantes :
+%f : la position du folio dans le projet 
+%F : le numéro de folio
+%M :  l&apos;installation
+%LM : la localisation
+%l : le numéro de ligne
+%c : le numéro de colonne</source>
+    <target>도면 참조에 사용할 사용자 정의 레이블을 정의할 수 있습니다.
+다음 변수를 사용하여 고유한 텍스트를 만드세요:
+%f : 프로젝트 내 도면의 위치 
+%F : 도면 번호
+%M : 설비
+%LM : 위치
+%l : 행 번호
+%c : 열 번호</target>
+</phrase>
+<phrase>
+    <source>Vous tentez de lier deux potentiels différents ensemble.
+Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
+    <target>서로 다른 두 전위를 연결하려고 합니다.
+새 전위에 적용할 속성을 선택하세요.</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>You can use the following variables to your formula:
+ -%prefix: Default Element Prefix
+ -%l: Element Line
+ -%c: Element Column
+ -%F: Folio Name
+ -%f or %id: Folio ID
+ -%total: Total of folios
+You can also assign any other titleblock variable 
+that you create. Text and number inputs are
+ also available.</source>
+    <target>수식에 다음 변수를 사용할 수 있습니다:
+ -%prefix: 기본 요소 접두사
+ -%l: 요소 행
+ -%c: 요소 열
+ -%F: 도면 이름
+ -%f 또는 %id: 도면 ID
+ -%total: 전체 도면 수
+직접 만든 다른 모든 표제란 변수도
+지정할 수 있습니다. 텍스트 및 숫자 입력도
+사용할 수 있습니다.</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>저장 실패</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>내보내기 실패</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>템플릿을 덮어쓸까요?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>요소 편집기</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>표제란 편집기</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>회로도 편집기</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>텍스트 편집기</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>노드 편집</target>
+</phrase>
+<phrase>
+    <source>Élement
+</source>
+    <target>요소
+</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>마스터 레이블</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
+</source>
+    <target>이 요소를 삭제하시겠습니까?
+</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
+Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
+    <target>이 폴더를 삭제하시겠습니까?
+이 폴더에 포함된 모든 요소와 폴더가 삭제됩니다.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>이 도면을 삭제하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>프로젝트에서 이 도면을 삭제하시겠습니까?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>선택한 %1개의 도면을 삭제하시겠습니까?</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>배전함</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>코일</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>단자</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>단자대</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>케이블</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>정격</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>표제란</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>컬렉션</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>도선</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>접촉기</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>전류</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>차단기</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>폴더</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>요소</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>슬레이브</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>퓨즈</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>그리드</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>스위치</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>마스터</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>템플릿</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>모터</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>중성</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>부품 목록</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>번호 매기기</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>상</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>전위</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>프로젝트</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>계전기</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>도면 상호 참조</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>지정</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>도면 참조</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>회로도</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>단면적</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>목차</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>전압</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>접지</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>텍스트</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>변압기</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

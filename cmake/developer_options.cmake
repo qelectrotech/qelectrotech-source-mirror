@@ -31,7 +31,7 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
 
-# Build with KDE Frameworks. 
+# Build with KDE Frameworks.
 option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
 
 # Precompiled headers for the Qt umbrella headers.
@@ -47,3 +47,8 @@ option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
 # compile for everyone else. Leaving it off keeps CI and contributors on the
 # strict behaviour, and only developers who opt in trade that for the speed.
 option(QET_ENABLE_PCH "Use precompiled headers (developer build speed; may mask missing #includes)" OFF)
+
+# Discussion #599: 3Dconnexion SpaceMouse/SpacePilot pan/zoom support. Off by
+# default -- see cmake/find_spacemouse.cmake for the backends and what happens
+# when it is on but no library is found.
+option(QET_ENABLE_SPACEMOUSE "Build with 3D mouse (3Dconnexion SpaceMouse) support for pan/zoom; needs libspnav or hidapi, see QET_SPACEMOUSE_BACKEND" OFF)

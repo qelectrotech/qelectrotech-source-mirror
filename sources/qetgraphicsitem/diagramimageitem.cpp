@@ -890,7 +890,17 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 */
 void DiagramImageItem::dragResize(int index, const QPointF &localPos, Qt::KeyboardModifiers mods)
 {
-	const QPointF pivotScene = pos() + m_transform.pivot;
+	// mapToScene(), not the pos() + m_transform.pivot shortcut: that
+	// shortcut only holds because the pivot is a fixed point of
+	// m_transform.toMatrix() -- true exactly as long as m_transform is
+	// the item's ONLY transform. It silently breaks the moment anything
+	// else is composed on top (QGraphicsItem's own scale()/rotation(),
+	// or a future parent-group transform), giving a scenePivot that
+	// doesn't match where the pivot handle is actually drawn (rebuildHandles()
+	// already uses mapToScene() for that, which is why the handle looks
+	// right even when a drag computed from this shortcut doesn't).
+	// mapToScene() is correct regardless of what else is composed in.
+	const QPointF pivotScene = mapToScene(m_transform.pivot);
 	QTransform undoRotation;
 	undoRotation.rotate(-m_transform.rotation);
 	const QPointF postScaleOffset = undoRotation.map(mapToScene(localPos) - pivotScene);
@@ -961,7 +971,9 @@ void DiagramImageItem::dragResize(int index, const QPointF &localPos, Qt::Keyboa
 */
 void DiagramImageItem::dragRotateHandle(int cornerIndex, const QPointF &scenePos, Qt::KeyboardModifiers mods)
 {
-	const QPointF scenePivot = pos() + m_transform.pivot;
+	// mapToScene(), not pos() + m_transform.pivot: see dragResize()'s
+	// identical comment for why.
+	const QPointF scenePivot = mapToScene(m_transform.pivot);
 	const qreal angleMouse = qRadiansToDegrees(qAtan2(scenePos.y() - scenePivot.y(), scenePos.x() - scenePivot.x()));
 
 	const QPointF reference = scaleAndShearOffset(cornerPosition(cornerIndex, pixmap_.width(), pixmap_.height()));
@@ -995,7 +1007,9 @@ void DiagramImageItem::dragSkewHandle(int edgeIndex, const QPointF &scenePos, Qt
 
 	const qreal rad = qDegreesToRadians(m_transform.rotation);
 	const qreal c = qCos(rad), s = qSin(rad);
-	const QPointF targetRel = scenePos - pos() - pivot;
+	// mapToScene(pivot), not pos() + pivot: see dragResize()'s identical
+	// comment for why.
+	const QPointF targetRel = scenePos - mapToScene(pivot);
 	const QPointF M(targetRel.x() * c + targetRel.y() * s,
 	               -targetRel.x() * s + targetRel.y() * c);
 
