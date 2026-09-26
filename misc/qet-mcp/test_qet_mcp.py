@@ -328,6 +328,29 @@ class EditValidation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "list of strings"):
             self.build([{"op": "add_autonum", "kind": "conductor", "name": "a", "parts": "string:W"}])
 
+    def test_a_uuid_index_is_resolved_at_run_time(self):
+        u = "{11111111-1111-4111-8111-111111111111}"
+        script = self.build([{"op": "set_shape", "folio": 2, "index": u,
+                              "property": "fill", "value": "none"},
+                             {"op": "delete_text", "folio": 1, "index": u},
+                             {"op": "delete_image", "folio": 0, "index": u}])
+        self.assertIn(f'qet.setShapeProperty(2, qet.shapeIndex(2, "{u}"), ', script)
+        self.assertIn(f'qet.deleteText(1, qet.textIndex(1, "{u}"))', script)
+        self.assertIn(f'qet.deleteImage(0, qet.imageIndex(0, "{u}"))', script)
+        need = json.loads(re.search(r"var need = (\[.*?\]);", script).group(1))
+        self.assertTrue({"shapeIndex", "textIndex", "imageIndex"} <= set(need))
+
+    def test_an_index_only_edit_does_not_need_the_uuid_resolvers(self):
+        script = self.build([{"op": "delete_shape", "folio": 0, "index": 3}])
+        need = json.loads(re.search(r"var need = (\[.*?\]);", script).group(1))
+        self.assertFalse({"shapeIndex", "textIndex", "imageIndex"} & set(need))
+
+    def test_a_string_index_that_is_not_a_uuid_is_refused(self):
+        for bad in ("3", "{nope}", "11111111-1111"):
+            with self.subTest(index=bad):
+                with self.assertRaises(ValueError):
+                    self.build([{"op": "delete_shape", "folio": 0, "index": bad}])
+
     def test_indexed_references_and_element_lists(self):
         script = self.build([
             {"op": "add_folio", "id": "f"},
@@ -536,6 +559,30 @@ class ElementBuild(unittest.TestCase):
                                   {"x": 0, "y": -20, "orientation": "n", "name": "high"}])
         self.assertEqual(r["terminal_index_order"], ["high", "low"])
 
+    def test_every_part_gets_its_own_uuid(self):
+        parts = [{"type": "line", "x1": 0, "y1": 0, "x2": 10, "y2": 0},
+                 {"type": "rect", "x": 0, "y": 0, "width": 5, "height": 5},
+                 {"type": "text", "x": 0, "y": 0, "text": "K"}]
+        r = self.build(parts=parts)
+        desc = ET.parse(self.out).getroot().find("description")
+        written = [e.get("uuid") for e in desc if e.tag != "terminal"]
+        self.assertEqual(written, r["part_uuids"])
+        self.assertEqual(len(set(written)), 3)
+        self.assertEqual([p["uuid"] for p in r["verified"]["part_list"]], written)
+
+    def test_a_given_part_uuid_is_kept_and_braced(self):
+        r = self.build(parts=[{"type": "line", "x1": 0, "y1": 0, "x2": 1, "y2": 0,
+                               "uuid": "11111111-1111-4111-8111-111111111111"}])
+        self.assertEqual(r["part_uuids"], ["{11111111-1111-4111-8111-111111111111}"])
+
+    def test_bad_or_repeated_part_uuids_are_refused(self):
+        line = {"type": "line", "x1": 0, "y1": 0, "x2": 1, "y2": 0}
+        u = "{11111111-1111-4111-8111-111111111111}"
+        for parts in ([{**line, "uuid": "nope"}], [{**line, "uuid": u}, {**line, "uuid": u}]):
+            with self.subTest(parts=parts):
+                with self.assertRaises(ValueError):
+                    self.build(parts=parts)
+
     def test_output_reads_back(self):
         r = self.build(names={"en": "Coil", "fr": "Bobine"})
         self.assertEqual(r["verified"]["names"], {"en": "Coil", "fr": "Bobine"})
@@ -632,14 +679,17 @@ class Diff(unittest.TestCase):
 
     def project(self, name, *, texts=(), shapes=(), images=(), author="", version="1",
                 strips=(), conductors=()):
-        inputs = "".join(f'<input x="{x}" y="{y}" rotation="0" font="f" '
+        # An optional last member of each tuple is the item's uuid.
+        uid = lambda u: f' uuid="{u[0]}"' if u else ""
+        inputs = "".join(f'<input x="{x}" y="{y}" rotation="0" font="f"{uid(u)} '
                          f'text="&lt;html&gt;&lt;body&gt;&lt;p&gt;{t}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>'
-                         for x, y, t in texts)
-        shp = "".join(f'<shape type="Rectangle" x1="{a}" y1="{b}" x2="{c}" y2="{d}">'
+                         for x, y, t, *u in texts)
+        shp = "".join(f'<shape type="Rectangle" x1="{a}" y1="{b}" x2="{c}" y2="{d}"{uid(u)}>'
                       f'<pen color="{pc}" style="SolidLine" widthF="1"/>'
                       f'<brush color="#fff" style="SolidPattern"/></shape>'
-                      for a, b, c, d, pc in shapes)
-        img = "".join(f'<image x="{x}" y="{y}" size="{s}" rotation="0"/>' for x, y, s in images)
+                      for a, b, c, d, pc, *u in shapes)
+        img = "".join(f'<image x="{x}" y="{y}" size="{s}" rotation="0"{uid(u)}/>'
+                      for x, y, s, *u in images)
         st = "".join(f'<terminal_strip><terminal_strip_data uuid="{u}"><informations>'
                      f'<information name="name">{n}</information></informations>'
                      f'</terminal_strip_data><layout/></terminal_strip>' for u, n in strips)
@@ -668,6 +718,39 @@ class Diff(unittest.TestCase):
         d = m.tool_diff(a, b)["texts"]
         self.assertEqual([t["text"] for t in d["removed"]], ["note"])
         self.assertEqual([t["text"] for t in d["added"]], ["note EDITED"])
+
+    U1 = "{11111111-1111-4111-8111-111111111111}"
+    U2 = "{22222222-2222-4222-8222-222222222222}"
+
+    def test_edited_text_with_a_uuid_is_a_change_to_that_text(self):
+        a = self.project("a.qet", texts=[(1, 2, "note", self.U1)])
+        b = self.project("b.qet", texts=[(1, 2, "note EDITED", self.U1)])
+        d = m.tool_diff(a, b)["texts"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual((d["added"], d["removed"]), ([], []))
+        self.assertEqual(d["changed"][0]["changed"]["text"], ["note", "note EDITED"])
+
+    def test_moved_shape_with_a_uuid_is_a_change_to_that_shape(self):
+        a = self.project("a.qet", shapes=[(0, 0, 5, 5, "#000000", self.U1),
+                                          (9, 9, 12, 12, "#000000", self.U2)])
+        b = self.project("b.qet", shapes=[(100, 0, 105, 5, "#000000", self.U1),
+                                          (9, 9, 12, 12, "#000000", self.U2)])
+        d = m.tool_diff(a, b)["shapes"]
+        self.assertEqual((d["added"], d["removed"]), ([], []))
+        self.assertEqual(len(d["changed"]), 1)
+        self.assertEqual(d["changed"][0]["item"]["uuid"], self.U1)
+        self.assertEqual(d["changed"][0]["changed"]["from"], [["0", "0"], ["100", "0"]])
+
+    def test_a_file_without_uuids_against_its_resave_is_keyed_by_position(self):
+        """The first save by a current QElectroTech adds uuids to a legacy
+        file: that must not read as every item removed and re-added."""
+        a = self.project("a.qet", texts=[(1, 2, "note")], images=[(3, 3, 1)])
+        b = self.project("b.qet", texts=[(1, 2, "note", self.U1)], images=[(3, 3, 1, self.U2)])
+        d = m.tool_diff(a, b)
+        for k in ("texts", "images"):
+            with self.subTest(section=k):
+                self.assertEqual(d[k]["keyed_by"], "position")
+                self.assertFalse(d[k]["added"] or d[k]["removed"] or d[k]["changed"])
 
     def test_shape_restyle_is_a_change_to_that_item(self):
         a = self.project("a.qet", shapes=[(0, 0, 5, 5, "#000000")])
@@ -1974,6 +2057,32 @@ class Integration(unittest.TestCase):
         self.assertEqual([t["text"] for t in d["texts"]["added"]], ["note"])
         self.assertEqual(len(d["shapes"]["added"]), 1)
         self.assertEqual(len(d["images"]["added"]), 1)
+
+    def test_drawing_items_are_in_the_database_and_addressable_by_uuid(self):
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_text", "folio": 0, "text": "note", "x": 50, "y": 50},
+            {"op": "add_shape", "folio": 0, "shape": "rectangle", "x1": 10, "y1": 10, "x2": 200, "y2": 120}]))
+        root = ET.parse(r["output"]).getroot()
+        shape_uuid = next(root.iter("shape")).get("uuid")
+        text_uuid = next(root.iter("input")).get("uuid")
+        rows = m.tool_query(BINARY, r["output"],
+                           "SELECT uuid, kind, folio, description FROM drawing_item_view "
+                           "ORDER BY kind")["rows"]
+        self.assertEqual([(x["uuid"], x["kind"], x["folio"]) for x in rows],
+                         [(shape_uuid, "shape", 1), (text_uuid, "text", 1)])
+        self.assertEqual(rows[1]["description"], "note")
+
+        # A second shape placed above the first shifts its index to 1; the
+        # uuid still names it.
+        r2 = self.ok(self.sb.edit(r["output"], [
+            {"op": "add_shape", "folio": 0, "shape": "line", "x1": 0, "y1": 0, "x2": 5, "y2": 0},
+            {"op": "set_shape", "folio": 0, "index": shape_uuid, "property": "fill", "value": "#00ff00"}],
+            out="out2.qet"))
+        d = r2["diff"]["shapes"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual([c["item"]["uuid"] for c in d["changed"]], [shape_uuid])
+        self.assertEqual(len(d["added"]), 1)
 
     # ---- polygon and path shapes ----
 

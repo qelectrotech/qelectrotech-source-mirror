@@ -626,14 +626,20 @@ def tool_element_info(path: str) -> dict:
     ordered, ambiguous = _terminals_in_index_order(list(root.iter("terminal")))
     terminals = [{"index": i, "x": t.get("x"), "y": t.get("y"),
                   "orientation": t.get("orientation"),
-                  "name": t.get("name", ""), "type": t.get("type", "")}
+                  "name": t.get("name", ""), "type": t.get("type", ""),
+                  "uuid": t.get("uuid", "")}
                  for i, t in enumerate(ordered)]
     info_fields = sorted({(i.text or "").strip()
                           for i in root.iter("info_name") if (i.text or "").strip()})
     parts = {}
+    part_list = []
     desc = root.find("description")
     for child in (desc if desc is not None else []):
         parts[child.tag] = parts.get(child.tag, 0) + 1
+        if child.tag != "terminal":
+            # uuid is empty for a part saved before parts carried one; the
+            # element editor gives it one on the next save.
+            part_list.append({"type": child.tag, "uuid": child.get("uuid", "")})
     return {
         "file": str(Path(path).expanduser()),
         "type": root.get("type", ""), "link_type": root.get("link_type", ""),
@@ -646,6 +652,7 @@ def tool_element_info(path: str) -> dict:
                               "index is undefined" if ambiguous else ""),
         "info_fields": info_fields,
         "parts": parts,
+        "part_list": part_list,
     }
 
 
@@ -883,11 +890,15 @@ def _validate_part(index: int, part) -> str:
     for key in spec["required"]:
         if key not in part:
             raise ValueError(f"part {index} ({kind}) is missing {key!r}")
-    allowed = set(spec["required"]) | set(spec["optional"]) | {"type", "style", "antialias"}
+    allowed = set(spec["required"]) | set(spec["optional"]) | {"type", "style", "antialias", "uuid"}
     for key in part:
         if key not in allowed:
             raise ValueError(f"part {index} ({kind}): unexpected {key!r}; "
                              f"allowed: {', '.join(sorted(allowed))}")
+    if "uuid" in part and not (isinstance(part["uuid"], str)
+                               and _UUID_RE.fullmatch(part["uuid"])):
+        raise ValueError(f"part {index} ({kind}): uuid must look like "
+                         f"{{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}}, got {part['uuid']!r}")
     if kind == "polygon":
         pts = part["points"]
         if not isinstance(pts, list) or len(pts) < 2:
@@ -898,9 +909,19 @@ def _validate_part(index: int, part) -> str:
     return kind
 
 
-def _part_element(part: dict) -> ET.Element:
+def _part_uuid(part: dict) -> str:
+    """The caller's uuid for this part, braced as QElectroTech writes it, or
+    a new one. Every part carries one, as the element editor saves them."""
+    given = part.get("uuid")
+    if given:
+        return given if given.startswith("{") else "{" + given + "}"
+    return "{" + str(__import__("uuid").uuid4()) + "}"
+
+
+def _part_element(part: dict, uuid: str) -> ET.Element:
     kind = part["type"]
     node = ET.Element(kind)
+    node.set("uuid", uuid)
     if kind == "polygon":
         for n, (px, py) in enumerate(part["points"], start=1):
             node.set(f"x{n}", _fmt(px))
@@ -992,8 +1013,11 @@ def tool_element_build(output: str, names: dict, parts: list,
             ET.SubElement(kind, "kindInformation", {"name": key}).text = str(informations[key])
     ET.SubElement(root, "informations")
     description = ET.SubElement(root, "description")
-    for part in parts:
-        description.append(_part_element(part))
+    part_uuids = [_part_uuid(part) for part in parts]
+    if len(set(part_uuids)) != len(part_uuids):
+        raise ValueError("two parts were given the same uuid")
+    for part, part_uuid in zip(parts, part_uuids):
+        description.append(_part_element(part, part_uuid))
     for t in terminals:
         attrs = {"x": _fmt(t["x"]), "y": _fmt(t["y"]),
                  "orientation": t["orientation"],
@@ -1017,6 +1041,8 @@ def tool_element_build(output: str, names: dict, parts: list,
             # caller listed them in.
             "terminal_index_order": [t["name"] or f"({t['x']},{t['y']})"
                                     for t in check["terminals"]],
+            # In the order the parts were given.
+            "part_uuids": part_uuids,
             "verified": check}
 
 
@@ -1066,8 +1092,9 @@ OPS = {
                                                  ("value", "str")]),
     "remove_plc_io":    ("removePlcIO",         [("folio", "folio"), ("element", "elmt"),
                                                  ("index", "folio")]),
-    # Texts and shapes have no uuid; they are addressed by index into a
-    # position-sorted listing, and add_text/add_shape return that index so
+    # Texts, shapes and images are addressed by "index": their index in a
+    # position-sorted listing, which add_text/add_shape return, or their
+    # uuid, which does not shift when another one is added. So
     # it can be named as "$id". Indexes shift when one is added or deleted.
     "delete_conductor": ("deleteConductor",     [("folio", "folio"), ("element", "elmt"),
                                                  ("terminal", "num")]),
@@ -1123,38 +1150,38 @@ OPS = {
                                                  ("to_folio", "folio"), ("x", "num"), ("y", "num")]),
     "add_text":         ("addText",             [("folio", "folio"), ("text", "str"),
                                                  ("x", "num"), ("y", "num")]),
-    "set_text":         ("setTextContent",      [("folio", "folio"), ("index", "folio"),
+    "set_text":         ("setTextContent",      [("folio", "folio"), ("index", "text"),
                                                  ("text", "str")]),
-    "set_text_color":   ("setTextColor",        [("folio", "folio"), ("index", "folio"),
+    "set_text_color":   ("setTextColor",        [("folio", "folio"), ("index", "text"),
                                                  ("color", "str")]),
-    "rotate_text":      ("setTextRotation",     [("folio", "folio"), ("index", "folio"),
+    "rotate_text":      ("setTextRotation",     [("folio", "folio"), ("index", "text"),
                                                  ("angle", "num")]),
-    "delete_text":      ("deleteText",          [("folio", "folio"), ("index", "folio")]),
+    "delete_text":      ("deleteText",          [("folio", "folio"), ("index", "text")]),
     "add_shape":        ("addShape",            [("folio", "folio"), ("shape", "str"),
                                                  ("x1", "num"), ("y1", "num"),
                                                  ("x2", "num"), ("y2", "num")]),
-    "set_shape":        ("setShapeProperty",    [("folio", "folio"), ("index", "folio"),
+    "set_shape":        ("setShapeProperty",    [("folio", "folio"), ("index", "shape"),
                                                  ("property", "str"), ("value", "str")]),
     "add_image":        ("addImage",            [("folio", "folio"), ("file", "str"),
                                                  ("x", "num"), ("y", "num")]),
     "add_pdf_page":     ("addPdfPage",           [("folio", "folio"), ("file", "str"),
                                                  ("page", "num"), ("dpi", "num"),
                                                  ("x", "num"), ("y", "num")]),
-    "scale_image":      ("setImageScale",       [("folio", "folio"), ("index", "folio"),
+    "scale_image":      ("setImageScale",       [("folio", "folio"), ("index", "image"),
                                                  ("factor", "num")]),
-    "rotate_image":     ("setImageRotation",    [("folio", "folio"), ("index", "folio"),
+    "rotate_image":     ("setImageRotation",    [("folio", "folio"), ("index", "image"),
                                                  ("angle", "num")]),
-    "delete_image":     ("deleteImage",         [("folio", "folio"), ("index", "folio")]),
-    "delete_shape":     ("deleteShape",         [("folio", "folio"), ("index", "folio")]),
+    "delete_image":     ("deleteImage",         [("folio", "folio"), ("index", "image")]),
+    "delete_shape":     ("deleteShape",         [("folio", "folio"), ("index", "shape")]),
     "add_polygon":      ("addPolygon",          [("folio", "folio"), ("points", "points"),
                                                  ("closed", "bool")]),
-    "set_shape_polygon": ("setShapePolygon",    [("folio", "folio"), ("index", "folio"),
+    "set_shape_polygon": ("setShapePolygon",    [("folio", "folio"), ("index", "shape"),
                                                  ("points", "points")]),
     "add_path":         ("addPath",             [("folio", "folio"), ("nodes", "nodes"),
                                                  ("closed", "bool")]),
-    "set_shape_path_nodes": ("setShapePathNodes", [("folio", "folio"), ("index", "folio"),
+    "set_shape_path_nodes": ("setShapePathNodes", [("folio", "folio"), ("index", "shape"),
                                                    ("nodes", "nodes")]),
-    "set_shape_closed": ("setShapeClosed",      [("folio", "folio"), ("index", "folio"),
+    "set_shape_closed": ("setShapeClosed",      [("folio", "folio"), ("index", "shape"),
                                                  ("closed", "bool")]),
     "add_table":        ("addTable",            [("folio", "folio"), ("kind", "str"),
                                                  ("name", "str"), ("query", "str")]),
@@ -1193,6 +1220,9 @@ _REQUIRED_METHODS = sorted({m for m, _ in OPS.values() if m} |
 
 _MARKER = "QETEDIT "
 
+_UUID_RE = re.compile(r"\{?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-"
+                      r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}?")
+
 
 def _js(value) -> str:
     """A JSON literal is a JavaScript literal for every type used here."""
@@ -1207,11 +1237,15 @@ def _build_script(operations: list, output: str) -> str:
     JavaScript exception.
     """
     refs: set[str] = set()
+    # Resolvers a uuid reference needs; required only when one is used, so
+    # an index-only edit still runs on a build that predates them.
+    uuid_methods: set[str] = set()
+    folio_js = "0"
     lines = [
         "// generated by qet-mcp; do not edit",
         "var R = {};",                       # $name -> value from an earlier op
         "var missing = [];",
-        f"var need = {_js(_REQUIRED_METHODS)};",
+        "var need = @NEED@;",
         "for (var i = 0; i < need.length; i++) {",
         "  if (typeof qet[need[i]] !== 'function') missing.push(need[i]);",
         "}",
@@ -1259,6 +1293,18 @@ def _build_script(operations: list, output: str) -> str:
                     or not all(isinstance(x, int) and not isinstance(x, bool) for x in value)):
                 raise ValueError(f"operation {op_index}: {key!r} must be a non-empty list of "
                                  f"integer indices, got {value!r}")
+            return _js(value)
+        if kind in ("text", "shape", "image"):
+            # A uuid names the item for good; it is turned into the index
+            # the call takes at run time, by the item's own folio.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                method = {"text": "textIndex", "shape": "shapeIndex",
+                          "image": "imageIndex"}[kind]
+                uuid_methods.add(method)
+                return f"qet.{method}({folio_js}, {_js(value)})"
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"operation {op_index}: {key!r} must be a {kind} index, "
+                                 f"its uuid, or a \"$name\" reference, got {value!r}")
             return _js(value)
         if kind == "folio":
             if not isinstance(value, int) or isinstance(value, bool):
@@ -1346,6 +1392,7 @@ def _build_script(operations: list, output: str) -> str:
         for key, kind in spec:
             if key not in op:
                 raise ValueError(f"operation {i} ({name}) is missing {key!r}")
+            folio_js = args[0] if args else "0"
             args.append(ref_or(op[key], kind, i, key))
 
         ident = op.get("id")
@@ -1391,7 +1438,8 @@ def _build_script(operations: list, output: str) -> str:
     lines.append(f"  qet.log({_js(_MARKER)} + JSON.stringify("
                  "{kind: 'save', result: saved, stopped_early: stop}));")
     lines.append("}")
-    return "\n".join(lines) + "\n"
+    need = _js(sorted(set(_REQUIRED_METHODS) | uuid_methods))
+    return "\n".join(line.replace("@NEED@", need) for line in lines) + "\n"
 
 
 def _parse_script_output(text: str) -> dict:
@@ -2300,10 +2348,12 @@ TOOLS = [
                         "that element; set_element_text takes " +
                         ", ".join(ELEMENT_TEXT_PROPERTIES) + ". A field bound with source "
                         "\"info\" follows set_label/set_info. Indexes shift on delete. "
-                        "Texts and shapes have no uuid: add_text/add_shape return an "
-                        "index you can name as \"$id\", and the other text/shape ops "
-                        "take it as \"index\". Indexes shift when one is added or "
-                        "deleted. Shapes: " + ", ".join(SHAPES) + "; set_shape takes " + ", ".join(SHAPE_PROPERTIES) +
+                        "Texts, shapes and images: add_text/add_shape/add_image return an "
+                        "index you can name as \"$id\", and the other text/shape/image "
+                        "ops take it as \"index\". Indexes shift when one is added or "
+                        "deleted; \"index\" also accepts the item's uuid (from the "
+                        "project database's drawing_item_view, or a saved file), which "
+                        "does not. Shapes: " + ", ".join(SHAPES) + "; set_shape takes " + ", ".join(SHAPE_PROPERTIES) +
                         " (fill accepts a colour or \"none\"). "
                         "add_shape's own \"polygon\" is always the degenerate two-point "
                         "form (it shares add_shape's p1/p2 shape); add_polygon takes as "
@@ -2323,7 +2373,7 @@ TOOLS = [
                         "shapes are listed by current on-folio position, so changing one "
                         "shape's points can reorder it relative to the others -- re-list "
                         "before addressing one by index again if more than one is being "
-                        "edited in the same run. "
+                        "edited in the same run, or address it by uuid. "
                         "Tables: add_table places a BOM/nomenclature or summary table "
                         "(kind is \"nomenclature\" or \"summary\") built from a query "
                         "against a project database view -- run qet.query() (the "
@@ -2544,7 +2594,9 @@ TOOLS = [
                         'line x1,y1,x2,y2; rect/ellipse/arc x,y,width,height '
                         "(arc also start,angle); circle x,y,diameter; polygon "
                         'points:[[x,y],...] and closed; text x,y,text with optional '
-                        "size, rotation, color. Any part may carry style and antialias. "
+                        "size, rotation, color. Any part may carry style and antialias, "
+                        "and a uuid to name it by; parts without one get a new uuid, "
+                        "returned in part_uuids. "
                         "Coordinates are the element's own, with (0,0) at its origin.",
                     "items": {"type": "object"},
                 },
