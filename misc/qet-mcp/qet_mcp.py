@@ -314,32 +314,42 @@ def _plain_text(html: str) -> str:
 def _extras(root: ET.Element) -> dict:
     """Everything a folio holds besides elements and conductors.
 
-    Independent texts, shapes and images have no uuid, so nothing here can
-    say "this is the same text, edited". A change to one therefore reads as
-    the old one removed and a new one added, with both shown -- accurate,
-    if less tidy than a move. Position is the identity they have.
+    Independent texts, shapes and images are records, not a keyed dict:
+    files written since they carry a uuid are compared by it (see
+    _diff_items), so an edited or moved text reads as that text, changed.
+    Older files have only position to go on, and there a change reads as
+    the old one removed and a new one added, with both shown.
     """
-    folios, texts, shapes, images = {}, {}, {}, {}
+    folios, texts, shapes, images = {}, [], [], []
+
+    def record(el, label, value):
+        return {"uuid": el.get("uuid", ""), "key": tuple(label.values()),
+                "label": label, "value": value}
+
     for n, d in _folios(root):
         folios[n] = {f: d.get(f, "") for f in _FOLIO_FIELDS}
         for t in d.iter("input"):
-            key = (n, t.get("x", ""), t.get("y", ""), _plain_text(t.get("text", "")))
-            texts[key] = {"rotation": t.get("rotation", "0"),
-                          "font": t.get("font", ""), "color": t.get("color", "")}
+            texts.append(record(
+                t, {"folio": n, "x": t.get("x", ""), "y": t.get("y", ""),
+                    "text": _plain_text(t.get("text", ""))},
+                {"rotation": t.get("rotation", "0"),
+                 "font": t.get("font", ""), "color": t.get("color", "")}))
         for sh in d.iter("shape"):
             pen, brush = sh.find("pen"), sh.find("brush")
-            key = (n, sh.get("type", ""), sh.get("x1", ""), sh.get("y1", ""),
-                   sh.get("x2", ""), sh.get("y2", ""))
-            shapes[key] = {
-                "line_color": pen.get("color", "") if pen is not None else "",
-                "line_style": pen.get("style", "") if pen is not None else "",
-                "line_width": pen.get("widthF", "") if pen is not None else "",
-                "fill": (brush.get("color", "") if brush is not None and
-                         brush.get("style", "") != "NoBrush" else "none"),
-                "rotation": sh.get("rotation", "0")}
+            shapes.append(record(
+                sh, {"folio": n, "type": sh.get("type", ""),
+                     "from": [sh.get("x1", ""), sh.get("y1", "")],
+                     "to": [sh.get("x2", ""), sh.get("y2", "")]},
+                {"line_color": pen.get("color", "") if pen is not None else "",
+                 "line_style": pen.get("style", "") if pen is not None else "",
+                 "line_width": pen.get("widthF", "") if pen is not None else "",
+                 "fill": (brush.get("color", "") if brush is not None and
+                          brush.get("style", "") != "NoBrush" else "none"),
+                 "rotation": sh.get("rotation", "0")}))
         for im in d.iter("image"):
-            key = (n, im.get("x", ""), im.get("y", ""))
-            images[key] = {"scale": im.get("size", ""), "rotation": im.get("rotation", "")}
+            images.append(record(
+                im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
+                {"scale": im.get("size", ""), "rotation": im.get("rotation", "")}))
 
     element_texts = {}
     for n, d in _folios(root):
@@ -388,6 +398,32 @@ def _diff_keyed(a: dict, b: dict, label) -> dict:
             "changed": changed[:50]}
 
 
+def _diff_items(a: list, b: list) -> dict:
+    """_diff_keyed() over _extras() records of one kind.
+
+    Keyed on uuid only when every item on both sides has one. A file saved
+    before these items carried a uuid has none, and the first save by a
+    current QElectroTech gives them one, so a mixed pair falls back to
+    position for the whole kind rather than reading as everything removed
+    and re-added. On uuid, position is part of what is compared, so a move
+    is a change to that item.
+    """
+    by_uuid = all(r["uuid"] for r in a + b)
+
+    def key(r):
+        return r["uuid"] if by_uuid else str(r["key"])
+
+    def keyed(rs):
+        return {key(r): ({**r["label"], **r["value"]} if by_uuid else r["value"])
+                for r in rs}
+
+    labels = {key(r): ({**r["label"], "uuid": r["uuid"]} if by_uuid else r["label"])
+              for r in a + b}
+    out = _diff_keyed(keyed(a), keyed(b), lambda k: labels[k])
+    out["keyed_by"] = "uuid" if by_uuid else "position"
+    return out
+
+
 def _diff_extras(before: ET.Element, after: ET.Element) -> dict:
     a, b = _extras(before), _extras(after)
     out = {}
@@ -407,13 +443,9 @@ def _diff_extras(before: ET.Element, after: ET.Element) -> dict:
     if len(a["folios"]) != len(b["folios"]) and folio_changes:
         out["folios"]["note"] = ("the folio count changed, so changes listed here may be "
                                  "later folios shifting position rather than edits")
-    out["texts"] = _diff_keyed(a["texts"], b["texts"],
-                               lambda k: {"folio": k[0], "x": k[1], "y": k[2], "text": k[3]})
-    out["shapes"] = _diff_keyed(a["shapes"], b["shapes"],
-                                lambda k: {"folio": k[0], "type": k[1],
-                                           "from": [k[2], k[3]], "to": [k[4], k[5]]})
-    out["images"] = _diff_keyed(a["images"], b["images"],
-                                lambda k: {"folio": k[0], "x": k[1], "y": k[2]})
+    out["texts"] = _diff_items(a["texts"], b["texts"])
+    out["shapes"] = _diff_items(a["shapes"], b["shapes"])
+    out["images"] = _diff_items(a["images"], b["images"])
     # Keyed by element, what the field is bound to, and the nth such field.
     # A field's own text is also compared ("shows"), so relabelling an
     # element shows up here as well as in the element's information.

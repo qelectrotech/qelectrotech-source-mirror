@@ -23,6 +23,7 @@
 #include "shapetransform.h"
 
 #include <QPen>
+#include <QUuid>
 #include <optional>
 #include <utility>
 
@@ -153,6 +154,9 @@ class QetShapeItem : public QetGraphicsItem
 
 		virtual bool	    fromXml (const QDomElement &);
 		virtual QDomElement toXml (QDomDocument &document) const;
+		QUuid uuid() const {return m_uuid;}
+		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
+		void newUuid() {m_uuid = QUuid::createUuid();}	//create new uuid for this item
 		virtual bool toDXF (const QString &filepath,const QPen &pen);
 
 		void editProperty() override;
@@ -295,6 +299,7 @@ class QetShapeItem : public QetGraphicsItem
 
 			///ATTRIBUTES
 	private:
+		QUuid		 m_uuid = QUuid::createUuid();
 		ShapeType	 m_shapeType;
 		QPen		 m_pen;
 		QBrush		 m_brush;

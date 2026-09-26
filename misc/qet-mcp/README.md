@@ -295,11 +295,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   no-op edit. Where an element predates persisted uuids the end cannot be
   resolved and keeps a `#`-marked unstable key; the diff then reports
   `unstable_keys` and says so rather than pretending to be comparable.
-- **Texts, shapes and images have no uuid**, so `qet_diff` cannot say "the same
-  text, edited": an edited text reads as the old one removed and a new one
-  added, both shown. Shapes and images are keyed by position, so a restyle
-  or rescale *is* reported as a change to that item, but a move reads as a
-  removal plus an addition. The folio `version` attribute is left out of the
+- **Texts, shapes and images are keyed by uuid** when every one on both sides
+  has one, so an edit or a move reads as a change to that item. A file saved
+  before they carried a uuid has none; for such a pair (including a legacy
+  file against its first re-save) that kind falls back to position, where an
+  edited text reads as removed plus added and a move as a removal plus an
+  addition. Each section says which it used in `keyed_by`. The folio `version` attribute is left out of the
   comparison on purpose: QElectroTech rewrites it on every save, and
   including it made every folio of any re-saved project look edited.
 - **Elements** written before persisted uuids fall back to a positional key,

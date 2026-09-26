@@ -19,9 +19,12 @@
 
 #include "diagram.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 #include "qetinformation.h"
 #include "qgimanager.h"
 
@@ -99,6 +102,15 @@ void PasteDiagramCommand::redo()
 		const QList <Conductor *> all_pasted_conductors = content.conductors();
 		for (Conductor *c : all_pasted_conductors) {
 			c -> newUuid();
+		}
+		for (IndependentTextItem *t : std::as_const(content.m_text_fields)) {
+			t -> newUuid();
+		}
+		for (DiagramImageItem *i : std::as_const(content.m_images)) {
+			i -> newUuid();
+		}
+		for (QetShapeItem *s : std::as_const(content.m_shapes)) {
+			s -> newUuid();
 		}
 
 		//this is the first paste, we do some actions for the new element

@@ -24,6 +24,7 @@
 
 #include <QColor>
 #include <QList>
+#include <QUuid>
 #include <QStyleOptionGraphicsItem>
 #include <QVector>
 
@@ -91,6 +92,9 @@ class DiagramImageItem : public QetGraphicsItem {
 	
 	virtual bool fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
+	QUuid uuid() const {return m_uuid;}
+	void setUuid(const QUuid &uuid) {m_uuid = uuid;}
+	void newUuid() {m_uuid = QUuid::createUuid();}	//create new uuid for this item
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
@@ -177,6 +181,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void clearStatusHint() const;
 
 	protected:
+	QUuid m_uuid = QUuid::createUuid();
 	QPixmap pixmap_;
 	// The true, pristine original -- never itself cropped or colour-
 	// keyed. pixmap_ (the displayed result) is always re-derived from
