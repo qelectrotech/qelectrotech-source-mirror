@@ -71,7 +71,8 @@ class DiagramView : public PaletteGraphicsView
 		bool m_cell_rulers_shown = false;
 		/// Last viewport transform the rulers were painted for
 		QTransform m_rulers_transform;
-		
+		bool m_cell_lines_shown = false;
+
 		
 	public:
 		QString title() const;
@@ -87,11 +88,12 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
-		void setCellRulersShown(bool shown);
 	
 		bool startElementPlacement(const ElementsLocation &location,
 					   const QPointF &scene_pos);
 		QPointF defaultPlacementPos() const;
+		void setCellRulersShown(bool shown);
+		void setCellLinesShown(bool shown);
 
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
@@ -106,6 +108,7 @@ class DiagramView : public PaletteGraphicsView
 		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
 		bool viewportEvent(QEvent *event) override;
+		void drawBackground(QPainter *painter, const QRectF &rect) override;
 		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;

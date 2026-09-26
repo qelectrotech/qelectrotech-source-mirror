@@ -44,6 +44,8 @@ class CellRuler : public QWidget
 		void paintEvent(QPaintEvent *event) override;
 
 	private:
+		QColor background() const;
+
 		Qt::Orientation m_orientation;
 		DiagramView *m_view;
 		/// Pixels before the viewport starts, left empty: the corner the
