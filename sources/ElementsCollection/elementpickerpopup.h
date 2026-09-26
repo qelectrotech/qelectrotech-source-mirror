@@ -71,13 +71,15 @@ class ElementPickerPopup : public QFrame
 		void chooseCurrent();
 		void showPalette();
 		void show(const QPoint &global_pos);
-		void setCommands(const QList<QAction *> &commands);
+		void setCommands(const QStringList &ids);
 		QAction *commandAction(const QString &id) const;
-		QListWidgetItem *commandItem(const QString &id, bool icon_only) const;
+		QListWidgetItem *barItem(const QString &id, bool icon_only) const;
 		void startCustomising();
 		void fillCustomising(const QStringList &ids);
 		void finishCustomising(bool save);
+		void runSymbolSearch();
 		void setPickerVisible(bool visible);
+		void keepOnScreen(const QPoint &global_pos);
 		int loadPaletteDir(const QString &dir_path, const QString &prefix,
 				   int depth);
 
@@ -96,6 +98,10 @@ class ElementPickerPopup : public QFrame
 		QWidget *m_editor = nullptr;
 		QListWidget *m_edit_row = nullptr;
 		QListWidget *m_edit_available = nullptr;
+			/// Element search, for pinning elements to the bar
+		QWidget *m_edit_symbols_box = nullptr;
+		QLineEdit *m_edit_symbols_search = nullptr;
+		QListWidget *m_edit_symbols = nullptr;
 		bool m_palette_mode = true;
 };
 

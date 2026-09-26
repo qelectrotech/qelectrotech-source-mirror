@@ -22,6 +22,8 @@
 #include <QCoreApplication>
 #include <QSettings>
 
+#include <algorithm>
+
 namespace {
 QString settingsKey(ShortcutBarSettings::Context context)
 {
@@ -139,4 +141,22 @@ QStringList ShortcutBarSettings::availableIds()
 		}
 	}
 	return ids;
+}
+
+/**
+	@return true if @a id is a pinned element's collection path rather than
+	a command id. Command ids never contain "://".
+*/
+bool ShortcutBarSettings::isElement(const QString &id)
+{
+	return id.contains(QLatin1String("://"));
+}
+
+/**
+	@return true if the row for @a context holds at least one element
+*/
+bool ShortcutBarSettings::hasElements(Context context)
+{
+	const QStringList list = ids(context);
+	return std::any_of(list.cbegin(), list.cend(), &ShortcutBarSettings::isElement);
 }

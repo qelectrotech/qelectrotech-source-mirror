@@ -30,6 +30,10 @@
 	so any registered command can go on it and the bar needs no command list
 	of its own. Stored in QSettings, one key per context; a context the user
 	never changed uses the defaults below.
+
+	A row can also hold elements the user pinned, by collection path
+	("common://…", "custom://…", "company://…"), mixed in with the commands.
+	Clicking one places that element.
 */
 class ShortcutBarSettings
 {
@@ -46,6 +50,8 @@ class ShortcutBarSettings
 		static QStringList defaultIds(Context context);
 		static void setIds(Context context, const QStringList &ids);
 		static QStringList availableIds();
+		static bool isElement(const QString &id);
+		static bool hasElements(Context context);
 };
 
 #endif // SHORTCUTBARSETTINGS_H
