@@ -2894,7 +2894,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		//Absent in files written before shapes carried a uuid: keep the
 		//one this item already has, Diagram::fromXml() settles it.
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
-	if (!uuid.isNull()) m_uuid = uuid;
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 
 	// fromXml() is also used to *restore* an already-displayed item's
 	// state (PromoteShapeCommand's undo/redo), not just to populate a

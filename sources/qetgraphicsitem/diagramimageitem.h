@@ -93,8 +93,8 @@ class DiagramImageItem : public QetGraphicsItem {
 	virtual bool fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
 	QUuid uuid() const {return m_uuid;}
-	void setUuid(const QUuid &uuid) {m_uuid = uuid;}
-	void newUuid() {m_uuid = QUuid::createUuid();}	//create new uuid for this item
+	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
+	void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
@@ -131,6 +131,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	signals:
 	void pixmapChanged();
 	void transformChanged();
+	void uuidChanged();
 
 	protected:
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;

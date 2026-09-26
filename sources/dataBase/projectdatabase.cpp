@@ -24,12 +24,17 @@
 #include "../elementprovider.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetgraphicsitem/qetshapeitem.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
 
 #include <QLocale>
+#include <QMetaEnum>
+#include <QTextDocument>
 #include <QFile>
 #include <QRegularExpression>
 #include <QSqlDriver>
@@ -103,6 +108,7 @@ void projectDataBase::updateDB()
 		//refresh, and what they read back is unchanged either way.
 	if (!m_content_changed)
 	{
+		flushDrawingItems();
 		emit dataBaseUpdated();
 		return;
 	}
@@ -112,6 +118,7 @@ void projectDataBase::updateDB()
 	populateElementTable();
 	populateElementInfoTable();
 	populateConductorTable();
+	populateDrawingItemTables();
 	m_content_changed = false;
 
 	emit dataBaseUpdated();
@@ -210,6 +217,11 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 */
 QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	QString reason;
+
+		//Drawing-item rows are rewritten lazily, see drawingItemChanged().
+		//Every read from outside comes through here, so this is the one
+		//place the queue has to be emptied for a reader to see current rows.
+	flushDrawingItems();
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -389,6 +401,13 @@ void projectDataBase::addDiagram(Diagram *diagram)
 		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
 	}
 
+		//A folio put back by undoing its removal comes with its items already
+		//on it, and their rows went with it: queue them again.
+	const QList<QGraphicsItem *> items = diagram->items();
+	for (QGraphicsItem *item : items) {
+		addDrawingItem(item);
+	}
+
 		//The information "folio" of other existing diagram can have the variable %total,
 		//so when a new diagram is added this variable change.
 		//We need to update this information in the database.
@@ -446,6 +465,31 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 				 << m_cascade_remove_element_query.lastError();
 		m_data_base.rollback();
 		return;
+	}
+
+	for (const QString &table : {QStringLiteral("shape"),
+								 QStringLiteral("independent_text"),
+								 QStringLiteral("image")})
+	{
+		QSqlQuery cascade(m_data_base);
+		cascade.prepare(QStringLiteral("DELETE FROM %1 WHERE diagram_uuid = :uuid").arg(table));
+		cascade.bindValue(QStringLiteral(":uuid"), uuid_str);
+		if (!cascade.exec()) {
+			qDebug() << "projectDataBase::removeDiagram" << table << "cascade error : "
+					 << cascade.lastError();
+			m_data_base.rollback();
+			return;
+		}
+	}
+		//The folio's items keep existing (the removal can be undone), but
+		//their rows are gone: forget them, so that nothing is deleted or
+		//skipped later on the strength of a row that no longer exists.
+	const QList<QObject *> tracked = m_drawing_item_row.keys();
+	for (QObject *object : tracked) {
+		auto *item = dynamic_cast<QGraphicsItem *>(object);
+		if (item && item->scene() == diagram) {
+			forgetDrawingItem(object);
+		}
 	}
 
 	m_remove_diagram_query.bindValue(":uuid", uuid_str);
@@ -606,6 +650,305 @@ void projectDataBase::bindConductorValues(QSqlQuery &query, Conductor *conductor
 	query.bindValue(QStringLiteral(":text"), conductor->properties().text);
 }
 
+namespace {
+
+/// Table holding @p object's row, or an empty string if it has none.
+QString drawingItemTable(QObject *object)
+{
+	if (qobject_cast<QetShapeItem *>(object))        return QStringLiteral("shape");
+	if (qobject_cast<IndependentTextItem *>(object)) return QStringLiteral("independent_text");
+	if (qobject_cast<DiagramImageItem *>(object))    return QStringLiteral("image");
+	return QString();
+}
+
+QUuid drawingItemUuid(QObject *object)
+{
+	if (auto s = qobject_cast<QetShapeItem *>(object))        return s->uuid();
+	if (auto t = qobject_cast<IndependentTextItem *>(object)) return t->uuid();
+	if (auto i = qobject_cast<DiagramImageItem *>(object))    return i->uuid();
+	return QUuid();
+}
+
+} // namespace
+
+/**
+	@brief projectDataBase::addDrawingItem
+	Start keeping a row for a shape, an independent text or an image that
+	was just added to a folio. Anything else is ignored, so Diagram::addItem()
+	can pass every item it gets.
+
+	The row is not written here but queued, like every later change to it:
+	see drawingItemChanged() for why.
+	@param item
+*/
+void projectDataBase::addDrawingItem(QGraphicsItem *item)
+{
+	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
+	if (!object || drawingItemTable(object).isEmpty()) {
+		return;
+	}
+
+	const auto unique = Qt::UniqueConnection;
+	connect(object, &QGraphicsObject::xChanged,        this, &projectDataBase::drawingItemChanged, unique);
+	connect(object, &QGraphicsObject::yChanged,        this, &projectDataBase::drawingItemChanged, unique);
+	connect(object, &QGraphicsObject::rotationChanged, this, &projectDataBase::drawingItemChanged, unique);
+	connect(object, &QObject::destroyed,               this, &projectDataBase::drawingItemDestroyed, unique);
+
+	if (auto shape = qobject_cast<QetShapeItem *>(object)) {
+		connect(shape, &QetShapeItem::uuidChanged,      this, &projectDataBase::drawingItemChanged, unique);
+		connect(shape, &QetShapeItem::geometryChanged,  this, &projectDataBase::drawingItemChanged, unique);
+		connect(shape, &QetShapeItem::transformChanged, this, &projectDataBase::drawingItemChanged, unique);
+		connect(shape, &QetShapeItem::penChanged,       this, &projectDataBase::drawingItemChanged, unique);
+		connect(shape, &QetShapeItem::brushChanged,     this, &projectDataBase::drawingItemChanged, unique);
+	}
+	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
+		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);
+			//Sent by the document, not the item: drawingItemChanged() walks
+			//back up to the item. It is the one signal that catches every way
+			//the text changes -- typing, undo, a script's setTextContent().
+		connect(text->document(), &QTextDocument::contentsChanged,
+				this, &projectDataBase::drawingItemChanged, unique);
+	}
+	else if (auto image = qobject_cast<DiagramImageItem *>(object)) {
+		connect(image, &DiagramImageItem::uuidChanged,      this, &projectDataBase::drawingItemChanged, unique);
+		connect(image, &DiagramImageItem::transformChanged, this, &projectDataBase::drawingItemChanged, unique);
+		connect(image, &DiagramImageItem::pixmapChanged,    this, &projectDataBase::drawingItemChanged, unique);
+	}
+
+	m_dirty_drawing_items.insert(object);
+}
+
+/**
+	@brief projectDataBase::removeDrawingItem
+	Drop the row of a shape, independent text or image taken off its folio.
+	The item itself usually lives on in the undo stack, so it is also
+	disconnected: a change to it there must not bring its row back.
+	@param item
+*/
+void projectDataBase::removeDrawingItem(QGraphicsItem *item)
+{
+	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
+	if (!object || drawingItemTable(object).isEmpty()) {
+		return;
+	}
+
+	disconnect(object, nullptr, this, nullptr);
+	if (auto text = qobject_cast<IndependentTextItem *>(object)) {
+		disconnect(text->document(), nullptr, this, nullptr);
+	}
+
+	const QUuid row = m_drawing_item_row.value(object);
+	if (!row.isNull() && m_drawing_row_owner.value(row) == object)
+	{
+		QSqlQuery remove(m_data_base);
+		remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid")
+					   .arg(drawingItemTable(object)));
+		remove.bindValue(QStringLiteral(":uuid"), row.toString());
+		if (!remove.exec()) {
+			qDebug() << "projectDataBase::removeDrawingItem delete error : " << remove.lastError();
+		}
+	}
+	forgetDrawingItem(object);
+}
+
+/**
+	@brief projectDataBase::drawingItemChanged
+	Queue the sender's row to be rewritten.
+
+	Queued rather than written: a move sends xChanged/yChanged for every
+	mouse step of every selected item, and nothing reads the rows between
+	two steps. newQuery() and updateDB() flush the queue before anything
+	does, so a reader never sees a stale row -- a queued write only costs a
+	set insertion.
+*/
+void projectDataBase::drawingItemChanged()
+{
+	QObject *object = sender();
+		//QTextDocument::contentsChanged: the item is an ancestor of the
+		//document (item -> text control -> document).
+	while (object && drawingItemTable(object).isEmpty()) {
+		object = object->parent();
+	}
+	if (object) {
+		m_dirty_drawing_items.insert(object);
+	}
+}
+
+/**
+	@brief projectDataBase::drawingItemDestroyed
+	An item deleted while still on its folio (e.g. by the scene's own
+	destructor) never went through removeDrawingItem(). Its type can no
+	longer be asked -- this runs from QObject's destructor -- so its row,
+	if it wrote one, is looked for in all three tables.
+	@param object
+*/
+void projectDataBase::drawingItemDestroyed(QObject *object)
+{
+	const QUuid row = m_drawing_item_row.value(object);
+	if (!row.isNull() && m_drawing_row_owner.value(row) == object)
+	{
+		for (const QString &table : {QStringLiteral("shape"),
+									 QStringLiteral("independent_text"),
+									 QStringLiteral("image")})
+		{
+			QSqlQuery remove(m_data_base);
+			remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid").arg(table));
+			remove.bindValue(QStringLiteral(":uuid"), row.toString());
+			remove.exec();
+		}
+	}
+	forgetDrawingItem(object);
+}
+
+void projectDataBase::forgetDrawingItem(QObject *object)
+{
+	const QUuid row = m_drawing_item_row.take(object);
+	if (!row.isNull() && m_drawing_row_owner.value(row) == object) {
+		m_drawing_row_owner.remove(row);
+	}
+	m_dirty_drawing_items.remove(object);
+}
+
+/**
+	@brief projectDataBase::writeDrawingItem
+	Write @p object's row under its current uuid.
+	@return false if the row must wait: another live item still owns that
+	uuid. That is a pasted copy in the moment between being added to the
+	folio and PasteDiagramCommand giving it its own uuid; writing then would
+	overwrite its source's row with the copy's position. The copy's
+	uuidChanged() queues it again once it has one.
+*/
+bool projectDataBase::writeDrawingItem(QObject *object)
+{
+	auto *item = dynamic_cast<QGraphicsItem *>(object);
+	auto *diagram = item ? qobject_cast<Diagram *>(item->scene()) : nullptr;
+	if (!diagram || !m_project || !m_project->diagrams().contains(diagram)) {
+			//Not on a folio of this project (any more): nothing to write,
+			//and nothing to wait for.
+		return true;
+	}
+
+	const QUuid uuid = drawingItemUuid(object);
+	QObject *owner = m_drawing_row_owner.value(uuid);
+	if (owner && owner != object) {
+		return false;
+	}
+
+	QSqlQuery *query = nullptr;
+	const QRectF rect = item->sceneBoundingRect();
+	if (auto shape = qobject_cast<QetShapeItem *>(object))
+	{
+		query = &m_insert_shape_query;
+		const QMetaEnum type = QetShapeItem::staticMetaObject.enumerator(
+					QetShapeItem::staticMetaObject.indexOfEnumerator("ShapeType"));
+		query->bindValue(QStringLiteral(":type"), QString::fromLatin1(type.valueToKey(shape->shapeType())));
+		query->bindValue(QStringLiteral(":color"), shape->pen().color().name());
+		query->bindValue(QStringLiteral(":fill"), shape->brush().style() == Qt::NoBrush
+						 ? QStringLiteral("none")
+						 : shape->brush().color().name());
+	}
+	else if (auto text = qobject_cast<IndependentTextItem *>(object))
+	{
+		query = &m_insert_independent_text_query;
+		query->bindValue(QStringLiteral(":text"), text->toPlainText());
+		query->bindValue(QStringLiteral(":rotation"), text->rotation());
+	}
+	else if (auto image = qobject_cast<DiagramImageItem *>(object))
+	{
+		query = &m_insert_image_query;
+		query->bindValue(QStringLiteral(":pixel_width"), image->pixmap().width());
+		query->bindValue(QStringLiteral(":pixel_height"), image->pixmap().height());
+	}
+	if (!query) {
+		return true;
+	}
+
+		//Renewed since its last write (a paste, a folio duplication): its
+		//old row was its own, and describes nothing now.
+	const QUuid previous = m_drawing_item_row.value(object);
+	if (!previous.isNull() && previous != uuid
+		&& m_drawing_row_owner.value(previous) == object)
+	{
+		QSqlQuery remove(m_data_base);
+		remove.prepare(QStringLiteral("DELETE FROM %1 WHERE uuid = :uuid")
+					   .arg(drawingItemTable(object)));
+		remove.bindValue(QStringLiteral(":uuid"), previous.toString());
+		remove.exec();
+		m_drawing_row_owner.remove(previous);
+	}
+
+	query->bindValue(QStringLiteral(":uuid"), uuid.toString());
+	query->bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query->bindValue(QStringLiteral(":pos"), diagram->convertPosition(rect.topLeft()).toString());
+	query->bindValue(QStringLiteral(":x"), rect.x());
+	query->bindValue(QStringLiteral(":y"), rect.y());
+	query->bindValue(QStringLiteral(":width"), rect.width());
+	query->bindValue(QStringLiteral(":height"), rect.height());
+	if (!query->exec()) {
+		qDebug() << "projectDataBase::writeDrawingItem error : " << query->lastError();
+		return true;
+	}
+
+	m_drawing_item_row.insert(object, uuid);
+	m_drawing_row_owner.insert(uuid, object);
+	return true;
+}
+
+/**
+	@brief projectDataBase::flushDrawingItems
+	Write every queued drawing-item row. A row that has to wait for its uuid
+	(see writeDrawingItem()) stays queued.
+*/
+void projectDataBase::flushDrawingItems()
+{
+	if (m_dirty_drawing_items.isEmpty()) {
+		return;
+	}
+
+	const QSet<QObject *> dirty = m_dirty_drawing_items;
+		//One transaction for the batch, unless a caller already holds one.
+	const bool own_transaction = m_data_base.transaction();
+	for (QObject *object : dirty) {
+		if (writeDrawingItem(object)) {
+			m_dirty_drawing_items.remove(object);
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::populateDrawingItemTables
+	Rebuild the shape, independent_text and image tables from every folio.
+*/
+void projectDataBase::populateDrawingItemTables()
+{
+	QSqlQuery query_(m_data_base);
+	query_.exec(QStringLiteral("DELETE FROM shape"));
+	query_.exec(QStringLiteral("DELETE FROM independent_text"));
+	query_.exec(QStringLiteral("DELETE FROM image"));
+	m_drawing_item_row.clear();
+	m_drawing_row_owner.clear();
+	m_dirty_drawing_items.clear();
+
+		//Queued directly, not through addDrawingItem(): every one of them
+		//came onto its folio through Diagram::addItem(), which connected it
+		//already, and a full rebuild runs on every load.
+	for (auto diagram : m_project->diagrams())
+	{
+		const QList<QGraphicsItem *> items = diagram->items();
+		for (QGraphicsItem *item : items)
+		{
+			QGraphicsObject *object = item->toGraphicsObject();
+			if (object && !drawingItemTable(object).isEmpty()) {
+				m_dirty_drawing_items.insert(object);
+			}
+		}
+	}
+	flushDrawingItems();
+}
+
 /**
 	@brief projectDataBase::createDataBase
 	Create the data base
@@ -735,9 +1078,37 @@ bool projectDataBase::createDataBase()
 		}
 	}
 
+		//The folio's drawing furniture: shapes, independent texts, images.
+		//x, y, width and height are the item's bounding rect on the folio,
+		//pos the folio cell of its top left corner, as for element.
+	const QString drawing_columns(
+				"uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+				"diagram_uuid VARCHAR(50) NOT NULL, "
+				"pos VARCHAR(6), "
+				"x REAL, y REAL, width REAL, height REAL, ");
+	for (const QString &table : {
+			QStringLiteral("CREATE TABLE shape (") + drawing_columns +
+				"type VARCHAR(20), color VARCHAR(20), fill VARCHAR(20), "
+				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
+			QStringLiteral("CREATE TABLE independent_text (") + drawing_columns +
+				"text TEXT, rotation REAL, "
+				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
+			QStringLiteral("CREATE TABLE image (") + drawing_columns +
+				"pixel_width INTEGER, pixel_height INTEGER, "
+				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
+			QStringLiteral("CREATE INDEX idx_shape_diagram ON shape (diagram_uuid)"),
+			QStringLiteral("CREATE INDEX idx_independent_text_diagram ON independent_text (diagram_uuid)"),
+			QStringLiteral("CREATE INDEX idx_image_diagram ON image (diagram_uuid)") })
+	{
+		if (!query_.exec(table)) {
+			qDebug() << "drawing item table query : " << query_.lastError();
+		}
+	}
+
 	createElementNomenclatureView();
 	createSummaryView();
 	createWiringListView();
+	createDrawingItemView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -932,6 +1303,32 @@ void projectDataBase::createWiringListView()
 	}
 }
 
+/**
+	@brief projectDataBase::createDrawingItemView
+	One row per shape, independent text and image, whichever table holds it:
+	find anything by uuid without knowing its kind first. folio is the
+	folio's position in the project, starting at 1; description is the
+	shape type, the text, or empty for an image.
+*/
+void projectDataBase::createDrawingItemView()
+{
+	QSqlQuery query(m_data_base);
+	const QString create_view(
+				"CREATE VIEW drawing_item_view AS "
+				"SELECT i.uuid, i.kind, d.pos AS folio, i.diagram_uuid, i.pos, "
+				"i.x, i.y, i.width, i.height, i.description FROM ("
+				"SELECT uuid, 'shape' AS kind, diagram_uuid, pos, x, y, width, height, "
+				"type AS description FROM shape "
+				"UNION ALL SELECT uuid, 'text', diagram_uuid, pos, x, y, width, height, "
+				"text FROM independent_text "
+				"UNION ALL SELECT uuid, 'image', diagram_uuid, pos, x, y, width, height, "
+				"'' FROM image"
+				") AS i LEFT JOIN diagram AS d ON d.uuid = i.diagram_uuid");
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
 void projectDataBase::populateDiagramTable()
 {
 	QSqlQuery query_(m_data_base);
@@ -1116,6 +1513,23 @@ void projectDataBase::prepareQuery()
 
 	m_remove_diagram_query = QSqlQuery(m_data_base);
 	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");
+
+		//DRAWING ITEMS. OR REPLACE: a row is rewritten in place on every
+		//change, see writeDrawingItem().
+	const QString drawing_columns("uuid, diagram_uuid, pos, x, y, width, height");
+	const QString drawing_values(":uuid, :diagram_uuid, :pos, :x, :y, :width, :height");
+	m_insert_shape_query = QSqlQuery(m_data_base);
+	m_insert_shape_query.prepare("INSERT OR REPLACE INTO shape (" + drawing_columns +
+								 ", type, color, fill) VALUES (" + drawing_values +
+								 ", :type, :color, :fill)");
+	m_insert_independent_text_query = QSqlQuery(m_data_base);
+	m_insert_independent_text_query.prepare("INSERT OR REPLACE INTO independent_text (" + drawing_columns +
+											", text, rotation) VALUES (" + drawing_values +
+											", :text, :rotation)");
+	m_insert_image_query = QSqlQuery(m_data_base);
+	m_insert_image_query.prepare("INSERT OR REPLACE INTO image (" + drawing_columns +
+								 ", pixel_width, pixel_height) VALUES (" + drawing_values +
+								 ", :pixel_width, :pixel_height)");
 
 		//INSERT DIAGRAM INFO
 	m_insert_diagram_info_query = QSqlQuery(m_data_base);
@@ -1345,6 +1759,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	// VACUUM INTO creates a standalone copy of the current database without
 	// requiring access to the SQLite driver's native connection handle.
 	const auto escaped_path = path_.replace("'", "''");
+	db->flushDrawingItems();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();

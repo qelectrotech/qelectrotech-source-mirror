@@ -74,7 +74,8 @@ class QetShapeItem : public QetGraphicsItem
 		void YRadiusChanged();
 		void transformChanged();
 		void arcChanged();
-		void geometryChanged();   // P1/P2, polygon points, or path nodes changed -- lets the properties panel stay in sync while a handle is dragged, not just when it's typed into
+		void geometryChanged();
+		void uuidChanged();   // P1/P2, polygon points, or path nodes changed -- lets the properties panel stay in sync while a handle is dragged, not just when it's typed into
 
 	public:
 		enum ShapeType {Line	  =1,
@@ -155,8 +156,8 @@ class QetShapeItem : public QetGraphicsItem
 		virtual bool	    fromXml (const QDomElement &);
 		virtual QDomElement toXml (QDomDocument &document) const;
 		QUuid uuid() const {return m_uuid;}
-		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
-		void newUuid() {m_uuid = QUuid::createUuid();}	//create new uuid for this item
+		void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
+		void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
 		virtual bool toDXF (const QString &filepath,const QPen &pen);
 
 		void editProperty() override;

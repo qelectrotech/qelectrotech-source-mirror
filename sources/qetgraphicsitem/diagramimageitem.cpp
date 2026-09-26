@@ -1339,7 +1339,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	}
 
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
-	if (!uuid.isNull()) m_uuid = uuid;
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 
 	QDomNode image_node = e.firstChild();
 	if (!image_node.isText()) {

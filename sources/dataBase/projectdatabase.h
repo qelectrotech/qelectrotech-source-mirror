@@ -23,12 +23,16 @@
 #include <QSqlQuery>
 #include <QPointer>
 #include <QFileDialog>
+#include <QHash>
+#include <QSet>
+#include <QUuid>
 
 class Element;
 class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
+class QGraphicsItem;
 
 /**
 	@brief The projectDataBase class
@@ -97,9 +101,17 @@ class projectDataBase : public QObject
 		void removeConductor    (Conductor *conductor);
 		void updateConductor    (Conductor *conductor);
 
+			//Shapes, independent texts and images: the folio's drawing
+			//furniture. Anything else passed here is ignored.
+		void addDrawingItem     (QGraphicsItem *item);
+		void removeDrawingItem  (QGraphicsItem *item);
+
 	private slots:
 			//Refresh the sender()'s row after Conductor::setProperties().
 		void conductorPropertiesChanged();
+			//Queue the sender()'s drawing-item row for rewriting.
+		void drawingItemChanged();
+		void drawingItemDestroyed(QObject *object);
 
 	public:
 
@@ -111,11 +123,16 @@ class projectDataBase : public QObject
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void createWiringListView();
+		void createDrawingItemView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
+		void populateDrawingItemTables();
+		bool writeDrawingItem(QObject *object);
+		void flushDrawingItems();
+		void forgetDrawingItem(QObject *object);
 		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
 		void watchConductor(Conductor *conductor);
 		void insertTerminal(Terminal *terminal);
@@ -153,7 +170,20 @@ class projectDataBase : public QObject
 				  m_cascade_remove_element_info_query,
 				  m_cascade_remove_terminal_query,
 				  m_cascade_remove_conductor_query,
-				  m_cascade_remove_element_query;
+				  m_cascade_remove_element_query,
+				  m_insert_shape_query,
+				  m_insert_independent_text_query,
+				  m_insert_image_query;
+
+			//Which uuid's row each drawing item last wrote, and which item
+			//wrote each row. A pasted copy is added to the folio still
+			//carrying its source's uuid and renewed only afterwards, so two
+			//live items can briefly share one: the row belongs to whichever
+			//wrote it, and the other waits in m_dirty_drawing_items until its
+			//uuid is its own. @see writeDrawingItem().
+		QHash<QObject *, QUuid> m_drawing_item_row;
+		QHash<QUuid, QObject *> m_drawing_row_owner;
+		QSet<QObject *> m_dirty_drawing_items;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

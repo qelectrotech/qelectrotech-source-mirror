@@ -64,7 +64,7 @@ IndependentTextItem::~IndependentTextItem()
 */
 void IndependentTextItem::fromXml(const QDomElement &e) {
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
-	if (!uuid.isNull()) m_uuid = uuid;
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setHtml(e.attribute("text"));
 	setRotation(e.attribute("rotation").toDouble());

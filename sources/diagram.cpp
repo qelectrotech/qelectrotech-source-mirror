@@ -1918,6 +1918,13 @@ void Diagram::addItem(QGraphicsItem *item)
 			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->addDrawingItem(item);
+			break;
+		}
 		default: {break;}
 	}
 }
@@ -1947,6 +1954,13 @@ void Diagram::removeItem(QGraphicsItem *item)
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
 			m_project->dataBase()->removeConductor(conductor);
+			break;
+		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->removeDrawingItem(item);
 			break;
 		}
 		default: {break;}
