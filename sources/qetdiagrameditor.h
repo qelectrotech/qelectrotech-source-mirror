@@ -45,6 +45,7 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
 
@@ -217,6 +218,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
 		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
+		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
@@ -272,6 +274,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		QAction *m_command_search = nullptr;
+		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			/// Last element placed from the collection, for "insert last"
 		ElementsLocation m_last_inserted_element;
