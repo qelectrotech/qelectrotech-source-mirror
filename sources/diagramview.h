@@ -24,6 +24,7 @@
 #include <QClipboard>
 #include "palettegraphicsview.h"
 
+class CellRuler;
 class Conductor;
 class Diagram;
 class QETDiagramEditor;
@@ -62,7 +63,13 @@ class DiagramView : public PaletteGraphicsView
 		QList<QAction *>  m_separators;
 		QPolygonF m_free_rubberband;
 		bool m_free_rubberbanding = false;
-		
+		CellRuler *m_top_ruler = nullptr;
+		CellRuler *m_side_ruler = nullptr;
+		bool m_cell_rulers_shown = false;
+		/// Last viewport transform the rulers were painted for
+		QTransform m_rulers_transform;
+		bool m_cell_lines_shown = false;
+
 		
 	public:
 		QString title() const;
@@ -82,6 +89,8 @@ class DiagramView : public PaletteGraphicsView
 		bool startElementPlacement(const ElementsLocation &location,
 					   const QPointF &scene_pos);
 		QPointF defaultPlacementPos() const;
+		void setCellRulersShown(bool shown);
+		void setCellLinesShown(bool shown);
 
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
@@ -95,6 +104,8 @@ class DiagramView : public PaletteGraphicsView
 		///Set for one call only, by the Escape handler, to let focus leave the view.
 		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
+		bool viewportEvent(QEvent *event) override;
+		void drawBackground(QPainter *painter, const QRectF &rect) override;
 		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
@@ -117,6 +128,8 @@ class DiagramView : public PaletteGraphicsView
 		QRectF viewedSceneRect() const;
 		bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 		bool gestures() const;
+		void updateCellRulers();
+		void placeCellRulers();
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which
@@ -147,6 +160,7 @@ class DiagramView : public PaletteGraphicsView
 		void zoomFit();
 		void zoomContent();
 		void zoomReset();
+		void zoomToRect(const QRectF &rect);
 		void cut();
 		void copy();
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);

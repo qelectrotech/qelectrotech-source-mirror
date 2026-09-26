@@ -2231,6 +2231,7 @@ void QETApp::configureQET()
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
 	cd.setParent(nullptr, cd.windowFlags());
+	emit textGridChanged();
 
 #ifdef QET_SPACEMOUSE_SUPPORT
 	if (m_space_mouse_listener) {

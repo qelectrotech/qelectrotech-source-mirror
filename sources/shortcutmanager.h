@@ -26,6 +26,7 @@
 #include <QStringList>
 
 class QObject;
+class QAction;
 
 /**
 	@brief The ShortcutManager class
@@ -84,6 +85,7 @@ class ShortcutManager
 			/// multi-window case, not a guaranteed-correct dispatch.
 			/// @return whether a live target was found and triggered.
 		bool trigger(const QString &id) const;
+		QAction *action(const QString &id, const QObject *owner) const;
 
 	private:
 		ShortcutManager() = default;

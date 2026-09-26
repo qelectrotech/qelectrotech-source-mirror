@@ -84,12 +84,25 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+# bordercelllabels.h is header-only too.
+add_executable(tst_bordercelllabels tst_bordercelllabels.cpp)
+add_test(NAME tst_bordercelllabels COMMAND tst_bordercelllabels)
+target_include_directories(tst_bordercelllabels PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_bordercelllabels PRIVATE Qt::Test)
+
 # contactusage.h is a header-only helper holding the contact counting
 # rules, so this test builds independently of the rest of the QET sources.
 add_executable(tst_contactusage tst_contactusage.cpp)
 add_test(NAME tst_contactusage COMMAND tst_contactusage)
 target_include_directories(tst_contactusage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_contactusage PRIVATE Qt::Test)
+
+# textgrid.h is a header-only helper holding the text snap rules, so this
+# test builds independently of the rest of the QET sources.
+add_executable(tst_textgrid tst_textgrid.cpp)
+add_test(NAME tst_textgrid COMMAND tst_textgrid)
+target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
 add_executable(
   tst_qetpalette
@@ -142,6 +155,19 @@ add_executable(
 add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# CommandSearchPopup: accent-blind matching, ranking, and that Enter runs
+# only the owning window's highlighted, enabled command.
+add_executable(
+  tst_commandsearch
+  tst_commandsearch.cpp
+  ${QET_DIR}/sources/commandsearchpopup.cpp
+  ${QET_DIR}/sources/commandsearchpopup.h
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_commandsearch COMMAND tst_commandsearch)
+set_tests_properties(tst_commandsearch PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_commandsearch PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_commandsearch PRIVATE Qt::Test Qt::Widgets)
 
 # QETSql::isSingleReadOnlyStatement() -- read-only enforcement for every
 # project-database query, including the ones a .qet file carries. Compiles

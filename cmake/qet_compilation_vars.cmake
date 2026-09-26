@@ -168,6 +168,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
   ${QET_DIR}/sources/bordertitleblock.h
+  ${QET_DIR}/sources/bordercelllabels.h
+  ${QET_DIR}/sources/cellruler.cpp
+  ${QET_DIR}/sources/cellruler.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/conductornumexport.cpp
@@ -282,6 +285,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/recentfiles.h
   ${QET_DIR}/sources/shortcutmanager.cpp
   ${QET_DIR}/sources/shortcutmanager.h
+  ${QET_DIR}/sources/commandsearchpopup.cpp
+  ${QET_DIR}/sources/commandsearchpopup.h
   ${QET_DIR}/sources/titleblockcell.cpp
   ${QET_DIR}/sources/titleblockcell.h
   ${QET_DIR}/sources/titleblockproperties.cpp

@@ -22,8 +22,11 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetdiagrameditor.h"
+#include "textgrid.h"
 
 #include <QObject>
+#include <QSettings>
 
 /**
 	@brief ElementTextsMover::ElementTextsMover
@@ -80,6 +83,19 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 		return -1;
 	
 	m_movement_running = true;
+
+	m_status_bar.clear();
+	if (!diagram->views().isEmpty())
+		if (const auto qde = QETApp::diagramEditorAncestorOf(diagram->views().at(0)))
+			m_status_bar = qde->statusBar();
+	if (m_status_bar)
+	{
+		const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
+		m_status_bar->showMessage(divisor > 0
+			? QObject::tr("Grille des textes %1. Relâcher Maj et maintenir Ctrl pour placer librement.")
+				  .arg(TextGrid::ratioLabel(divisor))
+			: QObject::tr("Grille des textes désactivée."));
+	}
 	
 	return m_items_hash.size();
 }
@@ -101,7 +117,7 @@ void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 		button_down_parent_pos = qgi->mapToParent(qgi->mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 		
 		QPointF new_pos = m_items_hash.value(qgi) + current_parent_pos - button_down_parent_pos;
-		event->modifiers() == Qt::ControlModifier ? qgi->setPos(new_pos) : qgi->setPos(Diagram::snapToGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? qgi->setPos(new_pos) : qgi->setPos(Diagram::snapToTextGrid(new_pos));
 	}
 }
 
@@ -112,13 +128,19 @@ void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 void ElementTextsMover::endMovement()
 {	
 		//No movement or no items to move
+	if (m_status_bar)
+		m_status_bar->clearMessage();
+
 	if(!m_movement_running || m_items_hash.isEmpty())
 		return;
 			
 		//Movement is null
 	QGraphicsItem *qgi = m_items_hash.keys().first();
 	if(qgi->pos() == m_items_hash.value(qgi))
+	{
+		m_movement_running = false;
 		return;
+	}
 					 
 	QUndoCommand *undo = new QUndoCommand(undoText());
 	
