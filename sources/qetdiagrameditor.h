@@ -45,6 +45,7 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class ElementPickerPopup;
 class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
@@ -128,6 +129,11 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updatePasteAction();
 		void slot_updateWindowsMenu();
 		void slot_updateAutoNumDock();
+		void insertElementFromCollection(const ElementsLocation &location);
+		void insertLastElement();
+		void rememberPlacedElement(const ElementsLocation &location);
+		void showElementPicker();
+		void showShortcutBar();
 		void generateTerminalBlock();
 		void setWindowedMode();
 		void setTabbedMode();
@@ -270,9 +276,16 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		ElementPickerPopup *elementPicker();
+		QAction *m_show_element_picker = nullptr;
+		QAction *m_show_shortcut_bar = nullptr;
+		ElementPickerPopup *m_element_picker = nullptr; ///< Built on first use
 		QAction *m_command_search = nullptr;
 		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
+			/// Last element placed from the collection, for "insert last"
+		ElementsLocation m_last_inserted_element;
+		QAction *m_insert_last_element = nullptr;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
 			/// Elements panel
