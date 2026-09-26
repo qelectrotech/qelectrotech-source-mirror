@@ -92,12 +92,15 @@ void CellRuler::paintEvent(QPaintEvent *event)
 		return;
 	}
 	const BorderTitleBlock &border = diagram->border_and_titleblock;
-	const QRectF inside = border.insideBorderRect();
 	const QTransform transform = m_view->viewportTransform();
 
 	const int count = horizontal ? border.columnsCount() : border.rowsCount();
 	const qreal cell_size = horizontal ? border.columnsWidth() : border.rowsHeight();
-	const qreal first = horizontal ? inside.left() : inside.top();
+		//Where BorderTitleBlock::draw() puts the first cell: after the
+		//other header's room even when that header is hidden, which
+		//insideBorderRect() does not account for
+	const qreal first = Diagram::margin
+			+ (horizontal ? border.rowsHeaderWidth() : border.columnsHeaderHeight());
 	const qreal scale = horizontal ? transform.m11() : transform.m22();
 	const qreal offset = (horizontal ? transform.dx() : transform.dy()) + m_leading_space;
 	const qreal cell_pixels = cell_size * scale;
