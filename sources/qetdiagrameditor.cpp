@@ -949,6 +949,13 @@ void QETDiagramEditor::setUpActions()
 	add_path->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
+		//No default key, but an id: they can then be found by the command
+		//search and bound in the Shortcuts page, like every other command.
+	for (QAction *action : m_add_item_actions_group.actions()) {
+		ShortcutManager::instance().registerAction(
+			action, "diagrameditor.add_" + action->data().toString(),
+			tr("Éditeur de schémas"), QKeySequence());
+	}
 
 		//Depth action
 	m_depth_action_group = QET::depthActionGroup(this);
