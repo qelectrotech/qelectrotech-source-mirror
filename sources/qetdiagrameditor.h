@@ -132,6 +132,7 @@ class QETDiagramEditor : public QETMainWindow
 		void insertLastElement();
 		void rememberPlacedElement(const ElementsLocation &location);
 		void showElementPicker();
+		void showShortcutBar();
 		void generateTerminalBlock();
 		void setWindowedMode();
 		void setTabbedMode();
@@ -273,7 +274,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		ElementPickerPopup *elementPicker();
 		QAction *m_show_element_picker = nullptr;
+		QAction *m_show_shortcut_bar = nullptr;
 		ElementPickerPopup *m_element_picker = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			/// Last element placed from the collection, for "insert last"

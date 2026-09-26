@@ -285,6 +285,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/recentfiles.h
   ${QET_DIR}/sources/shortcutmanager.cpp
   ${QET_DIR}/sources/shortcutmanager.h
+  ${QET_DIR}/sources/shortcutbarsettings.cpp
+  ${QET_DIR}/sources/shortcutbarsettings.h
   ${QET_DIR}/sources/titleblockcell.cpp
   ${QET_DIR}/sources/titleblockcell.h
   ${QET_DIR}/sources/titleblockproperties.cpp
@@ -799,6 +801,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

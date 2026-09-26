@@ -19,7 +19,10 @@
 
 #include "elementscollectionwidget.h"
 
+#include <QAction>
 #include <QGuiApplication>
+#include <QHBoxLayout>
+#include <QToolButton>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
@@ -58,6 +61,13 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	layout->setContentsMargins(6, 6, 6, 6);
 	layout->setSpacing(4);
 
+		//Command row, shown when the picker is opened as the shortcut bar
+	m_commands = new QWidget(this);
+	m_commands_layout = new QHBoxLayout(m_commands);
+	m_commands_layout->setContentsMargins(0, 0, 0, 0);
+	m_commands_layout->setSpacing(2);
+	m_commands->hide();
+
 	m_search = new QLineEdit(this);
 	m_search->setPlaceholderText(tr("Rechercher un élément…"));
 	m_search->setClearButtonEnabled(true);
@@ -73,6 +83,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_hint = new QLabel(tr("Entrée pour insérer · Échap pour fermer"), this);
 	m_hint->setEnabled(false);
 
+	layout->addWidget(m_commands);
 	layout->addWidget(m_search);
 	layout->addWidget(m_view);
 	layout->addWidget(m_hint);
@@ -97,8 +108,10 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	focused and any previous query cleared.
 	@param global_pos
 */
-void ElementPickerPopup::popUpAt(const QPoint &global_pos)
+void ElementPickerPopup::popUpAt(const QPoint &global_pos,
+				 const QList<QAction *> &commands)
 {
+	setCommands(commands);
 	m_search->clear();
 	m_model->clear();
 	showPalette();
@@ -119,6 +132,53 @@ void ElementPickerPopup::popUpAt(const QPoint &global_pos)
 	move(pos);
 	show();
 	m_search->setFocus();
+}
+
+/**
+	@brief ElementPickerPopup::setCommands
+	Show @a commands as a row of buttons above the search field, or hide the
+	row when there are none. A disabled command keeps its place, greyed out,
+	so the row looks the same every time for a given selection.
+
+	Clicking a button closes the picker first, then triggers the action: a
+	command such as "add a line" starts a mode on the folio, which needs the
+	focus the popup holds.
+	@param commands
+*/
+void ElementPickerPopup::setCommands(const QList<QAction *> &commands)
+{
+	while (QLayoutItem *item = m_commands_layout->takeAt(0)) {
+		delete item->widget();
+		delete item;
+	}
+
+	for (QAction *action : commands)
+	{
+		auto *button = new QToolButton(m_commands);
+		button->setAutoRaise(true);
+		button->setIconSize(QSize(24, 24));
+		const QString text = action->text().remove(QLatin1Char('&'));
+		if (action->icon().isNull()) {
+			button->setText(text);
+			button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+		} else {
+			button->setIcon(action->icon());
+		}
+		const QKeySequence key = action->shortcut();
+		button->setToolTip(key.isEmpty()
+				   ? text
+				   : QStringLiteral("%1 (%2)").arg(
+					     text, key.toString(QKeySequence::NativeText)));
+		button->setEnabled(action->isEnabled());
+		button->setFocusPolicy(Qt::NoFocus);
+		connect(button, &QToolButton::clicked, this, [this, action]() {
+			hide();
+			action->trigger();
+		});
+		m_commands_layout->addWidget(button);
+	}
+	m_commands_layout->addStretch();
+	m_commands->setVisible(!commands.isEmpty());
 }
 
 /**

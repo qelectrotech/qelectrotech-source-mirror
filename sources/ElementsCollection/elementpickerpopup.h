@@ -27,6 +27,8 @@ class QLineEdit;
 class QListView;
 class QStandardItemModel;
 class QLabel;
+class QAction;
+class QHBoxLayout;
 
 /**
 	@brief A cursor-anchored element picker.
@@ -49,7 +51,8 @@ class ElementPickerPopup : public QFrame
 		explicit ElementPickerPopup(ElementsCollectionWidget *source,
 					    QWidget *parent = nullptr);
 
-		void popUpAt(const QPoint &global_pos);
+		void popUpAt(const QPoint &global_pos,
+			     const QList<QAction *> &commands = {});
 
 	signals:
 			/// Emitted when the user picks an element; the popup has closed
@@ -62,6 +65,7 @@ class ElementPickerPopup : public QFrame
 		void runSearch();
 		void chooseCurrent();
 		void showPalette();
+		void setCommands(const QList<QAction *> &commands);
 		int loadPaletteDir(const QString &dir_path, const QString &prefix,
 				   int depth);
 
@@ -70,6 +74,8 @@ class ElementPickerPopup : public QFrame
 		QListView *m_view = nullptr;
 		QStandardItemModel *m_model = nullptr;
 		QLabel *m_hint = nullptr;
+		QWidget *m_commands = nullptr;
+		QHBoxLayout *m_commands_layout = nullptr;
 		bool m_palette_mode = true;
 };
 
