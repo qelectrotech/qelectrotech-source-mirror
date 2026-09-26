@@ -31,6 +31,7 @@ class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
 class QGestureEvent;
+class QMenu;
 
 /**
 	This class provides a widget to render an electric diagram in an editable,
@@ -55,6 +56,7 @@ class DiagramView : public PaletteGraphicsView
 		QAction          *m_paste_here = nullptr;
 		QAction			 *m_multi_paste = nullptr;
 		QAction          *m_create_template = nullptr;
+		QMenu            *m_folio_report_menu = nullptr;
 		QPoint            m_paste_here_pos;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
@@ -85,6 +87,10 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+	
+		bool startElementPlacement(const ElementsLocation &location,
+					   const QPointF &scene_pos);
+		QPointF defaultPlacementPos() const;
 		void setCellRulersShown(bool shown);
 		void setCellLinesShown(bool shown);
 
@@ -117,6 +123,7 @@ class DiagramView : public PaletteGraphicsView
 	
 	private:
 		void handleElementDrop(QDropEvent *);
+		void updateFolioReportMenu();
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
 		void scrollOnMovement(QKeyEvent *);
@@ -145,6 +152,9 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when free rubberband changed.
 			/// When free rubberband selection ends this signal will be emitted with null value.
 		void freeRubberBandChanged(QPolygonF polygon);
+			/// Signal emitted when the placement mode is entered for an
+			/// element (not a macro), whether from a drop or not.
+		void elementPlacementStarted(const ElementsLocation &);
 	
 	public slots:
 		void setVisualisationMode();
