@@ -55,6 +55,32 @@
 #include <QStatusBar>
 #include <QLineEdit>
 
+namespace {
+/**
+	@brief The SearchResultsView class
+	The flat list of search results. Rows are not backed by the collection
+	model, so the drag is built here from the path each row carries, with
+	the same content and pixmap as a drag from the tree.
+*/
+class SearchResultsView : public QListView
+{
+	public:
+		using QListView::QListView;
+
+	protected:
+		void startDrag(Qt::DropActions supportedActions) override
+		{
+			const QString path =
+				currentIndex().data(Qt::UserRole + 2).toString();
+			if (path.isEmpty()) {
+				QListView::startDrag(supportedActions);
+				return;
+			}
+			ElementsTreeView::execElementDrag(this, ElementsLocation(path));
+		}
+};
+}
+
 /**
 	@brief ElementsCollectionWidget::ElementsCollectionWidget
 	Default constructor.
@@ -230,8 +256,9 @@ void ElementsCollectionWidget::setUpWidget()
 		//ranked list instead, and takes the tab widget's place while a search
 		//is active.
 	m_search_model = new QStandardItemModel(this);
-	m_search_results = new QListView(this);
+	m_search_results = new SearchResultsView(this);
 	m_search_results->setModel(m_search_model);
+	m_search_results->setDragDropMode(QAbstractItemView::DragOnly);
 	m_search_results->setIconSize(QSize(50, 50));
 	m_search_results->setUniformItemSizes(false);
 	m_search_results->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
