@@ -159,6 +159,7 @@ class BorderTitleBlock : public QObject
 		void setDiagramHeight(const qreal &);
 		
 		DiagramPosition convertPosition(const QPointF &);
+		QRectF cellRect(const QString &cell) const;
 		
 		// methods to set title block basic data
 		void setFolio(const QString &folio);
