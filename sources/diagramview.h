@@ -60,6 +60,9 @@ class DiagramView : public PaletteGraphicsView
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
+		/// True while the view pans because Ctrl+Shift is held, as opposed
+		/// to the visualisation mode chosen from the toolbar.
+		bool m_ctrl_shift_panning = false;
 		QList<QAction *>  m_separators;
 		QPolygonF m_free_rubberband;
 		bool m_free_rubberbanding = false;
@@ -93,6 +96,7 @@ class DiagramView : public PaletteGraphicsView
 		void contextMenuEvent(QContextMenuEvent *) override;
 		void wheelEvent(QWheelEvent *) override;
 		void focusInEvent(QFocusEvent *) override;
+		void focusOutEvent(QFocusEvent *) override;
 		void keyPressEvent(QKeyEvent *) override;
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
