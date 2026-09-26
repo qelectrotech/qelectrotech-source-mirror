@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextitemgroup.h"
-
+#include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
 #include "../qetapp.h"
@@ -59,6 +59,47 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 		&Element::linkedElementChanged,
 		this,
 		&ElementTextItemGroup::updateXref);
+	if(parent->diagram())
+		m_project_xref_connection = connect(
+			parent->diagram()->project(),
+			&QETProject::XRefPropertiesChanged,
+			this,
+			&ElementTextItemGroup::updateXref);
+}
+
+/**
+	@brief ElementTextItemGroup::itemChange
+	The group is very often built while its element is not on a scene yet
+	(project or element loading): the connection to the project was then
+	impossible and the first updateXref() ran without a diagram, so the
+	cross ref of a master waiting for its slaves stayed invisible until an
+	unrelated settings change happened to refresh it. Do both here, the
+	moment the group really reaches the scene.
+	@param change
+	@param value
+	@return
+*/
+QVariant ElementTextItemGroup::itemChange(
+		QGraphicsItem::GraphicsItemChange change,
+		const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSceneHasChanged)
+	{
+		if (m_parent_element
+		    && m_parent_element->diagram()
+		    && m_parent_element->diagram()->project())
+		{
+			QETProject *project = m_parent_element->diagram()->project();
+			if (!m_project_xref_connection)
+				m_project_xref_connection = connect(
+						project,
+						&QETProject::XRefPropertiesChanged,
+						this,
+						&ElementTextItemGroup::updateXref);
+			updateXref();
+		}
+	}
+	return QGraphicsItemGroup::itemChange(change, value);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -263,7 +304,16 @@ void ElementTextItemGroup::updateAlignment()
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
 	if(m_slave_Xref_item)
-		adjustSlaveXrefPos();
+	{
+		int slave_offset = 0;
+		Element *master_elmt = m_parent_element->linkedElements().isEmpty()
+			? nullptr : m_parent_element->linkedElements().first();
+		if (master_elmt && m_parent_element->diagram()) {
+			XRefProperties xrp = m_parent_element->diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			slave_offset = xrp.slaveOffset();
+		}
+		adjustSlaveXrefPos(slave_offset);
+	}
 	if(m_hold_to_bottom_of_page)
 		autoPos();
 }
@@ -638,7 +688,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 		
 		QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
-		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
 		
 		if(diagram())
 			diagram()->elementTextsMover().continueMovement(event);
@@ -758,13 +808,13 @@ void ElementTextItemGroup::updateXref()
 	{
 		QETProject *project = m_parent_element->diagram()->project();
 		
-		if(m_parent_element->linkType() == Element::Master &&
-		   !m_parent_element->linkedElements().isEmpty())
+		if(m_parent_element->linkType() == Element::Master)
 		{
-			
 			XRefProperties xrp = project->defaultXRefProperties(m_parent_element->kindInformations()["type"].toString());
-			
-			if(xrp.snapTo() == XRefProperties::Label)
+
+			if(xrp.snapTo() == XRefProperties::Label &&
+			   (!m_parent_element->linkedElements().isEmpty()
+			    || CrossRefItem::showAllConfiguredSlaves(m_parent_element, xrp)))
 			{
 					//At least one text owned by this group must be set with
 					//textFrom -> element info and element info name -> label
@@ -786,12 +836,46 @@ void ElementTextItemGroup::updateXref()
 				!m_parent_element->linkedElements().isEmpty())
 		{
 			Element *master_elmt = m_parent_element->linkedElements().first();
+			XRefProperties xrp = project->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+
+			//Champ de texte: store xref in element informations
+			if(xrp.getXrefPos() == Qt::AlignHCenter)
+			{
+				for(DynamicElementTextItem *deti : texts())
+				{
+					if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "xref")
+					{
+						QString xref_label = xrp.slaveLabel();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+						DiagramContext dc = m_parent_element->elementInformations();
+						if(dc.value("xref").toString() != xref_label)
+						{
+							dc.addValue("xref", xref_label);
+							m_parent_element->setElementInformations(dc);
+						}
+
+						//Set up connections for future updates
+						if(m_update_slave_Xref_connection.isEmpty())
+						{
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &ElementTextItemGroup::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &ElementTextItemGroup::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &ElementTextItemGroup::updateXref);
+							m_update_slave_Xref_connection << connect(project,     &QETProject::projectDiagramsOrderChanged, this, &ElementTextItemGroup::updateXref);
+							m_update_slave_Xref_connection << connect(project,     &QETProject::diagramRemoved,              this, &ElementTextItemGroup::updateXref);
+							m_update_slave_Xref_connection << connect(project,     &QETProject::XRefPropertiesChanged,       this, &ElementTextItemGroup::updateXref);
+						}
+						return;
+					}
+				}
+				//No "xref" text found: fall through to cleanup
+			}
+
 			for(DynamicElementTextItem *deti : texts())
 			{
 				if((deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label") ||
 				   (deti->textFrom() == DynamicElementTextItem::CompositeText && deti->compositeText().contains("%{label")))
 				{
-					XRefProperties xrp = project->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
 					QString xref_label = xrp.slaveLabel();
 					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
 					
@@ -810,7 +894,7 @@ void ElementTextItemGroup::updateXref()
 					else
 						m_slave_Xref_item->setPlainText(xref_label);
 					
-					adjustSlaveXrefPos();
+					adjustSlaveXrefPos(xrp.slaveOffset());
 					return;
 				}
 			}
@@ -825,19 +909,63 @@ void ElementTextItemGroup::updateXref()
 		delete m_Xref_item;
 		m_Xref_item = nullptr;	
 	}
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
+
+		//If position changed to Champ de texte, store xref in element info
+		if(m_parent_element->linkType() == Element::Slave &&
+		   !m_parent_element->linkedElements().isEmpty() &&
+		   m_parent_element->diagram())
+		{
+			Element *master_elmt = m_parent_element->linkedElements().first();
+			if(master_elmt)
+			{
+				XRefProperties xrp = m_parent_element->diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+					DiagramContext dc = m_parent_element->elementInformations();
+					if(dc.value("xref").toString() != xref_label)
+					{
+						dc.addValue("xref", xref_label);
+						m_parent_element->setElementInformations(dc);
+					}
+				}
+			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_parent_element->diagram())
+	{
+		for(DynamicElementTextItem *deti : texts())
+		{
+			if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "xref")
+			{
+				DiagramContext dc = m_parent_element->elementInformations();
+				if(!dc.value("xref").toString().isEmpty())
+				{
+					dc.remove("xref");
+					m_parent_element->setElementInformations(dc);
+				}
+				break;
+			}
+		}
 	}
 }
 
-void ElementTextItemGroup::adjustSlaveXrefPos()
+void ElementTextItemGroup::adjustSlaveXrefPos(int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-				r.bottom());
+				r.bottom() + slave_offset);
 	m_slave_Xref_item->setPos(pos);
 }
 

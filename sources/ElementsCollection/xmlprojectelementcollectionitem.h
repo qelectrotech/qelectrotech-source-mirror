@@ -45,6 +45,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 		bool isCollectionRoot() const override;
 		void addChildAtPath(const QString &collection_name) override;
 		QETProject * project() const;
+		void updateProjectName();
 
 		void setProject (QETProject *project,
 				 bool set_data = true,

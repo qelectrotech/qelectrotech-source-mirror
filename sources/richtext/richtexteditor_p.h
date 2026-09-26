@@ -55,6 +55,7 @@
 
 #include <QDialog>
 #include <QTextEdit>
+#include <QTextBlock>
 
 QT_BEGIN_NAMESPACE
 
@@ -78,6 +79,7 @@ class RichTextEditorDialog : public QDialog
 		void setDefaultFont(const QFont &font);
 		void setText(const QString &text);
 		QString text(Qt::TextFormat format = Qt::AutoText) const;
+		QVector<Qt::Alignment> blockAlignments() const;
 
 	signals:
 		void applyEditText(const QString &);

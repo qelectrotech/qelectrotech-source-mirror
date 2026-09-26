@@ -16,145 +16,71 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#ifdef QET_HAS_SCRIPTING
+#include "scripting/qetscripting.h"
+#endif
+#include "logging/eventloopwatchdog.h"
+#include "logging/qetlogger.h"
 #include "machine_info.h"
+#include "diagram.h"
+#include "palettegraphicsview.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetmessagebox.h"
 #include "qetproject.h"
 #include "singleapplication.h"
-#include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
 
 #include <QApplication>
+#include <QDomImplementation>
+#include <QFont>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
 
+#ifdef Q_OS_MACOS
+#include <QFileOpenEvent>
+
 /**
-	@brief myMessageOutput
-	for debugging
-	@param type : the messages that can be sent to a message handler
-	@param context : were? wat?
-	@param msg : Message
+	@brief EarlyFileOpenCatcher
+	On macOS, a cold launch via Finder double-click can deliver the
+	QFileOpenEvent to QApplication before QETApp exists and before its
+	real eventFilter is installed (the event loop can start servicing
+	native/Cocoa events before our own code in main() reaches that
+	point). This tiny filter is installed immediately on `app` so no
+	QFileOpenEvent can slip through unseen; it just buffers the path.
+	Once QETApp is constructed, main() drains the buffer and installs
+	the real QETApp::eventFilter for any subsequent event.
 */
-void myMessageOutput(QtMsgType type,
+class EarlyFileOpenCatcher : public QObject
+{
+	public:
+		using QObject::QObject;
+		QStringList bufferedFiles;
+
+	protected:
+		bool eventFilter(QObject *object, QEvent *e) override
+		{
+			if (e->type() == QEvent::FileOpen) {
+				bufferedFiles << static_cast<QFileOpenEvent *>(e)->file();
+				return true;
+			}
+			return QObject::eventFilter(object, e);
+		}
+};
+#endif
+
+/**
+	@brief qetLogMessageHandler
+	Installed via qInstallMessageHandler(); forwards to QetLogger, which
+	holds all the actual formatting/ring/rotation state. See
+	logging/qetlogger.h for the rationale (discussion #644).
+*/
+void qetLogMessageHandler(QtMsgType type,
 			 const QMessageLogContext &context,
 			 const QString &msg)
 {
-
-	QString txt=QTime::currentTime().toString("hh:mm:ss.zzz");
-	QByteArray dbs =txt.toLocal8Bit();
-	QByteArray localMsg = msg.toLocal8Bit();
-	const char *file = context.file ? context.file : "";
-	const char *function = context.function ? context.function : "";
-
-	switch (type) {
-	case QtDebugMsg:
-		fprintf(stderr,
-			"%s Debug: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Debug: ";
-		break;
-	case QtInfoMsg:
-		fprintf(stderr,
-			"%s Info: %s \n",
-			dbs.constData(),
-			localMsg.constData());
-		txt+=" Info: ";
-		break;
-	case QtWarningMsg:
-		fprintf(stderr,
-			"%s Warning: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file, context.line,
-			function);
-		txt+=" Warning: ";
-		break;
-	case QtCriticalMsg:
-		fprintf(stderr,
-			"%s Critical: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Critical: ";
-		break;
-	case QtFatalMsg:
-		fprintf(stderr,
-			"%s Fatal: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Fatal: ";
-		break;
-	default:
-		fprintf(stderr,
-			"%s Unknown: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Unknown: ";
-	}
-	txt+= msg;
-	if(type==QtInfoMsg){
-		txt+=" \n";
-	} else {
-		txt+= " (";
-		txt+= context.file ? context.file : "";
-		txt+= ":";
-		txt+=QString::number(context.line ? context.line :0);
-		txt+= ", ";
-		txt+= context.function ? context.function : "";
-		txt+=")\n";
-	}
-	QFile outFile(QETApp::dataDir()
-			  +"/"
-			  +QDate::currentDate().toString("yyyyMMdd")
-			  +".log");
-	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
-	{
-		QTextStream ts(&outFile);
-		ts << txt;
-	}
-	outFile.close();
-}
-
-/**
-	@brief delete_old_log_files
-	delete old log files
-	@param days : max days old
-*/
-void delete_old_log_files(int days)
-{
-	const QDate today = QDate::currentDate();
-	const QString path = QETApp::dataDir() % "/";
-
-	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
-	filter = filter.arg("[0123456789]"); // valid characters
-
-	Q_FOREACH (auto fileInfo,
-		   QDir(path).entryInfoList(
-			   QStringList(filter),
-			   QDir::Files))
-	{
-		if (fileInfo.lastRead().date().daysTo(today) > days)
-		{
-			QString filepath = fileInfo.absoluteFilePath();
-			QDir deletefile;
-			deletefile.setPath(filepath);
-			deletefile.remove(filepath);
-			qDebug() << "File " % filepath % " is deleted!";
-		}
-	}
+	QetLogger::instance().handleMessage(type, context, msg);
 }
 
 /**
@@ -176,26 +102,29 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
+
+	// Refuse invalid data when building QDom documents instead of
+	// serializing malformed XML (CVE-2026-15037). This is the default
+	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
+	QDomImplementation::setInvalidDataPolicy(
+		QDomImplementation::ReturnNullNode);
+
+#ifdef Q_OS_WIN
+	// "MS Shell Dlg 2" is not a font but a Windows alias, and many projects
+	// and settings saved on Windows carry it. Qt 5's GDI font backend let
+	// Windows resolve it to Tahoma; Qt 6's DirectWrite backend does not know
+	// the alias and falls back to Arial, so those texts come out heavier on
+	// screen and in exported PDFs (bugtracker #340). Resolve both aliases
+	// the way Windows does. Done before any application object exists so
+	// that the headless export and scripting runs below get it too.
+	QFont::insertSubstitution("MS Shell Dlg 2", "Tahoma");
+	QFont::insertSubstitution("MS Shell Dlg", "Microsoft Sans Serif");
+#endif
+
 	//Creation and execution of the application
 	//HighDPI
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-#endif
-
-
-#if QT_VERSION > QT_VERSION_CHECK(5, 7, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
-QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
-#endif
+	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 
 	// Headless command-line export: render a project to PDF/PNG/SVG without
@@ -211,17 +140,70 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// Answer message boxes instead of showing them: opening a project
+			// saved by an older QElectroTech raises a warning from
+			// QETProject::readProjectXml(), and with nobody able to dismiss it
+			// QDialog::exec() would spin its event loop forever.
+			QET::QetMessageBox::setNonInteractive(true);
 			return CLIExport::run(export_app.arguments());
 		}
+#ifdef QET_HAS_SCRIPTING
+		// Headless scripting: --run <script.js> <project.qet> (bugtracker
+		// #162). Same reasoning as the export branch above for running
+		// before SingleApplication and answering message boxes headlessly.
+		if (QetScripting::isRunRequest(raw_args)) {
+			QApplication script_app(argc, argv);
+			QETProject::setBackupEnabled(false);
+			QET::QetMessageBox::setNonInteractive(true);
+			return QetScripting::run(script_app.arguments());
+		}
+#endif
 	}
+
+	// Re-apply the sheet background last picked in the diagram editor, so
+	// every project opened from here on -- existing or new, whichever one
+	// it is -- draws that background instead of the built-in default that
+	// would otherwise force the user to pick it again after each start.
+	//
+	// Done here rather than in main()'s first lines on purpose: the
+	// headless export and scripting runs above return before reaching
+	// this point and must keep rendering on plain white. It also has to
+	// happen before QETApp is constructed below, since that constructor
+	// already loads the projects given on the command line.
+	{
+		const QetSettings::SheetBackground sheet_background = QetSettings::sheetBackground();
+		PaletteGraphicsView::setCustomBackgroundColor(sheet_background.custom);
+		Diagram::background_color = sheet_background.color;
+	}
+
+	// Resolve the logger's state (log directory, session filename, open
+	// file handle) explicitly here, immediately before installing the
+	// handler -- not implicitly on whichever thread happens to log
+	// first. See QetLogger::init().
+	//
+	// Install the log-file message handler BEFORE the application starts:
+	// QETApp's constructor does the whole startup (collections, editor,
+	// opening the projects given on the command line), so installing the
+	// handler afterwards - as was done in the startup worker below - meant
+	// exactly the interesting lines (collection and project load timers)
+	// went to stderr, which is invisible in a Windows GUI session.
+	QetLogger::instance().init();
+	qInstallMessageHandler(qetLogMessageHandler);
+	// Step 4 (discussion #644): flush the ring to a crash-dump file if
+	// the process dies from here on. Installed right after the ring
+	// exists (init() just constructed it) and as early as reasonably
+	// possible, so it also covers whatever runs between here and
+	// QETApp's own construction below.
+	QetLogger::instance().installCrashHandler();
 
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
-	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
-	//or drop these same files to the QET icon of the dock
-	MacOSXOpenEvent open_event;
-	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
+	// Installed as early as possible, before anything else can run an
+	// event loop, to catch a QFileOpenEvent that might be delivered
+	// during a cold launch before QETApp exists.
+	EarlyFileOpenCatcher early_catcher;
+	app.installEventFilter(&early_catcher);
 #endif
 
 	if (app.isSecondary())
@@ -238,18 +220,39 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
+#ifdef Q_OS_MACOS
+	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
+	//or drop these same files to the QET icon of the dock.
+	//Swap the early catcher (installed right after `app` was constructed,
+	//see above) for the real filter, then drain anything it buffered
+	//during the cold-launch window before QETApp existed.
+	app.removeEventFilter(&early_catcher);
+	app.installEventFilter(&qetapp);
+	if (!early_catcher.bufferedFiles.isEmpty())
+		qetapp.openFiles(QETArguments(early_catcher.bufferedFiles));
+#endif
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
-	QtConcurrent::run([=]()
+	// Pre-initialise on the main (GUI) thread: the constructor calls
+	// qApp->screens() which is not thread-safe in Qt5 — calling instance()
+	// here guarantees the singleton is fully built before the worker runs.
+	MachineInfo::instance();
+
+	[[maybe_unused]] auto startup_future = QtConcurrent::run([=]()
 	{
-		// for debugging
-		qInstallMessageHandler(myMessageOutput);
 		qInfo("Start-up");
 		// delete old log files of max 7 days old.
-		delete_old_log_files(7);
+		QetLogger::instance().pruneOldLogFiles(7);
 		MachineInfo::instance()->send_info_to_debug();
 	});
+
+	// Constructed here rather than earlier: start() measures ticks against
+	// the event loop app.exec() is about to run, so there is no point
+	// (and no accurate baseline) before this line.
+	EventLoopWatchdog watchdog;
+	watchdog.start();
+
 	return app.exec();
 }
 

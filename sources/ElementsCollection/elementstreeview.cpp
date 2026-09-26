@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementstreeview.h"
+#include "elementpreviewdelegate.h"
+#include "../qetpalette.h"
 
 #include "../factory/elementfactory.h"
 #include "../qetgraphicsitem/element.h"
@@ -41,15 +43,11 @@ static int MAX_DND_PIXMAP_HEIGHT = 375;
 ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	QTreeView(parent)
 {
-	// force du noir sur une alternance de blanc (comme le schema) et de gris
-	// clair, avec du blanc sur bleu pas trop fonce pour la selection
-	QPalette qp = palette();
-	qp.setColor(QPalette::Text,            Qt::black);
-	qp.setColor(QPalette::Base,            Qt::white);
-	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
-	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
-	qp.setColor(QPalette::HighlightedText, Qt::black);
-	setPalette(qp);
+	// Rows follow the application palette. Element previews are black
+	// line art drawn for a white sheet; ElementPreviewDelegate adapts them
+	// to a dark palette, so this view no longer has to force a light one
+	// (bugtracker #335).
+	setItemDelegate(new ElementPreviewDelegate(this));
 }
 
 /**
@@ -134,11 +132,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 								QString file_name = (last_slash != -1) ? path.mid(last_slash + 1) : path;
 
 								if (!dir_path.isEmpty()) {
-									#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-									QStringList parts = dir_path.split('/', QString::SkipEmptyParts);
-									#else
 									QStringList parts = dir_path.split('/', Qt::SkipEmptyParts);
-									#endif
 									QString current_path = "";
 									for (const QString &part : parts) {
 										QString parent_path = current_path;
@@ -215,7 +209,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 			&elmt_creation_state));
 		if (elmt_creation_state) { return; }
 
-		QPixmap elmt_pixmap(temp_elmt->pixmap());
+		QPixmap elmt_pixmap(QET::Palette::forPalette(temp_elmt->pixmap(), palette()));
 		QPoint elmt_hotspot(temp_elmt->hotspot());
 
 			//Adjust the size of the pixmap if he is too big

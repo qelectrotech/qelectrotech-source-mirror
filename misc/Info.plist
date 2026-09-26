@@ -40,9 +40,9 @@
 	<key>CFBundleExecutable</key>
 	<string>qelectrotech</string>
 	<key>CFBundleIconFile</key>
-	<string>qelectrotech.icns</string>
+	<string>qelectrotech</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.qelectrotech</string>
+	<string>org.qelectrotech.QElectroTech</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -62,6 +62,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>12.3.0</string>
+	<string>14.0.0</string>
 </dict>
 </plist>

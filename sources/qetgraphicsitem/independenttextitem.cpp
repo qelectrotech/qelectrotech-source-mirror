@@ -19,8 +19,10 @@
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../lastusedstyle.h"
 #include "../qet.h"
 #include "../qetapp.h"
+#include "../utils/qetutils.h"
 
 #include <QDomElement>
 #include <QSettings>
@@ -32,7 +34,10 @@
 IndependentTextItem::IndependentTextItem() :
 	DiagramTextItem(nullptr)
 {
-	setFont(QETApp::indiTextsItemFont());
+		//Start from the font last applied to a text item this session,
+		//falling back to the app-wide Preferences default otherwise.
+	setFont(LastUsedStyle::hasTextFont() ? LastUsedStyle::textFont()
+					      : QETApp::indiTextsItemFont());
 	QSettings settings;
 	setRotation(settings.value("diagrameditor/independent_text_rotation", 0).toInt());
 }
@@ -64,7 +69,7 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("font"))
 	{
 		QFont font;
-		font.fromString(e.attribute("font"));
+		QETUtils::fontFromString(font, e.attribute("font"));
 		setFont(font);
 	}
 }
@@ -80,7 +85,7 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());
 	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	result.setAttribute("font", font().toString());
+	result.setAttribute("font", QETUtils::fontToString(font()));
 	
 	return(result);
 }

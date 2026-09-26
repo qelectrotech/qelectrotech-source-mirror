@@ -18,7 +18,7 @@
 #include "crossrefitem.h"
 
 #include <QTimer>
-
+#include "../qetproject.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -28,6 +28,9 @@
 #include "elementtextitemgroup.h"
 #include "qgraphicsitemutility.h"
 #include "terminal.h"
+#include "../properties/elementdata.h"
+
+#include <algorithm>
 
 //define the height of the header.
 static int header = 5;
@@ -112,12 +115,14 @@ void CrossRefItem::setUpConnection()
 		set=true;
 	else if(m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group) //Snap to bottom of element and parent is the element itself
 	{
-		m_update_connection << connect(m_element, SIGNAL(yChanged()),
-					       this, SLOT(autoPos()));
-		m_update_connection << connect(m_element, SIGNAL(rotationChanged()),
-					       this, SLOT(autoPos()));
+		m_update_connection << connect(m_element, &Element::yChanged, this, &CrossRefItem::autoPos);
+		m_update_connection << connect(m_element, &Element::rotationChanged, this, &CrossRefItem::autoPos);
 		set=true;
 	}
+	// For PLC masters, always set up connections for update notifications
+	// (page reorder, diagram removal, etc.)
+	if (!set && m_element->elementData().m_master_type == ElementData::PLC && !m_text && !m_group)
+		set = true;
 
 	if(set)
 	{
@@ -192,6 +197,37 @@ QString CrossRefItem::elementPositionText(
 }
 
 /**
+	@brief CrossRefItem::showAllConfiguredSlaves
+	@param elmt : the element displaying the cross reference
+	@param xrp : xref properties of that element
+	@return true when the contact comb must show every slave contact the
+	master defines, even those no slave is linked to yet. That is the case
+	when the user asked for it, when the comb (contacts) display is the
+	one in use, and when the master really declares contact groups --
+	an element which declares none behaves exactly as before.
+*/
+bool CrossRefItem::showAllConfiguredSlaves(
+		const Element *elmt,
+		const XRefProperties &xrp)
+{
+	if (!elmt) return false;
+	if (!xrp.showAllConfiguredSlaves()) return false;
+	if (xrp.displayHas() != XRefProperties::Contacts) return false;
+
+	return !elmt->elementData().m_slave_contact_groups.isEmpty();
+}
+
+/**
+	@brief CrossRefItem::mustDrawAllConfiguredSlaves
+	@return showAllConfiguredSlaves for the element of this item and the
+	current properties.
+*/
+bool CrossRefItem::mustDrawAllConfiguredSlaves() const
+{
+	return showAllConfiguredSlaves(m_element, m_properties);
+}
+
+/**
 	@brief CrossRefItem::updateProperties
 	update the current properties
 */
@@ -235,8 +271,29 @@ void CrossRefItem::updateLabel()
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
-		//Draw cross or contact, only if master element is linked.
-	if (! m_element->linkedElements().isEmpty())
+	// PLC table is drawn and managed entirely by CrossRefItem
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+	{
+		// Position at the PLC table position from the .elmt definition
+		QList<QPointF> positions = m_element->plcTablePositions();
+		QPointF pos = positions.isEmpty() ? QPointF(0, 0) : positions.first();
+		setPos(pos);
+
+		// Populate m_hovered_contacts_map using drawAsPlcTable on a
+		// dummy painter (m_update_map=true).
+		m_update_map = true;
+		drawAsPlcTable(qp);
+		m_update_map = false;
+
+		update();
+		QTimer::singleShot(0, this, [this]{ update(); });
+		return;
+	}
+	//Draw cross or contact, if master element is linked, or if the user
+	//asks for the contact comb to show the contact groups of the master
+	//even before they get a slave.
+	else if (! m_element->linkedElements().isEmpty()
+		 || mustDrawAllConfiguredSlaves())
 	{
 		m_update_map = true;
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
@@ -261,6 +318,11 @@ void CrossRefItem::updateLabel()
 */
 void CrossRefItem::autoPos()
 {
+	// For PLC masters, position is set by updateLabel() based on
+	// m_plc_table_positions - don't override it here.
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+		return;
+
 	//We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
 		QGIUtility::centerToBottomDiagram(this,
@@ -325,7 +387,15 @@ void CrossRefItem::paint(
 	// caused a use-after-free crash (QRegion::begin, Qt5Gui+0x49af60)
 	// confirmed by analysis of 19+ coredumps.
 	// m_update_map=false: draw functions do not overwrite m_hovered_contacts_map.
-	if (m_element->linkedElements().isEmpty()) return;
+
+	// PLC: do not draw here (Element::drawPlcTable handles visual rendering).
+	// The m_hovered_contacts_map was populated in updateLabel() for
+	// click navigation and PDF hyperlink injection.
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+		return;
+
+	if (m_element->linkedElements().isEmpty()
+	    && !mustDrawAllConfiguredSlaves()) return;
 
 	QPen pen_;
 	pen_.setWidthF(0.5);
@@ -694,6 +764,41 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 	fillCrossRef(painter);
 }
 
+namespace {
+	/**
+		@brief contactOption
+		Map the contact group declared by a master onto the CONTACTS flags
+		used by CrossRefItem::drawContact, so a group no slave is linked to
+		yet is drawn like the slave it waits for.
+		@param group : the contact group of the master
+		@return the flags describing the contact to draw
+	*/
+	int contactOption(const ElementData::SlaveContactGroup &group)
+	{
+		int option = 0;
+
+		switch (group.type)
+		{
+			case ElementData::NO:    option  = CrossRefItem::NO;    break;
+			case ElementData::NC:    option  = CrossRefItem::NC;    break;
+			case ElementData::SW:    option  = CrossRefItem::SW;    break;
+			case ElementData::Other: option  = CrossRefItem::Other; break;
+		}
+
+		switch (group.subtype)
+		{
+			case ElementData::Power:      option += CrossRefItem::Power;      break;
+			case ElementData::DelayOn:    option += CrossRefItem::DelayOn;    break;
+			case ElementData::DelayOff:   option += CrossRefItem::DelayOff;   break;
+			case ElementData::delayOnOff: option += CrossRefItem::DelayOnOff; break;
+			case ElementData::SSimple:
+			case ElementData::PLCSlave:   break;
+		}
+
+		return option;
+	}
+}
+
 /**
 	@brief CrossRefItem::drawAsContacts
 	Draw this crossref with symbolic contacts
@@ -701,37 +806,99 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 */
 void CrossRefItem::drawAsContacts(QPainter &painter)
 {
-	if (m_element -> isFree())
+	if (m_element -> isFree() && !mustDrawAllConfiguredSlaves())
 		return;
 
 	m_drawed_contacts = 0;
 	if (m_update_map) m_hovered_contacts_map.clear();
 	QRectF bounding_rect;
 
-	//Draw each linked contact
-	foreach (Element *elmt,  m_element->linkedElements())
+	//Draw every contact group of the master, in the order the master
+	//defines them, when the user asked for it and the master declares
+	//contact groups. Otherwise the comb keeps its historical behavior:
+	//linked slaves only, in position order.
+	if (mustDrawAllConfiguredSlaves())
 	{
-		DiagramContext info = elmt->kindInformations();
+		const QVector<ElementData::SlaveContactGroup> groups =
+				m_element->elementData().m_slave_contact_groups;
 
-		for (int i=0; i<info["number"].toInt(); i++)
+		//A contact group waits for exactly one slave: a slave assigned to
+		//a group is drawn where the master puts it, whatever its position
+		//on the diagram.
+		QHash<int, Element *> slotted;
+		QList<Element *> unassigned;
+		foreach (Element *elmt, m_element->linkedElements()) //position order
 		{
-			int option = 0;
-
-			QString state = info["state"].toString();
-				 if (state == "NO") option = NO;
-			else if (state == "NC") option = NC;
-			else if (state == "SW") option = SW;
-			else if (state == "Other") option = Other;
-
-			QString type = info["type"].toString();
-				 if (type == "power")    option += Power;
-			else if (type == "delayOn")  option += DelayOn;
-			else if (type == "delayOff") option += DelayOff;
-			else if (type == "delayOnOff") option += DelayOnOff;
-
-			QRectF br = drawContact(painter, option, elmt, i);
-			bounding_rect = bounding_rect.united(br);
+			const int index = m_element->groupIndexForElement(elmt);
+			if (index >= 0 && index < groups.size() && !slotted.contains(index))
+				slotted.insert(index, elmt);
+			else
+				unassigned << elmt;
 		}
+
+		for (int i = 0; i < groups.size(); ++i)
+		{
+			if (Element *slave = slotted.value(i, nullptr))
+				bounding_rect = bounding_rect.united(
+							drawLinkedSlaveContacts(painter, slave));
+			else
+			{
+				//No slave is linked to this group yet: the contact
+				//symbol of the group is drawn with the terminal names
+				//the master defines for it, there is no cross reference
+				//to show for it.
+				const int option = contactOption(groups.at(i));
+				const int poles = qMax(1, groups.at(i).contactCount);
+				QStringList labels = groups.at(i).labels;
+
+				//A single pole simple contact (NO or NC) reads its two
+				//numbers the other way round (checked against the
+				//diagram). Changeover contacts are not handled here:
+				//their labels are mapped to the right contact half in
+				//drawContact(), per pole, so multi pole changeovers work
+				//too. Groups with several NO/NC poles keep the order the
+				//master defines: a 3 pole power contact already reads
+				//correctly that way.
+				if (poles == 1 && (option & NOC))
+					std::reverse(labels.begin(), labels.end());
+
+				//The declared terminals are distributed over the declared
+				//poles. terminalCount and contactCount are edited
+				//independently in the element editor, so the list can be
+				//shorter than two entries per pole (three for a switch):
+				//every pole then gets its share of what exists, instead
+				//of a fixed 2/3 stride starving all but the first poles.
+				const int per_pole = labels.size() / poles;
+				const int extra = labels.size() % poles;
+				int begin = 0;
+				for (int pole = 0; pole < poles; ++pole)
+				{
+					const int count = per_pole + (pole < extra ? 1 : 0);
+					const QStringList pole_labels = labels.mid(begin, count);
+					begin += count;
+					bounding_rect = bounding_rect.united(
+								drawContact(painter,
+									    option,
+									    nullptr,
+									    pole,
+									    pole_labels));
+				}
+			}
+		}
+
+		//Slaves the master doesn't assign to one of its groups (a link
+		//made before the master declared groups, for example) keep their
+		//usual place: the end of the comb, in position order.
+		foreach (Element *elmt, unassigned)
+			bounding_rect = bounding_rect.united(
+						drawLinkedSlaveContacts(painter, elmt));
+	}
+	else
+	{
+		//Draw each linked contact, in position order
+		foreach (Element *elmt,  m_element->linkedElements())
+			bounding_rect = bounding_rect.united(
+						drawLinkedSlaveContacts(painter, elmt));
 	}
 
 	bounding_rect.adjust(-30, -4, 4, 4);
@@ -741,16 +908,60 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 }
 
 /**
+	@brief CrossRefItem::drawLinkedSlaveContacts
+	Draw the contact symbols of one slave linked to this master.
+	@param painter : painter to use
+	@param elmt : the slave element to draw
+	@return the bounding rect of the draw
+*/
+QRectF CrossRefItem::drawLinkedSlaveContacts(QPainter &painter, Element *elmt)
+{
+	QRectF bounding_rect;
+	DiagramContext info = elmt->kindInformations();
+
+	for (int i=0; i<info["number"].toInt(); i++)
+	{
+		int option = 0;
+
+		QString state = info["state"].toString();
+			 if (state == "NO") option = NO;
+		else if (state == "NC") option = NC;
+		else if (state == "SW") option = SW;
+		else if (state == "Other") option = Other;
+
+		QString type = info["type"].toString();
+			 if (type == "power")    option += Power;
+		else if (type == "delayOn")  option += DelayOn;
+		else if (type == "delayOff") option += DelayOff;
+		else if (type == "delayOnOff") option += DelayOnOff;
+
+		bounding_rect = bounding_rect.united(
+					drawContact(painter, option, elmt, i));
+	}
+
+	return bounding_rect;
+}
+
+/**
 	@brief CrossRefItem::drawContact
 	Draw one contact, the type of contact to draw is define in flags.
 	@param painter : painter to use
 	@param flags : define how to draw the contact (see enul CONTACTS)
-	@param elmt : the element to display text (the position of the contact)
+	@param elmt : the element to display text (the position of the contact).
+	It may be nullptr when the contact comes from a contact group the master
+	defines but no slave is linked to yet: no position text, no hover/click
+	support, and the terminal names then come from master_labels.
+	@param pole_index : which contact of the group is drawn (0 based), used
+	to pick the right pair of terminal names of a linked multi-pole contact.
+	@param master_labels : the terminal names the master declares for this
+	pole (sliced from ElementData::SlaveContactGroup::labels by the caller),
+	used when elmt is nullptr so an empty slot shows the numbers the master
+	declares, the same way a linked slave would show them.
 	@return The bounding rect of the draw (contact + text)
 */
-QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index)
+QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index, const QStringList &master_labels)
 {
-	QString str = elementPositionText(elmt);
+	QString str = elmt ? elementPositionText(elmt) : QString();
 
 	// Collect terminal names from the element definition (.elmt)
 	// e.g. name="13" and name="14" on each terminal
@@ -758,12 +969,12 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	// For SW contacts with typed terminals (No/Nc/Common), filter by role.
 	QStringList terminal_names;
 	const bool is_power_ctc =
-		elmt->kindInformations()["type"].toString() == "power";
+		elmt && elmt->kindInformations()["type"].toString() == "power";
 	const bool is_sw = (flags & SW) && !(flags & NOC);
 
 	// Check if SW terminals have explicit No/Nc/Common types
 	bool sw_has_typed_terminals = false;
-	if (is_sw) {
+	if (is_sw && elmt) {
 		for (Terminal *t : elmt->terminals()) {
 			if (!t) continue;
 			if (t->terminalType() == TerminalData::No ||
@@ -775,11 +986,34 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		}
 	}
 
-	for (Terminal *t : elmt->terminals()) {
-		if (!t) continue;
-		const QString tname = t->name();
-		if (!tname.isEmpty())
-			terminal_names << tname;
+	if (elmt) {
+		for (Terminal *t : elmt->terminals()) {
+			if (!t) continue;
+			const QString tname = t->name();
+			if (!tname.isEmpty())
+				terminal_names << tname;
+		}
+	} else if (!master_labels.isEmpty()) {
+		//Empty slot of the contact comb: the slave is missing but the
+		//master already declares the terminal names, so the slot shows
+		//them instead of staying mute. master_labels contains exactly
+		//the terminals of this pole (the caller slices the declared
+		//terminal list over the declared poles), in the order a linked
+		//slave would receive them.
+		if (is_sw) {
+			//The labels are stored in terminal order (for a typical
+			//changeover contact: common, NC, NO, i.e. 11, 12, 14), while
+			//the symbol draws NC bottom-left, NO top-left and the common
+			//on the right: every stored entry goes to its own position.
+			//Entries the master doesn't declare (terminal count lower
+			//than three) simply stay empty instead of landing on the
+			//wrong contact half like the raw stored order would.
+			terminal_names << master_labels.value(1)
+			               << master_labels.value(2)
+			               << master_labels.value(0);
+		} else {
+			terminal_names = master_labels;
+		}
 	}
 
 	if (is_power_ctc) {
@@ -827,7 +1061,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	QRectF bounding_rect = QRectF(0, offset, 24, 10);
 	
 	QPen pen = painter.pen();
-	m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
+	elmt && m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
 	painter.setPen(pen);
 
 	//Draw NO or NC contact
@@ -923,11 +1157,18 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			}
 		}
 
+		//The hit rect is registered even when the position text is
+		//empty: a linked contact had (and keeps) its hover/click entry
+		//in that case too, only the drawing is skipped. Free slots
+		//(elmt == nullptr) have nothing to click and stay out of the map.
 		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
-		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
-		bounding_rect = bounding_rect.united(text_rect);
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
 
-		if (m_update_map)
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 
 		++m_drawed_contacts;
@@ -1005,12 +1246,16 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 					QRectF(30, offset+4, 5, 10),
 					Qt::AlignLeft | Qt::AlignVCenter,
 					str);
-		painter.drawText(text_rect,
-				 Qt::AlignLeft | Qt::AlignVCenter,
-				 str);
-		bounding_rect = bounding_rect.united(text_rect);
-
-		if (m_update_map)
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect,
+					 Qt::AlignLeft | Qt::AlignVCenter,
+					 str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 
 			//a switch contact take place of two normal contact
@@ -1034,15 +1279,19 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 
 			//Draw position text
 		QRectF text_rect = painter.boundingRect(
-					QRectF(30, offset, 5, 10), 
-					Qt::AlignLeft | Qt::AlignVCenter, 
-					str);
-		painter.drawText(text_rect,
-					Qt::AlignLeft | Qt::AlignVCenter, 
-					str);
-		bounding_rect = bounding_rect.united(text_rect);
-
-		if (m_update_map)
+						QRectF(30, offset, 5, 10), 
+						Qt::AlignLeft | Qt::AlignVCenter, 
+						str);
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect,
+						Qt::AlignLeft | Qt::AlignVCenter, 
+						str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 		++m_drawed_contacts;
 	}
@@ -1335,4 +1584,225 @@ QList<Element *> CrossRefItem::NCElements() const
 	}
 
 	return nc_list;
+}
+
+/**
+ * @brief CrossRefItem::drawAsPlcTable
+ * Draw the PLC IO table for PLC master elements.
+ * The table shows columns: Type | Address | Function | Comment | CrossRef
+ * Columns and rows are configurable via PlcMasterData.
+ * @param painter painter to use
+ */
+void CrossRefItem::drawAsPlcTable(QPainter &painter)
+{
+	// Get PLC data from the element
+	ElementData ed = m_element->elementData();
+	if (ed.m_master_type != ElementData::PLC)
+		return;
+
+	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	if (plc_data.ios.isEmpty())
+		return;
+
+	// Define column indices
+	const int COL_TYPE      = 0;
+	const int COL_ADDRESS   = 1;
+	const int COL_FUNCTION  = 2;
+	const int COL_COMMENT   = 3;
+	const int COL_CROSSREF  = 4;
+	const int COL_COUNT     = 5;
+
+	// Column headers (French)
+	QMap<int, QString> headers;
+	headers[COL_TYPE]     = QObject::tr("Type");
+	headers[COL_ADDRESS]  = QObject::tr("Adresse");
+	headers[COL_FUNCTION] = QObject::tr("Fonction");
+	headers[COL_COMMENT]  = QObject::tr("Commentaire");
+	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+
+	// Build visible columns (must match Element::drawPlcTable logic)
+	QList<int> visible_cols;
+	if (!plc_data.columnOrder.isEmpty()) {
+		for (int logical : plc_data.columnOrder) {
+			if (logical >= 0 && logical < COL_COUNT
+				&& plc_data.colVisible.value(logical, true)
+				&& !visible_cols.contains(logical))
+				visible_cols.append(logical);
+		}
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true) && !visible_cols.contains(i))
+				visible_cols.append(i);
+		}
+	} else {
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true))
+				visible_cols.append(i);
+		}
+	}
+	if (visible_cols.isEmpty())
+		return;
+
+	// Default column widths if not set (in scene units, roughly mm * 2.835)
+	QMap<int, qreal> col_widths;
+	for (int col : visible_cols) {
+		if (plc_data.colWidths.contains(col) && plc_data.colWidths[col] > 0)
+			col_widths[col] = plc_data.colWidths[col];
+		else {
+			switch (col) {
+				case COL_TYPE:     col_widths[col] = 35; break;
+				case COL_ADDRESS:  col_widths[col] = 25; break;
+				case COL_FUNCTION: col_widths[col] = 50; break;
+				case COL_COMMENT:  col_widths[col] = 40; break;
+				case COL_CROSSREF: col_widths[col] = 30; break;
+				default:           col_widths[col] = 30; break;
+			}
+		}
+	}
+
+	qreal row_h = plc_data.rowHeight > 0 ? plc_data.rowHeight : 8.0;
+	qreal header_h = plc_data.showHeaders ? (row_h + 2.0) : 0;
+
+	// Calculate total width
+	qreal total_width = 0;
+	for (int col : visible_cols)
+		total_width += col_widths[col];
+
+	// Calculate total height: header + all IO rows
+	int total_ios = plc_data.ios.size();
+
+	// Collect active break positions (sorted)
+	QList<int> breaks;
+	for (int bp : plc_data.breakPositions) {
+		if (bp > 0 && bp < total_ios && !breaks.contains(bp))
+			breaks.append(bp);
+	}
+	std::sort(breaks.begin(), breaks.end());
+
+	// Build block boundaries
+	QList<int> block_starts;
+	block_starts.append(0);
+	for (int bp : breaks)
+		block_starts.append(bp);
+
+	qreal total_height;
+	int block_count = block_starts.size();
+	qreal block_total_width = total_width; // width of one block, before multi-block scaling
+
+	if (block_count > 1) {
+		int max_rows = 0;
+		for (int b = 0; b < block_count; ++b) {
+			int start = block_starts.at(b);
+			int end = (b + 1 < block_starts.size()) ? block_starts.at(b + 1) : total_ios;
+			max_rows = qMax(max_rows, end - start);
+		}
+		total_height = header_h + max_rows * row_h;
+		total_width = total_width * block_count + (block_count - 1) * 3;
+	} else {
+		total_height = header_h + total_ios * row_h;
+	}
+
+	// Draw background rectangle
+	QRectF bg_rect(0, 0, total_width, total_height);
+	painter.fillRect(bg_rect, Qt::white);
+	QPen border_pen(Qt::black, 0.5);
+	painter.setPen(border_pen);
+	painter.drawRect(bg_rect);
+
+	// Draw header row
+
+	for (int block = 0; block < block_count; ++block) {
+		qreal block_x = block * (block_total_width + 3);
+		qreal cx = block_x;
+
+		// Draw column headers
+		QFont header_font = painter.font();
+		header_font.setBold(true);
+		painter.setFont(header_font);
+
+		for (int col : visible_cols) {
+			QRectF header_rect(cx, 0, col_widths[col], header_h);
+			painter.fillRect(header_rect, QColor(220, 220, 220));
+			painter.drawRect(header_rect);
+			painter.drawText(header_rect, Qt::AlignCenter, headers[col]);
+			cx += col_widths[col];
+		}
+
+		painter.setFont(painter.font());
+
+		// Draw IO rows for this block
+		int start_idx = block_starts.at(block);
+		int end_idx = (block + 1 < block_starts.size()) ? block_starts.at(block + 1) : total_ios;
+
+		for (int row = 0; row < (end_idx - start_idx); ++row) {
+			int io_idx = start_idx + row;
+			const ElementData::PlcIO &io = plc_data.ios.at(io_idx);
+
+			qreal ry = header_h + row * row_h;
+			cx = block_x;
+
+			// Get linked slave element for this IO (via group index)
+			QString cross_ref_text = io.crossRef;
+			for (Element *slave : m_element->linkedElements()) {
+				if (m_element->groupIndexForElement(slave) == io_idx) {
+					cross_ref_text = elementPositionText(slave);
+					break;
+				}
+			}
+
+			for (int col : visible_cols) {
+				QRectF cell_rect(cx, ry, col_widths[col], row_h);
+				painter.drawRect(cell_rect);
+
+				QString cell_text;
+				switch (col) {
+					case COL_TYPE:
+						cell_text = ElementData::translatedPlcIOType(io.type);
+						break;
+					case COL_ADDRESS:
+						cell_text = io.address;
+						break;
+					case COL_FUNCTION:
+						cell_text = io.functionText;
+						break;
+					case COL_COMMENT:
+						cell_text = io.comment;
+						break;
+					case COL_CROSSREF:
+						cell_text = cross_ref_text;
+						break;
+				}
+
+				QRectF text_rect = cell_rect.adjusted(1, 0, -1, 0);
+				painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+
+				// If function text doesn't fit, try to show as much as possible
+				if (col == COL_FUNCTION && !io.functionText.isEmpty()) {
+					QFontMetrics fm(painter.font());
+					QString elided = fm.elidedText(io.functionText, Qt::ElideRight, text_rect.width());
+					// Clear and redraw with elided text
+					painter.save();
+					painter.setBrush(Qt::white);
+					painter.drawRect(text_rect);
+					painter.restore();
+					painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, elided);
+				}
+
+				// Store hover map for cross-reference cells
+				if (col == COL_CROSSREF && m_update_map && !cross_ref_text.isEmpty()) {
+					for (Element *slave : m_element->linkedElements()) {
+						if (m_element->groupIndexForElement(slave) == io_idx) {
+							m_hovered_contacts_map.insert(slave, cell_rect);
+							break;
+						}
+					}
+				}
+
+				cx += col_widths[col];
+			}
+		}
+	}
+
+	prepareGeometryChange();
+	m_bounding_rect = bg_rect;
+	m_shape_path.addRect(bg_rect);
 }

@@ -30,9 +30,11 @@ ExportProperties::ExportProperties() :
 	destination_directory(QETApp::documentDir()),
 	format("PNG"),
 	draw_grid(false),
+	draw_guides(false),
 	draw_border(true),
 	draw_titleblock(true),
 	draw_terminals(false),
+	draw_terminal_names(false),
 	draw_bg_transparent(false),
 	draw_colored_conductors(true),
 	exported_area(QET::BorderArea)
@@ -61,12 +63,16 @@ void ExportProperties::toSettings(QSettings &settings,
 			  format);
 	settings.setValue(prefix % "drawgrid",
 			  draw_grid);
+	settings.setValue(prefix % "drawguides",
+			  draw_guides);
 	settings.setValue(prefix % "drawborder",
 			  draw_border);
 	settings.setValue(prefix % "drawtitleblock",
 			  draw_titleblock);
 	settings.setValue(prefix % "drawterminals",
 			  draw_terminals);
+	settings.setValue(prefix % "drawterminalnames",
+			  draw_terminal_names);
 	settings.setValue(prefix % "drawbgtransparent",
 			  draw_bg_transparent);
 	settings.setValue(prefix % "drawcoloredconductors",
@@ -94,11 +100,15 @@ void ExportProperties::fromSettings(QSettings &settings,
 
 	draw_grid = settings.value(prefix % "drawgrid",
 				   false).toBool();
+	draw_guides = settings.value(prefix % "drawguides",
+				   false).toBool();
 	draw_border = settings.value(prefix % "drawborder",
 				     true ).toBool();
 	draw_titleblock = settings.value(prefix % "drawtitleblock",
 					 true ).toBool();
 	draw_terminals = settings.value(prefix % "drawterminals",
+					false).toBool();
+	draw_terminal_names = settings.value(prefix % "drawterminalnames",
 					false).toBool();
 	draw_bg_transparent = settings.value(prefix % "drawbgtransparent",
 					false).toBool();

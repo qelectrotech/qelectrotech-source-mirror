@@ -21,6 +21,8 @@
 #include "../qetproject.h"
 #include "xmlelementcollection.h"
 
+#include <QFileInfo>
+
 /**
 	@brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem
 	Constructor
@@ -58,10 +60,7 @@ QString XmlProjectElementCollectionItem::localName()
 		return text();
 
 	if (isCollectionRoot()) {
-		if (m_project->title().isEmpty())
-			setText(QObject::tr("Projet sans titre"));
-		else
-			setText(m_project->title());
+		updateProjectName();
 	}
 	else {
 		ElementsLocation location (embeddedPath(), m_project);
@@ -69,6 +68,25 @@ QString XmlProjectElementCollectionItem::localName()
 	}
 
 	return text();
+}
+
+/**
+	@brief XmlProjectElementCollectionItem::updateProjectName
+	Set the displayed name of the collection root from the project :
+	its title, or its file name when it has no title, like the project panel.
+	Does nothing if this item is not the root of the collection.
+*/
+void XmlProjectElementCollectionItem::updateProjectName()
+{
+	if (!isCollectionRoot() || !m_project)
+		return;
+
+	if (!m_project->title().isEmpty())
+		setText(m_project->title());
+	else if (!m_project->filePath().isEmpty())
+		setText(QFileInfo(m_project->filePath()).completeBaseName());
+	else
+		setText(QObject::tr("Projet sans titre"));
 }
 
 /**

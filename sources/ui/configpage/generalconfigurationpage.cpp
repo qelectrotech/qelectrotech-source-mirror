@@ -21,8 +21,10 @@
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../utils/qetsettings.h"
+#include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
-
+#include "../../textgrid.h"
+#include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QSettings>
@@ -40,9 +42,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	QSettings settings;
 	
 		//Appearance tab
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // ###Qt 6:remove
-	ui->m_hdpi_round_policy_widget->setDisabled(true);
-#else
 	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.5 et plus"), QLatin1String("Round"));
 	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi supérieur"), QLatin1String("Ceil"));
 	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi inférieur"), QLatin1String("Floor"));
@@ -65,9 +64,20 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 			ui->m_hdpi_round_policy_cb->setCurrentIndex(4);
 			break;
 	}
-#endif
+
+	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+	for (const qreal divisor : TextGrid::divisors)
+		ui->DiagramEditor_textGrid_cb->addItem(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"),
+					divisor);
+	int text_grid_index = ui->DiagramEditor_textGrid_cb->findData(
+				settings.value(TextGrid::settings_key, 1).toReal());
+	if (text_grid_index < 0)
+		text_grid_index = ui->DiagramEditor_textGrid_cb->findData(qreal(1));
+	ui->DiagramEditor_textGrid_cb->setCurrentIndex(text_grid_index);
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
@@ -75,6 +85,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
 	ui->DiagramEditor_Grid_PointSize_max_sb->setValue(settings.value("diagrameditor/grid_pointsize_max", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	bool sysColors = ui->m_use_system_color_cb->isChecked();
+	ui->m_custom_app_color_kpb->setEnabled(!sysColors);
+	if (settings.contains("customapplicationcolor"))
+		ui->m_custom_app_color_kpb->setColor(QColor(settings.value("customapplicationcolor").toString()));
+	else
+		ui->m_custom_app_color_kpb->setColor(QApplication::palette().color(QPalette::Window));
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
@@ -83,6 +99,25 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
+	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
+#ifdef QET_HAS_SCRIPTING
+	if (QetSettings::scriptingForcedByEnvironment()) {
+			//QET_ENABLE_SCRIPTING wins over the stored value, so let the box
+			//say so rather than offer a tick that changes nothing.
+		ui->m_enable_scripting->setEnabled(false);
+		ui->m_enable_scripting->setToolTip(
+					tr("Activé par la variable d'environnement "
+					   "QET_ENABLE_SCRIPTING ; ce réglage est sans effet "
+					   "tant qu'elle est définie."));
+	}
+#else
+		//Built without Qt Qml: there is no scripting to allow. Disabled as
+		//well as hidden, so applyConf() leaves the stored value alone --
+		//a hidden box still reports its state, and writing it here would
+		//quietly clear a preference set on a build that does have Qml.
+	ui->m_enable_scripting->setVisible(false);
+	ui->m_enable_scripting->setEnabled(false);
+#endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
@@ -99,7 +134,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (settings.contains("diagrameditor/dynamic_text_font"))
 	{
 		QFont font;
-		font.fromString(settings.value("diagrameditor/dynamic_text_font").toString());
+		QETUtils::fontFromString(font, settings.value("diagrameditor/dynamic_text_font").toString());
 
 		QString fontInfos = font.family() + " " +
 				QString::number(font.pointSize()) + " (" +
@@ -112,7 +147,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (settings.contains("diagrameditor/independent_text_font"))
 	{
 		QFont font;
-		font.fromString(settings.value("diagrameditor/independent_text_font").toString());
+		QETUtils::fontFromString(font, settings.value("diagrameditor/independent_text_font").toString());
 
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
@@ -207,16 +242,24 @@ void GeneralConfigurationPage::applyConf()
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
 	settings.setValue("usesystemcolors", must_use_system_colors);
 	if (was_using_system_colors != must_use_system_colors) {
-		QETApp::instance()->useSystemPalette(must_use_system_colors);
+		if (must_use_system_colors) {
+			QETApp::instance()->useSystemPalette(true);
+		} else {
+			QColor custom_color = ui->m_custom_app_color_kpb->color();
+			settings.setValue("customapplicationcolor", custom_color.name());
+			QETApp::instance()->useCustomPalette(custom_color);
+		}
+	} else if (!must_use_system_colors) {
+		QColor custom_color = ui->m_custom_app_color_kpb->color();
+		settings.setValue("customapplicationcolor", custom_color.name());
+		QETApp::instance()->useCustomPalette(custom_color);
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
 
 		//hdpi
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 	QetSettings::setHdpiScaleFactorRoundingPolicy(ui->m_hdpi_round_policy_cb->currentData().toString());
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
-#endif
 
 		//ELEMENT EDITOR
 	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
@@ -230,6 +273,14 @@ void GeneralConfigurationPage::applyConf()
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 
+		//SCRIPTING
+		//Left alone while the environment forces it on: the box is disabled
+		//in that case and writing its state would silently clear the user's
+		//real preference the first time this dialog is accepted.
+	if (ui->m_enable_scripting->isEnabled()) {
+		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
+	}
+
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
 
@@ -240,9 +291,13 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+
+	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
+	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
+	settings.setValue(TextGrid::settings_key, ui->DiagramEditor_textGrid_cb->currentData());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
@@ -388,7 +443,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croate"), "hr");
 	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italien"), "it");
 	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japonais"), "ja");
-	ui->m_lang_cb->addItem(QET::Icons::ko,      tr("Coréen"), "ko");
+	ui->m_lang_cb->addItem(QET::Icons::ko,		tr("Coréen"), "ko");
 	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polonais"), "pl");
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portugais"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Roumains"), "ro");
@@ -400,9 +455,9 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
 	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
 	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongol"), "mn");
-	ui->m_lang_cb->addItem(QET::Icons::uk,      tr("Ukrainien"), "uk");
-	ui->m_lang_cb->addItem(QET::Icons::zh,      tr("Chinois"), "zh");
-	ui->m_lang_cb->addItem(QET::Icons::se,      tr("Suédois"), "sv");
+	ui->m_lang_cb->addItem(QET::Icons::uk,		tr("Ukrainien"), "uk");
+	ui->m_lang_cb->addItem(QET::Icons::zh,		tr("Chinois"), "zh");
+	ui->m_lang_cb->addItem(QET::Icons::se,		tr("Suédois"), "sv");
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system
 	QSettings settings;
@@ -451,11 +506,11 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 	bool ok;
 	QSettings settings;
 	QFont curFont;
-	curFont.fromString(settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QETUtils::fontFromString(curFont, settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
-		settings.setValue("diagrameditor/dynamic_text_font", font.toString());
+		settings.setValue("diagrameditor/dynamic_text_font", QETUtils::fontToString(font));
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
 							font.styleName() + ")";
@@ -555,11 +610,11 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 	bool ok;
 	QSettings settings;
 	QFont curFont;
-	curFont.fromString(settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QETUtils::fontFromString(curFont, settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
-		settings.setValue("diagrameditor/independent_text_font", font.toString());
+		settings.setValue("diagrameditor/independent_text_font", QETUtils::fontToString(font));
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
 							font.styleName() + ")";
@@ -623,5 +678,16 @@ void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
 	}
 	ui->m_hdpi_round_label->setEnabled(checked);
 	ui->m_hdpi_round_policy_cb->setEnabled(checked);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_use_system_color_cb_toggled
+	Enable/disable the custom color picker when the system color
+	checkbox is toggled.
+	@param checked
+*/
+void GeneralConfigurationPage::on_m_use_system_color_cb_toggled(bool checked)
+{
+	ui->m_custom_app_color_kpb->setEnabled(!checked);
 }
 

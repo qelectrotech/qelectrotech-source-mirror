@@ -55,7 +55,7 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</string>
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

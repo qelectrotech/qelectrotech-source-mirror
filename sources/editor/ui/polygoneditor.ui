@@ -48,7 +48,7 @@
   </layout>
   <action name="m_add_point_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="list-add" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
    </property>
    <property name="text">
@@ -57,7 +57,7 @@
   </action>
   <action name="m_remove_point_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="list-remove" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
    </property>
    <property name="text">

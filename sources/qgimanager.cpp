@@ -74,8 +74,10 @@ void QGIManager::release(QGraphicsItem *qgi) {
 	Demande au QGIManager de gerer plusieurs QGI
 	@param qgis QGraphicsItems a gerer
 */
-void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
-	foreach(QGraphicsItem *qgi, qgis) manage(qgi);
+void QGIManager::manage(const QVector<QGraphicsItem *> &items) {
+	for (const auto &qgi : items) {
+		manage(qgi);
+	}
 }
 
 /**
@@ -85,16 +87,6 @@ void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
 	sur la scene de ce QGIManager, alors il sera detruit.
 	@param qgis QGraphicsItems a ne plus gerer
 */
-void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
-	foreach(QGraphicsItem *qgi, qgis) release(qgi);
-}
-
-void QGIManager::manage(const QVector<QGraphicsItem *> &items) {
-	for (const auto &qgi : items) {
-		manage(qgi);
-	}
-}
-
 void QGIManager::release(const QVector<QGraphicsItem *> &items) {
 	for (const auto &qgi : items) {
 		release(qgi);

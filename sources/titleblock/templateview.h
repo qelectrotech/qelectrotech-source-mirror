@@ -20,6 +20,8 @@
 #include "../titleblocktemplate.h"
 
 #include <QGraphicsView>
+#include <QGraphicsGridLayout>
+#include <QGraphicsLayoutItem>
 class HelperCell;
 class SplittedHelperCell;
 class TitleBlockTemplateCommand;

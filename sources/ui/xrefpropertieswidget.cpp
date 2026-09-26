@@ -37,9 +37,10 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 {
 	ui->setupUi(this);
 	buildUi();
-	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
-	connect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
-	connect(ui->m_snap_to_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(enableOffsetSB(int)));
+	connect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	connect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
+	connect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
+	connect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);
 	updateDisplay();
 }
 
@@ -49,9 +50,10 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 */
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
-	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
-	disconnect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
-	disconnect(ui->m_snap_to_cb,           SIGNAL(currentIndexChanged(int)), this,                      SLOT(enableOffsetSB(int)));
+	disconnect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	disconnect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
+	disconnect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
+	disconnect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);	
 	delete ui;
 }
 
@@ -101,6 +103,7 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_type_cb -> addItem(tr("Bobine"), "coil");
 	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
 	ui -> m_type_cb -> addItem(tr("Commutateur / bouton"), "commutator");
+	ui -> m_type_cb -> addItem(tr("Automate (PLC)"), "plc");
 
 	ui -> m_snap_to_cb -> addItem(tr("En bas de page"), "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
@@ -110,6 +113,7 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
 	ui -> m_xrefpos_cb -> addItem(tr("Right"),"right");
 	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
+	ui -> m_xrefpos_cb -> addItem(tr("Champ de texte"),"text_field");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 
@@ -138,14 +142,17 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "left") xrp.setXrefPos(Qt::AlignLeft);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(Qt::AlignRight);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(Qt::AlignBaseline);
+	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "text_field") xrp.setXrefPos(Qt::AlignHCenter);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setShowTerminalName(ui->m_show_terminal_name_cb->isChecked());
+	xrp.setShowAllConfiguredSlaves(ui->m_show_all_slaves_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
 	xrp.setMasterLabel(ui->m_master_le->text());
 	xrp.setSlaveLabel(ui->m_slave_le->text());
 	xrp.setOffset(ui->m_offset_sb->value());
+	xrp.setSlaveOffset(ui->m_slave_offset_sb->value());
 
 	m_properties.insert(type, xrp);
 }
@@ -176,6 +183,9 @@ void XRefPropertiesWidget::updateDisplay()
 	int offset = xrp.offset();
 	ui->m_offset_sb->setValue(offset);
 
+	int slave_offset = xrp.slaveOffset();
+	ui->m_slave_offset_sb->setValue(slave_offset);
+
 	if (xrp.snapTo() == XRefProperties::Bottom){
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
 		 ui->m_offset_sb->setEnabled(true);
@@ -190,12 +200,33 @@ void XRefPropertiesWidget::updateDisplay()
 	else if(xrp.getXrefPos() == Qt::AlignRight) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("right"));
 	else if(xrp.getXrefPos() == Qt::AlignBaseline) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
 	else if(xrp.getXrefPos() == Qt::AlignBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
+	else if(xrp.getXrefPos() == Qt::AlignHCenter) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("text_field"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_show_terminal_name_cb->setChecked(xrp.showTerminalName());
+	ui->m_show_all_slaves_cb->setChecked(xrp.showAllConfiguredSlaves());
+	//The radio button only emits toggled() when it really changes: loading
+	//a type whose display did not change left the checkbox with the enabled
+	//state of the previously displayed type (it stayed clickable although
+	//the cross display was selected). Set the state explicitly here.
+	ui->m_show_all_slaves_cb->setEnabled(
+				ui->m_display_has_contacts_rb->isChecked());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));
 	ui->m_switch_prefix_le->setText(xrp.prefix("switch"));
 	ui->m_cross_properties_gb->setDisabled(!ui->m_display_has_cross_rb->isChecked());
+
+	//The cross ref of a PLC master is always drawn as its IO table, and
+	//the slaves are referenced directly into that table: the contacts/
+	//cross choice, the two display checkboxes and the cross options below
+	//have no effect at all for this type, so they are hidden instead of
+	//being offered for nothing. The positioning settings and the labels
+	//(the table really uses them) stay available.
+	const bool is_plc = type == QLatin1String("plc");
+	ui->m_display_has_contacts_rb->setVisible(!is_plc);
+	ui->m_display_has_cross_rb->setVisible(!is_plc);
+	ui->m_show_terminal_name_cb->setVisible(!is_plc);
+	ui->m_show_all_slaves_cb->setVisible(!is_plc);
+	ui->m_cross_properties_gb->setVisible(!is_plc);
 }
 
 /**

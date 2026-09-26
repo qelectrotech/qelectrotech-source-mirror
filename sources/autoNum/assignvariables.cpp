@@ -23,7 +23,9 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetxml.h"
-
+#include "../qetproject.h"
+#include <QDir>
+#include <QDomDocument>
 #include <QStringList>
 #include <QVariant>
 #include <utility>
@@ -39,11 +41,13 @@ namespace autonum
 	sequentialNumbers::sequentialNumbers(const sequentialNumbers &other)
 	{
 		unit          = other.unit;
+		wrap          = other.wrap;
 		unit_folio    = other.unit_folio;
 		ten           = other.ten;
 		ten_folio     = other.ten_folio;
 		hundred       = other.hundred;
 		hundred_folio = other.hundred_folio;
+		alpha         = other.alpha;
 	}
 
 	sequentialNumbers::~sequentialNumbers()
@@ -56,11 +60,13 @@ namespace autonum
 			return (*this);
 
 		unit          = other.unit;
+		wrap          = other.wrap;
 		unit_folio    = other.unit_folio;
 		ten           = other.ten;
 		ten_folio     = other.ten_folio;
 		hundred       = other.hundred;
 		hundred_folio = other.hundred_folio;
+		alpha         = other.alpha;
 
 		return (*this);
 	}
@@ -68,11 +74,13 @@ namespace autonum
 	bool sequentialNumbers::operator==(const sequentialNumbers &other) const
 	{
 		if (unit          == other.unit && \
+			wrap          == other.wrap && \
 			unit_folio    == other.unit_folio && \
 			ten           == other.ten && \
 			ten_folio     == other.ten_folio && \
 			hundred       == other.hundred && \
-			hundred_folio == other.hundred_folio)
+			hundred_folio == other.hundred_folio && \
+			alpha         == other.alpha)
 			return true;
 		else
 			return false;
@@ -104,6 +112,11 @@ namespace autonum
 						    document,
 						    "unit",
 						    unit.join(";")));
+		if (!wrap.isEmpty())
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "wrap",
+						    wrap.join(";")));
 		if (!unit_folio.isEmpty())
 			element.appendChild(QETXML::textToDomElement(
 						    document,
@@ -129,6 +142,11 @@ namespace autonum
 						    document,
 						    "hundredFolio",
 						    hundred_folio.join(";")));
+		if(!alpha.isEmpty())
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "alpha",
+						    alpha.join(";")));
 
 		return element;
 	}
@@ -148,6 +166,11 @@ namespace autonum
 		from = element.firstChildElement("unit");
 		unit = from.text().split(";");
 
+			//Absent from files written before cyclic parts could be
+			//rendered; an empty list is the correct reading of that.
+		from = element.firstChildElement("wrap");
+		wrap = from.text().split(";");
+
 		from = element.firstChildElement("unitFolio");
 		unit_folio = from.text().split(";");
 
@@ -162,17 +185,22 @@ namespace autonum
 
 		from = element.firstChildElement("hundredFolio");
 		hundred_folio = from.text().split(";");
+
+		from = element.firstChildElement("alpha");
+		alpha = from.text().split(";");
 	}
 	
 		//Clear this sequence
 	void sequentialNumbers::clear()
 	{
 		unit.clear();
+		wrap.clear();
 		unit_folio.clear();
 		ten.clear();
 		ten_folio.clear();
 		hundred.clear();
 		hundred_folio.clear();
+		alpha.clear();
 	}
 
 	/**
@@ -274,6 +302,17 @@ namespace autonum
 		str.replace("%{conductor_color}", dc.value("conductor_color").toString());
 
 		str.replace("%{void}", QString());
+
+		str.replace("%{plc_type}", dc.value("plc_type").toString());
+		str.replace("%{plc_address}", dc.value("plc_address").toString());
+		str.replace("%{plc_function}", dc.value("plc_function").toString());
+		str.replace("%{plc_comment}", dc.value("plc_comment").toString());
+		str.replace("%{plc_crossref}", dc.value("plc_crossref").toString());
+		str.replace("%{plc_tc}", dc.value("plc_tc").toString());
+		str.replace("%{plc_t1}", dc.value("plc_t1").toString());
+		str.replace("%{plc_t2}", dc.value("plc_t2").toString());
+		str.replace("%{plc_t3}", dc.value("plc_t3").toString());
+		str.replace("%{plc_t4}", dc.value("plc_t4").toString());
 
 		return str;
 	}
@@ -408,14 +447,20 @@ namespace autonum
 								 m_seq_struct.ten_folio.size()),
 							qMax(m_seq_struct.hundred_folio.size(),
 								 m_seq_struct.unit.size())),
-						qMax(m_seq_struct.hundred.size(),
-							 m_seq_struct.ten.size())
+						qMax(
+							qMax(m_seq_struct.hundred.size(),
+								 m_seq_struct.ten.size()),
+							qMax(m_seq_struct.alpha.size(),
+								 m_seq_struct.wrap.size()))
 					);
 
 		for (int i=1; i<=max ; i++)
 		{
 			if (m_assigned_label.contains("%sequ_" + QString::number(i)) && m_seq_struct.unit.size() >= i) {
 				m_assigned_label.replace("%sequ_" + QString::number(i),m_seq_struct.unit.at(i-1));
+			}
+			if (m_assigned_label.contains("%seqw_" + QString::number(i)) && m_seq_struct.wrap.size() >= i) {
+				m_assigned_label.replace("%seqw_" + QString::number(i),m_seq_struct.wrap.at(i-1));
 			}
 			if (m_assigned_label.contains("%seqt_" + QString::number(i)) && m_seq_struct.ten.size() >= i) {
 				m_assigned_label.replace("%seqt_" + QString::number(i),m_seq_struct.ten.at(i-1));
@@ -431,6 +476,9 @@ namespace autonum
 			}
 			if (m_assigned_label.contains("%seqhf_" + QString::number(i)) && m_seq_struct.hundred_folio.size() >= i) {
 				m_assigned_label.replace("%seqhf_" + QString::number(i),m_seq_struct.hundred_folio.at(i-1));
+			}
+			if (m_assigned_label.contains("%seqa_" + QString::number(i)) && m_seq_struct.alpha.size() >= i) {
+				m_assigned_label.replace("%seqa_" + QString::number(i),m_seq_struct.alpha.at(i-1));
 			}
 		}
 	}
@@ -451,12 +499,26 @@ namespace autonum
 		{
 			if (context.itemAt(i).at(0) == type)
 			{
+				const QStringList item = context.itemAt(i);
+					//A zero-padding mask, spreadsheet style: its length is the
+					//minimum number of digits. It overrides the width implied
+					//by the part type, so "Chiffre 01" with a mask of "0000"
+					//pads to four. An absent mask -- which is every context
+					//written before the field existed -- falls through to the
+					//type's own width, so nothing about existing projects
+					//changes.
+				const QString mask = NumerotationContext::formatOf(item);
 				QString number;
-				if (type == "ten" || type == "tenfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
+				if (type == "alpha")
+						//Alphabetic value, not an integer -- used as-is.
+					number = item.at(1);
+				else if (!mask.isEmpty())
+					number = QString("%1").arg(item.at(1).toInt(), mask.length(), 10, QChar('0'));
+				else if (type == "ten" || type == "tenfolio")
+					number = QString("%1").arg(item.at(1).toInt(), 2, 10, QChar('0'));
 				else if (type == "hundred" || type == "hundredfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-				else number = QString::number(context.itemAt(i).at(1).toInt());
+					number = QString("%1").arg(item.at(1).toInt(), 3, 10, QChar('0'));
+				else number = QString::number(item.at(1).toInt());
 					list.append(number);
 			}
 		}
@@ -522,6 +584,10 @@ namespace autonum
 			{
 				autonum::setSequentialToList(seqStruct.unit, context,"unit");
 			}
+			if (label.contains("%seqw_"))
+			{
+				autonum::setSequentialToList(seqStruct.wrap, context,"wrap");
+			}
 			if (label.contains("%sequf_"))
 			{
 				autonum::setSequentialToList(seqStruct.unit_folio, context,"unitfolio");
@@ -545,6 +611,10 @@ namespace autonum
 				autonum::setSequentialToList(seqStruct.hundred_folio, context,"hundredfolio");
 				autonum::setFolioSequentialToHash(seqStruct.hundred_folio, diagram->m_elmt_hundredfolio_max, hashKey);
 			}
+			if (label.contains("%seqa_"))
+			{
+				autonum::setSequentialToList(seqStruct.alpha, context,"alpha");
+			}
 		}
 	}
 
@@ -559,11 +629,13 @@ namespace autonum
 		QString value;
 		QString formula;
 		int count_unit = 0;
+		int count_wrap = 0;
 		int count_unitf = 0;
 		int count_ten = 0;
 		int count_tenf = 0;
 		int count_hundred = 0;
 		int count_hundredf = 0;
+		int count_alpha = 0;
 
 		for(int i=0 ; i<nc.size() ; i++)
 		{
@@ -600,6 +672,10 @@ namespace autonum
 				count_unit++;
 				formula.append("%sequ_" + QString::number(count_unit));
 			}
+			else if (type == "wrap") {
+				count_wrap++;
+				formula.append("%seqw_" + QString::number(count_wrap));
+			}
 			else if (type == "unitfolio") {
 				count_unitf++;
 				formula.append("%sequf_" + QString::number(count_unitf));
@@ -620,9 +696,81 @@ namespace autonum
 				count_hundredf++;
 				formula.append("%seqhf_" + QString::number(count_hundredf));
 			}
+			else if (type == "alpha") {
+				count_alpha++;
+				formula.append("%seqa_" + QString::number(count_alpha));
+			}
 		}
 
 		return formula;
+	}
+
+	/**
+		@brief prefixFromLabelFile
+		Look up a prefix for @a path (path[dirLevel] outermost, path[1] the
+		deepest directory; path[0], the element's own file name, is never
+		matched) in the qet_labels.xml at @a filepath.
+
+		Descends through nested \<category name="..."\> elements matching
+		path[dirLevel], path[dirLevel-1], ..., path[1] in turn, considering
+		only *direct* children at each step -- unlike a flat token scan,
+		this cannot be fooled by a same-named category living elsewhere in
+		the document at the wrong nesting depth (bugtracker #671 item 5).
+
+		At each matched level, that category's own \<prefix\> child -- even
+		an empty one -- overrides whatever a shallower ancestor already
+		provided, so an explicit empty \<prefix/\> cancels inheritance
+		rather than silently falling back to it (the behaviour requested in
+		PR #686 review). A category with no \<prefix\> child at all leaves
+		the inherited value untouched, which is how a directory with no
+		prefix of its own comes to inherit its parent's, as the file's own
+		header comment documents.
+
+		@return the prefix that applies, or a null QString if the file
+			cannot be read, is not well-formed, or does not describe this
+			path at all (as opposed to describing it with no prefix
+			anywhere along it, which is a non-null empty string).
+	*/
+	static QString prefixFromLabelFile(const QString &filepath, const QStringList &path, int dirLevel)
+	{
+		QFile file(filepath);
+		if (!file.open(QFile::ReadOnly | QFile::Text))
+			return QString();
+
+		QDomDocument document;
+		if (!document.setContent(&file))
+			return QString();
+
+		QDomElement node = document.documentElement();
+		if (node.isNull())
+			return QString();
+
+		QString prefix;
+		for (int i = dirLevel ; i >= 1 ; --i) {
+			QDomElement child = node.firstChildElement(QStringLiteral("category"));
+			while (!child.isNull()
+				   && child.attribute(QStringLiteral("name")) != path[i]) {
+				child = child.nextSiblingElement(QStringLiteral("category"));
+			}
+			if (child.isNull())
+				return QString();
+			node = child;
+
+			const QDomElement own = node.firstChildElement(QStringLiteral("prefix"));
+			if (!own.isNull()) {
+					//readElementText()'s null-vs-empty distinction that PR
+					//#686 needed for the old QXmlStreamReader-based lookup
+					//has a QDomElement equivalent: text() on an empty
+					//element can itself come back null depending on how the
+					//XML was written, so the same explicit fallback applies
+					//-- an empty QString here means "found, deliberately
+					//blank", not "not found".
+				prefix = own.text();
+				if (prefix.isNull())
+					prefix = QString("");
+			}
+		}
+		return prefix;
 	}
 
 	/**
@@ -638,114 +786,85 @@ namespace autonum
 		if (!location.isProject())
 			return QString();
 
-		QXmlStreamReader rxml;
-		QString path[10];
-		int i = -1;
+			//Directory names from the element up to (not including) the
+			//collection root, outermost last -- path[dirLevel] is the
+			//top-level category, path[1] the element's immediate parent
+			//directory, path[0] the element's own file name (never matched
+			//against a category: the search stops descending once it has
+			//matched path[1], the deepest real directory). An unbounded
+			//QStringList rather than a fixed-size array, because a custom
+			//collection can nest deeper than the shipped one -- see
+			//bugtracker #671 item 3.
+		QStringList path;
 		ElementsLocation current_location = location;
-		int dirLevel = -1;
-
-			//Add location name to path array
-		while((current_location.parent() != current_location) && (current_location.parent().fileName() != "import"))
+		while ((current_location.parent() != current_location)
+			   && (current_location.parent().fileName() != "import"))
 		{
-			i++;
-			path[i]=current_location.fileName();
+			path << current_location.fileName();
 			current_location = current_location.parent();
-			dirLevel++;
 		}
-			//User Element without folder treatment
-		if (i == -1)
-		{
-			i = 0;
-			path[i]=current_location.fileName();
+			//User element without folder treatment
+		if (path.isEmpty()) {
+			path << current_location.fileName();
 			current_location = current_location.parent();
-			dirLevel = 0;
+		}
+		const int dirLevel = path.size() - 1;
+			//Name of the top-level tree the element's path was found
+			//under, e.g. "10_electric" -- or, for a custom/company
+			//collection not organised that way, whatever its top-level
+			//folder happens to be called.
+		const QString collection_root = current_location.fileName();
+
+			//Every top-level common-collection tree (10_electric,
+			//20_logic, 30_hydraulic, ...) may carry its own
+			//qet_labels.xml, with categories relative to that tree, the
+			//same way 10_electric/qet_labels.xml already does -- not just
+			//10_electric, which is all the hardcoded check this replaces
+			//used to allow (bugtracker #671 item 2). commonElementsDir()
+			//-- unlike customElementsDir(), which normalises this itself
+			//-- returns whatever path the user configured verbatim, with
+			//no guaranteed trailing separator; concatenating a suffix onto
+			//it directly used to silently mangle the path (and so the
+			//prefix lookup) for any install relocated to a directory
+			//without a trailing slash (#671 item 1). QDir::filePath()
+			//joins correctly either way.
+		{
+			const QString common_file = QDir(QETApp::commonElementsDir())
+					.filePath(collection_root + QStringLiteral("/qet_labels.xml"));
+			const QString prefix = prefixFromLabelFile(common_file, path, dirLevel);
+			if (!prefix.isNull()) {
+				return prefix;
+			}
 		}
 
-		// Create Custom labels if qet_labels.xml exits in customElementsDir
-		if (current_location.fileName() != "10_electric"){
-		QString custom_labels = "qet_labels.xml";
-		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
-		
-		QFile file(customfilepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text))
-			return QString();
-				rxml.setDevice(&file);
-				rxml.readNext();
+			/* Which collection an element actually came from is not
+			 * recoverable post-import (addElement() strips the protocol),
+			 * so custom and company labels files are tried against two
+			 * possible layouts: with the collection's top-level tree name
+			 * folded into the path (a custom/company file organised as a
+			 * mirror of the common collection, tree name included) and
+			 * without it (a file scoped to just this one tree, matching
+			 * how the common collection's own files are written). Custom
+			 * is tried before company, so a user override wins over a
+			 * shared one.
+			 */
+		QStringList path_from_root = path;
+		path_from_root << collection_root;
 
-		while(!rxml.atEnd())
-		{
-			if (rxml.attributes().value("name").toString() == path[i])
-			{
-				rxml.readNext();
-				i=i-1;
-					//reached element directory
-				if (i==0)
-				{
-					for (int j=i; j<= dirLevel; j = j +1)
-					{
-							//if there is a prefix available apply prefix
-						if(rxml.name().toString()=="prefix")
-						{
-							return rxml.readElementText();
-						}
-							//if there isn't a prefix available, find parent prefix in parent folder
-						else
-						{
-							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
-							{
-								rxml.skipCurrentElement();
-								rxml.readNext();
-							}
-						}
-					}
+		const QStringList candidate_dirs = {
+			QETApp::customElementsDir(),
+			QETApp::companyElementsDir()
+		};
+		for (const QString &dir : candidate_dirs) {
+			const QString candidate =
+					QDir(dir).filePath(QStringLiteral("qet_labels.xml"));
+			for (const QStringList &segments : {path_from_root, path}) {
+				const QString prefix = prefixFromLabelFile(
+							candidate, segments, segments.size() - 1);
+				if (!prefix.isNull()) {
+					return prefix;
 				}
 			}
-			rxml.readNext();
-			}
-		}
-		else
-		{
-		QString qet_labels = "10_electric/qet_labels.xml";
-		QString filepath = QETApp::commonElementsDir().append(qet_labels);
-		QFile file(filepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text))
-			return QString();
-			
-		rxml.setDevice(&file);
-		rxml.readNext();
-
-		while(!rxml.atEnd())
-		{
-			if (rxml.attributes().value("name").toString() == path[i])
-			{
-				rxml.readNext();
-				i=i-1;
-					//reached element directory
-				if (i==0)
-				{
-					for (int j=i; j<= dirLevel; j = j +1)
-					{
-							//if there is a prefix available apply prefix
-						if(rxml.name().toString()=="prefix")
-						{
-							return rxml.readElementText();
-						}
-							//if there isn't a prefix available, find parent prefix in parent folder
-						else
-						{
-							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
-							{
-								rxml.skipCurrentElement();
-								rxml.readNext();
-							}
-						}
-					}
-				}
-			}
-			rxml.readNext();
-		}
 		}
 		return QString();
 	}

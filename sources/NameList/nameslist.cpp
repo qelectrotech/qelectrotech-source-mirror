@@ -263,6 +263,13 @@ QString NamesList::name(const QString &fallback_name) const
 	QString system_language = QETApp::langFromSetting();
 	if (! map_names[system_language].isEmpty())
 		return (map_names[system_language]);
+	// langFromSetting() may return a full locale (e.g. "de_DE") while element
+	// and folder names are keyed by the 2-letter language code ("de"). Try the
+	// base language before falling back to English, mirroring what setLanguage()
+	// does for the UI translations.
+	const QString base_language = system_language.section('_', 0, 0);
+	if (base_language != system_language && ! map_names[base_language].isEmpty())
+		return (map_names[base_language]);
 	if (! map_names["en"].isEmpty()) return (map_names["en"]);
 	if (! fallback_name.isEmpty()) return (fallback_name);
 	if (map_names.count()) return (map_names.begin().value());

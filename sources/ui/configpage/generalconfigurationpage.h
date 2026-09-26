@@ -53,6 +53,7 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_ElementEditor_Grid_PointSize_min_sb_valueChanged(int value);
 
 		void on_m_hdpi_round_cb_clicked(bool checked);
+		void on_m_use_system_color_cb_toggled(bool checked);
 
 	private:
 		void fillLang();

@@ -28,6 +28,8 @@
 #include "../terminalstrip.h"
 #include "../../qetinformation.h"
 
+#include <QUuid>
+
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
 	QDockWidget(parent),
     ui(new Ui::TerminalStripTreeDockWidget)
@@ -35,11 +37,7 @@ TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QW
 	ui->setupUi(this);
     setProject(project);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
-#else
-	ui->m_tree_view->expandAll();
-#endif
 }
 
 TerminalStripTreeDockWidget::~TerminalStripTreeDockWidget()
@@ -85,7 +83,7 @@ void TerminalStripTreeDockWidget::reload()
 	m_uuid_terminal_H.clear();
 	m_uuid_strip_H.clear();
 
-	for (const auto &connection_ : qAsConst(m_strip_changed_connection)) {
+	for (const auto &connection_ : std::as_const(m_strip_changed_connection)) {
 		disconnect(connection_);
 	}
 	m_strip_changed_connection.clear();
@@ -93,11 +91,7 @@ void TerminalStripTreeDockWidget::reload()
 
 	buildTree();
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
-#else
-	ui->m_tree_view->expandAll();
-#endif
 
 		//Reselect the tree widget item of the current edited strip
    auto item = m_item_strip_H.key(current_);
@@ -250,7 +244,7 @@ void TerminalStripTreeDockWidget::buildTree()
 		return a->name() < b->name();
 	});
 
-	for (const auto &ts : qAsConst(ts_vector)) {
+	for (const auto &ts : std::as_const(ts_vector)) {
 		addTerminalStrip(ts);
 	}
 	addFreeTerminal();
@@ -352,7 +346,7 @@ void TerminalStripTreeDockWidget::addFreeTerminal()
 
 	auto free_terminal_item = ui->m_tree_view->topLevelItem(1);
 
-	for (const auto terminal : qAsConst(vector_))
+	for (const auto terminal : std::as_const(vector_))
 	{
 		QUuid uuid_ = terminal->uuid();
 		QStringList strl{terminal->actualLabel()};

@@ -82,7 +82,7 @@ void QFileNameEdit::init()
 			"tooltip content when editing a filename"
 		)
 	);
-	connect(validator_, SIGNAL(validationFailed()), this, SLOT(validationFailed()));
+	connect(validator_, &QETRegExpValidator::validationFailed, this, &QFileNameEdit::validationFailed);
 }
 
 /**

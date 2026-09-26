@@ -28,11 +28,15 @@
 #include <QSignalMapper>
 #include <QUndoGroup>
 
+class QToolButton;
+
 class QMdiSubWindow;
 class QETProject;
 class QETResult;
 class ProjectView;
+class ConductorColorToolButton;
 class CustomElement;
+class DiagramBgColorToolButton;
 class Diagram;
 class DiagramView;
 class Element;
@@ -41,13 +45,11 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
 
-#ifdef BUILD_WITHOUT_KF5
-#else
 class KAutoSaveFile;
-#endif
 /**
 	This class represents the main window of the QElectroTech diagram editor and,
 	ipso facto, the most important part of the QElectroTech user interface.
@@ -72,14 +74,16 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *currentProjectView() const;
 		QETProject *currentProject() const;
 		bool drawGrid() const;
-#ifdef BUILD_WITHOUT_KF5
-#else
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
-#endif
 
 	  protected:
 		bool event(QEvent *) override;
 	private:
+		// Declared first so it is initialised before any member whose
+		// constructor may dispatch a Qt event calling event() (e.g. the
+		// QActionGroup members below trigger QObject::setParent events).
+		bool m_first_show = true;
+
 		QETDiagramEditor(const QETDiagramEditor &);
 		void setUpElementsPanel ();
 		void setUpElementsCollectionWidget();
@@ -98,6 +102,8 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *findProject(QETProject *) const;
 		ProjectView *findProject(const QString &) const;
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
+		void updateUsageTrackersActiveState();
+		void updateWindowModifiedState();
 
 	signals:
 		void syncElementsPanel();
@@ -126,6 +132,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings();
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
@@ -134,9 +141,14 @@ class QETDiagramEditor : public QETMainWindow
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
 		void slot_terminalNumbering();
+		void slot_reloadElementDrawings();
+#ifdef QET_HAS_SCRIPTING
+		void slot_runScript();
+#endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
+		void addDiagramToProjectAt(QETProject *, int);
 		void removeDiagram(Diagram *);
 		void removeDiagrams(const QList<Diagram *> &diagrams);
 		void removeDiagramFromProject();
@@ -155,6 +167,7 @@ class QETDiagramEditor : public QETMainWindow
 		void subWindowActivated(QMdiSubWindow *subWindows);
 
 	private slots:
+		void updateTextGridButton();
 		void selectionChanged();
 
 	public:
@@ -168,6 +181,10 @@ class QETDiagramEditor : public QETMainWindow
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
 		m_selection_actions_group,  ///Action related to edit a selected item
 		*m_depth_action_group = nullptr;
+
+		QMenu
+		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
+		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
 	
 	private:
 		QActionGroup
@@ -190,15 +207,18 @@ class QETDiagramEditor : public QETMainWindow
 		*undo,				///< Cancel the latest action
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
+		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
-		*conductor_default,		///< Show a dialog to edit default conductor properties
-		*m_grey_background,		///< Switch the background color in white or grey
+		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_draw_grid,			///< Switch the background grid display or not
+		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
+		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
+		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
-		*m_project_folio_list,		///< Sommaire des schemas
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
@@ -206,7 +226,12 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_project_export_wiring_list, ///< Action to export the wiring list
+		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
+		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
+#ifdef QET_HAS_SCRIPTING
+		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
+#endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
 		*m_cascade_window,		///< Show MDI subwindows as cascade
@@ -215,13 +240,22 @@ class QETDiagramEditor : public QETMainWindow
 		*m_edit_selection,		///< To edit selected item
 		*m_delete_selection,		///< Delete selection
 		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
+		*m_rotate_group_selection = nullptr, ///< Rotate the selection as a whole around its shared center, instead of each item in place
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,
 		*m_close_file,			///< Close current project file
 		*m_save_file,			///< Save current project
 		*m_save_file_as,		///< Save current project as a specific file
-		*m_find = nullptr;
+		*m_find = nullptr,
+		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
+
+		///< One-click conductor colour, in the "Schéma" toolbar
+		ConductorColorToolButton *m_conductor_color_button = nullptr;
+		///< Diagram background color picker, in the "Affichage" toolbar
+		DiagramBgColorToolButton *m_background_color_button = nullptr;
+		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QToolButton *m_text_grid_button = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 
@@ -236,6 +270,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
 
+		QAction *m_command_search = nullptr;
+		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
@@ -253,7 +289,6 @@ class QETDiagramEditor : public QETMainWindow
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;
 		int activeSubWindowIndex;
-		bool m_first_show = true;
 		SearchAndReplaceWidget m_search_and_replace_widget;
 };
 #endif

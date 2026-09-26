@@ -22,6 +22,7 @@
 
 #include <QGraphicsObject>
 #include <QMultiMap>
+#include <QStyleOptionGraphicsItem>
 
 class Element;
 class DynamicElementTextItem;
@@ -62,6 +63,13 @@ class CrossRefItem : public QGraphicsObject
 		enum { Type = UserType + 1009 };
 		int type() const override { return Type; }
 
+		/// Returns true when \a xrp asks the contact comb of \a elmt to show
+		/// every slave contact the master defines, even the ones no slave is
+		/// linked to yet. \a elmt must be a master element.
+		static bool showAllConfiguredSlaves(
+				const Element *elmt,
+				const XRefProperties &xrp);
+
 		/**
 			@brief The CONTACTS enum
 		*/
@@ -89,6 +97,19 @@ class CrossRefItem : public QGraphicsObject
 		void updateLabel();
 		void autoPos();
 
+	public:
+		/// DXF export: replay this item's paint() on an arbitrary QPainter
+		/// (e.g. one targeting DxfPaintDevice). paint() itself stays
+		/// protected, as it should for the normal
+		/// QGraphicsScene/QGraphicsView paint contract - this is a
+		/// deliberate, narrow escape hatch for exporters, not a general
+		/// relaxation of that contract.
+		void paintForExport(QPainter *painter)
+		{
+			QStyleOptionGraphicsItem option;
+			paint(painter, &option, nullptr);
+		}
+
 	protected:
 		bool sceneEvent(QEvent *event) override;
 		void paint(QPainter *painter,
@@ -106,7 +127,14 @@ class CrossRefItem : public QGraphicsObject
 		void setUpCrossBoundingRect(QPainter &painter);
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
-		QRectF drawContact(QPainter &painter, int flags, Element *elmt, int pole_index = 0);
+		void drawAsPlcTable(QPainter &painter);
+		bool mustDrawAllConfiguredSlaves() const;
+		QRectF drawLinkedSlaveContacts(QPainter &painter, Element *elmt);
+		QRectF drawContact(QPainter &painter,
+				   int flags,
+				   Element *elmt,
+				   int pole_index = 0,
+				   const QStringList &master_labels = QStringList());
 		void fillCrossRef(QPainter &painter);
 		void AddExtraInfo(QPainter &painter, const QString&);
 		QList<Element *> NOElements() const;

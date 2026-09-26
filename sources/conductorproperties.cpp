@@ -499,6 +499,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		horiz_rotate_text    = cp.horiz_rotate_text;
 		m_vertical_alignment = cp.m_vertical_alignment;
 		m_horizontal_alignment = cp.m_horizontal_alignment;
+		style                = cp.style;
 
 		return;
 	}
@@ -553,6 +554,18 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 	if (equal)
 		m_dash_size = i_value;
+	equal = true;
+
+		//style
+	Qt::PenStyle pen_style;
+	pen_style = clist.first().style;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.style != pen_style)
+			equal = false;
+	}
+	if (equal)
+		style = pen_style;
 	equal = true;
 
 		//text
@@ -811,14 +824,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	if (style_string.isEmpty()) return;
 
 	// recupere la liste des couples style / valeur
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code QString::SkipEmptyParts for QT 5.14 or later")
-#endif
 	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
-#endif
 
 	QRegularExpression Rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
 	if (!Rx.isValid())

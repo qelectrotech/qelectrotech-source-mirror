@@ -226,10 +226,10 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 	dialog_vlayout_ -> addLayout(dialog_glayout);
 	dialog_vlayout_ -> addWidget(buttons_);
 	
-	connect(use_existing_template_,  SIGNAL(toggled(bool)), this,          SLOT(correctRadioButtons()));
-	connect(integrate_new_template_, SIGNAL(toggled(bool)), this,          SLOT(correctRadioButtons()));
-	connect(buttons_,                SIGNAL(accepted()),    integ_dialog_, SLOT(accept()));
-	connect(buttons_,                SIGNAL(rejected()),    integ_dialog_, SLOT(reject()));
+	connect(use_existing_template_, &QRadioButton::toggled, this, &IntegrationMoveTitleBlockTemplatesHandler::correctRadioButtons);
+	connect(integrate_new_template_, &QRadioButton::toggled, this, &IntegrationMoveTitleBlockTemplatesHandler::correctRadioButtons);
+	connect(buttons_, &QDialogButtonBox::accepted, integ_dialog_, &QDialog::accept);
+	connect(buttons_, &QDialogButtonBox::rejected, integ_dialog_, &QDialog::reject);
 }
 
 /**

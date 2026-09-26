@@ -19,6 +19,7 @@
 
 #include "ElementsCollection/elementcollectionitem.h"
 #include "ElementsCollection/elementscollectionmodel.h"
+#include "ElementsCollection/elementstreeview.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
 #include "qfilenameedit.h"
@@ -88,7 +89,7 @@ void ElementDialog::setUpWidget()
 	layout->addWidget(new QLabel(label_));
 
 
-	m_tree_view = new QTreeView(this);
+	m_tree_view = new ElementsTreeView(this);
 
 	m_model = new ElementsCollectionModel(m_tree_view);
 

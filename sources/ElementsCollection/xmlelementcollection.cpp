@@ -186,22 +186,21 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element,
 	if (parent_element.ownerDocument() != m_dom_document)
 		return QDomElement();
 
-		//Get all childs element of parent_element
-	QDomNodeList child_list = parent_element.childNodes();
-	QString tag_name(child_name.endsWith(".elmt")? "element" : "category");
-	QList <QDomElement> found_dom_element;
-	for (int i=0 ; i<child_list.length() ; i++)
+		/* Walk the siblings directly instead of the previous
+		 * childNodes()+item(i) double pass: QDomNodeList::item(i) restarts
+		 * from the first child every call, which made this loop quadratic
+		 * in the number of children. This lookup runs several times per
+		 * element instance while loading a project, on the "import"
+		 * category that holds every embedded definition. */
+	const QString tag_name = child_name.endsWith(QLatin1String(".elmt"))
+			? QStringLiteral("element") : QStringLiteral("category");
+	for (QDomElement child_element = parent_element.firstChildElement(tag_name) ;
+		 !child_element.isNull() ;
+		 child_element = child_element.nextSiblingElement(tag_name))
 	{
-		QDomElement child_element = child_list.item(i).toElement();
-		if (child_element.tagName() == tag_name)
-			found_dom_element << child_element;
+		if (child_element.attribute(QStringLiteral("name")) == child_name)
+			return child_element;
 	}
-
-	if (found_dom_element.isEmpty()) return QDomElement();
-
-	foreach (QDomElement elmt, found_dom_element)
-		if (elmt.attribute("name") == child_name)
-			return elmt;
 
 	return QDomElement();
 }

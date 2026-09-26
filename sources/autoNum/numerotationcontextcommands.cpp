@@ -48,6 +48,15 @@ NumerotationContext NumerotationContextCommands::next()
 		QStringList str = context_.itemAt(i);
 		setNumStrategy(str.at(0));
 		contextnum << strategy_ -> next(context_, i);
+
+			//Wrap-and-carry: str still holds the pre-increment value, so
+			//this checks the same condition WrapNum::next() used to decide
+			//whether to wrap its own value back to 0.
+		if (str.at(0) == "wrap" && str.size() > 4) {
+			int modulus = str.at(4).toInt();
+			if (modulus > 0 && (str.at(1).toInt() + str.at(2).toInt()) >= modulus)
+				carry(contextnum, i - 1);
+		}
 	}
 	return contextnum;
 }
@@ -64,8 +73,78 @@ NumerotationContext NumerotationContextCommands::previous()
 		QStringList str = context_.itemAt(i);
 		setNumStrategy(str.at(0));
 		contextnum << strategy_ -> previous(context_, i);
+
+		if (str.at(0) == "wrap" && str.size() > 4) {
+			int modulus = str.at(4).toInt();
+			if (modulus > 0 && (str.at(1).toInt() - str.at(2).toInt()) < 0)
+				borrow(contextnum, i - 1);
+		}
 	}
 	return contextnum;
+}
+
+/**
+	@brief NumerotationContextCommands::carry
+	Add one unit to the nearest numeric part at or before from_index in
+	contextnum, skipping non-numeric parts (e.g. a "." string separator)
+	along the way. If that part is itself a wrap part and this pushes it
+	to (or past) its own modulus, it wraps back to 0 and the carry
+	cascades further back -- so wrap parts can be chained (e.g. seconds
+	wrapping into minutes wrapping into hours).
+	@param contextnum the context being built by next(); already contains
+	entries for every index <= from_index
+	@param from_index index to start looking from, going backwards
+*/
+void NumerotationContextCommands::carry(NumerotationContext &contextnum, int from_index)
+{
+	for (int j = from_index; j >= 0; --j) {
+		QStringList strl = contextnum.itemAt(j);
+		if (!contextnum.keyIsNumber(strl.at(0)))
+			continue;
+
+		int value = strl.at(1).toInt() + 1;
+		if (strl.at(0) == "wrap" && strl.size() > 4) {
+			int modulus = strl.at(4).toInt();
+			if (modulus > 0 && value >= modulus) {
+				contextnum.replaceValue(j, QString::number(value - modulus));
+				carry(contextnum, j - 1);
+				return;
+			}
+		}
+		contextnum.replaceValue(j, QString::number(value));
+		return;
+	}
+		//No preceding numeric part: the carry has nowhere to go and is dropped,
+		//same as any other counter in this engine has no overflow tracking
+		//beyond the parts the user actually configured.
+}
+
+/**
+	@brief NumerotationContextCommands::borrow
+	Inverse of carry(): subtract one unit from the nearest numeric part at
+	or before from_index. If that part is itself a wrap part and this
+	takes it below 0, it wraps to (modulus - 1) and the borrow cascades
+	further back.
+*/
+void NumerotationContextCommands::borrow(NumerotationContext &contextnum, int from_index)
+{
+	for (int j = from_index; j >= 0; --j) {
+		QStringList strl = contextnum.itemAt(j);
+		if (!contextnum.keyIsNumber(strl.at(0)))
+			continue;
+
+		int value = strl.at(1).toInt() - 1;
+		if (strl.at(0) == "wrap" && strl.size() > 4) {
+			int modulus = strl.at(4).toInt();
+			if (modulus > 0 && value < 0) {
+				contextnum.replaceValue(j, QString::number(value + modulus));
+				borrow(contextnum, j - 1);
+				return;
+			}
+		}
+		contextnum.replaceValue(j, QString::number(value));
+		return;
+	}
 }
 
 /**
@@ -117,8 +196,16 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new HundredFNum (diagram_);
 		return;
 	}
+	else if (str == "wrap") {
+		strategy_ = new WrapNum (diagram_);
+		return;
+	}
 	else if (str == "string") {
 		strategy_ = new StringNum (diagram_);
+		return;
+	}
+	else if (str == "alpha") {
+		strategy_ = new AlphaNum (diagram_);
 		return;
 	}
 	else if (str == "idfolio") {
@@ -172,7 +259,7 @@ NumerotationContext NumStrategy::nextString (const NumerotationContext &nc,
 {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
-	newnc.addValue(strl.at(0), strl.at(1), strl.at(2).toInt());
+	newnc.addValue(strl.at(0), strl.at(1), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -186,7 +273,7 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc,
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) + (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt(), 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -200,7 +287,7 @@ NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc,
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) - (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt(), 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -434,6 +521,62 @@ NumerotationContext HundredFNum::previous(const NumerotationContext &nc, const i
 /**
 	Constructor
 */
+WrapNum::WrapNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+	@brief WrapNum::toRepresentedString
+	@return the represented string of num
+*/
+QString WrapNum::toRepresentedString(const QString num) const
+{
+	return (num);
+}
+
+/**
+	@brief WrapNum::next
+	Wraps this part's own value back to 0 every `modulus` values (carrying
+	into the adjacent part is handled by NumerotationContextCommands::next(),
+	which has visibility into the other parts).
+	@return the next NumerotationContext nc at position i
+*/
+NumerotationContext WrapNum::next (const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	int increase = strl.at(2).toInt();
+	int modulus = strl.size() > 4 ? strl.at(4).toInt() : 0;
+	int new_value = strl.at(1).toInt() + increase;
+	if (modulus > 0)
+		new_value %= modulus;
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus, NumerotationContext::formatOf(strl));
+	return (newnc);
+}
+
+/**
+	@brief WrapNum::previous
+	@return the previous NumerotationContext nc at posiiton i
+*/
+NumerotationContext WrapNum::previous(const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	int increase = strl.at(2).toInt();
+	int modulus = strl.size() > 4 ? strl.at(4).toInt() : 0;
+	int new_value = strl.at(1).toInt() - increase;
+	if (modulus > 0) {
+		new_value %= modulus;
+		if (new_value < 0)
+			new_value += modulus;
+	}
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus, NumerotationContext::formatOf(strl));
+	return (newnc);
+}
+
+/**
+	Constructor
+*/
 StringNum::StringNum (Diagram *d):
 	NumStrategy (d)
 {}
@@ -463,6 +606,120 @@ NumerotationContext StringNum::next (const NumerotationContext &nc, const int i)
 NumerotationContext StringNum::previous(const NumerotationContext &nc, const int i) const
 {
 	return (nextString(nc, i));
+}
+
+namespace
+{
+	/**
+	 * @brief incrementAlpha
+	 * Base-26 letter increment (a, b, ... z, aa, ab, ... az, ba, ...),
+	 * the same algorithm as incrementing a spreadsheet column name.
+	 * Carries right-to-left on 'z'/'Z' overflow; if the whole string
+	 * overflows, a new leading letter is prepended (lowercase 'a').
+	 * @param value : current alphabetic value; treated as "a" if empty.
+	 * @return the next value.
+	 */
+	QString incrementAlpha(QString value)
+	{
+		if (value.isEmpty()) {
+			return QStringLiteral("a");
+		}
+
+		int i = value.length() - 1;
+		while (i >= 0 && (value.at(i) == QLatin1Char('z') || value.at(i) == QLatin1Char('Z'))) {
+			value[i] = value.at(i).isUpper() ? QLatin1Char('A') : QLatin1Char('a');
+			--i;
+		}
+		if (i < 0) {
+			value.prepend(QLatin1Char('a'));
+		} else {
+			value[i] = QChar(value.at(i).unicode() + 1);
+		}
+		return value;
+	}
+
+	/**
+	 * @brief decrementAlpha
+	 * Inverse of incrementAlpha(): borrows right-to-left on 'a'/'A'
+	 * underflow. Symmetric shrink case (e.g. "aa" -> "z"): once every
+	 * position has borrowed, the leading letter is dropped rather than
+	 * left as an extra 'z'. A single-letter value already at "a"/"A" has
+	 * no representable predecessor and is left unchanged, the same way
+	 * the numeric parts don't clamp but a blank label would be worse
+	 * here than a value that stops decreasing.
+	 * @param value : current alphabetic value; treated as "a" if empty.
+	 * @return the previous value.
+	 */
+	QString decrementAlpha(QString value)
+	{
+		if (value.isEmpty()) {
+			return QStringLiteral("a");
+		}
+		if (value.length() == 1) {
+				//A single letter has no representable predecessor once it
+				//reaches "a"/"A" -- clamp rather than mutate, since the loop
+				//below would otherwise turn it into "z"/"Z" (borrowing past
+				//the only position there is).
+			if (value.at(0) == QLatin1Char('a') || value.at(0) == QLatin1Char('A')) {
+				return value;
+			}
+			return QChar(value.at(0).unicode() - 1);
+		}
+
+		int i = value.length() - 1;
+		while (i >= 0 && (value.at(i) == QLatin1Char('a') || value.at(i) == QLatin1Char('A'))) {
+			value[i] = value.at(i).isUpper() ? QLatin1Char('Z') : QLatin1Char('z');
+			--i;
+		}
+		if (i < 0) {
+				//Every position borrowed: the whole value was "a...a", whose
+				//predecessor is one fewer "z" (e.g. "aa" -> "z").
+			value.remove(0, 1);
+		} else {
+			value[i] = QChar(value.at(i).unicode() - 1);
+		}
+		return value;
+	}
+}
+
+/**
+	Constructor
+*/
+AlphaNum::AlphaNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+	@brief AlphaNum::toRepresentedString
+	@return the represented string of str
+*/
+QString AlphaNum::toRepresentedString(const QString str) const
+{
+	return (str);
+}
+
+/**
+	@brief AlphaNum::next
+	@return the next NumerotationContext nc at position i
+*/
+NumerotationContext AlphaNum::next (const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	newnc.addValue(strl.at(0), incrementAlpha(strl.at(1)), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
+	return (newnc);
+}
+
+/**
+	@brief AlphaNum::previous
+	@return the previous NumerotationContext nc at posiiton i
+*/
+NumerotationContext AlphaNum::previous(const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	newnc.addValue(strl.at(0), decrementAlpha(strl.at(1)), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
+	return (newnc);
 }
 
 /**

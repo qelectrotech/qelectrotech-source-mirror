@@ -20,6 +20,7 @@
 
 #include <QDomElement>
 #include <QPen>
+#include <QUuid>
 
 class QDomDocument;
 class QDir;

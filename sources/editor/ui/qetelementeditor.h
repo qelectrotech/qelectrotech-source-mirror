@@ -87,6 +87,7 @@ class QETElementEditor : public QMainWindow
 		void on_m_open_action_triggered();
 		void on_m_open_from_file_action_triggered();
 		bool on_m_save_as_file_action_triggered();
+		bool on_m_export_svg_action_triggered();
 		void on_m_reload_action_triggered();
 		void on_m_quit_action_triggered();
 		void on_m_deselect_all_action_triggered();
@@ -115,6 +116,7 @@ class QETElementEditor : public QMainWindow
 	private:
 		bool canClose();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings() const;
 		void setupActions();
 		void updateAction();
@@ -160,6 +162,8 @@ class QETElementEditor : public QMainWindow
 		QStackedWidget *m_tools_dock_stack = nullptr;
 
 		QLabel *m_default_informations = nullptr;
+
+		QLabel *m_position_label = nullptr;
 
 };
 

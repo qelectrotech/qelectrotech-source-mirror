@@ -25,7 +25,7 @@ DiagramContextWidget::DiagramContextWidget(QWidget *parent) :
 	ui(new Ui::DiagramContextWidget)
 {
 	ui->setupUi(this);
-	connect(ui->m_table, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(checkTableRows()));
+	connect(ui->m_table, &QTableWidget::itemChanged, this, &DiagramContextWidget::checkTableRows);
 }
 
 DiagramContextWidget::~DiagramContextWidget()

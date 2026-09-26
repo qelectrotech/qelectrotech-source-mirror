@@ -329,19 +329,16 @@
     <name>AddLinkDialog</name>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
-        <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
         <translation>Вставити посилання</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
-        <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
         <translation>Назва:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
-        <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
         <translation>Посилання:=Link:</translation>
     </message>
@@ -508,29 +505,77 @@
         <translation>Вибір автонумерації</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="21"/>
+        <source>Valeur</source>
+        <translation type="unfinished">Значення</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="31"/>
+        <source>Incrément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
+        <source>Suivant</source>
+        <translation type="unfinished">Наступний</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="54"/>
         <source>Folio</source>
         <translation>Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="70"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="158"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="235"/>
+        <source>Réinitialiser à la valeur de départ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="90"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="178"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="255"/>
+        <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="103"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="191"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="268"/>
+        <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="125"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="213"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="290"/>
+        <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="138"/>
         <source>Element</source>
         <translation>Елемент</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="145"/>
         <source>Conducteur</source>
         <translation>Провідник</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="316"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
         <translation>Налаштування автонумерації</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="319"/>
         <source>Configurer</source>
         <translation>Налаштувати</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="165"/>
+        <source>Autonumérotation</source>
+        <translation type="unfinished">Автонумерація</translation>
     </message>
 </context>
 <context>
@@ -571,59 +616,59 @@
         <translation>до</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="148"/>
         <source>Project Status:</source>
         <translation>Статус проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="155"/>
         <source>Update Policy</source>
         <translation>Політика оновлення</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="169"/>
         <source>Conductor</source>
         <translation>Провідник</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="259"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="373"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="176"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="256"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="368"/>
         <source>Both</source>
         <translation>Обидва</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="186"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="272"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="348"/>
         <source>Only New</source>
         <translation>Тільки нові</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="196"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="288"/>
         <source>Only Existent</source>
         <translation>Тільки існуючі</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="208"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="206"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="304"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="378"/>
         <source>Disable</source>
         <translation>Вимкнути</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="243"/>
         <source>Element</source>
         <translation>Елемент</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="341"/>
         <source>Folio</source>
         <translation>Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="358"/>
         <source>Existent</source>
         <translation>Існуючі</translation>
     </message>
@@ -687,49 +732,73 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Відформатувати як список матеріалів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="68"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
         <source>nomenclature_</source>
         <translation>номенклатура_</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
         <source>Enregister sous... </source>
         <translation>Зберегти як... </translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>Файли csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="77"/>
         <source>Erreur</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="79"/>
-        <source>Impossible de remplacer le fichier!
-
-</source>
-        <translation>Неможливо змінити файл!
-		
-</translation>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
+        <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="110"/>
         <source>Position</source>
         <translation>Положення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="112"/>
         <source>Position du folio</source>
         <translation>Положення аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="126"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="114"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
         <translation>кількість номерів позицій</translation>
+    </message>
+</context>
+<context>
+    <name>BackupDialog</name>
+    <message>
+        <location filename="../sources/ui/backupdialog.cpp" line="33"/>
+        <source>Créer une copie de sauvegarde ?</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/backupdialog.cpp" line="39"/>
+        <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+        <comment>dialog message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/backupdialog.cpp" line="49"/>
+        <source>Oui</source>
+        <comment>yes button</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/backupdialog.cpp" line="50"/>
+        <source>Non</source>
+        <comment>no button</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -776,6 +845,14 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
+    <name>ClickableImageLabel</name>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="57"/>
+        <source>Cliquez pour choisir une couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CompositeTextEditDialog</name>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
@@ -797,13 +874,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1660"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1679"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Редагувати властивості провідника</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1665"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1684"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Modifier les propriétés de plusieurs conducteurs</translation>
@@ -1095,17 +1172,188 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
+    <name>ContactGroupSelectionDialog</name>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="36"/>
+        <source>Sélectionner un groupe de contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="41"/>
+        <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="53"/>
+        <source>#</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="54"/>
+        <source>Type</source>
+        <translation type="unfinished">Тип</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="55"/>
+        <source>Sous-type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="56"/>
+        <source>Contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="57"/>
+        <source>Bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="59"/>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="98"/>
+        <source>T%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="117"/>
+        <source>(déjà assigné)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="122"/>
+        <source>(état ne correspond pas)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="125"/>
+        <source>(sous-type ne correspond pas)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="128"/>
+        <source>(nombre de contacts ne correspond pas)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="187"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="190"/>
+        <source>Annuler</source>
+        <translation type="unfinished">Відміна</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="220"/>
+        <source>Normalement ouvert</source>
+        <translation type="unfinished">(NO) нормально розімкнутий</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="221"/>
+        <source>Normalement fermé</source>
+        <translation type="unfinished">(NC) нормально замкнутий</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="222"/>
+        <source>Inverseur</source>
+        <translation type="unfinished">(CO) перекидний</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="223"/>
+        <source>Autre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="224"/>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="236"/>
+        <source>Inconnu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="231"/>
+        <source>Simple</source>
+        <translation type="unfinished">Простий</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="232"/>
+        <source>Puissance</source>
+        <translation type="unfinished">Силовий</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="233"/>
+        <source>Temporisé travail</source>
+        <translation type="unfinished">Вмикання із затримкою</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="234"/>
+        <source>Temporisé repos</source>
+        <translation type="unfinished">Вимикання із затримкою</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="235"/>
+        <source>Temporisé travail &amp; repos</source>
+        <translation type="unfinished">Вмикання та вимикання по часу</translation>
+    </message>
+</context>
+<context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1362"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1355"/>
         <source>Déplacer une primitive</source>
         <translation>Пересунути примітив</translation>
     </message>
 </context>
 <context>
+    <name>CustomElementInfoPartWidget</name>
+    <message>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="43"/>
+        <source>nom_de_la_propriete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="44"/>
+        <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="48"/>
+        <source>Supprimer cette propriété</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiagnosticsReportDialog</name>
+    <message>
+        <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="55"/>
+        <source>Enregistrer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="72"/>
+        <source>Enregistrer le rapport de diagnostic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="74"/>
+        <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="84"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Помилка</translation>
+    </message>
+    <message>
+        <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="85"/>
+        <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1862"/>
+        <location filename="../sources/diagram.cpp" line="1968"/>
         <source>Modifier la profondeur</source>
         <translation>Змінити глибину</translation>
     </message>
@@ -1165,17 +1413,288 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DiagramEventAddElement</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="248"/>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="254"/>
         <source>Ajouter %1</source>
         <translation>Додати %1</translation>
     </message>
 </context>
 <context>
+    <name>DiagramEventAddImage</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="94"/>
+        <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiagramEventAddPath</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpath.cpp" line="92"/>
+        <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiagramEventAddShape</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="451"/>
+        <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="454"/>
+        <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="456"/>
+        <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="467"/>
+        <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="469"/>
+        <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="472"/>
+        <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="475"/>
+        <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramImageItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="127"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="441"/>
+        <source>redimensionner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="441"/>
+        <source>pivoter/incliner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="457"/>
+        <source>Cliquer : mode %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="495"/>
+        <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="496"/>
+        <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="497"/>
+        <source> -- %1 : mode %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="497"/>
+        <source>Cliquer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="564"/>
+        <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="565"/>
+        <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="566"/>
+        <source>Glisser : incliner (Maj = par pas de 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="567"/>
+        <source>Glisser : déplacer le centre de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="820"/>
+        <source>Redimensionner une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="827"/>
+        <source>Faire pivoter une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="837"/>
+        <source>Incliner une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="843"/>
+        <source>Déplacer le centre de rotation d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="859"/>
+        <source>Modifier une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1060"/>
+        <source>Restaurer les proportions d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1073"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1588"/>
+        <source>Enregistrer l&apos;image sous...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1087"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1591"/>
+        <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1116"/>
+        <source>Image PNG (*.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1117"/>
+        <source>Image JPEG (*.jpg *.jpeg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1118"/>
+        <source>Image BMP (*.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1126"/>
+        <source>Image SVG (*.svg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1131"/>
+        <source>Tous les fichiers (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1178"/>
+        <source>Transparence non conservée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1179"/>
+        <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1196"/>
+        <source>Échec de l&apos;enregistrement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1197"/>
+        <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1312"/>
         <source>une image</source>
         <translation>Зображення</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1585"/>
+        <source>Remplacer l&apos;image...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1594"/>
+        <source>Couleur transparente...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1598"/>
+        <source>Rogner...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1602"/>
+        <source>Miroir horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1604"/>
+        <source>Miroir vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1609"/>
+        <source>Restaurer les proportions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1644"/>
+        <source>Selectionner une image...</source>
+        <translation type="unfinished">Виберіть зображення...</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1645"/>
+        <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1652"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Помилка</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1652"/>
+        <source>Impossible de charger l&apos;image.</source>
+        <translation type="unfinished">Помилка</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1669"/>
+        <source>Remplacer une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1721"/>
+        <source>Miroir horizontal d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1721"/>
+        <source>Miroir vertical d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1775"/>
+        <source>Définir une couleur transparente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1874"/>
+        <source>Rogner une image</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1195,7 +1714,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Утримуйте ctrl для вільного пересування</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="530"/>
         <source>
 &lt;Shift&gt; to move</source>
         <translation type="unfinished"></translation>
@@ -1243,34 +1762,34 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="617"/>
+        <location filename="../sources/diagramview.cpp" line="603"/>
         <source>Connecter les bornes sélectionnées</source>
         <translation>Підключити вибрані клеми</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="905"/>
+        <location filename="../sources/diagramview.cpp" line="891"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Без назви</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1363"/>
+        <location filename="../sources/diagramview.cpp" line="1351"/>
         <source>Modèle enregistré</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1364"/>
+        <location filename="../sources/diagramview.cpp" line="1352"/>
         <source>Le modèle a été enregistré avec succès sous :
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1367"/>
+        <location filename="../sources/diagramview.cpp" line="1355"/>
         <source>Erreur</source>
         <translation type="unfinished">Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1367"/>
+        <location filename="../sources/diagramview.cpp" line="1355"/>
         <source>Le fichier n&apos;a pas pu être écrit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1296,12 +1815,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicElementTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="44"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="46"/>
         <source>Texte</source>
         <translation>Текст</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="55"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="57"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>Редагувати текст елемента</translation>
     </message>
@@ -1381,210 +1900,210 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="69"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
         <source>Propriété</source>
         <translation>Властивість</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="70"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
         <source>Valeur</source>
         <translation>Значення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="144"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="145"/>
         <source>Source du texte</source>
         <translation>джерело тексту</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="149"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="531"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="538"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1315"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1457"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="532"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="539"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1316"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1458"/>
         <source>Texte utilisateur</source>
         <translation>Текст користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="533"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="544"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1320"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1458"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="152"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="545"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1321"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
         <source>Information de l&apos;élément</source>
         <translation>Інформація про елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="152"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="197"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="535"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="550"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="153"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="198"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="536"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="551"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
         <source>Texte composé</source>
         <translation>Складений текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="163"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="164"/>
         <source>Texte</source>
         <translation>Текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="177"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="178"/>
         <source>Information</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="204"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="205"/>
         <source>Mon texte composé</source>
         <translation>Мій складений текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="221"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="222"/>
         <source>Taille</source>
         <translation>Розмір</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="236"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="237"/>
         <source>Police</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="250"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="251"/>
         <source>Couleur</source>
         <translation>Колір</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="266"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="821"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="267"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="822"/>
         <source>Cadre</source>
         <translation>Рамка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="282"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="283"/>
         <source>Largeur</source>
         <translation>Ширина</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="299"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="763"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="300"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="764"/>
         <source>Position X</source>
         <translation>Позиція по X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="314"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="778"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="315"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="779"/>
         <source>Position Y</source>
         <translation>Позиція по Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="329"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="793"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="794"/>
         <source>Rotation</source>
         <translation>Обертання</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="345"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
         <source>Conserver la rotation visuel</source>
         <translation>Підтримка візуального обертання</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="359"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="742"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="360"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="743"/>
         <source>Alignement</source>
         <translation>Вирівнювання</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="362"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="363"/>
         <source>Éditer</source>
         <translation>Редагувати</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="523"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="524"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>Редагувати текст елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="563"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="564"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation>Змінити розмір тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="570"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="571"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
         <translation>Змінити шрифт тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="577"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="578"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation>Змінити колір тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="584"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="585"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation>Змінити рамку тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="592"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="593"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
         <translation>Змінити ширину тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="604"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="605"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>Перемістити текст елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="616"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="617"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation>Повернути текст елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="626"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="627"/>
         <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
         <translation>Змінити нахил тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="637"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="638"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
         <translation>Змінити вирівнювання тексту елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="662"/>
         <source>Éditer un groupe de textes</source>
         <translation>Відредагувати групу текстів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="669"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="747"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1551"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="670"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="748"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1552"/>
         <source>Gauche</source>
         <translation>Зліва</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="671"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="748"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1552"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="672"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="749"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1553"/>
         <source>Droite</source>
         <translation>Зправа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="673"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="749"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1553"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="674"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="750"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1554"/>
         <source>Centre</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="807"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="808"/>
         <source>Ajustement vertical</source>
         <translation>Вирівнювання по вертикалі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="837"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="838"/>
         <source>Maintenir en bas de page</source>
         <translation>Зберегти внизу сторінки</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1143"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1144"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation>Перемістити текст до іншої групи</translation>
     </message>
@@ -1618,7 +2137,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="64"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="148"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="155"/>
         <source>Texte composé</source>
         <translation>Складений текст</translation>
     </message>
@@ -1628,272 +2147,324 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Зберегти положення при обертанні</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="115"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
+        <source>Tourner autour de son propre centre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="125"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
         <source>Source du texte</source>
         <translation>Джерело тексту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="145"/>
         <source>Rotation</source>
         <translation>Обертання</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="155"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
         <source>Alignement</source>
         <translation>Вирівнювання</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="169"/>
         <source>Encadrer le texte</source>
         <translation>Рамка тексту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="199"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="206"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="209"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="216"/>
         <source>Police</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="240"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="251"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="294"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Déplacer un champ texte</source>
         <translation>Перемістити текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="262"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="316"/>
         <source>Pivoter un champ texte</source>
         <translation>Обертання текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="273"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="327"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation>Редагувати текст у текстовому полі</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="284"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="412"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="338"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="479"/>
         <source>Modifier la police d&apos;un champ texte</source>
         <translation>Змінити шрифт текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="296"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="350"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
         <translation>Modifier le cadre d&apos;un champ texte</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="309"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="363"/>
         <source>Modifier la largeur d&apos;un texte</source>
         <translation>Змінити ширину тексту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="322"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="376"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
         <translation>Редагувати текстову інформацію</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="359"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="426"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
         <translation>Змінити джерело тексту, текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="396"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="463"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
         <translation>Змінити вирівнювання текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="426"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="493"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
         <translation>Змінити колір текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="439"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="506"/>
         <source>Modifier la conservation de l&apos;angle</source>
         <translation>Змінити збереження кута</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="519"/>
+        <source>Modifier le point de rotation d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1609"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1619"/>
         <source>Texte utilisateur</source>
         <translation>Текст користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1610"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1620"/>
         <source>Information de l&apos;élément</source>
         <translation>Інформація про елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1611"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1621"/>
         <source>Texte composé</source>
         <translation>Складений текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1726"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1766"/>
         <source>Gauche</source>
         <translation>Вліво</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1727"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1767"/>
         <source>Centre</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1728"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1768"/>
         <source>Droite</source>
         <translation>Вправо</translation>
     </message>
 </context>
 <context>
+    <name>EdzArchive</name>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="41"/>
+        <source>File not found: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
+        <source>Cannot read %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
+        <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="62"/>
+        <source>Not a valid .edz package (unrecognised archive format).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="70"/>
+        <source>Could not create a temporary directory: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="80"/>
+        <source>No *.part.xml found inside the .edz</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Element</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1701"/>
+        <source>Numéroter automatiquement un élément</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ElementDialog</name>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="62"/>
+        <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
         <translation>Відкрити елемент</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="63"/>
+        <location filename="../sources/elementdialog.cpp" line="64"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
         <translation>Виберіть елемент, який хочете відкрити.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="66"/>
+        <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
         <translation>Зберегти елемент</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="67"/>
+        <location filename="../sources/elementdialog.cpp" line="68"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
         <translation>Виберіть елемент, де ви хочете зберегти своє визначення.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="70"/>
+        <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
         <translation>Відкрити категорію</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="71"/>
-        <location filename="../sources/elementdialog.cpp" line="75"/>
+        <location filename="../sources/elementdialog.cpp" line="72"/>
+        <location filename="../sources/elementdialog.cpp" line="76"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
         <translation>Оберіть категорію.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="74"/>
+        <location filename="../sources/elementdialog.cpp" line="75"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
         <translation>Зберегти категорію</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="78"/>
+        <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Enregistrer un template</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="79"/>
+        <location filename="../sources/elementdialog.cpp" line="80"/>
         <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
         <comment>dialog content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="82"/>
+        <location filename="../sources/elementdialog.cpp" line="83"/>
         <source>Titre</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="83"/>
+        <location filename="../sources/elementdialog.cpp" line="84"/>
         <source>Label</source>
         <translation>Мітка</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="123"/>
+        <location filename="../sources/elementdialog.cpp" line="124"/>
         <source>Nom du nouveau dossier</source>
         <translation>Назва нової папки</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="125"/>
+        <location filename="../sources/elementdialog.cpp" line="126"/>
         <source>Nom du nouveau template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="131"/>
+        <location filename="../sources/elementdialog.cpp" line="132"/>
         <source>Nom de fichier de l&apos;élément</source>
         <comment>placeholder: the element&apos;s file name, not its display name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="134"/>
+        <location filename="../sources/elementdialog.cpp" line="135"/>
         <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
 Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
         <comment>tooltip for the element file-name field</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="228"/>
+        <location filename="../sources/elementdialog.cpp" line="229"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
         <translation>Неіснуючий вибір</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="229"/>
+        <location filename="../sources/elementdialog.cpp" line="230"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Вибір не існує</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="235"/>
-        <location filename="../sources/elementdialog.cpp" line="263"/>
+        <location filename="../sources/elementdialog.cpp" line="236"/>
+        <location filename="../sources/elementdialog.cpp" line="264"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
         <translation>Неправильний вибір</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="236"/>
+        <location filename="../sources/elementdialog.cpp" line="237"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
         <translation>Виділення не є елементом.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="248"/>
+        <location filename="../sources/elementdialog.cpp" line="249"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Перезаписати елемент?</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="248"/>
+        <location filename="../sources/elementdialog.cpp" line="249"/>
         <source>Écraser le template ?</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="249"/>
+        <location filename="../sources/elementdialog.cpp" line="250"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
         <translation>Елемент вже існує. Ви хочете перезаписати його?</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="249"/>
+        <location filename="../sources/elementdialog.cpp" line="250"/>
         <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="264"/>
+        <location filename="../sources/elementdialog.cpp" line="265"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
         <translation>Ви повинні вибрати елемент або категорію з назвою для елемента.</translation>
@@ -1930,17 +2501,22 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.h" line="52"/>
+        <location filename="../sources/ui/elementinfowidget.h" line="54"/>
         <source>Informations</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="213"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="222"/>
+        <source>Ajouter une propriété personnalisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="229"/>
         <source>Séparation de potentiel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="217"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="233"/>
         <source>Exclure de la nomenclature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1954,7 +2530,10 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="136"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="193"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="225"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="715"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="852"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
@@ -1964,294 +2543,529 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <translation>Основний тип: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="47"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="60"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="255"/>
+        <source>margin: 5px; font-weight: bold;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
+        <source>Exclure de la nomenclature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
         <source>Élément esclave</source>
         <translation>підрядний елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="62"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="85"/>
         <source>Nombre de contact représenté</source>
         <translation>Відображати контакти в посиланні</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="69"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="92"/>
         <source>Type de contact</source>
         <translation>Тип контакту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="76"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="99"/>
         <source>État du contact</source>
         <translation>Стан контакту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="94"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="117"/>
         <source>Élément maître</source>
         <translation>Головний елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="100"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="125"/>
         <source>Type concret</source>
         <translation>Вид елемента</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="110"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="150"/>
         <source>Définir le nombre maximal d&apos;esclaves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="130"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="167"/>
+        <source>Définir les éléments esclave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="198"/>
+        <source>Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="203"/>
+        <source>Nb. contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="208"/>
+        <source>Nb. bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="219"/>
         <source>Élément bornier</source>
         <translation>Елемент клемної колодки</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="143"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="232"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="715"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="852"/>
         <source>Fonction</source>
         <translation>функція</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="173"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="248"/>
+        <source>Verrouiller la numérotation automatique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
+        <source>Séparation de potentiel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="269"/>
         <source>Informations</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="183"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="279"/>
         <source>Nom</source>
         <translation>Ім&apos;я</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="188"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="284"/>
         <source>Valeurs</source>
         <translation>Значення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="129"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="143"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="194"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="209"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="565"/>
         <source>Simple</source>
         <translation>Простий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="130"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="195"/>
         <source>Maître</source>
         <translation>Головний</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="131"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="196"/>
         <source>Esclave</source>
         <translation>Підпорядкований</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="132"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="197"/>
         <source>Renvoi de folio suivant</source>
         <translation>Посилання на наступний аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="133"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="198"/>
         <source>Renvoi de folio précédent</source>
         <translation>Посилання на попередній аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="134"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="199"/>
         <source>Bornier</source>
         <translation>Клемна колодка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="135"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="200"/>
         <source>Vignette</source>
         <translation>Ескіз</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="136"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="201"/>
         <source>Définition de conducteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="139"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="204"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="556"/>
         <source>Normalement ouvert</source>
         <translation>(NO) нормально розімкнутий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="140"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="205"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="557"/>
         <source>Normalement fermé</source>
         <translation>(NC) нормально замкнутий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="141"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="206"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="558"/>
         <source>Inverseur</source>
         <translation>(CO) перекидний</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="142"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="207"/>
         <source>Other</source>
         <translation>Інший</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="208"/>
+        <source>Esclave PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="210"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="566"/>
         <source>Puissance</source>
         <translation>Силовий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="211"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="567"/>
         <source>Temporisé travail</source>
         <translation>Вмикання із затримкою</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="146"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="212"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="568"/>
         <source>Temporisé repos</source>
         <translation>Вимикання із затримкою</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="213"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="569"/>
         <source>Temporisé travail &amp; repos</source>
         <translation>Вмикання та вимикання по часу</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="216"/>
         <source>Bobine</source>
         <translation>Котушка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="151"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="217"/>
         <source>Organe de protection</source>
         <translation>Пристрій захисту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="152"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="218"/>
         <source>Commutateur / bouton</source>
         <translation>Перемикач/кнопка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="155"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="161"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="219"/>
+        <source>Module PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="223"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="229"/>
         <source>Générique</source>
         <translation>загальний</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="156"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="224"/>
         <source>Fusible</source>
         <translation>Запобіжник</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="157"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="225"/>
         <source>Séctionnable</source>
         <translation>Секційний</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="158"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="226"/>
         <source>Diode</source>
         <translation>Діод</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="159"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="227"/>
         <source>Terre</source>
         <translation>Заземлення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="162"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="230"/>
         <source>Phase</source>
         <translation>Фаза</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="163"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="231"/>
         <source>Neutre</source>
         <translation>Нейтраль</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="538"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="600"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="669"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="672"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1215"/>
+        <source>T%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="559"/>
+        <source>Autre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="687"/>
+        <source>Configuration PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="692"/>
+        <source>+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="693"/>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="715"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="852"/>
+        <source>Adresse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="716"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="853"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Аннотація</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="716"/>
+        <source>Réf. croisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="735"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1213"/>
+        <source>Nb.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="735"/>
+        <source>T1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="802"/>
+        <source>Police des en-têtes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="803"/>
+        <source>Configurer la police des en-têtes de colonnes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="807"/>
+        <source>Police du texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="808"/>
+        <source>Configurer la police du texte dans les cellules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="812"/>
+        <source>Afficher les en-têtes sur la feuille</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="813"/>
+        <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="825"/>
+        <source>Saut %1 après:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="831"/>
+        <source>Aucun</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="839"/>
+        <source>H. ligne:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="844"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="873"/>
+        <source> mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="853"/>
+        <source>Réf.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="860"/>
+        <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="864"/>
+        <source>Visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="897"/>
+        <source>Coller depuis le presse-papiers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="989"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1366"/>
+        <source>Police des en-têtes: %1 %2pt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="991"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1382"/>
+        <source>Police du texte: %1 %2pt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1363"/>
+        <source>Police des en-têtes de colonnes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1379"/>
+        <source>Police du texte des cellules</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="354"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="360"/>
         <source>Général</source>
         <translation>Простий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="370"/>
         <source>Élement
 </source>
         <translation>Елемент
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="367"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="373"/>
         <source>Nom : %1
 </source>
         <translation>Ім&apos;я: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="370"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
         <source>Folio : %1
 </source>
         <translation>Аркуш: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="372"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="378"/>
         <source>Type : %1
 </source>
         <translation>Тип: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="373"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
         <source>Sous-type : %1
 </source>
         <translation>Підтип: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="374"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="380"/>
         <source>Position : %1
 </source>
         <translation>Позиція: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="381"/>
         <source>Rotation : %1°
 </source>
         <translation>Обертання: %1°
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="382"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Розміри: %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="383"/>
         <source>Bornes : %1
 </source>
         <translation>Виводи: %1
 		</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
+        <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="391"/>
         <source>Nombre maximum de contacts esclaves définis : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="380"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
         <source>Nombre de contacts esclaves utilisés : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="382"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="411"/>
+        <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="420"/>
+        <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="427"/>
         <source>Emplacement : %1
 </source>
         <translation>Розташування: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="401"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="442"/>
+        <source>Verrouiller la position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="458"/>
         <source>Retrouver dans le panel</source>
         <translation>Зайти в панелі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="403"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="460"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редагувати елемент</translation>
     </message>
@@ -2339,27 +3153,27 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <translation>Тип елемента</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
         <source>Simples</source>
         <translation>Простий</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
         <source>Organes de protection</source>
         <translation>Пристрої захисту</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
         <source>Tous</source>
         <translation>Все</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
         <source>Boutons et commutateurs</source>
         <translation>Кнопки та перемикачі</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
         <source>Borniers</source>
         <translation>Клемні колодки</translation>
     </message>
@@ -2369,32 +3183,37 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <translation>Ескізи</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
         <source>Contacteurs et relais</source>
         <translation>Контактори та реле</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="331"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="318"/>
+        <source>Automates (MAE/SPS)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="341"/>
         <source>Configuration</source>
         <translation>Конфігурація</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="340"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="350"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation>Відкрити збережену конфігурацію</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="367"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="377"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Зберегти поточну конфігурацію</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="409"/>
         <source>Requête SQL personnalisée</source>
         <translation>SQL запит користувача</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="409"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="419"/>
         <source>Requête SQL :</source>
         <translation>SQL запит</translation>
     </message>
@@ -2422,29 +3241,29 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="275"/>
+        <location filename="../sources/editor/elementscene.cpp" line="282"/>
         <source>Déplacer une primitive</source>
         <translation>Пересунути примітив</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="872"/>
+        <location filename="../sources/editor/elementscene.cpp" line="888"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Змінити інформацію про автора</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="877"/>
+        <location filename="../sources/editor/elementscene.cpp" line="893"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Ви можете використовувати це вільне поле, щоб вказати авторів елемента, його ліцензію або будь-яку іншу інформацію, яку ви вважаєте корисною.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="941"/>
+        <location filename="../sources/editor/elementscene.cpp" line="989"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Редагувати імена</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="943"/>
+        <location filename="../sources/editor/elementscene.cpp" line="991"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Ви можете вказати назву елемента кількома мовами.</translation>
     </message>
@@ -2555,68 +3374,73 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="146"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Відкрити папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="148"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="155"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редагувати елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="150"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="157"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Видалити елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="152"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="159"/>
         <source>Supprimer le dossier</source>
         <translation>Видалити папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="154"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="161"/>
         <source>Recharger les collections</source>
         <translation>Перезавантажити колекцію</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="156"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="163"/>
         <source>Éditer le dossier</source>
         <translation>Редагувати папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="158"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="165"/>
         <source>Nouveau dossier</source>
         <translation>Нова папка</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="160"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="167"/>
         <source>Nouvel élément</source>
         <translation>Новий елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="162"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="169"/>
+        <source>Importer une pièce EPLAN (.edz)…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="171"/>
         <source>Afficher uniquement ce dossier</source>
         <translation>Показати лише цю папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="165"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="174"/>
         <source>Afficher tous les dossiers</source>
         <translation>Показати всі папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="167"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="176"/>
         <source>Propriété du dossier</source>
         <translation>Властивості папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="445"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="457"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Видалити елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="446"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="458"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
@@ -2624,25 +3448,25 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
 </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="462"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="474"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Видалення елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="464"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="476"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Видалення елемента не вдалося.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="491"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Видалити папку?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="492"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -2650,24 +3474,76 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Усі елементи та папки, що містяться в ній, будуть видалені.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Видалення папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="511"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="523"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Видалення папки не вдалось</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="670"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="623"/>
+        <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="626"/>
+        <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="652"/>
+        <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="657"/>
+        <source>Importer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="698"/>
+        <source>Importer une pièce EPLAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="699"/>
+        <source>Pièces EPLAN (*.edz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="707"/>
+        <source>Import EPLAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="708"/>
+        <source>Impossible d&apos;importer cette pièce :
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="784"/>
         <source>Le dossier %1 contient</source>
         <translation>Папка %1 містить</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="671"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="785"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n елемент, повтор</numerusform>
@@ -2676,7 +3552,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="673"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="787"/>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>в %n папці.</numerusform>
@@ -2685,32 +3561,32 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="675"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="789"/>
         <source>Chemin de la collection :  %1</source>
         <translation>Шлях до колекції: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="664"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="778"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>Шлях в файловій сстемі: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="181"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="190"/>
         <source>Rechercher...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="208"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="217"/>
         <source>Collections</source>
         <translation type="unfinished">Колекції</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="209"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="218"/>
         <source>Modèles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="680"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="794"/>
         <source>Propriété du dossier %1</source>
         <translation>Властивості папки %1</translation>
     </message>
@@ -2718,60 +3594,60 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="200"/>
+        <location filename="../sources/elementspanel.cpp" line="209"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Двічі клацніть, щоб згорнути або розгорнути цей проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="216"/>
+        <location filename="../sources/elementspanel.cpp" line="225"/>
         <source>Cartouches embarqués</source>
         <translation>Встановлені штампи</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="217"/>
+        <location filename="../sources/elementspanel.cpp" line="226"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Двічі клацніть, щоб згорнути або розгорнути вбудовану колекцію штампів</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="234"/>
+        <location filename="../sources/elementspanel.cpp" line="243"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Перетягніть цей штамп на аркуш, щоб застосувати його.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="273"/>
+        <location filename="../sources/elementspanel.cpp" line="282"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Двічі клацніть, щоб згорнути або розгорнути колекцію штампів QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="274"/>
+        <location filename="../sources/elementspanel.cpp" line="283"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Це колекція штампів, яка постачається разом із QElectroTech, встановлениа як системний компонент і Ви не можете її редагувати.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="281"/>
+        <location filename="../sources/elementspanel.cpp" line="290"/>
         <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="282"/>
+        <location filename="../sources/elementspanel.cpp" line="291"/>
         <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="289"/>
+        <location filename="../sources/elementspanel.cpp" line="298"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Двічі клацніть, щоб згорнути або розширити вашу колекцію штампів</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="290"/>
+        <location filename="../sources/elementspanel.cpp" line="299"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Це ваша особиста колекція штампів — використовуйте її для створення, зберігання та редагування власних штампів.</translation>
@@ -2780,103 +3656,125 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ElementsPanelWidget</name>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="56"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Ouvrir le dossier correspondant</source>
         <translatorcomment>котру?</translatorcomment>
         <translation>Відкрити папку</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="57"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
         <source>Copier le chemin</source>
         <translation>Скопіювати шлях</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Basculer vers ce projet</source>
         <translation>Перейти до даного проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
         <source>Fermer ce projet</source>
         <translation>Закрити даний проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Propriétés du projet</source>
         <translation>Властивості проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Propriétés du folio</source>
         <translation>Властивості аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Ajouter un folio</source>
         <translation>Додати аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <source>Insérer un folio au-dessus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <source>Insérer un folio en dessous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Copier et coller</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Supprimer ce folio</source>
         <translation>Видалити цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Remonter ce folio</source>
         <translation>Пересунути аркуш вгору</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Abaisser ce folio</source>
         <translation>Пересунути аркуш вниз</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Remonter ce folio x10</source>
         <translation>Пересунути аркуш вгору на 10</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Remonter ce folio x100</source>
         <translation>Пересунути аркуш вгору на 100</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce folio au debut</source>
         <translation>Перемістити аркуш на початок</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce folio x10</source>
         <translation>Пересунути аркуш вниз на 10</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Abaisser ce folio x100</source>
         <translation>Пересунути аркуш вниз на 100</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Nouveau modèle</source>
         <translation>Новий шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Éditer ce modèle</source>
         <translation>Редагувати цей шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Supprimer ce modèle</source>
         <translation>Вилучити цей шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="91"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="81"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="82"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="83"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="84"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="85"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="86"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="87"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="88"/>
+        <source>Panneau des éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="95"/>
         <source>Filtrer</source>
         <translation>Фільтр</translation>
     </message>
@@ -2922,7 +3820,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="345"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Експорт</translation>
@@ -2931,90 +3829,102 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="68"/>
+        <location filename="../sources/exportdialog.cpp" line="70"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
         <translation>Експорт аркішів проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="78"/>
+        <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Exporter</source>
         <translation>Експорт</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="83"/>
+        <location filename="../sources/exportdialog.cpp" line="85"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Виберіть аркуші, які ви хочете експортувати, та їхні розміри: </translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="86"/>
+        <location filename="../sources/exportdialog.cpp" line="88"/>
         <source>Tout cocher</source>
         <translation>Вибрати все</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="87"/>
+        <location filename="../sources/exportdialog.cpp" line="89"/>
         <source>Tout décocher</source>
         <translation>Відмінити вибір</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="152"/>
+        <location filename="../sources/exportdialog.cpp" line="155"/>
         <source>Titre du folio</source>
         <translation>Назви аркушів</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="153"/>
+        <location filename="../sources/exportdialog.cpp" line="156"/>
         <source>Nom de fichier</source>
         <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="154"/>
+        <location filename="../sources/exportdialog.cpp" line="157"/>
         <source>Dimensions</source>
         <translation>Розміри</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="732"/>
+        <location filename="../sources/exportdialog.cpp" line="817"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Імена цільових файлів</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="733"/>
+        <location filename="../sources/exportdialog.cpp" line="818"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>Ви повинні ввести непорожнє унікальне ім’я файлу для кожного аркуша під час експорту.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="748"/>
+        <location filename="../sources/exportdialog.cpp" line="833"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Папка відсутня</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="749"/>
+        <location filename="../sources/exportdialog.cpp" line="834"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Необхідно вказати шлях до папки, в якій будуть зберігатися файли зображень.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="790"/>
+        <location filename="../sources/exportdialog.cpp" line="867"/>
+        <source>Images non incluses dans l&apos;export DXF</source>
+        <comment>message box title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="868"/>
+        <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="911"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Неможливо записати в цей файл</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="792"/>
+        <location filename="../sources/exportdialog.cpp" line="913"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Схоже, у вас немає прав на запис у файл %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="924"/>
+        <location filename="../sources/exportdialog.cpp" line="1045"/>
         <source>Aperçu</source>
         <translation>Попередній перегляд</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1028"/>
-        <location filename="../sources/exportdialog.cpp" line="1033"/>
+        <location filename="../sources/exportdialog.cpp" line="1149"/>
+        <location filename="../sources/exportdialog.cpp" line="1154"/>
         <source>px</source>
         <translation>пікс</translation>
     </message>
@@ -3022,94 +3932,99 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="132"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="134"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Експорт в папки</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="153"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
         <source>Dossier cible :</source>
         <translation>Папка призначення: </translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="158"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="160"/>
         <source>Parcourir</source>
         <translation>Переглянути</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>Format :</source>
         <translation>Вормат: </translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="175"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="175"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="177"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="181"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Параметри візуалізації</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter entièrement le folio</source>
         <translation>Експортувати аркуш повністю</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="189"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
         <source>Exporter seulement les éléments</source>
         <translation>Експортувати тільки елементи</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="194"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="196"/>
         <source>Dessiner la grille</source>
         <translation>Показувати сітку</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="198"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="200"/>
         <source>Dessiner le cadre</source>
         <translation>Показувати рамку</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="202"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="204"/>
         <source>Dessiner le cartouche</source>
         <translation>Показувати штамп</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="206"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="208"/>
         <source>Dessiner les bornes</source>
         <translation>Показувати виводи</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="210"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="212"/>
+        <source>Dessiner les noms des bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="216"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Зберегти колір провідників</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="214"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="220"/>
         <source>SVG: fond transparent</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3400,106 +4315,116 @@ that you create. Text and number inputs are
         <translation>Дозволити маштаб менше розміру аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="86"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Використовувати &amp;вікна (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Використовувати &amp;вкладки (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="111"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="132"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
         <translation>Метод масштабування дисплеїв з високою щільністю пікселів (hdpi) (застосується при наступному запуску QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="142"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="163"/>
         <source>Projets</source>
         <translation>Проєкти</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="176"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Автоматичне збереження проєктів (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="184"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Не зберігати мітки елементів під час копіювання та вставлення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="238"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Нумерувати стовпці положення елементів, починаючи з 0 (в іншому випадку з 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Désactivé</source>
         <translation>Вимкнено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
         <source> min</source>
         <comment>minute</comment>
         <translation>мин</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="169"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>Використовувати номери аркушів замість положення в пректі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="246"/>
         <source>Collections</source>
         <translation>Колекції</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="231"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
         <source>Accès aux collections</source>
         <translation>Розташування колекцій</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="243"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Répertoire de la collection commune</source>
         <translation>Каталог загальної колекції</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="251"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="293"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="286"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="314"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="342"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>Par defaut</source>
         <translation>По замовчуванню</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="277"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="291"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="319"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="347"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="382"/>
         <source>Parcourir...</source>
         <translation>Вибрати...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Каталог колекції користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Обновіть колекції елементів щоб зміни застосувались)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="369"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>Каталог штампів користувача</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="264"/>
@@ -3507,205 +4432,205 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
         <source>Répertoire des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="334"/>
         <source>Répertoire des Macros utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="379"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Gestion des éléments</source>
         <translation>Керування елемнтами</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="388"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="409"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Виділити нещодавно додані елементи в панелі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Кожний елемент включає інформацію про його авторів, його ліцензії чи буль-яку іншу інформацію, котру ви вважаєте корисною для вільног доступу.
 Тут ви можете вказати значення цього поля по замовчуванню для створюваних вами елемемнтів:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
         <source>Langues</source>
         <translation>Мови</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Застосується з наступним запуском QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="466"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="487"/>
         <source>Textes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="507"/>
         <source>Textes d&apos;éléments</source>
         <translation>Тексти</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="499"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="520"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="586"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="632"/>
         <source>Police :</source>
         <translation>Шрифт: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="509"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="530"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="593"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="519"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="540"/>
         <source>Longueur :</source>
         <translation>Довжина: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="529"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="558"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="579"/>
         <source>Rotation :</source>
         <translation>Обертання: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="573"/>
         <source>Textes indépendants</source>
         <translation>Незалежний текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="626"/>
         <source>Autres textes</source>
         <translation>Інший текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="676"/>
         <source>Grille + Clavier</source>
         <translation>Сітка та клавіатура</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="682"/>
         <source>Grille : 1 - 30</source>
         <translation>Сітка :1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="695"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
         <source>DiagramEditor yGrid</source>
         <translation>Вертикальні лінії (yGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="728"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="749"/>
         <source>DiagramEditor xGrid</source>
         <translation>Горизонтальні лінії (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="751"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="772"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Переміщення з клавіатури :1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="801"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Клавіша вліво/вправо - по горизонталі (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="829"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Клавіша вгору/вниз - по вертикалі (yGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="831"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="852"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>Переміщення з клавіатури за допомогою клавіш ALT : 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="837"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="858"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>Клавіша вліво/вправо - по горизонталі (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="866"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="887"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>Клавіша вгору/вниз - по вертикалі (yGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="911"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="932"/>
         <source>Affichage Grille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="930"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1006"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1029"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
         <source>max:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="937"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="990"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1029"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1043"/>
         <source>min:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
         <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1053"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1074"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1061"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1082"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="43"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
         <translation>Округлювати в більшу сторону від 0.5 і більше</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="44"/>
         <source>Toujours arrondi supérieur</source>
         <translation>Завжди округлювати в більшу сторону</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Toujours arrondi inférieur</source>
         <translation>Завжди округляти в меншу сторону</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
         <translation>Округляти в більшу сторону від 0.75 і більше</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="50"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
         <source>Pas d&apos;arrondi</source>
         <translation>Не округляти</translation>
     </message>
@@ -3926,37 +4851,37 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
         <translation>Цей проєкт QElectroTech, тобто файл .qet, що містить кілька аркушів. В нього також  входять елененти і шаблони, що використані в схамах/аркушах.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="348"/>
+        <location filename="../sources/genericpanel.cpp" line="350"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation>Аркуш бех назви</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="360"/>
-        <location filename="../sources/genericpanel.cpp" line="377"/>
+        <location filename="../sources/genericpanel.cpp" line="362"/>
+        <location filename="../sources/genericpanel.cpp" line="379"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation>%1 — %2</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="498"/>
+        <location filename="../sources/genericpanel.cpp" line="500"/>
         <source>Modèles de cartouche</source>
         <translation>Шаблони штампів</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="636"/>
+        <location filename="../sources/genericpanel.cpp" line="638"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
         <translation>Шаблон &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="639"/>
+        <location filename="../sources/genericpanel.cpp" line="641"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Це - шаблон, що може бути застосований до аркуша.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="922"/>
+        <location filename="../sources/genericpanel.cpp" line="938"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [не використовується в проєкті]</translation>
     </message>
@@ -4143,9 +5068,71 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
  для відображення всієї інформації не вистачає рядків (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="544"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="536"/>
         <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
         <translation>Застосувати геометрію до прив&apos;язаної до неї таблиці</translation>
+    </message>
+</context>
+<context>
+    <name>GuidesPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
+        <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
+        <source>Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="93"/>
+        <source>Couleur</source>
+        <translation type="unfinished">Колір</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="27"/>
+        <source>Ajouter</source>
+        <translation type="unfinished">Додати</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="28"/>
+        <source>Supprimer</source>
+        <translation type="unfinished">Видалити</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
+        <source>Horizontal</source>
+        <translation type="unfinished">Горизонтальний</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
+        <source>Vertical</source>
+        <translation type="unfinished">Вертикальний</translation>
+    </message>
+</context>
+<context>
+    <name>ImageCropDialog</name>
+    <message>
+        <location filename="../sources/ui/imagecropdialog.cpp" line="257"/>
+        <source>Rogner l&apos;image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagecropdialog.cpp" line="261"/>
+        <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagecropdialog.cpp" line="264"/>
+        <source>Réinitialiser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagecropdialog.cpp" line="265"/>
+        <source>Revenir à l&apos;image complète, sans rognage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4157,23 +5144,126 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
+        <source>Largeur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="66"/>
+        <source> %</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="46"/>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="238"/>
+        <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="59"/>
+        <source>Hauteur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="82"/>
+        <source>Restaurer les proportions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="89"/>
+        <source>Angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="96"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="119"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="142"/>
+        <source> °</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="112"/>
+        <source>Inclinaison X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="135"/>
+        <source>Inclinaison Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="158"/>
         <source>Verrouiller la position</source>
         <translation>Зафіксувати положення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
-        <source>Dimension de l&apos;image</source>
-        <translation>Розмір зображення</translation>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="188"/>
+        <source>Modifier la largeur d&apos;une image</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
-        <source>%</source>
-        <translation>%</translation>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="189"/>
+        <source>Modifier la hauteur d&apos;une image</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.cpp" line="143"/>
-        <source>Modifier la taille d&apos;une image</source>
-        <translation>Змінити розмір зображення</translation>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="190"/>
+        <source>Modifier l&apos;angle d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="191"/>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="192"/>
+        <source>Modifier l&apos;inclinaison d&apos;une image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="239"/>
+        <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ImageTransparentColorDialog</name>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="111"/>
+        <source>Couleur transparente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="129"/>
+        <source>Image source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="130"/>
+        <source>Aperçu</source>
+        <translation type="unfinished">Попередній перегляд</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="266"/>
+        <source>rgb(%1, %2, %3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="271"/>
+        <source>Tolérance pour cette couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="276"/>
+        <source>Retirer cette couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="287"/>
+        <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="286"/>
+        <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4288,55 +5378,55 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="412"/>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="381"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="413"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="462"/>
         <source>Police</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="185"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="190"/>
         <source>Déplacer un champ texte</source>
         <translation>Перемістити текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="194"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="195"/>
         <source>Pivoter un champ texte</source>
         <translation>Обертати текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="198"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="199"/>
         <source>Modifier un champ texte</source>
         <translation>Змінити текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="205"/>
         <source>Modifier la taille d&apos;un champ texte</source>
         <translation>Змінити розмір текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="209"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="210"/>
         <source>Modifier la police d&apos;un champ texte</source>
         <translation>Змінити шрифт текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="244"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="245"/>
         <source>Pivoter plusieurs champs texte</source>
         <translation>Обертати декілька текстових полів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="259"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="260"/>
         <source>Modifier la taille de plusieurs champs texte</source>
         <translation>Змінити розмір кількох текстових полів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="275"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="276"/>
         <source>Modifier la police de plusieurs champs texte</source>
         <translation>Змінити шрифт декількох текстових полів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="287"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="288"/>
         <source>Modifier les propriétés d&apos;un texte</source>
         <translation>Змінити властивості тексту</translation>
     </message>
@@ -4395,6 +5485,20 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
         <translation>Використовувати спільно два шаблони</translation>
+    </message>
+</context>
+<context>
+    <name>JumpToElementDialog</name>
+    <message>
+        <location filename="../sources/ui/jumptoelementdialog.cpp" line="38"/>
+        <source>Atteindre un élément</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/jumptoelementdialog.cpp" line="41"/>
+        <source>Nom, label ou information de l&apos;élément…</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4520,104 +5624,119 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="49"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="51"/>
         <source>Lier l&apos;élément</source>
         <translation>Переглянути пов&apos;язаний елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="50"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="52"/>
         <source>Montrer l&apos;élément</source>
         <translation>Показати елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="51"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="53"/>
         <source>Montrer l&apos;élément esclave</source>
         <translation>Показати підлеглий елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="52"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="54"/>
         <source>Enregistrer la disposition</source>
         <translation>Зберегти макет</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="209"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="216"/>
         <source>Report de folio</source>
         <translation>Звіт про аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="211"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="218"/>
         <source>Référence croisée (esclave)</source>
         <translation>Посилання (підпорядкований)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="467"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="482"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="490"/>
         <source>Label</source>
         <translation>Мітка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="460"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="468"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="483"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="491"/>
         <source>Commentaire</source>
         <translation>Аннотація</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="461"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="484"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="507"/>
         <source>Label de folio</source>
         <translation>Мітка аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="470"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="485"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="496"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="493"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="508"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="519"/>
         <source>Position</source>
         <translation>Положення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="471"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="486"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="497"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="494"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="509"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="520"/>
         <source>Titre de folio</source>
         <translation>Назва аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="469"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="495"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="492"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="518"/>
         <source>N° de folio</source>
         <translation>№ аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="479"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="490"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="502"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="513"/>
         <source>N° de fil</source>
         <translation>№ провідника</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="480"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="491"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="503"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="514"/>
         <source>Fonction</source>
         <translation>Функція</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="481"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="492"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="504"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="515"/>
         <source>Tension / Protocole</source>
         <translation>Напруга / протокол</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="482"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="493"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="505"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="516"/>
         <source>Couleur du conducteur</source>
         <translation>Колір провідника</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="483"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="494"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="506"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="517"/>
         <source>Section du conducteur</source>
         <translation>Переріз провідника</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="589"/>
+        <source> (déjà utilisé)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="596"/>
+        <source>Sélectionner un IO PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="597"/>
+        <source>IO disponible:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4676,70 +5795,107 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Пов&apos;язати вибраний елемент&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="63"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="69"/>
         <source>Vignette</source>
         <translation>Ескіз</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
         <source>Label de folio</source>
         <translation>Мітка аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="51"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="71"/>
         <source>Titre de folio</source>
         <translation>Назва аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="52"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="72"/>
         <source>Position</source>
         <translation>Положення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="70"/>
         <source>N° de folio</source>
         <translation>№ аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="78"/>
         <source>Lier l&apos;élément</source>
         <translation>Пов&apos;язати елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="79"/>
         <source>Délier l&apos;élément</source>
         <translation>Скасувати зв&apos;язок з елементом</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="80"/>
         <source>Montrer l&apos;élément</source>
         <translation>Показати елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="67"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="81"/>
         <source>Montrer l&apos;élément maître</source>
         <translation>Показати головний елемент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="68"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="82"/>
         <source>Enregistrer la disposition</source>
         <translation>Зберегти макет</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="368"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="320"/>
         <source>Nombre maximal d&apos;esclaves atteint.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
-        <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="321"/>
+        <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.h" line="62"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="539"/>
+        <source>Type</source>
+        <translation type="unfinished">Тип</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="539"/>
+        <source>Adresse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="539"/>
+        <source>Fonction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Аннотація</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
+        <source>Réf. croisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="540"/>
+        <source>Bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="1050"/>
+        <source>Coller depuis le presse-papiers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.h" line="67"/>
         <source>Référence croisée (maître)</source>
         <translation>Перехрестне посилання (головне)</translation>
     </message>
@@ -4842,33 +5998,38 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>NewDiagramPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="124"/>
         <source>Folio</source>
         <translation>Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="125"/>
         <source>Conducteur</source>
         <translation>Провідник</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="126"/>
         <source>Reports de folio</source>
         <translation>Звіти по аркушам</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="100"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="127"/>
         <source>Références croisées</source>
         <translation>Перехрестні посилання</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="128"/>
+        <source>Guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="252"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
         <translation>Новий аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="205"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="253"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
         <translation>Новий проєкт</translation>
@@ -4877,90 +6038,90 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>NewElementWizard</name>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="48"/>
+        <location filename="../sources/newelementwizard.cpp" line="49"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
         <translation>Створити новий елемент: </translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="49"/>
+        <location filename="../sources/newelementwizard.cpp" line="50"/>
         <source>&amp;Suivant &gt;</source>
         <translation>&amp;Далі &gt;</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="84"/>
+        <location filename="../sources/newelementwizard.cpp" line="85"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
         <translation>Крок 1 із 3: Материнська категорія</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="85"/>
+        <location filename="../sources/newelementwizard.cpp" line="86"/>
         <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Оберіть категорію, в якій хочете зберегти новий елемент.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="112"/>
+        <location filename="../sources/newelementwizard.cpp" line="113"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
         <translation>Крок 2 із 3: Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="113"/>
+        <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Введіть ім&apos;я файла для нового елемента</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="116"/>
+        <location filename="../sources/newelementwizard.cpp" line="117"/>
         <source>nouvel_element</source>
         <translation>новий_елемент</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="118"/>
+        <location filename="../sources/newelementwizard.cpp" line="119"/>
         <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
         <translation>Вам не обов&apos;язково вказувати розширення *.elt. Воно буде додано автоматично.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="137"/>
+        <location filename="../sources/newelementwizard.cpp" line="138"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
         <translation>Крок  3 із 3: Ім&apos;я елемента</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="138"/>
+        <location filename="../sources/newelementwizard.cpp" line="139"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Введіть одне, або кілька імен для елемента</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="143"/>
+        <location filename="../sources/newelementwizard.cpp" line="144"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
         <translation>Ім&apos;я для нового елементу по замовчуванню</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="201"/>
-        <location filename="../sources/newelementwizard.cpp" line="219"/>
-        <location filename="../sources/newelementwizard.cpp" line="232"/>
+        <location filename="../sources/newelementwizard.cpp" line="202"/>
+        <location filename="../sources/newelementwizard.cpp" line="220"/>
+        <location filename="../sources/newelementwizard.cpp" line="233"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="202"/>
+        <location filename="../sources/newelementwizard.cpp" line="203"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>Ви маєте обрати категорію.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="220"/>
+        <location filename="../sources/newelementwizard.cpp" line="221"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>Ви маєта ввести ім&apos;я файла</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="233"/>
+        <location filename="../sources/newelementwizard.cpp" line="234"/>
         <source>Un élément portant le même nom existe déjà</source>
         <translation>Елемент з таким ім&apos;ям вже існує</translation>
     </message>
@@ -4973,115 +6134,158 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="130"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="235"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="376"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="79"/>
+        <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le &quot;0&quot; de &quot;0.7&quot;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="110"/>
+        <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
+        <source>mod. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
+        <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="144"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="136"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="151"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="277"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="465"/>
         <source>Chiffre 1</source>
         <translation>Формат числа: 1</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="111"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="119"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="132"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="239"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="380"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="128"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="138"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="153"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="281"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="469"/>
         <source>Chiffre 01</source>
         <translation>Формат числа: 01</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="112"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="121"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="134"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="243"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="384"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="129"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="140"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="155"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="285"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="473"/>
         <source>Chiffre 001</source>
         <translation>Формат числа: 001</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="113"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="123"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="136"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="247"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="388"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="130"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="142"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="157"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="305"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="495"/>
+        <source>Cyclique (modulo)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="131"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="143"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="158"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="307"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="477"/>
+        <source>Alphabétique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="132"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="144"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="159"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="289"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="479"/>
         <source>Texte</source>
         <translation>Текст</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="118"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="131"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="237"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="378"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="137"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="152"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="279"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="467"/>
         <source>Chiffre 1 - Folio</source>
         <translation>Формат числа: 1 - Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="120"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="133"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="241"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="382"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="139"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="154"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="283"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="471"/>
         <source>Chiffre 01 - Folio</source>
         <translation>Формат числа: 01 - Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="122"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="135"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="245"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="386"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="156"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="287"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="475"/>
         <source>Chiffre 001 - Folio</source>
         <translation>Формат числа: 001 - Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="124"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="137"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="249"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="390"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="145"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="160"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="291"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="481"/>
         <source>N° folio</source>
         <translation>№ Аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="125"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="138"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="251"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="392"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="146"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="161"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="293"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="483"/>
         <source>Folio</source>
         <translation>Аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="126"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="139"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="253"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="394"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="147"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="162"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="295"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="485"/>
         <source>Installation</source>
         <translation>Установка</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="140"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="255"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="396"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="148"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="163"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="297"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="487"/>
         <source>Locmach</source>
         <translation>Розташування</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="257"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="398"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="164"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="299"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="489"/>
         <source>Element Line</source>
         <translation>Рядок елемента</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="142"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="259"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="400"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="165"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="301"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="491"/>
         <source>Element Column</source>
         <translation>Стопчик елемента</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="143"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="261"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="402"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="166"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="303"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="493"/>
         <source>Element Prefix</source>
         <translation>Префікс елемента</translation>
     </message>
@@ -5100,13 +6304,13 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartDynamicTextField</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="55"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="57"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
         <translation>Динамічне текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="527"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="549"/>
         <source>Déplacer un champ texte</source>
         <translation>Перемістити текстове поле</translation>
     </message>
@@ -5156,16 +6360,144 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     </message>
 </context>
 <context>
+    <name>PartTerminal</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partterminal.cpp" line="576"/>
+        <source>Déplacer le label d&apos;une borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PartText</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="343"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="481"/>
         <source>Déplacer un texte</source>
         <translation>Перемістити текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="403"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="547"/>
         <source>Modifier un champ texte</source>
         <translation>Редагувати текстове поле</translation>
+    </message>
+</context>
+<context>
+    <name>PdfPagesDialog</name>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="50"/>
+        <source>Sélectionner une page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="61"/>
+        <source>Ce document PDF contient %n page(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="70"/>
+        <source>Page à importer :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="83"/>
+        <source>Résolution :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="87"/>
+        <source>150 DPI (écran)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="88"/>
+        <source>300 DPI (impression)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="89"/>
+        <source>600 DPI (haute qualité)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/pdfpagesdialog.cpp" line="96"/>
+        <source>Aperçu :</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PlcLinkWidget</name>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="51"/>
+        <source>Cet élément est déjà lié</source>
+        <translation type="unfinished">Цей елемент уже пов&apos;язаний</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="52"/>
+        <source>Délier</source>
+        <translation type="unfinished">Розірвати зв&apos;язок</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="53"/>
+        <source>Voir cet élément</source>
+        <translation type="unfinished">Переглянути цей елемент</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="61"/>
+        <source>Recherche</source>
+        <translation type="unfinished">Доступне</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
+        <source>Label</source>
+        <translation type="unfinished">Мітка</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
+        <source>Type</source>
+        <translation type="unfinished">Тип</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
+        <source>Adresse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
+        <source>Fonction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Аннотація</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
+        <source>Bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="85"/>
+        <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="144"/>
+        <source>Automate (PLC)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="255"/>
+        <source>Lié à: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/plclinkwidget.cpp" line="342"/>
+        <source>Connecter</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5249,60 +6581,60 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Виберіть, будь ласка, властивості для нового потенціалу.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="202"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="205"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
         <translation>Виберіть електричний петенціал зі списку,
 щоб використати його для нового потенціалу</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="211"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="303"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="324"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="214"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="320"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="341"/>
         <source>
 Numéro : %1</source>
         <translation>
 Номер :%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="213"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="305"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="326"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="216"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="322"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>
 Fonction : %1</source>
         <translation>
 Функція :%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="215"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="307"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="328"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="324"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="345"/>
         <source>
 Tension/protocole : %1</source>
         <translation>
 Напруга / протокол :%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="217"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="310"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="331"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="220"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="327"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="348"/>
         <source>
 Couleur du conducteur : %1</source>
         <translation>
 Колір провідника :%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="219"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="313"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="334"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="330"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
         <source>
 Section du conducteur : %1</source>
         <translation>
 Переріз провідника :%1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="316"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="311"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="333"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation>
             <numerusform>%n провідник містить петенціал:</numerusform>
@@ -5311,23 +6643,23 @@ Section du conducteur : %1</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="341"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="358"/>
         <source>Ajouter au câble: %1</source>
         <translation>Додати в кабель: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="344"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="361"/>
         <source>Ajouter au bus: %1</source>
         <translation>Додати в шину: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="416"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="433"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Редагувати властивості кількох провідників</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="469"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="486"/>
         <source>La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
@@ -5341,7 +6673,7 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="356"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="404"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Друк</translation>
@@ -5350,56 +6682,56 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>ProjectAutoNumConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="258"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="310"/>
         <source>Numérotation auto</source>
         <translation>Автонумерація</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="287"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="339"/>
         <source>Management</source>
         <translation>Керування</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="291"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="343"/>
         <source>Conducteurs</source>
         <translation>Провідники</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="295"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="347"/>
         <source>Eléments</source>
         <translation>Елементи</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="299"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="351"/>
         <source>Folios</source>
         <translation>Аркуші</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="303"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="355"/>
         <source>Numérotation auto des folios</source>
         <translation>Автонумерація аркушів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="374"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="384"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="395"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="413"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="443"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="457"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="487"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="631"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="644"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="428"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="438"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="449"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="467"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="497"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="515"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="545"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="689"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="706"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation>Ім&apos;я нумерації</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="415"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="419"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="459"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="460"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="461"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="488"/>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="489"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="469"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="473"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="517"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="519"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="546"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="547"/>
         <source>Sans nom</source>
         <translation>Без імені</translation>
     </message>
@@ -5407,12 +6739,12 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>ProjectDBModel</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="349"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="358"/>
         <source>Position</source>
         <translation>Положення</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="351"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="360"/>
         <source>Position du folio</source>
         <translation>Положення аркуша</translation>
     </message>
@@ -5438,28 +6770,53 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>ProjectMainConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="135"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="136"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Загальне</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="182"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="190"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
         <translation>Назва проєкта</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="184"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="192"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
         <translation>Ця назва доступна всім дочернім аркушам як %projecttitle.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="186"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="194"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
         <translation>Нижче ви зможете вказати властивості користувача, котрі будуть достіпні всім дочірнім аркушам(зазвичай використовується в шаблонах).</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="203"/>
+        <source>Temps passé sur ce projet :</source>
+        <comment>label when configuring</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="205"/>
+        <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+        <comment>checkbox label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="206"/>
+        <source>Réinitialiser</source>
+        <comment>button label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="266"/>
+        <source>%1 h %2 min</source>
+        <comment>hours and minutes of time spent on a project</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5525,145 +6882,155 @@ Les variables suivantes sont incompatibles :
         <translation>Малювати виводи</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="192"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="189"/>
+        <source>Dessiner les noms des bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/print/projectprintwindow.ui" line="199"/>
+        <source>Inscrire les informations des composants</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/print/projectprintwindow.ui" line="212"/>
         <source>Option d&apos;impression</source>
         <translation>Опції друку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="198"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="218"/>
         <source>Adapter le folio à la page</source>
         <translation>Вписати аркуш в сторінку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="208"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="228"/>
         <source>Utiliser toute la feuille</source>
         <translation>Використати всю сторінку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="215"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="235"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
         <translation>Якщо цей параметр відмічений, аркуш аркуш буде збільшуватися чи зменшуватися, щоб заповнити всю область сторінки.</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="225"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="245"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Якщо цей параметр відмічений, поля сторінки ігноруються і вся її поверхня буде використана для друку. Це може не підтримуватись вашим принтером.</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="259"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>toolBar</source>
         <translation>панель_інструментів</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="292"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="312"/>
         <source>Ajuster la largeur</source>
         <translation>Підігнати по ширині</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="301"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="321"/>
         <source>Ajuster la page</source>
         <translation>Вписать в сторінку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="310"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="330"/>
         <source>Zoom arrière</source>
         <translation>Зеншити</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="319"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="339"/>
         <source>Zoom avant</source>
         <translation>Збільшити</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="328"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="348"/>
         <source>Paysage</source>
         <translation>Альбомна</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="337"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="357"/>
         <source>Portrait</source>
         <translation>Книжна</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="346"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="366"/>
         <source>Première page</source>
         <translation>Перша сторінка</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="355"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="375"/>
         <source>Page précédente</source>
         <translation>Попередня сторінка</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="364"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="384"/>
         <source>Page suivante</source>
         <translation>Наступна сторінка</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="373"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="393"/>
         <source>Dernière page</source>
         <translation>Остання сторінка</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="382"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="402"/>
         <source>Afficher une seule page</source>
         <translation>Показати одну сторінку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="391"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="411"/>
         <source>Afficher deux pages</source>
         <translation>Показати дві сторінки</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="400"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="420"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation>Показати всі сторінки</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="409"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="429"/>
         <source>mise en page</source>
         <translation>Макет</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="81"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="76"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translation>Налаштування друку</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="122"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="117"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translatorcomment>рядок використовується для створення імені файла</translatorcomment>
         <translation>проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="153"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="148"/>
         <source>Imprimer</source>
         <translation>Друк</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="159"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="154"/>
         <source>Exporter en pdf</source>
         <translation>Експорт в PDF</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="182"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="179"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
         <translation>Макет (недоступно в Windows для експорту в PDF)</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="540"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="582"/>
         <source>Folio sans titre</source>
         <translation>Аркуш без імені</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="779"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="755"/>
         <source>Exporter sous : </source>
         <translation>Експорт в: </translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="779"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="755"/>
         <source>Fichier (*.pdf)</source>
         <translation>Файл (*.pdf)</translation>
     </message>
@@ -5671,118 +7038,118 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="314"/>
+        <location filename="../sources/projectview.cpp" line="324"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
         <translation>Цей проєкт був змінений.
 Хочете зберегти зміни?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="334"/>
+        <location filename="../sources/projectview.cpp" line="344"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="335"/>
+        <location filename="../sources/projectview.cpp" line="345"/>
         <source>sansnom</source>
         <translation>без_імені</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="336"/>
+        <location filename="../sources/projectview.cpp" line="346"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Проєкт QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="362"/>
+        <location filename="../sources/projectview.cpp" line="380"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>немає активних проєктів</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="385"/>
+        <location filename="../sources/projectview.cpp" line="403"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
         <translation>Видалити цей аркуш?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="386"/>
-        <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
+        <location filename="../sources/projectview.cpp" line="404"/>
+        <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="714"/>
+        <location filename="../sources/projectview.cpp" line="749"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Проєкт тільки дл читання</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="715"/>
+        <location filename="../sources/projectview.cpp" line="750"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Цей проєкт тільки для читання, тому він не мое бути очищений</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="721"/>
+        <location filename="../sources/projectview.cpp" line="756"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Видалити не використані в проєкті шаблони</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="722"/>
+        <location filename="../sources/projectview.cpp" line="757"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Видалити не використані в проєкті елементи</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="723"/>
+        <location filename="../sources/projectview.cpp" line="758"/>
         <source>Supprimer les catégories vides</source>
         <translation>Видалити порожні категорії</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="735"/>
+        <location filename="../sources/projectview.cpp" line="770"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Очистити проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="769"/>
+        <location filename="../sources/projectview.cpp" line="804"/>
         <source>Ajouter un folio</source>
         <translation>Додати аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="772"/>
+        <location filename="../sources/projectview.cpp" line="807"/>
         <source>Revenir au debut du projet</source>
         <translation>Перейти в початок проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="775"/>
+        <location filename="../sources/projectview.cpp" line="810"/>
         <source>Aller à la fin du projet</source>
         <translation>Перейти в кунець проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="779"/>
+        <location filename="../sources/projectview.cpp" line="814"/>
         <source>go one page left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="783"/>
+        <location filename="../sources/projectview.cpp" line="818"/>
         <source>go one page right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="798"/>
+        <location filename="../sources/projectview.cpp" line="833"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Цей проєкт не містить аркушів</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="911"/>
+        <location filename="../sources/projectview.cpp" line="946"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
         <translation>&lt;p align = &quot;center&quot;&gt;&lt;b&gt; Открытие текущего проєкта...&lt;/b&gt;&lt;br/&gt; Створення вкладок аркушів:&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="954"/>
+        <location filename="../sources/projectview.cpp" line="989"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Проєкт</translation>
@@ -5799,218 +7166,239 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="129"/>
+        <location filename="../sources/qetapp.cpp" line="134"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Завантаження... Ініціалізація кеша колекції елементів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="140"/>
+        <location filename="../sources/qetapp.cpp" line="145"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Завантаження... Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="145"/>
+        <location filename="../sources/qetapp.cpp" line="150"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Завантаження... Відкривання файлів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="246"/>
+        <location filename="../sources/qetapp.cpp" line="278"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translatorcomment>Переведіть цей рядок в RTL, якщо ви перекладаєте на мову з письмом справа наліво, інакше, - в LTR</translatorcomment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="448"/>
+        <location filename="../sources/qetapp.cpp" line="480"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>Штампи QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="469"/>
+        <location filename="../sources/qetapp.cpp" line="501"/>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="489"/>
+        <location filename="../sources/qetapp.cpp" line="521"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Штампи користувача</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1490"/>
+        <location filename="../sources/qetapp.cpp" line="1585"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1492"/>
+        <location filename="../sources/qetapp.cpp" line="1587"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1494"/>
+        <location filename="../sources/qetapp.cpp" line="1589"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1496"/>
+        <location filename="../sources/qetapp.cpp" line="1591"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Електрична</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1498"/>
+        <location filename="../sources/qetapp.cpp" line="1593"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1975"/>
+        <location filename="../sources/qetapp.cpp" line="2077"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Налаштування QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2129"/>
+        <location filename="../sources/qetapp.cpp" line="2235"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Завантаження...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2289"/>
+        <location filename="../sources/qetapp.cpp" line="2395"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Завантаження... піктограмма в треї</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2293"/>
+        <location filename="../sources/qetapp.cpp" line="2399"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2296"/>
+        <location filename="../sources/qetapp.cpp" line="2402"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Вихід</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2298"/>
+        <location filename="../sources/qetapp.cpp" line="2404"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Приховати</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2300"/>
+        <location filename="../sources/qetapp.cpp" line="2406"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показати</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2302"/>
+        <location filename="../sources/qetapp.cpp" line="2408"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Приховати редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2305"/>
+        <location filename="../sources/qetapp.cpp" line="2411"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показати редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2308"/>
+        <location filename="../sources/qetapp.cpp" line="2414"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Приховати редактор елементів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2311"/>
+        <location filename="../sources/qetapp.cpp" line="2417"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показати редактор елеиентів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2314"/>
+        <location filename="../sources/qetapp.cpp" line="2420"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Приховати редактор штампів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2317"/>
+        <location filename="../sources/qetapp.cpp" line="2423"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Показати редактор штампів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2320"/>
+        <location filename="../sources/qetapp.cpp" line="2426"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новий редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2322"/>
+        <location filename="../sources/qetapp.cpp" line="2428"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новий редактор елементів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2324"/>
+        <location filename="../sources/qetapp.cpp" line="2430"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрити QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2325"/>
+        <location filename="../sources/qetapp.cpp" line="2431"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Згорнути QElectroTech в трей</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2326"/>
+        <location filename="../sources/qetapp.cpp" line="2432"/>
         <source>Restaurer QElectroTech</source>
         <translation>Відновити QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2343"/>
+        <location filename="../sources/qetapp.cpp" line="2449"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2438"/>
+        <location filename="../sources/qetapp.cpp" line="2543"/>
         <source>Éditeurs de schémas</source>
         <translation>Редактори схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2448"/>
+        <location filename="../sources/qetapp.cpp" line="2553"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редактори елементів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2459"/>
+        <location filename="../sources/qetapp.cpp" line="2564"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Редактори штампів</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2511"/>
+        <location filename="../sources/qetapp.cpp" line="2617"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Виявлений файл відновленя.&lt;br&gt;Відкрити його?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2514"/>
+        <location filename="../sources/qetapp.cpp" line="2620"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Виявлені файли відновлення.&lt;br&gt;Відкрити їх?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2529"/>
+        <location filename="../sources/qetapp.cpp" line="2635"/>
         <source>Fichier de restauration</source>
         <translation>Файл відновлення</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2631"/>
+        <location filename="../sources/qetapp.cpp" line="2682"/>
+        <source>Rapport de plantage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2683"/>
+        <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2705"/>
+        <source>Rapport de diagnostic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2706"/>
+        <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2786"/>
         <source>Usage : </source>
         <translation>Використання: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2633"/>
+        <location filename="../sources/qetapp.cpp" line="2788"/>
         <source> [options] [fichier]...
 
 </source>
@@ -6018,7 +7406,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2634"/>
+        <location filename="../sources/qetapp.cpp" line="2789"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -6035,34 +7423,34 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2640"/>
+        <location filename="../sources/qetapp.cpp" line="2795"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Вказує каталог з колекціями елеиентів
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2643"/>
+        <location filename="../sources/qetapp.cpp" line="2798"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Вказує каталог з колекцією штампів
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2646"/>
+        <location filename="../sources/qetapp.cpp" line="2801"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Вказує каталог конфігурації
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2649"/>
+        <location filename="../sources/qetapp.cpp" line="2804"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2651"/>
+        <location filename="../sources/qetapp.cpp" line="2806"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Вказує каталог з файлами мов
@@ -6072,902 +7460,1048 @@ Options disponibles :
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="102"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="118"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2760"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="104"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="120"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="161"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="172"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation>Проєкти</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="207"/>
         <source>Collections</source>
         <translation>Колекції</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Aucune modification</source>
         <translation>Немає змін</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Виберіть дію, щоб повернути зроблені в схемі зміни</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>В цій панелі вказані різні зміни на даному аркуші. При виборі зміни аркуш буде повернутий в той стан, в якому він знаходився відразу після її застосування</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="235"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Історія</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>E&amp;xporter</source>
         <translation>E&amp;експорт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="605"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="716"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="802"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
+        <source>Éditeur de schémas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Експортувати цей аркуш в інший фрмат</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Imprimer</source>
         <translation>Друк</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Друк одного або більше аркушів цього проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Exporter en pdf</source>
         <translation>Експорт в pdf</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translatorcomment>підказка в рядку стану</translatorcomment>
         <translation>Експорт одного чи кількох аркушів цього проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Вихід</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Закрити QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Annuler</source>
         <translation>Відміна</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Відмінити останні дії</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Refaire</source>
         <translation>Повторити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="328"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Виконати відмінену дію</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Co&amp;uper</source>
         <translation>&amp;Вирізати</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
         <source>Cop&amp;ier</source>
         <translation>&amp;Копіювати</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="333"/>
         <source>C&amp;oller</source>
         <translation>Вст&amp;авити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Копіює віділені елементи в буфер обміну</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Копіює виділені елементи</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Вставляє на лист еементи з буфера обміну</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="345"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="357"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Відновити провідники</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="347"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Перераховує траси провідників, ігнруючи зроблені користувачем зміни</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="366"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Автоматичне створення провідників</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Використовувати автоматичне створення провідників коли це можливо</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="363"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
+        <source>Coupure automatique de conducteur(s)</source>
+        <comment>Tool tip of auto break conductor</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
+        <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+        <comment>Status tip of auto break conductor</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Колір фону білий або сірий</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="391"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Показати фон аркуша білим або сірим</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
         <source>Afficher la grille</source>
         <translation>Показати сітку</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="374"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="386"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="414"/>
+        <source>Afficher les guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="415"/>
+        <source>Affiche ou masque les guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Propriétés du folio</source>
         <translation>Властивості аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Редагує властивості аркуша (розміри, інформацію шаблонів, властивості провідників...)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
         <source>Propriétés du projet</source>
         <translation>Властивості проєкта</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
         <source>Ajouter un folio</source>
         <translation>Додати аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2210"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="453"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2459"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2482"/>
         <source>Supprimer le folio</source>
         <translation>Видалити цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="417"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="457"/>
         <source>Nettoyer le projet</source>
         <translation>Очистити проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="467"/>
         <source>Exporter au format CSV</source>
         <translation>Експорт в формат CSV</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
         <source>Ajouter une nomenclature</source>
         <translation>Додати номенклатуру</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="442"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
         <source>Ajouter un sommaire</source>
         <translation>Додати висновок</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="489"/>
         <source>Gestionnaire de borniers (DEV)</source>
         <translation>Керування клемними олодками (DEV)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Lancer le plugin de création de borniers</source>
         <translation>Запустити плагін створення клемної колодки</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Exporter la liste des noms de conducteurs</source>
         <translation>Експорт списка імен провідників</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Exporter le plan de câblage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
+        <source>Liste de câblage (base de données)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="535"/>
         <source>Numérotation automatique des bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
         <source>Exporter la base de donnée interne du projet</source>
         <translation>Експорт внутрішньої бази даних проєкта</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>en utilisant des onglets</source>
         <translation>Використовувати вкладки</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Відображає різні відкриті проєкти у вкладках</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
         <source>en utilisant des fenêtres</source>
         <translation>Використовувати вікна</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Відображає різні відкриті проєкти у вікнах</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Мозаїка</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="562"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Розмістити вікна мозаїкою</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Каскад</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Розмістити вікна каскадом</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
         <source>Mode Selection</source>
         <translation>Режим виділення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Дозволяє вибрати елементи</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="531"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
         <source>Mode Visualisation</source>
         <translation>Режим перегляду</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Дозволяє переглядати аркуші не змінюючи їх</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Projet suivant</source>
         <translation>Наступний проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Акривує наступний проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="604"/>
         <source>Projet précédent</source>
         <translation>Попередній проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="606"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Активує попередній проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Новий</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Відкрити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Зберегти</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="562"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
         <source>Enregistrer sous</source>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Закрити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
         <translation>Створити новий проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
         <translation>Відкрити існуюий проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="624"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
         <translation>Закрити цей проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="625"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
         <translation>Зберегти цей проєкт і всі його аркуші</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="626"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation>Зберегти цей проєкт під другим ім&apos;ям</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="639"/>
         <source>Ajouter une colonne</source>
         <translation>Додати стопчик</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="640"/>
         <source>Enlever une colonne</source>
         <translation>Видалити стопчик</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="641"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
         <translation>Додати рядок</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="642"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
         <translation>Видалити рядок</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Додати стопчик</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Видалити стопчик</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Збільшує висоту аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Зменшує висоту аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="606"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="657"/>
         <source>Supprimer</source>
         <translation>Видалити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="658"/>
         <source>Pivoter</source>
         <translation>Повернути</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="608"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="659"/>
+        <source>Pivoter le groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="660"/>
         <source>Orienter les textes</source>
         <translation>Вибрати напрямок тексту</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="609"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
         <source>Retrouver dans le panel</source>
         <translation>Знайти в панелі</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Редагувати вибраний елемент</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
         <source>Grouper les textes sélectionnés</source>
         <translation>Згрупувати вибрані тексти</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
         <translation>Видалити вибрані елементи</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Поворот вибраних елементів та текстів</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
+        <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Повернути вибраний текст на визачений кут</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation>Шукає вибраний елемент в панелі</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="633"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="688"/>
         <source>Tout sélectionner</source>
         <translation>Виділити все</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="634"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
         <source>Désélectionner tout</source>
         <translation>Зняти виділення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="690"/>
         <source>Inverser la sélection</source>
         <translation>Інвертування виділення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="641"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="696"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Виділяє всі елементи на аркуші</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="642"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Знімає виділення зі всіх елементів на аркуші</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="698"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>інветує виділення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="652"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="707"/>
         <source>Zoom avant</source>
         <translation>Збільшити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="653"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="708"/>
         <source>Zoom arrière</source>
         <translation>Зменшити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="654"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
         <source>Zoom sur le contenu</source>
         <translation>Маштабувати вибране</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="655"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Zoom adapté</source>
         <translation>Підігнати розмір</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="711"/>
         <source>Pas de zoom</source>
         <translation>Відновити маштаб</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
         <translation>Збільшити аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="721"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
         <translation>Зменшити аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="722"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
         <translation>Змінює маштаб для відображення всього, що на аркуші, незалежно від контента</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
         <translation>Змінює маштаб для відображення тільки частини аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Скинути маштаб</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="680"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="748"/>
         <source>Ajouter un champ de texte</source>
         <translation>Додати текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="749"/>
         <source>Ajouter une image</source>
         <translation>Додати зображення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
+        <source>Ajouter un PDF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
         <translation>Додати лінію</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="683"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="754"/>
         <source>Ajouter un rectangle</source>
         <translation>Додати прямокутник</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="755"/>
         <source>Ajouter une ellipse</source>
         <translation>Додати еліпс</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="685"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
         <source>Ajouter une polyligne</source>
         <translation>Додати ломану лінію</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
+        <source>Ajouter une courbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="758"/>
         <source>Ajouter un plan de bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="688"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="760"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
         <translation>Додати текстове поле на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
         <source>Ajoute une image sur le folio actuel</source>
         <translation>Додати зображенння на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="690"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="763"/>
+        <source>Ajoute une page PDF sur le folio actuel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="765"/>
         <source>Ajoute une ligne sur le folio actuel</source>
         <translation>Додати лінію на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="691"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
         <translation>Додати прямокутник на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="767"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
         <translation>Додати еліпс на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="768"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
         <translation>Додати ломану лінію на цей аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="769"/>
+        <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Chercher/remplacer</source>
         <translation>Знайти/замінити</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="737"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
+        <source>Atteindre un élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <source>Recherche et sélectionne rapidement un élément du folio</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="831"/>
         <source>Outils</source>
         <translation>Інструменти</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="740"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="834"/>
         <source>Affichage</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="743"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="837"/>
         <source>Schéma</source>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="775"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="871"/>
         <source>Ajouter</source>
         <translation>Додати</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="875"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Глибина</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="892"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="797"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="893"/>
         <source>&amp;Édition</source>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="894"/>
         <source>&amp;Projet</source>
         <translation>П&amp;роект</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="895"/>
         <source>Afficha&amp;ge</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="897"/>
         <source>Fe&amp;nêtres</source>
         <translation>&amp;Вікно</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="906"/>
         <source>&amp;Récemment ouverts</source>
         <translation>&amp;Нещодавно відкрите</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="962"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Показати чи приховати головну панель інструментів</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="963"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Приховати або показати панель інструментів «Вид»</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="865"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="964"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Приховати або показати панель інструментів «Схема»</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="866"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="965"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Приховати або показати панель елементів</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="867"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="966"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Приховати або показати срисок змін</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="871"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="970"/>
         <source>Afficher les projets</source>
         <translation>Показати проєкти</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="952"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="975"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1052"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1075"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>Проєкт %1 збережений в каталозі: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1123"/>
         <source>Ouvrir un fichier</source>
         <translation>Відкрити файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1025"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1125"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Проєкти QElectroTech (*.qet);;Файли XML (*.xml);;Всі файли (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1108"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1124"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1208"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1224"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Неможливо відкрити файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1110"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1210"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Файл %1, котрий ви намагаєтеся відкрить, не існує.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1125"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1225"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Файл, котрий ви намагаєтеся відкрити, недоступний для читання і не може бути відкритий. Перевірте права доступа.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1139"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1239"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Відкривання файлів в режимі &quot;тільки читання&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1140"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Проєкт, котрий ви намагаєтеся відкрити, недоступний для запису. Він буде відкритий в режимі &quot;тільки читання&quot;.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1157"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1971"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1264"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2187"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Неможливо відкрити проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1159"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Файл %1 не є проєктом QElectroTech. Він не може бути відкритим.</translation>
     </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
-        <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation>Двічі клацніть, щоб завершити форму, клацніть правою кнопкою миші, щоб відмінити останню точку</translation>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="1298"/>
+        <source>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="1306"/>
+        <source>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1314"/>
+        <source>Polices du projet</source>
+        <comment>message box title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Suppression de borne impossible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
         <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
 Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1738"/>
         <source>Groupe</source>
         <translation>Група</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1944"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Редагувати елемент</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1734"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1951"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Редагувати текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1741"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1958"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Редагувати зображення</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1965"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Редагувати провідник</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1973"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Редагувати вибраний об&apos;єкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1972"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2188"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translatorcomment>вміст вікна повідомлення</translatorcomment>
         <translation>Помилка при відкриванні файла %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2020"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2236"/>
         <source>Active le projet « %1 »</source>
         <translation>Активує проєкт «%1»</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2211"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2460"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
         <source>Supprimer les folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2466"/>
         <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2428"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2483"/>
+        <source>Supprimer %1 folios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2521"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2557"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2575"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2611"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2629"/>
+        <source>Déplacer les folios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2697"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Помилка</translation>
@@ -6986,386 +8520,391 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="50"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="51"/>
         <source>&amp;Édition</source>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="54"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="55"/>
         <source>Coller depuis...</source>
         <translation>Вставити з...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="86"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="87"/>
         <source>Afficha&amp;ge</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="96"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="97"/>
         <source>&amp;Aide</source>
         <translation>&amp;Довідка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="115"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="116"/>
         <source>Annulations</source>
         <translation>Історія</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="127"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="128"/>
         <source>Parties</source>
         <translation>Частини</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="139"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="140"/>
         <source>Informations</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="148"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="149"/>
         <source>Outils</source>
         <translation>Інструменти</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="165"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="166"/>
         <source>Affichage</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="180"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="181"/>
         <source>Élément</source>
         <translation>Елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="193"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="194"/>
         <source>Annulation</source>
         <translation>Відміна</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="208"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="209"/>
         <source>Tout sélectionner</source>
         <translation>Виділити все</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="217"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="218"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Новий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="226"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="227"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Відкрити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="235"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="236"/>
         <source>&amp;Ouvrir depuis un fichier</source>
         <translation>&amp;Відкрити з файла</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="244"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="245"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Зберегти</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="253"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="254"/>
         <source>Enregistrer sous</source>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="262"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="263"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Зберегти в файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="271"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="272"/>
+        <source>Exporter en SVG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="281"/>
         <source>Recharger</source>
         <translation>Перезавантаження</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="280"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="290"/>
         <source>&amp;Fermer cet éditeur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="283"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="293"/>
         <source>Fermer cet éditeur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="292"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="302"/>
         <source>Désélectionner tout</source>
         <translation>зняти виділення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="301"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="311"/>
         <source>Co&amp;uper</source>
         <translation>&amp;Вирізати</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="310"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="320"/>
         <source>Cop&amp;ier</source>
         <translation>&amp;Копіювати</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="319"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="329"/>
         <source>C&amp;oller</source>
         <translation>&amp;Вставити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="328"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="338"/>
         <source>C&amp;oller dans la zone</source>
         <translation>&amp;Встатити в область</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="337"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="347"/>
         <source>Un fichier</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="346"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="356"/>
         <source>Un élément</source>
         <translation>Елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="355"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="365"/>
         <source>Inverser la sélection</source>
         <translation>Інвертувати виділення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="364"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="374"/>
         <source>&amp;Supprimer</source>
         <translation>&amp;Видалити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="373"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="383"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
         <translation>Редагувати назву та інформацію елемента</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="382"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="392"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation>Редагувати інформацію про автора</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="391"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="401"/>
         <source>Éditer les propriétés de l&apos;élément</source>
         <translation>Редагувати властивості елемента</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="400"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="410"/>
         <source>Zoom avant</source>
         <translation>Збільшити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="409"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="419"/>
         <source>Zoom arrière</source>
         <translation>Зменшити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="418"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="428"/>
         <source>Zoom adapté</source>
         <translation>Підігнать розмір</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="427"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="437"/>
         <source>Pas de zoom</source>
         <translation>Відновити маштаб</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="436"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="446"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>&amp;про QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="439"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="449"/>
         <source>Affiche des informations sur QElectroTech</source>
         <translation>Показує інформацію про QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="448"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="458"/>
         <source>Manuel en ligne</source>
         <translation>Онлайн документація</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="451"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="461"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <translation>Відкриває в браузері по замовчуванні онлайн документацію</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="460"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="470"/>
         <source>Chaine Youtube</source>
         <translation>YouTube-канал</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="463"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="473"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <translation>Відкриває в браузері по замовчуванні YouTube-канал QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="472"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="482"/>
         <source>Soutenir le projet par un don</source>
         <translation>Підтримати проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="475"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="485"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <translation>Підтримайте проєкт QElectroTech донатом</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="484"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="494"/>
         <source>À propos de &amp;Qt</source>
         <translation>Про бібліотеку &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="487"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="497"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <translation>Показує інформацію про бібліотеку Qt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="496"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="506"/>
         <source>Rotation</source>
         <translation>Обертання</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="505"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="515"/>
         <source>Fine-Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="514"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="524"/>
         <source>Mirror</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="523"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="533"/>
         <source>Flip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="532"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="542"/>
         <source>Importer un dxf</source>
         <translation>Імпорт файла в форматі DXF</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="541"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="551"/>
         <source>importer un élément à redimensionner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="71"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="75"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation>Показувати</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="215"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="220"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Файл %1 не існує.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="221"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1413"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="226"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1553"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Неможливо відкрити файл %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="228"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1418"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="233"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1558"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Цей файл не являється правильним XML-документом</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="234"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1424"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="239"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1564"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="245"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="250"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="320"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Версія тільки для читання</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="246"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="316"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="251"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="321"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>У вас немає прав для редагування цього елемента. Він буде відкритий в режимі &quot;тільки читання&quot;.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="277"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="341"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="282"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="346"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="278"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="283"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Неможливо зписати в цей файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="292"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="298"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1439"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1445"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="297"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="303"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1579"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1585"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Неіснуючий елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1440"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="298"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1580"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Вибраний віртуальний шлях не відповідає елементу</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="299"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1446"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="304"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1586"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Елемент не існує.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="342"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="347"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="426"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="431"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="428"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="433"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="448"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="453"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="452"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="457"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="537"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="674"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="538"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="675"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n виділена частина.</numerusform>
@@ -7374,45 +8913,45 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="745"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="748"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Відсутній ввід</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="746"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="749"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt; За відсутності виводів елемент не може бути з&apos;єднаний з іншим елементом провідником.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="767"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="770"/>
         <source>Absence de borne</source>
         <translation>Відсутній вивід</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="771"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation>&lt;br&gt;&lt;b&gt;Помилка&lt;/b&gt;:&lt;br&gt; Звіти про аркуші мають мати один вивід.&lt;br&gt;&lt;b&gt;Рішення&lt;/b&gt;:&lt;br&gt;Перевірте, щоб у елемента був лише один вивід</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="788"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="791"/>
         <source>Nombre de bornes incorrect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="789"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="792"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="801"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="804"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation>Перевірка створеного елемента</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="804"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="807"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
@@ -7422,12 +8961,12 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="809"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="812"/>
         <source> et</source>
         <translation> і</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="811"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="814"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation>
@@ -7437,194 +8976,253 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="821"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="824"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="828"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="831"/>
         <source>Erreurs</source>
         <translation>Помилки</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="831"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="834"/>
         <source>Avertissements</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="871"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="874"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Неможливо відкрити файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="873"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="876"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Схоже, що файл %1, котрий ви намагаєтеся відкрити, не існує.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="910"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="913"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Зберегти поточний елемент?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="912"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="915"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Ви хочете зберегти елемент %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1524"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="998"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="999"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1003"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1004"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1005"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1006"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1007"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1008"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1009"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1010"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1011"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1012"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1013"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1014"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1015"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1016"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1019"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1020"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1022"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1023"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1039"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1047"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1051"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1056"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1057"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1059"/>
+        <source>Éditeur d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
+        <source>X: %1  Y: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1447"/>
+        <source>Exporter en SVG</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1449"/>
+        <source>Image SVG (*.svg)</source>
+        <comment>filetypes allowed when exporting an element to SVG</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1460"/>
+        <source>Échec de l&apos;export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1461"/>
+        <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1664"/>
         <source>Importer un élément à redimensionner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1526"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1666"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <translation type="unfinished">Элементи QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="499"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="500"/>
         <source>Trop de primitives, liste non générée: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="979"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="994"/>
         <source>Annuler</source>
         <translation>Відміна</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Refaire</source>
         <translation>Повторити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1018"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1033"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Глибина</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1049"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1064"/>
         <source>Ajouter une ligne</source>
         <translation>Додати лінію</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1050"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1065"/>
         <source>Ajouter un rectangle</source>
         <translation>Додати прямокутник</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1051"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1066"/>
         <source>Ajouter une ellipse</source>
         <translation>Додати еліпс</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1052"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1067"/>
         <source>Ajouter un polygone</source>
         <translation>Додати багатокутник</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1053"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1068"/>
         <source>Ajouter du texte</source>
         <translation>Додати текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1054"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1069"/>
         <source>Ajouter un arc de cercle</source>
         <translation>Додати дугу</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1055"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1070"/>
         <source>Ajouter une borne</source>
         <translation>Додати вивід</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1056"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1071"/>
         <source>Ajouter un champ texte dynamique</source>
         <translation>Додати динамічне тектове поле</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1071"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1086"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>Зробіть подвійний клік, щоб завершити форму, клік правою клавішою, щоб видалити останню точку</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1072"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1087"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
         <translation>Додати текст елемента, що не редагується</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1073"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1088"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
         <translation>Додати текст елемента, що редагується</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1075"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1090"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Частини</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1181"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1206"/>
         <source>Aucune modification</source>
         <translation>Немає змін</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1193"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1245"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Редактор елементів</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1266"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1295"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1318"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1347"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1413"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Реєстрація не вдалася</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1266"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1295"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1318"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1347"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1413"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Запис не вдався,
 не вірні умови</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1334"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1386"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1336"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1388"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Элементи QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1370"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1510"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Перезавантажити елемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1371"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1511"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Цей елемент був змінений з моменту останнього збереження. Якщо ви перезавантажете його, всі зміни будуть втрачені. Ви дійсно хочете перезавантажити елемент?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1505"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1645"/>
         <source>Avertissement</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1505"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1645"/>
         <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
 veuillez patienter durant l&apos;import...</source>
         <translation>Імпорт великого файла в форматі DXF може зайняти деякий час,
@@ -7634,124 +9232,141 @@ veuillez patienter durant l&apos;import...</source>
 <context>
     <name>QETMainWindow</name>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="59"/>
+        <location filename="../sources/qetmainwindow.cpp" line="60"/>
         <source>&amp;Configurer QElectroTech</source>
         <translation>&amp;Налаштування QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="60"/>
+        <location filename="../sources/qetmainwindow.cpp" line="61"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Дозволяє змінити різні параметри QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="89"/>
+        <location filename="../sources/qetmainwindow.cpp" line="90"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>&amp;Про QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="90"/>
+        <location filename="../sources/qetmainwindow.cpp" line="91"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Показує інформацію про QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="93"/>
+        <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <source>Manuel en ligne</source>
         <translation>Онлайн документація</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="94"/>
+        <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
         <translatorcomment>підказка в рядку стану</translatorcomment>
         <translation>Відкрити онлайн документацію QElectroTech в браузері по замовчуванню</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="103"/>
+        <location filename="../sources/qetmainwindow.cpp" line="102"/>
+        <location filename="../sources/qetmainwindow.cpp" line="232"/>
+        <source>Général</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="104"/>
         <source>Chaine Youtube</source>
         <translation>YouTube-канал</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="104"/>
+        <location filename="../sources/qetmainwindow.cpp" line="105"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
         <translatorcomment>підказка в рядку стану</translatorcomment>
         <translation>Відкрити YouTube-канал QElectroTech в браузері по замовчуванню</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="111"/>
-        <location filename="../sources/qetmainwindow.cpp" line="114"/>
+        <location filename="../sources/qetmainwindow.cpp" line="112"/>
+        <location filename="../sources/qetmainwindow.cpp" line="115"/>
         <source>Télécharger une nouvelle version (dev)</source>
         <translation>Скачати нову версію (dev)</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="112"/>
-        <location filename="../sources/qetmainwindow.cpp" line="115"/>
+        <location filename="../sources/qetmainwindow.cpp" line="113"/>
+        <location filename="../sources/qetmainwindow.cpp" line="116"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
         <translatorcomment>підказка в рядку стану</translatorcomment>
         <translation>Відкрити онлайн репозиторій Nightly QElectroTech в браузері по замовчуванню</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="127"/>
+        <location filename="../sources/qetmainwindow.cpp" line="128"/>
         <source>Soutenir le projet par un don</source>
         <translation>Підтримати проєкт</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="128"/>
+        <location filename="../sources/qetmainwindow.cpp" line="129"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
         <translatorcomment>підказка в рядку стану</translatorcomment>
         <translation>Підтримайте проєкт QElectroTech донатом</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="135"/>
+        <location filename="../sources/qetmainwindow.cpp" line="136"/>
         <source>À propos de &amp;Qt</source>
         <translation>Про &amp;бібліотеку Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="136"/>
+        <location filename="../sources/qetmainwindow.cpp" line="137"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Показує інформацію про бібліотеку Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="145"/>
+        <location filename="../sources/qetmainwindow.cpp" line="140"/>
+        <source>Enregistrer un rapport de diagnostic...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="141"/>
+        <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="152"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
         <translation>&amp;Налаштування</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="150"/>
+        <location filename="../sources/qetmainwindow.cpp" line="157"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
         <translation>&amp;Довідка</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="215"/>
+        <location filename="../sources/qetmainwindow.cpp" line="224"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Вийти зповно&amp;екранного режиму</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="217"/>
+        <location filename="../sources/qetmainwindow.cpp" line="226"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Відобразить QElectroTech у віконному (звичайному) режимі</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="219"/>
+        <location filename="../sources/qetmainwindow.cpp" line="228"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>Повно&amp;екранний режим</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="221"/>
+        <location filename="../sources/qetmainwindow.cpp" line="230"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Покаже QElectroTech в повноекранному режимі</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="236"/>
+        <location filename="../sources/qetmainwindow.cpp" line="245"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation>Показувати</translation>
@@ -7760,87 +9375,100 @@ veuillez patienter durant l&apos;import...</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="402"/>
+        <location filename="../sources/qetproject.cpp" line="463"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translatorcomment>відображуваний заголовок для ProjectView -% 1 - це заголовок проєкта, -% 2 - це шлях до проєкта</translatorcomment>
         <translation>Проєкт «%1: %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="409"/>
+        <location filename="../sources/qetproject.cpp" line="470"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Проєкт %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="416"/>
+        <location filename="../sources/qetproject.cpp" line="477"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Проєкт без імені</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="425"/>
+        <location filename="../sources/qetproject.cpp" line="486"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [тільки читання]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="433"/>
+        <location filename="../sources/qetproject.cpp" line="494"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [змінений]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1228"/>
+        <location filename="../sources/qetproject.cpp" line="1268"/>
+        <source>Système de contacts modifié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="1269"/>
+        <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="1357"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Під час інтеграції шаблона виникла помилка.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1381"/>
+        <location filename="../sources/qetproject.cpp" line="1508"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1383"/>
+        <location filename="../sources/qetproject.cpp" line="1510"/>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1388"/>
+        <location filename="../sources/qetproject.cpp" line="1515"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1408"/>
+        <location filename="../sources/qetproject.cpp" line="1535"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1409"/>
+        <location filename="../sources/qetproject.cpp" line="1536"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1412"/>
+        <location filename="../sources/qetproject.cpp" line="1539"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1483"/>
+        <location filename="../sources/qetproject.cpp" line="1642"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Відкривання поточного аркуша...&lt;/b&gt;&lt;br/&gt;Створення аркушів&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1525"/>
+        <location filename="../sources/qetproject.cpp" line="1684"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Відкривання поточного аркуша...&lt;/b&gt;&lt;br/&gt;Налаштування перехресних посилань&lt;/p&gt;</translation>
     </message>
@@ -7848,283 +9476,325 @@ Que désirez vous faire ?</source>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
         <translation>Зберегти поточний шаблон?</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
         <translation>Хочете зберегти шаблон %1?</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="172"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="173"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
         <translation>новий_шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="181"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="182"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
         <translation>Дублювати шаблон штампа</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="182"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="183"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
         <translation>Щоб дублювати цей шаблон, будьласка, введіть ім&apos;я для його копії</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
         <translation>&amp;Новий</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
         <translation>&amp;Відкрити</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
         <translation>Відкрити із файла</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation>&amp;Зберегти</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="373"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="374"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
         <translation>Зберегти в файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="373"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="375"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation>&amp;Вихід</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="376"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="378"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
         <translation>&amp;Вирізати</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="377"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="379"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
         <translation>&amp;Копіювати</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="378"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="380"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
         <translation>&amp;Вставити</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="379"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="381"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
         <translation>Управління логотипами</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="380"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="382"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
         <translation>Редагувати додаткову інформацію</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="381"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="383"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation>Збільшити</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="382"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="384"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation>Зменшити</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="383"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="385"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
         <translation>Підігнать розмір</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="384"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="386"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation>Відновити маштаб</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="385"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="387"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
         <translation>Додати &amp;рядок</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="386"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="388"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
         <translation>Додати &amp;стопчик</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="387"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="389"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Об&apos;єднання чарунок</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="388"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="390"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>Роз&amp;ділити чарунки</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="440"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="395"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="396"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="397"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="398"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="399"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="401"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="402"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="403"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="407"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="409"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="410"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="411"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="412"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="413"/>
+        <source>Éditeur de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="442"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="441"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="443"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="442"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="444"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="482"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="484"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Інструменти</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="490"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="492"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="499"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="501"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="518"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="520"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>Немає змін</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="520"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="522"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Історія</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="542"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="544"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation>Властивості чарунки</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="618"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="622"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Змінено]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="621"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="625"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
         <translation>[Тільки читання]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="624"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="628"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
         <translation>%1 %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="714"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="733"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation>QElectroTech - редактор штампів</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="729"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="748"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="808"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="801"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="919"/>
+        <source>Erreur</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Помилка</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
+        <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+        <comment>message box content - %1 is a title block template name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="840"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
         <translation>Відкрити шаблон штампа</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="862"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Відкрити файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="864"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
         <translation>Шаблони штампів QElectroTech (*%1);;Файли XML (*.xml);; Всі файли (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="874"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="906"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation>Зберегти шаблон як</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="896"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="920"/>
+        <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
+        <comment>message box content - %1 is the rejected template name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="943"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Зберегти як</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="898"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="945"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation>Шаблони штампів QElectroTech (*%1)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1006"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1053"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
         <translation>Змінити додаткову інформацію</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1010"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1057"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Ви можете використати це поле, щоб вказати автора цього шаблона, його ліцензію чи будь-яку іншу інформацію, яку вважаєте корисною.</translation>
     </message>
@@ -8150,49 +9820,54 @@ Que désirez vous faire ?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="215"/>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="702"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="224"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="816"/>
         <source>chargement %p% (%v sur %m)</source>
         <translation>завантаження %p% (%v з %m)</translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="819"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="401"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="652"/>
+        <location filename="../sources/qetapp.cpp" line="2488"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
-        <location filename="../sources/qetapp.cpp" line="2383"/>
-        <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
+        <location filename="../sources/titleblock/templatelocation.cpp" line="114"/>
         <source>this is an error in the code</source>
         <translation>це помилка в коді</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="127"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="159"/>
         <source>Collection QET</source>
         <translation>Колекція QET</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="129"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="161"/>
         <source>Collection Company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="131"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="163"/>
         <source>Collection utilisateur</source>
         <translation>Колекція користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="133"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="165"/>
         <source>Makros</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="135"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="167"/>
         <source>Collection inconnue</source>
         <translation>Невідома колекція</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="416"/>
+        <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="62"/>
@@ -8353,16 +10028,23 @@ Que désirez vous faire ?</source>
         <translation>Вибір клемної колодки %1</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="102"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="103"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Змінити властивості провідника</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="111"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="112"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Змінити властивості кількох провідників</translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorautonumerotation.cpp" line="168"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="270"/>
+        <source>Numéroter automatiquement un conducteur</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
@@ -8381,7 +10063,11 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="66"/>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="285"/>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="187"/>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="198"/>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="221"/>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="233"/>
         <source>Erreur</source>
         <translation>Помилка</translation>
     </message>
@@ -8401,54 +10087,54 @@ Que désirez vous faire ?</source>
         <translation>вставити %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="135"/>
+        <location filename="../sources/diagramcommands.cpp" line="148"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>вирізати %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="248"/>
+        <location filename="../sources/diagramcommands.cpp" line="261"/>
         <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="54"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>перемістити %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="270"/>
+        <location filename="../sources/diagramcommands.cpp" line="283"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>змінити текст</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="322"/>
+        <location filename="../sources/diagramcommands.cpp" line="335"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>змінити провідник</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="392"/>
+        <location filename="../sources/diagramcommands.cpp" line="405"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Відновити %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="443"/>
+        <location filename="../sources/diagramcommands.cpp" line="456"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
         <translation>змінити розмір аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="278"/>
         <source>Selectionner une image...</source>
         <translation>Виберіть зображення...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="278"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
         <translation>Файли зображень (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="285"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation>Помилка</translation>
     </message>
@@ -8469,85 +10155,85 @@ Que désirez vous faire ?</source>
         <translation>Вставити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="107"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="108"/>
         <source>couper des parties</source>
         <comment>undo caption</comment>
         <translation>вирізати частини</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="129"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="130"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
         <translation>переміщення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="171"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="172"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
         <translation>зміна імен</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="220"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="221"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
         <translation>помістити вперед</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="223"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="224"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
         <translation>підняти</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="226"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="227"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
         <translation>опустити</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="229"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="230"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
         <translation>помістити назад</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="346"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="333"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
         <translation>зміна додаткової інформації</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="478"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="465"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
         <translation>маштабування</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="480"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="467"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
         <translation>маштабування %1 примітивів</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="500"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="487"/>
         <source>Modifier les propriétées de l&apos;élément</source>
         <translation>Змінити властивості елемента</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="514"/>
-        <location filename="../sources/editor/editorcommands.cpp" line="619"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="501"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="606"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
         <translation>Повернути виділення</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="684"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="692"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="732"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="741"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -8584,13 +10270,13 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="65"/>
-        <location filename="../sources/editor/graphicspart/partterminal.h" line="88"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="108"/>
         <source>Borne</source>
         <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
-        <location filename="../sources/qetinformation.cpp" line="271"/>
+        <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Texte</source>
         <translation>Текст</translation>
     </message>
@@ -8625,24 +10311,24 @@ Que désirez vous faire ?</source>
         <translation>прямокутник</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="45"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="47"/>
         <source>T</source>
         <comment>default text when adding a text in the element editor</comment>
         <translation>Т</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.h" line="60"/>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="62"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1498"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1638"/>
         <source>Importer un fichier dxf</source>
         <translation>Імпортувати файл в форматі DXF</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="203"/>
+        <location filename="../sources/elementsmover.cpp" line="217"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translatorcomment>додати номера одного чи кількох провідників</translatorcomment>
@@ -8722,38 +10408,38 @@ Voulez-vous la remplacer ?</source>
         <translation>група тексту</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1015"/>
+        <location filename="../sources/exportdialog.cpp" line="1136"/>
         <source>Folio sans titre</source>
         <translation>Аркуш без імені</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1017"/>
+        <location filename="../sources/exportdialog.cpp" line="1138"/>
         <source>schema</source>
         <translation>схема</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1042"/>
+        <location filename="../sources/exportdialog.cpp" line="1163"/>
         <source>Conserver les proportions</source>
         <translation>Зберегти пропорції</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1046"/>
+        <location filename="../sources/exportdialog.cpp" line="1167"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Відновити розмір</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1050"/>
+        <location filename="../sources/exportdialog.cpp" line="1171"/>
         <source>Aperçu</source>
         <translation>Попередній перегляд</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1054"/>
+        <location filename="../sources/exportdialog.cpp" line="1175"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Експортувати в буфер обміну</translation>
     </message>
     <message>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="403"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="193"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="430"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Попередження: елементи були збережені за допомогою більш нової версії QElectroTech.</translation>
     </message>
@@ -8778,57 +10464,88 @@ Voulez-vous la remplacer ?</source>
         <translation>Компіляція : </translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="521"/>
-        <location filename="../sources/properties/elementdata.cpp" line="531"/>
+        <location filename="../sources/properties/elementdata.cpp" line="871"/>
+        <location filename="../sources/properties/elementdata.cpp" line="881"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
         <translation>Загальний</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="523"/>
+        <location filename="../sources/properties/elementdata.cpp" line="873"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
         <translation>Запобіжник</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="525"/>
+        <location filename="../sources/properties/elementdata.cpp" line="875"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>Секційний</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="527"/>
+        <location filename="../sources/properties/elementdata.cpp" line="877"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>Діод</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="529"/>
+        <location filename="../sources/properties/elementdata.cpp" line="879"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
         <translation>Заземлення</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="566"/>
-        <location filename="../sources/properties/elementdata.cpp" line="570"/>
+        <location filename="../sources/properties/elementdata.cpp" line="916"/>
+        <location filename="../sources/properties/elementdata.cpp" line="920"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
         <translation>Загальний</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="567"/>
+        <location filename="../sources/properties/elementdata.cpp" line="917"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>Фаза</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="568"/>
+        <location filename="../sources/properties/elementdata.cpp" line="918"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
         <translation>Нейтраль</translation>
     </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1187"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1199"/>
+        <source>Entrée digitale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1189"/>
+        <source>Sortie digitale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1191"/>
+        <source>Entrée analogique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1193"/>
+        <source>Sortie analogique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1195"/>
+        <source>Entrée universelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/properties/elementdata.cpp" line="1197"/>
+        <source>Sortie universelle</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="280"/>
+        <location filename="../sources/qet.cpp" line="273"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8838,7 +10555,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="289"/>
+        <location filename="../sources/qet.cpp" line="282"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8848,7 +10565,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="298"/>
+        <location filename="../sources/qet.cpp" line="291"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8857,18 +10574,24 @@ Voulez-vous la remplacer ?</source>
             <numerusform>%n текстових полів</numerusform>
         </translation>
     </message>
-    <message numerus="yes">
+    <message>
         <location filename="../sources/qet.cpp" line="307"/>
-        <source>%n image(s)</source>
+        <source>une image</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n зображення</numerusform>
-            <numerusform>%n зображення</numerusform>
-            <numerusform>%n зображеннь</numerusform>
+        <translation type="unfinished">Зображення</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="308"/>
+        <source>%n images</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="316"/>
+        <location filename="../sources/qet.cpp" line="317"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8878,7 +10601,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="325"/>
+        <location filename="../sources/qet.cpp" line="326"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8888,7 +10611,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="333"/>
+        <location filename="../sources/qet.cpp" line="334"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
         <translation>
@@ -8898,7 +10621,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="341"/>
+        <location filename="../sources/qet.cpp" line="342"/>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
@@ -8908,470 +10631,571 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="411"/>
+        <location filename="../sources/qet.cpp" line="412"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Неможливо знайти текстовий файл з ліцензією GNU/GPL, але вви його знаєте на пам&apos;ять, чи не так?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="415"/>
+        <location filename="../sources/qet.cpp" line="416"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Файл з ліцензією GNU/GPL існує, але не може бути відкритий, але вви його знаєте на пам&apos;ять, чи не так?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="679"/>
-        <location filename="../sources/qet.cpp" line="814"/>
-        <location filename="../sources/qetxml.cpp" line="270"/>
+        <location filename="../sources/qet.cpp" line="672"/>
+        <location filename="../sources/qet.cpp" line="807"/>
+        <location filename="../sources/qetxml.cpp" line="273"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Неможливо відкрити файл %1 для запису, виникла помилка %2</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="700"/>
+        <location filename="../sources/qet.cpp" line="693"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translatorcomment>повідомлення поитлки при спробі запису до XML-файлу</translatorcomment>
         <translation>Виникла помилка %2 під час запису файла  %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="778"/>
+        <location filename="../sources/qet.cpp" line="771"/>
         <source>Amener au premier plan</source>
         <translation>Помістить на передній план</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="779"/>
+        <location filename="../sources/qet.cpp" line="772"/>
         <source>Rapprocher</source>
         <translation>Підняти</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="780"/>
+        <location filename="../sources/qet.cpp" line="773"/>
         <source>Éloigner</source>
         <translation>Опустити</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="781"/>
+        <location filename="../sources/qet.cpp" line="774"/>
         <source>Envoyer au fond</source>
         <translation>Помістити на задній план</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="783"/>
+        <location filename="../sources/qet.cpp" line="776"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Помістити вибране на передній план</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="784"/>
+        <location filename="../sources/qet.cpp" line="777"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Підняти вибране</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="785"/>
+        <location filename="../sources/qet.cpp" line="778"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Опустити вибране</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="786"/>
+        <location filename="../sources/qet.cpp" line="779"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Помістити вибране на задній план</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2519"/>
+        <location filename="../sources/qet.cpp" line="781"/>
+        <location filename="../sources/qet.cpp" line="782"/>
+        <location filename="../sources/qet.cpp" line="783"/>
+        <location filename="../sources/qet.cpp" line="784"/>
+        <source>Profondeur</source>
+        <translation type="unfinished">Глибина</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2838"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Щоб встановити плагін qet_tb_generator&lt;br&gt;Відвідайте:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Необхідний python версії 3.5 або вище.&lt;br&gt;&lt;B&gt;&lt;U&gt;Перша установка в  Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. При необхідності встановіть python 3.5 чи більш пізню версію&lt;br&gt;Посетите:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Оновлення в Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;користувач може запустити в терміналі&lt;br&gt;C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2858"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2558"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2877"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Щоб встановити плагін qet_tb_generator&lt;br&gt;Відвідайте:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Потрібний Python 3.5 аби вище.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Перша установка в Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Перевірте чи встановлений у вас pip3: pip3 --version&lt;br&gt; Якщо не встановлений, то: sudo apt-get install python3-pip&lt;br&gt;2. Встановіть програму: sudo pip3 install qet_tb_generator&lt;br&gt;3. Запустіть программу: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Обновлення в Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2897"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Помилка під час запуску плагіна qet_tb_generator</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="70"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
         <source>Borne</source>
         <comment>tooltip</comment>
         <translation>Вивід</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="231"/>
+        <location filename="../sources/qetinformation.cpp" line="247"/>
         <source>Auteur</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="232"/>
+        <location filename="../sources/qetinformation.cpp" line="248"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="233"/>
+        <location filename="../sources/qetinformation.cpp" line="249"/>
         <source>Titre</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="234"/>
+        <location filename="../sources/qetinformation.cpp" line="250"/>
         <source>Fichier</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="235"/>
+        <location filename="../sources/qetinformation.cpp" line="251"/>
         <source>Installation (=)</source>
         <translation>Установка(=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="236"/>
-        <location filename="../sources/qetinformation.cpp" line="266"/>
+        <location filename="../sources/qetinformation.cpp" line="252"/>
+        <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Localisation (+)</source>
         <translation>Локалізація (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="237"/>
+        <location filename="../sources/qetinformation.cpp" line="253"/>
         <source>Indice de révision</source>
         <translation>Індекс редакції</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="238"/>
+        <location filename="../sources/qetinformation.cpp" line="254"/>
         <source>Position</source>
         <translation>Положення</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="239"/>
+        <location filename="../sources/qetinformation.cpp" line="255"/>
         <source>Version de QElectroTech</source>
         <translation>Версія QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="240"/>
+        <location filename="../sources/qetinformation.cpp" line="256"/>
         <source>Numéro de folio</source>
         <translation>Номер аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="241"/>
+        <location filename="../sources/qetinformation.cpp" line="257"/>
         <source>Position du folio</source>
         <translation>Положення аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="242"/>
+        <location filename="../sources/qetinformation.cpp" line="258"/>
         <source>Nombre de folio</source>
         <translation>Кількість аркушів</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="243"/>
+        <location filename="../sources/qetinformation.cpp" line="259"/>
         <source>Numéro du folio précédent</source>
         <translation>Номер попереднього аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="244"/>
+        <location filename="../sources/qetinformation.cpp" line="260"/>
         <source>Numéro du folio suivant</source>
         <translation>Номер наступного аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="245"/>
+        <location filename="../sources/qetinformation.cpp" line="261"/>
         <source>Titre du projet</source>
         <translation>Назву проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="246"/>
+        <location filename="../sources/qetinformation.cpp" line="262"/>
         <source>Chemin du fichier du projet</source>
         <translation>Шлях до файлу проєкта</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="247"/>
+        <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Nom du fichier</source>
         <translation>ім&apos;я файла</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="248"/>
+        <location filename="../sources/qetinformation.cpp" line="264"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
         <translation>Дата збереження файлу в локальному форматі</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="249"/>
+        <location filename="../sources/qetinformation.cpp" line="265"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
         <translation>Дата збереження файла в форматі ДД-ММ-РРРР</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="250"/>
+        <location filename="../sources/qetinformation.cpp" line="266"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
         <translation>Дата збереження файлу в форматі РРРР-ММ-ДД</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="251"/>
+        <location filename="../sources/qetinformation.cpp" line="267"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>Час збереження файла</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="252"/>
+        <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Nom du fichier enregistré</source>
         <translation>Ім&apos;я збереженого файла</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="253"/>
+        <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Chemin du fichier enregistré</source>
         <translation>Шлях до збереженого файлу</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="254"/>
+        <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Formule du label</source>
         <translation>Фрмуля мітки</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="255"/>
+        <location filename="../sources/qetinformation.cpp" line="271"/>
         <source>Label</source>
         <translation>Мітка</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="256"/>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="189"/>
+        <source>Table PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="197"/>
+        <source>Table PLC (vide)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1296"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1401"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1841"/>
+        <source>Type</source>
+        <translation type="unfinished">Тип</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1297"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1402"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1842"/>
+        <source>Adresse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1299"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1404"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1844"/>
+        <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Commentaire</source>
         <translation>Аннотація</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="257"/>
-        <location filename="../sources/qetinformation.cpp" line="267"/>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1300"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1405"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1845"/>
+        <location filename="../sources/qetinformation.cpp" line="330"/>
+        <source>Réf. croisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1298"/>
+        <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1403"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="1843"/>
+        <location filename="../sources/qetinformation.cpp" line="273"/>
+        <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
         <translation>Функція</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="273"/>
+        <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Зовнішній блок 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="274"/>
+        <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Description textuelle auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="275"/>
+        <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="276"/>
+        <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Fabricant auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="277"/>
+        <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Numéro de commande auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="278"/>
+        <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Numéro interne auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="279"/>
+        <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Fournisseur auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="280"/>
+        <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Quantité auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="281"/>
+        <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Unité auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="282"/>
+        <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Зовнішній блок 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="283"/>
+        <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Description textuelle auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="284"/>
+        <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="285"/>
+        <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Fabricant auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="286"/>
+        <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Numéro de commande auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="287"/>
+        <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Numéro interne auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="288"/>
+        <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Fournisseur auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="289"/>
+        <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Quantité auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="290"/>
+        <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Unité auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="291"/>
+        <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Bloc auxiliaire 3</source>
         <translation type="unfinished">Зовнішній блок 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="292"/>
+        <location filename="../sources/qetinformation.cpp" line="308"/>
         <source>Description textuelle auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="293"/>
+        <location filename="../sources/qetinformation.cpp" line="309"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="294"/>
+        <location filename="../sources/qetinformation.cpp" line="310"/>
         <source>Fabricant auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="295"/>
+        <location filename="../sources/qetinformation.cpp" line="311"/>
         <source>Numéro de commande auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="296"/>
+        <location filename="../sources/qetinformation.cpp" line="312"/>
         <source>Numéro interne auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="297"/>
+        <location filename="../sources/qetinformation.cpp" line="313"/>
         <source>Fournisseur auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="298"/>
+        <location filename="../sources/qetinformation.cpp" line="314"/>
         <source>Quantité auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="299"/>
+        <location filename="../sources/qetinformation.cpp" line="315"/>
         <source>Unité auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="300"/>
+        <location filename="../sources/qetinformation.cpp" line="316"/>
         <source>Bloc auxiliaire 4</source>
         <translation type="unfinished">Зовнішній блок 4</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="301"/>
+        <location filename="../sources/qetinformation.cpp" line="317"/>
         <source>Description textuelle auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="302"/>
+        <location filename="../sources/qetinformation.cpp" line="318"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="303"/>
+        <location filename="../sources/qetinformation.cpp" line="319"/>
         <source>Fabricant auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="304"/>
+        <location filename="../sources/qetinformation.cpp" line="320"/>
         <source>Numéro de commande auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="305"/>
+        <location filename="../sources/qetinformation.cpp" line="321"/>
         <source>Numéro interne auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="306"/>
+        <location filename="../sources/qetinformation.cpp" line="322"/>
         <source>Fournisseur auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="307"/>
+        <location filename="../sources/qetinformation.cpp" line="323"/>
         <source>Quantité auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="308"/>
+        <location filename="../sources/qetinformation.cpp" line="324"/>
         <source>Unité auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="258"/>
+        <location filename="../sources/qetinformation.cpp" line="325"/>
+        <source>Type PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="326"/>
+        <source>Adresse PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="327"/>
+        <source>Fonction PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="328"/>
+        <source>Commentaire PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="329"/>
+        <source>Réf. croisée PLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
         <translation>Текстотий опис</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="259"/>
+        <location filename="../sources/qetinformation.cpp" line="242"/>
+        <source>Modèle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="243"/>
+        <source>Catégorie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="244"/>
+        <source>Tension nominale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="245"/>
+        <source>Courant nominal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="246"/>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
         <translation>Номер позиції</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="260"/>
+        <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
         <translation>Виробник</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="261"/>
+        <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
         <translation>Номер замовлення</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="262"/>
+        <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
         <translation>Внутрішній номер</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="263"/>
+        <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
         <translation>Постачальник</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="264"/>
+        <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
         <translation>Кількість</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="265"/>
+        <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
         <translation>Одиниця виміру</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="268"/>
+        <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
         <translation>Напруга / протокол</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="269"/>
+        <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
         <translation>Колір провідника</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="270"/>
+        <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
         <translation>Переріз провідника</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="272"/>
+        <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
         <translation>Формула тексту</translation>
     </message>
@@ -9616,15 +11440,20 @@ Voulez-vous la remplacer ?</source>
         <translation>видалити %1</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="74"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Редагувати перехресне посилання</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="37"/>
+        <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>
         <source>Pivoter la selection</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>
+        <source>Pivoter le groupe</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="60"/>
@@ -9648,7 +11477,7 @@ Voulez-vous la remplacer ?</source>
         <translation>Вибір напрямку виділеного тексту</translation>
     </message>
     <message>
-        <location filename="../sources/utils/conductorcreator.cpp" line="49"/>
+        <location filename="../sources/utils/conductorcreator.cpp" line="51"/>
         <source>Création de conducteurs</source>
         <translation>Створення провідників</translation>
     </message>
@@ -9734,8 +11563,67 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.cpp" line="140"/>
+        <location filename="../sources/ui/terminalnumberingdialog.cpp" line="220"/>
         <source>Automatic terminal numbering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partplctable.h" line="46"/>
+        <source>table PLC</source>
+        <comment>element part name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/adddiagramcommand.cpp" line="36"/>
+        <source>Ajouter un folio</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished">Додати аркуш</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/movediagramcommand.cpp" line="39"/>
+        <source>Déplacer un folio</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/removediagramcommand.cpp" line="35"/>
+        <source>Supprimer un folio</source>
+        <comment>undo command text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="172"/>
+        <source>Sélectionner un fichier PDF...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="174"/>
+        <source>Fichiers PDF (*.pdf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="188"/>
+        <source>Impossible de charger le fichier PDF.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="199"/>
+        <source>Le fichier PDF ne contient aucune page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="222"/>
+        <source>Impossible de déterminer la taille de la page PDF.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="234"/>
+        <source>Impossible de rendre la page PDF.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/promoteshapecommand.cpp" line="26"/>
+        <source>Transformer %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9757,26 +11645,26 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="116"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="117"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Кількість інформації виходить за рамки допустимого відображення в таблицях.
 Будь ласка, додайте нову, або підправте існуючі таблиці, щоб інформація відображаласть повністю.</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="119"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="120"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Кількість інформації виходить за рамки допустимого відображення в таблиці.
 Будь ласка, додайте нову, або підправте існуючу таблицю, щоб інформація відображаласть повністю.</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="122"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="123"/>
         <source>Limitation de tableau</source>
         <translation>Обмеження таблиці</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="967"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="968"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Змінити геометрію області таблиці</translation>
     </message>
@@ -9784,52 +11672,344 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="58"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="71"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1067"/>
         <source>Ajouter un point</source>
         <translation>Додати точку</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="61"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="74"/>
         <source>Supprimer ce point</source>
         <translation>Видалити цю точку</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="667"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="866"/>
+        <source>Déformer une courbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1071"/>
+        <source>Nœud le plus proche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1072"/>
+        <source>Lisse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1073"/>
+        <source>Symétrique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1074"/>
+        <source>Anguleux</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1093"/>
+        <source>Supprimer le nœud le plus proche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1110"/>
+        <source>Convertir en polyligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1110"/>
+        <source>Convertir en courbe de Bézier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1123"/>
+        <source>Miroir horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1125"/>
+        <source>Miroir vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1200"/>
+        <source>Taille</source>
+        <translation type="unfinished">Розмір</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1201"/>
+        <source>Coins arrondis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1202"/>
+        <source>Édition des nœuds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1203"/>
+        <source>Rotation/Inclinaison</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1221"/>
+        <source>Cliquer : mode %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1301"/>
+        <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1304"/>
+        <source> ; point turquoise : arc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1308"/>
+        <source>Glisser une extrémité : la déplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1312"/>
+        <source>Glisser un point : le déplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1317"/>
+        <source>Glisser le point violet : arrondir les coins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1321"/>
+        <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1332"/>
+        <source>une extrémité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1333"/>
+        <source>un coin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1334"/>
+        <source>un point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1335"/>
+        <source>Glisser %1 : rotation (Maj = 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1337"/>
+        <source> ; un bord : inclinaison</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1338"/>
+        <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1350"/>
+        <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1351"/>
+        <source> — Cliquer : mode %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1381"/>
+        <source>Glisser : déplacer ce point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1382"/>
+        <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1384"/>
+        <source>, Alt = détacher en polyligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1389"/>
+        <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1391"/>
+        <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1393"/>
+        <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1395"/>
+        <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1397"/>
+        <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1400"/>
+        <source>Glisser : déplacer le point (Ctrl = position libre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1402"/>
+        <source>, Alt = créer des poignées</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1408"/>
+        <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1715"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Додати точку до багатокутника</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="701"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1749"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Видалити точку з багатокутника</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="834"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1917"/>
+        <source>Ajouter un point à une courbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1946"/>
+        <source>Supprimer un point d&apos;une courbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2037"/>
+        <source>Convertir %1 en courbe de Bézier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2038"/>
+        <source>Convertir %1 en polyligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2225"/>
+        <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2240"/>
+        <source>Miroir horizontal de %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2240"/>
+        <source>Miroir vertical de %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2313"/>
+        <source>Modifier le type d&apos;un nœud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2755"/>
+        <source>Redimensionner %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2762"/>
+        <source>Faire pivoter %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2772"/>
+        <source>Incliner %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2778"/>
+        <source>Deplacer le centre de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2789"/>
+        <source>Arrondir les coins d&apos;%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2812"/>
+        <source>Modifier l&apos;angle d&apos;un arc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2819"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2834"/>
+        <source>Modifier la forme d&apos;%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2848"/>
+        <source>Modifier la courbure d&apos;%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2863"/>
         <source>Modifier %1</source>
         <translation>Виміряти %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3224"/>
         <source>une ligne</source>
         <translation>лінія</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3225"/>
         <source>un rectangle</source>
         <translation>прямокутник</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="993"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3226"/>
         <source>une éllipse</source>
         <translation>еліпс</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="994"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3226"/>
+        <source>un arc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3227"/>
         <source>une polyligne</source>
         <translation>ламана лінія</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="995"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3228"/>
+        <source>une courbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="3229"/>
         <source>une shape</source>
         <translation>фігура</translation>
     </message>
@@ -10540,30 +12720,30 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation>Виберіть текст цього аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1116"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1125"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1126"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1146"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1154"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1173"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1183"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1237"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1118"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1119"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1128"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1129"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1149"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1157"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1176"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1186"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1240"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1247"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1243"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1250"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1277"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1278"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1286"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1287"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1330"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1331"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1339"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1340"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1362"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1363"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1371"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1372"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1253"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1280"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1281"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1289"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1290"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1333"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1334"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1342"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1343"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1365"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1366"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1374"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1375"/>
         <source> [édité]</source>
         <translation>[відредаговано]</translation>
     </message>
@@ -10747,180 +12927,305 @@ Les autres champs ne sont pas utilisés.</source>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
+        <source>Géométrie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
+        <source>Largeur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="46"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
+        <source>Hauteur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="66"/>
+        <source>Angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
+        <source> °</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="92"/>
         <source>Trait</source>
         <translation>Лінія</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="98"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
         <source>Épaisseur</source>
         <translation>Товщина</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="112"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="285"/>
         <source>Couleur</source>
         <translation>Колір</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="157"/>
         <source>Normal</source>
         <translation>Звичайний</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="162"/>
         <source>Tiret</source>
         <translation>Пунктир</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="167"/>
         <source>Pointillé</source>
         <translation>Крапками</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="172"/>
         <source>Traits et points</source>
         <translation>Тире і крапка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="177"/>
         <source>Traits points points</source>
         <translation>Тире-крапка-крапка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="182"/>
         <source>Tiret custom</source>
         <translation>Тире користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
         <source>Remplissage</source>
         <translation>Заливка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="200"/>
         <source>Aucun</source>
         <translation>Ні</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="205"/>
         <source>Plein</source>
         <translation>Суцільний</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="210"/>
         <source>Densité 1</source>
         <translation>Щільність 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="143"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="215"/>
         <source>Densité 2</source>
         <translation>Щільність 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="148"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="220"/>
         <source>Densité 3</source>
         <translation>Щільність 3</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="225"/>
         <source>Densité 4</source>
         <translation>Щільність 4</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="158"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="230"/>
         <source>Densité 5</source>
         <translation>Щільність 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="163"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="235"/>
         <source>Densité 6</source>
         <translation>Щільність 6</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="240"/>
         <source>Densité 7</source>
         <translation>Щільність 7</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="245"/>
         <source>Horizontal</source>
         <translation>Горизонтальний</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="250"/>
         <source>Vertical</source>
         <translation>Вертикальний</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="255"/>
         <source>Croix</source>
         <translation>Хрест</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="188"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="260"/>
         <source>Diagonal arrière</source>
         <translation>Зворотна діагональ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="265"/>
         <source>Diagonal avant</source>
         <translation>Пряма діагональ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="198"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="270"/>
         <source>Diagonal en croix</source>
         <translation>Діагональний хрест</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="278"/>
         <source>Style</source>
         <translation>Стиль</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="298"/>
         <source>Verrouiller la position</source>
         <translation>Закріпити положення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
-        <source>Polygone fermé</source>
-        <translation>Замкнутий багатокутник</translation>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="305"/>
+        <source>Forme fermée</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="182"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="183"/>
+        <source>Modifier la longueur d&apos;une ligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="202"/>
+        <source>Modifier la taille d&apos;une forme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="215"/>
+        <source>Modifier l&apos;angle d&apos;une forme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="236"/>
         <source>Modifier le trait d&apos;une forme</source>
         <translation>Змінити лінію фігури</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="197"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="252"/>
         <source>Modifier le remplissage d&apos;une forme</source>
         <translation>Змінити заливку фігури</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="208"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="264"/>
         <source>Fermer le polygone</source>
         <translation>Замкнути багатокутник</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="264"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="296"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="320"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="352"/>
         <source>Modifier une forme simple</source>
         <translation>Змінити просту фігуру</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="308"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="364"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
         <translation>Змінити властивості простої фігури</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="433"/>
+        <source>Longueur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
+        <source>Rayon X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
+        <source>Rayon Y</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
         <translation>Редагувати властивості примітива</translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutsConfigPage</name>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="76"/>
+        <source>Filtrer les raccourcis…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="81"/>
+        <source>Tous</source>
+        <translation type="unfinished">Все</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="82"/>
+        <source>Attribués uniquement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="83"/>
+        <source>Non attribués uniquement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="84"/>
+        <source>Conflits uniquement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
+        <source>Raccourci</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="106"/>
+        <source>Tout réinitialiser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="165"/>
+        <source>Réinitialiser ce raccourci</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="269"/>
+        <source>%n action(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="327"/>
+        <source>Ce raccourci est aussi utilisé par : %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="379"/>
+        <source>Raccourcis</source>
+        <comment>configuration page title</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -12978,74 +15283,206 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Тип: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="117"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
+        <source>Nom de la borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="90"/>
+        <source>Afficher le nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="97"/>
+        <source>Propriétés du texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="103"/>
+        <source>Police</source>
+        <translation type="unfinished">Шрифт</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="123"/>
+        <source>X :</source>
+        <translation type="unfinished">X: </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="140"/>
+        <source>Y :</source>
+        <translation type="unfinished">Y: </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="157"/>
+        <source>Rotation :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="167"/>
+        <source>°</source>
+        <translation type="unfinished">°</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="183"/>
+        <source>Alignement</source>
+        <translation type="unfinished">Вирівнювання</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="190"/>
+        <source>Couleur :</source>
+        <translation type="unfinished">Колір: </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="207"/>
+        <source>Encadrer le texte</source>
+        <translation type="unfinished">Рамка тексту</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="220"/>
+        <source>Étiquette du maître</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="229"/>
+        <source>Reprendre du maître</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="121"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="193"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="518"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="556"/>
+        <source>T%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="177"/>
         <source>Nord</source>
         <translation>Вгору</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="118"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="178"/>
         <source>Est</source>
         <translation>Направо</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="119"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="179"/>
         <source>Sud</source>
         <translation>Вниз</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="120"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="180"/>
         <source>Ouest</source>
         <translation>Наліво</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="182"/>
         <source>Générique</source>
         <translation>Загальний</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="183"/>
         <source>Bornier intérieur</source>
         <translation>Внутнішня клемна колодка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="184"/>
         <source>Bornier extérieur</source>
         <translation>Зовнішня клемна колодка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="125"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="185"/>
         <source>NO (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="126"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="186"/>
         <source>NC (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="127"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
         <source>Commun (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="146"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="216"/>
         <source>Déplacer une borne</source>
         <translation>Перемістити вивід</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="168"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="238"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
         <translation>Змінити орієнтацію вивода</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="190"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="260"/>
         <source>Modifier le nom du terminal</source>
         <translation>Змінити ім&apos;я вивода</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="209"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="279"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Змінити орієнтацію вивода</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="300"/>
+        <source>Afficher/cacher le nom du terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="315"/>
+        <source>Modifier la position du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="335"/>
+        <source>Modifier la police du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="350"/>
+        <source>Modifier la taille de police du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="364"/>
+        <source>Modifier la rotation du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="382"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="388"/>
+        <source>Modifier l&apos;alignement du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="402"/>
+        <source>Afficher/cacher le cadre du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="417"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="424"/>
+        <source>Modifier la couleur du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="512"/>
+        <source>Modifier l&apos;étiquette du maître</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="524"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="532"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="561"/>
+        <source>Modifier le nom de la borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="551"/>
+        <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -13061,33 +15498,48 @@ Les autres champs ne sont pas utilisés.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="30"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="34"/>
         <source>Priorité des axes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="36"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="40"/>
         <source>Priorité à l&apos;axe X (horizontal)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="46"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="50"/>
         <source>Priorité à l&apos;axe Y (vertical)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="56"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="60"/>
         <source>Type de numérotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="62"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="66"/>
         <source>Numérique uniquement (1, 2, 3...)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/terminalnumberingdialog.ui" line="72"/>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="76"/>
         <source>Alphanumérique (A, B, C... 1, 2...)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="101"/>
+        <source>Numéroter également les lettres</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="118"/>
+        <source>Borniers</source>
+        <translation type="unfinished">Клемні колодки</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/terminalnumberingdialog.ui" line="124"/>
+        <source>Décochez les borniers dont la numérotation doit être exclue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -13551,12 +16003,12 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Огляд клемної колодки</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="239"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="233"/>
         <source>Projet sans titre</source>
         <translation>Проєкт без імені</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="245"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="239"/>
         <source>Bornes indépendante</source>
         <translation>Незалежні виводи</translation>
     </message>
@@ -13564,71 +16016,86 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="186"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="187"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
         <translation>Змінити вміст текстового поля</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="199"/>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="214"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="200"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="215"/>
         <source>Déplacer un champ texte</source>
         <translation>Перемістити текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="228"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="229"/>
         <source>Pivoter un champ texte</source>
         <translation>Повернуть текстове поле</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="243"/>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="271"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="244"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="272"/>
         <source>Modifier la police d&apos;un texte</source>
         <translation>Змінити шрифт тексту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="287"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="288"/>
         <source>Modifier la couleur d&apos;un texte</source>
         <translation>Змінити колір тексту</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="295"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="296"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="306"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="307"/>
         <source>Y :</source>
         <translation>Y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="310"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="311"/>
         <source>Police :</source>
         <translation>Шрифт: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="315"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="316"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="321"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="322"/>
         <source>Rotation :</source>
         <translation>Поворот: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="332"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="333"/>
         <source>X :</source>
         <translation>X: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="345"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="346"/>
         <source>Entrer votre texte ici</source>
         <translation>Введіть текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="366"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="367"/>
         <source>Couleur :</source>
         <translation>Колір: </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="375"/>
+        <source>Alignement</source>
+        <translation type="unfinished">Вирівнювання</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="376"/>
+        <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="393"/>
+        <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+        <translation type="unfinished">Змінити вирівнювання текстового поля</translation>
     </message>
 </context>
 <context>
@@ -13840,30 +16307,30 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <translation>Ви можете задавати тут свої власні комбінації імені / значення для використання в штампі. Наприклад: им&apos;я &quot;volta&quot; із значенням &quot;1745&quot; буде замінять рядок %{volta} числом 1745 всередині штампа.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="332"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="350"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Редагувати шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="333"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="351"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Дублювати та редагувати цю модель</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="346"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="364"/>
         <source>Title block templates actions</source>
         <translation>Дії над шаблонами штампів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="360"/>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="524"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="378"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="542"/>
         <source>Créer un Folio Numérotation Auto</source>
         <translation>Створити автонумерацію аркушів</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="418"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="436"/>
         <source>Modèle par défaut</source>
         <translation>Шаблон по замовчуванню</translation>
     </message>
@@ -13871,13 +16338,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1720"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1796"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation> %1 : %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1722"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1798"/>
         <source> %1</source>
         <translation> %1</translation>
     </message>
@@ -14048,13 +16515,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>TitleBlockTemplateLocationChooser</name>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="106"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="105"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
         <translation>Початкова колекція</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="109"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="108"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
         <translation>Існуючий шаблон</translation>
@@ -14114,89 +16581,89 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="100"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="204"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="203"/>
         <source>Renommer</source>
         <translation>Переіменувати</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="101"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="266"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="265"/>
         <source>Type :</source>
         <translation>Тип: </translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="197"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="196"/>
         <source>Logo déjà existant</source>
         <translation>Логотип уже існує</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="203"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="202"/>
         <source>Remplacer</source>
         <translation>Замінити</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="223"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="222"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
         <translation>Логотип &quot;%1&quot; уже існує. Хочете замінити його чи ввести інше ім&apos;я для нового логотипу?</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="262"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="261"/>
         <source>Type : %1</source>
         <translation>Тип: %1</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="280"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="279"/>
         <source>Choisir une image / un logo</source>
         <translation>Виберіть зображення/логотип</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="282"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="281"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
         <translation>Векторна графіка (*.svg);;Растрова графіка (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Всі файли (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="288"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="321"/>
         <source>Erreur</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="288"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
         <translation>Неможливо відкрити вказаний файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="314"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="313"/>
         <source>Choisir un fichier pour exporter ce logo</source>
         <translation>Виберіть файл для експорта цього логотипу</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="316"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="315"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
         <translation>Всі файли (*);;Векторна графіка (*.svg);;Растрова графіка (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="321"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
         <translation>Неможливо експортувати в указаний файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="350"/>
         <source>Renommer un logo</source>
         <translation>Переіменувати логотип</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="356"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="355"/>
         <source>Vous devez saisir un nouveau nom.</source>
         <translation>Ви повинні ввести нове ім&apos;я.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="365"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="364"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
         <translation>Ім&apos;я не може бути порожнім.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="374"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="373"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation>Введене ім&apos;я уже використовується другим логотипом.</translation>
     </message>
@@ -14300,32 +16767,36 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <translation>%1 пікс</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="782"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="778"/>
         <source>%1px</source>
         <translation>%1 пікс</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="837"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="831"/>
         <source>Changer la largeur de l&apos;aperçu</source>
         <translation>Змінити ширину</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="838"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="832"/>
         <source>Largeur de l&apos;aperçu :</source>
         <translation>Ширина: </translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="1004"/>
-        <source>Longueur minimale : %1px
-Longueur maximale : %2px
+        <location filename="../sources/titleblock/templateview.cpp" line="1002"/>
+        <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
-        <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation>Мінімальна довжина: %1 пікс
-Максимальна довжина: %2 пікс
-</translation>
+        <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="1011"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="1008"/>
+        <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+        <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templateview.cpp" line="1016"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
@@ -14333,7 +16804,21 @@ Longueur maximale : %2px
 </translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="1067"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="1024"/>
+        <source>Longueur maximale : %1px
+</source>
+        <comment>tooltip showing the maximum width of the edited template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templateview.cpp" line="1031"/>
+        <source>Longueur non contrainte.
+</source>
+        <comment>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templateview.cpp" line="1088"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
         <translation>Загальна ширина: %1 пікс</translation>
@@ -14352,6 +16837,72 @@ Longueur maximale : %2px
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation>Штампи проєкту &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>WiringListDialog</name>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="39"/>
+        <source>Liste de câblage</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="65"/>
+        <source>Fil</source>
+        <comment>column title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="66"/>
+        <source>Composant 1</source>
+        <comment>column title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="67"/>
+        <source>Borne 1</source>
+        <comment>column title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="68"/>
+        <source>Composant 2</source>
+        <comment>column title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="69"/>
+        <source>Borne 2</source>
+        <comment>column title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="70"/>
+        <source>Folio</source>
+        <comment>column title</comment>
+        <translation type="unfinished">Аркуш</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="91"/>
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="98"/>
+        <source>%n conducteur(s) listé(s).</source>
+        <comment>wiring list summary</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/wiringlistdialog.cpp" line="93"/>
+        <source>%n conducteur(s) exclu(s) : une extrémité n&apos;est rattachée à aucun élément.</source>
+        <comment>wiring list exclusion warning</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -14495,47 +17046,57 @@ Longueur maximale : %2px
         <translation>Розташування посилання підпорядкованого</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
+        <source>Distance label - slave :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="119"/>
+        <source>Distance in pixels between the label and the slave cross reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
         <source>Afficher les numéros de bornes dans les Xrefs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="157"/>
         <source>Affiche&amp;r en contacts</source>
         <translation>По&amp;казати контакти</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="164"/>
         <source>Afficher en croix</source>
         <translation>Показати перехрестя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="177"/>
         <source>Label des références croisées</source>
         <translation>Мітка перехресного посилання</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="197"/>
         <source>Maitre</source>
         <translation>Головний</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="171"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="207"/>
         <source>%f-%l%c</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="194"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="230"/>
         <source>Esclave</source>
         <translation>Пілпорядкований</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="204"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>(%f-%l%c)</source>
         <translation>(%f-%l%c)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="249"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -14552,27 +17113,27 @@ Longueur maximale : %2px
 % LM: розташування </translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="234"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="270"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Налаштування вd&apos;ідображення перехрестя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="276"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Показати силові контакти на перехресті</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="249"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="285"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Префікс силових контактів: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="256"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="292"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Префікс контактів з затримкою: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="269"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="305"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Префікс контактів перемикання: </translation>
     </message>
@@ -14592,98 +17153,60 @@ Longueur maximale : %2px
         <translation>Перемикач / кнопка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
+        <source>Automate (PLC)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>En bas de page</source>
         <translation>Під міткою елемнта</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Sous le label de l&apos;élément</source>
         <translation>Під міткою елемента</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="109"/>
         <source>Top</source>
         <translation>Вгорі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="109"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="110"/>
         <source>Bottom</source>
         <translation>Внизу</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="110"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="111"/>
         <source>Left</source>
         <translation>Зліва</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="111"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="112"/>
         <source>Right</source>
         <translation>Зправа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="112"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="113"/>
         <source>Text alignment</source>
         <translation>Вирівнювання</translation>
     </message>
-</context>
-<context>
-    <name>diagramselection</name>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="14"/>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.ui" line="22"/>
-        <source>TextLabel</source>
-        <translation>Текстова мітка</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="30"/>
-        <source>Projet sans titre</source>
-        <translation>Проєкт без імені</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="32"/>
-        <source>Projet : </source>
-        <translation>Проєкт: </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="62"/>
-        <source>Sélection</source>
-        <translation>Вибір</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="62"/>
-        <source>Nom</source>
-        <translation>Ім&apos;я</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="72"/>
-        <source>Folio sans titre</source>
-        <translation>Аркуш без імені</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="106"/>
-        <source>Désélectionner tout</source>
-        <translation>Зняти виділення</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="107"/>
-        <source>Sélectionner tout</source>
-        <translation>Вибрати все</translation>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="114"/>
+        <source>Champ de texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="674"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="1197"/>
         <source>Exporter la base de données interne du projet</source>
         <translation>Експортувати внутрішню базу даних проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="681"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="1204"/>
         <source>sans_nom</source>
         <translation>без імені</translation>
     </message>
@@ -14691,7 +17214,7 @@ Longueur maximale : %2px
 <context>
     <name>qdesigner_internal::ColorAction</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="357"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="367"/>
         <source>Text Color</source>
         <translation>Колір тексту</translation>
     </message>
@@ -14699,7 +17222,7 @@ Longueur maximale : %2px
 <context>
     <name>qdesigner_internal::HtmlTextEdit</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="299"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="309"/>
         <source>Insert HTML entity</source>
         <translation>Вставка HTML об&apos;єкту</translation>
     </message>
@@ -14707,27 +17230,27 @@ Longueur maximale : %2px
 <context>
     <name>qdesigner_internal::RichTextEditorDialog</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="775"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="823"/>
         <source>Edit text</source>
         <translation>Редагувати текст</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="798"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="846"/>
         <source>Rich Text</source>
         <translation>Форматований текст</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="799"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="847"/>
         <source>Source</source>
         <translation>Джерело</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="805"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="852"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="807"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="854"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Відміна</translation>
     </message>
@@ -14735,62 +17258,69 @@ Longueur maximale : %2px
 <context>
     <name>qdesigner_internal::RichTextEditorToolBar</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="463"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="518"/>
         <source>Texte en gras</source>
         <translation>Товстий</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="469"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="519"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="525"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="531"/>
+        <source>Éditeur de texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="524"/>
         <source>Texte en italique</source>
         <translation>Курсив</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="475"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="530"/>
         <source>Texte souligé</source>
         <translation>Підкреслений</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="488"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="543"/>
         <source>Left Align</source>
         <translation>По лівому краю</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="493"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="548"/>
         <source>Center</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="498"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="553"/>
         <source>Right Align</source>
         <translation>По правому краю</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="503"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="558"/>
         <source>Justify</source>
         <translation>По ширині</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="515"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="571"/>
         <source>Superscript</source>
         <translation>Надрядковий</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="521"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="577"/>
         <source>Subscript</source>
         <translation>Підрядковий</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="530"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="586"/>
         <source>Insérer un lien</source>
         <translation>Вставка посилання</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="534"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="590"/>
         <source>Insert &amp;Image</source>
         <translation>Вставка &amp;зображення</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="550"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="605"/>
         <source>Simplify Rich Text</source>
         <translation>Спростити форматований текст</translation>
     </message>

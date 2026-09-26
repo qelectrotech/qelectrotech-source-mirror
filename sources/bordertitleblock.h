@@ -73,6 +73,8 @@ class BorderTitleBlock : public QObject
 			return(rows_count_ * rows_height_); }
 		/// @return la rows header width, in pixels
 		qreal rowsHeaderWidth() const { return(rows_header_width_); }
+		/// @return the edge where title block is docked
+		Qt::Edge titleBlockEdge() const { return(m_edge); }
 	
 		// border - title block = diagram
 		/**
@@ -157,6 +159,7 @@ class BorderTitleBlock : public QObject
 		void setDiagramHeight(const qreal &);
 		
 		DiagramPosition convertPosition(const QPointF &);
+		QRectF cellRect(const QString &cell) const;
 		
 		// methods to set title block basic data
 		void setFolio(const QString &folio);

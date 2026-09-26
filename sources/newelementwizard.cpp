@@ -19,6 +19,7 @@
 
 #include "ElementsCollection/elementcollectionitem.h"
 #include "ElementsCollection/elementscollectionmodel.h"
+#include "ElementsCollection/elementstreeview.h"
 #include "NameList/ui/namelistwidget.h"
 #include "editor/ui/qetelementeditor.h"
 #include "qetmessagebox.h"
@@ -85,7 +86,7 @@ QWizardPage *NewElementWizard::buildStep1()
 	page -> setSubTitle(tr("Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 
-	m_tree_view = new QTreeView(this);
+	m_tree_view = new ElementsTreeView(this);
 
 	m_model = new ElementsCollectionModel(m_tree_view);
 	m_model->hideElement();
@@ -251,4 +252,10 @@ void NewElementWizard::createNewElement()
 	loc_.addToPath(m_chosen_file);
 	edit_new_element -> setLocation(loc_);
 	edit_new_element -> show();
+		// Without this, the just-closed wizard can leave the main window
+		// as the active/key window (bugtracker #281, reported on macOS):
+		// the new editor is created and shown, but stays behind the main
+		// window and doesn't surface in the Dock/Windows menu.
+	edit_new_element -> raise();
+	edit_new_element -> activateWindow();
 }

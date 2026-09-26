@@ -36,6 +36,7 @@
 #include <QHash>
 #include <QModelIndex>
 #include <QStandardItem>
+#include <QTimer>
 #include <QUndoCommand>
 
 static int src_txt_row   = 0;
@@ -130,7 +131,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 {
 	QList <QStandardItem *> qsi_list;
 	
-	if(m_texts_list.keys().contains(deti))
+	if(m_texts_list.contains(deti))
 		return qsi_list;
 
 	QStandardItem *qsi = new QStandardItem(deti->toPlainText());
@@ -250,8 +251,10 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 	QStandardItem *color = new QStandardItem(tr("Couleur"));
 	color->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
+	// Shown as a swatch next to the value, not as the text color: black
+	// text (the default) is unreadable on a dark palette.
 	QStandardItem *colora = new QStandardItem;
-	colora->setData(deti->color(), Qt::ForegroundRole);
+	colora->setData(deti->color(), Qt::DecorationRole);
 	colora->setData(deti->color(), Qt::EditRole);
 	colora->setData(DynamicElementTextModel::color, Qt::UserRole+1);
 	colora->setFlags(Qt::ItemIsSelectable
@@ -718,7 +721,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(
 */
 void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 {
-	if(m_groups_list.keys().contains(group))
+	if(m_groups_list.contains(group))
 		return;
 	
 		//Group
@@ -869,7 +872,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 */
 void DynamicElementTextModel::removeGroup(ElementTextItemGroup *group)
 {
-	if(m_groups_list.keys().contains(group))
+	if(m_groups_list.contains(group))
 	{
 		QModelIndex group_index = m_groups_list.value(group)->index();
 		this->removeRow(group_index.row(), group_index.parent());
@@ -896,7 +899,7 @@ void DynamicElementTextModel::removeTextFromGroup(DynamicElementTextItem *deti,
 {
 	Q_UNUSED(group)
 	
-	if(m_texts_list.keys().contains(deti))
+	if(m_texts_list.contains(deti))
 	{
 		QStandardItem *text_item = m_texts_list.value(deti);
 		QModelIndex text_index = indexFromItem(text_item);
@@ -961,7 +964,7 @@ ElementTextItemGroup *DynamicElementTextModel::groupFromItem(
 QModelIndex DynamicElementTextModel::indexFromGroup(
 		ElementTextItemGroup *group) const
 {
-	if(m_groups_list.keys().contains(group))
+	if(m_groups_list.contains(group))
 		return m_groups_list.value(group)->index();
 	else
 		return QModelIndex();
@@ -1371,7 +1374,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 {
 	if(set)
 	{
-		if(m_hash_text_connect.keys().contains(deti))
+		if(m_hash_text_connect.contains(deti))
 			return;
 		
 		QList<QMetaObject::Connection> connection_list;
@@ -1390,7 +1393,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 	}
 	else
 	{
-		if(!m_hash_text_connect.keys().contains(deti))
+		if(!m_hash_text_connect.contains(deti))
 			return;
 		
 		for (const QMetaObject::Connection& con : m_hash_text_connect.value(deti))
@@ -1412,7 +1415,7 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 {
 	if(set)
 	{
-		if(m_hash_group_connect.keys().contains(group))
+		if(m_hash_group_connect.contains(group))
 			return;
 		
 		QList<QMetaObject::Connection> connection_list;
@@ -1429,7 +1432,7 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 	}
 	else
 	{
-		if(!m_hash_group_connect.keys().contains(group))
+		if(!m_hash_group_connect.contains(group))
 			return;
 		
 		for (const QMetaObject::Connection& con : m_hash_group_connect.value(group))
@@ -1499,7 +1502,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 		case color:
 		{
 			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::EditRole);
-			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::ForegroundRole);
+			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::DecorationRole);
 			break;
 		}
 		case pos:
@@ -1595,6 +1598,15 @@ DynamicTextItemDelegate::DynamicTextItemDelegate(QObject *parent) :
 	QStyledItemDelegate(parent)
 {}
 
+void DynamicTextItemDelegate::commitAndCloseDeferred(QWidget *editor) const
+{
+	auto *self = const_cast<DynamicTextItemDelegate *>(this);
+	QTimer::singleShot(0, self, [self, editor]() {
+		emit self->commitData(editor);
+		emit self->closeEditor(editor);
+	});
+}
+
 QWidget *DynamicTextItemDelegate::createEditor(
 		QWidget *parent,
 		const QStyleOptionViewItem &option,
@@ -1682,13 +1694,43 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				w->setProperty("ok", ok);
 			}
 			w->setObjectName("font_dialog");
+			commitAndCloseDeferred(w);
 			return w;
 		}
 		case DynamicElementTextModel::color:
 		{
-			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>(), parent);
-			cd->setObjectName("color_dialog");
-			return cd;
+				/* Like the font case above: run the dialog synchronously via
+				 * its static convenience function and stash the result on a
+				 * plain placeholder widget, rather than handing back the
+				 * QColorDialog itself as the item view's "editor".
+				 *
+				 * The item view's own Enter/Escape handling (the base
+				 * QStyledItemDelegate::eventFilter(), since "color_dialog"
+				 * isn't one of the objectNames special-cased in this
+				 * delegate's own eventFilter() above) treats whatever
+				 * createEditor() returned as a small inline editor it
+				 * commits and destroys directly on a key press. A QColorDialog
+				 * is not that: on Windows it can hand off to the native
+				 * color picker, whose own accept/close path then races the
+				 * view's -- pressing Enter fired both, one tearing down an
+				 * object the other was still using (case #323 on the bug
+				 * tracker: "QObject::installEventFilter(): Cannot filter
+				 * events for objects in a different thread" immediately
+				 * followed by a segfault; clicking the dialog's own OK
+				 * button with the mouse didn't reach the view's key
+				 * handling, so it didn't crash). Resolving the dialog
+				 * before returning removes the second, competing teardown
+				 * path entirely. */
+			QColor color = QColorDialog::getColor(index.data(Qt::EditRole).value<QColor>(), parent);
+			QWidget *w = new QWidget(parent);
+			if (color.isValid())
+			{
+				w->setProperty("color", color);
+				w->setProperty("ok", true);
+			}
+			w->setObjectName("color_dialog");
+			commitAndCloseDeferred(w);
+			return w;
 		}
 		case DynamicElementTextModel::pos:
 		{
@@ -1788,15 +1830,15 @@ void DynamicTextItemDelegate::setModelData(
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					QColorDialog *cd = static_cast<QColorDialog *> (editor);
-					if (cd->result() == QDialog::Accepted)
+					if (editor->property("ok").toBool() == true)
 					{
-						qsi->setData(cd->selectedColor(), Qt::EditRole);
-						qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
+						QColor color = editor->property("color").value<QColor>();
+						qsi->setData(color, Qt::EditRole);
+						qsi->setData(color, Qt::DecorationRole);
 					}
 					return;
 				}
-				
+
 			}
 		}
 		else if (editor->objectName() == "info_text")

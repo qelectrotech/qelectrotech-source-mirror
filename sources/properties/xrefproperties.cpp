@@ -30,12 +30,14 @@ XRefProperties::XRefProperties()
 {
 	m_show_power_ctc = true;
 	m_show_terminal_name = true;
+	m_show_all_configured_slaves = false;
 	m_display = Cross;
 	m_snap_to = Bottom;
 	m_prefix_keys << "power" << "delay" << "switch";
 	m_master_label = "%f-%l%c";
 	m_slave_label = "(%f-%l%c)";
 	m_offset = 0;
+	m_slave_offset = 0;
 	m_xref_pos = Qt::AlignBottom;
 }
 
@@ -50,12 +52,15 @@ void XRefProperties::toSettings(QSettings &settings,
 {
 	settings.setValue(prefix % "showpowerctc", m_show_power_ctc);
 	settings.setValue(prefix % "showterminalname", m_show_terminal_name);
+	settings.setValue(prefix % "showallconfiguredslaves", m_show_all_configured_slaves);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix % "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	settings.setValue(prefix % "snapto", snap);
 	int offset = m_offset;
 	settings.setValue(prefix % "offset", offset);
+	int slave_offset = m_slave_offset;
+	settings.setValue(prefix % "slave_offset", slave_offset);
 	QString master_label = m_master_label;
 	settings.setValue(prefix % "master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -81,16 +86,18 @@ void XRefProperties::fromSettings(const QSettings &settings,
 {
 	m_show_power_ctc = settings.value(prefix % "showpowerctc", true).toBool();
 	m_show_terminal_name = settings.value(prefix % "showterminalname", true).toBool();
+	m_show_all_configured_slaves = settings.value(prefix % "showallconfiguredslaves", false).toBool();
 	QString display = settings.value(prefix % "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix % "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	m_offset = settings.value(prefix % "offset", "0").toInt();
+	m_slave_offset = settings.value(prefix % "slave_offset", "0").toInt();
 	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos").toString()).toStdString().data()));
+	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos", "AlignBottom").toString()).toStdString().data()));
 
 	for (QString key : m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key % "prefix").toString());
@@ -111,6 +118,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	xml_element.setAttribute("showterminalname", m_show_terminal_name? "true" : "false");
+	xml_element.setAttribute("showallconfiguredslaves", m_show_all_configured_slaves? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -123,6 +131,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 
 	int offset = m_offset;
 	xml_element.setAttribute("offset", QString::number(offset));
+	xml_element.setAttribute("slave_offset", QString::number(m_slave_offset));
 	QString master_label = m_master_label;
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -142,6 +151,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	m_show_terminal_name = xml_element.attribute("showterminalname", "true") == "true";
+	m_show_all_configured_slaves = xml_element.attribute("showallconfiguredslaves", "false") == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
@@ -157,6 +167,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 		m_xref_pos = Qt::AlignBottom;
 
 	m_offset = xml_element.attribute("offset", "0").toInt();
+	m_slave_offset = xml_element.attribute("slave_offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
 	foreach (QString key, m_prefix_keys) {
@@ -176,7 +187,7 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 {
 	QHash <QString, XRefProperties> hash;
 	QStringList keys;
-	keys << "coil" << "protection" << "commutator";
+	keys << "coil" << "protection" << "commutator" << "plc";
 
 	QSettings settings;
 
@@ -194,11 +205,13 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc
 			&& m_show_terminal_name == xrp.m_show_terminal_name
+			&& m_show_all_configured_slaves == xrp.m_show_all_configured_slaves
 			&& m_display     == xrp.m_display
 			&& m_snap_to     == xrp.m_snap_to
 			&& m_prefix      == xrp.m_prefix
 			&& m_master_label== xrp.m_master_label
 			&& m_offset      == xrp.m_offset
+			&& m_slave_offset== xrp.m_slave_offset
 			&& m_xref_pos    == xrp.m_xref_pos
 			&& m_slave_label == xrp.m_slave_label);
 }

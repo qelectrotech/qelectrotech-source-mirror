@@ -54,6 +54,10 @@ FolioAutonumberingW::~FolioAutonumberingW()
 */
 void FolioAutonumberingW::setContext(QList <QString> autonums)
 {
+		// Replace the list rather than append to it: this is called again
+		// whenever the project's numberings change (import, for instance),
+		// and appending gave a second copy of every name.
+	ui->m_autonums_cb->clear();
 	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
 }
 

@@ -451,16 +451,8 @@ void GraphicsTablePropertiesEditor::setUpEditConnection()
 		m_edit_connection << connect(ui->m_table_left_margin,    QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(ui->m_table_right_margin,   QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(ui->m_table_bottom_margin,  QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-		m_edit_connection << connect(m_table_button_group,       QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
-		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.15 or later")
-#endif
 		m_edit_connection << connect(m_table_button_group,       QOverload<int>::of(&QButtonGroup::idClicked), this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::idClicked), this, &GraphicsTablePropertiesEditor::apply);
-#endif
 		m_edit_connection << connect(ui->m_display_n_row_sb,     QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(ui->m_display_n_row_sb,     QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::updateInfoLabel);
 	}

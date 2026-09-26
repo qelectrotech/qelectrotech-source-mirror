@@ -62,7 +62,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../../qelectrotech.qrc">
+             <iconset theme="arrow-right" resource="../../../../qelectrotech.qrc">
               <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
             </property>
             <property name="flat">
@@ -104,7 +104,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../../qelectrotech.qrc">
+             <iconset theme="zoom-fit-best" resource="../../../../qelectrotech.qrc">
               <normaloff>:/ico/22x22/zoom-fit-best.png</normaloff>:/ico/22x22/zoom-fit-best.png</iconset>
             </property>
            </widget>
@@ -179,7 +179,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../../qelectrotech.qrc">
+             <iconset theme="arrow-left" resource="../../../../qelectrotech.qrc">
               <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
             </property>
             <property name="flat">
@@ -203,7 +203,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../../qelectrotech.qrc">
+             <iconset theme="all_pages" resource="../../../../qelectrotech.qrc">
               <normaloff>:/ico/22x22/all_pages.png</normaloff>:/ico/22x22/all_pages.png</iconset>
             </property>
            </widget>

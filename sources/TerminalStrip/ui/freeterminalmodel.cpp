@@ -182,7 +182,7 @@ bool FreeTerminalModel::setData(const QModelIndex &index, const QVariant &value,
 		modified_ = true;
 		modified_cell = FUNCTION_CELL;
 	}
-	else if (column_ == LED_CELL)
+	else if (column_ == LED_CELL && mrtd.led_ != value.toBool())
 	{
 		mrtd.led_ = value.toBool();
 		modified_ = true;

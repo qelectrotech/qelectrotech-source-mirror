@@ -80,7 +80,7 @@ void TitleBlockTemplateLocationSaver::setLocation(const TitleBlockTemplateLocati
 void TitleBlockTemplateLocationSaver::init()
 {
 	new_name_ = new QLineEdit();
-	connect(templates_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateNewName()));
+	connect(templates_, qOverload<int>(&QComboBox::currentIndexChanged), this, &TitleBlockTemplateLocationSaver::updateNewName);
 	form_layout_ -> addRow(tr("ou nouveau nom", "used in save as form"), new_name_);
 	updateTemplates();
 }

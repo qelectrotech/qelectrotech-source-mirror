@@ -44,9 +44,9 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 
 	m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
 
-	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
-	connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));
-	connect(projectAutoNumConfigPage,SIGNAL(loadSavedTbp()),newDiagramPage,SLOT(loadSavedTbp()));
+	connect(projectAutoNumConfigPage, qOverload<QString>(&ProjectAutoNumConfigPage::setAutoNum), newDiagramPage, &NewDiagramPage::setFolioAutonum);
+	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::saveCurrentTbp, newDiagramPage, &NewDiagramPage::saveCurrentTbp);
+	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::loadSavedTbp, newDiagramPage, &NewDiagramPage::loadSavedTbp);
 }
 
 /**
@@ -63,7 +63,13 @@ ProjectPropertiesDialog::~ProjectPropertiesDialog ()
 */
 void ProjectPropertiesDialog::exec()
 {
-	m_properties_dialog->setWindowModality(Qt::WindowModal);
+	// ApplicationModal (not WindowModal) so no other window — including other
+	// MDI subwindows — can dispatch events while the dialog holds raw
+	// QETProject* pointers in its config pages.  WindowModal only blocks the
+	// parent ProjectView; the rest of the MDI area stays live, which allowed
+	// new_project / close_project to replace the project under the dialog
+	// and cause a SIGSEGV.  See issue #527.
+	m_properties_dialog->setWindowModality(Qt::ApplicationModal);
 	m_properties_dialog -> exec();
 }
 

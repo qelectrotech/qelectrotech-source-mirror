@@ -1,0 +1,44 @@
+<definition version="0.100.0" type="element" link_type="master" width="40" height="60" hotspot_x="17" hotspot_y="32">
+    <uuid uuid="{6d3714f6-a0e1-71b3-e4bd-5a35d4cbbec1}"/>
+    <names>
+        <name lang="ar">ملف KA  بمحتفظ مغناطيسي</name>
+        <name lang="ca">Bobina</name>
+        <name lang="cs">Bistabilní remanentní relé</name>
+        <name lang="de">Remanenzrelais</name>
+        <name lang="el">Πηνίο με μανδάλωση</name>
+        <name lang="en">Coil</name>
+        <name lang="es">Bobina KA de remanencia</name>
+        <name lang="fr">Bobine KA à rémanence</name>
+        <name lang="hu">Tekercs</name>
+        <name lang="it">Bobina</name>
+        <name lang="nl">spoel remanent</name>
+        <name lang="nl_BE">Spoel KA remanent</name>
+        <name lang="pl">Cewka przekaźnika remanencyjnego</name>
+        <name lang="pt_BR">Bobina</name>
+        <name lang="ru">Обмотка</name>
+        <name lang="zh">剩磁保持线圈</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">plc</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="14" y="-8" width="6" height="16" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="0" y1="-20" x2="0" y2="-8" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text x="2" y="11.33" z="5" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{647e33ed-520b-4d80-bbc4-7b31177b8f26}" font="Liberation Sans,4,-1,5,25,0,0,0,0,0,Regular">
+            <text>A2</text>
+        </dynamic_text>
+        <dynamic_text x="2" y="-24.67" z="6" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{fb1f8de9-70c0-4801-8dc7-12e6bf88d8f5}" font="Liberation Sans,4,-1,5,25,0,0,0,0,0,Regular">
+            <text>A1</text>
+        </dynamic_text>
+        <line x1="0" y1="8" x2="0" y2="20" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text x="30" y="-9.17" z="8" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{b7fccfc3-05f1-459c-9766-f49a481bd0ff}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-14" y1="-8" x2="14" y2="-8" x3="20" y3="8" x4="-14" y4="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal uuid="{6a87c921-6f5d-4f5c-8673-228a6d13c5c8}" name="A2" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{2904e5fa-6bbe-4127-acdd-f92feadd6ece}" name="A1" x="0" y="-20" orientation="n" type="Generic"/>
+    </description>
+</definition>

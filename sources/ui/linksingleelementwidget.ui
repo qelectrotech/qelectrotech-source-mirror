@@ -21,7 +21,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
+   <item row="4" column="0" colspan="3">
     <widget class="QTreeWidget" name="m_tree_widget">
      <property name="indentation">
       <number>5</number>
@@ -57,30 +57,20 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
+   <item row="3" column="0" colspan="3">
     <widget class="QLineEdit" name="m_search_field">
      <property name="placeholderText">
       <string>Recherche</string>
      </property>
     </widget>
    </item>
-
-   <item row="4" column="0" colspan="3">
-    <widget class="QLabel" name="m_hidden_masters_label">
+   <item row="2" column="0" colspan="3">
+    <widget class="QCheckBox" name="m_hide_full_masters_cb">
      <property name="text">
-      <string>Remarque : les éléments maîtres ayant atteint leur nombre maximal d'esclaves sont masqués.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <property name="font">
-      <font>
-       <italic>true</italic>
-      </font>
+      <string>Masquer les éléments maîtres pleins</string>
      </property>
     </widget>
    </item>
-
   </layout>
  </widget>
  <resources/>

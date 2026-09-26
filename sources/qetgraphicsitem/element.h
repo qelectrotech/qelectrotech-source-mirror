@@ -35,6 +35,7 @@ class Terminal;
 class Conductor;
 class DynamicElementTextItem;
 class ElementTextItemGroup;
+class QUndoCommand;
 
 /**
 	This is the base class for electrical elements.
@@ -62,12 +63,27 @@ class Element : public QetGraphicsItem
             Thumbnail = 64,
             ConductorDefinition = 128};
 
+		/**
+		 * @brief The LinkInfo struct
+		 * Stores link data for element connections.
+		 * For slave elements, group_index indicates which contact group
+		 * of the master this slave is assigned to (-1 = no group assigned).
+		 */
+		struct LinkInfo {
+			QUuid uuid;
+			int group_index = -1;  ///< Index into master's slaveContactGroups, -1 = not assigned
+
+			LinkInfo() = default;
+			LinkInfo(const QUuid &u, int gi = -1) : uuid(u), group_index(gi) {}
+		};
+
 		Element(const ElementsLocation &location,
 			QGraphicsItem * = nullptr,
 			int *state = nullptr,
 			Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
+		bool definitionGeometryMatches(const QDomElement &definition) const;
 		Element(const Element &);
 
 		// attributes
@@ -104,6 +120,11 @@ class Element : public QetGraphicsItem
 		QList<Conductor *> conductors() const;
 		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
 
+		void clearPendingLinks() {
+			tmp_uuids_link.clear();
+			m_group_index_map.clear();
+		}
+
 			//METHODS related to information
 		DiagramContext elementInformations()const
 		{return m_data.m_informations;}
@@ -128,7 +149,7 @@ class Element : public QetGraphicsItem
 		{return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
-		void setUpFormula(bool code_letter = true);
+		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
@@ -138,6 +159,13 @@ class Element : public QetGraphicsItem
 
 		QString name() const override;
 		ElementsLocation location() const;
+		/// Result of Element::reloadPicture()
+		enum class ReloadPictureResult {
+			Reloaded,          ///< drawing replaced by the current definition
+			Unavailable,       ///< definition missing or unreadable, old drawing kept
+			GeometryChanged    ///< size, hotspot or terminals changed, old drawing kept
+		};
+		ReloadPictureResult reloadPicture();
 		virtual void setHighlighted(bool);
 		void displayHelpLine(bool b = true);
 		QSize size() const;
@@ -179,7 +207,29 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+			/**
+				Resolve tmp_uuids_link against a caller-supplied candidate
+				list instead of a project-wide search (bugtracker #607).
+				Used right after an XML round-trip (paste, folio
+				duplication) and before the pasted/duplicated elements'
+				uuids are renewed: at that moment a copy's tmp_uuids_link
+				still holds its source's original partner uuid, which
+				still matches the not-yet-renewed uuid of that partner's
+				own copy if it was carried along in the same batch.
+				Resolving only within @p candidates -- not the whole
+				project -- is what stops a linked pair pasted together
+				from matching an original element left elsewhere that
+				happens to still carry that same soon-to-be-replaced
+				uuid. If only one half of a linked group is in
+				@p candidates, its entry finds no match and is dropped,
+				same as initLink(QETProject *) leaving an unresolvable
+				link unlinked.
+			*/
+		void initLink(const QList<Element *> &candidates);
 		QList<Element *> linkedElements ();
+
+		int groupIndexForElement(Element *elmt) const;
+		void setGroupIndexForElement(Element *elmt, int index);
 
 		/**
 		 * @brief linkType
@@ -224,11 +274,13 @@ class Element : public QetGraphicsItem
 				QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	protected:
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
-		QList <QUuid>     tmp_uuids_link;
+		QList <LinkInfo>  tmp_uuids_link;
+		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;
 
@@ -238,11 +290,18 @@ class Element : public QetGraphicsItem
 		bool m_freeze_label = false;
 		QString m_F_str;
 
-		ElementsLocation m_location;
-		QList <Terminal *> m_terminals;
-		const QPicture m_picture;
-		const QPicture m_low_zoom_picture;
-		ElementData m_data;
+	ElementsLocation m_location;
+	QList <Terminal *> m_terminals;
+	QPicture m_picture;
+	QPicture m_low_zoom_picture;
+	ElementData m_data;
+	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
+
+	void drawPlcTable(QPainter *painter);
+
+	public:
+		/// Positions where the PLC IO table is drawn (from the .elmt file).
+		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
 
 	private:
 		bool m_must_highlight = false;

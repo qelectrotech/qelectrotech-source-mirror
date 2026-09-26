@@ -55,43 +55,6 @@ void MachineInfo::send_info_to_debug()
 		<< QLibraryInfo::isDebugBuild();
 	qInfo()<< "Qt library version:"
 		<< QLibraryInfo::version();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	qInfo()<< "Qt library location default prefix:"
-		<< QLibraryInfo::location(QLibraryInfo::PrefixPath);
-	qInfo()<< "Qt library location documentation:"
-		<< QLibraryInfo::location(QLibraryInfo::DocumentationPath);
-	qInfo()<< "Qt library location headers:"
-		<< QLibraryInfo::location(QLibraryInfo::HeadersPath);
-	qInfo()<< "Qt library location libraries:"
-		<< QLibraryInfo::location(QLibraryInfo::LibrariesPath);
-	qInfo()<< "Qt library location executables:"
-		<< QLibraryInfo::location(QLibraryInfo::LibraryExecutablesPath);
-	qInfo()<< "Qt library location Qt binaries:"
-		<< QLibraryInfo::location(QLibraryInfo::BinariesPath);
-	qInfo()<< "Qt library location Qt plugins:"
-		<< QLibraryInfo::location(QLibraryInfo::PluginsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::ImportsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath);
-	qInfo()<< "Qt library location dependent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::ArchDataPath);
-	qInfo()<< "Qt library location independent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::DataPath);
-	qInfo()<< "Qt library location translation:"
-		<< QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-	qInfo()<< "Qt library location examples:"
-		<< QLibraryInfo::location(QLibraryInfo::ExamplesPath);
-	qInfo()<< "Qt library location Qt testcases:"
-		<< QLibraryInfo::location(QLibraryInfo::TestsPath);
-#ifndef Q_OS_WIN
-	qInfo()<< "Qt library location Qt settings:"
-		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
-#endif
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	qInfo()<< "Qt library path default prefix:"
 		<< QLibraryInfo::path(QLibraryInfo::PrefixPath);
 	qInfo()<< "Qt library path documentation:"
@@ -124,7 +87,6 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "Qt library path Qt settings:"
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
-#endif
 	if (strlen(GIT_COMMIT_SHA)) {
 		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	}
@@ -150,11 +112,17 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 	
 	qInfo()<< " OS System language:"<< QLocale::system().name();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeTerritoryName();
+#else
 	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeCountryName();
+#endif
 	qInfo()<< " OS System Native Language Name:"<< QLocale::system().nativeLanguageName();	
 	qInfo()<< "";
 	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());
 	qInfo()<< " language Path:"<< QString(QETApp::languagesPath().toLatin1());
+	qInfo()<< " Loaded QET translation:"<< QETApp::loadedQetTranslationFile();
+	qInfo()<< " Loaded Qt translation:"<< QETApp::loadedQtTranslationFile();
 	qInfo()<< " Common Elements Dir:"<< QString(QETApp::commonElementsDir().toLatin1());
 	qInfo()<< " Common TitleBlock Templates Dir:"<< QString(QETApp::commonTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " Custom Elements Dir:"<< QString(QETApp::customElementsDir().toLatin1());
@@ -188,10 +156,8 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it1(QETApp::commonElementsDir().toLatin1(),nameFilters,  QDir::Files, QDirIterator::Subdirectories);
 			while (it1.hasNext())
 			{
-				if(it1.next() > 0 )
-				{
+				it1.next();
 				commomElementsDir ++;
-				}
 			}
 	qInfo()<< " Common Elements count:"<< commomElementsDir << "Elements";
 	
@@ -200,10 +166,8 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it2(QETApp::customElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it2.hasNext())
 			{
-				if(it2.next() > 0 )
-				{
+				it2.next();
 				customElementsDir ++;
-				}
 			}
 	qInfo()<< " Custom Elements count:"<< customElementsDir << "Elements";
 	
@@ -211,10 +175,8 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it3.hasNext())
 			{
-				if(it3.next() > 0 )
-				{
+				it3.next();
 				companyElementsDir ++;
-				}
 			}
 	qInfo()<< " Company Elements count:"<< companyElementsDir << "Elements";
 	

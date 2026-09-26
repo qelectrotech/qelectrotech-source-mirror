@@ -112,7 +112,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 	else {
 		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
 			NumPartEditorW *part= new NumPartEditorW(m_context, i, m_edited_type, this);
-			connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
+			connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
 			num_part_list_ << part;
 			ui -> editor_layout -> addWidget(part);
 		}
@@ -145,7 +145,7 @@ void SelectAutonumW::on_add_button_clicked()
 {
 	applyEnable(false);
 	NumPartEditorW *part = new NumPartEditorW(m_edited_type, this);
-	connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
+	connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
 	num_part_list_ << part;
 	ui -> editor_layout -> addWidget(part);
 	ui -> remove_button -> setEnabled(true);
@@ -160,7 +160,7 @@ void SelectAutonumW::on_remove_button_clicked()
 	//remove if @num_part_list contains more than one item
 	if (num_part_list_.size() > 1) {
 		NumPartEditorW *part = num_part_list_.takeLast();
-		disconnect(part, SIGNAL(changed()), this, SLOT(applyEnable()));
+		// deliberately not disconnecting as not possible to resolve with lambda and will happen automatically when the object "part" is destroyed.
 		delete part;
 		if (num_part_list_.size() == 1) {
 			ui -> remove_button -> setDisabled(true);

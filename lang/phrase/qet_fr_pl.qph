@@ -1,0 +1,218 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="pl">
+<phrase>
+    <source>armoire</source>
+    <target>Szafa</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>Cewka</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>Zacisk</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>Listwa zaciskowa</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>Kabel</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>Prąd znamionowy</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>Tabliczka rysunkowa</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>champ de texte</source>
+    <target>Pole tekstowe</target>
+    <definition>text field</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>Biblioteka</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>Przewód</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>Styk</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>Stycznik</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>Prąd</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>Wyłącznik nadprądowy</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>Folder</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>Element</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>Element podrzędny</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fil</source>
+    <target>Przewód</target>
+    <definition>wire</definition>
+</phrase>
+<phrase>
+    <source>folio</source>
+    <target>Arkusz</target>
+    <definition>sheet - one drawing of a set</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>Bezpiecznik</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>Siatka</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>Wyłącznik</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>Element główny</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>Szablon</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>Silnik</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>Neutralny</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>Zestawienie materiałów</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>Numeracja</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>Faza</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>Potencjał</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>Projekt</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>puissance</source>
+    <target>Moc</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>Przekaźnik</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>Odnośnik do arkusza</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>Oznaczenie</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>Odnośnik do arkusza</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>Schemat</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>Przekrój</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>Spis treści</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>Napięcie</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>Uziemienie</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>Tekst</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>Transformator</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

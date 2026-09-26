@@ -1,8 +1,10 @@
 {
   "id": "org.qelectrotech.QElectroTech",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-25.08",
+  "runtime-version": "6.11",
   "sdk": "org.kde.Sdk",
+  "base": "io.qt.qtwebengine.BaseApp",
+  "base-version": "6.11",
   "command": "qelectrotech",
   "rename-desktop-file": "org.qelectrotech.qelectrotech.desktop",
   "rename-appdata-file": "qelectrotech.appdata.xml",
@@ -25,12 +27,26 @@
       "*.la",
       "*.a"
   ],
+  "cleanup-commands": [
+    "/app/cleanup-BaseApp.sh"
+  ],
   "modules": [
     "tkinter.json",
     "pypi-dependencies.json",
     {
       "name": "qelectrotech",
-      "buildsystem": "qmake",
+      "buildsystem": "cmake",
+      "config-opts": [
+        "-DCMAKE_INSTALL_PREFIX=/app",
+        "-DQT_VERSION_MAJOR=6",
+        "-DBUILD_WITH_KF=ON",
+        "-DBUILD_KF=OFF",
+        "-DPACKAGE_TESTS=OFF",
+        "-DBUILD_PUGIXML=ON",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+        "-DFETCHCONTENT_SOURCE_DIR_PUGIXML=/run/build/qelectrotech/pugixml",
+        "-DQET_EXPORT_PROJECT_DB=ON"
+      ],
       "post-install": [
         "mv ${FLATPAK_DEST}/share/mime/packages/qelectrotech.xml ${FLATPAK_DEST}/share/mime/packages/org.qelectrotech.QElectroTech.xml"
       ],
@@ -38,12 +54,6 @@
         {
           "type": "dir",
           "path": "../.."
-        },
-        {
-          "type": "patch",
-          "paths": [
-            "patches/fix-the-installation-paths.patch"
-          ]
         }
       ]
     }

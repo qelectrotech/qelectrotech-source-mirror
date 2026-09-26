@@ -32,6 +32,31 @@ namespace QETUtils
 	QMargins marginsFromString(const QString &string);
 	qreal graphicsHandlerSize(QGraphicsItem *item);
     void pixelSizedFont (QFont &font);
+    QString fontToString (const QFont &font);
+    bool fontFromString (QFont &font, const QString &description);
+
+	/**
+		RAII counting window for the font descriptions fontFromString()
+		salvages or fails to read: construction opens a fresh window, the
+		destructor restores the enclosing one. Windows nest strictly LIFO,
+		which covers project loads re-entered through the event loop
+		(DialogWaiting pumps it while the folios are built).
+	*/
+	class FontRestorationScope
+	{
+		public:
+			FontRestorationScope();
+			~FontRestorationScope();
+			FontRestorationScope(const FontRestorationScope &) = delete;
+			FontRestorationScope &operator=(const FontRestorationScope &) = delete;
+
+			int salvaged() const;
+			int unreadable() const;
+
+		private:
+			int m_outer_salvaged;
+			int m_outer_unreadable;
+	};
 
 	bool sortBeginIntString(const QString &str_a, const QString &str_b);
 

@@ -279,6 +279,12 @@ private:
 
 };
 
+/**
+	@brief The MirrorElementsCommand class
+	Mirror the selected parts horizontally (left <-> right) across the
+	vertical line through the center of the selection, so the selection
+	keeps its place in the scene.
+*/
 class MirrorElementsCommand : public ElementEditionCommand
 {
 public:
@@ -288,8 +294,15 @@ public:
 private:
 	ElementScene *m_scene =nullptr;
 	QList<QGraphicsItem*> m_items;
+	qreal m_axis_x = 0;
 };
 
+/**
+	@brief The FlipElementsCommand class
+	Flip the selected parts vertically (top <-> bottom) across the
+	horizontal line through the center of the selection, so the selection
+	keeps its place in the scene.
+*/
 class FlipElementsCommand : public ElementEditionCommand
 {
 public:
@@ -299,6 +312,7 @@ public:
 private:
 	ElementScene *m_scene =nullptr;
 	QList<QGraphicsItem*> m_items;
+	qreal m_axis_y = 0;
 };
 
 #endif

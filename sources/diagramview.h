@@ -22,8 +22,9 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
-#include <QGraphicsView>
+#include "palettegraphicsview.h"
 
+class CellRuler;
 class Conductor;
 class Diagram;
 class QETDiagramEditor;
@@ -35,7 +36,7 @@ class QGestureEvent;
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
 */
-class DiagramView : public QGraphicsView
+class DiagramView : public PaletteGraphicsView
 {
 	Q_OBJECT
 	
@@ -55,13 +56,20 @@ class DiagramView : public QGraphicsView
 		QAction			 *m_multi_paste = nullptr;
 		QAction          *m_create_template = nullptr;
 		QPoint            m_paste_here_pos;
+		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
 		QList<QAction *>  m_separators;
 		QPolygonF m_free_rubberband;
 		bool m_free_rubberbanding = false;
-		
+		CellRuler *m_top_ruler = nullptr;
+		CellRuler *m_side_ruler = nullptr;
+		bool m_cell_rulers_shown = false;
+		/// Last viewport transform the rulers were painted for
+		QTransform m_rulers_transform;
+		bool m_cell_lines_shown = false;
+
 		
 	public:
 		QString title() const;
@@ -71,7 +79,15 @@ class DiagramView : public QGraphicsView
 		void editSelection();
 		void setEventInterface (DVEventInterface *event_interface);
 		QList<QAction *> contextMenuActions() const;
-	
+		/// Last mouse position seen by mouseMoveEvent(), in viewport
+		/// coordinates -- (-1, -1) if the mouse hasn't moved over this
+		/// view yet. Filled from ordinary Qt mouse events, not a global
+		/// cursor query (QCursor::pos()/setPos() are silently ignored by
+		/// several window managers and compositors, Wayland included).
+		QPoint lastMousePos() const { return m_last_mouse_pos; }
+		void setCellRulersShown(bool shown);
+		void setCellLinesShown(bool shown);
+
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
 		void contextMenuEvent(QContextMenuEvent *) override;
@@ -80,7 +96,13 @@ class DiagramView : public QGraphicsView
 		void keyPressEvent(QKeyEvent *) override;
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
+		bool focusNextPrevChild(bool next) override;
+		///Set for one call only, by the Escape handler, to let focus leave the view.
+		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
+		bool viewportEvent(QEvent *event) override;
+		void drawBackground(QPainter *painter, const QRectF &rect) override;
+		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
@@ -102,6 +124,14 @@ class DiagramView : public QGraphicsView
 		QRectF viewedSceneRect() const;
 		bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 		bool gestures() const;
+		void updateCellRulers();
+		void placeCellRulers();
+
+		/// Lowest and highest allowed value of the view transform scale (m11).
+		/// Prevents wheel-zoom from driving the transform to overflow, which
+		/// crashes the editor (see GitHub issue #798, same class of bug).
+		static constexpr qreal m_min_zoom = 0.01;
+		static constexpr qreal m_max_zoom = 200.0;
 
 	signals:
 			/// Signal emitted after the selection mode changed
@@ -123,10 +153,12 @@ class DiagramView : public QGraphicsView
 		void zoomFit();
 		void zoomContent();
 		void zoomReset();
+		void zoomToRect(const QRectF &rect);
 		void cut();
 		void copy();
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
 		void pasteHere();
+		void duplicate(const QPoint &stepOffset);
 		void adjustSceneRect();
 		void updateWindowTitle();
 		void resetConductors();

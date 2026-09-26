@@ -145,20 +145,20 @@ void TitleBlockTemplateCellWidget::initWidgets()
 	setLayout(cell_editor_layout_);
 	
 	// trigger the logo manager
-	connect(add_logo_input_, SIGNAL(released()), this, SIGNAL(logoEditionRequested()));
+	connect(add_logo_input_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::logoEditionRequested);
 	
 	// handle cell modifications
-	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(updateFormType(int)));
-	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(editType()));
-	connect(name_input_,        SIGNAL(editingFinished()),        this, SLOT(editName()));
-	connect(label_checkbox_,    SIGNAL(clicked(bool)),            this, SLOT(editLabelDisplayed()));
-	connect(label_edit_,        SIGNAL(released()),               this, SLOT(editLabel()));
-	connect(value_edit_,        SIGNAL(released()),               this, SLOT(editValue()));
-	connect(horiz_align_input_, SIGNAL(activated(int)),           this, SLOT(editAlignment()));
-	connect(vert_align_input_,  SIGNAL(activated(int)),           this, SLOT(editAlignment()));
-	connect(font_size_input_,   SIGNAL(valueChanged(int)),        this, SLOT(editFontSize()));
-	connect(font_adjust_input_, SIGNAL(clicked(bool)),            this, SLOT(editAdjust()));
-	connect(logo_input_,        SIGNAL(activated(int)),           this, SLOT(editLogo()));
+	connect(cell_type_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::updateFormType);
+	connect(cell_type_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editType);
+	connect(name_input_, &QLineEdit::editingFinished, this, &TitleBlockTemplateCellWidget::editName);
+	connect(label_checkbox_, &QCheckBox::clicked, this, &TitleBlockTemplateCellWidget::editLabelDisplayed);
+	connect(label_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editLabel);
+	connect(value_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editValue);
+	connect(horiz_align_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editAlignment);
+	connect(vert_align_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editAlignment);
+	connect(font_size_input_, qOverload<int>(&QSpinBox::valueChanged), this, &TitleBlockTemplateCellWidget::editFontSize);
+	connect(font_adjust_input_, &QCheckBox::clicked, this, &TitleBlockTemplateCellWidget::editAdjust);
+	connect(logo_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editLogo);
 	
 	updateFormType(TitleBlockCell::TextCell);
 }
