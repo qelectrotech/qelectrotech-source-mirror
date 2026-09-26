@@ -45,6 +45,7 @@ class ShortcutBarSettings
 		static QStringList ids(Context context);
 		static QStringList defaultIds(Context context);
 		static void setIds(Context context, const QStringList &ids);
+		static QStringList availableIds();
 };
 
 #endif // SHORTCUTBARSETTINGS_H

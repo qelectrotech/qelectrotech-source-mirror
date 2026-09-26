@@ -17,6 +17,8 @@
 */
 #include "shortcutbarsettings.h"
 
+#include "shortcutmanager.h"
+
 #include <QCoreApplication>
 #include <QSettings>
 
@@ -119,4 +121,22 @@ void ShortcutBarSettings::setIds(Context context, const QStringList &ids)
 	} else {
 		settings.setValue(settingsKey(context), ids);
 	}
+}
+
+/**
+	@return every command that can go on the bar: those the diagram editor
+	registered with ShortcutManager, except the one that opens the bar.
+*/
+QStringList ShortcutBarSettings::availableIds()
+{
+	QStringList ids;
+	for (const ShortcutManager::ShortcutInfo &info :
+	     ShortcutManager::instance().allShortcuts())
+	{
+		if (info.id.startsWith(QLatin1String("diagrameditor."))
+		    && info.id != QLatin1String("diagrameditor.show_shortcut_bar")) {
+			ids << info.id;
+		}
+	}
+	return ids;
 }

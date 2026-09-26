@@ -3168,14 +3168,7 @@ void QETDiagramEditor::showShortcutBar()
 					  : ShortcutBarSettings::Selection;
 	}
 
-	QList<QAction *> commands;
-	for (const QString &id : ShortcutBarSettings::ids(context)) {
-		if (QAction *action = ShortcutManager::instance().action(id, this)) {
-			commands << action;
-		}
-	}
-
-	elementPicker()->popUpAt(QCursor::pos(), commands);
+	elementPicker()->popUpShortcutBar(QCursor::pos(), context);
 }
 
 /**

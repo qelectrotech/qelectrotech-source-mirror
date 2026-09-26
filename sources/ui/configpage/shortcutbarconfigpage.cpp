@@ -29,16 +29,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-namespace {
-	/// The bar can hold any diagram editor command, except the one that
-	/// opens it.
-bool offerable(const QString &id)
-{
-	return id.startsWith(QLatin1String("diagrameditor."))
-		&& id != QLatin1String("diagrameditor.show_shortcut_bar");
-}
-}
-
 /**
 	@brief ShortcutBarConfigPage::ShortcutBarConfigPage
 	@param parent
@@ -46,9 +36,10 @@ bool offerable(const QString &id)
 ShortcutBarConfigPage::ShortcutBarConfigPage(QWidget *parent) :
 	ConfigPage(parent)
 {
+	const QStringList available = ShortcutBarSettings::availableIds();
 	for (const ShortcutManager::ShortcutInfo &info :
 	     ShortcutManager::instance().allShortcuts()) {
-		if (offerable(info.id)) {
+		if (available.contains(info.id)) {
 			m_descriptions.insert(info.id, info.description);
 		}
 	}
