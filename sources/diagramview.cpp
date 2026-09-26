@@ -38,6 +38,10 @@
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
+#include "diagramcontexttoolbar.h"
+#include "diagramgestureoverlay.h"
+#include "shortcutbarsettings.h"
+#include "shortcutmanager.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
@@ -104,6 +108,14 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		m_separators << new QAction(this);
 		m_separators.last()->setSeparator(true);
 	}
+
+	m_context_toolbar = new DiagramContextToolbar(viewport());
+	m_gesture_overlay = new DiagramGestureOverlay(viewport());
+	connect(m_diagram, &QGraphicsScene::selectionChanged, this, [this]() {
+		if (m_diagram->selectedItems().isEmpty()) {
+			m_context_toolbar->hide();
+		}
+	});
 
 	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
@@ -234,14 +246,72 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 	QPointF drop_pos;
 	drop_pos = mapToScene(event->position().toPoint());
 
+	startElementPlacement(location, drop_pos);
+}
+
+/**
+	@brief DiagramView::startElementPlacement
+	Enter the interactive placement mode for @a location, with the pending
+	element starting at @a scene_pos.
+
+	This is the mode where the element follows the cursor on the grid, a left
+	click drops a copy, Space rotates it and the element stays loaded so a run
+	of identical symbols can be placed with successive clicks.
+
+	Split out of handleElementDrop() so that placement is reachable without a
+	drag: the mode itself was always general, it simply had no caller other
+	than the end of a drop.
+	@param location : the element or macro to place
+	@param scene_pos : where the pending element first appears, in scene
+	coordinates
+	@return true if the placement mode was entered
+*/
+bool DiagramView::startElementPlacement(const ElementsLocation &location,
+					const QPointF &scene_pos)
+{
+	if (!diagram() || !(location.isElement() && location.exist())) {
+		return false;
+	}
+	if (diagram()->isReadOnly()) {
+		return false;
+	}
+
 	if (location.path().endsWith(".qetmak")) {
-		diagram()->setEventInterface(new DiagramEventAddMacro(location, diagram(), drop_pos));
+		diagram()->setEventInterface(
+			new DiagramEventAddMacro(location, diagram(), scene_pos));
 	} else {
-		diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), drop_pos));
+			//DiagramEventAddElement takes a non-const reference, so it needs
+			//an lvalue it may modify. Copying keeps the caller's location
+			//untouched -- QETDiagramEditor stores the same one for
+			//"insert last element".
+		ElementsLocation loc(location);
+		diagram()->setEventInterface(
+			new DiagramEventAddElement(loc, diagram(), scene_pos));
+		emit elementPlacementStarted(location);
 	}
 
 	//Set focus to the view to get event
 	this->setFocus();
+	return true;
+}
+
+/**
+	@brief DiagramView::defaultPlacementPos
+	@return where a pending element should appear when placement was not
+	started by a drop, so there is no cursor position to use.
+
+	The cursor is used when it is over the view -- picking up a placement where
+	the user is already looking -- and the centre of the visible area
+	otherwise.
+*/
+QPointF DiagramView::defaultPlacementPos() const
+{
+	const QPoint local = mapFromGlobal(QCursor::pos());
+	if (viewport() && viewport()->rect().contains(local)) {
+		return mapToScene(local);
+	}
+	return mapToScene(viewport() ? viewport()->rect().center()
+				     : rect().center());
 }
 
 /**
@@ -565,6 +635,50 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
+	if (e->button() == Qt::LeftButton) {
+		m_press_pos = e->position().toPoint();
+	}
+
+		//Right button: a click opens the context menu on release, a drag is
+		//a gesture (DiagramGestureOverlay). Left alone while a text is edited.
+	m_swallow_native_menu = false;
+	m_gesture_over_tool = false;
+	if (e->button() == Qt::RightButton
+	    && DiagramGestureOverlay::isEnabled()
+	    && !m_diagram->focusItem())
+	{
+		m_gesture_tracking = true;
+		m_gesture_origin = e->position().toPoint();
+		m_context_toolbar->hide();
+
+			//A tool is running, often one a gesture just started. A right
+			//click still goes to it -- it cancels or finishes the tool -- so
+			//the press carries on to the scene. A drag ends the tool and
+			//shows the ring (see mouseMoveEvent).
+		if (m_diagram->eventInterfaceIsRunning()) {
+			m_gesture_over_tool = true;
+		}
+		else
+		{
+			m_swallow_native_menu = true;
+
+				//Select what is under the mouse, as the context menu does, so
+				//a gesture acts on it
+			if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+				if (!item->isSelected()) {
+					m_diagram->clearSelection();
+						//Clearing the selection can delete handler items, so
+						//look the item up again (see contextMenuEvent)
+					if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+						again->setSelected(true);
+					}
+				}
+			}
+			e->accept();
+			return;
+		}
+	}
+
 		//Start drag view when hold the middle button
 	if (e->button() == Qt::MiddleButton)
 	{
@@ -615,6 +729,31 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	m_last_mouse_pos = e->pos();
 	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
+
+	if (m_gesture_tracking)
+	{
+		const QPoint pos = e->position().toPoint();
+		if (!m_gesture_overlay->isVisible()
+		    && (pos - m_gesture_origin).manhattanLength() > 2 * QApplication::startDragDistance()) {
+			if (m_gesture_over_tool) {
+					//The drag is a gesture: end the tool, and ignore the
+					//platform's right-click menu like any other gesture
+				m_diagram->clearEventInterface();
+				m_swallow_native_menu = true;
+			}
+			m_gesture_overlay->showAt(m_gesture_origin, selectionCommands());
+		}
+		if (m_gesture_overlay->isVisible()) {
+			m_gesture_overlay->setPointer(pos);
+			e->accept();
+			return;
+		}
+			//Not a drag yet: a running tool keeps following the mouse
+		if (!m_gesture_over_tool) {
+			e->accept();
+			return;
+		}
+	}
 
 		// Drag the view
 	if (e->buttons() == Qt::MiddleButton)
@@ -677,6 +816,40 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
+		//A plain right click on a running tool falls through: the tool
+		//handles it, as it always has
+	if (m_gesture_tracking && e->button() == Qt::RightButton
+	    && !(m_gesture_over_tool && !m_gesture_overlay->isVisible()))
+	{
+		m_gesture_tracking = false;
+		const QPoint pos = e->position().toPoint();
+		if (m_gesture_overlay->isVisible())
+		{
+				//A gesture: run the command it points at, if any
+			QAction *action = m_gesture_overlay->actionAt(pos);
+			m_gesture_overlay->hide();
+			if (action) {
+				action->trigger();
+			}
+		}
+		else
+		{
+				//A plain right click: the context menu, opened here on
+				//release on every platform
+			QContextMenuEvent menu_event(QContextMenuEvent::Mouse, pos,
+						     e->globalPosition().toPoint(),
+						     e->modifiers());
+			m_menu_from_gesture = true;
+			contextMenuEvent(&menu_event);
+			m_menu_from_gesture = false;
+		}
+		e->accept();
+		return;
+	}
+	if (e->button() == Qt::RightButton) {
+		m_gesture_tracking = false;
+	}
+
 		// Stop drag view
 	if (e->button() == Qt::MiddleButton)
 	{
@@ -721,7 +894,60 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		e->accept();
 	}
 	else
+	{
 		QGraphicsView::mouseReleaseEvent(e);
+
+			//A click, not a drag: moving items or a rubber band selection
+			//should not be followed by a toolbar under the mouse.
+		const QPoint pos = e->position().toPoint();
+		if (e->button() == Qt::LeftButton
+		    && (pos - m_press_pos).manhattanLength() < QApplication::startDragDistance()) {
+			showContextToolbar(pos);
+		}
+	}
+}
+
+/**
+	@brief DiagramView::selectionCommands
+	@return the shortcut bar's commands for the current selection, as this
+	window's actions
+*/
+QList<QAction *> DiagramView::selectionCommands() const
+{
+	QList<QAction *> actions;
+	QETDiagramEditor *qde = diagramEditor();
+	if (!qde) {
+		return actions;
+	}
+	const auto context = ShortcutBarSettings::contextFor(m_diagram->selectedItems());
+	for (const QString &id : ShortcutBarSettings::ids(context)) {
+		if (QAction *action = ShortcutManager::instance().action(id, qde)) {
+			actions << action;
+		}
+	}
+	return actions;
+}
+
+/**
+	@brief DiagramView::showContextToolbar
+	After a click that leaves something selected, show the shortcut bar's
+	commands for that selection beside the cursor. Not while placing or
+	drawing, nor on a read-only folio, nor when switched off in the
+	configuration.
+	@param viewport_pos : where the click was
+*/
+void DiagramView::showContextToolbar(const QPoint &viewport_pos)
+{
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	QETDiagramEditor *qde = diagramEditor();
+	if (selection.isEmpty() || !qde
+	    || m_diagram->isReadOnly() || m_diagram->eventInterfaceIsRunning()
+	    || !DiagramContextToolbar::isEnabled()) {
+		m_context_toolbar->hide();
+		return;
+	}
+
+	m_context_toolbar->showAt(viewport_pos, selectionCommands());
 }
 
 /**
@@ -854,6 +1080,18 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 				focusNextChild();
 			}
 			return;
+		case Qt::Key_Return:
+		case Qt::Key_Enter:
+				//Repeat the last drawing or placing command, as SolidWorks
+				//does. Not while a tool is running or a text has the focus:
+				//both use Enter themselves.
+			if (e->modifiers() == Qt::NoModifier
+			    && !m_diagram->eventInterfaceIsRunning()
+			    && !m_diagram->focusItem()
+			    && diagramEditor()->repeatLastCommand()) {
+				return;
+			}
+			break;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;
@@ -1559,6 +1797,14 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 		//is one. The keyboard then gets the folio's menu, which is what a
 		//right-click gets.
 	const bool from_keyboard = e->reason() == QContextMenuEvent::Keyboard;
+
+		//With gestures on, a right press is tracked by mousePressEvent and
+		//the menu opened on release; the platform's own event (sent on press
+		//on X11, on release on Windows) would open it a second time.
+	if (!from_keyboard && m_swallow_native_menu && !m_menu_from_gesture) {
+		e->accept();
+		return;
+	}
 
 	if (from_keyboard)
 	{

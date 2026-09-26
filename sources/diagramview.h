@@ -27,6 +27,8 @@
 class CellRuler;
 class Conductor;
 class Diagram;
+class DiagramContextToolbar;
+class DiagramGestureOverlay;
 class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
@@ -56,6 +58,18 @@ class DiagramView : public PaletteGraphicsView
 		QAction			 *m_multi_paste = nullptr;
 		QAction          *m_create_template = nullptr;
 		QPoint            m_paste_here_pos;
+		QPoint            m_press_pos;
+		DiagramContextToolbar *m_context_toolbar = nullptr;
+			/// Right-drag gestures: tracking since the right button went down
+		bool              m_gesture_tracking = false;
+			/// The platform's own right-click menu event is to be ignored:
+			/// the view opens the menu itself on release
+		bool              m_swallow_native_menu = false;
+		bool              m_menu_from_gesture = false;
+			/// The right press went to a running tool; a drag ends the tool
+		bool              m_gesture_over_tool = false;
+		QPoint            m_gesture_origin;
+		DiagramGestureOverlay *m_gesture_overlay = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
@@ -85,6 +99,10 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+	
+		bool startElementPlacement(const ElementsLocation &location,
+					   const QPointF &scene_pos);
+		QPointF defaultPlacementPos() const;
 		void setCellRulersShown(bool shown);
 		void setCellLinesShown(bool shown);
 
@@ -126,6 +144,8 @@ class DiagramView : public PaletteGraphicsView
 		bool gestures() const;
 		void updateCellRulers();
 		void placeCellRulers();
+		void showContextToolbar(const QPoint &viewport_pos);
+		QList<QAction *> selectionCommands() const;
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which
@@ -145,6 +165,9 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when free rubberband changed.
 			/// When free rubberband selection ends this signal will be emitted with null value.
 		void freeRubberBandChanged(QPolygonF polygon);
+			/// Signal emitted when the placement mode is entered for an
+			/// element (not a macro), whether from a drop or not.
+		void elementPlacementStarted(const ElementsLocation &);
 	
 	public slots:
 		void setVisualisationMode();

@@ -285,6 +285,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/recentfiles.h
   ${QET_DIR}/sources/shortcutmanager.cpp
   ${QET_DIR}/sources/shortcutmanager.h
+  ${QET_DIR}/sources/shortcutbarsettings.cpp
+  ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/diagramcontexttoolbar.cpp
+  ${QET_DIR}/sources/diagramcontexttoolbar.h
+  ${QET_DIR}/sources/diagramgestureoverlay.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.h
   ${QET_DIR}/sources/commandsearchpopup.cpp
   ${QET_DIR}/sources/commandsearchpopup.h
   ${QET_DIR}/sources/titleblockcell.cpp
@@ -453,6 +459,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.h
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.h
   ${QET_DIR}/sources/ElementsCollection/elementslocation.cpp
@@ -799,6 +807,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

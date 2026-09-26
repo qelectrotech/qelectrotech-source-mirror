@@ -78,6 +78,36 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_collection_dblclick_edits">
+         <property name="toolTip">
+          <string>Par défaut, un double-clic insère l'élément sur le folio ; l'édition reste accessible par le menu contextuel.</string>
+         </property>
+         <property name="text">
+          <string>Double-cliquer dans la collection ouvre l'éditeur d'élément au lieu de l'insérer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_context_toolbar_cb">
+         <property name="toolTip">
+          <string>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s'effacent quand la souris s'éloigne.</string>
+         </property>
+         <property name="text">
+          <string>Afficher les commandes près de la sélection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_mouse_gestures_cb">
+         <property name="toolTip">
+          <string>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</string>
+         </property>
+         <property name="text">
+          <string>Gestes de la souris avec le bouton droit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Afficher les guides par défaut (appliqué au prochain lancement)</string>
