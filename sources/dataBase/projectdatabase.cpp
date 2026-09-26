@@ -34,7 +34,6 @@
 #include <QRegularExpression>
 #include <QSqlDriver>
 #include <QSqlError>
-#include <sqlite3.h>
 
 
 
@@ -205,10 +204,9 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 	@param query the SQL text to run -- must be a single read-only
 	SELECT/WITH statement, see isReadOnlySelect()
 	@param error set to a human-readable reason when the query was rejected
-	before ever reaching the database
-	@return a QSqlQuery with query as query and the internal database of
-	this class as database to use, or an unexecuted, harmless QSqlQuery if
-	the query was rejected
+	or failed
+	@return the executed query, on the internal database of this class, or
+	an empty, harmless QSqlQuery if the query was rejected or failed
 */
 QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	QString reason;
@@ -226,24 +224,24 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		return QSqlQuery(m_data_base);
 	}
 
-	// Second gate, and the one that actually enforces read-only: SQLite is
-	// asked about the statement it compiled, instead of the text being read
-	// for clues. The first gate cannot see through a CTE prefix --
-	// "WITH x AS (SELECT 1) DELETE FROM element" starts with WITH, contains
-	// no semicolon, and deletes every row. That matters beyond the
-	// custom-query box, because this path is reachable from a file: a
-	// <graphics_table>'s saved <query> is read straight out of the .qet by
-	// ProjectDBModel::fromXml() and executed by fillValue(), so opening or
-	// exporting a project someone else produced would have been enough.
-	if (!QETSql::isSingleReadOnlyStatement(sqliteHandle(&m_data_base), query, &reason)) {
+	// Second gate, and the one that actually enforces read-only: SQLite
+	// runs the statement with query_only set and refuses a write itself,
+	// instead of the text being read for clues. The first gate cannot see
+	// through a CTE prefix -- "WITH x AS (SELECT 1) DELETE FROM element"
+	// starts with WITH, contains no semicolon, and deletes every row. That
+	// matters beyond the custom-query box, because this path is reachable
+	// from a file: a <graphics_table>'s saved <query> is read straight out
+	// of the .qet by ProjectDBModel::fromXml() and executed by fillValue(),
+	// so opening or exporting a project someone else produced would have
+	// been enough.
+	QSqlQuery result = QETSql::execReadOnly(m_data_base, query, &reason);
+	if (!reason.isEmpty()) {
 		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
 		if (error) {
 			*error = reason;
 		}
-		return QSqlQuery(m_data_base);
 	}
-
-	return QSqlQuery(query, m_data_base);
+	return result;
 }
 
 /**
@@ -1299,23 +1297,6 @@ void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 			query.bindValue(bind, value);
 		}
 	}
-}
-
-/**
-	@brief projectDataBase::sqliteHandle
-	@param db
-	@return the sqlite3 handler class used internally by db
-*/
-sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
-{
-	sqlite3 *handle = nullptr;
-
-	QVariant v = db->driver()->handle();
-	if (v.isValid() && qstrcmp(v.typeName(), "sqlite3*") == 0) {
-		handle = *static_cast<sqlite3 **>(v.data());
-	}
-
-	return handle;
 }
 
 #ifdef QET_EXPORT_PROJECT_DB

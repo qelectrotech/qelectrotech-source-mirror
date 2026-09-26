@@ -169,21 +169,17 @@ set_tests_properties(tst_commandsearch PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=o
 target_include_directories(tst_commandsearch PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_commandsearch PRIVATE Qt::Test Qt::Widgets)
 
-# QETSql::isSingleReadOnlyStatement() -- read-only enforcement for every
-# project-database query, including the ones a .qet file carries. Compiles
-# sqlreadonly.cpp alone against its own in-memory SQLite, so the security
+# QETSql::execReadOnly() -- read-only enforcement for every project-database
+# query, including the ones a .qet file carries. Compiles sqlreadonly.cpp
+# alone against its own in-memory QSQLITE connection, so the security
 # property is checked without standing up a QETProject.
-find_package(SQLite3 REQUIRED)
-if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
-  add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
-endif()
 add_executable(
   tst_sqlreadonly
   tst_sqlreadonly.cpp
   ${QET_DIR}/sources/dataBase/sqlreadonly.cpp)
 add_test(NAME tst_sqlreadonly COMMAND tst_sqlreadonly)
 target_include_directories(tst_sqlreadonly PRIVATE ${QET_DIR}/sources)
-target_link_libraries(tst_sqlreadonly PRIVATE Qt::Test SQLite3::SQLite3)
+target_link_libraries(tst_sqlreadonly PRIVATE Qt::Test Qt::Sql)
 
 # QetSettings::scriptingEnabled() -- whether QElectroTech may run a script.
 # Compiles qetsettings.cpp alone: the setting is deliberately a plain
