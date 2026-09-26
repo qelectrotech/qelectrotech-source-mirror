@@ -20,6 +20,7 @@
 #include "scripting/qetscripting.h"
 #endif
 #include <QCoreApplication>
+#include <QToolButton>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -48,6 +49,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
+#include "textgrid.h"
 #include "shortcutmanager.h"
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
@@ -480,6 +482,33 @@ void QETDiagramEditor::setUpActions()
 				d->update();
 			}
 	});
+
+		//Snap step for dragged texts, as a fraction of the folio grid
+	m_text_grid_menu = new QMenu(tr("Grille des textes"), this);
+	m_text_grid_menu->setIcon(QET::Icons::Grid);
+	m_text_grid_menu->setToolTipsVisible(true);
+	m_text_grid_button = new QToolButton(this);
+	m_text_grid_button->setMenu(m_text_grid_menu);
+	m_text_grid_button->setPopupMode(QToolButton::InstantPopup);
+	m_text_grid_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_text_grid_button->setToolTip(tr("Grille d'accrochage des textes déplacés à la souris.\n"
+									  "Maintenir Ctrl pendant le déplacement pour placer librement."));
+	auto text_grid_group = new QActionGroup(this);
+	for (const qreal divisor : TextGrid::divisors)
+	{
+		QAction *action = m_text_grid_menu->addAction(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"));
+		action->setCheckable(true);
+		action->setData(divisor);
+		text_grid_group->addAction(action);
+	}
+	connect(text_grid_group, &QActionGroup::triggered, this, [](QAction *action) {
+		QSettings().setValue(TextGrid::settings_key, action->data());
+		emit QETApp::instance()->textGridChanged();
+	});
+	connect(QETApp::instance(), &QETApp::textGridChanged,
+			this, &QETDiagramEditor::updateTextGridButton);
+	updateTextGridButton();
 
 	// Draw or not the custom guides
 	m_draw_guides = new QAction ( QIcon::fromTheme("guides"), tr("Afficher les guides"), this);
@@ -956,6 +985,7 @@ void QETDiagramEditor::setUpToolBar()
 	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addAction(m_draw_grid);
+	view_tool_bar -> addWidget(m_text_grid_button);
 	view_tool_bar -> addAction(m_draw_guides);
 	view_tool_bar -> addWidget(m_background_color_button);
 	view_tool_bar -> addSeparator();
@@ -1115,6 +1145,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
@@ -3230,3 +3261,23 @@ void QETDiagramEditor::slot_runScript() {
 	QetScripting::runOnProject(script_path, project, currentDiagramView());
 }
 #endif
+
+/**
+	@brief QETDiagramEditor::updateTextGridButton
+	Show the current text grid on its toolbar button and check it in its menu.
+*/
+void QETDiagramEditor::updateTextGridButton()
+{
+	const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
+	for (QAction *action : m_text_grid_menu->actions())
+	{
+		if (qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
+		{
+			action->setChecked(true);
+			m_text_grid_button->setText(tr("Textes %1").arg(action->text()));
+			return;
+		}
+	}
+		//A divisor the menu does not offer, set by hand in the config file
+	m_text_grid_button->setText(tr("Textes %1").arg(TextGrid::ratioLabel(divisor)));
+}

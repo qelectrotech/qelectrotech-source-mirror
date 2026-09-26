@@ -42,6 +42,7 @@
 #include "qetinformation.h"
 #include "qetproject.h"
 #include "diagramsortkeys.h"
+#include "textgrid.h"
 #include <QTextStream>
 #include <algorithm>
 #include <climits>
@@ -2682,6 +2683,29 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	int p_x = qRound(p.x() / xGrid) * xGrid;
 	int p_y = qRound(p.y() / yGrid) * yGrid;
 	return (QPointF(p_x, p_y));
+}
+
+/**
+	@brief Diagram::snapToTextGrid
+	Return the nearest point of p on the text grid, see TextGrid.
+	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	@param p point to find the nearest snapped point
+	@return
+*/
+QPointF Diagram::snapToTextGrid(const QPointF &p)
+{
+	QSettings settings;
+	const qreal divisor =
+		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+			? 0
+			: settings.value(TextGrid::settings_key, 1).toReal();
+
+	return TextGrid::snap(p,
+						  settings.value(QStringLiteral("diagrameditor/Xgrid"),
+										 Diagram::xGrid).toInt(),
+						  settings.value(QStringLiteral("diagrameditor/Ygrid"),
+										 Diagram::yGrid).toInt(),
+						  divisor);
 }
 
 
