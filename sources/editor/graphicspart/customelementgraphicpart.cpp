@@ -507,6 +507,9 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	if (color != color_map.end()) { css_like_styles += color.value(); }
 
 	qde.setAttribute("style", css_like_styles);
+		//Every graphic part writes and reads its styles through this pair,
+		//so its uuid is kept here rather than in six toXml()/fromXml().
+	qde.setAttribute("uuid", m_uuid.toString());
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
 }
 
@@ -519,6 +522,13 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
+
+		//Absent from definitions written before parts carried one: keep the
+		//fresh uuid this part was built with, and the next save persists it.
+	const QUuid uuid(qde.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull()) {
+		m_uuid = uuid;
+	}
 
 		//Get the list of pair style/value
 	QStringList styles = qde.attribute("style").split(";", Qt::SkipEmptyParts);

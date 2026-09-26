@@ -75,6 +75,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		QString xmlName() const override;
 		static QString xmlTaggName() {return QString("dynamic_text");}
 		bool isUseless() const override {return false;}
+		QUuid uuid() const {return m_uuid;}
+		void setNewUuid() {m_uuid = QUuid::createUuid();}
 		QRectF sceneGeometricRect() const override {return sceneBoundingRect();}
 		void startUserTransformation(const QRectF &initial_selection_rect) override;
 		void handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) override;

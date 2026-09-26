@@ -389,6 +389,11 @@ void PartTerminal::setNewUuid()
 	d -> m_uuid = QUuid::createUuid();
 }
 
+QUuid PartTerminal::uuid() const
+{
+	return d -> m_uuid;
+}
+
 void PartTerminal::setShowName(bool show)
 {
 	if (d->m_show_name == show) return;

@@ -18,15 +18,17 @@
 #include "pastepartscommand.h"
 
 #include "../elementview.h"
+#include "../graphicspart/partdynamictextfield.h"
 #include "../graphicspart/partterminal.h"
+#include "../graphicspart/parttext.h"
 
 /**
 	@brief PastePartsCommand::PastePartsCommand
 	@param view : view where this command work
 	@param content_to_paste : content to paste
 	@param parent : parent undo command
-	@note all terminal stored in content_to_paste get a new uuid
-	in the constructor of this class to avoid have several terminal
+	@note all terminal and primitives stored in content_to_paste get a new
+	uuid in the constructor of this class to avoid have several parts
 	of an element with the same uuid.
 */
 PastePartsCommand::PastePartsCommand(
@@ -40,6 +42,20 @@ PastePartsCommand::PastePartsCommand(
 		if (qgi->type() == PartTerminal::Type) {
 			auto part_terminal = static_cast<PartTerminal*>(qgi);
 			part_terminal->setNewUuid();
+		}
+			//Same for the primitives, whose uuid would otherwise name both
+			//the original and its copy.
+		else if (qgi->type() == PartText::Type) {
+			static_cast<PartText *>(qgi)->setNewUuid();
+		}
+			//Only the definition's own identity: a placed element gives
+			//each of its dynamic texts a fresh uuid anyway (see
+			//Element::parseDynamicText()).
+		else if (qgi->type() == PartDynamicTextField::Type) {
+			static_cast<PartDynamicTextField *>(qgi)->setNewUuid();
+		}
+		else if (auto graphic_part = dynamic_cast<CustomElementGraphicPart *>(qgi)) {
+			graphic_part->setNewUuid();
 		}
 		m_pasted_content.append(qgi);
 	}

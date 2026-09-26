@@ -115,6 +115,11 @@ void PartText::flip(qreal axis_y) {
 void PartText::fromXml(const QDomElement &xml_element) {
 	bool ok;
 
+	const QUuid uuid(xml_element.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull()) {
+		m_uuid = uuid;
+	}
+
 	if (xml_element.hasAttribute("size")) {
 		int font_size = xml_element.attribute("size").toInt(&ok);
 		if (!ok || font_size < 1) {
@@ -169,6 +174,7 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("font", QETUtils::fontToString(font()));
 	xml_element.setAttribute("rotation", QString::number(rot));
 	xml_element.setAttribute("color", defaultTextColor().name());
+	xml_element.setAttribute("uuid", m_uuid.toString());
 
 		// Only written when different from the historical behaviour, so
 		// existing .elmt files round-trip byte-identical.
