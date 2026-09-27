@@ -25,6 +25,8 @@
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qtextorientationspinboxwidget.h"
 
+#include <cmath>
+
 /**
 	@brief RotateTextsCommand::hasSelectedTexts
 	@param diagram
@@ -39,6 +41,35 @@ bool RotateTextsCommand::hasSelectedTexts(Diagram *diagram)
 
 	DiagramContent dc(diagram);
 	return (!dc.selectedTexts().isEmpty() || !dc.selectedTextsGroup().isEmpty());
+}
+
+/**
+	@brief RotateTextsCommand::currentRotation
+	@param diagram
+	@return the rotation shared by every selected text and text group of
+	@p diagram, so the dialog can open at the angle they already have.
+	0 when nothing is selected or when their angles differ.
+*/
+qreal RotateTextsCommand::currentRotation(Diagram *diagram)
+{
+	if(!diagram)
+		return 0;
+
+	DiagramContent dc(diagram);
+	QList<qreal> angles;
+	for(DiagramTextItem *dti : dc.selectedTexts())
+		angles << dti->rotation();
+	for(ElementTextItemGroup *etig : dc.selectedTextsGroup())
+		angles << etig->rotation();
+
+	if(angles.isEmpty())
+		return 0;
+	for(qreal angle : angles)
+		if(qAbs(angle - angles.first()) > 0.01)
+			return 0;
+
+		//The dialog's spin box accepts -360 to 360
+	return std::fmod(angles.first(), 360);
 }
 
 /**
@@ -124,8 +155,8 @@ void RotateTextsCommand::redo()
 /**
 	@brief RotateTextsCommand::askRotation
 	Ask the user for an orientation.
-	@param rotation : set to the chosen angle when the dialog is accepted,
-	left untouched otherwise.
+	@param rotation : the angle the dialog opens at; set to the chosen
+	angle when the dialog is accepted, left untouched otherwise.
 	@return true if the user accepted, false if they cancelled.
 
 	Deliberately static and separate from the command: a QUndoCommand that
@@ -145,6 +176,7 @@ bool RotateTextsCommand::askRotation(qreal &rotation)
 	
 	QTextOrientationSpinBoxWidget *ori_widget = QETApp::createTextOrientationSpinBoxWidget();
 	ori_widget->setParent(&ori_text_dialog);
+	ori_widget->setOrientation(rotation);
 	ori_widget->spinBox()->selectAll();
 	
 	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
