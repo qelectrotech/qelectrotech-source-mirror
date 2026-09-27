@@ -390,6 +390,7 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 */
 void DiagramView::setVisualisationMode()
 {
+	m_ctrl_shift_panning = false;
 	setDragMode(ScrollHandDrag);
 	applyReadOnly();
 	setInteractive(false);
@@ -401,6 +402,7 @@ void DiagramView::setVisualisationMode()
 */
 void DiagramView::setSelectionMode()
 {
+	m_ctrl_shift_panning = false;
 	setDragMode(RubberBandDrag);
 	setInteractive(true);
 	applyReadOnly();
@@ -630,6 +632,12 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 void DiagramView::mousePressEvent(QMouseEvent *e)
 {
 	e->ignore();
+
+		//Ctrl+Shift panning whose key release was missed (see
+		//focusOutEvent()): a click without them ends it
+	if (m_ctrl_shift_panning && !isCtrlShifting(e)) {
+		setSelectionMode();
+	}
 
 	if (m_fresh_focus_in)
 	{
@@ -1029,6 +1037,23 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 	if (e -> reason() == Qt::MouseFocusReason) {
 		m_fresh_focus_in = true;
 	}
+}
+
+/**
+	@brief DiagramView::focusOutEvent
+	Leave the Ctrl+Shift panning: without the focus, the view will not see
+	Ctrl or Shift being released, which is what normally ends it. A
+	Ctrl+Shift shortcut that opens a window (Ctrl+Shift+M, the command
+	search) left the view panning, ignoring clicks on the folio, on Windows,
+	where no other key release reached the view to end it.
+	@param e
+*/
+void DiagramView::focusOutEvent(QFocusEvent *e)
+{
+	if (m_ctrl_shift_panning) {
+		setSelectionMode();
+	}
+	PaletteGraphicsView::focusOutEvent(e);
 }
 
 /**
@@ -1638,6 +1663,7 @@ bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
 	if (isCtrlShifting(e) && !selectedItemHasFocus()) {
 		if (dragMode() != QGraphicsView::ScrollHandDrag) {
 			setVisualisationMode();
+			m_ctrl_shift_panning = true;
 			return(true);
 		}
 	}
