@@ -840,6 +840,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
   ${QET_DIR}/sources/undocommand/groupitemscommand.cpp
   ${QET_DIR}/sources/undocommand/groupitemscommand.h
+  ${QET_DIR}/sources/undocommand/alignselectioncommand.cpp
+  ${QET_DIR}/sources/undocommand/alignselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp

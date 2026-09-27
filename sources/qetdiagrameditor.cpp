@@ -67,6 +67,7 @@
 #include "utils/qetsettings.h"
 #include "utils/qetutils.h"
 #include "undocommand/groupitemscommand.h"
+#include "undocommand/alignselectioncommand.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
@@ -97,6 +98,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
 	m_row_column_actions_group (this),
 	m_selection_actions_group  (this),
+	m_align_actions_group      (this),
 	m_add_item_actions_group   (this),
 	m_zoom_actions_group       (this),
 	m_select_actions_group     (this),
@@ -932,6 +934,15 @@ void QETDiagramEditor::setUpActions()
 
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
+		//Align actions. No default shortcut: they are reached from the
+		//Edit menu, the selection's context menu and the command search,
+		//and a user can bind one if they want.
+	QAction *snap_to_grid = m_align_actions_group.addAction(tr("Aligner sur la grille"));
+	ShortcutManager::instance().registerAction(snap_to_grid, "diagrameditor.snap_selection_to_grid", tr("Éditeur de schémas"), QKeySequence());
+	snap_to_grid->setStatusTip(tr("Remet les éléments, images et textes sélectionnés sur la grille", "status bar tip"));
+	snap_to_grid->setData("snap_selection_to_grid");
+	connect(&m_align_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::alignGroupTriggered);
+
 		//Select Action
 	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
 	QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
@@ -1226,6 +1237,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_selection_actions_group.actions());
+	m_align_menu = menu_edition -> addMenu(tr("Aligner"));
+	m_align_menu -> addActions(m_align_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_conductor_reset);
 	menu_edition -> addSeparator();
@@ -2085,6 +2098,45 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 	}
 }
 
+/**
+	@brief QETDiagramEditor::alignGroupTriggered
+	Run the align action @a action on the selection of the current diagram,
+	and say in the status bar what it did, including when there was nothing
+	to do or when locked items were left in place.
+	@param action
+*/
+void QETDiagramEditor::alignGroupTriggered(QAction *action)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || action->data().toString() != QLatin1String("snap_selection_to_grid"))
+		return;
+
+	Diagram *diagram = dv->diagram();
+	auto *command = new AlignSelectionCommand(diagram, AlignSelectionCommand::SnapToGrid);
+	const int locked = command->lockedCount();
+
+	QString message;
+	if (command->isValid())
+	{
+		message = tr("%n objet(s) remis sur la grille", "", command->movedCount());
+		diagram->undoStack().push(command);
+	}
+	else
+	{
+		message = tr("La sélection est déjà sur la grille");
+		delete command;
+	}
+	if (locked)
+		message += QLatin1Char(' ') + tr("(%n objet(s) verrouillé(s) laissé(s) en place)", "", locked);
+
+		//Queued, not shown at once: when the action comes from a menu or the
+		//command search, closing it queues events that would clear a message
+		//shown right now.
+	QTimer::singleShot(0, this, [this, message]() {
+		statusBar()->showMessage(message, 5000);
+	});
+}
+
 void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
@@ -2223,6 +2275,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_ungroup_selection;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
+		m_align_actions_group.setEnabled(false);
 
 		return;
 	}
@@ -2347,6 +2400,11 @@ void QETDiagramEditor::slot_updateComplexActions()
 				| DiagramContent::Shapes
 				| DiagramContent::Images);
 	m_depth_action_group->setEnabled(list.isEmpty()? false : true);
+
+		//Align actions: symbols, pictures and free texts take part
+	m_align_actions_group.setEnabled(!ro && (selected_elements_count
+									  || selected_image
+									  || dc.count(DiagramContent::TextFields)));
 }
 
 /**

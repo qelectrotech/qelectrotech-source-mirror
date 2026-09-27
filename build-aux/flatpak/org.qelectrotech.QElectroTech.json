@@ -13,7 +13,7 @@
   "finish-args": [
     "--socket=wayland",
     "--socket=fallback-x11",
-    "--device=dri",
+    "--device=all",
     "--share=ipc",
     "--share=network",
     "--socket=cups",
@@ -34,6 +34,23 @@
     "tkinter.json",
     "pypi-dependencies.json",
     {
+      "name": "hidapi",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DCMAKE_INSTALL_PREFIX=/app",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DHIDAPI_BUILD_HIDTEST=OFF",
+        "-DHIDAPI_WITH_TESTS=OFF"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libusb/hidapi.git",
+          "tag": "hidapi-0.15.0"
+        }
+      ]
+    },
+    {
       "name": "qelectrotech",
       "buildsystem": "cmake",
       "config-opts": [
@@ -45,7 +62,9 @@
         "-DBUILD_PUGIXML=ON",
         "-DFETCHCONTENT_FULLY_DISCONNECTED=ON",
         "-DFETCHCONTENT_SOURCE_DIR_PUGIXML=/run/build/qelectrotech/pugixml",
-        "-DQET_EXPORT_PROJECT_DB=ON"
+        "-DQET_EXPORT_PROJECT_DB=ON",
+        "-DQET_ENABLE_SPACEMOUSE=ON",
+        "-DQET_SPACEMOUSE_BACKEND=hid"
       ],
       "post-install": [
         "mv ${FLATPAK_DEST}/share/mime/packages/qelectrotech.xml ${FLATPAK_DEST}/share/mime/packages/org.qelectrotech.QElectroTech.xml"

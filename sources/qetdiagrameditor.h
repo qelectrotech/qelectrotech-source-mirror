@@ -122,6 +122,7 @@ class QETDiagramEditor : public QETMainWindow
 		void selectGroupTriggered    (QAction *action);
 		void addItemGroupTriggered   (QAction *action);
 		void selectionGroupTriggered (QAction *action);
+		void alignGroupTriggered     (QAction *action);
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
 		void slot_updateUndoStack();
@@ -189,10 +190,12 @@ class QETDiagramEditor : public QETMainWindow
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
 		m_selection_actions_group,  ///Action related to edit a selected item
+		m_align_actions_group,      ///Action related to align the selected items
 		*m_depth_action_group = nullptr;
 
 		QMenu
 		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
+		*m_align_menu = nullptr,      ///< Submenu of m_align_actions_group
 		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
 	
 	private:
