@@ -45,7 +45,9 @@
 #include <limits>
 
 #include "../qetapp.h"
+#include "../qetpalette.h"
 #include "../shortcutmanager.h"
+#include "elementpreviewdelegate.h"
 #include "elementslocation.h"
 
 	//The palette is read from disk each time the picker opens. It is meant as
@@ -105,6 +107,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_edit_available->setIconSize(QSize(20, 20));
 	m_edit_available->setMinimumHeight(220);
 	for (QListWidget *list : {m_edit_row, m_edit_available}) {
+		list->setItemDelegate(new ElementPreviewDelegate(list));
 		list->setDragDropMode(QAbstractItemView::DragDrop);
 		list->setDefaultDropAction(Qt::MoveAction);
 		list->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -166,6 +169,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_edit_symbols_search->setClearButtonEnabled(true);
 	m_edit_symbols = new QListWidget(m_edit_symbols_box);
 	m_edit_symbols->setIconSize(QSize(32, 32));
+	m_edit_symbols->setItemDelegate(new ElementPreviewDelegate(m_edit_symbols));
 	m_edit_symbols->setMinimumHeight(220);
 	m_edit_symbols->setDragDropMode(QAbstractItemView::DragOnly);
 	m_edit_symbols->setDefaultDropAction(Qt::CopyAction);
@@ -217,6 +221,8 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_model = new QStandardItemModel(this);
 	m_view = new QListView(this);
 	m_view->setModel(m_model);
+		//Element previews are black line art; adapt them to a dark palette
+	m_view->setItemDelegate(new ElementPreviewDelegate(m_view));
 	m_view->setIconSize(QSize(40, 40));
 	m_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 	m_view->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -378,7 +384,10 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 			auto *button = new QToolButton(m_commands);
 			button->setAutoRaise(true);
 			button->setIconSize(QSize(24, 24));
-			button->setIcon(location.icon());
+				//No item delegate on a button: adapt the preview here
+			button->setIcon(QIcon(QET::Palette::forPalette(
+				location.icon().pixmap(QSize(24, 24), devicePixelRatio()),
+				palette())));
 			button->setToolTip(location.name());
 			button->setFocusPolicy(Qt::NoFocus);
 			connect(button, &QToolButton::clicked, this, [this, location]() {
