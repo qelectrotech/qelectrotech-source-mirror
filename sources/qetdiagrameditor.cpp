@@ -941,6 +941,26 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(snap_to_grid, "diagrameditor.snap_selection_to_grid", tr("Éditeur de schémas"), QKeySequence());
 	snap_to_grid->setStatusTip(tr("Remet les éléments, images et textes sélectionnés sur la grille", "status bar tip"));
 	snap_to_grid->setData("snap_selection_to_grid");
+
+	const struct {
+		const char *id;
+		QString text;
+		QString tip;
+	} align_actions[] = {
+		{"align_left",    tr("Aligner à gauche"),        tr("Aligne les bords gauches des objets sélectionnés", "status bar tip")},
+		{"align_hcenter", tr("Centrer horizontalement"), tr("Aligne les objets sélectionnés sur une même verticale, par leur point d'origine pour les éléments", "status bar tip")},
+		{"align_right",   tr("Aligner à droite"),        tr("Aligne les bords droits des objets sélectionnés", "status bar tip")},
+		{"align_top",     tr("Aligner en haut"),         tr("Aligne les bords supérieurs des objets sélectionnés", "status bar tip")},
+		{"align_vcenter", tr("Centrer verticalement"),   tr("Aligne les objets sélectionnés sur une même horizontale, par leur point d'origine pour les éléments", "status bar tip")},
+		{"align_bottom",  tr("Aligner en bas"),          tr("Aligne les bords inférieurs des objets sélectionnés", "status bar tip")}
+	};
+	for (const auto &a : align_actions)
+	{
+		QAction *action = m_align_actions_group.addAction(a.text);
+		ShortcutManager::instance().registerAction(action, QStringLiteral("diagrameditor.") + QLatin1String(a.id), tr("Éditeur de schémas"), QKeySequence());
+		action->setStatusTip(a.tip);
+		action->setData(QString::fromLatin1(a.id));
+	}
 	connect(&m_align_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::alignGroupTriggered);
 
 		//Select Action
@@ -1238,7 +1258,13 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_selection_actions_group.actions());
 	m_align_menu = menu_edition -> addMenu(tr("Aligner"));
-	m_align_menu -> addActions(m_align_actions_group.actions());
+		//Snap to grid, then the horizontal three, then the vertical three,
+		//in the order setUpActions() adds them
+	m_align_menu -> addAction(m_align_actions_group.actions().first());
+	m_align_menu -> addSeparator();
+	m_align_menu -> addActions(m_align_actions_group.actions().mid(1, 3));
+	m_align_menu -> addSeparator();
+	m_align_menu -> addActions(m_align_actions_group.actions().mid(4));
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_conductor_reset);
 	menu_edition -> addSeparator();
@@ -2108,22 +2134,43 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 void QETDiagramEditor::alignGroupTriggered(QAction *action)
 {
 	DiagramView *dv = currentDiagramView();
-	if (!dv || action->data().toString() != QLatin1String("snap_selection_to_grid"))
+	if (!dv)
 		return;
 
+	static const QHash<QString, AlignSelectionCommand::Mode> modes {
+		{QStringLiteral("snap_selection_to_grid"), AlignSelectionCommand::SnapToGrid},
+		{QStringLiteral("align_left"),    AlignSelectionCommand::AlignLeft},
+		{QStringLiteral("align_hcenter"), AlignSelectionCommand::AlignHCenter},
+		{QStringLiteral("align_right"),   AlignSelectionCommand::AlignRight},
+		{QStringLiteral("align_top"),     AlignSelectionCommand::AlignTop},
+		{QStringLiteral("align_vcenter"), AlignSelectionCommand::AlignVCenter},
+		{QStringLiteral("align_bottom"),  AlignSelectionCommand::AlignBottom}
+	};
+	const QString id = action->data().toString();
+	if (!modes.contains(id))
+		return;
+	const AlignSelectionCommand::Mode mode = modes.value(id);
+
 	Diagram *diagram = dv->diagram();
-	auto *command = new AlignSelectionCommand(diagram, AlignSelectionCommand::SnapToGrid);
+	auto *command = new AlignSelectionCommand(diagram, mode);
 	const int locked = command->lockedCount();
 
 	QString message;
 	if (command->isValid())
 	{
-		message = tr("%n objet(s) remis sur la grille", "", command->movedCount());
+		message = mode == AlignSelectionCommand::SnapToGrid
+				? tr("%n objet(s) remis sur la grille", "", command->movedCount())
+				: tr("%n objet(s) aligné(s)", "", command->movedCount());
 		diagram->undoStack().push(command);
 	}
 	else
 	{
-		message = tr("La sélection est déjà sur la grille");
+		if (mode == AlignSelectionCommand::SnapToGrid)
+			message = tr("La sélection est déjà sur la grille");
+		else if (command->itemCount() < 2)
+			message = tr("Sélectionnez au moins deux éléments, images, textes ou groupes non verrouillés");
+		else
+			message = tr("La sélection est déjà alignée, à la grille près");
 		delete command;
 	}
 	if (locked)
@@ -2401,10 +2448,15 @@ void QETDiagramEditor::slot_updateComplexActions()
 				| DiagramContent::Images);
 	m_depth_action_group->setEnabled(list.isEmpty()? false : true);
 
-		//Align actions: symbols, pictures and free texts take part
-	m_align_actions_group.setEnabled(!ro && (selected_elements_count
-									  || selected_image
-									  || dc.count(DiagramContent::TextFields)));
+		//Align actions: symbols, pictures and free texts take part.
+		//Snapping needs one of them, lining them up needs two.
+	const int alignable = selected_elements_count
+			      + selected_image
+			      + dc.count(DiagramContent::TextFields);
+	m_align_actions_group.setEnabled(!ro && alignable);
+	const QList<QAction *> align_actions = m_align_actions_group.actions();
+	for (QAction *action : align_actions.mid(1))
+		action->setEnabled(!ro && alignable >= 2);
 }
 
 /**

@@ -97,6 +97,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	QUuid uuid() const {return m_uuid;}
 	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
 	void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
+	QRectF imageRect() const;
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
@@ -186,7 +187,6 @@ class DiagramImageItem : public QetGraphicsItem {
 	static QString hintForHandleRole(HandleRole role);
 	void showStatusHint(const QString &text) const;
 	void clearStatusHint() const;
-	QRectF imageRect() const;
 	QRectF labelRect() const;
 	void updateLabelScale();
 

@@ -33,7 +33,13 @@ class AlignSelectionCommand : public QUndoCommand
 {
 	public:
 		enum Mode {
-			SnapToGrid ///< put each item where a drag would have left it
+			SnapToGrid, ///< put each item where a drag would have left it
+			AlignLeft,
+			AlignHCenter,
+			AlignRight,
+			AlignTop,
+			AlignVCenter,
+			AlignBottom
 		};
 
 		AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoCommand *parent = nullptr);
@@ -44,10 +50,12 @@ class AlignSelectionCommand : public QUndoCommand
 		bool isValid() const;
 		int movedCount() const;
 		int lockedCount() const;
+		int itemCount() const;
 
 	private:
 		QPointer<Diagram> m_diagram;
 		int m_locked_count = 0;
+		int m_item_count = 0;
 };
 
 #endif // ALIGNSELECTIONCOMMAND_H
