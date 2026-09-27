@@ -739,7 +739,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="64"/>
         <source>Aperçu</source>
-        <translation type="unfinished">Preview</translation>
+        <translation>Preview</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="73"/>
@@ -928,47 +928,47 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="50"/>
         <source>Noir</source>
-        <translation type="unfinished">Black</translation>
+        <translation>Black</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="51"/>
         <source>Marron</source>
-        <translation type="unfinished">Brown</translation>
+        <translation>Brown</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
         <source>Gris</source>
-        <translation type="unfinished">Gray</translation>
+        <translation>Gray</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="53"/>
         <source>Bleu</source>
-        <translation type="unfinished">Blue</translation>
+        <translation>Blue</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="54"/>
         <source>Vert</source>
-        <translation type="unfinished">Green</translation>
+        <translation>Green</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="55"/>
         <source>Rouge</source>
-        <translation type="unfinished">Red</translation>
+        <translation>Red</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="56"/>
         <source>Orange</source>
-        <translation type="unfinished">Orange</translation>
+        <translation>Orange</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="57"/>
         <source>Violet</source>
-        <translation type="unfinished">Purple</translation>
+        <translation>Purple</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="58"/>
         <source>Blanc</source>
-        <translation type="unfinished">White</translation>
+        <translation>White</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="75"/>
@@ -995,7 +995,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="187"/>
         <source>Modifier la couleur de %n conducteur(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -1508,7 +1508,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="40"/>
         <source>Blanc</source>
-        <translation type="unfinished">White</translation>
+        <translation>White</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="41"/>
@@ -1518,12 +1518,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="42"/>
         <source>Gris clair</source>
-        <translation type="unfinished">Light gray</translation>
+        <translation>Light gray</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="43"/>
         <source>Gris</source>
-        <translation type="unfinished">Gray</translation>
+        <translation>Gray</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="44"/>
@@ -1533,7 +1533,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="45"/>
         <source>Noir</source>
-        <translation type="unfinished">Black</translation>
+        <translation>Black</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="62"/>
@@ -2057,22 +2057,22 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="49"/>
         <source>Haut</source>
-        <translation type="unfinished">Top</translation>
+        <translation>Top</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
         <source>Bas</source>
-        <translation type="unfinished">Bottom</translation>
+        <translation>Bottom</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="51"/>
         <source>Gauche</source>
-        <translation type="unfinished">Left</translation>
+        <translation>Left</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="52"/>
         <source>Droite</source>
-        <translation type="unfinished">Right</translation>
+        <translation>Right</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="53"/>
@@ -2850,7 +2850,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="187"/>
         <source>Annuler</source>
-        <translation type="unfinished">Undo</translation>
+        <translation>Undo</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="188"/>
@@ -3645,7 +3645,7 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="755"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="762"/>
         <source>Exporter</source>
-        <translation type="unfinished">Export</translation>
+        <translation>Export</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="755"/>
@@ -3670,7 +3670,7 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="805"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="775"/>
@@ -3696,7 +3696,7 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="812"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="856"/>
         <source>Importer</source>
-        <translation type="unfinished">Import</translation>
+        <translation>Import</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="812"/>
@@ -3711,7 +3711,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="830"/>
         <source>Un rapport nommé « %1 » existe déjà. Le remplacer ?</source>
-        <translation>A report named "%1" already exists. Replace it?</translation>
+        <translation>A report named &quot;%1&quot; already exists. Replace it?</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
@@ -6603,22 +6603,22 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="165"/>
         <source>Conducteurs</source>
-        <translation type="unfinished">Conductors</translation>
+        <translation>Conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="166"/>
         <source>Eléments</source>
-        <translation type="unfinished">Elements</translation>
+        <translation>Elements</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="167"/>
         <source>Folios</source>
-        <translation type="unfinished">Folios</translation>
+        <translation>Folios</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="169"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished">Auto Numbering</translation>
+        <translation>Auto Numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
@@ -7344,7 +7344,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="534"/>
         <source>Projet QElectroTech (*.qet)</source>
-        <translation type="unfinished">Project QElectroTech (*.qet)</translation>
+        <translation>Project QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="541"/>
@@ -8964,7 +8964,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Garde les numéros de colonne et les lettres de ligne du folio visibles au bord de la vue</source>
-        <translation>Keeps the folio's column numbers and row letters visible at the edge of the view</translation>
+        <translation>Keeps the folio&apos;s column numbers and row letters visible at the edge of the view</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
@@ -8974,7 +8974,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Trace les limites des colonnes et des lignes du folio sur le schéma, à l&apos;écran seulement</source>
-        <translation>Draws the boundaries of the folio's columns and rows on the diagram, on screen only</translation>
+        <translation>Draws the boundaries of the folio&apos;s columns and rows on the diagram, on screen only</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
@@ -9272,9 +9272,9 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2101"/>
         <source>%n objet(s) remis sur la grille</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item placed on the grid</numerusform>
+            <numerusform>%n item placed on the grid</numerusform>
         </translation>
     </message>
     <message>
@@ -9285,9 +9285,9 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2110"/>
         <source>(%n objet(s) verrouillé(s) laissé(s) en place)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>(%n locked object left in place)</numerusform>
+            <numerusform>(%n locked objects left in place)</numerusform>
         </translation>
     </message>
     <message>
@@ -9371,7 +9371,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3227"/>
         <source>Répéter : insérer « %1 »</source>
-        <translation>Repeat: insert "%1"</translation>
+        <translation>Repeat: insert &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3228"/>
@@ -9386,25 +9386,25 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3518"/>
         <source>%n élément(s) redessiné(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element redesigned.</numerusform>
+            <numerusform>%n elements redesigned.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3522"/>
         <source>%n élément(s) dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element for which no definition could be found or which were illegible: their current design has been retained.</numerusform>
+            <numerusform>%n elements for which no definition could be found or which were illegible: their current design has been retained.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3534"/>
         <source>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element not redrawn: their size, grip or boundaries have changed (a boundary has been added, removed or moved).</numerusform>
+            <numerusform>%n elements not redrawn: their size, grip or boundaries have changed (a boundary has been added, removed or moved).</numerusform>
         </translation>
     </message>
     <message>
@@ -11101,7 +11101,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="302"/>
         <source>%n élément(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n element</numerusform>
             <numerusform>%n elements</numerusform>
         </translation>
@@ -11110,7 +11110,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="312"/>
         <source>%n conducteur(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n conductor</numerusform>
             <numerusform>%n conductors</numerusform>
         </translation>
@@ -11119,7 +11119,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="322"/>
         <source>%n champ(s) de texte</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n textfield</numerusform>
             <numerusform>%n textfields</numerusform>
         </translation>
@@ -11128,16 +11128,16 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="332"/>
         <source>%n image(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n image</numerusform>
+            <numerusform>%n images</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="342"/>
         <source>%n forme(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n forme</numerusform>
             <numerusform>%n formes</numerusform>
         </translation>
@@ -11146,7 +11146,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="352"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n text of element</numerusform>
             <numerusform>%n texts of element</numerusform>
         </translation>
@@ -11155,7 +11155,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="362"/>
         <source>%n tableau(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n table</numerusform>
             <numerusform>%n tables</numerusform>
         </translation>
@@ -11164,9 +11164,9 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="372"/>
         <source>%n plan(s) de bornes</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n layout of terminal blocks</numerusform>
+            <numerusform>%n layouts of terminal blocks</numerusform>
         </translation>
     </message>
     <message>
@@ -11715,9 +11715,9 @@ the translated name of this folder could not be read, so its folder name is disp
     <message numerus="yes">
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="77"/>
         <source>%n texte(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n text</numerusform>
+            <numerusform>%n texts</numerusform>
         </translation>
     </message>
     <message>
@@ -12692,7 +12692,7 @@ Please download it by following the link and unzip it in the installation folder
     <message numerus="yes">
         <location filename="../sources/elementtextsmover.cpp" line="165"/>
         <source>%n texte(s) d&apos;élément</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n text of element</numerusform>
             <numerusform>%n texts of element</numerusform>
         </translation>
@@ -12701,9 +12701,9 @@ Please download it by following the link and unzip it in the installation folder
         <location filename="../sources/elementtextsmover.cpp" line="167"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="79"/>
         <source>%n groupe(s) de textes</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n group of texts</numerusform>
+            <numerusform>%n groups of texts</numerusform>
         </translation>
     </message>
     <message>
@@ -12736,33 +12736,33 @@ Please download it by following the link and unzip it in the installation folder
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="60"/>
         <source>Ajouter %n borne(s) à un groupe de bornes</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Add %n terminal to a group of terminals</numerusform>
+            <numerusform>Add %n terminals to a group of terminals</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="61"/>
         <source>Ajouter %n borne(s) au groupe de bornes %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Add %n terminal to terminal group %1</numerusform>
+            <numerusform>Add %n terminals to terminal group %1</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="144"/>
         <source>Enlever %n borne(s) d&apos;un groupe de bornes</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Remove %n terminal from a group of terminals</numerusform>
+            <numerusform>Remove %n terminals from a group of terminals</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="145"/>
         <source>Enlever %n borne(s) du groupe de bornes %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Remove %n terminal from terminal group %1</numerusform>
+            <numerusform>Remove %n terminals from terminal group %1</numerusform>
         </translation>
     </message>
     <message>
@@ -12808,47 +12808,47 @@ Please download it by following the link and unzip it in the installation folder
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="208"/>
         <source>Déplacer %n borne(s) d&apos;un groupe de bornes vers un autre groupe de bornes</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Move %n terminal from one group of terminals to another group of terminals</numerusform>
+            <numerusform>Move %n terminals from one group of terminals to another group of terminals</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="210"/>
         <source>Déplacer %n borne(s) d&apos;un groupe de bornes vers le groupe de bornes %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Move %n terminal from a group of terminals to the %1 group of terminals</numerusform>
+            <numerusform>Move %n terminals from a group of terminals to the %1 group of terminals</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="212"/>
         <source>Déplacer %n borne(s) du groupe de bornes %1 vers un autre groupe de bornes</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Move %n terminal from terminal group %1 to another terminal group</numerusform>
+            <numerusform>Move %n terminals from terminal group %1 to another terminal group</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="214"/>
         <source>Déplacer %n borne(s) du groupe de bornes %1 vers le groupe de bornes %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Move %n terminal from terminal group %1 to terminal group %2</numerusform>
+            <numerusform>Move %n terminals from terminal group %1 to terminal group %2</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="72"/>
         <source>Aligner %n objet(s) sur la grille</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Align %n object to the grid</numerusform>
+            <numerusform>Align %n objects to the grid</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="595"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished">insert %1</translation>
+        <translation>insert %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="920"/>
@@ -12863,7 +12863,7 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1474"/>
         <source>Modifier la couleur d&apos;un texte</source>
-        <translation type="unfinished">Change the color of a text</translation>
+        <translation>Change the color of a text</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1492"/>
@@ -12873,12 +12873,12 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1651"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation type="unfinished">Edit line of a form</translation>
+        <translation>Edit line of a form</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1663"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation type="unfinished">Edit filling a form</translation>
+        <translation>Edit filling a form</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1671"/>
@@ -12889,7 +12889,7 @@ Please download it by following the link and unzip it in the installation folder
         <location filename="../sources/scripting/qetscriptapi.cpp" line="1878"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2000"/>
         <source>Modifier la forme d&apos;%1</source>
-        <translation type="unfinished">Change the shape of %1</translation>
+        <translation>Change the shape of %1</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2028"/>
@@ -12899,7 +12899,7 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2949"/>
         <source>Redimensionner une image</source>
-        <translation type="unfinished">Resize an image</translation>
+        <translation>Resize an image</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="2975"/>
@@ -12909,12 +12909,12 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3288"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation type="unfinished">Edit element text</translation>
+        <translation>Edit element text</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3370"/>
         <source>Numéroter automatiquement un élément</source>
-        <translation type="unfinished">Automatically number an element</translation>
+        <translation>Automatically number an element</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3914"/>
@@ -15736,7 +15736,7 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="231"/>
         <source>Pink : Pink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Pink: Pink</translation>
+        <translation>Pink: Pink</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="232"/>
@@ -18651,7 +18651,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="188"/>
         <source>Une seule requête SELECT est autorisée (le caractère &apos;;&apos; ne peut apparaître qu&apos;à la toute fin).</source>
-        <translation>Only a single SELECT query is allowed (the ';' character may only appear at the very end).</translation>
+        <translation>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="199"/>
