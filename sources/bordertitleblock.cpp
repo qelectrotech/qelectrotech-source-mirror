@@ -19,6 +19,7 @@
 
 #include "bordercelllabels.h"
 #include "createdxf.h"
+#include "dxfexport.h"
 #include "diagram.h"
 #include "diagramposition.h"
 #include "math.h"
@@ -706,6 +707,7 @@ void BorderTitleBlock::drawDxf(
 
 	// render the titleblock, using the TitleBlockTemplate object
 	if (display_titleblock_) {
+		Createdxf::layer = DxfExport::Layer::TitleBlock;
 		//qp -> translate(titleblock_rect_.topLeft());
 		QRectF rect = titleBlockRect();
 		m_titleblock_template_renderer -> renderDxf(rect,

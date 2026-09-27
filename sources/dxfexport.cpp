@@ -81,8 +81,12 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	Createdxf::xScale = Createdxf::sheetWidth  / double(width);
 	Createdxf::yScale = Createdxf::sheetHeight / double(height);
 
-	Createdxf::dxfBegin(file_path);
+	Createdxf::dxfBegin(file_path, Layer::all());
 
+		//Each kind of content on its own layer (discussion #1071). The
+		//border's title block switches to Layer::TitleBlock itself, see
+		//BorderTitleBlock::drawDxf().
+	Createdxf::layer = Layer::Border;
 	//Add project elements (lines, rectangles, circles, texts) to dxf file
 	if (properties.draw_border) {
 		QRectF rect(Diagram::margin,Diagram::margin,width,height);
@@ -154,9 +158,11 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	}
 
 	// Draw shapes
+	Createdxf::layer = Layer::Shapes;
 	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
 
 	// Draw tables
+	Createdxf::layer = Layer::Tables;
 	foreach (QetGraphicsTableItem *gti, list_tables) {
 		gti->toDXF(file_path);
 	}
@@ -171,6 +177,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
 
+		Createdxf::layer = Layer::SymbolTexts;
 		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
 		{
 			qreal fontSize = text->font().pointSizeF();
@@ -200,6 +207,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			}
 		}
 
+		Createdxf::layer = Layer::Symbols;
 		for (QLineF line : primitives.m_lines)
 		{
 			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
@@ -249,6 +257,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
 		}
 		if (properties.draw_terminals) {
+			Createdxf::layer = Layer::Terminals;
 			// Draw terminals
 			QList<Terminal *> list_terminals = elmt->terminals();
 			QColor col("red");
@@ -272,8 +281,13 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			}
 			poly << cond->pos()+segment->secondPoint();
 		}
-		Createdxf::drawPolyline(file_path,poly,0);
+		Createdxf::layer = Layer::Wires;
+			//The wire's own colour, as on the folio (a two-colour wire gets
+			//its main one). Black comes out as BYLAYER, see Createdxf.
+		const ConductorProperties wire_properties = cond -> properties();
+		Createdxf::drawPolyline(file_path, poly, Createdxf::dxfColor(wire_properties.color));
 		//Draw conductor text item
+		Createdxf::layer = Layer::WireNumbers;
 		ConductorTextItem *textItem = cond -> textItem();
 
 		if (textItem) {
@@ -295,13 +309,15 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			qreal offset = fontSize * 1.6;
 			foreach (QString line, lines) {
 				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, 0, 0.72 );
+					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle,
+										Createdxf::dxfColor(wire_properties.text_color), 0.72 );
 				x += offset * xdir;
 				y -= offset * ydir;
 			}
 		}
 
 		// Draw the junctions
+		Createdxf::layer = Layer::Junctions;
 		QList<QPointF> junctions_list = cond->junctions();
 		if (!junctions_list.isEmpty()) {
 			foreach(QPointF point, junctions_list) {
@@ -312,6 +328,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 
 	//Draw text items
 	foreach(DiagramTextItem *dti, list_texts) {
+			//A free text, or a symbol's own text (its label and the like)
+		Createdxf::layer = qgraphicsitem_cast<IndependentTextItem *>(dti)
+				? Layer::Texts : Layer::SymbolTexts;
 		qreal fontSize = dti -> font().pointSizeF();
 		if (fontSize < 0)
 			fontSize = dti -> font().pixelSize();
@@ -344,6 +363,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	}
 
 	//Draw the slave cross-reference labels
+	Createdxf::layer = Layer::Xrefs;
 	for (QGraphicsTextItem *xref : std::as_const(list_xref_texts))
 	{
 		qreal fontSize = xref->font().pointSizeF();
@@ -382,6 +402,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	//Draw the master-side cross-reference items (table/cross), replaying
 	//their existing paint() unmodified through DxfPaintEngine instead of
 	//hand-porting drawAsCross()/drawAsContacts()/drawAsPlcTable().
+	Createdxf::layer = Layer::Xrefs;
 	for (CrossRefItem *xref : std::as_const(list_master_xrefs))
 	{
 		DxfPaintDevice dxf_device(file_path);
@@ -401,6 +422,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	//actually turns the drawPixmap() call inside paint() into a
 	//placeholder outline, since this DXF dialect has no raster image
 	//entity to draw instead.
+	Createdxf::layer = Layer::Images;
 	for (DiagramImageItem *image : std::as_const(list_images))
 	{
 		DxfPaintDevice dxf_device(file_path);

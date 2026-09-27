@@ -40,8 +40,19 @@ namespace {
 		text.replace(QLatin1Char('\n'), QLatin1Char(' '));
 		return text;
 	}
+
+	/// Colour code of an entity. 0 is BYBLOCK, which means nothing outside a
+	/// block and so fell back to the default colour; it is also what black
+	/// maps to (RGBcodeTable[0]). BYLAYER (256) looks the same, the layers
+	/// being colour 7, and lets a CAD user recolour a whole layer at once
+	/// (discussion #1071). Real colours are kept.
+	int entityColour(int colour)
+	{
+		return colour == 0 ? 256 : colour;
+	}
 }
 double Createdxf::yScale = 1;
+QString Createdxf::layer = QStringLiteral("0");
 
 Createdxf::Createdxf()
 {
@@ -51,9 +62,12 @@ Createdxf::~Createdxf()
 {
 }
 
-/* Header section of every DXF file.*/
-void Createdxf::dxfBegin (const QString& fileName)
+/* Header section of every DXF file.
+   @param layers : the layers the entities will be written on, declared in
+   the LAYER table beside layer "0", which every DXF has. */
+void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers)
 {
+	layer = QStringLiteral("0");
 
 	// Creation of an output stream object in text mode.
 	// Header section of every dxf file.
@@ -224,6 +238,35 @@ void Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << 0             << "\r\n";
 
 			To_Dxf << "ENDTAB"      << "\r\n";
+
+			// Layers: "0" plus the ones the entities use, all white/black
+			// (colour 7) and continuous, so a file looks the same as before
+			// until the user changes a layer.
+			QStringList all_layers{QStringLiteral("0")};
+			for (const QString &name : layers) {
+				if (!all_layers.contains(name))
+					all_layers << name;
+			}
+			To_Dxf << 0             << "\r\n";
+			To_Dxf << "TABLE"       << "\r\n";
+			To_Dxf << 2             << "\r\n";
+			To_Dxf << "LAYER"       << "\r\n";
+			To_Dxf << 70            << "\r\n";
+			To_Dxf << all_layers.size() << "\r\n";
+			for (const QString &name : std::as_const(all_layers)) {
+				To_Dxf << 0             << "\r\n";
+				To_Dxf << "LAYER"       << "\r\n";
+				To_Dxf << 2             << "\r\n";
+				To_Dxf << name          << "\r\n";
+				To_Dxf << 70            << "\r\n";
+				To_Dxf << 0             << "\r\n";
+				To_Dxf << 62            << "\r\n";
+				To_Dxf << 7             << "\r\n";
+				To_Dxf << 6             << "\r\n";
+				To_Dxf << "CONTINUOUS"  << "\r\n";
+			}
+			To_Dxf << 0             << "\r\n";
+			To_Dxf << "ENDTAB"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "ENDSEC"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
@@ -248,6 +291,7 @@ void Createdxf::dxfBegin (const QString& fileName)
 */
 void Createdxf::dxfEnd(const QString& fileName)
 {
+	layer = QStringLiteral("0");
 	// Creation of an output stream object in text mode.
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -298,9 +342,9 @@ void Createdxf::drawCircle(
 			To_Dxf << 0         << "\r\n";
 			To_Dxf << "CIRCLE"  << "\r\n";
 			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ is the Center point of circle
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -346,9 +390,9 @@ void Createdxf::drawLine (
 			To_Dxf << 0         << "\r\n";
 			To_Dxf << "LINE"    << "\r\n";
 			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";
 			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -671,9 +715,9 @@ void Createdxf::drawArc(
 			To_Dxf << 0         << "\r\n";
 			To_Dxf << "ARC"     << "\r\n";
 			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << color     << "\r\n";    // Colour Code
+			To_Dxf << entityColour(color) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ is the Center point of circle
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -727,9 +771,9 @@ void Createdxf::drawText(
 		To_Dxf << 0         << "\r\n";
 		To_Dxf << "TEXT"    << "\r\n";
 		To_Dxf << 8         << "\r\n";
-		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << layer     << "\r\n";    // Layer name
 		To_Dxf << 62        << "\r\n";
-		To_Dxf << colour    << "\r\n";    // Colour Code
+		To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 		To_Dxf << 10        << "\r\n";    // XYZ
 		To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 		To_Dxf << 20        << "\r\n";
@@ -780,9 +824,9 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 0         << "\r\n";
 			To_Dxf << "TEXT"    << "\r\n";
 			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -861,9 +905,9 @@ void Createdxf::drawPolyline(const QString &filepath,
 		To_Dxf << 0         << "\r\n";
 		To_Dxf << "POLYLINE"    << "\r\n";
 		To_Dxf << 8         << "\r\n";
-		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << layer     << "\r\n";    // Layer name
 		To_Dxf << 62        << "\r\n";
-		To_Dxf << colorcode    << "\r\n";    // Colour Code
+		To_Dxf << entityColour(colorcode) << "\r\n";    // Colour Code
 		To_Dxf << 66        << "\r\n";
 		To_Dxf << 1         << "\r\n";
 		To_Dxf << 70        << "\r\n";
@@ -887,7 +931,7 @@ void Createdxf::drawPolyline(const QString &filepath,
 		To_Dxf << 0         << "\r\n";
 		To_Dxf << "VERTEX"  << "\r\n";
 		To_Dxf << 8         << "\r\n";
-		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << layer     << "\r\n";    // Layer name
 		To_Dxf << 70        << "\r\n";
 		To_Dxf << 32        << "\r\n";
 		To_Dxf << 10        << "\r\n";
@@ -901,7 +945,7 @@ void Createdxf::drawPolyline(const QString &filepath,
 		To_Dxf << 0         << "\r\n";
 		To_Dxf << "SEQEND"  << "\r\n";
 		To_Dxf << 8         << "\r\n";
-		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << layer     << "\r\n";    // Layer name
 
 		file.close();
 	}
