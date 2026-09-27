@@ -2891,6 +2891,11 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 {
 	if (e.tagName() != "shape") return (false);
 
+		//Absent in files written before shapes carried a uuid: keep the
+		//one this item already has, Diagram::fromXml() settles it.
+	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
+
 	// fromXml() is also used to *restore* an already-displayed item's
 	// state (PromoteShapeCommand's undo/redo), not just to populate a
 	// freshly constructed one -- without this, Qt has no way to know the
@@ -3016,6 +3021,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 QDomElement QetShapeItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("shape");
+	result.setAttribute("uuid", m_uuid.toString());
 
 		//write some attribute
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));

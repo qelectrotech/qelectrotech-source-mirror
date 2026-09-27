@@ -1452,7 +1452,10 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "image") {
 		return (false);
 	}
-	
+
+	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
+
 	QDomNode image_node = e.firstChild();
 	if (!image_node.isText()) {
 		return (false);
@@ -1592,6 +1595,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("image");
+	result.setAttribute("uuid", m_uuid.toString());
 	//write some attribute
 	result.setAttribute("x", QString::number(pos().x()));
 	result.setAttribute("y", QString::number(pos().y()));

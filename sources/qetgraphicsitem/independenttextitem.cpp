@@ -63,6 +63,8 @@ IndependentTextItem::~IndependentTextItem()
 	@param e L'element XML representant le champ de texte
 */
 void IndependentTextItem::fromXml(const QDomElement &e) {
+	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setHtml(e.attribute("text"));
 	setRotation(e.attribute("rotation").toDouble());
@@ -81,6 +83,7 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("input");
+	result.setAttribute("uuid", m_uuid.toString());
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());

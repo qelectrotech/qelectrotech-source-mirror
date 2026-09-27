@@ -29,7 +29,11 @@
 DiagramPosition::DiagramPosition(const QString &letter, unsigned int number) {
 	// purifie les lettres
 	letter_ = letter.toUpper();
-	letter_.remove(QRegularExpression("[^A-Z]"));
+		//Compiled once: building it here cost more than the rest of the
+		//position conversion together, once per element and per drawing item
+		//on every rebuild of the project database.
+	static const QRegularExpression not_a_letter(QStringLiteral("[^A-Z]"));
+	letter_.remove(not_a_letter);
 	number_ = number;
 }
 

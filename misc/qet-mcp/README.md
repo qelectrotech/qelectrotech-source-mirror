@@ -271,6 +271,13 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   QElectroTech applies to its own custom-query box, not one invented here.
   An empty result and a failed query are told apart: `row_count` 0 with no
   `error` means nothing matched, and a typo'd column name says so.
+- **Texts, shapes and images are in the database too**, one row each in
+  `drawing_item_view` (`uuid`, `kind`, `folio`, position and size, and a
+  `description`: the shape type or the text). The uuid is the one saved in
+  the file, and every `qet_edit` op that takes a text, shape or image
+  `index` also takes that uuid, which does not shift the way an index
+  does. `qet_element_build` gives every part of a symbol a uuid as well,
+  returned in `part_uuids`; `qet_element_info` lists them in `part_list`.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
@@ -295,11 +302,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   no-op edit. Where an element predates persisted uuids the end cannot be
   resolved and keeps a `#`-marked unstable key; the diff then reports
   `unstable_keys` and says so rather than pretending to be comparable.
-- **Texts, shapes and images have no uuid**, so `qet_diff` cannot say "the same
-  text, edited": an edited text reads as the old one removed and a new one
-  added, both shown. Shapes and images are keyed by position, so a restyle
-  or rescale *is* reported as a change to that item, but a move reads as a
-  removal plus an addition. The folio `version` attribute is left out of the
+- **Texts, shapes and images are keyed by uuid** when every one on both sides
+  has one, so an edit or a move reads as a change to that item. A file saved
+  before they carried a uuid has none; for such a pair (including a legacy
+  file against its first re-save) that kind falls back to position, where an
+  edited text reads as removed plus added and a move as a removal plus an
+  addition. Each section says which it used in `keyed_by`. The folio `version` attribute is left out of the
   comparison on purpose: QElectroTech rewrites it on every save, and
   including it made every folio of any re-saved project look edited.
 - **Elements** written before persisted uuids fall back to a positional key,

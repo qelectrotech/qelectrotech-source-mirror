@@ -29,6 +29,9 @@
 #include <QMessageBox>
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 #include "qetinformation.h"
 
 /*
@@ -799,6 +802,18 @@ void ElementsPanelWidget::duplicateDiagram()
 						}
 					}
 				}
+			}
+			else if (auto text = dynamic_cast<IndependentTextItem *>(item)) {
+				// Not a database key (yet), but a script or the MCP server
+				// addresses a text, image or shape by it: a copy must not
+				// answer to its source's name.
+				text->newUuid();
+			}
+			else if (auto image = dynamic_cast<DiagramImageItem *>(item)) {
+				image->newUuid();
+			}
+			else if (auto shape = dynamic_cast<QetShapeItem *>(item)) {
+				shape->newUuid();
 			}
 			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
 				// Same reasoning for conductors: conductor.uuid is the PRIMARY

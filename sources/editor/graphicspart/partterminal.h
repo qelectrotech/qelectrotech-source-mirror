@@ -141,6 +141,9 @@ class PartTerminal : public CustomElementGraphicPart
 		void setMasterLabelIndex(int index);
 
 		void setNewUuid();
+			//The terminal's own uuid, the one saved on <terminal>: hides
+			//CustomElementGraphicPart::uuid(), which a terminal never saves.
+		QUuid uuid() const;
 
 		QRectF labelRect() const;
 

@@ -1670,6 +1670,29 @@ bool Diagram::fromXml(QDomElement &document,
 		}
 	}
 
+		//Texts, images and shapes written before they carried a uuid (or
+		//carrying one already used on this folio, from a hand-edited file)
+		//get one derived from the folio uuid, their kind and their order in
+		//the file, so that loading the same file twice gives the same uuids.
+		//A random one would be a different identity on every load, and
+		//toXml() writes it out, which is what #754 was for conductors.
+		//Only for a folio being loaded: a paste renews them all anyway.
+	QSet<QUuid> used_uuids;
+	auto settle_uuid = [&](auto *item, const QDomElement &xml,
+						   const QString &kind, int index) {
+		const QUuid persisted(xml.attribute(QStringLiteral("uuid")));
+		if (consider_informations
+			&& (persisted.isNull() || used_uuids.contains(persisted))) {
+			item->setUuid(QUuid::createUuidV5(
+							  m_uuid,
+							  QStringLiteral("%1\n%2\n%3")
+							  .arg(kind)
+							  .arg(index)
+							  .arg(persisted.toString())));
+		}
+		used_uuids.insert(item->uuid());
+	};
+
 		// Load text
 	QList<IndependentTextItem *> added_texts;
 	for (auto text_xml : QET::findInDomElement(root,
@@ -1677,6 +1700,7 @@ bool Diagram::fromXml(QDomElement &document,
 											   QStringLiteral("input"))) {
 		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
+		settle_uuid(iti, text_xml, QStringLiteral("input"), added_texts.size());
 		addItem(iti);
 		added_texts << iti;
 	}
@@ -1688,6 +1712,7 @@ bool Diagram::fromXml(QDomElement &document,
 												QStringLiteral("image"))) {
 		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
+		settle_uuid(dii, image_xml, QStringLiteral("image"), added_images.size());
 		addItem(dii);
 		added_images << dii;
 	}
@@ -1699,6 +1724,7 @@ bool Diagram::fromXml(QDomElement &document,
 												QStringLiteral("shape"))) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
+		settle_uuid(dii, shape_xml, QStringLiteral("shape"), added_shapes.size());
 		addItem(dii);
 		added_shapes << dii;
 	}
@@ -1892,6 +1918,13 @@ void Diagram::addItem(QGraphicsItem *item)
 			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->addDrawingItem(item);
+			break;
+		}
 		default: {break;}
 	}
 }
@@ -1921,6 +1954,13 @@ void Diagram::removeItem(QGraphicsItem *item)
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
 			m_project->dataBase()->removeConductor(conductor);
+			break;
+		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->removeDrawingItem(item);
 			break;
 		}
 		default: {break;}

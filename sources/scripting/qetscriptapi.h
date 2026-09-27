@@ -139,14 +139,13 @@ class QetGraphicsTableItem;
 	  style editor changes.
 
 	  These are addressed by @b index into a listing sorted by position
-	  (top to bottom, then left to right), because unlike an element they
-	  carry no uuid and unlike a conductor they have no terminal to be
-	  named by. Position is the only identity they have, and it persists,
-	  so the ordering is the same after a save and reload -- verified
-	  against exactly that. What it is @b not stable against is adding or
-	  deleting one: indexes after the affected position shift, the way a
-	  list's do. Call texts() or shapes() again rather than holding an
-	  index across an edit that adds or removes one.
+	  (top to bottom, then left to right), and the ordering is the same
+	  after a save and reload -- verified against exactly that. What it is
+	  @b not stable against is adding or deleting one: indexes after the
+	  affected position shift, the way a list's do. Each listing line ends
+	  with the item's uuid, which is persisted and does not shift: hold
+	  that across an edit, and turn it back into an index with textIndex(),
+	  shapeIndex() or imageIndex() when calling.
 	- @b Querying the project database: run a read-only SELECT against the
 	  SQLite database QElectroTech builds from the project, and get rows
 	  back as objects. This is not a new door. QET already ships a
@@ -432,6 +431,7 @@ class QetScriptApi : public QObject
 
 		// -- independent text and drawing shapes --
 		Q_INVOKABLE QStringList texts(int folioIndex) const;
+		Q_INVOKABLE int textIndex(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE int addText(int folioIndex, const QString &text, double x, double y);
 		Q_INVOKABLE QString textContent(int folioIndex, int textIndex) const;
 		Q_INVOKABLE bool setTextContent(int folioIndex, int textIndex, const QString &text);
@@ -440,6 +440,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool deleteText(int folioIndex, int textIndex);
 
 		Q_INVOKABLE QStringList shapes(int folioIndex) const;
+		Q_INVOKABLE int shapeIndex(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE int addShape(int folioIndex, const QString &type,
 								 double x1, double y1, double x2, double y2);
 		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
@@ -496,6 +497,7 @@ class QetScriptApi : public QObject
 
 		// -- images, embedded in the project --
 		Q_INVOKABLE QStringList images(int folioIndex) const;
+		Q_INVOKABLE int imageIndex(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE int addImage(int folioIndex, const QString &filePath, double x, double y);
 		Q_INVOKABLE bool setImageScale(int folioIndex, int imageIndex, double factor);
 		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);

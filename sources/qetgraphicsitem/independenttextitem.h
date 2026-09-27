@@ -20,6 +20,8 @@
 
 #include "diagramtextitem.h"
 
+#include <QUuid>
+
 /**
 	This class represents an independent text field on a particular diagram.
 	It may be moved, edited, and rotated.
@@ -29,6 +31,9 @@ class IndependentTextItem : public DiagramTextItem
 	Q_OBJECT
 		
 		// constructors, destructor
+	signals:
+		void uuidChanged();
+
 	public:
 		IndependentTextItem();
 		IndependentTextItem(const QString &);
@@ -41,9 +46,14 @@ class IndependentTextItem : public DiagramTextItem
 		
 		void fromXml(const QDomElement &) override;
 		QDomElement toXml(QDomDocument &) const override;
+		QUuid uuid() const {return m_uuid;}
+		void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
+		void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
 		
 	protected:
 		void focusOutEvent(QFocusEvent *event) override;
-		
+
+	private:
+		QUuid m_uuid = QUuid::createUuid();
 };
 #endif

@@ -1395,11 +1395,12 @@ QStringList QetScriptApi::texts(int folioIndex) const
 	{
 		IndependentTextItem *t = list.at(i);
 		const QPointF at = t->sceneBoundingRect().topLeft();
-		out << QStringLiteral("%1: '%2' at (%3, %4)")
+		out << QStringLiteral("%1: '%2' at (%3, %4) %5")
 				.arg(i)
 				.arg(t->toPlainText())
 				.arg(at.x())
-				.arg(at.y());
+				.arg(at.y())
+				.arg(t->uuid().toString());
 	}
 	return out;
 }
@@ -1518,10 +1519,11 @@ QStringList QetScriptApi::shapes(int folioIndex) const
 	{
 		QetShapeItem *shape = list.at(i);
 		const QRectF r = shape->sceneBoundingRect();
-		out << QStringLiteral("%1: %2 (%3, %4) to (%5, %6)")
+		out << QStringLiteral("%1: %2 (%3, %4) to (%5, %6) %7")
 				.arg(i)
 				.arg(shape->name())
-				.arg(r.left()).arg(r.top()).arg(r.right()).arg(r.bottom());
+				.arg(r.left()).arg(r.top()).arg(r.right()).arg(r.bottom())
+				.arg(shape->uuid().toString());
 	}
 	return out;
 }
@@ -2836,11 +2838,50 @@ QStringList QetScriptApi::images(int folioIndex) const
 		DiagramImageItem *item = list.at(i);
 		const QPixmap px = item->pixmap();
 		const QPointF at = item->sceneBoundingRect().topLeft();
-		out << QStringLiteral("%1: %2x%3 px at (%4, %5) scale=%6 rotation=%7")
+		out << QStringLiteral("%1: %2x%3 px at (%4, %5) scale=%6 rotation=%7 %8")
 				.arg(i).arg(px.width()).arg(px.height()).arg(at.x()).arg(at.y())
-				.arg(item->scaleFactorX()).arg(item->rotationAngle());
+				.arg(item->scaleFactorX()).arg(item->rotationAngle())
+				.arg(item->uuid().toString());
 	}
 	return out;
+}
+
+namespace {
+
+template <typename T>
+int indexOfUuid(const QList<T *> &sorted, const QString &uuid)
+{
+	const QUuid wanted(uuid);
+	if (wanted.isNull()) return -1;
+	for (int i = 0 ; i < sorted.count() ; ++i) {
+		if (sorted.at(i)->uuid() == wanted) return i;
+	}
+	return -1;
+}
+
+} // namespace
+
+/**
+	@brief QetScriptApi::textIndex
+	The current index in texts() of the text carrying @p uuid, or -1.
+	The uuid is what to hold across an edit; the index is what the other
+	text calls take, and it shifts when a text is added or removed.
+*/
+int QetScriptApi::textIndex(int folioIndex, const QString &uuid) const
+{
+	return indexOfUuid(sortedTexts(folioIndex), uuid);
+}
+
+/// @brief QetScriptApi::shapeIndex as textIndex(), for shapes().
+int QetScriptApi::shapeIndex(int folioIndex, const QString &uuid) const
+{
+	return indexOfUuid(sortedShapes(folioIndex), uuid);
+}
+
+/// @brief QetScriptApi::imageIndex as textIndex(), for images().
+int QetScriptApi::imageIndex(int folioIndex, const QString &uuid) const
+{
+	return indexOfUuid(sortedImages(folioIndex), uuid);
 }
 
 /**
