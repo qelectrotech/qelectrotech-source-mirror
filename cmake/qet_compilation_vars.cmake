@@ -327,6 +327,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.cpp
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.h
 
+  ${QET_DIR}/sources/dataBase/legacyelementtypes.h
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
   ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
