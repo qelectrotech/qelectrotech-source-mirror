@@ -56,6 +56,25 @@
 static const int max_palette_entries = 60;
 
 /**
+	@brief elementIcon
+	@return the element preview @a icon, adapted to @a widget's palette at
+	@a size. The shortcut bar and its editor mix these with command icons,
+	which already follow the palette through the icon theme, so the
+	element icons are adapted once here rather than by an
+	ElementPreviewDelegate over the whole list. An item dragged from one
+	list to another keeps its adapted icon.
+*/
+static QIcon elementIcon(const QIcon &icon, const QSize &size, const QWidget *widget)
+{
+	if (icon.isNull() || !QET::Palette::isDark(widget->palette())) {
+		return icon;
+	}
+	return QIcon(QET::Palette::forPalette(
+		icon.pixmap(size, widget->devicePixelRatio()),
+		widget->palette()));
+}
+
+/**
 	@brief ElementPickerPopup::ElementPickerPopup
 	@param source : the collection widget whose model the search runs against
 	@param parent
@@ -107,7 +126,6 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_edit_available->setIconSize(QSize(20, 20));
 	m_edit_available->setMinimumHeight(220);
 	for (QListWidget *list : {m_edit_row, m_edit_available}) {
-		list->setItemDelegate(new ElementPreviewDelegate(list));
 		list->setDragDropMode(QAbstractItemView::DragDrop);
 		list->setDefaultDropAction(Qt::MoveAction);
 		list->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -169,7 +187,6 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_edit_symbols_search->setClearButtonEnabled(true);
 	m_edit_symbols = new QListWidget(m_edit_symbols_box);
 	m_edit_symbols->setIconSize(QSize(32, 32));
-	m_edit_symbols->setItemDelegate(new ElementPreviewDelegate(m_edit_symbols));
 	m_edit_symbols->setMinimumHeight(220);
 	m_edit_symbols->setDragDropMode(QAbstractItemView::DragOnly);
 	m_edit_symbols->setDefaultDropAction(Qt::CopyAction);
@@ -384,10 +401,7 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 			auto *button = new QToolButton(m_commands);
 			button->setAutoRaise(true);
 			button->setIconSize(QSize(24, 24));
-				//No item delegate on a button: adapt the preview here
-			button->setIcon(QIcon(QET::Palette::forPalette(
-				location.icon().pixmap(QSize(24, 24), devicePixelRatio()),
-				palette())));
+			button->setIcon(elementIcon(location.icon(), QSize(24, 24), this));
 			button->setToolTip(location.name());
 			button->setFocusPolicy(Qt::NoFocus);
 			connect(button, &QToolButton::clicked, this, [this, location]() {
@@ -551,7 +565,7 @@ QListWidgetItem *ElementPickerPopup::barItem(const QString &id, bool icon_only) 
 		const ElementsLocation location(id);
 		if (location.exist()) {
 			text = location.name();
-			icon = location.icon();
+			icon = elementIcon(location.icon(), QSize(24, 24), this);
 		}
 	} else if (QAction *action = commandAction(id)) {
 		text = action->text().remove(QLatin1Char('&'));
@@ -641,7 +655,8 @@ void ElementPickerPopup::runSymbolSearch()
 		if (ElementsLocation(hit.path).isProject()) {
 			continue;
 		}
-		auto *item = new QListWidgetItem(hit.icon, hit.name);
+		auto *item = new QListWidgetItem(
+			elementIcon(hit.icon, m_edit_symbols->iconSize(), this), hit.name);
 		item->setData(Qt::UserRole, hit.path);
 		item->setToolTip(QStringLiteral("%1\n%2").arg(hit.name, hit.folder));
 		m_edit_symbols->addItem(item);
