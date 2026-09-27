@@ -98,6 +98,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_mouse_gestures_cb">
+         <property name="toolTip">
+          <string>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</string>
+         </property>
+         <property name="text">
+          <string>Gestes de la souris avec le bouton droit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Afficher les guides par défaut (appliqué au prochain lancement)</string>
