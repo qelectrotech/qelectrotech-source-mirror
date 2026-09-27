@@ -20,6 +20,7 @@
 #include "../../properties/elementdata.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
+#include "../legacyelementtypes.h"
 #include "../projectdatabase.h"
 #include "ui_elementquerywidget.h"
 
@@ -674,7 +675,9 @@ void ElementQueryWidget::on_m_load_pb_clicked()
 
 	auto value_object = value.toObject();
 	if (value_object.value("query").isString()) {
-		setQuery(value_object.value("query").toString());
+			//A query saved before June 2022 names element types the old way
+		setQuery(LegacyElementTypes::upgradeQuery(
+					 value_object.value("query").toString()));
 	}
 }
 

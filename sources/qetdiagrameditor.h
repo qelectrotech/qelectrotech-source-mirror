@@ -256,6 +256,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,
+		*m_group_selection = nullptr,   ///< Group the selected items (#1070)
+		*m_ungroup_selection = nullptr, ///< Ungroup the selected groups
 		*m_close_file,			///< Close current project file
 		*m_save_file,			///< Save current project
 		*m_save_file_as,		///< Save current project as a specific file

@@ -404,10 +404,16 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 			button->setIcon(action->icon());
 		}
 		const QKeySequence key = action->shortcut();
-		button->setToolTip(key.isEmpty()
-				   ? text
-				   : QStringLiteral("%1 (%2)").arg(
-					     text, key.toString(QKeySequence::NativeText)));
+		QString tip = key.isEmpty()
+				? text
+				: QStringLiteral("%1 (%2)").arg(
+					  text, key.toString(QKeySequence::NativeText));
+			//The status tip says what the command does, which a short
+			//name such as "Orienter les textes" does not
+		if (!action->statusTip().isEmpty()) {
+			tip += QLatin1Char('\n') + action->statusTip();
+		}
+		button->setToolTip(tip);
 		button->setEnabled(action->isEnabled());
 		button->setFocusPolicy(Qt::NoFocus);
 		connect(button, &QToolButton::clicked, this, [this, action]() {

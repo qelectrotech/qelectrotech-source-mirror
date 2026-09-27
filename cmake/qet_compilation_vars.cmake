@@ -234,6 +234,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/itemgroups.cpp
+  ${QET_DIR}/sources/itemgroups.h
   ${QET_DIR}/sources/lastusedstyle.cpp
   ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp
@@ -327,6 +329,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.cpp
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.h
 
+  ${QET_DIR}/sources/dataBase/legacyelementtypes.h
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
   ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
@@ -838,6 +841,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/removediagramcommand.h
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.cpp
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
+  ${QET_DIR}/sources/undocommand/groupitemscommand.cpp
+  ${QET_DIR}/sources/undocommand/groupitemscommand.h
   ${QET_DIR}/sources/undocommand/alignselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/alignselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp

@@ -111,6 +111,19 @@ add_test(NAME tst_alignment COMMAND tst_alignment)
 target_include_directories(tst_alignment PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_alignment PRIVATE Qt::Test)
 
+# itemgroups.cpp keeps group membership and the selection rule apart from
+# Diagram, so it is tested here on a plain scene of rectangles.
+add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.cpp)
+add_test(NAME tst_itemgroups COMMAND tst_itemgroups)
+target_include_directories(tst_itemgroups PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_itemgroups PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+# legacyelementtypes.h is header-only: the rewrite of element type names in
+# nomenclature queries saved before June 2022.
+add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)
+add_test(NAME tst_legacyelementtypes COMMAND tst_legacyelementtypes)
+target_include_directories(tst_legacyelementtypes PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_legacyelementtypes PRIVATE Qt::Test)
+
 add_executable(
   tst_qetpalette
   tst_qetpalette.cpp

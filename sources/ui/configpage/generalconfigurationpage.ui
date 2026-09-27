@@ -95,6 +95,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_collection_search_flat_cb">
+         <property name="toolTip">
+          <string>Coché : une seule liste, la meilleure correspondance en premier. Décoché : l'arborescence de la collection, filtrée sur la recherche.</string>
+         </property>
+         <property name="text">
+          <string>Afficher les résultats de recherche sous forme de liste triée</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_context_toolbar_cb">
          <property name="toolTip">
           <string>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s'effacent quand la souris s'éloigne.</string>

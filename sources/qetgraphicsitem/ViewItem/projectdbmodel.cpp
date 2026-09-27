@@ -19,6 +19,7 @@
 
 #include <algorithm>
 
+#include "../../dataBase/legacyelementtypes.h"
 #include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
@@ -294,7 +295,9 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 		return;
 	
 	setIdentifier(element.firstChildElement("identifier").text());
-	setQuery(element.firstChildElement("query").text());
+		//A query saved before June 2022 names element types the old way
+	setQuery(LegacyElementTypes::upgradeQuery(
+				 element.firstChildElement("query").text()));
 	
 	//Index 0,0
 	auto index_00 = element.firstChildElement("index00");

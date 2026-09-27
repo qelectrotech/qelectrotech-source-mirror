@@ -40,7 +40,7 @@ class QParallelAnimationGroup;
 	Typical interactive use:
 	@code
 	if (RotateTextsCommand::hasSelectedTexts(diagram)) {
-		qreal rotation = 0;
+		qreal rotation = RotateTextsCommand::currentRotation(diagram);
 		if (RotateTextsCommand::askRotation(rotation))
 			diagram->undoStack().push(new RotateTextsCommand(diagram, rotation));
 	}
@@ -53,7 +53,9 @@ class RotateTextsCommand : public QUndoCommand
 
 			/// @return true if @p diagram has at least one selected text or text group to rotate.
 		static bool hasSelectedTexts(Diagram *diagram);
-			/// Open the orientation dialog. @return true and set @p rotation if accepted, false if cancelled.
+			/// @return the angle the selected texts share, or 0 if they differ.
+		static qreal currentRotation(Diagram *diagram);
+			/// Open the orientation dialog at @p rotation. @return true and set @p rotation if accepted, false if cancelled.
 		static bool askRotation(qreal &rotation);
 
 		void undo() override;
