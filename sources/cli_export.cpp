@@ -24,8 +24,11 @@
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "diagramcontext.h"
+#include "dxfexport.h"
+#include "exportproperties.h"
 #include "pdf_links.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
@@ -69,6 +72,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-pdf", "pdf"},
 		{"--export-png", "png"},
 		{"--export-svg", "svg"},
+		{"--export-dxf", "dxf"},
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
 		{"--export-bom", "bom"},
@@ -275,6 +279,57 @@ int exportImages(QETProject &project, const QString &format,
 		}
 		out << "  " << path << "\n";
 	}
+	out << "Exported " << diagrams.size() << " diagram(s) -> " << out_dir << "\n";
+	return 0;
+}
+
+/// One DXF file per diagram, written by the same code as the export dialog
+/// (DxfExport) with the dialog's default options -- the export settings of
+/// the preferences -- so both give the same file.
+int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals)
+{
+	const QList<Diagram *> diagrams = project.diagrams();
+	if (diagrams.isEmpty()) {
+		err << "No diagrams to export.\n";
+		return 1;
+	}
+	QDir().mkpath(out_dir);
+
+	ExportProperties properties = ExportProperties::defaultExportProperties();
+	properties.format = QStringLiteral("DXF");
+	if (showTerminals)
+		properties.draw_terminals = true;
+
+	int index = 0;
+	bool has_images = false;
+	for (Diagram *diagram : diagrams) {
+		++index;
+		const QString path = QDir(out_dir).filePath(
+			diagramStem(diagram, index) + ".dxf");
+
+		// Createdxf answers a file it cannot open with a message box and
+		// exit(0), which headless means no message and a success code.
+		QFile probe(path);
+		if (!probe.open(QIODevice::WriteOnly)) {
+			err << "Cannot open '" << path << "' for writing.\n";
+			return 1;
+		}
+		probe.close();
+
+		const QSize size = DxfExport::folioSize(diagram, properties);
+		DxfExport::write(diagram, size.width(), size.height(), path, properties);
+
+		for (QGraphicsItem *item : diagram->items()) {
+			if (qgraphicsitem_cast<DiagramImageItem *>(item)) {
+				has_images = true;
+				break;
+			}
+		}
+		out << "  " << path << "\n";
+	}
+	if (has_images)
+		err << "Note: DXF has no pictures in this format; "
+			   "each picture is exported as an outline box.\n";
 	out << "Exported " << diagrams.size() << " diagram(s) -> " << out_dir << "\n";
 	return 0;
 }
@@ -890,6 +945,8 @@ int run(const QStringList &args)
 	}
 	if (format == "pdf")
 		return exportPdf(project, output, showTerminals);
+	if (format == "dxf")
+		return exportDxf(project, output, showTerminals);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")

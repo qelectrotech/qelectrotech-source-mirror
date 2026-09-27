@@ -360,6 +360,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool exportPdf(const QString &output, bool showTerminals = false);
 		Q_INVOKABLE bool exportPng(const QString &outDir, bool showTerminals = false);
 		Q_INVOKABLE bool exportSvg(const QString &outDir, bool showTerminals = false);
+		Q_INVOKABLE bool exportDxf(const QString &outDir, bool showTerminals = false);
 		Q_INVOKABLE bool exportCables(const QString &output);
 		Q_INVOKABLE bool exportWires(const QString &output);
 		Q_INVOKABLE bool exportBom(const QString &output);

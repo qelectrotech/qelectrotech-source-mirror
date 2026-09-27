@@ -45,6 +45,7 @@ namespace CLIExport {
 		  qelectrotech --export-pdf     <project.qet> <output.pdf> [--show-terminals]
 		  qelectrotech --export-png     <project.qet> <output_dir> [--show-terminals]
 		  qelectrotech --export-svg     <project.qet> <output_dir> [--show-terminals]
+		  qelectrotech --export-dxf     <project.qet> <output_dir> [--show-terminals]
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
 		  qelectrotech --export-bom     <project.qet> <output.csv>
@@ -57,11 +58,14 @@ namespace CLIExport {
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
 
 		PDF: one multi-page document (one diagram per page).
-		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
+		PNG/SVG/DXF: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
+		DXF: the same file the export dialog writes with its default options
+		      (the export settings of the preferences).
 		--show-terminals: also paint terminal markers (red stroke + blue
 		      docking dot) and terminal names, as the interactive editor
 		      does; off by default, matching the GUI export dialog's
-		      default. Has no effect on the non-image export modes.
+		      default. For DXF, draws the terminal markers. Has no effect on
+		      the list export modes.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
 		bom: bill of materials (one row per element) as CSV.

@@ -207,6 +207,13 @@ bool QetScriptApi::exportSvg(const QString &outDir, bool showTerminals)
 	return runFlag(QStringLiteral("--export-svg"), args);
 }
 
+bool QetScriptApi::exportDxf(const QString &outDir, bool showTerminals)
+{
+	QStringList args{outDir};
+	if (showTerminals) args << QStringLiteral("--show-terminals");
+	return runFlag(QStringLiteral("--export-dxf"), args);
+}
+
 bool QetScriptApi::exportCables(const QString &output)
 {
 	return runFlag(QStringLiteral("--export-cables"), {output});

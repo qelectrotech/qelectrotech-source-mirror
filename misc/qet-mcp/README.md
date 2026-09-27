@@ -33,7 +33,7 @@ here read the model.
 | `qet_diff` | **what an edit actually changed** — element moves, adds, removes, relabels; conductor changes; and folio fields, texts, shapes, images, symbol text fields and terminal strips |
 | `qet_scan` | sweep a directory of projects, counting nodes carrying an attribute |
 | `qet_element_info` | a `.elmt`: translated names, terminals, info fields, part counts |
-| `qet_export` | run a headless export (pdf, png, svg, bom, cables, wires, wiring, nets, links, info) |
+| `qet_export` | run a headless export (pdf, png, svg, dxf, bom, cables, wires, wiring, nets, links, info) |
 | `qet_edit` | **change a project** — place, move, rotate, label, wire, number, cross-reference, add text, shapes and images, restyle a symbol's text fields, delete; then diff the result |
 | `qet_element_build` | **author a `.elmt`** — draw a new symbol, with terminals to wire it by |
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |

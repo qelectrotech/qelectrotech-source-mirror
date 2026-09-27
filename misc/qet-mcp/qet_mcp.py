@@ -69,6 +69,7 @@ EXPORT_FORMATS = {
     "pdf": "--export-pdf",
     "png": "--export-png",
     "svg": "--export-svg",
+    "dxf": "--export-dxf",
     "bom": "--export-bom",
     "cables": "--export-cables",
     "wires": "--export-wires",
@@ -2186,7 +2187,7 @@ TOOLS = [
     },
     {
         "name": "qet_export",
-        "description": "Run a QElectroTech export headlessly (pdf, png, svg, bom, "
+        "description": "Run a QElectroTech export headlessly (pdf, png, svg, dxf, bom, "
                        "cables, wires, wiring, nets, links, info). Launches the "
                        "binary in an isolated sandbox so it cannot be captured by, "
                        "or capture, a running QElectroTech.",
