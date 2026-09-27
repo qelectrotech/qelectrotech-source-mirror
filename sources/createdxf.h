@@ -18,6 +18,7 @@
 #ifndef CREATEDXF_H
 #define CREATEDXF_H
 #include <QString>
+#include <QStringList>
 #include <QtCore>
 #include <QtWidgets>
 
@@ -30,7 +31,7 @@ class Createdxf
 	public:
 		Createdxf();
 		~Createdxf();
-		static void dxfBegin (const QString&);
+		static void dxfBegin (const QString&, const QStringList &layers = QStringList());
 		static void dxfEnd(const QString&);
 		// you can add more functions to create more drawings.
 		static void drawCircle(
@@ -159,6 +160,9 @@ class Createdxf
 		static const double sheetHeight;
 		static double		xScale;
 		static double		yScale;
+			/// Layer every entity is written on, "0" unless set; the
+			/// layers themselves are declared by dxfBegin() (discussion #1071).
+		static QString		layer;
 };
 
 #endif // CREATEDXF_H
