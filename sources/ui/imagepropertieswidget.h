@@ -70,6 +70,7 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		qreal m_rotation;
 		qreal m_skewX;
 		qreal m_skewY;
+		QString m_label;
 		// Guards the width/height spinboxes' mutual updates when
 		// "Conserver les proportions" is checked, so setting one
 		// programmatically in response to the other doesn't re-trigger
