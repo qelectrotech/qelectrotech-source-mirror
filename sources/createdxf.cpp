@@ -40,6 +40,16 @@ namespace {
 		text.replace(QLatin1Char('\n'), QLatin1Char(' '));
 		return text;
 	}
+
+	/// Colour code of an entity. 0 is BYBLOCK, which means nothing outside a
+	/// block and so fell back to the default colour; it is also what black
+	/// maps to (RGBcodeTable[0]). BYLAYER (256) looks the same, the layers
+	/// being colour 7, and lets a CAD user recolour a whole layer at once
+	/// (discussion #1071). Real colours are kept.
+	int entityColour(int colour)
+	{
+		return colour == 0 ? 256 : colour;
+	}
 }
 double Createdxf::yScale = 1;
 QString Createdxf::layer = QStringLiteral("0");
@@ -334,7 +344,7 @@ void Createdxf::drawCircle(
 			To_Dxf << 8         << "\r\n";
 			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ is the Center point of circle
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -382,7 +392,7 @@ void Createdxf::drawLine (
 			To_Dxf << 8         << "\r\n";
 			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";
 			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -707,7 +717,7 @@ void Createdxf::drawArc(
 			To_Dxf << 8         << "\r\n";
 			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << color     << "\r\n";    // Colour Code
+			To_Dxf << entityColour(color) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ is the Center point of circle
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -763,7 +773,7 @@ void Createdxf::drawText(
 		To_Dxf << 8         << "\r\n";
 		To_Dxf << layer     << "\r\n";    // Layer name
 		To_Dxf << 62        << "\r\n";
-		To_Dxf << colour    << "\r\n";    // Colour Code
+		To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 		To_Dxf << 10        << "\r\n";    // XYZ
 		To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 		To_Dxf << 20        << "\r\n";
@@ -816,7 +826,7 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 8         << "\r\n";
 			To_Dxf << layer     << "\r\n";    // Layer name
 			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
+			To_Dxf << entityColour(colour) << "\r\n";    // Colour Code
 			To_Dxf << 10        << "\r\n";    // XYZ
 			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
 			To_Dxf << 20        << "\r\n";
@@ -897,7 +907,7 @@ void Createdxf::drawPolyline(const QString &filepath,
 		To_Dxf << 8         << "\r\n";
 		To_Dxf << layer     << "\r\n";    // Layer name
 		To_Dxf << 62        << "\r\n";
-		To_Dxf << colorcode    << "\r\n";    // Colour Code
+		To_Dxf << entityColour(colorcode) << "\r\n";    // Colour Code
 		To_Dxf << 66        << "\r\n";
 		To_Dxf << 1         << "\r\n";
 		To_Dxf << 70        << "\r\n";
