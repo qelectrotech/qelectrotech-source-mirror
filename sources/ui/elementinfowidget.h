@@ -30,6 +30,7 @@ class CustomElementInfoPartWidget;
 class ChangeElementInformationCommand;
 class QCheckBox;
 class QPushButton;
+struct MaterialRecord;
 
 namespace Ui {
 	class ElementInfoWidget;
@@ -64,6 +65,9 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 	private:
 		void buildInterface();
+		void setupMaterialButtons();
+		void materialFromFile(int block);
+		void applyMaterialRecord(const MaterialRecord &record, int block);
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
 		QStringList predefinedKeys() const;
 		void updateSuggestions();

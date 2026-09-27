@@ -332,6 +332,7 @@ target_include_directories(
     ${QET_DIR}/sources/factory/ui
     ${QET_DIR}/sources/print
     ${QET_DIR}/sources/svg
+    ${QET_DIR}/sources/materiallist
 )
 
 if(NOT BUILD_WITH_KF)

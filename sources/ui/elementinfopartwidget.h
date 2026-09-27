@@ -56,10 +56,12 @@ class ElementInfoPartWidget : public QWidget
 		void setEraseTextVisible (bool visible);
 		void setEraseTextChecked (bool check);
 		Qt::CheckState EraseTextCheckState ()const;
+		void setMaterialButtonVisible (bool visible);
 
 	signals:
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
+		void materialButtonClicked();
 
 		//ATTRIBUTES
 	private slots:
