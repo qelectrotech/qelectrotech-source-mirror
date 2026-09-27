@@ -19,6 +19,7 @@
 #define ELEMENTPICKERPOPUP_H
 
 #include "elementslocation.h"
+#include "../shortcutbarsettings.h"
 
 #include <QFrame>
 
@@ -29,6 +30,8 @@ class QStandardItemModel;
 class QLabel;
 class QAction;
 class QHBoxLayout;
+class QListWidget;
+class QListWidgetItem;
 
 /**
 	@brief A cursor-anchored element picker.
@@ -51,8 +54,9 @@ class ElementPickerPopup : public QFrame
 		explicit ElementPickerPopup(ElementsCollectionWidget *source,
 					    QWidget *parent = nullptr);
 
-		void popUpAt(const QPoint &global_pos,
-			     const QList<QAction *> &commands = {});
+		void popUpAt(const QPoint &global_pos);
+		void popUpShortcutBar(const QPoint &global_pos,
+				      ShortcutBarSettings::Context context);
 
 	signals:
 			/// Emitted when the user picks an element; the popup has closed
@@ -60,12 +64,20 @@ class ElementPickerPopup : public QFrame
 
 	protected:
 		void keyPressEvent(QKeyEvent *event) override;
+		void closeEvent(QCloseEvent *event) override;
 
 	private:
 		void runSearch();
 		void chooseCurrent();
 		void showPalette();
+		void show(const QPoint &global_pos);
 		void setCommands(const QList<QAction *> &commands);
+		QAction *commandAction(const QString &id) const;
+		QListWidgetItem *commandItem(const QString &id, bool icon_only) const;
+		void startCustomising();
+		void fillCustomising(const QStringList &ids);
+		void finishCustomising(bool save);
+		void setPickerVisible(bool visible);
 		int loadPaletteDir(const QString &dir_path, const QString &prefix,
 				   int depth);
 
@@ -76,6 +88,14 @@ class ElementPickerPopup : public QFrame
 		QLabel *m_hint = nullptr;
 		QWidget *m_commands = nullptr;
 		QHBoxLayout *m_commands_layout = nullptr;
+			/// Opened as the shortcut bar, as opposed to the plain picker
+		bool m_bar_mode = false;
+		ShortcutBarSettings::Context m_context = ShortcutBarSettings::Canvas;
+			/// Customising the bar in place
+		bool m_customising = false;
+		QWidget *m_editor = nullptr;
+		QListWidget *m_edit_row = nullptr;
+		QListWidget *m_edit_available = nullptr;
 		bool m_palette_mode = true;
 };
 

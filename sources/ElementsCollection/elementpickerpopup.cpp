@@ -22,7 +22,11 @@
 #include <QAction>
 #include <QGuiApplication>
 #include <QHBoxLayout>
+#include <QListWidget>
+#include <QMenu>
+#include <QPushButton>
 #include <QToolButton>
+#include <QCloseEvent>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
@@ -36,6 +40,7 @@
 #include <QSettings>
 
 #include "../qetapp.h"
+#include "../shortcutmanager.h"
 #include "elementslocation.h"
 
 	//The palette is read from disk each time the picker opens. It is meant as
@@ -67,6 +72,90 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_commands_layout->setContentsMargins(0, 0, 0, 0);
 	m_commands_layout->setSpacing(2);
 	m_commands->hide();
+		//SolidWorks: right-click the bar to customise it
+	m_commands->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_commands, &QWidget::customContextMenuRequested, this, [this](const QPoint &pos) {
+		QMenu menu;
+		menu.addAction(tr("Personnaliser la barre…"), this, &ElementPickerPopup::startCustomising);
+		menu.exec(m_commands->mapToGlobal(pos));
+	});
+
+		//Customising, shown instead of everything else. Two lists that
+		//commands are dragged between: the bar, left to right, and the
+		//commands that are not on it.
+	m_editor = new QWidget(this);
+	auto *editor_layout = new QVBoxLayout(m_editor);
+	editor_layout->setContentsMargins(0, 0, 0, 0);
+	auto *help = new QLabel(
+		tr("Glissez les commandes dans la barre, hors de la barre, ou "
+		   "d'une place à l'autre. Un double-clic fait passer une commande "
+		   "d'une liste à l'autre."), m_editor);
+	help->setWordWrap(true);
+	m_edit_row = new QListWidget(m_editor);
+	m_edit_row->setFlow(QListView::LeftToRight);
+	m_edit_row->setWrapping(false);
+	m_edit_row->setIconSize(QSize(24, 24));
+	m_edit_row->setFixedHeight(44);
+	m_edit_available = new QListWidget(m_editor);
+	m_edit_available->setIconSize(QSize(20, 20));
+	m_edit_available->setMinimumHeight(220);
+	for (QListWidget *list : {m_edit_row, m_edit_available}) {
+		list->setDragDropMode(QAbstractItemView::DragDrop);
+		list->setDefaultDropAction(Qt::MoveAction);
+		list->setSelectionMode(QAbstractItemView::SingleSelection);
+	}
+		//A drop copies the item as it was in the other list, so a command
+		//dragged onto the bar would keep its text and one dragged off would
+		//have none. Set the text for the list it has landed in.
+		//Deferred: a drop inserts the row first and copies the item's data
+		//into it afterwards.
+	auto relabel = [this](QListWidget *list, bool icon_only) {
+		return [this, list, icon_only]() {
+			QTimer::singleShot(0, this, [list, icon_only]() {
+				for (int i = 0 ; i < list->count() ; ++i) {
+					QListWidgetItem *item = list->item(i);
+					item->setText(icon_only && !item->icon().isNull()
+						      ? QString() : item->toolTip());
+				}
+			});
+		};
+	};
+	connect(m_edit_row->model(), &QAbstractItemModel::rowsInserted,
+		this, relabel(m_edit_row, true));
+	connect(m_edit_available->model(), &QAbstractItemModel::rowsInserted,
+		this, relabel(m_edit_available, false));
+
+	connect(m_edit_row, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem *item) {
+		const QString id = item->data(Qt::UserRole).toString();
+		delete item;
+		m_edit_available->addItem(commandItem(id, false));
+	});
+	connect(m_edit_available, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem *item) {
+		const QString id = item->data(Qt::UserRole).toString();
+		delete item;
+		m_edit_row->addItem(commandItem(id, true));
+	});
+	auto *defaults = new QPushButton(tr("Valeurs par défaut"), m_editor);
+	auto *cancel = new QPushButton(tr("Annuler"), m_editor);
+	auto *done = new QPushButton(tr("Terminé"), m_editor);
+	done->setDefault(true);
+	connect(defaults, &QPushButton::clicked, this, [this]() {
+		fillCustomising(ShortcutBarSettings::defaultIds(m_context));
+	});
+	connect(cancel, &QPushButton::clicked, this, [this]() { finishCustomising(false); });
+	connect(done, &QPushButton::clicked, this, [this]() { finishCustomising(true); });
+	auto *editor_buttons = new QHBoxLayout();
+	editor_buttons->addWidget(defaults);
+	editor_buttons->addStretch();
+	editor_buttons->addWidget(cancel);
+	editor_buttons->addWidget(done);
+	editor_layout->addWidget(help);
+	editor_layout->addWidget(new QLabel(tr("Dans la barre :"), m_editor));
+	editor_layout->addWidget(m_edit_row);
+	editor_layout->addWidget(new QLabel(tr("Autres commandes :"), m_editor));
+	editor_layout->addWidget(m_edit_available);
+	editor_layout->addLayout(editor_buttons);
+	m_editor->hide();
 
 	m_search = new QLineEdit(this);
 	m_search->setPlaceholderText(tr("Rechercher un élément…"));
@@ -87,6 +176,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	layout->addWidget(m_search);
 	layout->addWidget(m_view);
 	layout->addWidget(m_hint);
+	layout->addWidget(m_editor);
 
 		//Search as you type, after a short idle: shorter than the dock's
 		//500 ms, since the popup is opened and closed in a few seconds, but
@@ -108,10 +198,51 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	focused and any previous query cleared.
 	@param global_pos
 */
-void ElementPickerPopup::popUpAt(const QPoint &global_pos,
-				 const QList<QAction *> &commands)
+void ElementPickerPopup::popUpAt(const QPoint &global_pos)
 {
+	m_bar_mode = false;
+	setCommands({});
+	show(global_pos);
+}
+
+/**
+	@brief ElementPickerPopup::popUpShortcutBar
+	Show the picker at @a global_pos with the shortcut bar's commands for
+	@a context above it.
+	@param global_pos
+	@param context
+*/
+void ElementPickerPopup::popUpShortcutBar(const QPoint &global_pos,
+					  ShortcutBarSettings::Context context)
+{
+	m_bar_mode = true;
+	m_context = context;
+	QList<QAction *> commands;
+	for (const QString &id : ShortcutBarSettings::ids(context)) {
+		if (QAction *action = commandAction(id)) {
+			commands << action;
+		}
+	}
 	setCommands(commands);
+	show(global_pos);
+}
+
+/**
+	@brief ElementPickerPopup::commandAction
+	@return the action registered under @a id by the window this popup
+	belongs to, or nullptr
+*/
+QAction *ElementPickerPopup::commandAction(const QString &id) const
+{
+	return ShortcutManager::instance().action(id, parentWidget());
+}
+
+/**
+	@brief ElementPickerPopup::show
+	Reset the search and show at @a global_pos, kept on screen.
+*/
+void ElementPickerPopup::show(const QPoint &global_pos)
+{
 	m_search->clear();
 	m_model->clear();
 	showPalette();
@@ -130,7 +261,7 @@ void ElementPickerPopup::popUpAt(const QPoint &global_pos,
 	}
 
 	move(pos);
-	show();
+	QFrame::show();
 	m_search->setFocus();
 }
 
@@ -178,7 +309,138 @@ void ElementPickerPopup::setCommands(const QList<QAction *> &commands)
 		m_commands_layout->addWidget(button);
 	}
 	m_commands_layout->addStretch();
-	m_commands->setVisible(!commands.isEmpty());
+	if (m_bar_mode)
+	{
+		auto *customise = new QToolButton(m_commands);
+		customise->setAutoRaise(true);
+		customise->setText(QStringLiteral("…"));
+		customise->setToolTip(tr("Personnaliser la barre…"));
+		customise->setFocusPolicy(Qt::NoFocus);
+		connect(customise, &QToolButton::clicked, this, &ElementPickerPopup::startCustomising);
+		m_commands_layout->addWidget(customise);
+	}
+		//An empty bar still shows, so it can be customised back
+	m_commands->setVisible(m_bar_mode || !commands.isEmpty());
+}
+
+/**
+	@brief ElementPickerPopup::commandItem
+	@return a list item for command @a id: icon only, for the bar row, or
+	icon and text, for the list of other commands. The id is in UserRole.
+*/
+QListWidgetItem *ElementPickerPopup::commandItem(const QString &id, bool icon_only) const
+{
+	QAction *action = commandAction(id);
+	const QString text = action ? action->text().remove(QLatin1Char('&')) : id;
+	auto *item = new QListWidgetItem();
+	item->setData(Qt::UserRole, id);
+	item->setToolTip(text);
+	if (action && !action->icon().isNull()) {
+		item->setIcon(action->icon());
+	}
+	if (!icon_only || item->icon().isNull()) {
+		item->setText(text);
+	}
+	return item;
+}
+
+/**
+	@brief ElementPickerPopup::startCustomising
+	Turn the bar into a small window holding the two lists. A Qt::Popup
+	closes as soon as the mouse is pressed outside it and keeps the mouse
+	grab during a drag, so the window is re-shown as a tool window for the
+	time of the edit.
+*/
+void ElementPickerPopup::startCustomising()
+{
+	const QPoint where = pos();
+	m_customising = true;
+	hide();
+	setWindowFlags(Qt::Tool);
+	setWindowTitle(tr("Personnaliser la barre de raccourcis : %1")
+		       .arg(ShortcutBarSettings::title(m_context)));
+
+	fillCustomising(ShortcutBarSettings::ids(m_context));
+	m_commands->hide();
+	setPickerVisible(false);
+	m_editor->show();
+
+	adjustSize();
+	move(where);
+	QFrame::show();
+	activateWindow();
+}
+
+/**
+	@brief ElementPickerPopup::fillCustomising
+	Put @a ids on the bar row, and every other available command in the
+	list below it.
+*/
+void ElementPickerPopup::fillCustomising(const QStringList &ids)
+{
+	m_edit_row->clear();
+	m_edit_available->clear();
+	for (const QString &id : ids) {
+		m_edit_row->addItem(commandItem(id, true));
+	}
+	for (const QString &id : ShortcutBarSettings::availableIds()) {
+		if (!ids.contains(id)) {
+			m_edit_available->addItem(commandItem(id, false));
+		}
+	}
+	m_edit_available->sortItems();
+}
+
+/**
+	@brief ElementPickerPopup::finishCustomising
+	Leave the edit, saving the bar row when @a save, and show the bar again
+	where it was so the result can be seen and used straight away.
+*/
+void ElementPickerPopup::finishCustomising(bool save)
+{
+	if (save)
+	{
+		QStringList ids;
+		for (int i = 0 ; i < m_edit_row->count() ; ++i) {
+			ids << m_edit_row->item(i)->data(Qt::UserRole).toString();
+		}
+		ShortcutBarSettings::setIds(m_context, ids);
+	}
+
+	const QPoint where = pos();
+	m_customising = false;
+	hide();
+	m_editor->hide();
+	setPickerVisible(true);
+	setWindowFlags(Qt::Popup);
+	setWindowTitle(QString());
+	popUpShortcutBar(where, m_context);
+}
+
+/**
+	@brief ElementPickerPopup::closeEvent
+	Closing the customising window from its title bar cancels the edit,
+	like the Annuler button, rather than leaving the bar half-edited.
+*/
+void ElementPickerPopup::closeEvent(QCloseEvent *event)
+{
+	if (m_customising) {
+		event->ignore();
+		finishCustomising(false);
+		return;
+	}
+	QFrame::closeEvent(event);
+}
+
+/**
+	@brief ElementPickerPopup::setPickerVisible
+	Show or hide the search field, the results and the hint line.
+*/
+void ElementPickerPopup::setPickerVisible(bool visible)
+{
+	m_search->setVisible(visible);
+	m_view->setVisible(visible);
+	m_hint->setVisible(visible);
 }
 
 /**
@@ -259,17 +521,25 @@ void ElementPickerPopup::keyPressEvent(QKeyEvent *event)
 	switch (event->key())
 	{
 		case Qt::Key_Escape:
-			hide();
+			if (m_customising) {
+				finishCustomising(false);
+			} else {
+				hide();
+			}
 			return;
 		case Qt::Key_Return:
 		case Qt::Key_Enter:
-			chooseCurrent();
+			if (m_customising) {
+				finishCustomising(true);
+			} else {
+				chooseCurrent();
+			}
 			return;
 		case Qt::Key_Down:
 		case Qt::Key_Up:
 		case Qt::Key_PageDown:
 		case Qt::Key_PageUp:
-			if (m_model->rowCount()) {
+			if (!m_customising && m_model->rowCount()) {
 					//Forwarded rather than focus-switched, so typing carries
 					//on going to the search field.
 				QCoreApplication::sendEvent(m_view, event);
