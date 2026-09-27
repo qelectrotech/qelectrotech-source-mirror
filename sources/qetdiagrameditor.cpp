@@ -229,6 +229,13 @@ void QETDiagramEditor::setUpElementsCollectionWidget()
 	m_qdw_elmt_collection->setWidget(m_element_collection_widget);
 	m_element_collection_widget->expandFirstItems();
 
+		//The widget does not know which view should receive the element -- it
+		//is also used by the picker popup, which has no editor ancestor -- so
+		//the host decides.
+	connect(m_element_collection_widget,
+		&ElementsCollectionWidget::insertElementRequested,
+		this, &QETDiagramEditor::insertElementFromCollection);
+
 	addDockWidget(Qt::RightDockWidgetArea, m_qdw_elmt_collection);
 }
 
@@ -809,6 +816,25 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
+		//Re-enter placement mode with the element placed last. Bare A rather
+		//than Space: Space already rotates the pending element *inside*
+		//placement mode (diagrameventaddelement.cpp), and is taken three times
+		//over in this editor besides. A matches KiCad's add-symbol key and
+		//reads correctly in the source language ("Ajouter"). ShortcutManager
+		//makes it a default, not a commitment -- it appears in the Shortcuts
+		//preference page like every other binding.
+	m_insert_last_element = new QAction(QET::Icons::ElementNew,
+					    tr("Insérer le dernier élément"), this);
+	m_insert_last_element->setStatusTip(
+		tr("Place à nouveau le dernier élément inséré", "status bar tip"));
+	m_insert_last_element->setData("insert_last_element");
+	m_insert_last_element->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_insert_last_element, "diagrameditor.insert_last_element",
+		tr("Éditeur de schémas"), Qt::Key_A);
+	connect(m_insert_last_element, &QAction::triggered,
+		this, &QETDiagramEditor::insertLastElement);
+	addAction(m_insert_last_element);
 		//Type to find and run any command, as SolidWorks' "Search Commands"
 		//and the command palette of many editors. Ctrl+Shift+P, the key those
 		//editors use, is taken by the autonumbering dock; M for "menu".
@@ -1121,6 +1147,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
+	menu_edition -> addAction(m_insert_last_element);
 	menu_edition -> addAction(m_command_search);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
@@ -2030,6 +2057,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_zoom_actions_group.           setEnabled(opened_diagram);
 	m_select_actions_group.         setEnabled(opened_diagram);
 	m_add_item_actions_group.       setEnabled(editable_project);
+	m_insert_last_element->         setEnabled(opened_diagram && editable_project && !m_last_inserted_element.isNull());
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_background_color_button->    setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
@@ -2925,6 +2953,7 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		&QETDiagramEditor::selectionChanged,
 		Qt::DirectConnection);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
+	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
 }
 
 /**
@@ -3033,6 +3062,53 @@ void QETDiagramEditor::selectionChanged()
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }
 
+
+/**
+	@brief QETDiagramEditor::insertElementFromCollection
+	Place @a location on the current folio using the interactive placement
+	mode -- the same mode a drag and drop ends in, entered without the drag.
+	@param location
+*/
+void QETDiagramEditor::insertElementFromCollection(const ElementsLocation &location)
+{
+	DiagramView *dv = currentDiagramView();
+	if (dv && dv->startElementPlacement(location, dv->defaultPlacementPos())) {
+		return;
+	}
+
+		//Nowhere to place it: no folio open, or a read-only project. Do what
+		//a double click did before it placed, rather than nothing.
+	m_element_collection_widget->editLocation(location);
+}
+
+/**
+	@brief QETDiagramEditor::rememberPlacedElement
+	Remember @a location for "insert last element". Connected to every view,
+	so an element placed by drag and drop counts as well as one placed from
+	the collection without a drag. Macros never reach here: the view does not
+	report them, since re-entering their placement mode from a shortcut has
+	not been thought through.
+	@param location
+*/
+void QETDiagramEditor::rememberPlacedElement(const ElementsLocation &location)
+{
+	m_last_inserted_element = location;
+	m_insert_last_element->setEnabled(true);
+}
+
+/**
+	@brief QETDiagramEditor::insertLastElement
+	Re-enter placement mode with the element placed most recently, so a run of
+	the same symbol can be dropped without returning to the collection.
+*/
+void QETDiagramEditor::insertLastElement()
+{
+	if (!m_last_inserted_element.isElement()
+	    || !m_last_inserted_element.exist()) {
+		return;
+	}
+	insertElementFromCollection(m_last_inserted_element);
+}
 
 /**
 	@brief QETDiagramEditor::generateTerminalBlock
