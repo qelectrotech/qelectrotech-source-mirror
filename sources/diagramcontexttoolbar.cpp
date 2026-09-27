@@ -23,6 +23,7 @@
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QSettings>
+#include <QStringBuilder>
 #include <QToolButton>
 
 namespace {
@@ -92,7 +93,11 @@ void DiagramContextToolbar::showAt(const QPoint &viewport_pos,
 		} else {
 			button->setIcon(action->icon());
 		}
-		button->setToolTip(text);
+			//The status tip says what the command does, which a short
+			//name such as "Orienter les textes" does not
+		button->setToolTip(action->statusTip().isEmpty()
+				   ? text
+				   : text % QLatin1Char('\n') % action->statusTip());
 		button->setEnabled(action->isEnabled());
 		connect(button, &QToolButton::clicked, action, &QAction::trigger);
 		m_layout->addWidget(button);
