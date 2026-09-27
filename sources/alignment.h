@@ -20,7 +20,11 @@
 
 #include "textgrid.h"
 
+#include <QList>
 #include <QPointF>
+#include <QRectF>
+
+#include <algorithm>
 
 /**
 	The geometry behind the align commands, kept free of any scene so it
@@ -28,6 +32,84 @@
 */
 namespace Alignment
 {
+	/**
+		What the items of a selection are lined up on.
+	*/
+	enum Edge {
+		Left,    ///< left edges, on the left-most one
+		HCenter, ///< reference points, on the mean of their x
+		Right,   ///< right edges, on the right-most one
+		Top,     ///< top edges, on the top-most one
+		VCenter, ///< reference points, on the mean of their y
+		Bottom   ///< bottom edges, on the bottom-most one
+	};
+
+	/**
+		One item to align: its edges, and the point that counts as its
+		centre. For a symbol that point is its origin, where its wires
+		usually leave, not the middle of its drawn shape.
+	*/
+	struct Item {
+		QRectF edges;
+		QPointF ref;
+	};
+
+	/**
+		@return true if aligning on @a edge moves items along x
+	*/
+	inline bool isHorizontal(Edge edge)
+	{
+		return edge == Left || edge == HCenter || edge == Right;
+	}
+
+	/**
+		@return the movement of each of @a items that lines them up on
+		@a edge, in the same order. Items only move across the line they
+		are aligned on: aligning left never moves anything up or down.
+	*/
+	inline QList<QPointF> alignOffsets(const QList<Item> &items, Edge edge)
+	{
+		QList<qreal> values;
+		for (const Item &item : items)
+		{
+			switch (edge) {
+				case Left:    values << item.edges.left();   break;
+				case HCenter: values << item.ref.x();        break;
+				case Right:   values << item.edges.right();  break;
+				case Top:     values << item.edges.top();    break;
+				case VCenter: values << item.ref.y();        break;
+				case Bottom:  values << item.edges.bottom(); break;
+			}
+		}
+
+		QList<QPointF> offsets;
+		if (values.isEmpty())
+			return offsets;
+
+		qreal target = 0;
+		switch (edge) {
+			case Left:
+			case Top:
+				target = *std::min_element(values.cbegin(), values.cend());
+				break;
+			case Right:
+			case Bottom:
+				target = *std::max_element(values.cbegin(), values.cend());
+				break;
+			case HCenter:
+			case VCenter:
+				for (qreal v : std::as_const(values))
+					target += v;
+				target /= values.size();
+				break;
+		}
+
+		for (qreal v : std::as_const(values))
+			offsets << (isHorizontal(edge) ? QPointF(target - v, 0)
+						       : QPointF(0, target - v));
+		return offsets;
+	}
+
 	/**
 		@return the movement that puts p on a grid of x_grid by y_grid,
 		divided by divisor as TextGrid::snap() does, or a null point when
@@ -43,6 +125,25 @@ namespace Alignment
 		const QPointF offset = TextGrid::snap(p, x_grid, y_grid, divisor) - p;
 		auto clean = [](qreal v) { return qAbs(v) < 1e-6 ? 0.0 : v; };
 		return QPointF(clean(offset.x()), clean(offset.y()));
+	}
+
+	/**
+		@return @a offset, the movement alignOffsets() gave an item at
+		@a pos, rounded so the item lands on the grid along the line it is
+		aligned on. The other coordinate is left as it is, even off the
+		grid: aligning left must not also move items up or down.
+		Edges of items whose width is not a whole number of grid steps
+		apart from their origin cannot all land on one line; they end up as
+		close to it as the grid allows.
+	*/
+	inline QPointF snappedOffset(const QPointF &pos, const QPointF &offset, Edge edge,
+				     int x_grid, int y_grid, qreal divisor = 1)
+	{
+		const QPointF snap = gridOffset(pos + offset, x_grid, y_grid, divisor);
+		QPointF result = offset + (isHorizontal(edge) ? QPointF(snap.x(), 0)
+							       : QPointF(0, snap.y()));
+		auto clean = [](qreal v) { return qAbs(v) < 1e-6 ? 0.0 : v; };
+		return QPointF(clean(result.x()), clean(result.y()));
 	}
 }
 

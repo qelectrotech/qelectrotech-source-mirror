@@ -21,10 +21,13 @@
 #include "../alignment.h"
 #include "../diagram.h"
 #include "../diagramcontent.h"
+#include "../itemgroups.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetgraphicsitem/qetshapeitem.h"
 
+#include <QHash>
 #include <QSettings>
 
 /**
@@ -42,8 +45,6 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 	QUndoCommand(parent),
 	m_diagram(diagram)
 {
-	Q_UNUSED(mode)
-
 	DiagramContent dc(diagram);
 	m_locked_count = dc.removeNonMovableItems();
 
@@ -52,24 +53,130 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"), Diagram::yGrid).toInt();
 	const qreal text_divisor = settings.value(TextGrid::settings_key, 1).toReal();
 
+		//Each kind goes where dragging it would have left it: symbols and
+		//pictures on the folio grid, free texts on the text grid.
+		//Shapes are left out: they are made of several points and no single
+		//one of them is the obvious one to snap.
+	struct Entry {
+		QGraphicsObject *item;
+		Alignment::Item geometry;
+		qreal divisor;
+	};
+	QList<Entry> entries;
+		//A symbol's edges are its own outline, without its texts, and its
+		//centre is its origin point: that is where its wires leave.
+	for (Element *element : std::as_const(dc.m_elements))
+		entries << Entry{element, {element->sceneBoundingRect(), element->pos()}, 1};
+		//A picture's edges are the picture's, without its caption
+	for (DiagramImageItem *image : std::as_const(dc.m_images))
+	{
+		const QRectF rect = image->mapRectToScene(image->imageRect());
+		entries << Entry{image, {rect, rect.center()}, 1};
+	}
+	for (IndependentTextItem *text : std::as_const(dc.m_text_fields))
+		entries << Entry{text, {text->sceneBoundingRect(), text->sceneBoundingRect().center()}, text_divisor};
+	m_item_count = entries.size();
+
 	auto move = [this](QGraphicsObject *item, const QPointF &offset)
 	{
 		if (!offset.isNull())
 			new QPropertyUndoCommand(item, "pos", item->pos(), item->pos() + offset, this);
 	};
 
-		//Each kind goes where dragging it would have left it: symbols and
-		//pictures on the folio grid, free texts on the text grid.
-		//Shapes are left out: they are made of several points and no single
-		//one of them is the obvious one to snap.
-	for (Element *element : std::as_const(dc.m_elements))
-		move(element, Alignment::gridOffset(element->pos(), x_grid, y_grid));
-	for (DiagramImageItem *image : std::as_const(dc.m_images))
-		move(image, Alignment::gridOffset(image->pos(), x_grid, y_grid));
-	for (IndependentTextItem *text : std::as_const(dc.m_text_fields))
-		move(text, Alignment::gridOffset(text->pos(), x_grid, y_grid, text_divisor));
+	if (mode == SnapToGrid)
+	{
+		for (const Entry &entry : std::as_const(entries))
+			move(entry.item, Alignment::gridOffset(entry.item->pos(), x_grid, y_grid, entry.divisor));
+		setText(QObject::tr("Aligner %n objet(s) sur la grille", "", childCount()));
+		return;
+	}
 
-	setText(QObject::tr("Aligner %n objet(s) sur la grille", "", childCount()));
+		//A group (#1070) lines up as one piece: its edges are its members'
+		//together, its centre the middle of that box, and all its members
+		//move by the same amount, so the group keeps its shape. Shapes in a
+		//group come along; shapes outside one are left out, as above.
+	struct Unit {
+		QList<QGraphicsObject *> members;
+		Alignment::Item geometry;
+		QGraphicsObject *snap_item = nullptr; ///< lands on its grid
+		qreal divisor = 1;
+	};
+	QList<Unit> units;
+	QHash<QUuid, int> group_units;
+	auto unitFor = [&](QGraphicsObject *item) -> Unit &
+	{
+		const QUuid group = ItemGroups::groupOf(item);
+		if (group.isNull()) {
+			units << Unit();
+			return units.last();
+		}
+		if (!group_units.contains(group)) {
+			group_units.insert(group, units.size());
+			units << Unit();
+		}
+		return units[group_units.value(group)];
+	};
+	for (const Entry &entry : std::as_const(entries))
+	{
+		Unit &unit = unitFor(entry.item);
+		unit.members << entry.item;
+		unit.geometry.edges = unit.geometry.edges.isNull()
+				? entry.geometry.edges
+				: unit.geometry.edges.united(entry.geometry.edges);
+		unit.geometry.ref = entry.geometry.ref;
+			//Symbols come first in entries, so a group with one snaps on it
+		if (!unit.snap_item) {
+			unit.snap_item = entry.item;
+			unit.divisor = entry.divisor;
+		}
+	}
+	for (QetShapeItem *shape : std::as_const(dc.m_shapes))
+	{
+		if (ItemGroups::groupOf(shape).isNull())
+			continue;
+		Unit &unit = unitFor(shape);
+		unit.members << shape;
+		unit.geometry.edges = unit.geometry.edges.isNull()
+				? shape->sceneBoundingRect()
+				: unit.geometry.edges.united(shape->sceneBoundingRect());
+		if (!unit.snap_item)
+			unit.snap_item = shape;
+	}
+	for (Unit &unit : units) {
+		if (unit.members.size() > 1)
+			unit.geometry.ref = unit.geometry.edges.center();
+	}
+	m_item_count = units.size();
+
+		//Lining up a single item on itself would only snap it
+	if (units.size() < 2)
+		return;
+
+	Alignment::Edge edge = Alignment::Left;
+	switch (mode) {
+		case AlignLeft:    edge = Alignment::Left;    break;
+		case AlignHCenter: edge = Alignment::HCenter; break;
+		case AlignRight:   edge = Alignment::Right;   break;
+		case AlignTop:     edge = Alignment::Top;     break;
+		case AlignVCenter: edge = Alignment::VCenter; break;
+		case AlignBottom:  edge = Alignment::Bottom;  break;
+		case SnapToGrid:   break;
+	}
+
+	QList<Alignment::Item> geometry;
+	for (const Unit &unit : std::as_const(units))
+		geometry << unit.geometry;
+	const QList<QPointF> offsets = Alignment::alignOffsets(geometry, edge);
+
+	for (int i = 0 ; i < units.size() ; ++i)
+	{
+		const Unit &unit = units.at(i);
+		const QPointF offset = Alignment::snappedOffset(unit.snap_item->pos(), offsets.at(i), edge,
+								x_grid, y_grid, unit.divisor);
+		for (QGraphicsObject *member : unit.members)
+			move(member, offset);
+	}
+	setText(QObject::tr("Aligner %n objet(s)", "", childCount()));
 }
 
 /**
@@ -116,4 +223,13 @@ int AlignSelectionCommand::movedCount() const
 int AlignSelectionCommand::lockedCount() const
 {
 	return m_locked_count;
+}
+
+/**
+	@return the number of things that took part: symbols, pictures and
+	free texts whose position is not locked, a group counting as one.
+*/
+int AlignSelectionCommand::itemCount() const
+{
+	return m_item_count;
 }
