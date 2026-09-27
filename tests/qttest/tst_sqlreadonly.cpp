@@ -40,6 +40,7 @@
 
 #include <QtTest>
 #include <QSqlDatabase>
+#include <QSqlError>
 #include <QSqlQuery>
 
 class TstSqlReadOnly : public QObject
@@ -63,6 +64,7 @@ class TstSqlReadOnly : public QObject
 		void doesNotExecuteWhatItRefuses();
 		void refusedQueryCannotBeRunAgain();
 		void acceptedQueryRunAgainStillReads();
+		void returnsEveryRowOfACompoundSelect();
 		void leavesTheConnectionWritable();
 
 	private:
@@ -240,6 +242,21 @@ void TstSqlReadOnly::acceptedQueryRunAgainStillReads()
 		++n;
 	}
 	QCOMPARE(n, 2);
+}
+
+void TstSqlReadOnly::returnsEveryRowOfACompoundSelect()
+{
+	// Switching query_only off aborts a statement SQLite is still
+	// stepping through, and an unsorted UNION ALL is one: it came back
+	// with its first row only.
+	QSqlQuery q = QETSql::execReadOnly(
+				m_db, "SELECT uuid FROM element UNION ALL SELECT uuid FROM element");
+	QStringList uuids;
+	while (q.next()) {
+		uuids << q.value(0).toString();
+	}
+	QVERIFY(!q.lastError().isValid());
+	QCOMPARE(uuids, QStringList({"a", "b", "a", "b"}));
 }
 
 void TstSqlReadOnly::leavesTheConnectionWritable()
