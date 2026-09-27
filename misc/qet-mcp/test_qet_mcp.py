@@ -54,6 +54,7 @@ needs_examples = unittest.skipUnless(have_binary and have_examples,
 COIL = "common://10_electric/10_allpole/310_relays_contactors_contacts/01_coils/bobine_ka_a_remanence.elmt"
 SLAVE = ("common://10_electric/10_allpole/310_relays_contactors_contacts/"
          "02_contacts_cross_referencing/15_protection_contacts/contact_relais_nf_esclave.elmt")
+SHARED_UUID = "{11111111-2222-3333-4444-555555555555}"
 # The shipped "going/coming arrow" pair -- a folio-jump link, next_report on
 # one folio linked to previous_report on the next, one terminal each. Same
 # category of element as issue #974's custom "naechste_folie_rechts.elmt" /
@@ -2083,6 +2084,59 @@ class Integration(unittest.TestCase):
         self.assertEqual(d["keyed_by"], "uuid")
         self.assertEqual([c["item"]["uuid"] for c in d["changed"]], [shape_uuid])
         self.assertEqual(len(d["added"]), 1)
+
+    def _old_file(self, same_shape_uuid=False):
+        """A folio with a text and two shapes, as a version without
+        drawing-item uuids wrote it -- or, with same_shape_uuid, hand-edited
+        so that both shapes claim the same one."""
+        r = self.ok(self.sb.edit(self.sb.new(), [
+            {"op": "add_text", "folio": 0, "text": "note", "x": 50, "y": 50},
+            {"op": "add_shape", "folio": 0, "shape": "rectangle", "x1": 10, "y1": 10, "x2": 200, "y2": 120},
+            {"op": "add_shape", "folio": 0, "shape": "line", "x1": 0, "y1": 0, "x2": 5, "y2": 0}]))
+        tree = ET.parse(r["output"])
+        shapes = list(tree.getroot().iter("shape"))
+        for item in [*tree.getroot().iter("input"), *shapes]:
+            del item.attrib["uuid"]
+        if same_shape_uuid:
+            for shape in shapes:
+                shape.set("uuid", SHARED_UUID)
+        tree.write(self.sb.p("old.qet"), encoding="utf-8", xml_declaration=True)
+        return self.sb.p("old.qet")
+
+    def _db_uuids(self, project):
+        rows = m.tool_query(BINARY, project, "SELECT uuid, kind FROM drawing_item_view")["rows"]
+        return sorted((x["uuid"], x["kind"]) for x in rows)
+
+    @staticmethod
+    def _file_uuids(project):
+        root = ET.parse(project).getroot()
+        return sorted((item.get("uuid"), kind)
+                      for tag, kind in (("shape", "shape"), ("input", "text"))
+                      for item in root.iter(tag))
+
+    def test_a_file_without_drawing_uuids_gets_the_same_ones_on_every_open(self):
+        old = self._old_file()
+        first = self._db_uuids(old)
+        self.assertEqual(len(first), 3)
+        self.assertEqual(len({u for u, _ in first}), 3, "each item gets its own")
+        self.assertEqual(self._db_uuids(old), first)
+
+    def test_the_first_save_writes_those_uuids_and_a_reopen_keeps_them(self):
+        old = self._old_file()
+        derived = self._db_uuids(old)
+        saved = self.ok(self.sb.edit(old, [{"op": "add_folio"}], out="saved.qet"))["output"]
+        self.assertEqual(self._file_uuids(saved), derived)
+        self.assertEqual(self._db_uuids(saved), derived)
+        # Saving the same old file again writes the same uuids (#754).
+        again = self.ok(self.sb.edit(old, [{"op": "add_folio"}], out="again.qet"))["output"]
+        self.assertEqual(self._file_uuids(again), derived)
+
+    def test_a_uuid_repeated_in_a_hand_edited_file_names_one_item_only(self):
+        old = self._old_file(same_shape_uuid=True)
+        shapes = [u for u, kind in self._db_uuids(old) if kind == "shape"]
+        self.assertEqual(len(set(shapes)), 2)
+        self.assertIn(SHARED_UUID, shapes)
+        self.assertEqual([u for u, kind in self._db_uuids(old) if kind == "shape"], shapes)
 
     # ---- polygon and path shapes ----
 
