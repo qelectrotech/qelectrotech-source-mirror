@@ -117,6 +117,12 @@ add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.c
 add_test(NAME tst_itemgroups COMMAND tst_itemgroups)
 target_include_directories(tst_itemgroups PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_itemgroups PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+# legacyelementtypes.h is header-only: the rewrite of element type names in
+# nomenclature queries saved before June 2022.
+add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)
+add_test(NAME tst_legacyelementtypes COMMAND tst_legacyelementtypes)
+target_include_directories(tst_legacyelementtypes PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_legacyelementtypes PRIVATE Qt::Test)
 
 add_executable(
   tst_qetpalette

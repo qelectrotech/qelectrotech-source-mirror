@@ -2070,7 +2070,7 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 			//nothing to rotate.
 		if (RotateTextsCommand::hasSelectedTexts(diagram))
 		{
-			qreal rotation = 0;
+			qreal rotation = RotateTextsCommand::currentRotation(diagram);
 			if (RotateTextsCommand::askRotation(rotation))
 				diagram->undoStack().push(new RotateTextsCommand(diagram, rotation));
 		}
