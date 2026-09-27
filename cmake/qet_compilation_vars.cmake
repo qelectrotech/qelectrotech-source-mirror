@@ -716,6 +716,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/borderpropertieswidget.h
   ${QET_DIR}/sources/ui/compositetexteditdialog.cpp
   ${QET_DIR}/sources/ui/compositetexteditdialog.h
+  ${QET_DIR}/sources/ui/conductorpropertieseditorwidget.cpp
+  ${QET_DIR}/sources/ui/conductorpropertieseditorwidget.h
   ${QET_DIR}/sources/ui/contactgroupselectiondialog.cpp
   ${QET_DIR}/sources/ui/contactgroupselectiondialog.h
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.cpp
