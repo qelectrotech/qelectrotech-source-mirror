@@ -24,6 +24,8 @@
 #include <algorithm>
 #include <QSettings>
 
+#include <algorithm>
+
 namespace {
 QString settingsKey(ShortcutBarSettings::Context context)
 {
@@ -157,4 +159,50 @@ QStringList ShortcutBarSettings::availableIds()
 		}
 	}
 	return ids;
+}
+
+/**
+	@return true if @a id is a pinned element's collection path rather than
+	a command id. Command ids never contain "://".
+*/
+bool ShortcutBarSettings::isElement(const QString &id)
+{
+	return id.contains(QLatin1String("://"));
+}
+
+/**
+	@return true if the row for @a context holds at least one element
+*/
+bool ShortcutBarSettings::hasElements(Context context)
+{
+	const QStringList list = ids(context);
+	return std::any_of(list.cbegin(), list.cend(), &ShortcutBarSettings::isElement);
+}
+
+/**
+	@return the width the user gave the bar with its size grip, or 0 when
+	they never did: the tiles then stay on one row
+*/
+int ShortcutBarSettings::barWidth()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/shortcut_bar/width"), 0).toInt();
+}
+
+void ShortcutBarSettings::setBarWidth(int width)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/shortcut_bar/width"), width);
+}
+
+/**
+	@return the size the user left the customising window at, or an invalid
+	size when it was never opened
+*/
+QSize ShortcutBarSettings::editorSize()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/shortcut_bar/editor_size")).toSize();
+}
+
+void ShortcutBarSettings::setEditorSize(const QSize &size)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/shortcut_bar/editor_size"), size);
 }

@@ -17,6 +17,7 @@
 */
 #include "shortcutbarconfigpage.h"
 
+#include "../../ElementsCollection/elementslocation.h"
 #include "../../qeticons.h"
 #include "../../shortcutmanager.h"
 
@@ -180,7 +181,14 @@ void ShortcutBarConfigPage::addSelected()
 void ShortcutBarConfigPage::removeSelected()
 {
 	for (QListWidgetItem *item : m_chosen->selectedItems()) {
-		m_available->addItem(m_chosen->takeItem(m_chosen->row(item)));
+		QListWidgetItem *taken = m_chosen->takeItem(m_chosen->row(item));
+			//A removed element is not a command to list; it is pinned
+			//again from the bar's own customising window
+		if (ShortcutBarSettings::isElement(taken->data(Qt::UserRole).toString())) {
+			delete taken;
+		} else {
+			m_available->addItem(taken);
+		}
 	}
 }
 
@@ -208,15 +216,25 @@ void ShortcutBarConfigPage::resetContext()
 
 /**
 	@brief ShortcutBarConfigPage::appendItem
-	Add @a id to @a list with the command's text and icon. An id no live
-	action carries (a command from a build without it) is still listed, by
-	its id, so saving does not silently drop it.
+	Add @a id to @a list with the command's text and icon, or a pinned
+	element's name and icon. An id no live action carries (a command from a
+	build without it) is still listed, by its id, so saving does not
+	silently drop it.
 */
 void ShortcutBarConfigPage::appendItem(QListWidget *list, const QString &id)
 {
-	QAction *action = ShortcutManager::instance().action(id, nullptr);
-	const QString text = m_descriptions.value(id, id);
-	auto *item = new QListWidgetItem(action ? action->icon() : QIcon(), text);
+	QString text = m_descriptions.value(id, id);
+	QIcon icon;
+	if (ShortcutBarSettings::isElement(id)) {
+		const ElementsLocation location(id);
+		if (location.exist()) {
+			text = location.name();
+			icon = location.icon();
+		}
+	} else if (QAction *action = ShortcutManager::instance().action(id, nullptr)) {
+		icon = action->icon();
+	}
+	auto *item = new QListWidgetItem(icon, text);
 	item->setData(Qt::UserRole, id);
 	list->addItem(item);
 }

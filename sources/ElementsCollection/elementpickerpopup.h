@@ -32,6 +32,9 @@ class QAction;
 class QHBoxLayout;
 class QListWidget;
 class QListWidgetItem;
+class QSizeGrip;
+class QToolButton;
+class QVBoxLayout;
 
 /**
 	@brief A cursor-anchored element picker.
@@ -65,19 +68,23 @@ class ElementPickerPopup : public QFrame
 	protected:
 		void keyPressEvent(QKeyEvent *event) override;
 		void closeEvent(QCloseEvent *event) override;
+		bool eventFilter(QObject *watched, QEvent *event) override;
 
 	private:
 		void runSearch();
 		void chooseCurrent();
 		void showPalette();
 		void show(const QPoint &global_pos);
-		void setCommands(const QList<QAction *> &commands);
+		void setCommands(const QStringList &ids);
+		void layoutTiles(int bar_width);
 		QAction *commandAction(const QString &id) const;
-		QListWidgetItem *commandItem(const QString &id, bool icon_only) const;
+		QListWidgetItem *barItem(const QString &id, bool icon_only) const;
 		void startCustomising();
 		void fillCustomising(const QStringList &ids);
 		void finishCustomising(bool save);
+		void runSymbolSearch();
 		void setPickerVisible(bool visible);
+		void keepOnScreen(const QPoint &global_pos);
 		int loadPaletteDir(const QString &dir_path, const QString &prefix,
 				   int depth);
 
@@ -88,6 +95,14 @@ class ElementPickerPopup : public QFrame
 		QLabel *m_hint = nullptr;
 		QWidget *m_commands = nullptr;
 		QHBoxLayout *m_commands_layout = nullptr;
+			/// The bar's tiles, commands and elements, in order
+		QList<QToolButton *> m_tiles;
+		QVBoxLayout *m_tile_rows = nullptr;
+		QSizeGrip *m_grip = nullptr;
+			/// The size grip is being dragged, from this x at this width
+		bool m_grip_active = false;
+		int m_grip_press_x = 0;
+		int m_grip_press_width = 0;
 			/// Opened as the shortcut bar, as opposed to the plain picker
 		bool m_bar_mode = false;
 		ShortcutBarSettings::Context m_context = ShortcutBarSettings::Canvas;
@@ -96,6 +111,10 @@ class ElementPickerPopup : public QFrame
 		QWidget *m_editor = nullptr;
 		QListWidget *m_edit_row = nullptr;
 		QListWidget *m_edit_available = nullptr;
+			/// Element search, for pinning elements to the bar
+		QWidget *m_edit_symbols_box = nullptr;
+		QLineEdit *m_edit_symbols_search = nullptr;
+		QListWidget *m_edit_symbols = nullptr;
 		bool m_palette_mode = true;
 };
 
