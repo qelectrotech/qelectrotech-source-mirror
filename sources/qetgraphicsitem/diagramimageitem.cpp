@@ -1326,6 +1326,36 @@ QString DiagramImageItem::name() const
 	return tr("une image");
 }
 
+namespace {
+	// Only PNG bytes read from a file are reused as they are: toXml()
+	// has always written PNG, and a hand-edited file holding another
+	// format keeps being converted, exactly as before.
+	bool isPng(const QByteArray &data)
+	{
+		return data.startsWith("\x89PNG\r\n\x1a\n");
+	}
+}
+
+/**
+	@brief DiagramImageItem::encodedPng
+	@return pixmap as PNG bytes, encoded only when cache does not already
+	hold them. QPixmap::cacheKey() changes whenever the pixmap is replaced
+	or modified, which is what makes this safe without every function
+	that edits the picture having to remember to invalidate the cache.
+*/
+const QByteArray &DiagramImageItem::encodedPng(const QPixmap &pixmap, QByteArray &cache, qint64 &cacheKey)
+{
+	if (cacheKey != pixmap.cacheKey())
+	{
+		cache.clear();
+		QBuffer buffer(&cache);
+		buffer.open(QIODevice::WriteOnly);
+		pixmap.save(&buffer, "PNG");
+		cacheKey = pixmap.cacheKey();
+	}
+	return cache;
+}
+
 /**
 	@brief DiagramImageItem::fromXml
 	Load this image from xml element e
@@ -1351,6 +1381,17 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
+	// From the first text node only, not e.text(): that also collects the
+	// text of every child element, so on a cropped or colour-keyed picture
+	// it carries <image_base>'s bytes too. loadFromData() stops at the end
+	// of the first PNG and never notices; a cache written back verbatim
+	// would.
+	const QByteArray ownArray = QByteArray::fromBase64(image_node.toText().data().toLatin1());
+	if (isPng(ownArray) && !pixmap_.isNull())
+	{
+		m_png_cache = ownArray;
+		m_png_cache_key = pixmap_.cacheKey();
+	}
 
 	// Falls back to treating the loaded result as its own base, with no
 	// remembered crop or colours -- correct both for a genuinely plain
@@ -1404,7 +1445,14 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 			const QByteArray baseArray = QByteArray::fromBase64(baseElement.text().toLatin1());
 			QPixmap basePixmap;
 			if (basePixmap.loadFromData(baseArray))
+			{
 				m_base_pixmap = basePixmap;
+				if (isPng(baseArray))
+				{
+					m_base_png_cache = baseArray;
+					m_base_png_cache_key = m_base_pixmap.cacheKey();
+				}
+			}
 		}
 		// m_crop_rect may still refer to a saved file's base image, not
 		// pixmap (used as a fallback above only when nothing better is
@@ -1479,10 +1527,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 	result.setAttribute("is_movable", bool(is_movable_));
 
 	//write the pixmap in the xml element after he was been transformed to base64
-	QByteArray array;
-	QBuffer buffer(&array);
-	buffer.open(QIODevice::ReadWrite);
-	pixmap_.save(&buffer, "PNG");
+	const QByteArray &array = encodedPng(pixmap_, m_png_cache, m_png_cache_key);
 	QDomText base64 = document.createTextNode(array.toBase64());
 	result.appendChild(base64);
 
@@ -1552,10 +1597,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 
 	if (hasCrop || hasColors)
 	{
-		QByteArray baseArray;
-		QBuffer baseBuffer(&baseArray);
-		baseBuffer.open(QIODevice::ReadWrite);
-		m_base_pixmap.save(&baseBuffer, "PNG");
+		const QByteArray &baseArray = encodedPng(m_base_pixmap, m_base_png_cache, m_base_png_cache_key);
 		QDomElement baseElement = document.createElement("image_base");
 		baseElement.appendChild(document.createTextNode(baseArray.toBase64()));
 		result.appendChild(baseElement);
