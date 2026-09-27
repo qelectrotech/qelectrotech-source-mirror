@@ -19,6 +19,8 @@
 #define SHORTCUTBARSETTINGS_H
 
 #include <QList>
+
+class QGraphicsItem;
 #include <QString>
 #include <QStringList>
 
@@ -41,6 +43,7 @@ class ShortcutBarSettings
 		};
 
 		static QList<Context> contexts();
+		static Context contextFor(const QList<QGraphicsItem *> &selection);
 		static QString title(Context context);
 		static QStringList ids(Context context);
 		static QStringList defaultIds(Context context);

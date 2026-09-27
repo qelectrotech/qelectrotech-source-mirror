@@ -27,6 +27,7 @@
 class CellRuler;
 class Conductor;
 class Diagram;
+class DiagramContextToolbar;
 class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
@@ -58,6 +59,8 @@ class DiagramView : public PaletteGraphicsView
 		QAction          *m_create_template = nullptr;
 		QMenu            *m_folio_report_menu = nullptr;
 		QPoint            m_paste_here_pos;
+		QPoint            m_press_pos;
+		DiagramContextToolbar *m_context_toolbar = nullptr;
 		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
@@ -133,6 +136,7 @@ class DiagramView : public PaletteGraphicsView
 		bool gestures() const;
 		void updateCellRulers();
 		void placeCellRulers();
+		void showContextToolbar(const QPoint &viewport_pos);
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which
