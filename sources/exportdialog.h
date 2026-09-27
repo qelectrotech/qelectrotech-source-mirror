@@ -37,7 +37,6 @@ class ExportDialog : public QDialog {
 
 	// methods
 	int diagramsToExportCount() const;
-	static QPointF rotation_transformed(qreal, qreal, qreal, qreal, qreal);
 
 	private:
 	ExportDialog(const ExportDialog &);
@@ -91,7 +90,6 @@ class ExportDialog : public QDialog {
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
 	void generateSvg(Diagram *, int, int, bool, QIODevice &);
-	void generateDxf(Diagram *, int, int, QString &);
 	QImage generateImage(Diagram *, int, int, bool);
 	void exportDiagram(ExportDiagramLine *);
 	qreal diagramRatio(Diagram *);

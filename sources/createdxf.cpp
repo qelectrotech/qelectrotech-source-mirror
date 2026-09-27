@@ -20,7 +20,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QString>
-#include "exportdialog.h"
+#include "dxfexport.h"
 
 
 const double Createdxf::sheetWidth = 4000;
@@ -583,7 +583,7 @@ void Createdxf::drawArcEllipse(
 			arc_endAngle = temp;
 		}
 
-		QPointF transformed_point = ExportDialog::rotation_transformed(
+		QPointF transformed_point = DxfExport::rotation_transformed(
 					center_x,
 					center_y,
 					hotspot_x,
