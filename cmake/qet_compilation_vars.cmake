@@ -73,6 +73,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/editor/ui/terminaleditor.ui
   ${QET_DIR}/sources/ElementsCollection/ui/renamedialog.ui
   ${QET_DIR}/sources/factory/ui/addtabledialog.ui
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistdialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistwidget.ui
   ${QET_DIR}/sources/print/projectprintwindow.ui
@@ -862,6 +863,13 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
+
+  ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
+  ${QET_DIR}/sources/materiallist/materialentrydialog.h
+  ${QET_DIR}/sources/materiallist/materiallist.cpp
+  ${QET_DIR}/sources/materiallist/materiallist.h
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.cpp
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.h
 
   ${QET_DIR}/sources/xml/terminalstripitemxml.cpp
   ${QET_DIR}/sources/xml/terminalstripitemxml.h

@@ -65,6 +65,25 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="2">
+    <widget class="QToolButton" name="m_material_btn">
+     <property name="toolTip">
+      <string extracomment="tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry">Choisir un article dans la liste de matériaux</string>
+     </property>
+     <property name="text">
+      <string notr="true">…</string>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextOnly</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

@@ -20,8 +20,11 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include "../diagram.h"
+#include "../materiallist/materiallist.h"
+#include "../materiallist/materialselectiondialog.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetmessagebox.h"
 #include "../dataBase/projectdatabase.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
@@ -222,6 +225,8 @@ void ElementInfoWidget::buildInterface()
 		m_eipw_list << eipw;
 	}
 
+	setupMaterialButtons();
+
 	m_add_custom_property_btn = new QPushButton(tr("Ajouter une propriété personnalisée"), this);
 	connect(m_add_custom_property_btn, &QPushButton::clicked, this, [this]() { addCustomProperty(); });
 	ui->scroll_vlayout->addWidget(m_add_custom_property_btn);
@@ -330,6 +335,150 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 	}
 
 	return nullptr;
+}
+
+/**
+	@brief ElementInfoWidget::setupMaterialButtons
+	Show the "..." button opening the material file on the description row
+	of each block: one for the main article, one per auxiliary article
+	which really has a description row.
+
+	Only that row carries the button: the same window fills the whole
+	block, so repeating it on every field of the block would just offer
+	five ways to do the same thing.
+*/
+void ElementInfoWidget::setupMaterialButtons()
+{
+	auto register_button = [this](ElementInfoPartWidget *eipw, int block)
+	{
+		eipw->setMaterialButtonVisible(true);
+		connect(eipw, &ElementInfoPartWidget::materialButtonClicked, this,
+				[this, block]() { materialFromFile(block); });
+	};
+
+		//Main article. A terminal has no description row: its article
+		//number is the one which identifies it, so the button sits there.
+	if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(QETInformation::ELMT_DESCRIPTION)) {
+		register_button(eipw, 0);
+	} else if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(QETInformation::ELMT_DESIGNATION)) {
+		register_button(eipw, 0);
+	}
+
+		//Auxiliary articles 1 to 4.
+	const QStringList auxiliary_keys = {
+		QETInformation::ELMT_DESCRIPTION_AUX1,
+		QETInformation::ELMT_DESCRIPTION_AUX2,
+		QETInformation::ELMT_DESCRIPTION_AUX3,
+		QETInformation::ELMT_DESCRIPTION_AUX4
+	};
+
+	for (int block = 1; block <= 4 && block <= auxiliary_keys.size(); ++block)
+	{
+		if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(auxiliary_keys.at(block - 1))) {
+			register_button(eipw, block);
+		}
+	}
+}
+
+/**
+	@brief ElementInfoWidget::materialFromFile
+	Open the material file, let the user pick an article, and write it
+	into the block the button belongs to.
+	@param block 0 for the main article, 1 to 4 for an auxiliary article
+*/
+void ElementInfoWidget::materialFromFile(int block)
+{
+		//Nothing configured yet: the standard location is used, the same
+		//one the preferences offer to create, so that the catalogue can be
+		//reached from here without asking for a file to be saved first.
+	QString path = MaterialList::configuredPath();
+	if (path.isEmpty())
+	{
+		path = MaterialList::defaultPath();
+		MaterialList::setConfiguredPath(path);
+	}
+
+		//A missing or empty file has no entry to pick: offer to write the
+		//header line instead of opening an empty window.
+	if (MaterialList::isEmptyFile(path))
+	{
+		const auto answer = QET::QetMessageBox::question(
+			this,
+			tr("Liste de matériaux absente"),
+			tr("Aucun fichier de liste de matériaux n'existe à cet emplacement :\n"
+			   "%1\n\nLe créer ?", "message asking to create the material file").arg(path),
+			QMessageBox::Yes | QMessageBox::No,
+			QMessageBox::Yes);
+
+		if (answer != QMessageBox::Yes) {
+			return;
+		}
+
+		QString error;
+		if (!MaterialList::createFile(path, &error))
+		{
+			QET::QetMessageBox::critical(this,
+										 tr("Création impossible"),
+										 tr("Impossible de créer le fichier :\n%1\n%2")
+											.arg(path, error));
+			return;
+		}
+	}
+
+		//The catalogue opens on the whole list : the search field starts
+		//empty, whatever the block already holds.
+	MaterialSelectionDialog dialog(path, this);
+	if (dialog.exec() == QDialog::Accepted) {
+		applyMaterialRecord(dialog.selectedRecord(), block);
+	}
+}
+
+/**
+	@brief ElementInfoWidget::applyMaterialRecord
+	Write a catalogue entry into the fields of one block.
+
+	Only the fields of that block are touched: applied to an auxiliary
+	article, the entry never reaches the main article. And a cell which is
+	empty in the file leaves the current value alone, so picking an entry
+	describing only the order reference never wipes a comment.
+	@param record the entry taken from the material file
+	@param block 0 for the main article, 1 to 4 for an auxiliary article
+*/
+void ElementInfoWidget::applyMaterialRecord(const MaterialRecord &record, int block)
+{
+	if (record.values.isEmpty()) {
+		return;
+	}
+
+		//Fill the fields without letting the live edit push one undo
+		//command per line edit: the whole entry must be undoable at once.
+	const bool live_edit = m_live_edit;
+	if (live_edit) {
+		disableLiveEdit();
+	}
+
+	for (const QString &column : MaterialList::columnsForBlock(block))
+	{
+		const QString value = record.value(column);
+		if (value.isEmpty()) {
+			continue;
+		}
+
+		const QString key = MaterialList::elementInfoKey(column, block);
+		if (key.isEmpty() || !QETInformation::elementInfoKeys().contains(key)) {
+			continue;
+		}
+
+		if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(key)) {
+			eipw->setText(value);
+		}
+	}
+
+	if (live_edit) {
+		enableLiveEdit();
+	}
+
+	apply();
 }
 
 /**

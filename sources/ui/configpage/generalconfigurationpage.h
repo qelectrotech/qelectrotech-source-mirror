@@ -47,6 +47,8 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_company_tbt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_tbt_path_cb_currentIndexChanged(int index);
 		void on_m_user_macros_path_cb_currentIndexChanged(int index);
+		void on_m_material_list_browse_pb_clicked();
+		void on_m_material_list_create_pb_clicked();
 		void on_m_indi_text_font_pb_clicked();
 		void on_MaxPartsElementEditorList_sb_valueChanged(int value);
 		void on_DiagramEditor_Grid_PointSize_min_sb_valueChanged(int value);

@@ -20,12 +20,14 @@
 #include "../../qetapp.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
+#include "../../materiallist/materiallist.h"
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
 #include "../../textgrid.h"
 #include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFontDialog>
 #include <QSettings>
 
@@ -228,6 +230,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_user_macros_path_cb->blockSignals(false);
 	}
 
+		//MATERIAL FILE
+	path = MaterialList::configuredPath();
+	ui->m_material_list_path_le->setText(path);
+	if (path.isEmpty())
+	{
+		ui->m_material_list_path_le->setPlaceholderText(
+			tr("Non configuré (par défaut : %1)",
+			   "hint shown in the material file field when no file is configured yet")
+				.arg(MaterialList::defaultPath()));
+	}
+
 	fillLang();	
 }
 
@@ -412,6 +425,12 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/macros-path").toString()) {
 		QETApp::resetCollectionsPath();
 	}
+
+		//MATERIAL FILE
+		//Unlike the collections, the material file is a plain file, it is
+		//kept as chosen even when it doesn't exist yet : the user may well
+		//point QElectroTech at a file he intends to write later.
+	MaterialList::setConfiguredPath(ui->m_material_list_path_le->text().trimmed());
 }
 
 /**
@@ -615,6 +634,70 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 			ui->m_user_macros_path_cb->setCurrentIndex(0);
 		}
 	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_material_list_browse_pb_clicked
+	Let the user pick an existing material file.
+*/
+void GeneralConfigurationPage::on_m_material_list_browse_pb_clicked()
+{
+	QString start_dir = ui->m_material_list_path_le->text();
+	start_dir = start_dir.isEmpty()
+			? QETApp::documentDir()
+			: QFileInfo(start_dir).absolutePath();
+
+	const QString path = QFileDialog::getOpenFileName(
+		this,
+		tr("Sélectionner le fichier de la liste de matériaux"),
+		start_dir,
+		tr("Fichiers csv (*.csv)"));
+
+	if (!path.isEmpty()) {
+		ui->m_material_list_path_le->setText(path);
+	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_material_list_create_pb_clicked
+	Create the material file with its header line, so the columns are
+	known before the user fills them from his spreadsheet.
+*/
+void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
+{
+	QString path = ui->m_material_list_path_le->text();
+	path = path.isEmpty()
+			? MaterialList::defaultPath()
+			: QFileInfo(path).absolutePath() + QLatin1Char('/') + MaterialList::defaultFileName();
+
+	path = QFileDialog::getSaveFileName(
+		this,
+		tr("Créer le fichier de la liste de matériaux"),
+		path,
+		tr("Fichiers csv (*.csv)"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (QFileInfo(path).suffix().isEmpty()) {
+		path += QStringLiteral(".csv");
+	}
+
+		//An existing file is kept as it is : this button creates the
+		//header, it never overwrites a catalogue.
+	if (MaterialList::isEmptyFile(path))
+	{
+		QString error;
+		if (!MaterialList::createFile(path, &error))
+		{
+			QET::QetMessageBox::critical(this,
+										 tr("Création impossible"),
+										 tr("Impossible de créer le fichier :\n%1\n%2")
+											.arg(path, error));
+			return;
+		}
+	}
+
+	ui->m_material_list_path_le->setText(path);
 }
 
 void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
