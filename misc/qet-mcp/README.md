@@ -172,7 +172,10 @@ the answer a screenshot gave wrongly.
 ```
 
 An op that creates something takes an `"id"`; later ops name it as `"$id"`.
-Terminals are addressed by index — top to bottom, then left to right, **not**
+A `"folio"` given as a number counts **from 0**, while `qet_elements` and
+`qet_project_info` number folios from 1 as the application does: the folio
+they call 1 is `"folio": 0` here. An op that fails because of this says which
+index to use. Terminals are addressed by index — top to bottom, then left to right, **not**
 the order the `.elmt` lists them. `qet_element_info` and `qet_element_search`
 both report that index order. The answer carries a per-operation result
 *and* a `qet_diff`, because "addConductor → true" says the call was

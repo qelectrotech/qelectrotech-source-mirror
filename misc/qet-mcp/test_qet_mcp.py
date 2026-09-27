@@ -670,6 +670,43 @@ class ElementSearch(unittest.TestCase):
         self.assertEqual(m.tool_element_search(str(self.root), "fine")["total_matches"], 1)
 
 
+class WrongFolioHint(unittest.TestCase):
+    """qet_elements numbers folios from 1, qet_edit from 0; a failed op that
+    used the wrong one should say which index to use."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = Path(self.tmp.name) / "p.qet"
+        self.qet.write_text(
+            '<project><diagram><elements/></diagram>'
+            '<diagram><elements><element uuid="{b}" type="x" x="0" y="0"/></elements></diagram>'
+            '</project>')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def hint(self, op):
+        return m._wrong_folio(str(self.qet), op)
+
+    def test_the_number_qet_elements_showed_gets_the_index_to_use(self):
+        h = self.hint({"op": "move_element", "folio": 2, "element": "{b}", "dx": 5, "dy": 0})
+        self.assertIn("folio 2 as qet_elements numbers it", h)
+        self.assertIn('"folio": 1 here', h)
+
+    def test_no_hint_when_the_folio_was_right_or_cannot_be_checked(self):
+        for op in ({"op": "move_element", "folio": 1, "element": "{b}"},     # right index
+                   {"op": "move_element", "folio": 0, "element": "{nope}"},  # not in the file
+                   {"op": "move_element", "folio": 0, "element": "$k1"},     # placed by the script
+                   {"op": "move_element", "folio": "$f", "element": "{b}"},  # folio by reference
+                   {"op": "add_folio"}):
+            with self.subTest(op=op):
+                self.assertEqual(self.hint(op), "")
+
+    def test_the_description_says_how_folios_are_counted(self):
+        tool = next(t for t in m.TOOLS if t["name"] == "qet_edit")
+        self.assertIn("counted from 0", tool["inputSchema"]["properties"]["operations"]["description"])
+
+
 class Diff(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -2733,6 +2770,24 @@ class CorpusIntegration(unittest.TestCase):
             collisions += len(keys) - len(set(keys))
         self.assertGreater(total, 3000)
         self.assertEqual(collisions, 0)
+
+    def test_a_folio_number_from_qet_elements_fails_with_the_index_to_use(self):
+        sb = Sandbox()
+        try:
+            src = shutil.copy(Path(EXAMPLES) / "grafcet.qet", sb.p("g.qet"))
+            first = m.tool_elements(src, folio=1)["elements"][0]
+            self.assertEqual(first["folio"], 1)
+            move = {"op": "move_element", "element": first["uuid"], "dx": 10, "dy": 0}
+            r = m.tool_edit(BINARY, src, [dict(move, folio=first["folio"])], sb.p("wrong.qet"),
+                            elements_dir=ELEMENTS or None)
+            self.assertFalse(r["ok"])
+            self.assertIn('"folio": 0 here', r["hint"])
+            r = m.tool_edit(BINARY, src, [dict(move, folio=0)], sb.p("right.qet"),
+                            elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            self.assertEqual(r["diff"]["elements"]["distinct_move_deltas"], [[10.0, 0.0]])
+        finally:
+            sb.close()
 
     def test_untouched_resave_diffs_clean_on_every_small_example(self):
         sb = Sandbox()
