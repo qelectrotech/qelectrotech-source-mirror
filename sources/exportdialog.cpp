@@ -37,6 +37,7 @@
 #include "qetmessagebox.h"
 
 #include <QGraphicsSimpleTextItem>
+#include <QSet>
 #include <QSvgGenerator>
 #include <QtXml>
 #include <cmath>
@@ -483,7 +484,24 @@ void ExportDialog::generateDxf(
 //	QList <Terminal *> list_terminals;
 
 	// Determine les elements a "XMLiser"
-	foreach(QGraphicsItem *qgi, diagram -> items()) {
+	// In stacking order (z, then insertion order, which a load makes the
+	// file's order), not items() order: that follows memory addresses, so
+	// the same folio came out in a different order on every export, as
+	// saving did before bugtracker #343. A rect query gives stacking order
+	// even with NoIndex; anything it misses keeps its items() place after
+	// the rest.
+	QList<QGraphicsItem *> stacked_items = diagram -> items(
+				QRectF(-1e9, -1e9, 2e9, 2e9), Qt::IntersectsItemBoundingRect,
+				Qt::AscendingOrder);
+	{
+		const QSet<QGraphicsItem *> ranked(stacked_items.cbegin(), stacked_items.cend());
+		for (QGraphicsItem *qgi : diagram -> items()) {
+			if (!ranked.contains(qgi)) {
+				stacked_items << qgi;
+			}
+		}
+	}
+	for (QGraphicsItem *qgi : std::as_const(stacked_items)) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
