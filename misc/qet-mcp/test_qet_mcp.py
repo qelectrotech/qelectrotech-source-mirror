@@ -1259,6 +1259,25 @@ class QueryGuard(unittest.TestCase):
             m.tool_query("/x", "/no/such.qet", "SELECT 1")
 
 
+class ContinuityFolioGuard(unittest.TestCase):
+    """qet.checkContinuity() answers a folio index it has no folio for with an
+    empty list, which looks like a clean folio; refuse it before launch."""
+
+    def test_an_index_with_no_folio_is_refused_before_launch(self):
+        with tempfile.TemporaryDirectory() as d:
+            qet = Path(d) / "p.qet"
+            qet.write_text("<project><diagram/><diagram/></project>")
+            for folio in (2, 5, -1):
+                with self.subTest(folio=folio):
+                    with self.assertRaisesRegex(ValueError, r"2 folio\(s\), indexed 0 to 1"):
+                        m.tool_continuity("/nonexistent", str(qet), folio=folio)
+
+    def test_the_descriptions_say_how_folios_are_counted(self):
+        props = {t["name"]: t["inputSchema"]["properties"] for t in m.TOOLS}
+        self.assertIn("counted from 0", props["qet_continuity"]["folio"]["description"])
+        self.assertIn("counted from 1", props["qet_conductors"]["folio"]["description"])
+
+
 class ProjectNewValidation(unittest.TestCase):
     def test_refuses_overwrite_and_bad_arguments(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -2469,6 +2488,15 @@ class Integration(unittest.TestCase):
         only_1 = m.tool_continuity(BINARY, r["output"], folio=1, elements_dir=ELEMENTS)
         self.assertGreater(both["finding_count"], 0)
         self.assertEqual(only_1["finding_count"], 0, "folio 1 has no elements at all")
+
+    def test_continuity_findings_carry_the_folio_number_qet_elements_uses(self):
+        base = self.sb.new(folios=2)
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 1, "path": COIL, "x": 100, "y": 100}]))
+        found = m.tool_continuity(BINARY, r["output"], folio=1, elements_dir=ELEMENTS)["findings"]
+        self.assertTrue(found)
+        self.assertEqual({(f["folio"], f["folio_number"]) for f in found}, {(1, 2)})
+        self.assertEqual({e["folio"] for e in m.tool_elements(r["output"])["elements"]}, {2})
 
     def test_continuity_finds_a_report_link_colour_mismatch(self):
         """Reproduces qelectrotech/qelectrotech-source-mirror#974: a
