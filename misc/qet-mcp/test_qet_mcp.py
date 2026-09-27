@@ -777,6 +777,26 @@ class Diff(unittest.TestCase):
         b = self.project("b.qet", version="0.200.1-dev")
         self.assertEqual(m.tool_diff(a, b)["folios"]["changed"], [])
 
+    def test_empty_information_and_a_missing_one_are_the_same(self):
+        """QElectroTech writes an empty label as <elementInformation name="label"/>
+        and drops it on the next save, so comparing the raw bags made every
+        unlabelled element of a re-saved project look edited."""
+        def proj(infos):
+            return (f'<project><diagram><elements><element uuid="{{e}}" type="x" x="0" y="0">'
+                    f'<elementInformations>{infos}</elementInformations>'
+                    f'</element></elements><conductors/></diagram></project>')
+        a = self.dir / "a.qet"
+        b = self.dir / "b.qet"
+        c = self.dir / "c.qet"
+        a.write_text(proj('<elementInformation show="1" name="label"></elementInformation>'
+                          '<elementInformation show="1" name="comment">  </elementInformation>'))
+        b.write_text(proj(''))
+        c.write_text(proj('<elementInformation show="1" name="label">K1</elementInformation>'))
+        self.assertEqual(m.tool_diff(str(a), str(b))["elements"]["info_changed"], [])
+        # A value that really appears or disappears is still reported.
+        changed = m.tool_diff(str(b), str(c))["elements"]["info_changed"]
+        self.assertEqual([(x["from"], x["to"]) for x in changed], [({}, {"label": "K1"})])
+
     def test_element_text_field_moves_and_restyles_are_reported(self):
         def proj(x, size, frame, extra=""):
             return (f'<project><diagram><elements><element uuid="{{e}}"><dynamic_texts>'
@@ -2747,6 +2767,7 @@ class CorpusIntegration(unittest.TestCase):
                     if "unstable_keys" not in c:
                         self.assertEqual((len(c["added"]), len(c["removed"])), (0, 0))
                     self.assertEqual(r["diff"]["elements"]["moved_count"], 0)
+                    self.assertEqual(r["diff"]["elements"]["info_changed"], [])
         finally:
             sb.close()
 
