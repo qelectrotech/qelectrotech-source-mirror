@@ -282,7 +282,10 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			poly << cond->pos()+segment->secondPoint();
 		}
 		Createdxf::layer = Layer::Wires;
-		Createdxf::drawPolyline(file_path,poly,0);
+			//The wire's own colour, as on the folio (a two-colour wire gets
+			//its main one). Black comes out as BYLAYER, see Createdxf.
+		const ConductorProperties wire_properties = cond -> properties();
+		Createdxf::drawPolyline(file_path, poly, Createdxf::dxfColor(wire_properties.color));
 		//Draw conductor text item
 		Createdxf::layer = Layer::WireNumbers;
 		ConductorTextItem *textItem = cond -> textItem();
@@ -306,7 +309,8 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			qreal offset = fontSize * 1.6;
 			foreach (QString line, lines) {
 				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, 0, 0.72 );
+					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle,
+										Createdxf::dxfColor(wire_properties.text_color), 0.72 );
 				x += offset * xdir;
 				y -= offset * ydir;
 			}
