@@ -43,6 +43,22 @@ class ElementsTreeView;
 	and all action needed to use this widget.
 	This is the element collection widget used in the diagram editor.
 */
+class QListView;
+class QStandardItemModel;
+
+/**
+	@brief One ranked hit from a collection search.
+	Carries everything a result row needs, so a list that is not backed by
+	the collection model can show it.
+*/
+struct ElementSearchHit
+{
+	QString path;    ///< collection path, enough to build an ElementsLocation
+	QString name;    ///< display name
+	QString folder;  ///< where it lives, for telling similar names apart
+	QIcon icon;
+};
+
 class ElementsCollectionWidget : public QWidget
 {
 	Q_OBJECT
@@ -56,6 +72,8 @@ class ElementsCollectionWidget : public QWidget
 		void removeProject (QETProject *project);
 		void highlightUnusedElement();
 		void setCurrentLocation(const ElementsLocation &location);
+		QVector<ElementSearchHit> rankedSearch(const QString &text,
+						 const QModelIndex &within = QModelIndex());
 
 	protected:
 		void leaveEvent(QEvent *event) override;
@@ -102,6 +120,10 @@ class ElementsCollectionWidget : public QWidget
 	private:
 		void locationWasSaved(const ElementsLocation& location);
 		void activateIndex(const QModelIndex &index);
+		void showFlatResults(const QVector<ElementSearchHit> &hits);
+		void clearFlatResults();
+		static int rankMatch(const QString &needle, const QString &name,
+				     const QString &haystack);
 
 
 	private:
@@ -113,6 +135,9 @@ class ElementsCollectionWidget : public QWidget
 		ElementsTreeView *m_tree_view;
 		ElementsTreeView *m_macros_tree_view = nullptr;
 		QTabWidget *m_tab_widget = nullptr;
+			/// Flat ranked results, shown in place of the tree while searching
+		QListView *m_search_results = nullptr;
+		QStandardItemModel *m_search_model = nullptr;
 		QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;

@@ -83,12 +83,26 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 */
 void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 {
+	execElementDrag(this, location);
+}
+
+/**
+	@brief ElementsTreeView::execElementDrag
+	Build and run the QDrag for @a location, from @a source.
+	Static so that a view which is not an ElementsTreeView -- the flat list
+	of search results -- starts exactly the same drag as the tree.
+	@param source : the widget the drag starts from
+	@param location : location to use for create the content of the QDrag
+*/
+void ElementsTreeView::execElementDrag(QWidget *source,
+				       const ElementsLocation &location)
+{
 	if (! location.exist()) return;
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	QDrag* drag = new QDrag(this);
+	QDrag* drag = new QDrag(source);
 #else
-	QScopedPointer<QDrag> drag(new QDrag(this));
+	QScopedPointer<QDrag> drag(new QDrag(source));
 #endif
 
 	QString location_str = location.toString();
@@ -209,7 +223,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 			&elmt_creation_state));
 		if (elmt_creation_state) { return; }
 
-		QPixmap elmt_pixmap(QET::Palette::forPalette(temp_elmt->pixmap(), palette()));
+		QPixmap elmt_pixmap(QET::Palette::forPalette(temp_elmt->pixmap(), source->palette()));
 		QPoint elmt_hotspot(temp_elmt->hotspot());
 
 			//Adjust the size of the pixmap if he is too big
