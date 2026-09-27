@@ -64,16 +64,21 @@ void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 	this->setEnabled(true);
 	if (m_image == image) return;
 	if (m_image)
+	{
 		disconnect(m_image, &DiagramImageItem::transformChanged, this, &ImagePropertiesWidget::updateUi);
+		disconnect(m_image, &DiagramImageItem::labelChanged, this, &ImagePropertiesWidget::updateUi);
+	}
 
 	m_image = image;
 	connect(m_image, &DiagramImageItem::transformChanged, this, &ImagePropertiesWidget::updateUi);
+	connect(m_image, &DiagramImageItem::labelChanged, this, &ImagePropertiesWidget::updateUi);
 	m_movable = image->isMovable();
 	m_scaleX = m_image->scaleFactorX();
 	m_scaleY = m_image->scaleFactorY();
 	m_rotation = m_image->rotationAngle();
 	m_skewX = m_image->skewX();
 	m_skewY = m_image->skewY();
+	m_label = m_image->label();
 	updateUi();
 }
 
@@ -101,6 +106,7 @@ void ImagePropertiesWidget::apply()
 	m_rotation = m_image->rotationAngle();
 	m_skewX = m_image->skewX();
 	m_skewY = m_image->skewY();
+	m_label = m_image->label();
 }
 
 /**
@@ -116,6 +122,7 @@ void ImagePropertiesWidget::reset()
 	m_image->setRotationAngle(m_rotation);
 	m_image->setSkewX(m_skewX);
 	m_image->setSkewY(m_skewY);
+	m_image->setLabel(m_label);
 	m_image->setMovable(m_movable);
 	updateUi();
 }
@@ -138,6 +145,7 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 		connect (ui->m_angle_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		connect (ui->m_skew_x_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		connect (ui->m_skew_y_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
+		connect (ui->m_label_le, &QLineEdit::editingFinished, this, &ImagePropertiesWidget::apply);
 	}
 	else
 	{
@@ -146,6 +154,7 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 		disconnect (ui->m_angle_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		disconnect (ui->m_skew_x_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		disconnect (ui->m_skew_y_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
+		disconnect (ui->m_label_le, &QLineEdit::editingFinished, this, &ImagePropertiesWidget::apply);
 	}
 
 	return true;
@@ -191,6 +200,19 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 	chain("skewX", m_skewX, newSkewX, tr("Modifier l'inclinaison d'une image"));
 	chain("skewY", m_skewY, newSkewY, tr("Modifier l'inclinaison d'une image"));
 
+	// Not through chain(): a string cannot be animated.
+	const QString newLabel = ui->m_label_le->text();
+	if (newLabel != m_label)
+	{
+		if (undo)
+			new QPropertyUndoCommand(m_image, "label", m_label, newLabel, undo);
+		else
+		{
+			undo = new QPropertyUndoCommand(m_image, "label", m_label, newLabel);
+			undo->setText(tr("Modifier le libellé d'une image"));
+		}
+	}
+
 	return undo;
 }
 
@@ -221,6 +243,8 @@ void ImagePropertiesWidget::updateUi()
 	ui->m_skew_x_sb->setValue(m_image->skewX());
 	ui->m_skew_y_sb->setValue(m_image->skewY());
 	ui->m_lock_pos_cb->setChecked(!m_image->isMovable());
+	if (ui->m_label_le->text() != m_image->label())
+		ui->m_label_le->setText(m_image->label());
 }
 
 /**
