@@ -35,6 +35,7 @@
 #include <QBuffer>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QFontMetricsF>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QImageWriter>
 #include <QMenu>
@@ -69,7 +70,7 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *paren
 	// those are a single uniform scale() float, which is exactly why an
 	// image could never break its own aspect ratio before this class
 	// gained proper independent scaleX/scaleY.
-	m_transform.pivot = boundingRect().center();
+	m_transform.pivot = imageRect().center();
 	setTransform(m_transform.toMatrix());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable|QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
@@ -110,6 +111,45 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> drawRect(boundingRect());
 		painter -> restore();
 	}
+
+	if (!m_label.isEmpty())
+	{
+		// Undo the picture's own scale so the caption keeps the size of
+		// every other text on the folio whether the picture is shown at
+		// 5 % or 500 %. Rotation and skew are applied after scale in
+		// ShapeTransform::toMatrix(), so the caption still turns with it.
+		const QRectF r = labelRect();
+		painter -> save();
+		painter -> translate(r.topLeft());
+		painter -> scale(1.0 / m_label_scale.x(), 1.0 / m_label_scale.y());
+		painter -> setFont(m_label_font);
+		painter -> setPen(Qt::black);
+		painter -> drawText(QRectF(QPointF(0, 0), m_label_size), Qt::AlignCenter, m_label);
+		painter -> restore();
+	}
+}
+
+/**
+	@brief DiagramImageItem::setLabel
+	Set the caption drawn under the picture. An empty string removes it.
+	@param label
+*/
+void DiagramImageItem::setLabel(const QString &label)
+{
+	if (label == m_label)
+		return;
+
+	prepareGeometryChange();
+	m_label = label;
+	// Font looked up here, not in paint(): diagramTextsFont() reads
+	// QSettings, far too slow to do on every repaint.
+	if (!m_label.isEmpty())
+		m_label_font = QETApp::diagramTextsFont();
+	m_label_size = m_label.isEmpty()
+			? QSizeF()
+			: QFontMetricsF(m_label_font).size(0, m_label);
+	updateLabelScale();
+	emit labelChanged();
 }
 
 /**
@@ -278,7 +318,7 @@ void DiagramImageItem::setPivotRaw(const QPointF &newPivot)
 void DiagramImageItem::resetPivotToBoundingRectCenter()
 {
 	m_pivotIsCustom = false;
-	setPivot(boundingRect().center());
+	setPivot(imageRect().center());
 }
 
 namespace {
@@ -1263,6 +1303,11 @@ QVariant DiagramImageItem::itemChange(GraphicsItemChange change, const QVariant 
 		}
 		refreshInteractionHints();
 	}
+	else if (change == ItemTransformChange && !m_label.isEmpty())
+	{
+		prepareGeometryChange();
+		updateLabelScale();
+	}
 	else if (change == ItemPositionHasChanged || change == ItemTransformHasChanged)
 	{
 		if (!m_deferHandleReposition)
@@ -1309,6 +1354,18 @@ QPixmap DiagramImageItem::computeDisplayPixmap(const QPixmap &base, const QRect 
 */
 QRectF DiagramImageItem::boundingRect() const
 {
+	if (m_label.isEmpty())
+		return imageRect();
+	return imageRect().united(labelRect());
+}
+
+/**
+	@brief DiagramImageItem::imageRect
+	@return the picture's own rectangle, without its label. Handles, the
+	pivot and every other piece of geometry work on this one.
+*/
+QRectF DiagramImageItem::imageRect() const
+{
 	if (!pixmap_.isNull()) {
 		return (QRectF(pixmap_.rect()));
 	} else {
@@ -1318,12 +1375,70 @@ QRectF DiagramImageItem::boundingRect() const
 }
 
 /**
+	@brief DiagramImageItem::labelRect
+	@return the label's rectangle in item coordinates, centred just under
+	the picture. Divided by the picture's scale, because paint() draws
+	the label unscaled.
+*/
+QRectF DiagramImageItem::labelRect() const
+{
+	const QRectF image = imageRect();
+	const qreal w = m_label_size.width() / m_label_scale.x();
+	const qreal h = m_label_size.height() / m_label_scale.y();
+	const qreal gap = 2.0 / m_label_scale.y();
+	return QRectF(image.center().x() - w / 2.0, image.bottom() + gap, w, h);
+}
+
+/**
+	@brief DiagramImageItem::updateLabelScale
+	The label rect depends on the picture's scale, so boundingRect()
+	changes with it. m_transform is already updated by the time the item
+	transform changes, so the scale is cached here and only refreshed
+	after prepareGeometryChange() has recorded the old rect.
+*/
+void DiagramImageItem::updateLabelScale()
+{
+	const auto safe = [](qreal v) { return qFuzzyIsNull(v) ? 1.0 : qAbs(v); };
+	m_label_scale = QPointF(safe(m_transform.scaleX), safe(m_transform.scaleY));
+}
+
+/**
 	@brief DiagramImageItem::name
 	@return the generic name of this item (picture)
 */
 QString DiagramImageItem::name() const
 {
 	return tr("une image");
+}
+
+namespace {
+	// Only PNG bytes read from a file are reused as they are: toXml()
+	// has always written PNG, and a hand-edited file holding another
+	// format keeps being converted, exactly as before.
+	bool isPng(const QByteArray &data)
+	{
+		return data.startsWith("\x89PNG\r\n\x1a\n");
+	}
+}
+
+/**
+	@brief DiagramImageItem::encodedPng
+	@return pixmap as PNG bytes, encoded only when cache does not already
+	hold them. QPixmap::cacheKey() changes whenever the pixmap is replaced
+	or modified, which is what makes this safe without every function
+	that edits the picture having to remember to invalidate the cache.
+*/
+const QByteArray &DiagramImageItem::encodedPng(const QPixmap &pixmap, QByteArray &cache, qint64 &cacheKey)
+{
+	if (cacheKey != pixmap.cacheKey())
+	{
+		cache.clear();
+		QBuffer buffer(&cache);
+		buffer.open(QIODevice::WriteOnly);
+		pixmap.save(&buffer, "PNG");
+		cacheKey = pixmap.cacheKey();
+	}
+	return cache;
 }
 
 /**
@@ -1354,6 +1469,17 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
+	// From the first text node only, not e.text(): that also collects the
+	// text of every child element, so on a cropped or colour-keyed picture
+	// it carries <image_base>'s bytes too. loadFromData() stops at the end
+	// of the first PNG and never notices; a cache written back verbatim
+	// would.
+	const QByteArray ownArray = QByteArray::fromBase64(image_node.toText().data().toLatin1());
+	if (isPng(ownArray) && !pixmap_.isNull())
+	{
+		m_png_cache = ownArray;
+		m_png_cache_key = pixmap_.cacheKey();
+	}
 
 	// Falls back to treating the loaded result as its own base, with no
 	// remembered crop or colours -- correct both for a genuinely plain
@@ -1407,7 +1533,14 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 			const QByteArray baseArray = QByteArray::fromBase64(baseElement.text().toLatin1());
 			QPixmap basePixmap;
 			if (basePixmap.loadFromData(baseArray))
+			{
 				m_base_pixmap = basePixmap;
+				if (isPng(baseArray))
+				{
+					m_base_png_cache = baseArray;
+					m_base_png_cache_key = m_base_pixmap.cacheKey();
+				}
+			}
 		}
 		// m_crop_rect may still refer to a saved file's base image, not
 		// pixmap (used as a fallback above only when nothing better is
@@ -1429,7 +1562,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	m_transform.rotation = e.attribute("rotation").toDouble();
 	m_transform.scaleX = e.attribute("size").toDouble();
 	m_transform.scaleY = m_transform.scaleX;
-	m_transform.pivot = boundingRect().center();
+	m_transform.pivot = imageRect().center();
 	m_pivotIsCustom = false;
 
 	const QDomElement transformElement = e.firstChildElement("transform");
@@ -1450,6 +1583,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 	is_movable_ = (e.attribute("is_movable").toInt());
+	setLabel(e.attribute("label"));
 
 	return (true);
 }
@@ -1481,12 +1615,13 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 	result.setAttribute("rotation", QString::number(QET::correctAngle(m_transform.rotation)));
 	result.setAttribute("size", QString::number(m_transform.scaleX));
 	result.setAttribute("is_movable", bool(is_movable_));
+	// An attribute, not a child element: fromXml() of every earlier
+	// version requires the base64 text to be the first child.
+	if (!m_label.isEmpty())
+		result.setAttribute("label", m_label);
 
 	//write the pixmap in the xml element after he was been transformed to base64
-	QByteArray array;
-	QBuffer buffer(&array);
-	buffer.open(QIODevice::ReadWrite);
-	pixmap_.save(&buffer, "PNG");
+	const QByteArray &array = encodedPng(pixmap_, m_png_cache, m_png_cache_key);
 	QDomText base64 = document.createTextNode(array.toBase64());
 	result.appendChild(base64);
 
@@ -1556,10 +1691,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 
 	if (hasCrop || hasColors)
 	{
-		QByteArray baseArray;
-		QBuffer baseBuffer(&baseArray);
-		baseBuffer.open(QIODevice::ReadWrite);
-		m_base_pixmap.save(&baseBuffer, "PNG");
+		const QByteArray &baseArray = encodedPng(m_base_pixmap, m_base_png_cache, m_base_png_cache_key);
 		QDomElement baseElement = document.createElement("image_base");
 		baseElement.appendChild(document.createTextNode(baseArray.toBase64()));
 		result.appendChild(baseElement);

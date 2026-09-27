@@ -64,6 +64,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_conductor_properties_panel">
+         <property name="text">
+          <string>Afficher les propriétés d'un conducteur sélectionné dans le panneau Propriétés de la sélection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="Line" name="line_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -74,6 +81,36 @@
         <widget class="QCheckBox" name="grid_startup_cb">
          <property name="text">
           <string>Afficher la grille par défaut (appliqué au prochain lancement)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_collection_dblclick_edits">
+         <property name="toolTip">
+          <string>Par défaut, un double-clic insère l'élément sur le folio ; l'édition reste accessible par le menu contextuel.</string>
+         </property>
+         <property name="text">
+          <string>Double-cliquer dans la collection ouvre l'éditeur d'élément au lieu de l'insérer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_context_toolbar_cb">
+         <property name="toolTip">
+          <string>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s'effacent quand la souris s'éloigne.</string>
+         </property>
+         <property name="text">
+          <string>Afficher les commandes près de la sélection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_mouse_gestures_cb">
+         <property name="toolTip">
+          <string>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</string>
+         </property>
+         <property name="text">
+          <string>Gestes de la souris avec le bouton droit</string>
          </property>
         </widget>
        </item>
@@ -1175,6 +1212,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
+  <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_use_windows_mode_rb</tabstop>
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_save_label_paste</tabstop>
