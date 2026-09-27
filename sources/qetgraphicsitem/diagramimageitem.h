@@ -147,6 +147,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void saveOriginalImageAs();
 	void saveImagePixmapAs(const QPixmap &pixmap, const QString &dialogTitle, bool hasTransparency);
 	static bool writeRasterAsSvg(const QPixmap &pixmap, const QString &path);
+	static const QByteArray &encodedPng(const QPixmap &pixmap, QByteArray &cache, qint64 &cacheKey);
 	static QPixmap computeDisplayPixmap(const QPixmap &base, const QRect &cropRect, const QList<ImageTransparentColorDialog::PickedColor> &colors);
 
 	void toggleHandleMode();
@@ -196,6 +197,16 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPixmap m_base_pixmap;
 	QRect m_crop_rect;   // relative to m_base_pixmap; equals m_base_pixmap.rect() when nothing has been cropped
 	QList<ImageTransparentColorDialog::PickedColor> m_transparent_colors;
+	// PNG bytes of pixmap_ and m_base_pixmap as last written, reused by
+	// toXml() while the pixmap's cacheKey() still matches. PNG encoding
+	// is the bulk of the time a save spends on a picture, and redoing it
+	// on every save, autosave and copy of an unchanged picture is pure
+	// waste. Filled from the file itself on load, so even the first save
+	// encodes nothing.
+	mutable QByteArray m_png_cache;
+	mutable qint64 m_png_cache_key = 0;
+	mutable QByteArray m_base_png_cache;
+	mutable qint64 m_base_png_cache_key = 0;
 
 	// Independent scaleX/scaleY here is the actual point of this whole
 	// member: QGraphicsItem::scale() is a single, uniform float, which
