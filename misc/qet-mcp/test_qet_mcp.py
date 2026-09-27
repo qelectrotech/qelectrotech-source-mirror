@@ -1289,6 +1289,23 @@ class ReadTools(unittest.TestCase):
             # (value, how many nodes carry it)
             self.assertEqual([tuple(v) for v in scan["distinct_values"]], [("C1", 1)])
 
+    def test_a_wire_numbering_rule_is_not_a_wire(self):
+        """A folio's conductor numbering rule is saved as <autonum><conductor>;
+        counting every <conductor> tag reported it as a wire with no ends."""
+        with tempfile.TemporaryDirectory() as tmp:
+            rule = ('<autonum><conductor><part increase="1" type="unit" value="3"/>'
+                    '</conductor></autonum>')
+            wire = '<conductors><conductor terminal1="1" terminal2="2" num="W1"/></conductors>'
+            a, b = Path(tmp) / "a.qet", Path(tmp) / "b.qet"
+            a.write_text(f'<project><diagram>{rule}<elements/>{wire}</diagram></project>')
+            b.write_text(f'<project><diagram><elements/>{wire}</diagram></project>')
+            self.assertEqual(m.tool_project_info(str(a))["folios"][0]["conductors"], 1)
+            self.assertEqual(m.tool_project_info(str(a))["conductor_count"], 1)
+            self.assertEqual([c["num"] for c in m.tool_conductors(str(a))["conductors"]], ["W1"])
+            # Removing only the rule changes no wire.
+            c = m.tool_diff(str(a), str(b))["conductors"]
+            self.assertEqual((c["added"], c["removed"]), ([], []))
+
 
 # ==========================================================================
 # protocol
@@ -2776,6 +2793,28 @@ class PlcIntegration(unittest.TestCase):
 
 @needs_examples
 class CorpusIntegration(unittest.TestCase):
+    def test_folio_counts_match_what_qelectrotech_itself_holds(self):
+        """Element and conductor counts per folio, from the file, against
+        QElectroTech's own counts after loading it -- over every example.
+        schema_indus.qet caught a numbering rule counted as a wire."""
+        script = ('var o = [];'
+                  'for (var f = 0; f < qet.folioCount(); f++)'
+                  '  o.push([qet.elementCount(f), qet.conductorCount(f)]);'
+                  'qet.log("COUNTS " + JSON.stringify(o));')
+        checked = 0
+        for f in sorted(Path(EXAMPLES).glob("*.qet")):
+            with self.subTest(project=f.name):
+                r = m._run_qet(BINARY, [str(f)], elements_dir=ELEMENTS or None,
+                               script=script, tail=200_000)
+                line = next(ln for ln in (r["stdout"] + "\n" + r["stderr"]).splitlines()
+                            if "COUNTS " in ln)
+                qet = json.loads(line.split("COUNTS ", 1)[1])
+                mcp = [[x["elements"], x["conductors"]]
+                       for x in m.tool_project_info(str(f))["folios"]]
+                self.assertEqual(mcp, qet)
+                checked += 1
+        self.assertGreater(checked, 20)
+
     def test_conductor_keys_never_collide_across_the_shipped_examples(self):
         """Keying on terminal geometry alone merged nine distinct conductors
         of schema_indus.qet; the shipped corpus is the check."""

@@ -118,10 +118,17 @@ def _elements(root: ET.Element):
             yield i, el
 
 
+def _wires(diagram: ET.Element):
+    """The folio's conductors: children of <conductors> only. A folio's wire
+    numbering rule is also saved as a <conductor> tag, under <autonum>, and
+    is not a wire."""
+    return diagram.findall("conductors/conductor")
+
+
 def _conductors(root: ET.Element):
     for i, d in _folios(root):
         index = _terminal_index(d)
-        for c in d.iter("conductor"):
+        for c in _wires(d):
             yield i, c, index
 
 
@@ -245,7 +252,7 @@ def tool_project_info(path: str) -> dict:
             "index": i,
             "title": d.get("title", ""),
             "elements": sum(1 for _ in d.iter("element")),
-            "conductors": sum(1 for _ in d.iter("conductor")),
+            "conductors": len(_wires(d)),
         })
     return {
         "file": str(Path(path).expanduser()),
