@@ -104,6 +104,13 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# alignment.h is header-only too (it builds on textgrid.h): the geometry
+# behind the align commands, tested without a scene.
+add_executable(tst_alignment tst_alignment.cpp)
+add_test(NAME tst_alignment COMMAND tst_alignment)
+target_include_directories(tst_alignment PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_alignment PRIVATE Qt::Test)
+
 add_executable(
   tst_qetpalette
   tst_qetpalette.cpp
