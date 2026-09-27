@@ -66,6 +66,7 @@
 #include "undocommand/addelementtextcommand.h"
 #include "utils/qetsettings.h"
 #include "utils/qetutils.h"
+#include "undocommand/groupitemscommand.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
@@ -813,6 +814,8 @@ void QETDiagramEditor::setUpActions()
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
 	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Grouper les textes sélectionnés"));
+	m_group_selection      = m_selection_actions_group.addAction( tr("Grouper") );
+	m_ungroup_selection    = m_selection_actions_group.addAction( tr("Dégrouper") );
 
 	ShortcutManager::instance().registerAction(m_delete_selection, "diagrameditor.delete_selection", tr("Éditeur de schémas"), Qt::Key_Delete);
 	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", tr("Éditeur de schémas"), Qt::Key_Space);
@@ -918,6 +921,14 @@ void QETDiagramEditor::setUpActions()
 	m_find_element        ->setData("find_selected_element");
 	m_edit_selection      ->setData("edit_selected_element");
 	m_group_selected_texts->setData("group_selected_texts");
+	m_group_selection     ->setData("group_selection");
+	m_ungroup_selection   ->setData("ungroup_selection");
+
+		//No default key: Ctrl+G is "jump to element". A user can bind one.
+	ShortcutManager::instance().registerAction(m_group_selection, "diagrameditor.group_selection", tr("Éditeur de schémas"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_ungroup_selection, "diagrameditor.ungroup_selection", tr("Éditeur de schémas"), QKeySequence());
+	m_group_selection  ->setStatusTip(tr("Groupe les éléments, textes, formes et images sélectionnés : ils se sélectionnent, se déplacent et se copient ensemble", "status bar tip"));
+	m_ungroup_selection->setStatusTip(tr("Défait les groupes sélectionnés", "status bar tip"));
 
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
@@ -2055,6 +2066,15 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		findElementInPanel(currentElement()->location());
 	else if (value == "edit_selected_element")
 		dv->editSelection();
+	else if (value == "group_selection" || value == "ungroup_selection")
+	{
+		GroupItemsCommand *command = value == "group_selection"
+				? GroupItemsCommand::group(diagram)
+				: GroupItemsCommand::ungroup(diagram);
+		if (command) {
+			diagram->undoStack().push(command);
+		}
+	}
 	else if (value == "group_selected_texts")
 	{
 		QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
@@ -2198,7 +2218,9 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_rotate_selection
 			    << m_rotate_group_selection
 			    << m_edit_selection
-			    << m_group_selected_texts;
+			    << m_group_selected_texts
+			    << m_group_selection
+			    << m_ungroup_selection;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 
@@ -2261,6 +2283,9 @@ void QETDiagramEditor::slot_updateComplexActions()
 	}
 	else
 		m_group_selected_texts->setDisabled(true);
+
+	m_group_selection  ->setEnabled(GroupItemsCommand::canGroup(diagram_));
+	m_ungroup_selection->setEnabled(GroupItemsCommand::canUngroup(diagram_));
 
 	// actions need only one editable item
 	int selected_image = dc.count(DiagramContent::Images);

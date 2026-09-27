@@ -32,6 +32,7 @@
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "itemgroups.h"
 #include "qetinformation.h"
 
 /*
@@ -832,6 +833,20 @@ void ElementsPanelWidget::duplicateDiagram()
 					cond->setProperties(cp);
 				}
 			}
+		}
+
+			// Groups too: a group of the copy is its own, so selecting it
+			// is the same on both folios but the database tells them apart.
+		QHash<QUuid, QUuid> renewed_groups;
+		for (QGraphicsItem *item : new_diagram->items()) {
+			const QUuid source_group = ItemGroups::groupOf(item);
+			if (source_group.isNull()) {
+				continue;
+			}
+			if (!renewed_groups.contains(source_group)) {
+				renewed_groups.insert(source_group, QUuid::createUuid());
+			}
+			new_diagram->setItemGroup(item, renewed_groups.value(source_group));
 		}
 	}
 

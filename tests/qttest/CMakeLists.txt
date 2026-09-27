@@ -104,6 +104,13 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# itemgroups.cpp keeps group membership and the selection rule apart from
+# Diagram, so it is tested here on a plain scene of rectangles.
+add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.cpp)
+add_test(NAME tst_itemgroups COMMAND tst_itemgroups)
+target_include_directories(tst_itemgroups PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_itemgroups PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
 add_executable(
   tst_qetpalette
   tst_qetpalette.cpp

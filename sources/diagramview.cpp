@@ -122,6 +122,13 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	});
 
 	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
+		//The diagram leaves group completion alone while a rubber band is
+		//dragged; finish it when the band is released (null rect).
+	connect(this, &QGraphicsView::rubberBandChanged, this, [this](QRect rect) {
+		if (rect.isNull()) {
+			m_diagram->completeGroupSelection();
+		}
+	});
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
 	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
 	connect(diagram, &Diagram::findElementRequired, this, &DiagramView::findElementRequired);

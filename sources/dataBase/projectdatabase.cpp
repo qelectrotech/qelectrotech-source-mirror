@@ -22,6 +22,7 @@
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
+#include "../itemgroups.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
@@ -669,6 +670,13 @@ QUuid drawingItemUuid(QObject *object)
 	return QUuid();
 }
 
+/// The group_uuid column of @p item's row: its group, or NULL.
+QVariant groupValue(const QGraphicsItem *item)
+{
+	const QUuid group = ItemGroups::groupOf(item);
+	return group.isNull() ? QVariant() : QVariant(group.toString());
+}
+
 } // namespace
 
 /**
@@ -749,6 +757,33 @@ void projectDataBase::removeDrawingItem(QGraphicsItem *item)
 		}
 	}
 	forgetDrawingItem(object);
+}
+
+/**
+	@brief projectDataBase::itemGroupChanged
+	@a item joined or left a group (discussion #1070). An element's row is
+	updated at once; a drawing item's is queued like any other change to it.
+	@param item
+*/
+void projectDataBase::itemGroupChanged(QGraphicsItem *item)
+{
+	if (auto element = qgraphicsitem_cast<Element *>(item))
+	{
+		QSqlQuery update(m_data_base);
+		update.prepare(QStringLiteral("UPDATE element SET group_uuid = :group_uuid WHERE uuid = :uuid"));
+		update.bindValue(QStringLiteral(":group_uuid"), groupValue(element));
+		update.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+		if (!update.exec()) {
+			qDebug() << "projectDataBase::itemGroupChanged update error : " << update.lastError();
+		}
+		m_content_changed = true;
+		return;
+	}
+
+	QGraphicsObject *object = item ? item->toGraphicsObject() : nullptr;
+	if (object && !drawingItemTable(object).isEmpty()) {
+		m_dirty_drawing_items.insert(object);
+	}
 }
 
 /**
@@ -884,6 +919,7 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 	query->bindValue(QStringLiteral(":y"), rect.y());
 	query->bindValue(QStringLiteral(":width"), rect.width());
 	query->bindValue(QStringLiteral(":height"), rect.height());
+	query->bindValue(QStringLiteral(":group_uuid"), groupValue(item));
 	if (!query->exec()) {
 		qDebug() << "projectDataBase::writeDrawingItem error : " << query->lastError();
 		return true;
@@ -985,6 +1021,7 @@ bool projectDataBase::createDataBase()
 						  "pos VARCHAR(6) NOT NULL,"
 						  "type VARCHAR(50),"
 						  "sub_type VARCHAR(50),"
+						  "group_uuid VARCHAR(50),"
 						  "FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
 						  ")");
 	if (!query_.exec(element_table)) {
@@ -1085,7 +1122,8 @@ bool projectDataBase::createDataBase()
 				"uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
 				"diagram_uuid VARCHAR(50) NOT NULL, "
 				"pos VARCHAR(6), "
-				"x REAL, y REAL, width REAL, height REAL, ");
+				"x REAL, y REAL, width REAL, height REAL, "
+				"group_uuid VARCHAR(50), ");
 	for (const QString &table : {
 			QStringLiteral("CREATE TABLE shape (") + drawing_columns +
 				"type VARCHAR(20), color VARCHAR(20), fill VARCHAR(20), "
@@ -1516,8 +1554,8 @@ void projectDataBase::prepareQuery()
 
 		//DRAWING ITEMS. OR REPLACE: a row is rewritten in place on every
 		//change, see writeDrawingItem().
-	const QString drawing_columns("uuid, diagram_uuid, pos, x, y, width, height");
-	const QString drawing_values(":uuid, :diagram_uuid, :pos, :x, :y, :width, :height");
+	const QString drawing_columns("uuid, diagram_uuid, pos, x, y, width, height, group_uuid");
+	const QString drawing_values(":uuid, :diagram_uuid, :pos, :x, :y, :width, :height, :group_uuid");
 	m_insert_shape_query = QSqlQuery(m_data_base);
 	m_insert_shape_query.prepare("INSERT OR REPLACE INTO shape (" + drawing_columns +
 								 ", type, color, fill) VALUES (" + drawing_values +
@@ -1561,7 +1599,7 @@ void projectDataBase::prepareQuery()
 	m_diagram_info_order_changed.prepare("UPDATE diagram_info SET folio = :folio WHERE diagram_uuid = :uuid");
 
 		//INSERT ELEMENT
-	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
+	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type, group_uuid) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type, :group_uuid)");
 	m_insert_elements_query = QSqlQuery(m_data_base);
 	m_insert_elements_query.prepare(insert_element_query);
 
@@ -1675,6 +1713,7 @@ void projectDataBase::bindElementValues(QSqlQuery &query, Element *element, Diag
 	query.bindValue(QStringLiteral(":pos"), diagram->convertPosition(element->scenePos()).toString());
 	query.bindValue(QStringLiteral(":type"), element_data.typeToString());
 	query.bindValue(QStringLiteral(":sub_type"), element_data.masterTypeToString());
+	query.bindValue(QStringLiteral(":group_uuid"), groupValue(element));
 }
 
 /**

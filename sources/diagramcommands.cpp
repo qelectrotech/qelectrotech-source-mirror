@@ -18,6 +18,7 @@
 #include "diagramcommands.h"
 
 #include "diagram.h"
+#include "itemgroups.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -215,6 +216,27 @@ void PasteDiagramCommand::redo()
 					c -> setProperties(cp);
 				}
 			}
+		}
+
+			//Pasted groups become new groups: the members of one source
+			//group all get the same new uuid, never the source's, or the
+			//copy would join the original's group. After the elements got
+			//their own uuids: the database row is found by uuid, and before
+			//that it would have been the source element's row.
+		QHash<QUuid, QUuid> renewed_groups;
+		for (QGraphicsItem *item : content.items(DiagramContent::Elements
+												 | DiagramContent::TextFields
+												 | DiagramContent::Images
+												 | DiagramContent::Shapes))
+		{
+			const QUuid source_group = ItemGroups::groupOf(item);
+			if (source_group.isNull()) {
+				continue;
+			}
+			if (!renewed_groups.contains(source_group)) {
+				renewed_groups.insert(source_group, QUuid::createUuid());
+			}
+			diagram -> setItemGroup(item, renewed_groups.value(source_group));
 		}
 	}
 	else

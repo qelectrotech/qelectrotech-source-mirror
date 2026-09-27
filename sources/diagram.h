@@ -27,6 +27,7 @@
 #include "qgimanager.h"
 
 #include <QHash>
+#include <QPointer>
 #include <QUuid>
 #include <QtWidgets>
 #include <QtXml>
@@ -137,6 +138,10 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+
+			//Selection before the current click, see completeGroupSelection()
+		QList<QPointer<QGraphicsObject>> m_previous_selection;
+		void rememberSelection();
 
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
@@ -282,6 +287,7 @@ class Diagram : public QGraphicsScene
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
+		void setItemGroup(QGraphicsItem *item, const QUuid &group);
 
 	public slots:
 		void adjustSceneRect ();
@@ -299,6 +305,7 @@ class Diagram : public QGraphicsScene
 		void invertSelection();
 		void selectAllConductors();
 		void selectAllTextFields();
+		void completeGroupSelection();
 
 	signals:
 		void showDiagram (Diagram *);

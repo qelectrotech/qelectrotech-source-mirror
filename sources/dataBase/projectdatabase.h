@@ -105,6 +105,7 @@ class projectDataBase : public QObject
 			//furniture. Anything else passed here is ignored.
 		void addDrawingItem     (QGraphicsItem *item);
 		void removeDrawingItem  (QGraphicsItem *item);
+		void itemGroupChanged   (QGraphicsItem *item);
 
 	private slots:
 			//Refresh the sender()'s row after Conductor::setProperties().
