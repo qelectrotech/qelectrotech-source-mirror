@@ -492,9 +492,14 @@ def tool_diff(before: str, after: str) -> dict:
         if a["label"] != b["label"]:
             relabelled.append({"uuid": k, "name": a["name"],
                                "from": a["label"], "to": b["label"]})
-        if a["info"] != b["info"]:
+        # An empty field and a missing one mean the same thing, and
+        # QElectroTech drops empty ones when it saves, so compare only the
+        # fields that hold a value.
+        a_info = {n: v for n, v in a["info"].items() if v}
+        b_info = {n: v for n, v in b["info"].items() if v}
+        if a_info != b_info:
             changed_info.append({"uuid": k, "name": a["name"],
-                                 "from": a["info"], "to": b["info"]})
+                                 "from": a_info, "to": b_info})
 
     a_co = {r["key"]: r for i, c, ix in _conductors(_root(before))
             for r in [_conductor_row(i, c, ix)]}
