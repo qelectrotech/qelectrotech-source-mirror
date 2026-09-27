@@ -86,9 +86,16 @@ QSqlQuery execReadOnly(const QSqlDatabase &db, const QString &query, QString *er
 
 	QSqlQuery result(db);
 	const bool ok = result.exec(query);
+		//Switching query_only off aborts a statement SQLite is still
+		//stepping through -- an unsorted UNION ALL then ends after its
+		//first row. So the checked run is finished first, and a statement
+		//that passed is run again for the caller: SQLite refuses a write
+		//at its first step, so passing that step proves it read-only.
+	result.finish();
 	QSqlQuery(db).exec(QStringLiteral("PRAGMA query_only = OFF"));
 
 	if (ok) {
+		result.exec(query);
 		return result;
 	}
 
