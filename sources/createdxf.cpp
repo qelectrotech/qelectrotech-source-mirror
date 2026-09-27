@@ -27,6 +27,20 @@ const double Createdxf::sheetWidth = 4000;
 const double Createdxf::sheetHeight = 2700;
 
 double Createdxf::xScale = 1;
+
+namespace {
+	/// @p text on one line. A DXF value ends at the line break, so a break
+	/// inside a text would shift every group code after it by one line and
+	/// a reader would take values for codes (FINDINGS F052). Callers that
+	/// mean several lines split them first; this is the safety net.
+	QString singleLine(QString text)
+	{
+		text.replace(QLatin1String("\r\n"), QLatin1String(" "));
+		text.replace(QLatin1Char('\r'), QLatin1Char(' '));
+		text.replace(QLatin1Char('\n'), QLatin1Char(' '));
+		return text;
+	}
+}
 double Createdxf::yScale = 1;
 
 Createdxf::Createdxf()
@@ -727,7 +741,7 @@ void Createdxf::drawText(
 		To_Dxf << 41        << "\r\n";
 		To_Dxf << xScaleW    << "\r\n";    // X Scale
 		To_Dxf << 1         << "\r\n";
-		To_Dxf << text      << "\r\n";    // Text Value
+		To_Dxf << singleLine(text) << "\r\n";    // Text Value
 		To_Dxf << 50        << "\r\n";
 		To_Dxf << rotation  << "\r\n";    // Text Rotation
 		file.close();
@@ -780,7 +794,7 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 41        << "\r\n";
 		To_Dxf << xScaleW    << "\r\n";    // X Scale
 			To_Dxf << 1         << "\r\n";
-			To_Dxf << text      << "\r\n";    // Text Value
+			To_Dxf << singleLine(text) << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";
 			To_Dxf << rotation  << "\r\n";    // Text Rotation
 #if 0
