@@ -1990,6 +1990,35 @@ def tool_project_new(binary: str, output: str, title: str = "Untitled",
     return result
 
 
+def _wrong_folio(project: str, op: dict) -> str:
+    """Explain a failed op that named an element on the wrong folio.
+
+    qet_elements and qet_project_info number folios from 1, as the UI does;
+    qet_edit passes "folio" straight to the scripting API, which counts from
+    0. Passing the number qet_elements showed therefore addresses the next
+    folio, and the op fails with nothing but "false". When the element the
+    op names is in the project on some other folio, say which index to use.
+    """
+    folio = op.get("folio")
+    spec = OPS.get(op.get("op"), (None, []))[1]
+    uuids = [op[key] for key, kind in spec
+             if kind == "elmt" and isinstance(op.get(key), str)
+             and not op[key].startswith("$")]
+    if not isinstance(folio, int) or not uuids:
+        return ""
+    try:
+        where = {el.get("uuid"): i for i, el in _elements(_root(project))}
+    except (OSError, ET.ParseError):
+        return ""
+    for uuid in uuids:
+        number = where.get(uuid)
+        if number is not None and number - 1 != folio:
+            return (f"Element {uuid} is on folio {number} as qet_elements numbers "
+                    f"it, which is \"folio\": {number - 1} here: qet_edit counts "
+                    "folios from 0.")
+    return ""
+
+
 def tool_edit(binary: str, project: str, operations: list, output: str,
               elements_dir: str | None = None, timeout: int = 180) -> dict:
     """Apply edits through the scripting API and report what actually changed.
@@ -2060,10 +2089,14 @@ def tool_edit(binary: str, project: str, operations: list, output: str,
     for record in result.get("operations", []):
         if not record["succeeded"]:
             result["ok"] = False
-            result.setdefault("hint",
-                              f"operation {record['index']} ({record['op']}) returned "
-                              f"{record['result']!r}; later operations were skipped. "
-                              "qet.log lines in stderr/stdout say why.")
+            hint = (f"operation {record['index']} ({record['op']}) returned "
+                    f"{record['result']!r}; later operations were skipped. "
+                    "qet.log lines in stderr/stdout say why.")
+            if 0 <= record["index"] < len(operations):
+                wrong = _wrong_folio(str(proj), operations[record["index"]])
+                if wrong:
+                    hint += " " + wrong
+            result.setdefault("hint", hint)
             break
 
     if result.get("saved") is False:
@@ -2236,7 +2269,9 @@ TOOLS = [
                         "Give an op an \"id\" to name what it produced, then refer to "
                         "it later as \"$id\" -- that is how an element placed by "
                         "add_element gets wired by add_conductor, and how a folio made "
-                        "by add_folio is addressed. Terminals are numbered by their "
+                        "by add_folio is addressed. A \"folio\" given as a number is "
+                        "an index counted from 0: the folio qet_elements and "
+                        "qet_project_info call 1 is \"folio\": 0 here. Terminals are numbered by their "
                         "index in the element definition; qet_element_info lists them. "
                         "set_conductor addresses a conductor as the one on a given "
                         "terminal and applies the change to its whole electrical "
