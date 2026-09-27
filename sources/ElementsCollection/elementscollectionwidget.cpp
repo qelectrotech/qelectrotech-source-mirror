@@ -1103,7 +1103,32 @@ void ElementsCollectionWidget::search()
 		return;
 	}
 
-	showFlatResults(rankedSearch(text, m_showed_index));
+	QSettings settings;
+	if (settings.value(QStringLiteral("elementscollection/search-flat-list"),
+					   true).toBool())
+	{
+		showFlatResults(rankedSearch(text, m_showed_index));
+		return;
+	}
+
+		//Tree search: hide what does not match, expand what does.
+	clearFlatResults();
+	hideCollection(true);
+	const QStringList text_list = text.split("+", Qt::SkipEmptyParts);
+	QModelIndexList match_index;
+	for (const QString &txt : text_list) {
+		match_index << m_model->match(m_showed_index.isValid()
+						  ? m_model->index(0,0,m_showed_index)
+						  : m_model->index(0,0),
+						  Qt::UserRole+1,
+						  QVariant(txt),
+						  -1,
+						  Qt::MatchContains
+						  | Qt::MatchRecursive);
+	}
+
+	for (const QModelIndex &index : std::as_const(match_index))
+		showAndExpandItem(index);
 }
 
 /**
