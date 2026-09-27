@@ -312,6 +312,21 @@ def _plain_text(html: str) -> str:
     return " ".join(inner.split())
 
 
+def _angle(value: str) -> str:
+    """A rotation in degrees, reduced to [0, 360) so equal angles compare equal.
+
+    QElectroTech writes the same angle in more than one way: rotating a symbol
+    and undoing it leaves its text fields at "-270" where they were "90", or
+    "-90" where they were "270". Compared as written, that read as a change.
+    Anything that is not a number is returned unchanged.
+    """
+    try:
+        deg = float(value) % 360
+    except (TypeError, ValueError):
+        return value
+    return f"{deg:g}"
+
+
 def _extras(root: ET.Element) -> dict:
     """Everything a folio holds besides elements and conductors.
 
@@ -333,7 +348,7 @@ def _extras(root: ET.Element) -> dict:
             texts.append(record(
                 t, {"folio": n, "x": t.get("x", ""), "y": t.get("y", ""),
                     "text": _plain_text(t.get("text", ""))},
-                {"rotation": t.get("rotation", "0"),
+                {"rotation": _angle(t.get("rotation", "0")),
                  "font": t.get("font", ""), "color": t.get("color", "")}))
         for sh in d.iter("shape"):
             pen, brush = sh.find("pen"), sh.find("brush")
@@ -346,11 +361,11 @@ def _extras(root: ET.Element) -> dict:
                  "line_width": pen.get("widthF", "") if pen is not None else "",
                  "fill": (brush.get("color", "") if brush is not None and
                           brush.get("style", "") != "NoBrush" else "none"),
-                 "rotation": sh.get("rotation", "0")}))
+                 "rotation": _angle(sh.get("rotation", "0"))}))
         for im in d.iter("image"):
             images.append(record(
                 im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
-                {"scale": im.get("size", ""), "rotation": im.get("rotation", "")}))
+                {"scale": im.get("size", ""), "rotation": _angle(im.get("rotation", ""))}))
 
     element_texts = {}
     for n, d in _folios(root):
@@ -367,7 +382,7 @@ def _extras(root: ET.Element) -> dict:
                 fs = (t.get("font", "").split(",") + ["", ""])[1]
                 element_texts[base + (seen[base],)] = {
                     "x": t.get("x", ""), "y": t.get("y", ""), "size": fs,
-                    "frame": t.get("frame", ""), "rotation": t.get("rotation", ""),
+                    "frame": t.get("frame", ""), "rotation": _angle(t.get("rotation", "")),
                     "width": t.get("text_width", ""),
                     "shows": t.findtext("text") or ""}
 
@@ -472,16 +487,24 @@ def tool_diff(before: str, after: str) -> dict:
     a_el, b_el = {}, {}
     for i, e in _elements(_root(before)):
         r = _element_row(i, e)
+        # Rotation is saved as "orientation", in quarter turns (0-3); it is
+        # the only thing a rotation changes, so without it a rotated symbol
+        # reads as untouched.
+        r["orientation"] = e.get("orientation", "0")
         a_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
     for i, e in _elements(_root(after)):
         r = _element_row(i, e)
+        r["orientation"] = e.get("orientation", "0")
         b_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
 
-    moved, relabelled, changed_info = [], [], []
+    moved, rotated, relabelled, changed_info = [], [], [], []
     for k, a in a_el.items():
         b = b_el.get(k)
         if b is None:
             continue
+        if a["orientation"] != b["orientation"]:
+            rotated.append({"uuid": k, "name": a["name"], "folio": a["folio"],
+                            "orientation": [a["orientation"], b["orientation"]]})
         if (a["x"], a["y"]) != (b["x"], b["y"]):
             moved.append({
                 "uuid": k, "name": a["name"], "folio": a["folio"],
@@ -540,6 +563,7 @@ def tool_diff(before: str, after: str) -> dict:
             "distinct_move_deltas": [list(d) for d in deltas],
             "relabelled": relabelled[:50],
             "info_changed": changed_info[:50],
+            "rotated": rotated[:50],
         },
         "conductors": {
             "before": len(a_co), "after": len(b_co),
@@ -2178,7 +2202,8 @@ TOOLS = [
     {
         "name": "qet_diff",
         "description": "Structurally diff two .qet files: which elements moved and "
-                       "by what delta, which were added, removed or relabelled, and "
+                       "by what delta, which were rotated (orientation in quarter "
+                       "turns, 0-3), which were added, removed or relabelled, and "
                        "which conductor fields changed. Use this to verify what an "
                        "edit actually did, rather than reading a screenshot.",
         "inputSchema": {

@@ -899,13 +899,39 @@ class DiffContracts(unittest.TestCase):
             "moved_count": 1, "distinct_move_deltas": [[5.0, 0.0]],
             "relabelled": [{"uuid": A, "name": "coil", "from": "K1", "to": "K2"}],
             "info_changed": [{"uuid": A, "name": "coil", "from": {"label": "K1", "comment": "c"},
-                              "to": {"label": "K2", "comment": "d"}}]})
+                              "to": {"label": "K2", "comment": "d"}}],
+            "rotated": []})
 
     def test_an_unchanged_element_reports_nothing(self):
         p = self.qet(self.folio(self.el(self.A, 1, 2, "K1", "c")))
         e = m.tool_diff(p, p)["elements"]
-        self.assertEqual((e["moved"], e["relabelled"], e["info_changed"], e["added"], e["removed"]),
-                         ([], [], [], [], []))
+        self.assertEqual((e["moved"], e["relabelled"], e["info_changed"], e["added"], e["removed"],
+                          e["rotated"]), ([], [], [], [], [], []))
+
+    def test_equal_angles_written_differently_are_the_same(self):
+        self.assertEqual([m._angle(v) for v in ("-270", "90", "-90", "270", "360", "0", "450", "12.5", "", "x")],
+                         ["90", "90", "270", "270", "0", "0", "90", "12.5", "", "x"])
+        def field(rot):
+            return self.el(self.A, 0, 0, texts=(
+                f'<dynamic_elmt_text x="0" y="0" rotation="{rot}" text_from="UserText"><text>t</text>'
+                '</dynamic_elmt_text>'))
+        d = m.tool_diff(self.qet(self.folio(field("90"))), self.qet(self.folio(field("-270"))))
+        self.assertEqual(d["element_texts"]["changed"], [])
+        d = m.tool_diff(self.qet(self.folio(field("90"))), self.qet(self.folio(field("180"))))
+        self.assertEqual(d["element_texts"]["changed"][0]["changed"], {"rotation": ["90", "180"]})
+
+    def test_a_rotation_is_reported(self):
+        """Rotating a symbol changes only its orientation (quarter turns); a diff
+        that ignored it reported a rotation as no change at all."""
+        rot = lambda o: self.qet(self.folio(
+            self.el(self.A, 1, 2).replace('x="1"', f'orientation="{o}" x="1"')))
+        d = m.tool_diff(rot(0), rot(1))
+        self.assertEqual(d["elements"]["rotated"],
+                         [{"uuid": self.A, "name": "coil", "folio": 1, "orientation": ["0", "1"]}])
+        self.assertEqual((d["elements"]["moved"], d["elements"]["relabelled"]), ([], []))
+        # no attribute is orientation 0, as QElectroTech reads it
+        plain = self.qet(self.folio(self.el(self.A, 1, 2)))
+        self.assertEqual(m.tool_diff(plain, rot(0))["elements"]["rotated"], [])
 
     def test_conductors_section_exact(self):
         A, B, C = self.A, self.B, self.C
@@ -1064,6 +1090,10 @@ class DiffContracts(unittest.TestCase):
         e = m.tool_diff(self.qet(self.folio(many(51, "a"))),
                         self.qet(self.folio(many(51, "b"))))["elements"]
         self.assertEqual((len(e["relabelled"]), len(e["info_changed"])), (50, 50))
+        turned = lambda o: "".join(self.el(U(i), 0, 0).replace('x="0"', f'orientation="{o}" x="0"')
+                                   for i in range(51))
+        e = m.tool_diff(self.qet(self.folio(turned(0))), self.qet(self.folio(turned(2))))["elements"]
+        self.assertEqual(len(e["rotated"]), 50)
         els = many(102, None)
         wires = lambda n, num: "".join(self.wire(U(i), U(i + 1), num=num) for i in range(n))
         c = m.tool_diff(self.qet(self.folio(els, wires(101, "a"))),
