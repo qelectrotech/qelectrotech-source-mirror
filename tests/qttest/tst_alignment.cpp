@@ -155,6 +155,33 @@ private slots:
 		QCOMPARE(offset.y(), 0.0);
 	}
 
+	// A group lines up on the middle of its members' box; a unit with a
+	// single member, such as a shape whose group-mate is locked, keeps
+	// that member's own centre instead of the origin of the folio.
+	void combinedUnits()
+	{
+		const Alignment::Item a{QRectF(100, 200, 40, 20), QPointF(110, 210)};
+		const Alignment::Item b{QRectF(300, 260, 20, 60), QPointF(310, 270)};
+
+		const Alignment::Item one = Alignment::combined({a});
+		QCOMPARE(one.edges, a.edges);
+		QCOMPARE(one.ref, a.ref);
+
+		const Alignment::Item both = Alignment::combined({a, b});
+		QCOMPARE(both.edges, QRectF(100, 200, 220, 120));
+		QCOMPARE(both.ref, QPointF(210, 260));
+
+		// a lone shape centred on x = 200 and a symbol at x = 400 meet
+		// half way, at 300; with the folio origin as the shape's centre
+		// they would meet at 200 and the shape would move 200 px
+		const QRectF shape(180, 50, 40, 40);
+		const QList<QPointF> offsets = Alignment::alignOffsets(
+			{Alignment::combined({{shape, shape.center()}}), {QRectF(390, 0, 20, 20), QPointF(400, 10)}},
+			Alignment::HCenter);
+		QCOMPARE(offsets.at(0), QPointF(100, 0));
+		QCOMPARE(offsets.at(1), QPointF(-100, 0));
+	}
+
 	void emptySelection()
 	{
 		QVERIFY(Alignment::alignOffsets({}, Alignment::Left).isEmpty());

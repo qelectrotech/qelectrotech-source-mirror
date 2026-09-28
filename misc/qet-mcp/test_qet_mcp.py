@@ -153,7 +153,7 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_info", "qet_elements", "qet_conductors", "qet_diff",
             "qet_scan", "qet_element_info", "qet_export", "qet_edit", "qet_query",
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
-            "qet_continuity"})
+            "qet_continuity", "qet_items"})
 
 
 class EditValidation(unittest.TestCase):
@@ -166,6 +166,33 @@ class EditValidation(unittest.TestCase):
 
     def build(self, ops):
         return m._build_script(ops, "/tmp/out.qet")
+
+    def test_tables_and_text_fields_by_uuid(self):
+        """A table or a symbol text field named by uuid is looked up at run
+        time; a field's lookup is scoped to the op's element."""
+        U = "{11111111-2222-4333-8444-555555555555}"
+        E = "{aaaaaaaa-0000-4000-8000-000000000001}"
+        s = self.build([{"op": "set_table_position", "folio": 2, "table": U, "x": 1, "y": 2}])
+        self.assertIn(f'qet.setTablePosition(2, qet.tableIndex(2, "{U}"), 1, 2)', s)
+        s = self.build([{"op": "delete_table", "folio": 0, "table": 3}])
+        self.assertIn("qet.deleteTable(0, 3)", s)
+        s = self.build([{"op": "set_element_text", "folio": 1, "element": E, "index": U,
+                         "property": "x", "value": "5"}])
+        self.assertIn(f'qet.setElementTextProperty(1, "{E}", '
+                      f'qet.elementTextIndex(1, "{E}", "{U}"), "x", "5")', s)
+        # the element may be one placed earlier in the same run
+        s = self.build([{"op": "add_folio", "id": "f"},
+                        {"op": "add_element", "id": "k", "folio": "$f", "path": "p", "x": 0, "y": 0},
+                        {"op": "delete_element_text", "folio": "$f", "element": "$k", "index": U}])
+        self.assertIn(f'qet.deleteElementText(R["f"], R["k"], qet.elementTextIndex(R["f"], R["k"], "{U}"))', s)
+        # the lookups are required only when a uuid is used
+        self.assertIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": U}]))
+        self.assertNotIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": 0}]))
+        for op in ({"op": "delete_table", "folio": 0, "table": "second"},
+                   {"op": "delete_element_text", "folio": 0, "element": E, "index": "label"}):
+            with self.subTest(op=op["op"]):
+                with self.assertRaisesRegex(ValueError, "index or its uuid"):
+                    self.build([op])
 
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op
@@ -707,6 +734,648 @@ class WrongFolioHint(unittest.TestCase):
         self.assertIn("counted from 0", tool["inputSchema"]["properties"]["operations"]["description"])
 
 
+class ReadToolContracts(unittest.TestCase):
+    """Exact answers of the read tools on a small hand-made project.
+
+    A mutation audit (planting small bugs in the server and running this
+    suite) found qet_elements, qet_conductors and qet_project_info almost
+    untested: a dropped output field, a filter that never applied or a
+    count off by one all passed. Every value here is pinned exactly."""
+
+    A = "{aaaaaaaa-0000-4000-8000-000000000001}"
+    B = "{bbbbbbbb-0000-4000-8000-000000000002}"
+    C = "{cccccccc-0000-4000-8000-000000000003}"
+    D = "{dddddddd-0000-4000-8000-000000000004}"
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = str(Path(self.tmp.name) / "p.qet")
+        A, B, C, D = self.A, self.B, self.C, self.D
+        Path(self.qet).write_text(
+            '<project title="T" version="0.100">'
+            '<diagram title="One"><elements>'
+            f'<element uuid="{A}" type="embed://import/x/Coil.elmt" x="10" y="20">'
+            '<terminals><terminal id="1" x="0" y="-10" orientation="n"/>'
+            '<terminal id="2" x="0" y="10" orientation="s"/></terminals>'
+            '<elementInformations>'
+            '<elementInformation show="1" name="label">K1</elementInformation>'
+            '<elementInformation show="1" name="comment"> spaced </elementInformation>'
+            '<elementInformation show="1">no name, ignored</elementInformation>'
+            '</elementInformations></element>'
+            f'<element uuid="{B}" type="embed://import/x/relay_coil.elmt" x="30" y="40"/>'
+            f'<element uuid="{C}" type="embed://import/x/lamp.elmt" x="50" y="60"/>'
+            '</elements><conductors>'
+            '<conductor terminal1="1" terminal2="2" num="W1" formula="F" cable="C1" bus="B"'
+            ' function="L1" conductor_color="red" conductor_section="1.5" type="multi"/>'
+            f'<conductor element1="{B}" terminal1="" terminalname1="A1"'
+            f' element2="{C}" terminal2="{{t2}}" num="W2" cable="  "/>'
+            '</conductors></diagram>'
+            '<diagram title="Two"><elements>'
+            f'<element uuid="{D}" type="embed://import/x/Coil.elmt" x="1" y="2"/>'
+            '</elements><conductors>'
+            f'<conductor element1="{D}" terminal1="{{t1}}" element2="{D}" terminal2="{{t2}}"/>'
+            '</conductors></diagram></project>')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_project_info_exact(self):
+        self.assertEqual(m.tool_project_info(self.qet), {
+            "file": self.qet, "title": "T", "version": "0.100",
+            "folio_count": 2, "element_count": 4, "conductor_count": 3,
+            "folios": [{"index": 1, "title": "One", "elements": 3, "conductors": 2},
+                       {"index": 2, "title": "Two", "elements": 1, "conductors": 1}]})
+
+    def test_elements_rows_exact(self):
+        r = m.tool_elements(self.qet)
+        self.assertEqual((r["count"], r["truncated"]), (4, False))
+        self.assertEqual(r["elements"][0], {
+            "folio": 1, "uuid": self.A, "type": "embed://import/x/Coil.elmt", "name": "Coil",
+            "x": "10", "y": "20", "label": "K1",
+            # values as QElectroTech saves them (trimmed); a field with no name is skipped
+            "info": {"label": "K1", "comment": "spaced"}})
+        self.assertEqual([(e["folio"], e["name"], e["label"], e["info"]) for e in r["elements"][1:]],
+                         [(1, "relay_coil", "", {}), (1, "lamp", "", {}), (2, "Coil", "", {})])
+
+    def test_elements_filters_and_limit(self):
+        names = lambda r: [e["name"] for e in r["elements"]]
+        self.assertEqual(names(m.tool_elements(self.qet, folio=2)), ["Coil"])
+        self.assertEqual(names(m.tool_elements(self.qet, folio=1)), ["Coil", "relay_coil", "lamp"])
+        # case-insensitive substring of the definition's file name
+        self.assertEqual(names(m.tool_elements(self.qet, name_contains="COIL")),
+                         ["Coil", "relay_coil", "Coil"])
+        self.assertEqual(names(m.tool_elements(self.qet, folio=1, name_contains="coil")),
+                         ["Coil", "relay_coil"])
+        r = m.tool_elements(self.qet, limit=2)
+        self.assertEqual((r["count"], r["truncated"], len(r["elements"])), (4, True, 2))
+        r = m.tool_elements(self.qet, limit=4)
+        self.assertEqual((r["count"], r["truncated"], len(r["elements"])), (4, False, 4))
+
+    def test_conductor_rows_exact(self):
+        r = m.tool_conductors(self.qet)
+        self.assertEqual((r["count"], r["truncated"]), (3, False))
+        first, second, third = r["conductors"]
+        self.assertEqual(first, {
+            "folio": 1, "uuid": "", "num": "W1", "formula": "F", "cable": "C1", "bus": "B",
+            "function": "L1", "color": "red", "section": "1.5", "type": "multi",
+            # legacy ends resolved through the folio's terminal ids
+            "key": f"1:{self.A}@0,-10,n--{self.A}@0,10,s"})
+        # current ends: instance/terminal; an empty terminal falls back to its name
+        self.assertEqual(second["key"], f"1:{self.B}/A1--{self.C}/{{t2}}")
+        self.assertEqual((second["num"], second["cable"]), ("W2", "  "))
+        self.assertEqual((third["folio"], third["key"]), (2, f"2:{self.D}/{{t1}}--{self.D}/{{t2}}"))
+
+    def test_conductor_filters_and_limit(self):
+        nums = lambda r: [c["num"] for c in r["conductors"]]
+        self.assertEqual(nums(m.tool_conductors(self.qet, folio=1)), ["W1", "W2"])
+        self.assertEqual(nums(m.tool_conductors(self.qet, folio=2)), [""])
+        r = m.tool_conductors(self.qet, attribute="cable")
+        self.assertEqual([c["value"] for c in r["conductors"]], ["C1", "  ", ""])
+        # non_empty drops empty and whitespace-only values
+        r = m.tool_conductors(self.qet, attribute="cable", non_empty=True)
+        self.assertEqual([c["value"] for c in r["conductors"]], ["C1"])
+        # non_empty alone, with no attribute, filters nothing
+        self.assertEqual(m.tool_conductors(self.qet, non_empty=True)["count"], 3)
+        self.assertNotIn("value", m.tool_conductors(self.qet)["conductors"][0])
+        r = m.tool_conductors(self.qet, limit=2)
+        self.assertEqual((r["count"], r["truncated"], len(r["conductors"])), (3, True, 2))
+        r = m.tool_conductors(self.qet, limit=3)
+        self.assertEqual((r["count"], r["truncated"], len(r["conductors"])), (3, False, 3))
+
+    def test_default_limit_is_200_rows(self):
+        els = "".join(f'<element uuid="{{{i}}}" type="x.elmt"/>' for i in range(201))
+        wires = "".join(f'<conductor terminal1="{i}" terminal2="{i}"/>' for i in range(201))
+        big = Path(self.tmp.name) / "big.qet"
+        big.write_text(f'<project><diagram><elements>{els}</elements>'
+                       f'<conductors>{wires}</conductors></diagram></project>')
+        for tool, key in ((m.tool_elements, "elements"), (m.tool_conductors, "conductors")):
+            with self.subTest(tool=key):
+                r = tool(str(big))
+                self.assertEqual((r["count"], r["truncated"], len(r[key])), (201, True, 200))
+
+    def test_conductor_row_without_an_index(self):
+        c = ET.fromstring('<conductor terminal1="7" terminal2="8"/>')
+        self.assertEqual(m._conductor_row(3, c)["key"], "3:#7--#8")
+
+    def test_plain_text(self):
+        self.assertEqual(m._plain_text("<html><body><p>a &amp; <b>b</b></p>\n<p> c </p></body></html>"),
+                         "a & b c")
+        # no <body>: the whole string is the text
+        self.assertEqual(m._plain_text("plain <b>x</b>"), "plain x")
+        self.assertEqual(m._plain_text(None), "")
+
+
+class ItemsTool(unittest.TestCase):
+    """qet_items: every drawn item that is not a symbol or a wire, with its uuid."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = str(Path(self.tmp.name) / "p.qet")
+        Path(self.qet).write_text(
+            '<project><diagram><elements>'
+            '<element uuid="{el}" type="x.elmt" x="0" y="0"><dynamic_texts>'
+            '<dynamic_elmt_text uuid="{et}" x="5" y="6" rotation="0" text_width="-1" frame="false"'
+            ' font="Sans,9,-1" text_from="ElementInfo"><text>K1</text><info_name>label</info_name>'
+            '</dynamic_elmt_text></dynamic_texts></element></elements><conductors/>'
+            '<inputs><input uuid="{tx}" x="1" y="2" rotation="0" font="f" color="c"'
+            ' text="&lt;html&gt;&lt;body&gt;note&lt;/body&gt;&lt;/html&gt;"/></inputs>'
+            '<shapes><shape uuid="{sh}" type="Line" x1="0" y1="0" x2="9" y2="9" rotation="0">'
+            '<pen color="c" style="s" widthF="1"/></shape></shapes>'
+            '</diagram><diagram><elements/><conductors/>'
+            '<images><image x="3" y="4" size="1" rotation="0"/></images>'
+            '<tables><graphics_table uuid="{tb}" name="Parts" x="0" y="0" width="100" height="50"'
+            ' display_n_row="10"/></tables>'
+            '</diagram></project>')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_every_kind_with_its_uuid(self):
+        r = m.tool_items(self.qet)
+        self.assertEqual((r["count"], r["truncated"]), (5, False))
+        self.assertEqual(r["items"], [
+            {"kind": "text", "uuid": "{tx}", "folio": 1, "x": "1", "y": "2", "text": "note",
+             "rotation": "0", "font": "f", "color": "c"},
+            {"kind": "shape", "uuid": "{sh}", "folio": 1, "type": "Line", "from": ["0", "0"],
+             "to": ["9", "9"], "line_color": "c", "line_style": "s", "line_width": "1",
+             "fill": "none", "rotation": "0"},
+            {"kind": "element_text", "uuid": "{et}", "folio": 1, "element": "{el}",
+             "source": "ElementInfo", "bound_to": "label", "n": 1, "x": "5", "y": "6",
+             "size": "9", "frame": "false", "rotation": "0", "width": "-1", "shows": "K1"},
+            # saved before pictures carried a uuid: "" until the next save
+            {"kind": "image", "uuid": "", "folio": 2, "x": "3", "y": "4", "scale": "1",
+             "rotation": "0"},
+            {"kind": "table", "uuid": "{tb}", "folio": 2, "name": "Parts", "x": "0", "y": "0",
+             "width": "100", "height": "50", "rows_shown": "10"}])
+
+    def test_filters_and_limit(self):
+        kinds = lambda r: [i["kind"] for i in r["items"]]
+        self.assertEqual(kinds(m.tool_items(self.qet, folio=2)), ["image", "table"])
+        self.assertEqual(kinds(m.tool_items(self.qet, kind="shape")), ["shape"])
+        self.assertEqual(kinds(m.tool_items(self.qet, folio=2, kind="shape")), [])
+        r = m.tool_items(self.qet, limit=2)
+        self.assertEqual((r["count"], r["truncated"], len(r["items"])), (5, True, 2))
+        r = m.tool_items(self.qet, limit=5)
+        self.assertEqual((r["count"], r["truncated"]), (5, False))
+        with self.assertRaisesRegex(ValueError, "kind must be one of"):
+            m.tool_items(self.qet, kind="wire")
+
+    def test_default_limit_is_500(self):
+        many = "".join(f'<input uuid="{{{i}}}" x="{i}" y="0" text="t"/>' for i in range(501))
+        big = Path(self.tmp.name) / "big.qet"
+        big.write_text(f'<project><diagram><inputs>{many}</inputs></diagram></project>')
+        r = m.tool_items(str(big))
+        self.assertEqual((r["count"], r["truncated"], len(r["items"])), (501, True, 500))
+
+
+class DiffContracts(unittest.TestCase):
+    """Exact qet_diff output, section by section, on hand-made pairs.
+
+    The mutation audit found most of tool_diff's output unchecked: a dropped
+    field of a move, of a conductor change or of a text record, a skipped
+    comparison, or a list cap off by one all passed the suite."""
+
+    A = "{aaaaaaaa-0000-4000-8000-000000000001}"
+    B = "{bbbbbbbb-0000-4000-8000-000000000002}"
+    C = "{cccccccc-0000-4000-8000-000000000003}"
+    D = "{dddddddd-0000-4000-8000-000000000004}"
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.n = 0
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def qet(self, body, title="T"):
+        self.n += 1
+        p = Path(self.tmp.name) / f"p{self.n}.qet"
+        p.write_text(f'<project title="{title}">{body}</project>')
+        return str(p)
+
+    @staticmethod
+    def el(uuid, x, y, label=None, comment=None, type_="x/coil.elmt", texts=""):
+        info = "".join(f'<elementInformation show="1" name="{n}">{v}</elementInformation>'
+                       for n, v in (("label", label), ("comment", comment)) if v is not None)
+        u = f' uuid="{uuid}"' if uuid else ""
+        return (f'<element{u} type="{type_}" x="{x}" y="{y}">'
+                f'<elementInformations>{info}</elementInformations>'
+                f'<dynamic_texts>{texts}</dynamic_texts></element>')
+
+    @staticmethod
+    def wire(e1, e2, **attrs):
+        a = "".join(f' {k}="{v}"' for k, v in attrs.items())
+        return f'<conductor element1="{e1}" terminal1="{{t1}}" element2="{e2}" terminal2="{{t2}}"{a}/>'
+
+    def folio(self, elements="", wires="", extra="", **attrs):
+        a = "".join(f' {k}="{v}"' for k, v in attrs.items())
+        return (f'<diagram{a}><elements>{elements}</elements>'
+                f'<conductors>{wires}</conductors>{extra}</diagram>')
+
+    def test_elements_section_exact(self):
+        A, B, C, D = self.A, self.B, self.C, self.D
+        before = self.qet(self.folio(
+            self.el(A, 10, 20, "K1", "c") + self.el(B, 0, 0) + self.el(C, 5, 5)
+            + self.el("", 1, 1, type_="x/old.elmt")))
+        after = self.qet(self.folio(
+            self.el(A, 15, 20, "K2", "d") + self.el(B, 0, 0) + self.el(D, 7, 7)
+            + self.el("", 2, 2, type_="x/old.elmt")))
+        self.assertEqual(m.tool_diff(before, after)["elements"], {
+            "before": 4, "after": 4,
+            # no uuid: keyed on folio, position and name, so a move is remove + add
+            "added": sorted([D, "1:2,2:old"]), "removed": sorted([C, "1:1,1:old"]),
+            "moved": [{"uuid": A, "name": "coil", "folio": 1, "from": ["10", "20"],
+                       "to": ["15", "20"], "delta": [5.0, 0.0]}],
+            "moved_count": 1, "distinct_move_deltas": [[5.0, 0.0]],
+            "relabelled": [{"uuid": A, "name": "coil", "from": "K1", "to": "K2"}],
+            "info_changed": [{"uuid": A, "name": "coil", "from": {"label": "K1", "comment": "c"},
+                              "to": {"label": "K2", "comment": "d"}}],
+            "rotated": []})
+
+    def test_an_unchanged_element_reports_nothing(self):
+        p = self.qet(self.folio(self.el(self.A, 1, 2, "K1", "c")))
+        e = m.tool_diff(p, p)["elements"]
+        self.assertEqual((e["moved"], e["relabelled"], e["info_changed"], e["added"], e["removed"],
+                          e["rotated"]), ([], [], [], [], [], []))
+
+    def test_equal_angles_written_differently_are_the_same(self):
+        self.assertEqual([m._angle(v) for v in ("-270", "90", "-90", "270", "360", "0", "450", "12.5", "", "x")],
+                         ["90", "90", "270", "270", "0", "0", "90", "12.5", "", "x"])
+        def field(rot):
+            return self.el(self.A, 0, 0, texts=(
+                f'<dynamic_elmt_text x="0" y="0" rotation="{rot}" text_from="UserText"><text>t</text>'
+                '</dynamic_elmt_text>'))
+        d = m.tool_diff(self.qet(self.folio(field("90"))), self.qet(self.folio(field("-270"))))
+        self.assertEqual(d["element_texts"]["changed"], [])
+        d = m.tool_diff(self.qet(self.folio(field("90"))), self.qet(self.folio(field("180"))))
+        self.assertEqual(d["element_texts"]["changed"][0]["changed"], {"rotation": ["90", "180"]})
+
+    def test_a_rotation_is_reported(self):
+        """Rotating a symbol changes only its orientation (quarter turns); a diff
+        that ignored it reported a rotation as no change at all."""
+        rot = lambda o: self.qet(self.folio(
+            self.el(self.A, 1, 2).replace('x="1"', f'orientation="{o}" x="1"')))
+        d = m.tool_diff(rot(0), rot(1))
+        self.assertEqual(d["elements"]["rotated"],
+                         [{"uuid": self.A, "name": "coil", "folio": 1, "orientation": ["0", "1"]}])
+        self.assertEqual((d["elements"]["moved"], d["elements"]["relabelled"]), ([], []))
+        # no attribute is orientation 0, as QElectroTech reads it
+        plain = self.qet(self.folio(self.el(self.A, 1, 2)))
+        self.assertEqual(m.tool_diff(plain, rot(0))["elements"]["rotated"], [])
+
+    def test_conductors_section_exact(self):
+        A, B, C = self.A, self.B, self.C
+        els = self.el(A, 0, 0) + self.el(B, 0, 0) + self.el(C, 0, 0)
+        before = self.qet(self.folio(els, self.wire(A, B, num="W1", cable="C1")
+                                     + self.wire(B, C, num="W2")))
+        after = self.qet(self.folio(els, self.wire(A, B, num="W9", cable="C1", conductor_color="red")
+                                    + self.wire(A, C, num="W3")))
+        k = lambda x, y: f"1:{x}/{{t1}}--{y}/{{t2}}"
+        self.assertEqual(m.tool_diff(before, after)["conductors"], {
+            "before": 2, "after": 2, "keyed_by": "ends", "added": [k(A, C)], "removed": [k(B, C)],
+            "changed": [{"key": k(A, B), "changed": {"num": ["W1", "W9"], "color": ["", "red"]}}],
+            "changed_count": 1})
+
+    def test_unresolvable_conductor_ends_are_flagged(self):
+        p = self.qet(self.folio(self.el("", 0, 0),
+                                '<conductor terminal1="3" terminal2="4" num="W1"/>'))
+        c = m.tool_diff(p, p)["conductors"]
+        self.assertEqual(c["unstable_keys"], 1)
+        self.assertIn("renumbers on save", c["warning"])
+        q = self.qet(self.folio(self.el(self.A, 0, 0) + self.el(self.B, 0, 0),
+                                self.wire(self.A, self.B)))
+        self.assertNotIn("unstable_keys", m.tool_diff(q, q)["conductors"])
+
+    def test_list_caps(self):
+        many = lambda n, x: "".join(self.el(f"{{{i:08d}-0000-4000-8000-000000000000}}", x, 0)
+                                     for i in range(n))
+        e = m.tool_diff(self.qet(self.folio(many(101, 0))), self.qet(self.folio(many(101, 5))))["elements"]
+        self.assertEqual((len(e["moved"]), e["moved_count"]), (100, 101))
+        e = m.tool_diff(self.qet(self.folio(many(51, 0))), self.qet(self.folio("")))["elements"]
+        self.assertEqual((len(e["removed"]), e["before"]), (50, 51))
+        e = m.tool_diff(self.qet(self.folio("")), self.qet(self.folio(many(51, 0))))["elements"]
+        self.assertEqual(len(e["added"]), 50)
+
+    def test_texts_shapes_images_by_uuid(self):
+        def extras(x, color, uuid=True):
+            u = lambda s: f' uuid="{{{s}}}"' if uuid else ""
+            return (f'<inputs><input{u("t")} x="{x}" y="2" rotation="0" font="f" color="{color}"'
+                    ' text="&lt;html&gt;&lt;body&gt;note&lt;/body&gt;&lt;/html&gt;"/></inputs>'
+                    f'<shapes><shape{u("s")} type="Rectangle" x1="{x}" y1="0" x2="9" y2="9" rotation="0">'
+                    f'<pen color="{color}" style="SolidLine" widthF="1"/><brush style="NoBrush"/></shape></shapes>'
+                    f'<images><image{u("i")} x="{x}" y="3" size="1" rotation="0"/></images>')
+        d = m.tool_diff(self.qet(self.folio(extra=extras(1, "#000"))),
+                        self.qet(self.folio(extra=extras(4, "#f00"))))
+        # A uuid-keyed item is labelled as it is after the edit; "changed" has both.
+        self.assertEqual(d["texts"]["changed"], [{
+            "item": {"folio": 1, "x": "4", "y": "2", "text": "note", "uuid": "{t}"},
+            "changed": {"x": ["1", "4"], "color": ["#000", "#f00"]}}])
+        self.assertEqual(d["shapes"]["changed"], [{
+            "item": {"folio": 1, "type": "Rectangle", "from": ["4", "0"], "to": ["9", "9"], "uuid": "{s}"},
+            "changed": {"from": [["1", "0"], ["4", "0"]], "line_color": ["#000", "#f00"]}}])
+        self.assertEqual(d["images"]["changed"], [{
+            "item": {"folio": 1, "x": "4", "y": "3", "uuid": "{i}"}, "changed": {"x": ["1", "4"]}}])
+        for kind in ("texts", "shapes", "images"):
+            self.assertEqual((d[kind]["keyed_by"], d[kind]["before"], d[kind]["after"]), ("uuid", 1, 1))
+        # without uuids a move is a removal plus an addition, keyed by position
+        d = m.tool_diff(self.qet(self.folio(extra=extras(1, "#000", uuid=False))),
+                        self.qet(self.folio(extra=extras(4, "#000", uuid=False))))
+        self.assertEqual((d["images"]["keyed_by"], len(d["images"]["added"]), len(d["images"]["removed"])),
+                         ("position", 1, 1))
+
+    def test_shape_style_fields(self):
+        def shape(style, width, brush):
+            return (f'<shapes><shape uuid="{{s}}" type="Line" x1="0" y1="0" x2="1" y2="1" rotation="90">'
+                    f'<pen color="#000" style="{style}" widthF="{width}"/>{brush}</shape></shapes>')
+        d = m.tool_diff(
+            self.qet(self.folio(extra=shape("SolidLine", 1, '<brush style="NoBrush" color="#0f0"/>'))),
+            self.qet(self.folio(extra=shape("DashLine", 2, '<brush style="SolidPattern" color="#0f0"/>'))))
+        self.assertEqual(d["shapes"]["changed"][0]["changed"],
+                         {"line_style": ["SolidLine", "DashLine"], "line_width": ["1", "2"],
+                          "fill": ["none", "#0f0"]})
+
+    def test_element_text_fields(self):
+        def field(x, size, shows):
+            return (f'<dynamic_elmt_text x="{x}" y="1" frame="false" rotation="0" text_width="-1" '
+                    f'text_from="ElementInfo" font="Sans,{size},-1"><text>{shows}</text>'
+                    '<info_name>label</info_name></dynamic_elmt_text>')
+        d = m.tool_diff(self.qet(self.folio(self.el(self.A, 0, 0, texts=field(3, 9, "K1")))),
+                        self.qet(self.folio(self.el(self.A, 0, 0, texts=field(6, 9, "K2")))))
+        self.assertEqual(d["element_texts"]["changed"], [{
+            "item": {"element": self.A, "source": "ElementInfo", "bound_to": "label", "n": 1},
+            "changed": {"x": ["3", "6"], "shows": ["K1", "K2"]}}])
+
+    def test_folio_and_project_fields(self):
+        d = m.tool_diff(self.qet(self.folio(title="A", cols="10"), title="P"),
+                        self.qet(self.folio(title="B", cols="10"), title="Q"))
+        self.assertEqual(d["project"], {"changed": {"title": ["P", "Q"]}})
+        self.assertEqual(d["folios"], {"before": 1, "after": 1, "keyed_by": "position",
+                                       "changed": [{"folio": 1, "changed": {"title": ["A", "B"]}}]})
+        d = m.tool_diff(self.qet(self.folio(title="A")),
+                        self.qet(self.folio(title="B") + self.folio(title="C")))
+        self.assertIn("folio count changed", d["folios"]["note"])
+        d = m.tool_diff(self.qet(self.folio(title="A")),
+                        self.qet(self.folio(title="A") + self.folio(title="C")))
+        self.assertNotIn("note", d["folios"])
+
+    def test_every_compared_field_is_reported_on_its_own(self):
+        """Change one attribute at a time; each must show as exactly that field."""
+        def changed_fields(before, after, kind):
+            d = m.tool_diff(self.qet(self.folio(extra=before)), self.qet(self.folio(extra=after)))
+            return [list(c["changed"]) for c in d[kind]["changed"]]
+        def text(**v):
+            a = {"rotation": "0", "font": "f", "color": "c", **v}
+            return ('<inputs><input uuid="{t}" x="1" y="2" '
+                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + ' text="x"/></inputs>')
+        def shape(rot):
+            return (f'<shapes><shape uuid="{{s}}" type="Line" x1="0" y1="0" x2="1" y2="1" '
+                    f'rotation="{rot}"><pen color="c" style="s" widthF="1"/></shape></shapes>')
+        def image(**v):
+            a = {"size": "1", "rotation": "0", **v}
+            return ('<images><image uuid="{i}" x="0" y="0" '
+                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + '/></images>')
+        for kind, before, after, field in (
+                ("texts", text(), text(rotation="90"), "rotation"),
+                ("texts", text(), text(font="g"), "font"),
+                ("shapes", shape(0), shape(90), "rotation"),
+                ("images", image(), image(rotation="90"), "rotation"),
+                ("images", image(), image(size="2"), "scale")):
+            with self.subTest(kind=kind, field=field):
+                self.assertEqual(changed_fields(before, after, kind), [[field]])
+
+    def test_every_element_text_field_attribute(self):
+        def field(**v):
+            a = {"x": "0", "y": "0", "frame": "false", "rotation": "0", "text_width": "-1",
+                 "font": "Sans,9,-1", **v}
+            return self.el(self.A, 0, 0, texts=(
+                "<dynamic_elmt_text " + " ".join(f'{k}="{w}"' for k, w in a.items())
+                + ' text_from="CompositeText"><text>K1</text>'
+                '<composite_text>%{label}</composite_text></dynamic_elmt_text>'))
+        for attr, value, reported in (("y", "5", "y"), ("rotation", "90", "rotation"),
+                                      ("text_width", "40", "width"), ("frame", "true", "frame"),
+                                      ("font", "Sans,12,-1", "size")):
+            with self.subTest(attr=attr):
+                d = m.tool_diff(self.qet(self.folio(field())),
+                                self.qet(self.folio(field(**{attr: value}))))
+                ch = d["element_texts"]["changed"]
+                self.assertEqual([list(c["changed"]) for c in ch], [[reported]])
+                # a composite field is identified by its formula
+                self.assertEqual(ch[0]["item"]["bound_to"], "%{label}")
+
+    def test_an_unchanged_conductor_is_not_listed_as_changed(self):
+        A, B, C = self.A, self.B, self.C
+        els = self.el(A, 0, 0) + self.el(B, 0, 0) + self.el(C, 0, 0)
+        before = self.qet(self.folio(els, self.wire(A, B, num="W1") + self.wire(B, C, num="W2")))
+        after = self.qet(self.folio(els, self.wire(A, B, num="W1") + self.wire(B, C, num="W5")))
+        c = m.tool_diff(before, after)["conductors"]
+        self.assertEqual([x["changed"] for x in c["changed"]], [{"num": ["W2", "W5"]}])
+
+    def test_a_strip_without_its_data_is_skipped(self):
+        p = self.qet(self.folio() + '<terminal_strips><terminal_strip/></terminal_strips>')
+        self.assertEqual(m.tool_diff(p, p)["terminal_strips"]["before"], 0)
+
+    def test_every_list_is_capped(self):
+        U = lambda i: f"{{{i:08d}-0000-4000-8000-000000000000}}"
+        many = lambda n, label: "".join(self.el(U(i), 0, 0, label) for i in range(n))
+        e = m.tool_diff(self.qet(self.folio(many(51, "a"))),
+                        self.qet(self.folio(many(51, "b"))))["elements"]
+        self.assertEqual((len(e["relabelled"]), len(e["info_changed"])), (50, 50))
+        turned = lambda o: "".join(self.el(U(i), 0, 0).replace('x="0"', f'orientation="{o}" x="0"')
+                                   for i in range(51))
+        e = m.tool_diff(self.qet(self.folio(turned(0))), self.qet(self.folio(turned(2))))["elements"]
+        self.assertEqual(len(e["rotated"]), 50)
+        els = many(102, None)
+        wires = lambda n, num: "".join(self.wire(U(i), U(i + 1), num=num) for i in range(n))
+        c = m.tool_diff(self.qet(self.folio(els, wires(101, "a"))),
+                        self.qet(self.folio(els, wires(101, "b"))))["conductors"]
+        self.assertEqual((len(c["changed"]), c["changed_count"]), (100, 101))
+        c = m.tool_diff(self.qet(self.folio(els, wires(51, "a"))), self.qet(self.folio(els)))["conductors"]
+        self.assertEqual(len(c["removed"]), 50)
+        c = m.tool_diff(self.qet(self.folio(els)), self.qet(self.folio(els, wires(51, "a"))))["conductors"]
+        self.assertEqual(len(c["added"]), 50)
+        folios = lambda t: "".join(self.folio(title=f"{t}{i}") for i in range(51))
+        f = m.tool_diff(self.qet(folios("a")), self.qet(folios("b")))["folios"]
+        self.assertEqual(len(f["changed"]), 50)
+        # _diff_keyed's own caps, through the text records
+        texts = lambda n, x: "<inputs>" + "".join(
+            f'<input uuid="{U(i)}" x="{x}" y="0" text="t"/>' for i in range(n)) + "</inputs>"
+        t = m.tool_diff(self.qet(self.folio(extra=texts(51, 0))),
+                        self.qet(self.folio(extra=texts(51, 1))))["texts"]
+        self.assertEqual(len(t["changed"]), 50)
+        t = m.tool_diff(self.qet(self.folio(extra=texts(51, 0))), self.qet(self.folio()))["texts"]
+        self.assertEqual(len(t["removed"]), 50)
+        t = m.tool_diff(self.qet(self.folio()), self.qet(self.folio(extra=texts(51, 0))))["texts"]
+        self.assertEqual(len(t["added"]), 50)
+
+    def test_conductors_by_uuid(self):
+        """Every conductor has a uuid: a rewire is that conductor with new ends,
+        not one removed and another added."""
+        A, B, C = self.A, self.B, self.C
+        els = self.el(A, 0, 0) + self.el(B, 0, 0) + self.el(C, 0, 0)
+        before = self.qet(self.folio(els, self.wire(A, B, uuid="{w1}", num="W1")
+                                     + self.wire(B, C, uuid="{w2}")))
+        after = self.qet(self.folio(els, self.wire(A, C, uuid="{w1}", num="W1")
+                                    + self.wire(A, B, uuid="{w3}")))
+        k = lambda x, y: f"1:{x}/{{t1}}--{y}/{{t2}}"
+        c = m.tool_diff(before, after)["conductors"]
+        self.assertEqual(c["keyed_by"], "uuid")
+        self.assertEqual(c["changed"], [{"key": k(A, C), "uuid": "{w1}",
+                                         "changed": {"ends": [k(A, B), k(A, C)]}}])
+        # added/removed are still named by their ends, as in the ends mode
+        self.assertEqual((c["added"], c["removed"]), ([k(A, B)], [k(B, C)]))
+        # one conductor without a uuid puts the whole comparison back on ends
+        mixed = self.qet(self.folio(els, self.wire(A, B, uuid="{w1}", num="W1") + self.wire(B, C)))
+        self.assertEqual(m.tool_diff(before, mixed)["conductors"]["keyed_by"], "ends")
+
+    def test_folios_by_uuid(self):
+        """With folio uuids a reorder is one 'reordered' entry, not every later
+        folio changing title."""
+        f = lambda u, t: self.folio(title=t, uuid=u)
+        before = self.qet(f("{f1}", "One") + f("{f2}", "Two") + f("{f3}", "Three"))
+        after = self.qet(f("{f2}", "Two") + f("{f1}", "One") + f("{f4}", "Four"))
+        d = m.tool_diff(before, after)["folios"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual(d["changed"], [])
+        self.assertEqual(d["reordered"], [{"uuid": "{f2}", "title": "Two", "from": 2, "to": 1},
+                                          {"uuid": "{f1}", "title": "One", "from": 1, "to": 2}])
+        self.assertEqual(d["added"], [{"folio": 3, "uuid": "{f4}", "title": "Four"}])
+        self.assertEqual(d["removed"], [{"folio": 3, "uuid": "{f3}", "title": "Three"}])
+        self.assertNotIn("note", d)
+        renamed = self.qet(f("{f1}", "Uno") + f("{f2}", "Two") + f("{f3}", "Three"))
+        self.assertEqual(m.tool_diff(before, renamed)["folios"]["changed"],
+                         [{"folio": 1, "uuid": "{f1}", "changed": {"title": ["One", "Uno"]}}])
+
+    def test_element_text_fields_by_uuid(self):
+        """By their own uuid, deleting the first of two label fields is that
+        field removed -- by position it read as the second one changing."""
+        def fields(*items):
+            return self.el(self.A, 0, 0, texts="".join(
+                f'<dynamic_elmt_text uuid="{u}" x="{x}" y="0" text_from="UserText"><text>{t}</text>'
+                '</dynamic_elmt_text>' for u, x, t in items))
+        before = self.qet(self.folio(fields(("{e1}", 1, "a"), ("{e2}", 2, "b"))))
+        after = self.qet(self.folio(fields(("{e2}", 2, "b"))))
+        d = m.tool_diff(before, after)["element_texts"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual((d["changed"], [r["uuid"] for r in d["removed"]]), ([], ["{e1}"]))
+        # the same pair without uuids: the position-based reading, flagged as such
+        plain = lambda *items: self.qet(self.folio(self.el(self.A, 0, 0, texts="".join(
+            f'<dynamic_elmt_text x="{x}" y="0" text_from="UserText"><text>{t}</text></dynamic_elmt_text>'
+            for x, t in items))))
+        d = m.tool_diff(plain((1, "a"), (2, "b")), plain((2, "b")))["element_texts"]
+        self.assertEqual(d["keyed_by"], "position")
+
+    def test_copied_symbols_keep_their_text_field_uuids(self):
+        """Copying a symbol keeps its text fields' uuids (20 copies of one in
+        2612_ats_singlephase.qet), so a field is its symbol's uuid plus its own:
+        editing one copy's field must not be read as another copy's."""
+        field = lambda x: ('<dynamic_elmt_text uuid="{same}" x="' + str(x) + '" y="0" '
+                           'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+        pair = lambda xa, xb: self.qet(self.folio(self.el(self.A, 0, 0, texts=field(xa))
+                                                  + self.el(self.B, 0, 0, texts=field(xb))))
+        for before, after, which in ((pair(1, 1), pair(5, 1), self.A), (pair(1, 1), pair(1, 5), self.B)):
+            with self.subTest(edited=which):
+                d = m.tool_diff(before, after)["element_texts"]
+                self.assertEqual(d["keyed_by"], "uuid")
+                self.assertEqual([(c["item"]["element"], c["item"]["uuid"], c["changed"])
+                                  for c in d["changed"]], [(which, "{same}", {"x": ["1", "5"]})])
+
+    def test_a_field_on_a_symbol_without_a_uuid_is_matched_by_position(self):
+        """The field has a uuid but its symbol has none (an older file): with no
+        symbol to pair it with, the whole kind falls back to position."""
+        field = lambda x: ('<dynamic_elmt_text uuid="{e1}" x="' + str(x) + '" y="0" '
+                           'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+        on = lambda sym, x: self.qet(self.folio(self.el(sym, 0, 0, texts=field(x))))
+        d = m.tool_diff(on("", 1), on("", 2))["element_texts"]
+        self.assertEqual(d["keyed_by"], "position")
+        self.assertEqual([c["changed"] for c in d["changed"]], [{"x": ["1", "2"]}])
+        # the symbol has a uuid on one side only: each side is checked on its own
+        for before, after in ((on("", 1), on(self.A, 1)), (on(self.A, 1), on("", 1))):
+            with self.subTest(before=before, after=after):
+                self.assertEqual(m.tool_diff(before, after)["element_texts"]["keyed_by"], "position")
+
+    def test_repeated_uuids_fall_back_rather_than_merge(self):
+        # the same field uuid twice inside one symbol
+        twice = lambda x: self.qet(self.folio(self.el(self.A, 0, 0, texts="".join(
+            f'<dynamic_elmt_text uuid="{{dup}}" x="{v}" y="0" text_from="UserText"><text>{v}</text>'
+            '</dynamic_elmt_text>' for v in (x, 9)))))
+        self.assertEqual(m.tool_diff(twice(1), twice(2))["element_texts"]["keyed_by"], "position")
+        # two shapes sharing a uuid: both must still be counted
+        shapes = self.qet(self.folio(extra='<shapes>' + ''.join(
+            f'<shape uuid="{{s}}" type="Line" x1="{i}" y1="0" x2="1" y2="1"/>' for i in (0, 5)) + '</shapes>'))
+        d = m.tool_diff(shapes, shapes)["shapes"]
+        self.assertEqual((d["keyed_by"], d["before"]), ("position", 2))
+        # two conductors sharing a uuid
+        els = self.el(self.A, 0, 0) + self.el(self.B, 0, 0) + self.el(self.C, 0, 0)
+        wires = self.qet(self.folio(els, self.wire(self.A, self.B, uuid="{w}")
+                                    + self.wire(self.B, self.C, uuid="{w}")))
+        c = m.tool_diff(wires, wires)["conductors"]
+        self.assertEqual((c["keyed_by"], c["before"]), ("ends", 2))
+
+    def test_uuid_matching_when_one_side_has_none_of_a_kind(self):
+        """No folios, fields or wires on one side is not a reason to fall back
+        to position: the other side's uuids are all there is to match."""
+        empty = self.qet("")
+        full = self.qet(self.folio(
+            self.el(self.A, 0, 0, texts='<dynamic_elmt_text uuid="{e1}" x="0" y="0" '
+                    'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+            + self.el(self.B, 0, 0), self.wire(self.A, self.B, uuid="{w1}"), uuid="{f1}"))
+        d = m.tool_diff(empty, full)
+        self.assertEqual((d["folios"]["keyed_by"], d["element_texts"]["keyed_by"],
+                          d["conductors"]["keyed_by"]), ("uuid", "uuid", "uuid"))
+        self.assertEqual(d["folios"]["added"], [{"folio": 1, "uuid": "{f1}", "title": ""}])
+        # matched by uuid, a conductor is never on the renumbered-id footing
+        self.assertNotIn("unstable_keys", d["conductors"])
+
+    def test_a_folio_that_kept_its_place_is_not_reordered(self):
+        f = lambda u, t: self.folio(title=t, uuid=u)
+        before = self.qet(f("{f1}", "One") + f("{f2}", "Two") + f("{f3}", "Three"))
+        after = self.qet(f("{f1}", "One") + f("{f3}", "Three") + f("{f2}", "Two"))
+        self.assertEqual([r["uuid"] for r in m.tool_diff(before, after)["folios"]["reordered"]],
+                         ["{f3}", "{f2}"])
+
+    def test_folio_lists_are_capped(self):
+        f = lambda i, t: self.folio(title=t, uuid=f"{{{i:04d}}}")
+        many = lambda rng, t: "".join(f(i, t) for i in rng)
+        d = m.tool_diff(self.qet(""), self.qet(many(range(51), "x")))["folios"]
+        self.assertEqual(len(d["added"]), 50)
+        d = m.tool_diff(self.qet(many(range(51), "x")), self.qet(""))["folios"]
+        self.assertEqual(len(d["removed"]), 50)
+        d = m.tool_diff(self.qet(many(range(52), "x")), self.qet(many(reversed(range(52)), "x")))["folios"]
+        self.assertEqual(len(d["reordered"]), 50)
+
+    def test_table_fields(self):
+        def table(**v):
+            a = {"x": "0", "y": "0", "width": "100", "height": "50", "display_n_row": "10", **v}
+            return ('<tables><graphics_table uuid="{tb}" name="P" '
+                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + '/></tables>')
+        for attr, reported in (("y", "y"), ("width", "width"), ("height", "height")):
+            with self.subTest(attr=attr):
+                d = m.tool_diff(self.qet(self.folio(extra=table())),
+                                self.qet(self.folio(extra=table(**{attr: "7"}))))["tables"]
+                self.assertEqual([list(c["changed"]) for c in d["changed"]], [[reported]])
+
+    def test_tables(self):
+        table = lambda x, rows: ('<tables><graphics_table uuid="{tb}" name="Parts" x="' + str(x)
+                                 + f'" y="0" width="100" height="50" display_n_row="{rows}"/></tables>')
+        d = m.tool_diff(self.qet(self.folio(extra=table(0, 10))),
+                        self.qet(self.folio(extra=table(20, 12))))["tables"]
+        self.assertEqual((d["keyed_by"], d["before"], d["after"]), ("uuid", 1, 1))
+        self.assertEqual(d["changed"], [{"item": {"folio": 1, "name": "Parts", "uuid": "{tb}"},
+                                         "changed": {"x": ["0", "20"], "rows_shown": ["10", "12"]}}])
+
+    def test_terminal_strips(self):
+        def strip(name, n):
+            terms = "".join(f'<real_terminal/>' for _ in range(n))
+            return ('<terminal_strips><terminal_strip><terminal_strip_data uuid="{st}">'
+                    '<informations><information name="installation">I</information>'
+                    '<information name="location">L</information>'
+                    f'<information name="name">{name}</information></informations>'
+                    f'</terminal_strip_data>{terms}</terminal_strip></terminal_strips>')
+        d = m.tool_diff(self.qet(self.folio() + strip("X1", 2)), self.qet(self.folio() + strip("X1", 3)))
+        self.assertEqual(d["terminal_strips"]["changed"],
+                         [{"item": "I L X1", "changed": {"terminals": [2, 3]}}])
+
+
 class Diff(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -1099,6 +1768,20 @@ class PathPolicy(unittest.TestCase):
                       if "overwrite" in t["inputSchema"].get("properties", {})}
         self.assertEqual(guarded, advertised)
 
+    def test_every_data_path_argument_is_guarded(self):
+        """The other direction: a tool whose schema takes a data path must be
+        in the policy, or that path is read or written with no workspace
+        check at all -- and nothing fails. binary and elements_dir are
+        configuration, deliberately not confined (see the README)."""
+        pathish = {"path", "project", "before", "after", "output", "directory"}
+        for t in m.TOOLS:
+            with self.subTest(tool=t["name"]):
+                props = t["inputSchema"].get("properties", {})
+                spec = m._DATA_PATHS.get(t["name"], {})
+                guarded = set(spec.get("read", ())) | set(spec.get("write", ()))
+                self.assertEqual(pathish & set(props), guarded & pathish,
+                                 f"{t['name']}: data path arguments not in _DATA_PATHS")
+
     def test_the_policy_names_only_real_tools_and_arguments(self):
         by_name = {t["name"]: t for t in m.TOOLS}
         for name, spec in m._DATA_PATHS.items():
@@ -1275,6 +1958,25 @@ class QueryGuard(unittest.TestCase):
             m.tool_query("/x", "/no/such.qet", "SELECT 1")
 
 
+class ContinuityFolioGuard(unittest.TestCase):
+    """qet.checkContinuity() answers a folio index it has no folio for with an
+    empty list, which looks like a clean folio; refuse it before launch."""
+
+    def test_an_index_with_no_folio_is_refused_before_launch(self):
+        with tempfile.TemporaryDirectory() as d:
+            qet = Path(d) / "p.qet"
+            qet.write_text("<project><diagram/><diagram/></project>")
+            for folio in (2, 5, -1):
+                with self.subTest(folio=folio):
+                    with self.assertRaisesRegex(ValueError, r"2 folio\(s\), indexed 0 to 1"):
+                        m.tool_continuity("/nonexistent", str(qet), folio=folio)
+
+    def test_the_descriptions_say_how_folios_are_counted(self):
+        props = {t["name"]: t["inputSchema"]["properties"] for t in m.TOOLS}
+        self.assertIn("counted from 0", props["qet_continuity"]["folio"]["description"])
+        self.assertIn("counted from 1", props["qet_conductors"]["folio"]["description"])
+
+
 class ProjectNewValidation(unittest.TestCase):
     def test_refuses_overwrite_and_bad_arguments(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -1304,6 +2006,23 @@ class ReadTools(unittest.TestCase):
             self.assertEqual((scan["files"], scan["total"], scan["non_empty"]), (1, 1, 1))
             # (value, how many nodes carry it)
             self.assertEqual([tuple(v) for v in scan["distinct_values"]], [("C1", 1)])
+
+    def test_a_wire_numbering_rule_is_not_a_wire(self):
+        """A folio's conductor numbering rule is saved as <autonum><conductor>;
+        counting every <conductor> tag reported it as a wire with no ends."""
+        with tempfile.TemporaryDirectory() as tmp:
+            rule = ('<autonum><conductor><part increase="1" type="unit" value="3"/>'
+                    '</conductor></autonum>')
+            wire = '<conductors><conductor terminal1="1" terminal2="2" num="W1"/></conductors>'
+            a, b = Path(tmp) / "a.qet", Path(tmp) / "b.qet"
+            a.write_text(f'<project><diagram>{rule}<elements/>{wire}</diagram></project>')
+            b.write_text(f'<project><diagram><elements/>{wire}</diagram></project>')
+            self.assertEqual(m.tool_project_info(str(a))["folios"][0]["conductors"], 1)
+            self.assertEqual(m.tool_project_info(str(a))["conductor_count"], 1)
+            self.assertEqual([c["num"] for c in m.tool_conductors(str(a))["conductors"]], ["W1"])
+            # Removing only the rule changes no wire.
+            c = m.tool_diff(str(a), str(b))["conductors"]
+            self.assertEqual((c["added"], c["removed"]), ([], []))
 
 
 # ==========================================================================
@@ -2486,6 +3205,15 @@ class Integration(unittest.TestCase):
         self.assertGreater(both["finding_count"], 0)
         self.assertEqual(only_1["finding_count"], 0, "folio 1 has no elements at all")
 
+    def test_continuity_findings_carry_the_folio_number_qet_elements_uses(self):
+        base = self.sb.new(folios=2)
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 1, "path": COIL, "x": 100, "y": 100}]))
+        found = m.tool_continuity(BINARY, r["output"], folio=1, elements_dir=ELEMENTS)["findings"]
+        self.assertTrue(found)
+        self.assertEqual({(f["folio"], f["folio_number"]) for f in found}, {(1, 2)})
+        self.assertEqual({e["folio"] for e in m.tool_elements(r["output"])["elements"]}, {2})
+
     def test_continuity_finds_a_report_link_colour_mismatch(self):
         """Reproduces qelectrotech/qelectrotech-source-mirror#974: a
         folio-jump conductor drawn in two different colours on either side
@@ -2791,7 +3519,151 @@ class PlcIntegration(unittest.TestCase):
 
 
 @needs_examples
+class UuidIndexLookups(unittest.TestCase):
+    """qet.tableIndex() and qet.elementTextIndex(): a uuid in, the index the
+    other calls take out, as qet.textIndex() does for free texts. The index is
+    what shifts when an earlier item is deleted; the uuid is what holds."""
+
+    def run_script(self, project, body):
+        r = m._run_qet(BINARY, [str(project)], elements_dir=ELEMENTS or None,
+                       script=body + '\nqet.log("OUT " + JSON.stringify(out));', tail=200_000)
+        line = next((ln for ln in (r["stdout"] + "\n" + r["stderr"]).splitlines() if "OUT " in ln), None)
+        self.assertIsNotNone(line, r.get("stderr", "")[-500:])
+        return json.loads(line.split("OUT ", 1)[1])
+
+    def test_table_index_follows_the_table_across_a_deletion(self):
+        root = ET.parse(Path(EXAMPLES) / "industrial.qet").getroot()
+        folio, table = next((i, d.find("tables/graphics_table")) for i, d in enumerate(root.iter("diagram"))
+                            if d.find("tables/graphics_table") is not None)
+        twin = ET.fromstring(ET.tostring(table))
+        twin.set("uuid", "{11111111-2222-4333-8444-555555555555}")
+        twin.set("x", str(float(table.get("x")) + 900))
+        list(root.iter("diagram"))[folio].find("tables").append(twin)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "two_tables.qet"
+            ET.ElementTree(root).write(p, encoding="utf-8")
+            first, second = table.get("uuid"), twin.get("uuid")
+            out = self.run_script(p, f"""
+                var out = {{}};
+                out.first = qet.tableIndex({folio}, "{first}");
+                out.second = qet.tableIndex({folio}, "{second}");
+                out.bogus = qet.tableIndex({folio}, "{{00000000-0000-4000-8000-000000000000}}");
+                out.not_uuid = qet.tableIndex({folio}, "table");
+                out.list = qet.tables({folio});
+                qet.deleteTable({folio}, out.first);
+                out.second_after = qet.tableIndex({folio}, "{second}");
+                out.first_after = qet.tableIndex({folio}, "{first}");""")
+        self.assertEqual(sorted([out["first"], out["second"]]), [0, 1])
+        # each index names the right table: the twin sits 900 further right
+        at = lambda i: float(re.search(r"at \(([-\d.]+),", out["list"][i]).group(1))
+        self.assertEqual(at(out["second"]) - at(out["first"]), 900)
+        self.assertEqual((out["bogus"], out["not_uuid"]), (-1, -1))
+        self.assertEqual((out["second_after"], out["first_after"]), (0, -1))
+
+    def test_qet_edit_deletes_then_moves_tables_by_uuid(self):
+        """Delete one table, then move the other, both by uuid. By index the
+        second op would name the wrong table: deleting table 0 shifts table 1."""
+        text = (Path(EXAMPLES) / "industrial.qet").read_text(encoding="utf-8")
+        root = ET.fromstring(text)
+        folio, table = next((i, d.find("tables/graphics_table")) for i, d in enumerate(root.iter("diagram"))
+                            if d.find("tables/graphics_table") is not None)
+        twin = ET.fromstring(ET.tostring(table))
+        twin.set("uuid", "{11111111-2222-4333-8444-555555555555}")
+        twin.set("x", str(float(table.get("x")) + 900))
+        # Insert into the raw text: re-serialising the whole file with
+        # ElementTree rewrites the embedded SVG logo's namespace, which
+        # QElectroTech then saves without its declaration.
+        start = text.index(f'uuid="{table.get("uuid")}"')
+        end = text.index("</graphics_table>", start) + len("</graphics_table>")
+        text = text[:end] + ET.tostring(twin, encoding="unicode") + text[end:]
+        with tempfile.TemporaryDirectory() as tmp:
+            src, out = Path(tmp) / "two.qet", Path(tmp) / "out.qet"
+            src.write_text(text, encoding="utf-8")
+            r = m.tool_edit(BINARY, str(src), [
+                {"op": "delete_table", "folio": folio, "table": table.get("uuid")},
+                {"op": "set_table_position", "folio": folio, "table": twin.get("uuid"), "x": 120, "y": 340}],
+                str(out), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            left = list(ET.parse(out).getroot().iter("diagram"))[folio].findall("tables/graphics_table")
+        self.assertEqual([(t.get("uuid"), float(t.get("x")), float(t.get("y"))) for t in left],
+                         [(twin.get("uuid"), 120.0, 340.0)])
+
+    def test_qet_edit_edits_one_copys_field_by_uuid(self):
+        """Two copies of a symbol share a field uuid; addressing it with the
+        symbol changes that copy's field only."""
+        root = ET.parse(Path(EXAMPLES) / "2612_ats_singlephase.qet").getroot()
+        owners = {}
+        for i, d in enumerate(root.iter("diagram")):
+            for el in d.iter("element"):
+                for t in el.findall("dynamic_texts/dynamic_elmt_text"):
+                    if t.get("uuid"):
+                        owners.setdefault((i, t.get("uuid")), []).append(el.get("uuid"))
+        (folio, field), (a, b) = next((k, v[:2]) for k, v in owners.items() if len(v) >= 2)
+        with tempfile.TemporaryDirectory() as tmp:
+            src, out = Path(tmp) / "in.qet", Path(tmp) / "out.qet"
+            shutil.copy(Path(EXAMPLES) / "2612_ats_singlephase.qet", src)
+            r = m.tool_edit(BINARY, str(src), [
+                {"op": "set_element_text", "folio": folio, "element": b, "index": field,
+                 "property": "x", "value": "77"}], str(out), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            x_of = lambda path, el_uuid: next(
+                t.get("x") for el in ET.parse(path).getroot().iter("element") if el.get("uuid") == el_uuid
+                for t in el.findall("dynamic_texts/dynamic_elmt_text") if t.get("uuid") == field)
+            self.assertEqual(float(x_of(out, b)), 77.0)
+            self.assertEqual(x_of(out, a), x_of(src, a))
+
+    def test_element_text_index_needs_the_element_as_well(self):
+        """Copies of a symbol share their text fields' uuids (2612_ats_singlephase.qet):
+        the same field uuid resolves on each copy to that copy's own field."""
+        root = ET.parse(Path(EXAMPLES) / "2612_ats_singlephase.qet").getroot()
+        owners = {}
+        for i, d in enumerate(root.iter("diagram")):
+            for el in d.iter("element"):
+                for t in el.iter("dynamic_elmt_text"):
+                    if t.get("uuid"):
+                        owners.setdefault((i, t.get("uuid")), []).append((el.get("uuid"), t.findtext("text")))
+        (folio, field), copies = next((k, v) for k, v in owners.items()
+                                      if len(v) >= 2 and len({s for _, s in v}) >= 2)
+        (a, shows_a), (b, shows_b) = copies[:2]
+        out = self.run_script(Path(EXAMPLES) / "2612_ats_singlephase.qet", f"""
+            var out = {{}};
+            out.ia = qet.elementTextIndex({folio}, "{a}", "{field}");
+            out.ib = qet.elementTextIndex({folio}, "{b}", "{field}");
+            out.la = qet.elementTexts({folio}, "{a}");
+            out.lb = qet.elementTexts({folio}, "{b}");
+            out.bogus = qet.elementTextIndex({folio}, "{a}", "{{00000000-0000-4000-8000-000000000000}}");
+            out.no_element = qet.elementTextIndex({folio}, "{{00000000-0000-4000-8000-000000000001}}", "{field}");""")
+        self.assertGreaterEqual(out["ia"], 0)
+        self.assertGreaterEqual(out["ib"], 0)
+        self.assertIn(f"shows='{shows_a}'", out["la"][out["ia"]])
+        self.assertIn(f"shows='{shows_b}'", out["lb"][out["ib"]])
+        self.assertEqual((out["bogus"], out["no_element"]), (-1, -1))
+
+
+@needs_examples
 class CorpusIntegration(unittest.TestCase):
+    def test_folio_counts_match_what_qelectrotech_itself_holds(self):
+        """Element and conductor counts per folio, from the file, against
+        QElectroTech's own counts after loading it -- over every example.
+        schema_indus.qet caught a numbering rule counted as a wire."""
+        script = ('var o = [];'
+                  'for (var f = 0; f < qet.folioCount(); f++)'
+                  '  o.push([qet.elementCount(f), qet.conductorCount(f)]);'
+                  'qet.log("COUNTS " + JSON.stringify(o));')
+        checked = 0
+        for f in sorted(Path(EXAMPLES).glob("*.qet")):
+            with self.subTest(project=f.name):
+                r = m._run_qet(BINARY, [str(f)], elements_dir=ELEMENTS or None,
+                               script=script, tail=200_000)
+                line = next(ln for ln in (r["stdout"] + "\n" + r["stderr"]).splitlines()
+                            if "COUNTS " in ln)
+                qet = json.loads(line.split("COUNTS ", 1)[1])
+                mcp = [[x["elements"], x["conductors"]]
+                       for x in m.tool_project_info(str(f))["folios"]]
+                self.assertEqual(mcp, qet)
+                checked += 1
+        self.assertGreater(checked, 20)
+
     def test_conductor_keys_never_collide_across_the_shipped_examples(self):
         """Keying on terminal geometry alone merged nine distinct conductors
         of schema_indus.qet; the shipped corpus is the check."""

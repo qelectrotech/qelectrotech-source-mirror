@@ -27,6 +27,7 @@
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "elementcollectionitem.h"
+#include "elementpreviewdelegate.h"
 #include "elementscollectionmodel.h"
 #include "elementslocation.h"
 #include "elementstreeview.h"
@@ -258,6 +259,8 @@ void ElementsCollectionWidget::setUpWidget()
 	m_search_model = new QStandardItemModel(this);
 	m_search_results = new SearchResultsView(this);
 	m_search_results->setModel(m_search_model);
+		//Same dark-palette icons as the tree the list stands in for
+	m_search_results->setItemDelegate(new ElementPreviewDelegate(m_search_results));
 	m_search_results->setDragDropMode(QAbstractItemView::DragOnly);
 	m_search_results->setIconSize(QSize(50, 50));
 	m_search_results->setUniformItemSizes(false);

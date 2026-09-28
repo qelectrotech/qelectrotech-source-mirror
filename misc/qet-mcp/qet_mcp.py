@@ -118,10 +118,17 @@ def _elements(root: ET.Element):
             yield i, el
 
 
+def _wires(diagram: ET.Element):
+    """The folio's conductors: children of <conductors> only. A folio's wire
+    numbering rule is also saved as a <conductor> tag, under <autonum>, and
+    is not a wire."""
+    return diagram.findall("conductors/conductor")
+
+
 def _conductors(root: ET.Element):
     for i, d in _folios(root):
         index = _terminal_index(d)
-        for c in d.iter("conductor"):
+        for c in _wires(d):
             yield i, c, index
 
 
@@ -245,7 +252,7 @@ def tool_project_info(path: str) -> dict:
             "index": i,
             "title": d.get("title", ""),
             "elements": sum(1 for _ in d.iter("element")),
-            "conductors": sum(1 for _ in d.iter("conductor")),
+            "conductors": len(_wires(d)),
         })
     return {
         "file": str(Path(path).expanduser()),
@@ -270,6 +277,36 @@ def tool_elements(path: str, folio: int | None = None,
         rows.append(row)
     return {"count": len(rows), "truncated": len(rows) > limit,
             "elements": rows[:limit]}
+
+
+ITEM_KINDS = ["text", "shape", "image", "table", "element_text"]
+
+
+def tool_items(path: str, folio: int | None = None, kind: str | None = None,
+               limit: int = 500) -> dict:
+    """Every drawn item that is not a symbol or a wire, with its uuid.
+
+    Free texts, shapes, pictures, tables and the text fields of symbols --
+    the items a qet_edit op or a qet_diff entry names by uuid. Folios are
+    numbered from 1, as in qet_elements. An item saved before these items
+    carried a uuid has "" here; QElectroTech gives it one on the next save.
+    """
+    if kind is not None and kind not in ITEM_KINDS:
+        raise ValueError(f"kind must be one of {ITEM_KINDS}, not {kind!r}")
+    ex = _extras(_root(path))
+    rows = []
+    for name, records in (("text", ex["texts"]), ("shape", ex["shapes"]),
+                          ("image", ex["images"]), ("table", ex["tables"])):
+        for r in records:
+            rows.append({"kind": name, "uuid": r["uuid"], **r["label"], **r["value"]})
+    for k, v in ex["element_texts"].items():
+        rows.append({"kind": "element_text", "uuid": ex["element_text_uuids"][k],
+                     "folio": ex["element_text_folios"][k], "element": k[0],
+                     "source": k[1], "bound_to": k[2], "n": k[3], **v})
+    rows = [r for r in rows if (folio is None or r["folio"] == folio)
+            and (kind is None or r["kind"] == kind)]
+    rows.sort(key=lambda r: (r["folio"], ITEM_KINDS.index(r["kind"])))
+    return {"count": len(rows), "truncated": len(rows) > limit, "items": rows[:limit]}
 
 
 def tool_conductors(path: str, folio: int | None = None,
@@ -312,6 +349,21 @@ def _plain_text(html: str) -> str:
     return " ".join(inner.split())
 
 
+def _angle(value: str) -> str:
+    """A rotation in degrees, reduced to [0, 360) so equal angles compare equal.
+
+    QElectroTech writes the same angle in more than one way: rotating a symbol
+    and undoing it leaves its text fields at "-270" where they were "90", or
+    "-90" where they were "270". Compared as written, that read as a change.
+    Anything that is not a number is returned unchanged.
+    """
+    try:
+        deg = float(value) % 360
+    except (TypeError, ValueError):
+        return value
+    return f"{deg:g}"
+
+
 def _extras(root: ET.Element) -> dict:
     """Everything a folio holds besides elements and conductors.
 
@@ -321,7 +373,7 @@ def _extras(root: ET.Element) -> dict:
     Older files have only position to go on, and there a change reads as
     the old one removed and a new one added, with both shown.
     """
-    folios, texts, shapes, images = {}, [], [], []
+    folios, folio_uuids, texts, shapes, images, tables = {}, {}, [], [], [], []
 
     def record(el, label, value):
         return {"uuid": el.get("uuid", ""), "key": tuple(label.values()),
@@ -329,6 +381,12 @@ def _extras(root: ET.Element) -> dict:
 
     for n, d in _folios(root):
         folios[n] = {f: d.get(f, "") for f in _FOLIO_FIELDS}
+        folio_uuids[n] = d.get("uuid", "")
+        for tb in d.findall("tables/graphics_table"):
+            tables.append(record(
+                tb, {"folio": n, "name": tb.get("name", "")},
+                {"x": tb.get("x", ""), "y": tb.get("y", ""), "width": tb.get("width", ""),
+                 "height": tb.get("height", ""), "rows_shown": tb.get("display_n_row", "")}))
         # The folio's own items only: direct children of its <inputs>,
         # <shapes> and <images>. Symbols in older files carry their own
         # <inputs><input> texts, which iter() would count as free texts
@@ -337,7 +395,7 @@ def _extras(root: ET.Element) -> dict:
             texts.append(record(
                 t, {"folio": n, "x": t.get("x", ""), "y": t.get("y", ""),
                     "text": _plain_text(t.get("text", ""))},
-                {"rotation": t.get("rotation", "0"),
+                {"rotation": _angle(t.get("rotation", "0")),
                  "font": t.get("font", ""), "color": t.get("color", "")}))
         for sh in d.findall("shapes/shape"):
             pen, brush = sh.find("pen"), sh.find("brush")
@@ -350,13 +408,13 @@ def _extras(root: ET.Element) -> dict:
                  "line_width": pen.get("widthF", "") if pen is not None else "",
                  "fill": (brush.get("color", "") if brush is not None and
                           brush.get("style", "") != "NoBrush" else "none"),
-                 "rotation": sh.get("rotation", "0")}))
+                 "rotation": _angle(sh.get("rotation", "0"))}))
         for im in d.findall("images/image"):
             images.append(record(
                 im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
-                {"scale": im.get("size", ""), "rotation": im.get("rotation", "")}))
+                {"scale": im.get("size", ""), "rotation": _angle(im.get("rotation", ""))}))
 
-    element_texts = {}
+    element_texts, element_text_uuids, element_text_folios = {}, {}, {}
     for n, d in _folios(root):
         for el in d.iter("element"):
             uuid = el.get("uuid", "")
@@ -369,9 +427,11 @@ def _extras(root: ET.Element) -> dict:
                 base = (uuid, src, what)
                 seen[base] = seen.get(base, 0) + 1
                 fs = (t.get("font", "").split(",") + ["", ""])[1]
+                element_text_uuids[base + (seen[base],)] = t.get("uuid", "")
+                element_text_folios[base + (seen[base],)] = n
                 element_texts[base + (seen[base],)] = {
                     "x": t.get("x", ""), "y": t.get("y", ""), "size": fs,
-                    "frame": t.get("frame", ""), "rotation": t.get("rotation", ""),
+                    "frame": t.get("frame", ""), "rotation": _angle(t.get("rotation", "")),
                     "width": t.get("text_width", ""),
                     "shows": t.findtext("text") or ""}
 
@@ -386,8 +446,18 @@ def _extras(root: ET.Element) -> dict:
             "location": info.get("location", ""),
             "name": info.get("name", ""),
             "terminals": sum(1 for _ in st.iter("real_terminal"))}
-    return {"folios": folios, "texts": texts, "shapes": shapes,
-            "images": images, "strips": strips, "element_texts": element_texts}
+    return {"folios": folios, "folio_uuids": folio_uuids, "texts": texts, "shapes": shapes,
+            "images": images, "tables": tables, "strips": strips,
+            "element_texts": element_texts, "element_text_uuids": element_text_uuids,
+            "element_text_folios": element_text_folios}
+
+
+def _usable_ids(*sides) -> bool:
+    """Whether uuids can identify items: present on every item, unique on each
+    side. Copying a symbol keeps its text fields' uuids, so a project can
+    hold the same field uuid twenty times; keying on it would merge them."""
+    return (any(sides) and all(all(s) for s in sides)
+            and all(len(set(s)) == len(s) for s in sides))
 
 
 def _diff_keyed(a: dict, b: dict, label) -> dict:
@@ -413,7 +483,7 @@ def _diff_items(a: list, b: list) -> dict:
     and re-added. On uuid, position is part of what is compared, so a move
     is a change to that item.
     """
-    by_uuid = all(r["uuid"] for r in a + b)
+    by_uuid = _usable_ids([r["uuid"] for r in a], [r["uuid"] for r in b])
 
     def key(r):
         return r["uuid"] if by_uuid else str(r["key"])
@@ -429,34 +499,87 @@ def _diff_items(a: list, b: list) -> dict:
     return out
 
 
+def _diff_folios(a: dict, b: dict) -> dict:
+    """Folio fields, keyed by the folio's uuid when every folio has one.
+
+    By uuid, a folio moved to another position is reported once, under
+    "reordered", instead of as every folio after it changing its fields.
+    Without uuids (older files) folios are keyed by position, and a
+    removal or reorder in the middle shifts every later index -- the note
+    says so when the count changed.
+    """
+    ua, ub = a["folio_uuids"], b["folio_uuids"]
+    by_uuid = _usable_ids(list(ua.values()), list(ub.values()))
+    changed, reordered, added, removed = [], [], [], []
+    if by_uuid:
+        pos_a = {u: n for n, u in ua.items()}
+        pos_b = {u: n for n, u in ub.items()}
+        for u in sorted(set(pos_a) & set(pos_b), key=lambda u: pos_b[u]):
+            fa, fb = a["folios"][pos_a[u]], b["folios"][pos_b[u]]
+            delta = {f: [fa[f], fb[f]] for f in _FOLIO_FIELDS if fa[f] != fb[f]}
+            if delta:
+                changed.append({"folio": pos_b[u], "uuid": u, "changed": delta})
+            if pos_a[u] != pos_b[u]:
+                reordered.append({"uuid": u, "title": fb["title"],
+                                  "from": pos_a[u], "to": pos_b[u]})
+        added = [{"folio": pos_b[u], "uuid": u, "title": b["folios"][pos_b[u]]["title"]}
+                 for u in sorted(set(pos_b) - set(pos_a), key=lambda u: pos_b[u])]
+        removed = [{"folio": pos_a[u], "uuid": u, "title": a["folios"][pos_a[u]]["title"]}
+                   for u in sorted(set(pos_a) - set(pos_b), key=lambda u: pos_a[u])]
+    else:
+        for n in sorted(set(a["folios"]) & set(b["folios"])):
+            delta = {f: [a["folios"][n][f], b["folios"][n][f]] for f in _FOLIO_FIELDS
+                     if a["folios"][n][f] != b["folios"][n][f]}
+            if delta:
+                changed.append({"folio": n, "changed": delta})
+    out = {"before": len(a["folios"]), "after": len(b["folios"]),
+           "keyed_by": "uuid" if by_uuid else "position", "changed": changed[:50]}
+    if by_uuid:
+        out.update(added=added[:50], removed=removed[:50], reordered=reordered[:50])
+    elif len(a["folios"]) != len(b["folios"]) and changed:
+        out["note"] = ("the folio count changed, so changes listed here may be "
+                       "later folios shifting position rather than edits")
+    return out
+
+
+def _diff_element_texts(a: dict, b: dict) -> dict:
+    """Element text fields, keyed by their own uuid when every field has one.
+
+    Otherwise by element, what the field is bound to, and the nth such field
+    -- which cannot tell a field that was removed from one that moved down
+    the list. A field's own text is also compared ("shows"), so relabelling
+    an element shows up here as well as in the element's information.
+    """
+    # A field's uuid is unique only within its symbol (copies keep them), so
+    # a field is identified by its symbol's uuid and its own.
+    ka = {k: (k[0], u) if k[0] and u else "" for k, u in a["element_text_uuids"].items()}
+    kb = {k: (k[0], u) if k[0] and u else "" for k, u in b["element_text_uuids"].items()}
+    by_uuid = _usable_ids(list(ka.values()), list(kb.values()))
+    def label(k):
+        return {"element": k[0], "source": k[1], "bound_to": k[2], "n": k[3]}
+    if not by_uuid:
+        out = _diff_keyed(a["element_texts"], b["element_texts"], label)
+        out["keyed_by"] = "position"
+        return out
+    labels = {u: {**label(k), "uuid": u[1]} for side in (ka, kb) for k, u in side.items()}
+    out = _diff_keyed({ka[k]: v for k, v in a["element_texts"].items()},
+                      {kb[k]: v for k, v in b["element_texts"].items()},
+                      lambda u: labels[u])
+    out["keyed_by"] = "uuid"
+    return out
+
+
 def _diff_extras(before: ET.Element, after: ET.Element) -> dict:
     a, b = _extras(before), _extras(after)
     out = {}
     ta, tb = before.get("title", ""), after.get("title", "")
     out["project"] = {"changed": {"title": [ta, tb]} if ta != tb else {}}
-    # Folios are keyed by position. A reorder or a removal in the middle
-    # shifts every later index, so a folio "changing" its title alongside a
-    # folio count change can just be the shift -- the count says which.
-    folio_changes = []
-    for n in sorted(set(a["folios"]) & set(b["folios"])):
-        delta = {f: [a["folios"][n][f], b["folios"][n][f]] for f in _FOLIO_FIELDS
-                 if a["folios"][n][f] != b["folios"][n][f]}
-        if delta:
-            folio_changes.append({"folio": n, "changed": delta})
-    out["folios"] = {"before": len(a["folios"]), "after": len(b["folios"]),
-                     "changed": folio_changes[:50]}
-    if len(a["folios"]) != len(b["folios"]) and folio_changes:
-        out["folios"]["note"] = ("the folio count changed, so changes listed here may be "
-                                 "later folios shifting position rather than edits")
+    out["folios"] = _diff_folios(a, b)
     out["texts"] = _diff_items(a["texts"], b["texts"])
     out["shapes"] = _diff_items(a["shapes"], b["shapes"])
     out["images"] = _diff_items(a["images"], b["images"])
-    # Keyed by element, what the field is bound to, and the nth such field.
-    # A field's own text is also compared ("shows"), so relabelling an
-    # element shows up here as well as in the element's information.
-    out["element_texts"] = _diff_keyed(
-        a["element_texts"], b["element_texts"],
-        lambda k: {"element": k[0], "source": k[1], "bound_to": k[2], "n": k[3]})
+    out["tables"] = _diff_items(a["tables"], b["tables"])
+    out["element_texts"] = _diff_element_texts(a, b)
     out["terminal_strips"] = _diff_keyed(
         a["strips"], b["strips"],
         lambda k: (lambda v: f"{v['installation']} {v['location']} {v['name']}".strip())(
@@ -476,16 +599,24 @@ def tool_diff(before: str, after: str) -> dict:
     a_el, b_el = {}, {}
     for i, e in _elements(_root(before)):
         r = _element_row(i, e)
+        # Rotation is saved as "orientation", in quarter turns (0-3); it is
+        # the only thing a rotation changes, so without it a rotated symbol
+        # reads as untouched.
+        r["orientation"] = e.get("orientation", "0")
         a_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
     for i, e in _elements(_root(after)):
         r = _element_row(i, e)
+        r["orientation"] = e.get("orientation", "0")
         b_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
 
-    moved, relabelled, changed_info = [], [], []
+    moved, rotated, relabelled, changed_info = [], [], [], []
     for k, a in a_el.items():
         b = b_el.get(k)
         if b is None:
             continue
+        if a["orientation"] != b["orientation"]:
+            rotated.append({"uuid": k, "name": a["name"], "folio": a["folio"],
+                            "orientation": [a["orientation"], b["orientation"]]})
         if (a["x"], a["y"]) != (b["x"], b["y"]):
             moved.append({
                 "uuid": k, "name": a["name"], "folio": a["folio"],
@@ -505,15 +636,21 @@ def tool_diff(before: str, after: str) -> dict:
             changed_info.append({"uuid": k, "name": a["name"],
                                  "from": a_info, "to": b_info})
 
-    a_co = {r["key"]: r for i, c, ix in _conductors(_root(before))
-            for r in [_conductor_row(i, c, ix)]}
-    b_co = {r["key"]: r for i, c, ix in _conductors(_root(after))
-            for r in [_conductor_row(i, c, ix)]}
+    a_rows = [_conductor_row(i, c, ix) for i, c, ix in _conductors(_root(before))]
+    b_rows = [_conductor_row(i, c, ix) for i, c, ix in _conductors(_root(after))]
+    # Keyed by the conductor's own uuid when every conductor on both sides
+    # has one, so a rewired conductor is that conductor, changed ("ends").
+    # QElectroTech keeps a uuid only on conductors that were loaded with one
+    # or created since, so an older file keys on its two ends instead.
+    co_by_uuid = _usable_ids([r["uuid"] for r in a_rows], [r["uuid"] for r in b_rows])
+    co_id = (lambda r: r["uuid"]) if co_by_uuid else (lambda r: r["key"])
+    a_co = {co_id(r): r for r in a_rows}
+    b_co = {co_id(r): r for r in b_rows}
     # An end that could not be resolved to an element is keyed on the
     # folio-scoped integer id, which QElectroTech reassigns on every write.
     # Say so rather than presenting the result as if it were comparable:
     # in such a file an untouched conductor can read as removed and re-added.
-    shaky = sum(1 for k in set(a_co) | set(b_co) if "#" in k)
+    shaky = 0 if co_by_uuid else sum(1 for k in set(a_co) | set(b_co) if "#" in k)
     unstable = {} if not shaky else {
         "unstable_keys": shaky,
         "warning": "some conductors sit on elements with no persisted uuid, so "
@@ -530,8 +667,11 @@ def tool_diff(before: str, after: str) -> dict:
                   ("num", "formula", "cable", "bus", "color", "section",
                    "function", "type")
                   if a[f] != b[f]}
+        if a["key"] != b["key"]:
+            fields["ends"] = [a["key"], b["key"]]
         if fields:
-            conductor_changes.append({"key": k, "changed": fields})
+            conductor_changes.append({"key": b["key"], **({"uuid": k} if co_by_uuid else {}),
+                                      "changed": fields})
 
     deltas = sorted({tuple(m["delta"]) for m in moved})
     return {
@@ -544,11 +684,13 @@ def tool_diff(before: str, after: str) -> dict:
             "distinct_move_deltas": [list(d) for d in deltas],
             "relabelled": relabelled[:50],
             "info_changed": changed_info[:50],
+            "rotated": rotated[:50],
         },
         "conductors": {
             "before": len(a_co), "after": len(b_co),
-            "added": sorted(set(b_co) - set(a_co))[:50],
-            "removed": sorted(set(a_co) - set(b_co))[:50],
+            "keyed_by": "uuid" if co_by_uuid else "ends",
+            "added": sorted(b_co[k]["key"] for k in set(b_co) - set(a_co))[:50],
+            "removed": sorted(a_co[k]["key"] for k in set(a_co) - set(b_co))[:50],
             "changed": conductor_changes[:100],
             "changed_count": len(conductor_changes),
             **unstable,
@@ -1132,10 +1274,10 @@ OPS = {
                                                        ("source", "str"), ("value", "str"),
                                                        ("x", "num"), ("y", "num")]),
     "set_element_text":    ("setElementTextProperty", [("folio", "folio"), ("element", "elmt"),
-                                                       ("index", "folio"), ("property", "str"),
+                                                       ("index", "element_text"), ("property", "str"),
                                                        ("value", "str")]),
     "delete_element_text": ("deleteElementText",      [("folio", "folio"), ("element", "elmt"),
-                                                       ("index", "folio")]),
+                                                       ("index", "element_text")]),
     # Returns the uuids of the copies IN THE ORDER the elements were named,
     # so "$copies[0]" is the copy of the first one. Conductors between the
     # copied elements are copied with them; copies arrive without labels or
@@ -1195,9 +1337,9 @@ OPS = {
                                                  ("closed", "bool")]),
     "add_table":        ("addTable",            [("folio", "folio"), ("kind", "str"),
                                                  ("name", "str"), ("query", "str")]),
-    "set_table_position": ("setTablePosition",  [("folio", "folio"), ("table", "folio"),
+    "set_table_position": ("setTablePosition",  [("folio", "folio"), ("table", "table"),
                                                  ("x", "num"), ("y", "num")]),
-    "delete_table":     ("deleteTable",         [("folio", "folio"), ("table", "folio")]),
+    "delete_table":     ("deleteTable",         [("folio", "folio"), ("table", "table")]),
 }
 
 SHAPES = ["line", "rectangle", "ellipse", "polygon"]
@@ -1251,6 +1393,7 @@ def _build_script(operations: list, output: str) -> str:
     # an index-only edit still runs on a build that predates them.
     uuid_methods: set[str] = set()
     folio_js = "0"
+    element_js = None      # the op's element, for lookups scoped to it
     lines = [
         "// generated by qet-mcp; do not edit",
         "var R = {};",                       # $name -> value from an earlier op
@@ -1303,6 +1446,26 @@ def _build_script(operations: list, output: str) -> str:
                     or not all(isinstance(x, int) and not isinstance(x, bool) for x in value)):
                 raise ValueError(f"operation {op_index}: {key!r} must be a non-empty list of "
                                  f"integer indices, got {value!r}")
+            return _js(value)
+        if kind == "table":
+            # As for texts below: a uuid is resolved to the current index at
+            # run time, since deleting an earlier table shifts every index.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                uuid_methods.add("tableIndex")
+                return f"qet.tableIndex({folio_js}, {_js(value)})"
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"operation {op_index}: {key!r} must be a table index "
+                                 f"or its uuid, got {value!r}")
+            return _js(value)
+        if kind == "element_text":
+            # A field's uuid is unique only within its element (copies keep
+            # them), so the lookup takes the op's element too.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                uuid_methods.add("elementTextIndex")
+                return f"qet.elementTextIndex({folio_js}, {element_js}, {_js(value)})"
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"operation {op_index}: {key!r} must be a text field index "
+                                 f"or its uuid, got {value!r}")
             return _js(value)
         if kind in ("text", "shape", "image"):
             # A uuid names the item for good; it is turned into the index
@@ -1403,6 +1566,7 @@ def _build_script(operations: list, output: str) -> str:
             if key not in op:
                 raise ValueError(f"operation {i} ({name}) is missing {key!r}")
             folio_js = args[0] if args else "0"
+            element_js = args[1] if len(args) > 1 else None
             args.append(ref_or(op[key], kind, i, key))
 
         ident = op.get("id")
@@ -1586,6 +1750,17 @@ def tool_continuity(binary: str, project: str, folio: int | None = None,
     proj = Path(project).expanduser()
     if not proj.is_file():
         raise ValueError(f"no such project: {proj}")
+    if folio is not None:
+        # qet.checkContinuity() answers an index it has no folio for with an
+        # empty list, which reads exactly like a clean folio. The index counts
+        # from 0 while qet_elements numbers folios from 1, so the likely
+        # mistake -- passing the last folio's number -- would pass silently.
+        count = len(list(_folios(_root(str(proj)))))
+        if not 0 <= folio < count:
+            raise ValueError(
+                f"folio {folio} does not exist: the project has {count} folio(s), "
+                f"indexed 0 to {count - 1} here. qet_continuity counts folios from 0; "
+                "the folio qet_elements calls N is N - 1.")
 
     folio_arg = -1 if folio is None else folio
     script = ("var out = qet.checkContinuity(%s);\n"
@@ -1615,6 +1790,12 @@ def tool_continuity(binary: str, project: str, folio: int | None = None,
         result.setdefault("hint", "no findings came back at all -- this build's "
                                   "scripting API may predate qet.checkContinuity()")
         return result
+    for f in findings:
+        # "folio" is the 0-based index qet.checkContinuity() uses; add the
+        # number qet_elements and the application show, so the two can be
+        # matched without arithmetic.
+        if isinstance(f, dict) and isinstance(f.get("folio"), int):
+            f["folio_number"] = f["folio"] + 1
     result["findings"] = findings
     result["finding_count"] = len(findings)
     result["errors"] = sum(1 for f in findings if f.get("severity") == "error")
@@ -2138,6 +2319,26 @@ TOOLS = [
         "handler": lambda a: tool_project_info(a["path"]),
     },
     {
+        "name": "qet_items",
+        "description": "List the drawn items that are not symbols or wires -- free texts, "
+                       "shapes, pictures, tables and the text fields of symbols -- with "
+                       "each one's uuid, folio (counted from 1) and main fields. Use the "
+                       "uuid to address an item in qet_edit or to find it in qet_diff. "
+                       "Reads the file directly; does not launch QElectroTech.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string"},
+                "folio": {"type": "integer", "description": "folio number counted from 1"},
+                "kind": {"type": "string", "enum": ITEM_KINDS},
+                "limit": {"type": "integer", "default": 500},
+            },
+            "required": ["path"],
+        },
+        "handler": lambda a: tool_items(a["path"], a.get("folio"), a.get("kind"),
+                                        a.get("limit", 500)),
+    },
+    {
         "name": "qet_elements",
         "description": "List placed elements with uuid, type, position, label and "
                        "their elementInformations bag. Optionally filter by folio "
@@ -2166,7 +2367,8 @@ TOOLS = [
             "type": "object",
             "properties": {
                 "path": {"type": "string"},
-                "folio": {"type": "integer"},
+                "folio": {"type": "integer",
+                          "description": "folio number counted from 1, as qet_elements and the application show it"},
                 "attribute": {"type": "string",
                               "description": "an XML attribute of <conductor>, e.g. cable"},
                 "non_empty": {"type": "boolean", "default": False},
@@ -2182,9 +2384,14 @@ TOOLS = [
     {
         "name": "qet_diff",
         "description": "Structurally diff two .qet files: which elements moved and "
-                       "by what delta, which were added, removed or relabelled, and "
-                       "which conductor fields changed. Use this to verify what an "
-                       "edit actually did, rather than reading a screenshot.",
+                       "by what delta, which were rotated (orientation in quarter "
+                       "turns, 0-3), which were added, removed or relabelled, and "
+                       "which conductor fields changed; also folio fields, texts, shapes, "
+                       "pictures, tables, symbol text fields and terminal strips. Items are "
+                       "matched by their uuid when every one of a kind has one (each "
+                       "section says so in \"keyed_by\"), otherwise by position or ends. "
+                       "Use this to verify what an edit actually did, rather than reading "
+                       "a screenshot.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -2419,6 +2626,11 @@ TOOLS = [
                         "shape's points can reorder it relative to the others -- re-list "
                         "before addressing one by index again if more than one is being "
                         "edited in the same run, or address it by uuid. "
+                        "set_table_position/delete_table take a table's index or its uuid, "
+                        "and set_element_text/delete_element_text a text field's index or "
+                        "its uuid (the field's own, looked up within the op's element) "
+                        "-- a uuid still names the right item after an "
+                        "earlier one is deleted. "
                         "Tables: add_table places a BOM/nomenclature or summary table "
                         "(kind is \"nomenclature\" or \"summary\") built from a query "
                         "against a project database view -- run qet.query() (the "
@@ -2516,7 +2728,12 @@ TOOLS = [
             "properties": {
                 "binary": {"type": "string", "description": "path to the qelectrotech executable"},
                 "project": {"type": "string", "description": "the .qet to check; never modified"},
-                "folio": {"type": "integer", "description": "check one folio only; omit for the whole project"},
+                "folio": {"type": "integer", "description":
+                          "check one folio only; omit for the whole project. An index "
+                          "counted from 0, like qet_edit: the folio qet_elements calls 1 "
+                          "is 0 here. An index with no folio is refused, not reported "
+                          "clean. Each finding carries both \"folio\" (this index) and "
+                          "\"folio_number\" (counted from 1)."},
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
@@ -2705,6 +2922,7 @@ _BY_NAME = {t["name"]: t for t in TOOLS}
 _DATA_PATHS = {
     "qet_project_info":   {"read": ("path",)},
     "qet_elements":       {"read": ("path",)},
+    "qet_items":          {"read": ("path",)},
     "qet_conductors":     {"read": ("path",)},
     "qet_diff":           {"read": ("before", "after")},
     "qet_scan":           {"read": ("directory",)},

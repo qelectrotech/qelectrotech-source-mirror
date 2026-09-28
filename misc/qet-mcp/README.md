@@ -30,6 +30,7 @@ here read the model.
 | `qet_project_info` | title, format version, folios, element and conductor counts |
 | `qet_elements` | placed elements: uuid, type, position, label, information bag |
 | `qet_conductors` | conductors and their documentation fields; filter by attribute |
+| `qet_items` | free texts, shapes, pictures, tables and symbol text fields, each with its uuid |
 | `qet_diff` | **what an edit actually changed** — element moves, adds, removes, relabels; conductor changes; and folio fields, texts, shapes, images, symbol text fields and terminal strips |
 | `qet_scan` | sweep a directory of projects, counting nodes carrying an attribute |
 | `qet_element_info` | a `.elmt`: translated names, terminals, info fields, part counts |
@@ -264,6 +265,14 @@ Python, plus the hang guard on `addConductor` and the database refresh in
 
 ## Notes and limits
 
+- **Two ways of numbering folios.** Tools that read the file —
+  `qet_project_info`, `qet_elements`, `qet_conductors`, `qet_diff` — number
+  folios from 1, as the application does. Tools that pass a folio to
+  QElectroTech's scripting API — `qet_edit` and `qet_continuity` — take an
+  index counted from 0, so the folio `qet_elements` calls 1 is `0` there.
+  `qet_continuity` refuses an index with no folio instead of reporting it
+  clean, and each of its findings carries both `folio` (the index) and
+  `folio_number` (counted from 1).
 - **The project database is reachable now, through `qet_query`.** It was
   not when this server was written, which is why every other structural
   tool here re-derives its answer from the XML. Prefer the views —
