@@ -28,18 +28,24 @@ namespace {
 	@return the <terminal> of the definition held by the embedded
 	collection element @p collection_element
 */
-QList<QDomElement> terminalsOf(const QDomElement &collection_element)
+	//The <terminal> of the <definition> @p definition
+QList<QDomElement> definitionTerminals(const QDomElement &definition)
 {
 	QList<QDomElement> terminals;
-	const QDomElement description = collection_element
-			.firstChildElement(QStringLiteral("definition"))
-			.firstChildElement(QStringLiteral("description"));
+	const QDomElement description =
+			definition.firstChildElement(QStringLiteral("description"));
 	for (QDomElement t = description.firstChildElement(QStringLiteral("terminal"));
 		 !t.isNull();
 		 t = t.nextSiblingElement(QStringLiteral("terminal"))) {
 		terminals << t;
 	}
 	return terminals;
+}
+
+QList<QDomElement> terminalsOf(const QDomElement &collection_element)
+{
+	return definitionTerminals(
+				collection_element.firstChildElement(QStringLiteral("definition")));
 }
 
 	//Place and orientation, "10" and "10.0" being the same place
@@ -61,10 +67,10 @@ int orientationOf(const QDomElement &terminal)
 	return 0;
 }
 
-	//The <terminal> of one element definition get a uuid where missing
-int fillDefinition(const QDomElement &collection_element)
+	//The <terminal> of one <definition> get a uuid where missing
+int fillDefinition(const QDomElement &definition)
 {
-	const QList<QDomElement> terminals = terminalsOf(collection_element);
+	const QList<QDomElement> terminals = definitionTerminals(definition);
 	QSet<QUuid> taken;
 	for (const QDomElement &t : terminals) {
 		const QUuid uuid(t.attribute(QStringLiteral("uuid")));
@@ -105,7 +111,8 @@ int fillDirectory(const QDomElement &directory)
 		if (child.tagName() == QLatin1String("category")) {
 			filled += fillDirectory(child);
 		} else if (child.tagName() == QLatin1String("element")) {
-			filled += fillDefinition(child);
+			filled += fillDefinition(
+						  child.firstChildElement(QStringLiteral("definition")));
 		}
 	}
 	return filled;
@@ -251,4 +258,17 @@ QUuid TerminalUuids::derived(qreal x, qreal y, int orientation, int occurrence)
 int TerminalUuids::fillMissing(const QDomElement &collection_root)
 {
 	return fillDirectory(collection_root);
+}
+
+/**
+	@brief TerminalUuids::fillMissingInDefinition
+	fillMissing() for a single element definition (@p definition is its
+	<definition>), as the element editor reads it from a file: an old
+	symbol opened and saved there gets the uuids a project gives the same
+	terminals, not random ones that would make every copy of it differ.
+	@return the number of terminals given a uuid
+*/
+int TerminalUuids::fillMissingInDefinition(const QDomElement &definition)
+{
+	return fillDefinition(definition);
 }

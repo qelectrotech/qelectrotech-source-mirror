@@ -300,6 +300,29 @@ private slots:
 		QCOMPARE(TerminalUuids::fillMissing(root), 0);
 	}
 
+	// The element editor fills a definition read from a file with exactly
+	// what a project fills the same definition with.
+	void fillMissingInDefinitionMatchesProject()
+	{
+		QDomDocument doc;
+		const QString own = QStringLiteral("{0f5d4b0c-2f7e-4a55-9a51-8c3a3e1c2d11}");
+		QDomElement in_project = symbol(doc, {{"0", "10", "s"},
+											  {"0", "10", "s"},
+											  {"5", "0", "e", own},
+											  {"-3", "0", "w"}});
+		QDomElement root = doc.createElement(QStringLiteral("collection"));
+		root.appendChild(in_project);
+		QDomElement definition = in_project.firstChildElement(QStringLiteral("definition"))
+				.cloneNode(true).toElement();
+
+		QCOMPARE(TerminalUuids::fillMissingInDefinition(definition), 3);
+		QCOMPARE(TerminalUuids::fillMissing(root), 3);
+		QCOMPARE(uuids(definition), uuids(in_project));
+		QCOMPARE(uuids(definition).at(2), own);
+		QCOMPARE(uuids(definition).at(1), TerminalUuids::derived(0, 10, 2, 1).toString());
+		QCOMPARE(TerminalUuids::fillMissingInDefinition(definition), 0);
+	}
+
 	// An example whose symbols have no terminal uuids and whose wires are
 	// all in the numbered form: once saved, every terminal has a uuid,
 	// every wire names its ends by uuid, nothing is lost, and saving again
