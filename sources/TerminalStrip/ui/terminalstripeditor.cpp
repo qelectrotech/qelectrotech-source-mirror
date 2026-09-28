@@ -53,7 +53,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	selectionChanged();
 
 		//Go the diagram of double clicked terminal
-	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
+	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, this, [this](const QModelIndex &index)
 	{
 		if (m_model->columnTypeForIndex(index) == TerminalStripModel::XRef)
 		{

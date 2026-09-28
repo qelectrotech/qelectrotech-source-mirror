@@ -73,7 +73,7 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	connect(ui->m_hide_full_masters_cb, &QCheckBox::toggled,
 		this, &LinkSingleElementWidget::hideFullMastersToggled);
 	
-	connect(m_show_qtwi, &QAction::triggered, this, [=]()
+	connect(m_show_qtwi, &QAction::triggered, this, [this]()
 	{
 		this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);
 	});
@@ -83,7 +83,7 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 			this,
 			&LinkSingleElementWidget::linkTriggered);
 	
-	connect(m_show_element,  &QAction::triggered, this, [=]()
+	connect(m_show_element,  &QAction::triggered, this, [this]()
 	{
 		this->m_element->diagram()->showMe();
 		this->m_element->setHighlighted(true);
