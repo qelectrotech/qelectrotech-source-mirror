@@ -80,6 +80,7 @@ class Conductor : public QGraphicsObject
 		ConductorTextItem *textItem() const;
 		QUuid uuid() const {return m_uuid;}
 		void newUuid() {m_uuid = QUuid::createUuid(); m_persist_uuid = true;}	//create new uuid for this conductor
+		void setUuid(const QUuid &uuid) {m_uuid = uuid; m_persist_uuid = true;}	//saved from now on
 		void updatePath(const QRectF & = QRectF());
 
 		//This method do nothing, it's only made to be used with Q_PROPERTY

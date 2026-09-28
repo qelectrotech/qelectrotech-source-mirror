@@ -1825,6 +1825,28 @@ bool Diagram::fromXml(QDomElement &document,
 			{
 				addItem(c);
 				c -> fromXml(f);
+					//A wire saved without a uuid got a random one that was
+					//never saved (#754), so it had no identity from one
+					//session to the next. Derive it from what it connects:
+					//the symbol and terminal at each end, sorted so the
+					//direction it was drawn in does not matter. Never its
+					//place in the file or its folio's index, so inserting or
+					//moving a folio, or saving the wires in another order,
+					//does not change it. It is saved from now on, so
+					//re-connecting the wire later keeps it; derivedItemUuid()
+					//never hands out a uuid the file already carries, so a
+					//wire later drawn on the ends it left gets another one.
+				if (consider_informations && m_project
+					&& QUuid(f.attribute(QStringLiteral("uuid"))).isNull()) {
+					auto end = [](const Terminal *t) {
+						return t->parentElement()->uuid().toString()
+								+ QLatin1Char('/') + t->stableUuid().toString();
+					};
+					QStringList ends{end(p1), end(p2)};
+					ends.sort();
+					c->setUuid(m_project->derivedItemUuid(QStringLiteral("conductor"),
+													  ends.join(QLatin1Char('\n'))));
+				}
 				added_conductors << c;
 			}
 			else

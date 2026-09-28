@@ -340,3 +340,17 @@ add_dependencies(tst_derivedsymboluuid qelectrotech)
 target_link_libraries(tst_derivedsymboluuid PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_derivedsymboluuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# A wire saved without a uuid gets one derived from its two ends: the same
+# on every load, saved, and unchanged by inserting a folio, reordering the
+# wires or drawing a wire the other way. Runs the real binary's --resave on
+# a fixture and on examples/tremie_vibrante.qet (ends by terminal number).
+add_executable(
+  tst_derivedwireuuid
+  tst_derivedwireuuid.cpp)
+add_test(NAME tst_derivedwireuuid COMMAND tst_derivedwireuuid)
+add_dependencies(tst_derivedwireuuid qelectrotech)
+target_link_libraries(tst_derivedwireuuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_derivedwireuuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
