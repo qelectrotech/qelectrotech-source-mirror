@@ -1492,6 +1492,14 @@ Terminal* findTerminal(int conductor_index,
 
 				return terminal;
 			}
+				//The uuid a project gave a terminal on opening is worked out
+				//from where the terminal is in its symbol: if the symbol's
+				//definition has since been replaced by one whose terminals
+				//carry other uuids, the terminal at that place is still it.
+			for (auto terminal: element->terminals()) {
+				if (terminal->derivedUuid() == terminal_uuid)
+					return terminal;
+			}
 			qDebug() << "Diagram::fromXml() : "
 				 << terminal_index
 				 << ":"

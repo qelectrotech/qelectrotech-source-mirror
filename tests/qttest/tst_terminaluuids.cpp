@@ -67,9 +67,9 @@ class tst_terminaluuids : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	// --info on @p project in a sandbox of its own; returns the number of
-	// wires loaded and puts what was written on stderr in @p log.
-	int loadedWires(const QString &project, QString *log)
+	// The real binary with @p args, in a sandbox of its own (so a running
+	// QElectroTech cannot answer instead); false if it failed.
+	bool runQet(const QStringList &args, QByteArray *out, QString *log)
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
@@ -80,13 +80,49 @@ class tst_terminaluuids : public QObject
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
 		QProcess proc;
 		proc.setProcessEnvironment(env);
-		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--info"), project});
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
 		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
-			return -1;
+			return false;
 		*log = QString::fromUtf8(proc.readAllStandardError());
-		const QByteArray out = proc.readAllStandardOutput();
+		*out = proc.readAllStandardOutput();
+		return true;
+	}
+
+	// --info on @p project; returns the number of wires loaded and puts
+	// what was written on stderr in @p log.
+	int loadedWires(const QString &project, QString *log)
+	{
+		QByteArray out;
+		if (!runQet({QStringLiteral("--info"), project}, &out, log))
+			return -1;
 		const QJsonDocument json = QJsonDocument::fromJson(out.mid(out.indexOf('{')));
 		return json.object().value(QStringLiteral("conductors")).toInt(-1);
+	}
+
+	// --resave @p in to a new file; returns its path, empty on failure.
+	QString resave(const QString &in)
+	{
+		const QString out = m_dir.filePath(QStringLiteral("resaved%1.qet").arg(m_run));
+		QByteArray stdout_;
+		QString log;
+		if (!runQet({QStringLiteral("--resave"), in, out}, &stdout_, &log))
+			return {};
+		return out;
+	}
+
+	static QDomDocument load(const QString &path)
+	{
+		QDomDocument doc;
+		QFile file(path);
+		if (file.open(QIODevice::ReadOnly))
+			doc.setContent(&file);
+		return doc;
+	}
+
+	static QByteArray bytes(const QString &path)
+	{
+		QFile f(path);
+		return f.open(QIODevice::ReadOnly) ? f.readAll() : QByteArray();
 	}
 
 	// 2612_ats_singlephase.qet with each embedded symbol replaced by a copy
@@ -219,6 +255,115 @@ private slots:
 		QCOMPARE(uuids(top), QStringList{"{a}"});
 		QCOMPARE(uuids(other), QStringList{"{y}"});
 		QCOMPARE(uuids(deep), QStringList{"{b}"});
+	}
+
+	// The recipe is Terminal::stableUuid()'s, which the project database
+	// and the wire uuids worked out from their ends already use: changing
+	// it would change every such identity in every project.
+	void derivedRecipeUnchanged()
+	{
+		const QUuid ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+		QCOMPARE(TerminalUuids::derived(0, 10, 2),
+				 QUuid::createUuidV5(ns, QStringLiteral("0.0000|10.0000|2")));
+		QCOMPARE(TerminalUuids::derived(-2.5, 4, 3, 1),
+				 QUuid::createUuidV5(ns, QStringLiteral("-2.5000|4.0000|3|1")));
+	}
+
+	// Only terminals without a uuid get one, the derived value; two at one
+	// point get distinct ones; a value already used in the symbol is never
+	// given again; symbols in sub-categories are reached.
+	void fillMissing()
+	{
+		QDomDocument doc;
+		QDomElement root = doc.createElement(QStringLiteral("collection"));
+		QDomElement sub = doc.createElement(QStringLiteral("category"));
+		root.appendChild(sub);
+		const QString taken = TerminalUuids::derived(0, 0, 0).toString();
+		const QString own = QStringLiteral("{0f5d4b0c-2f7e-4a55-9a51-8c3a3e1c2d11}");
+		QDomElement a = symbol(doc, {{"0", "10", "s"},
+									 {"5", "0", "e", own},
+									 {"0", "10", "s"},
+									 {"0", "0", "n"},
+									 {"9", "9", "w", taken}});
+		QDomElement b = symbol(doc, {{"1", "2", "w"}});
+		root.appendChild(a);
+		sub.appendChild(b);
+
+		QCOMPARE(TerminalUuids::fillMissing(root), 4);
+		QCOMPARE(uuids(a), (QStringList{
+					 TerminalUuids::derived(0, 10, 2).toString(),
+					 own,
+					 TerminalUuids::derived(0, 10, 2, 1).toString(),
+					 TerminalUuids::derived(0, 0, 0, 1).toString(),
+					 taken}));
+		QCOMPARE(uuids(b), QStringList{TerminalUuids::derived(1, 2, 3).toString()});
+		QCOMPARE(TerminalUuids::fillMissing(root), 0);
+	}
+
+	// An example whose symbols have no terminal uuids and whose wires are
+	// all in the numbered form: once saved, every terminal has a uuid,
+	// every wire names its ends by uuid, nothing is lost, and saving again
+	// changes nothing.
+	void resaveGivesEveryTerminalAUuid()
+	{
+		const QString original = QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet");
+		QString log;
+		const int wires = loadedWires(original, &log);
+		QVERIFY(wires > 0);
+
+		const QString saved = resave(original);
+		QVERIFY2(!saved.isEmpty(), "--resave failed");
+		const QDomDocument doc = load(saved);
+		int terminals = 0;
+		for (const QDomElement &e : embeddedSymbols(doc)) {
+			for (const QString &uuid : uuids(e)) {
+				++terminals;
+				QVERIFY2(!QUuid(uuid).isNull(), "a terminal has no uuid");
+			}
+		}
+		QVERIFY(terminals > 0);
+		const QDomNodeList conductors = doc.elementsByTagName(QStringLiteral("conductor"));
+		QCOMPARE(conductors.size(), wires);
+		for (int i = 0; i < conductors.size(); ++i) {
+			const QDomElement c = conductors.at(i).toElement();
+			QVERIFY2(c.hasAttribute(QStringLiteral("element1"))
+					 && c.hasAttribute(QStringLiteral("element2")),
+					 "a wire is still in the numbered form");
+		}
+
+		QCOMPARE(loadedWires(saved, &log), wires);
+		QVERIFY2(!log.contains(QStringLiteral("not loaded")), "a wire was reported lost");
+		const QString again = resave(saved);
+		QVERIFY2(!again.isEmpty(), "second --resave failed");
+		QVERIFY2(bytes(again) == bytes(saved), "the second save changed the file");
+	}
+
+	// The uuids written on opening are derived from where each terminal
+	// is: a wire saved against one still finds its terminal after the
+	// symbol's definition was replaced by one with other terminal uuids.
+	void derivedUuidFoundAfterReplacement()
+	{
+		const QString saved = resave(QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"));
+		QVERIFY(!saved.isEmpty());
+		QString log;
+		const int wires = loadedWires(saved, &log);
+		QVERIFY(wires > 0);
+
+		QDomDocument doc = load(saved);
+		for (QDomElement e : embeddedSymbols(doc)) {
+			const QDomNodeList terminals = e.elementsByTagName(QStringLiteral("terminal"));
+			for (int i = 0; i < terminals.size(); ++i)
+				terminals.at(i).toElement().setAttribute(QStringLiteral("uuid"),
+														 QUuid::createUuid().toString());
+		}
+		const QString replaced = m_dir.filePath(QStringLiteral("replaced.qet"));
+		QFile out(replaced);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(doc.toByteArray());
+		out.close();
+
+		QCOMPARE(loadedWires(replaced, &log), wires);
+		QVERIFY2(!log.contains(QStringLiteral("not loaded")), "a wire was reported lost");
 	}
 
 	// The real loader, on a project whose 131 wires are saved against

@@ -19,6 +19,7 @@
 
 #include <QDomElement>
 #include <QHash>
+#include <QUuid>
 #include <QSet>
 #include <QStringList>
 
@@ -39,6 +40,62 @@ QList<QDomElement> terminalsOf(const QDomElement &collection_element)
 		terminals << t;
 	}
 	return terminals;
+}
+
+	//Qet::orientationFromString(), without pulling in qet.cpp
+int orientationOf(const QDomElement &terminal)
+{
+	const QString o = terminal.attribute(QStringLiteral("orientation"));
+	if (o.startsWith(QLatin1Char('e'))) return 1;
+	if (o.startsWith(QLatin1Char('s'))) return 2;
+	if (o.startsWith(QLatin1Char('w'))) return 3;
+	return 0;
+}
+
+	//The <terminal> of one element definition get a uuid where missing
+int fillDefinition(const QDomElement &collection_element)
+{
+	const QList<QDomElement> terminals = terminalsOf(collection_element);
+	QSet<QUuid> taken;
+	for (const QDomElement &t : terminals) {
+		const QUuid uuid(t.attribute(QStringLiteral("uuid")));
+		if (!uuid.isNull()) {
+			taken << uuid;
+		}
+	}
+
+	int filled = 0;
+	for (QDomElement t : terminals) {
+		if (!QUuid(t.attribute(QStringLiteral("uuid"))).isNull()) {
+			continue;
+		}
+		const qreal x = t.attribute(QStringLiteral("x")).toDouble();
+		const qreal y = t.attribute(QStringLiteral("y")).toDouble();
+		const int orientation = orientationOf(t);
+		QUuid uuid;
+		for (int occurrence = 0 ; uuid.isNull() || taken.contains(uuid) ; ++occurrence) {
+			uuid = TerminalUuids::derived(x, y, orientation, occurrence);
+		}
+		taken << uuid;
+		t.setAttribute(QStringLiteral("uuid"), uuid.toString());
+		++filled;
+	}
+	return filled;
+}
+
+int fillDirectory(const QDomElement &directory)
+{
+	int filled = 0;
+	for (QDomElement child = directory.firstChildElement();
+		 !child.isNull();
+		 child = child.nextSiblingElement()) {
+		if (child.tagName() == QLatin1String("category")) {
+			filled += fillDirectory(child);
+		} else if (child.tagName() == QLatin1String("element")) {
+			filled += fillDefinition(child);
+		}
+	}
+	return filled;
 }
 
 	//Place and orientation, "10" and "10.0" being the same place
@@ -143,4 +200,50 @@ void TerminalUuids::keepInDirectory(const QDomElement &old_directory,
 			keep(old_child, child);
 		}
 	}
+}
+
+/**
+	@brief TerminalUuids::derived
+	The identity of a terminal that carries no uuid, worked out from where
+	it is inside its symbol: its local position and orientation, which are
+	what the project file itself uses to tell terminals apart. UUID v5 in a
+	fixed namespace, so the same terminal gets the same value in any
+	project, on any machine, and it cannot collide with the random (v4)
+	uuids the element editor gives.
+
+	@param orientation Qet::Orientation, as an int
+	@param occurrence 0 for the value Terminal::stableUuid() uses; 1, 2...
+	for a second, third... terminal at the same point of the same symbol
+*/
+QUuid TerminalUuids::derived(qreal x, qreal y, int orientation, int occurrence)
+{
+		//Fixed namespace for terminal identities derived from geometry.
+	static const QUuid derived_ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+
+	QString key = QStringLiteral("%1|%2|%3")
+			.arg(x, 0, 'f', 4)
+			.arg(y, 0, 'f', 4)
+			.arg(orientation);
+	if (occurrence > 0) {
+		key += QStringLiteral("|%1").arg(occurrence);
+	}
+	return QUuid::createUuidV5(derived_ns, key);
+}
+
+/**
+	@brief TerminalUuids::fillMissing
+	Give every terminal without a uuid, in every symbol of the embedded
+	collection @p collection_root, the value derived() works out for it --
+	the one QElectroTech already used for it as Terminal::stableUuid(), so
+	nothing keyed on terminals changes. Saved with the project, it becomes
+	a lasting identity: moving the terminal in the symbol editor no longer
+	changes it.
+
+	Where one symbol has two terminals at one point, the second gets the
+	next occurrence; a value is never given twice within a symbol.
+	@return the number of terminals given a uuid
+*/
+int TerminalUuids::fillMissing(const QDomElement &collection_root)
+{
+	return fillDirectory(collection_root);
 }

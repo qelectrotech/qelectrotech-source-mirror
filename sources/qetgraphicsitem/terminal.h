@@ -76,6 +76,7 @@ class Terminal : public QGraphicsObject
 		Element  *parentElement       () const;
 		QUuid     uuid                () const;
 		QUuid     stableUuid          () const;
+		QUuid     derivedUuid         () const;
 		QString   name                () const;
 		QString   baseName            () const;
 		TerminalData::Type terminalType() const;
