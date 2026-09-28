@@ -272,6 +272,36 @@ def tool_elements(path: str, folio: int | None = None,
             "elements": rows[:limit]}
 
 
+ITEM_KINDS = ["text", "shape", "image", "table", "element_text"]
+
+
+def tool_items(path: str, folio: int | None = None, kind: str | None = None,
+               limit: int = 500) -> dict:
+    """Every drawn item that is not a symbol or a wire, with its uuid.
+
+    Free texts, shapes, pictures, tables and the text fields of symbols --
+    the items a qet_edit op or a qet_diff entry names by uuid. Folios are
+    numbered from 1, as in qet_elements. An item saved before these items
+    carried a uuid has "" here; QElectroTech gives it one on the next save.
+    """
+    if kind is not None and kind not in ITEM_KINDS:
+        raise ValueError(f"kind must be one of {ITEM_KINDS}, not {kind!r}")
+    ex = _extras(_root(path))
+    rows = []
+    for name, records in (("text", ex["texts"]), ("shape", ex["shapes"]),
+                          ("image", ex["images"]), ("table", ex["tables"])):
+        for r in records:
+            rows.append({"kind": name, "uuid": r["uuid"], **r["label"], **r["value"]})
+    for k, v in ex["element_texts"].items():
+        rows.append({"kind": "element_text", "uuid": ex["element_text_uuids"][k],
+                     "folio": ex["element_text_folios"][k], "element": k[0],
+                     "source": k[1], "bound_to": k[2], "n": k[3], **v})
+    rows = [r for r in rows if (folio is None or r["folio"] == folio)
+            and (kind is None or r["kind"] == kind)]
+    rows.sort(key=lambda r: (r["folio"], ITEM_KINDS.index(r["kind"])))
+    return {"count": len(rows), "truncated": len(rows) > limit, "items": rows[:limit]}
+
+
 def tool_conductors(path: str, folio: int | None = None,
                     attribute: str | None = None,
                     non_empty: bool = False, limit: int = 200) -> dict:
@@ -373,7 +403,7 @@ def _extras(root: ET.Element) -> dict:
                 im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
                 {"scale": im.get("size", ""), "rotation": _angle(im.get("rotation", ""))}))
 
-    element_texts, element_text_uuids = {}, {}
+    element_texts, element_text_uuids, element_text_folios = {}, {}, {}
     for n, d in _folios(root):
         for el in d.iter("element"):
             uuid = el.get("uuid", "")
@@ -387,6 +417,7 @@ def _extras(root: ET.Element) -> dict:
                 seen[base] = seen.get(base, 0) + 1
                 fs = (t.get("font", "").split(",") + ["", ""])[1]
                 element_text_uuids[base + (seen[base],)] = t.get("uuid", "")
+                element_text_folios[base + (seen[base],)] = n
                 element_texts[base + (seen[base],)] = {
                     "x": t.get("x", ""), "y": t.get("y", ""), "size": fs,
                     "frame": t.get("frame", ""), "rotation": _angle(t.get("rotation", "")),
@@ -406,7 +437,8 @@ def _extras(root: ET.Element) -> dict:
             "terminals": sum(1 for _ in st.iter("real_terminal"))}
     return {"folios": folios, "folio_uuids": folio_uuids, "texts": texts, "shapes": shapes,
             "images": images, "tables": tables, "strips": strips,
-            "element_texts": element_texts, "element_text_uuids": element_text_uuids}
+            "element_texts": element_texts, "element_text_uuids": element_text_uuids,
+            "element_text_folios": element_text_folios}
 
 
 def _diff_keyed(a: dict, b: dict, label) -> dict:
@@ -2226,6 +2258,26 @@ TOOLS = [
         "handler": lambda a: tool_project_info(a["path"]),
     },
     {
+        "name": "qet_items",
+        "description": "List the drawn items that are not symbols or wires -- free texts, "
+                       "shapes, pictures, tables and the text fields of symbols -- with "
+                       "each one's uuid, folio (counted from 1) and main fields. Use the "
+                       "uuid to address an item in qet_edit or to find it in qet_diff. "
+                       "Reads the file directly; does not launch QElectroTech.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string"},
+                "folio": {"type": "integer", "description": "folio number counted from 1"},
+                "kind": {"type": "string", "enum": ITEM_KINDS},
+                "limit": {"type": "integer", "default": 500},
+            },
+            "required": ["path"],
+        },
+        "handler": lambda a: tool_items(a["path"], a.get("folio"), a.get("kind"),
+                                        a.get("limit", 500)),
+    },
+    {
         "name": "qet_elements",
         "description": "List placed elements with uuid, type, position, label and "
                        "their elementInformations bag. Optionally filter by folio "
@@ -2798,6 +2850,7 @@ _BY_NAME = {t["name"]: t for t in TOOLS}
 _DATA_PATHS = {
     "qet_project_info":   {"read": ("path",)},
     "qet_elements":       {"read": ("path",)},
+    "qet_items":          {"read": ("path",)},
     "qet_conductors":     {"read": ("path",)},
     "qet_diff":           {"read": ("before", "after")},
     "qet_scan":           {"read": ("directory",)},

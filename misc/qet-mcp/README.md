@@ -30,6 +30,7 @@ here read the model.
 | `qet_project_info` | title, format version, folios, element and conductor counts |
 | `qet_elements` | placed elements: uuid, type, position, label, information bag |
 | `qet_conductors` | conductors and their documentation fields; filter by attribute |
+| `qet_items` | free texts, shapes, pictures, tables and symbol text fields, each with its uuid |
 | `qet_diff` | **what an edit actually changed** — element moves, adds, removes, relabels; conductor changes; and folio fields, texts, shapes, images, symbol text fields and terminal strips |
 | `qet_scan` | sweep a directory of projects, counting nodes carrying an attribute |
 | `qet_element_info` | a `.elmt`: translated names, terminals, info fields, part counts |

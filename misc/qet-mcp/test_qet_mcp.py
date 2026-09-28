@@ -153,7 +153,7 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_info", "qet_elements", "qet_conductors", "qet_diff",
             "qet_scan", "qet_element_info", "qet_export", "qet_edit", "qet_query",
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
-            "qet_continuity"})
+            "qet_continuity", "qet_items"})
 
 
 class EditValidation(unittest.TestCase):
@@ -836,6 +836,69 @@ class ReadToolContracts(unittest.TestCase):
         # no <body>: the whole string is the text
         self.assertEqual(m._plain_text("plain <b>x</b>"), "plain x")
         self.assertEqual(m._plain_text(None), "")
+
+
+class ItemsTool(unittest.TestCase):
+    """qet_items: every drawn item that is not a symbol or a wire, with its uuid."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = str(Path(self.tmp.name) / "p.qet")
+        Path(self.qet).write_text(
+            '<project><diagram><elements>'
+            '<element uuid="{el}" type="x.elmt" x="0" y="0"><dynamic_texts>'
+            '<dynamic_elmt_text uuid="{et}" x="5" y="6" rotation="0" text_width="-1" frame="false"'
+            ' font="Sans,9,-1" text_from="ElementInfo"><text>K1</text><info_name>label</info_name>'
+            '</dynamic_elmt_text></dynamic_texts></element></elements><conductors/>'
+            '<inputs><input uuid="{tx}" x="1" y="2" rotation="0" font="f" color="c"'
+            ' text="&lt;html&gt;&lt;body&gt;note&lt;/body&gt;&lt;/html&gt;"/></inputs>'
+            '<shapes><shape uuid="{sh}" type="Line" x1="0" y1="0" x2="9" y2="9" rotation="0">'
+            '<pen color="c" style="s" widthF="1"/></shape></shapes>'
+            '</diagram><diagram><elements/><conductors/>'
+            '<images><image x="3" y="4" size="1" rotation="0"/></images>'
+            '<graphics_table uuid="{tb}" name="Parts" x="0" y="0" width="100" height="50"'
+            ' display_n_row="10"/>'
+            '</diagram></project>')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_every_kind_with_its_uuid(self):
+        r = m.tool_items(self.qet)
+        self.assertEqual((r["count"], r["truncated"]), (5, False))
+        self.assertEqual(r["items"], [
+            {"kind": "text", "uuid": "{tx}", "folio": 1, "x": "1", "y": "2", "text": "note",
+             "rotation": "0", "font": "f", "color": "c"},
+            {"kind": "shape", "uuid": "{sh}", "folio": 1, "type": "Line", "from": ["0", "0"],
+             "to": ["9", "9"], "line_color": "c", "line_style": "s", "line_width": "1",
+             "fill": "none", "rotation": "0"},
+            {"kind": "element_text", "uuid": "{et}", "folio": 1, "element": "{el}",
+             "source": "ElementInfo", "bound_to": "label", "n": 1, "x": "5", "y": "6",
+             "size": "9", "frame": "false", "rotation": "0", "width": "-1", "shows": "K1"},
+            # saved before pictures carried a uuid: "" until the next save
+            {"kind": "image", "uuid": "", "folio": 2, "x": "3", "y": "4", "scale": "1",
+             "rotation": "0"},
+            {"kind": "table", "uuid": "{tb}", "folio": 2, "name": "Parts", "x": "0", "y": "0",
+             "width": "100", "height": "50", "rows_shown": "10"}])
+
+    def test_filters_and_limit(self):
+        kinds = lambda r: [i["kind"] for i in r["items"]]
+        self.assertEqual(kinds(m.tool_items(self.qet, folio=2)), ["image", "table"])
+        self.assertEqual(kinds(m.tool_items(self.qet, kind="shape")), ["shape"])
+        self.assertEqual(kinds(m.tool_items(self.qet, folio=2, kind="shape")), [])
+        r = m.tool_items(self.qet, limit=2)
+        self.assertEqual((r["count"], r["truncated"], len(r["items"])), (5, True, 2))
+        r = m.tool_items(self.qet, limit=5)
+        self.assertEqual((r["count"], r["truncated"]), (5, False))
+        with self.assertRaisesRegex(ValueError, "kind must be one of"):
+            m.tool_items(self.qet, kind="wire")
+
+    def test_default_limit_is_500(self):
+        many = "".join(f'<input uuid="{{{i}}}" x="{i}" y="0" text="t"/>' for i in range(501))
+        big = Path(self.tmp.name) / "big.qet"
+        big.write_text(f'<project><diagram><inputs>{many}</inputs></diagram></project>')
+        r = m.tool_items(str(big))
+        self.assertEqual((r["count"], r["truncated"], len(r["items"])), (501, True, 500))
 
 
 class DiffContracts(unittest.TestCase):
@@ -1571,6 +1634,20 @@ class PathPolicy(unittest.TestCase):
         advertised = {t["name"] for t in m.TOOLS
                       if "overwrite" in t["inputSchema"].get("properties", {})}
         self.assertEqual(guarded, advertised)
+
+    def test_every_data_path_argument_is_guarded(self):
+        """The other direction: a tool whose schema takes a data path must be
+        in the policy, or that path is read or written with no workspace
+        check at all -- and nothing fails. binary and elements_dir are
+        configuration, deliberately not confined (see the README)."""
+        pathish = {"path", "project", "before", "after", "output", "directory"}
+        for t in m.TOOLS:
+            with self.subTest(tool=t["name"]):
+                props = t["inputSchema"].get("properties", {})
+                spec = m._DATA_PATHS.get(t["name"], {})
+                guarded = set(spec.get("read", ())) | set(spec.get("write", ()))
+                self.assertEqual(pathish & set(props), guarded & pathish,
+                                 f"{t['name']}: data path arguments not in _DATA_PATHS")
 
     def test_the_policy_names_only_real_tools_and_arguments(self):
         by_name = {t["name"]: t for t in m.TOOLS}
