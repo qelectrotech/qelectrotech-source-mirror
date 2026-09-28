@@ -206,6 +206,12 @@ class EditValidation(unittest.TestCase):
         s = self.build([{"op": "set_conductor", "folio": 0, "conductor": U,
                          "property": "num", "value": "W1"}])
         self.assertIn('qet.setConductorProperty(0, e0.element, e0.terminal, "num", "W1")', s)
+        s = self.build([{"op": "move_conductor_segment", "folio": 2, "conductor": U,
+                         "segment": 1, "dx": 10, "dy": 0}])
+        self.assertIn(f'var e0 = qetMcpConductorEnd(0, 2, "{U}");', s)
+        self.assertIn("(e0 ? qet.moveConductorSegment(2, e0.element, e0.terminal, 1, 10, 0) : false)", s)
+        # an end whose terminal or element is missing is never picked
+        self.assertIn("if (ends[k] === '?') continue;", s)
         self.assertNotIn('"conductorEnds"', self.build(
             [{"op": "delete_conductor", "folio": 0, "element": U, "terminal": 0}]))
         with self.assertRaisesRegex(ValueError, "not both"):
@@ -213,6 +219,8 @@ class EditValidation(unittest.TestCase):
                          "element": U, "terminal": 0}])
         with self.assertRaisesRegex(ValueError, "must be a conductor uuid"):
             self.build([{"op": "delete_conductor", "folio": 0, "conductor": "W1"}])
+        with self.assertRaisesRegex(ValueError, "saved before conductors carried a uuid"):
+            self.build([{"op": "delete_conductor", "folio": 0, "conductor": ""}])
 
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op

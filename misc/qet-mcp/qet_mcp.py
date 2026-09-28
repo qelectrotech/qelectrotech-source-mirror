@@ -1419,6 +1419,7 @@ def _build_script(operations: list, output: str) -> str:
         "  if (ends && ends.length === 2) {",
         "    var lines = qet.conductors(folio);",
         "    for (var k = 0; k < 2; k++) {",
+        "      if (ends[k] === '?') continue;",
         "      var n = 0;",
         "      for (var j = 0; j < lines.length; j++) {",
         "        var p = lines[j].split(' : ')[0].split(' -- ');",
@@ -1601,6 +1602,11 @@ def _build_script(operations: list, output: str) -> str:
             if "element" in op or "terminal" in op:
                 raise ValueError(f"operation {i} ({name}): give either \"conductor\" "
                                  f"(its uuid) or \"element\" + \"terminal\", not both")
+            if op["conductor"] == "":
+                raise ValueError(f"operation {i}: \"conductor\" is empty -- a conductor "
+                                 f"from a project saved before conductors carried a uuid "
+                                 f"has none in the file; name it by \"element\" + "
+                                 f"\"terminal\" instead")
             if not isinstance(op["conductor"], str) or not _UUID_RE.fullmatch(op["conductor"]):
                 raise ValueError(f"operation {i}: \"conductor\" must be a conductor uuid, "
                                  f"got {op['conductor']!r}")
@@ -2551,8 +2557,11 @@ TOOLS = [
                         "or give \"conductor\": its uuid from qet_conductors in place "
                         "of \"element\" + \"terminal\" (set_conductor, "
                         "move_conductor_segment and delete_conductor all accept it; it "
-                        "needs one of the conductor's two terminals to carry only it); "
-                        "its \"property\" is one of " + ", ".join(CONDUCTOR_PROPERTIES) +
+                        "needs one of the conductor's two terminals to carry only it, "
+                        "and a conductor qet_conductors lists with an empty uuid has "
+                        "none to give). A uuid names one wire, but set_conductor still "
+                        "changes its whole potential, as it does by terminal. "
+                        "set_conductor's \"property\" is one of " + ", ".join(CONDUCTOR_PROPERTIES) +
                         ". move_conductor_segment reroutes the drawn path itself rather "
                         "than a property of the potential -- addressed the same way (a "
                         "terminal carrying exactly one conductor), plus a segment index "

@@ -296,7 +296,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   where two conductors meet at a terminal. It is turned at run time into an
   end whose terminal carries only that conductor; where both of its ends
   are shared the op fails and its `note` says why. Needs
-  `qet.conductorEnds()` in the build.
+  `qet.conductorEnds()` in the build. A uuid names one wire, but
+  `set_conductor` still changes the whole potential, the same as by
+  terminal. A project saved before conductors carried a uuid has none in
+  the file: QElectroTech makes a new one on every load and does not save
+  it, so `qet_conductors` reports `uuid` as empty and those conductors are
+  named by `element` + `terminal` until wire uuids last (#1103).
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
