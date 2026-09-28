@@ -1707,6 +1707,23 @@ bool Diagram::fromXml(QDomElement &document,
 			delete nvel_elmt;
 			qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
 		} else {
+				//A symbol saved without a uuid got a random one from
+				//Element::fromXml(): a different identity on every load,
+				//written out on the next save. Derive it instead from what
+				//the symbol is and where it sits on its folio -- never from
+				//the folio's index, so inserting or moving a folio does not
+				//change it. Only for a folio being loaded: a paste renews
+				//uuids anyway.
+			if (consider_informations && m_project
+				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+				nvel_elmt->setUuid(m_project->derivedItemUuid(
+									   QStringLiteral("element"),
+									   QStringList{type_id,
+												   element_xml.attribute(QStringLiteral("x")),
+												   element_xml.attribute(QStringLiteral("y")),
+												   element_xml.attribute(QStringLiteral("orientation"))}
+									   .join(QLatin1Char('\n'))));
+			}
 			ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
 			added_elements << nvel_elmt;
 		}

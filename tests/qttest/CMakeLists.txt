@@ -329,9 +329,21 @@ target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A symbol saved without a uuid gets the same one on every load, and
+# inserting a folio does not change it. Runs the real binary's --resave on
+# fixtures/qet_bug_repro_resaved.qet with the symbols' uuids stripped.
+add_executable(
+  tst_derivedsymboluuid
+  tst_derivedsymboluuid.cpp)
+add_test(NAME tst_derivedsymboluuid COMMAND tst_derivedsymboluuid)
+add_dependencies(tst_derivedsymboluuid qelectrotech)
+target_link_libraries(tst_derivedsymboluuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_derivedsymboluuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 # Saving a project that was just saved changes nothing: runs the real
 # binary's --resave twice on every project in examples/, and on one whose
 # title block holds a single-space value (#973).
+
 add_executable(
   tst_resaveunchanged
   tst_resaveunchanged.cpp)
