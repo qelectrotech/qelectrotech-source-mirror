@@ -93,8 +93,8 @@ endif()
 # the application depends on. When it's missing the feature is silently
 # disabled - see the QET_HAS_SCRIPTING guard in qetscripting.*.
 set(QET_HAS_SCRIPTING FALSE)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Qml)
-if(TARGET Qt${QT_VERSION_MAJOR}::Qml)
+find_package(Qt6 QUIET COMPONENTS Qml)
+if(TARGET Qt6::Qml)
     set(QET_HAS_SCRIPTING TRUE)
     list(APPEND QET_PRIVATE_LIBRARIES Qt::Qml)
     add_compile_definitions(QET_HAS_SCRIPTING)
