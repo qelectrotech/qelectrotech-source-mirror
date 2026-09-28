@@ -437,6 +437,24 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	rememberSelection();
+		//Clicking again on a member of a group that is selected whole picks
+		//that member out, to edit it on its own (discussion #1070): noted
+		//here, decided on release, since a drag must still move the group.
+		//Ctrl keeps its usual meaning.
+	m_member_to_pick.clear();
+	if (event->button() == Qt::LeftButton
+		&& !event->modifiers().testFlag(Qt::ControlModifier)) {
+		QTransform view_transform;
+		if (event->widget()) {
+			if (auto view = qobject_cast<QGraphicsView *>(event->widget()->parentWidget())) {
+				view_transform = view->transform();
+			}
+		}
+		if (QGraphicsItem *member = ItemGroups::memberToPick(
+				itemAt(event->scenePos(), view_transform))) {
+			m_member_to_pick = member->toGraphicsObject();
+		}
+	}
 	QGraphicsScene::mousePressEvent(event);
 	completeGroupSelection();
 }
@@ -477,6 +495,19 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	QGraphicsScene::mouseReleaseEvent(event);
+
+		//A click that did not drag, on a member of a group selected whole:
+		//Qt has left only that member selected, and it stays so.
+	QGraphicsObject *picked = m_member_to_pick.data();
+	m_member_to_pick.clear();
+	if (picked
+		&& (event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton)).manhattanLength()
+			< QApplication::startDragDistance()
+		&& selectedItems() == QList<QGraphicsItem *>{picked}) {
+		rememberSelection();
+		return;
+	}
+
 		//A click on an already selected item changes the selection on
 		//release, not on press (Ctrl toggles it, a plain click keeps only it).
 	completeGroupSelection();
@@ -1676,6 +1707,23 @@ bool Diagram::fromXml(QDomElement &document,
 			delete nvel_elmt;
 			qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
 		} else {
+				//A symbol saved without a uuid got a random one from
+				//Element::fromXml(): a different identity on every load,
+				//written out on the next save. Derive it instead from what
+				//the symbol is and where it sits on its folio -- never from
+				//the folio's index, so inserting or moving a folio does not
+				//change it. Only for a folio being loaded: a paste renews
+				//uuids anyway.
+			if (consider_informations && m_project
+				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+				nvel_elmt->setUuid(m_project->derivedItemUuid(
+									   QStringLiteral("element"),
+									   QStringList{type_id,
+												   element_xml.attribute(QStringLiteral("x")),
+												   element_xml.attribute(QStringLiteral("y")),
+												   element_xml.attribute(QStringLiteral("orientation"))}
+									   .join(QLatin1Char('\n'))));
+			}
 			ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
 			added_elements << nvel_elmt;
 		}

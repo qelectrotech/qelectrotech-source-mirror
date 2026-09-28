@@ -36,6 +36,7 @@
 #endif
 
 #include <QHash>
+#include <QSet>
 #include <QFuture>
 
 class Diagram;
@@ -107,6 +108,7 @@ class QETProject : public QObject
 		ProjectPropertiesHandler& projectPropertiesHandler();
 		projectDataBase *dataBase();
 		QUuid uuid() const;
+		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 		int folioIndex(const Diagram *) const;
@@ -365,6 +367,8 @@ class QETProject : public QObject
 		QFuture<bool> m_backup_future;
 		KAutoSaveFile m_backup_file;
 		QUuid m_uuid = QUuid::createUuid();
+		QHash<QString, int> m_derived_uuid_keys;
+		QSet<QUuid> m_saved_item_uuids;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
 

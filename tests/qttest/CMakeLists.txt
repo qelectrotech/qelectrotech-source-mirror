@@ -344,3 +344,42 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 endif()
+
+# A symbol saved without a uuid gets the same one on every load, and
+# inserting a folio does not change it. Runs the real binary's --resave on
+# fixtures/qet_bug_repro_resaved.qet with the symbols' uuids stripped.
+add_executable(
+  tst_derivedsymboluuid
+  tst_derivedsymboluuid.cpp)
+add_test(NAME tst_derivedsymboluuid COMMAND tst_derivedsymboluuid)
+add_dependencies(tst_derivedsymboluuid qelectrotech)
+target_link_libraries(tst_derivedsymboluuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_derivedsymboluuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+# Saving a project that was just saved changes nothing: runs the real
+# binary's --resave twice on every project in examples/, and on one whose
+# title block holds a single-space value (#973).
+
+add_executable(
+  tst_resaveunchanged
+  tst_resaveunchanged.cpp)
+add_test(NAME tst_resaveunchanged COMMAND tst_resaveunchanged)
+add_dependencies(tst_resaveunchanged qelectrotech)
+target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test)
+target_compile_definitions(tst_resaveunchanged PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# DiagramContext::fromXml() -- the two readers (QDom for projects, pugixml
+# for element definitions in the collection) give the same values: stray
+# spaces trimmed, accents kept.
+add_executable(
+  tst_diagramcontext
+  tst_diagramcontext.cpp
+  ${QET_DIR}/sources/diagramcontext.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_diagramcontext COMMAND tst_diagramcontext)
+target_include_directories(tst_diagramcontext PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramcontext PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)

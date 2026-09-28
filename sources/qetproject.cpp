@@ -276,6 +276,42 @@ QUuid QETProject::uuid() const
 }
 
 /**
+	@brief QETProject::derivedItemUuid
+	A uuid for an item of this project that was saved without one, the same
+	on every load of the same file.
+	@p key describes the item by what it is, never by its place in the file
+	or its folio's index: inserting or moving a folio must not change it.
+	Items with the same @p kind and @p key anywhere in the project (a copied
+	folio, two identical symbols stacked on one spot) are told apart by a
+	counter, in load order among those items alone.
+
+	A derived uuid is never one the file already carries: an item saved with
+	a derived uuid and then moved or re-connected keeps it, so a newcomer
+	later taking its old place or ends would otherwise derive the same one.
+	The file's saved uuids are collected before any folio loads
+	(readDiagramsXml()), so the result still depends on the file alone.
+
+	uuids are unique within one project; copies of a project share them, as
+	they share every saved uuid. Anything bringing items in from another
+	project must renew them, as paste does.
+	@return a UUID v5, which cannot collide with the v4 uuids given to new
+	items
+*/
+QUuid QETProject::derivedItemUuid(const QString &kind, const QString &key)
+{
+	static const QUuid derived_ns(QStringLiteral("{7d1e9c3a-5b2f-4e8a-9c61-2f4b8d0e6a17}"));
+	const QString full = kind + QLatin1Char('\n') + key;
+	int &n = m_derived_uuid_keys[full];
+	QUuid uuid;
+	do {
+		uuid = QUuid::createUuidV5(derived_ns,
+								   n ? full + QLatin1Char('\n') + QString::number(n) : full);
+		++n;
+	} while (m_saved_item_uuids.contains(uuid));
+	return uuid;
+}
+
+/**
 	@brief QETProject::init
 */
 void QETProject::init()
@@ -1887,6 +1923,18 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 
 	//Search the diagrams in the project
 	QDomNodeList diagram_nodes = xml_project.elementsByTagName(QStringLiteral("diagram"));
+
+		//Every symbol and wire uuid the file already carries, on any folio,
+		//before a folio derives one for an item saved without: see
+		//derivedItemUuid().
+	for (const QString &tag : {QStringLiteral("element"), QStringLiteral("conductor")}) {
+		const QDomNodeList nodes = xml_project.elementsByTagName(tag);
+		for (int i = 0; i < nodes.size(); ++i) {
+			const QUuid saved(nodes.at(i).toElement().attribute(QStringLiteral("uuid")));
+			if (!saved.isNull())
+				m_saved_item_uuids.insert(saved);
+		}
+	}
 
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
