@@ -181,7 +181,7 @@ bool ShortcutManager::trigger(const QString &id) const
 		return false;
 	}
 
-	for (const QPointer<QObject> &target : qAsConst(it->targets))
+	for (const QPointer<QObject> &target : std::as_const(it->targets))
 	{
 		if (!target) {
 			continue;
@@ -213,7 +213,7 @@ QAction *ShortcutManager::action(const QString &id, const QObject *owner) const
 		return nullptr;
 	}
 
-	for (const QPointer<QObject> &target : qAsConst(it->targets))
+	for (const QPointer<QObject> &target : std::as_const(it->targets))
 	{
 		auto *action = qobject_cast<QAction *>(target.data());
 		if (!action) {
