@@ -359,6 +359,10 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   an index would shift. A folio saved without a uuid shows it empty:
   QElectroTech gives it one on load and writes it on the next save, so it
   appears after a first `qet_edit`. Needs `qet.folioIndex()` in the build.
+  The `"$id"` of an `add_folio` or `insert_folio` works the same way: it
+  keeps naming that folio after a later `insert_folio` or `remove_folio` in
+  the same run (on a build without `qet.folioUuid()`, it is the index the
+  folio had when it was made, as before).
 - **A conductor can be named by its uuid** (`qet_conductors` reports it):
   `set_conductor`, `move_conductor_segment` and `delete_conductor` take
   `"conductor": "{uuid}"` in place of `element` + `terminal`, which works
