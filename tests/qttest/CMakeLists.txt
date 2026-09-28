@@ -328,3 +328,16 @@ target_include_directories(tst_conductorselfretrace PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# Saving a project that was just saved changes nothing: runs the real
+# binary's --resave twice on examples/Projet_vierge.qet (empty information
+# values) and examples/m_000.qet (information values with stray spaces).
+add_executable(
+  tst_resaveunchanged
+  tst_resaveunchanged.cpp)
+add_test(NAME tst_resaveunchanged COMMAND tst_resaveunchanged)
+add_dependencies(tst_resaveunchanged qelectrotech)
+target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test)
+target_compile_definitions(tst_resaveunchanged PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
