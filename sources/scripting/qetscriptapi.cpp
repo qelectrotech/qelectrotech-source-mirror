@@ -773,11 +773,13 @@ QStringList QetScriptApi::elementTerminals(int folioIndex, const QString &elemen
 	for (int i = 0 ; i < terminals.count() ; ++i)
 	{
 		Terminal *t = terminals.at(i);
+			//One multi-argument arg(): chained ones would also replace a
+			//"%3" or "%4" inside the terminal's name
 		list << QStringLiteral("%1: %2 (%3 conductor(s)) %4")
-				.arg(i)
-				.arg(t->name().isEmpty() ? QStringLiteral("-") : t->name())
-				.arg(t->conductorsCount())
-				.arg(t->stableUuid().toString());
+				.arg(QString::number(i),
+					 t->name().isEmpty() ? QStringLiteral("-") : t->name(),
+					 QString::number(t->conductorsCount()),
+					 t->stableUuid().toString());
 	}
 	return list;
 }

@@ -352,7 +352,7 @@ if(QET_HAS_SCRIPTING)
     tst_scriptterminaluuid.cpp)
   add_test(NAME tst_scriptterminaluuid COMMAND tst_scriptterminaluuid)
   add_dependencies(tst_scriptterminaluuid qelectrotech)
-  target_link_libraries(tst_scriptterminaluuid PRIVATE Qt::Test)
+  target_link_libraries(tst_scriptterminaluuid PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_scriptterminaluuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")

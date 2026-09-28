@@ -2,6 +2,7 @@
 #include <QtTest>
 
 #include <QFile>
+#include <QDomDocument>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -113,6 +114,41 @@ private slots:
 		QCOMPARE(r.value(QStringLiteral("junk")).toInt(), -1);
 		QCOMPARE(r.value(QStringLiteral("noElement")).toInt(), -1);
 		QCOMPARE(r.value(QStringLiteral("badFolio")).toInt(), -1);
+	}
+
+	// A "%3" or "%4" in a terminal's name is listed as written, not
+	// replaced by the conductor count or the uuid.
+	void percentInNameKept()
+	{
+		QFile in(QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"));
+		QVERIFY(in.open(QIODevice::ReadOnly));
+		QDomDocument doc;
+		QVERIFY(bool(doc.setContent(&in)));
+		const QDomNodeList terminals = doc.documentElement()
+				.firstChildElement(QStringLiteral("collection"))
+				.elementsByTagName(QStringLiteral("terminal"));
+		QVERIFY(!terminals.isEmpty());
+		terminals.at(0).toElement().setAttribute(QStringLiteral("name"),
+												 QStringLiteral("x%3y%4"));
+		const QString project = m_dir.filePath(QStringLiteral("percent.qet"));
+		QFile out(project);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(doc.toByteArray());
+		out.close();
+
+		const QJsonObject r = run(QStringLiteral(
+			"var hits = [];\n"
+			"for (var f = 0; f < qet.folioCount(); f++) {\n"
+			"  var els = qet.elementUuids(f);\n"
+			"  for (var e = 0; e < els.length; e++)\n"
+			"    qet.elementTerminals(f, els[e]).forEach(function (l) {\n"
+			"      if (/: x.*y.* \\(/.test(l)) hits.push(l); });\n"
+			"}\n"
+			"qet.log('PROBE ' + JSON.stringify({hits: hits}));\n"), project);
+		const QJsonArray hits = r.value(QStringLiteral("hits")).toArray();
+		QVERIFY2(!hits.isEmpty(), "the renamed terminal was not listed");
+		for (const QJsonValue &h : hits)
+			QVERIFY2(h.toString().contains(QStringLiteral(": x%3y%4 (")), qPrintable(h.toString()));
 	}
 };
 
