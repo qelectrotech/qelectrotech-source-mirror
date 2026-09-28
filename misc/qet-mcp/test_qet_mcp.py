@@ -1189,6 +1189,20 @@ class DiffContracts(unittest.TestCase):
                 self.assertEqual([(c["item"]["element"], c["item"]["uuid"], c["changed"])
                                   for c in d["changed"]], [(which, "{same}", {"x": ["1", "5"]})])
 
+    def test_a_field_on_a_symbol_without_a_uuid_is_matched_by_position(self):
+        """The field has a uuid but its symbol has none (an older file): with no
+        symbol to pair it with, the whole kind falls back to position."""
+        field = lambda x: ('<dynamic_elmt_text uuid="{e1}" x="' + str(x) + '" y="0" '
+                           'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+        on = lambda sym, x: self.qet(self.folio(self.el(sym, 0, 0, texts=field(x))))
+        d = m.tool_diff(on("", 1), on("", 2))["element_texts"]
+        self.assertEqual(d["keyed_by"], "position")
+        self.assertEqual([c["changed"] for c in d["changed"]], [{"x": ["1", "2"]}])
+        # the symbol has a uuid on one side only: each side is checked on its own
+        for before, after in ((on("", 1), on(self.A, 1)), (on(self.A, 1), on("", 1))):
+            with self.subTest(before=before, after=after):
+                self.assertEqual(m.tool_diff(before, after)["element_texts"]["keyed_by"], "position")
+
     def test_repeated_uuids_fall_back_rather_than_merge(self):
         # the same field uuid twice inside one symbol
         twice = lambda x: self.qet(self.folio(self.el(self.A, 0, 0, texts="".join(
