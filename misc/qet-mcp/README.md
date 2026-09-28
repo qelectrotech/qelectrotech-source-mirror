@@ -264,6 +264,14 @@ Python, plus the hang guard on `addConductor` and the database refresh in
 
 ## Notes and limits
 
+- **Two ways of numbering folios.** Tools that read the file —
+  `qet_project_info`, `qet_elements`, `qet_conductors`, `qet_diff` — number
+  folios from 1, as the application does. Tools that pass a folio to
+  QElectroTech's scripting API — `qet_edit` and `qet_continuity` — take an
+  index counted from 0, so the folio `qet_elements` calls 1 is `0` there.
+  `qet_continuity` refuses an index with no folio instead of reporting it
+  clean, and each of its findings carries both `folio` (the index) and
+  `folio_number` (counted from 1).
 - **The project database is reachable now, through `qet_query`.** It was
   not when this server was written, which is why every other structural
   tool here re-derives its answer from the XML. Prefer the views —

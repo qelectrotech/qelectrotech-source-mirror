@@ -1582,6 +1582,17 @@ def tool_continuity(binary: str, project: str, folio: int | None = None,
     proj = Path(project).expanduser()
     if not proj.is_file():
         raise ValueError(f"no such project: {proj}")
+    if folio is not None:
+        # qet.checkContinuity() answers an index it has no folio for with an
+        # empty list, which reads exactly like a clean folio. The index counts
+        # from 0 while qet_elements numbers folios from 1, so the likely
+        # mistake -- passing the last folio's number -- would pass silently.
+        count = len(list(_folios(_root(str(proj)))))
+        if not 0 <= folio < count:
+            raise ValueError(
+                f"folio {folio} does not exist: the project has {count} folio(s), "
+                f"indexed 0 to {count - 1} here. qet_continuity counts folios from 0; "
+                "the folio qet_elements calls N is N - 1.")
 
     folio_arg = -1 if folio is None else folio
     script = ("var out = qet.checkContinuity(%s);\n"
@@ -1611,6 +1622,12 @@ def tool_continuity(binary: str, project: str, folio: int | None = None,
         result.setdefault("hint", "no findings came back at all -- this build's "
                                   "scripting API may predate qet.checkContinuity()")
         return result
+    for f in findings:
+        # "folio" is the 0-based index qet.checkContinuity() uses; add the
+        # number qet_elements and the application show, so the two can be
+        # matched without arithmetic.
+        if isinstance(f, dict) and isinstance(f.get("folio"), int):
+            f["folio_number"] = f["folio"] + 1
     result["findings"] = findings
     result["finding_count"] = len(findings)
     result["errors"] = sum(1 for f in findings if f.get("severity") == "error")
@@ -2162,7 +2179,8 @@ TOOLS = [
             "type": "object",
             "properties": {
                 "path": {"type": "string"},
-                "folio": {"type": "integer"},
+                "folio": {"type": "integer",
+                          "description": "folio number counted from 1, as qet_elements and the application show it"},
                 "attribute": {"type": "string",
                               "description": "an XML attribute of <conductor>, e.g. cable"},
                 "non_empty": {"type": "boolean", "default": False},
@@ -2512,7 +2530,12 @@ TOOLS = [
             "properties": {
                 "binary": {"type": "string", "description": "path to the qelectrotech executable"},
                 "project": {"type": "string", "description": "the .qet to check; never modified"},
-                "folio": {"type": "integer", "description": "check one folio only; omit for the whole project"},
+                "folio": {"type": "integer", "description":
+                          "check one folio only; omit for the whole project. An index "
+                          "counted from 0, like qet_edit: the folio qet_elements calls 1 "
+                          "is 0 here. An index with no folio is refused, not reported "
+                          "clean. Each finding carries both \"folio\" (this index) and "
+                          "\"folio_number\" (counted from 1)."},
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
