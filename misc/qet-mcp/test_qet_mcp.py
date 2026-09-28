@@ -2022,6 +2022,274 @@ class BinaryPolicy(unittest.TestCase):
                          str((prefix / "share" / "qelectrotech" / "elements").resolve()))
 
 
+class HttpTransport(unittest.TestCase):
+    """--http: every refusal is checked, not only the happy path.
+
+    A real server on a free port in this process; requests go out over a
+    real socket with http.client, headers exactly as sent.
+    """
+
+    TOKEN = "t" * 43
+
+    def setUp(self):
+        import io
+        import threading
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "a.qet").write_text('<project title="Over HTTP"><diagram title="D"/></project>')
+        self._saved = dict(os.environ)
+        os.environ["QET_MCP_WORKSPACE"] = str(self.root)
+        self.log = io.StringIO()
+        self.start()
+
+    def start(self, **kw):
+        import threading
+        if getattr(self, "server", None):
+            self.server.shutdown()
+            self.server.server_close()
+        self.server = m.make_http_server(0, self.TOKEN, log=self.log, **kw)
+        self.port = self.server.server_address[1]
+        threading.Thread(target=self.server.serve_forever, daemon=True).start()
+
+    def tearDown(self):
+        self.server.shutdown()
+        self.server.server_close()
+        os.environ.clear()
+        os.environ.update(self._saved)
+        self.tmp.cleanup()
+
+    def send(self, body=None, method="POST", path="/mcp", headers=None, raw=None):
+        import http.client
+        h = {"Host": f"127.0.0.1:{self.port}",
+             "Authorization": f"Bearer {self.TOKEN}",
+             "Content-Type": "application/json",
+             "Accept": "application/json, text/event-stream"}
+        for k, v in (headers or {}).items():
+            if v is None:
+                h.pop(k, None)
+            else:
+                h[k] = v
+        data = raw if raw is not None else (None if body is None else json.dumps(body).encode())
+        if data is not None:
+            h.setdefault("Content-Length", str(len(data)))
+        conn = http.client.HTTPConnection("127.0.0.1", self.port, timeout=30)
+        conn.putrequest(method, path, skip_host=True, skip_accept_encoding=True)
+        for k, v in h.items():
+            conn.putheader(k, v)
+        conn.endheaders()
+        if data:
+            conn.send(data)
+        resp = conn.getresponse()
+        text = resp.read().decode()
+        conn.close()
+        return resp, (json.loads(text) if text else None)
+
+    def rpc(self, method, params=None, mid=1, **kw):
+        return self.send({"jsonrpc": "2.0", "id": mid, "method": method,
+                          "params": params or {}}, **kw)
+
+    # --- what gets in -------------------------------------------------------
+
+    def test_initialize_and_a_read_tool_work(self):
+        resp, body = self.rpc("initialize", {"protocolVersion": "2025-06-18"})
+        self.assertEqual(resp.status, 200)
+        self.assertEqual(body["result"]["serverInfo"]["name"], "qet-mcp")
+        self.assertEqual(body["result"]["protocolVersion"], "2025-06-18")
+        resp, body = self.rpc("tools/call", {"name": "qet_project_info",
+                                             "arguments": {"path": str(self.root / "a.qet")}},
+                              headers={"MCP-Protocol-Version": "2025-06-18"})
+        self.assertEqual(resp.status, 200)
+        self.assertEqual(json.loads(body["result"]["content"][0]["text"])["title"], "Over HTTP")
+
+    def test_an_unknown_version_is_answered_with_one_it_speaks(self):
+        _, body = self.rpc("initialize", {"protocolVersion": "2026-07-28"})
+        self.assertIn(body["result"]["protocolVersion"], m.HTTP_SUPPORTED)
+
+    def test_a_notification_gets_202_and_no_body(self):
+        resp, body = self.send({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        self.assertEqual((resp.status, body), (202, None))
+
+    def test_localhost_is_a_valid_host(self):
+        resp, _ = self.rpc("ping", headers={"Host": f"localhost:{self.port}"})
+        self.assertEqual(resp.status, 200)
+
+    # --- what is refused ----------------------------------------------------
+
+    def test_no_token_is_refused(self):
+        resp, body = self.rpc("tools/list", headers={"Authorization": None})
+        self.assertEqual(resp.status, 401)
+        self.assertIn("Bearer", resp.getheader("WWW-Authenticate"))
+        self.assertIsNone(body)
+
+    def test_a_wrong_token_is_refused(self):
+        for bad in ("Bearer " + "u" * 43, "Bearer " + self.TOKEN[:-1], self.TOKEN,
+                    "Basic " + self.TOKEN, "Bearer " + self.TOKEN + "x"):
+            with self.subTest(bad=bad[:12]):
+                resp, _ = self.rpc("tools/list", headers={"Authorization": bad})
+                self.assertEqual(resp.status, 401)
+
+    def test_a_rebound_host_is_refused(self):
+        """DNS rebinding: a hostile name resolved to 127.0.0.1 still sends
+        its own name as Host."""
+        for host in ("evil.example", f"evil.example:{self.port}", "127.0.0.1",
+                     f"127.0.0.1:{self.port + 1}", ""):
+            with self.subTest(host=host):
+                resp, _ = self.rpc("tools/list", headers={"Host": host})
+                self.assertEqual(resp.status, 403)
+
+    def test_a_browser_origin_is_refused_unless_allowed(self):
+        resp, _ = self.rpc("tools/list", headers={"Origin": "https://evil.example"})
+        self.assertEqual(resp.status, 403)
+        self.start(origins=("http://localhost:6274",))
+        resp, _ = self.rpc("tools/list", headers={"Origin": "http://localhost:6274"})
+        self.assertEqual(resp.status, 200)
+        resp, _ = self.rpc("tools/list", headers={"Origin": "http://localhost:6275"})
+        self.assertEqual(resp.status, 403)
+
+    def test_the_gate_comes_before_the_method(self):
+        """GET, OPTIONS and the rest leak nothing without the token either."""
+        resp, _ = self.send(method="GET", headers={"Authorization": None})
+        self.assertEqual(resp.status, 401)
+        for verb in ("GET", "DELETE", "PUT"):
+            with self.subTest(verb=verb):
+                resp, _ = self.send(method=verb)
+                self.assertEqual(resp.status, 405)
+        resp, _ = self.send(method="OPTIONS", headers={"Origin": "https://evil.example",
+                                                       "Authorization": None})
+        self.assertIn(resp.status, (403, 405))
+        self.assertIsNone(resp.getheader("Access-Control-Allow-Origin"))
+
+    def test_other_paths_are_404(self):
+        resp, _ = self.rpc("tools/list", path="/")
+        self.assertEqual(resp.status, 404)
+
+    def test_body_limits(self):
+        resp, _ = self.send(raw=b"x", headers={"Content-Length": str(m.HTTP_MAX_BODY + 1)})
+        self.assertEqual(resp.status, 413)
+        resp, _ = self.rpc("ping", headers={"Content-Type": "text/plain"})
+        self.assertEqual(resp.status, 415)
+        resp, _ = self.rpc("ping", headers={"Accept": "text/html"})
+        self.assertEqual(resp.status, 406)
+        resp, body = self.send(raw=b"{not json")
+        self.assertEqual(resp.status, 400)
+        self.assertEqual(body["error"]["code"], -32700)
+        resp, _ = self.send([{"jsonrpc": "2.0", "id": 1, "method": "ping"}])
+        self.assertEqual(resp.status, 400, "batches are not accepted")
+
+    def test_an_unsupported_protocol_version_is_400_with_no_body(self):
+        resp, body = self.rpc("tools/list", headers={"MCP-Protocol-Version": "2026-07-28"})
+        self.assertEqual((resp.status, body), (400, None))
+
+    # --- what the connection may do -----------------------------------------
+
+    def test_read_only_unless_allowed_to_edit(self):
+        _, body = self.rpc("tools/list")
+        offered = {t["name"] for t in body["result"]["tools"]}
+        self.assertEqual(offered, {"qet_project_info", "qet_elements", "qet_conductors",
+                                   "qet_items", "qet_diff", "qet_scan",
+                                   "qet_element_info", "qet_element_search"})
+        for tool in ("qet_edit", "qet_export", "qet_element_build", "qet_project_new"):
+            with self.subTest(tool=tool):
+                _, body = self.rpc("tools/call", {"name": tool, "arguments": {}})
+                self.assertEqual(body["error"]["code"], -32602)
+        self.start(allow_edit=True)
+        _, body = self.rpc("tools/list")
+        self.assertEqual(len(body["result"]["tools"]), len(m.TOOLS))
+
+    def test_the_workspace_policy_still_applies(self):
+        _, body = self.rpc("tools/call", {"name": "qet_project_info",
+                                          "arguments": {"path": "/etc/passwd"}})
+        self.assertTrue(body["result"]["isError"])
+        self.assertIn("outside the workspace", body["result"]["content"][0]["text"])
+
+    def test_calls_and_refusals_are_logged_without_contents(self):
+        self.rpc("tools/call", {"name": "qet_project_info",
+                                "arguments": {"path": str(self.root / "a.qet"),
+                                              "note": "NOT-FOR-THE-LOG"}})
+        self.rpc("tools/list", headers={"Authorization": None})
+        lines = [json.loads(line) for line in self.log.getvalue().splitlines()]
+        call = next(x for x in lines if x.get("tool") == "qet_project_info")
+        self.assertEqual(call["paths"], {"path": str(self.root / "a.qet")})
+        self.assertTrue(call["ok"])
+        self.assertTrue(any(x.get("reason") == "token" for x in lines))
+        self.assertNotIn("Over HTTP", self.log.getvalue(), "file contents must not be logged")
+        self.assertNotIn(self.TOKEN, self.log.getvalue())
+        self.assertNotIn("NOT-FOR-THE-LOG", self.log.getvalue(), "only paths are logged")
+
+    def test_bound_to_loopback_and_quiet_about_itself(self):
+        self.assertEqual(self.server.server_address[0], "127.0.0.1")
+        resp, _ = self.rpc("ping")
+        self.assertNotIn("Python", resp.getheader("Server") or "")
+        self.assertIsNone(resp.getheader("Access-Control-Allow-Origin"))
+        self.assertIsNone(resp.getheader("Mcp-Session-Id"))
+
+
+class HttpToken(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self._saved = dict(os.environ)
+        self.path = Path(self.tmp.name) / "cfg" / "token"
+        os.environ["QET_MCP_TOKEN_FILE"] = str(self.path)
+
+    def tearDown(self):
+        os.environ.clear()
+        os.environ.update(self._saved)
+        self.tmp.cleanup()
+
+    def test_created_owner_only_and_reused(self):
+        tok = m.load_token()
+        self.assertGreaterEqual(len(tok), 43)
+        if os.name != "nt":
+            self.assertEqual(self.path.stat().st_mode & 0o777, 0o600)
+        self.assertEqual(m.load_token(), tok)
+        self.assertNotEqual(m.load_token(renew=True), tok)
+
+    @unittest.skipIf(os.name == "nt", "POSIX permissions")
+    def test_a_token_others_can_read_is_refused(self):
+        m.load_token()
+        self.path.chmod(0o644)
+        with self.assertRaisesRegex(ValueError, "can be read by other users"):
+            m.load_token()
+
+    def test_http_needs_an_explicit_workspace(self):
+        env = dict(os.environ)
+        env.pop("QET_MCP_WORKSPACE", None)
+        env.pop("QET_MCP_ALLOW_ANY_PATH", None)
+        proc = subprocess.run([sys.executable, str(HERE / "qet_mcp.py"), "--http", "0"],
+                              env=env, capture_output=True, text=True, timeout=30)
+        self.assertEqual(proc.returncode, 2)
+        self.assertIn("QET_MCP_WORKSPACE", proc.stderr)
+        self.assertFalse(self.path.exists(), "no token is made for a server that did not start")
+
+    def test_the_real_command_serves_and_refuses(self):
+        """End to end: qet_mcp.py --http in its own process."""
+        import http.client
+        import socket
+        with socket.socket() as sock:
+            sock.bind(("127.0.0.1", 0))
+            port = sock.getsockname()[1]
+        env = dict(os.environ, QET_MCP_WORKSPACE=self.tmp.name)
+        proc = subprocess.Popen([sys.executable, str(HERE / "qet_mcp.py"), "--http", str(port)],
+                                env=env, stderr=subprocess.PIPE, text=True)
+        try:
+            banner = proc.stderr.readline()
+            self.assertIn(f"http://127.0.0.1:{port}/mcp", banner)
+            self.assertIn("read-only", banner)
+            tok = self.path.read_text().strip()
+            body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "initialize",
+                               "params": {"protocolVersion": "2025-06-18"}})
+            for auth, want in ((f"Bearer {tok}", 200), ("Bearer nope", 401)):
+                conn = http.client.HTTPConnection("127.0.0.1", port, timeout=30)
+                conn.request("POST", "/mcp", body, {"Authorization": auth,
+                                                    "Content-Type": "application/json"})
+                self.assertEqual(conn.getresponse().status, want)
+                conn.close()
+        finally:
+            proc.terminate()
+            proc.wait(timeout=10)
+            proc.stderr.close()
+
+
 class ScriptingDisabledHint(unittest.TestCase):
     """QElectroTech may refuse to run scripts at all, and says so in French.
 

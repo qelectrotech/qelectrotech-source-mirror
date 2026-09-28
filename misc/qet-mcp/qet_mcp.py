@@ -3348,7 +3348,13 @@ def _public(tool: dict) -> dict:
     return {k: v for k, v in tool.items() if k != "handler"}
 
 
-def handle(msg: dict) -> dict | None:
+def handle(msg: dict, allowed: set | None = None) -> dict | None:
+    """Answer one JSON-RPC message.
+
+    allowed, when given, is the set of tool names this connection may see
+    and call; the rest are left out of tools/list and answered as unknown,
+    so a client is never shown a tool it cannot use. None means all.
+    """
     method = msg.get("method")
     mid = msg.get("id")
 
@@ -3367,13 +3373,14 @@ def handle(msg: dict) -> dict | None:
         return _ok(mid, {})
 
     if method == "tools/list":
-        return _ok(mid, {"tools": [_public(t) for t in TOOLS]})
+        return _ok(mid, {"tools": [_public(t) for t in TOOLS
+                                   if allowed is None or t["name"] in allowed]})
 
     if method == "tools/call":
         params = msg.get("params") or {}
         name = params.get("name")
         tool = _BY_NAME.get(name)
-        if tool is None:
+        if tool is None or (allowed is not None and name not in allowed):
             return _err(mid, -32602, f"unknown tool: {name}")
         try:
             arguments = params.get("arguments") or {}
@@ -3452,6 +3459,275 @@ def call_once(argv: list[str], stdin=sys.stdin, stdout=sys.stdout,
     return 1 if result.get("isError") else 0
 
 
+# --------------------------------------------------------------------------
+# HTTP transport (--http)
+# --------------------------------------------------------------------------
+#
+# MCP's Streamable HTTP, in the form clients negotiate with an "initialize"
+# request (protocol 2025-03-26 to 2025-11-25). Clients on the 2026-07-28
+# revision fall back to it when a request in their own form is answered 400
+# with no JSON-RPC body, which is what an unsupported MCP-Protocol-Version
+# gets here. No sessions are minted, and there is no GET stream: every
+# request is one POST answered with one JSON object.
+#
+# Everything a stdio client can do goes through handle(), so the workspace,
+# executable and overwrite policies apply unchanged. On top of that, a
+# network listener has callers stdio never has -- a web page in the user's
+# own browser, another program on the machine -- so each request must pass,
+# in this order, before its body is even read:
+#
+#   Host      127.0.0.1:<port> or localhost:<port>; anything else is a DNS
+#             rebinding attempt (a hostile name resolved to 127.0.0.1) -> 403
+#   Origin    absent (not a browser) or explicitly allowed -> else 403
+#   token     "Authorization: Bearer <token>", compared in constant time;
+#             the token lives in a file only its owner can read -> else 401
+#   size      Content-Length present and at most HTTP_MAX_BODY -> else 413
+#
+# The listener binds 127.0.0.1 and nothing else. There is no option to
+# change that: anything that must reach it from elsewhere (a tunnel) runs
+# on this machine too.
+
+HTTP_SUPPORTED = ("2025-03-26", "2025-06-18", "2025-11-25")
+HTTP_DEFAULT_PORT = 8731
+HTTP_MAX_BODY = 1 << 20
+HTTP_PATH = "/mcp"
+
+
+def read_only_tools() -> set:
+    """Tools that neither launch QElectroTech nor write a file."""
+    return {t["name"] for t in TOOLS
+            if t["name"] not in _LAUNCHES_QET
+            and not _DATA_PATHS.get(t["name"], {}).get("write")}
+
+
+def token_file() -> Path:
+    """Where the HTTP token is kept: QET_MCP_TOKEN_FILE, else the user's
+    configuration directory."""
+    env = os.environ.get("QET_MCP_TOKEN_FILE", "").strip()
+    if env:
+        return Path(env).expanduser()
+    if os.name == "nt":
+        base = Path(os.environ.get("APPDATA") or Path.home() / "AppData" / "Roaming")
+    elif sys.platform == "darwin":
+        base = Path.home() / "Library" / "Application Support"
+    else:
+        base = Path(os.environ.get("XDG_CONFIG_HOME") or Path.home() / ".config")
+    return base / "qet-mcp" / "token"
+
+
+def load_token(renew: bool = False) -> str:
+    """The HTTP token, created on first use.
+
+    32 random bytes, written with owner-only permissions. A token file that
+    others can read is refused rather than used, as ssh does with a key:
+    anyone who can read it can use the server.
+    """
+    import secrets
+    path = token_file()
+    if path.exists() and not renew:
+        if os.name != "nt" and path.stat().st_mode & 0o077:
+            raise ValueError(
+                f"{path} can be read by other users; run "
+                f"chmod 600 '{path}', or --new-token to replace it")
+        tok = path.read_text(encoding="ascii").strip()
+        if len(tok) >= 32:
+            return tok
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tok = secrets.token_urlsafe(32)
+    tmp = path.with_name(path.name + ".new")
+    if tmp.exists():
+        tmp.unlink()
+    fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "w", encoding="ascii") as fh:
+        fh.write(tok + "\n")
+    os.replace(tmp, path)
+    return tok
+
+
+def _log(stream, **fields) -> None:
+    """One line per event: what was asked, never what a file contains."""
+    import time
+    fields = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), **fields}
+    print(json.dumps(fields, ensure_ascii=False), file=stream, flush=True)
+
+
+def make_http_server(port: int, token: str, allow_edit: bool = False,
+                     origins: tuple = (), log=sys.stderr):
+    """A ThreadingHTTPServer on 127.0.0.1:port answering MCP at /mcp.
+
+    port 0 picks a free one; the bound port is server.server_address[1].
+    """
+    import hmac
+    import threading
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+    allowed = None if allow_edit else read_only_tools()
+    expected = ("Bearer " + token).encode("ascii")
+    origins = {o.rstrip("/") for o in origins}
+    one_at_a_time = threading.Lock()
+
+    class Handler(BaseHTTPRequestHandler):
+        server_version = SERVER_NAME
+        sys_version = ""
+        timeout = 30  # seconds to send a request; a tool call has its own
+
+        def log_message(self, fmt, *args):  # replaced by _log
+            pass
+
+        def _reply(self, code, body=None, extra=()):
+            data = b"" if body is None else json.dumps(body, ensure_ascii=False).encode("utf-8")
+            self.send_response(code)
+            if body is not None:
+                self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            for k, v in extra:
+                self.send_header(k, v)
+            self.end_headers()
+            if data:
+                self.wfile.write(data)
+
+        def _refuse(self, code, why, extra=()):
+            _log(log, event="refused", status=code, reason=why,
+                 method=self.command, path=self.path)
+            self._reply(code, None, extra)
+
+        def _gate(self) -> bool:
+            """Host, Origin and token, before anything else is looked at."""
+            port_ = self.server.server_address[1]
+            host = self.headers.get("Host", "")
+            if host not in (f"127.0.0.1:{port_}", f"localhost:{port_}"):
+                self._refuse(403, "host")
+                return False
+            origin = self.headers.get("Origin")
+            if origin is not None and origin.rstrip("/") not in origins:
+                self._refuse(403, "origin")
+                return False
+            got = self.headers.get("Authorization", "").encode("utf-8", "replace")
+            if not hmac.compare_digest(got, expected):
+                self._refuse(401, "token", [("WWW-Authenticate", 'Bearer realm="qet-mcp"')])
+                return False
+            return True
+
+        def do_GET(self):
+            if self._gate():
+                self._refuse(405, "method", [("Allow", "POST")])
+
+        do_DELETE = do_PUT = do_PATCH = do_GET
+
+        def do_OPTIONS(self):
+            # No CORS: a browser preflight gets nothing it could act on.
+            self._refuse(405, "method", [("Allow", "POST")])
+
+        def do_POST(self):
+            if not self._gate():
+                return
+            if self.path.split("?", 1)[0] != HTTP_PATH:
+                self._refuse(404, "path")
+                return
+            try:
+                length = int(self.headers.get("Content-Length", ""))
+            except ValueError:
+                self._refuse(411, "length")
+                return
+            if length < 0 or length > HTTP_MAX_BODY:
+                self._refuse(413, "size")
+                return
+            ctype = self.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+            if ctype != "application/json":
+                self._refuse(415, "content-type")
+                return
+            accept = self.headers.get("Accept")
+            if accept is not None and not any(
+                    a.split(";", 1)[0].strip() in ("application/json", "application/*", "*/*")
+                    for a in accept.split(",")):
+                self._refuse(406, "accept")
+                return
+            try:
+                msg = json.loads(self.rfile.read(length).decode("utf-8"))
+            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                self._reply(400, _err(None, -32700, f"parse error: {exc}"))
+                return
+            if not isinstance(msg, dict):
+                self._reply(400, _err(None, -32600, "one JSON-RPC message per request"))
+                return
+
+            method = msg.get("method")
+            version = self.headers.get("MCP-Protocol-Version")
+            if method != "initialize" and version is not None \
+                    and version not in HTTP_SUPPORTED:
+                # No body: a 2026-07-28 client reads that as "fall back to
+                # initialize", which this server does support.
+                self._refuse(400, f"protocol version {version}")
+                return
+            if method is None:
+                self._reply(202)  # a response from the client: nothing to do
+                return
+            if method == "initialize":
+                params = dict(msg.get("params") or {})
+                if params.get("protocolVersion") not in HTTP_SUPPORTED:
+                    params["protocolVersion"] = HTTP_SUPPORTED[-1]
+                msg = dict(msg, params=params)
+
+            fields = {"event": "call", "method": method}
+            if method == "tools/call":
+                params = msg.get("params") or {}
+                fields["tool"] = params.get("name")
+                args = params.get("arguments") or {}
+                spec = _DATA_PATHS.get(params.get("name"), {})
+                names = tuple(spec.get("read", ())) + tuple(spec.get("write", ()))
+                fields["paths"] = {k: args[k] for k in names if isinstance(args.get(k), str)}
+            with one_at_a_time:
+                reply = handle(msg, allowed)
+            if reply is None:
+                _log(log, **fields)
+                self._reply(202)
+                return
+            result = reply.get("result") or {}
+            fields["ok"] = "error" not in reply and not result.get("isError")
+            _log(log, **fields)
+            self._reply(200, reply)
+
+    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+
+
+def serve_http(argv: list) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(prog="qet_mcp.py --http",
+                                 description="Serve MCP over HTTP on 127.0.0.1.")
+    ap.add_argument("port", nargs="?", type=int, default=HTTP_DEFAULT_PORT)
+    ap.add_argument("--allow-edit", action="store_true",
+                    help="offer every tool, not only the read-only ones")
+    ap.add_argument("--allow-origin", action="append", default=[], metavar="ORIGIN",
+                    help="a browser origin allowed to call, e.g. http://localhost:6274")
+    a = ap.parse_args(argv)
+    # Over stdio an unset workspace means the directory the client started
+    # the server in. A listener is started by hand, often from the home
+    # directory, so it must be told where the drawings are.
+    if not os.environ.get("QET_MCP_WORKSPACE", "").strip() \
+            and os.environ.get("QET_MCP_ALLOW_ANY_PATH") != "1":
+        print("qet-mcp: set QET_MCP_WORKSPACE to the folder of your drawings "
+              "before starting --http", file=sys.stderr)
+        return 2
+    try:
+        token = load_token()
+    except (OSError, ValueError) as exc:
+        print(f"qet-mcp: {exc}", file=sys.stderr)
+        return 2
+    server = make_http_server(a.port, token, a.allow_edit, tuple(a.allow_origin))
+    tools = "all tools" if a.allow_edit else "read-only tools (--allow-edit for all)"
+    print(f"qet-mcp: http://127.0.0.1:{server.server_address[1]}{HTTP_PATH}, "
+          f"{tools}; token in {token_file()}", file=sys.stderr, flush=True)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.server_close()
+    return 0
+
+
 def main() -> int:
     if len(sys.argv) > 1 and sys.argv[1] in ("--list", "-l"):
         for t in TOOLS:
@@ -3459,6 +3735,15 @@ def main() -> int:
         return 0
     if len(sys.argv) > 1 and sys.argv[1] == "--call":
         return call_once(sys.argv[2:])
+    if len(sys.argv) > 1 and sys.argv[1] == "--http":
+        return serve_http(sys.argv[2:])
+    if len(sys.argv) > 1 and sys.argv[1] in ("--show-token", "--new-token"):
+        try:
+            print(load_token(renew=sys.argv[1] == "--new-token"))
+        except (OSError, ValueError) as exc:
+            print(f"qet-mcp: {exc}", file=sys.stderr)
+            return 2
+        return 0
     serve()
     return 0
 

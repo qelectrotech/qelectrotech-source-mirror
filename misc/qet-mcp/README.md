@@ -142,6 +142,48 @@ tools that read files work there: `qet_project_info`, `qet_elements`,
 `qet_conductors`, `qet_items`, `qet_diff`, `qet_scan`,
 `qet_element_info`, `qet_element_search` and `qet_element_build`.
 
+## Over HTTP
+
+Some assistants connect to a server by web address rather than starting it
+themselves. `--http` serves the same tools on this computer only:
+
+```bash
+export QET_MCP_WORKSPACE=/home/you/drawings
+python3 qet_mcp.py --http            # http://127.0.0.1:8731/mcp
+python3 qet_mcp.py --show-token      # the token a client must send
+```
+
+The client sends `Authorization: Bearer <token>` with every request. Its
+setup usually has a "headers" field for it.
+
+| | |
+|---|---|
+| `--http [PORT]` | serve on `127.0.0.1:PORT` (default 8731). It never listens on any other address |
+| `--allow-edit` | offer every tool. Without it only the eight that read a file are offered: `qet_project_info`, `qet_elements`, `qet_conductors`, `qet_items`, `qet_diff`, `qet_scan`, `qet_element_info`, `qet_element_search` |
+| `--allow-origin ORIGIN` | a web page origin allowed to call, for a client that runs in a browser (repeatable) |
+| `--show-token` / `--new-token` | print the token / replace it, which cuts off every client using the old one |
+| `QET_MCP_TOKEN_FILE` | where the token is kept. Default: `~/.config/qet-mcp/token`, `%APPDATA%\qet-mcp\token` on Windows, `~/Library/Application Support/qet-mcp/token` on macOS |
+
+What it refuses, before reading a request:
+
+- a `Host` other than `127.0.0.1:PORT` or `localhost:PORT`. That is how a web
+  page tries to reach a local server through a name of its own (DNS
+  rebinding);
+- an `Origin` that was not allowed, so a web page you visit cannot call it;
+- a missing or wrong token. The token file is created readable by you only.
+  If others can read it, the server refuses to use it;
+- a body over 1 MB, or one that is not JSON.
+
+`QET_MCP_WORKSPACE` must be set: a server started by hand from your home
+folder would otherwise serve all of it. Every call is logged to standard
+error: the tool and the paths it was given, never file contents or the
+token.
+
+It speaks the protocol versions that begin with `initialize`
+(2025-03-26 to 2025-11-25). Clients on the newer revision fall back to it.
+There are no sessions and no event stream. Each request is one POST
+answered with one JSON object.
+
 ## Five tools need scripting switched on
 
 A QElectroTech with JavaScript scripting switched off refuses `--run`, and
