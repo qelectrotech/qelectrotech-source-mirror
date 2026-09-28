@@ -483,6 +483,7 @@ class QetScriptApi : public QObject
 
 		// -- a BOM/nomenclature or summary table placed on a folio --
 		Q_INVOKABLE QStringList tables(int folioIndex) const;
+		Q_INVOKABLE int tableIndex(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE int addTable(int folioIndex, const QString &kind, const QString &name,
 								 const QString &query);
 		Q_INVOKABLE bool deleteTable(int folioIndex, int tableIndex);
@@ -508,6 +509,8 @@ class QetScriptApi : public QObject
 
 		// -- the text fields shown on a symbol (label, terminal names, ...) --
 		Q_INVOKABLE QStringList elementTexts(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int elementTextIndex(int folioIndex, const QString &elementUuid,
+						 const QString &textUuid) const;
 		Q_INVOKABLE int addElementText(int folioIndex, const QString &elementUuid,
 									   const QString &source, const QString &value,
 									   double x, double y);

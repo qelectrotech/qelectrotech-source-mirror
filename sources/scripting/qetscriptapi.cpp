@@ -2891,6 +2891,27 @@ int QetScriptApi::imageIndex(int folioIndex, const QString &uuid) const
 	return indexOfUuid(sortedImages(folioIndex), uuid);
 }
 
+/// @brief QetScriptApi::tableIndex as textIndex(), for tables(folioIndex).
+int QetScriptApi::tableIndex(int folioIndex, const QString &uuid) const
+{
+	return indexOfUuid(sortedTables(folioIndex), uuid);
+}
+
+/**
+	@brief QetScriptApi::elementTextIndex
+	The current index in elementTexts() of the text field carrying
+	@p textUuid, on the element @p elementUuid, or -1.
+	A field's uuid is unique only within its element: copying an element
+	keeps its fields' uuids, so the element is part of the address.
+*/
+int QetScriptApi::elementTextIndex(int folioIndex, const QString &elementUuid,
+				   const QString &textUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return -1;
+	return indexOfUuid(element->dynamicTextItems(), textUuid);
+}
+
 /**
 	@brief QetScriptApi::addImage
 	Place a picture from a file, as the "add image" tool does after its file

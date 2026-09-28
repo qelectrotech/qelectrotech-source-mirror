@@ -2775,6 +2775,76 @@ class PlcIntegration(unittest.TestCase):
 
 
 @needs_examples
+class UuidIndexLookups(unittest.TestCase):
+    """qet.tableIndex() and qet.elementTextIndex(): a uuid in, the index the
+    other calls take out, as qet.textIndex() does for free texts. The index is
+    what shifts when an earlier item is deleted; the uuid is what holds."""
+
+    def run_script(self, project, body):
+        r = m._run_qet(BINARY, [str(project)], elements_dir=ELEMENTS or None,
+                       script=body + '\nqet.log("OUT " + JSON.stringify(out));', tail=200_000)
+        line = next((ln for ln in (r["stdout"] + "\n" + r["stderr"]).splitlines() if "OUT " in ln), None)
+        self.assertIsNotNone(line, r.get("stderr", "")[-500:])
+        return json.loads(line.split("OUT ", 1)[1])
+
+    def test_table_index_follows_the_table_across_a_deletion(self):
+        root = ET.parse(Path(EXAMPLES) / "industrial.qet").getroot()
+        folio, table = next((i, d.find("tables/graphics_table")) for i, d in enumerate(root.iter("diagram"))
+                            if d.find("tables/graphics_table") is not None)
+        twin = ET.fromstring(ET.tostring(table))
+        twin.set("uuid", "{11111111-2222-4333-8444-555555555555}")
+        twin.set("x", str(float(table.get("x")) + 900))
+        list(root.iter("diagram"))[folio].find("tables").append(twin)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "two_tables.qet"
+            ET.ElementTree(root).write(p, encoding="utf-8")
+            first, second = table.get("uuid"), twin.get("uuid")
+            out = self.run_script(p, f"""
+                var out = {{}};
+                out.first = qet.tableIndex({folio}, "{first}");
+                out.second = qet.tableIndex({folio}, "{second}");
+                out.bogus = qet.tableIndex({folio}, "{{00000000-0000-4000-8000-000000000000}}");
+                out.not_uuid = qet.tableIndex({folio}, "table");
+                out.list = qet.tables({folio});
+                qet.deleteTable({folio}, out.first);
+                out.second_after = qet.tableIndex({folio}, "{second}");
+                out.first_after = qet.tableIndex({folio}, "{first}");""")
+        self.assertEqual(sorted([out["first"], out["second"]]), [0, 1])
+        # each index names the right table: the twin sits 900 further right
+        at = lambda i: float(re.search(r"at \(([-\d.]+),", out["list"][i]).group(1))
+        self.assertEqual(at(out["second"]) - at(out["first"]), 900)
+        self.assertEqual((out["bogus"], out["not_uuid"]), (-1, -1))
+        self.assertEqual((out["second_after"], out["first_after"]), (0, -1))
+
+    def test_element_text_index_needs_the_element_as_well(self):
+        """Copies of a symbol share their text fields' uuids (2612_ats_singlephase.qet):
+        the same field uuid resolves on each copy to that copy's own field."""
+        root = ET.parse(Path(EXAMPLES) / "2612_ats_singlephase.qet").getroot()
+        owners = {}
+        for i, d in enumerate(root.iter("diagram")):
+            for el in d.iter("element"):
+                for t in el.iter("dynamic_elmt_text"):
+                    if t.get("uuid"):
+                        owners.setdefault((i, t.get("uuid")), []).append((el.get("uuid"), t.findtext("text")))
+        (folio, field), copies = next((k, v) for k, v in owners.items()
+                                      if len(v) >= 2 and len({s for _, s in v}) >= 2)
+        (a, shows_a), (b, shows_b) = copies[:2]
+        out = self.run_script(Path(EXAMPLES) / "2612_ats_singlephase.qet", f"""
+            var out = {{}};
+            out.ia = qet.elementTextIndex({folio}, "{a}", "{field}");
+            out.ib = qet.elementTextIndex({folio}, "{b}", "{field}");
+            out.la = qet.elementTexts({folio}, "{a}");
+            out.lb = qet.elementTexts({folio}, "{b}");
+            out.bogus = qet.elementTextIndex({folio}, "{a}", "{{00000000-0000-4000-8000-000000000000}}");
+            out.no_element = qet.elementTextIndex({folio}, "{{00000000-0000-4000-8000-000000000001}}", "{field}");""")
+        self.assertGreaterEqual(out["ia"], 0)
+        self.assertGreaterEqual(out["ib"], 0)
+        self.assertIn(f"shows='{shows_a}'", out["la"][out["ia"]])
+        self.assertIn(f"shows='{shows_b}'", out["lb"][out["ib"]])
+        self.assertEqual((out["bogus"], out["no_element"]), (-1, -1))
+
+
+@needs_examples
 class CorpusIntegration(unittest.TestCase):
     def test_conductor_keys_never_collide_across_the_shipped_examples(self):
         """Keying on terminal geometry alone merged nine distinct conductors
