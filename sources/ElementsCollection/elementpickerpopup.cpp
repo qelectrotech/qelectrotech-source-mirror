@@ -45,13 +45,34 @@
 #include <limits>
 
 #include "../qetapp.h"
+#include "../qetpalette.h"
 #include "../shortcutmanager.h"
+#include "elementpreviewdelegate.h"
 #include "elementslocation.h"
 
 	//The palette is read from disk each time the picker opens. It is meant as
 	//a shortlist, and a large custom collection would otherwise make opening
 	//slow and the grid unusable.
 static const int max_palette_entries = 60;
+
+/**
+	@brief elementIcon
+	@return the element preview @a icon, adapted to @a widget's palette at
+	@a size. The shortcut bar and its editor mix these with command icons,
+	which already follow the palette through the icon theme, so the
+	element icons are adapted once here rather than by an
+	ElementPreviewDelegate over the whole list. An item dragged from one
+	list to another keeps its adapted icon.
+*/
+static QIcon elementIcon(const QIcon &icon, const QSize &size, const QWidget *widget)
+{
+	if (icon.isNull() || !QET::Palette::isDark(widget->palette())) {
+		return icon;
+	}
+	return QIcon(QET::Palette::forPalette(
+		icon.pixmap(size, widget->devicePixelRatio()),
+		widget->palette()));
+}
 
 /**
 	@brief ElementPickerPopup::ElementPickerPopup
@@ -217,6 +238,8 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_model = new QStandardItemModel(this);
 	m_view = new QListView(this);
 	m_view->setModel(m_model);
+		//Element previews are black line art; adapt them to a dark palette
+	m_view->setItemDelegate(new ElementPreviewDelegate(m_view));
 	m_view->setIconSize(QSize(40, 40));
 	m_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 	m_view->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -378,7 +401,7 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 			auto *button = new QToolButton(m_commands);
 			button->setAutoRaise(true);
 			button->setIconSize(QSize(24, 24));
-			button->setIcon(location.icon());
+			button->setIcon(elementIcon(location.icon(), QSize(24, 24), this));
 			button->setToolTip(location.name());
 			button->setFocusPolicy(Qt::NoFocus);
 			connect(button, &QToolButton::clicked, this, [this, location]() {
@@ -542,7 +565,7 @@ QListWidgetItem *ElementPickerPopup::barItem(const QString &id, bool icon_only) 
 		const ElementsLocation location(id);
 		if (location.exist()) {
 			text = location.name();
-			icon = location.icon();
+			icon = elementIcon(location.icon(), QSize(24, 24), this);
 		}
 	} else if (QAction *action = commandAction(id)) {
 		text = action->text().remove(QLatin1Char('&'));
@@ -632,7 +655,8 @@ void ElementPickerPopup::runSymbolSearch()
 		if (ElementsLocation(hit.path).isProject()) {
 			continue;
 		}
-		auto *item = new QListWidgetItem(hit.icon, hit.name);
+		auto *item = new QListWidgetItem(
+			elementIcon(hit.icon, m_edit_symbols->iconSize(), this), hit.name);
 		item->setData(Qt::UserRole, hit.path);
 		item->setToolTip(QStringLiteral("%1\n%2").arg(hit.name, hit.folder));
 		m_edit_symbols->addItem(item);
