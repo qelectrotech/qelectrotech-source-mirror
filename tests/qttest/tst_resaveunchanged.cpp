@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QRegularExpression>
 #include <QTemporaryDir>
 
 // Saving a project that was just saved must change nothing. Two things
@@ -16,7 +17,8 @@
 //  - information values were trimmed on save but not on load, so a label
 //    with stray spaces kept them in its displayed copy until the project
 //    was opened again (m_000.qet).
-// Runs the real binary's --resave twice on each example.
+// Runs the real binary's --resave twice on every example, and on a
+// project whose title block holds a value that is a single space (#973).
 class tst_resaveunchanged : public QObject
 {
 	Q_OBJECT
@@ -56,23 +58,61 @@ private slots:
 		QVERIFY(QFile::exists(QStringLiteral(QET_TEST_BINARY_PATH)));
 	}
 
+	// Projet_vierge.qet has empty information values, m_000.qet values
+	// with stray spaces; every other example is here so a new cause shows.
 	void secondSaveChangesNothing_data()
 	{
 		QTest::addColumn<QString>("project");
-		QTest::newRow("empty information values") << QStringLiteral("Projet_vierge.qet");
-		QTest::newRow("information values with stray spaces") << QStringLiteral("m_000.qet");
+		const QDir examples(QStringLiteral(QET_EXAMPLES_DIR));
+		const QStringList projects =
+				examples.entryList({QStringLiteral("*.qet")}, QDir::Files, QDir::Name);
+		QVERIFY(!projects.isEmpty());
+		for (const QString &project : projects)
+			QTest::newRow(project.toUtf8().constData()) << examples.filePath(project);
 	}
 
 	void secondSaveChangesNothing()
 	{
 		QFETCH(QString, project);
-		const QString first = resave(QStringLiteral(QET_EXAMPLES_DIR "/") + project);
+		const QString first = resave(project);
 		QVERIFY2(!first.isEmpty(), "first --resave failed");
 		const QString second = resave(first);
 		QVERIFY2(!second.isEmpty(), "second --resave failed");
 		const QByteArray a = read(first), b = read(second);
 		QVERIFY(!a.isEmpty());
 		QVERIFY2(a == b, "the second save changed the file");
+	}
+
+	// A title-block value that is a single space is kept through two saves
+	// (#973), and a value with accents comes back as it went in.
+	void singleSpaceValueKept()
+	{
+		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/Projet_vierge.qet"));
+		QVERIFY(xml.contains("<properties>"));
+		xml.replace("<properties>",
+					"<properties>"
+					"<property show=\"1\" name=\"space\"> </property>"
+					"<property show=\"1\" name=\"accents\">Armoire façade été</property>");
+		const QString in = m_dir.filePath(QStringLiteral("space.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(xml);
+		f.close();
+
+		const QString first = resave(in);
+		QVERIFY2(!first.isEmpty(), "first --resave failed");
+		const QString second = resave(first);
+		QVERIFY2(!second.isEmpty(), "second --resave failed");
+		const QByteArray a = read(first), b = read(second);
+		QVERIFY2(a == b, "the second save changed the file");
+
+		const QString saved = QString::fromUtf8(b);
+		QVERIFY2(saved.contains(QRegularExpression(
+					 QStringLiteral("<property [^>]*name=\"space\"[^>]*> </property>"))),
+				 "the single-space value was lost");
+		QVERIFY2(saved.contains(QRegularExpression(
+					 QStringLiteral("<property [^>]*name=\"accents\"[^>]*>Armoire façade été</property>"))),
+				 "the accented value changed");
 	}
 };
 
