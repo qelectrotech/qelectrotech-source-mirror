@@ -328,3 +328,73 @@ target_include_directories(tst_conductorselfretrace PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
+# conductors by uuid and finds each one's two ends. Runs a script through
+# the real binary's --run on fixtures/qet_bug_repro_resaved.qet, so only
+# where --run exists: a build without the Qt Qml module has no scripting
+# (see QET_HAS_SCRIPTING in the top-level CMakeLists.txt).
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_scriptconductoruuid
+    tst_scriptconductoruuid.cpp)
+  add_test(NAME tst_scriptconductoruuid COMMAND tst_scriptconductoruuid)
+  add_dependencies(tst_scriptconductoruuid qelectrotech)
+  target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptconductoruuid PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
+
+# A symbol saved without a uuid gets the same one on every load, and
+# inserting a folio does not change it. Runs the real binary's --resave on
+# fixtures/qet_bug_repro_resaved.qet with the symbols' uuids stripped.
+add_executable(
+  tst_derivedsymboluuid
+  tst_derivedsymboluuid.cpp)
+add_test(NAME tst_derivedsymboluuid COMMAND tst_derivedsymboluuid)
+add_dependencies(tst_derivedsymboluuid qelectrotech)
+target_link_libraries(tst_derivedsymboluuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_derivedsymboluuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# A wire saved without a uuid gets one derived from its two ends: the same
+# on every load, saved, and unchanged by inserting a folio, reordering the
+# wires or drawing a wire the other way. Runs the real binary's --resave on
+# a fixture and on examples/tremie_vibrante.qet (ends by terminal number).
+add_executable(
+  tst_derivedwireuuid
+  tst_derivedwireuuid.cpp)
+add_test(NAME tst_derivedwireuuid COMMAND tst_derivedwireuuid)
+add_dependencies(tst_derivedwireuuid qelectrotech)
+target_link_libraries(tst_derivedwireuuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_derivedwireuuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# Saving a project that was just saved changes nothing: runs the real
+# binary's --resave twice on every project in examples/, and on one whose
+# title block holds a single-space value (#973).
+
+add_executable(
+  tst_resaveunchanged
+  tst_resaveunchanged.cpp)
+add_test(NAME tst_resaveunchanged COMMAND tst_resaveunchanged)
+add_dependencies(tst_resaveunchanged qelectrotech)
+target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test)
+target_compile_definitions(tst_resaveunchanged PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# DiagramContext::fromXml() -- the two readers (QDom for projects, pugixml
+# for element definitions in the collection) give the same values: stray
+# spaces trimmed, accents kept.
+add_executable(
+  tst_diagramcontext
+  tst_diagramcontext.cpp
+  ${QET_DIR}/sources/diagramcontext.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_diagramcontext COMMAND tst_diagramcontext)
+target_include_directories(tst_diagramcontext PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramcontext PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)

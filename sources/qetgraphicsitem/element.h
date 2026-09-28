@@ -245,6 +245,7 @@ class Element : public QetGraphicsItem
 		QString linkTypeToString() const;
 
 		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
+		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);

@@ -25,6 +25,7 @@
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
 #include "qetgraphicsitem/conductor.h"
+#include "itemgroups.h"
 #include "commandsearchpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -2078,7 +2079,17 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
         }
 	else if (value == "rotate_selection")
 	{
-		RotateSelectionCommand *c = new RotateSelectionCommand(diagram);
+			//A selection that is exactly one whole group turns as one piece,
+			//as "Pivoter le groupe" does, rather than each member in place
+			//(discussion #1070). Wires follow their symbols either way.
+		QList<QGraphicsItem *> members;
+		for (QGraphicsItem *item : diagram->selectedItems()) {
+			if (item->type() != Conductor::Type) {
+				members << item;
+			}
+		}
+		const bool whole_group = !ItemGroups::soleWholeGroup(members).isNull();
+		RotateSelectionCommand *c = new RotateSelectionCommand(diagram, 90, nullptr, whole_group);
 		if(c->isValid())
 			diagram->undoStack().push(c);
 	}

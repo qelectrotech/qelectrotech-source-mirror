@@ -63,6 +63,47 @@ QUuid ItemGroups::read(const QDomElement &xml)
 }
 
 /**
+	@return @a item, or its nearest ancestor, that belongs to a group -- a
+	click on a symbol's own text hits the text, but the symbol is the member
+	-- or nullptr if none does.
+*/
+QGraphicsItem *ItemGroups::groupedItem(QGraphicsItem *item)
+{
+	for (; item; item = item->parentItem()) {
+		if (!groupOf(item).isNull()) {
+			return item;
+		}
+	}
+	return nullptr;
+}
+
+/**
+	@return the member a click on @a hit may pick out on its own: the grouped
+	item hit, when every member of its group is selected already. A first
+	click selects the whole group; a second click, on a member of the group
+	it selected, is how the user asks for that member alone (discussion
+	#1070). nullptr when the click is not that.
+*/
+QGraphicsItem *ItemGroups::memberToPick(QGraphicsItem *hit)
+{
+	QGraphicsItem *member = groupedItem(hit);
+	if (!member || !member->isSelected() || !member->scene()) {
+		return nullptr;
+	}
+	const QUuid group = groupOf(member);
+	int members = 0;
+	for (QGraphicsItem *item : member->scene()->items()) {
+		if (groupOf(item) == group) {
+			if (!item->isSelected()) {
+				return nullptr;
+			}
+			++members;
+		}
+	}
+	return members > 1 ? member : nullptr;
+}
+
+/**
 	Make the selection of @a scene whole groups again after it changed.
 	A group with a selected member is selected entirely, except when the
 	change took members of an entirely selected group out of the selection
@@ -121,4 +162,35 @@ bool ItemGroups::completeSelection(QGraphicsScene *scene,
 		}
 	}
 	return changed;
+}
+
+/**
+	@return the group @a selected is exactly, whole -- every item in it
+	belongs to that group and every member of the group is in it -- or a null
+	uuid. Rotating such a selection turns the group as one piece rather than
+	each member in place (discussion #1070). A member picked out on its own
+	is not a whole group, and turns in place.
+	@param selected : the selected items that can be members (the caller
+	leaves out wires, which follow their symbols)
+*/
+QUuid ItemGroups::soleWholeGroup(const QList<QGraphicsItem *> &selected)
+{
+	if (selected.isEmpty() || !selected.first()->scene()) {
+		return QUuid();
+	}
+	const QUuid group = groupOf(selected.first());
+	if (group.isNull()) {
+		return QUuid();
+	}
+	for (QGraphicsItem *item : selected) {
+		if (groupOf(item) != group) {
+			return QUuid();
+		}
+	}
+	for (QGraphicsItem *item : selected.first()->scene()->items()) {
+		if (groupOf(item) == group && !item->isSelected()) {
+			return QUuid();
+		}
+	}
+	return group;
 }
