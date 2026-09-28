@@ -58,6 +58,8 @@ namespace ItemGroups
 	bool completeSelection(QGraphicsScene *scene,
 						   const QList<QGraphicsItem *> &previous,
 						   bool toggling);
+
+	QUuid soleWholeGroup(const QList<QGraphicsItem *> &selected);
 }
 
 #endif // ITEMGROUPS_H
