@@ -336,7 +336,7 @@ def _extras(root: ET.Element) -> dict:
     Older files have only position to go on, and there a change reads as
     the old one removed and a new one added, with both shown.
     """
-    folios, texts, shapes, images = {}, [], [], []
+    folios, folio_uuids, texts, shapes, images, tables = {}, {}, [], [], [], []
 
     def record(el, label, value):
         return {"uuid": el.get("uuid", ""), "key": tuple(label.values()),
@@ -344,6 +344,12 @@ def _extras(root: ET.Element) -> dict:
 
     for n, d in _folios(root):
         folios[n] = {f: d.get(f, "") for f in _FOLIO_FIELDS}
+        folio_uuids[n] = d.get("uuid", "")
+        for tb in d.iter("graphics_table"):
+            tables.append(record(
+                tb, {"folio": n, "name": tb.get("name", "")},
+                {"x": tb.get("x", ""), "y": tb.get("y", ""), "width": tb.get("width", ""),
+                 "height": tb.get("height", ""), "rows_shown": tb.get("display_n_row", "")}))
         for t in d.iter("input"):
             texts.append(record(
                 t, {"folio": n, "x": t.get("x", ""), "y": t.get("y", ""),
@@ -367,7 +373,7 @@ def _extras(root: ET.Element) -> dict:
                 im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
                 {"scale": im.get("size", ""), "rotation": _angle(im.get("rotation", ""))}))
 
-    element_texts = {}
+    element_texts, element_text_uuids = {}, {}
     for n, d in _folios(root):
         for el in d.iter("element"):
             uuid = el.get("uuid", "")
@@ -380,6 +386,7 @@ def _extras(root: ET.Element) -> dict:
                 base = (uuid, src, what)
                 seen[base] = seen.get(base, 0) + 1
                 fs = (t.get("font", "").split(",") + ["", ""])[1]
+                element_text_uuids[base + (seen[base],)] = t.get("uuid", "")
                 element_texts[base + (seen[base],)] = {
                     "x": t.get("x", ""), "y": t.get("y", ""), "size": fs,
                     "frame": t.get("frame", ""), "rotation": _angle(t.get("rotation", "")),
@@ -397,8 +404,9 @@ def _extras(root: ET.Element) -> dict:
             "location": info.get("location", ""),
             "name": info.get("name", ""),
             "terminals": sum(1 for _ in st.iter("real_terminal"))}
-    return {"folios": folios, "texts": texts, "shapes": shapes,
-            "images": images, "strips": strips, "element_texts": element_texts}
+    return {"folios": folios, "folio_uuids": folio_uuids, "texts": texts, "shapes": shapes,
+            "images": images, "tables": tables, "strips": strips,
+            "element_texts": element_texts, "element_text_uuids": element_text_uuids}
 
 
 def _diff_keyed(a: dict, b: dict, label) -> dict:
@@ -440,34 +448,84 @@ def _diff_items(a: list, b: list) -> dict:
     return out
 
 
+def _diff_folios(a: dict, b: dict) -> dict:
+    """Folio fields, keyed by the folio's uuid when every folio has one.
+
+    By uuid, a folio moved to another position is reported once, under
+    "reordered", instead of as every folio after it changing its fields.
+    Without uuids (older files) folios are keyed by position, and a
+    removal or reorder in the middle shifts every later index -- the note
+    says so when the count changed.
+    """
+    ua, ub = a["folio_uuids"], b["folio_uuids"]
+    by_uuid = bool(ua or ub) and all(ua.values()) and all(ub.values())
+    changed, reordered, added, removed = [], [], [], []
+    if by_uuid:
+        pos_a = {u: n for n, u in ua.items()}
+        pos_b = {u: n for n, u in ub.items()}
+        for u in sorted(set(pos_a) & set(pos_b), key=lambda u: pos_b[u]):
+            fa, fb = a["folios"][pos_a[u]], b["folios"][pos_b[u]]
+            delta = {f: [fa[f], fb[f]] for f in _FOLIO_FIELDS if fa[f] != fb[f]}
+            if delta:
+                changed.append({"folio": pos_b[u], "uuid": u, "changed": delta})
+            if pos_a[u] != pos_b[u]:
+                reordered.append({"uuid": u, "title": fb["title"],
+                                  "from": pos_a[u], "to": pos_b[u]})
+        added = [{"folio": pos_b[u], "uuid": u, "title": b["folios"][pos_b[u]]["title"]}
+                 for u in sorted(set(pos_b) - set(pos_a), key=lambda u: pos_b[u])]
+        removed = [{"folio": pos_a[u], "uuid": u, "title": a["folios"][pos_a[u]]["title"]}
+                   for u in sorted(set(pos_a) - set(pos_b), key=lambda u: pos_a[u])]
+    else:
+        for n in sorted(set(a["folios"]) & set(b["folios"])):
+            delta = {f: [a["folios"][n][f], b["folios"][n][f]] for f in _FOLIO_FIELDS
+                     if a["folios"][n][f] != b["folios"][n][f]}
+            if delta:
+                changed.append({"folio": n, "changed": delta})
+    out = {"before": len(a["folios"]), "after": len(b["folios"]),
+           "keyed_by": "uuid" if by_uuid else "position", "changed": changed[:50]}
+    if by_uuid:
+        out.update(added=added[:50], removed=removed[:50], reordered=reordered[:50])
+    elif len(a["folios"]) != len(b["folios"]) and changed:
+        out["note"] = ("the folio count changed, so changes listed here may be "
+                       "later folios shifting position rather than edits")
+    return out
+
+
+def _diff_element_texts(a: dict, b: dict) -> dict:
+    """Element text fields, keyed by their own uuid when every field has one.
+
+    Otherwise by element, what the field is bound to, and the nth such field
+    -- which cannot tell a field that was removed from one that moved down
+    the list. A field's own text is also compared ("shows"), so relabelling
+    an element shows up here as well as in the element's information.
+    """
+    ka, kb = a["element_text_uuids"], b["element_text_uuids"]
+    by_uuid = bool(ka or kb) and all(ka.values()) and all(kb.values())
+    def label(k):
+        return {"element": k[0], "source": k[1], "bound_to": k[2], "n": k[3]}
+    if not by_uuid:
+        out = _diff_keyed(a["element_texts"], b["element_texts"], label)
+        out["keyed_by"] = "position"
+        return out
+    labels = {u: {**label(k), "uuid": u} for side in (ka, kb) for k, u in side.items()}
+    out = _diff_keyed({ka[k]: v for k, v in a["element_texts"].items()},
+                      {kb[k]: v for k, v in b["element_texts"].items()},
+                      lambda u: labels[u])
+    out["keyed_by"] = "uuid"
+    return out
+
+
 def _diff_extras(before: ET.Element, after: ET.Element) -> dict:
     a, b = _extras(before), _extras(after)
     out = {}
     ta, tb = before.get("title", ""), after.get("title", "")
     out["project"] = {"changed": {"title": [ta, tb]} if ta != tb else {}}
-    # Folios are keyed by position. A reorder or a removal in the middle
-    # shifts every later index, so a folio "changing" its title alongside a
-    # folio count change can just be the shift -- the count says which.
-    folio_changes = []
-    for n in sorted(set(a["folios"]) & set(b["folios"])):
-        delta = {f: [a["folios"][n][f], b["folios"][n][f]] for f in _FOLIO_FIELDS
-                 if a["folios"][n][f] != b["folios"][n][f]}
-        if delta:
-            folio_changes.append({"folio": n, "changed": delta})
-    out["folios"] = {"before": len(a["folios"]), "after": len(b["folios"]),
-                     "changed": folio_changes[:50]}
-    if len(a["folios"]) != len(b["folios"]) and folio_changes:
-        out["folios"]["note"] = ("the folio count changed, so changes listed here may be "
-                                 "later folios shifting position rather than edits")
+    out["folios"] = _diff_folios(a, b)
     out["texts"] = _diff_items(a["texts"], b["texts"])
     out["shapes"] = _diff_items(a["shapes"], b["shapes"])
     out["images"] = _diff_items(a["images"], b["images"])
-    # Keyed by element, what the field is bound to, and the nth such field.
-    # A field's own text is also compared ("shows"), so relabelling an
-    # element shows up here as well as in the element's information.
-    out["element_texts"] = _diff_keyed(
-        a["element_texts"], b["element_texts"],
-        lambda k: {"element": k[0], "source": k[1], "bound_to": k[2], "n": k[3]})
+    out["tables"] = _diff_items(a["tables"], b["tables"])
+    out["element_texts"] = _diff_element_texts(a, b)
     out["terminal_strips"] = _diff_keyed(
         a["strips"], b["strips"],
         lambda k: (lambda v: f"{v['installation']} {v['location']} {v['name']}".strip())(
@@ -524,15 +582,21 @@ def tool_diff(before: str, after: str) -> dict:
             changed_info.append({"uuid": k, "name": a["name"],
                                  "from": a_info, "to": b_info})
 
-    a_co = {r["key"]: r for i, c, ix in _conductors(_root(before))
-            for r in [_conductor_row(i, c, ix)]}
-    b_co = {r["key"]: r for i, c, ix in _conductors(_root(after))
-            for r in [_conductor_row(i, c, ix)]}
+    a_rows = [_conductor_row(i, c, ix) for i, c, ix in _conductors(_root(before))]
+    b_rows = [_conductor_row(i, c, ix) for i, c, ix in _conductors(_root(after))]
+    # Keyed by the conductor's own uuid when every conductor on both sides
+    # has one, so a rewired conductor is that conductor, changed ("ends").
+    # QElectroTech keeps a uuid only on conductors that were loaded with one
+    # or created since, so an older file keys on its two ends instead.
+    co_by_uuid = bool(a_rows or b_rows) and all(r["uuid"] for r in a_rows + b_rows)
+    co_id = (lambda r: r["uuid"]) if co_by_uuid else (lambda r: r["key"])
+    a_co = {co_id(r): r for r in a_rows}
+    b_co = {co_id(r): r for r in b_rows}
     # An end that could not be resolved to an element is keyed on the
     # folio-scoped integer id, which QElectroTech reassigns on every write.
     # Say so rather than presenting the result as if it were comparable:
     # in such a file an untouched conductor can read as removed and re-added.
-    shaky = sum(1 for k in set(a_co) | set(b_co) if "#" in k)
+    shaky = 0 if co_by_uuid else sum(1 for k in set(a_co) | set(b_co) if "#" in k)
     unstable = {} if not shaky else {
         "unstable_keys": shaky,
         "warning": "some conductors sit on elements with no persisted uuid, so "
@@ -549,8 +613,11 @@ def tool_diff(before: str, after: str) -> dict:
                   ("num", "formula", "cable", "bus", "color", "section",
                    "function", "type")
                   if a[f] != b[f]}
+        if a["key"] != b["key"]:
+            fields["ends"] = [a["key"], b["key"]]
         if fields:
-            conductor_changes.append({"key": k, "changed": fields})
+            conductor_changes.append({"key": b["key"], **({"uuid": k} if co_by_uuid else {}),
+                                      "changed": fields})
 
     deltas = sorted({tuple(m["delta"]) for m in moved})
     return {
@@ -567,8 +634,9 @@ def tool_diff(before: str, after: str) -> dict:
         },
         "conductors": {
             "before": len(a_co), "after": len(b_co),
-            "added": sorted(set(b_co) - set(a_co))[:50],
-            "removed": sorted(set(a_co) - set(b_co))[:50],
+            "keyed_by": "uuid" if co_by_uuid else "ends",
+            "added": sorted(b_co[k]["key"] for k in set(b_co) - set(a_co))[:50],
+            "removed": sorted(a_co[k]["key"] for k in set(a_co) - set(b_co))[:50],
             "changed": conductor_changes[:100],
             "changed_count": len(conductor_changes),
             **unstable,
@@ -2204,8 +2272,12 @@ TOOLS = [
         "description": "Structurally diff two .qet files: which elements moved and "
                        "by what delta, which were rotated (orientation in quarter "
                        "turns, 0-3), which were added, removed or relabelled, and "
-                       "which conductor fields changed. Use this to verify what an "
-                       "edit actually did, rather than reading a screenshot.",
+                       "which conductor fields changed; also folio fields, texts, shapes, "
+                       "pictures, tables, symbol text fields and terminal strips. Items are "
+                       "matched by their uuid when every one of a kind has one (each "
+                       "section says so in \"keyed_by\"), otherwise by position or ends. "
+                       "Use this to verify what an edit actually did, rather than reading "
+                       "a screenshot.",
         "inputSchema": {
             "type": "object",
             "properties": {

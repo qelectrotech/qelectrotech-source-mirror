@@ -942,7 +942,7 @@ class DiffContracts(unittest.TestCase):
                                     + self.wire(A, C, num="W3")))
         k = lambda x, y: f"1:{x}/{{t1}}--{y}/{{t2}}"
         self.assertEqual(m.tool_diff(before, after)["conductors"], {
-            "before": 2, "after": 2, "added": [k(A, C)], "removed": [k(B, C)],
+            "before": 2, "after": 2, "keyed_by": "ends", "added": [k(A, C)], "removed": [k(B, C)],
             "changed": [{"key": k(A, B), "changed": {"num": ["W1", "W9"], "color": ["", "red"]}}],
             "changed_count": 1})
 
@@ -1019,7 +1019,7 @@ class DiffContracts(unittest.TestCase):
         d = m.tool_diff(self.qet(self.folio(title="A", cols="10"), title="P"),
                         self.qet(self.folio(title="B", cols="10"), title="Q"))
         self.assertEqual(d["project"], {"changed": {"title": ["P", "Q"]}})
-        self.assertEqual(d["folios"], {"before": 1, "after": 1,
+        self.assertEqual(d["folios"], {"before": 1, "after": 1, "keyed_by": "position",
                                        "changed": [{"folio": 1, "changed": {"title": ["A", "B"]}}]})
         d = m.tool_diff(self.qet(self.folio(title="A")),
                         self.qet(self.folio(title="B") + self.folio(title="C")))
@@ -1116,6 +1116,72 @@ class DiffContracts(unittest.TestCase):
         self.assertEqual(len(t["removed"]), 50)
         t = m.tool_diff(self.qet(self.folio()), self.qet(self.folio(extra=texts(51, 0))))["texts"]
         self.assertEqual(len(t["added"]), 50)
+
+    def test_conductors_by_uuid(self):
+        """Every conductor has a uuid: a rewire is that conductor with new ends,
+        not one removed and another added."""
+        A, B, C = self.A, self.B, self.C
+        els = self.el(A, 0, 0) + self.el(B, 0, 0) + self.el(C, 0, 0)
+        before = self.qet(self.folio(els, self.wire(A, B, uuid="{w1}", num="W1")
+                                     + self.wire(B, C, uuid="{w2}")))
+        after = self.qet(self.folio(els, self.wire(A, C, uuid="{w1}", num="W1")
+                                    + self.wire(A, B, uuid="{w3}")))
+        k = lambda x, y: f"1:{x}/{{t1}}--{y}/{{t2}}"
+        c = m.tool_diff(before, after)["conductors"]
+        self.assertEqual(c["keyed_by"], "uuid")
+        self.assertEqual(c["changed"], [{"key": k(A, C), "uuid": "{w1}",
+                                         "changed": {"ends": [k(A, B), k(A, C)]}}])
+        # added/removed are still named by their ends, as in the ends mode
+        self.assertEqual((c["added"], c["removed"]), ([k(A, B)], [k(B, C)]))
+        # one conductor without a uuid puts the whole comparison back on ends
+        mixed = self.qet(self.folio(els, self.wire(A, B, uuid="{w1}", num="W1") + self.wire(B, C)))
+        self.assertEqual(m.tool_diff(before, mixed)["conductors"]["keyed_by"], "ends")
+
+    def test_folios_by_uuid(self):
+        """With folio uuids a reorder is one 'reordered' entry, not every later
+        folio changing title."""
+        f = lambda u, t: self.folio(title=t, uuid=u)
+        before = self.qet(f("{f1}", "One") + f("{f2}", "Two") + f("{f3}", "Three"))
+        after = self.qet(f("{f2}", "Two") + f("{f1}", "One") + f("{f4}", "Four"))
+        d = m.tool_diff(before, after)["folios"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual(d["changed"], [])
+        self.assertEqual(d["reordered"], [{"uuid": "{f2}", "title": "Two", "from": 2, "to": 1},
+                                          {"uuid": "{f1}", "title": "One", "from": 1, "to": 2}])
+        self.assertEqual(d["added"], [{"folio": 3, "uuid": "{f4}", "title": "Four"}])
+        self.assertEqual(d["removed"], [{"folio": 3, "uuid": "{f3}", "title": "Three"}])
+        self.assertNotIn("note", d)
+        renamed = self.qet(f("{f1}", "Uno") + f("{f2}", "Two") + f("{f3}", "Three"))
+        self.assertEqual(m.tool_diff(before, renamed)["folios"]["changed"],
+                         [{"folio": 1, "uuid": "{f1}", "changed": {"title": ["One", "Uno"]}}])
+
+    def test_element_text_fields_by_uuid(self):
+        """By their own uuid, deleting the first of two label fields is that
+        field removed -- by position it read as the second one changing."""
+        def fields(*items):
+            return self.el(self.A, 0, 0, texts="".join(
+                f'<dynamic_elmt_text uuid="{u}" x="{x}" y="0" text_from="UserText"><text>{t}</text>'
+                '</dynamic_elmt_text>' for u, x, t in items))
+        before = self.qet(self.folio(fields(("{e1}", 1, "a"), ("{e2}", 2, "b"))))
+        after = self.qet(self.folio(fields(("{e2}", 2, "b"))))
+        d = m.tool_diff(before, after)["element_texts"]
+        self.assertEqual(d["keyed_by"], "uuid")
+        self.assertEqual((d["changed"], [r["uuid"] for r in d["removed"]]), ([], ["{e1}"]))
+        # the same pair without uuids: the position-based reading, flagged as such
+        plain = lambda *items: self.qet(self.folio(self.el(self.A, 0, 0, texts="".join(
+            f'<dynamic_elmt_text x="{x}" y="0" text_from="UserText"><text>{t}</text></dynamic_elmt_text>'
+            for x, t in items))))
+        d = m.tool_diff(plain((1, "a"), (2, "b")), plain((2, "b")))["element_texts"]
+        self.assertEqual(d["keyed_by"], "position")
+
+    def test_tables(self):
+        table = lambda x, rows: ('<graphics_table uuid="{tb}" name="Parts" x="' + str(x)
+                                 + f'" y="0" width="100" height="50" display_n_row="{rows}"/>')
+        d = m.tool_diff(self.qet(self.folio(extra=table(0, 10))),
+                        self.qet(self.folio(extra=table(20, 12))))["tables"]
+        self.assertEqual((d["keyed_by"], d["before"], d["after"]), ("uuid", 1, 1))
+        self.assertEqual(d["changed"], [{"item": {"folio": 1, "name": "Parts", "uuid": "{tb}"},
+                                         "changed": {"x": ["0", "20"], "rows_shown": ["10", "12"]}}])
 
     def test_terminal_strips(self):
         def strip(name, n):
