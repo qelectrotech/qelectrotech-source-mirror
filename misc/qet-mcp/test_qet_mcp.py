@@ -856,8 +856,8 @@ class ItemsTool(unittest.TestCase):
             '<pen color="c" style="s" widthF="1"/></shape></shapes>'
             '</diagram><diagram><elements/><conductors/>'
             '<images><image x="3" y="4" size="1" rotation="0"/></images>'
-            '<graphics_table uuid="{tb}" name="Parts" x="0" y="0" width="100" height="50"'
-            ' display_n_row="10"/>'
+            '<tables><graphics_table uuid="{tb}" name="Parts" x="0" y="0" width="100" height="50"'
+            ' display_n_row="10"/></tables>'
             '</diagram></project>')
 
     def tearDown(self):
