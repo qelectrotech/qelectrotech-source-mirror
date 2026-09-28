@@ -343,6 +343,19 @@ if(QET_HAS_SCRIPTING)
   target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
+  # turns element uuid + terminal uuid back into the index the conductor
+  # calls take, on examples/perceuse.qet (two terminals at one point).
+  add_executable(
+    tst_scriptterminaluuid
+    tst_scriptterminaluuid.cpp)
+  add_test(NAME tst_scriptterminaluuid COMMAND tst_scriptterminaluuid)
+  add_dependencies(tst_scriptterminaluuid qelectrotech)
+  target_link_libraries(tst_scriptterminaluuid PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptterminaluuid PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
 # A symbol saved without a uuid gets the same one on every load, and

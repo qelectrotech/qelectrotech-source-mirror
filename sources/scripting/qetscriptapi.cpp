@@ -739,18 +739,19 @@ QString QetScriptApi::elementName(int folioIndex, const QString &elementUuid) co
 /**
 	@brief QetScriptApi::elementTerminals
 	The element's terminals, in the order addConductor() indexes them: one
-	entry per terminal, "<index>: <name> (<n> conductor(s))". Descriptive
-	rather than structured because its only job is to let a script -- or a
-	human reading a script's output -- see which index is which before
-	wiring anything to it.
+	entry per terminal, "<index>: <name> (<n> conductor(s)) <uuid>".
+	Descriptive rather than structured because its only job is to let a
+	script -- or a human reading a script's output -- see which index is
+	which before wiring anything to it.
 
-	Indexes, not uuids, because a terminal uuid does not address a terminal
-	on a folio. Terminal::uuid() comes from the catalog .elmt definition
-	(see Terminal::stableUuid()), so it is empty for most of the installed
-	base, and where it is not, every instance of that same element carries
-	the same one -- two coils of one type placed side by side have
-	byte-identical terminal uuids, which is plainly visible in the saved
-	file of any project written through this API.
+	The calls take the index; the uuid is what to hold instead, and
+	terminalIndex() turns it back into the index. It is Terminal::
+	stableUuid(): the terminal's own uuid, which every terminal of an
+	opened project has (TerminalUuids::fillMissing()), or for a symbol
+	imported since the project was opened the value the next opening will
+	give it. It comes from the symbol's definition, so it names a terminal
+	only together with its element: two coils of one type placed side by
+	side have the same terminal uuids.
 
 	The index is the terminal's place in Element::terminals(), and that is
 	@b not the order the .elmt lists them in. Element::parseTerminal()
@@ -772,12 +773,38 @@ QStringList QetScriptApi::elementTerminals(int folioIndex, const QString &elemen
 	for (int i = 0 ; i < terminals.count() ; ++i)
 	{
 		Terminal *t = terminals.at(i);
-		list << QStringLiteral("%1: %2 (%3 conductor(s))")
+		list << QStringLiteral("%1: %2 (%3 conductor(s)) %4")
 				.arg(i)
 				.arg(t->name().isEmpty() ? QStringLiteral("-") : t->name())
-				.arg(t->conductorsCount());
+				.arg(t->conductorsCount())
+				.arg(t->stableUuid().toString());
 	}
 	return list;
+}
+
+/**
+	@brief QetScriptApi::terminalIndex
+	The current index in elementTerminals() of the terminal of the element
+	@p elementUuid whose uuid is @p terminalUuid, or -1 -- also when two of
+	its terminals carry that uuid, since the index would then be a guess.
+	The index is what addConductor() and the conductor calls take; unlike
+	the uuid, it is undefined between two terminals at the same point.
+*/
+int QetScriptApi::terminalIndex(int folioIndex, const QString &elementUuid,
+								const QString &terminalUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	const QUuid wanted(terminalUuid);
+	if (!element || wanted.isNull()) return -1;
+
+	int found = -1;
+	const QList<Terminal *> terminals = element->terminals();
+	for (int i = 0 ; i < terminals.count() ; ++i) {
+		if (terminals.at(i)->stableUuid() != wanted) continue;
+		if (found >= 0) return -1;
+		found = i;
+	}
+	return found;
 }
 
 QString QetScriptApi::elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const
