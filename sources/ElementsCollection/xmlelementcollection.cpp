@@ -21,6 +21,7 @@
 #include "../qetproject.h"
 #include "../qetxml.h"
 #include "elementslocation.h"
+#include "terminaluuids.h"
 
 /**
 	@brief XmlElementCollection::XmlElementCollection
@@ -869,6 +870,15 @@ ElementsLocation XmlElementCollection::copyDirectory(
 		created_location.setPath(destination.projectCollectionPath() % "/" % new_dir_name);
 	}
 
+		//The symbols of the replaced directory keep their terminal uuids,
+		//see TerminalUuids::keep()
+	if (!element.isNull()) {
+		QDomElement new_dir_dom = directory(created_location.collectionPath(false));
+		if (!new_dir_dom.isNull()) {
+			TerminalUuids::keepInDirectory(element, new_dir_dom);
+		}
+	}
+
 	emit directorieAdded(created_location.collectionPath(false));
 	return created_location;
 }
@@ -914,6 +924,7 @@ ElementsLocation XmlElementCollection::copyElement(
 				    % "/" % new_elmt_name);
 	bool removed = false;
 	if (!element.isNull()) {
+		TerminalUuids::keep(element, elmt_dom);
 		element.parentNode().removeChild(element);
 		removed = true;
 	}

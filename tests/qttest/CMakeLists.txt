@@ -385,6 +385,20 @@ target_compile_definitions(tst_resaveunchanged PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Replacing a symbol's definition in a project keeps its terminal uuids, so
+# the wires saved against them still load: TerminalUuids::keep() on its own,
+# then the real binary's --info on an example whose symbols were replaced.
+add_executable(
+  tst_terminaluuids
+  tst_terminaluuids.cpp
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp)
+add_test(NAME tst_terminaluuids COMMAND tst_terminaluuids)
+add_dependencies(tst_terminaluuids qelectrotech)
+target_link_libraries(tst_terminaluuids PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_terminaluuids PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # DiagramContext::fromXml() -- the two readers (QDom for projects, pugixml
 # for element definitions in the collection) give the same values: stray
 # spaces trimmed, accents kept.

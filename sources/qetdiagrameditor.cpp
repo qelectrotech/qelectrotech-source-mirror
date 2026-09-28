@@ -1672,6 +1672,34 @@ bool QETDiagramEditor::openAndAddProject(
 		);
 	}
 
+		//Report wires left out of the load because a terminal they join
+		//was not found: they would otherwise vanish on the next save
+		//without the user ever being told.
+	QStringList lost_wires;
+	for (Diagram *diagram : project->diagrams()) {
+		for (const QString &wire : diagram->wiresNotReconnected()) {
+			lost_wires << tr("Folio %1 : %2").arg(diagram->folioIndex() + 1).arg(wire);
+		}
+	}
+	if (interactive && !lost_wires.isEmpty())
+	{
+		QMessageBox box(QMessageBox::Warning,
+						tr("Conducteurs non chargés", "message box title"),
+						tr("%n conducteur(s) n'ont pas pu être reliés à leurs"
+						   " bornes et n'ont pas été chargés. La définition de"
+						   " l'élément dans le projet a probablement été remplacée"
+						   " par une autre dont les bornes diffèrent.\n\n"
+						   "Si vous enregistrez le projet, ces conducteurs"
+						   " disparaîtront du fichier. Fermez-le sans enregistrer pour"
+						   " conserver le fichier tel quel.",
+						   "message box content",
+						   lost_wires.size()),
+						QMessageBox::Ok,
+						this);
+		box.setDetailedText(lost_wires.join(QLatin1Char('\n')));
+		box.exec();
+	}
+
 	BackupDialog backup_dialog(this);
 	if (backup_dialog.exec() == QDialog::Accepted)
 	{
