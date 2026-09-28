@@ -836,14 +836,6 @@ bool QetScriptApi::addConductor(int folioIndex,
 	return t1->isLinkedTo(t2);
 }
 
-/**
-	@brief QetScriptApi::conductors
-	One line per conductor on the folio: which terminals it joins and its
-	number, in the form setConductorProperty() addresses them. Descriptive
-	rather than structured for the same reason elementTerminals() is -- it
-	exists so a script, or a person reading its output, can see what is
-	there before changing it.
-*/
 namespace {
 /// "{element uuid} terminal N", the form conductors() prints an end in and
 /// the conductor calls take as element uuid + terminal index.
@@ -856,6 +848,14 @@ QString describeEnd(Terminal *t)
 }
 } // namespace
 
+/**
+	@brief QetScriptApi::conductors
+	One line per conductor on the folio: which terminals it joins and its
+	number, in the form setConductorProperty() addresses them. Descriptive
+	rather than structured for the same reason elementTerminals() is -- it
+	exists so a script, or a person reading its output, can see what is
+	there before changing it.
+*/
 QStringList QetScriptApi::conductors(int folioIndex) const
 {
 	QStringList list;
