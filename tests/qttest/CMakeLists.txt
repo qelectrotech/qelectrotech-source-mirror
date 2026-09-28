@@ -343,6 +343,7 @@ target_compile_definitions(tst_derivedsymboluuid PRIVATE
 # Saving a project that was just saved changes nothing: runs the real
 # binary's --resave twice on every project in examples/, and on one whose
 # title block holds a single-space value (#973).
+
 add_executable(
   tst_resaveunchanged
   tst_resaveunchanged.cpp)
