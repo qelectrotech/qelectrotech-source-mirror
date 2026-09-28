@@ -27,6 +27,7 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <algorithm>
 /**
 	@brief TitleBlockTemplate::TitleBlockTemplate
 	Constructor
@@ -1818,14 +1819,46 @@ QString TitleBlockTemplate::interpreteVariables(
 		const QString &string,
 		const DiagramContext &diagram_context) const
 {
+	// A variable nobody has given a value to yet -- e.g. one just added to
+	// the template, which is not in the folio's Custom tab until its
+	// properties are opened (#1113) -- must render blank rather than as its
+	// own name, the same as an auto-added but unset one already does (#973).
+	// Collect those from the template text before substituting, so a value
+	// that happens to contain "%something" is never touched.
+	// A bare "%name" is unset only if no key is a prefix of it, because the
+	// substitution below replaces "%key" wherever it appears.
+	static const QRegularExpression rx(
+		QStringLiteral("%\\{([a-z0-9_-]+)\\}|%([a-z0-9_-]+)"));
+	const QStringList keys =
+		diagram_context.keys(DiagramContext::DecreasingLength);
+	QStringList unset;
+	auto it = rx.globalMatch(string);
+	while (it.hasNext()) {
+		const QRegularExpressionMatch m = it.next();
+		const QString name = m.captured(1).isEmpty()
+				? m.captured(2) : m.captured(1);
+		bool known = diagram_context.contains(name);
+		if (!known && m.captured(1).isEmpty()) {
+			for (const QString &key : keys) {
+				if (name.startsWith(key)) { known = true; break; }
+			}
+		}
+		if (!known) unset << m.captured(0);
+	}
+
 	QString interpreted_string = string;
-	foreach (QString key,
-		 diagram_context.keys(DiagramContext::DecreasingLength)) {
+	foreach (QString key, keys) {
 		interpreted_string.replace("%{" % key % "}",
 					   diagram_context[key].toString());
 		interpreted_string.replace("%" % key,
 					   diagram_context[key].toString());
 	}
+	std::sort(unset.begin(), unset.end(),
+		  [](const QString &a, const QString &b) {
+			return a.length() > b.length();
+		  });
+	for (const QString &placeholder : unset)
+		interpreted_string.remove(placeholder);
 	return(interpreted_string);
 }
 
@@ -1834,7 +1867,7 @@ QString TitleBlockTemplate::interpreteVariables(
 	Get list of variables
 	@return The list of string with variables
 */
-QStringList TitleBlockTemplate::listOfVariables()
+QStringList TitleBlockTemplate::listOfVariables() const
 {
 	QStringList list;
 	// Match both the braced "%{name}" form and the bare "%name" form

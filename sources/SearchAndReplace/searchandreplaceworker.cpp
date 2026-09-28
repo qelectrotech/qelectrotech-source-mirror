@@ -76,7 +76,20 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 			}
 		}
 
-		new_properties.context.add(m_titleblock_properties.context);
+		// The replace dialog lists every custom variable of the folios
+		// (#1113), so an empty value means "leave unchanged", exactly like
+		// the fields of the main tab.
+		const DiagramContext &change = m_titleblock_properties.context;
+		for (const QString &key : change.keys()) {
+			const QString value = change.value(key).toString();
+			if (value.isEmpty()) {
+				continue;
+			}
+			new_properties.context.addValue(
+				key,
+				applyChange(new_properties.context.value(key).toString(),
+					    value));
+		}
 
 		if (old_propertie != new_properties) {
 			project->undoStack()->push(new ChangeTitleBlockCommand(d, old_propertie, new_properties));
