@@ -242,6 +242,43 @@ class EditValidation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "saved before conductors carried a uuid"):
             self.build([{"op": "delete_conductor", "folio": 0, "conductor": ""}])
 
+    def test_terminal_by_uuid(self):
+        """A terminal named by uuid is turned into its index at run time, on
+        the element it belongs to: the op's element, or each add_conductor
+        end's own. The lookup is required only then; a plain index is
+        passed through as before."""
+        E, F = "{11111111-2222-4333-8444-555555555555}", "{21111111-2222-4333-8444-555555555555}"
+        T, V = "{31111111-2222-4333-8444-555555555555}", "{41111111-2222-4333-8444-555555555555}"
+        s = self.build([{"op": "add_conductor", "folio": 1, "from": E, "from_terminal": T,
+                         "to": F, "to_terminal": V}])
+        self.assertIn(f'qet.addConductor(1, "{E}", qetMcpTerminal(0, "from_terminal", 1, "{E}", "{T}"), '
+                      f'"{F}", qetMcpTerminal(0, "to_terminal", 1, "{F}", "{V}"))', s)
+        self.assertIn('"terminalIndex"', s)
+        s = self.build([{"op": "set_conductor", "folio": 0, "element": E, "terminal": T,
+                         "property": "num", "value": "W1"}])
+        self.assertIn(f'qet.setConductorProperty(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"), '
+                      '"num", "W1")', s)
+        s = self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": T}])
+        self.assertIn(f'qet.deleteConductor(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"))', s)
+        s = self.build([{"op": "move_conductor_segment", "folio": 0, "element": E,
+                         "terminal": T, "segment": 1, "dx": 5, "dy": 0}])
+        self.assertIn(f'qet.moveConductorSegment(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"), 1, 5, 0)', s)
+        # a $name element and a folio uuid reach the lookup resolved
+        s = self.build([{"op": "add_folio", "id": "f"},
+                        {"op": "add_element", "id": "a", "folio": "$f", "path": "x.elmt", "x": 0, "y": 0},
+                        {"op": "delete_conductor", "folio": "$f", "element": "$a", "terminal": T}])
+        self.assertIn(f'qet.deleteConductor(R["f"], R["a"], qetMcpTerminal(2, "terminal", R["f"], R["a"], "{T}"))', s)
+        s = self.build([{"op": "delete_conductor", "folio": V, "element": E, "terminal": T}])
+        self.assertIn(f'qetMcpTerminal(0, "terminal", qet.folioIndex("{V}"), "{E}", "{T}")', s)
+        # an index is unchanged and needs no lookup
+        s = self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": 2}])
+        self.assertIn(f'qet.deleteConductor(0, "{E}", 2)', s)
+        self.assertNotIn('"terminalIndex"', s)
+        with self.assertRaisesRegex(ValueError, "terminal index or its uuid"):
+            self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": "A1"}])
+        with self.assertRaisesRegex(ValueError, "terminal index or its uuid"):
+            self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": True}])
+
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op
         f = {"op": "add_folio", "id": "f"}
@@ -2234,6 +2271,49 @@ class Integration(unittest.TestCase):
         self.assertEqual(d["conductors"]["removed"], [])
         nums = [c["num"] for c in m.tool_conductors(r["output"])["conductors"]]
         self.assertEqual(nums, ["W1"])
+
+    def test_add_conductor_by_terminal_uuid(self):
+        """The coil's file lists A2 before A1, and its index order puts A1
+        first: wiring by uuid reaches the terminals named, whatever their
+        index, and an unknown uuid stops the run with a note."""
+        info = m.tool_element_info(str(Path(ELEMENTS) / COIL.removeprefix("common://")))
+        by_name = {t["name"]: t for t in info["terminals"]}
+        a1, a2 = by_name["A1"], by_name["A2"]
+        self.assertTrue(a1["uuid"] and a2["uuid"])
+        self.assertEqual((a1["index"], a2["index"]), (0, 1))
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+            {"op": "add_element", "id": "b", "folio": 0, "path": COIL, "x": 300, "y": 100},
+            {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": a2["uuid"],
+             "to": "$b", "to_terminal": a1["uuid"]}]))
+        self.assertTrue(all(o["succeeded"] for o in r["operations"]))
+        wires = [c for c in ET.parse(r["output"]).getroot().iter("conductor")
+                 if c.get("terminal1") and c.get("element1")]
+        self.assertEqual(len(wires), 1)
+        ends = {(wires[0].get("element1"), wires[0].get("terminal1")),
+                (wires[0].get("element2"), wires[0].get("terminal2"))}
+        a_uuid, b_uuid = (o["result"] for o in r["operations"][:2])
+        self.assertEqual(ends, {(a_uuid, a2["uuid"]), (b_uuid, a1["uuid"])})
+
+        r = self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+            {"op": "add_conductor", "folio": 0, "from": "$a",
+             "from_terminal": "{00000000-0000-4000-8000-000000000001}",
+             "to": "$a", "to_terminal": a1["uuid"]}])
+        self.assertFalse(r["ok"])
+        self.assertTrue(r["stopped_early"])
+        self.assertIn("from_terminal: no terminal", json.dumps(r["operations"][1]))
+
+        # both ends wrong: both reported, each by its argument
+        r = self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+            {"op": "add_conductor", "folio": 0, "from": "$a",
+             "from_terminal": "{00000000-0000-4000-8000-000000000001}",
+             "to": "$a", "to_terminal": "{00000000-0000-4000-8000-000000000002}"}])
+        note = r["operations"][1].get("note", "")
+        self.assertIn("from_terminal: no terminal", note)
+        self.assertIn("to_terminal: no terminal", note)
 
     def test_noop_edit_has_no_conductor_churn(self):
         """Re-saving renumbers the file's terminal ids; the diff must not

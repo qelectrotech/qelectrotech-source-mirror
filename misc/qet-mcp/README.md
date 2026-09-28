@@ -305,9 +305,19 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `qet.conductorEnds()` in the build. A uuid names one wire, but
   `set_conductor` still changes the whole potential, the same as by
   terminal. A project saved before conductors carried a uuid has none in
-  the file: QElectroTech makes a new one on every load and does not save
-  it, so `qet_conductors` reports `uuid` as empty and those conductors are
-  named by `element` + `terminal` until wire uuids last (#1103).
+  the file until it is saved once: since #1107 QElectroTech works one out
+  from the wire's two ends on load and writes it on the next save, so it
+  appears after a first `qet_edit`.
+- **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
+  `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
+  in place of its index, on the op's own element (for `add_conductor`, on
+  that end's element). It is turned at run time into the index the call
+  takes; if the element has no terminal with it the op fails and its
+  `note` says so. Unlike the index, which is a sort by position, it is
+  defined between two terminals at the same point. Needs
+  `qet.terminalIndex()` in the build. A symbol file saved without terminal
+  uuids lists them empty; QElectroTech gives the terminals of every
+  project's copy of it a uuid on opening (#1118), written on the next save.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
