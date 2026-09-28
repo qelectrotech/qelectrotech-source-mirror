@@ -251,25 +251,25 @@ class EditValidation(unittest.TestCase):
         T, V = "{31111111-2222-4333-8444-555555555555}", "{41111111-2222-4333-8444-555555555555}"
         s = self.build([{"op": "add_conductor", "folio": 1, "from": E, "from_terminal": T,
                          "to": F, "to_terminal": V}])
-        self.assertIn(f'qet.addConductor(1, "{E}", qetMcpTerminal(0, 1, "{E}", "{T}"), '
-                      f'"{F}", qetMcpTerminal(0, 1, "{F}", "{V}"))', s)
+        self.assertIn(f'qet.addConductor(1, "{E}", qetMcpTerminal(0, "from_terminal", 1, "{E}", "{T}"), '
+                      f'"{F}", qetMcpTerminal(0, "to_terminal", 1, "{F}", "{V}"))', s)
         self.assertIn('"terminalIndex"', s)
         s = self.build([{"op": "set_conductor", "folio": 0, "element": E, "terminal": T,
                          "property": "num", "value": "W1"}])
-        self.assertIn(f'qet.setConductorProperty(0, "{E}", qetMcpTerminal(0, 0, "{E}", "{T}"), '
+        self.assertIn(f'qet.setConductorProperty(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"), '
                       '"num", "W1")', s)
         s = self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": T}])
-        self.assertIn(f'qet.deleteConductor(0, "{E}", qetMcpTerminal(0, 0, "{E}", "{T}"))', s)
+        self.assertIn(f'qet.deleteConductor(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"))', s)
         s = self.build([{"op": "move_conductor_segment", "folio": 0, "element": E,
                          "terminal": T, "segment": 1, "dx": 5, "dy": 0}])
-        self.assertIn(f'qet.moveConductorSegment(0, "{E}", qetMcpTerminal(0, 0, "{E}", "{T}"), 1, 5, 0)', s)
+        self.assertIn(f'qet.moveConductorSegment(0, "{E}", qetMcpTerminal(0, "terminal", 0, "{E}", "{T}"), 1, 5, 0)', s)
         # a $name element and a folio uuid reach the lookup resolved
         s = self.build([{"op": "add_folio", "id": "f"},
                         {"op": "add_element", "id": "a", "folio": "$f", "path": "x.elmt", "x": 0, "y": 0},
                         {"op": "delete_conductor", "folio": "$f", "element": "$a", "terminal": T}])
-        self.assertIn(f'qet.deleteConductor(R["f"], R["a"], qetMcpTerminal(2, R["f"], R["a"], "{T}"))', s)
+        self.assertIn(f'qet.deleteConductor(R["f"], R["a"], qetMcpTerminal(2, "terminal", R["f"], R["a"], "{T}"))', s)
         s = self.build([{"op": "delete_conductor", "folio": V, "element": E, "terminal": T}])
-        self.assertIn(f'qetMcpTerminal(0, qet.folioIndex("{V}"), "{E}", "{T}")', s)
+        self.assertIn(f'qetMcpTerminal(0, "terminal", qet.folioIndex("{V}"), "{E}", "{T}")', s)
         # an index is unchanged and needs no lookup
         s = self.build([{"op": "delete_conductor", "folio": 0, "element": E, "terminal": 2}])
         self.assertIn(f'qet.deleteConductor(0, "{E}", 2)', s)
@@ -2303,7 +2303,17 @@ class Integration(unittest.TestCase):
              "to": "$a", "to_terminal": a1["uuid"]}])
         self.assertFalse(r["ok"])
         self.assertTrue(r["stopped_early"])
-        self.assertIn("no terminal", json.dumps(r["operations"][1]))
+        self.assertIn("from_terminal: no terminal", json.dumps(r["operations"][1]))
+
+        # both ends wrong: both reported, each by its argument
+        r = self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+            {"op": "add_conductor", "folio": 0, "from": "$a",
+             "from_terminal": "{00000000-0000-4000-8000-000000000001}",
+             "to": "$a", "to_terminal": "{00000000-0000-4000-8000-000000000002}"}])
+        note = r["operations"][1].get("note", "")
+        self.assertIn("from_terminal: no terminal", note)
+        self.assertIn("to_terminal: no terminal", note)
 
     def test_noop_edit_has_no_conductor_churn(self):
         """Re-saving renumbers the file's terminal ids; the diff must not

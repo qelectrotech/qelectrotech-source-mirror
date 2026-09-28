@@ -1513,10 +1513,10 @@ def _build_script(operations: list, output: str) -> str:
         # A terminal named by uuid is turned into the index the calls take,
         # on its own element; -1, with the reason logged, if that element
         # has no terminal with it.
-        "function qetMcpTerminal(index, folio, element, uuid) {",
+        "function qetMcpTerminal(index, key, folio, element, uuid) {",
         "  var t = qet.terminalIndex(folio, element, uuid);",
         "  if (t < 0) qet.log(" + _js(_MARKER) + " + JSON.stringify({kind: 'op_note', "
-        "index: index, note: 'no terminal ' + uuid + ' on element ' + element + "
+        "index: index, note: key + ': no terminal ' + uuid + ' on element ' + element + "
         "' (or two of its terminals carry it)'}));",
         "  return t;",
         "}",
@@ -1580,7 +1580,7 @@ def _build_script(operations: list, output: str) -> str:
             # terminals at the same point.
             if isinstance(value, str) and _UUID_RE.fullmatch(value):
                 uuid_methods.add("terminalIndex")
-                return (f"qetMcpTerminal({op_index}, {folio_js}, {owner_js}, "
+                return (f"qetMcpTerminal({op_index}, {_js(key)}, {folio_js}, {owner_js}, "
                         f"{_js(value)})")
             if not isinstance(value, int) or isinstance(value, bool):
                 raise ValueError(f"operation {op_index}: {key!r} must be a terminal index "
@@ -1808,7 +1808,10 @@ def _parse_script_output(text: str) -> dict:
                                     (isinstance(r, int) and not isinstance(r, bool) and r == -1))
             ops.append(rec)
         elif rec.get("kind") == "op_note":
-            notes[rec.get("index")] = rec.get("note")
+            # An op can log more than one (add_conductor, one per end):
+            # keep them all rather than only the last.
+            idx = rec.get("index")
+            notes[idx] = (notes[idx] + "; " if idx in notes else "") + str(rec.get("note"))
         elif rec.get("kind") == "save":
             saved = bool(rec.get("result"))
             stopped = bool(rec.get("stopped_early"))
