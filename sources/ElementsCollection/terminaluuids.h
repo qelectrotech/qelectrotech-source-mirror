@@ -23,6 +23,8 @@ class QDomElement;
 namespace TerminalUuids
 {
 	void keep(const QDomElement &old_element, QDomElement &new_element);
+	void keepInDirectory(const QDomElement &old_directory,
+						 QDomElement &new_directory);
 }
 
 #endif // TERMINALUUIDS_H

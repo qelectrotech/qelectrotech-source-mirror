@@ -159,6 +159,68 @@ private slots:
 		QCOMPARE(uuids(new_symbol), (QStringList{"{a}", "{b}", "{z}"}));
 	}
 
+	// The new revision moved terminal {a} and put a new one where it was:
+	// {a} is still {a}, and the new one is not given {a} a second time.
+	void noUuidGivenTwice()
+	{
+		QDomDocument doc;
+		const QDomElement old_symbol = symbol(doc, {{"0", "0", "n", "{a}"}});
+		QDomElement new_symbol = symbol(doc, {{"0", "5", "n", "{a}"},
+											  {"0", "0", "n", "{c}"}});
+		TerminalUuids::keep(old_symbol, new_symbol);
+		QCOMPARE(uuids(new_symbol), (QStringList{"{a}", "{c}"}));
+	}
+
+	// A terminal that already carries an old uuid is never renamed, even
+	// when it moved onto the place of another old terminal.
+	void movedTerminalNotRenamed()
+	{
+		QDomDocument doc;
+		const QDomElement old_symbol = symbol(doc, {{"0", "0", "n", "{a}"},
+													{"0", "5", "n", "{b}"}});
+		QDomElement new_symbol = symbol(doc, {{"0", "5", "n", "{a}"},
+											  {"0", "9", "n", "{x}"}});
+		TerminalUuids::keep(old_symbol, new_symbol);
+		QCOMPARE(uuids(new_symbol), (QStringList{"{a}", "{x}"}));
+	}
+
+	// Replacing a whole category: every symbol with a counterpart of the
+	// same name, at any depth, keeps its terminal uuids.
+	void keepInDirectory()
+	{
+		QDomDocument doc;
+		auto category = [&doc](const QString &name) {
+			QDomElement c = doc.createElement(QStringLiteral("category"));
+			c.setAttribute(QStringLiteral("name"), name);
+			return c;
+		};
+		auto named = [](QDomElement e, const QString &name) {
+			e.setAttribute(QStringLiteral("name"), name);
+			return e;
+		};
+
+		QDomElement old_dir = category(QStringLiteral("dir"));
+		QDomElement old_sub = category(QStringLiteral("sub"));
+		old_dir.appendChild(named(symbol(doc, {{"0", "0", "n", "{a}"}}), "top.elmt"));
+		old_dir.appendChild(old_sub);
+		old_sub.appendChild(named(symbol(doc, {{"0", "0", "n", "{b}"}}), "deep.elmt"));
+
+		QDomElement new_dir = category(QStringLiteral("dir"));
+		QDomElement new_sub = category(QStringLiteral("sub"));
+		const QDomElement top = named(symbol(doc, {{"0", "0", "n", "{x}"}}), "top.elmt");
+		const QDomElement other = named(symbol(doc, {{"0", "0", "n", "{y}"}}), "other.elmt");
+		const QDomElement deep = named(symbol(doc, {{"0", "0", "n", "{z}"}}), "deep.elmt");
+		new_dir.appendChild(top);
+		new_dir.appendChild(other);
+		new_dir.appendChild(new_sub);
+		new_sub.appendChild(deep);
+
+		TerminalUuids::keepInDirectory(old_dir, new_dir);
+		QCOMPARE(uuids(top), QStringList{"{a}"});
+		QCOMPARE(uuids(other), QStringList{"{y}"});
+		QCOMPARE(uuids(deep), QStringList{"{b}"});
+	}
+
 	// The real loader, on a project whose 131 wires are saved against
 	// terminal uuids: replaced symbols lose 119 of them unless keep() ran,
 	// and the ones lost are reported.

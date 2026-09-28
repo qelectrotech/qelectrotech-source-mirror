@@ -1925,7 +1925,7 @@ bool Diagram::fromXml(QDomElement &document,
 				delete c;
 		}
 	}
-	if (!m_wires_not_reconnected.isEmpty()) {
+	if (consider_informations && !m_wires_not_reconnected.isEmpty()) {
 		qWarning().noquote() << "Diagram::fromXml():"
 							 << m_wires_not_reconnected.size()
 							 << "wire(s) not loaded, a terminal they join was not found:"
