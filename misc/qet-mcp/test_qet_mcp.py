@@ -1242,8 +1242,8 @@ class DiffContracts(unittest.TestCase):
     def test_table_fields(self):
         def table(**v):
             a = {"x": "0", "y": "0", "width": "100", "height": "50", "display_n_row": "10", **v}
-            return ('<graphics_table uuid="{tb}" name="P" '
-                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + '/>')
+            return ('<tables><graphics_table uuid="{tb}" name="P" '
+                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + '/></tables>')
         for attr, reported in (("y", "y"), ("width", "width"), ("height", "height")):
             with self.subTest(attr=attr):
                 d = m.tool_diff(self.qet(self.folio(extra=table())),
@@ -1251,8 +1251,8 @@ class DiffContracts(unittest.TestCase):
                 self.assertEqual([list(c["changed"]) for c in d["changed"]], [[reported]])
 
     def test_tables(self):
-        table = lambda x, rows: ('<graphics_table uuid="{tb}" name="Parts" x="' + str(x)
-                                 + f'" y="0" width="100" height="50" display_n_row="{rows}"/>')
+        table = lambda x, rows: ('<tables><graphics_table uuid="{tb}" name="Parts" x="' + str(x)
+                                 + f'" y="0" width="100" height="50" display_n_row="{rows}"/></tables>')
         d = m.tool_diff(self.qet(self.folio(extra=table(0, 10))),
                         self.qet(self.folio(extra=table(20, 12))))["tables"]
         self.assertEqual((d["keyed_by"], d["before"], d["after"]), ("uuid", 1, 1))

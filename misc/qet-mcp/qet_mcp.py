@@ -345,7 +345,7 @@ def _extras(root: ET.Element) -> dict:
     for n, d in _folios(root):
         folios[n] = {f: d.get(f, "") for f in _FOLIO_FIELDS}
         folio_uuids[n] = d.get("uuid", "")
-        for tb in d.iter("graphics_table"):
+        for tb in d.findall("tables/graphics_table"):
             tables.append(record(
                 tb, {"folio": n, "name": tb.get("name", "")},
                 {"x": tb.get("x", ""), "y": tb.get("y", ""), "width": tb.get("width", ""),
