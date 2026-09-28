@@ -279,6 +279,44 @@ QString MaterialList::elementInfoKey(const QString &column, int block)
 }
 
 /**
+	@brief MaterialList::isArticleBound
+	Tell whether a column describes the article itself, rather than what
+	the element does or where it stands.
+
+	An empty cell of such a column clears the field it feeds when the
+	entry is applied: an element cannot carry the manufacturer of two
+	parts at once, so the value of the article picked before has to go.
+	Every other column (function, comment, notes, plant, location, and
+	quantity and unity, which say how many pieces this element takes and
+	in which unit) is left alone by an empty cell, and so is a column the
+	file does not hold at all: a file which mentions nothing about a
+	field is no reason to empty it.
+	@param column a column of the material file
+	@return true when an empty cell of that column clears the field
+*/
+bool MaterialList::isArticleBound(const QString &column)
+{
+	static const QStringList article_columns = {
+		QStringLiteral("description"),
+		QStringLiteral("designation"),
+		QStringLiteral("manufacturer"),
+		QStringLiteral("manufacturer_reference"),
+		QStringLiteral("machine_manufacturer_reference"),
+		QStringLiteral("supplier"),
+		QStringLiteral("model"),
+		QStringLiteral("category"),
+		QStringLiteral("voltage_rating"),
+		QStringLiteral("current_rating"),
+		QStringLiteral("width"),
+		QStringLiteral("height"),
+		QStringLiteral("depth"),
+		QStringLiteral("auxiliary")
+	};
+
+	return article_columns.contains(column);
+}
+
+/**
 	@brief MaterialList::translatedColumn
 	@param column a column of the material file
 	@return that column named the way it is shown to the user, in the
@@ -443,6 +481,10 @@ QChar MaterialList::detectSeparator(const QString &first_line)
 	const int commas = first_line.count(QLatin1Char(','));
 
 	if (semicolons == 0 && tabs == 0 && commas == 0) {
+			//A header holding no separator character at all is a file of a
+			//single column : falling back on the semicolon is deliberate,
+			//it is the one QElectroTech writes itself, and such a file
+			//needs no detection anyway. Leave this alone.
 		return QLatin1Char(';');
 	}
 	if (tabs >= semicolons && tabs >= commas && tabs > 0) {
@@ -616,14 +658,25 @@ bool MaterialList::load(const QString &path, MaterialListData *data, QString *er
 
 		//The label line is followed by the machine header QElectroTech
 		//writes itself : the canonical names, so that the file is read the
-		//same way whatever the language it was written in.
+		//same way whatever the language it was written in. That machine
+		//line is the one naming the columns when it is there : the label
+		//line above it may be written in another language than the one
+		//running now, and would then match nothing. The label line stays
+		//on disk, it is only what the user reads.
+	QStringList machine_line;
 	if (!rows.isEmpty() && isMachineHeaderLine(header, rows.first(), alias_map)) {
-		rows.takeFirst();
+		machine_line = rows.takeFirst();
 	}
 
 	QStringList used;
-	for (const QString &cell : header)
+	for (int i = 0; i < header.size(); ++i)
 	{
+			//An empty machine cell means the column is named by the label
+			//above it (a column added by hand shows up in both lines).
+		QString cell = header.at(i);
+		if (i < machine_line.size() && !machine_line.at(i).isEmpty()) {
+			cell = machine_line.at(i);
+		}
 		const QString column = canonicalColumn(cell, used, alias_map);
 		used.append(column);
 		data->columns.append(column);
@@ -640,6 +693,16 @@ bool MaterialList::load(const QString &path, MaterialListData *data, QString *er
 				empty = false;
 			}
 			record.setValue(data->columns.at(i), value);
+		}
+			//Cells written past the header are not thrown away : they are
+			//written back the way they were read, and they are content too,
+			//so a line only they fill is kept as well.
+		for (int i = data->columns.size(); i < row.size(); ++i)
+		{
+			if (!row.at(i).isEmpty()) {
+				empty = false;
+			}
+			record.extra.append(row.at(i));
 		}
 		if (!empty) {
 			data->records.append(record);
@@ -673,6 +736,9 @@ bool MaterialList::writeFile(const QString &path, const MaterialListData &data, 
 		for (const QString &column : data.columns) {
 			row.append(record.value(column));
 		}
+			//The cells the file holds past the header, if any, follow the
+			//columns : a line wider than the header stays that wide.
+		row.append(record.extra);
 		rows.append(row);
 	}
 
