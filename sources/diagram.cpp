@@ -437,6 +437,24 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	rememberSelection();
+		//Clicking again on a member of a group that is selected whole picks
+		//that member out, to edit it on its own (discussion #1070): noted
+		//here, decided on release, since a drag must still move the group.
+		//Ctrl keeps its usual meaning.
+	m_member_to_pick.clear();
+	if (event->button() == Qt::LeftButton
+		&& !event->modifiers().testFlag(Qt::ControlModifier)) {
+		QTransform view_transform;
+		if (event->widget()) {
+			if (auto view = qobject_cast<QGraphicsView *>(event->widget()->parentWidget())) {
+				view_transform = view->transform();
+			}
+		}
+		if (QGraphicsItem *member = ItemGroups::memberToPick(
+				itemAt(event->scenePos(), view_transform))) {
+			m_member_to_pick = member->toGraphicsObject();
+		}
+	}
 	QGraphicsScene::mousePressEvent(event);
 	completeGroupSelection();
 }
@@ -477,6 +495,19 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	QGraphicsScene::mouseReleaseEvent(event);
+
+		//A click that did not drag, on a member of a group selected whole:
+		//Qt has left only that member selected, and it stays so.
+	QGraphicsObject *picked = m_member_to_pick.data();
+	m_member_to_pick.clear();
+	if (picked
+		&& (event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton)).manhattanLength()
+			< QApplication::startDragDistance()
+		&& selectedItems() == QList<QGraphicsItem *>{picked}) {
+		rememberSelection();
+		return;
+	}
+
 		//A click on an already selected item changes the selection on
 		//release, not on press (Ctrl toggles it, a plain click keeps only it).
 	completeGroupSelection();

@@ -1033,7 +1033,11 @@ QDomElement Element::toXml(
 		QDomElement infos =
 				document.createElement(QStringLiteral("elementInformations"));
 		m_data.m_informations.toXml(infos, QStringLiteral("elementInformation"));
-		element.appendChild(infos);
+			//toXml() skips empty values: an element whose information is
+			//all empty would otherwise be written an empty block, which the
+			//next load reads as no information and the next save drops.
+		if (infos.hasChildNodes())
+			element.appendChild(infos);
 	}
 
 		//Save override properties (For now, only used when the element is a terminal)
