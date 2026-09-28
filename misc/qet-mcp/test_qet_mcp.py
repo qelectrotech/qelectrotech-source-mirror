@@ -167,6 +167,33 @@ class EditValidation(unittest.TestCase):
     def build(self, ops):
         return m._build_script(ops, "/tmp/out.qet")
 
+    def test_tables_and_text_fields_by_uuid(self):
+        """A table or a symbol text field named by uuid is looked up at run
+        time; a field's lookup is scoped to the op's element."""
+        U = "{11111111-2222-4333-8444-555555555555}"
+        E = "{aaaaaaaa-0000-4000-8000-000000000001}"
+        s = self.build([{"op": "set_table_position", "folio": 2, "table": U, "x": 1, "y": 2}])
+        self.assertIn(f'qet.setTablePosition(2, qet.tableIndex(2, "{U}"), 1, 2)', s)
+        s = self.build([{"op": "delete_table", "folio": 0, "table": 3}])
+        self.assertIn("qet.deleteTable(0, 3)", s)
+        s = self.build([{"op": "set_element_text", "folio": 1, "element": E, "index": U,
+                         "property": "x", "value": "5"}])
+        self.assertIn(f'qet.setElementTextProperty(1, "{E}", '
+                      f'qet.elementTextIndex(1, "{E}", "{U}"), "x", "5")', s)
+        # the element may be one placed earlier in the same run
+        s = self.build([{"op": "add_folio", "id": "f"},
+                        {"op": "add_element", "id": "k", "folio": "$f", "path": "p", "x": 0, "y": 0},
+                        {"op": "delete_element_text", "folio": "$f", "element": "$k", "index": U}])
+        self.assertIn(f'qet.deleteElementText(R["f"], R["k"], qet.elementTextIndex(R["f"], R["k"], "{U}"))', s)
+        # the lookups are required only when a uuid is used
+        self.assertIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": U}]))
+        self.assertNotIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": 0}]))
+        for op in ({"op": "delete_table", "folio": 0, "table": "second"},
+                   {"op": "delete_element_text", "folio": 0, "element": E, "index": "label"}):
+            with self.subTest(op=op["op"]):
+                with self.assertRaisesRegex(ValueError, "index or its uuid"):
+                    self.build([op])
+
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op
         f = {"op": "add_folio", "id": "f"}
@@ -2815,6 +2842,58 @@ class UuidIndexLookups(unittest.TestCase):
         self.assertEqual(at(out["second"]) - at(out["first"]), 900)
         self.assertEqual((out["bogus"], out["not_uuid"]), (-1, -1))
         self.assertEqual((out["second_after"], out["first_after"]), (0, -1))
+
+    def test_qet_edit_deletes_then_moves_tables_by_uuid(self):
+        """Delete one table, then move the other, both by uuid. By index the
+        second op would name the wrong table: deleting table 0 shifts table 1."""
+        text = (Path(EXAMPLES) / "industrial.qet").read_text(encoding="utf-8")
+        root = ET.fromstring(text)
+        folio, table = next((i, d.find("tables/graphics_table")) for i, d in enumerate(root.iter("diagram"))
+                            if d.find("tables/graphics_table") is not None)
+        twin = ET.fromstring(ET.tostring(table))
+        twin.set("uuid", "{11111111-2222-4333-8444-555555555555}")
+        twin.set("x", str(float(table.get("x")) + 900))
+        # Insert into the raw text: re-serialising the whole file with
+        # ElementTree rewrites the embedded SVG logo's namespace, which
+        # QElectroTech then saves without its declaration.
+        start = text.index(f'uuid="{table.get("uuid")}"')
+        end = text.index("</graphics_table>", start) + len("</graphics_table>")
+        text = text[:end] + ET.tostring(twin, encoding="unicode") + text[end:]
+        with tempfile.TemporaryDirectory() as tmp:
+            src, out = Path(tmp) / "two.qet", Path(tmp) / "out.qet"
+            src.write_text(text, encoding="utf-8")
+            r = m.tool_edit(BINARY, str(src), [
+                {"op": "delete_table", "folio": folio, "table": table.get("uuid")},
+                {"op": "set_table_position", "folio": folio, "table": twin.get("uuid"), "x": 120, "y": 340}],
+                str(out), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            left = list(ET.parse(out).getroot().iter("diagram"))[folio].findall("tables/graphics_table")
+        self.assertEqual([(t.get("uuid"), float(t.get("x")), float(t.get("y"))) for t in left],
+                         [(twin.get("uuid"), 120.0, 340.0)])
+
+    def test_qet_edit_edits_one_copys_field_by_uuid(self):
+        """Two copies of a symbol share a field uuid; addressing it with the
+        symbol changes that copy's field only."""
+        root = ET.parse(Path(EXAMPLES) / "2612_ats_singlephase.qet").getroot()
+        owners = {}
+        for i, d in enumerate(root.iter("diagram")):
+            for el in d.iter("element"):
+                for t in el.findall("dynamic_texts/dynamic_elmt_text"):
+                    if t.get("uuid"):
+                        owners.setdefault((i, t.get("uuid")), []).append(el.get("uuid"))
+        (folio, field), (a, b) = next((k, v[:2]) for k, v in owners.items() if len(v) >= 2)
+        with tempfile.TemporaryDirectory() as tmp:
+            src, out = Path(tmp) / "in.qet", Path(tmp) / "out.qet"
+            shutil.copy(Path(EXAMPLES) / "2612_ats_singlephase.qet", src)
+            r = m.tool_edit(BINARY, str(src), [
+                {"op": "set_element_text", "folio": folio, "element": b, "index": field,
+                 "property": "x", "value": "77"}], str(out), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            x_of = lambda path, el_uuid: next(
+                t.get("x") for el in ET.parse(path).getroot().iter("element") if el.get("uuid") == el_uuid
+                for t in el.findall("dynamic_texts/dynamic_elmt_text") if t.get("uuid") == field)
+            self.assertEqual(float(x_of(out, b)), 77.0)
+            self.assertEqual(x_of(out, a), x_of(src, a))
 
     def test_element_text_index_needs_the_element_as_well(self):
         """Copies of a symbol share their text fields' uuids (2612_ats_singlephase.qet):
