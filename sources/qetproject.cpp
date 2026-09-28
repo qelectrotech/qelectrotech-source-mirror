@@ -276,6 +276,27 @@ QUuid QETProject::uuid() const
 }
 
 /**
+	@brief QETProject::derivedUuid
+	A uuid for an item of this project that was saved without one, the same
+	on every load of the same file.
+	@p key describes the item by what it is, never by its place in the file
+	or its folio's index: inserting or moving a folio must not change it.
+	Items with the same @p kind and @p key anywhere in the project (a copied
+	folio, two identical symbols stacked on one spot) are told apart by a
+	counter, in load order among those items alone.
+	@return a UUID v5, which cannot collide with the v4 uuids given to new
+	items
+*/
+QUuid QETProject::derivedUuid(const QString &kind, const QString &key)
+{
+	static const QUuid derived_ns(QStringLiteral("{7d1e9c3a-5b2f-4e8a-9c61-2f4b8d0e6a17}"));
+	const QString full = kind + QLatin1Char('\n') + key;
+	const int n = m_derived_uuid_keys[full]++;
+	return QUuid::createUuidV5(derived_ns,
+							   n ? full + QLatin1Char('\n') + QString::number(n) : full);
+}
+
+/**
 	@brief QETProject::init
 */
 void QETProject::init()
