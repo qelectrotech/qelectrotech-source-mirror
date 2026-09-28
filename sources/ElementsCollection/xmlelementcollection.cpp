@@ -128,9 +128,13 @@ XmlElementCollection::XmlElementCollection(const QDomElement &dom_element,
 	QObject(project),
 	m_project(project)
 {
-	if (dom_element.tagName() == "collection")
+	if (dom_element.tagName() == "collection") {
 		m_dom_document.appendChild(m_dom_document.importNode(
 						   dom_element, true));
+			//Before any folio is built from these symbols, so that their
+			//terminals carry the uuid the next save writes
+		TerminalUuids::fillMissing(root());
+	}
 	else
 		qDebug() << "XmlElementCollection : tagName of dom_element is not collection";
 }

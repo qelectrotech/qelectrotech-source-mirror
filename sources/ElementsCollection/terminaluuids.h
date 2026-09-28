@@ -18,10 +18,14 @@
 #ifndef TERMINALUUIDS_H
 #define TERMINALUUIDS_H
 
+#include <QUuid>
+
 class QDomElement;
 
 namespace TerminalUuids
 {
+	QUuid derived(qreal x, qreal y, int orientation, int occurrence = 0);
+	int fillMissing(const QDomElement &collection_root);
 	void keep(const QDomElement &old_element, QDomElement &new_element);
 	void keepInDirectory(const QDomElement &old_directory,
 						 QDomElement &new_directory);

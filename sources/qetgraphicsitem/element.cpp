@@ -697,6 +697,16 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 	}
 
 	Terminal *new_terminal = new Terminal(data, this);
+		//Terminals are parsed in the order of the definition, and the list
+		//is not kept in that order (sort below)
+	int rank = 0;
+	for (Terminal *t : std::as_const(m_terminals)) {
+		if (t->dock_elmt_ == new_terminal->dock_elmt_
+			&& t->orientation() == new_terminal->orientation()) {
+			++rank;
+		}
+	}
+	new_terminal->setPlaceRank(rank);
 	m_terminals << new_terminal;
 
 	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::updateConductorTexts);

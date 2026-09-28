@@ -901,6 +901,30 @@ class ReadToolContracts(unittest.TestCase):
                 r = tool(str(big))
                 self.assertEqual((r["count"], r["truncated"], len(r[key])), (201, True, 200))
 
+    def test_conductor_key_same_in_both_forms(self):
+        # A wire in the numbered form before a save and the uuid form after
+        # it (the first save of an older project) is the same wire: both
+        # ends resolve to the placed symbol's terminal record. The record is
+        # where the wire docks, 4 from the definition position.
+        root = ET.fromstring(
+            '<project><collection><category name="import"><category name="x">'
+            '<element name="S.elmt"><definition><description>'
+            '<terminal uuid="{T1}" x="0" y="0" orientation="s"/>'
+            '<terminal uuid="{T2}" x="10" y="0" orientation="e"/>'
+            '</description></definition></element>'
+            '</category></category></collection>'
+            '<diagram><elements><element uuid="{E}" type="embed://import/x/S.elmt">'
+            '<terminals><terminal id="5" x="0" y="-4" orientation="2"/>'
+            '<terminal id="6" x="6" y="0" orientation="1"/></terminals>'
+            '</element></elements><conductors>'
+            '<conductor terminal1="5" terminal2="6"/>'
+            '<conductor element1="{e}" terminal1="{t1}" element2="{E}" terminal2="{T2}"/>'
+            '</conductors></diagram></project>')
+        numbered, by_uuid = [m._conductor_row(i, c, ix)["key"]
+                             for i, c, ix in m._conductors(root)]
+        self.assertEqual(numbered, "1:{E}@0,-4,2--{E}@6,0,1")
+        self.assertEqual(by_uuid, numbered)
+
     def test_conductor_row_without_an_index(self):
         c = ET.fromstring('<conductor terminal1="7" terminal2="8"/>')
         self.assertEqual(m._conductor_row(3, c)["key"], "3:#7--#8")
