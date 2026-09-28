@@ -142,6 +142,9 @@ class Diagram : public QGraphicsScene
 			//Selection before the current click, see completeGroupSelection()
 		QList<QPointer<QGraphicsObject>> m_previous_selection;
 		void rememberSelection();
+			//Member of a wholly selected group under the current click, which
+			//the click picks out on its own if it ends without a drag
+		QPointer<QGraphicsObject> m_member_to_pick;
 
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
