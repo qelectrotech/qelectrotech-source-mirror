@@ -96,14 +96,16 @@ class QetGraphicsTableItem;
 	  no way to connect them.
 
 	  Terminals are addressed by their @b index in Element::terminals(),
-	  not by uuid, and elementTerminals() prints that indexing so a script
-	  can see what it is about to wire. The index is the terminal's place
-	  in the element's own top-to-bottom, left-to-right ordering, not the
-	  order its definition file lists them. Terminal uuids look like the
-	  obvious key and are not one: Terminal::uuid() is a property of the
-	  catalog .elmt definition, empty for most of the installed base and,
-	  where present, identical across every instance of that element -- so
-	  it does not distinguish one placed coil's A1 from another's.
+	  and elementTerminals() prints that indexing so a script can see what
+	  it is about to wire. The index is the terminal's place in the
+	  element's own top-to-bottom, left-to-right ordering, not the order
+	  its definition file lists them, and it is undefined between two
+	  terminals at the same point. What does not move is the terminal's
+	  uuid together with its element's: each elementTerminals() line ends
+	  with the terminal's uuid, and terminalIndex() turns element uuid +
+	  terminal uuid back into the index. A terminal uuid alone is not an
+	  address -- it comes from the symbol's definition, so every placed
+	  instance of one symbol has the same ones.
 	- @b Conductor properties and @b cross-references: set a conductor's
 	  number, formula, colour or section (and its look: style normal/
 	  dashed/dashdotted, two-colour mode and second colour, dash size,
@@ -384,6 +386,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QStringList elementUuids(int folioIndex) const;
 		Q_INVOKABLE QString elementName(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE QStringList elementTerminals(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int terminalIndex(int folioIndex, const QString &elementUuid,
+									  const QString &terminalUuid) const;
 
 		// -- element information, through ChangeElementInformationCommand --
 		Q_INVOKABLE QString elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const;
