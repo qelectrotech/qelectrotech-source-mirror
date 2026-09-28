@@ -194,6 +194,26 @@ class EditValidation(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "index or its uuid"):
                     self.build([op])
 
+    def test_folio_by_uuid(self):
+        """A folio named by uuid is looked up at run time, wherever an op
+        takes a folio; the lookup is required only then."""
+        U = "{11111111-2222-4333-8444-555555555555}"
+        E = "{aaaaaaaa-0000-4000-8000-000000000001}"
+        s = self.build([{"op": "set_folio", "folio": U, "property": "author", "value": "a"}])
+        self.assertIn(f'qet.setFolioProperty(qet.folioIndex("{U}"), "author", "a")', s)
+        self.assertIn('"folioIndex"', s)
+        # the item lookups take the resolved folio too
+        s = self.build([{"op": "delete_table", "folio": U, "table": E}])
+        self.assertIn(f'qet.deleteTable(qet.folioIndex("{U}"), qet.tableIndex(qet.folioIndex("{U}"), "{E}"))', s)
+        s = self.build([{"op": "link_elements", "folio": 0, "element": E, "to_folio": U, "to": E}])
+        self.assertIn(f'qet.linkElements(0, "{E}", qet.folioIndex("{U}"), "{E}")', s)
+        self.assertNotIn('"folioIndex"', self.build(
+            [{"op": "set_folio", "folio": 0, "property": "author", "value": "a"}]))
+        with self.assertRaisesRegex(ValueError, "saved once"):
+            self.build([{"op": "set_folio", "folio": "", "property": "author", "value": "a"}])
+        with self.assertRaisesRegex(ValueError, "folio index, its uuid"):
+            self.build([{"op": "set_folio", "folio": "first", "property": "author", "value": "a"}])
+
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op
         f = {"op": "add_folio", "id": "f"}
@@ -783,8 +803,8 @@ class ReadToolContracts(unittest.TestCase):
         self.assertEqual(m.tool_project_info(self.qet), {
             "file": self.qet, "title": "T", "version": "0.100",
             "folio_count": 2, "element_count": 4, "conductor_count": 3,
-            "folios": [{"index": 1, "title": "One", "elements": 3, "conductors": 2},
-                       {"index": 2, "title": "Two", "elements": 1, "conductors": 1}]})
+            "folios": [{"index": 1, "uuid": "", "title": "One", "elements": 3, "conductors": 2},
+                       {"index": 2, "uuid": "", "title": "Two", "elements": 1, "conductors": 1}]})
 
     def test_elements_rows_exact(self):
         r = m.tool_elements(self.qet)
@@ -3587,6 +3607,31 @@ class UuidIndexLookups(unittest.TestCase):
             left = list(ET.parse(out).getroot().iter("diagram"))[folio].findall("tables/graphics_table")
         self.assertEqual([(t.get("uuid"), float(t.get("x")), float(t.get("y"))) for t in left],
                          [(twin.get("uuid"), 120.0, 340.0)])
+
+    def test_qet_edit_follows_a_folio_by_uuid_across_a_removal(self):
+        """Remove folio 0, then retitle what was folio 2 by its uuid. By index
+        the second op would retitle the wrong folio. The file is saved
+        without folio uuids, so qet_project_info shows them only once a
+        first qet_edit has saved it."""
+        src = Path(EXAMPLES) / "tableau_domestique.qet"
+        self.assertEqual({f["uuid"] for f in m.tool_project_info(str(src))["folios"]}, {""})
+        with tempfile.TemporaryDirectory() as tmp:
+            once, out = Path(tmp) / "once.qet", Path(tmp) / "out.qet"
+            r = m.tool_edit(BINARY, str(src), [{"op": "set_folio", "folio": 0, "property": "author",
+                                                "value": "x"}], str(once), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            before = m.tool_project_info(str(once))["folios"]
+            self.assertTrue(all(m._UUID_RE.fullmatch(f["uuid"]) for f in before))
+            third = before[2]
+            r = m.tool_edit(BINARY, str(once), [
+                {"op": "remove_folio", "folio": before[0]["uuid"]},
+                {"op": "set_folio", "folio": third["uuid"], "property": "title", "value": "moved"}],
+                str(out), elements_dir=ELEMENTS or None)
+            self.assertTrue(r["ok"], r.get("hint"))
+            after = m.tool_project_info(str(out))["folios"]
+        self.assertEqual([f["uuid"] for f in after], [f["uuid"] for f in before[1:]])
+        self.assertEqual([f["title"] for f in after],
+                         [f["title"] for f in before[1:2]] + ["moved"] + [f["title"] for f in before[3:]])
 
     def test_qet_edit_edits_one_copys_field_by_uuid(self):
         """Two copies of a symbol share a field uuid; addressing it with the
