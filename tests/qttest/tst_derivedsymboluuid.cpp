@@ -156,6 +156,28 @@ private slots:
 		QCOMPARE(symbolUuids(resave(doc)), symbolUuids(doc));
 	}
 
+	// A symbol keeps its derived uuid once saved, even when moved. A symbol
+	// saved without a uuid that later turns up on the spot it left (a hand
+	// edit, an older version, another tool) would derive the same uuid: it
+	// must get another one instead.
+	void newcomerOnAMovedSymbolsSpotGetsAnotherUuid()
+	{
+		QDomDocument doc = resave(fixture());
+		QDomElement moved = symbols(diagrams(doc).first()).first();
+		QVERIFY(!QUuid(moved.attribute(QStringLiteral("uuid"))).isNull());
+		QDomElement newcomer = moved.cloneNode(true).toElement();
+		newcomer.removeAttribute(QStringLiteral("uuid"));
+		const QDomNodeList terminals = newcomer.elementsByTagName(QStringLiteral("terminal"));
+		for (int i = 0; i < terminals.size(); ++i)
+			terminals.at(i).toElement().setAttribute(QStringLiteral("id"), 90000 + i);
+		moved.setAttribute(QStringLiteral("x"), moved.attribute(QStringLiteral("x")).toInt() + 500);
+		moved.parentNode().appendChild(newcomer);
+
+		const QMultiHash<QString, QString> after = symbolUuids(resave(doc));
+		QCOMPARE(after.size(), 10);
+		QCOMPARE(QSet<QString>(after.begin(), after.end()).size(), 10);
+	}
+
 	void stackedIdenticalSymbolsDiffer()
 	{
 		QDomDocument doc = fixture();

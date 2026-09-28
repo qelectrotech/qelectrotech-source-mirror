@@ -1685,7 +1685,7 @@ bool Diagram::fromXml(QDomElement &document,
 				//uuids anyway.
 			if (consider_informations && m_project
 				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
-				nvel_elmt->setUuid(m_project->derivedUuid(
+				nvel_elmt->setUuid(m_project->derivedItemUuid(
 									   QStringLiteral("element"),
 									   QStringList{type_id,
 												   element_xml.attribute(QStringLiteral("x")),
