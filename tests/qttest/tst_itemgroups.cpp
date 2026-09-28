@@ -121,6 +121,48 @@ private slots:
 		b = nullptr;
 	}
 
+	// A second click on a member of a group selected whole picks that member
+	// out; a click on a member of a group not selected whole does not.
+	void aMemberOfAWholeGroupCanBePicked()
+	{
+		select({a, b});
+		QCOMPARE(ItemGroups::memberToPick(a), a);
+		QCOMPARE(ItemGroups::memberToPick(b), b);
+	}
+
+	void aMemberOfAPartlySelectedGroupIsNotPicked()
+	{
+		select({a});       // after one member was picked
+		QCOMPARE(ItemGroups::memberToPick(a), nullptr);
+		select({});
+		QCOMPARE(ItemGroups::memberToPick(a), nullptr);
+	}
+
+	void anUngroupedItemIsNotPicked()
+	{
+		select({c});
+		QCOMPARE(ItemGroups::memberToPick(c), nullptr);
+		QCOMPARE(ItemGroups::memberToPick(nullptr), nullptr);
+	}
+
+	void aGroupOfOneIsNotPicked()
+	{
+		ItemGroups::setGroup(e, QUuid());   // g2 is now d alone
+		select({d});
+		QCOMPARE(ItemGroups::memberToPick(d), nullptr);
+	}
+
+	// A click lands on a symbol's own text, not on the symbol: the member is
+	// the nearest grouped ancestor.
+	void aClickOnAMembersChildPicksTheMember()
+	{
+		auto child = new QGraphicsRectItem(0, 0, 2, 2, a);
+		QCOMPARE(ItemGroups::groupedItem(child), a);
+		select({a, b});
+		QCOMPARE(ItemGroups::memberToPick(child), a);
+		QCOMPARE(ItemGroups::groupedItem(c), nullptr);
+	}
+
 	void xmlRoundTrip()
 	{
 		QDomDocument doc;
@@ -135,6 +177,34 @@ private slots:
 
 		ItemGroups::setGroup(a, QUuid());
 		QVERIFY(ItemGroups::groupOf(a).isNull());
+	}
+
+	// Rotate turns a selection that is exactly one whole group as one piece.
+	void aWholeGroupAloneIsASoleWholeGroup()
+	{
+		select({a, b});
+		QCOMPARE(ItemGroups::soleWholeGroup(selection()), g1);
+	}
+
+	void aPickedMemberIsNotAWholeGroup()
+	{
+		select({a});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+	}
+
+	void aGroupWithOtherItemsIsNotASoleGroup()
+	{
+		select({a, b, c});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+		select({a, b, d, e});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+	}
+
+	void ungroupedItemsAreNotAGroup()
+	{
+		select({c});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+		QVERIFY(ItemGroups::soleWholeGroup({}).isNull());
 	}
 };
 
