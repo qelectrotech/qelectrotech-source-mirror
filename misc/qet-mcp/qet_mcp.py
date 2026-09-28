@@ -2622,7 +2622,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string"},
                 "format": {"type": "string", "enum": sorted(EXPORT_FORMATS)},
                 "output": {"type": "string"},
@@ -2631,7 +2631,7 @@ TOOLS = [
                                              "without this an existing file is never clobbered"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project", "format", "output"],
+            "required": ["project", "format", "output"],
         },
         "handler": lambda a: tool_export(a["binary"], a["project"], a["format"],
                                          a["output"], a.get("timeout", 180)),
@@ -2649,7 +2649,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to start from; not modified"},
                 "output": {"type": "string", "description": "where to write the edited project"},
                 "overwrite": {"type": "boolean", "default": False,
@@ -2867,7 +2867,7 @@ TOOLS = [
                 },
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project", "output", "operations"],
+            "required": ["project", "output", "operations"],
         },
         "handler": lambda a: tool_edit(a["binary"], a["project"], a["operations"],
                                        a["output"], a.get("elements_dir"),
@@ -2885,7 +2885,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to query; never modified"},
                 "sql": {"type": "string",
                         "description": "a single SELECT or WITH...SELECT. "
@@ -2893,7 +2893,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_query(a["binary"], a["project"], a.get("sql", ""),
                                         a.get("elements_dir"), a.get("timeout", 180)),
@@ -2920,7 +2920,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to check; never modified"},
                 "folio": {"type": "integer", "description":
                           "check one folio only; omit for the whole project. An index "
@@ -2931,7 +2931,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_continuity(a["binary"], a["project"], a.get("folio"),
                                              a.get("elements_dir"), a.get("timeout", 180)),
@@ -2947,7 +2947,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "output": {"type": "string", "description": "where to write the new .qet"},
                 "title": {"type": "string", "description": "the project title"},
                 "folios": {"description": "how many empty folios, or a list of folio titles",
@@ -2959,7 +2959,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "output", "title"],
+            "required": ["output", "title"],
         },
         "handler": lambda a: tool_project_new(
             a["binary"], a["output"], a["title"], a.get("folios", 1), a.get("author", ""),
@@ -3008,7 +3008,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string"},
                 "checks": {"type": "array", "items": {"type": "string", "enum": sorted(CHECKS)},
                            "description": "which checks to run; omit for all"},
@@ -3017,7 +3017,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_check(a["binary"], a["project"], a.get("checks"),
                                         a.get("sample", 10), a.get("elements_dir"),
@@ -3097,17 +3097,21 @@ _BY_NAME = {t["name"]: t for t in TOOLS}
 # sandboxed HOME each QElectroTech launch gets isolates *settings*, not the
 # filesystem.
 #
-# So data paths are confined to a workspace. Two kinds of path are treated
-# differently, deliberately:
+# So data paths are confined to a workspace, and the program the server
+# launches is not the client's to choose:
 #
 #   data          chosen by the client per call -- the projects, directories,
-#                 images and outputs below. Confined.
-#   configuration chosen once by whoever runs the server -- "binary" (the
-#                 qelectrotech executable) and "elements_dir" (the element
-#                 collection). Both normally live in /usr or a build tree,
-#                 i.e. outside any sane workspace, so confining them would
-#                 reject the ordinary case while stopping nothing: they are
-#                 not where a model gets to point the server at /etc.
+#                 images and outputs below. Confined to the workspace.
+#   executable    "binary". Resolved by the server itself (resolve_binary());
+#                 a client may name it only when it is that same file or one
+#                 whoever configured the server listed in QET_MCP_BINARIES.
+#                 It once counted as configuration and went unchecked, but it
+#                 is a per-call argument: a model steered by text in a
+#                 project could run any program on the machine with it.
+#   collection    "elements_dir". Normally outside the workspace (in /usr or
+#                 a build tree), so allowed there, in the collection of the
+#                 resolved install, or in a directory listed in
+#                 QET_MCP_ELEMENTS.
 #
 # Enforced here, at the dispatcher, because this is the trust boundary --
 # the point where model-supplied arguments enter. Calling the tool_* helpers
@@ -3130,6 +3134,10 @@ _DATA_PATHS = {
     "qet_project_new":    {"write": ("output",)},
     "qet_element_build":  {"write": ("output",)},
 }
+
+# Tools that launch QElectroTech, and so take "binary" and "elements_dir".
+_LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
+                 "qet_check", "qet_project_new"}
 
 # qet_edit operations that name a file of their own.
 _DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
@@ -3169,6 +3177,106 @@ def _within_workspace(path: Path, roots: list) -> bool:
     return False
 
 
+def _env_paths(name: str) -> list:
+    """An os.pathsep-separated list of paths from the environment, resolved."""
+    out = []
+    for part in os.environ.get(name, "").split(os.pathsep):
+        if part.strip():
+            try:
+                out.append(Path(part).expanduser().resolve())
+            except OSError:
+                continue
+    return out
+
+
+def _installed_prefix() -> Path | None:
+    """The install prefix when this script is <prefix>/share/qelectrotech/mcp/."""
+    here = Path(__file__).resolve().parent
+    if here.name == "mcp" and here.parent.name == "qelectrotech" \
+            and here.parent.parent.name == "share":
+        return here.parent.parent.parent
+    return None
+
+
+def resolve_binary() -> Path | None:
+    """The QElectroTech this server launches, found without asking the client.
+
+    QET_BINARY first, then the install this script ships in, then
+    qelectrotech on PATH. None when there is none; the tools that launch
+    QElectroTech then say how to set it.
+    """
+    env = os.environ.get("QET_BINARY", "").strip()
+    if env:
+        return Path(env).expanduser().resolve()
+    prefix = _installed_prefix()
+    if prefix is not None:
+        for name in ("qelectrotech", "qelectrotech.exe"):
+            cand = prefix / "bin" / name
+            if cand.is_file():
+                return cand.resolve()
+    found = shutil.which("qelectrotech")
+    return Path(found).resolve() if found else None
+
+
+def default_elements_dir() -> Path | None:
+    """The element collection of the install this script ships in, if any."""
+    prefix = _installed_prefix()
+    if prefix is not None:
+        coll = prefix / "share" / "qelectrotech" / "elements"
+        if coll.is_dir():
+            return coll.resolve()
+    return None
+
+
+def _check_binary(arguments: dict) -> None:
+    """Fill in "binary", or refuse one that is not the server's own choice."""
+    if os.environ.get("QET_MCP_ALLOW_ANY_BINARY") == "1" and arguments.get("binary"):
+        return
+    default = resolve_binary()
+    raw = arguments.get("binary")
+    if not raw:
+        if default is None:
+            raise ValueError(
+                "no QElectroTech found: set QET_BINARY to the qelectrotech "
+                "executable in the environment this server is started in")
+        arguments["binary"] = str(default)
+        return
+    if not isinstance(raw, str):
+        raise ValueError("'binary' must be a path")
+    given = Path(raw).expanduser().resolve()
+    allowed = ([default] if default else []) + _env_paths("QET_MCP_BINARIES")
+    if given not in allowed:
+        raise ValueError(
+            f"'binary' is not an allowed QElectroTech: {given}. Leave it out "
+            "to use " + (str(default) if default else "QET_BINARY")
+            + "; whoever configured this server can list others in "
+              "QET_MCP_BINARIES, or set QET_MCP_ALLOW_ANY_BINARY=1 to "
+              "disable this check (which lets the client run any program).")
+    arguments["binary"] = str(given)
+
+
+def _check_elements_dir(arguments: dict, roots: list) -> None:
+    """Fill in "elements_dir" from the install, or confine a given one."""
+    raw = arguments.get("elements_dir")
+    if not raw:
+        default = default_elements_dir()
+        if default is not None:
+            arguments["elements_dir"] = str(default)
+        return
+    if not isinstance(raw, str):
+        raise ValueError("'elements_dir' must be a path")
+    given = Path(raw).expanduser().resolve()
+    extra = _env_paths("QET_MCP_ELEMENTS")
+    default = default_elements_dir()
+    if default is not None:
+        extra.append(default)
+    if roots and not _within_workspace(given, roots + extra):
+        raise ValueError(
+            f"'elements_dir' is outside the workspace: {given}. Leave it out "
+            "to use the installed collection, or list the directory in "
+            "QET_MCP_ELEMENTS.")
+
+
 def _check_path(raw, arg: str, mode: str, roots: list) -> Path:
     """Resolve one path and refuse it if it leaves the workspace.
 
@@ -3192,11 +3300,19 @@ def _check_path(raw, arg: str, mode: str, roots: list) -> Path:
 
 
 def enforce_path_policy(tool_name: str, arguments: dict) -> None:
-    """Apply the workspace and overwrite policy to one tool call."""
+    """Apply the workspace, executable and overwrite policy to one tool call.
+
+    For a tool that launches QElectroTech this also fills in "binary" and,
+    when the install has one, "elements_dir", so a client need not know them.
+    """
     spec = _DATA_PATHS.get(tool_name)
     if spec is None:
         return
     roots = workspace_roots()
+
+    if tool_name in _LAUNCHES_QET:
+        _check_binary(arguments)
+        _check_elements_dir(arguments, roots)
 
     for arg in spec.get("read", ()):
         if arg in arguments:

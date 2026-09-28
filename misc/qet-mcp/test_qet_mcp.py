@@ -74,6 +74,16 @@ PLC_MASTER = "common://plc_master_test.elmt"
 PLC_SLAVE = "common://plc_slave_test.elmt"
 
 
+def fake_qet(bindir: Path, name: str = "qelectrotech") -> Path:
+    """An executable file standing in for QElectroTech. The policy checks
+    which file it is, never runs it."""
+    bindir.mkdir(parents=True, exist_ok=True)
+    exe = bindir / name
+    exe.write_text("#!/bin/sh\nexit 0\n")
+    exe.chmod(0o755)
+    return exe
+
+
 def png(path: Path) -> None:
     """A real 64x32 PNG from the standard library, so no imaging dependency."""
     import struct
@@ -1767,6 +1777,8 @@ class PathPolicy(unittest.TestCase):
         self._saved = dict(os.environ)
         os.environ["QET_MCP_WORKSPACE"] = str(self.root)
         os.environ.pop("QET_MCP_ALLOW_ANY_PATH", None)
+        self.qet = fake_qet(Path(self.tmp.name) / "bin")
+        os.environ["QET_BINARY"] = str(self.qet)
 
     def tearDown(self):
         os.environ.clear()
@@ -1800,7 +1812,7 @@ class PathPolicy(unittest.TestCase):
     def test_write_outside_the_workspace_is_refused(self):
         with self.assertRaisesRegex(ValueError, "outside the workspace"):
             m.enforce_path_policy("qet_export", {
-                "binary": "/usr/bin/qelectrotech",
+                "binary": str(self.qet),
                 "project": str(self.root / "ok.qet"),
                 "format": "pdf",
                 "output": str(self.outside / "exfiltrated.pdf")})
@@ -1808,7 +1820,7 @@ class PathPolicy(unittest.TestCase):
     def test_existing_output_is_not_clobbered_without_overwrite(self):
         target = self.root / "existing.qet"
         target.write_text("precious")
-        args = {"binary": "/usr/bin/qelectrotech", "output": str(target), "title": "T"}
+        args = {"binary": str(self.qet), "output": str(target), "title": "T"}
         with self.assertRaisesRegex(ValueError, "already exists"):
             m.enforce_path_policy("qet_project_new", args)
         # ... and goes through once the caller says so explicitly
@@ -1817,12 +1829,12 @@ class PathPolicy(unittest.TestCase):
 
     def test_new_output_needs_no_overwrite_flag(self):
         m.enforce_path_policy("qet_project_new", {
-            "binary": "/usr/bin/qelectrotech",
+            "binary": str(self.qet),
             "output": str(self.root / "brand_new.qet"), "title": "T"})
 
     def test_operation_level_file_paths_are_checked(self):
         """add_image/add_pdf_page carry their own path, one level down."""
-        base = {"binary": "/usr/bin/qelectrotech",
+        base = {"binary": str(self.qet),
                 "project": str(self.root / "ok.qet"),
                 "output": str(self.root / "out.qet")}
         outside_png = str(self.outside / "anything.png")
@@ -1832,17 +1844,6 @@ class PathPolicy(unittest.TestCase):
             with self.subTest(op=op["op"]):
                 with self.assertRaisesRegex(ValueError, "outside the workspace"):
                     m.enforce_path_policy("qet_edit", dict(base, operations=[op]))
-
-    def test_configuration_paths_are_exempt(self):
-        """binary and elements_dir are the operator's choice, not the model's.
-
-        Both normally live in /usr or a build tree, so confining them would
-        reject the ordinary case while stopping nothing.
-        """
-        m.enforce_path_policy("qet_query", {
-            "binary": "/usr/bin/qelectrotech",
-            "project": str(self.root / "ok.qet"),
-            "elements_dir": "/usr/share/qelectrotech/elements"})
 
     def test_several_roots_may_be_allowed(self):
         os.environ["QET_MCP_WORKSPACE"] = os.pathsep.join(
@@ -1880,8 +1881,8 @@ class PathPolicy(unittest.TestCase):
     def test_every_data_path_argument_is_guarded(self):
         """The other direction: a tool whose schema takes a data path must be
         in the policy, or that path is read or written with no workspace
-        check at all -- and nothing fails. binary and elements_dir are
-        configuration, deliberately not confined (see the README)."""
+        check at all -- and nothing fails. binary and elements_dir have
+        their own rule (BinaryPolicy)."""
         pathish = {"path", "project", "before", "after", "output", "directory"}
         for t in m.TOOLS:
             with self.subTest(tool=t["name"]):
@@ -1900,6 +1901,125 @@ class PathPolicy(unittest.TestCase):
                 for arg in tuple(spec.get("read", ())) + tuple(spec.get("write", ())):
                     self.assertIn(arg, props,
                                   f"{name} has no {arg!r} argument to guard")
+
+
+class BinaryPolicy(unittest.TestCase):
+    """The program the server launches is not the client's to choose (F063).
+
+    "binary" used to be exempt from every check as "configuration", but it
+    is a per-call argument: any executable file it named was run, with the
+    client's own paths as arguments.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        base = Path(self.tmp.name)
+        self.root = base / "workspace"
+        self.root.mkdir()
+        (self.root / "ok.qet").write_text("<project/>")
+        self.qet = fake_qet(base / "bin")
+        self.other = fake_qet(base / "other")
+        self._saved = dict(os.environ)
+        os.environ["QET_MCP_WORKSPACE"] = str(self.root)
+        os.environ["QET_BINARY"] = str(self.qet)
+        # A PATH with no qelectrotech on it, so only what a test sets counts.
+        os.environ["PATH"] = str(base / "empty")
+        for var in ("QET_MCP_ALLOW_ANY_PATH", "QET_MCP_ALLOW_ANY_BINARY",
+                    "QET_MCP_BINARIES", "QET_MCP_ELEMENTS"):
+            os.environ.pop(var, None)
+
+    def tearDown(self):
+        os.environ.clear()
+        os.environ.update(self._saved)
+        self.tmp.cleanup()
+
+    def call(self, **extra):
+        args = dict({"project": str(self.root / "ok.qet")}, **extra)
+        m.enforce_path_policy("qet_query", args)
+        return args
+
+    def test_left_out_it_is_filled_in(self):
+        self.assertEqual(self.call()["binary"], str(self.qet.resolve()))
+
+    def test_the_configured_one_is_accepted(self):
+        self.assertEqual(self.call(binary=str(self.qet))["binary"], str(self.qet.resolve()))
+
+    def test_any_other_program_is_refused(self):
+        with self.assertRaisesRegex(ValueError, "not an allowed QElectroTech"):
+            self.call(binary=str(self.other))
+
+    def test_a_program_inside_the_workspace_is_refused_too(self):
+        """Being inside the workspace makes a file readable, not runnable."""
+        planted = fake_qet(self.root, "run.sh")
+        with self.assertRaisesRegex(ValueError, "not an allowed QElectroTech"):
+            self.call(binary=str(planted))
+
+    def test_a_symlink_is_judged_by_its_target(self):
+        link = self.root / "qelectrotech"
+        link.symlink_to(self.other)
+        with self.assertRaisesRegex(ValueError, "not an allowed QElectroTech"):
+            self.call(binary=str(link))
+        good = self.root / "also-qet"
+        good.symlink_to(self.qet)
+        self.call(binary=str(good))
+
+    def test_others_can_be_listed(self):
+        os.environ["QET_MCP_BINARIES"] = str(self.other)
+        self.assertEqual(self.call(binary=str(self.other))["binary"], str(self.other.resolve()))
+
+    def test_the_check_can_be_switched_off(self):
+        os.environ["QET_MCP_ALLOW_ANY_BINARY"] = "1"
+        self.assertEqual(self.call(binary=str(self.other))["binary"], str(self.other))
+
+    def test_found_on_path(self):
+        del os.environ["QET_BINARY"]
+        os.environ["PATH"] = str(self.qet.parent)
+        self.assertEqual(self.call()["binary"], str(self.qet.resolve()))
+
+    def test_none_found_says_what_to_set(self):
+        del os.environ["QET_BINARY"]
+        with self.assertRaisesRegex(ValueError, "set QET_BINARY"):
+            self.call()
+
+    def test_every_tool_that_takes_binary_is_checked(self):
+        """A tool whose schema offers "binary" but that the policy skips
+        would run whatever it was given."""
+        takes = {t["name"] for t in m.TOOLS
+                 if "binary" in t["inputSchema"].get("properties", {})}
+        self.assertEqual(takes, m._LAUNCHES_QET)
+        for name in takes:
+            self.assertNotIn("binary", m._BY_NAME[name]["inputSchema"].get("required", []),
+                             f"{name} still requires the client to name a binary")
+
+    def test_elements_dir_outside_the_workspace_is_refused(self):
+        with self.assertRaisesRegex(ValueError, "'elements_dir' is outside"):
+            self.call(elements_dir=self.tmp.name)
+
+    def test_elements_dir_can_be_listed(self):
+        coll = Path(self.tmp.name) / "collection"
+        coll.mkdir()
+        os.environ["QET_MCP_ELEMENTS"] = str(coll)
+        self.call(elements_dir=str(coll / "10_electric"))
+
+    def test_an_install_finds_its_own_qet_and_collection(self):
+        """Installed as <prefix>/share/qelectrotech/mcp/qet_mcp.py, the
+        server needs no configuration at all."""
+        import importlib.util
+        prefix = Path(self.tmp.name) / "prefix"
+        mcp = prefix / "share" / "qelectrotech" / "mcp"
+        mcp.mkdir(parents=True)
+        (prefix / "share" / "qelectrotech" / "elements").mkdir()
+        shutil.copy2(HERE / "qet_mcp.py", mcp / "qet_mcp.py")
+        exe = fake_qet(prefix / "bin")
+        del os.environ["QET_BINARY"]
+        spec = importlib.util.spec_from_file_location("qet_mcp_installed", mcp / "qet_mcp.py")
+        inst = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(inst)
+        args = {"project": str(self.root / "ok.qet")}
+        inst.enforce_path_policy("qet_query", args)
+        self.assertEqual(args["binary"], str(exe.resolve()))
+        self.assertEqual(args["elements_dir"],
+                         str((prefix / "share" / "qelectrotech" / "elements").resolve()))
 
 
 class ScriptingDisabledHint(unittest.TestCase):
@@ -2035,6 +2155,24 @@ class PathPolicyOverStdio(unittest.TestCase):
             result = reply["result"]
             self.assertTrue(result.get("isError"), result)
             self.assertIn("outside the workspace", result["content"][0]["text"])
+
+    def test_a_tool_call_cannot_choose_the_program_to_run(self):
+        """F063's reproduction: a script in the workspace, named as binary."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "a.qet").write_text('<project title="x"><diagram title="D"/></project>')
+            planted = fake_qet(root, "argv.py")
+            reply = self.rpc({"jsonrpc": "2.0", "id": 9, "method": "tools/call",
+                              "params": {"name": "qet_export",
+                                         "arguments": {"binary": str(planted),
+                                                       "project": str(root / "a.qet"),
+                                                       "format": "pdf",
+                                                       "output": str(root / "o.pdf")}}},
+                             {"QET_MCP_WORKSPACE": str(root),
+                              "QET_BINARY": str(fake_qet(root / "bin"))})
+            result = reply["result"]
+            self.assertTrue(result.get("isError"), result)
+            self.assertIn("not an allowed QElectroTech", result["content"][0]["text"])
 
     def test_the_same_call_succeeds_inside_the_workspace(self):
         with tempfile.TemporaryDirectory() as tmp:
