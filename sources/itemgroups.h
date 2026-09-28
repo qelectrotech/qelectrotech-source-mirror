@@ -52,6 +52,9 @@ namespace ItemGroups
 	void write(QDomElement &xml, const QGraphicsItem *item);
 	QUuid read(const QDomElement &xml);
 
+	QGraphicsItem *groupedItem(QGraphicsItem *item);
+	QGraphicsItem *memberToPick(QGraphicsItem *hit);
+
 	bool completeSelection(QGraphicsScene *scene,
 						   const QList<QGraphicsItem *> &previous,
 						   bool toggling);
