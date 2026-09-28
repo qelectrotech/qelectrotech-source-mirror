@@ -409,6 +409,14 @@ def _extras(root: ET.Element) -> dict:
             "element_texts": element_texts, "element_text_uuids": element_text_uuids}
 
 
+def _usable_ids(*sides) -> bool:
+    """Whether uuids can identify items: present on every item, unique on each
+    side. Copying a symbol keeps its text fields' uuids, so a project can
+    hold the same field uuid twenty times; keying on it would merge them."""
+    return (any(sides) and all(all(s) for s in sides)
+            and all(len(set(s)) == len(s) for s in sides))
+
+
 def _diff_keyed(a: dict, b: dict, label) -> dict:
     """added / removed / changed for two dicts keyed by identity."""
     changed = []
@@ -432,7 +440,7 @@ def _diff_items(a: list, b: list) -> dict:
     and re-added. On uuid, position is part of what is compared, so a move
     is a change to that item.
     """
-    by_uuid = all(r["uuid"] for r in a + b)
+    by_uuid = _usable_ids([r["uuid"] for r in a], [r["uuid"] for r in b])
 
     def key(r):
         return r["uuid"] if by_uuid else str(r["key"])
@@ -458,7 +466,7 @@ def _diff_folios(a: dict, b: dict) -> dict:
     says so when the count changed.
     """
     ua, ub = a["folio_uuids"], b["folio_uuids"]
-    by_uuid = bool(ua or ub) and all(ua.values()) and all(ub.values())
+    by_uuid = _usable_ids(list(ua.values()), list(ub.values()))
     changed, reordered, added, removed = [], [], [], []
     if by_uuid:
         pos_a = {u: n for n, u in ua.items()}
@@ -499,15 +507,18 @@ def _diff_element_texts(a: dict, b: dict) -> dict:
     the list. A field's own text is also compared ("shows"), so relabelling
     an element shows up here as well as in the element's information.
     """
-    ka, kb = a["element_text_uuids"], b["element_text_uuids"]
-    by_uuid = bool(ka or kb) and all(ka.values()) and all(kb.values())
+    # A field's uuid is unique only within its symbol (copies keep them), so
+    # a field is identified by its symbol's uuid and its own.
+    ka = {k: (k[0], u) if k[0] and u else "" for k, u in a["element_text_uuids"].items()}
+    kb = {k: (k[0], u) if k[0] and u else "" for k, u in b["element_text_uuids"].items()}
+    by_uuid = _usable_ids(list(ka.values()), list(kb.values()))
     def label(k):
         return {"element": k[0], "source": k[1], "bound_to": k[2], "n": k[3]}
     if not by_uuid:
         out = _diff_keyed(a["element_texts"], b["element_texts"], label)
         out["keyed_by"] = "position"
         return out
-    labels = {u: {**label(k), "uuid": u} for side in (ka, kb) for k, u in side.items()}
+    labels = {u: {**label(k), "uuid": u[1]} for side in (ka, kb) for k, u in side.items()}
     out = _diff_keyed({ka[k]: v for k, v in a["element_texts"].items()},
                       {kb[k]: v for k, v in b["element_texts"].items()},
                       lambda u: labels[u])
@@ -588,7 +599,7 @@ def tool_diff(before: str, after: str) -> dict:
     # has one, so a rewired conductor is that conductor, changed ("ends").
     # QElectroTech keeps a uuid only on conductors that were loaded with one
     # or created since, so an older file keys on its two ends instead.
-    co_by_uuid = bool(a_rows or b_rows) and all(r["uuid"] for r in a_rows + b_rows)
+    co_by_uuid = _usable_ids([r["uuid"] for r in a_rows], [r["uuid"] for r in b_rows])
     co_id = (lambda r: r["uuid"]) if co_by_uuid else (lambda r: r["key"])
     a_co = {co_id(r): r for r in a_rows}
     b_co = {co_id(r): r for r in b_rows}

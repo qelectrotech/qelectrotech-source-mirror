@@ -1174,6 +1174,82 @@ class DiffContracts(unittest.TestCase):
         d = m.tool_diff(plain((1, "a"), (2, "b")), plain((2, "b")))["element_texts"]
         self.assertEqual(d["keyed_by"], "position")
 
+    def test_copied_symbols_keep_their_text_field_uuids(self):
+        """Copying a symbol keeps its text fields' uuids (20 copies of one in
+        2612_ats_singlephase.qet), so a field is its symbol's uuid plus its own:
+        editing one copy's field must not be read as another copy's."""
+        field = lambda x: ('<dynamic_elmt_text uuid="{same}" x="' + str(x) + '" y="0" '
+                           'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+        pair = lambda xa, xb: self.qet(self.folio(self.el(self.A, 0, 0, texts=field(xa))
+                                                  + self.el(self.B, 0, 0, texts=field(xb))))
+        for before, after, which in ((pair(1, 1), pair(5, 1), self.A), (pair(1, 1), pair(1, 5), self.B)):
+            with self.subTest(edited=which):
+                d = m.tool_diff(before, after)["element_texts"]
+                self.assertEqual(d["keyed_by"], "uuid")
+                self.assertEqual([(c["item"]["element"], c["item"]["uuid"], c["changed"])
+                                  for c in d["changed"]], [(which, "{same}", {"x": ["1", "5"]})])
+
+    def test_repeated_uuids_fall_back_rather_than_merge(self):
+        # the same field uuid twice inside one symbol
+        twice = lambda x: self.qet(self.folio(self.el(self.A, 0, 0, texts="".join(
+            f'<dynamic_elmt_text uuid="{{dup}}" x="{v}" y="0" text_from="UserText"><text>{v}</text>'
+            '</dynamic_elmt_text>' for v in (x, 9)))))
+        self.assertEqual(m.tool_diff(twice(1), twice(2))["element_texts"]["keyed_by"], "position")
+        # two shapes sharing a uuid: both must still be counted
+        shapes = self.qet(self.folio(extra='<shapes>' + ''.join(
+            f'<shape uuid="{{s}}" type="Line" x1="{i}" y1="0" x2="1" y2="1"/>' for i in (0, 5)) + '</shapes>'))
+        d = m.tool_diff(shapes, shapes)["shapes"]
+        self.assertEqual((d["keyed_by"], d["before"]), ("position", 2))
+        # two conductors sharing a uuid
+        els = self.el(self.A, 0, 0) + self.el(self.B, 0, 0) + self.el(self.C, 0, 0)
+        wires = self.qet(self.folio(els, self.wire(self.A, self.B, uuid="{w}")
+                                    + self.wire(self.B, self.C, uuid="{w}")))
+        c = m.tool_diff(wires, wires)["conductors"]
+        self.assertEqual((c["keyed_by"], c["before"]), ("ends", 2))
+
+    def test_uuid_matching_when_one_side_has_none_of_a_kind(self):
+        """No folios, fields or wires on one side is not a reason to fall back
+        to position: the other side's uuids are all there is to match."""
+        empty = self.qet("")
+        full = self.qet(self.folio(
+            self.el(self.A, 0, 0, texts='<dynamic_elmt_text uuid="{e1}" x="0" y="0" '
+                    'text_from="UserText"><text>t</text></dynamic_elmt_text>')
+            + self.el(self.B, 0, 0), self.wire(self.A, self.B, uuid="{w1}"), uuid="{f1}"))
+        d = m.tool_diff(empty, full)
+        self.assertEqual((d["folios"]["keyed_by"], d["element_texts"]["keyed_by"],
+                          d["conductors"]["keyed_by"]), ("uuid", "uuid", "uuid"))
+        self.assertEqual(d["folios"]["added"], [{"folio": 1, "uuid": "{f1}", "title": ""}])
+        # matched by uuid, a conductor is never on the renumbered-id footing
+        self.assertNotIn("unstable_keys", d["conductors"])
+
+    def test_a_folio_that_kept_its_place_is_not_reordered(self):
+        f = lambda u, t: self.folio(title=t, uuid=u)
+        before = self.qet(f("{f1}", "One") + f("{f2}", "Two") + f("{f3}", "Three"))
+        after = self.qet(f("{f1}", "One") + f("{f3}", "Three") + f("{f2}", "Two"))
+        self.assertEqual([r["uuid"] for r in m.tool_diff(before, after)["folios"]["reordered"]],
+                         ["{f3}", "{f2}"])
+
+    def test_folio_lists_are_capped(self):
+        f = lambda i, t: self.folio(title=t, uuid=f"{{{i:04d}}}")
+        many = lambda rng, t: "".join(f(i, t) for i in rng)
+        d = m.tool_diff(self.qet(""), self.qet(many(range(51), "x")))["folios"]
+        self.assertEqual(len(d["added"]), 50)
+        d = m.tool_diff(self.qet(many(range(51), "x")), self.qet(""))["folios"]
+        self.assertEqual(len(d["removed"]), 50)
+        d = m.tool_diff(self.qet(many(range(52), "x")), self.qet(many(reversed(range(52)), "x")))["folios"]
+        self.assertEqual(len(d["reordered"]), 50)
+
+    def test_table_fields(self):
+        def table(**v):
+            a = {"x": "0", "y": "0", "width": "100", "height": "50", "display_n_row": "10", **v}
+            return ('<graphics_table uuid="{tb}" name="P" '
+                    + " ".join(f'{k}="{w}"' for k, w in a.items()) + '/>')
+        for attr, reported in (("y", "y"), ("width", "width"), ("height", "height")):
+            with self.subTest(attr=attr):
+                d = m.tool_diff(self.qet(self.folio(extra=table())),
+                                self.qet(self.folio(extra=table(**{attr: "7"}))))["tables"]
+                self.assertEqual([list(c["changed"]) for c in d["changed"]], [[reported]])
+
     def test_tables(self):
         table = lambda x, rows: ('<graphics_table uuid="{tb}" name="Parts" x="' + str(x)
                                  + f'" y="0" width="100" height="50" display_n_row="{rows}"/>')
