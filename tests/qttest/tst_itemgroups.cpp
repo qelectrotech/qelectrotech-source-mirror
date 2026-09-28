@@ -136,6 +136,34 @@ private slots:
 		ItemGroups::setGroup(a, QUuid());
 		QVERIFY(ItemGroups::groupOf(a).isNull());
 	}
+
+	// Rotate turns a selection that is exactly one whole group as one piece.
+	void aWholeGroupAloneIsASoleWholeGroup()
+	{
+		select({a, b});
+		QCOMPARE(ItemGroups::soleWholeGroup(selection()), g1);
+	}
+
+	void aPickedMemberIsNotAWholeGroup()
+	{
+		select({a});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+	}
+
+	void aGroupWithOtherItemsIsNotASoleGroup()
+	{
+		select({a, b, c});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+		select({a, b, d, e});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+	}
+
+	void ungroupedItemsAreNotAGroup()
+	{
+		select({c});
+		QVERIFY(ItemGroups::soleWholeGroup(selection()).isNull());
+		QVERIFY(ItemGroups::soleWholeGroup({}).isNull());
+	}
 };
 
 QTEST_MAIN(tst_itemgroups)
