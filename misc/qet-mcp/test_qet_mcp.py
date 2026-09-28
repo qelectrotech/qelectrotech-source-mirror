@@ -3520,7 +3520,7 @@ class PlcIntegration(unittest.TestCase):
 
 @needs_examples
 class UuidIndexLookups(unittest.TestCase):
-    """qet.tableIndex() and qet.elementTextIndex(): a uuid in, the index the
+    """qet.tableIndex(), qet.elementTextIndex() and qet.folioIndex(): a uuid in, the index the
     other calls take out, as qet.textIndex() does for free texts. The index is
     what shifts when an earlier item is deleted; the uuid is what holds."""
 
@@ -3638,6 +3638,43 @@ class UuidIndexLookups(unittest.TestCase):
         self.assertIn(f"shows='{shows_a}'", out["la"][out["ia"]])
         self.assertIn(f"shows='{shows_b}'", out["lb"][out["ib"]])
         self.assertEqual((out["bogus"], out["no_element"]), (-1, -1))
+
+    def test_folio_index_follows_the_folio_across_a_removal(self):
+        """A file saved without folio uuids (tableau_domestique.qet) still has
+        one per folio once loaded, the same on every load; the index of the
+        third folio moves when the first is removed, its uuid does not."""
+        body = """
+            var out = {uuids: []};
+            for (var i = 0; i < qet.folioCount(); i++) out.uuids.push(qet.folioUuid(i));
+            out.found = out.uuids.map(function (u) { return qet.folioIndex(u); });
+            out.bogus = qet.folioIndex("{00000000-0000-4000-8000-000000000000}");
+            out.not_uuid = qet.folioIndex("folio 1");
+            out.out_of_range = qet.folioUuid(qet.folioCount());
+            qet.removeFolio(0);
+            out.third_after = qet.folioIndex(out.uuids[2]);
+            out.first_after = qet.folioIndex(out.uuids[0]);"""
+        project = Path(EXAMPLES) / "tableau_domestique.qet"
+        self.assertFalse(any(d.get("uuid") for d in ET.parse(project).getroot().iter("diagram")))
+        out = self.run_script(project, body)
+        self.assertEqual(len(out["uuids"]), 5)
+        self.assertEqual(len(set(out["uuids"])), 5)
+        self.assertTrue(all(m._UUID_RE.fullmatch(u) for u in out["uuids"]))
+        self.assertEqual(out["found"], [0, 1, 2, 3, 4])
+        self.assertEqual((out["bogus"], out["not_uuid"], out["out_of_range"]), (-1, -1, ""))
+        self.assertEqual((out["third_after"], out["first_after"]), (1, -1))
+        self.assertEqual(self.run_script(project, body)["uuids"], out["uuids"])
+
+    def test_a_new_folio_keeps_its_uuid_through_a_save(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            saved = Path(tmp) / "saved.qet"
+            out = self.run_script(Path(EXAMPLES) / "tableau_domestique.qet", f"""
+                var out = {{}};
+                out.index = qet.addFolio();
+                out.uuid = qet.folioUuid(out.index);
+                out.saved = qet.save({json.dumps(str(saved))});""")
+            self.assertTrue(out["saved"])
+            in_file = [d.get("uuid") for d in ET.parse(saved).getroot().iter("diagram")]
+        self.assertEqual(in_file[out["index"]], out["uuid"])
 
 
 @needs_examples

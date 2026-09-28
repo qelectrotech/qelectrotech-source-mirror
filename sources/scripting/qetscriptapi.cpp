@@ -123,6 +123,37 @@ QString QetScriptApi::folioTitle(int index) const
 	return diagrams.at(index)->title();
 }
 
+/**
+	@brief QetScriptApi::folioUuid
+	The uuid of the folio at @p index, or an empty string.
+	The uuid is what to hold across an edit; the index is what the other
+	calls take, and it shifts when a folio is added, removed or moved.
+*/
+QString QetScriptApi::folioUuid(int index) const
+{
+	if (!m_project) return QString();
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (index < 0 || index >= diagrams.count()) return QString();
+	return diagrams.at(index)->uuid().toString();
+}
+
+/**
+	@brief QetScriptApi::folioIndex
+	The current index of the folio carrying @p uuid, or -1. No two folios
+	of a project carry the same uuid: a clash is renewed on load.
+*/
+int QetScriptApi::folioIndex(const QString &uuid) const
+{
+	if (!m_project) return -1;
+	const QUuid wanted(uuid);
+	if (wanted.isNull()) return -1;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	for (int i = 0 ; i < diagrams.count() ; ++i) {
+		if (diagrams.at(i)->uuid() == wanted) return i;
+	}
+	return -1;
+}
+
 int QetScriptApi::elementCount(int folioIndex) const
 {
 	if (!m_project) return 0;

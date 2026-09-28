@@ -353,6 +353,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString filePath() const;
 		Q_INVOKABLE int folioCount() const;
 		Q_INVOKABLE QString folioTitle(int index) const;
+		Q_INVOKABLE QString folioUuid(int index) const;
+		Q_INVOKABLE int folioIndex(const QString &uuid) const;
 		Q_INVOKABLE int elementCount(int folioIndex) const;
 		Q_INVOKABLE int conductorCount(int folioIndex) const;
 
