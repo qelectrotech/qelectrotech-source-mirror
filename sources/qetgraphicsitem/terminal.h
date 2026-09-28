@@ -77,6 +77,7 @@ class Terminal : public QGraphicsObject
 		QUuid     uuid                () const;
 		QUuid     stableUuid          () const;
 		QUuid     derivedUuid         () const;
+		void      setPlaceRank        (int rank);
 		QString   name                () const;
 		QString   baseName            () const;
 		TerminalData::Type terminalType() const;
@@ -143,6 +144,9 @@ class Terminal : public QGraphicsObject
 		Terminal *m_previous_terminal = nullptr;
 			/// Whether the mouse pointer is hovering the terminal
 		bool m_hovered = false;
+			/// How many terminals of the definition, before this one, sit at
+			/// the same point with the same orientation; see derivedUuid()
+		int m_place_rank = 0;
 			/// Color used for the hover effect
 		QColor m_hovered_color = Terminal::neutralColor;
 

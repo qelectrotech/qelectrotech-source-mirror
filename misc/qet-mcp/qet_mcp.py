@@ -126,10 +126,54 @@ def _wires(diagram: ET.Element):
 
 
 def _conductors(root: ET.Element):
+    definitions = _definition_terminals(root)
     for i, d in _folios(root):
-        index = _terminal_index(d)
+        index = _terminal_index(d, definitions)
         for c in _wires(d):
             yield i, c, index
+
+
+def _uuid_key(value: str) -> str:
+    return (value or "").strip().strip("{}").lower()
+
+
+# Orientation as a placed symbol's <terminal> record writes it (an int,
+# Qet::Orientation) or as a definition does (n/e/s/w).
+_ORIENTATIONS = {"n": 0, "e": 1, "s": 2, "w": 3, "0": 0, "1": 1, "2": 2, "3": 3}
+
+# Where QElectroTech docks a wire, relative to the terminal's position in
+# its definition (Terminal's constructor, Terminal::terminalSize = 4). A
+# placed symbol's <terminal> record is written at that point.
+_DOCK_OFFSET = {0: (0.0, 4.0), 1: (-4.0, 0.0), 2: (0.0, -4.0), 3: (4.0, 0.0)}
+
+
+def _definition_terminals(root: ET.Element) -> dict:
+    """Map each symbol stored in the project ("embed://" + its path in the
+    <collection>) to its terminals: {terminal uuid: (x, y, orientation)},
+    the position being the one in the definition."""
+    out = {}
+
+    def walk(node, path):
+        for child in node:
+            if child.tag == "category":
+                walk(child, path + [child.get("name", "")])
+            elif child.tag == "element":
+                terminals = {}
+                for t in child.findall("definition/description/terminal"):
+                    try:
+                        terminals[_uuid_key(t.get("uuid"))] = (
+                            float(t.get("x")), float(t.get("y")),
+                            _ORIENTATIONS.get((t.get("orientation") or "n")[:1], 0))
+                    except (TypeError, ValueError):
+                        continue
+                terminals.pop("", None)
+                if terminals:
+                    out["embed://" + "/".join(path + [child.get("name", "")])] = terminals
+
+    collection = root.find("collection")
+    if collection is not None:
+        walk(collection, [])
+    return out
 
 
 def _element_row(folio: int, el: ET.Element) -> dict:
@@ -147,7 +191,7 @@ def _element_row(folio: int, el: ET.Element) -> dict:
     }
 
 
-def _terminal_index(diagram: ET.Element) -> dict:
+def _terminal_index(diagram: ET.Element, definitions: dict | None = None) -> dict:
     """Map a folio's terminal ids to an identity that survives a save.
 
     A conductor names its ends with terminal1/terminal2, which are plain
@@ -170,6 +214,17 @@ def _terminal_index(diagram: ET.Element) -> dict:
     Conductors in the corpus carry no element1/element2 attribute -- 0 of
     47 in ArduinoLCD.qet, 0 of 67 in 741.qet -- so this mapping has to be
     built from the elements rather than read off the conductor.
+
+    A conductor can also name its ends by terminal uuid (element1 +
+    terminal1), and QElectroTech writes that form as soon as the terminal
+    has a uuid -- which, since a project gives every terminal one on
+    opening, is the first save of any older file. So the same untouched
+    conductor is written in the numbered form before a save and the uuid
+    form after it. With @p definitions (from _definition_terminals()), a
+    uuid end is resolved too, keyed (element uuid, terminal uuid), to the
+    very same identity as the numbered end: the terminal's definition
+    position, moved to where the wire docks, is where the placed symbol's
+    <terminal> record is.
     """
     index = {}
     for el in diagram.iter("element"):
@@ -184,12 +239,26 @@ def _terminal_index(diagram: ET.Element) -> dict:
             # marked with a "#" so the caller can see the diff is on the
             # unstable footing that file forces.
             continue
+        records = []
         for t in el.iter("terminal"):
             tid = t.get("id")
             if tid is None:
                 continue
-            index[tid] = (f"{uuid}@{t.get('x','?')},{t.get('y','?')}"
-                          f",{t.get('orientation','?')}")
+            key = (f"{uuid}@{t.get('x','?')},{t.get('y','?')}"
+                   f",{t.get('orientation','?')}")
+            index[tid] = key
+            records.append((t, key))
+        for tuuid, (x, y, o) in (definitions or {}).get(el.get("type", ""), {}).items():
+            dx, dy = _DOCK_OFFSET[o]
+            for t, key in records:
+                try:
+                    if (abs(float(t.get("x")) - (x + dx)) < 1e-6
+                            and abs(float(t.get("y")) - (y + dy)) < 1e-6
+                            and _ORIENTATIONS.get((t.get("orientation") or "")[:1]) == o):
+                        index[(_uuid_key(uuid), tuuid)] = key
+                        break
+                except (TypeError, ValueError):
+                    continue
     return index
 
 
@@ -214,7 +283,8 @@ def _conductor_key(folio: int, c: ET.Element, index: dict) -> str:
         tid = c.get(term_attr, "?")
         owner = c.get(elem_attr)
         if owner:
-            ends.append(f"{owner}/{tid or c.get(name_attr, '?')}")
+            ends.append(index.get((_uuid_key(owner), _uuid_key(tid)))
+                        or f"{owner}/{tid or c.get(name_attr, '?')}")
         else:
             # An id with no element behind it stays visible as itself
             # rather than silently collapsing conductors onto one key.

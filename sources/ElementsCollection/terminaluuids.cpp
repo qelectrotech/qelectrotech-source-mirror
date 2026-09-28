@@ -42,6 +42,15 @@ QList<QDomElement> terminalsOf(const QDomElement &collection_element)
 	return terminals;
 }
 
+	//Place and orientation, "10" and "10.0" being the same place
+QString terminalPlace(const QDomElement &terminal)
+{
+	return QStringLiteral("%1|%2|%3")
+			.arg(QString::number(terminal.attribute(QStringLiteral("x")).toDouble()),
+				 QString::number(terminal.attribute(QStringLiteral("y")).toDouble()),
+				 terminal.attribute(QStringLiteral("orientation")));
+}
+
 	//Qet::orientationFromString(), without pulling in qet.cpp
 int orientationOf(const QDomElement &terminal)
 {
@@ -65,7 +74,11 @@ int fillDefinition(const QDomElement &collection_element)
 	}
 
 	int filled = 0;
+	QHash<QString, int> seen_at;
 	for (QDomElement t : terminals) {
+			//Same count as Terminal::setPlaceRank(): every terminal before
+			//this one at the same point, with or without a uuid
+		const int rank = seen_at[terminalPlace(t)]++;
 		if (!QUuid(t.attribute(QStringLiteral("uuid"))).isNull()) {
 			continue;
 		}
@@ -73,7 +86,7 @@ int fillDefinition(const QDomElement &collection_element)
 		const qreal y = t.attribute(QStringLiteral("y")).toDouble();
 		const int orientation = orientationOf(t);
 		QUuid uuid;
-		for (int occurrence = 0 ; uuid.isNull() || taken.contains(uuid) ; ++occurrence) {
+		for (int occurrence = rank ; uuid.isNull() || taken.contains(uuid) ; ++occurrence) {
 			uuid = TerminalUuids::derived(x, y, orientation, occurrence);
 		}
 		taken << uuid;
@@ -98,14 +111,6 @@ int fillDirectory(const QDomElement &directory)
 	return filled;
 }
 
-	//Place and orientation, "10" and "10.0" being the same place
-QString terminalPlace(const QDomElement &terminal)
-{
-	return QStringLiteral("%1|%2|%3")
-			.arg(QString::number(terminal.attribute(QStringLiteral("x")).toDouble()),
-				 QString::number(terminal.attribute(QStringLiteral("y")).toDouble()),
-				 terminal.attribute(QStringLiteral("orientation")));
-}
 }
 
 /**

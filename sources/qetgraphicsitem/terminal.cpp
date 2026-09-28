@@ -884,12 +884,28 @@ QUuid Terminal::stableUuid() const
 	needed: keying on geometry alone produces exactly the same number of
 	collisions across the example corpus, and it means renaming a terminal
 	does not change what it is.
+
+	A second terminal at the same point with the same orientation gets the
+	next occurrence (see setPlaceRank()), as TerminalUuids::fillMissing()
+	gives it, so the two terminals of such a pair are told apart.
 */
 QUuid Terminal::derivedUuid() const
 {
 	return TerminalUuids::derived(d->m_pos.x(),
 								  d->m_pos.y(),
-								  static_cast<int>(d->m_orientation));
+								  static_cast<int>(d->m_orientation),
+								  m_place_rank);
+}
+
+/**
+	@brief Terminal::setPlaceRank
+	@param rank : how many terminals of the definition, before this one in
+	document order, sit at the same point with the same orientation.
+	Set by Element::parseTerminal().
+*/
+void Terminal::setPlaceRank(int rank)
+{
+	m_place_rank = rank;
 }
 
 QString Terminal::name() const

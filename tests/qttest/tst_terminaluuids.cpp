@@ -341,9 +341,19 @@ private slots:
 	// The uuids written on opening are derived from where each terminal
 	// is: a wire saved against one still finds its terminal after the
 	// symbol's definition was replaced by one with other terminal uuids.
+	// perceuse.qet and industrial.qet have wires on the second of two
+	// terminals at one point of a symbol, which get the next occurrence.
+	void derivedUuidFoundAfterReplacement_data()
+	{
+		QTest::addColumn<QString>("project");
+		for (const char *name : {"tremie_vibrante.qet", "perceuse.qet", "industrial.qet"})
+			QTest::newRow(name) << QStringLiteral(QET_EXAMPLES_DIR "/") + QLatin1String(name);
+	}
+
 	void derivedUuidFoundAfterReplacement()
 	{
-		const QString saved = resave(QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"));
+		QFETCH(QString, project);
+		const QString saved = resave(project);
 		QVERIFY(!saved.isEmpty());
 		QString log;
 		const int wires = loadedWires(saved, &log);
@@ -356,7 +366,7 @@ private slots:
 				terminals.at(i).toElement().setAttribute(QStringLiteral("uuid"),
 														 QUuid::createUuid().toString());
 		}
-		const QString replaced = m_dir.filePath(QStringLiteral("replaced.qet"));
+		const QString replaced = m_dir.filePath(QStringLiteral("replaced%1.qet").arg(m_run));
 		QFile out(replaced);
 		QVERIFY(out.open(QIODevice::WriteOnly));
 		out.write(doc.toByteArray());
