@@ -17,6 +17,7 @@
 */
 #include "openelmtcommand.h"
 #include "../elementscene.h"
+#include "../graphicspart/partterminal.h"
 
 #include <QDomDocument>
 #include <QObject>
@@ -52,6 +53,15 @@ void OpenElmtCommand::redo()
 	if (m_first_redo)
 	{
 		m_scene->fromXml(m_document, QPointF(), true, &m_graphics_item);
+			//The terminals are added to an element that may already hold
+			//the same ones -- importing the same symbol twice, or two old
+			//symbols whose terminals get the same derived uuid -- so they
+			//get new uuids, as a paste gives them (PastePartsCommand).
+		for (QGraphicsItem *qgi : std::as_const(m_graphics_item)) {
+			if (qgi->type() == PartTerminal::Type) {
+				static_cast<PartTerminal *>(qgi)->setNewUuid();
+			}
+		}
 		m_scene->qgiManager().manage(m_graphics_item);
 		m_first_redo = false;
 
