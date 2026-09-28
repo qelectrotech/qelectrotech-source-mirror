@@ -194,6 +194,34 @@ class EditValidation(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "index or its uuid"):
                     self.build([op])
 
+    def test_conductor_by_uuid(self):
+        """A conductor named by uuid is turned into one of its ends at run
+        time; the lookup is required only then, and "conductor" cannot be
+        given alongside element + terminal."""
+        U = "{11111111-2222-4333-8444-555555555555}"
+        s = self.build([{"op": "delete_conductor", "folio": 1, "conductor": U}])
+        self.assertIn(f'var e0 = qetMcpConductorEnd(0, 1, "{U}");', s)
+        self.assertIn("(e0 ? qet.deleteConductor(1, e0.element, e0.terminal) : false)", s)
+        self.assertIn('"conductorEnds"', s)
+        s = self.build([{"op": "set_conductor", "folio": 0, "conductor": U,
+                         "property": "num", "value": "W1"}])
+        self.assertIn('qet.setConductorProperty(0, e0.element, e0.terminal, "num", "W1")', s)
+        s = self.build([{"op": "move_conductor_segment", "folio": 2, "conductor": U,
+                         "segment": 1, "dx": 10, "dy": 0}])
+        self.assertIn(f'var e0 = qetMcpConductorEnd(0, 2, "{U}");', s)
+        self.assertIn("(e0 ? qet.moveConductorSegment(2, e0.element, e0.terminal, 1, 10, 0) : false)", s)
+        # an end whose terminal or element is missing is never picked
+        self.assertIn("if (ends[k] === '?') continue;", s)
+        self.assertNotIn('"conductorEnds"', self.build(
+            [{"op": "delete_conductor", "folio": 0, "element": U, "terminal": 0}]))
+        with self.assertRaisesRegex(ValueError, "not both"):
+            self.build([{"op": "delete_conductor", "folio": 0, "conductor": U,
+                         "element": U, "terminal": 0}])
+        with self.assertRaisesRegex(ValueError, "must be a conductor uuid"):
+            self.build([{"op": "delete_conductor", "folio": 0, "conductor": "W1"}])
+        with self.assertRaisesRegex(ValueError, "saved before conductors carried a uuid"):
+            self.build([{"op": "delete_conductor", "folio": 0, "conductor": ""}])
+
     def test_every_op_generates_a_script(self):
         # one minimal valid instance of every op
         f = {"op": "add_folio", "id": "f"}
@@ -2378,6 +2406,40 @@ class Integration(unittest.TestCase):
                {"op": "delete_conductor", "folio": "$f", "element": "$e1", "terminal": 0}]
         r = self.ok(self.sb.edit(base, ops))
         self.assertEqual([c["num"] for c in m.tool_conductors(r["output"])["conductors"]], ["W7"])
+
+    def _hub(self):
+        """e0's terminal 0 carries two conductors, to e1 and to e2. Returns
+        the saved project and the two conductors' uuids."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            *[{"op": "add_element", "id": f"e{i}", "folio": "$f", "path": COIL, "x": 100 + i * 200, "y": 100}
+              for i in range(3)],
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0}]))
+        uuids = [c["uuid"] for c in m.tool_conductors(r["output"])["conductors"]]
+        self.assertEqual(len(uuids), 2)
+        self.assertTrue(all(uuids), "new conductors carry a saved uuid")
+        return r["output"], uuids
+
+    def test_conductor_by_uuid_where_two_meet_at_a_terminal(self):
+        """The terminal e0/0 carries both conductors, which element + terminal
+        cannot name; each uuid names one, whichever it is."""
+        project, uuids = self._hub()
+        for gone, kept in ((uuids[0], uuids[1]), (uuids[1], uuids[0])):
+            with self.subTest(deleted=gone):
+                r = self.ok(self.sb.edit(project, [
+                    {"op": "delete_conductor", "folio": 1, "conductor": gone}], out="out2.qet"))
+                left = [c["uuid"] for c in m.tool_conductors(r["output"])["conductors"]]
+                self.assertEqual(left, [kept])
+
+    def test_unknown_conductor_uuid_is_reported(self):
+        project, _ = self._hub()
+        r = self.sb.edit(project, [{"op": "delete_conductor", "folio": 1,
+                                    "conductor": "{11111111-2222-4333-8444-555555555555}"}],
+                         out="out2.qet")
+        self.assertFalse(r["ok"])
+        self.assertIn("no conductor", r["operations"][0].get("note", ""))
 
     # ---- cross references, strips, folios ----
 

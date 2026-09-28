@@ -1354,6 +1354,10 @@ SEARCH_REPLACE_KINDS = ["element_info", "conductor", "text"]
 FOLIO_PROPERTIES = ["title", "author", "filename", "plant", "locmach",
                     "indexrev", "folio", "template"]
 
+# The ops that address one conductor by element + terminal, and so also
+# take "conductor": "{uuid}" (qet_conductors reports each one's uuid).
+CONDUCTOR_UUID_OPS = ("set_conductor", "move_conductor_segment", "delete_conductor")
+
 # Accepted by set_conductor. The names are the project file's own, so what
 # a script sets is what qet_conductors reports back.
 CONDUCTOR_PROPERTIES = ["num", "formula", "function", "bus", "cable",
@@ -1405,6 +1409,35 @@ def _build_script(operations: list, output: str) -> str:
         f"qet.log({_js(_MARKER)} + JSON.stringify("
         "{kind: 'capabilities', missing: missing}));",
         "var stop = false;",
+        # A conductor named by uuid is turned into one of its ends, as the
+        # conductor calls take it: an end whose terminal carries no other
+        # conductor, so the call cannot pick the wrong one. null, with the
+        # reason logged, if it is not on the folio or both ends are shared.
+        "function qetMcpConductorEnd(index, folio, uuid) {",
+        "  var ends = qet.conductorEnds(folio, uuid);",
+        "  var why = 'no conductor ' + uuid + ' on folio ' + folio;",
+        "  if (ends && ends.length === 2) {",
+        "    var lines = qet.conductors(folio);",
+        "    for (var k = 0; k < 2; k++) {",
+        "      if (ends[k] === '?') continue;",
+        "      var n = 0;",
+        "      for (var j = 0; j < lines.length; j++) {",
+        "        var p = lines[j].split(' : ')[0].split(' -- ');",
+        "        if (p[0] === ends[k] || p[1] === ends[k]) n++;",
+        "      }",
+        "      if (n === 1) {",
+        "        var m = ends[k].split(' terminal ');",
+        "        return {element: m[0], terminal: parseInt(m[1], 10)};",
+        "      }",
+        "    }",
+        "    why = 'conductor ' + uuid + ' shares both of its terminals with other '",
+        "        + 'conductors; the conductor calls address one by a terminal carrying '",
+        "        + 'only it';",
+        "  }",
+        f"  qet.log({_js(_MARKER)} + JSON.stringify("
+        "{kind: 'op_note', index: index, note: why}));",
+        "  return null;",
+        "}",
         "if (missing.length === 0) {",
     ]
 
@@ -1561,6 +1594,25 @@ def _build_script(operations: list, output: str) -> str:
         if name == "add_shape" and op.get("shape") not in SHAPES:
             raise ValueError(f"operation {i}: unknown shape {op.get('shape')!r}; "
                              f"expected one of {', '.join(SHAPES)}")
+        # The conductor ops take "conductor": "{uuid}" in place of element +
+        # terminal: a uuid names one conductor for good, where a terminal
+        # can carry several.
+        conductor_js = None
+        if name in CONDUCTOR_UUID_OPS and "conductor" in op:
+            if "element" in op or "terminal" in op:
+                raise ValueError(f"operation {i} ({name}): give either \"conductor\" "
+                                 f"(its uuid) or \"element\" + \"terminal\", not both")
+            if op["conductor"] == "":
+                raise ValueError(f"operation {i}: \"conductor\" is empty -- a conductor "
+                                 f"from a project saved before conductors carried a uuid "
+                                 f"has none in the file; name it by \"element\" + "
+                                 f"\"terminal\" instead")
+            if not isinstance(op["conductor"], str) or not _UUID_RE.fullmatch(op["conductor"]):
+                raise ValueError(f"operation {i}: \"conductor\" must be a conductor uuid, "
+                                 f"got {op['conductor']!r}")
+            conductor_js = _js(op["conductor"])
+            uuid_methods.add("conductorEnds")
+            op = {**op, "element": "{00000000-0000-0000-0000-000000000000}", "terminal": 0}
         args = []
         for key, kind in spec:
             if key not in op:
@@ -1568,6 +1620,8 @@ def _build_script(operations: list, output: str) -> str:
             folio_js = args[0] if args else "0"
             element_js = args[1] if len(args) > 1 else None
             args.append(ref_or(op[key], kind, i, key))
+        if conductor_js is not None:
+            args[1], args[2] = f"e{i}.element", f"e{i}.terminal"
 
         ident = op.get("id")
         if ident is not None:
@@ -1579,6 +1633,9 @@ def _build_script(operations: list, output: str) -> str:
 
         call = "qet.addFolio()" if method is None else f"qet.{method}({', '.join(args)})"
         lines.append("  if (!stop) {")
+        if conductor_js is not None:
+            lines.append(f"  var e{i} = qetMcpConductorEnd({i}, {args[0]}, {conductor_js});")
+            call = f"(e{i} ? {call} : false)"
         lines.append(f"  var v{i} = {call};")
         if ident is not None:
             lines.append(f"  R[{_js(ident)}] = v{i};")
@@ -1624,7 +1681,7 @@ def _parse_script_output(text: str) -> dict:
     the cost is nothing and the failure it prevents is silent (an edit that
     worked, reported as having run no operations at all, which is what the
     first version of this tool did)."""
-    caps, ops, saved, stopped = None, [], None, False
+    caps, ops, saved, stopped, notes = None, [], None, False, {}
     for line in text.splitlines():
         idx = line.find(_MARKER)
         if idx < 0:
@@ -1643,9 +1700,14 @@ def _parse_script_output(text: str) -> dict:
             rec["succeeded"] = not (r is None or r is False or r == "" or r == [] or r == {} or
                                     (isinstance(r, int) and not isinstance(r, bool) and r == -1))
             ops.append(rec)
+        elif rec.get("kind") == "op_note":
+            notes[rec.get("index")] = rec.get("note")
         elif rec.get("kind") == "save":
             saved = bool(rec.get("result"))
             stopped = bool(rec.get("stopped_early"))
+    for rec in ops:
+        if rec.get("index") in notes:
+            rec["note"] = notes[rec["index"]]
     return {"missing_methods": caps, "operations": ops, "saved": saved,
             "stopped_early": stopped}
 
@@ -2491,8 +2553,15 @@ TOOLS = [
                         "index in the element definition; qet_element_info lists them. "
                         "set_conductor addresses a conductor as the one on a given "
                         "terminal and applies the change to its whole electrical "
-                        "potential, so name a terminal carrying exactly one conductor; "
-                        "its \"property\" is one of " + ", ".join(CONDUCTOR_PROPERTIES) +
+                        "potential, so name a terminal carrying exactly one conductor, "
+                        "or give \"conductor\": its uuid from qet_conductors in place "
+                        "of \"element\" + \"terminal\" (set_conductor, "
+                        "move_conductor_segment and delete_conductor all accept it; it "
+                        "needs one of the conductor's two terminals to carry only it, "
+                        "and a conductor qet_conductors lists with an empty uuid has "
+                        "none to give). A uuid names one wire, but set_conductor still "
+                        "changes its whole potential, as it does by terminal. "
+                        "set_conductor's \"property\" is one of " + ", ".join(CONDUCTOR_PROPERTIES) +
                         ". move_conductor_segment reroutes the drawn path itself rather "
                         "than a property of the potential -- addressed the same way (a "
                         "terminal carrying exactly one conductor), plus a segment index "
