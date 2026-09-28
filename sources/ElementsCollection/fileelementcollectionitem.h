@@ -55,6 +55,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 		void setUpData() override;
 		void setUpIcon() override;
+		void clearData() override;
 
 	private:
 		void setPathName(const QString& path_name,
