@@ -82,6 +82,28 @@ Register it with an MCP client, for example:
 QElectroTech (as `<prefix>/share/qelectrotech/mcp/qet_mcp.py`, which also
 finds the installed element collection).
 
+## Installed with QElectroTech
+
+QElectroTech's packages install the server next to the program, and from
+there it finds that QElectroTech and its element collection by itself:
+
+| Package | Server | Finds |
+|---|---|---|
+| `make install`, Linux distributions | `<prefix>/share/qelectrotech/mcp/qet_mcp.py` | `<prefix>/bin/qelectrotech`, `<prefix>/share/qelectrotech/elements` |
+| Windows installer, MSI, portable folder | `<folder>\mcp\qet_mcp.py` (the "AI assistant (MCP)" component) | `<folder>\bin\QElectroTech.exe`, `<folder>\elements` |
+
+So a client configuration needs only the path to the server and the
+workspace, for example on Windows:
+
+```json
+"args": ["C:\\Program Files\\QElectroTech\\mcp\\qet_mcp.py"]
+```
+
+Snap and flatpak install it too. Their QElectroTech is built to run inside
+the package's sandbox, and starting it from the server has not been tested:
+the tools that read a file work, exports and edits may not. If they fail,
+point `QET_BINARY` at a QElectroTech installed another way.
+
 ## Using it from the Claude app
 
 A web chat in a browser cannot start a program on your computer, so it

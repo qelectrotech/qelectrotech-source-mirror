@@ -274,6 +274,13 @@ Section "$(Fonts)" SEC05
     File /nonfatal /r "./files/fonts"
 SectionEnd
 
+; The MCP server lets an AI assistant open, check and edit drawings. It does
+; nothing until a user sets up an assistant to start it.
+Section "$(Mcp)" SEC06
+    SetOutPath "$INSTDIR\mcp"
+    File /nonfatal "./files/mcp/*"
+SectionEnd
+
 ;--------------------------------
 ; Component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -282,6 +289,7 @@ SectionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(var3)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC05} $(var5)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SEC06} $(var6)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
