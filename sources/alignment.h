@@ -55,6 +55,24 @@ namespace Alignment
 	};
 
 	/**
+		@return @a items taken as one piece, the way a group lines up:
+		their edges together, and the middle of that box as its centre.
+		A single item keeps its own centre.
+	*/
+	inline Item combined(const QList<Item> &items)
+	{
+		Item result;
+		for (const Item &item : items)
+			result.edges = result.edges.isNull() ? item.edges
+							     : result.edges.united(item.edges);
+		if (items.size() == 1)
+			result.ref = items.first().ref;
+		else
+			result.ref = result.edges.center();
+		return result;
+	}
+
+	/**
 		@return true if aligning on @a edge moves items along x
 	*/
 	inline bool isHorizontal(Edge edge)

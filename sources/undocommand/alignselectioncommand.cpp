@@ -97,12 +97,14 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 		//group come along; shapes outside one are left out, as above.
 	struct Unit {
 		QList<QGraphicsObject *> members;
-		Alignment::Item geometry;
+		QList<Alignment::Item> parts;
 		QGraphicsObject *snap_item = nullptr; ///< lands on its grid
 		qreal divisor = 1;
 	};
 	QList<Unit> units;
 	QHash<QUuid, int> group_units;
+		//Returns a reference into units, which a later call can grow:
+		//use it before calling again, never keep it
 	auto unitFor = [&](QGraphicsObject *item) -> Unit &
 	{
 		const QUuid group = ItemGroups::groupOf(item);
@@ -120,10 +122,7 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 	{
 		Unit &unit = unitFor(entry.item);
 		unit.members << entry.item;
-		unit.geometry.edges = unit.geometry.edges.isNull()
-				? entry.geometry.edges
-				: unit.geometry.edges.united(entry.geometry.edges);
-		unit.geometry.ref = entry.geometry.ref;
+		unit.parts << entry.geometry;
 			//Symbols come first in entries, so a group with one snaps on it
 		if (!unit.snap_item) {
 			unit.snap_item = entry.item;
@@ -136,15 +135,10 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 			continue;
 		Unit &unit = unitFor(shape);
 		unit.members << shape;
-		unit.geometry.edges = unit.geometry.edges.isNull()
-				? shape->sceneBoundingRect()
-				: unit.geometry.edges.united(shape->sceneBoundingRect());
+		const QRectF rect = shape->sceneBoundingRect();
+		unit.parts << Alignment::Item{rect, rect.center()};
 		if (!unit.snap_item)
 			unit.snap_item = shape;
-	}
-	for (Unit &unit : units) {
-		if (unit.members.size() > 1)
-			unit.geometry.ref = unit.geometry.edges.center();
 	}
 	m_item_count = units.size();
 
@@ -165,7 +159,7 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 
 	QList<Alignment::Item> geometry;
 	for (const Unit &unit : std::as_const(units))
-		geometry << unit.geometry;
+		geometry << Alignment::combined(unit.parts);
 	const QList<QPointF> offsets = Alignment::alignOffsets(geometry, edge);
 
 	for (int i = 0 ; i < units.size() ; ++i)
