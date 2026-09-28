@@ -329,13 +329,17 @@ def _extras(root: ET.Element) -> dict:
 
     for n, d in _folios(root):
         folios[n] = {f: d.get(f, "") for f in _FOLIO_FIELDS}
-        for t in d.iter("input"):
+        # The folio's own items only: direct children of its <inputs>,
+        # <shapes> and <images>. Symbols in older files carry their own
+        # <inputs><input> texts, which iter() would count as free texts
+        # (122 extra in schema_indus.qet).
+        for t in d.findall("inputs/input"):
             texts.append(record(
                 t, {"folio": n, "x": t.get("x", ""), "y": t.get("y", ""),
                     "text": _plain_text(t.get("text", ""))},
                 {"rotation": t.get("rotation", "0"),
                  "font": t.get("font", ""), "color": t.get("color", "")}))
-        for sh in d.iter("shape"):
+        for sh in d.findall("shapes/shape"):
             pen, brush = sh.find("pen"), sh.find("brush")
             shapes.append(record(
                 sh, {"folio": n, "type": sh.get("type", ""),
@@ -347,7 +351,7 @@ def _extras(root: ET.Element) -> dict:
                  "fill": (brush.get("color", "") if brush is not None and
                           brush.get("style", "") != "NoBrush" else "none"),
                  "rotation": sh.get("rotation", "0")}))
-        for im in d.iter("image"):
+        for im in d.findall("images/image"):
             images.append(record(
                 im, {"folio": n, "x": im.get("x", ""), "y": im.get("y", "")},
                 {"scale": im.get("size", ""), "rotation": im.get("rotation", "")}))

@@ -750,6 +750,22 @@ class Diff(unittest.TestCase):
                 self.assertFalse(d[k]["added"] or d[k]["removed"] or d[k]["changed"])
         self.assertEqual(d["folios"]["changed"], [])
 
+    def test_a_symbols_own_texts_are_not_free_texts(self):
+        """Symbols in older files carry their own <inputs><input> texts;
+        counting them made schema_indus.qet show 124 free texts where
+        QElectroTech has 2."""
+        d = self.dir
+        a, b = d / "sym_a.qet", d / "sym_b.qet"
+        body = ('<project><diagram><elements><element uuid="{e}" type="x">'
+                '<inputs><input x="0" y="0" text="{t}"/></inputs></element></elements>'
+                '<conductors/><inputs><input uuid="{f}" x="1" y="1" text="free"/></inputs>'
+                '</diagram></project>')
+        a.write_text(body.replace("{t}", "inside"))
+        b.write_text(body.replace("{t}", "changed inside"))
+        t = m.tool_diff(str(a), str(b))["texts"]
+        self.assertEqual((t["before"], t["after"], t["added"], t["removed"], t["changed"]),
+                         (1, 1, [], [], []))
+
     def test_edited_text_reads_as_removed_plus_added(self):
         a = self.project("a.qet", texts=[(1, 2, "note")])
         b = self.project("b.qet", texts=[(1, 2, "note EDITED")])
