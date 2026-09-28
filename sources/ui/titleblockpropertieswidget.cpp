@@ -483,13 +483,23 @@ TitleBlockTemplate *TitleBlockPropertiesWidget::templateForIndex(int index) cons
 	Add to @p context every CUSTOM variable used by the currently selected
 	template that is not already present, with an empty value — so the user
 	only has to fill in the values instead of declaring the variables (#271).
-	The standard fields (title, author, date, …) are handled by their own
-	widgets and are skipped. Existing values in @p context are preserved.
 */
 void TitleBlockPropertiesWidget::addTemplateVariables(
 		DiagramContext &context, int index) const
 {
-	TitleBlockTemplate *tpl = templateForIndex(index);
+	addTemplateVariables(context, templateForIndex(index));
+}
+
+/**
+	@brief TitleBlockPropertiesWidget::addTemplateVariables
+	Add to @p context every CUSTOM variable used by @p tpl that is not already
+	present, with an empty value.
+	The standard fields (title, author, date, …) are handled by their own
+	widgets and are skipped. Existing values in @p context are preserved.
+*/
+void TitleBlockPropertiesWidget::addTemplateVariables(
+		DiagramContext &context, const TitleBlockTemplate *tpl)
+{
 	if (!tpl) return;
 
 	// Variables rendered from the dedicated standard-field widgets; they must
