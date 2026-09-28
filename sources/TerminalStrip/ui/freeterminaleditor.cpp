@@ -52,7 +52,7 @@ FreeTerminalEditor::FreeTerminalEditor(QETProject *project, QWidget *parent) :
 	connect(ui->m_table_view->selectionModel(), &QItemSelectionModel::selectionChanged,
 			this, &FreeTerminalEditor::selectionChanged);
 
-	connect(ui->m_table_view, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
+	connect(ui->m_table_view, &QAbstractItemView::doubleClicked, this, [this](const QModelIndex &index)
 	{
 		if (m_model->columnTypeForIndex(index) == FreeTerminalModel::XRef)
 		{

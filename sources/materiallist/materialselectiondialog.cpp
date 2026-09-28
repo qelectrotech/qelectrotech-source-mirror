@@ -383,7 +383,7 @@ bool MaterialSelectionDialog::eventFilter(QObject *watched, QEvent *event)
 static int wheelAmount(int delta, bool counting_items)
 {
 	if (counting_items) {
-		return 3 * qRound(double(delta) / QWheelEvent::DefaultDeltasPerStep);
+		return 3 * qRound(static_cast<double>(delta) / static_cast<int>(QWheelEvent::DefaultDeltasPerStep));
 	}
 	return delta;
 }

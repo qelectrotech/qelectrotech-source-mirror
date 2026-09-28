@@ -1752,7 +1752,7 @@ void DiagramView::setEventInterface(DVEventInterface *event_interface)
 {
 	if (m_event_interface) delete m_event_interface;
 	m_event_interface = event_interface;
-	connect(m_event_interface, &DVEventInterface::finish, this, [=](){delete this->m_event_interface; this->m_event_interface = nullptr;}, Qt::QueuedConnection);
+	connect(m_event_interface, &DVEventInterface::finish, this, [this](){delete this->m_event_interface; this->m_event_interface = nullptr;}, Qt::QueuedConnection);
 }
 
 /**
