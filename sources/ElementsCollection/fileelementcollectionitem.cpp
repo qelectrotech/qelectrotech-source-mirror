@@ -481,6 +481,22 @@ void FileElementCollectionItem::setUpIcon()
 }
 
 /**
+	@brief FileElementCollectionItem::clearData
+	Reset the data, and let setUpIcon() build the icon again.
+	Without this the guard in setUpIcon() keeps the icon cleared here
+	empty until the whole collection is reloaded, e.g. after an element
+	is saved from the element editor (see locationWasSaved()).
+*/
+void FileElementCollectionItem::clearData()
+{
+		// Reset the flag only after the base class has cleared the icon:
+		// its setIcon() emits dataChanged(), which re-enters setUpIcon(),
+		// and that call must still see the flag set and return early.
+	ElementCollectionItem::clearData();
+	m_icon_initialized = false;
+}
+
+/**
 	@brief FileElementCollectionItem::setPathName
 	Set the name of this item in the file system path.
 	This item must have a parent,
