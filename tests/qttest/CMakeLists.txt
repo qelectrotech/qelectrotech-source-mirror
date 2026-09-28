@@ -328,3 +328,15 @@ target_include_directories(tst_conductorselfretrace PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
+# conductors by uuid and finds each one's two ends. Runs a script through
+# the real binary's --run on fixtures/qet_bug_repro_resaved.qet.
+add_executable(
+  tst_scriptconductoruuid
+  tst_scriptconductoruuid.cpp)
+add_test(NAME tst_scriptconductoruuid COMMAND tst_scriptconductoruuid)
+add_dependencies(tst_scriptconductoruuid qelectrotech)
+target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
+target_compile_definitions(tst_scriptconductoruuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")

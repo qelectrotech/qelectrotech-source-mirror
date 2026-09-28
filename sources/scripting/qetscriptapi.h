@@ -396,6 +396,8 @@ class QetScriptApi : public QObject
 
 		// -- conductor properties, applied to the whole potential --
 		Q_INVOKABLE QStringList conductors(int folioIndex) const;
+		Q_INVOKABLE QStringList conductorUuids(int folioIndex) const;
+		Q_INVOKABLE QStringList conductorEnds(int folioIndex, const QString &uuid) const;
 		Q_INVOKABLE QString conductorProperty(int folioIndex, const QString &elementUuid,
 											  int terminalIndex, const QString &property) const;
 		Q_INVOKABLE bool setConductorProperty(int folioIndex, const QString &elementUuid,
