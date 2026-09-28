@@ -2159,6 +2159,47 @@ class Protocol(unittest.TestCase):
         for t in m.TOOLS:
             self.assertIn(t["name"], out)
 
+    def call(self, *args, stdin="", workspace=None):
+        env = dict(os.environ)
+        if workspace is not None:
+            env["QET_MCP_WORKSPACE"] = str(workspace)
+        return subprocess.run([sys.executable, str(HERE / "qet_mcp.py"), "--call", *args],
+                              input=stdin, capture_output=True, text=True,
+                              timeout=30, env=env)
+
+    def test_call_flag_runs_one_tool(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "a.qet"
+            p.write_text('<project title="Via --call"><diagram title="D"/></project>')
+            by_argv = self.call("qet_project_info", json.dumps({"path": str(p)}),
+                                workspace=tmp)
+            by_stdin = self.call("qet_project_info", "-",
+                                 stdin=json.dumps({"path": str(p)}), workspace=tmp)
+        for proc in (by_argv, by_stdin):
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            self.assertEqual(json.loads(proc.stdout)["title"], "Via --call")
+
+    def test_call_flag_keeps_the_workspace_policy(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "ws"
+            root.mkdir()
+            victim = Path(tmp) / "elsewhere.qet"
+            victim.write_text('<project title="not yours"><diagram title="D"/></project>')
+            proc = self.call("qet_project_info", json.dumps({"path": str(victim)}),
+                             workspace=root)
+        self.assertEqual(proc.returncode, 1)
+        self.assertIn("outside the workspace", proc.stdout)
+        self.assertNotIn("not yours", proc.stdout)
+
+    def test_call_flag_exit_codes(self):
+        tool_error = self.call("qet_project_info", '{"path": "/no/such.qet"}')
+        self.assertEqual(tool_error.returncode, 1)
+        for args in (("nope",), ("qet_project_info", "{not json"),
+                     ("qet_project_info", "[1]"), ()):
+            proc = self.call(*args)
+            self.assertEqual(proc.returncode, 2, args)
+            self.assertEqual(proc.stdout, "", args)
+
 
 # ==========================================================================
 # integration

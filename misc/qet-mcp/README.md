@@ -54,6 +54,9 @@ misc/qet-mcp/qet_mcp.py --list
 
 # speak MCP on stdin/stdout
 misc/qet-mcp/qet_mcp.py
+
+# run one tool and exit, no MCP client needed
+misc/qet-mcp/qet_mcp.py --call qet_project_info '{"path": "drawing.qet"}'
 ```
 
 Register it with an MCP client, for example:
@@ -72,6 +75,66 @@ Register it with an MCP client, for example:
   }
 }
 ```
+
+## Using it from the Claude app
+
+A web chat in a browser cannot start a program on your computer, so it
+cannot run this server. The Claude desktop app for Windows and macOS can,
+and it uses the same account as the website.
+
+1. Install Python 3.9 or later. Nothing else is needed.
+2. In the desktop app, open **Settings → Developer → Edit Config**. This
+   opens `claude_desktop_config.json`.
+3. Add the server, with your own paths:
+
+   ```json
+   {
+     "mcpServers": {
+       "qet": {
+         "command": "python",
+         "args": ["C:\\path\\to\\qelectrotech\\misc\\qet-mcp\\qet_mcp.py"],
+         "env": {
+           "QET_MCP_WORKSPACE": "C:\\Users\\you\\Documents\\drawings",
+           "QET_ENABLE_SCRIPTING": "1"
+         }
+       }
+     }
+   }
+   ```
+
+   On macOS use `python3` and ordinary `/` paths. In JSON every `\` in a
+   Windows path is written `\\`.
+4. Quit the app completely and start it again. The tools appear under the
+   chat box's tools menu.
+5. In the chat, say where your `qelectrotech` executable is. `qet_edit` and
+   `qet_export` take it as an argument on every call; the other tools do not
+   need it.
+
+Only files under `QET_MCP_WORKSPACE` can be read or written (see
+[What the server is allowed to touch](#what-the-server-is-allowed-to-touch)).
+Leave out `QET_ENABLE_SCRIPTING` if you do not want the assistant to edit
+projects; see the next section for what that switches off.
+
+The test suite runs on Linux. The server uses nothing platform-specific,
+but it has not yet been tested on Windows or macOS.
+
+### With only a browser
+
+If your web chat can run Python (on claude.ai, code execution), upload
+`qet_mcp.py` together with your project and ask the assistant to use
+`--call`:
+
+```bash
+python3 qet_mcp.py --call qet_elements '{"path": "drawing.qet"}'
+echo '{"path": "drawing.qet"}' | python3 qet_mcp.py --call qet_check -
+```
+
+It prints the tool's JSON result and exits 0, or 1 if the tool reported an
+error, or 2 if the call itself was malformed. The workspace rule applies as
+it does in a server. The sandbox has no QElectroTech in it, so only the
+tools that read files work there: `qet_project_info`, `qet_elements`,
+`qet_conductors`, `qet_items`, `qet_diff`, `qet_scan`,
+`qet_element_info`, `qet_element_search` and `qet_element_build`.
 
 ## Five tools need scripting switched on
 

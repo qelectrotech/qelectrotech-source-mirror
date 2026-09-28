@@ -47,6 +47,11 @@ PROTOCOL
 Line-delimited JSON-RPC 2.0 on stdin/stdout, per MCP's stdio transport.
 Nothing but protocol goes to stdout; diagnostics go to stderr.
 No third-party dependencies — the MCP SDK is not assumed to be present.
+
+`--call <tool> [arguments]` runs one tool without an MCP client, for an
+assistant that can execute Python but cannot launch a server (a web chat
+with code execution). It goes through the same dispatcher, so the
+workspace policy applies exactly as it does over stdio.
 """
 
 from __future__ import annotations
@@ -3262,11 +3267,48 @@ def serve(stdin=sys.stdin, stdout=sys.stdout) -> None:
             print(json.dumps(reply, ensure_ascii=False), file=stdout, flush=True)
 
 
+def call_once(argv: list[str], stdin=sys.stdin, stdout=sys.stdout,
+              stderr=sys.stderr) -> int:
+    """--call <tool> [arguments]: one tools/call, the result's text on stdout.
+
+    arguments is a JSON object, or "-" to read it from stdin (which spares
+    the caller from quoting JSON for a shell). Exit status: 0 the tool
+    succeeded, 1 the tool reported an error, 2 the call itself was malformed.
+    """
+    if not argv or len(argv) > 2:
+        print("usage: qet_mcp.py --call <tool> ['<json arguments>' | -]",
+              file=stderr)
+        return 2
+    name, raw = argv[0], (argv[1] if len(argv) == 2 else "{}")
+    if raw == "-":
+        raw = stdin.read()
+    try:
+        arguments = json.loads(raw) if raw.strip() else {}
+    except json.JSONDecodeError as exc:
+        print(f"arguments are not valid JSON: {exc}", file=stderr)
+        return 2
+    if not isinstance(arguments, dict):
+        print("arguments must be a JSON object", file=stderr)
+        return 2
+
+    reply = handle({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                    "params": {"name": name, "arguments": arguments}})
+    if "error" in reply:
+        print(reply["error"]["message"], file=stderr)
+        return 2
+    result = reply["result"]
+    for part in result["content"]:
+        print(part["text"], file=stdout)
+    return 1 if result.get("isError") else 0
+
+
 def main() -> int:
     if len(sys.argv) > 1 and sys.argv[1] in ("--list", "-l"):
         for t in TOOLS:
             print(f"{t['name']}\n    {t['description']}\n")
         return 0
+    if len(sys.argv) > 1 and sys.argv[1] == "--call":
+        return call_once(sys.argv[2:])
     serve()
     return 0
 
