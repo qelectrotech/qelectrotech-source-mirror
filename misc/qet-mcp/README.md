@@ -290,6 +290,13 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `index` also takes that uuid, which does not shift the way an index
   does. `qet_element_build` gives every part of a symbol a uuid as well,
   returned in `part_uuids`; `qet_element_info` lists them in `part_list`.
+- **A conductor can be named by its uuid** (`qet_conductors` reports it):
+  `set_conductor`, `move_conductor_segment` and `delete_conductor` take
+  `"conductor": "{uuid}"` in place of `element` + `terminal`, which works
+  where two conductors meet at a terminal. It is turned at run time into an
+  end whose terminal carries only that conductor; where both of its ends
+  are shared the op fails and its `note` says why. Needs
+  `qet.conductorEnds()` in the build.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
