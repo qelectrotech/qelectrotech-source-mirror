@@ -131,11 +131,6 @@ void ElementPropertiesEditorWidget::upDateInterface()
 				  ui->m_layout_reference_convert_cb,
 				  ui->m_layout_reference_preview_lbl);
 
-	updateReferenceUi(m_data.m_principle_reference,
-					  ui->m_principle_reference_status_lbl,
-					  ui->m_principle_reference_convert_cb,
-					  ui->m_principle_reference_preview_lbl);
-
 	if (m_data.m_type == ElementData::Slave)
 	{
 		// If PLC Slave, select "Esclave PLC" in state combo (not in type combo)
@@ -474,12 +469,6 @@ void ElementPropertiesEditorWidget::setUpReferenceUi()
 	layout_menu->addAction(tr("Élément…"), this, &ElementPropertiesEditorWidget::onLayoutReferencePickElement);
 	ui->m_layout_reference_browse_pb->setMenu(layout_menu);
 	ui->m_layout_reference_convert_cb->setVisible(false);
-
-	auto *principle_menu = new QMenu(this);
-	principle_menu->addAction(tr("Fichier…"), this, &ElementPropertiesEditorWidget::onPrincipleReferencePickFile);
-	principle_menu->addAction(tr("Élément…"), this, &ElementPropertiesEditorWidget::onPrincipleReferencePickElement);
-	ui->m_principle_reference_browse_pb->setMenu(principle_menu);
-	ui->m_principle_reference_convert_cb->setVisible(false);
 }
 
 /**
@@ -653,87 +642,6 @@ void ElementPropertiesEditorWidget::on_m_layout_reference_convert_cb_toggled(boo
 
 	ui->m_layout_reference_preview_lbl->setPixmap(
 		renderReferencePreview(m_data.m_layout_reference.data, m_data.m_layout_reference.format));
-}
-
-void ElementPropertiesEditorWidget::onPrincipleReferencePickFile()
-{
-	const QString path = QFileDialog::getOpenFileName(
-		this,
-		tr("Choisir une référence de principe"),
-		QString(),
-		tr("Images (*.svg *.png *.jpg *.jpeg)"));
-
-	if (path.isEmpty())
-		return;
-
-	QFile file(path);
-	if (!file.open(QIODevice::ReadOnly))
-		return;
-	if (!checkIfSizeAllowed(file.size()))
-		return;
-
-	m_data.m_principle_reference.source = QStringLiteral("direct");
-	m_data.m_principle_reference.data = file.readAll();
-	m_data.m_principle_reference.format = QFileInfo(path).suffix().toLower();
-	m_data.m_principle_reference.reference.clear();
-
-	ui->m_principle_reference_convert_cb->setVisible(false);
-	ui->m_principle_reference_status_lbl->setText(QFileInfo(path).fileName());
-	ui->m_principle_reference_preview_lbl->setPixmap(
-		renderReferencePreview(m_data.m_principle_reference.data, m_data.m_principle_reference.format));
-}
-
-void ElementPropertiesEditorWidget::onPrincipleReferencePickElement()
-{
-	ElementsLocation loc = ElementDialog::getOpenElementLocation(this);
-	if (!loc.exist())
-		return;
-
-	if (loc.isProject())
-	{
-		QMessageBox::warning(this, tr("Référence invalide"),
-			tr("Un élément intégré à un projet ne peut pas être utilisé comme référence, "
-			   "car il ne serait plus accessible si ce projet n'est pas ouvert."));
-		return;
-	}
-
-	m_data.m_principle_reference.source = QStringLiteral("reference");
-	m_data.m_principle_reference.reference = loc.toString();
-	m_data.m_principle_reference.data.clear();
-	m_data.m_principle_reference.format.clear();
-
-	ui->m_principle_reference_convert_cb->setVisible(true);
-	ui->m_principle_reference_convert_cb->setChecked(false);
-	ui->m_principle_reference_status_lbl->setText(loc.name());
-	ui->m_principle_reference_preview_lbl->setPixmap(
-		ElementPictureFactory::instance()->pixmap(loc).scaled(
-			48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-}
-
-void ElementPropertiesEditorWidget::on_m_principle_reference_clear_pb_clicked()
-{
-	m_data.m_principle_reference = ElementData::ReferenceData();
-	ui->m_principle_reference_convert_cb->setVisible(false);
-	ui->m_principle_reference_status_lbl->setText(tr("Aucune"));
-	ui->m_principle_reference_preview_lbl->setPixmap(QPixmap());
-}
-
-void ElementPropertiesEditorWidget::on_m_principle_reference_convert_cb_toggled(bool checked)
-{
-	if (m_data.m_principle_reference.source != QLatin1String("reference"))
-		return;
-
-	if (checked) {
-		ElementsLocation loc(m_data.m_principle_reference.reference);
-		m_data.m_principle_reference.data = ElementPictureFactory::instance()->getSvg(loc);
-		m_data.m_principle_reference.format = QStringLiteral("svg");
-	} else {
-		m_data.m_principle_reference.data.clear();
-		m_data.m_principle_reference.format.clear();
-	}
-
-	ui->m_principle_reference_preview_lbl->setPixmap(
-		renderReferencePreview(m_data.m_principle_reference.data, m_data.m_principle_reference.format));
 }
 
 /**

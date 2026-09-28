@@ -80,10 +80,6 @@ class ElementPropertiesEditorWidget : public QDialog
 		void onLayoutReferencePickElement();
 		void on_m_layout_reference_clear_pb_clicked();
 		void on_m_layout_reference_convert_cb_toggled(bool checked);
-		void onPrincipleReferencePickFile();
-		void onPrincipleReferencePickElement();
-		void on_m_principle_reference_clear_pb_clicked();
-		void on_m_principle_reference_convert_cb_toggled(bool checked);
 		void plcAddRow();
 		void plcRemoveRow();
 		void plcPasteFromClipboard();

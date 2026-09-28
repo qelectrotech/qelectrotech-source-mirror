@@ -2191,6 +2191,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		}
 	});
 
+	//ToDo: May delete
 	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
 		if (m_cabinet_layout_source_widget)
 			m_cabinet_layout_source_widget->setActiveDiagram(dv ? dv->diagram() : nullptr);
