@@ -836,6 +836,18 @@ bool QetScriptApi::addConductor(int folioIndex,
 	return t1->isLinkedTo(t2);
 }
 
+namespace {
+/// "{element uuid} terminal N", the form conductors() prints an end in and
+/// the conductor calls take as element uuid + terminal index.
+QString describeEnd(Terminal *t)
+{
+	if (!t || !t->parentElement()) return QStringLiteral("?");
+	return QStringLiteral("%1 terminal %2")
+			.arg(t->parentElement()->uuid().toString())
+			.arg(t->parentElement()->terminals().indexOf(t));
+}
+} // namespace
+
 /**
 	@brief QetScriptApi::conductors
 	One line per conductor on the folio: which terminals it joins and its
@@ -851,21 +863,55 @@ QStringList QetScriptApi::conductors(int folioIndex) const
 	const QList<Diagram *> diagrams = m_project->diagrams();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 
-	auto describe = [](Terminal *t) -> QString {
-		if (!t || !t->parentElement()) return QStringLiteral("?");
-		return QStringLiteral("%1 terminal %2")
-				.arg(t->parentElement()->uuid().toString())
-				.arg(t->parentElement()->terminals().indexOf(t));
-	};
-
 	DiagramContent content(diagrams.at(folioIndex), false);
 	const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
 	for (Conductor *c : all)
 	{
 		list << QStringLiteral("%1 -- %2 : num='%3'")
-				.arg(describe(c->terminal1), describe(c->terminal2), c->properties().text);
+				.arg(describeEnd(c->terminal1), describeEnd(c->terminal2), c->properties().text);
 	}
 	return list;
+}
+
+/**
+	@brief QetScriptApi::conductorUuids
+	The uuid of every conductor on the folio, in the order conductors()
+	lists them.
+*/
+QStringList QetScriptApi::conductorUuids(int folioIndex) const
+{
+	QStringList list;
+	if (!m_project) return list;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
+
+	DiagramContent content(diagrams.at(folioIndex), false);
+	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
+		list << c->uuid().toString();
+	return list;
+}
+
+/**
+	@brief QetScriptApi::conductorEnds
+	The two ends of the conductor carrying @p uuid, each as
+	"{element uuid} terminal N" -- the element uuid and terminal index the
+	conductor calls take -- or an empty list if the folio has no such
+	conductor. A uuid names one conductor even where two meet at a terminal,
+	which an element uuid + terminal index cannot.
+*/
+QStringList QetScriptApi::conductorEnds(int folioIndex, const QString &uuid) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	const QUuid wanted(uuid);
+	if (wanted.isNull()) return {};
+
+	DiagramContent content(diagrams.at(folioIndex), false);
+	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
+		if (c->uuid() == wanted)
+			return {describeEnd(c->terminal1), describeEnd(c->terminal2)};
+	return {};
 }
 
 QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUuid,

@@ -329,6 +329,22 @@ target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
+# conductors by uuid and finds each one's two ends. Runs a script through
+# the real binary's --run on fixtures/qet_bug_repro_resaved.qet, so only
+# where --run exists: a build without the Qt Qml module has no scripting
+# (see QET_HAS_SCRIPTING in the top-level CMakeLists.txt).
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_scriptconductoruuid
+    tst_scriptconductoruuid.cpp)
+  add_test(NAME tst_scriptconductoruuid COMMAND tst_scriptconductoruuid)
+  add_dependencies(tst_scriptconductoruuid qelectrotech)
+  target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptconductoruuid PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+endif()
+
 # A symbol saved without a uuid gets the same one on every load, and
 # inserting a folio does not change it. Runs the real binary's --resave on
 # fixtures/qet_bug_repro_resaved.qet with the symbols' uuids stripped.
