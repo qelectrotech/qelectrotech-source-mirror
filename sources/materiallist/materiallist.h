@@ -37,6 +37,10 @@
 struct MaterialRecord
 {
 	QMap<QString, QString> values;
+		//Cells written after the last column of the header, kept as they
+		//are so that appending an article never shortens a line the user
+		//wrote wider than the header itself.
+	QStringList extra;
 
 	QString value(const QString &column) const {return values.value(column);}
 	void setValue(const QString &column, const QString &value) {values.insert(column, value);}
@@ -91,6 +95,7 @@ class MaterialList
 		static QStringList defaultColumns();
 		static QStringList columnsForBlock(int block);
 		static QString elementInfoKey(const QString &column, int block);
+		static bool isArticleBound(const QString &column);
 		static QString translatedColumn(const QString &column);
 		static QStringList translatedHeader(const QStringList &columns);
 
