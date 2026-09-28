@@ -21,6 +21,7 @@
 #include "../qetproject.h"
 #include "../qetxml.h"
 #include "elementslocation.h"
+#include "terminaluuids.h"
 
 /**
 	@brief XmlElementCollection::XmlElementCollection
@@ -914,6 +915,7 @@ ElementsLocation XmlElementCollection::copyElement(
 				    % "/" % new_elmt_name);
 	bool removed = false;
 	if (!element.isNull()) {
+		TerminalUuids::keep(element, elmt_dom);
 		element.parentNode().removeChild(element);
 		removed = true;
 	}

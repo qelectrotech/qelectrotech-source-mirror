@@ -475,6 +475,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementstreeview.h
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.h
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.cpp
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.h
   ${QET_DIR}/sources/ElementsCollection/xmlprojectelementcollectionitem.cpp

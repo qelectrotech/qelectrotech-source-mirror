@@ -148,7 +148,10 @@ class Diagram : public QGraphicsScene
 
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
-	
+
+			//Wires of the loaded file whose ends could not be found
+		QStringList m_wires_not_reconnected;
+
 	// METHODS
 	protected:
 		void drawBackground(QPainter *, const QRectF &) override;
@@ -171,6 +174,7 @@ class Diagram : public QGraphicsScene
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
 		QUuid uuid();
+		QStringList wiresNotReconnected() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
 
