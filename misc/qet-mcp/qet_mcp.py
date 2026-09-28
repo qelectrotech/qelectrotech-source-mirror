@@ -250,6 +250,7 @@ def tool_project_info(path: str) -> dict:
     for i, d in _folios(root):
         folios.append({
             "index": i,
+            "uuid": d.get("uuid", ""),
             "title": d.get("title", ""),
             "elements": sum(1 for _ in d.iter("element")),
             "conductors": len(_wires(d)),
@@ -1513,9 +1514,19 @@ def _build_script(operations: list, output: str) -> str:
                                  f"its uuid, or a \"$name\" reference, got {value!r}")
             return _js(value)
         if kind == "folio":
+            # A uuid names the folio for good; it is turned into the index
+            # the call takes at run time, since adding or removing a folio
+            # shifts every index after it.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                uuid_methods.add("folioIndex")
+                return f"qet.folioIndex({_js(value)})"
+            if value == "":
+                raise ValueError(f"operation {op_index}: {key!r} is empty -- a folio saved "
+                                 f"without a uuid has none in the file until the project is "
+                                 f"saved once; give its index instead")
             if not isinstance(value, int) or isinstance(value, bool):
-                raise ValueError(f"operation {op_index}: {key!r} must be a folio index "
-                                 f"or a \"$name\" reference, got {value!r}")
+                raise ValueError(f"operation {op_index}: {key!r} must be a folio index, "
+                                 f"its uuid, or a \"$name\" reference, got {value!r}")
             return _js(value)
         if kind == "bool":
             if not isinstance(value, bool):
@@ -2370,8 +2381,10 @@ def tool_edit(binary: str, project: str, operations: list, output: str,
 TOOLS = [
     {
         "name": "qet_project_info",
-        "description": "Summarise a .qet project: title, format version, folios, "
-                       "and element/conductor counts per folio. Reads the file "
+        "description": "Summarise a .qet project: title, format version, folios "
+                       "with their uuids, and element/conductor counts per folio. A "
+                       "folio saved without a uuid shows it empty; QElectroTech gives "
+                       "it one on load and writes it on the next save. Reads the file "
                        "directly; does not launch QElectroTech.",
         "inputSchema": {
             "type": "object",
@@ -2549,7 +2562,10 @@ TOOLS = [
                         "add_element gets wired by add_conductor, and how a folio made "
                         "by add_folio is addressed. A \"folio\" given as a number is "
                         "an index counted from 0: the folio qet_elements and "
-                        "qet_project_info call 1 is \"folio\": 0 here. Terminals are numbered by their "
+                        "qet_project_info call 1 is \"folio\": 0 here. A folio can "
+                        "be given as its uuid instead (qet_project_info lists them), "
+                        "which still names the same folio after an earlier op adds or "
+                        "removes one. Terminals are numbered by their "
                         "index in the element definition; qet_element_info lists them. "
                         "set_conductor addresses a conductor as the one on a given "
                         "terminal and applies the change to its whole electrical "

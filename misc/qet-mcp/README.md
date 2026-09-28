@@ -27,7 +27,7 @@ here read the model.
 
 | Tool | What it answers |
 |---|---|
-| `qet_project_info` | title, format version, folios, element and conductor counts |
+| `qet_project_info` | title, format version, folios with their uuids, element and conductor counts |
 | `qet_elements` | placed elements: uuid, type, position, label, information bag |
 | `qet_conductors` | conductors and their documentation fields; filter by attribute |
 | `qet_items` | free texts, shapes, pictures, tables and symbol text fields, each with its uuid |
@@ -290,6 +290,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `index` also takes that uuid, which does not shift the way an index
   does. `qet_element_build` gives every part of a symbol a uuid as well,
   returned in `part_uuids`; `qet_element_info` lists them in `part_list`.
+- **A folio can be named by its uuid** wherever an op takes `folio` or
+  `to_folio`; `qet_project_info` lists each folio's. It still names the same
+  folio after an earlier op in the run adds, inserts or removes one, where
+  an index would shift. A folio saved without a uuid shows it empty:
+  QElectroTech gives it one on load and writes it on the next save, so it
+  appears after a first `qet_edit`. Needs `qet.folioIndex()` in the build.
 - **A conductor can be named by its uuid** (`qet_conductors` reports it):
   `set_conductor`, `move_conductor_segment` and `delete_conductor` take
   `"conductor": "{uuid}"` in place of `element` + `terminal`, which works
