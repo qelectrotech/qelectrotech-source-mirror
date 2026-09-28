@@ -17,6 +17,7 @@
 */
 #include "elementscene.h"
 
+#include "../ElementsCollection/terminaluuids.h"
 #include "../NameList/ui/namelistdialog.h"
 #include "../NameList/ui/namelistwidget.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -1195,6 +1196,13 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 
 	if (root.tagName() != "definition" || root.attribute("type") != "element")
 		return(loaded_parts);
+
+		//Terminals saved without a uuid get the one a project gives them
+		//(see TerminalUuids::fillMissing()), not a random one: the same old
+		//symbol then has the same terminal uuids wherever it is copied.
+		//On a copy, the document is the caller's. A paste renews them all.
+	root = root.cloneNode(true).toElement();
+	TerminalUuids::fillMissingInDefinition(root);
 
 	//Load the graphic description of the element
 	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling())
