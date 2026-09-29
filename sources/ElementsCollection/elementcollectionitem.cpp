@@ -18,6 +18,9 @@
 
 #include "elementcollectionitem.h"
 
+#include <QCoreApplication>
+#include <QThread>
+
 /**
 	@brief ElementCollectionItem::ElementCollectionItem
 	Constructor
@@ -245,6 +248,73 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 	}
 
 	return list;
+}
+
+/**
+	@brief onGuiThread
+	@return true when called from the thread the application lives in
+*/
+static bool onGuiThread()
+{
+	return QThread::currentThread() == QCoreApplication::instance()->thread();
+}
+
+/**
+	@brief ElementCollectionItem::setData
+	ElementsCollectionModel::loadCollections() runs setUpData() for every
+	item on worker threads (QtConcurrent::map), while the items are
+	already in the model. QStandardItem::setData() updates the model and
+	emits its dataChanged() signal, which is not safe from a worker
+	thread. So a value set from a worker thread is kept on the item, and
+	the model applies it on the GUI thread with applyDeferredData() once
+	every item is set up. setText(), setFlags(), setToolTip() and setIcon()
+	all end up here.
+	@param value
+	@param role
+*/
+void ElementCollectionItem::setData(const QVariant &value, int role)
+{
+	if (role == Qt::EditRole)
+		role = Qt::DisplayRole;
+
+	if (onGuiThread())
+		QStandardItem::setData(value, role);
+	else
+		m_deferred_data.insert(role, value);
+}
+
+/**
+	@brief ElementCollectionItem::data
+	On a worker thread, a value set by setData() but not applied yet is
+	returned, so setUpData() reads back what it has just set
+	(localName() tests text() for example).
+	@param role
+	@return
+*/
+QVariant ElementCollectionItem::data(int role) const
+{
+	if (role == Qt::EditRole)
+		role = Qt::DisplayRole;
+
+	if (!onGuiThread())
+	{
+		const auto it = m_deferred_data.constFind(role);
+		if (it != m_deferred_data.constEnd())
+			return it.value();
+	}
+	return QStandardItem::data(role);
+}
+
+/**
+	@brief ElementCollectionItem::applyDeferredData
+	Apply the values set from a worker thread, see setData().
+	Must be called on the GUI thread, after the worker is done.
+*/
+void ElementCollectionItem::applyDeferredData()
+{
+	for (auto it = m_deferred_data.constBegin() ; it != m_deferred_data.constEnd() ; ++it)
+		QStandardItem::setData(it.value(), it.key());
+	m_deferred_data.clear();
 }
 
 void setUpData(ElementCollectionItem *eci) {

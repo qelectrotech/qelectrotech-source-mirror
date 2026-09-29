@@ -18,6 +18,7 @@
 #ifndef ELEMENTCOLLECTIONITEM2_H
 #define ELEMENTCOLLECTIONITEM2_H
 
+#include <QHash>
 #include <QStandardItem>
 
 /**
@@ -56,6 +57,16 @@ class ElementCollectionItem : public QStandardItem
 		QList<ElementCollectionItem *> elementsChild() const;
 		QList<ElementCollectionItem *> directoriesChild() const;
 		QList<ElementCollectionItem *> items() const;
+
+		QVariant data(int role = Qt::UserRole + 1) const override;
+		void setData(const QVariant &value, int role = Qt::UserRole + 1) override;
+		void applyDeferredData();
+
+	private:
+			/// Values set by setUpData() while it runs on a worker thread,
+			/// see setData(). Only ever touched by that one worker thread,
+			/// until applyDeferredData() empties it on the GUI thread.
+		QHash<int, QVariant> m_deferred_data;
 };
 
 void setUpData(ElementCollectionItem *eci);
