@@ -1099,8 +1099,10 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_uuid = QUuid::createUuid();
 	}
 
-	setPos(dom_element.attribute("x", nullptr).toDouble(),
-		   dom_element.attribute("y", nullptr).toDouble());
+		//"nan" and "inf" parse as numbers; a non-finite position is kept at 0
+	const qreal x = dom_element.attribute("x", nullptr).toDouble();
+	const qreal y = dom_element.attribute("y", nullptr).toDouble();
+	setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 
 	bool retval = pathFromXml(dom_element);
 
@@ -1229,7 +1231,10 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		// cette longueur doit etre un reel
 		bool ok;
 		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
-		if (!ok) continue;
+			// toDouble() accepts "nan" and "inf". A NaN length would also pass
+			// the coherence check below (every comparison with NaN is false)
+			// and turn the whole path into NaN.
+		if (!ok || !qIsFinite(segment_length)) continue;
 
 		if (current_segment.attribute("orientation") == "horizontal") {
 			segments_x << segment_length;
