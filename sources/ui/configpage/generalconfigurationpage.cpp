@@ -25,10 +25,14 @@
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
 #include "../../textgrid.h"
+#include "../../ElementsCollection/qetlabelsfile.h"
+#include "../prefixconfigurationdialog.h"
 #include "../nokde/kcolorbutton.h"
+#include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontDialog>
+#include <QMessageBox>
 #include <QSettings>
 
 /**
@@ -634,6 +638,83 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 			ui->m_user_macros_path_cb->setCurrentIndex(0);
 		}
 	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_prefix_pb_clicked
+	Open the dialog where the prefixes of the user collection folders are
+	configured, creating the qet_labels.xml of that collection when it
+	does not exist yet.
+	Nothing is written until that dialog is validated : cancelling it
+	leaves the collection exactly as it was.
+*/
+void GeneralConfigurationPage::on_m_prefix_pb_clicked()
+{
+		//The directory currently shown in the combo is the one this page
+		//displays, even when it has not been applied yet, while
+		//QETApp::customElementsDir() still returns the previously saved
+		//path : follow what the user sees.
+	QString directory;
+	if (ui->m_custom_elmt_path_cb->currentIndex() == 1) {
+		directory = ui->m_custom_elmt_path_cb->itemData(1, Qt::DisplayRole).toString();
+	}
+	if (directory.isEmpty()) {
+		directory = QETApp::customElementsDir();
+	}
+	directory = QDir::cleanPath(directory);
+
+	if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
+		QMessageBox::warning(this,
+							 tr("Répertoire introuvable"),
+							 tr("Le répertoire de la collection utilisateur :\n%1\nn'existe pas et n'a pas pu être créé.")
+							 .arg(directory));
+		return;
+	}
+
+	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);
+	if (folders.isEmpty()) {
+		QMessageBox::information(this,
+								 tr("Aucun sous-dossier"),
+								 tr("La collection utilisateur :\n%1\nne contient aucun sous-dossier : il n'y a donc aucun préfixe à configurer.")
+								 .arg(directory));
+		return;
+	}
+
+	QetLabelsFile labels;
+	if (!labels.load(directory)) {
+		QMessageBox::warning(this,
+							 tr("Fichier de préfixes illisible"),
+							 labels.errorString());
+		return;
+	}
+	if (labels.isBroken()) {
+			//A broken file may only be one forgotten tag away from being
+			//perfectly valid : tell what is wrong and let the user decide,
+			//rebuilding would drop every prefix the file still holds.
+		QMessageBox box(QMessageBox::Warning,
+						tr("Fichier de préfixes endommagé"),
+						tr("Le fichier %1 n'est pas un fichier XML valide :\n%2")
+						.arg(labels.filePath(), labels.brokenReason()),
+						QMessageBox::NoButton,
+						this);
+		box.addButton(tr("Corriger le fichier"), QMessageBox::AcceptRole);
+		auto *rebuild_button = box.addButton(tr("Reconstruire"), QMessageBox::DestructiveRole);
+		box.setInformativeText(tr("Rien n'a encore été modifié.\n\n"
+								  "« Corriger le fichier » : cette fenêtre se ferme sans rien changer. "
+								  "Ouvrez le fichier dans un éditeur de texte à l'endroit indiqué, "
+								  "corrigez-le puis relancez cette commande.\n\n"
+								  "« Reconstruire » : l'arborescence des dossiers est recréée, "
+								  "mais tous les préfixes actuels sont perdus."));
+		box.setDetailedText(tr("Fichier : %1\nCopie conservée : %2")
+							.arg(labels.filePath(), labels.backupPath()));
+		box.exec();
+		if (box.clickedButton() != rebuild_button) {
+			return;
+		}
+	}
+
+	PrefixConfigurationDialog dialog(labels, folders, this);
+	dialog.exec();
 }
 
 /**
