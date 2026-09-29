@@ -1241,6 +1241,19 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         </layout>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_check_terminal_names_cb">
+         <property name="toolTip">
+          <string>À l'enregistrement d'un élément : refuser deux bornes portant le même nom, et signaler les bornes sans nom (IEC 61666).</string>
+         </property>
+         <property name="text">
+          <string>Vérifier les noms des bornes à l'enregistrement</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1275,6 +1288,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_custom_tbt_path_cb</tabstop>
   <tabstop>m_highlight_integrated_elements</tabstop>
   <tabstop>m_default_elements_info</tabstop>
+  <tabstop>m_check_terminal_names_cb</tabstop>
   <tabstop>m_lang_cb</tabstop>
   <tabstop>m_dyn_text_font_pb</tabstop>
   <tabstop>m_dyn_text_rotation_sb</tabstop>

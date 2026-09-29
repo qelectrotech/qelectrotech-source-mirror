@@ -111,6 +111,13 @@ add_test(NAME tst_alignment COMMAND tst_alignment)
 target_include_directories(tst_alignment PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_alignment PRIVATE Qt::Test)
 
+# terminalnamecheck.h is header-only: the terminal name rule applied by the
+# element editor on save and by --check-elements.
+add_executable(tst_terminalnamecheck tst_terminalnamecheck.cpp)
+add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
+target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
+
 # itemgroups.cpp keeps group membership and the selection rule apart from
 # Diagram, so it is tested here on a plain scene of rectangles.
 add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.cpp)

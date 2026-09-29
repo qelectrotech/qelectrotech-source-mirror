@@ -24,6 +24,7 @@
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "diagramcontext.h"
+#include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
@@ -513,7 +514,20 @@ int checkOneElement(const QString &path)
 		return 2;
 	}
 
-	const int terminals = root.elementsByTagName("terminal").count();
+	const QDomNodeList terminal_nodes = root.elementsByTagName("terminal");
+	const int terminals = terminal_nodes.count();
+	QStringList terminal_names;
+	for (int i = 0; i < terminals; ++i)
+		terminal_names << terminal_nodes.at(i).toElement().attribute("name");
+
+	// Two terminals with one name cannot be told apart in a wiring list
+	// (IEC 61666), the same rule the element editor applies on save.
+	const auto repeated = TerminalNameCheck::repeatedNames(terminal_names);
+	if (!repeated.isEmpty()) {
+		out << "FAIL  " << path << "  (repeated terminal names: "
+			<< TerminalNameCheck::describe(repeated) << ")\n";
+		return 2;
+	}
 
 	// Negative dimensions are malformed but QET still loads them; surface as a
 	// warning rather than a failure so this agrees with QET's own loader.
@@ -525,6 +539,15 @@ int checkOneElement(const QString &path)
 
 	if (terminals == 0) {
 		out << "WARN  " << path << "  (loads, but 0 terminals)\n";
+		return 1;
+	}
+
+	const QString type = root.attribute("link_type");
+	const int unnamed = TerminalNameCheck::unnamedCount(terminal_names);
+	if (unnamed && !type.endsWith("_report")
+		&& type != "conductor_definition" && type != "thumbnail") {
+		out << "WARN  " << path << "  (" << unnamed << " of " << terminals
+			<< " terminals have no name)\n";
 		return 1;
 	}
 

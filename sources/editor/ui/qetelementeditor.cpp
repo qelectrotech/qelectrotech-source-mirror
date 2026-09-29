@@ -40,6 +40,7 @@
 #include "../esevent/eseventadddynamictextfield.h"
 #include "../../elementdialog.h"
 #include "../graphicspart/partterminal.h"
+#include "../terminalnamecheck.h"
 #include "../arceditor.h"
 #include "ellipseeditor.h"
 #include "lineeditor.h"
@@ -832,6 +833,53 @@ bool QETElementEditor::checkElement()
 								 "<br>Les définitions de conducteur ne peuvent posséder qu'une seule borne."
 								 "<br><b>Solution</b> :"
 								 "<br>Vérifier que l'élément ne possède qu'une seule borne"));
+		}
+	}
+
+	// Check terminal names: repeated names are an error, missing names a warning
+	if (QSettings().value(TerminalNameCheck::settings_key, true).toBool())
+	{
+		QList<PartTerminal *> terminals;
+		QStringList names;
+		for (auto qgi : m_elmt_scene -> items()) {
+			if (auto terminal = qgraphicsitem_cast<PartTerminal *>(qgi)) {
+				terminals << terminal;
+				names << terminal -> terminalName();
+			}
+		}
+
+		const auto repeated = TerminalNameCheck::repeatedNames(names);
+		if (!repeated.isEmpty())
+		{
+			errors << qMakePair (tr("Noms de bornes en double"),
+								 tr("<br><b>Erreur</b> :"
+								 "<br>Plusieurs bornes portent le même nom : %1."
+								 "<br><b>Solution</b> :"
+								 "<br>Donner un nom unique à chaque borne, par exemple N.1 et N.2."
+								 " Les bornes concernées sont sélectionnées.")
+								 .arg(TerminalNameCheck::describe(repeated).toHtmlEscaped()));
+
+			m_elmt_scene -> clearSelection();
+			for (auto terminal : terminals) {
+				for (const auto &entry : repeated) {
+					if (terminal -> terminalName().trimmed() == entry.first) {
+						terminal -> setSelected(true);
+					}
+				}
+			}
+		}
+
+		const int unnamed = TerminalNameCheck::unnamedCount(names);
+		if (unnamed &&
+			!(m_elmt_scene->elementData().m_type & ElementData::AllReport) &&
+			m_elmt_scene->elementData().m_type != ElementData::ConductorDefinition &&
+			m_elmt_scene->elementData().m_type != ElementData::Thumbnail)
+		{
+			warnings << qMakePair (tr("Bornes sans nom"),
+								   tr("<br>%n borne(s) sans nom. Sans noms de bornes uniques,"
+								   " la liste de câblage (qui relie quoi à quoi) ne peut pas"
+								   " désigner chaque borne, et ne peut donc pas servir à"
+								   " câbler l'armoire en atelier.", "", unnamed));
 		}
 	}
 
