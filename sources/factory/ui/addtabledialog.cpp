@@ -22,6 +22,7 @@
 #include "../../utils/qetutils.h"
 #include "ui_addtabledialog.h"
 
+#include "../../qet.h"
 #include <QFontDialog>
 
 /**
@@ -35,6 +36,7 @@ AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
 	ui(new Ui::AddTableDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
 	m_content_widget = content_widget;

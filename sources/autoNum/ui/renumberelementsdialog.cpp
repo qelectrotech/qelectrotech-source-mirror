@@ -17,6 +17,7 @@
 */
 
 #include "renumberelementsdialog.h"
+#include "../../qet.h"
 
 #include <QComboBox>
 #include <QDialogButtonBox>
@@ -60,6 +61,8 @@ RenumberElementsDialog::RenumberElementsDialog(const QStringList &scheme_titles,
 
     connect(m_all_rb, &QRadioButton::toggled, this, &RenumberElementsDialog::updateUi);
     connect(m_one_rb, &QRadioButton::toggled, this, &RenumberElementsDialog::updateUi);
+
+	QET::trackDialogGeometry(this);
 }
 
 QString RenumberElementsDialog::selectedSchemeTitle() const

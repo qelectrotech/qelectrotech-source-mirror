@@ -89,6 +89,8 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	vlayout.addLayout(glayout);
 	vlayout.addWidget(&boutons);
 
+	QET::trackDialogGeometry(this);
+
 	// if dialog is accepted
 	if (this -> exec() == QDialog::Accepted && !diagram_is_read_only)
 	{

@@ -22,6 +22,7 @@
 #include "dxfexport.h"
 #include "exportpropertieswidget.h"
 #include "factory/elementpicturefactory.h"
+#include "qet.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "dxfpaintdevice.h"
 #include "qetgraphicsitem/conductor.h"
@@ -108,6 +109,8 @@ ExportDialog::ExportDialog(
 	
 	// ajustement des extensions des fichiers
 	slot_changeFilesExtension(true);
+
+	QET::trackDialogGeometry(this);
 }
 
 /**

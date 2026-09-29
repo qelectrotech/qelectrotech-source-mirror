@@ -5,6 +5,7 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/element.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../qet.h"
 #include <QUndoCommand>
 #include <QCheckBox>
 #include <QVBoxLayout>
@@ -67,6 +68,8 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
             m_stripCheckboxes.insert(prefix, cb);
         }
     }
+
+    QET::trackDialogGeometry(this);
 }
 
 /**
