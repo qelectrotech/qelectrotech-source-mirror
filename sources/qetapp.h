@@ -291,6 +291,10 @@ class QETApp : public QObject
 		void openTitleBlockTemplate(const QString &);
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
+			/// Save the settings to a file (discussion #610)
+		void exportConfiguration();
+			/// Replace the settings with a saved file, then close QElectroTech
+		void importConfiguration();
 		void aboutQET();
 		void showDiagnosticsReport();
 		void receiveMessage(int instanceId, QByteArray message);
