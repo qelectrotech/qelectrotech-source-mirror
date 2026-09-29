@@ -865,7 +865,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation>Dimensions of folio</translation>
+        <translation>Folio size</translation>
     </message>
 </context>
 <context>
@@ -996,8 +996,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>Modifier la couleur de %n conducteur(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Change the colour of %n conductor</numerusform>
+            <numerusform>Change the colour of %n conductors</numerusform>
         </translation>
     </message>
     <message>
@@ -3045,12 +3045,12 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="209"/>
         <source>Renvoi de folio suivant</source>
-        <translation>Reference folio following</translation>
+        <translation>Next folio reference</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="210"/>
         <source>Renvoi de folio précédent</source>
-        <translation>Previous reference folio</translation>
+        <translation>Previous folio reference</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="211"/>
@@ -3281,7 +3281,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="888"/>
         <source>Réf.</source>
-        <translation>Réf.</translation>
+        <translation>Ref.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="895"/>
@@ -3629,7 +3629,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="45"/>
         <source>Titre du folio</source>
-        <translation>Title of folio</translation>
+        <translation>Folio title</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="46"/>
@@ -4040,16 +4040,16 @@ By importing this file, you confirm that:
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="939"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
-            <numerusform>%n element, part</numerusform>
-            <numerusform>%n elements, parts</numerusform>
+            <numerusform>%n element, spread</numerusform>
+            <numerusform>%n elements, spread</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="941"/>
         <source>dans %n dossier(s).</source>
         <translation>
-            <numerusform>in %n folder.</numerusform>
-            <numerusform>in %n folders.</numerusform>
+            <numerusform>across %n folder.</numerusform>
+            <numerusform>across %n folders.</numerusform>
         </translation>
     </message>
     <message>
@@ -4215,7 +4215,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Remonter ce folio</source>
-        <translation>Move up  this folio</translation>
+        <translation>Move this folio up</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -4225,17 +4225,17 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio x10</source>
-        <translation>Move up  this folio x10</translation>
+        <translation>Move this folio up x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Remonter ce folio x100</source>
-        <translation>Move up  this folio x100</translation>
+        <translation>Move this folio up x100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Remonter ce folio au debut</source>
-        <translation>Move up  this folio to the beginning</translation>
+        <translation>Move this folio to the beginning</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
@@ -4381,7 +4381,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportdialog.cpp" line="156"/>
         <source>Titre du folio</source>
-        <translation>Title of folio</translation>
+        <translation>Folio title</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="836"/>
@@ -4477,7 +4477,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter entièrement le folio</source>
-        <translation>Export fully folio</translation>
+        <translation>Export the whole folio</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
@@ -4770,7 +4770,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="228"/>
         <source>Référence croisé</source>
-        <translation>Cross reference</translation>
+        <translation>Cross-reference</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="229"/>
@@ -5609,8 +5609,8 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="424"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation>&lt;center&gt;ATTENTION :&lt;/center&gt;
- lines are missing %1 to display all the informations</translation>
+        <translation>&lt;center&gt;WARNING:&lt;/center&gt;
+ %1 more rows are needed to display all the information</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="536"/>
@@ -6195,13 +6195,13 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="526"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="552"/>
         <source>N° de folio</source>
-        <translation>N° of folio</translation>
+        <translation>Folio no.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="518"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="541"/>
         <source>Label de folio</source>
-        <translation>Label folio</translation>
+        <translation>Folio label</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="520"/>
@@ -6209,7 +6209,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="543"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="554"/>
         <source>Titre de folio</source>
-        <translation>Title of folio</translation>
+        <translation>Folio title</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="519"/>
@@ -6297,12 +6297,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="236"/>
         <source>Report de folio</source>
-        <translation>Folio referencing</translation>
+        <translation>Folio reference</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="238"/>
         <source>Référence croisée (esclave)</source>
-        <translation>Cross Reference (slave)</translation>
+        <translation>Cross-reference (slave)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -6364,18 +6364,18 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="70"/>
         <source>N° de folio</source>
-        <translation>N° of folio</translation>
+        <translation>Folio no.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
         <source>Label de folio</source>
-        <translation>Label folio</translation>
+        <translation>Folio label</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="71"/>
         <source>Titre de folio</source>
-        <translation>Title of folio</translation>
+        <translation>Folio title</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
@@ -6583,12 +6583,12 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="155"/>
         <source>Reports de folio</source>
-        <translation>Folio referencings</translation>
+        <translation>Folio references</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="156"/>
         <source>Références croisées</source>
-        <translation>Cross References</translation>
+        <translation>Cross-references</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="157"/>
@@ -6816,7 +6816,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="291"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="481"/>
         <source>N° folio</source>
-        <translation>N° scheme</translation>
+        <translation>Folio no.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="146"/>
@@ -7216,7 +7216,7 @@ Voltage / Protocol : %1</translation>
         <source>
 Numéro : %1</source>
         <translation>
-Numéro : %1</translation>
+Number: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="205"/>
@@ -7265,7 +7265,7 @@ Conductor section : %1</translation>
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation>The new potential formula contains variables incompatible with the folio reports.
+        <translation>The new potential formula contains variables incompatible with folio references.
 Please enter a compatible formula for this potential.
 The following variables are incompatible:
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
@@ -8562,7 +8562,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation>Edits the properties of the folio (size, title block informations, conductor properties...)</translation>
+        <translation>Edits the properties of the folio (size, title block information, conductor properties...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="737"/>
@@ -9172,12 +9172,12 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1027"/>
         <source>Ajoute une courbe de Bézier sur le folio actuel</source>
-        <translation>Adds a Bézier curve on the current sheet</translation>
+        <translation>Adds a Bézier curve to the current folio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1028"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
-        <translation>Add a terminal plan on the current sheet</translation>
+        <translation>Adds a terminal plan to the current folio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1078"/>
@@ -9273,8 +9273,8 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/qetdiagrameditor.cpp" line="2101"/>
         <source>%n objet(s) remis sur la grille</source>
         <translation>
-            <numerusform>%n item placed on the grid</numerusform>
-            <numerusform>%n item placed on the grid</numerusform>
+            <numerusform>%n item put back on the grid</numerusform>
+            <numerusform>%n items put back on the grid</numerusform>
         </translation>
     </message>
     <message>
@@ -9387,8 +9387,8 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/qetdiagrameditor.cpp" line="3518"/>
         <source>%n élément(s) redessiné(s).</source>
         <translation>
-            <numerusform>%n element redesigned.</numerusform>
-            <numerusform>%n elements redesigned.</numerusform>
+            <numerusform>%n element redrawn.</numerusform>
+            <numerusform>%n elements redrawn.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -9403,8 +9403,8 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/qetdiagrameditor.cpp" line="3534"/>
         <source>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</source>
         <translation>
-            <numerusform>%n element not redrawn: their size, grip or boundaries have changed (a boundary has been added, removed or moved).</numerusform>
-            <numerusform>%n elements not redrawn: their size, grip or boundaries have changed (a boundary has been added, removed or moved).</numerusform>
+            <numerusform>%n element not redrawn: its size, grip point or terminals have changed (a terminal was added, removed or moved).</numerusform>
+            <numerusform>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</numerusform>
         </translation>
     </message>
     <message>
@@ -9858,7 +9858,7 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="810"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt; &lt;b&gt; Error &lt;/ b&gt;: &lt;br&gt; folio referencings must have a single terminal &lt;br&gt; &lt;b&gt; Solution &lt;/ b&gt; :&lt;br&gt; Check that the element has only one terminal</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Folio references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="843"/>
@@ -9871,8 +9871,8 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
-            <numerusform> %n erreur</numerusform>
-            <numerusform> %n erreurs</numerusform>
+            <numerusform> %n error</numerusform>
+            <numerusform> %n errors</numerusform>
         </translation>
     </message>
     <message>
@@ -11138,8 +11138,8 @@ What do you wish to do ?</translation>
         <source>%n forme(s)</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
-            <numerusform>%n forme</numerusform>
-            <numerusform>%n formes</numerusform>
+            <numerusform>%n shape</numerusform>
+            <numerusform>%n shapes</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -11252,7 +11252,7 @@ What do you wish to do ?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1154"/>
         <source>Folio sans titre</source>
-        <translation>Folio Untitled</translation>
+        <translation>Untitled folio</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1156"/>
@@ -11645,8 +11645,8 @@ the translated name of this folder could not be read, so its folder name is disp
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
-            <numerusform>add %n conductor</numerusform>
-            <numerusform>add %n conductors</numerusform>
+            <numerusform>Add %n conductor</numerusform>
+            <numerusform>Add %n conductors</numerusform>
         </translation>
     </message>
     <message>
@@ -13849,7 +13849,7 @@ E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Label of folio referencing</translation>
+        <translation>Folio reference label</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -13861,14 +13861,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>You can define a custom label for folio reports.
-Create your own text by using the following variables:
-% f: the folio position in the project
-% F: the folio number
-% M: the installation
-% LM: the location
-% l: the line number
-% c: the column number</translation>
+        <translation>You can define a custom label for folio references.
+Create your own text using the following variables:
+%f: the folio position in the project
+%F: the folio number
+%M: the installation
+%LM: the location
+%l: the row number
+%c: the column number</translation>
     </message>
 </context>
 <context>
@@ -14031,7 +14031,7 @@ Create your own text by using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="200"/>
         <source>Eléments report de folio</source>
-        <translation>Folio referencings elements</translation>
+        <translation>Folio reference elements</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="206"/>
@@ -17384,7 +17384,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="291"/>
         <source>Référence croisé</source>
-        <translation>Cross reference</translation>
+        <translation>Cross-reference</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="292"/>
@@ -17673,7 +17673,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
-        <translation>Title block informations</translation>
+        <translation>Title block information</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
@@ -18547,13 +18547,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation>Create your own text by helping you of the following variables :
-%f : the folio number 
-% F: folio label
-% l : the line number
-% c : column number
-% M: Plant 
-% LM: Location </translation>
+        <translation>Create your own text using the following variables:
+%f: the folio number
+%F: the folio label
+%l: the row number
+%c: the column number
+%M: the installation
+%LM: the location</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="280"/>
