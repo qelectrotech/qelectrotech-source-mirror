@@ -30,6 +30,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -194,7 +195,8 @@ class EditValidation(unittest.TestCase):
         s = self.build([{"op": "add_folio", "id": "f"},
                         {"op": "add_element", "id": "k", "folio": "$f", "path": "p", "x": 0, "y": 0},
                         {"op": "delete_element_text", "folio": "$f", "element": "$k", "index": U}])
-        self.assertIn(f'qet.deleteElementText(R["f"], R["k"], qet.elementTextIndex(R["f"], R["k"], "{U}"))', s)
+        f = '(F["f"] ? qet.folioIndex(F["f"]) : R["f"])'   # a folio "$name": see test_folio_ref_follows_the_folio
+        self.assertIn(f'qet.deleteElementText({f}, R["k"], qet.elementTextIndex({f}, R["k"], "{U}"))', s)
         # the lookups are required only when a uuid is used
         self.assertIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": U}]))
         self.assertNotIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": 0}]))
@@ -224,6 +226,27 @@ class EditValidation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "folio index, its uuid"):
             self.build([{"op": "set_folio", "folio": "first", "property": "author", "value": "a"}])
             
+    def test_folio_ref_follows_the_folio(self):
+        """A "$name" made by add_folio or insert_folio is looked up by the
+        folio's uuid when used as a folio, since a later insert or removal
+        shifts its index; the stored index is the fallback on a build that
+        cannot report folio uuids. Used as anything else, it is unchanged."""
+        s = self.build([{"op": "add_folio", "id": "f"},
+                        {"op": "insert_folio", "id": "g", "position": 0},
+                        {"op": "set_folio_title", "folio": "$f", "title": "t"},
+                        {"op": "set_folio_title", "folio": "$g", "title": "u"}])
+        self.assertIn("F[\"f\"] = (typeof qet.folioUuid === 'function' && v0 >= 0) "
+                      "? qet.folioUuid(v0) : '';", s)
+        self.assertIn('qet.setFolioTitle((F["f"] ? qet.folioIndex(F["f"]) : R["f"]), "t")', s)
+        self.assertIn('qet.setFolioTitle((F["g"] ? qet.folioIndex(F["g"]) : R["g"]), "u")', s)
+        # not required: an edit still runs on a build without folio uuids
+        self.assertNotIn('"folioUuid"', s)
+        # a "$name" from any other op is untouched
+        s = self.build([{"op": "add_text", "id": "t", "folio": 0, "text": "x", "x": 0, "y": 0},
+                        {"op": "delete_text", "folio": 0, "index": "$t"}])
+        self.assertIn('R["t"]', s)
+        self.assertNotIn("F[", s.split("if (missing.length === 0) {")[1])
+
     def test_conductor_by_uuid(self):
         """A conductor named by uuid is turned into one of its ends at run
         time; the lookup is required only then, and "conductor" cannot be
@@ -277,7 +300,8 @@ class EditValidation(unittest.TestCase):
         s = self.build([{"op": "add_folio", "id": "f"},
                         {"op": "add_element", "id": "a", "folio": "$f", "path": "x.elmt", "x": 0, "y": 0},
                         {"op": "delete_conductor", "folio": "$f", "element": "$a", "terminal": T}])
-        self.assertIn(f'qet.deleteConductor(R["f"], R["a"], qetMcpTerminal(2, "terminal", R["f"], R["a"], "{T}"))', s)
+        f = '(F["f"] ? qet.folioIndex(F["f"]) : R["f"])'   # a folio "$name": see test_folio_ref_follows_the_folio
+        self.assertIn(f'qet.deleteConductor({f}, R["a"], qetMcpTerminal(2, "terminal", {f}, R["a"], "{T}"))', s)
         s = self.build([{"op": "delete_conductor", "folio": V, "element": E, "terminal": T}])
         self.assertIn(f'qetMcpTerminal(0, "terminal", qet.folioIndex("{V}"), "{E}", "{T}")', s)
         # an index is unchanged and needs no lookup
@@ -468,6 +492,80 @@ class EditValidation(unittest.TestCase):
         need = json.loads(re.search(r"var need = (\[.*?\]);", script).group(1))
         self.assertFalse({"shapeIndex", "textIndex", "imageIndex"} & set(need))
 
+    def test_malformed_arguments_are_refused(self):
+        """Each argument kind rejects what it cannot take, before any launch.
+        Found by the mutation audit: forcing any of these checks off went
+        unnoticed."""
+        f = {"op": "add_folio", "id": "f"}
+        cases = [
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": []}),
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": [1, "2"]}),
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": [True]}),
+            ("indices", {"op": "bridge_terminals", "strip": 0, "indices": 3}),
+            ("true or false", {"op": "add_polygon", "folio": 0, "closed": 1,
+                               "points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}]}),
+            ("at least 2", {"op": "add_polygon", "folio": 0, "closed": True,
+                            "points": [{"x": 0, "y": 0}]}),
+            ("at least 2", {"op": "add_polygon", "folio": 0, "closed": True, "points": "xy"}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, {"x": "1", "y": 1}]}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, {"x": True, "y": 1}]}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, [1, 1]]}),
+            ("at least 2 nodes", {"op": "add_path", "folio": 0, "closed": False,
+                                  "nodes": [{"x": 0, "y": 0}]}),
+            ("corner, smooth or symmetric", {"op": "add_path", "folio": 0, "closed": False,
+                                             "nodes": [{"x": 0, "y": 0},
+                                                       {"x": 1, "y": 1, "kind": "sharp"}]}),
+            ("inHandle", {"op": "add_path", "folio": 0, "closed": False,
+                          "nodes": [{"x": 0, "y": 0}, {"x": 1, "y": 1, "inHandle": [0, 0]}]}),
+            ("outHandle", {"op": "add_path", "folio": 0, "closed": False,
+                           "nodes": [{"x": 0, "y": 0}, {"x": 1, "y": 1, "outHandle": {"x": 0}}]}),
+            ("unknown kind", {"op": "search_and_replace", "kind": "folio", "field": "x",
+                              "pattern": "a", "replacement": "b", "regex": False,
+                              "case_sensitive": False}),
+            ("unknown conductor field", {"op": "search_and_replace", "kind": "conductor",
+                                         "field": "label", "pattern": "a", "replacement": "b",
+                                         "regex": False, "case_sensitive": False}),
+            ("non-empty", {"op": "search_and_replace", "kind": "element_info", "field": "",
+                           "pattern": "a", "replacement": "b", "regex": False,
+                           "case_sensitive": False}),
+            ("not both", {"op": "delete_conductor", "folio": 0,
+                          "conductor": "{11111111-2222-4333-8444-555555555555}",
+                          "element": "{11111111-2222-4333-8444-555555555555}"}),
+            ("not both", {"op": "delete_conductor", "folio": 0,
+                          "conductor": "{11111111-2222-4333-8444-555555555555}", "terminal": 0}),
+            ("not an object", "add_folio"),
+        ]
+        for message, op in cases:
+            with self.subTest(op=op):
+                with self.assertRaisesRegex(ValueError, message):
+                    self.build([f, op])
+
+    def test_valid_shapes_of_those_arguments_pass(self):
+        """The other side: the same kinds accept what they should, so the
+        refusals above are not everything failing."""
+        s = self.build([
+            {"op": "add_polygon", "folio": 0, "closed": False,
+             "points": [{"x": 0, "y": 0}, {"x": 1.5, "y": -2}]},
+            {"op": "add_path", "folio": 0, "closed": True,
+             "nodes": [{"x": 0, "y": 0, "kind": "smooth", "inHandle": {"x": 1, "y": 1}},
+                       {"x": 5, "y": 5, "outHandle": {"x": 2, "y": 2}}]},
+            {"op": "add_polygon", "folio": 0, "closed": True,
+             "points": [{"x": 0, "y": 0, "kind": "anything"}, {"x": 1, "y": 1}]},
+            {"op": "search_and_replace", "kind": "conductor", "field": "num", "pattern": "a",
+             "replacement": "b", "regex": True, "case_sensitive": False},
+            {"op": "search_and_replace", "kind": "text", "field": "", "pattern": "a",
+             "replacement": "b", "regex": False, "case_sensitive": True}])
+        self.assertIn("qet.addPolygon(0, [{", s)
+        self.assertIn("qet.searchAndReplace(\"conductor\", \"num\", \"a\", \"b\", true, false)", s)
+        self.assertIn("qet.searchAndReplace(\"text\", \"\", \"a\", \"b\", false, true)", s)
+
+    def test_no_id_stores_nothing(self):
+        s = self.build([{"op": "add_folio"}])
+        self.assertNotIn("R[", s.split("if (missing.length === 0) {")[1])
+
     def test_a_string_index_that_is_not_a_uuid_is_refused(self):
         for bad in ("3", "{nope}", "11111111-1111"):
             with self.subTest(index=bad):
@@ -531,7 +629,8 @@ class EditValidation(unittest.TestCase):
         script = self.build([{"op": "add_folio", "id": "f"},
                              {"op": "set_folio_title", "folio": "$f", "title": nasty}])
         # the literal must be valid JSON, so JavaScript reads exactly what was sent
-        literal = re.search(r'setFolioTitle\(R\["f"\], (".*?")\)', script, re.S).group(1)
+        literal = re.search(r'setFolioTitle\(\(F\["f"\] \? qet\.folioIndex\(F\["f"\]\) : R\["f"\]\), (".*?")\)',
+                            script, re.S).group(1)
         self.assertEqual(json.loads(literal), nasty)
 
     def test_edit_refuses_in_place_and_empty(self):
@@ -574,6 +673,37 @@ class ResultParsing(unittest.TestCase):
         parsed = m._parse_script_output(text)
         self.assertTrue(parsed["saved"])
         self.assertEqual(parsed["operations"], [])
+
+
+    def test_capabilities_notes_and_save(self):
+        """Every field the script reports reaches the result, attached where
+        it belongs. Found by the mutation audit: only the binary tests read
+        these back."""
+        text = "\n".join([
+            self.line(kind="capabilities", missing=["addFolio"]),
+            self.line(kind="op", index=0, op="a", id=None, result=True),
+            self.line(kind="op", index=1, op="b", id=None, result=False),
+            self.line(kind="op_note", index=1, note="why"),
+            self.line(kind="save", result=True, stopped_early=True),
+            self.line(kind="something_newer", result=False)])   # not a save
+        parsed = m._parse_script_output(text)
+        self.assertEqual(set(parsed), {"missing_methods", "operations", "saved", "stopped_early"})
+        self.assertEqual(parsed["missing_methods"], ["addFolio"])
+        self.assertTrue(parsed["saved"])
+        self.assertTrue(parsed["stopped_early"])
+        self.assertNotIn("note", parsed["operations"][0])
+        self.assertEqual(parsed["operations"][1]["note"], "why")
+            # no capabilities line: unknown, not "nothing missing"
+        self.assertIsNone(m._parse_script_output(self.line(kind="save", result=False))["missing_methods"])
+        self.assertEqual(m._parse_script_output(self.line(kind="capabilities", missing=None))
+                         ["missing_methods"], [])
+
+    def test_a_line_without_the_marker_is_ignored(self):
+        """Even one that would parse if read from where the marker would be."""
+        almost = "x" * (len(m._MARKER) - 1) + json.dumps({"kind": "save", "result": True})
+        parsed = m._parse_script_output(almost)
+        self.assertIsNone(parsed["saved"])
+        self.assertFalse(parsed["stopped_early"])
 
 
 class TerminalOrder(unittest.TestCase):
@@ -717,6 +847,391 @@ class ElementBuild(unittest.TestCase):
         r = self.build(names={"en": 'Coil "A" & <B>', "fr": "Résistance"})
         self.assertEqual(r["verified"]["names"]["fr"], "Résistance")
         self.assertEqual(r["verified"]["names"]["en"], 'Coil "A" & <B>')
+
+
+class ElementFileExact(unittest.TestCase):
+    """Exact answers for the tools that write and read .elmt files and need
+    no QElectroTech. Found by a mutation audit: the existing tests checked a
+    few fields, so dropping any other one from a result, or getting a
+    header number off by one, went unnoticed."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        m._ELEMENT_INDEX.clear()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_fmt(self):
+        self.assertEqual([m._fmt(v) for v in (True, False, 3, 2.0, 2.5, -0.25, "x")],
+                         ["true", "false", "3", "2", "2.5", "-0.25", "x"])
+
+    def test_part_extent_per_kind(self):
+        ext = m._part_extent
+        self.assertEqual(ext("line", {"x1": 1, "y1": 2, "x2": 3, "y2": 4}), [(1, 2), (3, 4)])
+        for kind in ("rect", "ellipse", "arc"):
+            self.assertEqual(ext(kind, {"x": -5, "y": 1, "width": 10, "height": 4}),
+                             [(-5, 1), (5, 5)], kind)
+        self.assertEqual(ext("circle", {"x": 2, "y": 3, "diameter": 6}), [(2, 3), (8, 9)])
+        self.assertEqual(ext("polygon", {"points": [[0, 1], [2, 3], [4, 5]]}),
+                         [(0, 1), (2, 3), (4, 5)])
+        self.assertEqual(ext("text", {"x": 7, "y": 8, "text": "a"}), [(7, 8)])
+        self.assertEqual(ext("dynamic_text", {"x": 7}), [])
+
+    def test_element_geometry(self):
+        """Box, hotspot and size, worked out by hand: points reach x -10..20
+        and y -15..5; a 5 unit margin, rounded out to tens."""
+        g = m._element_geometry(
+            [{"type": "line", "x1": 0, "y1": 0, "x2": 20, "y2": 0},
+             {"type": "rect", "x": -10, "y": -5, "width": 10, "height": 10}],
+            [{"x": 0, "y": -15, "orientation": "n"}])
+        self.assertEqual(g, {"width": 50, "height": 30, "hotspot_x": 20, "hotspot_y": 20,
+                             "bbox": [-10, -15, 20, 5]})
+        # a terminal alone is enough; nothing at all is refused
+        self.assertEqual(m._element_geometry([], [{"x": 0, "y": 0, "orientation": "n"}]),
+                         {"width": 20, "height": 20, "hotspot_x": 10, "hotspot_y": 10, "bbox": [0, 0, 0, 0]})
+        with self.assertRaisesRegex(ValueError, "at least one part or terminal"):
+            m._element_geometry([], [])
+
+    def test_part_element(self):
+        E = lambda part: dict(m._part_element(part, "{u}").attrib)
+        self.assertEqual(E({"type": "polygon", "points": [[0, 1], [2.5, 3]]}),
+                         {"uuid": "{u}", "x1": "0", "y1": "1", "x2": "2.5", "y2": "3",
+                          "closed": "true", "antialias": "true", "style": m.DEFAULT_STYLE})
+        self.assertEqual(E({"type": "polygon", "points": [[0, 1], [2, 3]], "closed": False,
+                            "antialias": False, "style": "x"})["closed"], "false")
+        self.assertEqual(E({"type": "text", "x": 1, "y": 2, "text": "K1"}),
+                         {"uuid": "{u}", "x": "1", "y": "2", "text": "K1", "rotation": "0",
+                          "font": "Sans Serif,9,-1,5,50,0,0,0,0,0", "color": "#000000"})
+        self.assertEqual(E({"type": "text", "x": 1, "y": 2, "text": "K1", "size": 12,
+                            "rotation": 90, "color": "red"})["font"],
+                         "Sans Serif,12,-1,5,50,0,0,0,0,0")
+        rect = E({"type": "rect", "x": 0, "y": 0, "width": 4, "height": 2, "antialias": False})
+        self.assertEqual(rect, {"uuid": "{u}", "x": "0", "y": "0", "width": "4", "height": "2",
+                                "antialias": "false", "style": m.DEFAULT_STYLE})
+
+    def test_build_writes_and_reports_exactly(self):
+        out = self.root / "k" / "coil.elmt"
+        U = "{11111111-2222-4333-8444-555555555555}"
+        r = m.tool_element_build(
+            str(out), {"fr": "Bobine", "en": "Coil"},
+            [{"type": "line", "x1": 0, "y1": -10, "x2": 0, "y2": 10}],
+            terminals=[{"x": 0, "y": 20, "orientation": "s", "name": "A2"},
+                       {"x": 0, "y": -20, "orientation": "n", "name": "A1", "type": "Inner"}],
+            link_type="master", informations={"type": "coil"}, uuid=U)
+        self.assertEqual(set(r), {"ok", "output", "bytes", "width", "height", "hotspot_x",
+                                  "hotspot_y", "bbox", "terminal_index_order", "part_uuids",
+                                  "verified"})
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["output"], str(out))
+        self.assertEqual(r["bytes"], out.stat().st_size)
+        self.assertEqual(r["terminal_index_order"], ["A1", "A2"])
+        root = ET.parse(out).getroot()
+        self.assertEqual(dict(root.attrib), {
+            "version": "0.100.0", "type": "element", "link_type": "master",
+            "width": str(r["width"]), "height": str(r["height"]),
+            "hotspot_x": str(r["hotspot_x"]), "hotspot_y": str(r["hotspot_y"])})
+        self.assertEqual(root.find("uuid").get("uuid"), U)
+        self.assertEqual([(n.get("lang"), n.text) for n in root.iter("name")],
+                         [("en", "Coil"), ("fr", "Bobine")])
+        self.assertEqual([(k.get("name"), k.text) for k in root.iter("kindInformation")],
+                         [("type", "coil")])
+        t2, t1 = root.findall("description/terminal")
+        self.assertEqual({k: v for k, v in t1.attrib.items() if k != "uuid"},
+                         {"x": "0", "y": "-20", "orientation": "n", "type": "Inner", "name": "A1"})
+        self.assertEqual(t2.get("type"), "Generic")
+        self.assertRegex(t1.get("uuid"), m._UUID_RE)
+        self.assertNotEqual(t1.get("uuid"), t2.get("uuid"))
+
+    def test_build_refusals(self):
+        out = str(self.root / "x.elmt")
+        line = [{"type": "line", "x1": 0, "y1": 0, "x2": 1, "y2": 0}]
+        term = [{"x": 0, "y": 0, "orientation": "n"}]
+        for message, kwargs in [
+                ("names must be a non-empty", dict(names={}, parts=line, terminals=term)),
+                ("unknown link_type", dict(names={"en": "a"}, parts=line, terminals=term, link_type="x")),
+                ("parts must be a list", dict(names={"en": "a"}, parts={}, terminals=term)),
+                ("terminal 0 is not an object", dict(names={"en": "a"}, parts=line, terminals=[1])),
+                ("terminal 0 is missing 'orientation'", dict(names={"en": "a"}, parts=line,
+                                                             terminals=[{"x": 0, "y": 0}])),
+                ("orientation is one of", dict(names={"en": "a"}, parts=line,
+                                               terminals=[{"x": 0, "y": 0, "orientation": "up"}])),
+                ("cannot be connected", dict(names={"en": "a"}, parts=line, terminals=[])),
+                ("same uuid", dict(names={"en": "a"}, terminals=term, parts=[
+                    dict(line[0], uuid="{11111111-2222-4333-8444-555555555555}"),
+                    dict(line[0], uuid="{11111111-2222-4333-8444-555555555555}")]))]:
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    m.tool_element_build(out, **kwargs)
+
+    def test_element_info_exactly(self):
+        p = self.root / "e.elmt"
+        p.write_text(
+            '<definition type="element" link_type="simple" width="20" height="40">'
+            '<names><name lang="en">E</name></names>'
+            '<elementInformations><elementInformation name="x"><info_name> label </info_name>'
+            '</elementInformation><elementInformation name="y"><info_name></info_name>'
+            '</elementInformation></elementInformations>'
+            '<description><line uuid="{L}"/><terminal x="0" y="10" orientation="s" type="Generic" '
+            'uuid="{B}" name="2"/><terminal x="0" y="-10" orientation="n" name="1"/>'
+            '<arc/><terminal x="5" y="-10" orientation="e"/></description></definition>',
+            encoding="utf-8")
+        r = m.tool_element_info(str(p))
+        self.assertEqual(set(r), {"file", "type", "link_type", "width", "height", "names",
+                                  "terminal_count", "terminals", "terminal_order",
+                                  "info_fields", "parts", "part_list"})
+        self.assertEqual((r["file"], r["type"], r["link_type"], r["width"], r["height"]),
+                         (str(p), "element", "simple", "20", "40"))
+        self.assertEqual(r["terminal_count"], 3)
+        self.assertEqual(r["terminals"][0], {"index": 0, "x": "0", "y": "-10", "orientation": "n",
+                                             "name": "1", "type": "", "uuid": ""})
+        self.assertEqual(r["terminals"][2], {"index": 2, "x": "0", "y": "10", "orientation": "s",
+                                             "name": "2", "type": "Generic", "uuid": "{B}"})
+        self.assertEqual(r["info_fields"], ["label"])
+        self.assertEqual(r["parts"], {"line": 1, "terminal": 3, "arc": 1})
+        self.assertEqual(r["part_list"], [{"type": "line", "uuid": "{L}"}, {"type": "arc", "uuid": ""}])
+        self.assertNotIn("undefined", r["terminal_order"])
+        p.write_text(p.read_text().replace('x="5" y="-10"', 'x="0" y="-10"'), encoding="utf-8")
+        self.assertIn("undefined", m.tool_element_info(str(p))["terminal_order"])
+
+    def test_index_entry_exactly(self):
+        f = self.root / "a" / "k.elmt"
+        f.parent.mkdir()
+        f.write_text('<definition type="element" link_type="master" width="30" height="50">'
+                     '<names><name lang="fr">Bobine</name></names><kindInformations>'
+                     '<kindInformation name="type"> coil </kindInformation>'
+                     '<kindInformation name="other">x</kindInformation></kindInformations>'
+                     '<description><terminal x="0" y="5" orientation="s" name="A2"/>'
+                     '<terminal x="0" y="5" orientation="s" name="A1"/></description></definition>',
+                     encoding="utf-8")
+        (self.root / "a" / "broken.elmt").write_text("<definition", encoding="utf-8")
+        (self.root / "a" / "other.elmt").write_text("<project/>", encoding="utf-8")
+        items = m._index_collection(self.root)
+        self.assertEqual(len(items), 1)
+        it = {k: v for k, v in items[0].items() if k != "haystack"}
+        self.assertEqual(it, {"path": "common://a/k.elmt", "file": str(f), "name": "Bobine",
+                              "names": {"fr": "Bobine"}, "link_type": "master", "kind": "coil",
+                              "terminals": 2, "terminal_names": ["A2", "A1"],
+                              "terminal_order_ambiguous": True, "width": "30", "height": "50"})
+        # the index is cached until the collection changes
+        self.assertIs(m._index_collection(self.root), items)
+        self.assertEqual(m._collection_signature(self.root)[0], 3)
+
+    def test_search_ranking_and_limit(self):
+        for rel, name in (("a/1.elmt", "Coil latching"), ("a/2.elmt", "Coil"),
+                          ("a/3.elmt", "Remanence coil")):
+            f = self.root / rel
+            f.parent.mkdir(exist_ok=True)
+            f.write_text(f'<definition type="element" link_type="simple"><names>'
+                         f'<name lang="en">{name}</name></names><description>'
+                         f'<terminal x="0" y="0" orientation="n"/></description></definition>',
+                         encoding="utf-8")
+        r = m.tool_element_search(str(self.root), "coil")
+        self.assertEqual([e["name"] for e in r["results"]],
+                         ["Coil", "Coil latching", "Remanence coil"])
+        r = m.tool_element_search(str(self.root), "coil", limit=1)
+        self.assertEqual((r["total_matches"], r["returned"]), (3, 1))
+        with self.assertRaisesRegex(ValueError, "limit must be >= 1"):
+            m.tool_element_search(str(self.root), "coil", limit=0)
+        self.assertEqual(m.tool_element_search(str(self.root), "coil", limit=1)["results"][0]["name"],
+                         "Coil")
+        self.assertEqual(set(r), {"query", "total_matches", "returned", "indexed", "results"})
+        self.assertEqual((r["query"], r["indexed"]), ("coil", 3))
+        self.assertEqual(r["results"][0]["languages"], ["en"])
+
+    def test_search_puts_the_exact_name_then_names_starting_with_it(self):
+        for n, name in enumerate(("Relay coil", "Coil relay", "Coil relay X", "A coil relay")):
+            f = self.root / f"{n}.elmt"
+            f.write_text(f'<definition type="element" link_type="simple"><names>'
+                         f'<name lang="en">{name}</name></names><description>'
+                         f'<terminal x="0" y="0" orientation="n"/></description></definition>',
+                         encoding="utf-8")
+        r = m.tool_element_search(str(self.root), "coil relay")
+        self.assertEqual([e["name"] for e in r["results"]],
+                         ["Coil relay", "Coil relay X", "Relay coil", "A coil relay"])
+
+    def test_search_returns_25_by_default(self):
+        for n in range(26):
+            (self.root / f"{n:02}.elmt").write_text(
+                f'<definition type="element" link_type="simple"><names><name lang="en">Coil {n}'
+                f'</name></names><description><terminal x="0" y="0" orientation="n"/>'
+                f'</description></definition>', encoding="utf-8")
+        r = m.tool_element_search(str(self.root), "coil")
+        self.assertEqual((r["total_matches"], r["returned"]), (26, 25))
+
+    def test_search_exact_name_wins_a_tie(self):
+        """Same length, same first word: the exact name comes first, not
+        the one whose path sorts first."""
+        for rel, name in (("a.elmt", "Coil-a"), ("z.elmt", "Coil a")):
+            (self.root / rel).write_text(
+                f'<definition type="element" link_type="simple"><names><name lang="en">{name}'
+                f'</name></names><description><terminal x="0" y="0" orientation="n"/>'
+                f'</description></definition>', encoding="utf-8")
+        r = m.tool_element_search(str(self.root), "coil a")
+        self.assertEqual([e["name"] for e in r["results"]], ["Coil a", "Coil-a"])
+
+    def test_validate_part_refusals(self):
+        ok = lambda part: m._validate_part(0, part)
+        self.assertEqual(ok({"type": "polygon", "points": [[0, 0], [1, 1]]}), "polygon")
+        for message, part in [
+                ("not an object", ["line"]),
+                ("at least two points", {"type": "polygon", "points": [[0, 0]]}),
+                ("at least two points", {"type": "polygon", "points": "ab"}),
+                ("each point is", {"type": "polygon", "points": [[0, 0], [1, 1, 1]]}),
+                ("each point is", {"type": "polygon", "points": [[0, 0], 5]}),
+                ("uuid must look like", {"type": "line", "x1": 0, "y1": 0, "x2": 1, "y2": 1,
+                                         "uuid": "L1"})]:
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    ok(part)
+
+    def test_terminal_order_with_unreadable_coordinates(self):
+        T = lambda **a: ET.Element("terminal", {k: str(v) for k, v in a.items()})
+        ordered, _ = m._terminals_in_index_order([T(x=0, y=0.5, name="b"), T(x=0, y="bad", name="a")])
+        self.assertEqual([t.get("name") for t in ordered], ["a", "b"])
+        ordered, _ = m._terminals_in_index_order([T(x=0.5, y=0, name="b"), T(x="bad", y=0, name="a")])
+        self.assertEqual([t.get("name") for t in ordered], ["a", "b"])
+        # a missing coordinate counts as 0
+        ordered, _ = m._terminals_in_index_order([T(x=0, y=0.5, name="b"), T(x=0, name="a")])
+        self.assertEqual([t.get("name") for t in ordered], ["a", "b"])
+        ordered, _ = m._terminals_in_index_order([T(x=0.5, y=0, name="b"), T(y=0, name="a")])
+        self.assertEqual([t.get("name") for t in ordered], ["a", "b"])
+
+
+class CheckAndContinuityAnswers(unittest.TestCase):
+    """qet_check and qet_continuity turn QElectroTech's log lines into their
+    answer. With _run_qet replaced by a stub that returns chosen lines, the
+    whole answer can be checked exactly, without QElectroTech. Found by a
+    mutation audit: the binary tests look at a finding or two, so a wrong
+    summary count, a dropped field or a wrong "passed" went unnoticed."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = Path(self.tmp.name) / "p.qet"
+        self.qet.write_text('<project><diagram title="a"/><diagram title="b"/></project>',
+                            encoding="utf-8")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def stub(self, lines, **extra):
+        out = "\n".join(["noise", m._MARKER + "{not json"] +
+                        [m._MARKER + json.dumps(l) for l in lines])
+        return mock.patch.object(m, "_run_qet", lambda *a, **k: {"stdout": out, "stderr": "", **extra})
+
+    def test_check_answer_exactly(self):
+        rows = [{"label": f"K{i}"} for i in range(12)]
+        lines = [
+            {"kind": "check", "name": "duplicate_master_labels", "rows": rows, "error": ""},
+            {"kind": "check", "name": "unlabelled_masters", "rows": [{"x": 1}], "error": ""},
+            {"kind": "check", "name": "unnumbered_conductors", "rows": [{"n": 1}, {"n": 2}], "error": ""},
+            {"kind": "check", "name": "duplicate_simple_labels", "rows": [], "error": ""},
+            {"kind": "check", "name": "empty_folios", "rows": None, "error": "bad SQL"},
+            {"kind": "other", "name": "masters_without_manufacturer_reference", "rows": [1]},
+        ]
+        with self.stub(lines):
+            r = m.tool_check("qet", str(self.qet))      # sample defaults to 10
+        C = m.CHECKS
+        self.assertEqual(r, {
+            "ok": False,
+            "summary": {"errors": 1, "warnings": 1, "info": 1, "passed": 1, "check_failures": 2},
+            "findings": [
+                {"check": "duplicate_master_labels", "severity": "error", "count": 12,
+                 "note": C["duplicate_master_labels"]["note"], "rows": rows[:10]},
+                {"check": "unlabelled_masters", "severity": "warning", "count": 1,
+                 "note": C["unlabelled_masters"]["note"], "rows": [{"x": 1}]},
+                {"check": "unnumbered_conductors", "severity": "info", "count": 2,
+                 "note": C["unnumbered_conductors"]["note"], "rows": [{"n": 1}, {"n": 2}]}],
+            "passed": ["duplicate_simple_labels"],
+            "check_failures": [
+                {"check": "empty_folios", "error": "bad SQL"},
+                {"check": "masters_without_manufacturer_reference", "error": "no result came back"}]})
+
+    def test_check_sorts_by_severity_then_name(self):
+        lines = [{"kind": "check", "name": "unlabelled_masters", "rows": [1], "error": ""},
+                 {"kind": "check", "name": "empty_folios", "rows": [1], "error": ""}]
+        with self.stub(lines):
+            r = m.tool_check("qet", str(self.qet), checks=["empty_folios", "unlabelled_masters"])
+        self.assertEqual([f["check"] for f in r["findings"]], ["unlabelled_masters", "empty_folios"])
+
+    def test_check_failure_alone_is_not_ok(self):
+        lines = [{"kind": "check", "name": "empty_folios", "rows": None, "error": "bad SQL"}]
+        with self.stub(lines):
+            r = m.tool_check("qet", str(self.qet), checks=["empty_folios"])
+        self.assertFalse(r["ok"])
+
+    def test_check_ignores_a_line_without_the_marker(self):
+        almost = "x" * (len(m._MARKER) - 1) + json.dumps(
+            {"kind": "check", "name": "empty_folios", "rows": [1], "error": ""})
+        with mock.patch.object(m, "_run_qet", lambda *a, **k: {"stdout": almost, "stderr": ""}):
+            r = m.tool_check("qet", str(self.qet), checks=["empty_folios"])
+        self.assertEqual(r["check_failures"], [{"check": "empty_folios", "error": "no result came back"}])
+
+    def test_check_ok_without_errors_and_sample_zero(self):
+        lines = [{"kind": "check", "name": "unlabelled_masters", "rows": [{"x": 1}], "error": ""}]
+        with self.stub(lines):
+            r = m.tool_check("qet", str(self.qet), checks=["unlabelled_masters"], sample=0)
+        self.assertTrue(r["ok"])            # a warning is not a failure
+        self.assertEqual(r["findings"][0]["rows"], [])
+        self.assertEqual(r["findings"][0]["count"], 1)
+        with self.assertRaisesRegex(ValueError, "sample must be >= 0"):
+            m.tool_check("qet", str(self.qet), sample=-1)
+        with self.assertRaisesRegex(ValueError, "no such project"):
+            m.tool_check("qet", str(self.qet) + ".missing")
+
+    def test_check_carries_the_launch_hint(self):
+        with self.stub([], hint="why it did not start"):
+            r = m.tool_check("qet", str(self.qet), checks=["empty_folios"])
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["hint"], "why it did not start")
+
+    def test_continuity_answer_exactly(self):
+        found = [{"severity": "error", "folio": 1, "what": "a"},
+                 {"severity": "warning", "folio": 0, "what": "b"},
+                 {"severity": "info", "folio": "?", "what": "c"},
+                 {"severity": "info", "what": "d"},
+                 {"severity": "info", "folio": 1, "what": "e"}]
+        with self.stub([{"kind": "continuity", "findings": found},
+                        {"kind": "other", "findings": []}]):
+            r = m.tool_continuity("qet", str(self.qet), folio=1)
+        self.assertEqual((r["finding_count"], r["errors"], r["warnings"], r["info"]), (5, 1, 1, 3))
+        self.assertEqual([f.get("folio_number") for f in r["findings"]], [2, 1, None, None, 2])
+        self.assertNotIn(m._MARKER, r["stdout"])
+        self.assertIn("noise", r["stdout"])
+
+    def test_continuity_passes_the_folio_to_the_script(self):
+        seen = []
+        def fake(binary, args, **kw):
+            seen.append(kw["script"])
+            return {"stdout": m._MARKER + json.dumps({"kind": "continuity", "findings": []}),
+                    "stderr": ""}
+        with mock.patch.object(m, "_run_qet", fake):
+            m.tool_continuity("qet", str(self.qet))
+            m.tool_continuity("qet", str(self.qet), folio=1)
+        self.assertIn("qet.checkContinuity(-1)", seen[0])
+        self.assertIn("qet.checkContinuity(1)", seen[1])
+        with self.assertRaisesRegex(ValueError, "no such project"):
+            m.tool_continuity("qet", str(self.qet) + ".missing")
+        almost = "x" * (len(m._MARKER) - 1) + json.dumps({"kind": "continuity", "findings": []})
+        with mock.patch.object(m, "_run_qet", lambda *a, **k: {"stdout": almost, "stderr": ""}):
+            self.assertFalse(m.tool_continuity("qet", str(self.qet))["ok"])
+
+    def test_continuity_without_findings_is_not_ok(self):
+        with self.stub([]):
+            r = m.tool_continuity("qet", str(self.qet))
+        self.assertFalse(r["ok"])
+        self.assertIn("predate qet.checkContinuity()", r["hint"])
+        with self.stub([], hint="launch failed"):
+            self.assertEqual(m.tool_continuity("qet", str(self.qet))["hint"], "launch failed")
+
+    def test_continuity_folio_bounds(self):
+        for bad in (-1, 2):
+            with self.subTest(folio=bad):
+                with self.assertRaisesRegex(ValueError, f"folio {bad} does not exist"):
+                    m.tool_continuity("qet", str(self.qet), folio=bad)
+        with self.stub([{"kind": "continuity", "findings": []}]):
+            self.assertEqual(m.tool_continuity("qet", str(self.qet), folio=0)["finding_count"], 0)
 
 
 class ElementSearch(unittest.TestCase):
@@ -970,6 +1485,32 @@ class ReadToolContracts(unittest.TestCase):
         numbered, by_uuid = [m._conductor_row(i, c, ix)["key"]
                              for i, c, ix in m._conductors(root)]
         self.assertEqual(numbered, "1:{E}@0,-4,2--{E}@6,0,1")
+        self.assertEqual(by_uuid, numbered)
+
+    def test_conductor_key_same_in_both_forms_in_a_column(self):
+        """Terminals one above the other share their x: a uuid end must be
+        matched on x, y and orientation together, not on any one of them.
+        Found by the mutation audit: an "or" in place of "and" went
+        unnoticed while every test's terminals differed in every coordinate."""
+        root = ET.fromstring(
+            '<project><collection><category name="import"><category name="x">'
+            '<element name="C.elmt"><definition><description>'
+            '<terminal uuid="{T1}" x="0" y="0" orientation="n"/>'
+            '<terminal uuid="{T2}" x="0" y="20" orientation="n"/>'
+            '<terminal uuid="{T3}" x="30" y="20" orientation="n"/>'
+            '</description></definition></element>'
+            '</category></category></collection>'
+            '<diagram><elements><element uuid="{E}" type="embed://import/x/C.elmt">'
+            '<terminals><terminal id="1" x="0" y="4" orientation="0"/>'
+            '<terminal id="2" x="0" y="24" orientation="0"/>'
+            '<terminal id="3" x="30" y="24" orientation="0"/></terminals>'
+            '</element></elements><conductors>'
+            '<conductor terminal1="2" terminal2="3"/>'
+            '<conductor element1="{E}" terminal1="{T2}" element2="{E}" terminal2="{T3}"/>'
+            '</conductors></diagram></project>')
+        numbered, by_uuid = [m._conductor_row(i, c, ix)["key"]
+                             for i, c, ix in m._conductors(root)]
+        self.assertEqual(numbered, "1:{E}@0,24,0--{E}@30,24,0")
         self.assertEqual(by_uuid, numbered)
 
     def test_conductor_row_without_an_index(self):
@@ -2530,6 +3071,19 @@ class Integration(unittest.TestCase):
         note = r["operations"][1].get("note", "")
         self.assertIn("from_terminal: no terminal", note)
         self.assertIn("to_terminal: no terminal", note)
+    def test_folio_ref_survives_an_insert_before_it(self):
+        """add_folio names a folio "$f"; inserting another at position 0
+        moves it from index 1 to 2. "$f" must still name it."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            {"op": "insert_folio", "position": 0},
+            {"op": "set_folio_title", "folio": "$f", "title": "MINE"}]))
+        self.assertEqual(r["operations"][0]["result"], 1)
+        titles = [f["title"] for f in m.tool_project_info(r["output"])["folios"]]
+        self.assertEqual(len(titles), 3)
+        self.assertEqual(titles[2], "MINE", titles)
+        self.assertNotIn("MINE", titles[:2])
 
     def test_noop_edit_has_no_conductor_churn(self):
         """Re-saving renumbers the file's terminal ids; the diff must not
