@@ -791,7 +791,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="159"/>
         <source>Requête refusée</source>
-        <translation>Antrag abgelehnt</translation>
+        <translation>Abfrage abgelehnt</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="166"/>
