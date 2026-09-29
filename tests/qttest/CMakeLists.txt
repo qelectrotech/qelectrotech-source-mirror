@@ -352,7 +352,7 @@ if(QET_HAS_SCRIPTING)
     tst_databasefromdocument.cpp)
   add_test(NAME tst_databasefromdocument COMMAND tst_databasefromdocument)
   add_dependencies(tst_databasefromdocument qelectrotech)
-  target_link_libraries(tst_databasefromdocument PRIVATE Qt::Test)
+  target_link_libraries(tst_databasefromdocument PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_databasefromdocument PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")

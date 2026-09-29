@@ -2,6 +2,7 @@
 #include <QtTest>
 
 #include <QDir>
+#include <QDomDocument>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -74,6 +75,44 @@ class tst_databasefromdocument : public QObject
 		return tables;
 	}
 
+		// tremie_vibrante.qet saved once, as a document to change
+	QDomDocument resaved(const QString &saved)
+	{
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), saved});
+		QFile file(saved);
+		QDomDocument document;
+		if (file.open(QIODevice::ReadOnly))
+			document.setContent(&file);
+		return document;
+	}
+
+	static bool write(const QString &path, const QDomDocument &document)
+	{
+		QFile file(path);
+		return file.open(QIODevice::WriteOnly | QIODevice::Truncate)
+				&& file.write(document.toByteArray()) > 0;
+	}
+
+		// Both fills of @p saved, which must come from the document, agree.
+	void compareBothWays(const QString &saved)
+	{
+		QString how_document, how_folios;
+		const QJsonObject document = dump(saved, false, &how_document);
+		const QJsonObject folios = dump(saved, true, &how_folios);
+		QVERIFY2(how_document == QLatin1String("Project database filled from the document"),
+				 qPrintable(how_document));
+		QVERIFY2(how_folios.contains(QStringLiteral("QET_DATABASE_FROM_FOLIOS")), qPrintable(how_folios));
+		QCOMPARE(document.keys().size(), 6);
+		for (const QString &table : folios.keys()) {
+			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+		m_last = document;
+	}
+
+	QJsonObject m_last;   // the document's tables, from compareBothWays()
+
 private slots:
 	void initTestCase()
 	{
@@ -101,19 +140,144 @@ private slots:
 		const QString saved = m_dir.filePath(QStringLiteral("saved%1.qet").arg(m_run));
 		run({QStringLiteral("--resave"), project, saved});
 		QVERIFY2(QFile::exists(saved), "--resave failed");
+		compareBothWays(saved);
+	}
 
-		QString how_document, how_folios;
-		const QJsonObject document = dump(saved, false, &how_document);
-		const QJsonObject folios = dump(saved, true, &how_folios);
-		QVERIFY2(how_document == QLatin1String("Project database filled from the document"),
-				 qPrintable(how_document));
-		QVERIFY2(how_folios.contains(QStringLiteral("QET_DATABASE_FROM_FOLIOS")), qPrintable(how_folios));
-		QCOMPARE(document.keys().size(), 6);
-		for (const QString &table : folios.keys()) {
-			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
-			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
-										.arg(table).arg(a.size()).arg(b.size())));
+	// A label or a conductor text made from a formula is what the formula
+	// gives now, not what it gave when the file was saved: every folio's
+	// first element and first conductor is given a formula using each kind
+	// of variable, and a saved label no formula gives.
+	void formulasAreWorkedOut()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("formulas-saved.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), saved});
+		QFile file(saved);
+		QVERIFY(file.open(QIODevice::ReadOnly));
+		QDomDocument document;
+		QVERIFY(document.setContent(&file));
+		file.close();
+
+		auto property = [&document](QDomElement parent, const QString &name, const QString &value) {
+			QDomElement properties = parent.firstChildElement(QStringLiteral("properties"));
+			if (properties.isNull())
+				properties = parent.appendChild(document.createElement(QStringLiteral("properties"))).toElement();
+			QDomElement p = document.createElement(QStringLiteral("property"));
+			p.setAttribute(QStringLiteral("name"), name);
+			p.appendChild(document.createTextNode(value));
+			properties.appendChild(p);
+		};
+		auto sequence = [&document](QDomElement item, const QString &unit) {
+			item.removeChild(item.firstChildElement(QStringLiteral("sequentialNumbers")));
+			QDomElement s = document.createElement(QStringLiteral("sequentialNumbers"));
+			QDomElement u = document.createElement(QStringLiteral("unit"));
+			u.appendChild(document.createTextNode(unit));
+			s.appendChild(u);
+			item.appendChild(s);
+		};
+
+		property(document.documentElement(), QStringLiteral("site"), QStringLiteral("S"));
+		const QDomNodeList diagrams = document.elementsByTagName(QStringLiteral("diagram"));
+		QCOMPARE(diagrams.size(), 3);
+		for (int i = 0 ; i < diagrams.size() ; ++i)
+		{
+			QDomElement diagram = diagrams.at(i).toElement();
+			diagram.setAttribute(QStringLiteral("folio"), QStringLiteral("F%id"));
+			diagram.setAttribute(QStringLiteral("plant"), QStringLiteral("P"));
+			diagram.setAttribute(QStringLiteral("locmach"), QStringLiteral("L"));
+			property(diagram, QStringLiteral("zone"), QStringLiteral("Z%1").arg(i));
+
+			QDomElement element = diagram.firstChildElement(QStringLiteral("elements"))
+									  .firstChildElement(QStringLiteral("element"));
+			QVERIFY(!element.isNull());
+			element.setAttribute(QStringLiteral("prefix"), QStringLiteral("X"));
+			sequence(element, QStringLiteral("7"));
+			QDomElement informations = element.firstChildElement(QStringLiteral("elementInformations"));
+			if (informations.isNull())
+				informations = element.appendChild(document.createElement(QStringLiteral("elementInformations"))).toElement();
+			while (!informations.firstChild().isNull())
+				informations.removeChild(informations.firstChild());
+			for (const auto &info : {std::make_pair(QStringLiteral("formula"),
+													QStringLiteral("K%total-%f-%F-%M-%LM-%c%l-%prefix-%{zone}-%{site}-%sequ_1")),
+									 std::make_pair(QStringLiteral("label"), QStringLiteral("OLD"))}) {
+				QDomElement e = document.createElement(QStringLiteral("elementInformation"));
+				e.setAttribute(QStringLiteral("name"), info.first);
+				e.setAttribute(QStringLiteral("show"), QStringLiteral("1"));
+				e.appendChild(document.createTextNode(info.second));
+				informations.appendChild(e);
+			}
+
+			QDomElement conductor = diagram.firstChildElement(QStringLiteral("conductors"))
+										.firstChildElement(QStringLiteral("conductor"));
+			QVERIFY(!conductor.isNull());
+			conductor.setAttribute(QStringLiteral("formula"), QStringLiteral("W%total-%id-%wf-%{zone}-%sequ_1"));
+			conductor.setAttribute(QStringLiteral("function"), QStringLiteral("N"));
+			conductor.setAttribute(QStringLiteral("num"), QStringLiteral("OLD"));
+			sequence(conductor, QStringLiteral("3"));
 		}
+		QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+		file.write(document.toByteArray());
+		file.close();
+
+		compareBothWays(saved);
+			// ...and they were worked out, not left as saved
+		const QString info = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("element_info")).toArray())
+												   .toJson(QJsonDocument::Compact));
+		const QString wires = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("conductor")).toArray())
+													.toJson(QJsonDocument::Compact));
+		QVERIFY2(info.contains(QStringLiteral("K3-1-F1-P-L-")), qPrintable(info.left(400)));
+		QVERIFY2(info.contains(QStringLiteral("-X-Z0-S-7")), qPrintable(info.left(400)));
+		QVERIFY2(wires.contains(QStringLiteral("W3-3-N-Z2-3")), qPrintable(wires.left(400)));
+		QVERIFY(!info.contains(QStringLiteral("OLD")));
+		QVERIFY(!wires.contains(QStringLiteral("OLD")));
+	}
+
+	// An element the folio does not build, and so the conductors ending on
+	// it, are left out the same way.
+	void unbuiltElementIsLeftOut()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("unbuilt.qet"));
+		QDomDocument document = resaved(saved);
+		QDomElement conductor = document.elementsByTagName(QStringLiteral("conductor")).at(0).toElement();
+		QVERIFY(!conductor.isNull());
+		const QString uuid = conductor.attribute(QStringLiteral("element1"));
+		const QDomNodeList elements = document.elementsByTagName(QStringLiteral("element"));
+		bool found = false;
+		for (int i = 0 ; i < elements.size() ; ++i) {
+			QDomElement e = elements.at(i).toElement();
+			if (e.attribute(QStringLiteral("uuid")) == uuid) {
+				e.setAttribute(QStringLiteral("x"), QStringLiteral("nan"));
+				found = true;
+			}
+		}
+		QVERIFY(found);
+		QVERIFY(write(saved, document));
+		compareBothWays(saved);
+		const QString wires = QString::fromUtf8(QJsonDocument(m_last.value(QStringLiteral("conductor")).toArray())
+													.toJson(QJsonDocument::Compact));
+		QVERIFY(!wires.contains(conductor.attribute(QStringLiteral("uuid"))));
+	}
+
+	// Two elements on a folio numbering their terminals alike: which one the
+	// folio then refuses depends on the terminals' geometry, so the folios
+	// fill the database.
+	void clashingTerminalIdsFallBack()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("clash.qet"));
+		QDomDocument document = resaved(saved);
+		const QDomElement diagram = document.elementsByTagName(QStringLiteral("diagram")).at(0).toElement();
+		QDomElement first = diagram.firstChildElement(QStringLiteral("elements")).firstChildElement(QStringLiteral("element"));
+		QDomElement second = first.nextSiblingElement(QStringLiteral("element"));
+		const QString id = first.firstChildElement(QStringLiteral("terminals"))
+							   .firstChildElement(QStringLiteral("terminal")).attribute(QStringLiteral("id"));
+		QDomElement terminal = second.firstChildElement(QStringLiteral("terminals"))
+								   .firstChildElement(QStringLiteral("terminal"));
+		QVERIFY(!id.isEmpty() && !terminal.isNull());
+		terminal.setAttribute(QStringLiteral("id"), id);
+		QVERIFY(write(saved, document));
+		QString how;
+		dump(saved, false, &how);
+		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
+									 "two elements on a folio number their terminals alike"));
 	}
 
 	// A file whose items carry no saved uuid is filled from the folios,

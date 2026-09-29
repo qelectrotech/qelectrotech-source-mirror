@@ -19,6 +19,8 @@
 
 #include "sqlreadonly.h"
 
+#include "../autoNum/assignvariables.h"
+#include "../borderproperties.h"
 #include "../bordertitleblock.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -34,6 +36,7 @@
 #include "../qetinformation.h"
 #include "../qetproject.h"
 #include "../qet.h"
+#include "../titleblockproperties.h"
 #include "../ElementsCollection/xmlelementcollection.h"
 #include "../properties/elementdata.h"
 
@@ -195,8 +198,23 @@ struct DocumentElement
 	QString sub_type;
 	QVariant group;
 	DiagramContext informations;
+	QString label;
 	QHash<QUuid, DocumentTerminal> terminals;
 };
+
+	//The sequential values an element or a conductor was saved with, as
+	//Element::fromXml() and Conductor::fromXml() read them -- false for
+	//the attributes files written before <sequentialNumbers> carry.
+bool readSequence(const QDomElement &item, autonum::sequentialNumbers *sequence)
+{
+	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1"}) {
+		if (item.hasAttribute(QLatin1String(name))) {
+			return false;
+		}
+	}
+	sequence->fromXml(item.firstChildElement(QStringLiteral("sequentialNumbers")));
+	return true;
+}
 
 struct DocumentConductor
 {
@@ -221,12 +239,17 @@ struct DocumentConductor
 	instead -- when a folio, element or conductor carries no saved uuid (the
 	folios derive one on load), a conductor names its ends the older way,
 	a folio number uses %autonum, a conductor ends on a terminal that shows
-	its master's contact label, or an element's definition is missing or
-	not one the folios could build. A file saved by a current QElectroTech
-	carries everything else.
+	its master's contact label, an element's definition is missing or
+	not one the folios could build, two elements on a folio number their
+	terminals alike, or sequential numbers are saved as the attributes
+	older files carry. A file saved by a current QElectroTech carries
+	everything else.
 
-	A symbol label computed from a formula is the label saved in the file,
-	which QElectroTech writes as it computes it on every save.
+	A label or a conductor text made from a formula is worked out again,
+	as the folios do, with the same AssignVariables code: the one saved
+	in the file is what the formula gave when it was saved, and a folio
+	added or moved since changes it. A frozen conductor text is left to the
+	folios, which work it out part-way through loading.
 	@return true if the tables were filled
 */
 bool projectDataBase::populateFromDocument(const QDomDocument &document, QString *why)
@@ -248,6 +271,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 	}
 
 	const DiagramContext project_wide = m_project->projectWideProperties();
+	const DiagramContext project_properties = m_project->projectProperties();
 		//One border and title block read from each folio's XML in turn:
 		//only what it gives is kept.
 	BorderTitleBlock reader;
@@ -288,6 +312,9 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		}
 
 		BorderTitleBlock *border = &reader;
+			//As a new Diagram's border starts, before initFromXml() reads it
+		border->importBorder(BorderProperties());
+		border->importTitleBlock(TitleBlockProperties());
 		border->titleBlockFromXml(diagram_xml);
 		border->borderFromXml(diagram_xml);
 		if (border->folio().contains(QStringLiteral("%autonum"))) {
@@ -295,15 +322,48 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		}
 		border->setFolioData(i + 1, int(diagram_nodes.size()), QString(), project_wide);
 
+			//What a formula on this folio is worked out from, as
+			//AssignVariables::formulaToLabel() reads it off a built folio.
+		autonum::FormulaContext folio_context;
+		folio_context.folio = border->folio();
+		folio_context.folio_index = i;
+		folio_context.folio_total = border->folioTotal();
+		folio_context.plant = border->plant();
+		folio_context.locmach = border->locmach();
+		folio_context.title_block_fields = border->additionalFields();
+		folio_context.project_properties = project_properties;
+
 		QHash<QUuid, int> on_this_folio;   //element uuid -> index in elements
-		for (const QDomElement &element_xml : QET::findInDomElement(
+		QSet<int> terminal_ids;            //the older terminal ids used so far
+		for (QDomElement element_xml : QET::findInDomElement(
 				 diagram_xml, QStringLiteral("elements"), QStringLiteral("element")))
 		{
+				//Skipped by Diagram::fromXml() as well
+			if (!Element::valideXml(element_xml)) {
+				continue;
+			}
 			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
 			if (uuid.isNull() || element_uuids.contains(uuid)) {
 				return refuse(QStringLiteral("an element has no saved uuid, or shares one"));
 			}
 			element_uuids.insert(uuid);
+
+				//Element::fromXml() refuses an element whose terminals are
+				//numbered like those of one read before it on the folio;
+				//which of them it matches needs their geometry, so leave any
+				//such folio to the folios. A current file numbers them
+				//across the folio.
+			QSet<int> ids;
+			for (QDomElement t : QET::findInDomElement(
+					 element_xml, QStringLiteral("terminals"), QStringLiteral("terminal"))) {
+				if (Terminal::valideXml(t)) {
+					ids.insert(t.attribute(QStringLiteral("id")).toInt());
+				}
+			}
+			if (terminal_ids.intersects(ids)) {
+				return refuse(QStringLiteral("two elements on a folio number their terminals alike"));
+			}
+			terminal_ids.unite(ids);
 
 				//The definition the folio builds the element from, with the
 				//checks Element::buildFromXml() refuses an element on --
@@ -351,10 +411,10 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			DocumentElement element;
 			element.uuid = uuid.toString();
 			element.diagram_uuid = diagram_uuid.toString();
-			element.pos = border->convertPosition(
-							  QPointF(element_xml.attribute(QStringLiteral("x")).toDouble(),
-									  element_xml.attribute(QStringLiteral("y")).toDouble()))
-						  .toString();
+			DiagramPosition position = border->convertPosition(
+						QPointF(element_xml.attribute(QStringLiteral("x")).toDouble(),
+								element_xml.attribute(QStringLiteral("y")).toDouble()));
+			element.pos = position.toString();
 			element.type = known->type;
 			element.sub_type = known->sub_type;
 			element.terminals = known->terminals;
@@ -363,6 +423,21 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			element.informations.fromXml(
 						element_xml.firstChildElement(QStringLiteral("elementInformations")),
 						QStringLiteral("elementInformation"));
+				//Element::actualLabel()
+			const QString formula = element.informations.value(QStringLiteral("formula")).toString();
+			if (formula.isEmpty()) {
+				element.label = element.informations.value(QStringLiteral("label")).toString();
+			} else {
+				autonum::sequentialNumbers sequence;
+				if (!readSequence(element_xml, &sequence)) {
+					return refuse(QStringLiteral("an element's sequential numbers are saved the older way"));
+				}
+				autonum::FormulaContext context = folio_context;
+				context.has_element = true;
+				context.element_position = position;
+				context.element_prefix = element_xml.attribute(QStringLiteral("prefix"));
+				element.label = autonum::AssignVariables::formulaToLabel(formula, sequence, context);
+			}
 
 			on_this_folio.insert(uuid, int(elements.size()));
 			elements << element;
@@ -429,8 +504,27 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			conductor.element2 = ends[1][0];
 			conductor.terminal2 = ends[1][1];
 				//ConductorProperties::fromXml()'s text, without reading the
-				//rest of the properties
-			conductor.text = conductor_xml.attribute(QStringLiteral("num"));
+				//rest of the properties -- or, as Conductor::refreshText()
+				//makes it, what its formula gives.
+			const QString formula = conductor_xml.attribute(QStringLiteral("formula"));
+			if (formula.isEmpty()) {
+				conductor.text = conductor_xml.attribute(QStringLiteral("num"));
+			} else {
+				autonum::sequentialNumbers sequence;
+				if (conductor_xml.attribute(QStringLiteral("freezeLabel")) == QLatin1String("true")) {
+					return refuse(QStringLiteral("a conductor's text made from a formula is frozen"));
+				}
+				if (!readSequence(conductor_xml, &sequence)) {
+					return refuse(QStringLiteral("a conductor's sequential numbers are saved the older way"));
+				}
+				autonum::FormulaContext context = folio_context;
+				context.has_conductor = true;
+				context.wire_function = conductor_xml.attribute(QStringLiteral("function"));
+				context.wire_tension_protocol = conductor_xml.attribute(QStringLiteral("tension_protocol"));
+				context.wire_color = conductor_xml.attribute(QStringLiteral("conductor_color"));
+				context.wire_section = conductor_xml.attribute(QStringLiteral("conductor_section"));
+				conductor.text = autonum::AssignVariables::formulaToLabel(formula, sequence, context);
+			}
 			conductors << conductor;
 		}
 
@@ -473,7 +567,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			qDebug() << "projectDataBase::populateFromDocument element insert error : " << m_insert_elements_query.lastError();
 		}
 		bindElementInfoValues(m_insert_element_info_query, element.uuid, element.informations,
-							  element.informations[QStringLiteral("label")].toString());
+							  element.label);
 		if (!m_insert_element_info_query.exec()) {
 			qDebug() << "projectDataBase::populateFromDocument element_info insert error : " << m_insert_element_info_query.lastError();
 		}
