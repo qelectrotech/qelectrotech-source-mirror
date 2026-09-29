@@ -20,7 +20,9 @@
         LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
         LangString var5              ${LANG_ENGLISH}  "Fonts"
         LangString Mcp               ${LANG_ENGLISH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_ENGLISH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_ENGLISH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_ENGLISH}  "Python for the AI assistant"
+        LangString var7              ${LANG_ENGLISH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_ENGLISH}  "Uninstallation of the previous version failed.$\nPlease uninstall ${SOFT_NAME} manually before continuing."
 
         
@@ -46,7 +48,9 @@
         LangString var4              ${LANG_KOREAN} "도면 예제"
         LangString var5              ${LANG_KOREAN}  "글꼴"
         LangString Mcp               ${LANG_KOREAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_KOREAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_KOREAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_KOREAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_KOREAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_KOREAN} "이전 버전을 제거하지 못했습니다.$\n계속하기 전에 ${SOFT_NAME}을(를) 수동으로 제거해 주세요."
 
 
@@ -72,7 +76,9 @@
         LangString var4              ${LANG_POLISH}  "Przykłady schematów"
         LangString var5              ${LANG_POLISH}  "Czcionki"
         LangString Mcp               ${LANG_POLISH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_POLISH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_POLISH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_POLISH}  "Python for the AI assistant"
+        LangString var7              ${LANG_POLISH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_POLISH}  "Odinstalowanie poprzedniej wersji nie powiodło się.$\nPrzed kontynuowaniem odinstaluj ręcznie program ${SOFT_NAME}."
         
         
@@ -98,7 +104,9 @@
         LangString var4              ${LANG_GREEK}  "Παραδείγματα διαγραμμάτων"
         LangString var5              ${LANG_GREEK}  "Γραμματοσειρές"
         LangString Mcp               ${LANG_GREEK}  "AI assistant (MCP)"
-        LangString var6              ${LANG_GREEK}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_GREEK}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_GREEK}  "Python for the AI assistant"
+        LangString var7              ${LANG_GREEK}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_GREEK}  "Η απεγκατάσταση της προηγούμενης έκδοσης απέτυχε.$\nΠαρακαλώ απεγκαταστήστε χειροκίνητα το ${SOFT_NAME} πριν συνεχίσετε."
         
         
@@ -124,7 +132,9 @@
         LangString var4              ${LANG_CZECH}  "Příklady schémat"
         LangString var5              ${LANG_CZECH}  "Písma"
         LangString Mcp               ${LANG_CZECH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_CZECH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_CZECH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_CZECH}  "Python for the AI assistant"
+        LangString var7              ${LANG_CZECH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_CZECH}  "Odinstalování předchozí verze se nezdařilo.$\nPřed pokračováním prosím odinstalujte ${SOFT_NAME} ručně."
         
         
@@ -150,7 +160,9 @@
         LangString var4              ${LANG_SPANISH}  "Ejemplos de esquemas"
         LangString var5              ${LANG_SPANISH}  "Fuentes"
         LangString Mcp               ${LANG_SPANISH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_SPANISH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_SPANISH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_SPANISH}  "Python for the AI assistant"
+        LangString var7              ${LANG_SPANISH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_SPANISH}  "La desinstalación de la versión anterior ha fallado.$\nPor favor, desinstale ${SOFT_NAME} manualmente antes de continuar."
         
         
@@ -176,7 +188,9 @@
         LangString var4              ${LANG_GERMAN}  "Schaltplan-Beispiele"
         LangString var5              ${LANG_GERMAN}  "Schriften"
         LangString Mcp               ${LANG_GERMAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_GERMAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_GERMAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_GERMAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_GERMAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_GERMAN}  "Die Deinstallation der vorherigen Version ist fehlgeschlagen.$\nBitte deinstallieren Sie ${SOFT_NAME} manuell, bevor Sie fortfahren."
         
         
@@ -202,7 +216,9 @@
         LangString var4              ${LANG_RUSSIAN}  "Примеры схем"
         LangString var5              ${LANG_RUSSIAN}  "Шрифты"
         LangString Mcp               ${LANG_RUSSIAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_RUSSIAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_RUSSIAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_RUSSIAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_RUSSIAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_RUSSIAN}  "Удаление предыдущей версии завершилось с ошибкой.$\nПожалуйста, удалите ${SOFT_NAME} вручную перед продолжением."
         
         
@@ -228,7 +244,9 @@
         LangString var4              ${LANG_ARABIC}  "أمثلة على المخططات"
         LangString var5              ${LANG_ARABIC}  "الخطوط"
         LangString Mcp               ${LANG_ARABIC}  "AI assistant (MCP)"
-        LangString var6              ${LANG_ARABIC}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_ARABIC}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_ARABIC}  "Python for the AI assistant"
+        LangString var7              ${LANG_ARABIC}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_ARABIC}  "فشل إلغاء تثبيت الإصدار السابق. يرجى إلغاء تثبيت ${SOFT_NAME} يدويًا قبل المتابعة."
         
         
@@ -254,7 +272,9 @@
         LangString var4              ${LANG_CATALAN}  "Exemples d'esquemes"
         LangString var5              ${LANG_CATALAN}  "Tipus de lletra"
         LangString Mcp               ${LANG_CATALAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_CATALAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_CATALAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_CATALAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_CATALAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_CATALAN}  "La desinstal·lació de la versió anterior ha fallat.$\nSi us plau, desinstal·leu ${SOFT_NAME} manualment abans de continuar."
         
         
@@ -280,7 +300,9 @@
         LangString var4              ${LANG_ITALIAN}  "Schemi di esempio"
         LangString var5              ${LANG_ITALIAN}  "Caratteri"
         LangString Mcp               ${LANG_ITALIAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_ITALIAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_ITALIAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_ITALIAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_ITALIAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_ITALIAN}  "La disinstallazione della versione precedente non è riuscita.$\nSi prega di disinstallare ${SOFT_NAME} manualmente prima di continuare."
         
         
@@ -306,7 +328,9 @@
         LangString var4              ${LANG_PORTUGUESE}  "Exemplos de esquemas"
         LangString var5              ${LANG_PORTUGUESE}  "Fontes"
         LangString Mcp               ${LANG_PORTUGUESE}  "AI assistant (MCP)"
-        LangString var6              ${LANG_PORTUGUESE}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_PORTUGUESE}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_PORTUGUESE}  "Python for the AI assistant"
+        LangString var7              ${LANG_PORTUGUESE}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_PORTUGUESE}  "A desinstalação da versão anterior falhou.$\nPor favor, desinstale ${SOFT_NAME} manualmente antes de continuar."
         
         
@@ -332,7 +356,9 @@
         LangString var4              ${LANG_ROMANIAN}  "Exemple de scheme"
         LangString var5              ${LANG_ROMANIAN}  "Fonturi"
         LangString Mcp               ${LANG_ROMANIAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_ROMANIAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_ROMANIAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_ROMANIAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_ROMANIAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_ROMANIAN}  "Dezinstalarea versiunii anterioare a eșuat.$\nVă rugăm să dezinstalați ${SOFT_NAME} manual înainte de a continua."
         
         
@@ -358,7 +384,9 @@
         LangString var4              ${LANG_CROATIAN}  "Primjeri shema"
         LangString var5              ${LANG_CROATIAN}  "Fontovi"
         LangString Mcp               ${LANG_CROATIAN}  "AI assistant (MCP)"
-        LangString var6              ${LANG_CROATIAN}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_CROATIAN}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_CROATIAN}  "Python for the AI assistant"
+        LangString var7              ${LANG_CROATIAN}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_CROATIAN}  "Deinstalacija prethodne verzije nije uspjela.$\nMolimo deinstalirajte ${SOFT_NAME} ručno prije nastavka."
         
         
@@ -384,7 +412,9 @@
         LangString var4              ${LANG_DUTCH}  "Voorbeelden van schema's"
         LangString var5              ${LANG_DUTCH}  "Lettertypen"
         LangString Mcp               ${LANG_DUTCH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_DUTCH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_DUTCH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_DUTCH}  "Python for the AI assistant"
+        LangString var7              ${LANG_DUTCH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_DUTCH}  "Het verwijderen van de vorige versie is mislukt.$\nVerwijder ${SOFT_NAME} handmatig voordat u verdergaat."
         
         
@@ -410,7 +440,9 @@
         LangString var4              ${LANG_DANISH}  "Diagram eksempler"
         LangString var5              ${LANG_DANISH}  "Skrifttyper"
         LangString Mcp               ${LANG_DANISH}  "AI assistant (MCP)"
-        LangString var6              ${LANG_DANISH}  "Lets an AI assistant open, check and edit your drawings (needs Python)"
+        LangString var6              ${LANG_DANISH}  "Lets an AI assistant open, check and edit your drawings. Needs Python: your own, or the one offered below"
+        LangString McpPython         ${LANG_DANISH}  "Python for the AI assistant"
+        LangString var7              ${LANG_DANISH}  "Python from python.org, used only by the AI assistant component. Not needed if Python is already installed (about 12 MB)"
         LangString uninstFailed      ${LANG_DANISH}  "Afinstallation af den tidligere version mislykkedes.$\nAfinstaller venligst ${SOFT_NAME} manuelt, inden du fortsætter."
 
         

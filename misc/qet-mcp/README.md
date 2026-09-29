@@ -93,9 +93,13 @@ there it finds that QElectroTech and its element collection by itself:
 | Windows installer, MSI, portable folder | `<folder>\mcp\qet_mcp.py` (the "AI assistant (MCP)" component) | `<folder>\bin\QElectroTech.exe`, `<folder>\elements` |
 
 So a client configuration needs only the path to the server and the
-workspace, for example on Windows:
+workspace. On Windows, the installer also offers **Python for the AI
+assistant** (unticked by default; always in the portable folder and the
+MSI): Python from python.org in `<folder>\mcp\python`, for anyone without
+a Python of their own. Then:
 
 ```json
+"command": "C:\\Program Files\\QElectroTech\\mcp\\python\\python.exe",
 "args": ["C:\\Program Files\\QElectroTech\\mcp\\qet_mcp.py"]
 ```
 

@@ -281,6 +281,14 @@ Section "$(Mcp)" SEC06
     File /nonfatal "./files/mcp/*"
 SectionEnd
 
+; Python for the MCP server, from python.org (about 12 MB). Unticked by
+; default: only someone setting up an AI assistant needs it, and then only
+; without a Python of their own. Uninstall removes it with $INSTDIR.
+Section /o "$(McpPython)" SEC07
+    SetOutPath "$INSTDIR\mcp\python"
+    File /nonfatal /r "./files/mcp/python/*"
+SectionEnd
+
 ;--------------------------------
 ; Component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -290,6 +298,7 @@ SectionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC05} $(var5)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC06} $(var6)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SEC07} $(var7)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
