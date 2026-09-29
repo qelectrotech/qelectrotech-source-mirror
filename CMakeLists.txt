@@ -358,6 +358,10 @@ if (NOT MINGW)
     install(DIRECTORY elements    DESTINATION share/qelectrotech)
     install(DIRECTORY examples    DESTINATION share/qelectrotech)
     install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
+    # The MCP server (misc/qet-mcp) finds this QElectroTech and its elements
+    # from here: <prefix>/share/qelectrotech/mcp -> <prefix>/bin.
+    install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION share/qelectrotech/mcp)
+    install(FILES misc/qet-mcp/README.md DESTINATION share/qelectrotech/mcp)
     install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
     if(UNIX AND NOT APPLE)
         install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)

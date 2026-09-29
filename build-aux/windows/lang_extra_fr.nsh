@@ -19,4 +19,6 @@
         LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
         LangString var4              ${LANG_FRENCH}  "Exemples de schémas"
         LangString var5              ${LANG_FRENCH}  "Polices"
+        LangString Mcp               ${LANG_FRENCH}  "Assistant IA (MCP)"
+        LangString var6              ${LANG_FRENCH}  "Permet à un assistant IA d'ouvrir, vérifier et modifier vos schémas (nécessite Python)"
         LangString uninstFailed      ${LANG_FRENCH}  "La désinstallation de la version précédente a échoué.$\nVeuillez désinstaller ${SOFT_NAME} manuellement avant de continuer."

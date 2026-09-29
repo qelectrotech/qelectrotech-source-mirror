@@ -227,6 +227,9 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
           cp -r "$GITHUB_WORKSPACE/fonts"       "$FILES/fonts"       || true
+          # The MCP server finds bin/QElectroTech.exe and elements/ from mcp/.
+          mkdir -p "$FILES/mcp"
+          cp "$GITHUB_WORKSPACE/misc/qet-mcp/qet_mcp.py" "$GITHUB_WORKSPACE/misc/qet-mcp/README.md" "$FILES/mcp/"
 
           # --- Translations ---
           # Since PR #751 the .qm files are no longer tracked in git: lrelease
@@ -305,7 +308,7 @@ jobs:
               && echo "  OK      : $f" \
               || echo "  MISSING: $f"
           done
-          for d in ico elements lang titleblocks fonts examples bin; do
+          for d in ico elements lang titleblocks fonts examples bin mcp; do
             [ -d "$FILES/$d" ] \
               && echo "  OK      : $d/" \
               || echo "  MISSING: $d/"
