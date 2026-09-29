@@ -77,6 +77,28 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 		layout->addWidget(missing);
 	}
 
+	if (!m_paths.server.isEmpty()
+	    && m_paths.python_status != AiAssistantSetup::PythonStatus::Found) {
+		QString text;
+		if (m_paths.python_status == AiAssistantSetup::PythonStatus::StoreShortcut)
+			text = tr("<b>Python n'est peut-être pas installé.</b> Seul le raccourci "
+				  "« python » du Microsoft Store a été trouvé : sans Python, il "
+				  "ouvre le Store au lieu de lancer le serveur.");
+		else
+			text = tr("<b>Python est introuvable sur cet ordinateur</b> (commande "
+				  "« %1 »). Le serveur en a besoin.").arg(m_paths.python);
+		if (windows)
+			text += QLatin1Char(' ') + tr("Relancez l'installateur de QElectroTech et "
+						      "cochez « Python pour l'assistant IA », ou "
+						      "installez Python depuis python.org.");
+		else
+			text += QLatin1Char(' ') + tr("Installez Python 3 avec le gestionnaire "
+						      "de paquets de votre système.");
+		auto *python = new QLabel(text, this);
+		python->setWordWrap(true);
+		layout->addWidget(python);
+	}
+
 	auto *form = new QFormLayout();
 	m_client = new QComboBox(this);
 	m_client->addItem(QStringLiteral("Claude Desktop"), int(Client::ClaudeDesktop));

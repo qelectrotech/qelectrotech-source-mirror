@@ -22,6 +22,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QStandardPaths>
 
 namespace {
 
@@ -79,10 +80,13 @@ QList<AiAssistantSetup::Client> AiAssistantSetup::clients()
 	@param application_dir : QCoreApplication::applicationDirPath()
 	@param application_file : QCoreApplication::applicationFilePath()
 	@param windows : true on Windows, where Python is "python", not "python3"
+	@param find_executable : looks a program up on PATH; empty means
+	QStandardPaths::findExecutable(). Given in tests.
 */
 AiAssistantSetup::Paths AiAssistantSetup::detect(const QString &application_dir,
 						 const QString &application_file,
-						 bool windows)
+						 bool windows,
+						 const ExecutableFinder &find_executable)
 {
 	const QDir bin(application_dir);
 	Paths paths;
@@ -95,9 +99,28 @@ AiAssistantSetup::Paths AiAssistantSetup::detect(const QString &application_dir,
 	if (windows) {
 		const QString bundled = firstFile({
 			bin.filePath(QStringLiteral("../mcp/python/python.exe"))});
-		if (!bundled.isEmpty())
+		if (!bundled.isEmpty()) {
 			paths.python = bundled;
+			paths.python_status = PythonStatus::Found;
+			return paths;
+		}
 	}
+
+	const ExecutableFinder find = find_executable
+			? find_executable
+			: ExecutableFinder([](const QString &name) {
+				  return QStandardPaths::findExecutable(name); });
+	const QString found = find(paths.python);
+	if (found.isEmpty())
+		paths.python_status = PythonStatus::Missing;
+	// Windows 10 and 11 put a python.exe in WindowsApps that only opens the
+	// Microsoft Store. A Python installed from the Store answers from there
+	// too, so this cannot tell the two apart: say which it may be.
+	else if (windows && QString(found).replace(QLatin1Char('\\'), QLatin1Char('/'))
+			 .contains(QLatin1String("/WindowsApps/"), Qt::CaseInsensitive))
+		paths.python_status = PythonStatus::StoreShortcut;
+	else
+		paths.python_status = PythonStatus::Found;
 	return paths;
 }
 

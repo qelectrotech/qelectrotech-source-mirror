@@ -21,6 +21,8 @@
 #include <QString>
 #include <QStringList>
 
+#include <functional>
+
 /**
 	@brief What an AI assistant needs to start QElectroTech's MCP server
 	(misc/qet-mcp), and the configuration text each assistant expects.
@@ -44,16 +46,30 @@ namespace AiAssistantSetup
 
 	QList<Client> clients();
 
+	/// Whether the Python the configuration names can actually run.
+	enum class PythonStatus {
+		Found,
+		Missing,
+		/// Only Windows' "python.exe" shortcut in WindowsApps, which opens
+		/// the Microsoft Store when Python is not installed.
+		StoreShortcut
+	};
+
 	/// Where the pieces are. An empty server means none was found.
 	struct Paths {
 		QString server;     ///< qet_mcp.py
 		QString python;     ///< the Python to run it with
 		QString qet_binary; ///< this QElectroTech
+		PythonStatus python_status = PythonStatus::Missing;
 	};
+
+	/// Finds a program on PATH; QStandardPaths::findExecutable() by default.
+	using ExecutableFinder = std::function<QString(const QString &)>;
 
 	Paths detect(const QString &application_dir,
 		     const QString &application_file,
-		     bool windows);
+		     bool windows,
+		     const ExecutableFinder &find_executable = ExecutableFinder());
 
 	QString configuration(Client client,
 			      const Paths &paths,

@@ -97,6 +97,53 @@ class TestAiAssistantSetup : public QObject
 			QCOMPARE(p.python, QStringLiteral("python3"));
 		}
 
+		void bundledPythonIsFoundWithoutLookingOnPath()
+		{
+			QTemporaryDir root;
+			touch(root.filePath(QStringLiteral("mcp/qet_mcp.py")));
+			touch(root.filePath(QStringLiteral("mcp/python/python.exe")));
+			QDir().mkpath(root.filePath(QStringLiteral("bin")));
+			bool looked = false;
+			const auto p = AiAssistantSetup::detect(root.filePath(QStringLiteral("bin")),
+				root.filePath(QStringLiteral("bin/QElectroTech.exe")), true,
+				[&looked](const QString &) { looked = true; return QString(); });
+			QCOMPARE(p.python_status, AiAssistantSetup::PythonStatus::Found);
+			QVERIFY(!looked);
+		}
+
+		void pythonStatusFromPath_data()
+		{
+			QTest::addColumn<bool>("windows");
+			QTest::addColumn<QString>("found");
+			QTest::addColumn<int>("status");
+			using S = AiAssistantSetup::PythonStatus;
+			QTest::newRow("windows, none") << true << QString() << int(S::Missing);
+			QTest::newRow("windows, python.org") << true
+				<< QStringLiteral("C:/Users/me/AppData/Local/Programs/Python/Python314/python.exe") << int(S::Found);
+			QTest::newRow("windows, Store shortcut") << true
+				<< QStringLiteral("C:/Users/me/AppData/Local/Microsoft/WindowsApps/python.exe") << int(S::StoreShortcut);
+			QTest::newRow("windows, Store shortcut, backslashes") << true
+				<< QStringLiteral("C:\\Users\\me\\AppData\\Local\\Microsoft\\WINDOWSAPPS\\python.exe") << int(S::StoreShortcut);
+			QTest::newRow("linux, none") << false << QString() << int(S::Missing);
+			QTest::newRow("linux, python3") << false << QStringLiteral("/usr/bin/python3") << int(S::Found);
+			QTest::newRow("linux, a folder named WindowsApps") << false
+				<< QStringLiteral("/opt/WindowsApps/python3") << int(S::Found);
+		}
+
+		void pythonStatusFromPath()
+		{
+			QFETCH(bool, windows);
+			QFETCH(QString, found);
+			QFETCH(int, status);
+			QTemporaryDir build;
+			QString asked;
+			const auto p = AiAssistantSetup::detect(build.path(),
+				build.filePath(QStringLiteral("qelectrotech")), windows,
+				[&](const QString &name) { asked = name; return found; });
+			QCOMPARE(int(p.python_status), status);
+			QCOMPARE(asked, windows ? QStringLiteral("python") : QStringLiteral("python3"));
+		}
+
 		void noServerIsReportedAsEmpty()
 		{
 			QTemporaryDir build;
