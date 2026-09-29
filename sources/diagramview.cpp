@@ -2210,7 +2210,9 @@ void DiagramView::generateCabinetThumbnails()
 	{
 		NamesList dir_names;
 		dir_names.addName(QStringLiteral("en"), dir_name);
-		dir_names.addName(QStringLiteral("fr"), tr("Vignettes d'armoire"));
+			//Stored per language, like an element's names: not tr(), which
+			//would store the interface's language under "fr"
+		dir_names.addName(QStringLiteral("fr"), QStringLiteral("Vignettes d'armoire"));
 		if (!collection->createDir(QStringLiteral("import"), dir_name, dir_names)) {
 			return;
 		}
