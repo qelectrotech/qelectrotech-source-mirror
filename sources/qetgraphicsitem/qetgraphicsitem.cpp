@@ -144,6 +144,11 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				//It's the first movement, we signal it to parent diagram
 			diagram()->elementsMover().beginMovement(diagram(), this);
 		}
+		if (diagram() && diagram()->elementsMover().holds(this)) {
+			m_first_move = false;
+			event->accept();
+			return;
+		}
 
 			//we apply the mouse movement
 		QPointF old_pos = pos();

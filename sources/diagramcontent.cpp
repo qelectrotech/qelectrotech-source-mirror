@@ -18,6 +18,7 @@
 #include "diagramcontent.h"
 
 #include "diagram.h"
+#include "itemgroups.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
@@ -261,7 +262,7 @@ void DiagramContent::clear()
 */
 int DiagramContent::removeNonMovableItems()
 {
-	int count_ = 0;
+	int count_ = removePinnedGroups();
 	
 	const QList<Element *> elements_set = m_elements;
 	for(Element *elmt : elements_set) {
@@ -287,7 +288,53 @@ int DiagramContent::removeNonMovableItems()
 		}
 	}
 
+		//A wire whose two ends no longer both move is redrawn, not moved,
+		//or its text would be carried off with the end that still moves
+	const QList<Conductor *> conductors_to_move = m_conductors_to_move;
+	for (Conductor *conductor : conductors_to_move) {
+		if (!m_elements.contains(conductor->terminal1->parentElement()) ||
+			!m_elements.contains(conductor->terminal2->parentElement())) {
+			m_conductors_to_move.removeAll(conductor);
+			if (!m_conductors_to_update.contains(conductor))
+				m_conductors_to_update << conductor;
+		}
+	}
+
 	return count_;
+}
+
+/**
+	@brief DiagramContent::removePinnedGroups
+	A group (#1070) with a locked member does not move at all: moving the
+	rest would pull the group apart around the member that stays (#1146).
+	Only a locked member that is in this content pins its group.
+	Called first by removeNonMovableItems(), while the locked items are
+	still here to be found.
+	@return the number of removed items
+*/
+int DiagramContent::removePinnedGroups()
+{
+	QSet<QUuid> pinned;
+	for (Element *elmt : std::as_const(m_elements))
+		if (!elmt->isMovable())
+			pinned << ItemGroups::groupOf(elmt);
+	for (DiagramImageItem *img : std::as_const(m_images))
+		if (!img->isMovable())
+			pinned << ItemGroups::groupOf(img);
+	for (QetShapeItem *shape : std::as_const(m_shapes))
+		if (!shape->isMovable())
+			pinned << ItemGroups::groupOf(shape);
+	pinned.remove(QUuid());
+	if (pinned.isEmpty())
+		return 0;
+
+	auto isPinned = [&pinned](const QGraphicsItem *item) {
+		return pinned.contains(ItemGroups::groupOf(item));
+	};
+	return int(m_elements.removeIf(isPinned)
+			 + m_images.removeIf(isPinned)
+			 + m_shapes.removeIf(isPinned)
+			 + m_text_fields.removeIf(isPinned));
 }
 
 DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
