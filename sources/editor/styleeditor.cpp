@@ -586,21 +586,13 @@ void StyleEditor::activeConnections(bool active) {
 		connect(line_style, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineStyle);
 		connect(size_weight, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineWeight);
 		connect(filling_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartFilling);
-#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
-		connect(antialiasing, &QCheckBox::stateChanged, this, &StyleEditor::updatePartAntialiasing);
-#else
 		connect(antialiasing, &QCheckBox::checkStateChanged, this, &StyleEditor::updatePartAntialiasing);
-#endif
 	} else {
 		disconnect(outline_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartColor);
 		disconnect(line_style, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineStyle);
 		disconnect(size_weight, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineWeight);
 		disconnect(filling_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartFilling);
-#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
-		disconnect(antialiasing, &QCheckBox::stateChanged, this, &StyleEditor::updatePartAntialiasing);
-#else
 		disconnect(antialiasing, &QCheckBox::checkStateChanged, this, &StyleEditor::updatePartAntialiasing);
-#endif
 	}
 }
 

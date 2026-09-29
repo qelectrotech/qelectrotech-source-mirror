@@ -241,15 +241,6 @@ void ExportPropertiesWidget::build()
 	// emission de signaux lors du changement de format et lors du changement de zone exportee
 	connect(format, qOverload<int>(&QComboBox::currentIndexChanged), this, &ExportPropertiesWidget::formatChanged);
 	connect(exported_content_choices, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), this, &ExportPropertiesWidget::exportedAreaChanged);
-#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
-	connect(draw_grid, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_border, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_titleblock, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_terminals, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_terminal_names, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_bg_transparent, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-	connect(draw_colored_conductors, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
-#else
 	connect(draw_grid, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_border, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_titleblock, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
@@ -257,5 +248,4 @@ void ExportPropertiesWidget::build()
 	connect(draw_terminal_names, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_bg_transparent, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_colored_conductors, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
-#endif
 }

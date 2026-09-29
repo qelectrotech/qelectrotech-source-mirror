@@ -1897,9 +1897,7 @@ void QETApp::useCustomPalette(const QColor &color) {
 		p.setColor(group, QPalette::Mid,             mid);
 		p.setColor(group, QPalette::Dark,            dark_c);
 		p.setColor(group, QPalette::Shadow,          shadow);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
 		p.setColor(group, QPalette::Accent,          QColor(30, 96, 176));
-#endif
 	}
 	p.setColor(QPalette::Disabled, QPalette::WindowText, disabled_text);
 	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
@@ -2520,7 +2518,7 @@ void QETApp::initStyle()
 		useSystemPalette(false);
 	}
 
-#if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+#if defined(Q_OS_MACOS)
 	// Setting an application palette stops Qt from following the OS
 	// light/dark switch on its own, so follow it here. The platform accent
 	// color is not reachable any more at this point; the palette's own

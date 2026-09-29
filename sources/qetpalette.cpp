@@ -168,9 +168,7 @@ QPalette QET::Palette::fusionLight()
 	setRole(p, QPalette::Mid,             QColor(184, 184, 184));
 	setRole(p, QPalette::Dark,            QColor(159, 159, 159));
 	setRole(p, QPalette::Shadow,          QColor(118, 118, 118));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
 	setRole(p, QPalette::Accent,          kHighlight);
-#endif
 	return p;
 }
 
@@ -203,9 +201,7 @@ QPalette QET::Palette::fusionDark()
 	setRole(p, QPalette::Mid,             QColor(35, 35, 35));
 	setRole(p, QPalette::Dark,            QColor(20, 20, 20));
 	setRole(p, QPalette::Shadow,          QColor(10, 10, 10));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
 	setRole(p, QPalette::Accent,          kHighlight);
-#endif
 	return p;
 }
 
@@ -222,10 +218,8 @@ QPalette QET::Palette::withPlatformAccent(QPalette palette, const QPalette &plat
 	palette.setColor(QPalette::Inactive, QPalette::Highlight, highlight);
 	palette.setColor(QPalette::Active,   QPalette::HighlightedText, highlighted_text);
 	palette.setColor(QPalette::Inactive, QPalette::HighlightedText, highlighted_text);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
 	palette.setColor(QPalette::Active,   QPalette::Accent, highlight);
 	palette.setColor(QPalette::Inactive, QPalette::Accent, highlight);
-#endif
 	return palette;
 }
 
