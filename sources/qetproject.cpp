@@ -580,7 +580,7 @@ void QETProject::setFilePath(const QString &filepath)
 	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
 	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
 
@@ -1428,7 +1428,7 @@ QETResult QETProject::write()
 	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
 	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
 	emit projectInformationsChanged(this);
@@ -2480,7 +2480,7 @@ void QETProject::updateDiagramsFolioData()
 	DiagramContext project_wide_properties = m_project_properties;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
-	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
+	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).completeBaseName());
 
 	for (int i = 0 ; i < total_folio ; ++ i)
 	{
