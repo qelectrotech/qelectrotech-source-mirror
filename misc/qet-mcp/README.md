@@ -69,12 +69,18 @@ Register it with an MCP client, for example:
       "args": ["/path/to/qelectrotech/misc/qet-mcp/qet_mcp.py"],
       "env": {
         "QET_MCP_WORKSPACE": "/home/you/drawings",
+        "QET_BINARY": "/usr/bin/qelectrotech",
         "QET_ENABLE_SCRIPTING": "1"
       }
     }
   }
 }
 ```
+
+`QET_BINARY` is the QElectroTech the tools launch. Leave it out when
+`qelectrotech` is on your `PATH`, or when the server is installed with
+QElectroTech (as `<prefix>/share/qelectrotech/mcp/qet_mcp.py`, which also
+finds the installed element collection).
 
 ## Using it from the Claude app
 
@@ -106,9 +112,9 @@ and it uses the same account as the website.
    Windows path is written `\\`.
 4. Quit the app completely and start it again. The tools appear under the
    chat box's tools menu.
-5. In the chat, say where your `qelectrotech` executable is. `qet_edit` and
-   `qet_export` take it as an argument on every call; the other tools do not
-   need it.
+5. If `qelectrotech` is not on your `PATH`, add `"QET_BINARY"` to the
+   `env` block with the full path to the executable
+   (`C:\\Program Files\\...\\qelectrotech.exe`, written with `\\`).
 
 Only files under `QET_MCP_WORKSPACE` can be read or written (see
 [What the server is allowed to touch](#what-the-server-is-allowed-to-touch)).
@@ -179,11 +185,22 @@ Set the workspace to the folder your drawings live in. A path outside it is
 refused with an error naming what was allowed; symlinks are resolved first,
 so a link planted inside the workspace is judged by where it points.
 
-Two arguments are deliberately **not** confined: `binary` (the
-`qelectrotech` executable) and `elements_dir` (the element collection).
-Those are configuration, chosen once by whoever runs the server, and both
-normally live in `/usr` or a build tree — outside any sensible workspace.
-Confining them would reject the ordinary case while stopping nothing.
+**The client does not choose what program runs.** The tools that launch
+QElectroTech use the one the server found (`QET_BINARY`, the install it
+ships in, or `PATH`). A call may still name `binary`, but only as that same
+file or one listed by whoever configured the server:
+
+| | |
+|---|---|
+| `QET_BINARY` | the QElectroTech to launch |
+| `QET_MCP_BINARIES` | other executables a call may name, separated like `QET_MCP_WORKSPACE` (for comparing two builds) |
+| `QET_MCP_ALLOW_ANY_BINARY=1` | turns the check off: a call can then run any program |
+| `QET_MCP_ELEMENTS` | element collections a call may name as `elements_dir` besides the workspace and the installed one |
+
+Anything else is refused, even a file inside the workspace: being there
+makes it readable, not runnable. Before this rule any executable a call
+named was run, with the call's own paths as arguments, so text inside a
+project could steer an assistant into starting another program.
 
 `QET_MCP_ALLOW_ANY_PATH=1` is equivalent to granting the client local
 filesystem access with this process's privileges. It exists so that is a
@@ -221,7 +238,6 @@ the answer a screenshot gave wrongly.
 
 ```json
 {"name": "qet_edit", "arguments": {
-  "binary": "/path/to/qelectrotech",
   "project": "in.qet", "output": "out.qet",
   "elements_dir": "/path/to/qelectrotech/elements",
   "operations": [
@@ -277,7 +293,7 @@ to emit.
 
 ```json
 {"name": "qet_query", "arguments": {
-  "binary": "/path/to/qelectrotech", "project": "industrial.qet",
+  "project": "industrial.qet",
   "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view WHERE label <> '' GROUP BY label HAVING n > 1 ORDER BY n DESC"}}
 ```
 
@@ -359,6 +375,10 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   an index would shift. A folio saved without a uuid shows it empty:
   QElectroTech gives it one on load and writes it on the next save, so it
   appears after a first `qet_edit`. Needs `qet.folioIndex()` in the build.
+  The `"$id"` of an `add_folio` or `insert_folio` works the same way: it
+  keeps naming that folio after a later `insert_folio` or `remove_folio` in
+  the same run (on a build without `qet.folioUuid()`, it is the index the
+  folio had when it was made, as before).
 - **A conductor can be named by its uuid** (`qet_conductors` reports it):
   `set_conductor`, `move_conductor_segment` and `delete_conductor` take
   `"conductor": "{uuid}"` in place of `element` + `terminal`, which works
@@ -420,7 +440,8 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   changes nothing. `addElement` and the move/delete verbs shipped with the
   scripting API; `addConductor`, `rotateElement`, `setElementLabel`,
   `setElementInfo` and `setFolioTitle` are newer.
-- **`elements_dir` is not optional for `common://` paths.** The sandboxed
+- **`elements_dir` is not optional for `common://` paths** unless the
+  server is installed with QElectroTech, which fills it in. The sandboxed
   run has its own empty HOME, so QElectroTech falls back to the compiled-in
   collection path, which on a machine that never ran `make install` does not
   exist. The only symptom is `addElement` reporting that a file plainly
