@@ -354,6 +354,19 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # The project database filled from the file as it is read holds exactly
+  # what it holds filled from the built folios (QET_DATABASE_FROM_FOLIOS=1),
+  # on every example saved once; an older file falls back, saying why.
+  add_executable(
+    tst_databasefromdocument
+    tst_databasefromdocument.cpp)
+  add_test(NAME tst_databasefromdocument COMMAND tst_databasefromdocument)
+  add_dependencies(tst_databasefromdocument qelectrotech)
+  target_link_libraries(tst_databasefromdocument PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_databasefromdocument PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # The project database keeps a folio's date with its century: 741.qet's
   # 2010-09-21, read through project_summary_view under LC_ALL=en_US.UTF-8.
   add_executable(

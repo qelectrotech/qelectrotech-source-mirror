@@ -221,6 +221,7 @@ class QETProject : public QObject
 		bool projectWasModified();
 		bool projectOptionsWereModified();
 		DiagramContext projectProperties();
+		DiagramContext projectWideProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
 
