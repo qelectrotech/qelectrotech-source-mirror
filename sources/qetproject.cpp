@@ -1880,7 +1880,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
-	m_data_base.updateDB();
+	m_data_base.updateDB(xml_project);
 	const qint64 database_ms = phase_timer.elapsed();
 
 	qInfo().nospace()
@@ -2473,14 +2473,25 @@ bool QETProject::projectWasModified()
 	Indique a chaque schema du projet quel est son numero de folio et combien de
 	folio le projet contient.
 */
-void QETProject::updateDiagramsFolioData()
+/**
+	@brief QETProject::projectWideProperties
+	@return the project's properties as every folio's title block sees them:
+	the user's project properties plus the project's title, path and file name.
+*/
+DiagramContext QETProject::projectWideProperties()
 {
-	int total_folio = m_diagrams_list.count();
-
 	DiagramContext project_wide_properties = m_project_properties;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
 	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
+	return project_wide_properties;
+}
+
+void QETProject::updateDiagramsFolioData()
+{
+	int total_folio = m_diagrams_list.count();
+
+	const DiagramContext project_wide_properties = projectWideProperties();
 
 	for (int i = 0 ; i < total_folio ; ++ i)
 	{
