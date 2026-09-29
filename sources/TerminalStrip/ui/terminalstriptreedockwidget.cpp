@@ -62,7 +62,9 @@ void TerminalStripTreeDockWidget::setProject(QETProject *project)
     }
     m_project = project;
     if (m_project) {
-        m_project_destroy_connection = connect(m_project, &QObject::destroyed, [this](){
+            //`this` as context: this dock can be deleted before the project
+            //(with the editor window that owns it), and the connection must go with it
+        m_project_destroy_connection = connect(m_project, &QObject::destroyed, this, [this](){
             this->m_current_strip.clear();
             this->reload();
         });
