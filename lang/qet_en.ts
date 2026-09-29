@@ -1936,7 +1936,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>
 &lt;Shift&gt; to move</source>
         <translation>
-&lt;Shift&gt; to move</translation>
+Hold Shift and drag to move this text on its own</translation>
     </message>
 </context>
 <context>
