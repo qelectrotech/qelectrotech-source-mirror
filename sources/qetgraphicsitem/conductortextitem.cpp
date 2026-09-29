@@ -69,13 +69,17 @@ Conductor *ConductorTextItem::parentConductor() const
 	@param e
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-	if (e.hasAttribute("userx")) {
-		setPos(e.attribute("userx").toDouble(),
-			   e.attribute("usery").toDouble());
+		//A non-finite ("nan", "inf") position or rotation is ignored,
+		//as if the text had never been moved or rotated
+	const qreal x = e.attribute("userx").toDouble();
+	const qreal y = e.attribute("usery").toDouble();
+	if (e.hasAttribute("userx") && qIsFinite(x) && qIsFinite(y)) {
+		setPos(x, y);
 		moved_by_user_ = true;
 	}
-	if (e.hasAttribute("rotation")) {
-		setRotation(e.attribute("rotation").toDouble());
+	const qreal rotation = e.attribute("rotation").toDouble();
+	if (e.hasAttribute("rotation") && qIsFinite(rotation)) {
+		setRotation(rotation);
 		rotate_by_user_ = true;
 	}
 }
