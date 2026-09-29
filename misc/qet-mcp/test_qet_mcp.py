@@ -468,6 +468,80 @@ class EditValidation(unittest.TestCase):
         need = json.loads(re.search(r"var need = (\[.*?\]);", script).group(1))
         self.assertFalse({"shapeIndex", "textIndex", "imageIndex"} & set(need))
 
+    def test_malformed_arguments_are_refused(self):
+        """Each argument kind rejects what it cannot take, before any launch.
+        Found by the mutation audit: forcing any of these checks off went
+        unnoticed."""
+        f = {"op": "add_folio", "id": "f"}
+        cases = [
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": []}),
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": [1, "2"]}),
+            ("indices", {"op": "group_terminals", "strip": 0, "indices": [True]}),
+            ("indices", {"op": "bridge_terminals", "strip": 0, "indices": 3}),
+            ("true or false", {"op": "add_polygon", "folio": 0, "closed": 1,
+                               "points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}]}),
+            ("at least 2", {"op": "add_polygon", "folio": 0, "closed": True,
+                            "points": [{"x": 0, "y": 0}]}),
+            ("at least 2", {"op": "add_polygon", "folio": 0, "closed": True, "points": "xy"}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, {"x": "1", "y": 1}]}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, {"x": True, "y": 1}]}),
+            ("entries must be", {"op": "add_polygon", "folio": 0, "closed": True,
+                                 "points": [{"x": 0, "y": 0}, [1, 1]]}),
+            ("at least 2 nodes", {"op": "add_path", "folio": 0, "closed": False,
+                                  "nodes": [{"x": 0, "y": 0}]}),
+            ("corner, smooth or symmetric", {"op": "add_path", "folio": 0, "closed": False,
+                                             "nodes": [{"x": 0, "y": 0},
+                                                       {"x": 1, "y": 1, "kind": "sharp"}]}),
+            ("inHandle", {"op": "add_path", "folio": 0, "closed": False,
+                          "nodes": [{"x": 0, "y": 0}, {"x": 1, "y": 1, "inHandle": [0, 0]}]}),
+            ("outHandle", {"op": "add_path", "folio": 0, "closed": False,
+                           "nodes": [{"x": 0, "y": 0}, {"x": 1, "y": 1, "outHandle": {"x": 0}}]}),
+            ("unknown kind", {"op": "search_and_replace", "kind": "folio", "field": "x",
+                              "pattern": "a", "replacement": "b", "regex": False,
+                              "case_sensitive": False}),
+            ("unknown conductor field", {"op": "search_and_replace", "kind": "conductor",
+                                         "field": "label", "pattern": "a", "replacement": "b",
+                                         "regex": False, "case_sensitive": False}),
+            ("non-empty", {"op": "search_and_replace", "kind": "element_info", "field": "",
+                           "pattern": "a", "replacement": "b", "regex": False,
+                           "case_sensitive": False}),
+            ("not both", {"op": "delete_conductor", "folio": 0,
+                          "conductor": "{11111111-2222-4333-8444-555555555555}",
+                          "element": "{11111111-2222-4333-8444-555555555555}"}),
+            ("not both", {"op": "delete_conductor", "folio": 0,
+                          "conductor": "{11111111-2222-4333-8444-555555555555}", "terminal": 0}),
+            ("not an object", "add_folio"),
+        ]
+        for message, op in cases:
+            with self.subTest(op=op):
+                with self.assertRaisesRegex(ValueError, message):
+                    self.build([f, op])
+
+    def test_valid_shapes_of_those_arguments_pass(self):
+        """The other side: the same kinds accept what they should, so the
+        refusals above are not everything failing."""
+        s = self.build([
+            {"op": "add_polygon", "folio": 0, "closed": False,
+             "points": [{"x": 0, "y": 0}, {"x": 1.5, "y": -2}]},
+            {"op": "add_path", "folio": 0, "closed": True,
+             "nodes": [{"x": 0, "y": 0, "kind": "smooth", "inHandle": {"x": 1, "y": 1}},
+                       {"x": 5, "y": 5, "outHandle": {"x": 2, "y": 2}}]},
+            {"op": "add_polygon", "folio": 0, "closed": True,
+             "points": [{"x": 0, "y": 0, "kind": "anything"}, {"x": 1, "y": 1}]},
+            {"op": "search_and_replace", "kind": "conductor", "field": "num", "pattern": "a",
+             "replacement": "b", "regex": True, "case_sensitive": False},
+            {"op": "search_and_replace", "kind": "text", "field": "", "pattern": "a",
+             "replacement": "b", "regex": False, "case_sensitive": True}])
+        self.assertIn("qet.addPolygon(0, [{", s)
+        self.assertIn("qet.searchAndReplace(\"conductor\", \"num\", \"a\", \"b\", true, false)", s)
+        self.assertIn("qet.searchAndReplace(\"text\", \"\", \"a\", \"b\", false, true)", s)
+
+    def test_no_id_stores_nothing(self):
+        s = self.build([{"op": "add_folio"}])
+        self.assertNotIn("R[", s.split("if (missing.length === 0) {")[1])
+
     def test_a_string_index_that_is_not_a_uuid_is_refused(self):
         for bad in ("3", "{nope}", "11111111-1111"):
             with self.subTest(index=bad):
@@ -574,6 +648,37 @@ class ResultParsing(unittest.TestCase):
         parsed = m._parse_script_output(text)
         self.assertTrue(parsed["saved"])
         self.assertEqual(parsed["operations"], [])
+
+
+    def test_capabilities_notes_and_save(self):
+        """Every field the script reports reaches the result, attached where
+        it belongs. Found by the mutation audit: only the binary tests read
+        these back."""
+        text = "\n".join([
+            self.line(kind="capabilities", missing=["addFolio"]),
+            self.line(kind="op", index=0, op="a", id=None, result=True),
+            self.line(kind="op", index=1, op="b", id=None, result=False),
+            self.line(kind="op_note", index=1, note="why"),
+            self.line(kind="save", result=True, stopped_early=True),
+            self.line(kind="something_newer", result=False)])   # not a save
+        parsed = m._parse_script_output(text)
+        self.assertEqual(set(parsed), {"missing_methods", "operations", "saved", "stopped_early"})
+        self.assertEqual(parsed["missing_methods"], ["addFolio"])
+        self.assertTrue(parsed["saved"])
+        self.assertTrue(parsed["stopped_early"])
+        self.assertNotIn("note", parsed["operations"][0])
+        self.assertEqual(parsed["operations"][1]["note"], "why")
+            # no capabilities line: unknown, not "nothing missing"
+        self.assertIsNone(m._parse_script_output(self.line(kind="save", result=False))["missing_methods"])
+        self.assertEqual(m._parse_script_output(self.line(kind="capabilities", missing=None))
+                         ["missing_methods"], [])
+
+    def test_a_line_without_the_marker_is_ignored(self):
+        """Even one that would parse if read from where the marker would be."""
+        almost = "x" * (len(m._MARKER) - 1) + json.dumps({"kind": "save", "result": True})
+        parsed = m._parse_script_output(almost)
+        self.assertIsNone(parsed["saved"])
+        self.assertFalse(parsed["stopped_early"])
 
 
 class TerminalOrder(unittest.TestCase):
@@ -970,6 +1075,32 @@ class ReadToolContracts(unittest.TestCase):
         numbered, by_uuid = [m._conductor_row(i, c, ix)["key"]
                              for i, c, ix in m._conductors(root)]
         self.assertEqual(numbered, "1:{E}@0,-4,2--{E}@6,0,1")
+        self.assertEqual(by_uuid, numbered)
+
+    def test_conductor_key_same_in_both_forms_in_a_column(self):
+        """Terminals one above the other share their x: a uuid end must be
+        matched on x, y and orientation together, not on any one of them.
+        Found by the mutation audit: an "or" in place of "and" went
+        unnoticed while every test's terminals differed in every coordinate."""
+        root = ET.fromstring(
+            '<project><collection><category name="import"><category name="x">'
+            '<element name="C.elmt"><definition><description>'
+            '<terminal uuid="{T1}" x="0" y="0" orientation="n"/>'
+            '<terminal uuid="{T2}" x="0" y="20" orientation="n"/>'
+            '<terminal uuid="{T3}" x="30" y="20" orientation="n"/>'
+            '</description></definition></element>'
+            '</category></category></collection>'
+            '<diagram><elements><element uuid="{E}" type="embed://import/x/C.elmt">'
+            '<terminals><terminal id="1" x="0" y="4" orientation="0"/>'
+            '<terminal id="2" x="0" y="24" orientation="0"/>'
+            '<terminal id="3" x="30" y="24" orientation="0"/></terminals>'
+            '</element></elements><conductors>'
+            '<conductor terminal1="2" terminal2="3"/>'
+            '<conductor element1="{E}" terminal1="{T2}" element2="{E}" terminal2="{T3}"/>'
+            '</conductors></diagram></project>')
+        numbered, by_uuid = [m._conductor_row(i, c, ix)["key"]
+                             for i, c, ix in m._conductors(root)]
+        self.assertEqual(numbered, "1:{E}@0,24,0--{E}@30,24,0")
         self.assertEqual(by_uuid, numbered)
 
     def test_conductor_row_without_an_index(self):
