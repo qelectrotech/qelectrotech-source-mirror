@@ -230,6 +230,20 @@ jobs:
           # The MCP server finds bin/QElectroTech.exe and elements/ from mcp/.
           mkdir -p "$FILES/mcp"
           cp "$GITHUB_WORKSPACE/misc/qet-mcp/qet_mcp.py" "$GITHUB_WORKSPACE/misc/qet-mcp/README.md" "$FILES/mcp/"
+          # Python for it, so Windows users need not install one: the official
+          # embeddable package, pinned by version and checksum (python.org's
+          # own sha256 for this file). The installer offers it unticked; the
+          # portable folder and the MSI carry it.
+          PY_EMBED_VERSION=3.14.7
+          PY_EMBED_SHA256=d297e5ff019966817ad8502465176139f2d3d840fa4ed84b13bed399a6ab1f15
+          PY_ZIP="$GITHUB_WORKSPACE/python-embed.zip"
+          curl -fsSL -o "$PY_ZIP" \
+            "https://www.python.org/ftp/python/$PY_EMBED_VERSION/python-$PY_EMBED_VERSION-embed-amd64.zip"
+          echo "$PY_EMBED_SHA256  $PY_ZIP" | sha256sum -c - \
+            || { echo "ERROR: embeddable Python checksum mismatch"; exit 1; }
+          python3 -m zipfile -e "$PY_ZIP" "$FILES/mcp/python"
+          [ -f "$FILES/mcp/python/python.exe" ] \
+            || { echo "ERROR: python.exe missing from the embeddable package"; exit 1; }
 
           # --- Translations ---
           # Since PR #751 the .qm files are no longer tracked in git: lrelease
