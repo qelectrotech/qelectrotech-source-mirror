@@ -938,26 +938,27 @@ void QETDiagramEditor::setUpActions()
 		//Align actions. No default shortcut: they are reached from the
 		//Edit menu, the selection's context menu and the command search,
 		//and a user can bind one if they want.
-	QAction *snap_to_grid = m_align_actions_group.addAction(tr("Aligner sur la grille"));
+	QAction *snap_to_grid = m_align_actions_group.addAction(QET::Icons::SnapToGrid, tr("Aligner sur la grille"));
 	ShortcutManager::instance().registerAction(snap_to_grid, "diagrameditor.snap_selection_to_grid", tr("Éditeur de schémas"), QKeySequence());
 	snap_to_grid->setStatusTip(tr("Remet les éléments, images et textes sélectionnés sur la grille", "status bar tip"));
 	snap_to_grid->setData("snap_selection_to_grid");
 
 	const struct {
 		const char *id;
+		const QIcon &icon;
 		QString text;
 		QString tip;
 	} align_actions[] = {
-		{"align_left",    tr("Aligner à gauche"),        tr("Aligne les bords gauches des objets sélectionnés", "status bar tip")},
-		{"align_hcenter", tr("Centrer horizontalement"), tr("Aligne les objets sélectionnés sur une même verticale, par leur point d'origine pour les éléments", "status bar tip")},
-		{"align_right",   tr("Aligner à droite"),        tr("Aligne les bords droits des objets sélectionnés", "status bar tip")},
-		{"align_top",     tr("Aligner en haut"),         tr("Aligne les bords supérieurs des objets sélectionnés", "status bar tip")},
-		{"align_vcenter", tr("Centrer verticalement"),   tr("Aligne les objets sélectionnés sur une même horizontale, par leur point d'origine pour les éléments", "status bar tip")},
-		{"align_bottom",  tr("Aligner en bas"),          tr("Aligne les bords inférieurs des objets sélectionnés", "status bar tip")}
+		{"align_left",    QET::Icons::AlignLeft,    tr("Aligner à gauche"),        tr("Aligne les bords gauches des objets sélectionnés", "status bar tip")},
+		{"align_hcenter", QET::Icons::AlignHCenter, tr("Centrer horizontalement"), tr("Aligne les objets sélectionnés sur une même verticale, par leur point d'origine pour les éléments", "status bar tip")},
+		{"align_right",   QET::Icons::AlignRight,   tr("Aligner à droite"),        tr("Aligne les bords droits des objets sélectionnés", "status bar tip")},
+		{"align_top",     QET::Icons::AlignTop,     tr("Aligner en haut"),         tr("Aligne les bords supérieurs des objets sélectionnés", "status bar tip")},
+		{"align_vcenter", QET::Icons::AlignVCenter, tr("Centrer verticalement"),   tr("Aligne les objets sélectionnés sur une même horizontale, par leur point d'origine pour les éléments", "status bar tip")},
+		{"align_bottom",  QET::Icons::AlignBottom,  tr("Aligner en bas"),          tr("Aligne les bords inférieurs des objets sélectionnés", "status bar tip")}
 	};
 	for (const auto &a : align_actions)
 	{
-		QAction *action = m_align_actions_group.addAction(a.text);
+		QAction *action = m_align_actions_group.addAction(a.icon, a.text);
 		ShortcutManager::instance().registerAction(action, QStringLiteral("diagrameditor.") + QLatin1String(a.id), tr("Éditeur de schémas"), QKeySequence());
 		action->setStatusTip(a.tip);
 		action->setData(QString::fromLatin1(a.id));
