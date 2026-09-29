@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "pdfpagesdialog.h"
+#include "../qet.h"
 
 // Whole file is a no-op unless QtPdf is available (see pdfpagesdialog.h).
 #ifdef QET_HAS_QTPDF
@@ -125,6 +126,8 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 
 	// Render initial preview
 	updatePreview();
+
+	QET::trackDialogGeometry(this);
 }
 
 /**

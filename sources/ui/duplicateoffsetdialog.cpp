@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "duplicateoffsetdialog.h"
+#include "../qet.h"
 
 #include <QComboBox>
 #include <QDialogButtonBox>
@@ -76,6 +77,8 @@ DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
 	auto *layout = new QVBoxLayout(this);
 	layout->addLayout(form);
 	layout->addWidget(buttons);
+
+	QET::trackDialogGeometry(this);
 }
 
 QPoint DuplicateOffsetDialog::stepOffset() const

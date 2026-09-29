@@ -20,6 +20,7 @@
 #include "../diagram.h"
 #include "../diagramview.h"
 #include "../qetproject.h"
+#include "../qet.h"
 #include "../qetgraphicsitem/element.h"
 
 #include <QEvent>
@@ -59,6 +60,8 @@ JumpToElementDialog::JumpToElementDialog(Diagram *diagram, QWidget *parent) :
 	buildCandidates();
 	updateFilteredList(QString());
 	m_filter_edit->setFocus();
+
+	QET::trackDialogGeometry(this);
 }
 
 JumpToElementDialog::~JumpToElementDialog()

@@ -18,6 +18,7 @@
 
 #include "dialogwaiting.h"
 #include "ui_dialogwaiting.h"
+#include "../qet.h"
 #include <QPushButton>
 
 
@@ -31,6 +32,7 @@ DialogWaiting::DialogWaiting(QWidget *parent) :
 	ui(new Ui::DialogWaiting)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	setTitle(  "..." );
 	setDetail( "..." );
 }
