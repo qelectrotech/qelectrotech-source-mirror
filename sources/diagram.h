@@ -325,6 +325,10 @@ class Diagram : public QGraphicsScene
 
 		void diagramActivated();
 		void diagramInformationChanged();
+
+			/// Emitted by setItemGroup(): an item joined or left a group
+			/// without the selection changing (#1144)
+		void itemGroupChanged();
 };
 Q_DECLARE_METATYPE(Diagram *)
 

@@ -2279,6 +2279,7 @@ void Diagram::setItemGroup(QGraphicsItem *item, const QUuid &group)
 	if (m_project) {
 		m_project->dataBase()->itemGroupChanged(item);
 	}
+	emit itemGroupChanged();
 }
 
 /**

@@ -3185,6 +3185,12 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		this,
 		&QETDiagramEditor::selectionChanged,
 		Qt::DirectConnection);
+		//Grouping leaves the selection as it is, so without this Group
+		//and Ungroup would keep the state from before (#1144)
+	connect(dv->diagram(),
+		&Diagram::itemGroupChanged,
+		this,
+		&QETDiagramEditor::slot_updateComplexActions);
 	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 	connect(dv, &DiagramView::elementPlacementStarted, this, &QETDiagramEditor::rememberPlacedElement);
 }
