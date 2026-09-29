@@ -30,6 +30,12 @@ namespace QET {
 		// namespace
 		extern QIcon Add;
 		extern QIcon AddFolio;
+		extern QIcon AlignBottom;
+		extern QIcon AlignHCenter;
+		extern QIcon AlignLeft;
+		extern QIcon AlignRight;
+		extern QIcon AlignTop;
+		extern QIcon AlignVCenter;
 		extern QIcon Allowed;
 		extern QIcon ApplicationExit;
 		extern QIcon ArrowLeft;
@@ -177,6 +183,7 @@ namespace QET {
 		extern QIcon SendBackward;
 		extern QIcon Settings;
 		extern QIcon SinglePage;
+		extern QIcon SnapToGrid;
 		extern QIcon South;
 		extern QIcon Start;
 		extern QIcon TableOfContent;
