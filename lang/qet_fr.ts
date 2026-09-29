@@ -1935,7 +1935,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <source>
 &lt;Shift&gt; to move</source>
         <translation>
-&lt;Shift&gt; pour déplacer</translation>
+Maintenir Maj et faire glisser pour déplacer ce texte seul</translation>
     </message>
 </context>
 <context>
