@@ -194,7 +194,8 @@ class EditValidation(unittest.TestCase):
         s = self.build([{"op": "add_folio", "id": "f"},
                         {"op": "add_element", "id": "k", "folio": "$f", "path": "p", "x": 0, "y": 0},
                         {"op": "delete_element_text", "folio": "$f", "element": "$k", "index": U}])
-        self.assertIn(f'qet.deleteElementText(R["f"], R["k"], qet.elementTextIndex(R["f"], R["k"], "{U}"))', s)
+        f = '(F["f"] ? qet.folioIndex(F["f"]) : R["f"])'   # a folio "$name": see test_folio_ref_follows_the_folio
+        self.assertIn(f'qet.deleteElementText({f}, R["k"], qet.elementTextIndex({f}, R["k"], "{U}"))', s)
         # the lookups are required only when a uuid is used
         self.assertIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": U}]))
         self.assertNotIn('"tableIndex"', self.build([{"op": "delete_table", "folio": 0, "table": 0}]))
@@ -224,6 +225,27 @@ class EditValidation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "folio index, its uuid"):
             self.build([{"op": "set_folio", "folio": "first", "property": "author", "value": "a"}])
             
+    def test_folio_ref_follows_the_folio(self):
+        """A "$name" made by add_folio or insert_folio is looked up by the
+        folio's uuid when used as a folio, since a later insert or removal
+        shifts its index; the stored index is the fallback on a build that
+        cannot report folio uuids. Used as anything else, it is unchanged."""
+        s = self.build([{"op": "add_folio", "id": "f"},
+                        {"op": "insert_folio", "id": "g", "position": 0},
+                        {"op": "set_folio_title", "folio": "$f", "title": "t"},
+                        {"op": "set_folio_title", "folio": "$g", "title": "u"}])
+        self.assertIn("F[\"f\"] = (typeof qet.folioUuid === 'function' && v0 >= 0) "
+                      "? qet.folioUuid(v0) : '';", s)
+        self.assertIn('qet.setFolioTitle((F["f"] ? qet.folioIndex(F["f"]) : R["f"]), "t")', s)
+        self.assertIn('qet.setFolioTitle((F["g"] ? qet.folioIndex(F["g"]) : R["g"]), "u")', s)
+        # not required: an edit still runs on a build without folio uuids
+        self.assertNotIn('"folioUuid"', s)
+        # a "$name" from any other op is untouched
+        s = self.build([{"op": "add_text", "id": "t", "folio": 0, "text": "x", "x": 0, "y": 0},
+                        {"op": "delete_text", "folio": 0, "index": "$t"}])
+        self.assertIn('R["t"]', s)
+        self.assertNotIn("F[", s.split("if (missing.length === 0) {")[1])
+
     def test_conductor_by_uuid(self):
         """A conductor named by uuid is turned into one of its ends at run
         time; the lookup is required only then, and "conductor" cannot be
@@ -277,7 +299,8 @@ class EditValidation(unittest.TestCase):
         s = self.build([{"op": "add_folio", "id": "f"},
                         {"op": "add_element", "id": "a", "folio": "$f", "path": "x.elmt", "x": 0, "y": 0},
                         {"op": "delete_conductor", "folio": "$f", "element": "$a", "terminal": T}])
-        self.assertIn(f'qet.deleteConductor(R["f"], R["a"], qetMcpTerminal(2, "terminal", R["f"], R["a"], "{T}"))', s)
+        f = '(F["f"] ? qet.folioIndex(F["f"]) : R["f"])'   # a folio "$name": see test_folio_ref_follows_the_folio
+        self.assertIn(f'qet.deleteConductor({f}, R["a"], qetMcpTerminal(2, "terminal", {f}, R["a"], "{T}"))', s)
         s = self.build([{"op": "delete_conductor", "folio": V, "element": E, "terminal": T}])
         self.assertIn(f'qetMcpTerminal(0, "terminal", qet.folioIndex("{V}"), "{E}", "{T}")', s)
         # an index is unchanged and needs no lookup
@@ -605,7 +628,8 @@ class EditValidation(unittest.TestCase):
         script = self.build([{"op": "add_folio", "id": "f"},
                              {"op": "set_folio_title", "folio": "$f", "title": nasty}])
         # the literal must be valid JSON, so JavaScript reads exactly what was sent
-        literal = re.search(r'setFolioTitle\(R\["f"\], (".*?")\)', script, re.S).group(1)
+        literal = re.search(r'setFolioTitle\(\(F\["f"\] \? qet\.folioIndex\(F\["f"\]\) : R\["f"\]\), (".*?")\)',
+                            script, re.S).group(1)
         self.assertEqual(json.loads(literal), nasty)
 
     def test_edit_refuses_in_place_and_empty(self):
@@ -2624,6 +2648,19 @@ class Integration(unittest.TestCase):
         note = r["operations"][1].get("note", "")
         self.assertIn("from_terminal: no terminal", note)
         self.assertIn("to_terminal: no terminal", note)
+    def test_folio_ref_survives_an_insert_before_it(self):
+        """add_folio names a folio "$f"; inserting another at position 0
+        moves it from index 1 to 2. "$f" must still name it."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            {"op": "insert_folio", "position": 0},
+            {"op": "set_folio_title", "folio": "$f", "title": "MINE"}]))
+        self.assertEqual(r["operations"][0]["result"], 1)
+        titles = [f["title"] for f in m.tool_project_info(r["output"])["folios"]]
+        self.assertEqual(len(titles), 3)
+        self.assertEqual(titles[2], "MINE", titles)
+        self.assertNotIn("MINE", titles[:2])
 
     def test_noop_edit_has_no_conductor_churn(self):
         """Re-saving renumbers the file's terminal ids; the diff must not
