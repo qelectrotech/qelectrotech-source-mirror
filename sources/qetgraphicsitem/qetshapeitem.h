@@ -219,6 +219,7 @@ class QetShapeItem : public QetGraphicsItem
 
 		QRectF boundingRect() const override;
 		QPainterPath shape()  const override;
+		QRectF sceneOutlineRect() const;
 
 	protected:
 		void paint(

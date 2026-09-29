@@ -22,11 +22,12 @@
 #include <QUndoCommand>
 
 class Diagram;
+class DiagramContent;
 
 /**
 	@brief The AlignSelectionCommand class
 	Moves each selected item by its own amount, as one undo step.
-	Symbols, pictures and free texts take part; locked items are left
+	Symbols, pictures, free texts and shapes take part; locked items are left
 	where they are and counted, so the caller can say so.
 */
 class AlignSelectionCommand : public QUndoCommand
@@ -51,6 +52,8 @@ class AlignSelectionCommand : public QUndoCommand
 		int movedCount() const;
 		int lockedCount() const;
 		int itemCount() const;
+
+		static int unitCount(const DiagramContent &dc);
 
 	private:
 		QPointer<Diagram> m_diagram;

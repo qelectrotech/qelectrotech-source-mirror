@@ -603,6 +603,17 @@ QPainterPath QetShapeItem::outline() const
 }
 
 /**
+	@brief QetShapeItem::sceneOutlineRect
+	@return the box around the shape as drawn, in scene coordinates:
+	without the pen width, the selection margin of boundingRect() or the
+	wider outline shape() gives a hovered shape.
+*/
+QRectF QetShapeItem::sceneOutlineRect() const
+{
+	return mapToScene(outline()).boundingRect();
+}
+
+/**
 	@brief QetShapeItem::shape
 	@return the shape of this item
 */
