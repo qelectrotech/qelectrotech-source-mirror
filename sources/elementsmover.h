@@ -52,6 +52,7 @@ class ElementsMover {
 		int  beginMovement(Diagram *, QGraphicsItem * = nullptr);
 		void continueMovement(const QPointF &);
 		void endMovement();
+		bool holds(const QGraphicsItem *item) const;
 	
 		// attributes
 	private:
@@ -59,6 +60,7 @@ class ElementsMover {
 		QPointF m_current_movement;
 		Diagram *m_diagram{nullptr};
 		QGraphicsItem *m_movement_driver{nullptr};
+		bool m_driver_held{false};
 		DiagramContent m_moved_content;
 		QPointer<QStatusBar> m_status_bar;
 
