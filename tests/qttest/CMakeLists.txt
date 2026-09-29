@@ -344,6 +344,18 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # The project database keeps a folio's date with its century: 741.qet's
+  # 2010-09-21, read through project_summary_view under LC_ALL=en_US.UTF-8.
+  add_executable(
+    tst_dbfoliodate
+    tst_dbfoliodate.cpp)
+  add_test(NAME tst_dbfoliodate COMMAND tst_dbfoliodate)
+  add_dependencies(tst_dbfoliodate qelectrotech)
+  target_link_libraries(tst_dbfoliodate PRIVATE Qt::Test)
+  target_compile_definitions(tst_dbfoliodate PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
   # turns element uuid + terminal uuid back into the index the conductor
   # calls take, on examples/perceuse.qet (two terminals at one point).
