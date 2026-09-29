@@ -1741,9 +1741,12 @@ void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 	for (auto key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "date") {
-			query.bindValue( ":date",
-							 QLocale::system().toDate(infos.value("date").toString(),
-													  QLocale::ShortFormat));
+				//The folio's own date, not the title block's text read
+				//back: that text is the locale's short format, and where
+				//it has a two-digit year (en_US "M/d/yy") toDate() reads
+				//2010 back as 1910.
+			query.bindValue(QStringLiteral(":date"),
+							diagram->border_and_titleblock.date());
 		} else {
 			auto value = infos.value(key);
 			auto bind = key.prepend(":");
