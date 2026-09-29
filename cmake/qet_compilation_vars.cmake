@@ -714,6 +714,10 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
+  ${QET_DIR}/sources/ui/aiassistantdialog.cpp
+  ${QET_DIR}/sources/ui/aiassistantdialog.h
+  ${QET_DIR}/sources/ui/aiassistantsetup.cpp
+  ${QET_DIR}/sources/ui/aiassistantsetup.h
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.cpp
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.h
   ${QET_DIR}/sources/ui/alignmenttextdialog.cpp

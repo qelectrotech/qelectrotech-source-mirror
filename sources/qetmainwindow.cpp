@@ -26,6 +26,7 @@
 
 #include "qetmainwindow.h"
 #include "qeticons.h"
+#include "ui/aiassistantdialog.h"
 #include "shortcutmanager.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
@@ -111,6 +112,13 @@ void QETMainWindow::initCommonActions()
 
 	ShortcutManager::instance().registerAction(manual_online_, "mainwindow.manual_online", tr("Général"), Qt::Key_F1);
 
+	connect_ai_ = new QAction(tr("Connecter un assistant IA..."), this);
+	connect_ai_ -> setStatusTip(tr("Affiche la configuration qui permet à un assistant IA d'utiliser QElectroTech", "status bar tip"));
+	connect(connect_ai_, &QAction::triggered, this, [this]() {
+		AiAssistantDialog dialog(this);
+		dialog.exec();
+	});
+
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 
@@ -170,6 +178,7 @@ void QETMainWindow::initCommonMenus()
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(manual_online_);
+	help_menu_ -> addAction(connect_ai_);
 	help_menu_ -> addAction(youtube_);
 	help_menu_ -> addAction(upgrade_);
 	help_menu_ -> addAction(upgrade_M);
