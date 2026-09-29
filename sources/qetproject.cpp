@@ -205,7 +205,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 QETProject::~QETProject()
 {
 		//Wait for any in-flight async crash-recovery backup to finish: the worker
-		//writes through &m_backup_file, a member that would otherwise be destroyed
+		//writes through m_backup_files, a member that would otherwise be destroyed
 		//under it (issue #492).
 	m_backup_future.waitForFinished();
 
@@ -562,12 +562,16 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-		//Don't close/re-point the backup file while a backup is still writing it.
+		//Don't close/re-point the backup files while a backup is still writing one.
 	m_backup_future.waitForFinished();
-	if (m_backup_file.isOpen()) {
-		m_backup_file.close();
+	const QUrl managed_file = QUrl::fromLocalFile(filepath);
+	for (auto &backup_file : m_backup_files) {
+		if (backup_file.isOpen()) {
+			backup_file.close();
+		}
+		backup_file.setManagedFile(managed_file);
 	}
-	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
+	m_next_backup_slot = 0;
 	m_file_path = filepath;
 
 	QFileInfo fi(m_file_path);
@@ -2337,14 +2341,17 @@ void QETProject::detachDiagram(Diagram *diagram)
 
 /**
 	@brief QETProject::writeBackup
-	Write a backup file of this project, in the case that QET crash
+	Write a backup file of this project, in the case that QET crash.
+	The snapshots are written in turn to m_backup_files, so a write made
+	while the project is already in a bad state only replaces the oldest
+	snapshot, and the earlier ones are still there to recover from.
 */
 void QETProject::writeBackup()
 {
 	if (!m_backup_enabled)
 		return;
 		//Don't launch a new backup while the previous one is still writing:
-		//both would write through &m_backup_file on different threads.
+		//both could write through the same m_backup_files slot on different threads.
 	if (m_backup_future.isRunning())
 		return;
 		//toXml() walks the whole project on the GUI thread, which freezes
@@ -2357,8 +2364,10 @@ void QETProject::writeBackup()
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.
 	QDomDocument xml_project(toXml());
-	m_backup_future = QtConcurrent::run([this, xml_project]() mutable {
-		return QET::writeToFile(xml_project, &m_backup_file, nullptr);
+	KAutoSaveFile *target = &m_backup_files[m_next_backup_slot];
+	m_next_backup_slot = (m_next_backup_slot + 1) % BackupGenerations;
+	m_backup_future = QtConcurrent::run([target, xml_project]() mutable {
+		return QET::writeToFile(xml_project, target, nullptr);
 	});
 }
 

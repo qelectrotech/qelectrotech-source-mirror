@@ -752,6 +752,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
+  ${QET_DIR}/sources/ui/backuprestoredialog.cpp
+  ${QET_DIR}/sources/ui/backuprestoredialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
   ${QET_DIR}/sources/ui/duplicateoffsetdialog.cpp
