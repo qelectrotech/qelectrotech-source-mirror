@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/terminal.h"
+#include "../ElementsCollection/terminaluuids.h"
 #include "../qet.h"
 #include "../qetproject.h"
 #include "../conductorautonumerotation.h"
@@ -849,11 +850,11 @@ QUuid Terminal::uuid() const
 	read from the definition and is not touched by moving the element on the
 	folio, so the result is stable across loads, saves and folio moves, and it
 	is unique within an element except where a definition genuinely declares
-	two terminals at the same point -- three cases in the whole example corpus,
-	and harmless, because two terminals sharing a position and orientation are
-	indistinguishable in every observable respect: they merge to one terminal
-	row and every conductor on either of them still resolves to the right
-	element and name.
+	two terminals at the same point -- three cases in the whole example
+	corpus. Opening a project gives every terminal of its symbols a uuid
+	(TerminalUuids::fillMissing()), the same value for all but the second
+	of such a pair, so in a project this is the fallback for terminals of a
+	symbol imported since it was opened.
 
 	Derived values are UUID v5 in a fixed namespace, so they are reproducible
 	without being written to the file, and cannot collide with the v4 uuids
@@ -866,23 +867,45 @@ QUuid Terminal::stableUuid() const
 	if (!d->m_uuid.isNull()) {
 		return d->m_uuid;
 	}
+	return derivedUuid();
+}
 
-		//Fixed namespace for terminal identities derived from geometry.
-	static const QUuid derived_ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+/**
+	@brief Terminal::derivedUuid
+	The identity worked out from this terminal's local position and
+	orientation, whether or not it carries a uuid of its own: the value
+	stableUuid() gives when it has none, and the one a project gives it
+	when it is opened (TerminalUuids::fillMissing()).
 
-		//Position and orientation only. The name is deliberately excluded: it
-		//is not stable across a save cycle -- QET rewrites a terminal named
-		//"_" as unnamed, which would silently change the identity of 1421 of
-		//industrial.qet's 1790 terminals on the first resave. It is also not
-		//needed: keying on geometry alone produces exactly the same number of
-		//collisions across the example corpus, and it means renaming a
-		//terminal does not change what it is.
-	const QString key = QStringLiteral("%1|%2|%3")
-			.arg(d->m_pos.x(), 0, 'f', 4)
-			.arg(d->m_pos.y(), 0, 'f', 4)
-			.arg(static_cast<int>(d->m_orientation));
+	Position and orientation only. The name is deliberately excluded: it
+	is not stable across a save cycle -- QET rewrites a terminal named "_"
+	as unnamed, which would silently change the identity of 1421 of
+	industrial.qet's 1790 terminals on the first resave. It is also not
+	needed: keying on geometry alone produces exactly the same number of
+	collisions across the example corpus, and it means renaming a terminal
+	does not change what it is.
 
-	return QUuid::createUuidV5(derived_ns, key);
+	A second terminal at the same point with the same orientation gets the
+	next occurrence (see setPlaceRank()), as TerminalUuids::fillMissing()
+	gives it, so the two terminals of such a pair are told apart.
+*/
+QUuid Terminal::derivedUuid() const
+{
+	return TerminalUuids::derived(d->m_pos.x(),
+								  d->m_pos.y(),
+								  static_cast<int>(d->m_orientation),
+								  m_place_rank);
+}
+
+/**
+	@brief Terminal::setPlaceRank
+	@param rank : how many terminals of the definition, before this one in
+	document order, sit at the same point with the same orientation.
+	Set by Element::parseTerminal().
+*/
+void Terminal::setPlaceRank(int rank)
+{
+	m_place_rank = rank;
 }
 
 QString Terminal::name() const

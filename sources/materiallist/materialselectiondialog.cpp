@@ -173,6 +173,11 @@ void MaterialFilterProxy::setTokens(const QStringList &tokens)
 	A row is kept when each token is found in at least one of its cells :
 	the words may be spread over different columns, as a search for
 	"Hilfsschalter Schneider" expects.
+
+	Every token walks every cell of the row, which means the whole file
+	on every keystroke : well within reach for a catalogue, to be
+	revisited before someone imports a supplier export of tens of
+	thousands of lines.
 	@param source_row
 	@param source_parent
 	@return
@@ -235,6 +240,11 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 		//The row numbers are the order of the file : clicking them, or the
 		//corner just above them, sorts the table by them, which means the
 		//table is no longer sorted at all.
+		//
+		//QTableView keeps that corner button to itself, so the only way to
+		//reach it is the name Qt gives that private class. Nothing breaks
+		//if the name ever changes : the row numbers below stay connected
+		//and only this shortcut disappears.
 	for (QAbstractButton *button : ui->m_table_view->findChildren<QAbstractButton *>())
 	{
 		if (button->inherits("QTableCornerButton")) {
@@ -373,7 +383,7 @@ bool MaterialSelectionDialog::eventFilter(QObject *watched, QEvent *event)
 static int wheelAmount(int delta, bool counting_items)
 {
 	if (counting_items) {
-		return 3 * qRound(double(delta) / QWheelEvent::DefaultDeltasPerStep);
+		return 3 * qRound(static_cast<double>(delta) / static_cast<int>(QWheelEvent::DefaultDeltasPerStep));
 	}
 	return delta;
 }
@@ -512,6 +522,40 @@ MaterialRecord MaterialSelectionDialog::selectedRecord() const
 }
 
 /**
+	@brief sameEntry
+	Tell whether two records describe the same article of the file.
+
+	The maps are not compared as they are: an entry built by the entry
+	form leaves the empty columns out, load() gives every column to every
+	record, and a file may hold spaces the form has trimmed. Comparing
+	per column makes both shapes say the same thing. Cells the file holds
+	past the header are not part of it: they say nothing about which
+	article a line is.
+	@param lhs
+	@param rhs
+	@return true when both records describe the same article
+*/
+static bool sameEntry(const MaterialRecord &lhs, const MaterialRecord &rhs)
+{
+	QStringList columns = lhs.values.keys();
+	for (const QString &column : rhs.values.keys())
+	{
+		if (!columns.contains(column)) {
+			columns.append(column);
+		}
+	}
+
+	for (const QString &column : columns)
+	{
+		if (lhs.value(column).trimmed() != rhs.value(column).trimmed()) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
 	@brief MaterialSelectionDialog::selectRecord
 	Select the row holding that record, scrolling to it.
 	@param record
@@ -525,7 +569,7 @@ bool MaterialSelectionDialog::selectRecord(const MaterialRecord &record)
 		//the line which was just written.
 	for (int i = records.size() - 1; i >= 0; --i)
 	{
-		if (records.at(i) == record)
+		if (sameEntry(records.at(i), record))
 		{
 			row = i;
 			break;

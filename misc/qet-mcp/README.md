@@ -54,6 +54,9 @@ misc/qet-mcp/qet_mcp.py --list
 
 # speak MCP on stdin/stdout
 misc/qet-mcp/qet_mcp.py
+
+# run one tool and exit, no MCP client needed
+misc/qet-mcp/qet_mcp.py --call qet_project_info '{"path": "drawing.qet"}'
 ```
 
 Register it with an MCP client, for example:
@@ -66,12 +69,104 @@ Register it with an MCP client, for example:
       "args": ["/path/to/qelectrotech/misc/qet-mcp/qet_mcp.py"],
       "env": {
         "QET_MCP_WORKSPACE": "/home/you/drawings",
+        "QET_BINARY": "/usr/bin/qelectrotech",
         "QET_ENABLE_SCRIPTING": "1"
       }
     }
   }
 }
 ```
+
+`QET_BINARY` is the QElectroTech the tools launch. Leave it out when
+`qelectrotech` is on your `PATH`, or when the server is installed with
+QElectroTech (as `<prefix>/share/qelectrotech/mcp/qet_mcp.py`, which also
+finds the installed element collection).
+
+## Installed with QElectroTech
+
+QElectroTech's packages install the server next to the program, and from
+there it finds that QElectroTech and its element collection by itself:
+
+| Package | Server | Finds |
+|---|---|---|
+| `make install`, Linux distributions | `<prefix>/share/qelectrotech/mcp/qet_mcp.py` | `<prefix>/bin/qelectrotech`, `<prefix>/share/qelectrotech/elements` |
+| Windows installer, MSI, portable folder | `<folder>\mcp\qet_mcp.py` (the "AI assistant (MCP)" component) | `<folder>\bin\QElectroTech.exe`, `<folder>\elements` |
+
+So a client configuration needs only the path to the server and the
+workspace. On Windows, the installer also offers **Python for the AI
+assistant** (unticked by default; always in the portable folder and the
+MSI): Python from python.org in `<folder>\mcp\python`, for anyone without
+a Python of their own. Then:
+
+```json
+"command": "C:\\Program Files\\QElectroTech\\mcp\\python\\python.exe",
+"args": ["C:\\Program Files\\QElectroTech\\mcp\\qet_mcp.py"]
+```
+
+Snap and flatpak install it too. Their QElectroTech is built to run inside
+the package's sandbox, and starting it from the server has not been tested:
+the tools that read a file work, exports and edits may not. If they fail,
+point `QET_BINARY` at a QElectroTech installed another way.
+
+## Using it from the Claude app
+
+A web chat in a browser cannot start a program on your computer, so it
+cannot run this server. The Claude desktop app for Windows and macOS can,
+and it uses the same account as the website.
+
+1. Install Python 3.9 or later. Nothing else is needed.
+2. In the desktop app, open **Settings → Developer → Edit Config**. This
+   opens `claude_desktop_config.json`.
+3. Add the server, with your own paths:
+
+   ```json
+   {
+     "mcpServers": {
+       "qet": {
+         "command": "python",
+         "args": ["C:\\path\\to\\qelectrotech\\misc\\qet-mcp\\qet_mcp.py"],
+         "env": {
+           "QET_MCP_WORKSPACE": "C:\\Users\\you\\Documents\\drawings",
+           "QET_ENABLE_SCRIPTING": "1"
+         }
+       }
+     }
+   }
+   ```
+
+   On macOS use `python3` and ordinary `/` paths. In JSON every `\` in a
+   Windows path is written `\\`.
+4. Quit the app completely and start it again. The tools appear under the
+   chat box's tools menu.
+5. If `qelectrotech` is not on your `PATH`, add `"QET_BINARY"` to the
+   `env` block with the full path to the executable
+   (`C:\\Program Files\\...\\qelectrotech.exe`, written with `\\`).
+
+Only files under `QET_MCP_WORKSPACE` can be read or written (see
+[What the server is allowed to touch](#what-the-server-is-allowed-to-touch)).
+Leave out `QET_ENABLE_SCRIPTING` if you do not want the assistant to edit
+projects; see the next section for what that switches off.
+
+The test suite runs on Linux. The server uses nothing platform-specific,
+but it has not yet been tested on Windows or macOS.
+
+### With only a browser
+
+If your web chat can run Python (on claude.ai, code execution), upload
+`qet_mcp.py` together with your project and ask the assistant to use
+`--call`:
+
+```bash
+python3 qet_mcp.py --call qet_elements '{"path": "drawing.qet"}'
+echo '{"path": "drawing.qet"}' | python3 qet_mcp.py --call qet_check -
+```
+
+It prints the tool's JSON result and exits 0, or 1 if the tool reported an
+error, or 2 if the call itself was malformed. The workspace rule applies as
+it does in a server. The sandbox has no QElectroTech in it, so only the
+tools that read files work there: `qet_project_info`, `qet_elements`,
+`qet_conductors`, `qet_items`, `qet_diff`, `qet_scan`,
+`qet_element_info`, `qet_element_search` and `qet_element_build`.
 
 ## Five tools need scripting switched on
 
@@ -116,11 +211,22 @@ Set the workspace to the folder your drawings live in. A path outside it is
 refused with an error naming what was allowed; symlinks are resolved first,
 so a link planted inside the workspace is judged by where it points.
 
-Two arguments are deliberately **not** confined: `binary` (the
-`qelectrotech` executable) and `elements_dir` (the element collection).
-Those are configuration, chosen once by whoever runs the server, and both
-normally live in `/usr` or a build tree — outside any sensible workspace.
-Confining them would reject the ordinary case while stopping nothing.
+**The client does not choose what program runs.** The tools that launch
+QElectroTech use the one the server found (`QET_BINARY`, the install it
+ships in, or `PATH`). A call may still name `binary`, but only as that same
+file or one listed by whoever configured the server:
+
+| | |
+|---|---|
+| `QET_BINARY` | the QElectroTech to launch |
+| `QET_MCP_BINARIES` | other executables a call may name, separated like `QET_MCP_WORKSPACE` (for comparing two builds) |
+| `QET_MCP_ALLOW_ANY_BINARY=1` | turns the check off: a call can then run any program |
+| `QET_MCP_ELEMENTS` | element collections a call may name as `elements_dir` besides the workspace and the installed one |
+
+Anything else is refused, even a file inside the workspace: being there
+makes it readable, not runnable. Before this rule any executable a call
+named was run, with the call's own paths as arguments, so text inside a
+project could steer an assistant into starting another program.
 
 `QET_MCP_ALLOW_ANY_PATH=1` is equivalent to granting the client local
 filesystem access with this process's privileges. It exists so that is a
@@ -158,7 +264,6 @@ the answer a screenshot gave wrongly.
 
 ```json
 {"name": "qet_edit", "arguments": {
-  "binary": "/path/to/qelectrotech",
   "project": "in.qet", "output": "out.qet",
   "elements_dir": "/path/to/qelectrotech/elements",
   "operations": [
@@ -214,7 +319,7 @@ to emit.
 
 ```json
 {"name": "qet_query", "arguments": {
-  "binary": "/path/to/qelectrotech", "project": "industrial.qet",
+  "project": "industrial.qet",
   "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view WHERE label <> '' GROUP BY label HAVING n > 1 ORDER BY n DESC"}}
 ```
 
@@ -296,6 +401,10 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   an index would shift. A folio saved without a uuid shows it empty:
   QElectroTech gives it one on load and writes it on the next save, so it
   appears after a first `qet_edit`. Needs `qet.folioIndex()` in the build.
+  The `"$id"` of an `add_folio` or `insert_folio` works the same way: it
+  keeps naming that folio after a later `insert_folio` or `remove_folio` in
+  the same run (on a build without `qet.folioUuid()`, it is the index the
+  folio had when it was made, as before).
 - **A conductor can be named by its uuid** (`qet_conductors` reports it):
   `set_conductor`, `move_conductor_segment` and `delete_conductor` take
   `"conductor": "{uuid}"` in place of `element` + `terminal`, which works
@@ -305,9 +414,19 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `qet.conductorEnds()` in the build. A uuid names one wire, but
   `set_conductor` still changes the whole potential, the same as by
   terminal. A project saved before conductors carried a uuid has none in
-  the file: QElectroTech makes a new one on every load and does not save
-  it, so `qet_conductors` reports `uuid` as empty and those conductors are
-  named by `element` + `terminal` until wire uuids last (#1103).
+  the file until it is saved once: since #1107 QElectroTech works one out
+  from the wire's two ends on load and writes it on the next save, so it
+  appears after a first `qet_edit`.
+- **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
+  `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
+  in place of its index, on the op's own element (for `add_conductor`, on
+  that end's element). It is turned at run time into the index the call
+  takes; if the element has no terminal with it the op fails and its
+  `note` says so. Unlike the index, which is a sort by position, it is
+  defined between two terminals at the same point. Needs
+  `qet.terminalIndex()` in the build. A symbol file saved without terminal
+  uuids lists them empty; QElectroTech gives the terminals of every
+  project's copy of it a uuid on opening (#1118), written on the next save.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
@@ -347,7 +466,8 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   changes nothing. `addElement` and the move/delete verbs shipped with the
   scripting API; `addConductor`, `rotateElement`, `setElementLabel`,
   `setElementInfo` and `setFolioTitle` are newer.
-- **`elements_dir` is not optional for `common://` paths.** The sandboxed
+- **`elements_dir` is not optional for `common://` paths** unless the
+  server is installed with QElectroTech, which fills it in. The sandboxed
   run has its own empty HOME, so QElectroTech falls back to the compiled-in
   collection path, which on a machine that never ran `make install` does not
   exist. The only symptom is `addElement` reporting that a file plainly

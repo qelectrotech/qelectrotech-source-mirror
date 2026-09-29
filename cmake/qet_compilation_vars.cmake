@@ -477,6 +477,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.h
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.cpp
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.h
   ${QET_DIR}/sources/ElementsCollection/xmlprojectelementcollectionitem.cpp
@@ -714,6 +716,10 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
+  ${QET_DIR}/sources/ui/aiassistantdialog.cpp
+  ${QET_DIR}/sources/ui/aiassistantdialog.h
+  ${QET_DIR}/sources/ui/aiassistantsetup.cpp
+  ${QET_DIR}/sources/ui/aiassistantsetup.h
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.cpp
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.h
   ${QET_DIR}/sources/ui/alignmenttextdialog.cpp

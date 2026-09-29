@@ -267,12 +267,19 @@
         <file alias="themes/qet/128x128/project.png">128x128/project.png</file>
         <file alias="themes/qet/128x128/settings.png">128x128/settings.png</file>
         <file alias="themes/qet/128x128/terminalstrip.png">128x128/terminalstrip.png</file>
+        <file alias="themes/qet/scalable/align-horizontal-center.svg">scalable/align-horizontal-center.svg</file>
+        <file alias="themes/qet/scalable/align-horizontal-left.svg">scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet/scalable/align-horizontal-right.svg">scalable/align-horizontal-right.svg</file>
+        <file alias="themes/qet/scalable/align-vertical-bottom.svg">scalable/align-vertical-bottom.svg</file>
+        <file alias="themes/qet/scalable/align-vertical-center.svg">scalable/align-vertical-center.svg</file>
+        <file alias="themes/qet/scalable/align-vertical-top.svg">scalable/align-vertical-top.svg</file>
         <file alias="themes/qet/scalable/diagram.svg">scalable/diagram.svg</file>
         <file alias="themes/qet/scalable/folio-delete.svg">scalable/folio-delete.svg</file>
         <file alias="themes/qet/scalable/folio-new.svg">scalable/folio-new.svg</file>
         <file alias="themes/qet/scalable/folio-properties.svg">scalable/folio-properties.svg</file>
         <file alias="themes/qet/scalable/label.svg">scalable/label.svg</file>
         <file alias="themes/qet/scalable/pdf-import.svg">scalable/pdf-import.svg</file>
+        <file alias="themes/qet/scalable/snap-to-grid.svg">scalable/snap-to-grid.svg</file>
         <file alias="themes/qet/scalable/edit-opacity.svg">breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>
         <file alias="themes/qet/scalable/image-flip-horizontal.svg">breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
         <file alias="themes/qet/scalable/image-flip-vertical.svg">breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
@@ -457,12 +464,19 @@
         <file>themes/qet-dark/48x48/view-pim-journal.png</file>
         <file>themes/qet-dark/128x128/plasmagik.png</file>
         <file>themes/qet-dark/128x128/settings.png</file>
+        <file>themes/qet-dark/scalable/align-horizontal-center.svg</file>
+        <file>themes/qet-dark/scalable/align-horizontal-left.svg</file>
+        <file>themes/qet-dark/scalable/align-horizontal-right.svg</file>
+        <file>themes/qet-dark/scalable/align-vertical-bottom.svg</file>
+        <file>themes/qet-dark/scalable/align-vertical-center.svg</file>
+        <file>themes/qet-dark/scalable/align-vertical-top.svg</file>
         <file>themes/qet-dark/scalable/diagram.svg</file>
         <file>themes/qet-dark/scalable/folio-delete.svg</file>
         <file>themes/qet-dark/scalable/folio-new.svg</file>
         <file>themes/qet-dark/scalable/folio-properties.svg</file>
         <file>themes/qet-dark/scalable/label.svg</file>
         <file>themes/qet-dark/scalable/pdf-import.svg</file>
+        <file>themes/qet-dark/scalable/snap-to-grid.svg</file>
         <file>themes/qet-dark/scalable/edit-opacity.svg</file>
         <file>themes/qet-dark/scalable/image-flip-horizontal.svg</file>
         <file>themes/qet-dark/scalable/image-flip-vertical.svg</file>

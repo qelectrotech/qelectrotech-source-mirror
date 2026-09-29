@@ -19,6 +19,9 @@
 
 #include "sqlreadonly.h"
 
+#include "../autoNum/assignvariables.h"
+#include "../borderproperties.h"
+#include "../bordertitleblock.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
@@ -32,8 +35,16 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../qet.h"
+#include "../titleblockproperties.h"
+#include "../ElementsCollection/xmlelementcollection.h"
+#include "../properties/elementdata.h"
 
 #include <QLocale>
+#include <QDate>
+#include <QDomDocument>
+
+#include <functional>
 #include <QMetaEnum>
 #include <QTextDocument>
 #include <QFile>
@@ -123,6 +134,480 @@ void projectDataBase::updateDB()
 	m_content_changed = false;
 
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::updateDB
+	updateDB() for a project just read from @p document.
+
+	The diagram, diagram_info, element, element_info, terminal and conductor
+	tables are filled from the document itself when it carries everything
+	they need -- see populateFromDocument() -- and from the built folios
+	otherwise, as updateDB() does. Shapes, texts and pictures always come from
+	the built folios: their boxes need the fonts and pens a folio renders with.
+
+	The two fills give the same tables (tst_databasefromdocument checks it on
+	the shipped examples). Reading the document instead of the folios is what
+	the database needs before a project can be opened without building every
+	folio; see DB-FROM-XML-SCOPE.md in qelectrotech-docker.
+*/
+void projectDataBase::updateDB(const QDomDocument &document)
+{
+	if (m_update_blocked || !m_content_changed) {
+		updateDB();
+		return;
+	}
+		//QET_DATABASE_FROM_FOLIOS=1 keeps the fill from the built folios:
+		//a way back should the two ever disagree, and what the test that
+		//says they do not compares against.
+	QString why;
+	if (qEnvironmentVariableIntValue("QET_DATABASE_FROM_FOLIOS") == 1) {
+		why = QStringLiteral("QET_DATABASE_FROM_FOLIOS is set");
+	} else if (populateFromDocument(document, &why)) {
+		qInfo() << "Project database filled from the document";
+		populateDrawingItemTables();
+		m_content_changed = false;
+		emit dataBaseUpdated();
+		return;
+	}
+	qInfo().noquote() << "Project database filled from the folios:" << why;
+	updateDB();
+}
+
+namespace {
+struct DocumentTerminal
+{
+	QString uuid;
+	QString name;
+	bool master_label = false;
+};
+
+struct DocumentDefinition
+{
+	QString type;
+	QString sub_type;
+	QHash<QUuid, DocumentTerminal> terminals;
+};
+
+struct DocumentElement
+{
+	QString uuid;
+	QString diagram_uuid;
+	QString pos;
+	QString type;
+	QString sub_type;
+	QVariant group;
+	DiagramContext informations;
+	QString label;
+	QHash<QUuid, DocumentTerminal> terminals;
+};
+
+	//The sequential values an element or a conductor was saved with, as
+	//Element::fromXml() and Conductor::fromXml() read them -- false for
+	//the attributes files written before <sequentialNumbers> carry.
+bool readSequence(const QDomElement &item, autonum::sequentialNumbers *sequence)
+{
+	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1"}) {
+		if (item.hasAttribute(QLatin1String(name))) {
+			return false;
+		}
+	}
+	sequence->fromXml(item.firstChildElement(QStringLiteral("sequentialNumbers")));
+	return true;
+}
+
+struct DocumentConductor
+{
+	QString uuid;
+	QString diagram_uuid;
+	QString element1, terminal1, element2, terminal2;
+	QString text;
+};
+}
+
+/**
+	@brief projectDataBase::populateFromDocument
+	Fill the diagram, diagram_info, element, element_info, terminal and
+	conductor tables from @p document, the project as read from its file,
+	with the same values the built folios give -- using the same code:
+	a BorderTitleBlock read from each folio's XML gives the title-block
+	values and each element's grid cell, the project's embedded collection
+	gives each element's definition, and the binders are shared.
+
+	Nothing is written unless the whole document can be read this way. It
+	cannot -- and false is returned, for the caller to fill from the folios
+	instead -- when a folio, element or conductor carries no saved uuid (the
+	folios derive one on load), a conductor names its ends the older way,
+	a folio number uses %autonum, a conductor ends on a terminal that shows
+	its master's contact label, an element's definition is missing or
+	not one the folios could build, two elements on a folio number their
+	terminals alike, or sequential numbers are saved as the attributes
+	older files carry. A file saved by a current QElectroTech carries
+	everything else.
+
+	A label or a conductor text made from a formula is worked out again,
+	as the folios do, with the same AssignVariables code: the one saved
+	in the file is what the formula gave when it was saved, and a folio
+	added or moved since changes it. A frozen conductor text is left to the
+	folios, which work it out part-way through loading.
+	@return true if the tables were filled
+*/
+bool projectDataBase::populateFromDocument(const QDomDocument &document, QString *why)
+{
+	auto refuse = [why](const QString &reason) {
+		if (why) *why = reason;
+		return false;
+	};
+	if (!m_project) {
+		return refuse(QStringLiteral("no project"));
+	}
+
+		//The folios, in the order the project read them (readDiagramsXml()),
+		//each with its saved uuid -- the one the built folio has.
+	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (diagram_nodes.size() != diagrams.size()) {
+		return refuse(QStringLiteral("the folios are not the document's"));
+	}
+
+	const DiagramContext project_wide = m_project->projectWideProperties();
+	const DiagramContext project_properties = m_project->projectProperties();
+		//One border and title block read from each folio's XML in turn:
+		//only what it gives is kept.
+	BorderTitleBlock reader;
+	QList<DiagramContext> diagram_infos;
+	QList<QDate> diagram_dates;
+	QList<QUuid> diagram_uuids;
+	QList<DocumentElement> elements;
+	QList<DocumentConductor> conductors;
+	QSet<QUuid> element_uuids;
+	QHash<QString, DocumentDefinition> definitions;   //by element type
+
+		//The project's own definitions by "embed://" path, which is how an
+		//element's type names them: one walk of the embedded collection
+		//rather than resolving an ElementsLocation per type.
+	QHash<QString, QDomElement> stored;
+	std::function<void (const QDomElement &, const QString &)> walk =
+			[&stored, &walk](const QDomElement &category, const QString &path) {
+		for (QDomElement child = category.firstChildElement() ;
+			 !child.isNull() ; child = child.nextSiblingElement()) {
+			const QString name = path + child.attribute(QStringLiteral("name"));
+			if (child.tagName() == QLatin1String("category")) {
+				walk(child, name + QLatin1Char('/'));
+			} else if (child.tagName() == QLatin1String("element")) {
+				stored.insert(name, child.firstChildElement(QStringLiteral("definition")));
+			}
+		}
+	};
+	if (auto collection = m_project->embeddedElementCollection()) {
+		walk(collection->root(), QStringLiteral("embed://"));
+	}
+
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+	{
+		const QDomElement diagram_xml = diagram_nodes.at(i).toElement();
+		const QUuid diagram_uuid(diagram_xml.attribute(QStringLiteral("uuid")));
+		if (diagram_uuid.isNull() || diagram_uuid != diagrams.at(i)->uuid()) {
+			return refuse(QStringLiteral("a folio has no saved uuid"));
+		}
+
+		BorderTitleBlock *border = &reader;
+			//As a new Diagram's border starts, before initFromXml() reads it
+		border->importBorder(BorderProperties());
+		border->importTitleBlock(TitleBlockProperties());
+		border->titleBlockFromXml(diagram_xml);
+		border->borderFromXml(diagram_xml);
+		if (border->folio().contains(QStringLiteral("%autonum"))) {
+			return refuse(QStringLiteral("a folio number uses %autonum"));
+		}
+		border->setFolioData(i + 1, int(diagram_nodes.size()), QString(), project_wide);
+
+			//What a formula on this folio is worked out from, as
+			//AssignVariables::formulaToLabel() reads it off a built folio.
+		autonum::FormulaContext folio_context;
+		folio_context.folio = border->folio();
+		folio_context.folio_index = i;
+		folio_context.folio_total = border->folioTotal();
+		folio_context.plant = border->plant();
+		folio_context.locmach = border->locmach();
+		folio_context.title_block_fields = border->additionalFields();
+		folio_context.project_properties = project_properties;
+
+		QHash<QUuid, int> on_this_folio;   //element uuid -> index in elements
+		QSet<int> terminal_ids;            //the older terminal ids used so far
+		for (QDomElement element_xml : QET::findInDomElement(
+				 diagram_xml, QStringLiteral("elements"), QStringLiteral("element")))
+		{
+				//Skipped by Diagram::fromXml() as well
+			if (!Element::valideXml(element_xml)) {
+				continue;
+			}
+			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || element_uuids.contains(uuid)) {
+				return refuse(QStringLiteral("an element has no saved uuid, or shares one"));
+			}
+			element_uuids.insert(uuid);
+
+				//Element::fromXml() refuses an element whose terminals are
+				//numbered like those of one read before it on the folio;
+				//which of them it matches needs their geometry, so leave any
+				//such folio to the folios. A current file numbers them
+				//across the folio.
+			QSet<int> ids;
+			for (QDomElement t : QET::findInDomElement(
+					 element_xml, QStringLiteral("terminals"), QStringLiteral("terminal"))) {
+				if (Terminal::valideXml(t)) {
+					ids.insert(t.attribute(QStringLiteral("id")).toInt());
+				}
+			}
+			if (terminal_ids.intersects(ids)) {
+				return refuse(QStringLiteral("two elements on a folio number their terminals alike"));
+			}
+			terminal_ids.unite(ids);
+
+				//The definition the folio builds the element from, with the
+				//checks Element::buildFromXml() refuses an element on --
+				//read once per type, as many elements share one.
+			const QString type = element_xml.attribute(QStringLiteral("type"));
+			auto known = definitions.constFind(type);
+			if (known == definitions.constEnd())
+			{
+				const QDomElement definition = stored.value(type);
+				if (definition.isNull()) {
+					return refuse(QStringLiteral("an element's definition is not in the project"));
+				}
+				int number;
+				if (definition.tagName() != QLatin1String("definition")
+					|| definition.attribute(QStringLiteral("type")) != QLatin1String("element")
+					|| !QET::attributeIsAnInteger(definition, QStringLiteral("width"), &number)
+					|| !QET::attributeIsAnInteger(definition, QStringLiteral("height"), &number)
+					|| !QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_x"), &number)
+					|| !QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_y"), &number)
+					|| definition.firstChild().isNull()) {
+					return refuse(QStringLiteral("an element's definition cannot be built"));
+				}
+				DocumentDefinition read;
+				ElementData data;
+				data.fromXml(definition);
+				read.type = data.typeToString();
+				read.sub_type = data.masterTypeToString();
+				const QDomElement description = definition.firstChildElement(QStringLiteral("description"));
+				for (QDomElement t = description.firstChildElement(QStringLiteral("terminal")) ;
+					 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal")))
+				{
+					const QUuid terminal_uuid(t.attribute(QStringLiteral("uuid")));
+					if (terminal_uuid.isNull()) {
+						continue;
+					}
+					DocumentTerminal terminal;
+					terminal.uuid = terminal_uuid.toString();
+					terminal.name = t.attribute(QStringLiteral("name"));
+					terminal.master_label = t.attribute(QStringLiteral("use_master_label")) == QLatin1String("true");
+					read.terminals.insert(terminal_uuid, terminal);
+				}
+				known = definitions.insert(type, read);
+			}
+
+			DocumentElement element;
+			element.uuid = uuid.toString();
+			element.diagram_uuid = diagram_uuid.toString();
+			DiagramPosition position = border->convertPosition(
+						QPointF(element_xml.attribute(QStringLiteral("x")).toDouble(),
+								element_xml.attribute(QStringLiteral("y")).toDouble()));
+			element.pos = position.toString();
+			element.type = known->type;
+			element.sub_type = known->sub_type;
+			element.terminals = known->terminals;
+			const QUuid group = ItemGroups::read(element_xml);
+			element.group = group.isNull() ? QVariant() : QVariant(group.toString());
+			element.informations.fromXml(
+						element_xml.firstChildElement(QStringLiteral("elementInformations")),
+						QStringLiteral("elementInformation"));
+				//Element::actualLabel()
+			const QString formula = element.informations.value(QStringLiteral("formula")).toString();
+			if (formula.isEmpty()) {
+				element.label = element.informations.value(QStringLiteral("label")).toString();
+			} else {
+				autonum::sequentialNumbers sequence;
+				if (!readSequence(element_xml, &sequence)) {
+					return refuse(QStringLiteral("an element's sequential numbers are saved the older way"));
+				}
+				autonum::FormulaContext context = folio_context;
+				context.has_element = true;
+				context.element_position = position;
+				context.element_prefix = element_xml.attribute(QStringLiteral("prefix"));
+				element.label = autonum::AssignVariables::formulaToLabel(formula, sequence, context);
+			}
+
+			on_this_folio.insert(uuid, int(elements.size()));
+			elements << element;
+		}
+
+			//The conductors the folio builds, and only those: an end that is
+			//not found, a conductor from a terminal to itself and a second
+			//conductor between the same two terminals are all dropped on load.
+		QSet<QString> joined;
+		for (QDomElement conductor_xml : QET::findInDomElement(
+				 diagram_xml, QStringLiteral("conductors"), QStringLiteral("conductor")))
+		{
+			if (!Conductor::valideXml(conductor_xml)) {
+				continue;
+			}
+			const QUuid uuid(conductor_xml.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull()
+				|| !conductor_xml.hasAttribute(QStringLiteral("element1"))
+				|| !conductor_xml.hasAttribute(QStringLiteral("element2"))) {
+				return refuse(QStringLiteral("a conductor has no saved uuid, or names its ends the older way"));
+			}
+			QString ends[2][2];
+			bool found = true;
+			for (int n = 0 ; n < 2 ; ++n)
+			{
+				const QString index = QString::number(n + 1);
+				const QUuid owner(conductor_xml.attribute(QStringLiteral("element") + index));
+				const QUuid terminal(conductor_xml.attribute(QStringLiteral("terminal") + index));
+				const int e = on_this_folio.value(owner, -1);
+				if (e < 0) {
+					found = false;
+					break;
+				}
+				if (!elements.at(e).terminals.contains(terminal)) {
+						//The folio would try the terminal's derived uuid;
+						//leave that to it.
+					return refuse(QStringLiteral("a conductor ends on a terminal not in its element's definition"));
+				}
+				const DocumentTerminal &t = elements.at(e).terminals.value(terminal);
+				if (t.master_label) {
+					return refuse(QStringLiteral("a conductor ends on a terminal showing its master's label"));
+				}
+				ends[n][0] = elements.at(e).uuid;
+				ends[n][1] = t.uuid;
+			}
+			if (!found) {
+				continue;
+			}
+			const QString a = ends[0][0] + ends[0][1], b = ends[1][0] + ends[1][1];
+			if (a == b) {
+				continue;
+			}
+			const QString pair = a < b ? a + b : b + a;
+			if (joined.contains(pair)) {
+				continue;
+			}
+			joined.insert(pair);
+
+			DocumentConductor conductor;
+			conductor.uuid = uuid.toString();
+			conductor.diagram_uuid = diagram_uuid.toString();
+			conductor.element1 = ends[0][0];
+			conductor.terminal1 = ends[0][1];
+			conductor.element2 = ends[1][0];
+			conductor.terminal2 = ends[1][1];
+				//ConductorProperties::fromXml()'s text, without reading the
+				//rest of the properties -- or, as Conductor::refreshText()
+				//makes it, what its formula gives.
+			const QString formula = conductor_xml.attribute(QStringLiteral("formula"));
+			if (formula.isEmpty()) {
+				conductor.text = conductor_xml.attribute(QStringLiteral("num"));
+			} else {
+				autonum::sequentialNumbers sequence;
+				if (conductor_xml.attribute(QStringLiteral("freezeLabel")) == QLatin1String("true")) {
+					return refuse(QStringLiteral("a conductor's text made from a formula is frozen"));
+				}
+				if (!readSequence(conductor_xml, &sequence)) {
+					return refuse(QStringLiteral("a conductor's sequential numbers are saved the older way"));
+				}
+				autonum::FormulaContext context = folio_context;
+				context.has_conductor = true;
+				context.wire_function = conductor_xml.attribute(QStringLiteral("function"));
+				context.wire_tension_protocol = conductor_xml.attribute(QStringLiteral("tension_protocol"));
+				context.wire_color = conductor_xml.attribute(QStringLiteral("conductor_color"));
+				context.wire_section = conductor_xml.attribute(QStringLiteral("conductor_section"));
+				conductor.text = autonum::AssignVariables::formulaToLabel(formula, sequence, context);
+			}
+			conductors << conductor;
+		}
+
+		diagram_uuids << diagram_uuid;
+		diagram_infos << border->titleblockInformation();
+		diagram_dates << border->date();
+	}
+
+		//Everything could be read: write it.
+	QSqlQuery query(m_data_base);
+	for (const QString &table : {QStringLiteral("diagram"), QStringLiteral("diagram_info"),
+								 QStringLiteral("element"), QStringLiteral("element_info"),
+								 QStringLiteral("conductor"), QStringLiteral("terminal")}) {
+		query.exec(QStringLiteral("DELETE FROM ") + table);
+	}
+
+	for (int i = 0 ; i < diagram_uuids.size() ; ++i)
+	{
+		m_insert_diagram_query.bindValue(":uuid", diagram_uuids.at(i).toString());
+		m_insert_diagram_query.bindValue(":pos", i + 1);
+		if (!m_insert_diagram_query.exec()) {
+			qDebug() << "projectDataBase::populateFromDocument diagram insert error : " << m_insert_diagram_query.lastError();
+		}
+		bindDiagramInfoValues(m_insert_diagram_info_query, diagram_uuids.at(i),
+							  diagram_infos.at(i), diagram_dates.at(i));
+		if (!m_insert_diagram_info_query.exec()) {
+			qDebug() << "projectDataBase::populateFromDocument diagram_info insert error : " << m_insert_diagram_info_query.lastError();
+		}
+	}
+
+	for (const DocumentElement &element : std::as_const(elements))
+	{
+		m_insert_elements_query.bindValue(QStringLiteral(":uuid"), element.uuid);
+		m_insert_elements_query.bindValue(QStringLiteral(":diagram_uuid"), element.diagram_uuid);
+		m_insert_elements_query.bindValue(QStringLiteral(":pos"), element.pos);
+		m_insert_elements_query.bindValue(QStringLiteral(":type"), element.type);
+		m_insert_elements_query.bindValue(QStringLiteral(":sub_type"), element.sub_type);
+		m_insert_elements_query.bindValue(QStringLiteral(":group_uuid"), element.group);
+		if (!m_insert_elements_query.exec()) {
+			qDebug() << "projectDataBase::populateFromDocument element insert error : " << m_insert_elements_query.lastError();
+		}
+		bindElementInfoValues(m_insert_element_info_query, element.uuid, element.informations,
+							  element.label);
+		if (!m_insert_element_info_query.exec()) {
+			qDebug() << "projectDataBase::populateFromDocument element_info insert error : " << m_insert_element_info_query.lastError();
+		}
+	}
+
+	QHash<QString, int> element_index;
+	for (int i = 0 ; i < elements.size() ; ++i) {
+		element_index.insert(elements.at(i).uuid, i);
+	}
+	for (const DocumentConductor &conductor : std::as_const(conductors))
+	{
+		for (const auto &end : {std::make_pair(conductor.element1, conductor.terminal1),
+								std::make_pair(conductor.element2, conductor.terminal2)}) {
+			const DocumentElement &owner = elements.at(element_index.value(end.first));
+			insertTerminal(end.second, end.first,
+						   owner.terminals.value(QUuid(end.second)).name);
+		}
+		m_insert_conductor_query.bindValue(QStringLiteral(":uuid"), conductor.uuid);
+		m_insert_conductor_query.bindValue(QStringLiteral(":diagram_uuid"), conductor.diagram_uuid);
+		m_insert_conductor_query.bindValue(QStringLiteral(":terminal1_uuid"), conductor.terminal1);
+		m_insert_conductor_query.bindValue(QStringLiteral(":terminal1_element_uuid"), conductor.element1);
+		m_insert_conductor_query.bindValue(QStringLiteral(":terminal2_uuid"), conductor.terminal2);
+		m_insert_conductor_query.bindValue(QStringLiteral(":terminal2_element_uuid"), conductor.element2);
+		m_insert_conductor_query.bindValue(QStringLiteral(":text"), conductor.text);
+		if (!m_insert_conductor_query.exec()) {
+			qDebug() << "projectDataBase::populateFromDocument conductor insert error : " << m_insert_conductor_query.lastError();
+		}
+	}
+
+		//While every folio is still built, their conductors are watched for
+		//property changes as populateConductorTable() does -- the one walk
+		//over the built folios left here.
+	for (Diagram *diagram : diagrams) {
+		for (Conductor *conductor : diagram->conductors()) {
+			if (conductor->terminal1->parentElement() && conductor->terminal2->parentElement()) {
+				watchConductor(conductor);
+			}
+		}
+	}
+	return true;
 }
 
 /**
@@ -1514,9 +1999,21 @@ void projectDataBase::populateConductorTable()
 */
 void projectDataBase::insertTerminal(Terminal *terminal)
 {
-	m_insert_terminal_query.bindValue(":uuid", terminal->stableUuid().toString());
-	m_insert_terminal_query.bindValue(":element_uuid", terminal->parentElement()->uuid().toString());
-	m_insert_terminal_query.bindValue(":name", terminal->name());
+	insertTerminal(terminal->stableUuid().toString(),
+				   terminal->parentElement()->uuid().toString(),
+				   terminal->name());
+}
+
+/**
+	@brief projectDataBase::insertTerminal
+	insertTerminal(Terminal *) from values rather than a live terminal.
+*/
+void projectDataBase::insertTerminal(const QString &uuid, const QString &element_uuid,
+									 const QString &name)
+{
+	m_insert_terminal_query.bindValue(":uuid", uuid);
+	m_insert_terminal_query.bindValue(":element_uuid", element_uuid);
+	m_insert_terminal_query.bindValue(":name", name);
 	if (!m_insert_terminal_query.exec()) {
 		qDebug() << "projectDataBase::insertTerminal insert error : " << m_insert_terminal_query.lastError();
 	}
@@ -1733,17 +2230,56 @@ void projectDataBase::bindElementInfoValues(QSqlQuery &query, Element *element)
 	}
 }
 
+/**
+	@brief projectDataBase::bindElementInfoValues
+	bindElementInfoValues(QSqlQuery &, Element *) from values: the element's
+	information and the label to store for it.
+*/
+void projectDataBase::bindElementInfoValues(QSqlQuery &query, const QString &element_uuid,
+											const DiagramContext &informations,
+											const QString &label)
+{
+	query.bindValue(QStringLiteral(":uuid"), element_uuid);
+	for (const auto &key : QETInformation::elementInfoKeys()) {
+		query.bindValue(QStringLiteral(":") + key,
+						key == QLatin1String("label") ? label
+													  : informations[key].toString());
+	}
+}
+
 void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 {
-	query.bindValue(":uuid", diagram->uuid());
+	bindDiagramInfoValues(query, diagram->uuid(), diagram->border_and_titleblock);
+}
 
-	auto infos = diagram->border_and_titleblock.titleblockInformation();
+/**
+	@brief projectDataBase::bindDiagramInfoValues
+	bindDiagramInfoValues(QSqlQuery &, Diagram *) from a folio's uuid and its
+	border and title block, which need not belong to a built folio.
+*/
+void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, const QUuid &diagram_uuid,
+											const BorderTitleBlock &border)
+{
+	bindDiagramInfoValues(query, diagram_uuid, border.titleblockInformation(), border.date());
+}
+
+/**
+	@brief projectDataBase::bindDiagramInfoValues
+	The same from a title block's information and date.
+*/
+void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, const QUuid &diagram_uuid,
+											const DiagramContext &infos, const QDate &date)
+{
+	query.bindValue(":uuid", diagram_uuid);
+
 	for (auto key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "date") {
-			query.bindValue( ":date",
-							 QLocale::system().toDate(infos.value("date").toString(),
-													  QLocale::ShortFormat));
+				//The folio's own date, not the title block's text read
+				//back: that text is the locale's short format, and where
+				//it has a two-digit year (en_US "M/d/yy") toDate() reads
+				//2010 back as 1910.
+			query.bindValue(QStringLiteral(":date"), date);
 		} else {
 			auto value = infos.value(key);
 			auto bind = key.prepend(":");

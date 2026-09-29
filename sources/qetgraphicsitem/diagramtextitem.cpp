@@ -366,6 +366,12 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 		if(diagram_ && m_first_move)
 			diagram_->elementsMover().beginMovement(diagram_, this);
 
+		if (diagram_ && diagram_->elementsMover().holds(this)) {
+			m_first_move = false;
+			event->accept();
+			return;
+		}
+
 		QPointF old_pos = pos();
 
 		//Set the actual pos

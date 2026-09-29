@@ -100,6 +100,9 @@ class DiagramContent
 		DiagramContent& operator+=(const DiagramContent& other);
 		bool potentialIsManaged(QList<Conductor *>conductors);
 		bool hasTextEditing();
+
+	private:
+		int removePinnedGroups();
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif

@@ -33,6 +33,10 @@ class Diagram;
 class Conductor;
 class Terminal;
 class QGraphicsItem;
+class QDomDocument;
+class BorderTitleBlock;
+class DiagramContext;
+class QDate;
 
 /**
 	@brief The projectDataBase class
@@ -50,6 +54,13 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+			/**
+				updateDB() for a project just read from @p document: the
+				diagram, element, terminal and conductor tables are filled
+				from the document when it carries everything they need (see
+				populateFromDocument()), from the built folios otherwise.
+			*/
+		void updateDB(const QDomDocument &document);
 			/**
 				Suppress the full rebuild performed by updateDB().
 
@@ -131,18 +142,28 @@ class projectDataBase : public QObject
 		void populateDiagramInfoTable();
 		void populateConductorTable();
 		void populateDrawingItemTables();
+		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
 		void flushDrawingItems();
 		void forgetDrawingItem(QObject *object);
 		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
 		void watchConductor(Conductor *conductor);
 		void insertTerminal(Terminal *terminal);
+		void insertTerminal(const QString &uuid, const QString &element_uuid,
+							const QString &name);
 		void prepareQuery();
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
 		void bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram);
+		static void bindDiagramInfoValues(QSqlQuery &query, const QUuid &diagram_uuid,
+										  const BorderTitleBlock &border);
+		static void bindDiagramInfoValues(QSqlQuery &query, const QUuid &diagram_uuid,
+										  const DiagramContext &infos, const QDate &date);
 		static void bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram);
 		static void bindElementInfoValues(QSqlQuery &query, Element *element);
+		static void bindElementInfoValues(QSqlQuery &query, const QString &element_uuid,
+										  const DiagramContext &informations,
+										  const QString &label);
 
 	private:
 		QPointer<QETProject> m_project;

@@ -438,9 +438,14 @@ void ElementInfoWidget::materialFromFile(int block)
 	Write a catalogue entry into the fields of one block.
 
 	Only the fields of that block are touched: applied to an auxiliary
-	article, the entry never reaches the main article. And a cell which is
-	empty in the file leaves the current value alone, so picking an entry
-	describing only the order reference never wipes a comment.
+	article, the entry never reaches the main article.
+
+	An empty cell of a column describing the article (MaterialList::
+	isArticleBound) clears the field: keeping the manufacturer of the
+	article picked before would describe a part which does not exist.
+	An empty cell of any other column, and any column the file does not
+	hold at all, leaves the field alone, so picking an entry describing
+	only the order reference never wipes a comment.
 	@param record the entry taken from the material file
 	@param block 0 for the main article, 1 to 4 for an auxiliary article
 */
@@ -459,8 +464,19 @@ void ElementInfoWidget::applyMaterialRecord(const MaterialRecord &record, int bl
 
 	for (const QString &column : MaterialList::columnsForBlock(block))
 	{
+			//A column the file does not hold says nothing about the
+			//article: the field of the element stays as it is.
+		if (!record.values.contains(column)) {
+			continue;
+		}
+
 		const QString value = record.value(column);
-		if (value.isEmpty()) {
+
+			//An empty cell only matters for the columns describing the
+			//article itself, where the previous value belongs to another
+			//part. For the others (function, comment, quantity...) an
+			//empty cell means the file has nothing to say about them.
+		if (value.isEmpty() && !MaterialList::isArticleBound(column)) {
 			continue;
 		}
 
@@ -478,7 +494,15 @@ void ElementInfoWidget::applyMaterialRecord(const MaterialRecord &record, int bl
 		enableLiveEdit();
 	}
 
-	apply();
+		//Outside of the live edit the fields only carry the article: it
+		//is the properties window which applies them when the user presses
+		//"Apply" (ElementPropertiesWidget::apply() takes the undo command
+		//from these very fields). Applying right away would push the change
+		//on the undo stack before he has decided anything, and "Cancel"
+		//would give the fields back but never the element.
+	if (live_edit) {
+		apply();
+	}
 }
 
 /**

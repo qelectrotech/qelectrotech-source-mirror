@@ -71,6 +71,10 @@ class TitleBlockPropertiesWidget : public QWidget
 		void setTitleBlockTemplatesVisible(const bool &visible);
 		void setReadOnly (const bool &ro);
 
+		static void addTemplateVariables(
+				DiagramContext &context,
+				const TitleBlockTemplate *tpl);
+
 	private:
 		void addCollection (
 				TitleBlockTemplatesCollection *tbt_collection);

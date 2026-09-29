@@ -33,6 +33,7 @@
 #include "../undocommand/promoteshapecommand.h"
 
 #include <QActionGroup>
+#include <algorithm>
 #include <QCursor>
 #include <QMenu>
 #include <QStatusBar>
@@ -600,6 +601,45 @@ QPainterPath QetShapeItem::outline() const
 	}
 
 	return path;
+}
+
+/**
+	@brief QetShapeItem::sceneOutlineRect
+	@return the box around the shape as drawn, in scene coordinates:
+	without the pen width, the selection margin of boundingRect() or the
+	wider outline shape() gives a hovered shape.
+*/
+QRectF QetShapeItem::sceneOutlineRect() const
+{
+	return mapToScene(outline()).boundingRect();
+}
+
+/**
+	@brief QetShapeItem::setPos
+	Called with the unsnapped position while the shape is dragged. Dragged
+	on its own, or with other shapes only, the shape goes on the grid by the
+	top-left corner of what is drawn, as Snap to grid does: its pos() cannot
+	be seen, and it is off the corner whenever the shape was drawn or
+	resized with Ctrl held, or rotated. Dragged together with anything
+	else, it snaps by pos() as before: the whole selection follows this
+	shape's movement, and correcting the corner would take the symbols off
+	the grid instead.
+	@param p the new position of the item
+*/
+void QetShapeItem::setPos(const QPointF &p)
+{
+	const auto selection = scene() ? scene()->selectedItems() : QList<QGraphicsItem *>();
+	const bool shapes_only = std::all_of(selection.cbegin(), selection.cend(),
+		[](const QGraphicsItem *item) { return item->type() == QetShapeItem::Type; });
+	if (!shapes_only || !isMovable()) {
+		QetGraphicsItem::setPos(p);
+		return;
+	}
+
+	const QPointF corner = sceneOutlineRect().topLeft() + (p - pos());
+	const QPointF snapped = p + Diagram::snapToGrid(corner) - corner;
+	if (snapped != pos())
+		QGraphicsItem::setPos(snapped);
 }
 
 /**

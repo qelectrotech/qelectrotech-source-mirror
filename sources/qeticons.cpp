@@ -23,6 +23,12 @@ namespace QET {
 	namespace Icons {
 		QIcon Add;
 		QIcon AddFolio;
+		QIcon AlignBottom;
+		QIcon AlignHCenter;
+		QIcon AlignLeft;
+		QIcon AlignRight;
+		QIcon AlignTop;
+		QIcon AlignVCenter;
 		QIcon Allowed;
 		QIcon ApplicationExit;
 		QIcon ArrowLeft;
@@ -169,6 +175,7 @@ namespace QET {
 		QIcon SendBackward;
 		QIcon Settings;
 		QIcon SinglePage;
+		QIcon SnapToGrid;
 		QIcon South;
 		QIcon Start;
 		QIcon TableOfContent;
@@ -395,6 +402,12 @@ void QET::Icons::initIcons()
 	
 	Add                 = QIcon::fromTheme("list-add");
 	AddFolio            = QIcon::fromTheme("folio-new");
+	AlignBottom         = QIcon::fromTheme("align-vertical-bottom");
+	AlignHCenter        = QIcon::fromTheme("align-horizontal-center");
+	AlignLeft           = QIcon::fromTheme("align-horizontal-left");
+	AlignRight          = QIcon::fromTheme("align-horizontal-right");
+	AlignTop            = QIcon::fromTheme("align-vertical-top");
+	AlignVCenter        = QIcon::fromTheme("align-vertical-center");
 	Allowed             = QIcon::fromTheme("user-online");
 	ApplicationExit     = QIcon::fromTheme("application-exit");
 	ArrowLeft           = QIcon::fromTheme("arrow-left");
@@ -581,6 +594,7 @@ void QET::Icons::initIcons()
 	SendBackward        = QIcon::fromTheme("send_backward");
 	Settings            = QIcon::fromTheme("settings");
 	SinglePage          = QIcon::fromTheme("single_page");
+	SnapToGrid          = QIcon::fromTheme("snap-to-grid");
 	South               = QIcon::fromTheme("south");
 	Start               = QIcon::fromTheme("start");
 	TableOfContent      = QIcon::fromTheme("table-of-content");

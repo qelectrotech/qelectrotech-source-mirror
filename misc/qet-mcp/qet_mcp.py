@@ -47,6 +47,11 @@ PROTOCOL
 Line-delimited JSON-RPC 2.0 on stdin/stdout, per MCP's stdio transport.
 Nothing but protocol goes to stdout; diagnostics go to stderr.
 No third-party dependencies — the MCP SDK is not assumed to be present.
+
+`--call <tool> [arguments]` runs one tool without an MCP client, for an
+assistant that can execute Python but cannot launch a server (a web chat
+with code execution). It goes through the same dispatcher, so the
+workspace policy applies exactly as it does over stdio.
 """
 
 from __future__ import annotations
@@ -126,10 +131,54 @@ def _wires(diagram: ET.Element):
 
 
 def _conductors(root: ET.Element):
+    definitions = _definition_terminals(root)
     for i, d in _folios(root):
-        index = _terminal_index(d)
+        index = _terminal_index(d, definitions)
         for c in _wires(d):
             yield i, c, index
+
+
+def _uuid_key(value: str) -> str:
+    return (value or "").strip().strip("{}").lower()
+
+
+# Orientation as a placed symbol's <terminal> record writes it (an int,
+# Qet::Orientation) or as a definition does (n/e/s/w).
+_ORIENTATIONS = {"n": 0, "e": 1, "s": 2, "w": 3, "0": 0, "1": 1, "2": 2, "3": 3}
+
+# Where QElectroTech docks a wire, relative to the terminal's position in
+# its definition (Terminal's constructor, Terminal::terminalSize = 4). A
+# placed symbol's <terminal> record is written at that point.
+_DOCK_OFFSET = {0: (0.0, 4.0), 1: (-4.0, 0.0), 2: (0.0, -4.0), 3: (4.0, 0.0)}
+
+
+def _definition_terminals(root: ET.Element) -> dict:
+    """Map each symbol stored in the project ("embed://" + its path in the
+    <collection>) to its terminals: {terminal uuid: (x, y, orientation)},
+    the position being the one in the definition."""
+    out = {}
+
+    def walk(node, path):
+        for child in node:
+            if child.tag == "category":
+                walk(child, path + [child.get("name", "")])
+            elif child.tag == "element":
+                terminals = {}
+                for t in child.findall("definition/description/terminal"):
+                    try:
+                        terminals[_uuid_key(t.get("uuid"))] = (
+                            float(t.get("x")), float(t.get("y")),
+                            _ORIENTATIONS.get((t.get("orientation") or "n")[:1], 0))
+                    except (TypeError, ValueError):
+                        continue
+                terminals.pop("", None)
+                if terminals:
+                    out["embed://" + "/".join(path + [child.get("name", "")])] = terminals
+
+    collection = root.find("collection")
+    if collection is not None:
+        walk(collection, [])
+    return out
 
 
 def _element_row(folio: int, el: ET.Element) -> dict:
@@ -147,7 +196,7 @@ def _element_row(folio: int, el: ET.Element) -> dict:
     }
 
 
-def _terminal_index(diagram: ET.Element) -> dict:
+def _terminal_index(diagram: ET.Element, definitions: dict | None = None) -> dict:
     """Map a folio's terminal ids to an identity that survives a save.
 
     A conductor names its ends with terminal1/terminal2, which are plain
@@ -170,6 +219,17 @@ def _terminal_index(diagram: ET.Element) -> dict:
     Conductors in the corpus carry no element1/element2 attribute -- 0 of
     47 in ArduinoLCD.qet, 0 of 67 in 741.qet -- so this mapping has to be
     built from the elements rather than read off the conductor.
+
+    A conductor can also name its ends by terminal uuid (element1 +
+    terminal1), and QElectroTech writes that form as soon as the terminal
+    has a uuid -- which, since a project gives every terminal one on
+    opening, is the first save of any older file. So the same untouched
+    conductor is written in the numbered form before a save and the uuid
+    form after it. With @p definitions (from _definition_terminals()), a
+    uuid end is resolved too, keyed (element uuid, terminal uuid), to the
+    very same identity as the numbered end: the terminal's definition
+    position, moved to where the wire docks, is where the placed symbol's
+    <terminal> record is.
     """
     index = {}
     for el in diagram.iter("element"):
@@ -184,12 +244,26 @@ def _terminal_index(diagram: ET.Element) -> dict:
             # marked with a "#" so the caller can see the diff is on the
             # unstable footing that file forces.
             continue
+        records = []
         for t in el.iter("terminal"):
             tid = t.get("id")
             if tid is None:
                 continue
-            index[tid] = (f"{uuid}@{t.get('x','?')},{t.get('y','?')}"
-                          f",{t.get('orientation','?')}")
+            key = (f"{uuid}@{t.get('x','?')},{t.get('y','?')}"
+                   f",{t.get('orientation','?')}")
+            index[tid] = key
+            records.append((t, key))
+        for tuuid, (x, y, o) in (definitions or {}).get(el.get("type", ""), {}).items():
+            dx, dy = _DOCK_OFFSET[o]
+            for t, key in records:
+                try:
+                    if (abs(float(t.get("x")) - (x + dx)) < 1e-6
+                            and abs(float(t.get("y")) - (y + dy)) < 1e-6
+                            and _ORIENTATIONS.get((t.get("orientation") or "")[:1]) == o):
+                        index[(_uuid_key(uuid), tuuid)] = key
+                        break
+                except (TypeError, ValueError):
+                    continue
     return index
 
 
@@ -214,7 +288,8 @@ def _conductor_key(folio: int, c: ET.Element, index: dict) -> str:
         tid = c.get(term_attr, "?")
         owner = c.get(elem_attr)
         if owner:
-            ends.append(f"{owner}/{tid or c.get(name_attr, '?')}")
+            ends.append(index.get((_uuid_key(owner), _uuid_key(tid)))
+                        or f"{owner}/{tid or c.get(name_attr, '?')}")
         else:
             # An id with no element behind it stays visible as itself
             # rather than silently collapsing conductors onto one key.
@@ -809,6 +884,44 @@ def tool_element_info(path: str) -> dict:
     }
 
 
+def _launch_executable(src: Path, sandbox: Path, windows: bool) -> Path:
+    """The executable _run_qet() starts: a private copy, except on Windows.
+
+    The copy gives each run its own SingleApplication key, which is derived
+    from the executable's path. On Windows a program loads its DLLs from its
+    own folder, so a copy on its own dies before main() (0xC0000135, DLL not
+    found) and nothing could ever be exported or edited there. Run the
+    original instead: every flag this server passes is a CLI export flag or
+    --run, and QElectroTech handles both and returns before it constructs
+    SingleApplication (main.cpp), so there is no instance to be handed to.
+    The copy stays elsewhere for builds from before that early return.
+    """
+    if windows:
+        return src
+    exe = sandbox / f"qet-mcp-{os.getpid()}"
+    shutil.copy2(src, exe)
+    return exe
+
+
+def _launch_env(env: dict, home: Path, windows: bool) -> dict:
+    """The environment _run_qet() starts QElectroTech in.
+
+    A private HOME and XDG directories, and, except on Windows, Qt's
+    offscreen platform so no display is needed. The Windows packages ship
+    only the qwindows platform plugin: asked for "offscreen", Qt finds no
+    plugin and stops at a message box nobody can close, so every call hung
+    until its timeout. The export flags and --run open no window there, so
+    the default platform is what they need.
+    """
+    env = dict(env,
+               HOME=str(home),
+               XDG_CONFIG_HOME=str(home / ".config"),
+               XDG_DATA_HOME=str(home / ".local" / "share"))
+    if not windows:
+        env["QT_QPA_PLATFORM"] = "offscreen"
+    return env
+
+
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
              script: str | None = None, tail: int = 4000) -> dict:
@@ -850,8 +963,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
         raise ValueError(f"not an executable: {src}")
     with tempfile.TemporaryDirectory(prefix="qet-mcp-") as tmp:
         sandbox = Path(tmp)
-        exe = sandbox / f"qet-mcp-{os.getpid()}"
-        shutil.copy2(src, exe)
+        exe = _launch_executable(src, sandbox, os.name == "nt")
         home = sandbox / "home"
         (home / ".config").mkdir(parents=True)
         (home / ".local" / "share").mkdir(parents=True)
@@ -868,11 +980,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
             script_path = sandbox / "qet-mcp-edit.js"
             script_path.write_text(script, encoding="utf-8")
             args = ["--run", str(script_path), *args]
-        env = dict(os.environ,
-                   HOME=str(home),
-                   XDG_CONFIG_HOME=str(home / ".config"),
-                   XDG_DATA_HOME=str(home / ".local" / "share"),
-                   QT_QPA_PLATFORM="offscreen")
+        env = _launch_env(dict(os.environ), home, os.name == "nt")
         try:
             p = subprocess.run([str(exe), *args], env=env, timeout=timeout,
                                capture_output=True, text=True)
@@ -1222,14 +1330,14 @@ OPS = {
     "set_info":         ("setElementInfo",      [("folio", "folio"), ("element", "elmt"),
                                                  ("key", "str"), ("value", "str")]),
     "add_conductor":    ("addConductor",        [("folio", "folio"),
-                                                 ("from", "elmt"), ("from_terminal", "num"),
-                                                 ("to", "elmt"), ("to_terminal", "num")]),
+                                                 ("from", "elmt"), ("from_terminal", "term"),
+                                                 ("to", "elmt"), ("to_terminal", "term")]),
     "delete_element":   ("deleteElement",       [("folio", "folio"), ("element", "elmt")]),
     "set_conductor":    ("setConductorProperty", [("folio", "folio"), ("element", "elmt"),
-                                                  ("terminal", "num"), ("property", "str"),
+                                                  ("terminal", "term"), ("property", "str"),
                                                   ("value", "str")]),
     "move_conductor_segment": ("moveConductorSegment", [("folio", "folio"), ("element", "elmt"),
-                                                         ("terminal", "num"), ("segment", "num"),
+                                                         ("terminal", "term"), ("segment", "num"),
                                                          ("dx", "num"), ("dy", "num")]),
     "link_elements":    ("linkElements",        [("folio", "folio"), ("element", "elmt"),
                                                  ("to_folio", "folio"), ("to", "elmt")]),
@@ -1250,7 +1358,7 @@ OPS = {
     # uuid, which does not shift when another one is added. So
     # it can be named as "$id". Indexes shift when one is added or deleted.
     "delete_conductor": ("deleteConductor",     [("folio", "folio"), ("element", "elmt"),
-                                                 ("terminal", "num")]),
+                                                 ("terminal", "term")]),
     "remove_folio":     ("removeFolio",         [("folio", "folio")]),
     "set_folio":        ("setFolioProperty",    [("folio", "folio"), ("property", "str"),
                                                  ("value", "str")]),
@@ -1355,6 +1463,10 @@ SEARCH_REPLACE_KINDS = ["element_info", "conductor", "text"]
 FOLIO_PROPERTIES = ["title", "author", "filename", "plant", "locmach",
                     "indexrev", "folio", "template"]
 
+# The ops that make a folio: their "$id" is an index the next insert_folio
+# or remove_folio can shift, so the script also keeps the folio's uuid.
+FOLIO_MAKING_OPS = ("add_folio", "insert_folio")
+
 # The ops that address one conductor by element + terminal, and so also
 # take "conductor": "{uuid}" (qet_conductors reports each one's uuid).
 CONDUCTOR_UUID_OPS = ("set_conductor", "move_conductor_segment", "delete_conductor")
@@ -1394,14 +1506,19 @@ def _build_script(operations: list, output: str) -> str:
     JavaScript exception.
     """
     refs: set[str] = set()
+    # "$name"s made by an op that creates a folio: held as the folio's uuid
+    # too, since a later insert_folio or remove_folio shifts its index.
+    folio_refs: set[str] = set()
     # Resolvers a uuid reference needs; required only when one is used, so
     # an index-only edit still runs on a build that predates them.
     uuid_methods: set[str] = set()
     folio_js = "0"
     element_js = None      # the op's element, for lookups scoped to it
+    owner_js = None        # the element a terminal argument belongs to
     lines = [
         "// generated by qet-mcp; do not edit",
         "var R = {};",                       # $name -> value from an earlier op
+        "var F = {};",                       # $name -> uuid of a folio an op made
         "var missing = [];",
         "var need = @NEED@;",
         "for (var i = 0; i < need.length; i++) {",
@@ -1439,6 +1556,16 @@ def _build_script(operations: list, output: str) -> str:
         "{kind: 'op_note', index: index, note: why}));",
         "  return null;",
         "}",
+        # A terminal named by uuid is turned into the index the calls take,
+        # on its own element; -1, with the reason logged, if that element
+        # has no terminal with it.
+        "function qetMcpTerminal(index, key, folio, element, uuid) {",
+        "  var t = qet.terminalIndex(folio, element, uuid);",
+        "  if (t < 0) qet.log(" + _js(_MARKER) + " + JSON.stringify({kind: 'op_note', "
+        "index: index, note: key + ': no terminal ' + uuid + ' on element ' + element + "
+        "' (or two of its terminals carry it)'}));",
+        "  return t;",
+        "}",
         "if (missing.length === 0) {",
     ]
 
@@ -1464,6 +1591,11 @@ def _build_script(operations: list, output: str) -> str:
                 raise ValueError(
                     f"operation {op_index} refers to {value!r}, which no earlier "
                     f"operation defined (set \"id\": {name!r} on the op that creates it)")
+            if kind == "folio" and name in folio_refs:
+                # the folio's index now, not when it was made; the stored
+                # index on a build that cannot report folio uuids
+                ref = _js(name)
+                return f"(F[{ref}] ? qet.folioIndex(F[{ref}]) : R[{ref}])"
             return f"R[{_js(name)}]"
         if kind == "num":
             if not isinstance(value, (int, float)) or isinstance(value, bool):
@@ -1489,6 +1621,20 @@ def _build_script(operations: list, output: str) -> str:
                 return f"qet.tableIndex({folio_js}, {_js(value)})"
             if not isinstance(value, int) or isinstance(value, bool):
                 raise ValueError(f"operation {op_index}: {key!r} must be a table index "
+                                 f"or its uuid, got {value!r}")
+            return _js(value)
+        if kind == "term":
+            # A terminal's uuid comes from its symbol's definition, so it
+            # names a terminal only on its element: the op's element, or for
+            # add_conductor the end's own. Turned into the index the call
+            # takes at run time; unlike the index, it is defined between two
+            # terminals at the same point.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                uuid_methods.add("terminalIndex")
+                return (f"qetMcpTerminal({op_index}, {_js(key)}, {folio_js}, {owner_js}, "
+                        f"{_js(value)})")
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"operation {op_index}: {key!r} must be a terminal index "
                                  f"or its uuid, got {value!r}")
             return _js(value)
         if kind == "element_text":
@@ -1630,6 +1776,7 @@ def _build_script(operations: list, output: str) -> str:
                 raise ValueError(f"operation {i} ({name}) is missing {key!r}")
             folio_js = args[0] if args else "0"
             element_js = args[1] if len(args) > 1 else None
+            owner_js = args[-1] if args else None     # a terminal's element precedes it
             args.append(ref_or(op[key], kind, i, key))
         if conductor_js is not None:
             args[1], args[2] = f"e{i}.element", f"e{i}.terminal"
@@ -1651,6 +1798,10 @@ def _build_script(operations: list, output: str) -> str:
         if ident is not None:
             lines.append(f"  R[{_js(ident)}] = v{i};")
             refs.add(ident)
+            if name in FOLIO_MAKING_OPS:
+                lines.append(f"  F[{_js(ident)}] = (typeof qet.folioUuid === 'function' "
+                             f"&& v{i} >= 0) ? qet.folioUuid(v{i}) : '';")
+                folio_refs.add(ident)
         lines.append(
             f"  qet.log({_js(_MARKER)} + JSON.stringify("
             f"{{kind: 'op', index: {i}, op: {_js(name)}, "
@@ -1712,7 +1863,10 @@ def _parse_script_output(text: str) -> dict:
                                     (isinstance(r, int) and not isinstance(r, bool) and r == -1))
             ops.append(rec)
         elif rec.get("kind") == "op_note":
-            notes[rec.get("index")] = rec.get("note")
+            # An op can log more than one (add_conductor, one per end):
+            # keep them all rather than only the last.
+            idx = rec.get("index")
+            notes[idx] = (notes[idx] + "; " if idx in notes else "") + str(rec.get("note"))
         elif rec.get("kind") == "save":
             saved = bool(rec.get("result"))
             stopped = bool(rec.get("stopped_early"))
@@ -2518,7 +2672,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string"},
                 "format": {"type": "string", "enum": sorted(EXPORT_FORMATS)},
                 "output": {"type": "string"},
@@ -2527,7 +2681,7 @@ TOOLS = [
                                              "without this an existing file is never clobbered"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project", "format", "output"],
+            "required": ["project", "format", "output"],
         },
         "handler": lambda a: tool_export(a["binary"], a["project"], a["format"],
                                          a["output"], a.get("timeout", 180)),
@@ -2545,7 +2699,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to start from; not modified"},
                 "output": {"type": "string", "description": "where to write the edited project"},
                 "overwrite": {"type": "boolean", "default": False,
@@ -2565,8 +2719,14 @@ TOOLS = [
                         "qet_project_info call 1 is \"folio\": 0 here. A folio can "
                         "be given as its uuid instead (qet_project_info lists them), "
                         "which still names the same folio after an earlier op adds or "
-                        "removes one. Terminals are numbered by their "
-                        "index in the element definition; qet_element_info lists them. "
+                        "removes one; so does the \"$id\" of an add_folio or "
+                        "insert_folio. A terminal (\"terminal\", \"from_terminal\", "
+                        "\"to_terminal\") is given by its index -- qet_element_info "
+                        "lists terminals in index order, top to bottom then left to "
+                        "right -- or by its uuid, which qet_element_info also lists and "
+                        "which, unlike the index, tells apart two terminals at the same "
+                        "point; a terminal uuid names a terminal of the op's own "
+                        "element (for add_conductor, of that end's element). "
                         "set_conductor addresses a conductor as the one on a given "
                         "terminal and applies the change to its whole electrical "
                         "potential, so name a terminal carrying exactly one conductor, "
@@ -2758,7 +2918,7 @@ TOOLS = [
                 },
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project", "output", "operations"],
+            "required": ["project", "output", "operations"],
         },
         "handler": lambda a: tool_edit(a["binary"], a["project"], a["operations"],
                                        a["output"], a.get("elements_dir"),
@@ -2776,7 +2936,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to query; never modified"},
                 "sql": {"type": "string",
                         "description": "a single SELECT or WITH...SELECT. "
@@ -2784,7 +2944,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_query(a["binary"], a["project"], a.get("sql", ""),
                                         a.get("elements_dir"), a.get("timeout", 180)),
@@ -2811,7 +2971,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string", "description": "the .qet to check; never modified"},
                 "folio": {"type": "integer", "description":
                           "check one folio only; omit for the whole project. An index "
@@ -2822,7 +2982,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_continuity(a["binary"], a["project"], a.get("folio"),
                                              a.get("elements_dir"), a.get("timeout", 180)),
@@ -2838,7 +2998,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "output": {"type": "string", "description": "where to write the new .qet"},
                 "title": {"type": "string", "description": "the project title"},
                 "folios": {"description": "how many empty folios, or a list of folio titles",
@@ -2850,7 +3010,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "output", "title"],
+            "required": ["output", "title"],
         },
         "handler": lambda a: tool_project_new(
             a["binary"], a["output"], a["title"], a.get("folios", 1), a.get("author", ""),
@@ -2899,7 +3059,7 @@ TOOLS = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "binary": {"type": "string", "description": "path to the qelectrotech executable"},
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
                 "project": {"type": "string"},
                 "checks": {"type": "array", "items": {"type": "string", "enum": sorted(CHECKS)},
                            "description": "which checks to run; omit for all"},
@@ -2908,7 +3068,7 @@ TOOLS = [
                 "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 180},
             },
-            "required": ["binary", "project"],
+            "required": ["project"],
         },
         "handler": lambda a: tool_check(a["binary"], a["project"], a.get("checks"),
                                         a.get("sample", 10), a.get("elements_dir"),
@@ -2988,17 +3148,21 @@ _BY_NAME = {t["name"]: t for t in TOOLS}
 # sandboxed HOME each QElectroTech launch gets isolates *settings*, not the
 # filesystem.
 #
-# So data paths are confined to a workspace. Two kinds of path are treated
-# differently, deliberately:
+# So data paths are confined to a workspace, and the program the server
+# launches is not the client's to choose:
 #
 #   data          chosen by the client per call -- the projects, directories,
-#                 images and outputs below. Confined.
-#   configuration chosen once by whoever runs the server -- "binary" (the
-#                 qelectrotech executable) and "elements_dir" (the element
-#                 collection). Both normally live in /usr or a build tree,
-#                 i.e. outside any sane workspace, so confining them would
-#                 reject the ordinary case while stopping nothing: they are
-#                 not where a model gets to point the server at /etc.
+#                 images and outputs below. Confined to the workspace.
+#   executable    "binary". Resolved by the server itself (resolve_binary());
+#                 a client may name it only when it is that same file or one
+#                 whoever configured the server listed in QET_MCP_BINARIES.
+#                 It once counted as configuration and went unchecked, but it
+#                 is a per-call argument: a model steered by text in a
+#                 project could run any program on the machine with it.
+#   collection    "elements_dir". Normally outside the workspace (in /usr or
+#                 a build tree), so allowed there, in the collection of the
+#                 resolved install, or in a directory listed in
+#                 QET_MCP_ELEMENTS.
 #
 # Enforced here, at the dispatcher, because this is the trust boundary --
 # the point where model-supplied arguments enter. Calling the tool_* helpers
@@ -3021,6 +3185,10 @@ _DATA_PATHS = {
     "qet_project_new":    {"write": ("output",)},
     "qet_element_build":  {"write": ("output",)},
 }
+
+# Tools that launch QElectroTech, and so take "binary" and "elements_dir".
+_LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
+                 "qet_check", "qet_project_new"}
 
 # qet_edit operations that name a file of their own.
 _DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
@@ -3060,6 +3228,118 @@ def _within_workspace(path: Path, roots: list) -> bool:
     return False
 
 
+def _env_paths(name: str) -> list:
+    """An os.pathsep-separated list of paths from the environment, resolved."""
+    out = []
+    for part in os.environ.get(name, "").split(os.pathsep):
+        if part.strip():
+            try:
+                out.append(Path(part).expanduser().resolve())
+            except OSError:
+                continue
+    return out
+
+
+def _installation() -> tuple | None:
+    """(program directory, element collection) of the QElectroTech this
+    script was installed with, or None when it runs from anywhere else.
+
+    Two layouts, both put there by QElectroTech's own packaging:
+      <prefix>/share/qelectrotech/mcp/  -> <prefix>/bin, <prefix>/share/qelectrotech/elements
+                                           (make install: Linux, snap, flatpak, macOS)
+      <root>/mcp/                       -> <root>/bin, <root>/elements
+                                           (the Windows installers and portable folder)
+    """
+    here = Path(__file__).resolve().parent
+    if here.name != "mcp":
+        return None
+    if here.parent.name == "qelectrotech" and here.parent.parent.name == "share":
+        prefix = here.parent.parent.parent
+        return prefix / "bin", here.parent / "elements"
+    if (here.parent / "bin").is_dir():
+        return here.parent / "bin", here.parent / "elements"
+    return None
+
+
+def resolve_binary() -> Path | None:
+    """The QElectroTech this server launches, found without asking the client.
+
+    QET_BINARY first, then the install this script ships in, then
+    qelectrotech on PATH. None when there is none; the tools that launch
+    QElectroTech then say how to set it.
+    """
+    env = os.environ.get("QET_BINARY", "").strip()
+    if env:
+        return Path(env).expanduser().resolve()
+    install = _installation()
+    if install is not None:
+        # The Windows build names it QElectroTech.exe; only a case-sensitive
+        # file system tells the spellings apart.
+        for name in ("qelectrotech", "qelectrotech.exe", "QElectroTech.exe"):
+            cand = install[0] / name
+            if cand.is_file():
+                return cand.resolve()
+    found = shutil.which("qelectrotech")
+    return Path(found).resolve() if found else None
+
+
+def default_elements_dir() -> Path | None:
+    """The element collection of the install this script ships in, if any."""
+    install = _installation()
+    if install is not None and install[1].is_dir():
+        return install[1].resolve()
+    return None
+
+
+def _check_binary(arguments: dict) -> None:
+    """Fill in "binary", or refuse one that is not the server's own choice."""
+    if os.environ.get("QET_MCP_ALLOW_ANY_BINARY") == "1" and arguments.get("binary"):
+        return
+    default = resolve_binary()
+    raw = arguments.get("binary")
+    if not raw:
+        if default is None:
+            raise ValueError(
+                "no QElectroTech found: set QET_BINARY to the qelectrotech "
+                "executable in the environment this server is started in")
+        arguments["binary"] = str(default)
+        return
+    if not isinstance(raw, str):
+        raise ValueError("'binary' must be a path")
+    given = Path(raw).expanduser().resolve()
+    allowed = ([default] if default else []) + _env_paths("QET_MCP_BINARIES")
+    if given not in allowed:
+        raise ValueError(
+            f"'binary' is not an allowed QElectroTech: {given}. Leave it out "
+            "to use " + (str(default) if default else "QET_BINARY")
+            + "; whoever configured this server can list others in "
+              "QET_MCP_BINARIES, or set QET_MCP_ALLOW_ANY_BINARY=1 to "
+              "disable this check (which lets the client run any program).")
+    arguments["binary"] = str(given)
+
+
+def _check_elements_dir(arguments: dict, roots: list) -> None:
+    """Fill in "elements_dir" from the install, or confine a given one."""
+    raw = arguments.get("elements_dir")
+    if not raw:
+        default = default_elements_dir()
+        if default is not None:
+            arguments["elements_dir"] = str(default)
+        return
+    if not isinstance(raw, str):
+        raise ValueError("'elements_dir' must be a path")
+    given = Path(raw).expanduser().resolve()
+    extra = _env_paths("QET_MCP_ELEMENTS")
+    default = default_elements_dir()
+    if default is not None:
+        extra.append(default)
+    if roots and not _within_workspace(given, roots + extra):
+        raise ValueError(
+            f"'elements_dir' is outside the workspace: {given}. Leave it out "
+            "to use the installed collection, or list the directory in "
+            "QET_MCP_ELEMENTS.")
+
+
 def _check_path(raw, arg: str, mode: str, roots: list) -> Path:
     """Resolve one path and refuse it if it leaves the workspace.
 
@@ -3083,11 +3363,19 @@ def _check_path(raw, arg: str, mode: str, roots: list) -> Path:
 
 
 def enforce_path_policy(tool_name: str, arguments: dict) -> None:
-    """Apply the workspace and overwrite policy to one tool call."""
+    """Apply the workspace, executable and overwrite policy to one tool call.
+
+    For a tool that launches QElectroTech this also fills in "binary" and,
+    when the install has one, "elements_dir", so a client need not know them.
+    """
     spec = _DATA_PATHS.get(tool_name)
     if spec is None:
         return
     roots = workspace_roots()
+
+    if tool_name in _LAUNCHES_QET:
+        _check_binary(arguments)
+        _check_elements_dir(arguments, roots)
 
     for arg in spec.get("read", ()):
         if arg in arguments:
@@ -3192,11 +3480,48 @@ def serve(stdin=sys.stdin, stdout=sys.stdout) -> None:
             print(json.dumps(reply, ensure_ascii=False), file=stdout, flush=True)
 
 
+def call_once(argv: list[str], stdin=sys.stdin, stdout=sys.stdout,
+              stderr=sys.stderr) -> int:
+    """--call <tool> [arguments]: one tools/call, the result's text on stdout.
+
+    arguments is a JSON object, or "-" to read it from stdin (which spares
+    the caller from quoting JSON for a shell). Exit status: 0 the tool
+    succeeded, 1 the tool reported an error, 2 the call itself was malformed.
+    """
+    if not argv or len(argv) > 2:
+        print("usage: qet_mcp.py --call <tool> ['<json arguments>' | -]",
+              file=stderr)
+        return 2
+    name, raw = argv[0], (argv[1] if len(argv) == 2 else "{}")
+    if raw == "-":
+        raw = stdin.read()
+    try:
+        arguments = json.loads(raw) if raw.strip() else {}
+    except json.JSONDecodeError as exc:
+        print(f"arguments are not valid JSON: {exc}", file=stderr)
+        return 2
+    if not isinstance(arguments, dict):
+        print("arguments must be a JSON object", file=stderr)
+        return 2
+
+    reply = handle({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                    "params": {"name": name, "arguments": arguments}})
+    if "error" in reply:
+        print(reply["error"]["message"], file=stderr)
+        return 2
+    result = reply["result"]
+    for part in result["content"]:
+        print(part["text"], file=stdout)
+    return 1 if result.get("isError") else 0
+
+
 def main() -> int:
     if len(sys.argv) > 1 and sys.argv[1] in ("--list", "-l"):
         for t in TOOLS:
             print(f"{t['name']}\n    {t['description']}\n")
         return 0
+    if len(sys.argv) > 1 and sys.argv[1] == "--call":
+        return call_once(sys.argv[2:])
     serve()
     return 0
 

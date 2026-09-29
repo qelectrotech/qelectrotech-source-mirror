@@ -90,12 +90,19 @@ ALIASES = {
 # SVG icons referenced from sources/qeticons.cpp. ico/scalable/ holds the
 # ones drawn for QET as vectors; one file serves every size.
 SVGS = [
+    "scalable/align-horizontal-center.svg",
+    "scalable/align-horizontal-left.svg",
+    "scalable/align-horizontal-right.svg",
+    "scalable/align-vertical-bottom.svg",
+    "scalable/align-vertical-center.svg",
+    "scalable/align-vertical-top.svg",
     "scalable/diagram.svg",
     "scalable/folio-delete.svg",
     "scalable/folio-new.svg",
     "scalable/folio-properties.svg",
     "scalable/label.svg",
     "scalable/pdf-import.svg",
+    "scalable/snap-to-grid.svg",
     "breeze-icons/scalable/apps/hidef/edit-opacity.svg",
     "breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg",
     "breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg",

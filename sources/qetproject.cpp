@@ -346,7 +346,7 @@ void QETProject::init()
 	{
 		int ms = autosave_interval*60*1000;
 		m_autosave_timer.setInterval(ms);
-		connect(&m_autosave_timer, &QTimer::timeout, this, [=]()
+		connect(&m_autosave_timer, &QTimer::timeout, this, [this]()
 		{
 			if(!this->m_file_path.isEmpty())
 				this->write();
@@ -580,7 +580,7 @@ void QETProject::setFilePath(const QString &filepath)
 	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
 	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
 
@@ -1428,7 +1428,7 @@ QETResult QETProject::write()
 	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
 	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
 	emit projectInformationsChanged(this);
@@ -1880,7 +1880,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
-	m_data_base.updateDB();
+	m_data_base.updateDB(xml_project);
 	const qint64 database_ms = phase_timer.elapsed();
 
 	qInfo().nospace()
@@ -2473,14 +2473,25 @@ bool QETProject::projectWasModified()
 	Indique a chaque schema du projet quel est son numero de folio et combien de
 	folio le projet contient.
 */
+/**
+	@brief QETProject::projectWideProperties
+	@return the project's properties as every folio's title block sees them:
+	the user's project properties plus the project's title, path and file name.
+*/
+DiagramContext QETProject::projectWideProperties()
+{
+	DiagramContext project_wide_properties = m_project_properties;
+	project_wide_properties.addValue("projecttitle", title());
+	project_wide_properties.addValue("projectpath", filePath());
+	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).completeBaseName());
+	return project_wide_properties;
+}
+
 void QETProject::updateDiagramsFolioData()
 {
 	int total_folio = m_diagrams_list.count();
 
-	DiagramContext project_wide_properties = m_project_properties;
-	project_wide_properties.addValue("projecttitle", title());
-	project_wide_properties.addValue("projectpath", filePath());
-	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
+	const DiagramContext project_wide_properties = projectWideProperties();
 
 	for (int i = 0 ; i < total_folio ; ++ i)
 	{

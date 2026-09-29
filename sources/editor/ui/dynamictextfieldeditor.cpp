@@ -199,18 +199,18 @@ void DynamicTextFieldEditor::setUpConnections()
 	disconnectConnections();
 
 	//Setup the connection
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [this](){this -> updateForm();});
 
 	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
 	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,

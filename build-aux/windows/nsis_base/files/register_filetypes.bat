@@ -5,7 +5,9 @@ rem detecte le dossier courant et suppose que celui-ci contient bin\qelectrotech
 set current_dir=%~dp0
 cd /d %current_dir%
 
-set expected_qet_exe=%current_dir%Lancer QET.bat
+rem l'archive portable fournit "Lancer QET_qt6.bat", l'installeur "Lancer QET.bat"
+set expected_qet_exe=%current_dir%Lancer QET_qt6.bat
+if not exist "%expected_qet_exe%" set expected_qet_exe=%current_dir%Lancer QET.bat
 set expected_project_ico=%current_dir%ico\application-x-qet-project.ico
 set expected_element_ico=%current_dir%ico\application-x-qet-element.ico
 set expected_titleblock_ico=%current_dir%ico\application-x-qet-titleblock.ico
@@ -45,49 +47,50 @@ set final_element_ico=%expected_element_ico:\=\\%
 set final_titleblock_ico=%expected_titleblock_ico:\=\\%
 
 rem genere le fichier .reg pour enregistrer les associations de fichiers
+rem HKEY_CURRENT_USER : ne demande pas les droits administrateur
 set reg_file=qet_install_file_associations.reg
 (
 	echo Windows Registry Editor Version 5.00
 	echo.
 	
 	rem Declaration de l'application
-	echo [HKEY_CLASSES_ROOT\Applications\qelectrotech.exe\shell\open\command]
+	echo [HKEY_CURRENT_USER\Software\Classes\Applications\qelectrotech.exe\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 	
 	rem association de fichier *.qet
-	echo [HKEY_CLASSES_ROOT\.qet]
+	echo [HKEY_CURRENT_USER\Software\Classes\.qet]
 	echo @="qet_diagram_file"
-	echo [HKEY_CLASSES_ROOT\qet_diagram_file]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_diagram_file]
 	echo @="QET diagram"
 	echo "EditFlags"=dword:00000000
 	echo "BrowserFlags"=dword:00000008
-	echo [HKEY_CLASSES_ROOT\qet_diagram_file\DefaultIcon]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_diagram_file\DefaultIcon]
 	echo @="%final_project_ico%,0"
-	echo [HKEY_CLASSES_ROOT\qet_diagram_file\shell\open\command]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_diagram_file\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 	
 	rem association de fichier *.elmt
-	echo [HKEY_CLASSES_ROOT\.elmt]
+	echo [HKEY_CURRENT_USER\Software\Classes\.elmt]
 	echo @="qet_element_file"
-	echo [HKEY_CLASSES_ROOT\qet_element_file]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_element_file]
 	echo @="QET element"
 	echo "EditFlags"=dword:00000000
 	echo "BrowserFlags"=dword:00000008
-	echo [HKEY_CLASSES_ROOT\qet_element_file\DefaultIcon]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_element_file\DefaultIcon]
 	echo @="%final_element_ico%,0"
-	echo [HKEY_CLASSES_ROOT\qet_element_file\shell\open\command]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_element_file\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 	
 	rem association de fichier *.titleblock
-	echo [HKEY_CLASSES_ROOT\.titleblock]
+	echo [HKEY_CURRENT_USER\Software\Classes\.titleblock]
 	echo @="qet_titleblock_file"
-	echo [HKEY_CLASSES_ROOT\qet_titleblock_file]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_titleblock_file]
 	echo @="QET title block template"
 	echo "EditFlags"=dword:00000000
 	echo "BrowserFlags"=dword:00000008
-	echo [HKEY_CLASSES_ROOT\qet_titleblock_file\DefaultIcon]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_titleblock_file\DefaultIcon]
 	echo @="%final_titleblock_ico%,0"
-	echo [HKEY_CLASSES_ROOT\qet_titleblock_file\shell\open\command]
+	echo [HKEY_CURRENT_USER\Software\Classes\qet_titleblock_file\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 ) > %reg_file%
 
