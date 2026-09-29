@@ -2207,7 +2207,7 @@ void QETDiagramEditor::alignGroupTriggered(QAction *action)
 		if (mode == AlignSelectionCommand::SnapToGrid)
 			message = tr("La sélection est déjà sur la grille");
 		else if (command->itemCount() < 2)
-			message = tr("Sélectionnez au moins deux éléments, images, textes ou groupes non verrouillés");
+			message = tr("Sélectionnez au moins deux éléments, images, textes, formes ou groupes non verrouillés");
 		else
 			message = tr("La sélection est déjà alignée, à la grille près");
 		delete command;
@@ -2487,11 +2487,10 @@ void QETDiagramEditor::slot_updateComplexActions()
 				| DiagramContent::Images);
 	m_depth_action_group->setEnabled(list.isEmpty()? false : true);
 
-		//Align actions: symbols, pictures and free texts take part.
+		//Align actions: symbols, pictures, free texts and shapes take part,
+		//counted the way the command counts them, a group as one.
 		//Snapping needs one of them, lining them up needs two.
-	const int alignable = selected_elements_count
-			      + selected_image
-			      + dc.count(DiagramContent::TextFields);
+	const int alignable = AlignSelectionCommand::unitCount(dc);
 	m_align_actions_group.setEnabled(!ro && alignable);
 	const QList<QAction *> align_actions = m_align_actions_group.actions();
 	for (QAction *action : align_actions.mid(1))
