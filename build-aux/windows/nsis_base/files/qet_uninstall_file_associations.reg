@@ -1,5 +1,12 @@
 Windows Registry Editor Version 5.00
 
+[-HKEY_CURRENT_USER\Software\Classes\Applications\qelectrotech.exe\shell\open\command]
+[-HKEY_CURRENT_USER\Software\Classes\.qet]
+[-HKEY_CURRENT_USER\Software\Classes\qet_diagram_file]
+[-HKEY_CURRENT_USER\Software\Classes\.elmt]
+[-HKEY_CURRENT_USER\Software\Classes\qet_element_file]
+[-HKEY_CURRENT_USER\Software\Classes\.titleblock]
+[-HKEY_CURRENT_USER\Software\Classes\qet_titleblock_file]
 [-HKEY_CLASSES_ROOT\Applications\qelectrotech.exe\shell\open\command]
 [-HKEY_CLASSES_ROOT\.qet]
 [-HKEY_CLASSES_ROOT\qet_diagram_file]
