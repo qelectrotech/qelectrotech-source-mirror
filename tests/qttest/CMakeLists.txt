@@ -212,6 +212,16 @@ add_test(NAME tst_scriptingsetting COMMAND tst_scriptingsetting)
 target_include_directories(tst_scriptingsetting PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_scriptingsetting PRIVATE Qt::Test Qt::Gui)
 
+# AiAssistantSetup: finding the MCP server beside an installation, and the
+# configuration text for each AI assistant. Compiles the one file alone.
+add_executable(
+  tst_aiassistantsetup
+  tst_aiassistantsetup.cpp
+  ${QET_DIR}/sources/ui/aiassistantsetup.cpp)
+add_test(NAME tst_aiassistantsetup COMMAND tst_aiassistantsetup)
+target_include_directories(tst_aiassistantsetup PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_aiassistantsetup PRIVATE Qt::Test Qt::Core)
+
 # QetSettings::sheetBackground() -- the sheet (folio) background the diagram
 # editor remembers between runs. Compiles qetsettings.cpp alone for the same
 # reason as the test above; Qt::Gui because the pair carries a QColor.
