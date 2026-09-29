@@ -2563,6 +2563,45 @@ class BinaryPolicy(unittest.TestCase):
                          str((prefix / "share" / "qelectrotech" / "elements").resolve()))
 
 
+class LaunchExecutable(unittest.TestCase):
+    """Windows cannot run a lone copy of QElectroTech (F065): its DLLs sit
+    beside the original. Everywhere else the private copy stays."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        base = Path(self.tmp.name)
+        self.src = base / "bin" / "qelectrotech"
+        self.src.parent.mkdir()
+        self.src.write_text("#!/bin/sh\nexit 0\n")
+        self.sandbox = base / "sandbox"
+        self.sandbox.mkdir()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_windows_runs_the_original(self):
+        self.assertEqual(m._launch_executable(self.src, self.sandbox, True), self.src)
+        self.assertEqual(list(self.sandbox.iterdir()), [], "nothing is copied on Windows")
+
+    def test_windows_keeps_its_own_qt_platform(self):
+        """The Windows packages have no offscreen plugin; asking for it
+        leaves QElectroTech stuck at a message box."""
+        env = m._launch_env({"PATH": "x"}, self.sandbox, True)
+        self.assertNotIn("QT_QPA_PLATFORM", env)
+        self.assertEqual(env["PATH"], "x")
+
+    def test_elsewhere_runs_offscreen(self):
+        env = m._launch_env({}, self.sandbox, False)
+        self.assertEqual(env["QT_QPA_PLATFORM"], "offscreen")
+        self.assertEqual(env["HOME"], str(self.sandbox))
+
+    def test_elsewhere_runs_a_private_copy(self):
+        exe = m._launch_executable(self.src, self.sandbox, False)
+        self.assertEqual(exe.parent, self.sandbox)
+        self.assertNotEqual(exe, self.src)
+        self.assertEqual(exe.read_text(), self.src.read_text())
+
+
 class ScriptingDisabledHint(unittest.TestCase):
     """QElectroTech may refuse to run scripts at all, and says so in French.
 
