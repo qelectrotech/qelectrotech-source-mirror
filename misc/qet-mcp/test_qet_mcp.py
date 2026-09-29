@@ -2562,6 +2562,82 @@ class BinaryPolicy(unittest.TestCase):
         self.assertEqual(args["elements_dir"],
                          str((prefix / "share" / "qelectrotech" / "elements").resolve()))
 
+    def installed_at(self, root: Path, mcp: Path):
+        """Import a copy of the server placed at mcp/qet_mcp.py."""
+        import importlib.util
+        mcp.mkdir(parents=True)
+        shutil.copy2(HERE / "qet_mcp.py", mcp / "qet_mcp.py")
+        spec = importlib.util.spec_from_file_location(f"qet_mcp_{root.name}", mcp / "qet_mcp.py")
+        inst = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(inst)
+        return inst
+
+    def test_the_windows_layout_is_found_too(self):
+        """The Windows installers and the portable folder put the server in
+        <root>/mcp, the program in <root>/bin as QElectroTech.exe, and the
+        collection in <root>/elements."""
+        root = Path(self.tmp.name) / "QElectroTech"
+        (root / "elements").mkdir(parents=True)
+        exe = fake_qet(root / "bin", "QElectroTech.exe")
+        inst = self.installed_at(root, root / "mcp")
+        del os.environ["QET_BINARY"]
+        args = {"project": str(self.root / "ok.qet")}
+        inst.enforce_path_policy("qet_query", args)
+        self.assertEqual(args["binary"], str(exe.resolve()))
+        self.assertEqual(args["elements_dir"], str((root / "elements").resolve()))
+
+    def test_a_copy_saved_anywhere_is_not_an_install(self):
+        """A downloaded copy sitting beside some bin/ folder must not go
+        looking for QElectroTech there."""
+        home = Path(self.tmp.name) / "home"
+        fake_qet(home / "bin")
+        inst = self.installed_at(home, home / "Downloads")
+        self.assertIsNone(inst._installation())
+
+    def test_a_folder_named_mcp_is_not_an_install(self):
+        """Without a bin/ beside it, an mcp/ folder is just a folder."""
+        inst = self.installed_at(Path(self.tmp.name) / "x", Path(self.tmp.name) / "x" / "mcp")
+        self.assertIsNone(inst._installation())
+
+
+class LaunchExecutable(unittest.TestCase):
+    """Windows cannot run a lone copy of QElectroTech (F065): its DLLs sit
+    beside the original. Everywhere else the private copy stays."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        base = Path(self.tmp.name)
+        self.src = base / "bin" / "qelectrotech"
+        self.src.parent.mkdir()
+        self.src.write_text("#!/bin/sh\nexit 0\n")
+        self.sandbox = base / "sandbox"
+        self.sandbox.mkdir()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_windows_runs_the_original(self):
+        self.assertEqual(m._launch_executable(self.src, self.sandbox, True), self.src)
+        self.assertEqual(list(self.sandbox.iterdir()), [], "nothing is copied on Windows")
+
+    def test_windows_keeps_its_own_qt_platform(self):
+        """The Windows packages have no offscreen plugin; asking for it
+        leaves QElectroTech stuck at a message box."""
+        env = m._launch_env({"PATH": "x"}, self.sandbox, True)
+        self.assertNotIn("QT_QPA_PLATFORM", env)
+        self.assertEqual(env["PATH"], "x")
+
+    def test_elsewhere_runs_offscreen(self):
+        env = m._launch_env({}, self.sandbox, False)
+        self.assertEqual(env["QT_QPA_PLATFORM"], "offscreen")
+        self.assertEqual(env["HOME"], str(self.sandbox))
+
+    def test_elsewhere_runs_a_private_copy(self):
+        exe = m._launch_executable(self.src, self.sandbox, False)
+        self.assertEqual(exe.parent, self.sandbox)
+        self.assertNotEqual(exe, self.src)
+        self.assertEqual(exe.read_text(), self.src.read_text())
+
 
 class ScriptingDisabledHint(unittest.TestCase):
     """QElectroTech may refuse to run scripts at all, and says so in French.

@@ -66,6 +66,7 @@ class QETMainWindow : public QMainWindow {
 	QAction *donate_;                        ///< Launch browser to donate link
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
 	QAction *diagnostics_action_;            ///< Open the diagnostics report dialog (discussion #644, step 5)
+	QAction *connect_ai_;                    ///< Show how to connect an AI assistant (MCP server)
 	QMenu *settings_menu_;                   ///< Settings menu
 	QMenu *help_menu_;                       ///< Help menu
 	QMenu *display_toolbars_;                ///< Show/hide toolbars/docks

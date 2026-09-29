@@ -884,6 +884,44 @@ def tool_element_info(path: str) -> dict:
     }
 
 
+def _launch_executable(src: Path, sandbox: Path, windows: bool) -> Path:
+    """The executable _run_qet() starts: a private copy, except on Windows.
+
+    The copy gives each run its own SingleApplication key, which is derived
+    from the executable's path. On Windows a program loads its DLLs from its
+    own folder, so a copy on its own dies before main() (0xC0000135, DLL not
+    found) and nothing could ever be exported or edited there. Run the
+    original instead: every flag this server passes is a CLI export flag or
+    --run, and QElectroTech handles both and returns before it constructs
+    SingleApplication (main.cpp), so there is no instance to be handed to.
+    The copy stays elsewhere for builds from before that early return.
+    """
+    if windows:
+        return src
+    exe = sandbox / f"qet-mcp-{os.getpid()}"
+    shutil.copy2(src, exe)
+    return exe
+
+
+def _launch_env(env: dict, home: Path, windows: bool) -> dict:
+    """The environment _run_qet() starts QElectroTech in.
+
+    A private HOME and XDG directories, and, except on Windows, Qt's
+    offscreen platform so no display is needed. The Windows packages ship
+    only the qwindows platform plugin: asked for "offscreen", Qt finds no
+    plugin and stops at a message box nobody can close, so every call hung
+    until its timeout. The export flags and --run open no window there, so
+    the default platform is what they need.
+    """
+    env = dict(env,
+               HOME=str(home),
+               XDG_CONFIG_HOME=str(home / ".config"),
+               XDG_DATA_HOME=str(home / ".local" / "share"))
+    if not windows:
+        env["QT_QPA_PLATFORM"] = "offscreen"
+    return env
+
+
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
              script: str | None = None, tail: int = 4000) -> dict:
@@ -925,8 +963,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
         raise ValueError(f"not an executable: {src}")
     with tempfile.TemporaryDirectory(prefix="qet-mcp-") as tmp:
         sandbox = Path(tmp)
-        exe = sandbox / f"qet-mcp-{os.getpid()}"
-        shutil.copy2(src, exe)
+        exe = _launch_executable(src, sandbox, os.name == "nt")
         home = sandbox / "home"
         (home / ".config").mkdir(parents=True)
         (home / ".local" / "share").mkdir(parents=True)
@@ -943,11 +980,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
             script_path = sandbox / "qet-mcp-edit.js"
             script_path.write_text(script, encoding="utf-8")
             args = ["--run", str(script_path), *args]
-        env = dict(os.environ,
-                   HOME=str(home),
-                   XDG_CONFIG_HOME=str(home / ".config"),
-                   XDG_DATA_HOME=str(home / ".local" / "share"),
-                   QT_QPA_PLATFORM="offscreen")
+        env = _launch_env(dict(os.environ), home, os.name == "nt")
         try:
             p = subprocess.run([str(exe), *args], env=env, timeout=timeout,
                                capture_output=True, text=True)
@@ -3207,12 +3240,24 @@ def _env_paths(name: str) -> list:
     return out
 
 
-def _installed_prefix() -> Path | None:
-    """The install prefix when this script is <prefix>/share/qelectrotech/mcp/."""
+def _installation() -> tuple | None:
+    """(program directory, element collection) of the QElectroTech this
+    script was installed with, or None when it runs from anywhere else.
+
+    Two layouts, both put there by QElectroTech's own packaging:
+      <prefix>/share/qelectrotech/mcp/  -> <prefix>/bin, <prefix>/share/qelectrotech/elements
+                                           (make install: Linux, snap, flatpak, macOS)
+      <root>/mcp/                       -> <root>/bin, <root>/elements
+                                           (the Windows installers and portable folder)
+    """
     here = Path(__file__).resolve().parent
-    if here.name == "mcp" and here.parent.name == "qelectrotech" \
-            and here.parent.parent.name == "share":
-        return here.parent.parent.parent
+    if here.name != "mcp":
+        return None
+    if here.parent.name == "qelectrotech" and here.parent.parent.name == "share":
+        prefix = here.parent.parent.parent
+        return prefix / "bin", here.parent / "elements"
+    if (here.parent / "bin").is_dir():
+        return here.parent / "bin", here.parent / "elements"
     return None
 
 
@@ -3226,10 +3271,12 @@ def resolve_binary() -> Path | None:
     env = os.environ.get("QET_BINARY", "").strip()
     if env:
         return Path(env).expanduser().resolve()
-    prefix = _installed_prefix()
-    if prefix is not None:
-        for name in ("qelectrotech", "qelectrotech.exe"):
-            cand = prefix / "bin" / name
+    install = _installation()
+    if install is not None:
+        # The Windows build names it QElectroTech.exe; only a case-sensitive
+        # file system tells the spellings apart.
+        for name in ("qelectrotech", "qelectrotech.exe", "QElectroTech.exe"):
+            cand = install[0] / name
             if cand.is_file():
                 return cand.resolve()
     found = shutil.which("qelectrotech")
@@ -3238,11 +3285,9 @@ def resolve_binary() -> Path | None:
 
 def default_elements_dir() -> Path | None:
     """The element collection of the install this script ships in, if any."""
-    prefix = _installed_prefix()
-    if prefix is not None:
-        coll = prefix / "share" / "qelectrotech" / "elements"
-        if coll.is_dir():
-            return coll.resolve()
+    install = _installation()
+    if install is not None and install[1].is_dir():
+        return install[1].resolve()
     return None
 
 

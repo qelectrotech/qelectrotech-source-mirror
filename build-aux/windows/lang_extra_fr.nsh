@@ -19,4 +19,8 @@
         LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
         LangString var4              ${LANG_FRENCH}  "Exemples de schémas"
         LangString var5              ${LANG_FRENCH}  "Polices"
+        LangString Mcp               ${LANG_FRENCH}  "Assistant IA (MCP)"
+        LangString var6              ${LANG_FRENCH}  "Permet à un assistant IA d'ouvrir, vérifier et modifier vos schémas. Nécessite Python : le vôtre, ou celui proposé ci-dessous"
+        LangString McpPython         ${LANG_FRENCH}  "Python pour l'assistant IA"
+        LangString var7              ${LANG_FRENCH}  "Python de python.org, utilisé uniquement par le composant Assistant IA. Inutile si Python est déjà installé (environ 12 Mo)"
         LangString uninstFailed      ${LANG_FRENCH}  "La désinstallation de la version précédente a échoué.$\nVeuillez désinstaller ${SOFT_NAME} manuellement avant de continuer."
