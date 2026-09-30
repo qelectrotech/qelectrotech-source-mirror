@@ -36,6 +36,8 @@ class DiagramTextItem : public QGraphicsTextItem
 
 	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QPointF anchorPos READ anchorPos WRITE setAnchorPos)
+	Q_PROPERTY(Qt::Alignment alignmentAtAnchor READ alignment WRITE setAlignmentAtAnchor NOTIFY alignmentChanged)
 	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
 	
@@ -77,6 +79,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setAlignment(const Qt::Alignment &alignment);
 		Qt::Alignment alignment() const;
 		bool m_block_alignment = false;
+
+		QPointF anchorPos() const;
+		void setAnchorPos(const QPointF &anchor);
+		void setAlignmentAtAnchor(const Qt::Alignment &alignment);
 		
 		QRectF frameRect() const;
 	

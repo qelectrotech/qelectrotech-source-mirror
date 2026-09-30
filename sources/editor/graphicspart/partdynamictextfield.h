@@ -42,6 +42,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QPointF anchorPos READ anchorPos WRITE setAnchorPos)
+	Q_PROPERTY(Qt::Alignment alignmentAtAnchor READ alignment WRITE setAlignmentAtAnchor NOTIFY alignmentChanged)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
 	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
 	Q_PROPERTY(bool rotationPointCenter READ rotationPointCenter WRITE setRotationPointCenter NOTIFY rotationPointCenterChanged)
@@ -101,6 +103,9 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void setPlainText(const QString &text);
 		void setAlignment(Qt::Alignment alignment);
 		Qt::Alignment alignment() const;
+		QPointF anchorPos() const;
+		void setAnchorPos(const QPointF &anchor);
+		void setAlignmentAtAnchor(Qt::Alignment alignment);
 		void setFont(const QFont &font);
 		void setKeepVisualRotation(const bool &keep);
 		bool keepVisualRotation() const;
