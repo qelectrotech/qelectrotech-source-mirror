@@ -361,6 +361,16 @@
             </item>
            </widget>
           </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="m_prefix_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the button opening the prefix configuration dialog of the user collection">Créer ou modifier le préfixe des dossiers de la collection utilisateur (fichier qet_labels.xml)</string>
+            </property>
+            <property name="text">
+             <string extracomment="button opening the dialog where the folder prefixes of the user collection are configured">Configurer les préfixes…</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">

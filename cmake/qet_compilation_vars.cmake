@@ -475,6 +475,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementstreeview.h
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
+  ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.h
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.cpp
@@ -800,6 +802,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/multipastedialog.h
   ${QET_DIR}/sources/ui/potentialselectordialog.cpp
   ${QET_DIR}/sources/ui/potentialselectordialog.h
+  ${QET_DIR}/sources/ui/prefixconfigurationdialog.cpp
+  ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp

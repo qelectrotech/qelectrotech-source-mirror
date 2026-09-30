@@ -24,6 +24,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetxml.h"
 #include "../qetproject.h"
+#include "../ElementsCollection/qetlabelsfile.h"
 #include <QDir>
 #include <QDomDocument>
 #include <QStringList>
@@ -729,74 +730,6 @@ namespace autonum
 	}
 
 	/**
-		@brief prefixFromLabelFile
-		Look up a prefix for @a path (path[dirLevel] outermost, path[1] the
-		deepest directory; path[0], the element's own file name, is never
-		matched) in the qet_labels.xml at @a filepath.
-
-		Descends through nested \<category name="..."\> elements matching
-		path[dirLevel], path[dirLevel-1], ..., path[1] in turn, considering
-		only *direct* children at each step -- unlike a flat token scan,
-		this cannot be fooled by a same-named category living elsewhere in
-		the document at the wrong nesting depth (bugtracker #671 item 5).
-
-		At each matched level, that category's own \<prefix\> child -- even
-		an empty one -- overrides whatever a shallower ancestor already
-		provided, so an explicit empty \<prefix/\> cancels inheritance
-		rather than silently falling back to it (the behaviour requested in
-		PR #686 review). A category with no \<prefix\> child at all leaves
-		the inherited value untouched, which is how a directory with no
-		prefix of its own comes to inherit its parent's, as the file's own
-		header comment documents.
-
-		@return the prefix that applies, or a null QString if the file
-			cannot be read, is not well-formed, or does not describe this
-			path at all (as opposed to describing it with no prefix
-			anywhere along it, which is a non-null empty string).
-	*/
-	static QString prefixFromLabelFile(const QString &filepath, const QStringList &path, int dirLevel)
-	{
-		QFile file(filepath);
-		if (!file.open(QFile::ReadOnly | QFile::Text))
-			return QString();
-
-		QDomDocument document;
-		if (!document.setContent(&file))
-			return QString();
-
-		QDomElement node = document.documentElement();
-		if (node.isNull())
-			return QString();
-
-		QString prefix;
-		for (int i = dirLevel ; i >= 1 ; --i) {
-			QDomElement child = node.firstChildElement(QStringLiteral("category"));
-			while (!child.isNull()
-				   && child.attribute(QStringLiteral("name")) != path[i]) {
-				child = child.nextSiblingElement(QStringLiteral("category"));
-			}
-			if (child.isNull())
-				return QString();
-			node = child;
-
-			const QDomElement own = node.firstChildElement(QStringLiteral("prefix"));
-			if (!own.isNull()) {
-					//readElementText()'s null-vs-empty distinction that PR
-					//#686 needed for the old QXmlStreamReader-based lookup
-					//has a QDomElement equivalent: text() on an empty
-					//element can itself come back null depending on how the
-					//XML was written, so the same explicit fallback applies
-					//-- an empty QString here means "found, deliberately
-					//blank", not "not found".
-				prefix = own.text();
-				if (prefix.isNull())
-					prefix = QString("");
-			}
-		}
-		return prefix;
-	}
-
-	/**
 		@brief elementPrefixForLocation
 		@param location
 		@return the prefix for an element represented by location,
@@ -854,7 +787,7 @@ namespace autonum
 		{
 			const QString common_file = QDir(QETApp::commonElementsDir())
 					.filePath(collection_root + QStringLiteral("/qet_labels.xml"));
-			const QString prefix = prefixFromLabelFile(common_file, path, dirLevel);
+			const QString prefix = QetLabelsFile::prefixForPath(common_file, path, dirLevel);
 			if (!prefix.isNull()) {
 				return prefix;
 			}
@@ -882,7 +815,7 @@ namespace autonum
 			const QString candidate =
 					QDir(dir).filePath(QStringLiteral("qet_labels.xml"));
 			for (const QStringList &segments : {path_from_root, path}) {
-				const QString prefix = prefixFromLabelFile(
+				const QString prefix = QetLabelsFile::prefixForPath(
 							candidate, segments, segments.size() - 1);
 				if (!prefix.isNull()) {
 					return prefix;
