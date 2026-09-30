@@ -482,6 +482,10 @@ void QetLogger::handleMessage(QtMsgType type, const QMessageLogContext &context,
 
 	m_ring.append(line);
 	writeToFile(line, type);
+
+	if (type == QtFatalMsg) {
+		CrashHandler::reportFatal();
+	}
 }
 
 void QetLogger::pruneOldLogFiles(int days)

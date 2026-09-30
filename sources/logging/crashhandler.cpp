@@ -26,6 +26,7 @@
 #include <cstring>
 
 #ifdef Q_OS_WIN
+#include <csignal>
 #include <fcntl.h>
 #include <io.h>
 #include <share.h>
@@ -165,31 +166,289 @@ void signalHandler(int sig)
 
 #else // Q_OS_WIN
 
-LONG WINAPI windowsExceptionFilter(EXCEPTION_POINTERS *)
+// The dump is not written on the crashing thread but on a reporter thread
+// started by install(). The crashing thread may have no stack left at all
+// (a stack overflow, EXCEPTION_STACK_OVERFLOW), and even when it has some,
+// the module lookup below takes the loader lock, which the crashing thread
+// may be holding. The exception filter therefore only records what
+// happened, wakes the reporter and waits for it, for a bounded time: a
+// reporter that blocks costs the dump, never a hung process.
+HANDLE g_reporter_go = nullptr;
+HANDLE g_reporter_done = nullptr;
+const DWORD kReporterTimeoutMs = 10000;
+
+// What the crashing thread hands over. Filled in before g_reporter_go is
+// signalled and only read after it, so no lock is needed.
+enum class CrashKind { Exception, Abort, Fatal };
+CrashKind g_crash_kind = CrashKind::Exception;
+DWORD g_crash_code = 0;			// the exception code, for CrashKind::Exception
+const EXCEPTION_RECORD *g_crash_record = nullptr;
+CONTEXT g_crash_context;		// copied: the walk below modifies it
+DWORD64 g_crash_stack_low = 0;	// the crashing thread's stack, from its TIB,
+DWORD64 g_crash_stack_high = 0;	// so the walk never reads outside it
+
+void writeText(int fd, const char *text)
+{
+	_write(fd, text, static_cast<unsigned int>(std::strlen(text)));
+}
+
+void writeHex(int fd, unsigned long long value)
+{
+	char buffer[24];
+	_write(fd, buffer, static_cast<unsigned int>(
+		       CrashHandler::formatHex(buffer, sizeof(buffer), value)));
+}
+
+/**
+	The exception codes worth a name, so a report reads "access violation"
+	rather than a number to look up. Anything else is still printed as
+	its code.
+*/
+const char *exceptionName(DWORD code)
+{
+	switch (code) {
+		case EXCEPTION_ACCESS_VIOLATION:       return "access violation";
+		case EXCEPTION_STACK_OVERFLOW:         return "stack overflow";
+		case EXCEPTION_ILLEGAL_INSTRUCTION:    return "illegal instruction";
+		case EXCEPTION_PRIV_INSTRUCTION:       return "privileged instruction";
+		case EXCEPTION_INT_DIVIDE_BY_ZERO:     return "integer divide by zero";
+		case EXCEPTION_INT_OVERFLOW:           return "integer overflow";
+		case EXCEPTION_IN_PAGE_ERROR:          return "in-page error";
+		case EXCEPTION_DATATYPE_MISALIGNMENT:  return "datatype misalignment";
+		case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:  return "array bounds exceeded";
+		case EXCEPTION_BREAKPOINT:             return "breakpoint";
+		case EXCEPTION_FLT_DIVIDE_BY_ZERO:     return "floating-point divide by zero";
+		case EXCEPTION_FLT_INVALID_OPERATION:  return "floating-point invalid operation";
+		case 0xC0000374:                       return "heap corruption";
+		case 0xC0000409:                       return "stack buffer overrun";
+		case 0x20474343:                       return "uncaught C++ exception (GCC)";
+		case 0xE06D7363:                       return "uncaught C++ exception (MSVC)";
+		default:                               return nullptr;
+	}
+}
+
+/**
+	Writes @p address as "module.dll+0x1234", the form a symbolizer needs:
+	modules load at a different address on every run, the offset inside
+	the module does not. Returns false, writing nothing, when the address
+	is in no loaded module.
+*/
+bool writeModuleOffset(int fd, DWORD64 address)
+{
+	PVOID base = nullptr;
+	if (!RtlPcToFileHeader(reinterpret_cast<PVOID>(address), &base) || !base) {
+		return false;
+	}
+
+	wchar_t path[MAX_PATH];
+	const DWORD length = GetModuleFileNameW(static_cast<HMODULE>(base), path, MAX_PATH);
+	const wchar_t *name = path;
+	for (DWORD i = 0 ; i < length ; ++i) {
+		if (path[i] == L'\\' || path[i] == L'/') {
+			name = path + i + 1;
+		}
+	}
+	char name_utf8[MAX_PATH * 3];
+	const int written = length
+			? WideCharToMultiByte(CP_UTF8, 0, name, -1,
+					      name_utf8, sizeof(name_utf8), nullptr, nullptr)
+			: 0;
+	writeText(fd, written > 0 ? name_utf8 : "?");
+	writeText(fd, "+");
+	writeHex(fd, address - reinterpret_cast<DWORD64>(base));
+	return true;
+}
+
+#if defined(_M_X64) || defined(__x86_64__)
+/**
+	Walks the crashed thread's stack from @p context, one "#NN module+offset"
+	line per frame. Uses the unwind tables every x64 image carries (GCC
+	emits them too), through RtlLookupFunctionEntry/RtlVirtualUnwind: no
+	dbghelp, no symbols, no allocation. Turning the offsets into function
+	names and lines is left to a symbolizer run later against the same
+	build, e.g. addr2line.
+*/
+void writeBacktrace(int fd, CONTEXT *context)
+{
+	const DWORD64 low = g_crash_stack_low;
+	const DWORD64 high = g_crash_stack_high;
+	int printed = 0;
+
+	for (int i = 0 ; i < 64 ; ++i)
+	{
+		const DWORD64 pc = context->Rip;
+
+			//Frame 0 is always written, even outside any module: a call
+			//through a null pointer shows up exactly that way. Deeper
+			//frames outside every module are values the leaf rule below
+			//picked up from a helper such as __chkstk_ms that pushed
+			//registers without unwind data; skipping them keeps the list
+			//readable, and the walk re-synchronises on its own.
+		PVOID module_base = nullptr;
+		const bool in_module = RtlPcToFileHeader(reinterpret_cast<PVOID>(pc), &module_base)
+				       && module_base;
+		if (i == 0 || in_module) {
+			char frame[8] = {'#', 0, 0, ' ', 0};
+			frame[1] = static_cast<char>('0' + (printed / 10) % 10);
+			frame[2] = static_cast<char>('0' + printed % 10);
+			writeText(fd, frame);
+			if (!writeModuleOffset(fd, pc)) {
+				writeHex(fd, pc);
+			}
+			writeText(fd, "\n");
+			++printed;
+		}
+
+		DWORD64 image_base = 0;
+		PRUNTIME_FUNCTION function = pc
+				? RtlLookupFunctionEntry(pc, &image_base, nullptr)
+				: nullptr;
+		if (function) {
+			PVOID handler_data = nullptr;
+			DWORD64 establisher_frame = 0;
+			RtlVirtualUnwind(UNW_FLAG_NHANDLER, image_base, pc, function,
+					 context, &handler_data, &establisher_frame, nullptr);
+		} else {
+				//A leaf function (no unwind entry), or a call to a bad
+				//address: the return address is on top of the stack.
+			if (context->Rsp < low || context->Rsp + 8 > high) {
+				break;
+			}
+			context->Rip = *reinterpret_cast<const DWORD64 *>(context->Rsp);
+			context->Rsp += 8;
+		}
+		if (!context->Rip || context->Rsp < low || context->Rsp >= high) {
+			break;
+		}
+	}
+}
+#endif
+
+/**
+	Runs on the reporter thread. Same order as the POSIX handler, and for
+	the same reason: what crashed, then the log ring, then the backtrace,
+	so that whatever the walk runs into, the cheaper parts are already on
+	disk.
+*/
+void writeWindowsDump()
+{
+	int fd = -1;
+	const errno_t err = _sopen_s(&fd, g_dump_path,
+				     _O_WRONLY | _O_CREAT | _O_TRUNC | _O_BINARY,
+				     _SH_DENYWR, _S_IREAD | _S_IWRITE);
+	if (err != 0 || fd < 0) {
+		return;
+	}
+
+	if (g_header_len > 0) {
+		_write(fd, g_header, g_header_len);
+	}
+
+	if (g_crash_kind == CrashKind::Exception && g_crash_record) {
+		writeText(fd, "Exception: ");
+		writeHex(fd, g_crash_code);
+		if (const char *name = exceptionName(g_crash_code)) {
+			writeText(fd, " (");
+			writeText(fd, name);
+			writeText(fd, ")");
+		}
+		writeText(fd, "\nAt: ");
+		const DWORD64 address = reinterpret_cast<DWORD64>(g_crash_record->ExceptionAddress);
+		if (!writeModuleOffset(fd, address)) {
+			writeHex(fd, address);
+		}
+		writeText(fd, "\n");
+			//For an access violation, what was accessed: a small address
+			//such as 0x10 is a null pointer's member, a large one a
+			//dangling or corrupted pointer.
+		if (g_crash_code == EXCEPTION_ACCESS_VIOLATION
+				&& g_crash_record->NumberParameters >= 2) {
+			const ULONG_PTR kind = g_crash_record->ExceptionInformation[0];
+			writeText(fd, kind == 0 ? "Reading: "
+					: kind == 1 ? "Writing: "
+					: "Executing: ");
+			writeHex(fd, g_crash_record->ExceptionInformation[1]);
+			writeText(fd, "\n");
+		}
+	} else if (g_crash_kind == CrashKind::Fatal) {
+		writeText(fd, "Fatal: qFatal() (its message is the last Fatal line of the log)\n");
+	} else {
+		writeText(fd, "Signal: SIGABRT (abort)\n");
+	}
+
+	writeText(fd, "--- log ---\n");
+	if (g_ring) {
+		g_ring->dumpToFd(fd);
+	}
+
+#if defined(_M_X64) || defined(__x86_64__)
+	writeText(fd, "--- backtrace ---\n");
+	writeBacktrace(fd, &g_crash_context);
+#endif
+
+	_close(fd);
+}
+
+DWORD WINAPI reporterThread(LPVOID)
+{
+	WaitForSingleObject(g_reporter_go, INFINITE);
+	writeWindowsDump();
+	SetEvent(g_reporter_done);
+	return 0;
+}
+
+/**
+	Hands the crash to the reporter thread and waits for it. Uses almost no
+	stack of its own, which is what lets a stack overflow be reported.
+*/
+void reportFromCrashingThread()
+{
+	const NT_TIB *tib = reinterpret_cast<const NT_TIB *>(NtCurrentTeb());
+	g_crash_stack_low = reinterpret_cast<DWORD64>(tib->StackLimit);
+	g_crash_stack_high = reinterpret_cast<DWORD64>(tib->StackBase);
+
+	if (g_reporter_go && g_reporter_done) {
+		SetEvent(g_reporter_go);
+		WaitForSingleObject(g_reporter_done, kReporterTimeoutMs);
+	}
+}
+
+LONG WINAPI windowsExceptionFilter(EXCEPTION_POINTERS *pointers)
 {
 	bool expected = false;
 	if (!g_already_dumped.compare_exchange_strong(expected, true, std::memory_order_acq_rel)) {
 		return EXCEPTION_CONTINUE_SEARCH;
 	}
 
-	int fd = -1;
-	errno_t err = _sopen_s(&fd, g_dump_path,
-				_O_WRONLY | _O_CREAT | _O_TRUNC | _O_BINARY,
-				_SH_DENYWR, _S_IREAD | _S_IWRITE);
-	if (err == 0 && fd >= 0) {
-		if (g_header_len > 0) {
-			_write(fd, g_header, g_header_len);
-		}
-		if (g_ring) {
-			g_ring->dumpToFd(fd);
-		}
-		_close(fd);
-	}
+	g_crash_kind = CrashKind::Exception;
+	g_crash_record = pointers->ExceptionRecord;
+	g_crash_code = pointers->ExceptionRecord->ExceptionCode;
+	g_crash_context = *pointers->ContextRecord;
+	reportFromCrashingThread();
 
 	// Do not suppress Windows Error Reporting / an attached debugger --
 	// same invariant as re-raising on POSIX (see crashhandler.h,
 	// invariant 3).
 	return EXCEPTION_CONTINUE_SEARCH;
+}
+
+/**
+	abort() -- which std::terminate() and a failed assert end in -- does
+	not raise an SEH exception on Windows, so the filter above never sees
+	it. The C runtime raises SIGABRT first, though. (qFatal() does not
+	get here: see CrashHandler::reportFatal().)
+*/
+void windowsAbortHandler(int)
+{
+	bool expected = false;
+	if (g_already_dumped.compare_exchange_strong(expected, true, std::memory_order_acq_rel)) {
+		g_crash_kind = CrashKind::Abort;
+		RtlCaptureContext(&g_crash_context);
+		reportFromCrashingThread();
+	}
+		//Let abort() carry on to its default end, so Windows Error
+		//Reporting still sees the crash (invariant 3).
+	signal(SIGABRT, SIG_DFL);
 }
 
 #endif
@@ -224,6 +483,39 @@ int CrashHandler::formatInt(char *buffer, int size, int value)
 	return len;
 }
 
+void CrashHandler::reportFatal()
+{
+#ifdef Q_OS_WIN
+	bool expected = false;
+	if (g_already_dumped.compare_exchange_strong(expected, true, std::memory_order_acq_rel)) {
+		g_crash_kind = CrashKind::Fatal;
+		RtlCaptureContext(&g_crash_context);
+		reportFromCrashingThread();
+	}
+#endif
+}
+
+// Same constraints as formatInt(): caller-owned buffer, no allocation.
+// Always writes the "0x" prefix and at least one digit when there is room.
+int CrashHandler::formatHex(char *buffer, int size, unsigned long long value)
+{
+	if (size <= 0) return 0;
+	char scratch[16];
+	int n = 0;
+	do {
+		scratch[n++] = "0123456789abcdef"[value & 0xf];
+		value >>= 4;
+	} while (value != 0 && n < static_cast<int>(sizeof(scratch)));
+
+	int len = 0;
+	const char kPrefix[] = "0x";
+	for (unsigned i = 0 ; i < sizeof(kPrefix) - 1 && len < size ; ++i) {
+		buffer[len++] = kPrefix[i];
+	}
+	while (n > 0 && len < size) buffer[len++] = scratch[--n];
+	return len;
+}
+
 void CrashHandler::install(const LogRing *ring, const QString &dump_path)
 {
 	g_ring = ring;
@@ -241,7 +533,32 @@ void CrashHandler::install(const LogRing *ring, const QString &dump_path)
 	std::memcpy(g_header, header.constData(), static_cast<size_t>(g_header_len));
 
 #ifdef Q_OS_WIN
+		//The reporter thread and its two events are made here, in normal
+		//context, because nothing can be created once the crash happens.
+		//The thread only waits; its 64 KiB is reserved, not committed.
+	g_reporter_go = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+	g_reporter_done = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+	if (g_reporter_go && g_reporter_done) {
+		HANDLE thread = CreateThread(nullptr, 65536, reporterThread, nullptr,
+					     STACK_SIZE_PARAM_IS_A_RESERVATION, nullptr);
+		if (thread) {
+			CloseHandle(thread);
+		} else {
+			CloseHandle(g_reporter_go);
+			CloseHandle(g_reporter_done);
+			g_reporter_go = g_reporter_done = nullptr;
+		}
+	}
+
+		//After a stack overflow the filter still needs a little stack to
+		//hand over to the reporter. Keep some in reserve on the main
+		//thread, where the GUI's deep recursions happen. install() runs on
+		//it, and the guarantee only applies to the calling thread.
+	ULONG stack_guarantee = 32768;
+	SetThreadStackGuarantee(&stack_guarantee);
+
 	SetUnhandledExceptionFilter(windowsExceptionFilter);
+	signal(SIGABRT, windowsAbortHandler);
 #else
 	stack_t ss;
 	ss.ss_sp = g_altstack;

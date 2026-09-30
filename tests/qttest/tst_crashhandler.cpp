@@ -53,11 +53,15 @@ class tst_CrashHandler : public QObject
 		void formatsIntMax();
 		void truncatesRatherThanOverflowing();
 		void writesNothingWhenThereIsNoRoom();
+		void formatsHex();
+		void formatsHexAddressesAndCodes();
+		void truncatesHexRatherThanOverflowing();
 
 	private:
 		/// Formats into a buffer poisoned with a sentinel, and fails if
 		/// anything past the returned length was touched.
 		static QByteArray format(int value, int size = 32);
+		static QByteArray formatHex(unsigned long long value, int size = 32);
 };
 
 QByteArray tst_CrashHandler::format(int value, int size)
@@ -68,6 +72,24 @@ QByteArray tst_CrashHandler::format(int value, int size)
 	const int len = CrashHandler::formatInt(buffer, size, value);
 
 	// Nothing may be written past what was reported, nor past `size`.
+	for (int i = qMax(len, 0) ; i < static_cast<int>(sizeof(buffer)) ; ++i) {
+		if (buffer[i] != '\xAB') {
+			return QByteArray("WROTE PAST END at ") + QByteArray::number(i);
+		}
+	}
+	if (len < 0 || len > size) {
+		return QByteArray("BAD LENGTH ") + QByteArray::number(len);
+	}
+	return QByteArray(buffer, len);
+}
+
+QByteArray tst_CrashHandler::formatHex(unsigned long long value, int size)
+{
+	char buffer[64];
+	memset(buffer, '\xAB', sizeof(buffer));
+
+	const int len = CrashHandler::formatHex(buffer, size, value);
+
 	for (int i = qMax(len, 0) ; i < static_cast<int>(sizeof(buffer)) ; ++i) {
 		if (buffer[i] != '\xAB') {
 			return QByteArray("WROTE PAST END at ") + QByteArray::number(i);
@@ -145,6 +167,33 @@ void tst_CrashHandler::writesNothingWhenThereIsNoRoom()
 	QCOMPARE(format(123, 0), QByteArray());
 	QCOMPARE(format(0, 0), QByteArray());
 	QCOMPARE(format(-5, 0), QByteArray());
+}
+
+void tst_CrashHandler::formatsHex()
+{
+	QCOMPARE(formatHex(0), QByteArray("0x0"));
+	QCOMPARE(formatHex(9), QByteArray("0x9"));
+	QCOMPARE(formatHex(10), QByteArray("0xa"));
+	QCOMPARE(formatHex(0x10), QByteArray("0x10"));
+}
+
+/**
+	The values the Windows dump writes: an exception code, a module
+	offset, a full 64-bit address and the largest value there is.
+*/
+void tst_CrashHandler::formatsHexAddressesAndCodes()
+{
+	QCOMPARE(formatHex(0xC0000005u), QByteArray("0xc0000005"));
+	QCOMPARE(formatHex(0x1a2b3cu), QByteArray("0x1a2b3c"));
+	QCOMPARE(formatHex(0x00007ff6a1b2c3d4ull), QByteArray("0x7ff6a1b2c3d4"));
+	QCOMPARE(formatHex(~0ull), QByteArray("0xffffffffffffffff"));
+}
+
+void tst_CrashHandler::truncatesHexRatherThanOverflowing()
+{
+	QCOMPARE(formatHex(0xabcdef, 5), QByteArray("0xabc"));
+	QCOMPARE(formatHex(0xabcdef, 1), QByteArray("0"));
+	QCOMPARE(formatHex(0xabcdef, 0), QByteArray());
 }
 
 QTEST_APPLESS_MAIN(tst_CrashHandler)
