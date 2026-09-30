@@ -155,10 +155,27 @@ void PrefixConfigurationDialog::buildTree()
 			continue;
 		}
 		parent_item->setData(0, Qt::UserRole, folder);
+			//What the file holds for that folder, kept to tell a row the
+			//user touched from one they left alone (@see accept())
+		parent_item->setData(1, Qt::UserRole, m_labels.prefix(folder).trimmed());
 
-		auto *edit = new QLineEdit(m_labels.prefix(folder), m_tree);
+		auto *edit = new QLineEdit(m_labels.prefix(folder).trimmed(), m_tree);
 		edit->setClearButtonEnabled(true);
-		edit->setPlaceholderText(tr("hériter du dossier parent", "placeholder of an empty prefix field"));
+			//A folder whose file holds an explicit <prefix/> shows an empty
+			//field too, but does not inherit : say so instead of promising
+			//an inheritance that will not happen
+		edit->setPlaceholderText(m_labels.hasPrefix(folder)
+								 ? tr("aucun préfixe : n'hérite pas du parent",
+									  "placeholder of an empty prefix field whose folder explicitly has no prefix, which cancels the inheritance")
+								 : tr("hériter du dossier parent", "placeholder of an empty prefix field"));
+		connect(edit, &QLineEdit::textEdited, this, [parent_item, edit]() {
+				//Once the user has typed in the field, whatever it holds
+				//when OK is pressed is what the folder gets - an emptied
+				//field then means "inherit" again, even when the file had
+				//an explicit <prefix/>
+			parent_item->setData(1, Qt::UserRole + 1, true);
+			edit->setPlaceholderText(tr("hériter du dossier parent", "placeholder of an empty prefix field"));
+		});
 		edit->installEventFilter(this);
 		m_tree->setItemWidget(parent_item, 1, edit);
 	}
@@ -184,7 +201,17 @@ void PrefixConfigurationDialog::accept()
 		if (edit == nullptr) {
 			continue;
 		}
-		m_labels.setPrefix(item->data(0, Qt::UserRole).toStringList(), edit->text().trimmed());
+		const QString text = edit->text().trimmed();
+			//A row the user did not touch is left exactly as the file has
+			//it. Writing every field back would turn an explicit
+			//<prefix/>, which shows empty and cancels the inheritance,
+			//into no <prefix> at all, and that folder would silently start
+			//inheriting its parent's prefix again.
+		if (!item->data(1, Qt::UserRole + 1).toBool()
+			&& text == item->data(1, Qt::UserRole).toString()) {
+			continue;
+		}
+		m_labels.setPrefix(item->data(0, Qt::UserRole).toStringList(), text);
 	}
 
 	if (m_remove_orphans) {
@@ -197,6 +224,13 @@ void PrefixConfigurationDialog::accept()
 							  tr("Le fichier %1 n'a pas pu être enregistré :\n%2")
 							  .arg(m_labels.filePath(), m_labels.errorString()));
 		return;
+	}
+
+	if (!m_labels.backupPath().isEmpty()) {
+		QMessageBox::information(this,
+								 tr("Fichier endommagé remplacé"),
+								 tr("Le fichier %1 était illisible : il a été remplacé.\nSa copie a été conservée sous :\n%2")
+								 .arg(m_labels.filePath(), m_labels.backupPath()));
 	}
 
 	QDialog::accept();

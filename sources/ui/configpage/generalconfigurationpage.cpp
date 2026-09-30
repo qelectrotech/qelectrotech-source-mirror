@@ -650,13 +650,20 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 */
 void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 {
-		//The directory currently shown in the combo is the one this page
-		//displays, even when it has not been applied yet, while
-		//QETApp::customElementsDir() still returns the previously saved
-		//path : follow what the user sees.
+		//The directory the page displays, even when the change has not
+		//been applied yet : QETApp::customElementsDir() still answers with
+		//the previously saved path, which is not what is shown when the
+		//combo has been put back on "Par defaut".
 	QString directory;
-	if (ui->m_custom_elmt_path_cb->currentIndex() == 1) {
+	switch (ui->m_custom_elmt_path_cb->currentIndex()) {
+	case 1:			//"Parcourir..." : the item itself holds the chosen path
 		directory = ui->m_custom_elmt_path_cb->itemData(1, Qt::DisplayRole).toString();
+		break;
+	case 0:			//"Par defaut" : where a default custom collection lives
+		directory = QETApp::dataDir() + QStringLiteral("/elements/");
+		break;
+	default:
+		break;
 	}
 	if (directory.isEmpty()) {
 		directory = QETApp::customElementsDir();
@@ -704,9 +711,9 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 								  "Ouvrez le fichier dans un éditeur de texte à l'endroit indiqué, "
 								  "corrigez-le puis relancez cette commande.\n\n"
 								  "« Reconstruire » : l'arborescence des dossiers est recréée, "
-								  "mais tous les préfixes actuels sont perdus."));
-		box.setDetailedText(tr("Fichier : %1\nCopie conservée : %2")
-							.arg(labels.filePath(), labels.backupPath()));
+								  "mais tous les préfixes actuels sont perdus. Le fichier actuel "
+								  "est conservé sous le nom qet_labels.xml.bak avant d'être remplacé."));
+		box.setDetailedText(tr("Fichier : %1").arg(labels.filePath()));
 		box.exec();
 		if (box.clickedButton() != rebuild_button) {
 			return;

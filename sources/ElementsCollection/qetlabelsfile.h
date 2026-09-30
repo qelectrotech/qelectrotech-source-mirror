@@ -61,6 +61,7 @@ class QetLabelsFile
 			
 			bool load(const QString &collection_dir);
 			QString prefix(const QStringList &relative_path) const;
+			bool hasPrefix(const QStringList &relative_path) const;
 			QStringList orphanPaths(const QList<QStringList> &folders) const;
 			void ensureStructure(const QList<QStringList> &folders);
 			void setPrefix(const QStringList &relative_path, const QString &prefix);
@@ -70,8 +71,10 @@ class QetLabelsFile
 			QString filePath() const {return m_file_path;}
 			QString backupPath() const {return m_backup_path;}
 			QString errorString() const {return m_error;}
-				///true when the existing file was found unusable and had to
-				///be backed up before an empty document was used instead
+				///true when the existing file was found unusable and an
+				///empty document is used instead. Its copy is only made by
+				///save(), right before the file is replaced, so repairing
+				///the file instead of rebuilding it leaves no copy behind
 			bool isBroken() const {return m_broken;}
 				///what exactly is wrong with that file (line and column of
 				///the syntax error for instance), so the caller can tell the

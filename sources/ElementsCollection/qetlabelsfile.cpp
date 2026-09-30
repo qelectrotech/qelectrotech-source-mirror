@@ -207,16 +207,13 @@ bool QetLabelsFile::parse(QIODevice &device, QDomDocument &document, QString *re
 	- when the file does not exist yet, an empty \<labels\> document is
 	  kept in memory and will only be created on the first save()
 	- when the file exists but cannot be read, is not well formed or does
-	  not have \<labels\> as its root element, a copy of it is kept as a
-	  backup (@see backupPath()) and an empty document is used instead,
-	  so the broken file is replaced only if the caller saves. isBroken()
-	  and brokenReason() tell what is wrong with it, so the caller can
-	  offer repairing the file rather than silently discarding its
-	  content.
-	@return false when no collection directory was given, or when the file
-		is broken and could not be backed up : rebuilding it then would
-		destroy the only copy of it, so errorString() tells why and
-		nothing is loaded.
+	  not have \<labels\> as its root element, nothing is written : an
+	  empty document is used instead, and a copy of the unusable file is
+	  only made by save(), right before it is replaced. isBroken() and
+	  brokenReason() tell what is wrong with it, so the caller can offer
+	  repairing the file rather than silently discarding its content.
+	@return false only when no collection directory was given. It is
+		save() that reports a file it could not copy aside.
 */
 bool QetLabelsFile::load(const QString &collection_dir)
 {
@@ -263,19 +260,11 @@ bool QetLabelsFile::load(const QString &collection_dir)
 	if (well_formed) {
 		m_document = document;
 	} else {
-			//The file is unreadable or malformed : keep a copy of it, then
-			//work on an empty document. m_force_save makes sure the broken
-			//file is replaced as soon as the caller validates, even though
-			//the empty document we start from serializes just fine.
-		m_backup_path = backupBrokenFile();
-		if (m_backup_path.isEmpty()) {
-				//Without a backup, rebuilding would destroy the only copy
-				//of the file : stop here instead of letting the caller
-				//overwrite it.
-			m_error = tr("Le fichier %1 est endommagé (%2) mais n'a pas pu être sauvegardé :\nrien n'a été modifié.")
-					.arg(m_file_path, m_broken_reason);
-			return false;
-		}
+			//The file is unreadable or malformed : leave it alone and work
+			//on an empty document. m_force_save makes sure the file is
+			//replaced as soon as the caller validates, even though the
+			//empty document we start from serializes just fine - and it is
+			//also what tells save() to copy the file aside first.
 		m_broken = true;
 		createEmptyDocument();
 		m_force_save = true;
@@ -354,6 +343,27 @@ QString QetLabelsFile::prefix(const QStringList &relative_path) const
 	}
 	const QString value = own.text();
 	return value.isNull() ? QString() : value;
+}
+
+/**
+	@brief QetLabelsFile::hasPrefix
+	@return true when @a relative_path owns a \<prefix\> child of its own,
+		even an empty one. prefix() alone cannot tell that apart from a
+		category without any \<prefix\> : both give it no value, while an
+		empty \<prefix/\> cancels the inheritance where a category
+		without one inherits.
+*/
+bool QetLabelsFile::hasPrefix(const QStringList &relative_path) const
+{
+	QDomElement node = m_document.documentElement();
+	for (const QString &name : relative_path) {
+		node = directChildCategory(node, name);
+		if (node.isNull()) {
+			return false;
+		}
+	}
+
+	return !node.firstChildElement(QStringLiteral("prefix")).isNull();
 }
 
 /**
@@ -615,6 +625,20 @@ bool QetLabelsFile::save()
 	if (!directory.exists() && !QDir().mkpath(directory.absolutePath())) {
 		m_error = tr("Le répertoire %1 n'a pas pu être créé.").arg(directory.absolutePath());
 		return false;
+	}
+
+	if (m_force_save && m_file_exists) {
+			//The file on disk could not be read : copy it aside before it
+			//is replaced. Doing it here, and not when it is loaded, means
+			//no copy is left behind when the user chooses to repair the
+			//file instead of rebuilding it - or simply changes their mind
+			//and cancels.
+		m_backup_path = backupBrokenFile();
+		if (m_backup_path.isEmpty()) {
+			m_error = tr("Le fichier %1 n'a pas pu être copié à côté avant d'être remplacé :\nrien n'a été modifié.")
+					.arg(m_file_path);
+			return false;
+		}
 	}
 
 	QSaveFile file(m_file_path);
