@@ -303,7 +303,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 		x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 		
 		QStandardItem *x_pos_a = new QStandardItem;
-		x_pos_a->setData(deti->pos().x(), Qt::EditRole);
+		x_pos_a->setData(deti->anchorPos().x(), Qt::EditRole);
 		x_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
 		x_pos_a->setFlags(Qt::ItemIsSelectable
 				  | Qt::ItemIsEnabled
@@ -318,7 +318,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 		y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 		
 		QStandardItem *y_pos_a = new QStandardItem;
-		y_pos_a->setData(deti->pos().y(), Qt::EditRole);
+		y_pos_a->setData(deti->anchorPos().y(), Qt::EditRole);
 		y_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
 		y_pos_a->setFlags(Qt::ItemIsSelectable
 				  | Qt::ItemIsEnabled
@@ -600,9 +600,9 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 	{
 		QPointF p(text_qsi->child(x_txt_row,1)->data(Qt::EditRole).toDouble(),
 				  text_qsi->child(y_txt_row,1)->data(Qt::EditRole).toDouble());
-		if(p != deti->pos())
+		if(p != deti->anchorPos())
 		{
-			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "anchorPos", QVariant(deti->anchorPos()), QVariant(p), undo);
 			quc->setAnimated(true, false);
 			quc->setText(tr("Déplacer un texte d'élément"));
 		}
@@ -636,7 +636,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 		Qt::Alignment alignment = text_qsi->child(align_txt_row, 1)->data(Qt::UserRole+2).value<Qt::Alignment>();
 		if (alignment != deti->alignment())
 		{
-			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "alignment", QVariant(deti->alignment()), QVariant(alignment), undo);
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "alignmentAtAnchor", QVariant(deti->alignment()), QVariant(alignment), undo);
 			quc->setText(tr("Modifier l'alignement d'un texte d'élément"));
 		}
 	}
@@ -1508,9 +1508,9 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 		case pos:
 		{
 			if(qsi->child(x_txt_row,1))
-				qsi->child(x_txt_row,1)->setData(deti->pos().x(), Qt::EditRole);
+				qsi->child(x_txt_row,1)->setData(deti->anchorPos().x(), Qt::EditRole);
 			if(qsi->child(y_txt_row,1))
-				qsi->child(y_txt_row,1)->setData(deti->pos().y(), Qt::EditRole);
+				qsi->child(y_txt_row,1)->setData(deti->anchorPos().y(), Qt::EditRole);
 			break;
 		}
 		case frame:
@@ -1530,6 +1530,14 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			break;
 		}
 	default:break;
+	}
+
+		//Rotating or resizing the text moves its anchor point (Position X/Y)
+	if ((type == rotation || type == textWidth)
+		&& qsi->child(x_txt_row,1) && qsi->child(y_txt_row,1))
+	{
+		qsi->child(x_txt_row,1)->setData(deti->anchorPos().x(), Qt::EditRole);
+		qsi->child(y_txt_row,1)->setData(deti->anchorPos().y(), Qt::EditRole);
 	}
 	
 	m_block_dataChanged = false;

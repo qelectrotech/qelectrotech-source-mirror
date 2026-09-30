@@ -21,6 +21,7 @@
 #include "../diagramcommands.h"
 #include "../qetapp.h"
 #include "../richtext/richtexteditor_p.h"
+#include "../textanchor.h"
 
 /**
 	@brief DiagramTextItem::DiagramTextItem
@@ -191,6 +192,41 @@ void DiagramTextItem::setAlignment(const Qt::Alignment &alignment)
 Qt::Alignment DiagramTextItem::alignment() const
 {
 	return m_alignment;
+}
+
+/**
+	@brief DiagramTextItem::anchorPos
+	@return the anchor point of this text, in parent coordinates:
+	the point of the text chosen by the alignment (top-left, right edge,
+	centre...). For a top-left aligned text this is pos().
+	The anchor stays in place when the text changes, see finishAlignment().
+*/
+QPointF DiagramTextItem::anchorPos() const
+{
+	return TextAnchor::pos(this, m_alignment);
+}
+
+/**
+	@brief DiagramTextItem::setAnchorPos
+	Move this text so that its anchor point (see anchorPos()) is at anchor.
+	@param anchor : in parent coordinates
+*/
+void DiagramTextItem::setAnchorPos(const QPointF &anchor)
+{
+	setPos(TextAnchor::itemPosFor(this, m_alignment, anchor));
+}
+
+/**
+	@brief DiagramTextItem::setAlignmentAtAnchor
+	Change the alignment and move the text so that its new anchor point
+	is where the previous one was.
+	@param alignment
+*/
+void DiagramTextItem::setAlignmentAtAnchor(const Qt::Alignment &alignment)
+{
+	const QPointF anchor = anchorPos();
+	setAlignment(alignment);
+	setAnchorPos(anchor);
 }
 
 /**
