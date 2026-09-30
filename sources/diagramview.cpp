@@ -2088,6 +2088,10 @@ void DiagramView::createTemplateFromSelection()
 		file.close();
 		qDebug() << "Template successfully saved to:" << full_path;
 
+			// List it right away, not only after the collections are reloaded
+		for (QETDiagramEditor *qde : QETApp::diagramEditors())
+			qde->templateSaved(template_location);
+
 		QMessageBox::information(this, tr("Modèle enregistré"),
 								 tr("Le modèle a été enregistré avec succès sous :\n%1").arg(full_path));
 	} else {

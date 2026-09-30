@@ -1782,6 +1782,17 @@ ProjectView *QETDiagramEditor::currentProjectView() const
 }
 
 /**
+	@brief QETDiagramEditor::templateSaved
+	List a template saved from a folio in this editor's templates tab.
+	@param location : the saved .qetmak file
+*/
+void QETDiagramEditor::templateSaved(const ElementsLocation &location)
+{
+	if (m_element_collection_widget)
+		m_element_collection_widget->addTemplate(location);
+}
+
+/**
 	@brief QETDiagramEditor::currentProject
 	@return the current edited project.
 	This function can return nullptr.
