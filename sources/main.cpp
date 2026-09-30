@@ -35,6 +35,7 @@
 #include <QDomImplementation>
 #include <QFont>
 
+#include <QSettings>
 #include <QStyleFactory>
 #include <QtConcurrentRun>
 
@@ -102,6 +103,19 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
+
+	// QET_SETTINGS_DIR keeps the settings in an INI file in that folder,
+	// <folder>/QElectroTech/QElectroTech.ini, instead of the registry on
+	// Windows, the system preferences on macOS or ~/.config on Linux. A tool
+	// running QElectroTech headlessly (misc/qet-mcp) can then give each run
+	// its own settings, and point it at an element collection, on every
+	// system (issue #1178). Set before anything reads a setting.
+	const QString settings_dir = qEnvironmentVariable("QET_SETTINGS_DIR");
+	if (!settings_dir.isEmpty()) {
+		QSettings::setDefaultFormat(QSettings::IniFormat);
+		QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settings_dir);
+		QSettings::setPath(QSettings::IniFormat, QSettings::SystemScope, settings_dir);
+	}
 
 	// Refuse invalid data when building QDom documents instead of
 	// serializing malformed XML (CVE-2026-15037). This is the default

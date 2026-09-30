@@ -2632,11 +2632,47 @@ class LaunchExecutable(unittest.TestCase):
         self.assertEqual(env["QT_QPA_PLATFORM"], "offscreen")
         self.assertEqual(env["HOME"], str(self.sandbox))
 
+    def test_settings_stay_in_the_sandbox_everywhere(self):
+        """HOME and XDG move the settings only on Linux; QET_SETTINGS_DIR
+        moves them on Windows and macOS too (#1178)."""
+        for windows in (True, False):
+            env = m._launch_env({}, self.sandbox, windows)
+            self.assertEqual(env["QET_SETTINGS_DIR"], str(self.sandbox / ".config"))
+
     def test_elsewhere_runs_a_private_copy(self):
         exe = m._launch_executable(self.src, self.sandbox, False)
         self.assertEqual(exe.parent, self.sandbox)
         self.assertNotEqual(exe, self.src)
         self.assertEqual(exe.read_text(), self.src.read_text())
+
+
+class ElementsDirSetting(unittest.TestCase):
+    """elements_dir reaches QElectroTech as a settings file in the sandbox
+    (#1178): the .ini that a QElectroTech knowing QET_SETTINGS_DIR reads on
+    every system, and the .conf an older one reads on Linux."""
+
+    def test_both_files_carry_the_collection(self):
+        seen = {}
+
+        def run(argv, **kwargs):
+            cfg = Path(kwargs["env"]["QET_SETTINGS_DIR"]) / "QElectroTech"
+            for f in cfg.iterdir():
+                seen[f.name] = f.read_text(encoding="utf-8")
+            return subprocess.CompletedProcess(argv, 0, "", "")
+
+        with tempfile.TemporaryDirectory() as coll, \
+                mock.patch.object(m.subprocess, "run", run):
+            m._run_qet("/bin/true", ["x.qet"], elements_dir=coll)
+        want = m._collection_setting(Path(coll))
+        self.assertEqual(seen, {"QElectroTech.ini": want, "QElectroTech.conf": want})
+        self.assertIn(f"common-collection-path={Path(coll).as_posix()}", want)
+
+    def test_a_windows_path_has_forward_slashes(self):
+        """Qt reads a backslash in the file as an escape."""
+        from pathlib import PureWindowsPath
+        text = m._collection_setting(PureWindowsPath(r"C:\x\custom"))
+        self.assertIn("common-collection-path=C:/x/custom\n", text)
+        self.assertNotIn("\\", text)
 
 
 class ScriptingDisabledHint(unittest.TestCase):
