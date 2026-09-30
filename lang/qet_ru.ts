@@ -540,7 +540,7 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="191"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="268"/>
         <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
-        <translation type="unfinished">Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</translation>
+        <translation type="unfinished">Шаг: значение, прибавляемое к счётчику при каждой новой нумерации</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="125"/>
@@ -1750,7 +1750,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="606"/>
         <source>Glisser : incliner (Maj = par pas de 15°)</source>
-        <translation type="unfinished">Сдвиг: наклон (Shift = с шагом 15°)</translation>
+        <translation type="unfinished">Перетаскивание: наклон (Shift = с шагом 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="607"/>
@@ -1867,7 +1867,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1752"/>
         <source>Miroir horizontal</source>
-        <translation type="unfinished">Отразить по горизоньали</translation>
+        <translation type="unfinished">Отразить по горизонтали</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1754"/>
@@ -3413,31 +3413,36 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Nombre maximum de contacts esclaves définis : non défini
 </source>
-        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: не определено</translation>
+        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: не определено
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="391"/>
         <source>Nombre maximum de contacts esclaves définis : %1
 </source>
-        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: %1</translation>
+        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
         <source>Nombre de contacts esclaves utilisés : %1
 </source>
-        <translation type="unfinished">Количество используемых подчиненных контактов: %1</translation>
+        <translation type="unfinished">Количество используемых подчиненных контактов: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="411"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
 </source>
-        <translation type="unfinished">    Контакты: NO: %1/%2, NC: %3/%4, переключатели: %5/%6, прочие: %7/%8</translation>
+        <translation type="unfinished">    Контакты: NO: %1/%2, NC: %3/%4, переключатели: %5/%6, прочие: %7/%8
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="420"/>
         <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
 </source>
-        <translation type="unfinished">    Контакты: NO: %1, NC: %2, переключатели: %3, прочие: %4</translation>
+        <translation type="unfinished">    Контакты: NO: %1, NC: %2, переключатели: %3, прочие: %4
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="427"/>
@@ -7002,9 +7007,9 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="61"/>
         <source>Ce document PDF contient %n page(s)</source>
         <translation type="unfinished">
-            <numerusform>Этот документ в формате PDF содержит %n страницу(и)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Этот документ PDF содержит %n страницу</numerusform>
+            <numerusform>Этот документ PDF содержит %n страницы</numerusform>
+            <numerusform>Этот документ PDF содержит %n страниц</numerusform>
         </translation>
     </message>
     <message>
@@ -8149,7 +8154,8 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="3041"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
-        <translation type="unfinished">  --data-dir=DIR                Задаёт каталог с данными</translation>
+        <translation type="unfinished">  --data-dir=DIR                Задаёт каталог с данными
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="3043"/>
@@ -8760,9 +8766,9 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
         <source>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform>%n описаний шрифтов, записанных в нестандартном или повреждённом формате, были восстановлены. При следующем сохранении проекта они будут перезаписаны в стабильный формат.</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n описание шрифта, записанное в нестандартном или повреждённом формате, было восстановлено. При следующем сохранении проекта оно будет перезаписано в стабильном формате.</numerusform>
+            <numerusform>%n описания шрифтов, записанные в нестандартном или повреждённом формате, были восстановлены. При следующем сохранении проекта они будут перезаписаны в стабильном формате.</numerusform>
+            <numerusform>%n описаний шрифтов, записанных в нестандартном или повреждённом формате, были восстановлены. При следующем сохранении проекта они будут перезаписаны в стабильном формате.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -8770,9 +8776,9 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
         <source>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</source>
         <comment>message box content</comment>
         <translation type="unfinished">
+            <numerusform>%n описание шрифта не удалось прочитать; для этих текстов будет использован шрифт по умолчанию.</numerusform>
+            <numerusform>%n описания шрифтов не удалось прочитать; для этих текстов будет использован шрифт по умолчанию.</numerusform>
             <numerusform>%n описаний шрифтов не удалось прочитать; для этих текстов будет использован шрифт по умолчанию.</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -10455,7 +10461,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="1770"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
-        <translation type="unfinished">Проект, который вы пытаетесь открыть, частично совместим с вашей версией %1 программы QElectroTech.</translation>
+        <translation type="unfinished">Проект, который вы пытаетесь открыть, частично совместим с вашей версией %1 программы QElectroTech.
+</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1773"/>
@@ -11760,7 +11767,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="80"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="677"/>
         <source>Pivoter %1</source>
-        <translation type="unfinished">Поворот на %1</translation>
+        <translation type="unfinished">Повернуть %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="143"/>
@@ -12005,7 +12012,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="335"/>
         <source>Description textuelle auxiliaire 1</source>
-        <translation type="unfinished">Вспомогательный 1 Текстовое описание</translation>
+        <translation type="unfinished">Вспомогательное текстовое описание 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="336"/>
@@ -13883,7 +13890,8 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Вы можете задать здесь свои собственные сочетания имени/значения для использования в штампе. Например: имя &quot;volta&quot; со значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
+        <translation>Вы можете задать здесь свои собственные сочетания имени/значения для использования в штампе. Например:
+имя &quot;volta&quot; со значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
     </message>
 </context>
 <context>
@@ -14674,7 +14682,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
         <source>Raccourci</source>
-        <translation type="unfinished">Сокращение</translation>
+        <translation type="unfinished">Сочетание клавиш</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="106"/>
@@ -14704,7 +14712,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="379"/>
         <source>Raccourcis</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">Сокращения</translation>
+        <translation type="unfinished">Горячие клавиши</translation>
     </message>
 </context>
 <context>
@@ -17811,7 +17819,8 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Вы можете задать здесь свои собственные сочетания имени/значения для использования в штампе. Например: имя &quot;volta&quot; с значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
+        <translation>Вы можете задать здесь свои собственные сочетания имени/значения для использования в штампе. Например:
+имя &quot;volta&quot; со значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
     </message>
 </context>
 <context>
@@ -18266,14 +18275,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</comment>
-        <translation type="unfinished">Внимание: сумма относительных ширин превышает 100%% от общей ширины, поэтому данный шаблон не может быть реализован ни при каких значениях ширины.</translation>
+        <translation type="unfinished">Внимание: сумма относительных ширин превышает 100%% от общей ширины, поэтому данный шаблон не может быть реализован ни при каких значениях ширины.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1008"/>
         <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</comment>
-        <translation type="unfinished">Внимание: столбцы фиксированной ширины не помещаются в оставшуюся ширину, поэтому данный шаблон картуша не может быть реализован при любой ширине.</translation>
+        <translation type="unfinished">Внимание: столбцы фиксированной ширины не помещаются в оставшуюся ширину, поэтому данный шаблон картуша не может быть реализован ни при какой ширине.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1016"/>
@@ -18288,14 +18299,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Longueur maximale : %1px
 </source>
         <comment>tooltip showing the maximum width of the edited template</comment>
-        <translation type="unfinished">Максимальная длина: %1px</translation>
+        <translation type="unfinished">Максимальная длина: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1031"/>
         <source>Longueur non contrainte.
 </source>
         <comment>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</comment>
-        <translation type="unfinished">Длина без ограничений.</translation>
+        <translation type="unfinished">Длина без ограничений.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1088"/>
