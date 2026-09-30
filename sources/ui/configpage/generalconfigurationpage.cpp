@@ -25,6 +25,7 @@
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
 #include "../../textgrid.h"
+#include "../../editor/terminalnamecheck.h"
 #include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
 #include <QFileInfo>
@@ -174,6 +175,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->MaxPartsElementEditorList_sb->setValue(settings.value("elementeditor/max-parts-element-editor-list", 200).toInt());
 	ui->ElementEditor_Grid_PointSize_min_sb->setValue(settings.value("elementeditor/grid_pointsize_min", 1).toInt());
 	ui->ElementEditor_Grid_PointSize_max_sb->setValue(settings.value("elementeditor/grid_pointsize_max", 1).toInt());
+	ui->m_check_terminal_names_cb->setChecked(settings.value(TerminalNameCheck::settings_key, true).toBool());
 
 	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
 	if (path != "default")
@@ -286,6 +288,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("elementeditor/max-parts-element-editor-list", ui->MaxPartsElementEditorList_sb->value());
 	settings.setValue("elementeditor/grid_pointsize_min", ui->ElementEditor_Grid_PointSize_min_sb->value());
 	settings.setValue("elementeditor/grid_pointsize_max", ui->ElementEditor_Grid_PointSize_max_sb->value());
+	settings.setValue(TerminalNameCheck::settings_key, ui->m_check_terminal_names_cb->isChecked());
 
 		//DIAGRAM VIEW
 	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());

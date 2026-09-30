@@ -111,6 +111,13 @@ add_test(NAME tst_alignment COMMAND tst_alignment)
 target_include_directories(tst_alignment PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_alignment PRIVATE Qt::Test)
 
+# terminalnamecheck.h is header-only: the terminal name rule applied by the
+# element editor on save and by --check-elements.
+add_executable(tst_terminalnamecheck tst_terminalnamecheck.cpp)
+add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
+target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
+
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
 add_executable(tst_configprofile tst_configprofile.cpp)
