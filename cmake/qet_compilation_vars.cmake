@@ -865,6 +865,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/utils/conductorcreator.cpp
   ${QET_DIR}/sources/utils/conductorcreator.h
+  ${QET_DIR}/sources/utils/colordialogdoubleclick.cpp
+  ${QET_DIR}/sources/utils/colordialogdoubleclick.h
   ${QET_DIR}/sources/utils/macosxopenevent.cpp
   ${QET_DIR}/sources/utils/macosxopenevent.h
   ${QET_DIR}/sources/utils/qetsettings.cpp
