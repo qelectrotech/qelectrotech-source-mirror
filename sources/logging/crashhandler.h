@@ -60,14 +60,24 @@ class LogRing;
 	   truncated file; every crash after the first goes straight to
 	   restore-and-re-raise.
 
-	Tested in this environment: POSIX/Linux only (sigaction, sigaltstack,
-	SIGSEGV/SIGABRT/SIGBUS/SIGFPE/SIGILL). The Windows path
-	(SetUnhandledExceptionFilter) and macOS-specific behaviour (signal
-	handling itself is POSIX and shares the Linux code path, but sandbox
-	profiles can affect where the dump file may be written) are
-	implemented per the discussion's guidance but could not be exercised
-	here -- there is no Windows or macOS build available in this sandbox.
-	Please sanity-check both before relying on them in the field.
+	On Windows the dump says what crashed (the exception code, the
+	module and offset it happened at, and for an access violation the
+	address accessed) and walks the stack as "module+offset" lines, from
+	the unwind tables every x64 image carries. It is written by a
+	reporter thread started by install(), not by the crashing thread,
+	which may have no stack left (a stack overflow) or hold the loader
+	lock; the crashing thread waits for it for at most ten seconds.
+	abort() -- the end of std::terminate() and a failed assert -- raises
+	no SEH exception there, so SIGABRT is handled too. qFatal() is
+	neither: Qt ends it with TerminateProcess(), so the message handler
+	reports it (reportFatal()).
+
+	Tested: POSIX/Linux (sigaction, sigaltstack,
+	SIGSEGV/SIGABRT/SIGBUS/SIGFPE/SIGILL), and the Windows path under
+	Wine 11 (a null pointer, a call through a null pointer, a stack
+	overflow, abort() and qFatal()). macOS shares the POSIX code path, but sandbox
+	profiles can affect where the dump file may be written; that has not
+	been exercised.
 */
 class CrashHandler
 {
@@ -82,6 +92,15 @@ class CrashHandler
 		/// touches QString.
 		static void install(const LogRing *ring, const QString &dump_path);
 
+			/// Writes the dump for a qFatal(). Called by the message
+			/// handler once the fatal message is in the ring. Needed on
+			/// Windows only: Qt ends a qFatal() there with
+			/// TerminateProcess(), which neither the exception filter
+			/// nor SIGABRT ever sees. Elsewhere it does nothing, since
+			/// qFatal() ends in abort() and the SIGABRT handler writes the
+			/// dump, backtrace included.
+		static void reportFatal();
+
 			/// Writes `value` as decimal into `buffer`, at most `size`
 			/// bytes, and returns how many were written. The handler
 			/// needs this because write() takes a buffer and snprintf()
@@ -94,6 +113,13 @@ class CrashHandler
 			/// tests/qttest/tst_crashhandler.cpp. Nothing else in the
 			/// application calls it.
 		static int formatInt(char *buffer, int size, int value);
+
+			/// Writes `value` as "0x" followed by lower-case hex digits,
+			/// with the same rules as formatInt(): caller-owned buffer,
+			/// at most `size` bytes, truncating rather than overflowing.
+			/// Used for addresses and exception codes in the Windows
+			/// dump; public for the same reason as formatInt().
+		static int formatHex(char *buffer, int size, unsigned long long value);
 
 	private:
 		CrashHandler() = delete;
