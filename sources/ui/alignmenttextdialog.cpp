@@ -20,11 +20,13 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "ui_alignmenttextdialog.h"
 
+#include "../qet.h"
 AlignmentTextDialog::AlignmentTextDialog(Qt::Alignment alignment, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::AlignmentTextDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	
 	if(alignment == (Qt::AlignTop|Qt::AlignLeft))
 		ui->top_left->setChecked(true);

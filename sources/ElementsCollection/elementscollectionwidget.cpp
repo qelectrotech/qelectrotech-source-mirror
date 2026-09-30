@@ -172,6 +172,18 @@ void ElementsCollectionWidget::setCurrentLocation(
 					m_model->indexFromLocation(location));
 }
 
+/**
+	@brief ElementsCollectionWidget::addTemplate
+	Show a newly saved template in the templates tab, which is otherwise
+	only read when the collections are loaded or reloaded.
+	@param location : the saved .qetmak file
+*/
+void ElementsCollectionWidget::addTemplate(const ElementsLocation &location)
+{
+	if (m_macros_model && location.exist())
+		m_macros_model->addLocation(location);
+}
+
 void ElementsCollectionWidget::leaveEvent(QEvent *event)
 {
 	if (QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this))

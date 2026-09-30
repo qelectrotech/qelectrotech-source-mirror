@@ -24,6 +24,7 @@
 #include "conductorpropertieswidget.h"
 #include "ui_conductorpropertiesdialog.h"
 
+#include "../qet.h"
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
 	Constructor
@@ -36,6 +37,7 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(
 	ui(new Ui::ConductorPropertiesDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_cpw = new ConductorPropertiesWidget(conductor->properties());
 	m_cpw -> setHiddenOneTextPerFolio(true);
 	m_cpw->setHiddenAvailableAutonum(true);

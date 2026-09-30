@@ -111,12 +111,35 @@ add_test(NAME tst_alignment COMMAND tst_alignment)
 target_include_directories(tst_alignment PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_alignment PRIVATE Qt::Test)
 
+# terminalnamecheck.h is header-only: the terminal name rule applied by the
+# element editor on save and by --check-elements.
+add_executable(tst_terminalnamecheck tst_terminalnamecheck.cpp)
+add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
+target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
+
+# configprofile.h is header-only: which settings a saved configuration
+# profile carries, and how loading one replaces the live settings.
+add_executable(tst_configprofile tst_configprofile.cpp)
+add_test(NAME tst_configprofile COMMAND tst_configprofile)
+target_include_directories(tst_configprofile PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui)
+
 # itemgroups.cpp keeps group membership and the selection rule apart from
 # Diagram, so it is tested here on a plain scene of rectangles.
 add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.cpp)
 add_test(NAME tst_itemgroups COMMAND tst_itemgroups)
 target_include_directories(tst_itemgroups PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_itemgroups PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
+# textanchor.h is header-only: the point of a text chosen by its alignment,
+# shown as Position X/Y in the text properties (#1155).
+add_executable(tst_textanchor tst_textanchor.cpp)
+add_test(NAME tst_textanchor COMMAND tst_textanchor)
+set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)

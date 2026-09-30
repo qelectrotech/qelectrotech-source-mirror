@@ -19,6 +19,7 @@
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qetapp.h"
+#include "../../textanchor.h"
 #include "../elementscene.h"
 #include "../../utils/qetutils.h"
 #include <QApplication>
@@ -472,6 +473,41 @@ void PartDynamicTextField::setAlignment(Qt::Alignment alignment) {
 Qt::Alignment PartDynamicTextField::alignment() const
 {
 	return m_alignment;
+}
+
+/**
+	@brief PartDynamicTextField::anchorPos
+	@return the anchor point of this text, in parent coordinates:
+	the point of the text chosen by the alignment (top-left, right edge,
+	centre...). For a top-left aligned text this is pos().
+	Same as DiagramTextItem::anchorPos().
+*/
+QPointF PartDynamicTextField::anchorPos() const
+{
+	return TextAnchor::pos(this, m_alignment);
+}
+
+/**
+	@brief PartDynamicTextField::setAnchorPos
+	Move this text so that its anchor point (see anchorPos()) is at anchor.
+	@param anchor : in parent coordinates
+*/
+void PartDynamicTextField::setAnchorPos(const QPointF &anchor)
+{
+	setPos(TextAnchor::itemPosFor(this, m_alignment, anchor));
+}
+
+/**
+	@brief PartDynamicTextField::setAlignmentAtAnchor
+	Change the alignment and move the text so that its new anchor point
+	is where the previous one was.
+	@param alignment
+*/
+void PartDynamicTextField::setAlignmentAtAnchor(Qt::Alignment alignment)
+{
+	const QPointF anchor = anchorPos();
+	setAlignment(alignment);
+	setAnchorPos(anchor);
 }
 
 void PartDynamicTextField::setFont(const QFont &font) {

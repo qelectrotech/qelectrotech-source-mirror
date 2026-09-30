@@ -134,8 +134,8 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
 void DynamicTextFieldEditor::updateForm()
 {
 	if(m_text_field) {
-		ui -> m_x_sb -> setValue(m_text_field.data() -> x());
-		ui -> m_y_sb -> setValue(m_text_field.data() ->y ());
+		ui -> m_x_sb -> setValue(m_text_field.data() -> anchorPos().x());
+		ui -> m_y_sb -> setValue(m_text_field.data() -> anchorPos().y());
 		ui -> m_rotation_sb -> setValue(QET::correctAngle(m_text_field.data() -> rotation()));
 		ui -> m_frame_cb -> setChecked(m_text_field.data() -> frame());
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
@@ -211,6 +211,9 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [this](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [this](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::alignmentChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::xChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::yChanged, this, [this](){this -> updateForm();});
 
 	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
 	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
@@ -290,7 +293,8 @@ void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
 {
 	double value = ui -> m_x_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "x", m_parts[i] -> x(), value);
+		const QPointF anchor = m_parts[i] -> anchorPos();
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "anchorPos", anchor, QPointF(value, anchor.y()));
 		undo -> setText(tr("Déplacer un champ texte"));
 		undo -> enableAnimation(true);
 		undoStack().push(undo);
@@ -301,7 +305,8 @@ void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
 {
 	double value = ui -> m_y_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "y", m_parts[i] -> y(), value);
+		const QPointF anchor = m_parts[i] -> anchorPos();
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "anchorPos", anchor, QPointF(anchor.x(), value));
 		undo -> setText(tr("Déplacer un champ texte"));
 		undo -> enableAnimation(true);
 		undoStack().push(undo);
@@ -459,7 +464,7 @@ void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 		if(atd.alignment() != m_parts[i] -> alignment()) {
 			QPropertyUndoCommand *undo =\
 				new QPropertyUndoCommand(
-					m_parts[i], "alignment", QVariant(m_parts[i] -> alignment()), QVariant(atd.alignment()));
+					m_parts[i], "alignmentAtAnchor", QVariant(m_parts[i] -> alignment()), QVariant(atd.alignment()));
 			undo -> setText(tr("Modifier l'alignement d'un champ texte"));
 			undoStack().push(undo);
 		}

@@ -312,8 +312,15 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 			this, &ElementsCollectionModel::loadingProgressValueChanged);
 	connect(watcher, &QFutureWatcher<void>::progressRangeChanged,
 			this, &ElementsCollectionModel::loadingProgressRangeChanged);
-	connect(watcher, &QFutureWatcher<void>::finished,
-			this, &ElementsCollectionModel::loadingFinished);
+		//setUpData() ran on worker threads, which only kept the values on
+		//the items (ElementCollectionItem::setData()): apply them here, on
+		//the GUI thread, before anyone is told the loading is finished.
+	connect(watcher, &QFutureWatcher<void>::finished, this, [this]()
+	{
+		for (ElementCollectionItem *eci : std::as_const(m_items_list_to_setUp))
+			eci->applyDeferredData();
+		emit loadingFinished();
+	});
 	connect(watcher, &QFutureWatcher<void>::finished, watcher, &QFutureWatcher<void>::deleteLater);
 
 

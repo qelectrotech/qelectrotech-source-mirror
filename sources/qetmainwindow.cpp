@@ -92,6 +92,16 @@ void QETMainWindow::initCommonActions()
 		}
 	});
 
+	export_config_action_ = new QAction(QET::Icons::DocumentExport, tr("Enregistrer la configuration sous..."), this);
+	export_config_action_ -> setStatusTip(tr("Enregistre les réglages de QElectroTech dans un fichier", "status bar tip"));
+	connect(export_config_action_, &QAction::triggered, qet_app, &QETApp::exportConfiguration);
+	ShortcutManager::instance().registerAction(export_config_action_, "mainwindow.export_configuration", tr("Général"), QKeySequence());
+
+	import_config_action_ = new QAction(QET::Icons::DocumentImport, tr("Charger une configuration..."), this);
+	import_config_action_ -> setStatusTip(tr("Remplace les réglages de QElectroTech par ceux d'un fichier, puis ferme QElectroTech", "status bar tip"));
+	connect(import_config_action_, &QAction::triggered, qet_app, &QETApp::importConfiguration);
+	ShortcutManager::instance().registerAction(import_config_action_, "mainwindow.import_configuration", tr("Général"), QKeySequence());
+
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();
 	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
@@ -170,6 +180,9 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
+	settings_menu_ -> addSeparator();
+	settings_menu_ -> addAction(export_config_action_);
+	settings_menu_ -> addAction(import_config_action_);
 	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);

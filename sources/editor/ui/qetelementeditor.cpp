@@ -40,6 +40,7 @@
 #include "../esevent/eseventadddynamictextfield.h"
 #include "../../elementdialog.h"
 #include "../graphicspart/partterminal.h"
+#include "../terminalnamecheck.h"
 #include "../arceditor.h"
 #include "ellipseeditor.h"
 #include "lineeditor.h"
@@ -59,6 +60,10 @@
 #include <QFileDialog>
 #include <QSvgGenerator>
 #include <QHBoxLayout>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QDoubleSpinBox>
+#include <QFormLayout>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -835,6 +840,53 @@ bool QETElementEditor::checkElement()
 		}
 	}
 
+	// Check terminal names: repeated names are an error, missing names a warning
+	if (QSettings().value(TerminalNameCheck::settings_key, true).toBool())
+	{
+		QList<PartTerminal *> terminals;
+		QStringList names;
+		for (auto qgi : m_elmt_scene -> items()) {
+			if (auto terminal = qgraphicsitem_cast<PartTerminal *>(qgi)) {
+				terminals << terminal;
+				names << terminal -> terminalName();
+			}
+		}
+
+		const auto repeated = TerminalNameCheck::repeatedNames(names);
+		if (!repeated.isEmpty())
+		{
+			errors << qMakePair (tr("Noms de bornes en double"),
+								 tr("<br><b>Erreur</b> :"
+								 "<br>Plusieurs bornes portent le même nom : %1."
+								 "<br><b>Solution</b> :"
+								 "<br>Donner un nom unique à chaque borne, par exemple N.1 et N.2."
+								 " Les bornes concernées sont sélectionnées.")
+								 .arg(TerminalNameCheck::describe(repeated).toHtmlEscaped()));
+
+			m_elmt_scene -> clearSelection();
+			for (auto terminal : terminals) {
+				for (const auto &entry : repeated) {
+					if (terminal -> terminalName().trimmed() == entry.first) {
+						terminal -> setSelected(true);
+					}
+				}
+			}
+		}
+
+		const int unnamed = TerminalNameCheck::unnamedCount(names);
+		if (unnamed &&
+			!(m_elmt_scene->elementData().m_type & ElementData::AllReport) &&
+			m_elmt_scene->elementData().m_type != ElementData::ConductorDefinition &&
+			m_elmt_scene->elementData().m_type != ElementData::Thumbnail)
+		{
+			warnings << qMakePair (tr("Bornes sans nom"),
+								   tr("<br>%n borne(s) sans nom. Sans noms de bornes uniques,"
+								   " la liste de câblage (qui relie quoi à quoi) ne peut pas"
+								   " désigner chaque borne, et ne peut donc pas servir à"
+								   " câbler l'armoire en atelier.", "", unnamed));
+		}
+	}
+
 	if (!errors.count() && !warnings.count()) {
 		return(true);
 	}
@@ -1138,6 +1190,47 @@ void QETElementEditor::setupActions()
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(m_add_part_action_grp -> actions());
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
+
+		//Background frame action: a visual-only reference rectangle, never
+		//written to the saved .elmt file, to help proportion the drawing
+		//against a representative folio surface.
+	auto *toggle_background_frame_action = new QAction(QET::Icons::DocumentPrintFrame, tr("Afficher le cadre de fond"), this);
+	toggle_background_frame_action -> setCheckable(true);
+	toggle_background_frame_action -> setChecked(m_elmt_scene -> backgroundFrameVisible());
+	connect(toggle_background_frame_action, &QAction::toggled, m_elmt_scene, &ElementScene::setBackgroundFrameVisible);
+	ShortcutManager::instance().registerAction(toggle_background_frame_action, "elementeditor.toggle_background_frame", tr("Éditeur d'élément"), QKeySequence());
+	ui->m_display_menu->addAction(toggle_background_frame_action);
+	ui->m_view_toolbar->addAction(toggle_background_frame_action);
+
+	auto *configure_background_frame_action = new QAction(tr("Taille du cadre de fond..."), this);
+	connect(configure_background_frame_action, &QAction::triggered, this, [this]() {
+		QDialog dialog(this);
+		dialog.setWindowTitle(tr("Taille du cadre de fond"));
+		auto *layout = new QFormLayout(&dialog);
+
+		auto *width_spin = new QDoubleSpinBox(&dialog);
+		width_spin -> setRange(1.0, 100000.0);
+		width_spin -> setSuffix(tr(" px"));
+		width_spin -> setValue(m_elmt_scene -> backgroundFrameSize().width());
+		layout -> addRow(tr("Largeur"), width_spin);
+
+		auto *height_spin = new QDoubleSpinBox(&dialog);
+		height_spin -> setRange(1.0, 100000.0);
+		height_spin -> setSuffix(tr(" px"));
+		height_spin -> setValue(m_elmt_scene -> backgroundFrameSize().height());
+		layout -> addRow(tr("Hauteur"), height_spin);
+
+		auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+		connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+		connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+		layout -> addRow(buttons);
+
+		if (dialog.exec() == QDialog::Accepted) {
+			m_elmt_scene -> setBackgroundFrameSize(QSizeF(width_spin -> value(), height_spin -> value()));
+		}
+	});
+	ShortcutManager::instance().registerAction(configure_background_frame_action, "elementeditor.configure_background_frame", tr("Éditeur d'élément"), QKeySequence());
+	ui->m_display_menu->addAction(configure_background_frame_action);
 }
 
 /**

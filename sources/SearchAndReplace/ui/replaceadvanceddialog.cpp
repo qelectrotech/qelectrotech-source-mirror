@@ -21,6 +21,7 @@
 #include "../../qetinformation.h"
 #include "ui_replaceadvanceddialog.h"
 
+#include "../../qet.h"
 #include <QAbstractButton>
 
 /**
@@ -33,6 +34,7 @@ replaceAdvancedDialog::replaceAdvancedDialog(advancedReplaceStruct advanced, QWi
 	ui(new Ui::replaceAdvancedDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	
 	connect(ui->m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_) {
 		this->done(ui->m_button_box->buttonRole(button_));

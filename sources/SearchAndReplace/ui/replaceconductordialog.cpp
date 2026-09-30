@@ -20,6 +20,7 @@
 #include "../searchandreplaceworker.h"
 #include "ui_replaceconductordialog.h"
 
+#include "../../qet.h"
 #include <QColorDialog>
 #include <QPainter>
 
@@ -37,6 +38,7 @@ ReplaceConductorDialog::ReplaceConductorDialog(
 	ui(new Ui::ReplaceConductorDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	initWidget();
 	setProperties(properties);
 }

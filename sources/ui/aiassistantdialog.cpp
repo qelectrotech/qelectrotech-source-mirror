@@ -16,6 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "aiassistantdialog.h"
+#include "../qet.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -157,6 +158,8 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
 	refresh();
+
+	QET::trackDialogGeometry(this);
 }
 
 void AiAssistantDialog::refresh()

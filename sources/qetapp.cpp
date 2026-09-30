@@ -30,6 +30,7 @@
 #include "qetpalette.h"
 #include "qetstyle.h"
 #include "utils/qetutils.h"
+#include "utils/configprofile.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -55,9 +56,12 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QSettings>
 #include <QStyleFactory>
 #include <QStyleHints>
 #ifdef BUILD_WITHOUT_KF
@@ -65,6 +69,9 @@
 #else
 #	include <KAutoSaveFile>
 #endif
+#include "ui/backuprestoredialog.h"
+
+#include <algorithm>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -2243,6 +2250,109 @@ void QETApp::configureQET()
 }
 
 /**
+	@brief QETApp::exportConfiguration
+	Save the settings of QElectroTech to a file the user chooses, to keep
+	them as a named profile or copy them to another computer (discussion
+	#610). The file is always written in the ini format, whatever the
+	platform stores its live settings in, so a profile saved on Windows
+	loads on Linux and macOS. See ConfigProfile for the keys left out.
+*/
+void QETApp::exportConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	QString path = QFileDialog::getSaveFileName(
+				parent_widget,
+				tr("Enregistrer la configuration sous...", "dialog title"),
+				QString(),
+				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (!path.endsWith(QLatin1String(".conf"), Qt::CaseInsensitive)) {
+		path += QLatin1String(".conf");
+	}
+
+	QSettings live_settings;
+	QSettings file_settings(path, QSettings::IniFormat);
+	ConfigProfile::exportTo(live_settings, file_settings);
+
+	if (file_settings.status() != QSettings::NoError) {
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("Impossible d'enregistrer la configuration dans « %1 ».").arg(path));
+	}
+}
+
+/**
+	@brief QETApp::importConfiguration
+	Replace the settings of QElectroTech with a file saved by
+	exportConfiguration(), then close QElectroTech.
+
+	The settings are read by each part of QElectroTech when it starts, and
+	there is no signal telling all of them that a setting changed, so the
+	new settings are applied by starting QElectroTech again. That restart
+	is left to the user: a second copy started from here would find this
+	one still running, hand its arguments over to it and exit (main.cpp).
+*/
+void QETApp::importConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	const QString path = QFileDialog::getOpenFileName(
+				parent_widget,
+				tr("Charger une configuration...", "dialog title"),
+				QString(),
+				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+
+	QSettings file_settings(path, QSettings::IniFormat);
+	if (file_settings.status() != QSettings::NoError
+		|| !ConfigProfile::isProfile(file_settings))
+	{
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("« %1 » n'est pas une configuration enregistrée par QElectroTech.").arg(path));
+		return;
+	}
+
+		//Said before anything closes: once the last window is closed,
+		//QElectroTech quits by itself (checkRemainingWindows()).
+	const auto answer = QET::QetMessageBox::question(
+				parent_widget,
+				tr("Charger une configuration", "message box title"),
+				tr("Cette configuration va remplacer vos réglages actuels, sauf la "
+				   "disposition des fenêtres et la liste des fichiers récents.\n\n"
+				   "QElectroTech va ensuite se fermer. Relancez-le pour utiliser "
+				   "la nouvelle configuration.\n\n"
+				   "Voulez-vous continuer ?"),
+				QMessageBox::Yes | QMessageBox::No,
+				QMessageBox::No);
+	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+		//Asks to save any modified project, as quitQET() does. The settings
+		//are only replaced once every editor is closed, so that the editors
+		//saving their own settings on close cannot overwrite them, and a
+		//cancelled close leaves them untouched.
+	if (!closeEveryEditor()) {
+		return;
+	}
+
+	QSettings live_settings;
+	ConfigProfile::importFrom(file_settings, live_settings);
+		//~QETApp() saves the colour dialog's custom colours on exit: load
+		//the profile's into it first, or the old ones overwrite them
+	QET::loadCustomColors();
+	qApp->quit();
+}
+
+/**
 	@brief QETApp::aboutQET
 	Open the dialog about qet.
 */
@@ -2839,48 +2949,47 @@ void QETApp::checkBackupFiles()
 /**
 	@brief QETApp::offerBackupFiles
 	Ask whether to reopen the recovery files left by a previous run, and
-	open or discard them accordingly.
+	open or discard them accordingly. A project can leave several recovery
+	files, one per snapshot (@see QETProject::writeBackup): they are grouped
+	by project, and the user picks which one to reopen, the newest by default.
 	@param stale_files : the recovery files to offer
 */
 void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 {
-	QString text;
-	if(stale_files.size() == 1) {
-		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
-					   "Voulez-vous l'ouvrir ?</b><br>"));
-	} else {
-		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
-					   "Voulez-vous les ouvrir ?</b><br>"));
+		//Group the snapshots by the project they recover, newest first.
+	QHash<QString, QList<KAutoSaveFile *>> groups;
+	for (KAutoSaveFile *kasf : stale_files) {
+		groups[kasf->managedFile().path()].append(kasf);
 	}
-	for(const KAutoSaveFile *kasf : stale_files)
-	{
-#	ifdef Q_OS_WIN
-	//Remove the first character '/' before the name of the drive
-	text.append("<br>" + kasf->managedFile().path().remove(0,1));
-#	else
-	text.append("<br>" + kasf->managedFile().path());
-#	endif
+	for (auto &snapshots : groups) {
+		std::sort(snapshots.begin(), snapshots.end(),
+			[](KAutoSaveFile *a, KAutoSaveFile *b) {
+				return QFileInfo(*a).lastModified()
+					 > QFileInfo(*b).lastModified();
+			});
 	}
 
-	//Open backup file
-	if (QET::QetMessageBox::question(nullptr,
-					 tr("Fichier de restauration"),
-					 text,
-					 QMessageBox::Ok
-					 |QMessageBox::Cancel
-					 )
-			== QMessageBox::Ok)
+	BackupRestoreDialog dialog(groups, nullptr);
+	if (dialog.exec() == QDialog::Accepted)
 	{
+			//The snapshots not picked are no longer needed.
+		for (KAutoSaveFile *discarded : dialog.discardedFiles())
+		{
+			discarded->open(QIODevice::ReadWrite);
+			delete discarded;
+		}
+
+		const QList<KAutoSaveFile *> to_open = dialog.selectedFiles();
 		//If there are open editors, find those that are visible
 		if (diagramEditors().count())
 		{
 			diagramEditors().first()->setVisible(true);
-			diagramEditors().first()->openBackupFiles(stale_files);
+			diagramEditors().first()->openBackupFiles(to_open);
 		}
 		else
 		{
 			QETDiagramEditor *editor = new QETDiagramEditor();
-			editor->openBackupFiles(stale_files);
+			editor->openBackupFiles(to_open);
 		}
 	}
 	else //Clear backup file
