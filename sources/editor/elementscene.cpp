@@ -148,6 +148,9 @@ ElementScene::~ElementScene()
 	disconnect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
 	delete m_decorator_lock;
 
+		//Deleting the event interface resets the behavior; the editor
+		//is already being destroyed, so it must not hear about it.
+	blockSignals(true);
 	if (m_event_interface)
 		delete m_event_interface;
 
@@ -417,7 +420,10 @@ void ElementScene::clearEventInterface()
 */
 void ElementScene::setBehavior(ElementScene::Behavior b)
 {
+	if (b == m_behavior)
+		return;
 	m_behavior = b;
+	emit behaviorChanged();
 }
 
 ElementScene::Behavior ElementScene::behavior() const
