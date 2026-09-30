@@ -26,6 +26,7 @@
 #include "../projectview.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../conductorproperties.h"
+#include "../utils/colordialogdoubleclick.h"
 
 #include <QColorDialog>
 #include <QMenu>
@@ -217,10 +218,11 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 */
 void ConductorColorToolButton::chooseOtherColor()
 {
-	const QColor c = QColorDialog::getColor(m_current, this,
-					        tr("Choisir une couleur de conducteur"));
-	if (c.isValid()) {
-		applyColor(c);
+	QColorDialog dialog(m_current, this);
+	dialog.setWindowTitle(tr("Choisir une couleur de conducteur"));
+	ColorDialogDoubleClick::install(&dialog);
+	if (dialog.exec() == QDialog::Accepted && dialog.selectedColor().isValid()) {
+		applyColor(dialog.selectedColor());
 	}
 }
 

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "wiringlistdialog.h"
+#include "../qet.h"
 
 #include "../dataBase/projectdatabase.h"
 #include "../qetproject.h"
@@ -111,4 +112,6 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, this);
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
 	layout->addWidget(buttons);
+
+	QET::trackDialogGeometry(this);
 }

@@ -118,6 +118,13 @@ add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
 target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
 
+# configprofile.h is header-only: which settings a saved configuration
+# profile carries, and how loading one replaces the live settings.
+add_executable(tst_configprofile tst_configprofile.cpp)
+add_test(NAME tst_configprofile COMMAND tst_configprofile)
+target_include_directories(tst_configprofile PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui)
+
 # itemgroups.cpp keeps group membership and the selection rule apart from
 # Diagram, so it is tested here on a plain scene of rectangles.
 add_executable(tst_itemgroups tst_itemgroups.cpp ${QET_DIR}/sources/itemgroups.cpp)

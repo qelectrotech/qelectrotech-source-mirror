@@ -56,6 +56,8 @@ class QETMainWindow : public QMainWindow {
 	// attributes
 	protected:
 	QAction *configure_action_;              ///< Launch the QElectroTech configuration dialog
+	QAction *export_config_action_;          ///< Save the settings to a file
+	QAction *import_config_action_;          ///< Replace the settings with a saved file
 	QAction *fullscreen_action_;             ///< Toggle full screen
 	QAction *whatsthis_action_;              ///< Toggle "What's this" mode
 	QAction *about_qet_;                     ///< Launch the "About QElectroTech" dialog

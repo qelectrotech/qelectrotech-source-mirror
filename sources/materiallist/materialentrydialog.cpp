@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "materialentrydialog.h"
+#include "../qet.h"
 
 #include "../qetmessagebox.h"
 
@@ -92,6 +93,8 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	if (!m_edits.isEmpty()) {
 		m_edits.first()->setFocus();
 	}
+
+	QET::trackDialogGeometry(this);
 }
 
 /**

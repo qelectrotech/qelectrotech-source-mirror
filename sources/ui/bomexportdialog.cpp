@@ -24,6 +24,7 @@
 #include "../qetproject.h"
 #include "ui_bomexportdialog.h"
 
+#include "../qet.h"
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSqlQueryModel>
@@ -40,6 +41,7 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 	m_project(project)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 
 	m_query_widget = new ElementQueryWidget(this);
 	ui->m_main_layout->insertWidget(0, m_query_widget);

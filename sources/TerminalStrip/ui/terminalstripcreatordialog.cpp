@@ -20,6 +20,7 @@
 #include "../terminalstrip.h"
 #include "../../qetproject.h"
 
+#include "../../qet.h"
 /**
  * @brief TerminalStripCreatorDialog::TerminalStripCreatorDialog
  * @param project : Project to add a new terminal strip
@@ -31,6 +32,7 @@ TerminalStripCreatorDialog::TerminalStripCreatorDialog(QETProject *project, QWid
 	m_project(project)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 }
 
 /**

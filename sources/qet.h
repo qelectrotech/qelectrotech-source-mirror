@@ -24,6 +24,7 @@
 #include <QObject>
 
 class QActionGroup;
+class QDialog;
 /**
 	This file provides useful functions and enums that may be used from
 	anywhere else within the QElectroTech application.
@@ -204,6 +205,18 @@ namespace QET {
 	QActionGroup *depthActionGroup(QObject *parent = nullptr);
 	void saveCustomColors();
 	void loadCustomColors();
+
+		/**
+			Restore a dialog's last-used size/position from QSettings, and
+			save it back whenever the dialog closes (accepted, rejected, or
+			via the window's close button). @a key identifies the dialog in
+			QSettings; defaults to the dialog's class name, which is enough
+			to distinguish dialogs one-to-one -- pass an explicit @a key for
+			a dialog class reused for several different kinds of content
+			(e.g. a generic properties-editor wrapper), so each kind gets
+			its own remembered size instead of fighting over one entry.
+		*/
+	void trackDialogGeometry(QDialog *dialog, const QString &key = QString());
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)

@@ -63,9 +63,17 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	
 		//Option when text is displayed in multiple line
 	QTextOption option = document()->defaultTextOption();
-	option.setAlignment(Qt::AlignHCenter);
+	option.setAlignment(alignment() & Qt::AlignHorizontal_Mask);
 	option.setWrapMode(QTextOption::WordWrap);
 	document()->setDefaultTextOption(option);
+
+		//Lines of a multi-line text follow the horizontal alignment
+	connect(this, &DiagramTextItem::alignmentChanged, [this](Qt::Alignment alignment)
+	{
+		QTextOption option = document()->defaultTextOption();
+		option.setAlignment(alignment & Qt::AlignHorizontal_Mask);
+		document()->setDefaultTextOption(option);
+	});
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()

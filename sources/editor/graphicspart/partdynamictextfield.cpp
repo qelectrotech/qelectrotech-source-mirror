@@ -47,7 +47,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 
 		//Option when text is displayed in multiple line
 	QTextOption option = document() -> defaultTextOption();
-	option.setAlignment(Qt::AlignHCenter);
+	option.setAlignment(m_alignment & Qt::AlignHorizontal_Mask);
 	option.setWrapMode(QTextOption::WordWrap);
 	document() -> setDefaultTextOption(option);
 }
@@ -462,6 +462,10 @@ void PartDynamicTextField::setPlainText(const QString &text) {
 
 void PartDynamicTextField::setAlignment(Qt::Alignment alignment) {
 	m_alignment = alignment;
+		//Lines of a multi-line text follow the horizontal alignment
+	QTextOption option = document() -> defaultTextOption();
+	option.setAlignment(m_alignment & Qt::AlignHorizontal_Mask);
+	document() -> setDefaultTextOption(option);
 	emit alignmentChanged(m_alignment);
 }
 

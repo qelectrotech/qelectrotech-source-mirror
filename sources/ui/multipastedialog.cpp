@@ -26,6 +26,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../ui_multipastedialog.h"
 
+#include "../qet.h"
 #include <QHash>
 #include <QSettings>
 
@@ -35,6 +36,7 @@ MultiPasteDialog::MultiPasteDialog(Diagram *diagram, QWidget *parent) :
 	m_diagram(diagram)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 
 	connect(ui->m_x_sb, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &MultiPasteDialog::updatePreview);
 	connect(ui->m_y_sb, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &MultiPasteDialog::updatePreview);
