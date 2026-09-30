@@ -362,6 +362,20 @@ target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# The wiring list export (--export-cables) keeps every wire drawn to a folio
+# report when a report has several, joins only one-to-one report pairs, and
+# prints the folio number rather than its template. fixtures/wiring_list_arrows.qet
+# has one of each report pair; the examples check the page column.
+add_executable(
+  tst_wiringlistexport
+  tst_wiringlistexport.cpp)
+add_test(NAME tst_wiringlistexport COMMAND tst_wiringlistexport)
+add_dependencies(tst_wiringlistexport qelectrotech)
+target_link_libraries(tst_wiringlistexport PRIVATE Qt::Test)
+target_compile_definitions(tst_wiringlistexport PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
 # conductors by uuid and finds each one's two ends. Runs a script through
 # the real binary's --run on fixtures/qet_bug_repro_resaved.qet, so only
