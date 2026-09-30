@@ -72,6 +72,7 @@ class ElementsCollectionWidget : public QWidget
 		void removeProject (QETProject *project);
 		void highlightUnusedElement();
 		void setCurrentLocation(const ElementsLocation &location);
+		void addTemplate(const ElementsLocation &location);
 		QVector<ElementSearchHit> rankedSearch(const QString &text,
 						 const QModelIndex &within = QModelIndex());
 

@@ -88,7 +88,12 @@ m_preview_item(nullptr)
 				dummy_diagram->render(&painter, QRectF(QPointF(0,0), scene_rect.size()), scene_rect);
 
 				m_preview_item = new QGraphicsPixmapItem(pixmap);
-				m_preview_item->setOffset(scene_rect.topLeft());
+					// Anchor the preview on the template's own top-left
+					// corner, where addMacro() puts it, not on the origin of
+					// the folio it was saved from: a template saved from the
+					// middle of a folio was otherwise shown, and placed, that
+					// far below and to the right of the cursor.
+				m_preview_item->setOffset(scene_rect.topLeft() - m_items_top_left);
 			}
 		}
 
@@ -134,7 +139,7 @@ void DiagramEventAddMacro::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		m_preview_item->setPos(pos_);
 
 		if (m_status_bar) {
-			m_status_bar->showMessage(QString("x %1 : y %2 (Makro-Anker)").arg(QString::number(pos_.x()), QString::number(pos_.y())));
+			m_status_bar->showMessage(QString("x %1 : y %2").arg(QString::number(pos_.x()), QString::number(pos_.y())));
 		}
 	}
 	event->setAccepted(true);
@@ -255,7 +260,14 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 		QDomElement cloned_node = diagram_node.cloneNode(true).toElement();
 		DiagramContent pasted_content;
 
-		m_diagram->fromXml(cloned_node, final_pos + m_items_top_left, false, &pasted_content);
+			// fromXml() puts the template's top-left corner on final_pos,
+			// under the cursor. It skips that for a null position, which
+			// would leave the items where they were saved, so a click on
+			// the folio origin is nudged by less than it snaps away.
+		if (final_pos.isNull()) {
+			final_pos = QPointF(0.1, 0.1);
+		}
+		m_diagram->fromXml(cloned_node, final_pos, false, &pasted_content);
 		m_diagram->refreshContents();
 
 			// Prevent PasteDiagramCommand from erasing labels (BMK)
