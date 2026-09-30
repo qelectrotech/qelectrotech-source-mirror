@@ -1000,6 +1000,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *zoom_content = m_zoom_actions_group.addAction( QET::Icons::ZoomDraw,     tr("Zoom sur le contenu"));
 	QAction *zoom_fit     = m_zoom_actions_group.addAction( QET::Icons::ZoomFitBest,  tr("Zoom adapté"));
 	QAction *zoom_reset   = m_zoom_actions_group.addAction( QET::Icons::ZoomOriginal, tr("Pas de zoom"));
+	QAction *center_on_cursor = m_zoom_actions_group.addAction(tr("Centrer sur le curseur"));
 	m_zoom_action_toolBar << zoom_content << zoom_fit << zoom_reset;
 
 	ShortcutManager::instance().registerAction(zoom_in, "diagrameditor.zoom_in", tr("Éditeur de schémas"), QKeySequence::ZoomIn);
@@ -1007,18 +1008,21 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(zoom_content, "diagrameditor.zoom_content", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_8);
 	ShortcutManager::instance().registerAction(zoom_fit, "diagrameditor.zoom_fit", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_9);
 	ShortcutManager::instance().registerAction(zoom_reset, "diagrameditor.zoom_reset", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(center_on_cursor, "diagrameditor.center_on_cursor", tr("Éditeur de schémas"), QKeySequence());
 
 	zoom_in     ->setStatusTip(tr("Agrandit le folio", "status bar tip"));
 	zoom_out    ->setStatusTip(tr("Rétrécit le folio", "status bar tip"));
 	zoom_content->setStatusTip(tr("Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre"));
 	zoom_fit    ->setStatusTip(tr("Adapte le zoom exactement sur le cadre du folio", "status bar tip"));
 	zoom_reset  ->setStatusTip(tr("Restaure le zoom par défaut", "status bar tip"));
+	center_on_cursor->setStatusTip(tr("Centre le folio sur le point sous le curseur de la souris, sans changer le zoom", "status bar tip"));
 
 	zoom_in     ->setData("zoom_in");
 	zoom_out    ->setData("zoom_out");
 	zoom_content->setData("zoom_content");
 	zoom_fit    ->setData("zoom_fit");
 	zoom_reset  ->setData("zoom_reset");
+	center_on_cursor->setData("center_on_cursor");
 
 	connect(&m_zoom_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::zoomGroupTriggered);
 
@@ -1944,6 +1948,8 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 		dv->zoomFit();
 	else if (value == "zoom_reset")
 		dv->zoomReset();
+	else if (value == "center_on_cursor")
+		dv->centerOnCursor();
 }
 
 /**

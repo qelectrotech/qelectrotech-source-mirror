@@ -510,6 +510,22 @@ void DiagramView::zoomToRect(const QRectF &rect)
 }
 
 /**
+	@brief DiagramView::centerOnCursor
+	Scroll the view so the point under the mouse cursor becomes the centre
+	of the view, keeping the current zoom.
+	Does nothing when the cursor is not over the view, e.g. when the action
+	is triggered from a menu.
+*/
+void DiagramView::centerOnCursor()
+{
+	const QPoint local = viewport()->mapFromGlobal(QCursor::pos());
+	if (!viewport()->rect().contains(local)) {
+		return;
+	}
+	centerOn(mapToScene(local));
+}
+
+/**
 	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
 	Copies the selected elements from the diagram to the clipboard and then deletes them
 */

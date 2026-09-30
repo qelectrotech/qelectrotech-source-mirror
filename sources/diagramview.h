@@ -185,6 +185,7 @@ class DiagramView : public PaletteGraphicsView
 		void zoomContent();
 		void zoomReset();
 		void zoomToRect(const QRectF &rect);
+		void centerOnCursor();
 		void cut();
 		void copy();
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
