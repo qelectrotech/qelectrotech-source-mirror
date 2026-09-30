@@ -18,6 +18,7 @@
 #include "diagramview.h"
 #include "cellruler.h"
 #include "lastusedstyle.h"
+#include "utils/colordialogdoubleclick.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
@@ -176,6 +177,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
 		color_dialog->setCurrentColor(initial_properties.color);
+		ColorDialogDoubleClick::install(color_dialog);
 
 			// asks the user what color he wishes to apply
 		if (color_dialog->exec() == QDialog::Accepted)
