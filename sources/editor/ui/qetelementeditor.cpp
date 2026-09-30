@@ -1253,7 +1253,8 @@ void QETElementEditor::updateAction()
 	ui->m_select_all_act->setEnabled(true);
 	ui->m_revert_selection_action->setEnabled(true);
 
-		//Action enabled if a primitive is selected
+		//Action enabled if a primitive is selected, and no part is being
+		//added: Space rotates the part being added, not the selection (#1177)
 	auto select_list = m_depth_action_group->actions();
 	select_list << ui->m_cut_action
 				<< ui->m_delete_action
@@ -1262,7 +1263,8 @@ void QETElementEditor::updateAction()
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
 	const bool has_selection = m_elmt_scene->selectedItems().count() > 0;
-	auto items_selected = !m_read_only && has_selection;
+	const bool adding_part = m_elmt_scene->behavior() == ElementScene::AddPart;
+	auto items_selected = !m_read_only && has_selection && !adding_part;
 	for (auto action : std::as_const(select_list)) {
 		action->setEnabled(items_selected);
 	}
@@ -1297,6 +1299,7 @@ void QETElementEditor::setupConnection()
 	connect(m_elmt_scene, &ElementScene::partsZValueChanged,  this, &QETElementEditor::fillPartsList);
 	connect(m_parts_list, &QListWidget::itemSelectionChanged, this, &QETElementEditor::updateSelectionFromPartsList);
 	connect(QApplication::clipboard(),  &QClipboard::dataChanged, this, &QETElementEditor::updateAction);
+	connect(m_elmt_scene, &ElementScene::behaviorChanged,     this, &QETElementEditor::updateAction);
 
 	connect(m_elmt_scene, &ElementScene::selectionChanged, [this]() {
 		this->updateInformations();
