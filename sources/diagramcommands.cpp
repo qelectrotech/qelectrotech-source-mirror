@@ -124,8 +124,11 @@ void PasteDiagramCommand::redo()
 			// function, cross-ref, etc.) in their elementInformations.
 			// Always clear those on paste so the duplicate starts clean,
 			// regardless of the user's erase-label-on-copy preference.
+			// A slave pasted together with its master was relinked to the
+			// master's copy by initLink() above: that data is still right,
+			// and its texts show the master's label, so leave it alone.
 			const bool is_slave = (e->linkType() == Element::Slave);
-			if (is_slave) {
+			if (is_slave && e->isFree()) {
 				DiagramContext dc = e->elementInformations();
 				dc.remove(QETInformation::ELMT_PLC_TYPE);
 				dc.remove(QETInformation::ELMT_PLC_ADDRESS);
