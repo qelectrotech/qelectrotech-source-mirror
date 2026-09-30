@@ -33,6 +33,7 @@ struct ConductorData {
     QString conductor_section;
     QString function;
     QString folio;
+    int folio_index = 0; // position of the folio in the project, from 1
 };
 
 /**
