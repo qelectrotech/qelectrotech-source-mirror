@@ -161,6 +161,10 @@ python3 qet_mcp.py --call qet_elements '{"path": "drawing.qet"}'
 echo '{"path": "drawing.qet"}' | python3 qet_mcp.py --call qet_check -
 ```
 
+Pass long arguments, such as a large `qet_edit` operation list, on stdin
+with `-`: Windows refuses a command line over 32,767 characters
+(`WinError 206`).
+
 It prints the tool's JSON result and exits 0, or 1 if the tool reported an
 error, or 2 if the call itself was malformed. The workspace rule applies as
 it does in a server. The sandbox has no QElectroTech in it, so only the
@@ -472,7 +476,10 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   collection path, which on a machine that never ran `make install` does not
   exist. The only symptom is `addElement` reporting that a file plainly
   present "does not resolve to an element". An absolute `.elmt` path works
-  without it.
+  without it. On Windows and macOS, `elements_dir` needs a QElectroTech that
+  reads `QET_SETTINGS_DIR` (#1178): an older one keeps its settings in the
+  registry or the system preferences, never sees the path written for the
+  run, and uses the collection it was installed with.
 - **`set_conductor` changes the whole potential, not one segment.** That is
   what the application does — a wire number describes a potential — so name
   a terminal carrying exactly one conductor and the change reaches every

@@ -391,6 +391,18 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # QET_SETTINGS_DIR moves the settings into an INI file there (#1178): a
+  # script places a symbol only the folder's settings file can resolve.
+  add_executable(
+    tst_settingsdir
+    tst_settingsdir.cpp)
+  add_test(NAME tst_settingsdir COMMAND tst_settingsdir)
+  add_dependencies(tst_settingsdir qelectrotech)
+  target_link_libraries(tst_settingsdir PRIVATE Qt::Test)
+  target_compile_definitions(tst_settingsdir PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
   # The project database filled from the file as it is read holds exactly
   # what it holds filled from the built folios (QET_DATABASE_FROM_FOLIOS=1),
   # on every example saved once; an older file falls back, saying why.

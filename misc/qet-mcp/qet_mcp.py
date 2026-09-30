@@ -64,7 +64,7 @@ import subprocess
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
-from pathlib import Path
+from pathlib import Path, PurePath
 
 SERVER_NAME = "qet-mcp"
 SERVER_VERSION = "0.1.0"
@@ -906,20 +906,38 @@ def _launch_executable(src: Path, sandbox: Path, windows: bool) -> Path:
 def _launch_env(env: dict, home: Path, windows: bool) -> dict:
     """The environment _run_qet() starts QElectroTech in.
 
-    A private HOME and XDG directories, and, except on Windows, Qt's
-    offscreen platform so no display is needed. The Windows packages ship
-    only the qwindows platform plugin: asked for "offscreen", Qt finds no
-    plugin and stops at a message box nobody can close, so every call hung
-    until its timeout. The export flags and --run open no window there, so
-    the default platform is what they need.
+    A private HOME and XDG directories, and QET_SETTINGS_DIR pointing into
+    them. HOME and XDG move QElectroTech's settings only on Linux: Qt keeps
+    them in the registry on Windows and in the user's preferences on
+    macOS, so without QET_SETTINGS_DIR every run there read the user's own
+    settings and never saw a collection path written for it
+    (qelectrotech-source-mirror#1178). A QElectroTech that knows the
+    variable keeps its settings in an INI file in that folder instead.
+
+    Except on Windows, also Qt's offscreen platform so no display is
+    needed. The Windows packages ship only the qwindows platform plugin:
+    asked for "offscreen", Qt finds no plugin and stops at a message box
+    nobody can close, so every call hung until its timeout. The export
+    flags and --run open no window there, so the default platform is what
+    they need.
     """
     env = dict(env,
                HOME=str(home),
                XDG_CONFIG_HOME=str(home / ".config"),
-               XDG_DATA_HOME=str(home / ".local" / "share"))
+               XDG_DATA_HOME=str(home / ".local" / "share"),
+               QET_SETTINGS_DIR=str(home / ".config"))
     if not windows:
         env["QT_QPA_PLATFORM"] = "offscreen"
     return env
+
+
+def _collection_setting(collection: PurePath) -> str:
+    """The settings file that points QElectroTech at @p collection.
+
+    Forward slashes: Qt reads a backslash in these files as an escape, so a
+    Windows path written as-is arrives mangled."""
+    return ("[elements-collections]\n"
+            f"common-collection-path={collection.as_posix()}\n")
 
 
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
@@ -941,8 +959,10 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
     reporting "does not resolve to an element" for a file that is plainly
     there. elements_dir writes the one setting that fixes it. The file name
     is not free-choice: QSettings derives it from the organisation and
-    application names main.cpp sets before this branch runs, so it must be
-    QElectroTech/QElectroTech.conf and nothing else.
+    application names main.cpp sets before this branch runs. It is written
+    twice: QElectroTech/QElectroTech.ini is what a QElectroTech that knows
+    QET_SETTINGS_DIR reads, on every system (see _launch_env()), and
+    QElectroTech/QElectroTech.conf is what an older one reads on Linux.
 
     script, when given, is written into the sandbox and passed to --run.
     It lives inside the temporary directory so it cannot collide with a
@@ -973,9 +993,8 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                 raise ValueError(f"no such elements directory: {coll}")
             cfg = home / ".config" / "QElectroTech"
             cfg.mkdir(parents=True, exist_ok=True)
-            (cfg / "QElectroTech.conf").write_text(
-                "[elements-collections]\n"
-                f"common-collection-path={coll}\n", encoding="utf-8")
+            for name in ("QElectroTech.ini", "QElectroTech.conf"):
+                (cfg / name).write_text(_collection_setting(coll), encoding="utf-8")
         if script is not None:
             script_path = sandbox / "qet-mcp-edit.js"
             script_path.write_text(script, encoding="utf-8")
