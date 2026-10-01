@@ -2,6 +2,7 @@
 #include <QtTest>
 
 #include <QFile>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QProcess>
@@ -86,6 +87,27 @@ private slots:
 		QVERIFY2(!r.isEmpty(), "the script logged nothing");
 		QCOMPARE(r.value(QStringLiteral("folios")).toInt(), 0);
 		QCOMPARE(r.value(QStringLiteral("current")).toInt(), -1);
+	}
+
+	// The list is read from the build itself: the calls a script uses
+	// are in it with their parameter names, each once.
+	void apiSignaturesListed()
+	{
+		const QJsonObject r = run(QStringLiteral(
+			"qet.log('PROBE ' + JSON.stringify({sigs: qet.apiSignatures()}));\n"),
+			QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"));
+		QVERIFY2(!r.isEmpty(), "the script logged nothing");
+		QStringList sigs;
+		for (const QJsonValue &v : r.value(QStringLiteral("sigs")).toArray())
+			sigs << v.toString();
+		QVERIFY(sigs.size() > 100);
+		QVERIFY(sigs.contains(QStringLiteral("int currentFolio()")));
+		QVERIFY(sigs.contains(QStringLiteral(
+			"int addText(int folioIndex, QString text, double x, double y)")));
+		QVERIFY(sigs.contains(QStringLiteral(
+			"bool exportPdf(QString output, bool showTerminals)")));
+		QCOMPARE(sigs.filter(QStringLiteral(" exportPdf(")).size(), 1);
+		QVERIFY(sigs.filter(QStringLiteral("setUndoGrouped")).isEmpty());
 	}
 
 	void headlessUndoStaysPerCall()

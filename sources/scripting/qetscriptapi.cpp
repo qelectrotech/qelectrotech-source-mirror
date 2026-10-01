@@ -122,6 +122,40 @@ int QetScriptApi::folioCount() const
 	folio, and the first one stands in for it so a script written for the
 	editor can still be tried headless; -1 if the project has none.
 */
+/**
+	@brief QetScriptApi::apiSignatures
+	Every call a script can make, as "returnType name(type param, ...)",
+	read from the meta-object rather than written out by hand, so the list
+	is the one this build has and cannot drift from it: for a person
+	writing a script, and for an assistant that has to write one without
+	the source at hand. A call with default arguments is listed once, with
+	all of them.
+*/
+QStringList QetScriptApi::apiSignatures() const
+{
+	QStringList list;
+	const QMetaObject *meta = metaObject();
+	for (int i = meta->methodOffset(); i < meta->methodCount(); ++i) {
+		const QMetaMethod method = meta->method(i);
+		if (method.methodType() != QMetaMethod::Method
+		    || method.access() != QMetaMethod::Public
+		    || (method.attributes() & QMetaMethod::Cloned)) {
+			continue;
+		}
+		const QList<QByteArray> types = method.parameterTypes();
+		const QList<QByteArray> names = method.parameterNames();
+		QStringList params;
+		for (int p = 0; p < types.size(); ++p) {
+			params << QString::fromLatin1(types.at(p) + ' ' + names.value(p));
+		}
+		list << QStringLiteral("%1 %2(%3)")
+			.arg(QString::fromLatin1(method.typeName()),
+			     QString::fromLatin1(method.name()),
+			     params.join(QStringLiteral(", ")));
+	}
+	return list;
+}
+
 int QetScriptApi::currentFolio() const
 {
 	if (!m_project) return -1;

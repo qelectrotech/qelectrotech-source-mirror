@@ -579,6 +579,9 @@ class QetScriptApi : public QObject
 		// -- logging: a script has no console of its own --
 		Q_INVOKABLE void log(const QString &message);
 
+		// -- what a script can call, read from this class itself --
+		Q_INVOKABLE QStringList apiSignatures() const;
+
 		void setUndoGrouped(bool grouped);
 
 	private:
