@@ -40,6 +40,7 @@
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../conductorsegment.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 
@@ -3698,6 +3699,89 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 	}
 	if (new_b == old_b) return true;
 	m_project->undoStack()->push(new ChangeBorderCommand(diagram, old_b, new_b));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::conductorDefault
+	One property of the conductor defaults: a folio's (what its new
+	conductors start from, and where "one text per potential" lives), or
+	with folioIndex -1, the project's, which each new folio copies.
+	Empty if the folio or the property does not exist.
+*/
+QString QetScriptApi::conductorDefault(int folioIndex, const QString &property) const
+{
+	if (!m_project) return QString();
+	ConductorProperties p;
+	if (folioIndex == -1) {
+		p = m_project->defaultConductorProperties();
+	} else {
+		const QList<Diagram *> diagrams = m_project->diagrams();
+		if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+		p = diagrams.at(folioIndex)->defaultConductorProperties;
+	}
+	if (property == QLatin1String("onetextperfolio"))
+		return p.m_one_text_per_folio ? QStringLiteral("true") : QStringLiteral("false");
+	return conductorPropertyValue(p, property);
+}
+
+/**
+	@brief QetScriptApi::setConductorDefault
+	Set one property of the conductor defaults, under the names
+	setConductorProperty() takes plus "onetextperfolio" (true/false: one
+	number per potential on each folio). Like the Folio properties and
+	Project properties dialogs, this is not on the undo stack: neither
+	dialog has an undo command for it.
+*/
+bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setConductorDefault: project is read-only"));
+		return false;
+	}
+	Diagram *diagram = nullptr;
+	if (folioIndex != -1) {
+		const QList<Diagram *> diagrams = m_project->diagrams();
+		if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+		diagram = diagrams.at(folioIndex);
+	}
+	const ConductorProperties old_p = diagram ? diagram->defaultConductorProperties
+											  : m_project->defaultConductorProperties();
+	ConductorProperties new_p = old_p;
+	if (property == QLatin1String("onetextperfolio")) {
+		const QString v = value.toLower();
+		if (v != QLatin1String("true") && v != QLatin1String("false")) {
+			log(QStringLiteral("qet.setConductorDefault: onetextperfolio is true or false, not '%1'").arg(value));
+			return false;
+		}
+		new_p.m_one_text_per_folio = (v == QLatin1String("true"));
+	} else if (!setConductorPropertyValue(new_p, property, value)) {
+		log(QStringLiteral("qet.setConductorDefault: cannot set '%1' to '%2'; properties are onetextperfolio, %3")
+			.arg(property, value, conductorPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	if (new_p == old_p) return true;
+
+	if (!diagram) {
+		m_project->setDefaultConductorProperties(new_p);
+		return true;
+	}
+	diagram->defaultConductorProperties = new_p;
+	// Show or hide the conductor texts now, as the Folio properties dialog
+	// does (DiagramPropertiesDialog), or an export later in this run would
+	// draw them as they were.
+	if (new_p.m_one_text_per_folio != old_p.m_one_text_per_folio)
+	{
+		const QList<Conductor *> conductor_list = diagram->conductors();
+		for (Conductor *c : conductor_list)
+		{
+			const ConductorProperties cp = c->properties();
+			c->textItem()->setVisible(cp.type == ConductorProperties::Multi && cp.m_show_text);
+		}
+		for (Conductor *c : conductor_list)
+			c->calculateTextItemPosition();
+	}
 	return true;
 }
 

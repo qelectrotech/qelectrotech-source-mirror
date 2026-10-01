@@ -538,6 +538,11 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
 		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
 
+		// -- the conductor defaults of a folio (Folio properties > Conductors),
+		//    or with folioIndex -1, the project's defaults for new folios --
+		Q_INVOKABLE QString conductorDefault(int folioIndex, const QString &property) const;
+		Q_INVOKABLE bool setConductorDefault(int folioIndex, const QString &property, const QString &value);
+
 		// -- title block templates: which exist, embedding one into the project --
 		Q_INVOKABLE QStringList titleBlockTemplates() const;
 		Q_INVOKABLE bool embedTitleBlockTemplate(const QString &name);

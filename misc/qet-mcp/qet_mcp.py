@@ -1425,6 +1425,10 @@ OPS = {
     "set_project_title": ("setProjectTitle",    [("title", "str")]),
     "set_folio_border": ("setFolioBorder",      [("folio", "folio"), ("property", "str"),
                                                  ("value", "str")]),
+    # A folio's conductor defaults, or with "folio": -1 the project's ones
+    # that each new folio copies.
+    "set_conductor_default": ("setConductorDefault", [("folio", "folio"), ("property", "str"),
+                                                      ("value", "str")]),
     "embed_title_block_template": ("embedTitleBlockTemplate", [("name", "str")]),
     "duplicate_elements": ("duplicateElements", [("folio", "folio"), ("elements", "elmts"),
                                                  ("to_folio", "folio"), ("x", "num"), ("y", "num")]),
@@ -1498,6 +1502,10 @@ CONDUCTOR_PROPERTIES = ["num", "formula", "function", "bus", "cable",
                         # the conductor's look, under the file's own names
                         "color2", "bicolor", "style", "dash-size",
                         "condsize", "numsize", "displaytext"]
+
+# A folio's conductor defaults take the same names, plus the folio-wide
+# "one text per potential" switch, which no single conductor carries.
+CONDUCTOR_DEFAULT_PROPERTIES = ["onetextperfolio"] + CONDUCTOR_PROPERTIES
 
 # Methods this tool needs that only exist in a build carrying the drawing
 # verbs. Probed in the script rather than assumed, because the failure mode
@@ -1752,6 +1760,11 @@ def _build_script(operations: list, output: str) -> str:
             if op.get("kind") == "element_info" and not op.get("field"):
                 raise ValueError(f"operation {i}: element_info needs a non-empty "
                                  f"\"field\" (information key)")
+        if (name == "set_conductor_default"
+                and op.get("property") not in CONDUCTOR_DEFAULT_PROPERTIES):
+            raise ValueError(f"operation {i}: unknown conductor default "
+                             f"{op.get('property')!r}; expected one of "
+                             f"{', '.join(CONDUCTOR_DEFAULT_PROPERTIES)}")
         if name == "set_folio_border" and op.get("property") not in FOLIO_BORDER_PROPERTIES:
             raise ValueError(f"operation {i}: unknown folio border property "
                              f"{op.get('property')!r}; expected one of "
@@ -2840,6 +2853,12 @@ TOOLS = [
                         "set_folio_border sets one "
                         "of the folio frame's " + ", ".join(FOLIO_BORDER_PROPERTIES) +
                         " (counts 1-99, sizes 1-1000, display-* true/false). "
+                        "set_conductor_default sets one of a folio's conductor defaults "
+                        "(Folio properties > Conductors): onetextperfolio (true/false, one "
+                        "wire number per potential on the folio) or any set_conductor "
+                        "property, which new conductors on that folio start from; \"folio\": "
+                        "-1 sets the project's defaults that each folio added later copies. "
+                        "Not on the undo stack. "
                         "embed_title_block_template copies a template into the project from "
                         "the common/company/custom collection that has it (only reachable if "
                         "the binary's compiled-in template path resolves to something real -- "
