@@ -2917,12 +2917,22 @@ class ScriptStore(unittest.TestCase):
                                          "error": "no // ==QETScript== header"}])
 
     def test_default_folder_is_qets_data_dir(self):
-        with mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": "",
-                                          "XDG_DATA_HOME": "/x/share"}), \
-                mock.patch.object(m.os, "name", "posix"), \
-                mock.patch.object(m.sys, "platform", "linux"):
-            self.assertEqual(m.scripts_dir(),
-                             Path("/x/share/QElectroTech/QElectroTech/scripts"))
+        """QStandardPaths::AppDataLocation plus the organisation and
+        application names main.cpp sets, on each platform."""
+        from pathlib import PurePosixPath, PureWindowsPath
+        f = m.default_scripts_dir
+        self.assertEqual(f("posix", "linux", {"XDG_DATA_HOME": "/x/share"}, "/home/u"),
+                         PurePosixPath("/x/share/QElectroTech/QElectroTech/scripts"))
+        self.assertEqual(f("posix", "linux", {}, "/home/u"),
+                         PurePosixPath("/home/u/.local/share/QElectroTech/QElectroTech/scripts"))
+        self.assertEqual(f("nt", "win32", {"APPDATA": r"C:\Users\u\AppData\Roaming"}, r"C:\Users\u"),
+                         PureWindowsPath(r"C:\Users\u\AppData\Roaming\QElectroTech\QElectroTech\scripts"))
+        self.assertEqual(f("nt", "win32", {}, r"C:\Users\u"),
+                         PureWindowsPath(r"C:\Users\u\AppData\Roaming\QElectroTech\QElectroTech\scripts"))
+        self.assertEqual(f("posix", "darwin", {}, "/Users/u"),
+                         PurePosixPath("/Users/u/Library/Application Support/QElectroTech/QElectroTech/scripts"))
+        with mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": "/elsewhere"}):
+            self.assertEqual(m.scripts_dir(), Path("/elsewhere"))
 
     def test_install_does_not_need_a_binary_without_a_test(self):
         """Only a test run launches QElectroTech; storing a file must not be

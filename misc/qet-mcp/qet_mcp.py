@@ -64,7 +64,7 @@ import subprocess
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
-from pathlib import Path, PurePath
+from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
 
 SERVER_NAME = "qet-mcp"
 SERVER_VERSION = "0.1.0"
@@ -2593,24 +2593,34 @@ SCRIPT_HEADER_HELP = (
     "qet.showMessage() opens a dialog the user has to close.")
 
 
+def default_scripts_dir(os_name: str, platform: str, env, home) -> PurePath:
+    """QETApp::dataDir() + "/scripts" for a given platform.
+
+    dataDir() is Qt's AppDataLocation with organisation and application
+    both "QElectroTech" (main.cpp). Pure, so the Windows and macOS answers
+    are tested on any machine.
+    """
+    if os_name == "nt":
+        appdata = env.get("APPDATA")
+        base = (PureWindowsPath(appdata) if appdata
+                else PureWindowsPath(home, "AppData", "Roaming"))
+    elif platform == "darwin":
+        base = PurePosixPath(home, "Library", "Application Support")
+    else:
+        base = PurePosixPath(env.get("XDG_DATA_HOME") or PurePosixPath(home, ".local", "share"))
+    return base / "QElectroTech" / "QElectroTech" / "scripts"
+
+
 def scripts_dir() -> Path:
     """The folder QElectroTech reads stored scripts from.
 
-    QETApp::dataDir() + "/scripts", where dataDir() is Qt's
-    AppDataLocation for organisation and application "QElectroTech".
     QET_MCP_SCRIPTS_DIR overrides it, for a QElectroTech started with
     --data-dir or a test.
     """
     env = os.environ.get("QET_MCP_SCRIPTS_DIR", "").strip()
     if env:
         return Path(env).expanduser()
-    if os.name == "nt":
-        base = Path(os.environ.get("APPDATA") or Path.home() / "AppData" / "Roaming")
-    elif sys.platform == "darwin":
-        base = Path.home() / "Library" / "Application Support"
-    else:
-        base = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share")
-    return base / "QElectroTech" / "QElectroTech" / "scripts"
+    return Path(str(default_scripts_dir(os.name, sys.platform, os.environ, str(Path.home()))))
 
 
 def parse_script_header(text: str, script_id: str) -> dict:
