@@ -16,7 +16,8 @@
 // With several wires on a side the diagram does not say which terminal is
 // wired to which, so those wires are not joined. The Page column is the
 // folio number as the folio shows it, not its "%id/%total" template, and
-// rows come in folio order.
+// rows come in folio order. The last column is the wire's cable; the two
+// halves of P both say W1, which is written once.
 class tst_wiringlistexport : public QObject
 {
 	Q_OBJECT
@@ -73,13 +74,13 @@ private slots:
 		QVERIFY2(!fixture.isEmpty(), "fixture project not found");
 
 		const QStringList expected {
-			QStringLiteral("1/6, 2/6;PA;A1;PB;A1;;;;"),
-			QStringLiteral("3/6;EA;A1;;1;;;;"),
-			QStringLiteral("3/6;EA2;A1;;1;;;;"),
-			QStringLiteral("4/6;EB;A1;;1;;;;"),
-			QStringLiteral("5/6;LA;A1;;1;;;;"),
-			QStringLiteral("6/6;LB;A1;;1;;;;"),
-			QStringLiteral("6/6;LD;A1;;1;;;;"),
+			QStringLiteral("1/6, 2/6;PA;A1;PB;A1;;;;;W1"),
+			QStringLiteral("3/6;EA;A1;;1;;;;;W2"),
+			QStringLiteral("3/6;EA2;A1;;1;;;;;"),
+			QStringLiteral("4/6;EB;A1;;1;;;;;"),
+			QStringLiteral("5/6;LA;A1;;1;;;;;"),
+			QStringLiteral("6/6;LB;A1;;1;;;;;"),
+			QStringLiteral("6/6;LD;A1;;1;;;;;"),
 		};
 		bool ok;
 		QCOMPARE(exportCables(fixture, &ok), expected);
