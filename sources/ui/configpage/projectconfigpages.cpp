@@ -170,6 +170,12 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto wire_hops = WireHops::fromString(wire_hops_cb_ -> currentData().toString());
+	if (m_project -> wireHops() != wire_hops) {
+		m_project -> setWireHops(wire_hops);
+		modified_project = true;
+	}
+
 	if (modified_project) {
 		m_project -> setModified(true);
 	}
@@ -206,6 +212,19 @@ void ProjectMainConfigPage::initWidgets()
 	usage_enabled_cb_ = new QCheckBox(tr("Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)", "checkbox label"));
 	usage_reset_pb_ = new QPushButton(tr("Réinitialiser", "button label"));
 	connect(usage_reset_pb_, &QPushButton::clicked, this, &ProjectMainConfigPage::resetUsageTracker);
+
+		//Hops where two conductors cross without being connected (issue #436)
+	wire_hops_label_ = new QLabel(tr("Croisements de conducteurs :", "label when configuring"));
+	wire_hops_cb_ = new QComboBox();
+	wire_hops_cb_ -> addItem(tr("Sans saut", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::None));
+	wire_hops_cb_ -> addItem(tr("Saut sur les conducteurs horizontaux", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::Horizontal));
+	wire_hops_cb_ -> addItem(tr("Saut sur les conducteurs verticaux", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::Vertical));
+	wire_hops_cb_ -> setToolTip(tr("Dessine un petit arc là où deux conducteurs se croisent sans être reliés. "
+								   "Seul le dessin change : aucun élément n'est ajouté et aucun conducteur n'est coupé.",
+								   "tooltip"));
 }
 
 /**
@@ -231,6 +250,13 @@ void ProjectMainConfigPage::initLayout()
 	usage_layout0 -> addWidget(usage_reset_pb_);
 	main_layout0 -> addLayout(usage_layout0);
 	main_layout0 -> addWidget(usage_enabled_cb_);
+	main_layout0 -> addSpacing(10);
+
+	QHBoxLayout *wire_hops_layout0 = new QHBoxLayout();
+	wire_hops_layout0 -> addWidget(wire_hops_label_);
+	wire_hops_layout0 -> addWidget(wire_hops_cb_);
+	wire_hops_layout0 -> addStretch();
+	main_layout0 -> addLayout(wire_hops_layout0);
 
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
@@ -251,6 +277,9 @@ void ProjectMainConfigPage::readValuesFromProject()
 							 .arg(total_seconds / 3600)
 							 .arg((total_seconds % 3600) / 60));
 	usage_enabled_cb_ -> setChecked(usage_tracker.isEnabled());
+
+	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
+	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 }
 
 /**
@@ -277,6 +306,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	title_value_ -> setReadOnly(is_read_only);
 	usage_enabled_cb_ -> setDisabled(is_read_only);
 	usage_reset_pb_ -> setDisabled(is_read_only);
+	wire_hops_cb_ -> setDisabled(is_read_only);
 }
 
 //######################################################################################//

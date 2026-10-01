@@ -376,6 +376,20 @@ target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Hops where wires cross (issue #436): the geometry in wirehops.cpp, and
+# through the real binary, that --resave keeps the project setting and
+# adds nothing to a project without it.
+add_executable(
+  tst_wirehops
+  tst_wirehops.cpp
+  ${QET_DIR}/sources/wirehops.cpp)
+add_test(NAME tst_wirehops COMMAND tst_wirehops)
+add_dependencies(tst_wirehops qelectrotech)
+target_include_directories(tst_wirehops PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
+target_compile_definitions(tst_wirehops PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
 # conductors by uuid and finds each one's two ends. Runs a script through
 # the real binary's --run on fixtures/qet_bug_repro_resaved.qet, so only

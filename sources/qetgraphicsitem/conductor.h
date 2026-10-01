@@ -143,6 +143,7 @@ class Conductor : public QGraphicsObject
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
 
 		QList<QPointF> junctions() const;
+		QPainterPath paintedPath() const;
 
 	private:
 		void setUpConnectionForFormula(
@@ -187,6 +188,10 @@ class Conductor : public QGraphicsObject
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 		int m_vector_index = -1;
 		bool m_mouse_over;
+			///Hop path cache for paintedPath(), valid while no conductor geometry changed
+		mutable QPainterPath m_hops_path;
+		mutable quint64 m_hops_generation = 0;
+		mutable int m_hops_mode = -1;
 			/// Functional properties
 		ConductorProperties m_properties;
 			/// Text input for non simple, non-singleline conductors

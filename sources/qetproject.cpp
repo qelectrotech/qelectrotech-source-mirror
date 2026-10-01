@@ -1233,6 +1233,31 @@ void QETProject::setAutoConductor(bool ac)
 }
 
 /**
+	@brief QETProject::wireHops
+	@return which wire of a crossing draws a hop (issue #436),
+	WireHops::Mode::None when crossings are drawn as plain lines.
+*/
+WireHops::Mode QETProject::wireHops() const {
+	return m_wire_hops;
+}
+
+/**
+	@brief QETProject::setWireHops
+	Set which wire of a crossing draws a hop, and redraw every folio.
+	@param mode
+*/
+void QETProject::setWireHops(WireHops::Mode mode)
+{
+	if (mode == m_wire_hops) {
+		return;
+	}
+	m_wire_hops = mode;
+	for (Diagram *diagram : diagrams()) {
+		diagram->update();
+	}
+}
+
+/**
 	@brief QETProject::autoBreakConductor
 	@return true if use of auto break conductor is authorized.
 	See also Q_PROPERTY autoBreakConductor
@@ -1341,6 +1366,7 @@ QDomDocument QETProject::toXml()
 
 	// local, non-transmitted usage tracking (time spent on this project)
 	writeUsageXml(project_root);
+	writeWireHopsXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -1850,6 +1876,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 		//Load the local, non-transmitted usage tracking
 	readUsageXml(xml_project);
+	readWireHopsXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -2029,6 +2056,21 @@ void QETProject::readUsageXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readWireHopsXml
+	Read the <wire_crossings> element of the project, if any.
+	A project without it draws no hop.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readWireHopsXml(QDomDocument &xml_project)
+{
+	const QDomElement crossings = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("wire_crossings"));
+	m_wire_hops = crossings.isNull()
+			? WireHops::Mode::None
+			: WireHops::fromString(crossings.attribute(QStringLiteral("hop")));
+}
+
+/**
 	@brief QETProject::readDefaultPropertiesXml
 	load default properties for new diagram, found in the xml of this project
 	or by default find in the QElectroTech global conf
@@ -2171,6 +2213,23 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 */
 void QETProject::writeUsageXml(QDomElement &xml_element) {
 	m_project_properties_handler.usageTracker().toXml(xml_element);
+}
+
+/**
+	@brief QETProject::writeWireHopsXml
+	Export which wire of a crossing hops as a <wire_crossings> child of
+	\a xml_element. Written only when hops are on, so a project that never
+	used them saves exactly as before.
+*/
+void QETProject::writeWireHopsXml(QDomElement &xml_element)
+{
+	if (m_wire_hops == WireHops::Mode::None) {
+		return;
+	}
+	QDomElement crossings = xml_element.ownerDocument()
+			.createElement(QStringLiteral("wire_crossings"));
+	crossings.setAttribute(QStringLiteral("hop"), WireHops::toString(m_wire_hops));
+	xml_element.appendChild(crossings);
 }
 
 /**
