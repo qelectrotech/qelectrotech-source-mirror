@@ -1746,11 +1746,33 @@ void QetShapeItem::rebuildHandles()
 	updateArcBulgeVisibility();
 }
 
+/**
+	@brief QetShapeItem::updateArcBulgeVisibility
+	The middle handle of a half arc is shown with the Size handles only.
+	It sits exactly on one of them -- the middle of the top or bottom
+	edge (left or right for an upright arc) -- and on the top skew handle
+	in RotateSkew mode, and being drawn last it covered whichever one it
+	sat on. In Size mode the Resize handle under it is hidden instead:
+	the middle handle already changes that same height, keeping the ends
+	in place.
+*/
 void QetShapeItem::updateArcBulgeVisibility()
 {
 	const int index = m_handleRoles.indexOf(HandleRole::ArcBulge);
-	if (index >= 0 && index < m_handler_vector.size())
-		m_handler_vector.at(index)->setVisible(isAxisHalfArc());
+	if (index < 0 || index >= m_handler_vector.size())
+		return;
+
+	const bool shown = isAxisHalfArc() && m_handleMode == HandleMode::Size;
+	m_handler_vector.at(index)->setVisible(shown);
+
+	const QPointF middle = handlePositionFor(HandleRole::ArcBulge, 0);
+	for (int i = 0; i < m_handler_vector.size() && i < m_handleRoles.size(); ++i)
+	{
+		if (m_handleRoles.at(i) != HandleRole::Resize)
+			continue;
+		const QPointF p = handlePositionFor(HandleRole::Resize, m_handleSlot.at(i));
+		m_handler_vector.at(i)->setVisible(!shown || QLineF(p, middle).length() > 0.01);
+	}
 }
 
 /**
