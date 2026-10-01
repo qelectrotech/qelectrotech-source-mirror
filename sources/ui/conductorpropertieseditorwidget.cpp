@@ -34,6 +34,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QGroupBox>
+#include <QKeyEvent>
 #include <QLineEdit>
 #include <QScrollArea>
 #include <QSettings>
@@ -89,8 +90,33 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	// while keeping a minimum height so it stays usable when the dock is short.
 	setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 	setMinimumHeight(200);
+		//Enter in a field (Function, Section...) is not used by the field: it
+		//goes on to the checkable "Multifilaire" or "Unifilaire" group box
+		//around it, which takes it as a click and switches the wire between
+		//multi-line and single-line. The modal dialog never shows this, its
+		//OK button takes Enter; here nothing does, so stop it at the box.
+	for (auto *gb : m_cpw->findChildren<QGroupBox *>())
+		if (gb->isCheckable())
+			gb->installEventFilter(this);
+
 	setDisabled(true);
 	setConductor(conductor);
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::eventFilter
+	Swallow Enter on the checkable group boxes, see the constructor.
+*/
+bool ConductorPropertiesEditorWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (event->type() == QEvent::KeyPress
+		|| event->type() == QEvent::KeyRelease)
+	{
+		const int key = static_cast<QKeyEvent *>(event)->key();
+		if (key == Qt::Key_Return || key == Qt::Key_Enter)
+			return true;
+	}
+	return PropertiesEditorWidget::eventFilter(watched, event);
 }
 
 ConductorPropertiesEditorWidget::~ConductorPropertiesEditorWidget()
@@ -130,7 +156,7 @@ void ConductorPropertiesEditorWidget::apply()
 	if (!m_conductor || !m_conductor->diagram()) return;
 	if (QUndoCommand *undo = associatedUndo())
 		m_conductor->diagram()->undoStack().push(undo);
-	m_initial = m_conductor->properties();
+	m_shown = m_cpw->properties();
 }
 
 /**
@@ -212,13 +238,13 @@ void ConductorPropertiesEditorWidget::disconnectChangeSignals()
 
 /**
 	@brief ConductorPropertiesEditorWidget::reset
-	Discard the in-progress edit, restoring the conductor's current properties.
+	Discard the in-progress edit, restoring what the widget showed.
 */
 void ConductorPropertiesEditorWidget::reset()
 {
 	if (!m_conductor) return;
 	m_updating = true;
-	m_cpw->setProperties(m_initial);
+	m_cpw->setProperties(m_shown);
 	m_updating = false;
 }
 
@@ -230,54 +256,61 @@ void ConductorPropertiesEditorWidget::updateUi()
 {
 	if (!m_conductor) return;
 	m_updating = true;
-	m_initial = m_conductor->properties();
-	m_cpw->setProperties(m_initial);
+	m_cpw->setProperties(m_conductor->properties());
+		//Read back rather than keep the conductor's own values: a value the
+		//widget cannot show exactly must not count as an edit.
+	m_shown = m_cpw->properties();
 	m_updating = false;
 }
 
 /**
 	@brief ConductorPropertiesEditorWidget::associatedUndo
-	@return the edit as a QPropertyUndoCommand, or nullptr if unchanged.
+	@return the edit as one undo step, or nullptr if nothing changes.
+
+	Only the fields the user changed are written: the conductor keeps every
+	other value, including one the widget cannot show exactly.
 
 	When "apply to all" is ticked, every conductor on the same potential is
-	updated in the same undo step (one undo reverts them all), exactly as the
-	modal dialog does (ConductorPropertiesDialog::PropertiesDialog). Otherwise
-	only the selected conductor is changed.
+	updated too, in the same undo step (one undo reverts them all), as the
+	modal dialog does (ConductorPropertiesDialog::PropertiesDialog).
 */
 QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 {
 	if (!m_conductor) return nullptr;
 
 	const ConductorProperties new_properties = m_cpw->properties();
-	if (new_properties == m_conductor->properties()) return nullptr;
+	if (new_properties == m_shown) return nullptr;
 
-	QVariant old_value, new_value;
-	old_value.setValue(m_conductor->properties());
-	new_value.setValue(new_properties);
-
-	auto *undo = new QPropertyUndoCommand(
-		m_conductor, "properties", old_value, new_value);
-	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
-
-	// Propagate to every conductor on the same potential, as the modal dialog
-	// does: each related conductor becomes a child command of the same undo
-	// step, set to the same target properties.
+	QList<Conductor *> targets {m_conductor};
 	if (m_apply_all_cb && m_apply_all_cb->isChecked())
+		for (Conductor *potential_conductor : m_conductor->relatedPotentialConductors())
+			if (!targets.contains(potential_conductor))
+				targets << potential_conductor;
+
+	auto *undo = new QUndoCommand();
+	int changed = 0;
+	for (Conductor *conductor : std::as_const(targets))
 	{
-		const auto potential = m_conductor->relatedPotentialConductors();
-		if (!potential.isEmpty())
-		{
-			undo->setText(tr("Modifier les propriétés de plusieurs conducteurs",
-							  "undo caption"));
-			for (Conductor *potential_conductor : potential)
-			{
-				QVariant old_v;
-				old_v.setValue(potential_conductor->properties());
-				new QPropertyUndoCommand(
-					potential_conductor, "properties", old_v, new_value, undo);
-			}
-		}
+		const ConductorProperties old_properties = conductor->properties();
+		ConductorProperties properties = old_properties;
+		properties.applyChanges(m_shown, new_properties);
+		if (properties == old_properties) continue;
+
+		QVariant old_value, new_value;
+		old_value.setValue(old_properties);
+		new_value.setValue(properties);
+		new QPropertyUndoCommand(conductor, "properties", old_value, new_value, undo);
+		++changed;
 	}
+
+	if (!changed)
+	{
+		delete undo;
+		return nullptr;
+	}
+	undo->setText(changed == 1
+		? tr("Modifier les propriétés d'un conducteur", "undo caption")
+		: tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 	return undo;
 }
 

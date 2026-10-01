@@ -126,6 +126,8 @@ class ConductorProperties
 		void fromSettings(QSettings &, const QString & = QString());
 		static QString typeToString(ConductorType);
 		void applyForEqualAttributes(QList<ConductorProperties> list);
+		void applyChanges(const ConductorProperties &before,
+				  const ConductorProperties &after);
 
 		static ConductorProperties defaultProperties();
 

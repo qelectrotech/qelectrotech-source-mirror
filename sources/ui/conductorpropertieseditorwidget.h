@@ -54,6 +54,9 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 		QString title() const override;
 		bool setLiveEdit(bool live_edit) override;
 
+	protected:
+		bool eventFilter(QObject *watched, QEvent *event) override;
+
 	private:
 		void connectChangeSignals();
 		void disconnectChangeSignals();
@@ -62,7 +65,9 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 		ConductorPropertiesWidget *m_cpw = nullptr;
 		QCheckBox *m_apply_all_cb = nullptr;
 		Conductor *m_conductor = nullptr;
-		ConductorProperties m_initial;
+			//What the widget showed before the edit: the fields that
+			//differ from it are the ones the user changed.
+		ConductorProperties m_shown;
 		QList<QMetaObject::Connection> m_live_connections;
 		bool m_updating = false;
 };
