@@ -363,8 +363,7 @@
                    <string>neutre</string>
                   </property>
                   <property name="icon">
-                   <iconset theme="neutral" resource="../../qelectrotech.qrc">
-                    <normaloff>:/ico/16x16/neutral.png</normaloff>:/ico/16x16/neutral.png</iconset>
+                   <iconset theme="neutral"/>
                   </property>
                  </widget>
                 </item>
@@ -377,8 +376,7 @@
                    <string>terre</string>
                   </property>
                   <property name="icon">
-                   <iconset theme="ground" resource="../../qelectrotech.qrc">
-                    <normaloff>:/ico/16x16/ground.png</normaloff>:/ico/16x16/ground.png</iconset>
+                   <iconset theme="ground"/>
                   </property>
                  </widget>
                 </item>
@@ -391,8 +389,7 @@
                    <string>phase</string>
                   </property>
                   <property name="icon">
-                   <iconset theme="phase" resource="../../qelectrotech.qrc">
-                    <normaloff>:/ico/16x16/phase.png</normaloff>:/ico/16x16/phase.png</iconset>
+                   <iconset theme="phase"/>
                   </property>
                  </widget>
                 </item>

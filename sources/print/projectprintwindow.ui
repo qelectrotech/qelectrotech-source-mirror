@@ -341,8 +341,7 @@
   </action>
   <action name="m_landscape_action">
    <property name="icon">
-    <iconset theme="landscape" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/landscape.png</normaloff>:/ico/22x22/landscape.png</iconset>
+    <iconset theme="landscape"/>
    </property>
    <property name="text">
     <string>Paysage</string>
@@ -350,8 +349,7 @@
   </action>
   <action name="m_portrait_action">
    <property name="icon">
-    <iconset theme="portrait" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/portrait.png</normaloff>:/ico/22x22/portrait.png</iconset>
+    <iconset theme="portrait"/>
    </property>
    <property name="text">
     <string>Portrait</string>
@@ -359,8 +357,7 @@
   </action>
   <action name="m_first_page_action">
    <property name="icon">
-    <iconset theme="arrow-left-double" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/arrow-left-double.png</normaloff>:/ico/16x16/arrow-left-double.png</iconset>
+    <iconset theme="arrow-left-double"/>
    </property>
    <property name="text">
     <string>Première page</string>
@@ -386,8 +383,7 @@
   </action>
   <action name="m_last_page_action">
    <property name="icon">
-    <iconset theme="arrow-right-double" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/arrow-right-double.png</normaloff>:/ico/22x22/arrow-right-double.png</iconset>
+    <iconset theme="arrow-right-double"/>
    </property>
    <property name="text">
     <string>Dernière page</string>
@@ -413,8 +409,7 @@
   </action>
   <action name="m_display_all_page_action">
    <property name="icon">
-    <iconset theme="all_pages" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/all_pages.png</normaloff>:/ico/22x22/all_pages.png</iconset>
+    <iconset theme="all_pages"/>
    </property>
    <property name="text">
     <string>Afficher un aperçu de toutes les pages</string>

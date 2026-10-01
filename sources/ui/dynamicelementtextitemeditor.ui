@@ -66,8 +66,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset theme="textfield" resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/22x22/textfield.png</normaloff>:/ico/22x22/textfield.png</iconset>
+        <iconset theme="textfield"/>
        </property>
       </widget>
      </item>

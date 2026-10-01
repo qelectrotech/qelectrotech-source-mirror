@@ -32,6 +32,13 @@ void ElementPreviewDelegate::initStyleOption(QStyleOptionViewItem *option,
                                              const QModelIndex &index) const
 {
 	QStyledItemDelegate::initStyleOption(option, index);
+
+	// The view's icon size is set for the element previews. A theme icon
+	// (a folder, a collection root) would scale up to fill it, so those
+	// stay at 16 px.
+	if (!option->icon.name().isEmpty())
+		option->decorationSize = QSize(16, 16);
+
 	if (option->icon.isNull() || !QET::Palette::isDark(option->palette))
 		return;
 
