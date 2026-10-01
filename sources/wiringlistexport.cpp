@@ -145,6 +145,7 @@ QList<ConductorData> WiringListExport::collectConductors(const QDomElement &root
         data.conductor_color = cond.attribute("conductor_color");
         data.conductor_section = cond.attribute("conductor_section");
         data.function = cond.attribute("function");
+        data.cable = cond.attribute("cable");
 
         QDomElement diag = climbToDiagram(cond);
         data.folio = findDiagramFolio(diag);
@@ -331,6 +332,7 @@ QString WiringListExport::toCsvString() const
         merged.conductor_color = mergeField(otherHalf.conductor_color, normC.conductor_color);
         merged.conductor_section = mergeField(otherHalf.conductor_section, normC.conductor_section);
         merged.function = mergeField(otherHalf.function, normC.function);
+        merged.cable = mergeField(otherHalf.cable, normC.cable);
 
         uniqueConductors.append(merged);
     }
@@ -370,7 +372,8 @@ QString WiringListExport::toCsvString() const
     << tr("Tension / Protocole", "Wiring list CSV header") << ";"
     << tr("Couleur du fil", "Wiring list CSV header") << ";"
     << tr("Section du fil", "Wiring list CSV header") << ";"
-    << tr("Fonction", "Wiring list CSV header") << "\n";
+    << tr("Fonction", "Wiring list CSV header") << ";"
+    << tr("Câble", "Wiring list CSV header") << "\n";
 
     for (const ConductorData &c : uniqueConductors) {
         out << c.folio << ";"
@@ -381,7 +384,8 @@ QString WiringListExport::toCsvString() const
         << c.tension_protocol << ";"
         << c.conductor_color << ";"
         << c.conductor_section << ";"
-        << c.function << "\n";
+        << c.function << ";"
+        << c.cable << "\n";
     }
 
     return csv;
