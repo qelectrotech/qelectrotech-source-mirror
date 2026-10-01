@@ -583,6 +583,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QStringList apiSignatures() const;
 
 		void setUndoGrouped(bool grouped);
+		void setLive(QStringList *log);
 
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
@@ -604,6 +605,7 @@ class QetScriptApi : public QObject
 		QETProject *m_project;
 		DiagramView *m_view;
 		bool m_undo_grouped = false;
+		QStringList *m_live_log = nullptr;	///< set for a live run: log() and showMessage() go here
 		QString m_query_error;
 };
 

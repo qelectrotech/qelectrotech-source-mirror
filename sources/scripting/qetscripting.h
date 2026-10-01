@@ -64,6 +64,28 @@ namespace QetScripting {
 	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr,
 			  const QString &title = QString());
 
+	/**
+		@brief What a live run (an assistant acting on the open project,
+		see LiveServer) reports instead of showing: what the script
+		logged, the error if it threw, and the undo step it left, empty
+		if it changed nothing.
+	*/
+	struct LiveRun
+	{
+		QStringList log;
+		QString error;
+		QString undoText;
+	};
+
+	/**
+		@brief Run @p source as runOnProject() runs a file. @p fileName is
+		what errors name; @p title names the undo step. With @p live, no
+		box is shown: qet.log() and errors are collected there, and
+		qet.showMessage() is logged rather than shown.
+	*/
+	bool runSource(const QString &source, const QString &fileName, const QString &title,
+		       QETProject *project, DiagramView *view, LiveRun *live);
+
 }
 
 #endif // QET_SCRIPTING_H

@@ -275,6 +275,16 @@
         </widget>
        </item>
        <item row="5" column="0">
+        <widget class="QCheckBox" name="m_live_assistant">
+         <property name="text">
+          <string>Autoriser un assistant IA à agir sur le projet ouvert (mode direct)</string>
+         </property>
+         <property name="toolTip">
+          <string>Un assistant connecté par le serveur MCP peut alors exécuter des scripts sur le projet ouvert, sous vos yeux. Un avertissement est affiché à chaque démarrage tant que ce réglage est activé. Prend effet au prochain démarrage ; le décocher coupe la connexion tout de suite.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

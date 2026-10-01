@@ -393,6 +393,18 @@ bool QetScriptApi::save(const QString &output)
 void QetScriptApi::log(const QString &message)
 {
 	QTextStream(stderr) << message << "\n";
+	if (m_live_log) m_live_log->append(message);
+}
+
+/**
+	@brief QetScriptApi::setLive
+	A run asked for by an assistant (LiveServer): what the script logs is
+	collected in @p log for the answer, and a message box -- which would
+	wait for someone who did not ask for it -- is logged instead.
+*/
+void QetScriptApi::setLive(QStringList *log)
+{
+	m_live_log = log;
 }
 
 /**
@@ -4386,5 +4398,9 @@ bool QetScriptApi::zoomReset()
 */
 void QetScriptApi::showMessage(const QString &text)
 {
+	if (m_live_log) {
+		log(QStringLiteral("qet.showMessage: ") + text);
+		return;
+	}
 	QET::QetMessageBox::information(nullptr, QObject::tr("Script"), text);
 }

@@ -154,6 +154,26 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief liveAssistantEnabled
+	* @return whether an AI assistant may connect to this QElectroTech and
+	* act on the open project while the user watches (live mode, see
+	* LiveServer). Off unless the user turned it on, and even then every
+	* start asks before anything can connect. No environment override:
+	* this is a choice made by the person in front of the window.
+	*/
+	bool liveAssistantEnabled()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_assistant", false).toBool();
+	}
+
+	void setLiveAssistantEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_assistant", enabled);
+	}
+
+	/**
 	* @brief setSheetBackground
 	* Store the sheet background last picked in the diagram editor, so the
 	* next start opens on it for every project, old or new. @sa sheetBackground

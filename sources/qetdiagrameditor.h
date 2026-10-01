@@ -61,6 +61,7 @@ class QETDiagramEditor : public QETMainWindow
 	Q_OBJECT
 
         friend class TerminalStripEditorWindow;
+        friend class LiveServer;
 	
 	public:
 		QETDiagramEditor(
@@ -158,6 +159,7 @@ class QETDiagramEditor : public QETMainWindow
 		void updateScriptActions();
 		bool ensureScriptingEnabled(const QString &title);
 		void runStoredScript(const QString &path, const QString &name);
+		void setUpLiveIndicator();
 #endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
