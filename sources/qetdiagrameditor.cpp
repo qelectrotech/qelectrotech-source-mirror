@@ -359,14 +359,17 @@ void QETDiagramEditor::setUpActions()
 	m_cut   = new QAction(QET::Icons::EditCut,   tr("Co&uper"), this);
 	m_copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
 	m_paste = new QAction(QET::Icons::EditPaste, tr("C&oller"), this);
+	m_paste_origin = new QAction(QET::Icons::EditPaste, tr("Coller au point d'origine"), this);
 
 	ShortcutManager::instance().registerAction(m_cut, "diagrameditor.cut", tr("Éditeur de schémas"), QKeySequence::Cut);
 	ShortcutManager::instance().registerAction(m_copy, "diagrameditor.copy", tr("Éditeur de schémas"), QKeySequence::Copy);
 	ShortcutManager::instance().registerAction(m_paste, "diagrameditor.paste", tr("Éditeur de schémas"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(m_paste_origin, "diagrameditor.paste_origin", tr("Éditeur de schémas"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V));
 
 	m_cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	m_copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	m_paste -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
+	m_paste_origin -> setStatusTip(tr("Place les éléments du presse-papier à leur position d'origine et déplace le curseur vers ce point", "status bar tip"));
 
 	connect(m_cut, &QAction::triggered, [this]() {
 		if (currentDiagramView())
@@ -376,7 +379,10 @@ void QETDiagramEditor::setUpActions()
 		if (currentDiagramView())
 			currentDiagramView()->copy();
 	});
-	connect(m_paste, &QAction::triggered, [this]() {
+
+		//Both paste shortcuts share one starter; they differ only in the
+		//placement mode handed to DiagramEventAddPaste.
+	const auto start_paste = [this](DiagramEventAddPaste::PastePlacement placement) {
 		auto *dv = currentDiagramView();
 		if (!dv || !dv->diagram()) return;
 
@@ -399,7 +405,13 @@ void QETDiagramEditor::setUpActions()
 		const QPointF start_pos = dv->mapToScene(view_pos);
 
 		dv->diagram()->setEventInterface(
-					new DiagramEventAddPaste(dv->diagram(), start_pos));
+					new DiagramEventAddPaste(dv->diagram(), start_pos, placement));
+	};
+	connect(m_paste, &QAction::triggered, [start_paste]() {
+		start_paste(DiagramEventAddPaste::UnderCursor);
+	});
+	connect(m_paste_origin, &QAction::triggered, [start_paste]() {
+		start_paste(DiagramEventAddPaste::AtOrigin);
 	});
 
 		//Duplicate: copy the selection and place it at a configured,
@@ -1247,6 +1259,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
+	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addAction(m_insert_last_element);
@@ -2578,6 +2591,7 @@ void QETDiagramEditor::slot_updatePasteAction()
 
 	// pour coller, il faut un schema ouvert et un schema dans le presse-papier
 	m_paste -> setEnabled(editable_diagram && Diagram::clipboardMayContainDiagram());
+	m_paste_origin -> setEnabled(editable_diagram && Diagram::clipboardMayContainDiagram());
 }
 
 /**
