@@ -140,6 +140,7 @@ namespace QET {
 		QIcon Orientations;
 		QIcon PartArc;
 		QIcon PartBezier;
+		QIcon DrawFillet;
 		QIcon PartCircle;
 		QIcon PartEllipse;
 		QIcon PartLine;
@@ -540,6 +541,7 @@ void QET::Icons::initIcons()
 	Orientations        = QIcon::fromTheme("orientations");
 	PartArc             = QIcon::fromTheme("arc");
 	PartBezier          = QIcon::fromTheme("draw-bezier-curves");
+	DrawFillet          = QIcon::fromTheme("draw-fillet");
 	PartCircle          = QIcon::fromTheme("circle");
 	PartEllipse         = QIcon::fromTheme("ellipse");
 	PartLine            = QIcon::fromTheme("line");

@@ -38,6 +38,7 @@
 #endif
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
+#include "diagramevent/diagrameventfillet.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
@@ -1063,6 +1064,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_arc       = m_add_item_actions_group.addAction(QET::Icons::PartArc,       tr("Ajouter un arc"));
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 	QAction *add_path      = m_add_item_actions_group.addAction(QET::Icons::PartBezier,   tr("Ajouter une courbe"));
+	QAction *add_fillet    = m_add_item_actions_group.addAction(QET::Icons::DrawFillet,   tr("Ajouter un congé"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Ajouter un plan de bornes"));
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
@@ -1076,6 +1078,7 @@ void QETDiagramEditor::setUpActions()
 	add_arc      ->setStatusTip(tr("Ajoute un arc sur le folio actuel"));
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
 	add_path     ->setStatusTip(tr("Ajoute une courbe de Bézier sur le folio actuel"));
+	add_fillet   ->setStatusTip(tr("Arrondit le coin entre deux lignes du folio actuel"));
 	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
 
 	add_text     ->setData(QStringLiteral("text"));
@@ -1089,6 +1092,7 @@ void QETDiagramEditor::setUpActions()
 	add_arc      ->setData(QStringLiteral("arc"));
 	add_polyline ->setData(QStringLiteral("polyline"));
 	add_path     ->setData(QStringLiteral("path"));
+	add_fillet   ->setData(QStringLiteral("fillet"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 
 	add_text->setCheckable(true);
@@ -1098,6 +1102,7 @@ void QETDiagramEditor::setUpActions()
 	add_arc->setCheckable(true);
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
+	add_fillet->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -2049,6 +2054,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	{
 		diagram_event = new DiagramEventAddPath (d);
 	}
+	else if (value == "fillet")
+		diagram_event = new DiagramEventFillet (d);
 	else if (value == "image")
 	{
 		DiagramEventAddImage *deai = new DiagramEventAddImage(d);

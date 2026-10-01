@@ -148,6 +148,7 @@ namespace QET {
 		extern QIcon Orientations;
 		extern QIcon PartArc;
 		extern QIcon PartBezier;
+		extern QIcon DrawFillet;
 		extern QIcon PartCircle;
 		extern QIcon PartEllipse;
 		extern QIcon PartLine;
