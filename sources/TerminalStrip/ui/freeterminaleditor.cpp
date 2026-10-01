@@ -278,7 +278,19 @@ void FreeTerminalEditor::selectionChanged()
 {
 	const bool has_selection = !ui->m_table_view->selectionModel()->selectedIndexes().isEmpty();
 	const bool has_pending   = !m_model->modifiedModelRealTerminalData().isEmpty();
-	setDisabledMove(!has_selection || has_pending);
+	const bool has_strip     = ui->m_move_in_cb->count() > 0;
+	setDisabledMove(!has_strip || !has_selection || has_pending);
+
+		//Say why the button is disabled, the most basic reason first
+	if (!has_strip) {
+		ui->m_move_pb->setToolTip(tr("Le projet n'a aucun bornier : créez-en un avec le bouton +"));
+	} else if (has_pending) {
+		ui->m_move_pb->setToolTip(tr("Appliquez ou annulez les modifications en cours avant de déplacer"));
+	} else if (!has_selection) {
+		ui->m_move_pb->setToolTip(tr("Sélectionnez dans le tableau les bornes à déplacer"));
+	} else {
+		ui->m_move_pb->setToolTip(tr("Déplacer les bornes sélectionnées vers le bornier choisi"));
+	}
 }
 
 void FreeTerminalEditor::setDisabledMove(bool b)
@@ -286,7 +298,5 @@ void FreeTerminalEditor::setDisabledMove(bool b)
 	ui->m_move_label->setDisabled(b);
 	ui->m_move_in_cb->setDisabled(b);
 	ui->m_move_pb->setDisabled(b);
-	ui->m_move_pb->setToolTip(b ? tr("Appliquez ou annulez les modifications en cours avant de déplacer")
-								: tr("Déplacer les bornes sélectionnées vers le bornier choisi"));
 }
 
