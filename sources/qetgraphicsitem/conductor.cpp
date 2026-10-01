@@ -32,9 +32,33 @@
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../utils/qetutils.h"
+#include "../wirehops.h"
 
 #include <QMultiHash>
 #include <QtDebug>
+
+namespace {
+		//Bumped whenever a conductor changes shape, moves, or enters or
+		//leaves a folio: the hops of every conductor may then change.
+		//0 is never current, so a fresh cache is always rebuilt.
+	quint64 s_conductor_geometry_generation = 1;
+	void conductorGeometryChanged() { ++s_conductor_geometry_generation; }
+
+		//The conductors of the last folio whose hops were computed, as
+		//scene points and plain path bounds. Rebuilt only when the folio
+		//or the generation changes, so a repaint (pan, zoom, selection)
+		//costs no scene query: asking the scene for the conductors in a
+		//rect strokes each one's shape, and on a folio of a few hundred
+		//conductors that made every repaint 0.6 s slower.
+	struct HopCandidate {
+		const Conductor *conductor;
+		QRectF rect;
+		QVector<QPointF> points;
+	};
+	const Diagram *s_hop_candidates_diagram = nullptr;
+	quint64 s_hop_candidates_generation = 0;
+	QVector<HopCandidate> s_hop_candidates;
+}
 
 #define PR(x) qDebug() << #x " = " << x;
 
@@ -147,6 +171,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 */
 Conductor::~Conductor()
 {
+	conductorGeometryChanged();
 	removeHandler();
 	terminal1->removeConductor(this);
 	terminal2->removeConductor(this);
@@ -602,8 +627,9 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 
 	painter -> setPen(final_conductor_pen);
 
-		//Draw the conductor
-	painter -> drawPath(path());
+		//Draw the conductor, with a hop at each crossing if the project asks for them
+	const QPainterPath painted_path = paintedPath();
+	painter -> drawPath(painted_path);
 		//Draw the second color
 	if(m_properties.m_bicolor)
 	{
@@ -614,7 +640,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		final_conductor_pen.setDashPattern(dash_pattern);
 		painter->save();
 		painter->setPen(final_conductor_pen);
-		painter->drawPath(path());
+		painter->drawPath(painted_path);
 		painter->restore();
 	}
 
@@ -790,6 +816,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 	}
 	else if (change == QGraphicsItem::ItemSceneHasChanged)
 	{
+		conductorGeometryChanged();
 		calculateTextItemPosition();
 
 		if(!scene())
@@ -802,6 +829,9 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 	}
 	else if (change == QGraphicsItem::ItemPositionHasChanged && isSelected()) {
 		adjustHandlerPos();
+	}
+	else if (change == QGraphicsItem::ItemScenePositionHasChanged) {
+		conductorGeometryChanged();
 	}
 
 	return(QGraphicsObject::itemChange(change, value));
@@ -1657,6 +1687,7 @@ void Conductor::setPath(const QPainterPath &path)
 
 	prepareGeometryChange();
 	m_path = path;
+	conductorGeometryChanged();
 	update();
 }
 
@@ -1940,6 +1971,87 @@ bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
 		isBetween(a.x(), b.x(), c.x()) &&
 		isBetween(a.y(), b.y(), c.y())
 	);
+}
+
+/**
+	@brief Conductor::paintedPath
+	@return the path drawn for this conductor: path(), with a hop at each
+	place it crosses another conductor when the project draws hops
+	(issue #436, QETProject::wireHops()). Cached until a conductor changes
+	shape, moves, or enters or leaves a folio, so a repaint costs nothing.
+	A moved conductor still repaints the hops of the others: a crossing
+	lies inside the bounding rect of both conductors, which Qt repaints
+	when either moves.
+*/
+QPainterPath Conductor::paintedPath() const
+{
+	const Diagram *parent_diagram = diagram();
+	if (!parent_diagram || !parent_diagram->project()) {
+		return path();
+	}
+	const WireHops::Mode mode = parent_diagram->project()->wireHops();
+	if (mode == WireHops::Mode::None) {
+		return path();
+	}
+	if (m_hops_generation == s_conductor_geometry_generation
+		&& m_hops_mode == int(mode)) {
+		return m_hops_path;
+	}
+
+	if (s_hop_candidates_diagram != parent_diagram
+		|| s_hop_candidates_generation != s_conductor_geometry_generation)
+	{
+		s_hop_candidates.clear();
+		const QList<Conductor *> conductors = parent_diagram->conductors();
+		for (const Conductor *conductor : conductors)
+		{
+			HopCandidate candidate;
+			candidate.conductor = conductor;
+			candidate.rect = conductor->mapRectToScene(conductor->path().boundingRect());
+			for (const QPointF &point : conductor->segmentsToPoints()) {
+				candidate.points.append(conductor->mapToScene(point));
+			}
+			s_hop_candidates.append(candidate);
+		}
+		s_hop_candidates_diagram = parent_diagram;
+		s_hop_candidates_generation = s_conductor_geometry_generation;
+	}
+
+	m_hops_path = path();
+	m_hops_generation = s_conductor_geometry_generation;
+	m_hops_mode = int(mode);
+
+	const QList<QPointF> points = segmentsToPoints();
+	if (points.size() < 2) {
+		return m_hops_path;
+	}
+	QVector<QPointF> wire;
+	for (const QPointF &point : points) {
+		wire.append(mapToScene(point));
+	}
+
+		//A conductor crossing this one has path bounds overlapping its own;
+		//adjusted by 1 because a straight conductor's bounds have no width
+	const QRectF rect = mapRectToScene(path().boundingRect()).adjusted(-1, -1, 1, 1);
+	QList<QVector<QPointF>> others;
+	for (const HopCandidate &candidate : std::as_const(s_hop_candidates))
+	{
+		if (candidate.conductor != this
+			&& rect.intersects(candidate.rect.adjusted(-1, -1, 1, 1))) {
+			others.append(candidate.points);
+		}
+	}
+
+	const QList<QPointF> scene_hops = WireHops::crossings(wire, others, mode);
+	if (!scene_hops.isEmpty())
+	{
+		QList<QPointF> hops;
+		for (const QPointF &hop : scene_hops) {
+			hops.append(mapFromScene(hop));
+		}
+		m_hops_path = WireHops::path(QVector<QPointF>(points.begin(), points.end()), hops, mode);
+	}
+	return m_hops_path;
 }
 
 /**

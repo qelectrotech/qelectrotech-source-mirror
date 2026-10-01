@@ -20,6 +20,7 @@
 #include "configpage.h"
 
 class QLabel;
+class QComboBox;
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
@@ -125,6 +126,8 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QLabel *usage_value_;
 	QCheckBox *usage_enabled_cb_;
 	QPushButton *usage_reset_pb_;
+	QLabel *wire_hops_label_;
+	QComboBox *wire_hops_cb_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {
