@@ -454,6 +454,18 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptterminaluuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # qet.currentFolio() through --run: the first folio, or -1 with none; and
+  # --run keeps one undo step per call (only an editor run is grouped).
+  add_executable(
+    tst_scriptcurrentfolio
+    tst_scriptcurrentfolio.cpp)
+  add_test(NAME tst_scriptcurrentfolio COMMAND tst_scriptcurrentfolio)
+  add_dependencies(tst_scriptcurrentfolio qelectrotech)
+  target_link_libraries(tst_scriptcurrentfolio PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptcurrentfolio PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
 # A symbol saved without a uuid gets the same one on every load, and

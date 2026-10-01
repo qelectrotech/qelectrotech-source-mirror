@@ -26,6 +26,7 @@
 #include <QFileInfo>
 #include <QObject>
 #include <QTextStream>
+#include <QUndoStack>
 
 #ifdef QET_HAS_SCRIPTING
 #include <QJSEngine>
@@ -162,6 +163,20 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 		}
 	});
 
+	// From the editor, a run is one undo step: a script that places
+	// twenty items is undone with one Ctrl+Z, not twenty. Headless --run
+	// keeps one step per call, which is what a script calling qet.undo()
+	// itself relies on. QUndoStack keeps an empty macro as a blank entry
+	// (and marks the project modified), so a script that changed nothing
+	// has its macro taken off again: an obsolete command is deleted by
+	// QUndoStack::undo() instead of being undone onto the redo side.
+	QUndoStack *stack = (view && project) ? project->undoStack() : nullptr;
+	if (stack) {
+		stack->beginMacro(QObject::tr("Script : %1")
+				  .arg(QFileInfo(scriptPath).completeBaseName()));
+		api->setUndoGrouped(true);
+	}
+
 	QJSValue result = engine.evaluate(source, scriptPath);
 	{
 		std::lock_guard<std::mutex> lock(mtx);
@@ -169,6 +184,18 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 	}
 	cv.notify_one();
 	watchdog.join();
+
+	if (stack) {
+		api->setUndoGrouped(false);
+		stack->endMacro();
+		// Always the top of the undo side once the macro is closed, even
+		// when beginMacro() dropped a redo tail and count() went down.
+		const QUndoCommand *macro = stack->command(stack->index() - 1);
+		if (macro && macro->childCount() == 0) {
+			const_cast<QUndoCommand *>(macro)->setObsolete(true);
+			stack->undo();
+		}
+	}
 
 	if (result.isError()) {
 		const QString message = QStringLiteral("Script error: %1:%2: %3")
