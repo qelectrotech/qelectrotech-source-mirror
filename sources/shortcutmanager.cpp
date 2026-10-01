@@ -96,6 +96,33 @@ void ShortcutManager::registerAction(QObject *target, const QString &id,
 }
 
 /**
+	@brief ShortcutManager::unregisterAction
+	Forget \a target under \a id, and the id itself once no live target is
+	left. For commands that come and go while the application runs, such
+	as a stored script deleted from its folder: without this its id stays
+	listed in the shortcut settings, the shortcut bar and command search,
+	and its first description stays fixed even after it is renamed. The
+	user's saved shortcut for the id is kept, so the command picks it up
+	again if it comes back.
+*/
+void ShortcutManager::unregisterAction(QObject *target, const QString &id)
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return;
+	}
+	QList<QPointer<QObject>> &targets = it->targets;
+	targets.erase(std::remove_if(targets.begin(), targets.end(),
+				      [target](const QPointer<QObject> &t) {
+					      return t.isNull() || t.data() == target; }),
+		      targets.end());
+	if (targets.isEmpty()) {
+		m_entries.erase(it);
+		m_order.removeAll(id);
+	}
+}
+
+/**
 	@return every registered shortcut, in registration order, along with its
 	currently effective sequence -- for display in the Shortcuts config page.
 */

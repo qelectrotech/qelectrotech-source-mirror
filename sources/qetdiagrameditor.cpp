@@ -18,6 +18,7 @@
 #include "qetdiagrameditor.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
+#include "scripting/scriptlibrary.h"
 #endif
 #include <QCoreApplication>
 #include <QToolButton>
@@ -81,7 +82,9 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
+#include <QDesktopServices>
 #include <QTimer>
+#include <QUrl>
 #include <algorithm>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -162,6 +165,11 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	readSettings();  // restoreGeometry before show()
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
+#ifdef QET_HAS_SCRIPTING
+		//A toolbar saved as shown while there were scripts stays out of
+		//the way while there are none.
+	if (m_script_actions.isEmpty()) m_scripts_tool_bar->hide();
+#endif
 
 		//If valid file path is given as arguments
 	uint opened_projects = 0;
@@ -701,6 +709,17 @@ void QETDiagramEditor::setUpActions()
 		tr("Exécute un script JavaScript sur le projet courant (voir qet.*"
 		   " dans le script pour l'API disponible)"));
 	connect(m_run_script, &QAction::triggered, this, &QETDiagramEditor::slot_runScript);
+
+		//Stored scripts are files in a folder, written by hand, by the
+		//script manager or by an assistant: open it to add one.
+	m_open_scripts_folder = new QAction(QET::Icons::FolderOpen, tr("Ouvrir le dossier des scripts"), this);
+	m_open_scripts_folder->setStatusTip(
+		tr("Chaque fichier .js de ce dossier qui commence par un en-tête"
+		   " // ==QETScript== devient un bouton"));
+	connect(m_open_scripts_folder, &QAction::triggered, this, []() {
+		QDir().mkpath(ScriptLibrary::folder());
+		QDesktopServices::openUrl(QUrl::fromLocalFile(ScriptLibrary::folder()));
+	});
 #endif
 
 	#ifdef QET_EXPORT_PROJECT_DB
@@ -1206,6 +1225,14 @@ void QETDiagramEditor::setUpToolBar()
 	addToolBar(Qt::TopToolBarArea, diagram_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_add_item_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_depth_tool_bar);
+
+	m_scripts_tool_bar = new QToolBar(tr("Scripts", "toolbar title"), this);
+	m_scripts_tool_bar->setObjectName("scripts");
+	addToolBar(Qt::TopToolBarArea, m_scripts_tool_bar);
+#ifndef QET_HAS_SCRIPTING
+	m_scripts_tool_bar->toggleViewAction()->setVisible(false);
+	m_scripts_tool_bar->hide();
+#endif
 }
 
 /**
@@ -1327,7 +1354,10 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_terminal_numbering);
 	menu_project -> addAction(m_reload_element_drawings);
 #ifdef QET_HAS_SCRIPTING
-	menu_project -> addAction(m_run_script);
+	m_scripts_menu = menu_project -> addMenu(tr("Scripts"));
+	rebuildScriptActions();
+	connect(&ScriptLibrary::instance(), &ScriptLibrary::changed,
+		this, &QETDiagramEditor::rebuildScriptActions);
 #endif
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
@@ -2380,6 +2410,9 @@ void QETDiagramEditor::slot_updateUndoStack()
 */
 void QETDiagramEditor::slot_updateComplexActions()
 {
+#ifdef QET_HAS_SCRIPTING
+	updateScriptActions();
+#endif
 	DiagramView *dv = currentDiagramView();
 	if(!dv)
 	{
@@ -3723,28 +3756,7 @@ void QETDiagramEditor::slot_runScript() {
 	QETProject *project = currentProject();
 	if (!project) return;
 
-	// Scripting is off until somebody says otherwise, so the first use has
-	// to ask. Asking here rather than greying the action out keeps the
-	// feature discoverable: a disabled menu entry tells a user that
-	// something exists and nothing about how to have it.
-	if (!QetSettings::scriptingEnabled()) {
-		const QMessageBox::StandardButton answer = QET::QetMessageBox::question(
-			this,
-			tr("Exécuter un script"),
-			tr("Les scripts sont désactivés.\n\n"
-			   "Un script s'exécute avec vos droits : il peut lire et "
-			   "modifier le projet ouvert et écrire des fichiers. "
-			   "N'exécutez que des scripts dont vous connaissez "
-			   "l'origine.\n\n"
-			   "Activer les scripts ? Ce réglage est modifiable dans "
-			   "Configurer QElectroTech > Général > Projets."),
-			QMessageBox::Yes | QMessageBox::Cancel,
-			QMessageBox::Cancel);
-		if (answer != QMessageBox::Yes) {
-			return;
-		}
-		QetSettings::setScriptingEnabled(true);
-	}
+	if (!ensureScriptingEnabled(tr("Exécuter un script"))) return;
 
 	const QString script_path = QFileDialog::getOpenFileName(
 		this,
@@ -3755,6 +3767,137 @@ void QETDiagramEditor::slot_runScript() {
 	if (script_path.isEmpty()) return;
 
 	QetScripting::runOnProject(script_path, project, currentDiagramView());
+}
+
+/**
+	@brief QETDiagramEditor::ensureScriptingEnabled
+	@return true if scripts may run, asking to switch them on if they are
+	off. Shared by "Run a script..." and the stored script buttons, so
+	there is one prompt to keep right.
+*/
+bool QETDiagramEditor::ensureScriptingEnabled(const QString &title)
+{
+	// Scripting is off until somebody says otherwise, so the first use has
+	// to ask. Asking here rather than greying the action out keeps the
+	// feature discoverable: a disabled menu entry tells a user that
+	// something exists and nothing about how to have it.
+	if (!QetSettings::scriptingEnabled()) {
+		const QMessageBox::StandardButton answer = QET::QetMessageBox::question(
+			this,
+			title,
+			tr("Les scripts sont désactivés.\n\n"
+			   "Un script s'exécute avec vos droits : il peut lire et "
+			   "modifier le projet ouvert et écrire des fichiers. "
+			   "N'exécutez que des scripts dont vous connaissez "
+			   "l'origine.\n\n"
+			   "Activer les scripts ? Ce réglage est modifiable dans "
+			   "Configurer QElectroTech > Général > Projets."),
+			QMessageBox::Yes | QMessageBox::Cancel,
+			QMessageBox::Cancel);
+		if (answer != QMessageBox::Yes) {
+			return false;
+		}
+		QetSettings::setScriptingEnabled(true);
+	}
+	return true;
+}
+
+/**
+	@brief QETDiagramEditor::runStoredScript
+	Run the stored script at @a path on the current project, as one undo
+	step named after the script. The file is read again on every run, so
+	an edit to it takes effect on the next click.
+*/
+void QETDiagramEditor::runStoredScript(const QString &path, const QString &name)
+{
+	QETProject *project = currentProject();
+	if (!project) return;
+	if (!ensureScriptingEnabled(name)) return;
+	QetScripting::runOnProject(path, project, currentDiagramView(), name);
+}
+
+/**
+	@brief QETDiagramEditor::rebuildScriptActions
+	One action per stored script, in the Projet > Scripts menu and on the
+	Scripts toolbar, registered with ShortcutManager under
+	diagrameditor.script.<file name>: that one registration is what lists
+	it in the shortcut settings, the shortcut bar (S) and command search.
+	Rebuilt from scratch whenever the scripts folder changes.
+*/
+void QETDiagramEditor::rebuildScriptActions()
+{
+	for (QAction *action : std::as_const(m_script_actions)) {
+		ShortcutManager::instance().unregisterAction(
+			action, action->property("qet_script_action_id").toString());
+		delete action;
+	}
+	m_script_actions.clear();
+	m_scripts_menu->clear();
+	m_scripts_tool_bar->clear();
+
+	const ScriptLibrary &library = ScriptLibrary::instance();
+	for (const ScriptLibrary::Script &script : library.scripts()) {
+		const ScriptHeader &h = script.header;
+		auto *action = new QAction(ScriptLibrary::icon(script), h.name, this);
+		action->setStatusTip(h.tooltip);
+		action->setToolTip(h.tooltip.isEmpty() ? h.name : h.name + QLatin1Char('\n') + h.tooltip);
+		action->setProperty("qet_script_action_id", ScriptLibrary::actionId(h.id));
+		action->setProperty("qet_script_context", h.context);
+		connect(action, &QAction::triggered, this, [this, path = script.path, name = h.name]() {
+			runStoredScript(path, name);
+		});
+		ShortcutManager::instance().registerAction(action, ScriptLibrary::actionId(h.id),
+							   tr("Scripts"),
+							   QKeySequence::fromString(h.shortcut));
+		m_scripts_menu->addAction(action);
+		m_scripts_tool_bar->addAction(action);
+		m_script_actions << action;
+	}
+
+		//A script with a header that cannot be used gets no button: say
+		//which file and why, where its author will look for the button.
+	const QStringList errors = library.errors();
+	if (!errors.isEmpty()) {
+		m_scripts_menu->addSeparator();
+		for (const QString &error : errors) {
+			QAction *ignored = m_scripts_menu->addAction(QET::Icons::DialogInformation,
+								     tr("Ignoré : %1").arg(error));
+			ignored->setEnabled(false);
+		}
+	}
+
+	m_scripts_menu->addSeparator();
+	m_scripts_menu->addAction(m_run_script);
+	m_scripts_menu->addAction(m_open_scripts_folder);
+
+		//Show the toolbar when the first script arrives, hide it when the
+		//last one goes; in between it is the user's to show or hide.
+	const bool has_scripts = !m_script_actions.isEmpty();
+	if (has_scripts != m_had_scripts) m_scripts_tool_bar->setVisible(has_scripts);
+	m_had_scripts = has_scripts;
+
+	updateScriptActions();
+}
+
+/**
+	@brief QETDiagramEditor::updateScriptActions
+	Enable each script for what its header's @context asks for: always
+	(canvas), with something selected (selection), or with a conductor
+	selected (conductor). None without an open project.
+*/
+void QETDiagramEditor::updateScriptActions()
+{
+	DiagramView *dv = currentDiagramView();
+	Diagram *diagram = dv ? dv->diagram() : nullptr;
+	const bool selection = diagram && !diagram->selectedItems().isEmpty();
+	const bool conductor = diagram && !diagram->selectedConductors().isEmpty();
+	for (QAction *action : std::as_const(m_script_actions)) {
+		const QString context = action->property("qet_script_context").toString();
+		bool enabled = currentProject() != nullptr;
+		if (context == QLatin1String("selection")) enabled = enabled && selection;
+		else if (context == QLatin1String("conductor")) enabled = enabled && conductor;
+		action->setEnabled(enabled);
+	}
 }
 #endif
 
