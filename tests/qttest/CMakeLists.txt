@@ -510,6 +510,19 @@ target_compile_definitions(tst_terminaluuids PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# ConductorProperties::applyChanges() -- the Selection properties panel
+# writes only the fields the user edited.
+add_executable(
+  tst_conductorapplychanges
+  tst_conductorapplychanges.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
+target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # DiagramContext::fromXml() -- the two readers (QDom for projects, pugixml
 # for element definitions in the collection) give the same values: stray
 # spaces trimmed, accents kept.
