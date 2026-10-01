@@ -1272,6 +1272,14 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				CustomElementPart *cep = nullptr;
 				PartDynamicTextField *pdtf = nullptr;
 
+					//A shape with a "nan" or "inf" coordinate is not drawn
+					//on the folio either; loading it would only break the view
+				if (QET::hasNonFiniteGeometry(qde)) {
+					qWarning() << "Element editor: skipped a" << qde.tagName()
+							   << "with a non-finite coordinate";
+					continue;
+				}
+
 				if      (qde.tagName() == "line")       cep = new PartLine      (m_element_editor);
 				else if (qde.tagName() == "rect")       cep = new PartRectangle (m_element_editor);
 				else if (qde.tagName() == "ellipse")    cep = new PartEllipse   (m_element_editor);
