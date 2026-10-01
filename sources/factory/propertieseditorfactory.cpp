@@ -82,22 +82,28 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		PropertiesEditorWidget *editor,
 		QWidget *parent)
 {
+		//Selecting a conductor's text label edits its parent conductor (#500),
+		//mirroring how double-clicking the label opens the conductor dialog.
+		//A rubber band over wires selects their labels too: each label
+		//counts as its conductor, once.
+	QList<QGraphicsItem *> mapped;
+	for (QGraphicsItem *qgi : std::as_const(items)) {
+		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
+			if (Conductor *parent_cond = cti->parentConductor()) {
+				qgi = parent_cond;
+			}
+		}
+		if (!mapped.contains(qgi)) {
+			mapped << qgi;
+		}
+	}
+	items = mapped;
+
 	const int count_ = items.size();
 	if (count_ == 0) {
 		return nullptr;
 	}
 	QGraphicsItem *item = items.first();
-
-		//Selecting a conductor's text label edits its parent conductor (#500),
-		//mirroring how double-clicking the label opens the conductor dialog.
-	if (count_ == 1) {
-		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
-			if (Conductor *parent_cond = cti->parentConductor()) {
-				items = {parent_cond};
-				item = parent_cond;
-			}
-		}
-	}
 	const int type_ = item->type();
 
 		//The editor widget can only edit one item
@@ -124,18 +130,17 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 					false).toBool()) {
 				return nullptr;
 			}
-			//Prototype (#500): single-conductor editing in the dock.
-			if (count_ > 1) {
-				return nullptr;
+			QList<Conductor *> conductors;
+			for (QGraphicsItem *qgi : std::as_const(items)) {
+				conductors << static_cast<Conductor *>(qgi);
 			}
-			auto conductor = static_cast<Conductor*>(item);
 
 			if (class_name == ConductorPropertiesEditorWidget::staticMetaObject.className())
 			{
-				static_cast<ConductorPropertiesEditorWidget*>(editor)->setConductor(conductor);
+				static_cast<ConductorPropertiesEditorWidget*>(editor)->setConductors(conductors);
 				return editor;
 			}
-			return new ConductorPropertiesEditorWidget(conductor, parent);
+			return new ConductorPropertiesEditorWidget(conductors, parent);
 		}
 		case Element::Type: //1000
 		{
