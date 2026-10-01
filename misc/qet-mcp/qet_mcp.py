@@ -1023,8 +1023,10 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                 "QET_ENABLE_SCRIPTING=1 to the environment this server is "
                 "started in -- in an MCP client that is the \"env\" block of "
                 "its entry in the client configuration. Only qet_query, "
-                "qet_continuity, qet_check, qet_project_new and qet_edit "
-                "need it; every other tool either reads the file directly "
+                "qet_continuity, qet_check, qet_project_new, qet_edit, "
+                "qet_script_api, qet_script_test, qet_script_install and "
+                "qet_script_remove need it; every other tool either reads "
+                "the file directly "
                 "or uses a plain CLI flag.")
         return result
 
@@ -2551,6 +2553,338 @@ def tool_edit(binary: str, project: str, operations: list, output: str,
     return result
 
 
+# --------------------------------------------------------------------------
+# Stored scripts: the buttons in Projet > Scripts and on the Scripts toolbar
+# --------------------------------------------------------------------------
+#
+# QElectroTech turns every .js file in one folder into a command with an
+# icon, read from a // ==QETScript== header at the top of the file. The
+# folder is the whole contract: a person writing a script by hand and an
+# assistant using these tools both end with a file there, and QElectroTech
+# notices it without a restart. So installing is writing a file, and these
+# tools never talk to a running QElectroTech.
+#
+# The folder is not the client's to choose -- scripts_dir() finds it the
+# way QElectroTech does -- and writing to it needs the same consent as
+# editing a project: QET_ENABLE_SCRIPTING=1 in this server's environment.
+# A stored script runs, with the user's rights, when they click its button.
+
+_SCRIPT_CONTEXTS = ("canvas", "selection", "conductor")
+_SCRIPT_ID = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+_SCRIPT_MAX_BYTES = 256 * 1024
+_ICON_MAX_BYTES = 64 * 1024
+
+SCRIPT_HEADER_HELP = (
+    "A stored script is one .js file; its first lines say how its button "
+    "looks:\n"
+    "// ==QETScript==\n"
+    "// @name     Add revision note          (required)\n"
+    "// @icon     <id>.svg                   (optional: a file next to the "
+    "script, or builtin:<icon theme name>; a tile with the initials otherwise)\n"
+    "// @tooltip  Puts a note on the folio on screen\n"
+    "// @shortcut Ctrl+Alt+R                 (optional default shortcut)\n"
+    "// @context  canvas                     (canvas: always enabled; "
+    "selection: something selected; conductor: a conductor selected)\n"
+    "// @api      1\n"
+    "// ==/QETScript==\n"
+    "The script sees one global, qet. qet.currentFolio() is the folio on "
+    "screen; folio indexes count from 0. A click is one undo step, so do "
+    "not call qet.undo() in a stored script. Report with qet.log(); "
+    "qet.showMessage() opens a dialog the user has to close.")
+
+
+def scripts_dir() -> Path:
+    """The folder QElectroTech reads stored scripts from.
+
+    QETApp::dataDir() + "/scripts", where dataDir() is Qt's
+    AppDataLocation for organisation and application "QElectroTech".
+    QET_MCP_SCRIPTS_DIR overrides it, for a QElectroTech started with
+    --data-dir or a test.
+    """
+    env = os.environ.get("QET_MCP_SCRIPTS_DIR", "").strip()
+    if env:
+        return Path(env).expanduser()
+    if os.name == "nt":
+        base = Path(os.environ.get("APPDATA") or Path.home() / "AppData" / "Roaming")
+    elif sys.platform == "darwin":
+        base = Path.home() / "Library" / "Application Support"
+    else:
+        base = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share")
+    return base / "QElectroTech" / "QElectroTech" / "scripts"
+
+
+def parse_script_header(text: str, script_id: str) -> dict:
+    """The same rules as QElectroTech's ScriptHeader::parse().
+
+    Returns the header's fields, with "error" set when QElectroTech would
+    refuse it (and so show no button for it).
+    """
+    h = {"id": script_id, "name": "", "icon": "", "tooltip": "", "shortcut": "",
+         "context": "canvas", "api": 1,
+         "action_id": "diagrameditor.script." + script_id}
+    m = re.search(r"//\s*==QETScript==\s*\n(.*?)//\s*==/QETScript==", text, re.S)
+    if not m:
+        h["error"] = "no // ==QETScript== header"
+        return h
+    for line in m.group(1).split("\n"):
+        lm = re.match(r"^\s*//\s*@(\w+)\s+(.*?)\s*$", line)
+        if not lm:
+            continue
+        key, value = lm.groups()
+        if key == "api":
+            try:
+                h["api"] = int(value)
+            except ValueError:
+                h["api"] = 0
+        elif key in ("name", "icon", "tooltip", "shortcut", "context"):
+            h[key] = value
+        else:
+            h["error"] = f"unknown header key @{key}"
+            return h
+    if not h["name"]:
+        h["error"] = "@name is required"
+    elif h["context"] not in _SCRIPT_CONTEXTS:
+        h["error"] = "@context must be one of: " + ", ".join(_SCRIPT_CONTEXTS)
+    elif h["api"] != 1:
+        h["error"] = f"@api {h['api']} is not supported by this version (1 is)"
+    return h
+
+
+def _script_id(script_id) -> str:
+    if not isinstance(script_id, str) or not _SCRIPT_ID.match(script_id):
+        raise ValueError("'id' must be 1-64 characters of a-z, 0-9, '-' and '_', "
+                         "starting with a letter or digit: it is the file name")
+    return script_id
+
+
+def _require_script_consent() -> None:
+    if os.environ.get("QET_ENABLE_SCRIPTING") != "1":
+        raise ValueError(
+            "storing a script needs the same consent as editing a project: "
+            "QET_ENABLE_SCRIPTING=1 in the environment this server is started "
+            "in. A stored script runs with the user's rights when they click it.")
+
+
+def _check_icon_svg(svg: str) -> None:
+    if not isinstance(svg, str) or len(svg.encode("utf-8")) > _ICON_MAX_BYTES:
+        raise ValueError(f"'icon_svg' must be SVG text under {_ICON_MAX_BYTES // 1024} KB")
+    try:
+        root = ET.fromstring(svg)
+    except ET.ParseError as exc:
+        raise ValueError(f"'icon_svg' is not well-formed XML: {exc}") from None
+    if root.tag.rsplit("}", 1)[-1] != "svg":
+        raise ValueError("'icon_svg' must have <svg> as its root element")
+
+
+def _write_atomic(path: Path, data: str) -> None:
+    """Write, then rename into place, so the watcher never reads half a file."""
+    tmp = path.with_name("." + path.name + ".tmp")
+    tmp.write_text(data, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def tool_script_api(binary: str, timeout: int = 120) -> dict:
+    """The calls a script can make, asked of the QElectroTech that will run it."""
+    script = ("var sigs = typeof qet.apiSignatures === 'function' ? qet.apiSignatures()"
+              " : null;\n"
+              "var names = []; for (var k in qet) if (typeof qet[k] === 'function') "
+              "names.push(k);\n"
+              "qet.log(%s + JSON.stringify({kind: 'api', signatures: sigs, names: names}));\n"
+              % json.dumps(_MARKER))
+    with tempfile.TemporaryDirectory(prefix="qet-mcp-api-") as tmp:
+        proj = Path(tmp) / "api.qet"
+        proj.write_text('<project version="0.100.0" title="api">\n</project>\n',
+                        encoding="utf-8")
+        result = _run_qet(binary, [str(proj)], timeout=timeout, script=script,
+                          tail=400_000)
+    rec = None
+    for line in (result.get("stdout", "") + "\n" + result.get("stderr", "")).splitlines():
+        idx = line.find(_MARKER)
+        if idx >= 0:
+            try:
+                rec = json.loads(line[idx + len(_MARKER):])
+            except json.JSONDecodeError:
+                pass
+    if rec is None:
+        result["ok"] = False
+        result["stdout"] = result.get("stdout", "")[-4000:]
+        result["stderr"] = result.get("stderr", "")[-4000:]
+        return result
+    out = {"ok": True, "header_format": SCRIPT_HEADER_HELP}
+    if rec.get("signatures"):
+        out["calls"] = rec["signatures"]
+    else:
+        out["calls"] = sorted(n for n in rec.get("names", [])
+                              if not n.endswith("Changed") and n != "deleteLater")
+        out["note"] = ("this QElectroTech predates qet.apiSignatures(): names only, "
+                       "see the JavaScript Scripting wiki page for parameters")
+    out["call_count"] = len(out["calls"])
+    return out
+
+
+def tool_script_test(binary: str, project: str, source: str,
+                     elements_dir: str | None = None, timeout: int = 180) -> dict:
+    """Run a script on a copy of a project and say what it would change.
+
+    What clicking its button would do, without touching the project: the
+    script runs headless on a copy, the copy is saved, and qet_diff compares
+    it with the original. Headless there is no folio on screen, so
+    qet.currentFolio() is the first folio.
+    """
+    proj = Path(project).expanduser()
+    if not proj.is_file():
+        raise ValueError(f"no such project: {proj}")
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("'source' must be the script's text")
+    header = parse_script_header(source, "test")
+    with tempfile.TemporaryDirectory(prefix="qet-mcp-script-") as tmp:
+        copy = Path(tmp) / proj.name
+        shutil.copy2(proj, copy)
+        # Older builds have no currentFolio(); the first folio stands in, as
+        # it does headless in builds that have it. On the script's own first
+        # line, so the line numbers in its errors are its own.
+        script = ("if (typeof qet.currentFolio !== 'function') "
+                  "qet.currentFolio = function () { return qet.folioCount() ? 0 : -1; }; "
+                  + source + "\n"
+                  "qet.log(%s + JSON.stringify({kind: 'save', result: qet.save(%s)}));\n"
+                  % (json.dumps(_MARKER), json.dumps(str(copy))))
+        result = _run_qet(binary, [str(copy)], timeout=timeout,
+                          elements_dir=elements_dir, script=script, tail=400_000)
+        streams = result.get("stdout", "") + "\n" + result.get("stderr", "")
+        saved = None
+        for line in streams.splitlines():
+            idx = line.find(_MARKER)
+            if idx >= 0:
+                try:
+                    saved = json.loads(line[idx + len(_MARKER):]).get("result")
+                except json.JSONDecodeError:
+                    pass
+        errors = [ln.strip() for ln in streams.splitlines() if "Script error:" in ln]
+        log = [ln for ln in streams.splitlines()
+               if ln.strip() and _MARKER not in ln and "Script error:" not in ln]
+        out = {"ok": bool(result.get("ok")) and saved is True and not errors,
+               "header": header, "errors": errors, "log": log[-60:]}
+        if result.get("hint"):
+            out["hint"] = result["hint"]
+        if result.get("timed_out"):
+            out["timed_out"] = True
+        if saved is True:
+            out["diff"] = tool_diff(str(proj), str(copy))
+        elif not errors:
+            out["errors"] = ["the script did not finish: it threw before the "
+                             "copy could be saved, or never ran"]
+        if header.get("error"):
+            out["header_warning"] = (f"QElectroTech would show no button for this "
+                                     f"script: {header['error']}")
+        return out
+
+
+def tool_script_install(script_id: str, source: str, icon_svg: str | None = None,
+                        overwrite: bool = False, test_project: str | None = None,
+                        binary: str | None = None, elements_dir: str | None = None,
+                        timeout: int = 180) -> dict:
+    """Store a script so QElectroTech shows it as a button."""
+    _require_script_consent()
+    sid = _script_id(script_id)
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("'source' must be the script's text")
+    if len(source.encode("utf-8")) > _SCRIPT_MAX_BYTES:
+        raise ValueError(f"'source' is over {_SCRIPT_MAX_BYTES // 1024} KB")
+    header = parse_script_header(source, sid)
+    if header.get("error"):
+        raise ValueError(f"QElectroTech would refuse this header: {header['error']}. "
+                         + SCRIPT_HEADER_HELP)
+    folder = scripts_dir()
+    icon = header["icon"]
+    if icon_svg is not None:
+        _check_icon_svg(icon_svg)
+        if icon != f"{sid}.svg":
+            raise ValueError(f"with 'icon_svg', the header must say '// @icon {sid}.svg'")
+    elif icon and not icon.startswith("builtin:") and not (folder / icon).is_file():
+        raise ValueError(f"the header names icon file {icon!r}, which is not in "
+                         f"{folder}: pass its SVG as 'icon_svg', use builtin:<name>, "
+                         "or leave @icon out for an initials tile")
+
+    target = folder / f"{sid}.js"
+    if target.exists() and not overwrite:
+        raise ValueError(f"a script with id {sid!r} is already stored: {target}. "
+                         "Pass \"overwrite\": true to replace it.")
+
+    test = None
+    if test_project:
+        test = tool_script_test(binary, test_project, source, elements_dir, timeout)
+        if not test.get("ok"):
+            return {"ok": False, "installed": None,
+                    "reason": "the test run failed, so nothing was stored",
+                    "test": test}
+
+    folder.mkdir(parents=True, exist_ok=True)
+    if icon_svg is not None:
+        _write_atomic(folder / f"{sid}.svg", icon_svg)
+    _write_atomic(target, source)
+    out = {"ok": True, "installed": str(target), "header": header,
+           "where": "Projet > Scripts, the Scripts toolbar, command search "
+                    "(Ctrl+Shift+M) and the shortcut bar's Customise list; an "
+                    "open QElectroTech picks it up without a restart"}
+    if test is not None:
+        out["test"] = {"ok": True, "diff": test.get("diff")}
+    return out
+
+
+def tool_script_list() -> dict:
+    folder = scripts_dir()
+    scripts, refused = [], []
+    if folder.is_dir():
+        for path in sorted(folder.glob("*.js")):
+            try:
+                text = path.read_text(encoding="utf-8")
+            except (OSError, UnicodeDecodeError) as exc:
+                refused.append({"file": path.name, "error": str(exc)})
+                continue
+            h = parse_script_header(text, path.stem)
+            if h.get("error"):
+                refused.append({"file": path.name, "error": h["error"]})
+            else:
+                scripts.append(h)
+    return {"folder": str(folder), "exists": folder.is_dir(),
+            "scripts": scripts, "refused": refused}
+
+
+def tool_script_read(script_id: str) -> dict:
+    sid = _script_id(script_id)
+    folder = scripts_dir()
+    path = folder / f"{sid}.js"
+    if not path.is_file():
+        raise ValueError(f"no stored script {sid!r} in {folder}")
+    source = path.read_text(encoding="utf-8")
+    out = {"id": sid, "path": str(path), "source": source,
+           "header": parse_script_header(source, sid)}
+    icon = folder / f"{sid}.svg"
+    if icon.is_file():
+        out["icon_svg"] = icon.read_text(encoding="utf-8")
+    return out
+
+
+def tool_script_remove(script_id: str) -> dict:
+    _require_script_consent()
+    sid = _script_id(script_id)
+    folder = scripts_dir()
+    path = folder / f"{sid}.js"
+    if not path.is_file():
+        raise ValueError(f"no stored script {sid!r} in {folder}")
+    icon = parse_script_header(path.read_text(encoding="utf-8"), sid).get("icon", "")
+    path.unlink()
+    removed = [str(path)]
+    # The icon goes too unless another script still names it.
+    if icon and not icon.startswith("builtin:") and "/" not in icon and "\\" not in icon:
+        others = {parse_script_header(p.read_text(encoding="utf-8"), p.stem).get("icon")
+                  for p in folder.glob("*.js")}
+        if icon not in others and (folder / icon).is_file():
+            (folder / icon).unlink()
+            removed.append(str(folder / icon))
+    return {"removed": removed}
+
+
 TOOLS = [
     {
         "name": "qet_project_info",
@@ -3151,6 +3485,108 @@ TOOLS = [
             a["output"], a["names"], a["parts"], a.get("terminals"),
             a.get("link_type", "simple"), a.get("informations"), a.get("uuid")),
     },
+    {
+        "name": "qet_script_api",
+        "description": "List every call a QElectroTech script can make (the global "
+                       "'qet'), asked of the QElectroTech that will run it, plus the "
+                       "header format that turns a script into a button. Read this "
+                       "before writing a script for qet_script_install. One launch; "
+                       "needs QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
+                "timeout": {"type": "integer", "default": 120},
+            },
+        },
+        "handler": lambda a: tool_script_api(a["binary"], a.get("timeout", 120)),
+    },
+    {
+        "name": "qet_script_test",
+        "description": "Run a script's text on a COPY of a project and return what it "
+                       "would change (a qet_diff), what it logged, and any error with "
+                       "its line. The project is never modified. Headless there is no "
+                       "folio on screen: qet.currentFolio() is the first folio. Also "
+                       "says if the header would get no button. Needs "
+                       "QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
+                "project": {"type": "string", "description": "the .qet to try it on; never modified"},
+                "source": {"type": "string", "description": "the script's full text"},
+                "elements_dir": {"type": "string"},
+                "timeout": {"type": "integer", "default": 180},
+            },
+            "required": ["project", "source"],
+        },
+        "handler": lambda a: tool_script_test(a["binary"], a["project"], a["source"],
+                                              a.get("elements_dir"), a.get("timeout", 180)),
+    },
+    {
+        "name": "qet_script_install",
+        "description": "Store a script so QElectroTech shows it as a button with an "
+                       "icon: Projet > Scripts, the Scripts toolbar, command search "
+                       "and the shortcut bar. A running QElectroTech picks it up "
+                       "without a restart. The text must start with a "
+                       "// ==QETScript== header (see qet_script_api); the file is "
+                       "<id>.js in the user's scripts folder, which this server "
+                       "chooses. Give 'icon_svg' to store an icon as <id>.svg (the "
+                       "header must then say '// @icon <id>.svg'). Give "
+                       "'test_project' to run qet_script_test first and store "
+                       "nothing if it fails -- recommended. Does not run the "
+                       "script: the user clicks it. Needs QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string", "description": "file name without .js: a-z, 0-9, '-', '_'"},
+                "source": {"type": "string", "description": "the script's full text, header first"},
+                "icon_svg": {"type": "string", "description": "optional SVG for the button, stored as <id>.svg"},
+                "overwrite": {"type": "boolean", "default": False},
+                "test_project": {"type": "string", "description": "optional .qet to test on first; never modified"},
+                "binary": {"type": "string", "description": "the qelectrotech executable for the test; leave it out to use the one this server is configured with"},
+                "elements_dir": {"type": "string"},
+                "timeout": {"type": "integer", "default": 180},
+            },
+            "required": ["id", "source"],
+        },
+        "handler": lambda a: tool_script_install(
+            a["id"], a["source"], a.get("icon_svg"), bool(a.get("overwrite")),
+            a.get("test_project"), a.get("binary"), a.get("elements_dir"),
+            a.get("timeout", 180)),
+    },
+    {
+        "name": "qet_script_list",
+        "description": "List the stored scripts QElectroTech shows as buttons: each "
+                       "one's id, name, icon, tooltip, shortcut and context, and the "
+                       "files it ignores with the reason. Reads files only.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_script_list(),
+    },
+    {
+        "name": "qet_script_read",
+        "description": "The text (and stored SVG icon, if any) of one stored script, "
+                       "to change it and store it again with qet_script_install "
+                       "overwrite=true.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"id": {"type": "string"}},
+            "required": ["id"],
+        },
+        "handler": lambda a: tool_script_read(a["id"]),
+    },
+    {
+        "name": "qet_script_remove",
+        "description": "Delete a stored script, and its icon if no other script uses "
+                       "it; its button goes from a running QElectroTech. Needs "
+                       "QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"id": {"type": "string"}},
+            "required": ["id"],
+        },
+        "handler": lambda a: tool_script_remove(a["id"]),
+    },
 ]
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
@@ -3203,11 +3639,23 @@ _DATA_PATHS = {
     "qet_check":          {"read": ("project",)},
     "qet_project_new":    {"write": ("output",)},
     "qet_element_build":  {"write": ("output",)},
+    # The scripts folder is chosen by scripts_dir(), never by the client,
+    # so only the project a script is tried on is a data path here.
+    "qet_script_api":     {},
+    "qet_script_test":    {"read": ("project",)},
+    "qet_script_install": {"read": ("test_project",)},
 }
 
 # Tools that launch QElectroTech, and so take "binary" and "elements_dir".
 _LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
-                 "qet_check", "qet_project_new"}
+                 "qet_check", "qet_project_new", "qet_script_api", "qet_script_test"}
+
+# Tools that launch QElectroTech only when given this argument.
+_LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}
+
+# Tools whose "overwrite" guards a file the server names itself (the
+# stored script, in scripts_dir()), not a client-chosen output path.
+_OVERWRITE_OWN_FILE = {"qet_script_install"}
 
 # qet_edit operations that name a file of their own.
 _DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
@@ -3392,7 +3840,7 @@ def enforce_path_policy(tool_name: str, arguments: dict) -> None:
         return
     roots = workspace_roots()
 
-    if tool_name in _LAUNCHES_QET:
+    if tool_name in _LAUNCHES_QET or arguments.get(_LAUNCHES_QET_WITH.get(tool_name, "")):
         _check_binary(arguments)
         _check_elements_dir(arguments, roots)
 

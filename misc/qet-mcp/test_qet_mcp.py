@@ -164,7 +164,9 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_info", "qet_elements", "qet_conductors", "qet_diff",
             "qet_scan", "qet_element_info", "qet_export", "qet_edit", "qet_query",
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
-            "qet_continuity", "qet_items"})
+            "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
+        "qet_script_install", "qet_script_list", "qet_script_read",
+        "qet_script_remove"})
 
 
 class EditValidation(unittest.TestCase):
@@ -2417,7 +2419,7 @@ class PathPolicy(unittest.TestCase):
         guarded = {name for name, spec in m._DATA_PATHS.items() if spec.get("write")}
         advertised = {t["name"] for t in m.TOOLS
                       if "overwrite" in t["inputSchema"].get("properties", {})}
-        self.assertEqual(guarded, advertised)
+        self.assertEqual(guarded, advertised - m._OVERWRITE_OWN_FILE)
 
     def test_every_data_path_argument_is_guarded(self):
         """The other direction: a tool whose schema takes a data path must be
@@ -2527,7 +2529,7 @@ class BinaryPolicy(unittest.TestCase):
         would run whatever it was given."""
         takes = {t["name"] for t in m.TOOLS
                  if "binary" in t["inputSchema"].get("properties", {})}
-        self.assertEqual(takes, m._LAUNCHES_QET)
+        self.assertEqual(takes, m._LAUNCHES_QET | set(m._LAUNCHES_QET_WITH))
         for name in takes:
             self.assertNotIn("binary", m._BY_NAME[name]["inputSchema"].get("required", []),
                              f"{name} still requires the client to name a binary")
@@ -2771,6 +2773,217 @@ class ScriptingDisabledHint(unittest.TestCase):
         for tool in sorted(script_driven):
             with self.subTest(tool=tool):
                 self.assertIn(tool, hint)
+
+
+NOTE_SCRIPT = (
+    "// ==QETScript==\n"
+    "// @name     Add a note\n"
+    "// @tooltip  Puts a note on the folio on screen\n"
+    "// @shortcut Ctrl+Alt+N\n"
+    "// ==/QETScript==\n"
+    "qet.addText(qet.currentFolio(), 'SCRIPT-NOTE', 40, 40);\n"
+    "qet.log('added');\n")
+ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16"/></svg>'
+
+
+class ScriptHeader(unittest.TestCase):
+    """The same cases as QElectroTech's tst_scriptheader: a header this
+    accepts and QElectroTech refuses would install a script that never gets
+    a button."""
+
+    def h(self, lines):
+        return m.parse_script_header(
+            "// ==QETScript==\n" + lines + "// ==/QETScript==\nqet.log('x');\n", "a")
+
+    def test_full(self):
+        h = self.h("// @name     Add revision note\n// @icon     note.svg\n"
+                   "// @tooltip  Puts a note\n// @shortcut Ctrl+Alt+R\n"
+                   "// @context  selection\n// @api      1\n")
+        self.assertNotIn("error", h)
+        self.assertEqual((h["name"], h["icon"], h["shortcut"], h["context"]),
+                         ("Add revision note", "note.svg", "Ctrl+Alt+R", "selection"))
+        self.assertEqual(h["action_id"], "diagrameditor.script.a")
+
+    def test_refused(self):
+        cases = {
+            "qet.log('x');\n": "no // ==QETScript== header",
+        }
+        for text, error in cases.items():
+            self.assertEqual(m.parse_script_header(text, "a")["error"], error)
+        for lines, error in [
+                ("// @icon x.svg\n", "@name is required"),
+                ("// @name A\n// @shortcutt Ctrl+K\n", "unknown header key @shortcutt"),
+                ("// @name A\n// @context wires\n",
+                 "@context must be one of: canvas, selection, conductor"),
+                ("// @name A\n// @api 2\n",
+                 "@api 2 is not supported by this version (1 is)")]:
+            with self.subTest(lines=lines):
+                self.assertEqual(self.h(lines)["error"], error)
+
+    def test_only_the_block(self):
+        h = m.parse_script_header(
+            "// ==QETScript==\n// @name Real\n// ==/QETScript==\n"
+            "// @name Not this one\n// @bogus key\n", "a")
+        self.assertNotIn("error", h)
+        self.assertEqual(h["name"], "Real")
+
+
+class ScriptStore(unittest.TestCase):
+    """install / list / read / remove against a scripts folder of its own."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.dir = Path(self.tmp.name) / "scripts"
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(self.dir),
+                                                "QET_ENABLE_SCRIPTING": "1"})
+        self.env.start()
+
+    def tearDown(self):
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def test_round_trip(self):
+        r = m.tool_script_install("add-note", NOTE_SCRIPT)
+        self.assertTrue(r["ok"])
+        self.assertEqual((self.dir / "add-note.js").read_text(), NOTE_SCRIPT)
+        listed = m.tool_script_list()
+        self.assertEqual([s["id"] for s in listed["scripts"]], ["add-note"])
+        self.assertEqual(listed["scripts"][0]["shortcut"], "Ctrl+Alt+N")
+        self.assertEqual(m.tool_script_read("add-note")["source"], NOTE_SCRIPT)
+        m.tool_script_remove("add-note")
+        self.assertFalse((self.dir / "add-note.js").exists())
+        self.assertEqual(m.tool_script_list()["scripts"], [])
+
+    def test_icon_stored_and_removed_with_it(self):
+        src = NOTE_SCRIPT.replace("// @tooltip", "// @icon     iconic.svg\n// @tooltip")
+        m.tool_script_install("iconic", src, icon_svg=ICON)
+        self.assertEqual((self.dir / "iconic.svg").read_text(), ICON)
+        self.assertEqual(m.tool_script_read("iconic")["icon_svg"], ICON)
+        m.tool_script_remove("iconic")
+        self.assertEqual(list(self.dir.iterdir()), [])
+
+    def test_shared_icon_kept_while_used(self):
+        src = NOTE_SCRIPT.replace("// @tooltip", "// @icon     one.svg\n// @tooltip")
+        m.tool_script_install("one", src, icon_svg=ICON)
+        m.tool_script_install("two", src)            # names one.svg, which exists
+        m.tool_script_remove("one")
+        self.assertTrue((self.dir / "one.svg").exists())
+        m.tool_script_remove("two")
+        self.assertFalse((self.dir / "one.svg").exists())
+
+    def test_refusals(self):
+        for sid in ("../evil", "Upper", "", "a/b", "-x", "x" * 65, None):
+            with self.subTest(id=sid), self.assertRaisesRegex(ValueError, "'id' must be"):
+                m.tool_script_install(sid, NOTE_SCRIPT)
+        with self.assertRaisesRegex(ValueError, "would refuse this header: @name"):
+            m.tool_script_install("a", "// ==QETScript==\n// ==/QETScript==\n")
+        with self.assertRaisesRegex(ValueError, "must say '// @icon a.svg'"):
+            m.tool_script_install("a", NOTE_SCRIPT, icon_svg=ICON)
+        with self.assertRaisesRegex(ValueError, "not in"):
+            m.tool_script_install("a", NOTE_SCRIPT.replace(
+                "// @tooltip", "// @icon     missing.svg\n// @tooltip"))
+        src = NOTE_SCRIPT.replace("// @tooltip", "// @icon     a.svg\n// @tooltip")
+        for bad in ("<html/>", "<svg", "x" * (65 * 1024)):
+            with self.subTest(svg=bad[:10]), self.assertRaises(ValueError):
+                m.tool_script_install("a", src, icon_svg=bad)
+        self.assertFalse(self.dir.exists(), "a refused install wrote something")
+
+    def test_overwrite_needs_asking(self):
+        m.tool_script_install("a", NOTE_SCRIPT)
+        with self.assertRaisesRegex(ValueError, "already stored"):
+            m.tool_script_install("a", NOTE_SCRIPT.replace("Add a note", "Changed"))
+        m.tool_script_install("a", NOTE_SCRIPT.replace("Add a note", "Changed"),
+                              overwrite=True)
+        self.assertEqual(m.tool_script_list()["scripts"][0]["name"], "Changed")
+
+    def test_needs_consent(self):
+        """Installing stores code the user will run by clicking: the same
+        switch as editing a project, or nothing is written."""
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                m.tool_script_install("a", NOTE_SCRIPT)
+            m.tool_script_list()                      # reading needs no consent
+        m.tool_script_install("a", NOTE_SCRIPT)
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                m.tool_script_remove("a")
+        self.assertTrue((self.dir / "a.js").exists())
+
+    def test_list_reports_refused_files(self):
+        self.dir.mkdir(parents=True)
+        (self.dir / "bad.js").write_text("qet.log(1);\n")
+        r = m.tool_script_list()
+        self.assertEqual(r["refused"], [{"file": "bad.js",
+                                         "error": "no // ==QETScript== header"}])
+
+    def test_default_folder_is_qets_data_dir(self):
+        with mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": "",
+                                          "XDG_DATA_HOME": "/x/share"}), \
+                mock.patch.object(m.os, "name", "posix"), \
+                mock.patch.object(m.sys, "platform", "linux"):
+            self.assertEqual(m.scripts_dir(),
+                             Path("/x/share/QElectroTech/QElectroTech/scripts"))
+
+    def test_install_does_not_need_a_binary_without_a_test(self):
+        """Only a test run launches QElectroTech; storing a file must not be
+        refused because no QElectroTech is configured."""
+        with mock.patch.dict(os.environ, {"QET_BINARY": ""}), \
+                mock.patch.object(m, "resolve_binary", return_value=None):
+            args = {"id": "a", "source": NOTE_SCRIPT}
+            m.enforce_path_policy("qet_script_install", args)
+            with self.assertRaisesRegex(ValueError, "no QElectroTech found"):
+                m.enforce_path_policy("qet_script_install",
+                                      {"id": "a", "source": NOTE_SCRIPT,
+                                       "test_project": self.tmp.name + "/p.qet"})
+
+
+@needs_examples
+class ScriptToolsIntegration(unittest.TestCase):
+    """Through a real QElectroTech with stored scripts (script buttons)."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.dir = Path(self.tmp.name) / "scripts"
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(self.dir),
+                                                "QET_ENABLE_SCRIPTING": "1"})
+        self.env.start()
+        self.project = Path(self.tmp.name) / "perceuse.qet"
+        shutil.copy2(Path(EXAMPLES) / "perceuse.qet", self.project)
+
+    def tearDown(self):
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def test_api_lists_the_calls(self):
+        r = m.tool_script_api(BINARY)
+        self.assertTrue(r["ok"], r)
+        self.assertIn("addText", " ".join(r["calls"]))
+        self.assertGreater(r["call_count"], 100)
+
+    def test_test_runs_on_a_copy(self):
+        before = self.project.read_bytes()
+        r = m.tool_script_test(BINARY, str(self.project), NOTE_SCRIPT)
+        self.assertTrue(r["ok"], r)
+        self.assertEqual([t["text"] for t in r["diff"]["texts"]["added"]], ["SCRIPT-NOTE"])
+        self.assertIn("added", "\n".join(r["log"]))
+        self.assertEqual(self.project.read_bytes(), before)
+
+    def test_error_reported_with_its_line(self):
+        r = m.tool_script_test(BINARY, str(self.project),
+                               NOTE_SCRIPT + "qet.noSuchCall();\n")
+        self.assertFalse(r["ok"])
+        self.assertTrue(r["errors"], r)
+        self.assertIn(":8:", r["errors"][0])       # line 8 of the script as given
+
+    def test_failed_test_stores_nothing(self):
+        r = m.tool_script_install("broken", NOTE_SCRIPT + "throw new Error('no');\n",
+                                  test_project=str(self.project), binary=BINARY)
+        self.assertFalse(r["ok"])
+        self.assertFalse(self.dir.exists() and any(self.dir.iterdir()))
+        r = m.tool_script_install("good", NOTE_SCRIPT,
+                                  test_project=str(self.project), binary=BINARY)
+        self.assertTrue(r["ok"], r)
+        self.assertTrue((self.dir / "good.js").is_file())
 
 
 class PathPolicyOverStdio(unittest.TestCase):
