@@ -102,9 +102,11 @@ class tst_conductorapplychanges : public QObject
 				QTest::newRow(list.at(i).first) << i;
 		}
 
-			// The shown wire is all variant 0, the user changes one field
-			// to variant 1, another selected wire is all variant 2: it
-			// takes that one field and keeps every other one.
+			// The shown wire is all variant 0 and the user changes one
+			// field to variant 1. The other wire holds variant 1 in every
+			// other field, so copying one of them by mistake (they are
+			// variant 0 in the edit) shows, booleans included; and variant
+			// 2 in the edited field, so not copying it shows too.
 		void eachFieldAlone()
 		{
 			QFETCH(int, index);
@@ -115,9 +117,11 @@ class tst_conductorapplychanges : public QObject
 			set(after, 1);
 			QVERIFY(after != before);
 
-			ConductorProperties other = all(2);
+			ConductorProperties other = all(1);
+			set(other, 2);
 			ConductorProperties expected = other;
 			set(expected, 1);
+			QVERIFY(expected != other);
 
 			other.applyChanges(before, after);
 			QVERIFY(other == expected);
@@ -127,7 +131,7 @@ class tst_conductorapplychanges : public QObject
 		void noEditChangesNothing()
 		{
 			const ConductorProperties shown = all(0);
-			ConductorProperties other = all(2);
+			ConductorProperties other = all(1);
 			const ConductorProperties kept = other;
 			other.applyChanges(shown, shown);
 			QVERIFY(other == kept);

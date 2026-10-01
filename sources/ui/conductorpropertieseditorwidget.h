@@ -65,6 +65,7 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 	private:
 		void connectChangeSignals();
 		void disconnectChangeSignals();
+		void scheduleUpdateUi();
 		Conductor *firstConductor() const;
 
 	private:
@@ -77,6 +78,7 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 		ConductorProperties m_shown;
 		QList<QMetaObject::Connection> m_live_connections;
 		bool m_updating = false;
+		bool m_update_pending = false;
 };
 
 #endif // CONDUCTORPROPERTIESEDITORWIDGET_H

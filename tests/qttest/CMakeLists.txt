@@ -523,6 +523,21 @@ add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
 target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# ConductorMultiEdit -- editing several wires at once in the Selection
+# properties panel: order, which wires an edit reaches, one undo step for
+# all of them, and fields shown blank because the wires disagree.
+add_executable(
+  tst_conductormultiedit
+  tst_conductormultiedit.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductormultiedit COMMAND tst_conductormultiedit)
+target_include_directories(tst_conductormultiedit PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductormultiedit PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # DiagramContext::fromXml() -- the two readers (QDom for projects, pugixml
 # for element definitions in the collection) give the same values: stray
 # spaces trimmed, accents kept.

@@ -38,6 +38,7 @@
 #include "../ui/shapegraphicsitempropertieswidget.h"
 
 #include <QGraphicsItem>
+#include <QSet>
 #include <QSettings>
 
 /**
@@ -87,13 +88,15 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		//A rubber band over wires selects their labels too: each label
 		//counts as its conductor, once.
 	QList<QGraphicsItem *> mapped;
+	QSet<QGraphicsItem *> seen;
 	for (QGraphicsItem *qgi : std::as_const(items)) {
 		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
 			if (Conductor *parent_cond = cti->parentConductor()) {
 				qgi = parent_cond;
 			}
 		}
-		if (!mapped.contains(qgi)) {
+		if (!seen.contains(qgi)) {
+			seen.insert(qgi);
 			mapped << qgi;
 		}
 	}

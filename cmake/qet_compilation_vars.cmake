@@ -188,6 +188,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/conductorproperties.h
+  ${QET_DIR}/sources/conductormultiedit.h
   ${QET_DIR}/sources/conductorsegment.cpp
   ${QET_DIR}/sources/conductorsegment.h
   ${QET_DIR}/sources/conductorsegmentprofile.h
