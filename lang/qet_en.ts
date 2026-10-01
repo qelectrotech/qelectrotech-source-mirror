@@ -1055,6 +1055,15 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>Conducteur</source>
         <translation>Conductor</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="171"/>
+        <source>%n conducteurs sélectionnés : seuls les champs modifiés leur sont appliqués.</source>
+        <comment>selection properties panel</comment>
+        <translation>
+            <numerusform>%n conductor selected: only the fields you change are applied to it.</numerusform>
+            <numerusform>%n conductors selected: only the fields you change are applied to them.</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
@@ -1301,6 +1310,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="489"/>
         <source>Style :</source>
         <translation>Style:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="216"/>
+        <source>Plusieurs valeurs</source>
+        <comment>several conductors, different values</comment>
+        <translation>Several values</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="231"/>
+        <source>Plusieurs conducteurs sélectionnés : le texte se modifie sur un seul conducteur à la fois.</source>
+        <translation>Several conductors selected: the text is changed on one conductor at a time.</translation>
     </message>
 </context>
 <context>

@@ -1054,6 +1054,15 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <source>Conducteur</source>
         <translation></translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="171"/>
+        <source>%n conducteurs sélectionnés : seuls les champs modifiés leur sont appliqués.</source>
+        <comment>selection properties panel</comment>
+        <translation>
+            <numerusform>%n conducteur sélectionné : seuls les champs modifiés lui sont appliqués.</numerusform>
+            <numerusform>%n conducteurs sélectionnés : seuls les champs modifiés leur sont appliqués.</numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
@@ -1299,6 +1308,17 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="236"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="216"/>
+        <source>Plusieurs valeurs</source>
+        <comment>several conductors, different values</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="231"/>
+        <source>Plusieurs conducteurs sélectionnés : le texte se modifie sur un seul conducteur à la fois.</source>
         <translation></translation>
     </message>
 </context>
