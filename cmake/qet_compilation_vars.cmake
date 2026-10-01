@@ -930,6 +930,8 @@ list(APPEND QET_SRC_FILES
   ${QET_DIR}/sources/scripting/scriptmanagerdialog.h
   ${QET_DIR}/sources/scripting/liveserver.cpp
   ${QET_DIR}/sources/scripting/liveserver.h
+  ${QET_DIR}/sources/scripting/assistantinfo.cpp
+  ${QET_DIR}/sources/scripting/assistantinfo.h
 )
 
 if(QET_SPACEMOUSE_ENABLED)
