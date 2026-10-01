@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="508"/>
         <source>Licenses</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензионное соглашение</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="532"/>
@@ -204,37 +204,37 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en serbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на сербский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Traduction en ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на украинский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en norvégien</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на норвежский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en japonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на японский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en coréen</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на корейский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Traduction en mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на монгольский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
         <source>Traduction en slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на словенский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="144"/>
@@ -304,7 +304,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="177"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished">Изменение размера элемента</translation>
+        <translation>Изменение размера элемента</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="179"/>
@@ -316,13 +316,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
         <source>Convertisseur d&apos;élément DXF</source>
         <comment>Dxf2elmt</comment>
-        <translation type="unfinished">Конвертер элементов DXF</translation>
+        <translation>Конвертер элементов DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="183"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation type="unfinished">Инструмент перевода элементов</translation>
+        <translation>Инструмент перевода элементов</translation>
     </message>
 </context>
 <context>
@@ -741,7 +741,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="64"/>
         <source>Aperçu</source>
-        <translation type="unfinished">Предпросмотр</translation>
+        <translation>Предпросмотр</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="73"/>
@@ -768,7 +768,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/bomexportdialog.cpp" line="82"/>
         <source>Impossible d&apos;enregistrer la nomenclature dans %1.
 %2</source>
-        <translation type="unfinished">Не удалось сохранить спецификацию в %1.
+        <translation>Не удалось сохранить спецификацию в %1.
 %2</translation>
     </message>
     <message>
@@ -791,13 +791,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="159"/>
         <source>Requête refusée</source>
-        <translation type="unfinished">Запрос отклонен</translation>
+        <translation>Запрос отклонен</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="166"/>
         <source>Erreur dans la requête :
 %1</source>
-        <translation type="unfinished">Ошибка в запросе:
+        <translation>Ошибка в запросе:
 %1</translation>
     </message>
 </context>
@@ -807,25 +807,25 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/backupdialog.cpp" line="33"/>
         <source>Créer une copie de sauvegarde ?</source>
         <comment>window title</comment>
-        <translation type="unfinished">Создать резервную копию?</translation>
+        <translation>Создать резервную копию?</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="39"/>
         <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
         <comment>dialog message</comment>
-        <translation type="unfinished">Хотите создать резервную копию?</translation>
+        <translation>Хотите создать резервную копию?</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="49"/>
         <source>Oui</source>
         <comment>yes button</comment>
-        <translation type="unfinished">Да</translation>
+        <translation>Да</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="50"/>
         <source>Non</source>
         <comment>no button</comment>
-        <translation type="unfinished">Нет</translation>
+        <translation>Нет</translation>
     </message>
 </context>
 <context>
@@ -877,7 +877,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="57"/>
         <source>Cliquez pour choisir une couleur</source>
-        <translation type="unfinished">Нажмите, чтобы выбрать цвет</translation>
+        <translation>Нажмите, чтобы выбрать цвет</translation>
     </message>
 </context>
 <context>
@@ -932,74 +932,74 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="50"/>
         <source>Noir</source>
-        <translation type="unfinished">Чёрный</translation>
+        <translation>Чёрный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="51"/>
         <source>Marron</source>
-        <translation type="unfinished">Коричневый</translation>
+        <translation>Коричневый</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
         <source>Gris</source>
-        <translation type="unfinished">Серый</translation>
+        <translation>Серый</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="53"/>
         <source>Bleu</source>
-        <translation type="unfinished">Синий</translation>
+        <translation>Синий</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="54"/>
         <source>Vert</source>
-        <translation type="unfinished">Зелёный</translation>
+        <translation>Зелёный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="55"/>
         <source>Rouge</source>
-        <translation type="unfinished">Красный</translation>
+        <translation>Красный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="56"/>
         <source>Orange</source>
-        <translation type="unfinished">Оранжевый</translation>
+        <translation>Оранжевый</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="57"/>
         <source>Violet</source>
-        <translation type="unfinished">Фиолетовый</translation>
+        <translation>Фиолетовый</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="58"/>
         <source>Blanc</source>
-        <translation type="unfinished">Белый</translation>
+        <translation>Белый</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="75"/>
         <source>Couleur de conducteur</source>
-        <translation type="unfinished">Цвет провода</translation>
+        <translation>Цвет провода</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="76"/>
         <source>Applique une couleur aux conducteurs sélectionnés, et l&apos;utilise pour les prochains conducteurs tracés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Применяет цвет к выбранным проводникам и использует его для последующих начерченных проводников</translation>
+        <translation>Применяет цвет к выбранным проводникам и использует его для последующих начерченных проводников</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="130"/>
         <source>Récemment utilisées</source>
-        <translation type="unfinished">Недавно использованные</translation>
+        <translation>Недавно использованные</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="140"/>
         <source>Autre couleur…</source>
-        <translation type="unfinished">Другой цвет…</translation>
+        <translation>Другой цвет…</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="187"/>
         <source>Modifier la couleur de %n conducteur(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Изменить цвет %n проводника</numerusform>
             <numerusform>Изменить цвет %n проводников</numerusform>
             <numerusform>Изменить цвет %n проводников</numerusform>
@@ -1008,7 +1008,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="221"/>
         <source>Choisir une couleur de conducteur</source>
-        <translation type="unfinished">Выбрать цвет провода</translation>
+        <translation>Выбрать цвет провода</translation>
     </message>
 </context>
 <context>
@@ -1041,7 +1041,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="65"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Применить свойства ко всем проводникам этого потенциала</translation>
+        <translation>Применить свойства ко всем проводникам этого потенциала</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="256"/>
@@ -1482,27 +1482,27 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="55"/>
         <source>Enregistrer...</source>
-        <translation type="unfinished">Сохранить...</translation>
+        <translation>Сохранить...</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="72"/>
         <source>Enregistrer le rapport de diagnostic</source>
-        <translation type="unfinished">Сохранить отчет о диагностике</translation>
+        <translation>Сохранить отчет о диагностике</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="74"/>
         <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
-        <translation type="unfinished">Текстовые файлы (*.txt);;Все файлы (*)</translation>
+        <translation>Текстовые файлы (*.txt);;Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="84"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="85"/>
         <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
-        <translation type="unfinished">Не удалось записать данные в файл «%1».</translation>
+        <translation>Не удалось записать данные в файл «%1».</translation>
     </message>
 </context>
 <context>
@@ -1518,63 +1518,63 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="40"/>
         <source>Blanc</source>
-        <translation type="unfinished">Белый</translation>
+        <translation>Белый</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="41"/>
         <source>Blanc cassé</source>
-        <translation type="unfinished">Слоновой кости</translation>
+        <translation>Слоновой кости</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="42"/>
         <source>Gris clair</source>
-        <translation type="unfinished">Светло-серый</translation>
+        <translation>Светло-серый</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="43"/>
         <source>Gris</source>
-        <translation type="unfinished">Серый</translation>
+        <translation>Серый</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="44"/>
         <source>Gris foncé</source>
-        <translation type="unfinished">Тёмно-серый</translation>
+        <translation>Тёмно-серый</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="45"/>
         <source>Noir</source>
-        <translation type="unfinished">Чёрный</translation>
+        <translation>Чёрный</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="62"/>
         <source>Couleur de fond du folio</source>
-        <translation type="unfinished">Цвет фона листа</translation>
+        <translation>Цвет фона листа</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="63"/>
         <source>Choisir la couleur de fond du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Выбрать цвет фона листа</translation>
+        <translation>Выбор цвета фона листа</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="101"/>
         <source>Couleur système</source>
-        <translation type="unfinished">Цвет системы</translation>
+        <translation>Цвет системы</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="116"/>
         <source>Récemment utilisées</source>
-        <translation type="unfinished">Недавно использованные</translation>
+        <translation>Недавно использованные</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="126"/>
         <source>Autre couleur…</source>
-        <translation type="unfinished">Другой цвет…</translation>
+        <translation>Другой цвет…</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="189"/>
         <source>Choisir une couleur de fond</source>
-        <translation type="unfinished">Выбрать цвет фона</translation>
+        <translation>Выберите цвет фона</translation>
     </message>
 </context>
 <context>
@@ -1642,7 +1642,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="94"/>
         <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
-        <translation type="unfinished">Клик: разместить в исходном размере. Клик и перетаскивание: разместить и изменить размер. Клик правой кнопкой мыши: повернуть на 90°. Ctrl + колесико: настроить размер.</translation>
+        <translation type="unfinished">Клик: разместить в исходном размере. нажать и потянуть: разместить и изменить размер. Клик правой кнопкой мыши: повернуть на 90°. Ctrl + колесико: настроить размер.</translation>
     </message>
 </context>
 <context>
@@ -1659,7 +1659,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpath.cpp" line="92"/>
         <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
-        <translation type="unfinished">Клик: угловая точка. Клик и перетаскивание: изогнутая точка. Клик по первой точке: закрыть. Esc/Enter: завершить. Клик правой кнопкой мыши: отменить последнюю точку.</translation>
+        <translation>Клик: угловая точка. Нажать и потянуть: изогнутая точка. Клик по первой точке: завершить. Esc/Enter: завершить. Клик правой кнопкой мыши: отменить последнюю точку.</translation>
     </message>
 </context>
 <context>
@@ -1667,37 +1667,37 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="461"/>
         <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: установить начальную точку (Ctrl = произвольное положение)</translation>
+        <translation>Клик левой кнопкой мыши: установить начальную точку (Ctrl = произвольное положение)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="464"/>
         <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: задать положение первого угла (Ctrl — центральная точка, произвольное положение)</translation>
+        <translation>Клик левой кнопкой мыши: задать положение первого угла (Ctrl — центральная точка, произвольное положение)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="466"/>
         <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: установить первую точку (Ctrl = свободное позиционирование)</translation>
+        <translation>Клик левой кнопкой мыши: установить первую точку (Ctrl = свободное позиционирование)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="477"/>
         <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: установить конечную точку (Ctrl = произвольное положение); клик правой кнопкой мыши: отменить</translation>
+        <translation>Клик левой кнопкой мыши: установить конечную точку (Ctrl = произвольное положение); клик правой кнопкой мыши: отменить</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="479"/>
         <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: установить положение противоположного угла (Shift = квадрат, Ctrl = от центра + произвольное положение, Ctrl+Shift = центрированный квадрат); клик правой кнопкой мыши: отменить</translation>
+        <translation>Клик левой кнопкой мыши: установить положение противоположного угла (Shift = квадрат, Ctrl = от центра + произвольное положение, Ctrl+Shift = центрированный квадрат); клик правой кнопкой мыши: отменить</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="482"/>
         <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: установить положение противоположного угла (Shift = круг, Ctrl = от центра + произвольное положение, Ctrl+Shift = центрированный круг); клик правой кнопкой мыши: отменить</translation>
+        <translation>Клик левой кнопкой мыши: установить положение противоположного угла (Shift = круг, Ctrl = от центра + произвольное положение, Ctrl+Shift = центрированный круг); клик правой кнопкой мыши: отменить</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="485"/>
         <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
-        <translation type="unfinished">Клик левой кнопкой мыши: следующая точка; двойной клик или клавиша «Enter»: завершить; клик правой кнопкой мыши: отменить последнюю точку</translation>
+        <translation>Клик левой кнопкой мыши: следующая точка; двойной клик или клавиша «Enter»: завершить; клик правой кнопкой мыши: отменить последнюю точку</translation>
     </message>
 </context>
 <context>
@@ -1720,12 +1720,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="535"/>
         <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
-        <translation type="unfinished">Перетаскивание угла/края: изменение размера (Ctrl — от центра, Shift — с сохранением пропорций)</translation>
+        <translation>Перетаскивание угла/края: изменение размера (Ctrl — от центра, Shift — с сохранением пропорций)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="536"/>
         <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
-        <translation type="unfinished">Перетащить угол: повернуть (Shift = с шагом 15°); перетащить грань: наклонить (Shift = с шагом 15°); красная точка: переместить центр вращения</translation>
+        <translation>Перетащить угол: повернуть (Shift = с шагом 15°); перетащить грань: наклонить (Shift = с шагом 15°); красная точка: переместить центр вращения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="537"/>
@@ -1740,109 +1740,109 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="604"/>
         <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
-        <translation type="unfinished">Перетаскивание: изменение размера (Shift — сохранить пропорции, Ctrl — от центра)</translation>
+        <translation>Перетаскивание: изменение размера (Shift — сохранить пропорции, Ctrl — от центра)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="605"/>
         <source>Glisser : pivoter (Maj = par pas de 15°)</source>
-        <translation type="unfinished">Перетащить: повернуть (Shift = с шагом 15°)</translation>
+        <translation>Перетащить: повернуть (Shift = с шагом 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="606"/>
         <source>Glisser : incliner (Maj = par pas de 15°)</source>
-        <translation type="unfinished">Перетаскивание: наклон (Shift = с шагом 15°)</translation>
+        <translation>Перетаскивание: наклон (Shift = с шагом 15°)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="607"/>
         <source>Glisser : déplacer le centre de rotation</source>
-        <translation type="unfinished">Перетащить: переместить центр вращения</translation>
+        <translation>Перетащить: переместить центр вращения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="860"/>
         <source>Redimensionner une image</source>
-        <translation type="unfinished">Изменить размер изображения</translation>
+        <translation>Изменить размер изображения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="867"/>
         <source>Faire pivoter une image</source>
-        <translation type="unfinished">Повернуть изображение</translation>
+        <translation>Повернуть изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="877"/>
         <source>Incliner une image</source>
-        <translation type="unfinished">Наклонить изображение</translation>
+        <translation>Наклонить изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="883"/>
         <source>Déplacer le centre de rotation d&apos;une image</source>
-        <translation type="unfinished">Смещение центра вращения изображения</translation>
+        <translation>Смещение центра вращения изображения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="899"/>
         <source>Modifier une image</source>
-        <translation type="unfinished">Изменить изображение</translation>
+        <translation>Изменить изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1114"/>
         <source>Restaurer les proportions d&apos;une image</source>
-        <translation type="unfinished">Восстановить пропорции изображения</translation>
+        <translation>Восстановить пропорции изображения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1127"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1738"/>
         <source>Enregistrer l&apos;image sous...</source>
-        <translation type="unfinished">Сохранить изображение как...</translation>
+        <translation>Сохранить изображение как...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1141"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1741"/>
         <source>Enregistrer l&apos;image d&apos;origine sous...</source>
-        <translation type="unfinished">Сохранить исходное изображение как...</translation>
+        <translation>Сохранить исходное изображение как...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1170"/>
         <source>Image PNG (*.png)</source>
-        <translation type="unfinished">Изображение PNG (*.png)</translation>
+        <translation>Изображение PNG (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1171"/>
         <source>Image JPEG (*.jpg *.jpeg)</source>
-        <translation type="unfinished">Изображение JPEG (*.jpg, *.jpeg)</translation>
+        <translation>Изображение JPEG (*.jpg, *.jpeg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1172"/>
         <source>Image BMP (*.bmp)</source>
-        <translation type="unfinished">Изображение BMP (*.bmp)</translation>
+        <translation>Изображение BMP (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1180"/>
         <source>Image SVG (*.svg)</source>
-        <translation type="unfinished">Изображение SVG (*.svg)</translation>
+        <translation>Изображение SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1185"/>
         <source>Tous les fichiers (*)</source>
-        <translation type="unfinished">Все файлы (*)</translation>
+        <translation>Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1232"/>
         <source>Transparence non conservée</source>
-        <translation type="unfinished">Прозрачность не сохраняется</translation>
+        <translation>Прозрачность не сохраняется</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1233"/>
         <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
-        <translation type="unfinished">Этот формат не поддерживает прозрачность: изображение будет сохранено в том виде, в каком оно было до применения прозрачного цвета. Продолжить?</translation>
+        <translation>Этот формат не поддерживает прозрачность: изображение будет сохранено в том виде, в каком оно было до применения прозрачного цвета. Продолжить?</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1250"/>
         <source>Échec de l&apos;enregistrement</source>
-        <translation type="unfinished">Ошибка при регистрации</translation>
+        <translation>Ошибка при сохранении</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1251"/>
         <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
-        <translation type="unfinished">Не удалось сохранить изображение в этом месте.</translation>
+        <translation>Не удалось сохранить изображение в этом месте.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1411"/>
@@ -1852,67 +1852,67 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1735"/>
         <source>Remplacer l&apos;image...</source>
-        <translation type="unfinished">Заменить изображение...</translation>
+        <translation>Заменить изображение...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1744"/>
         <source>Couleur transparente...</source>
-        <translation type="unfinished">Прозрачный цвет...</translation>
+        <translation>Прозрачный цвет...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1748"/>
         <source>Rogner...</source>
-        <translation type="unfinished">Обрезать...</translation>
+        <translation>Обрезать...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1752"/>
         <source>Miroir horizontal</source>
-        <translation type="unfinished">Отразить по горизонтали</translation>
+        <translation>Отразить по горизонтали</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1754"/>
         <source>Miroir vertical</source>
-        <translation type="unfinished">Отразить по вертикали</translation>
+        <translation>Отразить по вертикали</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1759"/>
         <source>Restaurer les proportions</source>
-        <translation type="unfinished">Восстановить пропорции</translation>
+        <translation>Восстановить пропорции</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1794"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished">Выберите изображение...</translation>
+        <translation>Выберите изображение...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1795"/>
         <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished">Графические файлы (*.png, *.jpg, *.jpeg, *.bmp, *.svg)</translation>
+        <translation>Графические файлы (*.png, *.jpg, *.jpeg, *.bmp, *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1802"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1802"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation type="unfinished">Невозможно загрузить изображение.</translation>
+        <translation>Невозможно загрузить изображение.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1819"/>
         <source>Remplacer une image</source>
-        <translation type="unfinished">Заменить изображение</translation>
+        <translation>Заменить изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1871"/>
         <source>Miroir horizontal d&apos;une image</source>
-        <translation type="unfinished">Отразить изображение по горизонтали</translation>
+        <translation>Отразить изображение по горизонтали</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1871"/>
         <source>Miroir vertical d&apos;une image</source>
-        <translation type="unfinished">Отразить изображение по вертикали</translation>
+        <translation>Отразить изображение по вертикали</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1925"/>
@@ -1922,7 +1922,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2024"/>
         <source>Rogner une image</source>
-        <translation type="unfinished">Обрезать изображение</translation>
+        <translation>Обрезать изображение</translation>
     </message>
 </context>
 <context>
@@ -1931,7 +1931,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="50"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation>Параметры листа</translation>
+        <translation>Свойства листа</translation>
     </message>
 </context>
 <context>
@@ -1945,7 +1945,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="530"/>
         <source>
 &lt;Shift&gt; to move</source>
-        <translation type="unfinished">
+        <translation>
 &lt;Shift&gt; — для перемещения</translation>
     </message>
 </context>
@@ -1972,12 +1972,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/diagramview.cpp" line="103"/>
         <source>Créer un template</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Создать шаблон</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="107"/>
         <source>Renvoi de folio</source>
-        <translation type="unfinished">Ссылка на страницу</translation>
+        <translation>Ссылка на страницу</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="742"/>
@@ -1998,24 +1998,24 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramview.cpp" line="2061"/>
         <source>Modèle enregistré</source>
-        <translation type="unfinished">Зарегистрированная модель</translation>
+        <translation>Новый шаблон</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2062"/>
         <source>Le modèle a été enregistré avec succès sous :
 %1</source>
-        <translation type="unfinished">Модель была успешно сохранена под именем:
+        <translation>Шаблон был успешно сохранен под именем:
 %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2065"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2065"/>
         <source>Le fichier n&apos;a pas pu être écrit.</source>
-        <translation type="unfinished">Не удалось записать файл.</translation>
+        <translation>Не удалось записать файл.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="156"/>
@@ -2128,7 +2128,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
@@ -2427,12 +2427,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
         <source>Tourner autour de son propre centre</source>
-        <translation type="unfinished">Вращаться вокруг собственной оси</translation>
+        <translation>Вращаться вокруг собственной оси</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="169"/>
@@ -2448,7 +2448,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="206"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="216"/>
@@ -2505,7 +2505,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="519"/>
         <source>Modifier le point de rotation d&apos;un champ texte</source>
-        <translation type="unfinished">Изменение точки поворота текстового поля</translation>
+        <translation>Изменение точки поворота текстового поля</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="350"/>
@@ -2571,12 +2571,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="76"/>
         <source>ex. 80.5</source>
-        <translation type="unfinished">пример, 80.5</translation>
+        <translation>пример, 80.5</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="77"/>
         <source>Nombre décimal avec un point comme séparateur (ex. 80.5)</source>
-        <translation type="unfinished">Десятичное число с точкой в качестве разделителя (пример, 80.5)</translation>
+        <translation>Десятичное число с точкой в качестве разделителя (пример, 80.5)</translation>
     </message>
 </context>
 <context>
@@ -2584,32 +2584,32 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="41"/>
         <source>File not found: %1</source>
-        <translation type="unfinished">Файл не найден: %1</translation>
+        <translation>Файл не найден: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
         <source>Cannot read %1</source>
-        <translation type="unfinished">Не удается прочитать %1</translation>
+        <translation>Не удается прочитать %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
         <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
-        <translation type="unfinished">Этот файл .edz представляет собой архив в формате ZIP, который пока не поддерживается (импортировать можно только файлы .edz в формате 7-Zip).</translation>
+        <translation>Этот файл .edz представляет собой архив в формате ZIP, который пока не поддерживается (импортировать можно только файлы .edz в формате 7-Zip).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="62"/>
         <source>Not a valid .edz package (unrecognised archive format).</source>
-        <translation type="unfinished">Недопустимый пакет .edz (неизвестный формат архива).</translation>
+        <translation>Недопустимый пакет .edz (неизвестный формат архива).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="70"/>
         <source>Could not create a temporary directory: %1</source>
-        <translation type="unfinished">Не удалось создать временный каталог: %1</translation>
+        <translation>Не удалось создать временный каталог: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="80"/>
         <source>No *.part.xml found inside the .edz</source>
-        <translation type="unfinished">В папке .edz не найден файл *.part.xml</translation>
+        <translation>В папке .edz не найден файл *.part.xml</translation>
     </message>
 </context>
 <context>
@@ -2618,7 +2618,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1785"/>
         <source>Numéroter automatiquement un élément</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Автоматическая нумерация элемента</translation>
+        <translation>Автоматическая нумерация элемента</translation>
     </message>
 </context>
 <context>
@@ -2670,13 +2670,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Enregistrer un template</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Сохранить шаблон</translation>
+        <translation>Сохранить шаблон</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="80"/>
         <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Выберите папку, в которую вы хотите сохранить свой шаблон.</translation>
+        <translation>Выберите папку, в которую вы хотите сохранить свой шаблон.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="83"/>
@@ -2696,19 +2696,19 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/elementdialog.cpp" line="126"/>
         <source>Nom du nouveau template</source>
-        <translation type="unfinished">Название нового шаблона</translation>
+        <translation>Название нового шаблона</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="249"/>
         <source>Écraser le template ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Перезаписать шаблон?</translation>
+        <translation>Перезаписать шаблон?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="250"/>
         <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Шаблон уже существует. Хотите его перезаписать?</translation>
+        <translation>Шаблон уже существует. Хотите его перезаписать?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="265"/>
@@ -2789,12 +2789,12 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="54"/>
         <source>ex. 80.5</source>
-        <translation type="unfinished">пример 80,5</translation>
+        <translation>пример 80.5</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="55"/>
         <source>Nombre décimal avec un point comme séparateur (ex. 80.5)</source>
-        <translation type="unfinished">Десятичное число с точкой в качестве разделителя (например, 80.5)</translation>
+        <translation>Десятичное число с точкой в качестве разделителя (например, 80.5)</translation>
     </message>
 </context>
 <context>
@@ -2808,7 +2808,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="35"/>
         <source>Exclure de la numérotation auto</source>
-        <translation type="unfinished">Исключить из автоматической нумерации</translation>
+        <translation>Исключить из автоматической нумерации</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="54"/>
@@ -2818,17 +2818,17 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="225"/>
         <source>Ajouter une propriété personnalisée</source>
-        <translation type="unfinished">Добавить настраиваемое свойство</translation>
+        <translation>Добавить настраиваемое свойство</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="232"/>
         <source>Séparation de potentiel</source>
-        <translation type="unfinished">Разделение потенциалов</translation>
+        <translation>Разделение потенциалов</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="236"/>
         <source>Exclure de la nomenclature</source>
-        <translation type="unfinished">Исключить из спецификации</translation>
+        <translation>Исключить из спецификации</translation>
     </message>
 </context>
 <context>
@@ -2837,18 +2837,18 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="84"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="425"/>
         <source>Personnaliser la barre…</source>
-        <translation type="unfinished">Настроить панель…</translation>
+        <translation>Настроить панель…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="95"/>
         <source>Glissez les commandes et les éléments dans la barre, hors de la barre, ou d&apos;une place à l&apos;autre. Un double-clic fait passer une commande ou un élément d&apos;une liste à l&apos;autre.</source>
-        <translation type="unfinished">Перетаскивайте команды и элементы на панель, с панели или с одного места на другое. Двойной щелчок переносит команду или элемент из одного списка в другой.</translation>
+        <translation>Перетаскивайте команды и элементы на панель, с панели или с одного места на другое. Двойной щелчок переносит команду или элемент из одного списка в другой.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="165"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="214"/>
         <source>Rechercher un élément…</source>
-        <translation type="unfinished">Найти элемент…</translation>
+        <translation>Найти элемент…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="173"/>
@@ -2858,39 +2858,39 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="186"/>
         <source>Valeurs par défaut</source>
-        <translation type="unfinished">Значения по умолчанию</translation>
+        <translation>Значения по умолчанию</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="187"/>
         <source>Annuler</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="188"/>
         <source>Terminé</source>
-        <translation type="unfinished">Завершено</translation>
+        <translation>Завершить</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="201"/>
         <source>Dans la barre :</source>
-        <translation type="unfinished">В строке:</translation>
+        <translation>На панеле:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="205"/>
         <source>Autres commandes :</source>
-        <translation type="unfinished">Другие заказы:</translation>
+        <translation>Другие команды:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="225"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="739"/>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="867"/>
         <source>Entrée pour insérer · Échap pour fermer</source>
-        <translation type="unfinished">Клавиша «Enter» для ввода · Клавиша «Esc» для закрытия</translation>
+        <translation>Клавиша «Enter» для вставки · Клавиша «Esc» для закрытия</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="233"/>
         <source>Glisser pour changer la largeur de la barre</source>
-        <translation type="unfinished">Проведите пальцем, чтобы изменить ширину полосы</translation>
+        <translation>Потяните, чтобы изменить ширину полосы</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="570"/>
@@ -2900,7 +2900,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="738"/>
         <source>Aucun résultat</source>
-        <translation type="unfinished">Результатов нет</translation>
+        <translation>Результатов нет</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementpickerpopup.cpp" line="843"/>
@@ -2939,12 +2939,12 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="255"/>
         <source>margin: 5px; font-weight: bold;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">margin: 5px; font-weight: bold;</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclure de la nomenclature</source>
-        <translation type="unfinished">Исключить из спецификации</translation>
+        <translation>Исключить из спецификации</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
@@ -3190,7 +3190,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="707"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1250"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="571"/>
@@ -3205,18 +3205,18 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="727"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation>+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="728"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="750"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="887"/>
         <source>Adresse</source>
-        <translation type="unfinished">Адрес</translation>
+        <translation>Адрес</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="751"/>
@@ -3233,12 +3233,12 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="770"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1248"/>
         <source>Nb.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">№</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="770"/>
         <source>T1</source>
-        <translation type="unfinished"></translation>
+        <translation>T1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="837"/>
@@ -3344,7 +3344,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="360"/>
         <source>Général</source>
-        <translation>Простой</translation>
+        <translation>Общее</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="370"/>
@@ -3413,35 +3413,35 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Nombre maximum de contacts esclaves définis : non défini
 </source>
-        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: не определено
+        <translation>Максимальное количество заданных подчиненных контактов: не определено
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="391"/>
         <source>Nombre maximum de contacts esclaves définis : %1
 </source>
-        <translation type="unfinished">Максимальное количество заданных подчиненных контактов: %1
+        <translation>Максимальное количество заданных подчиненных контактов: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
         <source>Nombre de contacts esclaves utilisés : %1
 </source>
-        <translation type="unfinished">Количество используемых подчиненных контактов: %1
+        <translation>Количество используемых подчиненных контактов: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="411"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
 </source>
-        <translation type="unfinished">    Контакты: NO: %1/%2, NC: %3/%4, переключатели: %5/%6, прочие: %7/%8
+        <translation>    Контакты: NO: %1/%2, NC: %3/%4, переключатели: %5/%6, прочие: %7/%8
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="420"/>
         <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
 </source>
-        <translation type="unfinished">    Контакты: NO: %1, NC: %2, переключатели: %3, прочие: %4
+        <translation>    Контакты: NO: %1, NC: %2, переключатели: %3, прочие: %4
 </translation>
     </message>
     <message>
@@ -3454,7 +3454,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="442"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Закрепить положение</translation>
+        <translation>Закрепить положение</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="458"/>
@@ -3487,22 +3487,22 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
         <source>Monter la sélection</source>
-        <translation>Сдвинуть выделение вверх</translation>
+        <translation>Сдвинуть выделенный вверх</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
         <source>Ajouter la sélection</source>
-        <translation>Добавить выделение</translation>
+        <translation>Добавить выделенный</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
         <source>Supprimer la sélection</source>
-        <translation>Удалить выделение</translation>
+        <translation>Удалить выделенный</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
         <source>Descendre la sélection</source>
-        <translation>Сдвинуть выделение вниз</translation>
+        <translation>Сдвинуть выделенный вниз</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
@@ -3587,7 +3587,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="318"/>
         <source>Automates (MAE/SPS)</source>
-        <translation type="unfinished">Автоматы (MAE/SPS)</translation>
+        <translation>ПЛК (PLC)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="341"/>
@@ -3607,22 +3607,22 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="394"/>
         <source>Importer des rapports depuis un fichier</source>
-        <translation type="unfinished">Импорт отчетов из файла</translation>
+        <translation>Импорт отчетов из файла</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="397"/>
         <source>Importer...</source>
-        <translation type="unfinished">Импортировать...</translation>
+        <translation>Импортировать...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="404"/>
         <source>Exporter tous les rapports enregistrés vers un fichier</source>
-        <translation type="unfinished">Экспортировать все сохраненные отчеты в файл</translation>
+        <translation>Экспортировать все сохраненные отчеты в файл</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="407"/>
         <source>Exporter...</source>
-        <translation type="unfinished">Экспортировать...</translation>
+        <translation>Экспортировать...</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="429"/>
@@ -3658,24 +3658,24 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="755"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="762"/>
         <source>Exporter</source>
-        <translation type="unfinished">Экспорт</translation>
+        <translation>Экспорт</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="755"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="762"/>
         <source>Aucun rapport enregistré à exporter.</source>
-        <translation type="unfinished">Для экспорта не найдено ни одного отчета.</translation>
+        <translation>Для экспорта не найдено ни одного отчета.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="767"/>
         <source>Exporter les rapports</source>
-        <translation type="unfinished">Экспорт отчетов</translation>
+        <translation>Экспорт отчетов</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="768"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="788"/>
         <source>Fichiers JSON (*.json)</source>
-        <translation type="unfinished">Файлы JSON (*.json)</translation>
+        <translation>Файлы JSON (*.json)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="775"/>
@@ -3683,58 +3683,58 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="805"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="775"/>
         <source>Impossible d&apos;écrire dans %1.</source>
-        <translation type="unfinished">Не удалось записать данные в %1.</translation>
+        <translation>Не удалось записать данные в %1.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="788"/>
         <source>Importer des rapports</source>
-        <translation type="unfinished">Импорт отчетов</translation>
+        <translation>Импорт отчетов</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="795"/>
         <source>Impossible de lire %1.</source>
-        <translation type="unfinished">Не удалось прочитать %1.</translation>
+        <translation>Не удалось прочитать %1.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="806"/>
         <source>%1 ne contient pas des rapports QElectroTech valides.</source>
-        <translation type="unfinished">%1 не содержит действительных отчетов QElectroTech.</translation>
+        <translation>%1 не содержит действительных отчетов QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="812"/>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="856"/>
         <source>Importer</source>
-        <translation type="unfinished">Импортировать</translation>
+        <translation>Импортировать</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="812"/>
         <source>Ce fichier ne contient aucun rapport.</source>
-        <translation type="unfinished">В этом файле нет отчетов.</translation>
+        <translation>В этом файле нет отчетов.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="829"/>
         <source>Rapport déjà existant</source>
-        <translation type="unfinished">Уже существующий отчет</translation>
+        <translation>Отчет уже существуюет</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="830"/>
         <source>Un rapport nommé « %1 » existe déjà. Le remplacer ?</source>
-        <translation type="unfinished">Отчет с именем «%1» уже существует. Заменить его?</translation>
+        <translation>Отчет с именем «%1» уже существует. Заменить его?</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="848"/>
         <source>Impossible d&apos;écrire la configuration locale.</source>
-        <translation type="unfinished">Не удалось сохранить локальные настройки.</translation>
+        <translation>Не удалось сохранить локальные настройки.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="857"/>
         <source>%1 rapport(s) importé(s), %2 ignoré(s).</source>
-        <translation type="unfinished">%1 отчет(ы) импортировано, %2 пропущено.</translation>
+        <translation>%1 отчет(ы) импортировано, %2 пропущено.</translation>
     </message>
 </context>
 <context>
@@ -3915,7 +3915,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="201"/>
         <source>Importer une pièce EPLAN (.edz)…</source>
-        <translation type="unfinished">Импорт чертежа EPLAN (.edz)…</translation>
+        <translation>Импорт чертежа EPLAN (.edz)…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="203"/>
@@ -3987,7 +3987,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="767"/>
         <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
-        <translation type="unfinished">Предупреждение — Импорт файла EPLAN (.edz)</translation>
+        <translation>Предупреждение — Импорт файла EPLAN (.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="770"/>
@@ -4003,7 +4003,7 @@ En important ce fichier, vous confirmez que :
 • vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
 • cette importation est effectuée à vos propres risques et responsabilité ;
 • ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
-        <translation type="unfinished">Формат .edz может быть получен из двух различных источников:
+        <translation>Формат .edz может быть получен из двух различных источников:
 
 • Портал EPLAN Data Portal (dataportal.eplan.com), на который распространяются условия использования среды EPLAN Cloud;
 • Сайт производителя компонентов (или дистрибьютора), который предоставляет свои файлы .edz напрямую в соответствии со своими собственными условиями.
@@ -4019,33 +4019,33 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="796"/>
         <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
-        <translation type="unfinished">Я прочитал(а) и принимаю эти условия.</translation>
+        <translation>Я прочитал(а) и принимаю эти условия.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="801"/>
         <source>Importer</source>
-        <translation type="unfinished">Импортировать</translation>
+        <translation>Импортировать</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="842"/>
         <source>Importer une pièce EPLAN</source>
-        <translation type="unfinished">Импорт детали из EPLAN</translation>
+        <translation>Импорт детали из EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="843"/>
         <source>Pièces EPLAN (*.edz)</source>
-        <translation type="unfinished">Детали EPLAN (*.edz)</translation>
+        <translation>Детали EPLAN (*.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="851"/>
         <source>Import EPLAN</source>
-        <translation type="unfinished">Импорт из EPLAN</translation>
+        <translation>Импорт из EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="852"/>
         <source>Impossible d&apos;importer cette pièce :
 %1</source>
-        <translation type="unfinished">Не удалось импортировать эту деталь:
+        <translation>Не удалось импортировать эту деталь:
 %1</translation>
     </message>
     <message>
@@ -4084,17 +4084,17 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="222"/>
         <source>Rechercher...</source>
-        <translation type="unfinished">Поиск...</translation>
+        <translation>Поиск...</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="249"/>
         <source>Collections</source>
-        <translation type="unfinished">Коллекции</translation>
+        <translation>Коллекции</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="250"/>
         <source>Modèles</source>
-        <translation type="unfinished">Модели</translation>
+        <translation>Шаблоны</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="948"/>
@@ -4143,13 +4143,13 @@ QElectroTech не может автоматически определить п�
         <location filename="../sources/elementspanel.cpp" line="274"/>
         <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Дважды щелкните, чтобы свернуть или развернуть коллекцию штампов компании</translation>
+        <translation>Дважды щелкните, чтобы свернуть или развернуть коллекцию штампов компании</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="275"/>
         <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Это коллекция штампов компании — используйте её для создания, хранения и редактирования собственных шаблонов.</translation>
+        <translation>Это коллекция штампов компании — используйте её для создания, хранения и редактирования собственных шаблонов.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="282"/>
@@ -4195,7 +4195,7 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Propriétés du folio</source>
-        <translation>Параметры листа</translation>
+        <translation>Свойства листа</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -4205,17 +4205,17 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Insérer un folio au-dessus</source>
-        <translation type="unfinished">Вставить страницу выше</translation>
+        <translation>Вставить страницу выше</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Insérer un folio en dessous</source>
-        <translation type="unfinished">Вставить страницу ниже</translation>
+        <translation>Вставить страницу ниже</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Copier et coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Вставить копию</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
@@ -4240,7 +4240,7 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Remonter ce folio x100</source>
-        <translation type="unfinished">Переместить лист вверх на 100</translation>
+        <translation>Переместить лист вверх на 100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -4255,7 +4255,7 @@ QElectroTech не может автоматически определить п�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Abaisser ce folio x100</source>
-        <translation type="unfinished">Переместить лист вниз на 100</translation>
+        <translation>Переместить лист вниз на 100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="86"/>
@@ -4267,7 +4267,7 @@ QElectroTech не может автоматически определить п�
         <location filename="../sources/elementspanelwidget.cpp" line="92"/>
         <location filename="../sources/elementspanelwidget.cpp" line="93"/>
         <source>Panneau des éléments</source>
-        <translation type="unfinished">Панель элементов</translation>
+        <translation>Панель элементов</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="100"/>
@@ -4408,13 +4408,13 @@ QElectroTech не может автоматически определить п�
         <location filename="../sources/exportdialog.cpp" line="885"/>
         <source>Images non incluses dans l&apos;export DXF</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Изображения, не включенные в экспорт в формат DXF</translation>
+        <translation>Изображения, не включенные в экспорт в формат DXF</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="886"/>
         <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Используемый здесь формат DXF (AC1006) не позволяет включать изображения. Изображения будут отображаться исключительно в виде прямоугольника с контуром (с сохранением положения, размера, поворота и наклона), без самого содержимого изображения.</translation>
+        <translation>Используемый здесь формат DXF (AC1006) не позволяет включать изображения. Изображения будут отображаться исключительно в виде прямоугольника с контуром (с сохранением положения, размера, поворота и наклона), без самого содержимого изображения.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="929"/>
@@ -4979,52 +4979,52 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
         <source>Couleur de l&apos;application</source>
-        <translation type="unfinished">Цвет приложения</translation>
+        <translation>Цвет приложения</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Afficher les propriétés d&apos;un conducteur sélectionné dans le panneau Propriétés de la sélection</source>
-        <translation type="unfinished">Отобразить свойства выбранного проводника на панели «Свойства выделенного объекта»</translation>
+        <translation>Показывать свойства выбранного проводника на панели «Свойства выбора»</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
-        <translation type="unfinished">Показать сетку по умолчанию (будет применено при следующем запуске)</translation>
+        <translation>Показать сетку по умолчанию (будет применено при следующем запуске)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="90"/>
         <source>Par défaut, un double-clic insère l&apos;élément sur le folio ; l&apos;édition reste accessible par le menu contextuel.</source>
-        <translation type="unfinished">По умолчанию двойной щелчок вставляет элемент на страницу; доступ к редактированию по-прежнему можно получить через контекстное меню.</translation>
+        <translation>По умолчанию двойной щелчок вставляет элемент на страницу; доступ к редактированию по-прежнему можно получить через контекстное меню.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
         <source>Double-cliquer dans la collection ouvre l&apos;éditeur d&apos;élément au lieu de l&apos;insérer</source>
-        <translation type="unfinished">Двойной щелчок в коллекции открывает редактор элемента, а не вставляет его</translation>
+        <translation>Двойной щелчок в коллекции открывает редактор элемента, а не вставляет его</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="100"/>
         <source>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s&apos;effacent quand la souris s&apos;éloigne.</source>
-        <translation type="unfinished">После щелчка, выделяющего элемент или проводник, команды панели быстрого доступа появляются рядом с курсором и исчезают, когда курсор удаляется.</translation>
+        <translation>После щелчка, выделяющего элемент или проводник, команды панели быстрого доступа появляются рядом с курсором и исчезают, когда курсор удаляется.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="103"/>
         <source>Afficher les commandes près de la sélection</source>
-        <translation type="unfinished">Показать команды рядом с выделенным элементом</translation>
+        <translation>Показать команды рядом с выделенным элементом</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
         <source>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</source>
-        <translation type="unfinished">Если удерживать правую кнопку мыши и перетащить курсор в каком-либо направлении, запускается команда из панели быстрого доступа. Обычный щелчок правой кнопкой мыши всегда открывает контекстное меню после отпускания кнопки.</translation>
+        <translation>Если удерживать правую кнопку мыши и перетащить курсор в каком-либо направлении, запускается команда из панели быстрого доступа. Обычный щелчок правой кнопкой мыши всегда открывает контекстное меню после отпускания кнопки.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="113"/>
         <source>Gestes de la souris avec le bouton droit</source>
-        <translation type="unfinished">Действия с правой кнопкой мыши</translation>
+        <translation>Действия правой кнопки мыши</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="120"/>
         <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
-        <translation type="unfinished">Показать подсказки по умолчанию (будет применено при следующем запуске)</translation>
+        <translation>Показать подсказки по умолчанию (будет применено при следующем запуске)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="134"/>
@@ -5044,27 +5044,27 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="260"/>
         <source>Autoriser l&apos;exécution de scripts JavaScript (Projet &gt; Exécuter un script, et --run)</source>
-        <translation type="unfinished">Разрешить выполнение скриптов JavaScript (Проект &gt; Выполнить скрипт и --run)</translation>
+        <translation type="unfinished">Разрешить выполнение скриптов JavaScript (Проект &gt; Запустить скрипт и --run)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="263"/>
         <source>Un script s&apos;exécute avec vos droits : il peut lire et modifier le projet ouvert et écrire des fichiers. Désactivé par défaut ; n&apos;exécutez que des scripts dont vous connaissez l&apos;origine.</source>
-        <translation type="unfinished">Скрипт запускается с вашими правами: он может читать и изменять открытый проект, а также записывать файлы. По умолчанию эта функция отключена; запускайте только те скрипты, источник которых вам известен.</translation>
+        <translation>Скрипт запускается с вашими правами: он может читать и изменять открытый проект, а также записывать файлы. По умолчанию эта функция отключена; запускайте только те скрипты, источник которых вам известен.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="322"/>
         <source>Répertoire de la collection company</source>
-        <translation type="unfinished">Каталог коллекции компании</translation>
+        <translation>Каталог коллекции компании</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="364"/>
         <source>Répertoire des cartouches company</source>
-        <translation type="unfinished">Каталог штампов компании</translation>
+        <translation>Каталог штампов компании</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="392"/>
         <source>Répertoire des Macros utilisateur</source>
-        <translation type="unfinished">Каталог пользовательских макросов</translation>
+        <translation>Каталог пользовательских шаблонов</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
@@ -5123,12 +5123,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="827"/>
         <source>Grille des textes déplacés à la souris</source>
-        <translation type="unfinished">Сетка текстов, перемещаемых с помощью мыши</translation>
+        <translation>Сетка текстов, перемещаемых с помощью мыши</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
         <source>Fraction de la grille des folios. Maintenir Ctrl pendant le déplacement pour placer librement.</source>
-        <translation type="unfinished">Привязка к сетки листа. Удерживайте клавишу Ctrl во время перемещения, чтобы разместить элементы в произвольном порядке.</translation>
+        <translation>Привязка к сетки листа. Удерживайте клавишу Ctrl во время перемещения, чтобы разместить элементы в произвольном порядке.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
@@ -5163,39 +5163,39 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1010"/>
         <source>Affichage Grille</source>
-        <translation type="unfinished">Показывать в виде таблицы</translation>
+        <translation>Показывать в виде таблицы</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1107"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1114"/>
         <source>max:</source>
-        <translation type="unfinished"></translation>
+        <translation>max:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1068"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
-        <translation type="unfinished">Размер точек сетки в Diagram-Editor: 1–5</translation>
+        <translation>Размер точек сетки в Diagram-Editor: 1–5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1121"/>
         <source>min:</source>
-        <translation type="unfinished"></translation>
+        <translation>min:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1128"/>
         <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
-        <translation type="unfinished">Размер точек сетки в редакторе элементов: 1–5</translation>
+        <translation>Размер точек сетки в редакторе элементов: 1–5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
         <source>Editor</source>
-        <translation type="unfinished">Редактор</translation>
+        <translation>Редактор</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1160"/>
         <source>Max. parts in Element Editor List</source>
-        <translation type="unfinished">Максимальное количество элементов в списке редактора элементов</translation>
+        <translation>Максимальное количество элементов в списке редактора элементов</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="253"/>
@@ -5235,12 +5235,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="79"/>
         <source>Désactivée</source>
-        <translation type="unfinished">Отключено</translation>
+        <translation>Отключено</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="115"/>
         <source>Activé par la variable d&apos;environnement QET_ENABLE_SCRIPTING ; ce réglage est sans effet tant qu&apos;elle est définie.</source>
-        <translation type="unfinished">Включается с помощью переменной среды QET_ENABLE_SCRIPTING; этот параметр не действует, пока она определена.</translation>
+        <translation>Включается с помощью переменной среды QET_ENABLE_SCRIPTING; этот параметр не действует, пока она определена.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="421"/>
@@ -5322,7 +5322,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="456"/>
         <source>Coréen</source>
-        <translation type="unfinished">Корейский</translation>
+        <translation>Корейский</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="457"/>
@@ -5383,42 +5383,42 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="468"/>
         <source>Ukrainien</source>
-        <translation type="unfinished">Украинский</translation>
+        <translation>Украинский</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="469"/>
         <source>Chinois</source>
-        <translation type="unfinished">Китайский</translation>
+        <translation>Китайский</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="470"/>
         <source>Suédois</source>
-        <translation type="unfinished">Шведский</translation>
+        <translation>Шведский</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="552"/>
         <source>Chemin de la collection company</source>
-        <translation type="unfinished">Путь к коллекции компании</translation>
+        <translation>Путь к коллекции компании</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="580"/>
         <source>Chemin des cartouches company</source>
-        <translation type="unfinished">Путь к штампам компании</translation>
+        <translation>Путь к штампам компании</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
         <source>Chemin des macros utilisateur</source>
-        <translation type="unfinished">Путь к пользовательским макросам</translation>
+        <translation>Путь к пользовательским шаблонам</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="638"/>
         <source>To high values might lead to crashes of the application.</source>
-        <translation type="unfinished">Слишком высокие значения могут привести к сбоям в работе приложения.</translation>
+        <translation>Слишком высокие значения могут привести к сбоям в работе приложения.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="673"/>
         <source>Fonctionnalité expérimental</source>
-        <translation type="unfinished">Экспериментальная функция</translation>
+        <translation>Экспериментальная функция</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="674"/>
@@ -5428,7 +5428,7 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
 1 - la valeur sélectionnée 
 2 - du dpi de l&apos;écran 
 3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
-        <translation type="unfinished">ПРЕДУПРЕЖДЕНИЕ:
+        <translation>ПРЕДУПРЕЖДЕНИЕ:
 Любое значение, отличное от «Без округления», может привести к ошибкам при визуализации проекта в зависимости от:
 
 1 — выбранного значения 
@@ -5687,22 +5687,22 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="257"/>
         <source>Rogner l&apos;image</source>
-        <translation type="unfinished">Обрезать изображение</translation>
+        <translation>Обрезать изображение</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="261"/>
         <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
-        <translation type="unfinished">Перетащите ручки или внутреннюю границу рамки, чтобы настроить область, которую нужно сохранить.</translation>
+        <translation>Перетащите ручки или внутреннюю границу рамки, чтобы настроить область, которую нужно сохранить.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="264"/>
         <source>Réinitialiser</source>
-        <translation type="unfinished">Сбросить</translation>
+        <translation>Сбросить</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagecropdialog.cpp" line="265"/>
         <source>Revenir à l&apos;image complète, sans rognage</source>
-        <translation type="unfinished">Вернуться к полному изображению без обрезки</translation>
+        <translation>Вернуться к полному изображению без обрезки</translation>
     </message>
 </context>
 <context>
@@ -5715,61 +5715,61 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Largeur</source>
-        <translation type="unfinished">Ширина</translation>
+        <translation>Ширина</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="66"/>
         <source> %</source>
-        <translation type="unfinished"></translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="262"/>
         <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
-        <translation type="unfinished">Заблокировано: при изменении ширины или высоты другой параметр настраивается автоматически для сохранения пропорций. Щелкните, чтобы разблокировать.</translation>
+        <translation>Заблокировано: при изменении ширины или высоты другой параметр настраивается автоматически для сохранения пропорций. Щелкните, чтобы разблокировать.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="59"/>
         <source>Hauteur</source>
-        <translation type="unfinished">Высота</translation>
+        <translation>Высота</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="82"/>
         <source>Restaurer les proportions</source>
-        <translation type="unfinished">Восстановить пропорции</translation>
+        <translation>Восстановить пропорции</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="89"/>
         <source>Angle</source>
-        <translation type="unfinished">Угол</translation>
+        <translation>Угол</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="96"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="119"/>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="142"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="112"/>
         <source>Inclinaison X</source>
-        <translation type="unfinished">Наклон по оси X</translation>
+        <translation>Наклон по оси X</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="135"/>
         <source>Inclinaison Y</source>
-        <translation type="unfinished">Наклон по оси Y</translation>
+        <translation>Наклон по оси Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="158"/>
         <source>Libellé</source>
-        <translation type="unfinished">Формулировка</translation>
+        <translation>Надпись</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="165"/>
         <source>Texte affiché sous l&apos;image. Il suit l&apos;image quand elle est déplacée, copiée ou tournée.</source>
-        <translation type="unfinished">Текст, отображаемый под изображением. Он следует за изображением при его перемещении, копировании или повороте.</translation>
+        <translation>Текст, отображаемый под изображением. Он следует за изображением при его перемещении, копировании или повороте.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="172"/>
@@ -5779,33 +5779,33 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="197"/>
         <source>Modifier la largeur d&apos;une image</source>
-        <translation type="unfinished">Изменить ширину изображения</translation>
+        <translation>Изменение ширины изображения</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="198"/>
         <source>Modifier la hauteur d&apos;une image</source>
-        <translation type="unfinished">Изменить высоту изображения</translation>
+        <translation>Изменение высоты изображения</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="199"/>
         <source>Modifier l&apos;angle d&apos;une image</source>
-        <translation type="unfinished">Изменить угол наклона изображения</translation>
+        <translation>Измение угола наклона изображения</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="200"/>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="201"/>
         <source>Modifier l&apos;inclinaison d&apos;une image</source>
-        <translation type="unfinished">Изменение наклона изображения</translation>
+        <translation>Изменение наклона изображения</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="212"/>
         <source>Modifier le libellé d&apos;une image</source>
-        <translation type="unfinished">Изменить подпись к изображению</translation>
+        <translation>Изменение надписи изображения</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="263"/>
         <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
-        <translation type="unfinished">Разблокировано: ширину и высоту можно изменять независимо друг от друга. Нажмите, чтобы заблокировать.</translation>
+        <translation>Разблокировано: ширину и высоту можно изменять независимо друг от друга. Нажмите, чтобы заблокировать.</translation>
     </message>
 </context>
 <context>
@@ -5813,42 +5813,42 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="103"/>
         <source>Couleur transparente</source>
-        <translation type="unfinished">Прозрачный цвет</translation>
+        <translation>Прозрачный цвет</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="121"/>
         <source>Image source</source>
-        <translation type="unfinished">Источник изображения</translation>
+        <translation>Оригинальное изображение</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="122"/>
         <source>Aperçu</source>
-        <translation type="unfinished">Предпросмотр</translation>
+        <translation>Предпросмотр</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="258"/>
         <source>rgb(%1, %2, %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>rgb(%1, %2, %3)</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="263"/>
         <source>Tolérance pour cette couleur</source>
-        <translation type="unfinished">Допустимое отклонение для данного цвета</translation>
+        <translation>Допустимое отклонение для данного цвета</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="268"/>
         <source>Retirer cette couleur</source>
-        <translation type="unfinished">Удалить этот цвет</translation>
+        <translation>Удалить этот цвет</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="279"/>
         <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
-        <translation type="unfinished">Щелкните по изображению, чтобы добавить цвет. Отрегулируйте порог чувствительности для каждого цвета с помощью соответствующего ползунка или нажмите ×, чтобы удалить его.</translation>
+        <translation>Щелкните по изображению, чтобы добавить цвет. Отрегулируйте порог чувствительности для каждого цвета с помощью соответствующего ползунка или нажмите ×, чтобы удалить его.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagetransparentcolordialog.cpp" line="278"/>
         <source>Cliquez sur l&apos;image pour choisir une couleur</source>
-        <translation type="unfinished">Нажмите на изображение, чтобы выбрать цвет</translation>
+        <translation>Нажмите на изображение, чтобы выбрать цвет</translation>
     </message>
 </context>
 <context>
@@ -6065,7 +6065,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="41"/>
         <source>Atteindre un élément</source>
         <comment>window title</comment>
-        <translation type="unfinished">Перейти к элементу</translation>
+        <translation>Перейти к элементу</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="44"/>
@@ -6075,17 +6075,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="231"/>
         <source>Case %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ячейка %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="235"/>
         <source>Folio %1, case %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист %1, ячейка %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="236"/>
         <source>Folio %1 (%2), case %3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист %1 (%2), ячейка %3</translation>
     </message>
 </context>
 <context>
@@ -6193,7 +6193,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="70"/>
         <source>Masquer les éléments maîtres pleins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Скрыть все главные элементы</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="516"/>
@@ -6494,7 +6494,7 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation>Множественное копирование</translation>
+        <translation>Множественная вставка</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
@@ -6609,32 +6609,32 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="157"/>
         <source>Guides</source>
-        <translation type="unfinished">Руководство</translation>
+        <translation>Направляющие</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="163"/>
         <source>Définir les règles de numérotation automatique par défaut pour les nouveaux projets :</source>
-        <translation type="unfinished">Задайте правила автоматической нумерации по умолчанию для новых проектов:</translation>
+        <translation>Задайте правила автоматической нумерации по умолчанию для новых проектов:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="165"/>
         <source>Conducteurs</source>
-        <translation type="unfinished">Проводники</translation>
+        <translation>Проводники</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="166"/>
         <source>Eléments</source>
-        <translation type="unfinished">Элементы</translation>
+        <translation>Элементы</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="167"/>
         <source>Folios</source>
-        <translation type="unfinished">Листы</translation>
+        <translation>Листы</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="169"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished">Автонумерация</translation>
+        <translation>Автонумерация</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
@@ -6750,12 +6750,12 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="79"/>
         <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le &quot;0&quot; de &quot;0.7&quot;)</source>
-        <translation type="unfinished">Установить значение 0 для цифры, которая увеличивается только за счёт переноса младшего разряда (например, «0» для «0.7»)</translation>
+        <translation>Установить значение 0 для цифры, которая увеличивается только за счёт переноса младшего разряда (например, «0» для «0.7»)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="110"/>
         <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
-        <translation type="unfinished">Значение, при котором данная цифра становится равной 0 при увеличении предыдущей цифры (0 = цикл отсутствует)</translation>
+        <translation>Значение, при котором данная цифра становится равной 0 при увеличении предыдущей цифры (0 = цикл отсутствует)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
@@ -6765,12 +6765,12 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
         <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
-        <translation type="unfinished">Формат отображения: последовательность нулей указывает минимальное количество цифр (00 = 07, 000 = 007). Пустое поле = естественная ширина типа.</translation>
+        <translation>Формат отображения: последовательность нулей указывает минимальное количество цифр (00 = 07, 000 = 007). Пустое поле = естественная ширина типа.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="144"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
@@ -6806,7 +6806,7 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="305"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="495"/>
         <source>Cyclique (modulo)</source>
-        <translation type="unfinished">Циклический (по модулю)</translation>
+        <translation>Циклический (по модулю)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="131"/>
@@ -6815,7 +6815,7 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="307"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="477"/>
         <source>Alphabétique</source>
-        <translation type="unfinished">По алфавиту</translation>
+        <translation>По алфавиту</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="132"/>
@@ -7001,12 +7001,12 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="50"/>
         <source>Sélectionner une page</source>
-        <translation type="unfinished">Выбрать страницу</translation>
+        <translation>Выбрать страницу</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="61"/>
         <source>Ce document PDF contient %n page(s)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Этот документ PDF содержит %n страницу</numerusform>
             <numerusform>Этот документ PDF содержит %n страницы</numerusform>
             <numerusform>Этот документ PDF содержит %n страниц</numerusform>
@@ -7015,32 +7015,32 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="70"/>
         <source>Page à importer :</source>
-        <translation type="unfinished">Страница для импорта:</translation>
+        <translation>Страница для импорта:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="83"/>
         <source>Résolution :</source>
-        <translation type="unfinished">Разрешение :</translation>
+        <translation>Разрешение :</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="87"/>
         <source>150 DPI (écran)</source>
-        <translation type="unfinished">150 DPI (экран)</translation>
+        <translation>150 DPI (экран)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="88"/>
         <source>300 DPI (impression)</source>
-        <translation type="unfinished">300 DPI (печать)</translation>
+        <translation>300 DPI (печать)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="89"/>
         <source>600 DPI (haute qualité)</source>
-        <translation type="unfinished">600 DPI (высокое качество)</translation>
+        <translation>600 DPI (высокое качество)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="96"/>
         <source>Aperçu :</source>
-        <translation type="unfinished">Обзор:</translation>
+        <translation>Обзор:</translation>
     </message>
 </context>
 <context>
@@ -7118,7 +7118,7 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="380"/>
         <source>Connecter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Разъем</translation>
     </message>
 </context>
 <context>
@@ -7131,12 +7131,12 @@ Voulez-vous tout de même lier ce contact esclave ?</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -7502,26 +7502,26 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="204"/>
         <source>Temps passé sur ce projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished">Время, затраченное на этот проект:</translation>
+        <translation>Время, затраченное на этот проект:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="206"/>
         <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished">Отслеживать время, затраченное на этот проект (сохраняется только локально в этом файле)</translation>
+        <translation>Отслеживать время, затраченное на этот проект (сохраняется только локально в этом файле)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="207"/>
         <source>Réinitialiser</source>
         <comment>button label</comment>
-        <translation type="unfinished">Сбросить</translation>
+        <translation>Сбросить</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="250"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="267"/>
         <source>%1 h %2 min</source>
         <comment>hours and minutes of time spent on a project</comment>
-        <translation type="unfinished">%1 ч %2 мин</translation>
+        <translation>%1 ч %2 мин</translation>
     </message>
 </context>
 <context>
@@ -7589,12 +7589,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Dessiner les noms des bornes</source>
-        <translation type="unfinished">Нарисовать названия клемм</translation>
+        <translation type="unfinished">Рисовать названия клемм</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="199"/>
         <source>Inscrire les informations des composants</source>
-        <translation type="unfinished">Ввести данные о компонентах</translation>
+        <translation type="unfinished">Вывести данные о компонентах</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="212"/>
@@ -7770,7 +7770,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="404"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Вы уверены, что хотите удалить этот лист из проекта?</translation>
+        <translation>Вы уверены, что хотите удалить этот лист из проекта?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="752"/>
@@ -7823,12 +7823,12 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="817"/>
         <source>go one page left</source>
-        <translation type="unfinished">перейти на одну страницу влево</translation>
+        <translation>перейти на одну страницу влево</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="821"/>
         <source>go one page right</source>
-        <translation type="unfinished">перейти на одну страницу вправо</translation>
+        <translation>перейти на одну страницу вправо</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="836"/>
@@ -8557,57 +8557,57 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="833"/>
         <source>Insérer le dernier élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставить последний элемент</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
         <source>Place à nouveau le dernier élément inséré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Снова вставить последний добавленный элемент</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="847"/>
         <source>Rechercher une commande…</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поиск команды…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="849"/>
         <source>Tapez une partie du nom d&apos;une commande et appuyez sur Entrée pour la lancer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Введите часть названия команды и нажмите Enter, чтобы запустить её</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="869"/>
         <source>Insérer un élément…</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставить элемент…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="871"/>
         <source>Ouvre le sélecteur d&apos;éléments à la position du curseur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыть окно выбора элементов в месте нахождения курсора</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="884"/>
         <source>Barre de raccourcis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Панель быстрого доступа</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
         <source>Ouvre à la position du curseur les commandes utiles pour la sélection, et le sélecteur d&apos;éléments</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открывает в месте нахождения курсора команды, необходимые для выделения, а также средство выбора элементов</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="898"/>
         <source>Répéter la dernière commande</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Повторить последнюю команду</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="900"/>
         <source>Relance le dernier outil de dessin ou la dernière insertion d&apos;élément (Entrée sur le folio)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Повторить последнее действие с инструментом рисования или последнюю вставку элемента (ввод на лист)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="910"/>
@@ -8624,13 +8624,13 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="929"/>
         <source>Aligner sur la grille</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выровнять по сетке</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="931"/>
         <source>Remet les éléments, images et textes sélectionnés sur la grille</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставляет выделенные элементы, изображения и текст по сетке</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="936"/>
@@ -8650,24 +8650,24 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="939"/>
         <source>Sélectionner tous les conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбрать все проводники</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="940"/>
         <source>Sélectionner tous les champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выделить все текстовые поля</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="953"/>
         <source>Sélectionne tous les conducteurs du folio, désélectionne le reste</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выделяет все проводники на листе, снимает выделение с остальных</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="954"/>
         <source>Sélectionne tous les champs de texte du folio, désélectionne le reste</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выделяет все текстовые поля на листе, снимает выделение с остальных</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1009"/>
@@ -8749,17 +8749,17 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
         <source>A&amp;jouter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Добавить</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Aligner</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выровнять</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1239"/>
         <source>Lignes et colonnes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Строки и столбцы</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1616"/>
@@ -8808,9 +8808,9 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/qetdiagrameditor.cpp" line="2101"/>
         <source>%n objet(s) remis sur la grille</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n элемент возвращен на сетку</numerusform>
+            <numerusform>%n элемента возвращены на сетку</numerusform>
+            <numerusform>%n элементов возвращены на сетку</numerusform>
         </translation>
     </message>
     <message>
@@ -8822,9 +8822,9 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/qetdiagrameditor.cpp" line="2110"/>
         <source>(%n objet(s) verrouillé(s) laissé(s) en place)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>(%n заблокированный объект остался на месте)</numerusform>
+            <numerusform>(%n заблокированных объектов остались на месте)</numerusform>
+            <numerusform>(%n заблокированных объектов остались на месте)</numerusform>
         </translation>
     </message>
     <message>
@@ -8837,55 +8837,55 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3227"/>
         <source>Répéter : insérer « %1 »</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Повторить: вставку «%1»</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3228"/>
         <source>Répéter : %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Повторить: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3510"/>
         <source>folio %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">лист %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3518"/>
         <source>%n élément(s) redessiné(s).</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n перерисованный элемент.</numerusform>
+            <numerusform>%n перерисованных элементов.</numerusform>
+            <numerusform>%n перерисованных элементов.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3522"/>
         <source>%n élément(s) dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n элемент, определение которого не найдено или нечитаемо: их текущий рисунок был сохранен.</numerusform>
+            <numerusform>%n элемента, определение которых не найдено или нечитаемо: их текущий рисунок был сохранен.</numerusform>
+            <numerusform>%n элементов, определение которых не найдено или нечитаемо: их текущий рисунок был сохранен.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3534"/>
         <source>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n элемент, не перерисованный: их размер, точка захвата или границы изменились (граница добавлена, удалена или перемещена).</numerusform>
+            <numerusform>%n элемента, не перерисованных: их размер, точка захвата или границы изменились (граница добавлена, удалена или перемещена).</numerusform>
+            <numerusform>%n элементов, не перерисованных: их размер, точка захвата или границы изменились (граница добавлена, удалена или перемещена).</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3538"/>
         <source>Pour les mettre à jour, il faut les supprimer puis les réinsérer. Attention : cette opération supprime les conducteurs déjà reliés à ces éléments, qu&apos;il faudra retracer.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Чтобы обновить их, необходимо удалить их, а затем вставить заново. Внимание: при выполнении этой операции будут удалены проводники, уже подключенные к этим элементам, и их придётся проложить заново.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3574"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3592"/>
         <source>Exécuter un script</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Запустить скрипт</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3575"/>
@@ -8894,18 +8894,22 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
 Un script s&apos;exécute avec vos droits : il peut lire et modifier le projet ouvert et écrire des fichiers. N&apos;exécutez que des scripts dont vous connaissez l&apos;origine.
 
 Activer les scripts ? Ce réglage est modifiable dans Configurer QElectroTech &gt; Général &gt; Projets.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Скрипты отключены.
+
+Скрипт запускается с вашими правами: он может читать и изменять открытый проект, а также записывать файлы. Запускайте только те скрипты, источник которых вам известен.
+
+Включить скрипты? Этот параметр можно изменить в меню «Настройки QElectroTech» &gt; «Общие» &gt; «Проекты».</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3594"/>
         <source>Scripts JavaScript (*.js);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Скрипты JavaScript (*.js);;Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3614"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3619"/>
         <source>Textes %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тексты %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
@@ -9381,24 +9385,24 @@ Activer les scripts ? Ce réglage est modifiable dans Configurer QElectroTech &g
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="410"/>
         <source>Dupli&amp;quer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Дубликат</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="412"/>
         <source>Copie la sélection, décalée de l&apos;espacement configuré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Скопировать выделенную область, сместив её на заданное расстояние</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
         <source>Configurer la duplication...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настроить дублирование...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
         <source>Choisir l&apos;espacement et la direction utilisés par Dupliquer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбрать интервал и направление, используемые функцией «Дублировать»</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
@@ -10499,17 +10503,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="80"/>
         <source>Impossible de vérifier la requête : la base de données ne peut pas être mise en lecture seule.</source>
-        <translation type="unfinished">Не удалось проверить запрос: база данных не может быть переведена в режим «только для чтения».</translation>
+        <translation>Не удалось проверить запрос: база данных не может быть переведена в режим «только для чтения».</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="105"/>
         <source>Seules les requêtes en lecture seule sont autorisées : cette requête modifierait la base de données.</source>
-        <translation type="unfinished">Допускаются только запросы в режиме «только для чтения»: данный запрос приведёт к изменению базы данных.</translation>
+        <translation>Допускаются только запросы в режиме «только для чтения»: данный запрос приведёт к изменению базы данных.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/sqlreadonly.cpp" line="109"/>
         <source>Requête SQL invalide : %1</source>
-        <translation type="unfinished">Недопустимый SQL запрос : %1</translation>
+        <translation>Недопустимый SQL запрос : %1</translation>
     </message>
 </context>
 <context>
@@ -10697,7 +10701,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="412"/>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="413"/>
         <source>Éditeur de cartouche</source>
-        <translation type="unfinished">Редактор шаблонов</translation>
+        <translation>Редактор шаблонов</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="442"/>
@@ -10788,13 +10792,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="919"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
         <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
         <comment>message box content - %1 is a title block template name</comment>
-        <translation type="unfinished">Не удалось сохранить шаблон «%1».</translation>
+        <translation>Не удалось сохранить шаблон «%1».</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="840"/>
@@ -10824,7 +10828,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="920"/>
         <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content - %1 is the rejected template name</comment>
-        <translation type="unfinished">Имя «%1» недействительно: оно не должно содержать следующие символы: \ / : * ? &quot; &lt; &gt; |</translation>
+        <translation>Имя «%1» недействительно: оно не должно содержать следующие символы: \ / : * ? &quot; &lt; &gt; |</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1053"/>
@@ -11017,13 +11021,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="692"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Отразить выделеное</translation>
+        <translation>Отразить выделеное</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="741"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Снять выделение</translation>
+        <translation>Снять выделение</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -11228,7 +11232,7 @@ Que désirez vous faire ?</source>
         <source>%n plan(s) de bornes</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation type="unfinished">
-            <numerusform>%n схема клеммных колодок</numerusform>
+            <numerusform>%n схема клеммной колодки</numerusform>
             <numerusform>%n схемы клеммных колодок</numerusform>
             <numerusform>%n схем клеммных колодок</numerusform>
         </translation>
@@ -11658,7 +11662,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="165"/>
         <source>Macros</source>
-        <translation type="unfinished">Макрос</translation>
+        <translation>Шаблоны</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="167"/>
@@ -11862,13 +11866,13 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Installation (=)</source>
-        <translation type="unfinished">Установка (=)</translation>
+        <translation>Установка (=)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="294"/>
         <location filename="../sources/qetinformation.cpp" line="327"/>
         <source>Localisation (+)</source>
-        <translation type="unfinished">Расположение (+)</translation>
+        <translation>Расположение (+)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="295"/>
@@ -13008,7 +13012,7 @@ Pour l&apos;activer : Configurer QElectroTech &gt; Général &gt; Projets, ou d�
         <location filename="../sources/qtextorientationwidget.cpp" line="39"/>
         <source>Example</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished">Пример</translation>
+        <translation>Пример</translation>
     </message>
 </context>
 <context>
@@ -14409,29 +14413,29 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Géométrie</source>
-        <translation type="unfinished">Геометрия</translation>
+        <translation>Геометрия</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>Largeur</source>
-        <translation type="unfinished">Ширина</translation>
+        <translation>Ширина</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="46"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Hauteur</source>
-        <translation type="unfinished">Высота</translation>
+        <translation>Высота</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="66"/>
         <source>Angle</source>
-        <translation type="unfinished">Угол</translation>
+        <translation>Угол</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source> °</source>
-        <translation type="unfinished"></translation>
+        <translation> °</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="205"/>
@@ -14511,7 +14515,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="305"/>
         <source>Forme fermée</source>
-        <translation type="unfinished">Закрытая форма</translation>
+        <translation>Закрытая форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
@@ -14521,17 +14525,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="183"/>
         <source>Modifier la longueur d&apos;une ligne</source>
-        <translation type="unfinished">Изменить длину линии</translation>
+        <translation>Изменить длину линии</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="202"/>
         <source>Modifier la taille d&apos;une forme</source>
-        <translation type="unfinished">Изменить размер фигуры</translation>
+        <translation>Изменить размер фигуры</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="215"/>
         <source>Modifier l&apos;angle d&apos;une forme</source>
-        <translation type="unfinished">Изменить угол фигуры</translation>
+        <translation>Изменить угол фигуры</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="236"/>
@@ -14562,17 +14566,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="433"/>
         <source>Longueur</source>
-        <translation type="unfinished">Длина</translation>
+        <translation>Длина</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="442"/>
         <source>Rayon X</source>
-        <translation type="unfinished"></translation>
+        <translation>Радиус X</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="443"/>
         <source>Rayon Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Радиус Y</translation>
     </message>
 </context>
 <context>
@@ -14644,7 +14648,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="81"/>
         <source>Conducteurs sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбранные проводники</translation>
     </message>
 </context>
 <context>
@@ -14698,9 +14702,9 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="269"/>
         <source>%n action(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n действие</numerusform>
+            <numerusform>%n действий</numerusform>
+            <numerusform>%n действий</numerusform>
         </translation>
     </message>
     <message>
@@ -16745,7 +16749,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="518"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="556"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="177"/>
@@ -17572,17 +17576,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="375"/>
         <source>Alignement</source>
-        <translation type="unfinished">Выравнивание</translation>
+        <translation>Выравнивание</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="376"/>
         <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
-        <translation type="unfinished">Точка привязки текста и выравнивание строк относительно друг друга</translation>
+        <translation>Точка привязки текста и выравнивание строк относительно друг друга</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="393"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished">Изменить выравнивание текстового поля</translation>
+        <translation>Изменить выравнивание текстового поля</translation>
     </message>
 </context>
 <context>
@@ -18344,7 +18348,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/wiringlistdialog.cpp" line="65"/>
         <source>Fil</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Провод</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="66"/>
@@ -18556,12 +18560,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="157"/>
         <source>Afficher dans le peigne de contacts tous les contacts esclaves définis par le maître, même ceux qui ne sont pas encore reliés, dans l&apos;ordre défini par le maître</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отобразить в списке контактов все подчиненные контакты, заданные ведущим устройством, включая те, которые ещё не подключены, в порядке, заданном ведущим устройством</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="160"/>
         <source>Afficher tous les esclaves définis par le maître</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показать все ведомые устройства, определённые ведущим устройством</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="167"/>
@@ -18658,7 +18662,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Automate (PLC)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ПЛК (PLC)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
@@ -18688,7 +18692,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="114"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Справа</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="115"/>
@@ -18698,7 +18702,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="116"/>
         <source>Champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Текстовое поле</translation>
     </message>
 </context>
 <context>
@@ -18706,17 +18710,17 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="181"/>
         <source>La requête est vide.</source>
-        <translation type="unfinished">Запрос пуст.</translation>
+        <translation>Запрос пуст.</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="188"/>
         <source>Une seule requête SELECT est autorisée (le caractère &apos;;&apos; ne peut apparaître qu&apos;à la toute fin).</source>
-        <translation type="unfinished">Допускается только один запрос SELECT (символ «;» может встречаться только в самом конце).</translation>
+        <translation>Допускается только один запрос SELECT (символ «;» может встречаться только в самом конце).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="199"/>
         <source>Seules les requêtes en lecture seule (SELECT ou WITH ... SELECT) sont autorisées.</source>
-        <translation type="unfinished">Допускаются только запросы, предназначенные только для чтения (SELECT или WITH ... SELECT).</translation>
+        <translation>Допускаются только запросы, предназначенные только для чтения (SELECT или WITH ... SELECT).</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="1733"/>
@@ -18785,7 +18789,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/richtext/richtexteditor.cpp" line="525"/>
         <location filename="../sources/richtext/richtexteditor.cpp" line="531"/>
         <source>Éditeur de texte</source>
-        <translation type="unfinished">Текстовый редактор</translation>
+        <translation>Текстовый редактор</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="524"/>
