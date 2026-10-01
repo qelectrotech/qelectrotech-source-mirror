@@ -40,8 +40,8 @@ class QWidget;
 	The channel is a QLocalServer only the user's own account can open,
 	with a random name and token written to live-session.json in the data
 	folder, which the MCP server reads; the file goes when the channel
-	closes. One request per line, one answer per line, both JSON; every
-	request carries the token.
+	closes. One JSON request per connection, one JSON answer back, then
+	the server closes the connection; every request carries the token.
 
 	Requests are never handled inside the socket's readyRead: each is
 	queued to the event loop first. QETApp::receiveMessage() learnt why --

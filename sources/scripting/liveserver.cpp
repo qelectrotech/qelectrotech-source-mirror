@@ -254,6 +254,15 @@ void LiveServer::handle(const QJsonObject &request)
 	if (request.contains(QStringLiteral("id")))
 		answer.insert(QStringLiteral("id"), request.value(QStringLiteral("id")));
 	send(answer);
+		//One request per connection: close it from this side once it is
+		//answered. Waiting for the client to hang up raced the next
+		//request on Windows, where a named pipe's disconnection reaches
+		//QLocalSocket late -- the second call of a quick pair was turned
+		//away as "another assistant" (found under Wine, 2026-10-02).
+	if (m_client) {
+		m_client->disconnectFromServer();
+		m_client = nullptr;
+	}
 	emit handled(request, answer);
 }
 
