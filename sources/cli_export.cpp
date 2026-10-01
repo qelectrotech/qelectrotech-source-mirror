@@ -529,6 +529,19 @@ int checkOneElement(const QString &path)
 		return 2;
 	}
 
+	// QET loads the element but leaves out a shape with a "nan" or "inf"
+	// coordinate, on the folio and in the element editor.
+	const QDomNodeList description = root.elementsByTagName("description");
+	for (QDomNode n = description.isEmpty() ? QDomNode()
+					  : description.at(0).firstChild() ;
+		 !n.isNull() ; n = n.nextSibling()) {
+		const QDomElement shape = n.toElement();
+		if (!shape.isNull() && QET::hasNonFiniteGeometry(shape)) {
+			out << "WARN  " << path << "  (<" << shape.tagName()
+				<< "> with a non-finite coordinate is not drawn)\n";
+			return 1;
+		}
+	}
 	// Negative dimensions are malformed but QET still loads them; surface as a
 	// warning rather than a failure so this agrees with QET's own loader.
 	if (w < 0 || h < 0) {

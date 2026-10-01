@@ -257,6 +257,34 @@ bool QET::attributeIsAReal(
 }
 
 /**
+	@brief QET::hasNonFiniteGeometry
+	@param shape a shape of an element definition (<line>, <rect>, <text>...)
+	@return true if one of its coordinates or sizes is "nan" or "inf".
+	The folio does not draw such a shape (see attributeIsAReal()), and the
+	element editor cannot show or edit it.
+*/
+bool QET::hasNonFiniteGeometry(const QDomElement &shape)
+{
+	static const QStringList geometry {
+		"x", "y", "x1", "y1", "x2", "y2", "width", "height", "diameter",
+		"rx", "ry", "start", "angle", "rotation", "length1", "length2"};
+	static const QRegularExpression polygon_point("^[xy][0-9]+$");
+
+	const QDomNamedNodeMap attributes = shape.attributes();
+	for (int i = 0 ; i < attributes.count() ; ++i)
+	{
+		const QDomAttr attribute = attributes.item(i).toAttr();
+		if (!geometry.contains(attribute.name())
+			&& !polygon_point.match(attribute.name()).hasMatch())
+			continue;
+		bool ok;
+		const qreal value = attribute.value().toDouble(&ok);
+		if (ok && !std::isfinite(value)) return(true);
+	}
+	return(false);
+}
+
+/**
 	@brief QET::infoFlagIsTrue
 	@see the header comment for why this exists rather than a bare
 	== "true" comparison.

@@ -162,6 +162,7 @@ namespace QET {
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
 	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
+	bool hasNonFiniteGeometry(const QDomElement &);
 		/**
 			Whether an elementInformations flag (auto_num_locked,
 			potential_isolating, exclude_from_bom, ...) counts as "on".
