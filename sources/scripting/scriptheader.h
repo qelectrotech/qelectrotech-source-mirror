@@ -113,6 +113,63 @@ struct ScriptHeader
 		}
 		return h;
 	}
+
+	/**
+		@brief compose
+		A whole script file: the header parse() reads, then @a body. Empty
+		fields are left out, so a file saved by the script manager and a
+		hand-written one look alike.
+	*/
+	static QString compose(const QString &name, const QString &icon,
+			       const QString &tooltip, const QString &shortcut,
+			       const QString &context, const QString &body)
+	{
+		QString text = QStringLiteral("// ==QETScript==\n");
+		auto line = [&text](const QString &key, const QString &value) {
+			const QString v = value.simplified();
+			if (!v.isEmpty())
+				text += QStringLiteral("// @%1 %2\n").arg(key.leftJustified(8), v);
+		};
+		line(QStringLiteral("name"), name);
+		line(QStringLiteral("icon"), icon);
+		line(QStringLiteral("tooltip"), tooltip);
+		line(QStringLiteral("shortcut"), shortcut);
+		if (context != QLatin1String("canvas")) line(QStringLiteral("context"), context);
+		line(QStringLiteral("api"), QStringLiteral("1"));
+		text += QStringLiteral("// ==/QETScript==\n") + body;
+		if (!text.endsWith(QLatin1Char('\n'))) text += QLatin1Char('\n');
+		return text;
+	}
+
+	/**
+		@brief bodyOf
+		Everything after the header, or the whole text if there is none.
+	*/
+	static QString bodyOf(const QString &text)
+	{
+		const int end = text.indexOf(QStringLiteral("// ==/QETScript=="));
+		if (end < 0) return text;
+		const int next = text.indexOf(QLatin1Char('\n'), end);
+		return next < 0 ? QString() : text.mid(next + 1);
+	}
+
+	/**
+		@brief idFor
+		A file name for a new script called @a name: lower-case letters,
+		digits and dashes, accents dropped, not one of @a taken.
+	*/
+	static QString idFor(const QString &name, const QStringList &taken)
+	{
+		QString base = name.normalized(QString::NormalizationForm_KD).toLower();
+		static const QRegularExpression not_kept(QStringLiteral("[^a-z0-9\\s_-]"));
+		base.remove(not_kept);
+		base = base.simplified().replace(QLatin1Char(' '), QLatin1Char('-')).left(48);
+		if (base.isEmpty()) base = QStringLiteral("script");
+		QString id = base;
+		for (int i = 2; taken.contains(id); ++i)
+			id = base + QLatin1Char('-') + QString::number(i);
+		return id;
+	}
 };
 
 #endif // SCRIPTHEADER_H

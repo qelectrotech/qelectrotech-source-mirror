@@ -83,6 +83,48 @@ private slots:
 		QCOMPARE(h.name, QStringLiteral("Real"));
 	}
 
+	// What the script manager writes reads back as what was typed, and
+	// leaves the script's code as it was.
+	void composeReadsBack()
+	{
+		const QString body = QStringLiteral("var f = qet.currentFolio();\nqet.addText(f, 'x', 0, 0);\n");
+		const QString text = ScriptHeader::compose(
+			QStringLiteral("  Add   note "), QStringLiteral("note.svg"),
+			QStringLiteral("A tip"), QStringLiteral("Ctrl+Alt+N"),
+			QStringLiteral("conductor"), body);
+		const ScriptHeader h = ScriptHeader::parse(text, QStringLiteral("add-note"));
+		QVERIFY2(h.isValid(), qPrintable(h.error));
+		QCOMPARE(h.name, QStringLiteral("Add note"));
+		QCOMPARE(h.icon, QStringLiteral("note.svg"));
+		QCOMPARE(h.tooltip, QStringLiteral("A tip"));
+		QCOMPARE(h.shortcut, QStringLiteral("Ctrl+Alt+N"));
+		QCOMPARE(h.context, QStringLiteral("conductor"));
+		QCOMPARE(ScriptHeader::bodyOf(text), body);
+
+			// empty fields and the default context are left out
+		const QString bare = ScriptHeader::compose(QStringLiteral("A"), QString(), QString(),
+							   QString(), QStringLiteral("canvas"),
+							   QStringLiteral("qet.log(1);"));
+		QCOMPARE(bare, QStringLiteral("// ==QETScript==\n// @name     A\n// @api      1\n"
+					      "// ==/QETScript==\nqet.log(1);\n"));
+	}
+
+	void bodyWithoutHeader()
+	{
+		QCOMPARE(ScriptHeader::bodyOf(QStringLiteral("qet.log(1);\n")),
+			 QStringLiteral("qet.log(1);\n"));
+	}
+
+	void idFor()
+	{
+		QCOMPARE(ScriptHeader::idFor(QStringLiteral("Numéroter les fils !"), {}),
+			 QStringLiteral("numeroter-les-fils"));
+		QCOMPARE(ScriptHeader::idFor(QStringLiteral("Add note"),
+					     {QStringLiteral("add-note"), QStringLiteral("add-note-2")}),
+			 QStringLiteral("add-note-3"));
+		QCOMPARE(ScriptHeader::idFor(QStringLiteral("!!!"), {}), QStringLiteral("script"));
+	}
+
 	// Two windows register one id; the id stays until both are gone, and a
 	// script that comes back under a new name is listed by that name.
 	void unregisterAction()
