@@ -166,7 +166,8 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
             "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
         "qet_script_install", "qet_script_list", "qet_script_read",
-        "qet_script_remove"})
+        "qet_script_remove", "qet_live_status", "qet_live_run_script",
+        "qet_live_run_stored"})
 
 
 class EditValidation(unittest.TestCase):
@@ -2994,6 +2995,89 @@ class ScriptToolsIntegration(unittest.TestCase):
                                   test_project=str(self.project), binary=BINARY)
         self.assertTrue(r["ok"], r)
         self.assertTrue((self.dir / "good.js").is_file())
+
+
+
+@unittest.skipIf(os.name == "nt", "the fake QElectroTech is a Unix socket")
+class LiveClient(unittest.TestCase):
+    """The qet_live_* client against a stand-in for QElectroTech's
+    LiveServer: one JSON line in, one JSON line out, token on every line."""
+
+    def setUp(self):
+        import socket, threading
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.scripts = root / "data" / "scripts"
+        self.scripts.mkdir(parents=True)
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(self.scripts),
+                                                "QET_ENABLE_SCRIPTING": "1"})
+        self.env.start()
+        self.sock_path = str(root / "s")
+        self.server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.server.bind(self.sock_path)
+        self.server.listen(4)
+        self.seen = []
+
+        def serve():
+            while True:
+                try:
+                    conn, _ = self.server.accept()
+                except OSError:
+                    return
+                with conn:
+                    data = b""
+                    while not data.endswith(b"\n"):
+                        chunk = conn.recv(4096)
+                        if not chunk:
+                            break
+                        data += chunk
+                    req = json.loads(data)
+                    self.seen.append(req)
+                    ok = req.get("token") == "T0K"
+                    conn.sendall((json.dumps({"ok": ok, "id": req.get("id"),
+                                              "echo": req.get("cmd")}) + "\n").encode())
+        threading.Thread(target=serve, daemon=True).start()
+
+    def tearDown(self):
+        self.server.close()
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def session(self):
+        (self.scripts.parent / "live-session.json").write_text(
+            json.dumps({"version": 1, "socket": self.sock_path, "token": "T0K"}))
+
+    def test_no_session_says_what_to_switch_on(self):
+        with self.assertRaisesRegex(ValueError, "Continuer"):
+            m.tool_live_status()
+
+    def test_requests_carry_the_token_and_the_script_id(self):
+        self.session()
+        self.assertEqual(m.tool_live_status(), {"ok": True, "echo": "status"})
+        m.tool_live_run_stored("mark")
+        m.tool_live_run_script("qet.log(1);", "Note")
+        self.assertEqual([r["token"] for r in self.seen], ["T0K"] * 3)
+        # "id" numbers the request; the stored script travels as "script"
+        # (they once shared "id", and every stored run asked for script "1")
+        self.assertEqual(self.seen[1]["script"], "mark")
+        self.assertEqual((self.seen[2]["source"], self.seen[2]["name"]), ("qet.log(1);", "Note"))
+
+    def test_running_needs_consent_status_does_not(self):
+        self.session()
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            m.tool_live_status()
+            with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                m.tool_live_run_script("qet.log(1);")
+            with self.assertRaisesRegex(ValueError, "'id' must be"):
+                os.environ["QET_ENABLE_SCRIPTING"] = "1"
+                m.tool_live_run_stored("../x")
+        self.assertEqual(len(self.seen), 1)
+
+    def test_stale_session_file(self):
+        (self.scripts.parent / "live-session.json").write_text(
+            json.dumps({"socket": self.sock_path + "-gone", "token": "T0K"}))
+        with self.assertRaisesRegex(ValueError, "could not reach"):
+            m.tool_live_status()
 
 
 class PathPolicyOverStdio(unittest.TestCase):
