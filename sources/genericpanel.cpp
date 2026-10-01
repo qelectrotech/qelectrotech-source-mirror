@@ -35,7 +35,7 @@ GenericPanel::GenericPanel(QWidget *parent) :
 	first_activation_(true)
 {
 	header() -> hide();
-	setIconSize(QSize(50, 50));
+	setIconSize(QSize(16, 16));
 }
 
 /**

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+    </style>
+  </defs>
+  <rect x="2" y="10" width="8.5" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <circle cx="14.5" cy="10.5" r="4" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1"/>
+</svg>

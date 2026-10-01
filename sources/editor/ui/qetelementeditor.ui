@@ -340,8 +340,7 @@
   </action>
   <action name="m_paste_from_file_action">
    <property name="icon">
-    <iconset theme="text-xml" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/text-xml.png</normaloff>:/ico/16x16/text-xml.png</iconset>
+    <iconset theme="text-xml"/>
    </property>
    <property name="text">
     <string>Un fichier</string>
@@ -376,8 +375,7 @@
   </action>
   <action name="m_edit_names_action">
    <property name="icon">
-    <iconset theme="names" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/names.png</normaloff>:/ico/22x22/names.png</iconset>
+    <iconset theme="names"/>
    </property>
    <property name="text">
     <string>Éditer le nom et les traductions de l'élément</string>
@@ -394,8 +392,7 @@
   </action>
   <action name="m_edit_element_properties_action">
    <property name="icon">
-    <iconset theme="element-edit" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/element-edit.png</normaloff>:/ico/22x22/element-edit.png</iconset>
+    <iconset theme="element-edit"/>
    </property>
    <property name="text">
     <string>Éditer les propriétés de l'élément</string>
@@ -421,8 +418,7 @@
   </action>
   <action name="m_zoom_fit_best_action">
    <property name="icon">
-    <iconset theme="zoom-fit-best" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/zoom-fit-best.png</normaloff>:/ico/22x22/zoom-fit-best.png</iconset>
+    <iconset theme="zoom-fit-best"/>
    </property>
    <property name="text">
     <string>Zoom adapté</string>
@@ -430,8 +426,7 @@
   </action>
   <action name="m_zoom_original_action">
    <property name="icon">
-    <iconset theme="zoom-original" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/zoom-original.png</normaloff>:/ico/22x22/zoom-original.png</iconset>
+    <iconset theme="zoom-original"/>
    </property>
    <property name="text">
     <string>Pas de zoom</string>
@@ -499,8 +494,7 @@
   </action>
   <action name="m_rotate_action">
    <property name="icon">
-    <iconset theme="orientations" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
+    <iconset theme="orientations"/>
    </property>
    <property name="text">
     <string>Rotation</string>
@@ -508,8 +502,7 @@
   </action>
   <action name="m_rotateFine_action">
    <property name="icon">
-    <iconset theme="orientations" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
+    <iconset theme="orientations"/>
    </property>
    <property name="text">
     <string>Fine-Rotation</string>
@@ -535,8 +528,7 @@
   </action>
   <action name="m_import_dxf">
    <property name="icon">
-    <iconset theme="run-dxf" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/run-dxf.png</normaloff>:/ico/16x16/run-dxf.png</iconset>
+    <iconset theme="run-dxf"/>
    </property>
    <property name="text">
     <string>Importer un dxf</string>

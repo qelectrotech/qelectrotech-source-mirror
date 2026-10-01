@@ -157,8 +157,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="configure-toolbars" resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/configure-toolbars.png</normaloff>:/ico/16x16/configure-toolbars.png</iconset>
+         <iconset theme="configure-toolbars"/>
         </property>
         <property name="checkable">
          <bool>true</bool>

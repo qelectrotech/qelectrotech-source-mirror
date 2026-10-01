@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <circle cx="10.5" cy="10.5" r="7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1"/>
+  <polyline points="5.55025,5.55025 15.4497,15.4497" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <polyline points="5.55025,15.4497 15.4497,5.55025" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <rect x="10" y="0" width="1" height="3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="10" y="18" width="1" height="3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="9,21.5 10.6546,17.2998 18.3338,9.62061 20.8794,12.1662 13.2002,19.8454" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <polyline points="10.6546,17.2998 13.2002,19.8454" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <polygon points="16.2125,11.0348 17.9803,9.26705 21.2329,12.5197 19.4652,14.2875" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="9,21.5 9.52043,19.6785 10.8215,20.9796" class="ColorScheme-Text" style="fill:currentColor"/>
+  </g>
+</svg>

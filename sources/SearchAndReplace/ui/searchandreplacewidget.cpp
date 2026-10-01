@@ -446,6 +446,9 @@ void SearchAndReplaceWidget::search()
 		background.setColor(QPalette::Base, match
 				    ? QColor("#E0FFF0")
 				    : QColor("#FFE0EF"));
+			//The background is always light: keep the text dark, or it is
+			//unreadable (light on light) with a dark theme.
+		background.setColor(QPalette::Text, Qt::black);
 		ui->m_search_le->setPalette(background);
 
 			//Go to the first occurrence

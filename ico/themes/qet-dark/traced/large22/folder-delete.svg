@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-NegativeText { color:#db4b59; }
+    </style>
+  </defs>
+  <path d="M3 3h7v1h-7zM3 4h1v14h-1zM18 5h1v10h-1zM3 18h10v1h-10z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="10,3 11,3 13,5 18,5 18,8 9,8 8,9 8,10 4,10 4,9 6,9 10,5" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="14" y="16" width="5" height="1" class="ColorScheme-NegativeText" style="fill:currentColor"/>
+</svg>

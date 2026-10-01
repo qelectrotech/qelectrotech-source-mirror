@@ -5,13 +5,10 @@
         <file>ico/128x128/document-export.png</file>
         <file>ico/128x128/printer.png</file>
         <file>ico/16x16/application-exit.png</file>
-        <file>ico/16x16/arrow-left-double.png</file>
         <file>ico/16x16/arrow-left.png</file>
-        <file>ico/16x16/arrow-right-double.png</file>
         <file>ico/16x16/arrow-right.png</file>
         <file>ico/16x16/circle.png</file>
         <file>ico/16x16/configure.png</file>
-        <file>ico/16x16/configure-toolbars.png</file>
         <file>ico/16x16/dialog-cancel.png</file>
         <file>ico/16x16/dialog-ok.png</file>
         <file>ico/16x16/document-close.png</file>
@@ -25,7 +22,6 @@
         <file>ico/16x16/document-save-all.png</file>
         <file>ico/16x16/document-save-as.png</file>
         <file>ico/16x16/document-save.png</file>
-        <file>ico/16x16/east.png</file>
         <file>ico/16x16/edit-clear-locationbar-ltr.png</file>
         <file>ico/16x16/edit-clear.png</file>
         <file>ico/16x16/edit-copy.png</file>
@@ -44,55 +40,34 @@
         <file>ico/16x16/edit-table-cell-split.png</file>
         <file>ico/16x16/edit-table-cell-merge.png</file>
         <file>ico/16x16/edit-undo.png</file>
-        <file>ico/16x16/endline-circle.png</file>
-        <file>ico/16x16/endline-diamond.png</file>
-        <file>ico/16x16/endline-none.png</file>
-        <file>ico/16x16/endline-simple.png</file>
-        <file>ico/16x16/endline-triangle.png</file>
         <file>ico/16x16/flip.png</file>
         <file>ico/16x16/folder-new.png</file>
         <file>ico/16x16/folder.png</file>
-        <file>ico/16x16/go-company.png</file>
         <file>ico/16x16/go-down.png</file>
         <file>ico/16x16/go-home.png</file>
         <file>ico/16x16/go-up.png</file>
-        <file>ico/16x16/ground.png</file>
         <file>ico/16x16/label.png</file>
         <file>ico/16x16/list-add.png</file>
         <file>ico/16x16/list-remove.png</file>
         <file>ico/16x16/masquer.png</file>
         <file>ico/16x16/mirror.png</file>
-        <file>ico/16x16/neutral.png</file>
-        <file>ico/16x16/north.png</file>
-        <file>ico/16x16/orientations.png</file>
-        <file>ico/16x16/phase.png</file>
         <file>ico/16x16/preferences-desktop-user.png</file>
         <file>ico/16x16/qet.png</file>
-        <file>ico/16x16/south.png</file>
-        <file>ico/16x16/text-xml.png</file>
         <file>ico/16x16/user-busy.png</file>
         <file>ico/16x16/user-online.png</file>
         <file>ico/16x16/view-fullscreen.png</file>
         <file>ico/16x16/view-refresh.png</file>
         <file>ico/16x16/view-restore.png</file>
-        <file>ico/16x16/west.png</file>
         <file>ico/16x16/window-new.png</file>
         <file>ico/16x16/zoom-draw.png</file>
-        <file>ico/16x16/zoom-fit-best.png</file>
         <file>ico/16x16/zoom-in.png</file>
-        <file>ico/16x16/zoom-original.png</file>
         <file>ico/16x16/zoom-out.png</file>
-        <file>ico/22x22/all_pages.png</file>
         <file>ico/22x22/application-exit.png</file>
         <file>ico/22x22/arc.png</file>
-        <file>ico/22x22/arrow-left-double.png</file>
         <file>ico/22x22/arrow-left.png</file>
-        <file>ico/22x22/arrow-right-double.png</file>
         <file>ico/22x22/arrow-right.png</file>
         <file>ico/22x22/bring_forward.png</file>
-        <file>ico/22x22/conductor2.png</file>
         <file>ico/22x22/configure.png</file>
-        <file>ico/22x22/configure-toolbars.png</file>
         <file>ico/22x22/dialog-cancel.png</file>
         <file>ico/22x22/dialog-ok.png</file>
         <file>ico/22x22/document-close.png</file>
@@ -124,43 +99,27 @@
         <file>ico/22x22/edit-table-cell-split.png</file>
         <file>ico/22x22/edit-table-cell-merge.png</file>
         <file>ico/22x22/edit-undo.png</file>
-        <file>ico/22x22/element-delete.png</file>
-        <file>ico/22x22/element-edit.png</file>
-        <file>ico/22x22/element-new.png</file>
         <file>ico/22x22/ellipse.png</file>
-        <file>ico/22x22/folder-delete.png</file>
-        <file>ico/22x22/folder-edit.png</file>
         <file>ico/22x22/folder-new.png</file>
-        <file>ico/22x22/go-company.png</file>
         <file>ico/22x22/go-down.png</file>
         <file>ico/22x22/go-home.png</file>
         <file>ico/22x22/go-up.png</file>
-        <file>ico/22x22/hotspot.png</file>
         <file>ico/22x22/insert-image.png</file>
-        <file>ico/22x22/landscape.png</file>
         <file>ico/22x22/line.png</file>
         <file>ico/22x22/list-add.png</file>
         <file>ico/22x22/list-remove.png</file>
-        <file>ico/22x22/lower.png</file>
         <file>ico/22x22/move.png</file>
-        <file>ico/22x22/names.png</file>
         <file>ico/22x22/object-locked.png</file>
         <file>ico/22x22/object-rotate-right.png</file>
         <file>ico/22x22/object-unlocked.png</file>
         <file>ico/22x22/polygon.png</file>
-        <file>ico/22x22/portrait.png</file>
         <file>ico/22x22/preferences-desktop-user.png</file>
-        <file>ico/22x22/raise.png</file>
         <file>ico/22x22/rectangle.png</file>
         <file>ico/22x22/restaurer.png</file>
         <file>ico/22x22/select.png</file>
-        <file>ico/22x22/send_backward.png</file>
         <file>ico/22x22/single_page.png</file>
         <file>ico/22x22/start.png</file>
-        <file>ico/22x22/terminal.png</file>
-        <file>ico/22x22/textfield.png</file>
         <file>ico/22x22/text.png</file>
-        <file>ico/22x22/text-xml.png</file>
         <file>ico/22x22/transform-scale.png</file>
         <file>ico/22x22/two_pages.png</file>
         <file>ico/22x22/view_fit_width.png</file>
@@ -169,16 +128,12 @@
         <file>ico/22x22/view-restore.png</file>
         <file>ico/22x22/window-new.png</file>
         <file>ico/22x22/zoom-draw.png</file>
-        <file>ico/22x22/zoom-fit-best.png</file>
         <file>ico/22x22/zoom-in.png</file>
-        <file>ico/22x22/zoom-original.png</file>
         <file>ico/22x22/zoom-out.png</file>
         <file>ico/256x256/qelectrotech.png</file>
         <file>ico/256x256/qet.png</file>
-        <file>ico/32x32/application-pdf.png</file>
         <file>ico/32x32/image-x-eps.png</file>
         <file>ico/32x32/printer.png</file>
-        <file>ico/32x32/text-xml.png</file>
         <file>ico/32x32/qt.png</file>
         <file>ico/diagram.png</file>
         <file>ico/splash.png</file>
@@ -206,24 +161,17 @@
         <file>ico/22x22/applications-development-translation.png</file>
         <file>ico/48x48/view-pim-journal.png</file>
         <file>ico/24x16/nl.png</file>
-        <file>ico/32x32/simplifyrichtext.png</file>
         <file>ico/24x16/nl_BE.png</file>
-        <file>ico/128x128/plasmagik.png</file>
         <file>ico/22x22/autoconnect.png</file>
-        <file>ico/128x128/project.png</file>
         <file>ico/16x16/folio-new.png</file>
         <file>ico/48x48/document-print-frame.png</file>
         <file>ico/22x22/Actions-player-time-icon.png</file>
-        <file>ico/22x22/diagram_bg.png</file>
         <file>ico/24x16/dk.png</file>
         <file>ico/24x16/br.png</file>
         <file>ico/22x22/grid.png</file>
-        <file>ico/22x22/guides.png</file>
-        <file>ico/22x22/terminalstrip.png</file>
         <file>ico/16x16/diagram.png</file>
         <file>ico/16x16/edit-clear-locationbar-rtl.png</file>
         <file>ico/16x16/edit-download.png</file>
-        <file>ico/16x16/export-csv.png</file>
         <file>ico/16x16/help-contents.png</file>
         <file>ico/16x16/help-donate.png</file>
         <file>ico/16x16/item-cancel.png</file>
@@ -231,20 +179,12 @@
         <file>ico/16x16/item-move.png</file>
         <file>ico/16x16/kdenlive-show-video.png</file>
         <file>ico/16x16/object-rotate-right.png</file>
-        <file>ico/16x16/project-close.png</file>
         <file>ico/16x16/project-delete.png</file>
-        <file>ico/16x16/project-new.png</file>
-        <file>ico/16x16/project.png</file>
         <file>ico/16x16/qt.png</file>
-        <file>ico/16x16/terminalstrip.png</file>
         <file>ico/22x22/edit-clear-locationbar-rtl.png</file>
-        <file>ico/22x22/export-csv.png</file>
         <file>ico/22x22/format-text-subscript.png</file>
         <file>ico/22x22/format-text-superscript.png</file>
-        <file>ico/22x22/project-close.png</file>
         <file>ico/22x22/project-delete.png</file>
-        <file>ico/22x22/project-new.png</file>
-        <file>ico/22x22/project.png</file>
         <file>ico/22x22/view-fit-window.png</file>
         <file>ico/24x16/ad.png</file>
         <file>ico/24x16/ae.png</file>
@@ -562,42 +502,25 @@
         <file>ico/windows_icon/qelectrotech.ico</file>
         <file>ico/windows_icon/qelectrotech.rc</file>
         <file>ico/copyright</file>
-        <file>ico/16x16/folder-only-this.png</file>
-        <file>ico/16x16/folder-show-all.png</file>
         <file>ico/16x16/folio-delete.png</file>
-        <file>ico/16x16/project-properties.png</file>
         <file>ico/16x16/table-of-content.png</file>
         <file>ico/16x16/folio-properties.png</file>
         <file>ico/16x16/select.png</file>
         <file>ico/16x16/grid.png</file>
         <file>ico/16x16/move.png</file>
-        <file>ico/22x22/titleblock-bottom.png</file>
-        <file>ico/22x22/titleblock-right.png</file>
         <file>ico/16x16/element.png</file>
-        <file>ico/16x16/element-new.png</file>
-        <file>ico/16x16/element-delete.png</file>
-        <file>ico/16x16/element-edit.png</file>
-        <file>ico/16x16/folder-delete.png</file>
-        <file>ico/16x16/folder-edit.png</file>
         <file>ico/16x16/folder-open.png</file>
         <file>ico/16x16/folder-properties.png</file>
         <file>ico/16x16/go-up-double.png</file>
         <file>ico/16x16/go-down-double.png</file>
         <file>ico/16x16/go-top.png</file>
         <file>ico/16x16/go-bottom.png</file>
-        <file>ico/16x16/run-dxf.png</file>
         <file>ico/22x22/folder-open.png</file>
-        <file>ico/16x16/conductor-reset.png</file>
-        <file>ico/16x16/conductor-edit.png</file>
         <file>ico/16x16/edit-select-invert.png</file>
         <file>ico/16x16/edit-select-none.png</file>
         <file>ico/16x16/transform-rotate.png</file>
         <file>ico/16x16/window-close.svg</file>
         <file>ico/16x16/conductor.png</file>
-        <file>ico/16x16/element-master.png</file>
-        <file>ico/16x16/element-slave.png</file>
-        <file>ico/16x16/folio-ref-coming.png</file>
-        <file>ico/16x16/terminal.png</file>
         <file>ico/22x22/color/color-brown.png</file>
         <file>ico/22x22/color/color-gray.png</file>
         <file>ico/22x22/color/color-orange.png</file>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-PositiveText { color:#239d57; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <path d="M19 3h1v1h-1zM19 4h1v1h-1zM19 5h1v1h-1zM19 6h1v1h-1zM2 16h1v1h-1zM2 17h1v1h-1zM2 18h1v1h-1zM2 19h1v1h-1z" style="fill:#ff0000"/>
+  <path d="M8 6h1v1h-1zM13 6h1v1h-1zM16 9h1v1h-1zM5 12h1v1h-1zM15 13h1v1h-1zM8 15h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.38"/>
+  <path d="M9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM8 7h1v1h-1zM13 7h1v1h-1zM7 8h1v1h-1zM14 8h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM15 10h1v1h-1zM6 11h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM7 13h1v1h-1zM14 13h1v1h-1zM8 14h1v1h-1zM13 14h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor"/>
+  <path d="M7 7h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.62"/>
+  <path d="M9 7h1v1h-1zM12 7h1v1h-1zM9 14h1v1h-1zM12 14h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.42"/>
+  <path d="M14 7h1v1h-1zM7 14h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.64"/>
+  <path d="M19 7h1v1h-1zM2 15h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M6 8h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.39"/>
+  <path d="M15 8h1v1h-1zM6 13h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.66"/>
+  <path d="M16 8h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.47"/>
+  <path d="M19 8h1v1h-1zM19 9h1v1h-1zM19 10h1v1h-1zM2 11h1v1h-1zM3 11h1v1h-1zM4 11h1v1h-1zM5 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM16 11h1v1h-1zM17 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM2 12h1v1h-1zM2 13h1v1h-1zM2 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M6 9h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.3"/>
+  <path d="M7 9h1v1h-1zM14 12h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.32"/>
+  <path d="M15 12h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.31"/>
+  <path d="M5 13h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.48"/>
+  <path d="M14 14h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.61"/>
+  <path d="M13 15h1v1h-1z" class="ColorScheme-PositiveText" style="fill:currentColor;opacity:0.37"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <path d="M12 3h1v1h-1zM12 4h1v1h-1zM12 5h1v1h-1zM12 6h1v1h-1zM12 9h1v1h-1zM12 10h1v1h-1zM12 11h1v1h-1zM12 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M3 7h1v1h-1zM4 7h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M5 7h1v1h-1zM5 8h1v1h-1z" style="fill:#ff0000;opacity:0.5"/>
+  <path d="M6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM11 8h1v1h-1zM12 8h1v1h-1z" style="fill:#ff0000"/>
+</svg>

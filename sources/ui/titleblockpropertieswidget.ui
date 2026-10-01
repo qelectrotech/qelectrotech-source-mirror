@@ -94,8 +94,7 @@
             <string notr="true"/>
            </property>
            <property name="icon">
-            <iconset theme="titleblock-bottom" resource="../../qelectrotech.qrc">
-             <normaloff>:/ico/22x22/titleblock-bottom.png</normaloff>:/ico/22x22/titleblock-bottom.png</iconset>
+            <iconset theme="titleblock-bottom"/>
            </property>
           </item>
           <item>
@@ -103,8 +102,7 @@
             <string notr="true"/>
            </property>
            <property name="icon">
-            <iconset theme="titleblock-right" resource="../../qelectrotech.qrc">
-             <normaloff>:/ico/22x22/titleblock-right.png</normaloff>:/ico/22x22/titleblock-right.png</iconset>
+            <iconset theme="titleblock-right"/>
            </property>
           </item>
          </widget>

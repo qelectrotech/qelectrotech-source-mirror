@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-PositiveText { color:#239d57; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <rect x="2" y="11" width="18" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="2" y="12" width="1" height="3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="19" y="8" width="1" height="3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="19" y="7" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="19" y="3" width="1" height="4" style="fill:#ff0000"/>
+  <rect x="2" y="15" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="2" y="16" width="1" height="4" style="fill:#ff0000"/>
+  <path d="M6.77 9.46A4.5 4.5 0 0 1 14.90 8.75" class="ColorScheme-PositiveText" style="fill:none;stroke:currentColor;stroke-width:1.2"/>
+  <polygon points="16.2171,11.0363 16.5599,7.79 13.2343,9.71" class="ColorScheme-PositiveText" style="fill:currentColor"/>
+  <path d="M15.23 12.54A4.5 4.5 0 0 1 7.10 13.25" class="ColorScheme-PositiveText" style="fill:none;stroke:currentColor;stroke-width:1.2"/>
+  <polygon points="5.78289,10.9637 5.44012,14.21 8.76565,12.29" class="ColorScheme-PositiveText" style="fill:currentColor"/>
+</svg>

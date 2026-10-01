@@ -104,8 +104,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset theme="zoom-fit-best" resource="../../../../qelectrotech.qrc">
-              <normaloff>:/ico/22x22/zoom-fit-best.png</normaloff>:/ico/22x22/zoom-fit-best.png</iconset>
+             <iconset theme="zoom-fit-best"/>
             </property>
            </widget>
           </item>
@@ -203,8 +202,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset theme="all_pages" resource="../../../../qelectrotech.qrc">
-              <normaloff>:/ico/22x22/all_pages.png</normaloff>:/ico/22x22/all_pages.png</iconset>
+             <iconset theme="all_pages"/>
             </property>
            </widget>
           </item>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-NegativeText { color:#db4b59; }
+    </style>
+  </defs>
+  <circle cx="7.5" cy="7.5" r="5" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1"/>
+  <polyline points="3.96447,3.96447 11.0355,11.0355" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <polyline points="3.96447,11.0355 11.0355,3.96447" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <rect x="7" y="1" width="1" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="7" y="13" width="1" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="10" y="12" width="5" height="1" class="ColorScheme-NegativeText" style="fill:currentColor"/>
+</svg>

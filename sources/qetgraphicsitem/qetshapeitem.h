@@ -125,11 +125,13 @@ class QetShapeItem : public QetGraphicsItem
 		//   SkewEdge     0..3, edges:   N,  E,  S,  W
 		//   CornerRadius 0..1, same order as QetGraphicsHandlerUtility::pointForRadiusRect
 		//   ArcEndpoint  0 = start angle, 1 = end angle
+		//   ArcBulge     0 only: the middle of a half arc
 		enum class HandleRole {
 			Resize,                     // Size mode
 			Rotate, SkewEdge, Pivot,    // RotateSkew mode
 			CornerRadius,               // Rectangle, always shown alongside Size handles
 			ArcEndpoint,                // Ellipse, always shown
+			ArcBulge,                   // Ellipse, shown only on a half arc (see isAxisHalfArc())
 			PathAnchor, PathControlIn, PathControlOut  // Polygon/Path, node-edit mode (see setPathNodes())
 		};
 
@@ -205,6 +207,7 @@ class QetShapeItem : public QetGraphicsItem
 		void setEndAngle(qreal degrees);
 		qreal spanAngle() const {return m_endAngle - m_startAngle;}
 		bool isFullEllipse() const {return qFuzzyCompare(qAbs(spanAngle()), qreal(360));}
+		bool isAxisHalfArc() const;   // half arc whose two ends lie on a horizontal or vertical diameter
 		ArcClosure arcClosure() const {return m_arcClosure;}
 		void setArcClosure(ArcClosure closure);
 
@@ -278,6 +281,8 @@ class QetShapeItem : public QetGraphicsItem
 		void dragSkewHandle  (int edgeIndex,   const QPointF &scenePos, Qt::KeyboardModifiers mods);
 		void dragPivotHandle (const QPointF &localPos);
 		void dragArcEndpoint (int which,       const QPointF &localPos, Qt::KeyboardModifiers mods);
+		void dragArcBulge    (const QPointF &localPos);
+		void updateArcBulgeVisibility();
 		void dragCornerRadius(int which,       const QPointF &localPos);
 		void dragPathAnchor  (int which,       const QPointF &localPos, Qt::KeyboardModifiers mods);
 		void dragPathControlHandle(bool isOutHandle, int nodeIndex, const QPointF &localPos, Qt::KeyboardModifiers mods);

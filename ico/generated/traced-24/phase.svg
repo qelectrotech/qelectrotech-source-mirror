@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M7 5h1v1h-1zM8 5h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM10 10h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM11 12h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM14 18h1v1h-1z" style="fill:#ff0000"/>
+  <path d="M9 6h1v1h-1z" style="fill:#ff0000;opacity:0.43"/>
+  <path d="M10 8h1v1h-1z" style="fill:#ff0000;opacity:0.5"/>
+  <path d="M9 10h1v1h-1z" style="fill:#ff0000;opacity:0.69"/>
+  <path d="M11 10h1v1h-1z" style="fill:#ff0000;opacity:0.58"/>
+  <path d="M10 12h1v1h-1z" style="fill:#ff0000;opacity:0.62"/>
+  <path d="M12 12h1v1h-1z" style="fill:#ff0000;opacity:0.65"/>
+  <path d="M11 14h1v1h-1z" style="fill:#ff0000;opacity:0.54"/>
+  <path d="M12 16h1v1h-1z" style="fill:#ff0000;opacity:0.47"/>
+  <path d="M15 17h1v1h-1z" style="fill:#ff0000;opacity:0.33"/>
+  <path d="M13 18h1v1h-1z" style="fill:#ff0000;opacity:0.4"/>
+  <path d="M15 18h1v1h-1z" style="fill:#ff0000;opacity:0.6"/>
+  </g>
+</svg>
