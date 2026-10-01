@@ -273,12 +273,23 @@ void LiveServer::handle(const QJsonObject &request)
 */
 QETDiagramEditor *LiveServer::editor() const
 {
-	QETDiagramEditor *shown = nullptr;
+	QETDiagramEditor *chosen = nullptr;
 	for (QETDiagramEditor *e : QETApp::diagramEditors()) {
-		if (e->isActiveWindow()) return e;
-		if (!shown && e->isVisible()) shown = e;
+		if (e->isActiveWindow()) {
+			chosen = e;
+			break;
+		}
+		if (!chosen && e->isVisible()) chosen = e;
 	}
-	return shown;
+		//While the user is typing to the assistant, QElectroTech is not
+		//the active application, and QMdiArea then has no active
+		//sub-window: every "current project" in the editor reads as none.
+		//The one it remembers is the project the user was looking at.
+	if (chosen && !chosen->m_workspace.activeSubWindow()
+	    && chosen->m_workspace.currentSubWindow()) {
+		chosen->m_workspace.setActiveSubWindow(chosen->m_workspace.currentSubWindow());
+	}
+	return chosen;
 }
 
 QJsonObject LiveServer::status()
