@@ -19,6 +19,8 @@
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../undocommand/changetitleblockcommand.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
@@ -115,6 +117,20 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 #endif
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
+
+				// "One text per potential" changed: show or hide the
+				// conductor texts now, not at the next edit or reload.
+			if (new_conductors.m_one_text_per_folio != conductors.m_one_text_per_folio)
+			{
+				const QList<Conductor *> conductor_list = diagram -> conductors();
+				for (Conductor *c : conductor_list)
+				{
+					const ConductorProperties cp = c -> properties();
+					c -> textItem() -> setVisible(cp.type == ConductorProperties::Multi && cp.m_show_text);
+				}
+				for (Conductor *c : conductor_list)
+					c -> calculateTextItemPosition();
+			}
 		}
 
 			// Conductor autonum name
