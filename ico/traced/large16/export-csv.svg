@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <path d="M3 2h10v1h-10zM2 3h1v1h-1zM13 3h1v10h-1zM4 4h2v1h-2zM4 6h2v1h-2zM4 8h2v1h-2zM7 4h2v1h-2zM7 6h2v1h-2zM7 8h2v1h-2zM10 4h2v1h-2zM10 6h2v1h-2zM10 8h2v1h-2zM10 10h2v1h-2zM8 10h1v1h-1zM8 13h5v1h-5z" style="fill:#1f9d5e"/>
+  <path d="M2 4h1v1h-1z" style="fill:#28b46e"/>
+  <path d="M2 5h1v1h-1z" style="fill:#2da669"/>
+  <path d="M2 6h1v1h-1z" style="fill:#329965"/>
+  <path d="M2 7h1v1h-1z" style="fill:#378b61"/>
+  <path d="M2 8h1v1h-1z" style="fill:#3c7d5c"/>
+  <rect x="2" y="9" width="1" height="3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="3" y="12" width="3" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polyline points="4.5,10.3 6.7,12.5 4.5,14.7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:miter;stroke-linecap:butt"/>
+</svg>
