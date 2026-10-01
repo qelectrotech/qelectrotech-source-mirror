@@ -27,6 +27,7 @@
 #include "../utils/qetsettings.h"
 
 #include <QApplication>
+#include <QFontDatabase>
 #include <QCoreApplication>
 #include <QFile>
 #include <QJsonArray>
@@ -39,6 +40,16 @@
 #include <QSaveFile>
 #include <QTimer>
 #include <QUndoStack>
+#include <QAction>
+#include <QBuffer>
+#include <QPixmap>
+#include <QPlainTextEdit>
+#include <QVBoxLayout>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QLabel>
+#include "../projectview.h"
+#include "../shortcutmanager.h"
 
 namespace {
 	QString randomHex(int bytes)
@@ -242,10 +253,25 @@ void LiveServer::handle(const QJsonObject &request)
 		if (cmd == QLatin1String("status")) {
 			answer = status();
 		} else if (cmd == QLatin1String("run_script")) {
-			answer = runScript(request.value(QStringLiteral("name")).toString(),
-					   request.value(QStringLiteral("source")).toString());
+			const QString name = request.value(QStringLiteral("name")).toString();
+			const QString source = request.value(QStringLiteral("source")).toString();
+				//A script the assistant just wrote: the user sees it first,
+				//unless they said "always" this session. A stored script
+				//is one the user already has, so it runs as a click would.
+			if (m_ask_first && !confirm(name, source))
+				answer = failure(QStringLiteral("refused by the user"));
+			else
+				answer = runScript(name, source);
 		} else if (cmd == QLatin1String("run_stored")) {
 			answer = runStored(request.value(QStringLiteral("script")).toString());
+		} else if (cmd == QLatin1String("command")) {
+			answer = command(request.value(QStringLiteral("action")).toString());
+		} else if (cmd == QLatin1String("show_folio")) {
+			answer = showFolio(request.value(QStringLiteral("folio")).toInt(-1));
+		} else if (cmd == QLatin1String("undo_last")) {
+			answer = undoLast();
+		} else if (cmd == QLatin1String("screenshot")) {
+			answer = screenshot();
 		} else {
 			answer = failure(QStringLiteral("unknown command: %1").arg(cmd));
 		}
@@ -338,4 +364,141 @@ QJsonObject LiveServer::runStored(const QString &id)
 		return answer;
 	}
 	return failure(QStringLiteral("no stored script with id %1").arg(id));
+}
+
+void LiveServer::setAskFirst(bool ask)
+{
+	if (ask == m_ask_first) return;
+	m_ask_first = ask;
+	emit askFirstChanged(ask);
+}
+
+/**
+	@brief LiveServer::allowedCommands
+	The editor commands an assistant may trigger: ones that open no dialog
+	(a dialog would wait for an answer nobody is there to give the
+	assistant) and change nothing that undo cannot take back. Saving,
+	printing, exporting, deleting, opening and closing are not in it: a
+	script can delete, as one undo step, and the rest stay the user's.
+*/
+QStringList LiveServer::allowedCommands()
+{
+	static const QStringList ids{
+		QStringLiteral("diagrameditor.select_all"),
+		QStringLiteral("diagrameditor.select_nothing"),
+		QStringLiteral("diagrameditor.select_invert"),
+		QStringLiteral("diagrameditor.select_all_conductors"),
+		QStringLiteral("diagrameditor.select_all_text_fields"),
+		QStringLiteral("diagrameditor.zoom_in"),
+		QStringLiteral("diagrameditor.zoom_out"),
+		QStringLiteral("diagrameditor.zoom_content"),
+		QStringLiteral("diagrameditor.zoom_fit"),
+		QStringLiteral("diagrameditor.zoom_reset"),
+		QStringLiteral("diagrameditor.rotate_selection"),
+		QStringLiteral("diagrameditor.rotate_texts"),
+		QStringLiteral("diagrameditor.snap_selection_to_grid"),
+		QStringLiteral("diagrameditor.group_selection"),
+		QStringLiteral("diagrameditor.ungroup_selection"),
+		QStringLiteral("diagrameditor.conductor_reset")};
+	return ids;
+}
+
+QJsonObject LiveServer::command(const QString &id)
+{
+	if (!allowedCommands().contains(id))
+		return failure(QStringLiteral("%1 is not a command an assistant may use; allowed: %2")
+			       .arg(id, allowedCommands().join(QStringLiteral(", "))));
+	QETDiagramEditor *e = editor();
+	QAction *action = e ? ShortcutManager::instance().action(id, e) : nullptr;
+	if (!action) return failure(QStringLiteral("no editor window has %1").arg(id));
+	if (!action->isEnabled())
+		return failure(QStringLiteral("%1 is not available right now (nothing "
+					      "selected, or no project open)").arg(id));
+	action->trigger();
+	return {{QStringLiteral("ok"), true}, {QStringLiteral("action"), id}};
+}
+
+QJsonObject LiveServer::showFolio(int folio)
+{
+	QETDiagramEditor *e = editor();
+	ProjectView *pv = e ? e->currentProjectView() : nullptr;
+	if (!pv) return failure(QStringLiteral("no project is open in QElectroTech"));
+	const QList<Diagram *> diagrams = pv->project()->diagrams();
+	if (folio < 0 || folio >= diagrams.count())
+		return failure(QStringLiteral("no folio %1: the project has %2, counted from 0")
+			       .arg(folio).arg(diagrams.count()));
+	pv->showDiagram(diagrams.at(folio));
+	return {{QStringLiteral("ok"), true}, {QStringLiteral("folio"), folio}};
+}
+
+/**
+	@brief LiveServer::undoLast
+	Undo the newest step, only if the assistant made it: what the user did
+	by hand stays theirs to undo.
+*/
+QJsonObject LiveServer::undoLast()
+{
+	QETDiagramEditor *e = editor();
+	QETProject *project = e ? e->currentProject() : nullptr;
+	if (!project) return failure(QStringLiteral("no project is open in QElectroTech"));
+	QUndoStack *stack = project->undoStack();
+	const QString text = stack->text(stack->index() - 1);
+	const QString prefix = tr("Assistant : %1").arg(QString());
+	if (!stack->canUndo() || !text.startsWith(prefix))
+		return failure(QStringLiteral("the last step is not the assistant's (\"%1\"); "
+					      "only the user undoes their own").arg(text));
+	stack->undo();
+	return {{QStringLiteral("ok"), true}, {QStringLiteral("undone"), text}};
+}
+
+QJsonObject LiveServer::screenshot()
+{
+	QETDiagramEditor *e = editor();
+	DiagramView *view = e ? e->currentDiagramView() : nullptr;
+	if (!view) return failure(QStringLiteral("no folio is shown in QElectroTech"));
+	const QPixmap pixmap = view->grab();
+	QByteArray png;
+	QBuffer buffer(&png);
+	buffer.open(QIODevice::WriteOnly);
+	pixmap.save(&buffer, "PNG");
+	return {{QStringLiteral("ok"), true},
+		{QStringLiteral("width"), pixmap.width()},
+		{QStringLiteral("height"), pixmap.height()},
+		{QStringLiteral("png_base64"), QString::fromLatin1(png.toBase64())}};
+}
+
+/**
+	@brief LiveServer::confirm
+	Show the user the script the assistant wants to run, and ask.
+	@return true to run it
+*/
+bool LiveServer::confirm(const QString &name, const QString &source)
+{
+	QDialog dialog(editor());
+	dialog.setWindowTitle(tr("L'assistant veut exécuter un script"));
+	auto *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(new QLabel(
+		tr("« %1 » sur le projet ouvert. Une fois exécuté, Ctrl+Z l'annule.")
+		.arg(name.isEmpty() ? tr("script") : name), &dialog));
+	auto *text = new QPlainTextEdit(source, &dialog);
+	text->setReadOnly(true);
+	text->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+	text->setMinimumSize(520, 220);
+	layout->addWidget(text);
+	auto *buttons = new QDialogButtonBox(&dialog);
+	QPushButton *run = buttons->addButton(tr("&Exécuter"), QDialogButtonBox::AcceptRole);
+	buttons->addButton(tr("&Refuser"), QDialogButtonBox::RejectRole);
+	QPushButton *always = buttons->addButton(tr("&Toujours pour cette session"),
+						 QDialogButtonBox::AcceptRole);
+	layout->addWidget(buttons);
+	QPushButton *clicked = nullptr;
+	connect(buttons, &QDialogButtonBox::clicked, &dialog, [&](QAbstractButton *b) {
+		clicked = qobject_cast<QPushButton *>(b);
+	});
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	run->setDefault(true);
+	dialog.exec();
+	if (clicked == always) setAskFirst(false);
+	return clicked == run || clicked == always;
 }

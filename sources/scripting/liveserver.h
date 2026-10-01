@@ -61,11 +61,15 @@ class LiveServer : public QObject
 		void askAndStart(QWidget *parent);
 		void stop();
 		State state() const { return m_state; }
+		bool askFirst() const { return m_ask_first; }
+		void setAskFirst(bool ask);
+		static QStringList allowedCommands();
 
 	signals:
 		void stateChanged(LiveServer::State state);
 			/// A request was handled: what was asked, and the answer sent
 		void handled(const QJsonObject &request, const QJsonObject &answer);
+		void askFirstChanged(bool ask);
 
 	private:
 		LiveServer();
@@ -79,6 +83,11 @@ class LiveServer : public QObject
 		QJsonObject status();
 		QJsonObject runScript(const QString &name, const QString &source);
 		QJsonObject runStored(const QString &id);
+		QJsonObject command(const QString &id);
+		QJsonObject showFolio(int folio);
+		QJsonObject undoLast();
+		QJsonObject screenshot();
+		bool confirm(const QString &name, const QString &source);
 		QETDiagramEditor *editor() const;
 
 		QLocalServer *m_server = nullptr;
@@ -88,6 +97,7 @@ class LiveServer : public QObject
 		State m_state = Off;
 		bool m_asked = false;
 		bool m_busy = false;
+		bool m_ask_first = true;	///< per session, never saved: every start asks again
 };
 
 #endif // LIVESERVER_H
