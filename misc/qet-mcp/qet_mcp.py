@@ -2966,7 +2966,7 @@ def tool_live_status() -> dict:
     return _live_call({"cmd": "status"})
 
 
-def tool_live_run_script(source: str, name: str = "", timeout: int = 60) -> dict:
+def tool_live_run_script(source: str, name: str = "", timeout: int = 300) -> dict:
     _require_script_consent()
     if not isinstance(source, str) or not source.strip():
         raise ValueError("'source' must be the script's text")
@@ -2977,6 +2977,32 @@ def tool_live_run_script(source: str, name: str = "", timeout: int = 60) -> dict
 def tool_live_run_stored(script_id: str, timeout: int = 60) -> dict:
     _require_script_consent()
     return _live_call({"cmd": "run_stored", "script": _script_id(script_id)}, timeout)
+
+
+def tool_live_command(action: str) -> dict:
+    _require_script_consent()
+    if not isinstance(action, str) or not action:
+        raise ValueError("'action' must be a command id, e.g. diagrameditor.zoom_fit")
+    return _live_call({"cmd": "command", "action": action})
+
+
+def tool_live_show_folio(folio: int) -> dict:
+    if not isinstance(folio, int) or isinstance(folio, bool):
+        raise ValueError("'folio' must be an index counted from 0")
+    return _live_call({"cmd": "show_folio", "folio": folio})
+
+
+def tool_live_undo_last() -> dict:
+    _require_script_consent()
+    return _live_call({"cmd": "undo_last"})
+
+
+def tool_live_screenshot() -> dict:
+    answer = _live_call({"cmd": "screenshot"})
+    data = answer.pop("png_base64", None)
+    if data:
+        answer["_image_png_base64"] = data
+    return answer
 
 
 TOOLS = [
@@ -3706,12 +3732,13 @@ TOOLS = [
             "properties": {
                 "source": {"type": "string", "description": "the script's text"},
                 "name": {"type": "string", "description": "what the user sees in the undo step"},
-                "timeout": {"type": "integer", "default": 60},
+                "timeout": {"type": "integer", "default": 300,
+                            "description": "seconds; the user may be reading the script before saying yes"},
             },
             "required": ["source"],
         },
         "handler": lambda a: tool_live_run_script(a["source"], a.get("name", ""),
-                                                  a.get("timeout", 60)),
+                                                  a.get("timeout", 300)),
     },
     {
         "name": "qet_live_run_stored",
@@ -3726,6 +3753,51 @@ TOOLS = [
             "required": ["id"],
         },
         "handler": lambda a: tool_live_run_stored(a["id"], a.get("timeout", 60)),
+    },
+    {
+        "name": "qet_live_command",
+        "description": "LIVE MODE. Trigger one editor command in the QElectroTech the "
+                       "user has open, by id. Only commands that open no dialog are "
+                       "allowed: diagrameditor.select_all, select_nothing, "
+                       "select_invert, select_all_conductors, select_all_text_fields, "
+                       "zoom_in, zoom_out, zoom_content, zoom_fit, zoom_reset, "
+                       "rotate_selection, rotate_texts, snap_selection_to_grid, "
+                       "group_selection, ungroup_selection, conductor_reset (all "
+                       "prefixed diagrameditor.). Anything else -- saving, deleting, "
+                       "exporting -- is refused; use a script for edits.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"action": {"type": "string"}},
+            "required": ["action"],
+        },
+        "handler": lambda a: tool_live_command(a["action"]),
+    },
+    {
+        "name": "qet_live_show_folio",
+        "description": "LIVE MODE. Show another folio of the open project (index "
+                       "from 0), so qet.currentFolio() and qet_live_screenshot "
+                       "follow it.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"folio": {"type": "integer"}},
+            "required": ["folio"],
+        },
+        "handler": lambda a: tool_live_show_folio(a["folio"]),
+    },
+    {
+        "name": "qet_live_undo_last",
+        "description": "LIVE MODE. Undo the newest step in the open project, only if "
+                       "the assistant made it (its name starts \"Assistant :\"); "
+                       "the user's own steps are never undone this way.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_live_undo_last(),
+    },
+    {
+        "name": "qet_live_screenshot",
+        "description": "LIVE MODE. An image of the folio on screen in the user's "
+                       "QElectroTech, as they see it. Changes nothing.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_live_screenshot(),
     },
 ]
 
@@ -4049,8 +4121,15 @@ def handle(msg: dict) -> dict | None:
             arguments = params.get("arguments") or {}
             enforce_path_policy(name, arguments)
             result = tool["handler"](arguments)
+            content = []
+            # A tool may return a picture (qet_live_screenshot): sent as an
+            # MCP image so the assistant can look at it, not as a string.
+            image = result.pop("_image_png_base64", None) if isinstance(result, dict) else None
+            if image:
+                content.append({"type": "image", "data": image, "mimeType": "image/png"})
             text = json.dumps(result, indent=2, ensure_ascii=False)
-            return _ok(mid, {"content": [{"type": "text", "text": text}]})
+            content.append({"type": "text", "text": text})
+            return _ok(mid, {"content": content})
         except Exception as exc:  # surfaced to the model, not the transport
             return _ok(mid, {
                 "isError": True,
@@ -4118,7 +4197,12 @@ def call_once(argv: list[str], stdin=sys.stdin, stdout=sys.stdout,
         return 2
     result = reply["result"]
     for part in result["content"]:
-        print(part["text"], file=stdout)
+        if part.get("type") == "image":
+            # A picture has no text; print it whole, as a data: URI a
+            # browser or a script can use, rather than drop it.
+            print(f"data:{part['mimeType']};base64,{part['data']}", file=stdout)
+        else:
+            print(part["text"], file=stdout)
     return 1 if result.get("isError") else 0
 
 

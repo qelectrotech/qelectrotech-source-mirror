@@ -167,7 +167,8 @@ class ToolRegistry(unittest.TestCase):
             "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
         "qet_script_install", "qet_script_list", "qet_script_read",
         "qet_script_remove", "qet_live_status", "qet_live_run_script",
-        "qet_live_run_stored"})
+        "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
+        "qet_live_undo_last", "qet_live_screenshot"})
 
 
 class EditValidation(unittest.TestCase):
@@ -3072,6 +3073,41 @@ class LiveClient(unittest.TestCase):
                 os.environ["QET_ENABLE_SCRIPTING"] = "1"
                 m.tool_live_run_stored("../x")
         self.assertEqual(len(self.seen), 1)
+
+    def test_screenshot_is_sent_as_an_image(self):
+        """The picture must reach the assistant as an MCP image, not as a
+        long base64 string inside the text."""
+        self.session()
+        with mock.patch.object(m, "_live_call",
+                               return_value={"ok": True, "width": 2, "height": 1,
+                                             "png_base64": "iVBORw0K"}):
+            reply = m.handle({"jsonrpc": "2.0", "id": 9, "method": "tools/call",
+                              "params": {"name": "qet_live_screenshot", "arguments": {}}})
+        content = reply["result"]["content"]
+        self.assertEqual(content[0], {"type": "image", "data": "iVBORw0K",
+                                      "mimeType": "image/png"})
+        self.assertNotIn("iVBORw0K", content[1]["text"])
+
+    def test_call_once_prints_an_image_as_a_data_uri(self):
+        import io
+        self.session()
+        out = io.StringIO()
+        with mock.patch.object(m, "_live_call",
+                               return_value={"ok": True, "png_base64": "iVBORw0K"}):
+            code = m.call_once(["qet_live_screenshot"], stdout=out)
+        self.assertEqual(code, 0)
+        self.assertEqual(out.getvalue().splitlines()[0], "data:image/png;base64,iVBORw0K")
+
+    def test_commands_and_folios_are_sent_as_asked(self):
+        self.session()
+        m.tool_live_command("diagrameditor.zoom_fit")
+        m.tool_live_show_folio(2)
+        m.tool_live_undo_last()
+        self.assertEqual([(r["cmd"], r.get("action"), r.get("folio")) for r in self.seen],
+                         [("command", "diagrameditor.zoom_fit", None),
+                          ("show_folio", None, 2), ("undo_last", None, None)])
+        with self.assertRaises(ValueError):
+            m.tool_live_show_folio("2")
 
     def test_stale_session_file(self):
         (self.scripts.parent / "live-session.json").write_text(

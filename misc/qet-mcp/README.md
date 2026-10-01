@@ -296,6 +296,14 @@ QElectroTech, in front of you, so you can watch, stop or undo:
 | `qet_live_status` | what is on screen: project, folio, selection, last undo step, stored scripts |
 | `qet_live_run_script` | run script text on the open project: one undo step named "Assistant : …" |
 | `qet_live_run_stored` | press a stored script's button |
+| `qet_live_command` | an editor command from an allow-list that opens no dialog: selection, zoom, rotate, snap, group, reset wires |
+| `qet_live_show_folio` | show another folio |
+| `qet_live_undo_last` | undo the newest step, only if the assistant made it |
+| `qet_live_screenshot` | a picture of the folio on screen, as an MCP image |
+
+A script the assistant writes on the spot is shown to you first, with
+*Exécuter*, *Refuser* or *Toujours pour cette session*; the Assistant
+panel lists everything it did.
 
 QElectroTech only listens when three things are true:
 
