@@ -19,6 +19,7 @@
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
+#include "scripting/assistantinfo.h"
 #endif
 #include <QCoreApplication>
 #include <QToolButton>
@@ -1358,6 +1359,7 @@ void QETDiagramEditor::setUpMenu()
 	rebuildScriptActions();
 	connect(&ScriptLibrary::instance(), &ScriptLibrary::changed,
 		this, &QETDiagramEditor::rebuildScriptActions);
+	AssistantInfo::watch();
 #endif
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();

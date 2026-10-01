@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
+#include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
 #include "../../qeticons.h"
@@ -307,6 +308,8 @@ void GeneralConfigurationPage::applyConf()
 	if (ui->m_enable_scripting->isEnabled()) {
 		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
 	}
+		//What an assistant reads about this QElectroTech follows the change
+	AssistantInfo::write();
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
