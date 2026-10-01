@@ -527,6 +527,12 @@ void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qg
 {
 	Q_UNUSED(qghi);
 	
+		// A selection with no width or height cannot be scaled (see
+		// scaleItems()); resizing it would only record a bogus undo step.
+	if (!original_bounding_rect_.width() || !original_bounding_rect_.height()) {
+		return;
+	}
+	
 	QPointF scene_pos = event -> scenePos();
 	QPointF movement = scene_pos - latest_pos_;
 	
@@ -564,8 +570,15 @@ void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qg
 		movement = rounded_scene_pos - current_position;
 	}
 	
+	QRectF scaled_rect = modified_bounding_rect_;
+	applyMovementToRect(current_operation_square_, movement, scaled_rect);
+		// A rect with no width or height cannot be scaled back from, so the
+		// resize could never be undone: keep the last usable size instead.
+	if (!scaled_rect.width() || !scaled_rect.height()) {
+		return;
+	}
 	QRectF bounding_rect = modified_bounding_rect_;
-	applyMovementToRect(current_operation_square_, movement, modified_bounding_rect_);
+	modified_bounding_rect_ = scaled_rect;
 	if (modified_bounding_rect_ != bounding_rect) {
 		adjustEffectiveBoundingRect();
 	}
