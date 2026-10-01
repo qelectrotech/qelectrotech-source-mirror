@@ -1048,6 +1048,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_line	   = m_add_item_actions_group.addAction(QET::Icons::PartLine,      tr("Ajouter une ligne", "Draw line"));
 	QAction *add_rectangle = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"));
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
+	QAction *add_arc       = m_add_item_actions_group.addAction(QET::Icons::PartArc,       tr("Ajouter un arc"));
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 	QAction *add_path      = m_add_item_actions_group.addAction(QET::Icons::PartBezier,   tr("Ajouter une courbe"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Ajouter un plan de bornes"));
@@ -1060,6 +1061,7 @@ void QETDiagramEditor::setUpActions()
 	add_line     ->setStatusTip(tr("Ajoute une ligne sur le folio actuel"));
 	add_rectangle->setStatusTip(tr("Ajoute un rectangle sur le folio actuel"));
 	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
+	add_arc      ->setStatusTip(tr("Ajoute un arc sur le folio actuel"));
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
 	add_path     ->setStatusTip(tr("Ajoute une courbe de Bézier sur le folio actuel"));
 	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
@@ -1072,6 +1074,7 @@ void QETDiagramEditor::setUpActions()
 	add_line     ->setData(QStringLiteral("line"));
 	add_rectangle->setData(QStringLiteral("rectangle"));
 	add_ellipse  ->setData(QStringLiteral("ellipse"));
+	add_arc      ->setData(QStringLiteral("arc"));
 	add_polyline ->setData(QStringLiteral("polyline"));
 	add_path     ->setData(QStringLiteral("path"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
@@ -1080,6 +1083,7 @@ void QETDiagramEditor::setUpActions()
 	add_line->setCheckable(true);
 	add_rectangle->setCheckable(true);
 	add_ellipse->setCheckable(true);
+	add_arc->setCheckable(true);
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
 
@@ -2024,6 +2028,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Rectangle);
 	else if (value == "ellipse")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
+	else if (value == "arc")
+		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse, true);
 	else if (value == "polyline")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
 	else if (value == "path")

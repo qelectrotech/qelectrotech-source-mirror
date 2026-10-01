@@ -398,6 +398,21 @@ void QetShapeItem::setEndAngle(qreal degrees)
 	emit arcChanged();
 }
 
+/**
+	@brief QetShapeItem::isAxisHalfArc
+	True for an Ellipse drawn as a half arc whose two ends lie on a
+	horizontal or vertical diameter -- what the Arc tool draws. Only
+	then does the bulge handle have one obvious meaning: move the middle
+	of the arc toward or away from the line between its ends, with both
+	ends staying put.
+*/
+bool QetShapeItem::isAxisHalfArc() const
+{
+	if (m_shapeType != Ellipse || !qFuzzyCompare(qAbs(spanAngle()), qreal(180)))
+		return false;
+	return qFuzzyIsNull(std::remainder(m_startAngle, 90.0));
+}
+
 void QetShapeItem::setArcClosure(ArcClosure closure)
 {
 	if (m_arcClosure == closure) return;
@@ -1435,6 +1450,8 @@ QString QetShapeItem::handleRoleTooltip(HandleRole role, int slot) const
 			return tr("Glisser : arrondir les coins (Ctrl = position libre)");
 		case HandleRole::ArcEndpoint:
 			return tr("Glisser : ajuster l'arc (Ctrl = position libre, Maj = 15°)");
+		case HandleRole::ArcBulge:
+			return tr("Glisser : creuser ou aplatir l'arc, ses extrémités restent en place (Ctrl = position libre)");
 		case HandleRole::PathAnchor:
 		{
 			QString text = tr("Glisser : déplacer le point (Ctrl = position libre");
@@ -1469,6 +1486,7 @@ QColor QetShapeItem::colorForHandleRole(HandleRole role)
 		case HandleRole::Pivot:         return Qt::red;
 		case HandleRole::CornerRadius:  return Qt::magenta;
 		case HandleRole::ArcEndpoint:   return Qt::darkCyan;
+		case HandleRole::ArcBulge:      return Qt::darkCyan;
 		case HandleRole::PathAnchor:    return Qt::blue;
 		case HandleRole::PathControlIn:
 		case HandleRole::PathControlOut:return Qt::gray;
@@ -1542,6 +1560,9 @@ QPointF QetShapeItem::handlePositionFor(HandleRole role, int slot) const
 
 		case HandleRole::ArcEndpoint:
 			return QetGraphicsHandlerUtility::pointsForArc(r, m_startAngle, spanAngle()).value(slot);
+
+		case HandleRole::ArcBulge:
+			return QetGraphicsHandlerUtility::pointsForArc(r, m_startAngle + spanAngle() / 2, 0).value(0);
 
 		case HandleRole::PathAnchor:
 			if (m_shapeType == Polygon)
@@ -1653,7 +1674,14 @@ void QetShapeItem::rebuildHandles()
 				addRole(HandleRole::Pivot, 0);
 			}
 			if (m_shapeType == Ellipse)
+			{
 				for (int i = 0; i < 2; ++i) addRole(HandleRole::ArcEndpoint, i);
+				// Always in the set, hidden unless the shape is a half
+				// arc (updateArcBulgeVisibility()): an endpoint drag can
+				// make or unmake a half arc mid-drag, and changing the
+				// handle set then would delete the handle being dragged.
+				addRole(HandleRole::ArcBulge, 0);
+			}
 			break;
 
 		case Polygon:
@@ -1715,6 +1743,14 @@ void QetShapeItem::rebuildHandles()
 		scene()->addItem(h);
 		h->installSceneEventFilter(this);
 	}
+	updateArcBulgeVisibility();
+}
+
+void QetShapeItem::updateArcBulgeVisibility()
+{
+	const int index = m_handleRoles.indexOf(HandleRole::ArcBulge);
+	if (index >= 0 && index < m_handler_vector.size())
+		m_handler_vector.at(index)->setVisible(isAxisHalfArc());
 }
 
 /**
@@ -1741,6 +1777,7 @@ void QetShapeItem::repositionHandles()
 	const QVector<QPointF> scenePositions = mapToScene(positions);
 	for (int i = 0; i < scenePositions.size(); ++i)
 		m_handler_vector.at(i)->setPos(scenePositions.at(i));
+	updateArcBulgeVisibility();
 }
 
 void QetShapeItem::insertPoint()
@@ -2527,6 +2564,40 @@ void QetShapeItem::dragArcEndpoint(int which, const QPointF &localPos, Qt::Keybo
 	which == 0 ? setStartAngle(angle) : setEndAngle(angle);
 }
 
+/**
+	@brief QetShapeItem::dragArcBulge
+	Pulls the middle of a half arc in or out while its two ends stay
+	where they are: only the half-axis across the line between the ends
+	changes. Dragging across that line turns the arc over to the other
+	side, which flips the sign of the span by changing the end angle
+	alone -- changing both angles one after the other would pass through
+	a zero span, which setStartAngle()/setEndAngle() snap to a full
+	ellipse.
+*/
+void QetShapeItem::dragArcBulge(const QPointF &localPos)
+{
+	if (!isAxisHalfArc())
+		return;
+
+	const QRectF r = localRect();
+	const QPointF c = r.center();
+	const bool horizontalChord = qFuzzyIsNull(std::remainder(m_startAngle, 180.0));
+		// > 0: the cursor is above (horizontal chord) or left of
+		// (vertical chord) the line between the two ends
+	const qreal side = horizontalChord ? c.y() - localPos.y() : c.x() - localPos.x();
+	const qreal depth = qMax(qAbs(side), qreal(1));
+
+	if (horizontalChord)
+		setRect(QRectF(r.left(), c.y() - depth, r.width(), 2 * depth));
+	else
+		setRect(QRectF(c.x() - depth, r.top(), 2 * depth, r.height()));
+
+	const QPointF middle = handlePositionFor(HandleRole::ArcBulge, 0);
+	const qreal middleSide = horizontalChord ? c.y() - middle.y() : c.x() - middle.x();
+	if ((middleSide > 0) != (side > 0))
+		setEndAngle(2 * m_startAngle - m_endAngle);
+}
+
 void QetShapeItem::dragCornerRadius(int which, const QPointF &localPos)
 {
 	const qreal radius = QetGraphicsHandlerUtility::radiusForPosAtIndex(localRect(), localPos, which);
@@ -2755,6 +2826,7 @@ void QetShapeItem::handlerMouseMoveEvent(int handlerIndex, QGraphicsSceneMouseEv
 		case HandleRole::Pivot:         dragPivotHandle(new_pos); break;
 		case HandleRole::CornerRadius:  dragCornerRadius(slot, new_pos); break;
 		case HandleRole::ArcEndpoint:   dragArcEndpoint(slot, new_pos, mods); break;
+		case HandleRole::ArcBulge:      dragArcBulge(new_pos); break;
 		case HandleRole::PathAnchor:    dragPathAnchor(slot, new_pos, mods); break;
 		case HandleRole::PathControlIn:  dragPathControlHandle(false, slot, new_pos, mods); break;
 		case HandleRole::PathControlOut: dragPathControlHandle(true,  slot, new_pos, mods); break;
@@ -2850,6 +2922,16 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			}
 			if (undo)
 				undo->setText(tr("Modifier l'angle d'un arc"));
+			break;
+
+		case HandleRole::ArcBulge:
+			if (m_P1 != m_old_P1 || m_P2 != m_old_P2 || !qFuzzyCompare(m_endAngle, m_old_endAngle))
+			{
+				undo = new QUndoCommand(tr("Modifier la courbure d'un arc"));
+				new QPropertyUndoCommand(this, "rect", QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized(), undo);
+				if (!qFuzzyCompare(m_endAngle, m_old_endAngle))
+					new QPropertyUndoCommand(this, "endAngle", m_old_endAngle, m_endAngle, undo);
+			}
 			break;
 
 		case HandleRole::PathAnchor:
