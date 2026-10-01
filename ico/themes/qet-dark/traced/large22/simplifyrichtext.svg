@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-PositiveText { color:#239d57; }
+    </style>
+  </defs>
+  <polyline points="5,25 13.9,3.5 19.6,17.5" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:2.1;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <rect x="7.5" y="17" width="10.5" height="2" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M18.80 21.79A5 5 0 0 1 27.83 21.00" class="ColorScheme-PositiveText" style="fill:none;stroke:currentColor;stroke-width:1.4"/>
+  <polygon points="29.3701,23.6674 29.77,19.88 25.8902,22.12" class="ColorScheme-PositiveText" style="fill:currentColor"/>
+  <path d="M28.20 25.21A5 5 0 0 1 19.17 26.00" class="ColorScheme-PositiveText" style="fill:none;stroke:currentColor;stroke-width:1.4"/>
+  <polygon points="17.6299,23.3326 17.23,27.12 21.1098,24.88" class="ColorScheme-PositiveText" style="fill:currentColor"/>
+</svg>

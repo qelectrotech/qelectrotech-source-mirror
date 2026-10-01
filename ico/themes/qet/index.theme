@@ -1,7 +1,7 @@
 [Icon Theme]
 Name=qet
 Comment=QElectroTech icons
-Directories=16x16,22x22,32x32,48x48,128x128,scalable
+Directories=16x16,22x22,32x32,48x48,64x64,128x128,24x24,16x16@2,22x22@2,32x32@2,48x48@2,64x64@2,128x128@2,24x24@2,scalable
 
 [16x16]
 Size=16
@@ -19,9 +19,52 @@ Type=Fixed
 Size=48
 Type=Fixed
 
+[64x64]
+Size=64
+Type=Fixed
+
 [128x128]
 Size=128
 Type=Fixed
+
+[24x24]
+Size=24
+Type=Fixed
+
+[16x16@2]
+Size=16
+Type=Fixed
+Scale=2
+
+[22x22@2]
+Size=22
+Type=Fixed
+Scale=2
+
+[32x32@2]
+Size=32
+Type=Fixed
+Scale=2
+
+[48x48@2]
+Size=48
+Type=Fixed
+Scale=2
+
+[64x64@2]
+Size=64
+Type=Fixed
+Scale=2
+
+[128x128@2]
+Size=128
+Type=Fixed
+Scale=2
+
+[24x24@2]
+Size=24
+Type=Fixed
+Scale=2
 
 [scalable]
 Size=22

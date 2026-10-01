@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M4 3h14v1h-14zM3 4h1v1h-1zM18 4h1v14h-1zM5 5h3v1h-3zM5 7h3v1h-3zM5 9h3v1h-3zM5 11h3v1h-3zM9 5h4v1h-4zM9 7h4v1h-4zM9 9h4v1h-4zM9 11h4v1h-4zM14 5h3v1h-3zM14 7h3v1h-3zM14 9h3v1h-3zM14 11h3v1h-3zM14 13h3v1h-3zM14 15h3v1h-3zM10 13h3v1h-3zM11 15h2v1h-2zM10 18h8v1h-8z" style="fill:#1f9d5e"/>
+  <path d="M3 5h1v1h-1z" style="fill:#27b66e"/>
+  <path d="M3 6h1v1h-1z" style="fill:#2aac6b"/>
+  <path d="M3 7h1v1h-1z" style="fill:#2ea268"/>
+  <path d="M3 8h1v1h-1z" style="fill:#329865"/>
+  <path d="M3 9h1v1h-1z" style="fill:#358e62"/>
+  <path d="M3 10h1v1h-1z" style="fill:#39845f"/>
+  <path d="M3 11h1v1h-1z" style="fill:#3d7a5b"/>
+  <rect x="3" y="12" width="1" height="5" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="4" y="16" width="5" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polyline points="6.3,13.5 9.2,16.5 6.3,19.5" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:miter;stroke-linecap:butt"/>
+  </g>
+</svg>

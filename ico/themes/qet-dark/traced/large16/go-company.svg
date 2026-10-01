@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+    </style>
+  </defs>
+  <rect x="2" y="2" width="2" height="13" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="4" y="14" width="11" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="14" y="5.5" width="1.5" height="9" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polyline points="4,8.5 9,5.5 9.5,7.5 15,5" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:miter;stroke-linecap:butt"/>
+</svg>

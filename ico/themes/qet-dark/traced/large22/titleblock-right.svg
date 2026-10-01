@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-NegativeText { color:#db4b59; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <rect x="4" y="6" width="11" height="11" style="fill:#ffffff;opacity:0.5"/>
+  <rect x="16" y="6" width="2" height="11" style="fill:#ffffff;opacity:0.5"/>
+  <path d="M3 5H19V18H3ZM4 6V17H18V6Z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.7"/>
+  <path d="M15 5H19V18H15ZM16 6V17H18V6Z" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="16" y="8" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="16" y="14" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="5" y="11" width="8" height="1" class="ColorScheme-NegativeText" style="fill:currentColor"/>
+  <polygon points="12,8.5 14.5,11.5 12,14.5" class="ColorScheme-NegativeText" style="fill:currentColor"/>
+</svg>

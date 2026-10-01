@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M7 4h12v1h-12zM7 11h12v1h-12zM7 5h1v2h-1zM7 8h1v3h-1zM18 5h1v6h-1zM3 7h5v1h-5zM3 8h1v6h-1zM14 12h1v2h-1zM3 14h12v1h-12z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="16,12 19,12 16,15" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="3,15 6,15 6,18" class="ColorScheme-Text" style="fill:currentColor"/>
+  </g>
+</svg>
