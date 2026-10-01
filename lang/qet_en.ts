@@ -358,12 +358,12 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation>Adjust the size of the table to the folio</translation>
+        <translation>Adjust the size of the table to the sheet</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation>Add new folio and table if necessary.</translation>
+        <translation>Add new sheet and table if necessary.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
@@ -570,7 +570,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="54"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="165"/>
@@ -603,7 +603,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
         <source>Apply to Selected Folios</source>
-        <translation>Apply to Selected Folios</translation>
+        <translation>Apply to Selected Sheets</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
@@ -670,7 +670,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="348"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="365"/>
@@ -710,7 +710,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 -Both: both new and existent element labels will be updated. This is the default option.
 -Update only new: only new created elements will be updated. Existent element labels will be frozen.
 -Update only existent: only existent elements will be updated. New elements will be assigned their formula but will not update once created.
--Disable: both new and existent element labels will not be updated. This is valid for new folios as well.
+-Disable: both new and existent element labels will not be updated. This is valid for new sheets as well.
 Note: these options DO NOT allow or block auto numberings, only their update policy.</translation>
     </message>
 </context>
@@ -777,7 +777,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>Sheet position</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="126"/>
@@ -865,7 +865,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation>Folio size</translation>
+        <translation>Sheet size</translation>
     </message>
 </context>
 <context>
@@ -1185,7 +1185,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="154"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Show one text per folio potential. </translation>
+        <translation>Show one text per sheet potential. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
@@ -1538,13 +1538,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="62"/>
         <source>Couleur de fond du folio</source>
-        <translation>Folio background color</translation>
+        <translation>Sheet background color</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="63"/>
         <source>Choisir la couleur de fond du folio</source>
         <comment>status bar tip</comment>
-        <translation>Choose the folio background color</translation>
+        <translation>Choose the sheet background color</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="101"/>
@@ -1921,7 +1921,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="50"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation>Folio properties</translation>
+        <translation>Sheet properties</translation>
     </message>
 </context>
 <context>
@@ -1967,7 +1967,7 @@ Hold Shift and drag to move this text on its own</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="107"/>
         <source>Renvoi de folio</source>
-        <translation>Folio reference</translation>
+        <translation>Sheet reference</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="742"/>
@@ -3045,12 +3045,12 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="209"/>
         <source>Renvoi de folio suivant</source>
-        <translation>Next folio reference</translation>
+        <translation>Next sheet reference</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="210"/>
         <source>Renvoi de folio précédent</source>
-        <translation>Previous folio reference</translation>
+        <translation>Previous sheet reference</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="211"/>
@@ -3351,7 +3351,7 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
         <source>Folio : %1
 </source>
-        <translation>Folio : %1
+        <translation>Sheet : %1
 </translation>
     </message>
     <message>
@@ -3629,17 +3629,17 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="45"/>
         <source>Titre du folio</source>
-        <translation>Folio title</translation>
+        <translation>Sheet title</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="46"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>Sheet position</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="47"/>
         <source>Numéro du folio</source>
-        <translation>Folio number</translation>
+        <translation>Sheet number</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="755"/>
@@ -4100,7 +4100,7 @@ By importing this file, you confirm that:
         <location filename="../sources/elementspanel.cpp" line="227"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Drag and drop this title block template onto a folio to apply it.</translation>
+        <translation>Drag and drop this title block template onto a sheet to apply it.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="193"/>
@@ -4185,22 +4185,22 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Propriétés du folio</source>
-        <translation>Folio properties</translation>
+        <translation>Sheet properties</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
+        <translation>Add a sheet</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Insérer un folio au-dessus</source>
-        <translation>Insert a folio number above</translation>
+        <translation>Insert a sheet number above</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Insérer un folio en dessous</source>
-        <translation>Insert a folio number below</translation>
+        <translation>Insert a sheet number below</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
@@ -4210,42 +4210,42 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce folio</source>
-        <translation>Delete this folio</translation>
+        <translation>Delete this sheet</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Remonter ce folio</source>
-        <translation>Move this folio up</translation>
+        <translation>Move this sheet up</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Abaisser ce folio</source>
-        <translation>Move down this folio</translation>
+        <translation>Move down this sheet</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio x10</source>
-        <translation>Move this folio up x10</translation>
+        <translation>Move this sheet up x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Remonter ce folio x100</source>
-        <translation>Move this folio up x100</translation>
+        <translation>Move this sheet up x100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Remonter ce folio au debut</source>
-        <translation>Move this folio to the beginning</translation>
+        <translation>Move this sheet to the beginning</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
         <source>Abaisser ce folio x10</source>
-        <translation>Move down this folio x10</translation>
+        <translation>Move down this sheet x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Abaisser ce folio x100</source>
-        <translation>Move down this folio x100</translation>
+        <translation>Move down this sheet x100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
@@ -4361,12 +4361,12 @@ By importing this file, you confirm that:
         <location filename="../sources/exportdialog.cpp" line="71"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation>Export the project folios</translation>
+        <translation>Export the project sheets</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="86"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Choose the folios you wish to export and specify their size :</translation>
+        <translation>Choose the sheets you wish to export and specify their size :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="89"/>
@@ -4381,13 +4381,13 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportdialog.cpp" line="156"/>
         <source>Titre du folio</source>
-        <translation>Folio title</translation>
+        <translation>Sheet title</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="836"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation>You must enter a non-empty, unique filename for each folio to export.</translation>
+        <translation>You must enter a non-empty, unique filename for each sheet to export.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="851"/>
@@ -4477,7 +4477,7 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter entièrement le folio</source>
-        <translation>Export the whole folio</translation>
+        <translation>Export the whole sheet</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
@@ -4535,17 +4535,17 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux folios</source>
-        <translation>C&amp;reate new folios</translation>
+        <translation>C&amp;reate new sheets</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>Numérotation automatique des folios sélectionnés</source>
-        <translation>Automatic numbering of selected folios</translation>
+        <translation>Automatic numbering of selected sheets</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux folios</source>
-        <translation>New folios</translation>
+        <translation>New sheets</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -4565,13 +4565,13 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation>Folio Auto Numbering :</translation>
+        <translation>Sheet Auto Numbering :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="192"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation>Folio Autonumbering</translation>
+        <translation>Sheet Autonumbering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="194"/>
@@ -4588,12 +4588,12 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>This is where you can define how the new folios will be numbered.
+        <translation>This is where you can define how the new sheets will be numbered.
 -A numbering is composed of a minimum variable.
 -You can add or delete a dialing variable through the - and + buttons.
 A numbering variable includes: a type, a value and an increment.
 
--the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new folio by the value of the &quot;Incrementation&quot; field.
+-the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new sheet by the value of the &quot;Incrementation&quot; field.
 - &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
 If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
 
@@ -4658,9 +4658,9 @@ that you create. Text and number inputs are
  -%prefix: Default Element Prefix
  -%l: Element Line
  -%c: Element Column
- -%F: Folio Name
- -%f or %id: Folio ID
- -%total: Total of folios
+ -%F: Sheet Name
+ -%f or %id: Sheet ID
+ -%total: Total of sheets
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</translation>
@@ -4853,7 +4853,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation>Use folio numbers instead of their position in the project</translation>
+        <translation>Use sheet numbers instead of their position in the project</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
@@ -4971,7 +4971,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="90"/>
         <source>Par défaut, un double-clic insère l&apos;élément sur le folio ; l&apos;édition reste accessible par le menu contextuel.</source>
-        <translation>By default, a double-click inserts the element on the folio; editing remains accessible from the context menu.</translation>
+        <translation>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
@@ -5105,7 +5105,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
         <source>Fraction de la grille des folios. Maintenir Ctrl pendant le déplacement pour placer librement.</source>
-        <translation>Fraction of the folio grid. Hold Ctrl while moving to place freely.</translation>
+        <translation>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
@@ -5182,7 +5182,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translation>Allow unzoom beyond the folio</translation>
+        <translation>Allow unzoom beyond the sheet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
@@ -5423,13 +5423,13 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <location filename="../sources/genericpanel.cpp" line="220"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is a QElectroTech project, ie. a .qet file containing several folios. It also embeds elements and title block templates used in the folios.</translation>
+        <translation>This is a QElectroTech project, ie. a .qet file containing several sheets. It also embeds elements and title block templates used in the sheets.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="350"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Untitled folio</translation>
+        <translation>Untitled sheet</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="362"/>
@@ -5453,7 +5453,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <location filename="../sources/genericpanel.cpp" line="641"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is a title block template, which can be applied to a folio.</translation>
+        <translation>This is a title block template, which can be applied to a sheet.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="938"/>
@@ -5518,7 +5518,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     </message>
     <message>
         <source>Ajuster le tableau au folio</source>
-        <translation type="vanished">Fit table to folio</translation>
+        <translation type="vanished">Fit table to sheet</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -6056,12 +6056,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="235"/>
         <source>Folio %1, case %2</source>
-        <translation>Folio %1, cell %2</translation>
+        <translation>Sheet %1, cell %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="236"/>
         <source>Folio %1 (%2), case %3</source>
-        <translation>Folio %1 (%2), cell %3</translation>
+        <translation>Sheet %1 (%2), cell %3</translation>
     </message>
     <message>
         <source>Nom, label ou information de l&apos;élément…</source>
@@ -6195,13 +6195,13 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="526"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="552"/>
         <source>N° de folio</source>
-        <translation>Folio no.</translation>
+        <translation>Sheet no.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="518"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="541"/>
         <source>Label de folio</source>
-        <translation>Folio label</translation>
+        <translation>Sheet label</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="520"/>
@@ -6209,7 +6209,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="543"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="554"/>
         <source>Titre de folio</source>
-        <translation>Folio title</translation>
+        <translation>Sheet title</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="519"/>
@@ -6297,7 +6297,7 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="236"/>
         <source>Report de folio</source>
-        <translation>Folio reference</translation>
+        <translation>Sheet reference</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="238"/>
@@ -6364,18 +6364,18 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="70"/>
         <source>N° de folio</source>
-        <translation>Folio no.</translation>
+        <translation>Sheet no.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
         <source>Label de folio</source>
-        <translation>Folio label</translation>
+        <translation>Sheet label</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="71"/>
         <source>Titre de folio</source>
-        <translation>Folio title</translation>
+        <translation>Sheet title</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
@@ -6573,7 +6573,7 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="153"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="154"/>
@@ -6583,7 +6583,7 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="155"/>
         <source>Reports de folio</source>
-        <translation>Folio references</translation>
+        <translation>Sheet references</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="156"/>
@@ -6613,7 +6613,7 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="167"/>
         <source>Folios</source>
-        <translation>Folios</translation>
+        <translation>Sheets</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="169"/>
@@ -6624,7 +6624,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation>New folio</translation>
+        <translation>New sheet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="298"/>
@@ -6816,7 +6816,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="291"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="481"/>
         <source>N° folio</source>
-        <translation>Folio no.</translation>
+        <translation>Sheet no.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="146"/>
@@ -6824,7 +6824,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="293"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="483"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="137"/>
@@ -6832,7 +6832,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="279"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="467"/>
         <source>Chiffre 1 - Folio</source>
-        <translation>number format 1 - Folio</translation>
+        <translation>number format 1 - Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="139"/>
@@ -6840,7 +6840,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="283"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="471"/>
         <source>Chiffre 01 - Folio</source>
-        <translation>number format 01 - Folio</translation>
+        <translation>number format 01 - Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
@@ -6848,7 +6848,7 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="287"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="475"/>
         <source>Chiffre 001 - Folio</source>
-        <translation>number format 001 - Folio</translation>
+        <translation>number format 001 - Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="148"/>
@@ -7265,7 +7265,7 @@ Conductor section : %1</translation>
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation>The new potential formula contains variables incompatible with folio references.
+        <translation>The new potential formula contains variables incompatible with sheet references.
 Please enter a compatible formula for this potential.
 The following variables are incompatible:
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
@@ -7308,12 +7308,12 @@ The following variables are incompatible:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="352"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="576"/>
         <source>Folios</source>
-        <translation>Folios</translation>
+        <translation>Sheets</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="356"/>
         <source>Numérotation auto des folios</source>
-        <translation>Folio Auto Numbering</translation>
+        <translation>Sheet Auto Numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="359"/>
@@ -7433,7 +7433,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="360"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>Sheet position</translation>
     </message>
 </context>
 <context>
@@ -7469,13 +7469,13 @@ The following variables are incompatible:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="193"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation>This title is made available to all child folios as %projecttitle.</translation>
+        <translation>This title is made available to all child sheets as %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="195"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>You may define below custom properties that will be made available to all folios of the project (typically to use within title blocks).</translation>
+        <translation>You may define below custom properties that will be made available to all sheets of the project (typically to use within title blocks).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="204"/>
@@ -7513,7 +7513,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation>Folios to print :</translation>
+        <translation>Sheets to print :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
@@ -7583,7 +7583,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="218"/>
         <source>Adapter le folio à la page</source>
-        <translation>Fit folio to page</translation>
+        <translation>Fit sheet to page</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="228"/>
@@ -7593,7 +7593,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="235"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation>If this option is checked, the folio will be enlarged or shrunk to fill the entire printable surface of one and only one page. &quot;</translation>
+        <translation>If this option is checked, the sheet will be enlarged or shrunk to fill the entire printable surface of one and only one page. &quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="245"/>
@@ -7705,7 +7705,7 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="565"/>
         <source>Folio sans titre</source>
-        <translation>Untitled folio</translation>
+        <translation>Untitled sheet</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="748"/>
@@ -7752,13 +7752,13 @@ Do you want to save changes?</translation>
         <location filename="../sources/projectview.cpp" line="403"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation>Delete this folio ?</translation>
+        <translation>Delete this sheet ?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="404"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
         <comment>message box content</comment>
-        <translation>Are you sure you want to delete this folio from the project?</translation>
+        <translation>Are you sure you want to delete this sheet from the project?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="752"/>
@@ -7786,7 +7786,7 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="807"/>
         <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
+        <translation>Add a sheet</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="810"/>
@@ -7812,7 +7812,7 @@ Do you want to save changes?</translation>
         <location filename="../sources/projectview.cpp" line="836"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>This project does not contain any folio</translation>
+        <translation>This project does not contain any sheet</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="344"/>
@@ -7829,7 +7829,7 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="949"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating folio tabs :&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="992"/>
@@ -8073,7 +8073,7 @@ Available options:
         <location filename="../sources/qetapp.cpp" line="157"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
-        <translation>Loading... Folios editor</translation>
+        <translation>Loading... Sheets editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="162"/>
@@ -8243,7 +8243,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This panel lists the various changes applied to the current folio. Clicking a change gets the folio back to its state right after it was applied.</translation>
+        <translation>This panel lists the various changes applied to the current sheet. Clicking a change gets the sheet back to its state right after it was applied.</translation>
     </message>
     <message>
         <source>Couleur de fond blanc/gris</source>
@@ -8253,7 +8253,7 @@ Available options:
     <message>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="vanished">Displays the background color of the folio in white or gray</translation>
+        <translation type="vanished">Displays the background color of the sheet in white or gray</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
@@ -8263,24 +8263,24 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation>Display or hide the grid of folio</translation>
+        <translation>Display or hide the grid of sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
         <source>Propriétés du folio</source>
-        <translation>Folio properties</translation>
+        <translation>Sheet properties</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
         <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
+        <translation>Add a sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2862"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2885"/>
         <source>Supprimer le folio</source>
-        <translation>Delete this folio</translation>
+        <translation>Delete this sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
@@ -8349,7 +8349,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation>Export one or more folios of the current project</translation>
+        <translation>Export one or more sheets of the current project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
@@ -8423,7 +8423,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation>Saves the current project and all its folios</translation>
+        <translation>Saves the current project and all its sheets</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
@@ -8447,66 +8447,66 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Add a column to the folio</translation>
+        <translation>Add a column to the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Remove a column from the folio</translation>
+        <translation>Remove a column from the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Expands the folio height</translation>
+        <translation>Expands the sheet height</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Shrinks the folio height</translation>
+        <translation>Shrinks the sheet height</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="910"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation>Removes selected elements from the folio</translation>
+        <translation>Removes selected elements from the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="950"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Selects all elements on the folio</translation>
+        <translation>Selects all elements on the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="951"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Deselect all elements on the folio</translation>
+        <translation>Deselect all elements on the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="978"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation>Expand the folio</translation>
+        <translation>Expand the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="979"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation>Shrinks the folio</translation>
+        <translation>Shrinks the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation>Adjusts the zoom to display all the contents of folio regardless of context</translation>
+        <translation>Adjusts the zoom to display all the contents of sheet regardless of context</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="981"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
-        <translation>Adjusts the zoom on exactly the part of the folio</translation>
+        <translation>Adjusts the zoom on exactly the part of the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1011"/>
@@ -8533,13 +8533,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation>Exports the current folio to another format</translation>
+        <translation>Exports the current sheet to another format</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation>Prints one or more folio of the current project</translation>
+        <translation>Prints one or more sheet of the current project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
@@ -8556,19 +8556,19 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation>Pastes elements from the clipboard into the folio</translation>
+        <translation>Pastes elements from the clipboard into the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation>Edits the properties of the folio (size, title block information, conductor properties...)</translation>
+        <translation>Edits the properties of the sheet (size, title block information, conductor properties...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="737"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>Allows to view the folio without modifying it</translation>
+        <translation>Allows to view the sheet without modifying it</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1097"/>
@@ -8964,7 +8964,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Garde les numéros de colonne et les lettres de ligne du folio visibles au bord de la vue</source>
-        <translation>Keeps the folio&apos;s column numbers and row letters visible at the edge of the view</translation>
+        <translation>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
@@ -8974,7 +8974,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Trace les limites des colonnes et des lignes du folio sur le schéma, à l&apos;écran seulement</source>
-        <translation>Draws the boundaries of the folio&apos;s columns and rows on the diagram, on screen only</translation>
+        <translation>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
@@ -9078,7 +9078,7 @@ Hold Ctrl while moving to place freely.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="900"/>
         <source>Relance le dernier outil de dessin ou la dernière insertion d&apos;élément (Entrée sur le folio)</source>
         <comment>status bar tip</comment>
-        <translation>Relaunches the last drawing tool or element insertion (Enter on the folio)</translation>
+        <translation>Relaunches the last drawing tool or element insertion (Enter on the sheet)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="912"/>
@@ -9111,13 +9111,13 @@ Hold Ctrl while moving to place freely.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="953"/>
         <source>Sélectionne tous les conducteurs du folio, désélectionne le reste</source>
         <comment>status bar tip</comment>
-        <translation>Selects all conductors on the folio, deselects the rest</translation>
+        <translation>Selects all conductors on the sheet, deselects the rest</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="954"/>
         <source>Sélectionne tous les champs de texte du folio, désélectionne le reste</source>
         <comment>status bar tip</comment>
-        <translation>Selects all text fields on the folio, deselects the rest</translation>
+        <translation>Selects all text fields on the sheet, deselects the rest</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1009"/>
@@ -9137,47 +9137,47 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1018"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation>Adds a text field to the current folio</translation>
+        <translation>Adds a text field to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1019"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation>Add an image to the current folio</translation>
+        <translation>Add an image to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1021"/>
         <source>Ajoute une page PDF sur le folio actuel</source>
-        <translation>Adds a PDF page to the current folio</translation>
+        <translation>Adds a PDF page to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation>Add a line to the current folio</translation>
+        <translation>Add a line to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation>Adds a rectangle on the current folio</translation>
+        <translation>Adds a rectangle on the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1025"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation>Add an ellipse to the current folio</translation>
+        <translation>Add an ellipse to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1026"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation>Adds a polyline to the current folio</translation>
+        <translation>Adds a polyline to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1027"/>
         <source>Ajoute une courbe de Bézier sur le folio actuel</source>
-        <translation>Adds a Bézier curve to the current folio</translation>
+        <translation>Adds a Bézier curve to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1028"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
-        <translation>Adds a terminal plan to the current folio</translation>
+        <translation>Adds a terminal plan to the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1078"/>
@@ -9188,7 +9188,7 @@ Hold Ctrl while moving to place freely.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1080"/>
         <source>Recherche et sélectionne rapidement un élément du folio</source>
         <comment>status bar tip</comment>
-        <translation>Quickly search for and select an element in the folio</translation>
+        <translation>Quickly search for and select an element in the sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1143"/>
@@ -9334,22 +9334,22 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2863"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
-        <translation>Are you sure you want to delete this folio?</translation>
+        <translation>Are you sure you want to delete this sheet?</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2868"/>
         <source>Supprimer les folios</source>
-        <translation>Delete the folios</translation>
+        <translation>Delete the sheets</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2869"/>
         <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
-        <translation>Are you sure you want to delete the selected %1 folios ?</translation>
+        <translation>Are you sure you want to delete the selected %1 sheets ?</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2886"/>
         <source>Supprimer %1 folios</source>
-        <translation>Delete %1 folios</translation>
+        <translation>Delete %1 sheets</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2924"/>
@@ -9360,7 +9360,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/qetdiagrameditor.cpp" line="3014"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3032"/>
         <source>Déplacer les folios</source>
-        <translation>Move the folios</translation>
+        <translation>Move the sheets</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3101"/>
@@ -9381,7 +9381,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3510"/>
         <source>folio %1</source>
-        <translation>folio %1</translation>
+        <translation>sheet %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3518"/>
@@ -9858,7 +9858,7 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="810"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Folio references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Sheet references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="843"/>
@@ -10446,7 +10446,7 @@ What do you wish to do ?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="1876"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of folios&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1918"/>
@@ -10906,7 +10906,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="557"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation>change the folio size</translation>
+        <translation>change the sheet size</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/deletepartscommand.cpp" line="34"/>
@@ -11252,7 +11252,7 @@ What do you wish to do ?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1154"/>
         <source>Folio sans titre</source>
-        <translation>Untitled folio</translation>
+        <translation>Untitled sheet</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1156"/>
@@ -11588,12 +11588,12 @@ What do you wish to do ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>Sheet position</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Numéro de folio</source>
-        <translation>Folio number</translation>
+        <translation>Sheet number</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="159"/>
@@ -11789,7 +11789,7 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="56"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation>Find / replace folio properties</translation>
+        <translation>Find / replace sheet properties</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="120"/>
@@ -11845,17 +11845,17 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Nombre de folio</source>
-        <translation>Number of folios</translation>
+        <translation>Number of sheets</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Numéro du folio précédent</source>
-        <translation>Number of the previous folio</translation>
+        <translation>Number of the previous sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Numéro du folio suivant</source>
-        <translation>Number of the following folio</translation>
+        <translation>Number of the following sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="303"/>
@@ -12630,19 +12630,19 @@ Please download it by following the link and unzip it in the installation folder
         <location filename="../sources/undocommand/adddiagramcommand.cpp" line="36"/>
         <source>Ajouter un folio</source>
         <comment>undo command text</comment>
-        <translation>Add a folio</translation>
+        <translation>Add a sheet</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/movediagramcommand.cpp" line="39"/>
         <source>Déplacer un folio</source>
         <comment>undo command text</comment>
-        <translation>Moving a folio</translation>
+        <translation>Moving a sheet</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/removediagramcommand.cpp" line="35"/>
         <source>Supprimer un folio</source>
         <comment>undo command text</comment>
-        <translation>Delete a folio</translation>
+        <translation>Delete a sheet</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="196"/>
@@ -13765,7 +13765,7 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation>Folio:</translation>
+        <translation>Sheet:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
@@ -13801,9 +13801,9 @@ Les variables suivantes sont utilisables :
 - %autonum : Folio Auto Numeration</source>
         <translation>Available as % folio for titleblock models
 The following variables can be used:
--%id: current number of folios in the project
--%total: total number of folios in the project
--%autonum: folio auto numbering</translation>
+-%id: current number of sheets in the project
+-%total: total number of sheets in the project
+-%autonum: sheet auto numbering</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
@@ -13849,7 +13849,7 @@ E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Folio reference label</translation>
+        <translation>Sheet reference label</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -13861,10 +13861,10 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>You can define a custom label for folio references.
+        <translation>You can define a custom label for sheet references.
 Create your own text using the following variables:
-%f: the folio position in the project
-%F: the folio number
+%f: the sheet position in the project
+%F: the sheet number
 %M: the installation
 %LM: the location
 %l: the row number
@@ -13906,7 +13906,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
         <source>Champ texte de folio</source>
-        <translation>Folio text field</translation>
+        <translation>Sheet text field</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
@@ -13916,12 +13916,12 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in sheets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
@@ -14001,7 +14001,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Folios</source>
-        <translation>Folios</translation>
+        <translation>Sheets</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
@@ -14031,7 +14031,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="200"/>
         <source>Eléments report de folio</source>
-        <translation>Folio reference elements</translation>
+        <translation>Sheet reference elements</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="206"/>
@@ -14041,17 +14041,17 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="462"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation>Select the elements of this folio</translation>
+        <translation>Select the elements of this sheet</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="463"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation>Select the conductors of this folio</translation>
+        <translation>Select the conductors of this sheet</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="464"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation>Select the texts of this folio</translation>
+        <translation>Select the texts of this sheet</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1118"/>
@@ -14158,7 +14158,7 @@ Create your own text using the following variables:
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="211"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Folio Auto Numbering</translation>
+        <translation>Sheet Auto Numbering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="213"/>
@@ -14175,12 +14175,12 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>This is where you can define how the new folios will be numbered.
+        <translation>This is where you can define how the new sheets will be numbered.
 -A numbering is composed of a minimum variable.
 -You can add or delete a dialing variable through the - and + buttons.
 A numbering variable includes: a type, a value and an increment.
 
--the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new folio by the value of the &quot;Incrementation&quot; field.
+-the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new sheet by the value of the &quot;Incrementation&quot; field.
 - &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
 If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
 
@@ -14220,10 +14220,10 @@ If the digit defined in the Value field has fewer digits than the chosen type, i
 -Type &quot;Text&quot;, represents a fixed text.
 The &quot;Incrementation&quot; field is not used.
 
--The &quot;folio&quot; type represents the number of the current folio.
+-The &quot;sheet&quot; type represents the number of the current sheet.
 The other fields are not used.
 
--The &quot;Folio&quot; type represents the name of the current folio.
+-The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</translation>
     </message>
     <message>
@@ -14264,10 +14264,10 @@ If the digit defined in the Value field has fewer digits than the chosen type, i
 -Type &quot;Text&quot;, represents a fixed text.
 The &quot;Incrementation&quot; field is not used.
 
--The &quot;folio&quot; type represents the number of the current folio.
+-The &quot;sheet&quot; type represents the number of the current sheet.
 The other fields are not used.
 
--The &quot;Folio&quot; type represents the name of the current folio.
+-The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</translation>
     </message>
     <message>
@@ -14578,7 +14578,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="77"/>
         <source>Folio, rien de sélectionné</source>
-        <translation>Folio, nothing selected</translation>
+        <translation>Sheet, nothing selected</translation>
     </message>
     <message>
         <location filename="../sources/shortcutbarsettings.cpp" line="79"/>
@@ -17613,7 +17613,7 @@ The other fields are not used.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="378"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="542"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation>Create an auto folio numbering</translation>
+        <translation>Create an auto sheet numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
@@ -17628,7 +17628,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Folio :</source>
-        <translation>Folio:</translation>
+        <translation>Sheet:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
@@ -17699,9 +17699,9 @@ Les variables suivantes sont utilisables :
 - %autonum : Folio Auto Numeration</source>
         <translation>Available as % folio for titleblock models
 The following variables can be used:
--%id: current number of folios in the project
--%total: total number of folios in the project
--%autonum: folio auto numbering</translation>
+-%id: current number of sheets in the project
+-%total: total number of sheets in the project
+-%autonum: sheet auto numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
@@ -17711,7 +17711,7 @@ The following variables can be used:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the title block at the bottom (horizontal) or right (vertically) of the folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the title block at the bottom (horizontal) or right (vertically) of the sheet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
@@ -17805,7 +17805,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation>Warning: the edges of empty cells do not appear in the final render the folio.</translation>
+        <translation>Warning: the edges of empty cells do not appear in the final render the sheet.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="74"/>
@@ -17906,12 +17906,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the folio&lt;/li&gt;&lt;li&gt;%{date}: folio date&lt;/li&gt;&lt;li&gt;%{title}: folio title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the folio is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the folio is located&lt;/li&gt;&lt;li&gt;%{indexrev}: folio revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: folio number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of folio in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of folios in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous folio&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next folio&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="480"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the folio.</translation>
+        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the sheet.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="323"/>
@@ -18316,7 +18316,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/wiringlistdialog.cpp" line="70"/>
         <source>Folio</source>
         <comment>column title</comment>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="91"/>
@@ -18548,8 +18548,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 %M: Installation 
 %LM: Localisation </source>
         <translation>Create your own text using the following variables:
-%f: the folio number
-%F: the folio label
+%f: the sheet number
+%F: the sheet label
 %l: the row number
 %c: the column number
 %M: the installation
@@ -18813,7 +18813,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
