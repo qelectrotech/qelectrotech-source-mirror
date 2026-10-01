@@ -21,11 +21,15 @@
 #include <QDockWidget>
 #include <QPointer>
 #include <QHash>
+#include <QUuid>
+
+#include <functional>
 
 class QETProject;
 class QTreeWidgetItem;
 class TerminalStrip;
 class RealTerminal;
+class QMimeData;
 
 namespace Ui {
 	class TerminalStripTreeDockWidget;
@@ -58,6 +62,10 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QString currentLocation() const;
 		void setSelectedStrip(TerminalStrip *strip);
 		QSharedPointer<RealTerminal> currentRealTerminal() const;
+		void setDropCheck(std::function<bool()> check);
+
+	protected:
+		bool eventFilter(QObject *watched, QEvent *event) override;
 
 	signals:
 		void currentStripChanged(TerminalStrip *strip);
@@ -70,6 +78,9 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
 		void setCurrentStrip(TerminalStrip *strip);
+		TerminalStrip *stripAt(const QPoint &pos) const;
+		QVector<QSharedPointer<RealTerminal>> freeTerminals(const QMimeData *mime_data) const;
+		bool dropAllowed(const QMimeData *mime_data, const QPoint &pos) const;
 
 	private:
 		Ui::TerminalStripTreeDockWidget *ui;
@@ -82,6 +93,9 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QVector<QMetaObject::Connection> m_strip_changed_connection;
         bool m_current_is_free_terminal{false};
         QMetaObject::Connection m_project_destroy_connection;
+		std::function<bool()> m_drop_check;
+		QPoint m_drag_start_pos;
+		QUuid m_drag_uuid;
 };
 
 #endif // TERMINALSTRIPTREEDOCKWIDGET_H

@@ -67,6 +67,10 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	m_terminal_strip_editor = new TerminalStripEditor{m_project, this};
 
 	connect(m_tree_dock, &TerminalStripTreeDockWidget::currentStripChanged, this, &TerminalStripEditorWindow::currentStripChanged);
+		//A move reloads the free terminal table, which would lose its unapplied edits
+	m_tree_dock->setDropCheck([this]() {
+		return !m_free_terminal_editor->hasPendingEdits();
+	});
 
 	ui->m_stacked_widget->insertWidget(EMPTY_PAGE, new QWidget(ui->m_stacked_widget));
 	ui->m_stacked_widget->insertWidget(FREE_TERMINAL_PAGE, m_free_terminal_editor);

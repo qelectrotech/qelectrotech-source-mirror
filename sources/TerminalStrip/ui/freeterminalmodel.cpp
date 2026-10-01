@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QComboBox>
+#include <QMimeData>
 
 #include "freeterminalmodel.h"
 #include "../../elementprovider.h"
@@ -239,7 +240,7 @@ QVariant FreeTerminalModel::headerData(int section, Qt::Orientation orientation,
 
 Qt::ItemFlags FreeTerminalModel::flags(const QModelIndex &index) const
 {
-	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled;
 
 	auto c = index.column();
 	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL)
@@ -318,6 +319,73 @@ QVector<QSharedPointer<RealTerminal> > FreeTerminalModel::realTerminalForIndex(c
 	}
 
 	return vector_;
+}
+
+QStringList FreeTerminalModel::mimeTypes() const {
+	return QStringList{freeTerminalMimeType()};
+}
+
+/**
+ * @brief FreeTerminalModel::mimeData
+ * @param indexes
+ * @return the uuids of the terminal elements of the rows in @a indexes,
+ * to be dropped on a terminal strip of the terminal strip tree.
+ */
+QMimeData *FreeTerminalModel::mimeData(const QModelIndexList &indexes) const
+{
+	QVector<QUuid> uuids;
+	for (const auto &real_t : realTerminalForIndex(indexes)) {
+		uuids.append(real_t->elementUuid());
+	}
+	return mimeDataForUuids(uuids);
+}
+
+/**
+ * @brief FreeTerminalModel::freeTerminalMimeType
+ * @return the mime type of a drag of free terminals
+ */
+QString FreeTerminalModel::freeTerminalMimeType() {
+	return QStringLiteral("application/x-qet-free-terminal-uuids");
+}
+
+/**
+ * @brief FreeTerminalModel::uuidsFromMimeData
+ * @param mime_data
+ * @return the uuids of the terminal elements carried by @a mime_data,
+ * empty if it is not a drag of free terminals.
+ */
+QVector<QUuid> FreeTerminalModel::uuidsFromMimeData(const QMimeData *mime_data)
+{
+	QVector<QUuid> uuids;
+	if (!mime_data || !mime_data->hasFormat(freeTerminalMimeType())) {
+		return uuids;
+	}
+
+	const auto lines = QString::fromLatin1(mime_data->data(freeTerminalMimeType())).split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	for (const auto &line : lines) {
+		const QUuid uuid(line);
+		if (!uuid.isNull()) {
+			uuids.append(uuid);
+		}
+	}
+	return uuids;
+}
+
+/**
+ * @brief FreeTerminalModel::mimeDataForUuids
+ * @param uuids
+ * @return a new QMimeData carrying the uuids of terminal elements in @a uuids
+ */
+QMimeData *FreeTerminalModel::mimeDataForUuids(const QVector<QUuid> &uuids)
+{
+	QStringList lines;
+	for (const auto &uuid : uuids) {
+		lines.append(uuid.toString());
+	}
+
+	auto mime_data = new QMimeData();
+	mime_data->setData(freeTerminalMimeType(), lines.join(QLatin1Char('\n')).toLatin1());
+	return mime_data;
 }
 
 /**

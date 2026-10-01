@@ -41,6 +41,9 @@ FreeTerminalEditor::FreeTerminalEditor(QETProject *project, QWidget *parent) :
     m_model = new FreeTerminalModel(m_project, this);
 	ui->m_table_view->setModel(m_model);
 	ui->m_table_view->setCurrentIndex(m_model->index(0,0));
+		//Selected rows can be dragged onto a strip of the terminal strip tree
+	ui->m_table_view->setDragEnabled(true);
+	ui->m_table_view->setDragDropMode(QAbstractItemView::DragOnly);
 
     if (m_project) {
         connect(m_project, &QObject::destroyed, this, &FreeTerminalEditor::reload);
@@ -272,6 +275,14 @@ void FreeTerminalEditor::on_m_move_pb_clicked()
 	m_project->undoStack()->push(new AddTerminalToStripCommand(real_t_vector, terminal_strip));
 
 	reload();
+}
+
+/**
+ * @brief FreeTerminalEditor::hasPendingEdits
+ * @return true if cells were edited and not yet applied
+ */
+bool FreeTerminalEditor::hasPendingEdits() const {
+	return !m_model->modifiedModelRealTerminalData().isEmpty();
 }
 
 void FreeTerminalEditor::selectionChanged()
