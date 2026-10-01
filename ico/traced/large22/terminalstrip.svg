@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <rect x="4" y="3" width="4" height="16" style="fill:#c9c9c9;opacity:0.9"/>
+  <rect x="9" y="3" width="4" height="16" style="fill:#3b9be2;opacity:0.9"/>
+  <rect x="14" y="3" width="2" height="16" style="fill:#f6ff00;opacity:0.9"/>
+  <rect x="16" y="3" width="2" height="16" style="fill:#00c613;opacity:0.9"/>
+  <rect x="4" y="10" width="14" height="2" style="fill:#9b9b9b"/>
+  <path d="M3 2H19V20H3ZM4 3V19H18V3Z" style="fill:#4d4d4d"/>
+  <rect x="8" y="2" width="1" height="18" style="fill:#4d4d4d"/>
+  <rect x="13" y="2" width="1" height="18" style="fill:#4d4d4d"/>
+  <rect x="5" y="4" width="2" height="2" style="fill:#4d4d4d"/>
+  <rect x="5" y="16" width="2" height="2" style="fill:#4d4d4d"/>
+  <rect x="10" y="4" width="2" height="2" style="fill:#4d4d4d"/>
+  <rect x="10" y="16" width="2" height="2" style="fill:#4d4d4d"/>
+  <rect x="15" y="4" width="2" height="2" style="fill:#4d4d4d"/>
+  <rect x="15" y="16" width="2" height="2" style="fill:#4d4d4d"/>
+</svg>

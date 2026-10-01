@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!-- Drawn for QElectroTech on Breeze's 16 pixel grid, after Breeze's 22 and
+       32 pixel preferences-desktop-user; Breeze has no 16 pixel drawing. -->
+  <defs>
+    <linearGradient id="a" x2="0" y1="15" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#197cf1"/>
+      <stop offset="1" stop-color="#20bcfa"/>
+    </linearGradient>
+    <linearGradient id="b" x2="0" y1="12" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cbaf8"/>
+      <stop offset="1" stop-color="#f4fcff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="8" cy="8" r="7" fill="url(#a)"/>
+  <rect x="5" y="4" width="3" height="3" rx="1" fill="url(#b)"/>
+  <path d="M3 12v-1a3.5 3 0 0 1 7 0v1z" fill="url(#b)"/>
+  <rect x="11" y="5" width="2" height="2" rx="1" fill="url(#b)"/>
+  <rect x="11" y="8" width="2" height="4" fill="url(#b)"/>
+</svg>

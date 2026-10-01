@@ -23,6 +23,7 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QPainter>
+#include <QRegularExpression>
 #include <QStyleFactory>
 #include <QStyleOption>
 #include <QToolBar>
@@ -59,6 +60,8 @@ class tst_qeticons : public QObject
 		void darkThemeFilesReadOnDarkPalette();
 		void lightIconsStayLightInDarkTheme();
 		void scalableIconsServeEverySize();
+		void breezeIconsAreSharpAtEverySize();
+		void tracedIconsKeepTheirPixels();
 		void toolbarIconIsReadable_data();
 		void toolbarIconIsReadable();
 		void hoverChangesTheIcon_data();
@@ -78,7 +81,7 @@ namespace {
 	QStringList iconNames(const QString &theme)
 	{
 		QStringList names;
-		for (const QString &size : {"16x16", "22x22", "32x32", "48x48", "128x128", "scalable"})
+		for (const QString &size : {"16x16", "22x22", "24x24", "32x32", "48x48", "64x64", "128x128", "scalable"})
 		{
 			QDir dir(QString(":/ico/themes/%1/%2").arg(theme, size));
 			for (const QString &file : dir.entryList(QDir::Files))
@@ -108,7 +111,66 @@ namespace {
 		return n ? QColor(r / n, g / n, b / n) : QColor();
 	}
 
-	const QStringList kSizes = {"16x16", "22x22", "32x32", "48x48", "128x128"};
+	/**
+		Mean color of the ink: the visible pixels that are not saturated,
+		as misc/make_icon_themes.py tells ink from color. A traced icon
+		is a little ink beside a red or blue part that keeps its color in
+		both themes, so the mean of the whole icon says nothing about the
+		ink. An icon without ink gives the mean of all its pixels.
+	*/
+	QColor meanInkColor(const QImage &image)
+	{
+		qint64 r = 0, g = 0, b = 0, n = 0;
+		for (int y = 0; y < image.height(); ++y)
+			for (int x = 0; x < image.width(); ++x)
+			{
+				const QColor c = image.pixelColor(x, y);
+				if (c.alpha() <= 64) continue;
+				if (c.hslSaturationF() > 0.25 && qMax(c.red(), qMax(c.green(), c.blue())) > 60) continue;
+				r += c.red(); g += c.green(); b += c.blue(); ++n;
+			}
+		return n ? QColor(r / n, g / n, b / n) : meanVisibleColor(image);
+	}
+
+	/**
+		Line art is drawn in the text color: an element of Breeze's
+		ColorScheme-Text class, or currentColor in a file without Breeze's
+		stylesheet. Mirrors dark_svg() in misc/make_icon_themes.py.
+	*/
+	bool isColoredSvg(const QByteArray &svg)
+	{
+		static const QRegularExpression text_class(R"re(class="[^"]*\bColorScheme-(?:Text|ButtonText)\b)re");
+		return svg.contains("ColorScheme-")
+			? !text_class.match(QString::fromUtf8(svg)).hasMatch()
+			: !svg.contains("currentColor");
+	}
+
+	/**
+		True when the dark theme's SVG for name in folder is what
+		misc/make_icon_themes.py should write: a recolored copy of line
+		art, none for colored art, or, when another size of the icon is
+		line art, the colored file unchanged (Qt does not fall back to the
+		light theme for a name the dark theme holds).
+	*/
+	bool darkCopyFits(const QString &folder, const QString &name)
+	{
+		QFile light(QString(":/ico/themes/qet/%1/%2.svg").arg(folder, name));
+		QFile dark(QString(":/ico/themes/qet-dark/%1/%2.svg").arg(folder, name));
+		if (!light.open(QIODevice::ReadOnly))
+			return false;
+		const QByteArray svg = light.readAll();
+		if (!isColoredSvg(svg))
+			return dark.open(QIODevice::ReadOnly) && dark.readAll() != svg;
+		return !dark.open(QIODevice::ReadOnly) || dark.readAll() == svg;
+	}
+
+	const QStringList kSizes = {"16x16", "22x22", "24x24", "32x32", "48x48", "64x64", "128x128"};
+
+	/// Icons traced from QET's PNG art: the only ones with a file in the 24 pixel folder.
+	QStringList tracedIconFiles()
+	{
+		return QDir(":/ico/themes/qet/24x24").entryList({"*.svg"}, QDir::Files);
+	}
 
 	/// palette with the given selection colors, as QET::Palette::withPlatformAccent leaves them.
 	QPalette withAccent(QPalette palette, const QColor &highlight, const QColor &highlighted_text)
@@ -150,8 +212,8 @@ void tst_qeticons::everyIconResolvesInBothThemes()
 }
 
 /**
-	Every file the generator put in the dark theme, taken as a whole,
-	must reach 3:1 against the dark palette's window color. Inverted
+	The ink of every file the generator put in the dark theme must reach
+	3:1 against the dark palette's window color. Inverted
 	line art passes by a wide margin; an inverted light object (a white
 	page turned black) sits below 2:1 and fails, which is the defect
 	misc/make_icon_themes.py now avoids by leaving such icons to the
@@ -161,14 +223,15 @@ void tst_qeticons::darkThemeFilesReadOnDarkPalette()
 {
 	const QColor window = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Window);
 	int checked = 0;
-	for (const QString &size : kSizes)
+	for (const QString &size : kSizes + QStringList{"scalable"})
 	{
 		QDir dir(QString(":/ico/themes/qet-dark/%1").arg(size));
-		for (const QString &file : dir.entryList({"*.png"}, QDir::Files))
+		const int px = size == "scalable" ? 24 : size.section('x', 0, 0).toInt();
+		for (const QString &file : dir.entryList({"*.png", "*.svg"}, QDir::Files))
 		{
-			const QImage dark(dir.filePath(file));
+			const QImage dark = QIcon(dir.filePath(file)).pixmap(px).toImage();
 			QVERIFY2(!dark.isNull(), qPrintable(file));
-			const QColor mean = meanVisibleColor(dark);
+			const QColor mean = meanInkColor(dark);
 			QVERIFY2(mean.isValid(), qPrintable(file));
 			const double contrast = QET::Palette::contrastRatio(mean, window);
 			QVERIFY2(contrast >= kIconRatio,
@@ -208,12 +271,15 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 }
 
 /**
-	QET's own vector icons live in ico/scalable/: one file for every size
-	from the toolbar up, with a recolored copy in the dark theme. Each
-	must resolve in both themes at 22, 24, 32 and 64 px, dark ink on the
-	light theme and light ink on the dark one, with no 22 px PNG left
-	beside it. Fusion's toolbar slot is 24 px, so the files are drawn on
-	a 24 px canvas and their one pixel lines land on whole pixels there.
+	QET's own vector icons live in ico/scalable/, the Breeze ones in
+	ico/breeze/: one file for every size from the toolbar up. Line art
+	has a recolored copy in the dark theme; colored art has none and is
+	inherited. Each must resolve in both themes at 22, 24, 32 and 64 px,
+	line art in dark ink on the light theme and light ink on the dark
+	one, with no 22, 32 or 48 px PNG left beside it. Fusion's
+	toolbar slot is 24 px, so the files are drawn on a 24 px canvas and
+	their one pixel lines land on whole pixels there. A Breeze icon with
+	16 px art has it in the 16x16 folder, with no 16 px PNG beside it.
 */
 void tst_qeticons::scalableIconsServeEverySize()
 {
@@ -227,29 +293,187 @@ void tst_qeticons::scalableIconsServeEverySize()
 	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
 	for (const QString &name : names)
 	{
-		QVERIFY2(QFile::exists(QString(":/ico/themes/qet-dark/scalable/%1.svg").arg(name)), qPrintable(name));
-		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/22x22/%1.png").arg(name)),
-		         qPrintable(QString("%1 still has a 22 px PNG that hides the SVG").arg(name)));
+		// Colored art has no text color to change; the dark theme inherits
+		// it, as it does a colored PNG.
+		QFile light(QString(":/ico/themes/qet/scalable/%1.svg").arg(name));
+		QVERIFY(light.open(QIODevice::ReadOnly));
+		const bool colored = isColoredSvg(light.readAll());
+		const bool traced = tracedIconFiles().contains(name + ".svg");
+		QHash<int, QImage> light_image;
+		QVERIFY2(darkCopyFits("scalable", name), qPrintable(name));
+		for (const QString &size : {"22x22", "32x32", "48x48"})
+			QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/%1/%2.png").arg(size, name)),
+			         qPrintable(QString("%1 still has a %2 PNG that hides the SVG").arg(name, size)));
+		QList<int> sizes = {22, 24, 32, 64};
+		if (QFile::exists(QString(":/ico/themes/qet/16x16/%1.svg").arg(name)))
+		{
+			QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/16x16/%1.png").arg(name)),
+			         qPrintable(QString("%1 has both a 16 px SVG and a 16 px PNG").arg(name)));
+			QVERIFY2(darkCopyFits("16x16", name), qPrintable(name));
+			sizes.prepend(16);
+		}
 		for (const QString &theme : {"qet", "qet-dark"})
 		{
 			QIcon::setThemeName(theme);
 			const QIcon icon = QIcon::fromTheme(name);
 			QVERIFY2(!icon.isNull(), qPrintable(name));
-			for (int size : {22, 24, 32, 64})
+			for (int size : sizes)
 			{
 				const QPixmap pixmap = icon.pixmap(size);
 				QCOMPARE(pixmap.width(), size);
 				if (!dump.isEmpty())
 					pixmap.save(QString("%1/%2-%3-%4.png").arg(QString::fromLocal8Bit(dump), name, theme).arg(size));
-				const QColor mean = meanVisibleColor(pixmap.toImage());
+				const QColor mean = traced ? meanInkColor(pixmap.toImage()) : meanVisibleColor(pixmap.toImage());
 				QVERIFY2(mean.isValid(), qPrintable(QString("%1 in %2 at %3 px is empty").arg(name, theme).arg(size)));
-				if (theme == "qet")
+				if (colored)
+					continue;
+				// A traced icon keeps its light fills and its colors; only
+				// its ink changes, so its ink must be lighter than it was.
+				// The size of an icon that is colored at that size only is
+				// the light file.
+				if (traced && theme == "qet")
+					light_image[size] = pixmap.toImage();
+				else if (traced && pixmap.toImage() == light_image[size])
+					continue;
+				else if (traced)
+					QVERIFY2(mean.lightnessF() > meanInkColor(light_image[size]).lightnessF(), qPrintable(QString("%1 dark theme at %2 px: ink no lighter than in the light theme").arg(name).arg(size)));
+				else if (theme == "qet")
 					QVERIFY2(mean.lightnessF() < 0.5, qPrintable(QString("%1 light theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
 				else
 					QVERIFY2(mean.lightnessF() > 0.6, qPrintable(QString("%1 dark theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
 			}
 		}
 	}
+}
+
+/**
+	Qt draws an SVG at the size asked for, so art drawn on a 16 pixel grid
+	blurs at 24 pixels and is sharp at 32. Each size folder of a Breeze
+	icon (misc/make_icon_themes.py) must hold art whose canvas divides the
+	folder's size, and Qt must pick that file at that size: the icon's
+	pixmap must equal the file rendered alone. The same holds on a 2x
+	screen, for twice the pixels.
+*/
+void tst_qeticons::breezeIconsAreSharpAtEverySize()
+{
+	const QList<QPair<QString, int>> folders = {
+		{"16x16", 16}, {"22x22", 22}, {"scalable", 24}, {"32x32", 32},
+		{"48x48", 48}, {"64x64", 64}, {"128x128", 128}};
+	const QRegularExpression canvas(R"re(<svg\b[^>]*?\s(?:viewBox="0 0 (\d+) \d+"|width="(\d+)"))re");
+	// Breeze icons are the ones with SVG art in the 22 pixel folder that
+	// are not traced icons.
+	QStringList files = QDir(":/ico/themes/qet/22x22").entryList({"*.svg"}, QDir::Files);
+	for (const QString &traced : tracedIconFiles())
+		files.removeAll(traced);
+	QVERIFY(files.size() > 100);
+	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
+	QStringList blurred;
+	for (const QString &theme : {"qet", "qet-dark"})
+	{
+		QIcon::setThemeName(theme);
+		for (const QString &file : files)
+		{
+			const QString name = file.section('.', 0, -2);
+			const QIcon icon = QIcon::fromTheme(name);
+			for (const auto &[folder, size] : folders)
+			{
+				QString path = QString(":/ico/themes/%1/%2/%3").arg(theme, folder, file);
+				if (!QFile::exists(path))  // colored art: the dark theme inherits it
+					path = QString(":/ico/themes/qet/%1/%2").arg(folder, file);
+				QFile svg(path);
+				QVERIFY2(svg.open(QIODevice::ReadOnly), qPrintable(path));
+				const QRegularExpressionMatch match = canvas.match(QString::fromUtf8(svg.readAll()));
+				QVERIFY2(match.hasMatch(), qPrintable(path));
+				const int grid = match.captured(1).isEmpty() ? match.captured(2).toInt() : match.captured(1).toInt();
+				if (size % grid)
+					blurred << QString("%1: %2 px art at %3 px").arg(path).arg(grid).arg(size);
+				const QImage image = icon.pixmap(size).toImage();
+				if (image != QIcon(path).pixmap(size).toImage())
+					blurred << QString("%1 in %2 at %3 px: Qt drew another file than %4").arg(name, theme).arg(size).arg(path);
+				if (!dump.isEmpty())
+					image.save(QString("%1/%2-%3-%4.png").arg(QString::fromLocal8Bit(dump), name, theme).arg(size));
+				// A 2x screen takes the Scale=2 twin of the folder; the
+				// 24 pixel slot keeps the scalable file, sharp at 48.
+				if (folder == "scalable")
+					continue;
+				QString twin = QString(":/ico/themes/%1/%2@2/%3").arg(theme, folder, file);
+				if (!QFile::exists(twin))
+					twin = QString(":/ico/themes/qet/%1@2/%2").arg(folder, file);
+				QFile svg2(twin);
+				QVERIFY2(svg2.open(QIODevice::ReadOnly), qPrintable(twin));
+				const QRegularExpressionMatch match2 = canvas.match(QString::fromUtf8(svg2.readAll()));
+				QVERIFY2(match2.hasMatch(), qPrintable(twin));
+				const int grid2 = match2.captured(1).isEmpty() ? match2.captured(2).toInt() : match2.captured(1).toInt();
+				if ((2 * size) % grid2)
+					blurred << QString("%1: %2 px art at %3 px").arg(twin).arg(grid2).arg(2 * size);
+				if (icon.pixmap(QSize(size, size), 2.0).toImage() != QIcon(twin).pixmap(QSize(size, size), 2.0).toImage())
+					blurred << QString("%1 in %2 at %3 px 2x: Qt drew another file than %4").arg(name, theme).arg(size).arg(twin);
+			}
+		}
+	}
+	QVERIFY2(blurred.isEmpty(), qPrintable(blurred.join('\n')));
+}
+
+/**
+	A traced icon (ico/traced/, misc/make_icon_themes.py) is the PNG copied
+	pixel by pixel at 16 and 22 pixels, so those files and the 24 pixel
+	canvas must be drawn unscaled. At every size, at 1x and at 2x, Qt must
+	pick the folder's own file.
+*/
+void tst_qeticons::tracedIconsKeepTheirPixels()
+{
+	const QList<QPair<QString, int>> folders = {
+		{"16x16", 16}, {"22x22", 22}, {"24x24", 24}, {"32x32", 32},
+		{"48x48", 48}, {"64x64", 64}, {"128x128", 128}};
+	const QRegularExpression canvas(R"re(<svg\b[^>]*?\sviewBox="0 0 (\d+) \d+")re");
+	const QStringList files = tracedIconFiles();
+	QVERIFY(files.size() > 50);
+	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
+	QStringList wrong;
+	for (const QString &theme : {"qet", "qet-dark"})
+	{
+		QIcon::setThemeName(theme);
+		// the file the theme holds for a folder: its own, else the light theme's
+		auto themeFile = [&theme](const QString &folder, const QString &file) {
+			const QString path = QString(":/ico/themes/%1/%2/%3").arg(theme, folder, file);
+			return QFile::exists(path) ? path : QString(":/ico/themes/qet/%1/%2").arg(folder, file);
+		};
+		for (const QString &file : files)
+		{
+			const QString name = file.section('.', 0, -2);
+			const QIcon icon = QIcon::fromTheme(name);
+			for (const auto &[folder, size] : folders)
+			{
+				QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/%1/%2.png").arg(folder, name)),
+				         qPrintable(QString("%1 still has a %2 PNG").arg(name, folder)));
+				const QString path = themeFile(folder, file);
+				QFile svg(path);
+				QVERIFY2(svg.open(QIODevice::ReadOnly), qPrintable(path));
+				if (size <= 24)
+				{
+					const QRegularExpressionMatch match = canvas.match(QString::fromUtf8(svg.readAll()));
+					QVERIFY2(match.hasMatch(), qPrintable(path));
+					if (match.captured(1).toInt() != size)
+						wrong << QString("%1: %2 px art at %3 px").arg(path, match.captured(1)).arg(size);
+				}
+				const QImage image = icon.pixmap(size).toImage();
+				if (image != QIcon(path).pixmap(size).toImage())
+					wrong << QString("%1 in %2 at %3 px: Qt drew another file than %4").arg(name, theme).arg(size).arg(path);
+				if (!dump.isEmpty())
+					image.save(QString("%1/%2-%3-%4.png").arg(QString::fromLocal8Bit(dump), name, theme).arg(size));
+			}
+			// A 2x screen takes the Scale=2 twin of the folder.
+			for (const auto &[folder, size] : folders)
+			{
+				const QString path = themeFile(folder + "@2", file);
+				const QImage image = icon.pixmap(QSize(size, size), 2.0).toImage();
+				QCOMPARE(image.width(), 2 * size);
+				if (image != QIcon(path).pixmap(QSize(size, size), 2.0).toImage())
+					wrong << QString("%1 in %2 at %3 px 2x: Qt drew another file than %4").arg(name, theme).arg(size).arg(path);
+			}
+		}
+	}
+	QVERIFY2(wrong.isEmpty(), qPrintable(wrong.join('\n')));
 }
 
 void tst_qeticons::toolbarIconIsReadable_data()
@@ -410,7 +634,7 @@ void tst_qeticons::coloredIconKeepsItsColorsOnHover()
 	QApplication::setStyle(new QETStyle(QStyleFactory::create("Fusion")));
 	QApplication::setPalette(QET::Palette::fusionLight());
 
-	const QIcon icon = QIcon::fromTheme("document-open");   // colored Oxygen art
+	const QIcon icon = QIcon::fromTheme("titleblock-bottom");   // colored art
 	QVERIFY(!icon.isNull());
 	const QPixmap normal = icon.pixmap(QSize(22, 22), 1.0, QIcon::Normal);
 	const QPixmap active = icon.pixmap(QSize(22, 22), 1.0, QIcon::Active);

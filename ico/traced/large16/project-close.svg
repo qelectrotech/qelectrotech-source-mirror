@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-NegativeText { color:#db4b59; }
+    </style>
+  </defs>
+  <path d="M2 2h5v1h-5zM2 3h1v10h-1zM13 4h1v5h-1zM2 13h7v1h-7z" style="fill:#397fd2"/>
+  <polygon points="7,2 8,2 10,4 13,4 13,7 3,7 3,6 4,6 6,4 7,4" style="fill:#397fd2"/>
+  <polyline points="10,10 14,14" class="ColorScheme-NegativeText" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:miter;stroke-linecap:butt"/>
+  <polyline points="10,14 14,10" class="ColorScheme-NegativeText" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:miter;stroke-linecap:butt"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <circle cx="8" cy="8" r="6.5" style="fill:#ffffff"/>
+  <path d="M12.60 3.40A6.5 6.5 0 0 1 3.40 12.60Z" style="fill:#808080"/>
+  <circle cx="8" cy="8" r="6.5" style="fill:none;stroke:#808080;stroke-width:1;opacity:0.8"/>
+</svg>

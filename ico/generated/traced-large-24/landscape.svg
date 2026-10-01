@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M2 4H20V18H2ZM3 5V17H19V5Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <circle cx="7.5" cy="7.5" r="2" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.2"/>
+  <polyline points="5,17 9,12.5 10.5,13.5 13.5,10.5 17,14" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.4;stroke-linejoin:miter;stroke-linecap:butt"/>
+  </g>
+</svg>

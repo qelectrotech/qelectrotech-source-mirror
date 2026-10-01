@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <rect x="5" y="3" width="1" height="16" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="15.6,3 18.4,3 10.4,11 18.4,19 15.6,19 7.6,11" class="ColorScheme-Text" style="fill:currentColor"/>
+  </g>
+</svg>

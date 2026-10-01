@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <path d="M12 6h1v1h-1zM10 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.4"/>
+  <path d="M13 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM10 9h1v1h-1zM18 9h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM18 10h1v1h-1zM10 11h1v1h-1zM18 11h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M16 6h1v1h-1zM18 8h1v1h-1zM10 12h1v1h-1zM12 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.38"/>
+  <path d="M11 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.44"/>
+  <path d="M12 7h1v1h-1zM11 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.61"/>
+  <path d="M16 7h1v1h-1zM11 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.63"/>
+  <path d="M17 7h1v1h-1zM11 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.43"/>
+  <path d="M17 8h1v1h-1zM12 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.62"/>
+  <path d="M17 12h1v1h-1zM16 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.64"/>
+  <path d="M18 12h1v1h-1zM16 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.37"/>
+  <path d="M17 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.42"/>
+</svg>

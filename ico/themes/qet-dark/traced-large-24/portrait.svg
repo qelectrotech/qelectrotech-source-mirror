@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M4 2H18V20H4ZM5 3V19H17V3Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <circle cx="11" cy="8" r="2.5" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.2"/>
+  <path d="M7 16.5V14.5Q7 12.5 9 12.5H13Q15 12.5 15 14.5V16.5Z" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.4"/>
+  </g>
+</svg>

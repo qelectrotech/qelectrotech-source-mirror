@@ -256,7 +256,7 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
 void ElementsPanel::reload()
 {
 	QIcon system_icon(":/ico/16x16/qet.png");
-	QIcon company_icon(":/ico/16x16/go-company.png");
+	QIcon company_icon = QET::Icons::Company;
 	QIcon user_icon(":/ico/16x16/go-home.png");
 
 	// load the common title block templates collection
