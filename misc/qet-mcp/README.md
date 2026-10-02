@@ -44,7 +44,7 @@ here read the model.
 | `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`) |
 | `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
 | `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
-| `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Projet > Scripts and the Scripts toolbar |
+| `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Project > Scripts and the Scripts toolbar |
 | `qet_script_list`, `qet_script_read`, `qet_script_remove` | the stored scripts: list, read one to change it, delete one |
 | `qet_recording_list`, `qet_recording_read`, `qet_recording_check`, `qet_recording_remove` | **macro recordings** — what you did by hand, and whether a script does the same |
 
@@ -271,7 +271,7 @@ with `qet_about`.
 ## Script buttons
 
 QElectroTech turns every `.js` file in its scripts folder that starts with a
-`// ==QETScript==` header into a command with an icon: in Projet > Scripts,
+`// ==QETScript==` header into a command with an icon: in Project > Scripts,
 on the Scripts toolbar, in command search and in the shortcut bar. A person
 can write that file by hand; an assistant uses the tools above. Both end
 with the same file, and an open QElectroTech picks it up without a restart.
@@ -304,7 +304,7 @@ stored script runs with the user's rights when they click it.
 
 ## Macro recordings: from something done by hand to a button
 
-In QElectroTech, Projet > Scripts > Enregistrer une macro records what you
+In QElectroTech, Project > Scripts > Record a macro records what you
 do on a project until you click it again. It saves the project before and
 after, and each step from the undo history with the folio after it. At Stop
 it offers to copy a ready-made request; paste that into the assistant.
@@ -329,27 +329,29 @@ QElectroTech, in front of you, so you can watch, stop or undo:
 | | |
 |---|---|
 | `qet_live_status` | what is on screen: project, folio, selection, last undo step, stored scripts |
-| `qet_live_run_script` | run script text on the open project: one undo step named "Assistant : …" |
+| `qet_live_run_script` | run script text on the open project: one undo step named "Assistant: …" |
 | `qet_live_run_stored` | press a stored script's button |
 | `qet_live_command` | an editor command from an allow-list that opens no dialog: selection, zoom, rotate, snap, group, reset wires |
 | `qet_live_show_folio` | show another folio |
 | `qet_live_undo_last` | undo the newest step, only if the assistant made it |
-| `qet_live_screenshot` | a picture of the folio on screen, as an MCP image |
+| `qet_live_screenshot` | a picture of the folio on screen, as an MCP image, cropped to the folio |
 
 A script the assistant writes on the spot is shown to you first, with
-*Exécuter*, *Refuser* or *Toujours pour cette session*; the Assistant
+*Run*, *Decline* or *Always this session*; the Assistant
 panel lists everything it did.
 
 QElectroTech only listens when three things are true:
 
 1. the server has `QET_ENABLE_SCRIPTING=1`, as for editing;
-2. in QElectroTech, Configurer > Général > "Autoriser un assistant IA à agir
-   sur le projet ouvert" is ticked (off by default);
-3. at this start, you answered *Continuer* to the warning QElectroTech shows
+2. in QElectroTech, Settings > Configure QElectroTech > General, on the
+   Projects tab, "Allow an AI assistant to act on the open project (live
+   mode)" is ticked (off by default; in French, Configurer QElectroTech >
+   Général > Projets);
+3. at this start, you answered *Continue* to the warning QElectroTech shows
    every time it starts with that setting on.
 
 While it listens, the status bar says so and shows the assistant's last
-action, with an *Arrêter* button that closes the channel for the rest of
+action, with a *Stop* button that closes the channel for the rest of
 the session. Each action is one Ctrl+Z. A script's `qet.showMessage()` is
 logged instead of opening a box nobody asked for.
 

@@ -3064,13 +3064,15 @@ def _live_session() -> dict:
         if not info.get("running"):
             why = "QElectroTech is not running"
         elif not features.get("live_mode_setting"):
-            why = ("live mode is off: in QElectroTech, Configurer QElectroTech > "
-                   "Général > \"Autoriser un assistant IA à agir sur le projet "
-                   "ouvert\", then restart it")
+            why = ("live mode is off: in QElectroTech, tick Settings > Configure "
+                   "QElectroTech > General > Projects > \"Allow an AI assistant to "
+                   "act on the open project (live mode)\" (in French: Configurer "
+                   "QElectroTech > Général > Projets), then restart it")
         else:
             why = ("live mode is on but not open for this session: answer "
-                   "\"Continuer\" in the warning QElectroTech shows at start, or "
-                   "restart it if \"Pas pour cette session\" or Arrêter was chosen")
+                   "\"Continue\" (\"Continuer\") in the warning QElectroTech shows "
+                   "at start, or restart it if \"Not this session\" or \"Stop\" "
+                   "was chosen")
         raise ValueError(f"no QElectroTech is listening for an assistant: {why}.")
     return live
 
