@@ -166,7 +166,7 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
             "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
         "qet_script_install", "qet_script_list", "qet_script_read",
-        "qet_script_remove"})
+        "qet_script_remove", "qet_about"})
 
 
 class EditValidation(unittest.TestCase):
@@ -2994,6 +2994,64 @@ class ScriptToolsIntegration(unittest.TestCase):
                                   test_project=str(self.project), binary=BINARY)
         self.assertTrue(r["ok"], r)
         self.assertTrue((self.dir / "good.js").is_file())
+
+
+class AssistantInfoFile(unittest.TestCase):
+    """qet-assistant.json: QElectroTech says where things are; the server
+    believes it over its own per-platform guess."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.info = self.root / "info" / "qet-assistant.json"
+        self.info.parent.mkdir()
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_INFO_FILE": str(self.info),
+                                                "QET_MCP_SCRIPTS_DIR": ""})
+        self.env.start()
+
+    def tearDown(self):
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def write(self, **extra):
+        data = {"format": 1, "qelectrotech_version": "0.200.1", "running": True,
+                "folders": {"scripts": str(self.root / "moved" / "scripts")},
+                "features": {"scripting_enabled": True, "live_mode_setting": False},
+                "script_api": ["int currentFolio()"], "stored_scripts": [],
+                "refused_scripts": [], "live": None}
+        data.update(extra)
+        self.info.write_text(json.dumps(data))
+
+    def test_scripts_folder_comes_from_the_file(self):
+        """QElectroTech started with --data-dir keeps its scripts elsewhere;
+        only the file knows."""
+        self.write()
+        self.assertEqual(m.scripts_dir(), self.root / "moved" / "scripts")
+        with mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": "/explicit"}):
+            self.assertEqual(m.scripts_dir(), Path("/explicit"))
+
+    def test_without_the_file_the_guess_stands(self):
+        about = m.tool_about()
+        self.assertFalse(about["found"])
+        self.assertIn("start it once", about["note"])
+
+    def test_about_never_shows_the_live_token(self):
+        self.write(live={"socket": "s", "token": "SECRET", "pid": 7})
+        about = m.tool_about()
+        self.assertTrue(about["found"])
+        self.assertEqual(about["live"], {"open": True, "pid": 7})
+        self.assertNotIn("SECRET", json.dumps(about))
+        self.assertEqual(about["script_api"], ["int currentFolio()"])
+
+    def test_first_contact_carries_the_instructions(self):
+        reply = m.handle({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
+        self.assertIn("qet_about", reply["result"]["instructions"])
+
+    def test_default_location_is_next_to_the_default_scripts_folder(self):
+        with mock.patch.dict(os.environ, {"QET_MCP_INFO_FILE": "", "XDG_DATA_HOME": "/x"}), \
+                mock.patch.object(m.os, "name", "posix"), mock.patch.object(m.sys, "platform", "linux"):
+            self.assertEqual(m.assistant_info_file(),
+                             Path("/x/QElectroTech/QElectroTech/qet-assistant.json"))
 
 
 class PathPolicyOverStdio(unittest.TestCase):

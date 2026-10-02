@@ -2611,16 +2611,108 @@ def default_scripts_dir(os_name: str, platform: str, env, home) -> PurePath:
     return base / "QElectroTech" / "QElectroTech" / "scripts"
 
 
+def assistant_info_file() -> Path:
+    """Where QElectroTech writes qet-assistant.json.
+
+    QET_MCP_INFO_FILE if set; next to a QET_MCP_SCRIPTS_DIR if that is set
+    (one folder up, as in QElectroTech's own layout); else the platform's
+    standard data folder, where QElectroTech always writes it, even when
+    --data-dir moves the rest.
+    """
+    explicit = os.environ.get("QET_MCP_INFO_FILE", "").strip()
+    if explicit:
+        return Path(explicit).expanduser()
+    scripts = os.environ.get("QET_MCP_SCRIPTS_DIR", "").strip()
+    if scripts:
+        return Path(scripts).expanduser().parent / "qet-assistant.json"
+    default = default_scripts_dir(os.name, sys.platform, os.environ, str(Path.home()))
+    return Path(str(default.parent)) / "qet-assistant.json"
+
+
+def assistant_info() -> dict | None:
+    """qet-assistant.json as QElectroTech last wrote it, or None.
+
+    QElectroTech rewrites it whenever an editor opens and whenever its
+    stored scripts, settings or live channel change: its folders, features,
+    the calls a script can make, the stored scripts, and the live channel
+    while one is open.
+    """
+    path = assistant_info_file()
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
 def scripts_dir() -> Path:
     """The folder QElectroTech reads stored scripts from.
 
-    QET_MCP_SCRIPTS_DIR overrides it, for a QElectroTech started with
-    --data-dir or a test.
+    QET_MCP_SCRIPTS_DIR first (a test, or a deliberate choice); then the
+    folder qet-assistant.json names; else the platform's default.
     """
     env = os.environ.get("QET_MCP_SCRIPTS_DIR", "").strip()
     if env:
         return Path(env).expanduser()
+    info = assistant_info() or {}
+    named = (info.get("folders") or {}).get("scripts")
+    if isinstance(named, str) and named:
+        return Path(named)
     return Path(str(default_scripts_dir(os.name, sys.platform, os.environ, str(Path.home()))))
+
+
+SERVER_INSTRUCTIONS = (
+    "This server works with QElectroTech, a free editor for electrical "
+    "diagrams. A project (.qet) holds folios (sheets) of symbols "
+    "(elements) joined by wires (conductors). Folio indexes count from 0.\n"
+    "Start with qet_about: where QElectroTech keeps things, what is "
+    "switched on, and the stored scripts.\n"
+    "Two ways of working. HEADLESS (qet_* and qet_script_*): read, check "
+    "and edit .qet files and store script buttons; nothing the user has "
+    "open is touched. To make a button: qet_script_api for the calls, "
+    "qet_script_test on a copy until the diff is right, then "
+    "qet_script_install with test_project set. LIVE (qet_live_*): act on "
+    "the project open in the user's QElectroTech while they watch; only "
+    "when they switched live mode on and accepted its warning at this "
+    "start, each action one undo step, scripts written on the spot shown "
+    "to them first.\n"
+    "Verify edits by reading the result (qet_diff, qet_elements), not by "
+    "assuming them.")
+
+
+def tool_about() -> dict:
+    """What this server and the QElectroTech it works with look like now."""
+    info = assistant_info()
+    binary = resolve_binary()
+    out = {
+        "server": {
+            "version": SERVER_VERSION,
+            "qelectrotech_binary": str(binary) if binary else None,
+            "workspace": [str(r) for r in workspace_roots()] or "any path (QET_MCP_ALLOW_ANY_PATH=1)",
+            "scripting_allowed_here": os.environ.get("QET_ENABLE_SCRIPTING") == "1",
+        },
+        "info_file": str(assistant_info_file()),
+        "scripts_folder": str(scripts_dir()),
+    }
+    if info is None:
+        out["found"] = False
+        out["note"] = ("QElectroTech writes this file when an editor window opens; "
+                       "start it once (a version with script buttons) to fill it in. "
+                       "Until then folders are this server's own guess.")
+        return out
+    live = info.get("live")
+    out.update({
+        "found": True,
+        "qelectrotech": {k: info.get(k) for k in
+                         ("qelectrotech_version", "program", "running", "written")},
+        "folders": info.get("folders"),
+        "features": info.get("features"),
+        "stored_scripts": info.get("stored_scripts"),
+        "refused_scripts": info.get("refused_scripts"),
+        "script_api": info.get("script_api"),
+        # Never the token: it is for the live tools, not the conversation.
+        "live": {"open": bool(live), "pid": (live or {}).get("pid")},
+    })
+    return out
 
 
 def parse_script_header(text: str, script_id: str) -> dict:
@@ -3597,6 +3689,18 @@ TOOLS = [
         },
         "handler": lambda a: tool_script_remove(a["id"]),
     },
+    {
+        "name": "qet_about",
+        "description": "Start here. What QElectroTech last wrote about itself in "
+                       "qet-assistant.json: version, every folder (data, settings, "
+                       "scripts, element and title block collections), which "
+                       "features are on (scripting, live mode), every call a script "
+                       "can make, the stored scripts and the ones refused with why, "
+                       "and whether a live session is open; plus this server's own "
+                       "setup. Reads one file; changes nothing.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_about(),
+    },
 ]
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
@@ -3898,6 +4002,7 @@ def handle(msg: dict) -> dict | None:
             "protocolVersion": want or DEFAULT_PROTOCOL,
             "capabilities": {"tools": {}},
             "serverInfo": {"name": SERVER_NAME, "version": SERVER_VERSION},
+            "instructions": SERVER_INSTRUCTIONS,
         })
 
     if method in ("notifications/initialized", "initialized"):
