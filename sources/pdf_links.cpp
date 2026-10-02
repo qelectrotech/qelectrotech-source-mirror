@@ -437,6 +437,142 @@ void removeUnusedPdfxNamespace(const QString &pdfPath)
 	f.close();
 }
 
+void setDocumentDate(const QString &pdfPath, const QDateTime &when)
+{
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	const QByteArray data = f.readAll();
+	f.close();
+
+	const QDateTime utc = when.toUTC();
+	const QByteArray pdfDate =
+		"(D:" + utc.toString(QStringLiteral("yyyyMMddHHmmss")).toLatin1() + "Z)";
+	const QByteArray xmpDate =
+		utc.toString(QStringLiteral("yyyy-MM-ddTHH:mm:ss")).toLatin1() + "Z";
+
+	// Each edit replaces [start, end) of the original file.
+	struct Edit { int start; int end; QByteArray text; };
+	QList<Edit> edits;
+
+	// The document information: "/CreationDate (D:...)" and, from Qt 6.8,
+	// "/ModDate (D:...)". Its other strings are UTF-16, so they cannot hold
+	// these keys.
+	for (const QByteArray &key : {QByteArray("/CreationDate "), QByteArray("/ModDate ")}) {
+		const int k = data.indexOf(key);
+		if (k == -1) {
+			if (key.startsWith("/ModDate")) continue;
+			return;
+		}
+		const int start = k + key.size();
+		const int end = data.indexOf(')', start);
+		if (end == -1 || data.at(start) != '(') return;
+		edits.append({start, end + 1, pdfDate});
+	}
+
+	// The XMP metadata stream, which Qt writes uncompressed from Qt 6.8
+	// (before, only for PDF/A): its three dates, and its /Length, which
+	// changes with them.
+	const QByteArray metadata("/Type /Metadata /Subtype /XML");
+	const int m = data.indexOf(metadata);
+	if (m != -1) {
+		const QByteArray lengthKey("/Length ");
+		const int l = data.indexOf(lengthKey, m);
+		const int streamStart = data.indexOf("stream\n", m);
+		if (l == -1 || streamStart == -1 || l > streamStart) return;
+		const int lengthStart = l + lengthKey.size();
+		int lengthEnd = lengthStart;
+		while (lengthEnd < data.size() && QChar(data.at(lengthEnd)).isDigit())
+			++lengthEnd;
+		const int streamEnd = data.indexOf("endstream", streamStart);
+		if (lengthEnd == lengthStart || streamEnd == -1) return;
+
+		// The last of each in the stream: the title and author come before
+		// the dates, and are text a project could fill with anything.
+		int xmpDelta = 0;
+		QList<Edit> xmpEdits;
+		for (const QByteArray &attr : {QByteArray("xmp:CreateDate=\""),
+									   QByteArray("xmp:ModifyDate=\""),
+									   QByteArray("xmp:MetadataDate=\"")}) {
+			const int a = data.lastIndexOf(attr, streamEnd);
+			if (a < streamStart) return;
+			const int start = a + attr.size();
+			const int end = data.indexOf('"', start);
+			if (end == -1 || end > streamEnd) return;
+			xmpEdits.append({start, end, xmpDate});
+			xmpDelta += xmpDate.size() - (end - start);
+		}
+		const int length = data.mid(lengthStart, lengthEnd - lengthStart).toInt();
+		edits.append({lengthStart, lengthEnd, QByteArray::number(length + xmpDelta)});
+		edits.append(xmpEdits);
+	}
+
+	std::sort(edits.begin(), edits.end(),
+			  [](const Edit &a, const Edit &b) { return a.start < b.start; });
+
+	// Where an offset in the original file is in the new one.
+	auto moved = [&edits](int offset) {
+		int shift = 0;
+		for (const Edit &e : std::as_const(edits))
+			if (e.end <= offset)
+				shift += e.text.size() - (e.end - e.start);
+		return offset + shift;
+	};
+
+	// The xref table the last startxref points at, which is the one a
+	// reader uses.
+	const int sx = data.lastIndexOf("startxref");
+	if (sx == -1) return;
+	int numStart = sx + 9;
+	while (numStart < data.size() && QChar(data.at(numStart)).isSpace())
+		++numStart;
+	int numEnd = numStart;
+	while (numEnd < data.size() && QChar(data.at(numEnd)).isDigit())
+		++numEnd;
+	const int xref = data.mid(numStart, numEnd - numStart).toInt();
+	if (numEnd == numStart || !data.mid(xref).startsWith("xref")) return;
+	for (const Edit &e : std::as_const(edits))
+		if (e.end > xref) return;    // every edit is in the objects before it
+
+	QByteArray out;
+	out.reserve(data.size() + 64);
+	int pos = 0;
+	for (const Edit &e : std::as_const(edits)) {
+		if (e.start < pos) return;   // overlapping: not a file Qt wrote
+		out += data.mid(pos, e.start - pos);
+		out += e.text;
+		pos = e.end;
+	}
+
+	// The xref entries: "0000012345 00000 n \n", 20 bytes each, after the
+	// "xref" line and one "first count" line.
+	int line = data.indexOf('\n', xref) + 1;
+	line = data.indexOf('\n', line) + 1;
+	if (line <= 0) return;
+	out += data.mid(pos, line - pos);
+	pos = line;
+	static const QRegularExpression entry(QStringLiteral(R"(^(\d{10}) (\d{5}) ([nf])\s*$)"));
+	while (pos + 18 <= data.size()) {
+		const QByteArray row = data.mid(pos, 20);
+		const auto match = entry.match(QString::fromLatin1(row));
+		if (!match.hasMatch()) break;
+		if (match.captured(3) == QLatin1String("n")) {
+			const int offset = match.captured(1).toInt();
+			out += QByteArray::number(moved(offset)).rightJustified(10, '0');
+			out += row.mid(10);
+		} else {
+			out += row;
+		}
+		pos += 20;
+	}
+	out += data.mid(pos, numStart - pos);
+	out += QByteArray::number(moved(xref));
+	out += data.mid(numEnd);
+
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	f.write(out);
+	f.close();
+}
+
 void convertComponentInfoAnnotations(const QString &pdfPath,
 									const QList<ComponentInfo> &annotations)
 {

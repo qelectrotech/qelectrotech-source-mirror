@@ -31,6 +31,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unittest.mock
 from unittest import mock
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -3481,6 +3482,43 @@ class ProjectNewValidation(unittest.TestCase):
             self.assertFalse(Path(new).exists())
 
 
+class ReproducibleExport(unittest.TestCase):
+    """qet_export's "reproducible" sets SOURCE_DATE_EPOCH for the run."""
+
+    def run_export(self, **kw):
+        seen = {}
+        def fake(binary, args, timeout=180, **rest):
+            seen.update(rest)
+            return {"ok": True}
+        with tempfile.TemporaryDirectory() as tmp:
+            proj = Path(tmp) / "a.qet"
+            proj.write_text("<project/>")
+            with unittest.mock.patch.object(m, "_run_qet", fake):
+                m.tool_export("qet", str(proj), "pdf", str(Path(tmp) / "o.pdf"), **kw)
+        return seen.get("extra_env")
+
+    def test_off_by_default(self):
+        self.assertIsNone(self.run_export())
+
+    def test_zero_unless_told_otherwise(self):
+        with unittest.mock.patch.dict(os.environ):
+            os.environ.pop("SOURCE_DATE_EPOCH", None)
+            self.assertEqual(self.run_export(reproducible=True),
+                             {"SOURCE_DATE_EPOCH": "0"})
+
+    def test_the_servers_own_variable_then_the_callers_value(self):
+        with unittest.mock.patch.dict(os.environ, {"SOURCE_DATE_EPOCH": "1600000000"}):
+            self.assertEqual(self.run_export(reproducible=True),
+                             {"SOURCE_DATE_EPOCH": "1600000000"})
+            self.assertEqual(self.run_export(reproducible=True, source_date_epoch=5),
+                             {"SOURCE_DATE_EPOCH": "5"})
+
+    def test_a_bad_date_is_refused_before_launching(self):
+        for bad in (-1, "soon", 1.5, True):
+            with self.subTest(value=bad), self.assertRaises(ValueError):
+                self.run_export(reproducible=True, source_date_epoch=bad)
+
+
 class ReadTools(unittest.TestCase):
     def test_project_info_and_scan_on_a_fixture(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -5492,6 +5530,27 @@ class UuidIndexLookups(unittest.TestCase):
 
 @needs_examples
 class CorpusIntegration(unittest.TestCase):
+    def test_a_reproducible_pdf_is_the_same_bytes_every_run(self):
+        """Two reproducible exports of one project, in separate runs, are
+        byte for byte the same; a plain one carries the time of the export.
+        741.qet has no cross-reference links, whose order is fixed apart."""
+        project = str(Path(EXAMPLES) / "741.qet")
+        with tempfile.TemporaryDirectory() as tmp:
+            outs = []
+            for i in range(2):
+                out = str(Path(tmp) / f"r{i}.pdf")
+                r = m.tool_export(BINARY, project, "pdf", out, reproducible=True,
+                                  source_date_epoch=1700000000)
+                self.assertTrue(r["ok"], r)
+                self.assertTrue(r["reproducible"], r)
+                outs.append(Path(out).read_bytes())
+            self.assertEqual(outs[0], outs[1])
+            plain = str(Path(tmp) / "plain.pdf")
+            r = m.tool_export(BINARY, project, "pdf", plain)
+            self.assertNotIn("reproducible", r)
+            self.assertNotIn(b"/CreationDate (D:20231114221320Z)",
+                             Path(plain).read_bytes())
+
     def test_folio_counts_match_what_qelectrotech_itself_holds(self):
         """Element and conductor counts per folio, from the file, against
         QElectroTech's own counts after loading it -- over every example.

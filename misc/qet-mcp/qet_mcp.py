@@ -56,6 +56,7 @@ workspace policy applies exactly as it does over stdio.
 
 from __future__ import annotations
 
+import datetime
 import json
 import re
 import os
@@ -942,7 +943,8 @@ def _collection_setting(collection: PurePath) -> str:
 
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
-             script: str | None = None, tail: int = 4000) -> dict:
+             script: str | None = None, tail: int = 4000,
+             extra_env: dict | None = None) -> dict:
     """Launch QElectroTech headlessly, carrying the known launch traps.
 
     SingleApplication keys its socket on applicationFilePath(), so a second
@@ -1000,6 +1002,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
             script_path.write_text(script, encoding="utf-8")
             args = ["--run", str(script_path), *args]
         env = _launch_env(dict(os.environ), home, os.name == "nt")
+        env.update(extra_env or {})
         try:
             p = subprocess.run([str(exe), *args], env=env, timeout=timeout,
                                capture_output=True, text=True)
@@ -1032,8 +1035,30 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
         return result
 
 
+def _source_date_epoch(value) -> int:
+    """The SOURCE_DATE_EPOCH a reproducible export uses: @p value when the
+    caller gives one, else the one this server was started with, else 0.
+
+    0 (1 January 1970) rather than a date read from the project: the file's
+    modification time changes with every copy and checkout, and a date the
+    drawing carries is a title block field, not when the PDF was made. A
+    caller who wants a meaningful date passes it.
+    """
+    if value is None:
+        value = os.environ.get("SOURCE_DATE_EPOCH", "0")
+    try:
+        seconds = None if isinstance(value, (bool, float)) else int(value)
+    except (TypeError, ValueError):
+        seconds = None
+    if seconds is None or seconds < 0:
+        raise ValueError(f"source_date_epoch must be a whole number of seconds "
+                         f"since 1970, got {value!r}")
+    return seconds
+
+
 def tool_export(binary: str, project: str, format: str, output: str,
-                timeout: int = 180) -> dict:
+                timeout: int = 180, reproducible: bool = False,
+                source_date_epoch: int | None = None) -> dict:
     if format not in EXPORT_FORMATS:
         raise ValueError(f"unknown format {format!r}; "
                          f"expected one of {', '.join(sorted(EXPORT_FORMATS))}")
@@ -1047,12 +1072,31 @@ def tool_export(binary: str, project: str, format: str, output: str,
     # application starts its GUI instead, which then hangs on an offscreen
     # platform. Order matters here.
     flag = EXPORT_FORMATS[format]
-    result = _run_qet(binary, [flag, str(proj), output], timeout)
+    # SOURCE_DATE_EPOCH (reproducible-builds.org) makes --export-pdf write
+    # the same bytes for the same project: the dates it names instead of
+    # now, a document id from the project file, fonts in a fixed order.
+    extra_env = None
+    if reproducible or source_date_epoch is not None:
+        epoch = _source_date_epoch(source_date_epoch)
+        extra_env = {"SOURCE_DATE_EPOCH": str(epoch)}
+    result = _run_qet(binary, [flag, str(proj), output], timeout,
+                      extra_env=extra_env)
     out = Path(output).expanduser()
     result["output"] = str(out)
     result["output_exists"] = out.exists()
     if out.exists() and out.is_file():
         result["output_bytes"] = out.stat().st_size
+        if extra_env and format == "pdf":
+            # A QElectroTech older than this option ignores the variable and
+            # writes the time of the export, so say whether this one did.
+            stamp = datetime.datetime.fromtimestamp(epoch, datetime.timezone.utc)
+            honoured = (b"/CreationDate (D:" + stamp.strftime("%Y%m%d%H%M%S").encode()
+                        + b"Z)") in out.read_bytes()
+            result["reproducible"] = honoured
+            if not honoured:
+                result["hint"] = ("this QElectroTech ignores SOURCE_DATE_EPOCH, so the "
+                                  "PDF carries the time of the export; it needs a build "
+                                  "with repeatable PDF export")
     return result
 
 
@@ -3514,11 +3558,25 @@ TOOLS = [
                               "description": "replace \"output\" if it already exists; "
                                              "without this an existing file is never clobbered"},
                 "timeout": {"type": "integer", "default": 180},
+                "reproducible": {"type": "boolean", "default": False,
+                                 "description": "pdf: write the same bytes for the same "
+                                                "project in every run, so two exports can be "
+                                                "compared byte for byte. Sets "
+                                                "SOURCE_DATE_EPOCH; the result's "
+                                                "\"reproducible\" says whether this "
+                                                "QElectroTech honoured it"},
+                "source_date_epoch": {"type": "integer", "minimum": 0,
+                                      "description": "with reproducible: the date the PDF "
+                                                     "carries, in seconds since 1970 UTC. "
+                                                     "Default: this server's own "
+                                                     "SOURCE_DATE_EPOCH, else 0"},
             },
             "required": ["project", "format", "output"],
         },
         "handler": lambda a: tool_export(a["binary"], a["project"], a["format"],
-                                         a["output"], a.get("timeout", 180)),
+                                         a["output"], a.get("timeout", 180),
+                                         a.get("reproducible", False),
+                                         a.get("source_date_epoch")),
     },
     {
         "name": "qet_edit",

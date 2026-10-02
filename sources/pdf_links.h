@@ -18,6 +18,7 @@
 #ifndef PDF_LINKS_H
 #define PDF_LINKS_H
 
+#include <QDateTime>
 #include <QMap>
 #include <QPointF>
 #include <QRectF>
@@ -82,6 +83,16 @@ namespace PdfLinks {
 		PDF/X file or when the declaration is absent.
 	*/
 	void removeUnusedPdfxNamespace(const QString &pdfPath);
+
+	/**
+		Post-process a Qt-generated PDF file: replace the creation and
+		modification dates Qt wrote (the time of the export, in local time)
+		with @p when, in UTC, in the document information and the XMP
+		metadata, and shift the xref table to match.  Used for a repeatable
+		export (SOURCE_DATE_EPOCH).  Leaves the file alone if it is not laid
+		out as Qt writes it.
+	*/
+	void setDocumentDate(const QString &pdfPath, const QDateTime &when);
 
 	struct ComponentInfo {
 		QString contents;
