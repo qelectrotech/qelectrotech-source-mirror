@@ -38,9 +38,9 @@ class QWidget;
 	class opens nothing and QElectroTech behaves as if it did not exist.
 
 	The channel is a QLocalServer only the user's own account can open,
-	with a random name and token written to live-session.json in the data
-	folder, which the MCP server reads; the file goes when the channel
-	closes. One JSON request per connection, one JSON answer back, then
+	with a random name and token written to the "live" part of
+	qet-assistant.json (AssistantInfo), which the MCP server reads, and
+	cleared when the channel closes. One JSON request per connection, one JSON answer back, then
 	the server closes the connection; every request carries the token.
 
 	Requests are never handled inside the socket's readyRead: each is
@@ -56,7 +56,6 @@ class LiveServer : public QObject
 		enum State { Off, Waiting, Connected };
 
 		static LiveServer &instance();
-		static QString sessionFile();
 
 		void askAndStart(QWidget *parent);
 		void stop();

@@ -17,6 +17,7 @@
 */
 #include "generalconfigurationpage.h"
 #include "../../scripting/liveserver.h"
+#include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
 #include "../../qeticons.h"
@@ -320,6 +321,8 @@ void GeneralConfigurationPage::applyConf()
 		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
 #endif
 	}
+		//What an assistant reads about this QElectroTech follows the change
+	AssistantInfo::write();
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());

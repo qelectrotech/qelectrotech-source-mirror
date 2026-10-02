@@ -17,6 +17,7 @@
 */
 #include "liveserver.h"
 
+#include "assistantinfo.h"
 #include "qetscripting.h"
 #include "scriptlibrary.h"
 #include "../diagram.h"
@@ -78,17 +79,6 @@ LiveServer::LiveServer()
 
 LiveServer::~LiveServer()
 {
-	QFile::remove(sessionFile());
-}
-
-/**
-	@brief LiveServer::sessionFile
-	Where the channel's name and token are written for the MCP server:
-	next to the stored scripts, in the user's data folder.
-*/
-QString LiveServer::sessionFile()
-{
-	return QETApp::dataDir() + QStringLiteral("/live-session.json");
 }
 
 /**
@@ -146,19 +136,12 @@ bool LiveServer::start()
 	}
 	m_token = randomHex(16);
 
-	const QJsonObject session{
-		{QStringLiteral("version"), 1},
+		//Where the MCP server finds the channel: the "live" part of
+		//qet-assistant.json, the one file it reads about this QElectroTech
+	AssistantInfo::setLive(QJsonObject{
 		{QStringLiteral("socket"), m_server->fullServerName()},
 		{QStringLiteral("token"), m_token},
-		{QStringLiteral("pid"), QCoreApplication::applicationPid()}};
-	QSaveFile file(sessionFile());
-	if (!file.open(QIODevice::WriteOnly)
-	    || file.write(QJsonDocument(session).toJson(QJsonDocument::Compact)) < 0
-	    || !file.commit()) {
-		stop();
-		return false;
-	}
-	QFile::setPermissions(sessionFile(), QFile::ReadOwner | QFile::WriteOwner);
+		{QStringLiteral("pid"), QCoreApplication::applicationPid()}});
 
 	connect(m_server, &QLocalServer::newConnection, this, &LiveServer::newConnection);
 	setState(Waiting);
@@ -180,7 +163,7 @@ void LiveServer::stop()
 		m_server->deleteLater();
 		m_server = nullptr;
 	}
-	QFile::remove(sessionFile());
+	if (!m_token.isEmpty()) AssistantInfo::setLive(QJsonObject());
 	m_token.clear();
 	m_buffer.clear();
 	setState(Off);
