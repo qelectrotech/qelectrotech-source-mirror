@@ -2305,12 +2305,6 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	}
 }
 
-/**
-	@brief longestConductorInPotential
-	@param conductor : a conductor in the potential to search
-	@param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
-	@return the longest conductor in the same potential of conductor
-*/
 namespace {
 	/// The two ends of @p conductor on the folio, smaller first, compared
 	/// by x then y.
@@ -2343,6 +2337,12 @@ namespace {
 	}
 }
 
+/**
+	@brief longestConductorInPotential
+	@param conductor : a conductor in the potential to search
+	@param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
+	@return the longest conductor in the same potential of conductor
+*/
 Conductor * longestConductorInPotential(Conductor *conductor, bool all_diagram) {
 	Conductor *longest_conductor = conductor;
 	qreal longest_length = conductor->length();

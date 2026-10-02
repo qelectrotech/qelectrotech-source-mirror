@@ -66,8 +66,8 @@ private slots:
 		QVERIFY(QFile::exists(QStringLiteral(QET_TEST_BINARY_PATH)));
 	}
 
-		// Before the fix about half the runs differed from the first, so
-		// eight agreeing runs leave a 1 in 128 chance of a false pass.
+	// Before the fix about half the runs differed from the first, so
+	// eight agreeing runs leave a 1 in 128 chance of a false pass.
 	void sameCarrierEveryRun()
 	{
 		const QString first = carrier(0);
