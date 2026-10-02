@@ -407,6 +407,19 @@ target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_pdfpagesize PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# --export-pdf writes the cross-reference links in the same order in every
+# run, rather than in Element pointer order. Exports examples/industrial.qet
+# several times, in separate processes.
+add_executable(
+  tst_pdflinkorder
+  tst_pdflinkorder.cpp)
+add_test(NAME tst_pdflinkorder COMMAND tst_pdflinkorder)
+add_dependencies(tst_pdflinkorder qelectrotech)
+target_link_libraries(tst_pdflinkorder PRIVATE Qt::Test)
+target_compile_definitions(tst_pdflinkorder PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # One text per potential: the number goes on the same conductor in every
 # run when two conductors tie for longest. Exports
 # fixtures/one_text_per_potential_tie.qet through the real binary, several
