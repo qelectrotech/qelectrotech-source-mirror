@@ -33,8 +33,7 @@
       <string>Télechargement</string>
      </property>
      <property name="icon">
-      <iconset theme="edit-download" resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/edit-download.png</normaloff>:/ico/16x16/edit-download.png</iconset>
+      <iconset theme="edit-download"/>
      </property>
     </widget>
    </item>
@@ -44,8 +43,7 @@
       <string>Dossier installation</string>
      </property>
      <property name="icon">
-      <iconset theme="folder-open" resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
+      <iconset theme="folder-open"/>
      </property>
     </widget>
    </item>

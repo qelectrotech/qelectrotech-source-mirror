@@ -119,8 +119,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset theme="edit-rename" resource="../../qelectrotech.qrc">
-            <normaloff>:/ico/22x22/edit-rename.png</normaloff>:/ico/22x22/edit-rename.png</iconset>
+           <iconset theme="edit-rename"/>
           </property>
           <property name="iconSize">
            <size>
@@ -208,8 +207,7 @@
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset theme="configure" resource="../../qelectrotech.qrc">
-                  <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
+                 <iconset theme="configure"/>
                 </property>
                </widget>
               </item>
@@ -303,8 +301,7 @@
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset theme="start" resource="../../qelectrotech.qrc">
-                  <normaloff>:/ico/22x22/start.png</normaloff>:/ico/22x22/start.png</iconset>
+                 <iconset theme="start"/>
                 </property>
                </widget>
               </item>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <path d="M7 3h1v1h-1zM8 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.07"/>
+  <path d="M8 3h1v1h-1zM16 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.23"/>
+  <path d="M9 3h1v1h-1zM5 12h1v1h-1zM16 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.05"/>
+  <path d="M10 3h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.63"/>
+  <path d="M11 3h1v1h-1zM13 3h1v1h-1zM12 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.68"/>
+  <path d="M12 3h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.5"/>
+  <path d="M14 3h1v1h-1zM15 4h1v1h-1zM15 6h1v1h-1zM7 8h1v1h-1zM17 11h1v1h-1zM4 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.75"/>
+  <path d="M15 3h1v1h-1zM12 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.43"/>
+  <path d="M6 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.12"/>
+  <path d="M7 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.76"/>
+  <path d="M8 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.49"/>
+  <path d="M9 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.83"/>
+  <path d="M10 4h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM12 8h1v1h-1zM8 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.33"/>
+  <path d="M13 4h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.24"/>
+  <path d="M6 5h1v1h-1zM10 7h1v1h-1zM16 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.38"/>
+  <path d="M7 5h1v1h-1zM17 9h1v1h-1zM17 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.36"/>
+  <path d="M9 5h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.51"/>
+  <path d="M10 5h1v1h-1zM18 5h1v1h-1zM6 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.27"/>
+  <path d="M12 5h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.54"/>
+  <path d="M13 5h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.11"/>
+  <path d="M15 5h1v1h-1zM16 5h1v1h-1zM5 10h1v1h-1zM17 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.7"/>
+  <path d="M17 5h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.72"/>
+  <path d="M7 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.47"/>
+  <path d="M12 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.48"/>
+  <path d="M13 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.06"/>
+  <path d="M17 6h1v1h-1zM15 10h1v1h-1zM7 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.04"/>
+  <path d="M18 6h1v1h-1zM8 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.77"/>
+  <path d="M6 7h1v1h-1zM17 8h1v1h-1zM4 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.1"/>
+  <path d="M7 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.65"/>
+  <path d="M9 7h1v1h-1zM9 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.15"/>
+  <path d="M15 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.67"/>
+  <path d="M18 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.74"/>
+  <path d="M10 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.4"/>
+  <path d="M15 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.46"/>
+  <path d="M18 8h1v1h-1zM7 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.64"/>
+  <path d="M7 9h1v1h-1zM4 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.73"/>
+  <path d="M10 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.31"/>
+  <path d="M12 9h1v1h-1zM6 11h1v1h-1zM7 15h1v1h-1zM6 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.18"/>
+  <path d="M15 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.25"/>
+  <path d="M18 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.39"/>
+  <path d="M3 10h1v1h-1zM17 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.22"/>
+  <path d="M6 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.59"/>
+  <path d="M8 10h1v1h-1zM17 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.16"/>
+  <path d="M17 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.62"/>
+  <path d="M18 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.14"/>
+  <path d="M3 11h1v1h-1zM6 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.81"/>
+  <path d="M7 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.8"/>
+  <path d="M3 12h1v1h-1zM4 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.29"/>
+  <path d="M8 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.2"/>
+  <path d="M5 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.69"/>
+  <path d="M16 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.19"/>
+  <path d="M17 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.55"/>
+  <path d="M5 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.56"/>
+  <path d="M6 14h1v1h-1zM7 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.42"/>
+  <path d="M16 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.3"/>
+  <path d="M17 14h1v1h-1zM16 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.45"/>
+  <path d="M7 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.84"/>
+  <path d="M17 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.28"/>
+  <path d="M16 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.52"/>
+  <path d="M8 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.44"/>
+  <path d="M9 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.93"/>
+  <path d="M10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+</svg>
