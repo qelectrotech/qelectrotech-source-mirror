@@ -104,6 +104,13 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# elementviewgrid.h is header-only: the symbol editor's snap step at each
+# zoom (bugtracker #112), tested without an editor window.
+add_executable(tst_elementviewgrid tst_elementviewgrid.cpp)
+add_test(NAME tst_elementviewgrid COMMAND tst_elementviewgrid)
+target_include_directories(tst_elementviewgrid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_elementviewgrid PRIVATE Qt::Test)
+
 # alignment.h is header-only too (it builds on textgrid.h): the geometry
 # behind the align commands, tested without a scene.
 add_executable(tst_alignment tst_alignment.cpp)
