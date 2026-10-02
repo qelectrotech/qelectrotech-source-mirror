@@ -418,6 +418,11 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool moveConductorSegment(int folioIndex, const QString &elementUuid,
 											  int terminalIndex, int segmentIndex,
 											  double dx, double dy);
+		Q_INVOKABLE QString routeConductor(int folioIndex, const QString &elementUuid,
+										   int terminalIndex);
+		Q_INVOKABLE QString routeConductorBetween(int folioIndex,
+												  const QString &elementUuidA, int terminalIndexA,
+												  const QString &elementUuidB, int terminalIndexB);
 
 		// -- cross-references: master/slave and report links --
 		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
@@ -596,6 +601,7 @@ class QetScriptApi : public QObject
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);
+		QString applyRoute(Conductor *conductor, const QString &caller);
 		Conductor *findConductor(int folioIndex, const QString &elementUuid, int terminalIndex,
 								 const QString &caller);
 		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;

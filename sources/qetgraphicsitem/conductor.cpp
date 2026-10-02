@@ -1390,6 +1390,46 @@ bool Conductor::moveSegment(int index, qreal dx, qreal dy)
 }
 
 /**
+	@brief Conductor::setPathPoints
+	Replace this conductor's path by the one through @p scene_points, and
+	push one undo step for it -- the same ChangeConductorCommand a manual
+	handle drag or moveSegment() pushes, so the path is saved as a
+	modified one and survives a reload.
+	@param scene_points in scene coordinates, from terminal1's docking
+	point to terminal2's, every segment horizontal or vertical
+	@return false, changing nothing, if the points do not make such a path
+*/
+bool Conductor::setPathPoints(const QList<QPointF> &scene_points)
+{
+	if (scene_points.size() < 2 || !terminal1 || !terminal2) return false;
+	const auto near = [](const QPointF &a, const QPointF &b) {
+		return qAbs(a.x() - b.x()) < 0.5 && qAbs(a.y() - b.y()) < 0.5;
+	};
+	if (!near(scene_points.first(), terminal1->dockConductor()) ||
+		!near(scene_points.last(), terminal2->dockConductor()))
+		return false;
+	QList<QPointF> points;
+	for (int i = 0; i < scene_points.size(); ++i) {
+		const QPointF p = scene_points.at(i);
+		if (i && qAbs(p.x() - scene_points.at(i - 1).x()) > 0.01
+			  && qAbs(p.y() - scene_points.at(i - 1).y()) > 0.01)
+			return false;
+		points << mapFromScene(p);
+	}
+		// A two-point path has nothing to segment between: let the
+		// application draw it, as for a conductor with no profile.
+	if (points.size() < 3) return false;
+
+	before_mov_text_pos_ = m_text_item->pos();
+	pointsToSegments(points);
+	modified_path = true;
+	segmentsToPath();
+	calculateTextItemPosition();
+	saveProfile();
+	return true;
+}
+
+/**
 	@brief Conductor::length
 	@return the length of this conductor
 */

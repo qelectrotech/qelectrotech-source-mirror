@@ -179,6 +179,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/wiringlistexport.cpp
   ${QET_DIR}/sources/wirehops.h
   ${QET_DIR}/sources/wirehops.cpp
+  ${QET_DIR}/sources/conductorrouter.h
+  ${QET_DIR}/sources/conductorrouter.cpp
   ${QET_DIR}/sources/ui/wiringlistdialog.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
