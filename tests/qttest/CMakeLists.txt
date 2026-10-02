@@ -474,6 +474,19 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # The same symbol placed twice in a project whose collection does not
+  # start with its "import" category (examples/lmdg.qet).
+  add_executable(
+    tst_importcategory
+    tst_importcategory.cpp)
+  add_test(NAME tst_importcategory COMMAND tst_importcategory)
+  add_dependencies(tst_importcategory qelectrotech)
+  target_link_libraries(tst_importcategory PRIVATE Qt::Test)
+  target_compile_definitions(tst_importcategory PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
   # qet.currentFolio() through --run: the first folio, or -1 with none; and
   # --run keeps one undo step per call (only an editor run is grouped).
   add_executable(
