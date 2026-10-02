@@ -41,6 +41,9 @@ import qet_mcp as m  # noqa: E402
 
 BINARY = os.environ.get("QET_BINARY", "")
 ELEMENTS = os.environ.get("QET_ELEMENTS", "")
+# Any executable will do where a test never launches the program; macOS
+# keeps true in /usr/bin, not /bin.
+TRUE = shutil.which("true") or "/bin/true"
 EXAMPLES = os.environ.get("QET_EXAMPLES", "")
 
 have_binary = bool(BINARY) and os.access(BINARY, os.X_OK)
@@ -2648,7 +2651,9 @@ class BinaryPolicy(unittest.TestCase):
         del os.environ["QET_BINARY"]
         args = {"project": str(self.root / "ok.qet")}
         inst.enforce_path_policy("qet_query", args)
-        self.assertEqual(args["binary"], str(exe.resolve()))
+        # samefile: on a file system that ignores case (macOS, Windows)
+        # the server finds it under another of its spellings.
+        self.assertTrue(Path(args["binary"]).samefile(exe), args["binary"])
         self.assertEqual(args["elements_dir"], str((root / "elements").resolve()))
 
     def test_a_copy_saved_anywhere_is_not_an_install(self):
@@ -2727,7 +2732,7 @@ class ElementsDirSetting(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as coll, \
                 mock.patch.object(m.subprocess, "run", run):
-            m._run_qet("/bin/true", ["x.qet"], elements_dir=coll)
+            m._run_qet(TRUE, ["x.qet"], elements_dir=coll)
         want = m._collection_setting(Path(coll))
         self.assertEqual(seen, {"QElectroTech.ini": want, "QElectroTech.conf": want})
         self.assertIn(f"common-collection-path={Path(coll).as_posix()}", want)
@@ -2769,9 +2774,9 @@ class ScriptingDisabledHint(unittest.TestCase):
         saved = m.subprocess.run
         m.subprocess.run = self.fake_run(returncode, stderr)
         try:
-            # /bin/true only has to exist and be executable: it is copied
+            # TRUE only has to exist and be executable: it is copied
             # into the sandbox and then never actually launched.
-            return m._run_qet("/bin/true", ["x.qet"], **kw)
+            return m._run_qet(TRUE, ["x.qet"], **kw)
         finally:
             m.subprocess.run = saved
 
@@ -3299,7 +3304,7 @@ class Recordings(unittest.TestCase):
     def test_check_needs_an_after(self):
         self.make("r2", after=False)
         with self.assertRaisesRegex(ValueError, "no after.qet"):
-            m.tool_recording_check("/bin/true", "r2", "qet.log(1);")
+            m.tool_recording_check(TRUE, "r2", "qet.log(1);")
 
     def test_remove_needs_consent(self):
         d = self.make("r3")

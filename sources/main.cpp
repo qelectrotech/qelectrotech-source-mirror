@@ -112,6 +112,12 @@ int main(int argc, char **argv)
 	// system (issue #1178). Set before anything reads a setting.
 	const QString settings_dir = qEnvironmentVariable("QET_SETTINGS_DIR");
 	if (!settings_dir.isEmpty()) {
+#ifdef Q_OS_DARWIN
+		// On macOS, Qt names that subfolder after the organization domain
+		// when there is one (<folder>/qelectrotech.org/) (issue #1246).
+		// Nothing in QElectroTech reads the domain.
+		QCoreApplication::setOrganizationDomain(QString());
+#endif
 		QSettings::setDefaultFormat(QSettings::IniFormat);
 		QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settings_dir);
 		QSettings::setPath(QSettings::IniFormat, QSettings::SystemScope, settings_dir);
