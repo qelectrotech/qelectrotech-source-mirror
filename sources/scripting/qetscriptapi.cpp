@@ -52,9 +52,9 @@
 #ifdef QET_HAS_QTPDF
 #include <QPdfDocument>
 #include <QPainter>
+#endif
 #include <QPageSize>
 #include <cmath>
-#endif
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"

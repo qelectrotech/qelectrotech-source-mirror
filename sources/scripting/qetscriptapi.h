@@ -265,7 +265,7 @@ class QetGraphicsTableItem;
 	  "height", are the frame and title block together in scene units --
 	  what an export draws -- so a caller can check the result.
 
-	  A folio's title block @b template is a seventh, separate case:
+	  A folio's title block @b template is a separate case again:
 	  Diagram::setTitleBlockTemplate() resolves a name only against
 	  QETProject::embeddedTitleBlockTemplatesCollection() -- the same
 	  copy-into-the-project step addElement() already does for elements,
