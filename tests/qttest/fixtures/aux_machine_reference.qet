@@ -1,0 +1,270 @@
+<project title="F020" uuid="{484e3ed4-bbda-5334-a526-d2ceddc55f0a}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">skeleton</property>
+        <property name="savedfilepath" show="1">/tmp/qet-mcp-new-2fmbrnvi/skeleton.qet</property>
+        <property name="savedtime" show="1">19:29</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{4bc342c7-122c-4846-9b05-5ee7d6dc677b}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="X" type="embed://import/10_electric/10_allpole/130_terminals_terminal_strips/borne_2.elmt" uuid="{4c30414d-8678-47b8-b674-a1b87fe0347b}" x="200" y="200" z="10">
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-6"/>
+                    <terminal id="1" orientation="1" x="6" y="0"/>
+                    <terminal id="2" orientation="2" x="0" y="6"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="machine_manufacturer_reference_auxiliary1" show="1">MMR-AUX1</elementInformation>
+                    <elementInformation name="machine_manufacturer_reference_auxiliary2" show="1">MMR-AUX2</elementInformation>
+                    <elementInformation name="machine_manufacturer_reference_auxiliary3" show="1">MMR-AUX3</elementInformation>
+                    <elementInformation name="machine_manufacturer_reference_auxiliary4" show="1">MMR-AUX4</elementInformation>
+                    <elementInformation name="manufacturer_reference_auxiliary1" show="1">MR-AUX1</elementInformation>
+                    <elementInformation name="manufacturer_reference_auxiliary2" show="1">MR-AUX2</elementInformation>
+                    <elementInformation name="manufacturer_reference_auxiliary3" show="1">MR-AUX3</elementInformation>
+                    <elementInformation name="manufacturer_reference_auxiliary4" show="1">MR-AUX4</elementInformation>
+                </elementInformations>
+                <properties>
+                    <element_type terminal_function="generic" terminal_led="false" terminal_type="generic"/>
+                </properties>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{17dea734-db18-4b95-a27a-c4bb68473919}" x="3" y="-24.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="CompositeText" text_width="-1" uuid="{533b3793-9867-4a95-9ae9-bf945c8bb8d3}" x="30" y="10">
+                        <text>[%{machine_manufacturer_reference_auxiliary1}|MR-AUX1]</text>
+                        <composite_text>[%{machine_manufacturer_reference_auxiliary1}|%{manufacturer_reference_auxiliary1}]</composite_text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="CompositeText" text_width="-1" uuid="{2b1d4d47-e88f-4212-82b6-549b1565289d}" x="30" y="20">
+                        <text>[%{machine_manufacturer_reference_auxiliary2}|MR-AUX2]</text>
+                        <composite_text>[%{machine_manufacturer_reference_auxiliary2}|%{manufacturer_reference_auxiliary2}]</composite_text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="CompositeText" text_width="-1" uuid="{dc286aae-6c3e-4ee5-894c-205b06b538b0}" x="30" y="30">
+                        <text>[%{machine_manufacturer_reference_auxiliary3}|MR-AUX3]</text>
+                        <composite_text>[%{machine_manufacturer_reference_auxiliary3}|%{manufacturer_reference_auxiliary3}]</composite_text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="CompositeText" text_width="-1" uuid="{cf6e8c75-b728-46c1-b0d4-c93b84689ce6}" x="30" y="40">
+                        <text>[%{machine_manufacturer_reference_auxiliary4}|MR-AUX4]</text>
+                        <composite_text>[%{machine_manufacturer_reference_auxiliary4}|%{manufacturer_reference_auxiliary4}]</composite_text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ca">Elements importats</name>
+                <name lang="cs">Zavedené prvky</name>
+                <name lang="da">Importerede elementer</name>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="el">Εισηγμένα στοιχεία</name>
+                <name lang="en">Imported elements</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="hr">Uvezeni elementi</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="ja">インバートされた要素</name>
+                <name lang="ko">전기 심볼 요소</name>
+                <name lang="ko_KR">전기 심볼 요소</name>
+                <name lang="nl">Elementen geïmporteerd</name>
+                <name lang="nl_BE">Elementen geïmporteerd</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="pt">Elementos importados</name>
+                <name lang="pt_BR">Elementos importados</name>
+                <name lang="ro">Elemente importate</name>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="sl">Uvoženi elementi</name>
+                <name lang="sv">Importerade element</name>
+                <name lang="tr">İthal öğeler</name>
+                <name lang="uk">Імпортовані елементи</name>
+                <name lang="zh">导入元件</name>
+            </names>
+        <category name="10_electric">
+                <names>
+                    <name lang="ar">كهربائي</name>
+                    <name lang="ca">Elèctric</name>
+                    <name lang="cs">Elektrotechnika</name>
+                    <name lang="da">Elektrisk</name>
+                    <name lang="de">Elektrik</name>
+                    <name lang="el">Ηλεκτρικά</name>
+                    <name lang="en">Electric</name>
+                    <name lang="es">Eléctrica</name>
+                    <name lang="fi">Sähkö</name>
+                    <name lang="fr">Electrique</name>
+                    <name lang="hr">Električno</name>
+                    <name lang="hu">Elektromos</name>
+                    <name lang="it">Elettrica</name>
+                    <name lang="ja">電気</name>
+                    <name lang="ko">전기</name>
+                    <name lang="mn">Цахилгаан</name>
+                    <name lang="nb">Elektrisk</name>
+                    <name lang="nl">Elektrotechniek</name>
+                    <name lang="nl_BE">Elektrisch</name>
+                    <name lang="pl">Elektrotechnika</name>
+                    <name lang="pt">Elétrico</name>
+                    <name lang="pt_BR">Elétrica</name>
+                    <name lang="ro">Electric</name>
+                    <name lang="ru">Электротехника</name>
+                    <name lang="sk">Elektrické</name>
+                    <name lang="sl">Elektrika</name>
+                    <name lang="sr">Електрика</name>
+                    <name lang="sv">El</name>
+                    <name lang="tr">Elektrik</name>
+                    <name lang="uk">Електрика</name>
+                    <name lang="zh">10_电气</name>
+                    <name lang="zn">电气工程</name>
+                </names>
+                <category name="10_allpole">
+                    <names>
+                        <name lang="ar">متعدد الأقطاب</name>
+                        <name lang="ca">Multifilar</name>
+                        <name lang="cs">Vícežilový</name>
+                        <name lang="da">Flere ledere</name>
+                        <name lang="de">Allpolig</name>
+                        <name lang="el">Πολυγραμμικό</name>
+                        <name lang="en">All-pole</name>
+                        <name lang="es">Multifilar</name>
+                        <name lang="fi">Yleisnapa</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="hr">Univerzalni</name>
+                        <name lang="hu">Többvonalas szimbólumok</name>
+                        <name lang="it">Multifilare</name>
+                        <name lang="ja">複線</name>
+                        <name lang="ko">다-극</name>
+                        <name lang="mn">Бүх туйл</name>
+                        <name lang="nb">Alle poler</name>
+                        <name lang="nl">Veel polig</name>
+                        <name lang="nl_BE">All-pole</name>
+                        <name lang="pl">Schematy wieloliniowe</name>
+                        <name lang="pt">Multipolar</name>
+                        <name lang="pt_BR">Multifilar</name>
+                        <name lang="ro">Bipolar</name>
+                        <name lang="ru">Многополюсные</name>
+                        <name lang="sk">Všepólové</name>
+                        <name lang="sl">Vsi poli</name>
+                        <name lang="sr">Свe-полни</name>
+                        <name lang="sv">Allpolig</name>
+                        <name lang="tr">Çok kutuplu</name>
+                        <name lang="uk">Багатополюсні</name>
+                        <name lang="zh">10_全极</name>
+                    </names>
+                    <category name="130_terminals_terminal_strips">
+                        <names>
+                            <name lang="ar">طرفيات توصيل</name>
+                            <name lang="ca">Borns i regletes de borns</name>
+                            <name lang="cs">Svorky</name>
+                            <name lang="da">Klemmer og klemmerækker</name>
+                            <name lang="de">Klemmen und Klemmleisten</name>
+                            <name lang="el">Ακροδέκτες και σειρές ακροδεκτών</name>
+                            <name lang="en">Terminals and terminal strips</name>
+                            <name lang="es">Terminales</name>
+                            <name lang="fi">Rimaelittimet</name>
+                            <name lang="fr">Bornes et borniers</name>
+                            <name lang="hr">Stezaljke i redne stezaljke</name>
+                            <name lang="hu">Sorkapcsok</name>
+                            <name lang="it">Terminali</name>
+                            <name lang="ja">端子と端子台</name>
+                            <name lang="ko">단자 및 단자대</name>
+                            <name lang="mn">Клемм ба клеммын хавтан</name>
+                            <name lang="nb">Rekkeklemmer og klemlister</name>
+                            <name lang="nl">Klemmenlijst</name>
+                            <name lang="nl_BE">Klemmen en klemmenstroken</name>
+                            <name lang="pl">Złącza i zaciski</name>
+                            <name lang="pt">Terminais</name>
+                            <name lang="pt_BR">Bornes e borneiras</name>
+                            <name lang="ro">Borne și borniere</name>
+                            <name lang="ru">Клеммы и клеммники</name>
+                            <name lang="sk">Svorky a svorkovnice</name>
+                            <name lang="sl">Vrstne sponke in sponke</name>
+                            <name lang="sr">Клеме и редне клеме</name>
+                            <name lang="sv">Plintar och plintrader</name>
+                            <name lang="tr">Klemensler ve klemens şeritleri</name>
+                            <name lang="uk">Клеми та клемні колодки</name>
+                            <name lang="zh">接线端子与端子排</name>
+                        </names>
+                        <element name="borne_2.elmt">
+                            <definition height="40" hotspot_x="10" hotspot_y="20" link_type="terminal" type="element" version="0.100.0" width="30">
+                                <uuid uuid="{3f1985d3-104c-d0fe-e025-de0b19429826}"/>
+                                <names>
+                                    <name lang="ar">طرف توصيل</name>
+                                    <name lang="ca">Born de continuïtat</name>
+                                    <name lang="cs">Spojovací svorka</name>
+                                    <name lang="da">Klemme</name>
+                                    <name lang="de">Klemme</name>
+                                    <name lang="el">Ακροδέκτης</name>
+                                    <name lang="en">Terminal block</name>
+                                    <name lang="es">Terminal de unión</name>
+                                    <name lang="fi">Liitinrima</name>
+                                    <name lang="fr">Borne continuité</name>
+                                    <name lang="hr">Stezaljka</name>
+                                    <name lang="hu">Sorkapocs</name>
+                                    <name lang="it">Terminale di unione</name>
+                                    <name lang="ja">端子ブロック</name>
+                                    <name lang="ko">단자 블록</name>
+                                    <name lang="mn">Клеммын блок</name>
+                                    <name lang="nb">Rekkeklemme</name>
+                                    <name lang="nl">klem doorgang</name>
+                                    <name lang="nl_BE">Klemmenblok</name>
+                                    <name lang="pl">Zacisk</name>
+                                    <name lang="pt">Terminal de combinação</name>
+                                    <name lang="pt_BR">Borne de combinacao</name>
+                                    <name lang="ro">Bloc de borne</name>
+                                    <name lang="ru">Клеммное соединение</name>
+                                    <name lang="sk">Svorkovnica</name>
+                                    <name lang="sl">Vrstna sponka</name>
+                                    <name lang="sr">Клемни блок</name>
+                                    <name lang="sv">Plint</name>
+                                    <name lang="tr">Klemens bloğu</name>
+                                    <name lang="uk">Клемна колодка</name>
+                                    <name lang="zh">2号接线端子</name>
+                                </names>
+                                <kindInformations>
+                                    <kindInformation name="type">generic</kindInformation>
+                                    <kindInformation name="function">generic</kindInformation>
+                                </kindInformations>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="10" y2="3"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="-10" y2="-3"/>
+                                    <ellipse antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5" x="-2.5" y="-2.5"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="3" y1="0" y2="0"/>
+                                    <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{8e248a1f-fe85-48a3-8940-9a66b8032f11}" x="3" y="-24.5" z="5">
+                                        <text/>
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <terminal name="" orientation="n" type="Generic" uuid="{323e68e1-514f-4e03-8ece-f22744a2d325}" x="0" y="-10"/>
+                                    <terminal name="" orientation="s" type="Generic" uuid="{c81262f0-711b-451d-a333-9039f4de25b6}" x="0" y="10"/>
+                                    <terminal name="" orientation="e" type="Generic" uuid="{a33d1699-88d4-4071-a651-977d380e6e8c}" x="10" y="0"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>
