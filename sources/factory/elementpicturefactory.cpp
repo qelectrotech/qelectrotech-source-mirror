@@ -135,13 +135,28 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 	{
 		auto doc = location.pugiXml();
 			//size
-		int w = doc.document_element().attribute("width").as_int();
-		int h = doc.document_element().attribute("height").as_int();
+			//Bounded first, so the rounding below cannot overflow on a
+			//crafted file.
+		int w = qBound(0, doc.document_element().attribute("width").as_int(), 1000000);
+		int h = qBound(0, doc.document_element().attribute("height").as_int(), 1000000);
 		while (w % 10) ++ w;
 		while (h % 10) ++ h;
 			//hotspot
 		int hsx = qMin(doc.document_element().attribute("hotspot_x").as_int(), w);
 		int hsy = qMin(doc.document_element().attribute("hotspot_y").as_int(), h);
+
+			//The size comes straight from the file. A symbol whose parts
+			//span hundreds of thousands of pixels would ask for a pixmap of
+			//hundreds of gigabytes; draw it scaled down to fit instead. The
+			//largest symbols in the shipped collection are about 3200 px,
+			//so this only changes files nobody would draw on purpose.
+		const int max_side = 4096;
+		qreal scale = 1.0;
+		if (w > max_side || h > max_side) {
+			scale = qreal(max_side) / qMax(w, h);
+			w = qMax(1, qRound(w * scale));
+			h = qMax(1, qRound(h * scale));
+		}
 
 		QPixmap pix(w, h);
 			//Element definitions almost always draw with a hardcoded black
@@ -157,6 +172,7 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+		painter.scale(scale, scale);
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
 
