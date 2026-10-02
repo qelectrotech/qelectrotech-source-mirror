@@ -1228,8 +1228,9 @@ ConductorRouter::Direction routerDirection(Qet::Orientation o)
 	as one undo step through Conductor::setPathPoints() -- the same
 	ChangeConductorCommand a handle drag pushes, so the path is saved and
 	survives a reload. Obstacles are every element's own rectangle, its
-	texts left out; the other conductors are not obstacles but cost extra
-	to run along or cross.
+	texts left out, except one drawn around either end's own symbol (a
+	frame); the other conductors are not obstacles but cost extra to run
+	along or cross.
 	@return "routed", or "no-route" with the reason logged when there is
 	no such path -- the conductor then keeps the path it had. Not a
 	failure: the wire exists and joins the right terminals either way.
@@ -1248,6 +1249,10 @@ QString QetScriptApi::applyRoute(Conductor *conductor, const QString &caller)
 	request.bounds = diagram->border_and_titleblock.insideBorderRect();
 	for (Element *e : diagram->elements())
 		request.obstacles << e->mapRectToScene(e->boundingRect());
+	if (Element *e = conductor->terminal1->parentElement())
+		request.start_symbol = e->mapRectToScene(e->boundingRect());
+	if (Element *e = conductor->terminal2->parentElement())
+		request.end_symbol = e->mapRectToScene(e->boundingRect());
 	for (Conductor *other : diagram->conductors()) {
 		if (other == conductor) continue;
 		QVector<QPointF> wire;

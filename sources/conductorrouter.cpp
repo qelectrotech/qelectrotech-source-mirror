@@ -74,24 +74,54 @@ bool insideAny(const QPointF &p, const QList<QRectF> &rects)
 	///other axis
 struct Span { qreal at, from, to; };
 
-	///The first point of a route after a terminal: one grid step out in the
-	///terminal's direction, snapped to the grid the way
-	///Conductor::extendTerminal() snaps it, then on until it is clear of
-	///every obstacle -- of the terminal's own symbol above all.
-bool exitPoint(const QPointF &dock, Direction d, const ConductorRouter::Request &r,
-			   const QList<QRectF> &obstacles, QPointF &out)
+	///One grid step out of a terminal in its direction, snapped to the
+	///grid the way Conductor::extendTerminal() snaps it
+QPointF firstStep(const QPointF &dock, Direction d, qreal grid)
 {
 	const QPointF s = step(d);
 	QPointF p = dock;
 	if (s.x() != 0)
-		p.setX(std::round((dock.x() + s.x() * r.grid) / r.grid) * r.grid);
+		p.setX(std::round((dock.x() + s.x() * grid) / grid) * grid);
 	else
-		p.setY(std::round((dock.y() + s.y() * r.grid) / r.grid) * r.grid);
+		p.setY(std::round((dock.y() + s.y() * grid) / grid) * grid);
+	return p;
+}
+
+	///Whether the horizontal or vertical segment from @p a to @p b runs
+	///through the inside of @p rect; along its edge does not count.
+bool crossesInside(const QPointF &a, const QPointF &b, const QRectF &rect)
+{
+	const QRectF seg = QRectF(a, b).normalized();
+	if (seg.width() < eps)
+		return seg.left() > rect.left() + eps && seg.left() < rect.right() - eps
+			&& std::min(seg.bottom(), rect.bottom()) - std::max(seg.top(), rect.top()) > eps;
+	return seg.top() > rect.top() + eps && seg.top() < rect.bottom() - eps
+		&& std::min(seg.right(), rect.right()) - std::max(seg.left(), rect.left()) > eps;
+}
+
+	///The first point of a route after a terminal: firstStep(), then on
+	///until it is clear of every obstacle -- of the terminal's own symbol
+	///above all.
+	///When the terminal's own symbol is known, never through another
+	///symbol, only through the margin around it: a terminal pointing
+	///straight into one has no exit, where walking on through it would
+	///give a route that crosses that symbol and loops back. @p others are
+	///the other symbols, without their margin.
+bool exitPoint(const QPointF &dock, Direction d, const ConductorRouter::Request &r,
+			   const QList<QRectF> &obstacles, const QList<QRectF> &others,
+			   bool own_known, QPointF &out)
+{
+	const QPointF s = step(d);
+	QPointF from = dock, p = firstStep(dock, d, r.grid);
 	for (int i = 0; i < 200; ++i) {
+		if (own_known)
+			for (const QRectF &o : others)
+				if (crossesInside(from, p, o)) return false;
 		if (!insideAny(p, obstacles)) {
 			out = p;
 			return true;
 		}
+		from = p;
 		p += s * r.grid;
 	}
 	return false;
@@ -204,14 +234,75 @@ ConductorRouter::Result ConductorRouter::route(const Request &r)
 		return result;
 	}
 
-	QList<QRectF> obstacles;
-	for (const QRectF &o : r.obstacles)
-		obstacles << o.normalized().adjusted(-r.margin, -r.margin, r.margin, r.margin);
+	const QRectF own1 = r.start_symbol.normalized(), own2 = r.end_symbol.normalized();
+	QList<QRectF> obstacles, others, other_symbols;
+	for (const QRectF &o : r.obstacles) {
+		const QRectF n = o.normalized();
+		const bool own = (own1.isValid() && n == own1) || (own2.isValid() && n == own2);
+			// A symbol drawn around a terminal's own one is a frame the
+			// wire starts or ends inside: crossing its edge is the way in
+			// or out, and its inside is the place to route.
+		if (!own && ((own1.isValid() && n.contains(own1))
+					 || (own2.isValid() && n.contains(own2))))
+			continue;
+		const QRectF padded = n.adjusted(-r.margin, -r.margin, r.margin, r.margin);
+		obstacles << padded;
+		if (!own) {
+			others << padded;
+			other_symbols << n;
+		}
+	}
+
+		// Two terminals facing each other on one line, with nothing
+		// between them: the straight line, even when they are too close
+		// for each to step out a grid square first. With room, it keeps
+		// the step out of each terminal, as the search does (see the
+		// corners below); without, the point between them gives the path
+		// the three points a conductor's path needs.
+	const QPointF s = step(r.start_direction);
+	const QPointF ahead = r.end - r.start;
+	if (r.end_direction == opposite(r.start_direction)
+		&& std::abs(s.x() != 0 ? ahead.y() : ahead.x()) < eps
+		&& ahead.x() * s.x() + ahead.y() * s.y() > eps) {
+		bool clear = true;
+		for (const QRectF &o : others)
+			if (crossesInside(r.start, r.end, o)) { clear = false; break; }
+			// nor along another wire, which the search would avoid
+		const bool vertical = s.x() == 0;
+		const qreal line = vertical ? r.start.x() : r.start.y();
+		const qreal lo = vertical ? std::min(r.start.y(), r.end.y()) : std::min(r.start.x(), r.end.x());
+		const qreal hi = vertical ? std::max(r.start.y(), r.end.y()) : std::max(r.start.x(), r.end.x());
+		for (const QVector<QPointF> &w : r.wires) {
+			for (int i = 0; clear && i + 1 < w.size(); ++i) {
+				const QPointF a = w.at(i), b = w.at(i + 1);
+				const qreal a_at = vertical ? a.x() : a.y(), b_at = vertical ? b.x() : b.y();
+				if (std::abs(a_at - line) > 0.5 || std::abs(b_at - line) > 0.5) continue;
+				const qreal a_on = vertical ? a.y() : a.x(), b_on = vertical ? b.y() : b.x();
+				if (std::min(hi, std::max(a_on, b_on)) - std::max(lo, std::min(a_on, b_on)) > eps)
+					clear = false;
+			}
+		}
+		if (clear) {
+			const QPointF e1 = firstStep(r.start, r.start_direction, r.grid);
+			const QPointF e2 = firstStep(r.end, r.end_direction, r.grid);
+			const QPointF gap = e2 - e1;
+			result.points << r.start;
+			if (gap.x() * s.x() + gap.y() * s.y() > eps)
+				result.points << e1 << e2;
+			else if (std::abs(gap.x()) < eps && std::abs(gap.y()) < eps)
+				result.points << e1;
+			else
+				result.points << (r.start + r.end) / 2;
+			result.points << r.end;
+			return result;
+		}
+	}
 
 	QPointF s1, s2;
-	if (!exitPoint(r.start, r.start_direction, r, obstacles, s1)
-		|| !exitPoint(r.end, r.end_direction, r, obstacles, s2)) {
-		result.error = QStringLiteral("a terminal has no way out of the symbols around it");
+	if (!exitPoint(r.start, r.start_direction, r, obstacles, other_symbols, own1.isValid(), s1)
+		|| !exitPoint(r.end, r.end_direction, r, obstacles, other_symbols, own2.isValid(), s2)) {
+		result.error = QStringLiteral("a terminal points straight into another symbol, "
+									  "or has no way out of the symbols around it");
 		return result;
 	}
 

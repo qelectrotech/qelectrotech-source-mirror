@@ -206,6 +206,99 @@ private slots:
 		QVERIFY2(result.error.isEmpty(), qPrintable(result.error));
 		checkShape(result.points, r);
 	}
+
+		// #1178: two contacts one above the other, the upper one's bottom
+		// terminal wired to the lower one's top terminal. Each docking
+		// point is 10 px inside its symbol, as in con_simple.elmt. Close
+		// together, the route went down through the lower contact, back
+		// up past the upper one and down again.
+	void closeFacingTerminalsGoStraight_data()
+	{
+		QTest::addColumn<int>("gap");
+		for (int gap : {2, 8, 10, 18, 20, 28, 30, 38, 40, 60})
+			QTest::addRow("%d px", gap) << gap;
+	}
+
+	void closeFacingTerminalsGoStraight()
+	{
+		QFETCH(int, gap);
+		ConductorRouter::Request r;
+		r.start = {100, 120};
+		r.start_direction = Direction::South;
+		r.end = {100, 120. + gap};
+		r.end_direction = Direction::North;
+		r.start_symbol = QRectF(90, 70, 20, 60);
+		r.end_symbol = QRectF(90, r.end.y() - 10, 20, 60);
+		r.obstacles << r.start_symbol << r.end_symbol;
+		const auto result = ConductorRouter::route(r);
+		QVERIFY2(result.error.isEmpty(), qPrintable(result.error));
+		checkShape(result.points, r);
+		for (int i = 0; i + 1 < result.points.size(); ++i) {
+			QCOMPARE(result.points.at(i).x(), 100.);
+			QVERIFY2(result.points.at(i + 1).y() > result.points.at(i).y(),
+					 "the route turns back on itself");
+		}
+	}
+
+		// The straight line is taken only when nothing is in its way.
+	void facingTerminalsGoAroundWhatIsBetweenThem()
+	{
+		ConductorRouter::Request r;
+		r.start = {100, 120};
+		r.start_direction = Direction::South;
+		r.end = {100, 250};
+		r.end_direction = Direction::North;
+		r.start_symbol = QRectF(90, 70, 20, 60);
+		r.end_symbol = QRectF(90, 240, 20, 60);
+		const QRectF between(80, 170, 40, 30);
+		r.obstacles << r.start_symbol << r.end_symbol << between;
+		const auto result = ConductorRouter::route(r);
+		QVERIFY2(result.error.isEmpty(), qPrintable(result.error));
+		checkShape(result.points, r);
+		QVERIFY(!crosses(result.points, between.adjusted(-r.margin, -r.margin, r.margin, r.margin)));
+	}
+
+		// A terminal pointing straight into a symbol that is not the other
+		// end: no route, rather than one that runs through that symbol.
+	void noRouteThroughASymbolInFrontOfATerminal()
+	{
+		ConductorRouter::Request r;
+		r.start = {100, 120};
+		r.start_direction = Direction::South;
+		r.end = {300, 300};
+		r.end_direction = Direction::West;
+		r.start_symbol = QRectF(90, 70, 20, 60);
+		r.end_symbol = QRectF(300, 280, 40, 40);
+		const QRectF in_front(60, 132, 80, 40);
+		r.obstacles << r.start_symbol << r.end_symbol << in_front;
+		const auto result = ConductorRouter::route(r);
+		QVERIFY(result.points.isEmpty());
+		QVERIFY(!result.error.isEmpty());
+	}
+
+		// A symbol drawn around others (a cabinet made as one element):
+		// the wire between two symbols inside it stays inside it, going
+		// round what lies between them.
+	void routesInsideAnEnclosingSymbol()
+	{
+		ConductorRouter::Request r;
+		r.start = {100, 100};
+		r.start_direction = Direction::East;
+		r.end = {300, 100};
+		r.end_direction = Direction::West;
+		r.start_symbol = QRectF(60, 80, 40, 40);
+		r.end_symbol = QRectF(300, 80, 40, 40);
+		const QRectF frame(20, 20, 360, 200);
+		const QRectF between(170, 60, 60, 80);
+		r.obstacles << frame << r.start_symbol << r.end_symbol << between;
+		r.bounds = QRectF(0, 0, 500, 400);
+		const auto result = ConductorRouter::route(r);
+		QVERIFY2(result.error.isEmpty(), qPrintable(result.error));
+		checkShape(result.points, r);
+		QVERIFY(!crosses(result.points, between.adjusted(-r.margin, -r.margin, r.margin, r.margin)));
+		for (const QPointF &p : result.points)
+			QVERIFY2(frame.contains(p), "the route leaves the frame");
+	}
 };
 
 QTEST_MAIN(TestConductorRouter)
