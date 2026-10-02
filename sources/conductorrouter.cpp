@@ -119,35 +119,77 @@ int indexOf(const QVector<qreal> &v, qreal c)
 	return (it != v.end() && std::abs(*it - c) < eps) ? int(it - v.begin()) : -1;
 }
 
-	///The cost of the edge along one axis from a to b at fixed coordinate at,
-	///or infinity if it crosses an obstacle. horizontal says which axis.
-qreal edgeCost(bool horizontal, qreal at, qreal a, qreal b,
-			   const QList<QRectF> &obstacles,
-			   const QVector<Span> &along, const QVector<Span> &across,
-			   qreal grid)
+	///[first, last) of the sorted v: the values strictly between low and high
+std::pair<int, int> openRange(const QVector<qreal> &v, qreal low, qreal high)
 {
+	const int first = int(std::upper_bound(v.begin(), v.end(), low) - v.begin());
+	const int last  = int(std::lower_bound(v.begin(), v.end(), high) - v.begin());
+	return {first, std::max(first, last)};
+}
+
+	///The cost of every edge along one axis, or infinity where an obstacle
+	///blocks it. Edge (k, i) runs from pos[i] to pos[i + 1] at the fixed
+	///coordinate lines[k], and is stored at [k * pos.size() + i];
+	///horizontal says which axis pos is. Each obstacle and wire visits only
+	///the edges it can touch, so the cost grows with the folio, not with
+	///the folio times everything drawn on it.
+std::vector<qreal> edgeCosts(bool horizontal,
+							 const QVector<qreal> &pos, const QVector<qreal> &lines,
+							 const QList<QRectF> &obstacles,
+							 const QVector<Span> &along, const QVector<Span> &across,
+							 qreal grid)
+{
+	const int np = pos.size(), nl = lines.size();
+	std::vector<qreal> cost(size_t(np) * nl, std::numeric_limits<qreal>::infinity());
+	for (int k = 0; k < nl; ++k)
+		for (int i = 0; i + 1 < np; ++i)
+			cost[size_t(k) * np + i] = pos[i + 1] - pos[i];
+
+		// The edges i that can overlap (low, high): pos[i + 1] > low and
+		// pos[i] < high. The exact test is applied to each one found.
+	const auto edges = [&](qreal low, qreal high) {
+		const int first = int(std::upper_bound(pos.begin(), pos.end(), low) - pos.begin()) - 1;
+		const int last  = int(std::lower_bound(pos.begin(), pos.end(), high) - pos.begin());
+		return std::pair<int, int>{std::max(0, first), std::min(np - 1, last)};
+	};
+
 	for (const QRectF &r : obstacles) {
 		const qreal lo  = horizontal ? r.left()  : r.top();
 		const qreal hi  = horizontal ? r.right() : r.bottom();
 		const qreal flo = horizontal ? r.top()   : r.left();
 		const qreal fhi = horizontal ? r.bottom(): r.right();
-		if (at > flo + eps && at < fhi - eps
-			&& std::min(b, hi) - std::max(a, lo) > eps)
-			return std::numeric_limits<qreal>::infinity();
+		const auto [k0, k1] = openRange(lines, flo, fhi);
+		const auto [i0, i1] = edges(lo, hi);
+		for (int k = k0; k < k1; ++k) {
+			if (!(lines[k] > flo + eps && lines[k] < fhi - eps)) continue;
+			for (int i = i0; i < i1; ++i)
+				if (std::min(pos[i + 1], hi) - std::max(pos[i], lo) > eps)
+					cost[size_t(k) * np + i] = std::numeric_limits<qreal>::infinity();
+		}
 	}
-	qreal cost = b - a;
 	for (const Span &s : along) {
-		if (std::abs(s.at - at) > 0.5) continue;
-		const qreal overlap = std::min(b, s.to) - std::max(a, s.from);
-		if (overlap > eps) cost += overlap * along_factor;
+		const int k0 = int(std::lower_bound(lines.begin(), lines.end(), s.at - 0.5) - lines.begin());
+		const auto [i0, i1] = edges(s.from, s.to);
+		for (int k = k0; k < nl && lines[k] <= s.at + 0.5; ++k) {
+			if (std::abs(s.at - lines[k]) > 0.5) continue;
+			for (int i = i0; i < i1; ++i) {
+				const qreal overlap = std::min(pos[i + 1], s.to) - std::max(pos[i], s.from);
+				if (overlap > eps) cost[size_t(k) * np + i] += overlap * along_factor;
+			}
+		}
 	}
 	for (const Span &s : across) {
 			// Half-open (a, b], so a crossing on a grid node is counted
 			// once, by the edge that ends on it; and only through the
 			// other wire's interior, not at its end, which is a junction.
-		if (s.at > a + eps && s.at <= b + eps
-			&& at > s.from + 0.5 && at < s.to - 0.5)
-			cost += cross_steps * grid;
+		const auto [k0, k1] = openRange(lines, s.from, s.to);
+		const auto [i0, i1] = edges(s.at - 1.0, s.at + 1.0);
+		for (int k = k0; k < k1; ++k) {
+			if (!(lines[k] > s.from + 0.5 && lines[k] < s.to - 0.5)) continue;
+			for (int i = i0; i < i1; ++i)
+				if (s.at > pos[i] + eps && s.at <= pos[i + 1] + eps)
+					cost[size_t(k) * np + i] += cross_steps * grid;
+		}
 	}
 	return cost;
 }
@@ -200,18 +242,14 @@ ConductorRouter::Result ConductorRouter::route(const Request &r)
 		}
 	}
 
-		// The cost of the edge from each node to the next one east
-		// (h_cost) and south (v_cost); infinity where blocked or none.
+		// The cost of the edge from each node to the next one east,
+		// h_cost[j * nx + i], and south, v_cost[i * ny + j]; infinity
+		// where blocked or none.
 	const qreal inf = std::numeric_limits<qreal>::infinity();
-	std::vector<qreal> h_cost(size_t(nx) * ny, inf), v_cost(size_t(nx) * ny, inf);
-	for (int j = 0; j < ny; ++j)
-		for (int i = 0; i + 1 < nx; ++i)
-			h_cost[size_t(j) * nx + i] = edgeCost(true, ys[j], xs[i], xs[i + 1], obstacles,
-												  horizontal_wires, vertical_wires, r.grid);
-	for (int i = 0; i < nx; ++i)
-		for (int j = 0; j + 1 < ny; ++j)
-			v_cost[size_t(j) * nx + i] = edgeCost(false, xs[i], ys[j], ys[j + 1], obstacles,
-												  vertical_wires, horizontal_wires, r.grid);
+	const std::vector<qreal> h_cost = edgeCosts(true, xs, ys, obstacles,
+											   horizontal_wires, vertical_wires, r.grid);
+	const std::vector<qreal> v_cost = edgeCosts(false, ys, xs, obstacles,
+											   vertical_wires, horizontal_wires, r.grid);
 
 	const int start_node = indexOf(ys, s1.y()) * nx + indexOf(xs, s1.x());
 	const int goal_node  = indexOf(ys, s2.y()) * nx + indexOf(xs, s2.x());
@@ -255,8 +293,8 @@ ConductorRouter::Result ConductorRouter::route(const Request &r)
 			switch (nd) {
 				case Direction::East:  if (i + 1 < nx) { ni = i + 1; edge = h_cost[size_t(j) * nx + i]; } break;
 				case Direction::West:  if (i > 0)      { ni = i - 1; edge = h_cost[size_t(j) * nx + ni]; } break;
-				case Direction::South: if (j + 1 < ny) { nj = j + 1; edge = v_cost[size_t(j) * nx + i]; } break;
-				case Direction::North: if (j > 0)      { nj = j - 1; edge = v_cost[size_t(nj) * nx + i]; } break;
+				case Direction::South: if (j + 1 < ny) { nj = j + 1; edge = v_cost[size_t(i) * ny + j]; } break;
+				case Direction::North: if (j > 0)      { nj = j - 1; edge = v_cost[size_t(i) * ny + nj]; } break;
 			}
 			if (edge == inf) continue;
 			const qreal next_cost = cost + edge + (nd == d ? 0 : bend);
