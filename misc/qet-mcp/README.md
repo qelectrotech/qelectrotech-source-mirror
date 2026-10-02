@@ -41,6 +41,7 @@ here read the model.
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
 | `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
+| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`) |
 | `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
 | `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
 | `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Projet > Scripts and the Scripts toolbar |
@@ -251,6 +252,21 @@ each tool. Importing `qet_mcp` and calling `tool_export()` from your own
 Python is not confined and is not meant to be — that is your code calling a
 library, and you already chose the paths.
 
+## What QElectroTech tells the server: `qet-assistant.json`
+
+Each time an editor window opens, and whenever its stored scripts,
+settings or live channel change, QElectroTech writes `qet-assistant.json`
+in its standard data folder (`~/.local/share/QElectroTech/QElectroTech/`
+on Linux, `%APPDATA%\QElectroTech\QElectroTech\` on Windows). It names
+every folder actually in use, even when QElectroTech was started with
+`--data-dir`, which features are on, every call a script can make, and the
+stored scripts. The server reads it instead of guessing; `qet_about` shows
+it. Set `QET_MCP_INFO_FILE` to read it from somewhere else.
+
+The server also sends the assistant a short note at first contact: the two
+ways of working (files, or live), the usual order of tools, and to start
+with `qet_about`.
+
 ## Script buttons
 
 QElectroTech turns every `.js` file in its scripts folder that starts with a
@@ -318,9 +334,10 @@ action, with an *Arrêter* button that closes the channel for the rest of
 the session. Each action is one Ctrl+Z. A script's `qet.showMessage()` is
 logged instead of opening a box nobody asked for.
 
-The channel is a local socket only your user can open. QElectroTech writes
-its name and a random token to `live-session.json` in its data folder
-(next to `scripts`), and deletes the file when the channel closes.
+The channel is a local socket only your user can open. QElectroTech puts
+its name and a random token in the `live` part of `qet-assistant.json`,
+and clears it when the channel closes; `qet_about` says whether one is
+open but never shows the token.
 
 ## Worked examples
 
