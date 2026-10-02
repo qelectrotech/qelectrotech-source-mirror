@@ -571,11 +571,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   stay whole numbers, because the folio properties panel edits them in
   whole pixels and would round a fraction off the first time it was
   opened; so the page can come out up to 0.75 pt short of the sheet a
-  side. The op's `note` says what it chose and the page a PDF export
-  writes, e.g. `23 columns of 70, 12 rows of 82; PDF page 1223.25 x
-  791.25 pt` for tabloid landscape from a new folio. (The PDF export makes
-  the page the frame and title block plus its one-pixel line, at 96 pixels
-  an inch: 0.75 pt a pixel.) Needs `qet.folioPresets()` in the build.
+  side. The op's `note` says what it chose and the size of the frame a PDF
+  export measures, e.g. `23 columns of 70, 12 rows of 82; frame 1223.25 x
+  791.25 pt` for tabloid landscape from a new folio. (The PDF export
+  measures the frame and title block plus its one-pixel line, at 96 pixels
+  an inch: 0.75 pt a pixel, and writes it on the standard sheet it is
+  within 3 pt of.) Needs `qet.folioPresets()` in the build.
 - **The `wiring` export names unnamed terminals.** Most shipped symbols
   leave their terminals unnamed, so `from_terminal`/`to_terminal` are often
   empty. Each row also ends with `from_terminal_index`,
