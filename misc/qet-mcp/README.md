@@ -570,6 +570,15 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   a terminal sharing its point with another, where the order is undefined;
   the uuid tells those apart. `wiring_list_view` carries the same four
   columns for `qet_query`.
+- **`"reproducible": true` makes a PDF comparable byte for byte.** Two
+  exports of the same project otherwise differ in their dates and document
+  id. The option sets `SOURCE_DATE_EPOCH` for the run
+  ([reproducible-builds.org](https://reproducible-builds.org/specs/source-date-epoch/)):
+  the PDF then carries that date in UTC, a document id derived from the
+  project file, and its fonts in a fixed order. The date is
+  `source_date_epoch` if given, else the server's own `SOURCE_DATE_EPOCH`,
+  else 0 (1 January 1970). The result's `"reproducible"` is false, with a
+  hint, when the QElectroTech build is too old to honour it.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*

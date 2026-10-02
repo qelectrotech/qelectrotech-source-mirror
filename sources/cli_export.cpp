@@ -42,7 +42,9 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QDomDocument>
+#include <QCryptographicHash>
 #include <QDate>
+#include <QDateTime>
 #include <QFile>
 #include <QSaveFile>
 #include <QFileInfo>
@@ -59,7 +61,9 @@
 #include <QSqlQuery>
 #include <QSvgGenerator>
 #include <QTextStream>
+#include <QTimeZone>
 #include <QTransform>
+#include <QUuid>
 
 namespace {
 
@@ -147,6 +151,23 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target,
 	diagram->setDrawTerminalNames(was_drawing_terminal_names);
 }
 
+/// The time SOURCE_DATE_EPOCH names, in seconds since 1970 UTC, or an
+/// invalid QDateTime when it is unset. A value that is not a whole number of
+/// seconds is reported and ignored.
+QDateTime sourceDateEpoch()
+{
+	const QByteArray value = qgetenv("SOURCE_DATE_EPOCH");
+	if (value.isEmpty())
+		return {};
+	bool ok = false;
+	const qlonglong seconds = value.toLongLong(&ok);
+	if (!ok || seconds < 0) {
+		err << "SOURCE_DATE_EPOCH '" << value << "' is not a number of seconds; ignored.\n";
+		return {};
+	}
+	return QDateTime::fromSecsSinceEpoch(seconds, QTimeZone::UTC);
+}
+
 int exportPdf(QETProject &project, const QString &output,
 			 bool showTerminals = false)
 {
@@ -165,6 +186,19 @@ int exportPdf(QETProject &project, const QString &output,
 	QPdfWriter writer(output);
 	writer.setCreator("QElectroTech");
 	writer.setResolution(96);
+
+	// SOURCE_DATE_EPOCH (reproducible-builds.org) asks for the same file
+	// from the same input: the time it names instead of now, and a document
+	// id from the project file instead of a random one. Qt has no setter for
+	// the dates, so they are rewritten once the file is written.
+	const QDateTime sourceDate = sourceDateEpoch();
+	if (sourceDate.isValid()) {
+		QCryptographicHash hash(QCryptographicHash::Sha256);
+		QFile file(project.filePath());
+		if (file.open(QIODevice::ReadOnly))
+			hash.addData(&file);
+		writer.setDocumentId(QUuid::createUuidV5(project.uuid(), hash.result()));
+	}
 
 	QPainter painter;
 	bool first = true;
@@ -240,6 +274,8 @@ int exportPdf(QETProject &project, const QString &output,
 	// the cross-references jump inside the document in any PDF viewer.
 	PdfLinks::convertUriToGoTo(output);
 	PdfLinks::removeUnusedPdfxNamespace(output);
+	if (sourceDate.isValid())
+		PdfLinks::setDocumentDate(output, sourceDate);
 
 	out << "Exported " << diagrams.size() << " page(s) -> " << output << "\n";
 	return 0;

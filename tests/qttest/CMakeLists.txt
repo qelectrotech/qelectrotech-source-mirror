@@ -407,6 +407,19 @@ target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_pdfpagesize PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# With SOURCE_DATE_EPOCH set, --export-pdf writes the same bytes for the
+# same project in every run. Exports examples/741.qet several times, in
+# separate processes.
+add_executable(
+  tst_pdfreproducible
+  tst_pdfreproducible.cpp)
+add_test(NAME tst_pdfreproducible COMMAND tst_pdfreproducible)
+add_dependencies(tst_pdfreproducible qelectrotech)
+target_link_libraries(tst_pdfreproducible PRIVATE Qt::Test)
+target_compile_definitions(tst_pdfreproducible PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # One text per potential: the number goes on the same conductor in every
 # run when two conductors tie for longest. Exports
 # fixtures/one_text_per_potential_tie.qet through the real binary, several
