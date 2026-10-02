@@ -87,6 +87,11 @@
 #include <QDir>
 #include <QDesktopServices>
 #include <QTimer>
+#include <QJsonArray>
+#include <QVBoxLayout>
+#include <QListWidget>
+#include <QCheckBox>
+#include <QDockWidget>
 #include <QJsonObject>
 #include <QTime>
 #include <QStatusBar>
@@ -3939,6 +3944,55 @@ void QETDiagramEditor::setUpLiveIndicator()
 	};
 	connect(&LiveServer::instance(), &LiveServer::stateChanged, box, update);
 	update(LiveServer::instance().state());
+
+		//The Assistant dock: every action, and whether to be asked first
+	auto *dock = new QDockWidget(tr("Assistant"), this);
+	dock->setObjectName(QStringLiteral("assistant_dock"));
+	auto *content = new QWidget(dock);
+	auto *dock_layout = new QVBoxLayout(content);
+	auto *ask = new QCheckBox(tr("Demander avant d'exécuter un script écrit par l'assistant"), content);
+	ask->setChecked(LiveServer::instance().askFirst());
+	ask->setToolTip(tr("Pour cette session seulement : chaque démarrage redemande"));
+	auto *log = new QListWidget(content);
+	log->setWordWrap(true);
+	dock_layout->addWidget(ask);
+	dock_layout->addWidget(log);
+	dock->setWidget(content);
+	addDockWidget(Qt::RightDockWidgetArea, dock);
+	dock->hide();
+	connect(ask, &QCheckBox::toggled, &LiveServer::instance(), &LiveServer::setAskFirst);
+	connect(&LiveServer::instance(), &LiveServer::askFirstChanged, ask, &QCheckBox::setChecked);
+	connect(&LiveServer::instance(), &LiveServer::stateChanged, dock,
+		[dock](LiveServer::State state) {
+		if (state == LiveServer::Waiting) dock->show();
+		else if (state == LiveServer::Off) dock->hide();
+	});
+	connect(&LiveServer::instance(), &LiveServer::handled, log,
+		[log](const QJsonObject &request, const QJsonObject &answer) {
+		const QString cmd = request.value(QStringLiteral("cmd")).toString();
+		if (cmd == QLatin1String("status")) return;
+		const bool ok = answer.value(QStringLiteral("ok")).toBool();
+		QString what = answer.value(QStringLiteral("undo")).toString();
+		for (const char *key : {"name", "script", "action"})
+			if (what.isEmpty()) what = request.value(QLatin1String(key)).toString();
+		if (what.isEmpty()) what = cmd;
+		auto *item = new QListWidgetItem(QStringLiteral("%1  %2  %3")
+			.arg(QTime::currentTime().toString(QStringLiteral("HH:mm:ss")),
+			     ok ? QStringLiteral("✓") : QStringLiteral("✗"), what));
+		QStringList details;
+		if (!ok) details << answer.value(QStringLiteral("error")).toString();
+		const QJsonArray lines = answer.value(QStringLiteral("log")).toArray();
+		for (const QJsonValue &l : lines) details << l.toString();
+		const QString source = request.value(QStringLiteral("source")).toString();
+		if (!source.isEmpty()) details << QString() << source;
+		item->setToolTip(details.join(QLatin1Char('\n')));
+		item->setData(Qt::UserRole, details.join(QLatin1Char('\n')));
+		log->insertItem(0, item);
+	});
+	connect(log, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem *item) {
+		QET::QetMessageBox::information(this, tr("Assistant"),
+						item->data(Qt::UserRole).toString());
+	});
 		//What the assistant just did, where the user is already looking
 	connect(&LiveServer::instance(), &LiveServer::handled, box,
 		[label](const QJsonObject &request, const QJsonObject &answer) {
@@ -3949,6 +4003,10 @@ void QETDiagramEditor::setUpLiveIndicator()
 			what = request.value(QStringLiteral("name")).toString();
 		if (what.isEmpty())
 			what = request.value(QStringLiteral("script")).toString();
+		if (what.isEmpty())
+			what = request.value(QStringLiteral("action")).toString();
+		if (what.isEmpty())
+			what = cmd;
 		label->setText(tr("Mode direct : %1 %2 à %3")
 			       .arg(answer.value(QStringLiteral("ok")).toBool() ? QStringLiteral("✓")
 										  : QStringLiteral("✗"),
