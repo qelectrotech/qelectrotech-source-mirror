@@ -586,6 +586,7 @@ class QetScriptApi : public QObject
 
 		// -- what a script can call, read from this class itself --
 		Q_INVOKABLE QStringList apiSignatures() const;
+		static QStringList signatures();
 
 		void setUndoGrouped(bool grouped);
 

@@ -923,6 +923,11 @@ list(APPEND QET_SRC_FILES
   ${QET_DIR}/sources/scripting/qetscriptapi.h
   ${QET_DIR}/sources/scripting/qetscripting.cpp
   ${QET_DIR}/sources/scripting/qetscripting.h
+  ${QET_DIR}/sources/scripting/scriptheader.h
+  ${QET_DIR}/sources/scripting/scriptlibrary.cpp
+  ${QET_DIR}/sources/scripting/scriptlibrary.h
+  ${QET_DIR}/sources/scripting/assistantinfo.cpp
+  ${QET_DIR}/sources/scripting/assistantinfo.h
 )
 
 if(QET_SPACEMOUSE_ENABLED)

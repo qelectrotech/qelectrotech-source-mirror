@@ -66,6 +66,8 @@ class ShortcutManager
 				     const QString &category,
 				     const QKeySequence &default_sequence);
 
+		void unregisterAction(QObject *target, const QString &id);
+
 		QList<ShortcutInfo> allShortcuts() const;
 		QKeySequence currentSequence(const QString &id) const;
 		void setSequence(const QString &id, const QKeySequence &sequence);

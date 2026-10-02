@@ -212,6 +212,18 @@ set_tests_properties(tst_commandsearch PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=o
 target_include_directories(tst_commandsearch PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_commandsearch PRIVATE Qt::Test Qt::Widgets)
 
+# scriptheader.h is header-only: the // ==QETScript== block that turns a
+# stored script into a button; and ShortcutManager::unregisterAction(), which
+# takes a deleted script's command out of the lists again.
+add_executable(
+  tst_scriptheader
+  tst_scriptheader.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_scriptheader COMMAND tst_scriptheader)
+set_tests_properties(tst_scriptheader PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_scriptheader PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_scriptheader PRIVATE Qt::Test Qt::Widgets)
+
 # QETSql::execReadOnly() -- read-only enforcement for every project-database
 # query, including the ones a .qet file carries. Compiles sqlreadonly.cpp
 # alone against its own in-memory QSQLITE connection, so the security

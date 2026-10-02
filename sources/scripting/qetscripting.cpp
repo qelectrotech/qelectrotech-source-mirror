@@ -113,7 +113,8 @@ namespace {
 	constexpr int kScriptTimeoutMs = 30000;
 }
 
-bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view)
+bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view,
+		  const QString &title)
 {
 	// Checked here as well as at each caller, deliberately: this is the
 	// one function that actually evaluates JavaScript, so it is the one
@@ -173,7 +174,8 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 	QUndoStack *stack = (view && project) ? project->undoStack() : nullptr;
 	if (stack) {
 		stack->beginMacro(QObject::tr("Script : %1")
-				  .arg(QFileInfo(scriptPath).completeBaseName()));
+				  .arg(title.isEmpty() ? QFileInfo(scriptPath).completeBaseName()
+						       : title));
 		api->setUndoGrouped(true);
 	}
 
@@ -229,7 +231,7 @@ int run(const QStringList &)
 	return 1;
 }
 
-bool runOnProject(const QString &, QETProject *, DiagramView *)
+bool runOnProject(const QString &, QETProject *, DiagramView *, const QString &)
 {
 	err << "This build of QElectroTech was compiled without the Qt Qml "
 		   "module, so JavaScript scripting is not available.\n";

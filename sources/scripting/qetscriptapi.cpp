@@ -134,8 +134,18 @@ int QetScriptApi::folioCount() const
 */
 QStringList QetScriptApi::apiSignatures() const
 {
+	return signatures();
+}
+
+/**
+	@brief QetScriptApi::signatures
+	apiSignatures() without a script running: what qet-assistant.json lists
+	for an assistant before it has run anything.
+*/
+QStringList QetScriptApi::signatures()
+{
 	QStringList list;
-	const QMetaObject *meta = metaObject();
+	const QMetaObject *meta = &staticMetaObject;
 	for (int i = meta->methodOffset(); i < meta->methodCount(); ++i) {
 		const QMetaMethod method = meta->method(i);
 		if (method.methodType() != QMetaMethod::Method

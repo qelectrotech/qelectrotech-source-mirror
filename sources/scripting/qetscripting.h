@@ -57,9 +57,12 @@ namespace QetScripting {
 		@param view the active DiagramView, so the script's zoom methods
 		have something to act on; nullptr from the headless entry point,
 		where they become no-ops (see QetScriptApi).
+		@param title what the undo step is called; the script's file name
+		if empty.
 		@return true if the script ran without throwing.
 	*/
-	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr);
+	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr,
+			  const QString &title = QString());
 
 }
 
