@@ -151,8 +151,15 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
 	xrp.setMasterLabel(ui->m_master_le->text());
 	xrp.setSlaveLabel(ui->m_slave_le->text());
-	xrp.setOffset(ui->m_offset_sb->value());
-	xrp.setSlaveOffset(ui->m_slave_offset_sb->value());
+		//The boxes cannot show a value below their minimum (the offset's
+		//minimum is its "Default" entry, standing for the stored 0): keep
+		//the stored value unless the box shows something else.
+	if (ui->m_offset_sb->value() != qBound(ui->m_offset_sb->minimum(), xrp.offset(),
+										   ui->m_offset_sb->maximum()))
+		xrp.setOffset(ui->m_offset_sb->value());
+	if (ui->m_slave_offset_sb->value() != qBound(ui->m_slave_offset_sb->minimum(), xrp.slaveOffset(),
+												 ui->m_slave_offset_sb->maximum()))
+		xrp.setSlaveOffset(ui->m_slave_offset_sb->value());
 
 	m_properties.insert(type, xrp);
 }

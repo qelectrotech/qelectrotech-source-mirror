@@ -166,6 +166,7 @@ void TitleBlockPropertiesWidget::setProperties(
 	// Show the saved custom values, plus any of the template's custom variables
 	// that aren't defined yet, so the user only fills in the missing ones (#271).
 	DiagramContext context = properties.context;
+	m_context_keys = context.keys();
 	addTemplateVariables(context, index);
 	m_dcw -> setContext(context);
 }
@@ -215,6 +216,14 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	}
 
 	prop.context = m_dcw -> context();
+		//The template's custom variables are only offered for filling in
+		//(#271): one left empty is not part of the properties.
+	const QList<QString> keys = prop.context.keys();
+	for (const QString &key : keys) {
+		if (!m_context_keys.contains(key)
+				&& prop.context.value(key).toString().isEmpty())
+			prop.context.remove(key);
+	}
 
 	prop.auto_page_num = ui->auto_page_cb->currentText();
 
