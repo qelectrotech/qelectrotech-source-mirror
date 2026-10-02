@@ -63,8 +63,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset theme="dialog-ok" resource="../../../qelectrotech.qrc">
-              <normaloff>:/ico/16x16/dialog-ok.png</normaloff>:/ico/16x16/dialog-ok.png</iconset>
+             <iconset theme="dialog-ok"/>
             </property>
            </widget>
           </item>

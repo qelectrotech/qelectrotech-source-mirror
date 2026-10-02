@@ -255,9 +255,9 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
 */
 void ElementsPanel::reload()
 {
-	QIcon system_icon(":/ico/16x16/qet.png");
+	QIcon system_icon = QIcon::fromTheme("qet");
 	QIcon company_icon = QET::Icons::Company;
-	QIcon user_icon(":/ico/16x16/go-home.png");
+	QIcon user_icon = QIcon::fromTheme("go-home");
 
 	// load the common title block templates collection
 	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();

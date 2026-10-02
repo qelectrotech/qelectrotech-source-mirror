@@ -62,9 +62,6 @@
          <property name="text">
           <string/>
          </property>
-         <property name="pixmap">
-          <pixmap resource="../../qelectrotech.qrc">:/ico/48x48/user-away-extended.png</pixmap>
-         </property>
          <property name="scaledContents">
           <bool>true</bool>
          </property>

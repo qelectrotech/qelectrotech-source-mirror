@@ -42,6 +42,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/conductortextitem.h"
 #include "../conductorsegment.h"
+#include "../conductorrouter.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 
 // See diagrameventaddpdf.h: a missing QtPdf module (or Qt < 6.4) is not
@@ -86,6 +87,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QDir>
 #include <QDomDocument>
 #include <QFileInfo>
 #include <QFont>
@@ -677,6 +679,17 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 		const QString import_path = location.isFileSystem()
 				? QStringLiteral("import/") + location.collectionPath(false)
 				: location.collectionPath(false);
+		// An element file that exists but cannot be read gives a null
+		// uuid(), which the collision check below would misreport as "a
+		// different element" -- say what actually went wrong instead.
+		if (location.isFileSystem()
+				&& location.pugiXml().document_element().empty()) {
+			const QString file = QDir::toNativeSeparators(
+						QFileInfo(location.fileSystemPath()).absoluteFilePath());
+			log(QStringLiteral("qet.addElement: could not read element '%1' (file '%2', "
+								"%3 characters)").arg(locationPath, file).arg(file.size()));
+			return QString();
+		}
 		const ElementsLocation existing(import_path, m_project);
 		if (existing.exist() && existing.uuid() != location.uuid()) {
 			log(QStringLiteral("qet.addElement: '%1' would collide with a different element "
@@ -1192,6 +1205,119 @@ bool QetScriptApi::moveConductorSegment(int folioIndex, const QString &elementUu
 	}
 
 	return conductor->moveSegment(segmentIndex, dx, dy);
+}
+
+namespace {
+ConductorRouter::Direction routerDirection(Qet::Orientation o)
+{
+	switch (o) {
+		case Qet::North: return ConductorRouter::Direction::North;
+		case Qet::East:  return ConductorRouter::Direction::East;
+		case Qet::South: return ConductorRouter::Direction::South;
+		case Qet::West:  return ConductorRouter::Direction::West;
+	}
+	return ConductorRouter::Direction::North;
+}
+} // namespace
+
+/**
+	@brief QetScriptApi::applyRoute
+	Redraw @p conductor around the symbols on its folio (ConductorRouter),
+	as one undo step through Conductor::setPathPoints() -- the same
+	ChangeConductorCommand a handle drag pushes, so the path is saved and
+	survives a reload. Obstacles are every element's own rectangle, its
+	texts left out; the other conductors are not obstacles but cost extra
+	to run along or cross.
+	@return "routed", or "no-route" with the reason logged when there is
+	no such path -- the conductor then keeps the path it had. Not a
+	failure: the wire exists and joins the right terminals either way.
+*/
+QString QetScriptApi::applyRoute(Conductor *conductor, const QString &caller)
+{
+	Diagram *diagram = conductor->diagram();
+	if (!diagram) return QString();
+
+	ConductorRouter::Request request;
+	request.start = conductor->terminal1->dockConductor();
+	request.start_direction = routerDirection(conductor->terminal1->orientation());
+	request.end = conductor->terminal2->dockConductor();
+	request.end_direction = routerDirection(conductor->terminal2->orientation());
+	request.grid = Diagram::xGrid;
+	request.bounds = diagram->border_and_titleblock.insideBorderRect();
+	for (Element *e : diagram->elements())
+		request.obstacles << e->mapRectToScene(e->boundingRect());
+	for (Conductor *other : diagram->conductors()) {
+		if (other == conductor) continue;
+		QVector<QPointF> wire;
+		const QList<ConductorSegment *> segs = other->segmentsList();
+		for (ConductorSegment *seg : segs) {
+			if (wire.isEmpty()) wire << other->mapToScene(seg->firstPoint());
+			wire << other->mapToScene(seg->secondPoint());
+		}
+		request.wires << wire;
+	}
+
+	const ConductorRouter::Result route = ConductorRouter::route(request);
+	if (route.points.isEmpty()) {
+		log(QStringLiteral("qet.%1: %2; the conductor keeps its path")
+			.arg(caller, route.error));
+		return QStringLiteral("no-route");
+	}
+	if (!conductor->setPathPoints(route.points)) {
+		log(QStringLiteral("qet.%1: the route found does not join the two terminals; "
+						   "the conductor keeps its path").arg(caller));
+		return QStringLiteral("no-route");
+	}
+	return QStringLiteral("routed");
+}
+
+/**
+	@brief QetScriptApi::routeConductor
+	Redraw the conductor on a terminal so it goes around the symbols in
+	its way instead of through them -- see applyRoute(). Addressed as the
+	other conductor calls address one.
+	@return "routed", "no-route" (path unchanged, reason logged), or an
+	empty string if there is no such conductor or the project is read-only
+*/
+QString QetScriptApi::routeConductor(int folioIndex, const QString &elementUuid,
+									 int terminalIndex)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.routeConductor: project is read-only"));
+		return QString();
+	}
+	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex,
+										 QStringLiteral("routeConductor"));
+	if (!conductor) return QString();
+	return applyRoute(conductor, QStringLiteral("routeConductor"));
+}
+
+/**
+	@brief QetScriptApi::routeConductorBetween
+	routeConductor() for the conductor joining two given terminals, which
+	names it even where either terminal carries other conductors too --
+	the case just after addConductor() onto a terminal already wired.
+*/
+QString QetScriptApi::routeConductorBetween(int folioIndex,
+											const QString &elementUuidA, int terminalIndexA,
+											const QString &elementUuidB, int terminalIndexB)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.routeConductorBetween: project is read-only"));
+		return QString();
+	}
+	const QString caller = QStringLiteral("routeConductorBetween");
+	Terminal *a = findTerminal(folioIndex, elementUuidA, terminalIndexA, caller);
+	Terminal *b = findTerminal(folioIndex, elementUuidB, terminalIndexB, caller);
+	if (!a || !b) return QString();
+	for (Conductor *c : a->conductors()) {
+		if (c->terminal1 == b || c->terminal2 == b)
+			return applyRoute(c, caller);
+	}
+	log(QStringLiteral("qet.%1: no conductor joins those two terminals").arg(caller));
+	return QString();
 }
 
 QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid) const

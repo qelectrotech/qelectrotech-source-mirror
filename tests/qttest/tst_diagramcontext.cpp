@@ -65,6 +65,24 @@ private slots:
 		QCOMPARE(fromDom(xml(value)), expected);
 		QCOMPARE(fromPugi(xml(value)), expected);
 	}
+
+		// remove() forgets the key entirely: a context with a key added
+		// then removed equals one that never had it. remove() used to keep
+		// the key's show flag, so the two never compared equal, and
+		// Project properties > OK saw a change where there was none.
+	void removeForgetsTheKey()
+	{
+		DiagramContext edited;
+		edited.addValue(QStringLiteral("author"), QStringLiteral("N.V."));
+		edited.addValue(QStringLiteral("01-numprojet"), QString());
+		edited.remove(QStringLiteral("01-numprojet"));
+
+		DiagramContext stored;
+		stored.addValue(QStringLiteral("author"), QStringLiteral("N.V."));
+
+		QCOMPARE(edited.keys(), stored.keys());
+		QVERIFY(edited == stored);
+	}
 };
 
 QTEST_APPLESS_MAIN(tst_diagramcontext)

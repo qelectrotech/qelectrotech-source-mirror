@@ -73,8 +73,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
-        <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+       <iconset theme="view-refresh"/>
       </property>
      </widget>
     </item>
@@ -161,8 +160,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
-        <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+       <iconset theme="view-refresh"/>
       </property>
      </widget>
     </item>
@@ -238,8 +236,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
-        <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+       <iconset theme="view-refresh"/>
       </property>
      </widget>
     </item>
@@ -319,8 +316,7 @@
        <string>Configurer</string>
       </property>
       <property name="icon">
-       <iconset theme="configure" resource="../../../qelectrotech.qrc">
-        <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
+       <iconset theme="configure"/>
       </property>
      </widget>
     </item>

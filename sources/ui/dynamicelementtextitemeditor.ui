@@ -25,8 +25,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset theme="document-save" resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/document-save.png</normaloff>:/ico/16x16/document-save.png</iconset>
+        <iconset theme="document-save"/>
        </property>
       </widget>
      </item>
@@ -39,8 +38,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset theme="folder-open" resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
+        <iconset theme="folder-open"/>
        </property>
       </widget>
      </item>
@@ -79,8 +77,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset theme="object-group" resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/object-group.png</normaloff>:/ico/16x16/object-group.png</iconset>
+        <iconset theme="object-group"/>
        </property>
       </widget>
      </item>
@@ -93,8 +90,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset theme="list-remove" resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
+        <iconset theme="list-remove"/>
        </property>
       </widget>
      </item>

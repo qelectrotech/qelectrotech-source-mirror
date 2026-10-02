@@ -22,6 +22,7 @@ away: a check that has never been seen to fail is not evidence.
 
 from __future__ import annotations
 
+import csv
 import json
 import os
 import re
@@ -281,6 +282,35 @@ class EditValidation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "saved before conductors carried a uuid"):
             self.build([{"op": "delete_conductor", "folio": 0, "conductor": ""}])
 
+    def test_route_ops(self):
+        """route_conductor and add_conductor's "route": "avoid" call the
+        router; neither makes a missing route a failure of the run, and the
+        router methods are required only by an edit that routes."""
+        E, F = "{11111111-2222-4333-8444-555555555555}", "{21111111-2222-4333-8444-555555555555}"
+        U = "{31111111-2222-4333-8444-555555555555}"
+        plain = self.build([{"op": "add_conductor", "folio": 0, "from": E, "from_terminal": 1,
+                             "to": F, "to_terminal": 0}])
+        self.assertNotIn("routeConductor", plain)
+        self.assertEqual(plain, self.build([{"op": "add_conductor", "folio": 0, "from": E,
+                                             "from_terminal": 1, "to": F, "to_terminal": 0,
+                                             "route": "default"}]))
+        s = self.build([{"op": "add_conductor", "folio": 0, "from": E, "from_terminal": 1,
+                         "to": F, "to_terminal": 0, "route": "avoid"}])
+        self.assertIn(f'if (v0 === true) {{ var r0 = qet.routeConductorBetween(0, "{E}", 1, "{F}", 0);', s)
+        self.assertIn('"routeConductorBetween"', s)
+        self.assertNotIn('"routeConductor",', s)
+        # the op's own result is still the conductor being added
+        self.assertIn("result: v0", s)
+        s = self.build([{"op": "route_conductor", "folio": 2, "conductor": U}])
+        self.assertIn("(e0 ? qet.routeConductor(2, e0.element, e0.terminal) : false)", s)
+        self.assertIn("if (v0 === 'no-route')", s)
+        self.assertIn('"routeConductor"', s)
+        s = self.build([{"op": "route_conductor", "folio": 0, "element": E, "terminal": 1}])
+        self.assertIn(f'qet.routeConductor(0, "{E}", 1)', s)
+        with self.assertRaisesRegex(ValueError, "unknown route"):
+            self.build([{"op": "add_conductor", "folio": 0, "from": E, "from_terminal": 1,
+                         "to": F, "to_terminal": 0, "route": "around"}])
+
     def test_terminal_by_uuid(self):
         """A terminal named by uuid is turned into its index at run time, on
         the element it belongs to: the op's element, or each add_conductor
@@ -343,6 +373,8 @@ class EditValidation(unittest.TestCase):
             "move_conductor_segment": el + [{"op": "move_conductor_segment", "folio": "$f",
                                              "element": "$e", "terminal": 0, "segment": 1,
                                              "dx": 10, "dy": 0}],
+            "route_conductor": el + [{"op": "route_conductor", "folio": "$f", "element": "$e",
+                                      "terminal": 0}],
             "delete_conductor": el + [{"op": "delete_conductor", "folio": "$f", "element": "$e", "terminal": 0}],
             "link_elements": two + [{"op": "link_elements", "folio": "$f", "element": "$e",
                                      "to_folio": "$f", "to": "$e2"}],
@@ -3675,6 +3707,44 @@ class Integration(unittest.TestCase):
         note = r["operations"][1].get("note", "")
         self.assertIn("from_terminal: no terminal", note)
         self.assertIn("to_terminal: no terminal", note)
+    def test_wiring_export_names_unnamed_terminals(self):
+        """--export-wiring gives each end the index add_conductor took and
+        the uuid the file names the terminal by, even where the terminal
+        has no name. This strip's file lists its terminals in another order
+        than the index (top to bottom, then left to right), so a column
+        holding the file's order would fail here."""
+        strip = ("common://10_electric/10_allpole/130_terminals_terminal_strips/"
+                 "90_terminal_strips_diagram/90-10-0211.elmt")
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": strip, "x": 100, "y": 200},
+            {"op": "add_element", "id": "b", "folio": 0, "path": strip, "x": 400, "y": 200},
+            {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 2,
+             "to": "$b", "to_terminal": 3},
+            {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 1,
+             "to": "$b", "to_terminal": 0}]))
+        a_uuid, b_uuid = (o["result"] for o in r["operations"][:2])
+        out = self.sb.p("wiring.csv")
+        e = m.tool_export(BINARY, r["output"], "wiring", out)
+        self.assertTrue(e["ok"], e)
+        with open(out, encoding="utf-8-sig", newline="") as fh:
+            rows = list(csv.DictReader(fh, delimiter=";"))
+        self.assertEqual(len(rows), 2)
+        # the conductor in the file: which uuid it names each end by
+        in_file = {c.get("uuid"): {(c.get("element1"), c.get("terminal1")),
+                                   (c.get("element2"), c.get("terminal2"))}
+                   for c in ET.parse(r["output"]).getroot().iter("conductor")
+                   if c.get("element1")}
+        got = set()
+        for row in rows:
+            self.assertEqual((row["from_terminal"], row["to_terminal"]), ("", ""))
+            ends = {(int(row["from_terminal_index"]), row["from_terminal_uuid"]),
+                    (int(row["to_terminal_index"]), row["to_terminal_uuid"])}
+            self.assertEqual({u for _, u in ends},
+                             {t for _, t in in_file[row["conductor_uuid"]]})
+            got.add(frozenset(i for i, _ in ends))
+        self.assertEqual(got, {frozenset({2, 3}), frozenset({1, 0})})
+
     def test_folio_ref_survives_an_insert_before_it(self):
         """add_folio names a folio "$f"; inserting another at position 0
         moves it from index 1 to 2. "$f" must still name it."""
@@ -3805,6 +3875,65 @@ class Integration(unittest.TestCase):
             {"op": "move_conductor_segment", "folio": "$f", "element": "$a",
              "terminal": 0, "segment": 99, "dx": 1, "dy": 1}])
         self.assertFalse(r["ok"])
+
+    def _column_with_a_symbol_between(self):
+        """Three coils in a column; a wire from the bottom of the first to
+        the top of the third runs straight through the middle one by
+        default."""
+        return [{"op": "add_folio", "id": "f"},
+                {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 200, "y": 100},
+                {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 200, "y": 250},
+                {"op": "add_element", "id": "c", "folio": "$f", "path": COIL, "x": 200, "y": 400}]
+
+    @staticmethod
+    def _crosses_the_middle_coil(xml):
+        """Whether the saved path enters the middle coil. The path starts
+        at the first coil's A2 terminal, (200, 120); relative to that the
+        middle coil (40 x 60, hotspot 17,32, placed at 200,250) covers
+        x -17..23, y 98..158."""
+        segs = re.findall(r'<segment length="([-0-9.]+)" orientation="(\w+)"', xml)
+        x = y = 0.0
+        for length, orientation in segs:
+            nx, ny = (x + float(length), y) if orientation == "horizontal" else (x, y + float(length))
+            lo_x, hi_x, lo_y, hi_y = min(x, nx), max(x, nx), min(y, ny), max(y, ny)
+            if lo_x < 23 and hi_x > -17 and lo_y < 158 and hi_y > 98:
+                return True
+            x, y = nx, ny
+        return False
+
+    def test_route_avoid_goes_around_the_symbol_between(self):
+        base = self.sb.new()
+        ops = self._column_with_a_symbol_between()
+        wire = {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 1,
+                "to": "$c", "to_terminal": 0}
+        # the arm that must differ: the default path is straight, saved
+        # without segments, and so through the middle coil
+        plain = self.ok(self.sb.edit(base, ops + [wire], out="plain.qet"))
+        self.assertNotIn("<segment", Path(plain["output"]).read_text(encoding="utf-8"))
+        r = self.ok(self.sb.edit(base, ops + [{**wire, "route": "avoid"}], out="routed.qet"))
+        self.assertNotIn("note", r["operations"][-1])
+        xml = Path(r["output"]).read_text(encoding="utf-8")
+        self.assertIn("<segment", xml, "a routed path is saved as segments")
+        self.assertFalse(self._crosses_the_middle_coil(xml))
+        # the check can fail: the straight default path, as segments
+        self.assertTrue(self._crosses_the_middle_coil(
+            '<segment length="260" orientation="vertical"/>'))
+        # one undo puts the default path back
+        u = self.ok(self.sb.edit(base, ops + [{**wire, "route": "avoid"}, {"op": "undo"}],
+                                 out="undone.qet"))
+        self.assertNotIn("<segment", Path(u["output"]).read_text(encoding="utf-8"))
+
+    def test_route_conductor_reroutes_an_existing_wire(self):
+        base = self.sb.new()
+        ops = self._column_with_a_symbol_between() + [
+            {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 1,
+             "to": "$c", "to_terminal": 0},
+            {"op": "route_conductor", "folio": "$f", "element": "$a", "terminal": 1}]
+        r = self.ok(self.sb.edit(base, ops))
+        self.assertEqual(r["operations"][-1]["result"], "routed")
+        xml = Path(r["output"]).read_text(encoding="utf-8")
+        self.assertIn("<segment", xml)
+        self.assertFalse(self._crosses_the_middle_coil(xml))
 
     # ---- search and replace ----
 
