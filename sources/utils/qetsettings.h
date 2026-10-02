@@ -38,6 +38,8 @@ namespace QetSettings
 	bool scriptingEnabled();
 	void setScriptingEnabled(bool enabled);
 	bool scriptingForcedByEnvironment();
+	bool liveAssistantEnabled();
+	void setLiveAssistantEnabled(bool enabled);
 
 	/**
 		@brief The sheet (folio) background the diagram editors draw.

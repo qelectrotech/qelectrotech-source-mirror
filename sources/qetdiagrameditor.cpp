@@ -20,6 +20,7 @@
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
 #include "scripting/scriptmanagerdialog.h"
+#include "scripting/liveserver.h"
 #include "scripting/assistantinfo.h"
 #endif
 #include <QCoreApplication>
@@ -86,6 +87,11 @@
 #include <QDir>
 #include <QDesktopServices>
 #include <QTimer>
+#include <QJsonObject>
+#include <QTime>
+#include <QStatusBar>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QUrl>
 #include <algorithm>
 #ifdef BUILD_WITHOUT_KF
@@ -168,6 +174,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
 #ifdef QET_HAS_SCRIPTING
+	setUpLiveIndicator();
+		//Live mode asks once per run, from the first window to open, and
+		//only once that window is on screen to anchor its warning.
+	QTimer::singleShot(0, this, [this]() { LiveServer::instance().askAndStart(this); });
 		//A toolbar saved as shown while there were scripts stays out of
 		//the way while there are none.
 	if (m_script_actions.isEmpty()) m_scripts_tool_bar->hide();
@@ -3898,6 +3908,53 @@ void QETDiagramEditor::rebuildScriptActions()
 	m_had_scripts = has_scripts;
 
 	updateScriptActions();
+}
+
+/**
+	@brief QETDiagramEditor::setUpLiveIndicator
+	"Assistant connecté" and a Stop button on the status bar, shown
+	whenever live mode is open, so it is never on without being seen.
+*/
+void QETDiagramEditor::setUpLiveIndicator()
+{
+	auto *box = new QWidget(this);
+	auto *layout = new QHBoxLayout(box);
+	layout->setContentsMargins(0, 0, 0, 0);
+	auto *label = new QLabel(box);
+	auto *stop = new QToolButton(box);
+	stop->setText(tr("Arrêter"));
+	stop->setToolTip(tr("Couper la connexion de l'assistant pour le reste de la session"));
+	layout->addWidget(label);
+	layout->addWidget(stop);
+	statusBar()->addPermanentWidget(box);
+	connect(stop, &QToolButton::clicked, this, []() { LiveServer::instance().stop(); });
+
+	auto update = [box, label](LiveServer::State state) {
+		box->setVisible(state != LiveServer::Off);
+		label->setText(state == LiveServer::Connected
+			       ? tr("Mode direct : assistant connecté")
+			       : tr("Mode direct : en attente d'un assistant"));
+		label->setStyleSheet(state == LiveServer::Connected
+				     ? QStringLiteral("font-weight: bold") : QString());
+	};
+	connect(&LiveServer::instance(), &LiveServer::stateChanged, box, update);
+	update(LiveServer::instance().state());
+		//What the assistant just did, where the user is already looking
+	connect(&LiveServer::instance(), &LiveServer::handled, box,
+		[label](const QJsonObject &request, const QJsonObject &answer) {
+		const QString cmd = request.value(QStringLiteral("cmd")).toString();
+		if (cmd == QLatin1String("status")) return;
+		QString what = answer.value(QStringLiteral("undo")).toString();
+		if (what.isEmpty())
+			what = request.value(QStringLiteral("name")).toString();
+		if (what.isEmpty())
+			what = request.value(QStringLiteral("script")).toString();
+		label->setText(tr("Mode direct : %1 %2 à %3")
+			       .arg(answer.value(QStringLiteral("ok")).toBool() ? QStringLiteral("✓")
+										  : QStringLiteral("✗"),
+				    what, QTime::currentTime().toString(QStringLiteral("HH:mm:ss"))));
+		label->setToolTip(answer.value(QStringLiteral("error")).toString());
+	});
 }
 
 /**

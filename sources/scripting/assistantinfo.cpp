@@ -102,6 +102,7 @@ void write()
 			{QStringLiteral("scripting_available"), false},
 #endif
 			{QStringLiteral("scripting_enabled"), QetSettings::scriptingEnabled()},
+			{QStringLiteral("live_mode_setting"), QetSettings::liveAssistantEnabled()},
 			{QStringLiteral("live_mode_open"), !s_live.isEmpty()}}},
 		{QStringLiteral("script_api"), QJsonArray::fromStringList(QetScriptApi::signatures())},
 		{QStringLiteral("stored_scripts"), scripts},

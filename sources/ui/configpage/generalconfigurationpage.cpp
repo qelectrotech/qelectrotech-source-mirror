@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
+#include "../../scripting/liveserver.h"
 #include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
@@ -132,6 +133,11 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		//quietly clear a preference set on a build that does have Qml.
 	ui->m_enable_scripting->setVisible(false);
 	ui->m_enable_scripting->setEnabled(false);
+#endif
+	ui->m_live_assistant->setChecked(QetSettings::liveAssistantEnabled());
+#ifndef QET_HAS_SCRIPTING
+	ui->m_live_assistant->setVisible(false);
+	ui->m_live_assistant->setEnabled(false);
 #endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
@@ -307,6 +313,13 @@ void GeneralConfigurationPage::applyConf()
 		//real preference the first time this dialog is accepted.
 	if (ui->m_enable_scripting->isEnabled()) {
 		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
+	}
+	if (ui->m_live_assistant->isEnabled()) {
+		QetSettings::setLiveAssistantEnabled(ui->m_live_assistant->isChecked());
+#ifdef QET_HAS_SCRIPTING
+			//Switching it off closes the door now, not at the next start
+		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
+#endif
 	}
 		//What an assistant reads about this QElectroTech follows the change
 	AssistantInfo::write();
