@@ -545,8 +545,11 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   the cheapest found by a search that charges for length, for each bend
   and, less heavily, for running along or crossing another wire. Obstacles
   are each symbol's own rectangle plus half a grid step; texts, images,
-  shapes and tables are not obstacles. The path is saved as a hand-edited
-  one, so it survives a reload and one undo puts the default back. Where
+  shapes and tables are not obstacles. Running along another wire costs
+  more but is not forbidden, so where there is no other way two wires
+  can end up drawn on top of each other. The path is saved as a
+  hand-edited one, so it survives a reload and one undo puts the
+  default back. Where
   no route exists, the wire keeps its path: `route_conductor` returns
   `"no-route"` and both ops say so in `note` -- it is not a failure, and
   the run goes on. Like a hand-edited path, it is stretched rather than

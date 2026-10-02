@@ -1402,11 +1402,11 @@ bool Conductor::moveSegment(int index, qreal dx, qreal dy)
 bool Conductor::setPathPoints(const QList<QPointF> &scene_points)
 {
 	if (scene_points.size() < 2 || !terminal1 || !terminal2) return false;
-	const auto near = [](const QPointF &a, const QPointF &b) {
+	const auto isNear = [](const QPointF &a, const QPointF &b) {
 		return qAbs(a.x() - b.x()) < 0.5 && qAbs(a.y() - b.y()) < 0.5;
 	};
-	if (!near(scene_points.first(), terminal1->dockConductor()) ||
-		!near(scene_points.last(), terminal2->dockConductor()))
+	if (!isNear(scene_points.first(), terminal1->dockConductor()) ||
+		!isNear(scene_points.last(), terminal2->dockConductor()))
 		return false;
 	QList<QPointF> points;
 	for (int i = 0; i < scene_points.size(); ++i) {
