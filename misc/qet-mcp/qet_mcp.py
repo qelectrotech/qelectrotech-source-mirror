@@ -1024,8 +1024,9 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                 "started in -- in an MCP client that is the \"env\" block of "
                 "its entry in the client configuration. Only qet_query, "
                 "qet_continuity, qet_check, qet_project_new, qet_edit, "
-                "qet_script_api, qet_script_test, qet_script_install and "
-                "qet_script_remove need it; every other tool either reads "
+                "qet_script_api, qet_script_test, qet_script_install, "
+                "qet_script_remove and qet_recording_check need it; every "
+                "other tool either reads "
                 "the file directly "
                 "or uses a plain CLI flag.")
         return result
@@ -2688,6 +2689,10 @@ SERVER_INSTRUCTIONS = (
     "when they switched live mode on and accepted its warning at this "
     "start, each action one undo step, scripts written on the spot shown "
     "to them first.\n"
+    "MACRO RECORDINGS: the user records something by hand in QElectroTech "
+    "and pastes you a request naming it; qet_recording_read it, write a "
+    "general script, qet_recording_check it until it matches, then "
+    "qet_script_install it.\n"
     "Verify edits by reading the result (qet_diff, qet_elements), not by "
     "assuming them.")
 
@@ -3117,6 +3122,186 @@ def tool_live_screenshot() -> dict:
     if data:
         answer["_image_png_base64"] = data
     return answer
+
+
+# --------------------------------------------------------------------------
+# Macro recordings: what a person did by hand, for a script to repeat
+# --------------------------------------------------------------------------
+#
+# QElectroTech's Projet > Scripts > Enregistrer une macro saves, per
+# recording, the whole project before and after, and each step from its
+# undo history with the folio as it was after the step. QElectroTech cannot
+# send these anywhere; these tools fetch them. The person pastes a request
+# QElectroTech copied for them, naming the recording.
+
+_RECORDING_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$")
+
+
+def recordings_dir() -> Path:
+    info = assistant_info() or {}
+    named = (info.get("folders") or {}).get("recordings")
+    if isinstance(named, str) and named and not os.environ.get("QET_MCP_SCRIPTS_DIR"):
+        return Path(named)
+    return scripts_dir().parent / "recordings"
+
+
+def _recording(recording_id: str) -> tuple:
+    if not isinstance(recording_id, str) or not _RECORDING_ID.match(recording_id):
+        raise ValueError("'id' must be a recording id as qet_recording_list gives it")
+    folder = recordings_dir() / recording_id
+    meta_path = folder / "recording.json"
+    if not meta_path.is_file():
+        raise ValueError(f"no recording {recording_id!r} in {recordings_dir()}")
+    return folder, json.loads(meta_path.read_text(encoding="utf-8"))
+
+
+def _nonempty(value):
+    """A diff with every empty list, empty object and bookkeeping field
+    dropped: what actually changed, or None for nothing."""
+    if isinstance(value, dict):
+        out = {}
+        for k, v in value.items():
+            if k in ("before", "after", "keyed_by", "moved_count", "distinct_move_deltas"):
+                continue
+            v = _nonempty(v)
+            if v not in (None, {}, [], "", 0):
+                out[k] = v
+        return out or None
+    if isinstance(value, list):
+        return value or None
+    return value
+
+
+def _folio_project(diagram: ET.Element, collection: ET.Element | None, path: Path) -> Path:
+    """One folio as the smallest project qet_diff reads."""
+    root = ET.Element("project", {"version": "0.100.0", "title": "step"})
+    if collection is not None:
+        root.append(collection)
+    root.append(diagram)
+    ET.ElementTree(root).write(path, encoding="utf-8", xml_declaration=False)
+    return path
+
+
+def tool_recording_list() -> dict:
+    folder = recordings_dir()
+    out = []
+    if folder.is_dir():
+        for meta_path in sorted(folder.glob("*/recording.json"), reverse=True):
+            try:
+                r = json.loads(meta_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            out.append({"id": meta_path.parent.name, "name": r.get("name"),
+                        "steps": len(r.get("steps") or []), "started": r.get("started"),
+                        "complete": r.get("complete"), "project": r.get("project_title"),
+                        "start_folio": (r.get("start") or {}).get("folio")})
+    return {"folder": str(folder), "recordings": out}
+
+
+def tool_recording_read(recording_id: str) -> dict:
+    """A recording as structured changes: each step, and before -> after."""
+    folder, meta = _recording(recording_id)
+    before = folder / "before.qet"
+    after = folder / "after.qet"
+    out = {"id": recording_id, "name": meta.get("name"), "project": meta.get("project_title"),
+           "start": meta.get("start"), "complete": meta.get("complete"),
+           "files": {"before": str(before), "after": str(after) if after.is_file() else None}}
+    if meta.get("note"):
+        out["note"] = meta["note"]
+    if after.is_file():
+        out["overall_change"] = _nonempty(tool_diff(str(before), str(after)))
+
+    before_root = ET.parse(before).getroot()
+    collection = before_root.find("collection")
+    folios = before_root.findall("diagram")
+    last_by_folio = {}
+    steps = []
+    with tempfile.TemporaryDirectory(prefix="qet-mcp-rec-") as tmp:
+        tmp = Path(tmp)
+        for step in meta.get("steps") or []:
+            row = {k: step.get(k) for k in ("n", "kind", "undo_text", "parts", "folio",
+                                            "folio_title", "selected_elements")}
+            row["parts"] = [p for p in (row.get("parts") or []) if p]
+            f = step.get("folio")
+            file = step.get("folio_file")
+            if isinstance(f, int) and file and (folder / file).is_file():
+                now = ET.parse(folder / file).getroot()
+                prev = last_by_folio.get(f)
+                if prev is None and 0 <= f < len(folios):
+                    prev = folios[f]
+                if prev is not None:
+                    a = _folio_project(prev, collection, tmp / f"a{step['n']}.qet")
+                    b = _folio_project(now, collection, tmp / f"b{step['n']}.qet")
+                    row["change"] = _nonempty(tool_diff(str(a), str(b)))
+                last_by_folio[f] = now
+            steps.append(row)
+    out["steps"] = steps
+    out["how_to_use"] = (
+        "Write a script that has the same effect in general (e.g. on "
+        "qet.selectedElements(qet.currentFolio()) rather than these uuids), then "
+        "qet_recording_check it against this recording until it matches, then "
+        "qet_script_install it.")
+    return out
+
+
+def tool_recording_check(binary: str, recording_id: str, source: str,
+                         elements_dir: str | None = None, timeout: int = 180) -> dict:
+    """Run a script on a copy of the recording's before.qet, from where the
+    person started (folio on screen, selection), and compare with after.qet."""
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("'source' must be the script's text")
+    folder, meta = _recording(recording_id)
+    after = folder / "after.qet"
+    if not after.is_file():
+        raise ValueError("this recording has no after.qet (the project was closed while "
+                         "recording), so there is nothing to compare with")
+    start = meta.get("start") or {}
+    folio = start.get("folio") if isinstance(start.get("folio"), int) else 0
+    selected = [e.get("uuid") for e in start.get("selected_elements") or [] if e.get("uuid")]
+    with tempfile.TemporaryDirectory(prefix="qet-mcp-check-") as tmp:
+        result = Path(tmp) / "result.qet"
+        shutil.copy2(folder / "before.qet", result)
+        # Where the person was: the folio on screen and what was selected.
+        # On the script's own first line, so its error lines stay its own.
+        # qet is a Qt object whose methods cannot be replaced, so a proxy
+        # answers currentFolio() and hands everything else to the real one.
+        preamble = ("var __qet = qet; qet = new Proxy(__qet, {get: function (t, k) { "
+                    "if (k === 'currentFolio') return function () { return %d; }; "
+                    "var v = t[k]; return typeof v === 'function' ? v.bind(t) : v; }}); "
+                    "%s.forEach(function (u) { __qet.selectElement(u); }); "
+                    % (folio, json.dumps(selected)))
+        script = (preamble + source + "\n"
+                  "qet.log(%s + JSON.stringify({kind: 'save', result: qet.save(%s)}));\n"
+                  % (json.dumps(_MARKER), json.dumps(str(result))))
+        run = _run_qet(binary, [str(result)], timeout=timeout,
+                       elements_dir=elements_dir, script=script, tail=400_000)
+        streams = run.get("stdout", "") + "\n" + run.get("stderr", "")
+        errors = [ln.strip() for ln in streams.splitlines() if "Script error:" in ln]
+        saved = any(_MARKER in ln and '"result": true' in ln.replace('":true', '": true')
+                    for ln in streams.splitlines())
+        out = {"errors": errors, "started_from": {"folio": folio, "selected": selected}}
+        if run.get("hint"):
+            out["hint"] = run["hint"]
+        if not saved:
+            out["matches"] = False
+            out["errors"] = errors or ["the script did not finish, so nothing was compared"]
+            return out
+        remaining = _nonempty(tool_diff(str(after), str(result)))
+        # The project's own fields (save path, save date) always differ.
+        if remaining:
+            remaining.pop("project", None)
+            remaining = remaining or None
+        out["matches"] = remaining is None and not errors
+        out["difference_from_recording"] = remaining
+        out["script_change"] = _nonempty(tool_diff(str(folder / "before.qet"), str(result)))
+        return out
+
+
+def tool_recording_remove(recording_id: str) -> dict:
+    _require_script_consent()
+    folder, _ = _recording(recording_id)
+    shutil.rmtree(folder)
+    return {"removed": str(folder)}
 
 
 TOOLS = [
@@ -3931,6 +4116,61 @@ TOOLS = [
         "inputSchema": {"type": "object", "properties": {}},
         "handler": lambda a: tool_about(),
     },
+    {
+        "name": "qet_recording_list",
+        "description": "Macro recordings the user made in QElectroTech (Projet > "
+                       "Scripts > Enregistrer une macro), newest first: id, name, "
+                       "steps, project. Reads files; changes nothing.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_recording_list(),
+    },
+    {
+        "name": "qet_recording_read",
+        "description": "One macro recording as structured changes: each step (its "
+                       "name in QElectroTech's undo history, the folio, what was "
+                       "selected, and what changed on the folio), and the overall "
+                       "change from before to after. Read this to write a script that "
+                       "repeats what the user did, in general.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"id": {"type": "string"}},
+            "required": ["id"],
+        },
+        "handler": lambda a: tool_recording_read(a["id"]),
+    },
+    {
+        "name": "qet_recording_check",
+        "description": "Check a script against a recording: run it on a copy of the "
+                       "project as it was when recording started -- the same folio "
+                       "on screen, the same selection -- and compare the result with "
+                       "the project as it was when recording stopped. 'matches' true "
+                       "means the script does what the user did; otherwise "
+                       "'difference_from_recording' says what is off. Needs "
+                       "QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
+                "id": {"type": "string"},
+                "source": {"type": "string", "description": "the script's text"},
+                "elements_dir": {"type": "string"},
+                "timeout": {"type": "integer", "default": 180},
+            },
+            "required": ["id", "source"],
+        },
+        "handler": lambda a: tool_recording_check(a["binary"], a["id"], a["source"],
+                                                  a.get("elements_dir"), a.get("timeout", 180)),
+    },
+    {
+        "name": "qet_recording_remove",
+        "description": "Delete one macro recording. Needs QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"id": {"type": "string"}},
+            "required": ["id"],
+        },
+        "handler": lambda a: tool_recording_remove(a["id"]),
+    },
 ]
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
@@ -3988,11 +4228,13 @@ _DATA_PATHS = {
     "qet_script_api":     {},
     "qet_script_test":    {"read": ("project",)},
     "qet_script_install": {"read": ("test_project",)},
+    "qet_recording_check": {},
 }
 
 # Tools that launch QElectroTech, and so take "binary" and "elements_dir".
 _LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
-                 "qet_check", "qet_project_new", "qet_script_api", "qet_script_test"}
+                 "qet_check", "qet_project_new", "qet_script_api", "qet_script_test",
+                 "qet_recording_check"}
 
 # Tools that launch QElectroTech only when given this argument.
 _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}

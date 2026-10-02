@@ -46,6 +46,7 @@ here read the model.
 | `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
 | `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Projet > Scripts and the Scripts toolbar |
 | `qet_script_list`, `qet_script_read`, `qet_script_remove` | the stored scripts: list, read one to change it, delete one |
+| `qet_recording_list`, `qet_recording_read`, `qet_recording_check`, `qet_recording_remove` | **macro recordings** — what you did by hand, and whether a script does the same |
 
 `qet_export` and `qet_edit` launch QElectroTech. Everything else parses the
 file directly, which is faster, needs no display, and cannot be confused by
@@ -300,6 +301,24 @@ The folder is chosen by the server, never by a call, and a script's id
 becomes its file name only if it is `a-z`, `0-9`, `-` and `_`. Storing or
 removing a script needs `QET_ENABLE_SCRIPTING=1` like an edit does: a
 stored script runs with the user's rights when they click it.
+
+## Macro recordings: from something done by hand to a button
+
+In QElectroTech, Projet > Scripts > Enregistrer une macro records what you
+do on a project until you click it again. It saves the project before and
+after, and each step from the undo history with the folio after it. At Stop
+it offers to copy a ready-made request; paste that into the assistant.
+
+| | |
+|---|---|
+| `qet_recording_list` | the recordings, newest first |
+| `qet_recording_read` | one recording: each step as structured changes, and the overall change |
+| `qet_recording_check` | run a script on the "before" project, from the same folio and selection, and say whether the result **matches** the "after" project, or what differs |
+| `qet_recording_remove` | delete one |
+
+The usual round: read the recording, write a script that does the same in
+general (on the selected elements, say, not on these exact ones),
+`qet_recording_check` it until it matches, then `qet_script_install` it.
 
 ## Live mode: working in the QElectroTech you have open
 
