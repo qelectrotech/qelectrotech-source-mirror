@@ -424,11 +424,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// call .text() on themselves -- which is exactly where the bug was.
 	// The option exists since Qt 6.5; older Qt always drops such nodes,
 	// so there an all-whitespace value still reloads as "".
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	if (!xml_project.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes))
-#else
-	if (!xml_project.setContent(content))
-#endif
 	{
 		if(opened_here) {
 			file->close();
