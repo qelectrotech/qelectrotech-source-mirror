@@ -429,6 +429,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
+  # qet.addElement() on a symbol that exists but cannot be read says so,
+  # rather than reporting a collision with the copy already embedded.
+  add_executable(
+    tst_unreadableelement
+    tst_unreadableelement.cpp)
+  add_test(NAME tst_unreadableelement COMMAND tst_unreadableelement)
+  add_dependencies(tst_unreadableelement qelectrotech)
+  target_link_libraries(tst_unreadableelement PRIVATE Qt::Test)
+  target_compile_definitions(tst_unreadableelement PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
   # The project database filled from the file as it is read holds exactly
   # what it holds filled from the built folios (QET_DATABASE_FROM_FOLIOS=1),
   # on every example saved once; an older file falls back, saying why.

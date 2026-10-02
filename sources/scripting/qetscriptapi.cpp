@@ -86,6 +86,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QDir>
 #include <QDomDocument>
 #include <QFileInfo>
 #include <QFont>
@@ -677,6 +678,17 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 		const QString import_path = location.isFileSystem()
 				? QStringLiteral("import/") + location.collectionPath(false)
 				: location.collectionPath(false);
+		// An element file that exists but cannot be read gives a null
+		// uuid(), which the collision check below would misreport as "a
+		// different element" -- say what actually went wrong instead.
+		if (location.isFileSystem()
+				&& location.pugiXml().document_element().empty()) {
+			const QString file = QDir::toNativeSeparators(
+						QFileInfo(location.fileSystemPath()).absoluteFilePath());
+			log(QStringLiteral("qet.addElement: could not read element '%1' (file '%2', "
+								"%3 characters)").arg(locationPath, file).arg(file.size()));
+			return QString();
+		}
 		const ElementsLocation existing(import_path, m_project);
 		if (existing.exist() && existing.uuid() != location.uuid()) {
 			log(QStringLiteral("qet.addElement: '%1' would collide with a different element "
