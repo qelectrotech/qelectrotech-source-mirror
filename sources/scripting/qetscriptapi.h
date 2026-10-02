@@ -354,6 +354,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString projectTitle() const;
 		Q_INVOKABLE QString filePath() const;
 		Q_INVOKABLE int folioCount() const;
+		Q_INVOKABLE int currentFolio() const;
 		Q_INVOKABLE QString folioTitle(int index) const;
 		Q_INVOKABLE QString folioUuid(int index) const;
 		Q_INVOKABLE int folioIndex(const QString &uuid) const;
@@ -583,6 +584,11 @@ class QetScriptApi : public QObject
 		// -- logging: a script has no console of its own --
 		Q_INVOKABLE void log(const QString &message);
 
+		// -- what a script can call, read from this class itself --
+		Q_INVOKABLE QStringList apiSignatures() const;
+
+		void setUndoGrouped(bool grouped);
+
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
@@ -602,6 +608,7 @@ class QetScriptApi : public QObject
 
 		QETProject *m_project;
 		DiagramView *m_view;
+		bool m_undo_grouped = false;
 		QString m_query_error;
 };
 

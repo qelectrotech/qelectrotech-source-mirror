@@ -51,8 +51,9 @@ namespace QetScripting {
 
 	/**
 		@brief Run @p scriptPath against an already-open @p project (the
-		"Run Script..." GUI macro path). Errors go to stderr; there is no
-		modal reporting in this first version.
+		"Run Script..." GUI macro path). Errors go to stderr, and with a
+		@p view also to a message box. With a @p view the whole run is one
+		undo step; without one, each call is its own step, as on --run.
 		@param view the active DiagramView, so the script's zoom methods
 		have something to act on; nullptr from the headless entry point,
 		where they become no-ops (see QetScriptApi).
