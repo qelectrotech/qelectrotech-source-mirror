@@ -171,11 +171,18 @@ int exportPdf(QETProject &project, const QString &output,
 	for (Diagram *diagram : diagrams) {
 		const QRect r = diagramRect(diagram);
 		// Match the page to the diagram (in points: 1px @ 96dpi = 0.75pt).
-		const QPageSize page(QSizeF(r.width() * 72.0 / 96.0,
-									r.height() * 72.0 / 96.0),
-							 QPageSize::Point);
-		writer.setPageSize(page);
-		writer.setPageMargins(QMarginsF(0, 0, 0, 0));
+		// QPageSize rounds a size within 3 pt of a standard sheet to the
+		// sheet, but knows the sheets upright only (bar Ledger), so a wide
+		// folio is matched upright and turned: otherwise an A3 landscape
+		// folio became a 1190 x 841 pt page while an A3 portrait one was
+		// 842 x 1191, the sheet.
+		QSizeF points(r.width() * 72.0 / 96.0, r.height() * 72.0 / 96.0);
+		const bool wide = points.width() > points.height();
+		if (wide) points.transpose();
+		writer.setPageLayout(QPageLayout(QPageSize(points, QPageSize::Point),
+										 wide ? QPageLayout::Landscape
+											  : QPageLayout::Portrait,
+										 QMarginsF(0, 0, 0, 0)));
 
 		if (first) {
 			if (!painter.begin(&writer)) {

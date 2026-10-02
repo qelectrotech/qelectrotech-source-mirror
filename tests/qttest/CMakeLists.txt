@@ -388,6 +388,18 @@ target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
+# QPageSize matches standard sheets upright only, so a wide folio is matched
+# upright and turned. fixtures/pdf_page_a3.qet has one folio each way.
+add_executable(
+  tst_pdfpagesize
+  tst_pdfpagesize.cpp)
+add_test(NAME tst_pdfpagesize COMMAND tst_pdfpagesize)
+add_dependencies(tst_pdfpagesize qelectrotech)
+target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
+target_compile_definitions(tst_pdfpagesize PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Hops where wires cross (issue #436): the geometry in wirehops.cpp, and
 # through the real binary, that --resave keeps the project setting and
 # adds nothing to a project without it.
