@@ -98,6 +98,26 @@ private slots:
 		QVERIFY2(read(first) == read(second), "the second save changed the file");
 	}
 
+	// %{machine_manufacturer_reference_auxiliary1..4} resolve like their
+	// neighbours: they were missing from AssignVariables::replaceVariable()
+	// and printed as literal text. The fixture has one terminal whose
+	// four texts are "[%{machine_..._auxiliaryN}|%{manufacturer_reference_auxiliaryN}]",
+	// saved by a build without the fix, so the literal text is in the file.
+	void auxiliaryMachineReferenceResolves()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/aux_machine_reference.qet");
+		QVERIFY(!fixture.isEmpty());
+		const QString saved = resave(fixture);
+		QVERIFY2(!saved.isEmpty(), "--resave failed");
+		const QString xml = QString::fromUtf8(read(saved));
+		for (int n = 1; n <= 4; ++n) {
+			const QString shown = QStringLiteral("<text>[MMR-AUX%1|MR-AUX%1]</text>").arg(n);
+			QVERIFY2(xml.contains(shown), qPrintable(shown + QStringLiteral(" not in the saved file")));
+		}
+		QVERIFY2(!xml.contains(QStringLiteral("<text>[%{machine")),
+				 "a machine manufacturer reference variable was left unresolved");
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()
