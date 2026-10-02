@@ -668,3 +668,15 @@ add_executable(
 add_test(NAME tst_diagramcontext COMMAND tst_diagramcontext)
 target_include_directories(tst_diagramcontext PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramcontext PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# XRefProperties: an empty or unknown cross-reference position, as older
+# versions saved it, reads as the default instead of drawing the
+# cross-reference over the element's label (issue #1238).
+add_executable(
+  tst_xrefpos
+  tst_xrefpos.cpp
+  ${QET_DIR}/sources/properties/xrefproperties.cpp
+  ${QET_DIR}/sources/properties/propertiesinterface.cpp)
+add_test(NAME tst_xrefpos COMMAND tst_xrefpos)
+target_include_directories(tst_xrefpos PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_xrefpos PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)

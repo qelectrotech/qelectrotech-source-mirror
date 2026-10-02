@@ -22,6 +22,36 @@
 #include <QHash>
 #include <QMetaEnum>
 
+namespace {
+/**
+	@brief xrefPosFromKey
+	@param key : stored name of the position, e.g. "AlignBottom"
+	@return the position, or Qt::AlignBottom if key is empty or not one of
+	the positions the cross-reference settings offer. Older versions saved
+	an empty "xrefpos", which drew the cross-reference over the label.
+*/
+Qt::AlignmentFlag xrefPosFromKey(const QString &key)
+{
+	bool ok = false;
+	const int value = QMetaEnum::fromType<Qt::Alignment>()
+			.keyToValue(key.toStdString().data(), &ok);
+	if (!ok)
+		return Qt::AlignBottom;
+
+	switch (value) {
+		case Qt::AlignBottom:
+		case Qt::AlignTop:
+		case Qt::AlignLeft:
+		case Qt::AlignRight:
+		case Qt::AlignBaseline:
+		case Qt::AlignHCenter:
+			return Qt::AlignmentFlag(value);
+		default:
+			return Qt::AlignBottom;
+	}
+}
+}
+
 /**
 	@brief XRefProperties::XRefProperties
 	Default Constructor
@@ -96,8 +126,7 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos", "AlignBottom").toString()).toStdString().data()));
+	m_xref_pos = xrefPosFromKey(settings.value(prefix % "xrefpos").toString());
 
 	for (QString key : m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key % "prefix").toString());
@@ -157,14 +186,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 
-	QString xrefpos = xml_element.attribute("xrefpos","Left");
-
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-
-	if(xml_element.hasAttribute("xrefpos"))
-		m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xml_element.attribute("xrefpos").toStdString().data()));
-	else
-		m_xref_pos = Qt::AlignBottom;
+	m_xref_pos = xrefPosFromKey(xml_element.attribute("xrefpos"));
 
 	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_slave_offset = xml_element.attribute("slave_offset", "0").toInt();
