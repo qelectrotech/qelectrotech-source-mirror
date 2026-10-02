@@ -487,6 +487,13 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   at names none of them and is refused, so address a potential from one of
   its leaves. Property names are the file's own, so `qet_conductors` reads
   back exactly what was set.
+- **`set_conductor_default` sets a folio's conductor defaults**, the
+  Conductors tab of Folio properties: `onetextperfolio` (`"true"` shows one
+  wire number per potential on the folio), or any `set_conductor` property,
+  which conductors drawn later on that folio start from. `"folio": -1` sets
+  the project's defaults instead, which each folio added afterwards copies;
+  it does not change existing folios. Like the dialogs, it is not on the
+  undo stack.
 - **`link_elements` takes a folio for each end**, because a master and its
   slave are normally on different folios. Whether a pair may be linked is
   decided by QElectroTech's own `isLinkable()`, so a script cannot make a

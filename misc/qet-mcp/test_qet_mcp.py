@@ -401,6 +401,8 @@ class EditValidation(unittest.TestCase):
                                     "regex": False, "case_sensitive": True}],
             "set_project_title": [{"op": "set_project_title", "title": "T"}],
             "set_folio_border": [f, {"op": "set_folio_border", "folio": "$f", "property": "columns", "value": "10"}],
+            "set_conductor_default": [f, {"op": "set_conductor_default", "folio": "$f",
+                                          "property": "onetextperfolio", "value": "true"}],
             "embed_title_block_template": [{"op": "embed_title_block_template", "name": "default"}],
             "duplicate_elements": el + [{"op": "duplicate_elements", "id": "d", "folio": "$f",
                                          "elements": ["$e"], "to_folio": "$f", "x": 50, "y": 50}],
@@ -525,6 +527,8 @@ class EditValidation(unittest.TestCase):
             ("unknown kind", {"op": "search_and_replace", "kind": "folio", "field": "x",
                               "pattern": "a", "replacement": "b", "regex": False,
                               "case_sensitive": False}),
+            ("unknown conductor default", {"op": "set_conductor_default", "folio": 0,
+                                           "property": "label", "value": "x"}),
             ("unknown conductor field", {"op": "search_and_replace", "kind": "conductor",
                                          "field": "label", "pattern": "a", "replacement": "b",
                                          "regex": False, "case_sensitive": False}),
@@ -3684,6 +3688,28 @@ class Integration(unittest.TestCase):
         for prop, good in (("columns", "99"), ("columns", "1"), ("column-width", "1"), ("row-height", "1000")):
             with self.subTest(prop=prop, value=good):
                 self.ok(self.sb.edit(base, [{"op": "set_folio_border", "folio": 0, "property": prop, "value": good}]))
+
+    def test_conductor_defaults(self):
+        """The folio's "one text per potential" switch (#1178), and the
+        project's defaults that a folio added later copies, as saved."""
+        base = self.sb.new(folios=1)
+        r = self.ok(self.sb.edit(base, [
+            {"op": "set_conductor_default", "folio": 0, "property": "onetextperfolio", "value": "true"},
+            {"op": "set_conductor_default", "folio": 0, "property": "conductor_section", "value": "1.5"},
+            {"op": "set_conductor_default", "folio": -1, "property": "onetextperfolio", "value": "true"},
+            {"op": "add_folio"}]))
+        root = ET.parse(r["output"]).getroot()
+        folios = [d.find("defaultconductor") for d in root.iter("diagram")]
+        self.assertEqual([d.get("onetextperfolio") for d in folios], ["1", "1"],
+                         "set on folio 0; copied from the project's defaults by the new folio")
+        self.assertEqual(folios[0].get("conductor_section"), "1.5")
+        self.assertEqual(root.find("newdiagrams/conductors").get("onetextperfolio"), "1")
+        for prop, bad in (("onetextperfolio", "yes"), ("numsize", "0"), ("color", "notacolour")):
+            with self.subTest(prop=prop, value=bad):
+                self.assertFalse(self.sb.edit(base, [{"op": "set_conductor_default", "folio": 0,
+                                                      "property": prop, "value": bad}])["ok"])
+        self.assertFalse(self.sb.edit(base, [{"op": "set_conductor_default", "folio": 5,
+                                              "property": "onetextperfolio", "value": "true"}])["ok"])
 
     # ---- duplicating ----
 
