@@ -959,19 +959,19 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/backuprestoredialog.cpp" line="48"/>
         <source>Fichiers de restauration</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Recovery files</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="53"/>
         <source>&lt;b&gt;Des fichiers de restauration ont été trouvés,&lt;br&gt;voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;Pour un projet ayant plusieurs versions de restauration, la plus récente est sélectionnée par défaut.</source>
         <comment>dialog message</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Recovery files were found,&lt;br&gt;do you want to open them?&lt;/b&gt;&lt;br&gt;For a project with several recovery versions, the newest is selected by default.</translation>
     </message>
     <message>
         <location filename="../sources/ui/backuprestoredialog.cpp" line="84"/>
         <source>%1 (la plus récente)</source>
         <comment>recovery generation label</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (newest)</translation>
     </message>
 </context>
 <context>
@@ -1308,7 +1308,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="250"/>
         <source>Texte visible
 Verrouillé par l&apos;option « Afficher un texte de potentiel par folio » de ce folio, dans Propriétés du folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visible text
+Locked by this sheet&apos;s “Show one potential text per sheet” option, in Sheet properties.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="288"/>
@@ -1839,7 +1840,7 @@ Verrouillé par l&apos;option « Afficher un texte de potentiel par folio » de 
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="491"/>
         <source>Clic gauche : positionner une extrémité de l&apos;arc (Ctrl = position libre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Left click: place one end of the arc (Ctrl = free position)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="492"/>
@@ -1864,7 +1865,7 @@ Verrouillé par l&apos;option « Afficher un texte de potentiel par folio » de 
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="511"/>
         <source>Clic gauche : positionner l&apos;autre extrémité et la hauteur de l&apos;arc (Maj = demi-cercle, Ctrl = position libre) ; clic droit : annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Left click: place the other end and the height of the arc (Shift = half circle, Ctrl = free position); right click: cancel</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddshape.cpp" line="513"/>
@@ -1882,57 +1883,57 @@ Verrouillé par l&apos;option « Afficher un texte de potentiel par folio » de 
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="144"/>
         <source>Aucune ligne ici : cliquez sur une ligne dessinée sur le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>No line here: click a line drawn on the sheet</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="159"/>
         <source>Cliquez sur la deuxième ligne ; clic droit : annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Click the second line; right click: cancel</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="166"/>
         <source>Cliquez sur une autre ligne ; clic droit : annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Click another line; right click: cancel</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="225"/>
         <source>Ces deux lignes sont parallèles : pas de congé possible</source>
-        <translation type="unfinished"></translation>
+        <translation>These two lines are parallel: no fillet possible</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="257"/>
         <source>Une des lignes s&apos;arrête au coin : rien à arrondir de ce côté</source>
-        <translation type="unfinished"></translation>
+        <translation>One of the lines stops at the corner: nothing to round on that side</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="265"/>
         <source>Ces deux lignes sont presque alignées : pas de congé possible</source>
-        <translation type="unfinished"></translation>
+        <translation>These two lines are almost in line: no fillet possible</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Congé</source>
-        <translation type="unfinished"></translation>
+        <translation>Fillet</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="272"/>
         <source>Rayon :</source>
-        <translation type="unfinished"></translation>
+        <translation>Radius:</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="280"/>
         <source>Rayon trop grand pour ces lignes (%1 au plus)</source>
-        <translation type="unfinished"></translation>
+        <translation>Radius too large for these lines (%1 at most)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="315"/>
         <source>Ajouter un congé</source>
-        <translation type="unfinished"></translation>
+        <translation>Add a fillet</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventfillet.cpp" line="341"/>
         <source>Congé : cliquez sur deux lignes, ou une fois là où elles se rejoignent ; Échap ou clic droit : terminer</source>
-        <translation type="unfinished"></translation>
+        <translation>Fillet: click two lines, or once where they meet; Esc or right click: finish</translation>
     </message>
 </context>
 <context>
@@ -2213,7 +2214,7 @@ Hold Shift and drag to move this text on its own</translation>
         <location filename="../sources/diagramview.cpp" line="115"/>
         <source>Générer une vignette d&apos;armoire</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Make a cabinet thumbnail</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="119"/>
@@ -3029,7 +3030,7 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/ui/elementinfopartwidget.ui" line="71"/>
         <source>Choisir un article dans la liste de matériaux</source>
         <extracomment>tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Choose an item from the materials list</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.cpp" line="63"/>
@@ -3077,7 +3078,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="407"/>
         <source>Liste de matériaux absente</source>
-        <translation type="unfinished"></translation>
+        <translation>No materials list</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="408"/>
@@ -3086,19 +3087,24 @@ The element&apos;s display name is edited separately in the element properties.<
 
 Le créer ?</source>
         <comment>message asking to create the material file</comment>
-        <translation type="unfinished"></translation>
+        <translation>There is no materials list file at this location:
+%1
+
+Create it?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="421"/>
         <source>Création impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot create</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="422"/>
         <source>Impossible de créer le fichier :
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot create the file:
+%1
+%2</translation>
     </message>
 </context>
 <context>
@@ -5035,7 +5041,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="297"/>
         <source>Le projet n&apos;a aucun bornier : créez-en un avec le bouton +</source>
-        <translation type="unfinished"></translation>
+        <translation>The project has no terminal strip: create one with the + button</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="299"/>
@@ -5045,7 +5051,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="301"/>
         <source>Sélectionnez dans le tableau les bornes à déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Select the terminals to move in the table</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="303"/>
@@ -5275,12 +5281,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="100"/>
         <source>Coché : une seule liste, la meilleure correspondance en premier. Décoché : l&apos;arborescence de la collection, filtrée sur la recherche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="103"/>
         <source>Afficher les résultats de recherche sous forme de liste triée</source>
-        <translation type="unfinished"></translation>
+        <translation>Show search results as a sorted list</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="110"/>
@@ -5351,13 +5357,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>Créer ou modifier le préfixe des dossiers de la collection utilisateur (fichier qet_labels.xml)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>Configurer les préfixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Configure prefixes…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="394"/>
@@ -5372,30 +5378,30 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="485"/>
         <source>Fichier de la liste de matériaux</source>
-        <translation type="unfinished"></translation>
+        <translation>Materials list file</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="494"/>
         <source>Répertoire de matériaux utilisé pour renseigner les articles d&apos;un élément</source>
         <extracomment>tooltip of the material file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Materials list used to fill in a symbol&apos;s items</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
         <source>Non configuré</source>
         <extracomment>hint shown when no material file is configured yet</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Not set</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Créer le fichier de la liste avec ses en-têtes</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Create the list file with its headers</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="517"/>
         <source>Créer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Create...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="573"/>
@@ -5505,12 +5511,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1266"/>
         <source>À l&apos;enregistrement d&apos;un élément : refuser deux bornes portant le même nom, et signaler les bornes sans nom (IEC 61666).</source>
-        <translation type="unfinished"></translation>
+        <translation>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1269"/>
         <source>Vérifier les noms des bornes à l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Check terminal names when saving</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
@@ -5587,7 +5593,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="252"/>
         <source>Non configuré (par défaut : %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
-        <translation type="unfinished"></translation>
+        <translation>Not set (default: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="465"/>
@@ -5758,52 +5764,57 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Répertoire introuvable</source>
-        <translation type="unfinished"></translation>
+        <translation>Folder not found</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Le répertoire de la collection utilisateur :
 %1
 n&apos;existe pas et n&apos;a pas pu être créé.</source>
-        <translation type="unfinished"></translation>
+        <translation>The user collection folder:
+%1
+does not exist and could not be created.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Aucun sous-dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>No subfolder</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>La collection utilisateur :
 %1
 ne contient aucun sous-dossier : il n&apos;y a donc aucun préfixe à configurer.</source>
-        <translation type="unfinished"></translation>
+        <translation>The user collection:
+%1
+has no subfolder, so there is no prefix to configure.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Fichier de préfixes illisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix file cannot be read</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="721"/>
         <source>Fichier de préfixes endommagé</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix file damaged</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="722"/>
         <source>Le fichier %1 n&apos;est pas un fichier XML valide :
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>The file %1 is not a valid XML file:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="726"/>
         <source>Corriger le fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fix the file</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="727"/>
         <source>Reconstruire</source>
-        <translation type="unfinished"></translation>
+        <translation>Rebuild</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="728"/>
@@ -5812,40 +5823,46 @@ ne contient aucun sous-dossier : il n&apos;y a donc aucun préfixe à configurer
 « Corriger le fichier » : cette fenêtre se ferme sans rien changer. Ouvrez le fichier dans un éditeur de texte à l&apos;endroit indiqué, corrigez-le puis relancez cette commande.
 
 « Reconstruire » : l&apos;arborescence des dossiers est recréée, mais tous les préfixes actuels sont perdus. Le fichier actuel est conservé sous le nom qet_labels.xml.bak avant d&apos;être remplacé.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nothing has been changed yet.
+
+“Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
+
+“Rebuild”: the folder tree is made again, but all the current prefixes are lost. The current file is kept as qet_labels.xml.bak before it is replaced.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="735"/>
         <source>Fichier : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>File: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="759"/>
         <source>Sélectionner le fichier de la liste de matériaux</source>
-        <translation type="unfinished"></translation>
+        <translation>Select the materials list file</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="761"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="784"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Files csv (*.csv)</translation>
+        <translation>CSV files (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="782"/>
         <source>Créer le fichier de la liste de matériaux</source>
-        <translation type="unfinished"></translation>
+        <translation>Create the materials list file</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="800"/>
         <source>Création impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot create</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="801"/>
         <source>Impossible de créer le fichier :
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot create the file:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="830"/>
@@ -6860,9 +6877,11 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</translati
         <location filename="../sources/scripting/macrorecorder.cpp" line="232"/>
         <source>J&apos;ai enregistré une macro dans QElectroTech : « %1 », %n étape(s) (identifiant %2, dossier %3).
 Avec le serveur MCP qet : lis-la avec qet_recording_read, écris un script qui fait la même chose de façon générale (par exemple sur les éléments sélectionnés plutôt que sur ceux-là précisément), vérifie-le avec qet_recording_check jusqu&apos;à ce qu&apos;il corresponde, puis propose-le comme bouton avec qet_script_install.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>I recorded a macro in QElectroTech: “%1”, %n step (id %2, folder %3).
+With the qet MCP server: read it with qet_recording_read, write a script that does the same thing in general (for example on the selected elements rather than on those exact ones), check it with qet_recording_check until it matches, then offer it as a button with qet_script_install.</numerusform>
+            <numerusform>I recorded a macro in QElectroTech: “%1”, %n steps (id %2, folder %3).
+With the qet MCP server: read it with qet_recording_read, write a script that does the same thing in general (for example on the selected elements rather than on those exact ones), check it with qet_recording_check until it matches, then offer it as a button with qet_script_install.</numerusform>
         </translation>
     </message>
 </context>
@@ -7034,32 +7053,32 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="41"/>
         <source>Nouvelle entrée</source>
-        <translation type="unfinished"></translation>
+        <translation>New entry</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="51"/>
         <source>Renseignez l&apos;article à ajouter. Les champs laissés vides restent vides dans le fichier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fill in the item to add. Fields left empty stay empty in the file.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="87"/>
         <source>Enregistrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="88"/>
         <source>Annuler</source>
-        <translation type="unfinished">Undo</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="140"/>
         <source>Aucun renseignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Nothing filled in</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="141"/>
         <source>Saisissez au moins un renseignement pour créer une entrée.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fill in at least one field to create an entry.</translation>
     </message>
 </context>
 <context>
@@ -7068,22 +7087,22 @@ Do you still want to link this slave contact?</translation>
         <location filename="../sources/materiallist/materiallist.cpp" line="329"/>
         <location filename="../sources/materiallist/materiallist.cpp" line="377"/>
         <source>Bloc auxiliaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Auxiliary block</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="623"/>
         <source>Aucun récepteur pour le répertoire de matériaux.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nothing to receive the materials list.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="794"/>
         <source>Le fichier ne contient pas d&apos;en-tête : colonnes manquantes.</source>
-        <translation type="unfinished"></translation>
+        <translation>The file has no header: columns are missing.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="825"/>
         <source>Le fichier existe déjà et n&apos;est pas vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>The file already exists and is not empty.</translation>
     </message>
 </context>
 <context>
@@ -7091,94 +7110,98 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="20"/>
         <source>Liste de matériaux</source>
-        <translation type="unfinished"></translation>
+        <translation>Materials list</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="31"/>
         <source>Rechercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Search:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="38"/>
         <source>Tous les mots saisis doivent apparaître quelque part dans la ligne</source>
         <extracomment>placeholder of the search field of the material list; several words narrow the results down (AND)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Every word typed must appear somewhere in the row</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="44"/>
         <source>Rechercher dans toutes les colonnes</source>
         <extracomment>placeholder of the search field of the material list</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Search all columns</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="75"/>
         <source>Entrées : 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Entries: 0</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="84"/>
         <source>Ajouter un nouvel article à la liste</source>
         <extracomment>button adding a new row to the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Add a new item to the list</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="87"/>
         <source>Nouvelle entrée</source>
-        <translation type="unfinished"></translation>
+        <translation>New entry</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="259"/>
         <source>Appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="260"/>
         <source>Annuler</source>
-        <translation type="unfinished">Undo</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="450"/>
         <source>Lecture impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot read</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="451"/>
         <source>Impossible de lire le fichier :
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot read the file:
+%1
+%2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="471"/>
         <source>Entrées : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Entries: %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="473"/>
         <source>Entrées : %1 sur %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Entries: %1 of %2</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="606"/>
         <source>Aucune sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Nothing selected</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="607"/>
         <source>Sélectionnez d&apos;abord un article dans la liste.</source>
-        <translation type="unfinished"></translation>
+        <translation>Select an item in the list first.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="637"/>
         <source>Écriture impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot write</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="638"/>
         <source>Impossible d&apos;écrire dans le fichier :
 %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot write to the file:
+%1
+%2</translation>
     </message>
 </context>
 <context>
@@ -7985,95 +8008,101 @@ The following variables are incompatible:
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="48"/>
         <source>Préfixes de la collection utilisateur</source>
         <comment>title of the dialog configuring the prefixes of the user collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>User collection prefixes</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="56"/>
         <source>Chaque dossier de la collection possède un préfixe : il est ajouté devant l&apos;étiquette des éléments du dossier.
 Un champ vide signifie que le dossier reprend le préfixe de son dossier parent.</source>
-        <translation type="unfinished"></translation>
+        <translation>Each folder of the collection has a prefix: it is added in front of the label of the symbols in the folder.
+An empty field means the folder takes the prefix of its parent folder.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Dossier</source>
         <comment>column header of the folder tree</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folder</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="61"/>
         <source>Préfixe</source>
         <comment>column header of the prefix column</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prefix</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="69"/>
         <source>Tout déplier</source>
-        <translation type="unfinished"></translation>
+        <translation>Expand all</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="70"/>
         <source>Tout replier</source>
-        <translation type="unfinished"></translation>
+        <translation>Collapse all</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="110"/>
         <source>Entrées sans dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Entries without a folder</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="111"/>
         <source>%n entrée(s) de qet_labels.xml ne correspond à aucun dossier de la collection :
 les conserver ou les supprimer ?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n entry of qet_labels.xml matches no folder of the collection:
+keep it or delete it?</numerusform>
+            <numerusform>%n entries of qet_labels.xml match no folder of the collection:
+keep them or delete them?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="115"/>
         <source>Conserver</source>
-        <translation type="unfinished"></translation>
+        <translation>Keep</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="116"/>
         <source>Supprimer</source>
-        <translation type="unfinished">Delete</translation>
+        <translation>Delete</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="168"/>
         <source>aucun préfixe : n&apos;hérite pas du parent</source>
         <comment>placeholder of an empty prefix field whose folder explicitly has no prefix, which cancels the inheritance</comment>
-        <translation type="unfinished"></translation>
+        <translation>no prefix: does not take the parent&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="170"/>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="177"/>
         <source>hériter du dossier parent</source>
         <comment>placeholder of an empty prefix field</comment>
-        <translation type="unfinished"></translation>
+        <translation>take the parent folder&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="223"/>
         <source>Enregistrement impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot save</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="224"/>
         <source>Le fichier %1 n&apos;a pas pu être enregistré :
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>The file %1 could not be saved:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="231"/>
         <source>Fichier endommagé remplacé</source>
-        <translation type="unfinished"></translation>
+        <translation>Damaged file replaced</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="232"/>
         <source>Le fichier %1 était illisible : il a été remplacé.
 Sa copie a été conservée sous :
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>The file %1 could not be read: it has been replaced.
+Its copy was kept as:
+%2</translation>
     </message>
 </context>
 <context>
@@ -8304,31 +8333,31 @@ Sa copie a été conservée sous :
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="217"/>
         <source>Croisements de conducteurs :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Conductor crossings:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="219"/>
         <source>Sans saut</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>No hop</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="221"/>
         <source>Saut sur les conducteurs horizontaux</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hop on horizontal conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="223"/>
         <source>Saut sur les conducteurs verticaux</source>
         <comment>wire crossings</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hop on vertical conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="225"/>
         <source>Dessine un petit arc là où deux conducteurs se croisent sans être reliés. Seul le dessin change : aucun élément n&apos;est ajouté et aucun conducteur n&apos;est coupé.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Draws a small arc where two conductors cross without being connected. Only the drawing changes: no element is added and no conductor is cut.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="276"/>
@@ -8711,43 +8740,43 @@ Do you want to save changes?</translation>
         <location filename="../sources/qetapp.cpp" line="2266"/>
         <source>Enregistrer la configuration sous...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Save settings as...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2268"/>
         <location filename="../sources/qetapp.cpp" line="2307"/>
         <source>Configurations QElectroTech (*.conf)</source>
         <comment>file dialog filter</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech settings (*.conf)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2283"/>
         <location filename="../sources/qetapp.cpp" line="2318"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2284"/>
         <source>Impossible d&apos;enregistrer la configuration dans « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Cannot save the settings to “%1”.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2305"/>
         <source>Charger une configuration...</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Load settings...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2319"/>
         <source>« %1 » n&apos;est pas une configuration enregistrée par QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” is not a settings file saved by QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2327"/>
         <source>Charger une configuration</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Load settings</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2328"/>
@@ -8756,7 +8785,11 @@ Do you want to save changes?</translation>
 QElectroTech va ensuite se fermer. Relancez-le pour utiliser la nouvelle configuration.
 
 Voulez-vous continuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>These settings will replace your current ones, except the window layout and the list of recent files.
+
+QElectroTech will then close. Start it again to use the new settings.
+
+Do you want to continue?</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2730"/>
@@ -9799,13 +9832,13 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="395"/>
         <source>Coller au point d&apos;origine</source>
-        <translation type="unfinished"></translation>
+        <translation>Paste at the original position</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="405"/>
         <source>Place les éléments du presse-papier à leur position d&apos;origine et déplace le curseur vers ce point</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Places the clipboard&apos;s items at their original position and moves the cursor to that point</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="457"/>
@@ -9960,12 +9993,12 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="918"/>
         <source>Grouper</source>
-        <translation type="unfinished"></translation>
+        <translation>Group</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="919"/>
         <source>Dégrouper</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungroup</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="935"/>
@@ -10032,13 +10065,13 @@ Hold Ctrl while moving to place freely.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1031"/>
         <source>Groupe les éléments, textes, formes et images sélectionnés : ils se sélectionnent, se déplacent et se copient ensemble</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1032"/>
         <source>Défait les groupes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Breaks up the selected groups</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1039"/>
@@ -10054,68 +10087,68 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1050"/>
         <source>Aligner à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Align left</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1050"/>
         <source>Aligne les bords gauches des objets sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the left edges of the selected items</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1051"/>
         <source>Centrer horizontalement</source>
-        <translation type="unfinished"></translation>
+        <translation>Centre horizontally</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1051"/>
         <source>Aligne les objets sélectionnés sur une même verticale, par leur point d&apos;origine pour les éléments</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the selected items on one vertical line, by their origin point for elements</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1052"/>
         <source>Aligner à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Align right</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1052"/>
         <source>Aligne les bords droits des objets sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the right edges of the selected items</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1053"/>
         <source>Aligner en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Align top</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1053"/>
         <source>Aligne les bords supérieurs des objets sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the top edges of the selected items</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Centrer verticalement</source>
-        <translation type="unfinished"></translation>
+        <translation>Centre vertically</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Aligne les objets sélectionnés sur une même horizontale, par leur point d&apos;origine pour les éléments</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the selected items on one horizontal line, by their origin point for elements</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1055"/>
         <source>Aligner en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Align bottom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1055"/>
         <source>Aligne les bords inférieurs des objets sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aligns the bottom edges of the selected items</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1070"/>
@@ -10142,13 +10175,13 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1101"/>
         <source>Centrer sur le curseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Centre on the cursor</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1116"/>
         <source>Centre le folio sur le point sous le curseur de la souris, sans changer le zoom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Centres the sheet on the point under the mouse cursor, without changing the zoom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1144"/>
@@ -10158,7 +10191,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1149"/>
         <source>Ajouter un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Add an arc</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1151"/>
@@ -10168,7 +10201,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1152"/>
         <source>Ajouter un congé</source>
-        <translation type="unfinished"></translation>
+        <translation>Add a fillet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1153"/>
@@ -10208,7 +10241,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1163"/>
         <source>Ajoute un arc sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Adds an arc on the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1164"/>
@@ -10223,7 +10256,7 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1166"/>
         <source>Arrondit le coin entre deux lignes du folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Rounds the corner between two lines of the current sheet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1167"/>
@@ -10323,13 +10356,13 @@ Hold Ctrl while moving to place freely.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1805"/>
         <source>Folio %1 : %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Sheet %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1811"/>
         <source>Conducteurs non chargés</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Conductors not loaded</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1812"/>
@@ -10337,9 +10370,13 @@ Hold Ctrl while moving to place freely.</translation>
 
 Si vous enregistrez le projet, ces conducteurs disparaîtront du fichier. Fermez-le sans enregistrer pour conserver le fichier tel quel.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n conductor could not be joined to its terminals and was not loaded. The element&apos;s definition in the project was probably replaced by another one with different terminals.
+
+If you save the project, this conductor will disappear from the file. Close it without saving to keep the file as it is.</numerusform>
+            <numerusform>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition in the project was probably replaced by another one with different terminals.
+
+If you save the project, these conductors will disappear from the file. Close it without saving to keep the file as it is.</numerusform>
         </translation>
     </message>
     <message>
@@ -10365,9 +10402,9 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2343"/>
         <source>%n objet(s) aligné(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n item aligned</numerusform>
+            <numerusform>%n items aligned</numerusform>
         </translation>
     </message>
     <message>
@@ -10378,12 +10415,12 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2351"/>
         <source>Sélectionnez au moins deux éléments, images, textes, formes ou groupes non verrouillés</source>
-        <translation type="unfinished"></translation>
+        <translation>Select at least two unlocked elements, images, texts, shapes or groups</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2353"/>
         <source>La sélection est déjà alignée, à la grille près</source>
-        <translation type="unfinished"></translation>
+        <translation>The selection is already aligned, to the nearest grid step</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2357"/>
@@ -10558,9 +10595,9 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="3983"/>
         <source>● Enregistrement : %n étape(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>● Recording: %n step</numerusform>
+            <numerusform>● Recording: %n steps</numerusform>
         </translation>
     </message>
     <message>
@@ -10573,9 +10610,13 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         <source>« %1 » : %n étape(s).
 
 Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessous copie la demande, il suffit de la coller dans sa fenêtre.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>“%1”: %n step.
+
+To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</numerusform>
+            <numerusform>“%1”: %n steps.
+
+To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</numerusform>
         </translation>
     </message>
     <message>
@@ -11187,24 +11228,24 @@ Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessou
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="861"/>
         <source>Noms de bornes en double</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicate terminal names</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="862"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Plusieurs bornes portent le même nom : %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Donner un nom unique à chaque borne, par exemple N.1 et N.2. Les bornes concernées sont sélectionnées.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Several terminals have the same name: %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Give each terminal a unique name, for example N.1 and N.2. The terminals concerned are selected.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
         <source>Bornes sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminals without a name</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="886"/>
         <source>&lt;br&gt;%n borne(s) sans nom. Sans noms de bornes uniques, la liste de câblage (qui relie quoi à quoi) ne peut pas désigner chaque borne, et ne peut donc pas servir à câbler l&apos;armoire en atelier.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&lt;br&gt;%n terminal without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</numerusform>
+            <numerusform>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</numerusform>
         </translation>
     </message>
     <message>
@@ -11244,33 +11285,33 @@ Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessou
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1200"/>
         <source>Afficher le cadre de fond</source>
-        <translation type="unfinished"></translation>
+        <translation>Show the background frame</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1208"/>
         <source>Taille du cadre de fond...</source>
-        <translation type="unfinished"></translation>
+        <translation>Background frame size...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1211"/>
         <source>Taille du cadre de fond</source>
-        <translation type="unfinished"></translation>
+        <translation>Background frame size</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1216"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1222"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1218"/>
         <source>Largeur</source>
-        <translation type="unfinished">Width</translation>
+        <translation>Width</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1224"/>
         <source>Hauteur</source>
-        <translation type="unfinished">Height</translation>
+        <translation>Height</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1385"/>
@@ -11494,13 +11535,13 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Enregistrer la configuration sous...</source>
-        <translation type="unfinished"></translation>
+        <translation>Save settings as...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="96"/>
         <source>Enregistre les réglages de QElectroTech dans un fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Saves QElectroTech&apos;s settings to a file</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="98"/>
@@ -11513,13 +11554,13 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="100"/>
         <source>Charger une configuration...</source>
-        <translation type="unfinished"></translation>
+        <translation>Load settings...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="101"/>
         <source>Remplace les réglages de QElectroTech par ceux d&apos;un fichier, puis ferme QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Replaces QElectroTech&apos;s settings with those of a file, then closes QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
@@ -12927,7 +12968,7 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/elementsmover.cpp" line="98"/>
         <source>Ce groupe ne peut pas être déplacé : la position d&apos;un de ses éléments est verrouillée.</source>
-        <translation type="unfinished"></translation>
+        <translation>This group cannot be moved: the position of one of its elements is locked.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementsmover.cpp" line="242"/>
@@ -14137,9 +14178,9 @@ Please download it by following the link and unzip it in the installation folder
     <message numerus="yes">
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="187"/>
         <source>Aligner %n objet(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Align %n item</numerusform>
+            <numerusform>Align %n items</numerusform>
         </translation>
     </message>
     <message>
@@ -14251,17 +14292,17 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="55"/>
         <source>Grouper %n objet(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Group %n item</numerusform>
+            <numerusform>Group %n items</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="75"/>
         <source>Dégrouper %n objet(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ungroup %n item</numerusform>
+            <numerusform>Ungroup %n items</numerusform>
         </translation>
     </message>
 </context>
@@ -14314,22 +14355,23 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="194"/>
         <source>erreur de syntaxe à la ligne %1, colonne %2 :
 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>syntax error at line %1, column %2:
+%3</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="231"/>
         <source>Aucun répertoire de collection n&apos;a été donné.</source>
-        <translation type="unfinished"></translation>
+        <translation>No collection folder was given.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="251"/>
         <source>l&apos;élément racine &lt;%1&gt; n&apos;est pas &lt;labels&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>the root element &lt;%1&gt; is not &lt;labels&gt;.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="256"/>
         <source>le fichier n&apos;a pas pu être ouvert : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>the file could not be opened: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="288"/>
@@ -14339,23 +14381,29 @@ reprennent le préfixe de ce dossier, sauf s&apos;ils portent eux-mêmes une
 étiquette. Un dossier sans préfixe reprend celui de son dossier parent.
 Ce fichier est créé et modifié par QElectroTech (Programme de réglages :
 Configurer les préfixes…), mais reste modifiable à la main.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix (label) file of the user collection.
+Each folder is given a prefix: the symbols of a folder take that
+folder&apos;s prefix, unless they carry a label of their own. A folder
+without a prefix takes its parent folder&apos;s.
+QElectroTech creates and changes this file (Settings:
+Configure prefixes…), but it can still be edited by hand.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="615"/>
         <source>Aucun fichier de préfixes à enregistrer.</source>
-        <translation type="unfinished"></translation>
+        <translation>No prefix file to save.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="626"/>
         <source>Le répertoire %1 n&apos;a pas pu être créé.</source>
-        <translation type="unfinished"></translation>
+        <translation>The folder %1 could not be created.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/qetlabelsfile.cpp" line="638"/>
         <source>Le fichier %1 n&apos;a pas pu être copié à côté avant d&apos;être remplacé :
 rien n&apos;a été modifié.</source>
-        <translation type="unfinished"></translation>
+        <translation>The file %1 could not be copied beside itself before being replaced:
+nothing has been changed.</translation>
     </message>
 </context>
 <context>
@@ -14569,7 +14617,7 @@ rien n&apos;a été modifié.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1454"/>
         <source>Glisser : creuser ou aplatir l&apos;arc, ses extrémités restent en place (Ctrl = position libre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Drag: deepen or flatten the arc, its ends stay in place (Ctrl = free position)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1457"/>
@@ -14669,7 +14717,7 @@ rien n&apos;a été modifié.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2952"/>
         <source>Modifier la courbure d&apos;un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the curve of an arc</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2963"/>
@@ -15267,7 +15315,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="54"/>
         <source>&amp;Nouveau</source>
-        <translation type="unfinished">&amp;New</translation>
+        <translation>&amp;New</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="55"/>
@@ -15307,7 +15355,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="81"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="82"/>
@@ -15342,7 +15390,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="99"/>
         <source>&amp;Enregistrer</source>
-        <translation type="unfinished">&amp;Save</translation>
+        <translation>&amp;Save</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="100"/>
@@ -15352,7 +15400,7 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="101"/>
         <source>&amp;Fermer</source>
-        <translation type="unfinished">&amp;Close</translation>
+        <translation>&amp;Close</translation>
     </message>
     <message>
         <location filename="../sources/scripting/scriptmanagerdialog.cpp" line="113"/>
@@ -19992,7 +20040,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/wiringlistexport.cpp" line="376"/>
         <source>Câble</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Cable</translation>
+        <translation>Cable</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="187"/>
