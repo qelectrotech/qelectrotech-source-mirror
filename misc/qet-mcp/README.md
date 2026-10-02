@@ -301,6 +301,44 @@ becomes its file name only if it is `a-z`, `0-9`, `-` and `_`. Storing or
 removing a script needs `QET_ENABLE_SCRIPTING=1` like an edit does: a
 stored script runs with the user's rights when they click it.
 
+## Live mode: working in the QElectroTech you have open
+
+Every tool above works on files, with no QElectroTech window involved. The
+three `qet_live_*` tools instead act on the project open in **your**
+QElectroTech, in front of you, so you can watch, stop or undo:
+
+| | |
+|---|---|
+| `qet_live_status` | what is on screen: project, folio, selection, last undo step, stored scripts |
+| `qet_live_run_script` | run script text on the open project: one undo step named "Assistant : …" |
+| `qet_live_run_stored` | press a stored script's button |
+| `qet_live_command` | an editor command from an allow-list that opens no dialog: selection, zoom, rotate, snap, group, reset wires |
+| `qet_live_show_folio` | show another folio |
+| `qet_live_undo_last` | undo the newest step, only if the assistant made it |
+| `qet_live_screenshot` | a picture of the folio on screen, as an MCP image |
+
+A script the assistant writes on the spot is shown to you first, with
+*Exécuter*, *Refuser* or *Toujours pour cette session*; the Assistant
+panel lists everything it did.
+
+QElectroTech only listens when three things are true:
+
+1. the server has `QET_ENABLE_SCRIPTING=1`, as for editing;
+2. in QElectroTech, Configurer > Général > "Autoriser un assistant IA à agir
+   sur le projet ouvert" is ticked (off by default);
+3. at this start, you answered *Continuer* to the warning QElectroTech shows
+   every time it starts with that setting on.
+
+While it listens, the status bar says so and shows the assistant's last
+action, with an *Arrêter* button that closes the channel for the rest of
+the session. Each action is one Ctrl+Z. A script's `qet.showMessage()` is
+logged instead of opening a box nobody asked for.
+
+The channel is a local socket only your user can open. QElectroTech puts
+its name and a random token in the `live` part of `qet-assistant.json`,
+and clears it when the channel closes; `qet_about` says whether one is
+open but never shows the token.
+
 ## Worked examples
 
 **What did that edit change?**

@@ -3000,6 +3000,125 @@ def tool_script_remove(script_id: str) -> dict:
     return {"removed": removed}
 
 
+# --------------------------------------------------------------------------
+# Live mode: act on the project open in a running QElectroTech
+# --------------------------------------------------------------------------
+#
+# Everything above is headless: it reads and writes files and launches its
+# own QElectroTech. These tools instead talk to the QElectroTech the user
+# has open, which only listens when three things are true: scripting is
+# allowed, its "mode direct" setting is on (off by default), and the user
+# accepted the warning it shows at every start. It then puts the socket
+# name and token in the "live" part of qet-assistant.json, and clears it
+# when the channel closes. Each action is one undo step in front of the user.
+
+def _live_session() -> dict:
+    """The live channel QElectroTech advertises in qet-assistant.json."""
+    info = assistant_info()
+    path = assistant_info_file()
+    if info is None:
+        raise ValueError(
+            "QElectroTech has not written qet-assistant.json yet (looked for "
+            f"{path}): start QElectroTech, a version with live mode, first.")
+    live = info.get("live")
+    if not info.get("running") or not live:
+        features = info.get("features") or {}
+        if not info.get("running"):
+            why = "QElectroTech is not running"
+        elif not features.get("live_mode_setting"):
+            why = ("live mode is off: in QElectroTech, Configurer QElectroTech > "
+                   "Général > \"Autoriser un assistant IA à agir sur le projet "
+                   "ouvert\", then restart it")
+        else:
+            why = ("live mode is on but not open for this session: answer "
+                   "\"Continuer\" in the warning QElectroTech shows at start, or "
+                   "restart it if \"Pas pour cette session\" or Arrêter was chosen")
+        raise ValueError(f"no QElectroTech is listening for an assistant: {why}.")
+    return live
+
+
+def _live_call(request: dict, timeout: float = 60.0) -> dict:
+    session = _live_session()
+    request = dict(request, token=session.get("token", ""), id=1)
+    line = (json.dumps(request) + "\n").encode("utf-8")
+    name = session.get("socket", "")
+    try:
+        if os.name == "nt":
+            # QLocalServer is a named pipe on Windows; fullServerName() is
+            # already \\.\pipe\<name>.
+            with open(name, "r+b", buffering=0) as pipe:
+                pipe.write(line)
+                data = b""
+                while not data.endswith(b"\n"):
+                    chunk = pipe.read(1)
+                    if not chunk:
+                        break
+                    data += chunk
+        else:
+            import socket
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+                sock.settimeout(timeout)
+                sock.connect(name)
+                sock.sendall(line)
+                data = b""
+                while not data.endswith(b"\n"):
+                    chunk = sock.recv(65536)
+                    if not chunk:
+                        break
+                    data += chunk
+    except OSError as exc:
+        raise ValueError(f"could not reach QElectroTech's live channel ({exc}); it "
+                         "may have been stopped, or QElectroTech closed") from None
+    if not data.strip():
+        raise ValueError("QElectroTech closed the live channel without answering")
+    answer = json.loads(data.decode("utf-8"))
+    answer.pop("id", None)
+    return answer
+
+
+def tool_live_status() -> dict:
+    return _live_call({"cmd": "status"})
+
+
+def tool_live_run_script(source: str, name: str = "", timeout: int = 300) -> dict:
+    _require_script_consent()
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("'source' must be the script's text")
+    return _live_call({"cmd": "run_script", "source": source, "name": name or "script"},
+                      timeout)
+
+
+def tool_live_run_stored(script_id: str, timeout: int = 60) -> dict:
+    _require_script_consent()
+    return _live_call({"cmd": "run_stored", "script": _script_id(script_id)}, timeout)
+
+
+def tool_live_command(action: str) -> dict:
+    _require_script_consent()
+    if not isinstance(action, str) or not action:
+        raise ValueError("'action' must be a command id, e.g. diagrameditor.zoom_fit")
+    return _live_call({"cmd": "command", "action": action})
+
+
+def tool_live_show_folio(folio: int) -> dict:
+    if not isinstance(folio, int) or isinstance(folio, bool):
+        raise ValueError("'folio' must be an index counted from 0")
+    return _live_call({"cmd": "show_folio", "folio": folio})
+
+
+def tool_live_undo_last() -> dict:
+    _require_script_consent()
+    return _live_call({"cmd": "undo_last"})
+
+
+def tool_live_screenshot() -> dict:
+    answer = _live_call({"cmd": "screenshot"})
+    data = answer.pop("png_base64", None)
+    if data:
+        answer["_image_png_base64"] = data
+    return answer
+
+
 TOOLS = [
     {
         "name": "qet_project_info",
@@ -3709,6 +3828,98 @@ TOOLS = [
         "handler": lambda a: tool_script_remove(a["id"]),
     },
     {
+        "name": "qet_live_status",
+        "description": "LIVE MODE. Ask the QElectroTech the user has open what is on "
+                       "screen: the project, the folio shown (index and title), the "
+                       "selected elements, the last undo step and the stored scripts. "
+                       "Works only if the user switched live mode on in QElectroTech "
+                       "and accepted its warning at this start; the error says which "
+                       "step is missing. Changes nothing.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_live_status(),
+    },
+    {
+        "name": "qet_live_run_script",
+        "description": "LIVE MODE. Run script text on the project the user has open, "
+                       "in front of them, as one undo step named after 'name'. "
+                       "qet.currentFolio() is the folio on screen. Returns what the "
+                       "script logged, its error with the line if it threw, and the "
+                       "undo step (empty if nothing changed). Try a new script with "
+                       "qet_script_test on a copy first when you can. Needs "
+                       "QET_ENABLE_SCRIPTING=1 and live mode on in QElectroTech.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "source": {"type": "string", "description": "the script's text"},
+                "name": {"type": "string", "description": "what the user sees in the undo step"},
+                "timeout": {"type": "integer", "default": 300,
+                            "description": "seconds; the user may be reading the script before saying yes"},
+            },
+            "required": ["source"],
+        },
+        "handler": lambda a: tool_live_run_script(a["source"], a.get("name", ""),
+                                                  a.get("timeout", 300)),
+    },
+    {
+        "name": "qet_live_run_stored",
+        "description": "LIVE MODE. Press a stored script's button (see "
+                       "qet_script_list) in the QElectroTech the user has open: one "
+                       "undo step. Needs QET_ENABLE_SCRIPTING=1 and live mode on in "
+                       "QElectroTech.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"id": {"type": "string"},
+                           "timeout": {"type": "integer", "default": 60}},
+            "required": ["id"],
+        },
+        "handler": lambda a: tool_live_run_stored(a["id"], a.get("timeout", 60)),
+    },
+    {
+        "name": "qet_live_command",
+        "description": "LIVE MODE. Trigger one editor command in the QElectroTech the "
+                       "user has open, by id. Only commands that open no dialog are "
+                       "allowed: diagrameditor.select_all, select_nothing, "
+                       "select_invert, select_all_conductors, select_all_text_fields, "
+                       "zoom_in, zoom_out, zoom_content, zoom_fit, zoom_reset, "
+                       "rotate_selection, rotate_texts, snap_selection_to_grid, "
+                       "group_selection, ungroup_selection, conductor_reset (all "
+                       "prefixed diagrameditor.). Anything else -- saving, deleting, "
+                       "exporting -- is refused; use a script for edits.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"action": {"type": "string"}},
+            "required": ["action"],
+        },
+        "handler": lambda a: tool_live_command(a["action"]),
+    },
+    {
+        "name": "qet_live_show_folio",
+        "description": "LIVE MODE. Show another folio of the open project (index "
+                       "from 0), so qet.currentFolio() and qet_live_screenshot "
+                       "follow it.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"folio": {"type": "integer"}},
+            "required": ["folio"],
+        },
+        "handler": lambda a: tool_live_show_folio(a["folio"]),
+    },
+    {
+        "name": "qet_live_undo_last",
+        "description": "LIVE MODE. Undo the newest step in the open project, only if "
+                       "the assistant made it (its name starts \"Assistant :\"); "
+                       "the user's own steps are never undone this way.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_live_undo_last(),
+    },
+    {
+        "name": "qet_live_screenshot",
+        "description": "LIVE MODE. An image of the folio on screen in the user's "
+                       "QElectroTech, as they see it. Changes nothing.",
+        "inputSchema": {"type": "object", "properties": {}},
+        "handler": lambda a: tool_live_screenshot(),
+    },
+    {
         "name": "qet_about",
         "description": "Start here. What QElectroTech last wrote about itself in "
                        "qet-assistant.json: version, every folder (data, settings, "
@@ -4043,8 +4254,15 @@ def handle(msg: dict) -> dict | None:
             arguments = params.get("arguments") or {}
             enforce_path_policy(name, arguments)
             result = tool["handler"](arguments)
+            content = []
+            # A tool may return a picture (qet_live_screenshot): sent as an
+            # MCP image so the assistant can look at it, not as a string.
+            image = result.pop("_image_png_base64", None) if isinstance(result, dict) else None
+            if image:
+                content.append({"type": "image", "data": image, "mimeType": "image/png"})
             text = json.dumps(result, indent=2, ensure_ascii=False)
-            return _ok(mid, {"content": [{"type": "text", "text": text}]})
+            content.append({"type": "text", "text": text})
+            return _ok(mid, {"content": content})
         except Exception as exc:  # surfaced to the model, not the transport
             return _ok(mid, {
                 "isError": True,
@@ -4112,7 +4330,12 @@ def call_once(argv: list[str], stdin=sys.stdin, stdout=sys.stdout,
         return 2
     result = reply["result"]
     for part in result["content"]:
-        print(part["text"], file=stdout)
+        if part.get("type") == "image":
+            # A picture has no text; print it whole, as a data: URI a
+            # browser or a script can use, rather than drop it.
+            print(f"data:{part['mimeType']};base64,{part['data']}", file=stdout)
+        else:
+            print(part["text"], file=stdout)
     return 1 if result.get("isError") else 0
 
 

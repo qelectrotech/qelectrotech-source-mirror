@@ -166,7 +166,9 @@ class ToolRegistry(unittest.TestCase):
             "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
             "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
         "qet_script_install", "qet_script_list", "qet_script_read",
-        "qet_script_remove", "qet_about"})
+        "qet_script_remove", "qet_live_status", "qet_live_run_script",
+        "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
+        "qet_live_undo_last", "qet_live_screenshot", "qet_about"})
 
 
 class EditValidation(unittest.TestCase):
@@ -3000,6 +3002,135 @@ class ScriptToolsIntegration(unittest.TestCase):
         self.assertTrue((self.dir / "good.js").is_file())
 
 
+
+@unittest.skipIf(os.name == "nt", "the fake QElectroTech is a Unix socket")
+class LiveClient(unittest.TestCase):
+    """The qet_live_* client against a stand-in for QElectroTech's
+    LiveServer: one JSON line in, one JSON line out, token on every line."""
+
+    def setUp(self):
+        import socket, threading
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.scripts = root / "data" / "scripts"
+        self.scripts.mkdir(parents=True)
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(self.scripts),
+                                                "QET_ENABLE_SCRIPTING": "1"})
+        self.env.start()
+        self.sock_path = str(root / "s")
+        self.server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.server.bind(self.sock_path)
+        self.server.listen(4)
+        self.seen = []
+
+        def serve():
+            while True:
+                try:
+                    conn, _ = self.server.accept()
+                except OSError:
+                    return
+                with conn:
+                    data = b""
+                    while not data.endswith(b"\n"):
+                        chunk = conn.recv(4096)
+                        if not chunk:
+                            break
+                        data += chunk
+                    req = json.loads(data)
+                    self.seen.append(req)
+                    ok = req.get("token") == "T0K"
+                    conn.sendall((json.dumps({"ok": ok, "id": req.get("id"),
+                                              "echo": req.get("cmd")}) + "\n").encode())
+        threading.Thread(target=serve, daemon=True).start()
+
+    def tearDown(self):
+        self.server.close()
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def info(self, live, running=True, setting=True):
+        (self.scripts.parent / "qet-assistant.json").write_text(json.dumps({
+            "format": 1, "running": running,
+            "features": {"live_mode_setting": setting}, "live": live}))
+
+    def session(self):
+        self.info({"socket": self.sock_path, "token": "T0K", "pid": 1})
+
+    def test_no_session_says_what_to_switch_on(self):
+        """Each reason nothing is listening gets its own answer."""
+        with self.assertRaisesRegex(ValueError, "start QElectroTech"):
+            m.tool_live_status()
+        self.info(None, running=False)
+        with self.assertRaisesRegex(ValueError, "not running"):
+            m.tool_live_status()
+        self.info(None, setting=False)
+        with self.assertRaisesRegex(ValueError, "live mode is off"):
+            m.tool_live_status()
+        self.info(None)
+        with self.assertRaisesRegex(ValueError, "Continuer"):
+            m.tool_live_status()
+
+    def test_requests_carry_the_token_and_the_script_id(self):
+        self.session()
+        self.assertEqual(m.tool_live_status(), {"ok": True, "echo": "status"})
+        m.tool_live_run_stored("mark")
+        m.tool_live_run_script("qet.log(1);", "Note")
+        self.assertEqual([r["token"] for r in self.seen], ["T0K"] * 3)
+        # "id" numbers the request; the stored script travels as "script"
+        # (they once shared "id", and every stored run asked for script "1")
+        self.assertEqual(self.seen[1]["script"], "mark")
+        self.assertEqual((self.seen[2]["source"], self.seen[2]["name"]), ("qet.log(1);", "Note"))
+
+    def test_running_needs_consent_status_does_not(self):
+        self.session()
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            m.tool_live_status()
+            with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                m.tool_live_run_script("qet.log(1);")
+            with self.assertRaisesRegex(ValueError, "'id' must be"):
+                os.environ["QET_ENABLE_SCRIPTING"] = "1"
+                m.tool_live_run_stored("../x")
+        self.assertEqual(len(self.seen), 1)
+
+    def test_screenshot_is_sent_as_an_image(self):
+        """The picture must reach the assistant as an MCP image, not as a
+        long base64 string inside the text."""
+        self.session()
+        with mock.patch.object(m, "_live_call",
+                               return_value={"ok": True, "width": 2, "height": 1,
+                                             "png_base64": "iVBORw0K"}):
+            reply = m.handle({"jsonrpc": "2.0", "id": 9, "method": "tools/call",
+                              "params": {"name": "qet_live_screenshot", "arguments": {}}})
+        content = reply["result"]["content"]
+        self.assertEqual(content[0], {"type": "image", "data": "iVBORw0K",
+                                      "mimeType": "image/png"})
+        self.assertNotIn("iVBORw0K", content[1]["text"])
+
+    def test_call_once_prints_an_image_as_a_data_uri(self):
+        import io
+        self.session()
+        out = io.StringIO()
+        with mock.patch.object(m, "_live_call",
+                               return_value={"ok": True, "png_base64": "iVBORw0K"}):
+            code = m.call_once(["qet_live_screenshot"], stdout=out)
+        self.assertEqual(code, 0)
+        self.assertEqual(out.getvalue().splitlines()[0], "data:image/png;base64,iVBORw0K")
+
+    def test_commands_and_folios_are_sent_as_asked(self):
+        self.session()
+        m.tool_live_command("diagrameditor.zoom_fit")
+        m.tool_live_show_folio(2)
+        m.tool_live_undo_last()
+        self.assertEqual([(r["cmd"], r.get("action"), r.get("folio")) for r in self.seen],
+                         [("command", "diagrameditor.zoom_fit", None),
+                          ("show_folio", None, 2), ("undo_last", None, None)])
+        with self.assertRaises(ValueError):
+            m.tool_live_show_folio("2")
+
+    def test_stale_session_file(self):
+        self.info({"socket": self.sock_path + "-gone", "token": "T0K"})
+        with self.assertRaisesRegex(ValueError, "could not reach"):
+            m.tool_live_status()
 class AssistantInfoFile(unittest.TestCase):
     """qet-assistant.json: QElectroTech says where things are; the server
     believes it over its own per-platform guess."""
