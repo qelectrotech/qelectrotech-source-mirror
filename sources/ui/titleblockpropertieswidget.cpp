@@ -123,6 +123,8 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
 	ui->auto_page_cb->setCurrentText(properties.auto_page_num);
+	m_auto_page_num = properties.auto_page_num;
+	m_auto_page_num_picked = false;
 
 	//About date
 	ui -> m_date_now_pb -> setDisabled(true);
@@ -166,6 +168,7 @@ void TitleBlockPropertiesWidget::setProperties(
 	// Show the saved custom values, plus any of the template's custom variables
 	// that aren't defined yet, so the user only fills in the missing ones (#271).
 	DiagramContext context = properties.context;
+	m_context_keys = context.keys();
 	addTemplateVariables(context, index);
 	m_dcw -> setContext(context);
 }
@@ -215,8 +218,22 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	}
 
 	prop.context = m_dcw -> context();
+		//The template's custom variables are only offered for filling in
+		//(#271): one left empty is not part of the properties.
+	const QList<QString> keys = prop.context.keys();
+	for (const QString &key : keys) {
+		if (!m_context_keys.contains(key)
+				&& prop.context.value(key).toString().isEmpty())
+			prop.context.remove(key);
+	}
 
-	prop.auto_page_num = ui->auto_page_cb->currentText();
+		//The combo box cannot show "no folio numbering": it shows its
+		//placeholder entry, or the project's first numbering. Return what
+		//was set unless the user picked something else.
+	if (!m_auto_page_num_picked)
+		prop.auto_page_num = m_auto_page_num;
+	else if (ui->auto_page_cb->currentText() != tr("Créer un Folio Numérotation Auto"))
+		prop.auto_page_num = ui->auto_page_cb->currentText();
 
 	return prop;
 }
@@ -376,6 +393,9 @@ void TitleBlockPropertiesWidget::initDialog(
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==nullptr)
 			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
+			//activated() is only emitted for a choice the user makes
+		connect(ui->auto_page_cb, qOverload<int>(&QComboBox::activated),
+				this, [this]() { m_auto_page_num_picked = true; });
 	}
 	else{
 		ui->auto_page_cb->hide();

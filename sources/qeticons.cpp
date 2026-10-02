@@ -427,8 +427,7 @@ void QET::Icons::initIcons()
 	ConfigureToolbars   = QIcon::fromTheme("configure-toolbars");
 	IC_CopyFile         = QIcon::fromTheme("item-copy");
 	DiagramAdd          = QIcon::fromTheme("folio-new");
-	Diagram.addFile(":/ico/16x16/diagram.png");
-	Diagram.addFile(":/ico/diagram.png");
+	Diagram             = QIcon::fromTheme("diagram");
 	DiagramBg           = QIcon::fromTheme("diagram_bg");
 	DiagramDelete       = QIcon::fromTheme("folio-delete");
 	DialogCancel        = QIcon::fromTheme("dialog-cancel");

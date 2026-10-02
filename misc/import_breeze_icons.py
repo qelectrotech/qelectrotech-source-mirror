@@ -29,6 +29,9 @@ and 32 pixels, unchanged:
     ico/breeze/22/<name>.svg
     ico/breeze/32/<name>.svg
 
+The settings page icons in BREEZE_PAGES are copied from the one size
+listed for each, to ico/breeze/<size>/<name>.svg.
+
 Many Breeze names are symbolic links to another file. The copy holds the
 linked file's content under the name BREEZE gives, so list the link's
 target in BREEZE and several QET icons share one copy. Every name needs
@@ -39,7 +42,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from make_icon_themes import BREEZE, BREEZE_SIZES, ICO  # noqa: E402
+from make_icon_themes import BREEZE, BREEZE_PAGES, BREEZE_SIZES, ICO  # noqa: E402
 
 CATEGORIES = ["actions", "places", "mimetypes", "status", "devices", "apps", "preferences"]
 OUT = ICO / "breeze"
@@ -69,6 +72,14 @@ def main():
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(source.read_bytes())
                 wanted.add(target)
+    for name, size in BREEZE_PAGES.values():
+        source = find(checkout, name, size)
+        if not source:
+            sys.exit(f"{name}: no {size} pixel icon in {checkout}")
+        target = OUT / str(size) / f"{name}.svg"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+        wanted.add(target)
     # Drop icons no longer listed, so ico/breeze/ holds only what the theme uses.
     for old in sorted(OUT.glob("*/*.svg")):
         if old not in wanted:

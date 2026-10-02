@@ -1390,6 +1390,46 @@ bool Conductor::moveSegment(int index, qreal dx, qreal dy)
 }
 
 /**
+	@brief Conductor::setPathPoints
+	Replace this conductor's path by the one through @p scene_points, and
+	push one undo step for it -- the same ChangeConductorCommand a manual
+	handle drag or moveSegment() pushes, so the path is saved as a
+	modified one and survives a reload.
+	@param scene_points in scene coordinates, from terminal1's docking
+	point to terminal2's, every segment horizontal or vertical
+	@return false, changing nothing, if the points do not make such a path
+*/
+bool Conductor::setPathPoints(const QList<QPointF> &scene_points)
+{
+	if (scene_points.size() < 2 || !terminal1 || !terminal2) return false;
+	const auto near = [](const QPointF &a, const QPointF &b) {
+		return qAbs(a.x() - b.x()) < 0.5 && qAbs(a.y() - b.y()) < 0.5;
+	};
+	if (!near(scene_points.first(), terminal1->dockConductor()) ||
+		!near(scene_points.last(), terminal2->dockConductor()))
+		return false;
+	QList<QPointF> points;
+	for (int i = 0; i < scene_points.size(); ++i) {
+		const QPointF p = scene_points.at(i);
+		if (i && qAbs(p.x() - scene_points.at(i - 1).x()) > 0.01
+			  && qAbs(p.y() - scene_points.at(i - 1).y()) > 0.01)
+			return false;
+		points << mapFromScene(p);
+	}
+		// A two-point path has nothing to segment between: let the
+		// application draw it, as for a conductor with no profile.
+	if (points.size() < 3) return false;
+
+	before_mov_text_pos_ = m_text_item->pos();
+	pointsToSegments(points);
+	modified_path = true;
+	segmentsToPath();
+	calculateTextItemPosition();
+	saveProfile();
+	return true;
+}
+
+/**
 	@brief Conductor::length
 	@return the length of this conductor
 */
@@ -2305,6 +2345,38 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	}
 }
 
+namespace {
+	/// The two ends of @p conductor on the folio, smaller first, compared
+	/// by x then y.
+	QPair<QPointF, QPointF> conductorEnds(const Conductor *conductor)
+	{
+		auto less = [](const QPointF &a, const QPointF &b) {
+			return a.x() < b.x() || (a.x() == b.x() && a.y() < b.y());
+		};
+		QPointF a = conductor->terminal1 ? conductor->terminal1->dockConductor() : QPointF();
+		QPointF b = conductor->terminal2 ? conductor->terminal2->dockConductor() : QPointF();
+		if (less(b, a))
+			std::swap(a, b);
+		return qMakePair(a, b);
+	}
+
+	/// True if @p a comes before @p b in an order that is the same in every
+	/// run: by where the conductor's ends are on the folio, then by uuid.
+	/// Not by uuid first: a project generated again by a script gets new
+	/// uuids each time, and a file with no conductor uuids gets new ones on
+	/// every load, while the drawing is the same.
+	bool stableConductorLess(const Conductor *a, const Conductor *b)
+	{
+		const auto ea = conductorEnds(a), eb = conductorEnds(b);
+		const qreal ka[4] = {ea.first.x(), ea.first.y(), ea.second.x(), ea.second.y()};
+		const qreal kb[4] = {eb.first.x(), eb.first.y(), eb.second.x(), eb.second.y()};
+		for (int i = 0; i < 4; ++i)
+			if (ka[i] != kb[i])
+				return ka[i] < kb[i];
+		return a->uuid() < b->uuid();
+	}
+}
+
 /**
 	@brief longestConductorInPotential
 	@param conductor : a conductor in the potential to search
@@ -2313,10 +2385,24 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 */
 Conductor * longestConductorInPotential(Conductor *conductor, bool all_diagram) {
 	Conductor *longest_conductor = conductor;
-	//Search the longest conductor
+	qreal longest_length = conductor->length();
+	//Search the longest conductor.
+	//Conductors of equal length are common (a symmetrical layout), and the
+	//set is iterated in pointer order, which changes from run to run: so a
+	//tie is broken by an order that does not, or the potential's text lands
+	//on a different conductor each time the same file is opened or exported.
 	foreach (Conductor *c, conductor -> relatedPotentialConductors(all_diagram))
-		if (c -> length() > longest_conductor -> length())
+	{
+		const qreal length = c->length();
+		if (qAbs(length - longest_length) < 1e-6) {
+			if (stableConductorLess(c, longest_conductor))
+				longest_conductor = c;
+		}
+		else if (length > longest_length) {
 			longest_conductor = c;
+			longest_length = length;
+		}
+	}
 
 	return longest_conductor;
 }

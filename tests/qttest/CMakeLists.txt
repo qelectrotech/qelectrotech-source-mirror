@@ -104,6 +104,13 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# elementviewgrid.h is header-only: the symbol editor's snap step at each
+# zoom (bugtracker #112), tested without an editor window.
+add_executable(tst_elementviewgrid tst_elementviewgrid.cpp)
+add_test(NAME tst_elementviewgrid COMMAND tst_elementviewgrid)
+target_include_directories(tst_elementviewgrid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_elementviewgrid PRIVATE Qt::Test)
+
 # alignment.h is header-only too (it builds on textgrid.h): the geometry
 # behind the align commands, tested without a scene.
 add_executable(tst_alignment tst_alignment.cpp)
@@ -400,6 +407,19 @@ target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_pdfpagesize PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# One text per potential: the number goes on the same conductor in every
+# run when two conductors tie for longest. Exports
+# fixtures/one_text_per_potential_tie.qet through the real binary, several
+# times, since the order it used to depend on changes only between runs.
+add_executable(
+  tst_potentialtextcarrier
+  tst_potentialtextcarrier.cpp)
+add_test(NAME tst_potentialtextcarrier COMMAND tst_potentialtextcarrier)
+add_dependencies(tst_potentialtextcarrier qelectrotech)
+target_link_libraries(tst_potentialtextcarrier PRIVATE Qt::Test)
+target_compile_definitions(tst_potentialtextcarrier PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Hops where wires cross (issue #436): the geometry in wirehops.cpp, and
 # through the real binary, that --resave keeps the project setting and
 # adds nothing to a project without it.
@@ -413,6 +433,16 @@ target_include_directories(tst_wirehops PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_wirehops PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# The routing behind qet.routeConductor(): conductorrouter.cpp needs only
+# Qt Core, so the geometry is tested without a scene.
+add_executable(
+  tst_conductorrouter
+  tst_conductorrouter.cpp
+  ${QET_DIR}/sources/conductorrouter.cpp)
+add_test(NAME tst_conductorrouter COMMAND tst_conductorrouter)
+target_include_directories(tst_conductorrouter PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductorrouter PRIVATE Qt::Test)
 
 # qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
 # conductors by uuid and finds each one's two ends. Runs a script through
@@ -438,6 +468,18 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_settingsdir qelectrotech)
   target_link_libraries(tst_settingsdir PRIVATE Qt::Test)
   target_compile_definitions(tst_settingsdir PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
+
+  # qet.addElement() on a symbol that exists but cannot be read says so,
+  # rather than reporting a collision with the copy already embedded.
+  add_executable(
+    tst_unreadableelement
+    tst_unreadableelement.cpp)
+  add_test(NAME tst_unreadableelement COMMAND tst_unreadableelement)
+  add_dependencies(tst_unreadableelement qelectrotech)
+  target_link_libraries(tst_unreadableelement PRIVATE Qt::Test)
+  target_compile_definitions(tst_unreadableelement PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
@@ -478,6 +520,19 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptterminaluuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # The same symbol placed twice in a project whose collection does not
+  # start with its "import" category (examples/lmdg.qet).
+  add_executable(
+    tst_importcategory
+    tst_importcategory.cpp)
+  add_test(NAME tst_importcategory COMMAND tst_importcategory)
+  add_dependencies(tst_importcategory qelectrotech)
+  target_link_libraries(tst_importcategory PRIVATE Qt::Test)
+  target_compile_definitions(tst_importcategory PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
+    "QET_ELEMENTS_DIR=\"${QET_DIR}/elements\"")
 
   # qet.currentFolio() through --run: the first folio, or -1 with none; and
   # --run keeps one undo step per call (only an editor run is grouped).

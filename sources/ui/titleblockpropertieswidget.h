@@ -100,11 +100,17 @@ class TitleBlockPropertiesWidget : public QWidget
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;
 		DiagramContextWidget *m_dcw;
+			/// keys of the context given to setProperties()
+		QStringList m_context_keys;
 		QAction *m_tbt_edit, *m_tbt_duplicate;
 		QMenu *m_tbt_menu;
 		QList <TitleBlockTemplatesCollection *> m_tbt_collection_list;
 		QList <QET::QetCollection> m_map_index_to_collection_type;
 		QList <QString> keys_2;
+			/// auto_page_num as given to setProperties(), returned
+			/// unchanged unless the user picks another folio numbering
+		QString m_auto_page_num;
+		bool m_auto_page_num_picked = false;
 };
 
 #endif // TITLEBLOCKPROPERTIESWIDGET_H

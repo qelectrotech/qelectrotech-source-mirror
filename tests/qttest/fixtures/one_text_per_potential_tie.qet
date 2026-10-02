@@ -1,0 +1,320 @@
+<project title="one text per potential, tied lengths" uuid="{74544bb0-3f71-58af-9052-eb46f8a03dfd}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">one_text_per_potential_tie</property>
+        <property name="savedfilepath" show="1">one_text_per_potential_tie.qet</property>
+        <property name="savedtime" show="1">22:07</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{91957ff3-7b74-4012-a876-f858c68b2d60}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/10_allpole/395_electronics_semiconductors/01_resistors/resistance.elmt" uuid="{3817b0a1-cab7-454e-81f2-7678b242cced}" x="100" y="300" z="10">
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-16"/>
+                    <terminal id="1" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{1a7d317c-51b7-402f-807e-79aa136df233}" x="6" y="-11.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/10_allpole/395_electronics_semiconductors/01_resistors/resistance.elmt" uuid="{f571bdba-9562-4119-8a18-0d798ebb7c3d}" x="300" y="100" z="10">
+                <terminals>
+                    <terminal id="2" orientation="0" x="0" y="-16"/>
+                    <terminal id="3" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{79099d69-dcec-4247-bd03-cdb07a0194d6}" x="6" y="-11.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/10_allpole/395_electronics_semiconductors/01_resistors/resistance.elmt" uuid="{c05fe3f1-f4a1-4beb-843b-90aadc3ca6c0}" x="300" y="500" z="10">
+                <terminals>
+                    <terminal id="4" orientation="0" x="0" y="-16"/>
+                    <terminal id="5" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{075df885-82c2-49dd-817d-809137a3329d}" x="6" y="-11.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="R" type="embed://import/10_electric/10_allpole/395_electronics_semiconductors/01_resistors/resistance.elmt" uuid="{d0acb0f6-8c2f-4daa-8365-7ad1df6f7f86}" x="400" y="300" z="10">
+                <terminals>
+                    <terminal id="6" orientation="0" x="0" y="-16"/>
+                    <terminal id="7" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{11eafa99-e5a9-4baf-a2ed-8469780c7fa8}" x="6" y="-11.5">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{3817b0a1-cab7-454e-81f2-7678b242cced}" element1_label="" element1_name="Resistor" element2="{f571bdba-9562-4119-8a18-0d798ebb7c3d}" element2_label="" element2_name="Resistor" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="42" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{09a3060b-a0fd-41ad-b605-f5c0ae63901e}" terminal2="{4410c57c-3796-4696-b63b-d8d5a0c9b788}" terminalname1="A2" terminalname2="A1" text_color="#000000" type="multi" uuid="{26591715-c028-44c9-bf2d-c828f8187527}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{f571bdba-9562-4119-8a18-0d798ebb7c3d}" element1_label="" element1_name="Resistor" element2="{c05fe3f1-f4a1-4beb-843b-90aadc3ca6c0}" element2_label="" element2_name="Resistor" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="42" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{4410c57c-3796-4696-b63b-d8d5a0c9b788}" terminal2="{09a3060b-a0fd-41ad-b605-f5c0ae63901e}" terminalname1="A1" terminalname2="A2" text_color="#000000" type="multi" uuid="{0c9e2a9a-f402-49f4-9780-a8c72704acff}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{f571bdba-9562-4119-8a18-0d798ebb7c3d}" element1_label="" element1_name="Resistor" element2="{d0acb0f6-8c2f-4daa-8365-7ad1df6f7f86}" element2_label="" element2_name="Resistor" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="42" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{4410c57c-3796-4696-b63b-d8d5a0c9b788}" terminal2="{09a3060b-a0fd-41ad-b605-f5c0ae63901e}" terminalname1="A1" terminalname2="A2" text_color="#000000" type="multi" uuid="{5ecce027-3b6b-4e2e-9d30-f5dd59b320c0}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ca">Elements importats</name>
+                <name lang="cs">Zavedené prvky</name>
+                <name lang="da">Importerede elementer</name>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="el">Εισηγμένα στοιχεία</name>
+                <name lang="en">Imported elements</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="hr">Uvezeni elementi</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="ja">インバートされた要素</name>
+                <name lang="ko">전기 심볼 요소</name>
+                <name lang="ko_KR">전기 심볼 요소</name>
+                <name lang="nl">Elementen geïmporteerd</name>
+                <name lang="nl_BE">Elementen geïmporteerd</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="pt">Elementos importados</name>
+                <name lang="pt_BR">Elementos importados</name>
+                <name lang="ro">Elemente importate</name>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="sl">Uvoženi elementi</name>
+                <name lang="sv">Importerade element</name>
+                <name lang="tr">İthal öğeler</name>
+                <name lang="uk">Імпортовані елементи</name>
+                <name lang="zh">导入元件</name>
+            </names>
+        <category name="10_electric">
+                <names>
+                    <name lang="ar">كهربائي</name>
+                    <name lang="ca">Elèctric</name>
+                    <name lang="cs">Elektrotechnika</name>
+                    <name lang="da">Elektrisk</name>
+                    <name lang="de">Elektrik</name>
+                    <name lang="el">Ηλεκτρικά</name>
+                    <name lang="en">Electric</name>
+                    <name lang="es">Eléctrica</name>
+                    <name lang="fi">Sähkö</name>
+                    <name lang="fr">Electrique</name>
+                    <name lang="hr">Električno</name>
+                    <name lang="hu">Elektromos</name>
+                    <name lang="it">Elettrica</name>
+                    <name lang="ja">電気</name>
+                    <name lang="ko">전기</name>
+                    <name lang="mn">Цахилгаан</name>
+                    <name lang="nb">Elektrisk</name>
+                    <name lang="nl">Elektrotechniek</name>
+                    <name lang="nl_BE">Elektrisch</name>
+                    <name lang="pl">Elektrotechnika</name>
+                    <name lang="pt">Elétrico</name>
+                    <name lang="pt_BR">Elétrica</name>
+                    <name lang="ro">Electric</name>
+                    <name lang="ru">Электротехника</name>
+                    <name lang="sk">Elektrické</name>
+                    <name lang="sl">Elektrika</name>
+                    <name lang="sr">Електрика</name>
+                    <name lang="sv">El</name>
+                    <name lang="tr">Elektrik</name>
+                    <name lang="uk">Електрика</name>
+                    <name lang="zh">10_电气</name>
+                    <name lang="zn">电气工程</name>
+                </names>
+                <category name="10_allpole">
+                    <names>
+                        <name lang="ar">متعدد الأقطاب</name>
+                        <name lang="ca">Multifilar</name>
+                        <name lang="cs">Vícežilový</name>
+                        <name lang="da">Flere ledere</name>
+                        <name lang="de">Allpolig</name>
+                        <name lang="el">Πολυγραμμικό</name>
+                        <name lang="en">All-pole</name>
+                        <name lang="es">Multifilar</name>
+                        <name lang="fi">Yleisnapa</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="hr">Univerzalni</name>
+                        <name lang="hu">Többvonalas szimbólumok</name>
+                        <name lang="it">Multifilare</name>
+                        <name lang="ja">複線</name>
+                        <name lang="ko">다-극</name>
+                        <name lang="mn">Бүх туйл</name>
+                        <name lang="nb">Alle poler</name>
+                        <name lang="nl">Veel polig</name>
+                        <name lang="nl_BE">All-pole</name>
+                        <name lang="pl">Schematy wieloliniowe</name>
+                        <name lang="pt">Multipolar</name>
+                        <name lang="pt_BR">Multifilar</name>
+                        <name lang="ro">Bipolar</name>
+                        <name lang="ru">Многополюсные</name>
+                        <name lang="sk">Všepólové</name>
+                        <name lang="sl">Vsi poli</name>
+                        <name lang="sr">Свe-полни</name>
+                        <name lang="sv">Allpolig</name>
+                        <name lang="tr">Çok kutuplu</name>
+                        <name lang="uk">Багатополюсні</name>
+                        <name lang="zh">10_全极</name>
+                    </names>
+                    <category name="395_electronics_semiconductors">
+                        <names>
+                            <name lang="ar">إلكترونيات وأشباه موصلات</name>
+                            <name lang="ca">Electrònica i semiconductors</name>
+                            <name lang="cs">Elektronika a polovodiče</name>
+                            <name lang="da">Elektronik og halvledere</name>
+                            <name lang="de">Elektronik und Halbleiter</name>
+                            <name lang="el">Ηλεκτρονικά και ημιαγωγοί</name>
+                            <name lang="en">Electronics and semiconductors</name>
+                            <name lang="es">Electrónica y semiconductores</name>
+                            <name lang="fi">Elektroniikka ja puolijohteet</name>
+                            <name lang="fr">Electronique et semi-conducteurs</name>
+                            <name lang="hr">Elektronika i poluvodiči</name>
+                            <name lang="hu">Elektronika és félvezetők</name>
+                            <name lang="it">Elettronica e semiconduttori</name>
+                            <name lang="ja">電子と半導体</name>
+                            <name lang="ko">전자 공학 및 반도체</name>
+                            <name lang="mn">Электроник ба хагас дамжуулагч</name>
+                            <name lang="nb">Elektronikk og halvledere</name>
+                            <name lang="nl">Electronica en halfgeleiders</name>
+                            <name lang="nl_BE">Elektronica en halfgeleiders</name>
+                            <name lang="pl">Elektronika i półprzewodniki</name>
+                            <name lang="pt">Eletrónica e semicondutores</name>
+                            <name lang="pt_BR">Eletrônica e semi-condutoues</name>
+                            <name lang="ro">Electronică și semiconductoare</name>
+                            <name lang="ru">Электроника и полупроводники</name>
+                            <name lang="sk">Elektronika a polovodiče</name>
+                            <name lang="sl">Elektronika in polprevodniki</name>
+                            <name lang="sr">Електроника и полупроводници</name>
+                            <name lang="sv">Elektronik och halvledare</name>
+                            <name lang="tr">Elektronik ve yarı iletkenler</name>
+                            <name lang="uk">Електроніка та напівпровідники</name>
+                            <name lang="zh">电子与半导体</name>
+                        </names>
+                        <category name="01_resistors">
+                            <names>
+                                <name lang="ar">مُقاومة</name>
+                                <name lang="ca">Resistències</name>
+                                <name lang="cs">Odpory</name>
+                                <name lang="da">Modstande</name>
+                                <name lang="de">Widerstände</name>
+                                <name lang="el">Αντιστάσεις</name>
+                                <name lang="en">Resistors</name>
+                                <name lang="es">Resistencias</name>
+                                <name lang="fi">Vastukset</name>
+                                <name lang="fr">Résistances</name>
+                                <name lang="hr">Otpornici</name>
+                                <name lang="hu">Ellenállások</name>
+                                <name lang="it">Resistori</name>
+                                <name lang="ja">抵抗器</name>
+                                <name lang="ko">저항</name>
+                                <name lang="mn">Эсэргүүцэл</name>
+                                <name lang="nb">Motstander</name>
+                                <name lang="nl">Weerstand</name>
+                                <name lang="nl_BE">Weerstanden</name>
+                                <name lang="pl">Rezystory</name>
+                                <name lang="pt">Resistência</name>
+                                <name lang="pt_BR">Resistores</name>
+                                <name lang="ro">Rezistoare</name>
+                                <name lang="ru">Резисторы</name>
+                                <name lang="sk">Rezistory</name>
+                                <name lang="sl">Upori</name>
+                                <name lang="sr">Отпорници</name>
+                                <name lang="sv">Motstånd</name>
+                                <name lang="tr">Dirençler</name>
+                                <name lang="uk">Резистори</name>
+                                <name lang="zh">电阻器</name>
+                            </names>
+                            <element name="resistance.elmt">
+                                <definition height="60" hotspot_x="10" hotspot_y="30" link_type="simple" type="element" version="0.100.0" width="20">
+                                    <uuid uuid="{2becfcef-f6f6-6a63-ef49-65f12026c4f8}"/>
+                                    <names>
+                                        <name lang="ar">مُقاومة</name>
+                                        <name lang="ca">Resistència</name>
+                                        <name lang="cs">Odpor</name>
+                                        <name lang="da">Modstand</name>
+                                        <name lang="de">Widerstand</name>
+                                        <name lang="el">Αντίσταση</name>
+                                        <name lang="en">Resistor</name>
+                                        <name lang="es">Resistencia</name>
+                                        <name lang="fi">Vastus</name>
+                                        <name lang="fr">Résistance</name>
+                                        <name lang="hr">Otpornik</name>
+                                        <name lang="hu">Ellenállás</name>
+                                        <name lang="it">Resistore</name>
+                                        <name lang="ja">抵抗器</name>
+                                        <name lang="ko">저항</name>
+                                        <name lang="mn">Резистор</name>
+                                        <name lang="nb">Motstand</name>
+                                        <name lang="nl">Weerstand</name>
+                                        <name lang="nl_BE">Weerstand</name>
+                                        <name lang="pl">Rezystor</name>
+                                        <name lang="pt">Resistência</name>
+                                        <name lang="pt_BR">Resistor</name>
+                                        <name lang="ro">Rezistor</name>
+                                        <name lang="ru">Резистор</name>
+                                        <name lang="sk">Rezistor</name>
+                                        <name lang="sl">Upor</name>
+                                        <name lang="sr">Отпорник</name>
+                                        <name lang="sv">Resistor</name>
+                                        <name lang="tr">Direnç</name>
+                                        <name lang="uk">Резистор</name>
+                                        <name lang="zh">电阻</name>
+                                    </names>
+                                    <informations>EN 60617: 04-01-01</informations>
+                                    <description>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="20" y2="-20"/>
+                                        <rect antialias="false" height="20" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="8" x="-4" y="-10"/>
+                                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{570cd854-578d-4c4b-bd2a-3498353e46b6}" x="6" y="-11.5" z="7">
+                                            <text/>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <terminal name="A2" orientation="s" type="Generic" uuid="{09a3060b-a0fd-41ad-b605-f5c0ae63901e}" x="0" y="20"/>
+                                        <terminal name="A1" orientation="n" type="Generic" uuid="{4410c57c-3796-4696-b63b-d8d5a0c9b788}" x="0" y="-20"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

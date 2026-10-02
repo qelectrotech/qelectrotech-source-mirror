@@ -24,6 +24,7 @@
 
 #include <QApplication>
 #include <QDir>
+#include <QFile>
 #include <QPainter>
 #include <QPixmap>
 #include <QStyle>
@@ -178,7 +179,12 @@ QString FileElementCollectionItem::localName()
 			bool readable = false;
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if (docu.load_file(str.toStdWString().c_str()))
+				// QFile rather than pugi's load_file(), which fails on
+				// Windows once the full path reaches 260 characters.
+			QFile file(str);
+			const QByteArray data = file.open(QIODevice::ReadOnly)
+					? file.readAll() : QByteArray();
+			if (!data.isEmpty() && docu.load_buffer(data.constData(), data.size()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")

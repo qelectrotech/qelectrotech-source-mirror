@@ -157,6 +157,16 @@ QDomElement XmlElementCollection::root() const
 */
 QDomElement XmlElementCollection::importCategory() const
 {
+		//Found by name: a project may hold other top-level categories,
+		//and before the "import" one (lmdg.qet has "k_elem" first). Every
+		//lookup of an imported element is under "import/", so filing it
+		//anywhere else made the next placement of the same symbol fail.
+	for (QDomElement category = root().firstChildElement("category") ;
+		 !category.isNull() ;
+		 category = category.nextSiblingElement("category")) {
+		if (category.attribute("name") == QLatin1String("import"))
+			return category;
+	}
 	return root().firstChildElement("category");
 }
 

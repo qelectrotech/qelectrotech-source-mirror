@@ -1,0 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Embeds qelectrotech.exe.manifest as the program's manifest
+// (resource id 1 = CREATEPROCESS_MANIFEST_RESOURCE_ID, type 24 = RT_MANIFEST).
+1 24 "@QET_MANIFEST_FILE@"

@@ -765,6 +765,9 @@ void QETElementEditor::updateSelectionFromPartsList()
 	}
 	m_parts_list -> blockSignals(false);
 	m_elmt_scene -> blockSignals(false);
+		//selectionChanged was blocked above, so the selection decorator must be
+		//updated by hand, otherwise dragging moves only the part under the cursor
+	m_elmt_scene -> managePrimitivesGroups();
 	updateInformations();
 	updateAction();
 }
