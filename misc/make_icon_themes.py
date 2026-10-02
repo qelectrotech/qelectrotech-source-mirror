@@ -94,8 +94,12 @@ Breeze art:
     another multiple of 16 (32, 64, 128...)    the smooth 16 pixel design
     44 pixels and scalable                     the smooth 22 pixel design
 
-The Scale=2 folders follow the table at twice their size. Four icons
+The Scale=2 folders follow the table at twice their size. Five icons
 have a 32 pixel design, used in place of both smooth vectors.
+
+A settings page icon (PAGES) is colored art shown at 64 and 128 pixels:
+one SVG in the scalable folder serves it. The printer and settings pages
+use the Breeze art QET's PNGs were exported from (BREEZE_PAGES).
 
 An SVG is recolored for the dark theme through its text color (see
 dark_svg). A colored SVG, one without a text color, gets no dark copy
@@ -110,7 +114,7 @@ touched; the dark theme inherits them from the light one.
 Qt inherits by name, not by size: once a name has any file in the dark
 theme, the parent theme is never consulted for that name, and a size the
 dark theme lacks is served by scaling the nearest dark file. An icon that
-is line art at 22 pixels and colored at 128 (the printer) would then come
+is line art at 22 pixels and colored at 128 would then come
 out as the 22 pixel copy scaled up on a dark palette. So for every name
 the dark theme holds, the .qrc also aliases the light files of the sizes
 the dark theme does not have, when they read on the dark window (3:1,
@@ -173,6 +177,7 @@ SVGS = [
     "scalable/align-vertical-center.svg",
     "scalable/align-vertical-top.svg",
     "scalable/diagram.svg",
+    "scalable/draw-fillet.svg",
     "scalable/folio-delete.svg",
     "scalable/folio-new.svg",
     "scalable/folio-properties.svg",
@@ -197,7 +202,6 @@ BREEZE = {
     "applications-development-translation": "amarok_change_language",
     "arrow-left": "go-previous",
     "arrow-right": "go-next",
-    "circle": "draw-circle",
     "configure": "configure",
     "dialog-cancel": "dialog-cancel",
     "dialog-ok": "dialog-ok-apply",
@@ -233,7 +237,6 @@ BREEZE = {
     "edit-table-insert-row-above": "edit-table-insert-row-above",
     "edit-table-insert-row-under": "edit-table-insert-row-under",
     "edit-undo": "edit-undo",
-    "ellipse": "draw-ellipse",
     "flip": "object-flip-vertical",
     "folder": "folder",
     "folder-new": "folder-new",
@@ -283,7 +286,6 @@ BREEZE = {
     "two_pages": "view-pages-facing",
     "user-busy": "im-user-busy",
     "user-online": "im-user-online",
-    "view-fit-window": "zoom-fit-best",
     "view-fullscreen": "view-fullscreen",
     "view-pim-journal": "view-calendar-journal",
     "view-refresh": "view-refresh",
@@ -298,6 +300,19 @@ BREEZE = {
 
 # Sizes Breeze draws its action icons at, the folders of ico/breeze/.
 BREEZE_SIZES = [16, 22, 32]
+
+# Settings page icons: colored art shown at 64 and 128 pixels only, so one
+# scalable SVG serves every size. QET name to Breeze name and the Breeze
+# size it is copied from (ico/breeze/<size>/<name>.svg). QET's PNGs of
+# these were exports of the same Breeze art.
+BREEZE_PAGES = {
+    "printer": ("printer", 64),
+    "settings": ("systemsettings", 48),
+}
+
+# Page icons, QET name to SVG, relative to ico/.
+PAGES = {name: f"breeze/{size}/{breeze}.svg" for name, (breeze, size) in BREEZE_PAGES.items()}
+PAGES["configure-shortcuts"] = "128x128/configure-shortcuts.svg"
 
 # Where the generator puts the 22 pixel Breeze art moved onto a 24 pixel
 # canvas (see on_24_canvas).
@@ -599,7 +614,7 @@ def main():
     for size in SIZES:
         folder = ICO / size
         for png in sorted(folder.glob("*.png")):
-            if png.stem in BREEZE or png.stem in TRACED or png.stem in grid:
+            if png.stem in BREEZE or png.stem in TRACED or png.stem in grid or png.stem in PAGES:
                 continue
             rel = f"{size}/{png.name}"
             names = [png.stem]
@@ -624,8 +639,9 @@ def main():
                     changed += write_if_changed(target, dark_image)
                     dark.append(f"themes/qet-dark/{size}/{name}.png")
 
-    for rel in SVGS:
-        name = (ICO / rel).name.replace("-symbolic", "")
+    svgs = [((ICO / rel).name.replace("-symbolic", ""), rel) for rel in SVGS]
+    svgs += [(f"{name}.svg", rel) for name, rel in PAGES.items()]
+    for name, rel in svgs:
         light.append((f"themes/qet/scalable/{name}", rel))
         text = dark_svg((ICO / rel).read_text(encoding="utf-8"))
         if text is None:
