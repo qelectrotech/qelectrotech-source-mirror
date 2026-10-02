@@ -1950,8 +1950,8 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	@brief DiagramView::updateFolioReportMenu
 	Fill the "Renvoi de folio" submenu of the context menu with the folio
 	report elements this project already uses -- the ones in its embedded
-	collection -- or, when it has none yet, the coming and going arrows of
-	the common collection. An entry places its element where the context
+	collection -- and the coming and going arrows of the common collection,
+	each name listed once. An entry places its element where the context
 	menu was opened. Left empty, and so hidden, on a read-only diagram.
 */
 void DiagramView::updateFolioReportMenu()
@@ -1965,9 +1965,9 @@ void DiagramView::updateFolioReportMenu()
 	QETProject *project = m_diagram->project();
 	XmlElementCollection *collection =
 		project ? project->embeddedElementCollection() : nullptr;
+	QSet<QString> names;
 	if (collection)
 	{
-		QSet<QString> names;
 		const QDomNodeList definitions =
 			collection->root().elementsByTagName(QStringLiteral("definition"));
 		for (int i = 0 ; i < definitions.count() ; ++i)
@@ -1990,16 +1990,16 @@ void DiagramView::updateFolioReportMenu()
 		}
 	}
 
-	if (locations.isEmpty())
+		//Always offer both standard arrows: placing one copies it into the
+		//embedded collection, and must not hide the other one.
+	for (const auto path : {
+		 "common://10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt",
+		 "common://10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt"})
 	{
-		for (const auto path : {
-			 "common://10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt",
-			 "common://10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt"})
-		{
-			const ElementsLocation location(QString::fromLatin1(path));
-			if (location.exist()) {
-				locations << location;
-			}
+		const ElementsLocation location(QString::fromLatin1(path));
+		if (location.exist() && !names.contains(location.name())) {
+			names.insert(location.name());
+			locations << location;
 		}
 	}
 
