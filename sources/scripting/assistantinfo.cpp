@@ -19,6 +19,7 @@
 
 #include "qetscriptapi.h"
 #include "scriptlibrary.h"
+#include "macrorecorder.h"
 #include "../qetapp.h"
 #include "../qetversion.h"
 #include "../utils/qetsettings.h"
@@ -89,6 +90,7 @@ void write()
 			{QStringLiteral("data"), QETApp::dataDir()},
 			{QStringLiteral("config"), QETApp::configDir()},
 			{QStringLiteral("scripts"), ScriptLibrary::folder()},
+			{QStringLiteral("recordings"), MacroRecorder::folder()},
 			{QStringLiteral("elements_common"), QETApp::commonElementsDir()},
 			{QStringLiteral("elements_company"), QETApp::companyElementsDir()},
 			{QStringLiteral("elements_custom"), QETApp::customElementsDir()},
@@ -103,10 +105,12 @@ void write()
 #endif
 			{QStringLiteral("scripting_enabled"), QetSettings::scriptingEnabled()},
 			{QStringLiteral("live_mode_setting"), QetSettings::liveAssistantEnabled()},
-			{QStringLiteral("live_mode_open"), !s_live.isEmpty()}}},
+			{QStringLiteral("live_mode_open"), !s_live.isEmpty()},
+			{QStringLiteral("macro_recording"), MacroRecorder::instance().isRecording()}}},
 		{QStringLiteral("script_api"), QJsonArray::fromStringList(QetScriptApi::signatures())},
 		{QStringLiteral("stored_scripts"), scripts},
 		{QStringLiteral("refused_scripts"), refused},
+		{QStringLiteral("recordings"), MacroRecorder::recordings()},
 		{QStringLiteral("live"), s_live.isEmpty() ? QJsonValue() : QJsonValue(s_live)}};
 
 	const QString file_path = path();

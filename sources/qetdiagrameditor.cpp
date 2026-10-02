@@ -21,6 +21,7 @@
 #include "scripting/scriptlibrary.h"
 #include "scripting/scriptmanagerdialog.h"
 #include "scripting/liveserver.h"
+#include "scripting/macrorecorder.h"
 #include "scripting/assistantinfo.h"
 #endif
 #include <QCoreApplication>
@@ -87,6 +88,11 @@
 #include <QDir>
 #include <QDesktopServices>
 #include <QTimer>
+#include <QGuiApplication>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QClipboard>
+#include <QPainter>
 #include <QJsonArray>
 #include <QVBoxLayout>
 #include <QListWidget>
@@ -180,6 +186,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	readSettingsState();  // restoreState() must be called after show() in Qt6
 #ifdef QET_HAS_SCRIPTING
 	setUpLiveIndicator();
+	setUpMacroRecorder();
 		//Live mode asks once per run, from the first window to open, and
 		//only once that window is on screen to anchor its warning.
 	QTimer::singleShot(0, this, [this]() { LiveServer::instance().askAndStart(this); });
@@ -726,6 +733,31 @@ void QETDiagramEditor::setUpActions()
 		tr("Exécute un script JavaScript sur le projet courant (voir qet.*"
 		   " dans le script pour l'API disponible)"));
 	connect(m_run_script, &QAction::triggered, this, &QETDiagramEditor::slot_runScript);
+
+		//Record what the user does, for an assistant to turn into a script
+	{
+		QPixmap dot(32, 32);
+		dot.fill(Qt::transparent);
+		QPainter painter(&dot);
+		painter.setRenderHint(QPainter::Antialiasing);
+		painter.setPen(Qt::NoPen);
+		painter.setBrush(QColor(0xd0, 0x30, 0x30));
+		painter.drawEllipse(QRectF(6, 6, 20, 20));
+		painter.end();
+		m_record_macro = new QAction(QIcon(dot), tr("Enregistrer une macro"), this);
+	}
+	m_record_macro->setCheckable(true);
+	m_record_macro->setStatusTip(tr("Enregistre ce que vous faites sur le projet, pour qu'un "
+					"assistant IA en fasse un script ; recliquez pour arrêter"));
+	connect(m_record_macro, &QAction::triggered, this, [this](bool checked) {
+		if (checked) {
+			if (!MacroRecorder::instance().start(this)) m_record_macro->setChecked(false);
+		} else {
+			MacroRecorder::instance().stop();
+		}
+	});
+	ShortcutManager::instance().registerAction(m_record_macro, "diagrameditor.record_macro",
+						   tr("Éditeur de schémas"), QKeySequence());
 
 		//Write, try, give an icon to and delete stored scripts
 	m_manage_scripts = new QAction(tr("Gérer les scripts…"), this);
@@ -3902,6 +3934,7 @@ void QETDiagramEditor::rebuildScriptActions()
 	}
 
 	m_scripts_menu->addSeparator();
+	m_scripts_menu->addAction(m_record_macro);
 	m_scripts_menu->addAction(m_manage_scripts);
 	m_scripts_menu->addAction(m_run_script);
 	m_scripts_menu->addAction(m_open_scripts_folder);
@@ -3913,6 +3946,68 @@ void QETDiagramEditor::rebuildScriptActions()
 	m_had_scripts = has_scripts;
 
 	updateScriptActions();
+}
+
+/**
+	@brief QETDiagramEditor::setUpMacroRecorder
+	While recording: the action checked, and "● Enregistrement : N étapes"
+	with Arrêter on the status bar. At the end, where it was saved and the
+	request to paste into the assistant.
+*/
+void QETDiagramEditor::setUpMacroRecorder()
+{
+	auto *box = new QWidget(this);
+	auto *layout = new QHBoxLayout(box);
+	layout->setContentsMargins(0, 0, 0, 0);
+	auto *label = new QLabel(box);
+	label->setStyleSheet(QStringLiteral("color: #d03030; font-weight: bold"));
+	auto *stop = new QToolButton(box);
+	stop->setText(tr("Arrêter"));
+	stop->setToolTip(tr("Arrêter l'enregistrement de la macro"));
+	layout->addWidget(label);
+	layout->addWidget(stop);
+	statusBar()->addPermanentWidget(box);
+	box->hide();
+	connect(stop, &QToolButton::clicked, this, []() { MacroRecorder::instance().stop(); });
+
+	connect(&MacroRecorder::instance(), &MacroRecorder::stateChanged, box,
+		[this, box, label](bool recording, int steps) {
+		box->setVisible(recording);
+		label->setText(tr("● Enregistrement : %n étape(s)", nullptr, steps));
+		const QSignalBlocker blocker(m_record_macro);
+		m_record_macro->setChecked(recording);
+		updateScriptActions();
+	});
+	connect(&MacroRecorder::instance(), &MacroRecorder::finished, this,
+		[this](const QJsonObject &recording, QETDiagramEditor *editor) {
+		if (editor == this) macroRecorded(recording);
+	});
+}
+
+void QETDiagramEditor::macroRecorded(const QJsonObject &recording)
+{
+	const int steps = recording.value(QStringLiteral("steps")).toArray().size();
+	const QString dir = recording.value(QStringLiteral("folder")).toString();
+	QMessageBox box(QMessageBox::Information, tr("Macro enregistrée"),
+			tr("« %1 » : %n étape(s).\n\nPour en faire un script, demandez-le à "
+			   "votre assistant IA : le bouton ci-dessous copie la demande, il "
+			   "suffit de la coller dans sa fenêtre.", nullptr, steps)
+			.arg(recording.value(QStringLiteral("name")).toString()),
+			QMessageBox::NoButton, this);
+	box.setInformativeText(QDir::toNativeSeparators(dir)
+			       + (recording.value(QStringLiteral("complete")).toBool()
+				  ? QString() : QStringLiteral("\n") + recording.value(QStringLiteral("note")).toString()));
+	QPushButton *copy = box.addButton(tr("&Copier la demande pour l'assistant"), QMessageBox::AcceptRole);
+	QPushButton *open = box.addButton(tr("&Ouvrir le dossier"), QMessageBox::ActionRole);
+	box.addButton(tr("&Fermer"), QMessageBox::RejectRole);
+	box.setDefaultButton(copy);
+	box.exec();
+	if (box.clickedButton() == copy) {
+		QGuiApplication::clipboard()->setText(MacroRecorder::assistantRequest(recording));
+		statusBar()->showMessage(tr("Demande copiée : collez-la dans la fenêtre de l'assistant"), 8000);
+	} else if (box.clickedButton() == open) {
+		QDesktopServices::openUrl(QUrl::fromLocalFile(dir));
+	}
 }
 
 /**
@@ -4027,6 +4122,7 @@ void QETDiagramEditor::updateScriptActions()
 	Diagram *diagram = dv ? dv->diagram() : nullptr;
 	const bool selection = diagram && !diagram->selectedItems().isEmpty();
 	const bool conductor = diagram && !diagram->selectedConductors().isEmpty();
+	m_record_macro->setEnabled(currentProject() || MacroRecorder::instance().isRecording());
 	for (QAction *action : std::as_const(m_script_actions)) {
 		const QString context = action->property("qet_script_context").toString();
 		bool enabled = currentProject() != nullptr;

@@ -18,6 +18,7 @@
 #include "liveserver.h"
 
 #include "assistantinfo.h"
+#include "macrorecorder.h"
 #include "qetscripting.h"
 #include "scriptlibrary.h"
 #include "../diagram.h"
@@ -310,6 +311,11 @@ QJsonObject LiveServer::status()
 		scripts.append(QJsonObject{{QStringLiteral("id"), s.header.id},
 					   {QStringLiteral("name"), s.header.name}});
 	answer.insert(QStringLiteral("stored_scripts"), scripts);
+		//So an assistant can notice a recording the user just made
+	answer.insert(QStringLiteral("macro_recorder"), QJsonObject{
+		{QStringLiteral("recording"), MacroRecorder::instance().isRecording()},
+		{QStringLiteral("steps"), MacroRecorder::instance().stepCount()},
+		{QStringLiteral("last_recording"), MacroRecorder::instance().lastId()}});
 
 	QETDiagramEditor *e = editor();
 	QETProject *project = e ? e->currentProject() : nullptr;

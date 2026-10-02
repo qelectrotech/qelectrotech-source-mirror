@@ -62,6 +62,7 @@ class QETDiagramEditor : public QETMainWindow
 
         friend class TerminalStripEditorWindow;
         friend class LiveServer;
+        friend class MacroRecorder;
 	
 	public:
 		QETDiagramEditor(
@@ -160,6 +161,8 @@ class QETDiagramEditor : public QETMainWindow
 		bool ensureScriptingEnabled(const QString &title);
 		void runStoredScript(const QString &path, const QString &name);
 		void setUpLiveIndicator();
+		void setUpMacroRecorder();
+		void macroRecorded(const QJsonObject &recording);
 #endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
@@ -253,6 +256,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
 		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from
 		*m_manage_scripts,             ///< Action to open the script manager
+		*m_record_macro,               ///< Action to start / stop recording a macro
 #endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
