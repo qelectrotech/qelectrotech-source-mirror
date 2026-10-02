@@ -532,6 +532,25 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   the file until it is saved once: since #1107 QElectroTech works one out
   from the wire's two ends on load and writes it on the next save, so it
   appears after a first `qet_edit`.
+- **Wires can be routed around symbols.** By default a new conductor gets
+  QElectroTech's own two or three straight segments, which run through
+  whatever symbol or wire lies between the two terminals. Give
+  `add_conductor` `"route": "avoid"` to redraw it around the symbols
+  instead, or use `route_conductor` (addressed like `move_conductor_segment`,
+  by `element` + `terminal` or by `"conductor": "{uuid}"`) to redraw one
+  already drawn. The route leaves and enters each terminal in its own
+  direction, runs on the folio grid, stays inside the folio's border, and is
+  the cheapest found by a search that charges for length, for each bend
+  and, less heavily, for running along or crossing another wire. Obstacles
+  are each symbol's own rectangle plus half a grid step; texts, images,
+  shapes and tables are not obstacles. The path is saved as a hand-edited
+  one, so it survives a reload and one undo puts the default back. Where
+  no route exists, the wire keeps its path: `route_conductor` returns
+  `"no-route"` and both ops say so in `note` -- it is not a failure, and
+  the run goes on. Like a hand-edited path, it is stretched rather than
+  rerouted when a symbol is moved afterwards; route again after moving
+  things. Needs `qet.routeConductor()` / `qet.routeConductorBetween()` in
+  the build, and only an edit that routes requires them.
 - **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
   `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
   in place of its index, on the op's own element (for `add_conductor`, on

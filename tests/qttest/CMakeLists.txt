@@ -422,6 +422,16 @@ target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_wirehops PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# The routing behind qet.routeConductor(): conductorrouter.cpp needs only
+# Qt Core, so the geometry is tested without a scene.
+add_executable(
+  tst_conductorrouter
+  tst_conductorrouter.cpp
+  ${QET_DIR}/sources/conductorrouter.cpp)
+add_test(NAME tst_conductorrouter COMMAND tst_conductorrouter)
+target_include_directories(tst_conductorrouter PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductorrouter PRIVATE Qt::Test)
+
 # qet.conductorUuids() / qet.conductorEnds(): a script lists a folio's
 # conductors by uuid and finds each one's two ends. Runs a script through
 # the real binary's --run on fixtures/qet_bug_repro_resaved.qet, so only

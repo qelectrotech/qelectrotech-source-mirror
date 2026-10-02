@@ -1361,6 +1361,10 @@ OPS = {
     "move_conductor_segment": ("moveConductorSegment", [("folio", "folio"), ("element", "elmt"),
                                                          ("terminal", "term"), ("segment", "num"),
                                                          ("dx", "num"), ("dy", "num")]),
+    # Redraws one conductor around the symbols in its way; the result is
+    # "routed", or "no-route" when there is none, the path then unchanged.
+    "route_conductor":  ("routeConductor",      [("folio", "folio"), ("element", "elmt"),
+                                                 ("terminal", "term")]),
     "link_elements":    ("linkElements",        [("folio", "folio"), ("element", "elmt"),
                                                  ("to_folio", "folio"), ("to", "elmt")]),
     "link_plc_io":      ("linkElements",        [("folio", "folio"), ("element", "elmt"),
@@ -1495,7 +1499,16 @@ FOLIO_MAKING_OPS = ("add_folio", "insert_folio")
 
 # The ops that address one conductor by element + terminal, and so also
 # take "conductor": "{uuid}" (qet_conductors reports each one's uuid).
-CONDUCTOR_UUID_OPS = ("set_conductor", "move_conductor_segment", "delete_conductor")
+CONDUCTOR_UUID_OPS = ("set_conductor", "move_conductor_segment", "delete_conductor",
+                      "route_conductor")
+
+# add_conductor's "route": "default" is the application's own two or three
+# segments; "avoid" then redraws the new conductor around the symbols.
+ROUTE_MODES = ["default", "avoid"]
+
+# Routing arrived after the other drawing verbs, so it is required only by
+# an edit that routes: every other edit still runs on a build without it.
+_ROUTE_METHODS = {"routeConductor", "routeConductorBetween"}
 
 # Accepted by set_conductor. The names are the project file's own, so what
 # a script sets is what qet_conductors reports back.
@@ -1514,7 +1527,7 @@ CONDUCTOR_DEFAULT_PROPERTIES = ["onetextperfolio"] + CONDUCTOR_PROPERTIES
 # verbs. Probed in the script rather than assumed, because the failure mode
 # otherwise is a TypeError on line N of a generated file the caller never
 # sees, reported as "the edit failed".
-_REQUIRED_METHODS = sorted({m for m, _ in OPS.values() if m} |
+_REQUIRED_METHODS = sorted(({m for m, _ in OPS.values() if m} - _ROUTE_METHODS) |
                            {"save", "folioCount", "conductorCount", "elementCount"})
 
 _MARKER = "QETEDIT "
@@ -1745,6 +1758,14 @@ def _build_script(operations: list, output: str) -> str:
             raise ValueError(f"operation {i}: unknown conductor property "
                              f"{op.get('property')!r}; expected one of "
                              f"{', '.join(CONDUCTOR_PROPERTIES)}")
+        route = op.get("route", "default") if name == "add_conductor" else "default"
+        if route not in ROUTE_MODES:
+            raise ValueError(f"operation {i}: unknown route {route!r}; "
+                             f"expected one of {', '.join(ROUTE_MODES)}")
+        if name == "route_conductor":
+            uuid_methods.add("routeConductor")
+        if route == "avoid":
+            uuid_methods.add("routeConductorBetween")
         if name == "set_folio" and op.get("property") not in FOLIO_PROPERTIES:
             raise ValueError(f"operation {i}: unknown folio property "
                              f"{op.get('property')!r}; expected one of "
@@ -1830,6 +1851,18 @@ def _build_script(operations: list, output: str) -> str:
             lines.append(f"  var e{i} = qetMcpConductorEnd({i}, {args[0]}, {conductor_js});")
             call = f"(e{i} ? {call} : false)"
         lines.append(f"  var v{i} = {call};")
+        if route == "avoid":
+            # The wire exists either way; a route not found leaves it on the
+            # default path, which is a note on the op, not a failure of it.
+            lines.append(f"  if (v{i} === true) {{ var r{i} = qet.routeConductorBetween("
+                         f"{', '.join(args)}); if (r{i} !== 'routed') qet.log({_js(_MARKER)} + "
+                         f"JSON.stringify({{kind: 'op_note', index: {i}, note: 'no route "
+                         f"around the symbols was found; the conductor keeps the default "
+                         f"path'}})); }}")
+        if name == "route_conductor":
+            lines.append(f"  if (v{i} === 'no-route') qet.log({_js(_MARKER)} + "
+                         f"JSON.stringify({{kind: 'op_note', index: {i}, note: 'no route "
+                         f"around the symbols was found; the conductor keeps its path'}}));")
         if ident is not None:
             lines.append(f"  R[{_js(ident)}] = v{i};")
             refs.add(ident)
@@ -3524,6 +3557,15 @@ TOOLS = [
                         "movable ones, then a static segment, in that order from the "
                         "first terminal; call with a guessed index and read \"succeeded\" "
                         "to check it landed on a movable one. "
+                        "add_conductor takes an optional \"route\": \"avoid\" to "
+                        "redraw the new wire around the symbols in its way instead of "
+                        "QElectroTech's default two or three straight segments; "
+                        "route_conductor does the same to an existing conductor "
+                        "(addressed like move_conductor_segment, or by \"conductor\") "
+                        "and returns \"routed\" or \"no-route\". Where no route "
+                        "exists the wire keeps its path and the op's note says so -- "
+                        "not a failure. Route after placing everything: moving a "
+                        "symbol later stretches the routed path, it does not reroute it. "
                         "link_elements takes a folio for each end, since a master "
                         "and its slave are usually on different ones. "
                         "delete_conductor removes only the conductor on the named "
