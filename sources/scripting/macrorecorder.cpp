@@ -238,5 +238,5 @@ QString MacroRecorder::assistantRequest(const QJsonObject &recording)
 		  "comme bouton avec qet_script_install.", nullptr, steps)
 		.arg(recording.value(QStringLiteral("name")).toString())
 		.arg(recording.value(QStringLiteral("id")).toString(),
-		     recording.value(QStringLiteral("folder")).toString());
+		     QDir::toNativeSeparators(recording.value(QStringLiteral("folder")).toString()));
 }
