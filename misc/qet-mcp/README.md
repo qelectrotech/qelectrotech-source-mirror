@@ -542,6 +542,21 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `qet.terminalIndex()` in the build. A symbol file saved without terminal
   uuids lists them empty; QElectroTech gives the terminals of every
   project's copy of it a uuid on opening (#1118), written on the next save.
+- **A folio can be sized for a sheet of paper**: `set_folio_border` with
+  `"property": "preset"` and a value such as `"tabloid-landscape"` (A0–A5,
+  letter, legal, tabloid or ledger, each `-portrait` or `-landscape`) picks
+  the column and row counts and sizes that fill the sheet best without
+  going over it, as one undo step, keeping each size as near the folio's
+  current one as it can. The title block and headers are measured from the
+  folio, not assumed, so it holds for any template on either edge. Sizes
+  stay whole numbers, because the folio properties panel edits them in
+  whole pixels and would round a fraction off the first time it was
+  opened; so the page can come out up to 0.75 pt short of the sheet a
+  side. The op's `note` says what it chose and the page a PDF export
+  writes, e.g. `23 columns of 70, 12 rows of 82; PDF page 1223.25 x
+  791.25 pt` for tabloid landscape from a new folio. (The PDF export makes
+  the page the frame and title block plus its one-pixel line, at 96 pixels
+  an inch: 0.75 pt a pixel.) Needs `qet.folioPresets()` in the build.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*

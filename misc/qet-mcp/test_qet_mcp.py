@@ -52,6 +52,15 @@ needs_elements = unittest.skipUnless(have_binary and have_elements,
 needs_examples = unittest.skipUnless(have_binary and have_examples,
                                      "set QET_BINARY and QET_EXAMPLES")
 
+
+def _pdf_page_size(path) -> tuple:
+    """The first page's MediaBox width and height, in points. QPdfWriter
+    writes page dictionaries uncompressed, so no PDF library is needed."""
+    box = re.search(rb"/MediaBox\s*\[\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)",
+                    Path(path).read_bytes())
+    x0, y0, x1, y1 = map(float, box.groups())
+    return (x1 - x0, y1 - y0)
+
 COIL = "common://10_electric/10_allpole/310_relays_contactors_contacts/01_coils/bobine_ka_a_remanence.elmt"
 SLAVE = ("common://10_electric/10_allpole/310_relays_contactors_contacts/"
          "02_contacts_cross_referencing/15_protection_contacts/contact_relais_nf_esclave.elmt")
@@ -473,6 +482,20 @@ class EditValidation(unittest.TestCase):
             with self.subTest(op=c["op"], bad=c.get("property") or c.get("shape") or c.get("kind")):
                 with self.assertRaises(ValueError):
                     self.build([c])
+
+    def test_folio_preset_is_checked_up_front_and_probed_for(self):
+        with self.assertRaisesRegex(ValueError, "unknown folio preset 'b4-portrait'"):
+            self.build([{"op": "set_folio_border", "folio": 0, "property": "preset",
+                         "value": "b4-portrait"}])
+        script = self.build([{"op": "set_folio_border", "folio": 0, "property": "preset",
+                              "value": "Tabloid-Landscape"}])
+        self.assertIn('qet.setFolioBorder(0, "preset", "Tabloid-Landscape")', script)
+        # a build without presets is told so, not left to fail on the call
+        self.assertIn('"folioPresets"', script)
+        self.assertIn("frame", script)
+        plain = self.build([{"op": "set_folio_border", "folio": 0, "property": "columns",
+                             "value": "10"}])
+        self.assertNotIn('"folioPresets"', plain)
 
     def test_version_is_not_a_settable_folio_property(self):
         """setFolioProperty('version') reported success and was overwritten by
@@ -4199,6 +4222,55 @@ class Integration(unittest.TestCase):
         self.assertEqual(ch["colsize"], ["60", "40"])
         self.assertEqual(ch["displayrows"], ["true", "false"])
         self.assertEqual(m.tool_project_info(r["output"])["title"], "Renamed")
+
+    def test_folio_preset_fits_the_sheet(self):
+        """A preset fills the sheet as nearly as whole-number sizes allow,
+        never over it, allowing for the title block, and the PDF export
+        writes the page on the sheet itself -- in landscape too, which it
+        did not until the export matched a wide page upright and turned it
+        (an A3 landscape folio was a 1190 x 841 pt page)."""
+        base = self.sb.new(folios=1)
+        # QPageSize's sheets, upright, in whole points
+        sheets = {"a0": (2384, 3370), "a1": (1684, 2384), "a2": (1191, 1684),
+                  "a3": (842, 1191), "a4": (595, 842), "a5": (420, 595),
+                  "letter": (612, 792), "legal": (612, 1008), "tabloid": (792, 1224),
+                  "ledger": (792, 1224)}
+        self.assertEqual(sorted(f"{p}-{o}" for p in sheets for o in ("portrait", "landscape")),
+                         sorted(m.FOLIO_PRESETS))
+        for paper, (w, h) in sheets.items():
+            for orientation in ("portrait", "landscape"):
+                name = f"{paper}-{orientation}"
+                with self.subTest(preset=name):
+                    r = self.ok(self.sb.edit(base, [{"op": "set_folio_border", "folio": 0,
+                                                     "property": "preset", "value": name}]))
+                    note = r["operations"][0]["note"]
+                    got = re.search(r"frame ([\d.]+) x ([\d.]+) pt", note)
+                    self.assertIsNotNone(got, note)
+                    sheet = (h, w) if orientation == "landscape" else (w, h)
+                    for have, want in zip(map(float, got.groups()), sheet):
+                        self.assertLessEqual(have, want, note)
+                        self.assertGreater(have, want - 3, note)
+                    pdf = Path(r["output"]).with_suffix(".pdf")
+                    self.assertTrue(m.tool_export(BINARY, r["output"], "pdf", str(pdf))["ok"])
+                    self.assertEqual(_pdf_page_size(pdf), tuple(map(float, sheet)), note)
+
+    def test_folio_preset_tabloid_is_the_requested_grid(self):
+        """From a default folio, tabloid landscape is 23 x 70 by 12 x 82:
+        the grid a user had worked out by hand, which the export writes on
+        a 1224 x 792 pt page. It keeps the folio's look -- 9 x 179 by 5 x 197
+        would fill the sheet to the pixel, and is no use to anyone."""
+        base = self.sb.new(folios=1)
+        r = self.ok(self.sb.edit(base, [{"op": "set_folio_border", "folio": 0,
+                                         "property": "preset", "value": "tabloid-landscape"}]))
+        ch = r["diff"]["folios"]["changed"][0]["changed"]
+        self.assertEqual((ch["cols"][1], ch["colsize"][1], ch["rows"][1], ch["rowsize"][1]),
+                         ("23", "70", "12", "82"))
+        self.assertIn("frame 1223.25 x 791.25 pt", r["operations"][0]["note"])
+        # one command: one undo puts the whole frame back
+        r = self.ok(self.sb.edit(base, [{"op": "set_folio_border", "folio": 0,
+                                         "property": "preset", "value": "tabloid-landscape"},
+                                        {"op": "undo"}]))
+        self.assertFalse(r["diff"]["folios"].get("changed"))
 
     def test_folio_frame_bounds_are_refused(self):
         """Counts are 1-99 and sizes 1-1000. 0 is what the application's own

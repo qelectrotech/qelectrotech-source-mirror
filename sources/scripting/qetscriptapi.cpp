@@ -52,6 +52,8 @@
 #ifdef QET_HAS_QTPDF
 #include <QPdfDocument>
 #include <QPainter>
+#include <QPageSize>
+#include <cmath>
 #endif
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
@@ -3714,7 +3716,78 @@ QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 	if (property == QLatin1String("rows"))            return QString::number(b.rows_count);
 	if (property == QLatin1String("row-height"))      return QString::number(b.rows_height);
 	if (property == QLatin1String("display-rows"))    return b.display_rows ? QStringLiteral("true") : QStringLiteral("false");
+	const QRectF r = diagrams.at(folioIndex)->border_and_titleblock.borderAndTitleBlockRect();
+	if (property == QLatin1String("width"))           return QString::number(r.width());
+	if (property == QLatin1String("height"))          return QString::number(r.height());
 	return QString();
+}
+
+namespace {
+/// The sheets "preset" knows, by the name it takes before -portrait or
+/// -landscape. Tabloid and ledger are the same 11 x 17 in sheet.
+const QList<QPair<QString, QPageSize::PageSizeId>> &folioPaper()
+{
+	static const QList<QPair<QString, QPageSize::PageSizeId>> p{
+		{QStringLiteral("a0"), QPageSize::A0}, {QStringLiteral("a1"), QPageSize::A1},
+		{QStringLiteral("a2"), QPageSize::A2}, {QStringLiteral("a3"), QPageSize::A3},
+		{QStringLiteral("a4"), QPageSize::A4}, {QStringLiteral("a5"), QPageSize::A5},
+		{QStringLiteral("letter"), QPageSize::Letter}, {QStringLiteral("legal"), QPageSize::Legal},
+		{QStringLiteral("tabloid"), QPageSize::Tabloid}, {QStringLiteral("ledger"), QPageSize::Tabloid}};
+	return p;
+}
+
+/**
+	The count (1-99) and whole size (20-200) of cells that fill @p available
+	without going over it. Any fill within two units of it will do -- a PDF
+	export rounds a page that close to a standard sheet up to the sheet
+	(QPageSize's fuzzy match allows 3 pt, and two units are 1.5 pt) -- and
+	among those the size nearest @p current wins, so the grid keeps the
+	look it had rather than turning into nine huge columns that happen to
+	divide the sheet exactly. Failing that, the fullest fill. False if not
+	even one cell of the smallest size fits.
+*/
+bool fitCells(qreal available, qreal current, int &count, qreal &size)
+{
+	constexpr qreal slack = 2.0;
+	int best_n = 0, best_s = 0, best_fill = 0;
+	bool best_close = false;
+	for (int s = 20; s <= 200; ++s) {
+		const int n = qMin(99, int(std::floor(available / s + 1e-9)));
+		if (n < 1) continue;
+		const int fill = n * s;
+		const bool close = fill >= available - slack;
+		bool better;
+		if (close != best_close)
+			better = close;
+		else if (close && qAbs(s - current) != qAbs(best_s - current))
+			better = qAbs(s - current) < qAbs(best_s - current);
+		else
+			better = fill > best_fill;
+		if (!best_n || better) {
+			best_n = n;
+			best_s = s;
+			best_fill = fill;
+			best_close = close;
+		}
+	}
+	if (!best_n) return false;
+	count = best_n;
+	size = best_s;
+	return true;
+}
+} // namespace
+
+/**
+	@brief QetScriptApi::folioPresets
+	The values setFolioBorder() takes for "preset".
+*/
+QStringList QetScriptApi::folioPresets() const
+{
+	QStringList names;
+	for (const auto &paper : folioPaper())
+		names << paper.first + QStringLiteral("-portrait")
+			  << paper.first + QStringLiteral("-landscape");
+	return names;
 }
 
 /**
@@ -3727,6 +3800,9 @@ QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 	tested, so it is left refused rather than assumed safe. The extremes
 	that are offered (99 x 99 cells, widths from 1 to 1000) were exported to
 	PNG and did not hang or crash.
+
+	"preset" sets all four at once for a sheet of paper, as one command:
+	see the class comment.
 */
 bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const QString &value)
 {
@@ -3736,8 +3812,8 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return false;
 	}
-	if (!folioBorderNames().contains(property)) {
-		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+	if (!folioBorderNames().contains(property) && property != QLatin1String("preset")) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3, preset")
 			.arg(caller, property, folioBorderNames().join(QStringLiteral(", "))));
 		return false;
 	}
@@ -3748,7 +3824,45 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 	const BorderProperties old_b = diagram->border_and_titleblock.exportBorder();
 	BorderProperties new_b = old_b;
 	bool ok = false;
-	if (property == QLatin1String("columns") || property == QLatin1String("rows")) {
+	if (property == QLatin1String("preset")) {
+		const QString v = value.toLower();
+		const int dash = v.lastIndexOf(QLatin1Char('-'));
+		const QString orientation = v.mid(dash + 1);
+		bool known = dash > 0 && (orientation == QLatin1String("portrait")
+								  || orientation == QLatin1String("landscape"));
+		QSizeF mm;
+		if (known) {
+			known = false;
+			for (const auto &paper : folioPaper()) {
+				if (paper.first != v.left(dash)) continue;
+				mm = QPageSize(paper.second).size(QPageSize::Millimeter);
+				known = true;
+			}
+		}
+		if (!known) {
+			log(QStringLiteral("qet.%1: unknown preset '%2'; expected one of %3")
+				.arg(caller, value, folioPresets().join(QStringLiteral(", "))));
+			return false;
+		}
+		if ((orientation == QLatin1String("landscape")) != (mm.width() > mm.height()))
+			mm.transpose();
+		// Scene units are pixels at 96 per inch, as the PDF export draws
+		// them; the export adds one for the frame's own line.
+		const qreal page_w = std::floor(mm.width()  / 25.4 * 96.0 + 1e-6) - 1;
+		const qreal page_h = std::floor(mm.height() / 25.4 * 96.0 + 1e-6) - 1;
+		// Whatever is not columns or rows -- the headers, and the title
+		// block on whichever edge it sits -- measured rather than assumed,
+		// since it depends on the template.
+		const QRectF r = diagram->border_and_titleblock.borderAndTitleBlockRect();
+		const qreal extra_w = r.width()  - old_b.columns_count * old_b.columns_width;
+		const qreal extra_h = r.height() - old_b.rows_count * old_b.rows_height;
+		if (!fitCells(page_w - extra_w, old_b.columns_width, new_b.columns_count, new_b.columns_width)
+			|| !fitCells(page_h - extra_h, old_b.rows_height, new_b.rows_count, new_b.rows_height)) {
+			log(QStringLiteral("qet.%1: preset '%2' leaves no room for a column or a row "
+							   "beside this folio's title block").arg(caller, value));
+			return false;
+		}
+	} else if (property == QLatin1String("columns") || property == QLatin1String("rows")) {
 		const int n = value.toInt(&ok);
 		if (!ok || n < 1 || n > 99) {
 			log(QStringLiteral("qet.%1: %2 must be a whole number from 1 to 99, not '%3'").arg(caller, property, value));

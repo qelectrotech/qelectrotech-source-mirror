@@ -254,6 +254,17 @@ class QetGraphicsTableItem;
 	  which it does not, are left alone. Changing the project title is not
 	  undoable: the application sets it directly too.
 
+	  A seventh, write-only field, "preset", sizes the frame for a sheet of
+	  paper: "a4-landscape", "tabloid-portrait" and so on (folioPresets()
+	  lists them). It picks the column and row counts and whole-number
+	  sizes that fill the sheet best without going over it, keeping each
+	  size as near the current one as it can, and pushes them as one
+	  ChangeBorderCommand. Whole numbers because the folio properties panel
+	  edits these sizes in whole pixels: a fraction would be rounded off the
+	  first time someone opened it. Two read-only fields, "width" and
+	  "height", are the frame and title block together in scene units --
+	  what an export draws -- so a caller can check the result.
+
 	  A folio's title block @b template is a seventh, separate case:
 	  Diagram::setTitleBlockTemplate() resolves a name only against
 	  QETProject::embeddedTitleBlockTemplatesCollection() -- the same
@@ -538,6 +549,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setProjectTitle(const QString &title);
 		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
 		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
+		Q_INVOKABLE QStringList folioPresets() const;
 
 		// -- the conductor defaults of a folio (Folio properties > Conductors),
 		//    or with folioIndex -1, the project's defaults for new folios --
