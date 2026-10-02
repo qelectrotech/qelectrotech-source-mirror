@@ -168,7 +168,9 @@ class ToolRegistry(unittest.TestCase):
         "qet_script_install", "qet_script_list", "qet_script_read",
         "qet_script_remove", "qet_live_status", "qet_live_run_script",
         "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
-        "qet_live_undo_last", "qet_live_screenshot", "qet_about"})
+        "qet_live_undo_last", "qet_live_screenshot", "qet_about",
+        "qet_recording_list", "qet_recording_read", "qet_recording_check",
+        "qet_recording_remove"})
 
 
 class EditValidation(unittest.TestCase):
@@ -3183,6 +3185,117 @@ class AssistantInfoFile(unittest.TestCase):
                 mock.patch.object(m.os, "name", "posix"), mock.patch.object(m.sys, "platform", "linux"):
             self.assertEqual(m.assistant_info_file(),
                              Path("/x/QElectroTech/QElectroTech/qet-assistant.json"))
+
+
+class Recordings(unittest.TestCase):
+    """Macro recordings as QElectroTech saves them: recording.json,
+    before.qet, after.qet, steps/NNN.xml."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(root / "scripts"),
+                                                "QET_ENABLE_SCRIPTING": "1",
+                                                "QET_MCP_INFO_FILE": str(root / "none.json")})
+        self.env.start()
+        self.rec = root / "recordings"
+
+    def tearDown(self):
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def make(self, rid, steps=(), after=True, start=None):
+        d = self.rec / rid
+        (d / "steps").mkdir(parents=True)
+        project = '<project version="0.100.0" title="t"><diagram title="F1"/></project>'
+        (d / "before.qet").write_text(project)
+        if after:
+            (d / "after.qet").write_text(project)
+        (d / "recording.json").write_text(json.dumps({
+            "format": 1, "id": rid, "name": "Macro " + rid, "complete": after,
+            "start": start or {"folio": 0, "selected_elements": []}, "steps": list(steps)}))
+        return d
+
+    def test_list_newest_first(self):
+        self.make("20261002-100000")
+        self.make("20261002-110000")
+        ids = [r["id"] for r in m.tool_recording_list()["recordings"]]
+        self.assertEqual(ids, ["20261002-110000", "20261002-100000"])
+
+    def test_read_keeps_steps_and_drops_empty_parts(self):
+        self.make("r1", steps=[{"n": 1, "kind": "do", "undo_text": "Pivoter", "parts": ["", "x"],
+                                "folio": 0}])
+        r = m.tool_recording_read("r1")
+        self.assertEqual(r["steps"][0]["undo_text"], "Pivoter")
+        self.assertEqual(r["steps"][0]["parts"], ["x"])
+        self.assertIsNone(r["overall_change"])          # before and after are the same
+
+    def test_ids_are_checked(self):
+        for bad in ("../x", "", "a/b", None):
+            with self.subTest(id=bad), self.assertRaisesRegex(ValueError, "'id' must be"):
+                m.tool_recording_read(bad)
+        with self.assertRaisesRegex(ValueError, "no recording"):
+            m.tool_recording_read("missing")
+
+    def test_check_needs_an_after(self):
+        self.make("r2", after=False)
+        with self.assertRaisesRegex(ValueError, "no after.qet"):
+            m.tool_recording_check("/bin/true", "r2", "qet.log(1);")
+
+    def test_remove_needs_consent(self):
+        d = self.make("r3")
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                m.tool_recording_remove("r3")
+        m.tool_recording_remove("r3")
+        self.assertFalse(d.exists())
+
+    def test_nonempty_keeps_only_changes(self):
+        self.assertIsNone(m._nonempty({"elements": {"before": 2, "after": 2, "added": [],
+                                                    "moved_count": 0}}))
+        self.assertEqual(m._nonempty({"elements": {"added": [1], "removed": []}}),
+                         {"elements": {"added": [1]}})
+
+
+@needs_examples
+class RecordingCheckIntegration(unittest.TestCase):
+    """qet_recording_check through a real QElectroTech: a recording made by
+    rotating one symbol; the right script matches, a wrong one does not."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.env = mock.patch.dict(os.environ, {"QET_MCP_SCRIPTS_DIR": str(root / "scripts"),
+                                                "QET_ENABLE_SCRIPTING": "1",
+                                                "QET_MCP_INFO_FILE": str(root / "none.json")})
+        self.env.start()
+        d = root / "recordings" / "rot"
+        (d / "steps").mkdir(parents=True)
+        shutil.copy2(Path(EXAMPLES) / "perceuse.qet", d / "before.qet")
+        first = m.tool_elements(str(d / "before.qet"))["elements"][0]
+        self.uuid = first["uuid"]
+        folio = first["folio"] - 1          # read tools count folios from 1, edits from 0
+        r = m.tool_edit(BINARY, str(d / "before.qet"),
+                        [{"op": "rotate_element", "folio": folio, "element": self.uuid, "angle": 90}],
+                        str(d / "after.qet"), ELEMENTS or None)
+        self.assertTrue(r.get("ok"), r)
+        (d / "recording.json").write_text(json.dumps({
+            "format": 1, "id": "rot", "complete": True, "steps": [],
+            "start": {"folio": folio, "selected_elements": [{"uuid": self.uuid}]}}))
+
+    def tearDown(self):
+        self.env.stop()
+        self.tmp.cleanup()
+
+    def test_right_script_matches_wrong_one_does_not(self):
+        right = ("var f = qet.currentFolio(); qet.selectedElements(f).forEach("
+                 "function (u) { qet.rotateElement(f, u, 90); });")
+        r = m.tool_recording_check(BINARY, "rot", right, ELEMENTS or None)
+        self.assertTrue(r["matches"], r)
+        wrong = right.replace("90", "180")
+        r = m.tool_recording_check(BINARY, "rot", wrong, ELEMENTS or None)
+        self.assertFalse(r["matches"])
+        self.assertIn("rotated", json.dumps(r["difference_from_recording"]))
 
 
 class PathPolicyOverStdio(unittest.TestCase):
