@@ -239,6 +239,12 @@ void ConductorPropertiesWidget::setTextLocked(bool locked)
 */
 void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
 	ui->m_show_text_cb->setDisabled(disable==true? true : false);
+		//Say why the box is locked: the setting that locks it is not in this dialog
+	ui->m_show_text_cb->setToolTip(disable
+		? tr("Texte visible\n"
+		     "Verrouillé par l'option « Afficher un texte de potentiel par "
+		     "folio » de ce folio, dans Propriétés du folio.")
+		: tr("Texte visible"));
 }
 
 /**
