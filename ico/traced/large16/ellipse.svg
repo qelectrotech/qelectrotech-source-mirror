@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <ellipse cx="8" cy="8.5" rx="6" ry="4" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.5"/>
+  <rect x="6.5" y="3" width="3" height="3" class="ColorScheme-Highlight" style="fill:currentColor"/>
+</svg>
