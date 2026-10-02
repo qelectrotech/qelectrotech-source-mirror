@@ -29,6 +29,7 @@
         <file alias="themes/qet/128x128/settings.png">128x128/settings.png</file>
         <file alias="themes/qet/scalable/align-horizontal-center.svg">scalable/align-horizontal-center.svg</file>
         <file alias="themes/qet/scalable/align-horizontal-left.svg">scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet/scalable/draw-fillet.svg">scalable/draw-fillet.svg</file>
         <file alias="themes/qet/scalable/align-horizontal-right.svg">scalable/align-horizontal-right.svg</file>
         <file alias="themes/qet/scalable/align-vertical-bottom.svg">scalable/align-vertical-bottom.svg</file>
         <file alias="themes/qet/scalable/align-vertical-center.svg">scalable/align-vertical-center.svg</file>
@@ -61,17 +62,29 @@
         <file alias="themes/qet/64x64@2/align-horizontal-center.svg">scalable/16/align-horizontal-center.svg</file>
         <file alias="themes/qet/128x128@2/align-horizontal-center.svg">scalable/16/align-horizontal-center.svg</file>
         <file alias="themes/qet/16x16/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/16x16/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/22x22/align-horizontal-left.svg">generated/scalable-22/align-horizontal-left.svg</file>
+        <file alias="themes/qet/22x22/draw-fillet.svg">generated/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet/32x32/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/32x32/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/48x48/align-horizontal-left.svg">scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet/48x48/draw-fillet.svg">scalable/draw-fillet.svg</file>
         <file alias="themes/qet/64x64/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/64x64/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/128x128/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/128x128/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/16x16@2/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/16x16@2/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/22x22@2/align-horizontal-left.svg">generated/scalable-22/align-horizontal-left.svg</file>
+        <file alias="themes/qet/22x22@2/draw-fillet.svg">generated/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet/32x32@2/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/32x32@2/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/48x48@2/align-horizontal-left.svg">scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet/48x48@2/draw-fillet.svg">scalable/draw-fillet.svg</file>
         <file alias="themes/qet/64x64@2/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/64x64@2/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/128x128@2/align-horizontal-left.svg">scalable/16/align-horizontal-left.svg</file>
+        <file alias="themes/qet/128x128@2/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/16x16/align-horizontal-right.svg">scalable/16/align-horizontal-right.svg</file>
         <file alias="themes/qet/22x22/align-horizontal-right.svg">generated/scalable-22/align-horizontal-right.svg</file>
         <file alias="themes/qet/32x32/align-horizontal-right.svg">scalable/16/align-horizontal-right.svg</file>
@@ -2372,6 +2385,7 @@
         <file>themes/qet-dark/128x128/settings.png</file>
         <file>themes/qet-dark/scalable/align-horizontal-center.svg</file>
         <file>themes/qet-dark/scalable/align-horizontal-left.svg</file>
+        <file>themes/qet-dark/scalable/draw-fillet.svg</file>
         <file>themes/qet-dark/scalable/align-horizontal-right.svg</file>
         <file>themes/qet-dark/scalable/align-vertical-bottom.svg</file>
         <file>themes/qet-dark/scalable/align-vertical-center.svg</file>
@@ -2394,7 +2408,9 @@
         <file>themes/qet-dark/scalable-16/align-horizontal-center.svg</file>
         <file>themes/qet-dark/scalable-22/align-horizontal-center.svg</file>
         <file>themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file>themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file>themes/qet-dark/scalable-22/align-horizontal-left.svg</file>
+        <file>themes/qet-dark/scalable-22/draw-fillet.svg</file>
         <file>themes/qet-dark/scalable-16/align-horizontal-right.svg</file>
         <file>themes/qet-dark/scalable-22/align-horizontal-right.svg</file>
         <file>themes/qet-dark/scalable-16/align-vertical-bottom.svg</file>
@@ -2990,17 +3006,29 @@
         <file alias="themes/qet-dark/64x64@2/align-horizontal-center.svg">themes/qet-dark/scalable-16/align-horizontal-center.svg</file>
         <file alias="themes/qet-dark/128x128@2/align-horizontal-center.svg">themes/qet-dark/scalable-16/align-horizontal-center.svg</file>
         <file alias="themes/qet-dark/16x16/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/16x16/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/22x22/align-horizontal-left.svg">themes/qet-dark/scalable-22/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/22x22/draw-fillet.svg">themes/qet-dark/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet-dark/32x32/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/32x32/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/48x48/align-horizontal-left.svg">themes/qet-dark/scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/48x48/draw-fillet.svg">themes/qet-dark/scalable/draw-fillet.svg</file>
         <file alias="themes/qet-dark/64x64/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/64x64/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/128x128/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/128x128/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/16x16@2/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/16x16@2/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/22x22@2/align-horizontal-left.svg">themes/qet-dark/scalable-22/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/22x22@2/draw-fillet.svg">themes/qet-dark/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet-dark/32x32@2/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/32x32@2/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/48x48@2/align-horizontal-left.svg">themes/qet-dark/scalable/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/48x48@2/draw-fillet.svg">themes/qet-dark/scalable/draw-fillet.svg</file>
         <file alias="themes/qet-dark/64x64@2/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/64x64@2/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/128x128@2/align-horizontal-left.svg">themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
+        <file alias="themes/qet-dark/128x128@2/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/16x16/align-horizontal-right.svg">themes/qet-dark/scalable-16/align-horizontal-right.svg</file>
         <file alias="themes/qet-dark/22x22/align-horizontal-right.svg">themes/qet-dark/scalable-22/align-horizontal-right.svg</file>
         <file alias="themes/qet-dark/32x32/align-horizontal-right.svg">themes/qet-dark/scalable-16/align-horizontal-right.svg</file>
