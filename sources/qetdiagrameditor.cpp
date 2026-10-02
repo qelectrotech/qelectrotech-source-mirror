@@ -19,6 +19,7 @@
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
+#include "scripting/scriptmanagerdialog.h"
 #include "scripting/assistantinfo.h"
 #endif
 #include <QCoreApplication>
@@ -710,6 +711,23 @@ void QETDiagramEditor::setUpActions()
 		tr("Exécute un script JavaScript sur le projet courant (voir qet.*"
 		   " dans le script pour l'API disponible)"));
 	connect(m_run_script, &QAction::triggered, this, &QETDiagramEditor::slot_runScript);
+
+		//Write, try, give an icon to and delete stored scripts
+	m_manage_scripts = new QAction(tr("Gérer les scripts…"), this);
+	m_manage_scripts->setStatusTip(tr("Écrire un script et en faire un bouton avec une icône"));
+	connect(m_manage_scripts, &QAction::triggered, this, [this]() {
+		if (!m_script_manager) {
+			m_script_manager = new ScriptManagerDialog(
+				[this](const QString &path, const QString &name) {
+					runStoredScript(path, name);
+				}, this);
+		}
+		m_script_manager->show();
+		m_script_manager->raise();
+		m_script_manager->activateWindow();
+	});
+	ShortcutManager::instance().registerAction(m_manage_scripts, "diagrameditor.manage_scripts",
+						   tr("Éditeur de schémas"), QKeySequence());
 
 		//Stored scripts are files in a folder, written by hand, by the
 		//script manager or by an assistant: open it to add one.
@@ -3869,6 +3887,7 @@ void QETDiagramEditor::rebuildScriptActions()
 	}
 
 	m_scripts_menu->addSeparator();
+	m_scripts_menu->addAction(m_manage_scripts);
 	m_scripts_menu->addAction(m_run_script);
 	m_scripts_menu->addAction(m_open_scripts_folder);
 

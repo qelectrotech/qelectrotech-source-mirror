@@ -250,6 +250,7 @@ class QETDiagramEditor : public QETMainWindow
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
 		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from
+		*m_manage_scripts,             ///< Action to open the script manager
 #endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
@@ -321,6 +322,7 @@ class QETDiagramEditor : public QETMainWindow
 		QMenu *m_scripts_menu = nullptr;
 		QList<QAction *> m_script_actions;	///< One per stored script, rebuilt when the folder changes
 		bool m_had_scripts = false;
+		QPointer<QDialog> m_script_manager;
 #endif
 		
 		QUndoGroup undo_group;
