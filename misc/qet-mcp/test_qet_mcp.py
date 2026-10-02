@@ -3129,7 +3129,7 @@ class LiveClient(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "live mode is off"):
             m.tool_live_status()
         self.info(None)
-        with self.assertRaisesRegex(ValueError, "Continuer"):
+        with self.assertRaisesRegex(ValueError, "Continue"):
             m.tool_live_status()
 
     def test_requests_carry_the_token_and_the_script_id(self):

@@ -110,7 +110,8 @@ void LiveServer::askAndStart(QWidget *parent)
 			   "pourra exécuter des scripts sur le projet ouvert.\n\n"
 			   "Chaque action s'annule d'un Ctrl+Z, et le bouton "
 			   "« Arrêter » de la barre d'état coupe la connexion.\n\n"
-			   "Ce réglage se trouve dans Configurer QElectroTech > Général."),
+			   "Ce réglage se trouve dans Configurer QElectroTech > Général > "
+			   "Projets."),
 			QMessageBox::NoButton, parent);
 	QPushButton *go = box.addButton(tr("&Continuer"), QMessageBox::AcceptRole);
 	box.addButton(tr("&Pas pour cette session"), QMessageBox::RejectRole);
@@ -465,7 +466,22 @@ QJsonObject LiveServer::screenshot()
 	QETDiagramEditor *e = editor();
 	DiagramView *view = e ? e->currentDiagramView() : nullptr;
 	if (!view) return failure(QStringLiteral("no folio is shown in QElectroTech"));
-	const QPixmap pixmap = view->grab();
+		// Only the part of the folio (frame and title block) that is on
+		// screen: a tall or wide window around a zoomed-out folio would
+		// otherwise give mostly empty background. The whole viewport when
+		// the folio is scrolled out of sight.
+	QRect area = view->viewport()->rect();
+	bool cropped = false;
+	if (Diagram *diagram = view->diagram()) {
+		const QRect folio = view->mapFromScene(
+			diagram->border_and_titleblock.borderAndTitleBlockRect()).boundingRect()
+			.adjusted(-1, -1, 1, 1).intersected(area);
+		if (!folio.isEmpty()) {
+			cropped = folio != area;
+			area = folio;
+		}
+	}
+	const QPixmap pixmap = view->viewport()->grab(area);
 	QByteArray png;
 	QBuffer buffer(&png);
 	buffer.open(QIODevice::WriteOnly);
@@ -473,6 +489,7 @@ QJsonObject LiveServer::screenshot()
 	return {{QStringLiteral("ok"), true},
 		{QStringLiteral("width"), pixmap.width()},
 		{QStringLiteral("height"), pixmap.height()},
+		{QStringLiteral("cropped_to_folio"), cropped},
 		{QStringLiteral("png_base64"), QString::fromLatin1(png.toBase64())}};
 }
 
