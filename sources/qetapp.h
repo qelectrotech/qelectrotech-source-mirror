@@ -115,6 +115,7 @@ class QETApp : public QObject
 		static QStringList handledFiles(const QList<QUrl> &);
 		static RecentFiles *projectsRecentFiles();
 		static RecentFiles *elementsRecentFiles();
+		static void applyDirectoryArguments(const QETArguments &);
 		
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	public:
