@@ -159,6 +159,18 @@ if(WIN32)
         ${QET_DIR}/qelectrotech.qrc
         ${QET_DIR}/ico/icon-themes.qrc
     )
+    # Our own manifest (it declares longPathAware). MSVC merges a .manifest
+    # listed as a source; MinGW needs it embedded through a resource file,
+    # and ld then keeps it ahead of the toolchain's default manifest.
+    set(QET_MANIFEST_FILE ${QET_DIR}/build-aux/windows/qelectrotech.exe.manifest)
+    if(MSVC)
+        target_sources(${PROJECT_NAME} PRIVATE ${QET_MANIFEST_FILE})
+    else()
+        configure_file(${QET_DIR}/build-aux/windows/qelectrotech-manifest.rc.in
+                       ${CMAKE_CURRENT_BINARY_DIR}/qelectrotech-manifest.rc @ONLY)
+        target_sources(${PROJECT_NAME} PRIVATE
+                       ${CMAKE_CURRENT_BINARY_DIR}/qelectrotech-manifest.rc)
+    endif()
 else()
     add_executable(
         ${PROJECT_NAME}
