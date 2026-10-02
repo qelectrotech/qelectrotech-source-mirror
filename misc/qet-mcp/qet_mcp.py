@@ -1483,7 +1483,14 @@ OPS = {
 
 SHAPES = ["line", "rectangle", "ellipse", "polygon"]
 FOLIO_BORDER_PROPERTIES = ["columns", "column-width", "display-columns",
-                           "rows", "row-height", "display-rows"]
+                           "rows", "row-height", "display-rows", "preset"]
+# The sheets set_folio_border's "preset" sizes a folio for, as the scripting
+# API names them (QetScriptApi::folioPresets()). Tabloid and ledger are the
+# same 11 x 17 in sheet.
+FOLIO_PRESETS = [f"{paper}-{orientation}"
+                 for paper in ("a0", "a1", "a2", "a3", "a4", "a5",
+                               "letter", "legal", "tabloid", "ledger")
+                 for orientation in ("portrait", "landscape")]
 ELEMENT_TEXT_SOURCES = ["text", "info", "composite"]
 ELEMENT_TEXT_PROPERTIES = ["text", "source", "info", "composite", "frame", "size",
                            "x", "y", "rotation", "width"]
@@ -1793,6 +1800,13 @@ def _build_script(operations: list, output: str) -> str:
             raise ValueError(f"operation {i}: unknown folio border property "
                              f"{op.get('property')!r}; expected one of "
                              f"{', '.join(FOLIO_BORDER_PROPERTIES)}")
+        preset = name == "set_folio_border" and op.get("property") == "preset"
+        if preset:
+            if str(op.get("value", "")).lower() not in FOLIO_PRESETS:
+                raise ValueError(f"operation {i}: unknown folio preset {op.get('value')!r}; "
+                                 f"expected one of {', '.join(FOLIO_PRESETS)}")
+            # Only a build that has it can say why it refused one.
+            uuid_methods.add("folioPresets")
         if name == "add_element_text" and op.get("source") not in ELEMENT_TEXT_SOURCES:
             raise ValueError(f"operation {i}: unknown source {op.get('source')!r}; "
                              f"expected one of {', '.join(ELEMENT_TEXT_SOURCES)}")
@@ -1851,6 +1865,19 @@ def _build_script(operations: list, output: str) -> str:
             lines.append(f"  var e{i} = qetMcpConductorEnd({i}, {args[0]}, {conductor_js});")
             call = f"(e{i} ? {call} : false)"
         lines.append(f"  var v{i} = {call};")
+        if preset:
+            # Say what the preset chose, and the size of the frame and title
+            # block as a PDF export measures it: plus its one-pixel line, at
+            # 96 pixels an inch, in points. The export writes that on the
+            # standard sheet it is within 3 pt of.
+            f = args[0]
+            lines.append(
+                f"  if (v{i}) qet.log({_js(_MARKER)} + JSON.stringify({{kind: 'op_note', "
+                f"index: {i}, note: qet.folioBorder({f}, 'columns') + ' columns of ' + "
+                f"qet.folioBorder({f}, 'column-width') + ', ' + qet.folioBorder({f}, 'rows') + "
+                f"' rows of ' + qet.folioBorder({f}, 'row-height') + '; frame ' + "
+                f"Math.ceil(Number(qet.folioBorder({f}, 'width')) + 1) * 0.75 + ' x ' + "
+                f"Math.ceil(Number(qet.folioBorder({f}, 'height')) + 1) * 0.75 + ' pt'}}));")
         if route == "avoid":
             # The wire exists either way; a route not found leaves it on the
             # default path, which is a note on the op, not a failure of it.
@@ -3633,8 +3660,14 @@ TOOLS = [
                         "where it is found. Returns the number of items changed; never "
                         "matches an empty field. set_project_title renames the project. "
                         "set_folio_border sets one "
-                        "of the folio frame's " + ", ".join(FOLIO_BORDER_PROPERTIES) +
-                        " (counts 1-99, sizes 1-1000, display-* true/false). "
+                        "of the folio frame's " + ", ".join(FOLIO_BORDER_PROPERTIES[:-1]) +
+                        " (counts 1-99, sizes 1-1000, display-* true/false), or \"property\": "
+                        "\"preset\" with a sheet of paper as the value (" +
+                        ", ".join(FOLIO_PRESETS) + "): it picks the column and row counts "
+                        "and whole-number sizes that fill that sheet best without going "
+                        "over it, allowing for the folio's own title block, as one undo "
+                        "step; the op's note says what it chose and the frame's size in "
+                        "points, which qet_export's pdf writes on that sheet exactly. "
                         "set_conductor_default sets one of a folio's conductor defaults "
                         "(Folio properties > Conductors): onetextperfolio (true/false, one "
                         "wire number per potential on the folio) or any set_conductor "
