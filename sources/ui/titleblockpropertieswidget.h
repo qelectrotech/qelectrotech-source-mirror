@@ -100,6 +100,8 @@ class TitleBlockPropertiesWidget : public QWidget
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;
 		DiagramContextWidget *m_dcw;
+			/// keys of the context given to setProperties()
+		QStringList m_context_keys;
 		QAction *m_tbt_edit, *m_tbt_duplicate;
 		QMenu *m_tbt_menu;
 		QList <TitleBlockTemplatesCollection *> m_tbt_collection_list;

@@ -126,6 +126,12 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
+		//The box starts at 2, so the default size 1 shows as 2: keep the
+		//stored size unless the box shows something else.
+	if (properties_.m_dash_size == qBound(ui->m_dash_size_sb->minimum(),
+										  m_properties.m_dash_size,
+										  ui->m_dash_size_sb->maximum()))
+		properties_.m_dash_size = m_properties.m_dash_size;
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();

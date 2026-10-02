@@ -233,8 +233,10 @@ void NewDiagramPage::applyConf()
 			pg.color = g.color;
 			proj_guides.append(pg);
 		}
-		m_project->setDefaultGuides(proj_guides);
-		modified_project = true;
+		if (m_project->defaultGuides() != proj_guides) {
+			m_project->setDefaultGuides(proj_guides);
+			modified_project = true;
+		}
 
 		if (modified_project) {
 			m_project -> setModified(modified_project);
