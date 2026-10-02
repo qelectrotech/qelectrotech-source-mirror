@@ -542,6 +542,15 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `qet.terminalIndex()` in the build. A symbol file saved without terminal
   uuids lists them empty; QElectroTech gives the terminals of every
   project's copy of it a uuid on opening (#1118), written on the next save.
+- **The `wiring` export names unnamed terminals.** Most shipped symbols
+  leave their terminals unnamed, so `from_terminal`/`to_terminal` are often
+  empty. Each row also ends with `from_terminal_index`,
+  `from_terminal_uuid`, `to_terminal_index` and `to_terminal_uuid`: the
+  index `add_conductor` takes, and the uuid the `.qet` names the terminal
+  by (as `qet_edit` accepts in place of the index). The index is empty for
+  a terminal sharing its point with another, where the order is undefined;
+  the uuid tells those apart. `wiring_list_view` carries the same four
+  columns for `qet_query`.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*

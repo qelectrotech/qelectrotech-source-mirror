@@ -620,6 +620,12 @@ QHash<Element *, int> folioIndex(QETProject &project)
 /// From-to wiring list: one row per conductor, each endpoint resolved to its
 /// element label and terminal name.
 ///
+/// Most symbols leave their terminals unnamed, so each end also carries the
+/// terminal's index -- the one the scripting API's addConductor() takes,
+/// empty for two terminals at one point -- and its uuid, the one the project
+/// file names the terminal by. These come last, after the columns the list
+/// has always had, so a reader of those is not disturbed.
+///
 /// Reads wiring_list_view out of the project database. --export-cables produces
 /// the same logical list from the document XML instead, and the two are meant
 /// to agree: running both and diffing them is a direct check that the database
@@ -632,7 +638,8 @@ int exportWiring(QETProject &project, const QString &output)
 
 	static const QStringList columns {
 		"wire_number", "from_element_label", "from_terminal",
-		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid"
+		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid",
+		"from_terminal_index", "from_terminal_uuid", "to_terminal_index", "to_terminal_uuid"
 	};
 
 	QSqlQuery query = project.dataBase()->newQuery(
