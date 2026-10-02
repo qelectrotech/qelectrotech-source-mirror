@@ -1264,8 +1264,13 @@ QString QetScriptApi::applyRoute(Conductor *conductor, const QString &caller)
 		return QStringLiteral("no-route");
 	}
 	if (!conductor->setPathPoints(route.points)) {
-		log(QStringLiteral("qet.%1: the route found does not join the two terminals; "
-						   "the conductor keeps its path").arg(caller));
+			// ConductorRouter always gives at least the two terminals and an
+			// exit point between them, so this is a route that is not a run
+			// of horizontal and vertical segments from one terminal to the
+			// other -- a bug in the router, not something the folio did.
+		log(QStringLiteral("qet.%1: the route found was refused (it must run in "
+						   "horizontal and vertical segments from one terminal to "
+						   "the other); the conductor keeps its path").arg(caller));
 		return QStringLiteral("no-route");
 	}
 	return QStringLiteral("routed");
