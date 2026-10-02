@@ -34,6 +34,7 @@
 #include <QApplication>
 #include <QDomImplementation>
 #include <QFont>
+#include <QHashSeed>
 
 #include <QSettings>
 #include <QStyleFactory>
@@ -96,8 +97,12 @@ void qetLogMessageHandler(QtMsgType type,
 int main(int argc, char **argv)
 {
 	// before creating Application:
-	// export environment-variable "QT_HASH_SEED" with value "0" to
-	// disable radomisation for hashes in order to obtain "clean" XML-diffs:
+	// disable randomisation for hashes in order to obtain "clean" XML-diffs,
+	// and the same PDF for the same project (the PDF engine writes its fonts
+	// in QHash order). Setting QT_HASH_SEED alone came too late: Qt reads it
+	// once, when the first hash is made, and that happens before main().
+	// The variable is still set for the processes QElectroTech starts.
+	QHashSeed::setDeterministicGlobalSeed();
 	qputenv("QT_HASH_SEED", "0");
 	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
