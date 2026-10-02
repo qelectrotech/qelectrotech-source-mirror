@@ -53,6 +53,12 @@ namespace ConductorRouter
 		Direction end_direction = Direction::North;
 			///Areas no segment may cross. A margin is added to each.
 		QList<QRectF> obstacles;
+			///Each terminal's own symbol, when known, as it appears in
+			///obstacles. A route steps out of it first and never walks
+			///through another symbol to get out; an obstacle drawn around
+			///it (a cabinet made as one element) is left out.
+		QRectF start_symbol;
+		QRectF end_symbol;
 			///The other wires on the folio, each as its list of points.
 			///Running along one or crossing one costs extra.
 		QList<QVector<QPointF>> wires;

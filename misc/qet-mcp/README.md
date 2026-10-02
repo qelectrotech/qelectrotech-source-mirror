@@ -550,7 +550,13 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   the run goes on. Like a hand-edited path, it is stretched rather than
   rerouted when a symbol is moved afterwards; route again after moving
   things. Needs `qet.routeConductor()` / `qet.routeConductorBetween()` in
-  the build, and only an edit that routes requires them.
+  the build, and only an edit that routes requires them. A symbol drawn
+  around either end's own symbol (a cabinet made as one element) is not
+  an obstacle, so a wire between two symbols inside one is routed inside
+  it. Two terminals facing each other on one line, with nothing between
+  them, are joined by a straight line however close they are. A
+  terminal pointing straight into another symbol has no route, rather
+  than one through that symbol.
 - **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
   `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
   in place of its index, on the op's own element (for `add_conductor`, on
