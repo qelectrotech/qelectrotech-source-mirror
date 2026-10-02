@@ -395,6 +395,19 @@ target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# One text per potential: the number goes on the same conductor in every
+# run when two conductors tie for longest. Exports
+# fixtures/one_text_per_potential_tie.qet through the real binary, several
+# times, since the order it used to depend on changes only between runs.
+add_executable(
+  tst_potentialtextcarrier
+  tst_potentialtextcarrier.cpp)
+add_test(NAME tst_potentialtextcarrier COMMAND tst_potentialtextcarrier)
+add_dependencies(tst_potentialtextcarrier qelectrotech)
+target_link_libraries(tst_potentialtextcarrier PRIVATE Qt::Test)
+target_compile_definitions(tst_potentialtextcarrier PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Hops where wires cross (issue #436): the geometry in wirehops.cpp, and
 # through the real binary, that --resave keeps the project setting and
 # adds nothing to a project without it.

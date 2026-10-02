@@ -2305,6 +2305,38 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	}
 }
 
+namespace {
+	/// The two ends of @p conductor on the folio, smaller first, compared
+	/// by x then y.
+	QPair<QPointF, QPointF> conductorEnds(const Conductor *conductor)
+	{
+		auto less = [](const QPointF &a, const QPointF &b) {
+			return a.x() < b.x() || (a.x() == b.x() && a.y() < b.y());
+		};
+		QPointF a = conductor->terminal1 ? conductor->terminal1->dockConductor() : QPointF();
+		QPointF b = conductor->terminal2 ? conductor->terminal2->dockConductor() : QPointF();
+		if (less(b, a))
+			std::swap(a, b);
+		return qMakePair(a, b);
+	}
+
+	/// True if @p a comes before @p b in an order that is the same in every
+	/// run: by where the conductor's ends are on the folio, then by uuid.
+	/// Not by uuid first: a project generated again by a script gets new
+	/// uuids each time, and a file with no conductor uuids gets new ones on
+	/// every load, while the drawing is the same.
+	bool stableConductorLess(const Conductor *a, const Conductor *b)
+	{
+		const auto ea = conductorEnds(a), eb = conductorEnds(b);
+		const qreal ka[4] = {ea.first.x(), ea.first.y(), ea.second.x(), ea.second.y()};
+		const qreal kb[4] = {eb.first.x(), eb.first.y(), eb.second.x(), eb.second.y()};
+		for (int i = 0; i < 4; ++i)
+			if (ka[i] != kb[i])
+				return ka[i] < kb[i];
+		return a->uuid() < b->uuid();
+	}
+}
+
 /**
 	@brief longestConductorInPotential
 	@param conductor : a conductor in the potential to search
@@ -2313,10 +2345,24 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 */
 Conductor * longestConductorInPotential(Conductor *conductor, bool all_diagram) {
 	Conductor *longest_conductor = conductor;
-	//Search the longest conductor
+	qreal longest_length = conductor->length();
+	//Search the longest conductor.
+	//Conductors of equal length are common (a symmetrical layout), and the
+	//set is iterated in pointer order, which changes from run to run: so a
+	//tie is broken by an order that does not, or the potential's text lands
+	//on a different conductor each time the same file is opened or exported.
 	foreach (Conductor *c, conductor -> relatedPotentialConductors(all_diagram))
-		if (c -> length() > longest_conductor -> length())
+	{
+		const qreal length = c->length();
+		if (qAbs(length - longest_length) < 1e-6) {
+			if (stableConductorLess(c, longest_conductor))
+				longest_conductor = c;
+		}
+		else if (length > longest_length) {
 			longest_conductor = c;
+			longest_length = length;
+		}
+	}
 
 	return longest_conductor;
 }
