@@ -22,6 +22,7 @@ away: a check that has never been seen to fail is not evidence.
 
 from __future__ import annotations
 
+import csv
 import json
 import os
 import re
@@ -3675,6 +3676,44 @@ class Integration(unittest.TestCase):
         note = r["operations"][1].get("note", "")
         self.assertIn("from_terminal: no terminal", note)
         self.assertIn("to_terminal: no terminal", note)
+    def test_wiring_export_names_unnamed_terminals(self):
+        """--export-wiring gives each end the index add_conductor took and
+        the uuid the file names the terminal by, even where the terminal
+        has no name. This strip's file lists its terminals in another order
+        than the index (top to bottom, then left to right), so a column
+        holding the file's order would fail here."""
+        strip = ("common://10_electric/10_allpole/130_terminals_terminal_strips/"
+                 "90_terminal_strips_diagram/90-10-0211.elmt")
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_element", "id": "a", "folio": 0, "path": strip, "x": 100, "y": 200},
+            {"op": "add_element", "id": "b", "folio": 0, "path": strip, "x": 400, "y": 200},
+            {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 2,
+             "to": "$b", "to_terminal": 3},
+            {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 1,
+             "to": "$b", "to_terminal": 0}]))
+        a_uuid, b_uuid = (o["result"] for o in r["operations"][:2])
+        out = self.sb.p("wiring.csv")
+        e = m.tool_export(BINARY, r["output"], "wiring", out)
+        self.assertTrue(e["ok"], e)
+        with open(out, encoding="utf-8-sig", newline="") as fh:
+            rows = list(csv.DictReader(fh, delimiter=";"))
+        self.assertEqual(len(rows), 2)
+        # the conductor in the file: which uuid it names each end by
+        in_file = {c.get("uuid"): {(c.get("element1"), c.get("terminal1")),
+                                   (c.get("element2"), c.get("terminal2"))}
+                   for c in ET.parse(r["output"]).getroot().iter("conductor")
+                   if c.get("element1")}
+        got = set()
+        for row in rows:
+            self.assertEqual((row["from_terminal"], row["to_terminal"]), ("", ""))
+            ends = {(int(row["from_terminal_index"]), row["from_terminal_uuid"]),
+                    (int(row["to_terminal_index"]), row["to_terminal_uuid"])}
+            self.assertEqual({u for _, u in ends},
+                             {t for _, t in in_file[row["conductor_uuid"]]})
+            got.add(frozenset(i for i, _ in ends))
+        self.assertEqual(got, {frozenset({2, 3}), frozenset({1, 0})})
+
     def test_folio_ref_survives_an_insert_before_it(self):
         """add_folio names a folio "$f"; inserting another at position 0
         moves it from index 1 to 2. "$f" must still name it."""
