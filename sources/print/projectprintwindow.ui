@@ -134,8 +134,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="dialog-ok" resource="../../qelectrotech.qrc">
-               <normaloff>:/ico/16x16/dialog-ok.png</normaloff>:/ico/16x16/dialog-ok.png</iconset>
+              <iconset theme="dialog-ok"/>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -305,8 +304,7 @@
   </widget>
   <action name="m_adjust_width_action">
    <property name="icon">
-    <iconset theme="view_fit_width" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/view_fit_width.png</normaloff>:/ico/22x22/view_fit_width.png</iconset>
+    <iconset theme="view_fit_width"/>
    </property>
    <property name="text">
     <string>Ajuster la largeur</string>
@@ -314,8 +312,7 @@
   </action>
   <action name="m_adjust_page_action">
    <property name="icon">
-    <iconset theme="view-fit-window" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/view-fit-window.png</normaloff>:/ico/22x22/view-fit-window.png</iconset>
+    <iconset theme="view-fit-window"/>
    </property>
    <property name="text">
     <string>Ajuster la page</string>
@@ -323,8 +320,7 @@
   </action>
   <action name="m_zoom_out_action">
    <property name="icon">
-    <iconset theme="zoom-out" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/zoom-out.png</normaloff>:/ico/16x16/zoom-out.png</iconset>
+    <iconset theme="zoom-out"/>
    </property>
    <property name="text">
     <string>Zoom arrière</string>
@@ -332,8 +328,7 @@
   </action>
   <action name="m_zoom_in_action">
    <property name="icon">
-    <iconset theme="zoom-in" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/zoom-in.png</normaloff>:/ico/16x16/zoom-in.png</iconset>
+    <iconset theme="zoom-in"/>
    </property>
    <property name="text">
     <string>Zoom avant</string>
@@ -365,8 +360,7 @@
   </action>
   <action name="m_previous_page_action">
    <property name="icon">
-    <iconset theme="arrow-left" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
+    <iconset theme="arrow-left"/>
    </property>
    <property name="text">
     <string>Page précédente</string>
@@ -374,8 +368,7 @@
   </action>
   <action name="m_next_page_action">
    <property name="icon">
-    <iconset theme="arrow-right" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
+    <iconset theme="arrow-right"/>
    </property>
    <property name="text">
     <string>Page suivante</string>
@@ -391,8 +384,7 @@
   </action>
   <action name="m_display_single_page_action">
    <property name="icon">
-    <iconset theme="single_page" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/single_page.png</normaloff>:/ico/22x22/single_page.png</iconset>
+    <iconset theme="single_page"/>
    </property>
    <property name="text">
     <string>Afficher une seule page</string>
@@ -400,8 +392,7 @@
   </action>
   <action name="m_display_two_page_action">
    <property name="icon">
-    <iconset theme="two_pages" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/22x22/two_pages.png</normaloff>:/ico/22x22/two_pages.png</iconset>
+    <iconset theme="two_pages"/>
    </property>
    <property name="text">
     <string>Afficher deux pages</string>
@@ -417,8 +408,7 @@
   </action>
   <action name="m_page_setup">
    <property name="icon">
-    <iconset theme="document-print-frame" resource="../../qelectrotech.qrc">
-     <normaloff>:/ico/48x48/document-print-frame.png</normaloff>:/ico/48x48/document-print-frame.png</iconset>
+    <iconset theme="document-print-frame"/>
    </property>
    <property name="text">
     <string>mise en page</string>

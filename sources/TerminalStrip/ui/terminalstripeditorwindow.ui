@@ -54,8 +54,7 @@
   </widget>
   <action name="m_add_terminal_strip">
    <property name="icon">
-    <iconset theme="list-add" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+    <iconset theme="list-add"/>
    </property>
    <property name="text">
     <string>Ajouter un bornier</string>
@@ -66,8 +65,7 @@
   </action>
   <action name="m_remove_terminal">
    <property name="icon">
-    <iconset theme="list-remove" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
+    <iconset theme="list-remove"/>
    </property>
    <property name="text">
     <string>Supprimer le bornier</string>
@@ -78,8 +76,7 @@
   </action>
   <action name="m_reload">
    <property name="icon">
-    <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+    <iconset theme="view-refresh"/>
    </property>
    <property name="text">
     <string>Recharger</string>

@@ -136,8 +136,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="go-up" resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/go-up.png</normaloff>:/ico/16x16/go-up.png</iconset>
+      <iconset theme="go-up"/>
      </property>
     </widget>
    </item>
@@ -150,8 +149,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="go-down" resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/go-down.png</normaloff>:/ico/16x16/go-down.png</iconset>
+      <iconset theme="go-down"/>
      </property>
     </widget>
    </item>

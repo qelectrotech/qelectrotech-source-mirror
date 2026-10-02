@@ -20,8 +20,7 @@
       <string>Requête</string>
      </property>
      <property name="icon">
-      <iconset theme="edit-rename" resource="../../../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/edit-rename.png</normaloff>:/ico/16x16/edit-rename.png</iconset>
+      <iconset theme="edit-rename"/>
      </property>
     </widget>
    </item>
@@ -31,8 +30,7 @@
       <string>Recharger</string>
      </property>
      <property name="icon">
-      <iconset theme="view-refresh" resource="../../../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+      <iconset theme="view-refresh"/>
      </property>
     </widget>
    </item>

@@ -106,8 +106,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="go-bottom" resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/go-bottom.png</normaloff>:/ico/16x16/go-bottom.png</iconset>
+         <iconset theme="go-bottom"/>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -123,8 +122,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="go-top" resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/go-top.png</normaloff>:/ico/16x16/go-top.png</iconset>
+         <iconset theme="go-top"/>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -140,8 +138,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+         <iconset theme="view-refresh"/>
         </property>
         <property name="flat">
          <bool>true</bool>
