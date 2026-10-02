@@ -35,6 +35,8 @@
 #include <QUrl>
 #include <QVector>
 
+#include <algorithm>
+
 namespace PdfLinks {
 
 void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
@@ -83,6 +85,14 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 					  QPointF(qMax(a.x(), b.x()), qMax(a.y(), b.y())));
 	};
 
+	// The links are collected first and drawn sorted, not in the order the
+	// loop below finds them: a cross-reference's contacts are keyed by
+	// Element pointer and the scene's items come in stacking order, so that
+	// order changes from run to run and the same project gave a different
+	// PDF each time it was exported.
+	struct Link { QRectF rect; QUrl url; };
+	QList<Link> links;
+
 	auto injectLink = [&](const QRectF &sceneRect, Element *targetElmt) {
 		if (!targetElmt || !targetElmt->diagram()) return;
 		const int targetPage = pageMap.value(targetElmt->diagram(), -1);
@@ -99,7 +109,7 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 
 		QUrl url = QUrl::fromLocalFile(outputFileName);
 		url.setFragment(frag);
-		engine->drawHyperlink(devRect, url);
+		links.append({devRect, url});
 	};
 
 	for (auto *item : diagram->items()) {
@@ -165,6 +175,22 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 			continue;
 		}
 	}
+
+	// Top to bottom, then left to right; the target breaks a tie between
+	// two links on the same spot.
+	std::sort(links.begin(), links.end(), [](const Link &a, const Link &b) {
+		if (a.rect.top() != b.rect.top())
+			return a.rect.top() < b.rect.top();
+		if (a.rect.left() != b.rect.left())
+			return a.rect.left() < b.rect.left();
+		if (a.rect.bottom() != b.rect.bottom())
+			return a.rect.bottom() < b.rect.bottom();
+		if (a.rect.right() != b.rect.right())
+			return a.rect.right() < b.rect.right();
+		return a.url.fragment() < b.url.fragment();
+	});
+	for (const Link &link : std::as_const(links))
+		engine->drawHyperlink(link.rect, link.url);
 }
 
 void convertUriToGoTo(const QString &pdfPath)
