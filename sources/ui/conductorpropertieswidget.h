@@ -18,6 +18,7 @@
 #ifndef CONDUCTORPROPERTIESWIDGET_H
 #define CONDUCTORPROPERTIESWIDGET_H
 
+#include "../conductormultiedit.h"
 #include "../conductorproperties.h"
 
 #include <QWidget>
@@ -49,6 +50,8 @@ class ConductorPropertiesWidget : public QWidget
 		void setHiddenOneTextPerFolio   (const bool &hide);
 		void setDisabledShowText        (const bool &disable = true);
 		void setHiddenAvailableAutonum (const bool &hide);
+		void setMixedTextFields(const QList<ConductorMultiEdit::TextField> &mixed);
+		void setTextLocked(bool locked);
 		QComboBox *autonumComboBox() const;
 		QPushButton *editAutonumPushButton() const;
 
@@ -72,6 +75,7 @@ class ConductorPropertiesWidget : public QWidget
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
+		bool m_text_locked = false;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H
