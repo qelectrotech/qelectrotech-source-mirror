@@ -395,6 +395,18 @@ target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
+# QPageSize matches standard sheets upright only, so a wide folio is matched
+# upright and turned. fixtures/pdf_page_a3.qet has one folio each way.
+add_executable(
+  tst_pdfpagesize
+  tst_pdfpagesize.cpp)
+add_test(NAME tst_pdfpagesize COMMAND tst_pdfpagesize)
+add_dependencies(tst_pdfpagesize qelectrotech)
+target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
+target_compile_definitions(tst_pdfpagesize PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # One text per potential: the number goes on the same conductor in every
 # run when two conductors tie for longest. Exports
 # fixtures/one_text_per_potential_tie.qet through the real binary, several
