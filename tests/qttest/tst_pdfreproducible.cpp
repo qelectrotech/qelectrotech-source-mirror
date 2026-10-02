@@ -51,6 +51,31 @@ class tst_pdfreproducible : public QObject
 		return file.readAll();
 	}
 
+	/// Every object the xref table lists starts where the table says: the
+	/// dates are rewritten after Qt writes the file, which moves them.
+	static bool xrefMatches(const QByteArray &pdf)
+	{
+		const int sx = pdf.lastIndexOf("startxref");
+		if (sx == -1)
+			return false;
+		const int xref = pdf.mid(sx + 9).trimmed().split('\n').value(0).toInt();
+		if (!pdf.mid(xref).startsWith("xref"))
+			return false;
+		const QList<QByteArray> lines = pdf.mid(xref).split('\n');
+		const QList<QByteArray> header = lines.value(1).split(' ');
+		const int first = header.value(0).toInt();
+		const int count = header.value(1).toInt();
+		for (int i = 0; i < count; ++i) {
+			const QList<QByteArray> entry = lines.value(2 + i).split(' ');
+			if (entry.value(2) != "n")
+				continue;
+			const QByteArray obj = QByteArray::number(first + i) + " 0 obj";
+			if (pdf.mid(entry.value(0).toInt(), obj.size()) != obj)
+				return false;
+		}
+		return count > 0;
+	}
+
 private slots:
 	void initTestCase()
 	{
@@ -69,7 +94,10 @@ private slots:
 		const QByteArray first = exportPdf(project, "1700000000");
 		QVERIFY(!first.isEmpty());
 		QVERIFY(first.contains("/CreationDate (D:20231114221320Z)"));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 		QVERIFY(first.contains("xmp:CreateDate=\"2023-11-14T22:13:20Z\""));
+#endif
+		QVERIFY2(xrefMatches(first), "the xref table does not match the file");
 		for (int i = 0; i < 3; ++i)
 			QVERIFY2(exportPdf(project, "1700000000") == first,
 					 "two exports of the same project differ");

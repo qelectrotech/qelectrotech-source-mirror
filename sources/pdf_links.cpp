@@ -430,51 +430,57 @@ void setDocumentDate(const QString &pdfPath, const QDateTime &when)
 	struct Edit { int start; int end; QByteArray text; };
 	QList<Edit> edits;
 
-	// The document information: "/CreationDate (D:...)" and "/ModDate (D:...)".
-	// Its other strings are UTF-16, so they cannot hold these keys.
+	// The document information: "/CreationDate (D:...)" and, from Qt 6.8,
+	// "/ModDate (D:...)". Its other strings are UTF-16, so they cannot hold
+	// these keys.
 	for (const QByteArray &key : {QByteArray("/CreationDate "), QByteArray("/ModDate ")}) {
 		const int k = data.indexOf(key);
-		if (k == -1) return;
+		if (k == -1) {
+			if (key.startsWith("/ModDate")) continue;
+			return;
+		}
 		const int start = k + key.size();
 		const int end = data.indexOf(')', start);
 		if (end == -1 || data.at(start) != '(') return;
 		edits.append({start, end + 1, pdfDate});
 	}
 
-	// The XMP metadata stream, which Qt writes uncompressed: its three
-	// dates, and its /Length, which changes with them.
+	// The XMP metadata stream, which Qt writes uncompressed from Qt 6.8
+	// (before, only for PDF/A): its three dates, and its /Length, which
+	// changes with them.
 	const QByteArray metadata("/Type /Metadata /Subtype /XML");
 	const int m = data.indexOf(metadata);
-	if (m == -1) return;
-	const QByteArray lengthKey("/Length ");
-	const int l = data.indexOf(lengthKey, m);
-	const int streamStart = data.indexOf("stream\n", m);
-	if (l == -1 || streamStart == -1 || l > streamStart) return;
-	const int lengthStart = l + lengthKey.size();
-	int lengthEnd = lengthStart;
-	while (lengthEnd < data.size() && QChar(data.at(lengthEnd)).isDigit())
-		++lengthEnd;
-	const int streamEnd = data.indexOf("endstream", streamStart);
-	if (lengthEnd == lengthStart || streamEnd == -1) return;
+	if (m != -1) {
+		const QByteArray lengthKey("/Length ");
+		const int l = data.indexOf(lengthKey, m);
+		const int streamStart = data.indexOf("stream\n", m);
+		if (l == -1 || streamStart == -1 || l > streamStart) return;
+		const int lengthStart = l + lengthKey.size();
+		int lengthEnd = lengthStart;
+		while (lengthEnd < data.size() && QChar(data.at(lengthEnd)).isDigit())
+			++lengthEnd;
+		const int streamEnd = data.indexOf("endstream", streamStart);
+		if (lengthEnd == lengthStart || streamEnd == -1) return;
 
-	// The last of each in the stream: the title and author come before
-	// the dates, and are text a project could fill with anything.
-	int xmpDelta = 0;
-	QList<Edit> xmpEdits;
-	for (const QByteArray &attr : {QByteArray("xmp:CreateDate=\""),
-								   QByteArray("xmp:ModifyDate=\""),
-								   QByteArray("xmp:MetadataDate=\"")}) {
-		const int a = data.lastIndexOf(attr, streamEnd);
-		if (a < streamStart) return;
-		const int start = a + attr.size();
-		const int end = data.indexOf('"', start);
-		if (end == -1 || end > streamEnd) return;
-		xmpEdits.append({start, end, xmpDate});
-		xmpDelta += xmpDate.size() - (end - start);
+		// The last of each in the stream: the title and author come before
+		// the dates, and are text a project could fill with anything.
+		int xmpDelta = 0;
+		QList<Edit> xmpEdits;
+		for (const QByteArray &attr : {QByteArray("xmp:CreateDate=\""),
+									   QByteArray("xmp:ModifyDate=\""),
+									   QByteArray("xmp:MetadataDate=\"")}) {
+			const int a = data.lastIndexOf(attr, streamEnd);
+			if (a < streamStart) return;
+			const int start = a + attr.size();
+			const int end = data.indexOf('"', start);
+			if (end == -1 || end > streamEnd) return;
+			xmpEdits.append({start, end, xmpDate});
+			xmpDelta += xmpDate.size() - (end - start);
+		}
+		const int length = data.mid(lengthStart, lengthEnd - lengthStart).toInt();
+		edits.append({lengthStart, lengthEnd, QByteArray::number(length + xmpDelta)});
+		edits.append(xmpEdits);
 	}
-	const int length = data.mid(lengthStart, lengthEnd - lengthStart).toInt();
-	edits.append({lengthStart, lengthEnd, QByteArray::number(length + xmpDelta)});
-	edits.append(xmpEdits);
 
 	std::sort(edits.begin(), edits.end(),
 			  [](const Edit &a, const Edit &b) { return a.start < b.start; });

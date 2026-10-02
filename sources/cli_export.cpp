@@ -165,7 +165,7 @@ QDateTime sourceDateEpoch()
 		err << "SOURCE_DATE_EPOCH '" << value << "' is not a number of seconds; ignored.\n";
 		return {};
 	}
-	return QDateTime::fromSecsSinceEpoch(seconds, QTimeZone::UTC);
+	return QDateTime::fromSecsSinceEpoch(seconds, QTimeZone::utc());
 }
 
 int exportPdf(QETProject &project, const QString &output,
@@ -190,8 +190,10 @@ int exportPdf(QETProject &project, const QString &output,
 	// SOURCE_DATE_EPOCH (reproducible-builds.org) asks for the same file
 	// from the same input: the time it names instead of now, and a document
 	// id from the project file instead of a random one. Qt has no setter for
-	// the dates, so they are rewritten once the file is written.
+	// the dates, so they are rewritten once the file is written. Before
+	// Qt 6.8 there is no document id to set: it is only written for PDF/A.
 	const QDateTime sourceDate = sourceDateEpoch();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 	if (sourceDate.isValid()) {
 		QCryptographicHash hash(QCryptographicHash::Sha256);
 		QFile file(project.filePath());
@@ -199,6 +201,7 @@ int exportPdf(QETProject &project, const QString &output,
 			hash.addData(&file);
 		writer.setDocumentId(QUuid::createUuidV5(project.uuid(), hash.result()));
 	}
+#endif
 
 	QPainter painter;
 	bool first = true;
