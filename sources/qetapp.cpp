@@ -658,6 +658,15 @@ QString QETApp::commonElementsDir()
 	{
 		m_common_element_dir_is_set = true;
 
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+			//A folder given on the command line, for this run, comes
+			//before the one saved in the settings.
+		if (m_overrided_common_elements_dir != QString()) {
+			m_common_element_dir = m_overrided_common_elements_dir;
+			return(m_common_element_dir);
+		}
+#endif
+
 			//Check if user define a custom path
 			//for the common collection
 		QSettings settings;
@@ -674,12 +683,6 @@ QString QETApp::commonElementsDir()
 			}
 		}
 
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		if (m_overrided_common_elements_dir != QString()) {
-			m_common_element_dir = m_overrided_common_elements_dir;
-			return(m_common_element_dir);
-		}
-#endif
 #ifndef QET_COMMON_COLLECTION_PATH
 		/* in the absence of a compilation option,
 		 *  we use the elements folder, located next to the executable binary
@@ -2390,6 +2393,42 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 
 
 /**
+	@brief QETApp::applyDirectoryArguments
+	Apply the folder options (--common-elements-dir=, --common-tbt-dir=,
+	--config-dir=, --data-dir=, --lang-dir=) of @p arguments. Static, so
+	the headless export and --run in main() can apply them too: they
+	return before a QETApp exists.
+*/
+void QETApp::applyDirectoryArguments(const QETArguments &arguments)
+{
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	if (arguments.commonElementsDirSpecified()) {
+		overrideCommonElementsDir(arguments.commonElementsDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (arguments.commonTitleBlockTemplatesDirSpecified()) {
+		overrideCommonTitleBlockTemplatesDir(
+				arguments.commonTitleBlockTemplatesDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	if (arguments.configDirSpecified()) {
+		overrideConfigDir(arguments.configDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	if (arguments.dataDirSpecified()) {
+		overrideDataDir(arguments.dataDir());
+	}
+#endif
+
+	if (arguments.langDirSpecified()) {
+		overrideLangDir(arguments.langDir());
+	}
+}
+
+/**
 	@brief QETApp::parseArguments
 	Parse the following arguments:
 	  - --common-elements-dir=
@@ -2430,32 +2469,7 @@ void QETApp::parseArguments()
 	// analyze the arguments
 	// analyse les arguments
 	qet_arguments_ = QETArguments(arguments_list);
-
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-	if (qet_arguments_.commonElementsDirSpecified()) {
-		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
-	if (qet_arguments_.commonTitleBlockTemplatesDirSpecified()) {
-		overrideCommonTitleBlockTemplatesDir(
-				qet_arguments_.commonTitleBlockTemplatesDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
-	if (qet_arguments_.configDirSpecified()) {
-		overrideConfigDir(qet_arguments_.configDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
-	if (qet_arguments_.dataDirSpecified()) {
-		overrideDataDir(qet_arguments_.dataDir());
-	}
-#endif
-
-	if (qet_arguments_.langDirSpecified()) {
-		overrideLangDir(qet_arguments_.langDir());
-	}
+	applyDirectoryArguments(qet_arguments_);
 
 	if (qet_arguments_.printLicenseRequested()) {
 		printLicense();

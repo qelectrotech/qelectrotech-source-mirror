@@ -93,6 +93,30 @@ void qetLogMessageHandler(QtMsgType type,
 	\~French paramètres
 	\~ @return exit code
 */
+/**
+	@brief headlessArguments
+	For the headless export and --run, which return before QETApp parses
+	the command line: apply the folder options (--common-elements-dir= and
+	the others QETArguments knows) and return the arguments without them,
+	so they are not read as the project or output path (issue #1178).
+*/
+static QStringList headlessArguments(const QStringList &args)
+{
+	QETApp::applyDirectoryArguments(QETArguments(args.mid(1)));
+	static const QStringList folder_options {
+		QStringLiteral("--common-elements-dir="), QStringLiteral("--common-tbt-dir="),
+		QStringLiteral("--config-dir="), QStringLiteral("--data-dir="),
+		QStringLiteral("--lang-dir=")};
+	QStringList kept;
+	for (const QString &arg : args) {
+		bool folder = false;
+		for (const QString &option : folder_options)
+			folder = folder || arg.startsWith(option);
+		if (!folder) kept << arg;
+	}
+	return kept;
+}
+
 int main(int argc, char **argv)
 {
 	// before creating Application:
@@ -159,7 +183,7 @@ int main(int argc, char **argv)
 			// QETProject::readProjectXml(), and with nobody able to dismiss it
 			// QDialog::exec() would spin its event loop forever.
 			QET::QetMessageBox::setNonInteractive(true);
-			return CLIExport::run(export_app.arguments());
+			return CLIExport::run(headlessArguments(export_app.arguments()));
 		}
 #ifdef QET_HAS_SCRIPTING
 		// Headless scripting: --run <script.js> <project.qet> (bugtracker
@@ -169,7 +193,7 @@ int main(int argc, char **argv)
 			QApplication script_app(argc, argv);
 			QETProject::setBackupEnabled(false);
 			QET::QetMessageBox::setNonInteractive(true);
-			return QetScripting::run(script_app.arguments());
+			return QetScripting::run(headlessArguments(script_app.arguments()));
 		}
 #endif
 	}
