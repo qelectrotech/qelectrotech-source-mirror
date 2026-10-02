@@ -1347,8 +1347,13 @@ void DynamicElementTextItem::updateLabel()
 		}
 		else if (m_text_from == CompositeText) {
 			// Use actualLabel() to ensure %{label} reflects the current
-			// resolved label (e.g. after a folio/page-number change)
-			dc.addValue(QStringLiteral("label"), element->actualLabel());
+			// resolved label (e.g. after a folio/page-number change).
+			// A contact not linked to a coil has no element to read from
+			// (bugtracker #345): %{label} then shows empty, as it did
+			// before actualLabel() was used here.
+			if (element) {
+				dc.addValue(QStringLiteral("label"), element->actualLabel());
+			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}

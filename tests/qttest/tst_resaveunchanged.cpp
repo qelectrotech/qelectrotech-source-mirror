@@ -17,8 +17,9 @@
 //  - information values were trimmed on save but not on load, so a label
 //    with stray spaces kept them in its displayed copy until the project
 //    was opened again (m_000.qet).
-// Runs the real binary's --resave twice on every example, and on a
-// project whose title block holds a value that is a single space (#973).
+// Runs the real binary's --resave twice on every example, on a project
+// whose title block holds a value that is a single space (#973), and on
+// one that used to crash on opening (bugtracker #345).
 class tst_resaveunchanged : public QObject
 {
 	Q_OBJECT
@@ -81,6 +82,20 @@ private slots:
 		const QByteArray a = read(first), b = read(second);
 		QVERIFY(!a.isEmpty());
 		QVERIFY2(a == b, "the second save changed the file");
+	}
+
+	// A contact not linked to a coil, carrying a text built from %{label}:
+	// opening it dereferenced the missing coil and crashed (bugtracker #345).
+	// The fixture is a blank project with one such contact.
+	void unlinkedContactLabelTextOpens()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/unlinked_contact_label.qet");
+		QVERIFY(!fixture.isEmpty());
+		const QString first = resave(fixture);
+		QVERIFY2(!first.isEmpty(), "--resave failed: QElectroTech crashed opening the project");
+		const QString second = resave(first);
+		QVERIFY2(!second.isEmpty(), "second --resave failed");
+		QVERIFY2(read(first) == read(second), "the second save changed the file");
 	}
 
 	// A title-block value that is a single space is kept through two saves
