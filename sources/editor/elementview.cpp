@@ -17,6 +17,8 @@
 */
 #include "elementview.h"
 
+#include "elementviewgrid.h"
+
 #include "../qetapp.h"
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
@@ -535,27 +537,11 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 
 	// choisit la granularite de la grille en fonction du zoom en cours
 	// selects the grid granularity according to the current zoom level
-	int drawn_x_grid = 1;//scene_ -> xGrid();
-	int drawn_y_grid = 1;//scene_ -> yGrid();
-	bool draw_grid = true;
-	bool draw_cross = false;
-
-	if (zoom_factor < 1.0) { //< no grid
-		draw_grid = false;
-	} else if (zoom_factor < 4.0) { //< grid 10*10
-		drawn_x_grid *= 10;
-		drawn_y_grid *= 10;
-	}else if (zoom_factor < 8.0) { //< grid 5*5
-		drawn_x_grid *= 5;
-		drawn_y_grid *= 5;
-		draw_cross = true;
-	} else if (zoom_factor < 10.0) { //< grid 2*2
-		drawn_x_grid *= 2;
-		drawn_y_grid *= 2;
-		draw_cross = true;
-	} else { //< grid 1*1
-		draw_cross = true;
-	}
+	const ElementViewGrid grid = ElementViewGrid::forZoom(zoom_factor);
+	const int drawn_x_grid = grid.step;
+	const int drawn_y_grid = grid.step;
+	const bool draw_grid = grid.draw_grid;
+	const bool draw_cross = grid.draw_cross;
 
 	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
 
