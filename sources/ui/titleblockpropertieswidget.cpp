@@ -123,6 +123,8 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
 	ui->auto_page_cb->setCurrentText(properties.auto_page_num);
+	m_auto_page_num = properties.auto_page_num;
+	m_auto_page_num_picked = false;
 
 	//About date
 	ui -> m_date_now_pb -> setDisabled(true);
@@ -216,7 +218,13 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 
 	prop.context = m_dcw -> context();
 
-	prop.auto_page_num = ui->auto_page_cb->currentText();
+		//The combo box cannot show "no folio numbering": it shows its
+		//placeholder entry, or the project's first numbering. Return what
+		//was set unless the user picked something else.
+	if (!m_auto_page_num_picked)
+		prop.auto_page_num = m_auto_page_num;
+	else if (ui->auto_page_cb->currentText() != tr("Créer un Folio Numérotation Auto"))
+		prop.auto_page_num = ui->auto_page_cb->currentText();
 
 	return prop;
 }
@@ -376,6 +384,9 @@ void TitleBlockPropertiesWidget::initDialog(
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==nullptr)
 			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
+			//activated() is only emitted for a choice the user makes
+		connect(ui->auto_page_cb, qOverload<int>(&QComboBox::activated),
+				this, [this]() { m_auto_page_num_picked = true; });
 	}
 	else{
 		ui->auto_page_cb->hide();
