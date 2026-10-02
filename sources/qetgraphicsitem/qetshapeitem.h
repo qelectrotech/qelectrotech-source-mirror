@@ -131,7 +131,7 @@ class QetShapeItem : public QetGraphicsItem
 			Rotate, SkewEdge, Pivot,    // RotateSkew mode
 			CornerRadius,               // Rectangle, always shown alongside Size handles
 			ArcEndpoint,                // Ellipse, always shown
-			ArcBulge,                   // Ellipse, shown only on a half arc (see isAxisHalfArc())
+			ArcBulge,                   // Ellipse, Size mode, shown only on a half arc (see isAxisHalfArc())
 			PathAnchor, PathControlIn, PathControlOut  // Polygon/Path, node-edit mode (see setPathNodes())
 		};
 
