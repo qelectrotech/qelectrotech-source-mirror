@@ -538,12 +538,11 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	// choisit la granularite de la grille en fonction du zoom en cours
 	// selects the grid granularity according to the current zoom level
 	const ElementViewGrid grid = ElementViewGrid::forZoom(zoom_factor);
-	const int drawn_x_grid = grid.step;
-	const int drawn_y_grid = grid.step;
+	const int grid_step = grid.step;
 	const bool draw_grid = grid.draw_grid;
 	const bool draw_cross = grid.draw_cross;
 
-	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
+	m_scene->setGrid(grid_step, grid_step);
 
 	if (draw_grid) {
 		// draw the dots of the grid
@@ -573,12 +572,12 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limit_y = r.y() + r.height();
 
 		int g_x = (int)ceil(r.x());
-		while (g_x % drawn_x_grid) ++ g_x;
+		while (g_x % grid_step) ++ g_x;
 		int g_y = (int)ceil(r.y());
-		while (g_y % drawn_y_grid) ++ g_y;
+		while (g_y % grid_step) ++ g_y;
 
-		for (int gx = g_x ; gx < limit_x ; gx += drawn_x_grid) {
-			for (int gy = g_y ; gy < limit_y ; gy += drawn_y_grid) {
+		for (int gx = g_x ; gx < limit_x ; gx += grid_step) {
+			for (int gy = g_y ; gy < limit_y ; gy += grid_step) {
 				if (draw_cross) {
 					if (!(gx % 10) && !(gy % 10)) {
 						p -> drawLine(QLineF(gx - (pen.width()/4.0), gy, gx + (pen.width()/4.0), gy));

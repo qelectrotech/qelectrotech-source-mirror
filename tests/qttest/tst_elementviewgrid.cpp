@@ -24,6 +24,14 @@ private slots:
 		QTest::newRow("400 %")                      << 4.0  << 5  << true  << true;
 		QTest::newRow("800 %")                      << 8.0  << 2  << true  << true;
 		QTest::newRow("1000 %")                     << 10.0 << 1  << true  << true;
+
+		// Just below each threshold: the comparisons are strict (<), so a
+		// change to <= would move these rows into the next band.
+		QTest::newRow("99.9 %")                     << 0.999 << 10 << false << false;
+		QTest::newRow("399.9 %")                    << 3.999 << 10 << true  << false;
+		QTest::newRow("401 %")                      << 4.01  << 5  << true  << true;
+		QTest::newRow("799.9 %")                    << 7.999 << 5  << true  << true;
+		QTest::newRow("999.9 %")                    << 9.999 << 2  << true  << true;
 	}
 
 	void stepAtZoom()

@@ -206,7 +206,13 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	{
 		// When moving the selection, consider the position of the first selected item
 		QPointF current_position = scene_pos - mouse_offset_;
-		QPointF rounded_current_position = snapConstPointToGrid(current_position);
+			// Snap to the editor's grid, as a single part does (bugtracker
+			// #112); Ctrl keeps the fine 1-unit step.
+		ElementScene *element_scene = qobject_cast<ElementScene *>(scene());
+		QPointF rounded_current_position =
+			(element_scene && !(event->modifiers() & Qt::ControlModifier))
+				? element_scene->snapToGrid(current_position)
+				: snapConstPointToGrid(current_position);
 		movement = rounded_current_position - decorated_items_.at(0) -> toItem() -> scenePos();
 		
 		QRectF bounding_rect = modified_bounding_rect_;
