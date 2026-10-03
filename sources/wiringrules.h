@@ -86,12 +86,13 @@ namespace WiringRules
 
 		///How far along each wire an angled branch starts, in scene units
 		///(a grid step is 10)
-	constexpr qreal branch_size = 5.0;
+	constexpr qreal branch_size = 20.0;
 
 	int limit(const Settings &settings, bool master_enabled, bool is_report);
 	bool hasRoom(int limit, int wires);
 
 	bool angledBranches(const Settings &settings, bool master_enabled);
+	bool anglesTurn(const QPointF &free_leg, bool other_turns_here);
 	QVector<QPointF> angledCorners(const QVector<QPointF> &wire,
 								   const QList<QPointF> &corners,
 								   qreal size = branch_size);

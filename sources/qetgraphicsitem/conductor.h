@@ -147,6 +147,7 @@ class Conductor : public QGraphicsObject
 		QPainterPath paintedPath() const;
 		bool drawsAngledBranches() const;
 		QVector<QPointF> drawnPoints() const;
+		QList<QPointF> angledBranchCorners() const;
 
 	private:
 		void setUpConnectionForFormula(

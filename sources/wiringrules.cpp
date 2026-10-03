@@ -195,10 +195,9 @@ bool WiringRules::angledBranches(const Settings &settings, bool master_enabled)
 
 /**
 	@brief WiringRules::angledCorners
-	Two wires leaving one line each turn at the same point, where a dot is
-	drawn. Cutting each one's corner diagonally instead draws a "Y": the
-	line splits, and each wire visibly goes its own way, so the drawing
-	shows which wire runs where.
+	Cut the listed corners of a wire diagonally (WiringRules::anglesTurn()
+	says which corners): the wire then visibly leaves the line it shared
+	with another one, instead of a junction dot being drawn.
 	@param wire : the points of a wire, corners included
 	@param corners : the corners of \a wire to cut; points that are not
 	a corner of \a wire are ignored
@@ -247,4 +246,25 @@ QVector<QPointF> WiringRules::angledCorners(const QVector<QPointF> &wire,
 	}
 	result << wire.last();
 	return result;
+}
+
+/**
+	@brief WiringRules::anglesTurn
+	Where two wires part, which one turns off diagonally, the way a drawing
+	shows the wiring order (discussion #1158, review of #1275): the other
+	keeps its square corner.
+	@param free_leg : at the corner, the direction of this wire's leg that
+	leaves the shared line (horizontal or vertical)
+	@param other_turns_here : the other wire turns at the same point too;
+	false when it runs straight through (a T)
+	@return true for this wire to be angled: always when it joins a wire
+	that runs straight through, and otherwise only the one that leaves
+	towards the right (or downwards), so exactly one of the two is
+*/
+bool WiringRules::anglesTurn(const QPointF &free_leg, bool other_turns_here)
+{
+	if (!other_turns_here) {
+		return true;
+	}
+	return free_leg.x() > 0.01 || (qAbs(free_leg.x()) <= 0.01 && free_leg.y() > 0.01);
 }

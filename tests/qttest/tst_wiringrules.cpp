@@ -181,8 +181,14 @@ private slots:
 		using V = QVector<QPointF>;
 			// Down then right: the corner at (0, 20) becomes a diagonal
 		const V wire {QPointF(0, 0), QPointF(0, 20), QPointF(30, 20)};
-		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 20)}),
+		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 20)}, 5),
 				 V({QPointF(0, 0), QPointF(0, 15), QPointF(5, 20), QPointF(30, 20)}));
+			// The default cut is two grid steps, never more than half a side
+		const V long_wire {QPointF(0, 0), QPointF(0, 60), QPointF(80, 60)};
+		QCOMPARE(WiringRules::angledCorners(long_wire, {QPointF(0, 60)}),
+				 V({QPointF(0, 0), QPointF(0, 40), QPointF(20, 60), QPointF(80, 60)}));
+		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 20)}),
+				 V({QPointF(0, 0), QPointF(0, 10), QPointF(10, 20), QPointF(30, 20)}));
 
 			// A corner not listed, or not a corner of this wire, stays
 		QCOMPARE(WiringRules::angledCorners(wire, {}), wire);
@@ -197,6 +203,18 @@ private slots:
 			// Too short to cut: a wire of two points is returned as it is
 		const V straight {QPointF(0, 0), QPointF(40, 0)};
 		QCOMPARE(WiringRules::angledCorners(straight, {QPointF(40, 0)}), straight);
+	}
+
+	void oneWireTurnsOff()
+	{
+			// Joining a wire that runs straight on: always angled
+		QVERIFY(WiringRules::anglesTurn(QPointF(-10, 0), false));
+		QVERIFY(WiringRules::anglesTurn(QPointF(0, -10), false));
+			// Both turn: only the one leaving right, or down, is angled
+		QVERIFY(WiringRules::anglesTurn(QPointF(30, 0), true));
+		QVERIFY(!WiringRules::anglesTurn(QPointF(-30, 0), true));
+		QVERIFY(WiringRules::anglesTurn(QPointF(0, 30), true));
+		QVERIFY(!WiringRules::anglesTurn(QPointF(0, -30), true));
 	}
 
 	void angledOnlyWithTheMasterSwitch()

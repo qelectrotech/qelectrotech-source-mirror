@@ -2134,9 +2134,10 @@ bool Conductor::drawsAngledBranches() const
 /**
 	@brief Conductor::drawnPoints
 	@return the points the conductor is drawn through, in its own
-	coordinates: segmentsToPoints(), with each corner where it parts from
-	another wire cut diagonally when the project draws angled branches.
-	Display only, the conductor's segments are not changed.
+	coordinates: segmentsToPoints(), with each corner where it turns off
+	from another wire cut diagonally when the project draws angled
+	branches (angledBranchCorners()). Display only, the conductor's
+	segments are not changed.
 */
 QVector<QPointF> Conductor::drawnPoints() const
 {
@@ -2145,7 +2146,76 @@ QVector<QPointF> Conductor::drawnPoints() const
 	if (!drawsAngledBranches()) {
 		return wire;
 	}
-	return WiringRules::angledCorners(wire, junctions());
+	return WiringRules::angledCorners(wire, angledBranchCorners());
+}
+
+/**
+	@brief Conductor::angledBranchCorners
+	@return of this conductor's junctions (junctions()), the corners where
+	it is the wire that turns off diagonally: where it joins a wire that
+	runs straight on, or, where both wires turn, if it leaves towards the
+	right or downwards (WiringRules::anglesTurn()). The other one keeps its
+	square corner, so a branch reads as one wire turning off another.
+*/
+QList<QPointF> Conductor::angledBranchCorners() const
+{
+	QList<QPointF> corners;
+	const QList<QPointF> points = segmentsToPoints();
+	const QList<Conductor *> others = relatedConductors(this);
+
+		//Is @p point (this conductor's coordinates) on @p other, and is it
+		//one of its corners
+	auto onOther = [this](const Conductor *other, const QPointF &point, bool *corner) {
+		const QPointF p = other->mapFromScene(mapToScene(point));
+		const QList<QPointF> other_points = other->segmentsToPoints();
+		bool on = false;
+		for (int j = 0 ; j < other_points.size() - 1 && !on ; ++j) {
+			on = isContained(p, other_points.at(j), other_points.at(j + 1));
+		}
+		if (on && corner) {
+			for (int j = 1 ; j < other_points.size() - 1 ; ++j) {
+				if (QLineF(p, other_points.at(j)).length() < 0.01) {
+					*corner = true;
+				}
+			}
+		}
+		return on;
+	};
+
+	for (const QPointF &junction : junctions())
+	{
+		int i = 1;
+		while (i < points.size() - 1 && QLineF(points.at(i), junction).length() >= 0.01) {
+			++i;
+		}
+		if (i >= points.size() - 1) {
+			continue;
+		}
+		const QPointF previous = points.at(i - 1);
+		const QPointF next = points.at(i + 1);
+			//A point one unit along each leg tells which leg is shared
+		const QPointF towards_previous = junction + (previous - junction) / QLineF(junction, previous).length();
+		const QPointF towards_next = junction + (next - junction) / QLineF(junction, next).length();
+
+		bool other_turns = false;
+		bool previous_shared = false;
+		bool next_shared = false;
+		for (const Conductor *other : others) {
+			bool corner = false;
+			if (!onOther(other, junction, &corner)) {
+				continue;
+			}
+			other_turns = other_turns || corner;
+			previous_shared = previous_shared || onOther(other, towards_previous, nullptr);
+			next_shared = next_shared || onOther(other, towards_next, nullptr);
+		}
+		const QPointF free_leg = (previous_shared && !next_shared) ? next - junction
+															   : previous - junction;
+		if (WiringRules::anglesTurn(free_leg, other_turns)) {
+			corners << junction;
+		}
+	}
+	return corners;
 }
 
 /**
