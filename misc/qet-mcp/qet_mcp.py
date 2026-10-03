@@ -2535,6 +2535,45 @@ CHECKS = {
                "WHERE NOT EXISTS (SELECT 1 FROM element e WHERE e.diagram_uuid = d.uuid) "
                "ORDER BY p.pos",
     },
+    "crowded_terminals": {
+        "severity": "info",
+        "note": "Terminals with more than four wires: two double ferrules, one "
+                "either side of the screw, is already a lot for a real terminal "
+                "(discussion #1158). Cable, busbar and single-line symbols carry "
+                "more on purpose; element_type and label tell them apart.",
+        "sql": "SELECT d.pos AS folio, e.pos AS diagram_position, "
+               "COALESCE(ei.label,'') AS label, e.type AS element_type, "
+               "COALESCE(t.name,'') AS terminal, w.n AS wires FROM ("
+               "SELECT tu, eu, COUNT(*) AS n FROM ("
+               "SELECT terminal1_uuid AS tu, terminal1_element_uuid AS eu FROM conductor "
+               "UNION ALL SELECT terminal2_uuid, terminal2_element_uuid FROM conductor"
+               ") GROUP BY tu, eu HAVING n > 4) AS w "
+               "JOIN element e ON e.uuid = w.eu "
+               "LEFT JOIN diagram d ON d.uuid = e.diagram_uuid "
+               "LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
+               "LEFT JOIN terminal t ON t.uuid = w.tu AND t.element_uuid = w.eu "
+               "WHERE e.type NOT IN ('next_report', 'previous_report') "
+               "ORDER BY w.n DESC, folio, diagram_position",
+    },
+    "reports_with_several_wires": {
+        "severity": "info",
+        "note": "Folio report arrows with more than one wire. A report is a "
+                "virtual point: one wire, continued on the other folio, says "
+                "where the wire really runs (discussion #1158). A third of the "
+                "shipped examples' reports have several, so this is a style, "
+                "not an error.",
+        "sql": "SELECT d.pos AS folio, e.pos AS diagram_position, "
+               "COALESCE(ei.label,'') AS label, w.n AS wires FROM ("
+               "SELECT tu, eu, COUNT(*) AS n FROM ("
+               "SELECT terminal1_uuid AS tu, terminal1_element_uuid AS eu FROM conductor "
+               "UNION ALL SELECT terminal2_uuid, terminal2_element_uuid FROM conductor"
+               ") GROUP BY tu, eu HAVING n > 1) AS w "
+               "JOIN element e ON e.uuid = w.eu "
+               "LEFT JOIN diagram d ON d.uuid = e.diagram_uuid "
+               "LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
+               "WHERE e.type IN ('next_report', 'previous_report') "
+               "ORDER BY w.n DESC, folio, diagram_position",
+    },
     "masters_without_manufacturer_reference": {
         "severity": "info",
         "note": "Masters that will show a blank article number in the BOM.",
