@@ -23,7 +23,7 @@ class QWidget;
 
 namespace WiringRulesWarning
 {
-	QWidget *create(QWidget *parent = nullptr);
+	void show(QWidget *parent);
 }
 
 #endif // WIRINGRULESWARNING_H

@@ -84,13 +84,6 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="m_wiring_rules_warning_layout">
-         <property name="leftMargin">
-          <number>20</number>
-         </property>
-        </layout>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="m_wiring_max_wires_layout">
          <property name="leftMargin">
           <number>20</number>

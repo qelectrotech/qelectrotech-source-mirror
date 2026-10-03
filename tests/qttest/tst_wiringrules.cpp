@@ -206,6 +206,23 @@ private slots:
 		QCOMPARE(WiringRules::effective(own, application).max_wires, 6);
 	}
 
+	void warnsWhenARuleIsTurnedOn()
+	{
+		WiringRules::Settings off;
+		WiringRules::Settings limit;
+		limit.max_wires = 4;
+		WiringRules::Settings report;
+		report.one_wire_per_report = true;
+
+		QVERIFY(WiringRules::turnsRuleOn(off, limit));
+		QVERIFY(WiringRules::turnsRuleOn(off, report));
+		QVERIFY(WiringRules::turnsRuleOn(limit, [&]{ auto s = limit; s.one_wire_per_report = true; return s; }()));
+			// Changing a limit that was already on, or turning rules off: no warning
+		QVERIFY(!WiringRules::turnsRuleOn(limit, [&]{ auto s = limit; s.max_wires = 2; return s; }()));
+		QVERIFY(!WiringRules::turnsRuleOn(limit, off));
+		QVERIFY(!WiringRules::turnsRuleOn(off, off));
+	}
+
 	void xmlRoundTrip()
 	{
 		QDomDocument doc;
