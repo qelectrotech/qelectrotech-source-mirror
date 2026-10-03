@@ -369,6 +369,7 @@ private slots:
 		// symbol's value refuses nothing.
 	void symbolLimitRefusesWires()
 	{
+		SKIP_WITHOUT_SCRIPTING;
 		const QString script = QStringLiteral(
 			"var p = 'embed://import/probe/v2_fuse.elmt';\n"
 			"var hub = qet.addElement(0, p, 400, 400);\n"
