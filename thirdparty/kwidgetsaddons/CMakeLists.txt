@@ -16,7 +16,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-add_library(kwidgetsaddons STATIC
+qt_add_library(kwidgetsaddons STATIC
   src/kabstractcoloredit.cpp
   src/kcolorbutton.cpp
   src/kcolorcombo.cpp
