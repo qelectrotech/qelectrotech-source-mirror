@@ -64,11 +64,7 @@
 #include <QSettings>
 #include <QStyleFactory>
 #include <QStyleHints>
-#ifdef BUILD_WITHOUT_KF
-#	include "ui/nokde/kautosavefile.h"
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <KAutoSaveFile>
 #include "ui/backuprestoredialog.h"
 
 #include <algorithm>
@@ -175,7 +171,7 @@ QETApp::QETApp() :
 	if (m_splash_screen) {
 		m_splash_screen -> hide();
 	}
-    
+
 #ifdef QET_SPACEMOUSE_SUPPORT
 		//Always safe to construct: it silently does nothing when spacenavd
 		//isn't running or no device is attached, which is the common case
@@ -264,7 +260,7 @@ QString QETApp::loadedQtTranslationFile()
 */
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
-	
+
 	m_interface_language = desired_language;
 
 	// load Qt library translations
@@ -2564,7 +2560,7 @@ void QETApp::initFonts()
 
 			See the file "fonts/osifont.LICENSE" for license information. */
 		":/fonts/osifont.ttf",
-		":/fonts/osifont-italic.ttf",	
+		":/fonts/osifont-italic.ttf",
 	};
 
 	for (const QString &font : fonts) {

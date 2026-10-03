@@ -18,11 +18,7 @@
 
 #include "backuprestoredialog.h"
 
-#ifdef BUILD_WITHOUT_KF
-#	include "nokde/kautosavefile.h"
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <KAutoSaveFile>
 
 #include <QComboBox>
 #include <QDateTime>

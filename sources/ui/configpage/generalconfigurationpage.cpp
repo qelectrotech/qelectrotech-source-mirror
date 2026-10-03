@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -32,7 +32,7 @@
 #include "../../editor/terminalnamecheck.h"
 #include "../../ElementsCollection/qetlabelsfile.h"
 #include "../prefixconfigurationdialog.h"
-#include "../nokde/kcolorbutton.h"
+#include <KColorButton>
 #include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -49,9 +49,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui(new Ui::GeneralConfigurationPage)
 {
 	ui->setupUi(this);
-	
+
 	QSettings settings;
-	
+
 		//Appearance tab
 	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.5 et plus"), QLatin1String("Round"));
 	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi supérieur"), QLatin1String("Ceil"));
@@ -158,7 +158,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-	
+
 	QString fontInfos = settings.value("diagramitemfont", "Liberation Sans").toString() + " " +
 			settings.value("diagramitemsize", "9").toString() + " (" +
 			settings.value("diagramitemstyle", "Regular").toString() + ")";
@@ -191,7 +191,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 							font.styleName() + ")";
 		ui->m_indi_text_font_pb->setText(fontInfos);
 	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
-	
+
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
 	/*
@@ -239,7 +239,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		ui->m_custom_elmt_path_cb->blockSignals(false);
 	}
-	
+
 
 	path = settings.value("elements-collections/custom-tbt-path", "default").toString();
 	if (path != "default")
@@ -249,7 +249,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		ui->m_custom_tbt_path_cb->blockSignals(false);
 	}
-	
+
 	path = settings.value("elements-collections/macros-path", "default").toString();
 	if (path != "default")
 	{
@@ -270,7 +270,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 				.arg(MaterialList::defaultPath()));
 	}
 
-	fillLang();	
+	fillLang();
 }
 
 GeneralConfigurationPage::~GeneralConfigurationPage()
@@ -285,7 +285,7 @@ GeneralConfigurationPage::~GeneralConfigurationPage()
 void GeneralConfigurationPage::applyConf()
 {
 	QSettings settings;
-	
+
 		//GLOBAL
 	bool was_using_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
@@ -430,7 +430,7 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/custom-collection-path").toString()) {
 		QETApp::resetCollectionsPath();
 	}
-	
+
 	path = settings.value("elements-collections/company-tbt-path").toString();
 	if (ui->m_company_tbt_path_cb->currentIndex() == 1)
 	{
@@ -919,4 +919,3 @@ void GeneralConfigurationPage::on_m_use_system_color_cb_toggled(bool checked)
 {
 	ui->m_custom_app_color_kpb->setEnabled(!checked);
 }
-

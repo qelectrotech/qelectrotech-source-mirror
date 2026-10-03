@@ -347,14 +347,6 @@ target_include_directories(
     ${QET_DIR}/sources/materiallist
 )
 
-if(NOT BUILD_WITH_KF)
-    target_include_directories(
-        ${PROJECT_NAME}
-        PRIVATE
-        ${QET_DIR}/sources/ui/nokde
-    )
-endif()
-
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
 )
@@ -375,7 +367,7 @@ if (NOT MINGW)
     install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION share/qelectrotech/mcp)
     install(FILES misc/qet-mcp/README.md DESTINATION share/qelectrotech/mcp)
     install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
-    if(BUILD_KF_MINIMAL)
+    if(BUILD_KF)
         install(FILES licenses/KDE-Frameworks.LICENSE licenses/KDE-Frameworks.NOTICE DESTINATION share/doc/qelectrotech)
     endif()
     if(UNIX AND NOT APPLE)
