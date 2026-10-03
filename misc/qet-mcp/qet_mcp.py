@@ -1524,6 +1524,41 @@ OPS = {
     "set_table_position": ("setTablePosition",  [("folio", "folio"), ("table", "table"),
                                                  ("x", "num"), ("y", "num")]),
     "delete_table":     ("deleteTable",         [("folio", "folio"), ("table", "table")]),
+    # Lining symbols up. These run several calls each, in helpers the
+    # generated script defines (qetMcp*), not one scripting call.
+    "align_elements":   ("qetMcpAlign",         [("folio", "folio"), ("elements", "elmts"),
+                                                 ("edge", "str"), ("to", "elmt")]),
+    "distribute_elements": ("qetMcpDistribute", [("folio", "folio"), ("elements", "elmts"),
+                                                 ("axis", "str"), ("pitch", "num")]),
+    # Place a symbol so one of its terminals is exactly in line with
+    # another symbol's: the wire between the two is then straight. Returns
+    # the new element's uuid, as add_element does.
+    "place_element":    ("qetMcpPlace",         [("folio", "folio"), ("path", "str"),
+                                                 ("terminal", "anyterm"), ("next_to", "elmt"),
+                                                 ("next_to_terminal", "anyterm"),
+                                                 ("side", "str"), ("gap", "num"),
+                                                 ("angle", "num")]),
+    "align_terminal":   ("qetMcpAlignTerminal", [("folio", "folio"), ("element", "elmt"),
+                                                 ("terminal", "anyterm"), ("to", "elmt"),
+                                                 ("to_terminal", "anyterm")]),
+}
+
+# Arguments those ops may leave out.
+OP_DEFAULTS = {
+    "align_elements": {"to": ""},
+    "distribute_elements": {"pitch": 0},
+    "place_element": {"side": "", "gap": 40, "angle": 0},
+}
+ALIGN_EDGES = ["left", "center", "right", "top", "middle", "bottom"]
+DISTRIBUTE_AXES = ["horizontal", "vertical"]
+PLACE_SIDES = ["", "below", "above", "right", "left"]
+# What the helpers call, beyond what every edit needs.
+_HELPER_NEEDS = {
+    "qetMcpAlign": {"elementGeometry", "moveElement"},
+    "qetMcpDistribute": {"elementGeometry", "moveElement"},
+    "qetMcpPlace": {"elementGeometry", "addElement", "deleteElement", "moveElement",
+                    "rotateElement", "terminalPosition", "terminalIndex"},
+    "qetMcpAlignTerminal": {"moveElement", "terminalPosition", "terminalIndex"},
 }
 
 SHAPES = ["line", "rectangle", "ellipse", "polygon"]
@@ -1579,7 +1614,8 @@ CONDUCTOR_DEFAULT_PROPERTIES = ["onetextperfolio"] + CONDUCTOR_PROPERTIES
 # verbs. Probed in the script rather than assumed, because the failure mode
 # otherwise is a TypeError on line N of a generated file the caller never
 # sees, reported as "the edit failed".
-_REQUIRED_METHODS = sorted(({m for m, _ in OPS.values() if m} - _ROUTE_METHODS) |
+_REQUIRED_METHODS = sorted(({m for m, _ in OPS.values()
+                             if m and not m.startswith("qetMcp")} - _ROUTE_METHODS) |
                            {"save", "folioCount", "conductorCount", "elementCount"})
 
 _MARKER = "QETEDIT "
@@ -1661,6 +1697,97 @@ def _build_script(operations: list, output: str) -> str:
         "' (or two of its terminals carry it)'}));",
         "  return t;",
         "}",
+        # The layout ops' helpers. qetMcpOp is the index of the op running,
+        # for the notes they log.
+        "var qetMcpOp = -1;",
+        "function qetMcpNote(note) {",
+        f"  qet.log({_js(_MARKER)} + JSON.stringify("
+        "{kind: 'op_note', index: qetMcpOp, note: note}));",
+        "}",
+        "function qetMcpTerm(folio, element, t) {",
+        "  return typeof t === 'string' ? qet.terminalIndex(folio, element, t) : t;",
+        "}",
+        "function qetMcpAlign(folio, els, edge, to) {",
+        "  var ref = qet.elementGeometry(folio, to || els[0]);",
+        "  if (ref.left === undefined) { qetMcpNote('no element ' + (to || els[0])); return false; }",
+        "  var across = edge === 'left' || edge === 'center' || edge === 'right';",
+        "  function at(g) {",
+        "    if (edge === 'center') return (g.left + g.right) / 2;",
+        "    if (edge === 'middle') return (g.top + g.bottom) / 2;",
+        "    return g[edge];",
+        "  }",
+        "  var moved = 0;",
+        "  for (var i = 0; i < els.length; i++) {",
+        "    if (els[i] === to) continue;",
+        "    var g = qet.elementGeometry(folio, els[i]);",
+        "    if (g.left === undefined) { qetMcpNote('no element ' + els[i]); return false; }",
+        "    var d = at(ref) - at(g);",
+        "    if (Math.abs(d) < 1e-9) continue;",
+        "    if (!qet.moveElement(folio, els[i], across ? d : 0, across ? 0 : d)) return false;",
+        "    moved++;",
+        "  }",
+        "  return moved;",
+        "}",
+        "function qetMcpDistribute(folio, els, axis, pitch) {",
+        "  var k = axis === 'horizontal' ? 'x' : 'y', gs = [];",
+        "  for (var i = 0; i < els.length; i++) {",
+        "    var g = qet.elementGeometry(folio, els[i]);",
+        "    if (g.left === undefined) { qetMcpNote('no element ' + els[i]); return false; }",
+        "    gs.push({e: els[i], v: g[k]});",
+        "  }",
+        "  gs.sort(function (a, b) { return a.v - b.v; });",
+        "  var n = gs.length, first = gs[0].v;",
+        "  var step = pitch > 0 ? pitch : (gs[n - 1].v - first) / (n - 1);",
+        "  var moved = 0;",
+        "  for (var j = 1; j < n; j++) {",
+        "    var t = first + j * step;",
+        # an even split of a gap that is not a whole number of grid steps
+        # rounds each place to the grid, so symbols on it stay on it
+        "    if (pitch <= 0 && j < n - 1) t = first + Math.round((t - first) / 10) * 10;",
+        "    var d = t - gs[j].v;",
+        "    if (Math.abs(d) < 1e-9) continue;",
+        "    if (!qet.moveElement(folio, gs[j].e, k === 'x' ? d : 0, k === 'y' ? d : 0)) return false;",
+        "    moved++;",
+        "  }",
+        "  return moved;",
+        "}",
+        "var qetMcpStep = {below: [0, 1], above: [0, -1], right: [1, 0], left: [-1, 0]};",
+        "var qetMcpFacingSide = {s: 'below', n: 'above', e: 'right', w: 'left'};",
+        "var qetMcpBack = {below: 'n', above: 's', right: 'w', left: 'e'};",
+        "function qetMcpPlace(folio, path, term, near, nearTerm, side, gap, angle) {",
+        "  var g = qet.elementGeometry(folio, near);",
+        "  if (g.left === undefined) { qetMcpNote('no element ' + near); return ''; }",
+        "  var to = qet.terminalPosition(folio, near, qetMcpTerm(folio, near, nearTerm));",
+        "  if (to.x === undefined) { qetMcpNote('next_to_terminal ' + nearTerm + ' is not a terminal of ' + near); return ''; }",
+        "  var el = qet.addElement(folio, path, g.x, g.y);",
+        "  if (!el) return '';",
+        # turned first, so the terminal is measured where it ends up
+        "  if (angle && !qet.rotateElement(folio, el, angle)) { qet.deleteElement(folio, el); return ''; }",
+        "  var mine = qet.terminalPosition(folio, el, qetMcpTerm(folio, el, term));",
+        "  if (mine.x === undefined) {",
+        "    qet.deleteElement(folio, el);",
+        "    qetMcpNote('terminal ' + term + ' is not a terminal of ' + path);",
+        "    return '';",
+        "  }",
+        "  side = side || qetMcpFacingSide[to.facing];",
+        "  var s = qetMcpStep[side];",
+        "  if (!qet.moveElement(folio, el, to.x + s[0] * gap - mine.x, to.y + s[1] * gap - mine.y)) return '';",
+        "  if (mine.facing !== qetMcpBack[side])",
+        "    qetMcpNote('terminal ' + term + ' of the new symbol faces ' + mine.facing + ', not '",
+        "      + qetMcpBack[side] + ': the wire to it will bend. Rotate the symbol (rotate_element) '",
+        "      + 'or name another terminal');",
+        "  return el;",
+        "}",
+        "function qetMcpAlignTerminal(folio, el, term, to, toTerm) {",
+        "  var a = qet.terminalPosition(folio, to, qetMcpTerm(folio, to, toTerm));",
+        "  var b = qet.terminalPosition(folio, el, qetMcpTerm(folio, el, term));",
+        "  if (a.x === undefined || b.x === undefined) {",
+        "    qetMcpNote('terminal not found: ' + (a.x === undefined ? to + ' ' + toTerm : el + ' ' + term));",
+        "    return false;",
+        "  }",
+        "  var along = a.facing === 'n' || a.facing === 's';",
+        "  return qet.moveElement(folio, el, along ? a.x - b.x : 0, along ? 0 : a.y - b.y);",
+        "}",
         "if (missing.length === 0) {",
     ]
 
@@ -1729,6 +1856,16 @@ def _build_script(operations: list, output: str) -> str:
                 return (f"qetMcpTerminal({op_index}, {_js(key)}, {folio_js}, {owner_js}, "
                         f"{_js(value)})")
             if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"operation {op_index}: {key!r} must be a terminal index "
+                                 f"or its uuid, got {value!r}")
+            return _js(value)
+        if kind == "anyterm":
+            # A terminal of an element the helper resolves itself (for
+            # place_element, one that does not exist yet): its index, or its
+            # uuid, which the helper turns into the index.
+            if isinstance(value, str) and _UUID_RE.fullmatch(value):
+                return _js(value)
+            if not isinstance(value, int) or isinstance(value, bool) or value < 0:
                 raise ValueError(f"operation {op_index}: {key!r} must be a terminal index "
                                  f"or its uuid, got {value!r}")
             return _js(value)
@@ -1869,6 +2006,36 @@ def _build_script(operations: list, output: str) -> str:
         # The conductor ops take "conductor": "{uuid}" in place of element +
         # terminal: a uuid names one conductor for good, where a terminal
         # can carry several.
+        if name in OP_DEFAULTS:
+            op = {**OP_DEFAULTS[name], **op}
+        if name == "align_elements":
+            if op.get("edge") not in ALIGN_EDGES:
+                raise ValueError(f"operation {i}: unknown edge {op.get('edge')!r}; "
+                                 f"expected one of {', '.join(ALIGN_EDGES)}")
+            if not isinstance(op.get("elements"), list) or len(op["elements"]) < 2:
+                raise ValueError(f"operation {i}: align_elements needs at least 2 elements")
+        if name == "distribute_elements":
+            if op.get("axis") not in DISTRIBUTE_AXES:
+                raise ValueError(f"operation {i}: unknown axis {op.get('axis')!r}; "
+                                 f"expected one of {', '.join(DISTRIBUTE_AXES)}")
+            pitch = op.get("pitch")
+            if isinstance(pitch, (int, float)) and not isinstance(pitch, bool) and pitch < 0:
+                raise ValueError(f"operation {i}: pitch must be >= 0 (0: spread evenly)")
+            least = 2 if isinstance(pitch, (int, float)) and pitch > 0 else 3
+            if not isinstance(op.get("elements"), list) or len(op["elements"]) < least:
+                raise ValueError(f"operation {i}: distribute_elements needs at least "
+                                 f"{least} elements" + ("" if least == 2 else
+                                 " (or 2 with a \"pitch\")"))
+        if name == "place_element":
+            if op.get("side") not in PLACE_SIDES:
+                raise ValueError(f"operation {i}: unknown side {op.get('side')!r}; expected "
+                                 f"one of {', '.join(s for s in PLACE_SIDES if s)}, or none "
+                                 "for the way next_to_terminal faces")
+            gap = op.get("gap")
+            if isinstance(gap, (int, float)) and not isinstance(gap, bool) and gap <= 0:
+                raise ValueError(f"operation {i}: gap must be > 0")
+        if method and method.startswith("qetMcp"):
+            uuid_methods.update(_HELPER_NEEDS[method])
         conductor_js = None
         if name in CONDUCTOR_UUID_OPS and "conductor" in op:
             if "element" in op or "terminal" in op:
@@ -1905,7 +2072,10 @@ def _build_script(operations: list, output: str) -> str:
                 raise ValueError(f"operation {i}: \"id\" {ident!r} is already used")
 
         call = "qet.addFolio()" if method is None else f"qet.{method}({', '.join(args)})"
+        if method and method.startswith("qetMcp"):
+            call = f"{method}({', '.join(args)})"
         lines.append("  if (!stop) {")
+        lines.append(f"  qetMcpOp = {i};")
         if conductor_js is not None:
             lines.append(f"  var e{i} = qetMcpConductorEnd({i}, {args[0]}, {conductor_js});")
             call = f"(e{i} ? {call} : false)"
@@ -4213,6 +4383,22 @@ TOOLS = [
                     "description":
                         "Operations applied in order. Each is an object with \"op\" "
                         "and that op's arguments. Ops: " + ", ".join(sorted(OPS)) + ". "
+                        "Lining symbols up, so wires come out straight: a wire is "
+                        "straight only when its two terminals are exactly in line. "
+                        "place_element (folio, path, terminal, next_to, "
+                        "next_to_terminal, optional side below|above|right|left -- "
+                        "default the way next_to_terminal faces -- gap, 40 px "
+                        "terminal to terminal, and angle, a rotation applied first, as "
+                        "for a ladder rung) adds a symbol with its terminal in line "
+                        "with next_to's, and notes when that terminal faces the wrong "
+                        "way; align_terminal (folio, element, terminal, to, "
+                        "to_terminal) moves a placed symbol across so the two are in "
+                        "line; align_elements (folio, elements, edge left|center|right|"
+                        "top|middle|bottom, optional to) lines up their boxes, as Edit > "
+                        "Align does; distribute_elements (folio, elements, axis "
+                        "horizontal|vertical, optional pitch) spaces their origins "
+                        "evenly, or pitch apart. place_element and align_terminal need "
+                        "a build with qet.terminalPosition(). "
                         "Give an op an \"id\" to name what it produced, then refer to "
                         "it later as \"$id\" -- that is how an element placed by "
                         "add_element gets wired by add_conductor, and how a folio made "

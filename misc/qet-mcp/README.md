@@ -410,6 +410,29 @@ drawing. The check is read-only. On a QElectroTech build without
 be read; the answer names those in `unread_wires` and leaves them out of the
 score.
 
+**Draw with straight wires from the start**
+
+A wire is straight only when its two terminals are exactly in line, and a
+symbol is placed by its origin, not by its terminals. `place_element` does
+the arithmetic: it adds a symbol with one of its terminals in line with
+another symbol's, `gap` pixels away (40 by default), on the side that
+terminal faces.
+
+```json
+{"op": "add_element", "folio": 0, "path": "common://…/borne_2.elmt", "x": 100, "y": 100, "id": "x1"},
+{"op": "place_element", "folio": 0, "path": "common://…/contact.elmt",
+ "terminal": 0, "next_to": "$x1", "next_to_terminal": 2, "id": "k1"},
+{"op": "add_conductor", "folio": 0, "from": "$x1", "from_terminal": 2, "to": "$k1", "to_terminal": 0}
+```
+
+For a column of current paths (IEC) the next symbol goes below; for a
+ladder rung (NFPA) to the right, with the symbols rotated so their
+terminals face along the rung. If the named terminal faces the wrong way,
+the op says so in its `note`. `align_terminal` lines up a symbol that is
+already placed; `align_elements` and `distribute_elements` line up and
+space whole rows or columns. `place_element` and `align_terminal` need a
+QElectroTech with `qet.terminalPosition()`.
+
 **Draw something, and check it landed**
 
 ```json
