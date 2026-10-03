@@ -42,7 +42,6 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QDomDocument>
-#include <QCryptographicHash>
 #include <QDate>
 #include <QDateTime>
 #include <QFile>
@@ -63,7 +62,6 @@
 #include <QTextStream>
 #include <QTimeZone>
 #include <QTransform>
-#include <QUuid>
 
 namespace {
 
@@ -189,18 +187,16 @@ int exportPdf(QETProject &project, const QString &output,
 
 	// SOURCE_DATE_EPOCH (reproducible-builds.org) asks for the same file
 	// from the same input: the time it names instead of now, and a document
-	// id from the project file instead of a random one. Qt has no setter for
-	// the dates, so they are rewritten once the file is written. Before
-	// Qt 6.8 there is no document id to set: it is only written for PDF/A.
+	// id from what the PDF shows instead of a random one. Qt has no setter
+	// for the dates, and the content is not known yet, so both are
+	// rewritten once the file is written; Qt writes a fixed id until then.
+	// The id does not come from the project file, whose uuids are new each
+	// time a project is generated again from the same data. Before Qt 6.8
+	// there is no document id to set: it is only written for PDF/A.
 	const QDateTime sourceDate = sourceDateEpoch();
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
-	if (sourceDate.isValid()) {
-		QCryptographicHash hash(QCryptographicHash::Sha256);
-		QFile file(project.filePath());
-		if (file.open(QIODevice::ReadOnly))
-			hash.addData(&file);
-		writer.setDocumentId(QUuid::createUuidV5(project.uuid(), hash.result()));
-	}
+	if (sourceDate.isValid())
+		writer.setDocumentId(PdfLinks::placeholderDocumentId());
 #endif
 
 	QPainter painter;
@@ -277,8 +273,10 @@ int exportPdf(QETProject &project, const QString &output,
 	// the cross-references jump inside the document in any PDF viewer.
 	PdfLinks::convertUriToGoTo(output);
 	PdfLinks::removeUnusedPdfxNamespace(output);
-	if (sourceDate.isValid())
+	if (sourceDate.isValid()) {
 		PdfLinks::setDocumentDate(output, sourceDate);
+		PdfLinks::setDocumentIdFromContent(output);
+	}
 
 	out << "Exported " << diagrams.size() << " page(s) -> " << output << "\n";
 	return 0;
