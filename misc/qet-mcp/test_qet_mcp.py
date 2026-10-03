@@ -1353,7 +1353,7 @@ class LayoutOpsValidation(unittest.TestCase):
         s = m._build_script([{**base, "terminal": "{11111111-2222-3333-4444-555555555555}"}],
                             "/tmp/x.qet")
         self.assertIn('qetMcpPlace(0, "common://x.elmt", "{11111111-2222-3333-4444-555555555555}", '
-                      f'"{self.A}", 1, "", 40)', s)
+                      f'"{self.A}", 1, "", 40, 0)', s)
 
     def test_helpers_are_called_bare_and_needs_follow_use(self):
         place = m._build_script([{"op": "align_terminal", "folio": 0, "element": self.A,
@@ -5397,6 +5397,20 @@ class LayoutOpsIntegration(unittest.TestCase):
         placed = r["operations"][1]["result"]
         self.assertEqual(self.xy(r["output"])[placed], (100.0, 100 + 10 + 40 + 20))
         self.assertNotIn("note", r["operations"][1])
+
+    def test_place_element_turned_for_a_rung(self):
+        # NFPA: turned 270, the block's terminal 2 (its bottom one) faces
+        # east; the contact placed to its right, turned the same way, then
+        # meets it with terminal 0 (its top one), facing west
+        r = self.placed([self.add(0, 100, 100, TERMINAL),
+                         {"op": "rotate_element", "folio": 0, "element": "$e0", "angle": 270},
+                         {"op": "place_element", "folio": 0, "path": SLAVE, "terminal": 0,
+                          "next_to": "$e0", "next_to_terminal": 2, "angle": 270, "id": "k"}])
+        self.need_positions(r)
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertNotIn("note", r["operations"][2], r["operations"][2])
+        x, y = self.xy(r["output"])[r["operations"][2]["result"]]
+        self.assertEqual(y, 100.0)
 
     def test_place_element_warns_about_a_terminal_facing_away(self):
         r = self.placed([self.add(0, 100, 100, TERMINAL),

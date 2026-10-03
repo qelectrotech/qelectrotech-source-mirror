@@ -1535,7 +1535,8 @@ OPS = {
     "place_element":    ("qetMcpPlace",         [("folio", "folio"), ("path", "str"),
                                                  ("terminal", "anyterm"), ("next_to", "elmt"),
                                                  ("next_to_terminal", "anyterm"),
-                                                 ("side", "str"), ("gap", "num")]),
+                                                 ("side", "str"), ("gap", "num"),
+                                                 ("angle", "num")]),
     "align_terminal":   ("qetMcpAlignTerminal", [("folio", "folio"), ("element", "elmt"),
                                                  ("terminal", "anyterm"), ("to", "elmt"),
                                                  ("to_terminal", "anyterm")]),
@@ -1545,7 +1546,7 @@ OPS = {
 OP_DEFAULTS = {
     "align_elements": {"to": ""},
     "distribute_elements": {"pitch": 0},
-    "place_element": {"side": "", "gap": 40},
+    "place_element": {"side": "", "gap": 40, "angle": 0},
 }
 ALIGN_EDGES = ["left", "center", "right", "top", "middle", "bottom"]
 DISTRIBUTE_AXES = ["horizontal", "vertical"]
@@ -1555,7 +1556,7 @@ _HELPER_NEEDS = {
     "qetMcpAlign": {"elementGeometry", "moveElement"},
     "qetMcpDistribute": {"elementGeometry", "moveElement"},
     "qetMcpPlace": {"elementGeometry", "addElement", "deleteElement", "moveElement",
-                    "terminalPosition", "terminalIndex"},
+                    "rotateElement", "terminalPosition", "terminalIndex"},
     "qetMcpAlignTerminal": {"moveElement", "terminalPosition", "terminalIndex"},
 }
 
@@ -1752,13 +1753,15 @@ def _build_script(operations: list, output: str) -> str:
         "var qetMcpStep = {below: [0, 1], above: [0, -1], right: [1, 0], left: [-1, 0]};",
         "var qetMcpFacingSide = {s: 'below', n: 'above', e: 'right', w: 'left'};",
         "var qetMcpBack = {below: 'n', above: 's', right: 'w', left: 'e'};",
-        "function qetMcpPlace(folio, path, term, near, nearTerm, side, gap) {",
+        "function qetMcpPlace(folio, path, term, near, nearTerm, side, gap, angle) {",
         "  var g = qet.elementGeometry(folio, near);",
         "  if (g.left === undefined) { qetMcpNote('no element ' + near); return ''; }",
         "  var to = qet.terminalPosition(folio, near, qetMcpTerm(folio, near, nearTerm));",
         "  if (to.x === undefined) { qetMcpNote('next_to_terminal ' + nearTerm + ' is not a terminal of ' + near); return ''; }",
         "  var el = qet.addElement(folio, path, g.x, g.y);",
         "  if (!el) return '';",
+        # turned first, so the terminal is measured where it ends up
+        "  if (angle && !qet.rotateElement(folio, el, angle)) { qet.deleteElement(folio, el); return ''; }",
         "  var mine = qet.terminalPosition(folio, el, qetMcpTerm(folio, el, term));",
         "  if (mine.x === undefined) {",
         "    qet.deleteElement(folio, el);",
@@ -3774,8 +3777,9 @@ TOOLS = [
                         "straight only when its two terminals are exactly in line. "
                         "place_element (folio, path, terminal, next_to, "
                         "next_to_terminal, optional side below|above|right|left -- "
-                        "default the way next_to_terminal faces -- and gap, 40 px "
-                        "terminal to terminal) adds a symbol with its terminal in line "
+                        "default the way next_to_terminal faces -- gap, 40 px "
+                        "terminal to terminal, and angle, a rotation applied first, as "
+                        "for a ladder rung) adds a symbol with its terminal in line "
                         "with next_to's, and notes when that terminal faces the wrong "
                         "way; align_terminal (folio, element, terminal, to, "
                         "to_terminal) moves a placed symbol across so the two are in "
