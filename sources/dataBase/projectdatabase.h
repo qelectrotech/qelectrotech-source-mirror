@@ -136,6 +136,7 @@ class projectDataBase : public QObject
 		void createSummaryView();
 		void createWiringListView();
 		void createDrawingItemView();
+		void createTerminalWiresView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();

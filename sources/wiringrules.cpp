@@ -124,3 +124,15 @@ bool WiringRules::hasRoom(int limit, int wires)
 {
 	return limit <= 0 || wires < limit;
 }
+
+/**
+	@brief WiringRules::isReportType
+	@param element_type : an element type as the project database stores it
+	(ElementData::typeToString())
+	@return true for a folio report, next or previous
+*/
+bool WiringRules::isReportType(const QString &element_type)
+{
+	return element_type == QLatin1String("next_report")
+			|| element_type == QLatin1String("previous_report");
+}

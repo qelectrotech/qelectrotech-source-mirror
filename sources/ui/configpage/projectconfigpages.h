@@ -116,6 +116,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 
 	private slots:
 	void resetUsageTracker();
+	void listTerminalsOverLimit();
 
 	// attributes
 	protected:
@@ -135,6 +136,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QSpinBox *max_wires_sb_;
 	QCheckBox *one_wire_per_report_cb_;
 	QLabel *wiring_rules_off_label_;
+	QPushButton *wiring_rules_list_pb_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {

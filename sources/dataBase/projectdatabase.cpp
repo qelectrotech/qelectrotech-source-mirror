@@ -1685,6 +1685,7 @@ bool projectDataBase::createDataBase()
 	createSummaryView();
 	createWiringListView();
 	createDrawingItemView();
+	createTerminalWiresView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -1904,6 +1905,36 @@ void projectDataBase::createDrawingItemView()
 				"UNION ALL SELECT uuid, 'image', diagram_uuid, pos, x, y, width, height, "
 				"'' FROM image"
 				") AS i LEFT JOIN diagram AS d ON d.uuid = i.diagram_uuid");
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::createTerminalWiresView
+	One row per terminal that has at least one wire: how many wires it has,
+	where it is (folio position starting at 1, cell of its element) and what
+	its element is (label, type: "next_report", "previous_report", ...).
+	Read by the wires-per-terminal check (discussion #1158), which compares
+	the count against the project's limit.
+*/
+void projectDataBase::createTerminalWiresView()
+{
+	QSqlQuery query(m_data_base);
+	const QString create_view(
+				"CREATE VIEW terminal_wires_view AS "
+				"SELECT w.element_uuid, w.terminal_uuid, t.name AS terminal_name, "
+				"t.terminal_index, ei.label AS element_label, e.type AS element_type, "
+				"d.pos AS folio, e.pos, w.wires FROM ("
+				"SELECT terminal_uuid, element_uuid, COUNT(*) AS wires FROM ("
+				"SELECT terminal1_uuid AS terminal_uuid, terminal1_element_uuid AS element_uuid FROM conductor "
+				"UNION ALL SELECT terminal2_uuid, terminal2_element_uuid FROM conductor"
+				") GROUP BY terminal_uuid, element_uuid"
+				") AS w "
+				"LEFT JOIN terminal AS t ON t.uuid = w.terminal_uuid AND t.element_uuid = w.element_uuid "
+				"LEFT JOIN element AS e ON e.uuid = w.element_uuid "
+				"LEFT JOIN element_info AS ei ON ei.element_uuid = w.element_uuid "
+				"LEFT JOIN diagram AS d ON d.uuid = e.diagram_uuid");
 	if (!query.exec(create_view)) {
 		qDebug() << query.lastError();
 	}

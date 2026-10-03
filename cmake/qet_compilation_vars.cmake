@@ -797,6 +797,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.h
   ${QET_DIR}/sources/ui/jumptoelementdialog.cpp
   ${QET_DIR}/sources/ui/jumptoelementdialog.h
+  ${QET_DIR}/sources/ui/wiringruleslistdialog.cpp
+  ${QET_DIR}/sources/ui/wiringruleslistdialog.h
   ${QET_DIR}/sources/ui/inditextpropertieswidget.cpp
   ${QET_DIR}/sources/ui/inditextpropertieswidget.h
   ${QET_DIR}/sources/ui/linksingleelementwidget.cpp

@@ -20,6 +20,7 @@
 #define WIRINGRULES_H
 
 class QDomElement;
+class QString;
 
 /**
 	@brief The WiringRules namespace
@@ -63,6 +64,7 @@ namespace WiringRules
 
 	int limit(const Settings &settings, bool master_enabled, bool is_report);
 	bool hasRoom(int limit, int wires);
+	bool isReportType(const QString &element_type);
 }
 
 #endif // WIRINGRULES_H

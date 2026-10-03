@@ -27,6 +27,7 @@
 #include "../qeticons.h"
 #include "../qetproject.h"
 #include "../wiringrules.h"
+#include "../wiringruleslistdialog.h"
 #include "../borderpropertieswidget.h"
 #include "../conductorpropertieswidget.h"
 #include "../diagramcontextwidget.h"
@@ -253,6 +254,11 @@ void ProjectMainConfigPage::initWidgets()
 											"(Configurer QElectroTech > Général).",
 											"informative label"));
 	wiring_rules_off_label_ -> setWordWrap(true);
+	wiring_rules_list_pb_ = new QPushButton(tr("Lister les bornes au-delà de la limite…", "button label"));
+	wiring_rules_list_pb_ -> setToolTip(tr("Les conducteurs déjà dessinés ne sont jamais refusés : "
+										   "cette liste montre les bornes qui en ont plus que la limite.",
+										   "tooltip"));
+	connect(wiring_rules_list_pb_, &QPushButton::clicked, this, &ProjectMainConfigPage::listTerminalsOverLimit);
 }
 
 /**
@@ -294,6 +300,10 @@ void ProjectMainConfigPage::initLayout()
 	max_wires_layout -> addStretch();
 	wiring_rules_layout -> addLayout(max_wires_layout);
 	wiring_rules_layout -> addWidget(one_wire_per_report_cb_);
+	QHBoxLayout *wiring_rules_list_layout = new QHBoxLayout();
+	wiring_rules_list_layout -> addStretch();
+	wiring_rules_list_layout -> addWidget(wiring_rules_list_pb_);
+	wiring_rules_layout -> addLayout(wiring_rules_list_layout);
 	wiring_rules_layout -> addWidget(wiring_rules_off_label_);
 	main_layout0 -> addWidget(wiring_rules_gb_);
 
@@ -330,6 +340,7 @@ void ProjectMainConfigPage::readValuesFromProject()
 	max_wires_label_ -> setEnabled(master);
 	max_wires_sb_ -> setEnabled(master);
 	one_wire_per_report_cb_ -> setEnabled(master);
+	wiring_rules_list_pb_ -> setEnabled(master);
 }
 
 /**
@@ -344,6 +355,20 @@ void ProjectMainConfigPage::resetUsageTracker()
 	m_project -> projectPropertiesHandler().usageTracker().resetSecondsSpent();
 	m_project -> setModified(true);
 	usage_value_ -> setText(tr("%1 h %2 min", "hours and minutes of time spent on a project").arg(0).arg(0));
+}
+
+/**
+	@brief ProjectMainConfigPage::listTerminalsOverLimit
+	Show the terminals that already have more wires than the limit shown on
+	this page, applied or not yet (discussion #1158).
+*/
+void ProjectMainConfigPage::listTerminalsOverLimit()
+{
+	WiringRules::Settings rules = m_project -> wiringRules();
+	rules.max_wires = max_wires_sb_ -> value();
+	rules.one_wire_per_report = one_wire_per_report_cb_ -> isChecked();
+	WiringRulesListDialog dialog(m_project, rules, this);
+	dialog.exec();
 }
 
 /**

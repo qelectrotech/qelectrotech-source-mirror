@@ -4,6 +4,8 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QTemporaryDir>
@@ -160,6 +162,15 @@ private slots:
 		QVERIFY(!WiringRules::hasRoom(1, 1));
 	}
 
+	void reportTypes()
+	{
+		QVERIFY(WiringRules::isReportType(QStringLiteral("next_report")));
+		QVERIFY(WiringRules::isReportType(QStringLiteral("previous_report")));
+		QVERIFY(!WiringRules::isReportType(QStringLiteral("simple")));
+		QVERIFY(!WiringRules::isReportType(QStringLiteral("terminal")));
+		QVERIFY(!WiringRules::isReportType(QString()));
+	}
+
 	void xmlRoundTrip()
 	{
 		QDomDocument doc;
@@ -209,6 +220,50 @@ private slots:
 
 			// The master switch off: the project's rule does nothing
 		QCOMPARE(addWireToWiredTerminal(limited, true), QStringLiteral("true"));
+	}
+
+		// terminal_wires_view, read by "List terminals over the limit", gives
+		// each wired terminal the number of wires the folio really has on it.
+	void terminalWiresViewCountsWires()
+	{
+		const QString script_path = m_dir.filePath(QStringLiteral("view%1.js").arg(m_run));
+		QFile script(script_path);
+		QVERIFY(script.open(QIODevice::WriteOnly));
+		script.write(
+			"var p = 'embed://import/probe/v2_fuse.elmt';\n"
+			"var hub = qet.addElement(0, p, 400, 400);\n"
+			"for (var i = 1; i <= 3; ++i)\n"
+			"  qet.addConductor(0, hub, 0, qet.addElement(0, p, 400 + 70 * i, 400 + 90 * i), 0);\n"
+			"var count = {};\n"
+			"for (var f = 0; f < qet.folioCount(); ++f)\n"
+			"  qet.conductorUuids(f).forEach(function (u) {\n"
+			"    qet.conductorEnds(f, u).forEach(function (e) { count[e] = (count[e] || 0) + 1; }); });\n"
+			"var rows = qet.query('SELECT element_uuid, terminal_index, wires FROM terminal_wires_view');\n"
+			"var wrong = 0, hub_wires = 0;\n"
+			"rows.forEach(function (r) {\n"
+			"  var n = count[r.element_uuid + ' terminal ' + r.terminal_index] || 0;\n"
+			"  if (n != r.wires) ++wrong;\n"
+			"  if (r.element_uuid == hub && r.terminal_index == 0) hub_wires = r.wires; });\n"
+			"qet.log('PROBE ' + JSON.stringify({rows: rows.length, ends: Object.keys(count).length,\n"
+			"  wrong: wrong, hub: hub_wires, error: qet.queryError()}));\n");
+		script.close();
+
+		QProcess proc;
+		proc.setProcessEnvironment(sandbox());
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), script_path,
+					QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet")});
+		QVERIFY(proc.waitForFinished(60000));
+		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
+											  + proc.readAllStandardError());
+		const int i = out.indexOf(QStringLiteral("PROBE "));
+		QVERIFY2(i >= 0, qPrintable(out.right(2000)));
+		const QString line = out.mid(i + 6).section(QLatin1Char('\n'), 0, 0);
+		const QJsonObject r = QJsonDocument::fromJson(line.toUtf8()).object();
+		QCOMPARE(r.value(QStringLiteral("error")).toString(), QString());
+		QCOMPARE(r.value(QStringLiteral("wrong")).toInt(), 0);
+		QCOMPARE(r.value(QStringLiteral("rows")).toInt(), r.value(QStringLiteral("ends")).toInt());
+		QCOMPARE(r.value(QStringLiteral("hub")).toInt(), 3);
 	}
 };
 
