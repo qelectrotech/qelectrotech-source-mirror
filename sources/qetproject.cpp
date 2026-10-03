@@ -2338,7 +2338,10 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 					//Saved before schemes had an id: derive one, the
 					//same on every load of the file.
 				m_legacy_element_autonums = true;
-				id = derivedItemUuid(QStringLiteral("element_autonum"), title);
+					//Of this project: another project may have a numbering of the
+					//same name, which is not the same numbering
+				id = derivedItemUuid(QStringLiteral("element_autonum"),
+									 m_uuid.toString() + QLatin1Char('\n') + title);
 			}
 			m_element_autonum.insert(title, nc);
 			m_element_autonum_id.insert(title, id);

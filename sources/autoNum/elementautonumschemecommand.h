@@ -166,6 +166,7 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 				QUndoCommand *parent = nullptr);
 
 		static QString schemeForFormula(const QETProject *project, const QString &formula);
+		static QString followedScheme(const QETProject *project, const DiagramContext &info);
 		static void writeCopiedSchemes(QDomDocument &document,
 									   QDomElement &root,
 									   const QETProject *project,

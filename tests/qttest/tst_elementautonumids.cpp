@@ -267,6 +267,39 @@ private slots:
 		QVERIFY2(read(first) == read(second), "the second save changed the file");
 	}
 
+	// The id given to a numbering of a file written before the ids is the
+	// file's own: two projects which both have a numbering of the same name
+	// do not get the same id, or a paste from one into the other would
+	// take the other's numbering for the same one.
+	void derivedIdsBelongToTheirProject()
+	{
+		QFile in(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY(in.open(QIODevice::ReadOnly));
+		QDomDocument doc;
+		QVERIFY(doc.setContent(&in));
+		doc.documentElement().setAttribute(QStringLiteral("title"), QStringLiteral("Another project"));
+		const QString other = m_dir.filePath(QStringLiteral("another-project.qet"));
+		QFile out(other);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(doc.toByteArray());
+		out.close();
+
+		const QString first = resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		const QString second = resave(other);
+		QVERIFY2(!first.isEmpty() && !second.isEmpty(), "--resave failed");
+		const Saved a = parse(read(first));
+		const Saved b = parse(read(second));
+		QVERIFY(a.scheme_id.contains(QStringLiteral("Equipment")));
+		QVERIFY(b.scheme_id.contains(QStringLiteral("Equipment")));
+		QVERIFY(!a.scheme_id.value(QStringLiteral("Equipment")).isNull());
+		QVERIFY2(a.scheme_id.value(QStringLiteral("Equipment")) != b.scheme_id.value(QStringLiteral("Equipment")),
+				 "two projects gave the same id to their numbering of the same name");
+		// each keeps its own ids when saved again
+		const QString again = resave(second);
+		QVERIFY(!again.isEmpty());
+		QCOMPARE(parse(read(again)).scheme_id, b.scheme_id);
+	}
+
 	// Rename, refused rename and removal, an edit that keeps the numbers,
 	// an edit that renumbers, and undo/redo: through the scripting API,
 	// which goes through the same ElementAutoNumSchemeCommand as the UI.

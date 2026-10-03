@@ -862,6 +862,31 @@ QString ElementAutoNumSchemeCommand::schemeForFormula(const QETProject *project,
 }
 
 /**
+	@brief ElementAutoNumSchemeCommand::followedScheme
+	@return the title of the scheme of @p project which an element with the
+	information @p info follows, empty if none.
+
+	The id names it, but only counts when the scheme has the formula the
+	element has: an id which comes from another project (a copy of the
+	project edited since, two projects which both have a numbering of the
+	same name...) may name a scheme here which is not the same numbering.
+*/
+QString ElementAutoNumSchemeCommand::followedScheme(const QETProject *project,
+													const DiagramContext &info)
+{
+	if (!project) {
+		return QString();
+	}
+	const QString title = project->elementAutoNumTitle(
+				QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString()));
+	if (title.isEmpty()
+			|| project->elementAutoNumFormula(title) != info.value(QETInformation::ELMT_FORMULA).toString()) {
+		return QString();
+	}
+	return title;
+}
+
+/**
 	@brief ElementAutoNumSchemeCommand::writeCopiedSchemes
 	Add to the copy @p root the definition of every element numbering scheme
 	of @p project which the @p copied elements follow, so that a paste into
@@ -944,9 +969,13 @@ QList<ElementAutoNumSchemeCommand::Scheme> ElementAutoNumSchemeCommand::missingF
 	}
 	for (const Scheme &scheme : copied)
 	{
-		if (!followed.contains(scheme.id)
-				|| !project->elementAutoNumTitle(scheme.id).isEmpty()
-				|| !schemeForFormula(project, autonum::numerotationContextToFormula(scheme.context)).isEmpty()) {
+		const QString formula = autonum::numerotationContextToFormula(scheme.context);
+		const QString by_id = project->elementAutoNumTitle(scheme.id);
+			//Present: under its id with the same formula, or under another id
+			//(another name, other project) with the same formula
+		const bool present = (!by_id.isEmpty() && project->elementAutoNumFormula(by_id) == formula)
+				|| !schemeForFormula(project, formula).isEmpty();
+		if (!followed.contains(scheme.id) || present) {
 			continue;
 		}
 		missing << scheme;
@@ -984,8 +1013,7 @@ QMap<QString, QVector<Element *>> ElementAutoNumSchemeCommand::pastedSchemes(
 		if (formula.isEmpty()) {
 			continue;
 		}
-		QString title = project->elementAutoNumTitle(
-					QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString()));
+		QString title = followedScheme(project, info);
 		if (title.isEmpty()) {
 			title = schemeForFormula(project, formula);
 		}
@@ -1000,8 +1028,9 @@ QMap<QString, QVector<Element *>> ElementAutoNumSchemeCommand::pastedSchemes(
 	@brief ElementAutoNumSchemeCommand::linkPasted
 	Make the formula_id of pasted @p elements name a scheme of @p project,
 	as QETProject does for the elements of a file it loads: an id which
-	names one is kept; otherwise the scheme with the element's formula (see
-	schemeForFormula()), else none. Labels are not touched.
+	names one with the element's formula is kept (see followedScheme());
+	otherwise the scheme with the element's formula (see schemeForFormula()),
+	else none. Labels are not touched.
 */
 void ElementAutoNumSchemeCommand::linkPasted(const QETProject *project,
 											 const QList<Element *> &elements)
@@ -1020,8 +1049,7 @@ void ElementAutoNumSchemeCommand::linkPasted(const QETProject *project,
 			}
 			continue;
 		}
-		const QUuid id(info.value(QETInformation::ELMT_FORMULA_ID).toString());
-		if (!project->elementAutoNumTitle(id).isEmpty()) {
+		if (!followedScheme(project, info).isEmpty()) {
 			continue;
 		}
 		const QString title = schemeForFormula(project, formula);

@@ -268,7 +268,7 @@ void PasteDiagramCommand::redo()
 					const DiagramContext &info = e->elementInformations();
 					if (e->linkType() == Element::Slave || (e->linkType() & Element::AllReport)
 							|| info.value(QETInformation::ELMT_FORMULA).toString().isEmpty()
-							|| !project->elementAutoNumTitle(QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString())).isEmpty()
+							|| !ElementAutoNumSchemeCommand::followedScheme(project, info).isEmpty()
 							|| pasted_schemes_has(pasted_schemes, e)) {
 						continue;
 					}
