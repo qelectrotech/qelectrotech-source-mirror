@@ -139,6 +139,14 @@ add_test(NAME tst_itemgroups COMMAND tst_itemgroups)
 target_include_directories(tst_itemgroups PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_itemgroups PRIVATE Qt::Test Qt::Widgets Qt::Xml)
 
+# shownkinds.cpp keeps View > Show (bugtracker #301) apart from the item
+# classes, so it is tested here on a plain scene of rectangles.
+add_executable(tst_shownkinds tst_shownkinds.cpp ${QET_DIR}/sources/shownkinds.cpp)
+add_test(NAME tst_shownkinds COMMAND tst_shownkinds)
+set_tests_properties(tst_shownkinds PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_shownkinds PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_shownkinds PRIVATE Qt::Test Qt::Widgets)
+
 # textanchor.h is header-only: the point of a text chosen by its alignment,
 # shown as Position X/Y in the text properties (#1155).
 add_executable(tst_textanchor tst_textanchor.cpp)

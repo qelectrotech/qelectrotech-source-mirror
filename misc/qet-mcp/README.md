@@ -39,7 +39,7 @@ here read the model.
 | `qet_element_build` | **author a `.elmt`** — draw a new symbol, with terminals to wire it by |
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
-| `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios |
+| `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios, terminals with more than four wires, folio reports with several wires |
 | `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings; and the moves that fix them, ready for `qet_edit` |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
 | `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`) |

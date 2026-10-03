@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetshapeitem.h"
+#include "../shownkinds.h"
 
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -57,6 +58,7 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (p2),
 	m_hovered(false)
 {
+	ShownKinds::tag(this, ShownKinds::Shapes);
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);

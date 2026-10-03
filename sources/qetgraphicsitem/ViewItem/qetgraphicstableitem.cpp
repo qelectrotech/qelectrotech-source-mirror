@@ -16,6 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstableitem.h"
+#include "../../shownkinds.h"
 #include "../../qetproject.h"
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../createdxf.h"
@@ -133,6 +134,7 @@ void QetGraphicsTableItem::checkInsufficientRowsCount(
 QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	QetGraphicsItem(parent)
 {
+	ShownKinds::tag(this, ShownKinds::Tables);
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 	setFlag(QGraphicsItem::ItemIsSelectable, true);
 	setAcceptHoverEvents(true);

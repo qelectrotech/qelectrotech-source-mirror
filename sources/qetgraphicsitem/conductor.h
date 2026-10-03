@@ -129,6 +129,7 @@ class Conductor : public QGraphicsObject
 		void setProfiles(const ConductorProfilesGroup &);
 		ConductorProfilesGroup profiles() const;
 		void calculateTextItemPosition();
+		void updateTextVisibility();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
 		QSet<Conductor *> relatedPotentialConductors(

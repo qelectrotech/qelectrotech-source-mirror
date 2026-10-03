@@ -772,6 +772,16 @@ bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 
 	DiagramContent content;
 	content.m_elements << element;
+		// The wires on its terminals go with it, as when the Delete key
+		// removes a selected element (DiagramContent puts them in
+		// m_conductors_to_update); without them they stay on the folio,
+		// attached to an element that is no longer there.
+	for (Terminal *terminal : element->terminals()) {
+		for (Conductor *conductor : terminal->conductors()) {
+			if (!content.m_conductors_to_update.contains(conductor))
+				content.m_conductors_to_update << conductor;
+		}
+	}
 	if (DeleteQGraphicsItemCommand::hasNonDeletableTerminal(content)) {
 		log(QStringLiteral("qet.deleteElement: %1 has a non-deletable terminal (linked master/slave?), refusing").arg(elementUuid));
 		return false;
@@ -4103,10 +4113,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 	{
 		const QList<Conductor *> conductor_list = diagram->conductors();
 		for (Conductor *c : conductor_list)
-		{
-			const ConductorProperties cp = c->properties();
-			c->textItem()->setVisible(cp.type == ConductorProperties::Multi && cp.m_show_text);
-		}
+			c->updateTextVisibility();
 		for (Conductor *c : conductor_list)
 			c->calculateTextItemPosition();
 	}

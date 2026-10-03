@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
+#include "../shownkinds.h"
 
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -50,6 +51,7 @@
 DiagramImageItem::DiagramImageItem(QetGraphicsItem *parent_item):
 	QetGraphicsItem(parent_item)
 {
+	ShownKinds::tag(this, ShownKinds::Pictures);
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable|QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 }
@@ -66,6 +68,7 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *paren
 	m_base_pixmap(pixmap),
 	m_crop_rect(pixmap.rect())
 {
+	ShownKinds::tag(this, ShownKinds::Pictures);
 	// m_transform.toMatrix(), not QGraphicsItem::setRotation()/setScale():
 	// those are a single uniform scale() float, which is exactly why an
 	// image could never break its own aspect ratio before this class

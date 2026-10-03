@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include "../shownkinds.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
@@ -44,6 +45,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	m_parent_element(parent_element),
 	m_uuid(QUuid::createUuid())
 {
+	ShownKinds::tag(this, ShownKinds::SymbolTexts);
 	setFont(QETApp::dynamicTextsItemFont());
 	setText(tr("Texte"));
 	setParentItem(parent_element);
@@ -1662,6 +1664,7 @@ void DynamicElementTextItem::updateXref()
 					if(!m_slave_Xref_item)
 					{
 						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						ShownKinds::tag(m_slave_Xref_item, ShownKinds::CrossReferences);
 						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 							// Match the parent text's user-configurable color instead of
 							// hardcoding black, which renders invisible under dark themes

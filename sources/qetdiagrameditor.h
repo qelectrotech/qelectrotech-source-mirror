@@ -30,6 +30,7 @@
 #include <QUndoGroup>
 
 class QToolButton;
+class QLabel;
 
 class QMdiSubWindow;
 class QETProject;
@@ -187,6 +188,7 @@ class QETDiagramEditor : public QETMainWindow
 
 	private slots:
 		void updateTextGridButton();
+		void updateShownKinds();
 		void selectionChanged();
 
 	public:
@@ -284,6 +286,8 @@ class QETDiagramEditor : public QETMainWindow
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
 		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
 		QToolButton *m_text_grid_button = nullptr;
+		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
+		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../shownkinds.h"
 #include "../lastusedstyle.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -1522,6 +1523,20 @@ QPointF Conductor::posForText(Qt::Orientations &flag)
 }
 
 /**
+	@brief Conductor::updateTextVisibility
+	Show the text of this conductor if its properties ask for it and wire
+	numbers are not hidden (View > Show). With "one text per potential",
+	call calculateTextItemPosition() afterwards: it hides all texts of the
+	potential but the longest conductor's.
+*/
+void Conductor::updateTextVisibility()
+{
+	ShownKinds::setVisible(m_text_item,
+						   m_properties.type == ConductorProperties::Multi
+						   && m_properties.m_show_text);
+}
+
+/**
 	@brief Conductor::calculateTextItemPosition
 	Move the text at middle of conductor (if is vertical or horizontal)
 	otherwise, move conductor at the middle of the longest segment of conductor.
@@ -1548,10 +1563,11 @@ void Conductor::calculateTextItemPosition()
 
 			//At this point this conductor is the longest conductor we hide all text of conductor_list
 		foreach (Conductor *c, relatedPotentialConductors(false)) {
-					c -> textItem() -> setVisible(false);
+					ShownKinds::setVisible(c -> textItem(), false);
 		}
-			//Make sure text item is visible
-		m_text_item -> setVisible(true);
+			//Make sure text item is visible, unless wire numbers are hidden
+			//(View > Show)
+		ShownKinds::setVisible(m_text_item, true);
 	}
 
 		//position
@@ -1806,11 +1822,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 	m_text_item->setFont(font);
 	m_text_item->setColor(m_properties.text_color);
 
-	if (m_properties.type != ConductorProperties::Multi)
-		m_text_item->setVisible(false);
-	else
-		m_text_item->setVisible(m_properties.m_show_text);
-
+	updateTextVisibility();
 	calculateTextItemPosition();
 	update();
 
