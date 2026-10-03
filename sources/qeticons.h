@@ -171,9 +171,7 @@ namespace QET {
 		extern QIcon ProjectNew;
 		extern QIcon ProjectProperties;
 		extern QIcon Projects;
-		extern QIcon QETIcon;
 		extern QIcon QETLogo;
-		extern QIcon QETOxygenLogo;
 		extern QIcon QtLogo;
 		extern QIcon Raise;
 		extern QIcon RectToBezier;

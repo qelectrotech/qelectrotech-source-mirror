@@ -18,14 +18,9 @@
         <file alias="themes/qet/scalable/label.svg">scalable/label.svg</file>
         <file alias="themes/qet/scalable/pdf-import.svg">scalable/pdf-import.svg</file>
         <file alias="themes/qet/scalable/snap-to-grid.svg">scalable/snap-to-grid.svg</file>
-        <file alias="themes/qet/scalable/edit-opacity.svg">breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>
-        <file alias="themes/qet/scalable/image-flip-horizontal.svg">breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
-        <file alias="themes/qet/scalable/image-flip-vertical.svg">breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
-        <file alias="themes/qet/scalable/draw-bezier-curves.svg">breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg</file>
-        <file alias="themes/qet/scalable/transform-crop.svg">breeze-icons/scalable/apps/hidef/transform-crop.svg</file>
-        <file alias="themes/qet/scalable/ellipse-to-bezier.svg">generated/ellipse-to-bezier.svg</file>
-        <file alias="themes/qet/scalable/rect-to-bezier.svg">generated/rect-to-bezier.svg</file>
-        <file alias="themes/qet/scalable/rect-to-polyline.svg">generated/rect-to-polyline.svg</file>
+        <file alias="themes/qet/scalable/ellipse-to-bezier.svg">scalable/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/scalable/rect-to-bezier.svg">scalable/rect-to-bezier.svg</file>
+        <file alias="themes/qet/scalable/rect-to-polyline.svg">scalable/rect-to-polyline.svg</file>
         <file alias="themes/qet/scalable/printer.svg">breeze/64/printer.svg</file>
         <file alias="themes/qet/scalable/settings.svg">breeze/48/systemsettings.svg</file>
         <file alias="themes/qet/scalable/configure-shortcuts.svg">128x128/configure-shortcuts.svg</file>
@@ -557,6 +552,19 @@
         <file alias="themes/qet/48x48@2/document-save-as.svg">generated/breeze-24/document-save-as.svg</file>
         <file alias="themes/qet/64x64@2/document-save-as.svg">breeze/32/document-save-as.svg</file>
         <file alias="themes/qet/128x128@2/document-save-as.svg">breeze/32/document-save-as.svg</file>
+        <file alias="themes/qet/16x16/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/22x22/draw-bezier-curves.svg">breeze/22/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/scalable/draw-bezier-curves.svg">generated/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/32x32/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/48x48/draw-bezier-curves.svg">generated/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/64x64/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/128x128/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/16x16@2/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/22x22@2/draw-bezier-curves.svg">breeze/22/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/32x32@2/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/48x48@2/draw-bezier-curves.svg">generated/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/64x64@2/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet/128x128@2/draw-bezier-curves.svg">breeze/16/draw-bezier-curves.svg</file>
         <file alias="themes/qet/16x16/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
         <file alias="themes/qet/22x22/draw-fillet.svg">generated/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet/32x32/draw-fillet.svg">scalable/16/draw-fillet.svg</file>
@@ -662,6 +670,19 @@
         <file alias="themes/qet/48x48@2/edit-download.svg">generated/breeze-24/edit-download.svg</file>
         <file alias="themes/qet/64x64@2/edit-download.svg">breeze/16/edit-download.svg</file>
         <file alias="themes/qet/128x128@2/edit-download.svg">breeze/16/edit-download.svg</file>
+        <file alias="themes/qet/16x16/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/22x22/edit-opacity.svg">breeze/22/edit-opacity.svg</file>
+        <file alias="themes/qet/scalable/edit-opacity.svg">generated/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet/32x32/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/48x48/edit-opacity.svg">generated/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet/64x64/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/128x128/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/16x16@2/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/22x22@2/edit-opacity.svg">breeze/22/edit-opacity.svg</file>
+        <file alias="themes/qet/32x32@2/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/48x48@2/edit-opacity.svg">generated/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet/64x64@2/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet/128x128@2/edit-opacity.svg">breeze/16/edit-opacity.svg</file>
         <file alias="themes/qet/16x16/edit-paste.svg">breeze/16/edit-paste.svg</file>
         <file alias="themes/qet/22x22/edit-paste.svg">breeze/22/edit-paste.svg</file>
         <file alias="themes/qet/scalable/edit-paste.svg">generated/breeze-24/edit-paste.svg</file>
@@ -1483,6 +1504,32 @@
         <file alias="themes/qet/24x24/hotspot.svg">generated/traced-24/hotspot.svg</file>
         <file alias="themes/qet/24x24@2/hotspot.svg">generated/traced-large-24/hotspot.svg</file>
         <file alias="themes/qet/scalable/hotspot.svg">traced/large22/hotspot.svg</file>
+        <file alias="themes/qet/16x16/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/22x22/image-flip-horizontal.svg">breeze/22/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/scalable/image-flip-horizontal.svg">generated/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/32x32/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/48x48/image-flip-horizontal.svg">generated/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/64x64/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/128x128/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/16x16@2/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/22x22@2/image-flip-horizontal.svg">breeze/22/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/32x32@2/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/48x48@2/image-flip-horizontal.svg">generated/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/64x64@2/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/128x128@2/image-flip-horizontal.svg">breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet/16x16/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/22x22/image-flip-vertical.svg">breeze/22/object-flip-vertical.svg</file>
+        <file alias="themes/qet/scalable/image-flip-vertical.svg">generated/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet/32x32/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/48x48/image-flip-vertical.svg">generated/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet/64x64/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/128x128/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/16x16@2/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/22x22@2/image-flip-vertical.svg">breeze/22/object-flip-vertical.svg</file>
+        <file alias="themes/qet/32x32@2/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/48x48@2/image-flip-vertical.svg">generated/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet/64x64@2/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet/128x128@2/image-flip-vertical.svg">breeze/16/object-flip-vertical.svg</file>
         <file alias="themes/qet/16x16/image-x-eps.svg">breeze/16/application-postscript.svg</file>
         <file alias="themes/qet/22x22/image-x-eps.svg">breeze/22/application-postscript.svg</file>
         <file alias="themes/qet/scalable/image-x-eps.svg">generated/breeze-24/application-postscript.svg</file>
@@ -2236,6 +2283,19 @@
         <file alias="themes/qet/24x24/titleblock-right.svg">generated/traced-24/titleblock-right.svg</file>
         <file alias="themes/qet/24x24@2/titleblock-right.svg">generated/traced-large-24/titleblock-right.svg</file>
         <file alias="themes/qet/scalable/titleblock-right.svg">traced/large22/titleblock-right.svg</file>
+        <file alias="themes/qet/16x16/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/22x22/transform-crop.svg">breeze/22/transform-crop.svg</file>
+        <file alias="themes/qet/scalable/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet/32x32/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/48x48/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet/64x64/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/128x128/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/16x16@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/22x22@2/transform-crop.svg">breeze/22/transform-crop.svg</file>
+        <file alias="themes/qet/32x32@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/48x48@2/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet/64x64@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/128x128@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/16x16/transform-rotate.svg">breeze/16/transform-rotate.svg</file>
         <file alias="themes/qet/22x22/transform-rotate.svg">breeze/22/transform-rotate.svg</file>
         <file alias="themes/qet/scalable/transform-rotate.svg">generated/breeze-24/transform-rotate.svg</file>
@@ -2411,6 +2471,19 @@
         <file alias="themes/qet/24x24/west.svg">generated/traced-24/west.svg</file>
         <file alias="themes/qet/24x24@2/west.svg">generated/traced-large-24/west.svg</file>
         <file alias="themes/qet/scalable/west.svg">traced/large22/west.svg</file>
+        <file alias="themes/qet/16x16/window-close.svg">breeze/16/window-close.svg</file>
+        <file alias="themes/qet/22x22/window-close.svg">breeze/22/window-close.svg</file>
+        <file alias="themes/qet/scalable/window-close.svg">generated/breeze-24/window-close.svg</file>
+        <file alias="themes/qet/32x32/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/48x48/window-close.svg">generated/breeze-24/window-close.svg</file>
+        <file alias="themes/qet/64x64/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/128x128/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/16x16@2/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/22x22@2/window-close.svg">breeze/22/window-close.svg</file>
+        <file alias="themes/qet/32x32@2/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/48x48@2/window-close.svg">generated/breeze-24/window-close.svg</file>
+        <file alias="themes/qet/64x64@2/window-close.svg">breeze/32/window-close.svg</file>
+        <file alias="themes/qet/128x128@2/window-close.svg">breeze/32/window-close.svg</file>
         <file alias="themes/qet/16x16/window-new.svg">breeze/16/window-new.svg</file>
         <file alias="themes/qet/22x22/window-new.svg">breeze/22/window-new.svg</file>
         <file alias="themes/qet/scalable/window-new.svg">generated/breeze-24/window-new.svg</file>
@@ -2505,11 +2578,6 @@
         <file>themes/qet-dark/scalable/label.svg</file>
         <file>themes/qet-dark/scalable/pdf-import.svg</file>
         <file>themes/qet-dark/scalable/snap-to-grid.svg</file>
-        <file>themes/qet-dark/scalable/edit-opacity.svg</file>
-        <file>themes/qet-dark/scalable/image-flip-horizontal.svg</file>
-        <file>themes/qet-dark/scalable/image-flip-vertical.svg</file>
-        <file>themes/qet-dark/scalable/draw-bezier-curves.svg</file>
-        <file>themes/qet-dark/scalable/transform-crop.svg</file>
         <file>themes/qet-dark/scalable/ellipse-to-bezier.svg</file>
         <file>themes/qet-dark/scalable/rect-to-bezier.svg</file>
         <file>themes/qet-dark/scalable/rect-to-polyline.svg</file>
@@ -2658,6 +2726,9 @@
         <file>themes/qet-dark/breeze/22/document-save-as.svg</file>
         <file>themes/qet-dark/breeze-24/document-save-as.svg</file>
         <file>themes/qet-dark/breeze/32/document-save-as.svg</file>
+        <file>themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file>themes/qet-dark/breeze/22/draw-bezier-curves.svg</file>
+        <file>themes/qet-dark/breeze-24/draw-bezier-curves.svg</file>
         <file>themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file>themes/qet-dark/scalable-22/draw-fillet.svg</file>
         <file>themes/qet-dark/traced/16/east.svg</file>
@@ -2681,6 +2752,9 @@
         <file>themes/qet-dark/breeze/16/edit-download.svg</file>
         <file>themes/qet-dark/breeze/22/edit-download.svg</file>
         <file>themes/qet-dark/breeze-24/edit-download.svg</file>
+        <file>themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file>themes/qet-dark/breeze/22/edit-opacity.svg</file>
+        <file>themes/qet-dark/breeze-24/edit-opacity.svg</file>
         <file>themes/qet-dark/breeze/16/edit-paste.svg</file>
         <file>themes/qet-dark/breeze/22/edit-paste.svg</file>
         <file>themes/qet-dark/breeze-24/edit-paste.svg</file>
@@ -2923,6 +2997,9 @@
         <file>themes/qet-dark/traced/large22/hotspot.svg</file>
         <file>themes/qet-dark/traced-large-24/hotspot.svg</file>
         <file>themes/qet-dark/traced-24/hotspot.svg</file>
+        <file>themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file>themes/qet-dark/breeze/22/object-flip-horizontal.svg</file>
+        <file>themes/qet-dark/breeze-24/object-flip-horizontal.svg</file>
         <file>themes/qet-dark/breeze/16/insert-image.svg</file>
         <file>themes/qet-dark/breeze/22/insert-image.svg</file>
         <file>themes/qet-dark/breeze-24/insert-image.svg</file>
@@ -2955,9 +3032,6 @@
         <file>themes/qet-dark/breeze/16/view-hidden.svg</file>
         <file>themes/qet-dark/breeze/22/view-hidden.svg</file>
         <file>themes/qet-dark/breeze-24/view-hidden.svg</file>
-        <file>themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
-        <file>themes/qet-dark/breeze/22/object-flip-horizontal.svg</file>
-        <file>themes/qet-dark/breeze-24/object-flip-horizontal.svg</file>
         <file>themes/qet-dark/traced/16/move.svg</file>
         <file>themes/qet-dark/traced/large16/move.svg</file>
         <file>themes/qet-dark/traced/22/move.svg</file>
@@ -3086,6 +3160,9 @@
         <file>themes/qet-dark/traced/large16/titleblock-right.svg</file>
         <file>themes/qet-dark/traced/large22/titleblock-right.svg</file>
         <file>themes/qet-dark/traced-large-24/titleblock-right.svg</file>
+        <file>themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file>themes/qet-dark/breeze/22/transform-crop.svg</file>
+        <file>themes/qet-dark/breeze-24/transform-crop.svg</file>
         <file>themes/qet-dark/breeze/16/transform-rotate.svg</file>
         <file>themes/qet-dark/breeze/22/transform-rotate.svg</file>
         <file>themes/qet-dark/breeze-24/transform-rotate.svg</file>
@@ -3130,6 +3207,10 @@
         <file>themes/qet-dark/traced/large22/west.svg</file>
         <file>themes/qet-dark/traced-large-24/west.svg</file>
         <file>themes/qet-dark/traced-24/west.svg</file>
+        <file>themes/qet-dark/breeze/16/window-close.svg</file>
+        <file>themes/qet-dark/breeze/22/window-close.svg</file>
+        <file>themes/qet-dark/breeze-24/window-close.svg</file>
+        <file>themes/qet-dark/breeze/32/window-close.svg</file>
         <file>themes/qet-dark/breeze/16/window-new.svg</file>
         <file>themes/qet-dark/breeze/22/window-new.svg</file>
         <file>themes/qet-dark/breeze-24/window-new.svg</file>
@@ -3627,6 +3708,19 @@
         <file alias="themes/qet-dark/48x48@2/document-save-as.svg">themes/qet-dark/breeze-24/document-save-as.svg</file>
         <file alias="themes/qet-dark/64x64@2/document-save-as.svg">themes/qet-dark/breeze/32/document-save-as.svg</file>
         <file alias="themes/qet-dark/128x128@2/document-save-as.svg">themes/qet-dark/breeze/32/document-save-as.svg</file>
+        <file alias="themes/qet-dark/16x16/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/22x22/draw-bezier-curves.svg">themes/qet-dark/breeze/22/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/scalable/draw-bezier-curves.svg">themes/qet-dark/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/32x32/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/48x48/draw-bezier-curves.svg">themes/qet-dark/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/64x64/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/128x128/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/16x16@2/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/22x22@2/draw-bezier-curves.svg">themes/qet-dark/breeze/22/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/32x32@2/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/48x48@2/draw-bezier-curves.svg">themes/qet-dark/breeze-24/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/64x64@2/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
+        <file alias="themes/qet-dark/128x128@2/draw-bezier-curves.svg">themes/qet-dark/breeze/16/draw-bezier-curves.svg</file>
         <file alias="themes/qet-dark/16x16/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
         <file alias="themes/qet-dark/22x22/draw-fillet.svg">themes/qet-dark/scalable-22/draw-fillet.svg</file>
         <file alias="themes/qet-dark/32x32/draw-fillet.svg">themes/qet-dark/scalable-16/draw-fillet.svg</file>
@@ -3719,6 +3813,19 @@
         <file alias="themes/qet-dark/48x48@2/edit-download.svg">themes/qet-dark/breeze-24/edit-download.svg</file>
         <file alias="themes/qet-dark/64x64@2/edit-download.svg">themes/qet-dark/breeze/16/edit-download.svg</file>
         <file alias="themes/qet-dark/128x128@2/edit-download.svg">themes/qet-dark/breeze/16/edit-download.svg</file>
+        <file alias="themes/qet-dark/16x16/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/22x22/edit-opacity.svg">themes/qet-dark/breeze/22/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/scalable/edit-opacity.svg">themes/qet-dark/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/32x32/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/48x48/edit-opacity.svg">themes/qet-dark/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/64x64/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/128x128/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/16x16@2/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/22x22@2/edit-opacity.svg">themes/qet-dark/breeze/22/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/32x32@2/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/48x48@2/edit-opacity.svg">themes/qet-dark/breeze-24/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/64x64@2/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
+        <file alias="themes/qet-dark/128x128@2/edit-opacity.svg">themes/qet-dark/breeze/16/edit-opacity.svg</file>
         <file alias="themes/qet-dark/16x16/edit-paste.svg">themes/qet-dark/breeze/16/edit-paste.svg</file>
         <file alias="themes/qet-dark/22x22/edit-paste.svg">themes/qet-dark/breeze/22/edit-paste.svg</file>
         <file alias="themes/qet-dark/scalable/edit-paste.svg">themes/qet-dark/breeze-24/edit-paste.svg</file>
@@ -4510,6 +4617,32 @@
         <file alias="themes/qet-dark/24x24/hotspot.svg">themes/qet-dark/traced-24/hotspot.svg</file>
         <file alias="themes/qet-dark/24x24@2/hotspot.svg">themes/qet-dark/traced-large-24/hotspot.svg</file>
         <file alias="themes/qet-dark/scalable/hotspot.svg">themes/qet-dark/traced/large22/hotspot.svg</file>
+        <file alias="themes/qet-dark/16x16/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/22x22/image-flip-horizontal.svg">themes/qet-dark/breeze/22/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/scalable/image-flip-horizontal.svg">themes/qet-dark/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/32x32/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/48x48/image-flip-horizontal.svg">themes/qet-dark/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/64x64/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/128x128/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/16x16@2/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/22x22@2/image-flip-horizontal.svg">themes/qet-dark/breeze/22/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/32x32@2/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/48x48@2/image-flip-horizontal.svg">themes/qet-dark/breeze-24/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/64x64@2/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/128x128@2/image-flip-horizontal.svg">themes/qet-dark/breeze/16/object-flip-horizontal.svg</file>
+        <file alias="themes/qet-dark/16x16/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/22x22/image-flip-vertical.svg">themes/qet-dark/breeze/22/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/scalable/image-flip-vertical.svg">themes/qet-dark/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/32x32/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/48x48/image-flip-vertical.svg">themes/qet-dark/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/64x64/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/128x128/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/16x16@2/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/22x22@2/image-flip-vertical.svg">themes/qet-dark/breeze/22/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/32x32@2/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/48x48@2/image-flip-vertical.svg">themes/qet-dark/breeze-24/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/64x64@2/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
+        <file alias="themes/qet-dark/128x128@2/image-flip-vertical.svg">themes/qet-dark/breeze/16/object-flip-vertical.svg</file>
         <file alias="themes/qet-dark/16x16/insert-image.svg">themes/qet-dark/breeze/16/insert-image.svg</file>
         <file alias="themes/qet-dark/22x22/insert-image.svg">themes/qet-dark/breeze/22/insert-image.svg</file>
         <file alias="themes/qet-dark/scalable/insert-image.svg">themes/qet-dark/breeze-24/insert-image.svg</file>
@@ -5070,6 +5203,19 @@
         <file alias="themes/qet-dark/128x128@2/titleblock-right.svg">themes/qet-dark/traced/large16/titleblock-right.svg</file>
         <file alias="themes/qet-dark/24x24@2/titleblock-right.svg">themes/qet-dark/traced-large-24/titleblock-right.svg</file>
         <file alias="themes/qet-dark/scalable/titleblock-right.svg">themes/qet-dark/traced/large22/titleblock-right.svg</file>
+        <file alias="themes/qet-dark/16x16/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/22x22/transform-crop.svg">themes/qet-dark/breeze/22/transform-crop.svg</file>
+        <file alias="themes/qet-dark/scalable/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet-dark/32x32/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/48x48/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet-dark/64x64/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/128x128/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/16x16@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/22x22@2/transform-crop.svg">themes/qet-dark/breeze/22/transform-crop.svg</file>
+        <file alias="themes/qet-dark/32x32@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/48x48@2/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
+        <file alias="themes/qet-dark/64x64@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/128x128@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/16x16/transform-rotate.svg">themes/qet-dark/breeze/16/transform-rotate.svg</file>
         <file alias="themes/qet-dark/22x22/transform-rotate.svg">themes/qet-dark/breeze/22/transform-rotate.svg</file>
         <file alias="themes/qet-dark/scalable/transform-rotate.svg">themes/qet-dark/breeze-24/transform-rotate.svg</file>
@@ -5219,6 +5365,19 @@
         <file alias="themes/qet-dark/24x24/west.svg">themes/qet-dark/traced-24/west.svg</file>
         <file alias="themes/qet-dark/24x24@2/west.svg">themes/qet-dark/traced-large-24/west.svg</file>
         <file alias="themes/qet-dark/scalable/west.svg">themes/qet-dark/traced/large22/west.svg</file>
+        <file alias="themes/qet-dark/16x16/window-close.svg">themes/qet-dark/breeze/16/window-close.svg</file>
+        <file alias="themes/qet-dark/22x22/window-close.svg">themes/qet-dark/breeze/22/window-close.svg</file>
+        <file alias="themes/qet-dark/scalable/window-close.svg">themes/qet-dark/breeze-24/window-close.svg</file>
+        <file alias="themes/qet-dark/32x32/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/48x48/window-close.svg">themes/qet-dark/breeze-24/window-close.svg</file>
+        <file alias="themes/qet-dark/64x64/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/128x128/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/16x16@2/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/22x22@2/window-close.svg">themes/qet-dark/breeze/22/window-close.svg</file>
+        <file alias="themes/qet-dark/32x32@2/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/48x48@2/window-close.svg">themes/qet-dark/breeze-24/window-close.svg</file>
+        <file alias="themes/qet-dark/64x64@2/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
+        <file alias="themes/qet-dark/128x128@2/window-close.svg">themes/qet-dark/breeze/32/window-close.svg</file>
         <file alias="themes/qet-dark/16x16/window-new.svg">themes/qet-dark/breeze/16/window-new.svg</file>
         <file alias="themes/qet-dark/22x22/window-new.svg">themes/qet-dark/breeze/22/window-new.svg</file>
         <file alias="themes/qet-dark/scalable/window-new.svg">themes/qet-dark/breeze-24/window-new.svg</file>

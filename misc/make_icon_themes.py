@@ -62,7 +62,8 @@ for twice the pixels, by the same rule.
 Where Breeze has no 16 pixel drawing, QET adds one in
 ico/breeze-added/16/, on Breeze's grid and in its colors, so every icon
 has art drawn for 16 pixels. Without one, the 32 pixel art is halved,
-which blurs.
+which blurs. A drawing there also replaces a Breeze 16 pixel drawing in
+another style than the 22 pixel art (transform-crop).
 
 32 pixel art drawn in another style than the 22 pixel art (a blue
 folder for a line-art one) is not used; the 16 pixel art keeps the
@@ -184,14 +185,9 @@ SVGS = [
     "scalable/label.svg",
     "scalable/pdf-import.svg",
     "scalable/snap-to-grid.svg",
-    "breeze-icons/scalable/apps/hidef/edit-opacity.svg",
-    "breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg",
-    "breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg",
-    "breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg",
-    "breeze-icons/scalable/apps/hidef/transform-crop.svg",
-    "generated/ellipse-to-bezier.svg",
-    "generated/rect-to-bezier.svg",
-    "generated/rect-to-polyline.svg",
+    "scalable/ellipse-to-bezier.svg",
+    "scalable/rect-to-bezier.svg",
+    "scalable/rect-to-polyline.svg",
 ]
 
 # Icons served by Breeze SVGs in ico/breeze/, QET name to Breeze name.
@@ -216,12 +212,14 @@ BREEZE = {
     "document-save": "document-save",
     "document-save-all": "document-save-all",
     "document-save-as": "document-save-as",
+    "draw-bezier-curves": "draw-bezier-curves",
     "edit-clear": "edit-clear",
     "edit-clear-locationbar-ltr": "edit-clear-locationbar-ltr",
     "edit-copy": "edit-copy",
     "edit-cut": "edit-cut",
     "edit-delete": "edit-delete",
     "edit-download": "edit-download",
+    "edit-opacity": "edit-opacity",
     "edit-paste": "edit-paste",
     "edit-redo": "edit-redo",
     "edit-rename": "document-edit",
@@ -257,6 +255,8 @@ BREEZE = {
     "grid": "view-grid",
     "help-contents": "help-contents",
     "help-donate": "love-amarok",
+    "image-flip-horizontal": "object-flip-horizontal",
+    "image-flip-vertical": "object-flip-vertical",
     "image-x-eps": "application-postscript",
     "insert-image": "insert-image",
     "item-cancel": "dialog-cancel",
@@ -281,6 +281,7 @@ BREEZE = {
     "start": "media-playback-start",
     "table-of-content": "gtk-index",
     "text": "insert-text",
+    "transform-crop": "transform-crop",
     "transform-rotate": "transform-rotate",
     "transform-scale": "transform-scale",
     "two_pages": "view-pages-facing",
@@ -291,6 +292,7 @@ BREEZE = {
     "view-refresh": "view-refresh",
     "view-restore": "view-restore",
     "view_fit_width": "zoom-fit-width",
+    "window-close": "window-close",
     "window-new": "window-new",
     "zoom-draw": "zoom-fit-best",
     "zoom-in": "zoom-in",
@@ -478,8 +480,14 @@ def breeze_entries(breeze_name):
     following the table in the module docstring."""
     art = {size: f"breeze/{size}/{breeze_name}.svg" for size in BREEZE_SIZES
            if (ICO / "breeze" / str(size) / f"{breeze_name}.svg").exists()}
+    # QET's own 16 pixel drawing, where Breeze has none or draws the icon
+    # in another style at 16 (transform-crop: a crop mark, a dashed box
+    # at 22). Breeze's 32 pixel art then goes too, so 32 and up keep the
+    # 22 pixel look.
     added = ICO / "breeze-added" / "16" / f"{breeze_name}.svg"
-    if 16 not in art and added.exists():
+    if added.exists():
+        if 16 in art:
+            art.pop(32, None)
         art[16] = str(added.relative_to(ICO))
     # Breeze sometimes draws the 32 pixel icon in another style, a blue
     # folder where the smaller ones are line art. Its color classes then

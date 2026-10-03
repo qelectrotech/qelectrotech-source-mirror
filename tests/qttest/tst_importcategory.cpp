@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include <QtTest>
 
-#include <QDir>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -27,14 +26,6 @@ class tst_importcategory : public QObject
 	{
 		const QString path = m_dir.filePath(QStringLiteral("probe.js"));
 		const QString home = m_dir.filePath(QStringLiteral("home"));
-		QDir().mkpath(home + QStringLiteral("/config/QElectroTech"));
-			//The shipped collection, so common:// paths resolve; forward
-			//slashes, as Qt reads a backslash here as an escape.
-		QFile conf(home + QStringLiteral("/config/QElectroTech/QElectroTech.conf"));
-		if (!conf.open(QIODevice::WriteOnly)) return {};
-		conf.write("[elements-collections]\ncommon-collection-path="
-				   QET_ELEMENTS_DIR "\n");
-		conf.close();
 		QFile f(path);
 		if (!f.open(QIODevice::WriteOnly)) return {};
 		f.write(script.toUtf8());
@@ -49,8 +40,12 @@ class tst_importcategory : public QObject
 		env.insert(QStringLiteral("TMPDIR"), m_dir.path());
 		QProcess proc;
 		proc.setProcessEnvironment(env);
+			//The shipped collection, so common:// paths resolve. Given
+			//on the command line: macOS does not read a settings file
+			//under XDG_CONFIG_HOME.
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
-				   {QStringLiteral("--run"), path, project});
+				   {QStringLiteral("--common-elements-dir=" QET_ELEMENTS_DIR "/"),
+					QStringLiteral("--run"), path, project});
 		if (!proc.waitForFinished(120000)) return {};
 		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
 											  + proc.readAllStandardError());
