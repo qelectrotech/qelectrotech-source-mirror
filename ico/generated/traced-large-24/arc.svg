@@ -5,6 +5,8 @@
     </style>
   </defs>
   <g transform="translate(1,1)">
-  <path d="M3.5 15A7.5 8 0 0 1 18.5 15" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M3.633 14A7.5 8 0 0 1 18.367 14" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M2 14H5V17H2ZM3 15V16H4V15Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M17 14H20V17H17ZM18 15V16H19V15Z" class="ColorScheme-Text" style="fill:currentColor"/>
   </g>
 </svg>

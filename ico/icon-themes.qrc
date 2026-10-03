@@ -2283,19 +2283,19 @@
         <file alias="themes/qet/24x24/titleblock-right.svg">generated/traced-24/titleblock-right.svg</file>
         <file alias="themes/qet/24x24@2/titleblock-right.svg">generated/traced-large-24/titleblock-right.svg</file>
         <file alias="themes/qet/scalable/titleblock-right.svg">traced/large22/titleblock-right.svg</file>
-        <file alias="themes/qet/16x16/transform-crop.svg">breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet/16x16/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/22x22/transform-crop.svg">breeze/22/transform-crop.svg</file>
         <file alias="themes/qet/scalable/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet/32x32/transform-crop.svg">breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet/32x32/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/48x48/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet/64x64/transform-crop.svg">breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet/128x128/transform-crop.svg">breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet/16x16@2/transform-crop.svg">breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet/64x64/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/128x128/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/16x16@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/22x22@2/transform-crop.svg">breeze/22/transform-crop.svg</file>
-        <file alias="themes/qet/32x32@2/transform-crop.svg">breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet/32x32@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/48x48@2/transform-crop.svg">generated/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet/64x64@2/transform-crop.svg">breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet/128x128@2/transform-crop.svg">breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet/64x64@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet/128x128@2/transform-crop.svg">breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet/16x16/transform-rotate.svg">breeze/16/transform-rotate.svg</file>
         <file alias="themes/qet/22x22/transform-rotate.svg">breeze/22/transform-rotate.svg</file>
         <file alias="themes/qet/scalable/transform-rotate.svg">generated/breeze-24/transform-rotate.svg</file>
@@ -3160,7 +3160,7 @@
         <file>themes/qet-dark/traced/large16/titleblock-right.svg</file>
         <file>themes/qet-dark/traced/large22/titleblock-right.svg</file>
         <file>themes/qet-dark/traced-large-24/titleblock-right.svg</file>
-        <file>themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file>themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file>themes/qet-dark/breeze/22/transform-crop.svg</file>
         <file>themes/qet-dark/breeze-24/transform-crop.svg</file>
         <file>themes/qet-dark/breeze/16/transform-rotate.svg</file>
@@ -5203,19 +5203,19 @@
         <file alias="themes/qet-dark/128x128@2/titleblock-right.svg">themes/qet-dark/traced/large16/titleblock-right.svg</file>
         <file alias="themes/qet-dark/24x24@2/titleblock-right.svg">themes/qet-dark/traced-large-24/titleblock-right.svg</file>
         <file alias="themes/qet-dark/scalable/titleblock-right.svg">themes/qet-dark/traced/large22/titleblock-right.svg</file>
-        <file alias="themes/qet-dark/16x16/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/16x16/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/22x22/transform-crop.svg">themes/qet-dark/breeze/22/transform-crop.svg</file>
         <file alias="themes/qet-dark/scalable/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet-dark/32x32/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/32x32/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/48x48/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet-dark/64x64/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet-dark/128x128/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet-dark/16x16@2/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/64x64/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/128x128/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/16x16@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/22x22@2/transform-crop.svg">themes/qet-dark/breeze/22/transform-crop.svg</file>
-        <file alias="themes/qet-dark/32x32@2/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/32x32@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/48x48@2/transform-crop.svg">themes/qet-dark/breeze-24/transform-crop.svg</file>
-        <file alias="themes/qet-dark/64x64@2/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
-        <file alias="themes/qet-dark/128x128@2/transform-crop.svg">themes/qet-dark/breeze/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/64x64@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
+        <file alias="themes/qet-dark/128x128@2/transform-crop.svg">themes/qet-dark/breeze-added/16/transform-crop.svg</file>
         <file alias="themes/qet-dark/16x16/transform-rotate.svg">themes/qet-dark/breeze/16/transform-rotate.svg</file>
         <file alias="themes/qet-dark/22x22/transform-rotate.svg">themes/qet-dark/breeze/22/transform-rotate.svg</file>
         <file alias="themes/qet-dark/scalable/transform-rotate.svg">themes/qet-dark/breeze-24/transform-rotate.svg</file>

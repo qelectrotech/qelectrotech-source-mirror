@@ -2,11 +2,10 @@
   <defs>
     <style type="text/css" id="current-color-scheme">
       .ColorScheme-Text { color:#dcdcdc; }
-      .ColorScheme-Highlight { color:#1892d2; }
     </style>
   </defs>
   <g transform="translate(1,1)">
-  <circle cx="11" cy="11" r="7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:2"/>
-  <rect x="9.5" y="2.5" width="3" height="3" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M9 4.663A7 7 0 1 0 12 4.663" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M9 3H12V6H9ZM10 4V5H11V4Z" class="ColorScheme-Text" style="fill:currentColor"/>
   </g>
 </svg>

@@ -62,7 +62,8 @@ for twice the pixels, by the same rule.
 Where Breeze has no 16 pixel drawing, QET adds one in
 ico/breeze-added/16/, on Breeze's grid and in its colors, so every icon
 has art drawn for 16 pixels. Without one, the 32 pixel art is halved,
-which blurs.
+which blurs. A drawing there also replaces a Breeze 16 pixel drawing in
+another style than the 22 pixel art (transform-crop).
 
 32 pixel art drawn in another style than the 22 pixel art (a blue
 folder for a line-art one) is not used; the 16 pixel art keeps the
@@ -479,8 +480,14 @@ def breeze_entries(breeze_name):
     following the table in the module docstring."""
     art = {size: f"breeze/{size}/{breeze_name}.svg" for size in BREEZE_SIZES
            if (ICO / "breeze" / str(size) / f"{breeze_name}.svg").exists()}
+    # QET's own 16 pixel drawing, where Breeze has none or draws the icon
+    # in another style at 16 (transform-crop: a crop mark, a dashed box
+    # at 22). Breeze's 32 pixel art then goes too, so 32 and up keep the
+    # 22 pixel look.
     added = ICO / "breeze-added" / "16" / f"{breeze_name}.svg"
-    if 16 not in art and added.exists():
+    if added.exists():
+        if 16 in art:
+            art.pop(32, None)
         art[16] = str(added.relative_to(ICO))
     # Breeze sometimes draws the 32 pixel icon in another style, a blue
     # folder where the smaller ones are line art. Its color classes then

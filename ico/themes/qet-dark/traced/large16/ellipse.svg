@@ -2,9 +2,8 @@
   <defs>
     <style type="text/css" id="current-color-scheme">
       .ColorScheme-Text { color:#dcdcdc; }
-      .ColorScheme-Highlight { color:#1892d2; }
     </style>
   </defs>
-  <ellipse cx="8" cy="8.5" rx="6" ry="4" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.5"/>
-  <rect x="6.5" y="3" width="3" height="3" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M6 4.627A6 4 0 1 0 9 4.627" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M6 3H9V6H6ZM7 4V5H8V4Z" class="ColorScheme-Text" style="fill:currentColor"/>
 </svg>
