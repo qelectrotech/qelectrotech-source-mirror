@@ -4133,6 +4133,76 @@ QVariantMap QetScriptApi::elementGeometry(int folioIndex, const QString &element
 }
 
 /**
+	@brief QetScriptApi::terminalPosition
+	Where a wire docks on terminal @p terminalIndex of the element, in folio
+	coordinates (Terminal::dockConductor(), the point conductorSegments()
+	and conductorPath() start or end at), and which way the terminal sends
+	its wire on the folio, the element's rotation included: "n", "e", "s"
+	or "w". Two terminals facing each other are joined by a straight wire
+	exactly when their x (n/s) or y (e/w) are equal, which is what a
+	script needs to place a symbol in line with another before wiring it.
+	Empty if the element or terminal is not found.
+*/
+QVariantMap QetScriptApi::terminalPosition(int folioIndex, const QString &elementUuid,
+										   int terminalIndex) const
+{
+	// const_cast: findTerminal logs, and log() writes to stderr, which is
+	// not a const operation on this object. The lookup itself changes
+	// nothing.
+	auto *self = const_cast<QetScriptApi *>(this);
+	Terminal *terminal = self->findTerminal(folioIndex, elementUuid, terminalIndex,
+											QStringLiteral("terminalPosition"));
+	if (!terminal) return {};
+	const QPointF p = terminal->dockConductor();
+	static const char *const facing[] = {"n", "e", "s", "w"};
+	const int o = static_cast<int>(terminal->orientation());
+	QVariantMap m;
+	m.insert(QStringLiteral("x"), p.x());
+	m.insert(QStringLiteral("y"), p.y());
+	m.insert(QStringLiteral("facing"),
+			 QString::fromLatin1(o >= 0 && o < 4 ? facing[o] : "?"));
+	return m;
+}
+
+/**
+	@brief QetScriptApi::conductorPath
+	The drawn path of the conductor carrying @p conductorUuid on the folio,
+	as a list of {x, y} points in folio coordinates: the first is where it
+	docks on its first terminal (conductorEnds()[0]), the last where it
+	docks on its second, and every point between is a corner or a segment
+	end. The same points conductorSegments() lists, but for any conductor
+	-- conductorSegments() names one by a terminal and so refuses a
+	terminal that carries two. Empty if there is no such conductor.
+*/
+QVariantList QetScriptApi::conductorPath(int folioIndex, const QString &conductorUuid) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	const QUuid wanted(conductorUuid);
+	if (wanted.isNull()) return {};
+
+	DiagramContent content(diagrams.at(folioIndex), false);
+	for (Conductor *c : content.conductors(DiagramContent::AnyConductor)) {
+		if (c->uuid() != wanted) continue;
+		QVariantList points;
+		auto add = [&points](const QPointF &p) {
+			QVariantMap m;
+			m.insert(QStringLiteral("x"), p.x());
+			m.insert(QStringLiteral("y"), p.y());
+			points << m;
+		};
+		const QList<ConductorSegment *> segs = c->segmentsList();
+		for (int i = 0; i < segs.count(); ++i) {
+			if (i == 0) add(c->mapToScene(segs.at(i)->firstPoint()));
+			add(c->mapToScene(segs.at(i)->secondPoint()));
+		}
+		return points;
+	}
+	return {};
+}
+
+/**
 	@brief QetScriptApi::insertFolio
 	Add a folio at a position (0 is first, folioCount() is last) through
 	QETProject::addNewDiagram(pos) -- undoable. The position is checked
