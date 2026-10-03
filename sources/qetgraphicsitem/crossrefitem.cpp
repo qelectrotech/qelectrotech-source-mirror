@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "crossrefitem.h"
+#include "../shownkinds.h"
 
 #include <QTimer>
 #include "../qetproject.h"
@@ -81,6 +82,7 @@ CrossRefItem::~CrossRefItem()
 */
 void CrossRefItem::init()
 {
+	ShownKinds::tag(this, ShownKinds::CrossReferences);
 	if(!m_element->diagram())
 	{
 		qDebug() << "CrossRefItem constructor" << "element is not in a diagram";
@@ -238,11 +240,13 @@ void CrossRefItem::updateProperties()
 	if (m_properties != xrp)
 	{
 		m_properties = xrp;
-		hide();
+			//Through ShownKinds: stays hidden while View > Show hides
+			//cross-references
+		ShownKinds::setVisible(this, false);
 		if(m_properties.snapTo() == XRefProperties::Label && (m_text || m_group)) //Snap to label and parent is text or group
-			show();
+			ShownKinds::setVisible(this, true);
 		else if((m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group)) //Snap to bottom of element is the parent
-			show();
+			ShownKinds::setVisible(this, true);
 		
 		setUpConnection();
 		updateLabel();
@@ -528,7 +532,9 @@ void CrossRefItem::linkedChanged()
 
 	m_slave_connection.clear();
 
-	if(!isVisible())
+		//Hidden only by View > Show: keep following the slaves, so the
+		//label is right when it is shown again
+	if(!isVisible() && !ShownKinds::isHidden(this))
 		return;
 	
 	for(Element *elmt : m_element->linkedElements())

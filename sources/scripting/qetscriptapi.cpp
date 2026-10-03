@@ -4098,10 +4098,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 	{
 		const QList<Conductor *> conductor_list = diagram->conductors();
 		for (Conductor *c : conductor_list)
-		{
-			const ConductorProperties cp = c->properties();
-			c->textItem()->setVisible(cp.type == ConductorProperties::Multi && cp.m_show_text);
-		}
+			c->updateTextVisibility();
 		for (Conductor *c : conductor_list)
 			c->calculateTextItemPosition();
 	}
