@@ -1345,7 +1345,8 @@ bool Element::removeTextFromGroup(DynamicElementTextItem *text,
 	The first Terminal of QPair is a Terminal owned by this element,
 	this terminal haven't got any conductor docked.
 	The second Terminal of QPair is a Terminal owned by an other element,
-	which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
+	which is aligned with the first Terminal. The second Terminal can have or not docked conductors,
+	but no more than the project's wires-per-terminal limit allows (discussion #1158).
 */
 QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
@@ -1357,7 +1358,9 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 		{
 			Terminal *other_terminal =
 					terminal -> alignedWithTerminal();
-			if (other_terminal)
+			if (other_terminal
+				&& terminal->hasRoomForWire()
+				&& other_terminal->hasRoomForWire())
 				list << qMakePair(terminal, other_terminal);
 		}
 	}

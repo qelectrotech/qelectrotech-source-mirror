@@ -468,6 +468,21 @@ target_link_libraries(tst_wirehops PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_wirehops PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# Wires per terminal (discussion #1158): the rules in wiringrules.cpp, and
+# through the real binary, that --resave keeps the project setting, adds
+# none to a project without it, and that a wire past the limit is refused
+# unless the master switch is off.
+add_executable(
+  tst_wiringrules
+  tst_wiringrules.cpp
+  ${QET_DIR}/sources/wiringrules.cpp)
+add_test(NAME tst_wiringrules COMMAND tst_wiringrules)
+add_dependencies(tst_wiringrules qelectrotech)
+target_include_directories(tst_wiringrules PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_wiringrules PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_wiringrules PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # The routing behind qet.routeConductor(): conductorrouter.cpp needs only
 # Qt Core, so the geometry is tested without a scene.
 add_executable(

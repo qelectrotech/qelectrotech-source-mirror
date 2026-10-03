@@ -1258,6 +1258,37 @@ void QETProject::setWireHops(WireHops::Mode mode)
 }
 
 /**
+	@brief QETProject::wiringRules
+	@return how many wires a terminal of this project may take
+	(discussion #1158): the project's own rules when it sets them,
+	otherwise the application's (Settings > General).
+*/
+WiringRules::Settings QETProject::wiringRules() const {
+	return WiringRules::effective(m_wiring_rules, WiringRules::applicationSettings());
+}
+
+/**
+	@brief QETProject::projectWiringRules
+	@return the rules as the project stores them: Settings::own false when
+	it follows the application's.
+*/
+WiringRules::Settings QETProject::projectWiringRules() const {
+	return m_wiring_rules;
+}
+
+/**
+	@brief QETProject::setWiringRules
+	Set the project's own wiring rules, or (Settings::own false) make it
+	follow the application's. Only wires drawn from now on are affected:
+	none already drawn is removed.
+	@param rules
+*/
+void QETProject::setWiringRules(const WiringRules::Settings &rules)
+{
+	m_wiring_rules = rules;
+}
+
+/**
 	@brief QETProject::autoBreakConductor
 	@return true if use of auto break conductor is authorized.
 	See also Q_PROPERTY autoBreakConductor
@@ -1367,6 +1398,7 @@ QDomDocument QETProject::toXml()
 	// local, non-transmitted usage tracking (time spent on this project)
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
+	writeWiringRulesXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -1877,6 +1909,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the local, non-transmitted usage tracking
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
+	readWiringRulesXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -2071,6 +2104,17 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readWiringRulesXml
+	Read the <wiring_rules> element of the project, if any.
+	A project without it sets no rule.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readWiringRulesXml(QDomDocument &xml_project)
+{
+	m_wiring_rules = WiringRules::fromXml(xml_project.documentElement());
+}
+
+/**
 	@brief QETProject::readDefaultPropertiesXml
 	load default properties for new diagram, found in the xml of this project
 	or by default find in the QElectroTech global conf
@@ -2230,6 +2274,16 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("wire_crossings"));
 	crossings.setAttribute(QStringLiteral("hop"), WireHops::toString(m_wire_hops));
 	xml_element.appendChild(crossings);
+}
+
+/**
+	@brief QETProject::writeWiringRulesXml
+	Export the project's wiring rules as a <wiring_rules> child of
+	\a xml_element, only when one is set.
+*/
+void QETProject::writeWiringRulesXml(QDomElement &xml_element)
+{
+	WiringRules::toXml(m_wiring_rules, xml_element);
 }
 
 /**

@@ -92,6 +92,8 @@ class Terminal : public QGraphicsObject
 		void updateConductor();
 		bool isLinkedTo(Terminal *);
 		bool canBeLinkedTo(Terminal *);
+		int wireLimit() const;
+		bool hasRoomForWire() const;
 
 		// methods related to XML import/export
 		static bool valideXml(QDomElement  &);

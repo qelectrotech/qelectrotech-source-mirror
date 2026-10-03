@@ -26,6 +26,8 @@
 #include "../qet.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
+#include "../wiringrules.h"
+#include "../wiringruleswarning.h"
 #include "../borderpropertieswidget.h"
 #include "../conductorpropertieswidget.h"
 #include "../diagramcontextwidget.h"
@@ -176,6 +178,23 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+		//Following the application's rules stores nothing in the project
+	WiringRules::Settings wiring_rules;
+	if (!use_application_rules_cb_ -> isChecked()) {
+		wiring_rules.own = true;
+		wiring_rules.max_wires = max_wires_sb_ -> value();
+		wiring_rules.one_wire_per_report = one_wire_per_report_cb_ -> isChecked();
+	}
+	if (m_project -> projectWiringRules() != wiring_rules) {
+		const WiringRules::Settings before = m_project -> wiringRules();
+		m_project -> setWiringRules(wiring_rules);
+		modified_project = true;
+		if (WiringRules::masterEnabled()
+			&& WiringRules::turnsRuleOn(before, m_project -> wiringRules())) {
+			WiringRulesWarning::show(this);
+		}
+	}
+
 	if (modified_project) {
 		m_project -> setModified(true);
 	}
@@ -225,6 +244,39 @@ void ProjectMainConfigPage::initWidgets()
 	wire_hops_cb_ -> setToolTip(tr("Dessine un petit arc là où deux conducteurs se croisent sans être reliés. "
 								   "Seul le dessin change : aucun élément n'est ajouté et aucun conducteur n'est coupé.",
 								   "tooltip"));
+
+		//How many wires a terminal may take (discussion #1158)
+	wiring_rules_gb_ = new QGroupBox(tr("Conducteurs par borne", "group box title"));
+	use_application_rules_cb_ = new QCheckBox(tr("Utiliser les réglages de l'application", "checkbox label"));
+	use_application_rules_cb_ -> setToolTip(tr("Les réglages de Configurer QElectroTech > Général s'appliquent. "
+											   "Décochez pour donner à ce projet ses propres réglages, enregistrés dans le projet.",
+											   "tooltip"));
+	connect(use_application_rules_cb_, &QCheckBox::toggled, this, [this](bool use) {
+			//Show the values that will apply: the application's, or the
+			//application's as a starting point for the project's own
+		if (use) {
+			const WiringRules::Settings application = WiringRules::applicationSettings();
+			max_wires_sb_ -> setValue(application.max_wires);
+			one_wire_per_report_cb_ -> setChecked(application.one_wire_per_report);
+		}
+		updateWiringRulesWidgets();
+	});
+	max_wires_label_ = new QLabel(tr("Nombre maximal de conducteurs par borne :", "label when configuring"));
+	max_wires_sb_ = new QSpinBox();
+	max_wires_sb_ -> setRange(0, 99);
+	max_wires_sb_ -> setSpecialValueText(tr("Sans limite", "wires per terminal"));
+	max_wires_sb_ -> setToolTip(tr("Un nouveau conducteur qui dépasserait ce nombre sur une borne est refusé. "
+								   "Les conducteurs déjà dessinés ne sont pas modifiés. "
+								   "4 correspond à deux embouts doubles, un de chaque côté de la vis.",
+								   "tooltip"));
+	one_wire_per_report_cb_ = new QCheckBox(tr("Un seul conducteur par renvoi de folio", "checkbox label"));
+	one_wire_per_report_cb_ -> setToolTip(tr("Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, "
+											 "celui qui continue sur l'autre folio.",
+											 "tooltip"));
+	wiring_rules_off_label_ = new QLabel(tr("Ces règles sont désactivées pour tous les projets "
+											"(Configurer QElectroTech > Général).",
+											"informative label"));
+	wiring_rules_off_label_ -> setWordWrap(true);
 }
 
 /**
@@ -257,6 +309,18 @@ void ProjectMainConfigPage::initLayout()
 	wire_hops_layout0 -> addWidget(wire_hops_cb_);
 	wire_hops_layout0 -> addStretch();
 	main_layout0 -> addLayout(wire_hops_layout0);
+	main_layout0 -> addSpacing(10);
+
+	QVBoxLayout *wiring_rules_layout = new QVBoxLayout(wiring_rules_gb_);
+	wiring_rules_layout -> addWidget(use_application_rules_cb_);
+	QHBoxLayout *max_wires_layout = new QHBoxLayout();
+	max_wires_layout -> addWidget(max_wires_label_);
+	max_wires_layout -> addWidget(max_wires_sb_);
+	max_wires_layout -> addStretch();
+	wiring_rules_layout -> addLayout(max_wires_layout);
+	wiring_rules_layout -> addWidget(one_wire_per_report_cb_);
+	wiring_rules_layout -> addWidget(wiring_rules_off_label_);
+	main_layout0 -> addWidget(wiring_rules_gb_);
 
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
@@ -280,6 +344,34 @@ void ProjectMainConfigPage::readValuesFromProject()
 
 	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
+
+		//The rules that apply: the project's own or the application's
+	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
+	{
+		const QSignalBlocker blocker(use_application_rules_cb_);
+		use_application_rules_cb_ -> setChecked(!wiring_rules.own);
+	}
+	max_wires_sb_ -> setValue(wiring_rules.max_wires);
+	one_wire_per_report_cb_ -> setChecked(wiring_rules.one_wire_per_report);
+	updateWiringRulesWidgets();
+}
+
+/**
+	@brief ProjectMainConfigPage::updateWiringRulesWidgets
+	Enable the wiring rule fields only when they can change something: the
+	master switch is on and the project sets its own rules.
+*/
+void ProjectMainConfigPage::updateWiringRulesWidgets()
+{
+		//The master switch wins over every project: say so rather than
+		//let the user set a rule that does nothing.
+	const bool master = WiringRules::masterEnabled();
+	const bool own = master && !use_application_rules_cb_ -> isChecked();
+	wiring_rules_off_label_ -> setVisible(!master);
+	use_application_rules_cb_ -> setEnabled(master);
+	max_wires_label_ -> setEnabled(own);
+	max_wires_sb_ -> setEnabled(own);
+	one_wire_per_report_cb_ -> setEnabled(own);
 }
 
 /**
@@ -307,6 +399,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	usage_enabled_cb_ -> setDisabled(is_read_only);
 	usage_reset_pb_ -> setDisabled(is_read_only);
 	wire_hops_cb_ -> setDisabled(is_read_only);
+	wiring_rules_gb_ -> setDisabled(is_read_only);
 }
 
 //######################################################################################//
