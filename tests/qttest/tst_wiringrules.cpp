@@ -292,6 +292,7 @@ private slots:
 		// each wired terminal the number of wires the folio really has on it.
 	void terminalWiresViewCountsWires()
 	{
+		SKIP_WITHOUT_SCRIPTING;
 		const QString script_path = m_dir.filePath(QStringLiteral("view%1.js").arg(m_run));
 		QFile script(script_path);
 		QVERIFY(script.open(QIODevice::WriteOnly));
