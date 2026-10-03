@@ -12,6 +12,15 @@
 
 #include "wiringrules.h"
 
+	// The checks that drive QElectroTech through a script (--run) need a
+	// build with scripting; without it --run is not an option and the
+	// process never exits (QET_HAS_SCRIPTING, top-level CMakeLists.txt).
+#ifdef QET_HAS_SCRIPTING
+#	define SKIP_WITHOUT_SCRIPTING
+#else
+#	define SKIP_WITHOUT_SCRIPTING QSKIP("built without scripting: --run is not available")
+#endif
+
 // How many wires a terminal may take (discussion #1158). The rules are
 // tested on their own; the project setting and the refusal are tested
 // through the real binary: --resave keeps a <wiring_rules> element and
@@ -254,6 +263,7 @@ private slots:
 
 	void wirePastTheLimitIsRefused()
 	{
+		SKIP_WITHOUT_SCRIPTING;
 			// Without a rule the wire is drawn, as on master
 		QCOMPARE(addWireToWiredTerminal(QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet"), false),
 				 QStringLiteral("true"));
