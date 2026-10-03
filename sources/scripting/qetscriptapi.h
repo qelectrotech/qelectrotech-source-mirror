@@ -289,7 +289,12 @@ class QetGraphicsTableItem;
 	  is -- x, y (its origin), rotation, and the box it occupies on the folio
 	  (left, top, right, bottom) -- so a script can lay one thing out relative
 	  to another instead of only setting absolute coordinates, and can check
-	  that a move landed. insertFolio() puts a new folio at a position
+	  that a move landed. terminalPosition() is where a wire docks on one
+	  terminal and which way it leaves, so a symbol can be placed with a
+	  terminal exactly in line with another one before any wire exists;
+	  conductorPath() is a wire's drawn path by its uuid, for any wire,
+	  where conductorSegments() needs a terminal carrying only that one.
+	  insertFolio() puts a new folio at a position
 	  instead of at the end, which is what reordering is mostly for while
 	  moving an existing folio still needs the application's project view.
 	- @b Images: place a picture from a file. The pixels are copied into
@@ -567,6 +572,9 @@ class QetScriptApi : public QObject
 
 		// -- read an element's geometry --
 		Q_INVOKABLE QVariantMap elementGeometry(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE QVariantMap terminalPosition(int folioIndex, const QString &elementUuid,
+												 int terminalIndex) const;
+		Q_INVOKABLE QVariantList conductorPath(int folioIndex, const QString &conductorUuid) const;
 
 		// -- folios --
 		Q_INVOKABLE int addFolio();
