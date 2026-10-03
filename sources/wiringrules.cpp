@@ -173,3 +173,15 @@ bool WiringRules::hasRoom(int limit, int wires)
 {
 	return limit <= 0 || wires < limit;
 }
+
+/**
+	@brief WiringRules::turnsRuleOn
+	@param before, after : the rules in force before and after a change
+	@return true if the change turns on a rule that was off: QElectroTech
+	then warns that the rules are experimental (review of #1272).
+*/
+bool WiringRules::turnsRuleOn(const Settings &before, const Settings &after)
+{
+	return (after.max_wires > 0 && before.max_wires <= 0)
+			|| (after.one_wire_per_report && !before.one_wire_per_report);
+}
