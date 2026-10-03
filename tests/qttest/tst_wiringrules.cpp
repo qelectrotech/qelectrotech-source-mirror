@@ -160,6 +160,38 @@ private slots:
 		QVERIFY(!WiringRules::hasRoom(1, 1));
 	}
 
+	void angledCorners()
+	{
+		using V = QVector<QPointF>;
+			// Down then right: the corner at (0, 20) becomes a diagonal
+		const V wire {QPointF(0, 0), QPointF(0, 20), QPointF(30, 20)};
+		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 20)}),
+				 V({QPointF(0, 0), QPointF(0, 15), QPointF(5, 20), QPointF(30, 20)}));
+
+			// A corner not listed, or not a corner of this wire, stays
+		QCOMPARE(WiringRules::angledCorners(wire, {}), wire);
+		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 10)}), wire);
+		QCOMPARE(WiringRules::angledCorners(wire, {QPointF(0, 0)}), wire);
+
+			// Never more than half of the shorter side
+		const V short_side {QPointF(0, 0), QPointF(0, 4), QPointF(30, 4)};
+		QCOMPARE(WiringRules::angledCorners(short_side, {QPointF(0, 4)}),
+				 V({QPointF(0, 0), QPointF(0, 2), QPointF(2, 4), QPointF(30, 4)}));
+
+			// Too short to cut: a wire of two points is returned as it is
+		const V straight {QPointF(0, 0), QPointF(40, 0)};
+		QCOMPARE(WiringRules::angledCorners(straight, {QPointF(40, 0)}), straight);
+	}
+
+	void angledOnlyWithTheMasterSwitch()
+	{
+		WiringRules::Settings rules;
+		QVERIFY(!WiringRules::angledBranches(rules, true));
+		rules.angled_branches = true;
+		QVERIFY(WiringRules::angledBranches(rules, true));
+		QVERIFY(!WiringRules::angledBranches(rules, false));
+	}
+
 	void xmlRoundTrip()
 	{
 		QDomDocument doc;
@@ -174,6 +206,7 @@ private slots:
 		WiringRules::Settings rules;
 		rules.max_wires = 2;
 		rules.one_wire_per_report = true;
+		rules.angled_branches = true;
 		WiringRules::toXml(rules, root);
 		QCOMPARE(root.firstChildElement().tagName(), QStringLiteral("wiring_rules"));
 		QVERIFY(WiringRules::fromXml(root) == rules);
@@ -209,6 +242,59 @@ private slots:
 
 			// The master switch off: the project's rule does nothing
 		QCOMPARE(addWireToWiredTerminal(limited, true), QStringLiteral("true"));
+	}
+
+		// Junction entities in the DXF export of perceuse.qet, with @p rules
+		// in the project and the master switch on or off
+	int dxfJunctions(const QString &rules, bool master_off)
+	{
+		QFile source(QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"));
+		if (!source.open(QIODevice::ReadOnly | QIODevice::Text))
+			return -1;
+		QString text = QString::fromUtf8(source.readAll());
+		text.insert(text.indexOf(QLatin1String("<newdiagrams")), rules);
+		const QString project = m_dir.filePath(QStringLiteral("perceuse%1.qet").arg(m_run));
+		QFile out(project);
+		if (!out.open(QIODevice::WriteOnly | QIODevice::Text))
+			return -1;
+		out.write(text.toUtf8());
+		out.close();
+
+		const QString dxf_dir = m_dir.filePath(QStringLiteral("dxf%1").arg(m_run));
+		QDir().mkpath(dxf_dir);
+		const QString script_path = m_dir.filePath(QStringLiteral("dxf%1.js").arg(m_run));
+		QFile script(script_path);
+		if (!script.open(QIODevice::WriteOnly))
+			return -1;
+		script.write(QStringLiteral("qet.exportDxf('%1', false);\n").arg(dxf_dir).toUtf8());
+		script.close();
+
+		QProcess proc;
+		proc.setProcessEnvironment(sandbox(master_off));
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
+		if (!proc.waitForFinished(120000))
+			return -1;
+		int count = 0;
+		const QStringList files = QDir(dxf_dir).entryList({QStringLiteral("*.dxf")});
+		for (const QString &name : files) {
+			QFile dxf(QDir(dxf_dir).filePath(name));
+			if (!dxf.open(QIODevice::ReadOnly | QIODevice::Text))
+				return -1;
+				// Once per file in the layer table, then once per junction
+			count += QString::fromUtf8(dxf.readAll()).count(QLatin1String("\nQET_JUNCTIONS\n")) - 1;
+		}
+		return files.isEmpty() ? -1 : count;
+	}
+
+		// Angled branches replace the junction dots, in the DXF export as on
+		// the folio, unless the master switch is off.
+	void angledBranchesReplaceDots()
+	{
+		const int dots = dxfJunctions(QString(), false);
+		QVERIFY2(dots > 100, qPrintable(QString::number(dots)));
+		const QString angled = QStringLiteral("<wiring_rules branches=\"angled\"/>\n    ");
+		QCOMPARE(dxfJunctions(angled, false), 0);
+		QCOMPARE(dxfJunctions(angled, true), dots);
 	}
 };
 

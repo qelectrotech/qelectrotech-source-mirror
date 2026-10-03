@@ -33,6 +33,7 @@
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../utils/qetutils.h"
 #include "../wirehops.h"
+#include "../wiringrules.h"
 
 #include <QMultiHash>
 #include <QtDebug>
@@ -654,8 +655,9 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		if (isSelected()) painter -> setBrush(Qt::NoBrush);
 	}
 
-		//Draw the junctions
-	QList<QPointF> junctions_list = junctions();
+		//Draw the junctions, unless the project draws an angled branch there
+		//instead (paintedPath())
+	QList<QPointF> junctions_list = drawsAngledBranches() ? QList<QPointF>() : junctions();
 	if (!junctions_list.isEmpty()) {
 		final_conductor_pen.setStyle(Qt::SolidLine);
 		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
@@ -2013,6 +2015,16 @@ bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
 	);
 }
 
+namespace {
+	//The open path through @p points
+QPainterPath polylinePath(const QVector<QPointF> &points)
+{
+	QPainterPath path;
+	path.addPolygon(QPolygonF(points));
+	return path;
+}
+}
+
 /**
 	@brief Conductor::paintedPath
 	@return the path drawn for this conductor: path(), with a hop at each
@@ -2029,12 +2041,19 @@ QPainterPath Conductor::paintedPath() const
 	if (!parent_diagram || !parent_diagram->project()) {
 		return path();
 	}
+	const bool angled = drawsAngledBranches();
 	const WireHops::Mode mode = parent_diagram->project()->wireHops();
 	if (mode == WireHops::Mode::None) {
-		return path();
+		if (!angled) {
+			return path();
+		}
+		const QVector<QPointF> drawn = drawnPoints();
+		return drawn.isEmpty() ? path() : polylinePath(drawn);
 	}
+		//Angled branches change the drawn points, so they are part of the key
+	const int cache_mode = int(mode) * 2 + (angled ? 1 : 0);
 	if (m_hops_generation == s_conductor_geometry_generation
-		&& m_hops_mode == int(mode)) {
+		&& m_hops_mode == cache_mode) {
 		return m_hops_path;
 	}
 
@@ -2057,9 +2076,10 @@ QPainterPath Conductor::paintedPath() const
 		s_hop_candidates_generation = s_conductor_geometry_generation;
 	}
 
-	m_hops_path = path();
+	const QVector<QPointF> drawn = angled ? drawnPoints() : QVector<QPointF>();
+	m_hops_path = drawn.isEmpty() ? path() : polylinePath(drawn);
 	m_hops_generation = s_conductor_geometry_generation;
-	m_hops_mode = int(mode);
+	m_hops_mode = cache_mode;
 
 	const QList<QPointF> points = segmentsToPoints();
 	if (points.size() < 2) {
@@ -2089,9 +2109,43 @@ QPainterPath Conductor::paintedPath() const
 		for (const QPointF &hop : scene_hops) {
 			hops.append(mapFromScene(hop));
 		}
-		m_hops_path = WireHops::path(QVector<QPointF>(points.begin(), points.end()), hops, mode);
+		m_hops_path = WireHops::path(drawn.isEmpty()
+										 ? QVector<QPointF>(points.begin(), points.end())
+										 : drawn,
+									 hops, mode);
 	}
 	return m_hops_path;
+}
+
+/**
+	@brief Conductor::drawsAngledBranches
+	@return true if this conductor's project draws an angled branch rather
+	than a junction dot where wires part (discussion #1158,
+	WiringRules::angledBranches()).
+*/
+bool Conductor::drawsAngledBranches() const
+{
+	const Diagram *parent_diagram = diagram();
+	return parent_diagram && parent_diagram->project()
+			&& WiringRules::angledBranches(parent_diagram->project()->wiringRules(),
+										   WiringRules::masterEnabled());
+}
+
+/**
+	@brief Conductor::drawnPoints
+	@return the points the conductor is drawn through, in its own
+	coordinates: segmentsToPoints(), with each corner where it parts from
+	another wire cut diagonally when the project draws angled branches.
+	Display only, the conductor's segments are not changed.
+*/
+QVector<QPointF> Conductor::drawnPoints() const
+{
+	const QList<QPointF> points = segmentsToPoints();
+	const QVector<QPointF> wire(points.begin(), points.end());
+	if (!drawsAngledBranches()) {
+		return wire;
+	}
+	return WiringRules::angledCorners(wire, junctions());
 }
 
 /**

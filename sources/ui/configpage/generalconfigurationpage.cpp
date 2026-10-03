@@ -20,6 +20,8 @@
 #include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
+#include "../../qetproject.h"
+#include "../../diagram.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../materiallist/materiallist.h"
@@ -336,7 +338,16 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
-	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
+	if (WiringRules::masterEnabled() != ui->m_wiring_rules_cb->isChecked()) {
+		WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
+			//Angled branches follow the master switch
+		const auto projects = QETApp::registeredProjects();
+		for (QETProject *project : projects) {
+			for (Diagram *diagram : project->diagrams()) {
+				diagram->update();
+			}
+		}
+	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());

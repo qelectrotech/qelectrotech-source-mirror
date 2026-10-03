@@ -473,7 +473,8 @@ add_dependencies(tst_wiringrules qelectrotech)
 target_include_directories(tst_wiringrules PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_wiringrules PRIVATE Qt::Test Qt::Xml)
 target_compile_definitions(tst_wiringrules PRIVATE
-  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # The routing behind qet.routeConductor(): conductorrouter.cpp needs only
 # Qt Core, so the geometry is tested without a scene.

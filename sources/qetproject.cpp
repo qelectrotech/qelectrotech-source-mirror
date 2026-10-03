@@ -1274,7 +1274,14 @@ WiringRules::Settings QETProject::wiringRules() const {
 */
 void QETProject::setWiringRules(const WiringRules::Settings &rules)
 {
+	const bool redraw = rules.angled_branches != m_wiring_rules.angled_branches;
 	m_wiring_rules = rules;
+		//Angled branches change how wires are drawn
+	if (redraw) {
+		for (Diagram *diagram : diagrams()) {
+			diagram->update();
+		}
+	}
 }
 
 /**

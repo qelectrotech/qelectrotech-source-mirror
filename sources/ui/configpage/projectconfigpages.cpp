@@ -180,6 +180,7 @@ void ProjectMainConfigPage::applyProjectConf()
 	WiringRules::Settings wiring_rules = m_project -> wiringRules();
 	wiring_rules.max_wires = max_wires_sb_ -> value();
 	wiring_rules.one_wire_per_report = one_wire_per_report_cb_ -> isChecked();
+	wiring_rules.angled_branches = branches_cb_ -> currentData().toBool();
 	if (m_project -> wiringRules() != wiring_rules) {
 		m_project -> setWiringRules(wiring_rules);
 		modified_project = true;
@@ -245,6 +246,13 @@ void ProjectMainConfigPage::initWidgets()
 								   "Les conducteurs déjà dessinés ne sont pas modifiés. "
 								   "4 correspond à deux embouts doubles, un de chaque côté de la vis.",
 								   "tooltip"));
+	branches_label_ = new QLabel(tr("Embranchements :", "label when configuring"));
+	branches_cb_ = new QComboBox();
+	branches_cb_ -> addItem(tr("Point de jonction", "wire branches"), false);
+	branches_cb_ -> addItem(tr("En biais", "wire branches"), true);
+	branches_cb_ -> setToolTip(tr("Là où des conducteurs se séparent, chacun part en biais au lieu d'un point : "
+								  "le schéma montre quel conducteur va où. Seul le dessin change.",
+								  "tooltip"));
 	one_wire_per_report_cb_ = new QCheckBox(tr("Un seul conducteur par renvoi de folio", "checkbox label"));
 	one_wire_per_report_cb_ -> setToolTip(tr("Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, "
 											 "celui qui continue sur l'autre folio.",
@@ -294,6 +302,11 @@ void ProjectMainConfigPage::initLayout()
 	max_wires_layout -> addStretch();
 	wiring_rules_layout -> addLayout(max_wires_layout);
 	wiring_rules_layout -> addWidget(one_wire_per_report_cb_);
+	QHBoxLayout *branches_layout = new QHBoxLayout();
+	branches_layout -> addWidget(branches_label_);
+	branches_layout -> addWidget(branches_cb_);
+	branches_layout -> addStretch();
+	wiring_rules_layout -> addLayout(branches_layout);
 	wiring_rules_layout -> addWidget(wiring_rules_off_label_);
 	main_layout0 -> addWidget(wiring_rules_gb_);
 
@@ -323,6 +336,7 @@ void ProjectMainConfigPage::readValuesFromProject()
 	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
 	max_wires_sb_ -> setValue(wiring_rules.max_wires);
 	one_wire_per_report_cb_ -> setChecked(wiring_rules.one_wire_per_report);
+	branches_cb_ -> setCurrentIndex(wiring_rules.angled_branches ? 1 : 0);
 		//The master switch wins over every project: say so rather than
 		//let the user set a rule that does nothing.
 	const bool master = WiringRules::masterEnabled();
@@ -330,6 +344,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 	max_wires_label_ -> setEnabled(master);
 	max_wires_sb_ -> setEnabled(master);
 	one_wire_per_report_cb_ -> setEnabled(master);
+	branches_label_ -> setEnabled(master);
+	branches_cb_ -> setEnabled(master);
 }
 
 /**

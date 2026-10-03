@@ -19,6 +19,10 @@
 #ifndef WIRINGRULES_H
 #define WIRINGRULES_H
 
+#include <QList>
+#include <QPointF>
+#include <QVector>
+
 class QDomElement;
 
 /**
@@ -46,11 +50,14 @@ namespace WiringRules
 		int max_wires = 0;
 			///A folio report takes one wire only
 		bool one_wire_per_report = false;
+			///Where wires branch, cut the corner diagonally instead of a dot
+		bool angled_branches = false;
 
 		bool isDefault() const { return *this == Settings(); }
 		bool operator==(const Settings &other) const {
 			return max_wires == other.max_wires
-					&& one_wire_per_report == other.one_wire_per_report;
+					&& one_wire_per_report == other.one_wire_per_report
+					&& angled_branches == other.angled_branches;
 		}
 		bool operator!=(const Settings &other) const { return !(*this == other); }
 	};
@@ -61,8 +68,17 @@ namespace WiringRules
 	Settings fromXml(const QDomElement &project_root);
 	void toXml(const Settings &settings, QDomElement &project_root);
 
+		///How far along each wire an angled branch starts, in scene units
+		///(a grid step is 10)
+	constexpr qreal branch_size = 5.0;
+
 	int limit(const Settings &settings, bool master_enabled, bool is_report);
 	bool hasRoom(int limit, int wires);
+
+	bool angledBranches(const Settings &settings, bool master_enabled);
+	QVector<QPointF> angledCorners(const QVector<QPointF> &wire,
+								   const QList<QPointF> &corners,
+								   qreal size = branch_size);
 }
 
 #endif // WIRINGRULES_H

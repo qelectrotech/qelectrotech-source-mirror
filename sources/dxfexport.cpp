@@ -281,6 +281,14 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			}
 			poly << cond->pos()+segment->secondPoint();
 		}
+			//Angled branches, as on the folio (discussion #1158)
+		const bool angled = cond -> drawsAngledBranches();
+		if (angled) {
+			poly.clear();
+			for (const QPointF &point : cond -> drawnPoints()) {
+				poly << cond->pos() + point;
+			}
+		}
 		Createdxf::layer = Layer::Wires;
 			//The wire's own colour, as on the folio (a two-colour wire gets
 			//its main one). Black comes out as BYLAYER, see Createdxf.
@@ -318,7 +326,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 
 		// Draw the junctions
 		Createdxf::layer = Layer::Junctions;
-		QList<QPointF> junctions_list = cond->junctions();
+		QList<QPointF> junctions_list = angled ? QList<QPointF>() : cond->junctions();
 		if (!junctions_list.isEmpty()) {
 			foreach(QPointF point, junctions_list) {
 				Createdxf::drawEllipse(file_path,QRectF(cond->pos().x() + point.x() - 1.5, cond->pos().y() + point.y() - 1.5, 3.0, 3.0),0);

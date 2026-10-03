@@ -26,6 +26,8 @@ namespace {
 	const QString element_name = QStringLiteral("wiring_rules");
 	const QString max_wires_attribute = QStringLiteral("max_wires_per_terminal");
 	const QString report_attribute = QStringLiteral("one_wire_per_report");
+	const QString branches_attribute = QStringLiteral("branches");
+	const QString angled_value = QStringLiteral("angled");
 
 		//The master switch is read on every wire drawn, so it is read from
 		//the settings once and kept; setMasterEnabled() keeps both in step.
@@ -72,6 +74,7 @@ WiringRules::Settings WiringRules::fromXml(const QDomElement &project_root)
 	}
 	settings.max_wires = qMax(0, rules.attribute(max_wires_attribute, QStringLiteral("0")).toInt());
 	settings.one_wire_per_report = rules.attribute(report_attribute) == QLatin1String("true");
+	settings.angled_branches = rules.attribute(branches_attribute) == angled_value;
 	return settings;
 }
 
@@ -92,6 +95,9 @@ void WiringRules::toXml(const Settings &settings, QDomElement &project_root)
 	}
 	if (settings.one_wire_per_report) {
 		rules.setAttribute(report_attribute, QStringLiteral("true"));
+	}
+	if (settings.angled_branches) {
+		rules.setAttribute(branches_attribute, angled_value);
 	}
 	project_root.appendChild(rules);
 }
@@ -123,4 +129,71 @@ int WiringRules::limit(const Settings &settings, bool master_enabled, bool is_re
 bool WiringRules::hasRoom(int limit, int wires)
 {
 	return limit <= 0 || wires < limit;
+}
+
+/**
+	@brief WiringRules::angledBranches
+	@return true if, where wires branch, each one's corner is cut diagonally
+	instead of a junction dot being drawn (discussion #1158). Display only:
+	no wire is changed.
+*/
+bool WiringRules::angledBranches(const Settings &settings, bool master_enabled)
+{
+	return master_enabled && settings.angled_branches;
+}
+
+/**
+	@brief WiringRules::angledCorners
+	Two wires leaving one line each turn at the same point, where a dot is
+	drawn. Cutting each one's corner diagonally instead draws a "Y": the
+	line splits, and each wire visibly goes its own way, so the drawing
+	shows which wire runs where.
+	@param wire : the points of a wire, corners included
+	@param corners : the corners of \a wire to cut; points that are not
+	a corner of \a wire are ignored
+	@param size : how far back along each side the cut starts, never more
+	than half of either side, so two cuts on one side cannot cross
+	@return \a wire with each listed corner replaced by the two ends of
+	its cut
+*/
+QVector<QPointF> WiringRules::angledCorners(const QVector<QPointF> &wire,
+											const QList<QPointF> &corners,
+											qreal size)
+{
+	if (wire.size() < 3 || corners.isEmpty() || size <= 0) {
+		return wire;
+	}
+
+	auto length = [](const QPointF &a, const QPointF &b) {
+		return qAbs(a.x() - b.x()) + qAbs(a.y() - b.y());
+	};
+	auto towards = [](const QPointF &from, const QPointF &to, qreal distance) {
+		const QPointF d = to - from;
+		const qreal l = qAbs(d.x()) + qAbs(d.y());
+		return l > 0 ? from + d * (distance / l) : from;
+	};
+
+	QVector<QPointF> result;
+	result << wire.first();
+	for (int i = 1 ; i < wire.size() - 1 ; ++i)
+	{
+		const QPointF &before = wire.at(i - 1);
+		const QPointF &corner = wire.at(i);
+		const QPointF &after = wire.at(i + 1);
+		bool listed = false;
+		for (const QPointF &c : corners) {
+			if (length(c, corner) < 0.01) {
+				listed = true;
+				break;
+			}
+		}
+		const qreal cut = qMin(size, qMin(length(before, corner), length(corner, after)) / 2);
+		if (!listed || cut <= 0) {
+			result << corner;
+			continue;
+		}
+		result << towards(corner, before, cut) << towards(corner, after, cut);
+	}
+	result << wire.last();
+	return result;
 }
