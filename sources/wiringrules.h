@@ -19,6 +19,9 @@
 #ifndef WIRINGRULES_H
 #define WIRINGRULES_H
 
+#include <QList>
+#include <QPointF>
+
 class QDomElement;
 
 /**
@@ -79,6 +82,9 @@ namespace WiringRules
 
 	int limit(const Settings &settings, bool master_enabled, bool is_report);
 	bool hasRoom(int limit, int wires);
+
+	bool chainsWires(const Settings &settings, bool master_enabled);
+	QList<int> chainOrder(const QList<QPointF> &points);
 }
 
 #endif // WIRINGRULES_H

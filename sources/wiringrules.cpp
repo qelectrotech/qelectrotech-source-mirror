@@ -175,6 +175,68 @@ bool WiringRules::hasRoom(int limit, int wires)
 }
 
 /**
+	@brief WiringRules::chainsWires
+	@return true if QElectroTech's own tools that wire several terminals at
+	once must wire them one after another (a chain) rather than all to one
+	of them (a star): a star gives that one terminal a wire per other
+	terminal, which the project's limit forbids.
+*/
+bool WiringRules::chainsWires(const Settings &settings, bool master_enabled)
+{
+	return master_enabled && settings.max_wires > 0;
+}
+
+/**
+	@brief WiringRules::chainOrder
+	The order in which to wire terminals at \a points one after another:
+	from the top left one (smallest x, then smallest y, the same terminal
+	the star used as its hub), each time to the nearest terminal not yet
+	wired. Distance is along the grid (|dx| + |dy|), since wires run
+	horizontally and vertically; a tie goes to the earlier point.
+	@return indexes into \a points, each once
+*/
+QList<int> WiringRules::chainOrder(const QList<QPointF> &points)
+{
+	QList<int> order;
+	if (points.isEmpty()) {
+		return order;
+	}
+
+	int current = 0;
+	for (int i = 1 ; i < points.size() ; ++i) {
+		const QPointF &p = points.at(i);
+		const QPointF &c = points.at(current);
+		if (p.x() < c.x() || (p.x() == c.x() && p.y() < c.y())) {
+			current = i;
+		}
+	}
+
+	QList<bool> done(points.size(), false);
+	order << current;
+	done[current] = true;
+	while (order.size() < points.size())
+	{
+		int nearest = -1;
+		qreal nearest_distance = 0;
+		for (int i = 0 ; i < points.size() ; ++i) {
+			if (done.at(i)) {
+				continue;
+			}
+			const QPointF d = points.at(i) - points.at(current);
+			const qreal distance = qAbs(d.x()) + qAbs(d.y());
+			if (nearest < 0 || distance < nearest_distance) {
+				nearest = i;
+				nearest_distance = distance;
+			}
+		}
+		order << nearest;
+		done[nearest] = true;
+		current = nearest;
+	}
+	return order;
+}
+
+/**
 	@brief WiringRules::turnsRuleOn
 	@param before, after : the rules in force before and after a change
 	@return true if the change turns on a rule that was off: QElectroTech

@@ -137,6 +137,49 @@ class tst_wiringrules : public QObject
 		return {};
 	}
 
+		// On a fixture with @p rules: a symbol wired to four others is
+		// deleted, so QElectroTech rewires the four to keep the potential.
+		// Returns the most wires any one of them ends with.
+	QString mostWiresAfterDeletingTheHub(const QString &rules)
+	{
+		const QString project = fixtureWith(rules);
+		const QString script_path = m_dir.filePath(QStringLiteral("hub%1.js").arg(m_run));
+		QFile script(script_path);
+		if (project.isEmpty() || !script.open(QIODevice::WriteOnly))
+			return {};
+			// Placed on a diagonal, so no two terminals line up and nothing
+			// is auto-connected.
+		script.write(
+			"var p = 'embed://import/probe/v2_fuse.elmt';\n"
+			"var hub = qet.addElement(0, p, 400, 400);\n"
+			"var others = [];\n"
+			"for (var i = 1; i <= 4; ++i) others.push(qet.addElement(0, p, 400 + 70 * i, 400 + 90 * i));\n"
+			"others.forEach(function (o) { qet.addConductor(0, hub, 0, o, 0); });\n"
+			"qet.deleteElement(0, hub);\n"
+			"var count = {};\n"
+			"qet.conductorUuids(0).forEach(function (u) {\n"
+			"  qet.conductorEnds(0, u).forEach(function (e) { count[e] = (count[e] || 0) + 1; }); });\n"
+			"var most = 0;\n"
+			"others.forEach(function (o) { most = Math.max(most, count[o + ' terminal 0'] || 0); });\n"
+			"qet.log('PROBE ' + most);\n");
+		script.close();
+
+		QProcess proc;
+		proc.setProcessEnvironment(sandbox());
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
+		if (!proc.waitForFinished(60000))
+			return {};
+		const QString out = QString::fromUtf8(proc.readAllStandardOutput()
+											  + proc.readAllStandardError());
+		const QString mark = QStringLiteral("PROBE ");
+		for (const QString &line : out.split(QLatin1Char('\n'))) {
+			const int i = line.indexOf(mark);
+			if (i >= 0)
+				return line.mid(i + mark.size()).trimmed();
+		}
+		return {};
+	}
+
 private slots:
 	void initTestCase()
 	{
@@ -171,6 +214,39 @@ private slots:
 		QVERIFY(!WiringRules::hasRoom(2, 2));
 		QVERIFY(!WiringRules::hasRoom(2, 3));
 		QVERIFY(!WiringRules::hasRoom(1, 1));
+	}
+
+	void chainsOnlyUnderALimit()
+	{
+		WiringRules::Settings rules;
+		QVERIFY(!WiringRules::chainsWires(rules, true));
+		rules.one_wire_per_report = true;
+		QVERIFY(!WiringRules::chainsWires(rules, true));
+		rules.max_wires = 2;
+		QVERIFY(WiringRules::chainsWires(rules, true));
+		QVERIFY(!WiringRules::chainsWires(rules, false));
+	}
+
+	void chainOrder()
+	{
+		QCOMPARE(WiringRules::chainOrder({}), QList<int>());
+		QCOMPARE(WiringRules::chainOrder({QPointF(5, 5)}), QList<int>({0}));
+
+			// Starts top left, then always the nearest along the grid
+		const QList<QPointF> row {QPointF(300, 0), QPointF(0, 0), QPointF(200, 0), QPointF(100, 0)};
+		QCOMPARE(WiringRules::chainOrder(row), QList<int>({1, 3, 2, 0}));
+
+			// Same x: the higher one starts
+		const QList<QPointF> column {QPointF(0, 100), QPointF(0, 0), QPointF(0, 50)};
+		QCOMPARE(WiringRules::chainOrder(column), QList<int>({1, 2, 0}));
+
+			// Each index exactly once
+		const QList<QPointF> scattered {QPointF(40, 90), QPointF(10, 300), QPointF(220, 10),
+										QPointF(10, 10), QPointF(220, 300)};
+		QList<int> order = WiringRules::chainOrder(scattered);
+		QCOMPARE(order.first(), 3);
+		std::sort(order.begin(), order.end());
+		QCOMPARE(order, QList<int>({0, 1, 2, 3, 4}));
 	}
 
 	void projectOverridesApplication()
@@ -292,6 +368,18 @@ private slots:
 		QCOMPARE(addWireToWiredTerminal(own_none, false, 1), QStringLiteral("true"));
 			// ...and the master switch still turns it off
 		QCOMPARE(addWireToWiredTerminal(plain, true, 1), QStringLiteral("true"));
+	}
+
+	void deletingASymbolChainsTheWires()
+	{
+		SKIP_WITHOUT_SCRIPTING;
+			// No rule: the four are wired to one of them, as on master
+		QCOMPARE(mostWiresAfterDeletingTheHub(QString()), QStringLiteral("3"));
+
+			// A limit: one after another, none gets more than two
+		QCOMPARE(mostWiresAfterDeletingTheHub(
+					 QStringLiteral("<wiring_rules max_wires_per_terminal=\"4\"/>")),
+				 QStringLiteral("2"));
 	}
 };
 
