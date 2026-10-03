@@ -121,6 +121,7 @@ void projectDataBase::updateDB()
 	if (!m_content_changed)
 	{
 		flushDrawingItems();
+		flushElementPositions();
 		emit dataBaseUpdated();
 		return;
 	}
@@ -760,6 +761,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//Every read from outside comes through here, so this is the one
 		//place the queue has to be emptied for a reader to see current rows.
 	flushDrawingItems();
+	flushElementPositions();
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -851,6 +853,8 @@ void projectDataBase::addElement(Element *element)
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
+	connect(element, &QGraphicsObject::xChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
+	connect(element, &QGraphicsObject::yChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
 
 	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
@@ -867,6 +871,7 @@ void projectDataBase::addElement(Element *element)
 void projectDataBase::removeElement(Element *element)
 {
 	m_content_changed = true;
+	m_moved_elements.remove(element);
 	bool changed = false;
 
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
@@ -1465,6 +1470,51 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 	m_drawing_item_row.insert(object, uuid);
 	m_drawing_row_owner.insert(uuid, object);
 	return true;
+}
+
+/**
+	@brief projectDataBase::elementMoved
+	Queue the sender's cell to be rewritten. A symbol's row is written when
+	it is added to a folio, often before it is put where it goes, and a
+	move writes nothing: without this its cell (element.pos) stays the one
+	it was added at until the next full rebuild. Queued for the same reason
+	as drawingItemChanged().
+*/
+void projectDataBase::elementMoved()
+{
+	if (auto element = qobject_cast<Element *>(sender())) {
+		m_moved_elements.insert(element, element);
+	}
+}
+
+/**
+	@brief projectDataBase::flushElementPositions
+	Rewrite the cell of every symbol queued by elementMoved().
+*/
+void projectDataBase::flushElementPositions()
+{
+	if (m_moved_elements.isEmpty()) {
+		return;
+	}
+
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("UPDATE element SET pos = :pos WHERE uuid = :uuid"));
+	const bool own_transaction = m_data_base.transaction();
+	for (const QPointer<Element> &element : std::as_const(m_moved_elements)) {
+		if (!element || !element->diagram()) {
+			continue;
+		}
+		query.bindValue(QStringLiteral(":pos"),
+						element->diagram()->convertPosition(element->scenePos()).toString());
+		query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::flushElementPositions update error : " << query.lastError();
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+	m_moved_elements.clear();
 }
 
 /**

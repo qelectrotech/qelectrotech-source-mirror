@@ -60,28 +60,26 @@ WiringRulesListDialog::WiringRulesListDialog(QETProject *project,
 				"SELECT folio, pos, element_label, element_type, terminal_name, "
 				"terminal_index, wires FROM terminal_wires_view "
 				"ORDER BY folio, pos, element_label, terminal_index"));
-		if (query.exec())
+			//newQuery() returns the query already executed
+		while (query.next())
 		{
-			while (query.next())
-			{
-				const int wires = query.value(6).toInt();
-				const int limit = WiringRules::limit(rules, true,
-													 WiringRules::isReportType(query.value(3).toString()));
-				if (limit <= 0 || wires <= limit) {
-					continue;
-				}
-				const QString terminal = query.value(4).toString().isEmpty()
-						? QString::number(query.value(5).toInt() + 1)
-						: query.value(4).toString();
-				const int row = table->rowCount();
-				table->insertRow(row);
-				table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString()));
-				table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString()));
-				table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString()));
-				table->setItem(row, 3, new QTableWidgetItem(terminal));
-				table->setItem(row, 4, new QTableWidgetItem(QString::number(wires)));
-				table->setItem(row, 5, new QTableWidgetItem(QString::number(limit)));
+			const int wires = query.value(6).toInt();
+			const int limit = WiringRules::limit(rules, true,
+												 WiringRules::isReportType(query.value(3).toString()));
+			if (limit <= 0 || wires <= limit) {
+				continue;
 			}
+			const QString terminal = query.value(4).toString().isEmpty()
+					? QString::number(query.value(5).toInt() + 1)
+					: query.value(4).toString();
+			const int row = table->rowCount();
+			table->insertRow(row);
+			table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString()));
+			table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString()));
+			table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString()));
+			table->setItem(row, 3, new QTableWidgetItem(terminal));
+			table->setItem(row, 4, new QTableWidgetItem(QString::number(wires)));
+			table->setItem(row, 5, new QTableWidgetItem(QString::number(limit)));
 		}
 	}
 	table->resizeColumnsToContents();

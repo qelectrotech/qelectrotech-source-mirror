@@ -146,6 +146,8 @@ class projectDataBase : public QObject
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
 		void flushDrawingItems();
+		void elementMoved();
+		void flushElementPositions();
 		void forgetDrawingItem(QObject *object);
 		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
 		void watchConductor(Conductor *conductor);
@@ -207,6 +209,10 @@ class projectDataBase : public QObject
 		QHash<QObject *, QUuid> m_drawing_item_row;
 		QHash<QUuid, QObject *> m_drawing_row_owner;
 		QSet<QObject *> m_dirty_drawing_items;
+			//Symbols moved since their row was written, to have their
+			//cell rewritten: the same queue as m_dirty_drawing_items, for
+			//the element table. @see elementMoved().
+		QHash<QObject *, QPointer<Element>> m_moved_elements;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

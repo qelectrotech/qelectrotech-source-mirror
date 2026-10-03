@@ -404,8 +404,12 @@ private slots:
 			"  var n = count[r.element_uuid + ' terminal ' + r.terminal_index] || 0;\n"
 			"  if (n != r.wires) ++wrong;\n"
 			"  if (r.element_uuid == hub && r.terminal_index == 0) hub_wires = r.wires; });\n"
+			"function cell() { return qet.query(\"SELECT pos FROM terminal_wires_view WHERE element_uuid = '\"\n"
+			"  + hub + \"' AND terminal_index = 0\")[0].pos; }\n"
+			"var before = cell();\n"
+			"qet.moveElement(0, hub, 600, 300);\n"
 			"qet.log('PROBE ' + JSON.stringify({rows: rows.length, ends: Object.keys(count).length,\n"
-			"  wrong: wrong, hub: hub_wires, error: qet.queryError()}));\n");
+			"  wrong: wrong, hub: hub_wires, before: before, after: cell(), error: qet.queryError()}));\n");
 		script.close();
 
 		QProcess proc;
@@ -424,6 +428,10 @@ private slots:
 		QCOMPARE(r.value(QStringLiteral("wrong")).toInt(), 0);
 		QCOMPARE(r.value(QStringLiteral("rows")).toInt(), r.value(QStringLiteral("ends")).toInt());
 		QCOMPARE(r.value(QStringLiteral("hub")).toInt(), 3);
+			// The list says which cell: moving the symbol moves its row
+		QVERIFY(!r.value(QStringLiteral("before")).toString().isEmpty());
+		QVERIFY2(r.value(QStringLiteral("after")) != r.value(QStringLiteral("before")),
+				 qPrintable(line));
 	}
 
 	void deletingASymbolChainsTheWires()
