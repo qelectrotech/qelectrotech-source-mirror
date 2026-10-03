@@ -58,6 +58,7 @@ class CrossRefItem : public QGraphicsObject
 	private:
 		void init();
 		void setUpConnection();
+		void stackAtBottom();
 	
 	public:
 		enum { Type = UserType + 1009 };

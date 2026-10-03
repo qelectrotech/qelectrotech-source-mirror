@@ -117,6 +117,7 @@ void CrossRefItem::setUpConnection()
 		set=true;
 	else if(m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group) //Snap to bottom of element and parent is the element itself
 	{
+		m_update_connection << connect(m_element, &Element::xChanged, this, &CrossRefItem::autoPos);
 		m_update_connection << connect(m_element, &Element::yChanged, this, &CrossRefItem::autoPos);
 		m_update_connection << connect(m_element, &Element::rotationChanged, this, &CrossRefItem::autoPos);
 		set=true;
@@ -329,13 +330,72 @@ void CrossRefItem::autoPos()
 
 	//We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
-		QGIUtility::centerToBottomDiagram(this,
-				      m_element,
-				      m_properties.offset() <= 40
-				      ? 5
-				      : m_properties.offset());
+		stackAtBottom();
 	else
 		QGIUtility::centerToParentBottom(this);
+}
+
+/**
+	@brief CrossRefItem::stackAtBottom
+	Places every cross reference of this folio that snaps to the bottom.
+	Each one is centred under its element at the bottom of the folio, and
+	when two would overlap, the one of the higher element goes above the
+	other: several coils in one column get their crosses stacked in the
+	same order as the coils, instead of all on the same spot.
+*/
+void CrossRefItem::stackAtBottom()
+{
+	Diagram *diagram = m_element->diagram();
+	if (!diagram) return;
+
+	QList<CrossRefItem *> xrefs;
+	for (QGraphicsItem *item : diagram->items()) {
+		if (item->type() != CrossRefItem::Type) continue;
+		auto xref = static_cast<CrossRefItem *>(item);
+		if (xref->m_properties.snapTo() == XRefProperties::Bottom
+			&& !xref->m_text && !xref->m_group
+			&& xref->m_element->elementData().m_master_type != ElementData::PLC)
+			xrefs << xref;
+	}
+	if (!xrefs.contains(this)) xrefs << this;
+
+	// The lowest element first, so it keeps the bottom of the folio.
+	// Position, then uuid, so the order is the same on every load.
+	std::sort(xrefs.begin(), xrefs.end(),
+			  [](const CrossRefItem *a, const CrossRefItem *b) {
+		const QPointF pa = a->m_element->sceneBoundingRect().center();
+		const QPointF pb = b->m_element->sceneBoundingRect().center();
+		if (pa.y() != pb.y()) return pa.y() > pb.y();
+		if (pa.x() != pb.x()) return pa.x() < pb.x();
+		return a->m_element->uuid() < b->m_element->uuid();
+	});
+
+	const qreal gap = 5;
+	QList<QRectF> placed;
+	for (CrossRefItem *xref : std::as_const(xrefs)) {
+		const qreal offset = xref->m_properties.offset();
+		QGIUtility::centerToBottomDiagram(xref, xref->m_element,
+										  offset <= 40 ? 5 : offset);
+		if (xref->boundingRect().isEmpty()) continue;
+
+		// Move up past every cross already placed that it would overlap.
+		QRectF rect = xref->sceneBoundingRect();
+		const qreal bottom = rect.bottom();
+		for (bool moved = true; moved; ) {
+			moved = false;
+			for (const QRectF &other : std::as_const(placed))
+				if (rect.left() < other.right() && other.left() < rect.right()
+					&& rect.top() < other.bottom() + gap
+					&& other.top() - gap < rect.bottom()) {
+					rect.moveBottom(other.top() - gap);
+					moved = true;
+				}
+		}
+		if (rect.bottom() != bottom)
+			xref->setPos(xref->parentItem()->mapFromScene(
+				xref->scenePos() + QPointF(0, rect.bottom() - bottom)));
+		placed << rect;
+	}
 }
 
 /**
