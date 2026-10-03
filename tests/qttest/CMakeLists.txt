@@ -441,6 +441,18 @@ target_link_libraries(tst_potentialtextcarrier PRIVATE Qt::Test)
 target_compile_definitions(tst_potentialtextcarrier PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# Junction dots: a wire's corner that lies on another wire of the same
+# potential gets a dot, even when the two share no terminal (issue #1280).
+# Exports fixtures/junction_dot_shared_potential.qet through the real binary.
+add_executable(
+  tst_junctiondots
+  tst_junctiondots.cpp)
+add_test(NAME tst_junctiondots COMMAND tst_junctiondots)
+add_dependencies(tst_junctiondots qelectrotech)
+target_link_libraries(tst_junctiondots PRIVATE Qt::Test)
+target_compile_definitions(tst_junctiondots PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # With SOURCE_DATE_EPOCH set, --export-pdf writes the same bytes for the
 # same project in every run. Exports examples/741.qet several times, in
 # separate processes.

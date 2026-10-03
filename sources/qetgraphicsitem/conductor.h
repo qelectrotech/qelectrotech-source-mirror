@@ -237,6 +237,7 @@ class Conductor : public QGraphicsObject
 		uint segmentsCount(QET::ConductorSegmentType = QET::Both) const;
 		QList<QPointF> segmentsToPoints() const;
 		QList<ConductorBend> bends() const;
+		bool bendMakesJunction(const Conductor *, const QPointF &, Qt::Corner) const;
 
 		void pointsToSegments(const QList<QPointF>&);
 		Qt::Corner currentPathType() const;

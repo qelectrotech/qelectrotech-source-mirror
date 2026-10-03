@@ -2107,16 +2107,58 @@ QPainterPath Conductor::paintedPath() const
 }
 
 /**
-	@return la liste des positions des jonctions avec d'autres conducteurs
+	@return true if \a scene_point, where this conductor bends with
+	\a bend_type, lies on one of the segments of \a c and \a c does not
+	bend the same way at the same point.
+*/
+bool Conductor::bendMakesJunction(const Conductor *c, const QPointF &scene_point,
+								  Qt::Corner bend_type) const
+{
+		// exprime le point dans les coordonnees de l'autre conducteur
+	const QPointF conductor_point = c -> mapFromScene(scene_point);
+	bool on_conductor = false;
+	for (ConductorSegment *segment : c -> segmentsList())
+	{
+		if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint()))
+		{
+			on_conductor = true;
+			break;
+		}
+	}
+	if (!on_conductor)
+		return false;
+
+		// ce point commun ne doit pas etre une bifurcation identique a celle-ci
+	for (const ConductorBend &cb : c -> bends())
+	{
+		if (cb.first == conductor_point && cb.second == bend_type)
+			return false;
+	}
+	return true;
+}
+
+/**
+	@return the positions, in this conductor's coordinates, of the junction
+	dots this conductor draws: each of its bends that lies on another
+	conductor of the same potential, unless that conductor bends the same
+	way at the same point.
 */
 QList<QPointF> Conductor::junctions() const
 {
 	QList<QPointF> junctions_list;
 
-	// pour qu'il y ait des jonctions, il doit y avoir d'autres conducteurs et des bifurcations
-	QList<Conductor *> other_conductors = relatedConductors(this);
 	QList<ConductorBend> bends_list = bends();
-	if (other_conductors.isEmpty() || bends_list.isEmpty()) {
+	if (bends_list.isEmpty()) {
+		return(junctions_list);
+	}
+
+		// Every conductor of the potential on this folio, not only those on
+		// this conductor's own terminals: a bend can lie on a conductor it
+		// shares no terminal with, e.g. when the horizontal parts of a chain
+		// of conductors are dragged over each other (issue #1280).
+	const QList<Conductor *> other_conductors =
+			const_cast<Conductor *>(this)->relatedPotentialConductors(false).values();
+	if (other_conductors.isEmpty()) {
 		return(junctions_list);
 	}
 
@@ -2139,37 +2181,18 @@ QList<QPointF> Conductor::junctions() const
 		// si le point n'est pas une bifurcation, il ne peut etre une jonction (enfin pas au niveau de ce conducteur)
 		if (!is_bend) continue;
 
-		bool is_junction = false;
 		QPointF scene_point = mapToScene(point);
-		foreach(Conductor *c, other_conductors)
+
+		bool is_junction = false;
+		for (Conductor *c : other_conductors)
 		{
-				// exprime le point dans les coordonnees de l'autre conducteur
-			QPointF conductor_point = c -> mapFromScene(scene_point);
-				// recupere les segments de l'autre conducteur
-			QList<ConductorSegment *> c_segments = c -> segmentsList();
-			if (c_segments.isEmpty())
-				continue;
-				// parcoure les segments a la recherche d'un point commun
-			for (int j = 0 ; j < c_segments.count() ; ++ j)
+			if (bendMakesJunction(c, scene_point, current_bend_type))
 			{
-				ConductorSegment *segment = c_segments[j];
-					// un point commun a ete trouve sur ce segment
-				if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint()))
-				{
-					is_junction = true;
-					// ce point commun ne doit pas etre une bifurcation identique a celle-ci
-					QList<ConductorBend> other_conductor_bends = c -> bends();
-					foreach(ConductorBend cb, other_conductor_bends)
-					{
-						if (cb.first == conductor_point && cb.second == current_bend_type)
-						{
-							is_junction = false;
-						}
-					}
-				}
-				if (is_junction) junctions_list << point;
+				is_junction = true;
+				break;
 			}
 		}
+		if (is_junction) junctions_list << point;
 	}
 	return(junctions_list);
 }
