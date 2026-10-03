@@ -31,8 +31,9 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
 
-# Build with KDE Frameworks.
-option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
+# Build a minimal bundled KDE Frameworks library if ON.
+# If OFF, the system KDE Frameworks library will be used instead.
+option(BUILD_KF "Build minimal KDE Frameworks library" OFF)
 
 # Precompiled headers for the Qt umbrella headers.
 #

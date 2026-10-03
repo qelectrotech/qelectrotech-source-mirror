@@ -23,11 +23,7 @@
 #include "conductorpropertieswidget.h"
 #include "../qtextorientationspinboxwidget.h"
 
-#ifdef BUILD_WITHOUT_KF
-#	include "nokde/kcolorbutton.h"
-#else
-#	include <KColorButton>
-#endif
+#include <KColorButton>
 
 #include <QAbstractButton>
 #include <QAbstractSpinBox>

@@ -107,11 +107,7 @@
 #include <QLabel>
 #include <QUrl>
 #include <algorithm>
-#ifdef BUILD_WITHOUT_KF
-#	include "ui/nokde/kautosavefile.h"
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <KAutoSaveFile>
 
 /**
 	@brief QETDiagramEditor::QETDiagramEditor
@@ -2240,7 +2236,7 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		// here makes the button's appearance match its actual state
 		// regardless of whether Qt's own change notification fired
 		// correctly.
-		
+
 		if (DiagramView *dv = currentDiagramView())
 			dv->setFocus();  // so the view (and the active tool) actually receives Escape etc
 
@@ -2931,7 +2927,7 @@ void QETDiagramEditor::slot_updateWindowsMenu()
 		action -> setStatusTip(QString(tr("Active le projet « %1 »")).arg(pv_title));
 		action -> setCheckable(true);
 		action -> setChecked(project_view == currentProjectView());
-		connect(action, &QAction::triggered, &windowMapper, qOverload<>(&QSignalMapper::map));		
+		connect(action, &QAction::triggered, &windowMapper, qOverload<>(&QSignalMapper::map));
 		windowMapper.setMapping(action, project_view);
 	}
 }

@@ -16,7 +16,7 @@
 
 message(" - qet_compilation_vars")
 
-# Note: GuiPrivate is intentionally NOT in this list. 
+# Note: GuiPrivate is intentionally NOT in this list.
 # Qt >= 6.7 ships it as a proper find_package component, but some distro
 # packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
 # and only provide the implicit Qt6::GuiPrivate target created alongside
@@ -904,17 +904,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
-if(NOT BUILD_WITH_KF)
-  list(APPEND QET_SRC_FILES
-    ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
-    ${QET_DIR}/sources/ui/nokde/kautosavefile.h
-    ${QET_DIR}/sources/ui/nokde/kcolorbutton.cpp
-    ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
-    ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
-    ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
-  )
-endif()
-
 list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
     ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
@@ -1003,13 +992,13 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
-  ${QET_DIR}/lang/qet_nl_BE.ts  
+  ${QET_DIR}/lang/qet_nl_BE.ts
   ${QET_DIR}/lang/qet_no.ts
   ${QET_DIR}/lang/qet_pl.ts
   ${QET_DIR}/lang/qet_pt.ts
   ${QET_DIR}/lang/qet_pt_BR.ts
   ${QET_DIR}/lang/qet_ro.ts
-  ${QET_DIR}/lang/qet_rs.ts  
+  ${QET_DIR}/lang/qet_rs.ts
   ${QET_DIR}/lang/qet_ru.ts
   ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_sl.ts

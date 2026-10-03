@@ -31,11 +31,7 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
-#ifdef BUILD_WITHOUT_KF
-#	include "ui/nokde/kautosavefile.h"
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <KAutoSaveFile>
 
 #include <QHash>
 #include <QSet>

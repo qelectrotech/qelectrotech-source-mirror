@@ -1,0 +1,38 @@
+KCoreAddons bundled source provenance
+======================================
+
+This directory contains a minimal subset of KDE Frameworks KCoreAddons,
+used by QElectroTech when the bundled minimal KF build is selected.
+
+Upstream project:
+  https://invent.kde.org/frameworks/kcoreaddons
+  Git tag: v6.30.0
+
+The bundled KDE-derived files are the files in this directory whose source
+headers identify them as part of the KDE libraries and contain an
+SPDX-License-Identifier: LGPL-2.0-or-later notice. The bundled subset is:
+
+  include/kautosavefile.h
+  include/krandom.h
+  src/kautosavefile.cpp
+  src/krandom.cpp
+
+The following files were added by QElectroTech for the minimal bundled build
+and are not part of the KDE Frameworks KCoreAddons library:
+
+  CMakeLists.txt
+  include/KAutoSaveFile
+  include/kcoreaddons_debug.h
+  include/kcoreaddons_export.h
+
+The QElectroTech-added files provide the local CMake target, forwarding
+header, logging-category support, and static-build export definitions needed
+by this reduced build. They are covered by the QElectroTech license notices
+in those files and are not relicensed KDE code.
+
+The KDE-derived files retain their upstream copyright and license notices.
+See licenses/KDE-Frameworks.NOTICE and licenses/KDE-Frameworks.LICENSE in the
+QElectroTech source tree.
+
+The full KDE Frameworks library is not included here. This directory contains
+only the subset listed above, together with QElectroTech build/support files.

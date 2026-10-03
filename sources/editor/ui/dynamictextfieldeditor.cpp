@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -142,8 +142,6 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
-#ifdef BUILD_WITHOUT_KF
-#else
 			//Block signals while loading the colour into the button.
 			//KColorButton::changed fires on a programmatic setColor() as well
 			//as on user interaction, and m_color_kpb_changed() applies the new
@@ -156,7 +154,6 @@ void DynamicTextFieldEditor::updateForm()
 			const QSignalBlocker blocker(m_color_kpb);
 			m_color_kpb -> setColor(m_text_field.data() -> color());
 		}
-#endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 
@@ -182,8 +179,6 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF
-#else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
 
@@ -191,7 +186,6 @@ void DynamicTextFieldEditor::setupWidget()
 			this, &DynamicTextFieldEditor::m_color_kpb_changed);
 
 	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
-#endif
 }
 
 void DynamicTextFieldEditor::setUpConnections()

@@ -72,20 +72,6 @@ add_executable(
     ${QET_DIR}/sources/borderproperties.h
     )
 
-if(NOT BUILD_WITH_KF)
-    target_sources(
-        ${PROJECT_NAME}
-        PRIVATE
-        src/kautosavefile_test.cpp
-        ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
-        )
-    target_include_directories(
-        ${PROJECT_NAME}
-        PRIVATE
-        ${QET_DIR}/sources/ui/nokde
-        )
-endif()
-
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC

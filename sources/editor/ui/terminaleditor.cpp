@@ -40,15 +40,9 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, QWidget *parent) :
 {
 	ui->setupUi(this);
 
-#ifdef BUILD_WITHOUT_KF
-	m_color_pb = new QPushButton(this);
-	m_color_pb->setMinimumSize(40, 24);
-	connect(m_color_pb, &QPushButton::clicked, this, &TerminalEditor::labelColorClicked);
-#else
 	m_color_pb = new KColorButton(this);
 	m_color_pb->setMinimumSize(40, 24);
 	connect(m_color_pb, &KColorButton::changed, this, &TerminalEditor::labelColorClicked);
-#endif
 
 	QLayout *layout = ui->m_color_widget->parentWidget()->layout();
 	layout->replaceWidget(ui->m_color_widget, m_color_pb);
@@ -93,13 +87,7 @@ void TerminalEditor::updateForm()
 	ui->m_label_rotation_sb->setValue(static_cast<int>(m_part->labelRotation()));
 	ui->m_label_frame_cb->setChecked(m_part->labelFrame());
 
-#ifdef BUILD_WITHOUT_KF
-	QPixmap px(16, 16);
-	px.fill(m_part->labelColor());
-	m_color_pb->setIcon(QIcon(px));
-#else
 	m_color_pb->setColor(m_part->labelColor());
-#endif
 
 	ui->m_text_props_gb->setEnabled(m_part->showName());
 
@@ -410,21 +398,12 @@ void TerminalEditor::labelColorClicked()
 	if (m_locked) return;
 	m_locked = true;
 
-#ifdef BUILD_WITHOUT_KF
-	QColor new_color = QColorDialog::getColor(m_part->labelColor(), this);
-	if (new_color.isValid() && m_part->labelColor() != new_color) {
-		auto undo = new QPropertyUndoCommand(m_part, "label_color", m_part->labelColor(), new_color);
-		undo->setText(tr("Modifier la couleur du label"));
-		undoStack().push(undo);
-	}
-#else
 	QColor new_color = m_color_pb->color();
 	if (new_color.isValid() && m_part->labelColor() != new_color) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_color", m_part->labelColor(), new_color);
 		undo->setText(tr("Modifier la couleur du label"));
 		undoStack().push(undo);
 	}
-#endif
 	m_locked = false;
 }
 

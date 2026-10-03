@@ -21,7 +21,7 @@ BUNDLE=$APPNAME.app
 IDENTITY="Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)"
 
 QT_MAJOR="${QT_MAJOR:-6}"
-BUILD_WITH_KF="${BUILD_WITH_KF:-ON}"
+BUILD_KF="${BUILD_KF:-OFF}"
 BUILD_DIR="build-macos-arm64"
 
 # Temp paths
@@ -85,7 +85,7 @@ fi
 ### build with CMake #################################################
 echo
 echo "______________________________________________________________"
-echo "Run CMake configure + build (Qt${QT_MAJOR}, BUILD_WITH_KF=${BUILD_WITH_KF}):"
+echo "Run CMake configure + build (Qt${QT_MAJOR}, BUILD_KF=${BUILD_KF}):"
 
 if [ -d $BUNDLE ] ; then
     echo "Removing old bundle..."
@@ -101,12 +101,11 @@ cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
     -DQT_VERSION_MAJOR=$QT_MAJOR \
-    -DBUILD_WITH_KF=$BUILD_WITH_KF \
-    -DBUILD_KF=OFF \
+    -DBUILD_KF=$BUILD_KF \
     -DQET_EXPORT_PROJECT_DB=ON \
     -DPACKAGE_TESTS=OFF \
     -DQET_ENABLE_SPACEMOUSE=ON \
-    -DQET_SPACEMOUSE_BACKEND=hid 
+    -DQET_SPACEMOUSE_BACKEND=hid
 
 if [ $? -ne 0 ]; then
     echo "ERROR: cmake configure failed."

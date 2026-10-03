@@ -15,35 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "kcolorcombo.h"
 
-#include <QVariant>
+/**
+ * @file KColorButton
+ * @brief Wrapper for KColorButton from KWidgetsAddons.
+ * Forwards to kcolorbutton.h. Color picker button with dialog.
+ */
 
-KColorCombo::KColorCombo(QWidget *parent) :
-	QComboBox{parent}
-{
-	connect(
-		this,
-		QOverload<int>::of(&QComboBox::activated),
-		this,
-		[this](int index) {
-			emit activated(itemData(index).value<QColor>());
-		});
-}
-
-void KColorCombo::setColors(const QList<QColor> &colors)
-{
-	clear();
-	for (const auto &color : colors) {
-		addItem(color.name(), color);
-	}
-}
-
-QColor KColorCombo::color(int index) const
-{
-	if (index < 0 || index >= count()) {
-		return {};
-	}
-
-	return itemData(index).value<QColor>();
-}
+#pragma once
+#include "kcolorbutton.h"

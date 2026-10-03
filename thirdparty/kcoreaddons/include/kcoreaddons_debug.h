@@ -15,34 +15,15 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef QET_KCOLORBUTTON_H
-#define QET_KCOLORBUTTON_H
 
-#include <QColor>
-#include <QPushButton>
+/**
+ * @file kcoreaddons_debug.h
+ * @brief Minimal Qt logging category for kcoreaddons.
+ * Defines "kf.kcoreaddons" category controllable via QT_LOGGING_RULES.
+ */
 
-class KColorButton : public QPushButton
-{
-		Q_OBJECT
+#include <QLoggingCategory>
 
-	public:
-		explicit KColorButton(QWidget *parent = nullptr);
+QLoggingCategory kf_kcoreaddons_category("kf.kcoreaddons");
 
-		QColor color() const;
-
-	public slots:
-		void setColor(const QColor &color);
-
-	signals:
-		void changed(const QColor &color);
-
-	private slots:
-		void chooseColor();
-
-	private:
-		void updateButton();
-
-		QColor m_color;
-};
-
-#endif // QET_KCOLORBUTTON_H
+#define KCOREADDONS_DEBUG kf_kcoreaddons_category

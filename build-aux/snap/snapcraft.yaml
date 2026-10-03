@@ -104,7 +104,6 @@ parts:
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DQT_VERSION_MAJOR=6 \
-        -DBUILD_WITH_KF=ON \
         -DBUILD_KF=OFF \
         -DPACKAGE_TESTS=OFF \
         -DBUILD_PUGIXML=ON \

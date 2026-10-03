@@ -25,10 +25,7 @@
 #include <QSpinBox>
 #include <QLineEdit>
 #include <QPushButton>
-#ifdef BUILD_WITHOUT_KF
-#else
 #include <KColorButton>
-#endif
 class PartText;
 
 class TextEditor : public ElementItemEditor {
@@ -65,10 +62,7 @@ class TextEditor : public ElementItemEditor {
 		QSpinBox *m_size_sb;
 		QLineEdit *m_line_edit;
 		QPushButton *m_font_pb;
-#ifdef BUILD_WITHOUT_KF
-#else
 		KColorButton *m_color_pb;
-#endif
 };
 
 #endif // TEXTEDITOR_H

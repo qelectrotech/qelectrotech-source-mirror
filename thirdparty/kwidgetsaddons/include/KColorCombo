@@ -15,24 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef QET_KCOLORCOMBO_H
-#define QET_KCOLORCOMBO_H
 
-#include <QColor>
-#include <QComboBox>
+/**
+ * @file KColorCombo
+ * @brief Wrapper for KColorCombo from KWidgetsAddons.
+ * Forwards to kcolorcombo.h. Color selection combo box with custom color dialog.
+ */
 
-class KColorCombo : public QComboBox
-{
-		Q_OBJECT
-
-	public:
-		explicit KColorCombo(QWidget *parent = nullptr);
-
-		void setColors(const QList<QColor> &colors);
-		QColor color(int index) const;
-
-	signals:
-		void activated(const QColor &color);
-};
-
-#endif // QET_KCOLORCOMBO_H
+#pragma once
+#include "kcolorcombo.h"

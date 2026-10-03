@@ -63,10 +63,7 @@ void TextEditor::updateForm()
 	m_rotation_sb -> setValue(m_text -> rotation());
 	m_size_sb -> setValue(m_text -> font().pointSize());
 	m_font_pb -> setText(m_text -> font().family());
-#ifdef BUILD_WITHOUT_KF
-#else
 	m_color_pb -> setColor(m_text -> defaultTextColor());
-#endif
 
 	setUpEditConnection();
 }
@@ -346,8 +343,6 @@ void TextEditor::setUpWidget(QWidget *parent)
 	m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
 
 	gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
-#ifdef BUILD_WITHOUT_KF
-#else
 	m_color_pb = new KColorButton(parent);
 	m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));
 
@@ -358,7 +353,6 @@ void TextEditor::setUpWidget(QWidget *parent)
 		&TextEditor::on_m_color_pb_changed);
 
 	gridLayout->addWidget(m_color_pb, 2, 5, 1, 1);
-#endif
 	QLabel *label_5 = new QLabel(parent);
 	label_5->setObjectName(QString::fromUtf8("label_5"));
 
