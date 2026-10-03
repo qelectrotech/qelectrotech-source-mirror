@@ -115,6 +115,19 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
+	{
+			//The rules every project follows unless it sets its own (#1158)
+		const WiringRules::Settings rules = WiringRules::applicationSettings();
+		ui->m_wiring_max_wires_sb->setValue(rules.max_wires);
+		ui->m_wiring_one_wire_per_report_cb->setChecked(rules.one_wire_per_report);
+		auto enable = [this](bool on) {
+			ui->m_wiring_max_wires_label->setEnabled(on);
+			ui->m_wiring_max_wires_sb->setEnabled(on);
+			ui->m_wiring_one_wire_per_report_cb->setEnabled(on);
+		};
+		enable(ui->m_wiring_rules_cb->isChecked());
+		connect(ui->m_wiring_rules_cb, &QCheckBox::toggled, this, enable);
+	}
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
@@ -337,6 +350,12 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
+	{
+		WiringRules::Settings rules = WiringRules::applicationSettings();
+		rules.max_wires = ui->m_wiring_max_wires_sb->value();
+		rules.one_wire_per_report = ui->m_wiring_one_wire_per_report_cb->isChecked();
+		WiringRules::setApplicationSettings(rules);
+	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());

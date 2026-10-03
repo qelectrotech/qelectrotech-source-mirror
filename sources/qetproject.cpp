@@ -1260,16 +1260,27 @@ void QETProject::setWireHops(WireHops::Mode mode)
 /**
 	@brief QETProject::wiringRules
 	@return how many wires a terminal of this project may take
-	(discussion #1158); the default when the project sets no rule.
+	(discussion #1158): the project's own rules when it sets them,
+	otherwise the application's (Settings > General).
 */
 WiringRules::Settings QETProject::wiringRules() const {
+	return WiringRules::effective(m_wiring_rules, WiringRules::applicationSettings());
+}
+
+/**
+	@brief QETProject::projectWiringRules
+	@return the rules as the project stores them: Settings::own false when
+	it follows the application's.
+*/
+WiringRules::Settings QETProject::projectWiringRules() const {
 	return m_wiring_rules;
 }
 
 /**
 	@brief QETProject::setWiringRules
-	Set how many wires a terminal of this project may take. Only wires
-	drawn from now on are affected: none already drawn is removed.
+	Set the project's own wiring rules, or (Settings::own false) make it
+	follow the application's. Only wires drawn from now on are affected:
+	none already drawn is removed.
 	@param rules
 */
 void QETProject::setWiringRules(const WiringRules::Settings &rules)
