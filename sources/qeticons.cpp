@@ -163,9 +163,7 @@ namespace QET {
 		QIcon ProjectFile;
 		QIcon ProjectFileGP;
 		QIcon ProjectProperties;
-		QIcon QETIcon;
 		QIcon QETLogo;
-		QIcon QETOxygenLogo;
 		QIcon QtLogo;
 		QIcon Raise;
 		QIcon RectToBezier;
@@ -565,7 +563,6 @@ void QET::Icons::initIcons()
 	ProjectProperties   = QIcon::fromTheme("project-properties");
 	QETDonate           = QIcon::fromTheme("help-donate");
 	QETDownload         = QIcon::fromTheme("edit-download");
-	QETIcon.addFile(":/ico/256x256/qelectrotech.png");
 	// The elements panel shows the project root with this icon in a 50 px
 	// slot meant for element previews. The theme name "project" also
 	// carries the 128 px file used by the configuration dialog, and on a
@@ -577,13 +574,6 @@ void QET::Icons::initIcons()
 	QETLogo             = QIcon::fromTheme("qet");
 	QETManual           = QIcon::fromTheme("help-contents");
 	QETLogo.addFile(":/ico/256x256/qet.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/128x128/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/16x16/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/22x22/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/256x256/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/32x32/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/48x48/apps/qelectrotech.png");
-	QETOxygenLogo.addFile(":/ico/breeze-icons/64x64/apps/qelectrotech.png");
 	QETVideo            = QIcon::fromTheme("kdenlive-show-video");
 	QtLogo              = QIcon::fromTheme("qt");
 	Raise               = QIcon::fromTheme("raise");

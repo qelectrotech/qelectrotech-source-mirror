@@ -338,8 +338,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/window-close.svg</normaloff>:/ico/16x16/window-close.svg</iconset>
+      <iconset theme="window-close"/>
      </property>
      <property name="flat">
       <bool>true</bool>

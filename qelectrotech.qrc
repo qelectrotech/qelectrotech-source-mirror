@@ -271,60 +271,12 @@
         <file>ico/24x16/za.png</file>
         <file>ico/24x16/zm.png</file>
         <file>ico/24x16/zw.png</file>
-        <file>ico/breeze-icons/128x128/apps/qelectrotech.png</file>
-        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-element.png</file>
-        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/16x16/apps/qelectrotech.png</file>
         <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-element.png</file>
         <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/22x22/apps/qelectrotech.png</file>
         <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-element.png</file>
         <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/256x256/apps/qelectrotech.png</file>
-        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-element.png</file>
-        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/32x32/apps/qelectrotech.png</file>
         <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-element.png</file>
         <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/48x48/apps/qelectrotech.png</file>
-        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-element.png</file>
-        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/64x64/apps/qelectrotech.png</file>
-        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-element.png</file>
-        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-project.png</file>
-        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-titleblock.png</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/small/16x16/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/small/22x22/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/small/32x32/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/small/48x48/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/small/64x64/qelectrotech.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-element.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-project.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-titleblock.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/16x16/application-x-qet-element.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/16x16/application-x-qet-project.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/22x22/application-x-qet-element.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-element.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-project.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-titleblock.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-element.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-project.svgz</file>
-        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-titleblock.svgz</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/transform-crop.svg</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
-        <file>ico/breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>        
-        <file>ico/generated/rect-to-polyline.svg</file>
-        <file>ico/generated/rect-to-bezier.svg</file>
-        <file>ico/generated/ellipse-to-bezier.svg</file>                
         <file>ico/mac_icon/elmt.icns</file>
         <file>ico/mac_icon/qelectrotech.icns</file>
         <file>ico/mac_icon/qet.icns</file>
@@ -336,7 +288,6 @@
         <file>ico/windows_icon/qelectrotech.ico</file>
         <file>ico/windows_icon/qelectrotech.rc</file>
         <file>ico/copyright</file>
-        <file>ico/16x16/window-close.svg</file>
         <file>ico/22x22/color/color-brown.png</file>
         <file>ico/22x22/color/color-gray.png</file>
         <file>ico/22x22/color/color-orange.png</file>
