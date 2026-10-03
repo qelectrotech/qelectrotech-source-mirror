@@ -2,7 +2,7 @@
 /*
 	With SOURCE_DATE_EPOCH set, --export-pdf writes the same bytes for the
 	same project in every run: the dates are the ones it names, the document
-	id comes from the project file, and the fonts come in a fixed order.
+	id comes from the content of the PDF, and the fonts come in a fixed order.
 	Without it the dates are the time of the export, as before. Exported in
 	separate processes, since what used to differ changed between runs.
 */
@@ -10,8 +10,10 @@
 #include <QDir>
 #include <QFile>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QtTest>
+#include <QUuid>
 
 class tst_pdfreproducible : public QObject
 {
@@ -101,6 +103,46 @@ private slots:
 		for (int i = 0; i < 3; ++i)
 			QVERIFY2(exportPdf(project, "1700000000") == first,
 					 "two exports of the same project differ");
+	}
+
+	void sameBytesWithNewUuids()
+	{
+		// #1178: a project generated again from the same data has the same
+		// drawing but new uuids, and its PDF used to differ in the
+		// document id, which came from the project file.
+		const QString project =
+			QStringLiteral(QET_EXAMPLES_DIR) + QStringLiteral("/741.qet");
+		QFile in(project);
+		QVERIFY(in.open(QIODevice::ReadOnly));
+		QString xml = QString::fromUtf8(in.readAll());
+		static const QRegularExpression uuid(QStringLiteral(
+			"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"));
+		QHash<QString, QString> renamed;
+		QString regenerated;
+		qsizetype last = 0;
+		for (auto it = uuid.globalMatch(xml); it.hasNext(); ) {
+			const auto match = it.next();
+			const QString key = match.captured().toLower();
+			if (!renamed.contains(key))
+				renamed.insert(key, QUuid::createUuid().toString(QUuid::WithoutBraces));
+			regenerated += xml.mid(last, match.capturedStart() - last) + renamed.value(key);
+			last = match.capturedEnd();
+		}
+		regenerated += xml.mid(last);
+		QVERIFY(renamed.size() > 10);
+		const QString copy = m_dir.filePath(QStringLiteral("regenerated.qet"));
+		QFile out(copy);
+		QVERIFY(out.open(QIODevice::WriteOnly));
+		out.write(regenerated.toUtf8());
+		out.close();
+
+		const QByteArray first = exportPdf(project, "1700000000");
+		QVERIFY(!first.isEmpty());
+		QVERIFY2(!first.contains("6f1c2d4e-9a3b-4c5d-8e7f-0a1b2c3d4e5f"),
+				 "the placeholder document id was left in the file");
+		QVERIFY2(xrefMatches(first), "the xref table does not match the file");
+		QVERIFY2(exportPdf(copy, "1700000000") == first,
+				 "the same drawing with new uuids gives a different PDF");
 	}
 
 	void nowWithoutTheVariable()

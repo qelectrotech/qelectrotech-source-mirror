@@ -28,6 +28,7 @@
 #include <private/qpdf_p.h>
 
 #include <QByteArray>
+#include <QCryptographicHash>
 #include <QFile>
 #include <QGraphicsTextItem>
 #include <QList>
@@ -435,6 +436,35 @@ void removeUnusedPdfxNamespace(const QString &pdfPath)
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 	f.write(data);
 	f.close();
+}
+
+QUuid placeholderDocumentId()
+{
+	// Any fixed uuid: it is also the namespace of the ids made from it.
+	return QUuid(QStringLiteral("{6f1c2d4e-9a3b-4c5d-8e7f-0a1b2c3d4e5f}"));
+}
+
+void setDocumentIdFromContent(const QString &pdfPath)
+{
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	QByteArray data = f.readAll();
+	f.close();
+
+	// Qt writes the id as text in the XMP ("uuid:6f1c...") and as the hex
+	// of that same text in the trailer ("/ID [ <3666...> <3666...> ]").
+	const QUuid placeholder = placeholderDocumentId();
+	const QByteArray text = placeholder.toByteArray(QUuid::WithoutBraces);
+	if (!data.contains(text) && !data.contains(text.toHex())) return;
+
+	const QUuid id = QUuid::createUuidV5(
+		placeholder, QCryptographicHash::hash(data, QCryptographicHash::Sha256));
+	const QByteArray idText = id.toByteArray(QUuid::WithoutBraces);
+	data.replace(text, idText);
+	data.replace(text.toHex(), idText.toHex());
+
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	f.write(data);
 }
 
 void setDocumentDate(const QString &pdfPath, const QDateTime &when)
