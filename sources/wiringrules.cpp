@@ -268,3 +268,16 @@ bool WiringRules::anglesTurn(const QPointF &free_leg, bool other_turns_here)
 	}
 	return free_leg.x() > 0.01 || (qAbs(free_leg.x()) <= 0.01 && free_leg.y() > 0.01);
 }
+
+/**
+	@brief WiringRules::turnsRuleOn
+	@param before, after : the rules in force before and after a change
+	@return true if the change turns on a rule that was off: QElectroTech
+	then warns that the rules are experimental (review of #1272).
+*/
+bool WiringRules::turnsRuleOn(const Settings &before, const Settings &after)
+{
+	return (after.max_wires > 0 && before.max_wires <= 0)
+			|| (after.one_wire_per_report && !before.one_wire_per_report)
+			|| (after.angled_branches && !before.angled_branches);
+}

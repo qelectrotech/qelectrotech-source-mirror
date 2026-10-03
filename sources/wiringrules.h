@@ -80,6 +80,7 @@ namespace WiringRules
 	Settings applicationSettings();
 	void setApplicationSettings(const Settings &settings);
 	Settings effective(const Settings &project, const Settings &application);
+	bool turnsRuleOn(const Settings &before, const Settings &after);
 
 	Settings fromXml(const QDomElement &project_root);
 	void toXml(const Settings &settings, QDomElement &project_root);

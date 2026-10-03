@@ -187,8 +187,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		wiring_rules.angled_branches = branches_cb_ -> currentData().toBool();
 	}
 	if (m_project -> projectWiringRules() != wiring_rules) {
+		const WiringRules::Settings before = m_project -> wiringRules();
 		m_project -> setWiringRules(wiring_rules);
 		modified_project = true;
+		if (WiringRules::masterEnabled()
+			&& WiringRules::turnsRuleOn(before, m_project -> wiringRules())) {
+			WiringRulesWarning::show(this);
+		}
 	}
 
 	if (modified_project) {
@@ -316,7 +321,6 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addSpacing(10);
 
 	QVBoxLayout *wiring_rules_layout = new QVBoxLayout(wiring_rules_gb_);
-	wiring_rules_layout -> addWidget(WiringRulesWarning::create(wiring_rules_gb_));
 	wiring_rules_layout -> addWidget(use_application_rules_cb_);
 	QHBoxLayout *max_wires_layout = new QHBoxLayout();
 	max_wires_layout -> addWidget(max_wires_label_);
