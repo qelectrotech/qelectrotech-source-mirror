@@ -2355,6 +2355,44 @@ def _fold(text: str) -> str:
                    if not unicodedata.combining(c))
 
 
+# Spellings of "normally open" and "normally closed" in the collection's names
+# and file names, folded to one word each: N/O, NF (French "normalement
+# fermé"), the words written out.
+_CONTACT_SYNONYMS = (
+    (re.compile(r"\bnormal(?:ly|ement)\s+(?:closed|fermee?s?)\b"), " nc "),
+    (re.compile(r"\bnormal(?:ly|ement)\s+(?:open|ouverte?s?)\b"), " no "),
+    (re.compile(r"\bn\s*/\s*([ocf])\b"), r" n\1 "),
+)
+
+
+def _search_words(text: str) -> list:
+    """The words of text as a search sees them: folded, split on anything
+    that is not a letter or digit (so a path's '_' and '/' separate words),
+    with every spelling of NO and NC reduced to 'no' and 'nc'."""
+    t = _fold(text)
+    for pattern, repl in _CONTACT_SYNONYMS:
+        t = pattern.sub(repl, t)
+    return ["nc" if w == "nf" else w for w in re.findall(r"[^\W_]+", t)]
+
+
+def _word_matches(word: str, words: frozenset) -> bool:
+    """A query of one or two letters must be a whole word, so 'nc' does
+    not find 'remanence' and 'no' does not find 'normal'. Anything longer,
+    or with a digit, may be part of a word: 'schutz' finds
+    'Leitungsschutzschalter', '3p' finds '3pn'."""
+    if word in words:
+        return True
+    if len(word) <= 2 and word.isalpha():
+        return False
+    return any(word in w for w in words)
+
+
+# Folders of drawings that are not schematic symbols, or of one maker's
+# parts: offered after everything else, so "emergency stop" gives the
+# push button before an assembly-plan drawing of one.
+_SECONDARY_FOLDER = re.compile(r"(?:^|/)\d+_(?:graphics|manufacturers_articles|miscellaneous_unsorted)/")
+
+
 def _collection_signature(root: Path):
     """Cheap change detector: file count and newest mtime, no parsing."""
     count, newest = 0, 0.0
@@ -2408,7 +2446,7 @@ def _index_collection(root: Path) -> list:
             "terminal_names": terminals,       # index order, not file order
             "terminal_order_ambiguous": ambiguous,
             "width": d.get("width"), "height": d.get("height"),
-            "haystack": _fold(" ".join([*names.values(), rel, kind])),
+            "haystack": frozenset(_search_words(" ".join([*names.values(), rel, kind]))),
         })
     _ELEMENT_INDEX[key] = {"sig": sig, "items": items}
     return items
@@ -2436,6 +2474,7 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
         raise ValueError("limit must be >= 1")
 
     words = _fold(query).split()
+    search = _search_words(query)
     matches = []
     for it in _index_collection(root):
         if link_type and it["link_type"] != link_type:
@@ -2446,17 +2485,19 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
             continue
         if max_terminals is not None and it["terminals"] > max_terminals:
             continue
-        if not all(w in it["haystack"] for w in words):
+        if not all(_word_matches(w, it["haystack"]) for w in search):
             continue
         matches.append(it)
 
-    # Whole-name hits before substring hits, then shorter names first: a
-    # search for "coil" should offer "Coil" before "Remanence coil, latching".
+    # Schematic symbols before drawings and makers' parts; then whole-name
+    # hits before substring hits, then shorter names first: a search for
+    # "coil" should offer "Coil" before "Remanence coil, latching".
     def rank(it):
         name = _fold(it["name"])
+        secondary = 1 if _SECONDARY_FOLDER.search(it["path"]) else 0
         exact = 0 if (words and name == " ".join(words)) else 1
         starts = 0 if (words and name.startswith(words[0])) else 1
-        return (exact, starts, len(it["name"]), it["path"])
+        return (secondary, exact, starts, len(it["name"]), it["path"])
     matches.sort(key=rank)
 
     shown = [{k: v for k, v in it.items() if k not in ("haystack", "names", "file")}
@@ -4780,7 +4821,10 @@ TOOLS = [
                 "directory": {"type": "string",
                               "description": "the collection root, e.g. a checkout's elements/ directory"},
                 "query": {"type": "string",
-                          "description": "words to find; every word must match some name, the path or the kind"},
+                          "description": "words to find; every word must match some name, the path "
+                                         "or the kind (one or two letters, such as NC, only as a "
+                                         "whole word). "
+                                         "NO/NC, N/O, NF and \"normally open/closed\" are the same"},
                 "link_type": {"type": "string", "enum": list(LINK_TYPES)},
                 "kind": {"type": "string", "description": "the element's type information, e.g. coil, protection"},
                 "min_terminals": {"type": "integer"},

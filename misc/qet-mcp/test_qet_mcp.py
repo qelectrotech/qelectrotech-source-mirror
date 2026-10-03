@@ -1630,6 +1630,46 @@ class ElementSearch(unittest.TestCase):
         self.assertEqual(m.tool_element_search(str(self.root), "red coil")["total_matches"], 1)
         self.assertEqual(m.tool_element_search(str(self.root), "red fuse")["total_matches"], 0)
 
+    def test_a_two_letter_word_matches_only_a_whole_word(self):
+        """#1178: "NC contact" offered a remanence coil, because "nc" is in
+        "remanence" and "contact" is in its folder's name."""
+        self.put("contacts/coil.elmt", {"en": "Remanence coil"})
+        self.put("contacts/nc.elmt", {"en": "Simple contact (NC)"})
+        self.put("contacts/klemme.elmt", {"de": "Reihenklemme 3pn"})
+        names = lambda q: [r["path"] for r in m.tool_element_search(str(self.root), q)["results"]]
+        self.assertEqual(names("NC contact"), ["common://contacts/nc.elmt"])
+        # longer words, and short ones with a digit, still match inside a word
+        self.assertEqual(names("klemme"), ["common://contacts/klemme.elmt"])
+        self.assertEqual(names("3p"), ["common://contacts/klemme.elmt"])
+
+    def test_every_spelling_of_no_and_nc_is_the_same(self):
+        self.put("a/nf.elmt", {"fr": "Contact simple (NF)"})
+        self.put("a/no.elmt", {"en": "Contact N/O"})
+        self.put("a/x_nc.elmt", {"en": "Contact"})
+        self.put("a/open.elmt", {"en": "Normally open contact"})
+        g = lambda q: sorted(r["path"][len("common://a/"):]
+                             for r in m.tool_element_search(str(self.root), q)["results"])
+        for q in ("NC contact", "normally closed contact", "NF contact", "contact normalement fermé"):
+            with self.subTest(q=q):
+                self.assertEqual(g(q), ["nf.elmt", "x_nc.elmt"])
+        for q in ("NO contact", "normally open contact", "N/O contact", "contact normalement ouvert"):
+            with self.subTest(q=q):
+                self.assertEqual(g(q), ["no.elmt", "open.elmt"])
+
+    def test_schematic_symbols_come_before_drawings_and_makers_parts(self):
+        """#1178: "emergency stop" offered a maker's part and two
+        assembly-plan drawings before the push button."""
+        self.put("10_electric/20_manufacturers_articles/idec/my_emg.elmt", {"en": "Emergency stop"})
+        self.put("10_electric/98_graphics/99_assembly_plan/au.elmt", {"en": "Emergency stop"})
+        self.put("10_electric/99_miscellaneous_unsorted/au.elmt", {"en": "Emergency stop"})
+        self.put("10_electric/10_allpole/20_push_buttons/au.elmt", {"en": "Emergency stop (NC)"})
+        self.put("cadtb/estop.elmt", {"en": "Emergency stop, own"})
+        r = m.tool_element_search(str(self.root), "emergency stop")["results"]
+        self.assertEqual([e["path"] for e in r[:2]],
+                         ["common://10_electric/10_allpole/20_push_buttons/au.elmt",
+                          "common://cadtb/estop.elmt"])
+        self.assertEqual(len(r), 5)
+
     def test_filters(self):
         self.put("a/m.elmt", {"en": "Coil"}, link="master", kind="coil")
         self.put("a/s.elmt", {"en": "Contact"}, link="slave", terminals=((0, 0, "n"),) * 1)
