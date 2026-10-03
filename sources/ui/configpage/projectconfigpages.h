@@ -24,6 +24,8 @@ class QComboBox;
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
+class QSpinBox;
+class QGroupBox;
 class QETProject;
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
@@ -128,6 +130,11 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QPushButton *usage_reset_pb_;
 	QLabel *wire_hops_label_;
 	QComboBox *wire_hops_cb_;
+	QGroupBox *wiring_rules_gb_;
+	QLabel *max_wires_label_;
+	QSpinBox *max_wires_sb_;
+	QCheckBox *one_wire_per_report_cb_;
+	QLabel *wiring_rules_off_label_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {

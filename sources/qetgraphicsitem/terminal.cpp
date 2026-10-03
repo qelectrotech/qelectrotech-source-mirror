@@ -26,6 +26,9 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
+#include "../wiringrules.h"
+
+#include <QToolTip>
 
 #include <QtCore/qnumeric.h>
 #include <utility>
@@ -610,7 +613,22 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	other_terminal -> m_hovered       = false;
 
 	//We stop her if we can't link this terminal with other terminal
-	if (!canBeLinkedTo(other_terminal)) return;
+	if (!canBeLinkedTo(other_terminal))
+	{
+			//Say why when it is the wire limit (discussion #1158): a red
+			//terminal alone does not tell the user what to do instead.
+		const Terminal *full = !hasRoomForWire() ? this
+							 : !other_terminal->hasRoomForWire() ? other_terminal
+							 : nullptr;
+		if (full) {
+			QToolTip::showText(e->screenPos(),
+							   tr("Cette borne a déjà %n conducteur(s), la limite du projet. "
+								  "Ajoutez une borne pour raccorder un conducteur de plus.",
+								  "wire refused by the wires-per-terminal limit",
+								  full->wireLimit()));
+		}
+		return;
+	}
 
 	//Create conductor
 	Conductor *new_conductor = new Conductor(this, other_terminal);
@@ -692,6 +710,7 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	Reasons for not linable:
 	 - \p other_terminal is this terminal
 	 - this terminal is already connected to \p other_terminal
+	 - either terminal already has as many wires as the project allows
 	@param other_terminal
 	@return true if this terminal can be linked to other_terminal,
 	otherwise false
@@ -701,7 +720,38 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 	if (other_terminal == this || isLinkedTo(other_terminal))
 		return false;
 
+	if (!hasRoomForWire() || !other_terminal->hasRoomForWire())
+		return false;
+
 	return true;
+}
+
+/**
+	@brief Terminal::wireLimit
+	@return the most wires this terminal may take under its project's
+	wiring rules (discussion #1158), 0 for no limit.
+*/
+int Terminal::wireLimit() const
+{
+	const Diagram *parent_diagram = diagram();
+	if (!parent_diagram || !parent_diagram->project()) {
+		return 0;
+	}
+	const Element *element = parentElement();
+	const bool is_report = element
+			&& (element->linkType() & (Element::NextReport | Element::PreviousReport));
+	return WiringRules::limit(parent_diagram->project()->wiringRules(),
+							  WiringRules::masterEnabled(),
+							  is_report);
+}
+
+/**
+	@brief Terminal::hasRoomForWire
+	@return true if one more wire may be connected to this terminal
+*/
+bool Terminal::hasRoomForWire() const
+{
+	return WiringRules::hasRoom(wireLimit(), conductorsCount());
 }
 
 /**

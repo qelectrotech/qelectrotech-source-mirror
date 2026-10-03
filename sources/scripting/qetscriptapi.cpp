@@ -963,6 +963,11 @@ bool QetScriptApi::addConductor(int folioIndex,
 		log(QStringLiteral("qet.addConductor: those two terminals are already wired together"));
 		return false;
 	}
+	if (!t1->hasRoomForWire() || !t2->hasRoomForWire()) {
+		log(QStringLiteral("qet.addConductor: a terminal already has as many wires as the "
+						   "project's wires-per-terminal limit allows"));
+		return false;
+	}
 	if (!t1->canBeLinkedTo(t2)) {
 		log(QStringLiteral("qet.addConductor: those two terminals cannot be linked"));
 		return false;
