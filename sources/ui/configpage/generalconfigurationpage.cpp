@@ -30,6 +30,7 @@
 #include "../../qetmessagebox.h"
 #include "../../textgrid.h"
 #include "../../wiringrules.h"
+#include "../wiringruleswarning.h"
 #include "../../editor/terminalnamecheck.h"
 #include "../../ElementsCollection/qetlabelsfile.h"
 #include "../prefixconfigurationdialog.h"
@@ -119,6 +120,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
 			//The rules every project follows unless it sets its own (#1158)
+		ui->m_wiring_rules_warning_layout->addWidget(WiringRulesWarning::create(this));
 		const WiringRules::Settings rules = WiringRules::applicationSettings();
 		ui->m_wiring_max_wires_sb->setValue(rules.max_wires);
 		ui->m_wiring_one_wire_per_report_cb->setChecked(rules.one_wire_per_report);
