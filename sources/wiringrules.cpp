@@ -32,6 +32,9 @@ namespace {
 		//The master switch is read on every wire drawn, so it is read from
 		//the settings once and kept; setMasterEnabled() keeps both in step.
 	int master_cache = -1;
+		//Same for the application's rules
+	bool application_cached = false;
+	WiringRules::Settings application_cache;
 }
 
 /**
@@ -60,10 +63,57 @@ void WiringRules::setMasterEnabled(bool enabled)
 }
 
 /**
+	@brief WiringRules::applicationSettings
+	@return the rules set for every project in Settings > General; a
+	project that sets its own (Settings::own) uses those instead.
+*/
+WiringRules::Settings WiringRules::applicationSettings()
+{
+	if (!application_cached) {
+		const QSettings settings;
+		application_cache = Settings();
+		application_cache.max_wires = qMax(0, settings.value(max_wires_key, 0).toInt());
+		application_cache.one_wire_per_report = settings.value(one_wire_per_report_key, false).toBool();
+		application_cache.angled_branches = settings.value(angled_branches_key, false).toBool();
+		application_cached = true;
+	}
+	return application_cache;
+}
+
+/**
+	@brief WiringRules::setApplicationSettings
+	Save the rules set for every project.
+	@param settings
+*/
+void WiringRules::setApplicationSettings(const Settings &settings)
+{
+	QSettings qsettings;
+	qsettings.setValue(max_wires_key, qMax(0, settings.max_wires));
+	qsettings.setValue(one_wire_per_report_key, settings.one_wire_per_report);
+	qsettings.setValue(angled_branches_key, settings.angled_branches);
+	application_cache = settings;
+	application_cache.own = false;
+	application_cached = true;
+}
+
+/**
+	@brief WiringRules::effective
+	@return the rules that apply to a project: its own when it sets them,
+	otherwise the application's.
+*/
+WiringRules::Settings WiringRules::effective(const Settings &project, const Settings &application)
+{
+	Settings result = project.own ? project : application;
+	result.own = project.own;
+	return result;
+}
+
+/**
 	@brief WiringRules::fromXml
 	@param project_root : the root element of a project
 	@return the rules stored in the <wiring_rules> child of \a project_root,
-	the default (no rule) when there is none.
+	which the project then uses instead of the application's (Settings::own);
+	the default, which follows the application, when there is none.
 */
 WiringRules::Settings WiringRules::fromXml(const QDomElement &project_root)
 {
@@ -72,6 +122,7 @@ WiringRules::Settings WiringRules::fromXml(const QDomElement &project_root)
 	if (rules.isNull()) {
 		return settings;
 	}
+	settings.own = true;
 	settings.max_wires = qMax(0, rules.attribute(max_wires_attribute, QStringLiteral("0")).toInt());
 	settings.one_wire_per_report = rules.attribute(report_attribute) == QLatin1String("true");
 	settings.angled_branches = rules.attribute(branches_attribute) == angled_value;
@@ -80,13 +131,13 @@ WiringRules::Settings WiringRules::fromXml(const QDomElement &project_root)
 
 /**
 	@brief WiringRules::toXml
-	Write \a settings as a <wiring_rules> child of \a project_root. Nothing
-	is written when no rule is on, so a project that never used them saves
-	exactly as before.
+	Write \a settings as a <wiring_rules> child of \a project_root, only
+	when the project sets its own rules: a project that follows the
+	application's saves exactly as before.
 */
 void WiringRules::toXml(const Settings &settings, QDomElement &project_root)
 {
-	if (settings.isDefault()) {
+	if (!settings.own) {
 		return;
 	}
 	QDomElement rules = project_root.ownerDocument().createElement(element_name);

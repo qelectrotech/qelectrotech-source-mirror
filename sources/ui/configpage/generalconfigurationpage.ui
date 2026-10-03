@@ -84,6 +84,85 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="m_wiring_max_wires_layout">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="m_wiring_max_wires_label">
+           <property name="text">
+            <string>Nombre maximal de conducteurs par borne :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_wiring_max_wires_sb">
+           <property name="toolTip">
+            <string>Pour tous les projets, sauf ceux qui ont leurs propres réglages. Un nouveau conducteur qui dépasserait ce nombre sur une borne est refusé ; les conducteurs déjà dessinés ne sont pas modifiés. 4 correspond à deux embouts doubles, un de chaque côté de la vis.</string>
+           </property>
+           <property name="specialValueText">
+            <string>Sans limite</string>
+           </property>
+           <property name="maximum">
+            <number>99</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_wiring_max_wires_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_wiring_report_layout">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="m_wiring_one_wire_per_report_cb">
+           <property name="toolTip">
+            <string>Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, celui qui continue sur l'autre folio.</string>
+           </property>
+           <property name="text">
+            <string>Un seul conducteur par renvoi de folio</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_wiring_branches_layout">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="m_wiring_branches_label">
+           <property name="text">
+            <string>Embranchements :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="m_wiring_branches_cb">
+           <property name="toolTip">
+            <string>Là où des conducteurs se séparent, chacun part en biais au lieu d'un point : le schéma montre quel conducteur va où. Seul le dessin change.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_wiring_branches_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="Line" name="line_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -1311,6 +1390,9 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_conductor_properties_panel</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
+  <tabstop>m_wiring_max_wires_sb</tabstop>
+  <tabstop>m_wiring_one_wire_per_report_cb</tabstop>
+  <tabstop>m_wiring_branches_cb</tabstop>
   <tabstop>m_use_windows_mode_rb</tabstop>
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_save_label_paste</tabstop>
