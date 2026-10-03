@@ -474,6 +474,16 @@ class EditValidation(unittest.TestCase):
             "set_plc_io": el + [{"op": "set_plc_io", "folio": "$f", "element": "$e",
                                  "index": 0, "property": "address", "value": "1.1"}],
             "remove_plc_io": el + [{"op": "remove_plc_io", "folio": "$f", "element": "$e", "index": 0}],
+            "align_elements": two + [{"op": "align_elements", "folio": "$f",
+                                      "elements": ["$e", "$e2"], "edge": "middle"}],
+            "distribute_elements": two + [{"op": "distribute_elements", "folio": "$f",
+                                           "elements": ["$e", "$e2"], "axis": "vertical",
+                                           "pitch": 80}],
+            "place_element": el + [{"op": "place_element", "folio": "$f", "path": "common://x.elmt",
+                                    "terminal": 0, "next_to": "$e", "next_to_terminal": 1,
+                                    "side": "below", "gap": 60}],
+            "align_terminal": two + [{"op": "align_terminal", "folio": "$f", "element": "$e2",
+                                      "terminal": 0, "to": "$e", "to_terminal": 1}],
         })
         self.assertEqual(set(samples), set(m.OPS),
                          "an op has no sample here: add one so it is exercised")
@@ -1301,6 +1311,65 @@ class CheckAndContinuityAnswers(unittest.TestCase):
                     m.tool_continuity("qet", str(self.qet), folio=bad)
         with self.stub([{"kind": "continuity", "findings": []}]):
             self.assertEqual(m.tool_continuity("qet", str(self.qet), folio=0)["finding_count"], 0)
+
+
+class LayoutOpsValidation(unittest.TestCase):
+    """align_elements, distribute_elements, place_element, align_terminal:
+    their arguments are checked before QElectroTech starts, and the script
+    asks for terminalPosition() only when an op needs it."""
+
+    A, B, C = ("{00000000-0000-0000-0000-00000000000a}", "{00000000-0000-0000-0000-00000000000b}",
+               "{00000000-0000-0000-0000-00000000000c}")
+
+    def bad(self, op, needle):
+        with self.assertRaises(ValueError) as cm:
+            m._build_script([op], "/tmp/x.qet")
+        self.assertIn(needle, str(cm.exception))
+
+    def test_align_arguments(self):
+        self.bad({"op": "align_elements", "folio": 0, "elements": [self.A, self.B],
+                  "edge": "diagonal"}, "unknown edge")
+        self.bad({"op": "align_elements", "folio": 0, "elements": [self.A], "edge": "left"},
+                 "at least 2")
+
+    def test_distribute_arguments(self):
+        self.bad({"op": "distribute_elements", "folio": 0, "elements": [self.A, self.B, self.C],
+                  "axis": "diagonal"}, "unknown axis")
+        self.bad({"op": "distribute_elements", "folio": 0, "elements": [self.A, self.B],
+                  "axis": "horizontal"}, "at least 3")
+        self.bad({"op": "distribute_elements", "folio": 0, "elements": [self.A, self.B, self.C],
+                  "axis": "vertical", "pitch": -10}, "pitch must be >= 0")
+        m._build_script([{"op": "distribute_elements", "folio": 0, "elements": [self.A, self.B],
+                          "axis": "vertical", "pitch": 80}], "/tmp/x.qet")
+
+    def test_place_arguments(self):
+        base = {"op": "place_element", "folio": 0, "path": "common://x.elmt", "terminal": 0,
+                "next_to": self.A, "next_to_terminal": 1}
+        self.bad({**base, "side": "up"}, "unknown side")
+        self.bad({**base, "gap": 0}, "gap must be > 0")
+        self.bad({**base, "terminal": True}, "terminal index or its uuid")
+        self.bad({**base, "terminal": -1}, "terminal index or its uuid")
+        self.bad({**base, "terminal": "A1"}, "terminal index or its uuid")
+        s = m._build_script([{**base, "terminal": "{11111111-2222-3333-4444-555555555555}"}],
+                            "/tmp/x.qet")
+        self.assertIn('qetMcpPlace(0, "common://x.elmt", "{11111111-2222-3333-4444-555555555555}", '
+                      f'"{self.A}", 1, "", 40)', s)
+
+    def test_helpers_are_called_bare_and_needs_follow_use(self):
+        place = m._build_script([{"op": "align_terminal", "folio": 0, "element": self.A,
+                                  "terminal": 0, "to": self.B, "to_terminal": 1}], "/tmp/x.qet")
+        self.assertIn("qetMcpAlignTerminal(0, ", place)
+        self.assertNotIn("qet.qetMcp", place)
+        self.assertIn('"terminalPosition"', place)
+        plain = m._build_script([{"op": "move_element", "folio": 0, "element": self.A,
+                                  "dx": 1, "dy": 0}], "/tmp/x.qet")
+        self.assertNotIn("terminalPosition\"", plain.split("var need = ")[1].split(";")[0])
+        self.assertNotIn("qetMcpAlign\"", plain)
+
+    def test_defaults_fill_in(self):
+        s = m._build_script([{"op": "align_elements", "folio": 0, "elements": [self.A, self.B],
+                              "edge": "center"}], "/tmp/x.qet")
+        self.assertIn(f'qetMcpAlign(0, ["{self.A}", "{self.B}"], "center", "")', s)
 
 
 class ElementSearch(unittest.TestCase):
@@ -5266,6 +5335,92 @@ class Integration(unittest.TestCase):
         fake.chmod(0o755)
         r = m.tool_edit(str(fake), self.sb.new(), [{"op": "add_folio"}], self.sb.p("x.qet"), timeout=15)
         self.assertFalse(r["ok"])
+
+
+@needs_elements
+class LayoutOpsIntegration(unittest.TestCase):
+    """The layout ops on a real QElectroTech. place_element and
+    align_terminal need terminalPosition(); on a build without it they are
+    skipped here, and the refusal itself is checked instead."""
+
+    def setUp(self):
+        self.sb = Sandbox()
+
+    def tearDown(self):
+        self.sb.close()
+
+    def placed(self, ops, out="out.qet"):
+        r = self.sb.edit(self.sb.new(), ops, out=out)
+        return r
+
+    def xy(self, path):
+        return {e["uuid"]: (float(e["x"]), float(e["y"])) for e in m.tool_elements(path)["elements"]}
+
+    def add(self, i, x, y, path=COIL):
+        return {"op": "add_element", "folio": 0, "path": path, "x": x, "y": y, "id": f"e{i}"}
+
+    def test_align_center(self):
+        r = self.placed([self.add(0, 100, 100), self.add(1, 137, 200), self.add(2, 90, 300),
+                         {"op": "align_elements", "folio": 0, "elements": ["$e0", "$e1", "$e2"],
+                          "edge": "center"}])
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertEqual({x for x, _ in self.xy(r["output"]).values()}, {100.0})
+
+    def test_distribute_evenly_and_by_pitch(self):
+        r = self.placed([self.add(0, 100, 100), self.add(1, 130, 100), self.add(2, 300, 100),
+                         {"op": "distribute_elements", "folio": 0,
+                          "elements": ["$e0", "$e1", "$e2"], "axis": "horizontal"}])
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertEqual(sorted(x for x, _ in self.xy(r["output"]).values()), [100, 200, 300])
+        r = self.placed([self.add(0, 100, 100), self.add(1, 100, 130),
+                         {"op": "distribute_elements", "folio": 0, "elements": ["$e0", "$e1"],
+                          "axis": "vertical", "pitch": 80}], out="pitch.qet")
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertEqual(sorted(y for _, y in self.xy(r["output"]).values()), [100, 180])
+
+    def need_positions(self, r):
+        if "terminalPosition" in (r.get("missing_methods") or []):
+            self.assertFalse(r["ok"])
+            self.assertIn("terminalPosition", r["hint"])
+            self.skipTest("this build has no terminalPosition()")
+
+    def test_place_element_lines_up_the_terminals(self):
+        # borne_2's bottom terminal (index 2, local 0,10) over the contact's
+        # top one (index 0, local 0,-20): 40 px apart, dock to dock
+        r = self.placed([self.add(0, 100, 100, TERMINAL),
+                         {"op": "place_element", "folio": 0, "path": SLAVE, "terminal": 0,
+                          "next_to": "$e0", "next_to_terminal": 2, "id": "k"},
+                         {"op": "add_conductor", "folio": 0, "from": "$e0", "from_terminal": 2,
+                          "to": "$k", "to_terminal": 0}])
+        self.need_positions(r)
+        self.assertTrue(r["ok"], r.get("hint"))
+        placed = r["operations"][1]["result"]
+        self.assertEqual(self.xy(r["output"])[placed], (100.0, 100 + 10 + 40 + 20))
+        self.assertNotIn("note", r["operations"][1])
+
+    def test_place_element_warns_about_a_terminal_facing_away(self):
+        r = self.placed([self.add(0, 100, 100, TERMINAL),
+                         {"op": "place_element", "folio": 0, "path": SLAVE, "terminal": 0,
+                          "next_to": "$e0", "next_to_terminal": 1}])        # side terminal
+        self.need_positions(r)
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertIn("faces n, not w", r["operations"][1]["note"])
+
+    def test_place_element_with_no_such_terminal_places_nothing(self):
+        r = self.placed([self.add(0, 100, 100, TERMINAL),
+                         {"op": "place_element", "folio": 0, "path": SLAVE, "terminal": 9,
+                          "next_to": "$e0", "next_to_terminal": 2}])
+        self.need_positions(r)
+        self.assertFalse(r["ok"])
+        self.assertEqual(len(self.xy(r["output"])), 1)
+
+    def test_align_terminal_moves_across_only(self):
+        r = self.placed([self.add(0, 100, 100, TERMINAL), self.add(1, 127, 200, SLAVE),
+                         {"op": "align_terminal", "folio": 0, "element": "$e1", "terminal": 0,
+                          "to": "$e0", "to_terminal": 2}])
+        self.need_positions(r)
+        self.assertTrue(r["ok"], r.get("hint"))
+        self.assertIn((100.0, 200.0), self.xy(r["output"]).values())
 
 
 @needs_binary
