@@ -331,17 +331,13 @@ private slots:
 
 		const QString dxf_dir = m_dir.filePath(QStringLiteral("dxf%1").arg(m_run));
 		QDir().mkpath(dxf_dir);
-		const QString script_path = m_dir.filePath(QStringLiteral("dxf%1.js").arg(m_run));
-		QFile script(script_path);
-		if (!script.open(QIODevice::WriteOnly))
-			return -1;
-		script.write(QStringLiteral("qet.exportDxf('%1', false);\n").arg(dxf_dir).toUtf8());
-		script.close();
-
+			// The command-line export, so this runs on a build without
+			// scripting too
 		QProcess proc;
 		proc.setProcessEnvironment(sandbox(master_off, 0, application_angled));
-		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
-		if (!proc.waitForFinished(120000))
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--export-dxf"), project, dxf_dir});
+		if (!proc.waitForFinished(120000) || proc.exitCode() != 0)
 			return -1;
 		int count = 0;
 		const QStringList files = QDir(dxf_dir).entryList({QStringLiteral("*.dxf")});
