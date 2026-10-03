@@ -48,42 +48,28 @@
 #include <QMenu>
 #include <QRegularExpressionValidator>
 
-/**
-	@brief The EditorDelegate class
-	This delegate is only use for disable the edition of the first
-	column of the information tree widget
-*/
-class EditorDelegate : public QItemDelegate
+QWidget* EditorDelegate::createEditor(QWidget *parent,
+		      const QStyleOptionViewItem &option,
+			  const QModelIndex &index) const
 {
-	public:
-		EditorDelegate(QObject *parent) :
-			QItemDelegate(parent)
-		{}
-
-	QWidget* createEditor(QWidget *parent,
-			      const QStyleOptionViewItem &option,
-				  const QModelIndex &index) const override
+	if(index.column() == 1)
 	{
-		if(index.column() == 1)
-		{
-			const QString key = index.sibling(index.row(), 0)
-									.data(Qt::UserRole).toString();
-
+		const QString key = index.sibling(index.row(), 0)
+								.data(Qt::UserRole).toString();
 			if (key == QETInformation::ELMT_WIDTH || key == QETInformation::ELMT_HEIGHT || key == QETInformation::ELMT_DEPTH)
-			{
-				auto *line_edit = new QLineEdit(parent);
-				auto *validator = new QETInformation::NumericInfoValidator(line_edit);
-				line_edit->setValidator(validator);
-				line_edit->setPlaceholderText(tr("ex. 80.5"));
-				line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
-				return line_edit;
-			}
-
-			return QItemDelegate::createEditor(parent, option, index);
+		{
+			auto *line_edit = new QLineEdit(parent);
+			auto *validator = new QETInformation::NumericInfoValidator(line_edit);
+			line_edit->setValidator(validator);
+			line_edit->setPlaceholderText(tr("ex. 80.5"));
+			line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
+			return line_edit;
 		}
-		return nullptr;
+
+		return QItemDelegate::createEditor(parent, option, index);
 	}
-};
+	return nullptr;
+}
 
 /**
  * @brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
