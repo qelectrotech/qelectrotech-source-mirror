@@ -213,6 +213,7 @@ class QETProject : public QObject
 		WireHops::Mode wireHops() const;
 		void setWireHops(WireHops::Mode mode);
 		WiringRules::Settings wiringRules() const;
+		WiringRules::Settings projectWiringRules() const;
 		void setWiringRules(const WiringRules::Settings &rules);
 		void setAutoBreakConductor (bool abc);
 		void setAutoElement (bool ae);

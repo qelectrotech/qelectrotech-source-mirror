@@ -23,8 +23,9 @@ class tst_wiringrules : public QObject
 	int m_run = 0;
 
 		// Environment of one sandboxed run; @p master_off writes the master
-		// switch off into that run's own settings.
-	QProcessEnvironment sandbox(bool master_off = false)
+		// switch off into that run's own settings, @p application_max_wires
+		// the limit every project follows unless it sets its own.
+	QProcessEnvironment sandbox(bool master_off = false, int application_max_wires = 0)
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run));
 		const QString tmp = m_dir.filePath(QStringLiteral("tmp%1").arg(m_run));
@@ -33,10 +34,12 @@ class tst_wiringrules : public QObject
 		QDir().mkpath(home);
 		QDir().mkpath(tmp);
 		QDir().mkpath(settings + QStringLiteral("/QElectroTech"));
-		if (master_off) {
+		if (master_off || application_max_wires) {
 			QFile ini(settings + QStringLiteral("/QElectroTech/QElectroTech.ini"));
 			if (ini.open(QIODevice::WriteOnly | QIODevice::Text))
-				ini.write("[diagrameditor]\nwiring_rules_enabled=false\n");
+				ini.write(QStringLiteral("[diagrameditor]\nwiring_rules_enabled=%1\nwiring_rules_max_wires=%2\n")
+						  .arg(master_off ? QStringLiteral("false") : QStringLiteral("true"))
+						  .arg(application_max_wires).toUtf8());
 		}
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
@@ -85,7 +88,8 @@ class tst_wiringrules : public QObject
 
 		// Wires a free terminal to a terminal that already has a wire, through
 		// qet.addConductor(); returns what the script printed after "PROBE ".
-	QString addWireToWiredTerminal(const QString &project, bool master_off)
+	QString addWireToWiredTerminal(const QString &project, bool master_off,
+								   int application_max_wires = 0)
 	{
 		const QString script_path = m_dir.filePath(QStringLiteral("probe%1.js").arg(m_run));
 		QFile script(script_path);
@@ -109,7 +113,7 @@ class tst_wiringrules : public QObject
 		script.close();
 
 		QProcess proc;
-		proc.setProcessEnvironment(sandbox(master_off));
+		proc.setProcessEnvironment(sandbox(master_off, application_max_wires));
 		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), script_path, project});
 		if (!proc.waitForFinished(60000))
 			return {};
@@ -160,18 +164,52 @@ private slots:
 		QVERIFY(!WiringRules::hasRoom(1, 1));
 	}
 
+	void projectOverridesApplication()
+	{
+		WiringRules::Settings application;
+		application.max_wires = 2;
+		application.one_wire_per_report = true;
+
+			// A project that follows the application gets its rules
+		WiringRules::Settings follows;
+		QCOMPARE(WiringRules::effective(follows, application).max_wires, 2);
+		QVERIFY(WiringRules::effective(follows, application).one_wire_per_report);
+		QVERIFY(!WiringRules::effective(follows, application).own);
+
+			// Its own rules win, "no limit" included
+		WiringRules::Settings own;
+		own.own = true;
+		QCOMPARE(WiringRules::effective(own, application).max_wires, 0);
+		QVERIFY(!WiringRules::effective(own, application).one_wire_per_report);
+		QVERIFY(WiringRules::effective(own, application).own);
+		own.max_wires = 6;
+		QCOMPARE(WiringRules::effective(own, application).max_wires, 6);
+	}
+
 	void xmlRoundTrip()
 	{
 		QDomDocument doc;
 		QDomElement root = doc.createElement(QStringLiteral("project"));
 		doc.appendChild(root);
 
-			// No rule: nothing written, and reading nothing gives no rule
-		WiringRules::toXml(WiringRules::Settings(), root);
+			// Following the application: nothing written, and reading
+			// nothing follows the application
+		WiringRules::Settings follows;
+		follows.max_wires = 3;       // not the project's: not written
+		WiringRules::toXml(follows, root);
 		QVERIFY(root.firstChildElement().isNull());
 		QVERIFY(WiringRules::fromXml(root).isDefault());
 
+			// Its own rules, even "none", are written and read back as its own
+		WiringRules::Settings none;
+		none.own = true;
+		WiringRules::toXml(none, root);
+		QCOMPARE(root.firstChildElement().tagName(), QStringLiteral("wiring_rules"));
+		QVERIFY(WiringRules::fromXml(root) == none);
+		root.removeChild(root.firstChildElement());
+
 		WiringRules::Settings rules;
+		rules.own = true;
 		rules.max_wires = 2;
 		rules.one_wire_per_report = true;
 		WiringRules::toXml(rules, root);
@@ -193,6 +231,14 @@ private slots:
 		QVERIFY2(saved.contains(QLatin1String("max_wires_per_terminal=\"2\""))
 				 && saved.contains(QLatin1String("one_wire_per_report=\"true\"")),
 				 "the setting was lost on save");
+
+			// A project's own "no rule" is kept too: it overrides the application's
+		const QString own_none = fixtureWith(QStringLiteral("<wiring_rules/>"));
+		QVERIFY(!own_none.isEmpty());
+		const QString saved_none = resave(own_none);
+		QVERIFY2(!saved_none.isEmpty(), "--resave failed");
+		QVERIFY2(saved_none.contains(QLatin1String("<wiring_rules/>")),
+				 "a project's own rules were lost on save");
 	}
 
 	void wirePastTheLimitIsRefused()
@@ -209,6 +255,16 @@ private slots:
 
 			// The master switch off: the project's rule does nothing
 		QCOMPARE(addWireToWiredTerminal(limited, true), QStringLiteral("true"));
+
+			// The application's limit applies to a project that sets none...
+		const QString plain = QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet");
+		QCOMPARE(addWireToWiredTerminal(plain, false, 1), QStringLiteral("false"));
+			// ...not to one that sets its own, here "no limit"
+		const QString own_none = fixtureWith(QStringLiteral("<wiring_rules/>"));
+		QVERIFY(!own_none.isEmpty());
+		QCOMPARE(addWireToWiredTerminal(own_none, false, 1), QStringLiteral("true"));
+			// ...and the master switch still turns it off
+		QCOMPARE(addWireToWiredTerminal(plain, true, 1), QStringLiteral("true"));
 	}
 };
 
