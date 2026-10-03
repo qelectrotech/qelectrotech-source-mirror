@@ -68,6 +68,8 @@
 #include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../TerminalStrip/terminalstrip.h"
+#include "../autoNum/autonumschemecommand.h"
+#include "../autoNum/elementautonumschemecommand.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 #include "../borderproperties.h"
@@ -609,6 +611,11 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 		log(QStringLiteral("qet.%1: empty information key").arg(caller));
 		return false;
 	}
+	if (key == QETInformation::ELMT_FORMULA_ID) {
+		log(QStringLiteral("qet.%1: \"%2\" is internal, follow a numbering with numberElement()")
+				.arg(caller, key));
+		return false;
+	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
 
@@ -616,6 +623,10 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 	if (old_info.value(key).toString() == value) return true; // nothing to push
 	DiagramContext new_info = old_info;
 	new_info.addValue(key, value);
+		// A formula written by hand follows no numbering scheme
+	if (key == QETInformation::ELMT_FORMULA) {
+		new_info.remove(QETInformation::ELMT_FORMULA_ID);
+	}
 
 	auto *cmd = new ChangeElementInformationCommand(element, old_info, new_info);
 	m_project->undoStack()->push(cmd);
@@ -3110,9 +3121,108 @@ bool QetScriptApi::addAutoNum(const QString &kind, const QString &name, const QS
 		}
 	}
 
-	if (kind == QLatin1String("conductor"))     m_project->addConductorAutoNum(name, context);
-	else if (kind == QLatin1String("element"))  m_project->addElementAutoNum(name, context);
-	else                                        m_project->addFolioAutoNum(name, context);
+	if (kind == QLatin1String("element")) {
+			// Through the undo stack, and an existing scheme is edited
+			// rather than replaced: the elements following it follow
+			// the new definition (see ElementAutoNumSchemeCommand)
+		ElementAutoNumSchemeCommand *cmd = nullptr;
+		if (m_project->elementAutoNum().contains(name)) {
+			const int frozen = ElementAutoNumSchemeCommand::editBlockedBy(m_project, name, context).size();
+			if (frozen) {
+				log(QStringLiteral("qet.addAutoNum: %1 element(s) with a frozen label follow '%2', "
+								   "its formula cannot change").arg(frozen).arg(name));
+				return false;
+			}
+			if (const auto conflict = ElementAutoNumSchemeCommand::counterConflict(m_project, name, context)) {
+				log(QStringLiteral("qet.addAutoNum: the counter %1 of '%2' is at or below %3 number(s) in use "
+								   "(up to %4); new elements will skip them")
+						.arg(conflict->counter).arg(name).arg(conflict->count).arg(conflict->highest));
+			}
+			cmd = ElementAutoNumSchemeCommand::edit(m_project, name, name, context, false);
+		} else {
+			const QString problem = ElementAutoNumSchemeCommand::nameProblem(m_project, name);
+			if (!problem.isEmpty()) {
+				log(QStringLiteral("qet.addAutoNum: %1").arg(problem));
+				return false;
+			}
+			cmd = ElementAutoNumSchemeCommand::create(m_project, name, context, QUuid(), false);
+		}
+		if (cmd) m_project->undoStack()->push(cmd);
+		return true;
+	}
+		// Conductor and folio numberings: undoable too, an existing one is
+		// edited, and a new name is unique and not empty
+	const auto scheme_kind = kind == QLatin1String("conductor")
+			? AutoNumSchemeCommand::Kind::Conductor
+			: AutoNumSchemeCommand::Kind::Folio;
+	AutoNumSchemeCommand *cmd = nullptr;
+	if (AutoNumSchemeCommand::contains(m_project, scheme_kind, name)) {
+		cmd = AutoNumSchemeCommand::edit(m_project, scheme_kind, name, name, context);
+	} else {
+		const QString problem = AutoNumSchemeCommand::nameProblem(m_project, scheme_kind, name);
+		if (!problem.isEmpty()) {
+			log(QStringLiteral("qet.addAutoNum: %1").arg(problem));
+			return false;
+		}
+		cmd = AutoNumSchemeCommand::create(m_project, scheme_kind, name, context);
+	}
+	if (cmd) m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::renameAutoNum
+	Rename a numbering context. What follows it follows it under its new
+	name: the elements for an element numbering, the folios for a conductor
+	or folio numbering. Undoable.
+*/
+bool QetScriptApi::renameAutoNum(const QString &kind, const QString &name, const QString &newName)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.renameAutoNum: project is read-only"));
+		return false;
+	}
+	if (kind != QLatin1String("element") && kind != QLatin1String("conductor")
+			&& kind != QLatin1String("folio")) {
+		log(QStringLiteral("qet.renameAutoNum: unknown kind '%1'; expected conductor, element or folio").arg(kind));
+		return false;
+	}
+
+	if (kind != QLatin1String("element"))
+	{
+			// The folios which follow it follow it under its new name
+		const auto scheme_kind = kind == QLatin1String("conductor")
+				? AutoNumSchemeCommand::Kind::Conductor
+				: AutoNumSchemeCommand::Kind::Folio;
+		if (!AutoNumSchemeCommand::contains(m_project, scheme_kind, name)) {
+			log(QStringLiteral("qet.renameAutoNum: no %1 auto-numbering named '%2'").arg(kind, name));
+			return false;
+		}
+		const QString problem = AutoNumSchemeCommand::nameProblem(m_project, scheme_kind, newName, name);
+		if (!problem.isEmpty()) {
+			log(QStringLiteral("qet.renameAutoNum: %1").arg(problem));
+			return false;
+		}
+		auto *cmd = AutoNumSchemeCommand::edit(
+					m_project, scheme_kind, name, newName,
+					AutoNumSchemeCommand::contextOf(m_project, scheme_kind, name));
+		if (cmd) m_project->undoStack()->push(cmd);
+		return true;
+	}
+
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.renameAutoNum: no element auto-numbering named '%1'").arg(name));
+		return false;
+	}
+	const QString problem = ElementAutoNumSchemeCommand::nameProblem(m_project, newName, name);
+	if (!problem.isEmpty()) {
+		log(QStringLiteral("qet.renameAutoNum: %1").arg(problem));
+		return false;
+	}
+	auto *cmd = ElementAutoNumSchemeCommand::edit(
+				m_project, name, newName, m_project->elementAutoNum(name), false);
+	if (cmd) m_project->undoStack()->push(cmd);
 	return true;
 }
 
@@ -3129,9 +3239,30 @@ bool QetScriptApi::removeAutoNum(const QString &kind, const QString &name)
 		log(QStringLiteral("qet.removeAutoNum: no %1 auto-numbering named '%2'").arg(kind, name));
 		return false;
 	}
-	if (kind == QLatin1String("conductor"))     m_project->removeConductorAutoNum(name);
-	else if (kind == QLatin1String("element"))  m_project->removeElementAutoNum(name);
-	else                                        m_project->removeFolioAutoNum(name);
+	if (kind == QLatin1String("element")) {
+		const int used = m_project->elementsUsingElementAutoNum(name).size();
+		if (used) {
+			log(QStringLiteral("qet.removeAutoNum: %1 element(s) follow '%2', it cannot be removed")
+					.arg(used).arg(name));
+			return false;
+		}
+		if (auto *cmd = ElementAutoNumSchemeCommand::remove(m_project, name)) {
+			m_project->undoStack()->push(cmd);
+		}
+		return true;
+	}
+	const auto scheme_kind = kind == QLatin1String("conductor")
+			? AutoNumSchemeCommand::Kind::Conductor
+			: AutoNumSchemeCommand::Kind::Folio;
+	const int used = AutoNumSchemeCommand::usersOf(m_project, scheme_kind, name).size();
+	if (used) {
+		log(QStringLiteral("qet.removeAutoNum: %1 folio(s) follow '%2', it cannot be removed")
+				.arg(used).arg(name));
+		return false;
+	}
+	if (auto *cmd = AutoNumSchemeCommand::remove(m_project, scheme_kind, name)) {
+		m_project->undoStack()->push(cmd);
+	}
 	return true;
 }
 
@@ -3732,13 +3863,137 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	element->setUpFormula(true);
 	const DiagramContext new_info = element->elementInformations();
 	if (new_info.value(QETInformation::ELMT_LABEL) == old_info.value(QETInformation::ELMT_LABEL)
-		&& new_info.value(QStringLiteral("formula")) == old_info.value(QStringLiteral("formula"))) {
+		&& new_info.value(QStringLiteral("formula")) == old_info.value(QStringLiteral("formula"))
+		&& new_info.value(QETInformation::ELMT_FORMULA_ID) == old_info.value(QETInformation::ELMT_FORMULA_ID)) {
 		stack->endMacro();
 		return false;
 	}
 	element->setElementInformations(old_info);
 	stack->push(new ChangeElementInformationCommand(element, old_info, new_info));
 	stack->endMacro();
+	return true;
+}
+
+/**
+	@brief QetScriptApi::renumberElementAutoNum
+	Number again, from the first number, the elements following the
+	element auto-numbering @p name, in folio and position order, as the
+	"Renumber" button of the project's numberings does. Undoable, one
+	step.
+
+	An element whose label is frozen is left as it is, and its label is
+	not given to another element.
+	@return how many elements were left as they are because their label
+	is frozen, -1 if there is no such numbering or the project is read-only
+*/
+int QetScriptApi::renumberElementAutoNum(const QString &name)
+{
+	if (!m_project) return -1;
+	const QString caller = QStringLiteral("renumberElementAutoNum");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return -1;
+	}
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.%1: no element auto-numbering named '%2'").arg(caller, name));
+		return -1;
+	}
+	QVector<Element *> frozen;
+	if (auto *cmd = ElementAutoNumSchemeCommand::renumber(
+				m_project, name, &frozen,
+				QObject::tr("Renuméroter les éléments (%1)").arg(name))) {
+		m_project->undoStack()->push(cmd);
+	}
+	return static_cast<int>(frozen.size());
+}
+
+/**
+	@brief QetScriptApi::freeElementNumbers
+	The numbers an element which follows an element auto-numbering may be
+	given by hand with assignElementNumber(): from 1 to a few past the
+	highest in use, those no other element of the numbering carries and which
+	would not give it the label of another element. Empty if the element
+	follows no auto-numbering, or one whose numbers are not a single sequence
+	(a folio number, a cycle or letters in the definition).
+*/
+QVariantList QetScriptApi::freeElementNumbers(int folioIndex, const QString &elementUuid)
+{
+	QVariantList list;
+	if (!m_project) return list;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return list;
+	const QString title = m_project->elementAutoNumTitle(
+				QUuid(element->elementInformations().value(QETInformation::ELMT_FORMULA_ID).toString()));
+	for (int n : ElementAutoNumSchemeCommand::freeNumbers(m_project, title, element)) {
+		list << n;
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::assignElementNumber
+	Give an element which follows an element auto-numbering the number
+	@p number of it, which must be free (see freeElementNumbers()): its label
+	is the formula worked out with that number and it keeps following the
+	numbering. If the counter of the numbering is at or below @p number it
+	moves past it. Undoable, one step.
+*/
+bool QetScriptApi::assignElementNumber(int folioIndex, const QString &elementUuid, int number)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("assignElementNumber");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	QString problem;
+	auto *cmd = ElementAutoNumSchemeCommand::assignNumber(m_project, element, number, &problem);
+	if (!cmd) {
+		log(QStringLiteral("qet.%1: %2").arg(caller, problem));
+		return false;
+	}
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::assignElementAutoNum
+	Make an element follow the element auto-numbering @p name: it gets
+	the formula and the next number of that numbering, which moves on.
+	The same command as picking the numbering in the element's
+	information window. Undoable, one step.
+
+	The element is left alone, and false returned, when it follows that
+	numbering already, is a slave or a report, or when something would be
+	lost: a frozen label, or a formula it follows or holds already, unless
+	@p overwrite is true. A label typed by hand, with no formula, is
+	replaced.
+*/
+bool QetScriptApi::assignElementAutoNum(const QString &name, int folioIndex,
+										const QString &elementUuid, bool overwrite)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("assignElementAutoNum");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.%1: no element auto-numbering named '%2'").arg(caller, name));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	auto *cmd = ElementAutoNumSchemeCommand::assign(m_project, name, {element}, overwrite);
+	if (!cmd) {
+		log(QStringLiteral("qet.%1: the element was left as it is").arg(caller));
+		return false;
+	}
+	m_project->undoStack()->push(cmd);
 	return true;
 }
 
@@ -3751,6 +4006,10 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	elements are selected for the moment and the previous selection restored
 	before returning; the paste is Diagram::fromXml() at the position,
 	followed by one PasteDiagramCommand so it is a single undo step.
+
+	As for a paste in the editor, the copies of elements which follow an
+	element numbering get the next numbers of it (the preference "number
+	pasted elements"), and the numbering moves on; undoing gives them back.
 	@return the uuids of the new elements, or an empty list on failure
 */
 QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringList &elementUuids,

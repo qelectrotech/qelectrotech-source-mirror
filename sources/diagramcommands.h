@@ -42,6 +42,12 @@ class PasteDiagramCommand : public QUndoCommand {
 	public:
 	void undo() override;
 	void redo() override;
+	/**
+		Whether pasted elements which follow an element numbering are
+		numbered by the paste (default true, if the preference allows it).
+		Off for a caller which numbers them itself.
+	*/
+	void setAutoNumbering(bool enabled) {m_autonumber = enabled;}
 	
 	// attributes
 	private:
@@ -53,6 +59,8 @@ class PasteDiagramCommand : public QUndoCommand {
 	int filter;
 	/// prevent the first call to redo()
 	bool first_redo;
+	/// number the pasted elements which follow an element numbering
+	bool m_autonumber = true;
 };
 
 /**

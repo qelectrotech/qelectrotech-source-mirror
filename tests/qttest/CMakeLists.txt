@@ -633,6 +633,21 @@ target_compile_definitions(tst_derivedwireuuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Element numbering schemes carry an id and elements follow them by it:
+# a legacy file gets stable ids on --resave; through --run, rename, edit,
+# refused removal and undo/redo keep the elements following the scheme.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementautonumids
+    tst_elementautonumids.cpp)
+  add_test(NAME tst_elementautonumids COMMAND tst_elementautonumids)
+  add_dependencies(tst_elementautonumids qelectrotech)
+  target_link_libraries(tst_elementautonumids PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementautonumids PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
 # Saving a project that was just saved changes nothing: runs the real
 # binary's --resave twice on every project in examples/, and on one whose
 # title block holds a single-space value (#973).
@@ -714,3 +729,15 @@ add_executable(
 add_test(NAME tst_xrefpos COMMAND tst_xrefpos)
 target_include_directories(tst_xrefpos PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_xrefpos PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# Qt 6.4.2 writes the attributes of an element in an order that changes from
+# one process to the next, so a project saved twice by two runs of the binary
+# differs in bytes only (seen on projects without any numbering, too). A fixed
+# hash seed makes the order stable; it changes nothing for a newer Qt.
+if(Qt6_VERSION VERSION_LESS 6.5.0)
+  foreach(qet_test tst_resaveunchanged tst_elementautonumids)
+    if(TEST ${qet_test})
+      set_tests_properties(${qet_test} PROPERTIES ENVIRONMENT "QT_HASH_SEED=0")
+    endif()
+  endforeach()
+endif()

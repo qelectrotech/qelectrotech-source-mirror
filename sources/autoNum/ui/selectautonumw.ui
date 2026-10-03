@@ -159,32 +159,6 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="m_previous_pb">
-             <property name="toolTip">
-              <string>Précédent</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset theme="arrow-left"/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="m_next_pb">
-             <property name="toolTip">
-              <string>Suivant</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset theme="arrow-right"/>
-             </property>
-            </widget>
-           </item>
-           <item>
             <spacer name="horizontalSpacer_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -227,6 +201,9 @@
              </item>
              <item>
               <widget class="QLabel" name="value_label">
+               <property name="toolTip">
+                <string>Pour un numéro : le prochain numéro attribué. Pour un texte : le texte fixe.</string>
+               </property>
                <property name="text">
                 <string>Valeur</string>
                </property>

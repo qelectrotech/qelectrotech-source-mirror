@@ -1444,9 +1444,17 @@ OPS = {
     "add_autonum":      ("addAutoNum",          [("kind", "str"), ("name", "str"),
                                                  ("parts", "list")]),
     "remove_autonum":   ("removeAutoNum",       [("kind", "str"), ("name", "str")]),
+    "rename_autonum":   ("renameAutoNum",       [("kind", "str"), ("name", "str"),
+                                                 ("new_name", "str")]),
     "use_conductor_autonum": ("useConductorAutoNum", [("folio", "folio"), ("name", "str")]),
     "use_element_autonum": ("useElementAutoNum", [("name", "str")]),
     "number_element":   ("numberElement",       [("folio", "folio"), ("element", "elmt")]),
+    "renumber_element_autonum": ("renumberElementAutoNum", [("name", "str")]),
+    "free_element_numbers": ("freeElementNumbers", [("folio", "folio"), ("element", "elmt")]),
+    "assign_element_number": ("assignElementNumber", [("folio", "folio"), ("element", "elmt"),
+                                                      ("number", "num")]),
+    "assign_element_autonum": ("assignElementAutoNum", [("name", "str"), ("folio", "folio"),
+                                                        ("element", "elmt"), ("overwrite", "bool")]),
     # The text fields drawn on a symbol. Indexed within the element's own
     # list, which follows its definition and shifts on delete (and undo of a
     # delete puts the field back at the end).
@@ -1959,7 +1967,7 @@ def _build_script(operations: list, output: str) -> str:
             raise ValueError(f"operation {i}: unknown folio property "
                              f"{op.get('property')!r}; expected one of "
                              f"{', '.join(FOLIO_PROPERTIES)}")
-        if name in ("add_autonum", "remove_autonum") and op.get("kind") not in AUTONUM_KINDS:
+        if name in ("add_autonum", "remove_autonum", "rename_autonum") and op.get("kind") not in AUTONUM_KINDS:
             raise ValueError(f"operation {i}: unknown kind {op.get('kind')!r}; "
                              f"expected one of {', '.join(AUTONUM_KINDS)}")
         if name == "search_and_replace":
@@ -4500,6 +4508,18 @@ TOOLS = [
                         "use_conductor_autonum then makes new conductors on a folio "
                         "take their number from it, so define and select it BEFORE the "
                         "add_conductor ops it should number. For elements, "
+                        "renumber_element_autonum numbers an element context's elements again "
+                        "(an element with a frozen label keeps its label, and nobody else gets it); "
+                        "free_element_numbers lists the numbers an element of an element context may "
+                        "be given by hand, assign_element_number gives it one of them "
+                        "(it keeps following the context, its counter moves past the number); "
+                        "assign_element_autonum makes one element follow a named element context "
+                        "(refused when it holds a formula, frozen label or follows "
+                        "another one, unless overwrite is true); "
+                        "rename_autonum renames a context of any kind, what follows it (elements, or "
+                        "the folios of a conductor or folio context) keeps following it; "
+                        "remove_autonum refuses a context which elements (element kind) or "
+                        "folios (conductor and folio kinds) still follow. "
                         "use_element_autonum selects the context and number_element applies "
                         "it to one element AFTER it is placed (add_element does not number "
                         "what it places); slaves and reports are refused, since they take "

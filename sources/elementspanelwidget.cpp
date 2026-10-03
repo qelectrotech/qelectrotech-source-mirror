@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
+#include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
 #include "editor/ui/qetelementeditor.h"
@@ -699,6 +700,14 @@ void ElementsPanelWidget::duplicateDiagram()
 			elmt->initLink(new_elements);
 		}
 
+			// The numberings the copies follow, known before the label
+			// erasing below empties their formula
+		const bool autonumber = QSettings().value(
+					"diagramcommands/autonumber-pasted-elements", true).toBool();
+		const QMap<QString, QVector<Element *>> copy_schemes = autonumber
+				? ElementAutoNumSchemeCommand::pastedSchemes(project, new_elements)
+				: QMap<QString, QVector<Element *>>();
+
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
 				// The XML round-trip kept the source elements' uuids. Give the
@@ -832,6 +841,18 @@ void ElementsPanelWidget::duplicateDiagram()
 					cp.text = "";
 					cond->setProperties(cp);
 				}
+			}
+		}
+
+			// The copies follow the numberings of the project: they get the
+			// next numbers, as pasted elements do. This duplication is not
+			// undoable, so neither is the numbering: it is done at once.
+		ElementAutoNumSchemeCommand::linkPasted(project, new_elements);
+		if (!copy_schemes.isEmpty())
+		{
+			QUndoCommand numbering;
+			if (ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes, &numbering)) {
+				numbering.redo();
 			}
 		}
 

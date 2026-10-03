@@ -327,6 +327,16 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="m_autonumber_pasted">
+         <property name="text">
+          <string>Numéroter automatiquement les éléments collés ou dupliqués qui suivent une numérotation</string>
+         </property>
+         <property name="toolTip">
+          <string>Un élément collé reçoit le numéro suivant de sa numérotation au lieu du nom de l'élément copié, et la numérotation avance.</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_save_label_paste">
          <property name="text">
@@ -354,7 +364,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1373,6 +1383,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_use_windows_mode_rb</tabstop>
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_save_label_paste</tabstop>
+  <tabstop>m_autonumber_pasted</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>
