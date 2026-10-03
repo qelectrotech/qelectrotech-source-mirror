@@ -26,6 +26,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/potentialselectordialog.h"
+#include "../wiringrules.h"
 #include "qgraphicsitem.h"
 
 #include <QPolygonF>
@@ -48,18 +49,19 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	if (!setUpPropertieToUse()) {
 		return;
 	}
-	Terminal *hub_terminal = hubTerminal();
-	
 	d->undoStack().beginMacro(QObject::tr("Création de conducteurs"));
 	
+	const bool chain = d->project()
+			&& WiringRules::chainsWires(d->project()->wiringRules(), WiringRules::masterEnabled());
 	QList<Conductor *> c_list;
-	for (Terminal *t : m_terminals_list)
+	for (const auto &pair : terminalPairs(chain))
 	{
-		if (t == hub_terminal) {
+			//Checked as the chain is built: the wire before this one may
+			//have just filled a terminal.
+		if (chain && !pair.first->canBeLinkedTo(pair.second)) {
 			continue;
 		}
-		
-		Conductor *cond = new Conductor(hub_terminal, t);
+		Conductor *cond = new Conductor(pair.first, pair.second);
 		cond->setProperties(m_properties);
 		cond->setSequenceNum(m_sequential_number);
 		d->undoStack().push(new AddGraphicsObjectCommand(cond, d));
@@ -224,6 +226,41 @@ QList<Conductor *> ConductorCreator::existingPotential(const QList<Terminal *> &
 	@brief ConductorCreator::hubTerminal
 	@return hub_terminal
 */
+/**
+	@brief ConductorCreator::terminalPairs
+	@param chain : the project limits the wires per terminal
+	(discussion #1158, WiringRules::chainsWires())
+	@return the pairs of terminals to wire: all to one hub terminal (a
+	star), or with \p chain one after another (WiringRules::chainOrder()),
+	since a star gives the hub a wire per other terminal.
+*/
+QList<QPair<Terminal *, Terminal *>> ConductorCreator::terminalPairs(bool chain)
+{
+	QList<QPair<Terminal *, Terminal *>> pairs;
+	if (chain)
+	{
+		QList<QPointF> points;
+		for (Terminal *t : std::as_const(m_terminals_list)) {
+			points << t->scenePos();
+		}
+		const QList<int> order = WiringRules::chainOrder(points);
+		for (int i = 1 ; i < order.size() ; ++i)
+		{
+			pairs << qMakePair(m_terminals_list.at(order.at(i - 1)),
+							   m_terminals_list.at(order.at(i)));
+		}
+		return pairs;
+	}
+
+	Terminal *hub_terminal = hubTerminal();
+	for (Terminal *t : std::as_const(m_terminals_list)) {
+		if (t != hub_terminal) {
+			pairs << qMakePair(hub_terminal, t);
+		}
+	}
+	return pairs;
+}
+
 Terminal *ConductorCreator::hubTerminal()
 {
 	Terminal *hub_terminal = m_terminals_list.first();
