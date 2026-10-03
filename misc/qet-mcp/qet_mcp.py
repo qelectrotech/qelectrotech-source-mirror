@@ -1026,7 +1026,8 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                 "QET_ENABLE_SCRIPTING=1 to the environment this server is "
                 "started in -- in an MCP client that is the \"env\" block of "
                 "its entry in the client configuration. Only qet_query, "
-                "qet_continuity, qet_check, qet_project_new, qet_edit, "
+                "qet_continuity, qet_check, qet_layout_check, qet_project_new, "
+                "qet_edit, "
                 "qet_script_api, qet_script_test, qet_script_install, "
                 "qet_script_remove and qet_recording_check need it; every "
                 "other tool either reads "
@@ -2455,6 +2456,614 @@ def tool_check(binary: str, project: str, checks: list | None = None,
     return answer
 
 
+# --------------------------------------------------------------------------
+# Layout check: does the drawing read well?
+# --------------------------------------------------------------------------
+#
+# A wire is straight only when its two terminals share an x or a y exactly.
+# An assistant places a symbol by its origin, and its terminals sit at an
+# offset from that origin it cannot see, so "under K1" lands a few pixels
+# off and QElectroTech draws a jog. This check finds those, with the move
+# that removes each one.
+#
+# The drawn path of a wire is not in the file: a wire on QElectroTech's
+# default path is saved with no <segment> at all. So the geometry comes from
+# QElectroTech, through the read calls of its scripting API, and is scored
+# here. Nothing is saved.
+
+LAYOUT_STYLES = ["auto", "iec", "nfpa"]
+LAYOUT_GRID = 10.0           # Diagram::xGrid / yGrid
+LAYOUT_RULES = {
+    "avoidable_bend": {
+        "severity": "warning",
+        "note": "The two terminals face each other along one axis but are a few "
+                "pixels out of line, so the wire jogs. Moving one symbol makes it "
+                "straight; \"fix\" is that symbol's move from \"fixes\". "
+                "\"conflict\": no move is offered, because both symbols are "
+                "already lined up by other wires along this axis or moving either "
+                "would put it on another symbol or across another wire.",
+    },
+    "extra_bends": {
+        "severity": "info",
+        "note": "The wire bends more often than its two terminals need. Often a "
+                "segment moved by hand; route_conductor redraws it.",
+    },
+    "wire_through_symbol": {
+        "severity": "warning",
+        "note": "A wire runs through a symbol it is not connected to. A symbol "
+                "drawn around one of the wire's own ends is a frame and is left "
+                "out, as the router does, and so is a symbol with no terminals. "
+                "Cable tags and shields are drawn across wires on purpose: ignore "
+                "the finding for those.",
+    },
+    "overlapping_symbols": {
+        "severity": "warning",
+        "note": "Two symbols overlap by more than one grid step (a symbol's box "
+                "is its declared size, so side-by-side symbols can share a few "
+                "pixels of it). Frames, drawn around another symbol, and symbols "
+                "with no terminals (tags, shields, label holders) are left out.",
+    },
+    "off_grid": {
+        "severity": "warning",
+        "note": "The symbol's origin is off the 10 px grid QElectroTech snaps "
+                "symbols to, so its terminals are off the grid the other symbols "
+                "are on. An axis a straight wire lines it up on is left alone. "
+                "\"fix\" moves it onto the grid.",
+    },
+    "crossing": {
+        "severity": "info",
+        "note": "Two wires cross. Counted so two drafts can be compared; some "
+                "crossings cannot be avoided, so they do not lower the score.",
+    },
+}
+
+_LAYOUT_SEG = re.compile(r"^\s*\d+:\s*\(([^,]+),([^)]+)\)-\(([^,]+),([^)]+)\)")
+
+# One launch, read-only. Per folio: every symbol's geometry and terminals,
+# every wire's ends and drawn path. conductorPath() reads any wire by its
+# uuid; a build without it reads a wire through one of its ends, which
+# conductorSegments() refuses on a terminal carrying a second wire.
+_LAYOUT_JS = r"""
+var only = @FOLIO@;
+var byUuid = typeof qet.conductorPath === 'function';
+for (var f = 0; f < qet.folioCount(); f++) {
+  if (only >= 0 && f !== only) continue;
+  var els = qet.elementUuids(f), E = [];
+  for (var i = 0; i < els.length; i++) {
+    E.push({uuid: els[i], name: qet.elementName(f, els[i]),
+            label: qet.elementLabel(f, els[i]), g: qet.elementGeometry(f, els[i]),
+            terminals: qet.elementTerminals(f, els[i]).length});
+  }
+  var cu = qet.conductorUuids(f), lines = qet.conductors(f), C = [];
+  for (var j = 0; j < cu.length; j++) {
+    var ends = qet.conductorEnds(f, cu[j]), path = null, segs = null;
+    if (byUuid) {
+      path = qet.conductorPath(f, cu[j]);
+    } else if (ends.length === 2) {
+      for (var k = 0; k < 2 && segs === null; k++) {
+        if (ends[k] === '?') continue;
+        var n = 0;
+        for (var l = 0; l < lines.length; l++) {
+          var p = lines[l].split(' : ')[0].split(' -- ');
+          if (p[0] === ends[k] || p[1] === ends[k]) n++;
+        }
+        if (n !== 1) continue;
+        var m = ends[k].split(' terminal ');
+        segs = qet.conductorSegments(f, m[0], parseInt(m[1], 10));
+      }
+    }
+    C.push({uuid: cu[j], ends: ends, path: path, segs: segs});
+  }
+  qet.log(@MARKER@ + JSON.stringify({kind: 'layout', folio: f, elements: E,
+                                    conductors: C}));
+}
+"""
+
+
+def _layout_points(wire: dict) -> list | None:
+    """The wire's drawn path as points, from either read call; None if it
+    could not be read."""
+    if wire.get("path"):
+        try:
+            return [(float(p["x"]), float(p["y"])) for p in wire["path"]]
+        except (KeyError, TypeError, ValueError):
+            return None
+    segs = wire.get("segs")
+    if not segs:
+        return None
+    pts = []
+    for line in segs:
+        mt = _LAYOUT_SEG.match(line)
+        if not mt:
+            return None
+        x1, y1, x2, y2 = (float(v) for v in mt.groups())
+        if not pts:
+            pts.append((x1, y1))
+        pts.append((x2, y2))
+    return pts if len(pts) >= 2 else None
+
+
+def _simplify(pts: list) -> list:
+    """Drop zero-length steps and merge straight runs, so what is left has a
+    corner at every inner point."""
+    out = []
+    for p in pts:
+        if out and abs(p[0] - out[-1][0]) < 1e-6 and abs(p[1] - out[-1][1]) < 1e-6:
+            continue
+        if len(out) >= 2:
+            a, b = out[-2], out[-1]
+            if ((abs(a[0] - b[0]) < 1e-6 and abs(b[0] - p[0]) < 1e-6)
+                    or (abs(a[1] - b[1]) < 1e-6 and abs(b[1] - p[1]) < 1e-6)):
+                out[-1] = p
+                continue
+        out.append(p)
+    return out
+
+
+def _facing(dock: tuple, nxt: tuple) -> tuple | None:
+    """Which way a terminal sends its wire: the unit step from the dock point
+    to the next distinct point of the path, or None if that is not along an
+    axis."""
+    dx, dy = nxt[0] - dock[0], nxt[1] - dock[1]
+    if abs(dx) < 1e-6 and abs(dy) > 1e-6:
+        return (0, 1 if dy > 0 else -1)
+    if abs(dy) < 1e-6 and abs(dx) > 1e-6:
+        return (1 if dx > 0 else -1, 0)
+    return None
+
+
+def _box(g: dict) -> tuple | None:
+    try:
+        return (float(g["left"]), float(g["top"]), float(g["right"]), float(g["bottom"]))
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def _contains(outer: tuple, inner: tuple) -> bool:
+    return (outer[0] <= inner[0] and outer[1] <= inner[1]
+            and outer[2] >= inner[2] and outer[3] >= inner[3] and outer != inner)
+
+
+def _overlap(a: tuple, b: tuple, margin: float = 1.0) -> bool:
+    return (min(a[2], b[2]) - max(a[0], b[0]) > margin
+            and min(a[3], b[3]) - max(a[1], b[1]) > margin)
+
+
+def _segment_through(p: tuple, q: tuple, box: tuple, margin: float = 1.0) -> bool:
+    """Does the axis-aligned segment p-q run through the inside of box?"""
+    l, t, r, b = box[0] + margin, box[1] + margin, box[2] - margin, box[3] - margin
+    if l >= r or t >= b:
+        return False
+    if abs(p[1] - q[1]) < 1e-6:          # horizontal
+        lo, hi = sorted((p[0], q[0]))
+        return t < p[1] < b and min(hi, r) - max(lo, l) > 1e-6
+    if abs(p[0] - q[0]) < 1e-6:          # vertical
+        lo, hi = sorted((p[1], q[1]))
+        return l < p[0] < r and min(hi, b) - max(lo, t) > 1e-6
+    return False
+
+
+def _crosses(a: tuple, b: tuple, c: tuple, d: tuple) -> bool:
+    """Do a horizontal and a vertical segment cross inside both?"""
+    if abs(a[1] - b[1]) < 1e-6 and abs(c[0] - d[0]) < 1e-6:
+        h, v = (a, b), (c, d)
+    elif abs(a[0] - b[0]) < 1e-6 and abs(c[1] - d[1]) < 1e-6:
+        h, v = (c, d), (a, b)
+    else:
+        return False
+    x, y = v[0][0], h[0][1]
+    hx = sorted((h[0][0], h[1][0]))
+    vy = sorted((v[0][1], v[1][1]))
+    return hx[0] + 1e-6 < x < hx[1] - 1e-6 and vy[0] + 1e-6 < y < vy[1] - 1e-6
+
+
+def _end_element(end: str) -> str:
+    return end.split(" terminal ")[0] if " terminal " in end else ""
+
+
+def _grid_offset(v: float) -> float:
+    """How far v must move to reach the nearest grid line."""
+    return round(v / LAYOUT_GRID) * LAYOUT_GRID - v
+
+
+def _layout_folio(data: dict, max_shift: float) -> dict:
+    """Score one folio's dump and plan the moves that fix it. Pure: no
+    QElectroTech, so every rule is testable with made-up geometry.
+
+    Fixes are planned together, one move per symbol, because they interact:
+    two jogs can ask one symbol to move two ways, and snapping a symbol to
+    the grid can bend a straight wire. So straight wires are taken first and
+    pin their two symbols on their axis; jogs then move a symbol not yet
+    pinned, preferring a move that lands it on the grid; grid snaps come
+    last and only on an axis nothing pinned.
+    Applying all of "fixes" at once is therefore consistent; applying each
+    finding's fix on its own, one after the other, is not.
+    """
+    folio = int(data.get("folio", 0))
+    symbols = {}
+    for el in data.get("elements") or []:
+        box = _box(el.get("g") or {})
+        if box is None:
+            continue
+        g = el["g"]
+        symbols[el["uuid"]] = {"uuid": el["uuid"], "name": el.get("name", ""),
+                               "label": el.get("label", ""),
+                               # No terminals: a label holder or a drawing
+                               # aid, put on top of other symbols on purpose.
+                               "annotation": int(el.get("terminals", 1) or 0) == 0,
+                               "x": float(g.get("x", 0)), "y": float(g.get("y", 0)),
+                               "xy": (float(g.get("x", 0)), float(g.get("y", 0))),
+                               "box": box, "docks": []}
+    wire_count = {}
+    wires, unread = [], []
+    for w in data.get("conductors") or []:
+        ends = [_end_element(e) for e in (w.get("ends") or [])]
+        for e in ends:
+            if e:
+                wire_count[e] = wire_count.get(e, 0) + 1
+        pts = _layout_points(w)
+        if pts is None:
+            unread.append(w.get("uuid", ""))
+            continue
+        ends = (ends + ["", ""])[:2]
+        # The path runs from the first end's terminal to the second's.
+        for end, dock in ((ends[0], pts[0]), (ends[1], pts[-1])):
+            if end in symbols:
+                symbols[end]["docks"].append(dock)
+        wires.append({"uuid": w.get("uuid", ""), "ends": ends, "pts": _simplify(pts)})
+
+    findings = []
+    dirty_wires, dirty_symbols = set(), set()
+    length = {"vertical": 0.0, "horizontal": 0.0}
+    move = {}               # symbol uuid -> [dx, dy], the one planned move
+    locked = set()          # (symbol uuid, axis) a jog fix already decided
+
+    def add(rule, **fields):
+        findings.append({"rule": rule, "severity": LAYOUT_RULES[rule]["severity"],
+                         "folio": folio + 1, **fields})
+
+    def on_grid(v):
+        return abs(_grid_offset(v)) < 1e-6
+
+    solid = [x for x in symbols.values() if not x["annotation"]]
+
+    # Symbols lined up on an axis by straight wires (as planned) form a
+    # group; the grid snap moves a group together so it stays in line.
+    parent = {}
+
+    def find(k):
+        parent.setdefault(k, k)
+        while parent[k] != k:
+            parent[k] = parent[parent[k]]
+            k = parent[k]
+        return k
+
+    def union(a, b):
+        parent[find(a)] = find(b)
+
+    def shifted(box, d):
+        return (box[0] + d[0], box[1] + d[1], box[2] + d[0], box[3] + d[1])
+
+    def blocked(uuid, total):
+        """Would moving this symbol by total (its whole planned move) put it
+        on another symbol, or across a wire it is not on, where it was not
+        before? A fix must not trade a jog for a collision."""
+        me = symbols[uuid]
+        if me["annotation"]:
+            return False
+        old, new = me["box"], shifted(me["box"], total)
+        for o in solid:
+            if o["uuid"] == uuid:
+                continue
+            ob = shifted(o["box"], move.get(o["uuid"], [0, 0]))
+            if _contains(ob, old) or _contains(old, ob) or _contains(ob, new) or _contains(new, ob):
+                continue
+            if _overlap(new, ob, margin=LAYOUT_GRID) and not _overlap(old, o["box"], margin=LAYOUT_GRID):
+                return True
+        for w in wires:
+            if uuid in w["ends"]:
+                continue
+            for p, q in zip(w["pts"], w["pts"][1:]):
+                if _segment_through(p, q, new) and not _segment_through(p, q, old):
+                    return True
+        return False
+
+    for w in wires:
+        pts = w["pts"]
+        for p, q in zip(pts, pts[1:]):
+            length["vertical" if abs(p[0] - q[0]) < 1e-6 else "horizontal"] += (
+                abs(p[0] - q[0]) + abs(p[1] - q[1]))
+        w["bends"] = max(0, len(pts) - 2)
+
+    # Every wire whose terminals face each other along one axis: straight
+    # ones first, so they pin their symbols on that axis (a fix must not
+    # trade one straight wire for another), then jogs, smallest first.
+    in_line = []
+    for w in wires:
+        pts, bends = w["pts"], w["bends"]
+        if len(pts) < 2:
+            continue
+        a, b = pts[0], pts[-1]
+        fa, fb = _facing(a, pts[1]), _facing(b, pts[-2])
+        if not (fa and fb):
+            continue
+        if fa[0] == 0 and fb[0] == 0:                  # both vertical
+            axis, i = "x", 0
+            facing = fa[1] == (1 if b[1] > a[1] else -1) and fb[1] == -fa[1]
+        elif fa[1] == 0 and fb[1] == 0:                # both horizontal
+            axis, i = "y", 1
+            facing = fa[0] == (1 if b[0] > a[0] else -1) and fb[0] == -fa[0]
+        else:                                          # an L at best
+            if bends > 1:
+                add("extra_bends", conductor=w["uuid"], bends=bends, needed=1,
+                    note=LAYOUT_RULES["extra_bends"]["note"],
+                    fix={"op": "route_conductor", "folio": folio, "conductor": w["uuid"]})
+                dirty_wires.add(w["uuid"])
+            continue
+        offset = b[i] - a[i]
+        straight = facing and abs(offset) < 1e-6
+        jog = facing and 1e-6 <= abs(offset) <= max_shift and bends > 0
+        if straight or jog:
+            in_line.append((0 if straight else 1, abs(offset), w, axis, i, a, b, jog))
+        need = 0 if straight else 2
+        if not jog and bends > need:
+            add("extra_bends", conductor=w["uuid"], bends=bends, needed=need,
+                note=LAYOUT_RULES["extra_bends"]["note"],
+                fix={"op": "route_conductor", "folio": folio, "conductor": w["uuid"]})
+            dirty_wires.add(w["uuid"])
+
+    for _, _, w, axis, i, a, b, jog in sorted(in_line, key=lambda t: t[:2]):
+        ea, eb = w["ends"]
+        # As it will be once the moves planned so far are applied.
+        left = (b[i] + move.get(eb, [0, 0])[i]) - (a[i] + move.get(ea, [0, 0])[i])
+        mover = None
+        if abs(left) > 1e-6:
+            # Prefer the end that lands on the grid, then the one with fewer
+            # other wires (on a tie the second, so the first anchors a chain).
+            def rank(e):
+                delta = -left if e == eb else left
+                origin = symbols[e]["xy"][i] + move.get(e, [0, 0])[i] + delta
+                return (not on_grid(origin), wire_count.get(e, 0), e != eb)
+            free = [e for e in (ea, eb) if e in symbols and (e, axis) not in locked]
+            for cand in sorted(free, key=rank):
+                total = list(move.get(cand, [0.0, 0.0]))
+                total[i] += -left if cand == eb else left
+                if blocked(cand, total):
+                    continue
+                mover = cand
+                move[cand] = total
+                break
+        locked.update((e, axis) for e in (ea, eb) if e in symbols)
+        if (abs(left) < 1e-6 or mover is not None) and ea in symbols and eb in symbols:
+            union((ea, axis), (eb, axis))
+        if jog:
+            w["mover"] = mover
+            w["conflict"] = abs(left) > 1e-6 and mover is None
+            add("avoidable_bend", conductor=w["uuid"],
+                offset=round(abs(b[i] - a[i]), 3), bends=w["bends"],
+                note=LAYOUT_RULES["avoidable_bend"]["note"])
+            dirty_wires.add(w["uuid"])
+
+    # Off the grid: the symbol's origin, which is what QElectroTech's own
+    # grid snaps. A symbol lined up with others by straight wires moves only
+    # with its whole group, and only when they are all off by the same
+    # amount -- straight wires matter more than the grid, and snapping one
+    # member alone would bend them, so the next run would undo it.
+    groups = {}
+    for (uuid, axis) in locked:
+        groups.setdefault(find((uuid, axis)), set()).add(uuid)
+
+    def offset(u, i):
+        return _grid_offset(symbols[u]["xy"][i] + move.get(u, [0, 0])[i])
+
+    step = {u: [0.0, 0.0] for u in symbols}
+    for i, axis in ((0, "x"), (1, "y")):
+        for u in symbols:
+            if (u, axis) not in locked:
+                step[u][i] = offset(u, i)
+        for root, members in groups.items():
+            if root[1] != axis:
+                continue
+            offs = {round(offset(u, i), 6) for u in members}
+            if len(offs) == 1:
+                d = offs.pop()
+                for u in members:
+                    step[u][i] = d
+
+    def total(u):
+        m = move.get(u, [0.0, 0.0])
+        return [m[0] + step[u][0], m[1] + step[u][1]]
+
+    # A blocked member holds its whole group back on that axis.
+    for u in [u for u in symbols if any(abs(v) > 1e-6 for v in step[u])]:
+        if not blocked(u, total(u)):
+            continue
+        symbols[u]["blocked"] = True
+        for i, axis in ((0, "x"), (1, "y")):
+            if (u, axis) in locked and abs(step[u][i]) > 1e-6:
+                for v in groups.get(find((u, axis)), {u}):
+                    step[v][i] = 0.0
+    snapped = []
+    for u, s in symbols.items():
+        if abs(step[u][0]) > 1e-6 or abs(step[u][1]) > 1e-6:
+            if blocked(u, total(u)):
+                s["blocked"] = True
+            else:
+                s["blocked"] = False
+                move[u] = total(u)
+            snapped.append(s)
+        elif s.get("blocked"):
+            snapped.append(s)
+
+    def move_op(uuid):
+        if uuid not in move:
+            return None
+        dx, dy = move[uuid]
+        return {"op": "move_element", "folio": folio, "element": uuid,
+                "dx": round(dx, 3) + 0.0, "dy": round(dy, 3) + 0.0}
+
+    by_wire = {w["uuid"]: w for w in wires}
+    for f in findings:
+        if f["rule"] == "avoidable_bend":
+            w = by_wire[f["conductor"]]
+            f["fix"] = move_op(w.get("mover"))
+            if w.get("conflict"):
+                f["conflict"] = True
+
+    for s in snapped:
+        extra = {"conflict": True} if s.get("blocked") else {}
+        add("off_grid", element=s["uuid"], label=s["label"], name=s["name"],
+            x=s["x"], y=s["y"], note=LAYOUT_RULES["off_grid"]["note"],
+            fix=None if s.get("blocked") else move_op(s["uuid"]), **extra)
+        dirty_symbols.add(s["uuid"])
+
+    # Wires through symbols. A symbol drawn around either end's own symbol
+    # is a frame (conductorrouter.cpp), not an obstacle.
+    for w in wires:
+        own = [symbols[e]["box"] for e in w["ends"] if e in symbols]
+        for uuid, s in symbols.items():
+            if (s["annotation"] or uuid in w["ends"]
+                    or any(_contains(s["box"], o) for o in own)):
+                continue
+            pts = w["pts"]
+            if any(_segment_through(p, q, s["box"]) for p, q in zip(pts, pts[1:])):
+                add("wire_through_symbol", conductor=w["uuid"], element=uuid,
+                    label=s["label"], name=s["name"],
+                    note=LAYOUT_RULES["wire_through_symbol"]["note"],
+                    fix={"op": "route_conductor", "folio": folio, "conductor": w["uuid"]})
+                dirty_wires.add(w["uuid"])
+
+    # A symbol's box is its declared size, rounded up to the grid, so two
+    # symbols drawn side by side can share up to one grid step of it.
+    for i, s in enumerate(solid):
+        for t in solid[i + 1:]:
+            if _contains(s["box"], t["box"]) or _contains(t["box"], s["box"]):
+                continue
+            if _overlap(s["box"], t["box"], margin=LAYOUT_GRID):
+                add("overlapping_symbols", elements=[s["uuid"], t["uuid"]],
+                    labels=[s["label"], t["label"]], names=[s["name"], t["name"]],
+                    note=LAYOUT_RULES["overlapping_symbols"]["note"])
+                dirty_symbols.update((s["uuid"], t["uuid"]))
+
+    crossings = 0
+    for i, w in enumerate(wires):
+        sw = list(zip(w["pts"], w["pts"][1:]))
+        for v in wires[i + 1:]:
+            n = sum(1 for a, b in sw for c, d in zip(v["pts"], v["pts"][1:])
+                    if _crosses(a, b, c, d))
+            if n:
+                crossings += n
+                add("crossing", conductors=[w["uuid"], v["uuid"]], count=n,
+                    note=LAYOUT_RULES["crossing"]["note"])
+
+    return {"folio": folio, "symbols": len(symbols), "wires": len(wires),
+            "unread": unread, "findings": findings, "dirty_wires": dirty_wires,
+            "dirty_symbols": dirty_symbols, "length": length, "crossings": crossings,
+            "straight": sum(1 for w in wires if w.get("bends") == 0),
+            "fixes": [move_op(u) for u in move]}
+
+
+def _layout_answer(folios: list, style: str, limit: int) -> dict:
+    """Combine per-folio results into the tool's answer."""
+    symbols = sum(f["symbols"] for f in folios)
+    wires = sum(f["wires"] for f in folios)
+    vertical = sum(f["length"]["vertical"] for f in folios)
+    horizontal = sum(f["length"]["horizontal"] for f in folios)
+    total = vertical + horizontal
+    if style == "auto":
+        style = "nfpa" if horizontal > vertical else "iec"
+    findings = [x for f in folios for x in f["findings"]]
+    order = {"error": 0, "warning": 1, "info": 2}
+    findings.sort(key=lambda x: (order[x["severity"]], x["folio"], x["rule"]))
+    count = {r: sum(1 for x in findings if x["rule"] == r) for r in LAYOUT_RULES}
+    clean_wires = wires - sum(len(f["dirty_wires"]) for f in folios)
+    clean_symbols = symbols - sum(len(f["dirty_symbols"]) for f in folios)
+    score = 100.0 * (0.6 * (clean_wires / wires if wires else 1.0)
+                     + 0.4 * (clean_symbols / symbols if symbols else 1.0))
+    unread = [u for f in folios for u in f["unread"]]
+    answer = {
+        "ok": True,
+        "style": style,
+        "score": round(score),
+        "summary": {
+            "folios": len(folios), "symbols": symbols, "wires": wires,
+            "unread_wires": len(unread),
+            "straight_wires": sum(f["straight"] for f in folios),
+            "avoidable_bends": count["avoidable_bend"],
+            "extra_bends": count["extra_bends"],
+            "wires_through_symbols": count["wire_through_symbol"],
+            "overlaps": count["overlapping_symbols"],
+            "off_grid": count["off_grid"],
+            "crossings": sum(f["crossings"] for f in folios),
+            "flow": {"vertical": round(vertical / total, 3) if total else 0.0,
+                     "horizontal": round(horizontal / total, 3) if total else 0.0},
+        },
+        "findings": findings[:limit],
+        # One move per symbol, all findings' moves combined: apply them
+        # together in one qet_edit call.
+        "fixes": [op for f in folios for op in f["fixes"]],
+    }
+    if len(findings) > limit:
+        answer["truncated"] = len(findings) - limit
+    if unread:
+        answer["unread_wires"] = unread[:limit]
+        answer["note"] = (f"{len(unread)} wire(s) could not be read: both of their "
+                          "terminals carry other wires too, and this QElectroTech build "
+                          "has no conductorPath() to read them by uuid. They are left "
+                          "out of the score.")
+    return answer
+
+
+def tool_layout_check(binary: str, project: str, folio: int | None = None,
+                      style: str = "auto", max_shift: float = 40, limit: int = 50,
+                      elements_dir: str | None = None, timeout: int = 180) -> dict:
+    """Score how well a project's drawing reads: straight wires, symbols in
+    line and on the grid, nothing overlapping. Read-only."""
+    proj = Path(project).expanduser()
+    if not proj.is_file():
+        raise ValueError(f"no such project: {proj}")
+    if style not in LAYOUT_STYLES:
+        raise ValueError(f"unknown style {style!r}; expected one of {', '.join(LAYOUT_STYLES)}")
+    if (isinstance(max_shift, bool) or not isinstance(max_shift, (int, float))
+            or max_shift < 0):
+        raise ValueError("max_shift must be a number >= 0")
+    if isinstance(limit, bool) or not isinstance(limit, int) or limit < 0:
+        raise ValueError("limit must be an integer >= 0")
+    if folio is not None and (isinstance(folio, bool) or not isinstance(folio, int)
+                              or folio < 1):
+        raise ValueError("folio is counted from 1, as qet_elements numbers them")
+
+    script = (_LAYOUT_JS.replace("@FOLIO@", str(folio - 1 if folio else -1))
+              .replace("@MARKER@", json.dumps(_MARKER)))
+    result = _run_qet(binary, [str(proj)], timeout=timeout,
+                      elements_dir=elements_dir, script=script, tail=20_000_000)
+    folios = []
+    for line in (result.get("stdout", "") + "\n" + result.get("stderr", "")).splitlines():
+        idx = line.find(_MARKER)
+        if idx < 0:
+            continue
+        try:
+            rec = json.loads(line[idx + len(_MARKER):])
+        except json.JSONDecodeError:
+            continue
+        if rec.get("kind") == "layout":
+            folios.append(_layout_folio(rec, float(max_shift)))
+
+    if not folios:
+        answer = {"ok": False,
+                  "hint": result.get("hint") or (
+                      "no layout came back: the folio does not exist, or this build's "
+                      "scripting API predates the read calls this check needs")}
+        if result.get("exit_code") is not None:
+            answer["exit_code"] = result["exit_code"]
+        return answer
+    answer = _layout_answer(folios, style, limit)
+    if result.get("hint"):
+        answer["ok"] = False
+        answer["hint"] = result["hint"]
+    return answer
+
+
 def tool_project_new(binary: str, output: str, title: str = "Untitled",
                      folios=1, author: str = "", overwrite: bool = False,
                      elements_dir: str | None = None, timeout: int = 180) -> dict:
@@ -2798,7 +3407,8 @@ SERVER_INSTRUCTIONS = (
     "general script, qet_recording_check it until it matches, then "
     "qet_script_install it.\n"
     "Verify edits by reading the result (qet_diff, qet_elements), not by "
-    "assuming them.")
+    "assuming them. After drawing, run qet_layout_check and apply its fixes: "
+    "a wire is straight only when its two terminals are exactly in line.")
 
 
 def tool_about() -> dict:
@@ -3988,6 +4598,47 @@ TOOLS = [
                                         a.get("timeout", 180)),
     },
     {
+        "name": "qet_layout_check",
+        "description": "Score how well a drawing reads, 0-100, and list what spoils it: "
+                       "wires that jog because two symbols are a few pixels out of line "
+                       "(avoidable_bend), wires with more bends than needed, wires "
+                       "running through a symbol, overlapping symbols, symbols off the "
+                       "10 px grid, and crossings. \"fixes\" is the list of "
+                       "move_element operations that removes the jogs and off-grid "
+                       "symbols, one move per symbol, planned together: pass the whole "
+                       "list to one qet_edit call (folio counted from 0, as qet_edit "
+                       "counts; findings report \"folio\" counted from 1). Run it "
+                       "after drawing, apply \"fixes\", run it again. "
+                       "One QElectroTech launch; read-only, nothing is saved.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
+                "project": {"type": "string"},
+                "folio": {"type": "integer", "description": "only this folio, counted from 1; omit for all"},
+                "style": {"type": "string", "enum": LAYOUT_STYLES, "default": "auto",
+                          "description": "iec: current paths are columns, wires mostly "
+                                         "vertical. nfpa: ladder rungs are rows, wires "
+                                         "mostly horizontal. auto: from the drawing"},
+                "max_shift": {"type": "number", "default": 40,
+                              "description": "the largest move, in pixels, an "
+                                             "avoidable_bend fix may suggest; a bigger "
+                                             "jog is taken as intended"},
+                "limit": {"type": "integer", "default": 50,
+                          "description": "how many findings to return; the summary "
+                                         "counts them all"},
+                "elements_dir": {"type": "string"},
+                "timeout": {"type": "integer", "default": 180},
+            },
+            "required": ["project"],
+        },
+        "handler": lambda a: tool_layout_check(a["binary"], a["project"], a.get("folio"),
+                                               a.get("style", "auto"),
+                                               a.get("max_shift", 40), a.get("limit", 50),
+                                               a.get("elements_dir"),
+                                               a.get("timeout", 180)),
+    },
+    {
         "name": "qet_element_build",
         "description": "Write a .elmt element definition: named in one or more "
                        "languages, drawn from lines, rectangles, ellipses, circles, "
@@ -4356,6 +5007,7 @@ _DATA_PATHS = {
     "qet_query":          {"read": ("project",)},
     "qet_continuity":     {"read": ("project",)},
     "qet_check":          {"read": ("project",)},
+    "qet_layout_check":   {"read": ("project",)},
     "qet_project_new":    {"write": ("output",)},
     "qet_element_build":  {"write": ("output",)},
     # The scripts folder is chosen by scripts_dir(), never by the client,
@@ -4368,8 +5020,8 @@ _DATA_PATHS = {
 
 # Tools that launch QElectroTech, and so take "binary" and "elements_dir".
 _LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
-                 "qet_check", "qet_project_new", "qet_script_api", "qet_script_test",
-                 "qet_recording_check"}
+                 "qet_check", "qet_layout_check", "qet_project_new", "qet_script_api",
+                 "qet_script_test", "qet_recording_check"}
 
 # Tools that launch QElectroTech only when given this argument.
 _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}
