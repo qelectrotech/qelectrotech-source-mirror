@@ -28,6 +28,7 @@
 #include "../qetproject.h"
 #include "../wiringrules.h"
 #include "../wiringruleslistdialog.h"
+#include "../wiringruleswarning.h"
 #include "../borderpropertieswidget.h"
 #include "../conductorpropertieswidget.h"
 #include "../diagramcontextwidget.h"
@@ -312,6 +313,7 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addSpacing(10);
 
 	QVBoxLayout *wiring_rules_layout = new QVBoxLayout(wiring_rules_gb_);
+	wiring_rules_layout -> addWidget(WiringRulesWarning::create(wiring_rules_gb_));
 	wiring_rules_layout -> addWidget(use_application_rules_cb_);
 	QHBoxLayout *max_wires_layout = new QHBoxLayout();
 	max_wires_layout -> addWidget(max_wires_label_);
