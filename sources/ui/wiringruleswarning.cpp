@@ -19,41 +19,29 @@
 #include "wiringruleswarning.h"
 
 #include <QApplication>
-#include <QFrame>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QStyle>
+#include <QMessageBox>
 
 /**
-	@brief WiringRulesWarning::create
-	A warning box shown wherever the wires-per-terminal rules are set
-	(discussion #1158, review of #1272): the rules count wires on a terminal
-	as QElectroTech models them today, and would have to be redesigned if
-	wires and conductors become separate objects, so they are experimental.
+	@brief WiringRulesWarning::show
+	Warn, when a wires-per-terminal rule is turned on (discussion #1158,
+	review of #1272), that the rules are experimental: they count wires on
+	a terminal as QElectroTech models them today, and would have to be
+	redesigned if wires and conductors become separate objects. A plain
+	warning, as the element editor gives for unnamed terminals: OK goes on.
 	@param parent
-	@return the box, a framed icon and text
 */
-QWidget *WiringRulesWarning::create(QWidget *parent)
+void WiringRulesWarning::show(QWidget *parent)
 {
-	auto frame = new QFrame(parent);
-	frame->setFrameShape(QFrame::StyledPanel);
-
-	auto icon = new QLabel(frame);
-	const int size = frame->style()->pixelMetric(QStyle::PM_SmallIconSize);
-	icon->setPixmap(frame->style()->standardIcon(QStyle::SP_MessageBoxWarning).pixmap(size, size));
-	icon->setAlignment(Qt::AlignTop);
-
-	auto text = new QLabel(QApplication::translate(
+	QMessageBox::warning(
+		parent,
+		QApplication::translate("WiringRulesWarning", "Avertissement"),
+		QApplication::translate(
 			"WiringRulesWarning",
-			"Fonction expérimentale. Ces règles comptent les conducteurs tels "
-			"que QElectroTech les représente aujourd'hui ; elles pourraient "
-			"changer, et vos réglages devoir être refaits, si les fils et les "
-			"conducteurs deviennent des objets distincts dans une version future."),
-			frame);
-	text->setWordWrap(true);
-
-	auto layout = new QHBoxLayout(frame);
-	layout->addWidget(icon);
-	layout->addWidget(text, 1);
-	return frame;
+			"<b>Les règles de conducteurs par borne sont une fonction expérimentale.</b>"
+			"<br><br>Elles comptent les conducteurs tels que QElectroTech les représente "
+			"aujourd'hui. Elles pourraient changer, et vos réglages devoir être refaits, "
+			"si les fils et les conducteurs deviennent des objets distincts dans une "
+			"version future."
+			"<br><br>Toutes ces règles peuvent être désactivées dans Configurer "
+			"QElectroTech > Général."));
 }
