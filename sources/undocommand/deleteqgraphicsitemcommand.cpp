@@ -26,6 +26,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../shownkinds.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "addelementtextcommand.h"
 #include "../TerminalStrip/realterminal.h"
@@ -324,7 +325,8 @@ void DeleteQGraphicsItemCommand::redo()
 			//current conductor is visible (that mean the conductor have the single displayed text)
 			//We call adjustTextItemPosition to other conductor at the same potential to keep
 			//a visible text on this potential.
-		if (m_diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible())
+			//wantsVisible(): also while wire texts are hidden (View > Show)
+		if (m_diagram -> defaultConductorProperties.m_one_text_per_folio && ShownKinds::wantsVisible(c -> textItem()))
 		{
 			QList <Conductor *> conductor_list;
 			conductor_list << c -> relatedPotentialConductors(false).values();

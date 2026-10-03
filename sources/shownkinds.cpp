@@ -30,7 +30,7 @@ namespace
 */
 bool ShownKinds::isShown(Kind kind)
 {
-	return kind < 0 || kind >= KindCount || !hidden[kind];
+	return kind >= KindCount || !hidden[kind];
 }
 
 /**
@@ -39,7 +39,7 @@ bool ShownKinds::isShown(Kind kind)
 */
 void ShownKinds::setShown(Kind kind, bool shown)
 {
-	if (kind >= 0 && kind < KindCount) {
+	if (kind < KindCount) {
 		hidden[kind] = !shown;
 	}
 }
@@ -104,6 +104,16 @@ bool ShownKinds::isHidden(const QGraphicsItem *item)
 		}
 	}
 	return false;
+}
+
+/**
+	@return true if @a item is visible, or would be but for its kind being
+	hidden. For code that asks isVisible() to learn what an item's own code
+	decided (which wire carries the text of a potential).
+*/
+bool ShownKinds::wantsVisible(const QGraphicsItem *item)
+{
+	return item && (item->isVisible() || item->data(hidden_key).toBool());
 }
 
 /**

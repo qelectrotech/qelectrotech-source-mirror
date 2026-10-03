@@ -134,6 +134,26 @@ private slots:
 		QVERIFY(!number->isVisible());
 	}
 
+	// wantsVisible() tells the wire carrying a potential's text from the
+	// others while wire texts are hidden, so deleting it moves the text.
+	void wantsVisibleWhileKindHidden()
+	{
+		auto carrier = add();
+		auto other = add();
+		ShownKinds::tag(carrier, ShownKinds::WireNumbers);
+		ShownKinds::tag(other, ShownKinds::WireNumbers);
+		ShownKinds::setVisible(other, false);
+		ShownKinds::setShown(ShownKinds::WireNumbers, false);
+		ShownKinds::apply(scene, ShownKinds::WireNumbers);
+		QVERIFY(!carrier->isVisible());
+		QVERIFY(ShownKinds::wantsVisible(carrier));
+		QVERIFY(!ShownKinds::wantsVisible(other));
+		ShownKinds::setShown(ShownKinds::WireNumbers, true);
+		ShownKinds::apply(scene, ShownKinds::WireNumbers);
+		QVERIFY(ShownKinds::wantsVisible(carrier));
+		QVERIFY(!ShownKinds::wantsVisible(other));
+	}
+
 	// A text under a hidden parent still counts as wanting to be visible.
 	void childOfHiddenParent()
 	{

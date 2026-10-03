@@ -70,6 +70,7 @@ namespace ShownKinds
 	void tag(QGraphicsItem *item, Kind kind);
 	void setVisible(QGraphicsItem *item, bool visible);
 	bool isHidden(const QGraphicsItem *item);
+	bool wantsVisible(const QGraphicsItem *item);
 	void apply(QGraphicsScene *scene, Kind kind);
 }
 
