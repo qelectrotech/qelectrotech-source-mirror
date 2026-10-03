@@ -118,7 +118,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
 			//The rules every project follows unless it sets its own (#1158)
-		ui->m_wiring_rules_warning_layout->addWidget(WiringRulesWarning::create(this));
 		const WiringRules::Settings rules = WiringRules::applicationSettings();
 		ui->m_wiring_max_wires_sb->setValue(rules.max_wires);
 		ui->m_wiring_one_wire_per_report_cb->setChecked(rules.one_wire_per_report);
@@ -353,10 +352,14 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{
-		WiringRules::Settings rules = WiringRules::applicationSettings();
+		const WiringRules::Settings before = WiringRules::applicationSettings();
+		WiringRules::Settings rules = before;
 		rules.max_wires = ui->m_wiring_max_wires_sb->value();
 		rules.one_wire_per_report = ui->m_wiring_one_wire_per_report_cb->isChecked();
 		WiringRules::setApplicationSettings(rules);
+		if (WiringRules::masterEnabled() && WiringRules::turnsRuleOn(before, rules)) {
+			WiringRulesWarning::show(this);
+		}
 	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 
