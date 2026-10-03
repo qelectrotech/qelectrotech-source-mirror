@@ -16,7 +16,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-add_library(kcoreaddons STATIC
+qt_add_library(kcoreaddons STATIC
   src/kautosavefile.cpp
   src/krandom.cpp
 )
@@ -27,6 +27,8 @@ target_include_directories(kcoreaddons
   PUBLIC
     include
 )
+
+target_compile_definitions(kcoreaddons PRIVATE QT_USE_QSTRINGBUILDER)
 
 target_link_libraries(kcoreaddons PUBLIC Qt6::Core)
 
