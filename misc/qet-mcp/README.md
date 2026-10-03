@@ -40,6 +40,7 @@ here read the model.
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
 | `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios |
+| `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings; and the moves that fix them, ready for `qet_edit` |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
 | `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`) |
 | `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
@@ -188,7 +189,7 @@ clicked, and stop working until it is turned on:
 
 | | |
 |---|---|
-| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_project_new`, `qet_edit`, `qet_script_api`, `qet_script_test`, `qet_script_install`, `qet_script_remove` |
+| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_layout_check`, `qet_project_new`, `qet_edit`, `qet_script_api`, `qet_script_test`, `qet_script_install`, `qet_script_remove` |
 | unaffected | everything else — they read the `.qet` directly, or, in `qet_export`'s case, use a plain CLI flag |
 
 The variable goes in the environment this server is started in, which for an
@@ -376,6 +377,38 @@ open but never shows the token.
 
 Four elements moved by one uniform delta; nothing was relabelled. That is
 the answer a screenshot gave wrongly.
+
+**Tidy a drawing: straight wires, symbols in line**
+
+A wire is straight only when its two terminals are exactly in line. A symbol
+is placed by its origin and its terminals sit at an offset from it, so
+symbols placed "under each other" by eye are often a few pixels apart and
+the wire jogs. After drawing:
+
+```json
+{"name": "qet_layout_check", "arguments": {"project": "drawn.qet"}}
+```
+
+```json
+{"ok": true, "style": "iec", "score": 40,
+ "summary": {"wires": 4, "straight_wires": 0, "avoidable_bends": 4, "off_grid": 0, ...},
+ "findings": [{"rule": "avoidable_bend", "folio": 1, "offset": 3.0, ...}],
+ "fixes": [{"op": "move_element", "folio": 0, "element": "{...}", "dx": -3.0, "dy": 0.0}, ...]}
+```
+
+Pass `fixes` as they are, all in one call, to `qet_edit`, then check again;
+the same drawing then scores 100. The moves are planned together: a wire
+that is already straight pins its two symbols, a move never puts a symbol
+on another one or across another wire, and symbols lined up with each other
+go onto the grid together. A jog no move can fix (two symbols whose
+terminals are not spaced alike) is reported with `"conflict": true`.
+
+`style` is `iec` (current paths as columns, wires mostly vertical), `nfpa`
+(ladder rungs as rows, wires mostly horizontal) or `auto`, which goes by the
+drawing. The check is read-only. On a QElectroTech build without
+`conductorPath()`, a wire whose two terminals both carry other wires cannot
+be read; the answer names those in `unread_wires` and leaves them out of the
+score.
 
 **Draw something, and check it landed**
 
