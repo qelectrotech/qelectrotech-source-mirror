@@ -184,7 +184,7 @@ class ToolRegistry(unittest.TestCase):
         "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
         "qet_live_undo_last", "qet_live_screenshot", "qet_about",
         "qet_recording_list", "qet_recording_read", "qet_recording_check",
-        "qet_recording_remove"})
+        "qet_recording_remove", "qet_layout_check"})
 
 
 class EditValidation(unittest.TestCase):
@@ -1311,6 +1311,231 @@ class CheckAndContinuityAnswers(unittest.TestCase):
                     m.tool_continuity("qet", str(self.qet), folio=bad)
         with self.stub([{"kind": "continuity", "findings": []}]):
             self.assertEqual(m.tool_continuity("qet", str(self.qet), folio=0)["finding_count"], 0)
+
+
+def _sym(uuid, x, y, w=20, h=40, label="", terminals=2, name="S"):
+    """A symbol for the layout rules: origin x/y, box centred on it."""
+    return {"uuid": uuid, "name": name, "label": label, "terminals": terminals,
+            "g": {"x": x, "y": y, "rotation": 0, "left": x - w / 2, "top": y - h / 2,
+                  "right": x + w / 2, "bottom": y + h / 2}}
+
+
+def _wire(uuid, a, b, points):
+    return {"uuid": uuid, "ends": [f"{a} terminal 1", f"{b} terminal 0"],
+            "path": [{"x": x, "y": y} for x, y in points], "segs": None}
+
+
+def _vjog(uuid, a, b, xa, xb, y0=120, y1=160):
+    """A wire leaving a's bottom terminal down and entering b's top one."""
+    mid = (y0 + y1) / 2
+    return _wire(uuid, a, b, [(xa, y0), (xa, y0 + 10), (xa, mid), (xb, mid),
+                              (xb, y1 - 10), (xb, y1)])
+
+
+class LayoutRules(unittest.TestCase):
+    """qet_layout_check's scoring and fix planning, on made-up geometry: no
+    QElectroTech needed, so every rule is pinned exactly."""
+
+    def folio(self, elements, conductors, max_shift=40, folio=0):
+        return m._layout_folio({"folio": folio, "elements": elements,
+                                "conductors": conductors}, max_shift)
+
+    def rules(self, r):
+        return sorted(f["rule"] for f in r["findings"])
+
+    def test_simplify_drops_zero_steps_and_merges_runs(self):
+        self.assertEqual(m._simplify([(0, 0), (0, 10), (0, 10), (0, 30), (5, 30), (9, 30)]),
+                         [(0, 0), (0, 30), (9, 30)])
+
+    def test_points_from_segments_and_from_path(self):
+        segs = ["0: (560,150)-(560,160) vertical static",
+                "1: (560,160)-(560,290.5) vertical movable"]
+        self.assertEqual(m._layout_points({"segs": segs}),
+                         [(560.0, 150.0), (560.0, 160.0), (560.0, 290.5)])
+        self.assertEqual(m._layout_points({"path": [{"x": 1, "y": 2}, {"x": 1, "y": 9}]}),
+                         [(1.0, 2.0), (1.0, 9.0)])
+        self.assertIsNone(m._layout_points({"segs": ["garbage"]}))
+        self.assertIsNone(m._layout_points({"segs": None, "path": None}))
+
+    def test_vertical_jog_moves_the_end_that_lands_on_the_grid(self):
+        r = self.folio([_sym("A", 100, 100), _sym("B", 103, 180)],
+                       [_vjog("W", "A", "B", 100, 103)])
+        [f] = r["findings"]
+        self.assertEqual(f["rule"], "avoidable_bend")
+        self.assertEqual((f["offset"], f["bends"], f["folio"]), (3.0, 2, 1))
+        self.assertEqual(f["fix"], {"op": "move_element", "folio": 0, "element": "B",
+                                    "dx": -3.0, "dy": 0.0})
+        self.assertEqual(r["fixes"], [f["fix"]])
+
+    def test_horizontal_jog_nfpa(self):
+        w = _wire("W", "A", "B", [(110, 100), (120, 100), (130, 100), (130, 96),
+                                   (140, 96), (150, 96)])
+        r = self.folio([_sym("A", 100, 100, 20, 20), _sym("B", 160, 96, 20, 20)], [w])
+        [f] = r["findings"]
+        self.assertEqual(f["fix"], {"op": "move_element", "folio": 0, "element": "B",
+                                    "dx": 0.0, "dy": 4.0})
+
+    def test_terminals_not_facing_are_not_a_jog(self):
+        # both terminals send their wire downwards: a U, never straight
+        w = _wire("W", "A", "B", [(100, 120), (100, 140), (103, 140), (103, 120)])
+        r = self.folio([_sym("A", 100, 100), _sym("B", 103, 100, 2, 2)], [w])
+        self.assertNotIn("avoidable_bend", self.rules(r))
+
+    def test_jog_beyond_max_shift_is_left_alone(self):
+        r = self.folio([_sym("A", 100, 100), _sym("B", 160, 180)],
+                       [_vjog("W", "A", "B", 100, 160)], max_shift=40)
+        self.assertEqual(r["findings"], [])
+        self.assertEqual(r["fixes"], [])
+
+    def test_a_straight_wire_pins_its_symbols(self):
+        # A-B straight; B-C jogs: C moves, not B
+        ab = _wire("AB", "A", "B", [(100, 120), (100, 160)])
+        bc = _vjog("BC", "B", "C", 100, 104, 200, 240)
+        r = self.folio([_sym("A", 100, 100), _sym("B", 100, 180), _sym("C", 104, 260)], [ab, bc])
+        self.assertEqual(r["fixes"], [{"op": "move_element", "folio": 0, "element": "C",
+                                       "dx": -4.0, "dy": 0.0}])
+
+    def test_conflict_when_both_ends_are_pinned(self):
+        # A and B each held in line by a straight wire; the A-B jog cannot move
+        wires = [_wire("AX", "X", "A", [(100, 40), (100, 80)]),
+                 _wire("BY", "B", "Y", [(104, 200), (104, 240)]),
+                 _vjog("AB", "A", "B", 100, 104)]
+        r = self.folio([_sym("X", 100, 20), _sym("A", 100, 100), _sym("B", 104, 180),
+                        _sym("Y", 104, 260)], wires)
+        [f] = [f for f in r["findings"] if f["rule"] == "avoidable_bend"]
+        self.assertIsNone(f["fix"])
+        self.assertTrue(f["conflict"])
+
+    def test_a_move_onto_another_symbol_is_not_offered(self):
+        # B can only line up by moving onto D, so A moves instead
+        r = self.folio([_sym("A", 100, 100), _sym("B", 120, 180), _sym("D", 100, 180)],
+                       [_vjog("W", "A", "B", 100, 120)])
+        [f] = [f for f in r["findings"] if f["rule"] == "avoidable_bend"]
+        self.assertEqual(f["fix"]["element"], "A")
+        self.assertEqual(f["fix"]["dx"], 20.0)
+
+    def test_off_grid_symbol_without_wires(self):
+        r = self.folio([_sym("A", 103, 97)], [])
+        [f] = r["findings"]
+        self.assertEqual(f["rule"], "off_grid")
+        self.assertEqual(f["fix"], {"op": "move_element", "folio": 0, "element": "A",
+                                    "dx": -3.0, "dy": 3.0})
+
+    def test_a_lined_up_group_snaps_together(self):
+        # three symbols in line at x=103, off the grid together: all move,
+        # and the wires between them stay straight
+        wires = [_wire("AB", "A", "B", [(103, 120), (103, 160)]),
+                 _wire("BC", "B", "C", [(103, 200), (103, 240)])]
+        r = self.folio([_sym("A", 103, 100), _sym("B", 103, 180), _sym("C", 103, 260)], wires)
+        self.assertEqual(sorted((f["element"], f["dx"]) for f in r["fixes"]),
+                         [("A", -3.0), ("B", -3.0), ("C", -3.0)])
+
+    def test_wire_through_symbol_but_not_frame_or_annotation(self):
+        w = _wire("W", "A", "B", [(100, 120), (100, 300)])
+        elements = [_sym("A", 100, 100), _sym("B", 100, 320),
+                    _sym("K", 100, 200, name="Coil"),                    # in the way
+                    _sym("F", 100, 200, 300, 600, name="Cabinet"),       # frame round A
+                    _sym("T", 100, 250, terminals=0, name="Tag")]        # annotation
+        r = self.folio(elements, [w])
+        hits = [f for f in r["findings"] if f["rule"] == "wire_through_symbol"]
+        self.assertEqual([f["element"] for f in hits], ["K"])
+        self.assertEqual(hits[0]["fix"], {"op": "route_conductor", "folio": 0,
+                                          "conductor": "W"})
+
+    def test_overlap_needs_more_than_one_grid_step(self):
+        touching = self.folio([_sym("A", 100, 100), _sym("B", 110, 100)], [])  # 10 px
+        self.assertNotIn("overlapping_symbols", self.rules(touching))
+        r = self.folio([_sym("A", 100, 100), _sym("B", 105, 100)], [])         # 15 px
+        self.assertIn("overlapping_symbols", self.rules(r))
+
+    def test_crossing_counted_not_at_shared_ends(self):
+        h = _wire("H", "A", "B", [(0, 50), (200, 50)])
+        v = _wire("V", "C", "D", [(100, 0), (100, 200)])
+        t = _wire("T", "A", "E", [(0, 50), (0, 200)])            # meets H at its end
+        r = self.folio([], [h, v, t])
+        self.assertEqual(r["crossings"], 1)
+
+    def test_extra_bends_for_an_l(self):
+        w = _wire("W", "A", "B", [(100, 120), (100, 140), (120, 140), (120, 160),
+                                   (150, 160)])
+        r = self.folio([], [w])
+        [f] = r["findings"]
+        self.assertEqual((f["rule"], f["bends"], f["needed"]), ("extra_bends", 3, 1))
+
+    def test_answer_score_style_and_limit(self):
+        clean = self.folio([_sym("A", 100, 100), _sym("B", 100, 180)],
+                           [_wire("W", "A", "B", [(100, 120), (100, 160)])])
+        a = m._layout_answer([clean], "auto", 50)
+        self.assertEqual((a["score"], a["style"], a["summary"]["straight_wires"]), (100, "iec", 1))
+        self.assertEqual(a["summary"]["flow"], {"vertical": 1.0, "horizontal": 0.0})
+        jog = self.folio([_sym("A", 100, 100), _sym("B", 103, 180), _sym("C", 300, 301)],
+                         [_vjog("W", "A", "B", 100, 103)])
+        a = m._layout_answer([jog], "nfpa", 1)
+        # wires 0/1 clean, symbols 2/3 clean (C off the grid)
+        self.assertEqual(a["score"], round(100 * (0.6 * 0 + 0.4 * 2 / 3)))
+        self.assertEqual(a["style"], "nfpa")
+        self.assertEqual(a["truncated"], 1)
+        self.assertEqual(len(a["fixes"]), 2)
+
+    def test_unread_wires_are_named_not_scored(self):
+        r = self.folio([], [{"uuid": "U", "ends": ["{a} terminal 0", "{b} terminal 0"],
+                             "path": None, "segs": None}])
+        a = m._layout_answer([r], "auto", 50)
+        self.assertEqual(a["summary"]["unread_wires"], 1)
+        self.assertEqual(a["unread_wires"], ["U"])
+        self.assertIn("conductorPath", a["note"])
+        self.assertEqual(a["score"], 100)
+
+
+class LayoutCheckTool(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.qet = Path(self.tmp.name) / "p.qet"
+        self.qet.write_text("<project><diagram/></project>", encoding="utf-8")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_bad_arguments(self):
+        for kw in ({"style": "ansi"}, {"folio": 0}, {"folio": True},
+                   {"max_shift": -1}, {"max_shift": "4"}, {"limit": -1}):
+            with self.subTest(kw=kw), self.assertRaises(ValueError):
+                m.tool_layout_check("qet", str(self.qet), **kw)
+        with self.assertRaises(ValueError):
+            m.tool_layout_check("qet", str(self.qet) + ".missing")
+
+    def test_script_reads_the_chosen_folio_only(self):
+        seen = {}
+
+        def run(binary, args, **kw):
+            seen.update(kw)
+            return {"stdout": "", "stderr": ""}
+        with mock.patch.object(m, "_run_qet", run):
+            r = m.tool_layout_check("qet", str(self.qet), folio=3)
+        self.assertIn("var only = 2;", seen["script"])
+        self.assertNotIn("save", seen["script"])
+        self.assertFalse(r["ok"])
+        self.assertIn("no layout came back", r["hint"])
+
+    def test_answer_from_log_lines(self):
+        rec = {"kind": "layout", "folio": 0,
+               "elements": [_sym("A", 100, 100), _sym("B", 103, 180)],
+               "conductors": [_vjog("W", "A", "B", 100, 103)]}
+        out = "noise\n" + m._MARKER + "{bad json\n" + m._MARKER + json.dumps(rec)
+        with mock.patch.object(m, "_run_qet", lambda *a, **k: {"stdout": out, "stderr": ""}):
+            r = m.tool_layout_check("qet", str(self.qet))
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["summary"]["avoidable_bends"], 1)
+        self.assertEqual(r["fixes"][0]["element"], "B")
+
+    def test_a_launch_hint_is_passed_on(self):
+        rec = {"kind": "layout", "folio": 0, "elements": [], "conductors": []}
+        out = m._MARKER + json.dumps(rec)
+        with mock.patch.object(m, "_run_qet",
+                               lambda *a, **k: {"stdout": out, "stderr": "", "hint": "boom"}):
+            r = m.tool_layout_check("qet", str(self.qet))
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["hint"], "boom")
 
 
 class LayoutOpsValidation(unittest.TestCase):
@@ -5334,6 +5559,73 @@ class Integration(unittest.TestCase):
         fake.write_text("#!/bin/sh\nexit 0\n")
         fake.chmod(0o755)
         r = m.tool_edit(str(fake), self.sb.new(), [{"op": "add_folio"}], self.sb.p("x.qet"), timeout=15)
+        self.assertFalse(r["ok"])
+
+
+@needs_elements
+class LayoutIntegration(unittest.TestCase):
+    """A drawing made the way an assistant makes one -- symbols placed by
+    eye a few pixels out of line -- comes out straight and on the grid
+    after one round of qet_layout_check's fixes, in both styles."""
+
+    def setUp(self):
+        self.sb = Sandbox()
+
+    def tearDown(self):
+        self.sb.close()
+
+    def draw(self, style):
+        if style == "iec":       # current paths: columns, wires vertical
+            pos = [(100, 100), (103, 200), (96, 300), (301, 100), (298, 200), (300, 300)]
+        else:                    # rungs: rows, wires horizontal
+            pos = [(100, 100), (200, 104), (300, 97), (100, 301), (200, 298), (300, 300)]
+        ops = []
+        for k, (x, y) in enumerate(pos):
+            ops.append({"op": "add_element", "folio": 0, "path": [TERMINAL, SLAVE, COIL][k % 3],
+                        "x": x, "y": y, "id": f"e{k}"})
+            if style == "nfpa":
+                ops.append({"op": "rotate_element", "folio": 0, "element": f"$e{k}",
+                            "angle": 270})
+        for c in (0, 3):
+            # borne_2's bottom terminal is index 2 (index 1 is its side one)
+            ops.append({"op": "add_conductor", "folio": 0, "from": f"$e{c}", "from_terminal": 2,
+                        "to": f"$e{c + 1}", "to_terminal": 0})
+            ops.append({"op": "add_conductor", "folio": 0, "from": f"$e{c + 1}",
+                        "from_terminal": 1, "to": f"$e{c + 2}", "to_terminal": 0})
+        r = self.sb.edit(self.sb.new(), ops, out=f"{style}.qet")
+        self.assertTrue(r["ok"], r.get("hint"))
+        return r["output"]
+
+    def check(self, path, **kw):
+        r = m.tool_layout_check(BINARY, path, elements_dir=ELEMENTS, **kw)
+        self.assertTrue(r["ok"], r.get("hint"))
+        return r
+
+    def round_trip(self, style):
+        drawn = self.draw(style)
+        before_bytes = Path(drawn).read_bytes()
+        before = self.check(drawn)
+        self.assertEqual(Path(drawn).read_bytes(), before_bytes, "the check must not save")
+        self.assertEqual(before["style"], style)
+        self.assertEqual(before["summary"]["avoidable_bends"], 4)
+        self.assertEqual(before["summary"]["straight_wires"], 0)
+        fixed = self.sb.edit(drawn, before["fixes"], out=f"{style}-fixed.qet")
+        self.assertTrue(fixed["ok"], fixed.get("hint"))
+        after = self.check(fixed["output"])
+        self.assertEqual(after["score"], 100, after["findings"])
+        self.assertEqual(after["summary"]["straight_wires"], 4)
+        self.assertEqual(after["fixes"], [])
+
+    def test_iec_columns(self):
+        self.round_trip("iec")
+
+    def test_nfpa_rungs(self):
+        self.round_trip("nfpa")
+
+    def test_one_folio_only(self):
+        drawn = self.draw("iec")
+        self.assertEqual(self.check(drawn, folio=1)["summary"]["folios"], 1)
+        r = m.tool_layout_check(BINARY, drawn, folio=5, elements_dir=ELEMENTS)
         self.assertFalse(r["ok"])
 
 

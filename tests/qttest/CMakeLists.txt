@@ -485,6 +485,17 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # qet.terminalPosition() and qet.conductorPath(), checked against each
+  # other on a fixture's conductors.
+  add_executable(
+    tst_scriptlayoutreads
+    tst_scriptlayoutreads.cpp)
+  add_test(NAME tst_scriptlayoutreads COMMAND tst_scriptlayoutreads)
+  add_dependencies(tst_scriptlayoutreads qelectrotech)
+  target_link_libraries(tst_scriptlayoutreads PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptlayoutreads PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
   # QET_SETTINGS_DIR moves the settings into an INI file there (#1178): a
   # script places a symbol only the folder's settings file can resolve.
   add_executable(
