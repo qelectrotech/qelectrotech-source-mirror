@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "shownkinds.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -606,6 +607,36 @@ void QETDiagramEditor::setUpActions()
 			foreach (DiagramView *dv, prjv->diagram_views())
 				dv->setCellLinesShown(checked);
 	});
+
+		//Show or hide whole kinds of items on every folio (bugtracker #301)
+	m_shown_kinds_menu = new QMenu(tr("Afficher"), this);
+	const QList<QPair<ShownKinds::Kind, QString>> kinds {
+		{ShownKinds::SymbolTexts,     tr("Textes des éléments")},
+		{ShownKinds::WireNumbers,     tr("Textes des conducteurs")},
+		{ShownKinds::FreeTexts,       tr("Champs de texte")},
+		{ShownKinds::Shapes,          tr("Formes")},
+		{ShownKinds::Pictures,        tr("Images")},
+		{ShownKinds::Tables,          tr("Tableaux")},
+		{ShownKinds::CrossReferences, tr("Références croisées")}};
+	for (const auto &kind : kinds)
+	{
+		QAction *action = m_shown_kinds_menu->addAction(kind.second);
+		action->setCheckable(true);
+		action->setData(int(kind.first));
+		connect(action, &QAction::triggered, this, [kind](bool checked) {
+			ShownKinds::setShown(kind.first, checked);
+			for (QETProject *project : QETApp::registeredProjects())
+				for (Diagram *diagram : project->diagrams())
+					ShownKinds::apply(diagram, kind.first);
+			emit QETApp::instance()->shownKindsChanged();
+		});
+	}
+	m_hidden_kinds_label = new QLabel(this);
+	m_hidden_kinds_label->setToolTip(tr("Voir Affichage > Afficher"));
+	statusBar()->addPermanentWidget(m_hidden_kinds_label);
+	connect(QETApp::instance(), &QETApp::shownKindsChanged,
+			this, &QETDiagramEditor::updateShownKinds);
+	updateShownKinds();
 
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
@@ -1458,6 +1489,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_cell_rulers);
 	menu_affichage -> addAction(m_cell_lines);
+	menu_affichage -> addMenu(m_shown_kinds_menu);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -4139,6 +4171,21 @@ void QETDiagramEditor::updateScriptActions()
 	}
 }
 #endif
+
+/**
+	@brief QETDiagramEditor::updateShownKinds
+	Tick the kinds shown in View > Show, and say in the status bar how many
+	are hidden, so that a hidden kind is never forgotten.
+*/
+void QETDiagramEditor::updateShownKinds()
+{
+	for (QAction *action : m_shown_kinds_menu->actions())
+		action->setChecked(ShownKinds::isShown(ShownKinds::Kind(action->data().toInt())));
+
+	const int hidden = ShownKinds::hiddenCount();
+	m_hidden_kinds_label->setText(tr("%n type(s) d'objets masqué(s)", "", hidden));
+	m_hidden_kinds_label->setVisible(hidden > 0);
+}
 
 /**
 	@brief QETDiagramEditor::updateTextGridButton

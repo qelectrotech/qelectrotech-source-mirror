@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
+#include "../shownkinds.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -34,6 +35,7 @@
 IndependentTextItem::IndependentTextItem() :
 	DiagramTextItem(nullptr)
 {
+	ShownKinds::tag(this, ShownKinds::FreeTexts);
 		//Start from the font last applied to a text item this session,
 		//falling back to the app-wide Preferences default otherwise.
 	setFont(LastUsedStyle::hasTextFont() ? LastUsedStyle::textFont()
@@ -49,7 +51,9 @@ IndependentTextItem::IndependentTextItem() :
 */
 IndependentTextItem::IndependentTextItem(const QString &text) :
 	DiagramTextItem(text, nullptr)
-{}
+{
+	ShownKinds::tag(this, ShownKinds::FreeTexts);
+}
 
 /// Destructeur
 IndependentTextItem::~IndependentTextItem()

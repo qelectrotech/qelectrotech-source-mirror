@@ -264,6 +264,8 @@ class QETApp : public QObject
 	signals:
 			/// The text grid setting changed, see TextGrid.
 		void textGridChanged();
+			/// A kind of item was shown or hidden, see ShownKinds.
+		void shownKindsChanged();
 
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
