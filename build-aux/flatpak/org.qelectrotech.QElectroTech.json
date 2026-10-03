@@ -56,7 +56,6 @@
       "config-opts": [
         "-DCMAKE_INSTALL_PREFIX=/app",
         "-DQT_VERSION_MAJOR=6",
-        "-DBUILD_WITH_KF=ON",
         "-DBUILD_KF=OFF",
         "-DPACKAGE_TESTS=OFF",
         "-DBUILD_PUGIXML=ON",
