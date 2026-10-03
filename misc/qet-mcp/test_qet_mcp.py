@@ -1207,6 +1207,8 @@ class CheckAndContinuityAnswers(unittest.TestCase):
             {"kind": "check", "name": "unnumbered_conductors", "rows": [{"n": 1}, {"n": 2}], "error": ""},
             {"kind": "check", "name": "duplicate_simple_labels", "rows": [], "error": ""},
             {"kind": "check", "name": "empty_folios", "rows": None, "error": "bad SQL"},
+            {"kind": "check", "name": "crowded_terminals", "rows": [], "error": ""},
+            {"kind": "check", "name": "reports_with_several_wires", "rows": [], "error": ""},
             {"kind": "other", "name": "masters_without_manufacturer_reference", "rows": [1]},
         ]
         with self.stub(lines):
@@ -1214,7 +1216,7 @@ class CheckAndContinuityAnswers(unittest.TestCase):
         C = m.CHECKS
         self.assertEqual(r, {
             "ok": False,
-            "summary": {"errors": 1, "warnings": 1, "info": 1, "passed": 1, "check_failures": 2},
+            "summary": {"errors": 1, "warnings": 1, "info": 1, "passed": 3, "check_failures": 2},
             "findings": [
                 {"check": "duplicate_master_labels", "severity": "error", "count": 12,
                  "note": C["duplicate_master_labels"]["note"], "rows": rows[:10]},
@@ -1222,7 +1224,7 @@ class CheckAndContinuityAnswers(unittest.TestCase):
                  "note": C["unlabelled_masters"]["note"], "rows": [{"x": 1}]},
                 {"check": "unnumbered_conductors", "severity": "info", "count": 2,
                  "note": C["unnumbered_conductors"]["note"], "rows": [{"n": 1}, {"n": 2}]}],
-            "passed": ["duplicate_simple_labels"],
+            "passed": ["duplicate_simple_labels", "crowded_terminals", "reports_with_several_wires"],
             "check_failures": [
                 {"check": "empty_folios", "error": "bad SQL"},
                 {"check": "masters_without_manufacturer_reference", "error": "no result came back"}]})
@@ -5476,6 +5478,24 @@ class Integration(unittest.TestCase):
         self.assertIn("unnumbered_conductors", found)
         self.assertEqual(found["masters_without_manufacturer_reference"]["count"], 2)
         self.assertFalse(c["ok"])
+
+    def test_check_finds_a_crowded_terminal(self):
+        """Five wires on one terminal of a coil: crowded_terminals reports
+        that terminal once, with its count; four would pass."""
+        base = self.sb.new()
+        ids = "habcde"
+        r = self.ok(self.sb.edit(base, [
+            *[{"op": "add_element", "id": x, "folio": 0, "path": COIL,
+               "x": 100 + i * 120, "y": 100 + i * 90} for i, x in enumerate(ids)],
+            *[{"op": "add_conductor", "folio": 0, "from": "$h", "from_terminal": 0,
+               "to": f"${x}", "to_terminal": 0} for x in ids[1:]]]))
+        c = m.tool_check(BINARY, r["output"], checks=["crowded_terminals",
+                                                       "reports_with_several_wires"])
+        found = {f["check"]: f for f in c["findings"]}
+        self.assertEqual(found["crowded_terminals"]["count"], 1, c)
+        self.assertEqual(found["crowded_terminals"]["rows"][0]["wires"], 5)
+        self.assertEqual(found["crowded_terminals"]["rows"][0]["element_type"], "master")
+        self.assertIn("reports_with_several_wires", c["passed"])
 
     def test_check_passes_a_clean_project(self):
         base = self.sb.new()
