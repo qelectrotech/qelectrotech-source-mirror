@@ -479,8 +479,9 @@ void DiagramView::zoomFit()
 */
 void DiagramView::zoomContent()
 {
-	fitInView(m_diagram -> itemsBoundingRect(), Qt::KeepAspectRatio);
-	adjustGridToZoom();
+	const QRectF content = m_diagram->visibleItemsBoundingRect();
+	if (!content.isNull())
+		zoomToRect(content);
 }
 
 /**

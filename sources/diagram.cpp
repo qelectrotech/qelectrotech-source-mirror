@@ -929,7 +929,7 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
 	if (!use_border_) {
-		source_area = itemsBoundingRect();
+		source_area = visibleItemsBoundingRect();
 		source_area.translate(-margin, -margin);
 		source_area.setWidth (source_area.width () + 2.0 * margin);
 		source_area.setHeight(source_area.height() + 2.0 * margin);
@@ -997,7 +997,7 @@ QSize Diagram::imageSize() const
 	// determine la zone source =  contenu du schema + marges
 	qreal image_width, image_height;
 	if (!use_border_) {
-		QRectF items_rect = itemsBoundingRect();
+		QRectF items_rect = visibleItemsBoundingRect();
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
@@ -2838,8 +2838,27 @@ void Diagram::adjustSceneRect()
 {
 	QRectF old_rect = sceneRect();
 	setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(
-			     itemsBoundingRect()));
+			     visibleItemsBoundingRect()));
 	update(old_rect.united(sceneRect()));
+}
+
+/**
+	@brief Diagram::visibleItemsBoundingRect
+	Same as QGraphicsScene::itemsBoundingRect(), but only counts items that
+	are shown. A hidden item keeps whatever position it last had: the text of
+	a single-line wire, and the wire texts hidden by "one text per potential",
+	are never positioned again and can sit far outside the drawing (#1281).
+	@return the bounding rect of the visible items, in scene coordinates
+*/
+QRectF Diagram::visibleItemsBoundingRect() const
+{
+	QRectF rect;
+	const auto scene_items = items();
+	for (QGraphicsItem *item : scene_items) {
+		if (item->isVisible())
+			rect |= item->sceneBoundingRect();
+	}
+	return rect;
 }
 
 /**

@@ -258,6 +258,7 @@ class Diagram : public QGraphicsScene
 		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,
 				   Qt::AspectRatioMode = Qt::KeepAspectRatio);
 		QSize imageSize() const;
+		QRectF visibleItemsBoundingRect() const;
 		
 		bool isEmpty() const;
 	
