@@ -32,7 +32,10 @@ class QDomElement;
 	limit, a new wire that would go past it is refused. Wires already in
 	the drawing are never touched.
 
-	Every rule is off unless the project turns it on, and the application
+	The rules are set once for the application (Settings > General,
+	applicationSettings()) and apply to every project; a project can set
+	its own instead (Settings::own), saved in the project so it travels
+	with the drawing. Every rule is off by default, and the application
 	has a master switch (masterEnabled()) that turns all of them off in
 	every project at once. Kept free of any QGraphicsItem so the rules can
 	be tested on their own.
@@ -41,10 +44,17 @@ namespace WiringRules
 {
 		///The QSettings key of the master switch
 	constexpr const char *settings_key = "diagrameditor/wiring_rules_enabled";
+		///The QSettings keys of the application's rules
+	constexpr const char *max_wires_key = "diagrameditor/wiring_rules_max_wires";
+	constexpr const char *one_wire_per_report_key = "diagrameditor/wiring_rules_one_wire_per_report";
 
-		///The rules a project chose. The default is "no rule".
+		///A set of rules: the application's, or a project's. The default is
+		///"no rule".
 	struct Settings
 	{
+			///For a project: it uses these values rather than the
+			///application's. Ignored in the application's own settings.
+		bool own = false;
 			///Most wires a terminal may take, 0 for no limit
 		int max_wires = 0;
 			///A folio report takes one wire only
@@ -52,7 +62,8 @@ namespace WiringRules
 
 		bool isDefault() const { return *this == Settings(); }
 		bool operator==(const Settings &other) const {
-			return max_wires == other.max_wires
+			return own == other.own
+					&& max_wires == other.max_wires
 					&& one_wire_per_report == other.one_wire_per_report;
 		}
 		bool operator!=(const Settings &other) const { return !(*this == other); }
@@ -60,6 +71,10 @@ namespace WiringRules
 
 	bool masterEnabled();
 	void setMasterEnabled(bool enabled);
+
+	Settings applicationSettings();
+	void setApplicationSettings(const Settings &settings);
+	Settings effective(const Settings &project, const Settings &application);
 
 	Settings fromXml(const QDomElement &project_root);
 	void toXml(const Settings &settings, QDomElement &project_root);

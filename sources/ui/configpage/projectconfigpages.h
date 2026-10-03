@@ -116,6 +116,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 
 	private slots:
 	void resetUsageTracker();
+	void updateWiringRulesWidgets();
 
 	// attributes
 	protected:
@@ -131,6 +132,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QLabel *wire_hops_label_;
 	QComboBox *wire_hops_cb_;
 	QGroupBox *wiring_rules_gb_;
+	QCheckBox *use_application_rules_cb_;
 	QLabel *max_wires_label_;
 	QSpinBox *max_wires_sb_;
 	QCheckBox *one_wire_per_report_cb_;
