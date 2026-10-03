@@ -40,6 +40,13 @@ namespace QETInformation
 	/** Default information related to element **/
 	static QString ELMT_LABEL                        = "label";
 	static QString ELMT_FORMULA                      = "formula";
+	/**
+		Uuid of the project's element numbering scheme the element's
+		formula follows. Internal: never shown, edited, exported or
+		printed as an information of its own; it only exists alongside a
+		non-empty ELMT_FORMULA (see Element::setElementInformations()).
+	*/
+	static QString ELMT_FORMULA_ID                   = "formula_id";
 	static QString ELMT_COMMENT                      = "comment";
 	static QString ELMT_FUNCTION                     = "function";
 	static QString ELMT_DESCRIPTION                  = "description";

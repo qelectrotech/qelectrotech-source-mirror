@@ -18,13 +18,17 @@
 #include "selectautonumw.h"
 
 #include "../assignvariables.h"
-#include "../numerotationcontextcommands.h"
 #include "formulaautonumberingw.h"
 #include "numparteditorw.h"
 #include "ui_formulaautonumberingw.h"
 #include "ui_selectautonumw.h"
 
+#include "../../qeticons.h"
+
+#include <QHBoxLayout>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QToolButton>
 
 /**
 	@brief SelectAutonumW::SelectAutonumW
@@ -39,6 +43,24 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 {
 	ui->setupUi(this);
 	ui->m_comboBox->lineEdit()->setClearButtonEnabled(true);
+
+		//The add button goes under the last part, at the left; each part
+		//has its own remove and move buttons at its right. The one remove
+		//button above the parts, which could only remove the last one, is
+		//not needed any more.
+	ui->remove_button->hide();
+	ui->horizontalLayout->removeWidget(ui->add_button);
+	m_add_row = new QWidget(this);
+	auto *add_layout = new QHBoxLayout(m_add_row);
+	add_layout->setContentsMargins(0, 0, 0, 0);
+	ui->add_button->setParent(m_add_row);
+	add_layout->addWidget(ui->add_button);
+	add_layout->addStretch();
+	ui->editor_layout->addWidget(m_add_row);
+	ui->buttonBox->button(QDialogButtonBox::Reset)->setText(tr("Annuler"));
+	ui->buttonBox->button(QDialogButtonBox::Reset)->setToolTip(
+				tr("Revenir à la définition enregistrée"));
+
 	if (m_edited_type == 0)
 	{
 		m_feaw = new FormulaAutonumberingW();
@@ -103,26 +125,123 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 {
 	m_context = context;
 
-	qDeleteAll(num_part_list_);
-	num_part_list_.clear();
+	clearPartRows();
 
 	if (m_context.size() == 0) { //@context contain nothing, build a default numPartEditor
-		on_add_button_clicked();
+		insertPartRow(new NumPartEditorW(m_edited_type, this));
 	}
 	else {
 		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
-			NumPartEditorW *part= new NumPartEditorW(m_context, i, m_edited_type, this);
-			connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
-			num_part_list_ << part;
-			ui -> editor_layout -> addWidget(part);
+			insertPartRow(new NumPartEditorW(m_context, i, m_edited_type, this));
 		}
 	}
 
-	num_part_list_.size() == 1 ?
-				ui -> remove_button -> setDisabled(true):
-				ui -> remove_button -> setEnabled (true);
-
+	updatePartButtons();
 	applyEnable(false);
+}
+
+/**
+	@brief SelectAutonumW::insertPartRow
+	Show @p part as the last part of the definition, with the buttons which
+	remove it and move it up or down at its right.
+*/
+void SelectAutonumW::insertPartRow(NumPartEditorW *part)
+{
+	connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
+
+	PartRow r;
+	r.part = part;
+	r.row = new QWidget(this);
+	auto *layout = new QHBoxLayout(r.row);
+	layout->setContentsMargins(0, 0, 0, 0);
+	layout->setSpacing(2);
+	part->setParent(r.row);
+	layout->addWidget(part, 1);
+
+	const auto make_button = [&](const QIcon &icon, const QString &tip) {
+		auto *button = new QToolButton(r.row);
+		button->setIcon(icon);
+		button->setToolTip(tip);
+		button->setAutoRaise(true);
+		layout->addWidget(button);
+		return button;
+	};
+	r.up = make_button(QET::Icons::GoUp, tr("Monter cette variable"));
+	r.down = make_button(QET::Icons::GoDown, tr("Descendre cette variable"));
+	r.remove = make_button(QET::Icons::EditDelete, tr("Supprimer cette variable"));
+	QWidget *row = r.row;
+	connect(r.up, &QToolButton::clicked, this, [this, row]() { movePartRow(row, -1); });
+	connect(r.down, &QToolButton::clicked, this, [this, row]() { movePartRow(row, +1); });
+	connect(r.remove, &QToolButton::clicked, this, [this, row]() { removePartRow(row); });
+
+	m_rows << r;
+	num_part_list_ << part;
+		//Before the add button, which stays under the last part
+	ui->editor_layout->insertWidget(ui->editor_layout->count() - 1, r.row);
+	updatePartButtons();
+}
+
+/// Take away every part of the definition shown
+void SelectAutonumW::clearPartRows()
+{
+	for (const PartRow &r : std::as_const(m_rows)) {
+		delete r.row;   //with the part, which it holds
+	}
+	m_rows.clear();
+	num_part_list_.clear();
+}
+
+/**
+	@brief SelectAutonumW::updatePartButtons
+	The first part cannot move up, the last cannot move down, and the only
+	one cannot be removed: those buttons are greyed out.
+*/
+void SelectAutonumW::updatePartButtons()
+{
+	for (int i = 0 ; i < m_rows.size() ; ++i) {
+		m_rows.at(i).up->setEnabled(i > 0);
+		m_rows.at(i).down->setEnabled(i < m_rows.size() - 1);
+		m_rows.at(i).remove->setEnabled(m_rows.size() > 1);
+	}
+}
+
+/// Remove the part shown in @p row; the definition keeps at least one
+void SelectAutonumW::removePartRow(QWidget *row)
+{
+	if (m_rows.size() <= 1) {
+		return;
+	}
+	for (int i = 0 ; i < m_rows.size() ; ++i) {
+		if (m_rows.at(i).row == row) {
+			const PartRow r = m_rows.takeAt(i);
+			num_part_list_.removeAll(r.part);
+			delete r.row;   //with the part, which it holds
+			break;
+		}
+	}
+	updatePartButtons();
+	applyEnable();
+}
+
+/// Move the part shown in @p row up (-1) or down (+1)
+void SelectAutonumW::movePartRow(QWidget *row, int step)
+{
+	for (int i = 0 ; i < m_rows.size() ; ++i) {
+		if (m_rows.at(i).row != row) {
+			continue;
+		}
+		const int to = i + step;
+		if (to < 0 || to >= m_rows.size()) {
+			return;
+		}
+		m_rows.swapItemsAt(i, to);
+		num_part_list_.swapItemsAt(i, to);
+		ui->editor_layout->removeWidget(row);
+		ui->editor_layout->insertWidget(1 + to, row);   //after the header of the columns
+		break;
+	}
+	updatePartButtons();
+	applyEnable();
 }
 
 /**
@@ -143,12 +262,8 @@ NumerotationContext SelectAutonumW::toNumContext() const
 */
 void SelectAutonumW::on_add_button_clicked()
 {
-	applyEnable(false);
-	NumPartEditorW *part = new NumPartEditorW(m_edited_type, this);
-	connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
-	num_part_list_ << part;
-	ui -> editor_layout -> addWidget(part);
-	ui -> remove_button -> setEnabled(true);
+	insertPartRow(new NumPartEditorW(m_edited_type, this));
+	applyEnable();
 }
 
 /**
@@ -157,16 +272,9 @@ void SelectAutonumW::on_add_button_clicked()
 */
 void SelectAutonumW::on_remove_button_clicked()
 {
-	//remove if @num_part_list contains more than one item
-	if (num_part_list_.size() > 1) {
-		NumPartEditorW *part = num_part_list_.takeLast();
-		// deliberately not disconnecting as not possible to resolve with lambda and will happen automatically when the object "part" is destroyed.
-		delete part;
-		if (num_part_list_.size() == 1) {
-			ui -> remove_button -> setDisabled(true);
-		}
+	if (!m_rows.isEmpty()) {
+		removePartRow(m_rows.last().row);
 	}
-	applyEnable();
 }
 
 /**
@@ -292,6 +400,8 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 */
 void SelectAutonumW::applyEnable(bool b)
 {
+		//Apply and Cancel both stand for a change: grey until there is one
+	ui->buttonBox->button(QDialogButtonBox::Reset)->setEnabled(b);
 	if (b){
 		bool valid= true;
 		foreach (NumPartEditorW *npe, num_part_list_)
@@ -331,28 +441,6 @@ void SelectAutonumW::contextToFormula()
 	}
 }
 
-/**
-	@brief SelectAutonumW::on_m_next_pb_clicked
-	Increase NumerotationContext
-*/
-void SelectAutonumW::on_m_next_pb_clicked()
-{
-	NumerotationContextCommands ncc (toNumContext());
-	setContext(ncc.next());
-	applyEnable(true);
-}
-
-/**
-	@brief SelectAutonumW::on_m_previous_pb_clicked
-	Decrease NumerotationContext
-*/
-void SelectAutonumW::on_m_previous_pb_clicked()
-{
-	NumerotationContextCommands ncc (toNumContext());
-	setContext(ncc.previous());
-	applyEnable(true);
-}
-
 void SelectAutonumW::on_m_comboBox_currentTextChanged(const QString &arg1)
 {
 	Q_UNUSED(arg1);
@@ -362,4 +450,30 @@ void SelectAutonumW::on_m_comboBox_currentTextChanged(const QString &arg1)
 void SelectAutonumW::on_m_remove_pb_clicked()
 {
 	emit removeClicked();
+}
+
+/**
+	@brief SelectAutonumW::setExplicitNaming
+	Make the list of numberings a plain choice: no typing a name into it
+	(an easy way to create a numbering by accident, or one with an empty
+	name), but a button to create a numbering and one to rename the shown
+	one, which emit newClicked() and renameClicked() for the owner to ask
+	for the name.
+*/
+void SelectAutonumW::setExplicitNaming()
+{
+	ui->m_comboBox->setEditable(false);
+	auto *row = ui->horizontalLayout_2;
+	const int index = row->indexOf(ui->m_remove_pb);
+
+	auto *new_pb = new QPushButton(QET::Icons::Add, QString(), this);
+	new_pb->setToolTip(tr("Nouvelle numérotation…"));
+	connect(new_pb, &QPushButton::clicked, this, &SelectAutonumW::newClicked);
+
+	auto *rename_pb = new QPushButton(QET::Icons::EditRename, QString(), this);
+	rename_pb->setToolTip(tr("Renommer la numérotation…"));
+	connect(rename_pb, &QPushButton::clicked, this, &SelectAutonumW::renameClicked);
+
+	row->insertWidget(index, rename_pb);
+	row->insertWidget(index, new_pb);
 }

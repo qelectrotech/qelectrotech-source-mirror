@@ -427,7 +427,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 							lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
 					}
 					for (const QString &key : info.keys()) {
-						if (key == "formula") continue;
+						if (key == "formula" || key == QETInformation::ELMT_FORMULA_ID) continue;
 						QString translated = QETInformation::translatedInfoKey(key);
 						if (lines.contains(translated + ": " + info.value(key).toString())) continue;
 						if (info.value(key).toString().isEmpty()) continue;

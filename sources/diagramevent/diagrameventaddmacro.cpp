@@ -274,7 +274,10 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 		QSettings settings;
 		bool saved_erase = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
 		settings.setValue("diagramcommands/erase-label-on-copy", false);
-		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted_content));
+			//and does not number them either: the labels are the ones saved
+		auto *paste = new PasteDiagramCommand(m_diagram, pasted_content);
+		paste->setAutoNumbering(false);
+		m_diagram->undoStack().push(paste);
 		settings.setValue("diagramcommands/erase-label-on-copy", saved_erase);
 	}
 }

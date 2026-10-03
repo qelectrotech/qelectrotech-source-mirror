@@ -633,6 +633,21 @@ target_compile_definitions(tst_derivedwireuuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Element numbering schemes carry an id and elements follow them by it:
+# a legacy file gets stable ids on --resave; through --run, rename, edit,
+# refused removal and undo/redo keep the elements following the scheme.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_elementautonumids
+    tst_elementautonumids.cpp)
+  add_test(NAME tst_elementautonumids COMMAND tst_elementautonumids)
+  add_dependencies(tst_elementautonumids qelectrotech)
+  target_link_libraries(tst_elementautonumids PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_elementautonumids PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
 # Saving a project that was just saved changes nothing: runs the real
 # binary's --resave twice on every project in examples/, and on one whose
 # title block holds a single-space value (#973).

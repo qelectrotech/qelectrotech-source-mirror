@@ -41,6 +41,7 @@ class ProjectPropertiesDialog : public QObject {
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
 		void changeToFolio();
+		void changeToElement();
 
 	private:
 		ConfigDialog *m_properties_dialog;

@@ -22,9 +22,11 @@
 #include "../../qetproject.h"
 
 #include <QDockWidget>
+#include <QPointer>
 
 class QComboBox;
 class QLineEdit;
+class QPushButton;
 class QSpinBox;
 
 namespace Ui {
@@ -58,6 +60,9 @@ class AutoNumberingDockWidget : public QDockWidget
 		void refreshValueFields();
 
 		void on_m_configure_pb_clicked();
+		void applyElementSchemeToSelection();
+		void updateApplyEnabled();
+		void followSelectionOf(DiagramView *view);
 
 		void on_m_conductor_reset_start_pb_clicked();
 		void on_m_element_reset_start_pb_clicked();
@@ -126,6 +131,8 @@ class AutoNumberingDockWidget : public QDockWidget
 			/// this replaces refreshValueField() at each of them.
 		void refreshRow(AutoNumCategory category);
 
+		QPushButton *m_element_apply_pb = nullptr;
+		QPointer<Diagram> m_selection_diagram;   ///< the folio whose selection enables the apply button
 		Ui::AutoNumberingDockWidget *ui;
 		QETProject* m_project = nullptr;
 		ProjectView* m_project_view = nullptr;

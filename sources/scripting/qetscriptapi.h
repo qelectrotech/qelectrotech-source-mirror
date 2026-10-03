@@ -523,9 +523,15 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QStringList autoNums(const QString &kind) const;
 		Q_INVOKABLE bool addAutoNum(const QString &kind, const QString &name, const QStringList &parts);
 		Q_INVOKABLE bool removeAutoNum(const QString &kind, const QString &name);
+		Q_INVOKABLE bool renameAutoNum(const QString &kind, const QString &name, const QString &newName);
 		Q_INVOKABLE bool useConductorAutoNum(int folioIndex, const QString &name);
 		Q_INVOKABLE bool useElementAutoNum(const QString &name);
 		Q_INVOKABLE bool numberElement(int folioIndex, const QString &elementUuid);
+		Q_INVOKABLE int renumberElementAutoNum(const QString &name);
+		Q_INVOKABLE QVariantList freeElementNumbers(int folioIndex, const QString &elementUuid);
+		Q_INVOKABLE bool assignElementNumber(int folioIndex, const QString &elementUuid, int number);
+		Q_INVOKABLE bool assignElementAutoNum(const QString &name, int folioIndex,
+											  const QString &elementUuid, bool overwrite);
 
 		// -- images, embedded in the project --
 		Q_INVOKABLE QStringList images(int folioIndex) const;

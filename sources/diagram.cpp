@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagram.h"
+#include "autoNum/elementautonumschemecommand.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
@@ -1289,6 +1290,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
 			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
+
+		// A copy carries the numberings its elements follow: pasted into
+		// another project, which does not know them, it can offer to import
+		// them (see PasteNumberingImport)
+	if (is_copy_command) {
+		ElementAutoNumSchemeCommand::writeCopiedSchemes(document, dom_root, m_project, list_elements);
+	}
 
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids

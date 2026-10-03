@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "jumptoelementdialog.h"
+#include "../qetinformation.h"
 
 #include "../diagram.h"
 #include "../diagramview.h"
@@ -99,6 +100,10 @@ void JumpToElementDialog::buildCandidates()
 		search_parts << label << name;
 		const DiagramContext infos = element->elementInformations();
 		for (const QString &key : infos.keys()) {
+				//An internal id, not something the user can read or type
+			if (key == QETInformation::ELMT_FORMULA_ID) {
+				continue;
+			}
 			search_parts << infos.value(key).toString();
 		}
 		candidate.search_text = search_parts.join(QLatin1Char(' ')).toLower();
