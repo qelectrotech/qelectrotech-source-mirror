@@ -355,6 +355,7 @@ private slots:
 
 	void deletingASymbolChainsTheWires()
 	{
+		SKIP_WITHOUT_SCRIPTING;
 			// No rule: the four are wired to one of them, as on master
 		QCOMPARE(mostWiresAfterDeletingTheHub(QString()), QStringLiteral("3"));
 
