@@ -62,7 +62,8 @@ namespace WiringRules
 	Settings fromXml(const QDomElement &project_root);
 	void toXml(const Settings &settings, QDomElement &project_root);
 
-	int limit(const Settings &settings, bool master_enabled, bool is_report);
+	int limit(const Settings &settings, bool master_enabled, bool is_report,
+			  int symbol_limit = -1);
 	bool hasRoom(int limit, int wires);
 	bool isReportType(const QString &element_type);
 }

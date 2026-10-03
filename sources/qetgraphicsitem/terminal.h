@@ -82,6 +82,7 @@ class Terminal : public QGraphicsObject
 		QString   baseName            () const;
 		TerminalData::Type terminalType() const;
 		bool useMasterLabel() const { return d->m_use_master_label; }
+		int maxWires() const { return d->m_max_wires; }
 		void setUseMasterLabel(bool use);
 		int masterLabelIndex() const { return d->m_master_label_index; }
 		void setMasterLabelIndex(int index);

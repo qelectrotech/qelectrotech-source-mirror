@@ -181,6 +181,7 @@ struct DocumentTerminal
 	QString name;
 	bool master_label = false;
 	QVariant index;
+	QVariant max_wires;
 };
 
 	//The index each of @p points has in Element::terminals() -- the index
@@ -451,6 +452,11 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 					terminal.uuid = terminal_uuid.toString();
 					terminal.name = t.attribute(QStringLiteral("name"));
 					terminal.master_label = t.attribute(QStringLiteral("use_master_label")) == QLatin1String("true");
+					bool max_wires_ok = false;
+					const int max_wires = t.attribute(QStringLiteral("max_wires")).toInt(&max_wires_ok);
+					if (max_wires_ok && max_wires >= 0) {
+						terminal.max_wires = max_wires;
+					}
 					const int place = parsed.indexOf(t);
 					if (place >= 0) {
 						terminal.index = indexes.at(place);
@@ -635,7 +641,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 								std::make_pair(conductor.element2, conductor.terminal2)}) {
 			const DocumentElement &owner = elements.at(element_index.value(end.first));
 			const DocumentTerminal &terminal = owner.terminals.value(QUuid(end.second));
-			insertTerminal(end.second, end.first, terminal.name, terminal.index);
+			insertTerminal(end.second, end.first, terminal.name, terminal.index,
+						   terminal.max_wires);
 		}
 		m_insert_conductor_query.bindValue(QStringLiteral(":uuid"), conductor.uuid);
 		m_insert_conductor_query.bindValue(QStringLiteral(":diagram_uuid"), conductor.diagram_uuid);
@@ -1613,6 +1620,7 @@ bool projectDataBase::createDataBase()
 						  "element_uuid VARCHAR(50) NOT NULL,"
 						  "name VARCHAR(50),"
 						  "terminal_index INTEGER,"
+						  "max_wires INTEGER,"
 						  "PRIMARY KEY (uuid, element_uuid),"
 						  "FOREIGN KEY (element_uuid) REFERENCES element (uuid)"
 						  ")");
@@ -1916,7 +1924,8 @@ void projectDataBase::createDrawingItemView()
 	where it is (folio position starting at 1, cell of its element) and what
 	its element is (label, type: "next_report", "previous_report", ...).
 	Read by the wires-per-terminal check (discussion #1158), which compares
-	the count against the project's limit.
+	the count against the project's limit. max_wires is the terminal's own
+	limit from its symbol, NULL when it follows the project.
 */
 void projectDataBase::createTerminalWiresView()
 {
@@ -1924,7 +1933,7 @@ void projectDataBase::createTerminalWiresView()
 	const QString create_view(
 				"CREATE VIEW terminal_wires_view AS "
 				"SELECT w.element_uuid, w.terminal_uuid, t.name AS terminal_name, "
-				"t.terminal_index, ei.label AS element_label, e.type AS element_type, "
+				"t.terminal_index, t.max_wires, ei.label AS element_label, e.type AS element_type, "
 				"d.pos AS folio, e.pos, w.wires FROM ("
 				"SELECT terminal_uuid, element_uuid, COUNT(*) AS wires FROM ("
 				"SELECT terminal1_uuid AS terminal_uuid, terminal1_element_uuid AS element_uuid FROM conductor "
@@ -2095,7 +2104,8 @@ void projectDataBase::insertTerminal(Terminal *terminal)
 	insertTerminal(terminal->stableUuid().toString(),
 				   terminal->parentElement()->uuid().toString(),
 				   terminal->name(),
-				   terminalIndexes(points).value(terminals.indexOf(terminal)));
+				   terminalIndexes(points).value(terminals.indexOf(terminal)),
+				   terminal->maxWires() >= 0 ? QVariant(terminal->maxWires()) : QVariant());
 }
 
 /**
@@ -2103,12 +2113,14 @@ void projectDataBase::insertTerminal(Terminal *terminal)
 	insertTerminal(Terminal *) from values rather than a live terminal.
 */
 void projectDataBase::insertTerminal(const QString &uuid, const QString &element_uuid,
-									 const QString &name, const QVariant &index)
+									 const QString &name, const QVariant &index,
+									 const QVariant &max_wires)
 {
 	m_insert_terminal_query.bindValue(":uuid", uuid);
 	m_insert_terminal_query.bindValue(":element_uuid", element_uuid);
 	m_insert_terminal_query.bindValue(":name", name);
 	m_insert_terminal_query.bindValue(":terminal_index", index);
+	m_insert_terminal_query.bindValue(":max_wires", max_wires);
 	if (!m_insert_terminal_query.exec()) {
 		qDebug() << "projectDataBase::insertTerminal insert error : " << m_insert_terminal_query.lastError();
 	}
@@ -2241,7 +2253,7 @@ void projectDataBase::prepareQuery()
 
 		//INSERT TERMINAL
 	m_insert_terminal_query = QSqlQuery(m_data_base);
-	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name, terminal_index) VALUES (:uuid, :element_uuid, :name, :terminal_index)");
+	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name, terminal_index, max_wires) VALUES (:uuid, :element_uuid, :name, :terminal_index, :max_wires)");
 
 		//INSERT CONDUCTOR
 	m_insert_conductor_query = QSqlQuery(m_data_base);

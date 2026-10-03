@@ -130,6 +130,9 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 	}
 
 	// Save master label override settings
+	if (m_max_wires >= 0) {
+		xml_element.setAttribute("max_wires", m_max_wires);
+	}
 	if (m_use_master_label) {
 		xml_element.setAttribute("use_master_label", "true");
 		xml_element.setAttribute("master_label_index", m_master_label_index);
@@ -210,6 +213,10 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 	// Read master label override settings
 	m_use_master_label = (xml_element.attribute("use_master_label") == QLatin1String("true"));
 	m_master_label_index = xml_element.attribute("master_label_index", "0").toInt();
+
+	bool max_wires_ok = false;
+	const int max_wires = xml_element.attribute("max_wires").toInt(&max_wires_ok);
+	m_max_wires = max_wires_ok && max_wires >= 0 ? max_wires : -1;
 
 	return true;
 }

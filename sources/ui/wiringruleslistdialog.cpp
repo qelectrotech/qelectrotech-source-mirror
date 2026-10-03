@@ -58,7 +58,7 @@ WiringRulesListDialog::WiringRulesListDialog(QETProject *project,
 	{
 		QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
 				"SELECT folio, pos, element_label, element_type, terminal_name, "
-				"terminal_index, wires FROM terminal_wires_view "
+				"terminal_index, wires, max_wires FROM terminal_wires_view "
 				"ORDER BY folio, pos, element_label, terminal_index"));
 		if (query.exec())
 		{
@@ -66,7 +66,8 @@ WiringRulesListDialog::WiringRulesListDialog(QETProject *project,
 			{
 				const int wires = query.value(6).toInt();
 				const int limit = WiringRules::limit(rules, true,
-													 WiringRules::isReportType(query.value(3).toString()));
+													 WiringRules::isReportType(query.value(3).toString()),
+													 query.value(7).isNull() ? -1 : query.value(7).toInt());
 				if (limit <= 0 || wires <= limit) {
 					continue;
 				}

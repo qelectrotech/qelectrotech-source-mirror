@@ -742,7 +742,8 @@ int Terminal::wireLimit() const
 			&& (element->linkType() & (Element::NextReport | Element::PreviousReport));
 	return WiringRules::limit(parent_diagram->project()->wiringRules(),
 							  WiringRules::masterEnabled(),
-							  is_report);
+							  is_report,
+							  d->m_max_wires);
 }
 
 /**

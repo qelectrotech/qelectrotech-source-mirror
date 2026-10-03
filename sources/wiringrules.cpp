@@ -101,9 +101,14 @@ void WiringRules::toXml(const Settings &settings, QDomElement &project_root)
 	@param settings : the project's rules
 	@param master_enabled : the master switch, masterEnabled()
 	@param is_report : the terminal belongs to a folio report
+	@param symbol_limit : the limit the symbol gives this terminal
+	(TerminalData::m_max_wires): -1 to follow the project, 0 for none. It
+	applies only when the project sets a limit, so a symbol's own value
+	never refuses a wire in a project that did not ask for any.
 	@return the most wires the terminal may take, 0 for no limit.
 */
-int WiringRules::limit(const Settings &settings, bool master_enabled, bool is_report)
+int WiringRules::limit(const Settings &settings, bool master_enabled, bool is_report,
+					   int symbol_limit)
 {
 	if (!master_enabled) {
 		return 0;
@@ -111,7 +116,10 @@ int WiringRules::limit(const Settings &settings, bool master_enabled, bool is_re
 	if (is_report && settings.one_wire_per_report) {
 		return 1;
 	}
-	return settings.max_wires;
+	if (settings.max_wires <= 0 || symbol_limit < 0) {
+		return settings.max_wires;
+	}
+	return symbol_limit;
 }
 
 /**

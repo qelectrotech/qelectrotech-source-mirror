@@ -139,6 +139,11 @@ class TerminalData : public PropertiesInterface
 		/// Index into the master's contact group labels (T1=0, T2=1, ..., T20=19)
 		int m_master_label_index = 0;
 
+		/// Most wires this terminal may take when the project limits the
+		/// wires per terminal (discussion #1158): -1 follows the project,
+		/// 0 is no limit (a cable or busbar symbol), 1 for an earth terminal...
+		int m_max_wires = -1;
+
 	private:
 		QGraphicsObject* q{nullptr};
 };

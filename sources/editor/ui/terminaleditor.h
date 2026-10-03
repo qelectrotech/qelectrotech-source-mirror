@@ -69,6 +69,7 @@ class TerminalEditor : public ElementItemEditor
 	void activeConnections(bool active);
 	void activeChangeConnections(bool active);
 	void useMasterLabelEdited();
+	void maxWiresEdited();
 	void masterLabelIndexEdited();
 	bool updateMasterLabelVisibility();
 

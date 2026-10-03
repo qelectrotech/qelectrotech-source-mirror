@@ -43,6 +43,7 @@ class PartTerminal : public CustomElementGraphicPart
 	Q_PROPERTY(bool label_frame READ labelFrame WRITE setLabelFrame)
 	Q_PROPERTY(QColor label_color READ labelColor WRITE setLabelColor)
 	Q_PROPERTY(bool use_master_label READ useMasterLabel WRITE setUseMasterLabel)
+	Q_PROPERTY(int max_wires READ maxWires WRITE setMaxWires)
 	Q_PROPERTY(int master_label_index READ masterLabelIndex WRITE setMasterLabelIndex)
 
 	public:
@@ -65,6 +66,7 @@ class PartTerminal : public CustomElementGraphicPart
 		void labelFrameChanged();
 		void labelColorChanged();
 		void useMasterLabelChanged();
+		void maxWiresChanged();
 		void masterLabelIndexChanged();
 
 		// methods
@@ -136,6 +138,8 @@ class PartTerminal : public CustomElementGraphicPart
 
 		bool useMasterLabel() const { return d->m_use_master_label; }
 		void setUseMasterLabel(bool use);
+		int maxWires() const { return d->m_max_wires; }
+		void setMaxWires(int max_wires);
 
 		int masterLabelIndex() const { return d->m_master_label_index; }
 		void setMasterLabelIndex(int index);

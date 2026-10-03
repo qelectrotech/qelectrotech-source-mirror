@@ -51,8 +51,10 @@ class tst_wiringrules : public QObject
 		return env;
 	}
 
-		// The fixture with @p rules inserted before <newdiagrams>, as a new file
-	QString fixtureWith(const QString &rules)
+		// The fixture with @p rules inserted before <newdiagrams>, as a new file.
+		// With @p fuse_max_wires >= 0, the embedded fuse symbol's terminals
+		// carry that max_wires.
+	QString fixtureWith(const QString &rules, int fuse_max_wires = -1)
 	{
 		QFile source(QFINDTESTDATA("fixtures/qet_bug_repro_resaved.qet"));
 		if (!source.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -62,6 +64,16 @@ class tst_wiringrules : public QObject
 		if (newdiagrams < 0)
 			return {};
 		text.insert(newdiagrams, rules + QStringLiteral("\n    "));
+		if (fuse_max_wires >= 0) {
+			const int from = text.indexOf(QLatin1String("<element name=\"v2_fuse.elmt\""));
+			const int to = text.indexOf(QLatin1String("</element>"), from);
+			if (from < 0 || to < 0)
+				return {};
+			QString fuse = text.mid(from, to - from);
+			fuse.replace(QLatin1String("<terminal "),
+						 QStringLiteral("<terminal max_wires=\"%1\" ").arg(fuse_max_wires));
+			text.replace(from, to - from, fuse);
+		}
 		const QString path = m_dir.filePath(QStringLiteral("fixture%1.qet").arg(m_run));
 		QFile out(path);
 		if (!out.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -150,6 +162,24 @@ private slots:
 			// The master switch turns every rule off
 		QCOMPARE(WiringRules::limit(rules, false, false), 0);
 		QCOMPARE(WiringRules::limit(rules, false, true), 0);
+	}
+
+	void symbolLimit()
+	{
+		WiringRules::Settings rules;
+			// No project limit: the symbol's own value does nothing
+		QCOMPARE(WiringRules::limit(rules, true, false, 1), 0);
+
+		rules.max_wires = 4;
+		QCOMPARE(WiringRules::limit(rules, true, false, -1), 4);  // follows the project
+		QCOMPARE(WiringRules::limit(rules, true, false, 1), 1);   // an earth terminal
+		QCOMPARE(WiringRules::limit(rules, true, false, 6), 6);   // more than the project
+		QCOMPARE(WiringRules::limit(rules, true, false, 0), 0);   // a cable: no limit
+
+			// The report rule and the master switch still win
+		rules.one_wire_per_report = true;
+		QCOMPARE(WiringRules::limit(rules, true, true, 0), 1);
+		QCOMPARE(WiringRules::limit(rules, false, false, 1), 0);
 	}
 
 	void hasRoom()
@@ -264,6 +294,43 @@ private slots:
 		QCOMPARE(r.value(QStringLiteral("wrong")).toInt(), 0);
 		QCOMPARE(r.value(QStringLiteral("rows")).toInt(), r.value(QStringLiteral("ends")).toInt());
 		QCOMPARE(r.value(QStringLiteral("hub")).toInt(), 3);
+	}
+
+		// A symbol whose terminals take one wire, in a project limited to
+		// four: the second wire on such a terminal is refused, and the
+		// database carries the symbol's value. Without a project limit the
+		// symbol's value refuses nothing.
+	void symbolLimitRefusesWires()
+	{
+		const QString script = QStringLiteral(
+			"var p = 'embed://import/probe/v2_fuse.elmt';\n"
+			"var hub = qet.addElement(0, p, 400, 400);\n"
+			"var a = qet.addElement(0, p, 470, 490);\n"
+			"var b = qet.addElement(0, p, 540, 580);\n"
+			"var first = qet.addConductor(0, hub, 0, a, 0);\n"
+			"var second = qet.addConductor(0, hub, 0, b, 0);\n"
+			"var rows = qet.query(\"SELECT max_wires FROM terminal_wires_view WHERE element_uuid = '\" + hub + \"'\");\n"
+			"qet.log('PROBE ' + first + ' ' + second + ' ' + (rows.length ? rows[0].max_wires : 'none'));\n");
+
+		auto run = [&](const QString &project) -> QString {
+			const QString path = m_dir.filePath(QStringLiteral("symbol%1.js").arg(m_run));
+			QFile f(path);
+			if (!f.open(QIODevice::WriteOnly)) return {};
+			f.write(script.toUtf8());
+			f.close();
+			QProcess proc;
+			proc.setProcessEnvironment(sandbox());
+			proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--run"), path, project});
+			if (!proc.waitForFinished(60000)) return {};
+			const QString out = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+			const int i = out.indexOf(QStringLiteral("PROBE "));
+			return i < 0 ? QString() : out.mid(i + 6).section(QLatin1Char('\n'), 0, 0).trimmed();
+		};
+
+		QCOMPARE(run(fixtureWith(QStringLiteral("<wiring_rules max_wires_per_terminal=\"4\"/>"), 1)),
+				 QStringLiteral("true false 1"));
+		QCOMPARE(run(fixtureWith(QString(), 1)),
+				 QStringLiteral("true true 1"));
 	}
 };
 

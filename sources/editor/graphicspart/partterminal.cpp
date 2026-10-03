@@ -465,6 +465,21 @@ void PartTerminal::setLabelColor(QColor color)
 	emit labelColorChanged();
 }
 
+/**
+	@brief PartTerminal::setMaxWires
+	Set the most wires this terminal may take when the project limits the
+	wires per terminal: -1 follows the project, 0 is no limit
+	(discussion #1158).
+	@param max_wires
+*/
+void PartTerminal::setMaxWires(int max_wires)
+{
+	max_wires = qMax(-1, max_wires);
+	if (d->m_max_wires == max_wires) return;
+	d->m_max_wires = max_wires;
+	emit maxWiresChanged();
+}
+
 void PartTerminal::setUseMasterLabel(bool use)
 {
 	if (d->m_use_master_label == use) return;

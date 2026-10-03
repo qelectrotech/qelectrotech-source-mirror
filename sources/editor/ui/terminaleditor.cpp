@@ -103,6 +103,9 @@ void TerminalEditor::updateForm()
 
 	ui->m_text_props_gb->setEnabled(m_part->showName());
 
+	const int max_wires_index = ui->m_max_wires_cb->findData(m_part->maxWires());
+	ui->m_max_wires_cb->setCurrentIndex(qMax(0, max_wires_index));
+
 	// Update master label fields
 	bool is_slave = updateMasterLabelVisibility();
 	if (is_slave) {
@@ -195,6 +198,13 @@ void TerminalEditor::init()
 
 	// Check if parent element is a Slave to show/hide master label group
 	updateMasterLabelVisibility();
+
+		//Most wires the terminal accepts under a project limit (discussion #1158)
+	ui->m_max_wires_cb->addItem(tr("Réglage du projet", "wires per terminal"), -1);
+	ui->m_max_wires_cb->addItem(tr("Sans limite", "wires per terminal"), 0);
+	for (int i = 1; i <= 9; ++i) {
+		ui->m_max_wires_cb->addItem(QString::number(i), i);
+	}
 }
 
 /**
@@ -461,6 +471,8 @@ void TerminalEditor::activeConnections(bool active)
 										this, &TerminalEditor::useMasterLabelEdited);
 		m_editor_connections << connect(ui->m_master_label_cb, QOverload<int>::of(&QComboBox::activated),
 										this, &TerminalEditor::masterLabelIndexEdited);
+		m_editor_connections << connect(ui->m_max_wires_cb, QOverload<int>::of(&QComboBox::activated),
+										this, &TerminalEditor::maxWiresEdited);
 	} else {
 		for (auto const & con : std::as_const(m_editor_connections)) {
 			QObject::disconnect(con);
@@ -488,12 +500,34 @@ void TerminalEditor::activeChangeConnections(bool active)
 		m_change_connections << connect(m_part, &PartTerminal::labelColorChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::useMasterLabelChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::masterLabelIndexChanged, this, &TerminalEditor::updateForm);
+		m_change_connections << connect(m_part, &PartTerminal::maxWiresChanged, this, &TerminalEditor::updateForm);
 	} else {
 		for (auto &con : m_change_connections) {
 			QObject::disconnect(con);
 		}
 		m_change_connections.clear();
 	}
+}
+
+/**
+	@brief TerminalEditor::maxWiresEdited
+	The most wires the terminal accepts when the project limits the wires
+	per terminal (discussion #1158).
+*/
+void TerminalEditor::maxWiresEdited()
+{
+	if (m_locked) return;
+	m_locked = true;
+
+	const int max_wires = ui->m_max_wires_cb->currentData().toInt();
+	if (m_part->maxWires() != max_wires) {
+		auto undo = new QPropertyUndoCommand(m_part, "max_wires",
+											 m_part->maxWires(), max_wires);
+		undo->setText(tr("Modifier le nombre de conducteurs d'une borne"));
+		undoStack().push(undo);
+	}
+
+	m_locked = false;
 }
 
 void TerminalEditor::useMasterLabelEdited()

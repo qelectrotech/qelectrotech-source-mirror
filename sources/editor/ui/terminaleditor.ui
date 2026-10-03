@@ -240,6 +240,20 @@
      </layout>
     </widget>
    </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="m_max_wires_label">
+     <property name="text">
+      <string>Conducteurs max :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QComboBox" name="m_max_wires_cb">
+     <property name="toolTip">
+      <string>Nombre de conducteurs que cette borne accepte quand le projet limite les conducteurs par borne. « Sans limite » convient à un câble ou à une barre.</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
