@@ -37,6 +37,10 @@
 static int header = 5;
 //define the minimal height of the cross (without header)
 static int cross_min_height = 33;
+//margins added around the contacts by drawAsContacts() in the bounding
+//rect of a cross displayed as a list of contacts.
+static const qreal list_margin_left  = 30;
+static const qreal list_margin_right = 4;
 
 /**
 	@brief CrossRefItem::CrossRefItem
@@ -379,7 +383,14 @@ void CrossRefItem::stackAtBottom()
 		if (xref->boundingRect().isEmpty()) continue;
 
 		// Move up past every cross already placed that it would overlap.
+		// A list of contacts has an empty margin in its bounding rect:
+		// only its content is tested, so side by side lists do not
+		// count as overlapping.
+		const bool list = xref->m_properties.displayHas()
+						  == XRefProperties::Contacts;
 		QRectF rect = xref->sceneBoundingRect();
+		if (list)
+			rect.adjust(list_margin_left, 0, -list_margin_right, 0);
 		const qreal bottom = rect.bottom();
 		for (bool moved = true; moved; ) {
 			moved = false;
@@ -967,7 +978,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 						drawLinkedSlaveContacts(painter, elmt));
 	}
 
-	bounding_rect.adjust(-30, -4, 4, 4);
+	bounding_rect.adjust(-list_margin_left, -4, list_margin_right, 4);
 	prepareGeometryChange();
 	m_bounding_rect = bounding_rect;
 	m_shape_path.addRect(bounding_rect);
