@@ -741,3 +741,15 @@ add_executable(
 add_test(NAME tst_xrefpos COMMAND tst_xrefpos)
 target_include_directories(tst_xrefpos PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_xrefpos PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# Qt 6.4.2 writes the attributes of an element in an order that changes from
+# one process to the next, so a project saved twice by two runs of the binary
+# differs in bytes only (seen on projects without any numbering, too). A fixed
+# hash seed makes the order stable; it changes nothing for a newer Qt.
+if(Qt6_VERSION VERSION_LESS 6.5.0)
+  foreach(qet_test tst_resaveunchanged tst_elementautonumids)
+    if(TEST ${qet_test})
+      set_tests_properties(${qet_test} PROPERTIES ENVIRONMENT "QT_HASH_SEED=0")
+    endif()
+  endforeach()
+endif()
