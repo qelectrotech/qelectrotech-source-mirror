@@ -122,6 +122,9 @@ private slots:
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()
 	{
+#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
+		QSKIP("QDomDocument::PreserveSpacingOnlyNodes needs Qt 6.5 (see QETProject::openFile)");
+#endif
 		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/Projet_vierge.qet"));
 		QVERIFY(xml.contains("<properties>"));
 		xml.replace("<properties>",
