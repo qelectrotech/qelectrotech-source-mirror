@@ -195,6 +195,30 @@ void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 }
 
 /**
+	@brief DiagramImageItem::setImageSource
+	Set the picture's source -- original, crop rectangle and transparent
+	colours. Only stores them: the displayed pixmap is a property of its
+	own, set by the same undo command.
+*/
+void DiagramImageItem::setImageSource(const ImageSource &source)
+{
+	m_base_pixmap = source.base;
+	m_crop_rect = source.crop;
+	m_transparent_colors = source.colors;
+}
+
+QVariant DiagramImageItem::imageSourceVariant() const
+{
+	return QVariant::fromValue(imageSource());
+}
+
+void DiagramImageItem::setImageSourceVariant(const QVariant &source)
+{
+	if (source.canConvert<ImageSource>())
+		setImageSource(source.value<ImageSource>());
+}
+
+/**
 	@brief DiagramImageItem::setScaleFactorX / setScaleFactorY / setRotationAngle
 	Matching QetShapeItem's own setters for the identical fields --
 	same pattern, same reasoning: change the one field, rebuild the
@@ -1814,12 +1838,13 @@ void DiagramImageItem::replaceImage()
 	// or region was cropped for the old one, so this starts that
 	// memory fresh rather than carrying over choices that would no
 	// longer make sense.
-	m_base_pixmap = newPixmap;
-	m_crop_rect = newPixmap.rect();
-	m_transparent_colors.clear();
+	const ImageSource oldSource = imageSource();
+	const ImageSource newSource{newPixmap, newPixmap.rect(), {}};
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Remplacer une image"));
+	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
+							 QVariant::fromValue(newSource), undo);
 	// Every call here is a separate, deliberate menu action with no
 	// compound child of its own (unlike crop(), which always chains a
 	// pos/rawPivot change and is naturally immune) -- two of them in a
@@ -1854,7 +1879,9 @@ void DiagramImageItem::mirror(bool horizontal)
 	// colour values don't change when the image is mirrored, only their
 	// positions, so whatever was already keyed transparent should stay
 	// remembered and still apply correctly to the flipped version.
-	m_base_pixmap = m_base_pixmap.transformed(flip);
+	const ImageSource oldSource = imageSource();
+	ImageSource newSource = oldSource;
+	newSource.base = m_base_pixmap.transformed(flip);
 
 	// m_crop_rect, unlike the colour list, DOES need to change: it's
 	// defined in terms of positions within the base, and those
@@ -1864,14 +1891,16 @@ void DiagramImageItem::mirror(bool horizontal)
 	// whether this reads m_base_pixmap's size from before or after the
 	// assignment above).
 	if (horizontal)
-		m_crop_rect = QRect(m_base_pixmap.width() - m_crop_rect.left() - m_crop_rect.width(),
+		newSource.crop = QRect(m_base_pixmap.width() - m_crop_rect.left() - m_crop_rect.width(),
 				m_crop_rect.top(), m_crop_rect.width(), m_crop_rect.height());
 	else
-		m_crop_rect = QRect(m_crop_rect.left(), m_base_pixmap.height() - m_crop_rect.top() - m_crop_rect.height(),
+		newSource.crop = QRect(m_crop_rect.left(), m_base_pixmap.height() - m_crop_rect.top() - m_crop_rect.height(),
 				m_crop_rect.width(), m_crop_rect.height());
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"));
+	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
+							 QVariant::fromValue(newSource), undo);
 	// See replaceImage()'s identical comment: a separate, deliberate
 	// action with no compound child of its own, so a dummy one is
 	// needed to stop two consecutive same-direction mirrors (identical
@@ -1919,13 +1948,17 @@ void DiagramImageItem::setTransparentColor()
 	if (dialog.exec() != QDialog::Accepted)
 		return;
 
-	m_transparent_colors = dialog.pickedColors();
+	const ImageSource oldSource = imageSource();
+	ImageSource newSource = oldSource;
+	newSource.colors = dialog.pickedColors();
 
 	const QPixmap oldPixmap = pixmap_;
 	const QPixmap newPixmap = dialog.resultPixmap();
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Définir une couleur transparente"));
+	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
+							 QVariant::fromValue(newSource), undo);
 	// See replaceImage()'s identical comment: a separate, deliberate
 	// action with no compound child of its own, so a dummy one is
 	// needed to stop two consecutive transparency edits (identical
@@ -1994,7 +2027,21 @@ void DiagramImageItem::crop()
 	if (dialog.exec() != QDialog::Accepted)
 		return;
 
-	const QRect newCropRect = dialog.cropRect();
+	applyCrop(dialog.cropRect());
+}
+
+/**
+	@brief DiagramImageItem::applyCrop
+	Show @a newCropRect of the original (in the original's own pixels),
+	keeping the centre of the kept region where it is on the folio. One
+	undo step, which restores the pixmap, the position, the pivot and the
+	crop rectangle together.
+*/
+void DiagramImageItem::applyCrop(const QRect &cropRect)
+{
+	if (!diagram() || diagram()->isReadOnly())
+		return;
+	const QRect newCropRect = cropRect.intersected(m_base_pixmap.rect());
 	if (newCropRect.isEmpty() || newCropRect == m_crop_rect)
 		return;   // nothing actually changed
 
@@ -2009,7 +2056,9 @@ void DiagramImageItem::crop()
 
 	const QPixmap oldPixmap = pixmap_;
 	const QPixmap newPixmap = computeDisplayPixmap(m_base_pixmap, newCropRect, m_transparent_colors);
-	m_crop_rect = newCropRect;
+	const ImageSource oldSource = imageSource();
+	ImageSource newSource = oldSource;
+	newSource.crop = newCropRect;
 
 	// boundingRect() is exactly QRectF(pixmap_.rect()) (confirmed by
 	// reading the actual implementation, not assumed) -- so the new
@@ -2027,6 +2076,8 @@ void DiagramImageItem::crop()
 	undo->setText(tr("Rogner une image"));
 	new QPropertyUndoCommand(this, "pos", oldPos, newPos, undo);
 	new QPropertyUndoCommand(this, "rawPivot", oldPivot, newOriginPoint, undo);
+	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
+							 QVariant::fromValue(newSource), undo);
 	m_pivotIsCustom = false;
 	diagram()->undoStack().push(undo);
 }
