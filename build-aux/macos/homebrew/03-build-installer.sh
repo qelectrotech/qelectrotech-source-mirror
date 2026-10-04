@@ -353,7 +353,7 @@ chmod -R u+w "$BUNDLE"
 mkdir -p "$BUNDLE/Contents/Resources"
 cp -f "${current_dir}/misc/Info.plist" "$BUNDLE/Contents/Info.plist" \
     || { echo "ERROR: cannot install Info.plist"; exit 1; }
-cp -f "${current_dir}"/ico/mac_icon/*.icns "$BUNDLE/Contents/Resources/" \
+cp -f "${current_dir}"/ico/app/mac/*.icns "$BUNDLE/Contents/Resources/" \
     || { echo "ERROR: cannot install the .icns icons"; exit 1; }
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion $OSX_MIN_TARGET" "$BUNDLE/Contents/Info.plist"

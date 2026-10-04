@@ -159,13 +159,13 @@ License: Qt-trademark
 Comment: The Qt logo, traced by the QElectroTech team from
  http://brand.qt.io/downloads/
 
-Files: ico/256x256/* ico/breeze-icons/* ico/mac_icon/* ico/windows_icon/*
- ico/splash.png
+Files: ico/app/256x256/* ico/app/hicolor/* ico/app/mac/* ico/app/windows/*
+ ico/app/splash.png
 Copyright: Nuri
 License: CC-BY-ND-3.0
 Comment: Drawn for QElectroTech in the style of KDE Breeze.
 
-Files: ico/windows_icon/*.sh ico/windows_icon/*.rc
+Files: ico/app/windows/*.sh ico/app/windows/*.rc
 Copyright: 2006-2026, The QElectroTech Team
 License: GPL-2+
 

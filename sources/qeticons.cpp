@@ -500,9 +500,9 @@ void QET::Icons::initIcons()
 	} else {
 		EditUndo            = QIcon::fromTheme("edit-undo");
 	}
-	Element.addFile(":/ico/breeze-icons/16x16/mimetypes/application-x-qet-element.png");
-	Element.addFile(":/ico/breeze-icons/22x22/mimetypes/application-x-qet-element.png");
-	Element.addFile(":/ico/breeze-icons/32x32/mimetypes/application-x-qet-element.png");
+	Element.addFile(":/ico/app/hicolor/16x16/mimetypes/application-x-qet-element.png");
+	Element.addFile(":/ico/app/hicolor/22x22/mimetypes/application-x-qet-element.png");
+	Element.addFile(":/ico/app/hicolor/32x32/mimetypes/application-x-qet-element.png");
 	ElementDelete       = QIcon::fromTheme("element-delete");
 	ElementEdit         = QIcon::fromTheme("element-edit");
 	ElementNew          = QIcon::fromTheme("element-new");
@@ -572,9 +572,9 @@ void QET::Icons::initIcons()
 	Projects            = QIcon::fromTheme("project");
 	ProjectClose        = QIcon::fromTheme("project-close");
 	ProjectNew          = QIcon::fromTheme("project-new");
-	ProjectFile.addFile(":/ico/breeze-icons/16x16/mimetypes/application-x-qet-project.png");
-	ProjectFile.addFile(":/ico/breeze-icons/22x22/mimetypes/application-x-qet-project.png");
-	ProjectFile.addFile(":/ico/breeze-icons/32x32/mimetypes/application-x-qet-project.png");
+	ProjectFile.addFile(":/ico/app/hicolor/16x16/mimetypes/application-x-qet-project.png");
+	ProjectFile.addFile(":/ico/app/hicolor/22x22/mimetypes/application-x-qet-project.png");
+	ProjectFile.addFile(":/ico/app/hicolor/32x32/mimetypes/application-x-qet-project.png");
 	ProjectProperties   = QIcon::fromTheme("project-properties");
 	QETDonate           = QIcon::fromTheme("help-donate");
 	QETDownload         = QIcon::fromTheme("edit-download");
@@ -588,7 +588,7 @@ void QET::Icons::initIcons()
 		ProjectFileGP.addPixmap(Projects.pixmap(QSize(size, size), 1.0));
 	QETLogo             = QIcon::fromTheme("qet");
 	QETManual           = QIcon::fromTheme("help-contents");
-	QETLogo.addFile(":/ico/256x256/qet.png");
+	QETLogo.addFile(":/ico/app/256x256/qet.png");
 	QETVideo            = QIcon::fromTheme("kdenlive-show-video");
 	QtLogo              = QIcon::fromTheme("qt");
 	Raise               = QIcon::fromTheme("raise");
