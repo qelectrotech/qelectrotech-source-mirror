@@ -42,7 +42,7 @@ class RotateSelectionCommand : public QUndoCommand
 		bool isValid();
 
 	private:
-		void addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle);
+		void addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle, const QPointF &anchor = QPointF());
 
 		Diagram *m_diagram =nullptr;
 
