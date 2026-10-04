@@ -364,9 +364,12 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 			// before updating the position of this group
 			//because the position of this group is related
 			// to the size of the parent element Xref
+			//this is the context of both connections, so they go
+			//when the group is deleted: the project outlives it.
 			m_linked_changed_timer = connect(
 						m_parent_element,
 						&Element::linkedElementChanged,
+						this,
 						[this]()
 			{QTimer::singleShot(200,
 					    this,
@@ -376,6 +379,7 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 				m_XrefChanged_timer = connect(
 							m_parent_element->diagram()->project(),
 							&QETProject::XRefPropertiesChanged,
+							this,
 							[this]()
 				{QTimer::singleShot(200,
 						    this,
