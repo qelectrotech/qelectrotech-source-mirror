@@ -3469,6 +3469,42 @@ bool QetScriptApi::setImageRotation(int folioIndex, int imageIndex, double angle
 	return true;
 }
 
+/**
+	@brief QetScriptApi::cropImage
+	Show only the rectangle (x, y, width, height) of the image's original,
+	in the original's own pixels, as the crop tool does: one undo step,
+	the kept region staying where it is on the folio.
+*/
+bool QetScriptApi::cropImage(int folioIndex, int imageIndex, int x, int y, int width, int height)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.cropImage: project is read-only"));
+		return false;
+	}
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) {
+		log(QStringLiteral("qet.cropImage: folio %1 has %2 image(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(imageIndex));
+		return false;
+	}
+	list.at(imageIndex)->applyCrop(QRect(x, y, width, height));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::imageCrop
+	@return the image's crop rectangle in its original's pixels, as
+	"x,y,width,height", or an empty string for no such image.
+*/
+QString QetScriptApi::imageCrop(int folioIndex, int imageIndex) const
+{
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) return QString();
+	const QRect r = list.at(imageIndex)->cropRect();
+	return QStringLiteral("%1,%2,%3,%4").arg(r.x()).arg(r.y()).arg(r.width()).arg(r.height());
+}
+
 bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 {
 	if (!m_project) return false;

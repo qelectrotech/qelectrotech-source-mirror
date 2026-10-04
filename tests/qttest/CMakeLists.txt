@@ -593,6 +593,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # Undoing a crop of a picture restores its crop rectangle too, so a
+  # project saved after the undo does not record the undone crop.
+  add_executable(
+    tst_imagecropundo
+    tst_imagecropundo.cpp)
+  add_test(NAME tst_imagecropundo COMMAND tst_imagecropundo)
+  add_dependencies(tst_imagecropundo qelectrotech)
+  target_link_libraries(tst_imagecropundo PRIVATE Qt::Test Qt::Gui)
+  target_compile_definitions(tst_imagecropundo PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # The same symbol placed twice in a project whose collection does not
   # start with its "import" category (examples/lmdg.qet).
   add_executable(
