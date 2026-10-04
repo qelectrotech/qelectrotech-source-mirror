@@ -24,6 +24,7 @@
 #include <QUrl>
 
 #include <algorithm>
+#include <cmath>
 
 namespace
 {
@@ -119,7 +120,26 @@ QRectF ImageDrop::keepInside(const QRectF &picture, const QRectF &area)
 	return result;
 }
 
-QPointF ImageDrop::cascadeOffset(int index)
+QList<QRectF> ImageDrop::gridLayout(const QList<QSizeF> &sizes, const QRectF &area)
 {
-	return QPointF(cascadeStep * index, cascadeStep * index);
+	QList<QRectF> rects;
+	const int count = int(sizes.size());
+	if (count == 0)
+		return rects;
+	const int columns = int(std::ceil(std::sqrt(qreal(count))));
+	const int rows = (count + columns - 1) / columns;
+	const QSizeF cell(area.width() / columns, area.height() / rows);
+	const QSizeF room = cell * (1.0 - gridGap);
+	for (int i = 0; i < count; ++i)
+	{
+		const QSizeF size = sizes.at(i);
+		qreal scale = 1.0;
+		if (!size.isEmpty() && !room.isEmpty())
+			scale = std::min({1.0, room.width() / size.width(), room.height() / size.height()});
+		QRectF r(QPointF(), size * scale);
+		r.moveCenter(area.topLeft() + QPointF(cell.width() * (i % columns + 0.5),
+											  cell.height() * (i / columns + 0.5)));
+		rects << r;
+	}
+	return rects;
 }

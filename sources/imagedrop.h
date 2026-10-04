@@ -22,6 +22,7 @@
 #include <QPointF>
 #include <QRectF>
 #include <QSizeF>
+#include <QList>
 #include <QStringList>
 
 class QMimeData;
@@ -37,8 +38,9 @@ namespace ImageDrop
 	constexpr qint64 maxFileBytes = 10LL * 1024 * 1024;
 	/// Refuses decompression bombs before any pixel is allocated.
 	constexpr qint64 maxPixels = 64LL * 1024 * 1024;
-	/// Offset between the pictures of one drop, in scene units.
-	constexpr qreal cascadeStep = 20.0;
+	/// Space left between the pictures of one drop laid out in a grid, as
+	/// a share of a grid cell.
+	constexpr qreal gridGap = 0.05;
 	/// Free margin left between a scaled-down picture and the folio frame,
 	/// as a share of the frame on each side.
 	constexpr qreal frameMargin = 0.2;
@@ -76,8 +78,14 @@ namespace ImageDrop
 	*/
 	QRectF keepInside(const QRectF &picture, const QRectF &area);
 
-	/// Offset of the @a index-th picture of one drop from the first one.
-	QPointF cascadeOffset(int index);
+	/**
+		Lay out pictures of @a sizes, dropped together, side by side in a
+		grid filling @a area: as many columns as needed for a roughly
+		square grid, every picture shrunk -- never enlarged -- into its
+		cell, proportions kept, and centred in it.
+		@return where each picture goes, in the order of @a sizes
+	*/
+	QList<QRectF> gridLayout(const QList<QSizeF> &sizes, const QRectF &area);
 }
 
 #endif // IMAGEDROP_H

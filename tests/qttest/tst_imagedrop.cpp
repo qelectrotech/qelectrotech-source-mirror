@@ -192,11 +192,61 @@ private slots:
 		QCOMPARE(ImageDrop::keepInside(picture, QRectF(0, 0, 1000, 800)), expected);
 	}
 
-	void picturesOfOneDropCascade()
+	// Several pictures dropped together are spread side by side: a
+	// roughly square grid over the area, each shrunk into its cell.
+	void severalPicturesAreSpreadInAGrid_data()
 	{
-		QCOMPARE(ImageDrop::cascadeOffset(0), QPointF(0, 0));
-		QCOMPARE(ImageDrop::cascadeOffset(2), QPointF(2 * ImageDrop::cascadeStep,
-													  2 * ImageDrop::cascadeStep));
+		QTest::addColumn<int>("count");
+		QTest::addColumn<int>("columns");
+		QTest::addColumn<int>("rows");
+		QTest::newRow("2") << 2 << 2 << 1;
+		QTest::newRow("3") << 3 << 2 << 2;
+		QTest::newRow("4") << 4 << 2 << 2;
+		QTest::newRow("5") << 5 << 3 << 2;
+		QTest::newRow("9") << 9 << 3 << 3;
+	}
+
+	void severalPicturesAreSpreadInAGrid()
+	{
+		QFETCH(int, count);
+		QFETCH(int, columns);
+		QFETCH(int, rows);
+		const QRectF area(100, 50, 600, 480);
+		const QList<QSizeF> sizes(count, QSizeF(3024, 4032));
+		const QList<QRectF> rects = ImageDrop::gridLayout(sizes, area);
+		QCOMPARE(rects.size(), count);
+
+		const QSizeF cell(area.width() / columns, area.height() / rows);
+		for (int i = 0 ; i < count ; ++i)
+		{
+			const QRectF r = rects.at(i);
+			// inside the area, proportions kept
+			QVERIFY(area.contains(r));
+			QVERIFY(qAbs(r.width() / r.height() - 3024.0 / 4032.0) < 1e-6);
+			// centred in its own cell, row by row
+			const QPointF centre = area.topLeft() + QPointF(cell.width() * (i % columns + 0.5),
+															cell.height() * (i / columns + 0.5));
+			QVERIFY(qAbs(r.center().x() - centre.x()) < 1e-6);
+			QVERIFY(qAbs(r.center().y() - centre.y()) < 1e-6);
+			// and overlapping no other
+			for (int j = i + 1 ; j < count ; ++j)
+				QVERIFY2(!r.intersects(rects.at(j)), qPrintable(QString("%1 and %2").arg(i).arg(j)));
+		}
+	}
+
+	void smallPicturesAreNotEnlargedInTheGrid()
+	{
+		const QList<QRectF> rects = ImageDrop::gridLayout({QSizeF(40, 20), QSizeF(30, 30)},
+														  QRectF(0, 0, 600, 480));
+		QCOMPARE(rects.at(0).size(), QSizeF(40, 20));
+		QCOMPARE(rects.at(1).size(), QSizeF(30, 30));
+		QCOMPARE(rects.at(0).center(), QPointF(150, 240));
+		QCOMPARE(rects.at(1).center(), QPointF(450, 240));
+	}
+
+	void emptyDropHasNoLayout()
+	{
+		QVERIFY(ImageDrop::gridLayout({}, QRectF(0, 0, 600, 480)).isEmpty());
 	}
 };
 

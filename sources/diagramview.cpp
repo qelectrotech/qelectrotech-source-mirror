@@ -429,11 +429,12 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 
 /**
 	@brief DiagramView::handleImageFilesDrop
-	Add the picture files dropped from the file manager. The first one is
-	centred on the drop point and the others are cascaded from it. A
-	picture too large for the folio is scaled down to leave a free margin
-	of ImageDrop::frameMargin to the frame on every side, and every
-	picture is kept inside the frame. One undo step removes them all. Files that cannot be used are
+	Add the picture files dropped from the file manager. A single one is
+	centred on the drop point and kept inside the frame; a picture too
+	large for the folio is scaled down to leave a free margin of
+	ImageDrop::frameMargin to the frame on every side. Several pictures
+	are spread side by side in a grid over that same area
+	(ImageDrop::gridLayout). One undo step removes them all. Files that cannot be used are
 	listed once, after the others have been placed.
 	@param e the QDropEvent describing the current drag'n drop
 */
@@ -446,32 +447,51 @@ void DiagramView::handleImageFilesDrop(QDropEvent *e)
 	const QPointF drop_pos = mapToScene(e -> position().toPoint());
 	const QRectF frame = m_diagram -> border_and_titleblock.insideBorderRect();
 
-	auto *undo = new QUndoCommand();
 	QStringList refused;
-	int placed = 0;
+	QList<DiagramImageItem *> items;
 	for (const QString &file : files)
 	{
 		QString error;
 		const QImage image = ImageDrop::load(file, &error);
-		if (image.isNull()) {
+		if (image.isNull())
 			refused << QStringLiteral("%1 : %2").arg(QFileInfo(file).fileName(), error);
-			continue;
-		}
+		else
+			items << new DiagramImageItem(QPixmap::fromImage(image));
+	}
 
-		auto *item = new DiagramImageItem(QPixmap::fromImage(image));
-		const qreal scale = ImageDrop::fitScale(item -> boundingRect().size(), frame);
+	// Where each picture goes, as it will look on the folio: one picture
+	// is centred on the drop point and fitted to the frame, several are
+	// spread over the frame in a grid.
+	QList<QRectF> targets;
+	if (items.size() == 1)
+	{
+		const QSizeF size = items.first() -> mapRectToScene(items.first() -> boundingRect()).size();
+		const qreal scale = ImageDrop::fitScale(size, frame);
+		QRectF r(QPointF(), size * scale);
+		r.moveCenter(drop_pos);
+		targets << ImageDrop::keepInside(r, scale < 1.0 ? ImageDrop::innerFrame(frame) : frame);
+	}
+	else
+	{
+		QList<QSizeF> sizes;
+		for (DiagramImageItem *item : items)
+			sizes << item -> mapRectToScene(item -> boundingRect()).size();
+		targets = ImageDrop::gridLayout(sizes, ImageDrop::innerFrame(frame));
+	}
+
+	auto *undo = new QUndoCommand();
+	const int placed = int(items.size());
+	for (int i = 0 ; i < placed ; ++i)
+	{
+		DiagramImageItem *item = items.at(i);
+		const QRectF natural = item -> mapRectToScene(item -> boundingRect());
+		const qreal scale = natural.width() > 0 ? targets.at(i).width() / natural.width() : 1.0;
 		if (scale < 1.0) {
 			item -> setScaleFactorX(scale);
 			item -> setScaleFactorY(scale);
 		}
-		// Centre the picture, as transformed, on its drop point, then keep
-		// it inside the frame -- a scaled-down one also off the margin.
-		QRectF rect = item -> mapRectToScene(item -> boundingRect());
-		const QPointF offset = rect.topLeft() - item -> pos();
-		rect.moveCenter(drop_pos + ImageDrop::cascadeOffset(placed));
-		rect = ImageDrop::keepInside(rect, scale < 1.0 ? ImageDrop::innerFrame(frame) : frame);
-		new AddGraphicsObjectCommand(item, m_diagram, rect.topLeft() - offset, undo);
-		++placed;
+		const QPointF offset = item -> mapRectToScene(item -> boundingRect()).topLeft() - item -> pos();
+		new AddGraphicsObjectCommand(item, m_diagram, targets.at(i).topLeft() - offset, undo);
 	}
 
 	if (placed) {
