@@ -1092,6 +1092,15 @@ add_test(NAME tst_diagramcontext COMMAND tst_diagramcontext)
 target_include_directories(tst_diagramcontext PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramcontext PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# Cropping a picture on the folio: which edges a handle moves, how far,
+# and moving the crop window over the original (CropGeometry).
+add_executable(
+  tst_cropgeometry
+  tst_cropgeometry.cpp)
+add_test(NAME tst_cropgeometry COMMAND tst_cropgeometry)
+target_include_directories(tst_cropgeometry PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_cropgeometry PRIVATE Qt::Test Qt::Core)
+
 # XRefProperties: an empty or unknown cross-reference position, as older
 # versions saved it, reads as the default instead of drawing the
 # cross-reference over the element's label (issue #1238).
