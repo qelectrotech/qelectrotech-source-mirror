@@ -4,6 +4,12 @@
     <qresource prefix="/ico">
         <file>themes/qet/index.theme</file>
         <file>themes/qet-dark/index.theme</file>
+        <file alias="themes/qet/16x16/qelectrotech.png">breeze-icons/16x16/apps/qelectrotech.png</file>
+        <file alias="themes/qet/22x22/qelectrotech.png">breeze-icons/22x22/apps/qelectrotech.png</file>
+        <file alias="themes/qet/32x32/qelectrotech.png">breeze-icons/32x32/apps/qelectrotech.png</file>
+        <file alias="themes/qet/48x48/qelectrotech.png">breeze-icons/48x48/apps/qelectrotech.png</file>
+        <file alias="themes/qet/64x64/qelectrotech.png">breeze-icons/64x64/apps/qelectrotech.png</file>
+        <file alias="themes/qet/128x128/qelectrotech.png">breeze-icons/128x128/apps/qelectrotech.png</file>
         <file alias="themes/qet/scalable/align-horizontal-center.svg">qet/scalable/align-horizontal-center.svg</file>
         <file alias="themes/qet/scalable/align-horizontal-left.svg">qet/scalable/align-horizontal-left.svg</file>
         <file alias="themes/qet/scalable/align-horizontal-right.svg">qet/scalable/align-horizontal-right.svg</file>

@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>ico/256x256/qelectrotech.png</file>
         <file>ico/256x256/qet.png</file>
         <file>ico/splash.png</file>
         <file>titleblocks/default.titleblock</file>

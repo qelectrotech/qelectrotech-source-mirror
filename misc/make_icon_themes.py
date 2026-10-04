@@ -314,6 +314,10 @@ BREEZE_PAGES = {
 PAGES = {name: f"breeze/{size}/{breeze}.svg" for name, (breeze, size) in BREEZE_PAGES.items()}
 PAGES["configure-shortcuts"] = "qet/pages/configure-shortcuts.svg"
 
+# The app icon's theme name. Its PNGs, one per size, stay in
+# ico/breeze-icons/<size>/apps/, where the packaging scripts install them from.
+APP_ICON = "qelectrotech"
+
 # Where the generator puts the 22 pixel Breeze art moved onto a 24 pixel
 # canvas (see on_24_canvas).
 BREEZE_24 = GENERATED / "breeze-24"
@@ -644,6 +648,13 @@ def main():
                     target = THEMES / "qet-dark" / size / f"{name}.png"
                     changed += write_if_changed(target, dark_image)
                     dark.append(f"themes/qet-dark/{size}/{name}.png")
+
+    # The app icon: Nuri's PNGs, used as they are. Colored art, so the
+    # dark theme inherits it.
+    for size in SIZES:
+        rel = f"breeze-icons/{size}/apps/{APP_ICON}.png"
+        if (ICO / rel).exists():
+            light.append((f"themes/qet/{size}/{APP_ICON}.png", rel))
 
     svgs = [((ICO / rel).name.replace("-symbolic", ""), rel) for rel in SVGS]
     svgs += [(f"{name}.svg", rel) for name, rel in PAGES.items()]
