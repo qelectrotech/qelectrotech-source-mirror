@@ -22,17 +22,17 @@ Run from the repository root:
 
 It writes:
 
-    ico/themes/qet/index.theme           the light theme, all existing art
-    ico/themes/qet-dark/index.theme      the dark theme, inherits "qet"
-    ico/themes/qet-dark/<size>/*.png     light-ink copies of the line-art icons
-    ico/themes/qet-dark/scalable/*.svg   the same for the SVG icons
-    ico/themes/qet-dark/breeze*/         the same for the Breeze SVGs
-    ico/themes/qet-dark/traced*/         the same for the traced SVGs
-    ico/generated/scalable-22/*.svg      QET's 24 pixel canvas cut down to its 22 pixel art
-    ico/generated/breeze-24/*.svg        Breeze 22 pixel art on a 24 pixel canvas
-    ico/generated/traced-24/*.svg        traced 22 pixel art on a 24 pixel canvas
-    ico/generated/traced-large-24/*.svg  the smooth 22 pixel design on that canvas
-    ico/icon-themes.qrc                  resource file listing both themes
+    ico/themes/qet/index.theme                  the light theme, all existing art
+    ico/themes/qet-dark/index.theme             the dark theme, inherits "qet"
+    ico/themes/qet-dark/<size>/*.png            light-ink copies of the line-art icons
+    ico/themes/qet-dark/scalable/*.svg          the same for the SVG icons
+    ico/themes/qet-dark/breeze*/                the same for the Breeze SVGs
+    ico/themes/qet-dark/traced*/                the same for the traced SVGs
+    ico/themes/generated/scalable-22/*.svg      QET's 24 pixel canvas cut down to its 22 pixel art
+    ico/themes/generated/breeze-24/*.svg        Breeze 22 pixel art on a 24 pixel canvas
+    ico/themes/generated/traced-24/*.svg        traced 22 pixel art on a 24 pixel canvas
+    ico/themes/generated/traced-large-24/*.svg  the smooth 22 pixel design on that canvas
+    ico/icon-themes.qrc                         resource file listing both themes
 
 An icon listed in BREEZE comes from the KDE Breeze theme instead of its
 PNG files. misc/import_breeze_icons.py copies Breeze's 16, 22 and 32
@@ -60,7 +60,7 @@ folder has a twin with Scale=2 (16x16@2 and so on) that aliases the art
 for twice the pixels, by the same rule.
 
 Where Breeze has no 16 pixel drawing, QET adds one in
-ico/breeze-added/16/, on Breeze's grid and in its colors, so every icon
+ico/breeze/added/16/, on Breeze's grid and in its colors, so every icon
 has art drawn for 16 pixels. Without one, the 32 pixel art is halved,
 which blurs. A drawing there also replaces a Breeze 16 pixel drawing in
 another style than the 22 pixel art (transform-crop).
@@ -73,19 +73,19 @@ Qt takes a Fixed folder only at its exact size and the scalable file for
 every other size, so a size not listed, such as the 50 pixels of the
 elements panel, is still scaled.
 
-An SVG of ico/scalable/ is 22 pixel art on a 24 pixel canvas: sharp in
+An SVG of ico/qet/scalable/ is 22 pixel art on a 24 pixel canvas: sharp in
 the toolbar and blurred at 16 pixels, in a menu. One with a 16 pixel
-drawing of the same name in ico/scalable/16/ (the Align icons) is
+drawing of the same name in ico/qet/scalable/16/ (the Align icons) is
 served as a Breeze icon is: the 16 pixel drawing, the 22 pixel art cut
 out of the canvas, and the file itself at 24 and 48 pixels.
 
-An icon with files in ico/traced/ is QET's own PNG art redrawn as SVG.
-ico/traced/16 and ico/traced/22 hold the PNG copied pixel by pixel, so
-the icon looks as it did at those sizes. ico/traced/large16 and
-ico/traced/large22 hold the same two designs as smooth vectors, for the
-larger sizes and for 2x screens. A smooth vector still has its straight
-edges on the grid it was drawn on, so it follows the same rule as the
-Breeze art:
+An icon with files in ico/qet/traced/ is QET's own PNG art redrawn as SVG.
+ico/qet/traced/16 and ico/qet/traced/22 hold the PNG copied pixel by
+pixel, so the icon looks as it did at those sizes. ico/qet/traced/large16
+and ico/qet/traced/large22 hold the same two designs as smooth vectors,
+for the larger sizes and for 2x screens. A smooth vector still has its
+straight edges on the grid it was drawn on, so it follows the same rule
+as the Breeze art:
 
     16x16     the 16 pixel copy
     22x22     the 22 pixel copy
@@ -151,6 +151,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ICO = ROOT / "ico"
 THEMES = ICO / "themes"
 QRC = ICO / "icon-themes.qrc"
+GENERATED = THEMES / "generated"
 
 # Fixed-size folders that hold toolbar, menu and dialog icons. The 24x16
 # flags, the 22x22/color swatches and the application icons are not theme
@@ -168,26 +169,26 @@ CANVAS_SIZE = "24x24"
 # and conductor icons that used to be listed here are SVGs now.
 ALIASES = {}
 
-# SVG icons referenced from sources/qeticons.cpp. ico/scalable/ holds the
+# SVG icons referenced from sources/qeticons.cpp. ico/qet/scalable/ holds the
 # ones drawn for QET as vectors; one file serves every size.
 SVGS = [
-    "scalable/align-horizontal-center.svg",
-    "scalable/align-horizontal-left.svg",
-    "scalable/align-horizontal-right.svg",
-    "scalable/align-vertical-bottom.svg",
-    "scalable/align-vertical-center.svg",
-    "scalable/align-vertical-top.svg",
-    "scalable/diagram.svg",
-    "scalable/draw-fillet.svg",
-    "scalable/folio-delete.svg",
-    "scalable/folio-new.svg",
-    "scalable/folio-properties.svg",
-    "scalable/label.svg",
-    "scalable/pdf-import.svg",
-    "scalable/snap-to-grid.svg",
-    "scalable/ellipse-to-bezier.svg",
-    "scalable/rect-to-bezier.svg",
-    "scalable/rect-to-polyline.svg",
+    "qet/scalable/align-horizontal-center.svg",
+    "qet/scalable/align-horizontal-left.svg",
+    "qet/scalable/align-horizontal-right.svg",
+    "qet/scalable/align-vertical-bottom.svg",
+    "qet/scalable/align-vertical-center.svg",
+    "qet/scalable/align-vertical-top.svg",
+    "qet/scalable/diagram.svg",
+    "qet/scalable/draw-fillet.svg",
+    "qet/scalable/folio-delete.svg",
+    "qet/scalable/folio-new.svg",
+    "qet/scalable/folio-properties.svg",
+    "qet/scalable/label.svg",
+    "qet/scalable/pdf-import.svg",
+    "qet/scalable/snap-to-grid.svg",
+    "qet/scalable/ellipse-to-bezier.svg",
+    "qet/scalable/rect-to-bezier.svg",
+    "qet/scalable/rect-to-polyline.svg",
 ]
 
 # Icons served by Breeze SVGs in ico/breeze/, QET name to Breeze name.
@@ -314,23 +315,23 @@ BREEZE_PAGES = {
 
 # Page icons, QET name to SVG, relative to ico/.
 PAGES = {name: f"breeze/{size}/{breeze}.svg" for name, (breeze, size) in BREEZE_PAGES.items()}
-PAGES["configure-shortcuts"] = "128x128/configure-shortcuts.svg"
+PAGES["configure-shortcuts"] = "qet/pages/configure-shortcuts.svg"
 
 # Where the generator puts the 22 pixel Breeze art moved onto a 24 pixel
 # canvas (see on_24_canvas).
-BREEZE_24 = ICO / "generated" / "breeze-24"
+BREEZE_24 = GENERATED / "breeze-24"
 
-# Icons traced from QET's PNG art: every name with a file in ico/traced/16.
-TRACED = sorted(svg.stem for svg in (ICO / "traced" / "16").glob("*.svg"))
+# Icons traced from QET's PNG art: every name with a file in ico/qet/traced/16.
+TRACED = sorted(svg.stem for svg in (ICO / "qet" / "traced" / "16").glob("*.svg"))
 
-# Where the generator puts the 22 pixel art cut out of the ico/scalable/
+# Where the generator puts the 22 pixel art cut out of the ico/qet/scalable/
 # files that have a 16 pixel drawing (see grid_entries).
-SCALABLE_22 = ICO / "generated" / "scalable-22"
+SCALABLE_22 = GENERATED / "scalable-22"
 
 # Where the generator puts the 22 pixel traced art on a 24 pixel canvas:
 # the pixel copy and the smooth vector.
-TRACED_24 = ICO / "generated" / "traced-24"
-TRACED_LARGE_24 = ICO / "generated" / "traced-large-24"
+TRACED_24 = GENERATED / "traced-24"
+TRACED_LARGE_24 = GENERATED / "traced-large-24"
 
 SATURATED_FRACTION = 0.20   # at or above this an icon is "colored"
 WHITE_LIGHTNESS = 0.85      # a visible pixel this light counts as white
@@ -484,7 +485,7 @@ def breeze_entries(breeze_name):
     # in another style at 16 (transform-crop: a crop mark, a dashed box
     # at 22). Breeze's 32 pixel art then goes too, so 32 and up keep the
     # 22 pixel look.
-    added = ICO / "breeze-added" / "16" / f"{breeze_name}.svg"
+    added = ICO / "breeze" / "added" / "16" / f"{breeze_name}.svg"
     if added.exists():
         if 16 in art:
             art.pop(32, None)
@@ -515,12 +516,12 @@ def without_canvas(text, path):
 
 
 def grid_entries(name):
-    """(theme folder, source path relative to ico/) for an ico/scalable/
+    """(theme folder, source path relative to ico/) for an ico/qet/scalable/
     icon with a 16 pixel drawing. The scalable folder is not listed; it
     holds the file already."""
-    small = f"scalable/16/{name}.svg"
+    small = f"qet/scalable/16/{name}.svg"
     art = str((SCALABLE_22 / f"{name}.svg").relative_to(ICO))
-    canvas = f"scalable/{name}.svg"
+    canvas = f"qet/scalable/{name}.svg"
     return [("16x16", small), ("22x22", art), ("32x32", small), ("48x48", canvas),
             ("64x64", small), ("128x128", small),
             ("16x16@2", small), ("22x22@2", art), ("32x32@2", small),
@@ -530,9 +531,9 @@ def grid_entries(name):
 def traced_entries(name):
     """(theme folder, source path relative to ico/) for one traced icon,
     following the table in the module docstring."""
-    pixels = {16: f"traced/16/{name}.svg", 22: f"traced/22/{name}.svg",
+    pixels = {16: f"qet/traced/16/{name}.svg", 22: f"qet/traced/22/{name}.svg",
               24: str((TRACED_24 / f"{name}.svg").relative_to(ICO))}
-    small, large = f"traced/large16/{name}.svg", f"traced/large22/{name}.svg"
+    small, large = f"qet/traced/large16/{name}.svg", f"qet/traced/large22/{name}.svg"
     canvas = TRACED_LARGE_24 / f"{name}.svg"
     # An icon with a 32 pixel design has no canvas copy (see main).
     canvas = str(canvas.relative_to(ICO)) if canvas.exists() else large
@@ -550,9 +551,9 @@ def traced_entries(name):
 def dark_path(source):
     """Where the dark copy of a Breeze or traced SVG goes: one copy per
     source file, however many theme entries alias it."""
-    if source.startswith("scalable/16/"):
+    if source.startswith("qet/scalable/16/"):
         return "themes/qet-dark/scalable-16/" + Path(source).name
-    return "themes/qet-dark/" + source.removeprefix("generated/")
+    return "themes/qet-dark/" + source.removeprefix("themes/generated/").removeprefix("qet/")
 
 
 def write_canvases(folder, sources, convert=on_24_canvas):
@@ -618,7 +619,7 @@ def main():
     changed = 0
     line_art = colored = light_art = 0
 
-    grid = sorted(svg.stem for svg in (ICO / "scalable" / "16").glob("*.svg"))
+    grid = sorted(svg.stem for svg in (ICO / "qet" / "scalable" / "16").glob("*.svg"))
     for size in SIZES:
         folder = ICO / size
         for png in sorted(folder.glob("*.png")):
@@ -666,13 +667,13 @@ def main():
         sys.exit("both a Breeze and a traced icon: " + ", ".join(overlap))
     changed += write_canvases(BREEZE_24, {name: ICO / "breeze" / "22" / f"{name}.svg"
                                           for name in set(BREEZE.values())})
-    changed += write_canvases(TRACED_24, {name: ICO / "traced" / "22" / f"{name}.svg"
+    changed += write_canvases(TRACED_24, {name: ICO / "qet" / "traced" / "22" / f"{name}.svg"
                                           for name in TRACED})
-    smooth = {name: ICO / "traced" / "large22" / f"{name}.svg" for name in TRACED}
+    smooth = {name: ICO / "qet" / "traced" / "large22" / f"{name}.svg" for name in TRACED}
     changed += write_canvases(TRACED_LARGE_24, {
         name: path for name, path in smooth.items()
         if 'viewBox="0 0 22 22"' in path.read_text(encoding="utf-8")})
-    changed += write_canvases(SCALABLE_22, {name: ICO / "scalable" / f"{name}.svg" for name in grid},
+    changed += write_canvases(SCALABLE_22, {name: ICO / "qet" / "scalable" / f"{name}.svg" for name in grid},
                               without_canvas)
     entries = [(qet_name, breeze_entries(breeze_name)) for qet_name, breeze_name in BREEZE.items()]
     entries += [(name, grid_entries(name)) for name in grid]
