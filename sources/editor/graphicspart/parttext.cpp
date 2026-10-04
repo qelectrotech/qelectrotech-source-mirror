@@ -57,7 +57,17 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	connect(document(),
 		&QTextDocument::contentsChanged,
 		this,
-		[this]() { adjustItemPosition(); });
+		[this]() {
+			adjustItemPosition();
+			// During inline edition, keep the aligned point in place after
+			// every keystroke instead of only when the edition ends (#1252).
+			// setPlainText() and setFont() re-anchor on their own.
+			if (!previous_text.isNull()) {
+				applyLineAlignment();
+				finishAlignment();
+				prepareAlignment();
+			}
+		});
 }
 
 /// Destructeur
@@ -552,8 +562,8 @@ void PartText::endEdition()
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
 			undo -> setText(tr("Modifier un champ texte"));
 			undoStack().push(undo);
-			previous_text = QString();
 		}
+		previous_text = QString();
 	}
 
 	// deselectionne le texte
