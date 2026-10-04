@@ -630,32 +630,32 @@
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="86"/>
         <source>Le nom de la numérotation ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>The numbering name cannot be empty.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="90"/>
         <source>Une numérotation nommée « %1 » existe déjà.</source>
-        <translation type="unfinished"></translation>
+        <translation>A numbering named “%1” already exists.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="135"/>
         <source>Créer la numérotation %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Create numbering %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="185"/>
         <source>Renommer la numérotation %1 en %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename numbering %1 to %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="188"/>
         <source>Modifier la numérotation %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify numbering %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/autonumschemecommand.cpp" line="211"/>
         <source>Supprimer la numérotation %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete numbering %1</translation>
     </message>
 </context>
 <context>
@@ -737,73 +737,73 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="66"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="386"/>
         <source>Appliquer cette numérotation aux éléments sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply this numbering to the selected elements</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="96"/>
         <source>Appliquer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply numbering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="102"/>
         <source>Choisissez une numérotation d&apos;éléments du projet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose an element numbering from the project.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="115"/>
         <source>Sélectionnez d&apos;abord des éléments dans le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>First select elements in the sheet.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="122"/>
         <source>(figé)</source>
-        <translation type="unfinished"></translation>
+        <translation>(frozen)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="125"/>
         <source>(autre numérotation)</source>
-        <translation type="unfinished"></translation>
+        <translation>(other numbering)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="133"/>
         <source>Rien à appliquer : les éléments sélectionnés suivent déjà la numérotation « %1 », ou prennent leur nom d&apos;un autre élément.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nothing to apply: the selected elements already follow the “%1” numbering, or take their name from another element.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="139"/>
         <source>%n élément(s) vont recevoir la numérotation « %1 », dans l&apos;ordre des folios et des positions.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element will receive the “%1” numbering, in sheet and position order.</numerusform>
+            <numerusform>%n elements will receive the “%1” numbering, in sheet and position order.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="141"/>
         <source>Aucun élément ne peut recevoir la numérotation « %1 » sans remplacer ce qu&apos;il a.</source>
-        <translation type="unfinished"></translation>
+        <translation>No element can receive the “%1” numbering without replacing what it already has.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="148"/>
         <source>Remplacer aussi les %n élément(s) laissés comme ils sont</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Also replace the %n element left as is</numerusform>
+            <numerusform>Also replace the %n elements left as they are</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="169"/>
         <source>%n élément(s) numérotés.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element numbered.</numerusform>
+            <numerusform>%n elements numbered.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="171"/>
         <source>%n élément(s) sélectionnés sont restés comme ils sont.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n selected element was left as is.</numerusform>
+            <numerusform>%n selected elements were left as they are.</numerusform>
         </translation>
     </message>
     <message>
@@ -814,7 +814,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="387"/>
         <source>Sélectionnez d&apos;abord des éléments dans le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>First select elements in the sheet</translation>
     </message>
 </context>
 <context>
@@ -937,48 +937,48 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="148"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="163"/>
         <source>Renuméroter les éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Renumber elements</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="133"/>
         <source>Renuméroter les éléments (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Renumber elements (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="139"/>
         <source>Aucun élément ne suit cette numérotation.</source>
-        <translation type="unfinished"></translation>
+        <translation>No element follows this numbering.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="140"/>
         <source>Les %n élément(s) qui suivent cette numérotation ont un nom figé : rien n&apos;est renuméroté.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>The %n element following this numbering has a frozen name: nothing is renumbered.</numerusform>
+            <numerusform>The %n elements following this numbering have a frozen name: nothing is renumbered.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="149"/>
         <source>%n élément(s) vont être renumérotés, à partir du premier numéro, dans l&apos;ordre des folios et des positions.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element will be renumbered, starting from the first number, in sheet and position order.</numerusform>
+            <numerusform>%n elements will be renumbered, starting from the first number, in sheet and position order.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="157"/>
         <source>%n élément(s) renumérotés, dont %1 avec un nouveau nom.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element renumbered, %1 of them with a new name.</numerusform>
+            <numerusform>%n elements renumbered, %1 of them with a new name.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="160"/>
         <source>%n élément(s) au nom figé n&apos;ont pas été touchés, et leur numéro n&apos;a pas été redonné.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element with a frozen name was not touched, and its number was not given out again.</numerusform>
+            <numerusform>%n elements with a frozen name were not touched, and their numbers were not given out again.</numerusform>
         </translation>
     </message>
     <message>
@@ -1785,14 +1785,14 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
     <message>
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="41"/>
         <source>Compteur de la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Numbering counter</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/counterwarning.cpp" line="42"/>
         <source>Le prochain numéro serait %1, mais %n élément(s) de la numérotation « %2 » ont déjà un numéro égal ou supérieur (jusqu&apos;à %3).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>The next number would be %1, but %n element of the “%2” numbering already has an equal or higher number (up to %3).</numerusform>
+            <numerusform>The next number would be %1, but %n elements of the “%2” numbering already have an equal or higher number (up to %3).</numerusform>
         </translation>
     </message>
     <message>
@@ -1801,7 +1801,10 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
 Les nouveaux éléments sauteront les numéros déjà pris : ils ne recevront pas forcément les numéros à partir de %1.
 
 Continuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+New elements will skip numbers that are already taken: they will not necessarily receive numbers starting from %1.
+
+Continue?</translation>
     </message>
 </context>
 <context>
@@ -3052,72 +3055,72 @@ Hold Shift and drag to move this text on its own</translation>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="58"/>
         <source>Le nom de la numérotation ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>The numbering name cannot be empty.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="65"/>
         <source>Une numérotation nommée « %1 » existe déjà.</source>
-        <translation type="unfinished"></translation>
+        <translation>A numbering named “%1” already exists.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="618"/>
         <source>Cet élément n&apos;est dans aucun folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>This element is not in any sheet.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="624"/>
         <source>Cet élément ne suit aucune numérotation.</source>
-        <translation type="unfinished"></translation>
+        <translation>This element does not follow any numbering.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="629"/>
         <source>La numérotation « %1 » n&apos;a pas un seul numéro : on ne peut pas en choisir un à la main.</source>
-        <translation type="unfinished"></translation>
+        <translation>The “%1” numbering does not have a single number: one cannot be chosen by hand.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="632"/>
         <source>Le numéro doit être au moins 1.</source>
-        <translation type="unfinished"></translation>
+        <translation>The number must be at least 1.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="635"/>
         <source>Le numéro %1 n&apos;est pas libre.</source>
-        <translation type="unfinished"></translation>
+        <translation>Number %1 is not free.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="665"/>
         <source>Attribuer le numéro %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Assign number %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="829"/>
         <source>Appliquer la numérotation %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply numbering %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1078"/>
         <source>Numéroter les éléments collés (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Number pasted elements (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1114"/>
         <source>Créer la numérotation d&apos;éléments %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Create element numbering %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1216"/>
         <source>Renommer la numérotation d&apos;éléments %1 en %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename element numbering %1 to %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1219"/>
         <source>Modifier la numérotation d&apos;éléments %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify element numbering %1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/elementautonumschemecommand.cpp" line="1251"/>
         <source>Supprimer la numérotation d&apos;éléments %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete element numbering %1</translation>
     </message>
 </context>
 <context>
@@ -3367,78 +3370,78 @@ Create it?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="782"/>
         <source>Numérotation automatique</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatic numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="789"/>
         <source>…</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="790"/>
         <source>Ouvrir les numérotations d&apos;éléments du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Open the project&apos;s element numberings</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="818"/>
         <source>Figer le nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Freeze name</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="819"/>
         <source>Un nom figé n&apos;est pas changé par la numérotation automatique, et son numéro n&apos;est pas donné à un autre élément.</source>
-        <translation type="unfinished"></translation>
+        <translation>A frozen name is not changed by automatic numbering, and its number is not given to another element.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="855"/>
         <source>Numéro</source>
-        <translation type="unfinished"></translation>
+        <translation>Number</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="859"/>
         <location filename="../sources/ui/elementinfowidget.cpp" line="923"/>
         <source>Seuls les numéros libres sont proposés : un élément qui doit garder son numéro réel peut le retrouver si personne ne l&apos;a.</source>
-        <translation type="unfinished"></translation>
+        <translation>Only free numbers are offered: an element that must keep its real number can get it back if nobody else has it.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="893"/>
         <source>%1  (actuel)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  (current)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="895"/>
         <source>— (numéro inconnu)</source>
-        <translation type="unfinished"></translation>
+        <translation>— (unknown number)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="899"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="921"/>
         <source>Le nom est figé : dégelez-le pour changer son numéro.</source>
-        <translation type="unfinished"></translation>
+        <translation>The name is frozen: unfreeze it to change its number.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="922"/>
         <source>Le numéro se choisit quand l&apos;élément garde sa numérotation.</source>
-        <translation type="unfinished"></translation>
+        <translation>The number can be chosen when the element keeps its numbering.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="987"/>
         <source>Aucune (nom saisi à la main)</source>
-        <translation type="unfinished"></translation>
+        <translation>None (name entered by hand)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1006"/>
         <source>Formule propre : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Custom formula: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1046"/>
         <source>Nom figé</source>
-        <translation type="unfinished"></translation>
+        <translation>Frozen name</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1047"/>
@@ -3446,7 +3449,10 @@ Create it?</translation>
 Changer sa numérotation le remplacera ou l&apos;effacera.
 
 Continuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>This element&apos;s name is frozen.
+Changing its numbering will replace or erase it.
+
+Continue?</translation>
     </message>
 </context>
 <context>
@@ -5708,12 +5714,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Numéroter automatiquement les éléments collés ou dupliqués qui suivent une numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatically number pasted or duplicated elements that follow a numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
         <source>Un élément collé reçoit le numéro suivant de sa numérotation au lieu du nom de l&apos;élément copié, et la numérotation avance.</source>
-        <translation type="unfinished"></translation>
+        <translation>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="350"/>
@@ -7647,7 +7653,7 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="164"/>
         <source>Numéroter les éléments collés</source>
-        <translation type="unfinished"></translation>
+        <translation>Number pasted elements</translation>
     </message>
 </context>
 <context>
@@ -8106,16 +8112,20 @@ Do you still want to link this slave contact?</translation>
     <message>
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="65"/>
         <source>Numérotation absente de ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Numbering missing from this project</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/pastenumberingimport.cpp" line="66"/>
         <source>Les éléments collés suivent %n numérotation(s) qui n&apos;existe(nt) pas dans ce projet : %1.
 
 Les importer ? Les éléments recevront alors les prochains numéros, à partir de 1. Sinon ils seront collés sans numérotation.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>The pasted elements follow %n numbering that does not exist in this project: %1.
+
+Import it? The elements will then receive the next numbers, starting from 1. Otherwise they will be pasted without numbering.</numerusform>
+            <numerusform>The pasted elements follow %n numberings that do not exist in this project: %1.
+
+Import them? The elements will then receive the next numbers, starting from 1. Otherwise they will be pasted without numbering.</numerusform>
         </translation>
     </message>
 </context>
@@ -8545,38 +8555,38 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
         <source>N°</source>
-        <translation type="unfinished"></translation>
+        <translation>No.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
         <source>Nom</source>
-        <translation type="unfinished">Name</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
         <source>Folio</source>
-        <translation type="unfinished">Sheet</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="518"/>
         <source>Figé</source>
-        <translation type="unfinished"></translation>
+        <translation>Frozen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="525"/>
         <source>Attribuer un numéro libre…</source>
-        <translation type="unfinished"></translation>
+        <translation>Assign a free number…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="526"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="790"/>
         <source>Donner à l&apos;élément sélectionné un numéro que personne n&apos;a : il garde sa numérotation, seul son numéro change.</source>
-        <translation type="unfinished"></translation>
+        <translation>Give the selected element a number nobody has: it keeps its numbering, only its number changes.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="534"/>
@@ -8608,87 +8618,87 @@ Its copy was kept as:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="737"/>
         <source>figé</source>
-        <translation type="unfinished"></translation>
+        <translation>frozen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="745"/>
         <source>— libre —</source>
-        <translation type="unfinished"></translation>
+        <translation>— free —</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="746"/>
         <source>aucun élément n&apos;a ce numéro (supprimé ou renuméroté)</source>
-        <translation type="unfinished"></translation>
+        <translation>no element has this number (deleted or renumbered)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="763"/>
         <source>Aucun élément ne suit cette numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>No element follows this numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="764"/>
         <source>%n élément(s) suivent cette numérotation, dont %1 au nom figé</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element follows this numbering, %1 with a frozen name</numerusform>
+            <numerusform>%n elements follow this numbering, %1 with a frozen name</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="766"/>
         <source> ; %n numéro(s) sans élément</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>; %n number without an element</numerusform>
+            <numerusform>; %n numbers without an element</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="788"/>
         <source>Cette numérotation a plusieurs numéros (ou un numéro par folio) : on ne peut pas en choisir un à la main.</source>
-        <translation type="unfinished"></translation>
+        <translation>This numbering has several numbers (or one number per sheet): one cannot be chosen by hand.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="805"/>
         <source>Attribuer un numéro libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Assign a free number</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="811"/>
         <source>Le nom de cet élément est figé : dégelez-le d&apos;abord.</source>
-        <translation type="unfinished"></translation>
+        <translation>This element&apos;s name is frozen: unfreeze it first.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="816"/>
         <source>Aucun numéro n&apos;est libre.</source>
-        <translation type="unfinished"></translation>
+        <translation>No number is free.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="821"/>
         <source>%1  →  %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  →  %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="827"/>
         <source>Numéro libre pour l&apos;élément « %1 » (%2) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Free number for element “%1” (%2):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="878"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1513"/>
         <source>Nom de la numérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Numbering name:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="907"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="997"/>
         <source>Modifier la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="908"/>
         <source>%n élément(s) suivent cette numérotation et vont changer de formule et de nom.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element follows this numbering and will change formula and name.</numerusform>
+            <numerusform>%n elements follow this numbering and will change formula and name.</numerusform>
         </translation>
     </message>
     <message>
@@ -8697,87 +8707,93 @@ Its copy was kept as:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1535"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1586"/>
         <source>Nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>New numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="954"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1557"/>
         <source>Renommer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="998"/>
         <source>La numérotation « %1 » ne peut pas être modifiée : %n élément(s) au nom figé la suivent.
 Dégelez-les d&apos;abord (voir la liste), ou renommez seulement la numérotation.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>The “%1” numbering cannot be modified: %n element with a frozen name follows it.
+Unfreeze it first (see the list), or just rename the numbering.</numerusform>
+            <numerusform>The “%1” numbering cannot be modified: %n elements with a frozen name follow it.
+Unfreeze them first (see the list), or just rename the numbering.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1252"/>
         <source>%n numérotation(s) suivie(s) par des éléments au nom figé n&apos;ont pas été remplacées.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n numbering followed by elements with a frozen name was not replaced.</numerusform>
+            <numerusform>%n numberings followed by elements with a frozen name were not replaced.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1256"/>
         <source>%n élément(s) ont changé de formule.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element changed formula.</numerusform>
+            <numerusform>%n elements changed formula.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1273"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1615"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Delete numbering</translation>
+        <translation>Delete numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1274"/>
         <source>%n élément(s) suivent la numérotation « %1 », elle ne peut pas être supprimée.
 Donnez-leur une autre numérotation ou un nom fixe d&apos;abord.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element follows the “%1” numbering, so it cannot be deleted.
+Give it another numbering or a fixed name first.</numerusform>
+            <numerusform>%n elements follow the “%1” numbering, so it cannot be deleted.
+Give them another numbering or a fixed name first.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1498"/>
         <source>Aucun folio ne nomme cette numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>No sheet names this numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1499"/>
         <source>%n folio(s) nomment cette numérotation</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n sheet names this numbering</numerusform>
+            <numerusform>%n sheets name this numbering</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1502"/>
         <source>Aucun folio ne suit cette numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>No sheet follows this numbering</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1503"/>
         <source>%n folio(s) suivent cette numérotation</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n sheet follows this numbering</numerusform>
+            <numerusform>%n sheets follow this numbering</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1616"/>
         <source>%n folio(s) suivent la numérotation « %1 », elle ne peut pas être supprimée.
 Donnez-leur une autre numérotation d&apos;abord.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n sheet follows the “%1” numbering, so it cannot be deleted.
+Give it another numbering first.</numerusform>
+            <numerusform>%n sheets follow the “%1” numbering, so it cannot be deleted.
+Give them another numbering first.</numerusform>
         </translation>
     </message>
     <message>
@@ -8845,7 +8861,7 @@ Donnez-leur une autre numérotation d&apos;abord.</source>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1165"/>
         <source>Importer des numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Import numberings</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="1246"/>
@@ -14976,7 +14992,7 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="3904"/>
         <source>Renuméroter les éléments (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Renumber elements (%1)</translation>
     </message>
     <message>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="4816"/>
@@ -15037,17 +15053,17 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="26"/>
         <source>Figer le nom de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Freeze element name</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/freezeelementlabelcommand.cpp" line="27"/>
         <source>Dégeler le nom de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Unfreeze element name</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="475"/>
         <source>Folio</source>
-        <translation type="unfinished">Sheet</translation>
+        <translation>Sheet</translation>
     </message>
 </context>
 <context>
@@ -15620,43 +15636,43 @@ nothing has been changed.</translation>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="90"/>
         <source>%n élément(s) gardent le nom qu&apos;ils ont.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element keeps the name it has.</numerusform>
+            <numerusform>%n elements keep the name they have.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="93"/>
         <source>%n élément(s) restent comme ils sont.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element stays as it is.</numerusform>
+            <numerusform>%n elements stay as they are.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Folio</source>
-        <translation type="unfinished">Sheet</translation>
+        <translation>Sheet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Nom actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Current name</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="101"/>
         <source>Nouveau nom</source>
-        <translation type="unfinished"></translation>
+        <translation>New name</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/renumberpreviewdialog.cpp" line="184"/>
         <source>(figé)</source>
-        <translation type="unfinished"></translation>
+        <translation>(frozen)</translation>
     </message>
 </context>
 <context>
@@ -16548,7 +16564,7 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="205"/>
         <source>Pour un numéro : le prochain numéro attribué. Pour un texte : le texte fixe.</source>
-        <translation type="unfinished"></translation>
+        <translation>For a number: the next number to be assigned. For text: the fixed text.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="208"/>
@@ -16563,27 +16579,27 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="60"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="62"/>
         <source>Revenir à la définition enregistrée</source>
-        <translation type="unfinished"></translation>
+        <translation>Revert to the saved definition</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="169"/>
         <source>Monter cette variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Move this variable up</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="170"/>
         <source>Descendre cette variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Move this variable down</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="171"/>
         <source>Supprimer cette variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete this variable</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="319"/>
@@ -16704,12 +16720,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="470"/>
         <source>Nouvelle numérotation…</source>
-        <translation type="unfinished"></translation>
+        <translation>New numbering…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="474"/>
         <source>Renommer la numérotation…</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename numbering…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="341"/>
