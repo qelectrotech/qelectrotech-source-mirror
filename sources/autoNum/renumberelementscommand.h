@@ -51,10 +51,16 @@ public:
             QVector<ElementChange> changes,
             QHash<QString, NumerotationContext> old_ctx,
             QHash<QString, NumerotationContext> new_ctx,
-            const QString &text);
+            const QString &text,
+            QUndoCommand *parent = nullptr);
+
+    const QVector<ElementChange> &changes() const { return changes_; }
 
     void undo() override;
     void redo() override;
+
+    /// Apply one change's old (@p use_new false) or new state.
+    static void applyChange(const ElementChange &change, bool use_new);
 
 private:
     void apply(bool use_new);

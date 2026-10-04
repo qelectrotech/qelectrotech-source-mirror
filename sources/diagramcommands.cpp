@@ -17,8 +17,10 @@
 */
 #include "diagramcommands.h"
 
+#include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "itemgroups.h"
+#include "qetproject.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -28,6 +30,19 @@
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetinformation.h"
 #include "qgimanager.h"
+
+namespace {
+/// Is @p element among those the numberings in @p schemes are given to?
+bool pasted_schemes_has(const QMap<QString, QVector<Element *>> &schemes, const Element *element)
+{
+	for (auto it = schemes.constBegin() ; it != schemes.constEnd() ; ++it) {
+		if (it.value().contains(const_cast<Element *>(element))) {
+			return true;
+		}
+	}
+	return false;
+}
+} // namespace
 
 /**
 	@brief PasteDiagramCommand::PasteDiagramCommand
@@ -64,6 +79,10 @@ void PasteDiagramCommand::undo()
 {
 	diagram -> showMe();
 
+		//The numbering of the pasted elements, if any: gives the numbers
+		//back to the numberings they came from
+	QUndoCommand::undo();
+
 	foreach(QGraphicsItem *item, content.items(filter))
 		diagram->removeItem(item);
 }
@@ -96,6 +115,18 @@ void PasteDiagramCommand::redo()
 		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list) {
 			e->initLink(elmts_list);
+		}
+
+		//The numberings the pasted elements follow, known now: the label
+		//erasing below empties their formula. Pasted elements get the next
+		//number of their numbering, as placed ones do, instead of the
+		//label of the element they were copied from.
+		const bool autonumber = m_autonumber && settings.value(
+					"diagramcommands/autonumber-pasted-elements", true).toBool();
+		QETProject *project = diagram->project();
+		QMap<QString, QVector<Element *>> pasted_schemes;
+		if (project && autonumber) {
+			pasted_schemes = ElementAutoNumSchemeCommand::pastedSchemes(project, elmts_list);
 		}
 
 		//make new uuid for every pasted conductor, because old uuid are
@@ -221,6 +252,44 @@ void PasteDiagramCommand::redo()
 			}
 		}
 
+			//What the pasted elements keep of their numbering names a
+			//numbering of this project, or none (a paste from another
+			//project, or from a file written before the ids)
+		if (project) {
+			ElementAutoNumSchemeCommand::linkPasted(project, elmts_list);
+			if (autonumber)
+			{
+					//A formula which names no numbering of this project is
+					//not kept: it would stand for a numbering which does
+					//not exist here, with a label which is not its result.
+					//The label is what the erase preference made of it.
+				for (Element *e : elmts_list)
+				{
+					const DiagramContext &info = e->elementInformations();
+					if (e->linkType() == Element::Slave || (e->linkType() & Element::AllReport)
+							|| info.value(QETInformation::ELMT_FORMULA).toString().isEmpty()
+							|| !ElementAutoNumSchemeCommand::followedScheme(project, info).isEmpty()
+							|| pasted_schemes_has(pasted_schemes, e)) {
+						continue;
+					}
+					DiagramContext dc = info;
+					dc.addValue(QETInformation::ELMT_FORMULA, QString());
+					for (DynamicElementTextItem *deti : e->dynamicTextItems())
+						deti->m_block_alignment = true;
+					for (auto *group : e->textGroups())
+						group->blockAlignmentUpdate(true);
+					e->setElementInformations(dc);
+					for (DynamicElementTextItem *deti : e->dynamicTextItems())
+						deti->m_block_alignment = false;
+					for (auto *group : e->textGroups())
+						group->blockAlignmentUpdate(false);
+				}
+			}
+			if (!pasted_schemes.isEmpty()) {
+				ElementAutoNumSchemeCommand::numberPasted(project, pasted_schemes, this);
+			}
+		}
+
 			//Pasted groups become new groups: the members of one source
 			//group all get the same new uuid, never the source's, or the
 			//copy would join the original's group. After the elements got
@@ -249,6 +318,10 @@ void PasteDiagramCommand::redo()
 			diagram->addItem(item);
 		}
 	}
+
+		//The numbering of the pasted elements, if any, on the first redo
+		//as well as on the next ones
+	QUndoCommand::redo();
 
 	const QList<QGraphicsItem *> qgis_list = content.items();
 	for (QGraphicsItem *qgi : qgis_list)

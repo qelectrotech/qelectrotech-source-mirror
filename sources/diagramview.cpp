@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "autoNum/ui/pastenumberingimport.h"
 #include "cellruler.h"
 #include "lastusedstyle.h"
 #include "utils/colordialogdoubleclick.h"
@@ -572,7 +573,10 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (content_pasted.count())
 	{
 		m_diagram -> clearSelection();
-		m_diagram -> undoStack().push(new PasteDiagramCommand(m_diagram, content_pasted));
+			//Asks whether to import the numberings the copy brings, if the
+			//project has not got them
+		PasteNumberingImport::push(this, m_diagram, content_pasted,
+								   PasteNumberingImport::copiedBy(document_xml));
 		adjustSceneRect();
 	}
 }

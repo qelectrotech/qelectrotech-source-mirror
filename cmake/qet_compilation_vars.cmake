@@ -324,6 +324,18 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
   ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
   ${QET_DIR}/sources/autoNum/renumberelementscommand.h
+  ${QET_DIR}/sources/autoNum/autonumschemecommand.cpp
+  ${QET_DIR}/sources/autoNum/autonumschemecommand.h
+  ${QET_DIR}/sources/autoNum/elementautonumschemecommand.cpp
+  ${QET_DIR}/sources/autoNum/elementautonumschemecommand.h
+  ${QET_DIR}/sources/autoNum/ui/counterwarning.cpp
+  ${QET_DIR}/sources/autoNum/ui/counterwarning.h
+  ${QET_DIR}/sources/autoNum/ui/pastenumberingimport.cpp
+  ${QET_DIR}/sources/autoNum/ui/pastenumberingimport.h
+  ${QET_DIR}/sources/autoNum/ui/renumberpreviewdialog.cpp
+  ${QET_DIR}/sources/autoNum/ui/renumberpreviewdialog.h
+  ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.cpp
+  ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp

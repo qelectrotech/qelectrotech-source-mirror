@@ -150,6 +150,7 @@ class Element : public QetGraphicsItem
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
+		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);

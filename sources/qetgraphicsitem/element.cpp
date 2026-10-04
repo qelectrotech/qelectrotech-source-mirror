@@ -20,6 +20,7 @@
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
+#include "../autoNum/elementautonumschemecommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -1495,8 +1496,41 @@ void Element::setGroupIndexForElement(Element *elmt, int index)
 	If new information is different of current infotmation emit elementInfoChange
 	@param dc
 */
+namespace {
+/**
+	An element follows a numbering scheme only through a formula: an
+	information context whose formula is emptied (paste with labels
+	erased, the formula deleted by hand...) no longer names one.
+*/
+void dropOrphanFormulaId(DiagramContext &dc)
+{
+	if (dc.contains(QETInformation::ELMT_FORMULA_ID)
+			&& dc.value(QETInformation::ELMT_FORMULA).toString().isEmpty()) {
+		dc.remove(QETInformation::ELMT_FORMULA_ID);
+	}
+}
+} // namespace
+
+/**
+	@brief Element::setFormulaSchemeId
+	Make this element follow the element numbering scheme with uuid @p id,
+	or none if @p id is null, without touching anything else: no label
+	update, no signal, no undo. For QETProject when it ties freshly loaded
+	elements to their schemes.
+*/
+void Element::setFormulaSchemeId(const QUuid &id)
+{
+	if (id.isNull()) {
+		m_data.m_informations.remove(QETInformation::ELMT_FORMULA_ID);
+	} else {
+		m_data.m_informations.addValue(QETInformation::ELMT_FORMULA_ID,
+									   id.toString(), false);
+	}
+}
+
 void Element::setElementInformations(DiagramContext dc)
 {
+	dropOrphanFormulaId(dc);
 	if (m_data.m_informations == dc) {
 		return;
 	}
@@ -1549,6 +1583,7 @@ ElementData Element::elementData() const
  */
 void Element::setElementData(ElementData data)
 {
+	dropOrphanFormulaId(data.m_informations);
 	auto old_info = m_data.m_informations;
 	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
 		? m_data.plcMasterData() : ElementData::PlcMasterData();
@@ -1776,15 +1811,48 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		QString element_currentAutoNum = diagram()
 				->project()
 				->elementCurrentAutoNum();
+		const QUuid scheme_id = diagram()->project()->elementAutoNumId(element_currentAutoNum);
+		setFormulaSchemeId(formula.isEmpty() ? QUuid() : scheme_id);
 		NumerotationContext nc = diagram()
 				->project()
 				->elementAutoNum(element_currentAutoNum);
-		NumerotationContextCommands ncc (nc);
+
+			//The number given is the first whose label no other element of
+			//the project carries: a counter set back, or an element which
+			//was given a number by hand, must not make a second element
+			//with the same label. The counter then goes on from there.
+		NumerotationContext given = nc;
+		if (!formula.isEmpty())
+		{
+			const QSet<QString> held = ElementAutoNumSchemeCommand::labelsHeldBesides(
+						diagram()->project(), this);
+			for (int attempt = 0 ; !held.isEmpty() && attempt < 100000 ; ++attempt)
+			{
+				autonum::sequentialNumbers probe;
+				autonum::setSequential(formula, probe, given, diagram(), element_currentAutoNum);
+				const QString candidate = autonum::AssignVariables::formulaToLabel(
+							formula, probe, diagram(), this, nullptr);
+				if (candidate.isEmpty() || !held.contains(candidate)) {
+					break;
+				}
+				NumerotationContextCommands step (given);
+				const NumerotationContext advanced = step.next();
+				bool moved = advanced.size() != given.size();
+				for (int i = 0 ; !moved && i < given.size() ; ++i) {
+					moved = advanced.itemAt(i) != given.itemAt(i);
+				}
+				if (!moved) {
+					break;   //a numbering which cannot go on: nothing to skip to
+				}
+				given = advanced;
+			}
+		}
+		NumerotationContextCommands ncc (given);
 
 		m_autoNum_seq.clear();
 		autonum::setSequential(formula,
 					   m_autoNum_seq,
-					   nc,
+					   given,
 					   diagram(),
 					   element_currentAutoNum);
 

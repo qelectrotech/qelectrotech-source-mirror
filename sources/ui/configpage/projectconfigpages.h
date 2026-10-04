@@ -18,6 +18,9 @@
 #ifndef PROJECTCONFIGPAGES_H
 #define PROJECTCONFIGPAGES_H
 #include "configpage.h"
+#include <QPointer>
+#include <QVector>
+#include "../../autoNum/autonumschemecommand.h"
 
 class QLabel;
 class QComboBox;
@@ -33,6 +36,11 @@ class DiagramContextWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
 class SelectAutonumW;
+class QTabWidget;
+class QGroupBox;
+class Element;
+class QTableWidget;
+class ElementAutoNumSchemeCommand;
 class FolioAutonumberingW;
 class FormulaAutonumberingW;
 class AutoNumberingManagementW;
@@ -168,10 +176,36 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void updateContextElement(const QString&);//element
 		void saveContextElement();
 		void removeContextElement();
+		void newContextElement();
+		void renameContextElement();
+		void refreshElementSchemes(const QString &selected);
+		void refreshElementUsers();
+		void assignFreeNumber();
+		void updateAssignNumberButton();
+		void newContextConductor();
+		void renameContextConductor();
+		void newContextFolio();
+		void renameContextFolio();
+		QString askElementSchemeName(const QString &title, QString name,
+									 const QString &ignored_title);
+		bool pushElementSchemeCommand(ElementAutoNumSchemeCommand *cmd);
 		void importFromProject();
 
 		void applyAutoNum();
 		void applyManagement();
+
+	private:
+			//Conductor and folio numberings
+		using SchemeKind = AutoNumSchemeCommand::Kind;
+		SelectAutonumW *sawFor(SchemeKind kind) const;
+		void refreshSchemes(SchemeKind kind, const QString &selected);
+		void refreshSchemeUsers(SchemeKind kind);
+		QString askSchemeName(SchemeKind kind, const QString &title, QString name,
+							  const QString &ignored_title);
+		void newScheme(SchemeKind kind);
+		void renameScheme(SchemeKind kind);
+		void saveScheme(SchemeKind kind);
+		void removeScheme(SchemeKind kind);
 
 	signals:
 		void setAutoNum(QString);
@@ -184,6 +218,15 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_conductor;
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;
+		QTabWidget            *m_tab_widget = nullptr;
+		QGroupBox             *m_conductor_users_box = nullptr;
+		QTableWidget          *m_conductor_users = nullptr;
+		QGroupBox             *m_folio_users_box = nullptr;
+		QTableWidget          *m_folio_users = nullptr;
+		QGroupBox             *m_element_users_box = nullptr;
+		QTableWidget          *m_element_users = nullptr;
+		QPushButton           *m_assign_number_pb = nullptr;
+		QVector<QPointer<Element>> m_element_rows;   ///< the element of each row of the table, none for a gap
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
 		QPushButton           *m_import_pb = nullptr;

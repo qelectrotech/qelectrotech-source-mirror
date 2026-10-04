@@ -20,6 +20,7 @@
 
 #include "diagrameventinterface.h"
 #include "../diagramcontent.h"
+#include "../autoNum/elementautonumschemecommand.h"
 
 #include <QHash>
 #include <QPointer>
@@ -90,6 +91,8 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		void removeItems();
 
 	DiagramContent m_content;
+		/// The numberings the pasted copy carries
+	QList<ElementAutoNumSchemeCommand::Scheme> m_copied_schemes;
 		///Each movable item's position relative to the group's top left,
 		///taken once so repeated moves cannot accumulate rounding drift.
 	QHash<QGraphicsItem *, QPointF> m_relative_pos;

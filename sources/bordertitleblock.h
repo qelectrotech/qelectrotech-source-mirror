@@ -133,6 +133,8 @@ class BorderTitleBlock : public QObject
 			return (additional_fields_); }
 		/// @return the value of the title block
 		QString autoPageNum() const { return(btb_auto_page_num_); }
+			/// The title of the folio numbering this folio follows, nothing else changes
+		void setAutoPageNum(const QString &title) { btb_auto_page_num_ = title; }
 		/// @return the value of the total number of folios
 		int folioTotal() const { return(folio_total_);}
 	

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddpaste.h"
+#include "../autoNum/ui/pastenumberingimport.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -74,6 +75,7 @@
 
 		//Load items at their original XML coordinates.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+	m_copied_schemes = PasteNumberingImport::copiedBy(document_xml);
 
 	if (db) {
 		db->blockSignals(false);
@@ -385,7 +387,10 @@ void DiagramEventAddPaste::commit()
 	m_finished = true;
 	m_running = false;
 
-	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_content));
+		//Asks whether to import the numberings the copy brings, if the
+		//project has not got them
+	PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
+							   m_diagram, m_content, m_copied_schemes);
 	emit finish();
 }
 

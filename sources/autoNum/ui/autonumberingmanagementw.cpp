@@ -16,8 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "autonumberingmanagementw.h"
+#include "../elementautonumschemecommand.h"
+#include "renumberpreviewdialog.h"
 
 #include "../../diagram.h"
+#include "../../qetgraphicsitem/element.h"
 #include "../../qetproject.h"
 #include "../numerotationcontextcommands.h"
 #include "formulaautonumberingw.h"
@@ -122,7 +125,42 @@ void AutoNumberingManagementW::on_m_renumber_elements_pb_clicked()
 	RenumberElementsDialog dlg(titles, this);
 	if (dlg.exec() != QDialog::Accepted) return;
 
-	project_->renumberElementsBySchemeTitle(dlg.selectedSchemeTitle());
+	const QString title = dlg.selectedSchemeTitle();
+	QVector<Element *> frozen;
+	auto *cmd = ElementAutoNumSchemeCommand::renumber(
+				project_, title, &frozen,
+				title.isEmpty() ? tr("Renuméroter les éléments")
+								: tr("Renuméroter les éléments (%1)").arg(title));
+	if (!cmd)
+	{
+		QMessageBox::information(
+					this, tr("Renuméroter les éléments"),
+					frozen.isEmpty()
+					? tr("Aucun élément ne suit cette numérotation.")
+					: tr("Les %n élément(s) qui suivent cette numérotation ont un nom "
+						 "figé : rien n'est renuméroté.", "", frozen.size()));
+		return;
+	}
+
+	const int renumbered = static_cast<int>(cmd->changes().size());
+	const int changed = RenumberPreviewDialog::changedLabelCount(cmd->changes());
+	if (!RenumberPreviewDialog::confirm(
+				this, tr("Renuméroter les éléments"),
+				tr("%n élément(s) vont être renumérotés, à partir du premier numéro, "
+				   "dans l'ordre des folios et des positions.", "", renumbered),
+				cmd->changes(), frozen)) {
+		delete cmd;
+		return;
+	}
+	project_->undoStack()->push(cmd);
+
+	QString summary = tr("%n élément(s) renumérotés, dont %1 avec un nouveau nom.", "", renumbered)
+			.arg(changed);
+	if (!frozen.isEmpty()) {
+		summary += QLatin1Char('\n') + tr("%n élément(s) au nom figé n'ont pas été touchés, "
+										 "et leur numéro n'a pas été redonné.", "", frozen.size());
+	}
+	QMessageBox::information(this, tr("Renuméroter les éléments"), summary);
 }
 
 /**
