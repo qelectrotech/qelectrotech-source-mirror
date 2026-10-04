@@ -430,9 +430,10 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 /**
 	@brief DiagramView::handleImageFilesDrop
 	Add the picture files dropped from the file manager. The first one is
-	centred on the drop point and the others are cascaded from it; a
-	picture larger than the visible part of the folio is scaled down to
-	fit it. One undo step removes them all. Files that cannot be used are
+	centred on the drop point and the others are cascaded from it. A
+	picture too large for the folio is scaled down to leave a free margin
+	of ImageDrop::frameMargin to the frame on every side, and every
+	picture is kept inside the frame. One undo step removes them all. Files that cannot be used are
 	listed once, after the others have been placed.
 	@param e the QDropEvent describing the current drag'n drop
 */
@@ -443,7 +444,7 @@ void DiagramView::handleImageFilesDrop(QDropEvent *e)
 
 	const QStringList files = ImageDrop::imageFiles(e -> mimeData());
 	const QPointF drop_pos = mapToScene(e -> position().toPoint());
-	const QSizeF available = viewedSceneRect().size();
+	const QRectF frame = m_diagram -> border_and_titleblock.insideBorderRect();
 
 	auto *undo = new QUndoCommand();
 	QStringList refused;
@@ -458,15 +459,18 @@ void DiagramView::handleImageFilesDrop(QDropEvent *e)
 		}
 
 		auto *item = new DiagramImageItem(QPixmap::fromImage(image));
-		const qreal scale = ImageDrop::fitScale(item -> boundingRect().size(), available);
+		const qreal scale = ImageDrop::fitScale(item -> boundingRect().size(), frame);
 		if (scale < 1.0) {
 			item -> setScaleFactorX(scale);
 			item -> setScaleFactorY(scale);
 		}
-		// Centre the picture, as transformed, on its drop point.
-		const QPointF centre = item -> mapRectToScene(item -> boundingRect()).center() - item -> pos();
-		new AddGraphicsObjectCommand(item, m_diagram,
-									 drop_pos + ImageDrop::cascadeOffset(placed) - centre, undo);
+		// Centre the picture, as transformed, on its drop point, then keep
+		// it inside the frame -- a scaled-down one also off the margin.
+		QRectF rect = item -> mapRectToScene(item -> boundingRect());
+		const QPointF offset = rect.topLeft() - item -> pos();
+		rect.moveCenter(drop_pos + ImageDrop::cascadeOffset(placed));
+		rect = ImageDrop::keepInside(rect, scale < 1.0 ? ImageDrop::innerFrame(frame) : frame);
+		new AddGraphicsObjectCommand(item, m_diagram, rect.topLeft() - offset, undo);
 		++placed;
 	}
 

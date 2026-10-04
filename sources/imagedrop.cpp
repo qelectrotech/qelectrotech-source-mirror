@@ -88,13 +88,35 @@ QImage ImageDrop::load(const QString &path, QString *error)
 	return image;
 }
 
-qreal ImageDrop::fitScale(const QSizeF &size, const QSizeF &available)
+QRectF ImageDrop::innerFrame(const QRectF &frame)
 {
-	if (size.isEmpty() || available.isEmpty())
+	return frame.adjusted(frame.width() * frameMargin, frame.height() * frameMargin,
+						  -frame.width() * frameMargin, -frame.height() * frameMargin);
+}
+
+qreal ImageDrop::fitScale(const QSizeF &size, const QRectF &frame)
+{
+	const QRectF inner = innerFrame(frame);
+	if (size.isEmpty() || inner.isEmpty())
 		return 1.0;
-	const qreal scale = std::min(available.width() * fitMargin / size.width(),
-								 available.height() * fitMargin / size.height());
+	const qreal scale = std::min(inner.width() / size.width(),
+								 inner.height() / size.height());
 	return std::min(1.0, scale);
+}
+
+QRectF ImageDrop::keepInside(const QRectF &picture, const QRectF &area)
+{
+	if (area.isEmpty())
+		return picture;
+	auto axis = [](qreal start, qreal length, qreal area_start, qreal area_length) {
+		if (length >= area_length)
+			return area_start + (area_length - length) / 2;
+		return std::clamp(start, area_start, area_start + area_length - length);
+	};
+	QRectF result = picture;
+	result.moveLeft(axis(picture.left(), picture.width(), area.left(), area.width()));
+	result.moveTop(axis(picture.top(), picture.height(), area.top(), area.height()));
+	return result;
 }
 
 QPointF ImageDrop::cascadeOffset(int index)

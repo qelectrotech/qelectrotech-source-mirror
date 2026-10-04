@@ -20,6 +20,7 @@
 
 #include <QImage>
 #include <QPointF>
+#include <QRectF>
 #include <QSizeF>
 #include <QStringList>
 
@@ -38,8 +39,9 @@ namespace ImageDrop
 	constexpr qint64 maxPixels = 64LL * 1024 * 1024;
 	/// Offset between the pictures of one drop, in scene units.
 	constexpr qreal cascadeStep = 20.0;
-	/// Share of the visible area a large dropped picture is fitted into.
-	constexpr qreal fitMargin = 0.9;
+	/// Free margin left between a scaled-down picture and the folio frame,
+	/// as a share of the frame on each side.
+	constexpr qreal frameMargin = 0.2;
 
 	/// The suffixes the "add image" file dialog offers, lower case.
 	QStringList supportedSuffixes();
@@ -58,12 +60,21 @@ namespace ImageDrop
 	*/
 	QImage load(const QString &path, QString *error = nullptr);
 
+	/// @a frame shrunk by frameMargin on every side.
+	QRectF innerFrame(const QRectF &frame);
+
 	/**
-		Scale that fits a picture of @a size into fitMargin of @a available,
+		Scale that fits a picture of @a size into innerFrame(@a frame),
 		keeping its proportions; 1.0 when it already fits. Pictures are
 		never enlarged.
 	*/
-	qreal fitScale(const QSizeF &size, const QSizeF &available);
+	qreal fitScale(const QSizeF &size, const QRectF &frame);
+
+	/**
+		@a picture moved by the least amount that puts it inside @a area;
+		centred on @a area along an axis where it is larger.
+	*/
+	QRectF keepInside(const QRectF &picture, const QRectF &area);
 
 	/// Offset of the @a index-th picture of one drop from the first one.
 	QPointF cascadeOffset(int index);

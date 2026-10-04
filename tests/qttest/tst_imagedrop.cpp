@@ -140,24 +140,56 @@ private slots:
 		QVERIFY2(error.contains(reason), qPrintable(error));
 	}
 
-	void largePicturesAreFittedIntoTheView_data()
+	// A picture too large for the folio is scaled down until it leaves 20 %
+	// of the frame free on every side, i.e. into 60 % of its width and
+	// height; a picture that already fits keeps its size.
+	void largePicturesLeaveAMarginToTheFrame_data()
 	{
 		QTest::addColumn<QSizeF>("size");
-		QTest::addColumn<QSizeF>("available");
 		QTest::addColumn<qreal>("scale");
-		QTest::newRow("small, kept") << QSizeF(100, 50) << QSizeF(1000, 800) << 1.0;
-		QTest::newRow("wide") << QSizeF(4000, 1000) << QSizeF(1000, 800) << 0.225;
-		QTest::newRow("tall") << QSizeF(500, 3200) << QSizeF(1000, 800) << 0.225;
-		QTest::newRow("exactly the margin") << QSizeF(900, 720) << QSizeF(1000, 800) << 1.0;
-		QTest::newRow("empty view") << QSizeF(4000, 1000) << QSizeF() << 1.0;
+		// frame: 1000 x 800, so the inner frame is 600 x 480
+		QTest::newRow("small, kept") << QSizeF(100, 50) << 1.0;
+		QTest::newRow("exactly the inner frame") << QSizeF(600, 480) << 1.0;
+		QTest::newRow("wide") << QSizeF(3000, 1000) << 0.2;
+		QTest::newRow("tall photo") << QSizeF(3024, 4032) << 480.0 / 4032;
 	}
 
-	void largePicturesAreFittedIntoTheView()
+	void largePicturesLeaveAMarginToTheFrame()
 	{
 		QFETCH(QSizeF, size);
-		QFETCH(QSizeF, available);
 		QFETCH(qreal, scale);
-		QCOMPARE(ImageDrop::fitScale(size, available), scale);
+		const QRectF frame(50, 30, 1000, 800);
+		QCOMPARE(ImageDrop::innerFrame(frame), QRectF(250, 190, 600, 480));
+		QCOMPARE(ImageDrop::fitScale(size, frame), scale);
+		const QSizeF scaled = size * ImageDrop::fitScale(size, frame);
+		QVERIFY(scaled.width() <= 600.0001 && scaled.height() <= 480.0001);
+	}
+
+	void noFrameMeansNoScaling()
+	{
+		QCOMPARE(ImageDrop::fitScale(QSizeF(4000, 3000), QRectF()), 1.0);
+	}
+
+	// A picture dropped near an edge is moved back inside, by the least
+	// amount; one larger than the area is centred on it.
+	void picturesAreKeptInsideTheArea_data()
+	{
+		QTest::addColumn<QRectF>("picture");
+		QTest::addColumn<QRectF>("expected");
+		const QRectF inside(300, 300, 100, 50);
+		QTest::newRow("already inside") << inside << inside;
+		QTest::newRow("over the top edge") << QRectF(300, -20, 100, 50) << QRectF(300, 0, 100, 50);
+		QTest::newRow("past the right and bottom") << QRectF(980, 790, 100, 50)
+												  << QRectF(900, 750, 100, 50);
+		QTest::newRow("wider than the area") << QRectF(-50, 100, 1200, 50)
+											<< QRectF(-100, 100, 1200, 50);
+	}
+
+	void picturesAreKeptInsideTheArea()
+	{
+		QFETCH(QRectF, picture);
+		QFETCH(QRectF, expected);
+		QCOMPARE(ImageDrop::keepInside(picture, QRectF(0, 0, 1000, 800)), expected);
 	}
 
 	void picturesOfOneDropCascade()
