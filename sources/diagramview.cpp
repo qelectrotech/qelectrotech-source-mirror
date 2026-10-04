@@ -30,6 +30,7 @@
 #include "qetdiagrameditor.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
 #include "qetpalette.h"
@@ -42,6 +43,7 @@
 #include "diagram.h"
 #include "foliogrid.h"
 #include "diagramcontexttoolbar.h"
+#include "imagedrop.h"
 #include "diagramgestureoverlay.h"
 #include "gesturesettings.h"
 #include "shortcutbarsettings.h"
@@ -55,6 +57,7 @@
 #include "qetversion.h"
 #include <QApplication>
 #include <QDropEvent>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPointer>
 #include <QSet>
@@ -222,7 +225,14 @@ DiagramView::~DiagramView()
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
-	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+	// Picture files from the file manager are checked first: a file drag
+	// also carries its path as text, which would otherwise become a text.
+	// Any other file (a .qet project...) is left to the main window.
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) {
+		e -> acceptProposedAction();
+	} else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) {
+		e -> ignore();
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
 		e -> acceptProposedAction();
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		e -> acceptProposedAction();
@@ -238,7 +248,9 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	@param e le QDragMoveEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
-	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) e -> acceptProposedAction();
+	else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) e -> ignore();
+	else if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
 	else e-> ignore();
 }
 
@@ -248,7 +260,11 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 */
 void DiagramView::dropEvent(QDropEvent *e) {
 
-	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) {
+		handleImageFilesDrop(e);
+	} else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) {
+		e -> ignore();
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
 		handleElementDrop(e);
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		handleTitleBlockDrop(e);
@@ -409,6 +425,63 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 
 	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
 									iti, m_diagram, mapToScene(e->position().toPoint())));
+}
+
+/**
+	@brief DiagramView::handleImageFilesDrop
+	Add the picture files dropped from the file manager. The first one is
+	centred on the drop point and the others are cascaded from it; a
+	picture larger than the visible part of the folio is scaled down to
+	fit it. One undo step removes them all. Files that cannot be used are
+	listed once, after the others have been placed.
+	@param e the QDropEvent describing the current drag'n drop
+*/
+void DiagramView::handleImageFilesDrop(QDropEvent *e)
+{
+	if (m_diagram -> isReadOnly()) return;
+	e -> acceptProposedAction();
+
+	const QStringList files = ImageDrop::imageFiles(e -> mimeData());
+	const QPointF drop_pos = mapToScene(e -> position().toPoint());
+	const QSizeF available = viewedSceneRect().size();
+
+	auto *undo = new QUndoCommand();
+	QStringList refused;
+	int placed = 0;
+	for (const QString &file : files)
+	{
+		QString error;
+		const QImage image = ImageDrop::load(file, &error);
+		if (image.isNull()) {
+			refused << QStringLiteral("%1 : %2").arg(QFileInfo(file).fileName(), error);
+			continue;
+		}
+
+		auto *item = new DiagramImageItem(QPixmap::fromImage(image));
+		const qreal scale = ImageDrop::fitScale(item -> boundingRect().size(), available);
+		if (scale < 1.0) {
+			item -> setScaleFactorX(scale);
+			item -> setScaleFactorY(scale);
+		}
+		// Centre the picture, as transformed, on its drop point.
+		const QPointF centre = item -> mapRectToScene(item -> boundingRect()).center() - item -> pos();
+		new AddGraphicsObjectCommand(item, m_diagram,
+									 drop_pos + ImageDrop::cascadeOffset(placed) - centre, undo);
+		++placed;
+	}
+
+	if (placed) {
+		undo -> setText(placed == 1 ? tr("Add an image")
+									: tr("Add %n image(s)", nullptr, placed));
+		m_diagram -> undoStack().push(undo);
+	} else {
+		delete undo;
+	}
+
+	if (!refused.isEmpty())
+		QMessageBox::warning(this, tr("Images not added"),
+							 tr("These files could not be added:") + "\n\n"
+							 + refused.join("\n"));
 }
 
 /**
