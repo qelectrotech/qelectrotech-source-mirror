@@ -42,6 +42,9 @@
 #include <QFontMetricsF>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QImageWriter>
+#include <QPainterPath>
+#include <QtMath>
+#include <QGraphicsView>
 #include <QMenu>
 #include <QMessageBox>
 #include <QTextStream>
@@ -119,12 +122,44 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> drawPixmap(origin, m_crop_preview);
 		painter -> setOpacity(1.0);
 		painter -> drawPixmap(cropFrameLocal(), m_crop_preview, m_pending_crop);
-		QPen frame(QColor(255, 140, 0));
+		const QRectF f = cropFrameLocal();
+		QPen frame(Qt::black);
 		frame.setCosmetic(true);
-		frame.setWidth(2);
+		frame.setWidth(1);
 		painter -> setPen(frame);
 		painter -> setBrush(Qt::NoBrush);
-		painter -> drawRect(cropFrameLocal());
+		painter -> drawRect(f);
+
+		// Crop bars, as photo editors draw them: an L at each corner and a
+		// short bar in the middle of each side, black on a white outline
+		// so they show on dark pictures too, and the same size on screen
+		// whatever the zoom or the picture's own scale.
+		const QTransform t = painter -> worldTransform();
+		const qreal px = 1.0 / qMax(1e-6, qSqrt(qAbs(t.m11() * t.m22() - t.m12() * t.m21())));
+		const qreal corner = qMin(18 * px, qMin(f.width(), f.height()) / 2);
+		const qreal side = qMin(10 * px, qMin(f.width(), f.height()) / 4);
+		QPainterPath bars;
+		auto l = [&bars](QPointF a, QPointF b, QPointF c) {
+			bars.moveTo(a); bars.lineTo(b); bars.lineTo(c);
+		};
+		l(f.topLeft() + QPointF(0, corner), f.topLeft(), f.topLeft() + QPointF(corner, 0));
+		l(f.topRight() - QPointF(corner, 0), f.topRight(), f.topRight() + QPointF(0, corner));
+		l(f.bottomRight() - QPointF(0, corner), f.bottomRight(), f.bottomRight() - QPointF(corner, 0));
+		l(f.bottomLeft() + QPointF(corner, 0), f.bottomLeft(), f.bottomLeft() - QPointF(0, corner));
+		const QPointF c = f.center();
+		bars.moveTo(c.x() - side, f.top());    bars.lineTo(c.x() + side, f.top());
+		bars.moveTo(c.x() - side, f.bottom()); bars.lineTo(c.x() + side, f.bottom());
+		bars.moveTo(f.left(), c.y() - side);   bars.lineTo(f.left(), c.y() + side);
+		bars.moveTo(f.right(), c.y() - side);  bars.lineTo(f.right(), c.y() + side);
+		painter -> setRenderHint(QPainter::Antialiasing, true);
+		QPen outline(Qt::white, 7, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		outline.setCosmetic(true);
+		painter -> setPen(outline);
+		painter -> drawPath(bars);
+		QPen bar(Qt::black, 4, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+		bar.setCosmetic(true);
+		painter -> setPen(bar);
+		painter -> drawPath(bars);
 		painter -> restore();
 		if (boundary)
 			context->flush(m_adapt_to_dark_theme, painter->worldTransform().mapRect(previewRect)
@@ -755,7 +790,7 @@ QColor DiagramImageItem::colorForHandleRole(HandleRole role)
 		case HandleRole::Rotate: return Qt::darkGreen;
 		case HandleRole::SkewEdge: return QColor(255, 140, 0);
 		case HandleRole::Pivot: return Qt::red;
-		case HandleRole::CropEdge: return QColor(255, 140, 0);
+		case HandleRole::CropEdge: return Qt::transparent;   // paint() draws crop bars instead
 	}
 	return Qt::blue;
 }
@@ -810,6 +845,13 @@ void DiagramImageItem::rebuildHandles()
 		h->setColor(colorForHandleRole(m_handleRoles.at(i)));
 		h->setToolTip(hintForHandleRole(m_handleRoles.at(i)));
 		h->setAcceptHoverEvents(true);
+		if (m_handleRoles.at(i) == HandleRole::CropEdge)
+		{
+			static const Qt::CursorShape cursors[8] = {
+				Qt::SizeFDiagCursor, Qt::SizeVerCursor, Qt::SizeBDiagCursor, Qt::SizeHorCursor,
+				Qt::SizeHorCursor, Qt::SizeBDiagCursor, Qt::SizeVerCursor, Qt::SizeFDiagCursor};
+			h->setCursor(cursors[i]);
+		}
 		scene()->addItem(h);
 		h->installSceneEventFilter(this);
 	}
@@ -1626,7 +1668,19 @@ QPixmap DiagramImageItem::computeDisplayPixmap(const QPixmap &base, const QRect 
 QRectF DiagramImageItem::boundingRect() const
 {
 	if (isCropping())
-		return imageRect().united(QRectF(-QPointF(m_crop_rect.topLeft()), m_base_pixmap.size()));
+	{
+		// Room for the crop bars, which are drawn a few screen pixels
+		// wide over the edge of the original.
+		qreal zoom = 1.0;
+		if (scene() && !scene()->views().isEmpty())
+		{
+			const QTransform t = scene()->views().first()->transform() * sceneTransform();
+			zoom = qSqrt(qAbs(t.m11() * t.m22() - t.m12() * t.m21()));
+		}
+		const qreal m = 8.0 / qMax(1e-6, zoom);
+		return imageRect().united(QRectF(-QPointF(m_crop_rect.topLeft()), m_base_pixmap.size()))
+				.adjusted(-m, -m, m, m);
+	}
 	if (m_label.isEmpty())
 		return imageRect();
 	return imageRect().united(labelRect());
