@@ -18,9 +18,6 @@
         <file alias="themes/qet/scalable/label.svg">qet/scalable/label.svg</file>
         <file alias="themes/qet/scalable/pdf-import.svg">qet/scalable/pdf-import.svg</file>
         <file alias="themes/qet/scalable/snap-to-grid.svg">qet/scalable/snap-to-grid.svg</file>
-        <file alias="themes/qet/scalable/ellipse-to-bezier.svg">qet/scalable/ellipse-to-bezier.svg</file>
-        <file alias="themes/qet/scalable/rect-to-bezier.svg">qet/scalable/rect-to-bezier.svg</file>
-        <file alias="themes/qet/scalable/rect-to-polyline.svg">qet/scalable/rect-to-polyline.svg</file>
         <file alias="themes/qet/scalable/printer.svg">breeze/64/printer.svg</file>
         <file alias="themes/qet/scalable/settings.svg">breeze/48/systemsettings.svg</file>
         <file alias="themes/qet/scalable/configure-shortcuts.svg">qet/pages/configure-shortcuts.svg</file>
@@ -983,6 +980,21 @@
         <file alias="themes/qet/24x24/ellipse.svg">themes/generated/traced-24/ellipse.svg</file>
         <file alias="themes/qet/24x24@2/ellipse.svg">themes/generated/traced-large-24/ellipse.svg</file>
         <file alias="themes/qet/scalable/ellipse.svg">qet/traced/large22/ellipse.svg</file>
+        <file alias="themes/qet/16x16/ellipse-to-bezier.svg">qet/traced/16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/16x16@2/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/22x22/ellipse-to-bezier.svg">qet/traced/22/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/22x22@2/ellipse-to-bezier.svg">qet/traced/large22/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/32x32/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/32x32@2/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/48x48/ellipse-to-bezier.svg">themes/generated/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/48x48@2/ellipse-to-bezier.svg">themes/generated/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/64x64/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/64x64@2/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/128x128/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/128x128@2/ellipse-to-bezier.svg">qet/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/24x24/ellipse-to-bezier.svg">themes/generated/traced-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/24x24@2/ellipse-to-bezier.svg">themes/generated/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet/scalable/ellipse-to-bezier.svg">qet/traced/large22/ellipse-to-bezier.svg</file>
         <file alias="themes/qet/16x16/endline-circle.svg">qet/traced/16/endline-circle.svg</file>
         <file alias="themes/qet/16x16@2/endline-circle.svg">qet/traced/large16/endline-circle.svg</file>
         <file alias="themes/qet/22x22/endline-circle.svg">qet/traced/22/endline-circle.svg</file>
@@ -2030,6 +2042,36 @@
         <file alias="themes/qet/24x24/raise.svg">themes/generated/traced-24/raise.svg</file>
         <file alias="themes/qet/24x24@2/raise.svg">themes/generated/traced-large-24/raise.svg</file>
         <file alias="themes/qet/scalable/raise.svg">qet/traced/large22/raise.svg</file>
+        <file alias="themes/qet/16x16/rect-to-bezier.svg">qet/traced/16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/16x16@2/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/22x22/rect-to-bezier.svg">qet/traced/22/rect-to-bezier.svg</file>
+        <file alias="themes/qet/22x22@2/rect-to-bezier.svg">qet/traced/large22/rect-to-bezier.svg</file>
+        <file alias="themes/qet/32x32/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/32x32@2/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/48x48/rect-to-bezier.svg">themes/generated/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet/48x48@2/rect-to-bezier.svg">themes/generated/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet/64x64/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/64x64@2/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/128x128/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/128x128@2/rect-to-bezier.svg">qet/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet/24x24/rect-to-bezier.svg">themes/generated/traced-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet/24x24@2/rect-to-bezier.svg">themes/generated/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet/scalable/rect-to-bezier.svg">qet/traced/large22/rect-to-bezier.svg</file>
+        <file alias="themes/qet/16x16/rect-to-polyline.svg">qet/traced/16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/16x16@2/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/22x22/rect-to-polyline.svg">qet/traced/22/rect-to-polyline.svg</file>
+        <file alias="themes/qet/22x22@2/rect-to-polyline.svg">qet/traced/large22/rect-to-polyline.svg</file>
+        <file alias="themes/qet/32x32/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/32x32@2/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/48x48/rect-to-polyline.svg">themes/generated/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet/48x48@2/rect-to-polyline.svg">themes/generated/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet/64x64/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/64x64@2/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/128x128/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/128x128@2/rect-to-polyline.svg">qet/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet/24x24/rect-to-polyline.svg">themes/generated/traced-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet/24x24@2/rect-to-polyline.svg">themes/generated/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet/scalable/rect-to-polyline.svg">qet/traced/large22/rect-to-polyline.svg</file>
         <file alias="themes/qet/16x16/rectangle.svg">breeze/16/draw-rectangle.svg</file>
         <file alias="themes/qet/22x22/rectangle.svg">breeze/22/draw-rectangle.svg</file>
         <file alias="themes/qet/scalable/rectangle.svg">themes/generated/breeze-24/draw-rectangle.svg</file>
@@ -2578,9 +2620,6 @@
         <file>themes/qet-dark/scalable/label.svg</file>
         <file>themes/qet-dark/scalable/pdf-import.svg</file>
         <file>themes/qet-dark/scalable/snap-to-grid.svg</file>
-        <file>themes/qet-dark/scalable/ellipse-to-bezier.svg</file>
-        <file>themes/qet-dark/scalable/rect-to-bezier.svg</file>
-        <file>themes/qet-dark/scalable/rect-to-polyline.svg</file>
         <file>themes/qet-dark/scalable-16/align-horizontal-center.svg</file>
         <file>themes/qet-dark/scalable-22/align-horizontal-center.svg</file>
         <file>themes/qet-dark/scalable-16/align-horizontal-left.svg</file>
@@ -2845,6 +2884,12 @@
         <file>themes/qet-dark/traced/large22/ellipse.svg</file>
         <file>themes/qet-dark/traced-large-24/ellipse.svg</file>
         <file>themes/qet-dark/traced-24/ellipse.svg</file>
+        <file>themes/qet-dark/traced/16/ellipse-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/22/ellipse-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/large22/ellipse-to-bezier.svg</file>
+        <file>themes/qet-dark/traced-large-24/ellipse-to-bezier.svg</file>
+        <file>themes/qet-dark/traced-24/ellipse-to-bezier.svg</file>
         <file>themes/qet-dark/traced/16/endline-circle.svg</file>
         <file>themes/qet-dark/traced/large16/endline-circle.svg</file>
         <file>themes/qet-dark/traced/22/endline-circle.svg</file>
@@ -3093,6 +3138,18 @@
         <file>themes/qet-dark/traced/large22/raise.svg</file>
         <file>themes/qet-dark/traced-large-24/raise.svg</file>
         <file>themes/qet-dark/traced-24/raise.svg</file>
+        <file>themes/qet-dark/traced/16/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/22/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/large22/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced-large-24/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced-24/rect-to-bezier.svg</file>
+        <file>themes/qet-dark/traced/16/rect-to-polyline.svg</file>
+        <file>themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file>themes/qet-dark/traced/22/rect-to-polyline.svg</file>
+        <file>themes/qet-dark/traced/large22/rect-to-polyline.svg</file>
+        <file>themes/qet-dark/traced-large-24/rect-to-polyline.svg</file>
+        <file>themes/qet-dark/traced-24/rect-to-polyline.svg</file>
         <file>themes/qet-dark/breeze/16/draw-rectangle.svg</file>
         <file>themes/qet-dark/breeze/22/draw-rectangle.svg</file>
         <file>themes/qet-dark/breeze-24/draw-rectangle.svg</file>
@@ -4126,6 +4183,21 @@
         <file alias="themes/qet-dark/24x24/ellipse.svg">themes/qet-dark/traced-24/ellipse.svg</file>
         <file alias="themes/qet-dark/24x24@2/ellipse.svg">themes/qet-dark/traced-large-24/ellipse.svg</file>
         <file alias="themes/qet-dark/scalable/ellipse.svg">themes/qet-dark/traced/large22/ellipse.svg</file>
+        <file alias="themes/qet-dark/16x16/ellipse-to-bezier.svg">themes/qet-dark/traced/16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/16x16@2/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/22x22/ellipse-to-bezier.svg">themes/qet-dark/traced/22/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/22x22@2/ellipse-to-bezier.svg">themes/qet-dark/traced/large22/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/32x32/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/32x32@2/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/48x48/ellipse-to-bezier.svg">themes/qet-dark/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/48x48@2/ellipse-to-bezier.svg">themes/qet-dark/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/64x64/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/64x64@2/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/128x128/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/128x128@2/ellipse-to-bezier.svg">themes/qet-dark/traced/large16/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/24x24/ellipse-to-bezier.svg">themes/qet-dark/traced-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/24x24@2/ellipse-to-bezier.svg">themes/qet-dark/traced-large-24/ellipse-to-bezier.svg</file>
+        <file alias="themes/qet-dark/scalable/ellipse-to-bezier.svg">themes/qet-dark/traced/large22/ellipse-to-bezier.svg</file>
         <file alias="themes/qet-dark/16x16/endline-circle.svg">themes/qet-dark/traced/16/endline-circle.svg</file>
         <file alias="themes/qet-dark/16x16@2/endline-circle.svg">themes/qet-dark/traced/large16/endline-circle.svg</file>
         <file alias="themes/qet-dark/22x22/endline-circle.svg">themes/qet-dark/traced/22/endline-circle.svg</file>
@@ -4984,6 +5056,36 @@
         <file alias="themes/qet-dark/24x24/raise.svg">themes/qet-dark/traced-24/raise.svg</file>
         <file alias="themes/qet-dark/24x24@2/raise.svg">themes/qet-dark/traced-large-24/raise.svg</file>
         <file alias="themes/qet-dark/scalable/raise.svg">themes/qet-dark/traced/large22/raise.svg</file>
+        <file alias="themes/qet-dark/16x16/rect-to-bezier.svg">themes/qet-dark/traced/16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/16x16@2/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/22x22/rect-to-bezier.svg">themes/qet-dark/traced/22/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/22x22@2/rect-to-bezier.svg">themes/qet-dark/traced/large22/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/32x32/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/32x32@2/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/48x48/rect-to-bezier.svg">themes/qet-dark/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/48x48@2/rect-to-bezier.svg">themes/qet-dark/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/64x64/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/64x64@2/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/128x128/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/128x128@2/rect-to-bezier.svg">themes/qet-dark/traced/large16/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/24x24/rect-to-bezier.svg">themes/qet-dark/traced-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/24x24@2/rect-to-bezier.svg">themes/qet-dark/traced-large-24/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/scalable/rect-to-bezier.svg">themes/qet-dark/traced/large22/rect-to-bezier.svg</file>
+        <file alias="themes/qet-dark/16x16/rect-to-polyline.svg">themes/qet-dark/traced/16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/16x16@2/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/22x22/rect-to-polyline.svg">themes/qet-dark/traced/22/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/22x22@2/rect-to-polyline.svg">themes/qet-dark/traced/large22/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/32x32/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/32x32@2/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/48x48/rect-to-polyline.svg">themes/qet-dark/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/48x48@2/rect-to-polyline.svg">themes/qet-dark/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/64x64/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/64x64@2/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/128x128/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/128x128@2/rect-to-polyline.svg">themes/qet-dark/traced/large16/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/24x24/rect-to-polyline.svg">themes/qet-dark/traced-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/24x24@2/rect-to-polyline.svg">themes/qet-dark/traced-large-24/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/scalable/rect-to-polyline.svg">themes/qet-dark/traced/large22/rect-to-polyline.svg</file>
         <file alias="themes/qet-dark/16x16/rectangle.svg">themes/qet-dark/breeze/16/draw-rectangle.svg</file>
         <file alias="themes/qet-dark/22x22/rectangle.svg">themes/qet-dark/breeze/22/draw-rectangle.svg</file>
         <file alias="themes/qet-dark/scalable/rectangle.svg">themes/qet-dark/breeze-24/draw-rectangle.svg</file>

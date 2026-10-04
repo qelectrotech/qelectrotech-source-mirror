@@ -186,9 +186,6 @@ SVGS = [
     "qet/scalable/label.svg",
     "qet/scalable/pdf-import.svg",
     "qet/scalable/snap-to-grid.svg",
-    "qet/scalable/ellipse-to-bezier.svg",
-    "qet/scalable/rect-to-bezier.svg",
-    "qet/scalable/rect-to-polyline.svg",
 ]
 
 # Icons served by Breeze SVGs in ico/breeze/, QET name to Breeze name.

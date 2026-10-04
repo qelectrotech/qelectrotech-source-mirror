@@ -147,15 +147,10 @@ Comment:
   ico/qet/scalable/pdf-import.svg by Jeff Patterson from the QElectroTech team, laid out like the former insert-image.png
   ico/qet/scalable/diagram.svg, folio-new.svg, folio-delete.svg, folio-properties.svg, label.svg by Jeff Patterson from the QElectroTech team, the folio icons redrawn in the same style
   ico/qet/traced/*/circle.svg, ellipse.svg, view-fit-window.svg by ispyisail from the QElectroTech team, 16 pixel versions by the QElectroTech team
+  ico/qet/traced/*/ellipse-to-bezier.svg, rect-to-bezier.svg, rect-to-polyline.svg by the QElectroTech team, redrawn from Andre Rummler's drawings, with permission
   ico/qet/traced/* other than the above by the QElectroTech team, traced from QElectroTech's PNG icons of the same names
   ico/qet/scalable/16/* by the QElectroTech team, 16 pixel versions of the ico/qet/scalable/ icons of the same names
   ico/colors/* by Arnaud, contributed in 2020
-
-Files: ico/qet/scalable/ellipse-to-bezier.svg ico/qet/scalable/rect-to-bezier.svg
- ico/qet/scalable/rect-to-polyline.svg
-Copyright: 2026, Andre Rummler
-License: unknown
-Comment: License not stated yet. To be redrawn for the icon theme.
 
 Files: ico/qet/traced/*/qt.svg
 Copyright: The Qt Company Ltd.
