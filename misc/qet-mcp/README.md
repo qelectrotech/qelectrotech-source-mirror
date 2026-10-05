@@ -324,7 +324,7 @@ general (on the selected elements, say, not on these exact ones),
 ## Live mode: working in the QElectroTech you have open
 
 Every tool above works on files, with no QElectroTech window involved. The
-three `qet_live_*` tools instead act on the project open in **your**
+`qet_live_*` tools instead act on the project open in **your**
 QElectroTech, in front of you, so you can watch, stop or undo:
 
 | | |
@@ -336,6 +336,15 @@ QElectroTech, in front of you, so you can watch, stop or undo:
 | `qet_live_show_folio` | show another folio |
 | `qet_live_undo_last` | undo the newest step, only if the assistant made it |
 | `qet_live_screenshot` | a picture of the folio on screen, as an MCP image, cropped to the folio |
+| `qet_live_new_project` | a new project, as File > New makes it, made current; optional title, number of folios and a file to save it to (never over an existing one) |
+| `qet_live_open_project` | open a saved project and make it current, with no dialog; one already open is only made current |
+| `qet_live_switch_project` | make another open project current, by its index in `qet_live_status`'s `projects` or its file |
+
+Every `qet_live_*` call works on the current project. Pages and links
+between pages need no tool of their own: in `qet_live_run_script`,
+`qet.addFolio()` and `qet.setFolioTitle()` add and name folios, and
+`qet.linkElements()` links a folio report arrow, or a coil and its
+contacts, across folios.
 
 A script the assistant writes on the spot is shown to you first, with
 *Run*, *Decline* or *Always this session*; the Assistant
