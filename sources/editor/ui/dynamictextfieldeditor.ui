@@ -101,11 +101,17 @@
    </item>
    <item row="4" column="1">
     <widget class="QSpinBox" name="m_width_sb">
+     <property name="specialValueText">
+      <string>Auto</string>
+     </property>
+     <property name="suffix">
+      <string>px</string>
+     </property>
      <property name="minimum">
       <number>-1</number>
      </property>
      <property name="maximum">
-      <number>500</number>
+      <number>10000</number>
      </property>
     </widget>
    </item>

@@ -363,7 +363,9 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	qreal width = (qreal)ui -> m_width_sb -> value();
 
 	for (int i = 0; i < m_parts.length(); i++) {
-		if(width != m_parts[i] -> textWidth()) {
+			//The box shows whole pixels: a width dragged with the mouse or
+			//fitted to the text is not rounded just by leaving the box.
+		if(ui -> m_width_sb -> value() != qRound(m_parts[i] -> textWidth())) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "textWidth", m_parts[i] -> textWidth(), width);
 			undo -> setText(tr("Modifier la largeur d'un texte"));
 			undoStack().push(undo);
