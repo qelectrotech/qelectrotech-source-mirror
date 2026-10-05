@@ -97,6 +97,9 @@ var i = qet.addImage(0, '%1', 100, 100);
 var r = {full: qet.imageCrop(0, i)};
 r.cropped_ok = qet.cropImage(0, i, 10, 5, 20, 10);
 r.cropped = qet.imageCrop(0, i);
+r.same_ok = qet.cropImage(0, i, 10, 5, 20, 10);
+r.empty_ok = qet.cropImage(0, i, 10, 5, 0, 10);
+r.outside_ok = qet.cropImage(0, i, 100, 100, 20, 10);
 qet.undo();
 r.undone = qet.imageCrop(0, i);
 qet.save('%2');
@@ -111,6 +114,11 @@ qet.log('PROBE ' + JSON.stringify(r));
 		QCOMPARE(r.value("full").toString(), QStringLiteral("0,0,40,30"));
 		QVERIFY(r.value("cropped_ok").toBool());
 		QCOMPARE(r.value("cropped").toString(), QStringLiteral("10,5,20,10"));
+		// Crops that change nothing report it, and push no undo step:
+		// the undo below still undoes the real crop.
+		QCOMPARE(r.value("same_ok").toBool(true), false);
+		QCOMPARE(r.value("empty_ok").toBool(true), false);
+		QCOMPARE(r.value("outside_ok").toBool(true), false);
 		QCOMPARE(r.value("undone").toString(), QStringLiteral("0,0,40,30"));
 		QCOMPARE(r.value("redone").toString(), QStringLiteral("10,5,20,10"));
 

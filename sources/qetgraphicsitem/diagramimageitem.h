@@ -81,7 +81,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	QVariant imageSourceVariant() const;
 	void setImageSourceVariant(const QVariant &source);
 	QRect cropRect() const { return m_crop_rect; }
-	void applyCrop(const QRect &cropRect);
+	bool applyCrop(const QRect &cropRect);
 	
 	// attributes
 	public:

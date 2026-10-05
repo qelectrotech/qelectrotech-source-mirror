@@ -1845,15 +1845,6 @@ void DiagramImageItem::replaceImage()
 	undo->setText(tr("Remplacer une image"));
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
-	// Every call here is a separate, deliberate menu action with no
-	// compound child of its own (unlike crop(), which always chains a
-	// pos/rawPivot change and is naturally immune) -- two of them in a
-	// row would carry the exact same object, property, and text, which
-	// is indistinguishable from a legitimate merge to
-	// QPropertyUndoCommand::mergeWith(). A dummy child (already treated
-	// as "never merge" by that check) keeps each one its own, separate
-	// undo step regardless.
-	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1901,11 +1892,6 @@ void DiagramImageItem::mirror(bool horizontal)
 	undo->setText(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"));
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
-	// See replaceImage()'s identical comment: a separate, deliberate
-	// action with no compound child of its own, so a dummy one is
-	// needed to stop two consecutive same-direction mirrors (identical
-	// object, property, and text) from silently merging into one.
-	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1959,34 +1945,9 @@ void DiagramImageItem::setTransparentColor()
 	undo->setText(tr("Définir une couleur transparente"));
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
-	// See replaceImage()'s identical comment: a separate, deliberate
-	// action with no compound child of its own, so a dummy one is
-	// needed to stop two consecutive transparency edits (identical
-	// object, property, and text) from silently merging into one.
-	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
-/**
-	@brief DiagramImageItem::crop
-	Context-menu action: opens ImageCropDialog against pixmap_ (the
-	current, already colour-keyed display, so cropping is WYSIWYG
-	against whatever is actually visible), then applies the chosen
-	rectangle to both pixmap_ and m_base_pixmap together -- kept in
-	sync the same way mirror() keeps them in sync, since cropping is a
-	permanent, geometric change to the image's own content, unlike
-	setTransparentColor()'s non-destructive colour keying.
-
-	pos() also needs adjusting, not just pixmap_: setPixmap() (called
-	via the "pixmap" undo command below) recomputes
-	transformOriginPoint() from the new, smaller boundingRect(), but
-	pos() itself is untouched by that -- without fixing it up here too,
-	the surviving content would visually jump to wherever local (0,0)
-	happens to land after shrinking, rather than staying exactly where
-	it already was. Chained into one undo step together with the pixmap
-	change, since undoing a crop has to restore both, or the restored
-	(larger) image ends up in the wrong place.
-*/
 /**
 	@brief DiagramImageItem::crop
 	Context-menu action: opens ImageCropDialog against m_base_pixmap
@@ -1995,27 +1956,7 @@ void DiagramImageItem::setTransparentColor()
 	destructive: nothing about the original content is ever discarded,
 	only which region of it is currently being shown, exactly the same
 	principle setTransparentColor() already follows for its own choices.
-	Recomputes pixmap_ via computeDisplayPixmap() so any already-picked
-	transparent colours are correctly re-applied to the newly-cropped
-	region, rather than lost (the crop dialog itself knows nothing
-	about them).
-
-	pos() also needs adjusting, not just pixmap_: setPixmap() (called
-	via the "pixmap" undo command below) recomputes
-	transformOriginPoint() from the new boundingRect(), but pos() itself
-	is untouched by that -- without fixing it up here too, the
-	surviving content would visually jump to wherever local (0,0) ends
-	up after the crop rect changes, rather than staying exactly where
-	it already was. This has to work whether this is the first crop
-	ever applied or an adjustment of an existing one, so the position
-	math is always done relative to the CURRENT crop rect (m_crop_rect,
-	before it's updated below) -- when there's no previous crop, that's
-	simply the whole base, which is what the very first version of this
-	method assumed unconditionally.
-
-	Chained into one undo step together with the pixmap change, since
-	undoing a crop has to restore both, or the restored (larger) image
-	ends up in the wrong place.
+	The crop itself is done by applyCrop().
 */
 void DiagramImageItem::crop()
 {
@@ -2032,18 +1973,36 @@ void DiagramImageItem::crop()
 
 /**
 	@brief DiagramImageItem::applyCrop
-	Show @a newCropRect of the original (in the original's own pixels),
-	keeping the centre of the kept region where it is on the folio. One
-	undo step, which restores the pixmap, the position, the pivot and the
-	crop rectangle together.
+	Show @a cropRect of the original (in the original's own pixels),
+	keeping the centre of the kept region where it is on the folio.
+	Recomputes pixmap_ via computeDisplayPixmap() so any already-picked
+	transparent colours are correctly re-applied to the newly-cropped
+	region, rather than lost.
+
+	pos() also needs adjusting, not just pixmap_: setPixmap() (called
+	via the "pixmap" undo command below) recomputes
+	transformOriginPoint() from the new boundingRect(), but pos() itself
+	is untouched by that -- without fixing it up here too, the
+	surviving content would visually jump to wherever local (0,0) ends
+	up after the crop rect changes, rather than staying exactly where
+	it already was. This has to work whether this is the first crop
+	ever applied or an adjustment of an existing one, so the position
+	math is always done relative to the CURRENT crop rect (m_crop_rect,
+	before it's updated below) -- when there's no previous crop, that's
+	simply the whole base.
+
+	One undo step, which restores the pixmap, the position, the pivot
+	and the crop rectangle together.
+	@return false if nothing was cropped: read-only folio, or a
+	rectangle that is empty, outside the original, or the current one.
 */
-void DiagramImageItem::applyCrop(const QRect &cropRect)
+bool DiagramImageItem::applyCrop(const QRect &cropRect)
 {
 	if (!diagram() || diagram()->isReadOnly())
-		return;
+		return false;
 	const QRect newCropRect = cropRect.intersected(m_base_pixmap.rect());
 	if (newCropRect.isEmpty() || newCropRect == m_crop_rect)
-		return;   // nothing actually changed
+		return false;   // nothing actually changed
 
 	// newCropRect is in m_base_pixmap's own coordinates; converting its
 	// center into the CURRENT local space (pixmap_'s own coordinates,
@@ -2080,4 +2039,5 @@ void DiagramImageItem::applyCrop(const QRect &cropRect)
 							 QVariant::fromValue(newSource), undo);
 	m_pivotIsCustom = false;
 	diagram()->undoStack().push(undo);
+	return true;
 }

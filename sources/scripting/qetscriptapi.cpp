@@ -3474,6 +3474,9 @@ bool QetScriptApi::setImageRotation(int folioIndex, int imageIndex, double angle
 	Show only the rectangle (x, y, width, height) of the image's original,
 	in the original's own pixels, as the crop tool does: one undo step,
 	the kept region staying where it is on the folio.
+	@return false if nothing was cropped: no such image, read-only
+	project, or a rectangle that is empty, outside the original, or the
+	current crop.
 */
 bool QetScriptApi::cropImage(int folioIndex, int imageIndex, int x, int y, int width, int height)
 {
@@ -3488,8 +3491,7 @@ bool QetScriptApi::cropImage(int folioIndex, int imageIndex, int x, int y, int w
 			.arg(folioIndex).arg(list.count()).arg(imageIndex));
 		return false;
 	}
-	list.at(imageIndex)->applyCrop(QRect(x, y, width, height));
-	return true;
+	return list.at(imageIndex)->applyCrop(QRect(x, y, width, height));
 }
 
 /**
