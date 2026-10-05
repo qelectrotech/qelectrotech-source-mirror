@@ -43,6 +43,7 @@ namespace AssistantInfo
 	QString path();
 	void watch();
 	void write();
+	void refresh();
 	void setLive(const QJsonObject &live);
 	void markStopped();
 }

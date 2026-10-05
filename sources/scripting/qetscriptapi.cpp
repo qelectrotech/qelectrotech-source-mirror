@@ -45,6 +45,7 @@
 #include "../conductorrouter.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../utils/qetsettings.h"
+#include "assistantinfo.h"
 
 // See diagrameventaddpdf.h: a missing QtPdf module (or Qt < 6.4) is not
 // fatal at build time, so addPdfPage() is always declared -- a script
@@ -4224,6 +4225,9 @@ QString QetScriptApi::houseStyle() const
 bool QetScriptApi::setHouseStyle(const QString &text)
 {
 	QetSettings::setHouseStyle(text);
+		//qet-assistant.json carries it: an assistant reading the file
+		//now must see the new text, not the one from the last start
+	AssistantInfo::refresh();
 	return true;
 }
 

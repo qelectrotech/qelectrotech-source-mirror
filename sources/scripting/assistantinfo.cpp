@@ -36,6 +36,7 @@
 namespace {
 	QJsonObject s_live;	///< empty while live mode is closed
 	bool s_running = true;
+	bool s_watching = false;	///< this QElectroTech writes the file (an editor opened)
 }
 
 namespace AssistantInfo {
@@ -54,12 +55,23 @@ QString path()
 */
 void watch()
 {
-	static bool watching = false;
-	if (watching) return;
-	watching = true;
+	if (s_watching) return;
+	s_watching = true;
 	QObject::connect(&ScriptLibrary::instance(), &ScriptLibrary::changed, &write);
 	QObject::connect(qApp, &QCoreApplication::aboutToQuit, &markStopped);
 	write();
+}
+
+/**
+	@brief refresh
+	Write the file again after a setting it carries changed, but only in a
+	QElectroTech that writes it at all: a headless --run never opened an
+	editor, and writing from it would replace the open QElectroTech's live
+	channel with its own empty one.
+*/
+void refresh()
+{
+	if (s_watching) write();
 }
 
 void write()
