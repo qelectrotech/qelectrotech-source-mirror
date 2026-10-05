@@ -50,6 +50,10 @@
 #include <QVBoxLayout>
 #include <QCheckBox>
 #include <QDialog>
+#include <QElapsedTimer>
+#include <QDateTime>
+#include <functional>
+#include <QJsonValue>
 #include <QDir>
 #include <QFileInfo>
 #include <QMdiSubWindow>
@@ -63,6 +67,76 @@
 #include "../shortcutmanager.h"
 
 namespace {
+	/**
+		Timing of the live channel, for finding where an assistant's
+		request spends its time. Nothing is measured unless the request
+		asks for it ("timing": true, answered in "timing") or the
+		environment names a log file (QET_LIVE_PERF_LOG: one JSON line per
+		request, with the time until the folio is next painted).
+	*/
+	qint64 nowNs()
+	{
+		static QElapsedTimer clock;
+		if (!clock.isValid()) clock.start();
+		return clock.nsecsElapsed();
+	}
+
+	double ms(qint64 ns) { return qRound(ns / 1e4) / 100.0; }
+
+	QString perfLogPath()
+	{
+		static const QString path = qEnvironmentVariable("QET_LIVE_PERF_LOG");
+		return path;
+	}
+
+	void appendPerfLog(const QJsonObject &line)
+	{
+		QFile file(perfLogPath());
+		if (file.open(QIODevice::WriteOnly | QIODevice::Append))
+			file.write(QJsonDocument(line).toJson(QJsonDocument::Compact) + '\n');
+	}
+
+	/**
+		Waits for the next paint of a widget (the folio on screen) and
+		calls done with the time it started and the time the event loop
+		came back, or with -1 when nothing was painted within 2 s (a
+		request that changed nothing visible).
+	*/
+	class PaintProbe : public QObject
+	{
+		public:
+			PaintProbe(QWidget *widget, std::function<void(qint64, qint64)> done) :
+				QObject(widget), m_done(std::move(done))
+			{
+				widget->installEventFilter(this);
+				QTimer::singleShot(2000, this, [this]() { finish(-1, -1); });
+			}
+
+		protected:
+			bool eventFilter(QObject *, QEvent *event) override
+			{
+				if (event->type() == QEvent::Paint && m_start < 0) {
+					m_start = nowNs();
+						//Runs once the paint event has been handled
+					QTimer::singleShot(0, this, [this]() { finish(m_start, nowNs()); });
+				}
+				return false;
+			}
+
+		private:
+			void finish(qint64 start, qint64 end)
+			{
+				if (!m_done) return;
+				auto done = std::move(m_done);
+				m_done = nullptr;
+				done(start, end);
+				deleteLater();
+			}
+
+			std::function<void(qint64, qint64)> m_done;
+			qint64 m_start = -1;
+	};
+
 	QString randomHex(int bytes)
 	{
 		QByteArray raw(bytes, Qt::Uninitialized);
@@ -234,8 +308,9 @@ void LiveServer::readClient()
 			return;
 		}
 		setState(Connected);
+		const qint64 received = nowNs();
 			//Out of the socket handler before anything runs (see class doc)
-		QTimer::singleShot(0, this, [this, request]() { handle(request); });
+		QTimer::singleShot(0, this, [this, request, received]() { handle(request, received); });
 	}
 }
 
@@ -247,8 +322,10 @@ void LiveServer::send(const QJsonObject &answer)
 	}
 }
 
-void LiveServer::handle(const QJsonObject &request)
+void LiveServer::handle(const QJsonObject &request, qint64 received_ns)
 {
+	const qint64 started = nowNs();
+	qint64 confirm_ns = 0;
 	const QString cmd = request.value(QStringLiteral("cmd")).toString();
 	QJsonObject answer;
 	if (m_busy) {
@@ -263,7 +340,10 @@ void LiveServer::handle(const QJsonObject &request)
 				//A script the assistant just wrote: the user sees it first,
 				//unless they chose "always" (remembered). A stored script
 				//is one the user already has, so it runs as a click would.
-			if (m_ask_first && !confirm(name, source))
+			const qint64 confirm_start = nowNs();
+			const bool refused = m_ask_first && !confirm(name, source);
+			confirm_ns = nowNs() - confirm_start;
+			if (refused)
 				answer = failure(QStringLiteral("refused by the user"));
 			else
 				answer = runScript(name, source);
@@ -300,7 +380,14 @@ void LiveServer::handle(const QJsonObject &request)
 	}
 	if (request.contains(QStringLiteral("id")))
 		answer.insert(QStringLiteral("id"), request.value(QStringLiteral("id")));
+	const qint64 done = nowNs();
+	QJsonObject timing{{QStringLiteral("queue_ms"), ms(started - received_ns)},
+			   {QStringLiteral("confirm_ms"), ms(confirm_ns)},
+			   {QStringLiteral("exec_ms"), ms(done - started - confirm_ns)}};
+	if (request.value(QStringLiteral("timing")).toBool())
+		answer.insert(QStringLiteral("timing"), timing);
 	send(answer);
+	timing.insert(QStringLiteral("reply_ms"), ms(nowNs() - received_ns));
 		//One request per connection: close it from this side once it is
 		//answered. Waiting for the client to hang up raced the next
 		//request on Windows, where a named pipe's disconnection reaches
@@ -309,6 +396,26 @@ void LiveServer::handle(const QJsonObject &request)
 	if (m_client) {
 		m_client->disconnectFromServer();
 		m_client = nullptr;
+	}
+	if (!perfLogPath().isEmpty()) {
+		timing.insert(QStringLiteral("src"), QStringLiteral("qet"));
+		timing.insert(QStringLiteral("id"), request.value(QStringLiteral("id")));
+		timing.insert(QStringLiteral("cmd"), cmd);
+		timing.insert(QStringLiteral("ok"), answer.value(QStringLiteral("ok")));
+		timing.insert(QStringLiteral("t"), QDateTime::currentMSecsSinceEpoch() / 1000.0);
+		QETDiagramEditor *e = editor();
+		DiagramView *view = e ? e->currentDiagramView() : nullptr;
+		if (!view) {
+			appendPerfLog(timing);
+		} else {
+			new PaintProbe(view->viewport(), [timing, received_ns](qint64 start, qint64 end) mutable {
+				timing.insert(QStringLiteral("paint_start_ms"),
+					      start < 0 ? QJsonValue() : QJsonValue(ms(start - received_ns)));
+				timing.insert(QStringLiteral("paint_ms"),
+					      start < 0 ? QJsonValue() : QJsonValue(ms(end - start)));
+				appendPerfLog(timing);
+			});
+		}
 	}
 	emit handled(request, answer);
 }
