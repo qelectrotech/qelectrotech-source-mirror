@@ -44,6 +44,7 @@
 #include "../conductorsegment.h"
 #include "../conductorrouter.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
+#include "../utils/qetsettings.h"
 
 // See diagrameventaddpdf.h: a missing QtPdf module (or Qt < 6.4) is not
 // fatal at build time, so addPdfPage() is always declared -- a script
@@ -4198,6 +4199,32 @@ QStringList QetScriptApi::folioPresets() const
 		names << paper.first + QStringLiteral("-portrait")
 			  << paper.first + QStringLiteral("-landscape");
 	return names;
+}
+
+/**
+	@brief QetScriptApi::houseStyle
+	This installation's drawing conventions (grid, flow direction, routing,
+	tagging, grouping, ...), as free text the user wrote once. Empty when
+	nobody has set any. Not project-scoped: the same text for every
+	project this QElectroTech opens, same as liveAssistantEnabled().
+	@return the text
+*/
+QString QetScriptApi::houseStyle() const
+{
+	return QetSettings::houseStyle();
+}
+
+/**
+	@brief QetScriptApi::setHouseStyle
+	Write the installation's drawing conventions. Always succeeds (a plain
+	setting, not project data, so there is nothing here to refuse); @return
+	is for a consistent call shape with the rest of the API.
+	@param text
+*/
+bool QetScriptApi::setHouseStyle(const QString &text)
+{
+	QetSettings::setHouseStyle(text);
+	return true;
 }
 
 /**

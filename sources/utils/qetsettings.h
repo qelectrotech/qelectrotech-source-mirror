@@ -42,6 +42,16 @@ namespace QetSettings
 	void setLiveAssistantEnabled(bool enabled);
 
 	/**
+		@brief Free-text drawing conventions for this installation (grid,
+		flow direction, routing, tagging, grouping, ...), written once by
+		the user and read by every AI assistant that connects -- live or
+		headless -- through qet-assistant.json and qet.houseStyle().
+		Empty when never set.
+	*/
+	QString houseStyle();
+	void setHouseStyle(const QString &text);
+
+	/**
 		@brief The sheet (folio) background the diagram editors draw.
 
 		Both halves are needed, not just the colour: with custom == false

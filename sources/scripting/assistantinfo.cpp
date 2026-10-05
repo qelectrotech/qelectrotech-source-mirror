@@ -111,7 +111,14 @@ void write()
 		{QStringLiteral("stored_scripts"), scripts},
 		{QStringLiteral("refused_scripts"), refused},
 		{QStringLiteral("recordings"), MacroRecorder::recordings()},
-		{QStringLiteral("live"), s_live.isEmpty() ? QJsonValue() : QJsonValue(s_live)}};
+		{QStringLiteral("live"), s_live.isEmpty() ? QJsonValue() : QJsonValue(s_live)},
+		// Free-text drawing conventions, set once by the user
+		// (QetSettings::setHouseStyle(), qet.setHouseStyle()) and read
+		// by any assistant that connects, live or headless, without it
+		// having to ask the user or guess. Null, not "", when unset --
+		// the two mean different things to a reader.
+		{QStringLiteral("house_style"), QetSettings::houseStyle().isEmpty()
+			? QJsonValue() : QJsonValue(QetSettings::houseStyle())}};
 
 	const QString file_path = path();
 	QDir().mkpath(QFileInfo(file_path).path());
