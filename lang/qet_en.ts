@@ -7185,12 +7185,12 @@ Please use the advanced editor for this.</translation>
 <context>
     <name>LiveServer</name>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="108"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="114"/>
         <source>Mode direct</source>
         <translation>Live mode</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="109"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="115"/>
         <source>Le mode direct est activé : un assistant IA connecté pourra exécuter des scripts sur le projet ouvert.
 
 Chaque action s&apos;annule d&apos;un Ctrl+Z, et le bouton « Arrêter » de la barre d&apos;état coupe la connexion.
@@ -7203,55 +7203,69 @@ Each action is undone with one Ctrl+Z, and the “Stop” button in the status b
 This setting is in Configure QElectroTech &gt; General &gt; Projects.</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="116"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="122"/>
         <source>&amp;Continuer</source>
         <translation>&amp;Continue</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="117"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="123"/>
         <source>&amp;Pas pour cette session</source>
         <translation>&amp;Not this session</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="118"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="124"/>
         <source>&amp;Désactiver</source>
         <translation>&amp;Turn off</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="354"/>
-        <location filename="../sources/scripting/liveserver.cpp" line="508"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="126"/>
+        <source>Ne plus demander au démarrage</source>
+        <translation>Don&apos;t ask again at start</translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="127"/>
+        <source>Le mode direct s&apos;ouvrira à chaque démarrage. Pour être de nouveau averti, désactivez-le puis réactivez-le dans Configurer QElectroTech &gt; Général &gt; Projets.</source>
+        <translation>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="366"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="521"/>
         <source>script</source>
         <translation>script</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="456"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="469"/>
         <source>Assistant : %1</source>
         <translation>Assistant: %1</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="504"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="517"/>
         <source>L&apos;assistant veut exécuter un script</source>
         <translation>The assistant wants to run a script</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="507"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="520"/>
         <source>« %1 » sur le projet ouvert. Une fois exécuté, Ctrl+Z l&apos;annule.</source>
         <translation>“%1” on the open project. Once it has run, Ctrl+Z undoes it.</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="515"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="528"/>
         <source>&amp;Exécuter</source>
         <translation>&amp;Run</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="516"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="529"/>
         <source>&amp;Refuser</source>
         <translation>&amp;Decline</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="517"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="530"/>
+        <source>&amp;Toujours</source>
+        <translation>&amp;Always</translation>
+    </message>
+    <message>
         <source>&amp;Toujours pour cette session</source>
-        <translation>&amp;Always this session</translation>
+        <translation type="vanished">&amp;Always this session</translation>
     </message>
 </context>
 <context>
@@ -7765,90 +7779,90 @@ Do you still want to link this slave contact?</translation>
 <context>
     <name>NewElementWizard</name>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="119"/>
+        <location filename="../sources/newelementwizard.cpp" line="120"/>
         <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
         <translation>You don&apos;t have to specify the *.elmt extension. It will be added automatically.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="117"/>
+        <location filename="../sources/newelementwizard.cpp" line="118"/>
         <source>nouvel_element</source>
         <translation>new_element</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="50"/>
+        <location filename="../sources/newelementwizard.cpp" line="51"/>
         <source>&amp;Suivant &gt;</source>
         <translation>&amp;Next &gt;</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="49"/>
+        <location filename="../sources/newelementwizard.cpp" line="50"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
         <translation>Create a new element: wizard</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="85"/>
+        <location filename="../sources/newelementwizard.cpp" line="86"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
         <translation>Step 1 of 3: Parent category</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="86"/>
+        <location filename="../sources/newelementwizard.cpp" line="87"/>
         <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Select a category which to save the new element in.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="113"/>
+        <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
         <translation>Step 2 of 3: Filename</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="114"/>
+        <location filename="../sources/newelementwizard.cpp" line="115"/>
         <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Enter the name of the file for the new element.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="138"/>
+        <location filename="../sources/newelementwizard.cpp" line="139"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
         <translation>Step 3 of 3: Element names</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="139"/>
+        <location filename="../sources/newelementwizard.cpp" line="140"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Enter one or more names for the element.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="144"/>
+        <location filename="../sources/newelementwizard.cpp" line="145"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
         <translation>New element name</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="202"/>
-        <location filename="../sources/newelementwizard.cpp" line="220"/>
-        <location filename="../sources/newelementwizard.cpp" line="233"/>
+        <location filename="../sources/newelementwizard.cpp" line="203"/>
+        <location filename="../sources/newelementwizard.cpp" line="221"/>
+        <location filename="../sources/newelementwizard.cpp" line="234"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="203"/>
+        <location filename="../sources/newelementwizard.cpp" line="204"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>You must select a category.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="221"/>
+        <location filename="../sources/newelementwizard.cpp" line="222"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>You must enter a filename</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="234"/>
+        <location filename="../sources/newelementwizard.cpp" line="235"/>
         <source>Un élément portant le même nom existe déjà</source>
         <translation>An element with the same name already exists</translation>
     </message>
@@ -11297,6 +11311,11 @@ A script runs with your permissions: it can read and modify the open project and
 Enable scripts? This setting can be changed in Configure QElectroTech &gt; General &gt; Projects.</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4089"/>
+        <source>Retenu après un redémarrage</source>
+        <translation>Remembered after a restart</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3871"/>
         <source>Scripts JavaScript (*.js);;Tous les fichiers (*)</source>
         <translation>JavaScript scripts (*.js);;All files (*)</translation>
@@ -11386,9 +11405,8 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>Ask before running a script the assistant wrote</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4089"/>
         <source>Pour cette session seulement : chaque démarrage redemande</source>
-        <translation>For this session only: every start asks again</translation>
+        <translation type="vanished">For this session only: every start asks again</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4144"/>
