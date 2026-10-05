@@ -7185,12 +7185,12 @@ Please use the advanced editor for this.</translation>
 <context>
     <name>LiveServer</name>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="114"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="116"/>
         <source>Mode direct</source>
         <translation>Live mode</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="115"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="117"/>
         <source>Le mode direct est activé : un assistant IA connecté pourra exécuter des scripts sur le projet ouvert.
 
 Chaque action s&apos;annule d&apos;un Ctrl+Z, et le bouton « Arrêter » de la barre d&apos;état coupe la connexion.
@@ -7203,17 +7203,17 @@ Each action is undone with one Ctrl+Z, and the “Stop” button in the status b
 This setting is in Configure QElectroTech &gt; General &gt; Projects.</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="122"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="124"/>
         <source>&amp;Continuer</source>
         <translation>&amp;Continue</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="123"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="125"/>
         <source>&amp;Pas pour cette session</source>
         <translation>&amp;Not this session</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="124"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="126"/>
         <source>&amp;Désactiver</source>
         <translation>&amp;Turn off</translation>
     </message>
@@ -7228,33 +7228,57 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</translati
         <translation>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="366"/>
-        <location filename="../sources/scripting/liveserver.cpp" line="521"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="379"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="903"/>
         <source>script</source>
         <translation>script</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="469"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="726"/>
+        <source>Impression</source>
+        <translation>Print</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/scripting/liveserver.cpp" line="727"/>
+        <source>L&apos;assistant veut imprimer %n folio(s) de « %1 » sur « %2 ».</source>
+        <translation>
+            <numerusform>The assistant wants to print %n folio of “%1” on “%2”.</numerusform>
+            <numerusform>The assistant wants to print %n folios of “%1” on “%2”.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="730"/>
+        <source>&amp;Imprimer</source>
+        <translation>&amp;Print</translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="731"/>
+        <source>&amp;Annuler</source>
+        <translation>&amp;Cancel</translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="818"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>Assistant : %1</source>
         <translation>Assistant: %1</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="517"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="899"/>
         <source>L&apos;assistant veut exécuter un script</source>
         <translation>The assistant wants to run a script</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="520"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="902"/>
         <source>« %1 » sur le projet ouvert. Une fois exécuté, Ctrl+Z l&apos;annule.</source>
         <translation>“%1” on the open project. Once it has run, Ctrl+Z undoes it.</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="528"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="910"/>
         <source>&amp;Exécuter</source>
         <translation>&amp;Run</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="529"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="911"/>
         <source>&amp;Refuser</source>
         <translation>&amp;Decline</translation>
     </message>
@@ -9826,7 +9850,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="899"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4041"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4043"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Close</translation>
     </message>
@@ -9888,8 +9912,8 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3154"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3177"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3156"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3179"/>
         <source>Supprimer le folio</source>
         <translation>Delete this sheet</translation>
     </message>
@@ -10166,7 +10190,7 @@ Available options:
         <translation>Depth</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2337"/>
         <source>Groupe</source>
         <translation>Group</translation>
     </message>
@@ -10378,7 +10402,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1776"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2882"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2884"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Unable to open project</translation>
@@ -10391,8 +10415,8 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="163"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3459"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3461"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3464"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
@@ -10662,8 +10686,8 @@ Hold Ctrl while moving to place freely.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="755"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3827"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3845"/>
         <source>Recharger les dessins des éléments</source>
         <translation>Reload element drawings</translation>
     </message>
@@ -11041,7 +11065,7 @@ Hold Ctrl while moving to place freely.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1459"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3956"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3958"/>
         <source>Scripts</source>
         <translation>Scripts</translation>
     </message>
@@ -11119,19 +11143,19 @@ If you save the project, these conductors will disappear from the file. Close it
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2270"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2272"/>
         <source>Suppression de borne impossible</source>
         <translation>Unable to delete the terminal</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2271"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2273"/>
         <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
 Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
         <translation>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2374"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2376"/>
         <source>%n objet(s) remis sur la grille</source>
         <translation>
             <numerusform>%n item put back on the grid</numerusform>
@@ -11139,7 +11163,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2375"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2377"/>
         <source>%n objet(s) aligné(s)</source>
         <translation>
             <numerusform>%n item aligned</numerusform>
@@ -11147,22 +11171,22 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2381"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2383"/>
         <source>La sélection est déjà sur la grille</source>
         <translation>The selection is already on the grid</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2383"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2385"/>
         <source>Sélectionnez au moins deux éléments, images, textes, formes ou groupes non verrouillés</source>
         <translation>Select at least two unlocked elements, images, texts, shapes or groups</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2387"/>
         <source>La sélection est déjà alignée, à la grille près</source>
         <translation>The selection is already aligned, to the nearest grid step</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2389"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2391"/>
         <source>(%n objet(s) verrouillé(s) laissé(s) en place)</source>
         <translation>
             <numerusform>(%n locked object left in place)</numerusform>
@@ -11170,100 +11194,100 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2623"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2625"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Edit the element</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2630"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2632"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Edit the text field</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2637"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2639"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Edit the image</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2644"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2646"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Edit conductor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2652"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2654"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Edit the selected object</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2883"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2885"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>An error occurred while opening file %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2931"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2933"/>
         <source>Active le projet « %1 »</source>
         <translation>Activates the project « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3155"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3157"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
         <translation>Are you sure you want to delete this sheet?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3160"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3162"/>
         <source>Supprimer les folios</source>
         <translation>Delete the sheets</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3161"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3163"/>
         <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
         <translation>Are you sure you want to delete the selected %1 sheets ?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3178"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3180"/>
         <source>Supprimer %1 folios</source>
         <translation>Delete %1 sheets</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3216"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3234"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3252"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3270"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3288"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3306"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3272"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3326"/>
         <source>Déplacer les folios</source>
         <translation>Move the sheets</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3401"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3527"/>
         <source>Répéter : insérer « %1 »</source>
         <translation>Repeat: insert &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3526"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3528"/>
         <source>Répéter : %1</source>
         <translation>Repeat: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3808"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3810"/>
         <source>folio %1</source>
         <translation>sheet %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3816"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3818"/>
         <source>%n élément(s) redessiné(s).</source>
         <translation>
             <numerusform>%n element redrawn.</numerusform>
@@ -11271,7 +11295,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3820"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3822"/>
         <source>%n élément(s) dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</source>
         <translation>
             <numerusform>%n element for which no definition could be found or which were illegible: their current design has been retained.</numerusform>
@@ -11279,7 +11303,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3832"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3834"/>
         <source>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</source>
         <translation>
             <numerusform>%n element not redrawn: its size, grip point or terminals have changed (a terminal was added, removed or moved).</numerusform>
@@ -11287,18 +11311,18 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3838"/>
         <source>Pour les mettre à jour, il faut les supprimer puis les réinsérer. Attention : cette opération supprime les conducteurs déjà reliés à ces éléments, qu&apos;il faudra retracer.</source>
         <translation>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3865"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3869"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3867"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3871"/>
         <source>Exécuter un script</source>
         <translation>Run a script</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3894"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3896"/>
         <source>Les scripts sont désactivés.
 
 Un script s&apos;exécute avec vos droits : il peut lire et modifier le projet ouvert et écrire des fichiers. N&apos;exécutez que des scripts dont vous connaissez l&apos;origine.
@@ -11316,28 +11340,28 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         <translation>Remembered after a restart</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3871"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3873"/>
         <source>Scripts JavaScript (*.js);;Tous les fichiers (*)</source>
         <translation>JavaScript scripts (*.js);;All files (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3970"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3972"/>
         <source>Ignoré : %1</source>
         <translation>Ignored: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4004"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4064"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4066"/>
         <source>Arrêter</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4007"/>
         <source>Arrêter l&apos;enregistrement de la macro</source>
         <translation>Stop recording the macro</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4015"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4017"/>
         <source>● Enregistrement : %n étape(s)</source>
         <translation>
             <numerusform>● Recording: %n step</numerusform>
@@ -11345,12 +11369,12 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4030"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4032"/>
         <source>Macro enregistrée</source>
         <translation>Macro recorded</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4031"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4033"/>
         <source>« %1 » : %n étape(s).
 
 Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessous copie la demande, il suffit de la coller dans sa fenêtre.</source>
@@ -11364,57 +11388,58 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4039"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4041"/>
         <source>&amp;Copier la demande pour l&apos;assistant</source>
         <translation>&amp;Copy the request for the assistant</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4042"/>
         <source>&amp;Ouvrir le dossier</source>
         <translation>&amp;Open the folder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4046"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4048"/>
         <source>Demande copiée : collez-la dans la fenêtre de l&apos;assistant</source>
         <translation>Request copied: paste it into the assistant&apos;s window</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4065"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4067"/>
         <source>Couper la connexion de l&apos;assistant pour le reste de la session</source>
         <translation>Close the assistant&apos;s connection for the rest of the session</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4074"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4076"/>
         <source>Mode direct : assistant connecté</source>
         <translation>Live mode: assistant connected</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4075"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4077"/>
         <source>Mode direct : en attente d&apos;un assistant</source>
         <translation>Live mode: waiting for an assistant</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4083"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4127"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4085"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4129"/>
         <source>Assistant</source>
         <translation>Assistant</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4087"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4089"/>
         <source>Demander avant d&apos;exécuter un script écrit par l&apos;assistant</source>
         <translation>Ask before running a script the assistant wrote</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4091"/>
         <source>Pour cette session seulement : chaque démarrage redemande</source>
         <translation type="vanished">For this session only: every start asks again</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4144"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4146"/>
         <source>Mode direct : %1 %2 à %3</source>
         <translation>Live mode: %1 %2 at %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="4186"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4188"/>
         <source>%n type(s) d&apos;objets masqué(s)</source>
         <translation>
             <numerusform>%n kind of item hidden</numerusform>
@@ -11422,8 +11447,8 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4202"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4207"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4204"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4209"/>
         <source>Textes %1</source>
         <translation>Texts %1</translation>
     </message>
@@ -14360,22 +14385,22 @@ Do you want to replace it ?</translation>
         <translation>Creation of conductors</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3675"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3695"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3712"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3714"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3732"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3734"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Error launching qet_tb_generator plugin</translation>
     </message>
@@ -14998,27 +15023,27 @@ Please download it by following the link and unzip it in the installation folder
         <translation>Rotate an image</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3780"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3799"/>
         <source>Modifier un texte d&apos;élément</source>
         <translation>Edit element text</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3862"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3881"/>
         <source>Numéroter automatiquement un élément</source>
         <translation>Automatically number an element</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="3904"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="3923"/>
         <source>Renuméroter les éléments (%1)</source>
         <translation>Renumber elements (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="4816"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="4835"/>
         <source>Rechercher et remplacer</source>
         <translation>Search and replace</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/qetscriptapi.cpp" line="5090"/>
+        <location filename="../sources/scripting/qetscriptapi.cpp" line="5109"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="145"/>
         <location filename="../sources/scripting/qetscripting.cpp" line="230"/>
         <source>Script</source>

@@ -1856,8 +1856,10 @@ bool QETDiagramEditor::openAndAddProject(
 		box.exec();
 	}
 
+		//Not when nobody is there to answer: an assistant opening a
+		//project in live mode would wait on a window it cannot see
 	BackupDialog backup_dialog(this);
-	if (backup_dialog.exec() == QDialog::Accepted)
+	if (interactive && backup_dialog.exec() == QDialog::Accepted)
 	{
 		QString backup_path = filepath_info.absolutePath() + QDir::separator() +
 			QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm") + "_" +

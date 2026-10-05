@@ -40,9 +40,9 @@ here read the model.
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
 | `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios, terminals with more than four wires, folio reports with several wires |
-| `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings; and the moves that fix them, ready for `qet_edit` |
+| `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings, labels over wires, 4-way junction dots, side branches out of line; and the moves that fix them, ready for `qet_edit` |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
-| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`) |
+| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`), and the installation's standard symbols if it has any |
 | `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
 | `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
 | `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Project > Scripts and the Scripts toolbar |
@@ -233,6 +233,8 @@ file or one listed by whoever configured the server:
 | `QET_MCP_BINARIES` | other executables a call may name, separated like `QET_MCP_WORKSPACE` (for comparing two builds) |
 | `QET_MCP_ALLOW_ANY_BINARY=1` | turns the check off: a call can then run any program |
 | `QET_MCP_ELEMENTS` | element collections a call may name as `elements_dir` besides the workspace and the installed one |
+| `QET_MCP_CACHE_DIR` | where the parsed element index is kept between runs (default `~/.cache/qet-mcp`); a new server then loads a collection in well under a second instead of parsing every symbol |
+| `QET_MCP_STANDARD_SYMBOLS` | the installation's standard symbols, one per device role (default `standard-symbols.json` in QElectroTech's data folder); `qet_about` lists them |
 
 Anything else is refused, even a file inside the workspace: being there
 makes it readable, not runnable. Before this rule any executable a call
@@ -324,7 +326,7 @@ general (on the selected elements, say, not on these exact ones),
 ## Live mode: working in the QElectroTech you have open
 
 Every tool above works on files, with no QElectroTech window involved. The
-three `qet_live_*` tools instead act on the project open in **your**
+`qet_live_*` tools instead act on the project open in **your**
 QElectroTech, in front of you, so you can watch, stop or undo:
 
 | | |
@@ -336,6 +338,20 @@ QElectroTech, in front of you, so you can watch, stop or undo:
 | `qet_live_show_folio` | show another folio |
 | `qet_live_undo_last` | undo the newest step, only if the assistant made it |
 | `qet_live_screenshot` | a picture of the folio on screen, as an MCP image, cropped to the folio |
+| `qet_live_new_project` | a new project, as File > New makes it, made current; optional title, number of folios and a file to save it to (never over an existing one) |
+| `qet_live_open_project` | open a saved project and make it current, with no dialog; one already open is only made current |
+| `qet_live_switch_project` | make another open project current, by its index in `qet_live_status`'s `projects` or its file |
+| `qet_live_save_project` | save the current project, or save it as a new file (never over an existing one) |
+| `qet_live_close_project` | close a project, only when it has no unsaved changes |
+| `qet_live_print` | print folios to the default or a named printer with no print dialog -- QElectroTech always asks you first -- or to a new PDF file |
+| `qet_live_changes` | the undo history, each step marked assistant or you; `since` gives what changed after a point |
+| `qet_live_layout_check` | `qet_layout_check` on the drawing as it is on screen, unsaved changes included, without saving it |
+
+Every `qet_live_*` call works on the current project. Pages and links
+between pages need no tool of their own: in `qet_live_run_script`,
+`qet.addFolio()` and `qet.setFolioTitle()` add and name folios, and
+`qet.linkElements()` links a folio report arrow, or a coil and its
+contacts, across folios.
 
 A script the assistant writes on the spot is shown to you first, with
 *Run*, *Decline* or *Always* (remembered after a restart; untick "Ask

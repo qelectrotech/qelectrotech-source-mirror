@@ -18,6 +18,7 @@
 #ifndef LIVESERVER_H
 #define LIVESERVER_H
 
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QObject>
 #include <QPointer>
@@ -85,6 +86,15 @@ class LiveServer : public QObject
 		QJsonObject runStored(const QString &id);
 		QJsonObject command(const QString &id);
 		QJsonObject showFolio(int folio);
+		QJsonObject newProject(const QJsonObject &request);
+		QJsonObject openProject(const QString &path);
+		QJsonObject switchProject(const QJsonObject &request);
+		QJsonArray openProjects() const;
+		QJsonObject saveProject(const QJsonObject &request);
+		QJsonObject closeProject(const QJsonObject &request);
+		QJsonObject print(const QJsonObject &request);
+		QJsonObject changes(const QJsonObject &request);
+		QJsonObject snapshot(const QString &path);
 		QJsonObject undoLast();
 		QJsonObject screenshot();
 		bool confirm(const QString &name, const QString &source);

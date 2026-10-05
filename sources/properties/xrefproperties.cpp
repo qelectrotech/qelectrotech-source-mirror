@@ -61,6 +61,7 @@ XRefProperties::XRefProperties()
 	m_show_power_ctc = true;
 	m_show_terminal_name = true;
 	m_show_all_configured_slaves = false;
+	m_stack_overlapping = true;
 	m_display = Cross;
 	m_snap_to = Bottom;
 	m_prefix_keys << "power" << "delay" << "switch";
@@ -83,6 +84,7 @@ void XRefProperties::toSettings(QSettings &settings,
 	settings.setValue(prefix % "showpowerctc", m_show_power_ctc);
 	settings.setValue(prefix % "showterminalname", m_show_terminal_name);
 	settings.setValue(prefix % "showallconfiguredslaves", m_show_all_configured_slaves);
+	settings.setValue(prefix % "stackoverlapping", m_stack_overlapping);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix % "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -117,6 +119,7 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	m_show_power_ctc = settings.value(prefix % "showpowerctc", true).toBool();
 	m_show_terminal_name = settings.value(prefix % "showterminalname", true).toBool();
 	m_show_all_configured_slaves = settings.value(prefix % "showallconfiguredslaves", false).toBool();
+	m_stack_overlapping = settings.value(prefix % "stackoverlapping", true).toBool();
 	QString display = settings.value(prefix % "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix % "snapto", "label").toString();
@@ -148,6 +151,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	xml_element.setAttribute("showterminalname", m_show_terminal_name? "true" : "false");
 	xml_element.setAttribute("showallconfiguredslaves", m_show_all_configured_slaves? "true" : "false");
+	xml_element.setAttribute("stackoverlapping", m_stack_overlapping? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -181,6 +185,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	m_show_terminal_name = xml_element.attribute("showterminalname", "true") == "true";
 	m_show_all_configured_slaves = xml_element.attribute("showallconfiguredslaves", "false") == "true";
+	m_stack_overlapping = xml_element.attribute("stackoverlapping", "true") == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
@@ -228,6 +233,7 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc
 			&& m_show_terminal_name == xrp.m_show_terminal_name
 			&& m_show_all_configured_slaves == xrp.m_show_all_configured_slaves
+			&& m_stack_overlapping == xrp.m_stack_overlapping
 			&& m_display     == xrp.m_display
 			&& m_snap_to     == xrp.m_snap_to
 			&& m_prefix      == xrp.m_prefix
