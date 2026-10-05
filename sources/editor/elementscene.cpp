@@ -23,6 +23,7 @@
 #include "../NameList/ui/namelistwidget.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../QetGraphicsItemModeler/textresizehandles.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
 #include "elementprimitivedecorator.h"
@@ -1498,7 +1499,50 @@ void ElementScene::managePrimitivesGroups()
 		m_decorator -> setPos(0, 0);
 		m_decorator -> setItems(selected_items);
 	}
+	manageTextResizeHandles(selected_items);
 	m_decorator_lock -> unlock();
+}
+
+/**
+	@brief ElementScene::manageTextResizeHandles
+	Show the corner handles that change the width of a text field when it
+	is the only selected item, and it is not being typed in.
+	Called again when the undo stack changes, including from the push of a
+	resize itself: the handles of the same text are then kept, not deleted
+	while they are still emitting.
+	@param selected_items
+*/
+void ElementScene::manageTextResizeHandles(const QList<QGraphicsItem *> &selected_items)
+{
+	QGraphicsTextItem *text = nullptr;
+	if (selected_items.size() == 1 &&
+		selected_items.first()->type() == PartDynamicTextField::Type)
+	{
+		text = static_cast<PartDynamicTextField *>(selected_items.first());
+	}
+	if (text && (text->textInteractionFlags() & Qt::TextEditable))
+		text = nullptr;
+
+	if (m_text_resize_handles && m_text_resize_handles->parentItem() == text) {
+		m_text_resize_handles->updateHandlesPos();
+		return;
+	}
+
+	if (m_text_resize_handles) {
+		m_text_resize_handles->hide();
+		m_text_resize_handles->deleteLater();
+		m_text_resize_handles.clear();
+	}
+
+	if (text)
+	{
+		m_text_resize_handles = new TextResizeHandles(text);
+		connect(m_text_resize_handles, &TextResizeHandles::resizeFinished, this,
+				[this, text](qreal old_width, qreal new_width, QPointF old_pos, QPointF new_pos)
+		{
+			m_undo_stack.push(new TextResizeCommand(text, old_width, new_width, old_pos, new_pos));
+		});
+	}
 }
 
 /**

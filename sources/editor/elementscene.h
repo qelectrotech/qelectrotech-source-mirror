@@ -33,6 +33,7 @@ class QETElementEditor;
 class ESEventInterface;
 class QKeyEvent;
 class CustomElementGraphicPart;
+class TextResizeHandles;
 /**
 	@brief The ElementScene class
 	This class is the canvas allowing the visual edition of an electrical element.
@@ -90,6 +91,7 @@ class ElementScene : public QGraphicsScene
 		    m_y_grid;
 
 		QPointer<CustomElementGraphicPart> m_single_selected_item;
+		QPointer<TextResizeHandles> m_text_resize_handles;
 
 		bool m_hotspot_visible = true;
 		bool m_background_frame_visible = false;
@@ -180,6 +182,7 @@ class ElementScene : public QGraphicsScene
 		void slot_editAuthorInformations();
 		void slot_editProperties();
 		void managePrimitivesGroups();
+		void manageTextResizeHandles(const QList<QGraphicsItem *> &selected_items);
 		void stackAction(ElementEditionCommand *);
 	
 	signals:
