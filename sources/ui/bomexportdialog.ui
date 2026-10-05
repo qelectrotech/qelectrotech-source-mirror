@@ -41,6 +41,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="m_no_junctions">
+        <property name="toolTip">
+         <string>Bornes sans repère, désignation, fabricant ni référence fabricant</string>
+        </property>
+        <property name="text">
+         <string>Laisser de côté les jonctions</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>

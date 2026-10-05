@@ -42,10 +42,18 @@ unit conventions and decimal quantities are not changed implicitly.
 
 ## BOM Policy
 
-The default BOM query exports one row per Simple or Master element. Slave
-contacts, terminal-strip elements, reports, thumbnails, and conductor
-definitions are excluded. A Master device is counted once and PLC I/O entries
-are not expanded. The existing `exclude_from_bom` property is honored by the
+The default BOM query exports one row per Simple, Master, Slave or Terminal
+element: an auxiliary contact block and a terminal block are parts of their
+own (discussion #847). Reports, thumbnails and conductor definitions are
+excluded. A Master device is counted once and PLC I/O entries are not
+expanded.
+
+Two options leave rows out (#1178). Contact blocks: uncheck **Contacts
+esclaves** in the dialog, or pass `--no-slaves`. Junctions, the
+terminal-type symbols drawn where wires branch (`114_connections`), which
+have no label, designation, manufacturer or manufacturer reference: check
+**Laisser de côté les jonctions**, or pass `--no-junctions`. A terminal block
+with a label or a part number is kept. The existing `exclude_from_bom` property is honored by the
 SQL view, including common true representations (`true`, `1`, `yes`, `on`).
 
 The default columns are:

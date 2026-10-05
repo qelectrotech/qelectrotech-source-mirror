@@ -318,6 +318,16 @@
             </property>
            </widget>
           </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="m_slave_cb">
+            <property name="text">
+             <string>Contacts esclaves</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
       </item>

@@ -703,6 +703,12 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `source_date_epoch` if given, else the server's own `SOURCE_DATE_EPOCH`,
   else 0 (1 January 1970). The result's `"reproducible"` is false, with a
   hint, when the QElectroTech build is too old to honour it.
+- **`"no_slaves"` and `"no_junctions"` shorten a `bom` export.** The first
+  leaves out the contact blocks, which otherwise get a row of their own; the
+  second leaves out terminal-type elements with no label, designation,
+  manufacturer or manufacturer reference, such as the junction dots of
+  `114_connections`. They pass `--no-slaves` and `--no-junctions`; an older
+  QElectroTech ignores both and exports every row, so check the row count.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*

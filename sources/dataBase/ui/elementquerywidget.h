@@ -45,6 +45,8 @@ class ElementQueryWidget : public QWidget
 		QString queryStr() const;
 		void setGroupBy(QString text, bool set = true);
 		void setCount(QString text, bool set = true);
+		void setSlavesIncluded(bool included);
+		void setExtraFilter(const QString &text, bool set = true);
 
 		static QString modelIdentifier() {return "nomenclature";}
 
@@ -67,6 +69,7 @@ class ElementQueryWidget : public QWidget
 		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);
 
 		void updateQueryLine();
+		void updateAllCheckState();
 		QStringList selectedKeys() const;
 		void setUpItems();
 		QPair<int, QString> FilterFor(const QString &key) const;
@@ -82,7 +85,8 @@ class ElementQueryWidget : public QWidget
 		QList <QListWidgetItem *> m_items_list;
 		QString m_custom_query,
 				m_group_by,
-				m_count;
+				m_count,
+				m_extra_filter;
 		QHash <QString, QPair<int, QString>> m_filter;
 };
 

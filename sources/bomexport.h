@@ -27,7 +27,9 @@ class QSqlQuery;
 namespace BomExport
 {
 	QStringList defaultColumns();
-	QString defaultQuery();
+	QString defaultQuery(bool include_slaves = true,
+						 bool include_junctions = true);
+	QString junctionFilter();
 	QByteArray toCsv(QSqlQuery &query, const QStringList &headers,
 					 bool include_headers = true, int *row_count = nullptr);
 	bool writeCsv(const QString &file_path, const QByteArray &csv,

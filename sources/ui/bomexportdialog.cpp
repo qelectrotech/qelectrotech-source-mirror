@@ -46,6 +46,9 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 	m_query_widget = new ElementQueryWidget(this);
 	ui->m_main_layout->insertWidget(0, m_query_widget);
 	m_query_widget->setQuery(BomExport::defaultQuery());
+		//The contact blocks are parts of their own, as in the command line
+		//export; unchecking "Contacts esclaves" leaves them out.
+	m_query_widget->setSlavesIncluded(true);
 	on_m_format_as_bom_clicked(false);
 
 	m_preview_model = new QSqlQueryModel(this);
@@ -143,6 +146,15 @@ QByteArray BOMExportDialog::getBom(QString *error)
 void BOMExportDialog::on_m_format_as_bom_clicked(bool checked) {
 	m_query_widget->setGroupBy("designation", checked);
 	m_query_widget->setCount("COUNT(*) AS designation_qty", checked);
+}
+
+/**
+	@brief BOMExportDialog::on_m_no_junctions_clicked
+	@param checked : true leaves out the junctions, see
+	BomExport::junctionFilter()
+*/
+void BOMExportDialog::on_m_no_junctions_clicked(bool checked) {
+	m_query_widget->setExtraFilter(BomExport::junctionFilter(), checked);
 }
 
 /**
