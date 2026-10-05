@@ -3490,6 +3490,25 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 }
 
 /**
+	@brief QetScriptApi::elementTextGeometry
+	Where one of a symbol's text fields is drawn on the folio, in folio
+	coordinates: left, top, right, bottom of the text as shown. A label
+	that sits on a wire is visible here, not from x/y alone (x/y are
+	relative to the symbol and say nothing about the text's size).
+	@return an empty map when the text does not exist
+*/
+QVariantMap QetScriptApi::elementTextGeometry(int folioIndex, const QString &elementUuid,
+											  int textIndex) const
+{
+	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
+												QStringLiteral("elementTextGeometry"));
+	if (!t) return {};
+	const QRectF r = t->sceneBoundingRect();
+	return {{QStringLiteral("left"), r.left()}, {QStringLiteral("top"), r.top()},
+			{QStringLiteral("right"), r.right()}, {QStringLiteral("bottom"), r.bottom()}};
+}
+
+/**
 	@brief QetScriptApi::addPdfPage
 	Render one page of a PDF file to an image and place it, as the "add
 	PDF" toolbar action does after its file and page-selection dialogs --

@@ -2402,15 +2402,69 @@ _SECONDARY_FOLDER = re.compile(r"(?:^|/)\d+_(?:graphics|manufacturers_articles|m
 
 
 def _collection_signature(root: Path):
-    """Cheap change detector: file count and newest mtime, no parsing."""
+    """Cheap change detector: file count and newest mtime, no parsing.
+    os.scandir() rather than Path.rglob(): the same answer in about a third
+    of the time, which every search pays."""
     count, newest = 0, 0.0
-    for f in root.rglob("*.elmt"):
-        count += 1
+    stack = [str(root)]
+    while stack:
         try:
-            newest = max(newest, f.stat().st_mtime)
+            it = os.scandir(stack.pop())
         except OSError:
-            pass
+            continue
+        with it:
+            for entry in it:
+                try:
+                    if entry.is_dir(follow_symlinks=False):
+                        stack.append(entry.path)
+                    elif entry.name.endswith(".elmt"):
+                        count += 1
+                        newest = max(newest, entry.stat().st_mtime)
+                except OSError:
+                    pass
     return count, newest
+
+
+def _index_cache_file(root: Path) -> Path:
+    """Where the parsed index of one collection is kept between runs."""
+    base = os.environ.get("QET_MCP_CACHE_DIR") or os.path.join(
+        os.environ.get("XDG_CACHE_HOME") or os.path.join(str(Path.home()), ".cache"), "qet-mcp")
+    import hashlib
+    digest = hashlib.sha1(str(root).encode("utf-8")).hexdigest()[:16]
+    return Path(base) / f"element-index-{digest}.json"
+
+
+_INDEX_CACHE_FORMAT = 1
+
+
+def _load_index_cache(root: Path, sig) -> list | None:
+    try:
+        data = json.loads(_index_cache_file(root).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if (data.get("format") != _INDEX_CACHE_FORMAT or data.get("root") != str(root)
+            or tuple(data.get("sig") or ()) != tuple(sig)):
+        return None
+    items = data.get("items") or []
+    for it in items:
+        it["haystack"] = frozenset(it.get("haystack") or ())
+    return items
+
+
+def _save_index_cache(root: Path, sig, items: list) -> None:
+    """Best effort: a cache that cannot be written only costs the next
+    start its 6 s; it never fails a search."""
+    path = _index_cache_file(root)
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".tmp")
+        tmp.write_text(json.dumps({
+            "format": _INDEX_CACHE_FORMAT, "root": str(root), "sig": list(sig),
+            "items": [dict(it, haystack=sorted(it["haystack"])) for it in items]}),
+            encoding="utf-8")
+        os.replace(tmp, path)
+    except OSError:
+        pass
 
 
 def _index_collection(root: Path) -> list:
@@ -2426,6 +2480,10 @@ def _index_collection(root: Path) -> list:
     cached = _ELEMENT_INDEX.get(key)
     if cached and cached["sig"] == sig:
         return cached["items"]
+    items = _load_index_cache(root.resolve(), sig)
+    if items is not None:
+        _ELEMENT_INDEX[key] = {"sig": sig, "items": items}
+        return items
 
     items = []
     for f in sorted(root.rglob("*.elmt")):
@@ -2457,6 +2515,7 @@ def _index_collection(root: Path) -> list:
             "haystack": frozenset(_search_words(" ".join([*names.values(), rel, kind]))),
         })
     _ELEMENT_INDEX[key] = {"sig": sig, "items": items}
+    _save_index_cache(root.resolve(), sig, items)
     return items
 
 
@@ -2768,6 +2827,27 @@ LAYOUT_RULES = {
                 "are on. An axis a straight wire lines it up on is left alone. "
                 "\"fix\" moves it onto the grid.",
     },
+    "label_on_wire": {
+        "severity": "warning",
+        "note": "A symbol's label is drawn over a wire. House style: a label sits at "
+                "least 20 px past the outermost connected terminal, on a side no "
+                "wire arrives from. Move the label (setElementTextProperty x/y), not "
+                "the symbol. Needs a QElectroTech with elementTextGeometry(); older "
+                "builds skip this rule.",
+    },
+    "four_way_junction": {
+        "severity": "warning",
+        "note": "Wires leave one point in all four directions: a 4-way dot, which "
+                "reads as a crossing when printed. Stagger it into two 3-way "
+                "T-junctions a grid step or more apart.",
+    },
+    "misaligned_branch": {
+        "severity": "info",
+        "note": "Two symbols stacked in the same side branch (each fed by a wire with "
+                "a horizontal run) are a little out of line, so the branch is not one "
+                "straight column. House style: parallel branches share one vertical "
+                "axis. \"dx\" is how far apart their wire docks are.",
+    },
     "crossing": {
         "severity": "info",
         "note": "Two wires cross. Counted so two drafts can be compared; some "
@@ -2784,13 +2864,25 @@ _LAYOUT_SEG = re.compile(r"^\s*\d+:\s*\(([^,]+),([^)]+)\)-\(([^,]+),([^)]+)\)")
 _LAYOUT_JS = r"""
 var only = @FOLIO@;
 var byUuid = typeof qet.conductorPath === 'function';
+function labelBox(f, u) {
+  if (typeof qet.elementTextGeometry !== 'function') return null;
+  var t = qet.elementTexts(f, u);
+  for (var i = 0; i < t.length; i++)
+    if (qet.elementTextProperty(f, u, i, 'source') === 'info'
+        && qet.elementTextProperty(f, u, i, 'info') === 'label') {
+      var g = qet.elementTextGeometry(f, u, i);
+      return (g && g.right > g.left && qet.elementTextProperty(f, u, i, 'shows')) ? g : null;
+    }
+  return null;
+}
 for (var f = 0; f < qet.folioCount(); f++) {
   if (only >= 0 && f !== only) continue;
   var els = qet.elementUuids(f), E = [];
   for (var i = 0; i < els.length; i++) {
     E.push({uuid: els[i], name: qet.elementName(f, els[i]),
             label: qet.elementLabel(f, els[i]), g: qet.elementGeometry(f, els[i]),
-            terminals: qet.elementTerminals(f, els[i]).length});
+            terminals: qet.elementTerminals(f, els[i]).length,
+            labelbox: labelBox(f, els[i])});
   }
   var cu = qet.conductorUuids(f), lines = qet.conductors(f), C = [];
   for (var j = 0; j < cu.length; j++) {
@@ -2951,7 +3043,9 @@ def _layout_folio(data: dict, max_shift: float) -> dict:
                                "annotation": int(el.get("terminals", 1) or 0) == 0,
                                "x": float(g.get("x", 0)), "y": float(g.get("y", 0)),
                                "xy": (float(g.get("x", 0)), float(g.get("y", 0))),
-                               "box": box, "docks": []}
+                               "box": box, "docks": [],
+                               "labelbox": _box(el.get("labelbox") or {})
+                               if el.get("labelbox") else None}
     wire_count = {}
     wires, unread = [], []
     for w in data.get("conductors") or []:
@@ -3214,11 +3308,93 @@ def _layout_folio(data: dict, max_shift: float) -> dict:
                 add("crossing", conductors=[w["uuid"], v["uuid"]], count=n,
                     note=LAYOUT_RULES["crossing"]["note"])
 
+    _house_style_rules(symbols, wires, add, dirty_symbols)
+
     return {"folio": folio, "symbols": len(symbols), "wires": len(wires),
             "unread": unread, "findings": findings, "dirty_wires": dirty_wires,
             "dirty_symbols": dirty_symbols, "length": length, "crossings": crossings,
             "straight": sum(1 for w in wires if w.get("bends") == 0),
             "fixes": [move_op(u) for u in move]}
+
+
+def _house_style_rules(symbols: dict, wires: list, add, dirty_symbols: set) -> None:
+    """The house-style rules: labels over wires, 4-way junctions, side
+    branches out of line. Pure geometry, like the rest of the scorer."""
+    def seg_hits_box(a, b, box, inset=1.0):
+        l, t, r, btm = box[0] + inset, box[1] + inset, box[2] - inset, box[3] - inset
+        if l >= r or t >= btm:
+            return False
+        (x1, y1), (x2, y2) = a, b
+        if abs(y1 - y2) < 1e-6:     # horizontal
+            return t <= y1 <= btm and min(x1, x2) <= r and max(x1, x2) >= l
+        if abs(x1 - x2) < 1e-6:     # vertical
+            return l <= x1 <= r and min(y1, y2) <= btm and max(y1, y2) >= t
+        return False
+
+    for s in symbols.values():
+        lb = s.get("labelbox")
+        if not lb:
+            continue
+        hit = [w["uuid"] for w in wires
+               if any(seg_hits_box(a, b, lb) for a, b in zip(w["pts"], w["pts"][1:]))]
+        if hit:
+            add("label_on_wire", element=s["uuid"], label=s["label"], name=s["name"],
+                conductors=hit, note=LAYOUT_RULES["label_on_wire"]["note"])
+            dirty_symbols.add(s["uuid"])
+
+    def key(p):
+        return (round(p[0]), round(p[1]))
+
+    def direction(a, b):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        if abs(dx) < 1e-6 and abs(dy) < 1e-6:
+            return None
+        if abs(dx) >= abs(dy):
+            return "e" if dx > 0 else "w"
+        return "s" if dy > 0 else "n"
+
+    ways, owners = {}, {}
+    for w in wires:
+        pts = w["pts"]
+        for i, p in enumerate(pts):
+            for q in ((pts[i - 1],) if i else ()) + ((pts[i + 1],) if i + 1 < len(pts) else ()):
+                d = direction(p, q)
+                if d:
+                    ways.setdefault(key(p), set()).add(d)
+                    owners.setdefault(key(p), set()).add(w["uuid"])
+    for pt, d in sorted(ways.items()):
+        if len(d) == 4 and len(owners[pt]) >= 2:
+            add("four_way_junction", at=list(pt), conductors=sorted(owners[pt]),
+                note=LAYOUT_RULES["four_way_junction"]["note"])
+
+    # A side branch symbol is fed only by wires that jog sideways; one
+    # joined to a neighbour by a straight vertical wire is in a column.
+    side, column = set(), set()
+    for w in wires:
+        xs = {round(p[0], 3) for p in w["pts"]}
+        ends = [e for e in w["ends"] if e]
+        if len(xs) == 1:
+            column.update(ends)
+        elif any(abs(a[1] - b[1]) < 1e-6 and abs(a[0] - b[0]) > 1e-6
+                 for a, b in zip(w["pts"], w["pts"][1:])):
+            side.update(ends)
+    side -= column
+    cand = [s for s in symbols.values() if s["uuid"] in side and s["docks"]
+            and not s["annotation"]]
+    # Two symbols joined by a wire of their own are avoidable_bend's case.
+    joined = {frozenset(w["ends"]) for w in wires if all(w["ends"])}
+    for i, s in enumerate(cand):
+        for t in cand[i + 1:]:
+            sb, tb = s["box"], t["box"]
+            if sb[1] < tb[3] and tb[1] < sb[3]:
+                continue        # side by side, not stacked
+            if frozenset((s["uuid"], t["uuid"])) in joined:
+                continue
+            dx = min(abs(p[0] - q[0]) for p in s["docks"] for q in t["docks"])
+            if 0.5 < dx <= 80:
+                add("misaligned_branch", elements=[s["uuid"], t["uuid"]],
+                    labels=[s["label"], t["label"]], names=[s["name"], t["name"]],
+                    dx=round(dx, 1), note=LAYOUT_RULES["misaligned_branch"]["note"])
 
 
 def _layout_answer(folios: list, style: str, limit: int) -> dict:
@@ -3253,6 +3429,9 @@ def _layout_answer(folios: list, style: str, limit: int) -> dict:
             "overlaps": count["overlapping_symbols"],
             "off_grid": count["off_grid"],
             "crossings": sum(f["crossings"] for f in folios),
+            "labels_on_wires": count["label_on_wire"],
+            "four_way_junctions": count["four_way_junction"],
+            "misaligned_branches": count["misaligned_branch"],
             "flow": {"vertical": round(vertical / total, 3) if total else 0.0,
                      "horizontal": round(horizontal / total, 3) if total else 0.0},
         },
@@ -3669,6 +3848,36 @@ SERVER_INSTRUCTIONS = (
     "a wire is straight only when its two terminals are exactly in line.")
 
 
+def standard_symbols_file(info: dict | None = None) -> Path:
+    """The installation's standard symbols: one symbol per device role,
+    chosen by the user. QET_MCP_STANDARD_SYMBOLS if set, else
+    standard-symbols.json in QElectroTech's data folder."""
+    explicit = os.environ.get("QET_MCP_STANDARD_SYMBOLS", "").strip()
+    if explicit:
+        return Path(explicit).expanduser()
+    data = ((info or {}).get("folders") or {}).get("data")
+    return (Path(data) if data else assistant_info_file().parent) / "standard-symbols.json"
+
+
+def standard_symbols(info: dict | None = None):
+    """The roles from standard-symbols.json, or None when there is none.
+    A file that cannot be read is reported, not hidden."""
+    path = standard_symbols_file(info)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return None
+    except (OSError, ValueError) as exc:
+        return {"error": f"{path} could not be read: {exc}"}
+    roles = data.get("roles") if isinstance(data, dict) else None
+    if not isinstance(roles, list):
+        return {"error": f"{path} has no \"roles\" list"}
+    return {"file": str(path), "updated": data.get("updated"),
+            "roles": [{k: r.get(k) for k in ("id", "label", "letter", "path",
+                                             "terminals", "note") if r.get(k) is not None}
+                      for r in roles if isinstance(r, dict) and r.get("path")]}
+
+
 def tool_about() -> dict:
     """What this server and the QElectroTech it works with look like now."""
     info = assistant_info()
@@ -3701,6 +3910,9 @@ def tool_about() -> dict:
         "script_api": info.get("script_api"),
         # Never the token: it is for the live tools, not the conversation.
         "live": {"open": bool(live), "pid": (live or {}).get("pid")},
+        # One symbol per device role, the user's own choice: use these
+        # paths with add_element / qet.addElement before searching.
+        "standard_symbols": standard_symbols(info),
     })
     return out
 
@@ -4122,6 +4334,100 @@ def tool_live_switch_project(index: int | None = None, path: str = "") -> dict:
     if not p.is_absolute():
         raise ValueError("'path' must be absolute")
     return _live_call({"cmd": "switch_project", "path": str(p)})
+
+
+def _abs_path(value, arg: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"'{arg}' must be a file path")
+    p = Path(value).expanduser()
+    if not p.is_absolute():
+        raise ValueError(f"'{arg}' must be absolute, e.g. /home/me/projects/pump.qet")
+    return str(p)
+
+
+def _index_arg(index):
+    if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+        raise ValueError("'index' must be a whole number counted from 0")
+    return index
+
+
+def tool_live_save_project(path: str = "") -> dict:
+    _require_script_consent()
+    request = {"cmd": "save_project"}
+    if path:
+        request["path"] = _abs_path(path, "path")
+    return _live_call(request)
+
+
+def tool_live_close_project(index: int | None = None) -> dict:
+    _require_script_consent()
+    request = {"cmd": "close_project"}
+    if _index_arg(index) is not None:
+        request["index"] = index
+    return _live_call(request)
+
+
+def tool_live_print(folios="all", printer: str = "", output_file: str = "") -> dict:
+    _require_script_consent()
+    if isinstance(folios, list):
+        if not folios or not all(isinstance(i, int) and not isinstance(i, bool) and i >= 0
+                                 for i in folios):
+            raise ValueError("'folios' as a list holds folio indexes counted from 0")
+    elif folios not in ("all", "current"):
+        raise ValueError("'folios' must be \"all\", \"current\" or a list of indexes")
+    if printer and output_file:
+        raise ValueError("give 'printer' or 'output_file', not both")
+    request = {"cmd": "print", "folios": folios}
+    if printer:
+        request["printer"] = printer
+    if output_file:
+        request["output_file"] = _abs_path(output_file, "output_file")
+    # The user answers QElectroTech's question before anything prints.
+    return _live_call(request, timeout=300)
+
+
+def tool_live_changes(since: int | None = None) -> dict:
+    request = {"cmd": "changes"}
+    if since is not None:
+        if not isinstance(since, int) or isinstance(since, bool) or since < -1:
+            raise ValueError("'since' must be a step index from an earlier answer (or -1)")
+        request["since"] = since
+    return _live_call(request)
+
+
+def tool_live_layout_check(folio: str | int = "current", style: str = "auto",
+                           max_shift: float = 40, limit: int = 50,
+                           elements_dir: str | None = None, timeout: int = 180,
+                           binary: str | None = None) -> dict:
+    """qet_layout_check on what the user sees: QElectroTech writes a copy of
+    the open project (unsaved changes included) to a private folder, the
+    check reads the copy, the copy is deleted. The user's project and file
+    are not touched, and no "run this script?" window is shown."""
+    binary = binary or resolve_binary()
+    if not binary:
+        raise ValueError("no QElectroTech binary to run the check with: set QET_BINARY")
+    work = Path(tempfile.mkdtemp(prefix="qet-live-check-"))
+    try:
+        snap = _live_call({"cmd": "snapshot", "path": str(work / "live.qet")})
+        if not snap.get("ok"):
+            return snap
+        if folio == "current":
+            folio_no = snap.get("folio", -1) + 1 or None
+        elif folio == "all":
+            folio_no = None
+        elif isinstance(folio, int) and not isinstance(folio, bool) and folio >= 1:
+            folio_no = folio
+        else:
+            raise ValueError("'folio' is \"current\", \"all\" or a folio number counted from 1")
+        answer = tool_layout_check(str(binary), snap["path"], folio=folio_no, style=style,
+                                   max_shift=max_shift, limit=limit,
+                                   elements_dir=elements_dir, timeout=timeout)
+        answer["checked"] = "the open project, as on screen (unsaved changes included)"
+        # The moves in "fixes" are for qet_edit on a file; live, apply them
+        # with qet_live_run_script (qet.moveElement), one undo step.
+        return answer
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
 
 
 def tool_live_undo_last() -> dict:
@@ -5258,6 +5564,84 @@ TOOLS = [
         "handler": lambda a: tool_live_switch_project(a.get("index"), a.get("path", "")),
     },
     {
+        "name": "qet_live_save_project",
+        "description": "LIVE MODE. Save the current project to its own file, or with "
+                       "'path' save it as a new file (absolute; never over an existing "
+                       "file), which then becomes its file.",
+        "inputSchema": {"type": "object",
+                        "properties": {"path": {"type": "string"}}},
+        "handler": lambda a: tool_live_save_project(a.get("path", "")),
+    },
+    {
+        "name": "qet_live_close_project",
+        "description": "LIVE MODE. Close an open project (the current one, or 'index' "
+                       "from qet_live_status's \"projects\") -- only when it has no "
+                       "unsaved changes: closing never discards work, so save it first.",
+        "inputSchema": {"type": "object",
+                        "properties": {"index": {"type": "integer", "minimum": 0}}},
+        "handler": lambda a: tool_live_close_project(a.get("index")),
+    },
+    {
+        "name": "qet_live_print",
+        "description": "LIVE MODE. Print folios of the current project without the "
+                       "print dialog: 'folios' is \"all\" (default), \"current\" or a "
+                       "list of indexes from 0; 'printer' names a printer, else the "
+                       "computer's default printer. QElectroTech always asks the user "
+                       "before printing (paper cannot be taken back); \"refused by the "
+                       "user\" means they said no. 'output_file' (absolute .pdf, must "
+                       "not exist) prints to a PDF file instead, with no question.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "folios": {"oneOf": [{"type": "string", "enum": ["all", "current"]},
+                                     {"type": "array", "items": {"type": "integer", "minimum": 0}}]},
+                "printer": {"type": "string"},
+                "output_file": {"type": "string"},
+            },
+        },
+        "handler": lambda a: tool_live_print(a.get("folios", "all"), a.get("printer", ""),
+                                             a.get("output_file", "")),
+    },
+    {
+        "name": "qet_live_changes",
+        "description": "LIVE MODE. The current project's undo history: each step's name, "
+                       "whether the assistant or the user made it, and whether it is "
+                       "undone; 'since' (a step index from an earlier answer, e.g. its "
+                       "\"now\") keeps only the later steps -- what changed since then. "
+                       "Changes nothing.",
+        "inputSchema": {"type": "object",
+                        "properties": {"since": {"type": "integer", "minimum": -1}}},
+        "handler": lambda a: tool_live_changes(a.get("since")),
+    },
+    {
+        "name": "qet_live_layout_check",
+        "description": "LIVE MODE. qet_layout_check on the drawing the user has open, "
+                       "as on screen (unsaved changes included), without saving it: "
+                       "straight wires, symbols in line and on the grid, overlaps, "
+                       "and the house-style rules -- labels over wires, 4-way junction "
+                       "dots, side branches out of line. Run it before saying a "
+                       "drawing is finished. 'folio': \"current\" (default), \"all\" or "
+                       "a number from 1. Apply \"fixes\" with qet_live_run_script "
+                       "(qet.moveElement), not qet_edit. Changes nothing.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "folio": {"oneOf": [{"type": "string", "enum": ["current", "all"]},
+                                    {"type": "integer", "minimum": 1}]},
+                "style": {"type": "string", "enum": list(LAYOUT_STYLES)},
+                "max_shift": {"type": "number", "default": 40},
+                "limit": {"type": "integer", "default": 50},
+                "elements_dir": {"type": "string"},
+                "binary": {"type": "string", "description": "the qelectrotech executable "
+                           "that runs the check; leave it out to use this server's"},
+            },
+        },
+        "handler": lambda a: tool_live_layout_check(a.get("folio", "current"),
+                                                    a.get("style", "auto"),
+                                                    a.get("max_shift", 40), a.get("limit", 50),
+                                                    a.get("elements_dir"), binary=a.get("binary")),
+    },
+    {
         "name": "qet_live_undo_last",
         "description": "LIVE MODE. Undo the newest step in the open project, only if "
                        "the assistant made it (its name starts \"Assistant :\"); "
@@ -5396,6 +5780,11 @@ _DATA_PATHS = {
     "qet_live_new_project": {"write": ("path",)},
     "qet_live_open_project": {"read": ("path",)},
     "qet_live_switch_project": {"read": ("path",)},
+    "qet_live_save_project": {"write": ("path",)},
+    "qet_live_print": {"write": ("output_file",)},
+    # Runs QElectroTech on a copy QElectroTech writes to a private folder:
+    # no client path, but the binary and elements_dir rules apply.
+    "qet_live_layout_check": {},
     "qet_element_build":  {"write": ("output",)},
     # The scripts folder is chosen by scripts_dir(), never by the client,
     # so only the project a script is tried on is a data path here.
@@ -5408,7 +5797,7 @@ _DATA_PATHS = {
 # Tools that launch QElectroTech, and so take "binary" and "elements_dir".
 _LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
                  "qet_check", "qet_layout_check", "qet_project_new", "qet_script_api",
-                 "qet_script_test", "qet_recording_check"}
+                 "qet_script_test", "qet_recording_check", "qet_live_layout_check"}
 
 # Tools that launch QElectroTech only when given this argument.
 _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}
@@ -5418,7 +5807,7 @@ _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}
 _OVERWRITE_OWN_FILE = {"qet_script_install"}
 # Tools that create a file and never replace one, whatever the client asks:
 # no "overwrite" in their schema, and the flag is ignored if sent anyway.
-_NEVER_OVERWRITE = {"qet_live_new_project"}
+_NEVER_OVERWRITE = {"qet_live_new_project", "qet_live_save_project", "qet_live_print"}
 
 # qet_edit operations that name a file of their own.
 _DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
