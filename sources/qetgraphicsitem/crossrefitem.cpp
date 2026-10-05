@@ -268,6 +268,7 @@ void CrossRefItem::updateLabel()
 	m_shape_path    = QPainterPath();
 	prepareGeometryChange();
 	m_bounding_rect = QRectF();
+	m_text_rects.clear();
 
 	// Build geometry and m_hovered_contacts_map using a QImage-backed
 	// painter so font metrics match the screen painter in paint().
@@ -343,9 +344,12 @@ void CrossRefItem::autoPos()
 	@brief CrossRefItem::stackAtBottom
 	Places every cross reference of this folio that snaps to the bottom.
 	Each one is centred under its element at the bottom of the folio, and
-	when two would overlap, the one of the higher element goes above the
-	other: several coils in one column get their crosses stacked in the
-	same order as the coils, instead of all on the same spot.
+	when its texts would be drawn over the texts of another one, the one
+	of the higher element goes above the other: several coils in one
+	column get their crosses stacked in the same order as the coils,
+	instead of all on the same spot. Crosses that only touch, or overlap
+	without any text over text, stay where they are.
+	The types whose properties do not ask for stacking are only centred.
 */
 void CrossRefItem::stackAtBottom()
 {
@@ -374,39 +378,54 @@ void CrossRefItem::stackAtBottom()
 		return a->m_element->uuid() < b->m_element->uuid();
 	});
 
+	struct Placed { QRectF rect; QList<QRectF> texts; };
 	const qreal gap = 5;
-	QList<QRectF> placed;
+	QList<Placed> placed;
 	for (CrossRefItem *xref : std::as_const(xrefs)) {
 		const qreal offset = xref->m_properties.offset();
 		QGIUtility::centerToBottomDiagram(xref, xref->m_element,
 										  offset <= 40 ? 5 : offset);
-		if (xref->boundingRect().isEmpty()) continue;
+		if (xref->boundingRect().isEmpty()
+			|| !xref->m_properties.stackOverlapping())
+			continue;
 
-		// Move up past every cross already placed that it would overlap.
-		// A list of contacts has an empty margin in its bounding rect:
-		// only its content is tested, so side by side lists do not
-		// count as overlapping.
-		const bool list = xref->m_properties.displayHas()
-						  == XRefProperties::Contacts;
-		QRectF rect = xref->sceneBoundingRect();
-		if (list)
-			rect.adjust(list_margin_left, 0, -list_margin_right, 0);
-		const qreal bottom = rect.bottom();
+		Placed self;
+		self.rect = xref->sceneBoundingRect();
+		const QTransform to_scene = xref->sceneTransform();
+		for (const QRectF &text : std::as_const(xref->m_text_rects))
+			self.texts << to_scene.mapRect(text);
+		const qreal bottom = self.rect.bottom();
+
+		// Move up past every cross already placed whose texts it would
+		// draw over. Each move goes strictly up, so this ends.
 		for (bool moved = true; moved; ) {
 			moved = false;
-			for (const QRectF &other : std::as_const(placed))
-				if (rect.left() < other.right() && other.left() < rect.right()
-					&& rect.top() < other.bottom() + gap
-					&& other.top() - gap < rect.bottom()) {
-					rect.moveBottom(other.top() - gap);
-					moved = true;
-				}
+			for (const Placed &other : std::as_const(placed)) {
+				const qreal dy = other.rect.top() - gap - self.rect.bottom();
+				if (dy >= 0 || !textsOverlap(self.texts, other.texts))
+					continue;
+				self.rect.translate(0, dy);
+				for (QRectF &text : self.texts) text.translate(0, dy);
+				moved = true;
+			}
 		}
-		if (rect.bottom() != bottom)
+		if (self.rect.bottom() != bottom)
 			xref->setPos(xref->parentItem()->mapFromScene(
-				xref->scenePos() + QPointF(0, rect.bottom() - bottom)));
-		placed << rect;
+				xref->scenePos() + QPointF(0, self.rect.bottom() - bottom)));
+		placed << self;
 	}
+}
+
+/**
+	@brief CrossRefItem::textsOverlap
+	@return true if one of the rects of a intersects one of the rects of b
+*/
+bool CrossRefItem::textsOverlap(const QList<QRectF> &a, const QList<QRectF> &b)
+{
+	for (const QRectF &ra : a)
+		for (const QRectF &rb : b)
+			if (ra.intersects(rb)) return true;
+	return false;
 }
 
 /**
@@ -1156,9 +1175,9 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			painter.setFont(QETApp::diagramTextsFont(4));
 			QRectF bt(0, offset, 24, 10);
 			if (terminal_names.size() >= 1)
-				painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);
+				drawText(painter, bt, Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);
 			if (terminal_names.size() >= 2)
-				painter.drawText(bt, Qt::AlignRight|Qt::AlignTop, terminal_names[1]);
+				drawText(painter, bt, Qt::AlignRight|Qt::AlignTop, terminal_names[1]);
 			painter.setFont(QETApp::diagramTextsFont(5));
 		}
 
@@ -1241,7 +1260,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
 		if (!str.isEmpty())
 		{
-			painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+			drawText(painter, text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 			bounding_rect = bounding_rect.united(text_rect);
 		}
 
@@ -1286,13 +1305,13 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			painter.setFont(QETApp::diagramTextsFont(4));
 			// Storage order set above: [0]=NC, [1]=NO, [2]=Common
 			if (terminal_names.size() >= 2)
-				painter.drawText(QRectF(0, offset, 8, 8),
+				drawText(painter, QRectF(0, offset, 8, 8),
 						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // NO  top-left
 			if (terminal_names.size() >= 3)
-				painter.drawText(QRectF(16, offset+4, 8, 6),
+				drawText(painter, QRectF(16, offset+4, 8, 6),
 						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // Common right
 			if (terminal_names.size() >= 1)
-				painter.drawText(QRectF(0, offset+9, 8, 6),
+				drawText(painter, QRectF(0, offset+9, 8, 6),
 						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // NC  bottom-left
 			painter.setFont(QETApp::diagramTextsFont(5));
 		}
@@ -1325,7 +1344,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 					str);
 		if (!str.isEmpty())
 		{
-			painter.drawText(text_rect,
+			drawText(painter, text_rect,
 					 Qt::AlignLeft | Qt::AlignVCenter,
 					 str);
 			bounding_rect = bounding_rect.united(text_rect);
@@ -1361,7 +1380,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 						str);
 		if (!str.isEmpty())
 		{
-			painter.drawText(text_rect,
+			drawText(painter, text_rect,
 						Qt::AlignLeft | Qt::AlignVCenter, 
 						str);
 			bounding_rect = bounding_rect.united(text_rect);
@@ -1454,7 +1473,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 					       QSize(middle_cross, 1)),
 					Qt::AlignLeft,
 					str);
-		painter.drawText(bounding, Qt::AlignLeft, str);
+		drawText(painter, bounding, Qt::AlignLeft, str);
 
 		if (m_update_map) {
 			QString pos_str = elementPositionText(elmt, true);
@@ -1534,7 +1553,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 					       QSize(middle_cross, 1)),
 					Qt::AlignRight,
 					str);
-		painter.drawText(bounding, Qt::AlignRight, str);
+		drawText(painter, bounding, Qt::AlignRight, str);
 
 		if (m_update_map) {
 			QString pos_str = elementPositionText(elmt, true);
@@ -1582,7 +1601,7 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 					r,
 					Qt::TextWordWrap | Qt::AlignHCenter,
 					text);
-		painter.drawText(text_bounding,
+		drawText(painter, text_bounding,
 				 Qt::TextWordWrap | Qt::AlignHCenter,
 				 text);
 
@@ -1596,6 +1615,21 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 							       2);
 		painter.restore();
 	}
+}
+
+/**
+	@brief CrossRefItem::drawText
+	Draws text in rect with painter, like QPainter::drawText. While the
+	geometry is built (m_update_map), also stores the rect really covered
+	by the text, so stackAtBottom() can tell texts drawn over each other.
+*/
+void CrossRefItem::drawText(QPainter &painter, const QRectF &rect,
+							int flags, const QString &text)
+{
+	QRectF drawn;
+	painter.drawText(rect, flags, text, &drawn);
+	if (m_update_map && !text.isEmpty())
+		m_text_rects << painter.transform().mapRect(drawn);
 }
 
 /**
