@@ -356,6 +356,14 @@ action, with a *Stop* button that closes the channel for the rest of
 the session. Each action is one Ctrl+Z. A script's `qet.showMessage()` is
 logged instead of opening a box nobody asked for.
 
+To see where a live request spends its time, start QElectroTech and this
+server with the same `QET_LIVE_PERF_LOG=/path/to/log.jsonl`. Each side
+appends one JSON line per request, with the same `id`: the server its
+total, the time reading `qet-assistant.json` and the gap since its previous
+call (the assistant's own turn); QElectroTech the time queued, waiting on
+your answer, running, and until the folio is next repainted. Nothing is
+written when the variable is unset.
+
 The channel is a local socket only your user can open. QElectroTech puts
 its name and a random token in the `live` part of `qet-assistant.json`,
 and clears it when the channel closes; `qet_about` says whether one is
