@@ -174,6 +174,23 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief houseStyle
+	* @return this installation's drawing conventions, in the user's own
+	* words -- empty when nobody has set any.
+	*/
+	QString houseStyle()
+	{
+		QSettings settings;
+		return settings.value("assistant/house_style", QString()).toString();
+	}
+
+	void setHouseStyle(const QString &text)
+	{
+		QSettings settings;
+		settings.setValue("assistant/house_style", text);
+	}
+
+	/**
 	* @brief setSheetBackground
 	* Store the sheet background last picked in the diagram editor, so the
 	* next start opens on it for every project, old or new. @sa sheetBackground

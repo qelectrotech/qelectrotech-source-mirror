@@ -569,6 +569,11 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
 		Q_INVOKABLE QStringList folioPresets() const;
 
+		// -- this installation's drawing conventions (grid, flow, routing, tagging, --
+		// -- grouping, ...), free text, for every assistant that connects to read --
+		Q_INVOKABLE QString houseStyle() const;
+		Q_INVOKABLE bool setHouseStyle(const QString &text);
+
 		// -- the conductor defaults of a folio (Folio properties > Conductors),
 		//    or with folioIndex -1, the project's defaults for new folios --
 		Q_INVOKABLE QString conductorDefault(int folioIndex, const QString &property) const;

@@ -3784,6 +3784,15 @@ class AssistantInfoFile(unittest.TestCase):
         self.assertNotIn("SECRET", json.dumps(about))
         self.assertEqual(about["script_api"], ["int currentFolio()"])
 
+    def test_house_style_passes_through(self):
+        self.write(house_style="Grid: never off. Inputs left, outputs right.")
+        about = m.tool_about()
+        self.assertEqual(about["house_style"], "Grid: never off. Inputs left, outputs right.")
+
+    def test_house_style_null_when_unset(self):
+        self.write(house_style=None)
+        self.assertIsNone(m.tool_about()["house_style"])
+
     def test_first_contact_carries_the_instructions(self):
         reply = m.handle({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
         self.assertIn("qet_about", reply["result"]["instructions"])

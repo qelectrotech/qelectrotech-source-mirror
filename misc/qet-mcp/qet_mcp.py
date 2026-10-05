@@ -3829,7 +3829,9 @@ SERVER_INSTRUCTIONS = (
     "diagrams. A project (.qet) holds folios (sheets) of symbols "
     "(elements) joined by wires (conductors). Folio indexes count from 0.\n"
     "Start with qet_about: where QElectroTech keeps things, what is "
-    "switched on, and the stored scripts.\n"
+    "switched on, the stored scripts, and house_style -- this "
+    "installation's own drawing conventions if the user set any. Follow "
+    "house_style when placing or wiring anything.\n"
     "Two ways of working. HEADLESS (qet_* and qet_script_*): read, check "
     "and edit .qet files and store script buttons; nothing the user has "
     "open is touched. To make a button: qet_script_api for the calls, "
@@ -3910,6 +3912,12 @@ def tool_about() -> dict:
         "script_api": info.get("script_api"),
         # Never the token: it is for the live tools, not the conversation.
         "live": {"open": bool(live), "pid": (live or {}).get("pid")},
+        # This installation's drawing conventions, set once via
+        # qet.setHouseStyle() (scripting consent required, same as any
+        # other write) and read here so every assistant that connects sees
+        # them without being told by the user each time. No GUI field yet
+        # -- QetSettings::setHouseStyle() is there for one if it is wanted.
+        "house_style": info.get("house_style"),
         # One symbol per device role, the user's own choice: use these
         # paths with add_element / qet.addElement before searching.
         "standard_symbols": standard_symbols(info),
@@ -5663,8 +5671,12 @@ TOOLS = [
                        "scripts, element and title block collections), which "
                        "features are on (scripting, live mode), every call a script "
                        "can make, the stored scripts and the ones refused with why, "
-                       "and whether a live session is open; plus this server's own "
-                       "setup. Reads one file; changes nothing.",
+                       "whether a live session is open, and house_style -- this "
+                       "installation's own drawing conventions, in the user's words, "
+                       "if they set any (qet.setHouseStyle()); null if not. Read "
+                       "house_style and follow it, the same as any explicit "
+                       "instruction, before placing or wiring anything. "
+                       "Reads one file; changes nothing.",
         "inputSchema": {"type": "object", "properties": {}},
         "handler": lambda a: tool_about(),
     },

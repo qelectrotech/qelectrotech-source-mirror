@@ -42,7 +42,7 @@ here read the model.
 | `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios, terminals with more than four wires, folio reports with several wires |
 | `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings, labels over wires, 4-way junction dots, side branches out of line; and the moves that fix them, ready for `qet_edit` |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
-| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`), and the installation's standard symbols if it has any |
+| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`), the installation's standard symbols if it has any, and your house style |
 | `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
 | `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
 | `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Project > Scripts and the Scripts toolbar |
@@ -322,6 +322,21 @@ it offers to copy a ready-made request; paste that into the assistant.
 The usual round: read the recording, write a script that does the same in
 general (on the selected elements, say, not on these exact ones),
 `qet_recording_check` it until it matches, then `qet_script_install` it.
+
+## Your house style
+
+Drawing conventions you want every assistant to follow -- grid, flow
+direction, wire routing, tags, grouping -- written once, in your own words,
+and kept by QElectroTech itself rather than by any one assistant:
+
+```js
+qet.setHouseStyle("Never place a symbol off the 10 px grid.\n...");
+```
+
+It is stored in QElectroTech's settings (needs `QET_ENABLE_SCRIPTING=1`, as
+for any change), written to `qet-assistant.json` as `house_style`, and shown
+by `qet_about`, whose description tells the assistant to follow it. Every
+assistant that connects, of any make, reads the same text.
 
 ## Live mode: working in the QElectroTech you have open
 
