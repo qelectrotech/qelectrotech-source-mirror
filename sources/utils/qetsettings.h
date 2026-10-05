@@ -40,6 +40,10 @@ namespace QetSettings
 	bool scriptingForcedByEnvironment();
 	bool liveAssistantEnabled();
 	void setLiveAssistantEnabled(bool enabled);
+	bool liveSkipStartWarning();
+	void setLiveSkipStartWarning(bool skip);
+	bool liveAskFirst();
+	void setLiveAskFirst(bool ask);
 
 	/**
 		@brief The sheet (folio) background the diagram editors draw.

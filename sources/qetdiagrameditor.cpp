@@ -4086,7 +4086,7 @@ void QETDiagramEditor::setUpLiveIndicator()
 	auto *dock_layout = new QVBoxLayout(content);
 	auto *ask = new QCheckBox(tr("Demander avant d'exécuter un script écrit par l'assistant"), content);
 	ask->setChecked(LiveServer::instance().askFirst());
-	ask->setToolTip(tr("Pour cette session seulement : chaque démarrage redemande"));
+	ask->setToolTip(tr("Retenu après un redémarrage"));
 	auto *log = new QListWidget(content);
 	log->setWordWrap(true);
 	dock_layout->addWidget(ask);

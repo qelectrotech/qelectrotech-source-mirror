@@ -34,7 +34,8 @@ class QWidget;
 
 	Three things must all be true before anything can connect: scripting is
 	allowed, the "mode direct" setting is on (off by default), and the user
-	accepted the warning shown at this start. With the setting off this
+	accepted the warning shown at this start (or once ticked "don't ask
+	again", which lasts until the setting is switched off). With the setting off this
 	class opens nothing and QElectroTech behaves as if it did not exist.
 
 	The channel is a QLocalServer only the user's own account can open,
@@ -96,7 +97,7 @@ class LiveServer : public QObject
 		State m_state = Off;
 		bool m_asked = false;
 		bool m_busy = false;
-		bool m_ask_first = true;	///< per session, never saved: every start asks again
+		bool m_ask_first = true;	///< saved: QetSettings::liveAskFirst()
 };
 
 #endif // LIVESERVER_H
