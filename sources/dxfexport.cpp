@@ -35,6 +35,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/terminal.h"
+#include "textlines.h"
 
 #include <QGraphicsSimpleTextItem>
 #include <QSet>
@@ -358,7 +359,8 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		qreal y = dti->scenePos().y()
 				- ydir * fontSize * 1.8
 				- xdir * fontSize * 0.9;
-		QStringList lines = dti -> toPlainText().split('\n');
+			//As drawn: a text with a width is wrapped
+		QStringList lines = TextLines::layoutLines(dti -> document());
 		qreal offset = fontSize * 1.6;
 		foreach (QString line, lines) {
 			if (line.size() > 0 && line != "_" )
