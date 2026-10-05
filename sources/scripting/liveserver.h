@@ -84,6 +84,7 @@ class LiveServer : public QObject
 		QJsonObject runStored(const QString &id);
 		QJsonObject command(const QString &id);
 		QJsonObject showFolio(int folio);
+		QJsonObject newProject(const QJsonObject &request);
 		QJsonObject undoLast();
 		QJsonObject screenshot();
 		bool confirm(const QString &name, const QString &source);

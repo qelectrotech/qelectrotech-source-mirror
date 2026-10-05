@@ -4085,6 +4085,22 @@ def tool_live_show_folio(folio: int) -> dict:
     return _live_call({"cmd": "show_folio", "folio": folio})
 
 
+def tool_live_new_project(title: str = "", folios: int = 1, path: str = "") -> dict:
+    _require_script_consent()
+    if not isinstance(folios, int) or isinstance(folios, bool) or not 1 <= folios <= 100:
+        raise ValueError("'folios' must be a whole number from 1 to 100")
+    if not isinstance(title, str) or not isinstance(path, str):
+        raise ValueError("'title' and 'path' must be text")
+    if path and not Path(path).expanduser().is_absolute():
+        raise ValueError("'path' must be absolute, e.g. /home/me/projects/pump.qet")
+    request = {"cmd": "new_project", "folios": folios}
+    if title:
+        request["title"] = title
+    if path:
+        request["path"] = str(Path(path).expanduser())
+    return _live_call(request)
+
+
 def tool_live_undo_last() -> dict:
     _require_script_consent()
     return _live_call({"cmd": "undo_last"})
@@ -5165,6 +5181,31 @@ TOOLS = [
         "handler": lambda a: tool_live_show_folio(a["folio"]),
     },
     {
+        "name": "qet_live_new_project",
+        "description": "LIVE MODE. Create a new project in the QElectroTech the "
+                       "user has open, as File > New does (this installation's "
+                       "new-folio defaults), and make it the current project: every "
+                       "following qet_live_* call works on it. Optional title, number "
+                       "of empty folios (pages, 1-100) and an absolute path to save it "
+                       "to at once -- never over an existing file. Then, in "
+                       "qet_live_run_script: qet.addFolio() / qet.insertFolio(i) add "
+                       "pages, qet.setFolioTitle(i, text) names them, and "
+                       "qet.linkElements(folioA, a, folioB, b) links across pages -- "
+                       "a going folio report arrow to a coming one, or a coil to its "
+                       "contacts on another page.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "title": {"type": "string", "description": "the project's title"},
+                "folios": {"type": "integer", "default": 1, "minimum": 1, "maximum": 100},
+                "path": {"type": "string",
+                         "description": "absolute .qet path to save to now; must not exist"},
+            },
+        },
+        "handler": lambda a: tool_live_new_project(a.get("title", ""), a.get("folios", 1),
+                                                   a.get("path", "")),
+    },
+    {
         "name": "qet_live_undo_last",
         "description": "LIVE MODE. Undo the newest step in the open project, only if "
                        "the assistant made it (its name starts \"Assistant :\"); "
@@ -5298,6 +5339,9 @@ _DATA_PATHS = {
     "qet_check":          {"read": ("project",)},
     "qet_layout_check":   {"read": ("project",)},
     "qet_project_new":    {"write": ("output",)},
+    # QElectroTech writes this file, but where is the client's choice:
+    # held to the same workspace as every other file a tool writes.
+    "qet_live_new_project": {"write": ("path",)},
     "qet_element_build":  {"write": ("output",)},
     # The scripts folder is chosen by scripts_dir(), never by the client,
     # so only the project a script is tried on is a data path here.
@@ -5318,6 +5362,9 @@ _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}
 # Tools whose "overwrite" guards a file the server names itself (the
 # stored script, in scripts_dir()), not a client-chosen output path.
 _OVERWRITE_OWN_FILE = {"qet_script_install"}
+# Tools that create a file and never replace one, whatever the client asks:
+# no "overwrite" in their schema, and the flag is ignored if sent anyway.
+_NEVER_OVERWRITE = {"qet_live_new_project"}
 
 # qet_edit operations that name a file of their own.
 _DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
@@ -5517,6 +5564,9 @@ def enforce_path_policy(tool_name: str, arguments: dict) -> None:
         # Writing over something that is already there is the one step this
         # server cannot undo, so it is the one step it will not take on its
         # own. qet_project_new already had this flag; the others now match it.
+        if out.exists() and tool_name in _NEVER_OVERWRITE:
+            raise ValueError(f"{arg!r} already exists: {out}. This tool only "
+                             "creates new files; choose another name.")
         if out.exists() and not arguments.get("overwrite"):
             raise ValueError(
                 f"{arg!r} already exists: {out}. Pass \"overwrite\": true to "
