@@ -4025,6 +4025,36 @@ class ProjectNewValidation(unittest.TestCase):
             self.assertFalse(Path(new).exists())
 
 
+class BomExportOptions(unittest.TestCase):
+    """qet_export's no_slaves and no_junctions become --export-bom flags (#1178)."""
+
+    def run_export(self, format="bom", **kw):
+        seen = []
+        def fake(binary, args, timeout=180, **rest):
+            seen.extend(args)
+            return {"ok": True}
+        with tempfile.TemporaryDirectory() as tmp:
+            proj = Path(tmp) / "a.qet"
+            proj.write_text("<project/>")
+            with unittest.mock.patch.object(m, "_run_qet", fake):
+                m.tool_export("qet", str(proj), format, str(Path(tmp) / "o.csv"), **kw)
+        return seen
+
+    def test_off_by_default(self):
+        args = self.run_export()
+        self.assertNotIn("--no-slaves", args)
+        self.assertNotIn("--no-junctions", args)
+
+    def test_flags_after_the_output(self):
+        args = self.run_export(no_slaves=True, no_junctions=True)
+        self.assertEqual(args[0], "--export-bom")
+        self.assertEqual(args[3:], ["--no-slaves", "--no-junctions"])
+
+    def test_refused_for_other_formats(self):
+        with self.assertRaises(ValueError):
+            self.run_export(format="wiring", no_junctions=True)
+
+
 class ReproducibleExport(unittest.TestCase):
     """qet_export's "reproducible" sets SOURCE_DATE_EPOCH for the run."""
 

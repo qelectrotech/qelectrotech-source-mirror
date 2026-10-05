@@ -1059,10 +1059,13 @@ def _source_date_epoch(value) -> int:
 
 def tool_export(binary: str, project: str, format: str, output: str,
                 timeout: int = 180, reproducible: bool = False,
-                source_date_epoch: int | None = None) -> dict:
+                source_date_epoch: int | None = None,
+                no_slaves: bool = False, no_junctions: bool = False) -> dict:
     if format not in EXPORT_FORMATS:
         raise ValueError(f"unknown format {format!r}; "
                          f"expected one of {', '.join(sorted(EXPORT_FORMATS))}")
+    if (no_slaves or no_junctions) and format != "bom":
+        raise ValueError("no_slaves and no_junctions only apply to format \"bom\"")
     proj = Path(project).expanduser()
     if not proj.is_file():
         raise ValueError(f"no such project: {proj}")
@@ -1080,8 +1083,12 @@ def tool_export(binary: str, project: str, format: str, output: str,
     if reproducible or source_date_epoch is not None:
         epoch = _source_date_epoch(source_date_epoch)
         extra_env = {"SOURCE_DATE_EPOCH": str(epoch)}
-    result = _run_qet(binary, [flag, str(proj), output], timeout,
-                      extra_env=extra_env)
+    args = [flag, str(proj), output]
+    if no_slaves:
+        args.append("--no-slaves")
+    if no_junctions:
+        args.append("--no-junctions")
+    result = _run_qet(binary, args, timeout, extra_env=extra_env)
     out = Path(output).expanduser()
     result["output"] = str(out)
     result["output_exists"] = out.exists()
@@ -4783,13 +4790,24 @@ TOOLS = [
                                                      "carries, in seconds since 1970 UTC. "
                                                      "Default: this server's own "
                                                      "SOURCE_DATE_EPOCH, else 0"},
+                "no_slaves": {"type": "boolean", "default": False,
+                              "description": "bom: leave out the contact blocks (slave "
+                                             "elements), which otherwise get a row of "
+                                             "their own with their master's label"},
+                "no_junctions": {"type": "boolean", "default": False,
+                                 "description": "bom: leave out the junctions: "
+                                                "terminal-type elements with no label, "
+                                                "designation, manufacturer or "
+                                                "manufacturer reference"},
             },
             "required": ["project", "format", "output"],
         },
         "handler": lambda a: tool_export(a["binary"], a["project"], a["format"],
                                          a["output"], a.get("timeout", 180),
                                          a.get("reproducible", False),
-                                         a.get("source_date_epoch")),
+                                         a.get("source_date_epoch"),
+                                         a.get("no_slaves", False),
+                                         a.get("no_junctions", False)),
     },
     {
         "name": "qet_edit",

@@ -323,9 +323,13 @@ bool QetScriptApi::exportWires(const QString &output)
 	return runFlag(QStringLiteral("--export-wires"), {output});
 }
 
-bool QetScriptApi::exportBom(const QString &output)
+bool QetScriptApi::exportBom(const QString &output, bool noSlaves,
+							 bool noJunctions)
 {
-	return runFlag(QStringLiteral("--export-bom"), {output});
+	QStringList args{output};
+	if (noSlaves) args << QStringLiteral("--no-slaves");
+	if (noJunctions) args << QStringLiteral("--no-junctions");
+	return runFlag(QStringLiteral("--export-bom"), args);
 }
 
 bool QetScriptApi::exportWiring(const QString &output)

@@ -384,7 +384,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool exportDxf(const QString &outDir, bool showTerminals = false);
 		Q_INVOKABLE bool exportCables(const QString &output);
 		Q_INVOKABLE bool exportWires(const QString &output);
-		Q_INVOKABLE bool exportBom(const QString &output);
+		Q_INVOKABLE bool exportBom(const QString &output, bool noSlaves = false,
+								   bool noJunctions = false);
 		Q_INVOKABLE bool exportWiring(const QString &output);
 		Q_INVOKABLE bool exportNets(const QString &output);
 		Q_INVOKABLE bool exportLinks(const QString &output);

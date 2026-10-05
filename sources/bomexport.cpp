@@ -57,7 +57,32 @@ QStringList BomExport::defaultColumns()
 	};
 }
 
-QString BomExport::defaultQuery()
+/**
+	@brief BomExport::junctionFilter
+	@return a condition true for every row that is not a junction: a
+	terminal-type element with no label and no part data. Some users draw
+	the dots and bends where wires branch as their own terminal-type
+	symbols, and each one became an empty row of the parts list (#1178).
+	A terminal block with a label or a part number is kept.
+*/
+QString BomExport::junctionFilter()
+{
+	return QStringLiteral("NOT (element_type = 'terminal' "
+						  "AND IFNULL(label, '') = '' "
+						  "AND IFNULL(designation, '') = '' "
+						  "AND IFNULL(manufacturer, '') = '' "
+						  "AND IFNULL(manufacturer_reference, '') = '')");
+}
+
+/**
+	@brief BomExport::defaultQuery
+	@param include_slaves : false leaves out the contact blocks (slave
+	elements), which otherwise appear as rows of their own
+	@param include_junctions : false leaves out the junctions, see
+	junctionFilter()
+	@return the query of the parts list
+*/
+QString BomExport::defaultQuery(bool include_slaves, bool include_junctions)
 {
 		//Slaves and terminals are included because both are routinely
 		//separately orderable hardware. A circuit breaker can carry ten or
@@ -77,11 +102,16 @@ QString BomExport::defaultQuery()
 		//and the conductor definition stay out because they are not hardware.
 		//
 		//See discussion #847.
+	const QString types = include_slaves
+			? QStringLiteral("'simple', 'master', 'slave', 'terminal'")
+			: QStringLiteral("'simple', 'master', 'terminal'");
+	const QString junctions = include_junctions
+			? QString()
+			: QStringLiteral(" AND ") + junctionFilter();
 	return QStringLiteral("SELECT %1 FROM element_nomenclature_view "
-						  "WHERE element_type IN "
-						  "('simple', 'master', 'slave', 'terminal') "
+						  "WHERE element_type IN (%2)%3 "
 						  "ORDER BY diagram_position, position, label")
-			.arg(defaultColumns().join(QStringLiteral(", ")));
+			.arg(defaultColumns().join(QStringLiteral(", ")), types, junctions);
 }
 
 QByteArray BomExport::toCsv(QSqlQuery &query, const QStringList &headers,

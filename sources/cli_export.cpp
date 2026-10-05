@@ -408,10 +408,12 @@ int exportCsv(QETProject &project, const QString &format, const QString &output)
 
 /// Bill of materials from the same project database and default query as the
 /// GUI nomenclature export.
-int exportBom(QETProject &project, const QString &output)
+int exportBom(QETProject &project, const QString &output,
+			  bool includeSlaves, bool includeJunctions)
 {
 	project.dataBase()->updateDB();
-	QSqlQuery query = project.dataBase()->newQuery(BomExport::defaultQuery());
+	QSqlQuery query = project.dataBase()->newQuery(
+			BomExport::defaultQuery(includeSlaves, includeJunctions));
 	if (!query.exec()) {
 		err << "BOM query failed: " << query.lastError().text() << "\n";
 		return 1;
@@ -980,6 +982,9 @@ int run(const QStringList &args)
 	// collected below.
 	QStringList filtered = args;
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
+	// --no-slaves and --no-junctions leave rows out of --export-bom.
+	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
+	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 
 	QString flag;
 	QStringList rest;
@@ -1037,7 +1042,7 @@ int run(const QStringList &args)
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")
-		return exportBom(project, output);
+		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")
 		return exportWiring(project, output);
 	if (format == "nets")
