@@ -171,6 +171,44 @@ namespace QetSettings
 	{
 		QSettings settings;
 		settings.setValue("scripting/live_assistant", enabled);
+			//Turned off and on again: the start warning comes back, so
+			//"don't ask again" never outlives the choice it was made for
+		if (!enabled) settings.remove("scripting/live_skip_warning");
+	}
+
+	/**
+	* @brief liveSkipStartWarning
+	* @return true when the user ticked "don't ask again" in live mode's
+	* start warning: live mode then opens at every start without asking,
+	* until it is switched off in the settings. False unless they did.
+	*/
+	bool liveSkipStartWarning()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_skip_warning", false).toBool();
+	}
+
+	void setLiveSkipStartWarning(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_skip_warning", skip);
+	}
+
+	/**
+	* @brief liveAskFirst
+	* @return whether live mode shows each script the assistant wrote and
+	* asks before running it. On unless the user chose "always".
+	*/
+	bool liveAskFirst()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_ask_first", true).toBool();
+	}
+
+	void setLiveAskFirst(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_ask_first", ask);
 	}
 
 	/**

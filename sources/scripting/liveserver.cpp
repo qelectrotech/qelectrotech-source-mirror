@@ -48,6 +48,7 @@
 #include <QPixmap>
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
+#include <QCheckBox>
 #include <QDialog>
 #include <QDir>
 #include <QFileInfo>
@@ -81,7 +82,8 @@ LiveServer &LiveServer::instance()
 	return server;
 }
 
-LiveServer::LiveServer()
+LiveServer::LiveServer() :
+	m_ask_first(QetSettings::liveAskFirst())
 {
 	connect(qApp, &QCoreApplication::aboutToQuit, this, &LiveServer::stop);
 }
@@ -112,6 +114,10 @@ void LiveServer::askAndStart(QWidget *parent)
 		return;
 	}
 	m_asked = true;
+	if (QetSettings::liveSkipStartWarning()) {
+		start();
+		return;
+	}
 
 	QMessageBox box(QMessageBox::Warning, tr("Mode direct"),
 			tr("Le mode direct est activé : un assistant IA connecté "
@@ -125,11 +131,17 @@ void LiveServer::askAndStart(QWidget *parent)
 	box.addButton(tr("&Pas pour cette session"), QMessageBox::RejectRole);
 	QPushButton *off = box.addButton(tr("&Désactiver"), QMessageBox::DestructiveRole);
 	box.setDefaultButton(go);
+	auto *remember = new QCheckBox(tr("Ne plus demander au démarrage"), &box);
+	remember->setToolTip(tr("Le mode direct s'ouvrira à chaque démarrage. Pour être "
+				"de nouveau averti, désactivez-le puis réactivez-le dans "
+				"Configurer QElectroTech > Général > Projets."));
+	box.setCheckBox(remember);
 	box.exec();
 
 	if (box.clickedButton() == off) {
 		QetSettings::setLiveAssistantEnabled(false);
 	} else if (box.clickedButton() == go) {
+		if (remember->isChecked()) QetSettings::setLiveSkipStartWarning(true);
 		start();
 	}
 }
@@ -249,7 +261,7 @@ void LiveServer::handle(const QJsonObject &request)
 			const QString name = request.value(QStringLiteral("name")).toString();
 			const QString source = request.value(QStringLiteral("source")).toString();
 				//A script the assistant just wrote: the user sees it first,
-				//unless they said "always" this session. A stored script
+				//unless they chose "always" (remembered). A stored script
 				//is one the user already has, so it runs as a click would.
 			if (m_ask_first && !confirm(name, source))
 				answer = failure(QStringLiteral("refused by the user"));
@@ -405,6 +417,7 @@ void LiveServer::setAskFirst(bool ask)
 {
 	if (ask == m_ask_first) return;
 	m_ask_first = ask;
+	QetSettings::setLiveAskFirst(ask);
 	emit askFirstChanged(ask);
 }
 
@@ -909,7 +922,7 @@ bool LiveServer::confirm(const QString &name, const QString &source)
 	auto *buttons = new QDialogButtonBox(&dialog);
 	QPushButton *run = buttons->addButton(tr("&Exécuter"), QDialogButtonBox::AcceptRole);
 	buttons->addButton(tr("&Refuser"), QDialogButtonBox::RejectRole);
-	QPushButton *always = buttons->addButton(tr("&Toujours pour cette session"),
+	QPushButton *always = buttons->addButton(tr("&Toujours"),
 						 QDialogButtonBox::AcceptRole);
 	layout->addWidget(buttons);
 	QPushButton *clicked = nullptr;

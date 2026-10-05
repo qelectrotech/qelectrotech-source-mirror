@@ -7218,6 +7218,16 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</translati
         <translation>&amp;Turn off</translation>
     </message>
     <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="126"/>
+        <source>Ne plus demander au démarrage</source>
+        <translation>Don&apos;t ask again at start</translation>
+    </message>
+    <message>
+        <location filename="../sources/scripting/liveserver.cpp" line="127"/>
+        <source>Le mode direct s&apos;ouvrira à chaque démarrage. Pour être de nouveau averti, désactivez-le puis réactivez-le dans Configurer QElectroTech &gt; Général &gt; Projets.</source>
+        <translation>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</translation>
+    </message>
+    <message>
         <location filename="../sources/scripting/liveserver.cpp" line="379"/>
         <location filename="../sources/scripting/liveserver.cpp" line="903"/>
         <source>script</source>
@@ -7273,9 +7283,13 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</translati
         <translation>&amp;Decline</translation>
     </message>
     <message>
-        <location filename="../sources/scripting/liveserver.cpp" line="912"/>
+        <location filename="../sources/scripting/liveserver.cpp" line="530"/>
+        <source>&amp;Toujours</source>
+        <translation>&amp;Always</translation>
+    </message>
+    <message>
         <source>&amp;Toujours pour cette session</source>
-        <translation>&amp;Always this session</translation>
+        <translation type="vanished">&amp;Always this session</translation>
     </message>
 </context>
 <context>
@@ -11321,6 +11335,11 @@ A script runs with your permissions: it can read and modify the open project and
 Enable scripts? This setting can be changed in Configure QElectroTech &gt; General &gt; Projects.</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4089"/>
+        <source>Retenu après un redémarrage</source>
+        <translation>Remembered after a restart</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3873"/>
         <source>Scripts JavaScript (*.js);;Tous les fichiers (*)</source>
         <translation>JavaScript scripts (*.js);;All files (*)</translation>
@@ -11412,7 +11431,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4091"/>
         <source>Pour cette session seulement : chaque démarrage redemande</source>
-        <translation>For this session only: every start asks again</translation>
+        <translation type="vanished">For this session only: every start asks again</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4146"/>

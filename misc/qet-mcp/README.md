@@ -369,7 +369,8 @@ between pages need no tool of their own: in `qet_live_run_script`,
 contacts, across folios.
 
 A script the assistant writes on the spot is shown to you first, with
-*Run*, *Decline* or *Always this session*; the Assistant
+*Run*, *Decline* or *Always* (remembered after a restart; untick "Ask
+before running" in the Assistant panel to be asked again); the Assistant
 panel lists everything it did.
 
 QElectroTech only listens when three things are true:
@@ -380,7 +381,8 @@ QElectroTech only listens when three things are true:
    mode)" is ticked (off by default; in French, Configurer QElectroTech >
    Général > Projets);
 3. at this start, you answered *Continue* to the warning QElectroTech shows
-   every time it starts with that setting on.
+   when it starts with that setting on -- or, once, ticked "Don't ask again
+   at start" in it, which lasts until the setting is switched off.
 
 While it listens, the status bar says so and shows the assistant's last
 action, with a *Stop* button that closes the channel for the rest of
