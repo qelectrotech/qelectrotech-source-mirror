@@ -1026,7 +1026,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Format as a part list</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="64"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
+        <source>Bornes sans repère, désignation, fabricant ni référence fabricant</source>
+        <translation>Terminals with no label, designation, manufacturer or manufacturer reference</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
+        <source>Laisser de côté les jonctions</source>
+        <translation>Leave out junctions</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="77"/>
         <source>Aperçu</source>
         <translation>Preview</translation>
     </message>
@@ -4214,47 +4224,52 @@ Continue?</translation>
         <translation>PLCs (MAE/SPS)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="337"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="324"/>
+        <source>Contacts esclaves</source>
+        <translation>Slave contacts</translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="347"/>
         <source>Configuration</source>
         <translation>Configuration</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="346"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="356"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation>Open the selected configuration</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="372"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="382"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Save the current configuration</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="388"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="398"/>
         <source>Importer des rapports depuis un fichier</source>
         <translation>Import reports from a file</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="391"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="401"/>
         <source>Importer...</source>
         <translation>Import...</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="398"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="408"/>
         <source>Exporter tous les rapports enregistrés vers un fichier</source>
         <translation>Export all saved reports to a file</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="401"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="411"/>
         <source>Exporter...</source>
         <translation>Export...</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="423"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="433"/>
         <source>Requête SQL personnalisée</source>
         <translation>Custom SQL Query</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="433"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="443"/>
         <source>Requête SQL :</source>
         <translation>SQL request  :</translation>
     </message>
