@@ -149,12 +149,12 @@ if [ ! -d $BUNDLE ] ; then
     exit 1
 fi
 
-macdeployqt $BUNDLE -extra-plugins=platforms/libqoffscreen.dylib
+macdeployqt $BUNDLE || { echo "ERROR: macdeployqt failed"; exit 1; }
 
 ### offscreen platform plugin (headless use, e.g. qet_mcp.py) ########
 # macdeployqt only deploys libqcocoa. Without libqoffscreen, running
-# QT_QPA_PLATFORM=offscreen aborts. If -extra-plugins above did not
-# deploy it, copy it from the Homebrew Qt and make it point to the
+# QT_QPA_PLATFORM=offscreen aborts. macdeployqt has no option to add it,
+# so copy it from the Homebrew Qt and make it point to the
 # frameworks of the bundle. It is signed with the other plugins below.
 OFFSCREEN="$BUNDLE/Contents/PlugIns/platforms/libqoffscreen.dylib"
 if [ ! -f "$OFFSCREEN" ] ; then
