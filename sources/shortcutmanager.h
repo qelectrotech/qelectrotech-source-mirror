@@ -19,6 +19,7 @@
 #define SHORTCUTMANAGER_H
 
 #include <QHash>
+#include <QIcon>
 #include <QKeySequence>
 #include <QList>
 #include <QPointer>
@@ -60,6 +61,10 @@ class ShortcutManager
 			QString description;
 			QKeySequence default_sequence;
 			QKeySequence current_sequence;
+				/// The command's icon, from its first live target; may be null
+			QIcon icon;
+				/// The first live target if it is a QAction, else nullptr
+			QAction *action = nullptr;
 		};
 
 		void registerAction(QObject *target, const QString &id,
