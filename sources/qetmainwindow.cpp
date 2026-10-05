@@ -69,6 +69,7 @@ void QETMainWindow::initCommonActions()
 	QETApp *qet_app = QETApp::instance();
 
 	configure_action_ = new QAction(QET::Icons::Configure, tr("&Configurer QElectroTech"), this);
+	ShortcutManager::instance().registerAction(configure_action_, "mainwindow.configure", tr("Général"), QKeySequence());
 	configure_action_ -> setStatusTip(tr("Permet de régler différents paramètres de QElectroTech", "status bar tip"));
 	connect(configure_action_, &QAction::triggered, [qet_app]()
 	{
@@ -107,8 +108,10 @@ void QETMainWindow::initCommonActions()
 	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
 
 	whatsthis_action_ = QWhatsThis::createAction(this);
+	ShortcutManager::instance().registerAction(whatsthis_action_, "mainwindow.whats_this", tr("Général"), Qt::SHIFT | Qt::Key_F1);
 
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
+	ShortcutManager::instance().registerAction(about_qet_, "mainwindow.about_qet", tr("Général"), QKeySequence());
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	connect(about_qet_, &QAction::triggered, qet_app, &QETApp::aboutQET);
 
@@ -123,6 +126,7 @@ void QETMainWindow::initCommonActions()
 	ShortcutManager::instance().registerAction(manual_online_, "mainwindow.manual_online", tr("Général"), Qt::Key_F1);
 
 	connect_ai_ = new QAction(tr("Connecter un assistant IA..."), this);
+	ShortcutManager::instance().registerAction(connect_ai_, "mainwindow.connect_ai", tr("Général"), QKeySequence());
 	connect_ai_ -> setStatusTip(tr("Affiche la configuration qui permet à un assistant IA d'utiliser QElectroTech", "status bar tip"));
 	connect(connect_ai_, &QAction::triggered, this, [this]() {
 		AiAssistantDialog dialog(this);
@@ -130,6 +134,7 @@ void QETMainWindow::initCommonActions()
 	});
 
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
+	ShortcutManager::instance().registerAction(youtube_, "mainwindow.youtube", tr("Général"), QKeySequence());
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 
 	connect(youtube_, &QAction::triggered, [](bool) {
@@ -138,9 +143,11 @@ void QETMainWindow::initCommonActions()
 	});
 
 	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	ShortcutManager::instance().registerAction(upgrade_, "mainwindow.download_windows", tr("Général"), QKeySequence());
 	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 
 	upgrade_M = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	ShortcutManager::instance().registerAction(upgrade_M, "mainwindow.download_mac", tr("Général"), QKeySequence());
 	upgrade_M -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 
 	connect(upgrade_, &QAction::triggered, [](bool) {
@@ -154,6 +161,7 @@ void QETMainWindow::initCommonActions()
 	});
 
 	donate_ = new QAction(QET::Icons::QETDonate, tr("Soutenir le projet par un don"), this);
+	ShortcutManager::instance().registerAction(donate_, "mainwindow.donate", tr("Général"), QKeySequence());
 	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
 
 	connect(donate_, &QAction::triggered, [](bool) {
@@ -162,10 +170,12 @@ void QETMainWindow::initCommonActions()
 	});
 
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
+	ShortcutManager::instance().registerAction(about_qt_, "mainwindow.about_qt", tr("Général"), QKeySequence());
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, &QAction::triggered, qApp, &QApplication::aboutQt);
 
 	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
+	ShortcutManager::instance().registerAction(diagnostics_action_, "mainwindow.diagnostics_report", tr("Général"), QKeySequence());
 	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));
 	connect(diagnostics_action_, &QAction::triggered, this, []() {
 		QETApp::instance()->showDiagnosticsReport();
