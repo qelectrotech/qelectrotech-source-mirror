@@ -4101,6 +4101,29 @@ def tool_live_new_project(title: str = "", folios: int = 1, path: str = "") -> d
     return _live_call(request)
 
 
+def tool_live_open_project(path: str) -> dict:
+    if not isinstance(path, str) or not path.strip():
+        raise ValueError("'path' must be the project's file, e.g. /home/me/projects/pump.qet")
+    p = Path(path).expanduser()
+    if not p.is_absolute():
+        raise ValueError("'path' must be absolute, e.g. /home/me/projects/pump.qet")
+    return _live_call({"cmd": "open_project", "path": str(p)})
+
+
+def tool_live_switch_project(index: int | None = None, path: str = "") -> dict:
+    if (index is None) == (not path):
+        raise ValueError("give exactly one of 'index' (from qet_live_status's "
+                         "\"projects\") or 'path'")
+    if index is not None:
+        if not isinstance(index, int) or isinstance(index, bool) or index < 0:
+            raise ValueError("'index' must be a whole number counted from 0")
+        return _live_call({"cmd": "switch_project", "index": index})
+    p = Path(path).expanduser()
+    if not p.is_absolute():
+        raise ValueError("'path' must be absolute")
+    return _live_call({"cmd": "switch_project", "path": str(p)})
+
+
 def tool_live_undo_last() -> dict:
     _require_script_consent()
     return _live_call({"cmd": "undo_last"})
@@ -5107,7 +5130,9 @@ TOOLS = [
         "name": "qet_live_status",
         "description": "LIVE MODE. Ask the QElectroTech the user has open what is on "
                        "screen: the project, the folio shown (index and title), the "
-                       "selected elements, the last undo step and the stored scripts. "
+                       "selected elements, the last undo step, the stored scripts, and "
+                       "\"projects\": every project open in the window (index, title, "
+                       "file, folios, unsaved changes, which is current). "
                        "Works only if the user switched live mode on in QElectroTech "
                        "and accepted its warning at this start; the error says which "
                        "step is missing. Changes nothing.",
@@ -5204,6 +5229,33 @@ TOOLS = [
         },
         "handler": lambda a: tool_live_new_project(a.get("title", ""), a.get("folios", 1),
                                                    a.get("path", "")),
+    },
+    {
+        "name": "qet_live_open_project",
+        "description": "LIVE MODE. Open a saved project (.qet, absolute path) in the "
+                       "QElectroTech the user has open and make it current, as File > "
+                       "Open does but with no dialog; errors come back as text. A "
+                       "project already open is only made current. Every following "
+                       "qet_live_* call works on it.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"path": {"type": "string", "description": "absolute .qet path"}},
+            "required": ["path"],
+        },
+        "handler": lambda a: tool_live_open_project(a["path"]),
+    },
+    {
+        "name": "qet_live_switch_project",
+        "description": "LIVE MODE. Make another project that is already open the "
+                       "current one, by its index in qet_live_status's \"projects\" or "
+                       "by its file path. Every following qet_live_* call works on it. "
+                       "Changes no project.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"index": {"type": "integer", "minimum": 0},
+                           "path": {"type": "string"}},
+        },
+        "handler": lambda a: tool_live_switch_project(a.get("index"), a.get("path", "")),
     },
     {
         "name": "qet_live_undo_last",
@@ -5342,6 +5394,8 @@ _DATA_PATHS = {
     # QElectroTech writes this file, but where is the client's choice:
     # held to the same workspace as every other file a tool writes.
     "qet_live_new_project": {"write": ("path",)},
+    "qet_live_open_project": {"read": ("path",)},
+    "qet_live_switch_project": {"read": ("path",)},
     "qet_element_build":  {"write": ("output",)},
     # The scripts folder is chosen by scripts_dir(), never by the client,
     # so only the project a script is tried on is a data path here.

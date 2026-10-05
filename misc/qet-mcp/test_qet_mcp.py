@@ -184,7 +184,8 @@ class ToolRegistry(unittest.TestCase):
         "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
         "qet_live_undo_last", "qet_live_screenshot", "qet_about",
         "qet_recording_list", "qet_recording_read", "qet_recording_check",
-        "qet_recording_remove", "qet_layout_check", "qet_live_new_project"})
+        "qet_recording_remove", "qet_layout_check", "qet_live_new_project",
+        "qet_live_open_project", "qet_live_switch_project"})
 
 
 class EditValidation(unittest.TestCase):
@@ -3561,6 +3562,25 @@ class LiveClient(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "absolute"):
             m.tool_live_new_project(path="pump.qet")
         self.assertEqual(len(self.seen), 2)
+
+    def test_open_and_switch_send_only_what_was_given(self):
+        self.session()
+        m.tool_live_open_project("/tmp/x/pump.qet")
+        m.tool_live_switch_project(1)
+        m.tool_live_switch_project(path="/tmp/x/pump.qet")
+        self.assertEqual([{k: v for k, v in r.items() if k not in ("token", "id")}
+                          for r in self.seen],
+                         [{"cmd": "open_project", "path": "/tmp/x/pump.qet"},
+                          {"cmd": "switch_project", "index": 1},
+                          {"cmd": "switch_project", "path": "/tmp/x/pump.qet"}])
+        for bad in ({}, {"index": 0, "path": "/a.qet"}, {"index": -1},
+                    {"index": True}, {"path": "rel.qet"}):
+            with self.assertRaises(ValueError):
+                m.tool_live_switch_project(**bad)
+        for bad in ("", "rel.qet"):
+            with self.assertRaises(ValueError):
+                m.tool_live_open_project(bad)
+        self.assertEqual(len(self.seen), 3)
 
     def test_new_project_needs_script_consent(self):
         self.session()
