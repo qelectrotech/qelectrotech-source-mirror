@@ -64,6 +64,8 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
+import uuid
 import xml.etree.ElementTree as ET
 from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
 
@@ -4016,9 +4018,21 @@ def _live_session() -> dict:
     return live
 
 
+_live_last_end = None
+
+
 def _live_call(request: dict, timeout: float = 60.0) -> dict:
+    # QET_LIVE_PERF_LOG: append one JSON line per request with where its
+    # time went (tools/live-perf/monitor.py in the docker harness reads it;
+    # QElectroTech writes its own half when started with the same variable).
+    perf_log = os.environ.get("QET_LIVE_PERF_LOG", "").strip()
+    started = time.perf_counter()
     session = _live_session()
-    request = dict(request, token=session.get("token", ""), id=1)
+    request_id = uuid.uuid4().hex[:12] if perf_log else 1
+    request = dict(request, token=session.get("token", ""), id=request_id)
+    if perf_log:
+        request["timing"] = True
+    t_session = time.perf_counter()
     line = (json.dumps(request) + "\n").encode("utf-8")
     name = session.get("socket", "")
     try:
@@ -4052,6 +4066,23 @@ def _live_call(request: dict, timeout: float = 60.0) -> dict:
         raise ValueError("QElectroTech closed the live channel without answering")
     answer = json.loads(data.decode("utf-8"))
     answer.pop("id", None)
+    if perf_log:
+        global _live_last_end
+        ended = time.perf_counter()
+        line = {"src": "client", "id": request_id, "cmd": request.get("cmd"),
+                "label": "mcp", "t": time.time(), "pid": os.getpid(),
+                "gap_ms": round((started - _live_last_end) * 1000, 2)
+                if _live_last_end is not None else None,
+                "session_ms": round((t_session - started) * 1000, 2),
+                "total_ms": round((ended - started) * 1000, 2),
+                "answer_bytes": len(data), "ok": answer.get("ok"),
+                "server": answer.pop("timing", None)}
+        _live_last_end = ended
+        try:
+            with open(perf_log, "a", encoding="utf-8") as f:
+                f.write(json.dumps(line) + "\n")
+        except OSError:
+            pass
     return answer
 
 

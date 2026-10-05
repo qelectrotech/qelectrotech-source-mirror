@@ -77,7 +77,7 @@ class LiveServer : public QObject
 		void setState(State state);
 		void newConnection();
 		void readClient();
-		void handle(const QJsonObject &request);
+		void handle(const QJsonObject &request, qint64 received_ns);
 		void send(const QJsonObject &answer);
 		QJsonObject status();
 		QJsonObject runScript(const QString &name, const QString &source);
