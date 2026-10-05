@@ -48,6 +48,9 @@
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
 #include <QDialog>
+#include <QDir>
+#include <QFileInfo>
+#include <QMdiSubWindow>
 #include <QDialogButtonBox>
 #include <QLabel>
 #include "../projectview.h"
@@ -251,6 +254,12 @@ void LiveServer::handle(const QJsonObject &request)
 			answer = runStored(request.value(QStringLiteral("script")).toString());
 		} else if (cmd == QLatin1String("command")) {
 			answer = command(request.value(QStringLiteral("action")).toString());
+		} else if (cmd == QLatin1String("new_project")) {
+			answer = newProject(request);
+		} else if (cmd == QLatin1String("open_project")) {
+			answer = openProject(request.value(QStringLiteral("path")).toString());
+		} else if (cmd == QLatin1String("switch_project")) {
+			answer = switchProject(request);
 		} else if (cmd == QLatin1String("show_folio")) {
 			answer = showFolio(request.value(QStringLiteral("folio")).toInt(-1));
 		} else if (cmd == QLatin1String("undo_last")) {
@@ -313,6 +322,7 @@ QJsonObject LiveServer::status()
 					   {QStringLiteral("name"), s.header.name}});
 	answer.insert(QStringLiteral("stored_scripts"), scripts);
 		//So an assistant can notice a recording the user just made
+	answer.insert(QStringLiteral("projects"), openProjects());
 	answer.insert(QStringLiteral("macro_recorder"), QJsonObject{
 		{QStringLiteral("recording"), MacroRecorder::instance().isRecording()},
 		{QStringLiteral("steps"), MacroRecorder::instance().stepCount()},
@@ -439,6 +449,151 @@ QJsonObject LiveServer::showFolio(int folio)
 			       .arg(folio).arg(diagrams.count()));
 	pv->showDiagram(diagrams.at(folio));
 	return {{QStringLiteral("ok"), true}, {QStringLiteral("folio"), folio}};
+}
+
+/**
+	@brief LiveServer::newProject
+	A new project, as File > New makes it: the new-folio defaults of this
+	QElectroTech, opened and made the current project, so the next script
+	works on it. Optional: "title", "folios" (how many empty folios, 1 to
+	100, default 1), and "path" to save it to at once -- never over an
+	existing file, so an assistant cannot replace the user's work.
+*/
+QJsonObject LiveServer::newProject(const QJsonObject &request)
+{
+	QETDiagramEditor *e = editor();
+	if (!e) return failure(QStringLiteral("no QElectroTech editor window is open"));
+
+	const int folios = request.value(QStringLiteral("folios")).toInt(1);
+	if (folios < 1 || folios > 100)
+		return failure(QStringLiteral("folios must be between 1 and 100, not %1").arg(folios));
+	const QString path = request.value(QStringLiteral("path")).toString().trimmed();
+	if (!path.isEmpty()) {
+		const QFileInfo info(path);
+		if (info.isRelative())
+			return failure(QStringLiteral("path must be absolute: %1").arg(path));
+		if (info.exists())
+			return failure(QStringLiteral("%1 already exists; a new project is never "
+						      "saved over a file").arg(path));
+		if (!info.dir().exists())
+			return failure(QStringLiteral("the folder %1 does not exist").arg(info.absolutePath()));
+	}
+
+	auto project = new QETProject(e);
+	for (int i = 0; i < folios; ++i) project->addNewDiagram();
+	const QString title = request.value(QStringLiteral("title")).toString().trimmed();
+	if (!title.isEmpty()) project->setTitle(title);
+	if (!e->addProject(project)) return failure(QStringLiteral("QElectroTech refused the new project"));
+
+		//Current at once, whether or not QElectroTech is the active
+		//application: the next request runs on it (see editor())
+	for (ProjectView *pv : e->openedProjects()) {
+		if (pv->project() == project) {
+			for (QMdiSubWindow *w : e->m_workspace.subWindowList())
+				if (w->widget() == pv) e->m_workspace.setActiveSubWindow(w);
+		}
+	}
+
+	if (!path.isEmpty()) {
+		project->setFilePath(path);
+		const QETResult result = project->write();
+		if (!result.isOk())
+			return failure(QStringLiteral("the project was created but not saved to %1: %2")
+				       .arg(path, result.errorMessage()));
+	}
+
+	QJsonObject answer = status();
+	answer.insert(QStringLiteral("created"), true);
+	return answer;
+}
+
+/**
+	@brief LiveServer::openProjects
+	The projects open in the editor window, in tab order: the index
+	switch_project takes, title, file, folios, unsaved changes, and which
+	one is current.
+*/
+QJsonArray LiveServer::openProjects() const
+{
+	QJsonArray list;
+	QETDiagramEditor *e = editor();
+	if (!e) return list;
+	const QETProject *current = e->currentProject();
+	const QList<ProjectView *> views = e->openedProjects();
+	for (int i = 0; i < views.count(); ++i) {
+		QETProject *p = views.at(i)->project();
+		list.append(QJsonObject{
+			{QStringLiteral("index"), i},
+			{QStringLiteral("title"), p->title()},
+			{QStringLiteral("path"), p->filePath()},
+			{QStringLiteral("folios"), int(p->diagrams().count())},
+			{QStringLiteral("modified"), p->projectWasModified()},
+			{QStringLiteral("read_only"), p->isReadOnly()},
+			{QStringLiteral("current"), p == current}});
+	}
+	return list;
+}
+
+/**
+	@brief LiveServer::openProject
+	Open a saved project and make it current, as File > Open does but with
+	no file dialog and no error windows: what is wrong comes back in the
+	answer. A project already open is only made current.
+*/
+QJsonObject LiveServer::openProject(const QString &raw_path)
+{
+	QETDiagramEditor *e = editor();
+	if (!e) return failure(QStringLiteral("no QElectroTech editor window is open"));
+	const QString path = raw_path.trimmed();
+	if (path.isEmpty()) return failure(QStringLiteral("no path given"));
+	const QFileInfo info(path);
+	if (info.isRelative()) return failure(QStringLiteral("path must be absolute: %1").arg(path));
+	if (!info.isFile()) return failure(QStringLiteral("%1 does not exist").arg(path));
+	if (!info.isReadable()) return failure(QStringLiteral("%1 cannot be read (permissions)").arg(path));
+
+	QJsonObject extra{{QStringLiteral("opened"), true}};
+	if (ProjectView *pv = e->viewForFile(info.absoluteFilePath())) {
+		e->activateProject(pv);
+		extra = {{QStringLiteral("opened"), false}, {QStringLiteral("already_open"), true}};
+	} else if (QETApp::diagramEditorForFile(info.absoluteFilePath())) {
+		return failure(QStringLiteral("%1 is open in another QElectroTech window; "
+					      "switch to it there").arg(path));
+	} else {
+		if (!e->openAndAddProject(info.absoluteFilePath(), false))
+			return failure(QStringLiteral("QElectroTech could not open %1 (not a "
+						      "QElectroTech project, or a newer format)").arg(path));
+		if (ProjectView *pv = e->viewForFile(info.absoluteFilePath())) e->activateProject(pv);
+	}
+	QJsonObject answer = status();
+	for (auto it = extra.begin(); it != extra.end(); ++it) answer.insert(it.key(), it.value());
+	return answer;
+}
+
+/**
+	@brief LiveServer::switchProject
+	Make another open project current, by its index in "projects" (status)
+	or by its file path.
+*/
+QJsonObject LiveServer::switchProject(const QJsonObject &request)
+{
+	QETDiagramEditor *e = editor();
+	if (!e) return failure(QStringLiteral("no QElectroTech editor window is open"));
+	const QList<ProjectView *> views = e->openedProjects();
+	ProjectView *target = nullptr;
+	if (request.contains(QStringLiteral("index"))) {
+		const int index = request.value(QStringLiteral("index")).toInt(-1);
+		if (index < 0 || index >= views.count())
+			return failure(QStringLiteral("no open project %1: %2 are open, counted from 0")
+				       .arg(index).arg(views.count()));
+		target = views.at(index);
+	} else {
+		const QString path = request.value(QStringLiteral("path")).toString().trimmed();
+		if (path.isEmpty()) return failure(QStringLiteral("give \"index\" (from \"projects\") or \"path\""));
+		target = e->viewForFile(QFileInfo(path).absoluteFilePath());
+		if (!target) return failure(QStringLiteral("%1 is not open; open_project opens it").arg(path));
+	}
+	e->activateProject(target);
+	return status();
 }
 
 /**

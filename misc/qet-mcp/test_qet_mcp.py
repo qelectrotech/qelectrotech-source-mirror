@@ -184,7 +184,8 @@ class ToolRegistry(unittest.TestCase):
         "qet_live_run_stored", "qet_live_command", "qet_live_show_folio",
         "qet_live_undo_last", "qet_live_screenshot", "qet_about",
         "qet_recording_list", "qet_recording_read", "qet_recording_check",
-        "qet_recording_remove", "qet_layout_check"})
+        "qet_recording_remove", "qet_layout_check", "qet_live_new_project",
+        "qet_live_open_project", "qet_live_switch_project"})
 
 
 class EditValidation(unittest.TestCase):
@@ -2829,7 +2830,20 @@ class PathPolicy(unittest.TestCase):
         guarded = {name for name, spec in m._DATA_PATHS.items() if spec.get("write")}
         advertised = {t["name"] for t in m.TOOLS
                       if "overwrite" in t["inputSchema"].get("properties", {})}
-        self.assertEqual(guarded, advertised - m._OVERWRITE_OWN_FILE)
+        self.assertEqual(guarded - m._NEVER_OVERWRITE, advertised - m._OVERWRITE_OWN_FILE)
+        self.assertFalse(advertised & m._NEVER_OVERWRITE)
+
+    def test_never_overwrite_tools_ignore_the_flag(self):
+        with tempfile.TemporaryDirectory() as d:
+            target = Path(d) / "exists.qet"
+            target.write_text("x")
+            with mock.patch.dict(os.environ, {"QET_MCP_WORKSPACE": d}):
+                for args in ({"path": str(target)}, {"path": str(target), "overwrite": True}):
+                    with self.assertRaisesRegex(ValueError, "only creates new files"):
+                        m.enforce_path_policy("qet_live_new_project", args)
+                m.enforce_path_policy("qet_live_new_project", {"path": str(Path(d) / "new.qet")})
+                with self.assertRaises(ValueError):
+                    m.enforce_path_policy("qet_live_new_project", {"path": "/etc/new.qet"})
 
     def test_every_data_path_argument_is_guarded(self):
         """The other direction: a tool whose schema takes a data path must be
@@ -3532,6 +3546,48 @@ class LiveClient(unittest.TestCase):
                           ("show_folio", None, 2), ("undo_last", None, None)])
         with self.assertRaises(ValueError):
             m.tool_live_show_folio("2")
+
+    def test_new_project_sends_only_what_was_given(self):
+        self.session()
+        m.tool_live_new_project()
+        m.tool_live_new_project("Pump station", 3, "/tmp/x/pump.qet")
+        self.assertEqual([{k: v for k, v in r.items() if k not in ("token", "id")}
+                          for r in self.seen],
+                         [{"cmd": "new_project", "folios": 1},
+                          {"cmd": "new_project", "folios": 3, "title": "Pump station",
+                           "path": "/tmp/x/pump.qet"}])
+        for bad in (0, 101, "2", True):
+            with self.assertRaises(ValueError):
+                m.tool_live_new_project(folios=bad)
+        with self.assertRaisesRegex(ValueError, "absolute"):
+            m.tool_live_new_project(path="pump.qet")
+        self.assertEqual(len(self.seen), 2)
+
+    def test_open_and_switch_send_only_what_was_given(self):
+        self.session()
+        m.tool_live_open_project("/tmp/x/pump.qet")
+        m.tool_live_switch_project(1)
+        m.tool_live_switch_project(path="/tmp/x/pump.qet")
+        self.assertEqual([{k: v for k, v in r.items() if k not in ("token", "id")}
+                          for r in self.seen],
+                         [{"cmd": "open_project", "path": "/tmp/x/pump.qet"},
+                          {"cmd": "switch_project", "index": 1},
+                          {"cmd": "switch_project", "path": "/tmp/x/pump.qet"}])
+        for bad in ({}, {"index": 0, "path": "/a.qet"}, {"index": -1},
+                    {"index": True}, {"path": "rel.qet"}):
+            with self.assertRaises(ValueError):
+                m.tool_live_switch_project(**bad)
+        for bad in ("", "rel.qet"):
+            with self.assertRaises(ValueError):
+                m.tool_live_open_project(bad)
+        self.assertEqual(len(self.seen), 3)
+
+    def test_new_project_needs_script_consent(self):
+        self.session()
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            with self.assertRaises(ValueError):
+                m.tool_live_new_project()
+        self.assertEqual(self.seen, [])
 
     def test_stale_session_file(self):
         self.info({"socket": self.sock_path + "-gone", "token": "T0K"})
