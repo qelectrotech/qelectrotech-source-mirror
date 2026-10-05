@@ -89,6 +89,11 @@ class LiveServer : public QObject
 		QJsonObject openProject(const QString &path);
 		QJsonObject switchProject(const QJsonObject &request);
 		QJsonArray openProjects() const;
+		QJsonObject saveProject(const QJsonObject &request);
+		QJsonObject closeProject(const QJsonObject &request);
+		QJsonObject print(const QJsonObject &request);
+		QJsonObject changes(const QJsonObject &request);
+		QJsonObject snapshot(const QString &path);
 		QJsonObject undoLast();
 		QJsonObject screenshot();
 		bool confirm(const QString &name, const QString &source);

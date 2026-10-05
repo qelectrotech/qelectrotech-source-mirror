@@ -185,7 +185,9 @@ class ToolRegistry(unittest.TestCase):
         "qet_live_undo_last", "qet_live_screenshot", "qet_about",
         "qet_recording_list", "qet_recording_read", "qet_recording_check",
         "qet_recording_remove", "qet_layout_check", "qet_live_new_project",
-        "qet_live_open_project", "qet_live_switch_project"})
+        "qet_live_open_project", "qet_live_switch_project", "qet_live_save_project",
+        "qet_live_close_project", "qet_live_print", "qet_live_changes",
+        "qet_live_layout_check"})
 
 
 class EditValidation(unittest.TestCase):
@@ -3582,6 +3584,48 @@ class LiveClient(unittest.TestCase):
                 m.tool_live_open_project(bad)
         self.assertEqual(len(self.seen), 3)
 
+    def test_save_close_print_changes_send_only_what_was_given(self):
+        self.session()
+        m.tool_live_save_project()
+        m.tool_live_save_project("/tmp/x/as.qet")
+        m.tool_live_close_project()
+        m.tool_live_close_project(2)
+        m.tool_live_print()
+        m.tool_live_print([0, 2], printer="HP")
+        m.tool_live_print("current", output_file="/tmp/x/out.pdf")
+        m.tool_live_changes()
+        m.tool_live_changes(4)
+        self.assertEqual([{k: v for k, v in r.items() if k not in ("token", "id")}
+                          for r in self.seen], [
+            {"cmd": "save_project"}, {"cmd": "save_project", "path": "/tmp/x/as.qet"},
+            {"cmd": "close_project"}, {"cmd": "close_project", "index": 2},
+            {"cmd": "print", "folios": "all"},
+            {"cmd": "print", "folios": [0, 2], "printer": "HP"},
+            {"cmd": "print", "folios": "current", "output_file": "/tmp/x/out.pdf"},
+            {"cmd": "changes"}, {"cmd": "changes", "since": 4}])
+        bad = [lambda: m.tool_live_save_project("rel.qet"),
+               lambda: m.tool_live_close_project(-1),
+               lambda: m.tool_live_close_project(True),
+               lambda: m.tool_live_print("some"),
+               lambda: m.tool_live_print([]),
+               lambda: m.tool_live_print([0, -1]),
+               lambda: m.tool_live_print(printer="HP", output_file="/tmp/a.pdf"),
+               lambda: m.tool_live_print(output_file="out.pdf"),
+               lambda: m.tool_live_changes(-2)]
+        for call in bad:
+            with self.assertRaises(ValueError):
+                call()
+        self.assertEqual(len(self.seen), 9)
+
+    def test_writing_live_tools_need_script_consent(self):
+        self.session()
+        with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
+            for call in (m.tool_live_save_project, m.tool_live_close_project,
+                         m.tool_live_print):
+                with self.assertRaises(ValueError):
+                    call()
+        self.assertEqual(self.seen, [])
+
     def test_new_project_needs_script_consent(self):
         self.session()
         with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": ""}):
@@ -3593,6 +3637,106 @@ class LiveClient(unittest.TestCase):
         self.info({"socket": self.sock_path + "-gone", "token": "T0K"})
         with self.assertRaisesRegex(ValueError, "could not reach"):
             m.tool_live_status()
+class HouseStyleLayoutRules(unittest.TestCase):
+    """The house-style rules of the layout check, on made-up geometry."""
+
+    def el(self, uuid, x, y, w=20, h=40, label="", labelbox=None):
+        return {"uuid": uuid, "name": uuid, "label": label, "terminals": 2,
+                "g": {"x": x, "y": y, "left": x - w / 2, "top": y - h / 2,
+                      "right": x + w / 2, "bottom": y + h / 2}, "labelbox": labelbox}
+
+    def wire(self, uuid, a, b, path):
+        return {"uuid": uuid, "ends": [a + " terminal 0", b + " terminal 1"],
+                "path": [{"x": x, "y": y} for x, y in path]}
+
+    def rules(self, data):
+        return sorted(f["rule"] for f in m._layout_folio(dict(folio=0, **data), 40)["findings"]
+                      if f["rule"] in ("label_on_wire", "four_way_junction", "misaligned_branch"))
+
+    def test_label_over_a_wire_and_clear_of_it(self):
+        els = [self.el("a", 100, 100, label="-K1",
+                       labelbox={"left": 95, "top": 150, "right": 120, "bottom": 160}),
+               self.el("b", 100, 300)]
+        over = [self.wire("w", "a", "b", [(100, 120), (100, 280)])]
+        self.assertEqual(self.rules({"elements": els, "conductors": over}), ["label_on_wire"])
+        els[0]["labelbox"] = {"left": 120, "top": 150, "right": 145, "bottom": 160}
+        self.assertEqual(self.rules({"elements": els, "conductors": over}), [])
+
+    def test_four_way_dot_but_not_a_t(self):
+        els = [self.el(k, x, y) for k, x, y in
+               (("n", 200, 100), ("s", 200, 300), ("e", 300, 200), ("w", 100, 200))]
+        four = [self.wire("1", "n", "s", [(200, 120), (200, 200), (200, 280)]),
+                self.wire("2", "w", "e", [(110, 200), (200, 200), (290, 200)])]
+        # Two straight wires through one point have no vertex there...
+        self.assertEqual(self.rules({"elements": els, "conductors": four}), [])
+        star = [self.wire("1", "n", "s", [(200, 120), (200, 200)]),
+                self.wire("2", "s", "n", [(200, 280), (200, 200)]),
+                self.wire("3", "w", "e", [(110, 200), (200, 200)]),
+                self.wire("4", "e", "w", [(290, 200), (200, 200)])]
+        self.assertEqual(self.rules({"elements": els, "conductors": star}), ["four_way_junction"])
+        self.assertEqual(self.rules({"elements": els, "conductors": star[:3]}), [])
+
+    def test_side_branch_out_of_line_like_the_motor_starter(self):
+        # main column at x 500, branch symbols at 580 (hold-in) and 660 (lamp)
+        els = [self.el("s2", 500, 470), self.el("hold", 580, 470), self.el("coil", 500, 580),
+               self.el("lamp", 660, 580)]
+        wires = [self.wire("1", "s2", "hold", [(500, 450), (580, 450)]),
+                 self.wire("2", "coil", "lamp", [(500, 560), (660, 560)]),
+                 self.wire("3", "s2", "coil", [(500, 490), (500, 560)])]
+        self.assertEqual(self.rules({"elements": els, "conductors": wires}), ["misaligned_branch"])
+        els[3] = self.el("lamp", 580, 580)
+        wires[1] = self.wire("2", "coil", "lamp", [(500, 560), (580, 560)])
+        self.assertEqual(len(wires), 3)
+        self.assertEqual(self.rules({"elements": els, "conductors": wires}), [])
+
+
+class StandardSymbols(unittest.TestCase):
+    def test_absent_listed_and_broken(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "standard-symbols.json"
+            with mock.patch.dict(os.environ, {"QET_MCP_STANDARD_SYMBOLS": str(f)}):
+                self.assertIsNone(m.standard_symbols())
+                f.write_text(json.dumps({"updated": "2026-10-05", "roles": [
+                    {"id": "coil", "label": "Coil", "letter": "K", "terminals": ["A1", "A2"],
+                     "path": "common://10_electric/x/bobine3.elmt", "score": 99},
+                    {"id": "none_fit", "label": "Nothing", "path": None}]}))
+                got = m.standard_symbols()
+                self.assertEqual(got["roles"], [{"id": "coil", "label": "Coil", "letter": "K",
+                                                 "path": "common://10_electric/x/bobine3.elmt",
+                                                 "terminals": ["A1", "A2"]}])
+                f.write_text("{not json")
+                self.assertIn("could not be read", m.standard_symbols()["error"])
+
+    def test_default_location_is_qet_data_folder(self):
+        with mock.patch.dict(os.environ, {"QET_MCP_STANDARD_SYMBOLS": ""}):
+            self.assertEqual(m.standard_symbols_file({"folders": {"data": "/x/data"}}),
+                             Path("/x/data/standard-symbols.json"))
+
+
+class ElementIndexCache(unittest.TestCase):
+    def test_second_process_reads_the_cache_and_a_change_rebuilds(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "elements"
+            root.mkdir()
+            elmt = ('<definition type="element" link_type="simple" width="20" height="20">'
+                    '<names><name lang="en">{}</name></names><description>'
+                    '<terminal x="0" y="-10" orientation="n" name="1"/></description></definition>')
+            (root / "a.elmt").write_text(elmt.format("Alpha coil"))
+            with mock.patch.dict(os.environ, {"QET_MCP_CACHE_DIR": str(Path(d) / "cache")}):
+                m._ELEMENT_INDEX.clear()
+                first = m._index_collection(root)
+                self.assertTrue(m._index_cache_file(root.resolve()).is_file())
+                m._ELEMENT_INDEX.clear()        # a new server process
+                with mock.patch.object(m.ET, "parse", side_effect=AssertionError("parsed")):
+                    again = m._index_collection(root)
+                self.assertEqual([i["path"] for i in again], [i["path"] for i in first])
+                self.assertEqual(again[0]["haystack"], first[0]["haystack"])
+                (root / "b.elmt").write_text(elmt.format("Beta lamp"))
+                m._ELEMENT_INDEX.clear()
+                self.assertEqual(len(m._index_collection(root)), 2)
+                m._ELEMENT_INDEX.clear()
+
+
 class AssistantInfoFile(unittest.TestCase):
     """qet-assistant.json: QElectroTech says where things are; the server
     believes it over its own per-platform guess."""
