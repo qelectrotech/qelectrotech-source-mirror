@@ -22,12 +22,17 @@ class tst_pdfreproducible : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	QByteArray exportPdf(const QString &project, const QByteArray &epoch)
+	QByteArray exportPdf(const QString &project, const QByteArray &epoch,
+						 const QString &folder = QString())
 	{
 		const int run = m_run++;
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(run));
 		const QString tmp = m_dir.filePath(QStringLiteral("tmp%1").arg(run));
-		const QString out = m_dir.filePath(QStringLiteral("out%1.pdf").arg(run));
+		const QString out = folder.isEmpty()
+			? m_dir.filePath(QStringLiteral("out%1.pdf").arg(run))
+			: m_dir.filePath(folder + QStringLiteral("/same.pdf"));
+		if (!folder.isEmpty())
+			QDir().mkpath(m_dir.filePath(folder));
 		QDir().mkpath(home);
 		QDir().mkpath(tmp);
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -143,6 +148,23 @@ private slots:
 		QVERIFY2(xrefMatches(first), "the xref table does not match the file");
 		QVERIFY2(exportPdf(copy, "1700000000") == first,
 				 "the same drawing with new uuids gives a different PDF");
+	}
+
+	void sameBytesInAnyFolder()
+	{
+		// #1178: the links carry the output path, and rewriting them left
+		// the old startxref in the file, with the size the file had before.
+		const QString project =
+			QStringLiteral(QET_EXAMPLES_DIR) + QStringLiteral("/iso_sfc_example.qet");
+		QVERIFY2(QFile::exists(project), "examples/iso_sfc_example.qet not found");
+
+		const QByteArray first = exportPdf(project, "1700000000", QStringLiteral("p"));
+		QVERIFY(!first.isEmpty());
+		QVERIFY(first.contains("/GoTo"));
+		QCOMPARE(first.count("startxref"), 1);
+		QVERIFY2(xrefMatches(first), "the xref table does not match the file");
+		QVERIFY2(exportPdf(project, "1700000000", QStringLiteral("longer-folder-name")) == first,
+				 "the same project gives a different PDF in another folder");
 	}
 
 	void nowWithoutTheVariable()

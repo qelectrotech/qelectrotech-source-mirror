@@ -194,6 +194,22 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		engine->drawHyperlink(link.rect, link.url);
 }
 
+/// The trailer dictionary of the xref table at \a xrefStart, from
+/// "trailer" up to its startxref, which the caller writes again with the
+/// new offset. Copying the old startxref too left a second one in the
+/// file, with the size the file had before its links were rewritten, so
+/// the bytes depended on the output path the links carry (#1178).
+static QByteArray trailerDictionary(const QByteArray &data, int xrefStart)
+{
+	const int start = data.indexOf("trailer", xrefStart);
+	if (start == -1)
+		return "trailer\n<<>>";
+	const int end = data.indexOf("startxref", start);
+	if (end == -1)
+		return "trailer\n<<>>";
+	return data.mid(start, end - start).trimmed();
+}
+
 void convertUriToGoTo(const QString &pdfPath)
 {
 	// --- 1. Read raw bytes ---
@@ -383,19 +399,7 @@ void convertUriToGoTo(const QString &pdfPath)
 		}
 	}
 
-	// Find trailer dict from the original xref section
-	int trailerPos = data.indexOf("trailer", xrefStart);
-	int trailerEnd = -1;
-	if (trailerPos != -1) {
-		trailerEnd = data.indexOf("%%EOF", trailerPos);
-		if (trailerEnd != -1) trailerEnd += 5;
-	}
-
-	QByteArray trailer;
-	if (trailerPos != -1 && trailerEnd != -1)
-		trailer = data.mid(trailerPos, trailerEnd - trailerPos);
-	else
-		trailer = "trailer\n<<>>\n%%EOF";
+	const QByteArray trailer = trailerDictionary(data, xrefStart);
 
 	int newXrefOffset = body.size();
 
@@ -814,18 +818,7 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 	}
 
 	// Copy trailer and bump /Size to account for the new XObject
-	QByteArray trailer;
-	{
-		int tPos = data.indexOf("trailer", xrefStart);
-		if (tPos != -1) {
-			int tEnd = data.indexOf("%%EOF", tPos);
-			if (tEnd != -1) tEnd += 5;
-			if (tEnd != -1)
-				trailer = data.mid(tPos, tEnd - tPos);
-		}
-	}
-	if (trailer.isEmpty())
-		trailer = "trailer\n<<>>\n%%EOF";
+	QByteArray trailer = trailerDictionary(data, xrefStart);
 
 	// Bump /Size: original was maxObjNum+1, now it's emptyXObjNum+1
 	{
@@ -840,16 +833,6 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 								QByteArray::number(emptyXObjNum + 1));
 			}
 		}
-	}
-
-	// Remove duplicate startxref if present in copied trailer
-	{
-		int stPos = trailer.indexOf("\nstartxref\n");
-		if (stPos != -1)
-			trailer = trailer.left(stPos);
-		// Ensure trailer ends with %%EOF
-		if (!trailer.endsWith("%%EOF\n"))
-			trailer += "\n%%EOF\n";
 	}
 
 	QByteArray result;
