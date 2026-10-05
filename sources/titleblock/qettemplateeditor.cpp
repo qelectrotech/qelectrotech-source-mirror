@@ -27,6 +27,7 @@
 #include "templatelocationsaver.h"
 #include "templatelogomanager.h"
 #include "templateview.h"
+#include "../toolbarsettings.h"
 
 /**
 	@param parent parent QWidget of this window
@@ -46,6 +47,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	initActions();
 	initMenus();
 	initToolbars();
+	ToolbarSettings::applyTo(this);
 	readSettings();
 }
 

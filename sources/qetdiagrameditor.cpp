@@ -85,6 +85,7 @@
 #include "wiringlistexport.h"
 #include "ui/wiringlistdialog.h"
 #include "ui/terminalnumberingdialog.h"
+#include "toolbarsettings.h"
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
@@ -186,6 +187,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	readSettings();  // restoreGeometry before show()
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
+	ToolbarSettings::applyTo(this);
 #ifdef QET_HAS_SCRIPTING
 	setUpLiveIndicator();
 	setUpMacroRecorder();
