@@ -155,6 +155,18 @@ set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offs
 target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
 
+# TextResizeHandles: the corner handles that change the width of a text box,
+# on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
+add_executable(
+  tst_textresizehandles
+  tst_textresizehandles.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.cpp)
+add_test(NAME tst_textresizehandles COMMAND tst_textresizehandles)
+set_tests_properties(tst_textresizehandles PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_textresizehandles PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)
