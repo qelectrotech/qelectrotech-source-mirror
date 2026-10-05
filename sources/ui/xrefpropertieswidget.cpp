@@ -146,6 +146,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setShowTerminalName(ui->m_show_terminal_name_cb->isChecked());
 	xrp.setShowAllConfiguredSlaves(ui->m_show_all_slaves_cb->isChecked());
+	xrp.setStackOverlapping(ui->m_stack_overlapping_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
@@ -201,6 +202,8 @@ void XRefPropertiesWidget::updateDisplay()
 		ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
 		ui->m_offset_sb->setEnabled(false);
 	}
+	ui->m_stack_overlapping_cb->setChecked(xrp.stackOverlapping());
+	ui->m_stack_overlapping_cb->setEnabled(ui->m_offset_sb->isEnabled());
 
 	if(xrp.getXrefPos() == Qt::AlignTop) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("top"));
 	else if(xrp.getXrefPos() == Qt::AlignLeft) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("left"));
@@ -233,6 +236,7 @@ void XRefPropertiesWidget::updateDisplay()
 	ui->m_display_has_cross_rb->setVisible(!is_plc);
 	ui->m_show_terminal_name_cb->setVisible(!is_plc);
 	ui->m_show_all_slaves_cb->setVisible(!is_plc);
+	ui->m_stack_overlapping_cb->setVisible(!is_plc);
 	ui->m_cross_properties_gb->setVisible(!is_plc);
 }
 
@@ -261,4 +265,5 @@ void XRefPropertiesWidget::enableOffsetSB(int i){
 		ui->m_offset_sb->setEnabled(false);
 	else
 		ui->m_offset_sb->setEnabled(true);
+	ui->m_stack_overlapping_cb->setEnabled(ui->m_offset_sb->isEnabled());
 }
