@@ -614,6 +614,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.h
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandlerutility.cpp
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandlerutility.h
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.h
 
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.h
