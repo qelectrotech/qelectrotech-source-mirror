@@ -269,7 +269,9 @@ void DiagramTextItem::setHtml(const QString &text)
 		block = block.next();
 	}
 
-	if (m_non_left_alignment) {
+		//Room for centred or right-aligned lines, unless the user has
+		//given this text a width of its own
+	if (m_non_left_alignment && !hasUserTextWidth()) {
 		document()->setTextWidth(document()->idealWidth() + 40.0);
 	}
 }

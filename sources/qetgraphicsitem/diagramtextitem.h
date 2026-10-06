@@ -110,6 +110,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		void prepareAlignment();
 		void finishAlignment();
 
+		virtual bool hasUserTextWidth() const {return false;}
+
 	
 	protected:
 		bool

@@ -29,10 +29,13 @@
 class IndependentTextItem : public DiagramTextItem
 {
 	Q_OBJECT
+
+	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 		
 		// constructors, destructor
 	signals:
 		void uuidChanged();
+		void textWidthChanged(qreal width);
 
 	public:
 		IndependentTextItem();
@@ -49,11 +52,23 @@ class IndependentTextItem : public DiagramTextItem
 		QUuid uuid() const {return m_uuid;}
 		void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
 		void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
+
+			//Hide QGraphicsTextItem::textWidth()/setTextWidth(), which are not
+			//virtual: called through a QGraphicsTextItem or DiagramTextItem
+			//pointer they would change the document only, and the width would
+			//be neither saved nor shown in the properties. Use these, or the
+			//"textWidth" property.
+		qreal textWidth() const {return m_text_width;}
+		void setTextWidth(qreal width);
 		
 	protected:
 		void focusOutEvent(QFocusEvent *event) override;
+		bool hasUserTextWidth() const override {return m_text_width > 0;}
 
 	private:
+		void wrapAtWords();
+
 		QUuid m_uuid = QUuid::createUuid();
+		qreal m_text_width = -1;
 };
 #endif

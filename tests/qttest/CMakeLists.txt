@@ -389,6 +389,18 @@ target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A free text with a width keeps it when the project is saved again (the
+# attribute is written only when set) and is drawn wrapped to it.
+add_executable(
+  tst_freetextwidth
+  tst_freetextwidth.cpp)
+add_test(NAME tst_freetextwidth COMMAND tst_freetextwidth)
+set_tests_properties(tst_freetextwidth PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+add_dependencies(tst_freetextwidth qelectrotech)
+target_link_libraries(tst_freetextwidth PRIVATE Qt::Test Qt::Gui Qt::Xml)
+target_compile_definitions(tst_freetextwidth PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # The wiring list export (--export-cables) keeps every wire drawn to a folio
 # report when a report has several, joins only one-to-one report pairs, and
 # prints the folio number rather than its template. fixtures/wiring_list_arrows.qet
@@ -529,6 +541,17 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_scriptlayoutreads qelectrotech)
   target_link_libraries(tst_scriptlayoutreads PRIVATE Qt::Test)
   target_compile_definitions(tst_scriptlayoutreads PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # The project database keeps the width of a free text (independent_text),
+  # read with qet.query() on fixtures/free_text_width.qet.
+  add_executable(
+    tst_scriptfreetextwidth
+    tst_scriptfreetextwidth.cpp)
+  add_test(NAME tst_scriptfreetextwidth COMMAND tst_scriptfreetextwidth)
+  add_dependencies(tst_scriptfreetextwidth qelectrotech)
+  target_link_libraries(tst_scriptfreetextwidth PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptfreetextwidth PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
   # QET_SETTINGS_DIR moves the settings into an INI file there (#1178): a
