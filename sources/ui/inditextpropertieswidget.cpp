@@ -28,12 +28,14 @@
 #include <QtGlobal>
 
 /**
-	@return width as shown in the width spin box: whole pixels, -1 for
-	the automatic width ("Auto").
+	@return width as shown in the width spin box: whole pixels, 0 for the
+	automatic width ("Auto"). The box starts at 0, so no number means Auto
+	and the first step up is 1 px; IndependentTextItem::setTextWidth()
+	treats 0 as -1, the automatic width, so the two never disagree.
 */
 static int spinBoxWidth(qreal width)
 {
-	return width > 0 ? qRound(width) : -1;
+	return width > 0 ? qRound(width) : 0;
 }
 
 /**
