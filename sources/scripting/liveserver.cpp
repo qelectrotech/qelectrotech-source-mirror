@@ -858,7 +858,9 @@ QJsonObject LiveServer::print(const QJsonObject &request)
 		if (fi.exists()) return failure(QStringLiteral("%1 already exists; printing never replaces a file").arg(file));
 	}
 
-	QPrinter printer = file.isEmpty() ? QPrinter(info) : QPrinter();
+		//info is still null when printing to a file, which is what QPrinter()
+		//uses. No ?: here: MSVC copies its result, and QPrinter cannot be copied
+	QPrinter printer(info);
 		//96 dpi, as the PDF export draws: symbols are replayed at the
 		//device's resolution, so at a printer's 600-1200 dpi they came out
 		//many times too big next to the wires (seen on a test print)
