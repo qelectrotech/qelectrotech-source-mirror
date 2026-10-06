@@ -1506,7 +1506,7 @@ void ElementScene::managePrimitivesGroups()
 /**
 	@brief ElementScene::manageTextResizeHandles
 	Show the corner handles that change the width of a text field when it
-	is the only selected item, and it is not being typed in.
+	is the only selected item.
 	Called again when the undo stack changes, including from the push of a
 	resize itself: the handles of the same text are then kept, not deleted
 	while they are still emitting.
@@ -1520,9 +1520,6 @@ void ElementScene::manageTextResizeHandles(const QList<QGraphicsItem *> &selecte
 	{
 		text = static_cast<PartDynamicTextField *>(selected_items.first());
 	}
-	if (text && (text->textInteractionFlags() & Qt::TextEditable))
-		text = nullptr;
-
 	if (m_text_resize_handles && m_text_resize_handles->parentItem() == text) {
 		m_text_resize_handles->updateHandlesPos();
 		return;
