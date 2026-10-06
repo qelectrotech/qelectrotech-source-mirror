@@ -137,6 +137,13 @@ QList<ShortcutManager::ShortcutInfo> ShortcutManager::allShortcuts() const
 		info.description = entry.description;
 		info.default_sequence = entry.default_sequence;
 		info.current_sequence = savedSequence(id, entry.default_sequence);
+		for (const QPointer<QObject> &target : entry.targets) {
+			if (target) {
+				info.icon = target->property("icon").value<QIcon>();
+				info.action = qobject_cast<QAction *>(target.data());
+				break;
+			}
+		}
 		list << info;
 	}
 	return list;
