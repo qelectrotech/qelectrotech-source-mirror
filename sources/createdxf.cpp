@@ -22,6 +22,9 @@
 #include <QString>
 #include "dxfexport.h"
 
+#include <QtMath>
+#include <cmath>
+
 
 const double Createdxf::sheetWidth = 4000;
 const double Createdxf::sheetHeight = 2700;
@@ -504,6 +507,24 @@ int Createdxf::dxfColor(QPen pen) {
 	return Createdxf::dxfColor(pen.color());
 }
 
+/**
+	@brief Createdxf::drawArcEllipse
+	Draw an arc of an ellipse, or a whole ellipse, in DXF units.
+	@param x, y : top left of the ellipse's bounding rect (y is the top, the
+	DXF Y axis going up)
+	@param w, h : width and height of that rect
+	@param startAngle, spanAngle : in degrees, as QPainter::drawArc() takes
+	them: counter-clockwise from 3 o'clock
+	@param hotspot_x, hotspot_y, rotation_angle : the whole shape is turned
+	clockwise by rotation_angle degrees around the hotspot, as a rotated
+	symbol is
+	A circle, or an arc of one, is written as one exact CIRCLE or ARC. R10,
+	the version this file declares, has no ELLIPSE entity, so a true
+	ellipse is written as a polyline through points of the curve, one every
+	5 degrees. It used to be four ARCs fitted through a point between the
+	curve and its chord, which drew every circle as a flattened diamond
+	(issue #1339).
+*/
 void Createdxf::drawArcEllipse(
 		const QString &file_path,
 		qreal x,
@@ -517,138 +538,46 @@ void Createdxf::drawArcEllipse(
 		qreal rotation_angle,
 		const int &colorcode)
 {
-	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
-	QVector< QPair<qreal,qreal> > arc_parts_vector;
+	if (qFuzzyIsNull(spanAngle) || w <= 0 || h <= 0)
+		return;
 
-	if (spanAngle > 0) {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i < startAngle+spanAngle; i++ ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
+	const qreal a = w/2;
+	const qreal b = h/2;
+	const QPointF center = DxfExport::rotation_transformed(
+				x + a, y - b, hotspot_x, hotspot_y, rotation_angle);
+	const bool full_turn = qAbs(spanAngle) >= 360;
+
+	if (qAbs(a - b) <= 1e-6 * qMax(a, b))
+	{
+		if (full_turn) {
+			drawCircle(file_path, a, center.x(), center.y(), colorcode);
+			return;
 		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
-	} else {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i > startAngle+spanAngle; i-- ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
-		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
+			//A DXF ARC always runs counter-clockwise from 50 to 51.
+		qreal start = startAngle - rotation_angle;
+		if (spanAngle < 0)
+			start += spanAngle;
+		start = std::fmod(start, 360.0);
+		if (start < 0)
+			start += 360;
+		drawArc(file_path, center.x(), center.y(), a,
+				start, start + qAbs(spanAngle), colorcode);
+		return;
 	}
 
-	for (int i = 0; i < arc_parts_vector.size(); i++) {
-
-		QPair<qreal,qreal> arc = arc_parts_vector[i];
-		if (arc.second == 0)
-			continue;
-		qreal arc_startAngle = arc.first * 3.142/180;
-		qreal arc_spanAngle = arc.second * 3.142/180;
-
-		qreal a = w/2;
-		qreal b = h/2;
-
-		qreal x1 = x + w/2 + a*cos(arc_startAngle);
-		qreal y1 = y - h/2 + b*sin(arc_startAngle);
-		qreal x2 = x + w/2 + a*cos(arc_startAngle + arc_spanAngle);
-		qreal y2 = y - h/2 + b*sin(arc_startAngle + arc_spanAngle);
-
-
-		qreal mid_ellipse_x = x + w/2 + a*cos(arc_startAngle + arc_spanAngle/2);
-		qreal mid_ellipse_y = y - h/2 + b*sin(arc_startAngle + arc_spanAngle/2);
-		qreal mid_line_x = (x1+x2)/2;
-		qreal mid_line_y = (y1+y2)/2;
-
-		qreal x3 = (mid_ellipse_x + mid_line_x)/2;
-		qreal y3 = (mid_ellipse_y + mid_line_y)/2;
-
-		// find circumcenter of points (x1,y1), (x3,y3) and (x2,y2)
-		qreal a1 = 2*x2 - 2*x1;
-		qreal b1 = 2*y2 - 2*y1;
-		qreal c1 = x1*x1 + y1*y1 - x2*x2 - y2*y2;
-
-		qreal a2 = 2*x3 - 2*x1;
-		qreal b2 = 2*y3 - 2*y1;
-		qreal c2 = x1*x1 + y1*y1 - x3*x3 - y3*y3;
-
-		qreal center_x = (b1*c2 - b2*c1) / (a1*b2 - a2*b1);
-		qreal center_y = (a1*c2 - a2*c1) / (b1*a2 - b2*a1);
-
-		qreal radius = sqrt( (x1-center_x)*(x1-center_x) + (y1-center_y)*(y1-center_y) );
-
-		if ( x1 > center_x && y1 > center_y )
-			arc_startAngle = asin( (y1 - center_y) / radius );
-		else if ( x1 > center_x && y1 < center_y )
-			arc_startAngle = 3.142*2 - asin( (center_y - y1) / radius );
-		else if ( x1 < center_x && y1 < center_y )
-			arc_startAngle = 3.142 + asin( (center_y - y1) / radius );
-		else
-			arc_startAngle = 3.142 - asin( (y1 - center_y) / radius );
-
-		qreal arc_endAngle;
-
-		if ( x2 > center_x && y2 > center_y )
-			arc_endAngle = asin( (y2 - center_y) / radius );
-		else if ( x2 > center_x && y2 < center_y )
-			arc_endAngle = 3.142*2 - asin( (center_y - y2) / radius );
-		else if ( x2 < center_x && y2 < center_y )
-			arc_endAngle = 3.142 + asin( (center_y - y2) / radius );
-		else
-			arc_endAngle = 3.142 - asin( (y2 - center_y) / radius );
-
-		if (arc_endAngle < arc_startAngle) {
-			qreal temp = arc_startAngle;
-			arc_startAngle = arc_endAngle;
-			arc_endAngle = temp;
-		}
-
-		QPointF transformed_point = DxfExport::rotation_transformed(
-					center_x,
-					center_y,
-					hotspot_x,
-					hotspot_y,
-					rotation_angle);
-		center_x = transformed_point.x();
-		center_y = transformed_point.y();
-		arc_endAngle *= 180/3.142;
-		arc_startAngle *= 180/3.142;
-		arc_endAngle -= rotation_angle;
-		arc_startAngle -= rotation_angle;
-
-		drawArc(
-					file_path,
-					center_x,
-					center_y,
-					radius,
-					arc_startAngle,
-					arc_endAngle,
-					colorcode);
+	const qreal span = full_turn ? 360 : spanAngle;
+	const int steps = qMax(2, qCeil(qAbs(span) / 5));
+	QPolygonF poly;
+	poly.reserve(steps + 1);
+	for (int i = 0 ; i <= steps ; ++i)
+	{
+		const qreal theta = qDegreesToRadians(startAngle + span * i / steps);
+		poly << DxfExport::rotation_transformed(
+					x + a + a*std::cos(theta),
+					y - b + b*std::sin(theta),
+					hotspot_x, hotspot_y, rotation_angle);
 	}
+	drawPolyline(file_path, poly, colorcode, true);
 }
 
 
@@ -810,6 +739,31 @@ void Createdxf::drawTextAligned(
 	double xScaleW,
 		int colour)
 {
+	drawTextAligned(fileName, text, x, y, height, rotation, oblique,
+					hAlign, vAlign, xAlign, y, xScaleW, colour);
+}
+
+/**
+	@brief Createdxf::drawTextAligned
+	As above, with the second alignment point given in full (@a xAlign,
+	@a yAlign) instead of on the same horizontal line as the insertion
+	point, which is what a rotated aligned text needs.
+*/
+void Createdxf::drawTextAligned(
+		const QString& fileName,
+		const QString& text,
+		double x,
+		double y,
+		double height,
+		double rotation,
+		double oblique,
+		int hAlign,
+		int vAlign,
+		double xAlign,
+		double yAlign,
+		double xScaleW,
+		int colour)
+{
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
 		if (!file.open(QFile::Append)) {
@@ -869,7 +823,7 @@ void Createdxf::drawTextAligned(
 				To_Dxf << 11       << "\r\n"; // XYZ
 				To_Dxf << xAlign   << "\r\n"; // X in UCS (User Coordinate System)coordinates
 				To_Dxf << 21       << "\r\n";
-				To_Dxf << y        << "\r\n"; // Y in UCS (User Coordinate System)coordinates
+				To_Dxf << yAlign   << "\r\n"; // Y in UCS (User Coordinate System)coordinates
 				To_Dxf << 31       << "\r\n";
 				To_Dxf << 0.0      << "\r\n"; // Z in UCS (User Coordinate System)coordinates
 			}

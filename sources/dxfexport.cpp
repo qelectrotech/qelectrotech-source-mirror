@@ -80,8 +80,13 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	width  -= 2*Diagram::margin;
 	height -= 2*Diagram::margin;
 
-	Createdxf::xScale = Createdxf::sheetWidth  / double(width);
-	Createdxf::yScale = Createdxf::sheetHeight / double(height);
+		//One scale for both axes, the largest that fits the sheet: two
+		//scales stretched the drawing and turned every circle into an oval
+		//(issue #1339).
+	const double scale = qMin(Createdxf::sheetWidth  / double(width),
+							  Createdxf::sheetHeight / double(height));
+	Createdxf::xScale = scale;
+	Createdxf::yScale = scale;
 
 	Createdxf::dxfBegin(file_path, Layer::all());
 

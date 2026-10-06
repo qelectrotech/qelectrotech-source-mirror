@@ -141,6 +141,20 @@ class Createdxf
 				double xAlign,
 				double xScale,
 				int colour);
+		static void drawTextAligned(
+				const QString& fileName,
+				const QString& text,
+				double x,
+				double y,
+				double height,
+				double rotation,
+				double oblique,
+				int hAlign,
+				int vAlign,
+				double xAlign,
+				double yAlign,
+				double xScale,
+				int colour);
 
 	static void drawPolyline(
 		const QString &filepath,

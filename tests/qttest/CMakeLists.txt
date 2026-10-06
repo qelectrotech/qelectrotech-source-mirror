@@ -462,6 +462,17 @@ target_link_libraries(tst_dxfwrappedtext PRIVATE Qt::Test)
 target_compile_definitions(tst_dxfwrappedtext PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# --export-dxf on a folio with its title block at the right (issue #1339):
+# a circle and an arc stay one CIRCLE and one ARC, the title block is turned.
+add_executable(
+  tst_dxfcurves
+  tst_dxfcurves.cpp)
+add_test(NAME tst_dxfcurves COMMAND tst_dxfcurves)
+add_dependencies(tst_dxfcurves qelectrotech)
+target_link_libraries(tst_dxfcurves PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfcurves PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
 # QPageSize matches standard sheets upright only, so a wide folio is matched
 # upright and turned. fixtures/pdf_page_a3.qet has one folio each way.
