@@ -104,6 +104,14 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# textlines.h is header-only: the lines of a text as they are laid out,
+# for the exports that write a text line by line.
+add_executable(tst_textlines tst_textlines.cpp)
+add_test(NAME tst_textlines COMMAND tst_textlines)
+set_tests_properties(tst_textlines PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_textlines PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textlines PRIVATE Qt::Test Qt::Gui)
+
 # elementviewgrid.h is header-only: the symbol editor's snap step at each
 # zoom (bugtracker #112), tested without an editor window.
 add_executable(tst_elementviewgrid tst_elementviewgrid.cpp)
@@ -154,6 +162,18 @@ add_test(NAME tst_textanchor COMMAND tst_textanchor)
 set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
+
+# TextResizeHandles: the corner handles that change the width of a text box,
+# on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
+add_executable(
+  tst_textresizehandles
+  tst_textresizehandles.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.cpp)
+add_test(NAME tst_textresizehandles COMMAND tst_textresizehandles)
+set_tests_properties(tst_textresizehandles PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_textresizehandles PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
@@ -227,8 +247,25 @@ set_tests_properties(tst_commandsearch PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=o
 target_include_directories(tst_commandsearch PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_commandsearch PRIVATE Qt::Test Qt::Widgets)
 
+# ShortcutsConfigPage: icon and menu columns, category filter, finding a
+# command by pressing its key, and the copied list.
+add_executable(
+  tst_shortcutspage
+  tst_shortcutspage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_shortcutspage COMMAND tst_shortcutspage)
+set_tests_properties(tst_shortcutspage PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_shortcutspage PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_shortcutspage PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
 # ToolbarSettings and its configuration page: defaults change nothing,
-# saved values reach every open window's toolbars, panels are left alone.
+# saved values reach every open window that took them, panels are left alone.
 add_executable(
   tst_toolbarsettings
   tst_toolbarsettings.cpp
@@ -407,6 +444,18 @@ target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A free text with a width keeps it when the project is saved again (the
+# attribute is written only when set) and is drawn wrapped to it.
+add_executable(
+  tst_freetextwidth
+  tst_freetextwidth.cpp)
+add_test(NAME tst_freetextwidth COMMAND tst_freetextwidth)
+set_tests_properties(tst_freetextwidth PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+add_dependencies(tst_freetextwidth qelectrotech)
+target_link_libraries(tst_freetextwidth PRIVATE Qt::Test Qt::Gui Qt::Xml)
+target_compile_definitions(tst_freetextwidth PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # The wiring list export (--export-cables) keeps every wire drawn to a folio
 # report when a report has several, joins only one-to-one report pairs, and
 # prints the folio number rather than its template. fixtures/wiring_list_arrows.qet
@@ -420,6 +469,16 @@ target_link_libraries(tst_wiringlistexport PRIVATE Qt::Test)
 target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# --export-dxf writes a wrapped symbol text line by line, as it is drawn.
+add_executable(
+  tst_dxfwrappedtext
+  tst_dxfwrappedtext.cpp)
+add_test(NAME tst_dxfwrappedtext COMMAND tst_dxfwrappedtext)
+add_dependencies(tst_dxfwrappedtext qelectrotech)
+target_link_libraries(tst_dxfwrappedtext PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfwrappedtext PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
 # --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
 # QPageSize matches standard sheets upright only, so a wide folio is matched
@@ -549,6 +608,17 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptlayoutreads PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # The project database keeps the width of a free text (independent_text),
+  # read with qet.query() on fixtures/free_text_width.qet.
+  add_executable(
+    tst_scriptfreetextwidth
+    tst_scriptfreetextwidth.cpp)
+  add_test(NAME tst_scriptfreetextwidth COMMAND tst_scriptfreetextwidth)
+  add_dependencies(tst_scriptfreetextwidth qelectrotech)
+  target_link_libraries(tst_scriptfreetextwidth PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptfreetextwidth PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
   # QET_SETTINGS_DIR moves the settings into an INI file there (#1178): a
   # script places a symbol only the folder's settings file can resolve.
   add_executable(
@@ -608,6 +678,18 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_scriptterminaluuid qelectrotech)
   target_link_libraries(tst_scriptterminaluuid PRIVATE Qt::Test Qt::Xml)
   target_compile_definitions(tst_scriptterminaluuid PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # Undoing a crop of a picture restores its crop rectangle too, so a
+  # project saved after the undo does not record the undone crop.
+  add_executable(
+    tst_imagecropundo
+    tst_imagecropundo.cpp)
+  add_test(NAME tst_imagecropundo COMMAND tst_imagecropundo)
+  add_dependencies(tst_imagecropundo qelectrotech)
+  target_link_libraries(tst_imagecropundo PRIVATE Qt::Test Qt::Gui)
+  target_compile_definitions(tst_imagecropundo PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 

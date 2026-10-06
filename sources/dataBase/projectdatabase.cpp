@@ -1248,6 +1248,8 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 	}
 	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
 		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);
+			//Also changes the height of the text, kept in the row
+		connect(text, &IndependentTextItem::textWidthChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Sent by the document, not the item: drawingItemChanged() walks
 			//back up to the item. It is the one signal that catches every way
 			//the text changes -- typing, undo, a script's setTextContent().
@@ -1424,6 +1426,9 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 		query = &m_insert_independent_text_query;
 		query->bindValue(QStringLiteral(":text"), text->toPlainText());
 		query->bindValue(QStringLiteral(":rotation"), text->rotation());
+			//NULL for the automatic width
+		query->bindValue(QStringLiteral(":text_width"), text->textWidth() > 0
+						 ? QVariant(text->textWidth()) : QVariant());
 	}
 	else if (auto image = qobject_cast<DiagramImageItem *>(object))
 	{
@@ -1667,7 +1672,7 @@ bool projectDataBase::createDataBase()
 				"type VARCHAR(20), color VARCHAR(20), fill VARCHAR(20), "
 				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
 			QStringLiteral("CREATE TABLE independent_text (") + drawing_columns +
-				"text TEXT, rotation REAL, "
+				"text TEXT, rotation REAL, text_width REAL, "
 				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
 			QStringLiteral("CREATE TABLE image (") + drawing_columns +
 				"pixel_width INTEGER, pixel_height INTEGER, "
@@ -2123,8 +2128,8 @@ void projectDataBase::prepareQuery()
 								 ", :type, :color, :fill)");
 	m_insert_independent_text_query = QSqlQuery(m_data_base);
 	m_insert_independent_text_query.prepare("INSERT OR REPLACE INTO independent_text (" + drawing_columns +
-											", text, rotation) VALUES (" + drawing_values +
-											", :text, :rotation)");
+											", text, rotation, text_width) VALUES (" + drawing_values +
+											", :text, :rotation, :text_width)");
 	m_insert_image_query = QSqlQuery(m_data_base);
 	m_insert_image_query.prepare("INSERT OR REPLACE INTO image (" + drawing_columns +
 								 ", pixel_width, pixel_height) VALUES (" + drawing_values +

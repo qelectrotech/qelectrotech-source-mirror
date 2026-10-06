@@ -366,6 +366,7 @@ void QETDiagramEditor::setUpActions()
 
 		//export to pdf
 	m_export_to_pdf = new QAction(QET::Icons::PDF, tr("Exporter en pdf"), this);
+	ShortcutManager::instance().registerAction(m_export_to_pdf, "diagrameditor.export_to_pdf", tr("Éditeur de schémas"), QKeySequence());
 	m_export_to_pdf->setStatusTip(tr("Exporte un ou plusieurs folios du projet courant", "status bar tip"));
 	connect(m_export_to_pdf, &QAction::triggered, [this] () {
 		auto project = currentProject();
@@ -482,6 +483,7 @@ void QETDiagramEditor::setUpActions()
 		//setting, so it does not need a diagram open or anything
 		//selected the way m_duplicate itself does.
 	m_configure_duplicate = new QAction(tr("Configurer la duplication..."), this);
+	ShortcutManager::instance().registerAction(m_configure_duplicate, "diagrameditor.configure_duplicate", tr("Éditeur de schémas"), QKeySequence());
 	m_configure_duplicate->setStatusTip(tr("Choisir l'espacement et la direction utilisés par Dupliquer", "status bar tip"));
 	connect(m_configure_duplicate, &QAction::triggered, [this]() {
 		DuplicateOffsetDialog dialog(this);
@@ -517,6 +519,7 @@ void QETDiagramEditor::setUpActions()
 
 		//AutoBreakConductor
 	m_auto_break_conductor = new QAction   (QET::Icons::Conductor, tr("Coupure automatique de conducteur(s)","Tool tip of auto break conductor"), this);
+	ShortcutManager::instance().registerAction(m_auto_break_conductor, "diagrameditor.auto_break_conductor", tr("Éditeur de schémas"), QKeySequence());
 	m_auto_break_conductor->setStatusTip (tr("Couper automatiquement les conducteurs existants lors du placement d'un élément", "Status tip of auto break conductor"));
 	m_auto_break_conductor->setCheckable (true);
 	{
@@ -535,6 +538,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Draw or not the background grid
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Afficher la grille"), this);
+	ShortcutManager::instance().registerAction(m_draw_grid, "diagrameditor.draw_grid", tr("Éditeur de schémas"), QKeySequence());
 	m_draw_grid->setStatusTip(tr("Affiche ou masque la grille des folios"));
 	QSettings settings;
 	m_draw_grid->setCheckable(true);
@@ -576,6 +580,7 @@ void QETDiagramEditor::setUpActions()
 
 	// Draw or not the custom guides
 	m_draw_guides = new QAction ( QIcon::fromTheme("guides"), tr("Afficher les guides"), this);
+	ShortcutManager::instance().registerAction(m_draw_guides, "diagrameditor.draw_guides", tr("Éditeur de schémas"), QKeySequence());
 	m_draw_guides->setStatusTip(tr("Affiche ou masque les guides"));
 	m_draw_guides->setCheckable(true);
 	m_draw_guides->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
@@ -588,6 +593,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Keep the column numbers and row letters of the folio in sight
 	m_cell_rulers = new QAction(tr("Garder les en-têtes visibles"), this);
+	ShortcutManager::instance().registerAction(m_cell_rulers, "diagrameditor.cell_rulers", tr("Éditeur de schémas"), QKeySequence());
 	m_cell_rulers->setStatusTip(tr("Garde les numéros de colonne et les lettres de ligne du folio visibles au bord de la vue"));
 	m_cell_rulers->setCheckable(true);
 	m_cell_rulers->setChecked(settings.value("diagrameditor/cell_rulers", false).toBool());
@@ -600,6 +606,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Draw the limits of the folio columns and rows across the drawing
 	m_cell_lines = new QAction(tr("Afficher les limites des cases"), this);
+	ShortcutManager::instance().registerAction(m_cell_lines, "diagrameditor.cell_lines", tr("Éditeur de schémas"), QKeySequence());
 	m_cell_lines->setStatusTip(tr("Trace les limites des colonnes et des lignes du folio sur le schéma, à l'écran seulement"));
 	m_cell_lines->setCheckable(true);
 	m_cell_lines->setChecked(settings.value("diagrameditor/cell_lines", false).toBool());
@@ -654,6 +661,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Edit current project properties
 	m_project_edit_properties = new QAction(QET::Icons::ProjectProperties, tr("Propriétés du projet"), this);
+	ShortcutManager::instance().registerAction(m_project_edit_properties, "diagrameditor.project_edit_properties", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_project_edit_properties, &QAction::triggered, [this]() {
 		editProjectProperties(currentProjectView());
 	});
@@ -669,10 +677,12 @@ void QETDiagramEditor::setUpActions()
 
 		//Remove current folio from current project
 	m_remove_diagram_from_project = new QAction(QET::Icons::DiagramDelete, tr("Supprimer le folio"), this);
+	ShortcutManager::instance().registerAction(m_remove_diagram_from_project, "diagrameditor.remove_diagram_from_project", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_remove_diagram_from_project, &QAction::triggered, this, &QETDiagramEditor::removeDiagramFromProject);
 
 		//Clean the current project
 	m_clean_project         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
+	ShortcutManager::instance().registerAction(m_clean_project, "diagrameditor.clean_project", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_clean_project, &QAction::triggered, [this]() {
 		if (ProjectView *current_project = currentProjectView()) {
 			if (current_project->cleanProject()) {
@@ -683,6 +693,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Export nomenclature to CSV
 	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
+	ShortcutManager::instance().registerAction(m_csv_export, "diagrameditor.csv_export", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_csv_export, &QAction::triggered, [this]() {
 		BOMExportDialog bom(currentProjectView()->project(), this);
 		bom.exec();
@@ -690,6 +701,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Add a nomenclature item
 	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter une nomenclature"), this);
+	ShortcutManager::instance().registerAction(m_add_nomenclature, "diagrameditor.add_nomenclature", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_add_nomenclature, &QAction::triggered, this, [this]() {
 		if(this->currentDiagramView()) {
 			QetGraphicsTableFactory::createAndAddNomenclature(this->currentDiagramView()->diagram());
@@ -698,6 +710,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Add a summary item
 	m_add_summary = new QAction(QET::Icons::TableOfContent, tr("Ajouter un sommaire"), this);
+	ShortcutManager::instance().registerAction(m_add_summary, "diagrameditor.add_summary", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_add_summary, &QAction::triggered, this, [this]() {
 		if(this->currentDiagramView()) {
 			QetGraphicsTableFactory::createAndAddSummary(this->currentDiagramView()->diagram());
@@ -705,6 +718,7 @@ void QETDiagramEditor::setUpActions()
 	});
 
 	m_terminal_strip_dialog = new QAction(QET::Icons::TerminalStrip, tr("Gestionnaire de borniers (DEV)"), this);
+	ShortcutManager::instance().registerAction(m_terminal_strip_dialog, "diagrameditor.terminal_strip_dialog", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_terminal_strip_dialog, &QAction::triggered, this, [this]()
 	{
 		if (auto project = this->currentProject())
@@ -715,10 +729,12 @@ void QETDiagramEditor::setUpActions()
 
 		//Launch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
+	ShortcutManager::instance().registerAction(m_project_terminalBloc, "diagrameditor.terminal_strip_plugin", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
 	//Export conductor num to csv
 	m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
+	ShortcutManager::instance().registerAction(m_project_export_conductor_num, "diagrameditor.export_conductor_names", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
 		QETProject *project = this->currentProject();
 		if (project)
@@ -729,6 +745,7 @@ void QETDiagramEditor::setUpActions()
 	});
 	// Export wiring list to CSV
 	m_project_export_wiring_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter le plan de câblage"), this);
+	ShortcutManager::instance().registerAction(m_project_export_wiring_list, "diagrameditor.export_wiring_list", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_project_export_wiring_list, &QAction::triggered, [this]() {
 		QETProject *project = this->currentProject();
 		if (project)
@@ -740,6 +757,7 @@ void QETDiagramEditor::setUpActions()
 
 	// Show the wiring list read from the project database
 	m_project_wiring_list_view = new QAction(QET::Icons::DocumentSpreadsheet, tr("Liste de câblage (base de données)"), this);
+	ShortcutManager::instance().registerAction(m_project_wiring_list_view, "diagrameditor.wiring_list_view", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_project_wiring_list_view, &QAction::triggered, [this]() {
 		QETProject *project = this->currentProject();
 		if (project)
@@ -751,10 +769,12 @@ void QETDiagramEditor::setUpActions()
 
 	// Terminal Numbering
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
+	ShortcutManager::instance().registerAction(m_terminal_numbering, "diagrameditor.terminal_numbering", tr("Éditeur de schémas"), QKeySequence());
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
 
 	// Reload element drawings from their current definition (bugtracker #802)
 	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Recharger les dessins des éléments"), this);
+	ShortcutManager::instance().registerAction(m_reload_element_drawings, "diagrameditor.reload_element_drawings", tr("Éditeur de schémas"), QKeySequence());
 	m_reload_element_drawings->setStatusTip(
 		tr("Redessine chaque élément placé d'après sa définition actuelle,"
 		   " sans avoir à fermer et rouvrir le projet (action non annulable)"));
@@ -763,6 +783,7 @@ void QETDiagramEditor::setUpActions()
 #ifdef QET_HAS_SCRIPTING
 	// Run a JavaScript macro against the current project (bugtracker #162).
 	m_run_script = new QAction(tr("Exécuter un script..."), this);
+	ShortcutManager::instance().registerAction(m_run_script, "diagrameditor.run_script", tr("Éditeur de schémas"), QKeySequence());
 	m_run_script->setStatusTip(
 		tr("Exécute un script JavaScript sur le projet courant (voir qet.*"
 		   " dans le script pour l'API disponible)"));
@@ -813,6 +834,7 @@ void QETDiagramEditor::setUpActions()
 		//Stored scripts are files in a folder, written by hand, by the
 		//script manager or by an assistant: open it to add one.
 	m_open_scripts_folder = new QAction(QET::Icons::FolderOpen, tr("Ouvrir le dossier des scripts"), this);
+	ShortcutManager::instance().registerAction(m_open_scripts_folder, "diagrameditor.open_scripts_folder", tr("Éditeur de schémas"), QKeySequence());
 	m_open_scripts_folder->setStatusTip(
 		tr("Chaque fichier .js de ce dossier qui commence par un en-tête"
 		   " // ==QETScript== devient un bouton"));
@@ -824,6 +846,7 @@ void QETDiagramEditor::setUpActions()
 
 	#ifdef QET_EXPORT_PROJECT_DB
 		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
+		ShortcutManager::instance().registerAction(m_export_project_db, "diagrameditor.export_project_db", tr("Éditeur de schémas"), QKeySequence());
 		connect(m_export_project_db, &QAction::triggered, [this]() {
 			projectDataBase::exportDb(this->currentProject()->dataBase(), this);
 		});
@@ -831,11 +854,13 @@ void QETDiagramEditor::setUpActions()
 
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
+	ShortcutManager::instance().registerAction(m_tabbed_view_mode, "diagrameditor.tabbed_view_mode", tr("Éditeur de schémas"), QKeySequence());
 	m_tabbed_view_mode->setStatusTip(tr("Présente les différents projets ouverts des onglets", "status bar tip"));
 	m_tabbed_view_mode->setCheckable(true);
 	connect(m_tabbed_view_mode, &QAction::triggered, this, &QETDiagramEditor::setTabbedMode);
 
 	m_windowed_view_mode = new QAction(tr("en utilisant des fenêtres"), this);
+	ShortcutManager::instance().registerAction(m_windowed_view_mode, "diagrameditor.windowed_view_mode", tr("Éditeur de schémas"), QKeySequence());
 	m_windowed_view_mode->setStatusTip(tr("Présente les différents projets ouverts dans des sous-fenêtres", "status bar tip"));
 	m_windowed_view_mode->setCheckable(true);
 	connect(m_windowed_view_mode, &QAction::triggered, this, &QETDiagramEditor::setWindowedMode);
@@ -846,15 +871,18 @@ void QETDiagramEditor::setUpActions()
 	m_group_view_mode -> setExclusive(true);
 
 	m_tile_window = new QAction(tr("&Mosaïque"), this);
+	ShortcutManager::instance().registerAction(m_tile_window, "diagrameditor.tile_windows", tr("Éditeur de schémas"), QKeySequence());
 	m_tile_window->setStatusTip(tr("Dispose les fenêtres en mosaïque", "status bar tip"));
 	connect(m_tile_window, &QAction::triggered, &m_workspace, &QMdiArea::tileSubWindows);
 
 	m_cascade_window = new QAction(tr("&Cascade"), this);
+	ShortcutManager::instance().registerAction(m_cascade_window, "diagrameditor.cascade_windows", tr("Éditeur de schémas"), QKeySequence());
 	m_cascade_window->setStatusTip(tr("Dispose les fenêtres en cascade", "status bar tip"));
 	connect(m_cascade_window, &QAction::triggered, &m_workspace, &QMdiArea::cascadeSubWindows);
 
 		//Switch selection/view mode
 	m_mode_selection = new QAction(QET::Icons::PartSelect, tr("Mode Selection"), this);
+	ShortcutManager::instance().registerAction(m_mode_selection, "diagrameditor.mode_selection", tr("Éditeur de schémas"), QKeySequence());
 	m_mode_selection->setStatusTip(tr("Permet de sélectionner les éléments", "status bar tip"));
 	m_mode_selection->setCheckable(true);
 	m_mode_selection->setChecked(true);
@@ -867,6 +895,7 @@ void QETDiagramEditor::setUpActions()
 	});
 
 	m_mode_visualise = new QAction(QET::Icons::ViewMove, tr("Mode Visualisation"), this);
+	ShortcutManager::instance().registerAction(m_mode_visualise, "diagrameditor.mode_visualise", tr("Éditeur de schémas"), QKeySequence());
 	m_mode_visualise->setStatusTip(tr("Permet de visualiser le folio sans pouvoir le modifier", "status bar tip"));
 	m_mode_visualise->setCheckable(true);
 	connect(m_mode_visualise, &QAction::triggered, [this]() {
@@ -938,6 +967,12 @@ void QETDiagramEditor::setUpActions()
 	add_row      ->setData("add_row");
 	remove_row   ->setData("remove_row");
 
+	for (QAction *action : m_row_column_actions_group.actions()) {
+		ShortcutManager::instance().registerAction(
+			action, "diagrameditor." + action->data().toString(),
+			tr("Éditeur de schémas"), QKeySequence());
+	}
+
 	connect(&m_row_column_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::rowColumnGroupTriggered);
 
 		//Selections Actions (related to a selected item)
@@ -955,6 +990,8 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", tr("Éditeur de schémas"), Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_group_selection, "diagrameditor.rotate_group_selection", tr("Éditeur de schémas"), Qt::SHIFT | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
+	ShortcutManager::instance().registerAction(m_find_element, "diagrameditor.find_element", tr("Éditeur de schémas"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_group_selected_texts, "diagrameditor.group_selected_texts", tr("Éditeur de schémas"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
 		//Re-enter placement mode with the element placed last. Bare A rather

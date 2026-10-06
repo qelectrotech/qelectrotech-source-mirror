@@ -49,6 +49,10 @@ class DiagramImageItem : public QetGraphicsItem {
 	Q_PROPERTY(qreal skewY READ skewY WRITE setSkewY NOTIFY transformChanged)
 	Q_PROPERTY(QPointF pivot READ pivot WRITE setPivot NOTIFY transformChanged)
 	Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
+	// The picture's source -- original, crop rectangle, transparent
+	// colours -- as one value, so that every edit of it (crop, colour
+	// key, mirror, replace) is undone together with the displayed pixmap.
+	Q_PROPERTY(QVariant imageSource READ imageSourceVariant WRITE setImageSourceVariant)
 	// A second, deliberately non-compensating property on the SAME
 	// underlying value -- setPivot() (above) intentionally adjusts
 	// pos() to keep the image visually in place, which is exactly
@@ -65,6 +69,19 @@ class DiagramImageItem : public QetGraphicsItem {
 	DiagramImageItem(QetGraphicsItem * = nullptr);
 	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = nullptr);
 	~DiagramImageItem() override;
+
+	struct ImageSource
+	{
+		QPixmap base;
+		QRect crop;
+		QList<ImageTransparentColorDialog::PickedColor> colors;
+	};
+	ImageSource imageSource() const { return {m_base_pixmap, m_crop_rect, m_transparent_colors}; }
+	void setImageSource(const ImageSource &source);
+	QVariant imageSourceVariant() const;
+	void setImageSourceVariant(const QVariant &source);
+	QRect cropRect() const { return m_crop_rect; }
+	bool applyCrop(const QRect &cropRect);
 	
 	// attributes
 	public:
@@ -246,4 +263,6 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPointF m_label_scale{1.0, 1.0};   // scale the label rect was last computed for -- see updateLabelScale()
 	bool m_resizeCenterAnchored = false;   // decided once, at press time -- see handlerMousePressEvent()'s comment for why, mirroring the identical fix already made for shape creation
 };
+Q_DECLARE_METATYPE(DiagramImageItem::ImageSource)
+
 #endif
