@@ -91,10 +91,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setPlainText(const QString &text);
 		bool isHtml() const;
 
+	protected:
 		void refreshTextResizeHandles();
 		TextResizeHandles *textResizeHandles() const {return m_resize_handles;}
 
-	protected:
 		void paint(QPainter *,
 			   const QStyleOptionGraphicsItem *,
 			   QWidget *) override;

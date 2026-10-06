@@ -365,17 +365,19 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 
 /**
 	@brief DiagramTextItem::itemChange
-	Show or hide the resize handles with the selection.
+	Show or hide the resize handles with the selection and the scene.
 	@param change
 	@param value
 	@return
 */
 QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value)
 {
-	if (change == QGraphicsItem::ItemSelectedHasChanged)
+		//Also when the text comes back to a scene: Qt keeps it selected
+		//across removeItem()/addItem() (undoing a delete) and sends no
+		//selection change, and its handles were removed with the scene.
+	if (change == QGraphicsItem::ItemSelectedHasChanged
+		|| change == QGraphicsItem::ItemSceneHasChanged)
 		refreshTextResizeHandles();
-	else if (change == QGraphicsItem::ItemSceneHasChanged && !scene())
-		removeTextResizeHandles();
 
 	return QGraphicsTextItem::itemChange(change, value);
 }
