@@ -29,6 +29,11 @@ namespace TextLines
 		@return the lines of document as they are laid out: a paragraph
 		wrapped to the width of the text gives several lines. For the
 		exports that write a text line by line (DXF).
+		A paragraph that is not wrapped gives exactly its line of
+		toPlainText().split('\n'), as these exports wrote before: trailing
+		spaces are kept, and non-breaking spaces become plain spaces. In a
+		wrapped paragraph, the lines lose their trailing spaces (the one a
+		line was broken at, and a line made only of spaces becomes empty).
 	*/
 	inline QStringList layoutLines(const QTextDocument *document)
 	{
@@ -39,18 +44,32 @@ namespace TextLines
 		{
 			const QString text = block.text();
 			const QTextLayout *layout = block.layout();
-			if (!layout || layout->lineCount() == 0) {
-				lines << text;
+			const int count = layout ? layout->lineCount() : 0;
+			if (count == 0) {
+				lines << QString(text).replace(QChar::Nbsp, QLatin1Char(' '));
 				continue;
 			}
-			for (int i = 0 ; i < layout->lineCount() ; ++i)
+
+				//Wrapped: a line ends without a line break typed by the user
+			bool wrapped = false;
+			for (int i = 0 ; i < count - 1 ; ++i) {
+				const QTextLine line = layout->lineAt(i);
+				const int end = line.textStart() + line.textLength();
+				if (end == 0 || text.at(end - 1) != QChar::LineSeparator)
+					wrapped = true;
+			}
+
+			for (int i = 0 ; i < count ; ++i)
 			{
 				const QTextLine line = layout->lineAt(i);
 				QString part = text.mid(line.textStart(), line.textLength());
-					//The space the line was broken at, or a line separator
-				while (!part.isEmpty() && part.back().isSpace())
-					part.chop(1);
-				lines << part;
+				if (part.endsWith(QChar::LineSeparator))
+					part.chop(1);	//A line break typed by the user (Shift+Enter)
+				if (wrapped) {
+					while (!part.isEmpty() && part.back().isSpace())
+						part.chop(1);
+				}
+				lines << part.replace(QChar::Nbsp, QLatin1Char(' '));
 			}
 		}
 		return lines;
