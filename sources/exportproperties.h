@@ -50,6 +50,7 @@ class ExportProperties {
 	bool draw_terminal_names;       ///< Whether to render terminal names/labels
 	bool draw_bg_transparent;       ///< Whether to use transparency for SVG-Export
 	bool draw_colored_conductors;   ///< Whether to render conductors colors
+	bool dxf_blocks;                ///< DXF: each symbol as a block, placed with an INSERT
 	QET::DiagramArea exported_area; ///< Area of diagrams to be rendered
 };
 #endif

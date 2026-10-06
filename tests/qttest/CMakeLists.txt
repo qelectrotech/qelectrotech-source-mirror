@@ -473,6 +473,17 @@ target_link_libraries(tst_dxfcurves PRIVATE Qt::Test)
 target_compile_definitions(tst_dxfcurves PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# --export-dxf --dxf-blocks: a symbol placed twice is one BLOCK and two
+# INSERTs (issue #1339).
+add_executable(
+  tst_dxfblocks
+  tst_dxfblocks.cpp)
+add_test(NAME tst_dxfblocks COMMAND tst_dxfblocks)
+add_dependencies(tst_dxfblocks qelectrotech)
+target_link_libraries(tst_dxfblocks PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfblocks PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
 # QPageSize matches standard sheets upright only, so a wide folio is matched
 # upright and turned. fixtures/pdf_page_a3.qet has one folio each way.

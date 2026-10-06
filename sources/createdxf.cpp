@@ -68,7 +68,16 @@ Createdxf::~Createdxf()
 /* Header section of every DXF file.
    @param layers : the layers the entities will be written on, declared in
    the LAYER table beside layer "0", which every DXF has. */
-void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers)
+/**
+	@brief Createdxf::dxfBegin
+	Write the header, the tables with @a layers, and the BLOCKS section,
+	then open the ENTITIES section. @a writeBlocks, if given, is called
+	inside the BLOCKS section to write the block definitions
+	(dxfBlockBegin(), the entities, dxfBlockEnd()): a block has to be
+	defined before any entity, so before anything is drawn.
+*/
+void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
+			  const std::function<void()> &writeBlocks)
 {
 	layer = QStringLiteral("0");
 
@@ -276,15 +285,160 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers)
 			To_Dxf << "SECTION"     << "\r\n";
 			To_Dxf << 2             << "\r\n";
 			To_Dxf << "BLOCKS"      << "\r\n";
+			file.close();
+		}
+		if (writeBlocks)
+			writeBlocks();
+		QFile entities(fileName);
+		if (entities.open(QFile::Append)) {
+			QTextStream To_Dxf(&entities);
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "ENDSEC"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "SECTION"     << "\r\n";
 			To_Dxf << 2             << "\r\n";
 			To_Dxf << "ENTITIES"    << "\r\n";
-			file.close();
+			entities.close();
 		}
 	}
+}
+
+/**
+	@brief Createdxf::dxfBlockBegin
+	Start the definition of block @a name, with its base point at @a x,
+	@a y. Only inside dxfBegin()'s writeBlocks; every entity written until
+	dxfBlockEnd() belongs to the block.
+	@param hasAttributes : the block has attribute definitions
+*/
+void Createdxf::dxfBlockBegin(const QString &fileName,
+			      const QString &name,
+			      double x,
+			      double y,
+			      bool hasAttributes)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "BLOCK"   << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << "0"       << "\r\n";
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << name      << "\r\n";
+	To_Dxf << 70        << "\r\n";
+	To_Dxf << (hasAttributes ? 2 : 0) << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << x         << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << y         << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	file.close();
+}
+
+/**
+	@brief Createdxf::dxfBlockEnd
+	End the block started by dxfBlockBegin().
+*/
+void Createdxf::dxfBlockEnd(const QString &fileName)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "ENDBLK"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << "0"       << "\r\n";
+	file.close();
+}
+
+/**
+	@brief Createdxf::drawInsert
+	Place block @a name at @a x, @a y, turned counter-clockwise by
+	@a rotation degrees, on the current layer, followed by its
+	@a attributes.
+*/
+void Createdxf::drawInsert(const QString &fileName,
+			   const QString &name,
+			   double x,
+			   double y,
+			   double rotation,
+			   const QList<Attribute> &attributes)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "INSERT"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << layer     << "\r\n";
+	if (!attributes.isEmpty()) {
+		To_Dxf << 66    << "\r\n";
+		To_Dxf << 1     << "\r\n";
+	}
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << name      << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << x         << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << y         << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	To_Dxf << 50        << "\r\n";
+	To_Dxf << rotation  << "\r\n";
+	for (const Attribute &attribute : attributes) {
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "ATTRIB"  << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << layer     << "\r\n";
+		To_Dxf << 62        << "\r\n";
+		To_Dxf << entityColour(attribute.colour) << "\r\n";
+		To_Dxf << 10        << "\r\n";
+		To_Dxf << attribute.x << "\r\n";
+		To_Dxf << 20        << "\r\n";
+		To_Dxf << attribute.y << "\r\n";
+		To_Dxf << 30        << "\r\n";
+		To_Dxf << 0.0       << "\r\n";
+		To_Dxf << 40        << "\r\n";
+		To_Dxf << attribute.height << "\r\n";
+		To_Dxf << 1         << "\r\n";
+		To_Dxf << singleLine(attribute.text) << "\r\n";
+		To_Dxf << 2         << "\r\n";
+		To_Dxf << attribute.tag << "\r\n";
+		To_Dxf << 70        << "\r\n";
+		To_Dxf << (attribute.invisible ? 1 : 0) << "\r\n";
+		To_Dxf << 50        << "\r\n";
+		To_Dxf << attribute.rotation << "\r\n";
+		To_Dxf << 41        << "\r\n";
+		To_Dxf << attribute.xScaleW << "\r\n";
+	}
+	if (!attributes.isEmpty()) {
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "SEQEND"  << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << layer     << "\r\n";
+	}
+	file.close();
+}
+
+/**
+	@brief Createdxf::blockName
+	@return @a name as a block or attribute name an R10 reader accepts:
+	upper case, only A-Z, 0-9, _, - and $, at most 31 characters
+*/
+QString Createdxf::blockName(const QString &name)
+{
+	QString result;
+	for (const QChar c : name.toUpper()) {
+		const ushort u = c.unicode();
+		const bool ok = (u >= 'A' && u <= 'Z') || (u >= '0' && u <= '9')
+				|| u == '_' || u == '-' || u == '$';
+		result += ok ? c : QChar('_');
+	}
+	return result.left(31);
 }
 
 /**

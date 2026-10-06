@@ -42,6 +42,125 @@
 #include <cmath>
 #include <utility>
 
+namespace {
+	/**
+		Draw the drawing of @a elmt's definition: its static texts, lines,
+		rectangles, circles, polygons and arcs, and its terminals when
+		@a draw_terminals, as if it were placed at @a elem_pos_x,
+		@a elem_pos_y and turned @a rotation_angle degrees. Used for every
+		symbol drawn in full, and once per block for a block's content.
+	*/
+	void drawSymbol(const QString &file_path, Element *elmt,
+					qreal elem_pos_x, qreal elem_pos_y,
+					double rotation_angle, bool draw_terminals)
+	{
+		using namespace DxfExport;
+		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
+
+		Createdxf::layer = Layer::SymbolTexts;
+		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
+		{
+			qreal fontSize = text->font().pointSizeF();
+			if (fontSize < 0)
+				fontSize = text->font().pixelSize();
+
+			qreal x = elem_pos_x + text->pos().x();
+			qreal y = elem_pos_y + text->pos().y();
+
+			qreal angle = text -> rotation() + rotation_angle;
+			qreal angler = angle * M_PI/180;
+			int xdir = -sin(angler);
+			int ydir = -cos(angler);
+
+			QPointF transformed_point = DxfExport::rotation_transformed(x, y, elem_pos_x, elem_pos_y, -rotation_angle);
+			x = transformed_point.x() - ydir * fontSize * 0.5;
+			y = transformed_point.y() - xdir * fontSize * 0.5;
+			QStringList lines = text->text().split('\n');
+			qreal offset = fontSize * 1.6;
+			for (QString line : lines)
+			{
+				if (line.size() > 0 && line != "_" ) {
+					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360 - angle, 0, 0.72);
+				}
+				x += offset * xdir;
+				y -= offset * ydir;
+			}
+		}
+
+		Createdxf::layer = Layer::Symbols;
+		for (QLineF line : primitives.m_lines)
+		{
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QLineF l = t.map(line);
+			Createdxf::drawLine(file_path, l, 0);
+		}
+
+		for (QRectF rect : primitives.m_rectangles)
+		{
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QRectF r = t.mapRect(rect);
+			Createdxf::drawRectangle(file_path,r,0);
+		}
+
+		for (QRectF circle_rect : primitives.m_circles)
+		{
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
+			Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
+		}
+
+		for (QVector<QPointF> polygon : primitives.m_polygons)
+		{
+			if (polygon.size() == 0)
+				continue;
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QPolygonF poly = t.map(polygon);
+			if(poly.isClosed())
+				Createdxf::drawPolygon(file_path,poly,0);
+			else
+				Createdxf::drawPolyline(file_path,poly,0);
+		}
+
+		// Draw arcs and ellipses
+		for (QVector<qreal> arc : primitives.m_arcs)
+		{
+			if (arc.size() == 0)
+				continue;
+			qreal x = (elem_pos_x + arc.at(0));
+			qreal y = (elem_pos_y + arc.at(1));
+			qreal w = arc.at(2);
+			qreal h = arc.at(3);
+			qreal startAngle = arc.at(4);
+			qreal spanAngle = arc .at(5);
+			QRectF r(x,y,w,h);
+			QPointF hotspot(elem_pos_x,elem_pos_y);
+			Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
+		}
+		if (draw_terminals) {
+			Createdxf::layer = Layer::Terminals;
+			// Draw terminals
+			QList<Terminal *> list_terminals = elmt->terminals();
+			QColor col("red");
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			foreach(Terminal *tp, list_terminals) {
+				QPointF c = t.map(QPointF(tp->dock_elmt_.x(),tp->dock_elmt_.y()));
+				Createdxf::drawCircle(file_path,c,3.0,Createdxf::dxfColor(col));
+			}
+		}
+	}
+
+		/// Nothing would be drawn for @a elmt (its definition is missing)
+	bool drawsNothing(Element *elmt, bool draw_terminals)
+	{
+		const ElementPictureFactory::primitives p =
+				ElementPictureFactory::instance()->getPrimitives(elmt->location());
+		return p.m_lines.isEmpty() && p.m_rectangles.isEmpty()
+				&& p.m_circles.isEmpty() && p.m_polygons.isEmpty()
+				&& p.m_arcs.isEmpty() && p.m_texts.isEmpty()
+				&& (!draw_terminals || elmt->terminals().isEmpty());
+	}
+}
+
 /**
 	@brief DxfExport::folioSize
 	@return the size of @a diagram as exported with @a properties: its border
@@ -87,19 +206,6 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 							  Createdxf::sheetHeight / double(height));
 	Createdxf::xScale = scale;
 	Createdxf::yScale = scale;
-
-	Createdxf::dxfBegin(file_path, Layer::all());
-
-		//Each kind of content on its own layer (discussion #1071). The
-		//border's title block switches to Layer::TitleBlock itself, see
-		//BorderTitleBlock::drawDxf().
-	Createdxf::layer = Layer::Border;
-	//Add project elements (lines, rectangles, circles, texts) to dxf file
-	if (properties.draw_border) {
-		QRectF rect(Diagram::margin,Diagram::margin,width,height);
-		Createdxf::drawRectangle(file_path,rect,0);
-	}
-	diagram -> border_and_titleblock.drawDxf(file_path, 0);
 
 	// Build the lists of elements.
 	QList<Element *> list_elements;
@@ -169,6 +275,58 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		}
 	}
 
+		//Symbols as blocks: one block per symbol definition the folio
+		//uses, named after its file and numbered in the order first met,
+		//so a repeat export is identical. A block has to be written before
+		//any entity, so they are all collected first.
+	QHash<QString, QString> block_names; // location -> block name
+	QList<Element *> block_models;       // one placed symbol per block
+	if (properties.dxf_blocks) {
+		QSet<QString> used;
+		for (Element *elmt : std::as_const(list_elements)) {
+			const QString key = elmt -> location().toString();
+			if (block_names.contains(key)
+				|| drawsNothing(elmt, properties.draw_terminals))
+				continue;
+			QString file_name = elmt -> location().fileName();
+			if (file_name.endsWith(QLatin1String(".elmt")))
+				file_name.chop(5);
+			const QString base = Createdxf::blockName(
+						QStringLiteral("QET_") + file_name);
+			QString name = base;
+			for (int i = 2 ; used.contains(name) ; ++i) {
+				const QString suffix = QStringLiteral("_%1").arg(i);
+				name = base.left(31 - suffix.size()) + suffix;
+			}
+			used << name;
+			block_names.insert(key, name);
+			block_models << elmt;
+		}
+	}
+
+		//A block is drawn as if its symbol sat unturned at the folio's
+		//origin, which is DXF (0, sheetHeight); that is its base point.
+	Createdxf::dxfBegin(file_path, Layer::all(), [&]() {
+		for (Element *model : std::as_const(block_models)) {
+			Createdxf::dxfBlockBegin(file_path,
+									 block_names.value(model -> location().toString()),
+									 0, Createdxf::sheetHeight);
+			drawSymbol(file_path, model, 0, 0, 0, properties.draw_terminals);
+			Createdxf::dxfBlockEnd(file_path);
+		}
+	});
+
+		//Each kind of content on its own layer (discussion #1071). The
+		//border's title block switches to Layer::TitleBlock itself, see
+		//BorderTitleBlock::drawDxf().
+	Createdxf::layer = Layer::Border;
+	//Add project elements (lines, rectangles, circles, texts) to dxf file
+	if (properties.draw_border) {
+		QRectF rect(Diagram::margin,Diagram::margin,width,height);
+		Createdxf::drawRectangle(file_path,rect,0);
+	}
+	diagram -> border_and_titleblock.drawDxf(file_path, 0);
+
 	// Draw shapes
 	Createdxf::layer = Layer::Shapes;
 	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
@@ -179,105 +337,24 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		gti->toDXF(file_path);
 	}
 
-	//Draw elements
+	//Draw elements: each one in full, or as an INSERT of its block
 	foreach(Element *elmt, list_elements)
 	{
-		double rotation_angle = elmt -> orientation() * 90;
+		const double rotation_angle = elmt -> orientation() * 90;
+		const qreal elem_pos_x = elmt -> pos().x();
+		const qreal elem_pos_y = elmt -> pos().y();
 
-		qreal elem_pos_x = elmt -> pos().x();
-		qreal elem_pos_y = elmt -> pos().y();// - (diagram -> margin / 2);
-
-		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
-
-		Createdxf::layer = Layer::SymbolTexts;
-		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
-		{
-			qreal fontSize = text->font().pointSizeF();
-			if (fontSize < 0)
-				fontSize = text->font().pixelSize();
-
-			qreal x = elem_pos_x + text->pos().x();
-			qreal y = elem_pos_y + text->pos().y();
-
-			qreal angle = text -> rotation() + rotation_angle;
-			qreal angler = angle * M_PI/180;
-			int xdir = -sin(angler);
-			int ydir = -cos(angler);
-
-			QPointF transformed_point = rotation_transformed(x, y, elem_pos_x, elem_pos_y, -rotation_angle);
-			x = transformed_point.x() - ydir * fontSize * 0.5;
-			y = transformed_point.y() - xdir * fontSize * 0.5;
-			QStringList lines = text->text().split('\n');
-			qreal offset = fontSize * 1.6;
-			for (QString line : lines)
-			{
-				if (line.size() > 0 && line != "_" ) {
-					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360 - angle, 0, 0.72);
-				}
-				x += offset * xdir;
-				y -= offset * ydir;
-			}
-		}
-
-		Createdxf::layer = Layer::Symbols;
-		for (QLineF line : primitives.m_lines)
-		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
-			QLineF l = t.map(line);
-			Createdxf::drawLine(file_path, l, 0);
-		}
-
-		for (QRectF rect : primitives.m_rectangles)
-		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
-			QRectF r = t.mapRect(rect);
-			Createdxf::drawRectangle(file_path,r,0);
-		}
-
-		for (QRectF circle_rect : primitives.m_circles)
-		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
-			QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
-			Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
-		}
-
-		for (QVector<QPointF> polygon : primitives.m_polygons)
-		{
-			if (polygon.size() == 0)
-				continue;
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
-			QPolygonF poly = t.map(polygon);
-			if(poly.isClosed())
-				Createdxf::drawPolygon(file_path,poly,0);
-			else
-				Createdxf::drawPolyline(file_path,poly,0);
-		}
-
-		// Draw arcs and ellipses
-		for (QVector<qreal> arc : primitives.m_arcs)
-		{
-			if (arc.size() == 0)
-				continue;
-			qreal x = (elem_pos_x + arc.at(0));
-			qreal y = (elem_pos_y + arc.at(1));
-			qreal w = arc.at(2);
-			qreal h = arc.at(3);
-			qreal startAngle = arc.at(4);
-			qreal spanAngle = arc .at(5);
-			QRectF r(x,y,w,h);
-			QPointF hotspot(elem_pos_x,elem_pos_y);
-			Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
-		}
-		if (properties.draw_terminals) {
-			Createdxf::layer = Layer::Terminals;
-			// Draw terminals
-			QList<Terminal *> list_terminals = elmt->terminals();
-			QColor col("red");
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
-			foreach(Terminal *tp, list_terminals) {
-				QPointF c = t.map(QPointF(tp->dock_elmt_.x(),tp->dock_elmt_.y()));
-				Createdxf::drawCircle(file_path,c,3.0,Createdxf::dxfColor(col));
-			}
+		const QString block = block_names.value(elmt -> location().toString());
+		if (block.isEmpty()) {
+			drawSymbol(file_path, elmt, elem_pos_x, elem_pos_y,
+					   rotation_angle, properties.draw_terminals);
+		} else {
+			Createdxf::layer = Layer::Symbols;
+				//QElectroTech turns a symbol clockwise, DXF counter-clockwise
+			Createdxf::drawInsert(file_path, block,
+								  elem_pos_x * Createdxf::xScale,
+								  Createdxf::sheetHeight - elem_pos_y * Createdxf::yScale,
+								  std::fmod(360 - rotation_angle, 360));
 		}
 	}
 
