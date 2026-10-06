@@ -104,6 +104,14 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# textlines.h is header-only: the lines of a text as they are laid out,
+# for the exports that write a text line by line.
+add_executable(tst_textlines tst_textlines.cpp)
+add_test(NAME tst_textlines COMMAND tst_textlines)
+set_tests_properties(tst_textlines PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_textlines PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_textlines PRIVATE Qt::Test Qt::Gui)
+
 # elementviewgrid.h is header-only: the symbol editor's snap step at each
 # zoom (bugtracker #112), tested without an editor window.
 add_executable(tst_elementviewgrid tst_elementviewgrid.cpp)
@@ -426,6 +434,16 @@ target_link_libraries(tst_wiringlistexport PRIVATE Qt::Test)
 target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+# --export-dxf writes a wrapped symbol text line by line, as it is drawn.
+add_executable(
+  tst_dxfwrappedtext
+  tst_dxfwrappedtext.cpp)
+add_test(NAME tst_dxfwrappedtext COMMAND tst_dxfwrappedtext)
+add_dependencies(tst_dxfwrappedtext qelectrotech)
+target_link_libraries(tst_dxfwrappedtext PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfwrappedtext PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
 # --export-pdf puts an A3 folio on an A3 page whichever way it is turned:
 # QPageSize matches standard sheets upright only, so a wide folio is matched
