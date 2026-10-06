@@ -35,6 +35,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/terminal.h"
+#include "qetinformation.h"
 #include "textlines.h"
 
 #include <QGraphicsSimpleTextItem>
@@ -435,6 +436,49 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 				}
 			}
 			attribute_texts << dti;
+		}
+
+			//The rest of what is known about a symbol (manufacturer,
+			//reference, supplier, quantity...) as hidden attributes, so a
+			//CAD program can list the parts from the drawing. A field
+			//already written as a visible attribute (dxf_attributes) is not
+			//repeated; the label formula is how the label is made, not
+			//part data.
+		for (Element *elmt : std::as_const(list_elements)) {
+			const QString block = block_names.value(elmt -> location().toString());
+			if (block.isEmpty())
+				continue;
+			const DiagramContext information = elmt -> elementInformations();
+			const QPointF insert(elmt -> pos().x() * Createdxf::xScale,
+								 Createdxf::sheetHeight - elmt -> pos().y() * Createdxf::yScale);
+			for (const QString &key : QETInformation::elementInfoKeys()) {
+				if (key == QETInformation::ELMT_FORMULA)
+					continue;
+				const QString value = information.value(key).toString();
+				const QString tag = Createdxf::blockName(key);
+				if (value.isEmpty() || used_tags.value(elmt).contains(tag))
+					continue;
+				used_tags[elmt] << tag;
+
+				Createdxf::Attribute attribute;
+				attribute.tag = tag;
+				attribute.text = value;
+				attribute.x = insert.x();
+				attribute.y = insert.y();
+				attribute.height = 9 * Createdxf::yScale;
+				attribute.invisible = true;
+				attribute.layer = Layer::SymbolTexts;
+				attributes[elmt] << attribute;
+
+				if (!defined_tags[block].contains(tag)) {
+					defined_tags[block] << tag;
+					Createdxf::Attribute definition = attribute;
+					definition.x = 0;
+					definition.y = Createdxf::sheetHeight;
+					definition.text.clear();
+					attribute_definitions[block] << definition;
+				}
+			}
 		}
 	}
 

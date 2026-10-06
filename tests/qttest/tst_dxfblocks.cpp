@@ -22,8 +22,8 @@
 /**
 	--export-dxf --dxf-blocks (issue #1339): a symbol placed twice is one
 	BLOCK and two INSERTs, the second turned a quarter, and each symbol's
-	label, with --dxf-attributes, is an attribute of its INSERT;
-	without the switches there is neither.
+	information is a hidden attribute of it; with --dxf-attributes its
+	label is a visible one. Without the switches there is neither.
 */
 class tst_dxfblocks : public QObject
 {
@@ -88,13 +88,14 @@ private slots:
 		const auto pairs = exportPairs({QStringLiteral("--dxf-attributes")});
 		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-attributes failed");
 
-		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")),
-				 (QStringList{QStringLiteral("LABEL"), QStringLiteral("LABEL")}));
-		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("1")),
-				 (QStringList{QStringLiteral("K1"), QStringLiteral("K2")}));
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2"))
+				 .count(QStringLiteral("LABEL")), 2);
+		const QStringList texts = values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("1"));
+		QVERIFY(texts.contains(QStringLiteral("K1")));
+		QVERIFY(texts.contains(QStringLiteral("K2")));
 			//Defined once in the block, and no longer a loose text
-		QCOMPARE(values(pairs, QStringLiteral("ATTDEF"), QStringLiteral("2")),
-				 QStringList{QStringLiteral("LABEL")});
+		QCOMPARE(values(pairs, QStringLiteral("ATTDEF"), QStringLiteral("2"))
+				 .count(QStringLiteral("LABEL")), 1);
 		QVERIFY(!values(pairs, QStringLiteral("TEXT"), QStringLiteral("1")).contains(QStringLiteral("K1")));
 	}
 
@@ -102,8 +103,33 @@ private slots:
 	{
 		const auto pairs = exportPairs({QStringLiteral("--dxf-blocks")});
 		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-blocks failed");
-		QVERIFY(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")).isEmpty());
+			//Only hidden attributes (70 = 1); the labels are texts
+		QVERIFY(!values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("70")).contains(QStringLiteral("0")));
 		QVERIFY(values(pairs, QStringLiteral("TEXT"), QStringLiteral("1")).contains(QStringLiteral("K1")));
+	}
+
+	void dataAsHiddenAttributes()
+	{
+			//The label is a text, so it is part data too: K1's label and
+			//manufacturer, K2's label, all hidden (70 = 1)
+		auto pairs = exportPairs({QStringLiteral("--dxf-blocks")});
+		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-blocks failed");
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")),
+				 (QStringList{QStringLiteral("LABEL"), QStringLiteral("MANUFACTURER"),
+							  QStringLiteral("LABEL")}));
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("70")),
+				 (QStringList{QStringLiteral("1"), QStringLiteral("1"), QStringLiteral("1")}));
+		QVERIFY(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("1"))
+				.contains(QStringLiteral("Schneider")));
+
+			//With the labels as attributes, the label is not repeated
+		pairs = exportPairs({QStringLiteral("--dxf-attributes")});
+		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-attributes failed");
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")),
+				 (QStringList{QStringLiteral("LABEL"), QStringLiteral("MANUFACTURER"),
+							  QStringLiteral("LABEL")}));
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("70")),
+				 (QStringList{QStringLiteral("0"), QStringLiteral("1"), QStringLiteral("0")}));
 	}
 
 	void flatWithoutSwitch()
