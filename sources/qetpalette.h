@@ -66,6 +66,9 @@ namespace QET {
 		*/
 		void invertLightness(QImage &image, const QColor &sheet = Qt::black,
 		                     const QColor &ink = Qt::white);
+		/// The same colour mapping for a transparent composition layer.
+		/// Retains alpha; premultiplied input is converted to straight ARGB32.
+		void invertLightnessLayer(QImage &image, const QColor &sheet, const QColor &ink);
 
 		/**
 			The color of the grid dots on a sheet of color \a sheet: black,

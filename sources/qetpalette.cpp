@@ -83,8 +83,14 @@ bool QET::Palette::isDark(const QPalette &palette)
 void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
                                    const QColor &ink)
 {
-	if (image.format() != QImage::Format_RGB32)
-		image.convertTo(QImage::Format_RGB32);
+	if (image.format() != QImage::Format_RGB32) image.convertTo(QImage::Format_RGB32);
+	invertLightnessLayer(image, sheet, ink);
+}
+
+void QET::Palette::invertLightnessLayer(QImage &image, const QColor &sheet, const QColor &ink)
+{
+	if (image.format() != QImage::Format_RGB32 && image.format() != QImage::Format_ARGB32)
+		image.convertTo(QImage::Format_ARGB32);
 
 	// One table per channel maps the inverted value (0 = was white,
 	// 255 = was black) onto the sheet..ink span.
@@ -106,6 +112,7 @@ void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
 		quint32 *line = reinterpret_cast<quint32 *>(image.scanLine(y));
 		for (int x = 0, width = image.width(); x < width; ++x) {
 			const quint32 pixel = line[x];
+			if ((pixel & 0xff000000u) == 0) continue;
 			const int red   = (pixel >> 16) & 0xff;
 			const int green = (pixel >> 8) & 0xff;
 			const int blue  = pixel & 0xff;
@@ -114,7 +121,7 @@ void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
 			if (blue > highest) highest = blue;
 			if (blue < lowest)  lowest  = blue;
 			const int offset = 255 - highest - lowest;
-			line[x] = 0xff000000u
+			line[x] = (pixel & 0xff000000u)
 			        | (quint32(red_of[red + offset]) << 16)
 			        | (quint32(green_of[green + offset]) << 8)
 			        | quint32(blue_of[blue + offset]);

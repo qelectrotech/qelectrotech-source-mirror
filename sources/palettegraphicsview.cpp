@@ -18,6 +18,7 @@
 #include "palettegraphicsview.h"
 
 #include "qetpalette.h"
+#include "darkimagerendering.h"
 
 #include <QApplication>
 #include <QEvent>
@@ -99,12 +100,13 @@ bool PaletteGraphicsView::eventFilter(QObject *watched, QEvent *event)
 */
 void PaletteGraphicsView::paintEvent(QPaintEvent *event)
 {
-	if (invertsLightness() && !customBackgroundColor())
+	if (invertsLightness())
 	{
 		paintInverted(event);
 		return;
 	}
 	m_buffer = QImage();
+	m_composite = QImage();
 	QGraphicsView::paintEvent(event);
 }
 
@@ -130,7 +132,7 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	const QSize size(qCeil(viewport()->width() * ratio), qCeil(viewport()->height() * ratio));
 	if (m_buffer.size() != size || m_buffer.devicePixelRatio() != ratio)
 	{
-		m_buffer = QImage(size, QImage::Format_RGB32);
+		m_buffer = QImage(size, QImage::Format_ARGB32_Premultiplied);
 		m_buffer.setDevicePixelRatio(ratio);
 	}
 
@@ -141,9 +143,13 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	m_buffer_painter.setClipRect(exposed);
 	m_buffer_painter.setRenderHints(renderHints());
 	m_buffer_painter.setWorldTransform(viewportTransform());
+	m_exposed = exposed;
+	m_layered = false;
+	DarkImageRendering::Context context{&m_buffer_painter, !customBackgroundColor(), [this](bool invert, const QRect &bounds) { flushLayer(invert, bounds); }};
+	DarkImageRendering::Scope rasterScope(&context);
 
 	m_inverting = true;
-	paintingInverted(true);
+	paintingInverted(!customBackgroundColor());
 	const OptimizationFlags flags = optimizationFlags();
 	setOptimizationFlag(QGraphicsView::IndirectPainting, true);
 	QGraphicsView::paintEvent(event);
@@ -151,8 +157,42 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 	paintingInverted(false);
 	m_inverting = false;
 
+	if (m_layered) flushLayer(!customBackgroundColor());
 	m_buffer_painter.end();
 	blitInverted(exposed);
+}
+
+void PaletteGraphicsView::flushLayer(bool invert, const QRect &bounds)
+{
+	const QRect area = bounds.isNull() ? m_exposed : bounds.intersected(m_exposed);
+	if (area.isEmpty()) return;
+	const qreal ratio = m_buffer.devicePixelRatio();
+	const QRect pixels = QRectF(area.topLeft() * ratio, area.size() * ratio).toAlignedRect();
+	QImage layer = m_buffer.copy(pixels);
+	layer.setDevicePixelRatio(ratio);
+	if (invert) {
+		const QPalette palette = QApplication::palette();
+		QET::Palette::invertLightnessLayer(layer, palette.color(QPalette::Base), palette.color(QPalette::Text));
+	}
+	if (!m_layered) {
+		if (m_composite.size() != m_buffer.size() || m_composite.devicePixelRatio() != ratio) {
+			m_composite = QImage(m_buffer.size(), QImage::Format_ARGB32_Premultiplied);
+			m_composite.setDevicePixelRatio(ratio);
+		}
+		m_composite.fill(Qt::transparent);
+		m_layered = true;
+	}
+	QPainter composite(&m_composite);
+	composite.drawImage(QPointF(pixels.topLeft()) / ratio, layer);
+	// Keep Qt's active painter and its saved state stack intact. Replacing
+	// or restarting it here would lose ancestor clipping and opacity.
+	m_buffer_painter.save();
+	m_buffer_painter.resetTransform();
+	m_buffer_painter.setClipping(false);
+	m_buffer_painter.setOpacity(1.0);
+	m_buffer_painter.setCompositionMode(QPainter::CompositionMode_Source);
+	m_buffer_painter.fillRect(QRectF(QPointF(pixels.topLeft()) / ratio, QSizeF(pixels.size()) / ratio), Qt::transparent);
+	m_buffer_painter.restore();
 }
 
 /**
@@ -199,15 +239,16 @@ void PaletteGraphicsView::drawForeground(QPainter *painter, const QRectF &rect)
 void PaletteGraphicsView::blitInverted(const QRect &area)
 {
 	const qreal ratio = m_buffer.devicePixelRatio();
-	QImage part = m_buffer.copy(QRectF(area.topLeft() * ratio, area.size() * ratio).toAlignedRect());
+	const QRect pixels = QRectF(area.topLeft() * ratio, area.size() * ratio).toAlignedRect();
+	QImage part = (m_layered ? m_composite : m_buffer).copy(pixels);
 	part.setDevicePixelRatio(ratio);
 	// The application palette, for the reason given in invertsLightness().
 	const QPalette application_palette = QApplication::palette();
-	QET::Palette::invertLightness(part, application_palette.color(QPalette::Base),
+	if (!m_layered && !customBackgroundColor()) QET::Palette::invertLightness(part, application_palette.color(QPalette::Base),
 	                              application_palette.color(QPalette::Text));
 
 	QPainter painter(viewport());
-	painter.drawImage(area.topLeft(), part);
+	painter.drawImage(QPointF(pixels.topLeft()) / ratio, part);
 	drawRubberBand(painter);
 }
 
