@@ -543,6 +543,17 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptlayoutreads PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # The project database keeps the width of a free text (independent_text),
+  # read with qet.query() on fixtures/free_text_width.qet.
+  add_executable(
+    tst_scriptfreetextwidth
+    tst_scriptfreetextwidth.cpp)
+  add_test(NAME tst_scriptfreetextwidth COMMAND tst_scriptfreetextwidth)
+  add_dependencies(tst_scriptfreetextwidth qelectrotech)
+  target_link_libraries(tst_scriptfreetextwidth PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptfreetextwidth PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
   # QET_SETTINGS_DIR moves the settings into an INI file there (#1178): a
   # script places a symbol only the folder's settings file can resolve.
   add_executable(
