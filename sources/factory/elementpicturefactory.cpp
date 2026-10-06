@@ -379,6 +379,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 
 	const auto uuid_ = cacheKey(location);
 	if (!mirror.isIdentity()) {
+			//The primitives are those of the drawing without mirror,
+			//already kept by the build of that one
+		qDeleteAll(primitives_.m_texts);
 		const QPair<QUuid, int> key(uuid_, (mirror.m11() < 0 ? 1 : 0)
 											| (mirror.m22() < 0 ? 2 : 0));
 		if (!picture) {

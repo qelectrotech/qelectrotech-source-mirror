@@ -306,6 +306,23 @@ void Terminal::paint(
 		QFontMetrics fm(d->m_label_font);
 		QSizeF text_size = fm.size(Qt::TextSingleLine, display_name);
 
+			// On a mirrored element, mirror the name a second time about
+			// the centre of its box, in the frame it is drawn in (turned
+			// by label_rotation): its box stays where the element's mirror
+			// puts it, but it reads normally (Element::keepReadable())
+		const Element *mirrored = qgraphicsitem_cast<Element *>(parentItem());
+		if (mirrored && !mirrored->isMirrored()) mirrored = nullptr;
+		auto keep_readable = [painter, mirrored](const QRectF &rect, qreal label_rotation) {
+			if (!mirrored) return;
+			const QTransform mirror = QTransform().rotate(label_rotation)
+									  * mirrored->mirrorTransform()
+									  * QTransform().rotate(-label_rotation);
+			const QPointF c = rect.center();
+			painter->setTransform(QTransform::fromTranslate(-c.x(), -c.y())
+								  * mirror
+								  * QTransform::fromTranslate(c.x(), c.y()), true);
+		};
+
 		if (!qFuzzyIsNull(d->m_label_rotation)) {
 			painter->save();
 			painter->translate(label_pos);
@@ -321,6 +338,7 @@ void Terminal::paint(
 			else if (d->m_label_valignment & Qt::AlignBottom) ry = -text_size.height();
 
 			QRectF text_rect(QPointF(rx, ry), text_size);
+			keep_readable(text_rect, d->m_label_rotation);
 			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), display_name);
 			painter->restore();
 		} else {
@@ -334,6 +352,7 @@ void Terminal::paint(
 			else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
 
 			QRectF text_rect(label_pos + QPointF(dx, dy), text_size);
+			keep_readable(text_rect, 0);
 			if (d->m_label_frame) {
 				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
 			}

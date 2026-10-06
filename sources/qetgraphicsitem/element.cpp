@@ -2186,6 +2186,13 @@ Element::ReloadPictureResult Element::reloadPicture()
 
 	m_picture = picture;
 	m_low_zoom_picture = low_zoom_picture;
+	if (isMirrored())
+		ElementPictureFactory::instance()->getMirroredPictures(
+					m_location,
+					m_horizontal_mirror,
+					m_vertical_mirror,
+					m_mirrored_picture,
+					m_mirrored_low_zoom_picture);
 	update();
 	return ReloadPictureResult::Reloaded;
 }

@@ -648,6 +648,10 @@ QRectF ElementTextItemGroup::boundingRect() const
 void ElementTextItemGroup::setRotation(qreal angle)
 {	
 	QGraphicsItemGroup::setRotation(angle);
+		//On a mirrored element, the mirror that keeps this group readable
+		//is about the centre of its turned box
+	if (m_parent_element)
+		m_parent_element->keepReadable(this);
 	emit rotationChanged(angle);
 }
 
