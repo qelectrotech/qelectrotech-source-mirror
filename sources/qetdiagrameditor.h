@@ -270,6 +270,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
 		*m_rotate_group_selection = nullptr, ///< Rotate the selection as a whole around its shared center, instead of each item in place
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
+		*m_mirror_horizontal = nullptr, ///< Mirror the selected elements, left and right swap (#1335)
+		*m_mirror_vertical = nullptr,   ///< Mirror the selected elements, top and bottom swap (#1335)
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,
 		*m_group_selection = nullptr,   ///< Group the selected items (#1070)

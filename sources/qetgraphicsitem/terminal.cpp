@@ -118,13 +118,20 @@ Qet::Orientation Terminal::orientation() const
 		// orientations actuelle et par defaut de l'element
 		// current and default element orientations
 		int ori_cur = elt -> orientation();
-	if (ori_cur == 0) return(d->m_orientation);
+		// The mirrors of an element are about its own axes, before it is
+		// rotated (Element::setMirror()): a horizontal one swaps east and
+		// west, a vertical one north and south
+		Qet::Orientation ori_elmt = d->m_orientation;
+		if (Qet::isHorizontal(ori_elmt) ? elt -> hasHorizontalMirror()
+										: elt -> hasVerticalMirror())
+			ori_elmt = (Qet::Orientation)((ori_elmt + 2) % 4);
+	if (ori_cur == 0) return(ori_elmt);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
 			// calculates the angle of rotation implied by the orientation of the parent
 			// element angle of rotation of the terminal on the scene, divided by 90
-			int angle = ori_cur + d->m_orientation;
+			int angle = ori_cur + ori_elmt;
 			while (angle >= 4) angle -= 4;
 			return((Qet::Orientation)angle);
 		}

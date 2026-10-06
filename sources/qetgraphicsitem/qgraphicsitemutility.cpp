@@ -75,6 +75,9 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 	
 	item_to_center -> setPos(0,0);	  //Due to a weird behavior or bug, before setting the new position and rotation,
 	item_to_center -> setRotation(0); //we must set the position and rotation to 0.
+		//Same for the mirror that keeps it readable on a mirrored element,
+		//given back below
+	item_to_center -> resetTransform();
 	
 	item_to_center->setPos(item_to_center->mapFromScene(point));
 	
@@ -86,6 +89,23 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 	}
 	if(rot != 0) {
 		item_to_center->setRotation(item_to_center->rotation() - rot);
+	}
+	element_to_follow->keepReadable(item_to_center);
+
+		//On a mirrored element the item's box extends from its pos() the
+		//mirrored way, so it is not where the lines above meant. Put it
+		//there: centred on the element, its top at the same height.
+	if (element_to_follow->isMirrored() && item_to_center->parentItem())
+	{
+		const QRectF placed = item_to_center->sceneBoundingRect();
+		const QPointF wanted(
+					element_to_follow->sceneBoundingRect().center().x()
+					- placed.width() / 2,
+					border.bottom() - item_to_center->boundingRect().height() - offset);
+		QGraphicsItem *parent = item_to_center->parentItem();
+		item_to_center->setPos(parent->mapFromScene(
+								   parent->mapToScene(item_to_center->pos())
+								   + wanted - placed.topLeft()));
 	}
 
 	return true;

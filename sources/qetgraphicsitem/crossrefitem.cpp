@@ -124,6 +124,7 @@ void CrossRefItem::setUpConnection()
 		m_update_connection << connect(m_element, &Element::xChanged, this, &CrossRefItem::autoPos);
 		m_update_connection << connect(m_element, &Element::yChanged, this, &CrossRefItem::autoPos);
 		m_update_connection << connect(m_element, &Element::rotationChanged, this, &CrossRefItem::autoPos);
+		m_update_connection << connect(m_element, &Element::mirrorChanged, this, &CrossRefItem::autoPos);
 		set=true;
 	}
 	// For PLC masters, always set up connections for update notifications
@@ -288,6 +289,7 @@ void CrossRefItem::updateLabel()
 		QList<QPointF> positions = m_element->plcTablePositions();
 		QPointF pos = positions.isEmpty() ? QPointF(0, 0) : positions.first();
 		setPos(pos);
+		m_element->keepReadable(this);
 
 		// Populate m_hovered_contacts_map using drawAsPlcTable on a
 		// dummy painter (m_update_map=true).
@@ -338,6 +340,7 @@ void CrossRefItem::autoPos()
 		stackAtBottom();
 	else
 		QGIUtility::centerToParentBottom(this);
+	m_element->keepReadable(this);
 }
 
 /**
@@ -409,9 +412,12 @@ void CrossRefItem::stackAtBottom()
 				moved = true;
 			}
 		}
+			//From pos(), not scenePos(): on a mirrored element scenePos()
+			//also holds the mirror that keeps the cross readable
 		if (self.rect.bottom() != bottom)
 			xref->setPos(xref->parentItem()->mapFromScene(
-				xref->scenePos() + QPointF(0, self.rect.bottom() - bottom)));
+				xref->parentItem()->mapToScene(xref->pos())
+				+ QPointF(0, self.rect.bottom() - bottom)));
 		placed << self;
 	}
 }

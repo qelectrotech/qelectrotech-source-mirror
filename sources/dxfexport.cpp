@@ -37,6 +37,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "textlines.h"
 
+#include <QFontMetricsF>
 #include <QGraphicsSimpleTextItem>
 #include <QSet>
 #include <cmath>
@@ -178,6 +179,10 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 	foreach(Element *elmt, list_elements)
 	{
 		double rotation_angle = elmt -> orientation() * 90;
+			//The mirrors of an element are about its own axes, before it is
+			//rotated, see Element::setMirror()
+		const qreal mirror_x = elmt -> hasHorizontalMirror() ? -1 : 1;
+		const qreal mirror_y = elmt -> hasVerticalMirror() ? -1 : 1;
 
 		qreal elem_pos_x = elmt -> pos().x();
 		qreal elem_pos_y = elmt -> pos().y();// - (diagram -> margin / 2);
@@ -191,8 +196,26 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			if (fontSize < 0)
 				fontSize = text->font().pixelSize();
 
-			qreal x = elem_pos_x + text->pos().x();
-			qreal y = elem_pos_y + text->pos().y();
+			QPointF text_pos = text->pos();
+			if (elmt -> isMirrored())
+			{
+					//The text keeps reading normally: only its box is
+					//mirrored, about its own centre, as ElementPictureFactory
+					//draws it on the folio
+				QTransform box_transform;
+				box_transform.translate(text->pos().x(), text->pos().y());
+				box_transform.rotate(text->rotation());
+				const QFontMetricsF metrics(text->font());
+				const QRectF box(0, -metrics.ascent(),
+								 text->boundingRect().width(),
+								 text->boundingRect().height());
+				const QPointF centre = box_transform.mapRect(box).center();
+				text_pos += QPointF(centre.x() * (mirror_x - 1),
+									centre.y() * (mirror_y - 1));
+			}
+
+			qreal x = elem_pos_x + text_pos.x();
+			qreal y = elem_pos_y + text_pos.y();
 
 			qreal angle = text -> rotation() + rotation_angle;
 			qreal angler = angle * M_PI/180;
@@ -217,21 +240,21 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		Createdxf::layer = Layer::Symbols;
 		for (QLineF line : primitives.m_lines)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QLineF l = t.map(line);
 			Createdxf::drawLine(file_path, l, 0);
 		}
 
 		for (QRectF rect : primitives.m_rectangles)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QRectF r = t.mapRect(rect);
 			Createdxf::drawRectangle(file_path,r,0);
 		}
 
 		for (QRectF circle_rect : primitives.m_circles)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
 			Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
 		}
@@ -240,7 +263,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		{
 			if (polygon.size() == 0)
 				continue;
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QPolygonF poly = t.map(polygon);
 			if(poly.isClosed())
 				Createdxf::drawPolygon(file_path,poly,0);
@@ -259,6 +282,18 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			qreal h = arc.at(3);
 			qreal startAngle = arc.at(4);
 			qreal spanAngle = arc .at(5);
+				//In a mirror the arc starts where it ended: an angle a
+				//becomes 180 - a in a horizontal one, -a in a vertical one
+			if (elmt -> hasHorizontalMirror())
+			{
+				x = elem_pos_x - arc.at(0) - w;
+				startAngle = 180 - startAngle - spanAngle;
+			}
+			if (elmt -> hasVerticalMirror())
+			{
+				y = elem_pos_y - arc.at(1) - h;
+				startAngle = -startAngle - spanAngle;
+			}
 			QRectF r(x,y,w,h);
 			QPointF hotspot(elem_pos_x,elem_pos_y);
 			Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
@@ -268,7 +303,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			// Draw terminals
 			QList<Terminal *> list_terminals = elmt->terminals();
 			QColor col("red");
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			foreach(Terminal *tp, list_terminals) {
 				QPointF c = t.map(QPointF(tp->dock_elmt_.x(),tp->dock_elmt_.y()));
 				Createdxf::drawCircle(file_path,c,3.0,Createdxf::dxfColor(col));

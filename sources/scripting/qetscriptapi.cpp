@@ -61,6 +61,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../undocommand/mirrorselectioncommand.h"
 #include "../undocommand/promoteshapecommand.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
 #include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
@@ -831,6 +832,43 @@ bool QetScriptApi::rotateElement(int folioIndex, const QString &elementUuid, dou
 	cmd->setText(QObject::tr("Pivoter %1").arg(element->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
+}
+
+/**
+	@brief QetScriptApi::mirrorElement
+	Mirror an element in place, as "Miroir horizontal" (left and right
+	swap) or, with @p vertical, "Miroir vertical" (top and bottom swap)
+	do on a selection. Mirroring twice the same way puts it back.
+	@return false if the element is not found or the project is read only
+*/
+bool QetScriptApi::mirrorElement(int folioIndex, const QString &elementUuid, bool vertical)
+{
+	if (m_project && m_project->isReadOnly()) {
+		log(QStringLiteral("qet.mirrorElement: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	m_project->undoStack()->push(new MirrorSelectionCommand(
+		{element}, vertical ? Qt::Vertical : Qt::Horizontal));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::elementMirror
+	@return the mirrors of the element about its own axes, as saved in the
+	project (Element::setMirror()): "horizontal", "vertical", "both", or ""
+	if it is not mirrored or not found. On a turned element, a horizontal
+	mirror of the folio is a vertical mirror of the element.
+*/
+QString QetScriptApi::elementMirror(int folioIndex, const QString &elementUuid) const
+{
+	const Element *element = findElement(folioIndex, elementUuid);
+	if (!element || !element->isMirrored()) return QString();
+	if (!element->hasVerticalMirror()) return QStringLiteral("horizontal");
+	if (!element->hasHorizontalMirror()) return QStringLiteral("vertical");
+	return QStringLiteral("both");
 }
 
 QStringList QetScriptApi::elementUuids(int folioIndex) const

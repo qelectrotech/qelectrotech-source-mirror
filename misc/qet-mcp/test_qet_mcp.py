@@ -379,6 +379,7 @@ class EditValidation(unittest.TestCase):
             "set_position": el + [{"op": "set_position", "folio": "$f", "element": "$e", "x": 1, "y": 1}],
             "move_element": el + [{"op": "move_element", "folio": "$f", "element": "$e", "dx": 1, "dy": 1}],
             "rotate_element": el + [{"op": "rotate_element", "folio": "$f", "element": "$e", "angle": 90}],
+            "mirror_element": el + [{"op": "mirror_element", "folio": "$f", "element": "$e", "vertical": False}],
             "set_label": el + [{"op": "set_label", "folio": "$f", "element": "$e", "label": "K"}],
             "set_info": el + [{"op": "set_info", "folio": "$f", "element": "$e", "key": "k", "value": "v"}],
             "add_conductor": two + [{"op": "add_conductor", "folio": "$f", "from": "$e", "from_terminal": 0,
@@ -2065,13 +2066,13 @@ class DiffContracts(unittest.TestCase):
             "relabelled": [{"uuid": A, "name": "coil", "from": "K1", "to": "K2"}],
             "info_changed": [{"uuid": A, "name": "coil", "from": {"label": "K1", "comment": "c"},
                               "to": {"label": "K2", "comment": "d"}}],
-            "rotated": []})
+            "rotated": [], "mirrored": []})
 
     def test_an_unchanged_element_reports_nothing(self):
         p = self.qet(self.folio(self.el(self.A, 1, 2, "K1", "c")))
         e = m.tool_diff(p, p)["elements"]
         self.assertEqual((e["moved"], e["relabelled"], e["info_changed"], e["added"], e["removed"],
-                          e["rotated"]), ([], [], [], [], [], []))
+                          e["rotated"], e["mirrored"]), ([], [], [], [], [], [], []))
 
     def test_equal_angles_written_differently_are_the_same(self):
         self.assertEqual([m._angle(v) for v in ("-270", "90", "-90", "270", "360", "0", "450", "12.5", "", "x")],
@@ -2097,6 +2098,18 @@ class DiffContracts(unittest.TestCase):
         # no attribute is orientation 0, as QElectroTech reads it
         plain = self.qet(self.folio(self.el(self.A, 1, 2)))
         self.assertEqual(m.tool_diff(plain, rot(0))["elements"]["rotated"], [])
+
+    def test_a_mirror_is_reported(self):
+        """A mirror of a symbol changes its mirror attribute, which is absent
+        when the symbol is not mirrored."""
+        plain = self.qet(self.folio(self.el(self.A, 1, 2)))
+        mirrored = self.qet(self.folio(
+            self.el(self.A, 1, 2).replace('x="1"', 'mirror="horizontal" x="1"')))
+        d = m.tool_diff(plain, mirrored)
+        self.assertEqual(d["elements"]["mirrored"],
+                         [{"uuid": self.A, "name": "coil", "folio": 1, "mirror": ["", "horizontal"]}])
+        self.assertEqual((d["elements"]["moved"], d["elements"]["rotated"]), ([], []))
+        self.assertEqual(m.tool_diff(plain, plain)["elements"]["mirrored"], [])
 
     def test_conductors_section_exact(self):
         A, B, C = self.A, self.B, self.C

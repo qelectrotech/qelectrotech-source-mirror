@@ -682,13 +682,18 @@ def tool_diff(before: str, after: str) -> dict:
         # the only thing a rotation changes, so without it a rotated symbol
         # reads as untouched.
         r["orientation"] = e.get("orientation", "0")
+        # A mirrored symbol carries mirror="horizontal", "vertical" or
+        # "both", about its own axes; a mirror changes nothing else unless
+        # the symbol's hotspot is off its centre.
+        r["mirror"] = e.get("mirror", "")
         a_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
     for i, e in _elements(_root(after)):
         r = _element_row(i, e)
         r["orientation"] = e.get("orientation", "0")
+        r["mirror"] = e.get("mirror", "")
         b_el[r["uuid"] or f"{i}:{r['x']},{r['y']}:{r['name']}"] = r
 
-    moved, rotated, relabelled, changed_info = [], [], [], []
+    moved, rotated, mirrored, relabelled, changed_info = [], [], [], [], []
     for k, a in a_el.items():
         b = b_el.get(k)
         if b is None:
@@ -696,6 +701,9 @@ def tool_diff(before: str, after: str) -> dict:
         if a["orientation"] != b["orientation"]:
             rotated.append({"uuid": k, "name": a["name"], "folio": a["folio"],
                             "orientation": [a["orientation"], b["orientation"]]})
+        if a["mirror"] != b["mirror"]:
+            mirrored.append({"uuid": k, "name": a["name"], "folio": a["folio"],
+                             "mirror": [a["mirror"], b["mirror"]]})
         if (a["x"], a["y"]) != (b["x"], b["y"]):
             moved.append({
                 "uuid": k, "name": a["name"], "folio": a["folio"],
@@ -764,6 +772,7 @@ def tool_diff(before: str, after: str) -> dict:
             "relabelled": relabelled[:50],
             "info_changed": changed_info[:50],
             "rotated": rotated[:50],
+            "mirrored": mirrored[:50],
         },
         "conductors": {
             "before": len(a_co), "after": len(b_co),
@@ -1401,6 +1410,8 @@ OPS = {
                                                  ("dx", "num"), ("dy", "num")]),
     "rotate_element":   ("rotateElement",       [("folio", "folio"), ("element", "elmt"),
                                                  ("angle", "num")]),
+    "mirror_element":   ("mirrorElement",       [("folio", "folio"), ("element", "elmt"),
+                                                 ("vertical", "bool")]),
     "set_label":        ("setElementLabel",     [("folio", "folio"), ("element", "elmt"),
                                                  ("label", "str")]),
     "set_info":         ("setElementInfo",      [("folio", "folio"), ("element", "elmt"),

@@ -36,10 +36,12 @@
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
 #include "../undocommand/setautonumcontextcommand.h"
+#include "crossrefitem.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
 
+#include <QAbstractTextDocumentLayout>
 #include <QApplication>
 #include <QCollator>
 #include <QScreen>
@@ -161,6 +163,10 @@ Element::Element(
 	connect(this, &Element::rotationChanged, update_docked_conductors);
 	connect(this, &Element::xChanged, update_docked_conductors);
 	connect(this, &Element::yChanged, update_docked_conductors);
+	connect(this, &Element::mirrorChanged, update_docked_conductors);
+		//The mirror is about the element's own axis, so it follows the
+		//rotation, see applyMirrorTransform()
+	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
 }
 
 /**
@@ -252,6 +258,152 @@ void Element::displayHelpLine(bool b)
 }
 
 /**
+	@brief Element::setHorizontalMirror
+	Mirror this element about its own vertical axis (its left and right
+	swap), or put it back. See setMirror().
+	@param mirror
+*/
+void Element::setHorizontalMirror(bool mirror)
+{
+	setMirror(mirror, m_vertical_mirror);
+}
+
+/**
+	@brief Element::setVerticalMirror
+	Mirror this element about its own horizontal axis (its top and bottom
+	swap), or put it back. See setMirror().
+	@param mirror
+*/
+void Element::setVerticalMirror(bool mirror)
+{
+	setMirror(m_horizontal_mirror, mirror);
+}
+
+/**
+	@brief Element::setMirror
+	The mirrors are about the element's own axes, through its hotspot, and
+	are applied before the rotation: a mirrored element still turns
+	clockwise with "Pivoter", and orientation() keeps its meaning. On the
+	folio, a mirror of a turned element is the other mirror of the element
+	itself, see MirrorSelectionCommand.
+	The texts of the element, its cross reference and the texts drawn in
+	its symbol are moved to their mirrored place but keep reading normally.
+	@param horizontal : the left and right of the element swap
+	@param vertical : the top and bottom of the element swap
+*/
+void Element::setMirror(bool horizontal, bool vertical)
+{
+	if (horizontal == m_horizontal_mirror && vertical == m_vertical_mirror)
+		return;
+
+	m_horizontal_mirror = horizontal;
+	m_vertical_mirror = vertical;
+
+	m_mirrored_picture = QPicture();
+	m_mirrored_low_zoom_picture = QPicture();
+	if (isMirrored())
+		ElementPictureFactory::instance()->getMirroredPictures(
+					m_location,
+					horizontal,
+					vertical,
+					m_mirrored_picture,
+					m_mirrored_low_zoom_picture);
+
+	applyMirrorTransform();
+	keepChildrenReadable();
+	update();
+	emit mirrorChanged();
+}
+
+/**
+	@brief Element::mirrorTransform
+	@return the mirrors of this element, about its own axes
+*/
+QTransform Element::mirrorTransform() const
+{
+	return QTransform::fromScale(m_horizontal_mirror ? -1 : 1,
+								 m_vertical_mirror ? -1 : 1);
+}
+
+/**
+	@brief Element::applyMirrorTransform
+	QGraphicsItem applies transform() after the rotation, so the mirrors of
+	the element's own axes (S, before rotating) are given here as the
+	mirrors about the rotated axes: R . S . R^-1, which is then applied
+	after R.
+*/
+void Element::applyMirrorTransform()
+{
+	if (!isMirrored())
+	{
+		if (!transform().isIdentity())
+			setTransform(QTransform());
+		return;
+	}
+
+		//QTransform's product applies its left operand first
+	setTransform(QTransform().rotate(-rotation())
+				 * mirrorTransform()
+				 * QTransform().rotate(rotation()));
+}
+
+/**
+	@brief Element::keepReadable
+	Keep @p child, a text, a group of texts or a cross reference of this
+	element, reading normally when this element is mirrored.
+	The child is mirrored a second time, the same way, about the centre of
+	its own box: the box keeps its place in the element, so it lands
+	mirrored with the element, but the two mirrors cancel on what is drawn
+	inside it.
+	Does nothing for an item that is not a direct child of this element.
+	@param child
+*/
+void Element::keepReadable(QGraphicsItem *child) const
+{
+	if (!child || child->parentItem() != this)
+		return;
+
+	if (!isMirrored())
+	{
+		if (!child->transform().isIdentity())
+			child->resetTransform();
+		return;
+	}
+
+		//The rotation part of the child's own transformation, which
+		//QGraphicsItem applies before transform()
+	const QPointF origin = child->transformOriginPoint();
+	QTransform rotation;
+	rotation.translate(origin.x(), origin.y());
+	rotation.rotate(child->rotation());
+	rotation.translate(-origin.x(), -origin.y());
+	const QPointF centre = rotation.mapRect(child->boundingRect()).center();
+
+	const QTransform mirror = QTransform::fromTranslate(-centre.x(), -centre.y())
+							  * mirrorTransform()
+							  * QTransform::fromTranslate(centre.x(), centre.y());
+	if (child->transform() != mirror)
+		child->setTransform(mirror);
+}
+
+/**
+	@brief Element::keepChildrenReadable
+	keepReadable() for every text, group of texts and cross reference
+	which is a direct child of this element.
+*/
+void Element::keepChildrenReadable() const
+{
+	const QList<QGraphicsItem *> children = childItems();
+	for (QGraphicsItem *child : children)
+	{
+		if (child->type() == DynamicElementTextItem::Type
+			|| child->type() == CrossRefItem::Type
+			|| dynamic_cast<ElementTextItemGroup *>(child))
+			keepReadable(child);
+	}
+}
+
+/**
 	@brief Element::paint
 	@param painter
 	@param options
@@ -275,13 +427,16 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
+	const QPicture &picture = isMirrored() ? m_mirrored_picture : m_picture;
+	const QPicture &low_zoom_picture = isMirrored() ? m_mirrored_low_zoom_picture
+												   : m_low_zoom_picture;
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
-		if (!m_low_zoom_picture.isNull())
-			painter->drawPicture(0, 0, m_low_zoom_picture);
+		if (!low_zoom_picture.isNull())
+			painter->drawPicture(0, 0, low_zoom_picture);
 	} else {
-		if (!m_picture.isNull())
-			painter->drawPicture(0, 0, m_picture);
+		if (!picture.isNull())
+			painter->drawPicture(0, 0, picture);
 	}
 
 	painter->restore(); //Restore the QPainter after use drawPicture
@@ -938,6 +1093,11 @@ bool Element::fromXml(QDomElement &e,
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = false;
 
+		//Last, so that the texts and groups loaded above are kept readable
+	const QString mirror = e.attribute(QStringLiteral("mirror"));
+	setMirror(mirror == QLatin1String("horizontal") || mirror == QLatin1String("both"),
+			  mirror == QLatin1String("vertical") || mirror == QLatin1String("both"));
+
 	m_state = QET::GIOK;
 	return(true);
 }
@@ -987,6 +1147,13 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+		//Written only when set, so a project without a mirrored element
+		//saves exactly as before
+	if (isMirrored())
+		element.setAttribute(QStringLiteral("mirror"),
+							 !m_vertical_mirror ? QStringLiteral("horizontal")
+							 : !m_horizontal_mirror ? QStringLiteral("vertical")
+							 : QStringLiteral("both"));
 	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
@@ -1133,18 +1300,25 @@ QDomElement Element::toXml(
 */
 void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 {
-	if (deti && !m_dynamic_text_list.contains(deti))
-	{
-		m_dynamic_text_list.append(deti);
-		deti->setParentItem(this);
-		emit textAdded(deti);
-	}
+	if (!deti || m_dynamic_text_list.contains(deti))
+		deti = new DynamicElementTextItem(this);
 	else
-	{
-		DynamicElementTextItem *text = new DynamicElementTextItem(this);
-		m_dynamic_text_list.append(text);
-		emit textAdded(text);
-	}
+		deti->setParentItem(this);
+
+	m_dynamic_text_list.append(deti);
+
+		//On a mirrored element, the mirror of the text depends on the size
+		//and the rotation of the text, see keepReadable()
+	connect(deti->document()->documentLayout(),
+			&QAbstractTextDocumentLayout::documentSizeChanged,
+			this, [this, deti]() {keepReadable(deti);});
+	connect(deti, &DynamicElementTextItem::rotationChanged,
+			this, [this, deti]() {keepReadable(deti);});
+	connect(deti, &DynamicElementTextItem::rotationPointCenterChanged,
+			this, [this, deti]() {keepReadable(deti);});
+	keepReadable(deti);
+
+	emit textAdded(deti);
 }
 
 /**
@@ -1156,10 +1330,18 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 */
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 {
+		//Undo the connections and the mirror of addDynamicTextItem()
+	auto forget = [this, deti]() {
+		disconnect(deti->document()->documentLayout(), nullptr, this, nullptr);
+		disconnect(deti, nullptr, this, nullptr);
+		deti->resetTransform();
+	};
+
 	if (m_dynamic_text_list.contains(deti))
 	{
 		m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
+		forget();
 		emit textRemoved(deti);
 		return;
 	}
@@ -1171,6 +1353,7 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 			removeTextFromGroup(deti, group);
 			m_dynamic_text_list.removeOne(deti);
 			deti->setParentItem(nullptr);
+			forget();
 			emit textRemoved(deti);
 			return;
 		}
