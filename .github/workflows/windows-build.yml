@@ -117,7 +117,7 @@ jobs:
             -DQT_VERSION_MAJOR=6 \
             -DBUILD_WITH_KF=ON \
             -DBUILD_KF=OFF \
-            -DPACKAGE_TESTS=OFF \
+            -DPACKAGE_TESTS=ON \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DQET_EXPORT_PROJECT_DB=ON \
@@ -135,6 +135,32 @@ jobs:
         run: |
           echo "=== ccache statistics ==="
           /ucrt64/bin/ccache -s
+
+      - name: Run the unit tests
+        shell: msys2 {0}
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/build"
+          ctest --output-on-failure --timeout 300 && exit 0
+          # ctest shows no output for failed tests in this shell, so run each
+          # failed test again with QtTest writing its log to a file, and print it.
+          set +e
+          while IFS=: read -r _ name; do
+            name=${name%$'\r'}
+            exe=$(find tests -name "$name.exe" | head -1)
+            echo "::group::$name"
+            if [ -n "$exe" ]; then
+              QT_QPA_PLATFORM=offscreen "$exe" -o "$name.txt,txt"
+              echo "exit code $?"
+              cat "$name.txt" 2>/dev/null
+            else
+              echo "no executable for $name"
+            fi
+            echo "::endgroup::"
+          done < Testing/Temporary/LastTestsFailed.log
+          exit 1
 
       - name: Verify exe was built
         shell: msys2 {0}
@@ -436,6 +462,7 @@ jobs:
           name: build-logs-qt6
           path: |
             build/CMakeFiles/*.log
+            build/Testing/Temporary/LastTest*.log
             nsis_root/files/bin/
           if-no-files-found: warn
 
