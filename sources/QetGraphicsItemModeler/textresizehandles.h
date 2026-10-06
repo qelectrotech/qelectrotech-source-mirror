@@ -65,8 +65,10 @@ class TextResizeHandles : public QGraphicsObject
 
 	protected:
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	private:
+		void installHandleFilters();
 		void pressed(TextResize::Corner corner, const QPointF &scene_pos);
 		void moved(const QPointF &scene_pos);
 		void released();

@@ -26,11 +26,12 @@
 #include <QTextDocument>
 
 #include <cmath>
+#include <utility>
 
 /**
 	@brief TextResizeHandles::TextResizeHandles
 	@param text : the text to resize, becomes the parent of the handles.
-	It must be in a scene, the handles filter their own events.
+	The text may be in a scene or not yet.
 	@param handle_size : see QETUtils::graphicsHandlerSize()
 */
 TextResizeHandles::TextResizeHandles(QGraphicsTextItem *text, qreal handle_size) :
@@ -48,10 +49,9 @@ TextResizeHandles::TextResizeHandles(QGraphicsTextItem *text, qreal handle_size)
 							  "double-cliquer pour une largeur automatique"));
 		handle->setCursor(i == TextResize::TopLeft || i == TextResize::BottomRight
 						  ? Qt::SizeFDiagCursor : Qt::SizeBDiagCursor);
-		if (scene())
-			handle->installSceneEventFilter(this);
 		m_handles << handle;
 	}
+	installHandleFilters();
 
 	m_size_connection = connect(text->document()->documentLayout(),
 								&QAbstractTextDocumentLayout::documentSizeChanged,
@@ -88,6 +88,34 @@ void TextResizeHandles::updateHandlesPos()
 	const QRectF rect = m_text->boundingRect();
 	for (int i = TextResize::TopLeft ; i <= TextResize::BottomLeft ; ++i)
 		m_handles.at(i)->setPos(TextResize::cornerOf(rect, TextResize::Corner(i)));
+}
+
+/**
+	@brief TextResizeHandles::itemChange
+	A scene drops the event filters of an item that leaves it, so the
+	handles stop reacting to the mouse when the text is removed from its
+	scene and added back (undoing a delete does that), or when they were
+	created before the text was in a scene. Install them again each time
+	these handles enter a scene.
+*/
+QVariant TextResizeHandles::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSceneHasChanged)
+		installHandleFilters();
+	return QGraphicsObject::itemChange(change, value);
+}
+
+/**
+	@brief TextResizeHandles::installHandleFilters
+	Filter the mouse events of the handles, when they are in a scene.
+*/
+void TextResizeHandles::installHandleFilters()
+{
+	if (!scene())
+		return;
+	for (QetGraphicsHandlerItem *handle : std::as_const(m_handles))
+		if (handle->scene() == scene())
+			handle->installSceneEventFilter(this);
 }
 
 bool TextResizeHandles::sceneEventFilter(QGraphicsItem *watched, QEvent *event)

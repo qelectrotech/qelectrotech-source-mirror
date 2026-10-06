@@ -215,6 +215,38 @@ private slots:
 			}
 	}
 
+	// The handles still work after the text left its scene and came back,
+	// as undoing a delete does: Qt drops scene event filters on removal.
+	void dragAfterLeavingTheScene()
+	{
+		QGraphicsScene scene;
+		auto *text = new WidthText(QStringLiteral("Motor protection switch Q12"));
+		scene.addItem(text);
+		auto *handles = new TextResizeHandles(text);
+
+		scene.removeItem(text);
+		scene.addItem(text);
+
+		const QPointF start_pos = text->pos();
+		drag(scene, *handles, *text, TextResize::BottomRight, QPointF(-40, 0));
+		QVERIFY(text->textWidth() > 0);
+		QCOMPARE(text->pos(), start_pos);
+		delete text;
+	}
+
+	// The handles also work when they are created before the text is in a
+	// scene.
+	void dragWhenCreatedOutsideAScene()
+	{
+		QGraphicsScene scene;
+		auto *text = new WidthText(QStringLiteral("Motor protection switch Q12"));
+		auto *handles = new TextResizeHandles(text);
+		scene.addItem(text);
+
+		drag(scene, *handles, *text, TextResize::BottomRight, QPointF(-40, 0));
+		QVERIFY(text->textWidth() > 0);
+	}
+
 	// A text is never made narrower than its longest word.
 	void dragStopsAtTheLongestWord()
 	{
