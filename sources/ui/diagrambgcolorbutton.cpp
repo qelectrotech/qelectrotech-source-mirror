@@ -85,7 +85,7 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 		m_recent.removeLast();
 	}
 
-	setMenu(new QMenu(this));
+	setMenu(new QMenu(tr("Couleur de fond du folio"), this));
 	rebuildMenu();
 	setSwatch(m_current);
 }
