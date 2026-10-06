@@ -197,11 +197,15 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 				fontSize = text->font().pixelSize();
 
 			QPointF text_pos = text->pos();
-			if (elmt -> isMirrored())
+				//A text the element mirrors, or turns in a project that keeps
+				//symbol texts horizontal, keeps reading as in the symbol:
+				//only its box moves, as ElementPictureFactory draws it on the
+				//folio. It is then drawn as in a symbol neither mirrored nor
+				//turned, moved to where the element puts the box's centre.
+			const QTransform texts_transform = elmt -> symbolTextsTransform();
+			const qreal text_turn = elmt -> hasUprightSymbolTexts() ? 0 : rotation_angle;
+			if (!texts_transform.isIdentity())
 			{
-					//The text keeps reading normally: only its box is
-					//mirrored, about its own centre, as ElementPictureFactory
-					//draws it on the folio
 				QTransform box_transform;
 				box_transform.translate(text->pos().x(), text->pos().y());
 				box_transform.rotate(text->rotation());
@@ -210,19 +214,18 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 								 text->boundingRect().width(),
 								 text->boundingRect().height());
 				const QPointF centre = box_transform.mapRect(box).center();
-				text_pos += QPointF(centre.x() * (mirror_x - 1),
-									centre.y() * (mirror_y - 1));
+				text_pos += texts_transform.map(centre) - centre;
 			}
 
 			qreal x = elem_pos_x + text_pos.x();
 			qreal y = elem_pos_y + text_pos.y();
 
-			qreal angle = text -> rotation() + rotation_angle;
+			qreal angle = text -> rotation() + text_turn;
 			qreal angler = angle * M_PI/180;
 			int xdir = -sin(angler);
 			int ydir = -cos(angler);
 
-			QPointF transformed_point = rotation_transformed(x, y, elem_pos_x, elem_pos_y, -rotation_angle);
+			QPointF transformed_point = rotation_transformed(x, y, elem_pos_x, elem_pos_y, -text_turn);
 			x = transformed_point.x() - ydir * fontSize * 0.5;
 			y = transformed_point.y() - xdir * fontSize * 0.5;
 			QStringList lines = text->text().split('\n');

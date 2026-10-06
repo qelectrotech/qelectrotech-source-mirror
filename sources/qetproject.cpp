@@ -74,6 +74,11 @@ m_project_properties_handler{this}
 	m_elements_collection = new XmlElementCollection(this);
 	init();
 
+		//A new project keeps the texts of its turned symbols horizontal; a
+		//project saved without the setting is read with it off, so it looks
+		//as it always did (readSymbolTextsXml())
+	m_upright_symbol_texts = true;
+
 	QSettings settings;
 
 		//Read auto break conductor default from global settings
@@ -1381,6 +1386,37 @@ void QETProject::setWireHops(WireHops::Mode mode)
 }
 
 /**
+	@brief QETProject::uprightSymbolTexts
+	@return true if the texts drawn in a symbol stay horizontal, and read
+	normally, when the symbol is turned or mirrored on a folio, instead of
+	turning with it. A mirrored symbol always keeps its texts readable.
+*/
+bool QETProject::uprightSymbolTexts() const {
+	return m_upright_symbol_texts;
+}
+
+/**
+	@brief QETProject::setUprightSymbolTexts
+	Set whether the texts drawn in a turned symbol stay horizontal, and
+	redraw every symbol of the project.
+	@param upright
+*/
+void QETProject::setUprightSymbolTexts(bool upright)
+{
+	if (upright == m_upright_symbol_texts) {
+		return;
+	}
+	m_upright_symbol_texts = upright;
+	for (Diagram *diagram : diagrams()) {
+		for (QGraphicsItem *item : diagram->items()) {
+			if (Element *element = qgraphicsitem_cast<Element *>(item)) {
+				element->updateSymbolPictures();
+			}
+		}
+	}
+}
+
+/**
 	@brief QETProject::wiringRules
 	@return how many wires a terminal of this project may take
 	(discussion #1158): the project's own rules when it sets them,
@@ -1521,6 +1557,7 @@ QDomDocument QETProject::toXml()
 	// local, non-transmitted usage tracking (time spent on this project)
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
+	writeSymbolTextsXml(project_root);
 	writeWiringRulesXml(project_root);
 
 	// Properties for news diagrams
@@ -2032,6 +2069,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the local, non-transmitted usage tracking
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
+	readSymbolTextsXml(xml_project);
 	readWiringRulesXml(xml_project);
 
 		//Load the default properties for the new diagrams
@@ -2230,6 +2268,21 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readSymbolTextsXml
+	Read the <symbol_texts> element of the project, if any. A project
+	without it was saved before the setting existed, or with it off, and
+	keeps the texts of its turned symbols turned.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
+{
+	const QDomElement texts = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("symbol_texts"));
+	m_upright_symbol_texts = !texts.isNull()
+			&& texts.attribute(QStringLiteral("upright")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readWiringRulesXml
 	Read the <wiring_rules> element of the project, if any.
 	A project without it sets no rule.
@@ -2418,6 +2471,23 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("wire_crossings"));
 	crossings.setAttribute(QStringLiteral("hop"), WireHops::toString(m_wire_hops));
 	xml_element.appendChild(crossings);
+}
+
+/**
+	@brief QETProject::writeSymbolTextsXml
+	Export whether the texts of turned symbols stay horizontal, as a
+	<symbol_texts> child of \a xml_element. Written only when on, so a
+	project with it off saves exactly as before.
+*/
+void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
+{
+	if (!m_upright_symbol_texts) {
+		return;
+	}
+	QDomElement texts = xml_element.ownerDocument()
+			.createElement(QStringLiteral("symbol_texts"));
+	texts.setAttribute(QStringLiteral("upright"), QStringLiteral("true"));
+	xml_element.appendChild(texts);
 }
 
 /**

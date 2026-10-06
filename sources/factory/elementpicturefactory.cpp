@@ -95,37 +95,46 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 }
 
 /**
-	@brief ElementPictureFactory::getMirroredPictures
-	Same as getPictures(), for an element mirrored on its folio
-	(Element::setMirror()). The drawing is the same; only the texts differ:
-	each one is drawn so that, once the element's mirror is applied, its box
-	lands mirrored but its letters still read normally.
+	@brief ElementPictureFactory::getReadablePictures
+	Same as getPictures(), for an element that mirrors or turns its symbol
+	on a folio (Element::symbolTextsTransform()). The drawing is the same;
+	only the texts differ: each one is drawn so that, once the element has
+	applied @p texts_transform, its box lands where the element puts it but
+	its letters read as they do in the symbol itself.
 	@param location
-	@param horizontal : the element's left and right swap
-	@param vertical : the element's top and bottom swap
+	@param texts_transform : the mirrors, then the turn, of the element
 	@param picture
 	@param low_picture
 */
-void ElementPictureFactory::getMirroredPictures(const ElementsLocation &location,
-												bool horizontal,
-												bool vertical,
+void ElementPictureFactory::getReadablePictures(const ElementsLocation &location,
+												const QTransform &texts_transform,
 												QPicture &picture,
 												QPicture &low_picture)
 {
-	if(!location.exist() || !(horizontal || vertical)) {
+	if(!location.exist() || texts_transform.isIdentity()) {
 		return;
 	}
 
-	const QPair<QUuid, int> key(cacheKey(location),
-								(horizontal ? 1 : 0) | (vertical ? 2 : 0));
+	const QPair<QUuid, int> key(cacheKey(location), readableKey(texts_transform));
 
-	if(!m_mirrored_pictures_H.contains(key)
-	   && !build(location, nullptr, nullptr,
-				 QTransform::fromScale(horizontal ? -1 : 1, vertical ? -1 : 1))) {
+	if(!m_readable_pictures_H.contains(key)
+	   && !build(location, nullptr, nullptr, texts_transform)) {
 		return;
 	}
-	picture = m_mirrored_pictures_H.value(key);
-	low_picture = m_mirrored_low_pictures_H.value(key);
+	picture = m_readable_pictures_H.value(key);
+	low_picture = m_readable_low_pictures_H.value(key);
+}
+
+/**
+	@brief ElementPictureFactory::readableKey
+	@param texts_transform : mirrors and quarter turns only
+	@return a number for @p texts_transform, the same for the same one
+*/
+int ElementPictureFactory::readableKey(const QTransform &texts_transform)
+{
+	auto digit = [](qreal value) {return qRound(value) + 1;}; // -1, 0 or 1
+	return ((digit(texts_transform.m11()) * 3 + digit(texts_transform.m12())) * 3
+			+ digit(texts_transform.m21())) * 3 + digit(texts_transform.m22());
 }
 
 /**
@@ -147,9 +156,12 @@ void ElementPictureFactory::dropCache(const ElementsLocation &location)
 	const QUuid uuid = cacheKey(location);
 	m_pictures_H.remove(uuid);
 	m_low_pictures_H.remove(uuid);
-	for (int mirror = 1 ; mirror <= 3 ; ++mirror) {
-		m_mirrored_pictures_H.remove(qMakePair(uuid, mirror));
-		m_mirrored_low_pictures_H.remove(qMakePair(uuid, mirror));
+	const auto keys = m_readable_pictures_H.keys();
+	for (const auto &key : keys) {
+		if (key.first == uuid) {
+			m_readable_pictures_H.remove(key);
+			m_readable_low_pictures_H.remove(key);
+		}
 	}
 	m_pixmap_H.remove(uuid);
 	m_primitives_H.remove(uuid);
@@ -254,16 +266,16 @@ ElementPictureFactory::~ElementPictureFactory()
 	this function draw on it and don't store it.
 	if null, this function create a QPicture for normal and low zoom,
 	draw on it and store it in m_pictures_H and m_low_pictures_H
-	(m_mirrored_pictures_H and m_mirrored_low_pictures_H if @p mirror
-	is not the identity)
-	@param mirror : the mirror of an element to draw the drawing for, see
-	getMirroredPictures()
+	(m_readable_pictures_H and m_readable_low_pictures_H if
+	@p texts_transform is not the identity)
+	@param texts_transform : what an element does to the texts of its
+	symbol, which the drawing undoes, see getReadablePictures()
 	@return
 */
 bool ElementPictureFactory::build(const ElementsLocation &location,
 				  QPicture *picture,
 				  QPicture *low_picture,
-				  const QTransform &mirror)
+				  const QTransform &texts_transform)
 {
 	QDomElement dom = location.xml();
 
@@ -320,7 +332,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
 
-	m_build_mirror = mirror;
+	m_build_texts_undo = texts_transform.inverted();
 
 	//scroll of the Children of the Definition: Parts of the Drawing
 	// Extract PLC master data for rendering plc_table parts
@@ -375,20 +387,19 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		//End of the drawing
 	painter.end();
 	low_painter.end();
-	m_build_mirror = QTransform();
+	m_build_texts_undo = QTransform();
 
 	const auto uuid_ = cacheKey(location);
-	if (!mirror.isIdentity()) {
-			//The primitives are those of the drawing without mirror,
-			//already kept by the build of that one
+	if (!texts_transform.isIdentity()) {
+			//The primitives are those of the plain drawing, already kept
+			//by the build of that one
 		qDeleteAll(primitives_.m_texts);
-		const QPair<QUuid, int> key(uuid_, (mirror.m11() < 0 ? 1 : 0)
-											| (mirror.m22() < 0 ? 2 : 0));
+		const QPair<QUuid, int> key(uuid_, readableKey(texts_transform));
 		if (!picture) {
-			m_mirrored_pictures_H.insert(key, pic);
+			m_readable_pictures_H.insert(key, pic);
 		}
 		if (!low_picture) {
-			m_mirrored_low_pictures_H.insert(key, low_pic);
+			m_readable_low_pictures_H.insert(key, low_pic);
 		}
 		return true;
 	}
@@ -710,17 +721,16 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
 	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
 
-	if (!m_build_mirror.isIdentity())
+	if (!m_build_texts_undo.isIdentity())
 	{
-			//The element is mirrored about its own axes when it is drawn.
-			//Mirror the text the same way first, about the centre of its
-			//box: the two mirrors cancel on the letters, which read
-			//normally, and the box still ends up where the element's
-			//mirror puts it.
+			//The element mirrors or turns its symbol when it is drawn.
+			//Undo that on the text first, about the centre of its box: the
+			//letters read as in the symbol itself, and the box still ends
+			//up where the element puts it.
 		const QRectF box(QPointF(0, 0), text_document.size());
 		const QPointF centre = text_transform.mapRect(box).center();
 		painter.setTransform(QTransform::fromTranslate(-centre.x(), -centre.y())
-							 * m_build_mirror
+							 * m_build_texts_undo
 							 * QTransform::fromTranslate(centre.x(), centre.y()));
 	}
 	painter.setTransform(text_transform, true);

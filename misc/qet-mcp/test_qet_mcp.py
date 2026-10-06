@@ -4299,6 +4299,13 @@ class Integration(unittest.TestCase):
         self.assertEqual(r["project"]["title"], 'A "b" & <c>')
         self.assertEqual([f["title"] for f in r["project"]["folios"]], ["Power", "Control"])
 
+    def test_new_project_keeps_symbol_texts_horizontal(self):
+        """Like a project made in QElectroTech, and kept by its save."""
+        r = m.tool_project_new(BINARY, self.sb.p("u.qet"), title="U", folios=1)
+        self.assertTrue(r["ok"])
+        root = ET.parse(r["output"]).getroot()
+        self.assertEqual(root.find("symbol_texts").get("upright"), "true")
+
     def test_new_project_with_zero_folios(self):
         r = m.tool_project_new(BINARY, self.sb.p("z.qet"), title="Z", folios=0)
         self.assertTrue(r["ok"])

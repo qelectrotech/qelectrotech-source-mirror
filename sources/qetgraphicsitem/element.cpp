@@ -167,6 +167,8 @@ Element::Element(
 		//The mirror is about the element's own axis, so it follows the
 		//rotation, see applyMirrorTransform()
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
+		//Texts kept horizontal in a turned symbol depend on the turn
+	connect(this, &Element::rotationChanged, this, [this]() {updateSymbolPictures();});
 }
 
 /**
@@ -299,16 +301,7 @@ void Element::setMirror(bool horizontal, bool vertical)
 	m_horizontal_mirror = horizontal;
 	m_vertical_mirror = vertical;
 
-	m_mirrored_picture = QPicture();
-	m_mirrored_low_zoom_picture = QPicture();
-	if (isMirrored())
-		ElementPictureFactory::instance()->getMirroredPictures(
-					m_location,
-					horizontal,
-					vertical,
-					m_mirrored_picture,
-					m_mirrored_low_zoom_picture);
-
+	updateSymbolPictures();
 	applyMirrorTransform();
 	keepChildrenReadable();
 	update();
@@ -323,6 +316,69 @@ QTransform Element::mirrorTransform() const
 {
 	return QTransform::fromScale(m_horizontal_mirror ? -1 : 1,
 								 m_vertical_mirror ? -1 : 1);
+}
+
+/**
+	@brief Element::hasUprightSymbolTexts
+	@return true if the project of this element keeps the texts of its
+	turned symbols horizontal (QETProject::uprightSymbolTexts())
+*/
+bool Element::hasUprightSymbolTexts() const
+{
+	const Diagram *d = diagram();
+	return d && d->project() && d->project()->uprightSymbolTexts();
+}
+
+/**
+	@brief Element::symbolTextsTransform
+	@return what this element does to the texts drawn in its symbol, which
+	the drawing undoes to keep them readable (updateSymbolPictures()):
+	its mirrors, and its turn when the project keeps them horizontal.
+	The identity when the symbol is drawn as it is.
+*/
+QTransform Element::symbolTextsTransform() const
+{
+		//QTransform's product applies its left operand first
+	QTransform transform = mirrorTransform();
+	if (hasUprightSymbolTexts())
+		transform *= QTransform().rotate(orientation() * 90);
+	return transform;
+}
+
+/**
+	@brief Element::updateSymbolPictures
+	Take the drawing of the symbol whose texts read normally once this
+	element has mirrored and turned it (symbolTextsTransform()), or drop it
+	when the plain drawing does.
+	@param force : take it again even if the transform did not change, as
+	when the symbol's definition was reloaded
+*/
+void Element::updateSymbolPictures(bool force)
+{
+	const QTransform transform = symbolTextsTransform();
+	if (transform.isIdentity())
+	{
+		if (!m_readable_transform.isIdentity())
+		{
+			m_readable_transform = QTransform();
+			m_readable_picture = QPicture();
+			m_readable_low_zoom_picture = QPicture();
+			update();
+		}
+		return;
+	}
+	if (transform == m_readable_transform && !force)
+		return;
+
+	m_readable_transform = transform;
+	m_readable_picture = QPicture();
+	m_readable_low_zoom_picture = QPicture();
+	ElementPictureFactory::instance()->getReadablePictures(
+				m_location,
+				transform,
+				m_readable_picture,
+				m_readable_low_zoom_picture);
+	update();
 }
 
 /**
@@ -427,9 +483,10 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
-	const QPicture &picture = isMirrored() ? m_mirrored_picture : m_picture;
-	const QPicture &low_zoom_picture = isMirrored() ? m_mirrored_low_zoom_picture
-												   : m_low_zoom_picture;
+	const bool readable = !m_readable_transform.isIdentity();
+	const QPicture &picture = readable ? m_readable_picture : m_picture;
+	const QPicture &low_zoom_picture = readable ? m_readable_low_zoom_picture
+												: m_low_zoom_picture;
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		if (!low_zoom_picture.isNull())
@@ -1965,6 +2022,10 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
 			deti->refreshResizeHandlesVisibility();
 		}
 	}
+		//Whether the texts of a turned symbol stay horizontal is the
+		//project's setting, known once the element is on one of its folios
+	else if (change == QGraphicsItem::ItemSceneHasChanged)
+		updateSymbolPictures();
 	return QetGraphicsItem::itemChange(change, value);
 }
 
@@ -2186,13 +2247,7 @@ Element::ReloadPictureResult Element::reloadPicture()
 
 	m_picture = picture;
 	m_low_zoom_picture = low_zoom_picture;
-	if (isMirrored())
-		ElementPictureFactory::instance()->getMirroredPictures(
-					m_location,
-					m_horizontal_mirror,
-					m_vertical_mirror,
-					m_mirrored_picture,
-					m_mirrored_low_zoom_picture);
+	updateSymbolPictures(true);
 	update();
 	return ReloadPictureResult::Reloaded;
 }

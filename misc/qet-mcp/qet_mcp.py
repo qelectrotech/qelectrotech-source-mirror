@@ -3567,7 +3567,11 @@ def tool_project_new(binary: str, output: str, title: str = "Untitled",
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="qet-mcp-new-") as tmp:
         skeleton = Path(tmp) / "skeleton.qet"
-        skeleton.write_text('<project version="0.100.0" title=%s>\n</project>\n'
+        # <symbol_texts>: a project made in QElectroTech starts with the texts
+        # of its turned symbols kept horizontal; one read from a file without
+        # it does not, so say it here as QElectroTech would have
+        skeleton.write_text('<project version="0.100.0" title=%s>\n'
+                            '    <symbol_texts upright="true"/>\n</project>\n'
                             % quoteattr(title), encoding="utf-8")
         result = _run_qet(binary, [str(skeleton)], timeout=timeout,
                           elements_dir=elements_dir, script="\n".join(script), tail=200_000)
