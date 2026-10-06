@@ -130,6 +130,8 @@ void IndependentTextItem::setTextWidth(qreal width)
 {
 	if (!qIsFinite(width) || width <= 0)
 		width = -1;
+	if (qFuzzyCompare(width, m_text_width))
+		return;
 
 	qreal document_width = width;
 		//The automatic width of a text with centred or right-aligned

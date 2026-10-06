@@ -53,6 +53,11 @@ class IndependentTextItem : public DiagramTextItem
 		void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
 		void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
 
+			//Hide QGraphicsTextItem::textWidth()/setTextWidth(), which are not
+			//virtual: called through a QGraphicsTextItem or DiagramTextItem
+			//pointer they would change the document only, and the width would
+			//be neither saved nor shown in the properties. Use these, or the
+			//"textWidth" property.
 		qreal textWidth() const {return m_text_width;}
 		void setTextWidth(qreal width);
 		
