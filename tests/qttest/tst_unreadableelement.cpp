@@ -89,11 +89,13 @@ private slots:
 				.contains(QStringLiteral("RESULT placed")));
 		QVERIFY(QFile::exists(embedded));
 
+#ifdef Q_OS_WIN
 		// Qt cannot take read permission away on Windows: it only knows the
 		// read-only flag there, so this returns false. The check needs a
-		// file the user cannot read, which this system cannot give it.
-		if (!QFile::setPermissions(m_symbol, QFileDevice::Permissions()))
-			QSKIP("this system cannot make the file unreadable (Windows?)");
+		// file the user cannot read, which Windows cannot give it.
+		QSKIP("Windows cannot make the file unreadable through QFile");
+#endif
+		QVERIFY(QFile::setPermissions(m_symbol, QFileDevice::Permissions()));
 		QFile probe(m_symbol);
 		if (probe.open(QIODevice::ReadOnly))
 			QSKIP("permissions do not stop this user reading the file (root?)");
