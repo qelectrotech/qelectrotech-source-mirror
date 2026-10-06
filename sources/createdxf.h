@@ -54,6 +54,7 @@ class Createdxf
 			double xScaleW = 1;
 			int colour = 0;
 			bool invisible = false;
+			QString layer; ///< empty: the INSERT's layer
 		};
 		static void drawInsert(const QString &fileName,
 				       const QString &name,
@@ -61,6 +62,8 @@ class Createdxf
 				       double y,
 				       double rotation,
 				       const QList<Attribute> &attributes = {});
+		static void drawAttdef(const QString &fileName,
+				       const Attribute &attribute);
 		static QString blockName(const QString &name);
 		// you can add more functions to create more drawings.
 		static void drawCircle(

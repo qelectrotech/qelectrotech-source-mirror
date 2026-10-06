@@ -67,6 +67,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const
 	export_properties.draw_bg_transparent     = draw_bg_transparent -> isChecked();
 	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
 	export_properties.dxf_blocks              = dxf_blocks -> isChecked();
+	export_properties.dxf_attributes          = dxf_attributes -> isChecked();
 	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
 	
 	return(export_properties);
@@ -91,6 +92,8 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	draw_bg_transparent     -> setChecked(export_properties.draw_bg_transparent);
 	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	dxf_blocks              -> setChecked(export_properties.dxf_blocks);
+	dxf_attributes          -> setChecked(export_properties.dxf_attributes);
+	dxf_attributes          -> setEnabled(export_properties.dxf_blocks);
 	
 	if (export_properties.exported_area == QET::BorderArea) {
 		export_border -> setChecked(true);
@@ -226,6 +229,12 @@ void ExportPropertiesWidget::build()
 	dxf_blocks = new QCheckBox(tr("DXF : symboles en blocs"), groupbox_options);
 	dxf_blocks -> setToolTip(tr("Chaque symbole devient un bloc DXF, sélectionnable d'un clic dans un logiciel de CAO"));
 	optionshlayout -> addWidget(dxf_blocks, 4, 1);
+
+	// with blocks, a symbol's texts as attributes of its block
+	dxf_attributes = new QCheckBox(tr("DXF : textes des symboles en attributs"), groupbox_options);
+	dxf_attributes -> setToolTip(tr("Les textes d'un symbole (repère, fonction...) deviennent des attributs de son bloc. LibreCAD n'affiche pas les attributs."));
+	optionshlayout -> addWidget(dxf_attributes, 5, 1);
+	connect(dxf_blocks, &QCheckBox::toggled, dxf_attributes, &QCheckBox::setEnabled);
 	
 	vboxLayout -> addWidget(groupbox_options);
 	
@@ -242,6 +251,7 @@ void ExportPropertiesWidget::build()
 	setTabOrder(draw_terminals, draw_colored_conductors);
 	setTabOrder(draw_colored_conductors, draw_bg_transparent);
 	setTabOrder(draw_bg_transparent, dxf_blocks);
+	setTabOrder(dxf_blocks, dxf_attributes);
 	
 	// connexion du bouton permettant le choix du repertoire
 	connect(button_browse, &QPushButton::released, this, &ExportPropertiesWidget::slot_chooseADirectory);	
@@ -258,6 +268,7 @@ void ExportPropertiesWidget::build()
 	connect(draw_bg_transparent, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_colored_conductors, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(dxf_blocks, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(dxf_attributes, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 #else
 	connect(draw_grid, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_border, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
@@ -267,5 +278,6 @@ void ExportPropertiesWidget::build()
 	connect(draw_bg_transparent, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_colored_conductors, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(dxf_blocks, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(dxf_attributes, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 #endif
 }

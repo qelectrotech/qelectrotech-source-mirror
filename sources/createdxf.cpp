@@ -393,7 +393,7 @@ void Createdxf::drawInsert(const QString &fileName,
 		To_Dxf << 0         << "\r\n";
 		To_Dxf << "ATTRIB"  << "\r\n";
 		To_Dxf << 8         << "\r\n";
-		To_Dxf << layer     << "\r\n";
+		To_Dxf << (attribute.layer.isEmpty() ? layer : attribute.layer) << "\r\n";
 		To_Dxf << 62        << "\r\n";
 		To_Dxf << entityColour(attribute.colour) << "\r\n";
 		To_Dxf << 10        << "\r\n";
@@ -421,6 +421,47 @@ void Createdxf::drawInsert(const QString &fileName,
 		To_Dxf << 8         << "\r\n";
 		To_Dxf << layer     << "\r\n";
 	}
+	file.close();
+}
+
+/**
+	@brief Createdxf::drawAttdef
+	Define an attribute of the block being written (between
+	dxfBlockBegin() and dxfBlockEnd()): its tag, where it sits and how it
+	looks; @a attribute's text is the default value.
+*/
+void Createdxf::drawAttdef(const QString &fileName, const Attribute &attribute)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "ATTDEF"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << (attribute.layer.isEmpty() ? layer : attribute.layer) << "\r\n";
+	To_Dxf << 62        << "\r\n";
+	To_Dxf << entityColour(attribute.colour) << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << attribute.x << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << attribute.y << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	To_Dxf << 40        << "\r\n";
+	To_Dxf << attribute.height << "\r\n";
+	To_Dxf << 1         << "\r\n";
+	To_Dxf << singleLine(attribute.text) << "\r\n";
+	To_Dxf << 3         << "\r\n";
+	To_Dxf << attribute.tag << "\r\n";
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << attribute.tag << "\r\n";
+	To_Dxf << 70        << "\r\n";
+	To_Dxf << (attribute.invisible ? 1 : 0) << "\r\n";
+	To_Dxf << 50        << "\r\n";
+	To_Dxf << attribute.rotation << "\r\n";
+	To_Dxf << 41        << "\r\n";
+	To_Dxf << attribute.xScaleW << "\r\n";
 	file.close();
 }
 
