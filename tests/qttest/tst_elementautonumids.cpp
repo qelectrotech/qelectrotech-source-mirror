@@ -47,14 +47,18 @@ class tst_elementautonumids : public QObject
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
+		// QET_SETTINGS_DIR, not a file under XDG_CONFIG_HOME: macOS and
+		// Windows keep the settings elsewhere and would never read it.
+		const QString settings_dir = home + QStringLiteral("/settings");
 		if (!m_preferences.isEmpty()) {
-			QDir().mkpath(home + QStringLiteral("/config/QElectroTech"));
-			QFile settings(home + QStringLiteral("/config/QElectroTech/QElectroTech.conf"));
+			QDir().mkpath(settings_dir + QStringLiteral("/QElectroTech"));
+			QFile settings(settings_dir + QStringLiteral("/QElectroTech/QElectroTech.ini"));
 			if (settings.open(QIODevice::WriteOnly)) {
 				settings.write(m_preferences.toUtf8());
 			}
 		}
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QET_SETTINGS_DIR"), settings_dir);
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QStringLiteral("HOME"), home);
