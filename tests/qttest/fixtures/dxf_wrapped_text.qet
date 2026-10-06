@@ -3,8 +3,7 @@
         <property name="saveddate" show="1">10/2/26</property>
         <property name="saveddate-eu" show="1">02-10-2026</property>
         <property name="saveddate-us" show="1">2026-10-02</property>
-        <property name="savedfilename" show="1">skeleton</property>
-        <property name="savedfilepath" show="1">/tmp/qet-mcp-new-k41dmnyo/skeleton.qet</property>
+        <property name="savedfilename" show="1">dxf_wrapped_text</property>
         <property name="savedtime" show="1">18:39</property>
     </properties>
     <usage enabled="true" time_spent="0"/>
