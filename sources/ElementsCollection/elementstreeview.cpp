@@ -99,11 +99,7 @@ void ElementsTreeView::execElementDrag(QWidget *source,
 {
 	if (! location.exist()) return;
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	QDrag* drag = new QDrag(source);
-#else
 	QScopedPointer<QDrag> drag(new QDrag(source));
-#endif
 
 	QString location_str = location.toString();
 	QMimeData *mime_data = new QMimeData();

@@ -48,6 +48,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(
     Qt6
+    6.8
     COMPONENTS
     ${QET_COMPONENTS}
     REQUIRED)
@@ -78,12 +79,12 @@ endif()
 # and pdfpagesdialog.*.
 set(QET_HAS_QTPDF FALSE)
 find_package(Qt6 QUIET COMPONENTS Pdf)
-if(TARGET Qt6::Pdf AND NOT Qt6_VERSION VERSION_LESS 6.4.0)
+if(TARGET Qt6::Pdf)
     set(QET_HAS_QTPDF TRUE)
     list(APPEND QET_PRIVATE_LIBRARIES Qt6::Pdf)
     add_compile_definitions(QET_HAS_QTPDF)
 else()
-    message(STATUS "QtPdf module not available (or Qt < 6.4): PDF page import feature disabled")
+    message(STATUS "QtPdf module not available: PDF page import feature disabled")
 endif()
 
 # JavaScript scripting (bugtracker #162: `--run script.js`, and later a
@@ -218,56 +219,19 @@ set_source_files_properties(
     ${TS_FILES}
     PROPERTIES OUTPUT_LOCATION "lang"
 )
-if(Qt6_VERSION VERSION_LESS "6.2")
-    # Qt 6.0–6.1
-    qt6_add_translation(QM_FILES ${TS_FILES})
+# Qt 6.7+: new signature
+qt_add_lrelease(
+    TS_FILES ${TS_FILES}
+    LRELEASE_TARGET ${PROJECT_NAME}_lrelease
+    QM_FILES_OUTPUT_VARIABLE QM_FILES
+)
 
-    # qt6_add_translation() only creates custom commands. Something must
-    # depend on their outputs for them to run during the default build.
-    add_custom_target(${PROJECT_NAME}_lrelease ALL
-        DEPENDS ${QM_FILES}
-    )
-
-    add_custom_target(update_translations
-        COMMAND
-            $<TARGET_FILE:Qt6::lupdate>
-            "${CMAKE_SOURCE_DIR}/sources"
-            -ts ${TS_FILES}
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-        COMMENT
-            "Updating .ts files from sources/ (lupdate) - developer target"
-        VERBATIM
-    )
-
-elseif(Qt6_VERSION VERSION_LESS "6.7")
-    # Qt 6.2–6.6: old target-based signature
-    qt_add_lrelease(
-        ${PROJECT_NAME}
-        TS_FILES ${TS_FILES}
-        QM_FILES_OUTPUT_VARIABLE QM_FILES
-    )
-
-    # Automatically creates the update_translations umbrella target.
-    qt_add_lupdate(
-        ${PROJECT_NAME}
-        TS_FILES ${TS_FILES}
-    )
-
-else()
-    # Qt 6.7+: new signature
-    qt_add_lrelease(
-        TS_FILES ${TS_FILES}
-        LRELEASE_TARGET ${PROJECT_NAME}_lrelease
-        QM_FILES_OUTPUT_VARIABLE QM_FILES
-    )
-
-    qt_add_lupdate(
-        SOURCE_TARGETS ${PROJECT_NAME}
-        TS_FILES ${TS_FILES}
-        LUPDATE_TARGET update_translations
-        NO_GLOBAL_TARGET
-    )
-endif()
+qt_add_lupdate(
+    SOURCE_TARGETS ${PROJECT_NAME}
+    TS_FILES ${TS_FILES}
+    LUPDATE_TARGET update_translations
+    NO_GLOBAL_TARGET
+)
 
 
 # Optional precompiled headers -- see QET_ENABLE_PCH in

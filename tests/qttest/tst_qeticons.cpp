@@ -700,9 +700,6 @@ void tst_qeticons::menuIconReadsOnHighlight()
 */
 void tst_qeticons::panelProjectIconStaysSmall()
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	QSKIP("QIcon::pixmap(size, devicePixelRatio) needs Qt 6");
-#else
 	QIcon::setThemeName(QStringLiteral("qet"));
 	QET::Icons::initIcons();
 
@@ -713,7 +710,6 @@ void tst_qeticons::panelProjectIconStaysSmall()
 
 	// The configuration dialog's page list still gets the large file.
 	QCOMPARE(QET::Icons::Projects.pixmap(QSize(128, 128), 1.0).width(), 128);
-#endif
 }
 
 

@@ -40,7 +40,7 @@ git clone --recursive https://github.com/qelectrotech/qelectrotech-source-mirror
 Here are the technical choices made for the software development:
 
 *   Integrated development environment: [Qt Framework](https://www.qt.io/ide/)
-*   Libraries: Qt 6.x
+*   Libraries: Qt 6.8 and higher
 *   [KF6 Framework](https://github.com/KDE)
     [Cmake](https://cmake.org/install/)
     [kcoreaddons](https://invent.kde.org/frameworks/kcoreaddons)
