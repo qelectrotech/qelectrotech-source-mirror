@@ -26,6 +26,8 @@ namespace {
 	const QString ICON_SIZE    = QStringLiteral("toolbars/icon_size");
 	const QString BUTTON_STYLE = QStringLiteral("toolbars/button_style");
 	const QString LOCKED       = QStringLiteral("toolbars/locked");
+		//Set on a window by applyTo()
+	const char *const APPLIED  = "qetToolbarSettings";
 }
 
 int ToolbarSettings::iconSize()
@@ -69,13 +71,15 @@ void ToolbarSettings::save(int icon_size, Qt::ToolButtonStyle style, bool locked
 	@brief ToolbarSettings::applyTo
 	Apply the settings to \a window and its toolbars. The window passes
 	its icon size and button style on to every toolbar that has none of
-	its own; an invalid size gives the style's default back.
+	its own; an invalid size gives the style's default back. The window
+	is marked, so applyToAll() updates it again later.
 */
 void ToolbarSettings::applyTo(QMainWindow *window)
 {
 	if (!window) {
 		return;
 	}
+	window->setProperty(APPLIED, true);
 	const int size = iconSize();
 	window->setIconSize(size > 0 ? QSize(size, size) : QSize());
 	window->setToolButtonStyle(buttonStyle());
@@ -90,12 +94,15 @@ void ToolbarSettings::applyTo(QMainWindow *window)
 
 /**
 	@brief ToolbarSettings::applyToAll
-	Apply the settings to every open window, after they change.
+	Apply the settings again to every open window that took them with
+	applyTo(), after they change. Other windows are left alone: they
+	would lose the settings the next time they open.
 */
 void ToolbarSettings::applyToAll()
 {
 	for (QWidget *widget : QApplication::topLevelWidgets()) {
-		if (auto *window = qobject_cast<QMainWindow *>(widget)) {
+		auto *window = qobject_cast<QMainWindow *>(widget);
+		if (window && window->property(APPLIED).toBool()) {
 			applyTo(window);
 		}
 	}

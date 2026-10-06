@@ -29,8 +29,8 @@
 
 /**
 	ToolbarSettings and its configuration page: defaults change nothing,
-	saved values reach every open window's toolbars, and a toolbar inside
-	a panel is left alone.
+	saved values reach every open window that took them, and a toolbar
+	inside a panel or a window that never took them is left alone.
 */
 class tst_toolbarsettings : public QObject
 {
@@ -40,6 +40,8 @@ class tst_toolbarsettings : public QObject
 	QToolBar *m_top = nullptr;
 	QToolBar *m_left = nullptr;
 	QToolBar *m_in_dock = nullptr;
+	QMainWindow *m_other = nullptr;
+	QToolBar *m_other_bar = nullptr;
 	QSize m_default_size;
 
 private slots:
@@ -60,11 +62,18 @@ private slots:
 		dock->setWidget(m_in_dock);
 		m_window->addDockWidget(Qt::LeftDockWidgetArea, dock);
 		m_window->show();
+
+			//A window that never takes the settings, like the print window
+		m_other = new QMainWindow();
+		m_other_bar = new QToolBar(QStringLiteral("other"), m_other);
+		m_other->addToolBar(Qt::TopToolBarArea, m_other_bar);
+		m_other->show();
 	}
 
 	void cleanupTestCase()
 	{
 		delete m_window;
+		delete m_other;
 	}
 
 	void defaultsChangeNothing()
@@ -102,6 +111,10 @@ private slots:
 		QVERIFY(!m_left->isMovable());
 			//A toolbar inside a panel is not one of the window's toolbars
 		QVERIFY(m_in_dock->isMovable());
+			//Nor is a window that did not take the settings when it opened
+		QCOMPARE(m_other_bar->iconSize(), m_default_size);
+		QCOMPARE(m_other_bar->toolButtonStyle(), Qt::ToolButtonIconOnly);
+		QVERIFY(m_other_bar->isMovable());
 
 			//A page opened now shows what was saved
 		ToolbarsConfigPage page;
