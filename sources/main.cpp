@@ -153,10 +153,12 @@ static void headlessMessageHandler(QtMsgType type,
 static void installHeadlessMessageHandler()
 {
 #ifdef Q_OS_WIN
-	// stderr is in text mode on Windows and turns "\n" into "\r\n": a
-	// caller would read lines ending in '\r' where the other systems give
-	// none, and what the script logs with qet.log() already ends in "\n"
-	// alone. Binary mode gives one line ending for both.
+	// stdout and stderr are in text mode on Windows and turn "\n" into
+	// "\r\n": a caller would read lines ending in '\r' where the other
+	// systems give none. Binary mode gives both streams the same line
+	// ending on every system, for the JSON of --info, the messages of the
+	// exports and what a script logs.
+	_setmode(_fileno(stdout), _O_BINARY);
 	_setmode(_fileno(stderr), _O_BINARY);
 #endif
 	qInstallMessageHandler(headlessMessageHandler);
