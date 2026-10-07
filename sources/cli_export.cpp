@@ -331,7 +331,8 @@ int exportImages(QETProject &project, const QString &format,
 /// One DXF file per diagram, written by the same code as the export dialog
 /// (DxfExport) with the dialog's default options -- the export settings of
 /// the preferences -- so both give the same file.
-int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals)
+int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
+			  bool dxfBlocks, bool dxfAttributes)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -344,6 +345,10 @@ int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals)
 	properties.format = QStringLiteral("DXF");
 	if (showTerminals)
 		properties.draw_terminals = true;
+	if (dxfBlocks || dxfAttributes)
+		properties.dxf_blocks = true;
+	if (dxfAttributes)
+		properties.dxf_attributes = true;
 
 	int index = 0;
 	bool has_images = false;
@@ -982,6 +987,8 @@ int run(const QStringList &args)
 	// collected below.
 	QStringList filtered = args;
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
+	const bool dxfBlocks = filtered.removeAll("--dxf-blocks") > 0;
+	const bool dxfAttributes = filtered.removeAll("--dxf-attributes") > 0;
 	// --no-slaves and --no-junctions leave rows out of --export-bom.
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
@@ -1038,7 +1045,7 @@ int run(const QStringList &args)
 	if (format == "pdf")
 		return exportPdf(project, output, showTerminals);
 	if (format == "dxf")
-		return exportDxf(project, output, showTerminals);
+		return exportDxf(project, output, showTerminals, dxfBlocks, dxfAttributes);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")

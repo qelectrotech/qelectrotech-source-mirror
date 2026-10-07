@@ -22,6 +22,9 @@
 #include <QString>
 #include "dxfexport.h"
 
+#include <QtMath>
+#include <cmath>
+
 
 const double Createdxf::sheetWidth = 4000;
 const double Createdxf::sheetHeight = 2700;
@@ -65,7 +68,16 @@ Createdxf::~Createdxf()
 /* Header section of every DXF file.
    @param layers : the layers the entities will be written on, declared in
    the LAYER table beside layer "0", which every DXF has. */
-void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers)
+/**
+	@brief Createdxf::dxfBegin
+	Write the header, the tables with @a layers, and the BLOCKS section,
+	then open the ENTITIES section. @a writeBlocks, if given, is called
+	inside the BLOCKS section to write the block definitions
+	(dxfBlockBegin(), the entities, dxfBlockEnd()): a block has to be
+	defined before any entity, so before anything is drawn.
+*/
+void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
+			  const std::function<void()> &writeBlocks)
 {
 	layer = QStringLiteral("0");
 
@@ -273,15 +285,201 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers)
 			To_Dxf << "SECTION"     << "\r\n";
 			To_Dxf << 2             << "\r\n";
 			To_Dxf << "BLOCKS"      << "\r\n";
+			file.close();
+		}
+		if (writeBlocks)
+			writeBlocks();
+		QFile entities(fileName);
+		if (entities.open(QFile::Append)) {
+			QTextStream To_Dxf(&entities);
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "ENDSEC"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "SECTION"     << "\r\n";
 			To_Dxf << 2             << "\r\n";
 			To_Dxf << "ENTITIES"    << "\r\n";
-			file.close();
+			entities.close();
 		}
 	}
+}
+
+/**
+	@brief Createdxf::dxfBlockBegin
+	Start the definition of block @a name, with its base point at @a x,
+	@a y. Only inside dxfBegin()'s writeBlocks; every entity written until
+	dxfBlockEnd() belongs to the block.
+	@param hasAttributes : the block has attribute definitions
+*/
+void Createdxf::dxfBlockBegin(const QString &fileName,
+			      const QString &name,
+			      double x,
+			      double y,
+			      bool hasAttributes)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "BLOCK"   << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << "0"       << "\r\n";
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << name      << "\r\n";
+	To_Dxf << 70        << "\r\n";
+	To_Dxf << (hasAttributes ? 2 : 0) << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << x         << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << y         << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	file.close();
+}
+
+/**
+	@brief Createdxf::dxfBlockEnd
+	End the block started by dxfBlockBegin().
+*/
+void Createdxf::dxfBlockEnd(const QString &fileName)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "ENDBLK"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << "0"       << "\r\n";
+	file.close();
+}
+
+/**
+	@brief Createdxf::drawInsert
+	Place block @a name at @a x, @a y, turned counter-clockwise by
+	@a rotation degrees, on the current layer, followed by its
+	@a attributes.
+*/
+void Createdxf::drawInsert(const QString &fileName,
+			   const QString &name,
+			   double x,
+			   double y,
+			   double rotation,
+			   const QList<Attribute> &attributes)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "INSERT"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << layer     << "\r\n";
+	if (!attributes.isEmpty()) {
+		To_Dxf << 66    << "\r\n";
+		To_Dxf << 1     << "\r\n";
+	}
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << name      << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << x         << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << y         << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	To_Dxf << 50        << "\r\n";
+	To_Dxf << rotation  << "\r\n";
+	for (const Attribute &attribute : attributes) {
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "ATTRIB"  << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << (attribute.layer.isEmpty() ? layer : attribute.layer) << "\r\n";
+		To_Dxf << 62        << "\r\n";
+		To_Dxf << entityColour(attribute.colour) << "\r\n";
+		To_Dxf << 10        << "\r\n";
+		To_Dxf << attribute.x << "\r\n";
+		To_Dxf << 20        << "\r\n";
+		To_Dxf << attribute.y << "\r\n";
+		To_Dxf << 30        << "\r\n";
+		To_Dxf << 0.0       << "\r\n";
+		To_Dxf << 40        << "\r\n";
+		To_Dxf << attribute.height << "\r\n";
+		To_Dxf << 1         << "\r\n";
+		To_Dxf << singleLine(attribute.text) << "\r\n";
+		To_Dxf << 2         << "\r\n";
+		To_Dxf << attribute.tag << "\r\n";
+		To_Dxf << 70        << "\r\n";
+		To_Dxf << (attribute.invisible ? 1 : 0) << "\r\n";
+		To_Dxf << 50        << "\r\n";
+		To_Dxf << attribute.rotation << "\r\n";
+		To_Dxf << 41        << "\r\n";
+		To_Dxf << attribute.xScaleW << "\r\n";
+	}
+	if (!attributes.isEmpty()) {
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "SEQEND"  << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << layer     << "\r\n";
+	}
+	file.close();
+}
+
+/**
+	@brief Createdxf::drawAttdef
+	Define an attribute of the block being written (between
+	dxfBlockBegin() and dxfBlockEnd()): its tag, where it sits and how it
+	looks; @a attribute's text is the default value.
+*/
+void Createdxf::drawAttdef(const QString &fileName, const Attribute &attribute)
+{
+	QFile file(fileName);
+	if (!file.open(QFile::Append))
+		return;
+	QTextStream To_Dxf(&file);
+	To_Dxf << 0         << "\r\n";
+	To_Dxf << "ATTDEF"  << "\r\n";
+	To_Dxf << 8         << "\r\n";
+	To_Dxf << (attribute.layer.isEmpty() ? layer : attribute.layer) << "\r\n";
+	To_Dxf << 62        << "\r\n";
+	To_Dxf << entityColour(attribute.colour) << "\r\n";
+	To_Dxf << 10        << "\r\n";
+	To_Dxf << attribute.x << "\r\n";
+	To_Dxf << 20        << "\r\n";
+	To_Dxf << attribute.y << "\r\n";
+	To_Dxf << 30        << "\r\n";
+	To_Dxf << 0.0       << "\r\n";
+	To_Dxf << 40        << "\r\n";
+	To_Dxf << attribute.height << "\r\n";
+	To_Dxf << 1         << "\r\n";
+	To_Dxf << singleLine(attribute.text) << "\r\n";
+	To_Dxf << 3         << "\r\n";
+	To_Dxf << attribute.tag << "\r\n";
+	To_Dxf << 2         << "\r\n";
+	To_Dxf << attribute.tag << "\r\n";
+	To_Dxf << 70        << "\r\n";
+	To_Dxf << (attribute.invisible ? 1 : 0) << "\r\n";
+	To_Dxf << 50        << "\r\n";
+	To_Dxf << attribute.rotation << "\r\n";
+	To_Dxf << 41        << "\r\n";
+	To_Dxf << attribute.xScaleW << "\r\n";
+	file.close();
+}
+
+/**
+	@brief Createdxf::blockName
+	@return @a name as a block or attribute name an R10 reader accepts:
+	upper case, only A-Z, 0-9, _, - and $, at most 31 characters
+*/
+QString Createdxf::blockName(const QString &name)
+{
+	QString result;
+	for (const QChar c : name.toUpper()) {
+		const ushort u = c.unicode();
+		const bool ok = (u >= 'A' && u <= 'Z') || (u >= '0' && u <= '9')
+				|| u == '_' || u == '-' || u == '$';
+		result += ok ? c : QChar('_');
+	}
+	return result.left(31);
 }
 
 /**
@@ -504,6 +702,24 @@ int Createdxf::dxfColor(QPen pen) {
 	return Createdxf::dxfColor(pen.color());
 }
 
+/**
+	@brief Createdxf::drawArcEllipse
+	Draw an arc of an ellipse, or a whole ellipse, in DXF units.
+	@param x, y : top left of the ellipse's bounding rect (y is the top, the
+	DXF Y axis going up)
+	@param w, h : width and height of that rect
+	@param startAngle, spanAngle : in degrees, as QPainter::drawArc() takes
+	them: counter-clockwise from 3 o'clock
+	@param hotspot_x, hotspot_y, rotation_angle : the whole shape is turned
+	clockwise by rotation_angle degrees around the hotspot, as a rotated
+	symbol is
+	A circle, or an arc of one, is written as one exact CIRCLE or ARC. R10,
+	the version this file declares, has no ELLIPSE entity, so a true
+	ellipse is written as a polyline through points of the curve, one every
+	5 degrees. It used to be four ARCs fitted through a point between the
+	curve and its chord, which drew every circle as a flattened diamond
+	(issue #1339).
+*/
 void Createdxf::drawArcEllipse(
 		const QString &file_path,
 		qreal x,
@@ -517,138 +733,46 @@ void Createdxf::drawArcEllipse(
 		qreal rotation_angle,
 		const int &colorcode)
 {
-	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
-	QVector< QPair<qreal,qreal> > arc_parts_vector;
+	if (qFuzzyIsNull(spanAngle) || w <= 0 || h <= 0)
+		return;
 
-	if (spanAngle > 0) {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i < startAngle+spanAngle; i++ ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
+	const qreal a = w/2;
+	const qreal b = h/2;
+	const QPointF center = DxfExport::rotation_transformed(
+				x + a, y - b, hotspot_x, hotspot_y, rotation_angle);
+	const bool full_turn = qAbs(spanAngle) >= 360;
+
+	if (qAbs(a - b) <= 1e-6 * qMax(a, b))
+	{
+		if (full_turn) {
+			drawCircle(file_path, a, center.x(), center.y(), colorcode);
+			return;
 		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
-	} else {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i > startAngle+spanAngle; i-- ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
-		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
+			//A DXF ARC always runs counter-clockwise from 50 to 51.
+		qreal start = startAngle - rotation_angle;
+		if (spanAngle < 0)
+			start += spanAngle;
+		start = std::fmod(start, 360.0);
+		if (start < 0)
+			start += 360;
+		drawArc(file_path, center.x(), center.y(), a,
+				start, start + qAbs(spanAngle), colorcode);
+		return;
 	}
 
-	for (int i = 0; i < arc_parts_vector.size(); i++) {
-
-		QPair<qreal,qreal> arc = arc_parts_vector[i];
-		if (arc.second == 0)
-			continue;
-		qreal arc_startAngle = arc.first * 3.142/180;
-		qreal arc_spanAngle = arc.second * 3.142/180;
-
-		qreal a = w/2;
-		qreal b = h/2;
-
-		qreal x1 = x + w/2 + a*cos(arc_startAngle);
-		qreal y1 = y - h/2 + b*sin(arc_startAngle);
-		qreal x2 = x + w/2 + a*cos(arc_startAngle + arc_spanAngle);
-		qreal y2 = y - h/2 + b*sin(arc_startAngle + arc_spanAngle);
-
-
-		qreal mid_ellipse_x = x + w/2 + a*cos(arc_startAngle + arc_spanAngle/2);
-		qreal mid_ellipse_y = y - h/2 + b*sin(arc_startAngle + arc_spanAngle/2);
-		qreal mid_line_x = (x1+x2)/2;
-		qreal mid_line_y = (y1+y2)/2;
-
-		qreal x3 = (mid_ellipse_x + mid_line_x)/2;
-		qreal y3 = (mid_ellipse_y + mid_line_y)/2;
-
-		// find circumcenter of points (x1,y1), (x3,y3) and (x2,y2)
-		qreal a1 = 2*x2 - 2*x1;
-		qreal b1 = 2*y2 - 2*y1;
-		qreal c1 = x1*x1 + y1*y1 - x2*x2 - y2*y2;
-
-		qreal a2 = 2*x3 - 2*x1;
-		qreal b2 = 2*y3 - 2*y1;
-		qreal c2 = x1*x1 + y1*y1 - x3*x3 - y3*y3;
-
-		qreal center_x = (b1*c2 - b2*c1) / (a1*b2 - a2*b1);
-		qreal center_y = (a1*c2 - a2*c1) / (b1*a2 - b2*a1);
-
-		qreal radius = sqrt( (x1-center_x)*(x1-center_x) + (y1-center_y)*(y1-center_y) );
-
-		if ( x1 > center_x && y1 > center_y )
-			arc_startAngle = asin( (y1 - center_y) / radius );
-		else if ( x1 > center_x && y1 < center_y )
-			arc_startAngle = 3.142*2 - asin( (center_y - y1) / radius );
-		else if ( x1 < center_x && y1 < center_y )
-			arc_startAngle = 3.142 + asin( (center_y - y1) / radius );
-		else
-			arc_startAngle = 3.142 - asin( (y1 - center_y) / radius );
-
-		qreal arc_endAngle;
-
-		if ( x2 > center_x && y2 > center_y )
-			arc_endAngle = asin( (y2 - center_y) / radius );
-		else if ( x2 > center_x && y2 < center_y )
-			arc_endAngle = 3.142*2 - asin( (center_y - y2) / radius );
-		else if ( x2 < center_x && y2 < center_y )
-			arc_endAngle = 3.142 + asin( (center_y - y2) / radius );
-		else
-			arc_endAngle = 3.142 - asin( (y2 - center_y) / radius );
-
-		if (arc_endAngle < arc_startAngle) {
-			qreal temp = arc_startAngle;
-			arc_startAngle = arc_endAngle;
-			arc_endAngle = temp;
-		}
-
-		QPointF transformed_point = DxfExport::rotation_transformed(
-					center_x,
-					center_y,
-					hotspot_x,
-					hotspot_y,
-					rotation_angle);
-		center_x = transformed_point.x();
-		center_y = transformed_point.y();
-		arc_endAngle *= 180/3.142;
-		arc_startAngle *= 180/3.142;
-		arc_endAngle -= rotation_angle;
-		arc_startAngle -= rotation_angle;
-
-		drawArc(
-					file_path,
-					center_x,
-					center_y,
-					radius,
-					arc_startAngle,
-					arc_endAngle,
-					colorcode);
+	const qreal span = full_turn ? 360 : spanAngle;
+	const int steps = qMax(2, qCeil(qAbs(span) / 5));
+	QPolygonF poly;
+	poly.reserve(steps + 1);
+	for (int i = 0 ; i <= steps ; ++i)
+	{
+		const qreal theta = qDegreesToRadians(startAngle + span * i / steps);
+		poly << DxfExport::rotation_transformed(
+					x + a + a*std::cos(theta),
+					y - b + b*std::sin(theta),
+					hotspot_x, hotspot_y, rotation_angle);
 	}
+	drawPolyline(file_path, poly, colorcode, true);
 }
 
 
@@ -810,6 +934,31 @@ void Createdxf::drawTextAligned(
 	double xScaleW,
 		int colour)
 {
+	drawTextAligned(fileName, text, x, y, height, rotation, oblique,
+					hAlign, vAlign, xAlign, y, xScaleW, colour);
+}
+
+/**
+	@brief Createdxf::drawTextAligned
+	As above, with the second alignment point given in full (@a xAlign,
+	@a yAlign) instead of on the same horizontal line as the insertion
+	point, which is what a rotated aligned text needs.
+*/
+void Createdxf::drawTextAligned(
+		const QString& fileName,
+		const QString& text,
+		double x,
+		double y,
+		double height,
+		double rotation,
+		double oblique,
+		int hAlign,
+		int vAlign,
+		double xAlign,
+		double yAlign,
+		double xScaleW,
+		int colour)
+{
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
 		if (!file.open(QFile::Append)) {
@@ -869,7 +1018,7 @@ void Createdxf::drawTextAligned(
 				To_Dxf << 11       << "\r\n"; // XYZ
 				To_Dxf << xAlign   << "\r\n"; // X in UCS (User Coordinate System)coordinates
 				To_Dxf << 21       << "\r\n";
-				To_Dxf << y        << "\r\n"; // Y in UCS (User Coordinate System)coordinates
+				To_Dxf << yAlign   << "\r\n"; // Y in UCS (User Coordinate System)coordinates
 				To_Dxf << 31       << "\r\n";
 				To_Dxf << 0.0      << "\r\n"; // Z in UCS (User Coordinate System)coordinates
 			}

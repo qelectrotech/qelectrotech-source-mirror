@@ -42,6 +42,13 @@
 #include <QStyleFactory>
 #include <QtConcurrentRun>
 
+#include <cstdio>
+#include <cstdlib>
+#ifdef Q_OS_WIN
+#include <fcntl.h>
+#include <io.h>
+#endif
+
 #ifdef Q_OS_MACOS
 #include <QFileOpenEvent>
 
@@ -120,6 +127,43 @@ static QStringList headlessArguments(const QStringList &args)
 	return kept;
 }
 
+/**
+	The headless runs below (the exports, --info, --resave and --run) return
+	before the log-file handler is installed further down, so they keep
+	Qt's default handler. On Linux and macOS that one writes to stderr. On
+	Windows it writes to the debugger when the program has no console, and
+	a GUI program started by another program never has one: what the run
+	reports -- a wire that could not be reconnected, which way the project
+	database was filled -- never reached the caller. Write it to stderr
+	ourselves, in the form the default handler uses on the other systems,
+	so a caller reads the same lines on every system.
+*/
+static void headlessMessageHandler(QtMsgType type,
+								   const QMessageLogContext &context,
+								   const QString &msg)
+{
+	const QByteArray line = qFormatLogMessage(type, context, msg).toUtf8();
+	fprintf(stderr, "%s\n", line.constData());
+	fflush(stderr);
+	if (type == QtFatalMsg) {
+		abort();
+	}
+}
+
+static void installHeadlessMessageHandler()
+{
+#ifdef Q_OS_WIN
+	// stdout and stderr are in text mode on Windows and turn "\n" into
+	// "\r\n": a caller would read lines ending in '\r' where the other
+	// systems give none. Binary mode gives both streams the same line
+	// ending on every system, for the JSON of --info, the messages of the
+	// exports and what a script logs.
+	_setmode(_fileno(stdout), _O_BINARY);
+	_setmode(_fileno(stderr), _O_BINARY);
+#endif
+	qInstallMessageHandler(headlessMessageHandler);
+}
+
 int main(int argc, char **argv)
 {
 	// before creating Application:
@@ -190,6 +234,7 @@ int main(int argc, char **argv)
 		for (int i = 0; i < argc; ++i)
 			raw_args << QString::fromLocal8Bit(argv[i]);
 		if (CLIExport::isExportRequest(raw_args)) {
+			installHeadlessMessageHandler();
 			QApplication export_app(argc, argv);
 			// No crash-recovery backups in one-shot CLI mode: the backup write
 			// runs on a background thread referencing the project and races the
@@ -207,6 +252,7 @@ int main(int argc, char **argv)
 		// #162). Same reasoning as the export branch above for running
 		// before SingleApplication and answering message boxes headlessly.
 		if (QetScripting::isRunRequest(raw_args)) {
+			installHeadlessMessageHandler();
 			QApplication script_app(argc, argv);
 			QETProject::setBackupEnabled(false);
 			QET::QetMessageBox::setNonInteractive(true);

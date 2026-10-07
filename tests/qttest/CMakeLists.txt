@@ -66,6 +66,22 @@ include(../../cmake/fetch_pugixml.cmake)
 
 enable_testing()
 
+add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
+  ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
+  ${QET_DIR}/sources/qetpalette.cpp)
+add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
+target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+find_package(Python3 QUIET COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
+  add_test(NAME tst_darkimageintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_image_dark_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+endif()
+
 add_executable(${PROJECT_NAME} tst_mytest.cpp)
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 
@@ -264,6 +280,80 @@ set_tests_properties(tst_shortcutspage PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=o
 target_include_directories(tst_shortcutspage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_shortcutspage PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
+# ToolbarSettings and its configuration page: defaults change nothing,
+# saved values reach every open window that took them, panels are left alone.
+add_executable(
+  tst_toolbarsettings
+  tst_toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.h
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_toolbarsettings COMMAND tst_toolbarsettings)
+set_tests_properties(tst_toolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_toolbarsettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_toolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
+# DiagramToolbarSettings and its configuration page: unchanged toolbars
+# store nothing and build as before, unknown ids and stray separators are
+# skipped, the user's own toolbars are kept, a widget is in one place only.
+add_executable(
+  tst_diagramtoolbarsettings
+  tst_diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_diagramtoolbarsettings COMMAND tst_diagramtoolbarsettings)
+set_tests_properties(tst_diagramtoolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_diagramtoolbarsettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramtoolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
+# GestureSettings, the gesture ring's 4 / 8 directions and empty slots, and
+# its configuration page: the ring follows the shortcut bar until the user
+# picks commands, then keeps each one in its direction.
+add_executable(
+  tst_gesturesettings
+  tst_gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.h
+  ${QET_DIR}/sources/shortcutbarsettings.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.h
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_gesturesettings COMMAND tst_gesturesettings)
+set_tests_properties(tst_gesturesettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_gesturesettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_gesturesettings PRIVATE Qt::Test Qt::Widgets Qt::Svg Qt::Xml pugixml::pugixml)
+
+# CustomizeDialog: the configuration pages as tabs of one window; OK
+# applies every page once, Cancel none.
+add_executable(
+  tst_customizedialog
+  tst_customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h)
+add_test(NAME tst_customizedialog COMMAND tst_customizedialog)
+set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.
@@ -460,6 +550,28 @@ add_test(NAME tst_dxfwrappedtext COMMAND tst_dxfwrappedtext)
 add_dependencies(tst_dxfwrappedtext qelectrotech)
 target_link_libraries(tst_dxfwrappedtext PRIVATE Qt::Test)
 target_compile_definitions(tst_dxfwrappedtext PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# --export-dxf on a folio with its title block at the right (issue #1339):
+# a circle and an arc stay one CIRCLE and one ARC, the title block is turned.
+add_executable(
+  tst_dxfcurves
+  tst_dxfcurves.cpp)
+add_test(NAME tst_dxfcurves COMMAND tst_dxfcurves)
+add_dependencies(tst_dxfcurves qelectrotech)
+target_link_libraries(tst_dxfcurves PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfcurves PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+# --export-dxf --dxf-blocks: a symbol placed twice is one BLOCK and two
+# INSERTs (issue #1339).
+add_executable(
+  tst_dxfblocks
+  tst_dxfblocks.cpp)
+add_test(NAME tst_dxfblocks COMMAND tst_dxfblocks)
+add_dependencies(tst_dxfblocks qelectrotech)
+target_link_libraries(tst_dxfblocks PRIVATE Qt::Test)
+target_compile_definitions(tst_dxfblocks PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
 # --export-pdf puts an A3 folio on an A3 page whichever way it is turned:

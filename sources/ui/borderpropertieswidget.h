@@ -41,12 +41,26 @@ class BorderPropertiesWidget : public QWidget
 		void setProperties(const BorderProperties &bp);
 		const BorderProperties &properties();
 		void setReadOnly (const bool &ro);
-
-	private slots:
+		void setTitleBlockSize(int height, Qt::Edge edge);
 
 	private:
+		void applyPaperSize();
+		void showMatchingPaperSize();
+		bool fitPaperSize(int index, bool landscape,
+						  int &columns, int &column_width,
+						  int &rows, int &row_height) const;
+
 		Ui::BorderPropertiesWidget *ui;
 		BorderProperties m_properties;
+			/// height of the title block the folio is drawn with, and
+			/// the edge it sits on: it counts in the size of the page
+		int m_titleblock_height = 0;
+		Qt::Edge m_titleblock_edge = Qt::BottomEdge;
+			/// true while the widget itself changes the spin boxes
+		bool m_updating = false;
+			/// true once the user picked a paper size, until the columns or
+			/// rows are edited by hand
+		bool m_paper_picked = false;
 };
 
 #endif // BORDERPROPERTIESWIDGET_H

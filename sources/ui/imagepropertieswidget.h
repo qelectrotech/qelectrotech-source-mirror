@@ -43,6 +43,8 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		void reset() override;
 		bool setLiveEdit(bool live_edit) override;
 		QUndoCommand* associatedUndo() const override;
+	protected:
+		bool event(QEvent *event) override;
 
 	private:
 		void updateUi() override;
@@ -56,11 +58,14 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		void on_m_lock_ratio_tb_toggled(bool checked);
 		void on_m_restore_ratio_pb_clicked();
 		void on_m_lock_pos_cb_clicked();
+		void on_m_adapt_to_dark_theme_cb_toggled(bool checked);
 
 	private:
 		Ui::ImagePropertiesWidget *ui;
 		DiagramImageItem *m_image;
 		bool m_movable;
+		bool m_adapt_to_dark_theme = false;
+		bool m_preview_dark_theme = false;
 		// All tracked independently -- the image may already be
 		// non-uniformly scaled, rotated, and/or skewed via the resize/
 		// rotate/skew handles before this dialog is even opened, and

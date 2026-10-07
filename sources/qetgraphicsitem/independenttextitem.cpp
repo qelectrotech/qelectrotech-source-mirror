@@ -148,6 +148,16 @@ void IndependentTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
+/**
+	@brief IndependentTextItem::textResizeHandlesWanted
+	@return true when this text is selected and not being typed in: the
+	corner handles then change its width.
+*/
+bool IndependentTextItem::textResizeHandlesWanted() const
+{
+	return isSelected() && !isEditing();
+}
+
 void IndependentTextItem::focusOutEvent(QFocusEvent *event)
 {
 	DiagramTextItem::focusOutEvent(event);

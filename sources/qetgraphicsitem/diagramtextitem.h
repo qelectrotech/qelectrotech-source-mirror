@@ -24,6 +24,7 @@
 class Diagram;
 class QDomElement;
 class QDomDocument;
+class TextResizeHandles;
 
 /**
 	This class represents a selectable, movable and editable text field on a
@@ -91,11 +92,15 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool isHtml() const;
 
 	protected:
+		void refreshTextResizeHandles();
+		TextResizeHandles *textResizeHandles() const {return m_resize_handles;}
+
 		void paint(QPainter *,
 			   const QStyleOptionGraphicsItem *,
 			   QWidget *) override;
 		void focusInEvent(QFocusEvent *) override;
 		void focusOutEvent(QFocusEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
@@ -110,7 +115,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		void prepareAlignment();
 		void finishAlignment();
 
+		virtual bool textResizeHandlesWanted() const;
 		virtual bool hasUserTextWidth() const {return false;}
+		bool isEditing() const;
+		void removeTextResizeHandles();
 
 	
 	protected:
@@ -128,7 +136,11 @@ class DiagramTextItem : public QGraphicsTextItem
 		QPointF m_mouse_to_origin_movement;
 		
 	private:
+		void pushResizeCommand(qreal old_width, qreal new_width,
+							   QPointF old_pos, QPointF new_pos);
+
 		QRectF m_alignment_rect;
+		TextResizeHandles *m_resize_handles = nullptr;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 };
 #endif

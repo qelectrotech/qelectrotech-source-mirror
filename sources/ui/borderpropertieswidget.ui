@@ -80,7 +80,24 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="m_paper_label">
+        <property name="text">
+         <string>Format :</string>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="1">
+       <widget class="QComboBox" name="m_paper_cb">
+        <property name="toolTip">
+         <string>Règle les colonnes et les lignes pour que le folio, cartouche compris, ait la taille de ce format de papier, à 96 points par pouce comme l'export PDF.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QComboBox" name="m_orientation_cb"/>
+      </item>
+      <item row="3" column="1">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -105,6 +122,8 @@
   <tabstop>m_rows_height_sp</tabstop>
   <tabstop>m_display_columns_cb</tabstop>
   <tabstop>m_display_rows_cb</tabstop>
+  <tabstop>m_paper_cb</tabstop>
+  <tabstop>m_orientation_cb</tabstop>
  </tabstops>
  <resources/>
  <connections/>

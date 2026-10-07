@@ -45,7 +45,7 @@ namespace CLIExport {
 		  qelectrotech --export-pdf     <project.qet> <output.pdf> [--show-terminals]
 		  qelectrotech --export-png     <project.qet> <output_dir> [--show-terminals]
 		  qelectrotech --export-svg     <project.qet> <output_dir> [--show-terminals]
-		  qelectrotech --export-dxf     <project.qet> <output_dir> [--show-terminals]
+		  qelectrotech --export-dxf     <project.qet> <output_dir> [--show-terminals] [--dxf-blocks] [--dxf-attributes]
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
 		  qelectrotech --export-bom     <project.qet> <output.csv> [--no-slaves] [--no-junctions]
@@ -66,6 +66,11 @@ namespace CLIExport {
 		      does; off by default, matching the GUI export dialog's
 		      default. For DXF, draws the terminal markers. Has no effect on
 		      the list export modes.
+		--dxf-blocks: write each symbol as a DXF block, placed with one
+		      INSERT per use, so a CAD program selects it as one object.
+		--dxf-attributes: as --dxf-blocks, and a symbol's texts (its label,
+		      function...) are attributes of its INSERT. LibreCAD does not
+		      show attributes.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
 		bom: bill of materials (one row per element) as CSV.

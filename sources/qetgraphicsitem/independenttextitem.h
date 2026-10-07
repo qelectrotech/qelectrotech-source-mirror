@@ -63,6 +63,7 @@ class IndependentTextItem : public DiagramTextItem
 		
 	protected:
 		void focusOutEvent(QFocusEvent *event) override;
+		bool textResizeHandlesWanted() const override;
 		bool hasUserTextWidth() const override {return m_text_width > 0;}
 
 	private:

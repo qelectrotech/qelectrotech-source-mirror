@@ -65,6 +65,10 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	connect(titleblock_infos, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &DiagramPropertiesDialog::editAutoFolioNum);
+	border_infos -> setTitleBlockSize(titleblock_infos -> currentTitleBlockHeight(),
+									  titleblock_infos -> currentTitleBlockEdge());
+	connect(titleblock_infos, &TitleBlockPropertiesWidget::titleBlockSizeChanged,
+			border_infos, &BorderPropertiesWidget::setTitleBlockSize);
 	//titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
 		//Conductor widget
