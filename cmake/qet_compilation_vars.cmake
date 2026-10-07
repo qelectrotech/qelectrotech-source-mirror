@@ -862,6 +862,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
+  ${QET_DIR}/sources/ui/customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.h
   ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp

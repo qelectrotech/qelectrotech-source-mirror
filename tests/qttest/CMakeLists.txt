@@ -341,6 +341,19 @@ set_tests_properties(tst_gesturesettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 target_include_directories(tst_gesturesettings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_gesturesettings PRIVATE Qt::Test Qt::Widgets Qt::Svg Qt::Xml pugixml::pugixml)
 
+# CustomizeDialog: the configuration pages as tabs of one window; OK
+# applies every page once, Cancel none.
+add_executable(
+  tst_customizedialog
+  tst_customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h)
+add_test(NAME tst_customizedialog COMMAND tst_customizedialog)
+set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.
