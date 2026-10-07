@@ -309,6 +309,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramcontexttoolbar.h
   ${QET_DIR}/sources/diagramgestureoverlay.cpp
   ${QET_DIR}/sources/diagramgestureoverlay.h
+  ${QET_DIR}/sources/gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.h
   ${QET_DIR}/sources/commandsearchpopup.cpp
   ${QET_DIR}/sources/commandsearchpopup.h
   ${QET_DIR}/sources/titleblockcell.cpp
@@ -864,6 +866,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

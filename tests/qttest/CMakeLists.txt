@@ -318,6 +318,29 @@ set_tests_properties(tst_diagramtoolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_P
 target_include_directories(tst_diagramtoolbarsettings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramtoolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
+# GestureSettings, the gesture ring's 4 / 8 directions and empty slots, and
+# its configuration page: the ring follows the shortcut bar until the user
+# picks commands, then keeps each one in its direction.
+add_executable(
+  tst_gesturesettings
+  tst_gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.h
+  ${QET_DIR}/sources/shortcutbarsettings.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.h
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_gesturesettings COMMAND tst_gesturesettings)
+set_tests_properties(tst_gesturesettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_gesturesettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_gesturesettings PRIVATE Qt::Test Qt::Widgets Qt::Svg Qt::Xml pugixml::pugixml)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.
