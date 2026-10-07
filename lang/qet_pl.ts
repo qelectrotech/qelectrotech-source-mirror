@@ -7375,7 +7375,7 @@ Użyj do tego zaawansowanego edytora.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="70"/>
         <source>Masquer les éléments maîtres pleins</source>
-        <translation>Ukryj pełne elementy nadrzędne</translation>
+        <translation>Ukryj pełne elementy główne</translation>
     </message>
     <message>
         <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
@@ -7771,7 +7771,7 @@ Za pomocą serwera MCP qet: odczytaj je przez qet_recording_read, napisz skrypt,
         <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
 
 Voulez-vous tout de même lier ce contact esclave ?</source>
-        <translation>Osiągnięto limit ustalony dla tego elementu nadrzędnego (limit: %1).
+        <translation>Osiągnięto limit ustalony dla tego elementu głównego (limit: %1).
 
 Czy mimo to chcesz powiązać ten zestyk podrzędny?</translation>
     </message>
@@ -21915,12 +21915,12 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="167"/>
         <source>Afficher dans le peigne de contacts tous les contacts esclaves définis par le maître, même ceux qui ne sont pas encore reliés, dans l&apos;ordre défini par le maître</source>
-        <translation>Pokaż w grzebieniu zestyków wszystkie zestyki podrzędne zdefiniowane przez element nadrzędny, nawet jeszcze niepowiązane, w kolejności zdefiniowanej przez element nadrzędny</translation>
+        <translation>Pokaż w grzebieniu zestyków wszystkie zestyki podrzędne zdefiniowane przez element główny, nawet jeszcze niepowiązane, w kolejności zdefiniowanej przez element główny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="170"/>
         <source>Afficher tous les esclaves définis par le maître</source>
-        <translation>Pokaż wszystkie elementy podrzędne zdefiniowane przez element nadrzędny</translation>
+        <translation>Pokaż wszystkie elementy podrzędne zdefiniowane przez element główny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="177"/>
