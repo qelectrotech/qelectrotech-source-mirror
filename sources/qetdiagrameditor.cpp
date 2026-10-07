@@ -1428,12 +1428,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_paste_origin);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
+	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_insert_last_element);
 	menu_edition -> addAction(m_show_element_picker);
-	menu_edition -> addAction(m_show_shortcut_bar);
-	menu_edition -> addAction(m_repeat_last_command);
-	menu_edition -> addAction(m_command_search);
-	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
 		//which left them unreachable for anyone working without a mouse: a
 		//toolbar button has no key, so text fields, images and every drawing
@@ -1443,9 +1440,24 @@ void QETDiagramEditor::setUpMenu()
 	m_add_item_menu -> setIcon(QET::Icons::Add);
 	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
 	menu_edition -> addSeparator();
-	menu_edition -> addActions(m_select_actions_group.actions());
+		//The menu had grown to over forty entries and no longer fitted on a
+		//laptop screen (issue #1336). Whole families now sit one level down,
+		//as Ajouter and Aligner already did; every action and its shortcut
+		//is unchanged.
+	QMenu *select_menu = menu_edition -> addMenu(QET::Icons::EditSelectAll, tr("Sélection"));
+	select_menu -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
-	menu_edition -> addActions(m_selection_actions_group.actions());
+	menu_edition -> addAction(m_delete_selection);
+	menu_edition -> addAction(m_rotate_selection);
+	menu_edition -> addAction(m_rotate_group_selection);
+	menu_edition -> addAction(m_rotate_texts);
+	menu_edition -> addAction(m_find_element);
+	menu_edition -> addAction(m_edit_selection);
+	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Grouper"));
+	group_menu -> addAction(m_group_selection);
+	group_menu -> addAction(m_ungroup_selection);
+	group_menu -> addSeparator();
+	group_menu -> addAction(m_group_selected_texts);
 	m_align_menu = menu_edition -> addMenu(tr("Aligner"));
 		//Snap to grid, then the horizontal three, then the vertical three,
 		//in the order setUpActions() adds them
@@ -1458,18 +1470,20 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_conductor_reset);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_edit_diagram_properties);
-	menu_edition -> addActions(m_row_column_actions_group.actions());
-		//Not added to a menu here: it exists so the folio's context menu can
-		//hold the row and column actions one level down (see
+		//Shared with the folio's context menu (see
 		//DiagramView::contextMenuActions()).
-	m_row_column_menu = new QMenu(tr("Lignes et colonnes"), this);
+	m_row_column_menu = menu_edition -> addMenu(tr("Lignes et colonnes"));
 	m_row_column_menu -> setIcon(QET::Icons::EditTableInsertColumnRight);
 	m_row_column_menu -> addActions(m_row_column_actions_group.actions());
-	menu_edition -> addSeparator();
-	menu_edition -> addActions(m_depth_action_group->actions());
+	QMenu *depth_menu = menu_edition -> addMenu(QET::Icons::BringForward, tr("Profondeur"));
+	depth_menu -> addActions(m_depth_action_group->actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_find);
 	menu_edition -> addAction(m_jump_to_element);
+	menu_edition -> addAction(m_command_search);
+	menu_edition -> addSeparator();
+	menu_edition -> addAction(m_show_shortcut_bar);
+	menu_edition -> addAction(m_repeat_last_command);
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
