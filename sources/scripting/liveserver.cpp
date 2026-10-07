@@ -550,6 +550,8 @@ QStringList LiveServer::allowedCommands()
 		QStringLiteral("diagrameditor.zoom_fit"),
 		QStringLiteral("diagrameditor.zoom_reset"),
 		QStringLiteral("diagrameditor.rotate_selection"),
+		QStringLiteral("diagrameditor.mirror_horizontal"),
+		QStringLiteral("diagrameditor.mirror_vertical"),
 		QStringLiteral("diagrameditor.rotate_texts"),
 		QStringLiteral("diagrameditor.snap_selection_to_grid"),
 		QStringLiteral("diagrameditor.group_selection"),

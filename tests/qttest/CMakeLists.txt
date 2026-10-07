@@ -775,6 +775,19 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # Mirroring a symbol on its folio (#1335): its terminals swap sides and
+  # face the other way, a second mirror puts it back, and the mirror is
+  # kept by a save. Through the real binary's --run on perceuse.qet.
+  add_executable(
+    tst_scriptmirror
+    tst_scriptmirror.cpp)
+  add_test(NAME tst_scriptmirror COMMAND tst_scriptmirror)
+  add_dependencies(tst_scriptmirror qelectrotech)
+  target_link_libraries(tst_scriptmirror PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_scriptmirror PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # Undoing a crop of a picture restores its crop rectangle too, so a
   # project saved after the undo does not record the undone crop.
   add_executable(

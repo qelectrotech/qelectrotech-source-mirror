@@ -38,6 +38,7 @@
 #include "qetinformation.h"
 #include "textlines.h"
 
+#include <QFontMetricsF>
 #include <QGraphicsSimpleTextItem>
 #include <QSet>
 #include <cmath>
@@ -48,14 +49,22 @@ namespace {
 		Draw the drawing of @a elmt's definition: its static texts, lines,
 		rectangles, circles, polygons and arcs, and its terminals when
 		@a draw_terminals, as if it were placed at @a elem_pos_x,
-		@a elem_pos_y and turned @a rotation_angle degrees. Used for every
-		symbol drawn in full, and once per block for a block's content.
+		@a elem_pos_y and turned @a rotation_angle degrees, with @a elmt's
+		mirrors when @a mirrored. Used for every symbol drawn in full, and
+		once per block for a block's content.
 	*/
 	void drawSymbol(const QString &file_path, Element *elmt,
 					qreal elem_pos_x, qreal elem_pos_y,
-					double rotation_angle, bool draw_terminals)
+					double rotation_angle, bool draw_terminals,
+					bool mirrored = false)
 	{
 		using namespace DxfExport;
+			//The mirrors of an element are about its own axes, before it is
+			//rotated, see Element::setMirror()
+		const bool mirror_h = mirrored && elmt -> hasHorizontalMirror();
+		const bool mirror_v = mirrored && elmt -> hasVerticalMirror();
+		const qreal mirror_x = mirror_h ? -1 : 1;
+		const qreal mirror_y = mirror_v ? -1 : 1;
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
 
 		Createdxf::layer = Layer::SymbolTexts;
@@ -65,8 +74,26 @@ namespace {
 			if (fontSize < 0)
 				fontSize = text->font().pixelSize();
 
-			qreal x = elem_pos_x + text->pos().x();
-			qreal y = elem_pos_y + text->pos().y();
+			QPointF text_pos = text->pos();
+			if (mirror_h || mirror_v)
+			{
+					//The text keeps reading normally: only its box is
+					//mirrored, about its own centre, as ElementPictureFactory
+					//draws it on the folio
+				QTransform box_transform;
+				box_transform.translate(text->pos().x(), text->pos().y());
+				box_transform.rotate(text->rotation());
+				const QFontMetricsF metrics(text->font());
+				const QRectF box(0, -metrics.ascent(),
+								 text->boundingRect().width(),
+								 text->boundingRect().height());
+				const QPointF centre = box_transform.mapRect(box).center();
+				text_pos += QPointF(centre.x() * (mirror_x - 1),
+									centre.y() * (mirror_y - 1));
+			}
+
+			qreal x = elem_pos_x + text_pos.x();
+			qreal y = elem_pos_y + text_pos.y();
 
 			qreal angle = text -> rotation() + rotation_angle;
 			qreal angler = angle * M_PI/180;
@@ -91,21 +118,21 @@ namespace {
 		Createdxf::layer = Layer::Symbols;
 		for (QLineF line : primitives.m_lines)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QLineF l = t.map(line);
 			Createdxf::drawLine(file_path, l, 0);
 		}
 
 		for (QRectF rect : primitives.m_rectangles)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QRectF r = t.mapRect(rect);
 			Createdxf::drawRectangle(file_path,r,0);
 		}
 
 		for (QRectF circle_rect : primitives.m_circles)
 		{
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
 			Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
 		}
@@ -114,7 +141,7 @@ namespace {
 		{
 			if (polygon.size() == 0)
 				continue;
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			QPolygonF poly = t.map(polygon);
 			if(poly.isClosed())
 				Createdxf::drawPolygon(file_path,poly,0);
@@ -133,6 +160,18 @@ namespace {
 			qreal h = arc.at(3);
 			qreal startAngle = arc.at(4);
 			qreal spanAngle = arc .at(5);
+				//In a mirror the arc starts where it ended: an angle a
+				//becomes 180 - a in a horizontal one, -a in a vertical one
+			if (mirror_h)
+			{
+				x = elem_pos_x - arc.at(0) - w;
+				startAngle = 180 - startAngle - spanAngle;
+			}
+			if (mirror_v)
+			{
+				y = elem_pos_y - arc.at(1) - h;
+				startAngle = -startAngle - spanAngle;
+			}
 			QRectF r(x,y,w,h);
 			QPointF hotspot(elem_pos_x,elem_pos_y);
 			Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
@@ -142,7 +181,7 @@ namespace {
 			// Draw terminals
 			QList<Terminal *> list_terminals = elmt->terminals();
 			QColor col("red");
-			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle).scale(mirror_x, mirror_y);
 			foreach(Terminal *tp, list_terminals) {
 				QPointF c = t.map(QPointF(tp->dock_elmt_.x(),tp->dock_elmt_.y()));
 				Createdxf::drawCircle(file_path,c,3.0,Createdxf::dxfColor(col));
@@ -345,7 +384,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		QSet<QString> used;
 		for (Element *elmt : std::as_const(list_elements)) {
 			const QString key = elmt -> location().toString();
-			if (block_names.contains(key)
+			if (elmt -> isMirrored() || block_names.contains(key)
 				|| drawsNothing(elmt, properties.draw_terminals))
 				continue;
 			QString file_name = elmt -> location().fileName();
@@ -363,6 +402,14 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			block_models << elmt;
 		}
 	}
+		//A mirrored symbol is drawn in full: an INSERT with a negative
+		//scale would mirror its texts too, which QElectroTech keeps
+		//readable
+	const auto blockOf = [&block_names](Element *elmt) {
+		return elmt -> isMirrored()
+				? QString()
+				: block_names.value(elmt -> location().toString());
+	};
 
 		//With dxf_attributes, a symbol's own texts (its label, its
 		//function...) become attributes of its INSERT, written where the
@@ -384,9 +431,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 				break;
 			auto *deti = qgraphicsitem_cast<DynamicElementTextItem *>(dti);
 			Element *elmt = deti ? deti -> parentElement() : nullptr;
-			const QString block = elmt
-					? block_names.value(elmt -> location().toString())
-					: QString();
+			const QString block = elmt ? blockOf(elmt) : QString();
 			if (block.isEmpty())
 				continue;
 
@@ -445,7 +490,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			//repeated; the label formula is how the label is made, not
 			//part data.
 		for (Element *elmt : std::as_const(list_elements)) {
-			const QString block = block_names.value(elmt -> location().toString());
+			const QString block = blockOf(elmt);
 			if (block.isEmpty())
 				continue;
 			const DiagramContext information = elmt -> elementInformations();
@@ -525,10 +570,10 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		const qreal elem_pos_x = elmt -> pos().x();
 		const qreal elem_pos_y = elmt -> pos().y();
 
-		const QString block = block_names.value(elmt -> location().toString());
+		const QString block = blockOf(elmt);
 		if (block.isEmpty()) {
 			drawSymbol(file_path, elmt, elem_pos_x, elem_pos_y,
-					   rotation_angle, properties.draw_terminals);
+					   rotation_angle, properties.draw_terminals, true);
 		} else {
 			Createdxf::layer = Layer::Symbols;
 				//QElectroTech turns a symbol clockwise, DXF counter-clockwise

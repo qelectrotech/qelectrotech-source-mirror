@@ -398,6 +398,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setElementPosition(int folioIndex, const QString &elementUuid, double x, double y);
 		Q_INVOKABLE bool moveElement(int folioIndex, const QString &elementUuid, double dx, double dy);
 		Q_INVOKABLE bool rotateElement(int folioIndex, const QString &elementUuid, double angle);
+		Q_INVOKABLE bool mirrorElement(int folioIndex, const QString &elementUuid, bool vertical = false);
+		Q_INVOKABLE QString elementMirror(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE bool deleteElement(int folioIndex, const QString &elementUuid);
 
 		// -- address what is already there --

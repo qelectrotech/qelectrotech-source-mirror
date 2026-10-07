@@ -95,6 +95,40 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 }
 
 /**
+	@brief ElementPictureFactory::getMirroredPictures
+	Same as getPictures(), for an element mirrored on its folio
+	(Element::setMirror()). The drawing is the same; only the texts differ:
+	each one is drawn so that, once the element's mirror is applied, its box
+	lands mirrored but its letters still read normally.
+	@param location
+	@param horizontal : the element's left and right swap
+	@param vertical : the element's top and bottom swap
+	@param picture
+	@param low_picture
+*/
+void ElementPictureFactory::getMirroredPictures(const ElementsLocation &location,
+												bool horizontal,
+												bool vertical,
+												QPicture &picture,
+												QPicture &low_picture)
+{
+	if(!location.exist() || !(horizontal || vertical)) {
+		return;
+	}
+
+	const QPair<QUuid, int> key(cacheKey(location),
+								(horizontal ? 1 : 0) | (vertical ? 2 : 0));
+
+	if(!m_mirrored_pictures_H.contains(key)
+	   && !build(location, nullptr, nullptr,
+				 QTransform::fromScale(horizontal ? -1 : 1, vertical ? -1 : 1))) {
+		return;
+	}
+	picture = m_mirrored_pictures_H.value(key);
+	low_picture = m_mirrored_low_pictures_H.value(key);
+}
+
+/**
 	@brief ElementPictureFactory::dropCache
 	Forget the cached drawing of the element at @p location, so the next
 	getPictures()/pixmap()/getPrimitives() call rebuilds it from the
@@ -113,6 +147,10 @@ void ElementPictureFactory::dropCache(const ElementsLocation &location)
 	const QUuid uuid = cacheKey(location);
 	m_pictures_H.remove(uuid);
 	m_low_pictures_H.remove(uuid);
+	for (int mirror = 1 ; mirror <= 3 ; ++mirror) {
+		m_mirrored_pictures_H.remove(qMakePair(uuid, mirror));
+		m_mirrored_low_pictures_H.remove(qMakePair(uuid, mirror));
+	}
 	m_pixmap_H.remove(uuid);
 		//The text items belong to the cache; nothing else holds them.
 	qDeleteAll(m_primitives_H.take(uuid).m_texts);
@@ -217,11 +255,16 @@ ElementPictureFactory::~ElementPictureFactory()
 	this function draw on it and don't store it.
 	if null, this function create a QPicture for normal and low zoom,
 	draw on it and store it in m_pictures_H and m_low_pictures_H
+	(m_mirrored_pictures_H and m_mirrored_low_pictures_H if @p mirror
+	is not the identity)
+	@param mirror : the mirror of an element to draw the drawing for, see
+	getMirroredPictures()
 	@return
 */
 bool ElementPictureFactory::build(const ElementsLocation &location,
 				  QPicture *picture,
-				  QPicture *low_picture)
+				  QPicture *low_picture,
+				  const QTransform &mirror)
 {
 	QDomElement dom = location.xml();
 
@@ -281,6 +324,8 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
 
+	m_build_mirror = mirror;
+
 	//scroll of the Children of the Definition: Parts of the Drawing
 	// Extract PLC master data for rendering plc_table parts
 	QDomElement plc_master_data;
@@ -333,9 +378,24 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		//End of the drawing
 	painter.end();
 	low_painter.end();
+	m_build_mirror = QTransform();
 	qDeleteAll(low_primitives.m_texts);
 
 	const auto uuid_ = cacheKey(location);
+	if (!mirror.isIdentity()) {
+			//The primitives are those of the drawing without mirror,
+			//already kept by the build of that one
+		qDeleteAll(primitives_.m_texts);
+		const QPair<QUuid, int> key(uuid_, (mirror.m11() < 0 ? 1 : 0)
+											| (mirror.m22() < 0 ? 2 : 0));
+		if (!picture) {
+			m_mirrored_pictures_H.insert(key, pic);
+		}
+		if (!low_picture) {
+			m_mirrored_low_pictures_H.insert(key, low_pic);
+		}
+		return true;
+	}
 	if (!picture) {
 		m_pictures_H.insert(uuid_, pic);
 		m_primitives_H.insert(uuid_, primitives_);
@@ -616,8 +676,6 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	text_document.setPlainText(dom.attribute("text"));
 
 	painter.setTransform(QTransform(), false);
-	painter.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
-	painter.rotate(dom.attribute("rotation", "0").toDouble());
 
 	/*
 		Moves the QPainter's coordinate system to render in the right place;
@@ -651,7 +709,25 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		}
 	}
 
-	painter.translate(qpainter_offset);
+	QTransform text_transform;
+	text_transform.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
+	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
+
+	if (!m_build_mirror.isIdentity())
+	{
+			//The element is mirrored about its own axes when it is drawn.
+			//Mirror the text the same way first, about the centre of its
+			//box: the two mirrors cancel on the letters, which read
+			//normally, and the box still ends up where the element's
+			//mirror puts it.
+		const QRectF box(QPointF(0, 0), text_document.size());
+		const QPointF centre = text_transform.mapRect(box).center();
+		painter.setTransform(QTransform::fromTranslate(-centre.x(), -centre.y())
+							 * m_build_mirror
+							 * QTransform::fromTranslate(centre.x(), centre.y()));
+	}
+	painter.setTransform(text_transform, true);
 
 		// force the palette used to render the QTextDocument
 	QAbstractTextDocumentLayout::PaintContext ctx;

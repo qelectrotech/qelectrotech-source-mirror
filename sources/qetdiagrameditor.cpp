@@ -78,6 +78,7 @@
 #include "utils/qetutils.h"
 #include "undocommand/groupitemscommand.h"
 #include "undocommand/alignselectioncommand.h"
+#include "undocommand/mirrorselectioncommand.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
@@ -982,6 +983,8 @@ void QETDiagramEditor::setUpActions()
 	m_rotate_selection     = m_selection_actions_group.addAction( QET::Icons::TransformRotate,   tr("Pivoter")                   );
 	m_rotate_group_selection = m_selection_actions_group.addAction( QET::Icons::TransformRotate, tr("Pivoter le groupe")         );
 	m_rotate_texts         = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")       );
+	m_mirror_horizontal    = m_selection_actions_group.addAction( QET::Icons::ImageFlipHorizontal, tr("Miroir horizontal")       );
+	m_mirror_vertical      = m_selection_actions_group.addAction( QET::Icons::ImageFlipVertical,   tr("Miroir vertical")         );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
 	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Grouper les textes sélectionnés"));
@@ -992,6 +995,9 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", tr("Éditeur de schémas"), Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_group_selection, "diagrameditor.rotate_group_selection", tr("Éditeur de schémas"), Qt::SHIFT | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
+		//M and F, the keys of the same two actions in the element editor
+	ShortcutManager::instance().registerAction(m_mirror_horizontal, "diagrameditor.mirror_horizontal", tr("Éditeur de schémas"), Qt::Key_M);
+	ShortcutManager::instance().registerAction(m_mirror_vertical, "diagrameditor.mirror_vertical", tr("Éditeur de schémas"), Qt::Key_F);
 	ShortcutManager::instance().registerAction(m_find_element, "diagrameditor.find_element", tr("Éditeur de schémas"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_group_selected_texts, "diagrameditor.group_selected_texts", tr("Éditeur de schémas"), QKeySequence());
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
@@ -1085,12 +1091,16 @@ void QETDiagramEditor::setUpActions()
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
 	m_rotate_group_selection->setStatusTip( tr("Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place", "status bar tip"));
 	m_rotate_texts    ->setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
+	m_mirror_horizontal->setStatusTip( tr("Retourne les éléments sélectionnés de gauche à droite", "status bar tip"));
+	m_mirror_vertical ->setStatusTip( tr("Retourne les éléments sélectionnés de haut en bas", "status bar tip"));
 	m_find_element    ->setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
 
 	m_delete_selection    ->setData("delete_selection");
 	m_rotate_selection    ->setData("rotate_selection");
 	m_rotate_group_selection->setData("rotate_group_selection");
 	m_rotate_texts        ->setData("rotate_selected_text");
+	m_mirror_horizontal   ->setData("mirror_horizontal");
+	m_mirror_vertical     ->setData("mirror_vertical");
 	m_find_element        ->setData("find_selected_element");
 	m_edit_selection      ->setData("edit_selected_element");
 	m_group_selected_texts->setData("group_selected_texts");
@@ -2384,6 +2394,16 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		if(c->isValid())
 			diagram->undoStack().push(c);
 	}
+	else if (value == "mirror_horizontal" || value == "mirror_vertical")
+	{
+		auto *c = new MirrorSelectionCommand(
+					diagram,
+					value == "mirror_horizontal" ? Qt::Horizontal : Qt::Vertical);
+		if (c->isValid())
+			diagram->undoStack().push(c);
+		else
+			delete c;
+	}
 	else if (value == "rotate_group_selection")
 	{
 		RotateSelectionCommand *c = new RotateSelectionCommand(diagram, 90, nullptr, true);
@@ -2621,6 +2641,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_delete_selection
 			    << m_rotate_selection
 			    << m_rotate_group_selection
+			    << m_mirror_horizontal
+			    << m_mirror_vertical
 			    << m_edit_selection
 			    << m_group_selected_texts
 			    << m_group_selection
@@ -2644,6 +2666,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
+	m_mirror_horizontal->setEnabled(!ro && selected_elements_count);
+	m_mirror_vertical->setEnabled(!ro && selected_elements_count);
 
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 	bool copiable_items  = dc.hasCopiableItems();

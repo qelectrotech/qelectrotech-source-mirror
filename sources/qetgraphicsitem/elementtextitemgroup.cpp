@@ -119,6 +119,12 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		if((item->rotation() != rotation()) && !m_block_alignment_update)
 			item->setRotation(rotation());
 		
+			//On a mirrored element, QGraphicsItemGroup::addToGroup() would
+			//fold the mirror that keeps the text and this group readable
+			//(Element::keepReadable()) into the text's transform. The group
+			//gets its own back from updateAlignment().
+		item->resetTransform();
+		resetTransform();
 		QGraphicsItemGroup::addToGroup(item);
 		updateAlignment();
 		
@@ -153,6 +159,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 */
 void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
+	resetTransform(); //See addToGroup(), given back by updateAlignment()
 	QGraphicsItemGroup::removeFromGroup(item);
 	//the item transformation is not reset, we must do it ourselves,
 	// because for example if the group rotation is 45°
@@ -162,6 +169,8 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 	item->resetTransform();
 	item->setRotation(this->rotation());
 	item->setFlag(QGraphicsItem::ItemIsSelectable, true);
+	if (m_parent_element)
+		m_parent_element->keepReadable(item);
 	updateAlignment();
 	
 	if(DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
@@ -232,6 +241,10 @@ void ElementTextItemGroup::updateAlignment()
 	prepareGeometryChange();
 	
 	QList <DynamicElementTextItem *> texts = this->texts();
+
+		//The mirror of a mirrored element's group depends on the size of
+		//the group: drop it while the texts are laid out, set it back after
+	resetTransform();
 	
 	qreal rotation_ = rotation();
 	
@@ -302,6 +315,8 @@ void ElementTextItemGroup::updateAlignment()
 	
 		//Restore the rotation
 	setRotation(rotation_);
+	if (m_parent_element)
+		m_parent_element->keepReadable(this);
 	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
@@ -357,6 +372,7 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 		setFlag(QGraphicsItem::ItemIsMovable, false);
 		connect(m_parent_element, &Element::yChanged, this, &ElementTextItemGroup::autoPos);
 		connect(m_parent_element, &Element::rotationChanged, this, &ElementTextItemGroup::autoPos);
+		connect(m_parent_element, &Element::mirrorChanged, this, &ElementTextItemGroup::autoPos);
 		if(m_parent_element->linkType() == Element::Master)
 		{
 			//We use timer to let the time of the parent element
@@ -395,6 +411,8 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 		disconnect(m_parent_element, &Element::yChanged,
 			   this, &ElementTextItemGroup::autoPos);
 		disconnect(m_parent_element, &Element::rotationChanged,
+			   this, &ElementTextItemGroup::autoPos);
+		disconnect(m_parent_element, &Element::mirrorChanged,
 			   this, &ElementTextItemGroup::autoPos);
 		if(m_parent_element->linkType() == Element::Master)
 		{
@@ -630,6 +648,10 @@ QRectF ElementTextItemGroup::boundingRect() const
 void ElementTextItemGroup::setRotation(qreal angle)
 {	
 	QGraphicsItemGroup::setRotation(angle);
+		//On a mirrored element, the mirror that keeps this group readable
+		//is about the centre of its turned box
+	if (m_parent_element)
+		m_parent_element->keepReadable(this);
 	emit rotationChanged(angle);
 }
 

@@ -21,6 +21,8 @@
 #include <QMutex>
 #include <QSharedPointer>
 #include <QHash>
+#include <QPair>
+#include <QTransform>
 
 class ElementsLocation;
 class QPicture;
@@ -83,6 +85,8 @@ class ElementPictureFactory
 		}
 
 		void getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture);
+		void getMirroredPictures(const ElementsLocation &location, bool horizontal, bool vertical,
+								 QPicture &picture, QPicture &low_picture);
 		QPixmap pixmap(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
 		void dropCache(const ElementsLocation &location);
@@ -94,7 +98,8 @@ class ElementPictureFactory
 		~ElementPictureFactory();
 
 		static QUuid cacheKey(const ElementsLocation &location);
-		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr);
+		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr,
+				   const QTransform &mirror=QTransform());
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseLine   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseRect   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
@@ -108,6 +113,12 @@ class ElementPictureFactory
 		
 		QHash<QUuid, QPicture> m_pictures_H;
 		QHash<QUuid, QPicture> m_low_pictures_H;
+			/// Drawings for mirrored elements, by element and mirror
+			/// (horizontal, vertical, both), see getMirroredPictures()
+		QHash<QPair<QUuid, int>, QPicture> m_mirrored_pictures_H;
+		QHash<QPair<QUuid, int>, QPicture> m_mirrored_low_pictures_H;
+			/// The mirror build() draws for, read by parseText()
+		QTransform m_build_mirror;
 		QHash<QUuid, QPixmap> m_pixmap_H;
 		QHash<QUuid, primitives> m_primitives_H;
 		static ElementPictureFactory* m_factory;
