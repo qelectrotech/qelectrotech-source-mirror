@@ -254,38 +254,40 @@ class BorderTitleBlock : public QObject
 		QString btb_indexrev_;      ///< titleblock index rev
 		QString btb_final_folio_;   ///< titleblock final folio
 		QString btb_auto_page_num_; ///< titleblock auto page num
-		int folio_index_;           ///< titleblock index
-		int folio_total_;           ///< titleblock total
+		int folio_index_ = 0;       ///< titleblock index
+		int folio_total_ = 0;       ///< titleblock total
 		QString btb_filename_;      ///< titleblock filename
 		QString btb_version_;       ///< titleblock version
 		/// titleblock additional fields
 		DiagramContext additional_fields_;
-		Qt::Edge m_edge;              ///< titleblock edge
+		Qt::Edge m_edge = Qt::BottomEdge; ///< titleblock edge
 		QString m_next_folio_num;     ///< titleblock next folio num
 		QString m_previous_folio_num; ///< titleblock previous folio num
 	
 		// border dimensions (rows and columns)
 		// columns: number and dimensions
-		int columns_count_;           ///< columns count
-		qreal columns_width_;         ///< columns width
-		qreal columns_header_height_; ///< columns header height
+		int columns_count_ = 0;           ///< columns count
+		qreal columns_width_ = 0;         ///< columns width
+		qreal columns_header_height_ = 0; ///< columns header height
 	
 		// rows: number and dimensions
-		int rows_count_;          ///< rows count
-		qreal rows_height_;       ///< rows height
-		qreal rows_header_width_; ///< rows header width
+		int rows_count_ = 0;          ///< rows count
+		qreal rows_height_ = 0;       ///< rows height
+		qreal rows_header_width_ = 0; ///< rows header width
 	
 		// title block dimensions
-		qreal titleblock_height_;
+		qreal titleblock_height_ = 0;
 	
 		// rectangles used for drawing operations
 		QRectF diagram_rect_;
 	
-			// display options
-		bool display_titleblock_;
-		bool display_columns_;
-		bool display_rows_;
-		bool display_border_;
+		// display options. Initialised here because the constructor sets
+		// them through importBorder() and importTitleBlock(), whose setters
+		// compare the new value with the old one before storing it.
+		bool display_titleblock_ = false;
+		bool display_columns_ = false;
+		bool display_rows_ = false;
+		bool display_border_ = false;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 };
 #endif
