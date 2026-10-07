@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+# Copyright 2006-2026 The QElectroTech Team
+# This file is part of QElectroTech.
+#
+# QElectroTech is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# QElectroTech is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+"""
+mirror_source_language.py — give every source-language string its own
+translation in the source language's .ts file.
+
+    python3 misc/i18n/mirror_source_language.py lang/qet_fr.ts
+    python3 misc/i18n/mirror_source_language.py --check lang/qet_fr.ts
+
+WHY THIS EXISTS
+
+The strings in the code are French, and they are both the translation
+key and the text the French UI shows. lang/qet_fr.ts was almost empty:
+an empty entry falls back to the code text at run time, so French never
+needed a translation. The price is that a French wording fix is a key
+change, which orphans the translation of that string in every other
+language file.
+
+With every French string mirrored into qet_fr.ts, the French UI is
+served from qet_fr.qm like any other language, and French wording can
+be corrected in the .ts alone. The key in the code then only has to
+stay stable.
+
+WHAT IT DOES
+
+For every message whose translation is empty, the source text is copied
+into the translation and the entry is finished. Nothing else changes:
+
+  - a translation with text is never touched, whether it is a French
+    rendering of an English source, identical to the source, or marked
+    unfinished (a translator's work in progress);
+  - vanished and obsolete entries are left to lupdate;
+  - in a plural message only the empty <numerusform>s are filled;
+  - the file stays byte-identical outside the rewritten <translation>
+    elements: header, locations, comments, indentation, escaping.
+
+The source text is copied as lupdate wrote it, escaping included, so
+&apos; stays &apos;. A <source> with a child element (lupdate's <byte/>)
+is refused rather than guessed at.
+
+Run it after `cmake --build . --target update_translations`, before
+committing. Forgetting it breaks nothing: an empty entry still falls
+back to the code text, and the next run fills it. `--check` exits 1
+when a run would change the file, so it can gate a commit.
+"""
+
+from __future__ import annotations
+
+import argparse
+import re
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+MESSAGE_RE = re.compile(r"<message(?P<attrs>[^>]*)>(?P<body>.*?)</message>", re.S)
+SOURCE_RE = re.compile(r"<source>(?P<text>.*?)</source>", re.S)
+TRANSLATION_RE = re.compile(
+    r"<translation(?P<attrs>[^>]*)>(?P<body>.*?)</translation>", re.S)
+FORM_RE = re.compile(r"<numerusform>(?P<text>.*?)</numerusform>", re.S)
+TYPE_RE = re.compile(r'\s*type="(?P<type>[^"]*)"')
+
+# lupdate's own layout: <translation> at 8 spaces, <numerusform> at 12.
+FORM_INDENT = " " * 12
+CLOSE_INDENT = " " * 8
+
+
+class SourceError(ValueError):
+    """A <source> that cannot be copied verbatim."""
+
+
+@dataclass
+class Stats:
+    mirrored_messages: int = 0
+    mirrored_forms: int = 0
+    unfinished_cleared: int = 0
+    kept_translated: int = 0
+    kept_identical: int = 0
+    kept_vanished: int = 0
+    kept_unfinished_with_text: int = 0
+
+    def changed(self) -> bool:
+        return self.mirrored_messages > 0
+
+    def summary(self) -> str:
+        return (
+            f"mirrored {self.mirrored_messages} message(s), "
+            f"{self.mirrored_forms} plural form(s), "
+            f"cleared {self.unfinished_cleared} unfinished flag(s); kept "
+            f"{self.kept_translated} translated, {self.kept_identical} identical, "
+            f"{self.kept_vanished} vanished, "
+            f"{self.kept_unfinished_with_text} unfinished with text")
+
+
+def _translation_type(attrs: str) -> str:
+    m = TYPE_RE.search(attrs)
+    return m.group("type") if m else ""
+
+
+def _mirror_message(match: re.Match, forms: int, stats: Stats) -> str:
+    whole = match.group(0)
+    attrs, body = match.group("attrs"), match.group("body")
+    numerus = 'numerus="yes"' in attrs
+    sm = SOURCE_RE.search(body)
+    tm = TRANSLATION_RE.search(body)
+    if sm is None or tm is None:
+        return whole
+    source = sm.group("text")
+    if "<" in source:
+        raise SourceError(
+            "a <source> contains a child element and cannot be copied: "
+            + source[:60])
+    tattrs, tbody = tm.group("attrs"), tm.group("body")
+    ttype = _translation_type(tattrs)
+    if ttype in ("vanished", "obsolete"):
+        stats.kept_vanished += 1
+        return whole
+
+    if numerus:
+        found = FORM_RE.findall(tbody)
+        empty = [f for f in found if f == ""]
+        if found and not empty:
+            if ttype == "unfinished":
+                stats.kept_unfinished_with_text += 1
+            elif all(f == source for f in found):
+                stats.kept_identical += 1
+            else:
+                stats.kept_translated += 1
+            return whole
+        if found:
+            new_body = FORM_RE.sub(
+                lambda f: f.group(0) if f.group("text") != ""
+                else f"<numerusform>{source}</numerusform>", tbody)
+            stats.mirrored_forms += len(empty)
+        else:
+            new_body = "\n" + "".join(
+                f"{FORM_INDENT}<numerusform>{source}</numerusform>\n"
+                for _ in range(forms)) + CLOSE_INDENT
+            stats.mirrored_forms += forms
+    else:
+        if tbody != "":
+            if ttype == "unfinished":
+                stats.kept_unfinished_with_text += 1
+            elif tbody == source:
+                stats.kept_identical += 1
+            else:
+                stats.kept_translated += 1
+            return whole
+        new_body = source
+
+    stats.mirrored_messages += 1
+    if ttype == "unfinished":
+        stats.unfinished_cleared += 1
+    kept_attrs = TYPE_RE.sub("", tattrs)
+    new_translation = f"<translation{kept_attrs}>{new_body}</translation>"
+    new_message_body = body[:tm.start()] + new_translation + body[tm.end():]
+    return f"<message{attrs}>{new_message_body}</message>"
+
+
+def mirror_text(text: str, forms: int = 2) -> tuple[str, Stats]:
+    """Return the mirrored .ts text and what was done to it."""
+    stats = Stats()
+    new = MESSAGE_RE.sub(lambda m: _mirror_message(m, forms, stats), text)
+    return new, stats
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Copy each empty translation's source text into the "
+                    "translation of a source-language .ts file.")
+    parser.add_argument("ts", type=Path, help="the .ts file, e.g. lang/qet_fr.ts")
+    parser.add_argument("--check", action="store_true",
+                        help="change nothing; exit 1 if a run would change the file")
+    parser.add_argument("--forms", type=int, default=2,
+                        help="plural forms to write when a plural message has "
+                             "none (default 2, French)")
+    args = parser.parse_args(argv)
+
+    with open(args.ts, encoding="utf-8", newline="") as f:
+        text = f.read()
+    try:
+        new, stats = mirror_text(text, args.forms)
+        ET.fromstring(new.encode("utf-8"))
+    except (SourceError, ET.ParseError) as e:
+        print(f"{args.ts}: {e}", file=sys.stderr)
+        return 2
+    print(f"{args.ts}: {stats.summary()}")
+    if args.check:
+        return 1 if stats.changed() else 0
+    if new != text:
+        with open(args.ts, "w", encoding="utf-8", newline="") as f:
+            f.write(new)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
