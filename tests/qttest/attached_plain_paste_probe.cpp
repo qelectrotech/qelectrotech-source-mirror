@@ -29,6 +29,15 @@ static void check(bool value, const char *message) { if (!value) throw std::runt
 static void key(Diagram *scene, QGraphicsItem *item, int code, Qt::KeyboardModifiers modifiers) {
 	QKeyEvent event(QEvent::KeyPress,code,modifiers); scene->sendEvent(item,&event);
 }
+static void redo(Diagram *scene, QGraphicsItem *item) {
+	// Qt uses Ctrl+Y on Windows and Ctrl+Shift+Z on Linux.
+	const QKeySequence shortcut(QKeySequence::Redo);
+	check(shortcut.count()==1,"platform redo shortcut is a single key combination");
+	const auto combination=shortcut[0];
+	QKeyEvent event(QEvent::KeyPress,combination.key(),combination.keyboardModifiers());
+	check(event.matches(QKeySequence::Redo),"generated key matches platform Redo");
+	scene->sendEvent(item,&event);
+}
 static void clipboard(const QString &html, const QString &plain = QString(), bool withPlain = false) {
 	auto *mime=new QMimeData; mime->setHtml(html); if(withPlain) mime->setText(plain); QApplication::clipboard()->setMimeData(mime);
 }
@@ -67,7 +76,7 @@ int main(int argc,char **argv) {
 		text->setText("old"); edit(); select(text,0,3); clipboard(rich); paste();
 		check(text->toPlainText()=="new\nline","HTML-only clipboard converts to plain with newlines"); fieldStyle(text,0,8,field);
 		key(scene,text,Qt::Key_Z,Qt::ControlModifier); check(text->toPlainText()=="old","native undo is one paste step");
-		key(scene,text,Qt::Key_Y,Qt::ControlModifier); check(text->toPlainText()=="new\nline","native redo"); fieldStyle(text,0,8,field);
+		redo(scene,text); check(text->toPlainText()=="new\nline","native redo"); fieldStyle(text,0,8,field);
 		scene->clearFocus(); QApplication::processEvents(); check(text->text()=="new\nline","editing session updates stored user text");
 		scene->undoStack().undo(); check(text->toPlainText()=="old","project undo"); scene->undoStack().redo(); check(text->toPlainText()=="new\nline","project redo");
 		std::puts("PASS: HTML-only paste, newlines, field font/size, native and project undo/redo");
@@ -77,7 +86,7 @@ int main(int argc,char **argv) {
 		QTextCursor prior(text->document()); prior.setPosition(0); prior.setPosition(1,QTextCursor::KeepAnchor); check(prior.charFormat().fontWeight()>=QFont::Bold,"existing preceding format untouched");
 		select(text,1,4); clipboard("<span style='font-size:50pt'>Z</span>"); paste(); check(text->toPlainText()=="AZil","selection replaced in formatted document"); fieldStyle(text,1,1,field);
 		key(scene,text,Qt::Key_Z,Qt::ControlModifier); check(text->toPlainText()=="ABtail","selection paste undo");
-		key(scene,text,Qt::Key_Y,Qt::ControlModifier); check(text->toPlainText()=="AZil","selection paste redo");
+		redo(scene,text); check(text->toPlainText()=="AZil","selection paste redo");
 		scene->clearFocus(); QApplication::processEvents();
 		std::puts("PASS: paste after formatted text, plain/HTML precedence, selection replacement and undo/redo");
 		text->setText("before"); edit(); select(text,0,6); clipboard("<b>ignored</b>","one\ntwo\nthree",true); paste(); fieldStyle(text,0,13,field); scene->clearFocus(); QApplication::processEvents();
