@@ -82,7 +82,7 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(con
 	@param message Error message.
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::errorWithATemplate(const TitleBlockTemplateLocation &tbt, const QString &message) {
-	QString error_message = QString("Une erreur s'est produite avec le modèle %1 : %2").arg(tbt.toString()).arg(message);
+	QString error_message = tr("Une erreur s'est produite avec le modèle %1 : %2").arg(tbt.toString()).arg(message);
 	QET::QetMessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
