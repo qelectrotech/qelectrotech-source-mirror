@@ -154,6 +154,7 @@ class DiagramView : public PaletteGraphicsView
 		void placeCellRulers();
 		void showContextToolbar(const QPoint &viewport_pos);
 		QList<QAction *> selectionCommands() const;
+		QList<QAction *> gestureCommands() const;
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which

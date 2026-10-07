@@ -93,6 +93,11 @@ void QETMainWindow::initCommonActions()
 		}
 	});
 
+	customize_action_ = new QAction(QET::Icons::ConfigureToolbars, tr("&Personnaliser..."), this);
+	ShortcutManager::instance().registerAction(customize_action_, "mainwindow.customize", tr("Général"), QKeySequence());
+	customize_action_ -> setStatusTip(tr("Barres d'outils, barre de raccourcis, clavier et gestes de la souris, dans une seule fenêtre", "status bar tip"));
+	connect(customize_action_, &QAction::triggered, qet_app, [qet_app]() { qet_app->customizeQET(); });
+
 	export_config_action_ = new QAction(QET::Icons::DocumentExport, tr("Enregistrer la configuration sous..."), this);
 	export_config_action_ -> setStatusTip(tr("Enregistre les réglages de QElectroTech dans un fichier", "status bar tip"));
 	connect(export_config_action_, &QAction::triggered, qet_app, &QETApp::exportConfiguration);
@@ -190,6 +195,7 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
+	settings_menu_ -> addAction(customize_action_);
 	settings_menu_ -> addSeparator();
 	settings_menu_ -> addAction(export_config_action_);
 	settings_menu_ -> addAction(import_config_action_);
@@ -272,6 +278,22 @@ void QETMainWindow::updateFullScreenAction()
 		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein écran", "status bar tip"));
 	}
 	ShortcutManager::instance().registerAction(fullscreen_action_, "mainwindow.fullscreen", tr("Général"), Qt::CTRL | Qt::SHIFT | Qt::Key_F);
+}
+
+/**
+	@brief QETMainWindow::createPopupMenu
+	The menu shown on a right-click on a toolbar or a dock title, and the
+	Configuration > Afficher submenu: Qt's list of toolbars and docks,
+	then Personnaliser..., as in most applications with toolbars.
+*/
+QMenu *QETMainWindow::createPopupMenu()
+{
+	QMenu *menu = QMainWindow::createPopupMenu();
+	if (menu) {
+		menu -> addSeparator();
+		menu -> addAction(customize_action_);
+	}
+	return menu;
 }
 
 /**

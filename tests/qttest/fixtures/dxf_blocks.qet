@@ -1,0 +1,79 @@
+<project title="DXF symbol blocks" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7b10}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">dxf_blocks</property>
+        <property name="savedtime" show="1">18:39</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a01}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/curves.elmt" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a02}" x="300" y="300" z="10">
+                <terminals/>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                    <elementInformation name="manufacturer" show="1">Schneider</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7b01}" x="0" y="25">
+                        <text>K1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="1" prefix="" type="embed://import/curves.elmt" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a03}" x="500" y="300" z="10">
+                <terminals/>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">K2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7b02}" x="0" y="25">
+                        <text>K2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="en">Imported elements</name>
+            </names>
+            <element name="curves.elmt">
+                <definition height="80" hotspot_x="10" hotspot_y="10" link_type="simple" type="element" version="0.100.0" width="120">
+                    <uuid uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a05}"/>
+                    <names>
+                        <name lang="en">Circle and arc</name>
+                    </names>
+                    <description>
+                        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="0" width="20" height="20"/>
+                        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" y="0" width="20" height="20" start="30" angle="120"/>
+                    </description>
+                </definition>
+            </element>
+        </category>
+    </collection>
+</project>

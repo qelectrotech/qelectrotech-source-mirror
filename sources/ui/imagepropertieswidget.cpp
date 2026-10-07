@@ -22,6 +22,9 @@
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qeticons.h"
 #include "../ui_imagepropertieswidget.h"
+#include <QSignalBlocker>
+#include <QDialog>
+#include <QEvent>
 
 /**
 	@brief ImagePropertiesWidget::ImagePropertiesWidget
@@ -53,6 +56,19 @@ ImagePropertiesWidget::~ImagePropertiesWidget()
 	delete ui;
 }
 
+bool ImagePropertiesWidget::event(QEvent *event)
+{
+	// The generic properties dialog resets on its Cancel button, but its
+	// title-bar close and Escape reach reject() directly. Roll back the
+	// same preview in all rejection paths, without changing other editors.
+	if (event->type() == QEvent::ParentChange) {
+		if (auto *dialog = qobject_cast<QDialog *>(parentWidget())) {
+			connect(dialog, &QDialog::rejected, this, &ImagePropertiesWidget::reset, Qt::UniqueConnection);
+		}
+	}
+	return PropertiesEditorWidget::event(event);
+}
+
 /**
 	@brief ImagePropertiesWidget::setImageItem
 	Set the image to edit properties
@@ -67,12 +83,15 @@ void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 	{
 		disconnect(m_image, &DiagramImageItem::transformChanged, this, &ImagePropertiesWidget::updateUi);
 		disconnect(m_image, &DiagramImageItem::labelChanged, this, &ImagePropertiesWidget::updateUi);
+		disconnect(m_image, &DiagramImageItem::adaptToDarkThemeChanged, this, &ImagePropertiesWidget::updateUi);
 	}
 
 	m_image = image;
 	connect(m_image, &DiagramImageItem::transformChanged, this, &ImagePropertiesWidget::updateUi);
 	connect(m_image, &DiagramImageItem::labelChanged, this, &ImagePropertiesWidget::updateUi);
+	connect(m_image, &DiagramImageItem::adaptToDarkThemeChanged, this, &ImagePropertiesWidget::updateUi);
 	m_movable = image->isMovable();
+	m_adapt_to_dark_theme = image->adaptToDarkTheme();
 	m_scaleX = m_image->scaleFactorX();
 	m_scaleY = m_image->scaleFactorY();
 	m_rotation = m_image->rotationAngle();
@@ -107,6 +126,7 @@ void ImagePropertiesWidget::apply()
 	m_skewX = m_image->skewX();
 	m_skewY = m_image->skewY();
 	m_label = m_image->label();
+	m_adapt_to_dark_theme = m_image->adaptToDarkTheme();
 }
 
 /**
@@ -124,6 +144,9 @@ void ImagePropertiesWidget::reset()
 	m_image->setSkewY(m_skewY);
 	m_image->setLabel(m_label);
 	m_image->setMovable(m_movable);
+	m_preview_dark_theme = true;
+	m_image->setAdaptToDarkTheme(m_adapt_to_dark_theme);
+	m_preview_dark_theme = false;
 	updateUi();
 }
 
@@ -146,6 +169,7 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 		connect (ui->m_skew_x_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		connect (ui->m_skew_y_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		connect (ui->m_label_le, &QLineEdit::editingFinished, this, &ImagePropertiesWidget::apply);
+		connect (ui->m_adapt_to_dark_theme_cb, &QCheckBox::clicked, this, &ImagePropertiesWidget::apply);
 	}
 	else
 	{
@@ -155,6 +179,7 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 		disconnect (ui->m_skew_x_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		disconnect (ui->m_skew_y_sb, &QDoubleSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
 		disconnect (ui->m_label_le, &QLineEdit::editingFinished, this, &ImagePropertiesWidget::apply);
+		disconnect (ui->m_adapt_to_dark_theme_cb, &QCheckBox::clicked, this, &ImagePropertiesWidget::apply);
 	}
 
 	return true;
@@ -179,7 +204,7 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 	const qreal newSkewX = ui->m_skew_x_sb->value();
 	const qreal newSkewY = ui->m_skew_y_sb->value();
 
-	QPropertyUndoCommand *undo = nullptr;
+	QUndoCommand *undo = nullptr;
 	auto chain = [&](const char *property, qreal oldValue, qreal newValue, const QString &text)
 	{
 		if (qFuzzyCompare(oldValue, newValue))
@@ -188,9 +213,10 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 			new QPropertyUndoCommand(m_image, property, oldValue, newValue, undo);
 		else
 		{
-			undo = new QPropertyUndoCommand(m_image, property, oldValue, newValue);
-			undo->enableAnimation();
-			undo->setText(text);
+			auto *change = new QPropertyUndoCommand(m_image, property, oldValue, newValue);
+			change->enableAnimation();
+			change->setText(text);
+			undo = change;
 		}
 	};
 
@@ -213,6 +239,14 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 		}
 	}
 
+	const bool adapt = ui->m_adapt_to_dark_theme_cb->isChecked();
+	if (adapt != m_adapt_to_dark_theme) {
+		if (undo) new QPropertyUndoCommand(m_image, "adaptToDarkTheme", m_adapt_to_dark_theme, adapt, undo);
+		else {
+			undo = new QUndoCommand(tr("Modifier l'adaptation d'une image au thème sombre"));
+			new QPropertyUndoCommand(m_image, "adaptToDarkTheme", m_adapt_to_dark_theme, adapt, undo);
+		}
+	}
 	return undo;
 }
 
@@ -233,6 +267,9 @@ void ImagePropertiesWidget::updateUi()
 	// signal from a resize handle used directly on the canvas while
 	// this dialog is open).
 	if (!m_image || m_updating_ratio) return;
+	if (m_live_edit && !m_preview_dark_theme) m_adapt_to_dark_theme = m_image->adaptToDarkTheme();
+	const QSignalBlocker darkThemeBlocker(ui->m_adapt_to_dark_theme_cb);
+	ui->m_adapt_to_dark_theme_cb->setChecked(m_image->adaptToDarkTheme());
 
 	m_updating_ratio = true;
 	ui->m_width_sb->setValue(m_image->scaleFactorX() * 100.0);
@@ -394,4 +431,12 @@ void ImagePropertiesWidget::on_m_skew_y_sb_valueChanged(double value)
 void ImagePropertiesWidget::on_m_lock_pos_cb_clicked()
 {
 	m_image->setMovable(!ui->m_lock_pos_cb->isChecked());
+}
+
+void ImagePropertiesWidget::on_m_adapt_to_dark_theme_cb_toggled(bool checked)
+{
+	if (!m_image) return;
+	m_preview_dark_theme = true;
+	m_image->setAdaptToDarkTheme(checked);
+	m_preview_dark_theme = false;
 }

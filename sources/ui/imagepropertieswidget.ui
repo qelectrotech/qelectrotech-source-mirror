@@ -173,7 +173,17 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
+   <item row="8" column="0" colspan="3">
+    <widget class="QCheckBox" name="m_adapt_to_dark_theme_cb">
+     <property name="text">
+      <string>Adapter l’image au thème sombre</string>
+     </property>
+     <property name="toolTip">
+      <string>Adapte les couleurs à l’affichage sombre uniquement. L’image originale, les exports et les impressions restent inchangés.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

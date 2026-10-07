@@ -22,6 +22,8 @@
 #include <QtCore>
 #include <QtWidgets>
 
+#include <functional>
+
 /**
 	@brief The Createdxf class
 	This class exports the project to DXF Format
@@ -31,8 +33,38 @@ class Createdxf
 	public:
 		Createdxf();
 		~Createdxf();
-		static void dxfBegin (const QString&, const QStringList &layers = QStringList());
+		static void dxfBegin (const QString&, const QStringList &layers = QStringList(),
+				      const std::function<void()> &writeBlocks = {});
 		static void dxfEnd(const QString&);
+		static void dxfBlockBegin(const QString &fileName,
+					  const QString &name,
+					  double x,
+					  double y,
+					  bool hasAttributes = false);
+		static void dxfBlockEnd(const QString &fileName);
+			/// One attribute of a placed block, in DXF units
+		struct Attribute
+		{
+			QString tag;
+			QString text;
+			double x = 0;
+			double y = 0;
+			double height = 0;
+			double rotation = 0;
+			double xScaleW = 1;
+			int colour = 0;
+			bool invisible = false;
+			QString layer; ///< empty: the INSERT's layer
+		};
+		static void drawInsert(const QString &fileName,
+				       const QString &name,
+				       double x,
+				       double y,
+				       double rotation,
+				       const QList<Attribute> &attributes = {});
+		static void drawAttdef(const QString &fileName,
+				       const Attribute &attribute);
+		static QString blockName(const QString &name);
 		// you can add more functions to create more drawings.
 		static void drawCircle(
 				const QString&,
@@ -139,6 +171,20 @@ class Createdxf
 				int hAlign,
 				int vAlign,
 				double xAlign,
+				double xScale,
+				int colour);
+		static void drawTextAligned(
+				const QString& fileName,
+				const QString& text,
+				double x,
+				double y,
+				double height,
+				double rotation,
+				double oblique,
+				int hAlign,
+				int vAlign,
+				double xAlign,
+				double yAlign,
 				double xScale,
 				int colour);
 

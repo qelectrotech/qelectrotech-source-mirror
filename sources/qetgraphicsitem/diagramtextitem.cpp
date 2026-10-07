@@ -22,6 +22,8 @@
 #include "../qetapp.h"
 #include "../richtext/richtexteditor_p.h"
 #include "../textanchor.h"
+#include "../utils/qetutils.h"
+#include "../QetGraphicsItemModeler/textresizehandles.h"
 
 /**
 	@brief DiagramTextItem::DiagramTextItem
@@ -335,6 +337,7 @@ void DiagramTextItem::focusInEvent(QFocusEvent *event)
 	
 	m_previous_html_text = toHtml();
 	m_previous_text = toPlainText();
+	refreshTextResizeHandles();
 }
 
 /**
@@ -357,6 +360,89 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
+	refreshTextResizeHandles();
+}
+
+/**
+	@brief DiagramTextItem::itemChange
+	Show or hide the resize handles with the selection and the scene.
+	@param change
+	@param value
+	@return
+*/
+QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+		//Also when the text comes back to a scene: Qt keeps it selected
+		//across removeItem()/addItem() (undoing a delete) and sends no
+		//selection change, and its handles were removed with the scene.
+	if (change == QGraphicsItem::ItemSelectedHasChanged
+		|| change == QGraphicsItem::ItemSceneHasChanged)
+		refreshTextResizeHandles();
+
+	return QGraphicsTextItem::itemChange(change, value);
+}
+
+/**
+	@brief DiagramTextItem::textResizeHandlesWanted
+	@return true when the corner handles to change the width of this text
+	should be shown. A text without a "textWidth" property never has them.
+*/
+bool DiagramTextItem::textResizeHandlesWanted() const
+{
+	return false;
+}
+
+/**
+	@brief DiagramTextItem::isEditing
+	@return true while the text itself is being typed in
+*/
+bool DiagramTextItem::isEditing() const
+{
+	return textInteractionFlags() & Qt::TextEditable;
+}
+
+/**
+	@brief DiagramTextItem::refreshTextResizeHandles
+	Create or remove the corner handles to change the width of this text,
+	according to textResizeHandlesWanted().
+	Called from itemChange() and when the edition starts or ends, not from
+	paint(): moving items from paint() left fragments behind
+	(qelectrotech#1002).
+*/
+void DiagramTextItem::refreshTextResizeHandles()
+{
+	const bool wanted = scene() && textResizeHandlesWanted();
+	if (wanted && !m_resize_handles)
+	{
+		m_resize_handles = new TextResizeHandles(this, QETUtils::graphicsHandlerSize(this));
+		connect(m_resize_handles, &TextResizeHandles::resizeFinished,
+				this, &DiagramTextItem::pushResizeCommand);
+	}
+	else if (!wanted && m_resize_handles) {
+		removeTextResizeHandles();
+	}
+}
+
+/**
+	@brief DiagramTextItem::removeTextResizeHandles
+*/
+void DiagramTextItem::removeTextResizeHandles()
+{
+	delete m_resize_handles;
+	m_resize_handles = nullptr;
+}
+
+/**
+	@brief DiagramTextItem::pushResizeCommand
+	Make the width change done with the resize handles undoable. The change
+	is already applied, live during the drag.
+*/
+void DiagramTextItem::pushResizeCommand(qreal old_width, qreal new_width,
+										QPointF old_pos, QPointF new_pos)
+{
+	if (Diagram *diagram_ = diagram())
+		diagram_->undoStack().push(new TextResizeCommand(this, old_width, new_width,
+														 old_pos, new_pos));
 }
 
 /**
