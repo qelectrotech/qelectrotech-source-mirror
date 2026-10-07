@@ -373,6 +373,15 @@ jobs:
           echo "=== Contents of nsis_root/files/ ==="
           ls "$GITHUB_WORKSPACE/nsis_root/files/"
 
+      - name: Diagnose NSIS plugins
+        shell: msys2 {0}
+        run: |
+          pacman -Q mingw-w64-ucrt-x86_64-nsis || true
+          echo "=== nsDialogs.dll ==="
+          find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' || true
+          echo "=== Plugins tree ==="
+          find "$MSYSTEM_PREFIX/share/nsis/Plugins" -maxdepth 2 | head -60 || true
+
       - name: Build NSIS installer
         shell: msys2 {0}
         run: |
@@ -380,8 +389,22 @@ jobs:
           NSIS_ROOT="$GITHUB_WORKSPACE/nsis_root"
           cd "$NSIS_ROOT"
           echo "=== CWD : $(pwd) ==="
-          MSYS2_ARG_CONV_EXCL="*" makensis /V4 QET64.nsi
-          RC=$?
+
+          # Fallback: if makensis does not register its plugin dir, point it
+          # at the folder that actually contains nsDialogs.dll.
+          EXTRA=()
+          DLL=$(find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' | head -1 || true)
+          if [ -n "$DLL" ]; then
+            PLUGDIR_WIN=$(cygpath -w "$(dirname "$DLL")")
+            echo "nsDialogs.dll found in: $PLUGDIR_WIN"
+            EXTRA=(-X"!addplugindir $PLUGDIR_WIN")
+          else
+            echo "::error::nsDialogs.dll not found in the MSYS2 NSIS package"
+            exit 1
+          fi
+
+          RC=0
+          MSYS2_ARG_CONV_EXCL="*" makensis /V4 "${EXTRA[@]}" QET64.nsi || RC=$?
           echo "=== Contents of nsis_root after makensis ==="
           ls "$NSIS_ROOT/"
           [ $RC -eq 0 ] || { echo "ERROR: makensis failed (exit $RC)"; exit 1; }
