@@ -41,7 +41,7 @@ AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
 	ui->m_table_font_pb->setText(m_table_font.family());
 	m_content_widget = content_widget;
 	content_widget->setParent(this);
-	ui->m_tab->addTab(content_widget, tr("Contenu"));
+	ui->m_tab->addTab(content_widget, tr("Content"));
 	fillSavedQuery();
 	
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &AddTableDialog::saveConfig);
@@ -198,7 +198,7 @@ QWidget *AddTableDialog::contentWidget() const
 void AddTableDialog::on_m_header_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Sélectionner la police des en tête du tableau"));
+	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Select the font at the top of the table"));
 	if (b) {
 		m_header_font = font;
 		ui->m_header_font_pb->setText(font.family());
@@ -209,7 +209,7 @@ void AddTableDialog::on_m_header_font_pb_clicked()
 void AddTableDialog::on_m_table_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Sélectionner la police des cellules du tableau"));
+	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Select the font of the table cells"));
 	if (b) {
 		m_table_font = font;
 		ui->m_table_font_pb->setText(font.family());

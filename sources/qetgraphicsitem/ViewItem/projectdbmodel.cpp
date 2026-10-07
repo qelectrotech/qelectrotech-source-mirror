@@ -360,7 +360,7 @@ void ProjectDBModel::setHeaderString()
 		if (field_name == "position") {
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {
-			header_name = tr("Position du folio");
+			header_name = tr("Sheet position");
 		} else {
 			header_name = QETInformation::translatedInfoKey(field_name);
 			if (header_name.isEmpty()) {

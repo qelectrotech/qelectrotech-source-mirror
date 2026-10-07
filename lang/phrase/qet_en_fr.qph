@@ -1,5 +1,5 @@
 <!DOCTYPE QPH>
-<QPH sourcelanguage="fr_FR" language="en">
+<QPH sourcelanguage="en" language="fr">
 <phrase>
     <source>Blue : Blue</source>
     <target>Blue : Blue</target>
@@ -396,33 +396,33 @@
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : DeepPink</source>
-    <target>Pink: DeepPink</target>
+    <source>Pink: DeepPink</source>
+    <target>Pink : DeepPink</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : HotPink</source>
-    <target>Pink: HotPink</target>
+    <source>Pink: HotPink</source>
+    <target>Pink : HotPink</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : LightPink</source>
-    <target>Pink: LightPink</target>
+    <source>Pink: LightPink</source>
+    <target>Pink : LightPink</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : MediumVioletRed</source>
-    <target>Pink: MediumVioletRed</target>
+    <source>Pink: MediumVioletRed</source>
+    <target>Pink : MediumVioletRed</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : PaleVioletRed</source>
-    <target>Pink: PaleVioletRed</target>
+    <source>Pink: PaleVioletRed</source>
+    <target>Pink : PaleVioletRed</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Pink : Pink</source>
-    <target>Pink: Pink</target>
+    <source>Pink: Pink</source>
+    <target>Pink : Pink</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
@@ -526,8 +526,8 @@
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Red : DarkSalmon</source>
-    <target>Red: DarkSalmon</target>
+    <source>Red: DarkSalmon</source>
+    <target>Red : DarkSalmon</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
@@ -536,18 +536,18 @@
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Red : IndianRed</source>
-    <target>Red: IndianRed</target>
+    <source>Red: IndianRed</source>
+    <target>Red : IndianRed</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Red : LightCoral</source>
-    <target>Red: LightCoral</target>
+    <source>Red: LightCoral</source>
+    <target>Red : LightCoral</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Red : LightSalmon</source>
-    <target>Red: LightSalmon</target>
+    <source>Red: LightSalmon</source>
+    <target>Red : LightSalmon</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
@@ -556,8 +556,8 @@
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>Red : Salmon</source>
-    <target>Red: Salmon</target>
+    <source>Red: Salmon</source>
+    <target>Red : Salmon</target>
     <definition>element part filling</definition>
 </phrase>
 <phrase>
@@ -701,23 +701,23 @@
     <definition>element part filling</definition>
 </phrase>
 <phrase>
-    <source>armoire</source>
-    <target>cabinet</target>
+    <source>cabinet</source>
+    <target>armoire</target>
     <definition>cabinet / enclosure</definition>
 </phrase>
 <phrase>
-    <source>bobine</source>
-    <target>coil</target>
+    <source>coil</source>
+    <target>bobine</target>
     <definition>coil</definition>
 </phrase>
 <phrase>
-    <source>borne</source>
-    <target>terminal</target>
+    <source>terminal</source>
+    <target>borne</target>
     <definition>terminal - a connection point on a symbol</definition>
 </phrase>
 <phrase>
-    <source>bornier</source>
-    <target>terminal strip</target>
+    <source>terminal strip</source>
+    <target>bornier</target>
     <definition>terminal strip</definition>
 </phrase>
 <phrase>
@@ -726,18 +726,18 @@
     <definition>cable</definition>
 </phrase>
 <phrase>
-    <source>calibre</source>
-    <target>rating</target>
+    <source>rating</source>
+    <target>calibre</target>
     <definition>rating - the current rating of a device</definition>
 </phrase>
 <phrase>
-    <source>cartouche</source>
-    <target>title block</target>
+    <source>title block</source>
+    <target>cartouche</target>
     <definition>title block - the framed information panel</definition>
 </phrase>
 <phrase>
-    <source>champ de texte</source>
-    <target>text field</target>
+    <source>text field</source>
+    <target>champ de texte</target>
     <definition>text field</definition>
 </phrase>
 <phrase>
@@ -746,8 +746,8 @@
     <definition>collection - the symbol library</definition>
 </phrase>
 <phrase>
-    <source>conducteur</source>
-    <target>conductor</target>
+    <source>conductor</source>
+    <target>conducteur</target>
     <definition>conductor - the drawn wire between terminals</definition>
 </phrase>
 <phrase>
@@ -756,23 +756,23 @@
     <definition>contact</definition>
 </phrase>
 <phrase>
-    <source>contacteur</source>
-    <target>contactor</target>
+    <source>contactor</source>
+    <target>contacteur</target>
     <definition>contactor</definition>
 </phrase>
 <phrase>
-    <source>courant</source>
-    <target>current</target>
+    <source>current</source>
+    <target>courant</target>
     <definition>current</definition>
 </phrase>
 <phrase>
-    <source>disjoncteur</source>
-    <target>circuit breaker</target>
+    <source>circuit breaker</source>
+    <target>disjoncteur</target>
     <definition>circuit breaker</definition>
 </phrase>
 <phrase>
-    <source>dossier</source>
-    <target>folder</target>
+    <source>folder</source>
+    <target>dossier</target>
     <definition>folder</definition>
 </phrase>
 <phrase>
@@ -781,63 +781,63 @@
     <definition>element - a symbol placed on a sheet</definition>
 </phrase>
 <phrase>
-    <source>esclave</source>
-    <target>slave</target>
+    <source>slave</source>
+    <target>esclave</target>
     <definition>slave - the contact block belonging to a master</definition>
 </phrase>
 <phrase>
-    <source>fil</source>
-    <target>wire</target>
+    <source>wire</source>
+    <target>fil</target>
     <definition>wire</definition>
 </phrase>
 <phrase>
-    <source>folio</source>
-    <target>sheet</target>
+    <source>sheet</source>
+    <target>folio</target>
     <definition>sheet - one drawing of a set</definition>
 </phrase>
 <phrase>
-    <source>fusible</source>
-    <target>fuse</target>
+    <source>fuse</source>
+    <target>fusible</target>
     <definition>fuse</definition>
 </phrase>
 <phrase>
-    <source>grille</source>
-    <target>grid</target>
+    <source>grid</source>
+    <target>grille</target>
     <definition>grid</definition>
 </phrase>
 <phrase>
-    <source>interrupteur</source>
-    <target>switch</target>
+    <source>switch</source>
+    <target>interrupteur</target>
     <definition>switch</definition>
 </phrase>
 <phrase>
-    <source>maitre</source>
-    <target>master</target>
+    <source>master</source>
+    <target>maitre</target>
     <definition>master - the element a cross-reference points from</definition>
 </phrase>
 <phrase>
-    <source>modele</source>
-    <target>template</target>
+    <source>template</source>
+    <target>modele</target>
     <definition>template</definition>
 </phrase>
 <phrase>
-    <source>moteur</source>
-    <target>motor</target>
+    <source>motor</source>
+    <target>moteur</target>
     <definition>motor</definition>
 </phrase>
 <phrase>
-    <source>neutre</source>
-    <target>neutral</target>
+    <source>neutral</source>
+    <target>neutre</target>
     <definition>neutral</definition>
 </phrase>
 <phrase>
-    <source>nomenclature</source>
-    <target>parts list</target>
+    <source>parts list</source>
+    <target>nomenclature</target>
     <definition>parts list / bill of materials</definition>
 </phrase>
 <phrase>
-    <source>numerotation</source>
-    <target>numbering</target>
+    <source>numbering</source>
+    <target>numerotation</target>
     <definition>numbering - automatic wire and part numbering</definition>
 </phrase>
 <phrase>
@@ -846,73 +846,107 @@
     <definition>phase</definition>
 </phrase>
 <phrase>
-    <source>potentiel</source>
-    <target>potential</target>
+    <source>potential</source>
+    <target>potentiel</target>
     <definition>potential - conductors electrically joined as one node</definition>
 </phrase>
 <phrase>
-    <source>projet</source>
-    <target>project</target>
+    <source>project</source>
+    <target>projet</target>
     <definition>project - the .qet file holding the sheets</definition>
 </phrase>
 <phrase>
-    <source>puissance</source>
-    <target>power</target>
+    <source>power</source>
+    <target>puissance</target>
     <definition>power</definition>
 </phrase>
 <phrase>
-    <source>relais</source>
-    <target>relay</target>
+    <source>relay</source>
+    <target>relais</target>
     <definition>relay</definition>
 </phrase>
 <phrase>
-    <source>renvoi de folio</source>
-    <target>sheet cross-reference</target>
+    <source>sheet cross-reference</source>
+    <target>renvoi de folio</target>
     <definition>sheet cross-reference</definition>
 </phrase>
 <phrase>
-    <source>repere</source>
-    <target>designation</target>
+    <source>designation</source>
+    <target>repere</target>
     <definition>designation - the identifying mark on a part</definition>
 </phrase>
 <phrase>
-    <source>report de folio</source>
-    <target>sheet cross-reference</target>
+    <source>sheet cross-reference</source>
+    <target>report de folio</target>
     <definition>sheet cross-reference (the arrow symbol)</definition>
 </phrase>
 <phrase>
-    <source>schema</source>
-    <target>diagram</target>
+    <source>diagram</source>
+    <target>schema</target>
     <definition>diagram</definition>
 </phrase>
 <phrase>
-    <source>section</source>
-    <target>cross-section</target>
+    <source>cross-section</source>
+    <target>section</target>
     <definition>cross-section - conductor size in mm2</definition>
 </phrase>
 <phrase>
-    <source>sommaire</source>
-    <target>summary</target>
+    <source>summary</source>
+    <target>sommaire</target>
     <definition>summary / table of contents</definition>
 </phrase>
 <phrase>
-    <source>tension</source>
-    <target>voltage</target>
+    <source>voltage</source>
+    <target>tension</target>
     <definition>voltage</definition>
 </phrase>
 <phrase>
-    <source>terre</source>
-    <target>earth</target>
+    <source>earth</source>
+    <target>terre</target>
     <definition>earth / ground</definition>
 </phrase>
 <phrase>
-    <source>texte</source>
-    <target>text</target>
+    <source>text</source>
+    <target>texte</target>
     <definition>text</definition>
 </phrase>
 <phrase>
-    <source>transformateur</source>
-    <target>transformer</target>
+    <source>transformer</source>
+    <target>transformateur</target>
     <definition>transformer</definition>
+</phrase>
+<phrase>
+    <source>%n selected parts.</source>
+    <target>%n partie sélectionnée.@%n parties sélectionnées.</target>
+</phrase>
+<phrase>
+    <source>La vérification de cet élément a généré %n avertissement(s) :</source>
+    <target>La vérification de cet élément a généré %n avertissement :@La vérification de cet élément a généré %n avertissements :</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>%n elements</source>
+    <target>%n élément@%n éléments</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>%n conductors</source>
+    <target>%n conducteur@%n conducteurs</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>%n textfields</source>
+    <target>%n champ de texte@%n champs de texte</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Cut %n cells</source>
+    <target>Couper %n cellule@Couper %n cellules</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Paste %n cells</source>
+    <target>Coller %n cellule@Coller %n cellules</target>
+    <definition>undo caption</definition>
 </phrase>
 </QPH>

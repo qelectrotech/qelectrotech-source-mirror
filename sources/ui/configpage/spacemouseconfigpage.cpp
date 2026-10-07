@@ -46,7 +46,7 @@ namespace {
 		//nothing. Real action ids are never empty (ShortcutManager assigns
 		//them from source, not user input), so an empty string can never
 		//collide with a real one.
-	const QString UNBOUND_LABEL = QObject::tr("(Aucune action)", "spacemouse config: unbound button");
+	const QString UNBOUND_LABEL = QObject::tr("(No action)", "spacemouse config: unbound button");
 }
 
 /**
@@ -68,10 +68,9 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	vlayout->addWidget(buildMotionGroup());
 
 	auto *intro_label = new QLabel(
-		tr("Associez un numéro de bouton de votre souris 3D (SpaceMouse, SpacePilot...) "
-		   "à une action de QElectroTech. Le numéro de bouton dépend de votre appareil "
-		   "et de son pilote -- reportez-vous à sa documentation, ou essayez successivement "
-		   "les valeurs à partir de 0.",
+		tr("Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a "
+		   "QElectroTech action. The button number depends on your device and its driver -- "
+		   "see its documentation, or try the values one by one starting from 0.",
 		   "spacemouse config page intro"));
 	intro_label->setWordWrap(true);
 
@@ -79,7 +78,7 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	buttons_layout->addWidget(intro_label);
 
 	m_table = new QTableWidget(0, 3, this);
-	m_table->setHorizontalHeaderLabels({tr("N° bouton"), tr("Action"), QString()});
+	m_table->setHorizontalHeaderLabels({tr("Button no."), tr("Action"), QString()});
 	m_table->horizontalHeader()->setSectionResizeMode(COL_BUTTON, QHeaderView::ResizeToContents);
 	m_table->horizontalHeader()->setSectionResizeMode(COL_ACTION, QHeaderView::Stretch);
 	m_table->horizontalHeader()->setSectionResizeMode(COL_REMOVE, QHeaderView::ResizeToContents);
@@ -88,7 +87,7 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	m_table->setSelectionMode(QAbstractItemView::NoSelection);
 	buttons_layout->addWidget(m_table);
 
-	auto *add_button = new QPushButton(QET::Icons::Add, tr("Ajouter une association"), this);
+	auto *add_button = new QPushButton(QET::Icons::Add, tr("Add a link"), this);
 	connect(add_button, &QPushButton::clicked, this, &SpaceMouseConfigPage::addRow);
 
 	auto *bottom_layout = new QHBoxLayout();
@@ -96,7 +95,7 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	bottom_layout->addStretch();
 	buttons_layout->addLayout(bottom_layout);
 
-	auto *buttons_group = new QGroupBox(tr("Boutons"), this);
+	auto *buttons_group = new QGroupBox(tr("Buttons"), this);
 	buttons_group->setLayout(buttons_layout);
 	vlayout->addWidget(buttons_group);
 
@@ -132,34 +131,34 @@ QGroupBox *SpaceMouseConfigPage::buildMotionGroup()
 	m_dead_zone = new QSpinBox(this);
 	m_dead_zone->setRange(0, 200);
 	m_dead_zone->setValue(settings.dead_zone);
-	m_dead_zone->setToolTip(tr("Les petits mouvements en dessous de ce seuil sont ignorés. "
-				   "Augmentez-le si la vue dérive quand vous ne touchez pas la souris."));
+	m_dead_zone->setToolTip(tr("Small movements below this threshold are ignored. Raise it if the "
+				   "view drifts when you are not touching the mouse."));
 
 	m_zoom_axis = new QComboBox(this);
-	m_zoom_axis->addItem(tr("Pousser / tirer le capuchon"),
+	m_zoom_axis->addItem(tr("Push / pull the cap"),
 			     static_cast<int>(SpaceMouseSettings::ZoomAxis::PushPull));
-	m_zoom_axis->addItem(tr("Tourner le capuchon"),
+	m_zoom_axis->addItem(tr("Twist the cap"),
 			     static_cast<int>(SpaceMouseSettings::ZoomAxis::Twist));
 	m_zoom_axis->setCurrentIndex(
 		m_zoom_axis->findData(static_cast<int>(settings.zoom_axis)));
 
-	m_invert_pan_x = new QCheckBox(tr("Inverser le déplacement horizontal"), this);
+	m_invert_pan_x = new QCheckBox(tr("Reverse horizontal movement"), this);
 	m_invert_pan_x->setChecked(settings.invert_pan_x);
-	m_invert_pan_y = new QCheckBox(tr("Inverser le déplacement vertical"), this);
+	m_invert_pan_y = new QCheckBox(tr("Reverse vertical movement"), this);
 	m_invert_pan_y->setChecked(settings.invert_pan_y);
-	m_invert_zoom = new QCheckBox(tr("Inverser le zoom"), this);
+	m_invert_zoom = new QCheckBox(tr("Reverse zoom"), this);
 	m_invert_zoom->setChecked(settings.invert_zoom);
 
 	auto *form = new QFormLayout();
-	form->addRow(tr("Vitesse de déplacement :"), m_pan_speed);
-	form->addRow(tr("Vitesse du zoom :"), m_zoom_speed);
-	form->addRow(tr("Zoomer en :"), m_zoom_axis);
-	form->addRow(tr("Zone morte :"), m_dead_zone);
+	form->addRow(tr("Pan speed:"), m_pan_speed);
+	form->addRow(tr("Zoom speed:"), m_zoom_speed);
+	form->addRow(tr("Zoom by:"), m_zoom_axis);
+	form->addRow(tr("Dead zone:"), m_dead_zone);
 	form->addRow(m_invert_pan_x);
 	form->addRow(m_invert_pan_y);
 	form->addRow(m_invert_zoom);
 
-	auto *group = new QGroupBox(tr("Mouvement"), this);
+	auto *group = new QGroupBox(tr("Movement"), this);
 	group->setLayout(form);
 	return group;
 }
@@ -217,7 +216,7 @@ void SpaceMouseConfigPage::appendRow(int button, const QString &action_id)
 
 	auto *remove_button = new QToolButton(m_table);
 	remove_button->setIcon(QET::Icons::EditTableDeleteRow);
-	remove_button->setToolTip(tr("Supprimer cette association"));
+	remove_button->setToolTip(tr("Remove this link"));
 	connect(remove_button, &QToolButton::clicked, this, &SpaceMouseConfigPage::removeSelectedRow);
 	m_table->setCellWidget(row, COL_REMOVE, remove_button);
 }
@@ -293,7 +292,7 @@ void SpaceMouseConfigPage::applyConf()
 
 QString SpaceMouseConfigPage::title() const
 {
-	return tr("Souris 3D", "configuration page title");
+	return tr("3D mouse", "configuration page title");
 }
 
 QIcon SpaceMouseConfigPage::icon() const

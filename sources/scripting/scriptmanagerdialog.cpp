@@ -45,14 +45,14 @@ ScriptManagerDialog::ScriptManagerDialog(Runner runner, QWidget *parent) :
 	QDialog(parent),
 	m_runner(std::move(runner))
 {
-	setWindowTitle(tr("Gérer les scripts"));
+	setWindowTitle(tr("Manage scripts"));
 	setAttribute(Qt::WA_DeleteOnClose);
 
 	m_list = new QListWidget(this);
 	m_list->setIconSize(QSize(24, 24));
 	m_list->setMinimumWidth(220);
-	auto *new_button = new QPushButton(tr("&Nouveau"), this);
-	m_delete = new QPushButton(tr("Supp&rimer"), this);
+	auto *new_button = new QPushButton(tr("&New"), this);
+	m_delete = new QPushButton(tr("&Delete"), this);
 	auto *left_buttons = new QHBoxLayout();
 	left_buttons->addWidget(new_button);
 	left_buttons->addWidget(m_delete);
@@ -61,28 +61,28 @@ ScriptManagerDialog::ScriptManagerDialog(Runner runner, QWidget *parent) :
 	left->addLayout(left_buttons);
 
 	m_name = new QLineEdit(this);
-	m_name->setPlaceholderText(tr("Le texte du bouton"));
+	m_name->setPlaceholderText(tr("The button's text"));
 	m_icon = new QLineEdit(this);
-	m_icon->setPlaceholderText(tr("vide : les initiales du nom ; builtin:<nom> : une icône du thème"));
+	m_icon->setPlaceholderText(tr("empty: the name's initials; builtin:<name>: an icon of the theme"));
 	m_icon_preview = new QToolButton(this);
 	m_icon_preview->setIconSize(QSize(24, 24));
-	m_icon_preview->setToolTip(tr("Choisir une image (SVG ou PNG)…"));
+	m_icon_preview->setToolTip(tr("Choose an image (SVG or PNG)…"));
 	auto *icon_row = new QHBoxLayout();
 	icon_row->addWidget(m_icon);
 	icon_row->addWidget(m_icon_preview);
 	m_tooltip = new QLineEdit(this);
 	m_shortcut = new QKeySequenceEdit(this);
 	m_context = new QComboBox(this);
-	m_context->addItem(tr("Toujours"), QStringLiteral("canvas"));
-	m_context->addItem(tr("Avec une sélection"), QStringLiteral("selection"));
-	m_context->addItem(tr("Avec un conducteur sélectionné"), QStringLiteral("conductor"));
+	m_context->addItem(tr("Always"), QStringLiteral("canvas"));
+	m_context->addItem(tr("With a selection"), QStringLiteral("selection"));
+	m_context->addItem(tr("With a conductor selected"), QStringLiteral("conductor"));
 
 	auto *form = new QFormLayout();
-	form->addRow(tr("Nom :"), m_name);
-	form->addRow(tr("Icône :"), icon_row);
-	form->addRow(tr("Info-bulle :"), m_tooltip);
-	form->addRow(tr("Raccourci :"), m_shortcut);
-	form->addRow(tr("Actif :"), m_context);
+	form->addRow(tr("Name:"), m_name);
+	form->addRow(tr("Icon:"), icon_row);
+	form->addRow(tr("Tooltip:"), m_tooltip);
+	form->addRow(tr("Shortcut:"), m_shortcut);
+	form->addRow(tr("Enabled:"), m_context);
 
 	m_body = new QPlainTextEdit(this);
 	m_body->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
@@ -93,12 +93,12 @@ ScriptManagerDialog::ScriptManagerDialog(Runner runner, QWidget *parent) :
 	m_status->setWordWrap(true);
 	m_status->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
-	m_test = new QPushButton(tr("&Tester"), this);
-	m_test->setToolTip(tr("Enregistre puis exécute le script sur le projet courant"
-			      " (Ctrl+Z annule l'exécution)"));
-	m_save = new QPushButton(tr("&Enregistrer"), this);
-	auto *folder_button = new QPushButton(tr("Ouvrir le &dossier"), this);
-	auto *close_button = new QPushButton(tr("&Fermer"), this);
+	m_test = new QPushButton(tr("&Test"), this);
+	m_test->setToolTip(tr("Saves, then runs the script on the current project "
+			      "(Ctrl+Z undoes the run)"));
+	m_save = new QPushButton(tr("&Save"), this);
+	auto *folder_button = new QPushButton(tr("Open the &folder"), this);
+	auto *close_button = new QPushButton(tr("&Close"), this);
 		//Enter in a field saves; in the script it is a new line
 	m_save->setDefault(true);
 	auto *buttons = new QHBoxLayout();
@@ -110,7 +110,7 @@ ScriptManagerDialog::ScriptManagerDialog(Runner runner, QWidget *parent) :
 
 	auto *right = new QVBoxLayout();
 	right->addLayout(form);
-	right->addWidget(new QLabel(tr("Script (l'objet qet ; qet.currentFolio() est le folio affiché) :"), this));
+	right->addWidget(new QLabel(tr("Script (the qet object; qet.currentFolio() is the sheet shown):"), this));
 	right->addWidget(m_body, 1);
 	right->addWidget(m_status);
 	right->addLayout(buttons);
@@ -183,7 +183,7 @@ void ScriptManagerDialog::reload()
 		auto *item = new QListWidgetItem(file, m_list);
 		item->setData(Qt::UserRole, path);
 		item->setForeground(palette().color(QPalette::PlaceholderText));
-		item->setToolTip(tr("Pas de bouton : %1").arg(error.section(QStringLiteral(": "), 1)));
+		item->setToolTip(tr("No button: %1").arg(error.section(QStringLiteral(": "), 1)));
 		if (path == current) m_list->setCurrentItem(item);
 	}
 	m_loading = false;
@@ -213,7 +213,7 @@ void ScriptManagerDialog::showScript(const QString &path)
 	setModified(false);
 	m_status->setText(h.isValid()
 			  ? QDir::toNativeSeparators(path)
-			  : tr("Pas de bouton pour ce fichier : %1").arg(h.error));
+			  : tr("No button for this file: %1").arg(h.error));
 }
 
 void ScriptManagerDialog::clearForm()
@@ -240,15 +240,15 @@ void ScriptManagerDialog::newScript()
 	m_loading = false;
 	clearForm();
 	m_loading = true;
-	m_name->setText(tr("Nouveau script"));
+	m_name->setText(tr("New script"));
 	m_body->setPlainText(tr(
-		"// qet.currentFolio() est le folio affiché ; un clic s'annule\n"
-		"// d'un seul Ctrl+Z. Liste des appels : qet.apiSignatures()\n"
+		"// qet.currentFolio() is the sheet shown; one click is undone\n"
+		"// with a single Ctrl+Z. List of calls: qet.apiSignatures()\n"
 		"var f = qet.currentFolio();\n"
-		"qet.addText(f, \"Texte\", 40, 40);\n"));
+		"qet.addText(f, \"Text\", 40, 40);\n"));
 	m_loading = false;
 	setModified(true);
-	m_status->setText(tr("Pas encore enregistré"));
+	m_status->setText(tr("Not saved yet"));
 	m_name->setFocus();
 	m_name->selectAll();
 }
@@ -262,7 +262,7 @@ bool ScriptManagerDialog::save()
 {
 	const QString name = m_name->text().simplified();
 	if (name.isEmpty()) {
-		m_status->setText(tr("Le script doit avoir un nom."));
+		m_status->setText(tr("The script needs a name."));
 		m_name->setFocus();
 		return false;
 	}
@@ -281,7 +281,7 @@ bool ScriptManagerDialog::save()
 				     m_context->currentData().toString(), m_body->toPlainText());
 	const ScriptHeader h = ScriptHeader::parse(text, QFileInfo(path).completeBaseName());
 	if (!h.isValid()) {
-		m_status->setText(tr("Non enregistré : %1").arg(h.error));
+		m_status->setText(tr("Not saved: %1").arg(h.error));
 		return false;
 	}
 
@@ -289,7 +289,7 @@ bool ScriptManagerDialog::save()
 	QSaveFile file(path);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)
 	    || file.write(text.toUtf8()) < 0 || !file.commit()) {
-		m_status->setText(tr("Impossible d'écrire %1").arg(QDir::toNativeSeparators(path)));
+		m_status->setText(tr("Cannot write %1").arg(QDir::toNativeSeparators(path)));
 		return false;
 	}
 	m_path = path;
@@ -305,8 +305,8 @@ void ScriptManagerDialog::deleteScript()
 		return;
 	}
 	const auto answer = QET::QetMessageBox::question(
-		this, tr("Supprimer le script"),
-		tr("Supprimer « %1 » et son bouton ?").arg(m_name->text()),
+		this, tr("Delete the script"),
+		tr("Delete “%1” and its button?").arg(m_name->text()),
 		QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
 	if (answer != QMessageBox::Yes) return;
 
@@ -339,7 +339,7 @@ void ScriptManagerDialog::testScript()
 void ScriptManagerDialog::chooseIcon()
 {
 	const QString source = QFileDialog::getOpenFileName(
-		this, tr("Icône du script"), QString(),
+		this, tr("Script icon"), QString(),
 		tr("Images (*.svg *.png)"));
 	if (source.isEmpty()) return;
 	QDir dir(ScriptLibrary::folder());
@@ -349,7 +349,7 @@ void ScriptManagerDialog::chooseIcon()
 	if (QFileInfo(source).absoluteFilePath() != QFileInfo(target).absoluteFilePath()) {
 		QFile::remove(target);
 		if (!QFile::copy(source, target)) {
-			m_status->setText(tr("Impossible de copier %1").arg(QDir::toNativeSeparators(source)));
+			m_status->setText(tr("Cannot copy %1").arg(QDir::toNativeSeparators(source)));
 			return;
 		}
 	}
@@ -372,15 +372,15 @@ void ScriptManagerDialog::setModified(bool modified)
 	m_modified = modified;
 	m_save->setEnabled(modified);
 	m_delete->setEnabled(!m_path.isEmpty() || modified);
-	setWindowTitle(tr("Gérer les scripts") + (modified ? QStringLiteral(" *") : QString()));
+	setWindowTitle(tr("Manage scripts") + (modified ? QStringLiteral(" *") : QString()));
 }
 
 bool ScriptManagerDialog::confirmDiscard()
 {
 	if (!m_modified) return true;
 	const auto answer = QET::QetMessageBox::question(
-		this, tr("Gérer les scripts"),
-		tr("Le script affiché n'est pas enregistré. Enregistrer ?"),
+		this, tr("Manage scripts"),
+		tr("The script shown is not saved. Save it?"),
 		QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
 		QMessageBox::Save);
 	if (answer == QMessageBox::Cancel) return false;

@@ -57,7 +57,7 @@ void DiagramTextItem::build()
 	setFont(QETApp::diagramTextsItemFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setNoEditable(false);
-	setToolTip(tr("Maintenir ctrl pour un déplacement libre"));
+	setToolTip(tr("Hold ctrl to free movement"));
 }
 
 /**
@@ -657,7 +657,7 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	
 	// Add movement instruction for DynamicElementTextItem
 	if (inherits("DynamicElementTextItem")) {
-		str_ToolTip += tr("\n<Shift> to move");
+		str_ToolTip += tr("\nHold Shift and drag to move this text on its own");
 	}
 	
 	setToolTip(str_ToolTip);

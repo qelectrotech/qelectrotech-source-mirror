@@ -105,10 +105,10 @@ m_rotation(rotation)
 	{
 		QStringList parts;
 		if (texts_list.count())
-			parts << QObject::tr("%n texte(s)", "", texts_list.count());
+			parts << QObject::tr("%n texts", "", texts_list.count());
 		if (groups_list.count())
-			parts << QObject::tr("%n groupe(s) de textes", "", groups_list.count());
-		setText(QObject::tr("Pivoter %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts)));
+			parts << QObject::tr("%n groups of texts", "", groups_list.count());
+		setText(QObject::tr("Rotate %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts)));
 
 		for(DiagramTextItem *dti : texts_list)
 			setupAnimation(dti, "rotation", dti->rotation(), m_rotation);
@@ -171,7 +171,7 @@ bool RotateTextsCommand::askRotation(qreal &rotation)
 #ifdef Q_OS_MACOS
 	ori_text_dialog.setWindowFlags(Qt::Sheet);
 #endif
-	ori_text_dialog.setWindowTitle(QObject::tr("Orienter les textes sélectionnés", "window title"));
+	ori_text_dialog.setWindowTitle(QObject::tr("Choose orientation for selected texts", "window title"));
 	
 	
 	QTextOrientationSpinBoxWidget *ori_widget = QETApp::createTextOrientationSpinBoxWidget();

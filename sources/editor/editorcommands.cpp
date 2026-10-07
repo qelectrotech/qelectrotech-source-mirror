@@ -106,7 +106,7 @@ CutPartsCommand::CutPartsCommand(
 ) :
 	DeletePartsCommand(scene, parts.toVector(), parent)
 {
-	setText(QString(QObject::tr("couper des parties", "undo caption")));
+	setText(QString(QObject::tr("cut parts", "undo caption")));
 }
 
 /// Destructeur
@@ -128,7 +128,7 @@ MovePartsCommand::MovePartsCommand(
 	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("déplacement", "undo caption"), scene, nullptr, parent),
+	ElementEditionCommand(QObject::tr("move", "undo caption"), scene, nullptr, parent),
 	movement(m),
 	first_redo(true)
 {
@@ -170,7 +170,7 @@ ChangeNamesCommand::ChangeNamesCommand(
 	const NamesList &after,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("modification noms", "undo caption"), element_scene, nullptr, parent),
+	ElementEditionCommand(QObject::tr("modify names", "undo caption"), element_scene, nullptr, parent),
 	names_before(before),
 	names_after(after)
 {
@@ -219,16 +219,16 @@ ChangeZValueCommand::ChangeZValueCommand(
 
 	// choisit le nom en fonction du traitement
 	if (m_option == QET::BringForward) {
-		setText(QObject::tr("amener au premier plan", "undo caption"));
+		setText(QObject::tr("bring forward", "undo caption"));
 		applyBringForward(items_list);
 	} else if (m_option == QET::Raise) {
-		setText(QObject::tr("rapprocher", "undo caption"));
+		setText(QObject::tr("raise", "undo caption"));
 		applyRaise(items_list);
 	} else if (m_option == QET::Lower) {
-		setText(QObject::tr("éloigner", "undo caption"));
+		setText(QObject::tr("lower", "undo caption"));
 		applyLower(items_list);
 	} else if (m_option == QET::SendBackward) {
-		setText(QObject::tr("envoyer au fond", "undo caption"));
+		setText(QObject::tr("Send to back", "undo caption"));
 		applySendBackward(items_list);
 	}
 }
@@ -331,7 +331,7 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	@param parent QUndoCommand parent
 */
 ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const QString &old_infos, const QString &new_infos, QUndoCommand *parent) :
-	ElementEditionCommand(QObject::tr("modification informations complementaires", "undo caption"), elmt, nullptr, parent),
+	ElementEditionCommand(QObject::tr("Modification complementary information", "undo caption"), elmt, nullptr, parent),
 	old_informations_(old_infos),
 	new_informations_(new_infos)
 {
@@ -463,9 +463,9 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 void ScalePartsCommand::adjustText()
 {
 	if (scaled_primitives_.count() == 1) {
-		setText(QObject::tr("redimensionnement %1", "undo caption -- %1 is the resized primitive type name").arg(scaled_primitives_.first() -> name()));
+		setText(QObject::tr("scale %1", "undo caption -- %1 is the resized primitive type name").arg(scaled_primitives_.first() -> name()));
 	} else {
-		setText(QObject::tr("redimensionnement de %1 primitives", "undo caption -- %1 always > 1").arg(scaled_primitives_.count()));
+		setText(QObject::tr("scale %1primitives", "undo caption -- %1 always > 1").arg(scaled_primitives_.count()));
 	}
 }
 
@@ -485,7 +485,7 @@ changeElementDataCommand::changeElementDataCommand(ElementScene *scene,
 	m_old(old_data),
 	m_new(new_data)
 {
-	setText(QObject::tr("Modifier les propriétées de l'élément"));
+	setText(QObject::tr("Modify item properties"));
 }
 
 void changeElementDataCommand::undo() {
@@ -499,7 +499,7 @@ void changeElementDataCommand::redo() {
 }
 
 RotateElementsCommand::RotateElementsCommand(ElementScene *scene, QUndoCommand *parent) :
-ElementEditionCommand(QObject::tr("Pivoter la selection", "undo caption"), scene, nullptr, parent)
+ElementEditionCommand(QObject::tr("Rotate the selection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
 }
@@ -604,7 +604,7 @@ void RotateElementsCommand::redo()
 
 
 RotateFineElementsCommand::RotateFineElementsCommand(ElementScene *scene, QUndoCommand *parent) :
-ElementEditionCommand(QObject::tr("Pivoter la selection", "undo caption"), scene, nullptr, parent)
+ElementEditionCommand(QObject::tr("Rotate the selection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
 }
@@ -690,7 +690,7 @@ static QPointF selectionCenter(const QList<QGraphicsItem *> &items)
 }
 
 MirrorElementsCommand::MirrorElementsCommand(ElementScene *scene, QUndoCommand *parent) :
-ElementEditionCommand(QObject::tr("Miroir de sélection", "undo caption"), scene, nullptr, parent)
+ElementEditionCommand(QObject::tr("Mirror selection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
 	m_axis_x = selectionCenter(m_items).x();
@@ -739,7 +739,7 @@ void MirrorElementsCommand::undo()
 
 
 FlipElementsCommand::FlipElementsCommand(ElementScene *scene, QUndoCommand *parent) :
-ElementEditionCommand(QObject::tr("Retourner la sélection", "undo caption"), scene, nullptr, parent)
+ElementEditionCommand(QObject::tr("Flip selection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
 	m_axis_y = selectionCenter(m_items).y();
@@ -798,7 +798,7 @@ ScaleElementCommand::ScaleElementCommand(ElementScene *scene,
 										 qreal factor,
 										 bool scale_text,
 										 QUndoCommand *parent) :
-	ElementEditionCommand(QObject::tr("mise à l'échelle de l'élément", "undo caption"),
+	ElementEditionCommand(QObject::tr("scale the element", "undo caption"),
 						  scene, nullptr, parent),
 	m_factor(factor)
 {

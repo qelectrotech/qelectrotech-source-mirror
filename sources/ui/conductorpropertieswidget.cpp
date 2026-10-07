@@ -219,7 +219,7 @@ void ConductorPropertiesWidget::setMixedTextFields(
 
 	for (const auto &edit : edits)
 		edit.second->setPlaceholderText(mixed.contains(edit.first)
-			? tr("Plusieurs valeurs", "several conductors, different values")
+			? tr("Several values", "several conductors, different values")
 			: QString());
 }
 
@@ -234,9 +234,9 @@ void ConductorPropertiesWidget::setTextLocked(bool locked)
 	m_text_locked = locked;
 	ui->m_text_le->setEnabled(!locked && ui->m_formula_le->text().isEmpty());
 	ui->m_text_le->setToolTip(locked
-		? tr("Plusieurs conducteurs sélectionnés : le texte se modifie "
-		     "sur un seul conducteur à la fois.")
-		: tr("Texte"));
+		? tr("Several conductors selected: the text is changed on one "
+		     "conductor at a time.")
+		: tr("Text"));
 }
 
 /**
@@ -247,10 +247,10 @@ void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
 	ui->m_show_text_cb->setDisabled(disable==true? true : false);
 		//Say why the box is locked: the setting that locks it is not in this dialog
 	ui->m_show_text_cb->setToolTip(disable
-		? tr("Texte visible\n"
-		     "Verrouillé par l'option « Afficher un texte de potentiel par "
-		     "folio » de ce folio, dans Propriétés du folio.")
-		: tr("Texte visible"));
+		? tr("Visible text\n"
+		     "Locked by this sheet's “Show one potential text per sheet” "
+		     "option, in Sheet properties.")
+		: tr("Visible text"));
 }
 
 /**
@@ -285,9 +285,9 @@ void ConductorPropertiesWidget::initWidget()
 	m_horiz_select = QETApp::createTextOrientationSpinBoxWidget();
 	ui -> m_text_angle_gl -> addWidget(m_horiz_select, 2, 1, Qt::AlignHCenter);
 
-	ui -> m_line_style_cb -> addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
-	ui -> m_line_style_cb -> addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));
-	ui -> m_line_style_cb -> addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
+	ui -> m_line_style_cb -> addItem(tr("Solid line", "conductor style: solid line"), QPen(Qt::SolidLine));
+	ui -> m_line_style_cb -> addItem(tr("Dashed line", "conductor style: dashed line"), QPen(Qt::DashLine));
+	ui -> m_line_style_cb -> addItem(tr("Dots and dashes", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
 
 	ui -> m_update_preview_pb -> setHidden(true);
 

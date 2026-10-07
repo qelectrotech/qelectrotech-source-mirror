@@ -149,7 +149,7 @@ void EllipseEditor::updateRect()
 		if (rect != part->property("rect"))
 		{
 			auto undo= new QPropertyUndoCommand(ellipse, "rect", ellipse->property("rect"), rect);
-			undo->setText(tr("Modifier une ellipse"));
+			undo->setText(tr("Change an ellipse"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}

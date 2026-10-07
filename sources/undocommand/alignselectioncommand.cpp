@@ -140,7 +140,7 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 	{
 		for (const Entry &entry : std::as_const(entries))
 			move(entry.item, Alignment::gridOffset(entry.snap_point, x_grid, y_grid, entry.divisor));
-		setText(QObject::tr("Aligner %n objet(s) sur la grille", "", childCount()));
+		setText(QObject::tr("Align %n objects to the grid", "", childCount()));
 		return;
 	}
 
@@ -184,7 +184,7 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 		for (int i : units.at(u))
 			move(entries.at(i).item, offset);
 	}
-	setText(QObject::tr("Aligner %n objet(s)", "", childCount()));
+	setText(QObject::tr("Align %n items", "", childCount()));
 }
 
 /**

@@ -87,10 +87,10 @@ RenumberPreviewDialog::Answer RenumberPreviewDialog::ask(
 	const int changed = changedLabelCount(changes);
 	QString text = intro;
 	if (changes.size() > changed) {
-		text += QLatin1Char('\n') + tr("%n élément(s) gardent le nom qu'ils ont.", "", changes.size() - changed);
+		text += QLatin1Char('\n') + tr("%n elements keep the name they have.", "", changes.size() - changed);
 	}
 	if (!left_alone.isEmpty()) {
-		text += QLatin1Char('\n') + tr("%n élément(s) restent comme ils sont.", "", left_alone.size());
+		text += QLatin1Char('\n') + tr("%n elements stay as they are.", "", left_alone.size());
 	}
 	auto *intro_label = new QLabel(text, &dialog);
 	intro_label->setWordWrap(true);
@@ -98,7 +98,7 @@ RenumberPreviewDialog::Answer RenumberPreviewDialog::ask(
 
 	auto *table = new QTableWidget(&dialog);
 	table->setColumnCount(4);
-	table->setHorizontalHeaderLabels({tr("Folio"), tr("Élément"), tr("Nom actuel"), tr("Nouveau nom")});
+	table->setHorizontalHeaderLabels({tr("Sheet"), tr("Element"), tr("Current name"), tr("New name")});
 	table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	table->setSelectionBehavior(QAbstractItemView::SelectRows);
 	table->verticalHeader()->setVisible(false);
@@ -181,7 +181,7 @@ bool RenumberPreviewDialog::confirm(
 {
 	QVector<LeftAlone> left;
 	for (Element *el : frozen) {
-		left.append({el, tr("(figé)")});
+		left.append({el, tr("(frozen)")});
 	}
 	return ask(parent, title, intro, changes, left) == Answer::Go;
 }

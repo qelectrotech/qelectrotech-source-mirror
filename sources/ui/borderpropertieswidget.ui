@@ -17,13 +17,13 @@
    <item>
     <widget class="QGroupBox" name="border_gb">
      <property name="title">
-      <string>Dimensions du folio</string>
+      <string>Sheet size</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="2">
        <widget class="QSpinBox" name="m_rows_height_sp">
         <property name="suffix">
-         <string comment="pixel" extracomment="pixel">px</string>
+         <string comment="pixel" extracomment="pixel">pixel</string>
         </property>
         <property name="prefix">
          <string>x</string>
@@ -39,7 +39,7 @@
       <item row="0" column="2">
        <widget class="QSpinBox" name="m_columns_width_sp">
         <property name="suffix">
-         <string comment="pixel" extracomment="pixel">px</string>
+         <string comment="pixel" extracomment="pixel">pixel</string>
         </property>
         <property name="prefix">
          <string>x</string>
@@ -52,14 +52,14 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Lignes :</string>
+         <string>Rows:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="3">
        <widget class="QCheckBox" name="m_display_rows_cb">
         <property name="text">
-         <string>Afficher les en-têtes</string>
+         <string>Display headers</string>
         </property>
        </widget>
       </item>
@@ -69,28 +69,28 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Colonnes :</string>
+         <string>Columns:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
        <widget class="QCheckBox" name="m_display_columns_cb">
         <property name="text">
-         <string>Afficher les en-têtes</string>
+         <string>Display headers</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="m_paper_label">
         <property name="text">
-         <string>Format :</string>
+         <string>Format:</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
        <widget class="QComboBox" name="m_paper_cb">
         <property name="toolTip">
-         <string>Règle les colonnes et les lignes pour que le folio, cartouche compris, ait la taille de ce format de papier, à 96 points par pouce comme l'export PDF.</string>
+         <string>Sets the columns and rows so the sheet, title block included, has the size of this paper format, at 96 dots per inch like the PDF export.</string>
         </property>
        </widget>
       </item>

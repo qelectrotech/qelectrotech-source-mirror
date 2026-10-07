@@ -41,7 +41,7 @@ AddElementTextCommand::AddElementTextCommand(Element *element,
 	m_element(element),
 	m_text(deti)
 {
-	setText(QObject::tr("Ajouter un texte d'élément"));	
+	setText(QObject::tr("Add element text"));	
 }
 
 /**
@@ -92,7 +92,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 	m_element(element),
 	m_name(std::move(groupe_name))
 {
-	setText(QObject::tr("Ajouter un groupe de textes d'élément"));
+	setText(QObject::tr("Add a group of element texts"));
 }
 
 /**
@@ -110,7 +110,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 	m_element(element),
 	m_dom_element(dom_element)
 {
-	setText(QObject::tr("Ajouter un groupe de textes d'élément"));
+	setText(QObject::tr("Add a group of element texts"));
 }
 
 /**
@@ -140,7 +140,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(
 		}
 	}
 	
-	setText(QObject::tr("Grouper des textes d'élément"));
+	setText(QObject::tr("Grouping element texts"));
 }
 
 /**
@@ -216,7 +216,7 @@ RemoveTextsGroupCommand::RemoveTextsGroupCommand(Element *element,
 	m_element(element),
 	m_group(group)
 {
-	setText(QObject::tr("Supprimer un groupe de textes d'élément"));
+	setText(QObject::tr("Delete a group of element texts"));
 	
 	for(DynamicElementTextItem *deti : group->texts())
 		m_text_list.append(deti);
@@ -280,7 +280,7 @@ AddTextToGroupCommand::AddTextToGroupCommand(DynamicElementTextItem *text,
 	m_group(group),
 	m_element(group->parentElement())
 {
-	setText(QObject::tr("Insérer un texte d'élément dans un groupe de textes"));
+	setText(QObject::tr("Insert element text into a text group"));
 }
 
 /**
@@ -340,7 +340,7 @@ RemoveTextFromGroupCommand::RemoveTextFromGroupCommand(
 	m_group(group),
 	m_element(group->parentElement())
 {
-	setText(QObject::tr("Enlever un texte d'élément d'un groupe de textes"));
+	setText(QObject::tr("Remove an element text from a group of texts"));
 }
 
 /**
@@ -394,7 +394,7 @@ AlignmentTextsGroupCommand::AlignmentTextsGroupCommand(
 	m_previous_alignment(group->alignment()),
 	m_new_alignment(new_alignment)
 {
-	setText(QObject::tr("Modifier l'alignement d'un groupe de textes"));
+	setText(QObject::tr("Modify the alignment of a group of texts"));
 	
 		//Text haven't got alignment
 	if(m_previous_alignment != Qt::AlignLeft ||

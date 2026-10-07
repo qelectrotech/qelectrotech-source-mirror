@@ -50,28 +50,28 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 	auto *main_layout = new QGridLayout(this);
 
 	// Row 0: Status label + buttons (shown when already linked)
-	m_label = new QLabel(tr("Cet élément est déjà lié"), this);
-	m_unlink_pb = new QPushButton(tr("Délier"), this);
-	m_show_this_pb = new QPushButton(tr("Voir cet élément"), this);
+	m_label = new QLabel(tr("This element is already linked"), this);
+	m_unlink_pb = new QPushButton(tr("Unlink"), this);
+	m_show_this_pb = new QPushButton(tr("View this item"), this);
 
 	main_layout->addWidget(m_label, 0, 0);
 	main_layout->addWidget(m_unlink_pb, 0, 1);
 	main_layout->addWidget(m_show_this_pb, 0, 2);
 
 	// Row 1: Hide linked elements checkbox
-	m_hide_linked_cb = new QCheckBox(tr("Masquer les éléments connectés"), this);
+	m_hide_linked_cb = new QCheckBox(tr("Hide connected elements"), this);
 	main_layout->addWidget(m_hide_linked_cb, 1, 0, 1, 3);
 
 	// Row 2: Search field
 	m_search_field = new QLineEdit(this);
-	m_search_field->setPlaceholderText(tr("Recherche"));
+	m_search_field->setPlaceholderText(tr("Search"));
 	main_layout->addWidget(m_search_field, 2, 0, 1, 3);
 
 	// Row 3: Tree widget
 	m_tree_widget = new QTreeWidget(this);
 	m_tree_widget->setHeaderLabels({
-		tr("Label"), tr("Type"), tr("Adresse"),
-		tr("Fonction"), tr("Commentaire"), tr("Bornes")
+		tr("Label"), tr("Type"), tr("Address"),
+		tr("Function"), tr("Annotation"), tr("Terminals")
 	});
 	m_tree_widget->setRootIsDecorated(true);
 	m_tree_widget->setIndentation(20);
@@ -88,8 +88,8 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 
 	// Row 4: Hidden masters note
 	m_hidden_masters_label = new QLabel(
-		tr("Remarque : les éléments maîtres ayant atteint leur nombre maximal "
-		   "d'esclaves sont masqués."), this);
+		tr("Note: Master elements that have reached their maximum number of "
+		   "slaves are hidden."), this);
 	m_hidden_masters_label->setWordWrap(true);
 	QFont italic_font = m_hidden_masters_label->font();
 	italic_font.setItalic(true);
@@ -153,7 +153,7 @@ QUndoCommand *PlcLinkWidget::associatedUndo() const
 
 QString PlcLinkWidget::title() const
 {
-	return tr("Automate (PLC)");
+	return tr("Programmable Logic Controller (PLC)");
 }
 
 void PlcLinkWidget::updateUi()
@@ -271,7 +271,7 @@ void PlcLinkWidget::buildPlcTree()
 					for (Element *linked : elmt->linkedElements()) {
 						if (elmt->groupIndexForElement(linked) == i) {
 							child_item->setToolTip(0,
-								tr("Lié à: %1").arg(linked->actualLabel()));
+								tr("Related to: %1").arg(linked->actualLabel()));
 							break;
 						}
 					}
@@ -377,7 +377,7 @@ void PlcLinkWidget::on_m_tree_widget_customContextMenuRequested(const QPoint &po
 		return; // Already linked, no actions
 
 	QMenu menu;
-	QAction *link_action = menu.addAction(tr("Connecter"));
+	QAction *link_action = menu.addAction(tr("Log in"));
 
 	QAction *selected_action = menu.exec(m_tree_widget->viewport()->mapToGlobal(pos));
 	if (selected_action == link_action) {

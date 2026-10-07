@@ -35,23 +35,23 @@ namespace {
 DuplicateOffsetDialog::DuplicateOffsetDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Dupliquer"));
+	setWindowTitle(tr("Duplicate"));
 
 	auto *form = new QFormLayout;
 
 	m_spacing = new QSpinBox(this);
 	m_spacing->setRange(1, 1000);
-	m_spacing->setSuffix(tr(" pas de grille"));
-	form->addRow(tr("Espacement :"), m_spacing);
+	m_spacing->setSuffix(tr(" no grid"));
+	form->addRow(tr("Spacing:"), m_spacing);
 
 	m_direction = new QComboBox(this);
 	// Order matches the Direction enum, so currentIndex() can be used
 	// directly wherever Direction is needed.
-	m_direction->addItem(tr("Haut"));
-	m_direction->addItem(tr("Bas"));
-	m_direction->addItem(tr("Gauche"));
-	m_direction->addItem(tr("Droite"));
-	form->addRow(tr("Direction :"), m_direction);
+	m_direction->addItem(tr("Top"));
+	m_direction->addItem(tr("Bottom"));
+	m_direction->addItem(tr("Left"));
+	m_direction->addItem(tr("Right"));
+	form->addRow(tr("Direction:"), m_direction);
 
 	const QPoint saved = savedStepOffset();
 	// The saved value is a signed (dx, dy) pair, not itself a

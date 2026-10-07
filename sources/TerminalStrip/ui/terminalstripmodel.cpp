@@ -281,18 +281,18 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 		{
 			switch (section) {
 				case POS_CELL:        return tr("Position");
-				case LEVEL_CELL:      return tr("Étage");
+				case LEVEL_CELL:      return tr("Stage");
 				case LEVEL_0_CELL:    return QStringLiteral("0");
 				case LEVEL_1_CELL:    return QStringLiteral("1");
 				case LEVEL_2_CELL:    return QStringLiteral("2");
 				case LEVEL_3_CELL:    return QStringLiteral("3");
 				case LABEL_CELL:      return tr("Label");
-				case CONDUCTOR_CELL:  return tr("Numéro de conducteur");
-				case XREF_CELL:       return tr("Référence croisé");
-				case CABLE_CELL:      return tr("Câble");
-				case CABLE_WIRE_CELL: return tr("Couleur / numéro de fil câble");
+				case CONDUCTOR_CELL:  return tr("Number wire");
+				case XREF_CELL:       return tr("Cross-reference");
+				case CABLE_CELL:      return tr("Cable");
+				case CABLE_WIRE_CELL: return tr("Color / wire number of the cable");
 				case TYPE_CELL:       return tr("Type");
-				case FUNCTION_CELL :  return tr("Fonction");
+				case FUNCTION_CELL :  return tr("Function");
 				case LED_CELL:        return tr("led");
 				default : return QVariant();
 			}

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Properties cross references</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -19,7 +19,7 @@
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Type :</string>
+        <string>Type:</string>
        </property>
       </widget>
      </item>
@@ -31,7 +31,7 @@
    <item>
     <widget class="QGroupBox" name="m_display_gb">
      <property name="title">
-      <string>Représentation:</string>
+      <string>Representation:</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -39,7 +39,7 @@
         <item>
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>Positionner :</string>
+           <string>Positioning :</string>
           </property>
          </widget>
         </item>
@@ -93,10 +93,10 @@
       <item>
        <widget class="QCheckBox" name="m_stack_overlapping_cb">
         <property name="toolTip">
-         <string>Quand les textes de deux références croisées se chevauchent, celle de l'élément le plus haut est placée au-dessus de l'autre.</string>
+         <string>When the texts of two cross-references overlap, the one of the higher element is placed above the other.</string>
         </property>
         <property name="text">
-         <string>Empiler les références dont les textes se chevauchent</string>
+         <string>Stack references whose texts overlap</string>
         </property>
        </widget>
       </item>
@@ -157,31 +157,31 @@
           <item>
            <widget class="QCheckBox" name="m_show_terminal_name_cb">
             <property name="text">
-             <string>Afficher les numéros de bornes dans les Xrefs</string>
+             <string>Display terminal numbers in Xrefs</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="m_show_all_slaves_cb">
             <property name="toolTip">
-             <string>Afficher dans le peigne de contacts tous les contacts esclaves définis par le maître, même ceux qui ne sont pas encore reliés, dans l'ordre défini par le maître</string>
+             <string>Show in the contact comb all slave contacts defined by the master, even those not yet connected, in the order defined by the master</string>
             </property>
             <property name="text">
-             <string>Afficher tous les esclaves définis par le maître</string>
+             <string>Show all slaves defined by the master</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="m_display_has_contacts_rb">
             <property name="text">
-             <string>Affiche&amp;r en contacts</string>
+             <string>&amp;View contacts</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="m_display_has_cross_rb">
             <property name="text">
-             <string>Afficher en croix</string>
+             <string>View cross</string>
             </property>
            </widget>
           </item>
@@ -194,7 +194,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>Label des références croisées</string>
+           <string>Label cross reference</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
@@ -214,7 +214,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Maitre</string>
+                <string>Master</string>
                </property>
               </widget>
              </item>
@@ -247,7 +247,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Esclave</string>
+                <string>Slave</string>
                </property>
                <property name="scaledContents">
                 <bool>false</bool>
@@ -266,13 +266,13 @@
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Créer votre propre texte en vous aidant des variables suivantes :
-%f : le numéro de folio 
-%F: le label de folio
-%l : le numéro de ligne
-%c : le numéro de colonne
-%M: Installation 
-%LM: Localisation </string>
+              <string>Create your own text using the following variables:
+%f: the sheet number
+%F: the sheet label
+%l: the row number
+%c: the column number
+%M: the installation
+%LM: the location</string>
              </property>
             </widget>
            </item>
@@ -287,13 +287,13 @@
    <item>
     <widget class="QGroupBox" name="m_cross_properties_gb">
      <property name="title">
-      <string>Option d'affichage en croix</string>
+      <string>Option display cross</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
        <widget class="QCheckBox" name="m_show_power_cb">
         <property name="text">
-         <string>Afficher les contacts de puissance dans la croix</string>
+         <string>Show the power contacts in the cross</string>
         </property>
        </widget>
       </item>
@@ -302,14 +302,14 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Préfixe des contacts de puissance :</string>
+           <string>Prefix of power contacts :</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Préfixe des contacts temporisés :</string>
+           <string>Prefix delayed contacts :</string>
           </property>
          </widget>
         </item>
@@ -322,7 +322,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Préfixe des contacts inverseurs :</string>
+           <string>Prefix changeover contacts :</string>
           </property>
          </widget>
         </item>

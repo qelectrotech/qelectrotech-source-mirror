@@ -33,7 +33,7 @@ ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	const TitleBlockProperties &new_ip,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier le cartouche", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modify the title block", "undo caption"), parent),
 	diagram(d),
 	old_titleblock(old_ip),
 	new_titleblock(new_ip)

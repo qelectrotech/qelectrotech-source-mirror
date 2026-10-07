@@ -106,7 +106,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	}
 
 	setText(QString(QObject::tr(
-				"supprimer %1",
+				"delete %1",
 				"undo caption - %1 is a sentence listing the removed content"))
 		.arg(m_removed_contents.sentence(DiagramContent::All)));
 	//Table is now managed by m_table_scene_hash,

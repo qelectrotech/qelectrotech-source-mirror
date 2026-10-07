@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Points du polygone :</string>
+      <string>Polygon points:</string>
      </property>
     </widget>
    </item>
@@ -41,7 +41,7 @@
    <item>
     <widget class="QCheckBox" name="m_close_polygon_cb">
      <property name="text">
-      <string>Polygone fermé</string>
+      <string>Closed polygon</string>
      </property>
     </widget>
    </item>
@@ -51,7 +51,7 @@
     <iconset theme="list-add"/>
    </property>
    <property name="text">
-    <string>Ajouter un point</string>
+    <string>Add a point</string>
    </property>
   </action>
   <action name="m_remove_point_action">
@@ -59,7 +59,7 @@
     <iconset theme="list-remove"/>
    </property>
    <property name="text">
-    <string>Supprimer ce point</string>
+    <string>Delete this point</string>
    </property>
   </action>
  </widget>

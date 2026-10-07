@@ -39,7 +39,7 @@ QString TitleBlockDimension::toString() const
 	} else if (type == QET::RelativeToTotalLength) {
 		dim_str = QObject::tr("%1%", "titleblock: width relative to total length");
 	} else if (type == QET::RelativeToRemainingLength) {
-		dim_str = QObject::tr("%1% du restant", "titleblock: width relative to remaining length");
+		dim_str = QObject::tr("remaining %1%", "titleblock: width relative to remaining length");
 	}
 	return(dim_str.arg(value));
 }

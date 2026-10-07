@@ -49,7 +49,7 @@
       <item row="1" column="0">
        <widget class="QRadioButton" name="m_apply_folios_rb">
         <property name="text">
-         <string>Apply to Selected Folios</string>
+         <string>Apply to Selected Sheets</string>
         </property>
        </widget>
       </item>
@@ -345,7 +345,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Folio</string>
+            <string>Sheet</string>
            </property>
           </widget>
          </item>

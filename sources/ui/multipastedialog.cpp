@@ -104,7 +104,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 {
 	if(m_pasted_content.count())
 	{
-		m_diagram->undoStack().beginMacro(tr("Multi-collage"));
+		m_diagram->undoStack().beginMacro(tr("Multi-paste"));
 
 		QETProject *project = m_diagram->project();
 
@@ -161,7 +161,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 				//changed, and labels which other elements keep are not given.
 			if(!copy_schemes.at(copy).isEmpty())
 			{
-				auto *numbering = new QUndoCommand(tr("Numéroter les éléments collés"));
+				auto *numbering = new QUndoCommand(tr("Number pasted elements"));
 				ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes.at(copy), numbering);
 				if(numbering->childCount())
 					m_diagram->undoStack().push(numbering);

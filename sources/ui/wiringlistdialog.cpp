@@ -37,7 +37,7 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 	QDialog(parent),
 	m_project(project)
 {
-	setWindowTitle(tr("Liste de câblage", "window title"));
+	setWindowTitle(tr("Wiring list", "window title"));
 	resize(900, 500);
 
 	auto *layout = new QVBoxLayout(this);
@@ -63,12 +63,12 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 				" wire_number"),
 			m_project->dataBase()->database());
 
-	model->setHeaderData(0, Qt::Horizontal, tr("Fil", "column title"));
-	model->setHeaderData(1, Qt::Horizontal, tr("Composant 1", "column title"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Borne 1", "column title"));
-	model->setHeaderData(3, Qt::Horizontal, tr("Composant 2", "column title"));
-	model->setHeaderData(4, Qt::Horizontal, tr("Borne 2", "column title"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Folio", "column title"));
+	model->setHeaderData(0, Qt::Horizontal, tr("Wire", "column title"));
+	model->setHeaderData(1, Qt::Horizontal, tr("Component 1", "column title"));
+	model->setHeaderData(2, Qt::Horizontal, tr("Terminal 1", "column title"));
+	model->setHeaderData(3, Qt::Horizontal, tr("Component 2", "column title"));
+	model->setHeaderData(4, Qt::Horizontal, tr("Terminal 2", "column title"));
+	model->setHeaderData(5, Qt::Horizontal, tr("Sheet", "column title"));
 
 	const int excluded = m_project->dataBase()->excludedConductorCount();
 
@@ -89,14 +89,14 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 			//identity: what is left is a conductor whose endpoint has no
 			//parent element at all. Still worth saying out loud rather than
 			//presenting a short list as if it were complete.
-		summary->setText(tr("%n conducteur(s) listé(s).", "wiring list summary", listed)
+		summary->setText(tr("%n conductors listed.", "wiring list summary", listed)
 				 % QStringLiteral(" ")
-				 % tr("%n conducteur(s) exclu(s) : une extrémité n'est rattachée"
-				      " à aucun élément.",
+				 % tr("%n conductors excluded: one end is not attached to any "
+				      "element.",
 				      "wiring list exclusion warning", excluded));
 	}
 	else {
-		summary->setText(tr("%n conducteur(s) listé(s).", "wiring list summary", listed));
+		summary->setText(tr("%n conductors listed.", "wiring list summary", listed));
 	}
 	layout->addWidget(summary);
 

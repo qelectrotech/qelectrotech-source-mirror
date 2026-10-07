@@ -193,9 +193,9 @@ void DiagramEventAddPdf::openDialog()
 	QString pathPDFs = QETApp::documentDir();
 	QString fileName = QFileDialog::getOpenFileName(
 		m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-		QObject::tr("Sélectionner un fichier PDF..."),
+		QObject::tr("Select a PDF file..."),
 		pathPDFs,
-		QObject::tr("Fichiers PDF (*.pdf)")
+		QObject::tr("PDF files (*.pdf)")
 	);
 
 	if (fileName.isEmpty()) return;
@@ -208,8 +208,8 @@ void DiagramEventAddPdf::openDialog()
 	{
 		QMessageBox::critical(
 			m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-			QObject::tr("Erreur"),
-			QObject::tr("Impossible de charger le fichier PDF.")
+			QObject::tr("Error"),
+			QObject::tr("Unable to load the PDF file.")
 		);
 		return;
 	}
@@ -219,8 +219,8 @@ void DiagramEventAddPdf::openDialog()
 	{
 		QMessageBox::critical(
 			m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-			QObject::tr("Erreur"),
-			QObject::tr("Le fichier PDF ne contient aucune page.")
+			QObject::tr("Error"),
+			QObject::tr("The PDF file does not contain any pages.")
 		);
 		return;
 	}
@@ -242,8 +242,8 @@ void DiagramEventAddPdf::openDialog()
 	{
 		QMessageBox::critical(
 			m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-			QObject::tr("Erreur"),
-			QObject::tr("Impossible de déterminer la taille de la page PDF.")
+			QObject::tr("Error"),
+			QObject::tr("It is not possible to determine the size of the PDF page.")
 		);
 		return;
 	}
@@ -254,8 +254,8 @@ void DiagramEventAddPdf::openDialog()
 	{
 		QMessageBox::critical(
 			m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
-			QObject::tr("Erreur"),
-			QObject::tr("Impossible de rendre la page PDF.")
+			QObject::tr("Error"),
+			QObject::tr("Unable to render the PDF page.")
 		);
 		return;
 	}

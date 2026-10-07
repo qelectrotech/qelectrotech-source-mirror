@@ -30,7 +30,7 @@ RenameDialog::RenameDialog(QString path, QWidget *parent) :
 	QET::trackDialogGeometry(this);
 	m_name = m_path.split("/").last();
 	if (m_name.endsWith(".elmt")) m_name.remove(".elmt");
-	ui->m_label->setText(tr("L'élément « %1 » existe déjà. Que souhaitez-vous faire ?").arg(m_path));
+	ui->m_label->setText(tr("The element « %1 » already exists. What do you wish to do?").arg(m_path));
 	ui->lineEdit->setText(m_name + QDate::currentDate().toString("dd-MM-yy"));
 }
 

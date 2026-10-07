@@ -23,7 +23,7 @@ PromoteShapeCommand::PromoteShapeCommand(
 		const QDomElement &priorStateXml,
 		const QDomElement &newStateXml,
 		QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("Transformer %1").arg(shape ? shape->name() : QString()), parent),
+	QUndoCommand(QObject::tr("Transform %1").arg(shape ? shape->name() : QString()), parent),
 	m_shape(shape)
 {
 	m_priorDoc.appendChild(m_priorDoc.importNode(priorStateXml, true));

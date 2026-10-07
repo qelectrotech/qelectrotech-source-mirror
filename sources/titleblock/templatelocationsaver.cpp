@@ -81,7 +81,7 @@ void TitleBlockTemplateLocationSaver::init()
 {
 	new_name_ = new QLineEdit();
 	connect(templates_, qOverload<int>(&QComboBox::currentIndexChanged), this, &TitleBlockTemplateLocationSaver::updateNewName);
-	form_layout_ -> addRow(tr("ou nouveau nom", "used in save as form"), new_name_);
+	form_layout_ -> addRow(tr("or new name", "used in save as form"), new_name_);
 	updateTemplates();
 }
 
@@ -94,7 +94,7 @@ void TitleBlockTemplateLocationSaver::updateTemplates()
 	if (!current_collection) return;
 	
 	TitleBlockTemplateLocationChooser::updateTemplates();
-	templates_ -> insertItem(0, tr("Nouveau modèle (entrez son nom)", "combox box entry"), QVariant(false));
+	templates_ -> insertItem(0, tr("New template (enter its name)", "combox box entry"), QVariant(false));
 	templates_ -> insertSeparator(1);
 	
 	updateNewName();

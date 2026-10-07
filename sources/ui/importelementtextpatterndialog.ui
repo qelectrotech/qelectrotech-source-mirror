@@ -27,7 +27,7 @@
    <item>
     <widget class="QCheckBox" name="m_erase_existing_text">
      <property name="text">
-      <string>Écraser les textes existants</string>
+      <string>Erase existing texts</string>
      </property>
     </widget>
    </item>

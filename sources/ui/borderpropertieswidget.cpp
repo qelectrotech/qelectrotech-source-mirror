@@ -113,10 +113,10 @@ BorderPropertiesWidget::BorderPropertiesWidget(const BorderProperties &bp, QWidg
 {
 	ui->setupUi(this);
 
-	ui->m_paper_cb->addItem(tr("Personnalisé"));
+	ui->m_paper_cb->addItem(tr("Custom"));
 	for (const PaperSize &paper : paper_sizes)
 		ui->m_paper_cb->addItem(QString::fromLatin1(paper.name));
-	ui->m_orientation_cb->addItem(tr("Paysage"));
+	ui->m_orientation_cb->addItem(tr("Landscape"));
 	ui->m_orientation_cb->addItem(tr("Portrait"));
 
 	if (TitleBlockTemplate *tbt = QETApp::defaultTitleBlockTemplate())

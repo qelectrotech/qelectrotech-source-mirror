@@ -45,7 +45,7 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 				new AddTableDialog(
 					new ElementQueryWidget(),
 					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Ajouter une nomenclature"));
+	d->setWindowTitle(QObject::tr("Add a nomenclature"));
 
 	if (d->exec()) {
 		create(diagram, d.data());
@@ -64,7 +64,7 @@ void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 				new AddTableDialog(
 					new SummaryQueryWidget(),
 					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Ajouter un sommaire"));
+	d->setWindowTitle(QObject::tr("Add a summary"));
 
 	if (d->exec()) {
 		create(diagram, d.data());

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Merci de patienter</string>
+   <string>Thank you for your patience</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -23,7 +23,7 @@
      <item>
       <widget class="QLabel" name="labelTitle">
        <property name="text">
-        <string>Titre</string>
+        <string>Title</string>
        </property>
        <property name="textFormat">
         <enum>Qt::AutoText</enum>

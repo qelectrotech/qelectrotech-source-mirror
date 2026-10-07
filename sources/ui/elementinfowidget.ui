@@ -32,7 +32,7 @@
    <item>
     <widget class="QCheckBox" name="m_auto_num_locked_cb">
      <property name="text">
-      <string>Exclure de la numérotation auto</string>
+      <string>Exclude from automatic numbering</string>
      </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>

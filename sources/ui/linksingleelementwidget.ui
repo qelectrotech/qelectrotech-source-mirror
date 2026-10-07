@@ -17,7 +17,7 @@
    <item row="1" column="2">
     <widget class="QPushButton" name="m_show_this_pb">
      <property name="text">
-      <string>Voir cet élément</string>
+      <string>View this item</string>
      </property>
     </widget>
    </item>
@@ -39,35 +39,35 @@
    <item row="1" column="0">
     <widget class="QPushButton" name="m_unlink_pb">
      <property name="text">
-      <string>Délier</string>
+      <string>Unlink</string>
      </property>
     </widget>
    </item>
    <item row="0" column="2">
     <widget class="QPushButton" name="m_show_linked_pb">
      <property name="text">
-      <string>Voir l'élément lié</string>
+      <string>See the linked item</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="m_label">
      <property name="text">
-      <string>Cet élément est déjà lié</string>
+      <string>This element is already linked</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0" colspan="3">
     <widget class="QLineEdit" name="m_search_field">
      <property name="placeholderText">
-      <string>Recherche</string>
+      <string>Search</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0" colspan="3">
     <widget class="QCheckBox" name="m_hide_full_masters_cb">
      <property name="text">
-      <string>Masquer les éléments maîtres pleins</string>
+      <string>Hide full master elements</string>
      </property>
     </widget>
    </item>

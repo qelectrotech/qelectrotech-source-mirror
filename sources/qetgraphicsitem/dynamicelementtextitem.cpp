@@ -83,7 +83,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 {
 	ShownKinds::tag(this, ShownKinds::SymbolTexts);
 	setFont(QETApp::dynamicTextsItemFont());
-	setText(tr("Texte"));
+	setText(tr("Text"));
 	setParentItem(parent_element);
 	QSettings settings;
 	setRotation(settings.value("dynamic_text_rotation", 0).toInt());
@@ -94,7 +94,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		if(this->m_parent_element && this->m_parent_element->diagram())
 		{
 			QUndoCommand *undo = new QPropertyUndoCommand(this, "text", old_str, new_str);
-			undo->setText(tr("Éditer un texte d'élément"));
+			undo->setText(tr("Edit an element text"));
 			this->m_parent_element->diagram()->undoStack().push(undo);
 		}
 	});
@@ -1091,7 +1091,7 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 	{
 		auto *undo = new QPropertyUndoCommand(this, "textWidth", QVariant(m_resize_original_width), QVariant(new_width));
 		undo->setAnimated(true, false);
-		undo->setText(tr("Redimensionner un texte d'élément"));
+		undo->setText(tr("Resize an element text"));
 		m_parent_element->diagram()->undoStack().push(undo);
 	}
 }

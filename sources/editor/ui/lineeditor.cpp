@@ -39,53 +39,53 @@ LineEditor::LineEditor(
 
 	ui->m_end1_cb->addItem(
 				QET::Icons::EndLineNone,
-				tr("Normale",
+				tr("Normal",
 				   "type of the 1st end of a line"),
 				Qet::None    );
 	ui->m_end1_cb->addItem(
 				QET::Icons::EndLineSimple,
-				tr("Flèche simple",
+				tr("Simple arrow",
 				   "type of the 1st end of a line"),
 				Qet::Simple  );
 	ui->m_end1_cb->addItem(
 				QET::Icons::EndLineTriangle,
-				tr("Flèche triangulaire",
+				tr("Triangle arrow",
 				   "type of the 1st end of a line"),
 				Qet::Triangle);
 	ui->m_end1_cb->addItem(
 				QET::Icons::EndLineCircle,
-				tr("Cercle",
+				tr("Circle",
 				   "type of the 1st end of a line"),
 				Qet::Circle  );
 	ui->m_end1_cb->addItem(
 				QET::Icons::EndLineDiamond,
-				tr("Carré",
+				tr("Diamond",
 				   "type of the 1st end of a line"),
 				Qet::Diamond );
 
 	ui->m_end2_cb->addItem(
 				QET::Icons::EndLineNone,
-				tr("Normale",
+				tr("Normal",
 				   "type of the 1st end of a line"),
 				Qet::None    );
 	ui->m_end2_cb->addItem(
 				QET::Icons::EndLineSimple,
-				tr("Flèche simple",
+				tr("Simple arrow",
 				   "type of the 1st end of a line"),
 				Qet::Simple  );
 	ui->m_end2_cb->addItem(
 				QET::Icons::EndLineTriangle,
-				tr("Flèche triangulaire",
+				tr("Triangle arrow",
 				   "type of the 1st end of a line"),
 				Qet::Triangle);
 	ui->m_end2_cb->addItem(
 				QET::Icons::EndLineCircle,
-				tr("Cercle",
+				tr("Circle",
 				   "type of the 1st end of a line"),
 				Qet::Circle  );
 	ui->m_end2_cb->addItem(
 				QET::Icons::EndLineDiamond,
-				tr("Carré",
+				tr("Diamond",
 				   "type of the 1st end of a line"),
 				Qet::Diamond );
 
@@ -315,7 +315,7 @@ void LineEditor::firstEndEdited()
 		if (end != line->property("end1"))
 		{
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "end1", line->property("end1"), end);
-			undo->setText(tr("Modifier une ligne"));
+			undo->setText(tr("Edit a line"));
 			elementScene()->undoStack().push(undo);
 		}
 	}
@@ -363,7 +363,7 @@ void LineEditor::secondEndEdited()
 		if (end != line->property("end2"))
 		{
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "end2", line->property("end2"), end);
-			undo->setText(tr("Modifier une ligne"));
+			undo->setText(tr("Edit a line"));
 			elementScene()->undoStack().push(undo);
 		}
 	}

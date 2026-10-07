@@ -51,7 +51,7 @@ MoveGraphicsItemCommand::MoveGraphicsItemCommand(Diagram *diagram,
 														   | DiagramContent::ElementTextFields
 														   | DiagramContent::TerminalStrip);
 
-	setText(QString(QObject::tr("déplacer %1",
+	setText(QString(QObject::tr("move %1",
 								"undo caption - %1 is a sentence listing the moved content").arg(moved_content_sentence)));
 }
 

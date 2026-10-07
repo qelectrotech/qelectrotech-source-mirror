@@ -36,7 +36,7 @@ MoveDiagramCommand::MoveDiagramCommand(ProjectView *project_view, Diagram *diagr
 	m_old_position(project_view ? project_view->project()->folioIndex(diagram) : -1),
 	m_new_position(new_position)
 {
-	setText(QObject::tr("Déplacer un folio", "undo command text"));
+	setText(QObject::tr("Moving a sheet", "undo command text"));
 }
 
 void MoveDiagramCommand::redo()

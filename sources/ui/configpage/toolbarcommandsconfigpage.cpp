@@ -48,23 +48,23 @@ ToolbarCommandsConfigPage::ToolbarCommandsConfigPage(QWidget *parent) :
 	}
 
 	auto *explanation = new QLabel(
-		tr("Choisissez les commandes de chaque barre d'outils de l'éditeur "
-		   "de schémas. Glissez une commande de la liste de gauche vers la "
-		   "barre, ou double-cliquez dessus ; Suppr la retire."), this);
+		tr("Choose the commands of each toolbar of the diagram editor. Drag "
+		   "a command from the list on the left to the bar, or double-click "
+		   "it; Delete removes it."), this);
 	explanation->setWordWrap(true);
 
 	m_toolbar = new QComboBox(this);
 	m_toolbar->setObjectName(QStringLiteral("toolbarCombo"));
-	auto *new_toolbar = new QPushButton(tr("Nouvelle barre…"), this);
+	auto *new_toolbar = new QPushButton(tr("New bar…"), this);
 	new_toolbar->setObjectName(QStringLiteral("newToolbarButton"));
-	m_rename = new QPushButton(tr("Renommer…"), this);
-	m_delete = new QPushButton(tr("Supprimer la barre"), this);
+	m_rename = new QPushButton(tr("Rename…"), this);
+	m_delete = new QPushButton(tr("Delete the bar"), this);
 	m_delete->setObjectName(QStringLiteral("deleteToolbarButton"));
-	auto *reset = new QPushButton(tr("Valeurs par défaut"), this);
+	auto *reset = new QPushButton(tr("Defaults"), this);
 	reset->setObjectName(QStringLiteral("resetButton"));
 
 	m_filter = new QLineEdit(this);
-	m_filter->setPlaceholderText(tr("Rechercher une commande"));
+	m_filter->setPlaceholderText(tr("Search for a command"));
 	m_filter->setClearButtonEnabled(true);
 
 	m_available = new QListWidget(this);
@@ -80,12 +80,12 @@ ToolbarCommandsConfigPage::ToolbarCommandsConfigPage(QWidget *parent) :
 	m_chosen->setDragDropMode(QAbstractItemView::DragDrop);
 	m_chosen->setDefaultDropAction(Qt::MoveAction);
 
-	auto *add = new QPushButton(tr("Ajouter →"), this);
-	auto *separator = new QPushButton(tr("Séparateur"), this);
+	auto *add = new QPushButton(tr("Add →"), this);
+	auto *separator = new QPushButton(tr("Separator"), this);
 	separator->setObjectName(QStringLiteral("separatorButton"));
-	auto *remove = new QPushButton(tr("← Retirer"), this);
-	auto *up = new QPushButton(tr("Monter"), this);
-	auto *down = new QPushButton(tr("Descendre"), this);
+	auto *remove = new QPushButton(tr("← Remove"), this);
+	auto *up = new QPushButton(tr("Move up"), this);
+	auto *down = new QPushButton(tr("Move down"), this);
 
 	auto *buttons = new QVBoxLayout();
 	buttons->addStretch();
@@ -98,15 +98,15 @@ ToolbarCommandsConfigPage::ToolbarCommandsConfigPage(QWidget *parent) :
 	buttons->addStretch();
 
 	auto *grid = new QGridLayout();
-	grid->addWidget(new QLabel(tr("Commandes disponibles"), this), 0, 0);
-	grid->addWidget(new QLabel(tr("Dans la barre, dans l'ordre"), this), 0, 2);
+	grid->addWidget(new QLabel(tr("Available commands"), this), 0, 0);
+	grid->addWidget(new QLabel(tr("In the bar, in order"), this), 0, 2);
 	grid->addWidget(m_filter, 1, 0);
 	grid->addWidget(m_available, 2, 0);
 	grid->addLayout(buttons, 2, 1);
 	grid->addWidget(m_chosen, 1, 2, 2, 1);
 
 	auto *toolbar_row = new QHBoxLayout();
-	toolbar_row->addWidget(new QLabel(tr("Barre d'outils :"), this));
+	toolbar_row->addWidget(new QLabel(tr("Toolbar:"), this));
 	toolbar_row->addWidget(m_toolbar, 1);
 	toolbar_row->addWidget(new_toolbar);
 	toolbar_row->addWidget(m_rename);
@@ -170,7 +170,7 @@ void ToolbarCommandsConfigPage::applyConf()
 
 QString ToolbarCommandsConfigPage::title() const
 {
-	return tr("Contenu des barres", "configuration page title: what each toolbar holds");
+	return tr("Toolbar contents", "configuration page title: what each toolbar holds");
 }
 
 QIcon ToolbarCommandsConfigPage::icon() const
@@ -348,8 +348,8 @@ void ToolbarCommandsConfigPage::resetToolbar()
 void ToolbarCommandsConfigPage::newToolbar()
 {
 	bool ok = false;
-	const QString title = QInputDialog::getText(this, tr("Nouvelle barre d'outils"),
-						    tr("Nom de la barre d'outils :"),
+	const QString title = QInputDialog::getText(this, tr("New toolbar"),
+						    tr("Toolbar name:"),
 						    QLineEdit::Normal, QString(), &ok).trimmed();
 	if (!ok || title.isEmpty()) {
 		return;
@@ -369,8 +369,8 @@ void ToolbarCommandsConfigPage::renameToolbar()
 	for (DiagramToolbarSettings::Toolbar &toolbar : m_custom) {
 		if (toolbar.name != m_shown) continue;
 		bool ok = false;
-		const QString title = QInputDialog::getText(this, tr("Renommer la barre d'outils"),
-							    tr("Nom de la barre d'outils :"),
+		const QString title = QInputDialog::getText(this, tr("Rename the toolbar"),
+							    tr("Toolbar name:"),
 							    QLineEdit::Normal, toolbar.title, &ok).trimmed();
 		if (ok && !title.isEmpty()) {
 			storeToolbar();
@@ -408,7 +408,7 @@ QListWidgetItem *ToolbarCommandsConfigPage::makeItem(const QString &id) const
 	QString tip;
 	QIcon icon;
 	if (id == DiagramToolbarSettings::separatorId()) {
-		text = tr("─── Séparateur ───");
+		text = tr("─── Separator ───");
 	} else if (DiagramToolbarSettings::isWidget(id)) {
 		text = DiagramToolbarSettings::widgetTitle(id);
 	} else if (QAction *action = ShortcutManager::instance().action(id, nullptr)) {

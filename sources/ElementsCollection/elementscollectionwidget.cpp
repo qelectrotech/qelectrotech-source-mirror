@@ -195,30 +195,30 @@ void ElementsCollectionWidget::leaveEvent(QEvent *event)
 void ElementsCollectionWidget::setUpAction()
 {
 	m_open_dir = new QAction(QET::Icons::FolderOpen,
-				 tr("Ouvrir le dossier correspondant"), this);
+				 tr("Open the underlying folder"), this);
 	m_edit_element = new QAction(QET::Icons::ElementEdit,
-					 tr("Éditer l'élément"), this);
+					 tr("Edit element"), this);
 	m_delete_element = new QAction(QET::Icons::ElementDelete,
-					   tr("Supprimer l'élément"), this);
+					   tr("Delete element"), this);
 	m_delete_dir = new QAction(QET::Icons::FolderDelete,
-				   tr("Supprimer le dossier"), this);
+				   tr("Delete folder"), this);
 	m_reload = new QAction(QET::Icons::ViewRefresh,
-				   tr("Recharger les collections"), this);
+				   tr("Reload collections"), this);
 	m_edit_dir = new QAction(QET::Icons::FolderEdit,
-				 tr("Éditer le dossier"), this);
+				 tr("Edit folder"), this);
 	m_new_directory = new QAction(QET::Icons::FolderNew,
-					  tr("Nouveau dossier"), this);
+					  tr("New folder"), this);
 	m_new_element = new QAction(QET::Icons::ElementNew,
-					tr("Nouvel élément"), this);
+					tr("New element"), this);
 	m_import_edz = new QAction(QET::Icons::ElementNew,
-					tr("Importer une pièce EPLAN (.edz)…"), this);
+					tr("Import an EPLAN part (.edz)…"), this);
 	m_show_this_dir = new QAction(QET::Icons::FolderOnlyThis,
-					  tr("Afficher uniquement ce dossier"),
+					  tr("Show only this folder"),
 					  this);
 	m_show_all_dir = new QAction(QET::Icons::FolderShowAll,
-					 tr("Afficher tous les dossiers"), this);
+					 tr("Show All Folders"), this);
 	m_dir_propertie = new QAction(QET::Icons::FolderProperties,
-					  tr("Propriété du dossier"), this);
+					  tr("Folder properties"), this);
 }
 
 /**
@@ -232,7 +232,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_main_vlayout->setSpacing(2);
 
 	m_search_field = new QLineEdit(this);
-	m_search_field->setPlaceholderText(tr("Rechercher..."));
+	m_search_field->setPlaceholderText(tr("Search..."));
 	m_search_field->setClearButtonEnabled(true);
 
 	m_tree_view = new ElementsTreeView(this);
@@ -260,7 +260,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tab_widget->setDocumentMode(true);
 	m_tab_widget->setTabPosition(QTabWidget::North);
 	m_tab_widget->addTab(m_tree_view, tr("Collections"));
-	m_tab_widget->addTab(m_macros_tree_view, tr("Modèles"));
+	m_tab_widget->addTab(m_macros_tree_view, tr("Templates"));
 
 		//Flat ranked search results.
 		//The tree search hides non-matching rows, so hits stay scattered
@@ -286,7 +286,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_main_vlayout->addWidget(m_search_results);
 
 	m_progress_bar = new QProgressBar(this);
-	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
+	m_progress_bar->setFormat(QObject::tr("load %p% (%v on %m)"));
 	m_main_vlayout->addWidget(m_progress_bar);
 	m_progress_bar->hide();
 
@@ -613,8 +613,8 @@ void ElementsCollectionWidget::deleteElement()
 
 	if (QET::QetMessageBox::question(
 		this,
-		tr("Supprimer l'élément ?", "message box title"),
-		tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n",
+		tr("Delete element?", "message box title"),
+		tr("Do you really wish to delete this element ?\n",
 		   "message box content"),
 		QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
@@ -630,9 +630,9 @@ void ElementsCollectionWidget::deleteElement()
 		{
 			QET::QetMessageBox::warning(
 				this,
-				tr("Suppression de l'élément",
+				tr("Deleting element",
 				   "message box title"),
-				tr("La suppression de l'élément a échoué.",
+				tr("Deleting element failed.",
 				   "message box content"));
 		}
 	}
@@ -659,9 +659,9 @@ void ElementsCollectionWidget::deleteDirectory()
 
 	if (QET::QetMessageBox::question(
 		this,
-		tr("Supprimer le dossier?", "message box title"),
-		tr("Êtes-vous sûr  de vouloir supprimer le dossier ?\n"
-		"Tout les éléments et les dossier contenus dans ce dossier seront supprimés.",
+		tr("Deleting folder?", "message box title"),
+		tr("Are you sure you want to delete the folder?\n"
+		"All the elements and contents file in this folder will be deleted.",
 		"message box content"),
 		QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
@@ -677,9 +677,9 @@ void ElementsCollectionWidget::deleteDirectory()
 		{
 			QET::QetMessageBox::warning(
 				this,
-				tr("Suppression du dossier",
+				tr("Folder Delete",
 				   "message box title"),
-				tr("La suppression du dossier a échoué.",
+				tr("Folder deletion failed.",
 				   "message box content"));
 		}
 	}
@@ -779,41 +779,37 @@ void ElementsCollectionWidget::newElement()
 bool ElementsCollectionWidget::confirmEdzImportTerms()
 {
 	QDialog dialog(this);
-	dialog.setWindowTitle(tr("Avertissement — Importation d'un fichier EPLAN (.edz)"));
+	dialog.setWindowTitle(tr("Warning — Importing an EPLAN file (.edz)"));
 
 	QLabel *text = new QLabel(
-		tr("Le format .edz peut provenir de deux sources différentes :\n"
-		   "\n"
-		   "• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis "
-		   "aux conditions d'utilisation de l'environnement EPLAN Cloud ;\n"
-		   "• Le site d'un fabricant de composants (ou d'un distributeur) "
-		   "qui met ses fichiers .edz à disposition directement, selon ses "
-		   "propres conditions.\n"
-		   "\n"
-		   "QElectroTech ne peut pas déterminer automatiquement l'origine "
-		   "du fichier que vous importez, ni les conditions qui s'y "
-		   "appliquent.\n"
-		   "\n"
-		   "En important ce fichier, vous confirmez que :\n"
-		   "\n"
-		   "• vous connaissez son origine et êtes autorisé à l'utiliser "
-		   "dans ce contexte, au regard des conditions applicables à cette "
-		   "source ;\n"
-		   "• cette importation est effectuée à vos propres risques et "
-		   "responsabilité ;\n"
-		   "• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne "
-		   "peuvent être tenus responsables d'une utilisation non conforme "
-		   "de ces données."),
+		tr("The .edz file format can come from two different sources:\n"
+		   "• The EPLAN Data Portal (dataportal.eplan.com), which is "
+		   "subject to the terms of use for the EPLAN Cloud environment;\n"
+		   "• A component manufacturer’s (or distributor’s) website, which "
+		   "makes its .edz files available directly, subject to its own "
+		   "terms and conditions.\n"
+		   "QElectroTech cannot automatically determine the origin of the "
+		   "file you are importing, nor the terms and conditions that apply "
+		   "to it.\n"
+		   "By importing this file, you confirm that:\n"
+		   "• you are aware of its source and are authorised to use it in "
+		   "this context, in accordance with the terms and conditions "
+		   "applicable to that source;\n"
+		   "• this import is carried out at your own risk and "
+		   "responsibility;\n"
+		   "• neither QElectroTech, nor its maintainers, nor its "
+		   "contributors can be held liable for any unauthorised use of "
+		   "this data."),
 		&dialog);
 	text->setWordWrap(true);
 
 	QCheckBox *accept_box = new QCheckBox(
-		tr("J'ai lu et j'accepte ces conditions."), &dialog);
+		tr("I have read and accept these terms and conditions."), &dialog);
 
 	QDialogButtonBox *buttons = new QDialogButtonBox(
 		QDialogButtonBox::Cancel, &dialog);
 	QPushButton *import_button = buttons->addButton(
-		tr("Importer"), QDialogButtonBox::AcceptRole);
+		tr("Import"), QDialogButtonBox::AcceptRole);
 	import_button->setDefault(true);
 	import_button->setEnabled(false);
 
@@ -854,8 +850,8 @@ void ElementsCollectionWidget::importEdz()
 	}
 
 	const QString edz_path = QFileDialog::getOpenFileName(
-		this, tr("Importer une pièce EPLAN"), QString(),
-		tr("Pièces EPLAN (*.edz)"));
+		this, tr("Import an EPLAN part"), QString(),
+		tr("EPLAN parts (*.edz)"));
 	if (edz_path.isEmpty()) {
 		return;
 	}
@@ -864,7 +860,7 @@ void ElementsCollectionWidget::importEdz()
 	if (!importer.importToDirectory(edz_path, feci->fileSystemPath())) {
 		QET::QetMessageBox::critical(
 			this, tr("Import EPLAN"),
-			tr("Impossible d'importer cette pièce :\n%1")
+			tr("Could not import this part:\n%1")
 				.arg(importer.errorString()));
 		return;
 	}
@@ -944,23 +940,23 @@ void ElementsCollectionWidget::dirProperties()
 	{
 		QString filePath;
 		if (eci->type() == FileElementCollectionItem::Type) {
-			filePath = tr("Chemin dans le système de fichiers :  %1")
+			filePath = tr("Path in the file system :  %1")
 						   .arg(
 							   static_cast<FileElementCollectionItem*>(eci)
 								   ->fileSystemPath());
 		}
 		QString out =
-			tr("Le dossier %1 contient").arg(eci->localName()) % " "
-			% tr("%n élément(s), répartie(s)", "", eci->elementsChild().size())
+			tr("the folder %1 contains").arg(eci->localName()) % " "
+			% tr("%n elements, spread", "", eci->elementsChild().size())
 			% " "
-			% tr("dans %n dossier(s).", "", eci->directoriesChild().size())
+			% tr("across %n folders.", "", eci->directoriesChild().size())
 			% "\n\n"
-			% tr("Chemin de la collection :  %1").arg(eci->collectionPath())
+			% tr("Path of collection :  %1").arg(eci->collectionPath())
 			% "\n" % filePath;
 		qInfo() << out;
 		QMessageBox::information(
 			this,
-			tr("Propriété du dossier %1").arg(eci->localName()),
+			tr("Property of the folder %1").arg(eci->localName()),
 			out);
 	}
 }
@@ -982,7 +978,7 @@ void ElementsCollectionWidget::reload()
 	// Force to repaint now,
 	// else tree view will be not disabled immediately
 	m_tree_view->repaint();
-	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
+	m_progress_bar->setFormat(QObject::tr("load %p% (%v on %m)"));
 	
 	QList <QETProject *> project_list;
 	project_list.append(m_waiting_project);

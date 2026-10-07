@@ -59,7 +59,7 @@ PastePartsCommand::PastePartsCommand(
 		}
 		m_pasted_content.append(qgi);
 	}
-	setText(QObject::tr("Coller"));
+	setText(QObject::tr("Paste"));
 	m_scene->qgiManager().manage(m_pasted_content);
 }
 

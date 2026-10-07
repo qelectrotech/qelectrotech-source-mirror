@@ -73,7 +73,7 @@ void Terminal::init()
 
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	setToolTip(QObject::tr("Borne", "tooltip"));
+	setToolTip(QObject::tr("Terminal", "tooltip"));
 	setZValue(Z);
 }
 
@@ -650,8 +650,8 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 							 : nullptr;
 		if (full) {
 			QToolTip::showText(e->screenPos(),
-							   tr("Cette borne a déjà %n conducteur(s), la limite du projet. "
-								  "Ajoutez une borne pour raccorder un conducteur de plus.",
+							   tr("This terminal already has %n conductors, the project's "
+								  "limit. Add a terminal to connect one more conductor.",
 								  "wire refused by the wires-per-terminal limit",
 								  full->wireLimit()));
 		}

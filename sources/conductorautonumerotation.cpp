@@ -101,7 +101,7 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 					undo);
 		undo->setText(
 			QObject::tr(
-				"Modifier les propriétés d'un conducteur",
+				"Edit conductor properties",
 				"undo caption"));
 	}
 
@@ -110,7 +110,7 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 		if (!m_parent_undo)
 			undo->setText(
 				QObject::tr(
-					"Modifier les propriétés de plusieurs conducteurs",
+					"Edit the properties of several conductors",
 					"undo caption"));
 
 		foreach (Conductor *cond, conductor_list)
@@ -165,7 +165,7 @@ void ConductorAutoNumerotation::newProperties(
 			autoNum_name,
 			context,
 			new_context);
-	undo->setText(QObject::tr("Numéroter automatiquement un conducteur", "undo caption"));
+	undo->setText(QObject::tr("Automatically number a conductor", "undo caption"));
 	diagram->undoStack().push(undo);
 }
 
@@ -267,7 +267,7 @@ void ConductorAutoNumerotation::numerateNewConductor()
 		else
 		{
 			auto *undo = new SetAutoNumContextCommand(setter, autoNum_name, context, new_context);
-			undo->setText(QObject::tr("Numéroter automatiquement un conducteur", "undo caption"));
+			undo->setText(QObject::tr("Automatically number a conductor", "undo caption"));
 			m_diagram->undoStack().push(undo);
 		}
 	}

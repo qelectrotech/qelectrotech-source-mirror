@@ -578,7 +578,7 @@ void PartTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		if (m_original_label_pos != d->m_label_pos) {
 			auto undo = new QPropertyUndoCommand(this, "label_pos",
 				QVariant(m_original_label_pos), QVariant(d->m_label_pos));
-			undo->setText(tr("Déplacer le label d'une borne"));
+			undo->setText(tr("Move the label to a terminal"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}

@@ -51,19 +51,19 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 
 	QGridLayout *grid = new QGridLayout();
-	grid -> addWidget(new QLabel(tr("Centre : ")),            0, 0);
+	grid -> addWidget(new QLabel(tr("Center : ")),            0, 0);
 	grid -> addWidget(new QLabel("x"),                        1, 0, Qt::AlignRight);
 	grid -> addWidget(x,                                      1, 1);
 	grid -> addWidget(new QLabel("y"),                        1, 2);
 	grid -> addWidget(y,                                      1, 3);
-	grid -> addWidget(new QLabel(tr("Diamètres : ")),      2, 0);
-	grid -> addWidget(new QLabel(tr("horizontal :")),         3, 0);
+	grid -> addWidget(new QLabel(tr("Diameters: ")),      2, 0);
+	grid -> addWidget(new QLabel(tr("horizontal:")),         3, 0);
 	grid -> addWidget(h,                                      3, 1);
-	grid -> addWidget(new QLabel(tr("vertical :")),           4, 0);
+	grid -> addWidget(new QLabel(tr("vertical:")),           4, 0);
 	grid -> addWidget(v,                                      4, 1);
-	grid -> addWidget(new QLabel(tr("Angle de départ :")), 5, 0);
+	grid -> addWidget(new QLabel(tr("Start angle:")), 5, 0);
 	grid -> addWidget(start_angle,                            5, 1);
-	grid -> addWidget(new QLabel(tr("Angle :")),              6, 0);
+	grid -> addWidget(new QLabel(tr("Angle:")),              6, 0);
 	grid -> addWidget(angle,                                  6, 1);
 
 	v_layout -> addWidget(m_style);
@@ -172,7 +172,7 @@ void ArcEditor::updateArcS()
 		if (value != arc->property("startAngle"))
 		{
 			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "startAngle", arc->property("startAngle"), value);
-			undo->setText(tr("Modifier l'angle de depart d'un arc"));
+			undo->setText(tr("Change the start angle of an arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}
@@ -197,7 +197,7 @@ void ArcEditor::updateArcA()
 		if (value != arc->property("spanAngle"))
 		{
 			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "spanAngle", arc->property("spanAngle"), value);
-			undo->setText(tr("Modifier l'angle d'un arc"));
+			undo->setText(tr("Change the angle of an arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}
@@ -240,7 +240,7 @@ void ArcEditor::updateRect()
 		if (rect != part->property("rect"))
 		{
 			auto undo= new QPropertyUndoCommand(ellipse, "rect", ellipse->property("rect"), rect);
-			undo->setText(tr("Modifier un arc"));
+			undo->setText(tr("Change an arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}

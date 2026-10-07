@@ -37,7 +37,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Numérotation automatique de Folio :</string>
+        <string>Sheet Auto Numbering :</string>
        </property>
       </widget>
      </item>
@@ -63,7 +63,7 @@
         </sizepolicy>
        </property>
        <property name="title">
-        <string>Sélection:</string>
+        <string>Select:</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
@@ -75,7 +75,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>C&amp;réer de nouveaux folios</string>
+           <string>C&amp;reate new sheets</string>
           </property>
          </widget>
         </item>
@@ -88,7 +88,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Numérotation automatique des folios sélectionnés</string>
+           <string>Automatic numbering of selected sheets</string>
           </property>
          </widget>
         </item>
@@ -104,7 +104,7 @@
         </sizepolicy>
        </property>
        <property name="title">
-        <string> Options de numérotation</string>
+        <string> Options of numbering</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="2" column="1">
@@ -129,7 +129,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Nouveaux folios</string>
+           <string>New sheets</string>
           </property>
          </widget>
         </item>
@@ -171,7 +171,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>À</string>
+           <string>From</string>
           </property>
          </widget>
         </item>
@@ -184,7 +184,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>De</string>
+           <string>To</string>
           </property>
          </widget>
         </item>

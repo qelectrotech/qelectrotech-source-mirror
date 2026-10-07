@@ -62,7 +62,7 @@ bool ESEventAddTerminal::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 */
 bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::LeftButton) {
-		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Borne"), m_scene, m_terminal));
+		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Terminal"), m_scene, m_terminal));
 
 		//Set new terminal with same rotation
 		Qet::Orientation ori = m_terminal -> orientation();

@@ -38,32 +38,32 @@ ToolbarsConfigPage::ToolbarsConfigPage(QWidget *parent) :
 
 	m_icon_size = new QComboBox(this);
 	m_icon_size->setObjectName(QStringLiteral("iconSizeCombo"));
-	m_icon_size->addItem(tr("Par défaut"), 0);
-	m_icon_size->addItem(tr("Petites (16 px)"), 16);
-	m_icon_size->addItem(tr("Moyennes (24 px)"), 24);
-	m_icon_size->addItem(tr("Grandes (32 px)"), 32);
-	m_icon_size->addItem(tr("Très grandes (48 px)"), 48);
+	m_icon_size->addItem(tr("Default"), 0);
+	m_icon_size->addItem(tr("Small (16 px)"), 16);
+	m_icon_size->addItem(tr("Medium (24 px)"), 24);
+	m_icon_size->addItem(tr("Large (32 px)"), 32);
+	m_icon_size->addItem(tr("Very large (48 px)"), 48);
 	const int size_index = m_icon_size->findData(ToolbarSettings::iconSize());
 	m_icon_size->setCurrentIndex(size_index < 0 ? 0 : size_index);
 
 	m_button_style = new QComboBox(this);
 	m_button_style->setObjectName(QStringLiteral("buttonStyleCombo"));
-	m_button_style->addItem(tr("Icône seule"), int(Qt::ToolButtonIconOnly));
-	m_button_style->addItem(tr("Texte à côté de l'icône"), int(Qt::ToolButtonTextBesideIcon));
-	m_button_style->addItem(tr("Texte sous l'icône"), int(Qt::ToolButtonTextUnderIcon));
+	m_button_style->addItem(tr("Icon only"), int(Qt::ToolButtonIconOnly));
+	m_button_style->addItem(tr("Text beside the icon"), int(Qt::ToolButtonTextBesideIcon));
+	m_button_style->addItem(tr("Text under the icon"), int(Qt::ToolButtonTextUnderIcon));
 	m_button_style->setCurrentIndex(m_button_style->findData(int(ToolbarSettings::buttonStyle())));
 
-	m_locked = new QCheckBox(tr("Verrouiller les barres d'outils (elles ne peuvent plus être déplacées)"), this);
+	m_locked = new QCheckBox(tr("Lock the toolbars (they can no longer be moved)"), this);
 	m_locked->setObjectName(QStringLiteral("lockedCheck"));
 	m_locked->setChecked(ToolbarSettings::locked());
 
 	auto *form = new QFormLayout();
-	form->addRow(tr("Taille des icônes :"), m_icon_size);
-	form->addRow(tr("Boutons :"), m_button_style);
+	form->addRow(tr("Icon size:"), m_icon_size);
+	form->addRow(tr("Buttons:"), m_button_style);
 	form->addRow(m_locked);
 	vlayout->addLayout(form);
 
-	auto *hint = new QLabel(tr("Pour afficher ou masquer une barre d'outils, faites un clic droit sur une barre d'outils."), this);
+	auto *hint = new QLabel(tr("To show or hide a toolbar, right-click on a toolbar."), this);
 	hint->setWordWrap(true);
 	vlayout->addWidget(hint);
 	vlayout->addStretch();
@@ -79,7 +79,7 @@ void ToolbarsConfigPage::applyConf()
 
 QString ToolbarsConfigPage::title() const
 {
-	return tr("Barres d'outils", "configuration page title");
+	return tr("Toolbars", "configuration page title");
 }
 
 QIcon ToolbarsConfigPage::icon() const

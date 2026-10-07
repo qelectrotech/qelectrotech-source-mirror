@@ -102,7 +102,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_commands->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_commands, &QWidget::customContextMenuRequested, this, [this](const QPoint &pos) {
 		QMenu menu;
-		menu.addAction(tr("Personnaliser la barre…"), this, &ElementPickerPopup::startCustomising);
+		menu.addAction(tr("Customize the bar…"), this, &ElementPickerPopup::startCustomising);
 		menu.exec(m_commands->mapToGlobal(pos));
 	});
 
@@ -113,9 +113,9 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	auto *editor_layout = new QVBoxLayout(m_editor);
 	editor_layout->setContentsMargins(0, 0, 0, 0);
 	auto *help = new QLabel(
-		tr("Glissez les commandes et les éléments dans la barre, hors de la "
-		   "barre, ou d'une place à l'autre. Un double-clic fait passer une "
-		   "commande ou un élément d'une liste à l'autre."), m_editor);
+		tr("Drag commands and elements into the bar, out of the bar, or from "
+		   "one place to another. Double-clicking moves a command or an "
+		   "element from one list to the other."), m_editor);
 	help->setWordWrap(true);
 	m_edit_row = new QListWidget(m_editor);
 	m_edit_row->setFlow(QListView::LeftToRight);
@@ -183,7 +183,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	auto *symbols_layout = new QVBoxLayout(m_edit_symbols_box);
 	symbols_layout->setContentsMargins(0, 0, 0, 0);
 	m_edit_symbols_search = new QLineEdit(m_edit_symbols_box);
-	m_edit_symbols_search->setPlaceholderText(tr("Rechercher un élément…"));
+	m_edit_symbols_search->setPlaceholderText(tr("Search for an element…"));
 	m_edit_symbols_search->setClearButtonEnabled(true);
 	m_edit_symbols = new QListWidget(m_edit_symbols_box);
 	m_edit_symbols->setIconSize(QSize(32, 32));
@@ -191,7 +191,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_edit_symbols->setDragDropMode(QAbstractItemView::DragOnly);
 	m_edit_symbols->setDefaultDropAction(Qt::CopyAction);
 	m_edit_symbols->setSelectionMode(QAbstractItemView::SingleSelection);
-	symbols_layout->addWidget(new QLabel(tr("Éléments :"), m_edit_symbols_box));
+	symbols_layout->addWidget(new QLabel(tr("Elements:"), m_edit_symbols_box));
 	symbols_layout->addWidget(m_edit_symbols_search);
 	symbols_layout->addWidget(m_edit_symbols);
 
@@ -204,9 +204,9 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	connect(m_edit_symbols, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem *item) {
 		m_edit_row->addItem(barItem(item->data(Qt::UserRole).toString(), true));
 	});
-	auto *defaults = new QPushButton(tr("Valeurs par défaut"), m_editor);
-	auto *cancel = new QPushButton(tr("Annuler"), m_editor);
-	auto *done = new QPushButton(tr("Terminé"), m_editor);
+	auto *defaults = new QPushButton(tr("Default values"), m_editor);
+	auto *cancel = new QPushButton(tr("Undo"), m_editor);
+	auto *done = new QPushButton(tr("Done"), m_editor);
 	done->setDefault(true);
 	connect(defaults, &QPushButton::clicked, this, [this]() {
 		fillCustomising(ShortcutBarSettings::defaultIds(m_context));
@@ -219,11 +219,11 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	editor_buttons->addWidget(cancel);
 	editor_buttons->addWidget(done);
 	editor_layout->addWidget(help);
-	editor_layout->addWidget(new QLabel(tr("Dans la barre :"), m_editor));
+	editor_layout->addWidget(new QLabel(tr("In the bar:"), m_editor));
 	editor_layout->addWidget(m_edit_row);
 	auto *lists = new QHBoxLayout();
 	auto *commands_column = new QVBoxLayout();
-	commands_column->addWidget(new QLabel(tr("Autres commandes :"), m_editor));
+	commands_column->addWidget(new QLabel(tr("Other commands:"), m_editor));
 	commands_column->addWidget(m_edit_available);
 	lists->addLayout(commands_column);
 	lists->addWidget(m_edit_symbols_box);
@@ -232,7 +232,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_editor->hide();
 
 	m_search = new QLineEdit(this);
-	m_search->setPlaceholderText(tr("Rechercher un élément…"));
+	m_search->setPlaceholderText(tr("Search for an element…"));
 	m_search->setClearButtonEnabled(true);
 
 	m_model = new QStandardItemModel(this);
@@ -245,7 +245,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 	m_view->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	m_view->setMinimumHeight(260);
 
-	m_hint = new QLabel(tr("Entrée pour insérer · Échap pour fermer"), this);
+	m_hint = new QLabel(tr("Enter to insert · Esc to close"), this);
 	m_hint->setEnabled(false);
 		//Wrapped rather than cut off when the bar is made narrow
 	m_hint->setWordWrap(true);
@@ -253,7 +253,7 @@ ElementPickerPopup::ElementPickerPopup(ElementsCollectionWidget *source,
 		//The bar's width is the user's: dragging the grip wraps the tiles
 		//onto more rows, and the width is kept for next time
 	m_grip = new QSizeGrip(this);
-	m_grip->setToolTip(tr("Glisser pour changer la largeur de la barre"));
+	m_grip->setToolTip(tr("Drag to change the width of the bar"));
 	m_grip->installEventFilter(this);
 	auto *hint_row = new QHBoxLayout();
 	hint_row->addWidget(m_hint, 1);
@@ -451,7 +451,7 @@ void ElementPickerPopup::setCommands(const QStringList &ids)
 		auto *customise = new QToolButton(m_commands);
 		customise->setAutoRaise(true);
 		customise->setText(QStringLiteral("…"));
-		customise->setToolTip(tr("Personnaliser la barre…"));
+		customise->setToolTip(tr("Customize the bar…"));
 		customise->setFocusPolicy(Qt::NoFocus);
 		connect(customise, &QToolButton::clicked, this, &ElementPickerPopup::startCustomising);
 		m_commands_layout->addWidget(customise, 0, Qt::AlignTop);
@@ -596,7 +596,7 @@ void ElementPickerPopup::startCustomising()
 	m_customising = true;
 	hide();
 	setWindowFlags(Qt::Tool);
-	setWindowTitle(tr("Personnaliser la barre de raccourcis : %1")
+	setWindowTitle(tr("Customize the shortcut bar: %1")
 		       .arg(ShortcutBarSettings::title(m_context)));
 
 	fillCustomising(ShortcutBarSettings::ids(m_context));
@@ -765,8 +765,8 @@ void ElementPickerPopup::runSearch()
 		m_view->setCurrentIndex(m_model->index(0, 0));
 	}
 	m_hint->setText(hits.isEmpty()
-			? tr("Aucun résultat")
-			: tr("Entrée pour insérer · Échap pour fermer"));
+			? tr("No results")
+			: tr("Enter to insert · Esc to close"));
 }
 
 /**
@@ -870,7 +870,7 @@ void ElementPickerPopup::showPalette()
 		//The search still works; the list comes back as soon as one types.
 	if (m_bar_mode && ShortcutBarSettings::hasElements(m_context)) {
 		m_view->hide();
-		m_hint->setText(tr("Tapez pour rechercher un élément · Échap pour fermer"));
+		m_hint->setText(tr("Type to search for an element · Esc to close"));
 		return;
 	}
 	m_view->show();
@@ -891,10 +891,10 @@ void ElementPickerPopup::showPalette()
 
 	if (!count) {
 		m_hint->setText(
-			tr("Palette vide — glissez des éléments dans votre collection "
-			   "personnelle, ou tapez pour rechercher"));
+			tr("Empty palette — drag elements into your personal "
+			   "collection, or type to search"));
 	} else {
-		m_hint->setText(tr("Entrée pour insérer · Échap pour fermer"));
+		m_hint->setText(tr("Enter to insert · Esc to close"));
 		m_view->setCurrentIndex(m_model->index(0, 0));
 	}
 }

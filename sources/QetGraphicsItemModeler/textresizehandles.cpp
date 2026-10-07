@@ -45,8 +45,8 @@ TextResizeHandles::TextResizeHandles(QGraphicsTextItem *text, qreal handle_size)
 		auto *handle = new QetGraphicsHandlerItem(handle_size);
 		handle->setParentItem(this);
 		handle->setColor(Qt::darkGreen);
-		handle->setToolTip(tr("Glisser pour changer la largeur du texte, "
-							  "double-cliquer pour une largeur automatique"));
+		handle->setToolTip(tr("Drag to change the text width, double-click "
+							  "for automatic width"));
 		handle->setCursor(i == TextResize::TopLeft || i == TextResize::BottomRight
 						  ? Qt::SizeFDiagCursor : Qt::SizeBDiagCursor);
 		m_handles << handle;
@@ -232,7 +232,7 @@ TextResizeCommand::TextResizeCommand(QGraphicsObject *text,
 	m_old_pos(old_pos),
 	m_new_pos(new_pos)
 {
-	setText(tr("Redimensionner un texte"));
+	setText(tr("Resize a text"));
 }
 
 void TextResizeCommand::undo() {

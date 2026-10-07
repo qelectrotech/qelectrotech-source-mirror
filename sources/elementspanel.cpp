@@ -190,7 +190,7 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 		}
 	}
 
-	qtwi_project -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer ce projet", "Status tip"));
+	qtwi_project -> setStatusTip(0, tr("Double-click to collapse or expand this project", "Status tip"));
 
 	return(qtwi_project);
 }
@@ -206,8 +206,8 @@ QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(
 						      options,
 						      freshly_created);
 	if (tbt_collection && tbt_collection -> parentProject()) {
-		tbtc_qtwi -> setText(0, tr("Cartouches embarqués"));
-		tbtc_qtwi -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer cette collection de cartouches embarquée", "Status tip"));
+		tbtc_qtwi -> setText(0, tr("Embedded title blocks"));
+		tbtc_qtwi -> setStatusTip(0, tr("Double-click to collapse or expand this embedded title blocks collection", "Status tip"));
 	}
 	return(tbtc_qtwi);
 }
@@ -224,7 +224,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(
 				freshly_created);
 	item -> setStatusTip(
 		0,
-		tr("Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
+		tr("Drag and drop this title block template onto a sheet to apply it.",
 		   "Status tip displayed when selecting a title block template"
 		)
 	);
@@ -263,24 +263,24 @@ void ElementsPanel::reload()
 	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();
 	common_tbt_collection_item_ = addTemplatesCollection(common_tbt_collection, invisibleRootItem());
 	common_tbt_collection_item_ -> setIcon(0, system_icon);
-	common_tbt_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech", "Status tip"));
-	common_tbt_collection_item_ -> setWhatsThis(0, tr("Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.", "\"What's this\" tip"));
+	common_tbt_collection_item_ -> setStatusTip(0, tr("Double-click to collapse or expand the QElectrotech title blocks collection", "Status tip"));
+	common_tbt_collection_item_ -> setWhatsThis(0, tr("This is the title blocks collection provided along with QElectroTech. Installed as a system component, you normally cannot customize it.", "\"What's this\" tip"));
 	if (first_reload_) common_tbt_collection_item_ -> setExpanded(true);
 	
 	// load the company title block templates collection
 	TitleBlockTemplatesCollection *company_tbt_collection = QETApp::companyTitleBlockTemplatesCollection();
 	company_tbt_collection_item_ = addTemplatesCollection(company_tbt_collection, invisibleRootItem());
 	company_tbt_collection_item_ -> setIcon(0, company_icon);
-	company_tbt_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer la collection company de cartouches", "Status tip"));
-	company_tbt_collection_item_ -> setWhatsThis(0, tr("Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.", "\"What's this\" tip"));
+	company_tbt_collection_item_ -> setStatusTip(0, tr("Double-click to collapse or expand the title block company collection", "Status tip"));
+	company_tbt_collection_item_ -> setWhatsThis(0, tr("This is the title block company collection -- use it to create, store and edit your own title blocks.", "\"What's this\" tip"));
 	if (first_reload_) company_tbt_collection_item_ -> setExpanded(true);
 
 	// load the custom title block templates collection
 	TitleBlockTemplatesCollection *custom_tbt_collection = QETApp::customTitleBlockTemplatesCollection();
 	custom_tbt_collection_item_ = addTemplatesCollection(custom_tbt_collection, invisibleRootItem());
 	custom_tbt_collection_item_ -> setIcon(0, user_icon);
-	custom_tbt_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer votre collection personnelle de cartouches", "Status tip"));
-	custom_tbt_collection_item_ -> setWhatsThis(0, tr("Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.", "\"What's this\" tip"));
+	custom_tbt_collection_item_ -> setStatusTip(0, tr("Double-click to collapse or expand your own title blocks collection", "Status tip"));
+	custom_tbt_collection_item_ -> setWhatsThis(0, tr("This is your custom title blocks collection -- use it to create, store and edit your own title blocks.", "\"What's this\" tip"));
 	if (first_reload_) custom_tbt_collection_item_ -> setExpanded(true);
 	
 	// add projects

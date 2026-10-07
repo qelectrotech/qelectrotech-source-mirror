@@ -484,14 +484,14 @@ QString DiagramEventAddShape::beforeClickHint() const
 	switch (m_shape_type)
 	{
 		case QetShapeItem::Line:
-			return tr("Clic gauche : positionner le point de départ (Ctrl = position libre)");
+			return tr("Left click: position the starting point (Ctrl = free position)");
 		case QetShapeItem::Rectangle:
 		case QetShapeItem::Ellipse:
 			if (m_half_arc)
-				return tr("Clic gauche : positionner une extrémité de l'arc (Ctrl = position libre)");
-			return tr("Clic gauche : positionner le premier coin (Ctrl = point central, position libre)");
+				return tr("Left click: place one end of the arc (Ctrl = free position)");
+			return tr("Left click: position the first corner (Ctrl = center point, free position)");
 		case QetShapeItem::Polygon:
-			return tr("Clic gauche : positionner le premier point (Ctrl = position libre)");
+			return tr("Left click: position the first point (Ctrl = free position)");
 		default:
 			return QString();
 	}
@@ -502,19 +502,19 @@ QString DiagramEventAddShape::afterClickHint() const
 	switch (m_shape_type)
 	{
 		case QetShapeItem::Line:
-			return tr("Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler");
+			return tr("Left click: position the end point (Ctrl = free position); right click: cancel");
 		case QetShapeItem::Rectangle:
-			return tr("Clic gauche : positionner le coin opposé (Maj = carré, "
-					"Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler");
+			return tr("Left click: position the opposite corner (Shift = square, Ctrl = from center + free "
+					"position, Ctrl+Shift = centered square); right click: cancel");
 		case QetShapeItem::Ellipse:
 			if (m_half_arc)
-				return tr("Clic gauche : positionner l'autre extrémité et la hauteur de l'arc "
-						"(Maj = demi-cercle, Ctrl = position libre) ; clic droit : annuler");
-			return tr("Clic gauche : positionner le coin opposé (Maj = cercle, "
-					"Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler");
+				return tr("Left click: place the other end and the height of the arc (Shift = "
+						"half circle, Ctrl = free position); right click: cancel");
+			return tr("Left click: position the opposite corner (Shift = circle, Ctrl = from center + free "
+					"position, Ctrl+Shift = centered circle); right click: cancel");
 		case QetShapeItem::Polygon:
-			return tr("Clic gauche : point suivant ; double-clic ou Entrée : terminer ; "
-					"clic droit : annuler le dernier point");
+			return tr("Left click: next point; double-click or Enter: finish; right "
+					"click: undo the last point");
 		default:
 			return QString();
 	}

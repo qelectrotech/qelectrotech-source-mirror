@@ -141,7 +141,7 @@ void DiagramEventFillet::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	const QPointF pos = event->scenePos();
 	const QList<QetShapeItem *> lines = linesNear(pos);
 	if (lines.isEmpty()) {
-		showHint(tr("Aucune ligne ici : cliquez sur une ligne dessinée sur le folio"));
+		showHint(tr("No line here: click a line drawn on the sheet"));
 		return;
 	}
 
@@ -156,14 +156,14 @@ void DiagramEventFillet::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		m_first_line = lines.first();
 		m_diagram->clearSelection();
 		m_first_line->setSelected(true);
-		showHint(tr("Cliquez sur la deuxième ligne ; clic droit : annuler"));
+		showHint(tr("Click the second line; right click: cancel"));
 		return;
 	}
 
 	const auto other = std::find_if(lines.cbegin(), lines.cend(),
 		[this](QetShapeItem *line) { return line != m_first_line; });
 	if (other == lines.cend()) {
-		showHint(tr("Cliquez sur une autre ligne ; clic droit : annuler"));
+		showHint(tr("Click another line; right click: cancel"));
 		return;
 	}
 	const Pick first = m_first;
@@ -222,7 +222,7 @@ void DiagramEventFillet::filletLines(const Pick &a, const Pick &b)
 
 	QPointF corner;
 	if (s1.intersects(s2, &corner) == QLineF::NoIntersection) {
-		showHint(tr("Ces deux lignes sont parallèles : pas de congé possible"));
+		showHint(tr("These two lines are parallel: no fillet possible"));
 		return;
 	}
 
@@ -254,7 +254,7 @@ void DiagramEventFillet::filletLines(const Pick &a, const Pick &b)
 	const qreal len1 = length(e1 - corner);
 	const qreal len2 = length(e2 - corner);
 	if (len1 < 1e-6 || len2 < 1e-6) {
-		showHint(tr("Une des lignes s'arrête au coin : rien à arrondir de ce côté"));
+		showHint(tr("One of the lines stops at the corner: nothing to round on that side"));
 		return;
 	}
 
@@ -262,14 +262,14 @@ void DiagramEventFillet::filletLines(const Pick &a, const Pick &b)
 	const QPointF u2 = (e2 - corner) / len2;
 	const qreal theta = std::acos(qBound(qreal(-1), dot(u1, u2), qreal(1)));
 	if (qRadiansToDegrees(theta) > 174.0) {
-		showHint(tr("Ces deux lignes sont presque alignées : pas de congé possible"));
+		showHint(tr("These two lines are almost in line: no fillet possible"));
 		return;
 	}
 
 	QSettings settings;
 	bool ok = false;
 	QWidget *parent = m_diagram->views().isEmpty() ? nullptr : m_diagram->views().constFirst();
-	const qreal radius = QInputDialog::getDouble(parent, tr("Congé"), tr("Rayon :"),
+	const qreal radius = QInputDialog::getDouble(parent, tr("Fillet"), tr("Radius:"),
 		settings.value(radiusSettingKey, 20.0).toDouble(), 0.1, 100000.0, 1, &ok);
 	if (!ok || !m_diagram)
 		return;
@@ -277,7 +277,7 @@ void DiagramEventFillet::filletLines(const Pick &a, const Pick &b)
 
 	const qreal tangentDistance = radius / std::tan(theta / 2);
 	if (tangentDistance > len1 + 1e-6 || tangentDistance > len2 + 1e-6) {
-		showHint(tr("Rayon trop grand pour ces lignes (%1 au plus)")
+		showHint(tr("Radius too large for these lines (%1 at most)")
 				 .arg(std::min(len1, len2) * std::tan(theta / 2), 0, 'f', 1));
 		return;
 	}
@@ -312,7 +312,7 @@ void DiagramEventFillet::filletLines(const Pick &a, const Pick &b)
 		arc->setStartAngle(start);
 	}
 
-	auto *undo = new QUndoCommand(tr("Ajouter un congé"));
+	auto *undo = new QUndoCommand(tr("Add a fillet"));
 	new QPropertyUndoCommand(a.line, "line", a.line->line(), newLine(a.line, keep1, e1, t1), undo);
 	new QPropertyUndoCommand(b.line, "line", b.line->line(), newLine(b.line, keep2, e2, t2), undo);
 	new AddFilletArcCommand(arc, m_diagram, undo);
@@ -338,6 +338,6 @@ void DiagramEventFillet::showHint(const QString &text) const
 
 void DiagramEventFillet::showDefaultHint() const
 {
-	showHint(tr("Congé : cliquez sur deux lignes, ou une fois là où elles se rejoignent ; "
-				"Échap ou clic droit : terminer"));
+	showHint(tr("Fillet: click two lines, or once where they meet; Esc or right click: "
+				"finish"));
 }

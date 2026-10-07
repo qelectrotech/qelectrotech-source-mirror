@@ -47,7 +47,7 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		void reset() override;
 	public:
 		QUndoCommand* associatedUndo() const override;
-		QString title() const override { return tr("Éditer les propriétés d'une primitive "); }
+		QString title() const override { return tr("Edit the properties of a primitive "); }
 		void updateUi() override;
 		bool setLiveEdit(bool live_edit) override;
 

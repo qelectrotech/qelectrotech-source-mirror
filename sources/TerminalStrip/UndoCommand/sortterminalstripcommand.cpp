@@ -24,7 +24,7 @@ SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCo
 	QUndoCommand(parent),
 	m_strip(strip)
 {
-	setText(QObject::tr("Trier le bornier %1").arg(m_strip->name()));
+	setText(QObject::tr("Sort terminal block %1").arg(m_strip->name()));
 	m_old_order = m_strip->physicalTerminal();
 	m_new_order = m_strip->physicalTerminal();
 	sort();

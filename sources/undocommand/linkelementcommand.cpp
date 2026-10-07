@@ -71,7 +71,7 @@ LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 	m_first_redo (true)
 {
 	m_linked_before = m_linked_after = m_element->linkedElements();
-	setText(QObject::tr("Éditer les référence croisé", "edite the cross reference"));
+	setText(QObject::tr("Edit the cross reference", "edite the cross reference"));
 }
 
 /**

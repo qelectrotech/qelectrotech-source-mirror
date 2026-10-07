@@ -350,8 +350,8 @@ void TitleBlockTemplateView::editColumn(HelperCell *cell) {
 	TitleBlockDimension dimension_before = tbtemplate_ -> columnDimension(index);
 	TitleBlockDimensionWidget dialog(true, this);
 	dialog.setReadOnly(read_only_);
-	dialog.setWindowTitle(tr("Changer la largeur de la colonne", "window title when changing a column with"));
-	dialog.label() -> setText(tr("Largeur :", "text before the spinbox to change a column width"));
+	dialog.setWindowTitle(tr("Change the column width", "window title when changing a column with"));
+	dialog.label() -> setText(tr("Width:", "text before the spinbox to change a column width"));
 	dialog.setValue(dimension_before);
 	int user_answer = dialog.exec();
 	if (!read_only_ && user_answer == QDialog::Accepted) {
@@ -376,8 +376,8 @@ void TitleBlockTemplateView::editRow(HelperCell *cell) {
 	TitleBlockDimension dimension_before = TitleBlockDimension(tbtemplate_ -> rowDimension(index));
 	TitleBlockDimensionWidget dialog(false, this);
 	dialog.setReadOnly(read_only_);
-	dialog.setWindowTitle(tr("Changer la hauteur de la ligne", "window title when changing a row height"));
-	dialog.label() -> setText(tr("Hauteur :", "text before the spinbox to change a row height"));
+	dialog.setWindowTitle(tr("Change the row height", "window title when changing a row height"));
+	dialog.label() -> setText(tr("Height:", "text before the spinbox to change a row height"));
 	dialog.setValue(dimension_before);
 	int user_answer = dialog.exec();
 	if (!read_only_ && user_answer == QDialog::Accepted) {
@@ -574,15 +574,15 @@ qreal TitleBlockTemplateView::zoomFactor() const
 */
 void TitleBlockTemplateView::init()
 {
-	add_column_before_    = new QAction(QET::Icons::EditTableInsertColumnLeft,  tr("Ajouter une colonne (avant)",              "context menu"), this);
-	add_row_before_       = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une ligne (avant)",                "context menu"), this);
-	add_column_after_     = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne (après)",           "context menu"), this);
-	add_row_after_        = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne (après)",             "context menu"), this);
-	edit_column_dim_      = new QAction(                                        tr("Modifier les dimensions de cette colonne", "context menu"), this);
-	edit_row_dim_         = new QAction(                                        tr("Modifier les dimensions de cette ligne",   "context menu"), this);
-	delete_column_        = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Supprimer cette colonne",                  "context menu"), this);
-	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
-	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aperçu",     "context menu"), this);
+	add_column_before_    = new QAction(QET::Icons::EditTableInsertColumnLeft,  tr("Add a column (before)",              "context menu"), this);
+	add_row_before_       = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Add a row (before)",                "context menu"), this);
+	add_column_after_     = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Add a column (after)",           "context menu"), this);
+	add_row_after_        = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Add a row (after)",             "context menu"), this);
+	edit_column_dim_      = new QAction(                                        tr("Change this column dimension", "context menu"), this);
+	edit_row_dim_         = new QAction(                                        tr("Change this row dimension",   "context menu"), this);
+	delete_column_        = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Delete this column",                  "context menu"), this);
+	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Delete this row",                    "context menu"), this);
+	change_preview_width_ = new QAction(                                        tr("Change this preview width",     "context menu"), this);
 
 	connect(add_column_before_, &QAction::triggered, this, &TitleBlockTemplateView::addColumnBefore);
 	connect(add_row_before_, &QAction::triggered, this, &TitleBlockTemplateView::addRowBefore);
@@ -828,8 +828,8 @@ void TitleBlockTemplateView::refresh()
 void TitleBlockTemplateView::changePreviewWidth()
 {
 	TitleBlockDimensionWidget dialog(false, this);
-	dialog.setWindowTitle(tr("Changer la largeur de l'aperçu"));
-	dialog.label() -> setText(tr("Largeur de l'aperçu :"));
+	dialog.setWindowTitle(tr("Change the width"));
+	dialog.label() -> setText(tr("Width:"));
 	dialog.setValue(TitleBlockDimension(preview_width_));
 	if (dialog.exec() == QDialog::Accepted) {
 		setPreviewWidth(dialog.value().value);
@@ -1000,13 +1000,13 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 			// first, identically, so max_width reports the same case
 			// here -- no need to check it separately.
 			min_max_width_sentence = tr(
-				"Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.\n",
 				"tooltip warning shown when a template's relative-to-total-length columns alone already exceed 100%% of the total width"
 			);
 			break;
 		case TitleBlockTemplate::WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth:
 			min_max_width_sentence = tr(
-				"Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.\n",
 				"tooltip warning shown when a template's relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns"
 			);
 			break;
@@ -1014,7 +1014,7 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 			if (min_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
 				min_max_width_sentence += QString(
 					tr(
-						"Longueur minimale : %1px\n",
+						"Minimum length : %1px\n",
 						"tooltip showing the minimum width of the edited template"
 					)
 				).arg(min_width);
@@ -1022,14 +1022,14 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 			if (max_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
 				min_max_width_sentence += QString(
 					tr(
-						"Longueur maximale : %1px\n",
+						"Maximum length: %1px\n",
 						"tooltip showing the maximum width of the edited template"
 					)
 				).arg(max_width);
 			}
 			if (min_max_width_sentence.isEmpty()) {
 				min_max_width_sentence = tr(
-					"Longueur non contrainte.\n",
+					"Unrestricted length.\n",
 					"tooltip shown when the edited template has neither a minimum nor a maximum width constraint"
 				);
 			}
@@ -1086,7 +1086,7 @@ void TitleBlockTemplateView::updateTotalWidthLabel()
 	if (!total_width_helper_cell_) return;
 	total_width_helper_cell_ -> label = QString(
 		tr(
-			"Largeur totale pour cet aperçu : %1px",
+			"Total width: %1px",
 			"displayed at the top of the preview when editing a title block template"
 		)
 	).arg(preview_width_);

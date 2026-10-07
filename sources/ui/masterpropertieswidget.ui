@@ -29,7 +29,7 @@
       <enum>QFrame::Plain</enum>
      </property>
      <property name="text">
-      <string>Éléments liés</string>
+      <string>Elements related</string>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -120,7 +120,7 @@
    <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Éléments disponibles</string>
+      <string>Available elements</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -130,7 +130,7 @@
    <item row="2" column="3">
     <widget class="QPushButton" name="unlink_button">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l'élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unlink the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string/>
@@ -143,7 +143,7 @@
    <item row="2" column="4">
     <widget class="QPushButton" name="link_button">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l'élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Link the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string/>

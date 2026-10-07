@@ -232,7 +232,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 		//was set unless the user picked something else.
 	if (!m_auto_page_num_picked)
 		prop.auto_page_num = m_auto_page_num;
-	else if (ui->auto_page_cb->currentText() != tr("Créer un Folio Numérotation Auto"))
+	else if (ui->auto_page_cb->currentText() != tr("Create an auto sheet numbering"))
 		prop.auto_page_num = ui->auto_page_cb->currentText();
 
 	return prop;
@@ -388,8 +388,8 @@ void TitleBlockPropertiesWidget::initDialog(
 	setTitleBlockTemplatesVisible(false);
 	ui -> m_current_date_rb -> setVisible(current_date);
 
-	m_tbt_edit = new QAction(tr("Éditer ce modèle", "menu entry"), this);
-	m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle",
+	m_tbt_edit = new QAction(tr("Edit this template", "menu entry"), this);
+	m_tbt_duplicate = new QAction(tr("Duplicate and edit this template",
 					 "menu entry"),
 				      this);
 
@@ -425,7 +425,7 @@ void TitleBlockPropertiesWidget::initDialog(
 		keys_2 = project -> folioAutoNum().keys();
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==nullptr)
-			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
+			ui->auto_page_cb->addItem(tr("Create an auto sheet numbering"));
 			//activated() is only emitted for a choice the user makes
 		connect(ui->auto_page_cb, qOverload<int>(&QComboBox::activated),
 				this, [this]() { m_auto_page_num_picked = true; });
@@ -486,7 +486,7 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 		//Add the default title block
 	m_map_index_to_collection_type.clear();
 	m_map_index_to_collection_type.append(QET::QetCollection::Common);
-	ui -> m_tbt_cb -> addItem(QET::Icons::QETLogo, tr("Modèle par défaut"));
+	ui -> m_tbt_cb -> addItem(QET::Icons::QETLogo, tr("Default template"));
 
 		//Add every title block stored in m_tbt_collection_list
 	foreach (TitleBlockTemplatesCollection *tbt_c, m_tbt_collection_list)
@@ -602,7 +602,7 @@ void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked()
 void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked()
 {
 	emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
-	if (ui->auto_page_cb->currentText()!=tr("Créer un Folio Numérotation Auto"))
+	if (ui->auto_page_cb->currentText()!=tr("Create an auto sheet numbering"))
 	{
 		//still to implement: load current auto folio num settings
 	}

@@ -63,7 +63,7 @@ AutoNumberingDockWidget::AutoNumberingDockWidget(QWidget *parent) :
 	m_element_apply_pb = new QPushButton(QET::Icons::DialogOk, QString(), actions);
 	m_element_apply_pb->setObjectName(QStringLiteral("m_element_apply_pb"));
 	m_element_apply_pb->setMaximumWidth(24);
-	m_element_apply_pb->setToolTip(tr("Appliquer cette numérotation aux éléments sélectionnés"));
+	m_element_apply_pb->setToolTip(tr("Apply this numbering to the selected elements"));
 	reset->setParent(actions);
 	actions_layout->addWidget(m_element_apply_pb);
 	actions_layout->addWidget(reset);
@@ -93,13 +93,13 @@ void AutoNumberingDockWidget::applyElementSchemeToSelection()
 	if (!m_project || m_project->isReadOnly()) {
 		return;
 	}
-	const QString caption = tr("Appliquer la numérotation");
+	const QString caption = tr("Apply numbering");
 	const QString title = ui->m_element_cb->currentText();
 	DiagramView *view = m_project_view ? m_project_view->currentDiagram() : nullptr;
 	Diagram *diagram = view ? view->diagram() : nullptr;
 	if (!diagram || !m_project->elementAutoNum().contains(title)) {
 		QMessageBox::information(this, caption,
-								 tr("Choisissez une numérotation d'éléments du projet."));
+								 tr("Choose an element numbering from the project."));
 		return;
 	}
 
@@ -112,17 +112,17 @@ void AutoNumberingDockWidget::applyElementSchemeToSelection()
 	}
 	if (selected.isEmpty()) {
 		QMessageBox::information(this, caption,
-								 tr("Sélectionnez d'abord des éléments dans le folio."));
+								 tr("First select elements in the sheet."));
 		return;
 	}
 
 	const auto plan = ElementAutoNumSchemeCommand::assignPlan(m_project, title, selected);
 	QVector<RenumberPreviewDialog::LeftAlone> left;
 	for (Element *el : plan.frozen) {
-		left.append({el, tr("(figé)")});
+		left.append({el, tr("(frozen)")});
 	}
 	for (Element *el : plan.otherFormula) {
-		left.append({el, tr("(autre numérotation)")});
+		left.append({el, tr("(other numbering)")});
 	}
 	const int replaceable = static_cast<int>(left.size());
 
@@ -130,22 +130,21 @@ void AutoNumberingDockWidget::applyElementSchemeToSelection()
 	if (!cmd && !replaceable) {
 		QMessageBox::information(
 					this, caption,
-					tr("Rien à appliquer : les éléments sélectionnés suivent déjà "
-					   "la numérotation « %1 », ou prennent leur nom d'un autre élément.").arg(title));
+					tr("Nothing to apply: the selected elements already follow the “%1” "
+					   "numbering, or take their name from another element.").arg(title));
 		return;
 	}
 
 	const QString intro = cmd
-			? tr("%n élément(s) vont recevoir la numérotation « %1 », dans l'ordre des folios "
-				 "et des positions.", "", static_cast<int>(plan.todo.size())).arg(title)
-			: tr("Aucun élément ne peut recevoir la numérotation « %1 » sans remplacer "
-				 "ce qu'il a.").arg(title);
+			? tr("%n elements will receive the “%1” numbering, in sheet and position order.", "", static_cast<int>(plan.todo.size())).arg(title)
+			: tr("No element can receive the “%1” numbering without replacing what it "
+				 "already has.").arg(title);
 	const auto answer = RenumberPreviewDialog::ask(
 				this, caption, intro,
 				cmd ? cmd->changes() : QVector<RenumberElementsCommand::ElementChange>(),
 				left,
 				replaceable
-				? tr("Remplacer aussi les %n élément(s) laissés comme ils sont", "", replaceable)
+				? tr("Also replace the %n elements left as they are", "", replaceable)
 				: QString());
 
 	if (answer == RenumberPreviewDialog::Answer::Cancel) {
@@ -166,9 +165,9 @@ void AutoNumberingDockWidget::applyElementSchemeToSelection()
 	if (not_given > 0) {
 		QMessageBox::information(
 					this, caption,
-					tr("%n élément(s) numérotés.", "", applied)
+					tr("%n elements numbered.", "", applied)
 					+ QLatin1Char('\n')
-					+ tr("%n élément(s) sélectionnés sont restés comme ils sont.", "", not_given));
+					+ tr("%n selected elements were left as they are.", "", not_given));
 	}
 }
 
@@ -292,7 +291,7 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 	setContext();
 	
 	ShortcutManager::instance().registerAction(ui->m_configure_pb, "autonum.configure",
-						    tr("Autonumérotation"), Qt::CTRL | Qt::SHIFT | Qt::Key_P);
+						    tr("Auto Numbering"), Qt::CTRL | Qt::SHIFT | Qt::Key_P);
 }
 
 /**
@@ -383,8 +382,8 @@ void AutoNumberingDockWidget::updateApplyEnabled()
 				&& ui->m_element_cb->count() > 0);
 	m_element_apply_pb->setToolTip(
 				elements_selected
-				? tr("Appliquer cette numérotation aux éléments sélectionnés")
-				: tr("Sélectionnez d'abord des éléments dans le folio"));
+				? tr("Apply this numbering to the selected elements")
+				: tr("First select elements in the sheet"));
 }
 
 /**

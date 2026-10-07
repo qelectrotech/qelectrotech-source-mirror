@@ -60,26 +60,26 @@ m_project(nullptr)
 	QStringList list;
 	QSettings settings;
 	if (settings.value("genericpanel/folio", false).toBool()) {
-		list << tr("Vignette")
-		<< tr("Label de folio")
-		<< tr("Titre de folio")
+		list << tr("Thumbnail")
+		<< tr("Sheet label")
+		<< tr("Sheet title")
 		<< tr("Position");
 	}
 	else {
-		list << tr("Vignette")
-		<< tr("N° de folio")
-		<< tr("Titre de folio")
+		list << tr("Thumbnail")
+		<< tr("Sheet no.")
+		<< tr("Sheet title")
 		<< tr("Position");
 	}
 	ui->m_free_tree_widget->setHeaderLabels(list);
 	ui->m_link_tree_widget->setHeaderLabels(list);
 
 	m_context_menu  = new QMenu(this);
-	m_link_action   = new QAction(tr("Lier l'élément"), this);
-	m_unlink_action = new QAction(tr("Délier l'élément"), this);
-	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
-	m_show_element  = new QAction(tr("Montrer l'élément maître"), this);
-	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
+	m_link_action   = new QAction(tr("Link the item"), this);
+	m_unlink_action = new QAction(tr("Unlink the item"), this);
+	m_show_qtwi     = new QAction(tr("Show item"), this);
+	m_show_element  = new QAction(tr("Show master element"), this);
+	m_save_header_state = new QAction(tr("Save the layout"), this);
 
 	connect(ui->m_free_tree_widget, &QTreeWidget::itemDoubleClicked,
 			this, &MasterPropertiesWidget::showElementFromTWI);
@@ -317,9 +317,10 @@ void MasterPropertiesWidget::on_link_button_clicked()
 			// Show a message box with the actual window as parent to ensure it's on top
 			const auto answer = QMessageBox::warning(
 						this->window(),
-						tr("Nombre maximal d'esclaves atteint."),
-						tr("La limite fixée pour cet élément maître est atteinte (Limite: %1).\n\n"
-						   "Voulez-vous tout de même lier ce contact esclave ?").arg(max_slaves),
+						tr("Maximum number of slaves reached."),
+						tr("The limit set for this master element has been reached (Limit: %1).\n"
+						   "\n"
+						   "Do you still want to link this slave contact?").arg(max_slaves),
 						QMessageBox::Yes | QMessageBox::No,
 						QMessageBox::Yes);
 			if (answer != QMessageBox::Yes) {
@@ -536,8 +537,8 @@ void MasterPropertiesWidget::updateUi()
 			m_plc_table = new QTableWidget(m_plc_widget);
 			m_plc_table->setColumnCount(6);
 			m_plc_table->setHorizontalHeaderLabels({
-				tr("Type"), tr("Adresse"), tr("Fonction"),
-				tr("Commentaire"), tr("Réf. croisée"), tr("Bornes")
+				tr("Type"), tr("Address"), tr("Function"),
+				tr("Annotation"), tr("Cross-reference"), tr("Terminals")
 			});
 			m_plc_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 			m_plc_table->horizontalHeader()->setSectionsMovable(true);
@@ -1074,7 +1075,7 @@ void MasterPropertiesWidget::plcShowTableContextMenu(const QPoint &pos)
 		return;
 
 	QMenu menu;
-	menu.addAction(tr("Coller depuis le presse-papiers"), this, &MasterPropertiesWidget::plcPasteFromClipboard);
+	menu.addAction(tr("Paste from the clipboard"), this, &MasterPropertiesWidget::plcPasteFromClipboard);
 
 	menu.exec(m_plc_table->mapToGlobal(pos));
 }

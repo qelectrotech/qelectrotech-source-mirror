@@ -75,16 +75,16 @@ int BOMExportDialog::exec()
 			//save in csv file in same directory as project by default
 		QString dir = m_project->currentDir();
 		if (dir.isEmpty()) dir = QETApp::documentDir();
-		QString file_name = dir % "/" % tr("nomenclature_") % QString(m_project ->title() % ".csv");
-		QString file_path = QFileDialog::getSaveFileName(this, tr("Enregister sous... "), file_name, tr("Fichiers csv (*.csv)"));
+		QString file_name = dir % "/" % tr("parts list_") % QString(m_project ->title() % ".csv");
+		QString file_path = QFileDialog::getSaveFileName(this, tr("Save As... "), file_name, tr("Files csv (*.csv)"));
 		if (!file_path.isEmpty())
 		{
 			QString error;
 			const auto csv = getBom(&error);
 			if (!error.isEmpty() || !BomExport::writeCsv(file_path, csv, &error)) {
 				QMessageBox::critical(
-						this, tr("Erreur"),
-						tr("Impossible d'enregistrer la nomenclature dans %1.\n%2")
+						this, tr("Error"),
+						tr("Unable to save the parts list to %1.\n%2")
 								.arg(file_path, error));
 			}
 		}
@@ -126,9 +126,9 @@ QByteArray BOMExportDialog::getBom(QString *error)
 			if (field_name == QLatin1String("position")) {
 				header_names << tr("Position");
 			} else if (field_name == QLatin1String("diagram_position")) {
-				header_names << tr("Position du folio");
+				header_names << tr("Sheet position");
 			} else if (field_name == QLatin1String("designation_qty")) {
-				header_names << tr("Quantité numéro d'article", "Special field with name : designation quantity");
+				header_names << tr("Designation quantity", "Special field with name : designation quantity");
 			} else {
 				const auto translated = QETInformation::translatedInfoKey(field_name);
 				header_names << (translated.isEmpty() ? field_name : translated);
@@ -170,14 +170,14 @@ void BOMExportDialog::on_m_preview_pb_clicked()
 	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr(), &rejection);
 
 	if (!rejection.isEmpty()) {
-		QMessageBox::warning(this, tr("Requête refusée"), rejection);
+		QMessageBox::warning(this, tr("Request refused"), rejection);
 		return;
 	}
 
 	if (!query_.exec()) {
 		QMessageBox::warning(
-				this, tr("Erreur"),
-				tr("Erreur dans la requête :\n%1").arg(query_.lastError().text()));
+				this, tr("Error"),
+				tr("Error in the request:\n%1").arg(query_.lastError().text()));
 		return;
 	}
 

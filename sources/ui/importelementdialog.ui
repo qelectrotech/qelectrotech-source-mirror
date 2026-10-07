@@ -11,27 +11,27 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Intégration d'un élément</string>
+   <string>Integration of an element</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>L'élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</string>
+      <string>The element has already been integrated in the project. However, the version you're trying to drop appears to be different. What do you wish to do ?</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QRadioButton" name="m_use_actual_rd">
      <property name="text">
-      <string>Utiliser l'élément déjà integré</string>
+      <string>Using the already integrated element</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QRadioButton" name="m_use_drop_rb">
      <property name="text">
-      <string>Intégrer l'élément déposé</string>
+      <string>Integrate the dropped element</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -49,14 +49,14 @@
      <item>
       <widget class="QRadioButton" name="m_erase_actual_rb">
        <property name="text">
-        <string>Écraser l'élément déjà intégé</string>
+        <string>Overwrite the already integrated element</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QRadioButton" name="m_use_both_rb">
        <property name="text">
-        <string>Faire cohabiter les deux éléments</string>
+        <string>Make the two elements coexist</string>
        </property>
        <property name="checked">
         <bool>false</bool>

@@ -66,7 +66,7 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		}
 
 		//Add new line to scene
-		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("ligne"), m_scene, m_line));
+		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("line"), m_scene, m_line));
 
 		//Set m_line to nullptr for create new line at next mouse press
 		m_line = nullptr;

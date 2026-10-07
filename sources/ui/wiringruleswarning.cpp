@@ -34,14 +34,12 @@ void WiringRulesWarning::show(QWidget *parent)
 {
 	QMessageBox::warning(
 		parent,
-		QApplication::translate("WiringRulesWarning", "Avertissement"),
+		QApplication::translate("WiringRulesWarning", "Warning"),
 		QApplication::translate(
 			"WiringRulesWarning",
-			"<b>Les règles de conducteurs par borne sont une fonction expérimentale.</b>"
-			"<br><br>Elles comptent les conducteurs tels que QElectroTech les représente "
-			"aujourd'hui. Elles pourraient changer, et vos réglages devoir être refaits, "
-			"si les fils et les conducteurs deviennent des objets distincts dans une "
-			"version future."
-			"<br><br>Toutes ces règles peuvent être désactivées dans Configurer "
-			"QElectroTech > Général."));
+			"<b>The conductors-per-terminal rules are an experimental "
+			"feature.</b><br><br>They count conductors as QElectroTech represents them "
+			"today. They may change, and your settings may need redoing, if wires and "
+			"conductors become separate objects in a future version.<br><br>All these "
+			"rules can be turned off in Configure QElectroTech > General."));
 }

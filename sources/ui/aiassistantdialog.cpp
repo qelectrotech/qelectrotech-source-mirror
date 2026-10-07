@@ -44,7 +44,7 @@ const char *const GUIDE_URL =
 AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Connecter un assistant IA"));
+	setWindowTitle(tr("Connect an AI assistant"));
 	resize(720, 560);
 
 #ifdef Q_OS_WIN
@@ -59,11 +59,10 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	auto *layout = new QVBoxLayout(this);
 
 	auto *intro = new QLabel(
-		tr("Un assistant IA (Claude, GitHub Copilot, Gemini…) peut ouvrir, "
-		   "vérifier et modifier vos schémas grâce au serveur MCP de "
-		   "QElectroTech, qui fonctionne sur cet ordinateur. Copiez le texte "
-		   "ci-dessous dans la configuration de votre assistant. "
-		   "<a href=\"%1\">Guide détaillé</a>").arg(QLatin1String(GUIDE_URL)),
+		tr("An AI assistant (Claude, GitHub Copilot, Gemini…) can open, check "
+		   "and edit your diagrams through QElectroTech's MCP server, which "
+		   "runs on this computer. Copy the text below into your assistant's "
+		   "configuration. <a href=\"%1\">Detailed guide</a>").arg(QLatin1String(GUIDE_URL)),
 		this);
 	intro->setWordWrap(true);
 	intro->setOpenExternalLinks(true);
@@ -71,8 +70,8 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 
 	if (m_paths.server.isEmpty()) {
 		auto *missing = new QLabel(
-			tr("<b>Le serveur MCP n'est pas installé avec cette version de "
-			   "QElectroTech.</b> Le guide explique comment l'obtenir."),
+			tr("<b>The MCP server is not installed with this version of "
+			   "QElectroTech.</b> The guide explains how to get it."),
 			this);
 		missing->setWordWrap(true);
 		layout->addWidget(missing);
@@ -82,19 +81,19 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	    && m_paths.python_status != AiAssistantSetup::PythonStatus::Found) {
 		QString text;
 		if (m_paths.python_status == AiAssistantSetup::PythonStatus::StoreShortcut)
-			text = tr("<b>Python n'est peut-être pas installé.</b> Seul le raccourci "
-				  "« python » du Microsoft Store a été trouvé : sans Python, il "
-				  "ouvre le Store au lieu de lancer le serveur.");
+			text = tr("<b>Python may not be installed.</b> Only the Microsoft Store "
+				  "“python” shortcut was found: without Python, it opens the "
+				  "Store instead of starting the server.");
 		else
-			text = tr("<b>Python est introuvable sur cet ordinateur</b> (commande "
-				  "« %1 »). Le serveur en a besoin.").arg(m_paths.python);
+			text = tr("<b>Python was not found on this computer</b> (command "
+				  "“%1”). The server needs it.").arg(m_paths.python);
 		if (windows)
-			text += QLatin1Char(' ') + tr("Relancez l'installateur de QElectroTech et "
-						      "cochez « Python pour l'assistant IA », ou "
-						      "installez Python depuis python.org.");
+			text += QLatin1Char(' ') + tr("Run the QElectroTech installer again and "
+						      "tick “Python for the AI assistant”, or "
+						      "install Python from python.org.");
 		else
-			text += QLatin1Char(' ') + tr("Installez Python 3 avec le gestionnaire "
-						      "de paquets de votre système.");
+			text += QLatin1Char(' ') + tr("Install Python 3 with your system's "
+						      "package manager.");
 		auto *python = new QLabel(text, this);
 		python->setWordWrap(true);
 		layout->addWidget(python);
@@ -109,27 +108,26 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	m_client->addItem(QStringLiteral("Gemini CLI"), int(Client::GeminiCli));
 	m_client->addItem(QStringLiteral("Codex CLI"), int(Client::CodexCli));
 	m_client->addItem(QStringLiteral("LM Studio"), int(Client::LmStudio));
-	form->addRow(tr("Assistant :"), m_client);
+	form->addRow(tr("Assistant:"), m_client);
 
 	auto *workspace_row = new QHBoxLayout();
 	m_workspace = new QLineEdit(this);
-	m_workspace->setPlaceholderText(tr("Le dossier de vos schémas"));
-	auto *browse = new QPushButton(tr("Parcourir…"), this);
+	m_workspace->setPlaceholderText(tr("Your diagrams folder"));
+	auto *browse = new QPushButton(tr("Browse…"), this);
 	workspace_row->addWidget(m_workspace);
 	workspace_row->addWidget(browse);
-	form->addRow(tr("Dossier accessible :"), workspace_row);
+	form->addRow(tr("Folder it can use:"), workspace_row);
 
-	m_allow_edit = new QCheckBox(tr("Autoriser l'assistant à modifier les schémas"), this);
+	m_allow_edit = new QCheckBox(tr("Allow the assistant to edit diagrams"), this);
 	form->addRow(QString(), m_allow_edit);
 	layout->addLayout(form);
 
 	auto *scope = new QLabel(
-		tr("L'assistant ne peut lire et écrire que dans ce dossier. Sans "
-		   "modification autorisée, il peut seulement lire, comparer et "
-		   "exporter. Un assistant lit le texte des projets (repères, "
-		   "notes…) : un texte écrit comme une instruction peut "
-		   "l'influencer. Laissez les modifications désactivées pour les "
-		   "schémas reçus d'autres personnes."),
+		tr("The assistant can only read and write in this folder. Without "
+		   "editing allowed, it can only read, compare and export. An "
+		   "assistant reads the text in projects (labels, notes…): text "
+		   "written as an instruction can influence it. Leave editing off "
+		   "for diagrams you received from other people."),
 		this);
 	scope->setWordWrap(true);
 	layout->addWidget(scope);
@@ -146,7 +144,7 @@ AiAssistantDialog::AiAssistantDialog(QWidget *parent) :
 	layout->addWidget(m_text);
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, this);
-	m_copy = buttons->addButton(tr("Copier"), QDialogButtonBox::ActionRole);
+	m_copy = buttons->addButton(tr("Copy"), QDialogButtonBox::ActionRole);
 	layout->addWidget(buttons);
 
 	connect(m_client, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -166,8 +164,8 @@ void AiAssistantDialog::refresh()
 {
 	const auto client = Client(m_client->currentData().toInt());
 	m_where->setText(whereItGoes(client) + QLatin1Char(' ')
-			 + tr("Si le fichier contient déjà d'autres serveurs, "
-			      "ajoutez seulement l'entrée « qet »."));
+			 + tr("If the file already lists other servers, add "
+			      "only the “qet” entry."));
 
 	const QString workspace = m_workspace->text().trimmed();
 	const bool ready = !m_paths.server.isEmpty() && !workspace.isEmpty();
@@ -175,7 +173,7 @@ void AiAssistantDialog::refresh()
 	if (m_paths.server.isEmpty())
 		m_text->setPlainText(QString());
 	else if (workspace.isEmpty())
-		m_text->setPlainText(tr("Choisissez d'abord le dossier de vos schémas."));
+		m_text->setPlainText(tr("Choose your diagrams folder first."));
 	else
 		m_text->setPlainText(AiAssistantSetup::configuration(
 			client, m_paths, workspace, m_allow_edit->isChecked()));
@@ -184,7 +182,7 @@ void AiAssistantDialog::refresh()
 void AiAssistantDialog::chooseWorkspace()
 {
 	const QString dir = QFileDialog::getExistingDirectory(
-		this, tr("Dossier accessible à l'assistant"), m_workspace->text());
+		this, tr("Folder the assistant can use"), m_workspace->text());
 	if (!dir.isEmpty())
 		m_workspace->setText(QDir::toNativeSeparators(dir));
 }
@@ -192,32 +190,29 @@ void AiAssistantDialog::chooseWorkspace()
 void AiAssistantDialog::copy()
 {
 	QApplication::clipboard()->setText(m_text->toPlainText());
-	m_copy->setText(tr("Copié"));
+	m_copy->setText(tr("Copied"));
 }
 
 QString AiAssistantDialog::whereItGoes(Client client) const
 {
 	switch (client) {
 		case Client::ClaudeDesktop:
-			return tr("Dans Claude Desktop : Paramètres → Développeur → "
-				  "Modifier la configuration. Puis quittez et relancez Claude.");
+			return tr("In Claude Desktop: Settings → Developer → Edit Config. Then "
+				  "quit and restart Claude.");
 		case Client::ClaudeCode:
-			return tr("Enregistrez-le sous le nom .mcp.json dans le dossier de vos schémas.");
+			return tr("Save it as .mcp.json in your diagrams folder.");
 		case Client::VsCode:
-			return tr("Enregistrez-le sous le nom .vscode/mcp.json dans le dossier "
-				  "ouvert dans VS Code. Copilot utilise les outils en mode agent.");
+			return tr("Save it as .vscode/mcp.json in the folder open in VS Code. "
+				  "Copilot uses the tools in agent mode.");
 		case Client::Cursor:
-			return tr("Ajoutez-le au fichier .cursor/mcp.json de votre dossier "
-				  "personnel.");
+			return tr("Add it to the .cursor/mcp.json file in your home folder.");
 		case Client::GeminiCli:
-			return tr("Ajoutez-le au fichier .gemini/settings.json de votre dossier "
-				  "personnel. Gemini CLI demande de faire confiance au dossier "
-				  "la première fois.");
+			return tr("Add it to the .gemini/settings.json file in your home folder. "
+				  "Gemini CLI asks you to trust the folder the first time.");
 		case Client::CodexCli:
-			return tr("Ajoutez-le au fichier .codex/config.toml de votre dossier "
-				  "personnel.");
+			return tr("Add it to the .codex/config.toml file in your home folder.");
 		case Client::LmStudio:
-			return tr("Dans LM Studio : onglet Program → Install → Edit mcp.json.");
+			return tr("In LM Studio: Program tab → Install → Edit mcp.json.");
 	}
 	return QString();
 }

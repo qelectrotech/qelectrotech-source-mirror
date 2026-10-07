@@ -30,7 +30,7 @@ TerminalStripProjectConfigPage::TerminalStripProjectConfigPage(QETProject *proje
 }
 
 QString TerminalStripProjectConfigPage::title() const {
-	return tr("Plan de bornes");
+	return tr("Terminal plan");
 }
 
 QIcon TerminalStripProjectConfigPage::icon() const {

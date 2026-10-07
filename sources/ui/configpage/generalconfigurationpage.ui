@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Apparence</string>
+       <string>Appearance</string>
       </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -29,14 +29,14 @@
           <item>
            <widget class="QCheckBox" name="m_use_system_color_cb">
             <property name="text">
-             <string>Utiliser les couleurs du système</string>
+             <string>Use system colors</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="KColorButton" name="m_custom_app_color_kpb">
             <property name="toolTip">
-             <string>Couleur de l'application</string>
+             <string>Application color</string>
             </property>
            </widget>
           </item>
@@ -52,31 +52,31 @@
        <item>
         <widget class="QCheckBox" name="m_use_gesture_trackpad">
          <property name="text">
-          <string>Utiliser les gestes du pavé tactile</string>
+          <string>Use gestures touchpad</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
          <property name="text">
-          <string>Autoriser le dézoom au delà du folio</string>
+          <string>Allow unzoom beyond the sheet</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_conductor_properties_panel">
          <property name="text">
-          <string>Afficher les propriétés d'un conducteur sélectionné dans le panneau Propriétés de la sélection</string>
+          <string>Show the properties of a selected conductor in the Selection properties panel</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_wiring_rules_cb">
          <property name="toolTip">
-          <string>Décoché, aucune règle de conducteurs par borne n'est appliquée, quels que soient les réglages des projets.</string>
+          <string>When unticked, no conductors-per-terminal rule applies, whatever the projects' settings.</string>
          </property>
          <property name="text">
-          <string>Appliquer les règles de conducteurs par borne des projets</string>
+          <string>Apply the projects' conductors-per-terminal rules</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -91,7 +91,7 @@
          <item>
           <widget class="QLabel" name="m_wiring_max_wires_label">
            <property name="text">
-            <string>Nombre maximal de conducteurs par borne :</string>
+            <string>Maximum conductors per terminal:</string>
            </property>
           </widget>
          </item>
@@ -104,10 +104,10 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Pour tous les projets, sauf ceux qui ont leurs propres réglages. Un nouveau conducteur qui dépasserait ce nombre sur une borne est refusé ; les conducteurs déjà dessinés ne sont pas modifiés. 4 correspond à deux embouts doubles, un de chaque côté de la vis.</string>
+            <string>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</string>
            </property>
            <property name="specialValueText">
-            <string>Sans limite</string>
+            <string>No limit</string>
            </property>
            <property name="maximum">
             <number>99</number>
@@ -131,10 +131,10 @@
          <item>
           <widget class="QCheckBox" name="m_wiring_one_wire_per_report_cb">
            <property name="toolTip">
-            <string>Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, celui qui continue sur l'autre folio.</string>
+            <string>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</string>
            </property>
            <property name="text">
-            <string>Un seul conducteur par renvoi de folio</string>
+            <string>Only one conductor per sheet reference</string>
            </property>
           </widget>
          </item>
@@ -150,54 +150,54 @@
        <item>
         <widget class="QCheckBox" name="grid_startup_cb">
          <property name="text">
-          <string>Afficher la grille par défaut (appliqué au prochain lancement)</string>
+          <string>Show the default grid (applied the next time the programme is launched)</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_collection_dblclick_edits">
          <property name="toolTip">
-          <string>Par défaut, un double-clic insère l'élément sur le folio ; l'édition reste accessible par le menu contextuel.</string>
+          <string>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</string>
          </property>
          <property name="text">
-          <string>Double-cliquer dans la collection ouvre l'éditeur d'élément au lieu de l'insérer</string>
+          <string>Double-clicking in the collection opens the element editor instead of inserting it</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_collection_search_flat_cb">
          <property name="toolTip">
-          <string>Coché : une seule liste, la meilleure correspondance en premier. Décoché : l'arborescence de la collection, filtrée sur la recherche.</string>
+          <string>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</string>
          </property>
          <property name="text">
-          <string>Afficher les résultats de recherche sous forme de liste triée</string>
+          <string>Show search results as a sorted list</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_context_toolbar_cb">
          <property name="toolTip">
-          <string>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s'effacent quand la souris s'éloigne.</string>
+          <string>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</string>
          </property>
          <property name="text">
-          <string>Afficher les commandes près de la sélection</string>
+          <string>Show commands near the selection</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="m_mouse_gestures_cb">
          <property name="toolTip">
-          <string>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</string>
+          <string>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</string>
          </property>
          <property name="text">
-          <string>Gestes de la souris avec le bouton droit</string>
+          <string>Right-button mouse gestures</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
-          <string>Afficher les guides par défaut (appliqué au prochain lancement)</string>
+          <string>Show default guides (applies from the next time the programme is launched)</string>
          </property>
         </widget>
        </item>
@@ -211,14 +211,14 @@
        <item>
         <widget class="QRadioButton" name="m_use_windows_mode_rb">
          <property name="text">
-          <string>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</string>
+          <string>Use &amp;Windows (applied at the next launch of QElectroTech)</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="m_use_tab_mode_rb">
          <property name="text">
-          <string>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</string>
+          <string>Use &amp;tabs (applied at the next launch of QElectroTech)</string>
          </property>
         </widget>
        </item>
@@ -257,7 +257,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>Méthode de mise à l'echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</string>
+             <string>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</string>
             </property>
            </widget>
           </item>
@@ -288,20 +288,20 @@
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>Projets</string>
+       <string>Projects</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="0">
         <widget class="QCheckBox" name="m_use_folio_label">
          <property name="text">
-          <string>Utiliser les numéros de folio à la place de leur position dans le projet</string>
+          <string>Use sheet numbers instead of their position in the project</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</string>
+          <string>Automatic backup of projects (applied at the next launch of QElectroTech)</string>
          </property>
         </widget>
        </item>
@@ -311,7 +311,7 @@
           <bool>true</bool>
          </property>
          <property name="specialValueText">
-          <string>Désactivé</string>
+          <string>Disabled</string>
          </property>
          <property name="accelerated">
           <bool>true</bool>
@@ -330,37 +330,37 @@
        <item row="6" column="0">
         <widget class="QCheckBox" name="m_autonumber_pasted">
          <property name="text">
-          <string>Numéroter automatiquement les éléments collés ou dupliqués qui suivent une numérotation</string>
+          <string>Automatically number pasted or duplicated elements that follow a numbering</string>
          </property>
          <property name="toolTip">
-          <string>Un élément collé reçoit le numéro suivant de sa numérotation au lieu du nom de l'élément copié, et la numérotation avance.</string>
+          <string>A pasted element receives the next number of its numbering instead of the copied element's name, and the numbering advances.</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_save_label_paste">
          <property name="text">
-          <string>Ne pas conserver les labels des éléments lors des copier coller</string>
+          <string>Do not store the labels of items in the copy paste</string>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
         <widget class="QCheckBox" name="m_enable_scripting">
          <property name="text">
-          <string>Autoriser l'exécution de scripts JavaScript (Projet &gt; Exécuter un script, et --run)</string>
+          <string>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</string>
          </property>
          <property name="toolTip">
-          <string>Un script s'exécute avec vos droits : il peut lire et modifier le projet ouvert et écrire des fichiers. Désactivé par défaut ; n'exécutez que des scripts dont vous connaissez l'origine.</string>
+          <string>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</string>
          </property>
         </widget>
        </item>
        <item row="5" column="0">
         <widget class="QCheckBox" name="m_live_assistant">
          <property name="text">
-          <string>Autoriser un assistant IA à agir sur le projet ouvert (mode direct)</string>
+          <string>Allow an AI assistant to act on the open project (live mode)</string>
          </property>
          <property name="toolTip">
-          <string>Un assistant connecté par le serveur MCP peut alors exécuter des scripts sur le projet ouvert, sous vos yeux. Un avertissement est affiché à chaque démarrage tant que ce réglage est activé. Prend effet au prochain démarrage ; le décocher coupe la connexion tout de suite.</string>
+          <string>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</string>
          </property>
         </widget>
        </item>
@@ -393,7 +393,7 @@
        <item row="2" column="0">
         <widget class="QCheckBox" name="m_border_0">
          <property name="text">
-          <string extracomment="Choix de l'increment de depart 1 ou 0">Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</string>
+          <string extracomment="Choix de l'increment de depart 1 ou 0">Number the title block columns from 0 (1 otherwise)</string>
          </property>
         </widget>
        </item>
@@ -407,7 +407,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
-          <string>Accès aux collections</string>
+          <string>Access the collections</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -419,7 +419,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_16">
             <property name="text">
-             <string>Répertoire de la collection company</string>
+             <string>Company collection directory</string>
             </property>
            </widget>
           </item>
@@ -427,12 +427,12 @@
            <widget class="QComboBox" name="m_custom_tbt_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -441,12 +441,12 @@
            <widget class="QComboBox" name="m_custom_elmt_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -454,24 +454,24 @@
           <item row="4" column="2">
            <widget class="QPushButton" name="m_prefix_pb">
             <property name="toolTip">
-             <string extracomment="tooltip of the button opening the prefix configuration dialog of the user collection">Créer ou modifier le préfixe des dossiers de la collection utilisateur (fichier qet_labels.xml)</string>
+             <string extracomment="tooltip of the button opening the prefix configuration dialog of the user collection">Create or change the prefix of the user collection's folders (qet_labels.xml file)</string>
             </property>
             <property name="text">
-             <string extracomment="button opening the dialog where the folder prefixes of the user collection are configured">Configurer les préfixes…</string>
+             <string extracomment="button opening the dialog where the folder prefixes of the user collection are configured">Configure prefixes…</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>Répertoire de la collection commune</string>
+             <string>Common collection directory</string>
             </property>
            </widget>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_17">
             <property name="text">
-             <string>Répertoire des cartouches company</string>
+             <string>Company title-block directory</string>
             </property>
            </widget>
           </item>
@@ -479,12 +479,12 @@
            <widget class="QComboBox" name="m_company_tbt_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -492,14 +492,14 @@
           <item row="4" column="0">
            <widget class="QLabel" name="label_8">
             <property name="text">
-             <string>Répertoire de la collection utilisateur</string>
+             <string>User collection directory</string>
             </property>
            </widget>
           </item>
           <item row="7" column="0">
            <widget class="QLabel" name="label_23">
             <property name="text">
-             <string>Répertoire des Macros utilisateur</string>
+             <string>User Macro Directory</string>
             </property>
            </widget>
           </item>
@@ -507,12 +507,12 @@
            <widget class="QComboBox" name="m_user_macros_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -521,12 +521,12 @@
            <widget class="QComboBox" name="m_common_elmt_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -534,7 +534,7 @@
           <item row="5" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string>Répertoire des cartouches utilisateur</string>
+             <string>User title blocks directory</string>
             </property>
            </widget>
           </item>
@@ -542,12 +542,12 @@
            <widget class="QComboBox" name="m_company_elmt_path_cb">
             <item>
              <property name="text">
-              <string>Par defaut</string>
+              <string>By default</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Parcourir...</string>
+              <string>Browse...</string>
              </property>
             </item>
            </widget>
@@ -555,14 +555,14 @@
           <item row="8" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
-             <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
+             <string>(Reload the elements collections to apply the changes)</string>
             </property>
            </widget>
           </item>
           <item row="6" column="0">
            <widget class="QLabel" name="m_material_list_label">
             <property name="text">
-             <string>Fichier de la liste de matériaux</string>
+             <string>Materials list file</string>
             </property>
            </widget>
           </item>
@@ -571,30 +571,30 @@
             <item>
              <widget class="QLineEdit" name="m_material_list_path_le">
               <property name="toolTip">
-               <string extracomment="tooltip of the material file path field">Répertoire de matériaux utilisé pour renseigner les articles d'un élément</string>
+               <string extracomment="tooltip of the material file path field">Materials list used to fill in a symbol's items</string>
               </property>
               <property name="readOnly">
                <bool>true</bool>
               </property>
               <property name="placeholderText">
-               <string extracomment="hint shown when no material file is configured yet">Non configuré</string>
+               <string extracomment="hint shown when no material file is configured yet">Not set</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="m_material_list_browse_pb">
               <property name="text">
-               <string>Parcourir...</string>
+               <string>Browse...</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="m_material_list_create_pb">
               <property name="toolTip">
-               <string extracomment="tooltip of the button creating the material file with its header line">Créer le fichier de la liste avec ses en-têtes</string>
+               <string extracomment="tooltip of the button creating the material file with its header line">Create the list file with its headers</string>
               </property>
               <property name="text">
-               <string>Créer...</string>
+               <string>Create...</string>
               </property>
              </widget>
             </item>
@@ -606,7 +606,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
-          <string>Gestion des éléments</string>
+          <string>Elements management</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -615,15 +615,14 @@
           <item>
            <widget class="QCheckBox" name="m_highlight_integrated_elements">
             <property name="text">
-             <string>Mettre en valeur dans le panel les éléments fraîchement intégrés</string>
+             <string>Highlight freshly integrated elements in the panel</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
-Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</string>
+             <string>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</string>
             </property>
             <property name="scaledContents">
              <bool>false</bool>
@@ -650,7 +649,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="title">
-       <string>Langues</string>
+       <string>Languages</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
@@ -659,7 +658,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item row="0" column="1">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Appliqué au prochain lancement de QElectroTech</string>
+          <string>Applied to the next launch of QElectroTech</string>
          </property>
         </widget>
        </item>
@@ -693,13 +692,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Textes</string>
+       <string>texts</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLabel" name="label_15">
          <property name="text">
-          <string>Vous pouvez définir ici l'apparence par defaut des differents textes de QElectroTech</string>
+          <string>Here you can define the default appearance of the different texts of QElectroTech</string>
          </property>
         </widget>
        </item>
@@ -713,7 +712,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_6">
          <property name="title">
-          <string>Textes d'éléments</string>
+          <string>Elements texts</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="2" column="2">
@@ -726,7 +725,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="0" column="0">
            <widget class="QLabel" name="label_12">
             <property name="text">
-             <string>Police :</string>
+             <string>Font:</string>
             </property>
            </widget>
           </item>
@@ -746,7 +745,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="2" column="0">
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Longueur :</string>
+             <string>Length :</string>
             </property>
            </widget>
           </item>
@@ -779,7 +778,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_7">
          <property name="title">
-          <string>Textes indépendants</string>
+          <string>Independent texts</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="1" column="0">
@@ -792,7 +791,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="0" column="0">
            <widget class="QLabel" name="label_13">
             <property name="text">
-             <string>Police :</string>
+             <string>Font:</string>
             </property>
            </widget>
           </item>
@@ -832,13 +831,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_9">
          <property name="title">
-          <string>Autres textes</string>
+          <string>Other texts</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Police :</string>
+             <string>Font:</string>
             </property>
            </widget>
           </item>
@@ -882,13 +881,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="GrilleClavier">
       <attribute name="title">
-       <string>Grille + Clavier</string>
+       <string>Grid + Keyboard</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Grille : 1 - 30</string>
+          <string>Grid: 1 - 30</string>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -929,7 +928,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="2" column="0">
            <widget class="QLabel" name="Label_Grid_Tip">
             <property name="text">
-             <string>La Grille doite etre active pour pouvoir voir les modifications.</string>
+             <string>The Grid must be active to see the changes.</string>
             </property>
            </widget>
           </item>
@@ -975,10 +974,10 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="3" column="0">
            <widget class="QLabel" name="Label_Diagram_textGrid">
             <property name="text">
-             <string>Grille des textes déplacés à la souris</string>
+             <string>Grid for texts moved with the mouse</string>
             </property>
             <property name="toolTip">
-             <string>Fraction de la grille des folios. Maintenir Ctrl pendant le déplacement pour placer librement.</string>
+             <string>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</string>
             </property>
            </widget>
           </item>
@@ -998,7 +997,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Déplacement au clavier : 1 - 30</string>
+          <string>Keyboard movement: 1 - 30</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="2">
@@ -1048,14 +1047,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="0" column="0">
            <widget class="QLabel" name="Label_Diagram_Key_xGrid">
             <property name="text">
-             <string>DiagramEditor (touche :   gauche / droite)  xGrid</string>
+             <string comment="fr: DiagramEditor (touche :   gauche / droite)  xGrid">DiagramEditor (key: left / right) xGrid</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="Label_Diagram_Key_yGrid">
             <property name="text">
-             <string>DiagramEditor (touche :   haut / bas)  yGrid</string>
+             <string>DiagramEditor (key: up / down) yGrid</string>
             </property>
            </widget>
           </item>
@@ -1078,13 +1077,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
-          <string>Déplacement au clavier avec la touche ALT : 1 - 9</string>
+          <string>Keyboard movement with the ALT key: 1 - 9</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="1">
            <widget class="QLabel" name="Label_Diagram_Key_xGrid_ALT">
             <property name="text">
-             <string>DiagramEditor (touche :   gauche / droite ) xGrid</string>
+             <string>DiagramEditor (key: left / right) xGrid</string>
             </property>
            </widget>
           </item>
@@ -1113,7 +1112,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="1" column="1">
            <widget class="QLabel" name="Label_Diagram_Key_yGrid_ALT">
             <property name="text">
-             <string>DiagramEditor (touche :  haut / bas)  yGrid</string>
+             <string comment="fr: DiagramEditor (touche :  haut / bas)  yGrid">DiagramEditor (key: up / down) yGrid</string>
             </property>
            </widget>
           </item>
@@ -1158,7 +1157,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
-          <string>Affichage Grille</string>
+          <string>View grid</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="2">
@@ -1216,7 +1215,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="0" column="0">
            <widget class="QLabel" name="Label_Diagram_Grid_PointSize">
             <property name="text">
-             <string>Taille des points de la grille de Diagram-Editor : 1 - 5</string>
+             <string>Point-size in diagram-editor: 1 - 5</string>
             </property>
            </widget>
           </item>
@@ -1276,7 +1275,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <item row="1" column="0">
            <widget class="QLabel" name="label_20">
             <property name="text">
-             <string>Taille des points de la grille de l'éditeur d'éléments : 1 - 5</string>
+             <string>Point-size in element-editor: 1 - 5</string>
             </property>
            </widget>
           </item>
@@ -1343,10 +1342,10 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QCheckBox" name="m_check_terminal_names_cb">
          <property name="toolTip">
-          <string>À l'enregistrement d'un élément : refuser deux bornes portant le même nom, et signaler les bornes sans nom (IEC 61666).</string>
+          <string>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</string>
          </property>
          <property name="text">
-          <string>Vérifier les noms des bornes à l'enregistrement</string>
+          <string>Check terminal names when saving</string>
          </property>
          <property name="checked">
           <bool>true</bool>

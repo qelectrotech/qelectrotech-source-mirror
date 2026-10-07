@@ -238,7 +238,7 @@ void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 	Q_UNUSED(event)
 
 	m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
-	m_undo_command->setText(tr("Modifier une ligne"));
+	m_undo_command->setText(tr("Edit a line"));
 	m_undo_command->enableAnimation();
 	return;
 }

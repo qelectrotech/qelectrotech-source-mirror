@@ -38,12 +38,12 @@ AddTerminalToStripCommand::AddTerminalToStripCommand(QSharedPointer<RealTerminal
 	QString text;
 	if (ts_name.isEmpty()) {
 		text = t_label.isEmpty()
-			? QObject::tr("Ajouter une borne à un groupe de bornes")
-			: QObject::tr("Ajouter la borne %1 à un groupe de bornes").arg(t_label);
+			? QObject::tr("Add a terminal to a group of terminals")
+			: QObject::tr("Add terminal %1 to a group of terminals").arg(t_label);
 	} else {
 		text = t_label.isEmpty()
-			? QObject::tr("Ajouter une borne au groupe de bornes %1").arg(ts_name)
-			: QObject::tr("Ajouter la borne %1 au groupe de bornes %2").arg(t_label, ts_name);
+			? QObject::tr("Add a terminal to terminal group %1").arg(ts_name)
+			: QObject::tr("Add terminal %1 to terminal group %2").arg(t_label, ts_name);
 	}
 	setText(text);
 }
@@ -57,8 +57,8 @@ AddTerminalToStripCommand::AddTerminalToStripCommand(QVector<QSharedPointer<Real
 	const auto count = m_terminal.size();
 
 	setText(ts_name.isEmpty()
-		? QObject::tr("Ajouter %n borne(s) à un groupe de bornes", "", count)
-		: QObject::tr("Ajouter %n borne(s) au groupe de bornes %1", "", count).arg(ts_name));
+		? QObject::tr("Add %n terminals to a group of terminals", "", count)
+		: QObject::tr("Add %n terminals to terminal group %1", "", count).arg(ts_name));
 }
 
 
@@ -141,8 +141,8 @@ void RemoveTerminalFromStripCommand::setCommandTitle()
 	const auto count = m_terminals.size();
 
 	setText(strip_name.isEmpty()
-		? QObject::tr("Enlever %n borne(s) d'un groupe de bornes", "", count)
-		: QObject::tr("Enlever %n borne(s) du groupe de bornes %1", "", count).arg(strip_name));
+		? QObject::tr("Remove %n terminals from a group of terminals", "", count)
+		: QObject::tr("Remove %n terminals from terminal group %1", "", count).arg(strip_name));
 }
 
 /**
@@ -171,22 +171,22 @@ MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> termin
 	QString text;
 	if (t_label.isEmpty()) {
 		if (strip_name.isEmpty() && new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer une borne d'un groupe de bornes vers un autre groupe de bornes");
+			text = QObject::tr("Move a terminal from a group of terminals to another group of terminals");
 		else if (strip_name.isEmpty())
-			text = QObject::tr("Déplacer une borne d'un groupe de bornes vers le groupe de bornes %1").arg(new_strip_name);
+			text = QObject::tr("Move a terminal from a group of terminals to terminal group %1").arg(new_strip_name);
 		else if (new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer une borne du groupe de bornes %1 vers un autre groupe de bornes").arg(strip_name);
+			text = QObject::tr("Move a terminal from terminal group %1 to another group of terminals").arg(strip_name);
 		else
-			text = QObject::tr("Déplacer une borne du groupe de bornes %1 vers le groupe de bornes %2").arg(strip_name, new_strip_name);
+			text = QObject::tr("Move a terminal from terminal group %1 to terminal group %2").arg(strip_name, new_strip_name);
 	} else {
 		if (strip_name.isEmpty() && new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer la borne %1 d'un groupe de bornes vers un autre groupe de bornes").arg(t_label);
+			text = QObject::tr("Move terminal %1 from a group of terminals to another group of terminals").arg(t_label);
 		else if (strip_name.isEmpty())
-			text = QObject::tr("Déplacer la borne %1 d'un groupe de bornes vers le groupe de bornes %2").arg(t_label, new_strip_name);
+			text = QObject::tr("Move terminal %1 from a group of terminals to terminal group %2").arg(t_label, new_strip_name);
 		else if (new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer la borne %1 du groupe de bornes %2 vers un autre groupe de bornes").arg(t_label, strip_name);
+			text = QObject::tr("Move terminal %1 from terminal group %2 to another group of terminals").arg(t_label, strip_name);
 		else
-			text = QObject::tr("Déplacer la borne %1 du groupe de bornes %2 vers le groupe de bornes %3").arg(t_label, strip_name, new_strip_name);
+			text = QObject::tr("Move terminal %1 from terminal group %2 to terminal group %3").arg(t_label, strip_name, new_strip_name);
 	}
 	setText(text);
 }
@@ -205,13 +205,13 @@ MoveTerminalCommand::MoveTerminalCommand(QVector<QSharedPointer<PhysicalTerminal
 
 	QString text;
 	if (strip_name.isEmpty() && new_strip_name.isEmpty())
-		text = QObject::tr("Déplacer %n borne(s) d'un groupe de bornes vers un autre groupe de bornes", "", count);
+		text = QObject::tr("Move %n terminals from one group of terminals to another group of terminals", "", count);
 	else if (strip_name.isEmpty())
-		text = QObject::tr("Déplacer %n borne(s) d'un groupe de bornes vers le groupe de bornes %1", "", count).arg(new_strip_name);
+		text = QObject::tr("Move %n terminals from a group of terminals to the %1 group of terminals", "", count).arg(new_strip_name);
 	else if (new_strip_name.isEmpty())
-		text = QObject::tr("Déplacer %n borne(s) du groupe de bornes %1 vers un autre groupe de bornes", "", count).arg(strip_name);
+		text = QObject::tr("Move %n terminals from terminal group %1 to another terminal group", "", count).arg(strip_name);
 	else
-		text = QObject::tr("Déplacer %n borne(s) du groupe de bornes %1 vers le groupe de bornes %2", "", count).arg(strip_name, new_strip_name);
+		text = QObject::tr("Move %n terminals from terminal group %1 to terminal group %2", "", count).arg(strip_name, new_strip_name);
 	setText(text);
 }
 

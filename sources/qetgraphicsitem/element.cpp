@@ -672,9 +672,9 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		&& QetVersion::currentVersion() < elmt_version)
 	{
 		std::cerr << qPrintable(
-						 QObject::tr("Avertissement : l'élément "
-									 " a été enregistré avec une version"
-									 " ultérieure de QElectroTech.")
+						 QObject::tr("Warning: the element has been "
+									 "saved with a more recent version "
+									 "of QElectroTech.")
 						 ) << std::endl;
 	}
 
@@ -2111,7 +2111,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		else
 		{
 			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
-			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			undo->setText(tr("Automatically number an element", "undo caption"));
 			diagram()->undoStack().push(undo);
 		}
 
@@ -2386,10 +2386,10 @@ void Element::drawPlcTable(QPainter *painter)
 	// Build header labels
 	QMap<int, QString> headers;
 	headers[COL_TYPE]     = QObject::tr("Type");
-	headers[COL_ADDRESS]  = QObject::tr("Adresse");
-	headers[COL_FUNCTION] = QObject::tr("Fonction");
-	headers[COL_COMMENT]  = QObject::tr("Commentaire");
-	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+	headers[COL_ADDRESS]  = QObject::tr("Address");
+	headers[COL_FUNCTION] = QObject::tr("Function");
+	headers[COL_COMMENT]  = QObject::tr("Annotation");
+	headers[COL_CROSSREF] = QObject::tr("Cross-reference");
 
 	// Override with custom column names
 	if (!plc_data.columnNames.isEmpty()) {

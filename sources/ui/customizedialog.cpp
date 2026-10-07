@@ -27,7 +27,7 @@
 CustomizeDialog::CustomizeDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Personnaliser", "window title"));
+	setWindowTitle(tr("Customize", "window title"));
 
 	m_tabs = new QTabWidget(this);
 	m_tabs->setObjectName(QStringLiteral("customizeTabs"));

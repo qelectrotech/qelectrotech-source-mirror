@@ -2453,7 +2453,7 @@ void Diagram::loadFolioSeqHash(QHash<QString,
 void Diagram::changeZValue(QET::DepthOption option)
 {
 	DiagramContent dc(this);
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier la profondeur"));
+	QUndoCommand *undo = new QUndoCommand(tr("Change the depth"));
 	QList<QGraphicsItem *> l = dc.items(DiagramContent::SelectedOnly | \
 					    DiagramContent::Elements | \
 					    DiagramContent::Shapes | \

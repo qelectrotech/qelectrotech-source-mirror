@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Poignées :</string>
+      <string>Handles :</string>
      </property>
     </widget>
    </item>

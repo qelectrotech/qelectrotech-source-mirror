@@ -11,13 +11,13 @@
             </rect>
         </property>
         <property name="windowTitle">
-            <string>Numérotation automatique des bornes</string>
+            <string>Automatic numbering of terminals</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
             <item>
                 <widget class="QLabel" name="label_description">
                     <property name="text">
-                        <string>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : '-X:AB'. La partie avant les deux-points (le bornier) peut être nommée au choix. 'AB' peut être composé de chiffres ou de lettres."</string>
+                        <string>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : '-X:AB'. The part before the colon (the terminal block) can be named as desired. 'AB' can consist of numbers or letters."</string>
                     </property>
                     <property name="wordWrap">
                         <bool>true</bool>
@@ -31,13 +31,13 @@
                             <item>
                                 <widget class="QGroupBox" name="groupBox_axis">
                                     <property name="title">
-                                        <string>Priorité des axes</string>
+                                        <string>Priority of axes</string>
                                     </property>
                                     <layout class="QVBoxLayout" name="verticalLayout_2">
                                         <item>
                                             <widget class="QRadioButton" name="rb_priority_x">
                                                 <property name="text">
-                                                    <string>Priorité à l'axe X (horizontal)</string>
+                                                    <string>Priority to the X-axis (horizontal)</string>
                                                 </property>
                                                 <property name="checked">
                                                     <bool>true</bool>
@@ -47,7 +47,7 @@
                                         <item>
                                             <widget class="QRadioButton" name="rb_priority_y">
                                                 <property name="text">
-                                                    <string>Priorité à l'axe Y (vertical)</string>
+                                                    <string>Priority to the Y-axis (vertical)</string>
                                                 </property>
                                             </widget>
                                         </item>
@@ -57,13 +57,13 @@
                             <item>
                                 <widget class="QGroupBox" name="groupBox_type">
                                     <property name="title">
-                                        <string>Type de numérotation</string>
+                                        <string>Type of numbering</string>
                                     </property>
                                     <layout class="QVBoxLayout" name="verticalLayout_3">
                                         <item>
                                             <widget class="QRadioButton" name="rb_type_num">
                                                 <property name="text">
-                                                    <string>Numérique uniquement (1, 2, 3...)</string>
+                                                    <string>Numeric only (1, 2, 3...)</string>
                                                 </property>
                                                 <property name="checked">
                                                     <bool>true</bool>
@@ -73,7 +73,7 @@
                                         <item>
                                             <widget class="QRadioButton" name="rb_type_alpha">
                                                 <property name="text">
-                                                    <string>Alphanumérique (A, B, C... 1, 2...)</string>
+                                                    <string>Alphanumeric (A, B, C... 1, 2...)</string>
                                                 </property>
                                             </widget>
                                         </item>
@@ -98,7 +98,7 @@
                                                 <item>
                                                     <widget class="QCheckBox" name="cb_also_alpha">
                                                         <property name="text">
-                                                            <string>Numéroter également les lettres</string>
+                                                            <string>Number the letters as well</string>
                                                         </property>
                                                         <property name="enabled">
                                                             <bool>false</bool>
@@ -115,13 +115,13 @@
                     <item>
                         <widget class="QGroupBox" name="groupBox_strips">
                             <property name="title">
-                                <string>Borniers</string>
+                                <string>Terminal blocks</string>
                             </property>
                             <layout class="QVBoxLayout" name="verticalLayout_strips">
                                 <item>
                                     <widget class="QLabel" name="label_strips_description">
                                         <property name="text">
-                                            <string>Décochez les borniers dont la numérotation doit être exclue</string>
+                                            <string>Uncheck the terminal blocks whose numbering is to be excluded</string>
                                         </property>
                                         <property name="wordWrap">
                                             <bool>true</bool>

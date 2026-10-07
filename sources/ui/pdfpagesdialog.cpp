@@ -48,7 +48,7 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 	: QDialog(parent),
 	  m_document(document)
 {
-	setWindowTitle(tr("Sélectionner une page"));
+	setWindowTitle(tr("Select a page"));
 	setMinimumWidth(500);
 	setMinimumHeight(500);
 
@@ -59,7 +59,7 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 
 	// Info label: "Ce document PDF contient X page(s)"
 	m_info_label = new QLabel(
-		tr("Ce document PDF contient %n page(s)", "", pageCount),
+		tr("This PDF document contains %n pages", "", pageCount),
 		this
 	);
 	m_info_label->setWordWrap(true);
@@ -68,7 +68,7 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 	// Page selection layout
 	QHBoxLayout *page_layout = new QHBoxLayout();
 
-	QLabel *select_label = new QLabel(tr("Page à importer :"), this);
+	QLabel *select_label = new QLabel(tr("Page to import:"), this);
 	page_layout->addWidget(select_label);
 
 	// Spinbox: min=1, max=pageCount
@@ -81,20 +81,20 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 	page_layout->addStretch();
 
 	// DPI selection
-	QLabel *dpi_label = new QLabel(tr("Résolution :"), this);
+	QLabel *dpi_label = new QLabel(tr("Resolution:"), this);
 	page_layout->addWidget(dpi_label);
 
 	m_dpi_combo = new QComboBox(this);
-	m_dpi_combo->addItem(tr("150 DPI (écran)"), 150);
-	m_dpi_combo->addItem(tr("300 DPI (impression)"), 300);
-	m_dpi_combo->addItem(tr("600 DPI (haute qualité)"), 600);
+	m_dpi_combo->addItem(tr("150 DPI (screen)"), 150);
+	m_dpi_combo->addItem(tr("300 DPI (print)"), 300);
+	m_dpi_combo->addItem(tr("600 DPI (high quality)"), 600);
 	m_dpi_combo->setCurrentIndex(0);
 	page_layout->addWidget(m_dpi_combo);
 
 	main_layout->addLayout(page_layout);
 
 	// Preview area
-	QLabel *preview_title = new QLabel(tr("Aperçu :"), this);
+	QLabel *preview_title = new QLabel(tr("Preview :"), this);
 	main_layout->addWidget(preview_title);
 
 	QScrollArea *scroll_area = new QScrollArea(this);

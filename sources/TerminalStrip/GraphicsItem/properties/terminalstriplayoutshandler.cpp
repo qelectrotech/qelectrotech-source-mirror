@@ -23,7 +23,7 @@ TerminalStripLayoutsHandler::TerminalStripLayoutsHandler()
 {
 
 	m_default_layout = QSharedPointer<TerminalStripLayoutPattern>::create();
-	m_default_layout->m_name = QObject::tr("Disposition par défaut");
+	m_default_layout->m_name = QObject::tr("Default layout");
 }
 
 QSharedPointer<TerminalStripLayoutPattern> TerminalStripLayoutsHandler::defaultLayout()

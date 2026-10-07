@@ -68,7 +68,7 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	// Reuse the modal dialog's exact wording for consistency (and so the
 	// existing translation applies).
 	m_apply_all_cb = new QCheckBox(
-		tr("Appliquer les propriétés à l'ensemble des conducteurs de ce potentiel"),
+		tr("Apply properties to all conductors of this potential"),
 		this);
 	m_apply_all_cb->setChecked(QSettings().value(
 		QStringLiteral("diagrameditor/conductor_apply_all"), true).toBool());
@@ -168,7 +168,7 @@ void ConductorPropertiesEditorWidget::setConductors(
 
 	const int count = conductors.size();
 	m_count_label->setText(
-		tr("%n conducteurs sélectionnés : seuls les champs modifiés leur sont appliqués.",
+		tr("%n conductors selected: only the fields you change are applied to them.",
 		   "selection properties panel", count));
 	m_count_label->setVisible(count > 1);
 
@@ -372,5 +372,5 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 */
 QString ConductorPropertiesEditorWidget::title() const
 {
-	return tr("Conducteur");
+	return tr("Conductor");
 }

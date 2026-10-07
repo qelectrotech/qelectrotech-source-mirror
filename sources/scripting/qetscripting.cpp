@@ -61,12 +61,14 @@ namespace {
 	QString refusalMessage()
 	{
 		return QObject::tr(
-			"Les scripts sont désactivés.\n\n"
-			"Un script a accès à l'ensemble du projet et peut écrire des "
-			"fichiers, aussi cette fonction est-elle désactivée par défaut.\n\n"
-			"Pour l'activer : Configurer QElectroTech > Général > Projets, "
-			"ou définir la variable d'environnement QET_ENABLE_SCRIPTING=1 "
-			"pour une exécution sans interface (CI, traitement par lot).");
+			"Scripts are disabled.\n"
+			"\n"
+			"A script has access to the entire project and can write files, "
+			"so this feature is disabled by default.\n"
+			"\n"
+			"To enable it: Configure QElectroTech > General > Projects, or "
+			"set the QET_ENABLE_SCRIPTING=1 environment variable for headless "
+			"execution (CI, batch processing).");
 	}
 }
 
@@ -183,8 +185,8 @@ bool runSource(const QString &source, const QString &fileName, const QString &ti
 	// has its macro taken off again: an obsolete command is deleted by
 	// QUndoStack::undo() instead of being undone onto the redo side.
 	QUndoStack *stack = (view && project) ? project->undoStack() : nullptr;
-	const QString undo_text = live ? QObject::tr("Assistant : %1").arg(title)
-				       : QObject::tr("Script : %1").arg(title);
+	const QString undo_text = live ? QObject::tr("Assistant: %1").arg(title)
+				       : QObject::tr("Script: %1").arg(title);
 	if (stack) {
 		stack->beginMacro(undo_text);
 		api->setUndoGrouped(true);

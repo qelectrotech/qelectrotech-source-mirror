@@ -40,12 +40,12 @@ CustomElementInfoPartWidget::CustomElementInfoPartWidget(
 	m_value_edit(new QLineEdit(value, this)),
 	m_remove_button(new QToolButton(this))
 {
-	m_key_edit->setPlaceholderText(tr("nom_de_la_propriete"));
-	m_key_edit->setToolTip(tr("Lettres minuscules, chiffres, tiret et underscore uniquement"));
+	m_key_edit->setPlaceholderText(tr("name_of_the_property"));
+	m_key_edit->setToolTip(tr("Lower-case letters, numbers, hyphens and underscores only"));
 	m_value_edit->setClearButtonEnabled(true);
 
 	m_remove_button->setIcon(QET::Icons::Remove);
-	m_remove_button->setToolTip(tr("Supprimer cette propriété"));
+	m_remove_button->setToolTip(tr("Delete this property"));
 	m_remove_button->setAutoRaise(true);
 
 	auto *layout = new QGridLayout(this);

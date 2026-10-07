@@ -35,7 +35,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Informations disponibles</string>
+         <string>Available information</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -48,7 +48,7 @@
       <item row="0" column="2">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Information à afficher</string>
+         <string>Information to display</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -154,7 +154,7 @@
      <item>
       <widget class="QCheckBox" name="m_edit_sql_query_cb">
        <property name="text">
-        <string>Requête SQL :</string>
+        <string>SQL request  :</string>
        </property>
       </widget>
      </item>

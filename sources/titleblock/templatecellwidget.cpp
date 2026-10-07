@@ -55,54 +55,54 @@ TitleBlockTemplateCellWidget::~TitleBlockTemplateCellWidget()
 void TitleBlockTemplateCellWidget::initWidgets()
 {
 	// type combo box: always displayed
-	cell_type_label_ = new QLabel(tr("Type de cellule :"));
+	cell_type_label_ = new QLabel(tr("Cell type:"));
 	cell_type_input_ = new QComboBox();
-	cell_type_input_ -> addItem(tr("Vide"),  TitleBlockCell::EmptyCell);
-	cell_type_input_ -> addItem(tr("Texte"), TitleBlockCell::TextCell);
+	cell_type_input_ -> addItem(tr("Empty"),  TitleBlockCell::EmptyCell);
+	cell_type_input_ -> addItem(tr("Text"), TitleBlockCell::TextCell);
 	cell_type_input_ -> addItem(tr("Logo"),  TitleBlockCell::LogoCell);
 	
 	// name input: displayed for text and logo cells
-	name_label_ = new QLabel(tr("Nom :"));
+	name_label_ = new QLabel(tr("Name:"));
 	name_input_ = new QLineEdit();
 	
 	// widgets specific to empty cells
-	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le folio."));
+	empty_label_ = new QLabel(tr("Warning: the edges of empty cells do not appear in the final render the sheet."));
 	
 	// widgets specific to logo cells
 	logo_label_ = new QLabel(tr("Logo"));
 	logo_input_ = new QComboBox();
-	logo_input_ -> addItem(tr("Aucun logo"));
-	add_logo_input_ = new QPushButton(QET::Icons::InsertImage, tr("Gérer les logos"));
+	logo_input_ -> addItem(tr("No logo"));
+	add_logo_input_ = new QPushButton(QET::Icons::InsertImage, tr("Manage logos"));
 	
 	// widgets specific to text cells
-	label_checkbox_ = new QCheckBox(tr("Afficher un label :"));
+	label_checkbox_ = new QCheckBox(tr("Display a label:"));
 	label_input_ = new QLineEdit();
 	label_input_ -> setReadOnly(true);
-	label_edit_ = new QPushButton(tr("Editer"));
-	value_label_ = new QLabel(tr("Texte :"));
+	label_edit_ = new QPushButton(tr("Edit"));
+	value_label_ = new QLabel(tr("Text:"));
 	value_input_ = new QLineEdit();
 	value_input_ -> setReadOnly(true);
-	value_edit_ = new QPushButton(tr("Editer"));
-	align_label_ = new QLabel(tr("Alignement :"));
-	horiz_align_label_ = new QLabel(tr("horizontal :"));
+	value_edit_ = new QPushButton(tr("Edit"));
+	align_label_ = new QLabel(tr("Alignment:"));
+	horiz_align_label_ = new QLabel(tr("horizontal:"));
 	horiz_align_input_ = new QComboBox();
-	horiz_align_input_ -> addItem(tr("Gauche"), Qt::AlignLeft);
-	horiz_align_input_ -> addItem(tr("Centré"), Qt::AlignHCenter);
-	horiz_align_input_ -> addItem(tr("Droite"), Qt::AlignRight);
+	horiz_align_input_ -> addItem(tr("Left"), Qt::AlignLeft);
+	horiz_align_input_ -> addItem(tr("Center"), Qt::AlignHCenter);
+	horiz_align_input_ -> addItem(tr("Right"), Qt::AlignRight);
 	horiz_align_indexes_.insert(Qt::AlignLeft,    0);
 	horiz_align_indexes_.insert(Qt::AlignHCenter, 1);
 	horiz_align_indexes_.insert(Qt::AlignRight,   2);
-	vert_align_label_= new QLabel(tr("vertical :"));
+	vert_align_label_= new QLabel(tr("vertical:"));
 	vert_align_input_ = new QComboBox();
-	vert_align_input_ -> addItem(tr("Haut"),   Qt::AlignTop);
-	vert_align_input_ -> addItem(tr("Milieu"), Qt::AlignVCenter);
-	vert_align_input_ -> addItem(tr("Bas"),    Qt::AlignBottom);
+	vert_align_input_ -> addItem(tr("Top"),   Qt::AlignTop);
+	vert_align_input_ -> addItem(tr("Middle"), Qt::AlignVCenter);
+	vert_align_input_ -> addItem(tr("Bottom"),    Qt::AlignBottom);
 	vert_align_indexes_.insert(Qt::AlignTop,     0);
 	vert_align_indexes_.insert(Qt::AlignVCenter, 1);
 	vert_align_indexes_.insert(Qt::AlignBottom,  2);
-	font_size_label_ = new QLabel(tr("Police :"));
+	font_size_label_ = new QLabel(tr("Font:"));
 	font_size_input_ = new QSpinBox();
-	font_adjust_input_ = new QCheckBox(tr("Ajuster la taille de police si besoin"));
+	font_adjust_input_ = new QCheckBox(tr("Adjust font size if needed"));
 	
 	// layout
 	QHBoxLayout *label_edition = new QHBoxLayout();
@@ -258,7 +258,7 @@ void TitleBlockTemplateCellWidget::editLabelDisplayed()
 void TitleBlockTemplateCellWidget::editLabel()
 {
 	if (!edited_cell_) return;
-	editTranslatableValue(edited_cell_ -> label, "label", tr("Label de cette cellule"));
+	editTranslatableValue(edited_cell_ -> label, "label", tr("Label for this cell"));
 	label_input_ -> setText(edited_cell_ -> label.name());
 }
 
@@ -269,7 +269,7 @@ void TitleBlockTemplateCellWidget::editLabel()
 void TitleBlockTemplateCellWidget::editValue()
 {
 	if (!edited_cell_) return;
-	editTranslatableValue(edited_cell_ -> value, "value", tr("Valeur de cette cellule"));
+	editTranslatableValue(edited_cell_ -> value, "value", tr("Value for this cell"));
 	value_input_ -> setText(edited_cell_ -> value.name());
 }
 
@@ -320,7 +320,7 @@ void TitleBlockTemplateCellWidget::updateLogosComboBox(const TitleBlockTemplate 
 	
 	// default choice (the parent template may have no logo yet)
 	logo_input_ -> addItem(
-		tr("Aucun logo", "text displayed in the combo box when a template has no logo"),
+		tr("No logo", "text displayed in the combo box when a template has no logo"),
 		QVariant(QString(""))
 	);
 	logo_input_ -> setCurrentIndex(0);
@@ -430,7 +430,7 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 	ModifyTitleBlockCellCommand *command = new ModifyTitleBlockCellCommand(edited_cell_);
 	command -> addModification(attribute, new_value);
 	command -> setText(
-		tr("Édition d'une cellule : %1", "label of and undo command when editing a cell")
+		tr("Cell edition: %1", "label of and undo command when editing a cell")
 		.arg(TitleBlockCell::attributeName(attribute))
 	);
 	emit(cellModified(command));
@@ -443,31 +443,23 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 QString TitleBlockTemplateCellWidget::defaultVariablesString() const
 {
 	QString def_var_string = tr(
-		"Par défaut, les variables suivantes sont disponibles :"
-		"<ul>"
-		"<li>%{author} : auteur du folio</li>"
-		"<li>%{date} : date du folio</li>"
-		"<li>%{title} : titre du folio</li>"
-		"<li>%{filename} : nom de fichier du projet</li>"
-		"<li>%{plant} : nom de l'installation (=) dans laquelle se trouve le folio</li>"
-		"<li>%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio</li>"
-		"<li>%{indexrev} : indice de révision du folio</li>"
-		"<li>%{version} : version du logiciel</li>"
-		"<li>%{folio} : numéro du folio</li>"
-		"<li>%{folio-id} : position du folio dans le projet</li>"
-		"<li>%{folio-total} : nombre total de folios dans le projet</li>"
-		"<li>%{previous-folio-num} : numéro du folio précédent</li>"
-		"<li>%{next-folio-num} : numéro du folio suivant</li>"
-		"<li>%{projecttitle} : titre du projet</li>"
-		"<li>%{projectpath} : chemin du projet</li>"
-		"<li>%{projectfilename} : nom du fichier</li>"
-		"<li>%{saveddate} : date d'enregistrement du fichier format local</li>"
-		"<li>%{saveddate-eu} : date d'enregistrement du fichier format dd-MM-yyyy</li>"
-		"<li>%{saveddate-us} : date d'enregistrement du fichier format yyyy-MM-dd</li>"
-		"<li>%{savedtime} : heure d'enregistrement du fichier</li>"
-		"<li>%{savedfilename} : nom du fichier enregistré</li>"
-		"<li>%{savedfilepath} : chemin du fichier enregistré</li>"
-		"</ul>"
+		"By default, the following variables are available: <ul><li>%{author}: author of "
+		"the sheet</li><li>%{date}: sheet date</li><li>%{title}: sheet "
+		"title</li><li>%{filename}: filename of file</li> <li>%{plant}: name of the "
+		"installation (=) in which the sheet is located</li><li>%{locmach}: name of the "
+		"location (+) where the sheet is located</li><li>%{indexrev}: sheet revision "
+		"index</li><li>%{version}: version number</li><li>%{folio}: sheet "
+		"number</li><li>%{folio-id}: position of sheet in the "
+		"project</li><li>%{folio-total }: total number of sheets in the "
+		"project</li><li>%{previous-folio-num}: number of the previous "
+		"sheet</li><li>%{next-folio-num}: number of the next sheet< / "
+		"li><li>%{projecttitle}: title of the project</li><li>%{projectpath}: path of the "
+		"project</li><li>%{projectfilename}: filename of the projectfile</li><li "
+		">%{saveddate}: date of saving the file in local format</li><li>%{saveddate-eu}: "
+		"date of saving the file in format DD-MM-YYYY</li> <li>%{ saveddate-us}: date of "
+		"saving the file in format YYYY-MM-DD</li><li>%{savedtime}: time of saving the "
+		"file</li><li>%{savedfilename}: name of the file saved</li><li>%{savedfilepath}: "
+		"path of the saved file</li></ul>"
 	);
 	return(def_var_string);
 }
@@ -478,15 +470,12 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const
 QString TitleBlockTemplateCellWidget::labelValueInformationString() const
 {
 	QString lab_val_inf_string = tr(
-		"Chaque cellule d'un cartouche affiche une valeur, optionnellement "
-		"précédée d'un label. Tous deux peuvent être traduits en "
-		"plusieurs langues."
-		"<br/>"
-		"Comme ce que vous éditez actuellement est un "
-		"<em>modèle</em> de cartouche, ne saisissez pas directement des "
-		"données brutes : insérez plutôt des variables sous la forme "
-		"%{nom-de-variable}, qui seront ensuite remplacées par les valeurs "
-		"adéquates sur le folio."
+		"Each cell of a title block displays a value, optionally preceded "
+		"by a label. Both can be translated to several languages.<br/>Since "
+		"what you are currently editing is a title block <em>template</em>, "
+		"avoid entering raw data directly: prefer inserting variables like "
+		"%{variable-name}, which will be replaced afterwards with adequate "
+		"values in the sheet."
 	);
 	return(lab_val_inf_string);
 }
