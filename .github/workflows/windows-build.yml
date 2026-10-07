@@ -389,6 +389,8 @@ jobs:
           NSIS_ROOT="$GITHUB_WORKSPACE/nsis_root"
           cd "$NSIS_ROOT"
           echo "=== CWD : $(pwd) ==="
+          echo "=== Unicode/Target directives in QET64.nsi ==="
+          grep -niE '^[[:space:]]*(unicode|target)[[:space:]]' QET64.nsi || echo "(none)"
 
           # Fallback: if makensis does not register its plugin dir, point it
           # at the folder that actually contains nsDialogs.dll.
@@ -397,7 +399,11 @@ jobs:
           if [ -n "$DLL" ]; then
             PLUGDIR_WIN=$(cygpath -w "$(dirname "$DLL")")
             echo "nsDialogs.dll found in: $PLUGDIR_WIN"
-            EXTRA=(-X"!addplugindir $PLUGDIR_WIN")
+            # Plugin dirs are per target in NSIS: declare it for all of them so
+            # it applies whatever Unicode/Target directive QET64.nsi uses.
+            EXTRA=(-X"!addplugindir /x86-ansi $PLUGDIR_WIN"
+                   -X"!addplugindir /x86-unicode $PLUGDIR_WIN"
+                   -X"!addplugindir /amd64-unicode $PLUGDIR_WIN")
           else
             echo "::error::nsDialogs.dll not found in the MSYS2 NSIS package"
             exit 1
