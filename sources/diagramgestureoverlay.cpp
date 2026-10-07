@@ -58,14 +58,16 @@ bool DiagramGestureOverlay::isEnabled()
 
 /**
 	@brief DiagramGestureOverlay::showAt
-	Show the ring centred on @a center with @a actions, at most eight,
-	clockwise from the top.
+	Show the ring centred on @a center with @a sectors directions (4 or 8)
+	and @a actions, one per direction clockwise from the top.
 */
 void DiagramGestureOverlay::showAt(const QPoint &center,
-				   const QList<QAction *> &actions)
+				   const QList<QAction *> &actions,
+				   int sectors)
 {
 	m_center = center;
-	m_actions = actions.mid(0, sectors);
+	m_sectors = sectors == 4 ? 4 : 8;
+	m_actions = actions.mid(0, m_sectors);
 	m_active = -1;
 	move(center - QPoint(overlay_width / 2, outer_radius + 1));
 	show();
@@ -88,7 +90,7 @@ int DiagramGestureOverlay::sectorAt(const QPoint &viewport_pos) const
 	if (angle < 0) {
 		angle += 360;
 	}
-	return int(qRound(angle / (360.0 / sectors))) % sectors;
+	return int(qRound(angle / (360.0 / m_sectors))) % m_sectors;
 }
 
 /**
@@ -102,7 +104,7 @@ QAction *DiagramGestureOverlay::actionAt(const QPoint &viewport_pos) const
 		return nullptr;
 	}
 	QAction *action = m_actions.at(sector);
-	return action->isEnabled() ? action : nullptr;
+	return action && action->isEnabled() ? action : nullptr;
 }
 
 void DiagramGestureOverlay::setPointer(const QPoint &viewport_pos)
@@ -120,7 +122,7 @@ void DiagramGestureOverlay::paintEvent(QPaintEvent *event)
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
 	const QPointF c(overlay_width / 2, outer_radius + 1);
-	const qreal step = 360.0 / sectors;
+	const qreal step = 360.0 / m_sectors;
 
 	QColor base = palette().color(QPalette::Window);
 	base.setAlpha(225);
@@ -130,7 +132,7 @@ void DiagramGestureOverlay::paintEvent(QPaintEvent *event)
 
 		//Highlight the sector the mouse points at, if it holds a command
 	if (m_active >= 0 && m_active < m_actions.count()
-	    && m_actions.at(m_active)->isEnabled())
+	    && m_actions.at(m_active) && m_actions.at(m_active)->isEnabled())
 	{
 		QPainterPath wedge;
 		wedge.moveTo(c);
@@ -151,6 +153,9 @@ void DiagramGestureOverlay::paintEvent(QPaintEvent *event)
 	for (int i = 0 ; i < m_actions.count() ; ++i)
 	{
 		QAction *action = m_actions.at(i);
+		if (!action) {
+			continue;
+		}
 		const qreal a = qDegreesToRadians(i * step);
 		const QPointF p(c.x() + icon_radius * qSin(a), c.y() - icon_radius * qCos(a));
 		const QRect r(int(p.x()) - icon_size / 2, int(p.y()) - icon_size / 2,
@@ -167,7 +172,7 @@ void DiagramGestureOverlay::paintEvent(QPaintEvent *event)
 	}
 
 		//Name of the highlighted command, under the ring
-	if (m_active >= 0 && m_active < m_actions.count())
+	if (m_active >= 0 && m_active < m_actions.count() && m_actions.at(m_active))
 	{
 		const QString name = m_actions.at(m_active)->text().remove(QLatin1Char('&'));
 		const QRect label(0, 2 * outer_radius + 4, width(), 20);

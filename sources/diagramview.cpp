@@ -42,6 +42,7 @@
 #include "diagram.h"
 #include "diagramcontexttoolbar.h"
 #include "diagramgestureoverlay.h"
+#include "gesturesettings.h"
 #include "shortcutbarsettings.h"
 #include "shortcutmanager.h"
 #include "ElementsCollection/xmlelementcollection.h"
@@ -794,7 +795,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 				m_diagram->clearEventInterface();
 				m_swallow_native_menu = true;
 			}
-			m_gesture_overlay->showAt(m_gesture_origin, selectionCommands());
+			m_gesture_overlay->showAt(m_gesture_origin, gestureCommands(),
+						  GestureSettings::directions());
 		}
 		if (m_gesture_overlay->isVisible()) {
 			m_gesture_overlay->setPointer(pos);
@@ -977,6 +979,28 @@ QList<QAction *> DiagramView::selectionCommands() const
 		if (QAction *action = ShortcutManager::instance().action(id, qde)) {
 			actions << action;
 		}
+	}
+	return actions;
+}
+
+/**
+	@brief DiagramView::gestureCommands
+	@return the gesture ring's commands for the current selection, as this
+	window's actions. A list the user picked keeps its directions: a
+	command this window lacks leaves its direction empty (nullptr).
+	Otherwise the ring shows the shortcut bar's commands, in order.
+*/
+QList<QAction *> DiagramView::gestureCommands() const
+{
+	QETDiagramEditor *qde = diagramEditor();
+	const auto context = ShortcutBarSettings::contextFor(m_diagram->selectedItems());
+	if (!qde || !GestureSettings::isCustom(context)) {
+		return selectionCommands();
+	}
+	QList<QAction *> actions;
+	for (const QString &id : GestureSettings::ids(context)) {
+		actions << (id.isEmpty() ? nullptr
+					 : ShortcutManager::instance().action(id, qde));
 	}
 	return actions;
 }

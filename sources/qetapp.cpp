@@ -41,6 +41,7 @@
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
 #include "ui/configpage/shortcutsconfigpage.h"
+#include "ui/configpage/gesturesconfigpage.h"
 #include "ui/configpage/shortcutbarconfigpage.h"
 #include "ui/configpage/toolbarsconfigpage.h"
 #include "machine_info.h"
@@ -2226,6 +2227,7 @@ void QETApp::configureQET()
 	cd.addPage(new PrintConfigPage());
 	cd.addPage(new ShortcutsConfigPage());
 	cd.addPage(new ShortcutBarConfigPage());
+	cd.addPage(new GesturesConfigPage());
 	cd.addPage(new ToolbarsConfigPage());
 #ifdef QET_SPACEMOUSE_SUPPORT
 	cd.addPage(new SpaceMouseConfigPage());
