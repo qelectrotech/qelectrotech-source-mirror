@@ -935,6 +935,19 @@ add_test(NAME tst_conductorapplychanges COMMAND tst_conductorapplychanges)
 target_include_directories(tst_conductorapplychanges PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorapplychanges PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# ConductorProperties::fromSettings() -- the default conductor width is a
+# decimal and comes back as saved (1.4 used to be read as 0).
+add_executable(
+  tst_conductorsizesetting
+  tst_conductorsizesetting.cpp
+  ${QET_DIR}/sources/conductorproperties.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_conductorsizesetting COMMAND tst_conductorsizesetting)
+target_include_directories(tst_conductorsizesetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductorsizesetting PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
 # ConductorMultiEdit -- editing several wires at once in the Selection
 # properties panel: order, which wires an edit reaches, one undo step for
 # all of them, and fields shown blank because the wires disagree.
