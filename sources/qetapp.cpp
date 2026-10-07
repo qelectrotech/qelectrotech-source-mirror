@@ -44,6 +44,9 @@
 #include "ui/configpage/gesturesconfigpage.h"
 #include "ui/configpage/shortcutbarconfigpage.h"
 #include "ui/configpage/toolbarsconfigpage.h"
+#include "ui/configpage/toolbarcommandsconfigpage.h"
+#include "ui/customizedialog.h"
+#include <QTabWidget>
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
@@ -2229,6 +2232,7 @@ void QETApp::configureQET()
 	cd.addPage(new ShortcutBarConfigPage());
 	cd.addPage(new GesturesConfigPage());
 	cd.addPage(new ToolbarsConfigPage());
+	cd.addPage(new ToolbarCommandsConfigPage());
 #ifdef QET_SPACEMOUSE_SUPPORT
 	cd.addPage(new SpaceMouseConfigPage());
 #endif
@@ -2254,6 +2258,36 @@ void QETApp::configureQET()
 		m_space_mouse_listener->reloadSettings();
 	}
 #endif
+}
+
+/**
+	@brief QETApp::customizeQET
+	Open the Customise window: the toolbar, shortcut bar, keyboard and
+	gesture pages of the configuration dialog, as tabs of one window.
+	@param tab : the tab to show first
+*/
+void QETApp::customizeQET(int tab)
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	CustomizeDialog dialog;
+		//Same reason as the configuration dialog (#527)
+	dialog.setWindowModality(Qt::ApplicationModal);
+	dialog.addPage(new ToolbarsConfigPage());
+	dialog.addPage(new ToolbarCommandsConfigPage());
+	dialog.addPage(new ShortcutBarConfigPage());
+	dialog.addPage(new ShortcutsConfigPage());
+	dialog.addPage(new GesturesConfigPage());
+	if (auto *tabs = dialog.findChild<QTabWidget *>(QStringLiteral("customizeTabs"))) {
+		tabs->setCurrentIndex(tab);
+	}
+	QET::trackDialogGeometry(&dialog);
+
+	if (parent_widget) {
+		dialog.setParent(parent_widget, dialog.windowFlags());
+	}
+	dialog.exec();
+	dialog.setParent(nullptr, dialog.windowFlags());
 }
 
 /**

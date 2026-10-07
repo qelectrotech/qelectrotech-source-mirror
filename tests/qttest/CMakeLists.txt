@@ -298,6 +298,26 @@ set_tests_properties(tst_toolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 target_include_directories(tst_toolbarsettings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_toolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
+# DiagramToolbarSettings and its configuration page: unchanged toolbars
+# store nothing and build as before, unknown ids and stray separators are
+# skipped, the user's own toolbars are kept, a widget is in one place only.
+add_executable(
+  tst_diagramtoolbarsettings
+  tst_diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_diagramtoolbarsettings COMMAND tst_diagramtoolbarsettings)
+set_tests_properties(tst_diagramtoolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_diagramtoolbarsettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramtoolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
 # GestureSettings, the gesture ring's 4 / 8 directions and empty slots, and
 # its configuration page: the ring follows the shortcut bar until the user
 # picks commands, then keeps each one in its direction.
@@ -320,6 +340,19 @@ add_test(NAME tst_gesturesettings COMMAND tst_gesturesettings)
 set_tests_properties(tst_gesturesettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_gesturesettings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_gesturesettings PRIVATE Qt::Test Qt::Widgets Qt::Svg Qt::Xml pugixml::pugixml)
+
+# CustomizeDialog: the configuration pages as tabs of one window; OK
+# applies every page once, Cancel none.
+add_executable(
+  tst_customizedialog
+  tst_customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h)
+add_test(NAME tst_customizedialog COMMAND tst_customizedialog)
+set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
 
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
