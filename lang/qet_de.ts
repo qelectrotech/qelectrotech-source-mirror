@@ -4053,7 +4053,7 @@ Fortfahren?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="370"/>
-        <source>Élement
+        <source>Élément
 </source>
         <translation>Bauteil
 </translation>

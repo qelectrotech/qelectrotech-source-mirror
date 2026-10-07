@@ -3972,7 +3972,7 @@ Continuer ?</source>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="370"/>
-        <source>Élement
+        <source>Élément
 </source>
         <translation type="unfinished"></translation>
     </message>
