@@ -21,8 +21,9 @@
 
 /**
 	--export-dxf --dxf-blocks (issue #1339): a symbol placed twice is one
-	BLOCK and two INSERTs, the second turned a quarter; without the switch
-	there is neither.
+	BLOCK and two INSERTs, the second turned a quarter, and each symbol's
+	label, with --dxf-attributes, is an attribute of its INSERT;
+	without the switches there is neither.
 */
 class tst_dxfblocks : public QObject
 {
@@ -82,6 +83,29 @@ private slots:
 		QCOMPARE(values(pairs, QStringLiteral("CIRCLE"), QStringLiteral("8")).size(), 1);
 	}
 
+	void labelsAsAttributes()
+	{
+		const auto pairs = exportPairs({QStringLiteral("--dxf-attributes")});
+		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-attributes failed");
+
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")),
+				 (QStringList{QStringLiteral("LABEL"), QStringLiteral("LABEL")}));
+		QCOMPARE(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("1")),
+				 (QStringList{QStringLiteral("K1"), QStringLiteral("K2")}));
+			//Defined once in the block, and no longer a loose text
+		QCOMPARE(values(pairs, QStringLiteral("ATTDEF"), QStringLiteral("2")),
+				 QStringList{QStringLiteral("LABEL")});
+		QVERIFY(!values(pairs, QStringLiteral("TEXT"), QStringLiteral("1")).contains(QStringLiteral("K1")));
+	}
+
+	void labelsStayTextsWithBlocksOnly()
+	{
+		const auto pairs = exportPairs({QStringLiteral("--dxf-blocks")});
+		QVERIFY2(!pairs.isEmpty(), "--export-dxf --dxf-blocks failed");
+		QVERIFY(values(pairs, QStringLiteral("ATTRIB"), QStringLiteral("2")).isEmpty());
+		QVERIFY(values(pairs, QStringLiteral("TEXT"), QStringLiteral("1")).contains(QStringLiteral("K1")));
+	}
+
 	void flatWithoutSwitch()
 	{
 		const auto pairs = exportPairs({});
@@ -89,6 +113,7 @@ private slots:
 		QVERIFY(values(pairs, QStringLiteral("BLOCK"), QStringLiteral("2")).isEmpty());
 		QVERIFY(values(pairs, QStringLiteral("INSERT"), QStringLiteral("2")).isEmpty());
 		QCOMPARE(values(pairs, QStringLiteral("CIRCLE"), QStringLiteral("8")).size(), 2);
+		QVERIFY(values(pairs, QStringLiteral("TEXT"), QStringLiteral("1")).contains(QStringLiteral("K1")));
 	}
 };
 

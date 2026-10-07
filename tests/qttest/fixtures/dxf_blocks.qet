@@ -29,13 +29,29 @@
             <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/curves.elmt" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a02}" x="300" y="300" z="10">
                 <terminals/>
                 <inputs/>
-                <dynamic_texts/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7b01}" x="0" y="25">
+                        <text>K1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
                 <texts_groups/>
             </element>
             <element freezeLabel="false" is_movable="1" orientation="1" prefix="" type="embed://import/curves.elmt" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7a03}" x="500" y="300" z="10">
                 <terminals/>
                 <inputs/>
-                <dynamic_texts/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">K2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{7d2b8e3f-0c65-4e30-9079-3f0d0f0a7b02}" x="0" y="25">
+                        <text>K2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
                 <texts_groups/>
             </element>
         </elements>

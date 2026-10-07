@@ -51,6 +51,7 @@ class ExportProperties {
 	bool draw_bg_transparent;       ///< Whether to use transparency for SVG-Export
 	bool draw_colored_conductors;   ///< Whether to render conductors colors
 	bool dxf_blocks;                ///< DXF: each symbol as a block, placed with an INSERT
+	bool dxf_attributes;            ///< DXF, with dxf_blocks: a symbol's texts as attributes of its INSERT
 	QET::DiagramArea exported_area; ///< Area of diagrams to be rendered
 };
 #endif

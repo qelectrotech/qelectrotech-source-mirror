@@ -149,6 +149,65 @@ namespace {
 		}
 	}
 
+		/// One line of a text as the export writes it: where it starts, in
+		/// scene coordinates, its size, and its angle (degrees, clockwise)
+	struct TextLine
+	{
+		QString text;
+		QPointF pos;
+		qreal font_size;
+		qreal angle;
+	};
+
+		/// The lines of @a dti that are written, one under the other as drawn
+	QList<TextLine> textLines(DiagramTextItem *dti)
+	{
+		qreal fontSize = dti -> font().pointSizeF();
+		if (fontSize < 0)
+			fontSize = dti -> font().pixelSize();
+
+		qreal angle = dti -> rotation();
+
+		QGraphicsItem *parent = dti->parentItem();
+		while (parent) {
+			angle += parent->rotation();
+			parent = parent->parentItem();
+		}
+
+		qreal angler = angle * M_PI/180;
+		int xdir = -sin(angler);
+		int ydir = -cos(angler);
+		qreal x = (dti->scenePos().x())
+				+ xdir * fontSize * 1.8
+				- ydir * fontSize;
+		qreal y = dti->scenePos().y()
+				- ydir * fontSize * 1.8
+				- xdir * fontSize * 0.9;
+			//As drawn: a text with a width is wrapped
+		QStringList lines = TextLines::layoutLines(dti -> document());
+		qreal offset = fontSize * 1.6;
+		QList<TextLine> result;
+		foreach (QString line, lines) {
+			if (line.size() > 0 && line != "_" )
+				result << TextLine{line, QPointF(x, y), fontSize, angle};
+			x += offset * xdir;
+			y -= offset * ydir;
+		}
+		return result;
+	}
+
+		/// @a tag, or @a tag with _2, _3... if @a used has it, at most 31
+		/// characters
+	QString uniqueTag(const QString &tag, const QSet<QString> &used)
+	{
+		QString unique = tag;
+		for (int i = 2 ; used.contains(unique) ; ++i) {
+			const QString suffix = QStringLiteral("_%1").arg(i);
+			unique = tag.left(31 - suffix.size()) + suffix;
+		}
+		return unique;
+	}
+
 		/// Nothing would be drawn for @a elmt (its definition is missing)
 	bool drawsNothing(Element *elmt, bool draw_terminals)
 	{
@@ -304,14 +363,92 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		}
 	}
 
+		//With dxf_attributes, a symbol's own texts (its label, its
+		//function...) become attributes of its INSERT, written where the
+		//text would be, so a CAD program moves them with the symbol and
+		//lists them. Off by default: LibreCAD does not show attributes,
+		//so the labels would vanish there. Tagged
+		//with the information they show (LABEL, FUNCTION...), or TEXT1,
+		//TEXT2... for a typed text; a second line gets _2. The block
+		//defines each tag once, where the first symbol has it.
+	QHash<Element *, QList<Createdxf::Attribute>> attributes;
+	QHash<QString, QList<Createdxf::Attribute>> attribute_definitions; // block -> ATTDEFs
+	QSet<DiagramTextItem *> attribute_texts;
+	{
+		QHash<Element *, QSet<QString>> used_tags;
+		QHash<Element *, int> typed_texts;
+		QHash<QString, QSet<QString>> defined_tags;
+		for (DiagramTextItem *dti : std::as_const(list_texts)) {
+			if (!properties.dxf_attributes)
+				break;
+			auto *deti = qgraphicsitem_cast<DynamicElementTextItem *>(dti);
+			Element *elmt = deti ? deti -> parentElement() : nullptr;
+			const QString block = elmt
+					? block_names.value(elmt -> location().toString())
+					: QString();
+			if (block.isEmpty())
+				continue;
+
+			const QString base =
+					deti -> textFrom() == DynamicElementTextItem::ElementInfo
+					&& !deti -> infoName().isEmpty()
+					? Createdxf::blockName(deti -> infoName())
+					: QStringLiteral("TEXT%1").arg(++typed_texts[elmt]);
+				//From the folio into the block: undo the INSERT
+			const QPointF insert(elmt -> pos().x() * Createdxf::xScale,
+								 Createdxf::sheetHeight - elmt -> pos().y() * Createdxf::yScale);
+			const double turn = std::fmod(360 - elmt -> orientation() * 90, 360);
+			const QTransform to_block = QTransform()
+					.translate(0, Createdxf::sheetHeight)
+					.rotate(-turn)
+					.translate(-insert.x(), -insert.y());
+
+			const QList<TextLine> lines = textLines(dti);
+			for (int i = 0 ; i < lines.size() ; ++i) {
+				const TextLine &line = lines.at(i);
+				const QString tag = uniqueTag(
+							i == 0 ? base : base + QStringLiteral("_%1").arg(i + 1),
+							used_tags.value(elmt));
+				used_tags[elmt] << tag;
+
+				Createdxf::Attribute attribute;
+				attribute.tag = tag;
+				attribute.text = line.text;
+				attribute.x = line.pos.x() * Createdxf::xScale;
+				attribute.y = Createdxf::sheetHeight - line.pos.y() * Createdxf::yScale;
+				attribute.height = line.font_size * Createdxf::yScale;
+				attribute.rotation = 360 - line.angle;
+				attribute.xScaleW = 0.72;
+				attribute.colour = Createdxf::dxfColor(dti -> color());
+				attribute.layer = Layer::SymbolTexts;
+				attributes[elmt] << attribute;
+
+				if (!defined_tags[block].contains(tag)) {
+					defined_tags[block] << tag;
+					Createdxf::Attribute definition = attribute;
+					const QPointF in_block = to_block.map(QPointF(attribute.x, attribute.y));
+					definition.x = in_block.x();
+					definition.y = in_block.y();
+					definition.rotation = std::fmod(attribute.rotation - turn + 720, 360);
+					definition.text.clear();
+					attribute_definitions[block] << definition;
+				}
+			}
+			attribute_texts << dti;
+		}
+	}
+
 		//A block is drawn as if its symbol sat unturned at the folio's
 		//origin, which is DXF (0, sheetHeight); that is its base point.
 	Createdxf::dxfBegin(file_path, Layer::all(), [&]() {
 		for (Element *model : std::as_const(block_models)) {
-			Createdxf::dxfBlockBegin(file_path,
-									 block_names.value(model -> location().toString()),
-									 0, Createdxf::sheetHeight);
+			const QString block = block_names.value(model -> location().toString());
+			const QList<Createdxf::Attribute> definitions = attribute_definitions.value(block);
+			Createdxf::dxfBlockBegin(file_path, block, 0, Createdxf::sheetHeight,
+									 !definitions.isEmpty());
 			drawSymbol(file_path, model, 0, 0, 0, properties.draw_terminals);
+			for (const Createdxf::Attribute &definition : definitions)
+				Createdxf::drawAttdef(file_path, definition);
 			Createdxf::dxfBlockEnd(file_path);
 		}
 	});
@@ -354,7 +491,8 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			Createdxf::drawInsert(file_path, block,
 								  elem_pos_x * Createdxf::xScale,
 								  Createdxf::sheetHeight - elem_pos_y * Createdxf::yScale,
-								  std::fmod(360 - rotation_angle, 360));
+								  std::fmod(360 - rotation_angle, 360),
+								  attributes.value(elmt));
 		}
 	}
 
@@ -417,39 +555,14 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 
 	//Draw text items
 	foreach(DiagramTextItem *dti, list_texts) {
+			//Already written as an attribute of its symbol's INSERT
+		if (attribute_texts.contains(dti))
+			continue;
 			//A free text, or a symbol's own text (its label and the like)
 		Createdxf::layer = qgraphicsitem_cast<IndependentTextItem *>(dti)
 				? Layer::Texts : Layer::SymbolTexts;
-		qreal fontSize = dti -> font().pointSizeF();
-		if (fontSize < 0)
-			fontSize = dti -> font().pixelSize();
-
-		qreal angle = dti -> rotation();
-
-		QGraphicsItem *parent = dti->parentItem();
-		while (parent) {
-			angle += parent->rotation();
-			parent = parent->parentItem();
-		}
-
-		qreal angler = angle * M_PI/180;
-		int xdir = -sin(angler);
-		int ydir = -cos(angler);
-		qreal x = (dti->scenePos().x())
-				+ xdir * fontSize * 1.8
-				- ydir * fontSize;
-		qreal y = dti->scenePos().y()
-				- ydir * fontSize * 1.8
-				- xdir * fontSize * 0.9;
-			//As drawn: a text with a width is wrapped
-		QStringList lines = TextLines::layoutLines(dti -> document());
-		qreal offset = fontSize * 1.6;
-		foreach (QString line, lines) {
-			if (line.size() > 0 && line != "_" )
-				Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, Createdxf::dxfColor(dti->color()), 0.72 );
-			x += offset * xdir;
-			y -= offset * ydir;
-		}
+		for (const TextLine &line : textLines(dti))
+			Createdxf::drawText(file_path, line.text, line.pos, line.font_size, 360-line.angle, Createdxf::dxfColor(dti->color()), 0.72 );
 	}
 
 	//Draw the slave cross-reference labels
