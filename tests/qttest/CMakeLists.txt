@@ -908,6 +908,18 @@ target_compile_definitions(tst_resaveunchanged PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# A folio's "freeze new elements/conductors" flags, saved as the words
+# "true"/"false", are read back as words: the real binary's --resave on
+# fixtures/folio_freeze_flags.qet, one folio per combination.
+add_executable(
+  tst_foliofreezeflags
+  tst_foliofreezeflags.cpp)
+add_test(NAME tst_foliofreezeflags COMMAND tst_foliofreezeflags)
+add_dependencies(tst_foliofreezeflags qelectrotech)
+target_link_libraries(tst_foliofreezeflags PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_foliofreezeflags PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Replacing a symbol's definition in a project keeps its terminal uuids, so
 # the wires saved against them still load: TerminalUuids::keep() on its own,
 # then the real binary's --info on an example whose symbols were replaced.

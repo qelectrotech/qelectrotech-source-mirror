@@ -1614,10 +1614,14 @@ bool Diagram::fromXml(QDomElement &document,
 		m_conductors_autonum_name = root.attribute(QStringLiteral("conductorAutonum"));
 
 			// Load Freeze New Element
-		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement")).toInt();
+			// Written as "true"/"false" by toXml(), so compare the text:
+			// toInt() of either word is 0.
+		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement"))
+				== QLatin1String("true");
 
 			// Load Freeze New Conductor
-		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor")).toInt();
+		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor"))
+				== QLatin1String("true");
 
 			//Load Element Folio Sequential
 		folioSequentialsFromXml(root,
