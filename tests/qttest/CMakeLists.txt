@@ -66,6 +66,22 @@ include(../../cmake/fetch_pugixml.cmake)
 
 enable_testing()
 
+add_executable(tst_darkimagelayers tst_darkimagelayers.cpp
+  ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
+  ${QET_DIR}/sources/qetpalette.cpp)
+add_test(NAME tst_darkimagelayers COMMAND tst_darkimagelayers)
+target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+find_package(Python3 QUIET COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
+  add_test(NAME tst_darkimageintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_image_dark_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+endif()
+
 add_executable(${PROJECT_NAME} tst_mytest.cpp)
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 

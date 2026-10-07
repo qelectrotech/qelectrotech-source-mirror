@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
+#include "../darkimagerendering.h"
 #include "../shownkinds.h"
 
 #include "../PropertiesEditor/propertieseditordialog.h"
@@ -97,7 +98,7 @@ DiagramImageItem::~DiagramImageItem()
 	@param widget the QWidget where we draw the pixmap
 */
 void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-	painter -> drawPixmap(pixmap_.rect(),pixmap_);
+	DarkImageRendering::paintPixmap(painter, pixmap_, m_adapt_to_dark_theme);
 
 	Q_UNUSED(option); Q_UNUSED(widget);
 
@@ -153,6 +154,14 @@ void DiagramImageItem::setLabel(const QString &label)
 			: QFontMetricsF(m_label_font).size(0, m_label);
 	updateLabelScale();
 	emit labelChanged();
+}
+
+void DiagramImageItem::setAdaptToDarkTheme(bool adapt)
+{
+	if (m_adapt_to_dark_theme == adapt) return;
+	m_adapt_to_dark_theme = adapt;
+	update();
+	emit adaptToDarkThemeChanged();
 }
 
 /**
@@ -1479,6 +1488,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "image") {
 		return (false);
 	}
+	setAdaptToDarkTheme(e.attribute("adapt_to_dark_theme", "false") == "true");
 
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
 	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
@@ -1623,6 +1633,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("image");
 	result.setAttribute("uuid", m_uuid.toString());
+	if (m_adapt_to_dark_theme) result.setAttribute("adapt_to_dark_theme", "true");
 	//write some attribute
 	result.setAttribute("x", QString::number(pos().x()));
 	result.setAttribute("y", QString::number(pos().y()));
