@@ -47,6 +47,10 @@ namespace {
 	/// Smallest column width or row height a paper size may give
 	const int min_cell = 10;
 
+	/// Fewest columns or rows a folio may have: BorderTitleBlock raises
+	/// any lower count to 3 (MIN_COLUMN_COUNT, MIN_ROW_COUNT)
+	const int min_count = 3;
+
 	/**
 		@brief fitCells
 		Split @p available pixels into cells close to @p current pixels.
@@ -67,7 +71,7 @@ namespace {
 		for (double spread : {0.15, 0.30})
 		{
 			QPair<int, int> best(0, 0);
-			for (int count = 1 ; count <= max_count ; ++count)
+			for (int count = min_count ; count <= max_count ; ++count)
 			{
 				const int size = size_for(count, spread);
 				if (size && available - count * size <= exact_fit &&
@@ -79,7 +83,7 @@ namespace {
 
 		QPair<int, int> best(0, 0);
 		std::tuple<int, int> best_score(available, available);
-		for (int count = 1 ; count <= max_count ; ++count)
+		for (int count = min_count ; count <= max_count ; ++count)
 		{
 			const int size = size_for(count, 0.15);
 			const std::tuple<int, int> score(available - count * size,
@@ -92,7 +96,7 @@ namespace {
 		if (best.first) return best;
 
 			//No size near the current one when the cell count is capped
-		const int count = qBound(1, qRound(double(available) / current), max_count);
+		const int count = qBound(min_count, qRound(double(available) / current), max_count);
 		return qMakePair(count, available / count);
 	}
 }
@@ -257,7 +261,8 @@ bool BorderPropertiesWidget::fitPaperSize(int index, bool landscape,
 		height -= m_titleblock_height;
 	else
 		width -= m_titleblock_height;
-	if (width < min_cell || height < min_cell) return false;
+	if (width < min_cell * min_count || height < min_cell * min_count)
+		return false;
 
 	const QPair<int, int> c = fitCells(width,
 									   ui->m_columns_width_sp->value(),
