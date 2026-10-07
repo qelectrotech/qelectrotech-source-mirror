@@ -42,7 +42,11 @@ into the translation and the entry is finished. Nothing else changes:
 
   - a translation with text is never touched, whether it is a French
     rendering of an English source, identical to the source, or marked
-    unfinished (a translator's work in progress);
+    unfinished (a translator's work in progress), with one exception:
+    an unfinished translation identical to its source is finished.
+    That is what lupdate's same-text heuristic leaves behind when a new
+    string repeats an existing one, and it is what a mirror run would
+    have written anyway;
   - vanished and obsolete entries are left to lupdate;
   - in a plural message only the empty <numerusform>s are filled;
   - the file stays byte-identical outside the rewritten <translation>
@@ -87,6 +91,7 @@ class SourceError(ValueError):
 class Stats:
     mirrored_messages: int = 0
     mirrored_forms: int = 0
+    finished_identical: int = 0
     unfinished_cleared: int = 0
     kept_translated: int = 0
     kept_identical: int = 0
@@ -94,12 +99,13 @@ class Stats:
     kept_unfinished_with_text: int = 0
 
     def changed(self) -> bool:
-        return self.mirrored_messages > 0
+        return self.mirrored_messages > 0 or self.finished_identical > 0
 
     def summary(self) -> str:
         return (
             f"mirrored {self.mirrored_messages} message(s), "
             f"{self.mirrored_forms} plural form(s), "
+            f"finished {self.finished_identical} identical unfinished, "
             f"cleared {self.unfinished_cleared} unfinished flag(s); kept "
             f"{self.kept_translated} translated, {self.kept_identical} identical, "
             f"{self.kept_vanished} vanished, "
@@ -109,6 +115,18 @@ class Stats:
 def _translation_type(attrs: str) -> str:
     m = TYPE_RE.search(attrs)
     return m.group("type") if m else ""
+
+
+def _finish(whole: str, body: str, tm: re.Match, tattrs: str,
+            stats: Stats) -> str:
+    """Drop the unfinished flag of a translation equal to its source."""
+    stats.finished_identical += 1
+    stats.unfinished_cleared += 1
+    start = whole.index(body) + tm.start()
+    old = tm.group(0)
+    new = old.replace(f"<translation{tattrs}>",
+                      f"<translation{TYPE_RE.sub('', tattrs)}>", 1)
+    return whole[:start] + new + whole[start + len(old):]
 
 
 def _mirror_message(match: re.Match, forms: int, stats: Stats) -> str:
@@ -134,6 +152,8 @@ def _mirror_message(match: re.Match, forms: int, stats: Stats) -> str:
         found = FORM_RE.findall(tbody)
         empty = [f for f in found if f == ""]
         if found and not empty:
+            if ttype == "unfinished" and all(f == source for f in found):
+                return _finish(whole, body, tm, tattrs, stats)
             if ttype == "unfinished":
                 stats.kept_unfinished_with_text += 1
             elif all(f == source for f in found):
@@ -153,6 +173,8 @@ def _mirror_message(match: re.Match, forms: int, stats: Stats) -> str:
             stats.mirrored_forms += forms
     else:
         if tbody != "":
+            if ttype == "unfinished" and tbody == source:
+                return _finish(whole, body, tm, tattrs, stats)
             if ttype == "unfinished":
                 stats.kept_unfinished_with_text += 1
             elif tbody == source:

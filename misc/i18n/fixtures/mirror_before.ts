@@ -28,6 +28,19 @@
         <source>Brouillon</source>
         <translation type="unfinished">Brouillon (à revoir)</translation>
     </message>
+    <message>
+        <location filename="../sources/alpha.cpp" line="15"/>
+        <source>Copier</source>
+        <translation type="unfinished">Copier</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/alpha.cpp" line="16"/>
+        <source>%n page(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n page(s)</numerusform>
+            <numerusform>%n page(s)</numerusform>
+        </translation>
+    </message>
     <message numerus="yes">
         <location filename="../sources/alpha.cpp" line="20"/>
         <source>%n élément(s)</source>

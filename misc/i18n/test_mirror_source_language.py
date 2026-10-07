@@ -66,6 +66,7 @@ class MirrorText(unittest.TestCase):
         self.assertEqual(out, after)
         self.assertEqual(stats.mirrored_messages, 0)
         self.assertEqual(stats.mirrored_forms, 0)
+        self.assertEqual(stats.finished_identical, 0)
         self.assertEqual(stats.unfinished_cleared, 0)
 
     def test_before_becomes_after(self):
@@ -73,7 +74,8 @@ class MirrorText(unittest.TestCase):
         self.assertEqual(out, read(AFTER))
         self.assertEqual(stats.mirrored_messages, 8)
         self.assertEqual(stats.mirrored_forms, 3)
-        self.assertEqual(stats.unfinished_cleared, 2)
+        self.assertEqual(stats.finished_identical, 2)
+        self.assertEqual(stats.unfinished_cleared, 4)
         self.assertEqual(stats.kept_translated, 1)
         self.assertEqual(stats.kept_identical, 1)
         self.assertEqual(stats.kept_vanished, 2)
@@ -112,6 +114,16 @@ class MirrorText(unittest.TestCase):
             tr = msg.find("translation")
             if key[0] == "Beta":
                 self.assertEqual(tr.text, msg.findtext("source"), key)
+
+    def test_unfinished_identical_to_source_is_finished(self):
+        """lupdate's same-text heuristic leaves these behind after a refresh;
+        39 of them appeared in lang/qet_fr.ts on 2026-10-07."""
+        out, _ = m.mirror_text(read(BEFORE))
+        msgs = messages(out)
+        for key in [("Alpha", "Copier"), ("Alpha", "%n page(s)")]:
+            self.assertIsNone(msgs[key].find("translation").get("type"), key)
+        self.assertEqual(msgs[("Alpha", "Brouillon")].find("translation").get("type"),
+                         "unfinished", "a different unfinished text stays unfinished")
 
     def test_multiline_and_spaces_kept(self):
         out, _ = m.mirror_text(read(BEFORE))
