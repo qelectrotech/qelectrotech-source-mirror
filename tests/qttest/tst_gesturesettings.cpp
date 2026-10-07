@@ -22,6 +22,7 @@
 
 #include <QAction>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QDropEvent>
 #include <QListWidget>
 #include <QMainWindow>
@@ -64,6 +65,11 @@ private slots:
 	void initTestCase()
 	{
 		QStandardPaths::setTestModeEnabled(true);
+			//A scope of this test's own. Without an organization name,
+			//QSettings on Windows has no registry key: it drops every
+			//write and reads only defaults.
+		QCoreApplication::setOrganizationName(QStringLiteral("QElectroTech-tst_gesturesettings"));
+		QCoreApplication::setApplicationName(QStringLiteral("tst_gesturesettings"));
 		QSettings().remove(QStringLiteral("diagrameditor"));
 		addCommand(QStringLiteral("diagrameditor.copy"), QStringLiteral("Copier"));
 		addCommand(QStringLiteral("diagrameditor.cut"), QStringLiteral("Couper"));

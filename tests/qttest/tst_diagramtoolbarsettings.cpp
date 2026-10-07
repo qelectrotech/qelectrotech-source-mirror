@@ -21,6 +21,7 @@
 
 #include <QAction>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QListWidget>
 #include <QPushButton>
 #include <QSettings>
@@ -86,6 +87,11 @@ private slots:
 	void initTestCase()
 	{
 		QStandardPaths::setTestModeEnabled(true);
+			//A scope of this test's own. Without an organization name,
+			//QSettings on Windows has no registry key: it drops every
+			//write and reads only defaults.
+		QCoreApplication::setOrganizationName(QStringLiteral("QElectroTech-tst_diagramtoolbarsettings"));
+		QCoreApplication::setApplicationName(QStringLiteral("tst_diagramtoolbarsettings"));
 		clearSettings();
 			//A few of the diagram editor's commands, as it registers them
 		for (const QString &id : {QStringLiteral("diagrameditor.copy"),
