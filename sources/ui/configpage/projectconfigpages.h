@@ -139,6 +139,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QPushButton *usage_reset_pb_;
 	QLabel *wire_hops_label_;
 	QComboBox *wire_hops_cb_;
+	QCheckBox *upright_symbol_texts_cb_;
 	QGroupBox *wiring_rules_gb_;
 	QCheckBox *use_application_rules_cb_;
 	QLabel *max_wires_label_;

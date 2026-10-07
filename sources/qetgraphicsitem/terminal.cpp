@@ -306,20 +306,22 @@ void Terminal::paint(
 		QFontMetrics fm(d->m_label_font);
 		QSizeF text_size = fm.size(Qt::TextSingleLine, display_name);
 
-			// On a mirrored element, mirror the name a second time about
-			// the centre of its box, in the frame it is drawn in (turned
-			// by label_rotation): its box stays where the element's mirror
-			// puts it, but it reads normally (Element::keepReadable())
-		const Element *mirrored = qgraphicsitem_cast<Element *>(parentItem());
-		if (mirrored && !mirrored->isMirrored()) mirrored = nullptr;
-		auto keep_readable = [painter, mirrored](const QRectF &rect, qreal label_rotation) {
-			if (!mirrored) return;
-			const QTransform mirror = QTransform().rotate(label_rotation)
-									  * mirrored->mirrorTransform()
-									  * QTransform().rotate(-label_rotation);
+			// When the element mirrors its symbol, or turns it in a project
+			// that keeps symbol texts horizontal, undo that on the name
+			// about the centre of its box, in the frame it is drawn in
+			// (turned by label_rotation): its box stays where the element
+			// puts it, but it reads as in the symbol (Element::keepReadable())
+		const Element *element = qgraphicsitem_cast<Element *>(parentItem());
+		const QTransform texts_transform = element ? element->symbolTextsTransform()
+												   : QTransform();
+		auto keep_readable = [painter, &texts_transform](const QRectF &rect, qreal label_rotation) {
+			if (texts_transform.isIdentity()) return;
+			const QTransform undo = QTransform().rotate(label_rotation)
+									* texts_transform.inverted()
+									* QTransform().rotate(-label_rotation);
 			const QPointF c = rect.center();
 			painter->setTransform(QTransform::fromTranslate(-c.x(), -c.y())
-								  * mirror
+								  * undo
 								  * QTransform::fromTranslate(c.x(), c.y()), true);
 		};
 

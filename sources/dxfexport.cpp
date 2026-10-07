@@ -50,19 +50,26 @@ namespace {
 		rectangles, circles, polygons and arcs, and its terminals when
 		@a draw_terminals, as if it were placed at @a elem_pos_x,
 		@a elem_pos_y and turned @a rotation_angle degrees, with @a elmt's
-		mirrors when @a mirrored. Used for every symbol drawn in full, and
-		once per block for a block's content.
+		mirrors and its texts kept readable (Element::symbolTextsTransform())
+		when @a as_placed. Used for every symbol drawn in full, and once per
+		block for a block's content.
 	*/
 	void drawSymbol(const QString &file_path, Element *elmt,
 					qreal elem_pos_x, qreal elem_pos_y,
 					double rotation_angle, bool draw_terminals,
-					bool mirrored = false)
+					bool as_placed = false)
 	{
 		using namespace DxfExport;
 			//The mirrors of an element are about its own axes, before it is
 			//rotated, see Element::setMirror()
-		const bool mirror_h = mirrored && elmt -> hasHorizontalMirror();
-		const bool mirror_v = mirrored && elmt -> hasVerticalMirror();
+		const bool mirror_h = as_placed && elmt -> hasHorizontalMirror();
+		const bool mirror_v = as_placed && elmt -> hasVerticalMirror();
+		const QTransform texts_transform = as_placed
+				? elmt -> symbolTextsTransform()
+				: QTransform();
+		const qreal text_turn = as_placed && elmt -> hasUprightSymbolTexts()
+				? 0
+				: rotation_angle;
 		const qreal mirror_x = mirror_h ? -1 : 1;
 		const qreal mirror_y = mirror_v ? -1 : 1;
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
@@ -75,11 +82,13 @@ namespace {
 				fontSize = text->font().pixelSize();
 
 			QPointF text_pos = text->pos();
-			if (mirror_h || mirror_v)
+				//A text the element mirrors, or turns in a project that keeps
+				//symbol texts horizontal, keeps reading as in the symbol:
+				//only its box moves, as ElementPictureFactory draws it on the
+				//folio. It is then drawn as in a symbol neither mirrored nor
+				//turned, moved to where the element puts the box's centre.
+			if (!texts_transform.isIdentity())
 			{
-					//The text keeps reading normally: only its box is
-					//mirrored, about its own centre, as ElementPictureFactory
-					//draws it on the folio
 				QTransform box_transform;
 				box_transform.translate(text->pos().x(), text->pos().y());
 				box_transform.rotate(text->rotation());
@@ -88,19 +97,18 @@ namespace {
 								 text->boundingRect().width(),
 								 text->boundingRect().height());
 				const QPointF centre = box_transform.mapRect(box).center();
-				text_pos += QPointF(centre.x() * (mirror_x - 1),
-									centre.y() * (mirror_y - 1));
+				text_pos += texts_transform.map(centre) - centre;
 			}
 
 			qreal x = elem_pos_x + text_pos.x();
 			qreal y = elem_pos_y + text_pos.y();
 
-			qreal angle = text -> rotation() + rotation_angle;
+			qreal angle = text -> rotation() + text_turn;
 			qreal angler = angle * M_PI/180;
 			int xdir = -sin(angler);
 			int ydir = -cos(angler);
 
-			QPointF transformed_point = DxfExport::rotation_transformed(x, y, elem_pos_x, elem_pos_y, -rotation_angle);
+			QPointF transformed_point = DxfExport::rotation_transformed(x, y, elem_pos_x, elem_pos_y, -text_turn);
 			x = transformed_point.x() - ydir * fontSize * 0.5;
 			y = transformed_point.y() - xdir * fontSize * 0.5;
 			QStringList lines = text->text().split('\n');
@@ -384,7 +392,8 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 		QSet<QString> used;
 		for (Element *elmt : std::as_const(list_elements)) {
 			const QString key = elmt -> location().toString();
-			if (elmt -> isMirrored() || block_names.contains(key)
+			if (!elmt -> symbolTextsTransform().isIdentity()
+				|| block_names.contains(key)
 				|| drawsNothing(elmt, properties.draw_terminals))
 				continue;
 			QString file_name = elmt -> location().fileName();
@@ -402,11 +411,11 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			block_models << elmt;
 		}
 	}
-		//A mirrored symbol is drawn in full: an INSERT with a negative
-		//scale would mirror its texts too, which QElectroTech keeps
-		//readable
+		//A mirrored symbol, or a turned one whose texts stay horizontal,
+		//is drawn in full: an INSERT would mirror or turn its texts too,
+		//which QElectroTech keeps readable
 	const auto blockOf = [&block_names](Element *elmt) {
-		return elmt -> isMirrored()
+		return !elmt -> symbolTextsTransform().isIdentity()
 				? QString()
 				: block_names.value(elmt -> location().toString());
 	};

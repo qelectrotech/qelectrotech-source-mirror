@@ -195,6 +195,9 @@ class Element : public QetGraphicsItem
 		void setHorizontalMirror(bool mirror);
 		void setVerticalMirror(bool mirror);
 		QTransform mirrorTransform() const;
+		bool hasUprightSymbolTexts() const;
+		QTransform symbolTextsTransform() const;
+		void updateSymbolPictures(bool force = false);
 		void keepReadable(QGraphicsItem *child) const;
 
 			//METHODS related to texts
@@ -307,8 +310,11 @@ class Element : public QetGraphicsItem
 	QList <Terminal *> m_terminals;
 	QPicture m_picture;
 	QPicture m_low_zoom_picture;
-	QPicture m_mirrored_picture;
-	QPicture m_mirrored_low_zoom_picture;
+		/// The drawing with its texts kept readable, when the symbol's
+		/// mirror or turn would not leave them so (m_readable_transform)
+	QPicture m_readable_picture;
+	QPicture m_readable_low_zoom_picture;
+	QTransform m_readable_transform;
 	ElementData m_data;
 	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
 
