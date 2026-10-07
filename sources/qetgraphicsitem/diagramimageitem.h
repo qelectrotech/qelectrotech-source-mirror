@@ -50,8 +50,9 @@ class DiagramImageItem : public QetGraphicsItem {
 	Q_PROPERTY(QPointF pivot READ pivot WRITE setPivot NOTIFY transformChanged)
 	Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
 	// The picture's source -- original, crop rectangle, transparent
-	// colours -- as one value, so that every edit of it (crop, colour
-	// key, mirror, replace) is undone together with the displayed pixmap.
+	// colours -- as one value. The displayed pixmap is computed from it,
+	// so every edit of it (crop, colour key, mirror, replace) is one
+	// undo step on this property alone.
 	Q_PROPERTY(QVariant imageSource READ imageSourceVariant WRITE setImageSourceVariant)
 	// A second, deliberately non-compensating property on the SAME
 	// underlying value -- setPivot() (above) intentionally adjusts
@@ -170,6 +171,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void mirror(bool horizontal);
 	void setTransparentColor();
 	void crop();
+	void pushImageSourceChange(const QString &text, const ImageSource &oldSource, const ImageSource &newSource);
 	void restoreAspectRatio();
 	void saveImageAs();
 	void saveOriginalImageAs();

@@ -25,6 +25,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QSize>
 #include <QTemporaryDir>
 
 /**
@@ -77,6 +78,16 @@ class tst_imagecropundo : public QObject
 		QFile f(path);
 		return f.open(QIODevice::ReadOnly) ? f.readAll() : QByteArray();
 	}
+	// The size of the picture as shown, from the <image> element's own
+	// text (its first text node: a cropped picture carries <image_base>
+	// as a child too).
+	static QSize shownSize(const QByteArray &xml)
+	{
+		const QRegularExpression image(QStringLiteral("<image\\b[^>]*>\\s*([A-Za-z0-9+/=]+)"));
+		const QRegularExpressionMatch m = image.match(QString::fromUtf8(xml));
+		if (!m.hasMatch()) return {};
+		return QImage::fromData(QByteArray::fromBase64(m.captured(1).toLatin1())).size();
+	}
 
 private slots:
 	void initTestCase()
@@ -125,6 +136,9 @@ qet.log('PROBE ' + JSON.stringify(r));
 		const QByteArray undone_xml = read(undone);
 		QVERIFY(undone_xml.contains("<image "));
 		QVERIFY2(!undone_xml.contains("<crop "), "an undone crop was saved");
+		// The picture shown follows: whole after undo, the kept region after redo.
+		QCOMPARE(shownSize(undone_xml), QSize(40, 30));
+		QCOMPARE(shownSize(read(redone)), QSize(20, 10));
 		const QRegularExpressionMatch crop =
 				QRegularExpression(QStringLiteral("<crop ([^>]*)/>")).match(QString::fromUtf8(read(redone)));
 		QVERIFY2(crop.hasMatch(), "the redone crop was not saved");
