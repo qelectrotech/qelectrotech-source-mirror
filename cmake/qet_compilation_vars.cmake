@@ -301,6 +301,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/shortcutbarsettings.cpp
   ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.h
   ${QET_DIR}/sources/diagramcontexttoolbar.cpp
   ${QET_DIR}/sources/diagramcontexttoolbar.h
   ${QET_DIR}/sources/diagramgestureoverlay.cpp
@@ -856,6 +858,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

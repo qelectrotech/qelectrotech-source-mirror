@@ -280,6 +280,24 @@ set_tests_properties(tst_shortcutspage PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=o
 target_include_directories(tst_shortcutspage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_shortcutspage PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
+# ToolbarSettings and its configuration page: defaults change nothing,
+# saved values reach every open window that took them, panels are left alone.
+add_executable(
+  tst_toolbarsettings
+  tst_toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.h
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_toolbarsettings COMMAND tst_toolbarsettings)
+set_tests_properties(tst_toolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_toolbarsettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_toolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.
