@@ -805,6 +805,7 @@ void DiagramImageItem::handlerMousePressEvent(int index, Qt::KeyboardModifiers m
 	m_vector_index = index;
 	m_original_pos = pos();
 	m_original_transform = m_transform;
+	m_original_pivotIsCustom = m_pivotIsCustom;
 
 	if (m_handleRoles.at(index) == HandleRole::Resize)
 	{
@@ -921,7 +922,12 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 					undo = new QUndoCommand(tr("Déplacer le centre de rotation d'une image"));
 					new QPropertyUndoCommand(this, "pos", m_original_pos, pos(), undo);
 					new QPropertyUndoCommand(this, "rawPivot", m_original_transform.pivot, m_transform.pivot, undo);
+					// dragPivot() marked the pivot as hand-placed; undoing
+					// the move has to take that back as well.
+					new QPropertyUndoCommand(this, "pivotIsCustom", m_original_pivotIsCustom, m_pivotIsCustom, undo);
 				}
+				else
+					m_pivotIsCustom = m_original_pivotIsCustom;   // dragged back to where it was: nothing to undo
 				break;
 		}
 
@@ -1991,7 +1997,7 @@ void DiagramImageItem::crop()
 	simply the whole base.
 
 	One undo step, which restores the pixmap, the position, the pivot
-	and the crop rectangle together.
+	(and whether it was hand-placed) and the crop rectangle together.
 	@return false if nothing was cropped: read-only folio, or a
 	rectangle that is empty, outside the original, or the current one.
 */
@@ -2032,7 +2038,10 @@ bool DiagramImageItem::applyCrop(const QRect &cropRect)
 							 QVariant::fromValue(newSource), undo);
 	new QPropertyUndoCommand(this, "pos", oldPos, newPos, undo);
 	new QPropertyUndoCommand(this, "rawPivot", oldPivot, newOriginPoint, undo);
-	m_pivotIsCustom = false;
+	// The pivot goes to the centre of the kept region, so it is no longer
+	// hand-placed -- until the crop is undone, which brings the old pivot
+	// back and must bring its flag back with it.
+	new QPropertyUndoCommand(this, "pivotIsCustom", m_pivotIsCustom, false, undo);
 	diagram()->undoStack().push(undo);
 	return true;
 }

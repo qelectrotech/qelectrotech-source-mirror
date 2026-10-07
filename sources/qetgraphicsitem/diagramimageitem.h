@@ -65,6 +65,10 @@ class DiagramImageItem : public QetGraphicsItem {
 	// would silently overwrite that already-correct pos() a second
 	// time. rawPivot exists solely for that one caller.
 	Q_PROPERTY(QPointF rawPivot READ pivot WRITE setPivotRaw NOTIFY transformChanged)
+	// Whether the pivot was placed by hand: a hand-placed pivot is saved
+	// and kept through a resize. Changes in the same undo step as the
+	// pivot itself, so that Ctrl+Z restores both.
+	Q_PROPERTY(bool pivotIsCustom READ pivotIsCustom WRITE setPivotIsCustom)
 
 	// constructors, destructor
 	public:
@@ -120,6 +124,8 @@ class DiagramImageItem : public QetGraphicsItem {
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
+	bool pivotIsCustom() const { return m_pivotIsCustom; }
+	void setPivotIsCustom(bool custom) { m_pivotIsCustom = custom; }
 	QRectF boundingRect() const override;
 	QString name() const override;
 
@@ -259,6 +265,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
 	ShapeTransform m_original_transform;
+	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment
 	// Optional caption drawn centred under the picture (issue #349).
 	// Empty by default, and then neither saved nor painted, so a picture
