@@ -139,6 +139,10 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	}
 
 	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
+	bpw -> setTitleBlockSize(ipw -> currentTitleBlockHeight(),
+							 ipw -> currentTitleBlockEdge());
+	connect(ipw, &TitleBlockPropertiesWidget::titleBlockSizeChanged,
+			bpw, &BorderPropertiesWidget::setTitleBlockSize);
 
 	// main tab widget
 	QTabWidget *tab_widget      = new QTabWidget(this);

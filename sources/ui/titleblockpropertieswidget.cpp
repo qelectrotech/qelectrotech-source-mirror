@@ -337,6 +337,30 @@ QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const
 }
 
 /**
+	@brief TitleBlockPropertiesWidget::currentTitleBlockHeight
+	@return the height of the current title block template
+*/
+int TitleBlockPropertiesWidget::currentTitleBlockHeight() const
+{
+	const TitleBlockTemplate *tbt = nullptr;
+	if (!currentTitleBlockTemplateName().isEmpty())
+		tbt = templateForIndex(ui -> m_tbt_cb -> currentIndex());
+	if (!tbt)
+		tbt = QETApp::defaultTitleBlockTemplate();
+	return tbt ? tbt -> height() : 0;
+}
+
+/**
+	@brief TitleBlockPropertiesWidget::currentTitleBlockEdge
+	@return the edge of the folio the title block is displayed at
+*/
+Qt::Edge TitleBlockPropertiesWidget::currentTitleBlockEdge() const
+{
+	return ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge
+														: Qt::RightEdge;
+}
+
+/**
 	@brief TitleBlockPropertiesWidget::addCollection
 	add a collection of title block available in the combo box
 	@param tbt_collection
@@ -387,6 +411,15 @@ void TitleBlockPropertiesWidget::initDialog(
 		qOverload<int>(&QComboBox::currentIndexChanged), 
 		this, 
 		&TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate);
+
+	auto size_changed = [this]() {
+		emit titleBlockSizeChanged(currentTitleBlockHeight(),
+								   currentTitleBlockEdge());
+	};
+	connect(ui->m_tbt_cb, qOverload<int>(&QComboBox::currentIndexChanged),
+			this, size_changed);
+	connect(ui->m_display_at_cb, qOverload<int>(&QComboBox::currentIndexChanged),
+			this, size_changed);
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();
