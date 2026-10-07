@@ -206,14 +206,16 @@ void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 /**
 	@brief DiagramImageItem::setImageSource
 	Set the picture's source -- original, crop rectangle and transparent
-	colours. Only stores them: the displayed pixmap is a property of its
-	own, set by the same undo command.
+	colours -- and show the picture computed from it. The displayed
+	pixmap is never set on its own by an edit: an action that changed
+	one and not the other would be undone half-way.
 */
 void DiagramImageItem::setImageSource(const ImageSource &source)
 {
 	m_base_pixmap = source.base;
 	m_crop_rect = source.crop;
 	m_transparent_colors = source.colors;
+	setPixmap(computeDisplayPixmap(m_base_pixmap, m_crop_rect, m_transparent_colors));
 }
 
 QVariant DiagramImageItem::imageSourceVariant() const
@@ -1841,7 +1843,6 @@ void DiagramImageItem::replaceImage()
 		return;
 	}
 
-	const QPixmap oldPixmap = pixmap_;
 	const QPixmap newPixmap = QPixmap::fromImage(image);
 
 	// A wholesale replacement, not an edit of the existing image -- the
@@ -1852,11 +1853,7 @@ void DiagramImageItem::replaceImage()
 	const ImageSource oldSource = imageSource();
 	const ImageSource newSource{newPixmap, newPixmap.rect(), {}};
 
-	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
-	undo->setText(tr("Remplacer une image"));
-	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
-							 QVariant::fromValue(newSource), undo);
-	diagram()->undoStack().push(undo);
+	pushImageSourceChange(tr("Remplacer une image"), oldSource, newSource);
 }
 
 /**
@@ -1872,13 +1869,11 @@ void DiagramImageItem::mirror(bool horizontal)
 	if (!diagram() || diagram()->isReadOnly())
 		return;
 
-	const QPixmap oldPixmap = pixmap_;
 	const QTransform flip = horizontal ? QTransform(-1, 0, 0, 1, 0, 0) : QTransform(1, 0, 0, -1, 0, 0);
-	const QPixmap newPixmap = pixmap_.transformed(flip);
 
-	// The base is flipped the same way, to stay in sync with pixmap_ --
-	// but the picked-colours list itself is left untouched: the actual
-	// colour values don't change when the image is mirrored, only their
+	// The base is flipped; the displayed pixmap follows from it. The
+	// picked-colours list itself is left untouched: the actual colour
+	// values don't change when the image is mirrored, only their
 	// positions, so whatever was already keyed transparent should stay
 	// remembered and still apply correctly to the flipped version.
 	const ImageSource oldSource = imageSource();
@@ -1899,27 +1894,10 @@ void DiagramImageItem::mirror(bool horizontal)
 		newSource.crop = QRect(m_crop_rect.left(), m_base_pixmap.height() - m_crop_rect.top() - m_crop_rect.height(),
 				m_crop_rect.width(), m_crop_rect.height());
 
-	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
-	undo->setText(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"));
-	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
-							 QVariant::fromValue(newSource), undo);
-	diagram()->undoStack().push(undo);
+	pushImageSourceChange(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"),
+						  oldSource, newSource);
 }
 
-/**
-	@brief DiagramImageItem::setTransparentColor
-	Context-menu action: opens ImageTransparentColorDialog against
-	m_base_pixmap (the pristine source), pre-populated with whatever
-	colours and tolerance were remembered from a previous session --
-	both problems fixed together, since they had the same root cause:
-	passing pixmap_ (the already colour-keyed result) as if it were the
-	source, with nowhere to remember which colours produced it. Applies
-	the result the same way replaceImage() and mirror() do, through the
-	"pixmap" property, so undo/redo stays consistent across all three;
-	m_base_pixmap itself is deliberately left untouched here, since this
-	action only ever changes which colours are keyed out of it, not the
-	source those colours are keyed out of.
-*/
 /**
 	@brief DiagramImageItem::setTransparentColor
 	Context-menu action: opens ImageTransparentColorDialog against the
@@ -1927,12 +1905,12 @@ void DiagramImageItem::mirror(bool horizontal)
 	uncropped original -- picking a colour from a region that's already
 	been permanently cropped away would be picking a colour that isn't
 	even part of the image anymore. Pre-populated with whatever colours
-	and tolerance were remembered from a previous session. Applies the
-	result the same way replaceImage() and mirror() do, through the
-	"pixmap" property, so undo/redo stays consistent across all three;
-	m_base_pixmap and m_crop_rect are deliberately left untouched here,
-	since this action only ever changes which colours are keyed out,
-	never the source region they're keyed out of.
+	and tolerance were remembered from a previous session. Only the
+	colour list changes; m_base_pixmap and m_crop_rect are deliberately
+	left untouched here, since this action only ever changes which
+	colours are keyed out, never the source region they're keyed out of.
+	The displayed pixmap is computed from the new list by
+	setImageSource(), with the same colour keying the dialog previewed.
 */
 void DiagramImageItem::setTransparentColor()
 {
@@ -1949,11 +1927,22 @@ void DiagramImageItem::setTransparentColor()
 	ImageSource newSource = oldSource;
 	newSource.colors = dialog.pickedColors();
 
-	const QPixmap oldPixmap = pixmap_;
-	const QPixmap newPixmap = dialog.resultPixmap();
+	pushImageSourceChange(tr("Définir une couleur transparente"), oldSource, newSource);
+}
 
-	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
-	undo->setText(tr("Définir une couleur transparente"));
+/**
+	@brief DiagramImageItem::pushImageSourceChange
+	One undo step, named @a text, that takes the picture from
+	@a oldSource to @a newSource. A plain QUndoCommand holds the property
+	change so that two identical actions in a row (two horizontal
+	mirrors, say) stay two steps: QPropertyUndoCommand::mergeWith() would
+	merge them, and that is right for a slider's ticks, not for two
+	separate menu actions.
+*/
+void DiagramImageItem::pushImageSourceChange(const QString &text, const ImageSource &oldSource,
+											 const ImageSource &newSource)
+{
+	auto *undo = new QUndoCommand(text);
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
 	diagram()->undoStack().push(undo);
@@ -1986,13 +1975,12 @@ void DiagramImageItem::crop()
 	@brief DiagramImageItem::applyCrop
 	Show @a cropRect of the original (in the original's own pixels),
 	keeping the centre of the kept region where it is on the folio.
-	Recomputes pixmap_ via computeDisplayPixmap() so any already-picked
+	setImageSource() recomputes pixmap_ so any already-picked
 	transparent colours are correctly re-applied to the newly-cropped
 	region, rather than lost.
 
-	pos() also needs adjusting, not just pixmap_: setPixmap() (called
-	via the "pixmap" undo command below) recomputes
-	transformOriginPoint() from the new boundingRect(), but pos() itself
+	pos() also needs adjusting, not just pixmap_: the new pixmap has a
+	new boundingRect(), but pos() itself
 	is untouched by that -- without fixing it up here too, the
 	surviving content would visually jump to wherever local (0,0) ends
 	up after the crop rect changes, rather than staying exactly where
@@ -2024,30 +2012,26 @@ bool DiagramImageItem::applyCrop(const QRect &cropRect)
 	const QPointF cropCenterScene = mapToScene(newCropCenterInCurrentLocal);
 	const QPointF oldPos = pos();
 
-	const QPixmap oldPixmap = pixmap_;
-	const QPixmap newPixmap = computeDisplayPixmap(m_base_pixmap, newCropRect, m_transparent_colors);
 	const ImageSource oldSource = imageSource();
 	ImageSource newSource = oldSource;
 	newSource.crop = newCropRect;
 
-	// boundingRect() is exactly QRectF(pixmap_.rect()) (confirmed by
-	// reading the actual implementation, not assumed) -- so the new
-	// origin point can be derived directly from newPixmap here. Unlike
-	// before this class gained a proper transform, setPixmap() no
-	// longer manages the pivot automatically at all (see its own
-	// comment for why) -- crop() now has to set it explicitly itself,
-	// chained into the same undo step as the pixmap and position
+	// The new pixmap is the kept region, so its rectangle is known
+	// before it is computed: imageRect() will be newCropRect's size at
+	// (0,0). Unlike before this class gained a proper transform,
+	// setPixmap() no longer manages the pivot automatically at all (see
+	// its own comment for why) -- the crop has to set it explicitly
+	// itself, chained into the same undo step as the source and position
 	// changes, since all three genuinely change together here.
 	const QPointF oldPivot = m_transform.pivot;
-	const QPointF newOriginPoint = QRectF(newPixmap.rect()).center();
+	const QPointF newOriginPoint = QRectF(QPointF(), QSizeF(newCropRect.size())).center();
 	const QPointF newPos = cropCenterScene - newOriginPoint;
 
-	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
-	undo->setText(tr("Rogner une image"));
-	new QPropertyUndoCommand(this, "pos", oldPos, newPos, undo);
-	new QPropertyUndoCommand(this, "rawPivot", oldPivot, newOriginPoint, undo);
+	auto *undo = new QUndoCommand(tr("Rogner une image"));
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
+	new QPropertyUndoCommand(this, "pos", oldPos, newPos, undo);
+	new QPropertyUndoCommand(this, "rawPivot", oldPivot, newOriginPoint, undo);
 	m_pivotIsCustom = false;
 	diagram()->undoStack().push(undo);
 	return true;
