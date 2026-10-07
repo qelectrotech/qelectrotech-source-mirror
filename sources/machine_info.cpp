@@ -87,8 +87,8 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "Qt library path Qt settings:"
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
-	if (strlen(GIT_COMMIT_SHA)) {
-		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
+	if (!QetVersion::gitCommitSha().isEmpty()) {
+		qInfo() << "GitRevision" << QetVersion::gitCommitSha();
 	}
 	qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
 	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
@@ -437,8 +437,8 @@ QString MachineInfo::compilation_info()
 	compilation_info += " - " + pc.built.arch;
 	compilation_info += " - Date : " + pc.built.date;
 	compilation_info += " : " + pc.built.time;
-	if (strlen(GIT_COMMIT_SHA)) {
-		compilation_info += "<br> Git Revision : " + QString(GIT_COMMIT_SHA);
+	if (!QetVersion::gitCommitSha().isEmpty()) {
+		compilation_info += "<br> Git Revision : " + QetVersion::gitCommitSha();
 	}
 	compilation_info += " <br>Run with Qt " + QString(qVersion());
 	compilation_info += " using"

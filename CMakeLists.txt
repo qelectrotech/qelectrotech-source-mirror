@@ -18,11 +18,23 @@ include(cmake/hoto_update_cmake_message.cmake)
 
 cmake_minimum_required(VERSION 3.5...4.2)
 
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/QET_VERSION" QET_VERSION_STRING LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_STRING}" QET_VERSION_STRING)
+
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/QET_RELEASE" QET_VERSION_TYPE LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_TYPE}" QET_VERSION_TYPE)
+
+set(_qet_valid_version_types dev alpha1 alpha2 alpha3 stable)
+if(NOT QET_VERSION_TYPE IN_LIST _qet_valid_version_types)
+  message(FATAL_ERROR "VERSION_TYPE file contains '${QET_VERSION_TYPE}', must be one of: ${_qet_valid_version_types}")
+endif()
+
 project(qelectrotech
-        VERSION 0.200.1
+        VERSION ${QET_VERSION_STRING}
         DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
         HOMEPAGE_URL "https://qelectrotech.org/"
         LANGUAGES C CXX)
+        
 
 include(cmake/copyright_message.cmake)
 
@@ -33,7 +45,7 @@ include(cmake/paths_compilation_installation.cmake)
 include(cmake/start_options.cmake)
 include(cmake/developer_options.cmake)
 include(cmake/git_update_submodules.cmake)
-include(cmake/git_last_commit_sha.cmake)
+include(cmake/generate_version_file.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
 include(cmake/find_spacemouse.cmake)
@@ -158,7 +170,9 @@ if(WIN32)
         ${QM_FILES}
         ${QET_DIR}/qelectrotech.qrc
         ${QET_DIR}/ico/icon-themes.qrc
+        "${GENERATED_QETVERSION_CPP}"
     )
+    add_dependencies(${PROJECT_NAME} GenerateVersionFile)
     # Our own manifest (it declares longPathAware). MSVC merges a .manifest
     # listed as a source; MinGW needs it embedded through a resource file,
     # and ld then keeps it ahead of the toolchain's default manifest.
@@ -179,7 +193,9 @@ else()
         ${QM_FILES}
         ${QET_DIR}/qelectrotech.qrc
         ${QET_DIR}/ico/icon-themes.qrc
+        "${GENERATED_QETVERSION_CPP}"
     )
+    add_dependencies(${PROJECT_NAME} GenerateVersionFile)
 endif()
 
 if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
@@ -313,6 +329,7 @@ target_link_libraries(
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
+    ${QET_DIR}/sources
     ${QET_DIR}/sources/titleblock
     ${QET_DIR}/sources/ui
     ${QET_DIR}/sources/qetgraphicsitem
@@ -339,6 +356,7 @@ target_include_directories(
     ${QET_DIR}/sources/NameList
     ${QET_DIR}/sources/NameList/ui
     ${QET_DIR}/sources/utils
+    ${QET_DIR}/pugixml/src
     ${QET_DIR}/sources/dataBase
     ${QET_DIR}/sources/dataBase/ui
     ${QET_DIR}/sources/factory/ui
@@ -359,7 +377,7 @@ install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
 )
 
-if (NOT MINGW)
+if ((NOT MINGW) AND (NOT WIN32))
     install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
     install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
     install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})

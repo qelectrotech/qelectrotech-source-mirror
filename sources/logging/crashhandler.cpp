@@ -525,7 +525,7 @@ void CrashHandler::install(const LogRing *ring, const QString &dump_path)
 
 	const QByteArray header = QByteArray("QET crash dump\n")
 		+ "Version: " + QetVersion::displayedVersion().toUtf8() + "\n"
-		+ "Git: " GIT_COMMIT_SHA "\n"
+		+ "Git: " + QetVersion::gitCommitSha().toUtf8() + "\n"
 		+ "OS: " + QSysInfo::prettyProductName().toUtf8() + " (" + QSysInfo::currentCpuArchitecture().toUtf8() + ")\n"
 		+ "Qt: " QT_VERSION_STR "\n"
 		+ "---\n";
