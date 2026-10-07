@@ -114,7 +114,8 @@ void ElementPictureFactory::dropCache(const ElementsLocation &location)
 	m_pictures_H.remove(uuid);
 	m_low_pictures_H.remove(uuid);
 	m_pixmap_H.remove(uuid);
-	m_primitives_H.remove(uuid);
+		//The text items belong to the cache; nothing else holds them.
+	qDeleteAll(m_primitives_H.take(uuid).m_texts);
 }
 
 /**
@@ -249,6 +250,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	QPainter painter;
 	QPicture pic;
 	primitives primitives_;
+		//The low-zoom pass fills a second set of primitives that is only
+		//drawn, never kept: its text items are deleted at the end.
+	primitives low_primitives;
 	if (picture) {
 		painter.begin(picture);
 	}
@@ -320,8 +324,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 					// complex font/text operations.
 				} else {
 					parseElement(qde, painter, primitives_);
-					primitives fake_prim;
-					parseElement(qde, low_painter, fake_prim);
+					parseElement(qde, low_painter, low_primitives);
 				}
 			}
 		}
@@ -330,6 +333,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		//End of the drawing
 	painter.end();
 	low_painter.end();
+	qDeleteAll(low_primitives.m_texts);
 
 	const auto uuid_ = cacheKey(location);
 	if (!picture) {
