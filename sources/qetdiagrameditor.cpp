@@ -74,6 +74,8 @@
 #include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
 #include "undocommand/addelementtextcommand.h"
+#include "undocommand/changeelementinformationcommand.h"
+#include "qetinformation.h"
 #include "utils/qetsettings.h"
 #include "utils/qetutils.h"
 #include "undocommand/groupitemscommand.h"
@@ -400,16 +402,21 @@ void QETDiagramEditor::setUpActions()
 	m_copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
 	m_paste = new QAction(QET::Icons::EditPaste, tr("C&oller"), this);
 	m_paste_origin = new QAction(QET::Icons::EditPaste, tr("Coller au point d'origine"), this);
+	m_paste_element_info = new QAction(QET::Icons::EditPaste, tr("Coller les informations de l'élément"), this);
 
 	ShortcutManager::instance().registerAction(m_cut, "diagrameditor.cut", tr("Éditeur de schémas"), QKeySequence::Cut);
 	ShortcutManager::instance().registerAction(m_copy, "diagrameditor.copy", tr("Éditeur de schémas"), QKeySequence::Copy);
 	ShortcutManager::instance().registerAction(m_paste, "diagrameditor.paste", tr("Éditeur de schémas"), QKeySequence::Paste);
 	ShortcutManager::instance().registerAction(m_paste_origin, "diagrameditor.paste_origin", tr("Éditeur de schémas"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V));
+		//No default shortcut: Ctrl+Shift+V is taken by m_paste_origin.
+	ShortcutManager::instance().registerAction(m_paste_element_info, "diagrameditor.paste_element_info", tr("Éditeur de schémas"), QKeySequence());
 
 	m_cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	m_copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	m_paste -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
 	m_paste_origin -> setStatusTip(tr("Place les éléments du presse-papier à leur position d'origine et déplace le curseur vers ce point", "status bar tip"));
+	m_paste_element_info -> setStatusTip(tr("Copie les informations renseignées de l'élément du presse-papier sur les éléments sélectionnés", "status bar tip"));
+	m_paste_element_info -> setEnabled(false);
 
 	connect(m_cut, &QAction::triggered, [this]() {
 		if (currentDiagramView())
@@ -453,6 +460,8 @@ void QETDiagramEditor::setUpActions()
 	connect(m_paste_origin, &QAction::triggered, [start_paste]() {
 		start_paste(DiagramEventAddPaste::AtOrigin);
 	});
+	connect(m_paste_element_info, &QAction::triggered,
+			this, &QETDiagramEditor::pasteElementInformations);
 
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
@@ -1473,6 +1482,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addAction(m_paste_origin);
+	menu_edition -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addSeparator();
@@ -2637,6 +2647,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_find_element
 			    << m_cut
 			    << m_copy
+			    << m_paste_element_info
 			    << m_duplicate
 			    << m_delete_selection
 			    << m_rotate_selection
@@ -2675,6 +2686,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);
+	updatePasteElementInfoAction();
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 	m_rotate_group_selection -> setEnabled(!ro && diagram_->canRotateSelection());
@@ -2833,6 +2845,39 @@ void QETDiagramEditor::slot_updateModeActions()
 	}
 }
 
+namespace {
+/**
+	@return true if @p element has information the user can edit, the
+	same element kinds ElementPropertiesWidget gives an ElementInfoWidget.
+	Plain slaves and folio reports take theirs from what they are linked to.
+*/
+bool takesElementInformations(const Element *element)
+{
+	switch (element->linkType()) {
+		case Element::Simple:
+		case Element::Thumbnail:
+		case Element::Master:
+		case Element::Terminale:
+			return true;
+		default:
+			return false;
+	}
+}
+
+/**
+	@return the elements of @p diagram's selection which take information
+*/
+QList<Element *> selectedInformationElements(Diagram *diagram)
+{
+	QList<Element *> list;
+	for (Element *element : DiagramContent(diagram).m_elements) {
+		if (takesElementInformations(element))
+			list << element;
+	}
+	return list;
+}
+} // namespace
+
 /**
 	@brief QETDiagramEditor::slot_updatePasteAction
 	Gere les actions ayant besoin du presse-papier
@@ -2843,8 +2888,101 @@ void QETDiagramEditor::slot_updatePasteAction()
 	bool editable_diagram = (dv && !dv -> diagram() -> isReadOnly());
 
 	// pour coller, il faut un schema ouvert et un schema dans le presse-papier
-	m_paste -> setEnabled(editable_diagram && Diagram::clipboardMayContainDiagram());
-	m_paste_origin -> setEnabled(editable_diagram && Diagram::clipboardMayContainDiagram());
+	const bool may_be_diagram = Diagram::clipboardMayContainDiagram();
+	m_paste -> setEnabled(editable_diagram && may_be_diagram);
+	m_paste_origin -> setEnabled(editable_diagram && may_be_diagram);
+
+		//Read the clipboard once here rather than on every selection
+		//change: it can hold a whole folio.
+	m_clipboard_element_info.clear();
+	m_clipboard_has_element = false;
+	if (may_be_diagram)
+	{
+		QDomDocument document;
+		if (document.setContent(QApplication::clipboard()->text()))
+		{
+			const QList<QDomElement> elements = QET::findInDomElement(
+						document.documentElement(),
+						QStringLiteral("elements"),
+						QStringLiteral("element"));
+			if (elements.size() == 1)
+			{
+				m_clipboard_element_info.fromXml(
+							elements.first().firstChildElement(QStringLiteral("elementInformations")),
+							QStringLiteral("elementInformation"));
+				m_clipboard_has_element = true;
+			}
+		}
+	}
+	updatePasteElementInfoAction();
+}
+
+/**
+	@brief QETDiagramEditor::updatePasteElementInfoAction
+	Enable "paste element information" when the clipboard holds exactly one
+	element and the selection of an editable folio has an element to give
+	its information to.
+*/
+void QETDiagramEditor::updatePasteElementInfoAction()
+{
+	DiagramView *dv = currentDiagramView();
+	m_paste_element_info->setEnabled(
+				m_clipboard_has_element
+				&& dv && dv->diagram() && !dv->diagram()->isReadOnly()
+				&& !selectedInformationElements(dv->diagram()).isEmpty());
+}
+
+/**
+	@brief QETDiagramEditor::pasteElementInformations
+	Copy the information of the element on the clipboard onto the selected
+	elements, in one undo step (#1375). Every field filled in on the copied
+	element replaces the same field; a field it leaves empty is left alone,
+	since an empty field is not written to the clipboard and cannot be told
+	from one the copied element does not have.
+	The label and its formula travel together: one without the other would
+	have the formula rebuild a label the user did not copy.
+*/
+void QETDiagramEditor::pasteElementInformations()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!m_clipboard_has_element || !dv || !dv->diagram()
+			|| dv->diagram()->isReadOnly())
+		return;
+
+	const DiagramContext &source = m_clipboard_element_info;
+	const bool takes_label = source.contains(QETInformation::ELMT_LABEL)
+			|| source.contains(QETInformation::ELMT_FORMULA);
+		//A numbering scheme id is only kept if it names a scheme of this
+		//project; one copied from another project would name nothing.
+	QETProject *project = dv->diagram()->project();
+	const QUuid scheme_id(source.value(QETInformation::ELMT_FORMULA_ID).toString());
+	const bool keep_scheme_id = project && !scheme_id.isNull()
+			&& !project->elementAutoNumTitle(scheme_id).isEmpty();
+
+	QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> changes;
+	for (Element *element : selectedInformationElements(dv->diagram()))
+	{
+		const DiagramContext old_info = element->elementInformations();
+		DiagramContext new_info = old_info;
+		if (takes_label) {
+			new_info.remove(QETInformation::ELMT_LABEL);
+			new_info.remove(QETInformation::ELMT_FORMULA);
+			new_info.remove(QETInformation::ELMT_FORMULA_ID);
+		}
+		for (const QString &key : source.keys()) {
+			if (key == QETInformation::ELMT_FORMULA_ID && !keep_scheme_id)
+				continue;
+			new_info.addValue(key, source.value(key), source.keyMustShow(key));
+		}
+		if (new_info != old_info)
+			changes.insert(element, qMakePair(old_info, new_info));
+	}
+	if (changes.isEmpty())
+		return;
+
+	auto *undo = new ChangeElementInformationCommand(changes);
+	undo->setText(tr("Coller les informations de l'élément"));
+	dv->diagram()->undoStack().push(undo);
 }
 
 /**

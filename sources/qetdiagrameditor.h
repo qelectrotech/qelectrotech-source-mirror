@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "diagramcontext.h"
 #include "qetmainwindow.h"
 
 #include <QActionGroup>
@@ -133,6 +134,8 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
 		void slot_updatePasteAction();
+		void pasteElementInformations();
+		void updatePasteElementInfoAction();
 		void slot_updateWindowsMenu();
 		void slot_updateAutoNumDock();
 		void insertElementFromCollection(const ElementsLocation &location);
@@ -198,6 +201,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_conductor_reset,         ///< Reset paths of selected conductors
 		*m_cut,                     ///< Cut selection to clipboard
 		*m_copy,                    ///< Copy selection to clipboard
+		*m_paste_element_info,      ///< Copy the information of the copied element onto the selected elements (#1375)
 		*m_insert_last_element = nullptr; ///< Place the last placed element again
 		
 		QActionGroup
@@ -320,6 +324,10 @@ class QETDiagramEditor : public QETMainWindow
 		ElementsLocation m_last_inserted_element;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
+			/// Information of the one element on the clipboard, read when
+			/// the clipboard changes; see slot_updatePasteAction()
+		DiagramContext m_clipboard_element_info;
+		bool m_clipboard_has_element = false;
 			/// Elements panel
 		ElementsPanelWidget *pa;
 		QMenu *windows_menu;
