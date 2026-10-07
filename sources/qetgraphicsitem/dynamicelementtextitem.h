@@ -112,6 +112,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		QUuid uuid() const;
 		void updateXref();
 		void setPlainText(const QString &text);
+			//Hide QGraphicsTextItem::textWidth(): with the width on "auto"
+			//the document is given the text's own width so its lines can be
+			//centred or right-aligned, but the width is still "auto" (-1).
+		qreal textWidth() const {return m_text_width;}
 		void setTextWidth(qreal width);
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
@@ -161,6 +165,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void addResizeHandles();
 		void removeResizeHandles();
 		void updateResizeHandlesPos();
+		void fitAutoTextWidth();
 		void handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
