@@ -149,6 +149,13 @@ add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
 target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
 
+# symbolscale.h is header-only: which factors the element editor offers
+# for scaling an element without taking its terminals off the grid.
+add_executable(tst_symbolscale tst_symbolscale.cpp)
+add_test(NAME tst_symbolscale COMMAND tst_symbolscale)
+target_include_directories(tst_symbolscale PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_symbolscale PRIVATE Qt::Test)
+
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
 add_executable(tst_configprofile tst_configprofile.cpp)
