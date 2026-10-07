@@ -236,7 +236,7 @@ struct DocumentElement
 	//the attributes files written before <sequentialNumbers> carry.
 bool readSequence(const QDomElement &item, autonum::sequentialNumbers *sequence)
 {
-	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1"}) {
+	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1", "seqhf_1"}) {
 		if (item.hasAttribute(QLatin1String(name))) {
 			return false;
 		}

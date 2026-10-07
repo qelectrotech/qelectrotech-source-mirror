@@ -922,6 +922,19 @@ target_compile_definitions(tst_terminaluuids PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Sequential numbers saved the old way, as sequ_1/.../seqhf_1 attributes,
+# are all read: the real binary's --resave on
+# fixtures/legacy_sequential_attributes.qet, whose element and conductor
+# carry only seqhf_1.
+add_executable(
+  tst_legacysequentialattributes
+  tst_legacysequentialattributes.cpp)
+add_test(NAME tst_legacysequentialattributes COMMAND tst_legacysequentialattributes)
+add_dependencies(tst_legacysequentialattributes qelectrotech)
+target_link_libraries(tst_legacysequentialattributes PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_legacysequentialattributes PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # ConductorProperties::applyChanges() -- the Selection properties panel
 # writes only the fields the user edited.
 add_executable(
