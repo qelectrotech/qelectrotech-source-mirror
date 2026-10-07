@@ -2809,6 +2809,7 @@ void QetShapeItem::handlerMousePressEvent(int handlerIndex)
 	m_old_endAngle = m_endAngle;
 	m_old_transform = m_transform;
 	m_old_pos = pos();
+	m_old_pivotIsCustom = m_pivotIsCustom;
 	m_old_nodes = m_nodes;
 	if(m_xRadius == 0 && m_yRadius == 0) {
 		m_modifie_radius_equaly = true;
@@ -2913,7 +2914,12 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				undo = new QUndoCommand(tr("Move the rotation center"));
 				new QPropertyUndoCommand(this, "pos", m_old_pos, pos(), undo);
 				new QPropertyUndoCommand(this, "pivot", m_old_transform.pivot, m_transform.pivot, undo);
+				// dragPivotHandle() marked the pivot as hand-placed; undoing
+				// the move has to take that back as well.
+				new QPropertyUndoCommand(this, "pivotIsCustom", m_old_pivotIsCustom, m_pivotIsCustom, undo);
 			}
+			else
+				m_pivotIsCustom = m_old_pivotIsCustom;   // dragged back to where it was: nothing to undo
 			break;
 
 		case HandleRole::CornerRadius:

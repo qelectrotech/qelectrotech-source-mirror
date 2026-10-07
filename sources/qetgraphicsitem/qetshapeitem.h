@@ -62,6 +62,10 @@ class QetShapeItem : public QetGraphicsItem
 	Q_PROPERTY(qreal scaleFactorX READ scaleFactorX WRITE setScaleFactorX NOTIFY transformChanged)
 	Q_PROPERTY(qreal scaleFactorY READ scaleFactorY WRITE setScaleFactorY NOTIFY transformChanged)
 	Q_PROPERTY(QPointF pivot READ pivot WRITE setPivot NOTIFY transformChanged)
+	// Whether the pivot was placed by hand: a hand-placed pivot is saved
+	// and no longer follows the shape's centre. Changes in the same undo
+	// step as the pivot itself, so that Ctrl+Z restores both.
+	Q_PROPERTY(bool pivotIsCustom READ pivotIsCustom WRITE setPivotIsCustom)
 
 	Q_PROPERTY(qreal startAngle READ startAngle WRITE setStartAngle NOTIFY arcChanged)
 	Q_PROPERTY(qreal endAngle READ endAngle WRITE setEndAngle NOTIFY arcChanged)
@@ -194,6 +198,8 @@ class QetShapeItem : public QetGraphicsItem
 		qreal scaleFactorY() const {return m_transform.scaleY;}
 		void setScaleFactorY(qreal factor);
 		QPointF pivot() const {return m_transform.pivot;}
+		bool pivotIsCustom() const {return m_pivotIsCustom;}
+		void setPivotIsCustom(bool custom) {m_pivotIsCustom = custom;}
 		void setPivot(const QPointF &pivot); // moves the pivot handle: compensates pos() so the shape does not jump
 		void resetPivotToBoundingRectCenter();
 		void enableNodeEditMode();   // Path only: switches to NodeEdit mode, so every node's control handles become visible
@@ -339,6 +345,7 @@ class QetShapeItem : public QetGraphicsItem
 		QVector<HandleRole> m_handleRoles;   // parallel to m_handler_vector, one role per handle
 		QVector<int>        m_handleSlot;    // parallel to m_handler_vector, meaning depends on role (see HandleRole)
 		QPointF          m_old_pos;
+		bool             m_old_pivotIsCustom = false;
 
 		qreal            m_startAngle = 0;
 		qreal            m_endAngle = 360;
