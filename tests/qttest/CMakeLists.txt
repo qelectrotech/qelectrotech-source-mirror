@@ -74,6 +74,14 @@ target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
+  add_test(NAME tst_attachedplainpaste
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+endif()
+if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_darkimageintegration
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_image_dark_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
