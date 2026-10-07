@@ -75,6 +75,16 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		QTextOption option = document()->defaultTextOption();
 		option.setAlignment(alignment & Qt::AlignHorizontal_Mask);
 		document()->setDefaultTextOption(option);
+		fitAutoTextWidth();
+	});
+	connect(document(), &QTextDocument::contentsChanged, this, &DynamicElementTextItem::fitAutoTextWidth);
+		//The new font can make the lines wider or narrower than the width
+		//fitted for the old one: fit again, keeping the text's anchor
+	connect(this, &DiagramTextItem::fontChanged, this, [this]()
+	{
+		prepareAlignment();
+		fitAutoTextWidth();
+		finishAlignment();
 	});
 }
 
@@ -1796,7 +1806,26 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 {
 	this->document()->setTextWidth(width);
 	m_text_width = width;
+	fitAutoTextWidth();
 	emit textWidthChanged(width);
+}
+
+/**
+	@brief DynamicElementTextItem::fitAutoTextWidth
+	With no width set by the user, a QTextDocument has no width to centre
+	or right-align its lines in, so every line of a multi-line text stays
+	on the left whatever the alignment. Give the document the width of its
+	longest line instead. This does not change the size of the text, only
+	where the shorter lines sit.
+*/
+void DynamicElementTextItem::fitAutoTextWidth()
+{
+	if (m_text_width > 0)
+		return;
+
+	document()->setTextWidth(-1);
+	if (alignment() & (Qt::AlignHCenter | Qt::AlignRight))
+		document()->setTextWidth(document()->idealWidth());
 }
 
 void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)
