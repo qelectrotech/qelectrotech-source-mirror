@@ -387,7 +387,8 @@ void ColorAction::setColor(const QColor &color)
 
 void ColorAction::chooseColor()
 {
-	const QColor col = QColorDialog::getColor(m_color, nullptr);
+	const QColor col = QColorDialog::getColor(m_color, nullptr, QString(),
+											 QColorDialog::DontUseNativeDialog);
 	if (col.isValid() && col != m_color) {
 		setColor(col);
 		emit colorChanged(m_color);

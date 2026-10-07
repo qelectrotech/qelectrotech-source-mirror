@@ -178,6 +178,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 #ifdef Q_OS_MACOS
 		color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
+			// Qt's own dialog on every platform: the GTK one keeps its own
+			// recent-colours row and ignores the custom colours QET saves
+		color_dialog->setOption(QColorDialog::DontUseNativeDialog);
 		color_dialog->setCurrentColor(initial_properties.color);
 		ColorDialogDoubleClick::install(color_dialog);
 

@@ -220,6 +220,7 @@ void ConductorColorToolButton::chooseOtherColor()
 {
 	QColorDialog dialog(m_current, this);
 	dialog.setWindowTitle(tr("Choisir une couleur de conducteur"));
+	dialog.setOption(QColorDialog::DontUseNativeDialog);
 	ColorDialogDoubleClick::install(&dialog);
 	if (dialog.exec() == QDialog::Accepted && dialog.selectedColor().isValid()) {
 		applyColor(dialog.selectedColor());

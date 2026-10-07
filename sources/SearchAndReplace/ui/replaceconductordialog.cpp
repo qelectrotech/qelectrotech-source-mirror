@@ -329,7 +329,8 @@ void ReplaceConductorDialog::on_m_update_preview_pb_clicked()
 
 void ReplaceConductorDialog::on_m_color_pb_clicked()
 {
-	QColor color = QColorDialog::getColor(m_properties.color, this);
+	QColor color = QColorDialog::getColor(m_properties.color, this, QString(),
+									QColorDialog::DontUseNativeDialog);
 	if (color.isValid()) {
 		setColorButton(color);
 	}
@@ -337,7 +338,8 @@ void ReplaceConductorDialog::on_m_color_pb_clicked()
 
 void ReplaceConductorDialog::on_m_color_2_pb_clicked()
 {
-	QColor color = QColorDialog::getColor(m_properties.m_color_2, this);
+	QColor color = QColorDialog::getColor(m_properties.m_color_2, this, QString(),
+									QColorDialog::DontUseNativeDialog);
 	if (color.isValid()) {
 		setColorButton2(color);
 	}
