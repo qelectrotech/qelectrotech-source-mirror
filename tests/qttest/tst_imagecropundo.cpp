@@ -33,6 +33,11 @@
 	shown: before, a project saved after Ctrl+Z still recorded the undone
 	crop, and the picture came back cropped once reopened. Runs the real
 	binary on a script: add a picture, crop it, undo, save; redo, save.
+
+	It also restores whether the pivot was placed by hand: a crop moves
+	the pivot to the centre of the kept region and marks it as default,
+	and before, Ctrl+Z brought the hand-placed pivot back without its
+	mark, so the next save dropped it.
 */
 class tst_imagecropundo : public QObject
 {
@@ -151,6 +156,48 @@ qet.log('PROBE ' + JSON.stringify(r));
 		QVERIFY2(crop.hasMatch(), "the redone crop was not saved");
 		for (const char *attribute : {R"(x="10")", R"(y="5")", R"(w="20")", R"(h="10")"})
 			QVERIFY2(crop.captured(1).contains(QLatin1String(attribute)), attribute);
+	}
+
+	void undoneCropKeepsHandPlacedPivot()
+	{
+		// A picture whose pivot was placed by hand: saved as <transform>
+		// with pivotX/pivotY, which no script call writes, so the test
+		// adds it to a saved project itself.
+		const QString plain = m_dir.filePath(QStringLiteral("plain.qet"));
+		const QString pivot = m_dir.filePath(QStringLiteral("pivot.qet"));
+		QJsonObject r = run(QStringLiteral(R"JS(
+var i = qet.addImage(0, '%1', 100, 100);
+qet.save('%2');
+qet.log('PROBE ' + JSON.stringify({added: i >= 0}));
+)JS").arg(m_dir.filePath(QStringLiteral("pic.png")), plain),
+							 QStringLiteral(QET_EXAMPLES_DIR "/741.qet"));
+		QVERIFY(r.value("added").toBool());
+		QByteArray xml = read(plain);
+		QCOMPARE(xml.count("</image>"), 1);
+		xml.replace("</image>", "<transform rotation=\"0\" skewX=\"0\" skewY=\"0\" "
+								"scaleX=\"1\" scaleY=\"1\" pivotX=\"5\" pivotY=\"7\"/></image>");
+		QFile f(pivot);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(xml);
+		f.close();
+
+		const QString before = m_dir.filePath(QStringLiteral("before.qet"));
+		const QString undone = m_dir.filePath(QStringLiteral("pivot-undone.qet"));
+		r = run(QStringLiteral(R"JS(
+var r = {};
+qet.save('%1');
+r.cropped_ok = qet.cropImage(0, 0, 10, 5, 20, 10);
+qet.undo();
+qet.save('%2');
+qet.log('PROBE ' + JSON.stringify(r));
+)JS").arg(before, undone), pivot);
+		QVERIFY(r.value("cropped_ok").toBool());
+		// The fixture is read as intended: saved untouched, it keeps the pivot.
+		const QByteArray saved = read(before);
+		QVERIFY(saved.contains("pivotX=\"5\"") && saved.contains("pivotY=\"7\""));
+		const QByteArray afterUndo = read(undone);
+		QVERIFY2(afterUndo.contains("pivotX=\"5\"") && afterUndo.contains("pivotY=\"7\""),
+				 "the hand-placed pivot was dropped after undoing the crop");
 	}
 };
 
