@@ -301,6 +301,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/shortcutbarsettings.cpp
   ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.h
   ${QET_DIR}/sources/toolbarsettings.cpp
   ${QET_DIR}/sources/toolbarsettings.h
   ${QET_DIR}/sources/diagramcontexttoolbar.cpp
@@ -858,6 +860,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
 

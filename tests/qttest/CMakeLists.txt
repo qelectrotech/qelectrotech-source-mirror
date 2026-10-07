@@ -298,6 +298,26 @@ set_tests_properties(tst_toolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 target_include_directories(tst_toolbarsettings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_toolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
+# DiagramToolbarSettings and its configuration page: unchanged toolbars
+# store nothing and build as before, unknown ids and stray separators are
+# skipped, the user's own toolbars are kept, a widget is in one place only.
+add_executable(
+  tst_diagramtoolbarsettings
+  tst_diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp)
+add_test(NAME tst_diagramtoolbarsettings COMMAND tst_diagramtoolbarsettings)
+set_tests_properties(tst_diagramtoolbarsettings PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_diagramtoolbarsettings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramtoolbarsettings PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.

@@ -27,9 +27,11 @@
 #endif
 #include <QCoreApplication>
 #include <QToolButton>
+#include <QWidgetAction>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
+#include "diagramtoolbarsettings.h"
 #include "qetgraphicsitem/conductor.h"
 #include "itemgroups.h"
 #include "commandsearchpopup.h"
@@ -1316,56 +1318,36 @@ void QETDiagramEditor::setUpToolBar()
 	diagram_tool_bar = new QToolBar(tr("Schéma"), this);
 	diagram_tool_bar -> setObjectName("diagram");
 
-	main_tool_bar -> addActions(m_file_actions_group.actions());
-	main_tool_bar -> addAction(m_print);
-	main_tool_bar -> addAction(m_export_to_pdf);
-	main_tool_bar -> addSeparator();
-	main_tool_bar -> addAction(undo);
-	main_tool_bar -> addAction(redo);
-	main_tool_bar -> addSeparator();
-	main_tool_bar -> addAction(m_cut);
-	main_tool_bar -> addAction(m_copy);
-	main_tool_bar -> addAction(m_paste);
-	main_tool_bar -> addAction(m_duplicate);
-	main_tool_bar -> addSeparator();
-	main_tool_bar -> addAction(m_delete_selection);
-	main_tool_bar -> addAction(m_rotate_selection);
-
-	// Modes selection / visualisation et zoom
-	view_tool_bar -> addAction(m_mode_selection);
-	view_tool_bar -> addAction(m_mode_visualise);
-	view_tool_bar -> addSeparator();
-	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
-	view_tool_bar -> addSeparator();
-	view_tool_bar -> addAction(m_draw_grid);
-	view_tool_bar -> addWidget(m_text_grid_button);
-	view_tool_bar -> addAction(m_draw_guides);
-	view_tool_bar -> addWidget(m_background_color_button);
-	view_tool_bar -> addSeparator();
-	view_tool_bar -> addActions(m_zoom_action_toolBar);
-
-	diagram_tool_bar -> addAction (m_edit_diagram_properties);
-	diagram_tool_bar -> addAction (m_conductor_reset);
-	diagram_tool_bar -> addAction (m_auto_conductor);
-	diagram_tool_bar -> addAction (m_auto_break_conductor);
-		//Sits with the conductor actions it works alongside: it colours
-		//the selected conductors and sets the colour of the next one drawn.
-	m_conductor_color_button = new ConductorColorToolButton(this, this);
-	diagram_tool_bar -> addWidget (m_conductor_color_button);
-
 	m_add_item_tool_bar = new QToolBar(tr("Ajouter"), this);
 	m_add_item_tool_bar->setObjectName("adding");
-	m_add_item_tool_bar->addActions(m_add_item_actions_group.actions());
 
 	m_depth_tool_bar = new QToolBar(tr("Profondeur", "toolbar title"));
 	m_depth_tool_bar->setObjectName("diagram_depth_toolbar");
-	m_depth_tool_bar->addActions(m_depth_action_group->actions());
+
+		//The toolbar buttons that are widgets, not commands. Each is held by
+		//an action of this window, so it survives being taken off a toolbar.
+	auto add_widget = [this](const QString &id, QWidget *widget) {
+		auto *action = new QWidgetAction(this);
+		action->setDefaultWidget(widget);
+		action->setText(DiagramToolbarSettings::widgetTitle(id));
+		m_toolbar_widgets.insert(id, action);
+	};
+	add_widget(QStringLiteral("widget:handler_size"), new DiagramEditorHandlerSizeWidget(this));
+	add_widget(QStringLiteral("widget:text_grid"), m_text_grid_button);
+	add_widget(QStringLiteral("widget:background_color"), m_background_color_button);
+		//Sits with the conductor actions it works alongside: it colours
+		//the selected conductors and sets the colour of the next one drawn.
+	m_conductor_color_button = new ConductorColorToolButton(this, this);
+	add_widget(QStringLiteral("widget:conductor_color"), m_conductor_color_button);
 
 	addToolBar(Qt::TopToolBarArea, main_tool_bar);
 	addToolBar(Qt::TopToolBarArea, view_tool_bar);
 	addToolBar(Qt::TopToolBarArea, diagram_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_add_item_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_depth_tool_bar);
+
+	DiagramToolbarSettings::markWindow(this);
+	rebuildToolBars();
 
 	m_scripts_tool_bar = new QToolBar(tr("Scripts", "toolbar title"), this);
 	m_scripts_tool_bar->setObjectName("scripts");
@@ -1374,6 +1356,59 @@ void QETDiagramEditor::setUpToolBar()
 	m_scripts_tool_bar->toggleViewAction()->setVisible(false);
 	m_scripts_tool_bar->hide();
 #endif
+}
+
+/**
+	@brief QETDiagramEditor::rebuildToolBars
+	Fill every toolbar from DiagramToolbarSettings, adding the user's own
+	toolbars that this window does not have yet and removing those that
+	were deleted. Called when the window is built, when the settings
+	change, and when the stored scripts change (a script can be on any
+	toolbar).
+*/
+void QETDiagramEditor::rebuildToolBars()
+{
+	const QList<DiagramToolbarSettings::Toolbar> custom = DiagramToolbarSettings::customToolbars();
+	QStringList custom_names;
+	for (const DiagramToolbarSettings::Toolbar &toolbar : custom) {
+		custom_names << toolbar.name;
+	}
+	for (QToolBar *toolbar : m_custom_tool_bars) {
+		if (!custom_names.contains(toolbar->objectName())) {
+			removeToolBar(toolbar);
+			toolbar->deleteLater();
+		}
+	}
+	m_custom_tool_bars.erase(std::remove_if(m_custom_tool_bars.begin(), m_custom_tool_bars.end(),
+		[&custom_names](QToolBar *toolbar) { return !custom_names.contains(toolbar->objectName()); }),
+		m_custom_tool_bars.end());
+
+	for (const DiagramToolbarSettings::Toolbar &toolbar : custom)
+	{
+		auto existing = std::find_if(m_custom_tool_bars.cbegin(), m_custom_tool_bars.cend(),
+			[&toolbar](QToolBar *t) { return t->objectName() == toolbar.name; });
+		if (existing != m_custom_tool_bars.cend()) {
+			(*existing)->setWindowTitle(toolbar.title);
+			continue;
+		}
+		auto *new_tool_bar = new QToolBar(toolbar.title, this);
+		new_tool_bar->setObjectName(toolbar.name);
+		new_tool_bar->setMovable(!ToolbarSettings::locked());
+		addToolBar(Qt::TopToolBarArea, new_tool_bar);
+		m_custom_tool_bars << new_tool_bar;
+	}
+
+	auto resolve = [this](const QString &id) -> QAction * {
+		if (DiagramToolbarSettings::isWidget(id)) {
+			return m_toolbar_widgets.value(id);
+		}
+		return ShortcutManager::instance().action(id, this);
+	};
+	const QList<QToolBar *> built_in {main_tool_bar, view_tool_bar, diagram_tool_bar,
+					   m_add_item_tool_bar, m_depth_tool_bar};
+	for (QToolBar *toolbar : built_in + m_custom_tool_bars) {
+		DiagramToolbarSettings::fill(toolbar, DiagramToolbarSettings::ids(toolbar->objectName()), resolve);
+	}
 }
 
 /**
@@ -4039,6 +4074,7 @@ void QETDiagramEditor::rebuildScriptActions()
 	if (has_scripts != m_had_scripts) m_scripts_tool_bar->setVisible(has_scripts);
 	m_had_scripts = has_scripts;
 
+	rebuildToolBars();
 	updateScriptActions();
 }
 

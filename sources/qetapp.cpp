@@ -43,6 +43,7 @@
 #include "ui/configpage/shortcutsconfigpage.h"
 #include "ui/configpage/shortcutbarconfigpage.h"
 #include "ui/configpage/toolbarsconfigpage.h"
+#include "ui/configpage/toolbarcommandsconfigpage.h"
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
@@ -2227,6 +2228,7 @@ void QETApp::configureQET()
 	cd.addPage(new ShortcutsConfigPage());
 	cd.addPage(new ShortcutBarConfigPage());
 	cd.addPage(new ToolbarsConfigPage());
+	cd.addPage(new ToolbarCommandsConfigPage());
 #ifdef QET_SPACEMOUSE_SUPPORT
 	cd.addPage(new SpaceMouseConfigPage());
 #endif
