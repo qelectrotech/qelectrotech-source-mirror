@@ -35,6 +35,42 @@
 #include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
 #include <QAbstractTextDocumentLayout>
+#include <QApplication>
+#include <QClipboard>
+#include <QKeyEvent>
+#include <QKeySequence>
+#include <QMimeData>
+#include <QTextCursor>
+#include <QTextDocumentFragment>
+
+void DynamicElementTextItem::keyPressEvent(QKeyEvent *event)
+{
+	if (!event->matches(QKeySequence::Paste) || m_text_from != UserText ||
+	    !(textInteractionFlags() & Qt::TextEditable)) {
+		DiagramTextItem::keyPressEvent(event);
+		return;
+	}
+	if (diagram() && diagram()->isReadOnly()) {
+		event->accept();
+		return;
+	}
+	const QMimeData *mime = QApplication::clipboard()->mimeData();
+	if (mime && (mime->hasText() || mime->hasHtml())) {
+		const QString text = mime->hasText() ? mime->text() :
+		    QTextDocumentFragment::fromHtml(mime->html()).toPlainText();
+		prepareAlignment();
+		QTextCursor cursor = textCursor();
+		cursor.beginEditBlock();
+		// An empty character format inherits the field's default font,
+		// rather than the clipboard's font or the preceding character's.
+		cursor.insertText(text, QTextCharFormat());
+		cursor.setCharFormat(QTextCharFormat());
+		cursor.endEditBlock();
+		setTextCursor(cursor);
+		finishAlignment();
+	}
+	event->accept();
+}
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
