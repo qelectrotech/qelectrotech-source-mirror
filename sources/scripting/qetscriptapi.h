@@ -543,7 +543,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setImageScale(int folioIndex, int imageIndex, double factor);
 		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);
 		Q_INVOKABLE bool cropImage(int folioIndex, int imageIndex, int x, int y, int width, int height);
-		Q_INVOKABLE QString imageCrop(int folioIndex, int imageIndex) const;
+		Q_INVOKABLE QVariantMap imageCrop(int folioIndex, int imageIndex) const;
 		Q_INVOKABLE bool deleteImage(int folioIndex, int imageIndex);
 		Q_INVOKABLE int addPdfPage(int folioIndex, const QString &pdfPath, int pageNumber,
 								   int dpi, double x, double y);

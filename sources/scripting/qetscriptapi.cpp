@@ -3541,14 +3541,20 @@ bool QetScriptApi::cropImage(int folioIndex, int imageIndex, int x, int y, int w
 /**
 	@brief QetScriptApi::imageCrop
 	@return the image's crop rectangle in its original's pixels, as
-	"x,y,width,height", or an empty string for no such image.
+	{x, y, width, height} like elementGeometry(), or an empty map for no
+	such image.
 */
-QString QetScriptApi::imageCrop(int folioIndex, int imageIndex) const
+QVariantMap QetScriptApi::imageCrop(int folioIndex, int imageIndex) const
 {
+	QVariantMap crop;
 	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
-	if (imageIndex < 0 || imageIndex >= list.count()) return QString();
+	if (imageIndex < 0 || imageIndex >= list.count()) return crop;
 	const QRect r = list.at(imageIndex)->cropRect();
-	return QStringLiteral("%1,%2,%3,%4").arg(r.x()).arg(r.y()).arg(r.width()).arg(r.height());
+	crop.insert(QStringLiteral("x"), r.x());
+	crop.insert(QStringLiteral("y"), r.y());
+	crop.insert(QStringLiteral("width"), r.width());
+	crop.insert(QStringLiteral("height"), r.height());
+	return crop;
 }
 
 bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
