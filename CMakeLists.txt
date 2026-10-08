@@ -261,8 +261,17 @@ else()
         QM_FILES_OUTPUT_VARIABLE QM_FILES
     )
 
+    # The bundled minimal KF sources live outside sources/, so lupdate
+    # misses their user-visible strings ("Custom…", "Copy/Paste Color")
+    # unless the bundled targets are passed here; BUILD_KF_MINIMAL is
+    # gated on Qt >= 6.7, so only this branch needs them.
+    set(QET_LUPDATE_SOURCE_TARGETS ${PROJECT_NAME})
+    if(BUILD_WITH_KF AND BUILD_KF AND BUILD_KF_MINIMAL)
+        list(APPEND QET_LUPDATE_SOURCE_TARGETS kcoreaddons kwidgetsaddons)
+    endif()
+
     qt_add_lupdate(
-        SOURCE_TARGETS ${PROJECT_NAME}
+        SOURCE_TARGETS ${QET_LUPDATE_SOURCE_TARGETS}
         TS_FILES ${TS_FILES}
         LUPDATE_TARGET update_translations
         NO_GLOBAL_TARGET
@@ -359,6 +368,14 @@ install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
 )
 
+# KF code compiled in from source (FetchContent or the bundled minimal
+# subset) is statically linked into the binary, so its licence and notice
+# must be shipped. Outside the if(NOT MINGW) block below so MSYS2/MinGW
+# builds install them too.
+if(BUILD_WITH_KF AND BUILD_KF)
+    install(FILES licenses/KDE-Frameworks.LICENSE licenses/KDE-Frameworks.NOTICE DESTINATION share/doc/qelectrotech)
+endif()
+
 if (NOT MINGW)
     install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
     install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
@@ -375,9 +392,6 @@ if (NOT MINGW)
     install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION share/qelectrotech/mcp)
     install(FILES misc/qet-mcp/README.md DESTINATION share/qelectrotech/mcp)
     install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
-    if(BUILD_KF_MINIMAL)
-        install(FILES licenses/KDE-Frameworks.LICENSE licenses/KDE-Frameworks.NOTICE DESTINATION share/doc/qelectrotech)
-    endif()
     if(UNIX AND NOT APPLE)
         install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
         install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})

@@ -1,8 +1,12 @@
 KDE Frameworks components bundled with QElectroTech
 =====================================================
 
-QElectroTech includes a minimal subset of the following KDE Frameworks
-libraries when the bundled minimal KF build is selected:
+QElectroTech can bundle the following KDE Frameworks libraries when a
+build option that compiles them in from source is selected - either the
+git FetchContent build (BUILD_KF=ON without BUILD_KF_MINIMAL), which uses
+the unmodified upstream sources, or the bundled minimal KF build
+(BUILD_KF_MINIMAL), which uses the reduced subset vendored under
+thirdparty/:
 
   - KCoreAddons
   - KWidgetsAddons

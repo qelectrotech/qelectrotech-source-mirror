@@ -98,6 +98,18 @@ if(BUILD_WITH_KF)
     qet_make_kf_available()
 
   elseif(BUILD_KF AND BUILD_KF_MINIMAL)
+    # The bundled subset is vendored v6.30.0 while FetchContent pins
+    # v6.10.0 above: deliberate, see the PROVENANCE files.
+    #
+    # The vendored KWidgetsAddons sources use QIcon::ThemeIcon, which
+    # only exists since Qt 6.7: fail at configure time, not compile time.
+    if(Qt6_VERSION VERSION_LESS 6.7.0)
+      message(FATAL_ERROR
+        "BUILD_KF_MINIMAL requires Qt 6.7 or newer: the bundled KWidgetsAddons "
+        "sources use QIcon::ThemeIcon (added in Qt 6.7). Found Qt ${Qt6_VERSION}. "
+        "Use BUILD_KF_MINIMAL=OFF, or a newer Qt.")
+    endif()
+
     message(WARNING "BUILD_KF_MINIMAL is experimental and may not work as expected.")
     if(NOT TARGET KF6::CoreAddons)
       message(
@@ -117,7 +129,7 @@ if(BUILD_WITH_KF)
     else()
       message(
         VERBOSE
-        "Target KF6::KWidgetsAddons already exists, skipping build")
+        "Target KF6::WidgetsAddons already exists, skipping build")
     endif()
 
   elseif(NOT BUILD_KF)

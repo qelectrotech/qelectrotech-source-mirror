@@ -79,3 +79,42 @@ jobs:
             *) echo "::error::IPC gate failed -- forwarded files are being opened inside the socket handler again"
                exit 1 ;;
           esac
+
+  # Exercises the bundled minimal KF subset (thirdparty/): the job above
+  # only builds against system KF6, so without this job the vendored
+  # sources are never compiled in CI.
+  linux-minimal-kf:
+    name: Build and test (bundled minimal KF, Debug)
+    runs-on: ubuntu-latest
+    container: ubuntu:26.04
+
+    steps:
+      - name: Install build and test dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ca-certificates build-essential cmake ninja-build git pkg-config \
+            qt6-base-dev qt6-base-private-dev qt6-tools-dev qt6-tools-dev-tools \
+            libqt6svg6-dev libqt6sql6-sqlite libcups2-dev libsqlite3-dev \
+            libxkbcommon-x11-0 qt6-svg-plugins \
+            xvfb openbox xdotool x11-utils
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DQT_VERSION_MAJOR=6 \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DQET_EXPORT_PROJECT_DB=ON \
+            -DBUILD_KF_MINIMAL=ON
+
+      - name: Build
+        run: cmake --build build --parallel $(nproc)
+
+      - name: Unit tests
+        run: xvfb-run -a ctest --test-dir build --output-on-failure

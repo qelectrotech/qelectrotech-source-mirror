@@ -22,8 +22,19 @@
  * Defines "kf.kcoreaddons" category controllable via QT_LOGGING_RULES.
  */
 
+#pragma once
+
 #include <QLoggingCategory>
 
-QLoggingCategory kf_kcoreaddons_category("kf.kcoreaddons");
+/**
+ * Function-local static rather than a file-level QLoggingCategory object,
+ * so this header can be included by several translation units without a
+ * multiple-definition error.
+ */
+inline QLoggingCategory &kf_kcoreaddons_category()
+{
+    static QLoggingCategory category("kf.kcoreaddons");
+    return category;
+}
 
-#define KCOREADDONS_DEBUG kf_kcoreaddons_category
+#define KCOREADDONS_DEBUG kf_kcoreaddons_category()

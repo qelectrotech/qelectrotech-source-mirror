@@ -14,9 +14,16 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+# Match the top-level policy range: this file is only ever pulled in via
+# add_subdirectory(), and an old-style cmake_minimum_required() here would
+# reset all policies, which Qt 6.10's qt_add_library() machinery cannot
+# work with (CMP0071 warnings, then a configure error).
+cmake_minimum_required(VERSION 3.5...4.2)
 
-qt_add_library(kwidgetsaddons STATIC
+# Plain add_library(): these are private static libraries linked into the
+# QET binary only, so qt_add_library()'s metatype extraction buys nothing.
+# AUTOMOC from the including scope is all the vendored sources need.
+add_library(kwidgetsaddons STATIC
   src/kabstractcoloredit.cpp
   src/kcolorbutton.cpp
   src/kcolorcombo.cpp
