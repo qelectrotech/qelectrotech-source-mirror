@@ -22,6 +22,8 @@
 #include "../../qetproject.h"
 #include "../../diagram.h"
 #include "../../qetgraphicsitem/cabinetlayoutreferenceitem.h"
+#include "../../qetgraphicsitem/element.h"
+#include "../../elementprovider.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -117,13 +119,23 @@ void CabinetLayoutSourceModel::reload()
 	QStandardItem *root = invisibleRootItem();
 	QStandardItem *current_folio_item = nullptr;
 	QString current_folio_key;
+	ElementProvider provider(m_project);
 
 	while (query.next())
 	{
 		const QString title		= query.value("title").toString();
 		const QString folio		= query.value("folio").toString();
 		const QString uuid		= query.value("element_uuid").toString();
-		const QString label		= query.value("label").toString();
+		QString label			= query.value("label").toString();
+		{
+			const QList<Element *> found = provider.fromUuids({QUuid(uuid)});
+			if (!found.isEmpty()) {
+				const QString live = found.first()->actualLabel();
+				if (!live.isEmpty()) {
+					label = live;
+				}
+			}
+		}
 		const QString func		= query.value("function").toString();
 		const QString desc		= query.value("description").toString();
 		const QString mfr		= query.value("manufacturer").toString();
