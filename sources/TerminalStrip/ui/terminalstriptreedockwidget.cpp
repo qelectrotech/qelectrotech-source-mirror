@@ -27,6 +27,7 @@
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../terminalstrip.h"
 #include "../../qetinformation.h"
+#include "../../utils/qetutils.h"
 #include "freeterminalmodel.h"
 
 #include <QApplication>
@@ -257,7 +258,7 @@ void TerminalStripTreeDockWidget::buildTree()
 
 	auto ts_vector = m_project->terminalStrip();
 	std::sort(ts_vector.begin(), ts_vector.end(), [](TerminalStrip *a, TerminalStrip *b) {
-		return a->name() < b->name();
+		return QETUtils::naturalLessThan(a->name(), b->name());
 	});
 
 	for (const auto &ts : std::as_const(ts_vector)) {
@@ -355,9 +356,9 @@ void TerminalStripTreeDockWidget::addFreeTerminal()
 		//Sort the terminal element by label
 	std::sort(vector_.begin(), vector_.end(), [](TerminalElement *a, TerminalElement *b)
 	{
-		return a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString()
-				<
-				b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString();
+		return QETUtils::naturalLessThan(
+					a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
+					b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
 	});
 
 	auto free_terminal_item = ui->m_tree_view->topLevelItem(1);

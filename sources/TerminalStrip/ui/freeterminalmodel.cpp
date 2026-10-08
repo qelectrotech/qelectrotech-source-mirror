@@ -400,7 +400,7 @@ void FreeTerminalModel::fillTerminalVector()
         std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
                   [](TerminalElement *a, TerminalElement *b)
                   {
-                      return QETUtils::sortBeginIntString(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
+                      return QETUtils::naturalLessThan(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
                                                           b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
                   });
 
