@@ -74,6 +74,13 @@ target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
+  add_test(NAME tst_handlersizeintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_handle_size_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/handle_size_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   add_test(NAME tst_attachedplainpaste
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
@@ -193,6 +200,14 @@ add_test(NAME tst_textanchor COMMAND tst_textanchor)
 set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
+
+# Shared handle geometry and picking, including fractional sizes.
+add_executable(tst_handlersize tst_handlersize.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.cpp)
+add_test(NAME tst_handlersize COMMAND tst_handlersize)
+set_tests_properties(tst_handlersize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_handlersize PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_handlersize PRIVATE Qt::Test Qt::Widgets)
 
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.

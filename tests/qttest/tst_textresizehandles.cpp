@@ -176,6 +176,7 @@ private slots:
 	// and reports the change once, on release.
 	void dragKeepsTheOppositeCorner()
 	{
+		for (qreal size : {2.5, 5.0, 7.5, 10.0, 20.0, 30.0})
 		for (int c = TextResize::TopLeft ; c <= TextResize::BottomLeft ; ++c)
 			for (qreal angle : {0.0, 90.0, 37.0}) {
 				QGraphicsScene scene;
@@ -183,7 +184,7 @@ private slots:
 				scene.addItem(text);
 				text->setPos(100, 100);
 				text->setRotation(angle);
-				auto *handles = new TextResizeHandles(text);
+				auto *handles = new TextResizeHandles(text, size);
 				QSignalSpy finished(handles, &TextResizeHandles::resizeFinished);
 
 				const Corner corner = Corner(c);
