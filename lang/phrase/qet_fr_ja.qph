@@ -1,0 +1,4424 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="ja">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; で移動</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>接点：NO：%1、NC：%2、切替：%3、その他：%4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>接点：NO：%1/%2、NC：%3/%4、切替：%5/%6、その他：%7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                データフォルダを指定
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> %1</source>
+    <target>%1</target>
+</phrase>
+<phrase>
+    <source> %1 : %2</source>
+    <target>%1 : %2</target>
+    <definition>titleblock content - please let the blank space at the beginning</definition>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(ドラッグ中に Ctrl = 自由位置、グリッドに吸着しない)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>（使用済み）</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1: %2モード</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; 赤い点: ドラッグして回転中心を移動</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; 青緑の点: 円弧</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; 辺: 傾斜</target>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>端子グループから</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>端子グループ %1 から</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— クリック: %1 モード</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+    <definition>spinbox suffix when changing the dimension of a row/column</definition>
+</phrase>
+<phrase>
+    <source>%1 %2</source>
+    <target>%1 %2</target>
+    <definition>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</definition>
+</phrase>
+<phrase>
+    <source>%1 - %2</source>
+    <target>%1 - %2</target>
+    <definition>window title: %1 is the base window title, %2 is a template name</definition>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1時間%2分</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>%1%</source>
+    <target>%1%</target>
+    <definition>titleblock: width relative to total length</definition>
+</phrase>
+<phrase>
+    <source>%1px</source>
+    <target>%1px</target>
+</phrase>
+<phrase>
+    <source>&amp;Aide</source>
+    <target>ヘルプ(&amp;A)</target>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>このエディタを閉じる(&amp;F)</target>
+</phrase>
+<phrase>
+    <source>&amp;OK</source>
+    <target>&amp;OK</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(割り当て済み)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(コンタクト数が一致しません)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(サブタイプが一致しません)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(状態が一致しません)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>、Alt = ハンドルを作成</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>、Alt = ポリラインに分離</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>。
+そのため、このドキュメントの全部または一部を開けない可能性があります。
+どうしますか？</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI（画面）</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI（印刷）</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI（高品質）</target>
+</phrase>
+<phrase>
+    <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
+    <target>&lt;b&gt;%1&lt;/b&gt; : %2</target>
+    <definition>warning title: warning description</definition>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;エラー&lt;/b&gt; :&lt;br&gt;導体定義は端子を1つだけ持つことができます。&lt;br&gt;&lt;b&gt;解決策&lt;/b&gt; :&lt;br&gt;要素が端子を1つだけ持つことを確認してください</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Abaisser ce folio x100</source>
+    <target>このシートをx100下げる</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>操作</target>
+</phrase>
+<phrase>
+    <source>Adapter le folio à la page</source>
+    <target>図面をページに合わせる</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>アドレス</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>PLCアドレス</target>
+</phrase>
+<phrase>
+    <source>Affichage</source>
+    <target>表示</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>グリッド表示</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur la bibliothèque Qt</source>
+    <target>Qtライブラリの情報を表示</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur QElectroTech</source>
+    <target>QElectroTechの情報を表示</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>ガイドの表示/非表示を切り替え</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>表示</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Afficher deux pages</source>
+    <target>2ページ表示</target>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>ヘルプを表示</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>既定でグリッドを表示（次回起動時に適用）</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>名前を表示</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>シートにヘッダーを表示</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>ガイドを表示</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>既定でガイドを表示（次回起動時に適用）</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>クロスリファレンスに端子番号を表示</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>シート上のPLCテーブルの列ヘッダーを表示または非表示にする</target>
+</phrase>
+<phrase>
+    <source>Afficher un aperçu de toutes les pages</source>
+    <target>すべてのページをプレビュー表示</target>
+</phrase>
+<phrase>
+    <source>Afficher une seule page</source>
+    <target>1ページ表示</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>ラベルの枠を表示/非表示</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>端子名の表示/非表示</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>完全に互換性を持たせるには、同じプロジェクトをQElectroTechのバージョン0.8または0.80で開いて保存し、このバージョンで再度開いてください。
+どうしますか？</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>現在のフォリオに端子台図を追加</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>現在のフォリオにベジェ曲線を追加</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>現在のフォリオにPDFページを追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>%1 個の端子を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter au bus: %1</source>
+    <target>バスに追加：%1</target>
+</phrase>
+<phrase>
+    <source>Ajouter au câble: %1</source>
+    <target>ケーブルに追加：%1</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>端子 %1 を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter le plan de bornes suivant :</source>
+    <target>次の端子盤を追加:</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier</source>
+    <target>端子台を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier au projet</source>
+    <target>プロジェクトに端子台を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>図面を追加</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un groupe de bornes</source>
+    <target>端子グループを追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>PDFを追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>端子図を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>曲線に点を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter une borne</source>
+    <target>端子を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>曲線を追加</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>カスタムプロパティを追加</target>
+</phrase>
+<phrase>
+    <source>Ajuster la largeur</source>
+    <target>幅を合わせる</target>
+</phrase>
+<phrase>
+    <source>Ajuster la page</source>
+    <target>ページに合わせる</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>配置</target>
+</phrase>
+<phrase>
+    <source>Aller à la fin du projet</source>
+    <target>プロジェクトの末尾へ移動</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>英字</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>英数字(A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>角度</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>角</target>
+</phrase>
+<phrase>
+    <source>Annulation</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Annulations</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>キャンセル</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>プレビュー</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>プレビュー：</target>
+</phrase>
+<phrase>
+    <source>Appliquer le déplacement</source>
+    <target>移動を適用</target>
+</phrase>
+<phrase>
+    <source>Arrondi supérieur pour 0.5 et plus</source>
+    <target>0.5以上は切り上げ</target>
+</phrase>
+<phrase>
+    <source>Arrondi supérieur pour 0.75 et plus</source>
+    <target>0.75以上は切り上げ</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>%1 の角を丸める</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>要素へ移動</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>警告: 相対幅の合計が全体幅の100%%を超えています。このタイトルブロックのテンプレートはどの幅でも満たすことができません。
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>警告: 固定幅の列が残りの幅に収まりません。このタイトルブロックのテンプレートはどの幅でも満たすことができません。
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>割り当て済みのみ</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>端子グループ %1 へ</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>なし</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>プログラマブルロジックコントローラ（PLC）</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>自動化機器 (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>端子番号の自動付与</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>自動採番</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>その他</target>
+</phrase>
+<phrase>
+    <source>Avec</source>
+    <target>あり</target>
+</phrase>
+<phrase>
+    <source>Avertissement</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Avertissement </source>
+    <target>警告</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>警告：
+「丸めなし」以外の値を選択すると、以下に応じてプロジェクトのレンダリングエラーが発生する可能性があります：
+
+1 - 選択した値 
+2 - 画面のdpi 
+3 - 1と2の設定が異なる別のコンピューターや画面でプロジェクトを変更した場合。</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>警告 — EPLANファイル (.edz) のインポート</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 1</source>
+    <target>補助ブロック1</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 2</source>
+    <target>補助ブロック2</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>補助ブロック3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>補助ブロック4</target>
+</phrase>
+<phrase>
+    <source>Blue : Blue</source>
+    <target>青：青</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>青：コーンフラワーブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>青：ダークブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>青：ディープスカイブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>青：ドジャーブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>青：ライトブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>青：ライトスカイブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>青：ライトスチールブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>青：ミディアムブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>青：ミッドナイトブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>青：ネイビー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>青：パウダーブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>青：ロイヤルブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>青：スカイブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>青：スチールブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>端子1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>端子2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>レベル0端子 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>レベル1端子 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>レベル2端子 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>レベル3端子 :</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>端子</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendante</source>
+    <target>独立端子</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendantes</source>
+    <target>独立端子</target>
+</phrase>
+<phrase>
+    <source>Bornier extérieur</source>
+    <target>外部端子台</target>
+</phrase>
+<phrase>
+    <source>Bornier intérieur</source>
+    <target>内部端子台</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>端子台</target>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>茶：ビスク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>茶：ブランチドアーモンド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>茶：ブラウン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>茶：バーリーウッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>茶：チョコレート</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>茶：コーンシルク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>茶：ダークゴールデンロッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>茶：ゴールデンロッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>茶：マルーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>茶：ナバホホワイト</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>茶：ペルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>茶：ロージーブラウン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>茶：サドルブラウン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>茶：サンディブラウン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>茶：シエナ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>茶：タン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>茶：ウィート</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>bus</source>
+    <target>バス</target>
+</phrase>
+<phrase>
+    <source>C&amp;oller dans la zone</source>
+    <target>領域に貼り付け(&amp;O)</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>ここでは、新しい要素の採番方法を定義できます。
+-採番は最小値の変数で構成されます。
+-「-」と「+」ボタンで採番変数を追加または削除できます。
+-採番変数は、種類、値、増分で構成されます。
+
+-種類「数字 1」、「数字 01」、「数字 001」は、「値」フィールドで定義された数値型を表し、新しい導線ごとに「増分」フィールドの値だけ増加します。
+-「数字 01」と「数字 001」は、それぞれ図面上で最低 2 桁と 3 桁で表示されます。
+値フィールドで定義された数字が選択した種類より桁数が少ない場合、その種類に合わせて 1 つまたは 2 つの 0 が先頭に付きます。
+
+-種類「テキスト」は固定テキストを表します。
+「増分」フィールドは使用されません。
+
+-種類「図面番号」は現在の図面番号を表します。
+その他のフィールドは使用されません。
+
+-種類「図面」は現在の図面名を表します。
+その他のフィールドは使用されません。</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>ケーブル</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>%1を読み込めません</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>会社の表題欄</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>カテゴリ</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>このドキュメントは、お使いのバージョンより新しいバージョン %1 で保存されたようです！
+現在使用中のQElectroTechのバージョンは %2 です</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>この形式は透明度をサポートしていません: 画像は透明色を適用する前の状態で保存されます。続行しますか?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>このショートカットは次でも使用されています: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>これにはこのセッションの最後のログメッセージが含まれています。公開バグレポートに添付する前に内容を確認してください。</target>
+</phrase>
+<phrase>
+    <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+    <target>これはcartoucheのcompanyコレクションです -- 独自のcartoucheを作成、保存、編集するために使用します。</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>中央</target>
+</phrase>
+<phrase>
+    <source>Centre :</source>
+    <target>中心：</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>この要素はすでにリンクされています</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>この機能はプロジェクトの端子を位置に従って番号付けします。空の端子またはロックされた端子は無視されます。端子のマーキングは事前に次のように設定する必要があります: &apos;-X:AB&apos;。コロンの前の部分(端子台)は任意の名前を付けることができます。&apos;AB&apos;は数字または文字で構成できます。</target>
+</phrase>
+<phrase>
+    <source>Chaine Youtube</source>
+    <target>YouTubeチャンネル</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>テキストフィールド</target>
+</phrase>
+<phrase>
+    <source>Chemin de la collection company</source>
+    <target>companyコレクションのパス</target>
+</phrase>
+<phrase>
+    <source>Chemin des cartouches company</source>
+    <target>company cartoucheのパス</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>ユーザーマクロのパス</target>
+</phrase>
+<phrase>
+    <source>Chinois</source>
+    <target>中国語</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>テンプレートを保存する場所を選択してください。</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>クリック: 元のサイズで配置。ドラッグ: 配置してサイズ変更。右クリック: 90°回転。Ctrl+ホイール: サイズ調整。</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>左クリック: 次の点、ダブルクリックまたは Enter: 終了、右クリック: 最後の点を取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>左クリック: 対角の角を配置 (Shift = 正方形、Ctrl = 中心から + 自由位置、Ctrl+Shift = 中心の正方形)、右クリック: 取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>左クリック: 対角の角を配置 (Shift = 円、Ctrl = 中心から + 自由位置、Ctrl+Shift = 中心の円)、右クリック: 取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>左クリック: 始点を配置 (Ctrl = 自由位置)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>左クリック: 終点を配置 (Ctrl = 自由位置)、右クリック: 取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>左クリック: 最初の角を配置 (Ctrl = 中心点、自由位置)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>左クリック: 最初の点を配置 (Ctrl = 自由位置)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>クリック: 角点。ドラッグ: 曲線点。最初の点をクリック: 閉じる。Esc/Enter: 終了。右クリック: 最後の点を取消。</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>クリック</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>クリック: %1モード</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>クリックして色を選択</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>画像をクリックして色を追加します。各色の許容値はスライダーで調整するか、×をクリックして削除します。</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>画像をクリックして色を選択</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>角を丸める</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>コレクション</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>コレクション Company</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>コレクション</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>クリップボードから貼り付け</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>コメント</target>
+</phrase>
+<phrase>
+    <source>Commentaire :</source>
+    <target>コメント :</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>PLCコメント</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>コモン（SW接点）</target>
+</phrase>
+<phrase>
+    <source>Compilation : </source>
+    <target>コンパイル:</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>コンパイル:</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>部品1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>部品2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>PLC設定</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>列ヘッダーのフォントを設定</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>セル内のテキストのフォントを設定</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>競合のみ</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>接続</target>
+</phrase>
+<phrase>
+    <source>Conserver la rotation visuel</source>
+    <target>視覚的な回転を維持</target>
+</phrase>
+<phrase>
+    <source>Conserver les couleurs des conducteurs</source>
+    <target>導線の色を保持</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>接点</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>コンタクト</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>%1 をベジェ曲線に変換</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>%1 をポリラインに変換</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>ベジェ曲線に変換</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>ポリラインに変換</target>
+</phrase>
+<phrase>
+    <source>Convertisseur d&apos;élément DXF</source>
+    <target>DXF要素コンバーター</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>コピーと貼り付け</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>韓国語</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>一時ディレクトリを作成できませんでした: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>色</target>
+</phrase>
+<phrase>
+    <source>Couleur / numéro de fil câble</source>
+    <target>ケーブル線の色 / 番号</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>色 :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>線の色</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur pont :</source>
+    <target>ブリッジの色 :</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>透明色</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>透明色...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>要素の配置時に既存の導線を自動的に切断</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>導線の自動切断</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>定格電流</target>
+</phrase>
+<phrase>
+    <source>Création groupe de bornes</source>
+    <target>端子グループの作成</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>テンプレートを作成</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>バックアップコピーを作成しますか?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>シアン：アクア</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>シアン：アクアマリン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>シアン：キャデットブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>シアン：シアン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>シアン：ダークシアン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>シアン：ダークターコイズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>シアン：ライトシアン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>シアン：ライトシーグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>シアン：ミディアムターコイズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>シアン：ペールターコイズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>シアン：ティール</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>シアン：ターコイズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>循環（剰余）</target>
+</phrase>
+<phrase>
+    <source>Câble</source>
+    <target>ケーブル</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>端子グループから</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+    <target>ファイルの保存日付 形式 dd-MM-yyyy</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format local</source>
+    <target>ファイル保存日時 ローカル形式</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+    <target>ファイル保存日時 yyyy-MM-dd形式</target>
+</phrase>
+<phrase>
+    <source>Degrouper les bornes</source>
+    <target>端子をグループ解除</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>回転中心を移動</target>
+</phrase>
+<phrase>
+    <source>Dernière page</source>
+    <target>最後のページ</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>説明</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>説明 :</target>
+</phrase>
+<phrase>
+    <source>Description textuelle</source>
+    <target>テキスト記述</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>補助テキスト記述1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>補助テキスト記述2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>補助テキスト記述3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>補助テキスト記述4</target>
+</phrase>
+<phrase>
+    <source>Dessiner le cadre</source>
+    <target>枠を描画</target>
+</phrase>
+<phrase>
+    <source>Dessiner le cartouche</source>
+    <target>表題欄を描画</target>
+</phrase>
+<phrase>
+    <source>Dessiner les bornes</source>
+    <target>端子を描画</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>端子名を描画</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>ダイアログ</target>
+</phrase>
+<phrase>
+    <source>Diamètres :</source>
+    <target>直径：</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>ダイオード</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>方向</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>配置</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>既定の配置</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>ラベルとスレーブクロスリファレンス間のピクセル単位の距離</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>ラベル - スレーブ間の距離 :</target>
+</phrase>
+<phrase>
+    <source>Dossier installation</source>
+    <target>インストールフォルダ</target>
+</phrase>
+<phrase>
+    <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+    <target>ダブルクリックしてcartoucheのcompanyコレクションを折りたたむか展開します</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>右</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>端子グループ %1 から</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+エラー: ファイル %1 が有効な .dxf ファイルであることを確認してください</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>垂直オフセット</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>番号付けから除外する端子台のチェックを外してください</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>スレーブの最大数を設定</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>スレーブ要素を設定</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>透明色の設定</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>導線定義</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>曲線を変形</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>リンク解除</target>
+</phrase>
+<phrase>
+    <source>Déplacer dans :</source>
+    <target>移動先：</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>端子を移動</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>端子 %1 を移動</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>画像の回転中心を移動</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>端子のラベルを移動</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>フォリオを移動</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>図面を移動</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déplacer une borne</source>
+    <target>端子を移動</target>
+</phrase>
+<phrase>
+    <source>Déponter les bornes</source>
+    <target>端子のブリッジを解除</target>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>ロック解除中：幅と高さを個別に変更できます。クリックでロック。</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>エディタ</target>
+</phrase>
+<phrase>
+    <source>Effectuer le déplacement</source>
+    <target>移動を実行</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>要素の自動採番</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>ヘッダー :</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>テキストを枠で囲む</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>%1 個の端子を削除</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>端子を削除</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>元の画像を名前を付けて保存...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>画像を名前を付けて保存...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>診断レポートを保存</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>診断レポートを保存...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>テンプレートを保存</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>保存...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>倍率を入力</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>アナログ入力</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>デジタル入力</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>汎用入力</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>エラー</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>PLCスレーブ</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>スペース :</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>例</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>部品表から除外</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>自動採番から除外</target>
+</phrase>
+<phrase>
+    <source>Explorateur de bornier</source>
+    <target>端子台エクスプローラー</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>エクスポート成功</target>
+</phrase>
+<phrase>
+    <source>Exporte un ou plusieurs folios du projet courant</source>
+    <target>現在のプロジェクトの1つまたは複数の図面をエクスポート</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Exporter en pdf</source>
+    <target>PDFにエクスポート</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>SVGにエクスポート</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>配線図をエクスポート</target>
+</phrase>
+<phrase>
+    <source>Exporter sous : </source>
+    <target>エクスポート先：</target>
+</phrase>
+<phrase>
+    <source>Fabricant</source>
+    <target>メーカー</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>補助メーカー1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>補助メーカー2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>補助メーカー3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>補助メーカー4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>X 倍率:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Y 倍率:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>%1 を回転</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>画像の回転</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>ハンドルまたは枠内をドラッグして、保持する領域を調整します。</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>このエディタを閉じる</target>
+</phrase>
+<phrase>
+    <source>Fichier (*.pdf)</source>
+    <target>ファイル (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>CSVファイル (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>PDF ファイル (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>テキストファイル (*.txt);;すべてのファイル (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>線</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>ファイルが見つかりません: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>ショートカットを絞り込む…</target>
+</phrase>
+<phrase>
+    <source>Fin 1 :</source>
+    <target>端1：</target>
+</phrase>
+<phrase>
+    <source>Fin 2 :</source>
+    <target>端2：</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>微回転</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>反転</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>図面</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio sans titre</source>
+    <target>無題の図面</target>
+</phrase>
+<phrase>
+    <source>Folios à imprimer :</source>
+    <target>印刷する図面：</target>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>機能</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction :</source>
+    <target>機能：</target>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>PLC機能</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>実験的機能</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>フォーム</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>表示形式：ゼロの並びで最小桁数を指定します（00 = 07、000 = 007）。空欄 = 型の自然な幅。</target>
+</phrase>
+<phrase>
+    <source>Formater en tant que liste de materiel</source>
+    <target>部品表としてフォーマット</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>閉じた形状</target>
+</phrase>
+<phrase>
+    <source>Formule du label</source>
+    <target>ラベルの式</target>
+</phrase>
+<phrase>
+    <source>Formule du texte</source>
+    <target>テキストの式</target>
+</phrase>
+<phrase>
+    <source>Fournisseur</source>
+    <target>サプライヤ</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>補助サプライヤ1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>補助サプライヤ2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>補助サプライヤ3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>補助サプライヤ4</target>
+</phrase>
+<phrase>
+    <source>Fusible</source>
+    <target>ヒューズ</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>左</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers</source>
+    <target>端子台マネージャー</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers (DEV)</source>
+    <target>端子台マネージャー（DEV）</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>%1 をドラッグ: 回転 (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>ドラッグ: 円弧を調整 (Ctrl = 自由位置、Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>ドラッグ: 角を丸める (Ctrl = 自由位置)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>ドラッグ: 曲線を変形 (Ctrl = 自由位置、Alt = 接線を分割)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>ドラッグ: この点を移動</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>ドラッグ: 回転中心を移動</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>ドラッグ: 点を移動 (Ctrl = 自由位置</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>ドラッグ: 傾斜 (Ctrl = 自由位置、Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>ドラッグ: 傾斜 (Shift = 15°刻み)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>ドラッグ: 回転 (Shift = 15°刻み)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>ドラッグ: サイズ変更 (Ctrl = 中心から + 自由位置、Shift = 比率維持</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>ドラッグ: サイズ変更 (Shift = 縦横比を維持、Ctrl = 中心から)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>ドラッグ: 回転中心を移動 (Ctrl = 自由位置)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>ドラッグ: 回転 (Ctrl = 自由位置、Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>紫の点をドラッグ: 角を丸める</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>角をドラッグ: 回転 (Shift = 15°刻み)、辺をドラッグ: 傾斜 (Shift = 15°刻み)、赤い点: 回転中心を移動</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>角/辺をドラッグ: サイズ変更 (Ctrl = 中心から、Shift = 縦横比を維持)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>角/辺をドラッグ: サイズ変更 (Ctrl = 中心から、Shift = 比率維持、Alt = ポリラインに分離)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>点をドラッグ: 移動</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>端点をドラッグ: 移動</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>ハンドルまたは曲線をドラッグ: 変形 (Alt = 接線を分割) ; Alt+角の点をドラッグ: ハンドルを作成 ; 右クリック: 最も近いノードのメニュー</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>1ページ左へ移動</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>1ページ右へ移動</target>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>グレー：黒</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>グレー：ダークグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>グレー：ダークスレートグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>グレー：ディムグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>グレー：ゲインズボロ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>グレー：グレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>グレー：ライトグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>グレー：ライトスレートグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>グレー：シルバー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>グレー：スレートグレー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>緑：シャルトリューズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>緑：ダークグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>緑：ダークオリーブグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>緑：ダークシーグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>緑：フォレストグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>緑：緑</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>緑：グリーンイエロー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>緑：ローングリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>緑：ライトグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>緑：ライム</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>緑：ライムグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>緑：ミディアムアクアマリン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>緑：ミディアムシーグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>緑：ミディアムスプリンググリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>緑：オリーブ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>緑：オリーブドラブ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>緑：ペールグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>緑：シーグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>緑：スプリンググリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>緑：イエローグリーン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Grouper les bornes</source>
+    <target>端子をグループ化</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>ガイド</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>バグ報告に含めるため、最新のログメッセージを含むレポートを生成します</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>一般</target>
+</phrase>
+<phrase>
+    <source>Générateur d&apos;élément lambda</source>
+    <target>ラムダ要素ジェネレーター</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Générique</source>
+    <target>汎用</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>ジオメトリ</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>行の高さ:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>高さ</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>水平</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>水平 + 垂直</target>
+</phrase>
+<phrase>
+    <source>Horizontal :</source>
+    <target>水平：</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP画像 (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>画像ファイル (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG画像 (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG画像 (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>元画像</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG画像 (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>DXFエクスポートに画像は含まれません</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLANインポート</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>インポート</target>
+</phrase>
+<phrase>
+    <source>Importer un dxf</source>
+    <target>dxfをインポート</target>
+</phrase>
+<phrase>
+    <source>Importer un fichier dxf</source>
+    <target>dxf ファイルをインポート</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>サイズ変更する要素をインポート</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>EPLAN部品をインポート</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>EPLAN部品 (.edz) をインポート…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>この場所に画像を保存できません。</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>部品表を%1に保存できません。
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>テンプレート「%1」を保存できません。</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>この部品をインポートできません：
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>書き込み用にファイルを開くことができません。</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>ファイル「%1」に書き込めません。</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>画像を読み込めません。</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>PDF ファイルを読み込めません。</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>PDF ページのサイズを判別できません。</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>プロジェクトのメモリ内構造を読み取ることができません。</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>PDF ページをレンダリングできません。</target>
+</phrase>
+<phrase>
+    <source>Imprimer</source>
+    <target>印刷</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>X傾斜</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Y傾斜</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>%1 を傾斜</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>画像の傾斜</target>
+</phrase>
+<phrase>
+    <source>inclure les en-têtes</source>
+    <target>ヘッダーを含める</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>不明</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>増分</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>増分: 新しい番号付けごとにカウンターに加算される値</target>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>情報</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>部品情報を記入</target>
+</phrase>
+<phrase>
+    <source>Installation :</source>
+    <target>設備 :</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>上にシートを挿入</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>下にシートを挿入</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>切替</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>利用可能なIO：</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>上記の条件を読み、同意します。</target>
+</phrase>
+<phrase>
+    <source>Japonais</source>
+    <target>日本語</target>
+</phrase>
+<phrase>
+    <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+    <target>大きなdxfのインポートには時間がかかる場合があります
+インポート中はしばらくお待ちください...</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>dxf のインポートには dxf2elmt ソフトウェアが必要です。
+以下のリンクからダウンロードし、インストールフォルダに解凍してください</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>この親要素に設定された上限に達しました（上限：%1）。
+
+この子接点をそれでもリンクしますか？</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>選択範囲にブリッジされた端子、または多段端子に属する端子が含まれているため削除できません。
+該当する端子のブリッジを解除するか、段を削除してから削除してください</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>ラベル</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
+    <target>既定のブラウザでQElectroTechのYouTubeチャンネルを開く</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
+    <target>既定のブラウザでQElectroTechのオンラインマニュアルを開く</target>
+</phrase>
+<phrase>
+    <source>Langues</source>
+    <target>言語</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>幅</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>ファイルに書き込めませんでした。</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>PDF ファイルにページが含まれていません。</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>ファイル「%1」が存在しないか読み取れません。このフォルダの翻訳名を読み取れなかったため、フォルダ名を代わりに表示しています。</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>.edz形式は、次の2つの異なる提供元から取得される場合があります：
+
+• EPLAN Data Portal (dataportal.eplan.com)。EPLAN Cloud環境の利用条件に従います。
+• 部品メーカー（または販売代理店）のサイトで、独自の条件に基づいて.edzファイルを直接提供している場合。
+
+QElectroTechは、インポートするファイルの提供元や、適用される条件を自動的に判断することはできません。
+
+このファイルをインポートすることにより、以下を確認したものとみなされます：
+
+• 提供元を把握しており、その提供元に適用される条件の範囲内でこのコンテキストで使用する権限があること。
+• このインポートは自己の責任において行うこと。
+• QElectroTech、そのメンテナー、および貢献者は、このデータの不適切な使用について一切責任を負わないこと。</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>ここで使用されているDXF形式 (AC1006) では画像を含めることができません。画像は輪郭の矩形（位置、サイズ、回転、傾きは保持）のみで表現され、画像の内容は含まれません。</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>要素を拡大縮小するには QET_ElementScaler ソフトウェアが必要です。
+以下のリンクからダウンロードし、インストールフォルダに解凍してください</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>テンプレートは正常に保存されました:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>名前「%1」は無効です。次の文字を含めることはできません: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>新しい要素はスレーブ接点グループを定義します。
+既存のスレーブ要素は自動的に割り当てられません。スレーブを手動で接続し、接点グループを割り当てる必要があります。
+
+続行しますか？</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>配線図が正常にエクスポートされました!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>開こうとしているプロジェクトは、お使いのQElectroTechバージョン %1 と部分的にしか互換性がありません。
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>テンプレートは既に存在します。上書きしますか？</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED :</target>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>小文字、数字、ハイフン、アンダースコアのみ</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>ライセンス</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>スムーズ</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>配線リスト</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>配線リスト（データベース）</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>リンク先：%1</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>場所 :</target>
+</phrase>
+<phrase>
+    <source>log</source>
+    <target>ログ</target>
+</phrase>
+<phrase>
+    <source>Logiciel tiers requis</source>
+    <target>サードパーティ製ソフトウェアが必要</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>長さ</target>
+</phrase>
+<phrase>
+    <source>Longueur :</source>
+    <target>長さ：</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>最大長</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>最大長 : %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>長さは制限されていません。
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target>メインウィンドウ</target>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>マクロ</target>
+</phrase>
+<phrase>
+    <source>Manuel en ligne</source>
+    <target>オンラインマニュアル</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>要素エディタ一覧の最大部品数</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>最大:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>次の循環桁の繰り上がりによってのみ進む桁には0を設定します（例：「0.7」の「0」）</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>最小:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>選択範囲をミラー</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>水平反転</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>画像の水平反転</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>%1 の水平ミラー</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>ミラーできません: この形状には傾斜が極端すぎます</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>垂直反転</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>画像の垂直反転</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>%1 の垂直ミラー</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>ミラー</target>
+</phrase>
+<phrase>
+    <source>mise en page</source>
+    <target>ページ設定</target>
+</phrase>
+<phrase>
+    <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
+    <target>ページ設定（PDFエクスポートではWindowsで使用できません）</target>
+</phrase>
+<phrase>
+    <source>Modifier des propriétés de borniers</source>
+    <target>端子台のプロパティを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>テキストフィールドの配置を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>ラベルの配置を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>円弧の角度を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>形状の角度を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>画像の角度を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>画像の傾斜を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>マスターラベルのインデックスを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>マスターのラベルを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la conservation de l&apos;angle</source>
+    <target>角度の維持を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur d&apos;un pont de bornes</source>
+    <target>端子ジャンパの色を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>ラベルの色を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>%1 の曲率を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>%1 の形状を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>画像の高さを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>画像の幅を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>線の長さを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>ラベルのフォントを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>ラベルの位置を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>ラベルの回転を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>形状のサイズを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>ラベルのフォントサイズを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
+    <target>要素テキストの回転維持を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>端子名を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom du terminal</source>
+    <target>端子名を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>テキストフィールドの回転点を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>ノードの種類を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;une borne</source>
+    <target>端子の種類を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier les informations de plusieurs éléments</source>
+    <target>複数の要素の情報を変更</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétées de l&apos;élément</source>
+    <target>要素のプロパティを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétés d&apos;un élement</source>
+    <target>要素のプロパティを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier les proriétés d&apos;un groupe de bornes</source>
+    <target>端子グループのプロパティを変更</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>画像の編集</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>PLCモジュール</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>モデル</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>テンプレートを保存しました</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>テンプレート</target>
+</phrase>
+<phrase>
+    <source>Mongol</source>
+    <target>モンゴル語</target>
+</phrase>
+<phrase>
+    <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
+    <target>高ピクセル密度ディスプレイ (hdpi) のスケーリング方法（次回QElectroTech起動時に適用）：</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>番号</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>端子数</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>接点数</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC（SW接点）</target>
+</phrase>
+<phrase>
+    <source>Neutre</source>
+    <target>中性線</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO（SW接点）</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>.edz内に*.part.xmlが見つかりません</target>
+</phrase>
+<phrase>
+    <source>Noir</source>
+    <target>黒</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Nom :</source>
+    <target>名前 :</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>要素のファイル名</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>要素のファイル名：数字、小文字、「-」、「_」、「.」のみ。
+要素の表示名は要素のプロパティで別途変更します。</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>端子名</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>新しいテンプレートの名前</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>列のカスタム名（空欄 = 既定）</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>要素の名前、ラベル、または情報…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>プロパティ名</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>端子数が正しくありません</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>使用中のスレーブ接点数：%1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>最大子要素数に達しました。</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>定義済みスレーブ接点の最大数：%1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>定義済みスレーブ接点の最大数：未定義
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>いいえ</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>未割り当てのみ</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>常時閉</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>常時開</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>有効な.edzパッケージではありません (認識されないアーカイブ形式)。</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>備考</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>数字のみ(1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article</source>
+    <target>品番</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>補助品番1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>補助品番2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>補助品番3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>補助品番4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande</source>
+    <target>注文番号</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>補助注文番号1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>補助注文番号2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>補助注文番号3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>補助注文番号4</target>
+</phrase>
+<phrase>
+    <source>Numéro de conducteur</source>
+    <target>導体番号</target>
+</phrase>
+<phrase>
+    <source>Numéro interne</source>
+    <target>内部番号</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>補助内部番号1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>補助内部番号2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>補助内部番号3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>補助内部番号4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>端子の自動番号付け</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>導体を自動採番</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>要素の自動採番</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>文字にも番号を付ける</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>最も近いノード</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Option d&apos;impression</source>
+    <target>印刷オプション</target>
+</phrase>
+<phrase>
+    <source>Option de rendu</source>
+    <target>描画オプション</target>
+</phrase>
+<phrase>
+    <source>Options d&apos;impression</source>
+    <target>印刷オプション</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>オレンジ：コーラル</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>オレンジ：ダークオレンジ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>オレンジ：オレンジ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>オレンジ：オレンジレッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>オレンジ：トマト</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>方向</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>方向 :</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>垂直原点</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>その他</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>はい</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outil de traduction d&apos;éléments</source>
+    <target>要素翻訳ツール</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Outils</source>
+    <target>ツール</target>
+</phrase>
+<phrase>
+    <source>Ouvrir un element</source>
+    <target>要素を開く</target>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>ページ</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page précédente</source>
+    <target>前のページ</target>
+</phrase>
+<phrase>
+    <source>Page suivante</source>
+    <target>次のページ</target>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>インポートするページ：</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>要素パネル</target>
+</phrase>
+<phrase>
+    <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>デフォルトでは、以下の変数が使用できます:&lt;ul&gt;&lt;li&gt;%{author} : 図面の作成者&lt;/li&gt;&lt;li&gt;%{date} : 図面の日付&lt;/li&gt;&lt;li&gt;%{title} : 図面のタイトル&lt;/li&gt;&lt;li&gt;%{filename} : プロジェクトのファイル名&lt;/li&gt;&lt;li&gt;%{plant} : 図面が含まれる設備(=)の名前&lt;/li&gt;&lt;li&gt;%{locmach} : 図面が含まれる場所(+)の名前&lt;/li&gt;&lt;li&gt;%{indexrev} : 図面の改訂インデックス&lt;/li&gt;&lt;li&gt;%{version} : ソフトウェアのバージョン&lt;/li&gt;&lt;li&gt;%{folio} : 図面番号&lt;/li&gt;&lt;li&gt;%{folio-id} : プロジェクト内の図面の位置&lt;/li&gt;&lt;li&gt;%{folio-total} : プロジェクト内の図面の総数&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : 前の図面番号&lt;/li&gt;&lt;li&gt;%{next-folio-num} : 次の図面番号&lt;/li&gt;&lt;li&gt;%{projecttitle} : プロジェクトのタイトル&lt;/li&gt;&lt;li&gt;%{projectpath} : プロジェクトのパス&lt;/li&gt;&lt;li&gt;%{projectfilename} : ファイル名&lt;/li&gt;&lt;li&gt;%{saveddate} : ファイルの保存日(ローカル形式)&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : ファイルの保存日(dd-MM-yyyy形式)&lt;/li&gt;&lt;li&gt;%{saveddate-us} : ファイルの保存日(yyyy-MM-dd形式)&lt;/li&gt;&lt;li&gt;%{savedtime} : ファイルの保存時刻&lt;/li&gt;&lt;li&gt;%{savedfilename} : 保存されたファイル名&lt;/li&gt;&lt;li&gt;%{savedfilepath} : 保存されたファイルのパス&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Parties</source>
+    <target>部品</target>
+</phrase>
+<phrase>
+    <source>Pas d&apos;arrondi</source>
+    <target>丸めなし</target>
+</phrase>
+<phrase>
+    <source>Paysage</source>
+    <target>横</target>
+</phrase>
+<phrase>
+    <source>PEN</source>
+    <target>PEN</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>相</target>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>ピンク：ディープピンク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>ピンク：ホットピンク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>ピンク：ライトピンク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>ピンク：ミディアムバイオレットレッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>ピンク：ペールバイオレットレッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : Pink</source>
+    <target>ピンク：ピンク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>選択範囲を各要素その場で回転させるのではなく、グループとしてその中心を中心に回転</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter la selection</source>
+    <target>選択範囲を回転</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>グループを回転</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>回転/傾斜</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>EPLAN部品 (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>端子図</target>
+</phrase>
+<phrase>
+    <source>Poignées :</source>
+    <target>ハンドル:</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>テキストのアンカーポイントと行間の配置</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>ブリッジポイント</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>フォント</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>フォント :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>ヘッダーのフォント</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>列ヘッダーのフォント</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>ヘッダーのフォント: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>テキストのフォント</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>セルテキストのフォント</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>テキストのフォント: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>プロジェクトのフォント</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Ponter des bornes entre-elles</source>
+    <target>端子間をジャンパ接続</target>
+</phrase>
+<phrase>
+    <source>Ponter les bornes</source>
+    <target>端子をブリッジ</target>
+</phrase>
+<phrase>
+    <source>Portrait</source>
+    <target>縦</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>位置</target>
+</phrase>
+<phrase>
+    <source>Position automatique</source>
+    <target>自動配置</target>
+</phrase>
+<phrase>
+    <source>Position du folio</source>
+    <target>図面番号の位置</target>
+</phrase>
+<phrase>
+    <source>Première page</source>
+    <target>最初のページ</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>軸の優先順位</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>X軸を優先(水平)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Y軸を優先(垂直)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>この増分で次に適用される値</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>深さ</target>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>プロジェクト</target>
+    <definition>string used to generate a filename</definition>
+</phrase>
+<phrase>
+    <source>Projet annexe</source>
+    <target>付属プロジェクト</target>
+</phrase>
+<phrase>
+    <source>Projet sans titre</source>
+    <target>無題のプロジェクト</target>
+</phrase>
+<phrase>
+    <source>Propriétés</source>
+    <target>プロパティ</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>テキストのプロパティ</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>プレビュー :</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>電力</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>紫：ブルーバイオレット</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>紫：ダークマゼンタ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>紫：ダークオーキッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>紫：ダークスレートブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>紫：ダークバイオレット</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>紫：フクシア</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>紫：インディゴ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>紫：ラベンダー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>紫：マゼンタ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>紫：ミディアムオーキッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>紫：ミディアムパープル</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>紫：ミディアムスレートブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>紫：オーキッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>紫：プラム</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>紫：紫</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>紫：スレートブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>紫：シスル</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>紫：バイオレット</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech - Éditeur d&apos;élément</source>
+    <target>QElectroTech - 要素エディタ</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTechは前回の実行時に正常に終了しませんでした。
+以下は終了前に記録された最後のメッセージです。保存してバグレポートに添付できます。</target>
+</phrase>
+<phrase>
+    <source>QET</source>
+    <target>QET</target>
+    <definition>Small example text - translate length, not meaning</definition>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+%1 のインポート / 拡大縮小に関する追加情報</target>
+</phrase>
+<phrase>
+    <source>Quantité</source>
+    <target>数量</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>補助数量1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>補助数量2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>補助数量3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>補助数量4</target>
+</phrase>
+<phrase>
+    <source>Quantité numéro d&apos;article</source>
+    <target>数量 品番</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>ショートカット</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>ショートカット</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>診断レポート</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>クラッシュレポート</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>X 半径</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Y 半径</target>
+</phrase>
+<phrase>
+    <source>Recharger</source>
+    <target>再読み込み</target>
+</phrase>
+<phrase>
+    <source>Recharger les borniers</source>
+    <target>端子台を再読み込み</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>検索</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>フォリオ内の要素をすばやく検索して選択</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>検索...</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>赤：クリムゾン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>赤：ダークレッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>赤：ダークサーモン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>赤：ファイアブリック</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>赤：インディアンレッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>赤：ライトコーラル</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>赤：ライトサーモン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>赤：赤</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>赤：サーモン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>サイズ変更</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>%1 のサイズを変更</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>画像のサイズ変更</target>
+</phrase>
+<phrase>
+    <source>Redimensionneur d&apos;éléments</source>
+    <target>要素リサイズツール</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>注意：最大数の子要素に達した親要素は非表示になります。</target>
+</phrase>
+<phrase>
+    <source>Remonter ce folio x100</source>
+    <target>このシートをx100上げる</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>画像を置換...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>画像の置換</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>マスターから継承</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>縦横比を復元</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>画像の縦横比を復元</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>この色を削除</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>要素を回転:</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>選択範囲を反転</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir au debut du projet</source>
+    <target>プロジェクトの先頭へ戻る</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>トリミングせずに元の画像に戻す</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>右</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>画像をトリミング</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>画像のトリミング</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>トリミング...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>回転</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>回転 :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>回転/傾斜</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>参照</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>クロスリファレンス</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>PLCクロスリファレンス</target>
+</phrase>
+<phrase>
+    <source>Référence croisé</source>
+    <target>クロスリファレンス</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>クロスリファレンス</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>リセット</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>このショートカットをリセット</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>初期値にリセット</target>
+</phrase>
+<phrase>
+    <source>Répertoire de la collection company</source>
+    <target>companyコレクションのディレクトリ</target>
+</phrase>
+<phrase>
+    <source>Répertoire des cartouches company</source>
+    <target>company cartoucheのディレクトリ</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>ユーザーマクロのディレクトリ</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>解像度：</target>
+</phrase>
+<phrase>
+    <source>Sans</source>
+    <target>なし</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>%1 後に改ページ:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>線の断面積</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>断路可能</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionnable</source>
+    <target>断路可能</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>詳細はこちら:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>画像を選択...</target>
+</phrase>
+<phrase>
+    <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page."</source>
+    <target>このオプションを選択すると、図面は1ページの印刷可能領域全体を埋めるように拡大または縮小されます。</target>
+</phrase>
+<phrase>
+    <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
+    <target>このオプションを選択すると、用紙の余白は無視され、その全面が印刷に使用されます。お使いのプリンターが対応していない場合があります。</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>単純</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>アナログ出力</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>デジタル出力</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>汎用出力</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>バックアップコピーを作成しますか?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>サブタイプ</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet par un don</source>
+    <target>寄付でプロジェクトを支援</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet QElectroTech par un don</source>
+    <target>寄付でQElectroTechプロジェクトを支援</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>次へ</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>このプロジェクトに費やした時間を記録する（このファイルにローカルにのみ保存されます）</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>端子を削除できません</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>%1件のフォリオを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>このプロパティを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer des ponts de bornes</source>
+    <target>端子のジャンパを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier</source>
+    <target>端子台を削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier du projet</source>
+    <target>プロジェクトから端子台を削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>最も近いノードを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>フォリオを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>図面を削除</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un groupe de bornes</source>
+    <target>端子グループを削除</target>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>曲線から点を削除</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>スウェーデン語</target>
+</phrase>
+<phrase>
+    <source>SVG: fond transparent</source>
+    <target>SVG: 透明な背景</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>対称</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>接点システムが変更されました</target>
+</phrase>
+<phrase>
+    <source>Séctionnable</source>
+    <target>断路可能</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les conducteurs de ce folio</source>
+    <target>この図面の導線を選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les textes de ce folio</source>
+    <target>この図面のテキストを選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les éléments de ce folio</source>
+    <target>この図面の要素を選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>PDF ファイルを選択...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>コンタクトグループを選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>IO PLCを選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>ページを選択</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>このスレーブ要素に割り当てるコンタクトグループを選択してください:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>電位分離</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>PLCテーブル</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>PLCテーブル (空)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>サイズ</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>サイズ :</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Diagram-Editorのグリッド点のサイズ：1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>要素エディターのグリッド点のサイズ：1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>復帰時限</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>動作時限</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>動作・復帰時限</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>このプロジェクトに費やした時間：</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>電圧 / プロトコル</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>定格電圧</target>
+</phrase>
+<phrase>
+    <source>Terre</source>
+    <target>アース</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>端子テキスト</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>ヘッダーテキスト</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>この.edzはzip形式のパッケージであり、まだサポートされていません (インポートできるのは7-Zipの.edzファイルのみです)。</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>これはコード内のエラーです</target>
+</phrase>
+<phrase>
+    <source>To high values might lead to crashes of the application.</source>
+    <target>値が大きすぎるとアプリケーションがクラッシュする可能性があります。</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>プラグインqet_tb_generatorをインストールするには&lt;br&gt;参照 :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSXでの初回インストール&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 必要に応じてpython 3.11バンドルのみをインストール &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Profile.commandスクリプトを実行&lt;br&gt;プログラムはqet-tb-generatorプラグインの検索にハードコードされたPATHを使用するため&lt;br&gt; 参照 :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSXでの更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>プラグインqet_tb_generatorをインストールするには&lt;br&gt;参照 :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;python 3.5以上が必要です。&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linuxでの初回インストール&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. pip3がインストールされているか確認: pip3 --version&lt;br&gt;ない場合はインストール: sudo apt-get install python3-pip&lt;br&gt;2. プログラムをインストール: sudo pip3 install qet_tb_generator&lt;br&gt;3. プログラムを実行: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linuxでの更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>この色の許容値</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>ツールバー</target>
+</phrase>
+<phrase>
+    <source>Toujours arrondi inférieur</source>
+    <target>常に切り下げ</target>
+</phrase>
+<phrase>
+    <source>Toujours arrondi supérieur</source>
+    <target>常に切り上げ</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>自身の中心を軸に回転</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>すべて</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>すべてのファイル (*)</target>
+</phrase>
+<phrase>
+    <source>Tout cocher</source>
+    <target>すべて選択</target>
+</phrase>
+<phrase>
+    <source>Tout décocher</source>
+    <target>すべて選択解除</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>すべてリセット</target>
+</phrase>
+<phrase>
+    <source>Toutes les dates</source>
+    <target>すべての日付</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>韓国語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en japonais</source>
+    <target>日本語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en mongol</source>
+    <target>モンゴル語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en norvégien</source>
+    <target>ノルウェー語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en serbe</source>
+    <target>セルビア語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en slovène</source>
+    <target>スロベニア語翻訳</target>
+</phrase>
+<phrase>
+    <source>Traduction en ukrainien</source>
+    <target>ウクライナ語翻訳</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>%1 を変形</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>透明度は保持されません</target>
+</phrase>
+<phrase>
+    <source>Trier le bornier %1</source>
+    <target>端子台 %1 を並べ替え</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>プリミティブが多すぎるため、リストを生成できません: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>タイプ</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>種類：</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>番号付けの種類</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLCタイプ</target>
+</phrase>
+<phrase>
+    <source>Télechargement</source>
+    <target>ダウンロード</target>
+</phrase>
+<phrase>
+    <source>Ukrainien</source>
+    <target>ウクライナ語</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>円弧</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>角</target>
+</phrase>
+<phrase>
+    <source>un element graphique</source>
+    <target>グラフィック要素</target>
+</phrase>
+<phrase>
+    <source>Un fichier</source>
+    <target>ファイル</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>点</target>
+</phrase>
+<phrase>
+    <source>Un élément</source>
+    <target>要素</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>曲線</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>端点</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>画像</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité</source>
+    <target>単位</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>補助単位1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>補助単位2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>補助単位3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>補助単位4</target>
+</phrase>
+<phrase>
+    <source>URL:</source>
+    <target>URL:</target>
+</phrase>
+<phrase>
+    <source>Utiliser toute la feuille</source>
+    <target>用紙全体を使用</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>値</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>カウンターの現在値。新しい値を入力して確定すると変更できます。</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>前の桁を繰り上げたときにこの桁が0に戻る値（0 = 循環なし）</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>自動採番をロック</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>位置をロック</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>ロック中：幅または高さを変更すると、比率を保つためにもう一方が調整されます。クリックでロック解除。</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>端子グループ %1 へ</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>端子グループへ</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>垂直</target>
+</phrase>
+<phrase>
+    <source>Vertical :</source>
+    <target>垂直：</target>
+</phrase>
+<phrase>
+    <source>Vignette</source>
+    <target>サムネイル</target>
+</phrase>
+<phrase>
+    <source>Vignettes</source>
+    <target>サムネイル</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>表示</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>この要素を表示</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>白：アリスブルー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>白：アンティークホワイト</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>白：アジュール</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>白：ベージュ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>白：フローラルホワイト</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>白：ゴーストホワイト</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>白：ハニーデュー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>白：アイボリー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>白：ラベンダーブラッシュ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>白：リネン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>白：ミントクリーム</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>白：ミスティローズ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>白：オールドレース</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>白：シーシェル</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>白：スノー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>白：白</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>白：ホワイトスモーク</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>x 1</source>
+    <target>x 1</target>
+</phrase>
+<phrase>
+    <source>x 2</source>
+    <target>x 2</target>
+</phrase>
+<phrase>
+    <source>x 3</source>
+    <target>x 3</target>
+</phrase>
+<phrase>
+    <source>X1 :</source>
+    <target>X1 :</target>
+</phrase>
+<phrase>
+    <source>X2 :</source>
+    <target>X2 :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>X: %1 Y: %2</source>
+    <target>X: %1 Y: %2</target>
+</phrase>
+<phrase>
+    <source>Y1 :</source>
+    <target>Y1 :</target>
+</phrase>
+<phrase>
+    <source>Y2 :</source>
+    <target>Y2 :</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>黄：ダークカーキ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>黄：ゴールド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>黄：カーキ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>黄：レモンシフォン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>黄：ライトゴールデンロッドイエロー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>黄：ライトイエロー</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>黄：モカシン</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>黄：ペールゴールデンロッド</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>黄：パパイヤウィップ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>黄：ピーチパフ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>黄：黄</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>縮小</target>
+</phrase>
+<phrase>
+    <source>Zoom avant</source>
+    <target>拡大</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>À &amp;propos de QElectroTech</source>
+    <target>QElectroTechについて(&amp;A)</target>
+</phrase>
+<phrase>
+    <source>À la date du  :</source>
+    <target>終了日：</target>
+</phrase>
+<phrase>
+    <source>À partir de la date du :</source>
+    <target>開始日：</target>
+</phrase>
+<phrase>
+    <source>À propos de &amp;Qt</source>
+    <target>Qtについて(&amp;Q)</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>端子グループへ</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>保存に失敗しました</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>エクスポートに失敗しました</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>テンプレートを上書きしますか？</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>要素エディタ</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>タイトルブロックエディタ</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>回路図エディタ</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>テキストエディタ</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>ノードの編集</target>
+</phrase>
+<phrase>
+    <source>Élément</source>
+    <target>要素</target>
+</phrase>
+<phrase>
+    <source>Élément bornier</source>
+    <target>端子台要素</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>QElectroTech要素 (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Étage</source>
+    <target>段</target>
+</phrase>
+<phrase>
+    <source>Étage :</source>
+    <target>段 :</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>マスターラベル</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>このフォリオを削除してもよろしいですか？</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>この図面をプロジェクトから削除してもよろしいですか？</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>選択した%1件のフォリオを削除してもよろしいですか？</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>盤</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>コイル</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>端子</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>端子台</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>定格</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>表題欄</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>導線</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>コンタクタ</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>電流</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>遮断器</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>フォルダ</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>要素</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>子</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>グリッド</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>スイッチ</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>親</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>テンプレート</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>モータ</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>部品表</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>番号付け</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>電位</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>リレー</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>図面相互参照</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>識別子</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>図面参照</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>図</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>断面積</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>目次</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>電圧</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>テキスト</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>変圧器</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

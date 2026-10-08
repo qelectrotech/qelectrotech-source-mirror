@@ -99,11 +99,14 @@ fi
 
 cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
     -DQT_VERSION_MAJOR=$QT_MAJOR \
     -DBUILD_WITH_KF=$BUILD_WITH_KF \
     -DBUILD_KF=OFF \
     -DQET_EXPORT_PROJECT_DB=ON \
-    -DPACKAGE_TESTS=OFF
+    -DPACKAGE_TESTS=OFF \
+    -DQET_ENABLE_SPACEMOUSE=ON \
+    -DQET_SPACEMOUSE_BACKEND=hid 
 
 if [ $? -ne 0 ]; then
     echo "ERROR: cmake configure failed."
@@ -146,7 +149,47 @@ if [ ! -d $BUNDLE ] ; then
     exit 1
 fi
 
-macdeployqt $BUNDLE
+macdeployqt $BUNDLE || { echo "ERROR: macdeployqt failed"; exit 1; }
+
+### offscreen platform plugin (headless use, e.g. qet_mcp.py) ########
+# macdeployqt only deploys libqcocoa. Without libqoffscreen, running
+# QT_QPA_PLATFORM=offscreen aborts. macdeployqt has no option to add it,
+# so copy it from the Homebrew Qt and make it point to the
+# frameworks of the bundle. It is signed with the other plugins below.
+OFFSCREEN="$BUNDLE/Contents/PlugIns/platforms/libqoffscreen.dylib"
+if [ ! -f "$OFFSCREEN" ] ; then
+    echo "libqoffscreen.dylib not deployed by macdeployqt, copying it:"
+    SRC_OFFSCREEN=""
+    for d in "$(brew --prefix qt 2>/dev/null)/share/qt/plugins" \
+             "$(brew --prefix qt 2>/dev/null)/plugins" \
+             /opt/homebrew/share/qt/plugins ; do
+        if [ -f "$d/platforms/libqoffscreen.dylib" ] ; then
+            SRC_OFFSCREEN="$d/platforms/libqoffscreen.dylib"
+            break
+        fi
+    done
+    if [ -z "$SRC_OFFSCREEN" ] ; then
+        echo "ERROR: libqoffscreen.dylib not found in the Qt plugins"
+        exit 1
+    fi
+    mkdir -p "$BUNDLE/Contents/PlugIns/platforms"
+    cp -L "$SRC_OFFSCREEN" "$OFFSCREEN"
+    chmod u+w "$OFFSCREEN"
+    # Qt frameworks: /opt/homebrew/.../QtGui.framework/Versions/A/QtGui
+    # -> inside the bundle
+    otool -L "$OFFSCREEN" | awk 'NR>1 { print $1 }' \
+        | grep -E '/Qt[A-Za-z0-9]+\.framework/' | while read ref; do
+        fwname=$(echo "$ref" | sed -E 's#.*/(Qt[A-Za-z0-9]+)\.framework/.*#\1#')
+        install_name_tool -change "$ref" \
+            "@executable_path/../Frameworks/$fwname.framework/Versions/A/$fwname" \
+            "$OFFSCREEN"
+        echo "  Fixed ref: $fwname"
+    done
+fi
+if [ ! -f "$OFFSCREEN" ] ; then
+    echo "ERROR: libqoffscreen.dylib missing from the bundle"
+    exit 1
+fi
 
 ### fix Homebrew dependencies macdeployqt could not handle ##########
 # Recent Homebrew bottles (brotli, webp, sharpyuv...) reference their own
@@ -256,6 +299,7 @@ echo "Install Info.plist and app icon:"
 cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
 cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion 14.0.0" "$BUNDLE/Contents/Info.plist"
 
 ### add missing files ###############################################
 echo
@@ -396,10 +440,12 @@ done
 
 echo "-- Signing main executable..."
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$BUNDLE/Contents/MacOS/$APPNAME"
 
 echo "-- Signing bundle..."
-codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" "$BUNDLE"
 
 echo
 echo "Verifying bundle signature..."
@@ -500,8 +546,10 @@ find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" 
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE"
 
 echo "Verifying bundle signature inside DMG..."

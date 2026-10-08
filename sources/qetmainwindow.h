@@ -30,6 +30,8 @@ class QETMainWindow : public QMainWindow {
 	public:
 	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = Qt::Widget);
 	~QETMainWindow() override;
+
+	static bool refuseCloseWhileModal(QEvent *e);
 	
 	// methods
 	protected:
@@ -41,6 +43,7 @@ class QETMainWindow : public QMainWindow {
 	protected:
 	void activateMenuBar();
 	bool event(QEvent *) override;
+	QMenu *createPopupMenu() override;
 	void dragEnterEvent(QDragEnterEvent *e) override;
 	void dropEvent(QDropEvent *e) override;
 	virtual void firstActivation(QEvent *);
@@ -54,6 +57,9 @@ class QETMainWindow : public QMainWindow {
 	// attributes
 	protected:
 	QAction *configure_action_;              ///< Launch the QElectroTech configuration dialog
+	QAction *customize_action_;              ///< Launch the Customise window (toolbars, keys, gestures)
+	QAction *export_config_action_;          ///< Save the settings to a file
+	QAction *import_config_action_;          ///< Replace the settings with a saved file
 	QAction *fullscreen_action_;             ///< Toggle full screen
 	QAction *whatsthis_action_;              ///< Toggle "What's this" mode
 	QAction *about_qet_;                     ///< Launch the "About QElectroTech" dialog
@@ -64,6 +70,7 @@ class QETMainWindow : public QMainWindow {
 	QAction *donate_;                        ///< Launch browser to donate link
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
 	QAction *diagnostics_action_;            ///< Open the diagnostics report dialog (discussion #644, step 5)
+	QAction *connect_ai_;                    ///< Show how to connect an AI assistant (MCP server)
 	QMenu *settings_menu_;                   ///< Settings menu
 	QMenu *help_menu_;                       ///< Help menu
 	QMenu *display_toolbars_;                ///< Show/hide toolbars/docks

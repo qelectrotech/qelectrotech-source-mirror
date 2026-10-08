@@ -32,8 +32,14 @@ class QetGraphicsTableFactory
 
 		static void createAndAddNomenclature(Diagram *diagram);
 		static void createAndAddSummary(Diagram *diagram);
-	private:
+			// Public so a caller that has already built and configured an
+			// AddTableDialog itself (never shown or exec'd -- the two
+			// methods above always exec() one, which the scripting API
+			// cannot use headlessly) can create a table from it directly.
+			// create() only reads settings already on the dialog; nothing
+			// about it depends on the dialog having been shown.
 		static void create(Diagram *diagram, AddTableDialog *dialog);
+	private:
 		static QetGraphicsTableItem *newTable(
 				Diagram *diagram,
 				AddTableDialog *dialog,

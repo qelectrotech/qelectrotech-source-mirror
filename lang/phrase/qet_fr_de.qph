@@ -100,4 +100,8 @@
     <source>traduction</source>
     <target>Übersetzung</target>
 </phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Klemmenname ändern</target>
+</phrase>
 </QPH>

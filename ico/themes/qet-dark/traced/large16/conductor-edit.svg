@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <rect x="3" y="7" width="11" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="13" y="6" width="1" height="1" class="ColorScheme-Text" style="fill:currentColor;opacity:0.75"/>
+  <rect x="13" y="5" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="13" y="4" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="13" y="3" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="13" y="2" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="13" y="1" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="8" width="1" height="1" class="ColorScheme-Text" style="fill:currentColor;opacity:0.75"/>
+  <rect x="3" y="9" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="3" y="10" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="11" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="12" width="1" height="1" style="fill:#ff0000"/>
+  <polygon points="8,15 8,13 11.5,9.5 13.5,11.5 10,15" class="ColorScheme-Text" style="fill:currentColor"/>
+</svg>

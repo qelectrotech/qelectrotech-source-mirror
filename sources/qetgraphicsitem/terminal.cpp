@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/terminal.h"
+#include "../ElementsCollection/terminaluuids.h"
+#include "../qet.h"
 #include "../qetproject.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
@@ -24,6 +26,9 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
+#include "../wiringrules.h"
+
+#include <QToolTip>
 
 #include <QtCore/qnumeric.h>
 #include <utility>
@@ -113,13 +118,20 @@ Qet::Orientation Terminal::orientation() const
 		// orientations actuelle et par defaut de l'element
 		// current and default element orientations
 		int ori_cur = elt -> orientation();
-	if (ori_cur == 0) return(d->m_orientation);
+		// The mirrors of an element are about its own axes, before it is
+		// rotated (Element::setMirror()): a horizontal one swaps east and
+		// west, a vertical one north and south
+		Qet::Orientation ori_elmt = d->m_orientation;
+		if (Qet::isHorizontal(ori_elmt) ? elt -> hasHorizontalMirror()
+										: elt -> hasVerticalMirror())
+			ori_elmt = (Qet::Orientation)((ori_elmt + 2) % 4);
+	if (ori_cur == 0) return(ori_elmt);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
 			// calculates the angle of rotation implied by the orientation of the parent
 			// element angle of rotation of the terminal on the scene, divided by 90
-			int angle = ori_cur + d->m_orientation;
+			int angle = ori_cur + ori_elmt;
 			while (angle >= 4) angle -= 4;
 			return((Qet::Orientation)angle);
 		}
@@ -294,6 +306,25 @@ void Terminal::paint(
 		QFontMetrics fm(d->m_label_font);
 		QSizeF text_size = fm.size(Qt::TextSingleLine, display_name);
 
+			// When the element mirrors its symbol, or turns it in a project
+			// that keeps symbol texts horizontal, undo that on the name
+			// about the centre of its box, in the frame it is drawn in
+			// (turned by label_rotation): its box stays where the element
+			// puts it, but it reads as in the symbol (Element::keepReadable())
+		const Element *element = qgraphicsitem_cast<Element *>(parentItem());
+		const QTransform texts_transform = element ? element->symbolTextsTransform()
+												   : QTransform();
+		auto keep_readable = [painter, &texts_transform](const QRectF &rect, qreal label_rotation) {
+			if (texts_transform.isIdentity()) return;
+			const QTransform undo = QTransform().rotate(label_rotation)
+									* texts_transform.inverted()
+									* QTransform().rotate(-label_rotation);
+			const QPointF c = rect.center();
+			painter->setTransform(QTransform::fromTranslate(-c.x(), -c.y())
+								  * undo
+								  * QTransform::fromTranslate(c.x(), c.y()), true);
+		};
+
 		if (!qFuzzyIsNull(d->m_label_rotation)) {
 			painter->save();
 			painter->translate(label_pos);
@@ -309,6 +340,7 @@ void Terminal::paint(
 			else if (d->m_label_valignment & Qt::AlignBottom) ry = -text_size.height();
 
 			QRectF text_rect(QPointF(rx, ry), text_size);
+			keep_readable(text_rect, d->m_label_rotation);
 			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), display_name);
 			painter->restore();
 		} else {
@@ -322,6 +354,7 @@ void Terminal::paint(
 			else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
 
 			QRectF text_rect(label_pos + QPointF(dx, dy), text_size);
+			keep_readable(text_rect, 0);
 			if (d->m_label_frame) {
 				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
 			}
@@ -608,7 +641,22 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	other_terminal -> m_hovered       = false;
 
 	//We stop her if we can't link this terminal with other terminal
-	if (!canBeLinkedTo(other_terminal)) return;
+	if (!canBeLinkedTo(other_terminal))
+	{
+			//Say why when it is the wire limit (discussion #1158): a red
+			//terminal alone does not tell the user what to do instead.
+		const Terminal *full = !hasRoomForWire() ? this
+							 : !other_terminal->hasRoomForWire() ? other_terminal
+							 : nullptr;
+		if (full) {
+			QToolTip::showText(e->screenPos(),
+							   tr("Cette borne a déjà %n conducteur(s), la limite du projet. "
+								  "Ajoutez une borne pour raccorder un conducteur de plus.",
+								  "wire refused by the wires-per-terminal limit",
+								  full->wireLimit()));
+		}
+		return;
+	}
 
 	//Create conductor
 	Conductor *new_conductor = new Conductor(this, other_terminal);
@@ -690,6 +738,7 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	Reasons for not linable:
 	 - \p other_terminal is this terminal
 	 - this terminal is already connected to \p other_terminal
+	 - either terminal already has as many wires as the project allows
 	@param other_terminal
 	@return true if this terminal can be linked to other_terminal,
 	otherwise false
@@ -699,7 +748,38 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 	if (other_terminal == this || isLinkedTo(other_terminal))
 		return false;
 
+	if (!hasRoomForWire() || !other_terminal->hasRoomForWire())
+		return false;
+
 	return true;
+}
+
+/**
+	@brief Terminal::wireLimit
+	@return the most wires this terminal may take under its project's
+	wiring rules (discussion #1158), 0 for no limit.
+*/
+int Terminal::wireLimit() const
+{
+	const Diagram *parent_diagram = diagram();
+	if (!parent_diagram || !parent_diagram->project()) {
+		return 0;
+	}
+	const Element *element = parentElement();
+	const bool is_report = element
+			&& (element->linkType() & (Element::NextReport | Element::PreviousReport));
+	return WiringRules::limit(parent_diagram->project()->wiringRules(),
+							  WiringRules::masterEnabled(),
+							  is_report);
+}
+
+/**
+	@brief Terminal::hasRoomForWire
+	@return true if one more wire may be connected to this terminal
+*/
+bool Terminal::hasRoomForWire() const
+{
+	return WiringRules::hasRoom(wireLimit(), conductorsCount());
 }
 
 /**
@@ -848,11 +928,11 @@ QUuid Terminal::uuid() const
 	read from the definition and is not touched by moving the element on the
 	folio, so the result is stable across loads, saves and folio moves, and it
 	is unique within an element except where a definition genuinely declares
-	two terminals at the same point -- three cases in the whole example corpus,
-	and harmless, because two terminals sharing a position and orientation are
-	indistinguishable in every observable respect: they merge to one terminal
-	row and every conductor on either of them still resolves to the right
-	element and name.
+	two terminals at the same point -- three cases in the whole example
+	corpus. Opening a project gives every terminal of its symbols a uuid
+	(TerminalUuids::fillMissing()), the same value for all but the second
+	of such a pair, so in a project this is the fallback for terminals of a
+	symbol imported since it was opened.
 
 	Derived values are UUID v5 in a fixed namespace, so they are reproducible
 	without being written to the file, and cannot collide with the v4 uuids
@@ -865,23 +945,45 @@ QUuid Terminal::stableUuid() const
 	if (!d->m_uuid.isNull()) {
 		return d->m_uuid;
 	}
+	return derivedUuid();
+}
 
-		//Fixed namespace for terminal identities derived from geometry.
-	static const QUuid derived_ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+/**
+	@brief Terminal::derivedUuid
+	The identity worked out from this terminal's local position and
+	orientation, whether or not it carries a uuid of its own: the value
+	stableUuid() gives when it has none, and the one a project gives it
+	when it is opened (TerminalUuids::fillMissing()).
 
-		//Position and orientation only. The name is deliberately excluded: it
-		//is not stable across a save cycle -- QET rewrites a terminal named
-		//"_" as unnamed, which would silently change the identity of 1421 of
-		//industrial.qet's 1790 terminals on the first resave. It is also not
-		//needed: keying on geometry alone produces exactly the same number of
-		//collisions across the example corpus, and it means renaming a
-		//terminal does not change what it is.
-	const QString key = QStringLiteral("%1|%2|%3")
-			.arg(d->m_pos.x(), 0, 'f', 4)
-			.arg(d->m_pos.y(), 0, 'f', 4)
-			.arg(static_cast<int>(d->m_orientation));
+	Position and orientation only. The name is deliberately excluded: it
+	is not stable across a save cycle -- QET rewrites a terminal named "_"
+	as unnamed, which would silently change the identity of 1421 of
+	industrial.qet's 1790 terminals on the first resave. It is also not
+	needed: keying on geometry alone produces exactly the same number of
+	collisions across the example corpus, and it means renaming a terminal
+	does not change what it is.
 
-	return QUuid::createUuidV5(derived_ns, key);
+	A second terminal at the same point with the same orientation gets the
+	next occurrence (see setPlaceRank()), as TerminalUuids::fillMissing()
+	gives it, so the two terminals of such a pair are told apart.
+*/
+QUuid Terminal::derivedUuid() const
+{
+	return TerminalUuids::derived(d->m_pos.x(),
+								  d->m_pos.y(),
+								  static_cast<int>(d->m_orientation),
+								  m_place_rank);
+}
+
+/**
+	@brief Terminal::setPlaceRank
+	@param rank : how many terminals of the definition, before this one in
+	document order, sit at the same point with the same orientation.
+	Set by Element::parseTerminal().
+*/
+void Terminal::setPlaceRank(int rank)
+{
+	m_place_rank = rank;
 }
 
 QString Terminal::name() const
@@ -986,7 +1088,7 @@ QList<Terminal *> relatedPotentialTerminal (
 	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
 	{
 		// English: Check if the user activated the potential isolation checkbox for this terminal
-		if (terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true")) {
+		if (QET::infoFlagIsTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
 			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
 			return QList<Terminal *>();
 		}

@@ -726,7 +726,10 @@ QETResult ProjectView::doSave()
 	// write to file
 	QETResult result = m_project -> write();
 	updateWindowTitle();
-	project()->undoStack()->clear();
+	// This marks the stack's current index as the new "saved" point (so isClean()/cleanChanged() correctly
+	// resume tracking unsaved changes from here) without discarding the undo history. Edits made before this save 
+	// stay undoable for the rest of the session.
+	project()->undoStack()->setClean();
 	return(result);
 }
 

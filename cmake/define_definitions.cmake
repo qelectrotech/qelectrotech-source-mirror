@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -63,7 +63,7 @@ message("QET_DIR                   :" ${QET_DIR})
 message("GIT_COMMIT_SHA            :" ${GIT_COMMIT_SHA})
 
 if(BUILD_WITH_KF)
-  message("KF_GIT_TAG               :" ${KF_GIT_TAG})
+  message("KF_GIT_TAG                :" ${KF_GIT_TAG})
 else()
   add_definitions(-DBUILD_WITHOUT_KF)
 endif()

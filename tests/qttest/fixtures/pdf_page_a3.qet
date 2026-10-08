@@ -1,0 +1,63 @@
+<project title="pdf page size" uuid="{63126da6-a8f2-5840-8149-a23a51406a32}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">pdf_page_a3</property>
+        <property name="savedtime" show="1">22:39</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="27" colsize="58" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="1070" indexrev="" locmach="" order="1" plant="" rows="14" rowsize="75" title="" uuid="{270fad7d-7d9f-4198-a0e1-dceb22c883cc}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="20" colsize="55" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="1535" indexrev="" locmach="" order="2" plant="" rows="15" rowsize="101" title="" uuid="{9cf88404-d198-4690-90f7-647fb7940f68}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ca">Elements importats</name>
+                <name lang="cs">Zavedené prvky</name>
+                <name lang="da">Importerede elementer</name>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="el">Εισηγμένα στοιχεία</name>
+                <name lang="en">Imported elements</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="hr">Uvezeni elementi</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="ja">インバートされた要素</name>
+                <name lang="ko">전기 심볼 요소</name>
+                <name lang="ko_KR">전기 심볼 요소</name>
+                <name lang="nl">Elementen geïmporteerd</name>
+                <name lang="nl_BE">Elementen geïmporteerd</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="pt">Elementos importados</name>
+                <name lang="pt_BR">Elementos importados</name>
+                <name lang="ro">Elemente importate</name>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="sl">Uvoženi elementi</name>
+                <name lang="sv">Importerade element</name>
+                <name lang="tr">İthal öğeler</name>
+                <name lang="uk">Імпортовані елементи</name>
+                <name lang="zh">导入元件</name>
+            </names>
+        </category>
+    </collection>
+</project>

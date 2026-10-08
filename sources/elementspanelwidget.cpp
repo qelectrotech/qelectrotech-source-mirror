@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
+#include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
 #include "editor/ui/qetelementeditor.h"
@@ -29,6 +30,10 @@
 #include <QMessageBox>
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
+#include "itemgroups.h"
 #include "qetinformation.h"
 
 /*
@@ -674,6 +679,35 @@ void ElementsPanelWidget::duplicateDiagram()
 		bool erase_labels = settings.value(
 			"diagramcommands/erase-label-on-copy", true).toBool();
 
+		// Resolve a linked pair duplicated together against each other
+		// (bugtracker #607) before the loop below renews their uuids or
+		// clears their pending links: at this exact moment a copy's
+		// tmp_uuids_link still holds its source's original partner
+		// uuid, which still equals the not-yet-renewed uuid of that
+		// partner's own copy if both were duplicated together. Scoped
+		// to this diagram's own copies, not a project-wide search, so
+		// this never links back to the source elements the copies were
+		// made from -- if only one half of a linked pair is here, its
+		// link entry simply finds no match and is dropped, same as
+		// clearPendingLinks() used to do unconditionally for every copy.
+		QList<Element *> new_elements;
+		for (QGraphicsItem *item : new_diagram->items()) {
+			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				new_elements << elmt;
+			}
+		}
+		for (Element *elmt : new_elements) {
+			elmt->initLink(new_elements);
+		}
+
+			// The numberings the copies follow, known before the label
+			// erasing below empties their formula
+		const bool autonumber = QSettings().value(
+					"diagramcommands/autonumber-pasted-elements", true).toBool();
+		const QMap<QString, QVector<Element *>> copy_schemes = autonumber
+				? ElementAutoNumSchemeCommand::pastedSchemes(project, new_elements)
+				: QMap<QString, QVector<Element *>>();
+
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
 				// The XML round-trip kept the source elements' uuids. Give the
@@ -695,9 +729,9 @@ void ElementsPanelWidget::duplicateDiagram()
 					new_diagram->restoreText(elmt);
 				}
 
-				// Clear pending links so copies don't link back to
-				// the source elements via stale UUIDs.
-				elmt->clearPendingLinks();
+				// initLink() above already cleared tmp_uuids_link for
+				// every copy, matched or not -- nothing left here that
+				// could link back to a stale source uuid.
 
 				// Clean up copied element data:
 				// 1. Slaves always lose label/formula/comment/location
@@ -779,6 +813,18 @@ void ElementsPanelWidget::duplicateDiagram()
 					}
 				}
 			}
+			else if (auto text = dynamic_cast<IndependentTextItem *>(item)) {
+				// Not a database key (yet), but a script or the MCP server
+				// addresses a text, image or shape by it: a copy must not
+				// answer to its source's name.
+				text->newUuid();
+			}
+			else if (auto image = dynamic_cast<DiagramImageItem *>(item)) {
+				image->newUuid();
+			}
+			else if (auto shape = dynamic_cast<QetShapeItem *>(item)) {
+				shape->newUuid();
+			}
 			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
 				// Same reasoning for conductors: conductor.uuid is the PRIMARY
 				// KEY of the conductor table, and its insert is a plain INSERT,
@@ -796,6 +842,32 @@ void ElementsPanelWidget::duplicateDiagram()
 					cond->setProperties(cp);
 				}
 			}
+		}
+
+			// The copies follow the numberings of the project: they get the
+			// next numbers, as pasted elements do. This duplication is not
+			// undoable, so neither is the numbering: it is done at once.
+		ElementAutoNumSchemeCommand::linkPasted(project, new_elements);
+		if (!copy_schemes.isEmpty())
+		{
+			QUndoCommand numbering;
+			if (ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes, &numbering)) {
+				numbering.redo();
+			}
+		}
+
+			// Groups too: a group of the copy is its own, so selecting it
+			// is the same on both folios but the database tells them apart.
+		QHash<QUuid, QUuid> renewed_groups;
+		for (QGraphicsItem *item : new_diagram->items()) {
+			const QUuid source_group = ItemGroups::groupOf(item);
+			if (source_group.isNull()) {
+				continue;
+			}
+			if (!renewed_groups.contains(source_group)) {
+				renewed_groups.insert(source_group, QUuid::createUuid());
+			}
+			new_diagram->setItemGroup(item, renewed_groups.value(source_group));
 		}
 	}
 

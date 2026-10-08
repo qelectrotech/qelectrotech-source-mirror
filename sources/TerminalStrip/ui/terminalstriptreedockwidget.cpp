@@ -27,7 +27,13 @@
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../terminalstrip.h"
 #include "../../qetinformation.h"
+#include "freeterminalmodel.h"
 
+#include <QApplication>
+#include <QDrag>
+#include <QDropEvent>
+#include <QMimeData>
+#include <QMouseEvent>
 #include <QUuid>
 
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
@@ -38,6 +44,12 @@ TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QW
     setProject(project);
 
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
+
+		//Free terminals are dragged from this tree or from the free terminal
+		//table and dropped on a strip. The tree items themselves never move,
+		//the tree is rebuilt from the project after the drop.
+	ui->m_tree_view->viewport()->setAcceptDrops(true);
+	ui->m_tree_view->viewport()->installEventFilter(this);
 }
 
 TerminalStripTreeDockWidget::~TerminalStripTreeDockWidget()
@@ -62,7 +74,9 @@ void TerminalStripTreeDockWidget::setProject(QETProject *project)
     }
     m_project = project;
     if (m_project) {
-        m_project_destroy_connection = connect(m_project, &QObject::destroyed, [this](){
+            //`this` as context: this dock can be deleted before the project
+            //(with the editor window that owns it), and the connection must go with it
+        m_project_destroy_connection = connect(m_project, &QObject::destroyed, this, [this](){
             this->m_current_strip.clear();
             this->reload();
         });
@@ -191,6 +205,7 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 	Q_UNUSED(previous)
 
 	if (!current) {
+		m_current_is_free_terminal = false;
 		setCurrentStrip(nullptr);
 		return;
 	}
@@ -211,11 +226,12 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 		}
 	}
 
-	if (strip_ != m_current_strip) {
-		setCurrentStrip(strip_);
-	} else if (current_is_free != m_current_is_free_terminal) {
+		//The flag must follow every selection change, or a reload of the tree
+		//(e.g. after moving a free terminal) leaves it stale and the next
+		//click on a free terminal shows nothing (#1306)
+	if (strip_ != m_current_strip || current_is_free != m_current_is_free_terminal) {
 		m_current_is_free_terminal = current_is_free;
-		emit currentStripChanged(nullptr);
+		setCurrentStrip(strip_);
 	}
 }
 
@@ -362,4 +378,153 @@ void TerminalStripTreeDockWidget::setCurrentStrip(TerminalStrip *strip)
 {
 	m_current_strip = strip;
 	emit currentStripChanged(strip);
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::setDropCheck
+ * @param check : called before accepting a drop of free terminals,
+ * a drop is refused when it returns false.
+ */
+void TerminalStripTreeDockWidget::setDropCheck(std::function<bool ()> check) {
+	m_drop_check = check;
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::eventFilter
+ * Drag a free terminal of the tree, and drop free terminals
+ * (from the tree or from the free terminal table) on a strip.
+ */
+bool TerminalStripTreeDockWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched != ui->m_tree_view->viewport()) {
+		return QDockWidget::eventFilter(watched, event);
+	}
+
+	switch (event->type())
+	{
+		case QEvent::MouseButtonPress:
+		{
+			auto me = static_cast<QMouseEvent *>(event);
+			m_drag_uuid = QUuid();
+			auto item = ui->m_tree_view->itemAt(me->pos());
+			if (me->button() == Qt::LeftButton
+				&& item
+				&& item->type() == Terminal
+				&& item->parent()
+				&& item->parent()->type() == FreeTerminal)
+			{
+				m_drag_start_pos = me->pos();
+				m_drag_uuid = item->data(0, UUID_USER_ROLE).toUuid();
+			}
+			break;
+		}
+		case QEvent::MouseMove:
+		{
+			auto me = static_cast<QMouseEvent *>(event);
+			if (!m_drag_uuid.isNull()
+				&& (me->buttons() & Qt::LeftButton)
+				&& (me->pos() - m_drag_start_pos).manhattanLength() >= QApplication::startDragDistance())
+			{
+				auto drag = new QDrag(ui->m_tree_view);
+				drag->setMimeData(FreeTerminalModel::mimeDataForUuids({m_drag_uuid}));
+				drag->setPixmap(QET::Icons::ElementTerminal.pixmap(16, 16));
+				m_drag_uuid = QUuid();
+				drag->exec(Qt::CopyAction);
+				return true;
+			}
+			break;
+		}
+		case QEvent::DragEnter:
+		{
+				//Accepted wherever it enters, or no DragMove follows to reach a strip
+			auto de = static_cast<QDragEnterEvent *>(event);
+			if (!freeTerminals(de->mimeData()).isEmpty()) {
+				de->acceptProposedAction();
+			} else {
+				de->ignore();
+			}
+			return true;
+		}
+		case QEvent::DragMove:
+		{
+			auto de = static_cast<QDragMoveEvent *>(event);
+			if (dropAllowed(de->mimeData(), de->position().toPoint())) {
+				de->acceptProposedAction();
+			} else {
+				de->ignore();
+			}
+			return true;
+		}
+		case QEvent::Drop:
+		{
+			auto de = static_cast<QDropEvent *>(event);
+			const auto pos = de->position().toPoint();
+			if (!dropAllowed(de->mimeData(), pos)) {
+				de->ignore();
+				return true;
+			}
+			auto strip = stripAt(pos);
+			const auto terminals = freeTerminals(de->mimeData());
+			de->acceptProposedAction();
+
+				//The command rebuilds the tree (TerminalStrip::orderChanged)
+			m_project->undoStack()->push(new AddTerminalToStripCommand(terminals, strip));
+			setSelectedStrip(strip);
+			return true;
+		}
+		default:
+			break;
+	}
+
+	return QDockWidget::eventFilter(watched, event);
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::stripAt
+ * @param pos : position in the viewport of the tree
+ * @return the strip of the item at @a pos, the item being the strip
+ * or one of its terminals, or nullptr.
+ */
+TerminalStrip *TerminalStripTreeDockWidget::stripAt(const QPoint &pos) const
+{
+	auto item = ui->m_tree_view->itemAt(pos);
+	if (item && item->type() == Terminal) {
+		item = item->parent();
+	}
+	if (item && item->type() == Strip) {
+		return m_item_strip_H.value(item);
+	}
+	return nullptr;
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::freeTerminals
+ * @param mime_data
+ * @return the free terminals carried by @a mime_data
+ * which are still free in the project.
+ */
+QVector<QSharedPointer<RealTerminal>> TerminalStripTreeDockWidget::freeTerminals(const QMimeData *mime_data) const
+{
+	QVector<QSharedPointer<RealTerminal>> terminals;
+	for (const auto &uuid : FreeTerminalModel::uuidsFromMimeData(mime_data))
+	{
+		const auto real_t = m_uuid_terminal_H.value(uuid);
+		if (real_t && !real_t->parentStrip() && !terminals.contains(real_t)) {
+			terminals.append(real_t);
+		}
+	}
+	return terminals;
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::dropAllowed
+ * @return true if @a mime_data carries free terminals
+ * and there is a strip at @a pos to drop them in.
+ */
+bool TerminalStripTreeDockWidget::dropAllowed(const QMimeData *mime_data, const QPoint &pos) const
+{
+	return m_project
+			&& stripAt(pos)
+			&& !freeTerminals(mime_data).isEmpty()
+			&& (!m_drop_check || m_drop_check());
 }

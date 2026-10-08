@@ -1,5 +1,6 @@
 #include "wiringlistexport.h"
 #include "qetproject.h"
+#include "diagram.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
@@ -24,6 +25,13 @@ QString WiringListExport::normalizeUuid(const QString &u) const
 QString WiringListExport::findDiagramFolio(const QDomElement &diagramElem) const
 {
     if (diagramElem.isNull()) return "";
+    // The folio number as the folio shows it ("3/12"). The saved "folio"
+    // attribute is its template ("%id/%total").
+    const int index = diagramElem.attribute("order").toInt();
+    if (m_project && index >= 1 && index <= m_project->diagrams().size()) {
+        return m_project->diagrams().at(index - 1)->border_and_titleblock
+                .titleblockInformation().value("folio").toString();
+    }
     if (diagramElem.hasAttribute("folio")) return diagramElem.attribute("folio");
     if (diagramElem.hasAttribute("title")) return diagramElem.attribute("title");
     return "";
@@ -137,9 +145,11 @@ QList<ConductorData> WiringListExport::collectConductors(const QDomElement &root
         data.conductor_color = cond.attribute("conductor_color");
         data.conductor_section = cond.attribute("conductor_section");
         data.function = cond.attribute("function");
+        data.cable = cond.attribute("cable");
 
         QDomElement diag = climbToDiagram(cond);
         data.folio = findDiagramFolio(diag);
+        data.folio_index = diag.attribute("order").toInt();
         if (data.folio.isEmpty()) data.folio = cond.attribute("folio", cond.attribute("page", ""));
 
         conductors.append(data);
@@ -227,7 +237,10 @@ QString WiringListExport::toCsvString() const
     QList<ConductorData> conductors = collectConductors(doc.documentElement());
 
     QList<ConductorData> uniqueConductors;
-    QMap<QString, ConductorData> partialWires;
+    // Conductors with one end on a folio report, by that report. All of them
+    // are collected before any is merged, so the result does not depend on
+    // the order the folios are saved in.
+    QMap<QString, QList<ConductorData>> partialWires;
 
     auto normalizePartial = [](ConductorData c, const QString &ph_uuid) {
         if (c.el1_uuid == ph_uuid) {
@@ -277,40 +290,51 @@ QString WiringListExport::toCsvString() const
         }
 
         QString ph_uuid = el1_ph ? c.el1_uuid : c.el2_uuid;
-        ConductorData normC = normalizePartial(c, ph_uuid);
-
-        QString matching_ph_uuid;
-        if (!elementsInfo[ph_uuid].links.isEmpty()) {
-            matching_ph_uuid = elementsInfo[ph_uuid].links.first();
-        }
-
-        if (!matching_ph_uuid.isEmpty() && partialWires.contains(matching_ph_uuid)) {
-            ConductorData otherHalf = partialWires.take(matching_ph_uuid);
-
-            ConductorData merged;
-            merged.folio = mergeField(otherHalf.folio, normC.folio);
-
-            merged.el1_uuid = otherHalf.el1_uuid;
-            merged.element1_label = otherHalf.element1_label;
-            merged.terminalname1 = otherHalf.terminalname1;
-
-            merged.el2_uuid = normC.el1_uuid;
-            merged.element2_label = normC.element1_label;
-            merged.terminalname2 = normC.terminalname1;
-
-            merged.tension_protocol = mergeField(otherHalf.tension_protocol, normC.tension_protocol);
-            merged.conductor_color = mergeField(otherHalf.conductor_color, normC.conductor_color);
-            merged.conductor_section = mergeField(otherHalf.conductor_section, normC.conductor_section);
-            merged.function = mergeField(otherHalf.function, normC.function);
-
-            uniqueConductors.append(merged);
-        } else {
-            partialWires.insert(ph_uuid, normC);
-        }
+        partialWires[ph_uuid].append(normalizePartial(c, ph_uuid));
     }
 
-    for (const ConductorData &leftover : partialWires.values()) {
-        uniqueConductors.append(leftover);
+    // Two halves are one wire only when each report of a linked pair carries
+    // exactly one conductor. With several on a side, the diagram does not say
+    // which terminal is wired to which, so each conductor gets its own row,
+    // ending at the report.
+    QSet<QString> written;
+    for (auto it = partialWires.cbegin(); it != partialWires.cend(); ++it) {
+        const QString &ph_uuid = it.key();
+        if (written.contains(ph_uuid)) continue;
+        written.insert(ph_uuid);
+
+        const QStringList links = elementsInfo.value(ph_uuid).links;
+        const QString matching_ph_uuid = links.isEmpty() ? QString() : links.first();
+        const QList<ConductorData> others = partialWires.value(matching_ph_uuid);
+
+        if (it.value().size() != 1 || others.size() != 1 || written.contains(matching_ph_uuid)) {
+            uniqueConductors.append(it.value());
+            continue;
+        }
+        written.insert(matching_ph_uuid);
+
+        const ConductorData &otherHalf = it.value().first();
+        const ConductorData &normC = others.first();
+
+        ConductorData merged;
+        merged.folio = mergeField(otherHalf.folio, normC.folio);
+        merged.folio_index = std::min(otherHalf.folio_index, normC.folio_index);
+
+        merged.el1_uuid = otherHalf.el1_uuid;
+        merged.element1_label = otherHalf.element1_label;
+        merged.terminalname1 = otherHalf.terminalname1;
+
+        merged.el2_uuid = normC.el1_uuid;
+        merged.element2_label = normC.element1_label;
+        merged.terminalname2 = normC.terminalname1;
+
+        merged.tension_protocol = mergeField(otherHalf.tension_protocol, normC.tension_protocol);
+        merged.conductor_color = mergeField(otherHalf.conductor_color, normC.conductor_color);
+        merged.conductor_section = mergeField(otherHalf.conductor_section, normC.conductor_section);
+        merged.function = mergeField(otherHalf.function, normC.function);
+        merged.cable = mergeField(otherHalf.cable, normC.cable);
+
+        uniqueConductors.append(merged);
     }
 
     for (ConductorData &c : uniqueConductors) {
@@ -322,35 +346,9 @@ QString WiringListExport::toCsvString() const
     }
 
     std::sort(uniqueConductors.begin(), uniqueConductors.end(), [](const ConductorData &a, const ConductorData &b) {
-        QStringList partsA = a.folio.split(',');
-        QStringList partsB = b.folio.split(',');
-        int minLen = std::min(partsA.size(), partsB.size());
-        int folioCmp = 0;
-
-        for (int i = 0; i < minLen; ++i) {
-            bool okA, okB;
-            int numA = partsA[i].trimmed().toInt(&okA);
-            int numB = partsB[i].trimmed().toInt(&okB);
-
-            if (okA && okB) {
-                if (numA != numB) {
-                    folioCmp = (numA < numB) ? -1 : 1;
-                    break;
-                }
-            } else {
-                int strCmp = partsA[i].trimmed().compare(partsB[i].trimmed(), Qt::CaseInsensitive);
-                if (strCmp != 0) {
-                    folioCmp = strCmp;
-                    break;
-                }
-            }
-        }
-
-        if (folioCmp == 0 && partsA.size() != partsB.size()) {
-            folioCmp = (partsA.size() < partsB.size()) ? -1 : 1;
-        }
-
-        if (folioCmp != 0) return folioCmp < 0;
+        // By the folio's position in the project: its number is free text
+        // ("3/12", "A-2") and does not sort.
+        if (a.folio_index != b.folio_index) return a.folio_index < b.folio_index;
 
         int el1Cmp = a.element1_label.toLower().compare(b.element1_label.toLower());
         if (el1Cmp != 0) return el1Cmp < 0;
@@ -374,7 +372,8 @@ QString WiringListExport::toCsvString() const
     << tr("Tension / Protocole", "Wiring list CSV header") << ";"
     << tr("Couleur du fil", "Wiring list CSV header") << ";"
     << tr("Section du fil", "Wiring list CSV header") << ";"
-    << tr("Fonction", "Wiring list CSV header") << "\n";
+    << tr("Fonction", "Wiring list CSV header") << ";"
+    << tr("Câble", "Wiring list CSV header") << "\n";
 
     for (const ConductorData &c : uniqueConductors) {
         out << c.folio << ";"
@@ -385,7 +384,8 @@ QString WiringListExport::toCsvString() const
         << c.tension_protocol << ";"
         << c.conductor_color << ";"
         << c.conductor_section << ";"
-        << c.function << "\n";
+        << c.function << ";"
+        << c.cable << "\n";
     }
 
     return csv;

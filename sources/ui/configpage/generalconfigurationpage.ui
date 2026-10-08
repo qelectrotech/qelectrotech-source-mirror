@@ -23,15 +23,26 @@
       <attribute name="title">
        <string>Apparence</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QCheckBox" name="m_use_system_color_cb">
-         <property name="text">
-          <string>Utiliser les couleurs du système</string>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="m_system_color_layout">
+          <item>
+           <widget class="QCheckBox" name="m_use_system_color_cb">
+            <property name="text">
+             <string>Utiliser les couleurs du système</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="KColorButton" name="m_custom_app_color_kpb">
+            <property name="toolTip">
+             <string>Couleur de l'application</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -53,6 +64,83 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_conductor_properties_panel">
+         <property name="text">
+          <string>Afficher les propriétés d'un conducteur sélectionné dans le panneau Propriétés de la sélection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_wiring_rules_cb">
+         <property name="toolTip">
+          <string>Décoché, aucune règle de conducteurs par borne n'est appliquée, quels que soient les réglages des projets.</string>
+         </property>
+         <property name="text">
+          <string>Appliquer les règles de conducteurs par borne des projets</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_wiring_max_wires_layout">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="m_wiring_max_wires_label">
+           <property name="text">
+            <string>Nombre maximal de conducteurs par borne :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_wiring_max_wires_sb">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Pour tous les projets, sauf ceux qui ont leurs propres réglages. Un nouveau conducteur qui dépasserait ce nombre sur une borne est refusé ; les conducteurs déjà dessinés ne sont pas modifiés. 4 correspond à deux embouts doubles, un de chaque côté de la vis.</string>
+           </property>
+           <property name="specialValueText">
+            <string>Sans limite</string>
+           </property>
+           <property name="maximum">
+            <number>99</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="m_wiring_max_wires_spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_wiring_report_layout">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="m_wiring_one_wire_per_report_cb">
+           <property name="toolTip">
+            <string>Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, celui qui continue sur l'autre folio.</string>
+           </property>
+           <property name="text">
+            <string>Un seul conducteur par renvoi de folio</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="Line" name="line_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -63,6 +151,46 @@
         <widget class="QCheckBox" name="grid_startup_cb">
          <property name="text">
           <string>Afficher la grille par défaut (appliqué au prochain lancement)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_collection_dblclick_edits">
+         <property name="toolTip">
+          <string>Par défaut, un double-clic insère l'élément sur le folio ; l'édition reste accessible par le menu contextuel.</string>
+         </property>
+         <property name="text">
+          <string>Double-cliquer dans la collection ouvre l'éditeur d'élément au lieu de l'insérer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_collection_search_flat_cb">
+         <property name="toolTip">
+          <string>Coché : une seule liste, la meilleure correspondance en premier. Décoché : l'arborescence de la collection, filtrée sur la recherche.</string>
+         </property>
+         <property name="text">
+          <string>Afficher les résultats de recherche sous forme de liste triée</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_context_toolbar_cb">
+         <property name="toolTip">
+          <string>Après un clic qui sélectionne un élément ou un conducteur, les commandes de la barre de raccourcis apparaissent près du curseur et s'effacent quand la souris s'éloigne.</string>
+         </property>
+         <property name="text">
+          <string>Afficher les commandes près de la sélection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_mouse_gestures_cb">
+         <property name="toolTip">
+          <string>Maintenir le bouton droit et glisser dans une direction lance une commande de la barre de raccourcis. Un simple clic droit ouvre toujours le menu contextuel, au relâchement du bouton.</string>
+         </property>
+         <property name="text">
+          <string>Gestes de la souris avec le bouton droit</string>
          </property>
         </widget>
        </item>
@@ -199,6 +327,16 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="m_autonumber_pasted">
+         <property name="text">
+          <string>Numéroter automatiquement les éléments collés ou dupliqués qui suivent une numérotation</string>
+         </property>
+         <property name="toolTip">
+          <string>Un élément collé reçoit le numéro suivant de sa numérotation au lieu du nom de l'élément copié, et la numérotation avance.</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_save_label_paste">
          <property name="text">
@@ -207,6 +345,26 @@
         </widget>
        </item>
        <item row="4" column="0">
+        <widget class="QCheckBox" name="m_enable_scripting">
+         <property name="text">
+          <string>Autoriser l'exécution de scripts JavaScript (Projet &gt; Exécuter un script, et --run)</string>
+         </property>
+         <property name="toolTip">
+          <string>Un script s'exécute avec vos droits : il peut lire et modifier le projet ouvert et écrire des fichiers. Désactivé par défaut ; n'exécutez que des scripts dont vous connaissez l'origine.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="m_live_assistant">
+         <property name="text">
+          <string>Autoriser un assistant IA à agir sur le projet ouvert (mode direct)</string>
+         </property>
+         <property name="toolTip">
+          <string>Un assistant connecté par le serveur MCP peut alors exécuter des scripts sur le projet ouvert, sous vos yeux. Un avertissement est affiché à chaque démarrage tant que ce réglage est activé. Prend effet au prochain démarrage ; le décocher coupe la connexion tout de suite.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -291,6 +449,16 @@
               <string>Parcourir...</string>
              </property>
             </item>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="m_prefix_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the button opening the prefix configuration dialog of the user collection">Créer ou modifier le préfixe des dossiers de la collection utilisateur (fichier qet_labels.xml)</string>
+            </property>
+            <property name="text">
+             <string extracomment="button opening the dialog where the folder prefixes of the user collection are configured">Configurer les préfixes…</string>
+            </property>
            </widget>
           </item>
           <item row="1" column="0">
@@ -390,6 +558,47 @@
              <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
             </property>
            </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="m_material_list_label">
+            <property name="text">
+             <string>Fichier de la liste de matériaux</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <layout class="QHBoxLayout" name="m_material_list_layout">
+            <item>
+             <widget class="QLineEdit" name="m_material_list_path_le">
+              <property name="toolTip">
+               <string extracomment="tooltip of the material file path field">Répertoire de matériaux utilisé pour renseigner les articles d'un élément</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string extracomment="hint shown when no material file is configured yet">Non configuré</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_material_list_browse_pb">
+              <property name="text">
+               <string>Parcourir...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_material_list_create_pb">
+              <property name="toolTip">
+               <string extracomment="tooltip of the button creating the material file with its header line">Créer le fichier de la liste avec ses en-têtes</string>
+              </property>
+              <property name="text">
+               <string>Créer...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -763,6 +972,26 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </spacer>
           </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="Label_Diagram_textGrid">
+            <property name="text">
+             <string>Grille des textes déplacés à la souris</string>
+            </property>
+            <property name="toolTip">
+             <string>Fraction de la grille des folios. Maintenir Ctrl pendant le déplacement pour placer librement.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QComboBox" name="DiagramEditor_textGrid_cb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -1112,6 +1341,19 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         </layout>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_check_terminal_names_cb">
+         <property name="toolTip">
+          <string>À l'enregistrement d'un élément : refuser deux bornes portant le même nom, et signaler les bornes sans nom (IEC 61666).</string>
+         </property>
+         <property name="text">
+          <string>Vérifier les noms des bornes à l'enregistrement</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1134,9 +1376,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
+  <tabstop>m_conductor_properties_panel</tabstop>
+  <tabstop>m_wiring_rules_cb</tabstop>
+  <tabstop>m_wiring_max_wires_sb</tabstop>
+  <tabstop>m_wiring_one_wire_per_report_cb</tabstop>
   <tabstop>m_use_windows_mode_rb</tabstop>
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_save_label_paste</tabstop>
+  <tabstop>m_autonumber_pasted</tabstop>
   <tabstop>m_use_folio_label</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_autosave_sb</tabstop>
@@ -1145,6 +1392,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_custom_tbt_path_cb</tabstop>
   <tabstop>m_highlight_integrated_elements</tabstop>
   <tabstop>m_default_elements_info</tabstop>
+  <tabstop>m_check_terminal_names_cb</tabstop>
   <tabstop>m_lang_cb</tabstop>
   <tabstop>m_dyn_text_font_pb</tabstop>
   <tabstop>m_dyn_text_rotation_sb</tabstop>
@@ -1161,4 +1409,11 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
  </tabstops>
  <resources/>
  <connections/>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>nokde/kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
 </ui>

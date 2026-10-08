@@ -20,7 +20,10 @@
 #include "../SearchAndReplace/searchandreplaceworker.h"
 #include "../qetinformation.h"
 #include "ui_elementinfopartwidget.h"
+#include <QCompleter>
 #include <QRegularExpressionValidator>
+#include <QStringListModel>
+#include <QToolButton>
 
 #include <utility>
 
@@ -44,6 +47,14 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	ui->setupUi(this);
 	ui->label_->setText(translated_key);
 	ui->m_erase_text->setVisible(false);
+	ui->m_material_btn->setVisible(false);
+
+		//The line edit must swallow the whole width of the row: without
+		//this the material button column would steal room from it.
+	ui->gridLayout_2->setColumnStretch(0, 1);
+
+	connect(ui->m_material_btn, &QToolButton::clicked,
+			this, &ElementInfoPartWidget::materialButtonClicked);
 
 	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
 	{
@@ -110,6 +121,30 @@ void ElementInfoPartWidget::setPlaceHolderText(const QString &text)
 }
 
 /**
+	@brief ElementInfoPartWidget::setSuggestions
+	Offer suggestions as a drop-down list while typing in the line edit,
+	matching anywhere in the text and ignoring case.
+	An empty list removes the drop-down.
+	@param suggestions
+*/
+void ElementInfoPartWidget::setSuggestions(const QStringList &suggestions)
+{
+	if (suggestions.isEmpty()) {
+		ui->line_edit->setCompleter(nullptr);
+		return;
+	}
+
+	if (!m_completer) {
+		m_suggestions_model = new QStringListModel(this);
+		m_completer = new QCompleter(m_suggestions_model, this);
+		m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+		m_completer->setFilterMode(Qt::MatchContains);
+	}
+	m_suggestions_model->setStringList(suggestions);
+	ui->line_edit->setCompleter(m_completer);
+}
+
+/**
 	@brief ElementInfoPartWidget::setFocusTolineEdit
 	Set the focus to the line edit
 */
@@ -146,6 +181,16 @@ void ElementInfoPartWidget::setEraseTextVisible(bool visible)
 {
 	ui->m_erase_text->setVisible(visible);
 	m_show_erase = visible;
+}
+
+/**
+	@brief ElementInfoPartWidget::setMaterialButtonVisible
+	Show or hide the "..." button opening the material file for this row.
+	@param visible
+*/
+void ElementInfoPartWidget::setMaterialButtonVisible(bool visible)
+{
+	ui->m_material_btn->setVisible(visible);
 }
 
 /**

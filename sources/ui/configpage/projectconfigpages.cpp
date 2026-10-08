@@ -17,6 +17,10 @@
 */
 #include "projectconfigpages.h"
 
+#include "../autoNum/autonumschemecommand.h"
+#include "../autoNum/elementautonumschemecommand.h"
+#include "../autoNum/ui/counterwarning.h"
+#include "../autoNum/ui/renumberpreviewdialog.h"
 #include "../autoNum/numerotationcontext.h"
 #include "../autoNum/ui/autonumberingmanagementw.h"
 #include "../autoNum/ui/folioautonumbering.h"
@@ -26,6 +30,10 @@
 #include "../qet.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
+#include "../wiringrules.h"
+#include "../wiringruleswarning.h"
+#include "../qetgraphicsitem/element.h"
+#include "../diagram.h"
 #include "../borderpropertieswidget.h"
 #include "../conductorpropertieswidget.h"
 #include "../diagramcontextwidget.h"
@@ -36,6 +44,7 @@
 //#include "ui_autonumberingmanagementw.h"
 
 #include <QtWidgets>
+#include <optional>
 
 /**
 	Constructor
@@ -170,6 +179,34 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto wire_hops = WireHops::fromString(wire_hops_cb_ -> currentData().toString());
+	if (m_project -> wireHops() != wire_hops) {
+		m_project -> setWireHops(wire_hops);
+		modified_project = true;
+	}
+
+	if (m_project -> uprightSymbolTexts() != upright_symbol_texts_cb_ -> isChecked()) {
+		m_project -> setUprightSymbolTexts(upright_symbol_texts_cb_ -> isChecked());
+		modified_project = true;
+	}
+
+		//Following the application's rules stores nothing in the project
+	WiringRules::Settings wiring_rules;
+	if (!use_application_rules_cb_ -> isChecked()) {
+		wiring_rules.own = true;
+		wiring_rules.max_wires = max_wires_sb_ -> value();
+		wiring_rules.one_wire_per_report = one_wire_per_report_cb_ -> isChecked();
+	}
+	if (m_project -> projectWiringRules() != wiring_rules) {
+		const WiringRules::Settings before = m_project -> wiringRules();
+		m_project -> setWiringRules(wiring_rules);
+		modified_project = true;
+		if (WiringRules::masterEnabled()
+			&& WiringRules::turnsRuleOn(before, m_project -> wiringRules())) {
+			WiringRulesWarning::show(this);
+		}
+	}
+
 	if (modified_project) {
 		m_project -> setModified(true);
 	}
@@ -206,6 +243,60 @@ void ProjectMainConfigPage::initWidgets()
 	usage_enabled_cb_ = new QCheckBox(tr("Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)", "checkbox label"));
 	usage_reset_pb_ = new QPushButton(tr("Réinitialiser", "button label"));
 	connect(usage_reset_pb_, &QPushButton::clicked, this, &ProjectMainConfigPage::resetUsageTracker);
+
+		//Hops where two conductors cross without being connected (issue #436)
+	wire_hops_label_ = new QLabel(tr("Croisements de conducteurs :", "label when configuring"));
+	wire_hops_cb_ = new QComboBox();
+	wire_hops_cb_ -> addItem(tr("Sans saut", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::None));
+	wire_hops_cb_ -> addItem(tr("Saut sur les conducteurs horizontaux", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::Horizontal));
+	wire_hops_cb_ -> addItem(tr("Saut sur les conducteurs verticaux", "wire crossings"),
+							 WireHops::toString(WireHops::Mode::Vertical));
+	wire_hops_cb_ -> setToolTip(tr("Dessine un petit arc là où deux conducteurs se croisent sans être reliés. "
+								   "Seul le dessin change : aucun élément n'est ajouté et aucun conducteur n'est coupé.",
+								   "tooltip"));
+
+		//Texts of turned symbols kept horizontal
+	upright_symbol_texts_cb_ = new QCheckBox(tr("Garder horizontaux les textes des symboles pivotés",
+												"checkbox label"));
+	upright_symbol_texts_cb_ -> setToolTip(tr("Les textes dessinés dans un symbole et les noms de ses bornes restent "
+											  "lisibles quand le symbole est pivoté : leur cadre tourne avec le symbole, "
+											  "pas le texte. Décochez pour qu'ils tournent avec le symbole, comme avant.",
+											  "tooltip"));
+
+		//How many wires a terminal may take (discussion #1158)
+	wiring_rules_gb_ = new QGroupBox(tr("Conducteurs par borne", "group box title"));
+	use_application_rules_cb_ = new QCheckBox(tr("Utiliser les réglages de l'application", "checkbox label"));
+	use_application_rules_cb_ -> setToolTip(tr("Les réglages de Configurer QElectroTech > Général s'appliquent. "
+											   "Décochez pour donner à ce projet ses propres réglages, enregistrés dans le projet.",
+											   "tooltip"));
+	connect(use_application_rules_cb_, &QCheckBox::toggled, this, [this](bool use) {
+			//Show the values that will apply: the application's, or the
+			//application's as a starting point for the project's own
+		if (use) {
+			const WiringRules::Settings application = WiringRules::applicationSettings();
+			max_wires_sb_ -> setValue(application.max_wires);
+			one_wire_per_report_cb_ -> setChecked(application.one_wire_per_report);
+		}
+		updateWiringRulesWidgets();
+	});
+	max_wires_label_ = new QLabel(tr("Nombre maximal de conducteurs par borne :", "label when configuring"));
+	max_wires_sb_ = new QSpinBox();
+	max_wires_sb_ -> setRange(0, 99);
+	max_wires_sb_ -> setSpecialValueText(tr("Sans limite", "wires per terminal"));
+	max_wires_sb_ -> setToolTip(tr("Un nouveau conducteur qui dépasserait ce nombre sur une borne est refusé. "
+								   "Les conducteurs déjà dessinés ne sont pas modifiés. "
+								   "4 correspond à deux embouts doubles, un de chaque côté de la vis.",
+								   "tooltip"));
+	one_wire_per_report_cb_ = new QCheckBox(tr("Un seul conducteur par renvoi de folio", "checkbox label"));
+	one_wire_per_report_cb_ -> setToolTip(tr("Un renvoi de folio est un point virtuel : il ne reçoit qu'un conducteur, "
+											 "celui qui continue sur l'autre folio.",
+											 "tooltip"));
+	wiring_rules_off_label_ = new QLabel(tr("Ces règles sont désactivées pour tous les projets "
+											"(Configurer QElectroTech > Général).",
+											"informative label"));
+	wiring_rules_off_label_ -> setWordWrap(true);
 }
 
 /**
@@ -231,6 +322,28 @@ void ProjectMainConfigPage::initLayout()
 	usage_layout0 -> addWidget(usage_reset_pb_);
 	main_layout0 -> addLayout(usage_layout0);
 	main_layout0 -> addWidget(usage_enabled_cb_);
+	main_layout0 -> addSpacing(10);
+
+	QHBoxLayout *wire_hops_layout0 = new QHBoxLayout();
+	wire_hops_layout0 -> addWidget(wire_hops_label_);
+	wire_hops_layout0 -> addWidget(wire_hops_cb_);
+	wire_hops_layout0 -> addStretch();
+	main_layout0 -> addLayout(wire_hops_layout0);
+	main_layout0 -> addSpacing(10);
+
+	main_layout0 -> addWidget(upright_symbol_texts_cb_);
+	main_layout0 -> addSpacing(10);
+
+	QVBoxLayout *wiring_rules_layout = new QVBoxLayout(wiring_rules_gb_);
+	wiring_rules_layout -> addWidget(use_application_rules_cb_);
+	QHBoxLayout *max_wires_layout = new QHBoxLayout();
+	max_wires_layout -> addWidget(max_wires_label_);
+	max_wires_layout -> addWidget(max_wires_sb_);
+	max_wires_layout -> addStretch();
+	wiring_rules_layout -> addLayout(max_wires_layout);
+	wiring_rules_layout -> addWidget(one_wire_per_report_cb_);
+	wiring_rules_layout -> addWidget(wiring_rules_off_label_);
+	main_layout0 -> addWidget(wiring_rules_gb_);
 
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
@@ -251,6 +364,38 @@ void ProjectMainConfigPage::readValuesFromProject()
 							 .arg(total_seconds / 3600)
 							 .arg((total_seconds % 3600) / 60));
 	usage_enabled_cb_ -> setChecked(usage_tracker.isEnabled());
+
+	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
+	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
+	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
+
+		//The rules that apply: the project's own or the application's
+	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
+	{
+		const QSignalBlocker blocker(use_application_rules_cb_);
+		use_application_rules_cb_ -> setChecked(!wiring_rules.own);
+	}
+	max_wires_sb_ -> setValue(wiring_rules.max_wires);
+	one_wire_per_report_cb_ -> setChecked(wiring_rules.one_wire_per_report);
+	updateWiringRulesWidgets();
+}
+
+/**
+	@brief ProjectMainConfigPage::updateWiringRulesWidgets
+	Enable the wiring rule fields only when they can change something: the
+	master switch is on and the project sets its own rules.
+*/
+void ProjectMainConfigPage::updateWiringRulesWidgets()
+{
+		//The master switch wins over every project: say so rather than
+		//let the user set a rule that does nothing.
+	const bool master = WiringRules::masterEnabled();
+	const bool own = master && !use_application_rules_cb_ -> isChecked();
+	wiring_rules_off_label_ -> setVisible(!master);
+	use_application_rules_cb_ -> setEnabled(master);
+	max_wires_label_ -> setEnabled(own);
+	max_wires_sb_ -> setEnabled(own);
+	one_wire_per_report_cb_ -> setEnabled(own);
 }
 
 /**
@@ -277,6 +422,9 @@ void ProjectMainConfigPage::adjustReadOnly()
 	title_value_ -> setReadOnly(is_read_only);
 	usage_enabled_cb_ -> setDisabled(is_read_only);
 	usage_reset_pb_ -> setDisabled(is_read_only);
+	wire_hops_cb_ -> setDisabled(is_read_only);
+	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
+	wiring_rules_gb_ -> setDisabled(is_read_only);
 }
 
 //######################################################################################//
@@ -327,6 +475,33 @@ QIcon ProjectAutoNumConfigPage::icon() const
 void ProjectAutoNumConfigPage::applyProjectConf()
 {}
 
+namespace {
+/**
+	A tab of a numbering list over a table of the folios which follow the
+	numbering shown
+*/
+QWidget *schemeTab(SelectAutonumW *saw, QGroupBox *&box, QTableWidget *&table)
+{
+	auto *tab = new QWidget();
+	auto *layout = new QVBoxLayout(tab);
+	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(saw);
+
+	box = new QGroupBox(tab);
+	auto *box_layout = new QVBoxLayout(box);
+	table = new QTableWidget(0, 2, box);
+	table->setHorizontalHeaderLabels({QObject::tr("Folio"), QObject::tr("Titre")});
+	table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	table->verticalHeader()->setVisible(false);
+	table->horizontalHeader()->setStretchLastSection(true);
+	table->setAlternatingRowColors(true);
+	box_layout->addWidget(table);
+	layout->addWidget(box, 1);
+	return tab;
+}
+} // namespace
+
 /**
 	@brief ProjectAutoNumConfigPage::initWidgets
 	Init some widget of this page
@@ -334,6 +509,7 @@ void ProjectAutoNumConfigPage::applyProjectConf()
 void ProjectAutoNumConfigPage::initWidgets()
 {
 	QTabWidget *tab_widget = new QTabWidget(this);
+	m_tab_widget = tab_widget;
 	
 		//Management tab
 	m_amw = new AutoNumberingManagementW(project());
@@ -341,15 +517,44 @@ void ProjectAutoNumConfigPage::initWidgets()
 	
 		//Conductor tab
 	m_saw_conductor = new SelectAutonumW(1);
-	tab_widget->addTab(m_saw_conductor, tr("Conducteurs"));
+	m_saw_conductor->setExplicitNaming();
+	tab_widget->addTab(schemeTab(m_saw_conductor, m_conductor_users_box, m_conductor_users), tr("Conducteurs"));
 	
 		//Element tab
 	m_saw_element = new SelectAutonumW(0);
-	tab_widget->addTab(m_saw_element, tr("Eléments"));
+	m_saw_element->setExplicitNaming();
+	auto *element_tab = new QWidget(this);
+	auto *element_layout = new QVBoxLayout(element_tab);
+	element_layout->setContentsMargins(0, 0, 0, 0);
+	element_layout->addWidget(m_saw_element);
+
+		//The elements which follow the numbering shown: what an edit or a
+		//renumbering would touch, and which of them stop it
+	m_element_users_box = new QGroupBox(element_tab);
+	auto *users_layout = new QVBoxLayout(m_element_users_box);
+	m_element_users = new QTableWidget(0, 5, m_element_users_box);
+	m_element_users->setHorizontalHeaderLabels({tr("N°"), tr("Nom"), tr("Folio"), tr("Élément"), tr("Figé")});
+	m_element_users->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	m_element_users->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_element_users->verticalHeader()->setVisible(false);
+	m_element_users->horizontalHeader()->setStretchLastSection(true);
+	m_element_users->setAlternatingRowColors(true);
+	users_layout->addWidget(m_element_users);
+	m_assign_number_pb = new QPushButton(tr("Attribuer un numéro libre…"), m_element_users_box);
+	m_assign_number_pb->setToolTip(tr("Donner à l'élément sélectionné un numéro que personne n'a : "
+									  "il garde sa numérotation, seul son numéro change."));
+	m_assign_number_pb->setEnabled(false);
+	users_layout->addWidget(m_assign_number_pb, 0, Qt::AlignLeft);
+	connect(m_assign_number_pb, &QPushButton::clicked, this, &ProjectAutoNumConfigPage::assignFreeNumber);
+	connect(m_element_users, &QTableWidget::itemSelectionChanged,
+			this, &ProjectAutoNumConfigPage::updateAssignNumberButton);
+	element_layout->addWidget(m_element_users_box, 1);
+	tab_widget->addTab(element_tab, tr("Eléments"));
 	
 		//Folio Tab
 	m_saw_folio = new SelectAutonumW(2);
-	tab_widget->addTab(m_saw_folio, tr("Folios"));
+	m_saw_folio->setExplicitNaming();
+	tab_widget->addTab(schemeTab(m_saw_folio, m_folio_users_box, m_folio_users), tr("Folios"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
@@ -386,16 +591,13 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 	m_saw_folio->contextComboBox()->clear();
 
 		//Conductor Tab
-	const QStringList strlc(m_project->conductorAutoNum().keys());
-	m_saw_conductor->contextComboBox()->addItems(strlc);
+	refreshSchemes(SchemeKind::Conductor, m_project->conductorCurrentAutoNum());
 	
 		//Element Tab
-	const QStringList strle(m_project->elementAutoNum().keys());
-	m_saw_element->contextComboBox()->addItems(strle);
+	refreshElementSchemes(m_project->elementCurrentAutoNum());
 	
 		//Folio Tab
-	const QStringList strlf(m_project->folioAutoNum().keys());
-	m_saw_folio->contextComboBox()->addItems(strlf);
+	refreshSchemes(SchemeKind::Folio, QString());
 	
 		//Folio AutoNumbering Tab
 	m_faw->setContext(m_project->folioAutoNum().keys());
@@ -424,16 +626,22 @@ void ProjectAutoNumConfigPage::buildConnections()
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
 	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
+	connect(m_saw_conductor, &SelectAutonumW::newClicked,    this, &ProjectAutoNumConfigPage::newContextConductor);
+	connect(m_saw_conductor, &SelectAutonumW::renameClicked, this, &ProjectAutoNumConfigPage::renameContextConductor);
 	connect(m_saw_conductor->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextConductor);
 
 		//Element Tab
 	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
 	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
+	connect(m_saw_element, &SelectAutonumW::newClicked,    this, &ProjectAutoNumConfigPage::newContextElement);
+	connect(m_saw_element, &SelectAutonumW::renameClicked, this, &ProjectAutoNumConfigPage::renameContextElement);
 	connect(m_saw_element->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextElement);
 
 		//Folio Tab
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
+	connect(m_saw_folio, &SelectAutonumW::newClicked,    this, &ProjectAutoNumConfigPage::newContextFolio);
+	connect(m_saw_folio, &SelectAutonumW::renameClicked, this, &ProjectAutoNumConfigPage::renameContextFolio);
 	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
 
 		//	Auto Folio Numbering
@@ -449,18 +657,12 @@ void ProjectAutoNumConfigPage::buildConnections()
 	@param str : key of context stored in project
 */
 void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
-	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
-	else m_saw_conductor ->setContext(m_project->conductorAutoNum(str));
+	m_saw_conductor->setContext(AutoNumSchemeCommand::contextOf(m_project, SchemeKind::Conductor, str));
+	refreshSchemeUsers(SchemeKind::Conductor);
 }
-
-/**
-	@brief ProjectAutoNumConfigPage::updateContext_folio
-	Display the current selected context for folio
-	@param str : key of context stored in project
-*/
 void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
-	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
-	else m_saw_folio ->setContext(m_project->folioAutoNum(str));
+	m_saw_folio->setContext(AutoNumSchemeCommand::contextOf(m_project, SchemeKind::Folio, str));
+	refreshSchemeUsers(SchemeKind::Folio);
 }
 
 /**
@@ -470,13 +672,313 @@ void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 */
 void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 {
-	if (str == tr("Nom de la nouvelle numérotation"))
+	if (str.isEmpty() || !m_project->elementAutoNum().contains(str))
 	{
 		m_saw_element->setContext(NumerotationContext());
 	}
 	else
 	{
 		m_saw_element->setContext(m_project->elementAutoNum(str));
+	}
+	refreshElementUsers();
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::refreshElementUsers
+	List, in folio and position order, the elements which follow the
+	element numbering shown, with their label and whether it is frozen.
+*/
+void ProjectAutoNumConfigPage::refreshElementUsers()
+{
+	if (!m_element_users || !m_element_users_box) {
+		return;
+	}
+	const QString title = m_saw_element->contextComboBox()->currentText();
+	QVector<Element *> users = m_project->elementsUsingElementAutoNum(title);
+	std::sort(users.begin(), users.end(),
+			  [](Element *a, Element *b) { return comparPos(a, b); });
+
+		//With a single sequence of numbers the elements are listed by number,
+		//and the numbers no element has between the lowest and the highest
+		//are shown too: where an element was deleted or given another number
+	using Support = ElementAutoNumSchemeCommand::NumberSupport;
+	const Support support = m_project->elementAutoNum().contains(title)
+			? ElementAutoNumSchemeCommand::numberSupport(m_project->elementAutoNum().value(title))
+			: Support();
+	struct Entry {
+		int number = 0;
+		int to = 0;               ///< the end of a range of free numbers
+		Element *element = nullptr;
+	};
+	QVector<Entry> entries;
+	QVector<Entry> unnumbered;
+	for (Element *el : std::as_const(users)) {
+		const auto number = support.supported ? ElementAutoNumSchemeCommand::numberOf(support, el)
+											  : std::nullopt;
+		if (support.supported && !number) {
+			unnumbered << Entry{0, 0, el};
+		} else {
+			entries << Entry{number.value_or(0), 0, el};
+		}
+	}
+	if (support.supported) {
+		for (const auto &gap : ElementAutoNumSchemeCommand::gapRanges(m_project, title)) {
+			entries << Entry{gap.from, gap.to, nullptr};
+		}
+		std::stable_sort(entries.begin(), entries.end(),
+						 [](const Entry &a, const Entry &b) { return a.number < b.number; });
+		entries += unnumbered;
+	}
+
+	int frozen = 0;
+	int gaps = 0;
+	m_element_users->setRowCount(0);
+	m_element_rows.clear();
+	for (const Entry &entry : std::as_const(entries))
+	{
+		const int row = m_element_users->rowCount();
+		m_element_users->insertRow(row);
+		m_element_rows << QPointer<Element>(entry.element);
+
+		QStringList cells;
+		if (entry.element)
+		{
+			const bool is_frozen = entry.element->isFreezeLabel();
+			if (is_frozen) ++frozen;
+			const auto number = support.supported ? ElementAutoNumSchemeCommand::numberOf(support, entry.element)
+												  : std::nullopt;
+			cells = QStringList{
+				number ? QString::number(*number) : QString(),
+				entry.element->elementInformations().value(QStringLiteral("label")).toString(),
+				entry.element->diagram() ? QString::number(entry.element->diagram()->folioIndex() + 1) : QString(),
+				entry.element->name(),
+				is_frozen ? tr("figé") : QString()};
+		}
+		else
+		{
+			++gaps;
+			cells = QStringList{
+				entry.to > entry.number ? QStringLiteral("%1 – %2").arg(entry.number).arg(entry.to)
+										: QString::number(entry.number),
+				tr("— libre —"), QString(),
+				tr("aucun élément n'a ce numéro (supprimé ou renuméroté)"), QString()};
+		}
+		for (int column = 0 ; column < cells.size() ; ++column) {
+			auto *item = new QTableWidgetItem(cells.at(column));
+			if (!entry.element) {
+				QFont font = item->font();
+				font.setItalic(true);
+				item->setFont(font);
+				item->setForeground(QBrush(Qt::gray));
+			}
+			m_element_users->setItem(row, column, item);
+		}
+	}
+	m_element_users->setColumnHidden(0, !support.supported);
+	m_element_users->resizeColumnsToContents();
+	m_element_users_box->setTitle(
+				users.isEmpty()
+				? tr("Aucun élément ne suit cette numérotation")
+				: tr("%n élément(s) suivent cette numérotation, dont %1 au nom figé", "", users.size())
+				  .arg(frozen)
+				  + (gaps ? tr(" ; %n numéro(s) sans élément", "", gaps) : QString()));
+	updateAssignNumberButton();
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::updateAssignNumberButton
+	The button which gives an element a free number needs an element row
+	selected, in a numbering whose numbers are one sequence.
+*/
+void ProjectAutoNumConfigPage::updateAssignNumberButton()
+{
+	if (!m_assign_number_pb) {
+		return;
+	}
+	const int row = m_element_users->currentRow();
+	const Element *element = row >= 0 ? m_element_rows.value(row).data() : nullptr;
+	const QString title = m_saw_element->contextComboBox()->currentText();
+	const bool supported = m_project->elementAutoNum().contains(title)
+			&& ElementAutoNumSchemeCommand::numberSupport(m_project->elementAutoNum().value(title)).supported;
+	m_assign_number_pb->setEnabled(element && supported && !m_project->isReadOnly());
+	m_assign_number_pb->setToolTip(
+				!supported
+				? tr("Cette numérotation a plusieurs numéros (ou un numéro par folio) : "
+					 "on ne peut pas en choisir un à la main.")
+				: tr("Donner à l'élément sélectionné un numéro que personne n'a : "
+					 "il garde sa numérotation, seul son numéro change."));
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::assignFreeNumber
+	Give the element selected in the table a free number, chosen in the list
+	of those which are, each with the label it would give. The element keeps
+	following the numbering. One undo step.
+*/
+void ProjectAutoNumConfigPage::assignFreeNumber()
+{
+	const int row = m_element_users->currentRow();
+	Element *element = row >= 0 ? m_element_rows.value(row).data() : nullptr;
+	const QString title = m_saw_element->contextComboBox()->currentText();
+	const QString caption = tr("Attribuer un numéro libre");
+	if (!element || m_project->isReadOnly()) {
+		return;
+	}
+	if (element->isFreezeLabel()) {
+		QMessageBox::information(this, caption,
+								 tr("Le nom de cet élément est figé : dégelez-le d'abord."));
+		return;
+	}
+	const QList<int> numbers = ElementAutoNumSchemeCommand::freeNumbers(m_project, title, element);
+	if (numbers.isEmpty()) {
+		QMessageBox::information(this, caption, tr("Aucun numéro n'est libre."));
+		return;
+	}
+	QStringList items;
+	for (int n : numbers) {
+		items << tr("%1  →  %2").arg(n).arg(ElementAutoNumSchemeCommand::labelForNumber(
+												m_project, title, element, n));
+	}
+	bool ok = false;
+	const QString chosen = QInputDialog::getItem(
+				this, caption,
+				tr("Numéro libre pour l'élément « %1 » (%2) :")
+				.arg(element->elementInformations().value(QStringLiteral("label")).toString(), element->name()),
+				items, 0, false, &ok);
+	if (!ok) {
+		return;
+	}
+	QString problem;
+	auto *cmd = ElementAutoNumSchemeCommand::assignNumber(
+				m_project, element, numbers.at(items.indexOf(chosen)), &problem);
+	if (!cmd) {
+		QMessageBox::warning(this, caption, problem);
+		return;
+	}
+	m_project->undoStack()->push(cmd);
+	updateContextElement(title);   // the counter may have moved; lists the elements again
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::refreshElementSchemes
+	Fill the list of element numberings from the project and show
+	@p selected, or the first one if there is no such numbering
+*/
+void ProjectAutoNumConfigPage::refreshElementSchemes(const QString &selected)
+{
+	QComboBox *cb = m_saw_element->contextComboBox();
+	const QSignalBlocker blocker(cb);
+	cb->clear();
+	QStringList titles(m_project->elementAutoNum().keys());
+	titles.sort(Qt::CaseInsensitive);
+	cb->addItems(titles);
+	const int index = cb->findText(selected);
+	cb->setCurrentIndex(index >= 0 ? index : 0);
+	updateContextElement(cb->currentText());
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::askElementSchemeName
+	Ask the user for the name of an element numbering until it is an
+	acceptable one or the user gives up.
+	@param title : title of the dialog
+	@param name : name proposed first
+	@param ignored_title : the numbering being renamed, if any
+	@return the name, empty if the user cancelled
+*/
+QString ProjectAutoNumConfigPage::askElementSchemeName(const QString &title,
+													   QString name,
+													   const QString &ignored_title)
+{
+	for (;;)
+	{
+		bool ok = false;
+		name = QInputDialog::getText(this, title, tr("Nom de la numérotation :"),
+									 QLineEdit::Normal, name, &ok);
+		if (!ok) {
+			return QString();
+		}
+		const QString problem = ElementAutoNumSchemeCommand::nameProblem(
+									m_project, name, ignored_title);
+		if (problem.isEmpty()) {
+			return QETProject::normalizedAutoNumName(name);
+		}
+		QMessageBox::warning(this, title, problem);
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::pushElementSchemeCommand
+	Push @p cmd on the project's undo stack, after the user agreed when it
+	changes the label of elements.
+	@return true if pushed; @p cmd is deleted otherwise
+*/
+bool ProjectAutoNumConfigPage::pushElementSchemeCommand(ElementAutoNumSchemeCommand *cmd)
+{
+	if (!cmd) {
+		return false;
+	}
+	if (const int changed = cmd->changedElementCount())
+	{
+		if (!RenumberPreviewDialog::confirm(
+					this,
+					tr("Modifier la numérotation"),
+					tr("%n élément(s) suivent cette numérotation et vont "
+					   "changer de formule et de nom.", "", changed),
+					cmd->changes(), {})) {
+			delete cmd;
+			return false;
+		}
+	}
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::newContextElement
+	Create an element numbering under a name asked to the user, with a
+	default definition, and show it to be defined.
+*/
+void ProjectAutoNumConfigPage::newContextElement()
+{
+	if (m_project->isReadOnly()) {
+		return;
+	}
+	const QString name = askElementSchemeName(tr("Nouvelle numérotation"),
+											  QString(), QString());
+	if (name.isEmpty()) {
+		return;
+	}
+	m_saw_element->setContext(NumerotationContext());
+	if (pushElementSchemeCommand(ElementAutoNumSchemeCommand::create(
+									 m_project, name,
+									 m_saw_element->toNumContext(),
+									 QUuid(), false))) {
+		refreshElementSchemes(name);
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::renameContextElement
+	Rename the shown element numbering; the elements following it keep
+	following it.
+*/
+void ProjectAutoNumConfigPage::renameContextElement()
+{
+	const QString old_title = m_saw_element->contextComboBox()->currentText();
+	if (m_project->isReadOnly() || !m_project->elementAutoNum().contains(old_title)) {
+		return;
+	}
+	const QString name = askElementSchemeName(tr("Renommer la numérotation"),
+											  old_title, old_title);
+	if (name.isEmpty() || name == old_title) {
+		return;
+	}
+	if (pushElementSchemeCommand(ElementAutoNumSchemeCommand::edit(
+									 m_project, old_title, name,
+									 m_project->elementAutoNum(old_title),
+									 false))) {
+		refreshElementSchemes(name);
 	}
 }
 
@@ -486,28 +988,49 @@ void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 */
 void ProjectAutoNumConfigPage::saveContextElement()
 {
-		// If the text is the default text "Name of new numerotation" save the edited context
-		// With the the name "No name"
-	if (m_saw_element->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
-	{
-		QString title(tr("Sans nom"));
-
-		m_project->addElementAutoNum (title, m_saw_element -> toNumContext());
-		m_project->setCurrrentElementAutonum(title);
-		m_saw_element->contextComboBox()->addItem(tr("Sans nom"));
+	if (m_project->isReadOnly()) {
+		return;
 	}
-		// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> elementAutoNum().contains( m_saw_element->contextComboBox()->currentText()))
+	const QString title = m_saw_element->contextComboBox()->currentText();
+	ElementAutoNumSchemeCommand *cmd = nullptr;
+	QString shown = title;
+	if (!m_project->elementAutoNum().contains(title))
 	{
-		m_project->addElementAutoNum(m_saw_element->contextComboBox()->currentText(), m_saw_element->toNumContext());
-		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
-		m_saw_element->contextComboBox()->addItem(m_saw_element->contextComboBox()->currentText());
+			//No numbering yet: the definition needs a name
+		shown = askElementSchemeName(tr("Nouvelle numérotation"),
+									 QString(), QString());
+		if (shown.isEmpty()) {
+			return;
+		}
+		cmd = ElementAutoNumSchemeCommand::create(
+				  m_project, shown, m_saw_element->toNumContext());
 	}
-		// Else, the text already exist in the autonum of the project, just update the context
 	else
 	{
-		m_project->addElementAutoNum (m_saw_element->contextComboBox() -> currentText(), m_saw_element -> toNumContext());
-		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
+		const NumerotationContext wanted = m_saw_element->toNumContext();
+		if (const int frozen = ElementAutoNumSchemeCommand::editBlockedBy(
+					m_project, title, wanted).size())
+		{
+			QMessageBox::warning(
+						this, tr("Modifier la numérotation"),
+						tr("La numérotation « %1 » ne peut pas être modifiée : "
+						   "%n élément(s) au nom figé la suivent.\n"
+						   "Dégelez-les d'abord (voir la liste), ou renommez seulement la "
+						   "numérotation.", "", frozen).arg(title));
+			refreshElementSchemes(title);   //Back to the definition the project has
+			return;
+		}
+			//A counter put back on numbers in use: the next elements skip them
+		if (!CounterWarning::confirm(this, m_project, title, wanted))
+		{
+			refreshElementSchemes(title);   //Back to the definition the project has
+			return;
+		}
+		cmd = ElementAutoNumSchemeCommand::edit(
+				  m_project, title, title, wanted);
+	}
+	if (pushElementSchemeCommand(cmd)) {
+		refreshElementSchemes(shown);
 	}
 }
 
@@ -613,7 +1136,7 @@ void ProjectAutoNumConfigPage::importFromProject()
 			bool exists = false;
 			switch (i) {
 				case 0: exists = m_project->conductorAutoNum().contains(title); break;
-				case 1: exists = m_project->elementAutoNum().contains(title); break;
+				case 1: exists = !m_project->elementAutoNumNameClash(title).isEmpty(); break;
 				default: exists = m_project->folioAutoNum().contains(title); break;
 			}
 
@@ -627,6 +1150,7 @@ void ProjectAutoNumConfigPage::importFromProject()
 			item->setCheckState(exists ? Qt::Unchecked : Qt::Checked);
 			item->setData(Qt::UserRole, i);
 			item->setData(Qt::UserRole + 1, title);
+			item->setData(Qt::UserRole + 3, entry.attribute(QStringLiteral("id")));
 
 			NumerotationContext nc;
 			nc.fromXml(entry);
@@ -655,7 +1179,8 @@ void ProjectAutoNumConfigPage::importFromProject()
 		return;
 	}
 
-	int imported = 0, skipped = 0, conductors = 0;
+	int imported = 0, skipped = 0, conductors = 0, relabelled = 0, blocked = 0;
+	m_project->undoStack()->beginMacro(tr("Importer des numérotations"));
 	for (int row = 0 ; row < list->count() ; ++row)
 	{
 		QListWidgetItem *item = list->item(row);
@@ -668,9 +1193,9 @@ void ProjectAutoNumConfigPage::importFromProject()
 
 		bool exists = false;
 		switch (category) {
-			case 0: exists = m_project->conductorAutoNum().contains(title); break;
-			case 1: exists = m_project->elementAutoNum().contains(title); break;
-			default: exists = m_project->folioAutoNum().contains(title); break;
+			case 0: exists = !AutoNumSchemeCommand::nameClash(m_project, SchemeKind::Conductor, title).isEmpty(); break;
+			case 1: exists = !m_project->elementAutoNumNameClash(title).isEmpty(); break;
+			default: exists = !AutoNumSchemeCommand::nameClash(m_project, SchemeKind::Folio, title).isEmpty(); break;
 		}
 		if (exists && !overwrite_cb->isChecked()) {
 			++skipped;
@@ -681,14 +1206,54 @@ void ProjectAutoNumConfigPage::importFromProject()
 				contexts.at(item->data(Qt::UserRole + 2).toInt());
 		switch (category) {
 			case 0:
-				m_project->addConductorAutoNum(title, nc);
+			{
+				const QString clash = AutoNumSchemeCommand::nameClash(m_project, SchemeKind::Conductor, title);
+				auto *cmd = clash.isEmpty()
+						? AutoNumSchemeCommand::create(m_project, SchemeKind::Conductor, title, nc)
+						: AutoNumSchemeCommand::edit(m_project, SchemeKind::Conductor, clash, clash, nc);
+				if (cmd) m_project->undoStack()->push(cmd);
 				++conductors;
 				break;
-			case 1: m_project->addElementAutoNum(title, nc); break;
-			default: m_project->addFolioAutoNum(title, nc); break;
+			}
+			case 1:
+			{
+					//Undoable, and an existing numbering is edited, not
+					//replaced: the elements following it follow the
+					//imported definition. A new one keeps the id it has
+					//in the other project when free here, so elements
+					//pasted from there follow it too.
+				const QString clash = m_project->elementAutoNumNameClash(title);
+				if (!clash.isEmpty()
+						&& !ElementAutoNumSchemeCommand::editBlockedBy(m_project, clash, nc).isEmpty()) {
+						//Elements with a frozen label follow it: kept as it is
+					++blocked;
+					continue;
+				}
+				ElementAutoNumSchemeCommand *cmd = clash.isEmpty()
+						? ElementAutoNumSchemeCommand::create(
+							  m_project, title, nc,
+							  QUuid(item->data(Qt::UserRole + 3).toString()), false)
+						: ElementAutoNumSchemeCommand::edit(
+							  m_project, clash, clash, nc, false);
+				if (cmd) {
+					relabelled += cmd->changedElementCount();
+					m_project->undoStack()->push(cmd);
+				}
+				break;
+			}
+			default:
+			{
+				const QString clash = AutoNumSchemeCommand::nameClash(m_project, SchemeKind::Folio, title);
+				auto *cmd = clash.isEmpty()
+						? AutoNumSchemeCommand::create(m_project, SchemeKind::Folio, title, nc)
+						: AutoNumSchemeCommand::edit(m_project, SchemeKind::Folio, clash, clash, nc);
+				if (cmd) m_project->undoStack()->push(cmd);
+				break;
+			}
 		}
 		++imported;
 	}
+	m_project->undoStack()->endMacro();
 
 	readValuesFromProject();
 	if (conductors) {
@@ -697,10 +1262,17 @@ void ProjectAutoNumConfigPage::importFromProject()
 
 	QMessageBox::information(
 				this, tr("Import terminé"),
-				skipped ? tr("%1 numérotation(s) importée(s), "
-						 "%2 conservée(s) telles quelles.")
-					  .arg(imported).arg(skipped)
-					: tr("%1 numérotation(s) importée(s).").arg(imported));
+				(skipped ? tr("%1 numérotation(s) importée(s), "
+						  "%2 conservée(s) telles quelles.")
+					   .arg(imported).arg(skipped)
+					 : tr("%1 numérotation(s) importée(s).").arg(imported))
+				+ (blocked ? QStringLiteral("\n")
+							 + tr("%n numérotation(s) suivie(s) par des éléments au nom figé "
+								  "n'ont pas été remplacées.", "", blocked)
+						   : QString())
+				+ (relabelled ? QStringLiteral("\n")
+								+ tr("%n élément(s) ont changé de formule.", "", relabelled)
+							  : QString()));
 }
 
 /**
@@ -709,15 +1281,23 @@ void ProjectAutoNumConfigPage::importFromProject()
 */
 void ProjectAutoNumConfigPage::removeContextElement()
 {
-		//if default text, return
-	if (m_saw_element->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
+	const QString title = m_saw_element->contextComboBox()->currentText();
+	if (m_project->isReadOnly() || !m_project->elementAutoNum().contains(title)) {
 		return;
-	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
-	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
-	// removeItem() removes the current selection programmatically but
-	// textActivated() does not react to (by design, see buildConnections()).
-	// Refresh the displayed pattern explicitly so it matches the new selection.
-	updateContextElement(m_saw_element->contextComboBox()->currentText());
+	}
+	if (const int used = m_project->elementsUsingElementAutoNum(title).size())
+	{
+		QMessageBox::information(
+					this, tr("Supprimer la numérotation"),
+					tr("%n élément(s) suivent la numérotation « %1 », elle ne "
+					   "peut pas être supprimée.\nDonnez-leur une autre "
+					   "numérotation ou un nom fixe d'abord.", "", used)
+					.arg(title));
+		return;
+	}
+	if (pushElementSchemeCommand(ElementAutoNumSchemeCommand::remove(m_project, title))) {
+		refreshElementSchemes(m_project->elementCurrentAutoNum());
+	}
 }
 
 /**
@@ -726,52 +1306,16 @@ void ProjectAutoNumConfigPage::removeContextElement()
 */
 void ProjectAutoNumConfigPage::saveContextConductor()
 {
-		// If the text is the default text "Name of new numerotation" save the edited context
-		// With the the name "No name"
-	if (m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation"))
-	{
-		m_project->addConductorAutoNum (tr("Sans nom"), m_saw_conductor -> toNumContext());
-		project()->setCurrentConductorAutoNum(tr("Sans nom"));
-		m_saw_conductor->contextComboBox()-> addItem(tr("Sans nom"));
-	}
-	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> conductorAutoNum().contains( m_saw_conductor->contextComboBox()->currentText()))
-	{
-		project()->addConductorAutoNum(m_saw_conductor->contextComboBox()->currentText(), m_saw_conductor->toNumContext());
-		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
-		m_saw_conductor->contextComboBox()-> addItem(m_saw_conductor->contextComboBox()->currentText());
-	}
-	// Else, the text already exist in the autonum of the project, just update the context
-	else
-	{
-		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
-		m_project->addConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText(), m_saw_conductor -> toNumContext());
-	}
-	project()->conductorAutoNumAdded();
+	saveScheme(SchemeKind::Conductor);
 }
 
 /**
-	@brief ProjectAutoNumConfigPage::saveContext_folio
-	Save the current displayed folio context in project
+	@brief ProjectAutoNumConfigPage::saveContextFolio
+	Apply the definition shown to the folio numbering shown
 */
 void ProjectAutoNumConfigPage::saveContextFolio()
 {
-	// If the text is the default text "Name of new numerotation" save the edited context
-	// With the the name "No name"
-	if (m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation")) {
-		m_project->addFolioAutoNum (tr("Sans nom"), m_saw_folio -> toNumContext());
-		m_saw_folio->contextComboBox() -> addItem(tr("Sans nom"));
-	}
-	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> folioAutoNum().contains( m_saw_folio->contextComboBox()->currentText())) {
-		project()->addFolioAutoNum(m_saw_folio->contextComboBox()->currentText(), m_saw_folio->toNumContext());
-		m_saw_folio->contextComboBox() -> addItem(m_saw_folio->contextComboBox()->currentText());
-	}
-	// Else, the text already exist in the autonum of the project, just update the context
-	else {
-		m_project->addFolioAutoNum (m_saw_folio->contextComboBox() -> currentText(), m_saw_folio -> toNumContext());
-	}
-	project()->folioAutoNumAdded();
+	saveScheme(SchemeKind::Folio);
 }
 
 /**
@@ -901,32 +1445,201 @@ void ProjectAutoNumConfigPage::applyManagement()
 */
 void ProjectAutoNumConfigPage::removeContextConductor()
 {
-	//if default text, return
-	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
-	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
-	m_saw_conductor->contextComboBox()-> removeItem (m_saw_conductor->contextComboBox()-> currentIndex() );
-	// removeItem() removes the current selection programmatically but
-	// textActivated() does not react to (by design, see buildConnections()).
-	// Refresh the displayed pattern explicitly so it matches the new selection.
-	updateContextConductor(m_saw_conductor->contextComboBox()->currentText());
-	project()->conductorAutoNumRemoved();
+	removeScheme(SchemeKind::Conductor);
 }
 
 /**
-	@brief ProjectAutoNumConfigPage::removeContext_folio
-	Remove from project the current folio numerotation context
+	@brief ProjectAutoNumConfigPage::removeContextFolio
+	Remove from project the folio numerotation context shown
 */
 void ProjectAutoNumConfigPage::removeContextFolio()
 {
-	//if default text, return
-	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
-	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
-	m_saw_folio->contextComboBox() -> removeItem (m_saw_folio->contextComboBox() -> currentIndex() );
-	// removeItem() removes the current selection programmatically but
-	// textActivated() does not react to (by design, see buildConnections()).
-	// Refresh the displayed pattern explicitly so it matches the new selection.
-	updateContextFolio(m_saw_folio->contextComboBox()->currentText());
-	project()->folioAutoNumRemoved();
+	removeScheme(SchemeKind::Folio);
+}
+
+void ProjectAutoNumConfigPage::newContextConductor()    {newScheme(SchemeKind::Conductor);}
+void ProjectAutoNumConfigPage::renameContextConductor() {renameScheme(SchemeKind::Conductor);}
+void ProjectAutoNumConfigPage::newContextFolio()        {newScheme(SchemeKind::Folio);}
+void ProjectAutoNumConfigPage::renameContextFolio()     {renameScheme(SchemeKind::Folio);}
+
+SelectAutonumW *ProjectAutoNumConfigPage::sawFor(SchemeKind kind) const
+{
+	return kind == SchemeKind::Conductor ? m_saw_conductor : m_saw_folio;
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::refreshSchemes
+	Fill the list of numberings of @p kind from the project and show
+	@p selected, or the first one if there is no such numbering
+*/
+void ProjectAutoNumConfigPage::refreshSchemes(SchemeKind kind, const QString &selected)
+{
+	QComboBox *cb = sawFor(kind)->contextComboBox();
+	{
+		const QSignalBlocker blocker(cb);
+		cb->clear();
+		cb->addItems(AutoNumSchemeCommand::titles(m_project, kind));
+		const int index = cb->findText(selected);
+		cb->setCurrentIndex(index >= 0 ? index : 0);
+	}
+	sawFor(kind)->setContext(AutoNumSchemeCommand::contextOf(m_project, kind, cb->currentText()));
+	refreshSchemeUsers(kind);
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::refreshSchemeUsers
+	List the folios which follow the numbering of @p kind shown
+*/
+void ProjectAutoNumConfigPage::refreshSchemeUsers(SchemeKind kind)
+{
+	QTableWidget *table = kind == SchemeKind::Conductor ? m_conductor_users : m_folio_users;
+	QGroupBox *box = kind == SchemeKind::Conductor ? m_conductor_users_box : m_folio_users_box;
+	if (!table || !box) {
+		return;
+	}
+	const QString title = sawFor(kind)->contextComboBox()->currentText();
+		//A folio numbering is named by the title blocks it numbered, whose
+		//folio field holds the number since: they are what is listed
+	const QList<Diagram *> users = AutoNumSchemeCommand::usersOf(
+				m_project, kind, title, kind == SchemeKind::Folio);
+
+	table->setRowCount(0);
+	for (Diagram *d : users) {
+		const int row = table->rowCount();
+		table->insertRow(row);
+		table->setItem(row, 0, new QTableWidgetItem(QString::number(d->folioIndex() + 1)));
+		table->setItem(row, 1, new QTableWidgetItem(d->border_and_titleblock.title()));
+	}
+	table->resizeColumnsToContents();
+	if (kind == SchemeKind::Folio) {
+		box->setTitle(users.isEmpty()
+					  ? tr("Aucun folio ne nomme cette numérotation")
+					  : tr("%n folio(s) nomment cette numérotation", "", users.size()));
+	} else {
+		box->setTitle(users.isEmpty()
+					  ? tr("Aucun folio ne suit cette numérotation")
+					  : tr("%n folio(s) suivent cette numérotation", "", users.size()));
+	}
+}
+
+QString ProjectAutoNumConfigPage::askSchemeName(SchemeKind kind, const QString &title,
+												QString name, const QString &ignored_title)
+{
+	for (;;)
+	{
+		bool ok = false;
+		name = QInputDialog::getText(this, title, tr("Nom de la numérotation :"),
+									 QLineEdit::Normal, name, &ok);
+		if (!ok) {
+			return QString();
+		}
+		const QString problem = AutoNumSchemeCommand::nameProblem(m_project, kind, name, ignored_title);
+		if (problem.isEmpty()) {
+			return QETProject::normalizedAutoNumName(name);
+		}
+		QMessageBox::warning(this, title, problem);
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::newScheme
+	Create a numbering under a name asked to the user, and show it to be defined.
+*/
+void ProjectAutoNumConfigPage::newScheme(SchemeKind kind)
+{
+	if (m_project->isReadOnly()) {
+		return;
+	}
+	const QString name = askSchemeName(kind, tr("Nouvelle numérotation"), QString(), QString());
+	if (name.isEmpty()) {
+		return;
+	}
+	sawFor(kind)->setContext(NumerotationContext());
+	if (auto *cmd = AutoNumSchemeCommand::create(m_project, kind, name,
+												 sawFor(kind)->toNumContext(), true)) {
+		m_project->undoStack()->push(cmd);
+		refreshSchemes(kind, name);
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::renameScheme
+	Rename the numbering shown; the folios which follow it follow it under its new name.
+*/
+void ProjectAutoNumConfigPage::renameScheme(SchemeKind kind)
+{
+	const QString old_title = sawFor(kind)->contextComboBox()->currentText();
+	if (m_project->isReadOnly() || !AutoNumSchemeCommand::contains(m_project, kind, old_title)) {
+		return;
+	}
+	const QString name = askSchemeName(kind, tr("Renommer la numérotation"), old_title, old_title);
+	if (name.isEmpty() || name == old_title) {
+		return;
+	}
+	if (auto *cmd = AutoNumSchemeCommand::edit(
+				m_project, kind, old_title, name,
+				AutoNumSchemeCommand::contextOf(m_project, kind, old_title))) {
+		m_project->undoStack()->push(cmd);
+		refreshSchemes(kind, name);
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::saveScheme
+	Give the numbering shown the definition shown; with no numbering yet,
+	create one under a name asked to the user. A conductor numbering applied
+	becomes the one new conductors take.
+*/
+void ProjectAutoNumConfigPage::saveScheme(SchemeKind kind)
+{
+	if (m_project->isReadOnly()) {
+		return;
+	}
+	const QString title = sawFor(kind)->contextComboBox()->currentText();
+	const NumerotationContext wanted = sawFor(kind)->toNumContext();
+	QString shown = title;
+	AutoNumSchemeCommand *cmd = nullptr;
+	if (!AutoNumSchemeCommand::contains(m_project, kind, title))
+	{
+		shown = askSchemeName(kind, tr("Nouvelle numérotation"), QString(), QString());
+		if (shown.isEmpty()) {
+			return;
+		}
+		cmd = AutoNumSchemeCommand::create(m_project, kind, shown, wanted, true);
+	}
+	else
+	{
+		cmd = AutoNumSchemeCommand::edit(m_project, kind, title, title, wanted, true);
+	}
+	if (cmd) {
+		m_project->undoStack()->push(cmd);
+	}
+	refreshSchemes(kind, shown);
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::removeScheme
+	Remove the numbering shown, unless a folio still follows it
+*/
+void ProjectAutoNumConfigPage::removeScheme(SchemeKind kind)
+{
+	const QString title = sawFor(kind)->contextComboBox()->currentText();
+	if (m_project->isReadOnly() || !AutoNumSchemeCommand::contains(m_project, kind, title)) {
+		return;
+	}
+	if (const int used = AutoNumSchemeCommand::usersOf(m_project, kind, title).size())
+	{
+		QMessageBox::information(
+					this, tr("Supprimer la numérotation"),
+					tr("%n folio(s) suivent la numérotation « %1 », elle ne peut pas être "
+					   "supprimée.\nDonnez-leur une autre numérotation d'abord.", "", used)
+					.arg(title));
+		return;
+	}
+	if (auto *cmd = AutoNumSchemeCommand::remove(m_project, kind, title)) {
+		m_project->undoStack()->push(cmd);
+		refreshSchemes(kind, kind == SchemeKind::Conductor ? m_project->conductorCurrentAutoNum() : QString());
+	}
 }
 
 /**
@@ -936,5 +1649,7 @@ void ProjectAutoNumConfigPage::removeContextFolio()
 */
 void ProjectAutoNumConfigPage::changeToTab(int i)
 {
-	qDebug()<<"Q_UNUSED"<<i;
+	if (m_tab_widget && i >= 0 && i < m_tab_widget->count()) {
+		m_tab_widget->setCurrentIndex(i);
+	}
 }

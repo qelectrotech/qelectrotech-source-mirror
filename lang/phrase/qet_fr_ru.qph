@@ -132,4 +132,2599 @@
     <source>Angle de rotation par défaut : </source>
     <target>Угол поворота по умолчанию:</target>
 </phrase>
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; для перемещения</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Контакты: NO: %1, NC: %2, переключающие: %3, прочие: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Контакты: NO: %1/%2, NC: %3/%4, переключающие: %5/%6, прочие: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                Задать папку данных
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl во время перетаскивания = свободное положение, без привязки к сетке)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(уже используется)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : режим %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; красная точка: перетащите, чтобы переместить центр поворота</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; бирюзовая точка: дуга</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; край: наклон</target>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>мм</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Нажать: режим %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 ч %2 мин</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>&amp;Закрыть этот редактор</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(уже назначено)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(количество контактов не соответствует)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(подтип не соответствует)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(состояние не соответствует)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = создать маркеры</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = отсоединить в полилинию</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ В этом случае открытие всего документа или его части может завершиться неудачей.
+Что вы хотите сделать?</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target>...</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (экран)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (печать)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (высокое качество)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Ошибка&lt;/b&gt;:&lt;br&gt;Определения проводника могут иметь только одну клемму.&lt;br&gt;&lt;b&gt;Решение&lt;/b&gt;:&lt;br&gt;Проверьте, что элемент имеет только одну клемму</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Abaisser ce folio x100</source>
+    <target>Опустить этот лист на x100</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Действие</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Адрес</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>Адрес ПЛК</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Отображение сетки</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Показывает или скрывает направляющие</target>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>Показать справку</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Показывать сетку по умолчанию (применяется при следующем запуске)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Показать имя</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Показывать заголовки на листе</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Показывать направляющие</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Показывать направляющие по умолчанию (применяется при следующем запуске)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Показывать номера клемм в ссылках</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Показывать или скрывать заголовки столбцов таблицы ПЛК на листе</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Показать/скрыть рамку метки</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Показать/скрыть имя клеммы</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>Чтобы сделать его полностью совместимым, откройте этот же проект в версии 0.8 или 0.80 QElectroTech, сохраните проект и откройте его заново в этой версии.
+Что вы хотите сделать?</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>Добавляет план клеммной колодки на текущий лист</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Добавляет кривую Безье на текущий лист</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Добавляет страницу PDF на текущий лист</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Добавить</target>
+</phrase>
+<phrase>
+    <source>Ajouter le plan de bornes suivant :</source>
+    <target>Добавить следующую планку клемм:</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Добавить лист</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Добавить PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>Добавить план клемм</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Добавить точку к кривой</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Добавить кривую</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Добавить пользовательское свойство</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Выравнивание</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Алфавитный</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Буквенно-цифровой (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Угол</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Угловой</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Отмена</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Предпросмотр</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Предпросмотр:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Скруглить углы %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Перейти к элементу</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Внимание: сумма относительных ширин превышает 100%% общей ширины, этот шаблон основной надписи не может быть выполнен ни при какой ширине.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Внимание: столбцы фиксированной ширины не помещаются в оставшуюся ширину, этот шаблон основной надписи не может быть выполнен ни при какой ширине.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Только назначенные</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Нет</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>ПЛК (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>ПЛК (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Автоматическая нумерация клемм</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Автонумерация</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Другой</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>ВНИМАНИЕ:
+Любое значение, кроме «Без округления», может вызвать ошибки отображения проекта в зависимости от:
+
+1 - выбранного значения 
+2 - dpi экрана 
+3 - изменения проекта на другом компьютере и/или экране с другими параметрами пунктов 1 и 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Предупреждение — импорт файла EPLAN (.edz)</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>Вспомогательный блок 3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>Вспомогательный блок 4</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Клемма 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Клемма 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>Клемма уровня 0 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>Клемма уровня 1 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>Клемма уровня 2 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>Клемма уровня 3 :</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Клеммы</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Клеммные колодки</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>Здесь можно задать способ нумерации новых элементов.
+-Нумерация состоит из переменной минимум.
+-Можно добавить или удалить переменную нумерации с помощью кнопок - и +.
+-Переменная нумерации включает: тип, значение и приращение.
+
+-типы "Цифра 1", "Цифра 01" и "Цифра 001" представляют числовой тип, заданный в поле "Значение", который увеличивается при каждом новом проводнике на значение поля "Приращение".
+-"Цифра 01" и "Цифра 001" отображаются на схеме соответственно двумя и тремя цифрами минимум.
+Если число, заданное в поле Значение, содержит меньше цифр, чем выбранный тип, перед ним добавляется один или два нуля для соответствия типу.
+
+-Тип "Текст" представляет фиксированный текст.
+Поле "Приращение" не используется.
+
+-Тип "№ листа" представляет номер текущего листа.
+Остальные поля не используются.
+
+-Тип "Лист" представляет имя текущего листа.
+Остальные поля не используются.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Невозможно прочитать %1</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>Основные надписи компании</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Категория</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>Похоже, этот документ был сохранён в версии %1,
+ которая новее вашей версии! 
+Сейчас вы используете QElectroTech версии %2</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Этот формат не поддерживает прозрачность: изображение будет сохранено таким, каким оно было до применения прозрачного цвета. Продолжить?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Это сочетание клавиш также используется: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Здесь содержатся последние сообщения журнала этого сеанса. Проверьте содержимое перед приложением к публичному отчёту об ошибке.</target>
+</phrase>
+<phrase>
+    <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+    <target>Это библиотека company основных надписей -- используйте её для создания, хранения и редактирования собственных основных надписей.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>По центру</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Этот элемент уже связан</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Эта функция нумерует клеммы проекта по их положению. Пустые или заблокированные клеммы игнорируются.Маркировка клемм должна быть предварительно настроена следующим образом: &apos;-X:AB&apos;. Часть перед двоеточием (клеммная колодка) может быть названа произвольно. &apos;AB&apos; может состоять из цифр или букв."</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Текстовое поле</target>
+</phrase>
+<phrase>
+    <source>Chemin de la collection company</source>
+    <target>Путь к библиотеке company</target>
+</phrase>
+<phrase>
+    <source>Chemin des cartouches company</source>
+    <target>Путь к основным надписям company</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Путь к пользовательским макросам</target>
+</phrase>
+<phrase>
+    <source>Chinois</source>
+    <target>Китайский</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Выберите место, в котором вы хотите сохранить шаблон.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Щелчок: установить исходный размер. Перетаскивание: переместить и изменить размер. Правый щелчок: повернуть на 90°. Ctrl+колесо: настроить размер.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Левый щелчок: следующая точка; двойной щелчок или Enter: завершить; правый щелчок: отменить последнюю точку</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Левый щелчок: установить противоположный угол (Shift = квадрат, Ctrl = от центра + свободное положение, Ctrl+Shift = квадрат от центра); правый щелчок: отменить</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Левый щелчок: установить противоположный угол (Shift = круг, Ctrl = от центра + свободное положение, Ctrl+Shift = круг от центра); правый щелчок: отменить</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Левый щелчок: установить начальную точку (Ctrl = свободное положение)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Левый щелчок: установить конечную точку (Ctrl = свободное положение); правый щелчок: отменить</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Левый щелчок: установить первый угол (Ctrl = центральная точка, свободное положение)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Левый щелчок: установить первую точку (Ctrl = свободное положение)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Щелчок: угловая точка. Перетаскивание: кривая точка. Щелчок по первой точке: замкнуть. Esc/Enter: завершить. Правый щелчок: отменить последнюю точку.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Щелчок</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Щелчок: режим %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Нажмите, чтобы выбрать цвет</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Щёлкните по изображению, чтобы добавить цвет. Настройте допуск каждого цвета его ползунком или нажмите ×, чтобы удалить его.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Щёлкните по изображению, чтобы выбрать цвет</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Скруглённые углы</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>Библиотека компании</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Библиотеки</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Вставить из буфера обмена</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Комментарий</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>Комментарий ПЛК</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Общий (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Компонент 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Компонент 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>Конфигурация ПЛК</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Настроить шрифт заголовков столбцов</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Настроить шрифт текста в ячейках</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Только конфликты</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Соединить</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Контакт</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Контакты</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Преобразовать %1 в кривую Безье</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Преобразовать %1 в полилинию</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Преобразовать в кривую Безье</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Преобразовать в полилинию</target>
+</phrase>
+<phrase>
+    <source>Convertisseur d&apos;élément DXF</source>
+    <target>Конвертер элементов DXF</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Копировать и вставить</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Корейский</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Не удалось создать временный каталог: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Цвет</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Цвет :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Цвет провода</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Прозрачный цвет</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Прозрачный цвет...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Автоматически разрывать существующие проводники при размещении элемента</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Автоматический разрыв проводников</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Номинальный ток</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Создать шаблон</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Создать резервную копию?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Циклический (по модулю)</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Переместить центр поворота</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>Вспомогательное текстовое описание 1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>Вспомогательное текстовое описание 2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>Вспомогательное текстовое описание 3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>Вспомогательное текстовое описание 4</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Рисовать имена клемм</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Диалог</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>направление</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>Расположение по умолчанию</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Расстояние в пикселях между обозначением и ссылкой на подчинённый элемент</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Расстояние до обозначения подчинённого элемента:</target>
+</phrase>
+<phrase>
+    <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+    <target>Дважды щёлкните, чтобы свернуть или развернуть библиотеку company основных надписей</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Справа</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Ошибка: убедитесь, что файл %1 является допустимым файлом .dxf</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>Вертикальное смещение</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Снимите флажки с клеммных колодок, которые следует исключить из нумерации</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Задать максимальное количество подчинённых элементов</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Задать подчинённые элементы</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Задать прозрачный цвет</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Определение проводника</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Деформировать кривую</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Разъединить</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Переместить центр вращения изображения</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Переместить обозначение клеммы</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Переместить листы</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Переместить лист</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Разблокировано: ширину и высоту можно изменять независимо. Нажмите, чтобы заблокировать.</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Редактор</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>Элемент автонумерации</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>Заголовок :</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Обрамить текст</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Сохранить исходное изображение как...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Сохранить изображение как...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Сохранить отчёт диагностики</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Сохранить отчёт диагностики...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Сохранить шаблон</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Сохранить...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>Введите коэффициент масштаба</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Аналоговый вход</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Цифровой вход</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Универсальный вход</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>Подчинённый элемент ПЛК</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>Пробел :</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Пример</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Исключить из спецификации</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Исключить из автонумерации</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Экспорт выполнен</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Экспортировать в SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Экспортировать схему соединений</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>Вспомогательный производитель 1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>Вспомогательный производитель 2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>Вспомогательный производитель 3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>Вспомогательный производитель 4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>Коэффициент X:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Коэффициент Y:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Повернуть %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Повернуть изображение</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Перетащите маркеры или внутреннюю часть рамки, чтобы настроить сохраняемую область.</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>Закрыть этот редактор</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>Файлы CSV (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>Файлы PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Текстовые файлы (*.txt);;Все файлы (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Провод</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Файл не найден: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Фильтр сочетаний клавиш…</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Точный поворот</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Отражение</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Лист</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Функция</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>Функция ПЛК</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Экспериментальная функция</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Форма</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Формат отображения: последовательность нулей задаёт минимальное число цифр (00 = 07, 000 = 007). Пусто = естественная ширина типа.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Замкнутая форма</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>Вспомогательный поставщик 1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>Вспомогательный поставщик 2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>Вспомогательный поставщик 3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>Вспомогательный поставщик 4</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Слева</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Перетащите %1: поворот (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетащить: настроить дугу (Ctrl = свободное положение, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Перетащить: скруглить углы (Ctrl = свободное положение)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Перетащить: деформировать кривую (Ctrl = свободное положение, Alt = разорвать касательную)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Перетащить: переместить эту точку</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Перетаскивание: переместить центр вращения</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Перетащить: переместить точку (Ctrl = свободное положение</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетащить: наклон (Ctrl = свободное положение, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Перетаскивание: наклонить (Shift = с шагом 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Перетаскивание: повернуть (Shift = с шагом 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Перетащить: изменить размер (Ctrl = от центра + свободное положение, Shift = пропорции</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Перетаскивание: изменить размер (Shift = сохранить пропорции, Ctrl = от центра)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Перетащить: переместить центр поворота (Ctrl = свободное положение)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Перетащить: поворот (Ctrl = свободное положение, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Перетащите фиолетовую точку: скруглить углы</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Перетаскивание угла: повернуть (Shift = с шагом 15°); перетаскивание края: наклонить (Shift = с шагом 15°); красная точка: переместить центр вращения</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Перетаскивание угла/края: изменить размер (Ctrl = от центра, Shift = сохранить пропорции)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Перетащите угол/край: изменить размер (Ctrl = от центра, Shift = пропорции, Alt = отсоединить в полилинию)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Перетащите точку: переместить её</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Перетащите конец: переместить его</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Перетащите маркер или кривую: деформировать (Alt = разорвать касательную) ; Alt+перетаскивание угловой точки: создать маркеры ; правый клик: меню ближайшего узла</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>перейти на одну страницу влево</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>на одну страницу вправо</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Направляющие</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Создаёт отчёт с последними сообщениями журнала для включения в отчёт об ошибке</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Общие</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Геометрия</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>Выс. строки:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Высота</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Горизонтально</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>горизонтально + вертикально</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Изображение BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Файлы изображений (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Изображение JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Изображение PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Исходное изображение</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Изображение SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Изображения не включены в экспорт DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>Импорт EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Импортировать</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>импортировать элемент для масштабирования</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Импортировать изделие EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Импортировать изделие EPLAN (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Невозможно сохранить изображение в этом месте.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Невозможно сохранить спецификацию в %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>Невозможно сохранить шаблон «%1».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Невозможно импортировать это изделие:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Невозможно открыть файл для записи.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>Невозможно записать в файл «%1».</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Невозможно загрузить изображение.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>Не удалось загрузить файл PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>Не удалось определить размер страницы PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Невозможно прочитать структуру проекта в памяти.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>Не удалось отобразить страницу PDF.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Наклон X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Наклон Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Наклонить %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Наклонить изображение</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Неизвестный</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Приращение</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Приращение: значение, добавляемое к счётчику при каждой новой нумерации</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Вписать информацию о компонентах</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Вставить лист выше</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Вставить лист ниже</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Переключатель</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Доступные IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Я прочитал и принимаю эти условия.</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Для импорта dxf необходима программа dxf2elmt.
+Скачайте её по ссылке ниже и распакуйте в папку установки</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Достигнут предел, установленный для этого главного элемента (Предел: %1).
+
+Всё равно связать этот подчинённый контакт?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Удаление невозможно, так как в выделении есть одна или несколько перемычек и/или клемм, принадлежащих многоуровневой клемме.
+Снимите перемычки и/или удалите уровни соответствующих клемм, чтобы их можно было удалить</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Обозначение</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Ширина</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Не удалось записать файл.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>Файл PDF не содержит ни одной страницы.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>Файл «%1» отсутствует или нечитаем: переведённое имя этой папки не удалось прочитать, вместо него показано имя папки.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>Формат .edz может происходить из двух разных источников:
+
+• портал EPLAN Data Portal (dataportal.eplan.com), подчиняющийся условиям использования среды EPLAN Cloud;
+• сайт производителя компонентов (или дистрибьютора), который предоставляет свои файлы .edz напрямую на своих собственных условиях.
+
+QElectroTech не может автоматически определить происхождение импортируемого файла, а также применимые к нему условия.
+
+Импортируя этот файл, вы подтверждаете, что:
+
+• вам известно его происхождение, и вы имеете право использовать его в данном контексте с учётом условий, применимых к этому источнику;
+• этот импорт выполняется на ваш собственный риск и под вашу ответственность;
+• ни QElectroTech, ни его сопровождающие, ни его участники не могут нести ответственность за использование этих данных не по назначению.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Используемый здесь формат DXF (AC1006) не позволяет включать изображения. Изображения будут представлены только прямоугольником контура (положение, размер, поворот и наклон сохранены), без содержимого изображения.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Для масштабирования элементов необходима программа QET_ElementScaler.
+Скачайте её по ссылке ниже и распакуйте в папку установки</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Шаблон успешно сохранён в:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>Имя «%1» недопустимо: оно не должно содержать следующие символы: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Новый элемент определяет группы подчинённых контактов.
+Существующие подчинённые элементы не будут назначены автоматически. Вам придётся вручную связать подчинённые элементы и назначить группы контактов.
+
+Продолжить?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Схема соединений успешно экспортирована!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>Проект, который вы пытаетесь открыть, частично совместим с вашей версией %1 QElectroTech.
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Шаблон уже существует. Вы хотите его перезаписать?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Только строчные буквы, цифры, дефис и подчёркивание</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Лицензии</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Сглаженный</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Список соединений</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Список соединений (база данных)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Связано с: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Длина</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Максимальная длина</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Максимальная длина: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Длина не ограничена.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Макросы</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Макс. частей в списке редактора элементов</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>макс.:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Установите 0 для цифры, которая увеличивается только при переносе следующей циклической цифры (например, «0» в «0.7»)</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>мин.:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>Зеркало выделения</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Отразить по горизонтали</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Отразить изображение по горизонтали</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Горизонтальное отражение %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Отражение невозможно: наклон слишком велик для этой формы</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Отразить по вертикали</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Отразить изображение по вертикали</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Вертикальное отражение %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Зеркало</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>изм.</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Изменить выравнивание текстового поля</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Изменить выравнивание метки</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Изменить угол дуги</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Изменить угол формы</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Изменить угол изображения</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Изменить наклон изображения</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Изменить индекс обозначения главного элемента</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Изменить обозначение главного элемента</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Изменить цвет метки</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Изменить кривизну %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Изменить форму %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Изменить высоту изображения</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Изменить ширину изображения</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Изменить длину линии</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Изменить шрифт метки</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Изменить положение метки</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Изменить поворот метки</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Изменить размер формы</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Изменить размер шрифта метки</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Изменить имя клеммы</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Изменить точку вращения текстового поля</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Изменить тип узла</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Изменить изображение</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>Модуль ПЛК</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Шаблон</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Шаблон сохранён</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Шаблоны</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Кол-во</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>Кол-во клемм</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>Кол-во контактов</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (контакт SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>Внутри .edz не найден файл *.part.xml</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Имя файла элемента</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Имя файла элемента: только цифры, строчные буквы, «-», «_» и «.».
+Отображаемое имя элемента изменяется отдельно в свойствах элемента.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Имя клеммы</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Имя нового шаблона</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Пользовательское имя столбца (пусто = по умолчанию)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Имя, обозначение или информация об элементе…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>имя_свойства</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Неверное количество клемм</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Число используемых подчинённых контактов: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Достигнуто максимальное число подчинённых.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Максимальное число определённых подчинённых контактов: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Максимальное число определённых подчинённых контактов: не определено
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Нет</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Только неназначенные</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Нормально закрытый</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Нормально открытый</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Недопустимый пакет .edz (нераспознанный формат архива).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Примечания</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Только цифры (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>Вспомогательный номер артикула 1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>Вспомогательный номер артикула 2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>Вспомогательный номер артикула 3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>Вспомогательный номер артикула 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>Вспомогательный номер заказа 1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>Вспомогательный номер заказа 2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>Вспомогательный номер заказа 3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>Вспомогательный номер заказа 4</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>Вспомогательный внутренний номер 1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>Вспомогательный внутренний номер 2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>Вспомогательный внутренний номер 3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>Вспомогательный внутренний номер 4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Автоматическая нумерация клемм</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Автоматически нумеровать проводник</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Автоматически пронумеровать элемент</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Нумеровать также буквы</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Ближайший узел</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>ОК</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Ориентация</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Вертикальное начало</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Да</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outil de traduction d&apos;éléments</source>
+    <target>Инструмент перевода элементов</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Страница</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Импортируемая страница:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Панель элементов</target>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Поворачивает выделение как группу вокруг её центра, а не каждый элемент на месте</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Повернуть группу</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>повернуть/наклонить</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>Изделия EPLAN (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>план клемм</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Точка привязки текста и выравнивание строк между собой</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>Точка перемычки</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Шрифт</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Шрифт :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Шрифт заголовков</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Шрифт заголовков столбцов</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Шрифт заголовков: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Шрифт текста</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Шрифт текста ячеек</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Шрифт текста: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Шрифты проекта</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Положение</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Приоритет осей</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Приоритет оси X (горизонтальной)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Приоритет оси Y (вертикальной)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Следующее значение, которое будет применено с этим приращением</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Глубина</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Свойства текста</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Предпросмотр :</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Мощность</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech не был корректно закрыт при последнем запуске.
+Ниже приведены последние сообщения, записанные перед завершением -- вы можете сохранить их, чтобы приложить к отчёту об ошибке.</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+дополнительная информация об импорте / масштабировании %1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>Вспомогательное количество 1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>Вспомогательное количество 2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>Вспомогательное количество 3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>Вспомогательное количество 4</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Сочетание клавиш</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Сочетания клавиш</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Отчёт диагностики</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Отчёт о сбое</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Радиус X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Радиус Y</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Поиск</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Быстро находит и выбирает элемент на листе</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Поиск...</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>изменить размер</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Изменить размер %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Изменить размер изображения</target>
+</phrase>
+<phrase>
+    <source>Redimensionneur d&apos;éléments</source>
+    <target>Изменение размеров элементов</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Примечание: главные элементы, достигшие максимального числа подчинённых, скрыты.</target>
+</phrase>
+<phrase>
+    <source>Remonter ce folio x100</source>
+    <target>Поднять этот лист на x100</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Заменить изображение...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Заменить изображение</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Взять из главного элемента</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Восстановить пропорции</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Восстановить пропорции изображения</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Удалить этот цвет</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>Отразить элемент:</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>Отразить выделение</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Вернуться к полному изображению без обрезки</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Справа</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Обрезать изображение</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Обрезать изображение</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Обрезать...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Поворот :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Поворот/Наклон</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Обозн.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Перекрёстная ссылка</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>Перекрёстная ссылка ПЛК</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Перекрёстная ссылка</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Сбросить</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Сбросить это сочетание</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Сбросить к начальному значению</target>
+</phrase>
+<phrase>
+    <source>Répertoire de la collection company</source>
+    <target>Каталог библиотеки company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des cartouches company</source>
+    <target>Каталог основных надписей company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Каталог пользовательских макросов</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Разрешение:</target>
+</phrase>
+<phrase>
+    <source>sans</source>
+    <target>без</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Пропуск %1 после:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Сечение провода</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Подробности смотрите здесь:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Выбрать изображение...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Простой</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Аналоговый выход</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Цифровой выход</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Универсальный выход</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Вы хотите создать резервную копию?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Подтип</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Следующий</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Отслеживать время, затраченное на этот проект (сохраняется только локально в этом файле)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Удаление клеммы невозможно</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Удалить</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Удалить листы (%1)</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Удалить это свойство</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Удалить ближайший узел</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Удалить листы</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Удалить лист</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Удалить точку с кривой</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>Шведский</target>
+</phrase>
+<phrase>
+    <source>SVG: fond transparent</source>
+    <target>SVG: прозрачный фон</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Симметричный</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Система контактов изменена</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Выбрать файл PDF...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Выбрать группу контактов</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Выбрать IO ПЛК</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Выбрать страницу</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Выберите группу контактов для назначения этому подчинённому элементу:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Разделение потенциала</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>Таблица ПЛК</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>Таблица ПЛК (пустая)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Размер</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Размер :</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Размер точек сетки редактора схем: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Размер точек сетки редактора элементов: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>С задержкой при возврате</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>С задержкой при срабатывании</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>С задержкой при срабатывании и возврате</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Время, затраченное на этот проект:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Напряжение / протокол</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Номинальное напряжение</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Текст клеммы</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Текст заголовка</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Этот .edz — пакет в формате zip, который пока не поддерживается (можно импортировать только файлы .edz формата 7-Zip).</target>
+</phrase>
+<phrase>
+    <source>To high values might lead to crashes of the application.</source>
+    <target>Слишком большие значения могут привести к сбоям приложения.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>Чтобы установить плагин qet_tb_generator&lt;br&gt;Посетите:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Первая установка на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Установите, если требуется, только пакет python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Запустите скрипт Profile.command&lt;br&gt;так как программа использует жёстко заданный PATH для поиска плагина qet-tb-generator &lt;br&gt; Посетите:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Обновление на macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Допуск для этого цвета</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Вращать вокруг собственного центра</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Все</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Все файлы (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Сбросить все</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Перевод на корейский</target>
+</phrase>
+<phrase>
+    <source>Traduction en japonais</source>
+    <target>Перевод на японский</target>
+</phrase>
+<phrase>
+    <source>Traduction en mongol</source>
+    <target>Перевод на монгольский</target>
+</phrase>
+<phrase>
+    <source>Traduction en norvégien</source>
+    <target>Перевод на норвежский</target>
+</phrase>
+<phrase>
+    <source>Traduction en serbe</source>
+    <target>Перевод на сербский</target>
+</phrase>
+<phrase>
+    <source>Traduction en slovène</source>
+    <target>Перевод на словенский</target>
+</phrase>
+<phrase>
+    <source>Traduction en ukrainien</source>
+    <target>Перевод на украинский</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Преобразовать %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Прозрачность не сохраняется</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>Слишком много примитивов, список не создан: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Тип</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Тип нумерации</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>Тип ПЛК</target>
+</phrase>
+<phrase>
+    <source>Ukrainien</source>
+    <target>Украинский</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>дуга</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>угол</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>точку</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>кривая</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>конец</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>изображение</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>Вспомогательная единица 1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>Вспомогательная единица 2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>Вспомогательная единица 3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>Вспомогательная единица 4</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Значение</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Текущее значение счётчика. Введите новое значение и подтвердите для его изменения.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Значение, при котором эта цифра возвращается к 0 при инкременте предыдущей цифры (0 = без цикла)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Заблокировать автоматическую нумерацию</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Заблокировать положение</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Заблокировано: изменение ширины или высоты подстраивает другую для сохранения пропорций. Нажмите, чтобы разблокировать.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Вертикально</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Видимый</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Показать этот элемент</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Ошибка сохранения</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Ошибка экспорта</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Перезаписать шаблон?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Редактор элемента</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Редактор основной надписи</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Редактор схем</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Редактор текста</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Редактирование узлов</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>Элементы QElectroTech (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Обозначение главного элемента</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Вы уверены, что хотите удалить этот лист?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Вы уверены, что хотите удалить этот лист из проекта?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Вы уверены, что хотите удалить выбранные листы (%1)?</target>
+</phrase>
 </QPH>

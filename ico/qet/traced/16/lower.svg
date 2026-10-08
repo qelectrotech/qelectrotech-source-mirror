@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <path d="M3 1h1v1h-1zM9 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM12 1h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.5"/>
+  <path d="M13 1h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.38"/>
+  <path d="M3 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM3 3h1v1h-1zM7 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM3 5h1v1h-1zM3 6h1v1h-1zM1 7h1v1h-1zM3 7h1v1h-1zM5 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM3 9h1v1h-1zM4 11h1v1h-1zM5 11h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM10 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM3 12h1v1h-1zM4 12h1v1h-1zM5 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM11 12h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M8 6h1v1h-1zM13 6h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.38"/>
+  <path d="M9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM7 7h1v1h-1zM6 8h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.5"/>
+  <path d="M2 7h1v1h-1zM4 7h1v1h-1zM1 8h1v1h-1zM5 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.31"/>
+  <path d="M8 7h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM11 8h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M13 11h1v1h-1zM12 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.69"/>
+  <path d="M2 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.55"/>
+  <path d="M11 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.62"/>
+</svg>

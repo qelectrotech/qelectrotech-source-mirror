@@ -1,0 +1,871 @@
+<project title="ENA006 E-101 QET TRIAL V2 - PILOT ARTIFACT" uuid="{8b9c15ab-71fd-543c-9b8a-70911bd09457}" version="0.200.1">
+    <titleblocktemplates>
+        <titleblocktemplate name="ENA006_D">
+            <information>ENA006 SLD probe title block � generated.</information>
+            <logos/>
+            <grid cols="t5%;t9%;t44%;t6%;t12%;t12%;t6%;t6%;" rows="26;26;26;40;34;34;">
+                <field align="left" col="3" displaylabel="true" fontsize="8" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">Z</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="8" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="8" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">E-110: G4 CLOSED - LEVITON B3277-YB SIDE-MOUNT SPD + 3P 20 A CB-SPD</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="6" displaylabel="true" fontsize="8" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field align="left" col="7" displaylabel="true" fontsize="8" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">PRELIMINARY</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="9" hadjust="true" name="" row="0" valign="center">
+                    <value>
+                        <translation lang="en">NOT FOR CONSTRUCTION</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="3" displaylabel="true" fontsize="8" hadjust="true" name="" row="1" valign="center">
+                    <value>
+                        <translation lang="en">Y</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="8" hadjust="true" name="" row="1" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="8" hadjust="true" name="" row="1" valign="center">
+                    <value>
+                        <translation lang="en">BREAKER AUX/POSITION DELETED - s60 GOVERNS; G6 CLOSED-DEL; A-5 RETIRED</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="6" displaylabel="true" fontsize="8" hadjust="true" name="" row="1" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field align="left" col="7" displaylabel="true" fontsize="8" hadjust="true" name="" row="1" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="9" hadjust="true" name="" row="1" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field align="left" col="3" displaylabel="true" fontsize="8" hadjust="true" name="" row="2" valign="center">
+                    <value>
+                        <translation lang="en">X</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="8" hadjust="true" name="" row="2" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="8" hadjust="true" name="" row="2" valign="center">
+                    <value>
+                        <translation lang="en">COUNCIL REVIEW - WRAP/REFS/T3/TEE; KEY-2 PAWL; G14 ACCESS; H-OTD</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="6" displaylabel="true" fontsize="8" hadjust="true" name="" row="2" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field align="left" col="7" displaylabel="true" fontsize="8" hadjust="true" name="" row="2" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="9" hadjust="true" name="" row="2" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="12" hadjust="true" name="" row="3" valign="center">
+                    <value>
+                        <translation lang="en">MEDIUM VOLTAGE POWER ELECTRONICS LABORATORY � UNIVERSITY OF CALGARY, SCHULICH SCHOOL OF ENGINEERING</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="10" hadjust="true" name="" row="3" valign="center">
+                    <value>
+                        <translation lang="en">%plant</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">PROJECT NO.</translation>
+                    </label>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="10" hadjust="true" name="" row="3" valign="center">
+                    <value>
+                        <translation lang="en">%locmach</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DRAWING NO.</translation>
+                    </label>
+                </field>
+                <field align="left" col="6" displaylabel="true" fontsize="10" hadjust="true" name="" row="3" valign="center">
+                    <value>
+                        <translation lang="en">%indexrev</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field align="left" col="7" displaylabel="true" fontsize="10" hadjust="true" name="" row="3" valign="center">
+                    <value>
+                        <translation lang="en">%folio</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SHEET</translation>
+                    </label>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="11" hadjust="true" name="" row="4" valign="center">
+                    <value>
+                        <translation lang="en">%title</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">TITLE</translation>
+                    </label>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="9" hadjust="true" name="" row="4" valign="center">
+                    <value>
+                        <translation lang="en">%author</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DRAWN</translation>
+                    </label>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="9" hadjust="true" name="" row="4" valign="center">
+                    <value>
+                        <translation lang="en">%date</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DATE</translation>
+                    </label>
+                </field>
+                <field align="left" col="6" displaylabel="true" fontsize="9" hadjust="true" name="" row="4" valign="center">
+                    <value>
+                        <translation lang="en">NTS</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SCALE</translation>
+                    </label>
+                </field>
+                <field align="left" col="7" displaylabel="true" fontsize="9" hadjust="true" name="" row="4" valign="center">
+                    <value>
+                        <translation lang="en">D</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SIZE</translation>
+                    </label>
+                </field>
+                <field align="left" col="2" displaylabel="true" fontsize="11" hadjust="true" name="" row="5" valign="center">
+                    <value>
+                        <translation lang="en">ENA006 MV TEST FACILITY � ENG A 006</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">PROJECT</translation>
+                    </label>
+                </field>
+                <field align="left" col="4" displaylabel="true" fontsize="9" hadjust="true" name="" row="5" valign="center">
+                    <value>
+                        <translation lang="en">PILOT ARTIFACT</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field align="left" col="5" displaylabel="true" fontsize="9" hadjust="true" name="" row="5" valign="center">
+                    <value>
+                        <translation lang="en">NOT A DELIVERABLE</translation>
+                    </value>
+                    <label/>
+                </field>
+            </grid>
+        </titleblocktemplate>
+    </titleblocktemplates>
+    <properties>
+        <property name="saveddate" show="1">8/12/2026</property>
+        <property name="saveddate-eu" show="1">12-08-2026</property>
+        <property name="saveddate-us" show="1">2026-08-12</property>
+        <property name="savedfilename" show="1">qet_bug_repro</property>
+        <property name="savedfilepath" show="1">C:/Users/phili/.claude/skills/cabinet-drawings/pilot_qet/out/qet_bug_repro.qet</property>
+        <property name="savedtime" show="1">19:09</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="%id/%total" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="contacts" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="false" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="bottom" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="false" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos=""/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos=""/>
+            <xref delayprefix="" displayhas="contacts" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="false" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{12d8812a-af75-4fe9-859e-964e5e12efde}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{9dafa64c-b032-4170-9477-cef28498f621}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-16"/>
+                    <terminal id="1" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">PA</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{f8302ee9-9eeb-4811-835f-7caf74c203b6}" x="35" y="-8.5">
+                        <text>PA</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{1f305ff0-207f-4e56-856e-3d1987d9ce7c}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="2" orientation="3" x="-9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{58834c97-a236-44e9-abe8-26cf8e7864f8}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{fc7c14e7-07d7-44bb-8e99-9f6f5790e1e9}" x="6" y="-11.5">
+                        <text>2-A1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="W1" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{9dafa64c-b032-4170-9477-cef28498f621}" element1_label="PA" element1_name="Siren" element2="{1f305ff0-207f-4e56-856e-3d1987d9ce7c}" element2_label="" element2_linked="" element2_name="Going arrow" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminal2="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" terminalname1="A1" terminalname2="1" text_color="#000000" type="multi" uuid="{9712b002-7e13-49f3-88be-bab32f3afd47}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="2" plant="" rows="8" rowsize="80" title="" uuid="{13c8750a-f56e-4bd0-9205-d5d75c007335}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt" uuid="{58834c97-a236-44e9-abe8-26cf8e7864f8}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="1" x="9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{1f305ff0-207f-4e56-856e-3d1987d9ce7c}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{cdb3752e-49fe-4098-b01e-14194093925a}" x="-37.3281" y="-11.5">
+                        <text>1-A6</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{c595e215-ba4d-42a1-909c-c57d7b3aa043}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-16"/>
+                    <terminal id="2" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">PB</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{18f1bb8a-8b37-42ae-a499-89fad3e7aa04}" x="35" y="-8.5">
+                        <text>PB</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="W1" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{58834c97-a236-44e9-abe8-26cf8e7864f8}" element1_label="" element1_linked="" element1_name="Coming arrow" element2="{c595e215-ba4d-42a1-909c-c57d7b3aa043}" element2_label="PB" element2_name="Siren" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" terminal2="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminalname1="1" terminalname2="A1" text_color="#000000" type="multi" uuid="{2e88cd90-387f-4b21-a690-79d0e79880b7}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="3" plant="" rows="8" rowsize="80" title="" uuid="{8fda2627-d600-456d-b1b3-bf2a8d58ec93}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{479b12ca-3279-4563-9e85-7965f156bafa}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-16"/>
+                    <terminal id="1" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">EA</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{6eb83333-6597-4faa-88f7-fb0e149bf3ad}" x="35" y="-8.5">
+                        <text>EA</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{8226560b-85fc-4097-97ef-3f460ede188c}" x="100" y="300" z="10">
+                <terminals>
+                    <terminal id="2" orientation="0" x="0" y="-16"/>
+                    <terminal id="3" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">EA2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{dbf8171e-4297-41c1-a0cb-81f4ce8932d4}" x="35" y="-8.5">
+                        <text>EA2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{3cea8881-25c7-4aef-89f3-8fa9f397f536}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="4" orientation="3" x="-9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{02f8958b-d216-45ee-a6d0-472444f62d3e}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{0bd2be9c-d414-440e-aed5-00e425366766}" x="6" y="-11.5">
+                        <text>4-A1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="W2" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{479b12ca-3279-4563-9e85-7965f156bafa}" element1_label="EA" element1_name="Siren" element2="{3cea8881-25c7-4aef-89f3-8fa9f397f536}" element2_label="" element2_linked="" element2_name="Going arrow" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminal2="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" terminalname1="A1" terminalname2="1" text_color="#000000" type="multi" uuid="{960b77b9-328b-4a1f-b8d2-02859ca9a92e}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{8226560b-85fc-4097-97ef-3f460ede188c}" element1_label="EA2" element1_name="Siren" element2="{3cea8881-25c7-4aef-89f3-8fa9f397f536}" element2_label="" element2_linked="" element2_name="Going arrow" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminal2="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" terminalname1="A1" terminalname2="1" text_color="#000000" type="multi" uuid="{ed1c6376-9f6c-4ace-9906-e92b1f2dd3d9}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="4" plant="" rows="8" rowsize="80" title="" uuid="{7c7aaf79-80f0-4262-b95a-366f04110eb0}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt" uuid="{02f8958b-d216-45ee-a6d0-472444f62d3e}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="1" x="9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{3cea8881-25c7-4aef-89f3-8fa9f397f536}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{bfc663af-e400-4cd9-90b2-7624bf6ba5b9}" x="-37.3281" y="-11.5">
+                        <text>3-A6</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{9fed8203-ab0a-4cf4-9d6c-64d36e2f273c}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-16"/>
+                    <terminal id="2" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">EB</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{479016a7-05c1-4984-8d59-c8709dbc182c}" x="35" y="-8.5">
+                        <text>EB</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{02f8958b-d216-45ee-a6d0-472444f62d3e}" element1_label="" element1_linked="" element1_name="Coming arrow" element2="{9fed8203-ab0a-4cf4-9d6c-64d36e2f273c}" element2_label="EB" element2_name="Siren" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" terminal2="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminalname1="1" terminalname2="A1" text_color="#000000" type="multi" uuid="{1e9d1438-3052-4b83-a868-60fbaf2df619}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="5" plant="" rows="8" rowsize="80" title="" uuid="{49892c9d-4f0c-4f4c-ad9a-c5fb06bbcda2}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{0aee3e9b-80c2-4e9e-97b8-44446b6b7cee}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="0" x="0" y="-16"/>
+                    <terminal id="1" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">LA</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{c0986530-3db5-4c52-8ebb-4d5e3cfc629d}" x="35" y="-8.5">
+                        <text>LA</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt" uuid="{de35dcf2-26bd-4339-9443-3e8119722350}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="2" orientation="3" x="-9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{129e9d14-dcb0-4c61-9584-90ce7063dc52}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{8ed11545-49d8-4ab2-aa04-918d9525d653}" x="6" y="-11.5">
+                        <text>6-A1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{0aee3e9b-80c2-4e9e-97b8-44446b6b7cee}" element1_label="LA" element1_name="Siren" element2="{de35dcf2-26bd-4339-9443-3e8119722350}" element2_label="" element2_linked="" element2_name="Going arrow" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminal2="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" terminalname1="A1" terminalname2="1" text_color="#000000" type="multi" uuid="{7ffb5063-f859-4267-b8e4-9b080f12f728}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="6" plant="" rows="8" rowsize="80" title="" uuid="{fd96ec1f-a6ba-41ee-b994-7e12283c896e}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt" uuid="{129e9d14-dcb0-4c61-9584-90ce7063dc52}" x="100" y="100" z="10">
+                <terminals>
+                    <terminal id="0" orientation="1" x="9" y="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{de35dcf2-26bd-4339-9443-3e8119722350}"/>
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{8676c577-8484-491c-8f43-f0acbce4515d}" x="-37.3281" y="-11.5">
+                        <text>5-A6</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{d84dbc3c-4969-4fe6-b229-0a5812adf734}" x="400" y="100" z="10">
+                <terminals>
+                    <terminal id="1" orientation="0" x="0" y="-16"/>
+                    <terminal id="2" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">LB</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{f80e029e-b0f5-4936-88a9-fb4252bac180}" x="35" y="-8.5">
+                        <text>LB</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="P" type="embed://import/10_electric/10_allpole/380_signaling_operating/12_acoustic_signaling/sirene.elmt" uuid="{65e05437-b566-44a8-b747-708078dd6154}" x="400" y="300" z="10">
+                <terminals>
+                    <terminal id="3" orientation="0" x="0" y="-16"/>
+                    <terminal id="4" orientation="2" x="0" y="16"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">LD</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{86dcfc39-0598-4c94-927b-630ec4248727}" x="35" y="-8.5">
+                        <text>LD</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{129e9d14-dcb0-4c61-9584-90ce7063dc52}" element1_label="" element1_linked="" element1_name="Coming arrow" element2="{d84dbc3c-4969-4fe6-b229-0a5812adf734}" element2_label="LB" element2_name="Siren" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" terminal2="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminalname1="1" terminalname2="A1" text_color="#000000" type="multi" uuid="{16dfdcf6-595a-4644-aa37-2237920cdd4b}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" element1="{129e9d14-dcb0-4c61-9584-90ce7063dc52}" element1_label="" element1_linked="" element1_name="Coming arrow" element2="{65e05437-b566-44a8-b747-708078dd6154}" element2_label="LD" element2_name="Siren" formula="" freezeLabel="false" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="1" tension_protocol="" terminal1="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" terminal2="{95da3481-88c4-4a1e-9419-7033b26f198f}" terminalname1="1" terminalname2="A1" text_color="#000000" type="multi" uuid="{7f8b1240-07ba-441c-8141-405947f1af85}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <category name="10_electric">
+                <names>
+                    <name lang="ar">كهربائي</name>
+                    <name lang="ca">Elèctric</name>
+                    <name lang="cs">Elektrotechnika</name>
+                    <name lang="da">Elektrisk</name>
+                    <name lang="de">Elektrik</name>
+                    <name lang="el">Ηλεκτρικά</name>
+                    <name lang="en">Electric</name>
+                    <name lang="es">Eléctrica</name>
+                    <name lang="fi">Sähkö</name>
+                    <name lang="fr">Electrique</name>
+                    <name lang="hr">Električno</name>
+                    <name lang="hu">Elektromos</name>
+                    <name lang="it">Elettrica</name>
+                    <name lang="ja">電気</name>
+                    <name lang="ko">전기</name>
+                    <name lang="mn">Цахилгаан</name>
+                    <name lang="nb">Elektrisk</name>
+                    <name lang="nl">Elektrotechniek</name>
+                    <name lang="nl_BE">Elektrisch</name>
+                    <name lang="pl">Elektrotechnika</name>
+                    <name lang="pt">Elétrico</name>
+                    <name lang="pt_BR">Elétrica</name>
+                    <name lang="ro">Electric</name>
+                    <name lang="ru">Электротехника</name>
+                    <name lang="sk">Elektrické</name>
+                    <name lang="sl">Elektrika</name>
+                    <name lang="sr">Електрика</name>
+                    <name lang="sv">El</name>
+                    <name lang="tr">Elektrik</name>
+                    <name lang="uk">Електрика</name>
+                    <name lang="zh">10_电气</name>
+                    <name lang="zn">电气工程</name>
+                </names>
+                <category name="10_allpole">
+                    <names>
+                        <name lang="ar">متعدد الأقطاب</name>
+                        <name lang="ca">Multifilar</name>
+                        <name lang="cs">Vícežilový</name>
+                        <name lang="da">Flere ledere</name>
+                        <name lang="de">Allpolig</name>
+                        <name lang="el">Πολυγραμμικό</name>
+                        <name lang="en">All-pole</name>
+                        <name lang="es">Multifilar</name>
+                        <name lang="fi">Yleisnapa</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="hr">Univerzalni</name>
+                        <name lang="hu">Többvonalas szimbólumok</name>
+                        <name lang="it">Multifilare</name>
+                        <name lang="ja">複線</name>
+                        <name lang="ko">다-극</name>
+                        <name lang="mn">Бүх туйл</name>
+                        <name lang="nb">Alle poler</name>
+                        <name lang="nl">Veel polig</name>
+                        <name lang="nl_BE">All-pole</name>
+                        <name lang="pl">Schematy wieloliniowe</name>
+                        <name lang="pt">Multipolar</name>
+                        <name lang="pt_BR">Multifilar</name>
+                        <name lang="ro">Bipolar</name>
+                        <name lang="ru">Многополюсные</name>
+                        <name lang="sk">Všepólové</name>
+                        <name lang="sl">Vsi poli</name>
+                        <name lang="sr">Свe-полни</name>
+                        <name lang="sv">Allpolig</name>
+                        <name lang="tr">Çok kutuplu</name>
+                        <name lang="uk">Багатополюсні</name>
+                        <name lang="zh">10_全极</name>
+                    </names>
+                    <category name="100_folio_referencing">
+                        <names>
+                            <name lang="ar">إحالات</name>
+                            <name lang="ca">Referències als fulls</name>
+                            <name lang="cs">Odkazování listů</name>
+                            <name lang="da">Ark henvisninger</name>
+                            <name lang="de">Folienverweise</name>
+                            <name lang="el">Αναφορές σελίδας</name>
+                            <name lang="en">Folio referencing</name>
+                            <name lang="es">Referencias</name>
+                            <name lang="fi">Lehtiviittaus</name>
+                            <name lang="fr">Reports de folio</name>
+                            <name lang="hr">Referenciranje folija</name>
+                            <name lang="hu">Tervlap hivatkozások</name>
+                            <name lang="it">Riferimenti</name>
+                            <name lang="ja">フォリオ参照</name>
+                            <name lang="ko">도면 간 참조</name>
+                            <name lang="mn">Хуудасны холбоос</name>
+                            <name lang="nb">Folio-referanse</name>
+                            <name lang="nl">Referenties</name>
+                            <name lang="nl_BE">Folioverwijzing</name>
+                            <name lang="pl">Odsyłacze</name>
+                            <name lang="pt">Renvoi de folio</name>
+                            <name lang="pt_BR">Referências</name>
+                            <name lang="ro">Renvoi de folio</name>
+                            <name lang="ru">Точки разрыва</name>
+                            <name lang="sk">Odkazy na listy</name>
+                            <name lang="sl">Sklici na list</name>
+                            <name lang="sr">Референцирање фолија</name>
+                            <name lang="sv">Bladhänvisning</name>
+                            <name lang="tr">Sayfa referansı</name>
+                            <name lang="uk">Посилання на аркуші</name>
+                            <name lang="zh">图页引用</name>
+                        </names>
+                        <element name="02going_arrow.elmt">
+                            <definition height="20" hotspot_x="23" hotspot_y="10" link_type="next_report" type="element" version="0.80" width="30">
+                                <uuid uuid="{5ec3a096-68e7-9b2c-d1b8-b960176e2512}"/>
+                                <names>
+                                    <name lang="ar">الصفحة التالية</name>
+                                    <name lang="ca">Enllaç sortint</name>
+                                    <name lang="cs">Další list</name>
+                                    <name lang="da">Går pil</name>
+                                    <name lang="de">Nächste Folie</name>
+                                    <name lang="el">Επόμενη σελίδα</name>
+                                    <name lang="en">Going arrow</name>
+                                    <name lang="es">Folio siguiente</name>
+                                    <name lang="fi">Lähtevä nuoli</name>
+                                    <name lang="fr">Folio suivant</name>
+                                    <name lang="hr">Odlazna strelica</name>
+                                    <name lang="hu">Elmenő hivatkozás</name>
+                                    <name lang="it">Foglio successivo</name>
+                                    <name lang="ja">出矢印</name>
+                                    <name lang="ko">나가는 화살표</name>
+                                    <name lang="mn">Явж буй сум</name>
+                                    <name lang="nb">Går pil</name>
+                                    <name lang="nl">Referentie volgend</name>
+                                    <name lang="nl_BE">Gaande pijl</name>
+                                    <name lang="pl">Wyjście adresowe</name>
+                                    <name lang="pt">Seta de saída</name>
+                                    <name lang="pt_BR">Seta de saída (vai)</name>
+                                    <name lang="ro">Săgeată de ieșire</name>
+                                    <name lang="ru">Следующая страница</name>
+                                    <name lang="sk">Odchádzajúca šípka</name>
+                                    <name lang="sl">Odhodna puščica</name>
+                                    <name lang="sr">Одлазна стрелица</name>
+                                    <name lang="sv">Utgående pil</name>
+                                    <name lang="tr">Giden ok</name>
+                                    <name lang="uk">Стрілка виходу</name>
+                                    <name lang="zh">02引出箭头</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-9" x3="2" y1="-4" y2="4" y3="0"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-12" y1="0" y2="0"/>
+                                    <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{93888a84-3ffd-438d-acef-5396acba0750}" x="6" y="-11.5" z="3">
+                                        <text/>
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <terminal name="1" orientation="w" type="Generic" uuid="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" x="-13" y="0"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="01coming_arrow.elmt">
+                            <definition height="20" hotspot_x="6" hotspot_y="10" link_type="previous_report" type="element" version="0.100.0" width="30">
+                                <uuid uuid="{52169153-2558-21ab-63ec-96ce53bfc7c1}"/>
+                                <names>
+                                    <name lang="ar">الصفحة السابقة</name>
+                                    <name lang="ca">Enllaç entrant</name>
+                                    <name lang="cs">Předchozí list</name>
+                                    <name lang="da">Kommer pil</name>
+                                    <name lang="de">Vorherige Folie</name>
+                                    <name lang="el">Προηγούμενη σελίδα</name>
+                                    <name lang="en">Coming arrow</name>
+                                    <name lang="es">folio anterior</name>
+                                    <name lang="fi">Saapuva nuoli</name>
+                                    <name lang="fr">Folio précédent</name>
+                                    <name lang="hr">Dolazna strelica</name>
+                                    <name lang="hu">Beérkező hivatkozás</name>
+                                    <name lang="it">Foglio precedente</name>
+                                    <name lang="ja">入り矢印</name>
+                                    <name lang="ko">들어오는 화살표</name>
+                                    <name lang="mn">Ирж буй сум</name>
+                                    <name lang="nb">Kommer pil</name>
+                                    <name lang="nl">Referentie Vorig</name>
+                                    <name lang="nl_BE">Komende pijl</name>
+                                    <name lang="pl">Wejście adresowe</name>
+                                    <name lang="pt">Seta de entrada</name>
+                                    <name lang="pt_BR">Seta de entrada (vem)</name>
+                                    <name lang="ro">Săgeată de intrare</name>
+                                    <name lang="ru">Предыдущая страница</name>
+                                    <name lang="sk">Prichádzajúca šípka</name>
+                                    <name lang="sl">Prihajajoča puščica</name>
+                                    <name lang="sr">Долазна стрелица</name>
+                                    <name lang="sv">Inkommande pil</name>
+                                    <name lang="tr">Gelen ok</name>
+                                    <name lang="uk">Стрілка входу</name>
+                                    <name lang="zh">01引入箭头</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" x2="-1" x3="9" y1="-4" y2="4" y3="0"/>
+                                    <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="12" y1="0" y2="0"/>
+                                    <dynamic_text Halignment="AlignRight" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{8ec41ce2-36d6-4fe3-b299-c8a48cb2182c}" x="-12" y="-11.5" z="3">
+                                        <text/>
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <terminal name="1" orientation="e" type="Generic" uuid="{d7fd0bec-9f05-4651-a50b-29d7ffabeb41}" x="13" y="0"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <category name="380_signaling_operating">
+                        <names>
+                            <name lang="ar">الإشارات والتشغيل</name>
+                            <name lang="ca">Senyalització i commandament</name>
+                            <name lang="cs">Značení a příkazy</name>
+                            <name lang="da">Signalering og betjening</name>
+                            <name lang="de">Melde- und Bedieneinrichtungen</name>
+                            <name lang="el">Σήμανση και χειρισμός</name>
+                            <name lang="en">Signaling and operating</name>
+                            <name lang="es">Señalización y comando</name>
+                            <name lang="fi">Merkinnät ja käyttö</name>
+                            <name lang="fr">Signalétique et commande</name>
+                            <name lang="hr">Signalizacija i upravljanje</name>
+                            <name lang="hu">Jelzés és kezelés</name>
+                            <name lang="it">Segnalazione e comando</name>
+                            <name lang="ja">信号と操作</name>
+                            <name lang="ko">신호 및 작동</name>
+                            <name lang="mn">Дохиолол ба удирдлага</name>
+                            <name lang="nb">Signalering og betjening</name>
+                            <name lang="nl">Signalering en bediening</name>
+                            <name lang="nl_BE">Signalering en bediening</name>
+                            <name lang="pl">Obwody sterownicze</name>
+                            <name lang="pt">Sinalização e comando</name>
+                            <name lang="pt_BR">Sinalização e Comando</name>
+                            <name lang="ro">Semnalizare și operare</name>
+                            <name lang="ru">Сигнализация и управление</name>
+                            <name lang="sk">Signalizácia a ovládanie</name>
+                            <name lang="sl">Signalizacija in upravljanje</name>
+                            <name lang="sr">Сигнализација и управљање</name>
+                            <name lang="sv">Signalering och manövrering</name>
+                            <name lang="tr">Sinyalizasyon ve kumanda</name>
+                            <name lang="uk">Сигналізація та керування</name>
+                            <name lang="zh">信号与操作</name>
+                        </names>
+                        <category name="12_acoustic_signaling">
+                            <names>
+                                <name lang="ar">أجهزة إشارة صوتية</name>
+                                <name lang="ca">Dispositius de senyalització acústica</name>
+                                <name lang="cs">Akustická signalizace</name>
+                                <name lang="da">Akustisk signaludstyr</name>
+                                <name lang="de">Akustische Meldeeinrichtungen</name>
+                                <name lang="el">Συσκευές ηχητικής σήμανσης</name>
+                                <name lang="en">Acoustic signaling devices</name>
+                                <name lang="es">Dispositivos de señalamiento acustico</name>
+                                <name lang="fi">Akustiset merkinantolaitteet</name>
+                                <name lang="fr">Signalements sonores</name>
+                                <name lang="hr">Akustični signalni uređaji</name>
+                                <name lang="hu">Hangjelző eszközök</name>
+                                <name lang="it">Segnalazione acustica</name>
+                                <name lang="ja">音響信号装置</name>
+                                <name lang="ko">음향 신호 장치</name>
+                                <name lang="mn">Дуут дохиоллын төхөөрөмж</name>
+                                <name lang="nb">Akustiske signalenheter</name>
+                                <name lang="nl">Akoestische signaaltoestellen</name>
+                                <name lang="nl_BE">Akoestische signaaltoestellen</name>
+                                <name lang="pl">Sygnalizatory dźwiękowe</name>
+                                <name lang="pt">Dispositivos de sinalização acústica</name>
+                                <name lang="pt_BR">Dispositivos de sinalizacao acustica</name>
+                                <name lang="ro">Dispozitive de semnalizare acustică</name>
+                                <name lang="ru">Звуковая сигнализация</name>
+                                <name lang="sk">Akustické signalizačné zariadenia</name>
+                                <name lang="sl">Zvočne signalne naprave</name>
+                                <name lang="sr">Звучни сигнални уређаји</name>
+                                <name lang="sv">Akustiska signaldon</name>
+                                <name lang="tr">Akustik sinyalizasyon cihazları</name>
+                                <name lang="uk">Акустичні сигнальні пристрої</name>
+                                <name lang="zh">12_声音信号</name>
+                            </names>
+                            <element name="sirene.elmt">
+                                <definition height="60" hotspot_x="7" hotspot_y="30" link_type="simple" type="element" version="0.90" width="40">
+                                    <uuid uuid="{5ce5ee2e-7c23-f4bb-1244-96498afc5aca}"/>
+                                    <names>
+                                        <name lang="ar">صفّارة إنذار</name>
+                                        <name lang="ca">Sirena</name>
+                                        <name lang="cs">Siréna</name>
+                                        <name lang="da">Sirene</name>
+                                        <name lang="de">Sirene</name>
+                                        <name lang="el">Σειρήνα</name>
+                                        <name lang="en">Siren</name>
+                                        <name lang="es">Sirena</name>
+                                        <name lang="fi">Sireeni</name>
+                                        <name lang="fr">Sirène</name>
+                                        <name lang="hr">Sirena</name>
+                                        <name lang="hu">Sziréna</name>
+                                        <name lang="it">Sirena</name>
+                                        <name lang="ja">サイレン</name>
+                                        <name lang="ko">사이렌</name>
+                                        <name lang="mn">Сирена</name>
+                                        <name lang="nb">Sirene</name>
+                                        <name lang="nl">Sirene</name>
+                                        <name lang="nl_BE">Sirene</name>
+                                        <name lang="pl">Syrena</name>
+                                        <name lang="pt">Sirene</name>
+                                        <name lang="pt_BR">Sirene</name>
+                                        <name lang="ro">Sirenă</name>
+                                        <name lang="ru">Сирена</name>
+                                        <name lang="sk">Siréna</name>
+                                        <name lang="sl">Sirena</name>
+                                        <name lang="sr">Сирена</name>
+                                        <name lang="sv">Siren</name>
+                                        <name lang="tr">Siren</name>
+                                        <name lang="uk">Сирена</name>
+                                        <name lang="zh">警笛</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{4202f0f5-05ab-41af-9612-da9c24b976cc}" x="35" y="-8.5" z="1">
+                                            <text/>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" x1="20" x2="20" x3="30" y1="-10" y2="10" y3="0"/>
+                                        <polygon antialias="false" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="20" x4="20" x5="0" x6="0" y1="-20" y2="-5" y3="-5" y4="5" y5="5" y6="20"/>
+                                        <terminal name="A2" orientation="s" type="Generic" uuid="{112f4a5d-3a40-48f9-8746-dcd5c64bffb9}" x="0" y="20"/>
+                                        <terminal name="A1" orientation="n" type="Generic" uuid="{95da3481-88c4-4a1e-9419-7033b26f198f}" x="0" y="-20"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

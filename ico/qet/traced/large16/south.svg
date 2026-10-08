@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <rect x="3" y="3" width="10" height="1" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="7" y="4" width="2" height="7" style="fill:#ff0000"/>
+  <rect x="7" y="11" width="2" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+</svg>

@@ -134,8 +134,8 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
 void DynamicTextFieldEditor::updateForm()
 {
 	if(m_text_field) {
-		ui -> m_x_sb -> setValue(m_text_field.data() -> x());
-		ui -> m_y_sb -> setValue(m_text_field.data() ->y ());
+		ui -> m_x_sb -> setValue(m_text_field.data() -> anchorPos().x());
+		ui -> m_y_sb -> setValue(m_text_field.data() -> anchorPos().y());
 		ui -> m_rotation_sb -> setValue(QET::correctAngle(m_text_field.data() -> rotation()));
 		ui -> m_frame_cb -> setChecked(m_text_field.data() -> frame());
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
@@ -157,7 +157,9 @@ void DynamicTextFieldEditor::updateForm()
 			m_color_kpb -> setColor(m_text_field.data() -> color());
 		}
 #endif
-		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
+			//Rounded as on_m_width_sb_editingFinished() compares it;
+			//setValue(int) would truncate 61.7 to 61
+		ui -> m_width_sb -> setValue(qRound(m_text_field.data() -> textWidth()));
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 
 		switch (m_text_field.data() -> textFrom()) {
@@ -199,18 +201,21 @@ void DynamicTextFieldEditor::setUpConnections()
 	disconnectConnections();
 
 	//Setup the connection
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::alignmentChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::xChanged, this, [this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::yChanged, this, [this](){this -> updateForm();});
 
 	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
 	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
@@ -290,7 +295,8 @@ void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
 {
 	double value = ui -> m_x_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "x", m_parts[i] -> x(), value);
+		const QPointF anchor = m_parts[i] -> anchorPos();
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "anchorPos", anchor, QPointF(value, anchor.y()));
 		undo -> setText(tr("Déplacer un champ texte"));
 		undo -> enableAnimation(true);
 		undoStack().push(undo);
@@ -301,7 +307,8 @@ void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
 {
 	double value = ui -> m_y_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "y", m_parts[i] -> y(), value);
+		const QPointF anchor = m_parts[i] -> anchorPos();
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "anchorPos", anchor, QPointF(anchor.x(), value));
 		undo -> setText(tr("Déplacer un champ texte"));
 		undo -> enableAnimation(true);
 		undoStack().push(undo);
@@ -358,7 +365,9 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	qreal width = (qreal)ui -> m_width_sb -> value();
 
 	for (int i = 0; i < m_parts.length(); i++) {
-		if(width != m_parts[i] -> textWidth()) {
+			//The box shows whole pixels: a width fitted to the text is not
+			//rounded just by leaving the box.
+		if(ui -> m_width_sb -> value() != qRound(m_parts[i] -> textWidth())) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "textWidth", m_parts[i] -> textWidth(), width);
 			undo -> setText(tr("Modifier la largeur d'un texte"));
 			undoStack().push(undo);
@@ -459,7 +468,7 @@ void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 		if(atd.alignment() != m_parts[i] -> alignment()) {
 			QPropertyUndoCommand *undo =\
 				new QPropertyUndoCommand(
-					m_parts[i], "alignment", QVariant(m_parts[i] -> alignment()), QVariant(atd.alignment()));
+					m_parts[i], "alignmentAtAnchor", QVariant(m_parts[i] -> alignment()), QVariant(atd.alignment()));
 			undo -> setText(tr("Modifier l'alignement d'un champ texte"));
 			undoStack().push(undo);
 		}

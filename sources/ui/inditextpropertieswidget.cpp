@@ -28,6 +28,17 @@
 #include <QtGlobal>
 
 /**
+	@return width as shown in the width spin box: whole pixels, 0 for the
+	automatic width ("Auto"). The box starts at 0, so no number means Auto
+	and the first step up is 1 px; IndependentTextItem::setTextWidth()
+	treats 0 as -1, the automatic width, so the two never disagree.
+*/
+static int spinBoxWidth(qreal width)
+{
+	return width > 0 ? qRound(width) : 0;
+}
+
+/**
 	@brief IndiTextPropertiesWidget::IndiTextPropertiesWidget
 	@param text : the text to edit
 	@param parent : the parent widget of this widget
@@ -84,6 +95,7 @@ void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::rotationChanged, this, &IndiTextPropertiesWidget::updateUi);
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::fontChanged, this, &IndiTextPropertiesWidget::updateUi);
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::textEdited, this, &IndiTextPropertiesWidget::updateUi);
+	m_connect_list << connect(m_text.data(), &IndependentTextItem::textWidthChanged, this, &IndiTextPropertiesWidget::updateUi);
 
 	updateUi();
 }
@@ -209,6 +221,10 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), m_selected_font);
 				undo->setText(tr("Modifier la police d'un champ texte"));
 			}
+			if (ui->m_width_sb->value() != spinBoxWidth(m_text->textWidth())) {
+				undo = new QPropertyUndoCommand(m_text.data(), "textWidth", m_text->textWidth(), qreal(ui->m_width_sb->value()));
+				undo->setText(tr("Modifier la largeur d'un champ texte"));
+			}
 			
 			return undo;
 		}
@@ -218,9 +234,11 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			bool size_equal = true;
 			bool angle_equal = true;
 			bool font_equal = true;
+			bool width_equal = true;
 			qreal rotation_ = m_text_list.first()->rotation();
 			int size_ = m_text_list.first()->font().pointSize();
 			QFont font_ = m_text_list.first()->font();
+			int width_ = spinBoxWidth(m_text_list.first()->textWidth());
 			for (QPointer<IndependentTextItem> piti : m_text_list)
 			{
 				if (piti->rotation() != rotation_) {
@@ -231,6 +249,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				}
 				if (piti->font() != font_) {
 					font_equal = false;
+				}
+				if (spinBoxWidth(piti->textWidth()) != width_) {
+					width_equal = false;
 				}
 			}
 				
@@ -279,6 +300,20 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					}
 				}
 			}
+			else if ((width_equal && (ui->m_width_sb->value() != width_)) ||
+					 (!width_equal && (ui->m_width_sb->value() != ui->m_width_sb->minimum())))
+			{
+				for (QPointer<IndependentTextItem> piti : m_text_list)
+				{
+					if (piti)
+					{
+						if (!parent_undo) {
+							parent_undo = new QUndoCommand(tr("Modifier la largeur de plusieurs champs texte"));
+						}
+						new QPropertyUndoCommand(piti.data(), "textWidth", piti->textWidth(), qreal(ui->m_width_sb->value()), parent_undo);
+					}
+				}
+			}
 			return parent_undo;
 		}
 	}
@@ -306,6 +341,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 		}
 		if (m_font_is_selected && m_selected_font != m_text->font()) {
 			new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), m_selected_font, undo);
+		}
+		if (ui->m_width_sb->value() != spinBoxWidth(m_text->textWidth())) {
+			new QPropertyUndoCommand(m_text.data(), "textWidth", m_text->textWidth(), qreal(ui->m_width_sb->value()), undo);
 		}
 		
 		if (undo->childCount()) {
@@ -337,6 +375,7 @@ void IndiTextPropertiesWidget::setUpEditConnection()
 		m_edit_connection << connect(ui->m_line_edit, &QLineEdit::textEdited, this, &IndiTextPropertiesWidget::apply);
 	}
 	m_edit_connection << connect(ui->m_angle_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
+	m_edit_connection << connect(ui->m_width_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
 	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
 	{
 		this->m_selected_font.setPointSize(ui->m_size_sb->value());
@@ -372,6 +411,7 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_line_edit->setText(m_text->toPlainText());
 		ui->m_angle_sb->setValue(m_text->rotation());
 		ui->m_size_sb->setValue(m_text->font().pointSize());
+		ui->m_width_sb->setValue(spinBoxWidth(m_text->textWidth()));
 		
 		ui->m_line_edit->setDisabled(m_text->isHtml() ? true : false);
 		ui->m_size_sb->setDisabled(m_text->isHtml() ? true : false);
@@ -385,9 +425,11 @@ void IndiTextPropertiesWidget::updateUi()
 		bool size_equal = true;
 		bool angle_equal = true;
 		bool font_equal = true;
+		bool width_equal = true;
 		qreal rotation_ = m_text_list.first()->rotation();
 		int size_ = m_text_list.first()->font().pointSize();
 		QFont font_ = m_text_list.first()->font();
+		int width_ = spinBoxWidth(m_text_list.first()->textWidth());
 
 		for (QPointer<IndependentTextItem> piti : m_text_list)
 		{
@@ -400,8 +442,13 @@ void IndiTextPropertiesWidget::updateUi()
 			if (piti->font() != font_) {
 				font_equal = false;
 			}
+			if (spinBoxWidth(piti->textWidth()) != width_) {
+				width_equal = false;
+			}
 		}
 		ui->m_angle_sb->setValue(angle_equal ? rotation_ : 0);
+			//Different widths show the minimum, as the other boxes do
+		ui->m_width_sb->setValue(width_equal ? width_ : ui->m_width_sb->minimum());
 		
 		bool valid_ = true;
 		for (QPointer<IndependentTextItem> piti : m_text_list) {

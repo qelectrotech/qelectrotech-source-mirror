@@ -39,6 +39,7 @@ class FreeTerminalEditor : public QWidget
 
 		void reload();
 		void apply();
+		bool hasPendingEdits() const;
 
         void setProject(QETProject *project);
 

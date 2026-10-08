@@ -1,9 +1,12 @@
 #include "terminalnumberingdialog.h"
 #include "ui_terminalnumberingdialog.h"
+#include "../qet.h"
 #include "../qetproject.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/element.h"
+#include "../positionorder.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../qet.h"
 #include <QUndoCommand>
 #include <QCheckBox>
 #include <QVBoxLayout>
@@ -34,7 +37,7 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
                     if (elmt->elementData().m_type == ElementData::Terminal) {
                         // Ignore locked terminals
                         DiagramContext info = elmt->elementInformations();
-                        if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                        if (QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString())) {
                             continue;
                         }
 
@@ -66,6 +69,8 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
             m_stripCheckboxes.insert(prefix, cb);
         }
     }
+
+    QET::trackDialogGeometry(this);
 }
 
 /**
@@ -158,7 +163,7 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
                     DiagramContext info = elmt->elementInformations();
 
                     // Ignore locked terminals (if the user checked a 'lock' property)
-                    if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                    if (QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString())) {
                         continue;
                     }
 
@@ -206,14 +211,12 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
         // Then sort by folio (page) index
         if (a.folioIndex != b.folioIndex) return a.folioIndex < b.folioIndex;
 
-        // Finally sort by coordinates (with a 1.0px tolerance to handle slight misalignments)
-        if (axisX) {
-            if (qAbs(a.x - b.x) > 1.0) return a.x < b.x;
-            return a.y < b.y;
-        } else {
-            if (qAbs(a.y - b.y) > 1.0) return a.y < b.y;
-            return a.x < b.x;
-        }
+        // Finally sort by coordinates, rounded to whole pixels so that slight
+        // misalignments count as aligned (a tolerance test is not transitive,
+        // which std::sort requires)
+        const QPointF pa(a.x, a.y), pb(b.x, b.y);
+        return axisX ? PositionOrder::roundedXThenY(pa, pb)
+                     : PositionOrder::roundedYThenX(pa, pb);
     });
 
     // 4. Generate new numbering and create the undo command macro

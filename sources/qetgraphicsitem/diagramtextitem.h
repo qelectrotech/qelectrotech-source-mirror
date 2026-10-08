@@ -24,6 +24,7 @@
 class Diagram;
 class QDomElement;
 class QDomDocument;
+class TextResizeHandles;
 
 /**
 	This class represents a selectable, movable and editable text field on a
@@ -36,6 +37,8 @@ class DiagramTextItem : public QGraphicsTextItem
 
 	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QPointF anchorPos READ anchorPos WRITE setAnchorPos)
+	Q_PROPERTY(Qt::Alignment alignmentAtAnchor READ alignment WRITE setAlignmentAtAnchor NOTIFY alignmentChanged)
 	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
 	
@@ -77,6 +80,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setAlignment(const Qt::Alignment &alignment);
 		Qt::Alignment alignment() const;
 		bool m_block_alignment = false;
+
+		QPointF anchorPos() const;
+		void setAnchorPos(const QPointF &anchor);
+		void setAlignmentAtAnchor(const Qt::Alignment &alignment);
 		
 		QRectF frameRect() const;
 	
@@ -85,11 +92,15 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool isHtml() const;
 
 	protected:
+		void refreshTextResizeHandles();
+		TextResizeHandles *textResizeHandles() const {return m_resize_handles;}
+
 		void paint(QPainter *,
 			   const QStyleOptionGraphicsItem *,
 			   QWidget *) override;
 		void focusInEvent(QFocusEvent *) override;
 		void focusOutEvent(QFocusEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
@@ -103,6 +114,11 @@ class DiagramTextItem : public QGraphicsTextItem
 		virtual void applyRotation(const qreal &);
 		void prepareAlignment();
 		void finishAlignment();
+
+		virtual bool textResizeHandlesWanted() const;
+		virtual bool hasUserTextWidth() const {return false;}
+		bool isEditing() const;
+		void removeTextResizeHandles();
 
 	
 	protected:
@@ -120,7 +136,11 @@ class DiagramTextItem : public QGraphicsTextItem
 		QPointF m_mouse_to_origin_movement;
 		
 	private:
+		void pushResizeCommand(qreal old_width, qreal new_width,
+							   QPointF old_pos, QPointF new_pos);
+
 		QRectF m_alignment_rect;
+		TextResizeHandles *m_resize_handles = nullptr;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 };
 #endif

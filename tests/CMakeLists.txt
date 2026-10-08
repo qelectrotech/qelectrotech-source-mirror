@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,7 @@ message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
 # Add sub directories
 message(". Add sub directory catch")
 add_subdirectory(catch)
-message(". Add sub directory googletest")
-add_subdirectory(googletest)
-message(". Add sub directory googlemock")
-add_subdirectory(googlemock)
+message(". Add sub directory modal-quit-regression")
+add_subdirectory(modal-quit-regression)
 message(". Add sub directory qttest")
 add_subdirectory(qttest)

@@ -18,12 +18,15 @@
 #include "conductorcreator.h"
 
 #include "../conductorautonumerotation.h"
+#include "../dataBase/projectdatabase.h"
 #include "../diagram.h"
+#include "../qetproject.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/potentialselectordialog.h"
+#include "../wiringrules.h"
 #include "qgraphicsitem.h"
 
 #include <QPolygonF>
@@ -46,18 +49,19 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	if (!setUpPropertieToUse()) {
 		return;
 	}
-	Terminal *hub_terminal = hubTerminal();
-	
 	d->undoStack().beginMacro(QObject::tr("Création de conducteurs"));
 	
+	const bool chain = d->project()
+			&& WiringRules::chainsWires(d->project()->wiringRules(), WiringRules::masterEnabled());
 	QList<Conductor *> c_list;
-	for (Terminal *t : m_terminals_list)
+	for (const auto &pair : terminalPairs(chain))
 	{
-		if (t == hub_terminal) {
+			//Checked as the chain is built: the wire before this one may
+			//have just filled a terminal.
+		if (chain && !pair.first->canBeLinkedTo(pair.second)) {
 			continue;
 		}
-		
-		Conductor *cond = new Conductor(hub_terminal, t);
+		Conductor *cond = new Conductor(pair.first, pair.second);
 		cond->setProperties(m_properties);
 		cond->setSequenceNum(m_sequential_number);
 		d->undoStack().push(new AddGraphicsObjectCommand(cond, d));
@@ -68,6 +72,15 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	
 	for(Conductor *c : c_list) {
 		c->refreshText();
+			//refreshText() resolves an auto-numbering formula into
+			//properties.text without emitting propertiesChange, which is
+			//what the project database listens to. The row was inserted
+			//while text was still the raw formula ("W%sequ_1"), so without
+			//this the wiring list and BOM read the formula, not "W1",
+			//until something forces a full rebuild.
+		if (d->project() && d->project()->dataBase()) {
+			d->project()->dataBase()->updateConductor(c);
+		}
 	}
 }
 
@@ -96,6 +109,29 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 }
 
 /**
+	@brief ConductorCreator::needsPotentialChoice
+	Whether creating a potential between these terminals would ask the user
+	to choose which of several existing potentials to inherit from -- that
+	is, whether the constructor would reach PotentialSelectorDialog.
+
+	This exists for callers with nobody there to answer: the dialog is a
+	plain QDialog::exec(), not routed through QET::QetMessageBox, so its
+	non-interactive mode does not cover it and a headless caller would hang
+	on it indefinitely. Such a caller can check this first and decline.
+	Exposed here, rather than reimplemented by the caller, so the condition
+	cannot drift away from the one setUpPropertieToUse() actually applies.
+	@param terminals_list the terminals a potential would be created between
+	@return true if the constructor would open the dialog
+*/
+bool ConductorCreator::needsPotentialChoice(const QList<Terminal *> &terminals_list)
+{
+	if (terminals_list.size() <= 1) {
+		return false;
+	}
+	return existingPotential(terminals_list).size() >= 2;
+}
+
+/**
 	@brief ConductorCreator::propertieToUse
 	@return true if the caller should proceed with conductor creation,
 	false if the user cancelled the potential-selection dialog (in which
@@ -104,7 +140,7 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 */
 bool ConductorCreator::setUpPropertieToUse()
 {
-	QList<Conductor *> potentials = existingPotential();
+	QList<Conductor *> potentials = existingPotential(m_terminals_list);
 
 		//There is an existing potential
 		//we get one of them
@@ -145,14 +181,15 @@ bool ConductorCreator::setUpPropertieToUse()
 	@brief ConductorCreator::existingPotential
 	Return the list of existing potential of
 	the terminal list
+	@param terminals_list the terminals to inspect
 	@return c_list QList<Conductor *>
 */
-QList<Conductor *> ConductorCreator::existingPotential()
+QList<Conductor *> ConductorCreator::existingPotential(const QList<Terminal *> &terminals_list)
 {
 	QList<Conductor *> c_list;
 	QList<Terminal *> t_exclude;
 	
-	for (Terminal *t : m_terminals_list)
+	for (Terminal *t : terminals_list)
 	{
 		if (t_exclude.contains(t)) {
 			continue;
@@ -166,9 +203,9 @@ QList<Conductor *> ConductorCreator::existingPotential()
 				//in the same potential of c, and if true, exclude this terminal from the search.
 			for (Conductor *c : t->conductors().first()->relatedPotentialConductors(false))
 			{
-				if (m_terminals_list.contains(c->terminal1)) {
+				if (terminals_list.contains(c->terminal1)) {
 					t_exclude.append(c->terminal1);
-				} else if (m_terminals_list.contains(c->terminal2)) {
+				} else if (terminals_list.contains(c->terminal2)) {
 					t_exclude.append(c->terminal2);
 				}
 			}
@@ -189,6 +226,41 @@ QList<Conductor *> ConductorCreator::existingPotential()
 	@brief ConductorCreator::hubTerminal
 	@return hub_terminal
 */
+/**
+	@brief ConductorCreator::terminalPairs
+	@param chain : the project limits the wires per terminal
+	(discussion #1158, WiringRules::chainsWires())
+	@return the pairs of terminals to wire: all to one hub terminal (a
+	star), or with \p chain one after another (WiringRules::chainOrder()),
+	since a star gives the hub a wire per other terminal.
+*/
+QList<QPair<Terminal *, Terminal *>> ConductorCreator::terminalPairs(bool chain)
+{
+	QList<QPair<Terminal *, Terminal *>> pairs;
+	if (chain)
+	{
+		QList<QPointF> points;
+		for (Terminal *t : std::as_const(m_terminals_list)) {
+			points << t->scenePos();
+		}
+		const QList<int> order = WiringRules::chainOrder(points);
+		for (int i = 1 ; i < order.size() ; ++i)
+		{
+			pairs << qMakePair(m_terminals_list.at(order.at(i - 1)),
+							   m_terminals_list.at(order.at(i)));
+		}
+		return pairs;
+	}
+
+	Terminal *hub_terminal = hubTerminal();
+	for (Terminal *t : std::as_const(m_terminals_list)) {
+		if (t != hub_terminal) {
+			pairs << qMakePair(hub_terminal, t);
+		}
+	}
+	return pairs;
+}
+
 Terminal *ConductorCreator::hubTerminal()
 {
 	Terminal *hub_terminal = m_terminals_list.first();

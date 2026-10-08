@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "deleteqgraphicsitemcommand.h"
+#include "../wiringrules.h"
 
 #include "../diagram.h"
+#include "../qetproject.h"
 #include "addgraphicsobjectcommand.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
@@ -26,6 +28,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../shownkinds.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "addelementtextcommand.h"
 #include "../TerminalStrip/realterminal.h"
@@ -206,17 +209,44 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 			}
 
 			ConductorProperties properties = hub_terminal->conductors().first()->properties();
-			for (Terminal *t : terminals_to_connect_list)
+
+				//Every terminal to the hub (a star), or, when the project
+				//limits the wires per terminal (discussion #1158), one after
+				//another (a chain): a star gives the hub a wire per other
+				//terminal, which the limit forbids.
+			QList<std::pair<Terminal *, Terminal *>> pairs;
+			const QETProject *project = hub_terminal->diagram() ? hub_terminal->diagram()->project() : nullptr;
+			if (project && WiringRules::chainsWires(project->wiringRules(), WiringRules::masterEnabled()))
+			{
+				QList<Terminal *> chain {hub_terminal};
+				chain << terminals_to_connect_list;
+				QList<QPointF> points;
+				for (Terminal *ct : std::as_const(chain)) {
+					points << ct->scenePos();
+				}
+				const QList<int> order = WiringRules::chainOrder(points);
+				for (int i = 1 ; i < order.size() ; ++i) {
+					pairs.append(std::make_pair(chain.at(order.at(i - 1)), chain.at(order.at(i))));
+				}
+			}
+			else
+			{
+				for (Terminal *t : std::as_const(terminals_to_connect_list)) {
+					pairs.append(std::make_pair(hub_terminal, t));
+				}
+			}
+
+			for (const auto &new_pair : std::as_const(pairs))
 			{
 					//If a conductor was already created between these two terminals
 					//in this undo command, from another removed element, we do nothing
 				bool exist_ = false;
 				for (std::pair<Terminal *, Terminal *> pair : m_connected_terminals)
 				{
-					if  (pair.first == hub_terminal && pair.second == t) {
+					if  (pair.first == new_pair.first && pair.second == new_pair.second) {
 						exist_ = true;
 						continue;
-					} else if (pair.first == t && pair.second == hub_terminal) {
+					} else if (pair.first == new_pair.second && pair.second == new_pair.first) {
 						exist_ = true;
 						continue;
 					}
@@ -224,11 +254,11 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 
 				if (exist_ == false)
 				{
-					m_connected_terminals.append(std::make_pair<Terminal *, Terminal *>((Terminal *)hub_terminal, (Terminal *)t));
+					m_connected_terminals.append(new_pair);
 					qInfo() << "m_connected_terminals" << m_connected_terminals;
-					Conductor *new_cond = new Conductor(hub_terminal, t);
+					Conductor *new_cond = new Conductor(new_pair.first, new_pair.second);
 					new_cond->setProperties(properties);
-					new AddGraphicsObjectCommand(new_cond, t->diagram(), QPointF(), this);
+					new AddGraphicsObjectCommand(new_cond, new_pair.second->diagram(), QPointF(), this);
 				}
 			}
 		}
@@ -324,7 +354,8 @@ void DeleteQGraphicsItemCommand::redo()
 			//current conductor is visible (that mean the conductor have the single displayed text)
 			//We call adjustTextItemPosition to other conductor at the same potential to keep
 			//a visible text on this potential.
-		if (m_diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible())
+			//wantsVisible(): also while wire texts are hidden (View > Show)
+		if (m_diagram -> defaultConductorProperties.m_one_text_per_folio && ShownKinds::wantsVisible(c -> textItem()))
 		{
 			QList <Conductor *> conductor_list;
 			conductor_list << c -> relatedPotentialConductors(false).values();

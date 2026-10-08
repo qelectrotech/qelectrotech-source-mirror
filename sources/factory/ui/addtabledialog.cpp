@@ -22,6 +22,7 @@
 #include "../../utils/qetutils.h"
 #include "ui_addtabledialog.h"
 
+#include "../../qet.h"
 #include <QFontDialog>
 
 /**
@@ -35,6 +36,7 @@ AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
 	ui(new Ui::AddTableDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
 	m_content_widget = content_widget;
@@ -73,6 +75,15 @@ bool AddTableDialog::adjustTableToFolio() const
 }
 
 /**
+	@brief AddTableDialog::setAdjustTableToFolio
+	@param set
+*/
+void AddTableDialog::setAdjustTableToFolio(bool set)
+{
+	ui->m_adjust_table_size_cb->setChecked(set);
+}
+
+/**
 	@brief AddTableDialog::addNewTableToNewDiagram
 	@return
 */
@@ -82,12 +93,33 @@ bool AddTableDialog::addNewTableToNewDiagram() const
 }
 
 /**
+	@brief AddTableDialog::setAddNewTableToNewDiagram
+	@param set
+*/
+void AddTableDialog::setAddNewTableToNewDiagram(bool set)
+{
+	ui->m_add_table_and_folio->setChecked(set);
+}
+
+/**
 	@brief AddTableDialog::tableName
 	@return
 */
 QString AddTableDialog::tableName() const
 {
 	return ui->m_table_name_le->text();
+}
+
+/**
+	@brief AddTableDialog::setTableName
+	Set the name field directly, so a caller that builds this dialog to
+	read from (never shows or execs it -- the scripting API's addTable())
+	does not need a name typed by a user who was never there to type one.
+	@param name
+*/
+void AddTableDialog::setTableName(const QString &name)
+{
+	ui->m_table_name_le->setText(name);
 }
 
 /**

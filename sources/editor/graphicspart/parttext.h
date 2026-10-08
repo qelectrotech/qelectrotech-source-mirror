@@ -50,6 +50,10 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	private:
 		PartText(const PartText &);
 
+	public:
+		QUuid uuid() const {return m_uuid;}
+		void setNewUuid() {m_uuid = QUuid::createUuid();}
+
 		// methods
 	public:
 		enum { Type = UserType + 1107 };
@@ -100,6 +104,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		QRectF boundingRect() const override;
 
 	private:
+		QUuid m_uuid = QUuid::createUuid();
 		QPointF margin() const;
 		void applyLineAlignment();
 		void prepareAlignment();

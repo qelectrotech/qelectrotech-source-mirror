@@ -54,24 +54,8 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	setDropIndicatorShown(true);
 	setAutoExpandDelay(1000);
 	
-	// force du noir sur une alternance de blanc (comme le schema) et de gris
-	// clair, avec du blanc sur bleu pas trop fonce pour la selection
-	//
-	// Element icons are rendered with colors read directly from each .elmt
-	// file (almost always black linework, matching printed-schematic
-	// convention) onto a transparent background -- so this view must keep
-	// a light background regardless of the OS/desktop theme, or the icons
-	// become invisible on dark themes. QAbstractItemView paints its rows
-	// using the viewport's palette, not the view's own, so the palette
-	// must be applied to both to actually take effect under every style.
-	QPalette qp = palette();
-	qp.setColor(QPalette::Text,            Qt::black);
-	qp.setColor(QPalette::Base,            Qt::white);
-	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
-	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
-	qp.setColor(QPalette::HighlightedText, Qt::black);
-	setPalette(qp);
-	viewport()->setPalette(qp);
+	// Rows follow the application palette; the icons shown here come from
+	// the icon theme, which has a dark variant.
 	
 		// we handle double click on items ourselves
 	connect(this, &ElementsPanel::itemDoubleClicked, this, &ElementsPanel::slot_doubleClick);
@@ -271,9 +255,9 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
 */
 void ElementsPanel::reload()
 {
-	QIcon system_icon(":/ico/16x16/qet.png");
-	QIcon company_icon(":/ico/16x16/go-company.png");
-	QIcon user_icon(":/ico/16x16/go-home.png");
+	QIcon system_icon = QIcon::fromTheme("qet");
+	QIcon company_icon = QET::Icons::Company;
+	QIcon user_icon = QIcon::fromTheme("go-home");
 
 	// load the common title block templates collection
 	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();

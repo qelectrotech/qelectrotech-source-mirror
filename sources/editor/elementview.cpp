@@ -17,6 +17,8 @@
 */
 #include "elementview.h"
 
+#include "elementviewgrid.h"
+
 #include "../qetapp.h"
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
@@ -115,6 +117,18 @@ void ElementView::scaleClamped(qreal factor)
 		return;
 	}
 	scale(factor, factor);
+}
+
+/**
+	@brief ElementView::zoom
+	Zoom by an arbitrary factor, for a continuous input such as a 3D mouse.
+	Same clamping as the wheel zoom.
+	@param zoom_factor : > 1 zooms in, < 1 zooms out
+*/
+void ElementView::zoom(qreal zoom_factor)
+{
+	adjustSceneRect();
+	scaleClamped(zoom_factor);
 }
 
 /**
@@ -523,29 +537,12 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 
 	// choisit la granularite de la grille en fonction du zoom en cours
 	// selects the grid granularity according to the current zoom level
-	int drawn_x_grid = 1;//scene_ -> xGrid();
-	int drawn_y_grid = 1;//scene_ -> yGrid();
-	bool draw_grid = true;
-	bool draw_cross = false;
+	const ElementViewGrid grid = ElementViewGrid::forZoom(zoom_factor);
+	const int grid_step = grid.step;
+	const bool draw_grid = grid.draw_grid;
+	const bool draw_cross = grid.draw_cross;
 
-	if (zoom_factor < 1.0) { //< no grid
-		draw_grid = false;
-	} else if (zoom_factor < 4.0) { //< grid 10*10
-		drawn_x_grid *= 10;
-		drawn_y_grid *= 10;
-	}else if (zoom_factor < 8.0) { //< grid 5*5
-		drawn_x_grid *= 5;
-		drawn_y_grid *= 5;
-		draw_cross = true;
-	} else if (zoom_factor < 10.0) { //< grid 2*2
-		drawn_x_grid *= 2;
-		drawn_y_grid *= 2;
-		draw_cross = true;
-	} else { //< grid 1*1
-		draw_cross = true;
-	}
-
-	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
+	m_scene->setGrid(grid_step, grid_step);
 
 	if (draw_grid) {
 		// draw the dots of the grid
@@ -575,12 +572,12 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limit_y = r.y() + r.height();
 
 		int g_x = (int)ceil(r.x());
-		while (g_x % drawn_x_grid) ++ g_x;
+		while (g_x % grid_step) ++ g_x;
 		int g_y = (int)ceil(r.y());
-		while (g_y % drawn_y_grid) ++ g_y;
+		while (g_y % grid_step) ++ g_y;
 
-		for (int gx = g_x ; gx < limit_x ; gx += drawn_x_grid) {
-			for (int gy = g_y ; gy < limit_y ; gy += drawn_y_grid) {
+		for (int gx = g_x ; gx < limit_x ; gx += grid_step) {
+			for (int gy = g_y ; gy < limit_y ; gy += grid_step) {
 				if (draw_cross) {
 					if (!(gx % 10) && !(gy % 10)) {
 						p -> drawLine(QLineF(gx - (pen.width()/4.0), gy, gx + (pen.width()/4.0), gy));
@@ -594,6 +591,19 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 			}
 		}
 	}
+
+	if (m_scene->backgroundFrameVisible()) {
+		const QSizeF frame_size = m_scene->backgroundFrameSize();
+		const QRectF frame_rect(-frame_size.width() / 2.0, -frame_size.height() / 2.0,
+					 frame_size.width(), frame_size.height());
+		QPen frame_pen(Qt::blue);
+		frame_pen.setCosmetic(true);
+		frame_pen.setStyle(Qt::DashLine);
+		p -> setPen(frame_pen);
+		p -> setBrush(Qt::NoBrush);
+		p -> drawRect(frame_rect);
+	}
+
 	p -> restore();
 }
 

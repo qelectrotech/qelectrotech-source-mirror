@@ -59,17 +59,41 @@ jobs:
 
       # ----------------------------------------------------------------
       # 2. Download the portable artifact for this flavor
+      #
+      #    Wrapped in nick-fields/retry: actions/download-artifact@v8 has
+      #    shown repeated "Artifact download failed after 5 retries"
+      #    failures on this cross-workflow download (via run-id) — not a
+      #    real content/digest problem, just flaky Azure blob delivery.
+      #    Two separate occurrences observed within days of each other
+      #    (different artifact IDs/digests, same failure signature), each
+      #    one enough to fail build-msi outright and block the rest of the
+      #    pipeline. Retrying the whole download 3x is cheap insurance.
+      #    Switched to `gh run download` here because nick-fields/retry
+      #    can only retry a shell command, not re-invoke a `uses:` step.
       # ----------------------------------------------------------------
       - name: Download portable artifact
-        uses: actions/download-artifact@v8
+        uses: nick-fields/retry@v3
         with:
-          name: ${{ matrix.portable_artifact }}
-          path: artifact\files
-          # workflow_run => use the triggering run's ID
-          # workflow_dispatch => use input run_id if provided, otherwise current run
-          run-id: ${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_wait_seconds: 30
+          shell: pwsh
+          command: |
+            if (Test-Path "artifact\files") { Remove-Item -Recurse -Force "artifact\files" }
+            New-Item -ItemType Directory -Force -Path "artifact\files" | Out-Null
+
+            $runId = "${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}"
+            gh run download $runId `
+              --repo "${{ github.repository }}" `
+              --name "${{ matrix.portable_artifact }}" `
+              --dir "artifact\files"
+
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "gh run download failed (exit $LASTEXITCODE)"
+              exit $LASTEXITCODE
+            }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # ----------------------------------------------------------------
       # 3. Extract version
@@ -292,9 +316,15 @@ jobs:
       # check: forks never have the SignPath secrets, and a fork-originated
       # PR/run must never attempt a signing request.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
+      # continue-on-error: SignPath's certificate is still pending validation
+      # (Sept 2026) — the signing request currently fails with a 500 on the
+      # SignPath side. Kept non-blocking so the nightly MSI still ships
+      # (unsigned) while the certificate is pending. Remove
+      # continue-on-error once the certificate is confirmed active.
       - name: Sign MSI via SignPath
         id: sign
         if: github.repository == 'qelectrotech/qelectrotech-source-mirror' && env.SIGNPATH_API_TOKEN != ''
+        continue-on-error: true
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -306,7 +336,22 @@ jobs:
           wait-for-completion: true
           output-artifact-directory: 'dist\'
 
+      # If signing succeeded, SignPath already overwrote dist\*.msi with the
+      # signed copy (output-artifact-directory above) — nothing to do here.
+      # If it failed/was skipped, dist\*.msi is still the unsigned MSI from
+      # the "Build MSI" step, so the rest of the pipeline just ships that.
+      - name: Report signing status
+        if: always()
+        shell: pwsh
+        run: |
+          if ("${{ steps.sign.outcome }}" -eq "success") {
+            Write-Host "MSI signed successfully via SignPath."
+          } else {
+            Write-Warning "MSI signing skipped or failed (outcome: ${{ steps.sign.outcome }}) — shipping UNSIGNED MSI. Likely cause: SignPath certificate still pending validation."
+          }
+
       - name: Upload signed MSI artifact
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-msi-${{ matrix.flavor }}
@@ -315,6 +360,13 @@ jobs:
           if-no-files-found: error
 
       - name: Delete old nightly .msi asset
+        # Only run if a new MSI actually exists in dist/ — otherwise the old
+        # (still working) nightly .msi would be deleted without anything to
+        # replace it, leaving the nightly release with no MSI at all until
+        # the next successful build (see windows-msi-pipeline notes,
+        # run 35694391567: an upstream artifact-download failure meant
+        # dist\*.msi never existed for that run).
+        if: always() && hashFiles('dist/*.msi') != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -328,6 +380,7 @@ jobs:
         shell: pwsh
 
       - name: Upload MSI to nightly release
+        if: always()
         uses: softprops/action-gh-release@v3
         with:
           tag_name: nightly
@@ -358,7 +411,20 @@ jobs:
   deploy-pages:
     needs: build-msi
     runs-on: ubuntu-latest
-    if: always() && needs.build-msi.result == 'success'
+    # Regenerate the page whenever the MSI job actually ran (success OR
+    # packaging/signing failure) — not only on full success.
+    # generate-page.py queries the published assets on the "nightly"
+    # release itself (line 407: `gh release view nightly --json assets`),
+    # so it already handles a missing MSI natively (empty MSI_NAME -> no
+    # MSI button on the page). The page only needs the exe/zip already
+    # published by windows-build.yml, independent of the MSI's fate.
+    # Only "skipped"/"cancelled" are excluded: if build-msi never ran at
+    # all (e.g. Windows Build itself failed), there is nothing new to
+    # publish and regenerating the page would be pointless.
+    if: >
+      always() &&
+      needs.build-msi.result != 'skipped' &&
+      needs.build-msi.result != 'cancelled'
     permissions:
       contents: write
       pages: write

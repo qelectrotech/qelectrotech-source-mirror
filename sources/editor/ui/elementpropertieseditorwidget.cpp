@@ -19,6 +19,7 @@
 
 #include "../../elementdialog.h"
 #include "../../factory/elementpicturefactory.h"
+#include "../../qet.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "ui_elementpropertieseditorwidget.h"
@@ -26,6 +27,7 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QClipboard>
+#include <QItemDelegate>
 #include <QComboBox>
 #include <QFileDialog>
 #include <QFont>
@@ -54,42 +56,28 @@
 #include <qsvgrenderer.h>
 #include <QRegularExpressionValidator>
 
-/**
-	@brief The EditorDelegate class
-	This delegate is only use for disable the edition of the first
-	column of the information tree widget
-*/
-class EditorDelegate : public QItemDelegate
+QWidget* EditorDelegate::createEditor(QWidget *parent,
+		      const QStyleOptionViewItem &option,
+			  const QModelIndex &index) const
 {
-	public:
-		EditorDelegate(QObject *parent) :
-			QItemDelegate(parent)
-		{}
-
-	QWidget* createEditor(QWidget *parent,
-			      const QStyleOptionViewItem &option,
-				  const QModelIndex &index) const override
+	if(index.column() == 1)
 	{
-		if(index.column() == 1)
-		{
-			const QString key = index.sibling(index.row(), 0)
-									.data(Qt::UserRole).toString();
-
+		const QString key = index.sibling(index.row(), 0)
+								.data(Qt::UserRole).toString();
 			if (key == QETInformation::ELMT_WIDTH || key == QETInformation::ELMT_HEIGHT || key == QETInformation::ELMT_DEPTH)
-			{
-				auto *line_edit = new QLineEdit(parent);
-				auto *validator = new QETInformation::NumericInfoValidator(line_edit);
-				line_edit->setValidator(validator);
-				line_edit->setPlaceholderText(tr("ex. 80.5"));
-				line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
-				return line_edit;
-			}
-
-			return QItemDelegate::createEditor(parent, option, index);
+		{
+			auto *line_edit = new QLineEdit(parent);
+			auto *validator = new QETInformation::NumericInfoValidator(line_edit);
+			line_edit->setValidator(validator);
+			line_edit->setPlaceholderText(tr("ex. 80.5"));
+			line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
+			return line_edit;
 		}
-		return nullptr;
+
+		return QItemDelegate::createEditor(parent, option, index);
 	}
-};
+	return nullptr;
+}
 
 /**
  * @brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
@@ -102,6 +90,7 @@ ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(ElementData data, Q
 	m_data(data)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	setUpReferenceUi();
 	setUpInterface();
 	upDateInterface();
@@ -199,13 +188,13 @@ void ElementPropertiesEditorWidget::upDateInterface()
 
 		const DiagramContext &info = m_data.m_informations;
 		ui->m_auto_num_locked_cb->setChecked(
-			info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString()));
 		ui->m_potential_isolating_cb->setChecked(
-			info.value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("potential_isolating")).toString()));
 	}
 
 	ui->m_exclude_from_bom_cb->setChecked(
-		m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString() == QLatin1String("true"));
+		QET::infoFlagIsTrue(m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString()));
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
@@ -791,6 +780,29 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 		contact_ct->setMaximum(20);
 		contact_ct->setValue(group.contactCount);
 		ui->m_slave_groups_table->setCellWidget(i, 2, contact_ct);
+
+		// When the contact count changes, keep the terminal count in step
+		// with it, otherwise the two drift apart (both are edited
+		// independently): the stored terminals-per-contact ratio is kept,
+		// or the contact type default (2, 3 for a switch) is used when the
+		// stored values don't divide evenly (inconsistent legacy data).
+		const int old_contacts = group.contactCount;
+		const int old_terminals = group.terminalCount;
+		connect(contact_ct, QOverload<int>::of(&QSpinBox::valueChanged),
+			this, [this, i, old_contacts, old_terminals](int val) {
+				if (i < m_data.m_slave_contact_groups.size()) {
+					readSlaveGroupsFromTable();
+					auto &group = m_data.m_slave_contact_groups[i];
+					int per_pole = old_terminals / qMax(1, old_contacts);
+					if (per_pole < 1 || old_terminals % qMax(1, old_contacts) != 0)
+						per_pole = group.type == ElementData::SW ? 3 : 2;
+					else if (group.type == ElementData::SW && per_pole < 3)
+						per_pole = 3; //a switch needs common, NC and NO
+					group.contactCount = val;
+					group.terminalCount = val * per_pole;
+					populateSlaveGroupsTable();
+				}
+		});
 
 		// Terminal count
 		auto *terminal_ct = new QSpinBox(ui->m_slave_groups_table);

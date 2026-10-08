@@ -57,7 +57,17 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	connect(document(),
 		&QTextDocument::contentsChanged,
 		this,
-		[this]() { adjustItemPosition(); });
+		[this]() {
+			adjustItemPosition();
+			// During inline edition, keep the aligned point in place after
+			// every keystroke instead of only when the edition ends (#1252).
+			// setPlainText() and setFont() re-anchor on their own.
+			if (!previous_text.isNull()) {
+				applyLineAlignment();
+				finishAlignment();
+				prepareAlignment();
+			}
+		});
 }
 
 /// Destructeur
@@ -115,6 +125,11 @@ void PartText::flip(qreal axis_y) {
 void PartText::fromXml(const QDomElement &xml_element) {
 	bool ok;
 
+	const QUuid uuid(xml_element.attribute(QStringLiteral("uuid")));
+	if (!uuid.isNull()) {
+		m_uuid = uuid;
+	}
+
 	if (xml_element.hasAttribute("size")) {
 		int font_size = xml_element.attribute("size").toInt(&ok);
 		if (!ok || font_size < 1) {
@@ -169,6 +184,7 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("font", QETUtils::fontToString(font()));
 	xml_element.setAttribute("rotation", QString::number(rot));
 	xml_element.setAttribute("color", defaultTextColor().name());
+	xml_element.setAttribute("uuid", m_uuid.toString());
 
 		// Only written when different from the historical behaviour, so
 		// existing .elmt files round-trip byte-identical.
@@ -546,8 +562,8 @@ void PartText::endEdition()
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
 			undo -> setText(tr("Modifier un champ texte"));
 			undoStack().push(undo);
-			previous_text = QString();
 		}
+		previous_text = QString();
 	}
 
 	// deselectionne le texte

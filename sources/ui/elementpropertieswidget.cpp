@@ -367,7 +367,7 @@ void ElementPropertiesWidget::addGeneralWidget()
 */
 QWidget *ElementPropertiesWidget::generalWidget()
 {
-	QString description_string(tr("Élement\n"));
+	QString description_string(tr("Élément\n"));
 
 		// some element characteristic
 	description_string += QString(tr("Nom : %1\n")).arg(m_element -> name());

@@ -22,6 +22,36 @@
 #include <QHash>
 #include <QMetaEnum>
 
+namespace {
+/**
+	@brief xrefPosFromKey
+	@param key : stored name of the position, e.g. "AlignBottom"
+	@return the position, or Qt::AlignBottom if key is empty or not one of
+	the positions the cross-reference settings offer. Older versions saved
+	an empty "xrefpos", which drew the cross-reference over the label.
+*/
+Qt::AlignmentFlag xrefPosFromKey(const QString &key)
+{
+	bool ok = false;
+	const int value = QMetaEnum::fromType<Qt::Alignment>()
+			.keyToValue(key.toStdString().data(), &ok);
+	if (!ok)
+		return Qt::AlignBottom;
+
+	switch (value) {
+		case Qt::AlignBottom:
+		case Qt::AlignTop:
+		case Qt::AlignLeft:
+		case Qt::AlignRight:
+		case Qt::AlignBaseline:
+		case Qt::AlignHCenter:
+			return Qt::AlignmentFlag(value);
+		default:
+			return Qt::AlignBottom;
+	}
+}
+}
+
 /**
 	@brief XRefProperties::XRefProperties
 	Default Constructor
@@ -30,6 +60,8 @@ XRefProperties::XRefProperties()
 {
 	m_show_power_ctc = true;
 	m_show_terminal_name = true;
+	m_show_all_configured_slaves = false;
+	m_stack_overlapping = true;
 	m_display = Cross;
 	m_snap_to = Bottom;
 	m_prefix_keys << "power" << "delay" << "switch";
@@ -51,6 +83,8 @@ void XRefProperties::toSettings(QSettings &settings,
 {
 	settings.setValue(prefix % "showpowerctc", m_show_power_ctc);
 	settings.setValue(prefix % "showterminalname", m_show_terminal_name);
+	settings.setValue(prefix % "showallconfiguredslaves", m_show_all_configured_slaves);
+	settings.setValue(prefix % "stackoverlapping", m_stack_overlapping);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix % "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -84,6 +118,8 @@ void XRefProperties::fromSettings(const QSettings &settings,
 {
 	m_show_power_ctc = settings.value(prefix % "showpowerctc", true).toBool();
 	m_show_terminal_name = settings.value(prefix % "showterminalname", true).toBool();
+	m_show_all_configured_slaves = settings.value(prefix % "showallconfiguredslaves", false).toBool();
+	m_stack_overlapping = settings.value(prefix % "stackoverlapping", true).toBool();
 	QString display = settings.value(prefix % "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix % "snapto", "label").toString();
@@ -93,8 +129,7 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos", "AlignBottom").toString()).toStdString().data()));
+	m_xref_pos = xrefPosFromKey(settings.value(prefix % "xrefpos").toString());
 
 	for (QString key : m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key % "prefix").toString());
@@ -115,6 +150,8 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	xml_element.setAttribute("showterminalname", m_show_terminal_name? "true" : "false");
+	xml_element.setAttribute("showallconfiguredslaves", m_show_all_configured_slaves? "true" : "false");
+	xml_element.setAttribute("stackoverlapping", m_stack_overlapping? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -147,19 +184,14 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	m_show_terminal_name = xml_element.attribute("showterminalname", "true") == "true";
+	m_show_all_configured_slaves = xml_element.attribute("showallconfiguredslaves", "false") == "true";
+	m_stack_overlapping = xml_element.attribute("stackoverlapping", "true") == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 
-	QString xrefpos = xml_element.attribute("xrefpos","Left");
-
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-
-	if(xml_element.hasAttribute("xrefpos"))
-		m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xml_element.attribute("xrefpos").toStdString().data()));
-	else
-		m_xref_pos = Qt::AlignBottom;
+	m_xref_pos = xrefPosFromKey(xml_element.attribute("xrefpos"));
 
 	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_slave_offset = xml_element.attribute("slave_offset", "0").toInt();
@@ -200,6 +232,8 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc
 			&& m_show_terminal_name == xrp.m_show_terminal_name
+			&& m_show_all_configured_slaves == xrp.m_show_all_configured_slaves
+			&& m_stack_overlapping == xrp.m_stack_overlapping
 			&& m_display     == xrp.m_display
 			&& m_snap_to     == xrp.m_snap_to
 			&& m_prefix      == xrp.m_prefix

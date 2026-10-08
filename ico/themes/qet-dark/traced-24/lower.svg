@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#dcdcdc; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M5 3h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.27"/>
+  <path d="M6 3h1v1h-1zM12 3h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.47"/>
+  <path d="M13 3h1v1h-1zM14 3h1v1h-1zM15 3h1v1h-1zM16 3h1v1h-1zM17 3h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM13 7h1v1h-1zM14 7h1v1h-1zM8 10h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM16 14h1v1h-1zM17 14h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM7 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.53"/>
+  <path d="M18 3h1v1h-1zM18 14h1v1h-1zM3 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.49"/>
+  <path d="M5 4h1v1h-1zM5 5h1v1h-1zM5 6h1v1h-1zM5 7h1v1h-1zM5 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.5"/>
+  <path d="M6 4h1v1h-1zM6 5h1v1h-1zM6 6h1v1h-1zM6 7h1v1h-1zM6 8h1v1h-1zM6 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.87"/>
+  <path d="M11 4h1v1h-1zM10 5h1v1h-1zM9 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.65"/>
+  <path d="M12 4h1v1h-1zM13 4h1v1h-1zM14 4h1v1h-1zM15 4h1v1h-1zM16 4h1v1h-1zM11 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM15 5h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM13 6h1v1h-1zM14 6h1v1h-1zM8 9h1v1h-1zM6 11h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM14 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM15 16h1v1h-1zM5 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM8 17h1v1h-1zM9 17h1v1h-1zM10 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M17 4h1v1h-1zM16 5h1v1h-1zM15 6h1v1h-1zM6 10h1v1h-1zM17 15h1v1h-1zM16 16h1v1h-1zM15 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.96"/>
+  <path d="M18 4h1v1h-1zM17 5h1v1h-1zM16 6h1v1h-1zM4 11h1v1h-1zM18 15h1v1h-1zM17 16h1v1h-1zM16 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.25"/>
+  <path d="M8 7h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.24"/>
+  <path d="M15 7h1v1h-1zM6 14h1v1h-1zM15 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.22"/>
+  <path d="M3 8h1v1h-1zM7 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.34"/>
+  <path d="M8 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.31"/>
+  <path d="M9 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.05"/>
+  <path d="M12 8h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.04"/>
+  <path d="M13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM16 8h1v1h-1zM17 8h1v1h-1zM18 8h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM14 13h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.07"/>
+  <path d="M2 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.07"/>
+  <path d="M3 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.92"/>
+  <path d="M4 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.69"/>
+  <path d="M5 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.51"/>
+  <path d="M9 9h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.36"/>
+  <path d="M11 9h1v1h-1zM10 10h1v1h-1zM9 11h1v1h-1zM8 12h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.23"/>
+  <path d="M12 9h1v1h-1zM11 10h1v1h-1zM10 11h1v1h-1zM9 12h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.95"/>
+  <path d="M13 9h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM16 9h1v1h-1zM17 9h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM10 12h1v1h-1zM11 12h1v1h-1zM12 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M18 9h1v1h-1zM17 10h1v1h-1zM16 11h1v1h-1zM15 12h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.67"/>
+  <path d="M3 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.21"/>
+  <path d="M4 10h1v1h-1zM6 15h1v1h-1zM5 16h1v1h-1zM4 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.95"/>
+  <path d="M5 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.94"/>
+  <path d="M7 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.98"/>
+  <path d="M5 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.97"/>
+  <path d="M7 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.63"/>
+  <path d="M5 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.32"/>
+  <path d="M6 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.66"/>
+  <path d="M8 13h1v1h-1z" class="ColorScheme-Highlight" style="fill:currentColor;opacity:0.05"/>
+  <path d="M5 15h1v1h-1zM4 16h1v1h-1zM3 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.23"/>
+  </g>
+</svg>

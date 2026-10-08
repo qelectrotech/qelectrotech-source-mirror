@@ -58,10 +58,20 @@ class CrossRefItem : public QGraphicsObject
 	private:
 		void init();
 		void setUpConnection();
+		void stackAtBottom();
+		static bool textsOverlap(const QList<QRectF> &a,
+								const QList<QRectF> &b);
 	
 	public:
 		enum { Type = UserType + 1009 };
 		int type() const override { return Type; }
+
+		/// Returns true when \a xrp asks the contact comb of \a elmt to show
+		/// every slave contact the master defines, even the ones no slave is
+		/// linked to yet. \a elmt must be a master element.
+		static bool showAllConfiguredSlaves(
+				const Element *elmt,
+				const XRefProperties &xrp);
 
 		/**
 			@brief The CONTACTS enum
@@ -121,9 +131,17 @@ class CrossRefItem : public QGraphicsObject
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
 		void drawAsPlcTable(QPainter &painter);
-		QRectF drawContact(QPainter &painter, int flags, Element *elmt, int pole_index = 0);
+		bool mustDrawAllConfiguredSlaves() const;
+		QRectF drawLinkedSlaveContacts(QPainter &painter, Element *elmt);
+		QRectF drawContact(QPainter &painter,
+				   int flags,
+				   Element *elmt,
+				   int pole_index = 0,
+				   const QStringList &master_labels = QStringList());
 		void fillCrossRef(QPainter &painter);
 		void AddExtraInfo(QPainter &painter, const QString&);
+		void drawText(QPainter &painter, const QRectF &rect, int flags,
+					  const QString &text);
 		QList<Element *> NOElements() const;
 		QList<Element *> NCElements() const;
 
@@ -136,6 +154,7 @@ class CrossRefItem : public QGraphicsObject
 		int m_drawed_contacts;
 		bool m_update_map = false;
 		QMultiMap <Element *, QRectF> m_hovered_contacts_map;
+		QList <QRectF> m_text_rects; //rects of the drawn texts (local coords)
 		Element *m_hovered_contact = nullptr;
 		DynamicElementTextItem *m_text = nullptr;
 		ElementTextItemGroup *m_group = nullptr;

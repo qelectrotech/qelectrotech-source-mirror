@@ -18,6 +18,7 @@
 #ifndef ASSIGNVARIABLES_H
 #define ASSIGNVARIABLES_H
 #include "../diagramcontext.h"
+#include "../diagramposition.h"
 #include "numerotationcontext.h"
 
 #include <QPointF>
@@ -58,6 +59,36 @@ namespace autonum
 	};
 
 	/**
+		@brief The FormulaContext struct
+		Everything a formula's variables are read from: the folio it is on
+		and, for an element's or a conductor's formula, that item.
+		AssignVariables::formulaToLabel() fills one from a built folio; the
+		project database fills one from the project's file.
+	*/
+	struct FormulaContext
+	{
+			/// border_and_titleblock.folio(), folioIndex(), folioTotal()...
+		QString folio;
+		int folio_index = 0;
+		int folio_total = 0;
+		QString plant;
+		QString locmach;
+			/// the title block's additional fields and the project's properties
+		DiagramContext title_block_fields;
+		DiagramContext project_properties;
+			/// an element's grid cell (%c, %l) and prefix
+		bool has_element = false;
+		DiagramPosition element_position;
+		QString element_prefix;
+			/// a conductor's %wf, %wv, %wc and %ws
+		bool has_conductor = false;
+		QString wire_function;
+		QString wire_tension_protocol;
+		QString wire_color;
+		QString wire_section;
+	};
+
+	/**
 		@brief The AssignVariables class
 		This class assign variable of a formula string.
 		Return the final string used to be displayed from a formula string.
@@ -66,21 +97,20 @@ namespace autonum
 	{
 		public:
 			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt = nullptr, const Conductor *cndr = nullptr);
+			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, const FormulaContext &context);
 			static QString replaceVariable (const QString &formula, const DiagramContext &dc);
 			static QString genericXref (const Element *element);
 
 		private:
-			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt = nullptr, const Conductor *cndr = nullptr);
+			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct, const FormulaContext &context);
 			void assignTitleBlockVar();
 			void assignProjectVar();
 			void assignSequence();
 
-			Diagram *m_diagram  = nullptr;
+			const FormulaContext &m_context;
 			QString m_arg_formula;
 			QString m_assigned_label;
 			sequentialNumbers m_seq_struct;
-			const Element *m_element = nullptr;
-			const Conductor *m_conductor = nullptr;
 	};
 
 	void setSequentialToList(QStringList &list, NumerotationContext &nc, const QString& type);

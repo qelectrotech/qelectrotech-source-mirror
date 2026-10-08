@@ -37,6 +37,8 @@ ExportProperties::ExportProperties() :
 	draw_terminal_names(false),
 	draw_bg_transparent(false),
 	draw_colored_conductors(true),
+	dxf_blocks(false),
+	dxf_attributes(false),
 	exported_area(QET::BorderArea)
 {
 }
@@ -77,6 +79,10 @@ void ExportProperties::toSettings(QSettings &settings,
 			  draw_bg_transparent);
 	settings.setValue(prefix % "drawcoloredconductors",
 			  draw_colored_conductors);
+	settings.setValue(prefix % "dxfblocks",
+			  dxf_blocks);
+	settings.setValue(prefix % "dxfattributes",
+			  dxf_attributes);
 	settings.setValue(prefix % "area",
 			  QET::diagramAreaToString(exported_area));
 }
@@ -115,6 +121,10 @@ void ExportProperties::fromSettings(QSettings &settings,
 	draw_colored_conductors = settings.value(
 				prefix % "drawcoloredconductors",
 				true ).toBool();
+	dxf_blocks = settings.value(prefix % "dxfblocks",
+				    false).toBool();
+	dxf_attributes = settings.value(prefix % "dxfattributes",
+					false).toBool();
 
 	exported_area  = QET::diagramAreaFromString(
 				settings.value(

@@ -26,6 +26,7 @@
 #include "../../qetproject.h"
 
 class RealTerminal;
+class QMimeData;
 
 /**
  * @brief The FreeTerminalModel class
@@ -60,6 +61,12 @@ class FreeTerminalModel : public QAbstractTableModel
 		QVector<modelRealTerminalData> modifiedModelRealTerminalData() const;
 		modelRealTerminalData dataAtRow(int row) const;
 		QVector<QSharedPointer<RealTerminal>> realTerminalForIndex(const QModelIndexList &index_list) const;
+
+		QStringList mimeTypes() const override;
+		QMimeData *mimeData(const QModelIndexList &indexes) const override;
+		static QString freeTerminalMimeType();
+		static QVector<QUuid> uuidsFromMimeData(const QMimeData *mime_data);
+		static QMimeData *mimeDataForUuids(const QVector<QUuid> &uuids);
 
 	private:
 		void fillTerminalVector();

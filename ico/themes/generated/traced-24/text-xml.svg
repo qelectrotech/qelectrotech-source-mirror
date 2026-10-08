@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M12 3h1v1h-1zM16 9h1v1h-1zM16 12h1v1h-1zM9 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.6"/>
+  <path d="M13 3h1v1h-1zM8 18h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.34"/>
+  <path d="M12 4h1v1h-1zM9 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.88"/>
+  <path d="M13 4h1v1h-1zM8 17h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.18"/>
+  <path d="M11 5h1v1h-1zM10 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.13"/>
+  <path d="M12 5h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.93"/>
+  <path d="M6 6h1v1h-1zM15 6h1v1h-1zM6 15h1v1h-1zM15 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.21"/>
+  <path d="M7 6h1v1h-1zM14 6h1v1h-1zM10 11h1v1h-1zM7 15h1v1h-1zM14 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.66"/>
+  <path d="M11 6h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.39"/>
+  <path d="M12 6h1v1h-1zM9 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.67"/>
+  <path d="M5 7h1v1h-1zM5 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.12"/>
+  <path d="M6 7h1v1h-1zM10 13h1v1h-1zM6 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.9"/>
+  <path d="M7 7h1v1h-1zM7 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.35"/>
+  <path d="M11 7h1v1h-1zM10 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.64"/>
+  <path d="M12 7h1v1h-1zM9 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.42"/>
+  <path d="M14 7h1v1h-1zM14 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.33"/>
+  <path d="M15 7h1v1h-1zM11 9h1v1h-1zM10 12h1v1h-1zM15 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.91"/>
+  <path d="M16 7h1v1h-1zM16 14h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.14"/>
+  <path d="M4 8h1v1h-1zM4 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.05"/>
+  <path d="M5 8h1v1h-1zM5 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.82"/>
+  <path d="M6 8h1v1h-1zM15 8h1v1h-1zM6 13h1v1h-1zM15 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.47"/>
+  <path d="M11 8h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.89"/>
+  <path d="M12 8h1v1h-1zM9 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.16"/>
+  <path d="M16 8h1v1h-1zM16 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.84"/>
+  <path d="M17 8h1v1h-1zM17 13h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.06"/>
+  <path d="M4 9h1v1h-1zM4 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.7"/>
+  <path d="M5 9h1v1h-1zM5 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.62"/>
+  <path d="M10 9h1v1h-1zM11 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.15"/>
+  <path d="M17 9h1v1h-1zM17 12h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.72"/>
+  <path d="M3 10h1v1h-1zM18 10h1v1h-1zM3 11h1v1h-1zM18 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.59"/>
+  <path d="M4 10h1v1h-1zM17 10h1v1h-1zM4 11h1v1h-1zM17 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.74"/>
+  <path d="M10 10h1v1h-1zM11 11h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.4"/>
+  <path d="M11 10h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.65"/>
+  <path d="M10 15h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.38"/>
+  <path d="M9 16h1v1h-1z" class="ColorScheme-Text" style="fill:currentColor;opacity:0.92"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path d="M9 5.598A8 5.5 0 1 0 12 5.598" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M9 4H12V7H9ZM10 5V6H11V5Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  </g>
+</svg>

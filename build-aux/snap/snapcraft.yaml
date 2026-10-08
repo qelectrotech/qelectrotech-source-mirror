@@ -50,6 +50,7 @@ parts:
       - python3-lxml
       - python3-tk
       - libtk8.6
+      - libspnav0
 
   kde-sdk-setup:
     plugin: nil
@@ -92,6 +93,7 @@ parts:
       # runs FindCups at configure time and fails without the CUPS headers.
       # Build-time only: nothing from it is staged into the snap.
       - libcups2-dev
+      - libspnav-dev
     override-build: |
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
       snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
@@ -106,7 +108,8 @@ parts:
         -DBUILD_KF=OFF \
         -DPACKAGE_TESTS=OFF \
         -DBUILD_PUGIXML=ON \
-        -DQET_EXPORT_PROJECT_DB=ON
+        -DQET_EXPORT_PROJECT_DB=ON \
+        -DQET_ENABLE_SPACEMOUSE=ON
       ninja -C build -j${CRAFT_PARALLEL_BUILD_COUNT}
       DESTDIR="$CRAFT_PART_INSTALL" ninja -C build install
     override-stage: |

@@ -46,6 +46,9 @@ class Element : public QetGraphicsItem
 	friend class DynamicElementTextItem;
 
 	Q_OBJECT
+	Q_PROPERTY(bool horizontalMirror READ hasHorizontalMirror WRITE setHorizontalMirror NOTIFY mirrorChanged)
+	Q_PROPERTY(bool verticalMirror READ hasVerticalMirror WRITE setVerticalMirror NOTIFY mirrorChanged)
+
 	public:
 			/**
 				@brief The kind enum
@@ -111,6 +114,7 @@ class Element : public QetGraphicsItem
 		void textRemovedFromGroup(
 				DynamicElementTextItem *text,
 				ElementTextItemGroup *group);
+		void mirrorChanged();
 
 	public slots:
 		void updateConductorTexts();
@@ -150,6 +154,7 @@ class Element : public QetGraphicsItem
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
+		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
@@ -184,6 +189,16 @@ class Element : public QetGraphicsItem
 				int> &) const;
 		QUuid uuid() const;
 		int orientation() const;
+		bool hasHorizontalMirror() const {return m_horizontal_mirror;}
+		bool hasVerticalMirror() const {return m_vertical_mirror;}
+		bool isMirrored() const {return m_horizontal_mirror || m_vertical_mirror;}
+		void setHorizontalMirror(bool mirror);
+		void setVerticalMirror(bool mirror);
+		QTransform mirrorTransform() const;
+		bool hasUprightSymbolTexts() const;
+		QTransform symbolTextsTransform() const;
+		void updateSymbolPictures(bool force = false);
+		void keepReadable(QGraphicsItem *child) const;
 
 			//METHODS related to texts
 		void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
@@ -207,6 +222,25 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+			/**
+				Resolve tmp_uuids_link against a caller-supplied candidate
+				list instead of a project-wide search (bugtracker #607).
+				Used right after an XML round-trip (paste, folio
+				duplication) and before the pasted/duplicated elements'
+				uuids are renewed: at that moment a copy's tmp_uuids_link
+				still holds its source's original partner uuid, which
+				still matches the not-yet-renewed uuid of that partner's
+				own copy if it was carried along in the same batch.
+				Resolving only within @p candidates -- not the whole
+				project -- is what stops a linked pair pasted together
+				from matching an original element left elsewhere that
+				happens to still carry that same soon-to-be-replaced
+				uuid. If only one half of a linked group is in
+				@p candidates, its entry finds no match and is dropped,
+				same as initLink(QETProject *) leaving an unresolvable
+				link unlinked.
+			*/
+		void initLink(const QList<Element *> &candidates);
 		QList<Element *> linkedElements ();
 
 		int groupIndexForElement(Element *elmt) const;
@@ -226,6 +260,7 @@ class Element : public QetGraphicsItem
 		QString linkTypeToString() const;
 
 		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
+		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -255,6 +290,7 @@ class Element : public QetGraphicsItem
 				QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	protected:
 			//ATTRIBUTES related to linked element
@@ -274,10 +310,18 @@ class Element : public QetGraphicsItem
 	QList <Terminal *> m_terminals;
 	QPicture m_picture;
 	QPicture m_low_zoom_picture;
+		/// The drawing with its texts kept readable, when the symbol's
+		/// mirror or turn would not leave them so (m_readable_transform)
+	QPicture m_readable_picture;
+	QPicture m_readable_low_zoom_picture;
+	QTransform m_readable_transform;
 	ElementData m_data;
 	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
 
 	void drawPlcTable(QPainter *painter);
+	void setMirror(bool horizontal, bool vertical);
+	void applyMirrorTransform();
+	void keepChildrenReadable() const;
 
 	public:
 		/// Positions where the PLC IO table is drawn (from the .elmt file).
@@ -288,6 +332,8 @@ class Element : public QetGraphicsItem
 		QSize   dimensions;
 		QPoint  hotspot_coord;
 		bool m_mouse_over = false;
+		bool m_horizontal_mirror = false;
+		bool m_vertical_mirror = false;
 		QString m_prefix;
 		QList <DynamicElementTextItem *> m_dynamic_text_list;
 		QList <ElementTextItemGroup *> m_texts_group;

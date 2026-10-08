@@ -19,6 +19,8 @@
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../undocommand/changetitleblockcommand.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
@@ -106,6 +108,10 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	connect(titleblock_infos, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &DiagramPropertiesDialog::editAutoFolioNum);
+	border_infos -> setTitleBlockSize(titleblock_infos -> currentTitleBlockHeight(),
+									  titleblock_infos -> currentTitleBlockEdge());
+	connect(titleblock_infos, &TitleBlockPropertiesWidget::titleBlockSizeChanged,
+			border_infos, &BorderPropertiesWidget::setTitleBlockSize);
 	//titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
 		//Conductor widget
@@ -133,6 +139,8 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	vlayout.addLayout(glayout);
 	vlayout.addWidget(&boutons);
 
+	QET::trackDialogGeometry(this);
+
 	// if dialog is accepted
 	if (this -> exec() == QDialog::Accepted && !diagram_is_read_only)
 	{
@@ -157,6 +165,17 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 #endif
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
+
+				// "One text per potential" changed: show or hide the
+				// conductor texts now, not at the next edit or reload.
+			if (new_conductors.m_one_text_per_folio != conductors.m_one_text_per_folio)
+			{
+				const QList<Conductor *> conductor_list = diagram -> conductors();
+				for (Conductor *c : conductor_list)
+					c -> updateTextVisibility();
+				for (Conductor *c : conductor_list)
+					c -> calculateTextItemPosition();
+			}
 		}
 
 			// Conductor autonum name

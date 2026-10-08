@@ -18,11 +18,13 @@
 #ifndef _QET_H
 #define _QET_H
 
+#include <QColor>
 #include <QDomElement>
 #include <QFile>
 #include <QObject>
 
 class QActionGroup;
+class QDialog;
 /**
 	This file provides useful functions and enums that may be used from
 	anywhere else within the QElectroTech application.
@@ -160,6 +162,23 @@ namespace QET {
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
 	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
+	bool hasNonFiniteGeometry(const QDomElement &);
+		/**
+			Whether an elementInformations flag (auto_num_locked,
+			potential_isolating, exclude_from_bom, ...) counts as "on".
+			Case-insensitive and tolerant of surrounding whitespace, and
+			accepts the same set of truthy spellings ("true", "1", "yes",
+			"on") that element_nomenclature_view's SQL predicate for
+			exclude_from_bom already does -- see
+			projectDataBase::createElementNomenclatureView(). These flags
+			are only ever written by this app's own checkboxes as literal
+			"true"/"false" today, but a bare == "true" comparison silently
+			treats anything else -- "True", "TRUE", a trailing space from
+			a hand-edited file, a value some other tool wrote -- as off,
+			with no error and no visible difference from the checkbox
+			being genuinely unticked (discussion #785).
+		*/
+	bool infoFlagIsTrue(const QString &value);
 	QString ElementsAndConductorsSentence(int elements=0,
 										  int conductors=0,
 										  int indi_texts=0,
@@ -185,6 +204,20 @@ namespace QET {
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);
 	bool eachStrIsEqual (const QStringList &qsl);
 	QActionGroup *depthActionGroup(QObject *parent = nullptr);
+	void saveCustomColors();
+	void loadCustomColors();
+
+		/**
+			Restore a dialog's last-used size/position from QSettings, and
+			save it back whenever the dialog closes (accepted, rejected, or
+			via the window's close button). @a key identifies the dialog in
+			QSettings; defaults to the dialog's class name, which is enough
+			to distinguish dialogs one-to-one -- pass an explicit @a key for
+			a dialog class reused for several different kinds of content
+			(e.g. a generic properties-editor wrapper), so each kind gets
+			its own remembered size instead of fighting over one entry.
+		*/
+	void trackDialogGeometry(QDialog *dialog, const QString &key = QString());
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)

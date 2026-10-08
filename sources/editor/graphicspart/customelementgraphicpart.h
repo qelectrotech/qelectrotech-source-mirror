@@ -19,6 +19,7 @@
 #define CUSTOM_ELEMENT_GRAPHIC_PART_H
 
 #include <QGraphicsObject>
+#include <QUuid>
 #include "customelementpart.h"
 
 class QETElementEditor;
@@ -305,6 +306,12 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 					     const QColor &/*color*/) {}
 		virtual void resetAllHandlerColor() {}
 
+			//Identity of this primitive inside its element definition, for
+			//tools that address one part of a drawing (a script, the MCP
+			//server). Saved with the styles, see stylesToXml().
+		QUuid uuid() const {return m_uuid;}
+		void setNewUuid() {m_uuid = QUuid::createUuid();}
+
 	protected:
 		void stylesToXml  (QDomElement &) const;
 		void stylesFromXml(const QDomElement &);
@@ -323,6 +330,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		// attributes
 		bool m_hovered;
 	private:
+		QUuid m_uuid = QUuid::createUuid();
 		LineStyle _linestyle;
 		LineWeight _lineweight;
 		Filling _filling ;

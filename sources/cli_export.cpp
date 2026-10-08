@@ -24,8 +24,12 @@
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "diagramcontext.h"
+#include "editor/terminalnamecheck.h"
+#include "dxfexport.h"
+#include "exportproperties.h"
 #include "pdf_links.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
@@ -39,6 +43,7 @@
 #include <QDirIterator>
 #include <QDomDocument>
 #include <QDate>
+#include <QDateTime>
 #include <QFile>
 #include <QSaveFile>
 #include <QFileInfo>
@@ -55,6 +60,7 @@
 #include <QSqlQuery>
 #include <QSvgGenerator>
 #include <QTextStream>
+#include <QTimeZone>
 #include <QTransform>
 
 namespace {
@@ -69,6 +75,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-pdf", "pdf"},
 		{"--export-png", "png"},
 		{"--export-svg", "svg"},
+		{"--export-dxf", "dxf"},
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
 		{"--export-bom", "bom"},
@@ -142,6 +149,23 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target,
 	diagram->setDrawTerminalNames(was_drawing_terminal_names);
 }
 
+/// The time SOURCE_DATE_EPOCH names, in seconds since 1970 UTC, or an
+/// invalid QDateTime when it is unset. A value that is not a whole number of
+/// seconds is reported and ignored.
+QDateTime sourceDateEpoch()
+{
+	const QByteArray value = qgetenv("SOURCE_DATE_EPOCH");
+	if (value.isEmpty())
+		return {};
+	bool ok = false;
+	const qlonglong seconds = value.toLongLong(&ok);
+	if (!ok || seconds < 0) {
+		err << "SOURCE_DATE_EPOCH '" << value << "' is not a number of seconds; ignored.\n";
+		return {};
+	}
+	return QDateTime::fromSecsSinceEpoch(seconds, QTimeZone::utc());
+}
+
 int exportPdf(QETProject &project, const QString &output,
 			 bool showTerminals = false)
 {
@@ -161,16 +185,37 @@ int exportPdf(QETProject &project, const QString &output,
 	writer.setCreator("QElectroTech");
 	writer.setResolution(96);
 
+	// SOURCE_DATE_EPOCH (reproducible-builds.org) asks for the same file
+	// from the same input: the time it names instead of now, and a document
+	// id from what the PDF shows instead of a random one. Qt has no setter
+	// for the dates, and the content is not known yet, so both are
+	// rewritten once the file is written; Qt writes a fixed id until then.
+	// The id does not come from the project file, whose uuids are new each
+	// time a project is generated again from the same data. Before Qt 6.8
+	// there is no document id to set: it is only written for PDF/A.
+	const QDateTime sourceDate = sourceDateEpoch();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	if (sourceDate.isValid())
+		writer.setDocumentId(PdfLinks::placeholderDocumentId());
+#endif
+
 	QPainter painter;
 	bool first = true;
 	for (Diagram *diagram : diagrams) {
 		const QRect r = diagramRect(diagram);
 		// Match the page to the diagram (in points: 1px @ 96dpi = 0.75pt).
-		const QPageSize page(QSizeF(r.width() * 72.0 / 96.0,
-									r.height() * 72.0 / 96.0),
-							 QPageSize::Point);
-		writer.setPageSize(page);
-		writer.setPageMargins(QMarginsF(0, 0, 0, 0));
+		// QPageSize rounds a size within 3 pt of a standard sheet to the
+		// sheet, but knows the sheets upright only (bar Ledger), so a wide
+		// folio is matched upright and turned: otherwise an A3 landscape
+		// folio became a 1190 x 841 pt page while an A3 portrait one was
+		// 842 x 1191, the sheet.
+		QSizeF points(r.width() * 72.0 / 96.0, r.height() * 72.0 / 96.0);
+		const bool wide = points.width() > points.height();
+		if (wide) points.transpose();
+		writer.setPageLayout(QPageLayout(QPageSize(points, QPageSize::Point),
+										 wide ? QPageLayout::Landscape
+											  : QPageLayout::Portrait,
+										 QMarginsF(0, 0, 0, 0)));
 
 		if (first) {
 			if (!painter.begin(&writer)) {
@@ -227,6 +272,11 @@ int exportPdf(QETProject &project, const QString &output,
 	// Rewrite the URI link annotations into native internal GoTo actions, so
 	// the cross-references jump inside the document in any PDF viewer.
 	PdfLinks::convertUriToGoTo(output);
+	PdfLinks::removeUnusedPdfxNamespace(output);
+	if (sourceDate.isValid()) {
+		PdfLinks::setDocumentDate(output, sourceDate);
+		PdfLinks::setDocumentIdFromContent(output);
+	}
 
 	out << "Exported " << diagrams.size() << " page(s) -> " << output << "\n";
 	return 0;
@@ -278,6 +328,62 @@ int exportImages(QETProject &project, const QString &format,
 	return 0;
 }
 
+/// One DXF file per diagram, written by the same code as the export dialog
+/// (DxfExport) with the dialog's default options -- the export settings of
+/// the preferences -- so both give the same file.
+int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
+			  bool dxfBlocks, bool dxfAttributes)
+{
+	const QList<Diagram *> diagrams = project.diagrams();
+	if (diagrams.isEmpty()) {
+		err << "No diagrams to export.\n";
+		return 1;
+	}
+	QDir().mkpath(out_dir);
+
+	ExportProperties properties = ExportProperties::defaultExportProperties();
+	properties.format = QStringLiteral("DXF");
+	if (showTerminals)
+		properties.draw_terminals = true;
+	if (dxfBlocks || dxfAttributes)
+		properties.dxf_blocks = true;
+	if (dxfAttributes)
+		properties.dxf_attributes = true;
+
+	int index = 0;
+	bool has_images = false;
+	for (Diagram *diagram : diagrams) {
+		++index;
+		const QString path = QDir(out_dir).filePath(
+			diagramStem(diagram, index) + ".dxf");
+
+		// Createdxf answers a file it cannot open with a message box and
+		// exit(0), which headless means no message and a success code.
+		QFile probe(path);
+		if (!probe.open(QIODevice::WriteOnly)) {
+			err << "Cannot open '" << path << "' for writing.\n";
+			return 1;
+		}
+		probe.close();
+
+		const QSize size = DxfExport::folioSize(diagram, properties);
+		DxfExport::write(diagram, size.width(), size.height(), path, properties);
+
+		for (QGraphicsItem *item : diagram->items()) {
+			if (qgraphicsitem_cast<DiagramImageItem *>(item)) {
+				has_images = true;
+				break;
+			}
+		}
+		out << "  " << path << "\n";
+	}
+	if (has_images)
+		err << "Note: DXF has no pictures in this format; "
+			   "each picture is exported as an outline box.\n";
+	out << "Exported " << diagrams.size() << " diagram(s) -> " << out_dir << "\n";
+	return 0;
+}
+
 int exportCsv(QETProject &project, const QString &format, const QString &output)
 {
 	QString csv;
@@ -307,10 +413,12 @@ int exportCsv(QETProject &project, const QString &format, const QString &output)
 
 /// Bill of materials from the same project database and default query as the
 /// GUI nomenclature export.
-int exportBom(QETProject &project, const QString &output)
+int exportBom(QETProject &project, const QString &output,
+			  bool includeSlaves, bool includeJunctions)
 {
 	project.dataBase()->updateDB();
-	QSqlQuery query = project.dataBase()->newQuery(BomExport::defaultQuery());
+	QSqlQuery query = project.dataBase()->newQuery(
+			BomExport::defaultQuery(includeSlaves, includeJunctions));
 	if (!query.exec()) {
 		err << "BOM query failed: " << query.lastError().text() << "\n";
 		return 1;
@@ -457,8 +565,34 @@ int checkOneElement(const QString &path)
 		return 2;
 	}
 
-	const int terminals = root.elementsByTagName("terminal").count();
+	const QDomNodeList terminal_nodes = root.elementsByTagName("terminal");
+	const int terminals = terminal_nodes.count();
+	QStringList terminal_names;
+	for (int i = 0; i < terminals; ++i)
+		terminal_names << terminal_nodes.at(i).toElement().attribute("name");
 
+	// Two terminals with one name cannot be told apart in a wiring list
+	// (IEC 61666), the same rule the element editor applies on save.
+	const auto repeated = TerminalNameCheck::repeatedNames(terminal_names);
+	if (!repeated.isEmpty()) {
+		out << "FAIL  " << path << "  (repeated terminal names: "
+			<< TerminalNameCheck::describe(repeated) << ")\n";
+		return 2;
+	}
+
+	// QET loads the element but leaves out a shape with a "nan" or "inf"
+	// coordinate, on the folio and in the element editor.
+	const QDomNodeList description = root.elementsByTagName("description");
+	for (QDomNode n = description.isEmpty() ? QDomNode()
+					  : description.at(0).firstChild() ;
+		 !n.isNull() ; n = n.nextSibling()) {
+		const QDomElement shape = n.toElement();
+		if (!shape.isNull() && QET::hasNonFiniteGeometry(shape)) {
+			out << "WARN  " << path << "  (<" << shape.tagName()
+				<< "> with a non-finite coordinate is not drawn)\n";
+			return 1;
+		}
+	}
 	// Negative dimensions are malformed but QET still loads them; surface as a
 	// warning rather than a failure so this agrees with QET's own loader.
 	if (w < 0 || h < 0) {
@@ -469,6 +603,15 @@ int checkOneElement(const QString &path)
 
 	if (terminals == 0) {
 		out << "WARN  " << path << "  (loads, but 0 terminals)\n";
+		return 1;
+	}
+
+	const QString type = root.attribute("link_type");
+	const int unnamed = TerminalNameCheck::unnamedCount(terminal_names);
+	if (unnamed && !type.endsWith("_report")
+		&& type != "conductor_definition" && type != "thumbnail") {
+		out << "WARN  " << path << "  (" << unnamed << " of " << terminals
+			<< " terminals have no name)\n";
 		return 1;
 	}
 
@@ -528,6 +671,12 @@ QHash<Element *, int> folioIndex(QETProject &project)
 /// From-to wiring list: one row per conductor, each endpoint resolved to its
 /// element label and terminal name.
 ///
+/// Most symbols leave their terminals unnamed, so each end also carries the
+/// terminal's index -- the one the scripting API's addConductor() takes,
+/// empty for two terminals at one point -- and its uuid, the one the project
+/// file names the terminal by. These come last, after the columns the list
+/// has always had, so a reader of those is not disturbed.
+///
 /// Reads wiring_list_view out of the project database. --export-cables produces
 /// the same logical list from the document XML instead, and the two are meant
 /// to agree: running both and diffing them is a direct check that the database
@@ -540,7 +689,8 @@ int exportWiring(QETProject &project, const QString &output)
 
 	static const QStringList columns {
 		"wire_number", "from_element_label", "from_terminal",
-		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid"
+		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid",
+		"from_terminal_index", "from_terminal_uuid", "to_terminal_index", "to_terminal_uuid"
 	};
 
 	QSqlQuery query = project.dataBase()->newQuery(
@@ -837,6 +987,11 @@ int run(const QStringList &args)
 	// collected below.
 	QStringList filtered = args;
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
+	const bool dxfBlocks = filtered.removeAll("--dxf-blocks") > 0;
+	const bool dxfAttributes = filtered.removeAll("--dxf-attributes") > 0;
+	// --no-slaves and --no-junctions leave rows out of --export-bom.
+	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
+	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 
 	QString flag;
 	QStringList rest;
@@ -889,10 +1044,12 @@ int run(const QStringList &args)
 	}
 	if (format == "pdf")
 		return exportPdf(project, output, showTerminals);
+	if (format == "dxf")
+		return exportDxf(project, output, showTerminals, dxfBlocks, dxfAttributes);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")
-		return exportBom(project, output);
+		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")
 		return exportWiring(project, output);
 	if (format == "nets")

@@ -17,7 +17,13 @@
 */
 #include "qetpalette.h"
 
+#include <QApplication>
+#include <QColor>
+#include <QImage>
+#include <QMdiArea>
 #include <QStyle>
+#include <QTabBar>
+#include <QWidget>
 #include <cmath>
 
 namespace {
@@ -72,6 +78,64 @@ bool QET::Palette::styleIsFusion(const QStyle *style)
 bool QET::Palette::isDark(const QPalette &palette)
 {
 	return palette.color(QPalette::Active, QPalette::Window).lightness() < 128;
+}
+
+void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
+                                   const QColor &ink)
+{
+	if (image.format() != QImage::Format_RGB32) image.convertTo(QImage::Format_RGB32);
+	invertLightnessLayer(image, sheet, ink);
+}
+
+void QET::Palette::invertLightnessLayer(QImage &image, const QColor &sheet, const QColor &ink)
+{
+	if (image.format() != QImage::Format_RGB32 && image.format() != QImage::Format_ARGB32)
+		image.convertTo(QImage::Format_ARGB32);
+
+	// One table per channel maps the inverted value (0 = was white,
+	// 255 = was black) onto the sheet..ink span.
+	uchar red_of[256], green_of[256], blue_of[256];
+	for (int v = 0; v < 256; ++v) {
+		red_of[v]   = uchar(sheet.red()   + (ink.red()   - sheet.red())   * v / 255);
+		green_of[v] = uchar(sheet.green() + (ink.green() - sheet.green()) * v / 255);
+		blue_of[v]  = uchar(sheet.blue()  + (ink.blue()  - sheet.blue())  * v / 255);
+	}
+
+	/* Inverting the lightness of an HSL color while keeping its hue and
+	   saturation leaves the distance between the highest and the lowest
+	   channel unchanged, so it comes down to one offset per pixel:
+	   c + 255 - max - min. The offset turns the highest channel into
+	   255 - min and the lowest into 255 - max, so no channel can leave
+	   the 0..255 range and no clamping is needed. The loop runs on every
+	   repaint of a folio, hence the plain integer arithmetic. */
+	for (int y = 0; y < image.height(); ++y) {
+		quint32 *line = reinterpret_cast<quint32 *>(image.scanLine(y));
+		for (int x = 0, width = image.width(); x < width; ++x) {
+			const quint32 pixel = line[x];
+			if ((pixel & 0xff000000u) == 0) continue;
+			const int red   = (pixel >> 16) & 0xff;
+			const int green = (pixel >> 8) & 0xff;
+			const int blue  = pixel & 0xff;
+			int highest = red > green ? red : green;
+			int lowest  = red < green ? red : green;
+			if (blue > highest) highest = blue;
+			if (blue < lowest)  lowest  = blue;
+			const int offset = 255 - highest - lowest;
+			line[x] = (pixel & 0xff000000u)
+			        | (quint32(red_of[red + offset]) << 16)
+			        | (quint32(green_of[green + offset]) << 8)
+			        | quint32(blue_of[blue + offset]);
+		}
+	}
+}
+
+QColor QET::Palette::gridDotColor(const QColor &sheet, bool inverted)
+{
+	if (sheet == QColor(Qt::black))
+		return Qt::white;
+	if (inverted)
+		return QColor(sheet.red() * 2 / 3, sheet.green() * 2 / 3, sheet.blue() * 2 / 3);
+	return Qt::black;
 }
 
 double QET::Palette::contrastRatio(const QColor &a, const QColor &b)
@@ -176,4 +240,86 @@ QPalette QET::Palette::forFusion(const QPalette &platform)
 {
 	return withPlatformAccent(isDark(platform) ? fusionDark() : fusionLight(),
 	                          platform);
+}
+
+bool QET::Palette::isLineArt(const QImage &image)
+{
+	const QImage source = image.convertToFormat(QImage::Format_ARGB32);
+	int visible = 0;
+	int saturated = 0;
+	for (int y = 0; y < source.height(); ++y)
+	{
+		const QRgb *line = reinterpret_cast<const QRgb *>(source.constScanLine(y));
+		for (int x = 0; x < source.width(); ++x)
+		{
+			if (qAlpha(line[x]) <= 64)
+				continue;
+			++visible;
+			const QColor color(line[x]);
+			if (color.hslSaturationF() > 0.25 && color.value() > 60)
+				++saturated;
+		}
+	}
+	return visible > 0 && saturated < visible * 0.20;
+}
+
+QImage QET::Palette::invertedLightness(const QImage &image)
+{
+	// Lightness of pure black after inversion: the dark palette's text.
+	const qreal ink = 220.0 / 255.0;
+	QImage result = image.convertToFormat(QImage::Format_ARGB32);
+	qreal darkest = 1.0;
+	for (int y = 0; y < result.height(); ++y)
+	{
+		const QRgb *line = reinterpret_cast<const QRgb *>(result.constScanLine(y));
+		for (int x = 0; x < result.width(); ++x)
+			if (qAlpha(line[x]) > 64)
+				darkest = qMin(darkest, QColor(line[x]).lightnessF());
+	}
+	const qreal span = qMax(1.0 - darkest, 1e-6);
+	for (int y = 0; y < result.height(); ++y)
+	{
+		QRgb *line = reinterpret_cast<QRgb *>(result.scanLine(y));
+		for (int x = 0; x < result.width(); ++x)
+		{
+			const int alpha = qAlpha(line[x]);
+			if (alpha == 0)
+				continue;
+			const QColor color(line[x]);
+			const qreal lightness = qBound(0.0, ink * (1.0 - (color.lightnessF() - darkest) / span), 1.0);
+			QColor out = QColor::fromHslF(qMax(color.hslHueF(), 0.0), color.hslSaturationF(), lightness);
+			out.setAlpha(alpha);
+			line[x] = out.rgba();
+		}
+	}
+	return result;
+}
+
+QPixmap QET::Palette::forPalette(const QPixmap &pixmap, const QPalette &palette)
+{
+	if (pixmap.isNull() || !isDark(palette))
+		return pixmap;
+	const QImage image = pixmap.toImage();
+	if (!isLineArt(image))
+		return pixmap;
+	QPixmap result = QPixmap::fromImage(invertedLightness(image));
+	result.setDevicePixelRatio(pixmap.devicePixelRatio());
+	return result;
+}
+
+void QET::Palette::refreshStyleSheets()
+{
+	// Setting the same sheet again is not a no-op: QWidget::setStyleSheet()
+	// asks QStyleSheetStyle to repolish the widget, which recomputes its
+	// palette from the application palette now in force.
+	const QWidgetList widgets = QApplication::allWidgets();
+	for (QWidget *widget : widgets)
+		if (!widget->styleSheet().isEmpty())
+			widget->setStyleSheet(widget->styleSheet());
+
+	// Force an immediate repaint on tab bars and MDI areas so their text
+	// updates together with the rest of the UI, not one event loop later.
+	for (QWidget *widget : widgets)
+		if (qobject_cast<QTabBar *>(widget) || qobject_cast<QMdiArea *>(widget))
+			widget->update();
 }

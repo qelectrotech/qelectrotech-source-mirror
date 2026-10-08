@@ -370,8 +370,13 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 const QDomElement PartPlcTable::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("plc_table");
-	qreal x = qRound(m_rect.x() * 100.0) / 100.0;
-	qreal y = qRound(m_rect.y() * 100.0) / 100.0;
+		//The move of this part lives in pos(), not in m_rect (which always
+		//starts at the item origin), so the scene coordinates must be written
+		//here, exactly like every other part does (see PartRectangle::toXml).
+		//Otherwise the position is silently reset to (0, 0) on the next load.
+	const QPointF top_left = mapToScene(m_rect.topLeft());
+	qreal x = qRound(top_left.x() * 100.0) / 100.0;
+	qreal y = qRound(top_left.y() * 100.0) / 100.0;
 
 	xml_element.setAttribute("x", QString::number(x));
 	xml_element.setAttribute("y", QString::number(y));
@@ -663,7 +668,7 @@ void PartPlcTable::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraph
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
 
-	QUndoCommand *undo = new QUndoCommand("Modifier une table PLC");
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier une table PLC"));
 	if (m_old_rect != m_rect) {
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
 		u->setAnimated(true, false);

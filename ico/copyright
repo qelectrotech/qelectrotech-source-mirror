@@ -69,6 +69,8 @@ License: CC-BY-3.0
  The usage, the modification and the integration of the elements into electric
  diagrams is allowed without any condition, whatever the final license of the
  diagrams is.
+ Permission is not granted to use this software or any of the associated files
+ as sample data for the purposes of building machine learning models.
  If you redistribute all or a part of the QElectroTech collection, with or
  without any modification, out of an electric diagram, you must respect the
  conditions of the CC-BY license:
@@ -77,7 +79,7 @@ License: CC-BY-3.0
  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
  Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
-Files: ico/24x16/*
+Files: ico/flags/*
 Copyright: Damien Sorel
 License: public-domain
  24x16 Flag icons - http://www.strangeplanet.fr
@@ -87,142 +89,143 @@ License: public-domain
  If you find these icons useful, share-them!
  Contact: webmaster@strangeplanet.fr
 
-Files: ico/16x16/*
-Files: ico/22x22/*
-Files: ico/32x32/*
-Files: ico/48x48/*
-Files: ico/128x128/*
-From the KDE Breeze theme icons
+Files: ico/breeze/*
 Copyright: 2014, Uri Herrera <uri_herrera@nitrux.in> and others
+License: LGPL-3+
+Comment: From the KDE Breeze icon theme, https://invent.kde.org/frameworks/breeze-icons
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3 of the License, or (at your option) any later version.
+Files: ico/breeze/added/*
+Copyright: 2026, The QElectroTech Team
+License: LGPL-3+
+Comment: 16 pixel versions of the KDE Breeze icons of the same names, under
+ the Breeze license.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+Files: ico/qet/* ico/colors/*
+Copyright: 2006-2026, The QElectroTech Team
+License: GPL-2+
+Comment:
+  ico/qet/traced/*/east.svg by the QElectroTech team, traced from east.png by Nuri, with permission
+    changes: icon color, icon rotation
+  ico/qet/traced/*/element.svg by the QElectroTech team, traced from element.png by Nuri, with permission
+  ico/qet/traced/*/element-delete.svg by the QElectroTech team, traced from element-delete.png by Nuri, with permission
+  ico/qet/traced/*/element-edit.svg by the QElectroTech team, traced from element-edit.png by Nuri, with permission
+  ico/qet/traced/*/element-new.svg by the QElectroTech team, traced from element-new.png by Nuri, with permission
+  ico/qet/traced/*/endline-circle.svg by the QElectroTech team, traced from endline-circle.png by Nuri, with permission
+  ico/qet/traced/*/endline-diamond.svg by the QElectroTech team, traced from endline-diamond.png by Nuri, with permission
+  ico/qet/traced/*/endline-none.svg by the QElectroTech team, traced from endline-none.png by Nuri, with permission
+  ico/qet/traced/*/endline-simple.svg by the QElectroTech team, traced from endline-simple.png by Nuri, with permission
+  ico/qet/traced/*/endline-triangle.svg by the QElectroTech team, traced from endline-triangle.png by Nuri, with permission
+  ico/qet/traced/*/export-csv.svg by the QElectroTech team, traced from export-csv.png by Nuri, with permission
+  ico/qet/traced/*/folder-delete.svg by the QElectroTech team, traced from folder-delete.png by Nuri, with permission
+  ico/qet/traced/*/folder-edit.svg by the QElectroTech team, traced from folder-edit.png by Nuri, with permission
+  ico/qet/traced/*/folder-only-this.svg by the QElectroTech team, traced from folder-only-this.png by Nuri, with permission
+  ico/qet/traced/*/folder-show-all.svg by the QElectroTech team, traced from folder-show-all.png by Nuri, with permission
+  ico/qet/traced/*/ground.svg by the QElectroTech team, traced from ground.png by Nuri, with permission
+  ico/qet/traced/*/neutral.svg by the QElectroTech team, traced from neutral.png by Nuri, with permission
+  ico/qet/traced/*/north.svg by the QElectroTech team, traced from north.png by Nuri, with permission
+  ico/qet/traced/*/phase.svg by the QElectroTech team, traced from phase.png by Nuri, with permission
+  ico/qet/traced/*/project.svg by the QElectroTech team, traced from project.png by Nuri, with permission
+  ico/qet/traced/*/project-close.svg by the QElectroTech team, traced from project-close.png by Nuri, with permission
+  ico/qet/traced/*/project-new.svg by the QElectroTech team, traced from project-new.png by Nuri, with permission
+  ico/qet/traced/*/project-properties.svg by the QElectroTech team, traced from project-properties.png by Nuri, with permission
+  ico/qet/traced/*/qet.svg by the QElectroTech team, traced from qet.png by Nuri, with permission
+  ico/qet/traced/*/south.svg by the QElectroTech team, traced from south.png by Nuri, with permission
+  ico/qet/traced/*/terminalstrip.svg by the QElectroTech team, traced from terminalstrip.png by Nuri, with permission
+  ico/qet/traced/*/west.svg by the QElectroTech team, traced from west.png by Nuri, with permission
+  ico/qet/traced/*/arc.svg by the QElectroTech team, traced from arc.png by Nuri, with permission
+  ico/qet/traced/*/autoconnect.svg by the QElectroTech team, traced from autoconnect.png by Nuri, with permission
+  ico/qet/traced/*/diagram_bg.svg by the QElectroTech team, traced from diagram_bg.png by Nuri, with permission
+    changes: icon color, icon rotation
+  ico/qet/traced/*/hotspot.svg by the QElectroTech team, traced from hotspot.png by Nuri, with permission
+  ico/qet/traced/*/landscape.svg by the QElectroTech team, traced from landscape.png by Nuri, with permission
+  ico/qet/traced/*/portrait.svg by the QElectroTech team, traced from portrait.png by Nuri, with permission
+  ico/qet/traced/*/terminal.svg by the QElectroTech team, traced from terminal.png by Nuri, with permission
+  ico/qet/traced/*/titleblock-bottom.svg by the QElectroTech team, traced from titleblock-bottom.png by Nuri, with permission
+  ico/qet/traced/*/titleblock-right.svg by the QElectroTech team, traced from titleblock-right.png by Nuri, with permission
+  ico/qet/traced/*/simplifyrichtext.svg by the QElectroTech team, traced from simplifyrichtext.png by Nuri, with permission
+  ico/qet/pages/configure-shortcuts.svg by Jeff Patterson from the QElectroTech team
+  ico/qet/scalable/pdf-import.svg by Jeff Patterson from the QElectroTech team, laid out like the former insert-image.png
+  ico/qet/scalable/diagram.svg, folio-new.svg, folio-delete.svg, folio-properties.svg, label.svg by Jeff Patterson from the QElectroTech team, the folio icons redrawn in the same style
+  ico/qet/traced/*/circle.svg, ellipse.svg, view-fit-window.svg by ispyisail from the QElectroTech team, 16 pixel versions by the QElectroTech team
+  ico/qet/traced/*/ellipse-to-bezier.svg, rect-to-bezier.svg, rect-to-polyline.svg by the QElectroTech team, redrawn from Andre Rummler's drawings, with permission
+  ico/qet/traced/* other than the above by the QElectroTech team, traced from QElectroTech's PNG icons of the same names
+  ico/qet/scalable/16/* by the QElectroTech team, 16 pixel versions of the ico/qet/scalable/ icons of the same names
+  ico/colors/* by Arnaud, contributed in 2020
 
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library. If not, see <http://www.gnu.org/licenses/>.
+Files: ico/qet/traced/*/qt.svg
+Copyright: The Qt Company Ltd.
+License: Qt-trademark
+Comment: The Qt logo, traced by the QElectroTech team from
+ http://brand.qt.io/downloads/
 
-Clarification:
+Files: ico/256x256/* ico/breeze-icons/* ico/mac_icon/* ico/windows_icon/*
+ ico/splash.png
+Copyright: Nuri
+License: CC-BY-ND-3.0
+Comment: Drawn for QElectroTech in the style of KDE Breeze.
 
-  The GNU Lesser General Public License or LGPL is written for
-  software libraries in the first place. We expressly want the LGPL to
-  be valid for this artwork library too.
+Files: ico/windows_icon/*.sh ico/windows_icon/*.rc
+Copyright: 2006-2026, The QElectroTech Team
+License: GPL-2+
 
-  KDE Breeze theme icons is a special kind of software library, it is an
-  artwork library, it's elements can be used in a Graphical User Interface, or
-  GUI.
+Files: ico/themes/*
+Copyright: 2014, Uri Herrera <uri_herrera@nitrux.in> and others
+           2006-2026, The QElectroTech Team
+License: LGPL-3+ and GPL-2+
+Comment: Built by misc/make_icon_themes.py from ico/breeze/ and ico/qet/.
+ Each file has the license of the file it is built from.
 
-  Source code, for this library means:
-   - where they exist, SVG;
-   - otherwise, if applicable, the multi-layered formats xcf or psd, or
-  otherwise png.
+License: LGPL-3+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library. If not, see <http://www.gnu.org/licenses/>.
+ .
+ Clarification:
+ .
+ The GNU Lesser General Public License or LGPL is written for
+ software libraries in the first place. We expressly want the LGPL to
+ be valid for this artwork library too.
+ .
+ KDE Breeze theme icons is a special kind of software library, it is an
+ artwork library, it's elements can be used in a Graphical User Interface, or
+ GUI.
+ .
+ Source code, for this library means:
+ - where they exist, SVG;
+ - otherwise, if applicable, the multi-layered formats xcf or psd, or
+ otherwise png.
+ .
+ The LGPL in some sections obliges you to make the files carry
+ notices. With images this is in some cases impossible or hardly useful.
+ .
+ With this library a notice is placed at a prominent place in the directory
+ containing the elements. You may follow this practice.
+ .
+ The exception in section 5 of the GNU Lesser General Public License covers
+ the use of elements of this art library in a GUI.
+ .
+ https://vdesign.kde.org/
 
-  The LGPL in some sections obliges you to make the files carry
-  notices. With images this is in some cases impossible or hardly useful.
+License: CC-BY-ND-3.0
+ This work is licensed under the Creative Commons Attribution-NoDerivs 3.0
+ Unported License. To view a copy of this license, visit
+ http://creativecommons.org/licenses/by-nd/3.0/
 
-  With this library a notice is placed at a prominent place in the directory
-  containing the elements. You may follow this practice.
+License: Qt-trademark
+ The Qt logo is a trademark of The Qt Company Ltd., used under its brand
+ guidelines: http://brand.qt.io/
 
-  The exception in section 5 of the GNU Lesser General Public License covers
-  the use of elements of this art library in a GUI.
-
-  https://vdesign.kde.org/
-
-  Some icons have been created exclusively for QElectroTech. They are based or inspired by the KDE Breeze icon theme.
-  These icons are:
-    ico/16x16/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/document-open.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/east.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/edit-clear.png from https://www.brandeps.com (License CC BY-ND 3.0)
-                  changes: icon color, icon rotation
-    ico/16x16/element.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/element-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/element-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/element-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/endline-circle.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/endline-diamond.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/endline-none.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/endline-simple.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/endline-triangle.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/export-csv.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folio-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folio-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folio-properties.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folder-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folder-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folder-only-this.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folder-properties.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/folder-show-all.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/go-down-double.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/go-up-double.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/ground.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/label.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/list-remove.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/neutral.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/north.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/phase.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/project.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/project-close.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/project-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/project-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/project-properties.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/qet.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/qt.png from http://brand.qt.io/downloads/
-    ico/16x16/south.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/terminalstrip.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/16x16/west.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/arc.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/autoconnect.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/diagram_add.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/diagram_bg.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/diagram_del.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/dialog-information.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/document-open.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/edit-clear.png from https://www.brandeps.com (License CC BY-ND 3.0)
-                  changes: icon color, icon rotation
-    ico/22x22/element-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/element-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/element-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/export-csv.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/folder-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/folder-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/folder-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/hotspot.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/label.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/landscape.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/line.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/list-remove.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/portrait.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/project.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/project-close.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/project-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/project-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/single_page.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/terminal.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/terminalstrip.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/titleblock-bottom.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/titleblock-right.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/22x22/two_pages.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/32x32/qt.png from http://brand.qt.io/downloads/
-    ico/32x32/simplifyrichtext.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/48x48/document-print-frame.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/128x128/diagram.png by the QElectroTech team (License CC BY-ND 3.0)
-    ico/128x128/document-export.png by the QElectroTech team (License CC BY-ND 3.0)
-    ico/128x128/project.png by the QElectroTech team (License CC BY-ND 3.0)
-    ico/256x256/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/breeze-icons/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/mac_icon/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/splash.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-    ico/windows_icon/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
-
+License: unknown
+ The author has not stated a license.
 
 Files: debian/*
 Copyright: 2011-2017, Laurent Trinques <scorpio@qelectrotech.org>

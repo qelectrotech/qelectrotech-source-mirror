@@ -57,6 +57,7 @@ jobs:
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-angleproject
             mingw-w64-ucrt-x86_64-qt6-declarative
+            mingw-w64-ucrt-x86_64-hidapi
 
       - name: Cache ccache
         uses: actions/cache@v5
@@ -120,6 +121,8 @@ jobs:
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DQET_EXPORT_PROJECT_DB=ON \
+            -DQET_ENABLE_SPACEMOUSE=ON \
+            -DQET_SPACEMOUSE_BACKEND=hid \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -132,6 +135,32 @@ jobs:
         run: |
           echo "=== ccache statistics ==="
           /ucrt64/bin/ccache -s
+
+      - name: Run the unit tests
+        shell: msys2 {0}
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/build"
+          ctest --output-on-failure --timeout 300 && exit 0
+          # ctest shows no output for failed tests in this shell, so run each
+          # failed test again with QtTest writing its log to a file, and print it.
+          set +e
+          while IFS=: read -r _ name; do
+            name=${name%$'\r'}
+            exe=$(find tests -name "$name.exe" | head -1)
+            echo "::group::$name"
+            if [ -n "$exe" ]; then
+              QT_QPA_PLATFORM=offscreen "$exe" -o "$name.txt,txt"
+              echo "exit code $?"
+              cat "$name.txt" 2>/dev/null
+            else
+              echo "no executable for $name"
+            fi
+            echo "::endgroup::"
+          done < Testing/Temporary/LastTestsFailed.log
+          exit 1
 
       - name: Verify exe was built
         shell: msys2 {0}
@@ -146,6 +175,11 @@ jobs:
           SIZE=$(stat -c%s "$EXE")
           echo "Exe found: $EXE ($SIZE bytes)"
           [ "$SIZE" -gt 100000 ] || { echo "ERROR: exe too small"; exit 1; }
+          # 3D mouse support (discussion #599): CMake only warns when hidapi
+          # is missing, which would ship a package without it -- fail here.
+          ldd "$EXE" | grep -qi 'libhidapi' \
+            || { echo "ERROR: exe not linked against hidapi -- 3D mouse support missing"; exit 1; }
+          echo "3D mouse support: linked against $(ldd "$EXE" | grep -io 'libhidapi[^ ]*' | head -1)"
 
       - name: Deploy — copy exe + windeployqt + DLLs
         shell: msys2 {0}
@@ -191,6 +225,8 @@ jobs:
           echo "=== $DLL_COUNT DLLs present after scan ==="
           ls -lh "$BIN/QElectroTech.exe" || { echo "ERROR: exe missing from bin/"; exit 1; }
           [ "$DLL_COUNT" -gt 5 ] || { echo "ERROR: too few DLLs"; exit 1; }
+          # Without it QElectroTech.exe would not start at all.
+          [ -f "$BIN/libhidapi-0.dll" ] || { echo "ERROR: libhidapi-0.dll not deployed"; exit 1; }
           cd "$GITHUB_WORKSPACE"
 
           cp /ucrt64/bin/libgcc_s_seh-1.dll  "$BIN/"
@@ -217,6 +253,23 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
           cp -r "$GITHUB_WORKSPACE/fonts"       "$FILES/fonts"       || true
+          # The MCP server finds bin/QElectroTech.exe and elements/ from mcp/.
+          mkdir -p "$FILES/mcp"
+          cp "$GITHUB_WORKSPACE/misc/qet-mcp/qet_mcp.py" "$GITHUB_WORKSPACE/misc/qet-mcp/README.md" "$FILES/mcp/"
+          # Python for it, so Windows users need not install one: the official
+          # embeddable package, pinned by version and checksum (python.org's
+          # own sha256 for this file). The installer offers it unticked; the
+          # portable folder and the MSI carry it.
+          PY_EMBED_VERSION=3.14.7
+          PY_EMBED_SHA256=d297e5ff019966817ad8502465176139f2d3d840fa4ed84b13bed399a6ab1f15
+          PY_ZIP="$GITHUB_WORKSPACE/python-embed.zip"
+          curl -fsSL -o "$PY_ZIP" \
+            "https://www.python.org/ftp/python/$PY_EMBED_VERSION/python-$PY_EMBED_VERSION-embed-amd64.zip"
+          echo "$PY_EMBED_SHA256  $PY_ZIP" | sha256sum -c - \
+            || { echo "ERROR: embeddable Python checksum mismatch"; exit 1; }
+          python3 -m zipfile -e "$PY_ZIP" "$FILES/mcp/python"
+          [ -f "$FILES/mcp/python/python.exe" ] \
+            || { echo "ERROR: python.exe missing from the embeddable package"; exit 1; }
 
           # --- Translations ---
           # Since PR #751 the .qm files are no longer tracked in git: lrelease
@@ -295,7 +348,7 @@ jobs:
               && echo "  OK      : $f" \
               || echo "  MISSING: $f"
           done
-          for d in ico elements lang titleblocks fonts examples bin; do
+          for d in ico elements lang titleblocks fonts examples bin mcp; do
             [ -d "$FILES/$d" ] \
               && echo "  OK      : $d/" \
               || echo "  MISSING: $d/"
@@ -346,6 +399,15 @@ jobs:
           echo "=== Contents of nsis_root/files/ ==="
           ls "$GITHUB_WORKSPACE/nsis_root/files/"
 
+      - name: Diagnose NSIS plugins
+        shell: msys2 {0}
+        run: |
+          pacman -Q mingw-w64-ucrt-x86_64-nsis || true
+          echo "=== nsDialogs.dll ==="
+          find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' || true
+          echo "=== Plugins tree ==="
+          find "$MSYSTEM_PREFIX/share/nsis/Plugins" -maxdepth 2 | head -60 || true
+
       - name: Build NSIS installer
         shell: msys2 {0}
         run: |
@@ -353,8 +415,28 @@ jobs:
           NSIS_ROOT="$GITHUB_WORKSPACE/nsis_root"
           cd "$NSIS_ROOT"
           echo "=== CWD : $(pwd) ==="
-          MSYS2_ARG_CONV_EXCL="*" makensis /V4 QET64.nsi
-          RC=$?
+          echo "=== Unicode/Target directives in QET64.nsi ==="
+          grep -niE '^[[:space:]]*(unicode|target)[[:space:]]' QET64.nsi || echo "(none)"
+
+          # Fallback: if makensis does not register its plugin dir, point it
+          # at the folder that actually contains nsDialogs.dll.
+          EXTRA=()
+          DLL=$(find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' | head -1 || true)
+          if [ -n "$DLL" ]; then
+            PLUGDIR_WIN=$(cygpath -w "$(dirname "$DLL")")
+            echo "nsDialogs.dll found in: $PLUGDIR_WIN"
+            # Plugin dirs are per target in NSIS: declare it for all of them so
+            # it applies whatever Unicode/Target directive QET64.nsi uses.
+            EXTRA=(-X"!addplugindir /x86-ansi $PLUGDIR_WIN"
+                   -X"!addplugindir /x86-unicode $PLUGDIR_WIN"
+                   -X"!addplugindir /amd64-unicode $PLUGDIR_WIN")
+          else
+            echo "::error::nsDialogs.dll not found in the MSYS2 NSIS package"
+            exit 1
+          fi
+
+          RC=0
+          MSYS2_ARG_CONV_EXCL="*" makensis /V4 "${EXTRA[@]}" QET64.nsi || RC=$?
           echo "=== Contents of nsis_root after makensis ==="
           ls "$NSIS_ROOT/"
           [ $RC -eq 0 ] || { echo "ERROR: makensis failed (exit $RC)"; exit 1; }
@@ -380,6 +462,7 @@ jobs:
           name: build-logs-qt6
           path: |
             build/CMakeFiles/*.log
+            build/Testing/Temporary/LastTest*.log
             nsis_root/files/bin/
           if-no-files-found: warn
 

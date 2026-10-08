@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -77,6 +77,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/editor/ui/terminaleditor.ui
   ${QET_DIR}/sources/ElementsCollection/ui/renamedialog.ui
   ${QET_DIR}/sources/factory/ui/addtabledialog.ui
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistdialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistwidget.ui
   ${QET_DIR}/sources/print/projectprintwindow.ui
@@ -173,11 +174,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
   ${QET_DIR}/sources/bordertitleblock.h
+  ${QET_DIR}/sources/bordercelllabels.h
+  ${QET_DIR}/sources/cellruler.cpp
+  ${QET_DIR}/sources/cellruler.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/wirehops.h
+  ${QET_DIR}/sources/wirehops.cpp
+  ${QET_DIR}/sources/wiringrules.h
+  ${QET_DIR}/sources/wiringrules.cpp
+  ${QET_DIR}/sources/conductorrouter.h
+  ${QET_DIR}/sources/conductorrouter.cpp
   ${QET_DIR}/sources/ui/wiringlistdialog.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
@@ -187,6 +197,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
   ${QET_DIR}/sources/conductorproperties.h
+  ${QET_DIR}/sources/conductormultiedit.h
   ${QET_DIR}/sources/conductorsegment.cpp
   ${QET_DIR}/sources/conductorsegment.h
   ${QET_DIR}/sources/conductorsegmentprofile.h
@@ -194,6 +205,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/configdialog.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
+  ${QET_DIR}/sources/dxfexport.cpp
+  ${QET_DIR}/sources/dxfexport.h
   ${QET_DIR}/sources/dxfpaintdevice.cpp
   ${QET_DIR}/sources/dxfpaintdevice.h
   ${QET_DIR}/sources/diagramcommands.cpp
@@ -234,6 +247,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/itemgroups.cpp
+  ${QET_DIR}/sources/itemgroups.h
+  ${QET_DIR}/sources/shownkinds.cpp
+  ${QET_DIR}/sources/shownkinds.h
   ${QET_DIR}/sources/lastusedstyle.cpp
   ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp
@@ -253,8 +270,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qet.h
   ${QET_DIR}/sources/qeticons.cpp
   ${QET_DIR}/sources/qeticons.h
+  ${QET_DIR}/sources/palettegraphicsview.cpp
+  ${QET_DIR}/sources/palettegraphicsview.h
   ${QET_DIR}/sources/qetpalette.cpp
   ${QET_DIR}/sources/qetpalette.h
+  ${QET_DIR}/sources/qetstyle.cpp
+  ${QET_DIR}/sources/qetstyle.h
   ${QET_DIR}/sources/qetinformation.cpp
   ${QET_DIR}/sources/qetinformation.h
   ${QET_DIR}/sources/qetmainwindow.cpp
@@ -283,6 +304,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/recentfiles.h
   ${QET_DIR}/sources/shortcutmanager.cpp
   ${QET_DIR}/sources/shortcutmanager.h
+  ${QET_DIR}/sources/shortcutbarsettings.cpp
+  ${QET_DIR}/sources/shortcutbarsettings.h
+  ${QET_DIR}/sources/diagramtoolbarsettings.cpp
+  ${QET_DIR}/sources/diagramtoolbarsettings.h
+  ${QET_DIR}/sources/toolbarsettings.cpp
+  ${QET_DIR}/sources/toolbarsettings.h
+  ${QET_DIR}/sources/diagramcontexttoolbar.cpp
+  ${QET_DIR}/sources/diagramcontexttoolbar.h
+  ${QET_DIR}/sources/diagramgestureoverlay.cpp
+  ${QET_DIR}/sources/diagramgestureoverlay.h
+  ${QET_DIR}/sources/gesturesettings.cpp
+  ${QET_DIR}/sources/gesturesettings.h
+  ${QET_DIR}/sources/commandsearchpopup.cpp
+  ${QET_DIR}/sources/commandsearchpopup.h
   ${QET_DIR}/sources/titleblockcell.cpp
   ${QET_DIR}/sources/titleblockcell.h
   ${QET_DIR}/sources/titleblockproperties.cpp
@@ -298,6 +333,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontextcommands.h
   ${QET_DIR}/sources/autoNum/numerotationcontext.cpp
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.h
+  ${QET_DIR}/sources/autoNum/autonumschemecommand.cpp
+  ${QET_DIR}/sources/autoNum/autonumschemecommand.h
+  ${QET_DIR}/sources/autoNum/elementautonumschemecommand.cpp
+  ${QET_DIR}/sources/autoNum/elementautonumschemecommand.h
+  ${QET_DIR}/sources/autoNum/ui/counterwarning.cpp
+  ${QET_DIR}/sources/autoNum/ui/counterwarning.h
+  ${QET_DIR}/sources/autoNum/ui/pastenumberingimport.cpp
+  ${QET_DIR}/sources/autoNum/ui/pastenumberingimport.h
+  ${QET_DIR}/sources/autoNum/ui/renumberpreviewdialog.cpp
+  ${QET_DIR}/sources/autoNum/ui/renumberpreviewdialog.h
+  ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.cpp
+  ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp
@@ -308,11 +357,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/formulaautonumberingw.h
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.cpp
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.h
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.cpp
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.h
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.cpp
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.h
 
+  ${QET_DIR}/sources/dataBase/legacyelementtypes.h
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
+  ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
+  ${QET_DIR}/sources/dataBase/sqlreadonly.h
 
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.h
@@ -328,6 +382,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventfillet.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventfillet.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
@@ -421,6 +477,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/ui/polygoneditor.h
   ${QET_DIR}/sources/editor/ui/rectangleeditor.cpp
   ${QET_DIR}/sources/editor/ui/rectangleeditor.h
+  ${QET_DIR}/sources/editor/ui/scaleelementdialog.cpp
+  ${QET_DIR}/sources/editor/ui/scaleelementdialog.h
   ${QET_DIR}/sources/editor/ui/terminaleditor.cpp
   ${QET_DIR}/sources/editor/ui/terminaleditor.h
   ${QET_DIR}/sources/editor/ui/texteditor.cpp
@@ -441,8 +499,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementcollectionhandler.h
   ${QET_DIR}/sources/ElementsCollection/elementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/elementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.h
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.h
   ${QET_DIR}/sources/ElementsCollection/elementslocation.cpp
@@ -451,6 +513,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementstreeview.h
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
+  ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
+  ${QET_DIR}/sources/ElementsCollection/terminaluuids.h
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.cpp
   ${QET_DIR}/sources/ElementsCollection/xmlelementcollection.h
   ${QET_DIR}/sources/ElementsCollection/xmlprojectelementcollectionitem.cpp
@@ -507,10 +573,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/PropertiesEditor/propertieseditordockwidget.h
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.cpp
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.h
-
-  ${QET_DIR}/pugixml/src/pugiconfig.hpp
-  ${QET_DIR}/pugixml/src/pugixml.cpp
-  ${QET_DIR}/pugixml/src/pugixml.hpp
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
@@ -569,6 +631,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.h
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandlerutility.cpp
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandlerutility.h
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/textresizehandles.h
 
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.cpp
   ${QET_DIR}/sources/QPropertyUndoCommand/qpropertyundocommand.h
@@ -694,6 +758,10 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
+  ${QET_DIR}/sources/ui/aiassistantdialog.cpp
+  ${QET_DIR}/sources/ui/aiassistantdialog.h
+  ${QET_DIR}/sources/ui/aiassistantsetup.cpp
+  ${QET_DIR}/sources/ui/aiassistantsetup.h
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.cpp
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.h
   ${QET_DIR}/sources/ui/alignmenttextdialog.cpp
@@ -706,10 +774,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/cabinetlayoutreferencepropertieswidget.h
   ${QET_DIR}/sources/ui/compositetexteditdialog.cpp
   ${QET_DIR}/sources/ui/compositetexteditdialog.h
+  ${QET_DIR}/sources/ui/conductorpropertieseditorwidget.cpp
+  ${QET_DIR}/sources/ui/conductorpropertieseditorwidget.h
   ${QET_DIR}/sources/ui/contactgroupselectiondialog.cpp
   ${QET_DIR}/sources/ui/contactgroupselectiondialog.h
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.h
+  ${QET_DIR}/sources/ui/conductorcolortoolbutton.cpp
+  ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
@@ -724,8 +798,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
+  ${QET_DIR}/sources/ui/backuprestoredialog.cpp
+  ${QET_DIR}/sources/ui/backuprestoredialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.cpp
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
@@ -754,6 +832,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.h
   ${QET_DIR}/sources/ui/jumptoelementdialog.cpp
   ${QET_DIR}/sources/ui/jumptoelementdialog.h
+  ${QET_DIR}/sources/ui/wiringruleswarning.cpp
+  ${QET_DIR}/sources/ui/wiringruleswarning.h
   ${QET_DIR}/sources/ui/inditextpropertieswidget.cpp
   ${QET_DIR}/sources/ui/inditextpropertieswidget.h
   ${QET_DIR}/sources/ui/linksingleelementwidget.cpp
@@ -768,6 +848,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/multipastedialog.h
   ${QET_DIR}/sources/ui/potentialselectordialog.cpp
   ${QET_DIR}/sources/ui/potentialselectordialog.h
+  ${QET_DIR}/sources/ui/prefixconfigurationdialog.cpp
+  ${QET_DIR}/sources/ui/prefixconfigurationdialog.h
   ${QET_DIR}/sources/ui/projectpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/projectpropertiesdialog.h
   ${QET_DIR}/sources/ui/reportpropertiewidget.cpp
@@ -791,6 +873,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutbarconfigpage.h
+  ${QET_DIR}/sources/ui/customizedialog.cpp
+  ${QET_DIR}/sources/ui/customizedialog.h
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarcommandsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/toolbarsconfigpage.h
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/gesturesconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
@@ -816,6 +908,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/removediagramcommand.h
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.cpp
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
+  ${QET_DIR}/sources/undocommand/groupitemscommand.cpp
+  ${QET_DIR}/sources/undocommand/groupitemscommand.h
+  ${QET_DIR}/sources/undocommand/alignselectioncommand.cpp
+  ${QET_DIR}/sources/undocommand/alignselectioncommand.h
+  ${QET_DIR}/sources/undocommand/mirrorselectioncommand.cpp
+  ${QET_DIR}/sources/undocommand/mirrorselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp
@@ -827,12 +925,21 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/utils/conductorcreator.cpp
   ${QET_DIR}/sources/utils/conductorcreator.h
+  ${QET_DIR}/sources/utils/colordialogdoubleclick.cpp
+  ${QET_DIR}/sources/utils/colordialogdoubleclick.h
   ${QET_DIR}/sources/utils/macosxopenevent.cpp
   ${QET_DIR}/sources/utils/macosxopenevent.h
   ${QET_DIR}/sources/utils/qetsettings.cpp
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
+
+  ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
+  ${QET_DIR}/sources/materiallist/materialentrydialog.h
+  ${QET_DIR}/sources/materiallist/materiallist.cpp
+  ${QET_DIR}/sources/materiallist/materiallist.h
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.cpp
+  ${QET_DIR}/sources/materiallist/materialselectiondialog.h
 
   ${QET_DIR}/sources/xml/terminalstripitemxml.cpp
   ${QET_DIR}/sources/xml/terminalstripitemxml.h
@@ -870,7 +977,55 @@ list(APPEND QET_SRC_FILES
   ${QET_DIR}/sources/scripting/qetscriptapi.h
   ${QET_DIR}/sources/scripting/qetscripting.cpp
   ${QET_DIR}/sources/scripting/qetscripting.h
+  ${QET_DIR}/sources/scripting/scriptheader.h
+  ${QET_DIR}/sources/scripting/scriptlibrary.cpp
+  ${QET_DIR}/sources/scripting/scriptlibrary.h
+  ${QET_DIR}/sources/scripting/scriptmanagerdialog.cpp
+  ${QET_DIR}/sources/scripting/scriptmanagerdialog.h
+  ${QET_DIR}/sources/scripting/liveserver.cpp
+  ${QET_DIR}/sources/scripting/liveserver.h
+  ${QET_DIR}/sources/scripting/macrorecorder.cpp
+  ${QET_DIR}/sources/scripting/macrorecorder.h
+  ${QET_DIR}/sources/scripting/assistantinfo.cpp
+  ${QET_DIR}/sources/scripting/assistantinfo.h
 )
+
+if(QET_SPACEMOUSE_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spacemousebackend.h
+    ${QET_DIR}/sources/spacemouse/spacemousebuttonmap.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousebuttonmap.h
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.cpp
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.h
+    ${QET_DIR}/sources/spacemouse/spacemousemotion.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousemotion.h
+    ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.cpp
+    ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.h
+  )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spnavbackend.cpp
+    ${QET_DIR}/sources/spacemouse/spnavbackend.h
+  )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/hidbackend.cpp
+    ${QET_DIR}/sources/spacemouse/hidbackend.h
+    ${QET_DIR}/sources/spacemouse/spacemousehid.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousehid.h
+  )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_CONNEXION_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/connexionbackend.cpp
+    ${QET_DIR}/sources/spacemouse/connexionbackend.h
+  )
+endif()
 
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts

@@ -16,13 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "autonumberingmanagementw.h"
+#include "../elementautonumschemecommand.h"
+#include "renumberpreviewdialog.h"
 
 #include "../../diagram.h"
+#include "../../qetgraphicsitem/element.h"
 #include "../../qetproject.h"
 #include "../numerotationcontextcommands.h"
 #include "formulaautonumberingw.h"
 #include "numparteditorw.h"
 #include "qdebug.h"
+#include "renumberelementsdialog.h"
 #include "ui_autonumberingmanagementw.h"
 #include "ui_formulaautonumberingw.h"
 
@@ -48,6 +52,8 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project,
 	ui->m_selected_folios_le->setDisabled(true);
 	ui->m_selected_folios_le->setReadOnly(true);
 	ui->m_apply_project_rb->setChecked(true);
+	// Enabled only when project is in "Under Development" status and not read-only.
+	ui->m_renumber_elements_pb->setEnabled(ui->m_status_cb->currentIndex() == 0 && project_ && !project_->isReadOnly());
 	setProjectContext();
 }
 
@@ -87,6 +93,7 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_both_conductor_rb->setChecked(true);
 		ui->m_both_element_rb->setChecked(true);
 		ui->m_both_folio_rb->setChecked(true);
+		ui->m_renumber_elements_pb->setEnabled(true);
 	}
 	//Installing
 	else if (index == 1) {
@@ -96,13 +103,64 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_new_conductor_rb->setChecked(true);
 		ui->m_new_element_rb->setChecked(true);
 		ui->m_new_folio_rb->setChecked(true);
+		ui->m_renumber_elements_pb->setEnabled(true);
 	}
 	//Built
 	else if (index == 2) {
 		ui->m_disable_conductor_rb->setChecked(true);
 		ui->m_disable_element_rb->setChecked(true);
 		ui->m_disable_folio_rb->setChecked(true);
+        	ui->m_renumber_elements_pb->setEnabled(false);
 	}
+}
+
+void AutoNumberingManagementW::on_m_renumber_elements_pb_clicked()
+{
+	if (!project_ || project_->isReadOnly()) return;
+	// Only allowed during "Under Development"
+	// if (ui->m_status_cb->currentIndex() != 1) return;
+
+	QStringList titles = project_->elementAutoNum().keys();
+	titles.sort(Qt::CaseInsensitive);
+	RenumberElementsDialog dlg(titles, this);
+	if (dlg.exec() != QDialog::Accepted) return;
+
+	const QString title = dlg.selectedSchemeTitle();
+	QVector<Element *> frozen;
+	auto *cmd = ElementAutoNumSchemeCommand::renumber(
+				project_, title, &frozen,
+				title.isEmpty() ? tr("Renuméroter les éléments")
+								: tr("Renuméroter les éléments (%1)").arg(title));
+	if (!cmd)
+	{
+		QMessageBox::information(
+					this, tr("Renuméroter les éléments"),
+					frozen.isEmpty()
+					? tr("Aucun élément ne suit cette numérotation.")
+					: tr("Les %n élément(s) qui suivent cette numérotation ont un nom "
+						 "figé : rien n'est renuméroté.", "", frozen.size()));
+		return;
+	}
+
+	const int renumbered = static_cast<int>(cmd->changes().size());
+	const int changed = RenumberPreviewDialog::changedLabelCount(cmd->changes());
+	if (!RenumberPreviewDialog::confirm(
+				this, tr("Renuméroter les éléments"),
+				tr("%n élément(s) vont être renumérotés, à partir du premier numéro, "
+				   "dans l'ordre des folios et des positions.", "", renumbered),
+				cmd->changes(), frozen)) {
+		delete cmd;
+		return;
+	}
+	project_->undoStack()->push(cmd);
+
+	QString summary = tr("%n élément(s) renumérotés, dont %1 avec un nouveau nom.", "", renumbered)
+			.arg(changed);
+	if (!frozen.isEmpty()) {
+		summary += QLatin1Char('\n') + tr("%n élément(s) au nom figé n'ont pas été touchés, "
+										 "et leur numéro n'a pas été redonné.", "", frozen.size());
+	}
+	QMessageBox::information(this, tr("Renuméroter les éléments"), summary);
 }
 
 /**

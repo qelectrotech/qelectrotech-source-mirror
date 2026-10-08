@@ -323,4 +323,2072 @@
     <source>Affichage</source>
     <target>Visning</target>
 </phrase>
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; to move</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Kontakter: NO: %1, NC: %2, växlare: %3, övriga: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Kontakter: NO: %1/%2, NC: %3/%4, växlare: %5/%6, övriga: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl under dragning = fri position, utan fastsnappning till rutnätet)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(redan använd)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1: läge %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; röd punkt : dra för att flytta rotationscentrum</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; turkos punkt : båge</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; en kant : lutning</target>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>mm</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Klicka : läge %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 h %2 min</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(redan tilldelad)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(antalet kontakter stämmer inte)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(undertypen stämmer inte)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(läget stämmer inte)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = skapa handtag</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = lösgör till polylinje</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (skärm)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (utskrift)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (hög kvalitet)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Fel&lt;/b&gt; :&lt;br&gt;Förbindelsedefinitioner får endast ha en anslutning.&lt;br&gt;&lt;b&gt;Lösning&lt;/b&gt; :&lt;br&gt;Kontrollera att elementet endast har en anslutning</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Åtgärd</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Adress</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>PLC-adress</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Visning Rutnät</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Visar eller döljer guiderna</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Visa rutnätet som standard (tillämpas vid nästa start)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Visa namnet</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Visa rubriker på bladet</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Visa guider</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Visa guiderna som standard (tillämpas vid nästa start)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Visa anslutningsnummer i korsreferenser</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Visa eller dölj kolumnrubriker för PLC-tabellen på bladet</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Afficher/cacher le cadre du label</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Afficher/cacher le nom du terminal</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Lägger till en Bézier-kurva på aktuellt blad</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Lägger till en PDF-sida på aktuellt blad</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Lägg till</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Lägg till ett blad</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Lägg till en PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Lägg till en punkt på en kurva</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Lägg till en kurva</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Lägg till en anpassad egenskap</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Justering</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Alfabetisk</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Alfanumerisk (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Vinkel</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Kantig</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Avbryt</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Förhandsgranskning:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Runda hörnen på %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Gå till ett element</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Varning: summan av de relativa bredderna överstiger 100 %% av den totala bredden, denna ritningshuvudsmall kan inte uppfyllas av någon bredd.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Varning: kolumnerna med fast bredd får inte plats i den återstående bredden, denna ritningshuvudsmall kan inte uppfyllas av någon bredd.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Endast tilldelade</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Ingen</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Styrenhet (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Styrenheter (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Automatisk plintnumrering</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Autonumrering</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Övrigt</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>VARNING:
+Alla värden andra än "Ingen avrundning" kan orsaka renderingsfel i projektet beroende på:
+
+1 - det valda värdet 
+2 - skärmens dpi 
+3 - om projektet ändras på en annan dator och/eller skärm som inte har samma inställningar som i punkterna 1 och 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Varning – Import av en EPLAN-fil (.edz)</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Anslutning 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Anslutning 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Anslutningar</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Plintrader</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Cannot read %1</target>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Kategori</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Detta format stöder inte transparens: bilden sparas som den var innan den transparenta färgen tillämpades. Fortsätta?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Denna genväg används även av : %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Detta innehåller de senaste loggmeddelandena från denna session. Kontrollera innehållet innan du bifogar det till en offentlig felrapport.</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Detta element är redan länkat</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Denna funktion numrerar projektets anslutningar efter deras position. Tomma eller låsta anslutningar ignoreras. Anslutningarnas märkning måste först konfigureras enligt följande: &apos;-X:AB&apos;. Delen före kolonet (plintraden) kan namnges fritt. &apos;AB&apos; kan bestå av siffror eller bokstäver."</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Textfält</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Sökväg för användarmakron</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Välj den plats där du vill spara din mall.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Klick: placera i originalstorlek. Klicka-dra: placera och ändra storlek. Högerklick: rotera 90°. Ctrl+rullning: justera storleken.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Vänsterklick: nästa punkt; dubbelklick eller Enter: avsluta; högerklick: ångra senaste punkten</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Vänsterklick: placera motstående hörn (Skift = kvadrat, Ctrl = från mitten + fri position, Ctrl+Skift = centrerad kvadrat); högerklick: ångra</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Vänsterklick: placera motstående hörn (Skift = cirkel, Ctrl = från mitten + fri position, Ctrl+Skift = centrerad cirkel); högerklick: ångra</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Vänsterklick: placera startpunkten (Ctrl = fri position)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Vänsterklick: placera slutpunkten (Ctrl = fri position); högerklick: ångra</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Vänsterklick: placera första hörnet (Ctrl = mittpunkt, fri position)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Vänsterklick: placera första punkten (Ctrl = fri position)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Klick: hörnpunkt. Klicka-dra: kurvpunkt. Klick på första punkten: stäng. Esc/Enter: avsluta. Högerklick: ångra senaste punkten.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Klicka</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Klicka: läge %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Klicka för att välja en färg</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Klicka på bilden för att lägga till en färg. Justera toleransen för varje färg med dess skjutreglage, eller klicka på × för att ta bort den.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Klicka på bilden för att välja en färg</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Rundade hörn</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Bibliotek</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Klistra in från urklipp</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Kommentar</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>PLC-kommentar</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Common (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Komponent 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Komponent 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>PLC-konfiguration</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Ange teckensnitt för kolumnrubriker</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Ange teckensnitt för text i cellerna</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Endast konflikter</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Anslut</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Kontakt</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Kontakter</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Konvertera %1 till Bézier-kurva</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Konvertera %1 till polylinje</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Konvertera till Bézier-kurva</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Konvertera till polylinje</target>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Kopiera och klistra in</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Koreanska</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Could not create a temporary directory: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Färg</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Färg :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Trådfärg</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Transparent färg</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Transparent färg...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Skär automatiskt av befintliga förbindningar när ett element placeras</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Automatisk avskärning av förbindning(ar)</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Märkström</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Skapa en mall</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Skapa en säkerhetskopia?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Cyklisk (modulo)</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Flytta rotationscentrum</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Rita anslutningarnas namn</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Avstånd i pixlar mellan etiketten och slavens korsreferens</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Avstånd etikett - slave:</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Avmarkera de plintrader vars numrering ska uteslutas</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Ange maximalt antal slavar</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Ange slavelement</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Ange en transparent färg</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Förbindningsdefinition</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Deformera en kurva</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Avlänka</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Flytta en bilds rotationscentrum</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Flytta en anslutnings beteckning</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Flytta blad</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Flytta ett blad</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Upplåst: bredd och höjd kan ändras oberoende av varandra. Klicka för att låsa.</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Ram runt texten</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Spara originalbilden som...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Spara bilden som...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Spara diagnostikrapporten</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Spara en diagnostikrapport...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Spara en mall</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Spara...</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Analog ingång</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Digital ingång</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Universell ingång</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Fel</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>PLC-slav</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Uteslut från förteckningen</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Uteslut från autonumrering</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Exporten lyckades</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Exportera till SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Exportera kopplingsschemat</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Rotera %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Rotera en bild</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Dra i handtagen, eller inuti ramen, för att justera området som ska behållas.</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>CSV-filer (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>PDF-filer (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Textfiler (*.txt);;Alla filer (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Tråd</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>File not found: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Filtrera genvägar…</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Finrotation</target>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Funktion</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>PLC-funktion</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Experimentell funktion</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Visningsformat: en följd av nollor anger det minsta antalet siffror (00 = 07, 000 = 007). Tomt = typens naturliga bredd.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Sluten form</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Dra %1 : rotation (Skift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Dra : justera bågen (Ctrl = fri position, Skift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Dra : runda hörnen (Ctrl = fri position)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Dra : deformera kurvan (Ctrl = fri position, Alt = bryt tangenten)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Dra : flytta denna punkt</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Dra: flytta rotationscentrum</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Dra : flytta punkten (Ctrl = fri position</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Dra : lutning (Ctrl = fri position, Skift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Dra: luta (Skift = i steg om 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Dra: rotera (Skift = i steg om 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Dra : ändra storlek (Ctrl = från mitten + fri position, Skift = proportioner</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Dra: ändra storlek (Skift = behåll proportionerna, Ctrl = från mitten)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Dra : flytta rotationscentrum (Ctrl = fri position)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Dra : rotation (Ctrl = fri position, Skift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Dra den lila punkten : runda hörnen</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Dra ett hörn: rotera (Skift = i steg om 15°); dra en kant: luta (Skift = i steg om 15°); röd punkt: flytta rotationscentrum</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Dra ett hörn/kant: ändra storlek (Ctrl = från mitten, Skift = behåll proportionerna)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Dra ett hörn/kant : ändra storlek (Ctrl = från mitten, Skift = proportioner, Alt = lösgör till polylinje)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Dra en punkt : flytta den</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Dra en ändpunkt : flytta den</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Dra ett handtag eller kurvan : deformera (Alt = bryt tangenten) ; Alt+dra en kantig punkt : skapa handtag ; högerklick : meny för närmaste nod</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>go one page left</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>go one page right</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Guider</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Skapar en rapport med de senaste loggmeddelandena, för att bifoga i en felrapport</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>H. rad:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Höjd</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horisontell</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>horisontell + vertikal</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP-bild (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Bildfiler (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG-bild (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG-bild (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Källbild</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG-bild (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Bilder ingår inte i DXF-exporten</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLAN-import</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Importera</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Importera en EPLAN-artikel</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Importera en EPLAN-artikel (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Det gick inte att spara bilden på denna plats.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Det gick inte att spara förteckningen i %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>Det gick inte att spara mallen « %1 ».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Det gick inte att importera denna artikel:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Det gick inte att öppna filen för skrivning.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>Det gick inte att skriva till filen "%1".</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Det gick inte att läsa in bilden.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>Det gick inte att läsa in PDF-filen.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>Det gick inte att fastställa storleken på PDF-sidan.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Det gick inte att läsa projektets struktur i minnet.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>Det gick inte att rendera PDF-sidan.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Lutning X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Lutning Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Luta %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Luta en bild</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Okänd</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Steg</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Steg: värde som adderas till räknaren vid varje ny numrering</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Skriv in komponenternas information</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Infoga ett blad ovanför</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Infoga ett blad nedanför</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Växlare</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Tillgänglig IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Jag har läst och accepterar dessa villkor.</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Gränsen för detta masterelement har uppnåtts (Gräns: %1).
+
+Vill du ändå länka denna slavkontakt?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Borttagningen kan inte utföras eftersom markeringen har en eller flera anslutningar som är byglade och/eller tillhör en anslutning med flera nivåer.
+Ta bort byglingen och/eller nivåerna för de berörda anslutningarna för att kunna ta bort dem</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Beteckning</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Bredd</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Filen kunde inte skrivas.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>PDF-filen innehåller inga sidor.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>Filen « %1 » saknas eller är oläslig: det översatta namnet på denna mapp kunde inte läsas, mappnamnet visas i stället.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>Formatet .edz kan komma från två olika källor:
+
+• EPLAN Data Portal (dataportal.eplan.com), som omfattas av användarvillkoren för EPLAN Cloud-miljön;
+• en komponenttillverkares (eller distributörs) webbplats som tillhandahåller sina .edz-filer direkt enligt sina egna villkor.
+
+QElectroTech kan inte automatiskt avgöra ursprunget för filen du importerar, eller vilka villkor som gäller för den.
+
+Genom att importera denna fil bekräftar du att:
+
+• du känner till dess ursprung och har rätt att använda den i detta sammanhang, med hänsyn till de villkor som gäller för denna källa;
+• denna import sker på egen risk och eget ansvar;
+• varken QElectroTech, dess underhållare eller dess bidragsgivare kan hållas ansvariga för en användning av dessa data som inte är förenlig med villkoren.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Det DXF-format som används här (AC1006) tillåter inte att bilder inkluderas. Bilderna representeras endast av en konturram (position, storlek, rotation och lutning bevaras), utan bildens innehåll.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Mallen sparades med namnet:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>Namnet « %1 » är inte giltigt: det får inte innehålla följande tecken: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Det nya elementet definierar grupper av slavelement.
+Befintliga slavelement tilldelas inte automatiskt. Du måste manuellt koppla slavarna och tilldela kontaktgrupperna.
+
+Vill du fortsätta?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Kopplingsschemat exporterades utan problem!</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Mallen finns redan. Vill du skriva över den?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Endast små bokstäver, siffror, bindestreck och understreck</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Licenser</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Slät</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Kopplingslista</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Kopplingslista (databas)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Länkad till: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Maximal längd</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Maximal längd: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Längd utan begränsning.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Makron</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>max:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Ange 0 för en siffra som endast ökar genom överföringen av en efterföljande cyklisk siffra (t.ex. "0" i "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>min:</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Horisontell spegling</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Horisontell spegling av en bild</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Horisontell spegling av %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Spegling omöjlig : lutningen är för extrem för denna form</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Vertikal spegling</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Vertikal spegling av en bild</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Vertikal spegling av %1</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>mod.</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Ändra justeringen av ett textfält</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Ändra etikettens justering</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Ändra vinkeln på en båge</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Ändra vinkeln på en form</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Ändra vinkeln på en bild</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Ändra lutningen på en bild</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Ändra masterns etikettindex</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Ändra masterns etikett</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Ändra etikettens färg</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Ändra krökningen på %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Ändra formen på %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Ändra höjden på en bild</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Ändra bredden på en bild</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Ändra längden på en linje</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Ändra etikettens typsnitt</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Ändra etikettens position</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Ändra etikettens rotation</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Ändra storleken på en form</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Ändra etikettens teckenstorlek</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Ändra anslutningens namn</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Ändra rotationspunkten för ett textfält</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Ändra typen av en nod</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Redigera en bild</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>PLC-modul</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Modell</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Mall sparad</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Mallar</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Antal</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>Antal anslutningar</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>Antal kontakter</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (kontakt SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>No *.part.xml found inside the .edz</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Elementets filnamn</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Elementets filnamn: endast siffror, små bokstäver, "-", "_" och ".".
+Elementets visningsnamn ändras separat i elementets egenskaper.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Anslutningens namn</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Namn på den nya mallen</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Anpassat namn på kolumnen (tomt = standard)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Elementets namn, beteckning eller information…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>egenskapsnamn</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Felaktigt antal anslutningar</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Antal använda slavelement: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Maximalt antal slavelement uppnått.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Maximalt antal definierade slavelement: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Maximalt antal definierade slavelement: ej definierat
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Nej</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Endast otilldelade</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Normalt stängd</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Normalt öppen</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Not a valid .edz package (unrecognised archive format).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Anteckningar</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Endast numerisk (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Automatisk numrering av anslutningar</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Numrera en förbindning automatiskt</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Numrera ett element automatiskt</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Numrera även bokstäverna</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Närmaste nod</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Vertikalt ursprung</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Ja</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Sida</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Sida att importera:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Elementpanel</target>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Roterar markeringen som en grupp runt sitt centrum, i stället för varje element på plats</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Rotera gruppen</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>rotera/luta</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>EPLAN-artiklar (*.edz)</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Textens förankringspunkt och radernas inbördes justering</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Typsnitt:</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Teckensnitt för rubriker</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Teckensnitt för kolumnrubriker</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Teckensnitt för rubriker: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Teckensnitt för text</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Teckensnitt för celltext</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Teckensnitt för text: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Projektets teckensnitt</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Position</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Axelprioritet</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Prioritet för X-axeln (horisontell)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Prioritet för Y-axeln (vertikal)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Nästa värde som tillämpas med detta steg</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Djup</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Textegenskaper</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Förhandsgranskning:</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Effekt</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech avslutades inte korrekt vid sin senaste körning.
+Här är de senaste meddelandena som registrerades före avslutningen – du kan spara dem för att bifoga dem till en felrapport.</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Genväg</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Genvägar</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Diagnostikrapport</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Kraschrapport</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Radie X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Radie Y</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Sökning</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Söker och väljer snabbt ett element på bladet</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Sök...</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>ändra storlek</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Ändra storlek på %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Ändra storlek på en bild</target>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Obs: masterelement som har nått sitt maximala antal slavelement är dolda.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Ersätt bilden...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Ersätt en bild</target>
+</phrase>
+<phrase>
+    <source>Remplissage :</source>
+    <target>Fyllning :</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Hämta från masterelementet</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Återställ proportionerna</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Återställ en bilds proportioner</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Ta bort denna färg</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Återgå till hela bilden, utan beskärning</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Beskär bilden</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Beskär en bild</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Beskär...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Rotation :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Rotation/Lutning</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Ref.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Korsreferens</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>PLC-korsreferens</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Korsreferens</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Återställ</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Återställ denna genväg</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Återställ till startvärdet</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Katalog för användarmakron</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Upplösning:</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Hoppa %1 efter:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Trådarea</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Välj en bild...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Enkel</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Analog utgång</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Digital utgång</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Universell utgång</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Vill du skapa en säkerhetskopia?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Undertyp</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Följ tiden som lagts på detta projekt (sparas endast lokalt i denna fil)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Det gick inte att ta bort anslutningen</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Ta bort</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Ta bort %1 blad</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Ta bort denna egenskap</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Ta bort närmaste nod</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Ta bort bladen</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Ta bort ett blad</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Ta bort en punkt från en kurva</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Symmetrisk</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Kontaktsystem ändrat</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Välj en PDF-fil...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Välj en kontaktgrupp</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Välj en IO-PLC</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Välj en sida</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Välj den kontaktgrupp som ska tilldelas detta slavelement:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Potentialseparering</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>PLC-tabell</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>PLC-tabell (tom)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Storlek</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Storlek:</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Storlek på rutnätets punkter i Diagram-Editor: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Storlek på rutnätets punkter i elementredigeraren: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>Tidsfördröjd från</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>Tidsfördröjd till</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>Tidsfördröjd till &amp; från</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Tid som lagts på detta projekt:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Spänning / protokoll</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Märkspänning</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Anslutningstext</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Rubriktext</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Tolerans för denna färg</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Rotera kring sitt eget centrum</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Alla</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Alla filer (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Återställ allt</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Koreansk översättning</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Transformera %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Transparens bevaras inte</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Typ</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Numreringstyp</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLC-typ</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>en båge</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>ett hörn</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>en punkt</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>en kurva</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>en ändpunkt</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>en bild</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Värde</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Räknarens aktuella värde. Ange ett nytt värde och bekräfta för att ändra det.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Värde vid vilket denna siffra återgår till 0 när den föregående siffran ökas (0 = ingen cykel)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Lås den automatiska numreringen</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Lås positionen</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Låst: att ändra bredd eller höjd justerar den andra för att bevara proportionerna. Klicka för att låsa upp.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Vertikal</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Synlig</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Visa detta element</target>
+</phrase>
+<phrase>
+    <source>X :</source>
+    <target>X :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>Y :</source>
+    <target>Y :</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Det gick inte att spara</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Exporten misslyckades</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Skriv över mallen?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Elementredigerare</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Ritningshuvudredigerare</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Schemaredigerare</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Textredigerare</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Nodredigering</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Masterelementets etikett</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Är du säker på att du vill ta bort detta blad?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Är du säker på att du vill ta bort detta blad från projektet?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Är du säker på att du vill ta bort de %1 valda bladen?</target>
+</phrase>
 </QPH>

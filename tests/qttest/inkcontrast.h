@@ -38,9 +38,8 @@ namespace QET {
 			image is also written there as <row>-<name>.png so a failure
 			can be looked at.
 		*/
-		inline QImage grab(QWidget *widget, const char *name)
+		inline QImage dump(const QImage &image, const char *name)
 		{
-			const QImage image = widget->grab().toImage();
 			const QByteArray dir = qgetenv("QET_TEST_DUMP_DIR");
 			if (!dir.isEmpty())
 				image.save(QString("%1/%2-%3.png").arg(QString::fromLocal8Bit(dir),
@@ -48,28 +47,55 @@ namespace QET {
 			return image;
 		}
 
+		inline QImage grab(QWidget *widget, const char *name)
+		{
+			return dump(widget->grab().toImage(), name);
+		}
+
 		/**
 			Contrast between the background of a rendered widget (its most
 			frequent color) and the ink drawn on it (the pixel whose
 			luminance differs most from the background), inside rect.
 		*/
-		inline double inkContrast(const QImage &image, const QRect &rect)
+		inline QHash<QRgb, int> histogram(const QImage &image, const QRect &rect)
 		{
-			QHash<QRgb, int> histogram;
+			QHash<QRgb, int> counts;
 			for (int y = rect.top(); y <= rect.bottom(); ++y)
 				for (int x = rect.left(); x <= rect.right(); ++x)
-					++histogram[image.pixel(x, y)];
+					++counts[image.pixel(x, y)];
+			return counts;
+		}
 
-			QRgb background = 0;
+		/// The most frequent color inside rect.
+		inline QRgb background(const QImage &image, const QRect &rect)
+		{
+			const QHash<QRgb, int> counts = histogram(image, rect);
+			QRgb color = 0;
 			int best = -1;
-			for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
-				if (it.value() > best) { best = it.value(); background = it.key(); }
+			for (auto it = counts.cbegin(); it != counts.cend(); ++it)
+				if (it.value() > best) { best = it.value(); color = it.key(); }
+			return color;
+		}
 
+		/// The color inside rect that contrasts most with the background: the ink.
+		inline QRgb ink(const QImage &image, const QRect &rect)
+		{
+			const QHash<QRgb, int> counts = histogram(image, rect);
+			const QColor bg(background(image, rect));
+			QRgb color = bg.rgb();
 			double contrast = 1.0;
-			for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
-				contrast = qMax(contrast, QET::Palette::contrastRatio(QColor(background),
-				                                                      QColor(it.key())));
-			return contrast;
+			for (auto it = counts.cbegin(); it != counts.cend(); ++it)
+			{
+				const double c = QET::Palette::contrastRatio(bg, QColor(it.key()));
+				if (c > contrast) { contrast = c; color = it.key(); }
+			}
+			return color;
+		}
+
+		inline double inkContrast(const QImage &image, const QRect &rect)
+		{
+			return QET::Palette::contrastRatio(QColor(background(image, rect)),
+			                                   QColor(ink(image, rect)));
 		}
 	}
 }

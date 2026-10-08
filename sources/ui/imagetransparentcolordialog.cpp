@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "imagetransparentcolordialog.h"
+#include "../qet.h"
 
 #include <QDialogButtonBox>
 #include <QGridLayout>
@@ -141,6 +142,8 @@ ImageTransparentColorDialog::ImageTransparentColorDialog(const QPixmap &basePixm
 
 	rebuildSwatches();   // shows existingColors immediately, if any
 	updatePreview();     // and the preview already reflects them too, rather than only appearing after the next pick
+
+	QET::trackDialogGeometry(this);
 }
 
 /**

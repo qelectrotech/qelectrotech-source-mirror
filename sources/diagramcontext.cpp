@@ -42,6 +42,7 @@ void DiagramContext::add(DiagramContext other)
 */
 void DiagramContext::remove(const QString &key) {
 	m_content.remove(key);
+	m_content_show.remove(key);
 }
 
 /**
@@ -144,6 +145,27 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const
 	return(!(*this == dc));
 }
 
+namespace {
+/**
+	The value as it is saved, and so as it is read back: stray leading and
+	trailing whitespace around real content trimmed, but not a value that IS
+	whitespace -- unconditionally trimming an all-whitespace string collapses
+	it to "", which is silently indistinguishable from a value that was never
+	set. A title-block custom variable set to a single space -- a workaround
+	for #973, where an unset variable renders as its own literal placeholder
+	-- would otherwise vanish on the very next save.
+	Applied when reading as well as when writing, so that what is in memory
+	after a load is what the next save writes: a label shown from an
+	untrimmed value would otherwise keep its spaces on screen and in its
+	displayed copy until the project was saved and opened again, and a
+	just-saved project would change on its second save.
+*/
+QString storedValue(const QString &raw)
+{
+	return raw.trimmed().isEmpty() ? raw : raw.trimmed();
+}
+} // namespace
+
 /**
 	Export this context properties under the \a e XML element, using tags
 	named \a tag_name (defaults to "property").
@@ -151,8 +173,8 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const
 void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 {
 	foreach (QString key, keys()) {
-		if ((tag_name == "elementInformation") &&
-			(m_content[key].toString().trimmed().isEmpty())) {
+		const QString raw = m_content[key].toString();
+		if ((tag_name == "elementInformation") && raw.trimmed().isEmpty()) {
 			continue;
 		}
 		QDomElement property = e.ownerDocument().createElement(tag_name);
@@ -161,7 +183,7 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 		property.removeAttribute("name");
 		property.setAttribute("show", m_content_show[key]);
 		property.setAttribute("name", key);
-		QDomText value = e.ownerDocument().createTextNode(m_content[key].toString().trimmed());
+		QDomText value = e.ownerDocument().createTextNode(storedValue(raw));
 		property.appendChild(value);
 		e.appendChild(property);
 	}
@@ -174,7 +196,7 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 	foreach (QDomElement property, QET::findInDomElement(e, tag_name)) {
 		if (!property.hasAttribute("name")) continue;
-		addValue(property.attribute("name"), QVariant(property.text()));
+		addValue(property.attribute("name"), QVariant(storedValue(property.text())));
 		m_content_show.insert(property.attribute("name"), property.attribute("show", "1").toInt());
 	}
 }
@@ -190,7 +212,8 @@ void DiagramContext::fromXml(const pugi::xml_node &dom_element, const QString &t
 {
 	for(auto node = dom_element.child(tag_name.toStdString().c_str()) ; node ; node = node.next_sibling(tag_name.toStdString().c_str()))
 	{
-		addValue(node.attribute("name").as_string(), QVariant(node.text().as_string()));
+		addValue(node.attribute("name").as_string(),
+				 QVariant(storedValue(QString::fromUtf8(node.text().as_string()))));
 		m_content_show.insert(node.attribute("name").as_string(), node.attribute("show").empty()? 1 : node.attribute("show").as_int());
 	}
 }

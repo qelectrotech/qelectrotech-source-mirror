@@ -16,14 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qet.h"
+#include "qetapp.h"
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
+#include <cmath>
 #include <limits>
+#include <QBuffer>
+#include <QColorDialog>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
+#include <QDialog>
 #include <QFileInfo>
 #include <QSaveFile>
+#include <QSettings>
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QActionGroup>
@@ -240,8 +246,80 @@ bool QET::attributeIsAReal(
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
+	// QString::toDouble() sets ok=true for "nan"/"inf"/"-inf" -- these
+	// parse successfully but are not usable coordinates. A non-finite
+	// element/terminal position reaches Conductor::shape() during load
+	// and hangs there at 100% CPU inside QPainterPathStroker::createStroke(),
+	// confirmed with gdb: not a blocked wait, genuine unbounded computation.
+	if (!std::isfinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
+}
+
+/**
+	@brief QET::hasNonFiniteGeometry
+	@param shape a shape of an element definition (<line>, <rect>, <text>...)
+	@return true if one of its coordinates or sizes is "nan" or "inf".
+	The folio does not draw such a shape (see attributeIsAReal()), and the
+	element editor cannot show or edit it.
+*/
+bool QET::hasNonFiniteGeometry(const QDomElement &shape)
+{
+	static const QStringList geometry {
+		"x", "y", "x1", "y1", "x2", "y2", "width", "height", "diameter",
+		"rx", "ry", "start", "angle", "rotation", "length1", "length2"};
+	static const QRegularExpression polygon_point("^[xy][0-9]+$");
+
+	const QDomNamedNodeMap attributes = shape.attributes();
+	for (int i = 0 ; i < attributes.count() ; ++i)
+	{
+		const QDomAttr attribute = attributes.item(i).toAttr();
+		if (!geometry.contains(attribute.name())
+			&& !polygon_point.match(attribute.name()).hasMatch())
+			continue;
+		bool ok;
+		const qreal value = attribute.value().toDouble(&ok);
+		if (ok && !std::isfinite(value)) return(true);
+	}
+	return(false);
+}
+
+/**
+	@brief QET::infoFlagIsTrue
+	@see the header comment for why this exists rather than a bare
+	== "true" comparison.
+	@param value the raw elementInformations string to test
+	@return true if @p value, trimmed and case-folded, is one of the
+	truthy spellings this codebase already accepts elsewhere
+*/
+bool QET::infoFlagIsTrue(const QString &value)
+{
+	const QString v = value.trimmed().toLower();
+	return v == QLatin1String("true")
+		|| v == QLatin1String("1")
+		|| v == QLatin1String("yes")
+		|| v == QLatin1String("on");
+}
+
+/**
+	@brief QET::trackDialogGeometry
+	@see the declaration in qet.h for the rationale.
+*/
+void QET::trackDialogGeometry(QDialog *dialog, const QString &key)
+{
+	const QString settings_key = QStringLiteral("dialoggeometry/%1").arg(
+		key.isEmpty() ? QString::fromLatin1(dialog->metaObject()->className()) : key);
+
+	QSettings settings;
+	const QVariant geometry = settings.value(settings_key);
+	if (geometry.isValid()) {
+		dialog->restoreGeometry(geometry.toByteArray());
+	}
+
+	QObject::connect(dialog, &QDialog::finished, dialog, [dialog, settings_key]() {
+		QSettings settings;
+		settings.setValue(settings_key, dialog->saveGeometry());
+	});
 }
 
 /**
@@ -268,84 +346,88 @@ QString QET::ElementsAndConductorsSentence(
 		int tables_count,
 		int terminal_strip_count)
 {
-	QString text;
+	QStringList parts;
 	if (elements_count) {
-		text += QObject::tr(
-			"%n élément(s)",
-			"part of a sentence listing the content of a diagram",
-			elements_count
+		parts.append(
+			QObject::tr(
+				"%n élément(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				elements_count
+			)
 		);
 	}
 
 	if (conductors_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n conducteur(s)",
-			"part of a sentence listing the content of a diagram",
-			conductors_count
+		parts.append(
+			QObject::tr(
+				"%n conducteur(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				conductors_count
+			)
 		);
 	}
 
 	if (texts_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n champ(s) de texte",
-			"part of a sentence listing the content of a diagram",
-			texts_count
+		parts.append(
+			QObject::tr(
+				"%n champ(s) de texte",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				texts_count
+			)
 		);
 	}
 
 	if (images_count) {
-		if (!text.isEmpty()) text += ", ";
-		// Qt's %n only selects a grammatical singular/plural form (the
-		// "(s)" convention used by every other count here) -- it never
-		// spells the number out as a word, so getting "une image"
-		// instead of the literal "1 image" for the single-item case
-		// means handling that count outside %n entirely, with its own
-		// fixed string.
-		text += images_count == 1
-				? QObject::tr("une image", "part of a sentence listing the content of a diagram")
-				: QObject::tr(
-					"%n images",
-					"part of a sentence listing the content of a diagram",
-					images_count
-				);
+		parts.append(
+			QObject::tr(
+				"%n image(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				images_count
+			)
+		);
 	}
 
 	if (shapes_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n forme(s)",
-			"part of a sentence listing the content of a diagram",
-			shapes_count
+		parts.append(
+			QObject::tr(
+				"%n forme(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				shapes_count
+			)
 		);
 	}
 
 	if (element_text_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n texte(s) d'élément",
-					"part of a sentence listing the content of a diagram",
-					element_text_count);
+		parts.append(
+			QObject::tr(
+				"%n texte(s) d'élément",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				element_text_count
+			)
+		);
 	}
 
 	if (tables_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n tableau(s)",
-					"part of a sentence listing the content of diagram",
-					tables_count);
+		parts.append(
+			QObject::tr(
+				"%n tableau(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				tables_count
+			)
+		);
 	}
 
 	if (terminal_strip_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n plan de bornes",
-					"part of a sentence listing the content of a diagram",
-					terminal_strip_count);
+		parts.append(
+			QObject::tr(
+				"%n plan(s) de bornes",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				terminal_strip_count
+			)
+		);
 	}
 
-	return(text);
+	return QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts);
 }
 
 /**
@@ -844,4 +926,56 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 	}
 
 	return(true);
+}
+
+/**
+	@brief QET::saveCustomColors
+	Save the 16 QColorDialog custom colors to QSettings so they persist
+	across application restarts.
+*/
+void QET::saveCustomColors()
+{
+	QByteArray ba;
+	QBuffer buf(&ba);
+	buf.open(QIODevice::WriteOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+	for (int i = 0; i < 16; i++)
+		s << QColorDialog::customColor(i);
+	QSettings settings;
+	settings.setValue(QStringLiteral("color/customColors"), ba);
+}
+
+/**
+	@brief QET::loadCustomColors
+	Load the 16 QColorDialog custom colors from QSettings into Qt's
+	internal custom color array.  A short or corrupt buffer is ignored
+	so that unread slots keep their default rather than turning black.
+*/
+void QET::loadCustomColors()
+{
+	QSettings settings;
+	QByteArray ba = settings.value(QStringLiteral("color/customColors")).toByteArray();
+
+	// Fall back to the legacy ungrouped key used by earlier versions.
+	if (ba.isEmpty())
+		ba = settings.value(QStringLiteral("customColors")).toByteArray();
+
+	if (ba.isEmpty())
+		return;
+
+	QBuffer buf(&ba);
+	buf.open(QIODevice::ReadOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+
+	QColor colors[16];
+	for (int i = 0; i < 16; i++)
+		s >> colors[i];
+
+	if (s.status() != QDataStream::Ok)
+		return;
+
+	for (int i = 0; i < 16; i++)
+		QColorDialog::setCustomColor(i, colors[i]);
 }

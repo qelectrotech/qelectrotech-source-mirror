@@ -1,4 +1,4 @@
-; this file is part of installer for QElectroTech
+﻿; this file is part of installer for QElectroTech
 ; Copyright (C)2015 QElectroTech Team <scorpio@qelectrotech.org>
 ;
 ; This program is free software; you can redistribute it and/or
@@ -34,7 +34,7 @@
 ;--------------------------------
 ; NSIS 3 requires SetCompressor BEFORE any Section or Function
 SetCompressor /FINAL /SOLID lzma
-
+Unicode true
 ;--------------------------------
 ; Includes
 !include x64.nsh
@@ -274,6 +274,21 @@ Section "$(Fonts)" SEC05
     File /nonfatal /r "./files/fonts"
 SectionEnd
 
+; The MCP server lets an AI assistant open, check and edit drawings. It does
+; nothing until a user sets up an assistant to start it.
+Section "$(Mcp)" SEC06
+    SetOutPath "$INSTDIR\mcp"
+    File /nonfatal "./files/mcp/*"
+SectionEnd
+
+; Python for the MCP server, from python.org (about 12 MB). Unticked by
+; default: only someone setting up an AI assistant needs it, and then only
+; without a Python of their own. Uninstall removes it with $INSTDIR.
+Section /o "$(McpPython)" SEC07
+    SetOutPath "$INSTDIR\mcp\python"
+    File /nonfatal /r "./files/mcp/python/*"
+SectionEnd
+
 ;--------------------------------
 ; Component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -282,6 +297,8 @@ SectionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(var3)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC05} $(var5)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SEC06} $(var6)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SEC07} $(var7)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------

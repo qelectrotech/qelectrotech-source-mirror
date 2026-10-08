@@ -24,6 +24,7 @@
 
 #include <QApplication>
 #include <QDir>
+#include <QFile>
 #include <QPainter>
 #include <QPixmap>
 #include <QStyle>
@@ -162,7 +163,7 @@ QString FileElementCollectionItem::localName()
 			else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
 			else if (m_path == macrosPath)
-				setText(QObject::tr("Makros"));
+				setText(QObject::tr("Macros"));
 			else
 				setText(QObject::tr("Collection inconnue"));
 		}
@@ -178,7 +179,12 @@ QString FileElementCollectionItem::localName()
 			bool readable = false;
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if (docu.load_file(str.toStdWString().c_str()))
+				// QFile rather than pugi's load_file(), which fails on
+				// Windows once the full path reaches 260 characters.
+			QFile file(str);
+			const QByteArray data = file.open(QIODevice::ReadOnly)
+					? file.readAll() : QByteArray();
+			if (!data.isEmpty() && docu.load_buffer(data.constData(), data.size()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")
@@ -478,6 +484,22 @@ void FileElementCollectionItem::setUpIcon()
 			}
 		}
 	}
+}
+
+/**
+	@brief FileElementCollectionItem::clearData
+	Reset the data, and let setUpIcon() build the icon again.
+	Without this the guard in setUpIcon() keeps the icon cleared here
+	empty until the whole collection is reloaded, e.g. after an element
+	is saved from the element editor (see locationWasSaved()).
+*/
+void FileElementCollectionItem::clearData()
+{
+		// Reset the flag only after the base class has cleared the icon:
+		// its setIcon() emits dataChanged(), which re-enters setUpIcon(),
+		// and that call must still see the flag set and return early.
+	ElementCollectionItem::clearData();
+	m_icon_initialized = false;
 }
 
 /**

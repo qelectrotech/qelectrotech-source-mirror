@@ -1,6 +1,9 @@
 #include <QtTest>
 
 #include "qet.h"
+#include "qetapp.h"
+
+QString QETApp::m_interface_language;
 
 /**
 	QET::joinWithSpaces() / QET::splitWithSpaces() are the wire format for the

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include "../shownkinds.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
@@ -24,6 +25,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../utils/qetutils.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
@@ -32,6 +34,43 @@
 #include <QDomElement>
 #include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
+#include <QClipboard>
+#include <QKeyEvent>
+#include <QKeySequence>
+#include <QMimeData>
+#include <QTextCursor>
+#include <QTextDocumentFragment>
+
+void DynamicElementTextItem::keyPressEvent(QKeyEvent *event)
+{
+	if (!event->matches(QKeySequence::Paste) || m_text_from != UserText ||
+	    !(textInteractionFlags() & Qt::TextEditable)) {
+		DiagramTextItem::keyPressEvent(event);
+		return;
+	}
+	if (diagram() && diagram()->isReadOnly()) {
+		event->accept();
+		return;
+	}
+	const QMimeData *mime = QApplication::clipboard()->mimeData();
+	if (mime && (mime->hasText() || mime->hasHtml())) {
+		const QString text = mime->hasText() ? mime->text() :
+		    QTextDocumentFragment::fromHtml(mime->html()).toPlainText();
+		prepareAlignment();
+		QTextCursor cursor = textCursor();
+		cursor.beginEditBlock();
+		// An empty character format inherits the field's default font,
+		// rather than the clipboard's font or the preceding character's.
+		cursor.insertText(text, QTextCharFormat());
+		cursor.setCharFormat(QTextCharFormat());
+		cursor.endEditBlock();
+		setTextCursor(cursor);
+		finishAlignment();
+	}
+	event->accept();
+}
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
@@ -42,6 +81,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	m_parent_element(parent_element),
 	m_uuid(QUuid::createUuid())
 {
+	ShownKinds::tag(this, ShownKinds::SymbolTexts);
 	setFont(QETApp::dynamicTextsItemFont());
 	setText(tr("Texte"));
 	setParentItem(parent_element);
@@ -61,13 +101,33 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	
 		//Option when text is displayed in multiple line
 	QTextOption option = document()->defaultTextOption();
-	option.setAlignment(Qt::AlignHCenter);
+	option.setAlignment(alignment() & Qt::AlignHorizontal_Mask);
 	option.setWrapMode(QTextOption::WordWrap);
 	document()->setDefaultTextOption(option);
+
+		//Lines of a multi-line text follow the horizontal alignment
+	connect(this, &DiagramTextItem::alignmentChanged, [this](Qt::Alignment alignment)
+	{
+		QTextOption option = document()->defaultTextOption();
+		option.setAlignment(alignment & Qt::AlignHorizontal_Mask);
+		document()->setDefaultTextOption(option);
+		fitAutoTextWidth();
+	});
+	connect(document(), &QTextDocument::contentsChanged, this, &DynamicElementTextItem::fitAutoTextWidth);
+		//The new font can make the lines wider or narrower than the width
+		//fitted for the old one: fit again, keeping the text's anchor
+	connect(this, &DiagramTextItem::fontChanged, this, [this]()
+	{
+		prepareAlignment();
+		fitAutoTextWidth();
+		finishAlignment();
+	});
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
-{}
+{
+	removeResizeHandles();
+}
 
 /**
 	@brief DynamicElementTextItem::textFromMetaEnum
@@ -629,7 +689,13 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			int diffx = qRound(current_parent_pos.x() - button_down_parent_pos.x());
 			int diffy = qRound(current_parent_pos.y() - button_down_parent_pos.y());
 			QPointF new_pos = m_initial_position + QPointF(diffx, diffy);
-			setPos(new_pos);
+				//Snap to the grid, Ctrl to place freely -- the same line
+				//ElementTextItemGroup::mouseMoveEvent() and
+				//ElementTextsMover::continueMovement() already use, and
+				//DiagramTextItem::mouseMoveEvent() for independent texts.
+				//Without it this was the only text move in the editor that
+				//ignored the grid.
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
@@ -722,7 +788,7 @@ void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	DiagramTextItem::paint(painter, option, widget);
-	
+
 	if (m_frame)
 	{
 		painter->save();
@@ -800,8 +866,12 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::updateXref);
 			if(m_parent_element.data()->diagram())
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
-			if(!m_parent_element.data()->linkedElements().isEmpty())
-				updateXref();
+			//Also call updateXref for a master without any linked slave:
+			//when the contact comb must show every contact group the master
+			//defines, the cross ref is expected the moment the element lands
+			//on the diagram, not only after the first link or the first
+			//settings change.
+			updateXref();
 		}
 		
 		m_first_scene_change = false;
@@ -812,15 +882,41 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		updateXref();
 		updateXref();
 	}
-	
+	else if (change == QGraphicsItem::ItemSelectedHasChanged)
+	{
+		refreshResizeHandlesVisibility();
+	}
+	else if (change == QGraphicsItem::ItemSceneHasChanged && !scene())
+	{
+		removeResizeHandles();
+	}
+
 	return QGraphicsObject::itemChange(change, value);
 }
 
 bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
+	if (watched == m_left_resize_handle || watched == m_right_resize_handle)
+	{
+		auto *handle = static_cast<QetGraphicsHandlerItem *>(watched);
+		if (event->type() == QEvent::GraphicsSceneMousePress) {
+			handlerMousePressEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		else if (event->type() == QEvent::GraphicsSceneMouseMove) {
+			handlerMouseMoveEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		else if (event->type() == QEvent::GraphicsSceneMouseRelease) {
+			handlerMouseReleaseEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		return false;
+	}
+
 	if(watched != m_slave_Xref_item)
 		return false;
-	
+
 	if(event->type() == QEvent::GraphicsSceneHoverEnter) {
 		m_slave_Xref_item->setDefaultTextColor(Qt::blue);
 		return true;
@@ -833,8 +929,171 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 		zoomToLinkedElement();
 		return true;
 	}
-	
+
 	return false;
+}
+
+/**
+	@brief DynamicElementTextItem::refreshResizeHandlesVisibility
+	Show the resize handles when this text is selected directly, OR when its
+	parent element is -- which is what an ordinary click without Shift
+	selects (DynamicElementTextItem::mousePressEvent() forwards a plain
+	click to the parent, so dragging a symbol by its label moves the whole
+	symbol; a pre-existing, unrelated behaviour, left untouched here).
+	Without this, the handles were reachable only via Shift+click or a
+	right-click's context menu, neither of which a user reaches for to
+	resize a text field (qelectrotech#591, reported by @arummler).
+
+	Called from itemChange() -- both this item's own ItemSelectedHasChanged,
+	below, and Element::itemChange() on the parent's, which calls this on
+	every one of its texts. Not from paint(): see the comment there for why
+	that crashed.
+*/
+void DynamicElementTextItem::refreshResizeHandlesVisibility()
+{
+	const bool handles_wanted = isSelected() || (m_parent_element && m_parent_element->isSelected());
+	if (handles_wanted && !m_left_resize_handle)
+		addResizeHandles();
+	else if (!handles_wanted && m_left_resize_handle)
+		removeResizeHandles();
+}
+
+/**
+	@brief DynamicElementTextItem::addResizeHandles
+	Create and show the two width-resize handles (left/right edge of
+	frameRect()), reusing QetGraphicsHandlerItem the same way QetShapeItem
+	does for its own resize handles.
+*/
+void DynamicElementTextItem::addResizeHandles()
+{
+	if (m_left_resize_handle || !scene())
+		return;
+
+	qreal size = QETUtils::graphicsHandlerSize(this);
+	m_left_resize_handle = new QetGraphicsHandlerItem(size);
+	m_right_resize_handle = new QetGraphicsHandlerItem(size);
+
+	for (QetGraphicsHandlerItem *handle : {m_left_resize_handle, m_right_resize_handle})
+	{
+			//Children of this text, not free scene items: Qt then carries
+			//them along when the parent element moves, rotates or is
+			//zoomed, and repaints their old and new area in the same
+			//update as this text. Moving free items from paint() instead
+			//left green fragments behind (qelectrotech#1002).
+		handle->setParentItem(this);
+		handle->setColor(Qt::darkGreen);
+		handle->installSceneEventFilter(this);
+	}
+	m_resize_handles_con = connect(document()->documentLayout(), &QAbstractTextDocumentLayout::documentSizeChanged,
+								   this, &DynamicElementTextItem::updateResizeHandlesPos);
+
+	updateResizeHandlesPos();
+}
+
+/**
+	@brief DynamicElementTextItem::removeResizeHandles
+*/
+void DynamicElementTextItem::removeResizeHandles()
+{
+	disconnect(m_resize_handles_con);
+	delete m_left_resize_handle;
+	delete m_right_resize_handle;
+	m_left_resize_handle = nullptr;
+	m_right_resize_handle = nullptr;
+}
+
+/**
+	@brief DynamicElementTextItem::updateResizeHandlesPos
+	Keep the two resize handles at the vertical middle of boundingRect()'s
+	left and right edges, in scene coordinates -- called on every paint() so
+	it stays correct across every kind of change that can move this item or
+	change its size (position, rotation, font, text, textWidth...) without
+	needing a dedicated hook for each one.
+
+	Deliberately boundingRect(), not frameRect(): frameRect() is a tight box
+	around the text's own natural (idealWidth()) size, re-centred inside
+	boundingRect() -- it does not grow with textWidth(). Once a text has
+	been widened, that leaves a growing gap between the tight frame and the
+	dashed selection outline QGraphicsView draws at boundingRect(), which is
+	the box a user actually sees and expects a resize handle to sit on
+	(qelectrotech#591, reported by @arummler: "the drag elements should be
+	on the border of the box"). boundingRect() reflects the full
+	textWidth() (it is QGraphicsTextItem's own, driven by the document's
+	laid-out size), so the handles now track the box that is visibly
+	resized rather than the text glyphs inside it.
+*/
+void DynamicElementTextItem::updateResizeHandlesPos()
+{
+	if (!m_left_resize_handle || !m_right_resize_handle)
+		return;
+
+	QRectF br = boundingRect();
+	m_left_resize_handle->setPos(br.left(), br.center().y());
+	m_right_resize_handle->setPos(br.right(), br.center().y());
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMousePressEvent
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(handle)
+
+		//The actual property value, kept as-is (possibly -1, meaning "auto")
+		//so a later undo restores the exact original state rather than a
+		//synthesized fixed width.
+	m_resize_original_width = textWidth();
+		//A concrete baseline for the live drag's delta math, which can't
+		//start from -1.
+	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
+	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMouseMoveEvent
+	Live-resize the text while dragging, exactly like the element editor's
+	resize handles live-update geometry during a drag (undo is only pushed
+	on release). The drag delta is resolved in this item's own local
+	coordinates (not scene coordinates) so a rotated text box still resizes
+	along its own baseline.
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	qreal local_x = mapFromScene(event->scenePos()).x();
+	qreal delta = local_x - m_resize_start_local_x;
+	if (handle == m_left_resize_handle)
+		delta = -delta;
+
+	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
+	setTextWidth(new_width);
+	updateResizeHandlesPos();
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMouseReleaseEvent
+	Push the same QPropertyUndoCommand the properties-panel width spinbox
+	already pushes (sources/ui/dynamicelementtextmodel.cpp) -- the value is
+	already applied live from the drag, so this only makes it undoable.
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(handle)
+	Q_UNUSED(event)
+
+	qreal new_width = textWidth();
+	if (!qFuzzyCompare(m_resize_original_width, new_width) && m_parent_element && m_parent_element->diagram())
+	{
+		auto *undo = new QPropertyUndoCommand(this, "textWidth", QVariant(m_resize_original_width), QVariant(new_width));
+		undo->setAnimated(true, false);
+		undo->setText(tr("Redimensionner un texte d'élément"));
+		m_parent_element->diagram()->undoStack().push(undo);
+	}
 }
 
 void DynamicElementTextItem::elementInfoChanged()
@@ -1129,9 +1388,20 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			QString new_label = element->actualLabel();
+			if (toPlainText() != new_label) {
+				setPlainText(new_label);
+			}
 		}
 		else if (m_text_from == CompositeText) {
+			// Use actualLabel() to ensure %{label} reflects the current
+			// resolved label (e.g. after a folio/page-number change).
+			// A contact not linked to a coil has no element to read from
+			// (bugtracker #345): %{label} then shows empty, as it did
+			// before actualLabel() was used here.
+			if (element) {
+				dc.addValue(QStringLiteral("label"), element->actualLabel());
+			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}
@@ -1377,8 +1647,10 @@ void DynamicElementTextItem::updateXref()
 			
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&
-			   !m_parent_element.data()->linkedElements().isEmpty() &&
-			   xrp.snapTo() == XRefProperties::Label)
+			   xrp.snapTo() == XRefProperties::Label &&
+			   (!m_parent_element.data()->linkedElements().isEmpty()
+			    || CrossRefItem::showAllConfiguredSlaves(
+				    m_parent_element.data(), xrp)))
 			{
 				//For add a Xref, this text must not be in a group
 				if(!parentGroup())
@@ -1438,6 +1710,7 @@ void DynamicElementTextItem::updateXref()
 					if(!m_slave_Xref_item)
 					{
 						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						ShownKinds::tag(m_slave_Xref_item, ShownKinds::CrossReferences);
 						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 							// Match the parent text's user-configurable color instead of
 							// hardcoding black, which renders invisible under dark themes
@@ -1569,7 +1842,26 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 {
 	this->document()->setTextWidth(width);
 	m_text_width = width;
+	fitAutoTextWidth();
 	emit textWidthChanged(width);
+}
+
+/**
+	@brief DynamicElementTextItem::fitAutoTextWidth
+	With no width set by the user, a QTextDocument has no width to centre
+	or right-align its lines in, so every line of a multi-line text stays
+	on the left whatever the alignment. Give the document the width of its
+	longest line instead. This does not change the size of the text, only
+	where the shorter lines sit.
+*/
+void DynamicElementTextItem::fitAutoTextWidth()
+{
+	if (m_text_width > 0)
+		return;
+
+	document()->setTextWidth(-1);
+	if (alignment() & (Qt::AlignHCenter | Qt::AlignRight))
+		document()->setTextWidth(document()->idealWidth());
 }
 
 void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)

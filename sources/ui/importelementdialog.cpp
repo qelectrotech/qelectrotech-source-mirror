@@ -17,6 +17,7 @@
 */
 #include "importelementdialog.h"
 #include "ui_importelementdialog.h"
+#include "../qet.h"
 #include <QButtonGroup>
 
 ImportElementDialog::ImportElementDialog(QWidget *parent) :
@@ -24,6 +25,7 @@ ImportElementDialog::ImportElementDialog(QWidget *parent) :
 	ui(new Ui::ImportElementDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	setUpWidget();
 }
 

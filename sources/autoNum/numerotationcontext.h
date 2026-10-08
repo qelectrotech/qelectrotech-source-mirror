@@ -21,6 +21,8 @@
 #include <QStringList>
 #include <QVariant>
 #include <QDomElement>
+#include <QHash>
+#include <QSettings>
 
 /**
 	This class represents a numerotation context, i.e. the data (type, value, increase)
@@ -59,6 +61,14 @@ class NumerotationContext
 		/// does (autonum::setSequentialToList in assignvariables.cpp), so a
 		/// UI preview of a part's value matches what actually gets rendered.
 	static QString formatValue(const QStringList &item);
+
+	static void saveToSettings(const QHash<QString, NumerotationContext> &contexts,
+				   const QString &currentRule,
+				   QSettings &settings,
+				   const QString &prefix);
+	static QPair<QHash<QString, NumerotationContext>, QString> loadFromSettings(
+				   QSettings &settings,
+				   const QString &prefix);
 
 	private:
 	QStringList content_;

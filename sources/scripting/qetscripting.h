@@ -51,14 +51,40 @@ namespace QetScripting {
 
 	/**
 		@brief Run @p scriptPath against an already-open @p project (the
-		"Run Script..." GUI macro path). Errors go to stderr; there is no
-		modal reporting in this first version.
+		"Run Script..." GUI macro path). Errors go to stderr, and with a
+		@p view also to a message box. With a @p view the whole run is one
+		undo step; without one, each call is its own step, as on --run.
 		@param view the active DiagramView, so the script's zoom methods
 		have something to act on; nullptr from the headless entry point,
 		where they become no-ops (see QetScriptApi).
+		@param title what the undo step is called; the script's file name
+		if empty.
 		@return true if the script ran without throwing.
 	*/
-	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr);
+	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr,
+			  const QString &title = QString());
+
+	/**
+		@brief What a live run (an assistant acting on the open project,
+		see LiveServer) reports instead of showing: what the script
+		logged, the error if it threw, and the undo step it left, empty
+		if it changed nothing.
+	*/
+	struct LiveRun
+	{
+		QStringList log;
+		QString error;
+		QString undoText;
+	};
+
+	/**
+		@brief Run @p source as runOnProject() runs a file. @p fileName is
+		what errors name; @p title names the undo step. With @p live, no
+		box is shown: qet.log() and errors are collected there, and
+		qet.showMessage() is logged rather than shown.
+	*/
+	bool runSource(const QString &source, const QString &fileName, const QString &title,
+		       QETProject *project, DiagramView *view, LiveRun *live);
 
 }
 

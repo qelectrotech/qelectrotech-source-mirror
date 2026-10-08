@@ -76,6 +76,7 @@ class QetLogger
 		static constexpr qint64 kMaxFileBytes = 2 * 1024 * 1024; // 2 MiB per file
 		static constexpr int kRotationKeep = 4;                  // .1.log .. .4.log
 		static constexpr int kMaxMessageBytes = 4096;             // per-message truncation
+		static constexpr int kMaxPendingCrashDumps = 10;          // newest kept, rest pruned
 
 		static QetLogger &instance();
 
@@ -106,15 +107,24 @@ class QetLogger
 		/// dump behind.
 		bool hasPendingCrashDump() const;
 
-		/// Raw contents of the pending crash dump, or an empty array if
-		/// there isn't one. Does not delete it -- call
-		/// clearPendingCrashDump() once it has been offered to the user.
-		QByteArray pendingCrashDumpContents() const;
+		/// Dumps left by previous runs, newest first, capped at
+		/// kMaxPendingCrashDumps. This run's own dump path is never
+		/// included. Take this list once and pass the same list to
+		/// pendingCrashDumpContents() and clearPendingCrashDump(): that
+		/// is what makes "only what was offered gets deleted" true,
+		/// rather than re-reading the directory at each step and
+		/// deleting a dump that arrived in between unseen.
+		QStringList pendingCrashDumpFiles() const;
 
-		/// Deletes the pending crash dump file. Call after the user has
-		/// been offered it (whether they chose to save it or not) so it
-		/// is never offered a second time.
-		void clearPendingCrashDump();
+		/// Raw contents of `files`, newest first, concatenated and
+		/// redacted. Deletes nothing -- pass the same list to
+		/// clearPendingCrashDump() once it has been offered.
+		QByteArray pendingCrashDumpContents(const QStringList &files) const;
+
+		/// Deletes exactly `files`, nothing else. Call after the user
+		/// has been offered them (whether they chose to save them or
+		/// not) so they are never offered a second time.
+		void clearPendingCrashDump(const QStringList &files);
 
 		/// Builds a redacted diagnostics bundle from the *current* session
 		/// (header + this session's log file so far) for the manual
@@ -122,10 +132,13 @@ class QetLogger
 		/// which is about a *previous*, already-terminated session.
 		QByteArray buildDiagnosticsReport() const;
 
-		/// Replaces occurrences of the user's home directory with "~".
-		/// Applied to both the crash dump and buildDiagnosticsReport()
-		/// before they are ever shown to the user, since both are
-		/// destined for a public bug tracker.
+		/// Replaces occurrences of the user's home directory with "~",
+		/// and an AppImage's per-run /tmp/.mount_XXXXXX prefix with
+		/// "<appimage>" -- the latter because backtrace_symbols_fd()
+		/// writes absolute module paths into the dump. Applied to both
+		/// the crash dump and buildDiagnosticsReport() before they are
+		/// ever shown to the user, since both are destined for a public
+		/// bug tracker.
 		static QByteArray redact(const QByteArray &input);
 
 	private:
@@ -136,7 +149,18 @@ class QetLogger
 		void rotateLocked();
 		void writeToFile(const QByteArray &line, QtMsgType type);
 		QString rotatedPath(int index) const;
-		QString crashDumpPath() const;
+			/// Pure path getter: creates nothing. Callers that are about
+			/// to write there call ensureCrashDumpDir() instead.
+		QString crashDumpDir() const;
+		QString ensureCrashDumpDir() const;
+		QString buildCrashDumpPath() const;
+			/// Moves a crash_dump.log left by a pre-#905 version into
+			/// crashes/, so upgrading does not strand it unoffered.
+		void migrateLegacyCrashDump() const;
+			/// Keeps the newest kMaxPendingCrashDumps dumps and deletes
+			/// the rest, so a crash loop cannot fill the log directory
+			/// before anyone gets the chance to see a dialog.
+		void pruneCrashDumps() const;
 		QString currentLogFilePath() const;
 
 		static QByteArray sanitize(const QByteArray &input);
@@ -147,6 +171,10 @@ class QetLogger
 
 		QString m_log_dir;
 		QString m_base_name; // e.g. "20260803", resolved once in init()
+			/// This run's own dump path, fixed at installCrashHandler():
+			/// the handler writes here, and it is excluded when collecting
+			/// dumps left by previous runs.
+		QString m_crash_dump_path;
 
 		QMutex m_file_mutex;
 		QFile m_file;

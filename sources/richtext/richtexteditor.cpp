@@ -48,6 +48,7 @@
 #include "richtexteditor_p.h"
 #include "ui_addlinkdialog.h"
 #include "../shortcutmanager.h"
+#include "../qet.h"
 
 //#include <QtDesigner/QDesignerFormEditorInterface>
 
@@ -242,6 +243,7 @@ AddLinkDialog::AddLinkDialog(RichTextEditor *editor, QWidget *parent) :
 	m_ui(new Ui::AddLinkDialog)
 {
 	m_ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
@@ -385,7 +387,8 @@ void ColorAction::setColor(const QColor &color)
 
 void ColorAction::chooseColor()
 {
-	const QColor col = QColorDialog::getColor(m_color, nullptr);
+	const QColor col = QColorDialog::getColor(m_color, nullptr, QString(),
+											 QColorDialog::DontUseNativeDialog);
 	if (col.isValid() && col != m_color) {
 		setColor(col);
 		emit colorChanged(m_color);
@@ -862,6 +865,7 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
 	m_editor->setFocus();
 
 	resize(600, 400);
+	QET::trackDialogGeometry(this);
 }
 
 RichTextEditorDialog::~RichTextEditorDialog()

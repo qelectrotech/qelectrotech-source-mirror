@@ -30,6 +30,12 @@ namespace QET {
 		// namespace
 		extern QIcon Add;
 		extern QIcon AddFolio;
+		extern QIcon AlignBottom;
+		extern QIcon AlignHCenter;
+		extern QIcon AlignLeft;
+		extern QIcon AlignRight;
+		extern QIcon AlignTop;
+		extern QIcon AlignVCenter;
 		extern QIcon Allowed;
 		extern QIcon ApplicationExit;
 		extern QIcon ArrowLeft;
@@ -44,6 +50,7 @@ namespace QET {
 		extern QIcon ConductorEdit;
 		extern QIcon ConductorSettings;
 		extern QIcon Configure;
+		extern QIcon ConfigureShortcuts;
 		extern QIcon ConfigureToolbars;
 		extern QIcon IC_CopyFile;
 		extern QIcon DefaultConductor;
@@ -141,6 +148,7 @@ namespace QET {
 		extern QIcon Orientations;
 		extern QIcon PartArc;
 		extern QIcon PartBezier;
+		extern QIcon DrawFillet;
 		extern QIcon PartCircle;
 		extern QIcon PartEllipse;
 		extern QIcon PartLine;
@@ -163,9 +171,7 @@ namespace QET {
 		extern QIcon ProjectNew;
 		extern QIcon ProjectProperties;
 		extern QIcon Projects;
-		extern QIcon QETIcon;
 		extern QIcon QETLogo;
-		extern QIcon QETOxygenLogo;
 		extern QIcon QtLogo;
 		extern QIcon Raise;
 		extern QIcon RectToBezier;
@@ -176,6 +182,7 @@ namespace QET {
 		extern QIcon SendBackward;
 		extern QIcon Settings;
 		extern QIcon SinglePage;
+		extern QIcon SnapToGrid;
 		extern QIcon South;
 		extern QIcon Start;
 		extern QIcon TableOfContent;

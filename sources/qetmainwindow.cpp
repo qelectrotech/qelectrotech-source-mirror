@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QAction>
+#include <QApplication>
 #include <QWhatsThis>
 #include <QMenu>
 #include <QMenuBar>
@@ -25,6 +26,7 @@
 
 #include "qetmainwindow.h"
 #include "qeticons.h"
+#include "ui/aiassistantdialog.h"
 #include "shortcutmanager.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
@@ -67,6 +69,7 @@ void QETMainWindow::initCommonActions()
 	QETApp *qet_app = QETApp::instance();
 
 	configure_action_ = new QAction(QET::Icons::Configure, tr("&Configurer QElectroTech"), this);
+	ShortcutManager::instance().registerAction(configure_action_, "mainwindow.configure", tr("Général"), QKeySequence());
 	configure_action_ -> setStatusTip(tr("Permet de régler différents paramètres de QElectroTech", "status bar tip"));
 	connect(configure_action_, &QAction::triggered, [qet_app]()
 	{
@@ -90,13 +93,30 @@ void QETMainWindow::initCommonActions()
 		}
 	});
 
+	customize_action_ = new QAction(QET::Icons::ConfigureToolbars, tr("&Personnaliser..."), this);
+	ShortcutManager::instance().registerAction(customize_action_, "mainwindow.customize", tr("Général"), QKeySequence());
+	customize_action_ -> setStatusTip(tr("Barres d'outils, barre de raccourcis, clavier et gestes de la souris, dans une seule fenêtre", "status bar tip"));
+	connect(customize_action_, &QAction::triggered, qet_app, [qet_app]() { qet_app->customizeQET(); });
+
+	export_config_action_ = new QAction(QET::Icons::DocumentExport, tr("Enregistrer la configuration sous..."), this);
+	export_config_action_ -> setStatusTip(tr("Enregistre les réglages de QElectroTech dans un fichier", "status bar tip"));
+	connect(export_config_action_, &QAction::triggered, qet_app, &QETApp::exportConfiguration);
+	ShortcutManager::instance().registerAction(export_config_action_, "mainwindow.export_configuration", tr("Général"), QKeySequence());
+
+	import_config_action_ = new QAction(QET::Icons::DocumentImport, tr("Charger une configuration..."), this);
+	import_config_action_ -> setStatusTip(tr("Remplace les réglages de QElectroTech par ceux d'un fichier, puis ferme QElectroTech", "status bar tip"));
+	connect(import_config_action_, &QAction::triggered, qet_app, &QETApp::importConfiguration);
+	ShortcutManager::instance().registerAction(import_config_action_, "mainwindow.import_configuration", tr("Général"), QKeySequence());
+
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();
 	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
 
 	whatsthis_action_ = QWhatsThis::createAction(this);
+	ShortcutManager::instance().registerAction(whatsthis_action_, "mainwindow.whats_this", tr("Général"), Qt::SHIFT | Qt::Key_F1);
 
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
+	ShortcutManager::instance().registerAction(about_qet_, "mainwindow.about_qet", tr("Général"), QKeySequence());
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	connect(about_qet_, &QAction::triggered, qet_app, &QETApp::aboutQET);
 
@@ -110,7 +130,16 @@ void QETMainWindow::initCommonActions()
 
 	ShortcutManager::instance().registerAction(manual_online_, "mainwindow.manual_online", tr("Général"), Qt::Key_F1);
 
+	connect_ai_ = new QAction(tr("Connecter un assistant IA..."), this);
+	ShortcutManager::instance().registerAction(connect_ai_, "mainwindow.connect_ai", tr("Général"), QKeySequence());
+	connect_ai_ -> setStatusTip(tr("Affiche la configuration qui permet à un assistant IA d'utiliser QElectroTech", "status bar tip"));
+	connect(connect_ai_, &QAction::triggered, this, [this]() {
+		AiAssistantDialog dialog(this);
+		dialog.exec();
+	});
+
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
+	ShortcutManager::instance().registerAction(youtube_, "mainwindow.youtube", tr("Général"), QKeySequence());
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 
 	connect(youtube_, &QAction::triggered, [](bool) {
@@ -119,9 +148,11 @@ void QETMainWindow::initCommonActions()
 	});
 
 	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	ShortcutManager::instance().registerAction(upgrade_, "mainwindow.download_windows", tr("Général"), QKeySequence());
 	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 
 	upgrade_M = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	ShortcutManager::instance().registerAction(upgrade_M, "mainwindow.download_mac", tr("Général"), QKeySequence());
 	upgrade_M -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 
 	connect(upgrade_, &QAction::triggered, [](bool) {
@@ -135,6 +166,7 @@ void QETMainWindow::initCommonActions()
 	});
 
 	donate_ = new QAction(QET::Icons::QETDonate, tr("Soutenir le projet par un don"), this);
+	ShortcutManager::instance().registerAction(donate_, "mainwindow.donate", tr("Général"), QKeySequence());
 	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
 
 	connect(donate_, &QAction::triggered, [](bool) {
@@ -143,10 +175,12 @@ void QETMainWindow::initCommonActions()
 	});
 
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
+	ShortcutManager::instance().registerAction(about_qt_, "mainwindow.about_qt", tr("Général"), QKeySequence());
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, &QAction::triggered, qApp, &QApplication::aboutQt);
 
 	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
+	ShortcutManager::instance().registerAction(diagnostics_action_, "mainwindow.diagnostics_report", tr("Général"), QKeySequence());
 	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));
 	connect(diagnostics_action_, &QAction::triggered, this, []() {
 		QETApp::instance()->showDiagnosticsReport();
@@ -161,6 +195,10 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
+	settings_menu_ -> addAction(customize_action_);
+	settings_menu_ -> addSeparator();
+	settings_menu_ -> addAction(export_config_action_);
+	settings_menu_ -> addAction(import_config_action_);
 	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);
@@ -169,6 +207,7 @@ void QETMainWindow::initCommonMenus()
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(manual_online_);
+	help_menu_ -> addAction(connect_ai_);
 	help_menu_ -> addAction(youtube_);
 	help_menu_ -> addAction(upgrade_);
 	help_menu_ -> addAction(upgrade_M);
@@ -242,6 +281,22 @@ void QETMainWindow::updateFullScreenAction()
 }
 
 /**
+	@brief QETMainWindow::createPopupMenu
+	The menu shown on a right-click on a toolbar or a dock title, and the
+	Configuration > Afficher submenu: Qt's list of toolbars and docks,
+	then Personnaliser..., as in most applications with toolbars.
+*/
+QMenu *QETMainWindow::createPopupMenu()
+{
+	QMenu *menu = QMainWindow::createPopupMenu();
+	if (menu) {
+		menu -> addSeparator();
+		menu -> addAction(customize_action_);
+	}
+	return menu;
+}
+
+/**
 	Check whether a sub menu dedicated to docks and toolbars can be inserted on
 	top of the settings menu.
 */
@@ -290,6 +345,9 @@ void QETMainWindow::activateMenuBar() {
 }
 
 bool QETMainWindow::event(QEvent *e) {
+	if (e -> type() == QEvent::Close && refuseCloseWhileModal(e)) {
+		return(true);
+	}
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();
 	} else if (first_activation_ && e -> type() == QEvent::WindowActivate) {
@@ -297,6 +355,44 @@ bool QETMainWindow::event(QEvent *e) {
 		first_activation_ = false;
 	}
 	return(QMainWindow::event(e));
+}
+
+/**
+	@brief QETMainWindow::refuseCloseWhileModal
+	Refuse to close an editor window while any modal dialog is running.
+
+	A modal dialog's exec() runs a nested event loop. If a window is closed
+	during it, the window's WA_DeleteOnClose turns into a deleteLater() that
+	the *nested* loop processes: the window is destroyed while code that
+	belongs to it -- often the very function that opened the dialog -- is
+	still on the stack. Most of QET's dialogs are stack objects parented to
+	the window (BackupDialog, and every QET::QetMessageBox), so ~QWidget()
+	then deletes a stack object and the process aborts (issue #904). Even a
+	dialog without a parent would only trade that abort for a silent
+	use-after-free in the caller.
+
+	Qt already ignores window-manager close requests for a window blocked by
+	a modal, so this is only reachable through close() called directly: the
+	File > Quit action, which macOS moves into the application menu where it
+	stays usable during a modal, and QETApp::quitQET() from the system tray.
+
+	Handled in event(), before closeEvent() runs, because the editors'
+	closeEvent() starts closing projects before it decides whether to accept.
+	The dialog is raised so a refused quit is not silent.
+
+	@param e : the QEvent::Close being delivered
+	@return true if the close was refused and must not be processed further
+*/
+bool QETMainWindow::refuseCloseWhileModal(QEvent *e)
+{
+	QWidget *modal = QApplication::activeModalWidget();
+	if (!modal) {
+		return(false);
+	}
+	modal -> raise();
+	modal -> activateWindow();
+	e -> ignore();
+	return(true);
 }
 
 /**

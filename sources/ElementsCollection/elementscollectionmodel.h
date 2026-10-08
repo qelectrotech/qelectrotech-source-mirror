@@ -73,6 +73,7 @@ class ElementsCollectionModel : public QStandardItemModel
 		void elementIntegratedToCollection (const QString& path);
 		void itemRemovedFromCollection (const QString& path);
 		void updateItem (const QString& path);
+		void projectNameChanged (QETProject *project);
 
 	private:
 		QList <QETProject *> m_project_list;

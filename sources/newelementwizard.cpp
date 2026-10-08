@@ -25,6 +25,7 @@
 #include "qetmessagebox.h"
 #include "qfilenameedit.h"
 
+#include <QIcon>
 #include <QTreeView>
 #include <QVBoxLayout>
 #include <QLabel>
@@ -45,7 +46,7 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	setWizardStyle(QWizard::MacStyle);
 #endif
 
-	setPixmap(LogoPixmap, QPixmap(":/ico/256x256/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	setPixmap(LogoPixmap, QIcon::fromTheme("qelectrotech").pixmap(64, 64));
 	setWindowTitle(tr("Créer un nouvel élément : Assistant", "window title"));
 	setButtonText(QWizard::NextButton, tr("&Suivant >"));
 	addPage(buildStep1());

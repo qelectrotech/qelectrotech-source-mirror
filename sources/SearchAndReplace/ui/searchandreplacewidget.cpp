@@ -30,6 +30,7 @@
 #include "../../qeticons.h"
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
+#include "../../ui/titleblockpropertieswidget.h"
 #include "replaceadvanceddialog.h"
 #include "replaceconductordialog.h"
 #include "replaceelementdialog.h"
@@ -445,6 +446,9 @@ void SearchAndReplaceWidget::search()
 		background.setColor(QPalette::Base, match
 				    ? QColor("#E0FFF0")
 				    : QColor("#FFE0EF"));
+			//The background is always light: keep the text dark, or it is
+			//unreadable (light on light) with a dark theme.
+		background.setColor(QPalette::Text, Qt::black);
 		ui->m_search_le->setPalette(background);
 
 			//Go to the first occurrence
@@ -1109,7 +1113,26 @@ void SearchAndReplaceWidget::on_m_previous_pb_clicked()
 void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 {
 	ReplaceFolioDialog *dialog = new ReplaceFolioDialog(this);
-	dialog->setTitleBlockProperties(m_worker.m_titleblock_properties);
+
+		// List the custom variables the folios already use, so the user only
+		// has to type a value instead of guessing each name (#1113).
+	TitleBlockProperties properties = m_worker.m_titleblock_properties;
+	for (const QPointer<Diagram> &diagram : std::as_const(m_diagram_hash))
+	{
+		if (!diagram) {
+			continue;
+		}
+		for (const QString &key :
+			 diagram->border_and_titleblock.exportTitleBlock().context.keys()) {
+			if (!properties.context.contains(key)) {
+				properties.context.addValue(key, QString());
+			}
+		}
+		TitleBlockPropertiesWidget::addTemplateVariables(
+					properties.context,
+					diagram->border_and_titleblock.titleBlockTemplate());
+	}
+	dialog->setTitleBlockProperties(properties);
 
 	int result = dialog->exec();
 	if (result == QDialogButtonBox::AcceptRole)

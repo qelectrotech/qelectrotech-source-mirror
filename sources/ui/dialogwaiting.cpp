@@ -18,6 +18,8 @@
 
 #include "dialogwaiting.h"
 #include "ui_dialogwaiting.h"
+#include "../qet.h"
+#include <QIcon>
 #include <QPushButton>
 
 
@@ -31,6 +33,9 @@ DialogWaiting::DialogWaiting(QWidget *parent) :
 	ui(new Ui::DialogWaiting)
 {
 	ui->setupUi(this);
+	ui->label->setPixmap(QIcon::fromTheme("user-away-extended")
+	                     .pixmap(ui->label->maximumSize()));
+	QET::trackDialogGeometry(this);
 	setTitle(  "..." );
 	setDetail( "..." );
 }

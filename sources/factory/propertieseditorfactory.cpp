@@ -22,6 +22,8 @@
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
 #include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
@@ -31,12 +33,15 @@
 #include "../qetgraphicsitem/cabinetlayoutreferenceitem.h"
 #include "../ui/dynamicelementtextitemeditor.h"
 #include "../ui/elementpropertieswidget.h"
+#include "../ui/conductorpropertieseditorwidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
 #include "../ui/cabinetlayoutreferencepropertieswidget.h"
 
 #include <QGraphicsItem>
+#include <QSet>
+#include <QSettings>
 
 /**
 	@brief PropertiesEditorFactory::propertiesEditor
@@ -80,6 +85,25 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		PropertiesEditorWidget *editor,
 		QWidget *parent)
 {
+		//Selecting a conductor's text label edits its parent conductor (#500),
+		//mirroring how double-clicking the label opens the conductor dialog.
+		//A rubber band over wires selects their labels too: each label
+		//counts as its conductor, once.
+	QList<QGraphicsItem *> mapped;
+	QSet<QGraphicsItem *> seen;
+	for (QGraphicsItem *qgi : std::as_const(items)) {
+		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
+			if (Conductor *parent_cond = cti->parentConductor()) {
+				qgi = parent_cond;
+			}
+		}
+		if (!seen.contains(qgi)) {
+			seen.insert(qgi);
+			mapped << qgi;
+		}
+	}
+	items = mapped;
+
 	const int count_ = items.size();
 	if (count_ == 0) {
 		return nullptr;
@@ -102,6 +126,27 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 
 	switch (type_)
 	{
+		case Conductor::Type: //1001
+		{
+			//Off unless enabled in the preferences (General page): selecting
+			//a conductor then brings up nothing in the dock, as before.
+			if (!QSettings().value(
+					QStringLiteral("diagrameditor/conductor_properties_panel"),
+					false).toBool()) {
+				return nullptr;
+			}
+			QList<Conductor *> conductors;
+			for (QGraphicsItem *qgi : std::as_const(items)) {
+				conductors << static_cast<Conductor *>(qgi);
+			}
+
+			if (class_name == ConductorPropertiesEditorWidget::staticMetaObject.className())
+			{
+				static_cast<ConductorPropertiesEditorWidget*>(editor)->setConductors(conductors);
+				return editor;
+			}
+			return new ConductorPropertiesEditorWidget(conductors, parent);
+		}
 		case Element::Type: //1000
 		{
 			if (count_ > 1) {

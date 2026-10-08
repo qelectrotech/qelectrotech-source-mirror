@@ -1,0 +1,3557 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="el">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; για μετακίνηση</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Επαφές : NO : %1, NC : %2, αντιστροφείς : %3, άλλες : %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Επαφές : NO : %1/%2, NC : %3/%4, αντιστροφείς : %5/%6, άλλες : %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                Ορισμός του φακέλου δεδομένων
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl κατά το σύρσιμο = ελεύθερη θέση, χωρίς προσκόλληση στο πλέγμα)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(ήδη χρησιμοποιημένο)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : λειτουργία %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; κόκκινη κουκκίδα : σύρετε για επανατοποθέτηση του κέντρου περιστροφής</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; κυανή κουκκίδα : τόξο</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; ένα άκρο : κλίση</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Κλικ : λειτουργία %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 h %2 min</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>&amp;Κλείσιμο αυτού του επεξεργαστή</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(έχει ήδη αντιστοιχιστεί)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(ο αριθμός επαφών δεν αντιστοιχεί)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(ο υποτύπος δεν αντιστοιχεί)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(η κατάσταση δεν αντιστοιχεί)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = δημιουργία λαβών</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = αποσύνδεση σε πολυγραμμή</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ Είναι επομένως πιθανό το άνοιγμα μέρους ή του συνόλου αυτού του εγγράφου να αποτύχει.
+Τι θέλετε να κάνετε;</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (οθόνη)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (εκτύπωση)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (υψηλή ποιότητα)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b&gt; :&lt;br&gt;Οι ορισμοί αγωγών μπορούν να έχουν μόνο έναν ακροδέκτη.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt; :&lt;br&gt;Ελέγξτε ότι το στοιχείο έχει μόνο έναν ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Ενέργεια</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Διεύθυνση</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>Διεύθυνση PLC</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Εμφάνιση Πλέγματος</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Εμφανίζει ή αποκρύπτει τους οδηγούς</target>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>Εμφάνιση βοήθειας</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Εμφάνιση προεπιλεγμένου πλέγματος (εφαρμόζεται στην επόμενη εκκίνηση)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Εμφάνιση ονόματος</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Εμφάνιση κεφαλίδων στο φύλλο</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Εμφάνιση οδηγών</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Εμφάνιση προεπιλεγμένων οδηγών (εφαρμόζεται στην επόμενη εκκίνηση)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Εμφάνιση αριθμών ακροδεκτών στις Xrefs</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Εμφάνιση ή απόκρυψη κεφαλίδων στηλών του πίνακα PLC στο φύλλο</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Εμφάνιση/απόκρυψη του πλαισίου της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Εμφάνιση/απόκρυψη του ονόματος του ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>Για να το καταστήσετε πλήρως συμβατό, ανοίξτε αυτό το ίδιο έργο με την έκδοση 0.8 ή 0.80 του QElectroTech, αποθηκεύστε το έργο και ανοίξτε το ξανά με αυτή την έκδοση.
+Τι θέλετε να κάνετε;</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>Προσθέτει ένα σχέδιο κλεμμοσειράς στο τρέχον φύλλο</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Προσθέτει μια καμπύλη Bézier στο τρέχον φύλλο</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Προσθέτει μια σελίδα PDF στο τρέχον φύλλο</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Προσθήκη</target>
+</phrase>
+<phrase>
+    <source>Ajouter le plan de bornes suivant :</source>
+    <target>Προσθήκη του επόμενου σχεδίου ακροδεκτών:</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Προσθήκη φύλλου</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Προσθήκη PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>Προσθήκη σχεδίου ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Προσθήκη σημείου σε καμπύλη</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Προσθήκη καμπύλης</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Προσθήκη προσαρμοσμένης ιδιότητας</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Στοίχιση</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Αλφαβητικό</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Αλφαριθμητική (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Γωνία</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Γωνιώδες</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Άκυρο</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Προεπισκόπηση</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Προεπισκόπηση :</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Στρογγυλοποίηση των γωνιών του %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Μετάβαση σε στοιχείο</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Προσοχή : το άθροισμα των σχετικών πλατών υπερβαίνει το 100%% του συνολικού πλάτους, αυτό το πρότυπο cartouche δεν μπορεί να ικανοποιηθεί από κανένα πλάτος.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Προσοχή : οι στήλες σταθερού πλάτους δεν χωρούν στο υπόλοιπο πλάτος, αυτό το πρότυπο cartouche δεν μπορεί να ικανοποιηθεί από κανένα πλάτος.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Μόνο εκχωρημένες</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Καμία</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Αυτοματισμός (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Αυτοματισμοί (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Αυτόματη αρίθμηση ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Αυτόματη αρίθμηση</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Άλλο</target>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>ΠΡΟΕΙΔΟΠΟΙΗΣΗ :
+Οποιαδήποτε τιμή εκτός από ‘Χωρίς στρογγυλοποίηση’ μπορεί να προκαλέσει σφάλματα απόδοσης του έργου ανάλογα με :
+
+1 - την επιλεγμένη τιμή 
+2 - το dpi της οθόνης 
+3 - την τροποποίηση του έργου σε άλλον υπολογιστή ή/και οθόνη που δεν έχει τις ίδιες παραμέτρους με τα σημεία 1 και 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Προειδοποίηση — Εισαγωγή αρχείου EPLAN (.edz)</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>Βοηθητικό μπλοκ 3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>Βοηθητικό μπλοκ 4</target>
+</phrase>
+<phrase>
+    <source>Blue : Blue</source>
+    <target>Μπλε : Blue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>Μπλε : CornflowerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>Μπλε : DarkBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>Μπλε : DeepSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>Μπλε : DodgerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>Μπλε : LightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>Μπλε : LightSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>Μπλε : LightSteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>Μπλε : MediumBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>Μπλε : MidnightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>Μπλε : Navy</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>Μπλε : PowderBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>Μπλε : RoyalBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>Μπλε : SkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>Μπλε : SteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Ακροδέκτης 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Ακροδέκτης 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>Ακροδέκτης επιπέδου 0 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>Ακροδέκτης επιπέδου 1 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>Ακροδέκτης επιπέδου 2 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>Ακροδέκτης επιπέδου 3 :</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Ακροδέκτες</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Ακροδέκτες</target>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>Καφέ : Bisque</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>Καφέ : BlanchedAlmond</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>Καφέ : Brown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>Καφέ : Burlywood</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>Καφέ : Chocolate</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>Καφέ : Cornsilk</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>Καφέ : DarkGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>Καφέ : Goldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>Καφέ : Maroon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>Καφέ : NavajoWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>Καφέ : Peru</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>Καφέ : RosyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>Καφέ : SaddleBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>Καφέ : SandyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>Καφέ : Sienna</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>Καφέ : Tan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>Καφέ : Wheat</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>Εδώ μπορείτε να ορίσετε τον τρόπο με τον οποίο θα αριθμούνται τα νέα στοιχεία.
+-Μια αρίθμηση αποτελείται από μια μεταβλητή minimum.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αρίθμησης μέσω των κουμπιών - και +.
+-Μια μεταβλητή αρίθμησης περιλαμβάνει : έναν τύπο, μια τιμή και μια αύξηση.
+
+-οι τύποι "Ψηφίο 1", "Ψηφίο 01" και "Ψηφίο 001", αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο "Τιμή", ο οποίος αυξάνεται σε κάθε νέο αγωγό κατά την τιμή του πεδίου "Αύξηση".
+-"Ψηφίο 01" και "Ψηφίο 001", αντιπροσωπεύονται αντίστοιχα στο σχέδιο από δύο και τρία ψηφία minimum.
+Αν το ψηφίο που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγείται από ένα ή δύο 0 ώστε να τηρείται ο τύπος του.
+
+-Ο τύπος "Κείμενο", αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο "Αύξηση" δεν χρησιμοποιείται.
+
+-Ο τύπος "Αρ. φύλλου" αντιπροσωπεύει τον αρ. του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.
+
+-Ο τύπος "Φύλλο" αντιπροσωπεύει το όνομα του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Αδυναμία ανάγνωσης %1</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>Καρτέλες εταιρείας</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Κατηγορία</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>Αυτό το έγγραφο φαίνεται να έχει αποθηκευτεί με έκδοση %1
+ που είναι μεταγενέστερη της δικής σας έκδοσης ! 
+Χρησιμοποιείτε αυτή τη στιγμή το QElectroTech έκδοση %2</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Αυτή η μορφή δεν υποστηρίζει διαφάνεια: η εικόνα θα αποθηκευτεί όπως ήταν πριν από την εφαρμογή του διαφανούς χρώματος. Συνέχεια;</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Αυτή η συντόμευση χρησιμοποιείται επίσης από : %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Αυτό περιέχει τα τελευταία μηνύματα καταγραφής αυτής της συνεδρίας. Ελέγξτε το περιεχόμενο πριν το επισυνάψετε σε μια δημόσια αναφορά σφάλματος.</target>
+</phrase>
+<phrase>
+    <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+    <target>Αυτή είναι η συλλογή company καρτελών -- χρησιμοποιήστε την για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικές σας καρτέλες.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Κέντρο</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Αυτό το στοιχείο είναι ήδη συνδεδεμένο</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Αυτή η λειτουργία αριθμεί τους ακροδέκτες του έργου ανάλογα με τη θέση τους. Οι κενοί ή κλειδωμένοι ακροδέκτες αγνοούνται. Η σήμανση των ακροδεκτών πρέπει να έχει ρυθμιστεί εκ των προτέρων ως εξής: &apos;-X:AB&apos;. Το τμήμα πριν από την άνω και κάτω τελεία (το bornier) μπορεί να ονομαστεί ελεύθερα. Το &apos;AB&apos; μπορεί να αποτελείται από ψηφία ή γράμματα.</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Πεδίο κειμένου</target>
+</phrase>
+<phrase>
+    <source>Chemin de la collection company</source>
+    <target>Διαδρομή της συλλογής company</target>
+</phrase>
+<phrase>
+    <source>Chemin des cartouches company</source>
+    <target>Διαδρομή των καρτελών company</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Διαδρομή των macros χρήστη</target>
+</phrase>
+<phrase>
+    <source>Chinois</source>
+    <target>Κινεζικά</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Επιλέξτε τη θέση στην οποία θέλετε να αποθηκεύσετε το πρότυπό σας.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Κλικ: τοποθέτηση στο αρχικό μέγεθος. Κλικ-σύρσιμο: τοποθέτηση και αλλαγή μεγέθους. Δεξί κλικ: περιστροφή κατά 90°. Ctrl+ροδέλα: προσαρμογή μεγέθους.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Αριστερό κλικ: επόμενο σημείο ; διπλό κλικ ή Enter: τερματισμός ; δεξί κλικ: ακύρωση του τελευταίου σημείου</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Αριστερό κλικ: τοποθέτηση της απέναντι γωνίας (Shift = τετράγωνο, Ctrl = από το κέντρο + ελεύθερη θέση, Ctrl+Shift = τετράγωνο με κέντρο) ; δεξί κλικ: ακύρωση</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Αριστερό κλικ: τοποθέτηση της απέναντι γωνίας (Shift = κύκλος, Ctrl = από το κέντρο + ελεύθερη θέση, Ctrl+Shift = κύκλος με κέντρο) ; δεξί κλικ: ακύρωση</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Αριστερό κλικ: τοποθέτηση του σημείου εκκίνησης (Ctrl = ελεύθερη θέση)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Αριστερό κλικ: τοποθέτηση του τελικού σημείου (Ctrl = ελεύθερη θέση) ; δεξί κλικ: ακύρωση</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Αριστερό κλικ: τοποθέτηση της πρώτης γωνίας (Ctrl = κεντρικό σημείο, ελεύθερη θέση)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Αριστερό κλικ: τοποθέτηση του πρώτου σημείου (Ctrl = ελεύθερη θέση)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Κλικ: γωνιακό σημείο. Κλικ-σύρσιμο: καμπύλο σημείο. Κλικ στο πρώτο σημείο: κλείσιμο. Escape/Enter: τερματισμός. Δεξί κλικ: ακύρωση του τελευταίου σημείου.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Κλικ</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Κλικ: λειτουργία %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Κάντε κλικ για να επιλέξετε χρώμα</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Κάντε κλικ στην εικόνα για να προσθέσετε ένα χρώμα. Προσαρμόστε την ανοχή κάθε χρώματος με το ρυθμιστικό του, ή κάντε κλικ στο × για να το αφαιρέσετε.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Κάντε κλικ στην εικόνα για να επιλέξετε ένα χρώμα</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Στρογγυλεμένες γωνίες</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>Συλλογή εταιρείας</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Συλλογές</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Επικόλληση από το πρόχειρο</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Σχόλιο</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>Σχόλιο PLC</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Κοινό (contact SW)</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Στοιχείο 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Στοιχείο 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>Διαμόρφωση PLC</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Διαμόρφωση γραμματοσειράς κεφαλίδων στηλών</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Διαμόρφωση γραμματοσειράς κειμένου στα κελιά</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Μόνο διενέξεις</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Σύνδεση</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Επαφή</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Επαφές</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Μετατροπή %1 σε καμπύλη Bézier</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Μετατροπή %1 σε πολυγραμμή</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Μετατροπή σε καμπύλη Bézier</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Μετατροπή σε πολυγραμμή</target>
+</phrase>
+<phrase>
+    <source>Convertisseur d&apos;élément DXF</source>
+    <target>Μετατροπέας στοιχείου DXF</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Αντιγραφή και επικόλληση</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Κορεατικά</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Αδυναμία δημιουργίας προσωρινού καταλόγου: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Χρώμα</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Χρώμα :</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Χρώμα αγωγού</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Διαφανές χρώμα</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Διαφανές χρώμα...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Αυτόματη κοπή των υπαρχόντων αγωγών κατά την τοποθέτηση στοιχείου</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Αυτόματη κοπή αγωγών</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Ονομαστικό ρεύμα</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Δημιουργία προτύπου</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Δημιουργία αντιγράφου ασφαλείας;</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>Κυανό : Aqua</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>Κυανό : Aquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>Κυανό : CadetBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>Κυανό : Cyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>Κυανό : DarkCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>Κυανό : DarkTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>Κυανό : LightCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>Κυανό : LightSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>Κυανό : MediumTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>Κυανό : PaleTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>Κυανό : Teal</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>Cyan : Τιρκουάζ</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Κυκλικό (modulo)</target>
+</phrase>
+<phrase>
+    <source>Default - Fit to XRef height</source>
+    <target>Προεπιλογή - Προσαρμογή στο ύψος XRef</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Μετακίνηση του κέντρου περιστροφής</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>Βοηθητική περιγραφή κειμένου 1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>Βοηθητική περιγραφή κειμένου 2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>Βοηθητική περιγραφή κειμένου 3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>Βοηθητική περιγραφή κειμένου 4</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Σχεδίαση ονομάτων ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Διάλογος</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>κατεύθυνση</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>Διάταξη</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>Προεπιλεγμένη διάταξη</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Απόσταση σε pixel μεταξύ της ετικέτας και της υποτελούς παραπομπής</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Ετικέτα απόστασης - υποτελές:</target>
+</phrase>
+<phrase>
+    <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+    <target>Κάντε διπλό κλικ για σύμπτυξη ή ανάπτυξη της συλλογής company καρτελών</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Δεξιά</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Σφάλμα: Βεβαιωθείτε ότι το αρχείο %1 είναι έγκυρο αρχείο .dxf</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>Κατακόρυφη μετατόπιση</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Αποεπιλέξτε τα borniers των οποίων η αρίθμηση πρέπει να εξαιρεθεί</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Ορισμός του μέγιστου αριθμού esclave</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Ορισμός των στοιχείων esclave</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Ορισμός διαφανούς χρώματος</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Ορισμός αγωγού</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Παραμόρφωση καμπύλης</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Αποσύνδεση</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Μετακίνηση του κέντρου περιστροφής εικόνας</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Μετακίνηση της ετικέτας ενός ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Μετακίνηση φύλλων</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Μετακίνηση φύλλου</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Ξεκλείδωτο : το πλάτος και το ύψος μπορούν να αλλάξουν ανεξάρτητα. Κάντε κλικ για κλείδωμα.</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Επεξεργαστής</target>
+</phrase>
+<phrase>
+    <source>Effectuer le déplacement</source>
+    <target>Εκτέλεση μετακίνησης</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>Στοιχείο Αυτόματης Αρίθμησης</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>Επικεφαλίδα :</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Πλαίσιο κειμένου</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Αποθήκευση αρχικής εικόνας ως...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Αποθήκευση εικόνας ως...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Αποθήκευση της αναφοράς διαγνωστικών</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Αποθήκευση αναφοράς διαγνωστικών...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Αποθήκευση προτύπου</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Αποθήκευση...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>Εισαγωγή συντελεστή κλίμακας</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Αναλογική είσοδος</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Ψηφιακή είσοδος</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Καθολική είσοδος</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Σφάλμα</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>Εξαρτώμενο PLC</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>Διάστημα :</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Παράδειγμα</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Εξαίρεση από την ονοματολογία</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Εξαίρεση από την αυτόματη αρίθμηση</target>
+</phrase>
+<phrase>
+    <source>Explorateur de bornier</source>
+    <target>Εξερευνητής bornier</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Επιτυχής εξαγωγή</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Εξαγωγή σε SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Εξαγωγή σχεδίου καλωδίωσης</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>Βοηθητικός κατασκευαστής 1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>Βοηθητικός κατασκευαστής 2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>Βοηθητικός κατασκευαστής 3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>Βοηθητικός κατασκευαστής 4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>Συντελεστής X:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Συντελεστής Y:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Περιστροφή %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Περιστροφή εικόνας</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Σύρετε τις λαβές, ή το εσωτερικό του πλαισίου, για να προσαρμόσετε την περιοχή που θα διατηρηθεί.</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>Κλείσιμο αυτού του επεξεργαστή</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>Αρχεία CSV (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>Αρχεία PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Αρχεία κειμένου (*.txt);;Όλα τα αρχεία (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Καλώδιο</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Το αρχείο δεν βρέθηκε: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Φιλτράρισμα συντομεύσεων…</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Λεπτή περιστροφή</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Αναστροφή</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Φύλλο</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Λειτουργία</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>Λειτουργία PLC</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Πειραματική λειτουργία</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Μορφή</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Μορφή εμφάνισης : μια σειρά μηδενικών δίνει τον ελάχιστο αριθμό ψηφίων (00 = 07, 000 = 007). Κενό = φυσικό πλάτος του τύπου.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Κλειστό σχήμα</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>Βοηθητικός προμηθευτής 1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>Βοηθητικός προμηθευτής 2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>Βοηθητικός προμηθευτής 3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>Βοηθητικός προμηθευτής 4</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Αριστερά</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Σύρετε %1 : περιστροφή (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Σύρετε : προσαρμογή του τόξου (Ctrl = ελεύθερη θέση, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Σύρετε : στρογγυλοποίηση γωνιών (Ctrl = ελεύθερη θέση)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Σύρετε : παραμόρφωση της καμπύλης (Ctrl = ελεύθερη θέση, Alt = σπάσιμο της εφαπτομένης)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Σύρετε : μετακίνηση αυτού του σημείου</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Σύρσιμο: μετακίνηση του κέντρου περιστροφής</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Σύρετε : μετακίνηση του σημείου (Ctrl = ελεύθερη θέση</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Σύρετε : κλίση (Ctrl = ελεύθερη θέση, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Σύρσιμο: κλίση (Shift = βήματα των 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Σύρσιμο: περιστροφή (Shift = βήματα των 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Σύρετε : αλλαγή μεγέθους (Ctrl = από το κέντρο + ελεύθερη θέση, Shift = αναλογίες</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Σύρσιμο: αλλαγή μεγέθους (Shift = διατήρηση αναλογιών, Ctrl = από το κέντρο)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Σύρετε : επανατοποθέτηση του κέντρου περιστροφής (Ctrl = ελεύθερη θέση)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Σύρετε : περιστροφή (Ctrl = ελεύθερη θέση, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Σύρετε τη μωβ κουκκίδα : στρογγυλοποίηση γωνιών</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Σύρσιμο γωνίας: περιστροφή (Shift = βήματα των 15°) ; σύρσιμο άκρης: κλίση (Shift = βήματα των 15°) ; κόκκινο σημείο: μετακίνηση του κέντρου περιστροφής</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Σύρσιμο γωνίας/άκρης: αλλαγή μεγέθους (Ctrl = από το κέντρο, Shift = διατήρηση αναλογιών)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Σύρετε μια γωνία/άκρο : αλλαγή μεγέθους (Ctrl = από το κέντρο, Shift = αναλογίες, Alt = αποσύνδεση σε πολυγραμμή)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Σύρετε ένα σημείο : μετακίνησή του</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Σύρετε ένα άκρο : μετακίνησή του</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Σύρετε μια λαβή ή την καμπύλη : παραμόρφωση (Alt = σπάσιμο της εφαπτομένης) ; Alt+σύρετε ένα γωνιώδες σημείο : δημιουργία λαβών ; δεξί κλικ : μενού του πλησιέστερου κόμβου</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>μετάβαση μία σελίδα αριστερά</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>μετάβαση μία σελίδα δεξιά</target>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>Γκρι : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>Γκρι : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>Γκρι : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>Γκρι : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>Γκρι : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>Γκρι : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>Γκρι : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>Γκρι : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>Γκρι : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>Πράσινο : Chartreuse</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>Πράσινο : DarkGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>Πράσινο : DarkOliveGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>Πράσινο : DarkSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>Πράσινο : ForestGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>Πράσινο : Green</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>Πράσινο : GreenYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>Πράσινο : LawnGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>Πράσινο : LightGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>Πράσινο : Lime</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>Πράσινο : LimeGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>Πράσινο : MediumAquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>Πράσινο : MediumSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>Πράσινο : MediumSpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>Πράσινο : Olive</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>Πράσινο : OliveDrab</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>Πράσινο : PaleGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>Πράσινο : SeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>Πράσινο : SpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>Πράσινο : YellowGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Οδηγοί</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Δημιουργεί μια αναφορά με τα τελευταία μηνύματα καταγραφής, για να συμπεριληφθεί σε μια αναφορά σφάλματος</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Γενικά</target>
+</phrase>
+<phrase>
+    <source>Générateur d&apos;élément lambda</source>
+    <target>Γεννήτρια στοιχείου lambda</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Γεωμετρία</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>Ύψος γραμμής:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Ύψος</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Οριζόντια</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>οριζόντια + κατακόρυφα</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Εικόνα BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Αρχεία εικόνας (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Εικόνα JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Εικόνα PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Εικόνα προέλευσης</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Εικόνα SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Εικόνες που δεν περιλαμβάνονται στην εξαγωγή DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>Εισαγωγή EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Εισαγωγή</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>εισαγωγή στοιχείου προς κλιμάκωση</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Εισαγωγή εξαρτήματος EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Εισαγωγή εξαρτήματος EPLAN (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Αδυναμία αποθήκευσης της εικόνας σε αυτή τη θέση.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Αδυναμία αποθήκευσης της ονοματολογίας στο %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>Αδυναμία αποθήκευσης του προτύπου « %1 ».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Αδυναμία εισαγωγής αυτού του εξαρτήματος:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Αδυναμία ανοίγματος του αρχείου για εγγραφή.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>Αδυναμία εγγραφής στο αρχείο «%1».</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Αδυναμία φόρτωσης της εικόνας.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>Αδυναμία φόρτωσης του αρχείου PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>Αδυναμία προσδιορισμού του μεγέθους της σελίδας PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Αδυναμία ανάγνωσης της δομής στη μνήμη του έργου.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>Αδυναμία απόδοσης της σελίδας PDF.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Κλίση X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Κλίση Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Κλίση %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Κλίση εικόνας</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Άγνωστο</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Αύξηση</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Αύξηση: τιμή που προστίθεται στον μετρητή σε κάθε νέα αρίθμηση</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Εισαγωγή πληροφοριών στοιχείων</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Εισαγωγή φύλλου πάνω</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Εισαγωγή φύλλου κάτω</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Αντιστροφέας</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Διαθέσιμο IO:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Έχω διαβάσει και αποδέχομαι αυτούς τους όρους.</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Η εισαγωγή dxf απαιτεί το λογισμικό dxf2elmt.
+Παρακαλώ κατεβάστε το ακολουθώντας τον παρακάτω σύνδεσμο και αποσυμπιέστε το στον φάκελο εγκατάστασης</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Το όριο που έχει οριστεί για αυτό το κύριο στοιχείο έχει επιτευχθεί (Όριο: %1).
+
+Θέλετε να συνδέσετε αυτή τη βοηθητική επαφή ούτως ή άλλως ;</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Η διαγραφή δεν μπορεί να πραγματοποιηθεί επειδή η επιλογή περιέχει έναν ή περισσότερους γεφυρωμένους ακροδέκτες ή/και ακροδέκτες που ανήκουν σε ακροδέκτη πολλαπλών επιπέδων.
+Αφαιρέστε τις γέφυρες ή/και τα επίπεδα των ακροδεκτών που αφορούνται για να μπορέσετε να τους διαγράψετε</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Ετικέτα</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Πλάτος</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Το αρχείο δεν μπόρεσε να εγγραφεί.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>Το αρχείο PDF δεν περιέχει καμία σελίδα.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>Το αρχείο « %1 » λείπει ή είναι δυσανάγνωστο : το μεταφρασμένο όνομα αυτού του φακέλου δεν ήταν δυνατό να διαβαστεί, εμφανίζεται το όνομα του φακέλου του.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>Η μορφή .edz μπορεί να προέρχεται από δύο διαφορετικές πηγές:
+
+• Την πύλη EPLAN Data Portal (dataportal.eplan.com), η οποία υπόκειται στους όρους χρήσης του περιβάλλοντος EPLAN Cloud ;
+• Τον ιστότοπο ενός κατασκευαστή εξαρτημάτων (ή ενός διανομέα) που διαθέτει τα αρχεία .edz απευθείας, σύμφωνα με τους δικούς του όρους.
+
+Το QElectroTech δεν μπορεί να προσδιορίσει αυτόματα την προέλευση του αρχείου που εισάγετε, ούτε τους όρους που ισχύουν για αυτό.
+
+Με την εισαγωγή αυτού του αρχείου, επιβεβαιώνετε ότι:
+
+• γνωρίζετε την προέλευσή του και έχετε την άδεια να το χρησιμοποιήσετε σε αυτό το πλαίσιο, σύμφωνα με τους ισχύοντες όρους αυτής της πηγής ;
+• αυτή η εισαγωγή πραγματοποιείται με δική σας ευθύνη ;
+• ούτε το QElectroTech, ούτε οι συντηρητές του, ούτε οι συνεισφέροντές του μπορούν να θεωρηθούν υπεύθυνοι για μη σύμφωνη χρήση αυτών των δεδομένων.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Η μορφή DXF που χρησιμοποιείται εδώ (AC1006) δεν επιτρέπει την συμπερίληψη εικόνας. Οι εικόνες θα αναπαρίστανται μόνο από ένα ορθογώνιο περιγράμματος (θέση, μέγεθος, περιστροφή και κλίση διατηρούνται), χωρίς το περιεχόμενο της εικόνας.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Το λογισμικό QET_ElementScaler είναι απαραίτητο για την κλιμάκωση των στοιχείων.
+Κατεβάστε το ακολουθώντας τον παρακάτω σύνδεσμο και αποσυμπιέστε το στον φάκελο εγκατάστασης</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Το πρότυπο αποθηκεύτηκε με επιτυχία στο:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>Το όνομα « %1 » δεν είναι έγκυρο : δεν πρέπει να περιέχει τους ακόλουθους χαρακτήρες : \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Το νέο στοιχείο ορίζει ομάδες επαφών-εξαρτημάτων.
+Τα υπάρχοντα στοιχεία-εξαρτήματα δεν θα αντιστοιχιστούν αυτόματα. Θα πρέπει να συνδέσετε χειροκίνητα τα εξαρτήματα και να αντιστοιχίσετε τις ομάδες επαφών.
+
+Θέλετε να συνεχίσετε;</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Το σχέδιο καλωδίωσης εξήχθη με επιτυχία!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>Το έργο που προσπαθείτε να ανοίξετε είναι μερικώς συμβατό με την έκδοση %1 του QElectroTech σας.
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Το πρότυπο υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED :</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
+Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>Οι πληροφορίες προς εμφάνιση υπερβαίνουν τη μέγιστη ποσότητα που μπορεί να εμφανίσει ο πίνακας.
+Παρακαλώ προσθέστε έναν νέο πίνακα ή ρυθμίστε τον υπάρχοντα πίνακα ώστε να εμφανίζεται το σύνολο των πληροφοριών.</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
+Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>Οι πληροφορίες προς εμφάνιση υπερβαίνουν τη μέγιστη ποσότητα που μπορούν να εμφανίσουν οι πίνακες.
+Παρακαλώ προσθέστε έναν νέο πίνακα ή ρυθμίστε τους υπάρχοντες πίνακες ώστε να εμφανίζεται το σύνολο των πληροφοριών.</target>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Μόνο πεζά γράμματα, ψηφία, παύλα και κάτω παύλα</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Άδειες</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Ομαλό</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Λίστα καλωδίωσης</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Λίστα καλωδίωσης (βάση δεδομένων)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Συνδεδεμένο με: %1</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Μήκος</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Μέγιστο μήκος</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Μέγιστο μήκος : %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Μήκος χωρίς περιορισμό.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target>Κύριο παράθυρο</target>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Μακροεντολές</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Μέγ. εξαρτήματα στη λίστα Επεξεργαστή Στοιχείων</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>μέγ.:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Ορίστε 0 για ένα ψηφίο που προχωρά μόνο με τη μεταφορά ενός επόμενου κυκλικού ψηφίου (π.χ. το "0" του "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>ελάχ.:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>Κατοπτρισμός επιλογής</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Οριζόντιο είδωλο</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Οριζόντιο είδωλο εικόνας</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Οριζόντιος κατοπτρισμός του %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Αδυναμία κατοπτρισμού : πολύ ακραία κλίση για αυτό το σχήμα</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Κατακόρυφο είδωλο</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Κατακόρυφο είδωλο εικόνας</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Κατακόρυφος κατοπτρισμός του %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Κατοπτρισμός</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>τροπ.</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Αλλαγή στοίχισης ενός πεδίου κειμένου</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Αλλαγή στοίχισης της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Αλλαγή γωνίας τόξου</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Αλλαγή γωνίας σχήματος</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Αλλαγή γωνίας εικόνας</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Αλλαγή κλίσης εικόνας</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Αλλαγή δείκτη της ετικέτας του master</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Αλλαγή ετικέτας του master</target>
+</phrase>
+<phrase>
+    <source>Modifier la conservation de l&apos;angle</source>
+    <target>Τροποποίηση της διατήρησης γωνίας</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur d&apos;un pont de bornes</source>
+    <target>Αλλαγή χρώματος γέφυρας ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Αλλαγή χρώματος της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Αλλαγή καμπυλότητας του %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Αλλαγή σχήματος του %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Αλλαγή ύψους εικόνας</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Αλλαγή πλάτους εικόνας</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Αλλαγή μήκους γραμμής</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Αλλαγή γραμματοσειράς της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Αλλαγή θέσης της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Αλλαγή περιστροφής της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Αλλαγή μεγέθους σχήματος</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Αλλαγή μεγέθους γραμματοσειράς της ετικέτας</target>
+</phrase>
+<phrase>
+    <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
+    <target>Τροποποίηση της διατήρησης περιστροφής ενός κειμένου στοιχείου</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Αλλαγή ονόματος του ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Τροποποίηση του σημείου περιστροφής ενός πεδίου κειμένου</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Αλλαγή τύπου κόμβου</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Τροποποίηση εικόνας</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>Μονάδα PLC</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Πρότυπο</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Το πρότυπο αποθηκεύτηκε</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Πρότυπα</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Αρ.</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>Αρ. ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>Αρ. επαφών</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (επαφή διακόπτη)</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (επαφή διακόπτη)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>Δεν βρέθηκε *.part.xml μέσα στο .edz</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Όνομα αρχείου στοιχείου</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Όνομα αρχείου στοιχείου: μόνο ψηφία, πεζά γράμματα, «-», «_» και «.». 
+Το εμφανιζόμενο όνομα του στοιχείου αλλάζει ξεχωριστά στις ιδιότητες του στοιχείου.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Όνομα ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Όνομα του νέου προτύπου</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Προσαρμοσμένο όνομα στήλης (κενό = προεπιλογή)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Όνομα, ετικέτα ή πληροφορία του στοιχείου…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>όνομα_της_ιδιότητας</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Λανθασμένος αριθμός ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Αριθμός χρησιμοποιούμενων βοηθητικών επαφών: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Επιτεύχθηκε ο μέγιστος αριθμός βοηθητικών επαφών.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Μέγιστος αριθμός καθορισμένων βοηθητικών επαφών: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Μέγιστος αριθμός καθορισμένων βοηθητικών επαφών: μη καθορισμένος
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Όχι</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Μόνο μη εκχωρημένες</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Κανονικά κλειστή</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Κανονικά ανοιχτή</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Μη έγκυρο πακέτο .edz (μη αναγνωρίσιμη μορφή αρχείου).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Σημειώσεις</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Μόνο αριθμητική (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>Βοηθητικός αριθμός είδους 1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>Βοηθητικός αριθμός είδους 2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>Βοηθητικός αριθμός είδους 3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>Βοηθητικός αριθμός είδους 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>Βοηθητικός αριθμός παραγγελίας 1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>Βοηθητικός αριθμός παραγγελίας 2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>Βοηθητικός αριθμός παραγγελίας 3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>Βοηθητικός αριθμός παραγγελίας 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de conducteur</source>
+    <target>Αριθμός αγωγού</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>Βοηθητικός εσωτερικός αριθμός 1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>Βοηθητικός εσωτερικός αριθμός 2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>Βοηθητικός εσωτερικός αριθμός 3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>Βοηθητικός εσωτερικός αριθμός 4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Αυτόματη αρίθμηση ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Αυτόματη αρίθμηση αγωγού</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Αυτόματη αρίθμηση στοιχείου</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Αρίθμηση και των γραμμάτων</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Πλησιέστερος κόμβος</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>Πορτοκαλί : Coral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>Πορτοκαλί : DarkOrange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>Πορτοκαλί : Orange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>Πορτοκαλί : OrangeRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>Πορτοκαλί : Tomato</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Προσανατολισμός</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Κατακόρυφη αρχή</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Ναι</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outil de traduction d&apos;éléments</source>
+    <target>Εργαλείο μετάφρασης στοιχείων</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Σελίδα</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Σελίδα προς εισαγωγή :</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Πίνακας στοιχείων</target>
+</phrase>
+<phrase>
+    <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>Από προεπιλογή, οι ακόλουθες μεταβλητές είναι διαθέσιμες:&lt;ul&gt;&lt;li&gt;%{author} : συντάκτης του folio&lt;/li&gt;&lt;li&gt;%{date} : ημερομηνία του folio&lt;/li&gt;&lt;li&gt;%{title} : τίτλος του folio&lt;/li&gt;&lt;li&gt;%{filename} : όνομα αρχείου του έργου&lt;/li&gt;&lt;li&gt;%{plant} : όνομα της εγκατάστασης (=) στην οποία βρίσκεται το folio&lt;/li&gt;&lt;li&gt;%{locmach} : όνομα της τοποθεσίας (+) στην οποία βρίσκεται το folio&lt;/li&gt;&lt;li&gt;%{indexrev} : δείκτης αναθεώρησης του folio&lt;/li&gt;&lt;li&gt;%{version} : έκδοση του λογισμικού&lt;/li&gt;&lt;li&gt;%{folio} : αριθμός του folio&lt;/li&gt;&lt;li&gt;%{folio-id} : θέση του folio στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total} : συνολικός αριθμός folios στο έργο&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : αριθμός του προηγούμενου folio&lt;/li&gt;&lt;li&gt;%{next-folio-num} : αριθμός του επόμενου folio&lt;/li&gt;&lt;li&gt;%{projecttitle} : τίτλος του έργου&lt;/li&gt;&lt;li&gt;%{projectpath} : διαδρομή του έργου&lt;/li&gt;&lt;li&gt;%{projectfilename} : όνομα του αρχείου&lt;/li&gt;&lt;li&gt;%{saveddate} : ημερομηνία αποθήκευσης του αρχείου σε τοπική μορφή&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : ημερομηνία αποθήκευσης του αρχείου σε μορφή dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : ημερομηνία αποθήκευσης του αρχείου σε μορφή yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : ώρα αποθήκευσης του αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilename} : όνομα του αποθηκευμένου αρχείου&lt;/li&gt;&lt;li&gt;%{savedfilepath} : διαδρομή του αποθηκευμένου αρχείου&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>Ροζ : MediumVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>Ροζ : PaleVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Περιστρέφει την επιλογή ως ομάδα γύρω από το κέντρο της, αντί για κάθε στοιχείο στη θέση του</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Περιστροφή ομάδας</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>περιστροφή/κλίση</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>Εξαρτήματα EPLAN (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>σχέδιο ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Σημείο αγκύρωσης του κειμένου και στοίχιση των γραμμών μεταξύ τους</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>Σημείο γεφύρωσης</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Γραμματοσειρά</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Γραμματοσειρά :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Γραμματοσειρά κεφαλίδων</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Γραμματοσειρά κεφαλίδων στηλών</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Γραμματοσειρά κεφαλίδων: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Γραμματοσειρά κειμένου</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Γραμματοσειρά κειμένου κελιών</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Γραμματοσειρά κειμένου: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Γραμματοσειρές έργου</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Ponter des bornes entre-elles</source>
+    <target>Γεφύρωση ακροδεκτών μεταξύ τους</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Θέση</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Προτεραιότητα αξόνων</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Προτεραιότητα στον άξονα X (οριζόντιο)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Προτεραιότητα στον άξονα Y (κατακόρυφο)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Επόμενη τιμή που θα εφαρμοστεί με αυτή την αύξηση</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Βάθος</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Ιδιότητες κειμένου</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Προεπισκόπηση :</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Ισχύος</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>Μωβ : BlueViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>Μωβ : DarkMagenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>Μωβ : DarkOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>Μωβ : DarkSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>Μωβ : DarkViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>Μωβ : Fuchsia</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>Μωβ : Indigo</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>Μωβ : Lavender</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>Μωβ : Magenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>Μωβ : MediumOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>Μωβ : MediumPurple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>Μωβ : MediumSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>Μωβ : Orchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>Μωβ : Plum</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>Μωβ : Purple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>Μωβ : SlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>Μωβ : Thistle</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>Μωβ : Violet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>Το QElectroTech δεν έκλεισε σωστά κατά την τελευταία εκτέλεσή του.
+Ακολουθούν τα τελευταία μηνύματα που καταγράφηκαν πριν τον τερματισμό -- μπορείτε να τα αποθηκεύσετε για να τα επισυνάψετε σε μια αναφορά σφάλματος.</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+πρόσθετες πληροφορίες σχετικά με την εισαγωγή / κλιμάκωση του %1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>Βοηθητική ποσότητα 1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>Βοηθητική ποσότητα 2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>Βοηθητική ποσότητα 3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>Βοηθητική ποσότητα 4</target>
+</phrase>
+<phrase>
+    <source>Quantité numéro d&apos;article</source>
+    <target>Ποσότητα αριθμός είδους</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Συντόμευση</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Συντομεύσεις</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Αναφορά διαγνωστικών</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Αναφορά κατάρρευσης</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Ακτίνα X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Ακτίνα Y</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Αναζήτηση</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Γρήγορη αναζήτηση και επιλογή στοιχείου του φύλλου</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Αναζήτηση...</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>Κόκκινο : Crimson</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>Κόκκινο : DarkRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>Κόκκινο : DarkSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>Κόκκινο : Firebrick</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>Κόκκινο : IndianRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>Κόκκινο : LightCoral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>Κόκκινο : LightSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>Κόκκινο : Salmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>αλλαγή μεγέθους</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Αλλαγή μεγέθους %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Αλλαγή μεγέθους εικόνας</target>
+</phrase>
+<phrase>
+    <source>Redimensionneur d&apos;éléments</source>
+    <target>Αλλαγή μεγέθους στοιχείων</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Σημείωση : τα κύρια στοιχεία που έχουν φτάσει τον μέγιστο αριθμό βοηθητικών επαφών τους είναι κρυμμένα.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Αντικατάσταση εικόνας...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Αντικατάσταση εικόνας</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Αντιγραφή από το master</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Επαναφορά αναλογιών</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Επαναφορά αναλογιών εικόνας</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Αφαίρεση αυτού του χρώματος</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>Αντιστροφή στοιχείου :</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>Αντιστροφή επιλογής</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Επιστροφή στην πλήρη εικόνα, χωρίς περικοπή</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Δεξιά</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Περικοπή εικόνας</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Περικοπή εικόνας</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Περικοπή...</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Περιστροφή :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Περιστροφή/Κλίση</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Αναφ.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Ετεροαναφορά</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>Αμφίδρομη αναφορά PLC</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Διασταυρούμενη αναφορά</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Επαναφορά</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Επαναφορά αυτής της συντόμευσης</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Επαναφορά στην αρχική τιμή</target>
+</phrase>
+<phrase>
+    <source>Répertoire de la collection company</source>
+    <target>Κατάλογος της συλλογής company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des cartouches company</source>
+    <target>Κατάλογος των καρτελών company</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Κατάλογος των Macros χρήστη</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Ανάλυση :</target>
+</phrase>
+<phrase>
+    <source>sans</source>
+    <target>χωρίς</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Αλλαγή %1 μετά:</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Διατομή αγωγού</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Τμηματοποιήσιμο</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionnable</source>
+    <target>Αποσπώμενο</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Δείτε λεπτομέρειες εδώ:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Επιλογή εικόνας...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Απλό</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Αναλογική έξοδος</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Ψηφιακή έξοδος</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Καθολική έξοδος</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Θέλετε να δημιουργήσετε ένα αντίγραφο ασφαλείας;</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Υποτύπος</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Επόμενο</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Παρακολούθηση του χρόνου που δαπανάται σε αυτό το έργο (καταγράφεται τοπικά μόνο σε αυτό το αρχείο)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Αδυναμία διαγραφής ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Διαγραφή</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Διαγραφή %1 φύλλων</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Διαγραφή αυτής της ιδιότητας</target>
+</phrase>
+<phrase>
+    <source>Supprimer des ponts de bornes</source>
+    <target>Διαγραφή γεφυρών ακροδεκτών</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Διαγραφή του πλησιέστερου κόμβου</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Διαγραφή φύλλων</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Διαγραφή φύλλου</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Διαγραφή σημείου από καμπύλη</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>Σουηδικά</target>
+</phrase>
+<phrase>
+    <source>SVG: fond transparent</source>
+    <target>SVG: διαφανές φόντο</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Συμμετρικό</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Το σύστημα επαφών τροποποιήθηκε</target>
+</phrase>
+<phrase>
+    <source>Séctionnable</source>
+    <target>Αποζεύξιμο</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les conducteurs de ce folio</source>
+    <target>Επιλογή των αγωγών αυτού του φύλλου</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les textes de ce folio</source>
+    <target>Επιλογή των κειμένων αυτού του φύλλου</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les éléments de ce folio</source>
+    <target>Επιλογή των στοιχείων αυτού του φύλλου</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Επιλογή αρχείου PDF...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Επιλογή ομάδας επαφών</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Επιλογή IO PLC</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Επιλογή σελίδας</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Επιλέξτε την ομάδα επαφών που θα αντιστοιχιστεί σε αυτό το στοιχείο esclave:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Διαχωρισμός δυναμικού</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>Πίνακας PLC</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>Table PLC (κενό)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Μέγεθος</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Μέγεθος :</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Μέγεθος σημείων του πλέγματος του Diagram-Editor : 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Μέγεθος σημείων του πλέγματος του επεξεργαστή στοιχείων : 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>Με χρονοκαθυστέρηση επαναφοράς</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>Με χρονοκαθυστέρηση ενεργοποίησης</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>Με χρονοκαθυστέρηση ενεργοποίησης &amp; επαναφοράς</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Χρόνος που δαπανήθηκε σε αυτό το έργο :</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Τάση / Πρωτόκολλο</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Ονομαστική τάση</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Κείμενο ακροδέκτη</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Κείμενο επικεφαλίδας</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Αυτό το .edz είναι πακέτο μορφής zip, το οποίο δεν υποστηρίζεται ακόμη (μόνο αρχεία .edz της μορφής 7-Zip μπορούν να εισαχθούν).</target>
+</phrase>
+<phrase>
+    <source>To high values might lead to crashes of the application.</source>
+    <target>Οι πολύ υψηλές τιμές μπορεί να προκαλέσουν κατάρρευση της εφαρμογής.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Ανοχή για αυτό το χρώμα</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>Γραμμή εργαλείων</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Περιστροφή γύρω από το κέντρο του</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Όλες</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Όλα τα αρχεία (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Επαναφορά όλων</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Μετάφραση στα κορεατικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en japonais</source>
+    <target>Μετάφραση στα ιαπωνικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en mongol</source>
+    <target>Μετάφραση στα μογγολικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en norvégien</source>
+    <target>Μετάφραση στα νορβηγικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en serbe</source>
+    <target>Μετάφραση στα σερβικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en slovène</source>
+    <target>Μετάφραση στα σλοβενικά</target>
+</phrase>
+<phrase>
+    <source>Traduction en ukrainien</source>
+    <target>Μετάφραση στα ουκρανικά</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Μετασχηματισμός %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Η διαφάνεια δεν διατηρείται</target>
+</phrase>
+<phrase>
+    <source>Trier le bornier %1</source>
+    <target>Ταξινόμηση κλεμμοσειράς %1</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>Πάρα πολλά πρωτόγονα, η λίστα δεν δημιουργήθηκε: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Τύπος</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Τύπος αρίθμησης</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>Τύπος PLC</target>
+</phrase>
+<phrase>
+    <source>Ukrainien</source>
+    <target>Ουκρανικά</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>ένα τόξο</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>μια γωνία</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>ένα σημείο</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>μια καμπύλη</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>ένα άκρο</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>μια εικόνα</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>Βοηθητική μονάδα 1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>Βοηθητική μονάδα 2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>Βοηθητική μονάδα 3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>Βοηθητική μονάδα 4</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Τιμή</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Τρέχουσα τιμή του μετρητή. Εισαγάγετε μια νέα τιμή και επιβεβαιώστε για να την αλλάξετε.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Τιμή στην οποία αυτό το ψηφίο επιστρέφει στο 0 αυξάνοντας το προηγούμενο ψηφίο (0 = χωρίς κύκλο)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Κλείδωμα της αυτόματης αρίθμησης</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Κλείδωμα θέσης</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Κλειδωμένο : η αλλαγή του πλάτους ή του ύψους προσαρμόζει το άλλο για να διατηρηθούν οι αναλογίες. Κάντε κλικ για ξεκλείδωμα.</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Κατακόρυφα</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Ορατή</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Προβολή αυτού του στοιχείου</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>Λευκό : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>Λευκό : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>Λευκό : Azure</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>Λευκό : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>Λευκό : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>Λευκό : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>Λευκό : Honeydew</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>Λευκό : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>Λευκό : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>Λευκό : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>Λευκό : MintCream</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>Λευκό : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>Λευκό : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>Λευκό : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>Λευκό : Snow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>Λευκό : White</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>Λευκό : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>XRef slave position</source>
+    <target>Θέση υποτελούς XRef</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>Κίτρινο : DarkKhaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>Κίτρινο : Gold</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>Κίτρινο : Khaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>Κίτρινο : LemonChiffon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>Κίτρινο : LightGoldenrodYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>Κίτρινο : LightYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>Κίτρινο : Moccasin</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>Κίτρινο : PaleGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>Κίτρινο : PapayaWhip</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>Κίτρινο : PeachPuff</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>Κίτρινο : Yellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Αποτυχία αποθήκευσης</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Αποτυχία εξαγωγής</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Αντικατάσταση προτύπου;</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Επεξεργαστής στοιχείου</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Επεξεργαστής καρτέλας</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Επεξεργαστής σχεδίων</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Επεξεργαστής κειμένου</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Επεξεργασία κόμβων</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>Στοιχεία QElectroTech (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Ετικέτα του master</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο;</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το φύλλο από το έργο;</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Είστε βέβαιοι ότι θέλετε να διαγράψετε τα %1 επιλεγμένα φύλλα;</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>ερμάριο</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>πηνίο</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>ακροδέκτης</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>κλέμμενη σειρά</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>καλώδιο</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>ονομαστική τιμή</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>καρτέλα τίτλου</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>συλλογή</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>αγωγός</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>ρελέ ισχύος</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>ρεύμα</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>αυτόματος διακόπτης</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>φάκελος</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>στοιχείο</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>βοηθητικός</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>ασφάλεια</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>πλέγμα</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>διακόπτης</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>κύριος</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>πρότυπο</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>κινητήρας</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>ουδέτερος</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>λίστα υλικών</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>αρίθμηση</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>φάση</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>δυναμικό</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>έργο</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>ρελέ</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>παραπομπή φύλλου</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>χαρακτηρισμός</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>παραπομπή φύλλου</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>σχέδιο</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>διατομή</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>περιεχόμενα</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>τάση</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>γείωση</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>κείμενο</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>μετασχηματιστής</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

@@ -27,6 +27,7 @@
 #include "qgimanager.h"
 
 #include <QHash>
+#include <QPointer>
 #include <QUuid>
 #include <QtWidgets>
 #include <QtXml>
@@ -126,6 +127,7 @@ class Diagram : public QGraphicsScene
 		qreal diagram_qet_version_;
 
 		bool draw_grid_;
+		bool m_inverted_lightness = false;
 		bool use_border_;
 		bool draw_guides_;
 		QList<Diagram::Guide> m_guides_list;
@@ -140,11 +142,22 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
 
+			//Selection before the current click, see completeGroupSelection()
+		QList<QPointer<QGraphicsObject>> m_previous_selection;
+		void rememberSelection();
+			//Member of a wholly selected group under the current click, which
+			//the click picks out on its own if it ends without a drag
+		QPointer<QGraphicsObject> m_member_to_pick;
+
 		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
 		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
 		bool m_cabinet_layout_enabled = false;
 		qreal m_cabinet_layout_scale = 2.0;
 		CabinetLayoutView m_cabinet_layout_view = CabinetLayoutFront;
+
+
+			//Wires of the loaded file whose ends could not be found
+		QStringList m_wires_not_reconnected;
 
 	// METHODS
 	protected:
@@ -168,6 +181,7 @@ class Diagram : public QGraphicsScene
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
 		QUuid uuid();
+		QStringList wiresNotReconnected() const;
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
 
@@ -228,6 +242,7 @@ class Diagram : public QGraphicsScene
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
+		void setInvertedLightness(bool);
 		void setDisplayGuides(bool);
 		bool displayGuides();
 		void updateProjectGuides(const QList<GuideProperties> &guides);
@@ -237,7 +252,8 @@ class Diagram : public QGraphicsScene
 		BorderOptions borderOptions();
 		DiagramPosition convertPosition(const QPointF &);
 		static QPointF snapToGrid(const QPointF &p);
-	
+		static QPointF snapToTextGrid(const QPointF &p);
+
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
 		bool drawTerminalNames() const;
@@ -249,7 +265,8 @@ class Diagram : public QGraphicsScene
 		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,
 				   Qt::AspectRatioMode = Qt::KeepAspectRatio);
 		QSize imageSize() const;
-		
+		QRectF visibleItemsBoundingRect() const;
+
 		bool isEmpty() const;
 	
 		QList<Element *> elements() const;
@@ -295,6 +312,7 @@ class Diagram : public QGraphicsScene
 				       const QString& title, const QString& seq,
 				       NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
+		void setItemGroup(QGraphicsItem *item, const QUuid &group);
 
 	public slots:
 		void adjustSceneRect ();
@@ -312,6 +330,7 @@ class Diagram : public QGraphicsScene
 		void invertSelection();
 		void selectAllConductors();
 		void selectAllTextFields();
+		void completeGroupSelection();
 
 	signals:
 		void showDiagram (Diagram *);
@@ -324,6 +343,10 @@ class Diagram : public QGraphicsScene
 
 		void diagramActivated();
 		void diagramInformationChanged();
+
+			/// Emitted by setItemGroup(): an item joined or left a group
+			/// without the selection changing (#1144)
+		void itemGroupChanged();
 
 		void cabinetLayoutReferencesChanged();
 };
@@ -371,6 +394,18 @@ inline void Diagram::setConductorStop(QPointF end) {
 */
 inline void Diagram::setDisplayGrid(bool dg) {
 	draw_grid_ = dg;
+}
+
+/**
+	@brief Diagram::setInvertedLightness
+	Tell the diagram whether the view painting it will show the result
+	with its lightness inverted (PaletteGraphicsView on a dark palette).
+	drawBackground draws a softer grid in that case. Printing
+	and export never set this.
+	@param inverted
+*/
+inline void Diagram::setInvertedLightness(bool inverted) {
+	m_inverted_lightness = inverted;
 }
 
 /**

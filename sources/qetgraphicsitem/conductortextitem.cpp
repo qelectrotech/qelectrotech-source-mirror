@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductortextitem.h"
+#include "../shownkinds.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -31,6 +32,7 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	moved_by_user_(false),
 	rotate_by_user_(false)
 {
+	ShownKinds::tag(this, ShownKinds::WireNumbers);
 	setAcceptHoverEvents(true);
 }
 
@@ -45,7 +47,9 @@ ConductorTextItem::ConductorTextItem(
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
 	rotate_by_user_(false)
-{}
+{
+	ShownKinds::tag(this, ShownKinds::WireNumbers);
+}
 
 /**
 	Destructeur
@@ -69,13 +73,17 @@ Conductor *ConductorTextItem::parentConductor() const
 	@param e
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-	if (e.hasAttribute("userx")) {
-		setPos(e.attribute("userx").toDouble(),
-			   e.attribute("usery").toDouble());
+		//A non-finite ("nan", "inf") position or rotation is ignored,
+		//as if the text had never been moved or rotated
+	const qreal x = e.attribute("userx").toDouble();
+	const qreal y = e.attribute("usery").toDouble();
+	if (e.hasAttribute("userx") && qIsFinite(x) && qIsFinite(y)) {
+		setPos(x, y);
 		moved_by_user_ = true;
 	}
-	if (e.hasAttribute("rotation")) {
-		setRotation(e.attribute("rotation").toDouble());
+	const qreal rotation = e.attribute("rotation").toDouble();
+	if (e.hasAttribute("rotation") && qIsFinite(rotation)) {
+		setRotation(rotation);
 		rotate_by_user_ = true;
 	}
 }
@@ -185,7 +193,7 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		if (parent_conductor_) {
 			if (parent_conductor_->nearShape().contains(intended_pos)) {
-				event->modifiers() == Qt::ControlModifier ? setPos(intended_pos) : setPos(Diagram::snapToGrid(intended_pos));
+				event->modifiers() == Qt::ControlModifier ? setPos(intended_pos) : setPos(Diagram::snapToTextGrid(intended_pos));
 				parent_conductor_ -> setHighlighted(Conductor::Normal);
 			} else {
 				parent_conductor_ -> setHighlighted(Conductor::Alert);

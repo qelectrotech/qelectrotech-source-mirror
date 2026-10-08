@@ -62,6 +62,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>12.3.0</string>
+	<string>14.0.0</string>
 </dict>
 </plist>

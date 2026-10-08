@@ -90,6 +90,16 @@
         </item>
        </layout>
       </item>
+      <item>
+       <widget class="QCheckBox" name="m_stack_overlapping_cb">
+        <property name="toolTip">
+         <string>Quand les textes de deux références croisées se chevauchent, celle de l'élément le plus haut est placée au-dessus de l'autre.</string>
+        </property>
+        <property name="text">
+         <string>Empiler les références dont les textes se chevauchent</string>
+        </property>
+       </widget>
+      </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
@@ -148,6 +158,16 @@
            <widget class="QCheckBox" name="m_show_terminal_name_cb">
             <property name="text">
              <string>Afficher les numéros de bornes dans les Xrefs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_show_all_slaves_cb">
+            <property name="toolTip">
+             <string>Afficher dans le peigne de contacts tous les contacts esclaves définis par le maître, même ceux qui ne sont pas encore reliés, dans l'ordre défini par le maître</string>
+            </property>
+            <property name="text">
+             <string>Afficher tous les esclaves définis par le maître</string>
             </property>
            </widget>
           </item>
@@ -320,6 +340,7 @@
   <tabstop>m_type_cb</tabstop>
   <tabstop>m_snap_to_cb</tabstop>
   <tabstop>m_offset_sb</tabstop>
+  <tabstop>m_stack_overlapping_cb</tabstop>
   <tabstop>m_xrefpos_cb</tabstop>
   <tabstop>m_display_has_contacts_rb</tabstop>
   <tabstop>m_display_has_cross_rb</tabstop>
@@ -327,6 +348,7 @@
   <tabstop>m_slave_le</tabstop>
   <tabstop>m_show_power_cb</tabstop>
   <tabstop>m_show_terminal_name_cb</tabstop>
+  <tabstop>m_show_all_slaves_cb</tabstop>
   <tabstop>m_power_prefix_le</tabstop>
   <tabstop>m_delay_prefix_le</tabstop>
   <tabstop>m_switch_prefix_le</tabstop>

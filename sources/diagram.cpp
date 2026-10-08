@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagram.h"
+#include "autoNum/elementautonumschemecommand.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
@@ -28,6 +29,7 @@
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
 #include "qetapp.h"
+#include "qetpalette.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
@@ -43,8 +45,14 @@
 #include "qetinformation.h"
 #include "qetproject.h"
 #include "diagramsortkeys.h"
+#include "itemgroups.h"
+#include "textgrid.h"
+#include "foliogrid.h"
+#include <QGraphicsView>
+#include <QTextStream>
 #include <algorithm>
 
+#include <climits>
 #include <cassert>
 #include <math.h>
 
@@ -100,6 +108,44 @@ namespace {
 		QString a = terminalSortKey(cond->terminal1);
 		QString b = terminalSortKey(cond->terminal2);
 		return (a <= b) ? (a + QLatin1Char('>') + b) : (b + QLatin1Char('>') + a);
+	}
+
+	/// Serialize @p items and append them to a new @p tag block of @p root,
+	/// in stacking order (@p stack_rank). items() cannot be trusted for
+	/// this: with NoIndex, the first removeItem() on the scene sorts Qt's
+	/// item list by pointer address, so from then on items() hands them over
+	/// in a per-run order (bugtracker #343). Stacking order is what reloading
+	/// the file rebuilds, so the drawing is unchanged and a resave is stable.
+	template <typename T>
+	void appendInStackingOrder(QDomDocument &document, QDomElement &root,
+							   const QString &tag, const QVector<T *> &items,
+							   const QHash<const QGraphicsItem *, int> &stack_rank)
+	{
+		if (items.isEmpty())
+			return;
+		struct Entry { int rank; QString xml_text; QDomElement xml; };
+		QVector<Entry> sorted;
+		for (T *item : items) {
+			Entry entry{stack_rank.value(item, INT_MAX), QString(),
+						item->toXml(document)};
+			ItemGroups::write(entry.xml, item);
+				// Only an item the stacking query missed needs a tiebreak.
+			if (entry.rank == INT_MAX) {
+				QTextStream stream(&entry.xml_text);
+				entry.xml.save(stream, 0);
+			}
+			sorted.append(entry);
+		}
+		std::stable_sort(sorted.begin(), sorted.end(),
+			[](const Entry &a, const Entry &b) {
+				return a.rank != b.rank ? a.rank < b.rank
+										: a.xml_text < b.xml_text;
+			});
+
+		auto block = document.createElement(tag);
+		for (const auto &entry : sorted)
+			block.appendChild(entry.xml);
+		root.appendChild(block);
 	}
 }
 
@@ -172,6 +218,7 @@ Diagram::Diagram(QETProject *project) :
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);
+
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::informationChanged,
 		this, &Diagram::titleChanged);
@@ -286,19 +333,18 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 			 * if background color is black,
 			 * then grid spots shall be white,
 			 * else they shall be black in color.
+			 * A view that shows the sheet with its lightness inverted
+			 * gets softer dots, see QET::Palette::gridDotColor.
 			 */
 		QPen pen;
-		Diagram::background_color == Qt::black? pen.setColor(Qt::white)
-							  : pen.setColor(Qt::black);
+		pen.setColor(QET::Palette::gridDotColor(Diagram::background_color, m_inverted_lightness));
 		pen.setCosmetic(true);
 		p->setPen(pen);
 
 		p -> setBrush(Qt::NoBrush);
 
-		int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-								   Diagram::xGrid).toInt();
-		int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-								   Diagram::yGrid).toInt();
+		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 		qreal limit_x = rect.x() + rect.width();
 		qreal limit_y = rect.y() + rect.height();
@@ -393,7 +439,27 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		}
 	}
 
+	rememberSelection();
+		//Clicking again on a member of a group that is selected whole picks
+		//that member out, to edit it on its own (discussion #1070): noted
+		//here, decided on release, since a drag must still move the group.
+		//Ctrl keeps its usual meaning.
+	m_member_to_pick.clear();
+	if (event->button() == Qt::LeftButton
+		&& !event->modifiers().testFlag(Qt::ControlModifier)) {
+		QTransform view_transform;
+		if (event->widget()) {
+			if (auto view = qobject_cast<QGraphicsView *>(event->widget()->parentWidget())) {
+				view_transform = view->transform();
+			}
+		}
+		if (QGraphicsItem *member = ItemGroups::memberToPick(
+				itemAt(event->scenePos(), view_transform))) {
+			m_member_to_pick = member->toGraphicsObject();
+		}
+	}
 	QGraphicsScene::mousePressEvent(event);
+	completeGroupSelection();
 }
 
 /**
@@ -432,6 +498,22 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	QGraphicsScene::mouseReleaseEvent(event);
+
+		//A click that did not drag, on a member of a group selected whole:
+		//Qt has left only that member selected, and it stays so.
+	QGraphicsObject *picked = m_member_to_pick.data();
+	m_member_to_pick.clear();
+	if (picked
+		&& (event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton)).manhattanLength()
+			< QApplication::startDragDistance()
+		&& selectedItems() == QList<QGraphicsItem *>{picked}) {
+		rememberSelection();
+		return;
+	}
+
+		//A click on an already selected item changes the selection on
+		//release, not on press (Ctrl toggles it, a plain click keeps only it).
+	completeGroupSelection();
 }
 
 /**
@@ -695,6 +777,18 @@ QUuid Diagram::uuid()
 }
 
 /**
+	@brief Diagram::wiresNotReconnected
+	@return one line per wire of the loaded file that was left out because
+	a terminal it joins could not be found, for example after the symbol's
+	definition in the project was replaced by one whose terminals differ.
+	Empty for a folio that loaded every wire.
+*/
+QStringList Diagram::wiresNotReconnected() const
+{
+	return m_wires_not_reconnected;
+}
+
+/**
 	@brief Diagram::uuidUsedByOtherDiagram
 	A hand-edited or merged project file can contain two folios with the same
 	uuid. The uuid is used as a key (e.g. in the project database), so the
@@ -838,7 +932,7 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
 	if (!use_border_) {
-		source_area = itemsBoundingRect();
+		source_area = visibleItemsBoundingRect();
 		source_area.translate(-margin, -margin);
 		source_area.setWidth (source_area.width () + 2.0 * margin);
 		source_area.setHeight(source_area.height() + 2.0 * margin);
@@ -906,7 +1000,7 @@ QSize Diagram::imageSize() const
 	// determine la zone source =  contenu du schema + marges
 	qreal image_width, image_height;
 	if (!use_border_) {
-		QRectF items_rect = itemsBoundingRect();
+		QRectF items_rect = visibleItemsBoundingRect();
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
@@ -1217,6 +1311,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
 			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
 
+		// A copy carries the numberings its elements follow: pasted into
+		// another project, which does not know them, it can offer to import
+		// them (see PasteNumberingImport)
+	if (is_copy_command) {
+		ElementAutoNumSchemeCommand::writeCopiedSchemes(document, dom_root, m_project, list_elements);
+	}
+
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
@@ -1224,8 +1325,9 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	if (!list_elements.isEmpty()) {
 		auto dom_elements = document.createElement(QStringLiteral("elements"));
 		for (auto elmt : list_elements) {
-			dom_elements.appendChild(elmt->toXml(document,
-								 table_adr_id));
+			QDomElement dom_element = elmt->toXml(document, table_adr_id);
+			ItemGroups::write(dom_element, elmt);
+			dom_elements.appendChild(dom_element);
 			// If copy is active we have to undo the changes we have made during creating(filling) 'list_elements'
 			if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
 				restoreText(elmt);
@@ -1242,37 +1344,20 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		dom_root.appendChild(dom_conductors);
 	}
 
-	if (!list_texts.isEmpty()) {
-		auto dom_texts = document.createElement(QStringLiteral("inputs"));
-		for (auto dti : list_texts) {
-			dom_texts.appendChild(dti->toXml(document));
-		}
-		dom_root.appendChild(dom_texts);
+		// A rect query, unlike items(), returns true stacking order (z, then
+		// insertion order) even with NoIndex.
+	QHash<const QGraphicsItem *, int> stack_rank;
+	{
+		const QList<QGraphicsItem *> stacked = items(
+					QRectF(-1e9, -1e9, 2e9, 2e9), Qt::IntersectsItemBoundingRect,
+					Qt::AscendingOrder);
+		for (int i = 0 ; i < stacked.size() ; ++i)
+			stack_rank.insert(stacked.at(i), i);
 	}
-
-	if (!list_images.isEmpty()) {
-		auto dom_images = document.createElement(QStringLiteral("images"));
-		for (auto dii : list_images) {
-			dom_images.appendChild(dii->toXml(document));
-		}
-		dom_root.appendChild(dom_images);
-	}
-
-	if (!list_shapes.isEmpty()) {
-		auto dom_shapes = document.createElement(QStringLiteral("shapes"));
-		for (auto dii : list_shapes) {
-			dom_shapes.appendChild(dii -> toXml(document));
-		}
-		dom_root.appendChild(dom_shapes);
-	}
-
-	if (table_vector.size()) {
-		auto tables = document.createElement(QStringLiteral("tables"));
-		for (auto table : table_vector) {
-			tables.appendChild(table->toXml(document));
-		}
-		dom_root.appendChild(tables);
-	}
+	appendInStackingOrder(document, dom_root, QStringLiteral("inputs"), list_texts, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("images"), list_images, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("shapes"), list_shapes, stack_rank);
+	appendInStackingOrder(document, dom_root, QStringLiteral("tables"), table_vector, stack_rank);
 
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
@@ -1443,6 +1528,14 @@ Terminal* findTerminal(int conductor_index,
 
 				return terminal;
 			}
+				//The uuid a project gave a terminal on opening is worked out
+				//from where the terminal is in its symbol: if the symbol's
+				//definition has since been replaced by one whose terminals
+				//carry other uuids, the terminal at that place is still it.
+			for (auto terminal: element->terminals()) {
+				if (terminal->derivedUuid() == terminal_uuid)
+					return terminal;
+			}
 			qDebug() << "Diagram::fromXml() : "
 				 << terminal_index
 				 << ":"
@@ -1549,10 +1642,14 @@ bool Diagram::fromXml(QDomElement &document,
 		m_conductors_autonum_name = root.attribute(QStringLiteral("conductorAutonum"));
 
 			// Load Freeze New Element
-		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement")).toInt();
+			// Written as "true"/"false" by toXml(), so compare the text:
+			// toInt() of either word is 0.
+		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement"))
+				== QLatin1String("true");
 
 			// Load Freeze New Conductor
-		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor")).toInt();
+		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor"))
+				== QLatin1String("true");
 
 			// Load cabinet layout
 		m_cabinet_layout_enabled =
@@ -1679,9 +1776,50 @@ bool Diagram::fromXml(QDomElement &document,
 			delete nvel_elmt;
 			qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
 		} else {
+				//A symbol saved without a uuid got a random one from
+				//Element::fromXml(): a different identity on every load,
+				//written out on the next save. Derive it instead from what
+				//the symbol is and where it sits on its folio -- never from
+				//the folio's index, so inserting or moving a folio does not
+				//change it. Only for a folio being loaded: a paste renews
+				//uuids anyway.
+			if (consider_informations && m_project
+				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+				nvel_elmt->setUuid(m_project->derivedItemUuid(
+									   QStringLiteral("element"),
+									   QStringList{type_id,
+												   element_xml.attribute(QStringLiteral("x")),
+												   element_xml.attribute(QStringLiteral("y")),
+												   element_xml.attribute(QStringLiteral("orientation"))}
+									   .join(QLatin1Char('\n'))));
+			}
+			ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
 			added_elements << nvel_elmt;
 		}
 	}
+
+		//Texts, images and shapes written before they carried a uuid (or
+		//carrying one already used on this folio, from a hand-edited file)
+		//get one derived from the folio uuid, their kind and their order in
+		//the file, so that loading the same file twice gives the same uuids.
+		//A random one would be a different identity on every load, and
+		//toXml() writes it out, which is what #754 was for conductors.
+		//Only for a folio being loaded: a paste renews them all anyway.
+	QSet<QUuid> used_uuids;
+	auto settle_uuid = [&](auto *item, const QDomElement &xml,
+						   const QString &kind, int index) {
+		const QUuid persisted(xml.attribute(QStringLiteral("uuid")));
+		if (consider_informations
+			&& (persisted.isNull() || used_uuids.contains(persisted))) {
+			item->setUuid(QUuid::createUuidV5(
+							  m_uuid,
+							  QStringLiteral("%1\n%2\n%3")
+							  .arg(kind)
+							  .arg(index)
+							  .arg(persisted.toString())));
+		}
+		used_uuids.insert(item->uuid());
+	};
 
 		// Load text
 	QList<IndependentTextItem *> added_texts;
@@ -1690,6 +1828,8 @@ bool Diagram::fromXml(QDomElement &document,
 											   QStringLiteral("input"))) {
 		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
+		settle_uuid(iti, text_xml, QStringLiteral("input"), added_texts.size());
+		ItemGroups::setGroup(iti, ItemGroups::read(text_xml));
 		addItem(iti);
 		added_texts << iti;
 	}
@@ -1701,6 +1841,8 @@ bool Diagram::fromXml(QDomElement &document,
 												QStringLiteral("image"))) {
 		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
+		settle_uuid(dii, image_xml, QStringLiteral("image"), added_images.size());
+		ItemGroups::setGroup(dii, ItemGroups::read(image_xml));
 		addItem(dii);
 		added_images << dii;
 	}
@@ -1712,6 +1854,8 @@ bool Diagram::fromXml(QDomElement &document,
 												QStringLiteral("shape"))) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
+		settle_uuid(dii, shape_xml, QStringLiteral("shape"), added_shapes.size());
+		ItemGroups::setGroup(dii, ItemGroups::read(shape_xml));
 		addItem(dii);
 		added_shapes << dii;
 	}
@@ -1757,10 +1901,7 @@ bool Diagram::fromXml(QDomElement &document,
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
 		for (auto item : added_items) {
-			items_rect = items_rect.united(
-						item->mapToScene(
-							item->boundingRect()
-							).boundingRect());
+			items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 		}
 
 		QPointF point_ = items_rect.topLeft();
@@ -1768,11 +1909,17 @@ bool Diagram::fromXml(QDomElement &document,
 						position.y() - point_.y()));
 
 			//Translate all added items
-		for (auto qgi : added_items)
+		for (auto qgi : added_items) {
 			qgi->setPos(qgi->pos() += pos_);
+		}
+	}
+	else
+	{
 	}
 
 	  // Load conductor
+	if (consider_informations)
+		m_wires_not_reconnected.clear();
 	QList<Conductor *> added_conductors;
 	for (auto f : QET::findInDomElement(root,
 										QStringLiteral("conductors"),
@@ -1785,6 +1932,33 @@ bool Diagram::fromXml(QDomElement &document,
 		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
 		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
 
+			//Keep a trace of the wire, it will be missing from the next save
+		if ((!p1 || !p2) && consider_informations)
+		{
+				//The symbol's label, else its name. For an end not found,
+				//only the uuid form of a wire says which symbol it is on.
+			auto end_label = [&f, &added_elements](const QString &index,
+												   Terminal *found) {
+				Element *element = found ? found->parentElement() : nullptr;
+				const QUuid uuid(f.attribute(QStringLiteral("element") + index));
+				for (int i = 0 ; !element && !uuid.isNull()
+								 && i < added_elements.size() ; ++i) {
+					if (added_elements.at(i)->uuid() == uuid)
+						element = added_elements.at(i);
+				}
+				if (!element)
+					return QStringLiteral("?");
+				const QString label = element->actualLabel();
+				return label.isEmpty() ? element->name() : label;
+			};
+			QString wire = QStringLiteral("%1 - %2").arg(end_label(QStringLiteral("1"), p1),
+													   end_label(QStringLiteral("2"), p2));
+			const QString num = f.attribute(QStringLiteral("num"));
+			if (!num.isEmpty() && num != QLatin1String("_"))
+				wire += QStringLiteral(" (%1)").arg(num);
+			m_wires_not_reconnected << wire;
+		}
+
 		if (p1 && p2 && p1 != p2)
 		{
 			Conductor *c = new Conductor(p1, p2);
@@ -1792,11 +1966,39 @@ bool Diagram::fromXml(QDomElement &document,
 			{
 				addItem(c);
 				c -> fromXml(f);
+					//A wire saved without a uuid got a random one that was
+					//never saved (#754), so it had no identity from one
+					//session to the next. Derive it from what it connects:
+					//the symbol and terminal at each end, sorted so the
+					//direction it was drawn in does not matter. Never its
+					//place in the file or its folio's index, so inserting or
+					//moving a folio, or saving the wires in another order,
+					//does not change it. It is saved from now on, so
+					//re-connecting the wire later keeps it; derivedItemUuid()
+					//never hands out a uuid the file already carries, so a
+					//wire later drawn on the ends it left gets another one.
+				if (consider_informations && m_project
+					&& QUuid(f.attribute(QStringLiteral("uuid"))).isNull()) {
+					auto end = [](const Terminal *t) {
+						return t->parentElement()->uuid().toString()
+								+ QLatin1Char('/') + t->stableUuid().toString();
+					};
+					QStringList ends{end(p1), end(p2)};
+					ends.sort();
+					c->setUuid(m_project->derivedItemUuid(QStringLiteral("conductor"),
+													  ends.join(QLatin1Char('\n'))));
+				}
 				added_conductors << c;
 			}
 			else
 				delete c;
 		}
+	}
+	if (consider_informations && !m_wires_not_reconnected.isEmpty()) {
+		qWarning().noquote() << "Diagram::fromXml():"
+							 << m_wires_not_reconnected.size()
+							 << "wire(s) not loaded, a terminal they join was not found:"
+							 << m_wires_not_reconnected.join(QStringLiteral(", "));
 	}
 
 		//Filling of falculatory lists
@@ -1920,6 +2122,13 @@ void Diagram::addItem(QGraphicsItem *item)
 			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->addDrawingItem(item);
+			break;
+		}
 		case CabinetLayoutReferenceItem::Type:
 		{
 			emit cabinetLayoutReferencesChanged();
@@ -1957,6 +2166,13 @@ void Diagram::removeItem(QGraphicsItem *item)
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
 			m_project->dataBase()->removeConductor(conductor);
+			break;
+		}
+		case QetShapeItem::Type:
+		case IndependentTextItem::Type:
+		case DiagramImageItem::Type:
+		{
+			m_project->dataBase()->removeDrawingItem(item);
 			break;
 		}
 		default: {break;}
@@ -2124,6 +2340,76 @@ void Diagram::selectAllTextFields()
 	}
 	blockSignals(false);
 	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::setItemGroup
+	Put @a item in @a group, or take it out of its group if @a group is
+	null, and keep its row in the project database in step.
+	@param item
+	@param group
+*/
+void Diagram::setItemGroup(QGraphicsItem *item, const QUuid &group)
+{
+	ItemGroups::setGroup(item, group);
+	if (m_project) {
+		m_project->dataBase()->itemGroupChanged(item);
+	}
+	emit itemGroupChanged();
+}
+
+/**
+	@brief Diagram::completeGroupSelection
+	Make the selection whole groups again after the user changed it with a
+	click, see ItemGroups::completeSelection(). Called from the mouse
+	handlers and, when a rubber band is released, from DiagramView -- not
+	on every selectionChanged(): code that selects items itself (export,
+	search, Tab cycling) deselects and reselects one item at a time and
+	must not have groups pulled back in behind it.
+	Left alone while a rubber band is being dragged, which reselects exactly
+	what it covers on every mouse step.
+*/
+void Diagram::completeGroupSelection()
+{
+	for (QGraphicsView *view : views()) {
+		if (!view->rubberBandRect().isNull()) {
+			return;
+		}
+	}
+
+	QList<QGraphicsItem *> previous;
+	for (const QPointer<QGraphicsObject> &item : std::as_const(m_previous_selection)) {
+		if (item) {
+			previous << item.data();
+		}
+	}
+
+		//One selectionChanged() for the whole group, not one per member:
+		//the properties dock rebuilds on each.
+	blockSignals(true);
+	const bool changed = ItemGroups::completeSelection(
+				this, previous,
+				QApplication::keyboardModifiers().testFlag(Qt::ControlModifier));
+	blockSignals(false);
+	if (changed) {
+		emit selectionChanged();
+	}
+	rememberSelection();
+}
+
+/**
+	@brief Diagram::rememberSelection
+	Keep the current selection, the "before" completeGroupSelection() needs
+	to tell a member being Ctrl+clicked off.
+*/
+void Diagram::rememberSelection()
+{
+	m_previous_selection.clear();
+	for (QGraphicsItem *item : selectedItems()) {
+		if (QGraphicsObject *object = item->toGraphicsObject()) {
+			m_previous_selection << object;
+		}
+	}
 }
 
 /**
@@ -2628,8 +2914,27 @@ void Diagram::adjustSceneRect()
 {
 	QRectF old_rect = sceneRect();
 	setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(
-			     itemsBoundingRect()));
+			     visibleItemsBoundingRect()));
 	update(old_rect.united(sceneRect()));
+}
+
+/**
+	@brief Diagram::visibleItemsBoundingRect
+	Same as QGraphicsScene::itemsBoundingRect(), but only counts items that
+	are shown. A hidden item keeps whatever position it last had: the text of
+	a single-line wire, and the wire texts hidden by "one text per potential",
+	are never positioned again and can sit far outside the drawing (#1281).
+	@return the bounding rect of the visible items, in scene coordinates
+*/
+QRectF Diagram::visibleItemsBoundingRect() const
+{
+	QRectF rect;
+	const auto scene_items = items();
+	for (QGraphicsItem *item : scene_items) {
+		if (item->isVisible())
+			rect |= item->sceneBoundingRect();
+	}
+	return rect;
 }
 
 /**
@@ -2705,10 +3010,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 QPointF Diagram::snapToGrid(const QPointF &p)
 {
 	QSettings settings;
-	int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-							   Diagram::xGrid).toInt();
-	int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-							   Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
 	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
@@ -2722,6 +3025,27 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	int p_x = qRound(p.x() / xGrid) * xGrid;
 	int p_y = qRound(p.y() / yGrid) * yGrid;
 	return (QPointF(p_x, p_y));
+}
+
+/**
+	@brief Diagram::snapToTextGrid
+	Return the nearest point of p on the text grid, see TextGrid.
+	Ctrl held rounds to the nearest pixel instead, as snapToGrid() does.
+	@param p point to find the nearest snapped point
+	@return
+*/
+QPointF Diagram::snapToTextGrid(const QPointF &p)
+{
+	QSettings settings;
+	const qreal divisor =
+		QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
+			? 0
+			: settings.value(TextGrid::settings_key, 1).toReal();
+
+	return TextGrid::snap(p,
+						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
+						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
+						  divisor);
 }
 
 

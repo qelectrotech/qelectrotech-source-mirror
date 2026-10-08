@@ -172,7 +172,7 @@ void ArcEditor::updateArcS()
 		if (value != arc->property("startAngle"))
 		{
 			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "startAngle", arc->property("startAngle"), value);
-			undo->setText("Modifier l'angle de depart d'un arc");
+			undo->setText(tr("Modifier l'angle de depart d'un arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}
@@ -197,7 +197,7 @@ void ArcEditor::updateArcA()
 		if (value != arc->property("spanAngle"))
 		{
 			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "spanAngle", arc->property("spanAngle"), value);
-			undo->setText("Modifier l'angle d'un arc");
+			undo->setText(tr("Modifier l'angle d'un arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}
@@ -240,7 +240,7 @@ void ArcEditor::updateRect()
 		if (rect != part->property("rect"))
 		{
 			auto undo= new QPropertyUndoCommand(ellipse, "rect", ellipse->property("rect"), rect);
-			undo->setText("Modifier un arc");
+			undo->setText(tr("Modifier un arc"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}

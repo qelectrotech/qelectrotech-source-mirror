@@ -271,6 +271,22 @@ mkdir build && cd build
 cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
+
+If `libbacktrace` is installed in your MSYS2 environment, pass the following
+cached CMake variables when configuring. They are only necessary in that
+case, because `FindBacktrace` needs them to locate the library:
+
+```sh
+cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release \
+    -DBacktrace_INCLUDE_DIR=/c/msys64/clang64/include \
+    -DBacktrace_LIBRARY=/c/msys64/clang64/lib/libbacktrace.a
+```
+
+`Backtrace_INCLUDE_DIR` must point to the directory containing `backtrace.h`,
+and `Backtrace_LIBRARY` to the `libbacktrace.a` file. The paths above are the
+usual locations for the MSYS2 `clang64` environment; adjust them if your
+installation uses a different prefix.
+
 (KF6 isn't packaged in MSYS2 either, hence `-DBUILD_WITH_KF=OFF` again.)
 
 Using the Qt Online Installer's bundled MinGW kit instead: point
@@ -347,3 +363,20 @@ and running it concurrently with the normal `lrelease` compilation step (as
 would happen under `-j`/parallel builds) can corrupt a `.ts` file mid-write,
 causing `lrelease` to fail with "Premature end of document". Run it on its
 own, review the diff, and commit the updated `.ts` files separately.
+
+The strings in the code are French, so `lang/qet_fr.ts` is the source
+language's own file. After `update_translations`, run
+
+```sh
+python3 misc/i18n/mirror_source_language.py lang/qet_fr.ts
+```
+
+before committing: it copies every new French source string into its own
+translation, so `qet_fr.qm` stays complete and French wording can later be
+corrected in the `.ts` alone, without changing the key that the other
+languages are attached to. Forgetting it breaks nothing (an empty entry
+falls back to the code text); `--check` reports whether a run is needed.
+A French correction typed into `qet_fr.ts` is lost like any other
+translation when the code string is reworded; the vanished entry keeps the
+old text for recovery. Never add `-removeidentical` to the `lrelease`
+options: it would strip these entries again.

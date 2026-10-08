@@ -17,6 +17,8 @@
 */
 #include "contactgroupselectiondialog.h"
 
+#include "../qet.h"
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QTableWidget>
@@ -207,6 +209,8 @@ ContactGroupSelectionDialog::ContactGroupSelectionDialog(
 			accept();
 		}
 	});
+
+	QET::trackDialogGeometry(this);
 }
 
 int ContactGroupSelectionDialog::selectedIndex() const

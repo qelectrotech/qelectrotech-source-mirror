@@ -28,6 +28,8 @@
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
+#include "wirehops.h"
+#include "wiringrules.h"
 #include "diagram.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -36,9 +38,15 @@
 #endif
 
 #include <QHash>
+#include <QSet>
+#include <QUuid>
+#include <QVector>
 #include <QFuture>
 
+#include <array>
+
 class Diagram;
+class Element;
 class ElementsLocation;
 class QETResult;
 class TitleBlockTemplate;
@@ -107,6 +115,7 @@ class QETProject : public QObject
 		ProjectPropertiesHandler& projectPropertiesHandler();
 		projectDataBase *dataBase();
 		QUuid uuid() const;
+		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 		int folioIndex(const Diagram *) const;
@@ -125,6 +134,10 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+
+		/// Number of crash-recovery snapshots kept per project, written in
+		/// turn by writeBackup(), so one bad write cannot replace the only copy
+		static constexpr int BackupGenerations = 3;
 
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
@@ -169,6 +182,34 @@ class QETProject : public QObject
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
 
+			//Identity of the element numbering schemes. The title is the
+			//name shown to the user and the lookup key of the API; the uuid
+			//is what an element's ELMT_FORMULA_ID refers to, so a scheme can
+			//be renamed or edited without its elements losing track of it.
+		void addElementAutoNum(const QString &key,
+							   const NumerotationContext &context,
+							   const QUuid &id);
+		QUuid elementAutoNumId(const QString &title) const;
+		QString elementAutoNumTitle(const QUuid &id) const;
+		bool renameElementAutoNum(const QString &old_title, const QString &new_title);
+		QString elementAutoNumNameClash(const QString &name,
+										const QString &ignored_title = QString()) const;
+		static QString normalizedAutoNumName(const QString &name);
+		QVector<Element *> elementsUsingElementAutoNum(const QString &title) const;
+
+		/**
+		 * @brief Renumber existing elements by element autonumbering scheme.
+		 *
+		 * Elements follow a scheme by its uuid (QETInformation::ELMT_FORMULA_ID),
+		 * see elementsUsingElementAutoNum().
+		 *
+		 * If @p scheme_title is empty, all schemes are renumbered.
+		 * If @p scheme_title is non-empty, only that scheme is renumbered.
+		 *
+		 * The operation is undoable.
+		 */
+		void renumberElementsBySchemeTitle(const QString &scheme_title = QString());
+
 			//Element
 		void freezeExistentElementLabel(bool freeze, int from, int to);
 		void freezeNewElementLabel(bool freeze, int from, int to);
@@ -186,6 +227,13 @@ class QETProject : public QObject
 		bool autoElement () const;
 		bool autoFolio () const;
 		void setAutoConductor (bool ac);
+		WireHops::Mode wireHops() const;
+		void setWireHops(WireHops::Mode mode);
+		bool uprightSymbolTexts() const;
+		void setUprightSymbolTexts(bool upright);
+		WiringRules::Settings wiringRules() const;
+		WiringRules::Settings projectWiringRules() const;
+		void setWiringRules(const WiringRules::Settings &rules);
 		void setAutoBreakConductor (bool abc);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
@@ -205,6 +253,7 @@ class QETProject : public QObject
 		bool projectWasModified();
 		bool projectOptionsWereModified();
 		DiagramContext projectProperties();
+		DiagramContext projectWideProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
 
@@ -252,7 +301,26 @@ class QETProject : public QObject
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
-		void undoStackChanged (bool a) {if (!a) setModified(true);}
+		/* Deliberately does NOT touch m_modified: m_modified /
+		 * setModified() track project-OPTIONS changes only (see
+		 * projectOptionsWereModified()), which have no undo
+		 * entry and so must stay set until an explicit write().
+		 * Diagram-content changes are tracked by the undo
+		 * stack's own clean index instead, and projectWasModified()
+		 * already ORs the two together -- that combined value is
+		 * what actually answers "does this project have unsaved
+		 * changes", so re-derive and broadcast it here on every
+		 * clean/dirty transition (covering, in particular, an
+		 * Undo that walks the stack back to its clean index).
+		 * Latching m_modified itself to the undo stack's dirty
+		 * state, the way this slot did before, is a one-way trap:
+		 * cleanChanged(true) would never come back through here
+		 * to un-set it, so a plain content edit stayed marked as
+		 * unsaved even after being fully undone. */
+		void undoStackChanged (bool /*a*/) {
+			emit projectModified(this, projectWasModified());
+			emit projectInformationsChanged(this);
+		}
 
 	private:
 		void readProjectXml(QDomDocument &xml_project);
@@ -262,10 +330,16 @@ class QETProject : public QObject
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
 		void readTerminalStripXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
+		void readWireHopsXml(QDomDocument &xml_project);
+		void readSymbolTextsXml(QDomDocument &xml_project);
+		void readWiringRulesXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
 		void writeUsageXml(QDomElement &);
+		void writeWireHopsXml(QDomElement &);
+		void writeSymbolTextsXml(QDomElement &);
+		void writeWiringRulesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
 		void writeBackup();
@@ -278,6 +352,8 @@ class QETProject : public QObject
 	private:
 			/// When false, writeBackup() is a no-op (set by the headless CLI)
 		static bool m_backup_enabled;
+			/// Something changed since the last backup, see writeBackup()
+		bool m_backup_needed = true;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
@@ -319,8 +395,19 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> m_folio_autonum;
 			/// Element Auto Numbering
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
+			/// Title -> uuid of each element numbering scheme
+		QHash <QString, QUuid> m_element_autonum_id;
 		QString m_current_element_autonum;
+			/// True when the loaded file had element numbering schemes
+			/// saved without an id (written before ids existed)
+		bool m_legacy_element_autonums = false;
+		void linkElementsToElementAutoNums();
 		bool m_auto_conductor = true;
+		WireHops::Mode m_wire_hops = WireHops::Mode::None;
+			/// Texts drawn in a turned symbol stay horizontal (on for a new
+			/// project, off for one saved without it), see uprightSymbolTexts()
+		bool m_upright_symbol_texts = false;
+		WiringRules::Settings m_wiring_rules;
 	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;
@@ -328,8 +415,12 @@ class QETProject : public QObject
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		QFuture<bool> m_backup_future;
-		KAutoSaveFile m_backup_file;
+			/// Crash-recovery snapshots, written in turn by writeBackup()
+		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
+		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
+		QHash<QString, int> m_derived_uuid_keys;
+		QSet<QUuid> m_saved_item_uuids;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
 

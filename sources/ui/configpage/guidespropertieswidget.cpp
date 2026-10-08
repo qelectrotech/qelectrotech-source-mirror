@@ -96,7 +96,8 @@ void GuidesPropertiesWidget::addGuide() {
 	colorBtn->setStyleSheet(QString("background-color: %1; color: white; font-weight: bold;").arg(defaultColor.name()));
 
 	connect(colorBtn, &QPushButton::clicked, [this, colorBtn]() {
-		QColor c = QColorDialog::getColor(colorBtn->property("color").value<QColor>(), this);
+		QColor c = QColorDialog::getColor(colorBtn->property("color").value<QColor>(), this,
+									 QString(), QColorDialog::DontUseNativeDialog);
 		if (c.isValid()) {
 			colorBtn->setProperty("color", c);
 			colorBtn->setStyleSheet(QString("background-color: %1; color: white; font-weight: bold;").arg(c.name()));

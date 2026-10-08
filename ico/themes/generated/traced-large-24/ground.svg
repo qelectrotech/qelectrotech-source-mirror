@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <rect x="2" y="7" width="17" height="3" style="fill:#009300"/>
+  <polyline points="11,9 17.2,19.3" style="fill:none;stroke:#009300;stroke-width:2;stroke-linejoin:miter;stroke-linecap:butt"/>
+  </g>
+</svg>

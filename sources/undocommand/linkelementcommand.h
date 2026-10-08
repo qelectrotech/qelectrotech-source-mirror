@@ -38,6 +38,7 @@ class LinkElementCommand : public QUndoCommand
 		bool mergeWith(const QUndoCommand *other) override;
 
 		static bool isLinkable (Element *element_a, Element *element_b, bool already_linked = false);
+		static bool reportLinkNeedsPotentialChoice(Element *element_a, Element *element_b);
 
 		void setLink (const QList<Element *>& element_list);
 		void setLink (Element *element_);

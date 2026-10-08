@@ -5,6 +5,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetinformation.h"
+#include "../qet.h"
 #include "ui_compositetexteditdialog.h"
 
 #include <utility>
@@ -15,6 +16,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	m_text(text)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
@@ -31,6 +33,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, bool report, QWid
 	ui(new Ui::CompositeTextEditDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
@@ -75,9 +78,9 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 	}
 }
 
-void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
+void CompositeTextEditDialog::on_m_info_cb_activated(int index)
 {
-	Q_UNUSED(arg1)
+	Q_UNUSED(index)
 	ui->m_plain_text_edit->insertPlainText(ui->m_info_cb->currentData().toString());
 }
 

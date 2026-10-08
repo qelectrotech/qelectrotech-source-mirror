@@ -21,6 +21,7 @@
 #include "../qetproject.h"
 #include "../qetxml.h"
 #include "elementslocation.h"
+#include "terminaluuids.h"
 
 /**
 	@brief XmlElementCollection::XmlElementCollection
@@ -127,9 +128,13 @@ XmlElementCollection::XmlElementCollection(const QDomElement &dom_element,
 	QObject(project),
 	m_project(project)
 {
-	if (dom_element.tagName() == "collection")
+	if (dom_element.tagName() == "collection") {
 		m_dom_document.appendChild(m_dom_document.importNode(
 						   dom_element, true));
+			//Before any folio is built from these symbols, so that their
+			//terminals carry the uuid the next save writes
+		TerminalUuids::fillMissing(root());
+	}
 	else
 		qDebug() << "XmlElementCollection : tagName of dom_element is not collection";
 }
@@ -152,6 +157,16 @@ QDomElement XmlElementCollection::root() const
 */
 QDomElement XmlElementCollection::importCategory() const
 {
+		//Found by name: a project may hold other top-level categories,
+		//and before the "import" one (lmdg.qet has "k_elem" first). Every
+		//lookup of an imported element is under "import/", so filing it
+		//anywhere else made the next placement of the same symbol fail.
+	for (QDomElement category = root().firstChildElement("category") ;
+		 !category.isNull() ;
+		 category = category.nextSiblingElement("category")) {
+		if (category.attribute("name") == QLatin1String("import"))
+			return category;
+	}
 	return root().firstChildElement("category");
 }
 
@@ -869,6 +884,15 @@ ElementsLocation XmlElementCollection::copyDirectory(
 		created_location.setPath(destination.projectCollectionPath() % "/" % new_dir_name);
 	}
 
+		//The symbols of the replaced directory keep their terminal uuids,
+		//see TerminalUuids::keep()
+	if (!element.isNull()) {
+		QDomElement new_dir_dom = directory(created_location.collectionPath(false));
+		if (!new_dir_dom.isNull()) {
+			TerminalUuids::keepInDirectory(element, new_dir_dom);
+		}
+	}
+
 	emit directorieAdded(created_location.collectionPath(false));
 	return created_location;
 }
@@ -914,6 +938,7 @@ ElementsLocation XmlElementCollection::copyElement(
 				    % "/" % new_elmt_name);
 	bool removed = false;
 	if (!element.isNull()) {
+		TerminalUuids::keep(element, elmt_dom);
 		element.parentNode().removeChild(element);
 		removed = true;
 	}

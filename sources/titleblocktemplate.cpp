@@ -19,6 +19,7 @@
 
 #include "NameList/nameslist.h"
 #include "createdxf.h"
+#include "diagram.h"
 #include "qet.h"
 #include "qetapp.h"
 // uncomment the line below to get more debug information
@@ -26,6 +27,7 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <algorithm>
 /**
 	@brief TitleBlockTemplate::TitleBlockTemplate
 	Constructor
@@ -1589,8 +1591,10 @@ void TitleBlockTemplate::render(QPainter &painter,
 	int titleblock_height = height();
 
 	painter.save();
-		//Setup the QPainter
-	QPen pen(Qt::black);
+		//Setup the QPainter - use a color that contrasts with the background
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(ink);
 	painter.setPen(pen);
 
 	// draw the titleblock border
@@ -1642,12 +1646,16 @@ void TitleBlockTemplate::render(QPainter &painter,
 	Width of the titleblock to render
 	@param file_path :
 	@param color :
+	@param dxf_transform :
+	Applied to every DXF point after the title block is laid out, as the
+	QPainter is rotated for a title block at the right of the folio
 */
 void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 				   const DiagramContext &diagram_context,
 				   int titleblock_width,
 				   QString &file_path,
-				   int color) const
+				   int color,
+				   const QTransform &dxf_transform) const
 {
 	QList<int> widths = columnsWidth(titleblock_width);
 
@@ -1659,12 +1667,13 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 			*Createdxf::yScale;
 	double recWidth  = title_block_rect.width()  * Createdxf::xScale;
 	double recHeight = title_block_rect.height() * Createdxf::yScale;
-	Createdxf::drawRectangle(file_path,
-				 xCoord,
-				 yCoord,
-				 recWidth,
-				 recHeight,
-				 color);
+	Createdxf::drawPolyline(file_path,
+				dxf_transform.map(QPolygonF(QRectF(xCoord,
+								  yCoord,
+								  recWidth,
+								  recHeight))),
+				color,
+				true);
 
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
@@ -1698,7 +1707,10 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 			y = yCoord + recHeight - h - y*Createdxf::yScale;
 			w *= Createdxf::xScale;
 
-			Createdxf::drawRectangle(file_path, x, y, w, h, color);
+			Createdxf::drawPolyline(file_path,
+						dxf_transform.map(QPolygonF(QRectF(x, y, w, h))),
+						color,
+						true);
 			if (cells_[i][j] -> type() == TitleBlockCell::TextCell)
 			{
 				QString final_text =
@@ -1711,7 +1723,8 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 						  y,
 						  w,
 						  h,
-						  color);
+						  color,
+						  dxf_transform);
 			}
 		}
 	}
@@ -1737,7 +1750,9 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 {
 	// draw the border rect of the current cell
 	QPen pen(QBrush(), 1, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
-	pen.setColor(Qt::black);
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	pen.setColor(ink);
 	painter.setPen(pen);
 	painter.drawRect(cell_rect);
 
@@ -1813,14 +1828,46 @@ QString TitleBlockTemplate::interpreteVariables(
 		const QString &string,
 		const DiagramContext &diagram_context) const
 {
+	// A variable nobody has given a value to yet -- e.g. one just added to
+	// the template, which is not in the folio's Custom tab until its
+	// properties are opened (#1113) -- must render blank rather than as its
+	// own name, the same as an auto-added but unset one already does (#973).
+	// Collect those from the template text before substituting, so a value
+	// that happens to contain "%something" is never touched.
+	// A bare "%name" is unset only if no key is a prefix of it, because the
+	// substitution below replaces "%key" wherever it appears.
+	static const QRegularExpression rx(
+		QStringLiteral("%\\{([a-z0-9_-]+)\\}|%([a-z0-9_-]+)"));
+	const QStringList keys =
+		diagram_context.keys(DiagramContext::DecreasingLength);
+	QStringList unset;
+	auto it = rx.globalMatch(string);
+	while (it.hasNext()) {
+		const QRegularExpressionMatch m = it.next();
+		const QString name = m.captured(1).isEmpty()
+				? m.captured(2) : m.captured(1);
+		bool known = diagram_context.contains(name);
+		if (!known && m.captured(1).isEmpty()) {
+			for (const QString &key : keys) {
+				if (name.startsWith(key)) { known = true; break; }
+			}
+		}
+		if (!known) unset << m.captured(0);
+	}
+
 	QString interpreted_string = string;
-	foreach (QString key,
-		 diagram_context.keys(DiagramContext::DecreasingLength)) {
+	foreach (QString key, keys) {
 		interpreted_string.replace("%{" % key % "}",
 					   diagram_context[key].toString());
 		interpreted_string.replace("%" % key,
 					   diagram_context[key].toString());
 	}
+	std::sort(unset.begin(), unset.end(),
+		  [](const QString &a, const QString &b) {
+			return a.length() > b.length();
+		  });
+	for (const QString &placeholder : unset)
+		interpreted_string.remove(placeholder);
 	return(interpreted_string);
 }
 
@@ -1829,7 +1876,7 @@ QString TitleBlockTemplate::interpreteVariables(
 	Get list of variables
 	@return The list of string with variables
 */
-QStringList TitleBlockTemplate::listOfVariables()
+QStringList TitleBlockTemplate::listOfVariables() const
 {
 	QStringList list;
 	// Match both the braced "%{name}" form and the bare "%name" form
@@ -1929,6 +1976,7 @@ void TitleBlockTemplate::renderTextCell(QPainter &painter,
 	@param w
 	@param h
 	@param color
+	@param dxf_transform : see renderDxf()
 */
 void TitleBlockTemplate::renderTextCellDxf(
 		QString &file_path,
@@ -1938,7 +1986,8 @@ void TitleBlockTemplate::renderTextCellDxf(
 		qreal y,
 		qreal w,
 		qreal h,
-		int color) const
+		int color,
+		const QTransform &dxf_transform) const
 {
 	if (text.isEmpty()) return;
 	QFont text_font = TitleBlockTemplate::fontForCell(cell);
@@ -1988,32 +2037,64 @@ void TitleBlockTemplate::renderTextCellDxf(
 	}
 
 	//painter.setFont(text_font);
-	qreal ratio = 1.0;
 
-	if (cell.hadjust)
+		//A cell can hold several lines, which the screen shows one under the
+		//other (QPainter::drawText()). A DXF TEXT is a single line, and a line
+		//break inside one breaks the file (FINDINGS F052), so each line gets
+		//its own, stacked as the cell's vertical alignment says: the first at
+		//y1 when aligned to the top, the last at y1 when aligned to the
+		//bottom, the block centred on y1 otherwise. Spacing as the diagram
+		//texts' DXF export: 1.6 times the text height. A single line is
+		//written exactly as before.
+	const QStringList lines = text.split(QRegularExpression(QStringLiteral("\r\n|\r|\n")));
+	const qreal line_spacing = textHeight * Createdxf::yScale * 1.6;
+	const int last = lines.size() - 1;
+	const qreal rotation = qRadiansToDegrees(
+				qAtan2(dxf_transform.m12(), dxf_transform.m11()));
+	for (int i = 0 ; i < lines.size() ; ++i)
 	{
-	// Scale font width to fit string in cell width w
-	// As DXF font aspect ratio is implementation dependent we add a fudge-factor based on tests with AutoCAD
-		int len = text.length() * textHeight * Createdxf::xScale * 1.2;
+		const QString &line = lines.at(i);
+		if (line.isEmpty()) continue;
 
-		if(len > w)
-			ratio = (w/len);
+		qreal offset; // upward, from y1
+		if (vAlign == 3)
+			offset = -i * line_spacing;
+		else if (vAlign == 2)
+			offset = (last / 2.0 - i) * line_spacing;
+		else
+			offset = (last - i) * line_spacing;
+
+		qreal ratio = 1.0;
+
+		if (cell.hadjust)
+		{
+		// Scale font width to fit string in cell width w
+		// As DXF font aspect ratio is implementation dependent we add a fudge-factor based on tests with AutoCAD
+			int len = line.length() * textHeight * Createdxf::xScale * 1.2;
+
+			if(len > w)
+				ratio = (w/len);
+		}
+
+		// x offset value below currently set heuristically based on appearance...
+		const QPointF insert = dxf_transform.map(
+					QPointF(x - 2*Createdxf::xScale, y1 + offset));
+		const QPointF align = dxf_transform.map(QPointF(x2, y1 + offset));
+		Createdxf::drawTextAligned(
+					file_path,
+					line,
+					insert.x(),
+					insert.y(),
+					textHeight*Createdxf::yScale,
+					rotation,
+					0,
+					hAlign,
+					vAlign,
+					align.x(),
+					align.y(),
+					ratio,
+					color);
 	}
-
-	// x offset value below currently set heuristically based on appearance...
-	Createdxf::drawTextAligned(
-				file_path,
-				text,
-				x - 2*Createdxf::xScale,
-				y1,
-				textHeight*Createdxf::yScale,
-				0,
-				0,
-				hAlign,
-				vAlign,
-				x2,
-				ratio,
-				color);
 }
 
 /**

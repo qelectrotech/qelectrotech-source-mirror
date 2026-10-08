@@ -91,15 +91,18 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
 	@param titleblock_width
 	@param file_path
 	@param color
+	@param dxf_transform : see TitleBlockTemplate::renderDxf()
 */
 void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect,
 					   int titleblock_width,
 					   QString &file_path,
-					   int color) {
+					   int color,
+					   const QTransform &dxf_transform) {
 	if (!m_titleblock_template) return;
 	m_titleblock_template -> renderDxf(title_block_rect,
 					   m_context,
 					   titleblock_width,
-					   file_path, color);
+					   file_path, color,
+					   dxf_transform);
 }
 

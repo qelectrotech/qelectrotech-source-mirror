@@ -18,6 +18,7 @@
 #include "qetapp.h"
 
 #include "configdialog.h"
+#include "qet.h"
 #include "ui/configpage/configpages.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
@@ -27,7 +28,9 @@
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetpalette.h"
+#include "qetstyle.h"
 #include "utils/qetutils.h"
+#include "utils/configprofile.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -38,9 +41,19 @@
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
 #include "ui/configpage/shortcutsconfigpage.h"
+#include "ui/configpage/gesturesconfigpage.h"
+#include "ui/configpage/shortcutbarconfigpage.h"
+#include "ui/configpage/toolbarsconfigpage.h"
+#include "ui/configpage/toolbarcommandsconfigpage.h"
+#include "ui/customizedialog.h"
+#include <QTabWidget>
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#ifdef QET_SPACEMOUSE_SUPPORT
+#	include "spacemouse/spacemouselistener.h"
+#	include "ui/configpage/spacemouseconfigpage.h"
+#endif
 #include "logging/qetlogger.h"
 #include "logging/ui/diagnosticsreportdialog.h"
 
@@ -48,15 +61,22 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QSettings>
+#include <QStyleFactory>
 #include <QStyleHints>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
+#include "ui/backuprestoredialog.h"
+
+#include <algorithm>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -124,6 +144,7 @@ QETApp::QETApp() :
 	QET::Icons::initIcons();
 	initFonts();
 	initStyle();
+	QET::loadCustomColors();
 	initSplashScreen();
 	initSystemTray();
 
@@ -159,8 +180,25 @@ QETApp::QETApp() :
 	if (m_splash_screen) {
 		m_splash_screen -> hide();
 	}
+    
+#ifdef QET_SPACEMOUSE_SUPPORT
+		//Always safe to construct: it silently does nothing when spacenavd
+		//isn't running or no device is attached, which is the common case
+		//even in a build with this feature compiled in. See
+		//SpaceMouseListener's class comment.
+	m_space_mouse_listener = new SpaceMouseListener(this);
+#endif
 
-	checkBackupFiles();
+		//Deferred so this constructor returns before the prompts appear.
+		//checkBackupFiles() opens modal dialogs, and main() still has work to
+		//do once we return -- in particular connecting
+		//SingleApplication::receivedMessage to receiveMessage(). While those
+		//prompts were up that connection did not exist yet, so a file handed
+		//to the already-running instance during start-up was accepted by the
+		//socket and then dropped on the floor.
+	QMetaObject::invokeMethod(this, [this]() {
+		checkBackupFiles();
+	}, Qt::QueuedConnection);
 }
 
 /**
@@ -168,6 +206,7 @@ QETApp::QETApp() :
 */
 QETApp::~QETApp()
 {
+	QET::saveCustomColors();
 	m_elements_recent_files->save();
 	m_projects_recent_files->save();
 
@@ -230,6 +269,8 @@ QString QETApp::loadedQtTranslationFile()
 */
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
+	
+	m_interface_language = desired_language;
 
 	// load Qt library translations
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
@@ -622,6 +663,15 @@ QString QETApp::commonElementsDir()
 	{
 		m_common_element_dir_is_set = true;
 
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+			//A folder given on the command line, for this run, comes
+			//before the one saved in the settings.
+		if (m_overrided_common_elements_dir != QString()) {
+			m_common_element_dir = m_overrided_common_elements_dir;
+			return(m_common_element_dir);
+		}
+#endif
+
 			//Check if user define a custom path
 			//for the common collection
 		QSettings settings;
@@ -638,12 +688,6 @@ QString QETApp::commonElementsDir()
 			}
 		}
 
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		if (m_overrided_common_elements_dir != QString()) {
-			m_common_element_dir = m_overrided_common_elements_dir;
-			return(m_common_element_dir);
-		}
-#endif
 #ifndef QET_COMMON_COLLECTION_PATH
 		/* in the absence of a compilation option,
 		 *  we use the elements folder, located next to the executable binary
@@ -1803,6 +1847,85 @@ void QETApp::useSystemPalette(bool use) {
 			file.close();
 		}
 	}
+	// Widgets with their own style sheet keep the palette they were
+	// polished with; after a live light/dark switch they would stay in
+	// the old colors (see QET::Palette::refreshStyleSheets).
+	QET::Palette::refreshStyleSheets();
+}
+
+/**
+	@brief QETApp::useCustomPalette
+	Apply a user-chosen color as the application-wide palette.
+	Builds a full QPalette from \a color, keeping the system palette
+	as a fallback for roles we don't touch.
+	@param color the user-chosen base color
+*/
+void QETApp::useCustomPalette(const QColor &color) {
+	if (!color.isValid())
+		return;
+
+	// Derive readable text colors from the chosen color.
+	const bool dark = color.lightness() < 128;
+	const QColor text = dark ? QColor(220, 220, 220) : QColor(30, 30, 30);
+	const QColor disabled_text = dark ? QColor(175, 175, 175) : QColor(128, 128, 128);
+
+	// Slightly lighter/darker for button and window shading.
+	QColor button = color;
+	button = QColor::fromHslF(color.hslHueF(),
+				  color.hslSaturationF(),
+				  dark ? qMin(color.lightnessF() + 0.08, 1.0)
+				       : qMax(color.lightnessF() - 0.08, 0.0));
+	QColor light = QColor::fromHslF(color.hslHueF(),
+					color.hslSaturationF(),
+					dark ? qMin(color.lightnessF() + 0.15, 1.0)
+					     : qMax(color.lightnessF() - 0.15, 0.0));
+	QColor mid = QColor::fromHslF(color.hslHueF(),
+				     color.hslSaturationF(),
+				     dark ? qMin(color.lightnessF() + 0.04, 1.0)
+				          : qMax(color.lightnessF() - 0.04, 0.0));
+	QColor dark_c = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.04, 1.0)
+					      : qMax(color.lightnessF() - 0.12, 0.0));
+	QColor shadow = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.10, 1.0)
+					      : qMax(color.lightnessF() - 0.20, 0.0));
+
+	QPalette p;
+	// Active and Inactive get the same colors; only Disabled differs.
+	for (auto group : {QPalette::Active, QPalette::Inactive}) {
+		p.setColor(group, QPalette::Window,          color);
+		p.setColor(group, QPalette::WindowText,      text);
+		p.setColor(group, QPalette::Base,            color);
+		p.setColor(group, QPalette::AlternateBase,   button);
+		p.setColor(group, QPalette::Text,            text);
+		p.setColor(group, QPalette::Button,          button);
+		p.setColor(group, QPalette::ButtonText,      text);
+		p.setColor(group, QPalette::BrightText,      dark ? QColor(255,90,90) : Qt::white);
+		p.setColor(group, QPalette::Highlight,       QColor(30, 96, 176));
+		p.setColor(group, QPalette::HighlightedText, Qt::white);
+		p.setColor(group, QPalette::ToolTipBase,     button);
+		p.setColor(group, QPalette::ToolTipText,     text);
+		p.setColor(group, QPalette::Light,           light);
+		p.setColor(group, QPalette::Midlight,        mid);
+		p.setColor(group, QPalette::Mid,             mid);
+		p.setColor(group, QPalette::Dark,            dark_c);
+		p.setColor(group, QPalette::Shadow,          shadow);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+		p.setColor(group, QPalette::Accent,          QColor(30, 96, 176));
+#endif
+	}
+	p.setColor(QPalette::Disabled, QPalette::WindowText, disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
+
+	qApp->setPalette(p);
+	qApp->setStyleSheet(QString());
+
+	// Switch icon theme to match light/dark.
+	applyIconTheme(p);
+	QET::Palette::refreshStyleSheets();
 }
 
 /**
@@ -2106,6 +2229,13 @@ void QETApp::configureQET()
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
 	cd.addPage(new ShortcutsConfigPage());
+	cd.addPage(new ShortcutBarConfigPage());
+	cd.addPage(new GesturesConfigPage());
+	cd.addPage(new ToolbarsConfigPage());
+	cd.addPage(new ToolbarCommandsConfigPage());
+#ifdef QET_SPACEMOUSE_SUPPORT
+	cd.addPage(new SpaceMouseConfigPage());
+#endif
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent
@@ -2121,6 +2251,146 @@ void QETApp::configureQET()
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
 	cd.setParent(nullptr, cd.windowFlags());
+	emit textGridChanged();
+
+#ifdef QET_SPACEMOUSE_SUPPORT
+	if (m_space_mouse_listener) {
+		m_space_mouse_listener->reloadSettings();
+	}
+#endif
+}
+
+/**
+	@brief QETApp::customizeQET
+	Open the Customise window: the toolbar, shortcut bar, keyboard and
+	gesture pages of the configuration dialog, as tabs of one window.
+	@param tab : the tab to show first
+*/
+void QETApp::customizeQET(int tab)
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	CustomizeDialog dialog;
+		//Same reason as the configuration dialog (#527)
+	dialog.setWindowModality(Qt::ApplicationModal);
+	dialog.addPage(new ToolbarsConfigPage());
+	dialog.addPage(new ToolbarCommandsConfigPage());
+	dialog.addPage(new ShortcutBarConfigPage());
+	dialog.addPage(new ShortcutsConfigPage());
+	dialog.addPage(new GesturesConfigPage());
+	if (auto *tabs = dialog.findChild<QTabWidget *>(QStringLiteral("customizeTabs"))) {
+		tabs->setCurrentIndex(tab);
+	}
+	QET::trackDialogGeometry(&dialog);
+
+	if (parent_widget) {
+		dialog.setParent(parent_widget, dialog.windowFlags());
+	}
+	dialog.exec();
+	dialog.setParent(nullptr, dialog.windowFlags());
+}
+
+/**
+	@brief QETApp::exportConfiguration
+	Save the settings of QElectroTech to a file the user chooses, to keep
+	them as a named profile or copy them to another computer (discussion
+	#610). The file is always written in the ini format, whatever the
+	platform stores its live settings in, so a profile saved on Windows
+	loads on Linux and macOS. See ConfigProfile for the keys left out.
+*/
+void QETApp::exportConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	QString path = QFileDialog::getSaveFileName(
+				parent_widget,
+				tr("Enregistrer la configuration sous...", "dialog title"),
+				QString(),
+				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (!path.endsWith(QLatin1String(".conf"), Qt::CaseInsensitive)) {
+		path += QLatin1String(".conf");
+	}
+
+	QSettings live_settings;
+	QSettings file_settings(path, QSettings::IniFormat);
+	ConfigProfile::exportTo(live_settings, file_settings);
+
+	if (file_settings.status() != QSettings::NoError) {
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("Impossible d'enregistrer la configuration dans « %1 ».").arg(path));
+	}
+}
+
+/**
+	@brief QETApp::importConfiguration
+	Replace the settings of QElectroTech with a file saved by
+	exportConfiguration(), then close QElectroTech.
+
+	The settings are read by each part of QElectroTech when it starts, and
+	there is no signal telling all of them that a setting changed, so the
+	new settings are applied by starting QElectroTech again. That restart
+	is left to the user: a second copy started from here would find this
+	one still running, hand its arguments over to it and exit (main.cpp).
+*/
+void QETApp::importConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	const QString path = QFileDialog::getOpenFileName(
+				parent_widget,
+				tr("Charger une configuration...", "dialog title"),
+				QString(),
+				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+
+	QSettings file_settings(path, QSettings::IniFormat);
+	if (file_settings.status() != QSettings::NoError
+		|| !ConfigProfile::isProfile(file_settings))
+	{
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("« %1 » n'est pas une configuration enregistrée par QElectroTech.").arg(path));
+		return;
+	}
+
+		//Said before anything closes: once the last window is closed,
+		//QElectroTech quits by itself (checkRemainingWindows()).
+	const auto answer = QET::QetMessageBox::question(
+				parent_widget,
+				tr("Charger une configuration", "message box title"),
+				tr("Cette configuration va remplacer vos réglages actuels, sauf la "
+				   "disposition des fenêtres et la liste des fichiers récents.\n\n"
+				   "QElectroTech va ensuite se fermer. Relancez-le pour utiliser "
+				   "la nouvelle configuration.\n\n"
+				   "Voulez-vous continuer ?"),
+				QMessageBox::Yes | QMessageBox::No,
+				QMessageBox::No);
+	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+		//Asks to save any modified project, as quitQET() does. The settings
+		//are only replaced once every editor is closed, so that the editors
+		//saving their own settings on close cannot overwrite them, and a
+		//cancelled close leaves them untouched.
+	if (!closeEveryEditor()) {
+		return;
+	}
+
+	QSettings live_settings;
+	ConfigProfile::importFrom(file_settings, live_settings);
+		//~QETApp() saves the colour dialog's custom colours on exit: load
+		//the profile's into it first, or the old ones overwrite them
+	QET::loadCustomColors();
+	qApp->quit();
 }
 
 /**
@@ -2159,6 +2429,42 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 	return(widgets);
 }
 
+
+/**
+	@brief QETApp::applyDirectoryArguments
+	Apply the folder options (--common-elements-dir=, --common-tbt-dir=,
+	--config-dir=, --data-dir=, --lang-dir=) of @p arguments. Static, so
+	the headless export and --run in main() can apply them too: they
+	return before a QETApp exists.
+*/
+void QETApp::applyDirectoryArguments(const QETArguments &arguments)
+{
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	if (arguments.commonElementsDirSpecified()) {
+		overrideCommonElementsDir(arguments.commonElementsDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (arguments.commonTitleBlockTemplatesDirSpecified()) {
+		overrideCommonTitleBlockTemplatesDir(
+				arguments.commonTitleBlockTemplatesDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	if (arguments.configDirSpecified()) {
+		overrideConfigDir(arguments.configDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	if (arguments.dataDirSpecified()) {
+		overrideDataDir(arguments.dataDir());
+	}
+#endif
+
+	if (arguments.langDirSpecified()) {
+		overrideLangDir(arguments.langDir());
+	}
+}
 
 /**
 	@brief QETApp::parseArguments
@@ -2201,32 +2507,7 @@ void QETApp::parseArguments()
 	// analyze the arguments
 	// analyse les arguments
 	qet_arguments_ = QETArguments(arguments_list);
-
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-	if (qet_arguments_.commonElementsDirSpecified()) {
-		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
-	if (qet_arguments_.commonTitleBlockTemplatesDirSpecified()) {
-		overrideCommonTitleBlockTemplatesDir(
-				qet_arguments_.commonTitleBlockTemplatesDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
-	if (qet_arguments_.configDirSpecified()) {
-		overrideConfigDir(qet_arguments_.configDir());
-	}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
-	if (qet_arguments_.dataDirSpecified()) {
-		overrideDataDir(qet_arguments_.dataDir());
-	}
-#endif
-
-	if (qet_arguments_.langDirSpecified()) {
-		overrideLangDir(qet_arguments_.langDir());
-	}
+	applyDirectoryArguments(qet_arguments_);
 
 	if (qet_arguments_.printLicenseRequested()) {
 		printLicense();
@@ -2333,18 +2614,30 @@ void QETApp::initFonts()
 
 /**
 	@brief QETApp::initIconTheme
-	Register QET's icon theme "qet" (see misc/make_icon_themes.py and
-	ico/icon-themes.qrc) and make it the current theme, so
-	QIcon::fromTheme("name") resolves to QET's own icons on every
-	platform. Must run before QET::Icons::initIcons(), which looks icons
-	up by name.
+	Register QET's two icon themes ("qet" and "qet-dark", see
+	misc/make_icon_themes.py and ico/icon-themes.qrc) and pick the one
+	matching the current palette. Must run before QET::Icons::initIcons(),
+	which looks icons up by name.
 */
 void QETApp::initIconTheme()
 {
 	QStringList paths = QIcon::themeSearchPaths();
 	paths.prepend(QStringLiteral(":/ico/themes"));
 	QIcon::setThemeSearchPaths(paths);
-	QIcon::setThemeName(QStringLiteral("qet"));
+	applyIconTheme(qApp->palette());
+}
+
+/**
+	@brief QETApp::applyIconTheme
+	Select "qet-dark" for a dark palette, "qet" otherwise. Icons created
+	with QIcon::fromTheme() re-resolve on their next paint, so this can be
+	called again whenever the palette changes.
+*/
+void QETApp::applyIconTheme(const QPalette &palette)
+{
+	QIcon::setThemeName(QET::Palette::isDark(palette)
+	                    ? QStringLiteral("qet-dark")
+	                    : QStringLiteral("qet"));
 }
 
 /**
@@ -2353,6 +2646,12 @@ void QETApp::initIconTheme()
 */
 void QETApp::initStyle()
 {
+	// Wrap the running style so icons get a hover state (see qetstyle.h).
+	// The proxy keeps the base style's object name, so the Fusion checks
+	// below still see "fusion".
+	if (!qobject_cast<QETStyle *>(qApp->style()))
+		qApp->setStyle(new QETStyle(QStyleFactory::create(qApp->style()->objectName())));
+
 	initial_palette_ = qApp->palette();
 
 #ifdef Q_OS_MACOS
@@ -2371,10 +2670,17 @@ void QETApp::initStyle()
 	if (QET::Palette::styleIsFusion(qApp->style()))
 		initial_palette_ = QET::Palette::forFusion(initial_palette_);
 #endif
+	applyIconTheme(initial_palette_);
 
 	//Apply or not the system style
 	QSettings settings;
-	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	if (settings.value("usesystemcolors", true).toBool()) {
+		useSystemPalette(true);
+	} else if (settings.contains("customapplicationcolor")) {
+		useCustomPalette(QColor(settings.value("customapplicationcolor").toString()));
+	} else {
+		useSystemPalette(false);
+	}
 
 #if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	// Setting an application palette stops Qt from following the OS
@@ -2389,6 +2695,7 @@ void QETApp::initStyle()
 		initial_palette_ = scheme == Qt::ColorScheme::Dark
 		                   ? QET::Palette::fusionDark()
 		                   : QET::Palette::fusionLight();
+		applyIconTheme(initial_palette_);
 		QSettings settings;
 		useSystemPalette(settings.value("usesystemcolors", true).toBool());
 	});
@@ -2694,48 +3001,47 @@ void QETApp::checkBackupFiles()
 /**
 	@brief QETApp::offerBackupFiles
 	Ask whether to reopen the recovery files left by a previous run, and
-	open or discard them accordingly.
+	open or discard them accordingly. A project can leave several recovery
+	files, one per snapshot (@see QETProject::writeBackup): they are grouped
+	by project, and the user picks which one to reopen, the newest by default.
 	@param stale_files : the recovery files to offer
 */
 void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 {
-	QString text;
-	if(stale_files.size() == 1) {
-		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
-					   "Voulez-vous l'ouvrir ?</b><br>"));
-	} else {
-		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
-					   "Voulez-vous les ouvrir ?</b><br>"));
+		//Group the snapshots by the project they recover, newest first.
+	QHash<QString, QList<KAutoSaveFile *>> groups;
+	for (KAutoSaveFile *kasf : stale_files) {
+		groups[kasf->managedFile().path()].append(kasf);
 	}
-	for(const KAutoSaveFile *kasf : stale_files)
-	{
-#	ifdef Q_OS_WIN
-	//Remove the first character '/' before the name of the drive
-	text.append("<br>" + kasf->managedFile().path().remove(0,1));
-#	else
-	text.append("<br>" + kasf->managedFile().path());
-#	endif
+	for (auto &snapshots : groups) {
+		std::sort(snapshots.begin(), snapshots.end(),
+			[](KAutoSaveFile *a, KAutoSaveFile *b) {
+				return QFileInfo(*a).lastModified()
+					 > QFileInfo(*b).lastModified();
+			});
 	}
 
-	//Open backup file
-	if (QET::QetMessageBox::question(nullptr,
-					 tr("Fichier de restauration"),
-					 text,
-					 QMessageBox::Ok
-					 |QMessageBox::Cancel
-					 )
-			== QMessageBox::Ok)
+	BackupRestoreDialog dialog(groups, nullptr);
+	if (dialog.exec() == QDialog::Accepted)
 	{
+			//The snapshots not picked are no longer needed.
+		for (KAutoSaveFile *discarded : dialog.discardedFiles())
+		{
+			discarded->open(QIODevice::ReadWrite);
+			delete discarded;
+		}
+
+		const QList<KAutoSaveFile *> to_open = dialog.selectedFiles();
 		//If there are open editors, find those that are visible
 		if (diagramEditors().count())
 		{
 			diagramEditors().first()->setVisible(true);
-			diagramEditors().first()->openBackupFiles(stale_files);
+			diagramEditors().first()->openBackupFiles(to_open);
 		}
 		else
 		{
 			QETDiagramEditor *editor = new QETDiagramEditor();
-			editor->openBackupFiles(stale_files);
+			editor->openBackupFiles(to_open);
 		}
 	}
 	else //Clear backup file
@@ -2759,11 +3065,16 @@ void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
 void QETApp::checkCrashDump()
 {
 	QetLogger &logger = QetLogger::instance();
-	if (!logger.hasPendingCrashDump()) {
+
+	// Listed once, then used both to build the contents and to delete
+	// below. Re-listing after the dialog closes would delete a dump
+	// written while it was open, unseen -- see clearPendingCrashDump().
+	const QStringList offered = logger.pendingCrashDumpFiles();
+	if (offered.isEmpty()) {
 		return;
 	}
 
-	const QByteArray content = logger.pendingCrashDumpContents();
+	const QByteArray content = logger.pendingCrashDumpContents(offered);
 
 	DiagnosticsReportDialog dialog(
 			tr("Rapport de plantage"),
@@ -2775,7 +3086,7 @@ void QETApp::checkCrashDump()
 
 	// Offered once, then marked retrieved -- regardless of whether the
 	// user chose to save it -- so it is never offered a second time.
-	logger.clearPendingCrashDump();
+	logger.clearPendingCrashDump(offered);
 }
 
 /**
@@ -3009,3 +3320,5 @@ int QETApp::projectId(const QETProject *project) {
 	}
 	return(-1);
 }
+
+QString QETApp::m_interface_language;

@@ -20,20 +20,27 @@
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
 #include "cabinetlayoutsourcewidget.h"
+#include "diagramcontext.h"
 #include "qetmainwindow.h"
 
 #include <QActionGroup>
 #include <QCloseEvent>
 #include <QDir>
 #include <QMdiArea>
+#include <QPointer>
 #include <QSignalMapper>
 #include <QUndoGroup>
+
+class QToolButton;
+class QLabel;
 
 class QMdiSubWindow;
 class QETProject;
 class QETResult;
 class ProjectView;
+class ConductorColorToolButton;
 class CustomElement;
+class DiagramBgColorToolButton;
 class Diagram;
 class DiagramView;
 class Element;
@@ -42,6 +49,8 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class ElementPickerPopup;
+class CommandSearchPopup;
 class AutoNumberingDockWidget;
 class TerminalNumberingDialog;
 
@@ -55,7 +64,9 @@ class QETDiagramEditor : public QETMainWindow
 	Q_OBJECT
 
         friend class TerminalStripEditorWindow;
-	
+        friend class LiveServer;
+        friend class MacroRecorder;
+
 	public:
 		QETDiagramEditor(
 				const QStringList & = QStringList(),
@@ -69,6 +80,7 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView         *viewForFile       (const QString &) const;
 		ProjectView *currentProjectView() const;
 		QETProject *currentProject() const;
+		void templateSaved(const ElementsLocation &location);
 		bool drawGrid() const;
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
 
@@ -117,14 +129,24 @@ class QETDiagramEditor : public QETMainWindow
 		void selectGroupTriggered    (QAction *action);
 		void addItemGroupTriggered   (QAction *action);
 		void selectionGroupTriggered (QAction *action);
+		void alignGroupTriggered     (QAction *action);
 		void rowColumnGroupTriggered (QAction *action);
 		void slot_updateActions();
 		void slot_updateUndoStack();
 		void slot_updateModeActions();
 		void slot_updateComplexActions();
 		void slot_updatePasteAction();
+		void pasteElementInformations();
+		void updatePasteElementInfoAction();
 		void slot_updateWindowsMenu();
 		void slot_updateAutoNumDock();
+		void insertElementFromCollection(const ElementsLocation &location);
+		void insertLastElement();
+		void rememberPlacedElement(const ElementsLocation &location);
+		void showElementPicker();
+		void showShortcutBar();
+		void rebuildToolBars();
+		bool repeatLastCommand();
 		void generateTerminalBlock();
 		void setWindowedMode();
 		void setTabbedMode();
@@ -141,6 +163,13 @@ class QETDiagramEditor : public QETMainWindow
 		void slot_reloadElementDrawings();
 #ifdef QET_HAS_SCRIPTING
 		void slot_runScript();
+		void rebuildScriptActions();
+		void updateScriptActions();
+		bool ensureScriptingEnabled(const QString &title);
+		void runStoredScript(const QString &path, const QString &name);
+		void setUpLiveIndicator();
+		void setUpMacroRecorder();
+		void macroRecorded(const QJsonObject &recording);
 #endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
@@ -164,6 +193,8 @@ class QETDiagramEditor : public QETMainWindow
 		void subWindowActivated(QMdiSubWindow *subWindows);
 
 	private slots:
+		void updateTextGridButton();
+		void updateShownKinds();
 		void selectionChanged();
 
 	public:
@@ -171,13 +202,21 @@ class QETDiagramEditor : public QETMainWindow
 		*m_edit_diagram_properties, ///< Show a dialog to edit diagram properties
 		*m_conductor_reset,         ///< Reset paths of selected conductors
 		*m_cut,                     ///< Cut selection to clipboard
-		*m_copy;                    ///< Copy selection to clipboard
+		*m_copy,                    ///< Copy selection to clipboard
+		*m_paste_element_info,      ///< Copy the information of the copied element onto the selected elements (#1375)
+		*m_insert_last_element = nullptr; ///< Place the last placed element again
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
 		m_selection_actions_group,  ///Action related to edit a selected item
+		m_align_actions_group,      ///Action related to align the selected items
 		*m_depth_action_group = nullptr;
-	
+
+		QMenu
+		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
+		*m_align_menu = nullptr,      ///< Submenu of m_align_actions_group
+		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
+
 	private:
 		QActionGroup
 		*grp_visu_sel,            ///< Action group for visualisation vs edition mode
@@ -199,11 +238,15 @@ class QETDiagramEditor : public QETMainWindow
 		*undo,				///< Cancel the latest action
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_paste_origin,		///< Same, at the copied position, cursor warped to the origin (Ctrl+Shift+V)
+		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
+		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
-		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
+		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
+		*m_cell_lines = nullptr,	///< Draw the folio column/row limits across the drawing or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
@@ -220,6 +263,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
+		*m_open_scripts_folder,        ///< Action to open the folder stored scripts are read from
+		*m_manage_scripts,             ///< Action to open the script manager
+		*m_record_macro,               ///< Action to start / stop recording a macro
 #endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
@@ -231,13 +277,26 @@ class QETDiagramEditor : public QETMainWindow
 		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
 		*m_rotate_group_selection = nullptr, ///< Rotate the selection as a whole around its shared center, instead of each item in place
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
+		*m_mirror_horizontal = nullptr, ///< Mirror the selected elements, left and right swap (#1335)
+		*m_mirror_vertical = nullptr,   ///< Mirror the selected elements, top and bottom swap (#1335)
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,
+		*m_group_selection = nullptr,   ///< Group the selected items (#1070)
+		*m_ungroup_selection = nullptr, ///< Ungroup the selected groups
 		*m_close_file,			///< Close current project file
 		*m_save_file,			///< Save current project
 		*m_save_file_as,		///< Save current project as a specific file
 		*m_find = nullptr,
 		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
+
+		///< One-click conductor colour, in the "Schéma" toolbar
+		ConductorColorToolButton *m_conductor_color_button = nullptr;
+		///< Diagram background color picker, in the "Affichage" toolbar
+		DiagramBgColorToolButton *m_background_color_button = nullptr;
+		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QToolButton *m_text_grid_button = nullptr;
+		QMenu *m_shown_kinds_menu = nullptr;		///< View > Show, kinds of items (#301)
+		QLabel *m_hidden_kinds_label = nullptr;	///< Status bar: how many kinds are hidden
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 
@@ -253,11 +312,27 @@ class QETDiagramEditor : public QETMainWindow
 		*m_qdw_cabinet_layout_source,
 		*qdw_undo; /// Dock for the undo list
 
+		ElementPickerPopup *elementPicker();
+		QAction *m_show_element_picker = nullptr;
+		QAction *m_show_shortcut_bar = nullptr;
+		QAction *m_repeat_last_command = nullptr;
+			/// What Enter on the folio repeats
+		QPointer<QAction> m_last_command;
+		void setLastCommand(QAction *action);
+		ElementPickerPopup *m_element_picker = nullptr; ///< Built on first use
+		QAction *m_command_search = nullptr;
+		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
 
 		CabinetLayoutSourceWidget *m_cabinet_layout_source_widget = nullptr;
-			
+			/// Last element placed from the collection, for "insert last"
+		ElementsLocation m_last_inserted_element;
+
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
+			/// Information of the one element on the clipboard, read when
+			/// the clipboard changes; see slot_updatePasteAction()
+		DiagramContext m_clipboard_element_info;
+		bool m_clipboard_has_element = false;
 			/// Elements panel
 		ElementsPanelWidget *pa;
 		QMenu *windows_menu;
@@ -267,7 +342,18 @@ class QETDiagramEditor : public QETMainWindow
 		*view_tool_bar       = nullptr,
 		*diagram_tool_bar    = nullptr,
 		*m_add_item_tool_bar = nullptr,
-		*m_depth_tool_bar    = nullptr;
+		*m_depth_tool_bar    = nullptr,
+		*m_scripts_tool_bar  = nullptr;	///< One button per stored script
+			/// Toolbars the user added (DiagramToolbarSettings)
+		QList<QToolBar *> m_custom_tool_bars;
+			/// The toolbar buttons that are widgets, by DiagramToolbarSettings id
+		QHash<QString, QAction *> m_toolbar_widgets;
+#ifdef QET_HAS_SCRIPTING
+		QMenu *m_scripts_menu = nullptr;
+		QList<QAction *> m_script_actions;	///< One per stored script, rebuilt when the folder changes
+		bool m_had_scripts = false;
+		QPointer<QDialog> m_script_manager;
+#endif
 		
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;

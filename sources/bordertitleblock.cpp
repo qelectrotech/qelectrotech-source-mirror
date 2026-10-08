@@ -17,7 +17,9 @@
 */
 #include "bordertitleblock.h"
 
+#include "bordercelllabels.h"
 #include "createdxf.h"
+#include "dxfexport.h"
 #include "diagram.h"
 #include "diagramposition.h"
 #include "math.h"
@@ -29,6 +31,7 @@
 
 #include <QLocale>
 #include <QPainter>
+#include <QRegularExpression>
 #include <utility>
 
 #define MIN_COLUMN_COUNT 3
@@ -505,7 +508,10 @@ void BorderTitleBlock::draw(QPainter *painter)
 {
 	//Set the QPainter
 	painter -> save();
-	QPen pen(Qt::black);
+		//Use a pen color that contrasts with the background
+	QColor border_color = Diagram::background_color.lightness() < 128
+			       ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(border_color);
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
 
@@ -530,6 +536,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 
 		//Draw the nums of columns
 	if (display_border_ && display_columns_) {
+		const bool columns_start_at_zero =
+				settings.value("border-columns_0", true).toBool();
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
 				diagram_rect_.topLeft().x()
@@ -540,23 +548,15 @@ void BorderTitleBlock::draw(QPainter *painter)
 				columns_header_height_
 			);
 			painter -> drawRect(numbered_rectangle);
-			if (settings.value("border-columns_0", true).toBool()){
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    QString("%1").arg(i - 1));
-			}else{
-			painter -> drawText(numbered_rectangle,
-					    Qt::AlignVCenter
-					    | Qt::AlignCenter,
-					    QString("%1").arg(i));
-			}
+					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
 		}
 	}
 
 		//Draw the nums of rows
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
 				diagram_rect_.topLeft().x(),
@@ -572,8 +572,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    row_string);
-			row_string = incrementLetters(row_string);
+					    BorderCellLabels::rowLabel(i));
 		}
 	}
 
@@ -708,13 +707,27 @@ void BorderTitleBlock::drawDxf(
 
 	// render the titleblock, using the TitleBlockTemplate object
 	if (display_titleblock_) {
-		//qp -> translate(titleblock_rect_.topLeft());
-		QRectF rect = titleBlockRect();
+		Createdxf::layer = DxfExport::Layer::TitleBlock;
+			//Laid out horizontally, then turned like the QPainter in
+			//draw(): a quarter turn counter-clockwise around its top
+			//left, which for a title block at the right is the bottom
+			//right of the diagram (issue #1339).
+		QRectF rect = titleBlockRectForQPainter();
+		QTransform dxf_transform;
+		if (m_edge != Qt::BottomEdge)
+		{
+			const QPointF pivot(rect.left() * Createdxf::xScale,
+					    Createdxf::sheetHeight
+					    - rect.top() * Createdxf::yScale);
+			dxf_transform.translate(pivot.x(), pivot.y());
+			dxf_transform.rotate(90);
+			dxf_transform.translate(-pivot.x(), -pivot.y());
+		}
 		m_titleblock_template_renderer -> renderDxf(rect,
 							    rect.width(),
 							    file_path,
-							    color);
-		//qp -> translate(-titleblock_rect_.topLeft());
+							    color,
+							    dxf_transform);
 	}
 
 	// Transform back to QET scale
@@ -893,10 +906,20 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// An empty page-level value means the variable was auto-added to the
 	// folio's Custom tab (#495) but never actually set by the user, so it
 	// must not shadow a real project-level value of the same name (#531).
+	//
+	// That guard has to stop short of removing the key outright, though
+	// (#973). TitleBlockTemplate::interpreteVariables() only replaces a
+	// "%name"/"%{name}" placeholder when "name" is a key in this context at
+	// all -- an unset variable that never makes it in is left as its own
+	// literal placeholder text in the rendered title block, not blank.
+	// So an empty page-level value is skipped only when a real project-level
+	// one is already there to show through; otherwise it still goes in
+	// empty, which is what makes the placeholder resolve to nothing.
 	DiagramContext context = initial_context;
 	foreach (QString key, additional_fields_.keys()) {
-		if (!additional_fields_[key].toString().isEmpty())
-			context.addValue(key, additional_fields_[key]);
+		const QVariant value = additional_fields_[key];
+		if (!value.toString().isEmpty() || !context.contains(key))
+			context.addValue(key, value);
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields
@@ -920,6 +943,46 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	context.addValue("next-folio-num", m_next_folio_num);
 
 	m_titleblock_template_renderer -> setContext(context);
+}
+
+/**
+	@brief BorderTitleBlock::cellRect
+	Convert a cell written the way the border labels it (ex : B13, the row
+	letter(s) then the column number) to its rect in scene coordinate.
+	This is the reverse of convertPosition().
+	@param cell : the cell to convert, case and surrounding spaces ignored
+	@return the rect of the cell, or a null QRectF if \a cell is not a
+	cell reference or lies outside of the border.
+*/
+QRectF BorderTitleBlock::cellRect(const QString &cell) const
+{
+	static const QRegularExpression cell_re(
+		QStringLiteral("^\\s*([A-Za-z]+)\\s*(\\d{1,4})\\s*$"));
+	const QRegularExpressionMatch match = cell_re.match(cell);
+	if (!match.hasMatch())
+		return QRectF();
+
+		//Row letters count like A..Z, AA, AB... (see incrementLetters())
+	int row = 0;
+	for (const QChar c : match.captured(1).toUpper()) {
+		row = row * 26 + (c.unicode() - 'A' + 1);
+		if (row > rows_count_)
+			return QRectF();
+	}
+
+	int column = match.captured(2).toInt();
+	QSettings settings;
+	if (settings.value("border-columns_0", true).toBool())
+		++column;
+
+	if (row < 1 || column < 1 || column > columns_count_)
+		return QRectF();
+
+	const QPointF top_left = insideBorderRect().topLeft();
+	return QRectF(top_left.x() + (column - 1) * columns_width_,
+		      top_left.y() + (row - 1) * rows_height_,
+		      columns_width_,
+		      rows_height_);
 }
 
 /**

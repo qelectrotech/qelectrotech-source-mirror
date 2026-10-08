@@ -20,6 +20,7 @@
 #include "configpage.h"
 #include "../projectpropertiesdialog.h"
 #include "../titleblockpropertieswidget.h"
+#include "../autoNum/numerotationcontext.h"
 
 #include <QDialog>
 #include <QtWidgets>
@@ -32,6 +33,7 @@ class XRefPropertiesWidget;
 class GuidesPropertiesWidget;
 class QETProject;
 class TitleBlockProperties;
+class SelectAutonumW;
 
 /**
 	@brief The NewDiagramPage class
@@ -48,6 +50,7 @@ class NewDiagramPage : public ConfigPage {
 	~NewDiagramPage() override;
 	private:
 	NewDiagramPage(const NewDiagramPage &);
+	bool eventFilter(QObject *obj, QEvent *event) override;
 public slots:
 	void changeToAutoFolioTab();
 	void setFolioAutonum(QString);
@@ -72,7 +75,25 @@ public slots:
 	XRefPropertiesWidget       *xrefpw;    ///< Widget to edit default xref properties
 	GuidesPropertiesWidget     *m_gpw;     ///< Widget to edit guides
 	TitleBlockProperties       savedTbp;   ///< Used to save current TBP and retrieve later
+	QTabWidget                *m_tab_widget;     ///< Main tab widget (stored for later access)
 
+	// auto-numbering tab data
+	struct AutoNumTab {
+		SelectAutonumW            *widget = nullptr;
+		QHash<QString, NumerotationContext> contexts;
+		QString                    prefix;
+	};
+	AutoNumTab m_autonum_conductor;
+	AutoNumTab m_autonum_element;
+	AutoNumTab m_autonum_folio;
+
+	void initAutoNumTab(AutoNumTab &tab, SelectAutonumW *w, const QString &prefix);
+	void loadAutoNumTab(AutoNumTab &tab, QSettings &settings);
+	void saveAutoNumContext(AutoNumTab &tab);
+	void removeAutoNumContext(AutoNumTab &tab);
+	void persistAutonumSettings();
+
+	static bool isPlaceholder(QComboBox *combo, const QString &name);
 };
 
 /**

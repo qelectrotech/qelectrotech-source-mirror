@@ -19,6 +19,7 @@
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qetapp.h"
+#include "../../textanchor.h"
 #include "../elementscene.h"
 #include "../../utils/qetutils.h"
 #include <QApplication>
@@ -47,7 +48,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 
 		//Option when text is displayed in multiple line
 	QTextOption option = document() -> defaultTextOption();
-	option.setAlignment(Qt::AlignHCenter);
+	option.setAlignment(m_alignment & Qt::AlignHorizontal_Mask);
 	option.setWrapMode(QTextOption::WordWrap);
 	document() -> setDefaultTextOption(option);
 }
@@ -234,7 +235,10 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
+		//The saved position is the one to keep
+	m_block_alignment = true;
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
+	m_block_alignment = false;
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	m_text_from = DynamicElementTextItem::TextFrom(
@@ -430,13 +434,23 @@ bool PartDynamicTextField::frame() const
 	return m_frame;
 }
 
+/**
+	@brief PartDynamicTextField::setTextWidth
+	Set the width of this text (-1 = automatic width). The point of the text
+	chosen by its alignment stays in place, as when the text changes: a
+	right-aligned or centred field no longer grows to the right only, and
+	undoing a width change puts it back where it was.
+	@param width
+*/
 void PartDynamicTextField::setTextWidth(qreal width) {
+	prepareAlignment();
 	this -> document() -> setTextWidth(width);
 
 		//Adjust the width, to ideal width if needed
 	if(width > 0 && document() -> size().width() > width)
 		document() -> setTextWidth(document() -> idealWidth());
 
+	finishAlignment();
 	m_text_width = document() -> textWidth();
 	emit textWidthChanged(m_text_width);
 }
@@ -462,12 +476,51 @@ void PartDynamicTextField::setPlainText(const QString &text) {
 
 void PartDynamicTextField::setAlignment(Qt::Alignment alignment) {
 	m_alignment = alignment;
+		//Lines of a multi-line text follow the horizontal alignment
+	QTextOption option = document() -> defaultTextOption();
+	option.setAlignment(m_alignment & Qt::AlignHorizontal_Mask);
+	document() -> setDefaultTextOption(option);
 	emit alignmentChanged(m_alignment);
 }
 
 Qt::Alignment PartDynamicTextField::alignment() const
 {
 	return m_alignment;
+}
+
+/**
+	@brief PartDynamicTextField::anchorPos
+	@return the anchor point of this text, in parent coordinates:
+	the point of the text chosen by the alignment (top-left, right edge,
+	centre...). For a top-left aligned text this is pos().
+	Same as DiagramTextItem::anchorPos().
+*/
+QPointF PartDynamicTextField::anchorPos() const
+{
+	return TextAnchor::pos(this, m_alignment);
+}
+
+/**
+	@brief PartDynamicTextField::setAnchorPos
+	Move this text so that its anchor point (see anchorPos()) is at anchor.
+	@param anchor : in parent coordinates
+*/
+void PartDynamicTextField::setAnchorPos(const QPointF &anchor)
+{
+	setPos(TextAnchor::itemPosFor(this, m_alignment, anchor));
+}
+
+/**
+	@brief PartDynamicTextField::setAlignmentAtAnchor
+	Change the alignment and move the text so that its new anchor point
+	is where the previous one was.
+	@param alignment
+*/
+void PartDynamicTextField::setAlignmentAtAnchor(Qt::Alignment alignment)
+{
+	const QPointF anchor = anchorPos();
+	setAlignment(alignment);
+	setAnchorPos(anchor);
 }
 
 void PartDynamicTextField::setFont(const QFont &font) {

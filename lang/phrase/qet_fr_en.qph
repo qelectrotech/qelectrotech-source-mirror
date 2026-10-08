@@ -1,0 +1,918 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="en">
+<phrase>
+    <source>Blue : Blue</source>
+    <target>Blue : Blue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>Blue : CornflowerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>Blue : DarkBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>Blue : DeepSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>Blue : DodgerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>Blue : LightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>Blue : LightSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>Blue : LightSteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>Blue : MediumBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>Blue : MidnightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>Blue : Navy</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>Blue : PowderBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>Blue : RoyalBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>Blue : SkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>Blue : SteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>Brown : Bisque</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>Brown : BlanchedAlmond</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>Brown : Brown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>Brown : Burlywood</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>Brown : Chocolate</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>Brown : Cornsilk</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>Brown : DarkGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>Brown : Goldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>Brown : Maroon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>Brown : NavajoWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>Brown : Peru</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>Brown : RosyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>Brown : SaddleBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>Brown : SandyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>Brown : Sienna</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>Brown : Tan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>Brown : Wheat</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>Cyan : Aqua</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>Cyan : Aquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>Cyan : CadetBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>Cyan : Cyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>Cyan : DarkCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>Cyan : DarkTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>Cyan : LightCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>Cyan : LightSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>Cyan : MediumTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>Cyan : PaleTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>Cyan : Teal</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>Cyan : Turquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>Gray : Black</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>Gray : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>Gray : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>Gray : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>Gray : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>Gray : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>Gray : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>Gray : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>Gray : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>Gray : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>Green : Chartreuse</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>Green : DarkGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>Green : DarkOliveGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>Green : DarkSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>Green : ForestGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>Green : Green</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>Green : GreenYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>Green : LawnGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>Green : LightGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>Green : Lime</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>Green : LimeGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>Green : MediumAquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>Green : MediumSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>Green : MediumSpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>Green : Olive</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>Green : OliveDrab</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>Green : PaleGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>Green : SeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>Green : SpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>Green : YellowGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>Orange : Coral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>Orange : DarkOrange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>Orange : Orange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>Orange : OrangeRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>Orange : Tomato</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>Pink: DeepPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>Pink: HotPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>Pink: LightPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>Pink: MediumVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>Pink: PaleVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : Pink</source>
+    <target>Pink: Pink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>Purple : BlueViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>Purple : DarkMagenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>Purple : DarkOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>Purple : DarkSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>Purple : DarkViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>Purple : Fuchsia</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>Purple : Indigo</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>Purple : Lavender</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>Purple : Magenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>Purple : MediumOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>Purple : MediumPurple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>Purple : MediumSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>Purple : Orchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>Purple : Plum</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>Purple : Purple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>Purple : SlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>Purple : Thistle</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>Purple : Violet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>Red : Crimson</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>Red : DarkRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>Red: DarkSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>Red : Firebrick</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>Red: IndianRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>Red: LightCoral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>Red: LightSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>Red : Red</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>Red: Salmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>White : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>White : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>White : Azure</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>White : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>White : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>White : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>White : Honeydew</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>White : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>White : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>White : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>White : MintCream</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>White : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>White : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>White : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>White : Snow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>White : White</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>White : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>Yellow : DarkKhaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>Yellow : Gold</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>Yellow : Khaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>Yellow : LemonChiffon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>Yellow : LightGoldenrodYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>Yellow : LightYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>Yellow : Moccasin</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>Yellow : PaleGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>Yellow : PapayaWhip</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>Yellow : PeachPuff</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>Yellow : Yellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>cabinet</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>coil</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>terminal</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>terminal strip</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>cable</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>rating</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>title block</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>champ de texte</source>
+    <target>text field</target>
+    <definition>text field</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>collection</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>conductor</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>contact</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>contactor</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>current</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>circuit breaker</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>folder</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>element</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>slave</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fil</source>
+    <target>wire</target>
+    <definition>wire</definition>
+</phrase>
+<phrase>
+    <source>folio</source>
+    <target>sheet</target>
+    <definition>sheet - one drawing of a set</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>fuse</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>grid</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>switch</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>master</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>template</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>neutral</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>parts list</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>numbering</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>phase</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>potential</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>project</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>puissance</source>
+    <target>power</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>relay</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>sheet cross-reference</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>designation</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>sheet cross-reference</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>diagram</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>cross-section</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>summary</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>voltage</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>earth</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>text</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>transformer</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <rect x="7" y="0" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="2" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="4" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="6" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="8" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="10" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="12" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="14" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="0" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="2" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="4" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="6" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="8" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="10" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="12" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="14" y="7" width="1" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <path d="M1 1H15V15H1ZM2 2V14H14V2Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="7" y="1" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="14" width="2" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="7" width="2" height="2" class="ColorScheme-Highlight" style="fill:currentColor"/>
+</svg>

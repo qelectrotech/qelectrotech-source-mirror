@@ -20,6 +20,9 @@
 
 #include <QWidget>
 
+class QCompleter;
+class QStringListModel;
+
 namespace Ui {
 	class ElementInfoPartWidget;
 }
@@ -46,16 +49,19 @@ class ElementInfoPartWidget : public QWidget
 		bool hasAcceptableInput() const;
 		void setText (const QString &);
 		void setPlaceHolderText (const QString &text);
+		void setSuggestions (const QStringList &suggestions);
 		void setFocusTolineEdit();
 		void setEnabled(bool e);
 		void setDisabled(bool d);
 		void setEraseTextVisible (bool visible);
 		void setEraseTextChecked (bool check);
 		Qt::CheckState EraseTextCheckState ()const;
+		void setMaterialButtonVisible (bool visible);
 
 	signals:
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
+		void materialButtonClicked();
 
 		//ATTRIBUTES
 	private slots:
@@ -65,6 +71,8 @@ class ElementInfoPartWidget : public QWidget
 		Ui::ElementInfoPartWidget *ui;
 		QString key_;
 		bool m_show_erase = false;
+		QCompleter *m_completer = nullptr;
+		QStringListModel *m_suggestions_model = nullptr;
 };
 
 #endif // ELEMENTINFOPARTWIDGET_H

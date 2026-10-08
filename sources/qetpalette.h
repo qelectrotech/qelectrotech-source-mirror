@@ -18,8 +18,11 @@
 #ifndef QET_PALETTE_H
 #define QET_PALETTE_H
 
+#include <QImage>
 #include <QPalette>
+#include <QPixmap>
 
+class QImage;
 class QStyle;
 
 /**
@@ -51,6 +54,31 @@ namespace QET {
 			(lightness below 128).
 		*/
 		bool isDark(const QPalette &palette);
+
+		/**
+			Invert the lightness of every pixel of \a image, keeping its hue
+			and saturation, then stretch the result between two colors: pure
+			white becomes \a sheet, pure black becomes \a ink, and a red
+			line stays red, only lighter. Made for a rendering of a white
+			sheet that has to read on a dark palette, with sheet = Base and
+			ink = Text. The image must be opaque; an image in another format
+			is converted to RGB32 first.
+		*/
+		void invertLightness(QImage &image, const QColor &sheet = Qt::black,
+		                     const QColor &ink = Qt::white);
+		/// The same colour mapping for a transparent composition layer.
+		/// Retains alpha; premultiplied input is converted to straight ARGB32.
+		void invertLightnessLayer(QImage &image, const QColor &sheet, const QColor &ink);
+
+		/**
+			The color of the grid dots on a sheet of color \a sheet: black,
+			or white on a black sheet. With \a inverted the sheet is about to
+			be shown with its lightness inverted (PaletteGraphicsView), where
+			black dots would come out as bright as the ink; the dots are then
+			a third of the way from the sheet color to black, which shows as
+			a soft gray.
+		*/
+		QColor gridDotColor(const QColor &sheet, bool inverted);
 
 		/**
 			WCAG 2 contrast ratio between two opaque colors, from 1 (equal)
@@ -87,6 +115,41 @@ namespace QET {
 			platform's accent color kept when it is readable.
 		*/
 		QPalette forFusion(const QPalette &platform);
+
+		/**
+			True when fewer than a fifth of the visible pixels are
+			saturated: black or gray line art, which is what element
+			previews and most of QET's own icons are.
+		*/
+		bool isLineArt(const QImage &image);
+
+		/**
+			The image with its lightness inverted and hue, saturation and
+			alpha kept: the darkest ink becomes light gray (220), white
+			becomes black. The rule misc/make_icon_themes.py applies when
+			it builds the dark icon theme.
+		*/
+		QImage invertedLightness(const QImage &image);
+
+		/**
+			A picture drawn for a white sheet, made to read on palette:
+			returned as is on a light palette, and with its lightness
+			inverted on a dark one when it is line art. Colored art is
+			left alone either way.
+		*/
+		QPixmap forPalette(const QPixmap &pixmap, const QPalette &palette);
+
+		/**
+			Make every widget that carries a style sheet take the current
+			application palette. QApplication::setPalette() reaches plain
+			widgets, but a widget with a style sheet keeps the palette
+			QStyleSheetStyle resolved when the sheet was applied, so after a
+			live light/dark switch it is drawn in the old colors (the folio
+			tab bar and its buttons, the element info widgets, several
+			configuration pages). Re-applying each widget's own sheet makes
+			QStyleSheetStyle resolve it again. Call after setPalette().
+		*/
+		void refreshStyleSheets();
 	}
 }
 

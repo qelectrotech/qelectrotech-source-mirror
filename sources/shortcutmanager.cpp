@@ -17,6 +17,8 @@
 */
 #include "shortcutmanager.h"
 
+#include <QAbstractButton>
+#include <QAction>
 #include <QObject>
 #include <QSettings>
 #include <QVariant>
@@ -94,6 +96,33 @@ void ShortcutManager::registerAction(QObject *target, const QString &id,
 }
 
 /**
+	@brief ShortcutManager::unregisterAction
+	Forget \a target under \a id, and the id itself once no live target is
+	left. For commands that come and go while the application runs, such
+	as a stored script deleted from its folder: without this its id stays
+	listed in the shortcut settings, the shortcut bar and command search,
+	and its first description stays fixed even after it is renamed. The
+	user's saved shortcut for the id is kept, so the command picks it up
+	again if it comes back.
+*/
+void ShortcutManager::unregisterAction(QObject *target, const QString &id)
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return;
+	}
+	QList<QPointer<QObject>> &targets = it->targets;
+	targets.erase(std::remove_if(targets.begin(), targets.end(),
+				      [target](const QPointer<QObject> &t) {
+					      return t.isNull() || t.data() == target; }),
+		      targets.end());
+	if (targets.isEmpty()) {
+		m_entries.erase(it);
+		m_order.removeAll(id);
+	}
+}
+
+/**
 	@return every registered shortcut, in registration order, along with its
 	currently effective sequence -- for display in the Shortcuts config page.
 */
@@ -108,6 +137,13 @@ QList<ShortcutManager::ShortcutInfo> ShortcutManager::allShortcuts() const
 		info.description = entry.description;
 		info.default_sequence = entry.default_sequence;
 		info.current_sequence = savedSequence(id, entry.default_sequence);
+		for (const QPointer<QObject> &target : entry.targets) {
+			if (target) {
+				info.icon = target->property("icon").value<QIcon>();
+				info.action = qobject_cast<QAction *>(target.data());
+				break;
+			}
+		}
 		list << info;
 	}
 	return list;
@@ -165,4 +201,66 @@ void ShortcutManager::resetAllToDefaults()
 	for (const QString &id : m_order) {
 		resetToDefault(id);
 	}
+}
+
+/**
+	@brief ShortcutManager::trigger
+	@param id
+	@return see the declaration's doc comment
+*/
+bool ShortcutManager::trigger(const QString &id) const
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return false;
+	}
+
+	for (const QPointer<QObject> &target : std::as_const(it->targets))
+	{
+		if (!target) {
+			continue;
+		}
+		if (auto *action = qobject_cast<QAction *>(target.data())) {
+			action->trigger();
+			return true;
+		}
+		if (auto *button = qobject_cast<QAbstractButton *>(target.data())) {
+			button->click();
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@return the QAction registered under @a id that belongs to @a owner --
+	that is, has @a owner among its ancestors -- or nullptr. Several windows
+	of the same kind each register their own action under one id, so a
+	window asking for "its" action has to say which window it is.
+	@param id
+	@param owner : the window, or nullptr for the first live action
+*/
+QAction *ShortcutManager::action(const QString &id, const QObject *owner) const
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return nullptr;
+	}
+
+	for (const QPointer<QObject> &target : std::as_const(it->targets))
+	{
+		auto *action = qobject_cast<QAction *>(target.data());
+		if (!action) {
+			continue;
+		}
+		if (!owner) {
+			return action;
+		}
+		for (const QObject *o = action->parent(); o; o = o->parent()) {
+			if (o == owner) {
+				return action;
+			}
+		}
+	}
+	return nullptr;
 }

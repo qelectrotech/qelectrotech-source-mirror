@@ -21,6 +21,9 @@
 #include "../diagramcommands.h"
 #include "../qetapp.h"
 #include "../richtext/richtexteditor_p.h"
+#include "../textanchor.h"
+#include "../utils/qetutils.h"
+#include "../QetGraphicsItemModeler/textresizehandles.h"
 
 /**
 	@brief DiagramTextItem::DiagramTextItem
@@ -194,6 +197,41 @@ Qt::Alignment DiagramTextItem::alignment() const
 }
 
 /**
+	@brief DiagramTextItem::anchorPos
+	@return the anchor point of this text, in parent coordinates:
+	the point of the text chosen by the alignment (top-left, right edge,
+	centre...). For a top-left aligned text this is pos().
+	The anchor stays in place when the text changes, see finishAlignment().
+*/
+QPointF DiagramTextItem::anchorPos() const
+{
+	return TextAnchor::pos(this, m_alignment);
+}
+
+/**
+	@brief DiagramTextItem::setAnchorPos
+	Move this text so that its anchor point (see anchorPos()) is at anchor.
+	@param anchor : in parent coordinates
+*/
+void DiagramTextItem::setAnchorPos(const QPointF &anchor)
+{
+	setPos(TextAnchor::itemPosFor(this, m_alignment, anchor));
+}
+
+/**
+	@brief DiagramTextItem::setAlignmentAtAnchor
+	Change the alignment and move the text so that its new anchor point
+	is where the previous one was.
+	@param alignment
+*/
+void DiagramTextItem::setAlignmentAtAnchor(const Qt::Alignment &alignment)
+{
+	const QPointF anchor = anchorPos();
+	setAlignment(alignment);
+	setAnchorPos(anchor);
+}
+
+/**
 	@brief DiagramTextItem::frameRect
 	@return the rect used to draw a frame around this text
 */
@@ -233,7 +271,9 @@ void DiagramTextItem::setHtml(const QString &text)
 		block = block.next();
 	}
 
-	if (m_non_left_alignment) {
+		//Room for centred or right-aligned lines, unless the user has
+		//given this text a width of its own
+	if (m_non_left_alignment && !hasUserTextWidth()) {
 		document()->setTextWidth(document()->idealWidth() + 40.0);
 	}
 }
@@ -297,6 +337,7 @@ void DiagramTextItem::focusInEvent(QFocusEvent *event)
 	
 	m_previous_html_text = toHtml();
 	m_previous_text = toPlainText();
+	refreshTextResizeHandles();
 }
 
 /**
@@ -319,6 +360,89 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
+	refreshTextResizeHandles();
+}
+
+/**
+	@brief DiagramTextItem::itemChange
+	Show or hide the resize handles with the selection and the scene.
+	@param change
+	@param value
+	@return
+*/
+QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+		//Also when the text comes back to a scene: Qt keeps it selected
+		//across removeItem()/addItem() (undoing a delete) and sends no
+		//selection change, and its handles were removed with the scene.
+	if (change == QGraphicsItem::ItemSelectedHasChanged
+		|| change == QGraphicsItem::ItemSceneHasChanged)
+		refreshTextResizeHandles();
+
+	return QGraphicsTextItem::itemChange(change, value);
+}
+
+/**
+	@brief DiagramTextItem::textResizeHandlesWanted
+	@return true when the corner handles to change the width of this text
+	should be shown. A text without a "textWidth" property never has them.
+*/
+bool DiagramTextItem::textResizeHandlesWanted() const
+{
+	return false;
+}
+
+/**
+	@brief DiagramTextItem::isEditing
+	@return true while the text itself is being typed in
+*/
+bool DiagramTextItem::isEditing() const
+{
+	return textInteractionFlags() & Qt::TextEditable;
+}
+
+/**
+	@brief DiagramTextItem::refreshTextResizeHandles
+	Create or remove the corner handles to change the width of this text,
+	according to textResizeHandlesWanted().
+	Called from itemChange() and when the edition starts or ends, not from
+	paint(): moving items from paint() left fragments behind
+	(qelectrotech#1002).
+*/
+void DiagramTextItem::refreshTextResizeHandles()
+{
+	const bool wanted = scene() && textResizeHandlesWanted();
+	if (wanted && !m_resize_handles)
+	{
+		m_resize_handles = new TextResizeHandles(this, QETUtils::graphicsHandlerSize(this));
+		connect(m_resize_handles, &TextResizeHandles::resizeFinished,
+				this, &DiagramTextItem::pushResizeCommand);
+	}
+	else if (!wanted && m_resize_handles) {
+		removeTextResizeHandles();
+	}
+}
+
+/**
+	@brief DiagramTextItem::removeTextResizeHandles
+*/
+void DiagramTextItem::removeTextResizeHandles()
+{
+	delete m_resize_handles;
+	m_resize_handles = nullptr;
+}
+
+/**
+	@brief DiagramTextItem::pushResizeCommand
+	Make the width change done with the resize handles undoable. The change
+	is already applied, live during the drag.
+*/
+void DiagramTextItem::pushResizeCommand(qreal old_width, qreal new_width,
+										QPointF old_pos, QPointF new_pos)
+{
+	if (Diagram *diagram_ = diagram())
+		diagram_->undoStack().push(new TextResizeCommand(this, old_width, new_width,
+														 old_pos, new_pos));
 }
 
 /**
@@ -366,11 +490,17 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 		if(diagram_ && m_first_move)
 			diagram_->elementsMover().beginMovement(diagram_, this);
 
+		if (diagram_ && diagram_->elementsMover().holds(this)) {
+			m_first_move = false;
+			event->accept();
+			return;
+		}
+
 		QPointF old_pos = pos();
 
 		//Set the actual pos
 		QPointF new_pos = event->scenePos() + m_mouse_to_origin_movement;
-		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
 
 
 		//Update the actual movement for other selected item

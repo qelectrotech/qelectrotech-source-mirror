@@ -1,0 +1,941 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="nl_BE">
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Contacten: NO: %1, NC: %2, wisselcontacten: %3, andere: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Contacten: NO: %1/%2, NC: %3/%4, wisselcontacten: %5/%6, andere: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl tijdens het slepen = vrije positie, zonder vastklikken aan het raster)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : modus %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; rood punt: slepen om het draaipunt te verplaatsen</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; turquoise punt: boog</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; een rand: kanteling</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Klikken: modus %1</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = handgrepen creëren</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = losmaken als polylijn</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Voegt een Béziercurve toe op het huidige blad</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>Klem %1 toevoegen</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Een punt aan een curve toevoegen</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Een curve toevoegen</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Hoek</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Hoekig</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Voorbeeld</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Hoeken van %1 afronden</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Klem 1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Klem 2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Categorie</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Dit formaat ondersteunt geen transparantie: de afbeelding wordt opgeslagen zoals ze was vóór het toepassen van de transparante kleur. Doorgaan?</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Tekstveld</target>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Klik: op oorspronkelijke grootte plaatsen. Klikken en slepen: plaatsen en formaat wijzigen. Rechtsklik: 90° draaien. Ctrl+muiswiel: formaat aanpassen.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Linkerklik: volgend punt; dubbelklik of Enter: beëindigen; rechtsklik: laatste punt annuleren</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Linkerklik: tegenoverliggende hoek plaatsen (Shift = vierkant, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerd vierkant); rechtsklik: annuleren</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Linkerklik: tegenoverliggende hoek plaatsen (Shift = cirkel, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerde cirkel); rechtsklik: annuleren</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Linkerklik: startpunt plaatsen (Ctrl = vrije positie)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Linkerklik: eindpunt plaatsen (Ctrl = vrije positie); rechtsklik: annuleren</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Linkerklik: eerste hoek plaatsen (Ctrl = middelpunt, vrije positie)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Linkerklik: eerste punt plaatsen (Ctrl = vrije positie)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Klik: hoekpunt. Klikken en slepen: curvepunt. Klik op het eerste punt: sluiten. Esc/Enter: beëindigen. Rechtsklik: laatste punt annuleren.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Klikken</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Klikken: modus %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Klik om een kleur te kiezen</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Klik op de afbeelding om een kleur toe te voegen. Pas de tolerantie van elke kleur aan met de schuifregelaar, of klik op × om ze te verwijderen.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Klik op de afbeelding om een kleur te kiezen</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Afgeronde hoeken</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Component 1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Component 2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>%1 omzetten naar Béziercurve</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>%1 omzetten naar polylijn</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Omzetten naar Béziercurve</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Omzetten naar polylijn</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Transparante kleur</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Transparante kleur...</target>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Nominale stroom</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Draaipunt verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>Beschrijving</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Afstand in pixels tussen het label en de slave-kruisverwijzing</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Afstand label - slave:</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Een transparante kleur instellen</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Een curve vervormen</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Het draaipunt van een afbeelding verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Ontgrendeld: breedte en hoogte kunnen onafhankelijk worden gewijzigd. Klik om te vergrendelen.</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Oorspronkelijke afbeelding opslaan als...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Afbeelding opslaan als...</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Fout</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Uitsluiten van de stuklijst</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>%1 roteren</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Een afbeelding draaien</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Sleep de handgrepen, of het binnenste van het kader, om het te behouden gebied aan te passen.</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Draad</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Blad</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Gesloten vorm</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Sleep %1: rotatie (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Slepen: de boog aanpassen (Ctrl = vrije positie, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Slepen: hoeken afronden (Ctrl = vrije positie)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Slepen: de curve vervormen (Ctrl = vrije positie, Alt = de raaklijn breken)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Slepen: dit punt verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Slepen: draaipunt verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Slepen: het punt verplaatsen (Ctrl = vrije positie</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Slepen: kanteling (Ctrl = vrije positie, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Slepen: kantelen (Shift = stappen van 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Slepen: draaien (Shift = stappen van 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Slepen: formaat wijzigen (Ctrl = vanuit het midden + vrije positie, Shift = verhoudingen</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Slepen: formaat wijzigen (Shift = verhoudingen behouden, Ctrl = vanuit het midden)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Slepen: het draaipunt verplaatsen (Ctrl = vrije positie)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Slepen: rotatie (Ctrl = vrije positie, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Sleep het paarse punt: hoeken afronden</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Sleep een hoek: draaien (Shift = stappen van 15°); sleep een rand: kantelen (Shift = stappen van 15°); rood punt: draaipunt verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Sleep een hoek/rand: formaat wijzigen (Ctrl = vanuit het midden, Shift = verhoudingen behouden)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Sleep een hoek/rand: formaat wijzigen (Ctrl = vanuit het midden, Shift = verhoudingen, Alt = losmaken als polylijn)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Sleep een punt: het verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Sleep een uiteinde: het verplaatsen</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Sleep een handgreep of de curve: vervormen (Alt = de raaklijn breken); Alt+sleep een hoekpunt: handgrepen creëren; rechtsklik: menu van het dichtstbijzijnde knooppunt</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Geometrie</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Hoogte</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP-afbeelding (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Afbeeldingsbestanden (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG-afbeelding (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG-afbeelding (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Bronafbeelding</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG-afbeelding (*.svg)</target>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Afbeeldingen niet inbegrepen in de DXF-export</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Kan de afbeelding niet op die locatie opslaan.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Kan de stuklijst niet opslaan in %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Kan de afbeelding niet laden.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Kanteling X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Kanteling Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>%1 kantelen</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Een afbeelding kantelen</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>De limiet voor dit hoofdelement is bereikt (Limiet: %1).
+
+Wilt u dit hulpcontact toch koppelen?</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Breedte</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Het hier gebruikte DXF-formaat (AC1006) laat niet toe afbeeldingen op te nemen. Afbeeldingen worden enkel voorgesteld door een omtrekrechthoek (positie, grootte, rotatie en kanteling behouden), zonder de inhoud van de afbeelding.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Vloeiend</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Bekabelingslijst</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Bekabelingslijst (database)</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>Locatie:</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Lengte</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>max:</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>min:</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Horizontaal spiegelen</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Horizontaal spiegelen van een afbeelding</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Horizontaal spiegelen van %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Spiegelen onmogelijk: kanteling te extreem voor deze vorm</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Verticaal spiegelen</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Verticaal spiegelen van een afbeelding</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Verticaal spiegelen van %1</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Hoek van een boog wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Hoek van een vorm wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>De hoek van een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>De kanteling van een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Kromming van %1 wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Vorm van %1 wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>De hoogte van een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>De breedte van een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Lengte van een lijn wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Grootte van een vorm wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Het type van een knooppunt wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Model</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Maximumaantal gedefinieerde hulpcontacten: niet gedefinieerd
+</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Notities</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Dichtstbijzijnde knooppunt</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>draaien/kantelen</target>
+</phrase>
+<phrase>
+    <source>Ponter des bornes entre-elles</source>
+    <target>Klemmen onderling doorverbinden</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Straal X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Straal Y</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>formaat wijzigen</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>%1 vergroten/verkleinen</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Formaat van een afbeelding wijzigen</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Afbeelding vervangen...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Een afbeelding vervangen</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Verhoudingen herstellen</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>De verhoudingen van een afbeelding herstellen</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Deze kleur verwijderen</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Terug naar de volledige afbeelding, zonder bijsnijden</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Afbeelding bijsnijden</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Een afbeelding bijsnijden</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Bijsnijden...</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Rotatie/kanteling</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Herinitialiseren</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Een afbeelding selecteren...</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Het dichtstbijzijnde knooppunt verwijderen</target>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Een punt van een curve verwijderen</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Symmetrisch</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Potentiaalscheiding</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Grootte</target>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Nominale spanning</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Tolerantie voor deze kleur</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Alle bestanden (*)</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>%1 omvormen</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Transparantie niet behouden</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>een boog</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>een hoek</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>een punt</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>een curve</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>een uiteinde</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>een afbeelding</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Automatische nummering vergrendelen</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Positie vergrendelen</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Vergrendeld: het wijzigen van de breedte of hoogte past de andere aan om de verhoudingen te behouden. Klik om te ontgrendelen.</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Opslaan mislukt</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Knooppunten bewerken</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>kast</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>spoel</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>klem</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>klemmenstrook</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>kabel</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>kaliber</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>titelblok</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>collectie</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>geleider</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>contact</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>contacteur</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>stroom</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>automaat</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>map</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>element</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>hulpcontact</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>zekering</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>raster</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>schakelaar</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>hoofd</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>sjabloon</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>nul</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>stuklijst</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>nummering</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>fase</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>potentiaal</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>project</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>puissance</source>
+    <target>vermogen</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>relais</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>bladverwijzing</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>aanduiding</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>bladverwijzing</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>schema</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>doorsnede</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>inhoudstafel</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>spanning</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>aarde</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>tekst</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>transformator</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -36,6 +36,7 @@ include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
+include(cmake/find_spacemouse.cmake)
 include(cmake/qet_compilation_vars.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -79,7 +80,7 @@ set(QET_HAS_QTPDF FALSE)
 find_package(Qt6 QUIET COMPONENTS Pdf)
 if(TARGET Qt6::Pdf AND NOT Qt6_VERSION VERSION_LESS 6.4.0)
     set(QET_HAS_QTPDF TRUE)
-    list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
+    list(APPEND QET_PRIVATE_LIBRARIES Qt6::Pdf)
     add_compile_definitions(QET_HAS_QTPDF)
 else()
     message(STATUS "QtPdf module not available (or Qt < 6.4): PDF page import feature disabled")
@@ -92,13 +93,30 @@ endif()
 # the application depends on. When it's missing the feature is silently
 # disabled - see the QET_HAS_SCRIPTING guard in qetscripting.*.
 set(QET_HAS_SCRIPTING FALSE)
-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Qml)
-if(TARGET Qt${QT_VERSION_MAJOR}::Qml)
+find_package(Qt6 QUIET COMPONENTS Qml)
+if(TARGET Qt6::Qml)
     set(QET_HAS_SCRIPTING TRUE)
-    list(APPEND QET_PRIVATE_LIBRARIES Qt::Qml)
+    list(APPEND QET_PRIVATE_LIBRARIES Qt6::Qml)
     add_compile_definitions(QET_HAS_SCRIPTING)
 else()
     message(STATUS "Qt Qml module not available: JavaScript scripting (--run) disabled")
+endif()
+
+# The crash handler writes a backtrace into the dump. Detecting this with
+# __has_include(<execinfo.h>) is not enough: the header is present on FreeBSD
+# too, but backtrace() lives in a separate libexecinfo there, so the compile
+# succeeds and the link fails. FindBacktrace resolves both the header and
+# whichever library actually provides the symbol, so gate on it instead - see
+# the QET_CRASH_BACKTRACE guard in sources/logging/crashhandler.cpp.
+find_package(Backtrace QUIET)
+if(Backtrace_FOUND)
+    list(APPEND QET_PRIVATE_LIBRARIES ${Backtrace_LIBRARIES})
+    include_directories(${Backtrace_INCLUDE_DIRS})
+    add_compile_definitions(QET_CRASH_BACKTRACE)
+else()
+    message(STATUS
+        "backtrace() not available: crash dumps will carry the log ring "
+        "without a backtrace")
 endif()
 
 find_package(SQLite3 REQUIRED)
@@ -141,6 +159,18 @@ if(WIN32)
         ${QET_DIR}/qelectrotech.qrc
         ${QET_DIR}/ico/icon-themes.qrc
     )
+    # Our own manifest (it declares longPathAware). MSVC merges a .manifest
+    # listed as a source; MinGW needs it embedded through a resource file,
+    # and ld then keeps it ahead of the toolchain's default manifest.
+    set(QET_MANIFEST_FILE ${QET_DIR}/build-aux/windows/qelectrotech.exe.manifest)
+    if(MSVC)
+        target_sources(${PROJECT_NAME} PRIVATE ${QET_MANIFEST_FILE})
+    else()
+        configure_file(${QET_DIR}/build-aux/windows/qelectrotech-manifest.rc.in
+                       ${CMAKE_CURRENT_BINARY_DIR}/qelectrotech-manifest.rc @ONLY)
+        target_sources(${PROJECT_NAME} PRIVATE
+                       ${CMAKE_CURRENT_BINARY_DIR}/qelectrotech-manifest.rc)
+    endif()
 else()
     add_executable(
         ${PROJECT_NAME}
@@ -150,6 +180,13 @@ else()
         ${QET_DIR}/qelectrotech.qrc
         ${QET_DIR}/ico/icon-themes.qrc
     )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
+endif()
+if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::HIDAPI)
 endif()
 
 if(APPLE)
@@ -270,6 +307,7 @@ target_link_libraries(
     SQLite3::SQLite3
     ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES}
+    ${QET_SPACEMOUSE_LIBRARIES}
 )
 
 target_include_directories(
@@ -301,12 +339,12 @@ target_include_directories(
     ${QET_DIR}/sources/NameList
     ${QET_DIR}/sources/NameList/ui
     ${QET_DIR}/sources/utils
-    ${QET_DIR}/pugixml/src
     ${QET_DIR}/sources/dataBase
     ${QET_DIR}/sources/dataBase/ui
     ${QET_DIR}/sources/factory/ui
     ${QET_DIR}/sources/print
     ${QET_DIR}/sources/svg
+    ${QET_DIR}/sources/materiallist
 )
 
 if(NOT BUILD_WITH_KF)
@@ -332,6 +370,10 @@ if (NOT MINGW)
     install(DIRECTORY elements    DESTINATION share/qelectrotech)
     install(DIRECTORY examples    DESTINATION share/qelectrotech)
     install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
+    # The MCP server (misc/qet-mcp) finds this QElectroTech and its elements
+    # from here: <prefix>/share/qelectrotech/mcp -> <prefix>/bin.
+    install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION share/qelectrotech/mcp)
+    install(FILES misc/qet-mcp/README.md DESTINATION share/qelectrotech/mcp)
     install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
     if(UNIX AND NOT APPLE)
         install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)

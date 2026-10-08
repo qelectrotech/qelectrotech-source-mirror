@@ -176,7 +176,8 @@ class TitleBlockTemplate : public QObject {
 			const DiagramContext &,
 			int,
 			QString &,
-			int) const;
+			int,
+			const QTransform & = QTransform()) const;
 	void renderCell(QPainter &,
 			const TitleBlockCell &,
 			const DiagramContext &,
@@ -188,7 +189,7 @@ class TitleBlockTemplate : public QObject {
 	void applyCellSpan(TitleBlockCell *);
 	void applyRowColNums();
 	void rowColsChanged();
-	QStringList listOfVariables();
+	QStringList listOfVariables() const;
 	
 	protected:
 	void loadInformation(const QDomElement &);
@@ -245,7 +246,8 @@ class TitleBlockTemplate : public QObject {
 			qreal,
 			qreal,
 			qreal,
-			int) const;
+			int,
+			const QTransform &) const;
 	
 	// attributes
 	private:

@@ -19,6 +19,7 @@
 
 #include <algorithm>
 
+#include "../../dataBase/legacyelementtypes.h"
 #include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
@@ -294,7 +295,9 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 		return;
 	
 	setIdentifier(element.firstChildElement("identifier").text());
-	setQuery(element.firstChildElement("query").text());
+		//A query saved before June 2022 names element types the old way
+	setQuery(LegacyElementTypes::upgradeQuery(
+				 element.firstChildElement("query").text()));
 	
 	//Index 0,0
 	auto index_00 = element.firstChildElement("index00");
@@ -379,6 +382,21 @@ void ProjectDBModel::fillValue()
 	
 	while (query_.next())
 	{
+		//This query text comes out of the project file, so its result is
+		//not bounded by anything the project actually contains: a
+		//recursive CTE produces rows for as long as anyone reads them.
+		//Without this, opening such a file hangs QElectroTech at 100% CPU
+		//while m_record grows until memory runs out. @see
+		//projectDataBase::MaxResultRows.
+		if (m_record.size() >= projectDataBase::MaxResultRows) {
+			qWarning().noquote()
+				<< "ProjectDBModel: query stopped after"
+				<< projectDataBase::MaxResultRows
+				<< "rows, which is far more than a folio table can show."
+				<< "The table is incomplete. Query:" << m_query;
+			break;
+		}
+
 		QStringList record_;
 		auto i=0;
 		while (query_.value(i).isValid())

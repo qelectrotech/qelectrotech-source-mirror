@@ -67,7 +67,19 @@ m_preview_item(nullptr)
 			dummy_diagram->setDisplayGrid(false);
 			dummy_diagram->fromXml(diagram_node, QPointF(0, 0), false, nullptr);
 
+			// Compute bounding rect of TOP-LEVEL items only (matching fromXml's added_items logic)
+			// Child items (DynamicElementTextItem, Terminal) are NOT included - they move with parents
+			QRectF top_level_rect;
+			for (auto *item : dummy_diagram->items()) {
+				if (!item->parentItem()) {
+					top_level_rect = top_level_rect.united(
+								item->mapToScene(item->boundingRect()).boundingRect());
+				}
+			}
+			m_items_top_left = top_level_rect.topLeft();
+
 			QRectF scene_rect = dummy_diagram->itemsBoundingRect();
+
 			if (!scene_rect.isEmpty()) {
 				QPixmap pixmap(scene_rect.toAlignedRect().size());
 				pixmap.fill(Qt::transparent);
@@ -76,14 +88,20 @@ m_preview_item(nullptr)
 				dummy_diagram->render(&painter, QRectF(QPointF(0,0), scene_rect.size()), scene_rect);
 
 				m_preview_item = new QGraphicsPixmapItem(pixmap);
-				m_preview_item->setOffset(scene_rect.topLeft());
+					// Anchor the preview on the template's own top-left
+					// corner, where addMacro() puts it, not on the origin of
+					// the folio it was saved from: a template saved from the
+					// middle of a folio was otherwise shown, and placed, that
+					// far below and to the right of the cursor.
+				m_preview_item->setOffset(scene_rect.topLeft() - m_items_top_left);
 			}
 		}
 
-		if (m_preview_item) {
-			m_preview_item->setPos(Diagram::snapToGrid(pos));
-			m_preview_item->setOpacity(0.6);
-			m_diagram->addItem(m_preview_item);
+	if (m_preview_item) {
+		QPointF snapped = Diagram::snapToGrid(pos);
+		m_preview_item->setPos(snapped);
+		m_preview_item->setOpacity(0.6);
+		m_diagram->addItem(m_preview_item);
 			m_running = true;
 		}
 
@@ -117,10 +135,11 @@ void DiagramEventAddMacro::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_preview_item) {
 		const auto pos_{Diagram::snapToGrid(event->scenePos())};
+
 		m_preview_item->setPos(pos_);
 
 		if (m_status_bar) {
-			m_status_bar->showMessage(QString("x %1 : y %2 (Makro-Anker)").arg(QString::number(pos_.x()), QString::number(pos_.y())));
+			m_status_bar->showMessage(QString("x %1 : y %2").arg(QString::number(pos_.x()), QString::number(pos_.y())));
 		}
 	}
 	event->setAccepted(true);
@@ -141,7 +160,8 @@ void DiagramEventAddMacro::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			emit finish();
 		}
 		else if (event->button() == Qt::LeftButton) {
-			addMacro(Diagram::snapToGrid(event->scenePos()));
+			QPointF snapped = Diagram::snapToGrid(event->scenePos());
+			addMacro(snapped);
 		}
 	}
 	event->setAccepted(true);
@@ -238,9 +258,15 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 
 	if (!diagram_node.isNull()) {
 		QDomElement cloned_node = diagram_node.cloneNode(true).toElement();
-
 		DiagramContent pasted_content;
 
+			// fromXml() puts the template's top-left corner on final_pos,
+			// under the cursor. It skips that for a null position, which
+			// would leave the items where they were saved, so a click on
+			// the folio origin is nudged by less than it snaps away.
+		if (final_pos.isNull()) {
+			final_pos = QPointF(0.1, 0.1);
+		}
 		m_diagram->fromXml(cloned_node, final_pos, false, &pasted_content);
 		m_diagram->refreshContents();
 
@@ -248,7 +274,10 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 		QSettings settings;
 		bool saved_erase = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
 		settings.setValue("diagramcommands/erase-label-on-copy", false);
-		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted_content));
+			//and does not number them either: the labels are the ones saved
+		auto *paste = new PasteDiagramCommand(m_diagram, pasted_content);
+		paste->setAutoNumbering(false);
+		m_diagram->undoStack().push(paste);
 		settings.setValue("diagramcommands/erase-label-on-copy", saved_erase);
 	}
 }

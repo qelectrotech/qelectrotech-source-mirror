@@ -16,18 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddpaste.h"
+#include "../autoNum/ui/pastenumberingimport.h"
 
 #include "../diagram.h"
+#include "../foliogrid.h"
 #include "../diagramcommands.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetproject.h"
 
 #include <QSettings>
 
 #include <QApplication>
 #include <QClipboard>
+#include <QCursor>
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
 #include <QKeyEvent>
 #include <QStatusBar>
 
@@ -35,11 +40,18 @@
 	@brief DiagramEventAddPaste::DiagramEventAddPaste
 	@param diagram : diagram to paste into
 	@param start_pos : where the pasted items first appear, in scene
-	coordinates -- normally the cursor
+	coordinates -- normally the cursor. Only used for UnderCursor; an
+	AtOrigin paste stays at the coordinates it was copied from.
+	@param placement : UnderCursor moves the group under the cursor
+	(default), AtOrigin leaves it at its original XML position and warps
+	the OS cursor to the group's origin so baseline and screen match.
 */
-	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos) :
+	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos,
+						   PastePlacement placement) :
 	DiagramEventInterface(diagram)
 {
+	m_placement = placement;
+
 		//DiagramEventInterface::init() is called by Diagram::setEventInterface
 		//only when it is replacing an earlier interface, so call it here as
 		//DiagramEventAddMacro does.
@@ -51,45 +63,136 @@
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 
+		//Batch the database work the same way project loading does
+		//(QETProject::readProjectXml): without this, every addItem()
+		//below emits dataBaseUpdated(), which makes each connected
+		//table model re-run its full SQL query -- ~77 queries for a
+		//typical paste, i.e. the multi-second stall on Ctrl+V.
+	auto *db = m_diagram->project() ? m_diagram->project()->dataBase() : nullptr;
+	if (db) {
+		db->blockSignals(true);
+		db->setUpdateBlocked(true);
+	}
+
 		//Load items at their original XML coordinates.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+	m_copied_schemes = PasteNumberingImport::copiedBy(document_xml);
+
+	if (db) {
+		db->blockSignals(false);
+		db->setUpdateBlocked(false);
+		db->updateDB();
+	}
 	if (!m_content.count()) return;
 
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
 	if (movable.isEmpty()) return;
 
-		//Compute the top-left of all items' positions (not bounding
-		//rects) and snap to grid — used only for the initial cursor
-		//warp.  Items stay at their original XML positions;
-		//moveTo() handles grid-snapped movement via deltas.
-	QPointF top_left;
-	bool first = true;
+		//Compute the top-left of all items' actual on-screen bounding
+		//boxes (not their raw pos()) and snap to grid: this is the point
+		//that gets placed under the cursor, and the baseline moveTo()
+		//measures from. mapToScene(boundingRect()) matters here, not
+		//pos() alone: pos() is the scene location of an item's local
+		//origin, but for anything with a pivot-centered transform (a
+		//scaled or rotated image, in particular) that origin can sit far
+		//from where the item is actually drawn -- pivot + scale*(0 -
+		//pivot) is nowhere near (0, 0) once scale is well under 1. Using
+		//pos() here silently pasted content at the right *delta* from a
+		//point that wasn't actually where the content visually was,
+		//producing a constant, scale-dependent offset between the cursor
+		//and the pasted picture. Diagram::fromXml()'s own position
+		//parameter already gets this right the same way, for the same
+		//reason.
+	QRectF items_rect;
 	for (auto *item : movable) {
-		const QPointF p = item->pos();
-		if (first) {
-			top_left = p;
-			first = false;
-		} else {
-			if (p.x() < top_left.x()) top_left.setX(p.x());
-			if (p.y() < top_left.y()) top_left.setY(p.y());
-		}
+		items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 	}
+	const QPointF top_left = items_rect.topLeft();
 	QSettings settings;
-	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-					  Diagram::xGrid).toInt();
-	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-					  Diagram::yGrid).toInt();
-	const QPointF grid_origin(
-		qRound(top_left.x() / xGrid) * xGrid,
-		qRound(top_left.y() / yGrid) * yGrid);
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
+	const auto snapGrid = [xGrid, yGrid](const QPointF &p) -> QPointF {
+		return QPointF(
+			qRound(p.x() / xGrid) * xGrid,
+			qRound(p.y() / yGrid) * yGrid);
+	};
+	const QPointF grid_origin = (m_placement == AtOrigin)
+			? snapGrid(top_left)
+			: snapGrid(start_pos);
 
-		//Store each item's position.  moveTo() applies a grid-snapped
-		//delta from the baseline, so items preserve their layout and
-		//move in whole grid steps.
+	if (m_placement == UnderCursor) {
+			//Land the pasted content under the cursor immediately, rather than
+			//leaving it at the copied source's own coordinates: fromXml() above
+			//loads items at their original position purely because it doesn't
+			//know the target yet, not because that is where a paste should end
+			//up. The previous approach instead left items there and warped the
+			//OS cursor to match -- QCursor::setPos() is silently ignored by
+			//many window managers and compositors (Wayland in particular), so
+			//on any of those the warp simply never happened and the paste was
+			//left wherever it had originally been copied from, which could be
+			//anywhere on the folio -- exactly the "far from the cursor" bug.
+		const QPointF initial_delta = grid_origin - snapGrid(top_left);
+		for (auto *item : movable) {
+			item->setPos(item->pos() + initial_delta);
+		}
+	} else {
+			//AtOrigin: the items keep the coordinates they were copied from,
+			//so the copy stands exactly where the original stands. No delta is
+			//applied; what has to move is the cursor -- it is warped to the
+			//group's grid-snapped origin below, once m_group_origin is set,
+			//so the baseline and the physical cursor position agree.
+	}
+
+		//Store each item's now-placed position.  moveTo() applies a
+		//grid-snapped delta from the baseline to these, so items
+		//preserve their layout and move in whole grid steps.
 	for (auto *item : movable) {
 		m_relative_pos.insert(item, item->pos());
 	}
 	m_group_origin = grid_origin;
+
+		//The conductors were laid out against the original terminal
+		//positions, so re-route them before anything is drawn.
+	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
+	for (auto *conductor : conductors) {
+		conductor->updatePath();
+	}
+
+		//The baseline is the group's grid-snapped origin. For UnderCursor
+		//the group was just put there, so the baseline is known outright.
+		//For AtOrigin the group stayed where it was copied from and the
+		//OS cursor is warped to match instead -- but only a warp that
+		//verifiably landed may be trusted as the baseline: QCursor::setPos()
+		//needs pointer focus inside the target window (on Wayland it goes
+		//through wp_pointer_warp_v1, and is a silent no-op without it), and
+		//a baseline that assumes a warp which did not happen would move the
+		//whole group by the warp-sized delta on the first mouse move. So
+		//when the warp cannot be confirmed, leave m_baseline_captured
+		//false: moveTo() re-baselines from the first real mouse position
+		//instead, which costs at most the first movement but never flings
+		//the group across the folio.
+	if (m_placement == AtOrigin && !m_diagram->views().isEmpty()) {
+		if (auto *view = m_diagram->views().at(0)) {
+				//An origin outside the visible area cannot be warped to
+				//(the compositor rejects targets outside the window) and
+				//would leave the paste invisible, so scroll it into view
+				//first.
+			if (!view->viewport()->rect().contains(view->mapFromScene(m_group_origin))) {
+				view->ensureVisible(items_rect, 50, 50);
+			}
+			const QPoint view_pos = view->mapFromScene(m_group_origin);
+			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
+			QCursor::setPos(global_pos);
+			if ((QCursor::pos() - global_pos).manhattanLength() <= 4) {
+				m_initial_cursor = m_group_origin;
+				m_baseline_captured = true;
+			}
+		}
+	}
+	if (m_placement == UnderCursor) {
+		m_initial_cursor = m_group_origin;
+		m_baseline_captured = true;
+	}
 
 	m_diagram->clearSelection();
 	for (auto *item : movable) {
@@ -101,11 +204,6 @@
 			if (const auto qde = QETApp::diagramEditorAncestorOf(view)) {
 				m_status_bar = qde->statusBar();
 			}
-				//Warp the cursor close to the group origin so the
-				//first mouseMoveEvent captures the correct baseline.
-			const QPoint view_pos = view->mapFromScene(m_group_origin);
-			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
-			QCursor::setPos(global_pos);
 		}
 	}
 	showHint();
@@ -128,6 +226,20 @@ DiagramEventAddPaste::~DiagramEventAddPaste()
 	}
 	if (m_status_bar) {
 		m_status_bar->clearMessage();
+	}
+
+		//Give the context menu back. init() turned it off so a right
+		//click would cancel the placement instead of opening a menu over
+		//it, and nothing turned it on again: one Ctrl+V left the folio's
+		//right-click menu dead for the rest of the session, taking
+		//"Coller ici", "Collage multiple" and the folio properties with
+		//it. Every other DiagramEvent* class restores it here; this one
+		//did not.
+	if (m_diagram) {
+		const auto views = m_diagram->views();
+		for (auto *view : views) {
+			view->setContextMenuPolicy(Qt::DefaultContextMenu);
+		}
 	}
 }
 
@@ -166,17 +278,16 @@ void DiagramEventAddPaste::showHint()
 /**
 	@brief DiagramEventAddPaste::moveTo
 	Compute a grid-snapped delta from the initial cursor position and
-	apply it to every item's grid-shifted position.  This keeps all
-	items exactly on grid points regardless of modifier keys or
-	sub-pixel cursor-warp rounding.
+	apply it to every item's stored position.  Working from a delta
+	against a fixed baseline, rather than from the previous position,
+	keeps all items exactly on grid points regardless of modifier keys
+	and stops rounding accumulating over a long drag.
 */
 void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 {
 	QSettings settings;
-	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-					  Diagram::xGrid).toInt();
-	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-					  Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	const auto snapGrid = [xGrid, yGrid](const QPointF &p) -> QPointF {
 		return QPointF(
@@ -184,14 +295,15 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 			qRound(p.y() / yGrid) * yGrid);
 	};
 
-		//On the very first call, record the actual grid-snapped
-		//cursor position as baseline.  The cursor warp in the
-		//constructor goes through integer rounding (mapFromScene →
-		//QPoint) so the real position may differ slightly from
-		//m_initial_cursor.  Using the actual scene position avoids
-		//a one-grid-unit jump on the first mouse movement.
-	if (m_initial_cursor.isNull()) {
+		//The constructor normally sets the baseline, having just put the
+		//group there. This covers the case where it could not -- no view
+		//to map through -- by taking the first cursor position instead.
+		//Tested with m_baseline_captured rather than
+		//m_initial_cursor.isNull(), which silently re-baselines when the
+		//baseline is legitimately scene (0,0).
+	if (!m_baseline_captured) {
 		m_initial_cursor = snapGrid(scene_pos);
+		m_baseline_captured = true;
 		return;
 	}
 
@@ -272,7 +384,10 @@ void DiagramEventAddPaste::commit()
 	m_finished = true;
 	m_running = false;
 
-	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_content));
+		//Asks whether to import the numberings the copy brings, if the
+		//project has not got them
+	PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
+							   m_diagram, m_content, m_copied_schemes);
 	emit finish();
 }
 

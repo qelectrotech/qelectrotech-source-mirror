@@ -60,6 +60,7 @@ class MasterElement : public Element
 	private:
 		void xrefPropertiesChanged();
 		void aboutDeleteXref ();
+		bool mustShowXrefWithoutSlave() const;
 		void connectSlavePositionUpdates(Element *slave);
 		void disconnectSlavePositionUpdates(Element *slave);
 

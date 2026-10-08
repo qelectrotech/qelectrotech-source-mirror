@@ -18,6 +18,7 @@
 #include "formulaassistantdialog.h"
 #include "ui_formulaassistantdialog.h"
 
+#include "../qet.h"
 #include <QPushButton>
 
 FormulaAssistantDialog::FormulaAssistantDialog(QWidget *parent) :
@@ -25,6 +26,7 @@ FormulaAssistantDialog::FormulaAssistantDialog(QWidget *parent) :
 	ui(new Ui::FormulaAssistantDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 }
 
 FormulaAssistantDialog::~FormulaAssistantDialog()

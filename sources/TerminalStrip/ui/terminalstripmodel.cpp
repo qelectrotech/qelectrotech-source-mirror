@@ -110,7 +110,7 @@ TerminalStripModel::TerminalStripModel(TerminalStrip *terminal_strip, QObject *p
 {
 	fillPhysicalTerminalData();
 
-	connect(terminal_strip, &TerminalStrip::bridgeColorChanged, this, [=] {
+	connect(terminal_strip, &TerminalStrip::bridgeColorChanged, this, [this] {
 		emit dataChanged(index(0, LEVEL_0_CELL),
 						 index(rowCount(), LEVEL_3_CELL));
 	});

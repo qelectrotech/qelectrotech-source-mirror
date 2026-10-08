@@ -20,6 +20,7 @@
 
 #include "diagrameventinterface.h"
 #include "../diagramcontent.h"
+#include "../autoNum/elementautonumschemecommand.h"
 
 #include <QHash>
 #include <QPointer>
@@ -56,7 +57,21 @@ class DiagramEventAddPaste : public DiagramEventInterface
 				| DiagramContent::Tables
 				| DiagramContent::TerminalStrip;
 
-		DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos);
+			///Where the group starts, relative to what was copied.
+		enum PastePlacement {
+				///Move the group so its top left lands at \a start_pos
+				///(normally the cursor): Ctrl+V, the copy appears under
+				///the pointer and follows it.
+			UnderCursor,
+				///Leave the group at its original XML position and warp
+				///the OS cursor to the group's origin so the baseline
+				///matches what is on screen: Ctrl+Shift+V, "paste at the
+				///origin point".
+			AtOrigin
+		};
+
+		DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos,
+				     PastePlacement placement = UnderCursor);
 		~DiagramEventAddPaste() override;
 
 		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
@@ -76,16 +91,26 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		void removeItems();
 
 	DiagramContent m_content;
+		/// The numberings the pasted copy carries
+	QList<ElementAutoNumSchemeCommand::Scheme> m_copied_schemes;
 		///Each movable item's position relative to the group's top left,
 		///taken once so repeated moves cannot accumulate rounding drift.
 	QHash<QGraphicsItem *, QPointF> m_relative_pos;
-		///Top-left corner of the bounding rect of all movable items,
-		///in scene coordinates, captured when the paste starts.
+		///Where this paste starts: UnderCursor moves the group to
+		///start_pos, AtOrigin leaves it at its original XML position.
+	PastePlacement m_placement{UnderCursor};
+		///Where the group's grid-snapped top left sits when the paste
+		///started, in scene coordinates -- under the cursor for
+		///UnderCursor, the copy's own origin for AtOrigin.
 	QPointF m_group_origin;
-		///Cursor position (scene coords) at the moment the paste starts,
-		///so delta-based movement can compute offsets from the initial point.
+		///Cursor position (scene coords) the delta-based movement in
+		///moveTo() measures from. Equal to m_group_origin: either the
+		///group was put there (UnderCursor) or the cursor was warped
+		///there (AtOrigin).
 	QPointF m_initial_cursor;
-		///Set to true once the first moveTo() captures the real cursor position.
+		///Whether m_initial_cursor holds a usable baseline. A flag rather
+		///than testing m_initial_cursor.isNull(), which cannot tell "not
+		///set yet" from a baseline that is legitimately scene (0,0).
 	bool m_baseline_captured{false};
 	QPointer<QStatusBar> m_status_bar;
 	bool m_finished{false};

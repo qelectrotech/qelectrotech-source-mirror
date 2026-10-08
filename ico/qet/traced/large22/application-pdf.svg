@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <path d="M6 4h9v13H6zM9 7v5.5l4.5-5.5zM9 14h4.5v1.5H9z" style="fill-rule:evenodd;fill:#d3535c"/>
+  <rect x="16" y="4" width="10" height="1" style="fill:#d3535c"/>
+  <rect x="25" y="4" width="1" height="16" style="fill:#d3535c"/>
+  <rect x="6" y="27" width="12" height="1" style="fill:#d3535c"/>
+  <rect x="6" y="19" width="1" height="9" style="fill:#d3535c"/>
+  <polygon points="18,20 26,20 18,28" style="fill:#d3535c"/>
+</svg>

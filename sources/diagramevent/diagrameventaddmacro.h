@@ -40,6 +40,7 @@ private:
 	QDomDocument m_macro_doc;
 	QGraphicsPixmapItem *m_preview_item;
 	QPointer<QStatusBar> m_status_bar;
+	QPointF m_items_top_left;	// top-left of bounding rect of top-level items in the macro (for correct placement offset)
 };
 
 #endif // DIAGRAMEVENTADDMACRO_H

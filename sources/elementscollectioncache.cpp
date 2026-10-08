@@ -52,6 +52,18 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		QSqlQuery(cache_db_).exec("PRAGMA locking_mode = EXCLUSIVE");
 		QSqlQuery(cache_db_).exec("PRAGMA synchronous = OFF");
 
+			// Previews used to be stored on an opaque white sheet; they are
+			// transparent now, so the collection tree can adapt them to a
+			// dark palette. A cache written before that is dropped once.
+		QSqlQuery(cache_db_).exec("CREATE TABLE IF NOT EXISTS meta"
+					   "(key VARCHAR(32) NOT NULL PRIMARY KEY, value VARCHAR(64));");
+		QSqlQuery meta(cache_db_);
+		meta.exec("SELECT value FROM meta WHERE key = 'pixmaps'");
+		if (!meta.next() || meta.value(0).toString() != QLatin1String("transparent")) {
+			QSqlQuery(cache_db_).exec("DROP TABLE IF EXISTS pixmaps");
+			QSqlQuery(cache_db_).exec("DROP TABLE IF EXISTS names");
+			QSqlQuery(cache_db_).exec("REPLACE INTO meta (key, value) VALUES ('pixmaps', 'transparent')");
+		}
 #if TODO_LIST
 #pragma message("@TODO the tables could already exist, handle that case.")
 #endif

@@ -19,6 +19,7 @@
 #include "qetsettings.h"
 #include <QSettings>
 #include <QVariant>
+#include <QByteArray>
 
 namespace QetSettings
 {
@@ -104,5 +105,189 @@ namespace QetSettings
 		} else {
 			return default_policy;
 		}
+	}
+
+	/**
+	* @brief scriptingForcedByEnvironment
+	* @return true if QET_ENABLE_SCRIPTING is set to 1 in the environment.
+	*
+	* The way to turn scripting on where there is nobody to tick a box:
+	* a headless run, a CI job, a build server. Those have no settings
+	* file worth writing to -- and on a machine whose HOME is created
+	* fresh for the run, writing one would not survive anyway.
+	*/
+	bool scriptingForcedByEnvironment()
+	{
+		return qgetenv("QET_ENABLE_SCRIPTING") == QByteArray("1");
+	}
+
+	/**
+	* @brief scriptingEnabled
+	* @return whether QElectroTech may run a JavaScript script.
+	*
+	* Off unless the user turned it on. A script reaches the whole project
+	* and the filesystem through the export calls, so it is capability the
+	* great majority of users never asked for; leaving it on by default
+	* would hand it to them anyway. @sa setScriptingEnabled
+	*
+	* The environment override wins over the stored value, and is checked
+	* first so that a machine with no settings at all still answers.
+	*/
+	bool scriptingEnabled()
+	{
+		if (scriptingForcedByEnvironment()) {
+			return true;
+		}
+		QSettings settings;
+		return settings.value("scripting/enabled", false).toBool();
+	}
+
+	/**
+	* @brief setScriptingEnabled
+	* Store whether scripting is allowed. @sa scriptingEnabled
+	* @param enabled
+	*/
+	void setScriptingEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("scripting/enabled", enabled);
+	}
+
+	/**
+	* @brief liveAssistantEnabled
+	* @return whether an AI assistant may connect to this QElectroTech and
+	* act on the open project while the user watches (live mode, see
+	* LiveServer). Off unless the user turned it on, and even then every
+	* start asks before anything can connect. No environment override:
+	* this is a choice made by the person in front of the window.
+	*/
+	bool liveAssistantEnabled()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_assistant", false).toBool();
+	}
+
+	void setLiveAssistantEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_assistant", enabled);
+			//Turned off and on again: the start warning comes back, so
+			//"don't ask again" never outlives the choice it was made for
+		if (!enabled) settings.remove("scripting/live_skip_warning");
+	}
+
+	/**
+	* @brief liveSkipStartWarning
+	* @return true when the user ticked "don't ask again" in live mode's
+	* start warning: live mode then opens at every start without asking,
+	* until it is switched off in the settings. False unless they did.
+	*/
+	bool liveSkipStartWarning()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_skip_warning", false).toBool();
+	}
+
+	void setLiveSkipStartWarning(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_skip_warning", skip);
+	}
+
+	/**
+	* @brief liveAskFirst
+	* @return whether live mode shows each script the assistant wrote and
+	* asks before running it. On unless the user chose "always".
+	*/
+	bool liveAskFirst()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_ask_first", true).toBool();
+	}
+
+	void setLiveAskFirst(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_ask_first", ask);
+	}
+
+	/**
+	* @brief houseStyle
+	* @return this installation's drawing conventions, in the user's own
+	* words -- empty when nobody has set any.
+	*/
+	QString houseStyle()
+	{
+		QSettings settings;
+		return settings.value("assistant/house_style", QString()).toString();
+	}
+
+	void setHouseStyle(const QString &text)
+	{
+		QSettings settings;
+		settings.setValue("assistant/house_style", text);
+	}
+
+	/**
+	* @brief setSheetBackground
+	* Store the sheet background last picked in the diagram editor, so the
+	* next start opens on it for every project, old or new. @sa sheetBackground
+	* @param background
+	*/
+	void setSheetBackground(const SheetBackground &background)
+	{
+		QSettings settings;
+		//HexRgb, not HexArgb, on purpose: Diagram::background_color is
+		//temporarily given an alpha of 0 by the SVG export to make the
+		//background transparent, and that transient value must never end
+		//up here as a stored transparent sheet.
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_color"),
+				  background.color.name(QColor::HexRgb));
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_custom"),
+				  background.custom);
+	}
+
+	/**
+	* @brief sheetBackground
+	* @return the sheet background stored by setSheetBackground(), or the
+	* built-in default (white, following the system) when there is none.
+	* @sa setSheetBackground
+	*/
+	SheetBackground sheetBackground()
+	{
+		QSettings settings;
+		SheetBackground background;
+		background.custom = settings.value(
+				QStringLiteral("diagrameditor/sheet_background_custom"),
+				false).toBool();
+		const QColor stored(settings.value(
+				QStringLiteral("diagrameditor/sheet_background_color"),
+				QStringLiteral("#ffffff")).toString());
+		background.color = stored.isValid() ? stored : QColor(Qt::white);
+		return background;
+	}
+
+	/**
+	* @brief sheetBackgroundRecentColors
+	* @return the "recently used" sheet background colours, most recent
+	* first. Empty until the user has picked a non-preset colour.
+	* @sa setSheetBackgroundRecentColors
+	*/
+	QStringList sheetBackgroundRecentColors()
+	{
+		QSettings settings;
+		return settings.value(QStringLiteral("diagrameditor/sheet_background_recent")).toStringList();
+	}
+
+	/**
+	* @brief setSheetBackgroundRecentColors
+	* Store the "recently used" sheet background colours, most recent first.
+	* @sa sheetBackgroundRecentColors
+	* @param colors
+	*/
+	void setSheetBackgroundRecentColors(const QStringList &colors)
+	{
+		QSettings settings;
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_recent"), colors);
 	}
 }

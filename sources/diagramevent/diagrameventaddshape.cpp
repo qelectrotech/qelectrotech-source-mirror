@@ -34,10 +34,14 @@
 	Default constructor
 	@param diagram : the diagram where this event must operate
 	@param shape_type : the type of shape to draw
+	@param half_arc : with shape_type Ellipse, draw a half arc instead of
+	a whole ellipse (the Arc tool). It is still an Ellipse with a start
+	and end angle, the same shape the arc handles of an ellipse produce.
 */
-DiagramEventAddShape::DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type) :
+DiagramEventAddShape::DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type, bool half_arc) :
 	DiagramEventInterface(diagram),
 	m_shape_type (shape_type),
+	m_half_arc (half_arc && shape_type == QetShapeItem::Ellipse),
 	m_shape_item (nullptr),
 	m_help_horiz (nullptr),
 	m_help_verti (nullptr)
@@ -87,9 +91,9 @@ DiagramEventAddShape::~DiagramEventAddShape()
 	Applies a drag/click position to the in-progress shape, honouring two
 	modifiers that mirror how the very same shape can already be edited
 	afterward, once placed:
-	  - Ctrl, for Rectangle/Ellipse only: the first click becomes the
-	    shape's *center* rather than a corner, growing symmetrically as
-	    the cursor moves away from it -- the same meaning Ctrl already
+	  - Ctrl, for Rectangle/Ellipse only: the first click's point acts as
+	    the shape's *center* rather than a corner, growing symmetrically
+	    as the cursor moves away from it -- the same meaning Ctrl already
 	    has on a Resize handle (anchor at center). Deliberately not
 	    offered for Line: unlike the Rectangle/Ellipse case, there's no
 	    established convention for "a line grows symmetrically from its
@@ -100,12 +104,18 @@ DiagramEventAddShape::~DiagramEventAddShape()
 	    dragged dimensions is currently larger and mirroring that onto
 	    the other, preserving the direction the user is actually
 	    dragging in.
-	Both can combine (Ctrl+Shift: a centered square/circle). Whether or
-	not Ctrl is currently held, the non-anchored branch always rebuilds
-	from m_anchor_point rather than nudging the existing rect/line --
-	otherwise, if Ctrl had been held earlier in the same drag (moving the
-	shape's own first point to a mirrored position), releasing it would
-	leave that point stuck there instead of actually restoring it.
+	Both can combine (Ctrl+Shift: a centered square/circle). Whether Ctrl
+	currently anchors from the center is re-decided on every call, from
+	the live modifiers passed in here -- not frozen at whatever was held
+	on the first click. Every comparable tool (Illustrator, Photoshop,
+	Figma, Inkscape...) lets you press or release the center-origin
+	modifier at any point mid-drag, with the shape immediately jumping to
+	match; that jump is the expected feedback for changing which point is
+	anchored, not a glitch. Freezing the choice at the first click instead
+	meant holding Ctrl anywhere other than the initial mouse-down did
+	nothing visible -- which, tried the more natural way (drag first,
+	then reach for Ctrl once you decide you want it centered), read as
+	"Ctrl doesn't work" rather than as a deliberate one-shot decision.
 */
 void DiagramEventAddShape::applyPosition(const QPointF &pos, Qt::KeyboardModifiers mods)
 {
@@ -125,14 +135,30 @@ void DiagramEventAddShape::applyPosition(const QPointF &pos, Qt::KeyboardModifie
 		return;
 	}
 
-	// m_center_anchored is decided once, in mousePressEvent, not
-	// re-checked here on every call -- re-checking it live meant
-	// releasing Ctrl mid-drag (something you'd naturally do the moment
-	// your hand gets tired holding it, long before you're done resizing)
-	// silently snapped the shape back to corner-anchored, discarding
-	// what felt like an already-made decision. Deciding it once at the
-	// first click matches "I held Ctrl when I clicked, so this shape is
-	// centered" -- a single, predictable rule instead of a live toggle.
+	if (m_half_arc)
+	{
+		// The first click is one end of the arc and sets the height of
+		// its chord; the cursor sets the other end and how far the arc
+		// bulges, up or down, from that chord. Shift makes it a true
+		// half circle.
+		const qreal width = qAbs(pos.x() - m_anchor_point.x());
+		qreal height = pos.y() - m_anchor_point.y();
+		if (mods & Qt::ShiftModifier)
+			height = (height < 0 ? -width : width) / 2;
+		const qreal depth = qAbs(height);
+		m_shape_item->setRect(QRectF(qMin(pos.x(), m_anchor_point.x()), m_anchor_point.y() - depth,
+									 width, 2 * depth));
+		m_shape_item->setEndAngle(height <= 0 ? 180 : -180);
+		return;
+	}
+
+	m_center_anchored = (mods & Qt::ControlModifier)
+			&& (m_shape_type == QetShapeItem::Rectangle || m_shape_type == QetShapeItem::Ellipse);
+	if (m_center_anchored)
+		showCenterMarker(m_anchor_point);
+	else
+		hideCenterMarker();
+
 	QPointF target = pos;
 
 	if ((mods & Qt::ShiftModifier)
@@ -218,20 +244,24 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
 			m_anchor_point = pos;
-			// Decided once, here, rather than re-checked on every mouse
-			// move for the rest of the drag -- see applyPosition()'s doc
-			// comment for why continuous re-checking made releasing Ctrl
-			// mid-drag feel like a bug rather than a deliberate choice.
+			// Initial feedback only -- applyPosition() re-decides this
+			// live on every subsequent move, from whatever Ctrl state is
+			// held at the time.
 			m_center_anchored = (event->modifiers() & Qt::ControlModifier)
+					&& !m_half_arc
 					&& (m_shape_type == QetShapeItem::Rectangle || m_shape_type == QetShapeItem::Ellipse);
 			if (m_center_anchored)
 				showCenterMarker(m_anchor_point);
+			if (m_half_arc)
+				m_shape_item->setEndAngle(180);
 				//Start from whatever pen/brush was last applied this
 				//session, rather than always the hardcoded default.
+				//Not the brush for an arc: it is a line, and a fill
+				//would close it into a half disc.
 			if (LastUsedStyle::hasShapePen()) {
 				m_shape_item->setPen(LastUsedStyle::shapePen());
 			}
-			if (LastUsedStyle::hasShapeBrush()) {
+			if (LastUsedStyle::hasShapeBrush() && !m_half_arc) {
 				m_shape_item->setBrush(LastUsedStyle::shapeBrush());
 			}
 			m_diagram->addItem (m_shape_item);
@@ -457,6 +487,8 @@ QString DiagramEventAddShape::beforeClickHint() const
 			return tr("Clic gauche : positionner le point de départ (Ctrl = position libre)");
 		case QetShapeItem::Rectangle:
 		case QetShapeItem::Ellipse:
+			if (m_half_arc)
+				return tr("Clic gauche : positionner une extrémité de l'arc (Ctrl = position libre)");
 			return tr("Clic gauche : positionner le premier coin (Ctrl = point central, position libre)");
 		case QetShapeItem::Polygon:
 			return tr("Clic gauche : positionner le premier point (Ctrl = position libre)");
@@ -475,6 +507,9 @@ QString DiagramEventAddShape::afterClickHint() const
 			return tr("Clic gauche : positionner le coin opposé (Maj = carré, "
 					"Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler");
 		case QetShapeItem::Ellipse:
+			if (m_half_arc)
+				return tr("Clic gauche : positionner l'autre extrémité et la hauteur de l'arc "
+						"(Maj = demi-cercle, Ctrl = position libre) ; clic droit : annuler");
 			return tr("Clic gauche : positionner le coin opposé (Maj = cercle, "
 					"Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler");
 		case QetShapeItem::Polygon:

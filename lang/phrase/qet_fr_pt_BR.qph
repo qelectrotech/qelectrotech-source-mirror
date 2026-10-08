@@ -1,0 +1,465 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="pt_BR">
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Contatos: NA: %1, NF: %2, reversíveis: %3, outros: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Contatos: NA: %1/%2, NF: %3/%4, reversíveis: %5/%6, outros: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Pré-visualização</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Arredondar os cantos de %1</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Borne 1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Borne 2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Categoria</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Este formato não suporta transparência: a imagem será salva como estava antes da aplicação da cor transparente. Continuar?</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Campo de texto</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Componente 1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Componente 2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Converter %1 em curva de Bézier</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Converter em curva de Bézier</target>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Corrente nominal</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Distância em pixels entre o rótulo e a referência cruzada do escravo</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Distância do rótulo - escravo:</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Salvar a imagem original como...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Salvar a imagem como...</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Erro</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Excluir da lista de materiais</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Girar %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Girar uma imagem</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Fio</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Folha</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Altura</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Imagem BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Imagem JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Imagem PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Imagem SVG (*.svg)</target>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Imagens não incluídas na exportação DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Não foi possível salvar a imagem neste local.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Não foi possível salvar a lista de materiais em %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Não foi possível carregar a imagem.</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Inclinar %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Inclinar uma imagem</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>O limite definido para este elemento mestre foi atingido (Limite: %1).
+
+Deseja vincular este contato escravo mesmo assim?</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Largura</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>O formato DXF usado aqui (AC1006) não permite incluir imagens. As imagens serão representadas apenas por um retângulo de contorno (posição, tamanho, rotação e inclinação preservados), sem o conteúdo da imagem.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Lista de cabeamento</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Lista de cabeamento (banco de dados)</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Modificar o ângulo de um arco</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Modificar a curvatura de %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Modificar a forma de %1</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Modelo</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Número máximo de contatos escravos definidos: não definido
+</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Observações</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Redimensionar %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Redimensionar uma imagem</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Redefinir</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Selecionar uma imagem...</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Separação de potencial</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Tamanho</target>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Tensão nominal</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Todos os arquivos (*)</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Transparência não preservada</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>uma imagem</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Bloquear a numeração automática</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Bloquear a posição</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Falha ao salvar</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>armário</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>bobina</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>borne</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>borneira</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>cabo</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>calibre</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>bloco de título</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>coleção</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>condutor</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>contato</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>contator</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>corrente</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>disjuntor</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>pasta</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>elemento</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>escravo</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>fusível</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>grade</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>interruptor</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>mestre</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>modelo</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>neutro</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>lista de materiais</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>numeração</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>fase</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>potencial</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>projeto</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>puissance</source>
+    <target>potência</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>relé</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>referência de folha</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>designação</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>remissão de folha</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>diagrama</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>seção</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>sumário</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>tensão</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>terra</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>texto</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>transformador</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

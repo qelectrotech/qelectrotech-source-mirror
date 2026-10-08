@@ -16,15 +16,28 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
+#include "../../scripting/liveserver.h"
+#include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
+#include "../../materiallist/materiallist.h"
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
+#include "../../textgrid.h"
+#include "../../wiringrules.h"
+#include "../wiringruleswarning.h"
+#include "../../editor/terminalnamecheck.h"
+#include "../../ElementsCollection/qetlabelsfile.h"
+#include "../prefixconfigurationdialog.h"
+#include "../nokde/kcolorbutton.h"
+#include <QDir>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFontDialog>
+#include <QMessageBox>
 #include <QSettings>
 
 /**
@@ -65,8 +78,23 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
+		//Stored as "inserts" but presented as "edits", so the default (insert)
+		//is the unchecked state -- a preference reads better as an opt-out.
+	ui->m_collection_dblclick_edits->setChecked(!settings.value("elementscollection/double-click-inserts", true).toBool());
+	ui->m_collection_search_flat_cb->setChecked(settings.value("elementscollection/search-flat-list", true).toBool());
+	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
+	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+	for (const qreal divisor : TextGrid::divisors)
+		ui->DiagramEditor_textGrid_cb->addItem(
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"),
+					divisor);
+	int text_grid_index = ui->DiagramEditor_textGrid_cb->findData(
+				settings.value(TextGrid::settings_key, 1).toReal());
+	if (text_grid_index < 0)
+		text_grid_index = ui->DiagramEditor_textGrid_cb->findData(qreal(1));
+	ui->DiagramEditor_textGrid_cb->setCurrentIndex(text_grid_index);
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
@@ -74,14 +102,60 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
 	ui->DiagramEditor_Grid_PointSize_max_sb->setValue(settings.value("diagrameditor/grid_pointsize_max", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	bool sysColors = ui->m_use_system_color_cb->isChecked();
+	ui->m_custom_app_color_kpb->setEnabled(!sysColors);
+	if (settings.contains("customapplicationcolor"))
+		ui->m_custom_app_color_kpb->setColor(QColor(settings.value("customapplicationcolor").toString()));
+	else
+		ui->m_custom_app_color_kpb->setColor(QApplication::palette().color(QPalette::Window));
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
 		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
+	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
+	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
+	{
+			//The rules every project follows unless it sets its own (#1158)
+		const WiringRules::Settings rules = WiringRules::applicationSettings();
+		ui->m_wiring_max_wires_sb->setValue(rules.max_wires);
+		ui->m_wiring_one_wire_per_report_cb->setChecked(rules.one_wire_per_report);
+		auto enable = [this](bool on) {
+			ui->m_wiring_max_wires_label->setEnabled(on);
+			ui->m_wiring_max_wires_sb->setEnabled(on);
+			ui->m_wiring_one_wire_per_report_cb->setEnabled(on);
+		};
+		enable(ui->m_wiring_rules_cb->isChecked());
+		connect(ui->m_wiring_rules_cb, &QCheckBox::toggled, this, enable);
+	}
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
+	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
+	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
+#ifdef QET_HAS_SCRIPTING
+	if (QetSettings::scriptingForcedByEnvironment()) {
+			//QET_ENABLE_SCRIPTING wins over the stored value, so let the box
+			//say so rather than offer a tick that changes nothing.
+		ui->m_enable_scripting->setEnabled(false);
+		ui->m_enable_scripting->setToolTip(
+					tr("Activé par la variable d'environnement "
+					   "QET_ENABLE_SCRIPTING ; ce réglage est sans effet "
+					   "tant qu'elle est définie."));
+	}
+#else
+		//Built without Qt Qml: there is no scripting to allow. Disabled as
+		//well as hidden, so applyConf() leaves the stored value alone --
+		//a hidden box still reports its state, and writing it here would
+		//quietly clear a preference set on a build that does have Qml.
+	ui->m_enable_scripting->setVisible(false);
+	ui->m_enable_scripting->setEnabled(false);
+#endif
+	ui->m_live_assistant->setChecked(QetSettings::liveAssistantEnabled());
+#ifndef QET_HAS_SCRIPTING
+	ui->m_live_assistant->setVisible(false);
+	ui->m_live_assistant->setEnabled(false);
+#endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
@@ -129,6 +203,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->MaxPartsElementEditorList_sb->setValue(settings.value("elementeditor/max-parts-element-editor-list", 200).toInt());
 	ui->ElementEditor_Grid_PointSize_min_sb->setValue(settings.value("elementeditor/grid_pointsize_min", 1).toInt());
 	ui->ElementEditor_Grid_PointSize_max_sb->setValue(settings.value("elementeditor/grid_pointsize_max", 1).toInt());
+	ui->m_check_terminal_names_cb->setChecked(settings.value(TerminalNameCheck::settings_key, true).toBool());
 
 	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
 	if (path != "default")
@@ -185,6 +260,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_user_macros_path_cb->blockSignals(false);
 	}
 
+		//MATERIAL FILE
+	path = MaterialList::configuredPath();
+	ui->m_material_list_path_le->setText(path);
+	if (path.isEmpty())
+	{
+		ui->m_material_list_path_le->setPlaceholderText(
+			tr("Non configuré (par défaut : %1)",
+			   "hint shown in the material file field when no file is configured yet")
+				.arg(MaterialList::defaultPath()));
+	}
+
 	fillLang();	
 }
 
@@ -206,7 +292,17 @@ void GeneralConfigurationPage::applyConf()
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
 	settings.setValue("usesystemcolors", must_use_system_colors);
 	if (was_using_system_colors != must_use_system_colors) {
-		QETApp::instance()->useSystemPalette(must_use_system_colors);
+		if (must_use_system_colors) {
+			QETApp::instance()->useSystemPalette(true);
+		} else {
+			QColor custom_color = ui->m_custom_app_color_kpb->color();
+			settings.setValue("customapplicationcolor", custom_color.name());
+			QETApp::instance()->useCustomPalette(custom_color);
+		}
+	} else if (!must_use_system_colors) {
+		QColor custom_color = ui->m_custom_app_color_kpb->color();
+		settings.setValue("customapplicationcolor", custom_color.name());
+		QETApp::instance()->useCustomPalette(custom_color);
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
@@ -220,12 +316,31 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("elementeditor/max-parts-element-editor-list", ui->MaxPartsElementEditorList_sb->value());
 	settings.setValue("elementeditor/grid_pointsize_min", ui->ElementEditor_Grid_PointSize_min_sb->value());
 	settings.setValue("elementeditor/grid_pointsize_max", ui->ElementEditor_Grid_PointSize_max_sb->value());
+	settings.setValue(TerminalNameCheck::settings_key, ui->m_check_terminal_names_cb->isChecked());
 
 		//DIAGRAM VIEW
 	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
 
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
+	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
+
+		//SCRIPTING
+		//Left alone while the environment forces it on: the box is disabled
+		//in that case and writing its state would silently clear the user's
+		//real preference the first time this dialog is accepted.
+	if (ui->m_enable_scripting->isEnabled()) {
+		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
+	}
+	if (ui->m_live_assistant->isEnabled()) {
+		QetSettings::setLiveAssistantEnabled(ui->m_live_assistant->isChecked());
+#ifdef QET_HAS_SCRIPTING
+			//Switching it off closes the door now, not at the next start
+		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
+#endif
+	}
+		//What an assistant reads about this QElectroTech follows the change
+	AssistantInfo::write();
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
@@ -236,13 +351,30 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
+	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
+	{
+		const WiringRules::Settings before = WiringRules::applicationSettings();
+		WiringRules::Settings rules = before;
+		rules.max_wires = ui->m_wiring_max_wires_sb->value();
+		rules.one_wire_per_report = ui->m_wiring_one_wire_per_report_cb->isChecked();
+		WiringRules::setApplicationSettings(rules);
+		if (WiringRules::masterEnabled() && WiringRules::turnsRuleOn(before, rules)) {
+			WiringRulesWarning::show(this);
+		}
+	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
 	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
+	settings.setValue("elementscollection/double-click-inserts", !ui->m_collection_dblclick_edits->isChecked());
+	settings.setValue("elementscollection/search-flat-list", ui->m_collection_search_flat_cb->isChecked());
+	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
+	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
+	settings.setValue(TextGrid::settings_key, ui->DiagramEditor_textGrid_cb->currentData());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
@@ -345,6 +477,12 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/macros-path").toString()) {
 		QETApp::resetCollectionsPath();
 	}
+
+		//MATERIAL FILE
+		//Unlike the collections, the material file is a plain file, it is
+		//kept as chosen even when it doesn't exist yet : the user may well
+		//point QElectroTech at a file he intends to write later.
+	MaterialList::setConfiguredPath(ui->m_material_list_path_le->text().trimmed());
 }
 
 /**
@@ -550,6 +688,154 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 	}
 }
 
+/**
+	@brief GeneralConfigurationPage::on_m_prefix_pb_clicked
+	Open the dialog where the prefixes of the user collection folders are
+	configured, creating the qet_labels.xml of that collection when it
+	does not exist yet.
+	Nothing is written until that dialog is validated : cancelling it
+	leaves the collection exactly as it was.
+*/
+void GeneralConfigurationPage::on_m_prefix_pb_clicked()
+{
+		//The directory the page displays, even when the change has not
+		//been applied yet : QETApp::customElementsDir() still answers with
+		//the previously saved path, which is not what is shown when the
+		//combo has been put back on "Par defaut".
+	QString directory;
+	switch (ui->m_custom_elmt_path_cb->currentIndex()) {
+	case 1:			//"Parcourir..." : the item itself holds the chosen path
+		directory = ui->m_custom_elmt_path_cb->itemData(1, Qt::DisplayRole).toString();
+		break;
+	case 0:			//"Par defaut" : where a default custom collection lives
+		directory = QETApp::dataDir() + QStringLiteral("/elements/");
+		break;
+	default:
+		break;
+	}
+	if (directory.isEmpty()) {
+		directory = QETApp::customElementsDir();
+	}
+	directory = QDir::cleanPath(directory);
+
+	if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
+		QMessageBox::warning(this,
+							 tr("Répertoire introuvable"),
+							 tr("Le répertoire de la collection utilisateur :\n%1\nn'existe pas et n'a pas pu être créé.")
+							 .arg(directory));
+		return;
+	}
+
+	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);
+	if (folders.isEmpty()) {
+		QMessageBox::information(this,
+								 tr("Aucun sous-dossier"),
+								 tr("La collection utilisateur :\n%1\nne contient aucun sous-dossier : il n'y a donc aucun préfixe à configurer.")
+								 .arg(directory));
+		return;
+	}
+
+	QetLabelsFile labels;
+	if (!labels.load(directory)) {
+		QMessageBox::warning(this,
+							 tr("Fichier de préfixes illisible"),
+							 labels.errorString());
+		return;
+	}
+	if (labels.isBroken()) {
+			//A broken file may only be one forgotten tag away from being
+			//perfectly valid : tell what is wrong and let the user decide,
+			//rebuilding would drop every prefix the file still holds.
+		QMessageBox box(QMessageBox::Warning,
+						tr("Fichier de préfixes endommagé"),
+						tr("Le fichier %1 n'est pas un fichier XML valide :\n%2")
+						.arg(labels.filePath(), labels.brokenReason()),
+						QMessageBox::NoButton,
+						this);
+		box.addButton(tr("Corriger le fichier"), QMessageBox::AcceptRole);
+		auto *rebuild_button = box.addButton(tr("Reconstruire"), QMessageBox::DestructiveRole);
+		box.setInformativeText(tr("Rien n'a encore été modifié.\n\n"
+								  "« Corriger le fichier » : cette fenêtre se ferme sans rien changer. "
+								  "Ouvrez le fichier dans un éditeur de texte à l'endroit indiqué, "
+								  "corrigez-le puis relancez cette commande.\n\n"
+								  "« Reconstruire » : l'arborescence des dossiers est recréée, "
+								  "mais tous les préfixes actuels sont perdus. Le fichier actuel "
+								  "est conservé sous le nom qet_labels.xml.bak avant d'être remplacé."));
+		box.setDetailedText(tr("Fichier : %1").arg(labels.filePath()));
+		box.exec();
+		if (box.clickedButton() != rebuild_button) {
+			return;
+		}
+	}
+
+	PrefixConfigurationDialog dialog(labels, folders, this);
+	dialog.exec();
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_material_list_browse_pb_clicked
+	Let the user pick an existing material file.
+*/
+void GeneralConfigurationPage::on_m_material_list_browse_pb_clicked()
+{
+	QString start_dir = ui->m_material_list_path_le->text();
+	start_dir = start_dir.isEmpty()
+			? QETApp::documentDir()
+			: QFileInfo(start_dir).absolutePath();
+
+	const QString path = QFileDialog::getOpenFileName(
+		this,
+		tr("Sélectionner le fichier de la liste de matériaux"),
+		start_dir,
+		tr("Fichiers csv (*.csv)"));
+
+	if (!path.isEmpty()) {
+		ui->m_material_list_path_le->setText(path);
+	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_material_list_create_pb_clicked
+	Create the material file with its header line, so the columns are
+	known before the user fills them from his spreadsheet.
+*/
+void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
+{
+	QString path = ui->m_material_list_path_le->text();
+	path = path.isEmpty()
+			? MaterialList::defaultPath()
+			: QFileInfo(path).absolutePath() + QLatin1Char('/') + MaterialList::defaultFileName();
+
+	path = QFileDialog::getSaveFileName(
+		this,
+		tr("Créer le fichier de la liste de matériaux"),
+		path,
+		tr("Fichiers csv (*.csv)"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (QFileInfo(path).suffix().isEmpty()) {
+		path += QStringLiteral(".csv");
+	}
+
+		//An existing file is kept as it is : this button creates the
+		//header, it never overwrites a catalogue.
+	if (MaterialList::isEmptyFile(path))
+	{
+		QString error;
+		if (!MaterialList::createFile(path, &error))
+		{
+			QET::QetMessageBox::critical(this,
+										 tr("Création impossible"),
+										 tr("Impossible de créer le fichier :\n%1\n%2")
+											.arg(path, error));
+			return;
+		}
+	}
+
+	ui->m_material_list_path_le->setText(path);
+}
+
 void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 {
 	bool ok;
@@ -623,5 +909,16 @@ void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
 	}
 	ui->m_hdpi_round_label->setEnabled(checked);
 	ui->m_hdpi_round_policy_cb->setEnabled(checked);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_use_system_color_cb_toggled
+	Enable/disable the custom color picker when the system color
+	checkbox is toggled.
+	@param checked
+*/
+void GeneralConfigurationPage::on_m_use_system_color_cb_toggled(bool checked)
+{
+	ui->m_custom_app_color_kpb->setEnabled(!checked);
 }
 

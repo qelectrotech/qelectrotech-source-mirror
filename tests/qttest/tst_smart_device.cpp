@@ -120,6 +120,34 @@ void SmartDeviceTest::defaultQueryAndCsv()
 		QVERIFY(csv.contains("Terminal block"));
 		QVERIFY(!csv.contains("Must not be exported"));
 		QVERIFY(csv.indexOf("-K1") < csv.indexOf("-K2"));
+
+		//#1178: a junction -- a terminal-type symbol drawn where wires
+		//branch -- has no label and no part data. It can be left out, and
+		//so can the contact blocks; a terminal block with only a part
+		//number stays.
+		QSqlQuery raw(db);
+		QVERIFY(raw.exec(QStringLiteral(
+			"INSERT INTO element_nomenclature_view "
+			"(label, element_type, diagram_position, position) "
+			"VALUES (NULL, 'terminal', 1, 6)")));
+		QVERIFY(raw.exec(QStringLiteral(
+			"INSERT INTO element_nomenclature_view "
+			"(label, designation, manufacturer, manufacturer_reference, "
+			"element_type, diagram_position, position) "
+			"VALUES ('', '', '', 'PT 2,5', 'terminal', 1, 7)")));
+		auto count = [&db](const QString &sql) {
+			QSqlQuery q(db);
+			if (!q.exec(sql))
+				return -1;
+			int n = 0;
+			while (q.next())
+				++n;
+			return n;
+		};
+		QCOMPARE(count(BomExport::defaultQuery()), 6);
+		QCOMPARE(count(BomExport::defaultQuery(true, false)), 5);
+		QCOMPARE(count(BomExport::defaultQuery(false, true)), 5);
+		QCOMPARE(count(BomExport::defaultQuery(false, false)), 4);
 	}
 	QSqlDatabase::removeDatabase(connection);
 }

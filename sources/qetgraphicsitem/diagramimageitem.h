@@ -23,7 +23,9 @@
 #include "../ui/imagetransparentcolordialog.h"
 
 #include <QColor>
+#include <QFont>
 #include <QList>
+#include <QUuid>
 #include <QStyleOptionGraphicsItem>
 #include <QVector>
 
@@ -46,6 +48,13 @@ class DiagramImageItem : public QetGraphicsItem {
 	Q_PROPERTY(qreal skewX READ skewX WRITE setSkewX NOTIFY transformChanged)
 	Q_PROPERTY(qreal skewY READ skewY WRITE setSkewY NOTIFY transformChanged)
 	Q_PROPERTY(QPointF pivot READ pivot WRITE setPivot NOTIFY transformChanged)
+	Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
+	// The picture's source -- original, crop rectangle, transparent
+	// colours -- as one value. The displayed pixmap is computed from it,
+	// so every edit of it (crop, colour key, mirror, replace) is one
+	// undo step on this property alone.
+	Q_PROPERTY(QVariant imageSource READ imageSourceVariant WRITE setImageSourceVariant)
+	Q_PROPERTY(bool adaptToDarkTheme READ adaptToDarkTheme WRITE setAdaptToDarkTheme NOTIFY adaptToDarkThemeChanged)
 	// A second, deliberately non-compensating property on the SAME
 	// underlying value -- setPivot() (above) intentionally adjusts
 	// pos() to keep the image visually in place, which is exactly
@@ -56,12 +65,29 @@ class DiagramImageItem : public QetGraphicsItem {
 	// would silently overwrite that already-correct pos() a second
 	// time. rawPivot exists solely for that one caller.
 	Q_PROPERTY(QPointF rawPivot READ pivot WRITE setPivotRaw NOTIFY transformChanged)
+	// Whether the pivot was placed by hand: a hand-placed pivot is saved
+	// and kept through a resize. Changes in the same undo step as the
+	// pivot itself, so that Ctrl+Z restores both.
+	Q_PROPERTY(bool pivotIsCustom READ pivotIsCustom WRITE setPivotIsCustom)
 
 	// constructors, destructor
 	public:
 	DiagramImageItem(QetGraphicsItem * = nullptr);
 	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = nullptr);
 	~DiagramImageItem() override;
+
+	struct ImageSource
+	{
+		QPixmap base;
+		QRect crop;
+		QList<ImageTransparentColorDialog::PickedColor> colors;
+	};
+	ImageSource imageSource() const { return {m_base_pixmap, m_crop_rect, m_transparent_colors}; }
+	void setImageSource(const ImageSource &source);
+	QVariant imageSourceVariant() const;
+	void setImageSourceVariant(const QVariant &source);
+	QRect cropRect() const { return m_crop_rect; }
+	bool applyCrop(const QRect &cropRect);
 	
 	// attributes
 	public:
@@ -91,9 +117,15 @@ class DiagramImageItem : public QetGraphicsItem {
 	
 	virtual bool fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
+	QUuid uuid() const {return m_uuid;}
+	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
+	void newUuid() {setUuid(QUuid::createUuid());}	//create new uuid for this item
+	QRectF imageRect() const;
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
+	bool pivotIsCustom() const { return m_pivotIsCustom; }
+	void setPivotIsCustom(bool custom) { m_pivotIsCustom = custom; }
 	QRectF boundingRect() const override;
 	QString name() const override;
 
@@ -123,10 +155,17 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPointF pivot() const { return m_transform.pivot; }
 	void setPivot(const QPointF &pivot);
 	void setPivotRaw(const QPointF &pivot);
+	QString label() const { return m_label; }
+	void setLabel(const QString &label);
+	bool adaptToDarkTheme() const { return m_adapt_to_dark_theme; }
+	void setAdaptToDarkTheme(bool adapt);
 
 	signals:
 	void pixmapChanged();
 	void transformChanged();
+	void uuidChanged();
+	void labelChanged();
+	void adaptToDarkThemeChanged();
 
 	protected:
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
@@ -142,11 +181,13 @@ class DiagramImageItem : public QetGraphicsItem {
 	void mirror(bool horizontal);
 	void setTransparentColor();
 	void crop();
+	void pushImageSourceChange(const QString &text, const ImageSource &oldSource, const ImageSource &newSource);
 	void restoreAspectRatio();
 	void saveImageAs();
 	void saveOriginalImageAs();
 	void saveImagePixmapAs(const QPixmap &pixmap, const QString &dialogTitle, bool hasTransparency);
 	static bool writeRasterAsSvg(const QPixmap &pixmap, const QString &path);
+	static const QByteArray &encodedPng(const QPixmap &pixmap, QByteArray &cache, qint64 &cacheKey);
 	static QPixmap computeDisplayPixmap(const QPixmap &base, const QRect &cropRect, const QList<ImageTransparentColorDialog::PickedColor> &colors);
 
 	void toggleHandleMode();
@@ -175,8 +216,11 @@ class DiagramImageItem : public QetGraphicsItem {
 	static QString hintForHandleRole(HandleRole role);
 	void showStatusHint(const QString &text) const;
 	void clearStatusHint() const;
+	QRectF labelRect() const;
+	void updateLabelScale();
 
 	protected:
+	QUuid m_uuid = QUuid::createUuid();
 	QPixmap pixmap_;
 	// The true, pristine original -- never itself cropped or colour-
 	// keyed. pixmap_ (the displayed result) is always re-derived from
@@ -196,6 +240,16 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPixmap m_base_pixmap;
 	QRect m_crop_rect;   // relative to m_base_pixmap; equals m_base_pixmap.rect() when nothing has been cropped
 	QList<ImageTransparentColorDialog::PickedColor> m_transparent_colors;
+	// PNG bytes of pixmap_ and m_base_pixmap as last written, reused by
+	// toXml() while the pixmap's cacheKey() still matches. PNG encoding
+	// is the bulk of the time a save spends on a picture, and redoing it
+	// on every save, autosave and copy of an unchanged picture is pure
+	// waste. Filled from the file itself on load, so even the first save
+	// encodes nothing.
+	mutable QByteArray m_png_cache;
+	mutable qint64 m_png_cache_key = 0;
+	mutable QByteArray m_base_png_cache;
+	mutable qint64 m_base_png_cache_key = 0;
 
 	// Independent scaleX/scaleY here is the actual point of this whole
 	// member: QGraphicsItem::scale() is a single, uniform float, which
@@ -211,7 +265,18 @@ class DiagramImageItem : public QetGraphicsItem {
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
 	ShapeTransform m_original_transform;
+	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment
+	// Optional caption drawn centred under the picture (issue #349).
+	// Empty by default, and then neither saved nor painted, so a picture
+	// without one costs exactly what it did before.
+	QString m_label;
+	bool m_adapt_to_dark_theme = false;
+	QFont m_label_font;
+	QSizeF m_label_size;   // in scene units, measured once in setLabel()
+	QPointF m_label_scale{1.0, 1.0};   // scale the label rect was last computed for -- see updateLabelScale()
 	bool m_resizeCenterAnchored = false;   // decided once, at press time -- see handlerMousePressEvent()'s comment for why, mirroring the identical fix already made for shape creation
 };
+Q_DECLARE_METATYPE(DiagramImageItem::ImageSource)
+
 #endif
