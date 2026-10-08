@@ -34,7 +34,7 @@
 ;--------------------------------
 ; NSIS 3 requires SetCompressor BEFORE any Section or Function
 SetCompressor /FINAL /SOLID lzma
-
+Unicode true
 ;--------------------------------
 ; Includes
 !include x64.nsh
