@@ -128,6 +128,16 @@ namespace TerminalStripDrawer
 		}
 	}
 
+	ElementData::TerminalType TrueRealTerminal::type() const
+	{
+		return m_real ? m_real->type() : ElementData::TTGeneric;
+	}
+
+	bool TrueRealTerminal::isLed() const
+	{
+		return m_real ? m_real->isLed() : false;
+	}
+
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
         m_bridge { bridge }
     {}

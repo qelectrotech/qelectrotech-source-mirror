@@ -459,6 +459,50 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="6">
+       <widget class="QLabel" name="label_symbol">
+        <property name="text">
+         <string>Symbol</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="6">
+       <widget class="QSpinBox" name="m_type_symbol_y_sb">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="6">
+       <widget class="QSpinBox" name="m_type_symbol_height_sb">
+        <property name="toolTip">
+         <string>Height of the terminal type symbol (fuse, ground, led...). 0 disable the symbol.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLabel" name="label_connection">
+        <property name="text">
+         <string>Connection length</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="3">
+       <widget class="QSpinBox" name="m_connection_length_sb">
+        <property name="toolTip">
+         <string>Length of the connections drawn above and under each terminal. 0 disable the connections.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -1087,6 +1131,54 @@
     <hint type="sourcelabel">
      <x>836</x>
      <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_type_symbol_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>900</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_type_symbol_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>900</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_connection_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>431</y>
     </hint>
     <hint type="destinationlabel">
      <x>480</x>

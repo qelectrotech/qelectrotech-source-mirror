@@ -20,6 +20,8 @@
 #include <QPainter>
 #include <QHash>
 
+#include <algorithm>
+
 namespace TerminalStripDrawer {
 
 /**
@@ -37,6 +39,156 @@ void TerminalStripDrawer::setStrip(QSharedPointer<AbstractTerminalStripInterface
 {
 	m_strip = strip;
 }
+
+namespace {
+
+/*
+ * The symbols are described in a box of 20 x 14 units centered on (0,0).
+ * The current flow from the top to the bottom, like in the terminal strip.
+ * drawTypeSymbol() scale this box to fit the real available area.
+ */
+constexpr qreal symbol_width{20};
+constexpr qreal symbol_height{14};
+
+void drawFuseSymbol(QPainter *painter)
+{
+	painter->drawLine(QPointF{0, -7}, QPointF{0, 7});
+	painter->drawRect(QRectF{-3, -5, 6, 10});
+}
+
+void drawSectionalSymbol(QPainter *painter)
+{
+	painter->drawLine(QPointF{0, -7}, QPointF{0, 7});
+	painter->drawLine(QPointF{-4, 2}, QPointF{4, -2});
+}
+
+void drawDiodeSymbol(QPainter *painter)
+{
+	const qreal t{symbol_height / 3};
+	const QPointF triangle[3] { {-t, -t}, {t, -t}, {0, t} };
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -t});
+	painter->drawPolygon(triangle, 3);
+	painter->drawLine(QPointF{-t, t}, QPointF{t, t});
+	painter->drawLine(QPointF{0, t}, QPointF{0, 7});
+}
+
+void drawLedSymbol(QPainter *painter)
+{
+	drawDiodeSymbol(painter);
+	const qreal t{symbol_height / 3};
+		//The two rays
+	painter->drawLine(QPointF{t + 0.5, -1}, QPointF{t + 3.5, -4});
+	painter->drawLine(QPointF{t + 0.5, 2}, QPointF{t + 3.5, -1});
+}
+
+void drawGroundSymbol(QPainter *painter)
+{
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -2});
+	painter->drawLine(QPointF{-5, -2}, QPointF{5, -2});
+	painter->drawLine(QPointF{-3, 1}, QPointF{3, 1});
+	painter->drawLine(QPointF{-1, 4}, QPointF{1, 4});
+}
+
+/**
+ * @brief drawScaled
+ * Call @a draw with the painter moved by @a dx and scaled by @a factor.
+ * The width of the pen is kept constant.
+ */
+template<typename Func>
+void drawScaled(QPainter *painter, qreal dx, qreal factor, Func draw)
+{
+	painter->save();
+	painter->translate(dx, 0);
+	painter->scale(factor, factor);
+	auto pen_{painter->pen()};
+	pen_.setWidthF(pen_.widthF() / factor);
+	painter->setPen(pen_);
+	draw(painter);
+	painter->restore();
+}
+
+/**
+ * @brief drawTypeSymbol
+ * Draw the symbol of a terminal type in @a box. The symbol is scaled
+ * to fit in @a box, so it never overflow on the neighbouring terminal.
+ * The painter must have a pen set, the brush is ignored.
+ * @param painter
+ * @param box : area available for the symbol, in the painter coordinates
+ * @param type : type of the terminal, a generic terminal have no symbol
+ * @param led : if true a led symbol is drawn. If the terminal have
+ * also a type (fuse...), the type symbol and the led are drawn side by side.
+ */
+void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalType type, bool led)
+{
+	const bool have_type{type != ElementData::TTGeneric};
+	if (!led && !have_type) {
+		return;
+	}
+
+	const qreal scale_{qMin(box.width() / symbol_width, box.height() / symbol_height)};
+	if (scale_ <= 0) {
+		return;
+	}
+
+	painter->save();
+	painter->setBrush(Qt::NoBrush);
+	painter->translate(box.center());
+	painter->scale(scale_, scale_);
+	auto pen_{painter->pen()};
+	pen_.setWidthF(pen_.widthF() / scale_);
+	painter->setPen(pen_);
+
+	auto draw_type = [type](QPainter *p)
+	{
+		switch (type)
+		{
+			case ElementData::TTFuse      : drawFuseSymbol(p); break;
+			case ElementData::TTSectional : drawSectionalSymbol(p); break;
+			case ElementData::TTDiode     : drawDiodeSymbol(p); break;
+			case ElementData::TTGround    : drawGroundSymbol(p); break;
+			default: break;
+		}
+	};
+
+	if (led && have_type)
+	{
+			//Not enough place for two full size symbols, draw them smaller side by side
+		drawScaled(painter, -5, 0.7, draw_type);
+		drawScaled(painter, 2.5, 0.7, drawLedSymbol);
+	}
+	else if (led) {
+		drawLedSymbol(painter);
+	}
+	else {
+		draw_type(painter);
+	}
+
+	painter->restore();
+}
+
+/**
+ * @brief drawConnections
+ * Draw a connection above and a connection under @a terminal_rect, in the middle
+ * of the rect. A connection is a short line ended by a little circle.
+ * @param painter
+ * @param terminal_rect
+ * @param length : the total length of a connection, circle included
+ */
+void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length)
+{
+	const qreal radius{qMin<qreal>(length / 4, 2)};
+	const qreal x{terminal_rect.width() / 2};
+	const qreal top{terminal_rect.top()};
+	const qreal bottom{terminal_rect.top() + terminal_rect.height()};
+
+	painter->drawLine(QPointF{x, top}, QPointF{x, top - length + radius * 2});
+	painter->drawEllipse(QPointF{x, top - length + radius}, radius, radius);
+
+	painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length - radius * 2});
+	painter->drawEllipse(QPointF{x, bottom + length - radius}, radius, radius);
+}
+
+} //End anonymous namespace
 
 /**
  * @brief TerminalStripDrawer::paint
@@ -141,6 +293,21 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 terminal_rect = m_pattern->m_terminal_rect[index_];
                     //Draw terminal rect
                 painter->drawRect(terminal_rect);
+
+					//Draw the symbol of the terminal type (fuse, ground, led...)
+				if (m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i])
+				{
+					drawTypeSymbol(painter,
+								   QRectF{0, m_pattern->m_type_symbol_y,
+										  terminal_rect.width(), m_pattern->m_type_symbol_height},
+								   real_terminal_vector[i]->type(),
+								   real_terminal_vector[i]->isLed());
+				}
+
+					//Draw the connections, above and under the terminal
+				if (m_pattern->m_connection_length > 0) {
+					drawConnections(painter, terminal_rect, m_pattern->m_connection_length);
+				}
                     //Draw a stronger line if the current terminal have level
                     //and the current level is the first
                 if (real_t_count > 1 && i == 0)
@@ -280,7 +447,21 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 QRectF TerminalStripDrawer::boundingRect() const
 {
-    return QRectF{0, 0, width(), height()};;
+	QRectF rect_{0, 0, width(), height()};
+
+		//The connections are drawn above and under the terminals
+	if (m_pattern && m_pattern->m_connection_length > 0)
+	{
+		const auto length_{m_pattern->m_connection_length};
+		qreal top_{0};
+		for (const auto &terminal_rect : std::as_const(m_pattern->m_terminal_rect)) {
+			top_ = std::min(top_, terminal_rect.top() - length_);
+		}
+		rect_.setBottom(rect_.bottom() + length_);
+		rect_.setTop(top_);
+	}
+
+	return rect_;
 }
 
 void TerminalStripDrawer::setLayout(QSharedPointer<TerminalStripLayoutPattern> layout)
