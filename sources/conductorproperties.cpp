@@ -436,7 +436,10 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
 	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
-	cond_size            = settings.value(prefix + "size", "1").toInt();
+		// Saved with QString::number(cond_size): a decimal such as 1.4,
+		// which toInt() would read as 0.
+	cond_size            = settings.value(prefix + "size", "1").toDouble();
+	if (!qIsFinite(cond_size) || cond_size <= 0) cond_size = 1;
 	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();

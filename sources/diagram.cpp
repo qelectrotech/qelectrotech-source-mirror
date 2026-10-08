@@ -45,6 +45,7 @@
 #include "diagramsortkeys.h"
 #include "itemgroups.h"
 #include "textgrid.h"
+#include "foliogrid.h"
 #include <QGraphicsView>
 #include <QTextStream>
 #include <algorithm>
@@ -339,10 +340,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-		int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-								   Diagram::xGrid).toInt();
-		int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-								   Diagram::yGrid).toInt();
+		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 		qreal limit_x = rect.x() + rect.width();
 		qreal limit_y = rect.y() + rect.height();
@@ -642,7 +641,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::AltModifier)
+	else if(event->modifiers() == Qt::ControlModifier)
 	{
 		QSettings settings;
 		int xKeyGridFine = settings.value(QStringLiteral("diagrameditor/key_fine_Xgrid"),
@@ -685,7 +684,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::ControlModifier)
+	else if(event->modifiers() == Qt::AltModifier)
 	{
 		//Adjust the alignment of a texts group
 		if(selectedItems().size() == 1
@@ -1614,10 +1613,14 @@ bool Diagram::fromXml(QDomElement &document,
 		m_conductors_autonum_name = root.attribute(QStringLiteral("conductorAutonum"));
 
 			// Load Freeze New Element
-		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement")).toInt();
+			// Written as "true"/"false" by toXml(), so compare the text:
+			// toInt() of either word is 0.
+		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement"))
+				== QLatin1String("true");
 
 			// Load Freeze New Conductor
-		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor")).toInt();
+		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor"))
+				== QLatin1String("true");
 
 			//Load Element Folio Sequential
 		folioSequentialsFromXml(root,
@@ -2942,10 +2945,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 QPointF Diagram::snapToGrid(const QPointF &p)
 {
 	QSettings settings;
-	int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-							   Diagram::xGrid).toInt();
-	int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-							   Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
 	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
@@ -2977,10 +2978,8 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 			: settings.value(TextGrid::settings_key, 1).toReal();
 
 	return TextGrid::snap(p,
-						  settings.value(QStringLiteral("diagrameditor/Xgrid"),
-										 Diagram::xGrid).toInt(),
-						  settings.value(QStringLiteral("diagrameditor/Ygrid"),
-										 Diagram::yGrid).toInt(),
+						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
+						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
 						  divisor);
 }
 

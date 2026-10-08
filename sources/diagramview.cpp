@@ -40,6 +40,7 @@
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
+#include "foliogrid.h"
 #include "diagramcontexttoolbar.h"
 #include "diagramgestureoverlay.h"
 #include "gesturesettings.h"
@@ -643,10 +644,8 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	if (selection.isEmpty()) return;
 
 	QSettings settings;
-	const int x_grid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-									  Diagram::xGrid).toInt();
-	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-									  Diagram::yGrid).toInt();
+	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 	const QPointF offset(stepOffset.x() * x_grid, stepOffset.y() * y_grid);
 
 	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D

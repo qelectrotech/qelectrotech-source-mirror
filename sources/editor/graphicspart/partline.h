@@ -127,6 +127,6 @@ class PartLine : public CustomElementGraphicPart
 		int m_vector_index = -1;
 		QPropertyUndoCommand *m_undo_command;
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
-		qreal m_rot;
+		qreal m_rot = 0;
 };
 #endif

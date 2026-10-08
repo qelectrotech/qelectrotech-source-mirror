@@ -20,6 +20,7 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../alignment.h"
 #include "../diagram.h"
+#include "../foliogrid.h"
 #include "../diagramcontent.h"
 #include "../itemgroups.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
@@ -121,8 +122,8 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 	m_locked_count = dc.removeNonMovableItems();
 
 	QSettings settings;
-	const int x_grid = settings.value(QStringLiteral("diagrameditor/Xgrid"), Diagram::xGrid).toInt();
-	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"), Diagram::yGrid).toInt();
+	const int x_grid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int y_grid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 	const qreal text_divisor = settings.value(TextGrid::settings_key, 1).toReal();
 
 		//Each kind goes where dragging it would have left it: symbols,

@@ -1595,6 +1595,18 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 		m_crop_rect = m_crop_rect.intersected(m_base_pixmap.rect());
 		if (m_crop_rect.isEmpty())
 			m_crop_rect = m_base_pixmap.rect();
+
+		// The picture shown is always exactly the crop's size. When it is
+		// not, the crop is stale: older versions saved it after the crop
+		// was undone (fixed in #1310), with the uncropped picture shown.
+		// The next edit would apply that crop again, and undoing the edit
+		// would show the cropped picture. Keep what was shown instead.
+		if (hasCrop && pixmap.size() != m_crop_rect.size())
+		{
+			if (pixmap.size() != m_base_pixmap.size())
+				m_base_pixmap = pixmap;
+			m_crop_rect = m_base_pixmap.rect();
+		}
 	}
 
 	// Baseline: the plain "rotation"/"size" attributes, understood by

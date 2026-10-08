@@ -437,16 +437,3 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_UNITY_AUX4 };
 	return list;
 }
-
-QStringList QETInformation::terminalElementInfoKeys()
-{
-	QStringList list = { ELMT_FORMULA,
-						 ELMT_LABEL,
-						 ELMT_COMMENT,
-						 ELMT_DESIGNATION,
-						 ELMT_MANUFACTURER,
-						 ELMT_MANUFACTURER_REF,
-						 ELMT_MACHINE_MANUFACTURER_REF,
-						 ELMT_SUPPLIER };
-	return list;
-}

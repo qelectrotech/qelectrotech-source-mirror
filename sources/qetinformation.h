@@ -184,8 +184,6 @@ namespace QETInformation
 		State validate(QString &input, int &pos) const override;
 	};
 
-	QStringList terminalElementInfoKeys();
-
 	QString infoToVar(const QString &info);
 	QString translatedInfoKey(const QString &info);
 }

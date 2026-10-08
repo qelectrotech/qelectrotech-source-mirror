@@ -53,6 +53,7 @@ static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T4
 };
 #include "../qetxml.h"
+#include "../positionorder.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
 #include <QDebug>
@@ -1055,7 +1056,7 @@ bool Element::fromXml(QDomElement &e,
 			|| e.hasAttribute(QStringLiteral("seqt_1"))
 			|| e.hasAttribute(QStringLiteral("seqtf_1"))
 			|| e.hasAttribute(QStringLiteral("seqh_1"))
-			|| e.hasAttribute(QStringLiteral("sequf_1")))
+			|| e.hasAttribute(QStringLiteral("seqhf_1")))
 		ElementXmlRetroCompatibility::loadSequential(e, this);
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement(QStringLiteral("sequentialNumbers")));
@@ -1934,9 +1935,7 @@ bool comparPos(const Element *elmt1, const Element *elmt2)
 	if (a != b)
 		return a<b;
 	//In last compare the line, if line is egal, return sorted by row in real pos
-	if (elmt1->pos().x() == elmt2->pos().x())
-		return elmt1->y() <= elmt2->pos().y();
-	return elmt1->pos().x() <= elmt2->pos().x();
+	return PositionOrder::xThenY(elmt1->pos(), elmt2->pos());
 }
 
 /**

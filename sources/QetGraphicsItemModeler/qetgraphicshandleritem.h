@@ -20,6 +20,8 @@
 
 #include <QGraphicsObject>
 #include <QPen>
+#include <QPointer>
+class QPropertyAnimation;
 
 /**
 	@brief The QetGraphicsHandlerItem class
@@ -69,10 +71,11 @@ class QetGraphicsHandlerItem : public QGraphicsObject
 		qreal m_original_size;
 		QColor m_color;
 		QPen m_pen;
+		QPointer<QPropertyAnimation> m_size_animation;
 		
 	public:
 		static QVector<QetGraphicsHandlerItem *> handlerForPoint(
-				const QVector<QPointF> &points, int size = 10);
+				const QVector<QPointF> &points, qreal size = 10);
 };
 
 #endif // QETGRAPHICSHANDLERITEM_H

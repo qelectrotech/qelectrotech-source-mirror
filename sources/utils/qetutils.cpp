@@ -134,6 +134,77 @@ bool QETUtils::sortBeginIntString(const QString &str_a, const QString &str_b)
 }
 
 /**
+ * @brief QETUtils::naturalLessThan
+ * Natural order comparison, case insensitive :
+ * "2" < "10" and "XAUZ1:2" < "XAUZ1:10".
+ * Runs of digits are compared by value wherever they are in the string.
+ * Implemented by hand because QCollator numeric mode is not honored by
+ * every Qt backend (it is ignored without ICU).
+ * The result is a strict weak ordering, so it is safe to use with std::sort.
+ * @param str_a
+ * @param str_b
+ * @return true if str_a must be placed before str_b
+ */
+bool QETUtils::naturalLessThan(const QString &str_a, const QString &str_b)
+{
+	const int len_a = str_a.size();
+	const int len_b = str_b.size();
+	int i = 0;
+	int j = 0;
+	int zeros_diff = 0; //Tie breaker : "01" and "1" have the same value
+
+	while (i < len_a && j < len_b)
+	{
+		const QChar ca = str_a.at(i);
+		const QChar cb = str_b.at(j);
+
+		if (ca.isDigit() && cb.isDigit())
+		{
+			int start_a = i;
+			int start_b = j;
+			while (i < len_a && str_a.at(i).isDigit()) { ++i; }
+			while (j < len_b && str_b.at(j).isDigit()) { ++j; }
+
+			int sig_a = start_a;
+			int sig_b = start_b;
+			while (sig_a < i - 1 && str_a.at(sig_a) == QLatin1Char('0')) { ++sig_a; }
+			while (sig_b < j - 1 && str_b.at(sig_b) == QLatin1Char('0')) { ++sig_b; }
+
+			const int digits_a = i - sig_a;
+			const int digits_b = j - sig_b;
+			if (digits_a != digits_b) {
+				return digits_a < digits_b;
+			}
+
+			const int cmp = QStringView(str_a).mid(sig_a, digits_a)
+					.compare(QStringView(str_b).mid(sig_b, digits_b));
+			if (cmp != 0) {
+				return cmp < 0;
+			}
+
+			if (zeros_diff == 0) {
+				zeros_diff = (sig_a - start_a) - (sig_b - start_b);
+			}
+		}
+		else
+		{
+			const QChar la = ca.toCaseFolded();
+			const QChar lb = cb.toCaseFolded();
+			if (la != lb) {
+				return la < lb;
+			}
+			++i;
+			++j;
+		}
+	}
+
+	if (i < len_a || j < len_b) {
+		return (len_a - i) < (len_b - j); //The shortest remaining part first
+	}
+	return zeros_diff > 0 ? false : zeros_diff < 0; //"1" before "01"
+}
+
+/**
  * @brief QETUtils::pixelSizedFont
  * Set the font size to pixelSize instead of pointSize (if needed).
  * The font used to draw diagram must be pixel sized instead of point sized (default by Qt)

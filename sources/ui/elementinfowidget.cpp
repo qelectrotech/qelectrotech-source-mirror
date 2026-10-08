@@ -285,12 +285,7 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	QStringList keys;
-	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
-		keys = QETInformation::terminalElementInfoKeys();
-	 } else {
-		keys = QETInformation::elementInfoKeys();
-	}
+	QStringList keys = QETInformation::elementInfoKeys();
 
 		//"exclude_from_bom" is part of elementInfoKeys() because the project
 		//database builds the element_info table from that list, but it is not
@@ -354,9 +349,7 @@ void ElementInfoWidget::buildInterface()
 */
 QStringList ElementInfoWidget::predefinedKeys() const
 {
-	QStringList keys = (m_element.data()->elementData().m_type == ElementData::Terminal)
-			? QETInformation::terminalElementInfoKeys()
-			: QETInformation::elementInfoKeys();
+	QStringList keys = QETInformation::elementInfoKeys();
 
 	keys << QETInformation::ELMT_FORMULA_ID
 		 << QStringLiteral("auto_num_locked")

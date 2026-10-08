@@ -482,7 +482,10 @@ namespace autonum
 								 m_seq_struct.wrap.size()))
 					);
 
-		for (int i=1; i<=max ; i++)
+			// Highest number first: "%sequ_1" is also the start of
+			// "%sequ_10", so replacing 1 before 10 would turn %sequ_10
+			// into the first value followed by a "0".
+		for (int i=max; i>=1 ; i--)
 		{
 			if (m_assigned_label.contains("%sequ_" + QString::number(i)) && m_seq_struct.unit.size() >= i) {
 				m_assigned_label.replace("%sequ_" + QString::number(i),m_seq_struct.unit.at(i-1));
