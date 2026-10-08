@@ -45,6 +45,7 @@
 #include "diagramsortkeys.h"
 #include "itemgroups.h"
 #include "textgrid.h"
+#include "foliogrid.h"
 #include <QGraphicsView>
 #include <QTextStream>
 #include <algorithm>
@@ -339,10 +340,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-		int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-								   Diagram::xGrid).toInt();
-		int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-								   Diagram::yGrid).toInt();
+		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 		qreal limit_x = rect.x() + rect.width();
 		qreal limit_y = rect.y() + rect.height();
@@ -2946,10 +2945,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 QPointF Diagram::snapToGrid(const QPointF &p)
 {
 	QSettings settings;
-	int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-							   Diagram::xGrid).toInt();
-	int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-							   Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
 	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
@@ -2981,10 +2978,8 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 			: settings.value(TextGrid::settings_key, 1).toReal();
 
 	return TextGrid::snap(p,
-						  settings.value(QStringLiteral("diagrameditor/Xgrid"),
-										 Diagram::xGrid).toInt(),
-						  settings.value(QStringLiteral("diagrameditor/Ygrid"),
-										 Diagram::yGrid).toInt(),
+						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
+						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
 						  divisor);
 }
 
