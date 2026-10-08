@@ -11279,7 +11279,7 @@ Here are the last messages logged before it closed — you can save them to incl
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Profondità</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>

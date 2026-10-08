@@ -10886,7 +10886,7 @@ Mantenga pulsada la tecla Ctrl durante el desplazamiento para colocar libremente
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Profundidad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>

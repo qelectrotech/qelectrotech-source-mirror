@@ -11033,7 +11033,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">العمق</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
@@ -11964,7 +11964,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="114"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الغاء</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="126"/>

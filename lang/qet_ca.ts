@@ -11379,7 +11379,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Profunditat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1672"/>

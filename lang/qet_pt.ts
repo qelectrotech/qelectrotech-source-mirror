@@ -11601,7 +11601,7 @@ To make a script of it, ask your AI assistant: the button below copies the reque
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Profundidade</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1828"/>
@@ -11850,7 +11850,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="164"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mostrar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="179"/>

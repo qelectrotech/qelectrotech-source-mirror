@@ -11358,7 +11358,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Глибина</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
@@ -14809,7 +14809,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>
         <source>Rotate the selection</source>
-        <translation></translation>
+        <translation>Повернути виділення</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>

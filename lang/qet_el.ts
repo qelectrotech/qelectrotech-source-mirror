@@ -10981,7 +10981,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Βάθος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
