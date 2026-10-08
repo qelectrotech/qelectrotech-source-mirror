@@ -17,6 +17,7 @@
 */
 #include "pdf_links.h"
 
+#include "cable/cablepart.h"
 #include "diagram.h"
 #include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -50,10 +51,13 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 	const QRectF      &pageBounds = geom.pageBounds;
 
 	// Compute, in PDF points on its OWN page, the rectangle to frame for a
-	// target element (used as a /FitR destination so the link zooms onto it).
-	auto destRectPdf = [&](Element *tgt) -> QRectF {
-		Diagram *dg = tgt ? tgt->diagram() : nullptr;
-		if (!dg) return QRectF();
+	// target (used as a /FitR destination so the link zooms onto it).
+	// The target is given as a rectangle in the scene of @p dg, since what
+	// is pointed at is not always an element: a cable section is a plain
+	// drawn line somewhere on another folio.
+	auto frameRectPdf = [&](Diagram *dg, const QRectF &targetScene) -> QRectF {
+		if (!dg || targetScene.width() <= 0.0 || targetScene.height() <= 0.0)
+			return QRectF();
 		const QRectF srcT = geom.sourceRectOf(dg);
 		if (srcT.width() <= 0.0 || srcT.height() <= 0.0) return QRectF();
 		const qreal sT = qMin(target.width()  / srcT.width(),
@@ -63,35 +67,38 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		fitT.scale(sT, sT);
 		fitT.translate(-srcT.x(), -srcT.y());
 
-		QRectF elemScene = tgt->mapRectToScene(tgt->boundingRect());
-		// Frame the element with a little context, and enforce a minimum
+		// Frame the target with a little context, and enforce a minimum
 		// framed size so tiny contacts don't zoom in extremely.
+		QRectF framed = targetScene;
 		const qreal pad = 25.0;
-		elemScene.adjust(-pad, -pad, pad, pad);
+		framed.adjust(-pad, -pad, pad, pad);
 		const qreal minSide = 160.0;
-		if (elemScene.width()  < minSide)
-			elemScene.adjust(-(minSide - elemScene.width())  / 2.0, 0,
-							  (minSide - elemScene.width())  / 2.0, 0);
-		if (elemScene.height() < minSide)
-			elemScene.adjust(0, -(minSide - elemScene.height()) / 2.0,
-							 0,  (minSide - elemScene.height()) / 2.0);
+		if (framed.width()  < minSide)
+			framed.adjust(-(minSide - framed.width())  / 2.0, 0,
+						  (minSide - framed.width())  / 2.0, 0);
+		if (framed.height() < minSide)
+			framed.adjust(0, -(minSide - framed.height()) / 2.0,
+						  0,  (minSide - framed.height()) / 2.0);
 
-		const QRectF devT = fitT.mapRect(elemScene);
+		const QRectF devT = fitT.mapRect(framed);
 		const QPointF a = geom.devToPdf(devT.topLeft());
 		const QPointF b = geom.devToPdf(devT.bottomRight());
 		return QRectF(QPointF(qMin(a.x(), b.x()), qMin(a.y(), b.y())),
 					  QPointF(qMax(a.x(), b.x()), qMax(a.y(), b.y())));
 	};
 
-	auto injectLink = [&](const QRectF &sceneRect, Element *targetElmt) {
-		if (!targetElmt || !targetElmt->diagram()) return;
-		const int targetPage = pageMap.value(targetElmt->diagram(), -1);
+	// One clickable link: @p sceneRect on THIS folio leads to
+	// @p targetDiagram, framed around @p targetScene over there.
+	auto injectLinkTo = [&](const QRectF &sceneRect, Diagram *targetDiagram,
+							const QRectF &targetScene) {
+		if (!targetDiagram) return;
+		const int targetPage = pageMap.value(targetDiagram, -1);
 		if (targetPage < 1) return;
 		const QRectF devRect = fit.mapRect(sceneRect);
 		if (!devRect.isValid() || !pageBounds.intersects(devRect)) return;
 
 		QString frag = QString("page=%1").arg(targetPage);
-		const QRectF d = destRectPdf(targetElmt);   // /FitR L_B_R_T
+		const QRectF d = frameRectPdf(targetDiagram, targetScene);   // /FitR L_B_R_T
 		if (d.isValid())
 			frag += QString("&fitr=%1_%2_%3_%4")
 				.arg(qRound(d.left())).arg(qRound(d.top()))
@@ -100,6 +107,12 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		QUrl url = QUrl::fromLocalFile(outputFileName);
 		url.setFragment(frag);
 		engine->drawHyperlink(devRect, url);
+	};
+
+	auto injectLink = [&](const QRectF &sceneRect, Element *targetElmt) {
+		if (!targetElmt || !targetElmt->diagram()) return;
+		injectLinkTo(sceneRect, targetElmt->diagram(),
+					 targetElmt->mapRectToScene(targetElmt->boundingRect()));
 	};
 
 	for (auto *item : diagram->items()) {
@@ -113,6 +126,15 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 				if (!targetElmt || !targetElmt->diagram()) continue;
 				// it.value() is in the CrossRefItem's LOCAL coords -> scene
 				injectLink(xref->mapRectToScene(it.value()), targetElmt);
+			}
+			continue;
+		}
+
+		// --- Cable cross-reference links (the lines under a cable which
+		// name the folio it goes on to) ---
+		if (auto *cable = dynamic_cast<CablePart*>(item)) {
+			for (const CablePart::PdfRef &ref : cable->pdfRefs()) {
+				injectLinkTo(ref.here, ref.diagram, ref.there);
 			}
 			continue;
 		}

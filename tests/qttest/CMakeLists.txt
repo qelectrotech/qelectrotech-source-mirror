@@ -147,6 +147,23 @@ add_test(NAME tst_legacyelementtypes COMMAND tst_legacyelementtypes)
 target_include_directories(tst_legacyelementtypes PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_legacyelementtypes PRIVATE Qt::Test)
 
+# The cable type catalogue is plain data (it reads and writes the CSV file
+# holding the cable kinds), so it is compiled here on its own, together with
+# the material file helpers it shares and the element information wording.
+add_executable(
+  tst_cabletypelist
+  tst_cabletypelist.cpp
+  ${QET_DIR}/sources/cablelist/cabletypelist.cpp
+  ${QET_DIR}/sources/cablelist/cabletypelist.h
+  ${QET_DIR}/sources/materiallist/materiallist.cpp
+  ${QET_DIR}/sources/materiallist/materiallist.h
+  ${QET_DIR}/sources/qetinformation.cpp
+  ${QET_DIR}/sources/qetinformation.h)
+add_test(NAME tst_cabletypelist COMMAND tst_cabletypelist)
+target_include_directories(tst_cabletypelist PRIVATE ${QET_DIR}/sources)
+# qetinformation.h uses QRegularExpressionValidator, which lives in QtGui.
+target_link_libraries(tst_cabletypelist PRIVATE Qt::Test Qt::Gui)
+
 add_executable(
   tst_qetpalette
   tst_qetpalette.cpp

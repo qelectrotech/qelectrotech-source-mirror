@@ -77,6 +77,14 @@ class XRefProperties : public PropertiesInterface
 	void setMasterLabel (const QString master) {m_master_label = master;}
 	QString masterLabel () const			   {return m_master_label;}
 
+		/**
+			The font the reference of a cable is written with, as the
+			settings describe it -- empty when he has not set one, which
+			leaves the reference with the font of the cable texts.
+		*/
+	void setFont (const QString &font) {m_font = font;}
+	QString font () const				{return m_font;}
+
 	void setSlaveLabel(const QString slave) {m_slave_label = slave;}
 	QString slaveLabel () const				{return m_slave_label;}
 
@@ -99,6 +107,7 @@ class XRefProperties : public PropertiesInterface
 	QStringList m_prefix_keys;
 	QString m_master_label;
 	QString m_slave_label;
+	QString m_font;
 	int     m_offset;
 	int     m_slave_offset;
 	QString m_key;

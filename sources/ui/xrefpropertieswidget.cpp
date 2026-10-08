@@ -17,12 +17,16 @@
 */
 
 #include <utility>
+#include <QFontDialog>
 #include <QHash>
 #include <QMetaEnum>
+#include <QPushButton>
 
 #include "xrefpropertieswidget.h"
 #include "ui_xrefpropertieswidget.h"
 #include "qdebug.h"
+#include "../qetapp.h"
+#include "../utils/qetutils.h"
 
 /**
 	@brief XRefPropertiesWidget::XRefPropertiesWidget
@@ -37,10 +41,12 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 {
 	ui->setupUi(this);
 	buildUi();
+	fillMissingTypes();
 	connect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
 	connect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
 	connect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
 	connect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);
+	connect(ui->m_font_pb, &QPushButton::clicked, this, &XRefPropertiesWidget::chooseXRefFont);
 	updateDisplay();
 }
 
@@ -54,6 +60,7 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 	disconnect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
 	disconnect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
 	disconnect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);	
+	disconnect(ui->m_font_pb, &QPushButton::clicked, this, &XRefPropertiesWidget::chooseXRefFont);
 	delete ui;
 }
 
@@ -65,8 +72,31 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 void XRefPropertiesWidget::setProperties(const QHash <QString,
 					 XRefProperties> &properties) {
 	m_properties = properties;
+	fillMissingTypes();
 	updateDisplay();
 	m_previous_type_index = ui->m_type_cb->currentIndex();
+}
+
+/**
+	@brief XRefPropertiesWidget::fillMissingTypes
+	Make sure every type the combo box offers has properties of its own.
+
+	A project built before a type existed does not hold that type, and
+	neither does a settings file written before it. Without an entry the
+	form would make one up out of thin air, and for a cable that would be
+	the very default of the coil ("%f-%l%c"), which reads as a stray dash
+	behind the folio number and two empty numbers after it.
+*/
+void XRefPropertiesWidget::fillMissingTypes()
+{
+	const QHash<QString, XRefProperties> defaults = XRefProperties::defaultProperties();
+	for (int i = 0; i < ui->m_type_cb->count(); ++i)
+	{
+		const QString type = ui->m_type_cb->itemData(i).toString();
+		if (!m_properties.contains(type)) {
+			m_properties.insert(type, defaults.value(type));
+		}
+	}
 }
 
 /**
@@ -88,6 +118,9 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 	ui->m_type_cb->setDisabled(ro);
 	ui->m_display_gb->setDisabled(ro);
 	ui->m_cross_properties_gb->setDisabled(ro);
+		//The texts stand on their own since they are needed for a cable
+		//too, and they are as much a setting as the rest.
+	ui->m_labels_gb->setDisabled(ro);
 
 	if (!ro && ui->m_display_has_contacts_rb->isChecked()) {
 		ui->m_cross_properties_gb->setDisabled(true);
@@ -104,6 +137,9 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
 	ui -> m_type_cb -> addItem(tr("Commutateur / bouton"), "commutator");
 	ui -> m_type_cb -> addItem(tr("Automate (PLC)"), "plc");
+		//Not an element: the type of the cross references a cable writes
+		//in its own label when it runs on several folios.
+	ui -> m_type_cb -> addItem(tr("Câble"), "cable");
 
 	ui -> m_snap_to_cb -> addItem(tr("En bas de page"), "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
@@ -151,6 +187,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
 	xrp.setMasterLabel(ui->m_master_le->text());
 	xrp.setSlaveLabel(ui->m_slave_le->text());
+	xrp.setFont(m_current_font);
 	xrp.setOffset(ui->m_offset_sb->value());
 	xrp.setSlaveOffset(ui->m_slave_offset_sb->value());
 
@@ -176,6 +213,10 @@ void XRefPropertiesWidget::updateDisplay()
 
 	QString master = xrp.masterLabel();
 	ui->m_master_le->setText(master);
+
+		//Which font that type's reference is written with: the button
+		//offers it for a cable alone, but every type carries its own.
+	m_current_font = xrp.font();
 
 	QString slave = xrp.slaveLabel();
 	ui->m_slave_le->setText(slave);
@@ -226,7 +267,37 @@ void XRefPropertiesWidget::updateDisplay()
 	ui->m_display_has_cross_rb->setVisible(!is_plc);
 	ui->m_show_terminal_name_cb->setVisible(!is_plc);
 	ui->m_show_all_slaves_cb->setVisible(!is_plc);
-	ui->m_cross_properties_gb->setVisible(!is_plc);
+
+	//A cable is not an element: it draws no cross of its own and stands
+	//at no place of the sheet to be pointed at. Its reference is a line
+	//of the label of the cable itself, written once per other folio the
+	//cable runs on, so the whole presentation (where a cross is put, how
+	//it is drawn) and the text of the slave have no meaning for it: what
+	//is left is the one text which is written into that line.
+	const bool is_cable = type == QLatin1String("cable");
+	ui->m_display_gb->setVisible(!is_cable);
+	ui->label_7->setVisible(!is_cable);
+	ui->m_slave_le->setVisible(!is_cable);
+	ui->label_6->setText(is_cable ? tr("Texte :") : tr("Maitre"));
+
+	//Only a cable writes its reference into its own label, so only a
+	//cable has a text whose font to choose here: the cross references
+	//of the elements keep the font they have always been drawn with.
+	ui->m_font_pb->setVisible(is_cable);
+	if (m_current_font.isEmpty())
+	{
+		ui->m_font_pb->setToolTip(tr("Police et taille : celles des textes de câble"));
+	}
+	else
+	{
+		QFont font;
+		if (QETUtils::fontFromString(font, m_current_font)) {
+			ui->m_font_pb->setToolTip(tr("Police et taille : %1, %2 pt")
+									  .arg(font.family()).arg(font.pointSizeF()));
+		}
+	}
+
+	ui->m_cross_properties_gb->setVisible(!is_plc && !is_cable);
 }
 
 /**
@@ -254,4 +325,32 @@ void XRefPropertiesWidget::enableOffsetSB(int i){
 		ui->m_offset_sb->setEnabled(false);
 	else
 		ui->m_offset_sb->setEnabled(true);
+}
+
+/**
+	@brief XRefPropertiesWidget::chooseXRefFont
+	Let him pick the font -- family, size and style, all three at once --
+	the reference of a cable is written with.
+
+	The font is only kept when he presses OK: cancelling the dialog
+	leaves the previous one standing. What he picked is written into the
+	properties by saveProperties(), the way every other field of this
+	form is, so leaving the type or pressing OK in the settings window
+	is what really stores it.
+*/
+void XRefPropertiesWidget::chooseXRefFont()
+{
+	QFont initial;
+	if (m_current_font.isEmpty() || !QETUtils::fontFromString(initial, m_current_font)) {
+		initial = QETApp::cableTextsFont();
+	}
+
+	bool ok = false;
+	const QFont font = QFontDialog::getFont(&ok, initial, this,
+											tr("Police du texte de querverweis"));
+	if (!ok) return;
+
+	m_current_font = QETUtils::fontToString(font);
+	ui->m_font_pb->setToolTip(tr("Police et taille : %1, %2 pt")
+							  .arg(font.family()).arg(font.pointSizeF()));
 }

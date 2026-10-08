@@ -17,6 +17,10 @@
 */
 #include "diagrameventaddpaste.h"
 
+#include "../cable/addcablecommand.h"
+#include "../cable/cablecopy.h"
+#include "../cable/cablepart.h"
+#include "../cable/editcablecommand.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
 #include "../qetapp.h"
@@ -28,9 +32,33 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QCoreApplication>
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 #include <QStatusBar>
+
+#include <utility>
+
+/**
+	@brief batchWith
+	Keep the cable lines of a paste together with the rest of it, so one
+	Ctrl+Z takes the whole thing back in one go. Mirrors the helper
+	DiagramView uses for its one-step paste; BatchCommand's own name
+	says "Supprimer", so the name of what the user actually did is put
+	back onto the batch.
+	@param first the step already assembled, may be null
+	@param second the step to add; ownership goes to the result
+	@return both steps as one command, or the only one of them
+*/
+static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
+{
+	if (!first) return second;
+	if (!second) return first;
+
+	auto *batched = new BatchCommand(first, second);
+	if (!first->text().isEmpty()) batched->setText(first->text());
+	return batched;
+}
 
 /**
 	@brief DiagramEventAddPaste::DiagramEventAddPaste
@@ -63,17 +91,27 @@
 		db->setUpdateBlocked(true);
 	}
 
-		//Load items at their original XML coordinates.
-	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+		//Load items at their original XML coordinates. A cable line
+		//comes back through its own list rather than through the
+		//content: the cable owns it, so it is not one of the folio's
+		//items -- and it travels as a whole, colour labels and all,
+		//whether or not the place it is going to holds a wire.
+	m_diagram->fromXml(document_xml, QPointF(), false, &m_content, &m_cables);
 
 	if (db) {
 		db->blockSignals(false);
 		db->setUpdateBlocked(false);
 		db->updateDB();
 	}
-	if (!m_content.count()) return;
+	if (!m_content.count() && m_cables.isEmpty()) return;
 
-	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
+	QList<QGraphicsItem *> movable = m_content.items(MovableItems);
+	for (CablePart *part : std::as_const(m_cables)) {
+		if (part) {
+			movable << part;
+			m_cable_items.insert(part);
+		}
+	}
 	if (movable.isEmpty()) return;
 
 		//Compute the top-left of all items' actual on-screen bounding
@@ -260,11 +298,24 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 
 	const QPointF delta = snapGrid(scene_pos) - m_initial_cursor;
 
+		//A cable line is handed a step rather than a place to stand: it
+		//folds a translation into its own geometry and into the colour
+		//labels it carries and keeps its own pos() at (0, 0)
+		//(CablePart::itemChange), so the position stored above -- always
+		//(0, 0) for it -- would be an addition again on every mouse move
+		//and the line would run away from the group it was pasted with.
+		//The difference to the last step keeps the translation the same
+		//one the rest of the paste gets, expressed their way: a place.
+	const QPointF cable_step = delta - m_cable_delta;
 	for (auto it = m_relative_pos.constBegin() ; it != m_relative_pos.constEnd() ; ++it) {
-		if (it.key()) {
+		if (!it.key()) continue;
+		if (m_cable_items.contains(it.key())) {
+			it.key()->setPos(cable_step);
+		} else {
 			it.key()->setPos(it.value() + delta);
 		}
 	}
+	m_cable_delta = delta;
 
 		//Update conductor paths so they follow the moved terminals.
 	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
@@ -328,6 +379,11 @@ void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 	PasteDiagramCommand's first redo() does not add the items to the scene --
 	it assumes they are already there, which is what Diagram::fromXml did when
 	this started. So pushing it here adopts them rather than duplicating them.
+
+	The cable lines are wired just before that, which is the first moment
+	the place they will occupy is final: each colour label takes the wire
+	it happens to stand on, and a line the user refuses to let take wires
+	away from another cable goes away again on its own.
 */
 void DiagramEventAddPaste::commit()
 {
@@ -335,7 +391,32 @@ void DiagramEventAddPaste::commit()
 	m_finished = true;
 	m_running = false;
 
-	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_content));
+	const QList<CableCopy::Wired> wired = CableCopy::wire(
+			m_diagram, m_cables,
+			m_content.conductors(DiagramContent::AnyConductor));
+	m_cables.clear();
+
+	QUndoCommand *command = nullptr;
+	if (m_content.count()) {
+		command = new PasteDiagramCommand(m_diagram, m_content);
+	}
+	for (const CableCopy::Wired &line : std::as_const(wired))
+	{
+		if (!line.part) continue;
+
+		auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
+										  m_diagram, true, line.taken);
+		added->setText(QCoreApplication::translate("CableCopy", "Coller un câble"));
+		command = batchWith(command, added);
+	}
+	if (command) {
+		m_diagram->undoStack().push(command);
+	}
+
+		//The undo stack has just run its first redo, which may have
+		//renewed the identity of a pasted conductor: the cores are
+		//pointed at the wires again so their cable field survives it.
+	CableCopy::repoint(wired);
 	emit finish();
 }
 
@@ -366,6 +447,15 @@ void DiagramEventAddPaste::removeItems()
 		m_diagram->removeItem(item);
 		delete item;
 	}
+
+		//The cable lines never reached the undo stack either, so they
+		//are taken back the way they were built: off the folio, out of
+		//the project and deleted, leaving no trace of having been
+		//there -- not even a project asking to be saved for nothing.
+	for (CablePart *part : std::as_const(m_cables)) {
+		CableCopy::discard(m_diagram, part);
+	}
+	m_cables.clear();
 
 	m_content.clear();
 	m_relative_pos.clear();

@@ -1787,6 +1787,32 @@ ConductorProperties Conductor::properties() const
 }
 
 /**
+	@brief Conductor::setCableReference
+	Record the cable core this conductor shows, together with the label
+	that assignment generates. Called only by CableManager, which works
+	the values out from the cable itself: the user never types them.
+	@param label the generated cable field, e.g. "15W1:br", empty to
+	detach the conductor from its cable
+	@param cable_uuid the cable this conductor is a core of
+	@param slot which core of that cable it shows, -1 when none
+*/
+void Conductor::setCableReference(const QString &label,
+								  const QUuid &cable_uuid,
+								  int slot)
+{
+	if (m_properties.m_cable == label
+		&& m_properties.m_cable_uuid == cable_uuid
+		&& m_properties.m_cable_slot == slot) {
+		return;
+	}
+
+	m_properties.m_cable = label;
+	m_properties.m_cable_uuid = cable_uuid;
+	m_properties.m_cable_slot = slot;
+	emit propertiesChange();
+}
+
+/**
 	@return true si le conducteur est mis en evidence
 */
 Conductor::Highlight Conductor::highlight() const

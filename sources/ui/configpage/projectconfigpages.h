@@ -24,6 +24,7 @@ class QComboBox;
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
+class QTabWidget;
 class QETProject;
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
@@ -142,6 +143,9 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		QIcon icon() const override;
 		void applyProjectConf() override;
 		virtual void changeToTab(int);
+			///Jump straight to the cable tab (used when the cable tool
+			///asks whether a numbering rule should be defined)
+		void changeToCableTab();
 	protected:
 		void initWidgets() override;
 		void initLayout() override {}
@@ -159,6 +163,8 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void updateContextElement(const QString&);//element
 		void saveContextElement();
 		void removeContextElement();
+		void saveContextCable();     //cable: one rule, no name to pick
+		void removeContextCable();
 		void importFromProject();
 
 		void applyAutoNum();
@@ -175,9 +181,12 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_conductor;
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;
+		SelectAutonumW        *m_saw_cable;
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
 		QPushButton           *m_import_pb = nullptr;
+			/// The tabs of this page, kept to switch between them
+		QTabWidget            *m_tab_widget = nullptr;
 
 };
 

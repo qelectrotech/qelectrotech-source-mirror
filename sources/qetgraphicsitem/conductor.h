@@ -122,6 +122,15 @@ class Conductor : public QGraphicsObject
 				bool only_text = false);
 		void setProperties(const ConductorProperties &property);
 		ConductorProperties properties() const;
+			/// Records which cable core this conductor shows and writes the
+			/// label that assignment generates (15W1:br) into its cable
+			/// field. Deliberately not routed through
+			/// setPropertyToPotential(): a core of a cable belongs to this
+			/// conductor alone and must never spill over a pass-through
+			/// terminal onto the neighbouring half conductor.
+		void setCableReference(const QString &label,
+							   const QUuid &cable_uuid,
+							   int slot);
 
 		void setProfile(const ConductorProfile &, Qt::Corner);
 		ConductorProfile profile(Qt::Corner) const;

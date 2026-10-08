@@ -24,6 +24,9 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../cli_export.h"
 #include "../diagram.h"
+#include "../bomexport.h"
+#include "../cablelist/cablelistrows.h"
+#include "../cablelist/cablequerywidget.h"
 #include "../dataBase/ui/elementquerywidget.h"
 #include "../dataBase/ui/summaryquerywidget.h"
 #include "../diagramcontent.h"
@@ -258,6 +261,31 @@ bool QetScriptApi::exportWires(const QString &output)
 bool QetScriptApi::exportBom(const QString &output)
 {
 	return runFlag(QStringLiteral("--export-bom"), {output});
+}
+
+/**
+	@brief QetScriptApi::exportCableList
+	Write the cable list of this project to @p output as CSV -- the same
+	bytes the "Exporter la liste des câbles au format CSV" action writes,
+	every column of CableList, every cable of the project. Written from
+	the project in memory rather than through runFlag(): the rows are
+	worked out from the cables themselves, there is no CLI flag and no
+	reopening of the file to do it through.
+	@param output path of the file to write
+	@return true when the file was written
+*/
+bool QetScriptApi::exportCableList(const QString &output)
+{
+	if (!m_project) {
+		log(QStringLiteral("qet.exportCableList: no project"));
+		return false;
+	}
+	QString error;
+	if (!BomExport::writeCsv(output, CableList::toCsv(m_project), &error)) {
+		log(QStringLiteral("qet.exportCableList: %1").arg(error));
+		return false;
+	}
+	return true;
 }
 
 bool QetScriptApi::exportWiring(const QString &output)
@@ -2679,12 +2707,16 @@ QStringList QetScriptApi::tables(int folioIndex) const
 	file, so one call creates exactly the one table asked for. A script
 	that wants either behaviour can resize the result or add a folio itself.
 
-	kind is "nomenclature" (an ElementQueryWidget, over placed elements) or
-	"summary" (a SummaryQueryWidget, over folios); query is required, since
+	kind is "nomenclature" (an ElementQueryWidget, over placed elements),
+	"summary" (a SummaryQueryWidget, over folios) or "cable_list" (a
+	CableQueryWidget, over the cables of the project); query is required
+	for the first two, since
 	both widgets otherwise build their own from a set of checkboxes that
 	default to none checked, and "SELECT with no columns" is not a useful
 	table -- query() against element_nomenclature_view or
-	project_summary_view is the way to find one that is.
+	project_summary_view is the way to find one that is. For
+	"cable_list" the query is comma-joined column keys of CableList, and
+	empty means the default columns.
 
 	Not undoable: newTable(), which create() calls, calls
 	Diagram::addItem() directly, with no undo command of its own, in the
@@ -2708,7 +2740,7 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
 		return -1;
 	}
-	if (query.isEmpty()) {
+	if (query.isEmpty() && kind != QLatin1String("cable_list")) {
 		// Both widgets build their query from a set of checkboxes that
 		// default to none checked, so "no query" is not "the sensible
 		// default" here the way it might look -- it is SELECT with no
@@ -2717,6 +2749,9 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		// instead, over query() -- the same project database and the same
 		// two views this project already exposes, element_nomenclature_view
 		// for a nomenclature table and project_summary_view for a summary.
+		// A cable list is not read from that database (its rows come
+		// straight from the cables of the project), so for that kind an
+		// empty query is allowed and simply means "the default columns".
 		log(QStringLiteral("qet.%1: a query is required -- try qet.query() against "
 						   "element_nomenclature_view or project_summary_view first "
 						   "to find one that returns what is wanted").arg(caller));
@@ -2732,8 +2767,27 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		auto *w = new SummaryQueryWidget();
 		w->setQuery(query);
 		content = w;
+	} else if (kind == QLatin1String("cable_list")) {
+		auto *w = new CableQueryWidget();
+		if (!query.isEmpty()) {
+			// Comma-joined column keys; keys the list does not know are
+			// ignored by setFields(), and an empty list of usable keys
+			// leaves the default columns rather than a blank table.
+			const QStringList fields = query.split(QLatin1Char(','), Qt::SkipEmptyParts);
+			w->setFields(fields);
+			if (w->selectedKeys().isEmpty()) {
+				w->setFields(CableList::defaultKeys());
+			}
+		} else {
+			// No query for this kind means the default columns, as
+			// promised above. The dialog a user opens leaves an empty
+			// table when nothing is picked, but a script asking for
+			// "a cable list" asks for the columns everybody gets.
+			w->setFields(CableList::defaultKeys());
+		}
+		content = w;
 	} else {
-		log(QStringLiteral("qet.%1: unknown kind '%2'; expected nomenclature or summary").arg(caller, kind));
+		log(QStringLiteral("qet.%1: unknown kind '%2'; expected nomenclature, summary or cable_list").arg(caller, kind));
 		return -1;
 	}
 

@@ -108,19 +108,26 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		auto saw_conductor = new SelectAutonumW(1);
 		auto saw_element = new SelectAutonumW(0);
 		auto saw_folio = new SelectAutonumW(2);
+		auto saw_cable = new SelectAutonumW(3);
+			//A cable is numbered by one rule and that is all there is:
+			//the row which lists the available numberings is hidden.
+		saw_cable->setSingleRuleMode(true);
 
 		initAutoNumTab(m_autonum_conductor, saw_conductor, QStringLiteral("autonum/conductor"));
 		initAutoNumTab(m_autonum_element, saw_element, QStringLiteral("autonum/element"));
 		initAutoNumTab(m_autonum_folio, saw_folio, QStringLiteral("autonum/folio"));
+		initAutoNumTab(m_autonum_cable, saw_cable, QStringLiteral("autonum/cable"));
+		m_autonum_cable.fixed_name = QETProject::cableAutoNumRuleName();
 
 		QSettings autonum_settings;
 		loadAutoNumTab(m_autonum_conductor, autonum_settings);
 		loadAutoNumTab(m_autonum_element, autonum_settings);
 		loadAutoNumTab(m_autonum_folio, autonum_settings);
+		loadAutoNumTab(m_autonum_cable, autonum_settings);
 
 		// Intercept Return key in the combo line edits so it doesn't
 		// activate the dialog's default button (OK).
-		for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+		for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 			if (QComboBox *combo = tab->widget->contextComboBox()) {
 				if (combo->lineEdit()) {
 					combo->lineEdit()->installEventFilter(this);
@@ -165,6 +172,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conducteurs"));
 		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Eléments"));
 		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Folios"));
+		autonum_inner_tab->addTab(m_autonum_cable.widget, tr("Câbles"));
 		autonum_layout->addWidget(autonum_inner_tab);
 		tab_widget -> addTab (autonum_widget, tr("Numérotation auto"));
 	}
@@ -274,6 +282,20 @@ void NewDiagramPage::applyConf()
 		settings.endArray();
 
 		// save global auto-numbering defaults
+		//
+		// The cable rule is written here as well as by its own Apply
+		// button. The cable tool asks a project for that rule the
+		// moment he tries to draw a cable, and a project built out of
+		// settings he has just filled in and confirmed must not turn
+		// up without one -- which is what would happen if only the
+		// Apply button of that one tab could save it. A rule nobody
+		// has finished filling in is left alone, and a tab he has not
+		// touched writes nothing at all.
+		if (m_autonum_cable.widget
+			&& m_autonum_cable.widget->isModified()
+			&& m_autonum_cable.widget->isValid()) {
+			saveAutoNumContext(m_autonum_cable);
+		}
 		persistAutonumSettings();
 	}
 }
@@ -387,6 +409,12 @@ void NewDiagramPage::loadAutoNumTab(AutoNumTab &tab, QSettings &settings)
 		tab.widget->contextComboBox()->setCurrentText(data.second);
 		tab.widget->setContext(tab.contexts.value(data.second));
 	}
+		//A tab which keeps one single rule can take it away again with
+		//a button of its own -- the row the others delete from is
+		//hidden here -- but only when there really is one to take away.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(tab.contexts.contains(tab.fixed_name));
+	}
 }
 
 /**
@@ -396,15 +424,25 @@ void NewDiagramPage::loadAutoNumTab(AutoNumTab &tab, QSettings &settings)
 */
 void NewDiagramPage::saveAutoNumContext(AutoNumTab &tab)
 {
-	QString name = tab.widget->contextComboBox()->currentText().trimmed();
-	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
-		return;
+	// A tab which keeps one single rule has no visible combo box to name
+	// it with (the row is hidden): it saves under its fixed name.
+	QString name = tab.fixed_name;
+	if (name.isEmpty()) {
+		name = tab.widget->contextComboBox()->currentText().trimmed();
+		if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+			return;
+		}
 	}
 	tab.contexts.insert(name, tab.widget->toNumContext());
 	if (tab.widget->contextComboBox()->findText(name) == -1) {
 		tab.widget->contextComboBox()->addItem(name);
 	}
+	tab.widget->contextComboBox()->setCurrentText(name);
 	persistAutonumSettings();
+		//There is a rule now, so there is something to take away again.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(true);
+	}
 }
 
 /**
@@ -413,17 +451,37 @@ void NewDiagramPage::saveAutoNumContext(AutoNumTab &tab)
 */
 void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
 {
-	QString name = tab.widget->contextComboBox()->currentText().trimmed();
-	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
-		return;
+	QString name = tab.fixed_name;
+	if (name.isEmpty()) {
+		name = tab.widget->contextComboBox()->currentText().trimmed();
+		if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+			return;
+		}
 	}
 	int idx = tab.widget->contextComboBox()->findText(name);
-	if (idx == -1) return;
+		// A name which is not in the list was never saved, so there is
+		// nothing to take out -- unless it is a single rule, which is
+		// always under its fixed name whether the combo knows it or not.
+	if (idx == -1 && tab.fixed_name.isEmpty()) return;
+	if (idx != -1) {
+		tab.widget->contextComboBox()->removeItem(idx);
+		tab.widget->contextComboBox()->setCurrentText(QString());
+	}
 	tab.contexts.remove(name);
-	tab.widget->contextComboBox()->removeItem(idx);
-	tab.widget->contextComboBox()->setCurrentText(QString());
 	tab.widget->setContext(NumerotationContext());
 	persistAutonumSettings();
+
+		//A tab which keeps one single rule has no list to delete it
+		//from, so this is where the button of its own goes away too.
+		//And having just taken the rule away means numbering cables by
+		//hand again: the question of defining one comes back the next
+		//time a cable is drawn, so it is not held back any more.
+	if (!tab.fixed_name.isEmpty()) {
+		tab.widget->setRuleRemovable(false);
+		QSettings settings;
+		settings.setValue(QStringLiteral("cable-management/ask_numbering_rule"),
+						  true);
+	}
 }
 
 /**
@@ -433,12 +491,21 @@ void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
 void NewDiagramPage::persistAutonumSettings()
 {
 	QSettings settings;
-	for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+	for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 		QString current;
-		QComboBox *combo = tab->widget->contextComboBox();
-		if (!isPlaceholder(combo, combo->currentText().trimmed())
-		    && tab->contexts.contains(combo->currentText().trimmed())) {
-			current = combo->currentText().trimmed();
+		if (!tab->fixed_name.isEmpty()) {
+			// The one rule of a single-rule tab is in use as soon as
+			// it exists: there is nothing to choose between.
+			if (tab->contexts.contains(tab->fixed_name)) {
+				current = tab->fixed_name;
+			}
+		}
+		else {
+			QComboBox *combo = tab->widget->contextComboBox();
+			if (!isPlaceholder(combo, combo->currentText().trimmed())
+			    && tab->contexts.contains(combo->currentText().trimmed())) {
+				current = combo->currentText().trimmed();
+			}
 		}
 		NumerotationContext::saveToSettings(tab->contexts, current,
 						   settings, tab->prefix);
@@ -456,7 +523,7 @@ bool NewDiagramPage::eventFilter(QObject *obj, QEvent *event)
 		auto *ke = static_cast<QKeyEvent *>(event);
 		if ((ke->key() == Qt::Key_Return || ke->key() == Qt::Key_Enter)) {
 			// Check if this is a line edit inside one of our autonum combos
-			for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+			for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio, &m_autonum_cable}) {
 				if (QComboBox *combo = tab->widget->contextComboBox()) {
 					if (combo->lineEdit() && combo->lineEdit() == obj) {
 						return true; // eat the event

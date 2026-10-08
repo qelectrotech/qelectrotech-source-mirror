@@ -22,6 +22,10 @@
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
+#include "cable/addcablecommand.h"
+#include "cable/cablecopy.h"
+#include "cable/cablepart.h"
+#include "cable/editcablecommand.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventaddmacro.h"
 #include "dvevent/dveventinterface.h"
@@ -59,6 +63,29 @@
 #include <algorithm>
 
 static bool hasCabinetInfo(const DiagramContext &infos);
+
+/**
+	@brief batchWith
+	Keep two undo steps together so one Ctrl+Z takes the whole thing
+	back in one go.
+
+	The batch also keeps the name the undo history shows for what the
+	user actually did: BatchCommand's own name says "Supprimer", which
+	is what it was first written for and would be misleading for a paste
+	or a duplicate.
+	@param first the step already assembled, may be null
+	@param second the step to add; ownership goes to the result
+	@return both steps as one command, or the only one of them
+*/
+static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
+{
+	if (!first) return second;
+	if (!second) return first;
+
+	auto *batched = new BatchCommand(first, second);
+	if (!first->text().isEmpty()) batched->setText(first->text());
+	return batched;
+}
 
 /**
 	Constructeur
@@ -533,8 +560,29 @@ void DiagramView::cut()
 {
 	copy();
 	DiagramContent cut_content(m_diagram);
+		//A cable line is not held by DiagramContent: it leaves with a
+		//command of its own, which takes the cable itself away too when
+		//no line of it is left on the folio.
+	QList<CablePart *> cable_cut;
+	for (QGraphicsItem *item : m_diagram->selectedItems()) {
+		if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
+			cable_cut << part;
+		}
+	}
+
 	m_diagram -> clearSelection();
-	m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
+
+	if (cable_cut.isEmpty()) {
+		m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
+		return;
+	}
+
+	QUndoCommand *command = nullptr;
+	if (cut_content.count()) {
+		command = new CutDiagramCommand(m_diagram, cut_content);
+	}
+	command = batchWith(command, new RemoveCableCommand(m_diagram, cable_cut));
+	m_diagram -> undoStack().push(command);
 }
 
 /**
@@ -544,7 +592,12 @@ void DiagramView::cut()
 void DiagramView::copy()
 {
 	QClipboard *clipboard = QApplication::clipboard();
-	QString content_clipboard = m_diagram -> toXml(false, true).toString(4);
+	QDomDocument document = m_diagram -> toXml(false, true);
+		//A drawn cable line is not one of the folio's items -- the cable
+		//owns it -- so it travels in a block of its own, beside the XML
+		//of the folio rather than in it.
+	CableCopy::write(m_diagram, document);
+	QString content_clipboard = document.toString(4);
 	if (clipboard -> supportsSelection()) clipboard -> setText(content_clipboard, QClipboard::Selection);
 	clipboard -> setText(content_clipboard);
 }
@@ -565,13 +618,52 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (!document_xml.setContent(text_clipboard)) return;
 
 	DiagramContent content_pasted;
-	m_diagram->fromXml(document_xml, pos, false, &content_pasted);
+		//A cable line is not part of a DiagramContent: it comes back
+		//through its own list, carrying the colour labels it was copied
+		//with, and each of them is given the wire it happens to stand
+		//on at the place it has just been put -- none at all, when that
+		//place holds no wire, in which case the labels go on standing
+		//on the line to be wired when it is pulled into place.
+	QList<CablePart *> cable_pasted;
+	m_diagram->fromXml(document_xml, pos, false, &content_pasted, &cable_pasted);
+	const QList<CableCopy::Wired> wired = CableCopy::wire(
+			m_diagram, cable_pasted,
+			content_pasted.conductors(DiagramContent::AnyConductor));
 
 		//If something was really added to diagram, we create an undo object.
-	if (content_pasted.count())
+	if (content_pasted.count() || !wired.isEmpty())
 	{
 		m_diagram -> clearSelection();
-		m_diagram -> undoStack().push(new PasteDiagramCommand(m_diagram, content_pasted));
+
+			//One single step for the whole paste, cable lines included:
+			//undoing has to take back everything which came out of the
+			//clipboard in one go, and redoing has to put it all back.
+		QUndoCommand *command = nullptr;
+		if (content_pasted.count()) {
+			command = new PasteDiagramCommand(m_diagram, content_pasted);
+		}
+		for (const CableCopy::Wired &line : std::as_const(wired)) {
+			if (!line.part) continue;
+			auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
+											  m_diagram, true, line.taken);
+			added->setText(QCoreApplication::translate("CableCopy", "Coller un câble"));
+			command = batchWith(command, added);
+		}
+			//The copies end up selected, like everything else a paste
+			//just added, so the next Ctrl+V or Ctrl+D carries on from them
+		for (const CableCopy::Wired &line : std::as_const(wired)) {
+			if (line.part) line.part->setSelected(true);
+		}
+
+		if (command) {
+			m_diagram -> undoStack().push(command);
+		}
+			//The stack has just renewed the identity of a pasted
+			//conductor: the cores are pointed at the wires again and
+			//the cable fields written out once more, so the entries
+			//the copy was given as it was put down are on the wires it
+			//has actually landed on.
+		CableCopy::repoint(wired);
 		adjustSceneRect();
 	}
 }
@@ -643,21 +735,51 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
 	// should not clobber whatever the user last copied with Ctrl+C.
 	QDomDocument document = m_diagram->toXml(false, true);
+	CableCopy::write(m_diagram, document);
 
 	DiagramContent pasted;
+	QList<CablePart *> cable_pasted;
 	// No position argument -- see the function comment above for why
 	// the offset is not passed here.
-	m_diagram->fromXml(document, QPointF(), false, &pasted);
-	if (!pasted.count()) return;
+	m_diagram->fromXml(document, QPointF(), false, &pasted, &cable_pasted);
+	if (!pasted.count() && cable_pasted.isEmpty()) return;
 
 	const int movable = DiagramContent::Elements | DiagramContent::TextFields
 					   | DiagramContent::Images | DiagramContent::Shapes
 					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
 	for (QGraphicsItem *item : pasted.items(movable))
 		item->setPos(item->pos() + offset);
+		//The new line is stamped beside the original like everything
+		//else -- and only after that, because where each colour label
+		//ends up decides which wire it is going to take
+	for (CablePart *part : std::as_const(cable_pasted))
+		if (part) part->setPos(part->pos() + offset);
+
+	const QList<CableCopy::Wired> wired = CableCopy::wire(
+			m_diagram, cable_pasted,
+			pasted.conductors(DiagramContent::AnyConductor));
 
 	m_diagram->clearSelection();
-	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted));
+
+	QUndoCommand *command = nullptr;
+	if (pasted.count()) {
+		command = new PasteDiagramCommand(m_diagram, pasted);
+	}
+	for (const CableCopy::Wired &line : std::as_const(wired)) {
+		if (!line.part) continue;
+		auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
+										  m_diagram, true, line.taken);
+		added->setText(QCoreApplication::translate("CableCopy", "Dupliquer un câble"));
+		command = batchWith(command, added);
+	}
+	for (const CableCopy::Wired &line : std::as_const(wired)) {
+		if (line.part) line.part->setSelected(true);
+	}
+	if (command) m_diagram->undoStack().push(command);
+		//Same as a paste: the stack has renewed the identity of the
+		//pasted conductors, so the cores are pointed at the wires again
+		//and the cable fields written out once more.
+	CableCopy::repoint(wired);
 	adjustSceneRect();
 }
 
@@ -687,44 +809,71 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 		m_press_pos = e->position().toPoint();
 	}
 
+		//A line which waits for the click putting one of its cores down
+		//owns the right button as well: that click says "no" to the core,
+		//so it neither starts the quick command ring nor reaches the
+		//sheet. It is the context menu of this very click which ends the
+		//wait (see contextMenuEvent()), which is why nothing is ended
+		//here: the menu is then cancelled instead of opened, and no menu
+		//can open out of a click meant to say "no" -- neither QET's own
+		//nor the platform's, which arrives with the press on X11 and with
+		//the release on Windows.
+	if (e->button() == Qt::RightButton && CablePart::placingPart()) {
+		e->accept();
+		return;
+	}
+
 		//Right button: a click opens the context menu on release, a drag is
 		//a gesture (DiagramGestureOverlay). Left alone while a text is edited.
 	m_swallow_native_menu = false;
 	m_gesture_over_tool = false;
+
+		//A right click on a running tool belongs to the tool alone: it
+		//cancels the line being drawn or ends the tool, and ending the
+		//tool puts the context menu policy of the views back before this
+		//very click is over. The platform then still sends its own
+		//context menu for the same click -- on X11 with the press, on
+		//Windows with the release -- and the menu would open on the
+		//click which was meant to cancel. So it is swallowed here, the
+		//way a gesture swallows it further down; the next press which no
+		//tool handles puts this flag back to false.
+	if (e->button() == Qt::RightButton && m_diagram
+	    && m_diagram->eventInterfaceIsRunning()) {
+		m_swallow_native_menu = true;
+	}
 	if (e->button() == Qt::RightButton
 	    && DiagramGestureOverlay::isEnabled()
-	    && !m_diagram->focusItem())
+	    && !m_diagram->focusItem()
+	    && !m_diagram->eventInterfaceIsRunning())
 	{
+			//No tool is running: the right button draws the quick command
+			//ring, or opens the context menu on release. When a tool *is*
+			//running, no gesture is tracked at all: the tool owns the right
+			//button (it cancels the line being drawn or ends itself), and
+			//tracking one would both pop the ring up in the middle of the
+			//drawing and take the tool away from under the user (see
+			//mouseMoveEvent, which ends the tool as soon as a gesture is
+			//recognised).
 		m_gesture_tracking = true;
 		m_gesture_origin = e->position().toPoint();
 		m_context_toolbar->hide();
 
-			//A tool is running, often one a gesture just started. A right
-			//click still goes to it -- it cancels or finishes the tool -- so
-			//the press carries on to the scene. A drag ends the tool and
-			//shows the ring (see mouseMoveEvent).
-		if (m_diagram->eventInterfaceIsRunning()) {
-			m_gesture_over_tool = true;
-		}
-		else
-		{
-			m_swallow_native_menu = true;
+		m_swallow_native_menu = true;
 
-				//Select what is under the mouse, as the context menu does, so
-				//a gesture acts on it
-			if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-				if (!item->isSelected()) {
-					m_diagram->clearSelection();
-						//Clearing the selection can delete handler items, so
-						//look the item up again (see contextMenuEvent)
-					if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-						again->setSelected(true);
-					}
+			//Select what is under the mouse, as the context menu does, so
+			//a gesture acts on it
+		if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+			if (!item->isSelected()) {
+				m_diagram->clearSelection();
+					//Clearing the selection can delete handler items, so
+					//look the item up again (see contextMenuEvent)
+				if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+					again->setSelected(true);
 				}
 			}
-			e->accept();
-			return;
 		}
+		e->accept();
+		return;
 	}
 
 		//Start drag view when hold the middle button
@@ -1136,6 +1285,15 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 				//hands focus to the next widget.
 			if (m_diagram && m_diagram->eventInterfaceIsRunning()) {
 				QGraphicsView::keyPressEvent(e);  // let the active tool see it
+				return;
+			}
+				//A line waiting for the click putting a core down has the
+				//first call on Escape: it lets that core go back to being
+				//a free one and lets the mouse go, while everything else
+				//-- the selection included -- stays as it is, so that
+				//Escape keeps doing one thing at a time.
+			if (CablePart::cancelPlacing()) {
+				e->accept();
 				return;
 			}
 			if (m_diagram && !m_diagram->selectedItems().isEmpty()) {
@@ -1855,11 +2013,66 @@ QList<QAction *> DiagramView::contextMenuActions() const
 }
 
 /**
+	@brief DiagramView::cableCoreMenu
+	The menu of one single core, opened where he right-clicked: taking
+	that core off its line, which is the exact opposite of the menu the
+	free cores offer in the panel, of putting one down on a line.
+
+	Only the colour labels count -- a right-click anywhere else on the
+	line is still about the line itself, and opens the folio's own menu
+	instead. Nothing is changed until he picks the entry, so opening the
+	menu and clicking it away leaves everything standing as it was.
+	@param menu_pos where he right-clicked, in view coordinates
+	@param global_pos the same place, in global coordinates
+	@return true when that menu was the one to open
+*/
+bool DiagramView::cableCoreMenu(const QPoint &menu_pos, const QPoint &global_pos)
+{
+	if (!m_diagram || m_diagram->isReadOnly()) return false;
+
+	const QPointF scene_pos = mapToScene(menu_pos);
+	auto *part = qgraphicsitem_cast<CablePart *>(
+		m_diagram->itemAt(scene_pos, transform()));
+	if (!part) return false;
+
+	const int core = part->coreAt(scene_pos);
+	if (core < 0) return false;
+
+		//The line he takes a core off is the one on the sheet, so it is
+		//also the one the panel beside it edits from now on.
+	if (!part->isSelected()) {
+		m_diagram->clearSelection();
+		part->setSelected(true);
+	}
+
+	QMenu menu(this);
+	QAction *take = menu.addAction(tr("Retirer cette âme de la ligne"));
+	take->setIcon(QET::Icons::Cable);
+
+	if (menu.exec(global_pos) == take) {
+		part->takeCoreOffLine(core);
+	}
+	return true;
+}
+
+/**
 	@brief DiagramView::contextMenuEvent
 	@param e
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
+		//A line which waits for the click putting one of its cores down
+		//takes this very event: the right button ends that wait and no
+		//menu opens out of a click meant to say "no". Being asked here
+		//first is what makes it work for every way a menu can come up --
+		//the gesture ring's own menu, the platform's (with the press on
+		//X11, with the release on Windows) and the one raised from the
+		//keyboard -- so the menu never has to be closed after the fact.
+	if (CablePart::cancelPlacing()) {
+		e->accept();
+		return;
+	}
+
 	QPoint menu_pos = e->pos();
 	QPoint menu_global_pos = e->globalPos();
 
@@ -1908,6 +2121,16 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	}
 	else
 	{
+			//A colour label standing on a line asks about that one core
+			//rather than about the whole sheet: the very opposite of the
+			//menu the free cores offer, of putting one down on a line.
+			//It comes first, so that a core drawn over something else
+			//still belongs to its own line.
+		if (cableCoreMenu(menu_pos, menu_global_pos)) {
+			e->accept();
+			return;
+		}
+
 		QGraphicsView::contextMenuEvent(e);
 		if(e->isAccepted())
 		return;

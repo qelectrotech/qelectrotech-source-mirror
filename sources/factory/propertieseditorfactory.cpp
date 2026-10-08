@@ -18,6 +18,10 @@
 #include "propertieseditorfactory.h"
 
 #include "../PropertiesEditor/propertieseditorwidget.h"
+#include "../cable/cablepart.h"
+#include "../cable/cablepropertieseditorwidget.h"
+#include "../cablelist/cablelistmodel.h"
+#include "../cablelist/cablelistmodelpropertieswidget.h"
 #include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
@@ -54,7 +58,7 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		PropertiesEditorWidget *editor,
 		QWidget *parent)
 {
-	if (auto m = static_cast<ProjectDBModel *>(model))
+	if (auto m = dynamic_cast<ProjectDBModel *>(model))
 	{
 		if (editor &&
 			editor->metaObject()->className()
@@ -64,6 +68,17 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 			return editor;
 		}
 		return new ProjectDBModelPropertiesWidget(m, parent);
+	}
+	if (auto m = dynamic_cast<CableListModel *>(model))
+	{
+		if (editor &&
+			editor->metaObject()->className()
+				== CableListModelPropertiesWidget::staticMetaObject.className())
+		{
+			static_cast<CableListModelPropertiesWidget *>(editor)->setModel(m);
+			return editor;
+		}
+		return new CableListModelPropertiesWidget(m, parent);
 	}
 	return nullptr;
 }
@@ -238,6 +253,27 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 				return editor;
 			}
 			return new GraphicsTablePropertiesEditor(table, parent);
+		}
+		case CablePart::Type: //1012
+		{
+			if (count_ > 1) {
+				return nullptr;
+			}
+			auto part = static_cast<CablePart *>(item);
+				//The fields belong to the cable, never to one of its
+				//lines: whichever line is picked, it is the cable which
+				//is edited.
+			Cable *cable = part->cable();
+			if (!cable) {
+				return nullptr;
+			}
+
+			if (class_name == CablePropertiesEditorWidget::staticMetaObject.className())
+			{
+				static_cast<CablePropertiesEditorWidget *>(editor)->setCable(cable, part);
+				return editor;
+			}
+			return new CablePropertiesEditorWidget(cable, part, parent);
 		}
 		default:
 			return nullptr;

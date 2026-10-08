@@ -18,6 +18,7 @@
 #include "qetgraphicstableitem.h"
 #include "../../qetproject.h"
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../cablelist/cablelistmodel.h"
 #include "../../createdxf.h"
 #include "../../diagram.h"
 #include "../../elementprovider.h"
@@ -448,7 +449,13 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 	}
 	else //Copie the model of old previous table
 	{
-		setModel(new ProjectDBModel(*static_cast<ProjectDBModel *>(old_previous_table->model())));
+		auto *old_model = old_previous_table ? old_previous_table->model() : nullptr;
+		if (auto *db_model = dynamic_cast<ProjectDBModel *>(old_model)) {
+			setModel(new ProjectDBModel(*db_model));
+		}
+		else if (auto *cable_model = dynamic_cast<CableListModel *>(old_model)) {
+			setModel(new CableListModel(*cable_model));
+		}
 	}
 
 	if (old_previous_table &&
@@ -605,8 +612,12 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	{
 			//Add model
 		auto dom_model = dom_document.createElement("model");
-		auto project_db_model = static_cast<ProjectDBModel *>(m_model.data());
-		dom_model.appendChild(project_db_model->toXml(dom_document));
+		if (auto project_db_model = dynamic_cast<ProjectDBModel *>(m_model.data())) {
+			dom_model.appendChild(project_db_model->toXml(dom_document));
+		}
+		else if (auto cable_model = dynamic_cast<CableListModel *>(m_model.data())) {
+			dom_model.appendChild(cable_model->toXml(dom_document));
+		}
 		dom_table.appendChild(dom_model);
 
 	}
@@ -658,16 +669,30 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	}
 	else if (this->diagram()) //The table haven't got a previous table, so there should be a model save to xml
 	{
-		//Get table
-		auto model_ = new ProjectDBModel(
-					this->diagram()->project(),
-					this->diagram()->project());
-		model_->fromXml(
-					dom_element
-					.firstChildElement("model")
-					.firstChildElement(
-						ProjectDBModel::xmlTagName()));
-		this->setModel(model_);
+			//Get table: which model wrote itself in there decides which
+			//class reads it back -- a cable list is not a database query
+		auto model_element = dom_element.firstChildElement("model");
+		auto project_model_element = model_element.firstChildElement(
+					ProjectDBModel::xmlTagName());
+		auto cable_model_element = model_element.firstChildElement(
+					CableListModel::xmlTagName());
+
+		if (!cable_model_element.isNull())
+		{
+			auto model_ = new CableListModel(
+						this->diagram()->project(),
+						this->diagram()->project());
+			model_->fromXml(cable_model_element);
+			this->setModel(model_);
+		}
+		else
+		{
+			auto model_ = new ProjectDBModel(
+						this->diagram()->project(),
+						this->diagram()->project());
+			model_->fromXml(project_model_element);
+			this->setModel(model_);
+		}
 	}
 
 	//Restore the header from xml

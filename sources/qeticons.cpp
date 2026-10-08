@@ -37,6 +37,7 @@ namespace QET {
 		QIcon ArrowRightDouble;
 		QIcon Autoconnect;
 		QIcon BringForward;
+		QIcon Cable;
 		QIcon Cancel;
 		QIcon Company;
 		QIcon Conductor;
@@ -416,6 +417,7 @@ void QET::Icons::initIcons()
 	ArrowRightDouble    = QIcon::fromTheme("arrow-right-double");
 	Autoconnect         = QIcon::fromTheme("autoconnect");
 	BringForward        = QIcon::fromTheme("bring_forward");
+	Cable               = QIcon::fromTheme("cable");
 	Cancel              = QIcon::fromTheme("item-cancel");
 	Company             = QIcon::fromTheme("go-company");
 	Conductor           = QIcon::fromTheme("conductor");

@@ -52,6 +52,7 @@ class QUndoStack;
 class XmlElementCollection;
 class QTimer;
 class TerminalStrip;
+class Cable;
 
 
 #include <QColor>
@@ -178,6 +179,37 @@ class QETProject : public QObject
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
 
+			/// The cable numbering rule. Only one of them is ever kept:
+			/// a cable is numbered by one rule and that is all there is,
+			/// so the hash holds a single entry (see the cable tab of
+			/// the automatic numbering pages).
+		QHash <QString, NumerotationContext> cableAutoNum() const;
+		void addCableAutoNum    (const QString& key, const NumerotationContext& context);
+		void removeCableAutoNum (const QString& key);
+		NumerotationContext cableAutoNum(const QString &key) const;
+
+		QString cableAutoNumFormula(const QString& key) const;
+		bool hasCableAutoNum() const;
+		QString cableCurrentAutoNum() const;
+		void setCurrentCableAutoNum(QString autoNum);
+			/**
+				Which axis the cables of the project are laid out along
+				when the whole project is numbered again: true (the
+				default) for the X axis, so the leftmost cable of a folio
+				comes first, false for the Y axis, so the topmost does.
+				It belongs to the numbering and is written into the
+				project file next to the rule itself.
+			*/
+		bool cableXAxisFirst() const;
+		void setCableXAxisFirst(bool x_axis_first);
+			/**
+				The name the single cable numbering rule is kept under.
+				Fixed and never translated: it is a key which goes into
+				the settings and into the project file, so it must read
+				the same whatever language the program runs in.
+			*/
+		static QString cableAutoNumRuleName();
+
 		/**
 		 * @brief Renumber existing elements by element autonumbering scheme.
 		 *
@@ -239,6 +271,12 @@ class QETProject : public QObject
 		bool addTerminalStrip(TerminalStrip *strip);
 		bool removeTerminalStrip(TerminalStrip *strip);
 
+		QVector<Cable *> cables() const;
+		Cable *newCable();
+		bool addCable(Cable *cable);
+		bool removeCable(Cable *cable);
+		Diagram *diagramByUuid(const QUuid &uuid);
+
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);
 		void removeDiagram(Diagram *);
@@ -272,6 +310,12 @@ class QETProject : public QObject
 		void folioAutoNumRemoved();
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
+			/// A cable joined or left this project. Views over the
+			/// cables -- the cable list table -- listen to both to work
+			/// their rows out again; during a load the cables arrive one
+			/// signal at a time, long after the folios were read.
+		void cableAdded(Cable *cable);
+		void cableRemoved(Cable *cable);
 
 	private slots:
 		void updateDiagramsFolioData();
@@ -306,6 +350,7 @@ class QETProject : public QObject
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
 		void readTerminalStripXml(const QDomDocument &xml_project);
+		void readCableXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
 
@@ -369,6 +414,13 @@ class QETProject : public QObject
 			/// Element Auto Numbering
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
+			/// Cable auto numbering: exactly one rule, kept the same way
+			/// the others are so it stores and travels with the project
+			/// alike, but never a list to choose from.
+		QHash <QString, NumerotationContext> m_cable_autonum;
+		QString m_current_cable_autonum;
+			///< which axis the cables are numbered along (see cableXAxisFirst)
+		bool m_cable_axis_x_first = true;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
 	bool m_auto_break_conductor = false;
@@ -386,6 +438,7 @@ class QETProject : public QObject
 		QSet<QUuid> m_saved_item_uuids;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
+		QVector<Cable *> m_cables;
 
 		ProjectPropertiesHandler m_project_properties_handler;
 };

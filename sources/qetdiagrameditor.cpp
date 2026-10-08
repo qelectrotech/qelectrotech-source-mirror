@@ -38,7 +38,10 @@
 #endif
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
+#include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventaddtext.h"
+#include "cable/cablepart.h"
+#include "cable/editcablecommand.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
@@ -46,6 +49,7 @@
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
+#include "ui/projectpropertiesdialog.h"
 #include "projectview.h"
 #include "qetproject.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
@@ -56,6 +60,7 @@
 #include "recentfiles.h"
 #include "textgrid.h"
 #include "shortcutmanager.h"
+#include "cablelist/cableexportdialog.h"
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
@@ -78,6 +83,7 @@
 #include "wiringlistexport.h"
 #include "ui/wiringlistdialog.h"
 #include "ui/terminalnumberingdialog.h"
+#include "ui/cablenumberingdialog.h"
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
@@ -639,6 +645,27 @@ void QETDiagramEditor::setUpActions()
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
+		//Add a cable list
+	m_add_cable_list = new QAction(QET::Icons::TableOfContent, tr("Ajouter une liste de câbles"), this);
+	connect(m_add_cable_list, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddCableList(this->currentDiagramView()->diagram());
+		}
+	});
+
+		//Export the whole cable list to CSV, every column of the list
+	m_export_cable_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des câbles au format CSV"), this);
+	connect(m_export_cable_list, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (!project) {
+			return;
+		}
+			//The same dialog the material list is exported with, only
+			//with the columns of the cable list
+		CableExportDialog dialog(project, this);
+		dialog.exec();
+	});
+
 	//Export conductor num to csv
 	m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
 	connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
@@ -674,6 +701,14 @@ void QETDiagramEditor::setUpActions()
 	// Terminal Numbering
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
+
+	// Cable numbering: the rule the project numbers its cables with, and
+	// the numbering of every cable of that project at once
+	m_cable_numbering = new QAction(QET::Icons::AutoNum, tr("Numérotation des câbles"), this);
+	m_cable_numbering->setStatusTip(
+		tr("Affiche la règle de numérotation des câbles du projet et "
+		   "renumérote ses câbles d'après elle"));
+	connect(m_cable_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_cableNumbering);
 
 	// Reload element drawings from their current definition (bugtracker #802)
 	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Recharger les dessins des éléments"), this);
@@ -1052,6 +1087,9 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 	QAction *add_path      = m_add_item_actions_group.addAction(QET::Icons::PartBezier,   tr("Ajouter une courbe"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Ajouter un plan de bornes"));
+		//Not an element of the drawing but a line drawn across the
+		//conductors: what it crosses becomes the cores of a cable.
+	m_add_cable		   = m_add_item_actions_group.addAction(QET::Icons::Cable,      tr("Tracer un câble"));
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
@@ -1065,6 +1103,7 @@ void QETDiagramEditor::setUpActions()
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
 	add_path     ->setStatusTip(tr("Ajoute une courbe de Bézier sur le folio actuel"));
 	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
+	m_add_cable     ->setStatusTip(tr("Trace la ligne maîtresse d'un câble : chaque conducteur traversé devient une de ses âmes"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1078,6 +1117,7 @@ void QETDiagramEditor::setUpActions()
 	add_polyline ->setData(QStringLiteral("polyline"));
 	add_path     ->setData(QStringLiteral("path"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
+	m_add_cable     ->setData(QStringLiteral("cable"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1086,6 +1126,7 @@ void QETDiagramEditor::setUpActions()
 	add_arc->setCheckable(true);
 	add_polyline->setCheckable(true);
 	add_path->setCheckable(true);
+	m_add_cable->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -1176,6 +1217,11 @@ void QETDiagramEditor::setUpToolBar()
 	diagram_tool_bar -> addAction (m_conductor_reset);
 	diagram_tool_bar -> addAction (m_auto_conductor);
 	diagram_tool_bar -> addAction (m_auto_break_conductor);
+		//Drawn across the conductors those two actions work on, so it
+		//sits with them rather than with the shapes of the "Ajouter"
+		//toolbar, where nobody would think to look for it.
+	diagram_tool_bar -> addSeparator();
+	diagram_tool_bar -> addAction (m_add_cable);
 		//Sits with the conductor actions it works alongside: it colours
 		//the selected conductors and sets the colour of the next one drawn.
 	m_conductor_color_button = new ConductorColorToolButton(this, this);
@@ -1184,6 +1230,9 @@ void QETDiagramEditor::setUpToolBar()
 	m_add_item_tool_bar = new QToolBar(tr("Ajouter"), this);
 	m_add_item_tool_bar->setObjectName("adding");
 	m_add_item_tool_bar->addActions(m_add_item_actions_group.actions());
+	if (m_add_cable) {
+		m_add_item_tool_bar->removeAction(m_add_cable);
+	}
 
 	m_depth_tool_bar = new QToolBar(tr("Profondeur", "toolbar title"));
 	m_depth_tool_bar->setObjectName("diagram_depth_toolbar");
@@ -1205,6 +1254,10 @@ void QETDiagramEditor::setUpMenu()
 	QMenu* menu_fichier	  = new QMenu(tr("&Fichier"), this);
 	QMenu* menu_edition	  = new QMenu(tr("&Édition"), this);
 	QMenu* menu_project	  = new QMenu(tr("&Projet"), this);
+		//Numbering of everything the project numbers, kept together
+		//and sitting right behind the project it belongs to
+	QMenu* menu_numbering = new QMenu(tr("Numérotation"), this);
+	QMenu* menu_lists     = new QMenu(tr("Listes"), this);
 	QMenu* menu_affichage = new QMenu(tr("Afficha&ge"), this);
 	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
 	windows_menu = new QMenu(tr("Fe&nêtres"), this);
@@ -1212,6 +1265,8 @@ void QETDiagramEditor::setUpMenu()
 	insertMenu(settings_menu_, menu_fichier);
 	insertMenu(settings_menu_, menu_edition);
 	insertMenu(settings_menu_, menu_project);
+	insertMenu(settings_menu_, menu_numbering);
+	insertMenu(settings_menu_, menu_lists);
 	insertMenu(settings_menu_, menu_affichage);
 	insertMenu(help_menu_, windows_menu);
 
@@ -1303,15 +1358,11 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
-	menu_project -> addAction(m_add_summary);
-	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
+	menu_project -> addAction(m_export_cable_list);
 	menu_project -> addAction(m_project_export_conductor_num);
-	menu_project -> addAction(m_terminal_strip_dialog);
-	menu_project -> addAction(m_project_terminalBloc);
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
-	menu_project -> addAction(m_terminal_numbering);
 	menu_project -> addAction(m_reload_element_drawings);
 #ifdef QET_HAS_SCRIPTING
 	menu_project -> addAction(m_run_script);
@@ -1320,6 +1371,27 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
 #endif
+
+	// menu Numérotation
+		//Everything the project numbers sits here together: the
+		//terminals have come out of the project menu, the cables are
+		//the new one
+	menu_numbering -> addAction(m_terminal_numbering);
+	menu_numbering -> addAction(m_cable_numbering);
+
+	// menu Listes
+		//Everything which drops a table or a list onto the sheets has
+		//come out of the project menu and sits here together: the
+		//summary, the material list, the terminal strip tools and the
+		//cable list. The CSV exports stay with the other exports in the
+		//project menu, the cable list's among them.
+	menu_lists -> addAction(m_add_summary);
+	menu_lists -> addAction(m_add_nomenclature);
+	menu_lists -> addSeparator();
+	menu_lists -> addAction(m_terminal_strip_dialog);
+	menu_lists -> addAction(m_project_terminalBloc);
+	menu_lists -> addSeparator();
+	menu_lists -> addAction(m_add_cable_list);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
@@ -1985,6 +2057,79 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 }
 
 /**
+	@brief QETDiagramEditor::cableNumberingGate
+	Decide whether the cable tool may start, asking about the numbering
+	rule when the project numbers its cables by no rule at all.
+
+	A project which does have one is asked nothing: the tool starts and
+	that rule gives the numbers. A project which has none is asked once
+	whether one should be defined now:
+
+	- Oui opens the window where the rule is written, straight onto the
+	  cable page of its automatic numbering; whatever he does in there,
+	  the tool only starts if a rule really exists by the time that
+	  window is closed.
+	- Non says no, and says it for good: it is remembered in the program
+	  settings so the question does not come up on the next start
+	  either. Drawing goes on all the same, with W as the cable's name:
+	  no number is worked out where none has been defined.
+	- Annuler leaves everything as it was, the tool does not start, and
+	  the question comes again the next time he picks the tool up.
+
+	@param diagram the folio the cable would be drawn on
+	@return true when the cable tool may start
+*/
+bool QETDiagramEditor::cableNumberingGate(Diagram *diagram)
+{
+	if (!diagram || !diagram->project()) return true;
+	if (diagram->project()->hasCableAutoNum()) return true;
+
+	QSettings settings;
+	const QString ask_key = QStringLiteral("cable-management/ask_numbering_rule");
+	if (!settings.value(ask_key, true).toBool()) {
+		return true;
+	}
+
+	QMessageBox box(QMessageBox::Question,
+					tr("Numérotation automatique", "window title"),
+					tr("Aucune numérotation automatique des câbles n'est définie.",
+					   "shown when a project has no cable numbering rule"),
+					QMessageBox::NoButton,
+					this);
+	box.setInformativeText(tr(
+		"Voulez-vous en définir une maintenant ?\n\n"
+		"Vous pourrez aussi numéroter les câbles automatiquement plus "
+		"tard : cette règle se règle à tout moment dans les propriétés "
+		"du projet, page « Numérotation auto ».",
+		"ask whether a cable numbering rule should be defined now"));
+	QPushButton *define_button = box.addButton(tr("Oui", "yes"), QMessageBox::YesRole);
+	QPushButton *later_button  = box.addButton(tr("Non", "no"),  QMessageBox::NoRole);
+	box.addButton(tr("Annuler", "cancel"), QMessageBox::RejectRole);
+	box.setDefaultButton(later_button);
+	box.exec();
+
+	if (box.clickedButton() == later_button) {
+			//For good, in the program settings: he has answered this
+			//once and should not be asked again at every start.
+		settings.setValue(ask_key, false);
+		return true;
+	}
+	if (box.clickedButton() != define_button) {
+		return false;
+	}
+
+		//Oui: the window itself, opened where the rule is written. It
+		//has to really be there by the time that window is closed --
+		//a Cancel in it must not leave the tool running all the same.
+	ProjectPropertiesDialog dialog(diagram->project(), this);
+	dialog.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	dialog.changeToCable();
+	dialog.exec();
+
+	return diagram->project()->hasCableAutoNum();
+}
+
+/**
 	@brief QETDiagramEditor::addItemGroupTriggered
 	This slot is called when an item must be added to the current diagram,
 	this slot use the DVEventInterface to add item
@@ -2035,6 +2180,22 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	else if (value == "path")
 	{
 		diagram_event = new DiagramEventAddPath (d);
+	}
+	else if (value == QLatin1String("cable"))
+	{
+			//The rule the number comes from -- or the word about there
+			//being no rule yet -- comes before anything is drawn.
+		if (!cableNumberingGate(d))
+		{
+				//Nothing is drawn, so the button must not go on looking
+				//like a tool which is running, and whichever tool was
+				//active before this click must not keep going with its
+				//own button unchecked either.
+			action->setChecked(false);
+			d->clearEventInterface();
+			return;
+		}
+		diagram_event = new DiagramEventAddCable(d);
 	}
 	else if (value == "image")
 	{
@@ -2124,8 +2285,30 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
                                                    "Déponter et/ou supprimer les niveaux des bornes concerné "
                                                    "afin de pouvoir les supprimer"));
             } else {
+					//A cable line is not held by DiagramContent: it is
+					//removed by its own command, which also lets the cable
+					//it belongs to go when no line of it is left anywhere.
+				QList<CablePart *> cable_parts;
+				for (QGraphicsItem *item : diagram->selectedItems()) {
+					if (auto *part = qgraphicsitem_cast<CablePart *>(item)) {
+						cable_parts << part;
+					}
+				}
+				const bool other_items = dc.hasDeletableItems();
+
                 diagram->clearSelection();
-                diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+
+				if (cable_parts.isEmpty()) {
+					diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+				} else if (!other_items) {
+					diagram->undoStack().push(new RemoveCableCommand(diagram, cable_parts));
+				} else {
+						//One single step, so a selection holding both a
+						//cable and ordinary drawings comes back whole.
+					diagram->undoStack().push(new BatchCommand(
+						new DeleteQGraphicsItemCommand(diagram, dc),
+						new RemoveCableCommand(diagram, cable_parts)));
+				}
                 dv->adjustSceneRect();
             }
         }
@@ -2319,6 +2502,9 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
+	m_cable_numbering             -> setEnabled(editable_project);
+	m_add_cable_list              -> setEnabled(editable_project);
+	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
 #ifdef QET_HAS_SCRIPTING
 	m_run_script                  -> setEnabled(opened_project);
@@ -2404,8 +2590,20 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_find_element->setEnabled(selected_elements_count == 1);
 
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
-	bool copiable_items  = dc.hasCopiableItems();
-	bool deletable_items = dc.hasDeletableItems();
+		//A cable line is drawn on the folio but held by the cable, not
+		//by DiagramContent: it counts on its own for deleting and editing.
+	int selected_cables = 0;
+	for (QGraphicsItem *item : diagram_->selectedItems()) {
+		if (item && item->type() == CablePart::Type) {
+			selected_cables++;
+		}
+	}
+
+		//A drawn cable line is copyable, cuttable and duplicatable on
+		//its own, although it belongs to its cable rather than to the
+		//folio and DiagramContent never sees it.
+	bool copiable_items  = dc.hasCopiableItems() || selected_cables > 0;
+	bool deletable_items = dc.hasDeletableItems() || selected_cables > 0;
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_duplicate        -> setEnabled(!ro && copiable_items);
@@ -2460,7 +2658,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			   - selected_dynamic_elmt_text)
 			+ selected_image
 			+ selected_shape
-			+ selected_conductors_count;
+			+ selected_conductors_count
+			+ selected_cables;
 
 	if (selected_editable == 1)
 	{
@@ -2485,6 +2684,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 			m_edit_selection -> setText(tr("Éditer l'image",
 						       "edit image"));
 			m_edit_selection -> setIcon(QET::Icons::resize_image);
+		}
+		//edit cable
+		else if (selected_cables)
+		{
+			m_edit_selection -> setText(tr("Éditer le câble",
+						       "edit cable"));
+			m_edit_selection -> setIcon(QET::Icons::Cable);
 		}
 		//edit conductor
 		else if (selected_conductors_count)
@@ -3599,6 +3805,21 @@ void QETDiagramEditor::slot_terminalNumbering() {
 			undo_group.activeStack()->push(macro);
 		}
 	}
+}
+
+/**
+ * @brief QETDiagramEditor::slot_cableNumbering
+ * Opens the window holding the numbering rule of the project's cables
+ * and the button which numbers every one of them again. The window
+ * writes the project and pushes its own undo step itself, so nothing
+ * is done with its result here beyond letting it work.
+ */
+void QETDiagramEditor::slot_cableNumbering() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	CableNumberingDialog dialog(project, this);
+	dialog.exec();
 }
 
 /**
