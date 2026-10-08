@@ -641,7 +641,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::AltModifier)
+	else if(event->modifiers() == Qt::ControlModifier)
 	{
 		QSettings settings;
 		int xKeyGridFine = settings.value(QStringLiteral("diagrameditor/key_fine_Xgrid"),
@@ -684,7 +684,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::ControlModifier)
+	else if(event->modifiers() == Qt::AltModifier)
 	{
 		//Adjust the alignment of a texts group
 		if(selectedItems().size() == 1
