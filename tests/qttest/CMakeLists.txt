@@ -108,6 +108,13 @@ add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
 target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
 
+# positionorder.h is header-only: the position comparisons behind element
+# renumbering and terminal numbering, as strict weak orderings for std::sort.
+add_executable(tst_positionorder tst_positionorder.cpp)
+target_include_directories(tst_positionorder PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_positionorder PRIVATE Qt::Test Qt::Core)
+add_test(NAME tst_positionorder COMMAND tst_positionorder)
+
 # bordercelllabels.h is header-only too.
 add_executable(tst_bordercelllabels tst_bordercelllabels.cpp)
 add_test(NAME tst_bordercelllabels COMMAND tst_bordercelllabels)
