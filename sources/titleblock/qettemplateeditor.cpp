@@ -55,7 +55,17 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	Destructor
 */
 QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor()
-{}
+{
+		// QWidget's destructor deletes the children, and some of them
+		// signal this editor as they go: the scene deselects its cells (the
+		// view emits selectedCellsChanged()), the undo stack is cleared
+		// (cleanChanged()). By then this editor is already destroyed, so
+		// stop listening to all of its children first.
+	const auto children = findChildren<QObject *>();
+	for (QObject *child : children) {
+		disconnect(child, nullptr, this, nullptr);
+	}
+}
 
 /**
 	@return the location of the currently edited template
