@@ -34,10 +34,16 @@ QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size)
 
 void QetGraphicsHandlerItem::setSize(qreal size)
 {
+	if (m_size_animation) {
+		m_size_animation->stop();
+		m_size_animation->deleteLater();
+		m_size_animation.clear();
+	}
 	prepareGeometryChange();
 	m_current_size = m_original_size = size;
 	m_handler_rect.setRect(0-m_current_size/2, 0-m_current_size/2, m_current_size, m_current_size);
 	m_br.setRect(-1-m_current_size/2, -1-m_current_size/2, m_current_size+2, m_current_size+2);
+	update();
 }
 
 /**
@@ -90,7 +96,12 @@ void QetGraphicsHandlerItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	Q_UNUSED(event);
 
-	auto animation_ = new QPropertyAnimation(this, "currentSize");
+	if (m_size_animation) {
+		m_size_animation->stop();
+		m_size_animation->deleteLater();
+	}
+	auto animation_ = new QPropertyAnimation(this, "currentSize", this);
+	m_size_animation = animation_;
 	animation_->setStartValue(m_original_size);
 	animation_->setEndValue(m_original_size*1.5);
 	animation_->setDuration(200);
@@ -102,7 +113,12 @@ void QetGraphicsHandlerItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	Q_UNUSED(event);
 
-	auto animation_ = new QPropertyAnimation(this, "currentSize");
+	if (m_size_animation) {
+		m_size_animation->stop();
+		m_size_animation->deleteLater();
+	}
+	auto animation_ = new QPropertyAnimation(this, "currentSize", this);
+	m_size_animation = animation_;
 	animation_->setStartValue(m_current_size);
 	animation_->setEndValue(m_original_size);
 	animation_->setDuration(200);
@@ -126,7 +142,7 @@ void QetGraphicsHandlerItem::setCurrentSize(qreal size)
 */
 QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(
 		const QVector<QPointF> &points,
-		int size)
+		qreal size)
 {
 	QVector <QetGraphicsHandlerItem *> list_;
 	for (QPointF point : points)
