@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Poignées :</string>
+      <string>Handles :</string>
      </property>
     </widget>
    </item>
@@ -28,17 +28,17 @@
      </property>
      <item>
       <property name="text">
-       <string>x 0,25</string>
+       <string>x 0.25</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 0,5</string>
+       <string>x 0.5</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>x 0,75</string>
+       <string>x 0.75</string>
       </property>
      </item>
      <item>

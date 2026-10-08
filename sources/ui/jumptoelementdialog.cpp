@@ -40,10 +40,10 @@ JumpToElementDialog::JumpToElementDialog(Diagram *diagram, QWidget *parent) :
 	QDialog(parent),
 	m_diagram(diagram)
 {
-	setWindowTitle(tr("Atteindre un élément", "window title"));
+	setWindowTitle(tr("Navigate to an element", "window title"));
 
 	m_filter_edit = new QLineEdit(this);
-	m_filter_edit->setPlaceholderText(tr("Nom, label ou information de l'élément, ou case (ex. B13 ou 3-B13)…"));
+	m_filter_edit->setPlaceholderText(tr("Name, label or information of the element, or cell (e.g. B13 or 3-B13)…"));
 	m_filter_edit->installEventFilter(this);
 
 	m_result_list = new QListWidget(this);
@@ -236,12 +236,12 @@ QListWidgetItem *JumpToElementDialog::cellItem(const QString &needle) const
 
 	cell = cell.remove(QLatin1Char(' ')).toUpper();
 	if (diagram == m_diagram) {
-		text = tr("Case %1").arg(cell);
+		text = tr("Cell %1").arg(cell);
 	} else {
 		const QString title = diagram->title();
 		text = title.isEmpty()
-				? tr("Folio %1, case %2").arg(diagrams.indexOf(diagram) + 1).arg(cell)
-				: tr("Folio %1 (%2), case %3").arg(diagrams.indexOf(diagram) + 1).arg(title, cell);
+				? tr("Sheet %1, cell %2").arg(diagrams.indexOf(diagram) + 1).arg(cell)
+				: tr("Sheet %1 (%2), cell %3").arg(diagrams.indexOf(diagram) + 1).arg(title, cell);
 	}
 
 	auto *item = new QListWidgetItem(text);

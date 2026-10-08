@@ -125,7 +125,7 @@ void TitleBlockDimensionWidget::setReadOnly(bool read_only) {
 void TitleBlockDimensionWidget::initWidgets()
 {
 	// basic widgets: label + spinbox
-	spinbox_label_ = new QLabel(tr("Largeur :", "default dialog label"));
+	spinbox_label_ = new QLabel(tr("Width:", "default dialog label"));
 	
 	spinbox_ = new QSpinBox();
 	spinbox_ -> setValue(50);
@@ -133,13 +133,13 @@ void TitleBlockDimensionWidget::initWidgets()
 	// extra widgets, for the user to specify whether the value is absolute, relative, etc.
 	if (complete_) {
 		absolute_button_  = new QRadioButton(
-					tr("Absolu",
+					tr("Absolute",
 					   "a traditional, absolute measure"));
 		relative_button_  = new QRadioButton(
-					tr("Relatif au total",
+					tr("Relative to total",
 					   "a percentage of the total width"));
 		remaining_button_ = new QRadioButton(
-					tr("Relatif au restant",
+					tr("Relative to remaining",
 					   "a percentage of what remains from the total width"));
 		dimension_type_   = new QButtonGroup(this);
 		dimension_type_ -> addButton(absolute_button_,  QET::Absolute);

@@ -35,7 +35,7 @@ RotateSelectionCommand::RotateSelectionCommand(Diagram *diagram, qreal angle, QU
 QUndoCommand(parent),
 m_diagram(diagram)
 {
-	setText(rotate_as_group ? QObject::tr("Pivoter le groupe") : QObject::tr("Pivoter la selection"));
+	setText(rotate_as_group ? QObject::tr("Rotate the group") : QObject::tr("Rotate the selection"));
 
 	if(!m_diagram->isReadOnly())
 	{

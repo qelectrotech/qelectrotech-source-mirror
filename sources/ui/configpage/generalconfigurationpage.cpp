@@ -53,11 +53,11 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	QSettings settings;
 	
 		//Appearance tab
-	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.5 et plus"), QLatin1String("Round"));
-	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi supérieur"), QLatin1String("Ceil"));
-	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi inférieur"), QLatin1String("Floor"));
-	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.75 et plus"), QLatin1String("RoundPreferFloor"));
-	ui->m_hdpi_round_policy_cb->addItem(tr("Pas d'arrondi"), QLatin1String("PassThrough"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Rounding up for 0.5 and more"), QLatin1String("Round"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Always top rounding"), QLatin1String("Ceil"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Always rounded down"), QLatin1String("Floor"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Rounding up for 0.75 and more"), QLatin1String("RoundPreferFloor"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("No rounding"), QLatin1String("PassThrough"));
 	switch (QetSettings::hdpiScaleFactorRoundingPolicy()) {
 		case Qt::HighDpiScaleFactorRoundingPolicy::Round:
 			ui->m_hdpi_round_policy_cb->setCurrentIndex(0);
@@ -88,7 +88,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	for (const qreal divisor : TextGrid::divisors)
 		ui->DiagramEditor_textGrid_cb->addItem(
-					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Désactivée"),
+					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Disabled", "fr: Désactivée"),
 					divisor);
 	int text_grid_index = ui->DiagramEditor_textGrid_cb->findData(
 				settings.value(TextGrid::settings_key, 1).toReal());
@@ -139,9 +139,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 			//say so rather than offer a tick that changes nothing.
 		ui->m_enable_scripting->setEnabled(false);
 		ui->m_enable_scripting->setToolTip(
-					tr("Activé par la variable d'environnement "
-					   "QET_ENABLE_SCRIPTING ; ce réglage est sans effet "
-					   "tant qu'elle est définie."));
+					tr("Enabled by the QET_ENABLE_SCRIPTING environment "
+					   "variable; this setting has no effect while it is "
+					   "set."));
 	}
 #else
 		//Built without Qt Qml: there is no scripting to allow. Disabled as
@@ -266,7 +266,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (path.isEmpty())
 	{
 		ui->m_material_list_path_le->setPlaceholderText(
-			tr("Non configuré (par défaut : %1)",
+			tr("Not set (default: %1)",
 			   "hint shown in the material file field when no file is configured yet")
 				.arg(MaterialList::defaultPath()));
 	}
@@ -491,7 +491,7 @@ void GeneralConfigurationPage::applyConf()
 */
 QString GeneralConfigurationPage::title() const
 {
-	return(tr("Général", "configuration page title"));
+	return(tr("General", "configuration page title"));
 }
 
 /**
@@ -509,38 +509,38 @@ QIcon GeneralConfigurationPage::icon() const
 */
 void GeneralConfigurationPage::fillLang()
 {
-	ui->m_lang_cb->addItem(QET::Icons::translation,	tr("Système"), "system");
+	ui->m_lang_cb->addItem(QET::Icons::translation,	tr("System"), "system");
 	ui->m_lang_cb->insertSeparator(1);
 
 		// all lang available on lang directory
-	ui->m_lang_cb->addItem(QET::Icons::sa,		tr("Arabe"), "ar");
-	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_BR");
+	ui->m_lang_cb->addItem(QET::Icons::sa,		tr("Arabic"), "ar");
+	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brazilian"), "pt_BR");
 	ui->m_lang_cb->addItem(QET::Icons::catalonia,	tr("Catalan"), "ca");
-	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Tchèque"), "cs");
-	ui->m_lang_cb->addItem(QET::Icons::de,		tr("Allemand"), "de");
-	ui->m_lang_cb->addItem(QET::Icons::da,		tr("Danois"), "da");
-	ui->m_lang_cb->addItem(QET::Icons::gr,		tr("Grec"), "el");
-	ui->m_lang_cb->addItem(QET::Icons::en,		tr("Anglais"), "en");
-	ui->m_lang_cb->addItem(QET::Icons::es,		tr("Espagnol"), "es");
-	ui->m_lang_cb->addItem(QET::Icons::fr,		tr("Français"), "fr");
-	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croate"), "hr");
-	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italien"), "it");
-	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japonais"), "ja");
-	ui->m_lang_cb->addItem(QET::Icons::ko,		tr("Coréen"), "ko");
-	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polonais"), "pl");
-	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portugais"), "pt");
-	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Roumains"), "ro");
-	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russe"), "ru");
-	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovène"), "sl");
-	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Pays-Bas"), "nl");
-	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norvege"), "nb");
-	ui->m_lang_cb->addItem(QET::Icons::nl_BE,	tr("Belgique-Flemish"), "nl_BE");
-	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
-	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
-	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongol"), "mn");
-	ui->m_lang_cb->addItem(QET::Icons::uk,		tr("Ukrainien"), "uk");
-	ui->m_lang_cb->addItem(QET::Icons::zh,		tr("Chinois"), "zh");
-	ui->m_lang_cb->addItem(QET::Icons::se,		tr("Suédois"), "sv");
+	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Czech"), "cs");
+	ui->m_lang_cb->addItem(QET::Icons::de,		tr("German"), "de");
+	ui->m_lang_cb->addItem(QET::Icons::da,		tr("Danish"), "da");
+	ui->m_lang_cb->addItem(QET::Icons::gr,		tr("Greek"), "el");
+	ui->m_lang_cb->addItem(QET::Icons::en,		tr("English"), "en");
+	ui->m_lang_cb->addItem(QET::Icons::es,		tr("Spanish"), "es");
+	ui->m_lang_cb->addItem(QET::Icons::fr,		tr("French"), "fr");
+	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croatian"), "hr");
+	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italian"), "it");
+	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japanese"), "ja");
+	ui->m_lang_cb->addItem(QET::Icons::ko,		tr("Korean"), "ko");
+	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polish"), "pl");
+	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portuguese"), "pt");
+	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Romanian"), "ro");
+	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russian"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovenian"), "sl");
+	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Dutch"), "nl");
+	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norwegian"), "nb");
+	ui->m_lang_cb->addItem(QET::Icons::nl_BE,	tr("Belgium-Flemish"), "nl_BE");
+	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turkish"), "tr");
+	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hungarian"), "hu");
+	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongolian"), "mn");
+	ui->m_lang_cb->addItem(QET::Icons::uk,		tr("Ukrainian"), "uk");
+	ui->m_lang_cb->addItem(QET::Icons::zh,		tr("Chinese"), "zh");
+	ui->m_lang_cb->addItem(QET::Icons::se,		tr("Swedish"), "sv");
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system
 	QSettings settings;
@@ -608,7 +608,7 @@ void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Path of the Common Collection"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_common_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -622,7 +622,7 @@ void GeneralConfigurationPage::on_m_company_elmt_path_cb_currentIndexChanged(int
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection company"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Company collection path"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_company_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -636,7 +636,7 @@ void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("User Collection Path"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_custom_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -650,7 +650,7 @@ void GeneralConfigurationPage::on_m_company_tbt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches company"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Company title-blocks"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_company_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -664,7 +664,7 @@ void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int i
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("User Title blocks Path"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_custom_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -678,7 +678,7 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des macros utilisateur"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("User macro path"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_user_macros_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -720,8 +720,8 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 
 	if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
 		QMessageBox::warning(this,
-							 tr("Répertoire introuvable"),
-							 tr("Le répertoire de la collection utilisateur :\n%1\nn'existe pas et n'a pas pu être créé.")
+							 tr("Folder not found"),
+							 tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
 							 .arg(directory));
 		return;
 	}
@@ -729,8 +729,8 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);
 	if (folders.isEmpty()) {
 		QMessageBox::information(this,
-								 tr("Aucun sous-dossier"),
-								 tr("La collection utilisateur :\n%1\nne contient aucun sous-dossier : il n'y a donc aucun préfixe à configurer.")
+								 tr("No subfolder"),
+								 tr("The user collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
 								 .arg(directory));
 		return;
 	}
@@ -738,7 +738,7 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 	QetLabelsFile labels;
 	if (!labels.load(directory)) {
 		QMessageBox::warning(this,
-							 tr("Fichier de préfixes illisible"),
+							 tr("Prefix file cannot be read"),
 							 labels.errorString());
 		return;
 	}
@@ -747,21 +747,23 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 			//perfectly valid : tell what is wrong and let the user decide,
 			//rebuilding would drop every prefix the file still holds.
 		QMessageBox box(QMessageBox::Warning,
-						tr("Fichier de préfixes endommagé"),
-						tr("Le fichier %1 n'est pas un fichier XML valide :\n%2")
+						tr("Prefix file damaged"),
+						tr("The file %1 is not a valid XML file:\n%2")
 						.arg(labels.filePath(), labels.brokenReason()),
 						QMessageBox::NoButton,
 						this);
-		box.addButton(tr("Corriger le fichier"), QMessageBox::AcceptRole);
-		auto *rebuild_button = box.addButton(tr("Reconstruire"), QMessageBox::DestructiveRole);
-		box.setInformativeText(tr("Rien n'a encore été modifié.\n\n"
-								  "« Corriger le fichier » : cette fenêtre se ferme sans rien changer. "
-								  "Ouvrez le fichier dans un éditeur de texte à l'endroit indiqué, "
-								  "corrigez-le puis relancez cette commande.\n\n"
-								  "« Reconstruire » : l'arborescence des dossiers est recréée, "
-								  "mais tous les préfixes actuels sont perdus. Le fichier actuel "
-								  "est conservé sous le nom qet_labels.xml.bak avant d'être remplacé."));
-		box.setDetailedText(tr("Fichier : %1").arg(labels.filePath()));
+		box.addButton(tr("Fix the file"), QMessageBox::AcceptRole);
+		auto *rebuild_button = box.addButton(tr("Rebuild"), QMessageBox::DestructiveRole);
+		box.setInformativeText(tr("Nothing has been changed yet.\n"
+								  "\n"
+								  "“Fix the file”: this window closes without changing anything. Open "
+								  "the file in a text editor at the place shown, fix it, then run this "
+								  "command again.\n"
+								  "\n"
+								  "“Rebuild”: the folder tree is made again, but all the current "
+								  "prefixes are lost. The current file is kept as qet_labels.xml.bak "
+								  "before it is replaced."));
+		box.setDetailedText(tr("File: %1").arg(labels.filePath()));
 		box.exec();
 		if (box.clickedButton() != rebuild_button) {
 			return;
@@ -785,9 +787,9 @@ void GeneralConfigurationPage::on_m_material_list_browse_pb_clicked()
 
 	const QString path = QFileDialog::getOpenFileName(
 		this,
-		tr("Sélectionner le fichier de la liste de matériaux"),
+		tr("Select the materials list file"),
 		start_dir,
-		tr("Fichiers csv (*.csv)"));
+		tr("CSV files (*.csv)"));
 
 	if (!path.isEmpty()) {
 		ui->m_material_list_path_le->setText(path);
@@ -808,9 +810,9 @@ void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
 
 	path = QFileDialog::getSaveFileName(
 		this,
-		tr("Créer le fichier de la liste de matériaux"),
+		tr("Create the materials list file"),
 		path,
-		tr("Fichiers csv (*.csv)"));
+		tr("CSV files (*.csv)"));
 	if (path.isEmpty()) {
 		return;
 	}
@@ -826,8 +828,8 @@ void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
 		if (!MaterialList::createFile(path, &error))
 		{
 			QET::QetMessageBox::critical(this,
-										 tr("Création impossible"),
-										 tr("Impossible de créer le fichier :\n%1\n%2")
+										 tr("Cannot create"),
+										 tr("Cannot create the file:\n%1\n%2")
 											.arg(path, error));
 			return;
 		}
@@ -856,7 +858,7 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 void GeneralConfigurationPage::on_MaxPartsElementEditorList_sb_valueChanged(int value)
 {
 	if (value > 500) {
-		ui->MaxPartsElementEditorList_sb->setToolTip(tr("To high values might lead to crashes of the application."));
+		ui->MaxPartsElementEditorList_sb->setToolTip(tr("Values that are too high might cause the application to crash"));
 		ui->MaxPartsElementEditorList_sb->setStyleSheet("background-color: orange");
 	} else {
 		ui->MaxPartsElementEditorList_sb->setToolTip("");
@@ -891,13 +893,14 @@ void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
 	if (checked) {
 		if (QMessageBox::Cancel == QET::QetMessageBox::warning(
 				this,
-				tr("Fonctionnalité expérimental"),
-				tr("AVERTISSEMENT :\n"
-				   "Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu "
-					"du projet en fonction de :\n\n"
-					"1 - la valeur sélectionnée \n"
-					"2 - du dpi de l'écran \n"
-					"3 - Modifier le projet sur un autre ordinateur et/ou écran n'ayant pas les mêmes paramètres des points 1 et 2."),
+				tr("Experimental feature"),
+				tr("WARNING:\n"
+				   "Any setting other than “No rounding” may cause rendering errors in the project, depending on:\n"
+				   "\n"
+				   "1 - the selected setting \n"
+				   "2 - the screen's dpi \n"
+				   "3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 "
+				   "and 2."),
 				QMessageBox::StandardButton::Cancel|QMessageBox::StandardButton::Ok,
 				QMessageBox::StandardButton::Cancel
 														   )) {

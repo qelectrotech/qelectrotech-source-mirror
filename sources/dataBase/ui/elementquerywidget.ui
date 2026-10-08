@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string comment="fr: Form">Export</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -32,7 +32,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Informations disponibles</string>
+         <string>Available information</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -42,7 +42,7 @@
       <item row="0" column="2">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Informations à exporter</string>
+         <string>Information to export</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -82,7 +82,7 @@
         <item>
          <widget class="QPushButton" name="m_up_pb">
           <property name="toolTip">
-           <string>Monter la sélection</string>
+           <string>go up the selection</string>
           </property>
           <property name="text">
            <string/>
@@ -98,7 +98,7 @@
         <item>
          <widget class="QPushButton" name="m_add_pb">
           <property name="toolTip">
-           <string>Ajouter la sélection</string>
+           <string>Add selection</string>
           </property>
           <property name="text">
            <string/>
@@ -111,7 +111,7 @@
         <item>
          <widget class="QPushButton" name="m_remove_pb">
           <property name="toolTip">
-           <string>Supprimer la sélection</string>
+           <string>Delete selection</string>
           </property>
           <property name="text">
            <string/>
@@ -124,7 +124,7 @@
         <item>
          <widget class="QPushButton" name="m_down_pb">
           <property name="toolTip">
-           <string>Descendre la sélection</string>
+           <string>go down the selection</string>
           </property>
           <property name="text">
            <string/>
@@ -166,37 +166,37 @@
        <widget class="QComboBox" name="m_filter_type_cb">
         <item>
          <property name="text">
-          <string>Pas de filtre</string>
+          <string>No filter</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>N'est pas vide</string>
+          <string>Is not empty</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Est vide</string>
+          <string>Is empty</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Contient</string>
+          <string>Contain</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Ne contient pas</string>
+          <string>Does not contain</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Est égal à</string>
+          <string>Is equal to</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>N'est pas égale à</string>
+          <string>Is not equal to</string>
          </property>
         </item>
        </widget>
@@ -207,7 +207,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Filtre :</string>
+         <string>Filter :</string>
         </property>
        </widget>
       </item>
@@ -232,7 +232,7 @@
       <item>
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
-          <string>Type d'éléments</string>
+          <string>Type of elements</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -241,7 +241,7 @@
           <item row="0" column="0">
            <widget class="QCheckBox" name="m_all_cb">
             <property name="text">
-             <string>Tous</string>
+             <string>all</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -261,7 +261,7 @@
           <item row="1" column="0">
            <widget class="QCheckBox" name="m_terminal_cb">
             <property name="text">
-             <string>Borniers</string>
+             <string>Terminal blocks</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -271,7 +271,7 @@
           <item row="1" column="1">
            <widget class="QCheckBox" name="m_protection_cb">
             <property name="text">
-             <string>Organes de protection</string>
+             <string>Protection devices</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -281,7 +281,7 @@
           <item row="2" column="0">
            <widget class="QCheckBox" name="m_coil_cb">
             <property name="text">
-             <string>Contacteurs et relais</string>
+             <string>Contactors and relays</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -291,7 +291,7 @@
           <item row="2" column="1">
            <widget class="QCheckBox" name="m_thumbnail_cb">
             <property name="text">
-             <string>Vignettes</string>
+             <string>Thumbnails</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -301,7 +301,7 @@
           <item row="3" column="0">
            <widget class="QCheckBox" name="m_button_cb">
             <property name="text">
-             <string>Boutons et commutateurs</string>
+             <string>Buttons and switches</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -311,7 +311,7 @@
           <item row="3" column="1">
            <widget class="QCheckBox" name="m_plc_cb">
             <property name="text">
-             <string>Automates (MAE/SPS)</string>
+             <string>PLCs (MAE/SPS)</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -321,7 +321,7 @@
           <item row="4" column="0">
            <widget class="QCheckBox" name="m_slave_cb">
             <property name="text">
-             <string>Contacts esclaves</string>
+             <string>Slave contacts</string>
             </property>
             <property name="checked">
              <bool>false</bool>
@@ -353,7 +353,7 @@
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>Ouvrir la configuration sélectionné</string>
+         <string>Open the selected configuration</string>
         </property>
         <property name="text">
          <string/>
@@ -379,7 +379,7 @@
          <bool>false</bool>
         </property>
         <property name="toolTip">
-         <string>Sauvegarder la configuration actuelle</string>
+         <string>Save the current configuration</string>
         </property>
         <property name="text">
          <string/>
@@ -395,20 +395,20 @@
       <item row="2" column="0">
        <widget class="QPushButton" name="m_import_reports_pb">
         <property name="toolTip">
-         <string>Importer des rapports depuis un fichier</string>
+         <string>Import reports from a file</string>
         </property>
         <property name="text">
-         <string>Importer...</string>
+         <string>Import...</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="m_export_reports_pb">
         <property name="toolTip">
-         <string>Exporter tous les rapports enregistrés vers un fichier</string>
+         <string>Export all saved reports to a file</string>
         </property>
         <property name="text">
-         <string>Exporter...</string>
+         <string>Export...</string>
         </property>
        </widget>
       </item>
@@ -430,7 +430,7 @@
      <item>
       <widget class="QCheckBox" name="m_edit_sql_query_cb">
        <property name="toolTip">
-        <string>Requête SQL personnalisée</string>
+        <string>Custom SQL Query</string>
        </property>
        <property name="text">
         <string/>
@@ -440,7 +440,7 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Requête SQL :</string>
+        <string>SQL request  :</string>
        </property>
       </widget>
      </item>

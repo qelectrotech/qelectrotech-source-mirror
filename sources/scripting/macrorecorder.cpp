@@ -195,7 +195,7 @@ void MacroRecorder::finish(bool project_closed)
 	const QJsonObject recording{
 		{QStringLiteral("format"), 1},
 		{QStringLiteral("id"), m_id},
-		{QStringLiteral("name"), tr("Macro du %1").arg(
+		{QStringLiteral("name"), tr("Macro of %1").arg(
 			QDateTime::fromString(m_started, Qt::ISODate).toString(QStringLiteral("dd/MM/yyyy HH:mm")))},
 		{QStringLiteral("project_title"), m_project_title},
 		{QStringLiteral("project_path"), m_project_path},
@@ -203,7 +203,7 @@ void MacroRecorder::finish(bool project_closed)
 		{QStringLiteral("stopped"), QDateTime::currentDateTime().toString(Qt::ISODate)},
 		{QStringLiteral("complete"), complete},
 		{QStringLiteral("note"), complete ? QString()
-						  : tr("projet fermé pendant l'enregistrement : pas de after.qet")},
+						  : tr("project closed during the recording: no after.qet")},
 		{QStringLiteral("before"), QStringLiteral("before.qet")},
 		{QStringLiteral("after"), complete ? QJsonValue(QStringLiteral("after.qet")) : QJsonValue()},
 		{QStringLiteral("folder"), m_dir},
@@ -229,13 +229,12 @@ void MacroRecorder::finish(bool project_closed)
 QString MacroRecorder::assistantRequest(const QJsonObject &recording)
 {
 	const int steps = int(recording.value(QStringLiteral("steps")).toArray().size());
-	return tr("J'ai enregistré une macro dans QElectroTech : « %1 », %n étape(s) "
-		  "(identifiant %2, dossier %3).\n"
-		  "Avec le serveur MCP qet : lis-la avec qet_recording_read, écris un "
-		  "script qui fait la même chose de façon générale (par exemple sur les "
-		  "éléments sélectionnés plutôt que sur ceux-là précisément), vérifie-le "
-		  "avec qet_recording_check jusqu'à ce qu'il corresponde, puis propose-le "
-		  "comme bouton avec qet_script_install.", nullptr, steps)
+	return tr("I recorded a macro in QElectroTech: “%1”, %n steps (id %2, folder %3).\n"
+		  "With the qet MCP server: read it with qet_recording_read, write a "
+		  "script that does the same thing in general (for example on the selected "
+		  "elements rather than on those exact ones), check it with "
+		  "qet_recording_check until it matches, then offer it as a button with "
+		  "qet_script_install.", nullptr, steps)
 		.arg(recording.value(QStringLiteral("name")).toString())
 		.arg(recording.value(QStringLiteral("id")).toString(),
 		     QDir::toNativeSeparators(recording.value(QStringLiteral("folder")).toString()));

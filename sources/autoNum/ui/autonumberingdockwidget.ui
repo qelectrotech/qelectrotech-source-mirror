@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Sélection numérotation auto</string>
+   <string>Auto numbering selection</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="3">
      <widget class="QLabel" name="value_header_label">
       <property name="text">
-       <string>Valeur</string>
+       <string>Value</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -28,7 +28,7 @@
     <item row="0" column="4">
      <widget class="QLabel" name="increase_header_label">
       <property name="text">
-       <string>Incrément</string>
+       <string>Increment</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -38,7 +38,7 @@
     <item row="0" column="5">
      <widget class="QLabel" name="next_header_label">
       <property name="text">
-       <string>Suivant</string>
+       <string>Next</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -51,7 +51,7 @@
     <item row="4" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Folio</string>
+       <string>Sheet</string>
       </property>
      </widget>
     </item>
@@ -67,7 +67,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à la valeur de départ</string>
+       <string>Reset to the default value</string>
       </property>
       <property name="text">
        <string/>
@@ -86,7 +86,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
+       <string>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</string>
       </property>
      </widget>
     </item>
@@ -99,7 +99,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</string>
+       <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -121,7 +121,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Prochaine valeur qui sera appliquée avec cet incrément</string>
+       <string>The next value to be applied using this increment</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -141,7 +141,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Conducteur</string>
+       <string>Conductor</string>
       </property>
      </widget>
     </item>
@@ -154,7 +154,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à la valeur de départ</string>
+       <string>Reset to the default value</string>
       </property>
       <property name="text">
        <string/>
@@ -173,7 +173,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
+       <string>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</string>
       </property>
      </widget>
     </item>
@@ -186,7 +186,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</string>
+       <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -208,7 +208,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Prochaine valeur qui sera appliquée avec cet incrément</string>
+       <string>The next value to be applied using this increment</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -230,7 +230,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à la valeur de départ</string>
+       <string>Reset to the default value</string>
       </property>
       <property name="text">
        <string/>
@@ -249,7 +249,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
+       <string>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</string>
       </property>
      </widget>
     </item>
@@ -262,7 +262,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</string>
+       <string>Increment: the value added to the counter each time a new number is dialled</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -284,7 +284,7 @@
        </size>
       </property>
       <property name="toolTip">
-       <string>Prochaine valeur qui sera appliquée avec cet incrément</string>
+       <string>The next value to be applied using this increment</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -310,10 +310,10 @@
     <item row="5" column="1">
      <widget class="QPushButton" name="m_configure_pb">
       <property name="toolTip">
-       <string>Configurer les règles d'auto numérotation</string>
+       <string>Configure auto numbering rules</string>
       </property>
       <property name="text">
-       <string>Configurer</string>
+       <string>Configure</string>
       </property>
       <property name="icon">
        <iconset theme="configure"/>

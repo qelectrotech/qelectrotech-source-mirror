@@ -27,14 +27,14 @@
    <item row="1" column="0" colspan="4">
     <widget class="QPushButton" name="m_advanced_editor_pb">
      <property name="text">
-      <string>Éditeur avancé</string>
+      <string>Advanced Editor</string>
      </property>
     </widget>
    </item>
    <item row="3" column="2">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Taille :</string>
+      <string>Size :</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -44,7 +44,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Angle :</string>
+      <string>Angle:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -129,7 +129,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Largeur :</string>
+      <string>Width:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -139,7 +139,7 @@
    <item row="4" column="1">
     <widget class="QSpinBox" name="m_width_sb">
      <property name="toolTip">
-      <string>Largeur du texte, le texte passe à la ligne. Auto : pas de retour à la ligne automatique</string>
+      <string>Text width; the text wraps at this width. Auto: no automatic line wrap</string>
      </property>
      <property name="specialValueText">
       <string>Auto</string>
@@ -161,8 +161,8 @@
    <item row="5" column="0" colspan="4">
     <widget class="QLabel" name="m_label">
      <property name="text">
-      <string>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
-Veuillez utiliser l'éditeur avancé pour cela.</string>
+      <string>The contents, the size and the font of the text can not be modified because formatted in html.
+Please use the advanced editor for this.</string>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -175,21 +175,21 @@ Veuillez utiliser l'éditeur avancé pour cela.</string>
    <item row="6" column="0" colspan="4">
     <widget class="QPushButton" name="m_break_html_pb">
      <property name="text">
-      <string>Cliquez ici pour annuler le formatage html</string>
+      <string>Click here to cancel html formatting</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="3">
     <widget class="QLineEdit" name="m_line_edit">
      <property name="placeholderText">
-      <string>Texte</string>
+      <string>Text</string>
      </property>
     </widget>
    </item>
    <item row="0" column="3">
     <widget class="QPushButton" name="m_font_pb">
      <property name="text">
-      <string>Police</string>
+      <string>Font</string>
      </property>
     </widget>
    </item>

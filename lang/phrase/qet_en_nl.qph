@@ -1,11 +1,11 @@
 <!DOCTYPE QPH>
-<QPH sourcelanguage="fr_FR" language="nl_NL">
+<QPH sourcelanguage="en" language="nl">
 <phrase>
     <source>modifié</source>
     <target>gewijzigd</target>
 </phrase>
 <phrase>
-    <source>projet</source>
+    <source>project</source>
     <target>Projekt</target>
 </phrase>
 <phrase>
@@ -13,7 +13,7 @@
     <target>Instellingen</target>
 </phrase>
 <phrase>
-    <source>Enregistrer</source>
+    <source>Save</source>
     <target>Opslaan</target>
 </phrase>
 <phrase>
@@ -21,7 +21,7 @@
     <target>QElectroTech</target>
 </phrase>
 <phrase>
-    <source>&amp;Quitter</source>
+    <source>&amp;Quit</source>
     <target>Einde</target>
 </phrase>
 <phrase>
@@ -29,19 +29,19 @@
     <target>Sluiten</target>
 </phrase>
 <phrase>
-    <source>Texte</source>
+    <source>Text</source>
     <target>Tekst</target>
 </phrase>
 <phrase>
-    <source>Texte :</source>
+    <source>Text:</source>
     <target>Tekst:</target>
 </phrase>
 <phrase>
-    <source>Schéma</source>
+    <source>Diagram</source>
     <target>Diagram</target>
 </phrase>
 <phrase>
-    <source>Nom</source>
+    <source>Name</source>
     <target>Naam</target>
 </phrase>
 <phrase>
@@ -53,7 +53,7 @@
     <target>Horizontaal</target>
 </phrase>
 <phrase>
-    <source>Centre</source>
+    <source>Middle</source>
     <target>Middelpunt</target>
 </phrase>
 <phrase>
@@ -65,11 +65,11 @@
     <target>Horizontale as:</target>
 </phrase>
 <phrase>
-    <source>Erreur</source>
+    <source>Error</source>
     <target>Fout</target>
 </phrase>
 <phrase>
-    <source>Aperçu</source>
+    <source>Preview</source>
     <target>Voorvertoning</target>
 </phrase>
 <phrase>
@@ -89,23 +89,23 @@
     <target>x</target>
 </phrase>
 <phrase>
-    <source>Conducteurs</source>
+    <source>Conductors</source>
     <target>Geleider</target>
 </phrase>
 <phrase>
     <source>
-&lt;Shift&gt; to move</source>
+Hold Shift and drag to move this text on its own</source>
     <target>
 &lt;Shift&gt; om te verplaatsen</target>
 </phrase>
 <phrase>
-    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
     <target>Contacten: NO: %1, NC: %2, wisselcontacten: %3, overige: %4
 </target>
 </phrase>
 <phrase>
-    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
     <target>Contacten: NO: %1/%2, NC: %3/%4, wisselcontacten: %5/%6, overige: %7/%8
 </target>
@@ -115,27 +115,27 @@
     <target>%</target>
 </phrase>
 <phrase>
-    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <source> (Ctrl while dragging = free position, no grid snapping)</source>
     <target>(Ctrl tijdens het slepen = vrije positie, zonder vastklikken aan het raster)</target>
 </phrase>
 <phrase>
-    <source> (déjà utilisé)</source>
+    <source> (already used)</source>
     <target>(al gebruikt)</target>
 </phrase>
 <phrase>
-    <source> -- %1 : mode %2</source>
+    <source> -- %1: mode %2</source>
     <target>-- %1: modus %2</target>
 </phrase>
 <phrase>
-    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <source> ; red point: drag to reposition the rotation center</source>
     <target>; rood punt: slepen om het rotatiecentrum te verplaatsen</target>
 </phrase>
 <phrase>
-    <source> ; point turquoise : arc</source>
+    <source> ; turquoise point: arc</source>
     <target>; turquoise punt: boog</target>
 </phrase>
 <phrase>
-    <source> ; un bord : inclinaison</source>
+    <source> ; an edge: skew</source>
     <target>; een rand: kanteling</target>
 </phrase>
 <phrase>
@@ -147,7 +147,7 @@
     <target>°</target>
 </phrase>
 <phrase>
-    <source> — Cliquer : mode %1</source>
+    <source> — Click: mode %1</source>
     <target>— Klikken: modus %1</target>
 </phrase>
 <phrase>
@@ -160,23 +160,23 @@
     <definition>hours and minutes of time spent on a project</definition>
 </phrase>
 <phrase>
-    <source>&amp;Fermer cet éditeur</source>
+    <source>&amp;Close this editor</source>
     <target>&amp;Deze editor sluiten</target>
 </phrase>
 <phrase>
-    <source>(déjà assigné)</source>
+    <source>(already assigned)</source>
     <target>(al toegewezen)</target>
 </phrase>
 <phrase>
-    <source>(nombre de contacts ne correspond pas)</source>
+    <source>(number of contacts does not match)</source>
     <target>(aantal contacten komt niet overeen)</target>
 </phrase>
 <phrase>
-    <source>(sous-type ne correspond pas)</source>
+    <source>(subtype does not match)</source>
     <target>(subtype komt niet overeen)</target>
 </phrase>
 <phrase>
-    <source>(état ne correspond pas)</source>
+    <source>(status does not match)</source>
     <target>(toestand komt niet overeen)</target>
 </phrase>
 <phrase>
@@ -184,11 +184,11 @@
     <target>+</target>
 </phrase>
 <phrase>
-    <source>, Alt = créer des poignées</source>
+    <source>, Alt = create handles</source>
     <target>, Alt = grepen maken</target>
 </phrase>
 <phrase>
-    <source>, Alt = détacher en polyligne</source>
+    <source>, Alt = detach into a polyline</source>
     <target>, Alt = losmaken als polylijn</target>
 </phrase>
 <phrase>
@@ -200,19 +200,19 @@
     <target>0</target>
 </phrase>
 <phrase>
-    <source>150 DPI (écran)</source>
+    <source>150 DPI (screen)</source>
     <target>150 DPI (scherm)</target>
 </phrase>
 <phrase>
-    <source>300 DPI (impression)</source>
+    <source>300 DPI (print)</source>
     <target>300 DPI (afdrukken)</target>
 </phrase>
 <phrase>
-    <source>600 DPI (haute qualité)</source>
+    <source>600 DPI (high quality)</source>
     <target>600 DPI (hoge kwaliteit)</target>
 </phrase>
 <phrase>
-    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
     <target>&lt;br&gt;&lt;b&gt;Fout&lt;/b&gt;:&lt;br&gt;Geleiderdefinities kunnen slechts één klem hebben.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt;:&lt;br&gt;Controleer of het element slechts één klem heeft</target>
 </phrase>
 <phrase>
@@ -220,96 +220,96 @@
     <target>Actie</target>
 </phrase>
 <phrase>
-    <source>Adresse</source>
+    <source>Address</source>
     <target>Adres</target>
 </phrase>
 <phrase>
-    <source>Adresse PLC</source>
+    <source>PLC address</source>
     <target>PLC-adres</target>
 </phrase>
 <phrase>
-    <source>Affiche ou masque les guides</source>
+    <source>Shows or hides the guides</source>
     <target>Toont of verbergt de hulplijnen</target>
 </phrase>
 <phrase>
-    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <source>Show the default grid (applied the next time the programme is launched)</source>
     <target>Standaardraster tonen (toegepast bij de volgende start)</target>
 </phrase>
 <phrase>
-    <source>Afficher le nom</source>
+    <source>Show name</source>
     <target>De naam tonen</target>
 </phrase>
 <phrase>
-    <source>Afficher les en-têtes sur la feuille</source>
+    <source>Show headers on the sheet</source>
     <target>De kopteksten op het blad weergeven</target>
 </phrase>
 <phrase>
-    <source>Afficher les guides</source>
+    <source>View the guides</source>
     <target>Hulplijnen tonen</target>
 </phrase>
 <phrase>
-    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <source>Show default guides (applies from the next time the programme is launched)</source>
     <target>Standaardhulplijnen tonen (toegepast bij de volgende start)</target>
 </phrase>
 <phrase>
-    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <source>Display terminal numbers in Xrefs</source>
     <target>Klemnummers tonen in de kruisverwijzingen</target>
 </phrase>
 <phrase>
-    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <source>Show or hide the column headings of the PLC table on the sheet</source>
     <target>De kolomkopteksten van de PLC-tabel op het blad weergeven of verbergen</target>
 </phrase>
 <phrase>
-    <source>Afficher/cacher le cadre du label</source>
+    <source>Show/hide the label border</source>
     <target>Het kader van het label tonen/verbergen</target>
 </phrase>
 <phrase>
-    <source>Afficher/cacher le nom du terminal</source>
+    <source>Show/hide the terminal name</source>
     <target>De naam van de klem tonen/verbergen</target>
 </phrase>
 <phrase>
-    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <source>Adds a Bézier curve to the current sheet</source>
     <target>Voegt een Bézier-curve toe op het huidige blad</target>
 </phrase>
 <phrase>
-    <source>Ajoute une page PDF sur le folio actuel</source>
+    <source>Adds a PDF page to the current sheet</source>
     <target>Voegt een PDF-pagina toe op het huidige blad</target>
 </phrase>
 <phrase>
-    <source>Ajouter</source>
+    <source>Add</source>
     <target>Toevoegen</target>
 </phrase>
 <phrase>
-    <source>Ajouter un folio</source>
+    <source>Add a sheet</source>
     <target>Een blad toevoegen</target>
     <definition>undo command text</definition>
 </phrase>
 <phrase>
-    <source>Ajouter un PDF</source>
+    <source>Add a PDF</source>
     <target>Een PDF toevoegen</target>
 </phrase>
 <phrase>
-    <source>Ajouter un point à une courbe</source>
+    <source>Add a point to a curve</source>
     <target>Een punt aan een curve toevoegen</target>
 </phrase>
 <phrase>
-    <source>Ajouter une courbe</source>
+    <source>Add a curve</source>
     <target>Een curve toevoegen</target>
 </phrase>
 <phrase>
-    <source>Ajouter une propriété personnalisée</source>
+    <source>Add a custom property</source>
     <target>Een aangepaste eigenschap toevoegen</target>
 </phrase>
 <phrase>
-    <source>Alignement</source>
+    <source>Alignment</source>
     <target>Uitlijning</target>
 </phrase>
 <phrase>
-    <source>Alphabétique</source>
+    <source>Alphabetical</source>
     <target>Alfabetisch</target>
 </phrase>
 <phrase>
-    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <source>Alphanumeric (A, B, C... 1, 2...)</source>
     <target>Alfanumeriek (A, B, C... 1, 2...)</target>
 </phrase>
 <phrase>
@@ -317,7 +317,7 @@
     <target>Hoek</target>
 </phrase>
 <phrase>
-    <source>Anguleux</source>
+    <source>Corner</source>
     <target>Hoekig</target>
 </phrase>
 <phrase>
@@ -325,45 +325,45 @@
     <target>Annuleren</target>
 </phrase>
 <phrase>
-    <source>Aperçu :</source>
+    <source>Preview :</source>
     <target>Voorbeeld:</target>
 </phrase>
 <phrase>
-    <source>Arrondir les coins d&apos;%1</source>
+    <source>Round the corners of %1</source>
     <target>De hoeken van %1 afronden</target>
 </phrase>
 <phrase>
-    <source>Atteindre un élément</source>
+    <source>Navigate to an element</source>
     <target>Naar een element gaan</target>
 </phrase>
 <phrase>
-    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+    <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
 </source>
     <target>Let op: de som van de relatieve breedtes overschrijdt 100%% van de totale breedte; aan dit titelblokmodel kan met geen enkele breedte worden voldaan.
 </target>
     <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
 </phrase>
 <phrase>
-    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+    <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
 </source>
     <target>Let op: de kolommen met vaste breedte passen niet in de resterende breedte; aan dit titelblokmodel kan met geen enkele breedte worden voldaan.
 </target>
     <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
 </phrase>
 <phrase>
-    <source>Attribués uniquement</source>
+    <source>Awarded exclusively</source>
     <target>Alleen toegewezen</target>
 </phrase>
 <phrase>
-    <source>Aucun</source>
+    <source>None</source>
     <target>Geen</target>
 </phrase>
 <phrase>
-    <source>Automate (PLC)</source>
+    <source>Programmable Logic Controller (PLC)</source>
     <target>PLC</target>
 </phrase>
 <phrase>
-    <source>Automates (MAE/SPS)</source>
+    <source>PLCs (MAE/SPS)</source>
     <target>PLC&apos;s (MAE/SPS)</target>
 </phrase>
 <phrase>
@@ -371,20 +371,20 @@
     <target>Automatische klemnummering</target>
 </phrase>
 <phrase>
-    <source>Autonumérotation</source>
+    <source>Auto Numbering</source>
     <target>Autonummering</target>
 </phrase>
 <phrase>
-    <source>Autre</source>
+    <source>Other</source>
     <target>Andere</target>
 </phrase>
 <phrase>
-    <source>AVERTISSEMENT :
-Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+    <source>WARNING:
+Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
-1 - la valeur sélectionnée 
-2 - du dpi de l&apos;écran 
-3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+1 - the selected setting 
+2 - the screen&apos;s dpi 
+3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
     <target>WAARSCHUWING:
 Elke waarde anders dan &apos;Geen afronding&apos; kan fouten in de weergave van het project veroorzaken, afhankelijk van:
 
@@ -393,53 +393,53 @@ Elke waarde anders dan &apos;Geen afronding&apos; kan fouten in de weergave van 
 3 - Het project wijzigen op een andere computer en/of scherm met andere instellingen voor de punten 1 en 2.</target>
 </phrase>
 <phrase>
-    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <source>Warning — Importing an EPLAN file (.edz)</source>
     <target>Waarschuwing — EPLAN-bestand importeren (.edz)</target>
 </phrase>
 <phrase>
-    <source>Bloc auxiliaire 3</source>
+    <source>Auxiliary block 3</source>
     <target>Aanvullend blok 3</target>
 </phrase>
 <phrase>
-    <source>Bloc auxiliaire 4</source>
+    <source>Auxiliary block 4</source>
     <target>Aanvullend blok 4</target>
 </phrase>
 <phrase>
-    <source>Borne 1</source>
+    <source>Terminal 1</source>
     <target>Klem 1</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Borne 2</source>
+    <source>Terminal 2</source>
     <target>Klem 2</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Bornes</source>
+    <source>Terminals</source>
     <target>Klemmen</target>
 </phrase>
 <phrase>
-    <source>Borniers</source>
+    <source>Terminal blocks</source>
     <target>Klemmenstroken</target>
 </phrase>
 <phrase>
-    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
--Une numérotation est composée d&apos;une variable minimum.
--Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+    <source>This is where you can define how new elements will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
 
--les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
--"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
-Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
 
--Le type "Texte", représente un texte fixe.
-Le champ "Incrémentation" n&apos;est pas utilisé.
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
 
--Le type "N° folio" représente le n° du folio en cours.
-Les autres champs ne sont pas utilisés.
+-The &quot;sheet&quot; type represents the number of the current sheet.
+The other fields are not used.
 
--Le type "Folio" représente le nom du folio en cours.
-Les autres champs ne sont pas utilisés.</source>
+-The &quot;Sheet&quot; type represents the name of the current sheet.
+The other fields are not used.</source>
     <target>Hier kunt u bepalen hoe nieuwe elementen worden genummerd.
 -Een nummering bestaat uit minimaal één variabele.
 -U kunt een nummeringsvariabele toevoegen of verwijderen met de knoppen - en +.
@@ -464,100 +464,100 @@ De andere velden worden niet gebruikt.</target>
     <target>Kan %1 niet lezen</target>
 </phrase>
 <phrase>
-    <source>Catégorie</source>
+    <source>Category</source>
     <target>Categorie</target>
 </phrase>
 <phrase>
-    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
     <target>Dit formaat ondersteunt geen transparantie: de afbeelding wordt opgeslagen zoals ze was vóór het toepassen van de transparante kleur. Doorgaan?</target>
 </phrase>
 <phrase>
-    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <source>This shortcut is also used by : %1</source>
     <target>Deze sneltoets wordt ook gebruikt door: %1</target>
 </phrase>
 <phrase>
-    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
     <target>Dit bevat de laatste logberichten van deze sessie. Controleer de inhoud voordat u ze bij een openbaar bugrapport voegt.</target>
 </phrase>
 <phrase>
-    <source>Cet élément est déjà lié</source>
+    <source>This element is already linked</source>
     <target>Dit element is al gekoppeld</target>
 </phrase>
 <phrase>
-    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
     <target>Deze functie nummert de klemmen van het project op basis van hun positie. Lege of vergrendelde klemmen worden genegeerd. De klemmenaanduiding moet vooraf als volgt worden geconfigureerd: &apos;-X:AB&apos;. Het deel vóór de dubbele punt (de klemmenstrook) mag vrij worden gekozen. &apos;AB&apos; kan bestaan uit cijfers of letters."</target>
 </phrase>
 <phrase>
-    <source>Champ de texte</source>
+    <source>Text field</source>
     <target>Tekstveld</target>
 </phrase>
 <phrase>
-    <source>Chemin des macros utilisateur</source>
+    <source>User macro path</source>
     <target>Pad naar gebruikersmacro&apos;s</target>
 </phrase>
 <phrase>
-    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <source>Select the location where you want to save your template.</source>
     <target>Kies de locatie waar u uw sjabloon wilt opslaan.</target>
     <definition>dialog content</definition>
 </phrase>
 <phrase>
-    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
     <target>Klik: op oorspronkelijke grootte plaatsen. Klikken en slepen: plaatsen en formaat wijzigen. Rechtsklik: 90° draaien. Ctrl+muiswiel: formaat aanpassen.</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
     <target>Linksklik: volgend punt; dubbelklik of Enter: beëindigen; rechtsklik: laatste punt annuleren</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
     <target>Linksklik: de tegenoverliggende hoek plaatsen (Shift = vierkant, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerd vierkant); rechtsklik: annuleren</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
     <target>Linksklik: de tegenoverliggende hoek plaatsen (Shift = cirkel, Ctrl = vanuit het midden + vrije positie, Ctrl+Shift = gecentreerde cirkel); rechtsklik: annuleren</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <source>Left click: position the starting point (Ctrl = free position)</source>
     <target>Linksklik: het beginpunt plaatsen (Ctrl = vrije positie)</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
     <target>Linksklik: het eindpunt plaatsen (Ctrl = vrije positie); rechtsklik: annuleren</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <source>Left click: position the first corner (Ctrl = center point, free position)</source>
     <target>Linksklik: de eerste hoek plaatsen (Ctrl = middelpunt, vrije positie)</target>
 </phrase>
 <phrase>
-    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <source>Left click: position the first point (Ctrl = free position)</source>
     <target>Linksklik: het eerste punt plaatsen (Ctrl = vrije positie)</target>
 </phrase>
 <phrase>
-    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
     <target>Klik: hoekpunt. Klikken en slepen: bochtpunt. Klik op het eerste punt: sluiten. Esc/Enter: beëindigen. Rechtsklik: laatste punt annuleren.</target>
 </phrase>
 <phrase>
-    <source>Cliquer</source>
+    <source>Click</source>
     <target>Klikken</target>
 </phrase>
 <phrase>
-    <source>Cliquer : mode %1</source>
+    <source>Click: mode %1</source>
     <target>Klikken: modus %1</target>
 </phrase>
 <phrase>
-    <source>Cliquez pour choisir une couleur</source>
+    <source>Click to choose a color</source>
     <target>Klik om een kleur te kiezen</target>
 </phrase>
 <phrase>
-    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
     <target>Klik op de afbeelding om een kleur toe te voegen. Pas de tolerantie van elke kleur aan met de schuifregelaar, of klik op × om ze te verwijderen.</target>
 </phrase>
 <phrase>
-    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <source>Click on the image to choose a color</source>
     <target>Klik op de afbeelding om een kleur te kiezen</target>
 </phrase>
 <phrase>
-    <source>Coins arrondis</source>
+    <source>Rounded corners</source>
     <target>Afgeronde hoeken</target>
 </phrase>
 <phrase>
@@ -565,49 +565,49 @@ De andere velden worden niet gebruikt.</target>
     <target>Collecties</target>
 </phrase>
 <phrase>
-    <source>Coller depuis le presse-papiers</source>
+    <source>Paste from the clipboard</source>
     <target>Plakken vanuit klembord</target>
 </phrase>
 <phrase>
-    <source>Commentaire</source>
+    <source>Annotation</source>
     <target>Opmerking</target>
 </phrase>
 <phrase>
-    <source>Commentaire PLC</source>
+    <source>PLC comment</source>
     <target>PLC-opmerking</target>
 </phrase>
 <phrase>
-    <source>Commun (contact SW)</source>
+    <source>Common (contact SW)</source>
     <target>Gemeenschappelijk (contact SW)</target>
 </phrase>
 <phrase>
-    <source>Composant 1</source>
+    <source>Component 1</source>
     <target>Component 1</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Composant 2</source>
+    <source>Component 2</source>
     <target>Component 2</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Configuration PLC</source>
+    <source>PLC Configuration</source>
     <target>PLC-configuratie</target>
 </phrase>
 <phrase>
-    <source>Configurer la police des en-têtes de colonnes</source>
+    <source>Set the font for column headers</source>
     <target>Het lettertype van de kolomkopteksten configureren</target>
 </phrase>
 <phrase>
-    <source>Configurer la police du texte dans les cellules</source>
+    <source>Set the text font in the cells</source>
     <target>Het lettertype van de tekst in de cellen configureren</target>
 </phrase>
 <phrase>
-    <source>Conflits uniquement</source>
+    <source>Conflicts only</source>
     <target>Alleen conflicten</target>
 </phrase>
 <phrase>
-    <source>Connecter</source>
+    <source>Log in</source>
     <target>Verbinden</target>
 </phrase>
 <phrase>
@@ -619,27 +619,27 @@ De andere velden worden niet gebruikt.</target>
     <target>Contacten</target>
 </phrase>
 <phrase>
-    <source>Convertir %1 en courbe de Bézier</source>
+    <source>Convert %1 to a Bézier curve</source>
     <target>%1 omzetten naar Béziercurve</target>
 </phrase>
 <phrase>
-    <source>Convertir %1 en polyligne</source>
+    <source>Convert %1 to a polyline</source>
     <target>%1 omzetten naar polylijn</target>
 </phrase>
 <phrase>
-    <source>Convertir en courbe de Bézier</source>
+    <source>Convert to Bézier curve</source>
     <target>Omzetten naar Béziercurve</target>
 </phrase>
 <phrase>
-    <source>Convertir en polyligne</source>
+    <source>Convert to polyline</source>
     <target>Omzetten naar polylijn</target>
 </phrase>
 <phrase>
-    <source>Copier et coller</source>
+    <source>Copy and paste</source>
     <target>Kopiëren en plakken</target>
 </phrase>
 <phrase>
-    <source>Coréen</source>
+    <source>Korean</source>
     <target>Koreaans</target>
 </phrase>
 <phrase>
@@ -647,7 +647,7 @@ De andere velden worden niet gebruikt.</target>
     <target>Kan geen tijdelijke map aanmaken: %1</target>
 </phrase>
 <phrase>
-    <source>Couleur</source>
+    <source>Color</source>
     <target>Kleur</target>
 </phrase>
 <phrase>
@@ -655,68 +655,68 @@ De andere velden worden niet gebruikt.</target>
     <target>Kleur :</target>
 </phrase>
 <phrase>
-    <source>Couleur du fil</source>
+    <source>Wire color</source>
     <target>Kleur van de draad</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Couleur transparente</source>
+    <source>Transparent color</source>
     <target>Transparante kleur</target>
 </phrase>
 <phrase>
-    <source>Couleur transparente...</source>
+    <source>Transparent color...</source>
     <target>Transparante kleur...</target>
 </phrase>
 <phrase>
-    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <source>Automatically cut existing conductors when placing an element</source>
     <target>Bestaande geleiders automatisch doorsnijden bij het plaatsen van een element</target>
     <definition>Status tip of auto break conductor</definition>
 </phrase>
 <phrase>
-    <source>Coupure automatique de conducteur(s)</source>
+    <source>Automatic disconnection of conductor(s)</source>
     <target>Automatisch doorsnijden van geleider(s)</target>
     <definition>Tool tip of auto break conductor</definition>
 </phrase>
 <phrase>
-    <source>Courant nominal</source>
+    <source>Rated current</source>
     <target>Nominale stroom</target>
 </phrase>
 <phrase>
-    <source>Créer un template</source>
+    <source>Create a template</source>
     <target>Een sjabloon maken</target>
     <definition>context menu action</definition>
 </phrase>
 <phrase>
-    <source>Créer une copie de sauvegarde ?</source>
+    <source>Create a backup copy?</source>
     <target>Een reservekopie maken?</target>
     <definition>window title</definition>
 </phrase>
 <phrase>
-    <source>Cyclique (modulo)</source>
+    <source>Cyclic (modulo)</source>
     <target>Cyclisch (modulo)</target>
 </phrase>
 <phrase>
-    <source>Deplacer le centre de rotation</source>
+    <source>Move the rotation center</source>
     <target>Het rotatiecentrum verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Description textuelle auxiliaire 1</source>
+    <source>Auxiliary 1 text description</source>
     <target>Aanvullende tekstuele beschrijving 1</target>
 </phrase>
 <phrase>
-    <source>Description textuelle auxiliaire 2</source>
+    <source>Auxiliary 2 text description</source>
     <target>Aanvullende tekstuele beschrijving 2</target>
 </phrase>
 <phrase>
-    <source>Description textuelle auxiliaire 3</source>
+    <source>Auxiliary 3 text description</source>
     <target>Aanvullende tekstuele beschrijving 3</target>
 </phrase>
 <phrase>
-    <source>Description textuelle auxiliaire 4</source>
+    <source>Auxiliary 4 text description</source>
     <target>Aanvullende tekstuele beschrijving 4</target>
 </phrase>
 <phrase>
-    <source>Dessiner les noms des bornes</source>
+    <source>Draw the names of the terminals</source>
     <target>De namen van de klemmen tekenen</target>
 </phrase>
 <phrase>
@@ -738,183 +738,183 @@ Error: Make sure the file %1 is a valid .dxf file</source>
 Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
 </phrase>
 <phrase>
-    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
     <target>Vink de klemmenstroken uit waarvan de nummering moet worden uitgesloten</target>
 </phrase>
 <phrase>
-    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <source>Set the maximum number of slaves</source>
     <target>Het maximale aantal onderliggende elementen instellen</target>
 </phrase>
 <phrase>
-    <source>Définir les éléments esclave</source>
+    <source>Define the slave elements</source>
     <target>De onderliggende elementen instellen</target>
 </phrase>
 <phrase>
-    <source>Définir une couleur transparente</source>
+    <source>Set a transparent color</source>
     <target>Een transparante kleur instellen</target>
 </phrase>
 <phrase>
-    <source>Définition de conducteur</source>
+    <source>Conductor definition</source>
     <target>Geleiderdefinitie</target>
 </phrase>
 <phrase>
-    <source>Déformer une courbe</source>
+    <source>Deform a curve</source>
     <target>Een curve vervormen</target>
 </phrase>
 <phrase>
-    <source>Délier</source>
+    <source>Unlink</source>
     <target>Ontkoppelen</target>
 </phrase>
 <phrase>
-    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <source>Move an image&apos;s rotation center</source>
     <target>Het draaipunt van een afbeelding verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Déplacer le label d&apos;une borne</source>
+    <source>Move the label to a terminal</source>
     <target>Het label van een klem verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Déplacer les folios</source>
+    <source>Move the sheets</source>
     <target>De bladen verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Déplacer un folio</source>
+    <source>Moving a sheet</source>
     <target>Een blad verplaatsen</target>
     <definition>undo command text</definition>
 </phrase>
 <phrase>
-    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <source>Unlocked: width and height can be changed independently. Click to lock.</source>
     <target>Ontgrendeld: breedte en hoogte kunnen onafhankelijk worden gewijzigd. Klik om te vergrendelen.</target>
 </phrase>
 <phrase>
-    <source>Element Autonumérotation</source>
+    <source>Element Auto Numbering</source>
     <target>Element Automatische nummering</target>
     <definition>title window</definition>
 </phrase>
 <phrase>
-    <source>Encadrer le texte</source>
+    <source>Frame the text</source>
     <target>De tekst omlijnen</target>
 </phrase>
 <phrase>
-    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <source>Save original image as...</source>
     <target>De oorspronkelijke afbeelding opslaan als...</target>
 </phrase>
 <phrase>
-    <source>Enregistrer l&apos;image sous...</source>
+    <source>Save image as...</source>
     <target>De afbeelding opslaan als...</target>
 </phrase>
 <phrase>
-    <source>Enregistrer le rapport de diagnostic</source>
+    <source>Save the diagnostic report</source>
     <target>Het diagnoserapport opslaan</target>
 </phrase>
 <phrase>
-    <source>Enregistrer un rapport de diagnostic...</source>
+    <source>Save a diagnostic report...</source>
     <target>Een diagnostisch rapport opslaan...</target>
 </phrase>
 <phrase>
-    <source>Enregistrer un template</source>
+    <source>Save a template</source>
     <target>Een sjabloon opslaan</target>
     <definition>dialog title</definition>
 </phrase>
 <phrase>
-    <source>Enregistrer...</source>
+    <source>Save...</source>
     <target>Opslaan...</target>
 </phrase>
 <phrase>
-    <source>Entrer le facteur d&apos;échelle</source>
+    <source>Enter the scale factor</source>
     <target>Voer de schaalfactor in</target>
 </phrase>
 <phrase>
-    <source>Entrée analogique</source>
+    <source>Analogue input</source>
     <target>Analoge ingang</target>
 </phrase>
 <phrase>
-    <source>Entrée digitale</source>
+    <source>Digital input</source>
     <target>Digitale ingang</target>
 </phrase>
 <phrase>
-    <source>Entrée universelle</source>
+    <source>Universal input</source>
     <target>Universele ingang</target>
 </phrase>
 <phrase>
-    <source>Esclave PLC</source>
+    <source>PLC slave</source>
     <target>PLC-onderliggend element</target>
 </phrase>
 <phrase>
-    <source>Exclure de la nomenclature</source>
+    <source>Exclude from the bill of materials</source>
     <target>Uitsluiten van de stuklijst</target>
 </phrase>
 <phrase>
-    <source>Exclure de la numérotation auto</source>
+    <source>Exclude from automatic numbering</source>
     <target>Uitsluiten van automatische nummering</target>
 </phrase>
 <phrase>
-    <source>Export réussi</source>
+    <source>Export successful</source>
     <target>Export geslaagd</target>
 </phrase>
 <phrase>
-    <source>Exporter en SVG</source>
+    <source>Export as SVG</source>
     <target>Exporteren naar SVG</target>
     <definition>dialog title</definition>
 </phrase>
 <phrase>
-    <source>Exporter le plan de câblage</source>
+    <source>Export the wiring diagram</source>
     <target>Het bedradingsplan exporteren</target>
 </phrase>
 <phrase>
-    <source>Fabricant auxiliaire 1</source>
+    <source>Manufacturer of auxiliary 1</source>
     <target>Aanvullende fabrikant 1</target>
 </phrase>
 <phrase>
-    <source>Fabricant auxiliaire 2</source>
+    <source>Manufacturer of auxiliary 2</source>
     <target>Aanvullende fabrikant 2</target>
 </phrase>
 <phrase>
-    <source>Fabricant auxiliaire 3</source>
+    <source>Manufacturer of auxiliary 3</source>
     <target>Aanvullende fabrikant 3</target>
 </phrase>
 <phrase>
-    <source>Fabricant auxiliaire 4</source>
+    <source>Manufacturer of auxiliary 4</source>
     <target>Aanvullende fabrikant 4</target>
 </phrase>
 <phrase>
-    <source>Facteur X:</source>
+    <source>X Factor:</source>
     <target>Factor X:</target>
 </phrase>
 <phrase>
-    <source>Facteur Y:</source>
+    <source>Y Factor:</source>
     <target>Factor Y:</target>
 </phrase>
 <phrase>
-    <source>Faire pivoter %1</source>
+    <source>Rotate %1</source>
     <target>%1 roteren</target>
 </phrase>
 <phrase>
-    <source>Faire pivoter une image</source>
+    <source>Rotate an image</source>
     <target>Een afbeelding draaien</target>
 </phrase>
 <phrase>
-    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
     <target>Sleep de grepen, of het binnenste van het kader, om het te behouden gebied aan te passen.</target>
 </phrase>
 <phrase>
-    <source>Fermer cet éditeur</source>
+    <source>Close this editor</source>
     <target>Deze editor sluiten</target>
 </phrase>
 <phrase>
-    <source>Fichiers CSV (*.csv)</source>
+    <source>CSV files (*.csv)</source>
     <target>CSV-bestanden (*.csv)</target>
 </phrase>
 <phrase>
-    <source>Fichiers PDF (*.pdf)</source>
+    <source>PDF files (*.pdf)</source>
     <target>PDF-bestanden (*.pdf)</target>
 </phrase>
 <phrase>
-    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <source>Text files (*.txt);;All files (*)</source>
     <target>Tekstbestanden (*.txt);;Alle bestanden (*)</target>
 </phrase>
 <phrase>
-    <source>Fil</source>
+    <source>Wire</source>
     <target>Draad</target>
     <definition>column title</definition>
 </phrase>
@@ -923,7 +923,7 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>Bestand niet gevonden: %1</target>
 </phrase>
 <phrase>
-    <source>Filtrer les raccourcis…</source>
+    <source>Filter shortcuts…</source>
     <target>Sneltoetsen filteren…</target>
 </phrase>
 <phrase>
@@ -935,129 +935,129 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>Omdraaien</target>
 </phrase>
 <phrase>
-    <source>Folio</source>
+    <source>Sheet</source>
     <target>Blad</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Fonction</source>
+    <source>Function</source>
     <target>Functie</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Fonction PLC</source>
+    <source>PLC function</source>
     <target>PLC-functie</target>
 </phrase>
 <phrase>
-    <source>Fonctionnalité expérimental</source>
+    <source>Experimental feature</source>
     <target>Experimentele functionaliteit</target>
 </phrase>
 <phrase>
-    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <source>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</source>
     <target>Weergaveformaat: een reeks nullen geeft het minimum aantal cijfers (00 = 07, 000 = 007). Leeg = natuurlijke breedte van het type.</target>
 </phrase>
 <phrase>
-    <source>Forme fermée</source>
+    <source>Closed shape</source>
     <target>Gesloten vorm</target>
 </phrase>
 <phrase>
-    <source>Fournisseur auxiliaire 1</source>
+    <source>supplier of auxiliary 1</source>
     <target>Aanvullende leverancier 1</target>
 </phrase>
 <phrase>
-    <source>Fournisseur auxiliaire 2</source>
+    <source>supplier of auxiliary 2</source>
     <target>Aanvullende leverancier 2</target>
 </phrase>
 <phrase>
-    <source>Fournisseur auxiliaire 3</source>
+    <source>supplier of auxiliary 3</source>
     <target>Aanvullende leverancier 3</target>
 </phrase>
 <phrase>
-    <source>Fournisseur auxiliaire 4</source>
+    <source>supplier of auxiliary 4</source>
     <target>Aanvullende leverancier 4</target>
 </phrase>
 <phrase>
-    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <source>Drag %1: rotation (Shift = 15°)</source>
     <target>%1 slepen: rotatie (Shift = 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
     <target>Slepen: de boog aanpassen (Ctrl = vrije positie, Shift = 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <source>Drag: round the corners (Ctrl = free position)</source>
     <target>Slepen: hoeken afronden (Ctrl = vrije positie)</target>
 </phrase>
 <phrase>
-    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
     <target>Slepen: de curve vervormen (Ctrl = vrije positie, Alt = de raaklijn verbreken)</target>
 </phrase>
 <phrase>
-    <source>Glisser : déplacer ce point</source>
+    <source>Drag: move this point</source>
     <target>Slepen: dit punt verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Glisser : déplacer le centre de rotation</source>
+    <source>Drag: move the rotation center</source>
     <target>Sleep: draaipunt verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <source>Drag: move the point (Ctrl = free position</source>
     <target>Slepen: het punt verplaatsen (Ctrl = vrije positie</target>
 </phrase>
 <phrase>
-    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
     <target>Slepen: kanteling (Ctrl = vrije positie, Shift = 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <source>Drag: skew (Shift = 15° steps)</source>
     <target>Sleep: kantelen (Shift = in stappen van 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <source>Drag: rotate (Shift = 15° steps)</source>
     <target>Sleep: draaien (Shift = in stappen van 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
     <target>Slepen: schalen (Ctrl = vanuit het midden + vrije positie, Shift = verhoudingen</target>
 </phrase>
 <phrase>
-    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
     <target>Sleep: formaat wijzigen (Shift = verhoudingen behouden, Ctrl = vanuit het midden)</target>
 </phrase>
 <phrase>
-    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <source>Drag: reposition the rotation center (Ctrl = free position)</source>
     <target>Slepen: het rotatiecentrum verplaatsen (Ctrl = vrije positie)</target>
 </phrase>
 <phrase>
-    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
     <target>Slepen: rotatie (Ctrl = vrije positie, Shift = 15°)</target>
 </phrase>
 <phrase>
-    <source>Glisser le point violet : arrondir les coins</source>
+    <source>Drag the purple point: round the corners</source>
     <target>Sleep het paarse punt: hoeken afronden</target>
 </phrase>
 <phrase>
-    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
     <target>Sleep een hoek: draaien (Shift = in stappen van 15°); sleep een rand: kantelen (Shift = in stappen van 15°); rood punt: draaipunt verplaatsen</target>
 </phrase>
 <phrase>
-    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
     <target>Sleep een hoek/rand: formaat wijzigen (Ctrl = vanuit het midden, Shift = verhoudingen behouden)</target>
 </phrase>
 <phrase>
-    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
     <target>Sleep een hoek/rand: schalen (Ctrl = vanuit het midden, Shift = verhoudingen, Alt = losmaken als polylijn)</target>
 </phrase>
 <phrase>
-    <source>Glisser un point : le déplacer</source>
+    <source>Drag a point: move it</source>
     <target>Sleep een punt: verplaats het</target>
 </phrase>
 <phrase>
-    <source>Glisser une extrémité : la déplacer</source>
+    <source>Drag an endpoint: move it</source>
     <target>Sleep een uiteinde: verplaats het</target>
 </phrase>
 <phrase>
-    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
     <target>Sleep een greep of de curve: vervormen (Alt = de raaklijn verbreken) ; Alt+sleep een hoekig punt: grepen maken ; rechtermuisklik: menu van het dichtstbijzijnde knooppunt</target>
 </phrase>
 <phrase>
@@ -1073,24 +1073,24 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>Hulplijnen</target>
 </phrase>
 <phrase>
-    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <source>Generates a report containing the latest log entries, to be included in a bug report</source>
     <target>Genereert een rapport met de laatste logberichten, om op te nemen in een bugrapport</target>
     <definition>status bar tip</definition>
 </phrase>
 <phrase>
-    <source>Général</source>
+    <source>General</source>
     <target>Algemeen</target>
 </phrase>
 <phrase>
-    <source>Géométrie</source>
+    <source>Geometry</source>
     <target>Geometrie</target>
 </phrase>
 <phrase>
-    <source>H. ligne:</source>
+    <source>Line H:</source>
     <target>H. lijn:</target>
 </phrase>
 <phrase>
-    <source>Hauteur</source>
+    <source>Height</source>
     <target>Hoogte</target>
 </phrase>
 <phrase>
@@ -1098,7 +1098,7 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>horizontaal + verticaal</target>
 </phrase>
 <phrase>
-    <source>Image BMP (*.bmp)</source>
+    <source>BMP image (*.bmp)</source>
     <target>BMP-afbeelding (*.bmp)</target>
 </phrase>
 <phrase>
@@ -1106,24 +1106,24 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>Afbeeldingsbestanden (*.png *.jpg *.jpeg *.bmp *.svg)</target>
 </phrase>
 <phrase>
-    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <source>JPEG image (*.jpg *.jpeg)</source>
     <target>JPEG-afbeelding (*.jpg *.jpeg)</target>
 </phrase>
 <phrase>
-    <source>Image PNG (*.png)</source>
+    <source>PNG image (*.png)</source>
     <target>PNG-afbeelding (*.png)</target>
 </phrase>
 <phrase>
-    <source>Image source</source>
+    <source>Source image</source>
     <target>Bronafbeelding</target>
 </phrase>
 <phrase>
-    <source>Image SVG (*.svg)</source>
+    <source>SVG image (*.svg)</source>
     <target>SVG-afbeelding (*.svg)</target>
     <definition>filetypes allowed when exporting an element to SVG</definition>
 </phrase>
 <phrase>
-    <source>Images non incluses dans l&apos;export DXF</source>
+    <source>Images not included in the DXF export</source>
     <target>Afbeeldingen niet inbegrepen in de DXF-export</target>
     <definition>message box title</definition>
 </phrase>
@@ -1132,139 +1132,139 @@ Fout: Controleer of het bestand %1 een geldig .dxf-bestand is</target>
     <target>EPLAN-import</target>
 </phrase>
 <phrase>
-    <source>Importer</source>
+    <source>Import</source>
     <target>Importeren</target>
 </phrase>
 <phrase>
-    <source>importer un élément à redimensionner</source>
+    <source>Import an element to resize</source>
     <target>een element importeren om te schalen</target>
 </phrase>
 <phrase>
-    <source>Importer une pièce EPLAN</source>
+    <source>Import an EPLAN part</source>
     <target>EPLAN-onderdeel importeren</target>
 </phrase>
 <phrase>
-    <source>Importer une pièce EPLAN (.edz)…</source>
+    <source>Import an EPLAN part (.edz)…</source>
     <target>EPLAN-onderdeel importeren (.edz)…</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <source>Unable to save the image to this location.</source>
     <target>Kan de afbeelding niet op deze locatie opslaan.</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+    <source>Unable to save the parts list to %1.
 %2</source>
     <target>Kan de stuklijst niet opslaan in %1.
 %2</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <source>Unable to save the template  ‘%1’.</source>
     <target>Kan het sjabloon “%1” niet opslaan.</target>
     <definition>message box content - %1 is a title block template name</definition>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;importer cette pièce :
+    <source>Could not import this part:
 %1</source>
     <target>Kan dit onderdeel niet importeren:
 %1</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <source>Unable to open the file for writing.</source>
     <target>Het bestand kan niet worden geopend om te schrijven.</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <source>Unable to write to the file « %1 ».</source>
     <target>Kan niet schrijven naar het bestand “%1”.</target>
 </phrase>
 <phrase>
-    <source>Impossible de charger l&apos;image.</source>
+    <source>Unable to load the image.</source>
     <target>Kan de afbeelding niet laden.</target>
 </phrase>
 <phrase>
-    <source>Impossible de charger le fichier PDF.</source>
+    <source>Unable to load the PDF file.</source>
     <target>Kan het PDF-bestand niet laden.</target>
 </phrase>
 <phrase>
-    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <source>It is not possible to determine the size of the PDF page.</source>
     <target>Kan de grootte van de PDF-pagina niet bepalen.</target>
 </phrase>
 <phrase>
-    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <source>Unable to read the project&apos;s in-memory structure.</source>
     <target>De structuur in het geheugen van het project kan niet worden gelezen.</target>
 </phrase>
 <phrase>
-    <source>Impossible de rendre la page PDF.</source>
+    <source>Unable to render the PDF page.</source>
     <target>Kan de PDF-pagina niet weergeven.</target>
 </phrase>
 <phrase>
-    <source>Inclinaison X</source>
+    <source>X skew</source>
     <target>Helling X</target>
 </phrase>
 <phrase>
-    <source>Inclinaison Y</source>
+    <source>Y skew</source>
     <target>Helling Y</target>
 </phrase>
 <phrase>
-    <source>Incliner %1</source>
+    <source>Skew %1</source>
     <target>%1 kantelen</target>
 </phrase>
 <phrase>
-    <source>Incliner une image</source>
+    <source>Skew an image</source>
     <target>Een afbeelding kantelen</target>
 </phrase>
 <phrase>
-    <source>Inconnu</source>
+    <source>Unknown</source>
     <target>Onbekend</target>
 </phrase>
 <phrase>
-    <source>Incrément</source>
+    <source>Increment</source>
     <target>Verhoging</target>
 </phrase>
 <phrase>
-    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <source>Increment: the value added to the counter each time a new number is dialled</source>
     <target>Verhoging: waarde die bij elke nieuwe nummering aan de teller wordt toegevoegd</target>
 </phrase>
 <phrase>
-    <source>Inscrire les informations des composants</source>
+    <source>Enter the component details</source>
     <target>De informatie van de componenten invoeren</target>
 </phrase>
 <phrase>
-    <source>Insérer un folio au-dessus</source>
+    <source>Insert a sheet number above</source>
     <target>Een blad hierboven invoegen</target>
 </phrase>
 <phrase>
-    <source>Insérer un folio en dessous</source>
+    <source>Insert a sheet number below</source>
     <target>Een blad hieronder invoegen</target>
 </phrase>
 <phrase>
-    <source>Inverseur</source>
+    <source>switch</source>
     <target>Wisselcontact</target>
 </phrase>
 <phrase>
-    <source>IO disponible:</source>
+    <source>Available I/O:</source>
     <target>Beschikbare IO:</target>
 </phrase>
 <phrase>
-    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <source>I have read and accept these terms and conditions.</source>
     <target>Ik heb deze voorwaarden gelezen en accepteer ze.</target>
 </phrase>
 <phrase>
-    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
-Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <source>Importing dxf requires the dxf2elmt software.
+Please download it by following the link and unzip it in the installation folder</source>
     <target>Voor dxf-import is het programma dxf2elmt nodig.
 Download dit via de onderstaande link en pak het uit in de installatiemap</target>
 </phrase>
 <phrase>
-    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+    <source>The limit set for this master element has been reached (Limit: %1).
 
-Voulez-vous tout de même lier ce contact esclave ?</source>
+Do you still want to link this slave contact?</source>
     <target>De limiet voor dit hoofdelement is bereikt (Limiet: %1).
 
 Wilt u dit onderliggende contact toch koppelen?</target>
 </phrase>
 <phrase>
-    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
-Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
+Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
     <target>Het verwijderen kan niet worden uitgevoerd omdat de selectie een of meer doorverbonden klemmen en/of klemmen van een klem met meerdere niveaus bevat.
 Verwijder de doorverbinding en/of de niveaus van de betrokken klemmen om ze te kunnen verwijderen</target>
 </phrase>
@@ -1273,34 +1273,31 @@ Verwijder de doorverbinding en/of de niveaus van de betrokken klemmen om ze te k
     <target>Label</target>
 </phrase>
 <phrase>
-    <source>Largeur</source>
+    <source>Width</source>
     <target>Breedte</target>
 </phrase>
 <phrase>
-    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <source>The file could not be written.</source>
     <target>Het bestand kon niet worden geschreven.</target>
 </phrase>
 <phrase>
-    <source>Le fichier PDF ne contient aucune page.</source>
+    <source>The PDF file does not contain any pages.</source>
     <target>Het PDF-bestand bevat geen enkele pagina.</target>
 </phrase>
 <phrase>
-    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <source>The file &quot;%1&quot; is missing or unreadable:
+the translated name of this folder could not be read, so its folder name is displayed instead.</source>
     <target>Het bestand “%1” ontbreekt of is onleesbaar: de vertaalde naam van deze map kon niet worden gelezen, in plaats daarvan wordt de mapnaam weergegeven.</target>
 </phrase>
 <phrase>
-    <source>Le format .edz peut provenir de deux sources différentes :
-
-• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
-• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
-
-QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
-
-En important ce fichier, vous confirmez que :
-
-• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
-• cette importation est effectuée à vos propres risques et responsabilité ;
-• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <source>The .edz file format can come from two different sources:
+• The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
+• A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
+QElectroTech cannot automatically determine the origin of the file you are importing, nor the terms and conditions that apply to it.
+By importing this file, you confirm that:
+• you are aware of its source and are authorised to use it in this context, in accordance with the terms and conditions applicable to that source;
+• this import is carried out at your own risk and responsibility;
+• neither QElectroTech, nor its maintainers, nor its contributors can be held liable for any unauthorised use of this data.</source>
     <target>Het .edz-formaat kan van twee verschillende bronnen afkomstig zijn:
 
 • Het EPLAN Data Portal (dataportal.eplan.com), onderworpen aan de gebruiksvoorwaarden van de EPLAN Cloud-omgeving;
@@ -1315,48 +1312,48 @@ Door dit bestand te importeren bevestigt u dat:
 • noch QElectroTech, noch zijn beheerders, noch zijn bijdragers aansprakelijk kunnen worden gesteld voor oneigenlijk gebruik van deze gegevens.</target>
 </phrase>
 <phrase>
-    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
     <target>Het hier gebruikte DXF-formaat (AC1006) laat niet toe afbeeldingen op te nemen. De afbeeldingen worden enkel weergegeven door een omtrekrechthoek (positie, grootte, rotatie en helling blijven behouden), zonder de inhoud van de afbeelding.</target>
     <definition>message box content</definition>
 </phrase>
 <phrase>
-    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
-Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <source>The QET_ElementScaler software is required to scale elements.
+Please download it from the link below and unzip it into the installation folder</source>
     <target>Het programma QET_ElementScaler is nodig om elementen te schalen.
 Download dit via de onderstaande link en pak het uit in de installatiemap</target>
 </phrase>
 <phrase>
-    <source>Le modèle a été enregistré avec succès sous :
+    <source>The template has been successfully saved as :
 %1</source>
     <target>Het sjabloon is met succes opgeslagen onder:
 %1</target>
 </phrase>
 <phrase>
-    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
     <target>De naam “%1” is ongeldig: deze mag de volgende tekens niet bevatten: \ / : * ? " &lt; &gt; |</target>
     <definition>message box content - %1 is the rejected template name</definition>
 </phrase>
 <phrase>
-    <source>Le nouvel élément définit des groupes de contacts esclaves.
-Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+    <source>The new element defines slave contact groups.
+Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
-Voulez-vous continuer ?</source>
+Do you wish to continue?</source>
     <target>Het nieuwe element definieert groepen onderliggende contacten.
 Bestaande onderliggende elementen worden niet automatisch toegewezen. U moet de onderliggende elementen handmatig verbinden en de contactgroepen toewijzen.
 
 Wilt u doorgaan?</target>
 </phrase>
 <phrase>
-    <source>Le plan de câblage a été exporté avec succès !</source>
+    <source>The wiring diagram has been successfully exported !</source>
     <target>Het bekabelingsplan is met succes geëxporteerd!</target>
 </phrase>
 <phrase>
-    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <source>The template already exists. Do you want to overwrite it?</source>
     <target>Het sjabloon bestaat al. Wilt u het overschrijven?</target>
     <definition>message box content</definition>
 </phrase>
 <phrase>
-    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <source>Lower-case letters, numbers, hyphens and underscores only</source>
     <target>Alleen kleine letters, cijfers, koppelteken en underscore</target>
 </phrase>
 <phrase>
@@ -1364,39 +1361,39 @@ Wilt u doorgaan?</target>
     <target>Licenties</target>
 </phrase>
 <phrase>
-    <source>Lisse</source>
+    <source>Smooth</source>
     <target>Vloeiend</target>
 </phrase>
 <phrase>
-    <source>Liste de câblage</source>
+    <source>Wiring list</source>
     <target>Bekabelingslijst</target>
     <definition>window title</definition>
 </phrase>
 <phrase>
-    <source>Liste de câblage (base de données)</source>
+    <source>Wiring list (database)</source>
     <target>Bedradingslijst (database)</target>
 </phrase>
 <phrase>
-    <source>Lié à: %1</source>
+    <source>Related to: %1</source>
     <target>Gekoppeld aan: %1</target>
 </phrase>
 <phrase>
-    <source>Longueur</source>
+    <source>Length</source>
     <target>Lengte</target>
 </phrase>
 <phrase>
-    <source>Longueur maximal</source>
+    <source>Maximum length</source>
     <target>Maximale lengte</target>
 </phrase>
 <phrase>
-    <source>Longueur maximale : %1px
+    <source>Maximum length: %1px
 </source>
     <target>Maximale lengte: %1px
 </target>
     <definition>tooltip showing the maximum width of the edited template</definition>
 </phrase>
 <phrase>
-    <source>Longueur non contrainte.
+    <source>Unrestricted length.
 </source>
     <target>Lengte niet beperkt.
 </target>
@@ -1415,7 +1412,7 @@ Wilt u doorgaan?</target>
     <target>max:</target>
 </phrase>
 <phrase>
-    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <source>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</source>
     <target>Stel in op 0 voor een cijfer dat enkel vooruitgaat door de overdracht van een volgend cyclisch cijfer (bv. de "0" van "0.7")</target>
 </phrase>
 <phrase>
@@ -1423,36 +1420,36 @@ Wilt u doorgaan?</target>
     <target>min:</target>
 </phrase>
 <phrase>
-    <source>Miroir de sélection</source>
+    <source>Mirror selection</source>
     <target>Selectie spiegelen</target>
     <definition>undo caption</definition>
 </phrase>
 <phrase>
-    <source>Miroir horizontal</source>
+    <source>Horizontal mirror</source>
     <target>Horizontaal spiegelen</target>
 </phrase>
 <phrase>
-    <source>Miroir horizontal d&apos;une image</source>
+    <source>Horizontal mirror of an image</source>
     <target>Horizontaal spiegelen van een afbeelding</target>
 </phrase>
 <phrase>
-    <source>Miroir horizontal de %1</source>
+    <source>Horizontal mirror of %1</source>
     <target>Horizontaal spiegelen van %1</target>
 </phrase>
 <phrase>
-    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <source>Mirror not possible: skew too extreme for this shape</source>
     <target>Spiegelen onmogelijk: helling te extreem voor deze vorm</target>
 </phrase>
 <phrase>
-    <source>Miroir vertical</source>
+    <source>Vertical mirror</source>
     <target>Verticaal spiegelen</target>
 </phrase>
 <phrase>
-    <source>Miroir vertical d&apos;une image</source>
+    <source>Vertical mirror of an image</source>
     <target>Verticaal spiegelen van een afbeelding</target>
 </phrase>
 <phrase>
-    <source>Miroir vertical de %1</source>
+    <source>Vertical mirror of %1</source>
     <target>Verticaal spiegelen van %1</target>
 </phrase>
 <phrase>
@@ -1464,111 +1461,111 @@ Wilt u doorgaan?</target>
     <target>gew.</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <source>Modify the alignment of a text field</source>
     <target>De uitlijning van een tekstveld wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;alignement du label</source>
+    <source>Change the alignment of the label</source>
     <target>De uitlijning van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <source>Change the angle of an arc</source>
     <target>De hoek van een boog wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <source>Change the angle of a shape</source>
     <target>De hoek van een vorm wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;angle d&apos;une image</source>
+    <source>Change the angle of an image</source>
     <target>De hoek van een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <source>Change the skew of an image</source>
     <target>De helling van een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <source>Change the master label index</source>
     <target>De index van het label van het hoofdelement wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;étiquette du maître</source>
+    <source>Edit the master label</source>
     <target>Het label van het hoofdelement wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la couleur du label</source>
+    <source>Change the label colour</source>
     <target>De kleur van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la courbure d&apos;%1</source>
+    <source>Change the curvature of %1</source>
     <target>De kromming van %1 wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la forme d&apos;%1</source>
+    <source>Change the shape of %1</source>
     <target>De vorm van %1 wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la hauteur d&apos;une image</source>
+    <source>Change the height of an image</source>
     <target>De hoogte van een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la largeur d&apos;une image</source>
+    <source>Change the width of an image</source>
     <target>De breedte van een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la longueur d&apos;une ligne</source>
+    <source>Change the length of a line</source>
     <target>De lengte van een lijn wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la police du label</source>
+    <source>Change the label font</source>
     <target>Het lettertype van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la position du label</source>
+    <source>Change the position of the label</source>
     <target>De positie van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la rotation du label</source>
+    <source>Change the rotation of the label</source>
     <target>De rotatie van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la taille d&apos;une forme</source>
+    <source>Change the size of a shape</source>
     <target>De grootte van een vorm wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier la taille de police du label</source>
+    <source>Change the font size of the label</source>
     <target>De lettergrootte van het label wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier le nom de la borne</source>
+    <source>Change the name of the terminal</source>
     <target>De naam van de klem wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <source>Change the rotation point of a text field</source>
     <target>Het draaipunt van een tekstveld wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier le type d&apos;un nœud</source>
+    <source>Change the type of a node</source>
     <target>Het type van een knooppunt wijzigen</target>
 </phrase>
 <phrase>
-    <source>Modifier une image</source>
+    <source>Edit an image</source>
     <target>Een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Module PLC</source>
+    <source>PLC module</source>
     <target>PLC-module</target>
 </phrase>
 <phrase>
-    <source>Modèle</source>
+    <source>Model</source>
     <target>Model</target>
 </phrase>
 <phrase>
-    <source>Modèle enregistré</source>
+    <source>Registered template</source>
     <target>Sjabloon opgeslagen</target>
 </phrase>
 <phrase>
-    <source>Modèles</source>
+    <source>Templates</source>
     <target>Sjablonen</target>
 </phrase>
 <phrase>
@@ -1576,11 +1573,11 @@ Wilt u doorgaan?</target>
     <target>Aantal</target>
 </phrase>
 <phrase>
-    <source>Nb. bornes</source>
+    <source>No. of terminals</source>
     <target>Aantal klemmen</target>
 </phrase>
 <phrase>
-    <source>Nb. contacts</source>
+    <source>No. of contacts</source>
     <target>Aantal contacten</target>
 </phrase>
 <phrase>
@@ -1596,27 +1593,27 @@ Wilt u doorgaan?</target>
     <target>Geen *.part.xml gevonden in het .edz-bestand</target>
 </phrase>
 <phrase>
-    <source>Nom de fichier de l&apos;élément</source>
+    <source>Element file name</source>
     <target>Bestandsnaam van het element</target>
     <definition>placeholder: the element&apos;s file name, not its display name</definition>
 </phrase>
 <phrase>
-    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
-Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <source>The element&apos;s file name: digits, lowercase letters, &apos;-&apos;, &apos;_&apos; and &apos;.&apos; only.
+The element&apos;s display name is edited separately in the element properties.</source>
     <target>Bestandsnaam van het element: alleen cijfers, kleine letters, “-”, “_” en “.”. 
 De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenschappen van het element.</target>
     <definition>tooltip for the element file-name field</definition>
 </phrase>
 <phrase>
-    <source>Nom de la borne</source>
+    <source>Terminal name</source>
     <target>Naam van de klem</target>
 </phrase>
 <phrase>
-    <source>Nom du nouveau template</source>
+    <source>Name of the new template</source>
     <target>Naam van het nieuwe sjabloon</target>
 </phrase>
 <phrase>
-    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <source>Custom column name (blank = default)</source>
     <target>Aangepaste naam van de kolom (leeg = standaard)</target>
 </phrase>
 <phrase>
@@ -1624,50 +1621,50 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <target>Naam, label of informatie van het element…</target>
 </phrase>
 <phrase>
-    <source>nom_de_la_propriete</source>
+    <source>name_of_the_property</source>
     <target>naam_van_de_eigenschap</target>
 </phrase>
 <phrase>
-    <source>Nombre de bornes incorrect</source>
+    <source>Incorrect number of terminals</source>
     <target>Onjuist aantal klemmen</target>
 </phrase>
 <phrase>
-    <source>Nombre de contacts esclaves utilisés : %1
+    <source>Number of slave contacts used : %1
 </source>
     <target>Aantal gebruikte onderliggende contacten: %1
 </target>
 </phrase>
 <phrase>
-    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <source>Maximum number of slaves reached.</source>
     <target>Maximaal aantal onderliggende elementen bereikt.</target>
 </phrase>
 <phrase>
-    <source>Nombre maximum de contacts esclaves définis : %1
+    <source>Maximum number of slave contacts defined:  %1
 </source>
     <target>Maximaal aantal gedefinieerde onderliggende contacten: %1
 </target>
 </phrase>
 <phrase>
-    <source>Nombre maximum de contacts esclaves définis : non défini
+    <source>Maximum number of slave contacts defined:  not defined
 </source>
     <target>Maximaal aantal gedefinieerde onderliggende contacten: niet gedefinieerd
 </target>
 </phrase>
 <phrase>
-    <source>Non</source>
+    <source>No</source>
     <target>Nee</target>
     <definition>no button</definition>
 </phrase>
 <phrase>
-    <source>Non attribués uniquement</source>
+    <source>Unallocated only</source>
     <target>Alleen niet-toegewezen</target>
 </phrase>
 <phrase>
-    <source>Normalement fermé</source>
+    <source>Switch normally closed</source>
     <target>Normaal gesloten</target>
 </phrase>
 <phrase>
-    <source>Normalement ouvert</source>
+    <source>Switch normally open</source>
     <target>Normaal open</target>
 </phrase>
 <phrase>
@@ -1679,77 +1676,77 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <target>Notities</target>
 </phrase>
 <phrase>
-    <source>Numérique uniquement (1, 2, 3...)</source>
+    <source>Numeric only (1, 2, 3...)</source>
     <target>Alleen numeriek (1, 2, 3...)</target>
 </phrase>
 <phrase>
-    <source>Numéro d&apos;article auxiliaire 1</source>
+    <source>Auxiliary 1 article number</source>
     <target>Aanvullend artikelnummer 1</target>
 </phrase>
 <phrase>
-    <source>Numéro d&apos;article auxiliaire 2</source>
+    <source>Auxiliary 2 article number</source>
     <target>Aanvullend artikelnummer 2</target>
 </phrase>
 <phrase>
-    <source>Numéro d&apos;article auxiliaire 3</source>
+    <source>Auxiliary 3 article number</source>
     <target>Aanvullend artikelnummer 3</target>
 </phrase>
 <phrase>
-    <source>Numéro d&apos;article auxiliaire 4</source>
+    <source>Auxiliary 4 article number</source>
     <target>Aanvullend artikelnummer 4</target>
 </phrase>
 <phrase>
-    <source>Numéro de commande auxiliaire 1</source>
+    <source>Order number auxiliary 1</source>
     <target>Aanvullend bestelnummer 1</target>
 </phrase>
 <phrase>
-    <source>Numéro de commande auxiliaire 2</source>
+    <source>Order number auxiliary 2</source>
     <target>Aanvullend bestelnummer 2</target>
 </phrase>
 <phrase>
-    <source>Numéro de commande auxiliaire 3</source>
+    <source>Order number auxiliary 3</source>
     <target>Aanvullend bestelnummer 3</target>
 </phrase>
 <phrase>
-    <source>Numéro de commande auxiliaire 4</source>
+    <source>Order number auxiliary 4</source>
     <target>Aanvullend bestelnummer 4</target>
 </phrase>
 <phrase>
-    <source>Numéro interne auxiliaire 1</source>
+    <source>Internal number of auxiliary 1</source>
     <target>Aanvullend intern nummer 1</target>
 </phrase>
 <phrase>
-    <source>Numéro interne auxiliaire 2</source>
+    <source>Internal number of auxiliary 2</source>
     <target>Aanvullend intern nummer 2</target>
 </phrase>
 <phrase>
-    <source>Numéro interne auxiliaire 3</source>
+    <source>Internal number of auxiliary 3</source>
     <target>Aanvullend intern nummer 3</target>
 </phrase>
 <phrase>
-    <source>Numéro interne auxiliaire 4</source>
+    <source>Internal number of auxiliary 4</source>
     <target>Aanvullend intern nummer 4</target>
 </phrase>
 <phrase>
-    <source>Numérotation automatique des bornes</source>
+    <source>Automatic numbering of terminals</source>
     <target>Automatische nummering van klemmen</target>
 </phrase>
 <phrase>
-    <source>Numéroter automatiquement un conducteur</source>
+    <source>Automatically number a conductor</source>
     <target>Een geleider automatisch nummeren</target>
     <definition>undo caption</definition>
 </phrase>
 <phrase>
-    <source>Numéroter automatiquement un élément</source>
+    <source>Automatically number an element</source>
     <target>Een element automatisch nummeren</target>
     <definition>undo caption</definition>
 </phrase>
 <phrase>
-    <source>Numéroter également les lettres</source>
+    <source>Number the letters as well</source>
     <target>Ook de letters nummeren</target>
 </phrase>
 <phrase>
-    <source>Nœud le plus proche</source>
+    <source>Nearest node</source>
     <target>Dichtstbijzijnde knooppunt</target>
 </phrase>
 <phrase>
@@ -1761,11 +1758,11 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <target>Oriëntatie</target>
 </phrase>
 <phrase>
-    <source>Origine vertical</source>
+    <source>Vertical origin</source>
     <target>Verticale oorsprong</target>
 </phrase>
 <phrase>
-    <source>Oui</source>
+    <source>Yes</source>
     <target>Ja</target>
     <definition>yes button</definition>
 </phrase>
@@ -1775,36 +1772,36 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Page à importer :</source>
+    <source>Page to import:</source>
     <target>Te importeren pagina:</target>
 </phrase>
 <phrase>
-    <source>Panneau des éléments</source>
+    <source>Elements panel</source>
     <target>Elementenpaneel</target>
 </phrase>
 <phrase>
-    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <source>Rotates the selection as a group around its centre, rather than each element in place</source>
     <target>Roteert de selectie als een groep rond zijn middelpunt, in plaats van elk element afzonderlijk op zijn plaats</target>
     <definition>status bar tip</definition>
 </phrase>
 <phrase>
-    <source>Pivoter le groupe</source>
+    <source>Rotate the group</source>
     <target>De groep roteren</target>
 </phrase>
 <phrase>
-    <source>pivoter/incliner</source>
+    <source>rotate/skew</source>
     <target>draaien/kantelen</target>
 </phrase>
 <phrase>
-    <source>Pièces EPLAN (*.edz)</source>
+    <source>EPLAN parts (*.edz)</source>
     <target>EPLAN-onderdelen (*.edz)</target>
 </phrase>
 <phrase>
-    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <source>ext anchor point and alignment of lines relative to one another</source>
     <target>Ankerpunt van de tekst en uitlijning van de regels onderling</target>
 </phrase>
 <phrase>
-    <source>Police</source>
+    <source>Font</source>
     <target>Lettertype</target>
 </phrase>
 <phrase>
@@ -1812,31 +1809,31 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <target>Lettertype :</target>
 </phrase>
 <phrase>
-    <source>Police des en-têtes</source>
+    <source>Header font</source>
     <target>Lettertype van de kopteksten</target>
 </phrase>
 <phrase>
-    <source>Police des en-têtes de colonnes</source>
+    <source>Column header formatting</source>
     <target>Tekst van kolomkoppen</target>
 </phrase>
 <phrase>
-    <source>Police des en-têtes: %1 %2pt</source>
+    <source>Heading font size: %1 %2pt</source>
     <target>Tekst van kopteksten: %1 %2pt</target>
 </phrase>
 <phrase>
-    <source>Police du texte</source>
+    <source>Text font</source>
     <target>Lettertype van de tekst</target>
 </phrase>
 <phrase>
-    <source>Police du texte des cellules</source>
+    <source>Cell text font</source>
     <target>Tekst van celtekst</target>
 </phrase>
 <phrase>
-    <source>Police du texte: %1 %2pt</source>
+    <source>Font size: %1 %2pt</source>
     <target>Tekst van de tekst: %1 %2pt</target>
 </phrase>
 <phrase>
-    <source>Polices du projet</source>
+    <source>Project fonts</source>
     <target>Lettertypen van het project</target>
     <definition>message box title</definition>
 </phrase>
@@ -1845,36 +1842,36 @@ De weergegeven naam van het element wordt afzonderlijk gewijzigd in de eigenscha
     <target>Positie</target>
 </phrase>
 <phrase>
-    <source>Priorité des axes</source>
+    <source>Priority of axes</source>
     <target>Prioriteit van de assen</target>
 </phrase>
 <phrase>
-    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <source>Priority to the X-axis (horizontal)</source>
     <target>Prioriteit voor de X-as (horizontaal)</target>
 </phrase>
 <phrase>
-    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <source>Priority to the Y-axis (vertical)</source>
     <target>Prioriteit voor de Y-as (verticaal)</target>
 </phrase>
 <phrase>
-    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <source>The next value to be applied using this increment</source>
     <target>Volgende waarde die met deze verhoging wordt toegepast</target>
 </phrase>
 <phrase>
-    <source>Profondeur</source>
+    <source>Depth</source>
     <target>Diepte</target>
 </phrase>
 <phrase>
-    <source>Propriétés du texte</source>
+    <source>Text properties</source>
     <target>Eigenschappen van de tekst</target>
 </phrase>
 <phrase>
-    <source>Puissance</source>
+    <source>Power switch</source>
     <target>Vermogen</target>
 </phrase>
 <phrase>
-    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
-Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <source>QElectroTech did not close correctly the last time it was run.
+Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
     <target>QElectroTech is bij de laatste uitvoering niet correct afgesloten.
 Hier zijn de laatste berichten die vóór het afsluiten zijn geregistreerd -- u kunt ze opslaan om bij een bugrapport te voegen.</target>
 </phrase>
@@ -1885,110 +1882,110 @@ additional information about %1 import / scaling</source>
 aanvullende informatie over %1 importeren / schalen</target>
 </phrase>
 <phrase>
-    <source>Quantité auxiliaire 1</source>
+    <source>Quantity of auxiliary 1</source>
     <target>Aanvullende hoeveelheid 1</target>
 </phrase>
 <phrase>
-    <source>Quantité auxiliaire 2</source>
+    <source>Quantity of auxiliary 2</source>
     <target>Aanvullende hoeveelheid 2</target>
 </phrase>
 <phrase>
-    <source>Quantité auxiliaire 3</source>
+    <source>Quantity of auxiliary 3</source>
     <target>Aanvullende hoeveelheid 3</target>
 </phrase>
 <phrase>
-    <source>Quantité auxiliaire 4</source>
+    <source>Quantity of auxiliary 4</source>
     <target>Aanvullende hoeveelheid 4</target>
 </phrase>
 <phrase>
-    <source>Raccourci</source>
+    <source>Shortcut</source>
     <target>Sneltoets</target>
 </phrase>
 <phrase>
-    <source>Raccourcis</source>
+    <source>Shortcuts</source>
     <target>Sneltoetsen</target>
     <definition>configuration page title</definition>
 </phrase>
 <phrase>
-    <source>Rapport de diagnostic</source>
+    <source>Diagnostic report</source>
     <target>Diagnoserapport</target>
 </phrase>
 <phrase>
-    <source>Rapport de plantage</source>
+    <source>Crash report</source>
     <target>Crashrapport</target>
 </phrase>
 <phrase>
-    <source>Rayon X</source>
+    <source>X radius</source>
     <target>Straal X</target>
 </phrase>
 <phrase>
-    <source>Rayon Y</source>
+    <source>Y radius</source>
     <target>Straal Y</target>
 </phrase>
 <phrase>
-    <source>Recherche</source>
+    <source>Search</source>
     <target>Zoeken</target>
 </phrase>
 <phrase>
-    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <source>Quickly search for and select an element in the sheet</source>
     <target>Zoekt en selecteert snel een element van het blad</target>
     <definition>status bar tip</definition>
 </phrase>
 <phrase>
-    <source>Rechercher...</source>
+    <source>Search...</source>
     <target>Zoeken...</target>
 </phrase>
 <phrase>
-    <source>redimensionner</source>
+    <source>resize</source>
     <target>formaat wijzigen</target>
 </phrase>
 <phrase>
-    <source>Redimensionner %1</source>
+    <source>Resize %1</source>
     <target>%1 formaat wijzigen</target>
 </phrase>
 <phrase>
-    <source>Redimensionner une image</source>
+    <source>Resize an image</source>
     <target>Formaat van een afbeelding wijzigen</target>
 </phrase>
 <phrase>
-    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <source>Note: Master elements that have reached their maximum number of slaves are hidden.</source>
     <target>Opmerking: hoofdelementen die hun maximale aantal onderliggende elementen hebben bereikt, zijn verborgen.</target>
 </phrase>
 <phrase>
-    <source>Remplacer l&apos;image...</source>
+    <source>Replace the image...</source>
     <target>De afbeelding vervangen...</target>
 </phrase>
 <phrase>
-    <source>Remplacer une image</source>
+    <source>Replace an image</source>
     <target>Een afbeelding vervangen</target>
 </phrase>
 <phrase>
-    <source>Reprendre du maître</source>
+    <source>Learning from the master</source>
     <target>Overnemen van het hoofdelement</target>
 </phrase>
 <phrase>
-    <source>Restaurer les proportions</source>
+    <source>Restore proportions</source>
     <target>Verhoudingen herstellen</target>
 </phrase>
 <phrase>
-    <source>Restaurer les proportions d&apos;une image</source>
+    <source>Restore an image&apos;s proportions</source>
     <target>De verhoudingen van een afbeelding herstellen</target>
 </phrase>
 <phrase>
-    <source>Retirer cette couleur</source>
+    <source>Remove this color</source>
     <target>Deze kleur verwijderen</target>
 </phrase>
 <phrase>
-    <source>Retourner l&apos;élément :</source>
+    <source>Mirror element :</source>
     <target>Het element omdraaien:</target>
 </phrase>
 <phrase>
-    <source>Retourner la sélection</source>
+    <source>Flip selection</source>
     <target>Selectie omdraaien</target>
     <definition>undo caption</definition>
 </phrase>
 <phrase>
-    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <source>Return to the full image, without cropping</source>
     <target>Terug naar de volledige afbeelding, zonder bijsnijden</target>
 </phrase>
 <phrase>
@@ -1996,15 +1993,15 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>rgb(%1, %2, %3)</target>
 </phrase>
 <phrase>
-    <source>Rogner l&apos;image</source>
+    <source>Crop the image</source>
     <target>Afbeelding bijsnijden</target>
 </phrase>
 <phrase>
-    <source>Rogner une image</source>
+    <source>Crop an image</source>
     <target>Een afbeelding bijsnijden</target>
 </phrase>
 <phrase>
-    <source>Rogner...</source>
+    <source>Crop...</source>
     <target>Bijsnijden...</target>
 </phrase>
 <phrase>
@@ -2012,56 +2009,56 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Rotatie :</target>
 </phrase>
 <phrase>
-    <source>Rotation/Inclinaison</source>
+    <source>Rotation/Skew</source>
     <target>Rotatie/kanteling</target>
 </phrase>
 <phrase>
-    <source>Réf.</source>
+    <source>Ref.</source>
     <target>Ref.</target>
 </phrase>
 <phrase>
-    <source>Réf. croisée</source>
+    <source>Cross-reference</source>
     <target>Kruisverwijzing</target>
 </phrase>
 <phrase>
-    <source>Réf. croisée PLC</source>
+    <source>PLC cross-reference</source>
     <target>PLC-kruisverwijzing</target>
 </phrase>
 <phrase>
-    <source>Référence croisée</source>
+    <source>Cross-reference</source>
     <target>Kruisverwijzing</target>
 </phrase>
 <phrase>
-    <source>Réinitialiser</source>
+    <source>Reset</source>
     <target>Resetten</target>
     <definition>button label</definition>
 </phrase>
 <phrase>
-    <source>Réinitialiser ce raccourci</source>
+    <source>Reset this shortcut</source>
     <target>Deze sneltoets opnieuw instellen</target>
 </phrase>
 <phrase>
-    <source>Réinitialiser à la valeur de départ</source>
+    <source>Reset to the default value</source>
     <target>Terugzetten naar beginwaarde</target>
 </phrase>
 <phrase>
-    <source>Répertoire des Macros utilisateur</source>
+    <source>User Macro Directory</source>
     <target>Map voor gebruikersmacro&apos;s</target>
 </phrase>
 <phrase>
-    <source>Résolution :</source>
+    <source>Resolution:</source>
     <target>Resolutie:</target>
 </phrase>
 <phrase>
-    <source>sans</source>
+    <source>none</source>
     <target>zonder</target>
 </phrase>
 <phrase>
-    <source>Saut %1 après:</source>
+    <source>Jump to %1 after:</source>
     <target>Sprong %1 na:</target>
 </phrase>
 <phrase>
-    <source>Section du fil</source>
+    <source>Wire section</source>
     <target>Doorsnede van de draad</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
@@ -2070,7 +2067,7 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Zie details hier:</target>
 </phrase>
 <phrase>
-    <source>Selectionner une image...</source>
+    <source>Select an image ...</source>
     <target>Een afbeelding selecteren...</target>
 </phrase>
 <phrase>
@@ -2078,102 +2075,102 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Eenvoudig</target>
 </phrase>
 <phrase>
-    <source>Sortie analogique</source>
+    <source>Analogue output</source>
     <target>Analoge uitgang</target>
 </phrase>
 <phrase>
-    <source>Sortie digitale</source>
+    <source>Digital output</source>
     <target>Digitale uitgang</target>
 </phrase>
 <phrase>
-    <source>Sortie universelle</source>
+    <source>Universal output</source>
     <target>Universele uitgang</target>
 </phrase>
 <phrase>
-    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <source>Would you like to create a backup copy?</source>
     <target>Wilt u een reservekopie maken?</target>
     <definition>dialog message</definition>
 </phrase>
 <phrase>
-    <source>Sous-type</source>
+    <source>Subtype</source>
     <target>Subtype</target>
 </phrase>
 <phrase>
-    <source>Suivant</source>
+    <source>Next</source>
     <target>Volgende</target>
 </phrase>
 <phrase>
-    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <source>Track the time spent on this project (recorded locally in this file only)</source>
     <target>De bestede tijd aan dit project bijhouden (enkel lokaal opgeslagen in dit bestand)</target>
     <definition>checkbox label</definition>
 </phrase>
 <phrase>
-    <source>Suppression de borne impossible</source>
+    <source>Unable to delete the terminal</source>
     <target>Klem verwijderen onmogelijk</target>
 </phrase>
 <phrase>
-    <source>Supprimer</source>
+    <source>Delete</source>
     <target>Verwijderen</target>
 </phrase>
 <phrase>
-    <source>Supprimer %1 folios</source>
+    <source>Delete %1 sheets</source>
     <target>%1 bladen verwijderen</target>
 </phrase>
 <phrase>
-    <source>Supprimer cette propriété</source>
+    <source>Delete this property</source>
     <target>Deze eigenschap verwijderen</target>
 </phrase>
 <phrase>
-    <source>Supprimer le nœud le plus proche</source>
+    <source>Delete the nearest node</source>
     <target>Het dichtstbijzijnde knooppunt verwijderen</target>
 </phrase>
 <phrase>
-    <source>Supprimer les folios</source>
+    <source>Delete the sheets</source>
     <target>De bladen verwijderen</target>
 </phrase>
 <phrase>
-    <source>Supprimer un folio</source>
+    <source>Delete a sheet</source>
     <target>Een blad verwijderen</target>
     <definition>undo command text</definition>
 </phrase>
 <phrase>
-    <source>Supprimer un point d&apos;une courbe</source>
+    <source>Delete a point from a curve</source>
     <target>Een punt van een curve verwijderen</target>
 </phrase>
 <phrase>
-    <source>SVG: fond transparent</source>
+    <source>SVG-background transparent</source>
     <target>SVG: transparante achtergrond</target>
 </phrase>
 <phrase>
-    <source>Symétrique</source>
+    <source>Symmetric</source>
     <target>Symmetrisch</target>
 </phrase>
 <phrase>
-    <source>Système de contacts modifié</source>
+    <source>Modified contact system</source>
     <target>Contactensysteem gewijzigd</target>
 </phrase>
 <phrase>
-    <source>Sélectionner un fichier PDF...</source>
+    <source>Select a PDF file...</source>
     <target>Een PDF-bestand selecteren...</target>
 </phrase>
 <phrase>
-    <source>Sélectionner un groupe de contacts</source>
+    <source>Select a group of contacts</source>
     <target>Een contactgroep selecteren</target>
 </phrase>
 <phrase>
-    <source>Sélectionner un IO PLC</source>
+    <source>Select a PLC I/O</source>
     <target>Een IO PLC selecteren</target>
 </phrase>
 <phrase>
-    <source>Sélectionner une page</source>
+    <source>Select a page</source>
     <target>Een pagina selecteren</target>
 </phrase>
 <phrase>
-    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <source>Select the contact group to assign to this slave element :</source>
     <target>Selecteer de contactgroep die aan dit onderliggend element moet worden toegewezen:</target>
 </phrase>
 <phrase>
-    <source>Séparation de potentiel</source>
+    <source>Potential separation</source>
     <target>Potentiaalscheiding</target>
 </phrase>
 <phrase>
@@ -2185,53 +2182,53 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>T1</target>
 </phrase>
 <phrase>
-    <source>Table PLC</source>
+    <source>PLC Table</source>
     <target>PLC-tabel</target>
 </phrase>
 <phrase>
-    <source>Table PLC (vide)</source>
+    <source>PLC table (empty)</source>
     <target>PLC-tabel (leeg)</target>
 </phrase>
 <phrase>
-    <source>Taille</source>
+    <source>Size</source>
     <target>Afmeting</target>
 </phrase>
 <phrase>
-    <source>Taille :</source>
+    <source>Size :</source>
     <target>Grootte :</target>
 </phrase>
 <phrase>
-    <source>Temporisé repos</source>
+    <source>Switch-off delayed</source>
     <target>Vertraagd afvallen</target>
 </phrase>
 <phrase>
-    <source>Temporisé travail</source>
+    <source>Switch-on delayed</source>
     <target>Vertraagd aantrekken</target>
 </phrase>
 <phrase>
-    <source>Temporisé travail &amp; repos</source>
+    <source>Switch-on  and off delayed</source>
     <target>Vertraagd aantrekken &amp; afvallen</target>
 </phrase>
 <phrase>
-    <source>Temps passé sur ce projet :</source>
+    <source>Time spent on this project:</source>
     <target>Besteedde tijd aan dit project:</target>
     <definition>label when configuring</definition>
 </phrase>
 <phrase>
-    <source>Tension / Protocole</source>
+    <source>Voltage / Protocol</source>
     <target>Spanning / Protocol</target>
     <definition>Wiring list CSV header</definition>
 </phrase>
 <phrase>
-    <source>Tension nominale</source>
+    <source>Rated voltage</source>
     <target>Nominale spanning</target>
 </phrase>
 <phrase>
-    <source>Texte borne</source>
+    <source>Text terminal</source>
     <target>Tekst klem</target>
 </phrase>
 <phrase>
-    <source>Texte d&apos;en tête</source>
+    <source>Header text</source>
     <target>Koptekst</target>
 </phrase>
 <phrase>
@@ -2239,35 +2236,35 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Dit .edz-bestand is een zip-pakket, dat nog niet wordt ondersteund (alleen 7-Zip .edz-bestanden kunnen worden geïmporteerd).</target>
 </phrase>
 <phrase>
-    <source>Tolérance pour cette couleur</source>
+    <source>Tolerance for this color</source>
     <target>Tolerantie voor deze kleur</target>
 </phrase>
 <phrase>
-    <source>Tourner autour de son propre centre</source>
+    <source>Rotate about its own centre</source>
     <target>Rond het eigen middelpunt draaien</target>
 </phrase>
 <phrase>
-    <source>Tous</source>
+    <source>all</source>
     <target>Alle</target>
 </phrase>
 <phrase>
-    <source>Tous les fichiers (*)</source>
+    <source>All files (*)</source>
     <target>Alle bestanden (*)</target>
 </phrase>
 <phrase>
-    <source>Tout réinitialiser</source>
+    <source>Reset everything</source>
     <target>Alles opnieuw instellen</target>
 </phrase>
 <phrase>
-    <source>Traduction en coréen</source>
+    <source>Translation into Korean</source>
     <target>Vertaling in het Koreaans</target>
 </phrase>
 <phrase>
-    <source>Transformer %1</source>
+    <source>Transform %1</source>
     <target>%1 transformeren</target>
 </phrase>
 <phrase>
-    <source>Transparence non conservée</source>
+    <source>Transparency not preserved</source>
     <target>Transparantie niet behouden</target>
 </phrase>
 <phrase>
@@ -2275,7 +2272,7 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Type</target>
 </phrase>
 <phrase>
-    <source>Type de numérotation</source>
+    <source>Type of numbering</source>
     <target>Type nummering</target>
 </phrase>
 <phrase>
@@ -2283,68 +2280,68 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>PLC-type</target>
 </phrase>
 <phrase>
-    <source>un arc</source>
+    <source>an arc</source>
     <target>een boog</target>
 </phrase>
 <phrase>
-    <source>un coin</source>
+    <source>a corner</source>
     <target>een hoek</target>
 </phrase>
 <phrase>
-    <source>un point</source>
+    <source>a point</source>
     <target>een punt</target>
 </phrase>
 <phrase>
-    <source>une courbe</source>
+    <source>a curve</source>
     <target>een curve</target>
 </phrase>
 <phrase>
-    <source>une extrémité</source>
+    <source>an endpoint</source>
     <target>een uiteinde</target>
 </phrase>
 <phrase>
-    <source>une image</source>
+    <source>image</source>
     <target>een afbeelding</target>
     <definition>part of a sentence listing the content of a diagram</definition>
 </phrase>
 <phrase>
-    <source>Unité auxiliaire 1</source>
+    <source>Unity of auxiliary 1</source>
     <target>Aanvullende eenheid 1</target>
 </phrase>
 <phrase>
-    <source>Unité auxiliaire 2</source>
+    <source>Unity of auxiliary 2</source>
     <target>Aanvullende eenheid 2</target>
 </phrase>
 <phrase>
-    <source>Unité auxiliaire 3</source>
+    <source>Unity of auxiliary 3</source>
     <target>Aanvullende eenheid 3</target>
 </phrase>
 <phrase>
-    <source>Unité auxiliaire 4</source>
+    <source>Unity of auxiliary 4</source>
     <target>Aanvullende eenheid 4</target>
 </phrase>
 <phrase>
-    <source>Valeur</source>
+    <source>Value</source>
     <target>Waarde</target>
 </phrase>
 <phrase>
-    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <source>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</source>
     <target>Huidige waarde van de teller. Voer een nieuwe waarde in en bevestig om deze te wijzigen.</target>
 </phrase>
 <phrase>
-    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <source>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</source>
     <target>Waarde waarbij dit cijfer terug naar 0 gaat bij het verhogen van het vorige cijfer (0 = geen cyclus)</target>
 </phrase>
 <phrase>
-    <source>Verrouiller la numérotation automatique</source>
+    <source>Lock automatic numbering</source>
     <target>Automatische nummering vergrendelen</target>
 </phrase>
 <phrase>
-    <source>Verrouiller la position</source>
+    <source>Lock Position</source>
     <target>Positie vergrendelen</target>
 </phrase>
 <phrase>
-    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
     <target>Vergrendeld: het wijzigen van de breedte of hoogte past de andere aan om de verhoudingen te behouden. Klik om te ontgrendelen.</target>
 </phrase>
 <phrase>
@@ -2356,7 +2353,7 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>Zichtbaar</target>
 </phrase>
 <phrase>
-    <source>Voir cet élément</source>
+    <source>View this item</source>
     <target>Dit element bekijken</target>
 </phrase>
 <phrase>
@@ -2376,57 +2373,57 @@ aanvullende informatie over %1 importeren / schalen</target>
     <target>°</target>
 </phrase>
 <phrase>
-    <source>Échec de l&apos;enregistrement</source>
+    <source>Saving failed</source>
     <target>Opslaan mislukt</target>
 </phrase>
 <phrase>
-    <source>Échec de l&apos;export</source>
+    <source>Export failed</source>
     <target>Exporteren mislukt</target>
 </phrase>
 <phrase>
-    <source>Écraser le template ?</source>
+    <source>Overwrite the template?</source>
     <target>Het sjabloon overschrijven?</target>
     <definition>message box title</definition>
 </phrase>
 <phrase>
-    <source>Éditeur d&apos;élément</source>
+    <source>Element editors</source>
     <target>Elementeditor</target>
 </phrase>
 <phrase>
-    <source>Éditeur de cartouche</source>
+    <source>Title block template editors</source>
     <target>Titelblokeditor</target>
 </phrase>
 <phrase>
-    <source>Éditeur de schémas</source>
+    <source>Diagram editors</source>
     <target>Schema-editor</target>
 </phrase>
 <phrase>
-    <source>Éditeur de texte</source>
+    <source>Text editor</source>
     <target>Teksteditor</target>
 </phrase>
 <phrase>
-    <source>Édition des nœuds</source>
+    <source>Node editing</source>
     <target>Knooppunten bewerken</target>
 </phrase>
 <phrase>
-    <source>Éléments QElectroTech (*.elmt)</source>
+    <source>QElectroTech elements (*.elmt)</source>
     <target>QElectroTech-elementen (*.elmt)</target>
 </phrase>
 <phrase>
-    <source>Étiquette du maître</source>
+    <source>Master’s label</source>
     <target>Label van het hoofdelement</target>
 </phrase>
 <phrase>
-    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <source>Are you sure you want to delete this sheet?</source>
     <target>Weet u zeker dat u dit blad wilt verwijderen?</target>
 </phrase>
 <phrase>
-    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <source>Are you sure you want to delete this sheet from the project?</source>
     <target>Weet u zeker dat u dit blad uit het project wilt verwijderen?</target>
     <definition>message box content</definition>
 </phrase>
 <phrase>
-    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <source>Are you sure you want to delete the selected %1 sheets ?</source>
     <target>Weet u zeker dat u de %1 geselecteerde bladen wilt verwijderen?</target>
 </phrase>
 </QPH>

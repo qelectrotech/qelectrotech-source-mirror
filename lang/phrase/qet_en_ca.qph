@@ -1,218 +1,222 @@
 <!DOCTYPE QPH>
-<QPH sourcelanguage="fr_FR" language="pl">
+<QPH sourcelanguage="en" language="ca">
 <phrase>
-    <source>armoire</source>
-    <target>Szafa</target>
+    <source>Cross-reference</source>
+    <target>Ref. creuada</target>
+</phrase>
+<phrase>
+    <source>cabinet</source>
+    <target>armari</target>
     <definition>cabinet / enclosure</definition>
 </phrase>
 <phrase>
-    <source>bobine</source>
-    <target>Cewka</target>
+    <source>coil</source>
+    <target>bobina</target>
     <definition>coil</definition>
 </phrase>
 <phrase>
-    <source>borne</source>
-    <target>Zacisk</target>
+    <source>terminal</source>
+    <target>born</target>
     <definition>terminal - a connection point on a symbol</definition>
 </phrase>
 <phrase>
-    <source>bornier</source>
-    <target>Listwa zaciskowa</target>
+    <source>terminal strip</source>
+    <target>bornes</target>
     <definition>terminal strip</definition>
 </phrase>
 <phrase>
     <source>cable</source>
-    <target>Kabel</target>
+    <target>cable</target>
     <definition>cable</definition>
 </phrase>
 <phrase>
-    <source>calibre</source>
-    <target>Prąd znamionowy</target>
+    <source>rating</source>
+    <target>calibre</target>
     <definition>rating - the current rating of a device</definition>
 </phrase>
 <phrase>
-    <source>cartouche</source>
-    <target>Tabliczka rysunkowa</target>
+    <source>title block</source>
+    <target>cartutx</target>
     <definition>title block - the framed information panel</definition>
 </phrase>
 <phrase>
-    <source>champ de texte</source>
-    <target>Pole tekstowe</target>
+    <source>text field</source>
+    <target>camp de text</target>
     <definition>text field</definition>
 </phrase>
 <phrase>
     <source>collection</source>
-    <target>Biblioteka</target>
+    <target>col·lecció</target>
     <definition>collection - the symbol library</definition>
 </phrase>
 <phrase>
-    <source>conducteur</source>
-    <target>Przewód</target>
+    <source>conductor</source>
+    <target>conductor</target>
     <definition>conductor - the drawn wire between terminals</definition>
 </phrase>
 <phrase>
     <source>contact</source>
-    <target>Styk</target>
+    <target>contacte</target>
     <definition>contact</definition>
 </phrase>
 <phrase>
-    <source>contacteur</source>
-    <target>Stycznik</target>
+    <source>contactor</source>
+    <target>contactor</target>
     <definition>contactor</definition>
 </phrase>
 <phrase>
-    <source>courant</source>
-    <target>Prąd</target>
+    <source>current</source>
+    <target>corrent</target>
     <definition>current</definition>
 </phrase>
 <phrase>
-    <source>disjoncteur</source>
-    <target>Wyłącznik nadprądowy</target>
+    <source>circuit breaker</source>
+    <target>disjuntor</target>
     <definition>circuit breaker</definition>
 </phrase>
 <phrase>
-    <source>dossier</source>
-    <target>Folder</target>
+    <source>folder</source>
+    <target>carpeta</target>
     <definition>folder</definition>
 </phrase>
 <phrase>
     <source>element</source>
-    <target>Element</target>
+    <target>element</target>
     <definition>element - a symbol placed on a sheet</definition>
 </phrase>
 <phrase>
-    <source>esclave</source>
-    <target>Element podrzędny</target>
+    <source>slave</source>
+    <target>esclau</target>
     <definition>slave - the contact block belonging to a master</definition>
 </phrase>
 <phrase>
-    <source>fil</source>
-    <target>Przewód</target>
+    <source>wire</source>
+    <target>fil</target>
     <definition>wire</definition>
 </phrase>
 <phrase>
-    <source>folio</source>
-    <target>Arkusz</target>
+    <source>sheet</source>
+    <target>plec</target>
     <definition>sheet - one drawing of a set</definition>
 </phrase>
 <phrase>
-    <source>fusible</source>
-    <target>Bezpiecznik</target>
+    <source>fuse</source>
+    <target>fusible</target>
     <definition>fuse</definition>
 </phrase>
 <phrase>
-    <source>grille</source>
-    <target>Siatka</target>
+    <source>grid</source>
+    <target>graella</target>
     <definition>grid</definition>
 </phrase>
 <phrase>
-    <source>interrupteur</source>
-    <target>Wyłącznik</target>
+    <source>switch</source>
+    <target>interruptor</target>
     <definition>switch</definition>
 </phrase>
 <phrase>
-    <source>maitre</source>
-    <target>Element główny</target>
+    <source>master</source>
+    <target>mestre</target>
     <definition>master - the element a cross-reference points from</definition>
 </phrase>
 <phrase>
-    <source>modele</source>
-    <target>Szablon</target>
+    <source>template</source>
+    <target>plantilla</target>
     <definition>template</definition>
 </phrase>
 <phrase>
-    <source>moteur</source>
-    <target>Silnik</target>
+    <source>motor</source>
+    <target>motor</target>
     <definition>motor</definition>
 </phrase>
 <phrase>
-    <source>neutre</source>
-    <target>Neutralny</target>
+    <source>neutral</source>
+    <target>neutre</target>
     <definition>neutral</definition>
 </phrase>
 <phrase>
-    <source>nomenclature</source>
-    <target>Zestawienie materiałów</target>
+    <source>parts list</source>
+    <target>nomenclatura</target>
     <definition>parts list / bill of materials</definition>
 </phrase>
 <phrase>
-    <source>numerotation</source>
-    <target>Numeracja</target>
+    <source>numbering</source>
+    <target>numeració</target>
     <definition>numbering - automatic wire and part numbering</definition>
 </phrase>
 <phrase>
     <source>phase</source>
-    <target>Faza</target>
+    <target>fase</target>
     <definition>phase</definition>
 </phrase>
 <phrase>
-    <source>potentiel</source>
-    <target>Potencjał</target>
+    <source>potential</source>
+    <target>potencial</target>
     <definition>potential - conductors electrically joined as one node</definition>
 </phrase>
 <phrase>
-    <source>projet</source>
-    <target>Projekt</target>
+    <source>project</source>
+    <target>projecte</target>
     <definition>project - the .qet file holding the sheets</definition>
 </phrase>
 <phrase>
-    <source>puissance</source>
-    <target>Moc</target>
+    <source>power</source>
+    <target>potència</target>
     <definition>power</definition>
 </phrase>
 <phrase>
-    <source>relais</source>
-    <target>Przekaźnik</target>
+    <source>relay</source>
+    <target>relé</target>
     <definition>relay</definition>
 </phrase>
 <phrase>
-    <source>renvoi de folio</source>
-    <target>Odnośnik do arkusza</target>
+    <source>sheet cross-reference</source>
+    <target>referència de plec</target>
     <definition>sheet cross-reference</definition>
 </phrase>
 <phrase>
-    <source>repere</source>
-    <target>Oznaczenie</target>
+    <source>designation</source>
+    <target>referència</target>
     <definition>designation - the identifying mark on a part</definition>
 </phrase>
 <phrase>
-    <source>report de folio</source>
-    <target>Odnośnik do arkusza</target>
+    <source>sheet cross-reference</source>
+    <target>remissió de plec</target>
     <definition>sheet cross-reference (the arrow symbol)</definition>
 </phrase>
 <phrase>
-    <source>schema</source>
-    <target>Schemat</target>
+    <source>diagram</source>
+    <target>esquema</target>
     <definition>diagram</definition>
 </phrase>
 <phrase>
-    <source>section</source>
-    <target>Przekrój</target>
+    <source>cross-section</source>
+    <target>secció</target>
     <definition>cross-section - conductor size in mm2</definition>
 </phrase>
 <phrase>
-    <source>sommaire</source>
-    <target>Spis treści</target>
+    <source>summary</source>
+    <target>sumari</target>
     <definition>summary / table of contents</definition>
 </phrase>
 <phrase>
-    <source>tension</source>
-    <target>Napięcie</target>
+    <source>voltage</source>
+    <target>tensió</target>
     <definition>voltage</definition>
 </phrase>
 <phrase>
-    <source>terre</source>
-    <target>Uziemienie</target>
+    <source>ground</source>
+    <target>terra</target>
     <definition>earth / ground</definition>
 </phrase>
 <phrase>
-    <source>texte</source>
-    <target>Tekst</target>
+    <source>text</source>
+    <target>text</target>
     <definition>text</definition>
 </phrase>
 <phrase>
-    <source>transformateur</source>
-    <target>Transformator</target>
+    <source>transformer</source>
+    <target>transformador</target>
     <definition>transformer</definition>
 </phrase>
 </QPH>

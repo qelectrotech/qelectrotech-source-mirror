@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Sélectionner le potentiel éléctrique</string>
+   <string>Select the electric potential</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -35,8 +35,8 @@
       <enum>QFrame::Plain</enum>
      </property>
      <property name="text">
-      <string>Vous tentez de lier deux potentiels différents ensemble.
-Veuillez choisir les propriétées à appliquer au nouveau potentiel.</string>
+      <string>You try to link two different potentials together.
+Please select the properties to be applied to new potential.</string>
      </property>
      <property name="textFormat">
       <enum>Qt::PlainText</enum>

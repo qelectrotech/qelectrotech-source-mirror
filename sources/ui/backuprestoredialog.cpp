@@ -45,15 +45,14 @@ BackupRestoreDialog::BackupRestoreDialog(
 	QDialog(parent),
 	m_groups(groups)
 {
-	setWindowTitle(tr("Fichiers de restauration", "window title"));
+	setWindowTitle(tr("Recovery files", "window title"));
 
 	auto main_layout = new QVBoxLayout(this);
 
 	auto intro = new QLabel(
-		tr("<b>Des fichiers de restauration ont été trouvés,<br>"
-		   "voulez-vous les ouvrir ?</b><br>"
-		   "Pour un projet ayant plusieurs versions de restauration, "
-		   "la plus récente est sélectionnée par défaut.",
+		tr("<b>Recovery files were found,<br>do you want to open "
+		   "them?</b><br>For a project with several recovery "
+		   "versions, the newest is selected by default.",
 		   "dialog message"));
 	intro->setWordWrap(true);
 	main_layout->addWidget(intro);
@@ -81,7 +80,7 @@ BackupRestoreDialog::BackupRestoreDialog(
 			QString label = QLocale::system().toString(
 				modified, QLocale::ShortFormat);
 			if (i == 0) {
-				label = tr("%1 (la plus récente)", "recovery generation label")
+				label = tr("%1 (newest)", "recovery generation label")
 							.arg(label);
 			}
 			combo->addItem(label);

@@ -17,7 +17,7 @@
    <item>
     <widget class="QPushButton" name="m_edit_query_pb">
      <property name="text">
-      <string>Requête</string>
+      <string>Request</string>
      </property>
      <property name="icon">
       <iconset theme="edit-rename"/>
@@ -27,7 +27,7 @@
    <item>
     <widget class="QPushButton" name="m_refresh_pb">
      <property name="text">
-      <string>Recharger</string>
+      <string>Reload</string>
      </property>
      <property name="icon">
       <iconset theme="view-refresh"/>

@@ -55,8 +55,8 @@ MirrorSelectionCommand::MirrorSelectionCommand(const QList<Element *> &elements,
 	QUndoCommand(parent)
 {
 	setText(orientation == Qt::Horizontal
-			? QObject::tr("Miroir horizontal")
-			: QObject::tr("Miroir vertical"));
+			? QObject::tr("Horizontal mirror")
+			: QObject::tr("Vertical mirror"));
 
 	for (Element *element : elements)
 	{

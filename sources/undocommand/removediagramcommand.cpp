@@ -32,7 +32,7 @@ RemoveDiagramCommand::RemoveDiagramCommand(QETProject *project, Diagram *diagram
 	m_diagram(diagram),
 	m_position(project ? project->folioIndex(diagram) : -1)
 {
-	setText(QObject::tr("Supprimer un folio", "undo command text"));
+	setText(QObject::tr("Delete a sheet", "undo command text"));
 }
 
 /**

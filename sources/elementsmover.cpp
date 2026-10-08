@@ -96,8 +96,8 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 			&& !m_moved_content.items().contains(driver_item);
 	if (m_driver_held && m_status_bar) {
 		m_status_bar->showMessage(QObject::tr(
-			"Ce groupe ne peut pas être déplacé : "
-			"la position d'un de ses éléments est verrouillée."));
+			"This group cannot be moved: the position of one "
+			"of its elements is locked."));
 	}
 
 		//Remove element text and text group, if the parent element is selected.
@@ -239,7 +239,7 @@ void ElementsMover::endMovement()
 					//Create an undo object for each new auto conductor, with undo_object for parent
 				new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 				if (undo_object->text().isEmpty())
-					undo_object->setText(QObject::tr("Ajouter %n conducteur(s)", "add a numbers of conductor one or more", acc));
+					undo_object->setText(QObject::tr("Add %n conductors", "add a numbers of conductor one or more", acc));
 
 					//Get all conductors at the same potential of conductor
 				const auto conductors_list{conductor->relatedPotentialConductors()};

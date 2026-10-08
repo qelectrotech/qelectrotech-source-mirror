@@ -75,10 +75,10 @@ void QFileNameEdit::init()
 	setValidator(validator_);
 	tooltip_text_ = QString(
 		tr(
-			"Les caractères autorisés sont : \n"
-			" - les chiffres [0-9]\n"
-			" - les minuscules [a-z]\n"
-			" - le tiret [-], l'underscore [_] et le point [.]\n",
+			"The allowed characters are:\n"
+			" - digits [0-9]\n"
+			" - lower-case letters [a-z]\n"
+			" - dash [-], underscore [_] and dot [.]\n",
 			"tooltip content when editing a filename"
 		)
 	);

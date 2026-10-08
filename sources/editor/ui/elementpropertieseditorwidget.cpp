@@ -61,8 +61,8 @@ QWidget* EditorDelegate::createEditor(QWidget *parent,
 			auto *line_edit = new QLineEdit(parent);
 			auto *validator = new QETInformation::NumericInfoValidator(line_edit);
 			line_edit->setValidator(validator);
-			line_edit->setPlaceholderText(tr("ex. 80.5"));
-			line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
+			line_edit->setPlaceholderText(tr("e.g. 80.5"));
+			line_edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
 			return line_edit;
 		}
 
@@ -192,43 +192,43 @@ void ElementPropertiesEditorWidget::setUpInterface()
 {
 		// Type combo box
 	ui->m_base_type_cb->addItem (tr("Simple"),  ElementData::Simple);
-	ui->m_base_type_cb->addItem (tr("Maître"),  ElementData::Master);
-	ui->m_base_type_cb->addItem (tr("Esclave"), ElementData::Slave);
-	ui->m_base_type_cb->addItem (tr("Renvoi de folio suivant"),   ElementData::NextReport);
-	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"), ElementData::PreviousReport);
-	ui->m_base_type_cb->addItem (tr("Bornier"), ElementData::Terminal);
-	ui->m_base_type_cb->addItem (tr("Vignette"), ElementData::Thumbnail);
-	ui->m_base_type_cb->addItem (tr("Définition de conducteur"), ElementData::ConductorDefinition);
+	ui->m_base_type_cb->addItem (tr("Master"),  ElementData::Master);
+	ui->m_base_type_cb->addItem (tr("Slave"), ElementData::Slave);
+	ui->m_base_type_cb->addItem (tr("Next sheet reference"),   ElementData::NextReport);
+	ui->m_base_type_cb->addItem (tr("Previous sheet reference"), ElementData::PreviousReport);
+	ui->m_base_type_cb->addItem (tr("Terminal block"), ElementData::Terminal);
+	ui->m_base_type_cb->addItem (tr("Thumbnail"), ElementData::Thumbnail);
+	ui->m_base_type_cb->addItem (tr("Conductor definition"), ElementData::ConductorDefinition);
 
 		// Slave option
-	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
-	ui->m_state_cb->addItem(tr("Normalement fermé"),        ElementData::NC);
-	ui->m_state_cb->addItem(tr("Inverseur"),                ElementData::SW);
+	ui->m_state_cb->addItem(tr("Switch normally open"),       ElementData::NO);
+	ui->m_state_cb->addItem(tr("Switch normally closed"),        ElementData::NC);
+	ui->m_state_cb->addItem(tr("switch"),                ElementData::SW);
 	ui->m_state_cb->addItem(tr("Other"),                    ElementData::Other);
-	ui->m_state_cb->addItem(tr("Esclave PLC"),              ElementData::PLCSlave);
+	ui->m_state_cb->addItem(tr("PLC slave"),              ElementData::PLCSlave);
 	ui->m_type_cb->addItem(tr("Simple"),                    ElementData::SSimple);
-	ui->m_type_cb->addItem(tr("Puissance"),                 ElementData::Power);
-	ui->m_type_cb->addItem(tr("Temporisé travail"),         ElementData::DelayOn);
-	ui->m_type_cb->addItem(tr("Temporisé repos"),           ElementData::DelayOff);
-	ui->m_type_cb->addItem(tr("Temporisé travail & repos"), ElementData::delayOnOff);
+	ui->m_type_cb->addItem(tr("Power switch"),                 ElementData::Power);
+	ui->m_type_cb->addItem(tr("Switch-on delayed"),         ElementData::DelayOn);
+	ui->m_type_cb->addItem(tr("Switch-off delayed"),           ElementData::DelayOff);
+	ui->m_type_cb->addItem(tr("Switch-on  and off delayed"), ElementData::delayOnOff);
 
 		//Master option
-	ui->m_master_type_cb->addItem(tr("Bobine"),               ElementData::Coil);
-	ui->m_master_type_cb->addItem(tr("Organe de protection"), ElementData::Protection);
-	ui->m_master_type_cb->addItem(tr("Commutateur / bouton"), ElementData::Commutator);
-	ui->m_master_type_cb->addItem(tr("Module PLC"),           ElementData::PLC);
+	ui->m_master_type_cb->addItem(tr("coil"),               ElementData::Coil);
+	ui->m_master_type_cb->addItem(tr("Organ of protection"), ElementData::Protection);
+	ui->m_master_type_cb->addItem(tr("Switch / button"), ElementData::Commutator);
+	ui->m_master_type_cb->addItem(tr("PLC module"),           ElementData::PLC);
 	ui->m_master_type_cb->setMinimumWidth(150);
 
 		//Terminal option
-	ui->m_terminal_type_cb->addItem(tr("Générique"),    ElementData::TTGeneric);
-	ui->m_terminal_type_cb->addItem(tr("Fusible"),      ElementData::TTFuse);
-	ui->m_terminal_type_cb->addItem(tr("Séctionnable"), ElementData::TTSectional);
+	ui->m_terminal_type_cb->addItem(tr("Generic"),    ElementData::TTGeneric);
+	ui->m_terminal_type_cb->addItem(tr("Fuse"),      ElementData::TTFuse);
+	ui->m_terminal_type_cb->addItem(tr("Sectionable"), ElementData::TTSectional);
 	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::TTDiode);
-	ui->m_terminal_type_cb->addItem(tr("Terre"),        ElementData::TTGround);
+	ui->m_terminal_type_cb->addItem(tr("Ground"),        ElementData::TTGround);
 
-	ui->m_terminal_func_cb->addItem(tr("Générique"), ElementData::TFGeneric);
+	ui->m_terminal_func_cb->addItem(tr("Generic"), ElementData::TFGeneric);
 	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
-	ui->m_terminal_func_cb->addItem(tr("Neutre"),    ElementData::TFNeutral);
+	ui->m_terminal_func_cb->addItem(tr("Neutral"),    ElementData::TFNeutral);
 
 	//Disable the edition of the first column of the information tree
 	//by this little workaround
@@ -553,20 +553,20 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 
 		// Type column
 		auto *type_cb = new QComboBox(ui->m_slave_groups_table);
-		type_cb->addItem(tr("Normalement ouvert"), ElementData::NO);
-		type_cb->addItem(tr("Normalement fermé"), ElementData::NC);
-		type_cb->addItem(tr("Inverseur"), ElementData::SW);
-		type_cb->addItem(tr("Autre"), ElementData::Other);
+		type_cb->addItem(tr("Switch normally open"), ElementData::NO);
+		type_cb->addItem(tr("Switch normally closed"), ElementData::NC);
+		type_cb->addItem(tr("switch"), ElementData::SW);
+		type_cb->addItem(tr("Other", "fr: Autre"), ElementData::Other);
 		type_cb->setCurrentIndex(type_cb->findData(group.type));
 		ui->m_slave_groups_table->setCellWidget(i, 0, type_cb);
 
 		// Subtype column
 		auto *subtype_cb = new QComboBox(ui->m_slave_groups_table);
 		subtype_cb->addItem(tr("Simple"), ElementData::SSimple);
-		subtype_cb->addItem(tr("Puissance"), ElementData::Power);
-		subtype_cb->addItem(tr("Temporisé travail"), ElementData::DelayOn);
-		subtype_cb->addItem(tr("Temporisé repos"), ElementData::DelayOff);
-		subtype_cb->addItem(tr("Temporisé travail & repos"), ElementData::delayOnOff);
+		subtype_cb->addItem(tr("Power switch"), ElementData::Power);
+		subtype_cb->addItem(tr("Switch-on delayed"), ElementData::DelayOn);
+		subtype_cb->addItem(tr("Switch-off delayed"), ElementData::DelayOff);
+		subtype_cb->addItem(tr("Switch-on  and off delayed"), ElementData::delayOnOff);
 		subtype_cb->setCurrentIndex(subtype_cb->findData(group.subtype));
 		ui->m_slave_groups_table->setCellWidget(i, 1, subtype_cb);
 
@@ -707,7 +707,7 @@ void ElementPropertiesEditorWidget::readSlaveGroupsFromTable()
 void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 {
 	// Create PLC group box
-	m_plc_gb = new QGroupBox(tr("Configuration PLC"), ui->m_master_gb);
+	m_plc_gb = new QGroupBox(tr("PLC Configuration"), ui->m_master_gb);
 	auto *plc_layout = new QVBoxLayout(m_plc_gb);
 
 	// Toolbar
@@ -735,8 +735,8 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table = new QTableWidget(splitter);
 	m_plc_table->setColumnCount(5);
 	m_plc_table->setHorizontalHeaderLabels({
-		tr("Type"), tr("Adresse"), tr("Fonction"),
-		tr("Commentaire"), tr("Réf. croisée")
+		tr("Type"), tr("Address"), tr("Function"),
+		tr("Annotation"), tr("Cross-reference")
 	});
 	m_plc_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 	m_plc_table->horizontalHeader()->setSectionsMovable(true);
@@ -822,18 +822,18 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	// Font settings
 	auto *font_layout = new QHBoxLayout();
 
-	m_plc_header_font_btn = new QPushButton(tr("Police des en-têtes"), m_plc_gb);
-	m_plc_header_font_btn->setToolTip(tr("Configurer la police des en-têtes de colonnes"));
+	m_plc_header_font_btn = new QPushButton(tr("Header font"), m_plc_gb);
+	m_plc_header_font_btn->setToolTip(tr("Set the font for column headers"));
 	connect(m_plc_header_font_btn, &QPushButton::clicked, this, &ElementPropertiesEditorWidget::plcSelectHeaderFont);
 	font_layout->addWidget(m_plc_header_font_btn);
 
-	m_plc_cell_font_btn = new QPushButton(tr("Police du texte"), m_plc_gb);
-	m_plc_cell_font_btn->setToolTip(tr("Configurer la police du texte dans les cellules"));
+	m_plc_cell_font_btn = new QPushButton(tr("Text font"), m_plc_gb);
+	m_plc_cell_font_btn->setToolTip(tr("Set the text font in the cells"));
 	connect(m_plc_cell_font_btn, &QPushButton::clicked, this, &ElementPropertiesEditorWidget::plcSelectCellFont);
 	font_layout->addWidget(m_plc_cell_font_btn);
 
-	m_plc_show_headers_cb = new QCheckBox(tr("Afficher les en-têtes sur la feuille"), m_plc_gb);
-	m_plc_show_headers_cb->setToolTip(tr("Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille"));
+	m_plc_show_headers_cb = new QCheckBox(tr("Show headers on the sheet"), m_plc_gb);
+	m_plc_show_headers_cb->setToolTip(tr("Show or hide the column headings of the PLC table on the sheet"));
 	m_plc_show_headers_cb->setChecked(true);
 	font_layout->addWidget(m_plc_show_headers_cb);
 
@@ -845,13 +845,13 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 
 	for (int i = 0; i < 4; ++i) {
 		m_plc_break_checkboxes[i] = new QCheckBox(
-			tr("Saut %1 après:").arg(i + 1), m_plc_gb);
+			tr("Jump to %1 after:").arg(i + 1), m_plc_gb);
 		settings_layout->addWidget(m_plc_break_checkboxes[i], i, 0);
 
 		m_plc_break_spinboxes[i] = new QSpinBox(m_plc_gb);
 		m_plc_break_spinboxes[i]->setMinimum(0);
 		m_plc_break_spinboxes[i]->setMaximum(128);
-		m_plc_break_spinboxes[i]->setSpecialValueText(tr("Aucun"));
+		m_plc_break_spinboxes[i]->setSpecialValueText(tr("None"));
 		m_plc_break_spinboxes[i]->setEnabled(false);
 		settings_layout->addWidget(m_plc_break_spinboxes[i], i, 1);
 
@@ -859,7 +859,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 			m_plc_break_spinboxes[i], &QSpinBox::setEnabled);
 	}
 
-	settings_layout->addWidget(new QLabel(tr("H. ligne:"), m_plc_gb), 4, 0);
+	settings_layout->addWidget(new QLabel(tr("Line H:"), m_plc_gb), 4, 0);
 	m_plc_row_height_spinbox = new QSpinBox(m_plc_gb);
 	m_plc_row_height_spinbox->setMinimum(4);
 	m_plc_row_height_spinbox->setMaximum(30);
@@ -872,15 +872,15 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 
 	// Column name, visibility and width
 	auto *col_layout = new QHBoxLayout();
-	QStringList col_names = {tr("Type"), tr("Adresse"), tr("Fonction"),
-							 tr("Commentaire"), tr("Réf.")};
+	QStringList col_names = {tr("Type"), tr("Address"), tr("Function"),
+							 tr("Annotation"), tr("Ref.")};
 
 	for (int i = 0; i < 5; ++i) {
 		auto *col_widget = new QVBoxLayout();
 
 		auto *le = new QLineEdit(m_plc_gb);
 		le->setPlaceholderText(col_names.at(i));
-		le->setToolTip(tr("Nom personnalisé de la colonne (vide = par défaut)"));
+		le->setToolTip(tr("Custom column name (blank = default)"));
 		m_plc_col_name_edits.append(le);
 		col_widget->addWidget(le);
 
@@ -917,7 +917,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_plc_table, &QTableWidget::customContextMenuRequested, this, [this](const QPoint &pos) {
 		QMenu menu;
-		menu.addAction(tr("Coller depuis le presse-papiers"), this, &ElementPropertiesEditorWidget::plcPasteFromClipboard);
+		menu.addAction(tr("Paste from the clipboard"), this, &ElementPropertiesEditorWidget::plcPasteFromClipboard);
 		menu.exec(m_plc_table->mapToGlobal(pos));
 	});
 }
@@ -1009,9 +1009,9 @@ void ElementPropertiesEditorWidget::populatePlcTable()
 		m_plc_cell_font = QETApp::diagramTextsFont();
 		m_plc_cell_font.setPointSize(8);
 	}
-	m_plc_header_font_btn->setText(tr("Police des en-têtes: %1 %2pt")
+	m_plc_header_font_btn->setText(tr("Heading font size: %1 %2pt")
 		.arg(m_plc_header_font.family()).arg(m_plc_header_font.pointSize()));
-	m_plc_cell_font_btn->setText(tr("Police du texte: %1 %2pt")
+	m_plc_cell_font_btn->setText(tr("Font size: %1 %2pt")
 		.arg(m_plc_cell_font.family()).arg(m_plc_cell_font.pointSize()));
 	m_plc_show_headers_cb->setChecked(plc_data.showHeaders);
 
@@ -1383,10 +1383,10 @@ void ElementPropertiesEditorWidget::plcSelectHeaderFont()
 {
 	bool ok;
 	QFont font = QFontDialog::getFont(&ok, m_plc_header_font, this,
-		tr("Police des en-têtes de colonnes"));
+		tr("Column header formatting"));
 	if (ok) {
 		m_plc_header_font = font;
-		m_plc_header_font_btn->setText(tr("Police des en-têtes: %1 %2pt")
+		m_plc_header_font_btn->setText(tr("Heading font size: %1 %2pt")
 			.arg(font.family()).arg(font.pointSize()));
 	}
 }
@@ -1399,10 +1399,10 @@ void ElementPropertiesEditorWidget::plcSelectCellFont()
 {
 	bool ok;
 	QFont font = QFontDialog::getFont(&ok, m_plc_cell_font, this,
-		tr("Police du texte des cellules"));
+		tr("Cell text font"));
 	if (ok) {
 		m_plc_cell_font = font;
-		m_plc_cell_font_btn->setText(tr("Police du texte: %1 %2pt")
+		m_plc_cell_font_btn->setText(tr("Font size: %1 %2pt")
 			.arg(font.family()).arg(font.pointSize()));
 	}
 }

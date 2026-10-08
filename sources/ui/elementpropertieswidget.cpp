@@ -357,7 +357,7 @@ void ElementPropertiesWidget::addGeneralWidget()
 		delete m_general_widget;
 	}
 	m_general_widget = generalWidget();
-	m_tab -> addTab(m_general_widget, tr("Général"));
+	m_tab -> addTab(m_general_widget, tr("General"));
 	m_tab->setCurrentIndex(index);
 }
 
@@ -367,33 +367,33 @@ void ElementPropertiesWidget::addGeneralWidget()
 */
 QWidget *ElementPropertiesWidget::generalWidget()
 {
-	QString description_string(tr("Élément\n"));
+	QString description_string(tr("Element\n"));
 
 		// some element characteristic
-	description_string += QString(tr("Nom : %1\n")).arg(m_element -> name());
+	description_string += QString(tr("Name : %1\n")).arg(m_element -> name());
 	int folio_index = m_diagram -> folioIndex();
 	if (folio_index != -1) {
-		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
+		description_string += QString(tr("Sheet : %1\n")).arg(folio_index + 1);
 	}
-	description_string += QString(tr("Type : %1\n")).arg(m_element->elementData().typeToString());
-	description_string += QString(tr("Sous-type : %1\n")).arg(m_element ->kindInformations()["type"].toString());
+	description_string += QString(tr("Type: %1\n")).arg(m_element->elementData().typeToString());
+	description_string += QString(tr("Sub-type : %1\n")).arg(m_element ->kindInformations()["type"].toString());
 	description_string += QString(tr("Position : %1\n")).arg(m_diagram -> convertPosition(m_element -> scenePos()).toString());
 	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
-	description_string += QString(tr("Bornes : %1\n")).arg(m_element -> terminals().count());
+	description_string += QString(tr("Terminals : %1\n")).arg(m_element -> terminals().count());
 	if (m_element->linkType() == Element::Master)
 	{
 			//The declared limit is optional: -1 means the element sets no
 			//limit at all, which is worth saying rather than printing "-1".
 		const int max_slaves = m_element->elementData().m_max_slaves;
 		description_string += max_slaves == -1
-				? QString(tr("Nombre maximum de contacts esclaves définis : non défini\n"))
-				: QString(tr("Nombre maximum de contacts esclaves définis : %1\n")).arg(max_slaves);
+				? QString(tr("Maximum number of slave contacts defined:  not defined\n"))
+				: QString(tr("Maximum number of slave contacts defined:  %1\n")).arg(max_slaves);
 
 			//Left as a count of linked elements: the line above is a number
 			//of slots, and a slave fills one slot however many contacts it
 			//carries, so the two stay in the same unit.
-		description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(m_element->linkedElements().count());
+		description_string += QString(tr("Number of slave contacts used : %1\n")).arg(m_element->linkedElements().count());
 
 			//The breakdown below is in contacts, not slots: it answers how
 			//many contacts an auxiliary block must provide.
@@ -408,7 +408,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 				//only what has been used but what it has to offer. A type
 				//used beyond what is declared shows as e.g. "1/0", which
 				//is the point: it says this contact does not fit the part.
-			description_string += QString(tr("    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8\n"))
+			description_string += QString(tr("    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8\n"))
 					.arg(usage.no).arg(capacity.no)
 					.arg(usage.nc).arg(capacity.nc)
 					.arg(usage.sw).arg(capacity.sw)
@@ -417,14 +417,14 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		else if (usage.total() > 0)
 		{
 				//No declared groups, so a plain count of what is in use.
-			description_string += QString(tr("    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4\n"))
+			description_string += QString(tr("    Contacts : NO : %1, NC : %2, changeover : %3, other : %4\n"))
 					.arg(usage.no)
 					.arg(usage.nc)
 					.arg(usage.sw)
 					.arg(usage.other);
 		}
 	}
-	description_string += QString(tr("Emplacement : %1\n")).arg(m_element.data()->location().toString());
+	description_string += QString(tr("Location : %1\n")).arg(m_element.data()->location().toString());
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -439,7 +439,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 
 		//checkbox to lock the element position on the diagram
 		//(same mechanism already used by images and drawn shapes)
-	QCheckBox *lock_pos_cb = new QCheckBox(tr("Verrouiller la position"), general_widget);
+	QCheckBox *lock_pos_cb = new QCheckBox(tr("Lock Position"), general_widget);
 	lock_pos_cb->setChecked(!m_element->isMovable());
 	QPointer<Element> element = m_element;
 	connect(lock_pos_cb, &QCheckBox::clicked, this, [element](bool checked) {
@@ -455,9 +455,9 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	vlayout_ -> addStretch();
 
 		//button widget
-	QPushButton *find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Retrouver dans le panel"), general_widget);
+	QPushButton *find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Find in the panel"), general_widget);
 	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
-	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
+	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Edit element"), general_widget);
 	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
 	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);

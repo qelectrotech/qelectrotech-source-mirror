@@ -24,7 +24,7 @@ ChangeElementDataCommand::ChangeElementDataCommand(Element *element, ElementData
 	m_old_data(element->elementData()),
 	m_new_data(new_data)
 {
-	setText(QObject::tr("Modifier les propriétés d'un élement"));
+	setText(QObject::tr("Modify the properties of an element"));
 }
 
 void ChangeElementDataCommand::undo() {

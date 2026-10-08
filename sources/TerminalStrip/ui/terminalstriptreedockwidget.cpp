@@ -247,13 +247,13 @@ void TerminalStripTreeDockWidget::buildTree()
 
 	auto title_ = m_project->title();
 	if (title_.isEmpty()) {
-		title_ = tr("Projet sans titre");
+		title_ = tr("Untitled project");
 	}
 
 	QStringList strl{title_};
 	new QTreeWidgetItem(ui->m_tree_view, strl, Root);
 
-	QStringList ftstrl(tr("Bornes indépendante"));
+	QStringList ftstrl(tr("Independent terminals"));
 	new QTreeWidgetItem(ui->m_tree_view, ftstrl, FreeTerminal);
 
 	auto ts_vector = m_project->terminalStrip();

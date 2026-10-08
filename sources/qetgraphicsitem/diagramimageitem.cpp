@@ -516,7 +516,7 @@ DiagramImageItem::HandleMode DiagramImageItem::nextHandleMode() const
 */
 QString DiagramImageItem::handleModeLabel(HandleMode mode)
 {
-	return (mode == HandleMode::Size) ? tr("redimensionner") : tr("pivoter/incliner");
+	return (mode == HandleMode::Size) ? tr("resize") : tr("rotate/skew");
 }
 
 /**
@@ -532,7 +532,7 @@ QString DiagramImageItem::handleModeLabel(HandleMode mode)
 void DiagramImageItem::updateModeHint()
 {
 	setToolTip(isSelected()
-			? tr("Cliquer : mode %1").arg(handleModeLabel(nextHandleMode()))
+			? tr("Click: mode %1").arg(handleModeLabel(nextHandleMode()))
 			: QString());
 }
 
@@ -570,9 +570,9 @@ void DiagramImageItem::refreshInteractionHints()
 QString DiagramImageItem::currentModeStatusHint() const
 {
 	QString hint = (m_handleMode == HandleMode::Size)
-			? tr("Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)")
-			: tr("Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation");
-	hint += tr(" -- %1 : mode %2").arg(tr("Cliquer"), handleModeLabel(nextHandleMode()));
+			? tr("Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)")
+			: tr("Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center");
+	hint += tr(" -- %1: mode %2").arg(tr("Click"), handleModeLabel(nextHandleMode()));
 	return hint;
 }
 
@@ -639,10 +639,10 @@ QString DiagramImageItem::hintForHandleRole(HandleRole role)
 {
 	switch (role)
 	{
-		case HandleRole::Resize: return tr("Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)");
-		case HandleRole::Rotate: return tr("Glisser : pivoter (Maj = par pas de 15°)");
-		case HandleRole::SkewEdge: return tr("Glisser : incliner (Maj = par pas de 15°)");
-		case HandleRole::Pivot: return tr("Glisser : déplacer le centre de rotation");
+		case HandleRole::Resize: return tr("Drag: resize (Shift = keep proportions, Ctrl = from center)");
+		case HandleRole::Rotate: return tr("Drag: rotate (Shift = 15° steps)");
+		case HandleRole::SkewEdge: return tr("Drag: skew (Shift = 15° steps)");
+		case HandleRole::Pivot: return tr("Drag: move the rotation center");
 	}
 	return QString();
 }
@@ -896,14 +896,14 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 						undo = new QPropertyUndoCommand(this, "scaleFactorY", m_original_transform.scaleY, m_transform.scaleY);
 				}
 				if (undo)
-					undo->setText(tr("Redimensionner une image"));
+					undo->setText(tr("Resize an image"));
 				break;
 
 			case HandleRole::Rotate:
 				if (!qFuzzyCompare(m_transform.rotation, m_original_transform.rotation))
 				{
 					undo = new QPropertyUndoCommand(this, "rotationAngle", m_original_transform.rotation, m_transform.rotation);
-					undo->setText(tr("Faire pivoter une image"));
+					undo->setText(tr("Rotate an image"));
 				}
 				break;
 
@@ -913,13 +913,13 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 				else if (!qFuzzyCompare(m_transform.skewY, m_original_transform.skewY))
 					undo = new QPropertyUndoCommand(this, "skewY", m_original_transform.skewY, m_transform.skewY);
 				if (undo)
-					undo->setText(tr("Incliner une image"));
+					undo->setText(tr("Skew an image"));
 				break;
 
 			case HandleRole::Pivot:
 				if (m_transform.pivot != m_original_transform.pivot)
 				{
-					undo = new QUndoCommand(tr("Déplacer le centre de rotation d'une image"));
+					undo = new QUndoCommand(tr("Move an image's rotation center"));
 					new QPropertyUndoCommand(this, "pos", m_original_pos, pos(), undo);
 					new QPropertyUndoCommand(this, "rawPivot", m_original_transform.pivot, m_transform.pivot, undo);
 					// dragPivot() marked the pivot as hand-placed; undoing
@@ -940,7 +940,7 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 			// apart); this only still matters if some future role is
 			// ever added without setting one of its own.
 			if (undo->text().isEmpty())
-				undo->setText(tr("Modifier une image"));
+				undo->setText(tr("Edit an image"));
 
 			// Every push here is one complete, finished gesture (press,
 			// drag, release) -- never a continuation of an earlier one.
@@ -1155,7 +1155,7 @@ void DiagramImageItem::restoreAspectRatio()
 		return;
 
 	auto *undo = new QPropertyUndoCommand(this, "scaleFactorY", m_transform.scaleY, m_transform.scaleX);
-	undo->setText(tr("Restaurer les proportions d'une image"));
+	undo->setText(tr("Restore an image's proportions"));
 	diagram()->undoStack().push(undo);
 }
 
@@ -1168,7 +1168,7 @@ void DiagramImageItem::restoreAspectRatio()
 */
 void DiagramImageItem::saveImageAs()
 {
-	saveImagePixmapAs(pixmap_, tr("Enregistrer l'image sous..."), !m_transparent_colors.isEmpty());
+	saveImagePixmapAs(pixmap_, tr("Save image as..."), !m_transparent_colors.isEmpty());
 }
 
 /**
@@ -1182,7 +1182,7 @@ void DiagramImageItem::saveImageAs()
 */
 void DiagramImageItem::saveOriginalImageAs()
 {
-	saveImagePixmapAs(m_base_pixmap, tr("Enregistrer l'image d'origine sous..."), false);
+	saveImagePixmapAs(m_base_pixmap, tr("Save original image as..."), false);
 }
 
 /**
@@ -1211,9 +1211,9 @@ void DiagramImageItem::saveImagePixmapAs(const QPixmap &pixmap, const QString &d
 	// entirely, defaulting to PNG even when JPEG or BMP had been
 	// explicitly chosen).
 	const QList<QPair<QString, QString>> filters = {
-		{tr("Image PNG (*.png)"), QStringLiteral("png")},
-		{tr("Image JPEG (*.jpg *.jpeg)"), QStringLiteral("jpg")},
-		{tr("Image BMP (*.bmp)"), QStringLiteral("bmp")},
+		{tr("PNG image (*.png)"), QStringLiteral("png")},
+		{tr("JPEG image (*.jpg *.jpeg)"), QStringLiteral("jpg")},
+		{tr("BMP image (*.bmp)"), QStringLiteral("bmp")},
 		// SVG here always means a raster image wrapped in an SVG
 		// container (an <image> element embedding this same pixmap as
 		// base64 PNG), never a true vector export -- this item only
@@ -1221,12 +1221,12 @@ void DiagramImageItem::saveImagePixmapAs(const QPixmap &pixmap, const QString &d
 		// SVG file, since that file was rasterized once at import time
 		// and its vector information is already gone by the time this
 		// runs.
-		{tr("Image SVG (*.svg)"), QStringLiteral("svg")},
+		{tr("SVG image (*.svg)"), QStringLiteral("svg")},
 	};
 	QStringList filterStrings;
 	for (const auto &f : filters)
 		filterStrings << f.first;
-	filterStrings << tr("Tous les fichiers (*)");
+	filterStrings << tr("All files (*)");
 
 	QString selectedFilter;
 	QString path = QFileDialog::getSaveFileName(
@@ -1273,9 +1273,9 @@ void DiagramImageItem::saveImagePixmapAs(const QPixmap &pixmap, const QString &d
 	if (hasTransparency && !formatPreservesAlpha)
 	{
 		if (QMessageBox::warning(parentWidget,
-				tr("Transparence non conservée"),
-				tr("Ce format ne prend pas en charge la transparence : l'image sera enregistrée "
-				   "telle qu'elle était avant l'application de la couleur transparente. Continuer ?"),
+				tr("Transparency not preserved"),
+				tr("This format does not support transparency: the image will be saved as it was "
+				   "before the transparent colour was applied. Continue?"),
 				QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
 			return;
 
@@ -1291,8 +1291,8 @@ void DiagramImageItem::saveImagePixmapAs(const QPixmap &pixmap, const QString &d
 	if (!ok)
 	{
 		QMessageBox::warning(parentWidget,
-				tr("Échec de l'enregistrement"),
-				tr("Impossible d'enregistrer l'image à cet emplacement."));
+				tr("Saving failed"),
+				tr("Unable to save the image to this location."));
 	}
 }
 
@@ -1452,7 +1452,7 @@ void DiagramImageItem::updateLabelScale()
 */
 QString DiagramImageItem::name() const
 {
-	return tr("une image");
+	return tr("image");
 }
 
 namespace {
@@ -1790,31 +1790,31 @@ void DiagramImageItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 		{
 			QScopedPointer<QMenu> menu(new QMenu());
 
-			QAction *replace = menu.data()->addAction(tr("Remplacer l'image..."));
+			QAction *replace = menu.data()->addAction(tr("Replace the image..."));
 			connect(replace, &QAction::triggered, this, &DiagramImageItem::replaceImage);
 
-			QAction *saveAs = menu.data()->addAction(tr("Enregistrer l'image sous..."));
+			QAction *saveAs = menu.data()->addAction(tr("Save image as..."));
 			connect(saveAs, &QAction::triggered, this, &DiagramImageItem::saveImageAs);
 
-			QAction *saveOriginalAs = menu.data()->addAction(tr("Enregistrer l'image d'origine sous..."));
+			QAction *saveOriginalAs = menu.data()->addAction(tr("Save original image as..."));
 			connect(saveOriginalAs, &QAction::triggered, this, &DiagramImageItem::saveOriginalImageAs);
 
-			QAction *transparentColor = menu.data()->addAction(tr("Couleur transparente..."));
+			QAction *transparentColor = menu.data()->addAction(tr("Transparent color..."));
 			transparentColor->setIcon(QET::Icons::EditOpacity);
 			connect(transparentColor, &QAction::triggered, this, &DiagramImageItem::setTransparentColor);
 
-			QAction *cropAction = menu.data()->addAction(tr("Rogner..."));
+			QAction *cropAction = menu.data()->addAction(tr("Crop..."));
 			cropAction->setIcon(QET::Icons::TransformCrop);
 			connect(cropAction, &QAction::triggered, this, &DiagramImageItem::crop);
 
-			QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
+			QAction *mirrorH = menu.data()->addAction(tr("Horizontal mirror"));
 			mirrorH->setIcon(QET::Icons::ImageFlipHorizontal);
-			QAction *mirrorV = menu.data()->addAction(tr("Miroir vertical"));
+			QAction *mirrorV = menu.data()->addAction(tr("Vertical mirror"));
 			mirrorV->setIcon(QET::Icons::ImageFlipVertical);
 			connect(mirrorH, &QAction::triggered, this, [this]() { mirror(true); });
 			connect(mirrorV, &QAction::triggered, this, [this]() { mirror(false); });
 
-			QAction *restoreRatio = menu.data()->addAction(tr("Restaurer les proportions"));
+			QAction *restoreRatio = menu.data()->addAction(tr("Restore proportions"));
 			connect(restoreRatio, &QAction::triggered, this, &DiagramImageItem::restoreAspectRatio);
 
 			// menu.data()->addSeparator();
@@ -1849,7 +1849,7 @@ void DiagramImageItem::replaceImage()
 
 	QWidget *parentWidget = diagram()->views().isEmpty() ? nullptr : diagram()->views().first();
 	const QString fileName = QFileDialog::getOpenFileName(
-			parentWidget, tr("Selectionner une image..."),
+			parentWidget, tr("Select an image ..."),
 			QETApp::pictureDir(), tr("Image Files (*.png *.jpg *.jpeg *.bmp *.svg)"));
 	if (fileName.isEmpty())
 		return;
@@ -1857,7 +1857,7 @@ void DiagramImageItem::replaceImage()
 	QImage image(fileName);
 	if (image.isNull())
 	{
-		QMessageBox::critical(parentWidget, tr("Erreur"), tr("Impossible de charger l'image."));
+		QMessageBox::critical(parentWidget, tr("Error"), tr("Unable to load the image."));
 		return;
 	}
 
@@ -1871,7 +1871,7 @@ void DiagramImageItem::replaceImage()
 	const ImageSource oldSource = imageSource();
 	const ImageSource newSource{newPixmap, newPixmap.rect(), {}};
 
-	pushImageSourceChange(tr("Remplacer une image"), oldSource, newSource);
+	pushImageSourceChange(tr("Replace an image"), oldSource, newSource);
 }
 
 /**
@@ -1912,7 +1912,7 @@ void DiagramImageItem::mirror(bool horizontal)
 		newSource.crop = QRect(m_crop_rect.left(), m_base_pixmap.height() - m_crop_rect.top() - m_crop_rect.height(),
 				m_crop_rect.width(), m_crop_rect.height());
 
-	pushImageSourceChange(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"),
+	pushImageSourceChange(horizontal ? tr("Horizontal mirror of an image") : tr("Vertical mirror of an image"),
 						  oldSource, newSource);
 }
 
@@ -1945,7 +1945,7 @@ void DiagramImageItem::setTransparentColor()
 	ImageSource newSource = oldSource;
 	newSource.colors = dialog.pickedColors();
 
-	pushImageSourceChange(tr("Définir une couleur transparente"), oldSource, newSource);
+	pushImageSourceChange(tr("Set a transparent color"), oldSource, newSource);
 }
 
 /**
@@ -2045,7 +2045,7 @@ bool DiagramImageItem::applyCrop(const QRect &cropRect)
 	const QPointF newOriginPoint = QRectF(QPointF(), QSizeF(newCropRect.size())).center();
 	const QPointF newPos = cropCenterScene - newOriginPoint;
 
-	auto *undo = new QUndoCommand(tr("Rogner une image"));
+	auto *undo = new QUndoCommand(tr("Crop an image"));
 	new QPropertyUndoCommand(this, "imageSource", QVariant::fromValue(oldSource),
 							 QVariant::fromValue(newSource), undo);
 	new QPropertyUndoCommand(this, "pos", oldPos, newPos, undo);

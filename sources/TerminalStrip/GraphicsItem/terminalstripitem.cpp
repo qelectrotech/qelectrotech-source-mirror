@@ -93,7 +93,7 @@ QRectF TerminalStripItem::boundingRect() const
  * @return usual name of this item
  */
 QString TerminalStripItem::name() const {
-	return tr("plan de bornes");
+	return tr("plan of terminals");
 }
 
 void TerminalStripItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)

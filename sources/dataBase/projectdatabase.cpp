@@ -716,16 +716,16 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 
 	if (trimmed.isEmpty()) {
 		if (error) {
-			*error = projectDataBase::tr("La requête est vide.");
+			*error = projectDataBase::tr("The query is empty.");
 		}
 		return false;
 	}
 
 	if (trimmed.contains(QLatin1Char(';'))) {
 		if (error) {
-			*error = projectDataBase::tr("Une seule requête SELECT est autorisée"
-								  " (le caractère ';' ne peut apparaître"
-								  " qu'à la toute fin).");
+			*error = projectDataBase::tr("Only a single SELECT query is allowed "
+								  "(the ';' character may only appear at "
+								  "the very end).");
 		}
 		return false;
 	}
@@ -734,9 +734,8 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 	const QString first_word = (first_space == -1 ? trimmed : trimmed.left(first_space)).toUpper();
 	if (first_word != QLatin1String("SELECT") && first_word != QLatin1String("WITH")) {
 		if (error) {
-			*error = projectDataBase::tr("Seules les requêtes en lecture seule"
-								  " (SELECT ou WITH ... SELECT) sont"
-								  " autorisées.");
+			*error = projectDataBase::tr("Only read-only queries (SELECT or "
+								  "WITH ... SELECT) are allowed.");
 		}
 		return false;
 	}
@@ -2374,14 +2373,14 @@ void projectDataBase::exportDb(projectDataBase *db,
 {
 	auto caption_ = caption;
 	if (caption_.isEmpty()) {
-		caption_ = tr("Exporter la base de données interne du projet");
+		caption_ = tr("Export the internal project database");
 	}
 
 	auto dir_ = dir;
 	if(dir_.isEmpty()) {
 		dir_ = db->project()->filePath();
 		if (dir_.isEmpty()) {
-			dir_ = QETApp::documentDir() % "/" % tr("sans_nom") % ".sqlite";
+			dir_ = QETApp::documentDir() % "/" % tr("untitled") % ".sqlite";
 		} else {
 			dir_.remove(".qet");
 			dir_.append(".sqlite");

@@ -326,7 +326,7 @@ bool MaterialList::isArticleBound(const QString &column)
 QString MaterialList::translatedColumn(const QString &column)
 {
 	if (column == QLatin1String("auxiliary")) {
-		return QCoreApplication::translate("MaterialList", "Bloc auxiliaire");
+		return QCoreApplication::translate("MaterialList", "Auxiliary block");
 	}
 
 	const QString translated = QETInformation::translatedInfoKey(column);
@@ -374,7 +374,7 @@ QMap<QString, QString> MaterialList::headerAliasMap()
 	}
 
 	map.insert(QStringLiteral("auxiliary"), QStringLiteral("auxiliary"));
-	const QString auxiliary_label = QCoreApplication::translate("MaterialList", "Bloc auxiliaire").toLower();
+	const QString auxiliary_label = QCoreApplication::translate("MaterialList", "Auxiliary block").toLower();
 	map.insert(auxiliary_label, QStringLiteral("auxiliary"));
 
 	return map;
@@ -620,7 +620,7 @@ bool MaterialList::load(const QString &path, MaterialListData *data, QString *er
 	}
 	if (!data) {
 		if (error) {
-			*error = QCoreApplication::translate("MaterialList", "Aucun récepteur pour le répertoire de matériaux.");
+			*error = QCoreApplication::translate("MaterialList", "Nothing to receive the materials list.");
 		}
 		return false;
 	}
@@ -791,7 +791,7 @@ bool MaterialList::appendRecord(const QString &path, const MaterialRecord &recor
 		if (data.columns.isEmpty())
 		{
 			if (error) {
-				*error = QCoreApplication::translate("MaterialList", "Le fichier ne contient pas d'en-tête : colonnes manquantes.");
+				*error = QCoreApplication::translate("MaterialList", "The file has no header: columns are missing.");
 			}
 			return false;
 		}
@@ -822,7 +822,7 @@ bool MaterialList::createFile(const QString &path, QString *error)
 	if (hasContent(path))
 	{
 		if (error) {
-			*error = QCoreApplication::translate("MaterialList", "Le fichier existe déjà et n'est pas vide.");
+			*error = QCoreApplication::translate("MaterialList", "The file already exists and is not empty.");
 		}
 		return false;
 	}

@@ -92,9 +92,9 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 	{
 		const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
 		m_status_bar->showMessage(divisor > 0
-			? QObject::tr("Grille des textes %1. Relâcher Maj et maintenir Ctrl pour placer librement.")
+			? QObject::tr("Text grid %1. Release Shift and hold Ctrl to place freely.")
 				  .arg(TextGrid::ratioLabel(divisor))
-			: QObject::tr("Grille des textes désactivée."));
+			: QObject::tr("Text grid disabled."));
 	}
 	
 	return m_items_hash.size();
@@ -162,12 +162,12 @@ QString ElementTextsMover::undoText() const
 {
 	QStringList parts;
 	if (m_text_count)
-		parts << QObject::tr("%n texte(s) d'élément", "", m_text_count);
+		parts << QObject::tr("%n texts of element", "", m_text_count);
 	if (m_group_count)
-		parts << QObject::tr("%n groupe(s) de textes", "", m_group_count);
+		parts << QObject::tr("%n groups of texts", "", m_group_count);
 
 	if (parts.isEmpty())
 		return QString(); // should never occur
 
-	return QObject::tr("Déplacer %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts));
+	return QObject::tr("Move %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts));
 }

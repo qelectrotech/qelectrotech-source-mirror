@@ -29,7 +29,7 @@ OpenElmtCommand::OpenElmtCommand(const QDomDocument &document,
 	m_document{document.cloneNode().toDocument()},
 	m_scene{scene}
 {
-	setText(QObject::tr("Ouvrir un element"));
+	setText(QObject::tr("Open an item"));
 }
 
 OpenElmtCommand::~OpenElmtCommand()

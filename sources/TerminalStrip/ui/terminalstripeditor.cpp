@@ -106,7 +106,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
-		ui->m_move_to_cb->addItem(tr("Bornes indépendantes"), QUuid());
+		ui->m_move_to_cb->addItem(tr("Independent terminals"), QUuid());
 
 		const auto project_{strip_->project()};
 		if (project_)
@@ -176,7 +176,7 @@ void TerminalStripEditor::apply()
 
 	if (m_current_strip)
 	{
-		m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+		m_project->undoStack()->beginMacro(tr("Modify terminal strip properties"));
 
 		TerminalStripData data;
 		data.m_installation = ui->m_installation_le->text();

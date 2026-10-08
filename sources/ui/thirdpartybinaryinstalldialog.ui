@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Logiciel tiers requis</string>
+   <string>Third party software required</string>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -30,7 +30,7 @@
    <item row="1" column="0">
     <widget class="QPushButton" name="m_download_pb">
      <property name="text">
-      <string>Télechargement</string>
+      <string>Download</string>
      </property>
      <property name="icon">
       <iconset theme="edit-download"/>
@@ -40,7 +40,7 @@
    <item row="1" column="1">
     <widget class="QPushButton" name="m_install_dir_pb">
      <property name="text">
-      <string>Dossier installation</string>
+      <string>Installation folder</string>
      </property>
      <property name="icon">
       <iconset theme="folder-open"/>

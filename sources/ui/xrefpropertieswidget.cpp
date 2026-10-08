@@ -100,20 +100,20 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 */
 void XRefPropertiesWidget::buildUi()
 {
-	ui -> m_type_cb -> addItem(tr("Bobine"), "coil");
-	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
-	ui -> m_type_cb -> addItem(tr("Commutateur / bouton"), "commutator");
-	ui -> m_type_cb -> addItem(tr("Automate (PLC)"), "plc");
+	ui -> m_type_cb -> addItem(tr("Coil"), "coil");
+	ui -> m_type_cb -> addItem(tr("Organ of protection"), "protection");
+	ui -> m_type_cb -> addItem(tr("Switch / button"), "commutator");
+	ui -> m_type_cb -> addItem(tr("Programmable Logic Controller (PLC)"), "plc");
 
-	ui -> m_snap_to_cb -> addItem(tr("En bas de page"), "bottom");
-	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
+	ui -> m_snap_to_cb -> addItem(tr("Footer"), "bottom");
+	ui -> m_snap_to_cb -> addItem(tr("Under the label of the element"), "label");
 
 	ui -> m_xrefpos_cb -> addItem(tr("Top"),"top");
 	ui -> m_xrefpos_cb -> addItem(tr("Bottom"),"bottom");
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
 	ui -> m_xrefpos_cb -> addItem(tr("Right"),"right");
 	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
-	ui -> m_xrefpos_cb -> addItem(tr("Champ de texte"),"text_field");
+	ui -> m_xrefpos_cb -> addItem(tr("Text field"),"text_field");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 

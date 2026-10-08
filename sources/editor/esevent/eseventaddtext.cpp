@@ -62,7 +62,7 @@ bool ESEventAddText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 */
 bool ESEventAddText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event->button() == Qt::LeftButton) {
-		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Texte"), m_scene, m_text));
+		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Text"), m_scene, m_text));
 
 		//Set new text
 		m_text = new PartText(m_editor);

@@ -163,28 +163,28 @@ void WiringListExport::toCsv()
 
     const QString csv = toCsvString();
     if (csv.isEmpty()) {
-        QMessageBox::warning(m_parent, tr("Erreur"), tr("Impossible de lire la structure en mémoire du projet."));
+        QMessageBox::warning(m_parent, tr("Error"), tr("Unable to read the project's in-memory structure."));
         return;
     }
 
     QFileDialog dialog(m_parent);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
-    dialog.setWindowTitle(tr("Exporter le plan de câblage"));
+    dialog.setWindowTitle(tr("Export the wiring diagram"));
     dialog.setDefaultSuffix("csv");
-    dialog.setNameFilter(tr("Fichiers CSV (*.csv)"));
+    dialog.setNameFilter(tr("CSV files (*.csv)"));
 
     if (dialog.exec() != QDialog::Accepted) return;
     QString fileName = dialog.selectedFiles().first();
 
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(m_parent, tr("Erreur"), tr("Impossible d'ouvrir le fichier pour l'écriture."));
+        QMessageBox::warning(m_parent, tr("Error"), tr("Unable to open the file for writing."));
         return;
     }
     QTextStream out(&file);
     out << csv;
     file.close();
-    QMessageBox::information(m_parent, tr("Export réussi"), tr("Le plan de câblage a été exporté avec succès !"));
+    QMessageBox::information(m_parent, tr("Export successful"), tr("The wiring diagram has been successfully exported !"));
 }
 
 QString WiringListExport::toCsvString() const
@@ -365,15 +365,15 @@ QString WiringListExport::toCsvString() const
     QString csv;
     QTextStream out(&csv);
     out << tr("Page", "Wiring list CSV header") << ";"
-    << tr("Composant 1", "Wiring list CSV header") << ";"
-    << tr("Borne 1", "Wiring list CSV header") << ";"
-    << tr("Composant 2", "Wiring list CSV header") << ";"
-    << tr("Borne 2", "Wiring list CSV header") << ";"
-    << tr("Tension / Protocole", "Wiring list CSV header") << ";"
-    << tr("Couleur du fil", "Wiring list CSV header") << ";"
-    << tr("Section du fil", "Wiring list CSV header") << ";"
-    << tr("Fonction", "Wiring list CSV header") << ";"
-    << tr("Câble", "Wiring list CSV header") << "\n";
+    << tr("Component 1", "Wiring list CSV header") << ";"
+    << tr("Terminal 1", "Wiring list CSV header") << ";"
+    << tr("Component 2", "Wiring list CSV header") << ";"
+    << tr("Terminal 2", "Wiring list CSV header") << ";"
+    << tr("Voltage / Protocol", "Wiring list CSV header") << ";"
+    << tr("Wire color", "Wiring list CSV header") << ";"
+    << tr("Wire section", "Wiring list CSV header") << ";"
+    << tr("Function", "Wiring list CSV header") << ";"
+    << tr("Cable", "Wiring list CSV header") << "\n";
 
     for (const ConductorData &c : uniqueConductors) {
         out << c.folio << ";"

@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Ajouter le plan de bornes suivant :</string>
+      <string>Add the following terminal plan :</string>
      </property>
     </widget>
    </item>

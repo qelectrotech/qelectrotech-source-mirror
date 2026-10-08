@@ -58,7 +58,7 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove | DiagramContent::Shapes),
 	first_redo(true)
 {
-	setText(QObject::tr("coller %1", "undo caption - %1 is a sentence listing the content to paste").arg(content.sentence(filter)));
+	setText(QObject::tr("paste %1", "undo caption - %1 is a sentence listing the content to paste").arg(content.sentence(filter)));
 	diagram -> qgiManager().manage(content.items(filter));
 }
 
@@ -345,7 +345,7 @@ CutDiagramCommand::CutDiagramCommand(
 	setText(
 		QString(
 			QObject::tr(
-				"couper %1",
+				"cut %1",
 				"undo caption - %1 is a sentence listing the content to cut"
 			).arg(content.sentence(DiagramContent::All))
 		)
@@ -458,7 +458,7 @@ void MoveConductorsTextsCommand::regenerateTextLabel()
 	setText(
 		QString(
 			QObject::tr(
-				"déplacer %1",
+				"move %1",
 				"undo caption - %1 is a sentence listing the moved content"
 			).arg(moved_content_sentence)
 		)
@@ -479,7 +479,7 @@ ChangeDiagramTextCommand::ChangeDiagramTextCommand(
 	const QString &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier le texte", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modify text", "undo caption"), parent),
 	text_item(dti),
 	text_before(before),
 	text_after(after),
@@ -531,7 +531,7 @@ ChangeConductorCommand::ChangeConductorCommand(
 	Qt::Corner path_t,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier un conducteur", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modify a conductor", "undo caption"), parent),
 	conductor(c),
 	old_profile(old_p),
 	new_profile(new_p),
@@ -602,7 +602,7 @@ ResetConductorCommand::ResetConductorCommand(
 {
 	setText(
 		QObject::tr(
-			"Réinitialiser %1",
+			"Reset %1",
 			"undo caption - %1 is a sentence listing the reset content"
 		).arg(QET::ElementsAndConductorsSentence(0, cp.count()))
 	);
@@ -652,7 +652,7 @@ ChangeBorderCommand::ChangeBorderCommand(Diagram *dia,
 					 const BorderProperties &new_bp,
 					 QUndoCommand *parent) :
 	QUndoCommand(
-		QObject::tr("modifier les dimensions du folio", "undo caption"),
+		QObject::tr("change the sheet size", "undo caption"),
 		parent),
 	diagram(dia),
 	old_properties(old_bp),

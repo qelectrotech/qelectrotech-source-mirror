@@ -212,15 +212,14 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi,
 	QString final_tooltip = QDir::toNativeSeparators(project -> filePath());
 	if (final_tooltip.isEmpty()) {
 		final_tooltip = tr(
-			"Pas de fichier",
+			"No file",
 			"tooltip for a file-less project in the element panel"
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
-	QString project_whatsthis = tr("Ceci est un projet QElectroTech, "
-		"c'est-à-dire un fichier d'extension .qet regroupant "
-		"plusieurs folios. Il embarque également les éléments et "
-		"modèles de cartouches utilisés dans ces folios.",
+	QString project_whatsthis = tr("This is a QElectroTech project, ie. a .qet file "
+		"containing several sheets. It also embeds elements and "
+		"title block templates used in the sheets.",
 		"\"What's this\" tip");
 	project_qtwi -> setWhatsThis(0, project_whatsthis);
 	return(updateItem(project_qtwi, options, freshly_created));
@@ -347,7 +346,7 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 	QString displayed_title = diagram -> title();
 	if (displayed_title.isEmpty())
 	{
-		displayed_title = tr("Folio sans titre",
+		displayed_title = tr("Untitled sheet",
 				     "Fallback label when a diagram has no title");
 	}
 
@@ -497,7 +496,7 @@ QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(
 		PanelOptions options,
 		bool freshly_created) {
 	QString label = tbt_collection -> title();
-	if (label.isEmpty()) label = tr("Modèles de cartouche");
+	if (label.isEmpty()) label = tr("Title block templates");
 	
 	tbt_collection_qtwi -> setText(0, label);
 	tbt_collection_qtwi -> setToolTip(0,
@@ -635,11 +634,11 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(
 		PanelOptions options,
 		bool freshly_created) {
 	tb_template_qtwi -> setText(0,
-		tr("Modèle \"%1\"",
+		tr("\"%1\" template",
 		   "used to display a title block template").arg(
 					    tb_template.name()));
 	QString tbt_whatsthis = tr(
-		"Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
+		"This is a title block template, which can be applied to a sheet.",
 		"\"What's this\" tip"
 	);
 	tb_template_qtwi -> setWhatsThis(0, tbt_whatsthis);
@@ -941,7 +940,7 @@ void GenericPanel::markItemAsUnused(QTreeWidgetItem *qtwi) {
 	t.setColorAt(1, QColor("#ffffff"));
 	qtwi -> setBackground(0, QBrush(t));
 	qtwi -> setToolTip(0,
-			   QString(tr("%1 [non utilisé dans le projet]")).arg(
+			   QString(tr("%1 [unused in the project]")).arg(
 				   qtwi -> toolTip(0)));
 }
 

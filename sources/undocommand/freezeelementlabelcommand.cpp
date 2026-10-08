@@ -23,8 +23,8 @@ FreezeElementLabelCommand::FreezeElementLabelCommand(Element *element,
 													 bool old_frozen,
 													 bool new_frozen,
 													 QUndoCommand *parent) :
-	QUndoCommand(new_frozen ? QObject::tr("Figer le nom de l'élément")
-							: QObject::tr("Dégeler le nom de l'élément"),
+	QUndoCommand(new_frozen ? QObject::tr("Freeze element name")
+							: QObject::tr("Unfreeze element name"),
 				 parent),
 	m_element(element),
 	m_old_frozen(old_frozen),

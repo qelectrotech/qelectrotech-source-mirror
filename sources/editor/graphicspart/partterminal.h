@@ -107,7 +107,7 @@ class PartTerminal : public CustomElementGraphicPart
 		QString terminalName() const { return d -> m_name; }
 		void setTerminalName(const QString& name);
 
-		QString name() const override { return QObject::tr("Borne");}
+		QString name() const override { return QObject::tr("Terminal");}
 
 		TerminalData::Type terminalType() const {return d->m_type;}
 		void setTerminalType(TerminalData::Type type);

@@ -1,67 +1,67 @@
 <!DOCTYPE QPH>
-<QPH sourcelanguage="fr_FR" language="pt_BR">
+<QPH sourcelanguage="en" language="pt_BR">
 <phrase>
-    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
     <target>Contatos: NA: %1, NF: %2, reversíveis: %3, outros: %4
 </target>
 </phrase>
 <phrase>
-    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
     <target>Contatos: NA: %1/%2, NF: %3/%4, reversíveis: %5/%6, outros: %7/%8
 </target>
 </phrase>
 <phrase>
-    <source>Aperçu</source>
+    <source>Preview</source>
     <target>Pré-visualização</target>
 </phrase>
 <phrase>
-    <source>Arrondir les coins d&apos;%1</source>
+    <source>Round the corners of %1</source>
     <target>Arredondar os cantos de %1</target>
 </phrase>
 <phrase>
-    <source>Borne 1</source>
+    <source>Terminal 1</source>
     <target>Borne 1</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Borne 2</source>
+    <source>Terminal 2</source>
     <target>Borne 2</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Catégorie</source>
+    <source>Category</source>
     <target>Categoria</target>
 </phrase>
 <phrase>
-    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
     <target>Este formato não suporta transparência: a imagem será salva como estava antes da aplicação da cor transparente. Continuar?</target>
 </phrase>
 <phrase>
-    <source>Champ de texte</source>
+    <source>Text field</source>
     <target>Campo de texto</target>
 </phrase>
 <phrase>
-    <source>Composant 1</source>
+    <source>Component 1</source>
     <target>Componente 1</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Composant 2</source>
+    <source>Component 2</source>
     <target>Componente 2</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Convertir %1 en courbe de Bézier</source>
+    <source>Convert %1 to a Bézier curve</source>
     <target>Converter %1 em curva de Bézier</target>
 </phrase>
 <phrase>
-    <source>Convertir en courbe de Bézier</source>
+    <source>Convert to Bézier curve</source>
     <target>Converter em curva de Bézier</target>
 </phrase>
 <phrase>
-    <source>Courant nominal</source>
+    <source>Rated current</source>
     <target>Corrente nominal</target>
 </phrase>
 <phrase>
@@ -73,110 +73,110 @@
     <target>Distância do rótulo - escravo:</target>
 </phrase>
 <phrase>
-    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <source>Save original image as...</source>
     <target>Salvar a imagem original como...</target>
 </phrase>
 <phrase>
-    <source>Enregistrer l&apos;image sous...</source>
+    <source>Save image as...</source>
     <target>Salvar a imagem como...</target>
 </phrase>
 <phrase>
-    <source>Erreur</source>
+    <source>Error</source>
     <target>Erro</target>
 </phrase>
 <phrase>
-    <source>Exclure de la nomenclature</source>
+    <source>Exclude from the bill of materials</source>
     <target>Excluir da lista de materiais</target>
 </phrase>
 <phrase>
-    <source>Faire pivoter %1</source>
+    <source>Rotate %1</source>
     <target>Girar %1</target>
 </phrase>
 <phrase>
-    <source>Faire pivoter une image</source>
+    <source>Rotate an image</source>
     <target>Girar uma imagem</target>
 </phrase>
 <phrase>
-    <source>Fil</source>
+    <source>Wire</source>
     <target>Fio</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Folio</source>
+    <source>Sheet</source>
     <target>Folha</target>
     <definition>column title</definition>
 </phrase>
 <phrase>
-    <source>Hauteur</source>
+    <source>Height</source>
     <target>Altura</target>
 </phrase>
 <phrase>
-    <source>Image BMP (*.bmp)</source>
+    <source>BMP image (*.bmp)</source>
     <target>Imagem BMP (*.bmp)</target>
 </phrase>
 <phrase>
-    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <source>JPEG image (*.jpg *.jpeg)</source>
     <target>Imagem JPEG (*.jpg *.jpeg)</target>
 </phrase>
 <phrase>
-    <source>Image PNG (*.png)</source>
+    <source>PNG image (*.png)</source>
     <target>Imagem PNG (*.png)</target>
 </phrase>
 <phrase>
-    <source>Image SVG (*.svg)</source>
+    <source>SVG image (*.svg)</source>
     <target>Imagem SVG (*.svg)</target>
 </phrase>
 <phrase>
-    <source>Images non incluses dans l&apos;export DXF</source>
+    <source>Images not included in the DXF export</source>
     <target>Imagens não incluídas na exportação DXF</target>
     <definition>message box title</definition>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <source>Unable to save the image to this location.</source>
     <target>Não foi possível salvar a imagem neste local.</target>
 </phrase>
 <phrase>
-    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+    <source>Unable to save the parts list to %1.
 %2</source>
     <target>Não foi possível salvar a lista de materiais em %1.
 %2</target>
 </phrase>
 <phrase>
-    <source>Impossible de charger l&apos;image.</source>
+    <source>Unable to load the image.</source>
     <target>Não foi possível carregar a imagem.</target>
 </phrase>
 <phrase>
-    <source>Incliner %1</source>
+    <source>Skew %1</source>
     <target>Inclinar %1</target>
 </phrase>
 <phrase>
-    <source>Incliner une image</source>
+    <source>Skew an image</source>
     <target>Inclinar uma imagem</target>
 </phrase>
 <phrase>
-    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+    <source>The limit set for this master element has been reached (Limit: %1).
 
-Voulez-vous tout de même lier ce contact esclave ?</source>
+Do you still want to link this slave contact?</source>
     <target>O limite definido para este elemento mestre foi atingido (Limite: %1).
 
 Deseja vincular este contato escravo mesmo assim?</target>
 </phrase>
 <phrase>
-    <source>Largeur</source>
+    <source>Width</source>
     <target>Largura</target>
 </phrase>
 <phrase>
-    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
     <target>O formato DXF usado aqui (AC1006) não permite incluir imagens. As imagens serão representadas apenas por um retângulo de contorno (posição, tamanho, rotação e inclinação preservados), sem o conteúdo da imagem.</target>
     <definition>message box content</definition>
 </phrase>
 <phrase>
-    <source>Liste de câblage</source>
+    <source>Wiring list</source>
     <target>Lista de cabeamento</target>
     <definition>window title</definition>
 </phrase>
 <phrase>
-    <source>Liste de câblage (base de données)</source>
+    <source>Wiring list (database)</source>
     <target>Lista de cabeamento (banco de dados)</target>
 </phrase>
 <phrase>
@@ -184,23 +184,23 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <target>margin: 5px; font-weight: bold;</target>
 </phrase>
 <phrase>
-    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <source>Change the angle of an arc</source>
     <target>Modificar o ângulo de um arco</target>
 </phrase>
 <phrase>
-    <source>Modifier la courbure d&apos;%1</source>
+    <source>Change the curvature of %1</source>
     <target>Modificar a curvatura de %1</target>
 </phrase>
 <phrase>
-    <source>Modifier la forme d&apos;%1</source>
+    <source>Change the shape of %1</source>
     <target>Modificar a forma de %1</target>
 </phrase>
 <phrase>
-    <source>Modèle</source>
+    <source>Model</source>
     <target>Modelo</target>
 </phrase>
 <phrase>
-    <source>Nombre maximum de contacts esclaves définis : non défini
+    <source>Maximum number of slave contacts defined:  not defined
 </source>
     <target>Número máximo de contatos escravos definidos: não definido
 </target>
@@ -210,75 +210,75 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <target>Observações</target>
 </phrase>
 <phrase>
-    <source>Redimensionner %1</source>
+    <source>Resize %1</source>
     <target>Redimensionar %1</target>
 </phrase>
 <phrase>
-    <source>Redimensionner une image</source>
+    <source>Resize an image</source>
     <target>Redimensionar uma imagem</target>
 </phrase>
 <phrase>
-    <source>Réinitialiser</source>
+    <source>Reset</source>
     <target>Redefinir</target>
 </phrase>
 <phrase>
-    <source>Selectionner une image...</source>
+    <source>Select an image ...</source>
     <target>Selecionar uma imagem...</target>
 </phrase>
 <phrase>
-    <source>Séparation de potentiel</source>
+    <source>Potential separation</source>
     <target>Separação de potencial</target>
 </phrase>
 <phrase>
-    <source>Taille</source>
+    <source>Size</source>
     <target>Tamanho</target>
 </phrase>
 <phrase>
-    <source>Tension nominale</source>
+    <source>Rated voltage</source>
     <target>Tensão nominal</target>
 </phrase>
 <phrase>
-    <source>Tous les fichiers (*)</source>
+    <source>All files (*)</source>
     <target>Todos os arquivos (*)</target>
 </phrase>
 <phrase>
-    <source>Transparence non conservée</source>
+    <source>Transparency not preserved</source>
     <target>Transparência não preservada</target>
 </phrase>
 <phrase>
-    <source>une image</source>
+    <source>image</source>
     <target>uma imagem</target>
     <definition>part of a sentence listing the content of a diagram</definition>
 </phrase>
 <phrase>
-    <source>Verrouiller la numérotation automatique</source>
+    <source>Lock automatic numbering</source>
     <target>Bloquear a numeração automática</target>
 </phrase>
 <phrase>
-    <source>Verrouiller la position</source>
+    <source>Lock Position</source>
     <target>Bloquear a posição</target>
 </phrase>
 <phrase>
-    <source>Échec de l&apos;enregistrement</source>
+    <source>Saving failed</source>
     <target>Falha ao salvar</target>
 </phrase>
 <phrase>
-    <source>armoire</source>
+    <source>cabinet</source>
     <target>armário</target>
     <definition>cabinet / enclosure</definition>
 </phrase>
 <phrase>
-    <source>bobine</source>
+    <source>coil</source>
     <target>bobina</target>
     <definition>coil</definition>
 </phrase>
 <phrase>
-    <source>borne</source>
+    <source>terminal</source>
     <target>borne</target>
     <definition>terminal - a connection point on a symbol</definition>
 </phrase>
 <phrase>
-    <source>bornier</source>
+    <source>terminal strip</source>
     <target>borneira</target>
     <definition>terminal strip</definition>
 </phrase>
@@ -288,12 +288,12 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <definition>cable</definition>
 </phrase>
 <phrase>
-    <source>calibre</source>
+    <source>rating</source>
     <target>calibre</target>
     <definition>rating - the current rating of a device</definition>
 </phrase>
 <phrase>
-    <source>cartouche</source>
+    <source>title block</source>
     <target>bloco de título</target>
     <definition>title block - the framed information panel</definition>
 </phrase>
@@ -303,7 +303,7 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <definition>collection - the symbol library</definition>
 </phrase>
 <phrase>
-    <source>conducteur</source>
+    <source>conductor</source>
     <target>condutor</target>
     <definition>conductor - the drawn wire between terminals</definition>
 </phrase>
@@ -313,22 +313,22 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <definition>contact</definition>
 </phrase>
 <phrase>
-    <source>contacteur</source>
+    <source>contactor</source>
     <target>contator</target>
     <definition>contactor</definition>
 </phrase>
 <phrase>
-    <source>courant</source>
+    <source>current</source>
     <target>corrente</target>
     <definition>current</definition>
 </phrase>
 <phrase>
-    <source>disjoncteur</source>
+    <source>circuit breaker</source>
     <target>disjuntor</target>
     <definition>circuit breaker</definition>
 </phrase>
 <phrase>
-    <source>dossier</source>
+    <source>folder</source>
     <target>pasta</target>
     <definition>folder</definition>
 </phrase>
@@ -338,52 +338,52 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <definition>element - a symbol placed on a sheet</definition>
 </phrase>
 <phrase>
-    <source>esclave</source>
+    <source>slave</source>
     <target>escravo</target>
     <definition>slave - the contact block belonging to a master</definition>
 </phrase>
 <phrase>
-    <source>fusible</source>
+    <source>fuse</source>
     <target>fusível</target>
     <definition>fuse</definition>
 </phrase>
 <phrase>
-    <source>grille</source>
+    <source>grid</source>
     <target>grade</target>
     <definition>grid</definition>
 </phrase>
 <phrase>
-    <source>interrupteur</source>
+    <source>switch</source>
     <target>interruptor</target>
     <definition>switch</definition>
 </phrase>
 <phrase>
-    <source>maitre</source>
+    <source>master</source>
     <target>mestre</target>
     <definition>master - the element a cross-reference points from</definition>
 </phrase>
 <phrase>
-    <source>modele</source>
+    <source>template</source>
     <target>modelo</target>
     <definition>template</definition>
 </phrase>
 <phrase>
-    <source>moteur</source>
+    <source>motor</source>
     <target>motor</target>
     <definition>motor</definition>
 </phrase>
 <phrase>
-    <source>neutre</source>
+    <source>neutral</source>
     <target>neutro</target>
     <definition>neutral</definition>
 </phrase>
 <phrase>
-    <source>nomenclature</source>
+    <source>parts list</source>
     <target>lista de materiais</target>
     <definition>parts list / bill of materials</definition>
 </phrase>
 <phrase>
-    <source>numerotation</source>
+    <source>numbering</source>
     <target>numeração</target>
     <definition>numbering - automatic wire and part numbering</definition>
 </phrase>
@@ -393,72 +393,72 @@ Deseja vincular este contato escravo mesmo assim?</target>
     <definition>phase</definition>
 </phrase>
 <phrase>
-    <source>potentiel</source>
+    <source>potential</source>
     <target>potencial</target>
     <definition>potential - conductors electrically joined as one node</definition>
 </phrase>
 <phrase>
-    <source>projet</source>
+    <source>project</source>
     <target>projeto</target>
     <definition>project - the .qet file holding the sheets</definition>
 </phrase>
 <phrase>
-    <source>puissance</source>
+    <source>power</source>
     <target>potência</target>
     <definition>power</definition>
 </phrase>
 <phrase>
-    <source>relais</source>
+    <source>relay</source>
     <target>relé</target>
     <definition>relay</definition>
 </phrase>
 <phrase>
-    <source>renvoi de folio</source>
+    <source>sheet cross-reference</source>
     <target>referência de folha</target>
     <definition>sheet cross-reference</definition>
 </phrase>
 <phrase>
-    <source>repere</source>
+    <source>designation</source>
     <target>designação</target>
     <definition>designation - the identifying mark on a part</definition>
 </phrase>
 <phrase>
-    <source>report de folio</source>
+    <source>sheet cross-reference</source>
     <target>remissão de folha</target>
     <definition>sheet cross-reference (the arrow symbol)</definition>
 </phrase>
 <phrase>
-    <source>schema</source>
+    <source>diagram</source>
     <target>diagrama</target>
     <definition>diagram</definition>
 </phrase>
 <phrase>
-    <source>section</source>
+    <source>cross-section</source>
     <target>seção</target>
     <definition>cross-section - conductor size in mm2</definition>
 </phrase>
 <phrase>
-    <source>sommaire</source>
+    <source>summary</source>
     <target>sumário</target>
     <definition>summary / table of contents</definition>
 </phrase>
 <phrase>
-    <source>tension</source>
+    <source>voltage</source>
     <target>tensão</target>
     <definition>voltage</definition>
 </phrase>
 <phrase>
-    <source>terre</source>
+    <source>ground</source>
     <target>terra</target>
     <definition>earth / ground</definition>
 </phrase>
 <phrase>
-    <source>texte</source>
+    <source>text</source>
     <target>texto</target>
     <definition>text</definition>
 </phrase>
 <phrase>
-    <source>transformateur</source>
+    <source>transformer</source>
     <target>transformador</target>
     <definition>transformer</definition>
 </phrase>

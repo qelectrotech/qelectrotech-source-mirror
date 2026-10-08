@@ -19,7 +19,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	QET::trackDialogGeometry(this);
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
-	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
+	ui->m_plain_text_edit->setPlaceholderText(tr("Enter your composite text here, using the available variables"));
 	bool report = false;
 	if ((m_text) &&(m_text->parentElement()->linkType()) & (Element::AllReport))
 	{
@@ -36,7 +36,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, bool report, QWid
 	QET::trackDialogGeometry(this);
 	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
-	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
+	ui->m_plain_text_edit->setPlaceholderText(tr("Enter your composite text here, using the available variables"));
 	setUpComboBox(report);
 }
 

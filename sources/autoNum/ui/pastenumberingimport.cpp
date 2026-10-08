@@ -62,10 +62,11 @@ void PasteNumberingImport::push(QWidget *parent,
 	}
 	const auto answer = QET::QetMessageBox::question(
 				parent,
-				tr("Numérotation absente de ce projet"),
-				tr("Les éléments collés suivent %n numérotation(s) qui n'existe(nt) pas dans ce projet : %1.\n\n"
-				   "Les importer ? Les éléments recevront alors les prochains numéros, à partir de 1. "
-				   "Sinon ils seront collés sans numérotation.", "", static_cast<int>(missing.size()))
+				tr("Numbering missing from this project"),
+				tr("The pasted elements follow %n numberings that do not exist in this project: %1.\n"
+				   "\n"
+				   "Import them? The elements will then receive the next numbers, starting from 1. Otherwise "
+				   "they will be pasted without numbering.", "", static_cast<int>(missing.size()))
 				.arg(names.join(QStringLiteral(", "))),
 				QMessageBox::Yes | QMessageBox::No,
 				QMessageBox::Yes);

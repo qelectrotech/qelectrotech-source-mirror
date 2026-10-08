@@ -129,38 +129,38 @@ void AutoNumberingManagementW::on_m_renumber_elements_pb_clicked()
 	QVector<Element *> frozen;
 	auto *cmd = ElementAutoNumSchemeCommand::renumber(
 				project_, title, &frozen,
-				title.isEmpty() ? tr("Renuméroter les éléments")
-								: tr("Renuméroter les éléments (%1)").arg(title));
+				title.isEmpty() ? tr("Renumber elements")
+								: tr("Renumber elements (%1)").arg(title));
 	if (!cmd)
 	{
 		QMessageBox::information(
-					this, tr("Renuméroter les éléments"),
+					this, tr("Renumber elements"),
 					frozen.isEmpty()
-					? tr("Aucun élément ne suit cette numérotation.")
-					: tr("Les %n élément(s) qui suivent cette numérotation ont un nom "
-						 "figé : rien n'est renuméroté.", "", frozen.size()));
+					? tr("No element follows this numbering.")
+					: tr("The %n elements following this numbering have a frozen name: "
+						 "nothing is renumbered.", "", frozen.size()));
 		return;
 	}
 
 	const int renumbered = static_cast<int>(cmd->changes().size());
 	const int changed = RenumberPreviewDialog::changedLabelCount(cmd->changes());
 	if (!RenumberPreviewDialog::confirm(
-				this, tr("Renuméroter les éléments"),
-				tr("%n élément(s) vont être renumérotés, à partir du premier numéro, "
-				   "dans l'ordre des folios et des positions.", "", renumbered),
+				this, tr("Renumber elements"),
+				tr("%n elements will be renumbered, starting from the first number, "
+				   "in sheet and position order.", "", renumbered),
 				cmd->changes(), frozen)) {
 		delete cmd;
 		return;
 	}
 	project_->undoStack()->push(cmd);
 
-	QString summary = tr("%n élément(s) renumérotés, dont %1 avec un nouveau nom.", "", renumbered)
+	QString summary = tr("%n elements renumbered, %1 of them with a new name.", "", renumbered)
 			.arg(changed);
 	if (!frozen.isEmpty()) {
-		summary += QLatin1Char('\n') + tr("%n élément(s) au nom figé n'ont pas été touchés, "
-										 "et leur numéro n'a pas été redonné.", "", frozen.size());
+		summary += QLatin1Char('\n') + tr("%n elements with a frozen name were not touched, "
+										 "and their numbers were not given out again.", "", frozen.size());
 	}
-	QMessageBox::information(this, tr("Renuméroter les éléments"), summary);
+	QMessageBox::information(this, tr("Renumber elements"), summary);
 }
 
 /**
@@ -271,14 +271,14 @@ void AutoNumberingManagementW::on_buttonBox_clicked(QAbstractButton *button)
 			QMessageBox::information(
 						this,
 						tr("Auto Numbering Management", "title window"),
-						tr("In this Menu you can set whether you want the Auto Numberings to be updated or not."
-						   " For Element Auto Numbering you have 4 options of Update Policy:\n"
-						   "-Both: both New and Existent Element labels will be updated. This is the default option.\n"
-						   "-Update Only New: only new created Elements will be updated. Existent Element labels will be frozen.\n"
-						   "-Update Only Existent: only existent Elements will be updated. New Elements will be assigned "
-						   "their formula but will not update once created.\n"
-						   "-Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.\n"
-						   "Note: These options DO NOT allow or block Auto Numberings, only their Update Policy."
+						tr("In this menu you can set whether you want the auto numberings to be updated or not. For element auto "
+						   "numbering you have 4 options of update policy:\n"
+						   "-Both: both new and existent element labels will be updated. This is the default option.\n"
+						   "-Update only new: only new created elements will be updated. Existent element labels will be frozen.\n"
+						   "-Update only existent: only existent elements will be updated. New elements will be assigned their formula "
+						   "but will not update once created.\n"
+						   "-Disable: both new and existent element labels will not be updated. This is valid for new sheets as well.\n"
+						   "Note: these options DO NOT allow or block auto numberings, only their update policy."
 						   ));
 			break;
 	}

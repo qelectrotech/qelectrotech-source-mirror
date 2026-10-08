@@ -86,7 +86,7 @@ void XmlProjectElementCollectionItem::updateProjectName()
 	else if (!m_project->filePath().isEmpty())
 		setText(QFileInfo(m_project->filePath()).completeBaseName());
 	else
-		setText(QObject::tr("Projet sans titre"));
+		setText(QObject::tr("Untitled project"));
 }
 
 /**

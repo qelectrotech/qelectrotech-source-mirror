@@ -114,21 +114,21 @@ QString TitleBlockCell::attributeName(const QString &attribute) {
 	if (attribute == "type") {
 		return(QObject::tr("type", "title block cell property human name"));
 	} else if (attribute == "name") {
-		return(QObject::tr("nom", "title block cell property human name"));
+		return(QObject::tr("name", "title block cell property human name"));
 	} else if (attribute == "logo") {
 		return(QObject::tr("logo", "title block cell property human name"));
 	} else if (attribute == "label") {
 		return(QObject::tr("label", "title block cell property human name"));
 	} else if (attribute == "displaylabel") {
-		return(QObject::tr("affichage du label", "title block cell property human name"));
+		return(QObject::tr("label display", "title block cell property human name"));
 	} else if (attribute == "value") {
-		return(QObject::tr("valeur affichée", "title block cell property human name"));
+		return(QObject::tr("displayed value", "title block cell property human name"));
 	} else if (attribute == "alignment") {
-		return(QObject::tr("alignement du texte", "title block cell property human name"));
+		return(QObject::tr("text alignment", "title block cell property human name"));
 	} else if (attribute == "fontsize") {
-		return(QObject::tr("taille du texte", "title block cell property human name"));
+		return(QObject::tr("font size", "title block cell property human name"));
 	} else if (attribute == "horizontal_adjust") {
-		return(QObject::tr("ajustement horizontal", "title block cell property human name"));
+		return(QObject::tr("horizontal adjustment", "title block cell property human name"));
 	}
 	return(QString());
 }

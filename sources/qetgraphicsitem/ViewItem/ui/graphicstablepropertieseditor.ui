@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Table properties</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="m_display_tab">
       <attribute name="title">
-       <string>Affichage</string>
+       <string>Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
@@ -30,20 +30,20 @@
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Nom du tableau</string>
+          <string>Table name</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Géometrie et lignes</string>
+          <string>Geometry and lines</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0,0,0,0,0,0">
           <item row="1" column="4">
            <widget class="QSpinBox" name="m_display_n_row_sb">
             <property name="specialValueText">
-             <string>Toutes</string>
+             <string>All</string>
             </property>
             <property name="maximum">
              <number>999</number>
@@ -56,7 +56,7 @@
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>Tableau suivant</string>
+             <string>Next table</string>
             </property>
             <property name="text">
              <string/>
@@ -76,7 +76,7 @@
             </property>
             <item>
              <property name="text">
-              <string>Aucun</string>
+              <string>None</string>
              </property>
             </item>
            </widget>
@@ -97,7 +97,7 @@
           <item row="1" column="5">
            <widget class="QPushButton" name="m_auto_geometry_pb">
             <property name="toolTip">
-             <string>Ajuster le tableau au folio</string>
+             <string>Fit table to sheet</string>
             </property>
             <property name="text">
              <string/>
@@ -171,7 +171,7 @@
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>Tableau précédent</string>
+             <string>Previous table</string>
             </property>
             <property name="text">
              <string/>
@@ -194,7 +194,7 @@
           <item row="1" column="6">
            <widget class="QPushButton" name="m_apply_geometry_to_linked_table_pb">
             <property name="toolTip">
-             <string>Appliquer la géometrie à tous les tableaux liée à celui-ci</string>
+             <string>Apply geometry to all tables linked to this one</string>
             </property>
             <property name="text">
              <string/>
@@ -207,7 +207,7 @@
           <item row="2" column="3">
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Tableau précédent :</string>
+             <string>Previous table :</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -217,7 +217,7 @@
           <item row="1" column="3">
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Lignes à afficher :</string>
+             <string>Lines to display :</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -243,7 +243,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>En tête</string>
+          <string>Header</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -267,7 +267,7 @@
             <item row="2" column="2">
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>Marge</string>
+               <string>Margin</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -336,28 +336,28 @@
              <item>
               <widget class="QLabel" name="label_5">
                <property name="text">
-                <string>Aligement :</string>
+                <string>Alignment :</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_header_align_left_rb">
                <property name="text">
-                <string>Gauche</string>
+                <string>Left</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_header_align_center_rb">
                <property name="text">
-                <string>Centré</string>
+                <string>Center</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_header_align_right_rb">
                <property name="text">
-                <string>Droite</string>
+                <string>Right</string>
                </property>
               </widget>
              </item>
@@ -380,7 +380,7 @@
           <item>
            <widget class="QPushButton" name="m_header_font_pb">
             <property name="text">
-             <string>Police</string>
+             <string>Font</string>
             </property>
             <property name="flat">
              <bool>false</bool>
@@ -393,7 +393,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
-          <string>Tableau</string>
+          <string>Table</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
@@ -426,7 +426,7 @@
             <item row="1" column="2">
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Marge</string>
+               <string>Margin</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -479,28 +479,28 @@
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Alignement :</string>
+                <string>Alignment:</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_table_align_left_rb">
                <property name="text">
-                <string>Gauche</string>
+                <string>Left</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_table_align_center_rb">
                <property name="text">
-                <string>Centré</string>
+                <string>Center</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="m_table_align_right_rb">
                <property name="text">
-                <string>Droite</string>
+                <string>Right</string>
                </property>
               </widget>
              </item>
@@ -523,7 +523,7 @@
           <item>
            <widget class="QPushButton" name="m_table_font_pb">
             <property name="text">
-             <string>Police</string>
+             <string>Font</string>
             </property>
             <property name="flat">
              <bool>false</bool>
@@ -550,7 +550,7 @@
      </widget>
      <widget class="QWidget" name="m_content_tab">
       <attribute name="title">
-       <string>Contenu</string>
+       <string>Content</string>
       </attribute>
       <layout class="QVBoxLayout" name="m_content_layout">
        <item>

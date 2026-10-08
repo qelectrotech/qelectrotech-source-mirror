@@ -518,20 +518,20 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
 	m_bold_action = createCheckableAction(
 				QIcon::fromTheme("format-text-bold"),
-				tr("Texte en gras"), editor, &RichTextEditor::setFontBold, this);
-	ShortcutManager::instance().registerAction(m_bold_action, "richtext.bold", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_B);
+				tr("Bold"), editor, &RichTextEditor::setFontBold, this);
+	ShortcutManager::instance().registerAction(m_bold_action, "richtext.bold", tr("Text editor"), Qt::CTRL | Qt::Key_B);
 	addAction(m_bold_action);
 
 	m_italic_action = createCheckableAction(
 				QIcon::fromTheme("format-text-italic"),
-				tr("Texte en italique"), editor, &RichTextEditor::setFontItalic, this);
-	ShortcutManager::instance().registerAction(m_italic_action, "richtext.italic", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_I);
+				tr("Italic"), editor, &RichTextEditor::setFontItalic, this);
+	ShortcutManager::instance().registerAction(m_italic_action, "richtext.italic", tr("Text editor"), Qt::CTRL | Qt::Key_I);
 	addAction(m_italic_action);
 
 	m_underline_action = createCheckableAction(
 				QIcon::fromTheme("format-text-underline"),
-				tr("Texte souligé"), editor, &RichTextEditor::setFontUnderline, this);
-	ShortcutManager::instance().registerAction(m_underline_action, "richtext.underline", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_U);
+				tr("Underline"), editor, &RichTextEditor::setFontUnderline, this);
+	ShortcutManager::instance().registerAction(m_underline_action, "richtext.underline", tr("Text editor"), Qt::CTRL | Qt::Key_U);
 	addAction(m_underline_action);
 
 
@@ -586,7 +586,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
 	// Insert hyperlink and image buttons
 
-	m_link_action->setText(tr("Insérer un lien"));
+	m_link_action->setText(tr("Insert link"));
 	connect(m_link_action, &QAction::triggered, this, &RichTextEditorToolBar::insertLink);
 	addAction(m_link_action);
 

@@ -38,7 +38,7 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(
 	QUndoCommand (parent)
 {
 	m_map.insert(QPointer<Element>(elmt), qMakePair(old_info, new_info));
-	setText(QObject::tr("Modifier les informations de l'élément : %1")
+	setText(QObject::tr("Edit information of the element : %1")
 			.arg(elmt -> name()));
 }
 
@@ -47,7 +47,7 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(QMap<QPointer<E
 	QUndoCommand(parent),
 	m_map(map)
 {
-	setText(QObject::tr("Modifier les informations de plusieurs éléments"));
+	setText(QObject::tr("Edit information for multiple items"));
 }
 
 bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)

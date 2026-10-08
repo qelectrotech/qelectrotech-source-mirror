@@ -91,7 +91,7 @@ void MachineInfo::send_info_to_debug()
 		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	}
 	qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
-	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
+	qInfo()<< QObject::tr("Compilation: ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
 		  + " - " + pc.built.arch
 		  + " - Date : " + pc.built.date

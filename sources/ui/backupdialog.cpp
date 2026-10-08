@@ -30,13 +30,13 @@
 BackupDialog::BackupDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Créer une copie de sauvegarde ?", "window title"));
+	setWindowTitle(tr("Create a backup copy?", "window title"));
 	setFixedSize(450, 100);
 
 	auto main_layout = new QVBoxLayout(this);
 
 	auto label = new QLabel(
-		tr("Souhaitez-vous créer une copie de sauvegarde ?",
+		tr("Would you like to create a backup copy?",
 		   "dialog message"));
 	label->setWordWrap(true);
 	main_layout->addWidget(label);
@@ -46,8 +46,8 @@ BackupDialog::BackupDialog(QWidget *parent) :
 	auto button_layout = new QHBoxLayout();
 	button_layout->addStretch();
 
-	auto yes_button = new QPushButton(tr("Oui", "yes button"));
-	auto no_button = new QPushButton(tr("Non", "no button"));
+	auto yes_button = new QPushButton(tr("Yes", "yes button"));
+	auto no_button = new QPushButton(tr("No", "no button"));
 
 	button_layout->addWidget(yes_button);
 	button_layout->addWidget(no_button);

@@ -49,7 +49,7 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	if (!setUpPropertieToUse()) {
 		return;
 	}
-	d->undoStack().beginMacro(QObject::tr("Création de conducteurs"));
+	d->undoStack().beginMacro(QObject::tr("Creation of conductors"));
 	
 	const bool chain = d->project()
 			&& WiringRules::chainsWires(d->project()->wiringRules(), WiringRules::masterEnabled());

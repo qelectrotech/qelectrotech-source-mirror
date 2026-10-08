@@ -254,15 +254,15 @@ void CropAreaWidget::paintEvent(QPaintEvent *)
 ImageCropDialog::ImageCropDialog(const QPixmap &pixmap, const QRect &existingCropRect, QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Rogner l'image"));
+	setWindowTitle(tr("Crop the image"));
 
 	m_cropArea = new CropAreaWidget(pixmap.toImage(), existingCropRect, this);
 
-	auto *hint = new QLabel(tr("Faites glisser les poignées, ou l'intérieur du cadre, pour ajuster la zone à conserver."), this);
+	auto *hint = new QLabel(tr("Drag the handles, or the inside of the frame, to adjust the area to keep."), this);
 	hint->setWordWrap(true);
 
-	auto *resetButton = new QPushButton(tr("Réinitialiser"), this);
-	resetButton->setToolTip(tr("Revenir à l'image complète, sans rognage"));
+	auto *resetButton = new QPushButton(tr("Reset"), this);
+	resetButton->setToolTip(tr("Return to the full image, without cropping"));
 	connect(resetButton, &QPushButton::clicked, m_cropArea, &CropAreaWidget::resetToFullImage);
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);

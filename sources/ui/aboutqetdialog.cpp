@@ -60,9 +60,9 @@ AboutQETDialog::~AboutQETDialog()
 void AboutQETDialog::setAbout()
 {
 
-	QString str  = tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
+	QString str  = tr("QElectroTech, an application to design electric diagrams.", "about tab, description line") +
 			"<br><br>© 2006-"+QDate::currentDate().toString("yyyy")+
-			tr(" Les développeurs de QElectroTech", "about tab, developers line") +
+			tr(" The developers of QElectroTech", "about tab, developers line") +
 			"<br><br>"
 			"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
 			"<br><br>" +
@@ -85,17 +85,17 @@ void AboutQETDialog::setAbout()
 */
 void AboutQETDialog::setAuthors()
 {
-	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",         tr("Idée originale"));
-	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",        tr("Développement"));
-	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",         tr("Développement"));
-	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",               tr("Développement"));
-	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",               tr("Convertisseur DXF"));
-	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",             tr("Plugin Bornier"));
-	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",       tr("Développement"));
-	addAuthor(ui->m_author_label, "Simon De Backer",    "debacker@qelectrotech.org",       tr("Développement"));
-	addAuthor(ui->m_author_label, "David Varley",       "David.Varley@cborn.com",          tr("Développement"));
-	addAuthor(ui->m_author_label, "Damian Caceres",     "damiancaceresmoreno@yahoo.es",    tr("Développement"));
-	addAuthor(ui->m_author_label, "Martin Marmsoler",   "martin.marmsoler@gmail.com",      tr("Développement"));
+	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",         tr("Original concept"));
+	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",        tr("Development"));
+	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",         tr("Development"));
+	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",               tr("Development"));
+	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",               tr("DXF converter"));
+	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",             tr("Terminal Block plugin"));
+	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",       tr("Development"));
+	addAuthor(ui->m_author_label, "Simon De Backer",    "debacker@qelectrotech.org",       tr("Development"));
+	addAuthor(ui->m_author_label, "David Varley",       "David.Varley@cborn.com",          tr("Development"));
+	addAuthor(ui->m_author_label, "Damian Caceres",     "damiancaceresmoreno@yahoo.es",    tr("Development"));
+	addAuthor(ui->m_author_label, "Martin Marmsoler",   "martin.marmsoler@gmail.com",      tr("Development"));
 	addAuthor(ui->m_author_label, "Sébastien Deffaux",  "s.deffaux@live.fr",               tr("Collection"));
 }
 
@@ -104,37 +104,37 @@ void AboutQETDialog::setAuthors()
 */
 void AboutQETDialog::setTranslators()
 {
-	addAuthor(ui->m_translators_label, "Alfredo Carreto",                           "electronicos_mx@yahoo.com.mx",   tr("Traduction en espagnol"));
-	addAuthor(ui->m_translators_label, "Edgar Robles Najar",                        "tgo.edrobles@gmail.com",         tr("Traduction en espagnol"));
-	addAuthor(ui->m_translators_label, "Yuriy Litkevich",                           "yuriy@qelectrotech.org",         tr("Traduction en russe"));
-	addAuthor(ui->m_translators_label, "Evgeny Kozlov",                             "Evgeny.Kozlov.mailbox@gmail.com",tr("Traduction en russe"));
-	addAuthor(ui->m_translators_label, "José Carlos Martins",                       "jose@qelectrotech.org",          tr("Traduction en portugais"));
-	addAuthor(ui->m_translators_label, "Pavel Fric",                                "pavelfric@seznam.cz",            tr("Traduction en tchèque"));
-	addAuthor(ui->m_translators_label, "Pawe&#x0142; &#x015A;miech",                "pawel32640@gmail.com",           tr("Traduction en polonais"));
-	addAuthor(ui->m_translators_label, "Markus Budde & Jonas Stein & Noah Braden",  "news@jonasstein.de",             tr("Traduction en allemand"));
-	addAuthor(ui->m_translators_label, "Nuri",                                      "nuri@qelectrotech.org",          tr("Traduction en allemand"));
-	addAuthor(ui->m_translators_label, "Gabi Mandoc",                               "gabriel.mandoc@gic.ro",          tr("Traduction en roumain"));
-	addAuthor(ui->m_translators_label, "Alessandro Conti & Silvio",                 "silvio@qelectrotech.org",        tr("Traduction en italien"));
-	addAuthor(ui->m_translators_label, "Mohamed Souabni",                           "souabnimohamed@yahoo.fr",        tr("Traduction en arabe"));
-	addAuthor(ui->m_translators_label, "Antun Marakovi&#x0107;",                    "antun.marakovic@lolaribar.hr",   tr("Traduction en croate"));
-	addAuthor(ui->m_translators_label, "Eduard Amorós",                             "amoros@marmenuda.com",           tr("Traduction en catalan"));
-	addAuthor(ui->m_translators_label, "Nikos Papadopoylos",                        "231036448@freemail.gr",          tr("Traduction en grec"));
-	addAuthor(ui->m_translators_label, "Yannis Gyftomitros",                        "yang@hellug.gr",                 tr("Traduction en grec"));
-	addAuthor(ui->m_translators_label, "Paul Van Deelen",                           "shooter@home.nl",                tr("Traduction en néerlandais"));
-	addAuthor(ui->m_translators_label, "Dik Leenheer",                              "dleenheer@suzerein.nl",          tr("Traduction en néerlandais"));
-	addAuthor(ui->m_translators_label, "Ronny Desmedt",                             "r.desmedt@live.be",              tr("Traduction en flamand"));
-	addAuthor(ui->m_translators_label, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
-	addAuthor(ui->m_translators_label, "Hilario Silveira & Gleisson J.J.Cardoso",   "hilario@soliton.com.br",         tr("Traduction en brézilien"));
-	addAuthor(ui->m_translators_label, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
-	addAuthor(ui->m_translators_label, "Emir Izmiroglu",                            "emirizmiroglu@gmail.com",        tr("Traduction en Turc"));
-	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
-	addAuthor(ui->m_translators_label, "",                                          "",                               tr("Traduction en serbe"));
-	addAuthor(ui->m_translators_label, "Yaroslav",                                  "",                               tr("Traduction en ukrainien"));
-	addAuthor(ui->m_translators_label, "JoelAs",                                    "",                               tr("Traduction en norvégien"));
-	addAuthor(ui->m_translators_label, "Yuki",                                      "yuki.atoh@gmail.com",            tr("Traduction en japonais"));
-	addAuthor(ui->m_translators_label, "Jung Kwang-Ho",                             "jkh2rokmc@daum.net",             tr("Traduction en coréen"));
-	addAuthor(ui->m_translators_label, "Nathalie",                                  "nathalie.roussier@giz.de",       tr("Traduction en mongol"));
-	addAuthor(ui->m_translators_label, "Uroš Platiše",                              "uros.platise@energycon.eu",      tr("Traduction en slovène"));
+	addAuthor(ui->m_translators_label, "Alfredo Carreto",                           "electronicos_mx@yahoo.com.mx",   tr("Spanish translation"));
+	addAuthor(ui->m_translators_label, "Edgar Robles Najar",                        "tgo.edrobles@gmail.com",         tr("Spanish translation"));
+	addAuthor(ui->m_translators_label, "Yuriy Litkevich",                           "yuriy@qelectrotech.org",         tr("Russian translation"));
+	addAuthor(ui->m_translators_label, "Evgeny Kozlov",                             "Evgeny.Kozlov.mailbox@gmail.com",tr("Russian translation"));
+	addAuthor(ui->m_translators_label, "José Carlos Martins",                       "jose@qelectrotech.org",          tr("Portuguese translation"));
+	addAuthor(ui->m_translators_label, "Pavel Fric",                                "pavelfric@seznam.cz",            tr("Czech translation"));
+	addAuthor(ui->m_translators_label, "Pawe&#x0142; &#x015A;miech",                "pawel32640@gmail.com",           tr("Polish translation"));
+	addAuthor(ui->m_translators_label, "Markus Budde & Jonas Stein & Noah Braden",  "news@jonasstein.de",             tr("German translation"));
+	addAuthor(ui->m_translators_label, "Nuri",                                      "nuri@qelectrotech.org",          tr("German translation"));
+	addAuthor(ui->m_translators_label, "Gabi Mandoc",                               "gabriel.mandoc@gic.ro",          tr("Romanian translation"));
+	addAuthor(ui->m_translators_label, "Alessandro Conti & Silvio",                 "silvio@qelectrotech.org",        tr("Italian translation"));
+	addAuthor(ui->m_translators_label, "Mohamed Souabni",                           "souabnimohamed@yahoo.fr",        tr("Arabic translation"));
+	addAuthor(ui->m_translators_label, "Antun Marakovi&#x0107;",                    "antun.marakovic@lolaribar.hr",   tr("Croatian translation"));
+	addAuthor(ui->m_translators_label, "Eduard Amorós",                             "amoros@marmenuda.com",           tr("Catalan translation"));
+	addAuthor(ui->m_translators_label, "Nikos Papadopoylos",                        "231036448@freemail.gr",          tr("Greek translation"));
+	addAuthor(ui->m_translators_label, "Yannis Gyftomitros",                        "yang@hellug.gr",                 tr("Greek translation"));
+	addAuthor(ui->m_translators_label, "Paul Van Deelen",                           "shooter@home.nl",                tr("Dutch translation"));
+	addAuthor(ui->m_translators_label, "Dik Leenheer",                              "dleenheer@suzerein.nl",          tr("Dutch translation"));
+	addAuthor(ui->m_translators_label, "Ronny Desmedt",                             "r.desmedt@live.be",              tr("Flemish translation"));
+	addAuthor(ui->m_translators_label, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Danish translation"));
+	addAuthor(ui->m_translators_label, "Hilario Silveira & Gleisson J.J.Cardoso",   "hilario@soliton.com.br",         tr("Brazilian translation"));
+	addAuthor(ui->m_translators_label, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Turkish translation"));
+	addAuthor(ui->m_translators_label, "Emir Izmiroglu",                            "emirizmiroglu@gmail.com",        tr("Turkish translation"));
+	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Hungarian translation"));
+	addAuthor(ui->m_translators_label, "",                                          "",                               tr("Serbian Translation"));
+	addAuthor(ui->m_translators_label, "Yaroslav",                                  "",                               tr("Ukrainian translation"));
+	addAuthor(ui->m_translators_label, "JoelAs",                                    "",                               tr("Norwegian Translation"));
+	addAuthor(ui->m_translators_label, "Yuki",                                      "yuki.atoh@gmail.com",            tr("Japanese translation"));
+	addAuthor(ui->m_translators_label, "Jung Kwang-Ho",                             "jkh2rokmc@daum.net",             tr("Translation into Korean"));
+	addAuthor(ui->m_translators_label, "Nathalie",                                  "nathalie.roussier@giz.de",       tr("Mongolian Translation"));
+	addAuthor(ui->m_translators_label, "Uroš Platiše",                              "uros.platise@energycon.eu",      tr("Slovenian translation"));
 }
 
 /**
@@ -142,24 +142,24 @@ void AboutQETDialog::setTranslators()
 */
 void AboutQETDialog::setContributors()
 {
-	addAuthor(ui->m_contrib_label, "Remi Collet",         "remi@fedoraproject.org",              tr("Paquets Fedora et Red Hat"));
-	addAuthor(ui->m_contrib_label, "David Geiger",        "david.david@mageialinux-online.org",  tr("Paquets Mageia"));
-	addAuthor(ui->m_contrib_label, "Laurent Trinques",    "scorpio@qelectrotech.org",            tr("Paquets Debian"));
-	addAuthor(ui->m_contrib_label, "Denis Briand",        "debian@denis-briand.fr",              tr("Paquets Debian"));
-	addAuthor(ui->m_contrib_label, "W. Martin Borgert",   "debacle@debian.org",                  tr("Paquets Debian"));
-	addAuthor(ui->m_contrib_label, "Markos Chandras",     "hwoarang@gentoo.org.",                tr("Paquets Gentoo"));
-	addAuthor(ui->m_contrib_label, "Mbit",                "",                                    tr("Paquets Gentoo"));
-	addAuthor(ui->m_contrib_label, "Elbert",              "",                                    tr("Paquets OS/2"));
-	addAuthor(ui->m_contrib_label, "zloidemon",           "",                                    tr("Paquets FreeBSD"));
-	addAuthor(ui->m_contrib_label, "Yoann Varenne",       "yoann@tuxfamily.org",                 tr("Paquets MAC OS X"));
-	addAuthor(ui->m_contrib_label, "Chipsterjulien",      "",                                    tr("Paquets Archlinux AUR"));
-	addAuthor(ui->m_contrib_label, "Nuno Pinheiro",       "nuno@nuno-icons.com",                 tr("Icônes"));
-	addAuthor(ui->m_contrib_label, "Cyril Frausti",       "cyril@qelectrotech.org",              tr("Développement"));
+	addAuthor(ui->m_contrib_label, "Remi Collet",         "remi@fedoraproject.org",              tr("Fedora and Red Hat packages"));
+	addAuthor(ui->m_contrib_label, "David Geiger",        "david.david@mageialinux-online.org",  tr("Mageia packages"));
+	addAuthor(ui->m_contrib_label, "Laurent Trinques",    "scorpio@qelectrotech.org",            tr("Debian packages"));
+	addAuthor(ui->m_contrib_label, "Denis Briand",        "debian@denis-briand.fr",              tr("Debian packages"));
+	addAuthor(ui->m_contrib_label, "W. Martin Borgert",   "debacle@debian.org",                  tr("Debian packages"));
+	addAuthor(ui->m_contrib_label, "Markos Chandras",     "hwoarang@gentoo.org.",                tr("Gentoo packages"));
+	addAuthor(ui->m_contrib_label, "Mbit",                "",                                    tr("Gentoo packages"));
+	addAuthor(ui->m_contrib_label, "Elbert",              "",                                    tr("OS/2 packages"));
+	addAuthor(ui->m_contrib_label, "zloidemon",           "",                                    tr("FreeBSD packages"));
+	addAuthor(ui->m_contrib_label, "Yoann Varenne",       "yoann@tuxfamily.org",                 tr("MAC OS X packages"));
+	addAuthor(ui->m_contrib_label, "Chipsterjulien",      "",                                    tr("Archlinux AUR packages"));
+	addAuthor(ui->m_contrib_label, "Nuno Pinheiro",       "nuno@nuno-icons.com",                 tr("Icons"));
+	addAuthor(ui->m_contrib_label, "Cyril Frausti",       "cyril@qelectrotech.org",              tr("Development"));
 	addAuthor(ui->m_contrib_label, "Fernando Mateu Palou de Comasema", "fdomateu@gmail.com",     tr("Documentation"));
 	addAuthor(ui->m_contrib_label, "Arun Kishore Eswara", "eswara.arun@gmail.com",               tr("Documentation"));
-	addAuthor(ui->m_contrib_label, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
-	addAuthor(ui->m_contrib_label, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
-	addAuthor(ui->m_contrib_label, "Maximilian Federle",   "",                                   tr("Paquets Snap"));
+	addAuthor(ui->m_contrib_label, "René Negre",          "runsys@qelectrotech.org",             tr("Development"));
+	addAuthor(ui->m_contrib_label, "Nuri",                "nuri@qelectrotech.org",               tr("Collection of elements"));
+	addAuthor(ui->m_contrib_label, "Maximilian Federle",   "",                                   tr("Snap package"));
 }
 
 /**
@@ -175,13 +175,13 @@ void AboutQETDialog::setVersion()
 
 void AboutQETDialog::setAnnexProject()
 {
-	addLibrary(ui->m_annex_project_label, tr("Redimensionneur d'éléments", "Element scaler"),
+	addLibrary(ui->m_annex_project_label, tr("Elements  resizer", "Element scaler"),
 	 "https://github.com/plc-user/QET_ElementScaler");
-	addLibrary(ui->m_annex_project_label, tr("Générateur d'élément lambda", "Lambda element generator"),
+	addLibrary(ui->m_annex_project_label, tr("Lambda element generator", "Lambda element generator"),
 	 "https://github.com/asnigma/qet_gen_element");
-	addLibrary(ui->m_annex_project_label, tr("Convertisseur d'élément DXF", "Dxf2elmt"),
+	addLibrary(ui->m_annex_project_label, tr("DXF Element Converter", "Dxf2elmt"),
 	 "https://github.com/Vadoola/dxf2elmt");
-	addLibrary(ui->m_annex_project_label, tr("Outil de traduction d'éléments", "Qet_translate"),
+	addLibrary(ui->m_annex_project_label, tr("Elements translation tool", "Qet_translate"),
 	 "https://qelectrotech.org/forum/viewtopic.php?pid=16027#p16027");
 
 }

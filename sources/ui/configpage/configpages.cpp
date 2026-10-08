@@ -154,23 +154,23 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	diagram_layout -> addWidget(ipw);
 	tab_widget->setMinimumSize(800, 650);
 
-	tab_widget -> addTab (diagram_widget, tr("Folio"));
-	tab_widget -> addTab (m_cpw,            tr("Conducteur"));
-	tab_widget -> addTab (rpw,            tr("Reports de folio"));
-	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
+	tab_widget -> addTab (diagram_widget, tr("Sheet"));
+	tab_widget -> addTab (m_cpw,            tr("Conductor"));
+	tab_widget -> addTab (rpw,            tr("Sheet references"));
+	tab_widget -> addTab (xrefpw,         tr("Cross-references"));
 	tab_widget -> addTab (m_gpw,          tr("Guides"));
 
 	// add auto-numbering tab only for global settings (not per project)
 	if (!m_project) {
 		QWidget *autonum_widget = new QWidget();
 		QVBoxLayout *autonum_layout = new QVBoxLayout(autonum_widget);
-		autonum_layout->addWidget(new QLabel(tr("Définir les règles de numérotation automatique par défaut pour les nouveaux projets :")));
+		autonum_layout->addWidget(new QLabel(tr("Set the default automatic numbering rules for new projects:")));
 		QTabWidget *autonum_inner_tab = new QTabWidget();
-		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conducteurs"));
-		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Eléments"));
-		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Folios"));
+		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conductors"));
+		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Elements"));
+		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Sheets"));
 		autonum_layout->addWidget(autonum_inner_tab);
-		tab_widget -> addTab (autonum_widget, tr("Numérotation auto"));
+		tab_widget -> addTab (autonum_widget, tr("Auto Numbering"));
 	}
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
@@ -300,8 +300,8 @@ QIcon NewDiagramPage::icon() const
 */
 QString NewDiagramPage::title() const
 {
-	if (m_project) return(tr("Nouveau folio", "configuration page title"));
-	return(tr("Nouveau projet", "configuration page title"));
+	if (m_project) return(tr("New sheet", "configuration page title"));
+	return(tr("New project", "configuration page title"));
 }
 
 /**
@@ -580,6 +580,6 @@ QIcon PrintConfigPage::icon() const
 /// @return le titre de cette page
 QString PrintConfigPage::title() const
 {
-	return(tr("Impression", "configuration page title"));
+	return(tr("Printing", "configuration page title"));
 }
 

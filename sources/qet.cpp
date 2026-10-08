@@ -350,7 +350,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (elements_count) {
 		parts.append(
 			QObject::tr(
-				"%n élément(s)",
+				"%n elements",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				elements_count
 			)
@@ -360,7 +360,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (conductors_count) {
 		parts.append(
 			QObject::tr(
-				"%n conducteur(s)",
+				"%n conductors",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				conductors_count
 			)
@@ -370,7 +370,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (texts_count) {
 		parts.append(
 			QObject::tr(
-				"%n champ(s) de texte",
+				"%n textfields",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				texts_count
 			)
@@ -380,7 +380,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (images_count) {
 		parts.append(
 			QObject::tr(
-				"%n image(s)",
+				"%n images",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				images_count
 			)
@@ -390,7 +390,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (shapes_count) {
 		parts.append(
 			QObject::tr(
-				"%n forme(s)",
+				"%n shapes",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				shapes_count
 			)
@@ -400,7 +400,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (element_text_count) {
 		parts.append(
 			QObject::tr(
-				"%n texte(s) d'élément",
+				"%n texts of element",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				element_text_count
 			)
@@ -410,7 +410,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (tables_count) {
 		parts.append(
 			QObject::tr(
-				"%n tableau(s)",
+				"%n tables",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				tables_count
 			)
@@ -420,7 +420,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (terminal_strip_count) {
 		parts.append(
 			QObject::tr(
-				"%n plan(s) de bornes",
+				"%n layouts of terminal blocks",
 				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
 				terminal_strip_count
 			)
@@ -491,11 +491,11 @@ QString QET::license()
 	QString txt_license;
 	// verifie que le fichier existe
 	if (!file_license -> exists()) {
-		txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?"));
+		txt_license = QString(QObject::tr("The text file containing the GNU/GPL license could not be found - however, you know it by heart, don't you?"));
 	} else {
 		// ouvre le fichier en mode texte et en lecture seule
 		if (!file_license -> open(QIODevice::ReadOnly | QIODevice::Text)) {
-			txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL existe mais n'a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?"));
+			txt_license = QString(QObject::tr("The text file containing the GNU/GPL license exists but could not be opened - however, you know it by heart, don't you?"));
 		} else {
 			// charge le contenu du fichier dans une QString
 			QTextStream in(file_license);
@@ -780,7 +780,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 		if (error_message)
 		{
 			*error_message = QString(QObject::tr(
-							 "Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+							 "Unable to open file %1 with write access, encountered error %2.",
 							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
 		}
 		return(false);
@@ -794,7 +794,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	{
 		if (error_message) {
 			*error_message = QString(QObject::tr(
-							 "Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
+							 "An error occurred while writing file %1, error %2 encountered.",
 							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
 		}
 
@@ -871,20 +871,20 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 {
 	QActionGroup *action_group = new QActionGroup(parent);
 
-	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);
-	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
-	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
-	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Bring to front"), action_group);
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Raise"),             action_group);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Lower"),               action_group);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Send backward"),        action_group);
 
-	edit_forward ->setStatusTip(QObject::tr("Ramène la ou les sélections au premier plan"));
-	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));
-	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
-	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
+	edit_forward ->setStatusTip(QObject::tr("Bring the selection (s) to front"));
+	edit_raise   ->setStatusTip(QObject::tr("Approach the selection (s)"));
+	edit_lower   ->setStatusTip(QObject::tr("Move away the selection (s)"));
+	edit_backward->setStatusTip(QObject::tr("Send in the backward the selection (s)"));
 
-	ShortcutManager::instance().registerAction(edit_raise, "depth.raise", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
-	ShortcutManager::instance().registerAction(edit_lower, "depth.lower", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
-	ShortcutManager::instance().registerAction(edit_backward, "depth.backward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_End);
-	ShortcutManager::instance().registerAction(edit_forward, "depth.forward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
+	ShortcutManager::instance().registerAction(edit_raise, "depth.raise", QObject::tr("Depth"), Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
+	ShortcutManager::instance().registerAction(edit_lower, "depth.lower", QObject::tr("Depth"), Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
+	ShortcutManager::instance().registerAction(edit_backward, "depth.backward", QObject::tr("Depth"), Qt::CTRL | Qt::SHIFT | Qt::Key_End);
+	ShortcutManager::instance().registerAction(edit_forward, "depth.forward", QObject::tr("Depth"), Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
 
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);
@@ -908,7 +908,7 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 				QFileInfo info_(*file);
 				*error_message = QString(
 							QObject::tr(
-								"Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+								"Unable to open file %1 with write access, encountered error %2.",
 								"error message when attempting to write an XML file")
 				).arg(info_.absoluteFilePath()).arg(file->error());
 			}

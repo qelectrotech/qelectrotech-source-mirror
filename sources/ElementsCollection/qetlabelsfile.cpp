@@ -177,7 +177,7 @@ bool QetLabelsFile::parse(QIODevice &device, QDomDocument &document, QString *re
 		return true;
 	}
 	if (reason != nullptr) {
-		*reason = tr("erreur de syntaxe à la ligne %1, colonne %2 :\n%3")
+		*reason = tr("syntax error at line %1, column %2:\n%3")
 				.arg(result.errorLine)
 				.arg(result.errorColumn)
 				.arg(result.errorMessage);
@@ -191,7 +191,7 @@ bool QetLabelsFile::parse(QIODevice &device, QDomDocument &document, QString *re
 		return true;
 	}
 	if (reason != nullptr) {
-		*reason = tr("erreur de syntaxe à la ligne %1, colonne %2 :\n%3")
+		*reason = tr("syntax error at line %1, column %2:\n%3")
 				.arg(line)
 				.arg(column)
 				.arg(message);
@@ -228,7 +228,7 @@ bool QetLabelsFile::load(const QString &collection_dir)
 	m_document = QDomDocument();
 
 	if (collection_dir.isEmpty()) {
-		m_error = tr("Aucun répertoire de collection n'a été donné.");
+		m_error = tr("No collection folder was given.");
 		return false;
 	}
 	m_file_path = labelsFilePath(collection_dir);
@@ -248,12 +248,12 @@ bool QetLabelsFile::load(const QString &collection_dir)
 		if (well_formed
 			&& document.documentElement().tagName() != QLatin1String("labels")) {
 			well_formed = false;
-			m_broken_reason = tr("l'élément racine <%1> n'est pas <labels>.")
+			m_broken_reason = tr("the root element <%1> is not <labels>.")
 					.arg(document.documentElement().tagName());
 		}
 		file.close();
 	} else {
-		m_broken_reason = tr("le fichier n'a pas pu être ouvert : %1")
+		m_broken_reason = tr("the file could not be opened: %1")
 				.arg(file.errorString());
 	}
 
@@ -286,12 +286,12 @@ void QetLabelsFile::createEmptyDocument()
 							   QStringLiteral("version=\"1.0\" encoding=\"utf-8\"")));
 
 	const QString comment = tr(
-				"Fichier de préfixes (étiquettes) de la collection utilisateur.\n"
-				"Un préfixe est attribué à chaque dossier : les éléments d'un dossier\n"
-				"reprennent le préfixe de ce dossier, sauf s'ils portent eux-mêmes une\n"
-				"étiquette. Un dossier sans préfixe reprend celui de son dossier parent.\n"
-				"Ce fichier est créé et modifié par QElectroTech (Programme de réglages :\n"
-				"Configurer les préfixes…), mais reste modifiable à la main.");
+				"Prefix (label) file of the user collection.\n"
+				"Each folder is given a prefix: the symbols of a folder take that\n"
+				"folder's prefix, unless they carry a label of their own. A folder\n"
+				"without a prefix takes its parent folder's.\n"
+				"QElectroTech creates and changes this file (Settings:\n"
+				"Configure prefixes…), but it can still be edited by hand.");
 	m_document.appendChild(m_document.createComment(comment));
 
 	m_document.appendChild(m_document.createElement(QStringLiteral("labels")));
@@ -612,7 +612,7 @@ bool QetLabelsFile::save()
 	m_error.clear();
 
 	if (m_file_path.isEmpty()) {
-		m_error = tr("Aucun fichier de préfixes à enregistrer.");
+		m_error = tr("No prefix file to save.");
 		return false;
 	}
 
@@ -623,7 +623,7 @@ bool QetLabelsFile::save()
 
 	const QDir directory(QFileInfo(m_file_path).absolutePath());
 	if (!directory.exists() && !QDir().mkpath(directory.absolutePath())) {
-		m_error = tr("Le répertoire %1 n'a pas pu être créé.").arg(directory.absolutePath());
+		m_error = tr("The folder %1 could not be created.").arg(directory.absolutePath());
 		return false;
 	}
 
@@ -635,7 +635,7 @@ bool QetLabelsFile::save()
 			//and cancels.
 		m_backup_path = backupBrokenFile();
 		if (m_backup_path.isEmpty()) {
-			m_error = tr("Le fichier %1 n'a pas pu être copié à côté avant d'être remplacé :\nrien n'a été modifié.")
+			m_error = tr("The file %1 could not be copied beside itself before being replaced:\nnothing has been changed.")
 					.arg(m_file_path);
 			return false;
 		}

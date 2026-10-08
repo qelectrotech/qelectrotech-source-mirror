@@ -55,7 +55,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 
 QString PartDynamicTextField::name() const
 {
-	return tr("Champ de texte dynamique", "element part name");
+	return tr("Dynamic text field", "element part name");
 }
 
 QString PartDynamicTextField::xmlName() const
@@ -599,7 +599,7 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_origin_pos != pos()) {
 			QPropertyUndoCommand *undo =\
 				new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
-			undo -> setText(tr("Déplacer un champ texte"));
+			undo -> setText(tr("Move a text field"));
 			undo -> enableAnimation();
 			elementScene() -> undoStack().push(undo);
 	}

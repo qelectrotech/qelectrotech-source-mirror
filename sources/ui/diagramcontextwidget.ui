@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="m_label">
      <property name="text">
-      <string>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</string>
+      <string>Names may only contain lowercase letters, digits and dashes.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -47,12 +47,12 @@
      <row/>
      <column>
       <property name="text">
-       <string>Nom</string>
+       <string>Name</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Valeur</string>
+       <string>Value</string>
       </property>
      </column>
     </widget>

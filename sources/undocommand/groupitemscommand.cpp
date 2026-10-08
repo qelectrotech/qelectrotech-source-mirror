@@ -52,7 +52,7 @@ GroupItemsCommand *GroupItemsCommand::group(Diagram *diagram)
 		return nullptr;
 	}
 	auto command = new GroupItemsCommand(diagram, selectedGroupable(diagram), QUuid::createUuid());
-	command->setText(QObject::tr("Grouper %n objet(s)", "", command->m_changes.size()));
+	command->setText(QObject::tr("Group %n items", "", command->m_changes.size()));
 	return command;
 }
 
@@ -72,7 +72,7 @@ GroupItemsCommand *GroupItemsCommand::ungroup(Diagram *diagram)
 		}
 	}
 	auto command = new GroupItemsCommand(diagram, items, QUuid());
-	command->setText(QObject::tr("Dégrouper %n objet(s)", "", command->m_changes.size()));
+	command->setText(QObject::tr("Ungroup %n items", "", command->m_changes.size()));
 	return command;
 }
 

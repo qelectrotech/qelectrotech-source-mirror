@@ -77,9 +77,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setInteractive(true);
 
 	QString whatsthis = tr(
-		"Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant"
-		" des éléments et en posant des conducteurs entre leurs bornes. Il est"
-		" également possible d'ajouter des textes indépendants.",
+		"In this area you conceive your diagrams by adding elements and "
+		"conductors between their terminals. You may also add independent "
+		"texts.",
 		"\"What's this?\" tip"
 	);
 	setWhatsThis(whatsthis);
@@ -101,25 +101,25 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_diagram->loadElmtFolioSeq();
 	m_diagram->loadCndFolioSeq();
 
-	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
+	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Paste Here", "context menu action"), this);
 	connect(m_paste_here, &QAction::triggered, this, &DiagramView::pasteHere);
 
-	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
+	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Multiple paste"), this);
 	connect(m_multi_paste, &QAction::triggered, [this]() {
 		MultiPasteDialog d(this->m_diagram, this);
 		d.exec();
 	});
 
 	// Setup the action to create a template
-	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
+	m_create_template = new QAction(tr("Create a template", "context menu action"), this);
 	connect(m_create_template, &QAction::triggered, this, &DiagramView::createTemplateFromSelection);
 
 		//Setup the action to generate cabinet placement thumbnails (discussion #602)
-	m_generate_cabinet_thumbnail = new QAction(tr("Générer une vignette d'armoire", "context menu action"), this);
+	m_generate_cabinet_thumbnail = new QAction(tr("Make a cabinet thumbnail", "context menu action"), this);
 	connect(m_generate_cabinet_thumbnail, &QAction::triggered, this, &DiagramView::generateCabinetThumbnails);
 
 		//Filled each time the context menu opens, see updateFolioReportMenu()
-	m_folio_report_menu = new QMenu(tr("Renvoi de folio"), this);
+	m_folio_report_menu = new QMenu(tr("Sheet reference"), this);
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -175,7 +175,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 
 			// prepare a color dialog showing the initial conductor color
 		QPointer<QColorDialog> color_dialog = new QColorDialog(this);
-		color_dialog->setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
+		color_dialog->setWindowTitle(tr("Choose the new color for this conductor"));
 #ifdef Q_OS_MACOS
 		color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
@@ -198,7 +198,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 				new_value.setValue(initial_properties);
 
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
-				undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+				undo->setText(tr("Edit conductor properties", "undo caption"));
 				m_diagram->undoStack().push(undo);
 
 					// remember it for the next conductor drawn this session,
@@ -932,7 +932,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		{
 				//Popup a menu with an action to create conductors between
 				//all selected terminals.
-			QAction *act = new QAction(tr("Connecter les bornes sélectionnées"), this);
+			QAction *act = new QAction(tr("Connect the selected terminals"), this);
 			QPolygonF polygon_ = m_free_rubberband;
 			connect(act, &QAction::triggered, [this, polygon_]()
 			{
@@ -1355,7 +1355,7 @@ QString DiagramView::title() const
 	QString view_title;
 	QString diagram_title(m_diagram -> title());
 	if (diagram_title.isEmpty()) {
-		view_title = tr("Sans titre", "what to display for untitled diagrams");
+		view_title = tr("Untitled", "what to display for untitled diagrams");
 	} else {
 		view_title = diagram_title;
 	}
@@ -2140,11 +2140,11 @@ void DiagramView::createTemplateFromSelection()
 		for (QETDiagramEditor *qde : QETApp::diagramEditors())
 			qde->templateSaved(template_location);
 
-		QMessageBox::information(this, tr("Modèle enregistré"),
-								 tr("Le modèle a été enregistré avec succès sous :\n%1").arg(full_path));
+		QMessageBox::information(this, tr("Registered template"),
+								 tr("The template has been successfully saved as :\n%1").arg(full_path));
 	} else {
 		qDebug() << "Error: Could not open file for writing:" << full_path;
-		QMessageBox::critical(this, tr("Erreur"), tr("Le fichier n'a pas pu être écrit."));
+		QMessageBox::critical(this, tr("Error"), tr("The file could not be written."));
 	}
 }
 

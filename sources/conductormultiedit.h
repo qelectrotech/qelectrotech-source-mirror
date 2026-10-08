@@ -132,9 +132,9 @@ namespace ConductorMultiEdit
 		}
 		undo->setText(changed == 1
 			? QCoreApplication::translate("ConductorPropertiesEditorWidget",
-				"Modifier les propriétés d'un conducteur", "undo caption")
+				"Edit conductor properties", "undo caption")
 			: QCoreApplication::translate("ConductorPropertiesEditorWidget",
-				"Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+				"Edit the properties of several conductors", "undo caption"));
 		return undo;
 	}
 

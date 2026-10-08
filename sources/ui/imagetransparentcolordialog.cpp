@@ -55,7 +55,7 @@ ClickableImageLabel::ClickableImageLabel(const QImage &sourceImage, QWidget *par
 			: m_source;
 	setPixmap(QPixmap::fromImage(m_displayImage));
 	setCursor(Qt::CrossCursor);
-	setToolTip(tr("Cliquez pour choisir une couleur"));
+	setToolTip(tr("Click to choose a color"));
 }
 
 /**
@@ -101,7 +101,7 @@ ImageTransparentColorDialog::ImageTransparentColorDialog(const QPixmap &basePixm
 	m_sourceImage(basePixmap.toImage()),
 	m_pickedColors(existingColors)
 {
-	setWindowTitle(tr("Couleur transparente"));
+	setWindowTitle(tr("Transparent color"));
 
 	if (!m_pickedColors.isEmpty())
 		m_lastToleranceUsed = m_pickedColors.last().tolerance;
@@ -119,8 +119,8 @@ ImageTransparentColorDialog::ImageTransparentColorDialog(const QPixmap &basePixm
 	updateOkEnabled();
 
 	auto *grid = new QGridLayout;
-	grid->addWidget(new QLabel(tr("Image source")), 0, 0);
-	grid->addWidget(new QLabel(tr("Aperçu")), 0, 1);
+	grid->addWidget(new QLabel(tr("Source image")), 0, 0);
+	grid->addWidget(new QLabel(tr("Preview")), 0, 1);
 	grid->addWidget(m_sourceLabel, 1, 0);
 	grid->addWidget(m_previewLabel, 1, 1);
 
@@ -263,12 +263,12 @@ void ImageTransparentColorDialog::rebuildSwatches()
 		auto *slider = new QSlider(Qt::Horizontal, row);
 		slider->setRange(0, 100);
 		slider->setValue(pc.tolerance);
-		slider->setToolTip(tr("Tolérance pour cette couleur"));
+		slider->setToolTip(tr("Tolerance for this color"));
 		connect(slider, &QSlider::valueChanged, this, [this, i](int value) { setToleranceForIndex(i, value); });
 
 		auto *removeButton = new QToolButton(row);
 		removeButton->setText(QStringLiteral("×"));
-		removeButton->setToolTip(tr("Retirer cette couleur"));
+		removeButton->setToolTip(tr("Remove this color"));
 		connect(removeButton, &QToolButton::clicked, this, [this, i]() { removeColor(i); });
 
 		rowLayout->addWidget(swatch);
@@ -278,8 +278,8 @@ void ImageTransparentColorDialog::rebuildSwatches()
 	}
 
 	m_hintLabel->setText(m_pickedColors.isEmpty()
-			? tr("Cliquez sur l'image pour choisir une couleur")
-			: tr("Cliquez sur l'image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer."));
+			? tr("Click on the image to choose a color")
+			: tr("Click on the image to add a color. Adjust each color's tolerance with its slider, or click × to remove it."));
 }
 
 /**

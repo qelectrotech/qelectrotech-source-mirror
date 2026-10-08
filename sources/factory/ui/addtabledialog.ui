@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Ajouter un tableau</string>
+   <string>Add a table</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="m_display_tab">
       <attribute name="title">
-       <string>Affichage</string>
+       <string>Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -30,7 +30,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Ajuster la taille du tableau au folio</string>
+          <string>Adjust the size of the table to the sheet</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -43,7 +43,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Ajouter de nouveau folio et tableau si nécessaire.</string>
+          <string>Add new sheet and table if necessary.</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -63,31 +63,31 @@
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Nom du tableau</string>
+          <string>Table name</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Texte des en-têtes</string>
+          <string>Header text</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="1" column="1">
            <widget class="QComboBox" name="m_header_alignment_cb">
             <item>
              <property name="text">
-              <string>Gauche</string>
+              <string>Left</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Centre</string>
+              <string>Middle</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Droite</string>
+              <string>Right</string>
              </property>
             </item>
            </widget>
@@ -95,14 +95,14 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Police :</string>
+             <string>Font :</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="m_edit_header_margins_pb">
             <property name="text">
-             <string>Éditer</string>
+             <string>Edit</string>
             </property>
            </widget>
           </item>
@@ -116,14 +116,14 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Marges :</string>
+             <string>Margins :</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Alignement :</string>
+             <string>Alignment:</string>
             </property>
            </widget>
           </item>
@@ -133,27 +133,27 @@
        <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Texte du tableau</string>
+          <string>Text of the table</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Marges :</string>
+             <string>Margins :</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="m_table_margins_pb">
             <property name="text">
-             <string>Éditer</string>
+             <string>Edit</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Alignement :</string>
+             <string>Alignment:</string>
             </property>
            </widget>
           </item>
@@ -161,17 +161,17 @@
            <widget class="QComboBox" name="m_table_alignment_cb">
             <item>
              <property name="text">
-              <string>Gauche</string>
+              <string>Left</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Centre</string>
+              <string>Middle</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Droite</string>
+              <string>Right</string>
              </property>
             </item>
            </widget>
@@ -179,7 +179,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_6">
             <property name="text">
-             <string>Police :</string>
+             <string>Font :</string>
             </property>
            </widget>
           </item>

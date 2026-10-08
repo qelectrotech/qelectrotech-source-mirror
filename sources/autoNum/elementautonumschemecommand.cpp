@@ -55,14 +55,14 @@ QString ElementAutoNumSchemeCommand::nameProblem(const QETProject *project,
 												 const QString &ignored_title)
 {
 	if (QETProject::normalizedAutoNumName(name).isEmpty()) {
-		return tr("Le nom de la numérotation ne peut pas être vide.");
+		return tr("The numbering name cannot be empty.");
 	}
 	if (!project) {
 		return QString();
 	}
 	const QString clash = project->elementAutoNumNameClash(name, ignored_title);
 	if (!clash.isEmpty()) {
-		return tr("Une numérotation nommée « %1 » existe déjà.").arg(clash);
+		return tr("A numbering named “%1” already exists.").arg(clash);
 	}
 	return QString();
 }
@@ -615,24 +615,24 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::assignNumber(QETProject *p
 		return nullptr;
 	};
 	if (!project || !element || !element->diagram()) {
-		return fail(tr("Cet élément n'est dans aucun folio."));
+		return fail(tr("This element is not in any sheet."));
 	}
 	const DiagramContext info = element->elementInformations();
 	const QString title = project->elementAutoNumTitle(
 				QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString()));
 	if (title.isEmpty()) {
-		return fail(tr("Cet élément ne suit aucune numérotation."));
+		return fail(tr("This element does not follow any numbering."));
 	}
 	const NumerotationContext context = project->elementAutoNum().value(title);
 	const NumberSupport support = numberSupport(context);
 	if (!support.supported) {
-		return fail(tr("La numérotation « %1 » n'a pas un seul numéro : on ne peut pas en choisir un à la main.").arg(title));
+		return fail(tr("The “%1” numbering does not have a single number: one cannot be chosen by hand.").arg(title));
 	}
 	if (number < 1) {
-		return fail(tr("Le numéro doit être au moins 1."));
+		return fail(tr("The number must be at least 1."));
 	}
 	if (!freeNumbers(project, title, element, 100000).contains(number)) {
-		return fail(tr("Le numéro %1 n'est pas libre.").arg(number));
+		return fail(tr("Number %1 is not free.").arg(number));
 	}
 
 	const QString formula = autonum::numerotationContextToFormula(context);
@@ -662,7 +662,7 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::assignNumber(QETProject *p
 	}
 	return new RenumberElementsCommand(project, {change},
 									   {{title, context}}, {{title, counter}},
-									   tr("Attribuer le numéro %1").arg(number), parent);
+									   tr("Assign number %1").arg(number), parent);
 }
 
 /**
@@ -826,7 +826,7 @@ RenumberElementsCommand *ElementAutoNumSchemeCommand::assign(
 		return nullptr;
 	}
 	return numberElements(project, title, todo,
-						  tr("Appliquer la numérotation %1").arg(title),
+						  tr("Apply numbering %1").arg(title),
 						  FreezeRule::Unfrozen, parent);
 }
 
@@ -1075,7 +1075,7 @@ int ElementAutoNumSchemeCommand::numberPasted(
 	for (auto it = schemes.constBegin() ; it != schemes.constEnd() ; ++it)
 	{
 		if (numberElements(project, it.key(), it.value(),
-						   tr("Numéroter les éléments collés (%1)").arg(it.key()),
+						   tr("Number pasted elements (%1)").arg(it.key()),
 						   FreezeRule::NewElementPolicy, parent)) {
 			count += it.value().size();
 		}
@@ -1111,7 +1111,7 @@ ElementAutoNumSchemeCommand *ElementAutoNumSchemeCommand::create(
 	cmd->m_after = after;
 	cmd->m_current_before = project->elementCurrentAutoNum();
 	cmd->m_current_after = make_current ? after.title : cmd->m_current_before;
-	cmd->setText(tr("Créer la numérotation d'éléments %1").arg(after.title));
+	cmd->setText(tr("Create element numbering %1").arg(after.title));
 	return cmd;
 }
 
@@ -1213,10 +1213,10 @@ ElementAutoNumSchemeCommand *ElementAutoNumSchemeCommand::edit(
 	}
 
 	if (renamed && !redefined) {
-		cmd->setText(tr("Renommer la numérotation d'éléments %1 en %2")
+		cmd->setText(tr("Rename element numbering %1 to %2")
 					 .arg(before.title, after.title));
 	} else {
-		cmd->setText(tr("Modifier la numérotation d'éléments %1").arg(after.title));
+		cmd->setText(tr("Modify element numbering %1").arg(after.title));
 	}
 	return cmd;
 }
@@ -1248,7 +1248,7 @@ ElementAutoNumSchemeCommand *ElementAutoNumSchemeCommand::remove(
 	cmd->m_current_after = cmd->m_current_before == title
 						   ? QString()
 						   : cmd->m_current_before;
-	cmd->setText(tr("Supprimer la numérotation d'éléments %1").arg(title));
+	cmd->setText(tr("Delete element numbering %1").arg(title));
 	return cmd;
 }
 

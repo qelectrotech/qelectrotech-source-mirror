@@ -43,9 +43,9 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	ui->setupUi(this);
 
 	m_export_info.insert("position", tr("Position"));
-	m_export_info.insert("title", tr("Titre du folio"));
-	m_export_info.insert("diagram_position", tr("Position du folio"));
-	m_export_info.insert("folio", tr("Numéro du folio"));
+	m_export_info.insert("title", tr("Sheet title"));
+	m_export_info.insert("diagram_position", tr("Sheet position"));
+	m_export_info.insert("folio", tr("Sheet number"));
 
 	m_button_group.setExclusive(false);
 	m_button_group.addButton(ui->m_all_cb, 0);
@@ -812,27 +812,27 @@ void ElementQueryWidget::on_m_export_reports_pb_clicked()
 {
 	QFile source(QETApp::configDir() % "/nomenclature.json");
 	if (!source.open(QFile::ReadOnly)) {
-		QMessageBox::information(this, tr("Exporter"), tr("Aucun rapport enregistré à exporter."));
+		QMessageBox::information(this, tr("Export"), tr("No saved report to export."));
 		return;
 	}
 	const auto content = source.readAll();
 	source.close();
 
 	if (QJsonDocument::fromJson(content).object().isEmpty()) {
-		QMessageBox::information(this, tr("Exporter"), tr("Aucun rapport enregistré à exporter."));
+		QMessageBox::information(this, tr("Export"), tr("No saved report to export."));
 		return;
 	}
 
 	const QString file_path = QFileDialog::getSaveFileName(
-			this, tr("Exporter les rapports"), QStringLiteral("rapports_qet.json"),
-			tr("Fichiers JSON (*.json)"));
+			this, tr("Export reports"), QStringLiteral("rapports_qet.json"),
+			tr("JSON files (*.json)"));
 	if (file_path.isEmpty()) {
 		return;
 	}
 
 	QFile dest(file_path);
 	if (!dest.open(QFile::WriteOnly) || dest.write(content) == -1) {
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'écrire dans %1.").arg(file_path));
+		QMessageBox::critical(this, tr("Error"), tr("Unable to write to %1.").arg(file_path));
 	}
 }
 
@@ -845,14 +845,14 @@ void ElementQueryWidget::on_m_export_reports_pb_clicked()
 void ElementQueryWidget::on_m_import_reports_pb_clicked()
 {
 	const QString file_path = QFileDialog::getOpenFileName(
-			this, tr("Importer des rapports"), QString(), tr("Fichiers JSON (*.json)"));
+			this, tr("Import reports"), QString(), tr("JSON files (*.json)"));
 	if (file_path.isEmpty()) {
 		return;
 	}
 
 	QFile source(file_path);
 	if (!source.open(QFile::ReadOnly)) {
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible de lire %1.").arg(file_path));
+		QMessageBox::critical(this, tr("Error"), tr("Unable to read %1.").arg(file_path));
 		return;
 	}
 
@@ -862,14 +862,14 @@ void ElementQueryWidget::on_m_import_reports_pb_clicked()
 
 	if (parse_error.error != QJsonParseError::NoError || !incoming_doc.isObject()) {
 		QMessageBox::critical(
-				this, tr("Erreur"),
-				tr("%1 ne contient pas des rapports QElectroTech valides.").arg(file_path));
+				this, tr("Error"),
+				tr("%1 does not contain valid QElectroTech reports.").arg(file_path));
 		return;
 	}
 
 	const auto incoming = incoming_doc.object();
 	if (incoming.isEmpty()) {
-		QMessageBox::information(this, tr("Importer"), tr("Ce fichier ne contient aucun rapport."));
+		QMessageBox::information(this, tr("Import"), tr("This file does not contain any report."));
 		return;
 	}
 
@@ -886,8 +886,8 @@ void ElementQueryWidget::on_m_import_reports_pb_clicked()
 		if (existing.contains(it.key()))
 		{
 			const auto answer = QMessageBox::question(
-					this, tr("Rapport déjà existant"),
-					tr("Un rapport nommé « %1 » existe déjà. Le remplacer ?").arg(it.key()),
+					this, tr("Report already exists"),
+					tr("A report named \"%1\" already exists. Replace it?").arg(it.key()),
 					QMessageBox::Yes | QMessageBox::No);
 			if (answer != QMessageBox::Yes) {
 				++skipped;
@@ -905,7 +905,7 @@ void ElementQueryWidget::on_m_import_reports_pb_clicked()
 	}
 	else
 	{
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'écrire la configuration locale."));
+		QMessageBox::critical(this, tr("Error"), tr("Unable to write the local configuration."));
 		return;
 	}
 
@@ -913,8 +913,8 @@ void ElementQueryWidget::on_m_import_reports_pb_clicked()
 	fillSavedQuery();
 
 	QMessageBox::information(
-			this, tr("Importer"),
-			tr("%1 rapport(s) importé(s), %2 ignoré(s).").arg(imported).arg(skipped));
+			this, tr("Import"),
+			tr("%1 report(s) imported, %2 skipped.").arg(imported).arg(skipped));
 }
 
 void ElementQueryWidget::on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)

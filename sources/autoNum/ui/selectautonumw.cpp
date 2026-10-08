@@ -57,9 +57,9 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	add_layout->addWidget(ui->add_button);
 	add_layout->addStretch();
 	ui->editor_layout->addWidget(m_add_row);
-	ui->buttonBox->button(QDialogButtonBox::Reset)->setText(tr("Annuler"));
+	ui->buttonBox->button(QDialogButtonBox::Reset)->setText(tr("Cancel"));
 	ui->buttonBox->button(QDialogButtonBox::Reset)->setToolTip(
-				tr("Revenir à la définition enregistrée"));
+				tr("Revert to the saved definition"));
 
 	if (m_edited_type == 0)
 	{
@@ -166,9 +166,9 @@ void SelectAutonumW::insertPartRow(NumPartEditorW *part)
 		layout->addWidget(button);
 		return button;
 	};
-	r.up = make_button(QET::Icons::GoUp, tr("Monter cette variable"));
-	r.down = make_button(QET::Icons::GoDown, tr("Descendre cette variable"));
-	r.remove = make_button(QET::Icons::EditDelete, tr("Supprimer cette variable"));
+	r.up = make_button(QET::Icons::GoUp, tr("Move this variable up"));
+	r.down = make_button(QET::Icons::GoDown, tr("Move this variable down"));
+	r.remove = make_button(QET::Icons::EditDelete, tr("Delete this variable"));
 	QWidget *row = r.row;
 	connect(r.up, &QToolButton::clicked, this, [this, row]() { movePartRow(row, -1); });
 	connect(r.down, &QToolButton::clicked, this, [this, row]() { movePartRow(row, +1); });
@@ -316,20 +316,21 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 			{
 				QMessageBox::information (
 							this,
-							tr("Folio Autonumérotation",
+							tr("Sheet Auto Numbering",
 							   "title window"),
-							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.\n"
-							   "-Une numérotation est composée d'une variable minimum.\n"
-							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
-
-							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-							   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
-							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
-
-							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
+							tr("This is where you can define how the new sheets will be numbered.\n"
+							   "-A numbering is composed of a minimum variable.\n"
+							   "-You can add or delete a dialing variable through the - and + buttons.\n"
+							   "A numbering variable includes: a type, a value and an increment.\n"
+							   "\n"
+							   "-the \"Digit 1\", \"Digit 01\" and \"Digit 001\" types represent a numeric type defined in the \"Value\" field, which "
+							   "increments each new sheet by the value of the \"Incrementation\" field.\n"
+							   "- \"Digit 01\" and \"Digit 001\", are respectively represented on the diagram by two and three digits minimum.\n"
+							   "If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in "
+							   "order to respect its type.\n"
+							   "\n"
+							   "-Type \"Text\", represents a fixed text.\n"
+							   "The \"Incrementation\" field is not used.\n",
 							   "help dialog about the folio autonumerotation"
 							   ));
 				break;
@@ -338,24 +339,27 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 			{
 				QMessageBox::information (
 							this,
-							tr("Conducteur Autonumérotation",
+							tr("Numbering conductors",
 							   "title window"),
-							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.\n"
-							   "-Une numérotation est composée d'une variable minimum.\n"
-							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
-
-							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-							   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
-							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
-
-							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
-
-							   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
-
-							   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
+							tr("This is where you can define how new conductors will be numbered.\n"
+							   "-A numbering is composed of a minimum variable.\n"
+							   "-You can add or delete a dialing variable through the - and + buttons.\n"
+							   "A numbering variable includes: a type, a value and an increment.\n"
+							   "\n"
+							   "the \"Digit 1\", \"Digit 01\" and \"Digit 001\" types represent a numeric type defined in the \"Value\" field, which is "
+							   "incremented to each new conductor by the value of the \"Incrementation\" field.\n"
+							   "- \"Digit 01\" and \"Digit 001\", are respectively represented on the diagram by two and three digits minimum.\n"
+							   "If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in "
+							   "order to respect its type.\n"
+							   "\n"
+							   "-Type \"Text\", represents a fixed text.\n"
+							   "The \"Incrementation\" field is not used.\n"
+							   "\n"
+							   "-The \"sheet\" type represents the number of the current sheet.\n"
+							   "The other fields are not used.\n"
+							   "\n"
+							   "-The \"Sheet\" type represents the name of the current sheet.\n"
+							   "The other fields are not used.",
 							   "help dialog about the conductor autonumerotation"
 							   ));
 				break;
@@ -364,24 +368,27 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 			{
 				QMessageBox::information (
 							this,
-							tr("Element Autonumérotation",
+							tr("Element Auto Numbering",
 							   "title window"),
-							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.\n"
-							   "-Une numérotation est composée d'une variable minimum.\n"
-							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
-
-							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-							   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
-							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
-
-							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
-
-							   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
-
-							   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
+							tr("This is where you can define how new elements will be numbered.\n"
+							   "-A numbering is composed of a minimum variable.\n"
+							   "-You can add or delete a dialing variable through the - and + buttons.\n"
+							   "A numbering variable includes: a type, a value and an increment.\n"
+							   "\n"
+							   "the \"Digit 1\", \"Digit 01\" and \"Digit 001\" types represent a numeric type defined in the \"Value\" field, which is "
+							   "incremented to each new conductor by the value of the \"Incrementation\" field.\n"
+							   "- \"Digit 01\" and \"Digit 001\", are respectively represented on the diagram by two and three digits minimum.\n"
+							   "If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in "
+							   "order to respect its type.\n"
+							   "\n"
+							   "-Type \"Text\", represents a fixed text.\n"
+							   "The \"Incrementation\" field is not used.\n"
+							   "\n"
+							   "-The \"sheet\" type represents the number of the current sheet.\n"
+							   "The other fields are not used.\n"
+							   "\n"
+							   "-The \"Sheet\" type represents the name of the current sheet.\n"
+							   "The other fields are not used.",
 							   "help dialog about the element autonumerotation"
 							   ));
 				break;
@@ -467,11 +474,11 @@ void SelectAutonumW::setExplicitNaming()
 	const int index = row->indexOf(ui->m_remove_pb);
 
 	auto *new_pb = new QPushButton(QET::Icons::Add, QString(), this);
-	new_pb->setToolTip(tr("Nouvelle numérotation…"));
+	new_pb->setToolTip(tr("New numbering…"));
 	connect(new_pb, &QPushButton::clicked, this, &SelectAutonumW::newClicked);
 
 	auto *rename_pb = new QPushButton(QET::Icons::EditRename, QString(), this);
-	rename_pb->setToolTip(tr("Renommer la numérotation…"));
+	rename_pb->setToolTip(tr("Rename numbering…"));
 	connect(rename_pb, &QPushButton::clicked, this, &SelectAutonumW::renameClicked);
 
 	row->insertWidget(index, rename_pb);

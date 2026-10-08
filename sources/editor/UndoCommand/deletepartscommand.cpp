@@ -31,7 +31,7 @@ DeletePartsCommand::DeletePartsCommand(QPointer<ElementScene> scene,
 	m_scene{scene},
 	m_parts{parts}
 {
-	setText(QObject::tr("suppression", "undo caption"));
+	setText(QObject::tr("deletion", "undo caption"));
 	m_scene->qgiManager().manage(parts);
 }
 

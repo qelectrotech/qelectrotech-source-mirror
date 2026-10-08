@@ -61,15 +61,15 @@ QStringList DiagramToolbarSettings::builtInNames()
 QString DiagramToolbarSettings::builtInTitle(const QString &name)
 {
 	if (name == QLatin1String("toolbar"))
-		return QCoreApplication::translate("QETDiagramEditor", "Outils");
+		return QCoreApplication::translate("QETDiagramEditor", "Tools");
 	if (name == QLatin1String("display"))
-		return QCoreApplication::translate("QETDiagramEditor", "Affichage");
+		return QCoreApplication::translate("QETDiagramEditor", "Display");
 	if (name == QLatin1String("diagram"))
-		return QCoreApplication::translate("QETDiagramEditor", "Schéma");
+		return QCoreApplication::translate("QETDiagramEditor", "Diagram");
 	if (name == QLatin1String("adding"))
-		return QCoreApplication::translate("QETDiagramEditor", "Ajouter");
+		return QCoreApplication::translate("QETDiagramEditor", "Add");
 	if (name == QLatin1String("diagram_depth_toolbar"))
-		return QCoreApplication::translate("QETDiagramEditor", "Profondeur", "toolbar title");
+		return QCoreApplication::translate("QETDiagramEditor", "Depth", "toolbar title");
 	return QString();
 }
 
@@ -262,13 +262,13 @@ bool DiagramToolbarSettings::isWidget(const QString &id)
 QString DiagramToolbarSettings::widgetTitle(const QString &id)
 {
 	if (id == QLatin1String("widget:handler_size"))
-		return QCoreApplication::translate("DiagramToolbarSettings", "Taille des poignées");
+		return QCoreApplication::translate("DiagramToolbarSettings", "Handle size");
 	if (id == QLatin1String("widget:text_grid"))
-		return QCoreApplication::translate("DiagramToolbarSettings", "Grille des textes");
+		return QCoreApplication::translate("DiagramToolbarSettings", "Text grid");
 	if (id == QLatin1String("widget:background_color"))
-		return QCoreApplication::translate("DiagramToolbarSettings", "Couleur de fond du folio");
+		return QCoreApplication::translate("DiagramToolbarSettings", "Sheet background color");
 	if (id == QLatin1String("widget:conductor_color"))
-		return QCoreApplication::translate("DiagramToolbarSettings", "Couleur des conducteurs");
+		return QCoreApplication::translate("DiagramToolbarSettings", "Conductor color");
 	return id;
 }
 

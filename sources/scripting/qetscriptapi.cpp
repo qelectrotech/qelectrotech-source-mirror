@@ -737,7 +737,7 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 	element->setPos(pos);
 	diagram->addItem(element);
 
-	auto *undo_group = new QUndoCommand(QObject::tr("Ajouter %1").arg(element->name()));
+	auto *undo_group = new QUndoCommand(QObject::tr("insert %1").arg(element->name()));
 	new AddGraphicsObjectCommand(element, diagram, pos, undo_group);
 	diagram->undoStack().push(undo_group);
 
@@ -758,7 +758,7 @@ bool QetScriptApi::setElementPosition(int folioIndex, const QString &elementUuid
 	if (old_value == new_value) return true; // already there; nothing to push
 
 	auto *cmd = new QPropertyUndoCommand(element, "pos", old_value, new_value);
-	cmd->setText(QObject::tr("Déplacer %1").arg(element->name()));
+	cmd->setText(QObject::tr("Move %1").arg(element->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -829,7 +829,7 @@ bool QetScriptApi::rotateElement(int folioIndex, const QString &elementUuid, dou
 	auto *cmd = new QPropertyUndoCommand(element, "rotation",
 										 QVariant(element->rotation()),
 										 QVariant(element->rotation() + angle));
-	cmd->setText(QObject::tr("Pivoter %1").arg(element->name()));
+	cmd->setText(QObject::tr("Rotate %1").arg(element->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -1189,7 +1189,7 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
 	potential << conductor;
 
-	m_project->undoStack()->beginMacro(QObject::tr("Modifier les propriétés du conducteur"));
+	m_project->undoStack()->beginMacro(QObject::tr("Edit the conductor properties"));
 	for (Conductor *c : std::as_const(potential))
 	{
 		QVariant old_value, new_value;
@@ -1843,7 +1843,7 @@ bool QetScriptApi::setTextContent(int folioIndex, int textIndex, const QString &
 
 	auto *cmd = new QPropertyUndoCommand(item, "plainText",
 										 QVariant(item->toPlainText()), QVariant(text));
-	cmd->setText(QObject::tr("Modifier un texte"));
+	cmd->setText(QObject::tr("Edit a text"));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -1866,7 +1866,7 @@ bool QetScriptApi::setTextColor(int folioIndex, int textIndex, const QString &co
 
 	auto *cmd = new QPropertyUndoCommand(item, "color",
 										 QVariant(item->color()), QVariant(new_color));
-	cmd->setText(QObject::tr("Modifier la couleur d'un texte"));
+	cmd->setText(QObject::tr("Change the color of a text"));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -1884,7 +1884,7 @@ bool QetScriptApi::setTextRotation(int folioIndex, int textIndex, double angle)
 	auto *cmd = new QPropertyUndoCommand(item, "rotation",
 										 QVariant(item->rotation()),
 										 QVariant(item->rotation() + angle));
-	cmd->setText(QObject::tr("Pivoter un texte"));
+	cmd->setText(QObject::tr("Rotate a text"));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -2043,7 +2043,7 @@ bool QetScriptApi::setShapeProperty(int folioIndex, int shapeIndex,
 			else { log(QStringLiteral("qet.%1: unknown line-style '%2'").arg(caller, value)); return false; }
 		}
 		if (pen == shape->pen()) return true;
-		old_value = shape->pen(); new_value = pen; qt_property = "pen"; what = QObject::tr("Modifier le trait d'une forme");
+		old_value = shape->pen(); new_value = pen; qt_property = "pen"; what = QObject::tr("Edit line of a form");
 	}
 	else if (property == QLatin1String("fill"))
 	{
@@ -2055,7 +2055,7 @@ bool QetScriptApi::setShapeProperty(int folioIndex, int shapeIndex,
 			brush.setStyle(Qt::SolidPattern); brush.setColor(c);
 		}
 		if (brush == shape->brush()) return true;
-		old_value = shape->brush(); new_value = brush; qt_property = "brush"; what = QObject::tr("Modifier le remplissage d'une forme");
+		old_value = shape->brush(); new_value = brush; qt_property = "brush"; what = QObject::tr("Edit filling a form");
 	}
 	else
 	{
@@ -2063,7 +2063,7 @@ bool QetScriptApi::setShapeProperty(int folioIndex, int shapeIndex,
 		const double angle = value.toDouble(&ok);
 		if (!ok) { log(QStringLiteral("qet.%1: '%2' is not an angle").arg(caller, value)); return false; }
 		if (angle == shape->rotation()) return true;
-		old_value = shape->rotation(); new_value = angle; qt_property = "rotation"; what = QObject::tr("Pivoter une forme");
+		old_value = shape->rotation(); new_value = angle; qt_property = "rotation"; what = QObject::tr("Rotate a shape");
 	}
 
 	auto *cmd = new QPropertyUndoCommand(shape, qt_property, old_value, new_value);
@@ -2270,7 +2270,7 @@ bool QetScriptApi::setShapePolygon(int folioIndex, int shapeIndex, const QVarian
 	const QVariant new_value = QVariant::fromValue(poly);
 	if (shape->polygon() == poly) return true;
 	auto *cmd = new QPropertyUndoCommand(shape, "polygon", old_value, new_value);
-	cmd->setText(QObject::tr("Modifier la forme d'%1").arg(shape->name()));
+	cmd->setText(QObject::tr("Change the shape of %1").arg(shape->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -2392,7 +2392,7 @@ bool QetScriptApi::setShapePathNodes(int folioIndex, int shapeIndex, const QVari
 	after_doc.appendChild(after);
 
 	auto *cmd = new PromoteShapeCommand(shape, before, after);
-	cmd->setText(QObject::tr("Modifier la forme d'%1").arg(shape->name()));
+	cmd->setText(QObject::tr("Change the shape of %1").arg(shape->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -2420,7 +2420,7 @@ bool QetScriptApi::setShapeClosed(int folioIndex, int shapeIndex, bool closed)
 	if (shape->isClosed() == closed) return true;
 
 	auto *cmd = new QPropertyUndoCommand(shape, "close", shape->isClosed(), closed);
-	cmd->setText(QObject::tr("Fermer/Ouvrir %1").arg(shape->name()));
+	cmd->setText(QObject::tr("Close/Open %1").arg(shape->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -3092,7 +3092,7 @@ bool QetScriptApi::setTablePosition(int folioIndex, int tableIndex, double x, do
 	if (old_value == new_value) return true; // already there; nothing to push
 
 	auto *cmd = new QPropertyUndoCommand(table, "pos", old_value, new_value);
-	cmd->setText(QObject::tr("Déplacer %1").arg(table->tableName()));
+	cmd->setText(QObject::tr("Move %1").arg(table->tableName()));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -3482,7 +3482,7 @@ bool QetScriptApi::setImageScale(int folioIndex, int imageIndex, double factor)
 
 	// Both axes, one undo step: a script that scales an image means the
 	// image, not one axis of it.
-	m_project->undoStack()->beginMacro(QObject::tr("Redimensionner une image"));
+	m_project->undoStack()->beginMacro(QObject::tr("Resize an image"));
 	m_project->undoStack()->push(new QPropertyUndoCommand(item, "scaleFactorX",
 								 QVariant(item->scaleFactorX()), QVariant(factor)));
 	m_project->undoStack()->push(new QPropertyUndoCommand(item, "scaleFactorY",
@@ -3508,7 +3508,7 @@ bool QetScriptApi::setImageRotation(int folioIndex, int imageIndex, double angle
 	if (item->rotationAngle() == angle) return true;
 	auto *cmd = new QPropertyUndoCommand(item, "rotationAngle",
 										 QVariant(item->rotationAngle()), QVariant(angle));
-	cmd->setText(QObject::tr("Pivoter une image"));
+	cmd->setText(QObject::tr("Rotate an image"));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -3884,7 +3884,7 @@ bool QetScriptApi::setElementTextProperty(int folioIndex, const QString &element
 
 	if (old_value == new_value) return true;
 	auto *cmd = new QPropertyUndoCommand(t, qt_property, old_value, new_value);
-	cmd->setText(QObject::tr("Modifier un texte d'élément"));
+	cmd->setText(QObject::tr("Edit element text"));
 	m_project->undoStack()->push(cmd);
 	return true;
 }
@@ -3966,7 +3966,7 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	// the same macro as the counter, making both one step.
 	const DiagramContext old_info = element->elementInformations();
 	QUndoStack *stack = m_project->undoStack();
-	stack->beginMacro(QObject::tr("Numéroter automatiquement un élément"));
+	stack->beginMacro(QObject::tr("Automatically number an element"));
 	element->setUpFormula(true);
 	const DiagramContext new_info = element->elementInformations();
 	if (new_info.value(QETInformation::ELMT_LABEL) == old_info.value(QETInformation::ELMT_LABEL)
@@ -4008,7 +4008,7 @@ int QetScriptApi::renumberElementAutoNum(const QString &name)
 	QVector<Element *> frozen;
 	if (auto *cmd = ElementAutoNumSchemeCommand::renumber(
 				m_project, name, &frozen,
-				QObject::tr("Renuméroter les éléments (%1)").arg(name))) {
+				QObject::tr("Renumber elements (%1)").arg(name))) {
 		m_project->undoStack()->push(cmd);
 	}
 	return static_cast<int>(frozen.size());
@@ -4949,7 +4949,7 @@ int QetScriptApi::searchAndReplace(const QString &kind, const QString &field,
 
 	if (apply(/*dryRun=*/true) == 0) return 0;
 
-	m_project->undoStack()->beginMacro(QObject::tr("Rechercher et remplacer"));
+	m_project->undoStack()->beginMacro(QObject::tr("Search and replace"));
 	const int changed = apply(/*dryRun=*/false);
 	m_project->undoStack()->endMacro();
 	return changed;

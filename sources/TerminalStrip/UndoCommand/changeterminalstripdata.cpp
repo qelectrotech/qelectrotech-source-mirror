@@ -24,7 +24,7 @@ ChangeTerminalStripData::ChangeTerminalStripData(TerminalStrip *strip,
 	m_strip(strip),
 	m_new_data(data)
 {
-	setText(QObject::tr("Modifier les proriétés d'un groupe de bornes"));
+	setText(QObject::tr("Modify the properties of a terminal group"));
 	m_old_data = strip->data();
 }
 

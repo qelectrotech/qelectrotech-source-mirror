@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QLabel" name="m_move_label">
      <property name="text">
-      <string>Déplacer dans :</string>
+      <string>Move to :</string>
      </property>
     </widget>
    </item>
@@ -64,7 +64,7 @@
    <item row="3" column="1">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Fonction :</string>
+      <string>Function :</string>
      </property>
     </widget>
    </item>
@@ -78,7 +78,7 @@
    <item row="0" column="3">
     <widget class="QPushButton" name="m_move_pb">
      <property name="toolTip">
-      <string>Appliquer le déplacement</string>
+      <string>Apply displacement</string>
      </property>
      <property name="text">
       <string/>
@@ -99,27 +99,27 @@
     <widget class="QComboBox" name="m_type_cb">
      <item>
       <property name="text">
-       <string>Générique</string>
+       <string>Generic</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Fusible</string>
+       <string>Fuse</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Sectionnable</string>
+       <string>Sectionable</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Diode</string>
+       <string>Diod</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Terre</string>
+       <string>Ground</string>
       </property>
      </item>
     </widget>
@@ -128,7 +128,7 @@
     <widget class="QComboBox" name="m_function_cb">
      <item>
       <property name="text">
-       <string>Générique</string>
+       <string>Generic</string>
       </property>
      </item>
      <item>
@@ -138,7 +138,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Neutre</string>
+       <string>Neutral</string>
       </property>
      </item>
     </widget>
@@ -147,12 +147,12 @@
     <widget class="QComboBox" name="m_led_cb">
      <item>
       <property name="text">
-       <string>Sans</string>
+       <string>Without</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Avec</string>
+       <string>With</string>
       </property>
      </item>
     </widget>

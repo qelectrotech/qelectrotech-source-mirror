@@ -186,7 +186,7 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		// Draw placeholder
 		painter->setBrush(QColor(255, 255, 200));
 		painter->drawRect(m_rect);
-		painter->drawText(m_rect, Qt::AlignCenter, QObject::tr("Table PLC"));
+		painter->drawText(m_rect, Qt::AlignCenter, QObject::tr("PLC Table"));
 		return;
 	}
 
@@ -194,7 +194,7 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	if (plc_data.ios.isEmpty()) {
 		painter->setBrush(QColor(255, 255, 200));
 		painter->drawRect(m_rect);
-		painter->drawText(m_rect, Qt::AlignCenter, QObject::tr("Table PLC (vide)"));
+		painter->drawText(m_rect, Qt::AlignCenter, QObject::tr("PLC table (empty)"));
 		return;
 	}
 
@@ -207,10 +207,10 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
 	QMap<int, QString> headers;
 	headers[COL_TYPE]     = QObject::tr("Type");
-	headers[COL_ADDRESS]  = QObject::tr("Adresse");
-	headers[COL_FUNCTION] = QObject::tr("Fonction");
-	headers[COL_COMMENT]  = QObject::tr("Commentaire");
-	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+	headers[COL_ADDRESS]  = QObject::tr("Address");
+	headers[COL_FUNCTION] = QObject::tr("Function");
+	headers[COL_COMMENT]  = QObject::tr("Annotation");
+	headers[COL_CROSSREF] = QObject::tr("Cross-reference");
 
 	// Override with custom column names if set
 	if (!plc_data.columnNames.isEmpty()) {
@@ -668,7 +668,7 @@ void PartPlcTable::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraph
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
 
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier une table PLC"));
+	QUndoCommand *undo = new QUndoCommand(tr("Change a PLC table"));
 	if (m_old_rect != m_rect) {
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
 		u->setAnimated(true, false);

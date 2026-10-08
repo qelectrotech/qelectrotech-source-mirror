@@ -52,10 +52,10 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	
 	ui->m_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_context_menu  = new QMenu(this);
-	m_link_action   = new QAction(tr("Lier l'élément"), this);
-	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
-	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
-	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
+	m_link_action   = new QAction(tr("Link the item"), this);
+	m_show_qtwi     = new QAction(tr("Show item"), this);
+	m_show_element  = new QAction(tr("Show slave element"), this);
+	m_save_header_state = new QAction(tr("Save the layout"), this);
 
 	// Hide the full-masters checkbox for non-slave elements
 	const bool is_slave = (elmt && elmt->elementData().m_type == ElementData::Slave);
@@ -233,9 +233,9 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 QString LinkSingleElementWidget::title() const
 {
 	if (m_element->elementData().m_type & ElementData::AllReport)
-		return tr("Report de folio");
+		return tr("Sheet reference");
 	else
-		return tr("Référence croisée (esclave)");
+		return tr("Cross-reference (slave)");
 }
 
 /**
@@ -514,18 +514,18 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
 			list << tr("Label")
-			     << tr("Commentaire")
-			     << tr("Label de folio")
+			     << tr("Annotation")
+			     << tr("Sheet label")
 			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Sheet title");
 		}
 		else
 		{
 			list << tr("Label")
-			     << tr("Commentaire")
-			     << tr("N° de folio")
+			     << tr("Annotation")
+			     << tr("Sheet no.")
 			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Sheet title");
 		}
 	}
 	
@@ -533,25 +533,25 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	{
 		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
-			list << tr("N° de fil")
-			     << tr("Fonction")
-			     << tr("Tension / Protocole")
-			     << tr("Couleur du conducteur")
-			     << tr("Section du conducteur")
-			     << tr("Label de folio")
+			list << tr("N° wire")
+			     << tr("Function")
+			     << tr("Voltage / Protocol")
+			     << tr("Conductor color")
+			     << tr("Conductor section")
+			     << tr("Sheet label")
 			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Sheet title");
 		}
 		else
 		{
-			list << tr("N° de fil")
-			     << tr("Fonction")
-			     << tr("Tension / Protocole")
-			     << tr("Couleur du conducteur")
-			     << tr("Section du conducteur")
-			     << tr("N° de folio")
+			list << tr("N° wire")
+			     << tr("Function")
+			     << tr("Voltage / Protocol")
+			     << tr("Conductor color")
+			     << tr("Conductor section")
+			     << tr("Sheet no.")
 			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Sheet title");
 		}
 	}
 	
@@ -620,15 +620,15 @@ void LinkSingleElementWidget::linkTriggered()
 						.arg(io.address)
 						.arg(io.functionText);
 					if (used_indices.contains(i))
-						label += tr(" (déjà utilisé)");
+						label += tr(" (already used)");
 					items << label;
 				}
 
 				bool ok = false;
 				int selected = QInputDialog::getInt(
 					this,
-					tr("Sélectionner un IO PLC"),
-					tr("IO disponible:"),
+					tr("Select a PLC I/O"),
+					tr("Available I/O:"),
 					0, 0, plc_data.ios.size() - 1, 1, &ok);
 
 				if (ok && selected >= 0) {

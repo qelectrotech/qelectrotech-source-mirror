@@ -35,7 +35,7 @@ QTextOrientationWidget::QTextOrientationWidget(QWidget *parent) :
 	read_only_(false)
 {
 	// chaines par defaut
-	text_size_hash_.insert(tr("Ex.",     "Short example string"),  -1);
+	text_size_hash_.insert(tr("e.g.",     "Short example string"),  -1);
 	text_size_hash_.insert(tr("Example", "Longer example string"), -1);
 
 	// definit la politique de gestion de la taille de ce widget :

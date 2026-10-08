@@ -494,7 +494,7 @@ void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_origin_pos != pos())
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
-		undo -> setText(tr("Déplacer un texte"));
+		undo -> setText(tr("Move a text"));
 		undo -> enableAnimation();
 		elementScene() -> undoStack().push(undo);
 	}
@@ -560,7 +560,7 @@ void PartText::endEdition()
 		QString new_text = toPlainText();
 		if (previous_text != new_text) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
-			undo -> setText(tr("Modifier un champ texte"));
+			undo -> setText(tr("Edit the text field"));
 			undoStack().push(undo);
 		}
 		previous_text = QString();

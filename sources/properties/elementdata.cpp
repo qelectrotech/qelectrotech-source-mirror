@@ -868,17 +868,17 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 {
 	switch (type) {
 		case ElementData::TTGeneric :
-			return QObject::tr("Générique", "generic terminal element type");
+			return QObject::tr("Generic", "generic terminal element type");
 		case ElementData::TTFuse :
-			return  QObject::tr("Fusible", "fuse terminal element type");
+			return  QObject::tr("Fuse", "fuse terminal element type");
 		case ElementData::TTSectional:
 			return QObject::tr("Sectionable", "sectional terminal element type");
 		case ElementData::TTDiode:
 			return QObject::tr("Diode", "diode terminal element type");
 		case ElementData::TTGround:
-			return QObject::tr("Terre", "ground terminal element type");
+			return QObject::tr("Ground", "ground terminal element type");
 	}
-	return QObject::tr("Générique", "generic terminal element type");
+	return QObject::tr("Generic", "generic terminal element type");
 }
 
 QString ElementData::terminalFunctionToString(ElementData::TerminalFunction function)
@@ -913,11 +913,11 @@ ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QStr
 QString ElementData::translatedTerminalFunction(ElementData::TerminalFunction function)
 {
 	switch (function) {
-		case TFGeneric : return QObject::tr("Générique", "generic terminal element function");
+		case TFGeneric : return QObject::tr("Generic", "generic terminal element function");
 		case TFPhase :   return QObject::tr("Phase", "phase terminal element function" );
-		case TFNeutral : return QObject::tr("Neutre", "neutral terminal element function");
+		case TFNeutral : return QObject::tr("Neutral", "neutral terminal element function");
 	}
-	return QObject::tr("Générique", "generic terminal element function");
+	return QObject::tr("Generic", "generic terminal element function");
 }
 
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)
@@ -1184,19 +1184,19 @@ QString ElementData::translatedPlcIOType(PlcIOType type)
 {
 	switch (type) {
 		case EntreeDigitale:
-			return QObject::tr("Entrée digitale");
+			return QObject::tr("Digital input");
 		case SortieDigitale:
-			return QObject::tr("Sortie digitale");
+			return QObject::tr("Digital output");
 		case EntreeAnalogique:
-			return QObject::tr("Entrée analogique");
+			return QObject::tr("Analogue input");
 		case SortieAnalogique:
-			return QObject::tr("Sortie analogique");
+			return QObject::tr("Analogue output");
 		case EntreeUniverselle:
-			return QObject::tr("Entrée universelle");
+			return QObject::tr("Universal input");
 		case SortieUniverselle:
-			return QObject::tr("Sortie universelle");
+			return QObject::tr("Universal output");
 	}
-	return QObject::tr("Entrée digitale");
+	return QObject::tr("Digital input");
 }
 
 /**

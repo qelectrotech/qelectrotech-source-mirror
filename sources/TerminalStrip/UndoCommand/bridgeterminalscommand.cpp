@@ -25,7 +25,7 @@ BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
 	m_strip(strip),
 	m_real_terminal_vector(real_terminal)
 {
-	setText(QObject::tr("Ponter des bornes entre-elles"));
+	setText(QObject::tr("Bridging terminals together"));
 }
 
 void BridgeTerminalsCommand::undo()
@@ -54,7 +54,7 @@ UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
 	QUndoCommand(parent),
 	m_strip(strip)
 {
-	setText(QObject::tr("Supprimer des ponts de bornes"));
+	setText(QObject::tr("Delete terminal bridges"));
 
 	if (strip->canUnBridge(real_terminal))
 	{

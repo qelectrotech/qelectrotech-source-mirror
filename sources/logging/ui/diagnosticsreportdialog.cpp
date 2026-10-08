@@ -53,7 +53,7 @@ DiagnosticsReportDialog::DiagnosticsReportDialog(
 	layout->addWidget(preview);
 
 	auto *buttons = new QDialogButtonBox(this);
-	QPushButton *save_button = buttons->addButton(tr("Enregistrer..."), QDialogButtonBox::ActionRole);
+	QPushButton *save_button = buttons->addButton(tr("Save..."), QDialogButtonBox::ActionRole);
 	buttons->addButton(QDialogButtonBox::Close);
 	connect(save_button, &QPushButton::clicked, this, &DiagnosticsReportDialog::saveToFile);
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
@@ -72,9 +72,9 @@ void DiagnosticsReportDialog::saveToFile()
 {
 	const QString path = QFileDialog::getSaveFileName(
 			this,
-			tr("Enregistrer le rapport de diagnostic"),
+			tr("Save the diagnostic report"),
 			QStringLiteral("qet-diagnostic-report.txt"),
-			tr("Fichiers texte (*.txt);;Tous les fichiers (*)"));
+			tr("Text files (*.txt);;All files (*)"));
 
 	if (path.isEmpty()) {
 		return;
@@ -84,8 +84,8 @@ void DiagnosticsReportDialog::saveToFile()
 	if (!file.open(QIODevice::WriteOnly)) {
 		QET::QetMessageBox::critical(
 				this,
-				tr("Erreur"),
-				tr("Impossible d'écrire dans le fichier « %1 ».").arg(path));
+				tr("Error"),
+				tr("Unable to write to the file « %1 ».").arg(path));
 		return;
 	}
 

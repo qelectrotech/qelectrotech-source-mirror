@@ -65,7 +65,7 @@ bool ESEventAddDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *eve
 {
 	if (event->button() == Qt::LeftButton)
 	{
-		m_scene->undoStack().push(new AddPartCommand(QObject::tr("Champ texte dynamique"), m_scene, m_text));
+		m_scene->undoStack().push(new AddPartCommand(QObject::tr("Dynamic text field"), m_scene, m_text));
 
 			//Set new text
 		m_text = new PartDynamicTextField(m_editor);

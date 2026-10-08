@@ -45,7 +45,7 @@ PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, cons
 	m_folders(folders),
 	m_tree(new QTreeWidget(this))
 {
-	setWindowTitle(tr("Préfixes de la collection utilisateur", "title of the dialog configuring the prefixes of the user collection"));
+	setWindowTitle(tr("User collection prefixes", "title of the dialog configuring the prefixes of the user collection"));
 	setModal(true);
 	resize(700, 500);
 
@@ -53,12 +53,12 @@ PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, cons
 
 	auto *hint = new QLabel(this);
 	hint->setWordWrap(true);
-	hint->setText(tr("Chaque dossier de la collection possède un préfixe : il est ajouté devant l'étiquette des éléments du dossier.\n"
-					 "Un champ vide signifie que le dossier reprend le préfixe de son dossier parent."));
+	hint->setText(tr("Each folder of the collection has a prefix: it is added in front of the label of the symbols in the folder.\n"
+					 "An empty field means the folder takes the prefix of its parent folder."));
 	layout->addWidget(hint);
 
 	m_tree->setColumnCount(2);
-	m_tree->setHeaderLabels(QStringList() << tr("Dossier", "column header of the folder tree") << tr("Préfixe", "column header of the prefix column"));
+	m_tree->setHeaderLabels(QStringList() << tr("Folder", "column header of the folder tree") << tr("Prefix", "column header of the prefix column"));
 	m_tree->setRootIsDecorated(true);
 	m_tree->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	m_tree->setSelectionMode(QAbstractItemView::NoSelection);
@@ -66,8 +66,8 @@ PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, cons
 	m_tree->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
 	layout->addWidget(m_tree);
 
-	auto *expand_pb = new QPushButton(tr("Tout déplier"), this);
-	auto *collapse_pb = new QPushButton(tr("Tout replier"), this);
+	auto *expand_pb = new QPushButton(tr("Expand all"), this);
+	auto *collapse_pb = new QPushButton(tr("Collapse all"), this);
 	connect(expand_pb, &QPushButton::clicked, m_tree, &QTreeWidget::expandAll);
 	connect(collapse_pb, &QPushButton::clicked, m_tree, &QTreeWidget::collapseAll);
 
@@ -107,13 +107,13 @@ void PrefixConfigurationDialog::askWhatToDoWithOrphans()
 	}
 
 	QMessageBox box(QMessageBox::Question,
-					tr("Entrées sans dossier"),
-					tr("%n entrée(s) de qet_labels.xml ne correspond à aucun dossier de la collection :\n"
-					   "les conserver ou les supprimer ?", nullptr, static_cast<int>(orphans.size())),
+					tr("Entries without a folder"),
+					tr("%n entries of qet_labels.xml match no folder of the collection:\n"
+					   "keep them or delete them?", nullptr, static_cast<int>(orphans.size())),
 					QMessageBox::NoButton,
 					parentWidget());
-	auto *keep_button = box.addButton(tr("Conserver"), QMessageBox::AcceptRole);
-	box.addButton(tr("Supprimer"), QMessageBox::DestructiveRole);
+	auto *keep_button = box.addButton(tr("Keep"), QMessageBox::AcceptRole);
+	box.addButton(tr("Delete"), QMessageBox::DestructiveRole);
 	box.setDetailedText(orphans.join(QLatin1Char('\n')));
 	box.exec();
 
@@ -165,16 +165,16 @@ void PrefixConfigurationDialog::buildTree()
 			//field too, but does not inherit : say so instead of promising
 			//an inheritance that will not happen
 		edit->setPlaceholderText(m_labels.hasPrefix(folder)
-								 ? tr("aucun préfixe : n'hérite pas du parent",
+								 ? tr("no prefix: does not take the parent's",
 									  "placeholder of an empty prefix field whose folder explicitly has no prefix, which cancels the inheritance")
-								 : tr("hériter du dossier parent", "placeholder of an empty prefix field"));
+								 : tr("take the parent folder's", "placeholder of an empty prefix field"));
 		connect(edit, &QLineEdit::textEdited, this, [parent_item, edit]() {
 				//Once the user has typed in the field, whatever it holds
 				//when OK is pressed is what the folder gets - an emptied
 				//field then means "inherit" again, even when the file had
 				//an explicit <prefix/>
 			parent_item->setData(1, Qt::UserRole + 1, true);
-			edit->setPlaceholderText(tr("hériter du dossier parent", "placeholder of an empty prefix field"));
+			edit->setPlaceholderText(tr("take the parent folder's", "placeholder of an empty prefix field"));
 		});
 		edit->installEventFilter(this);
 		m_tree->setItemWidget(parent_item, 1, edit);
@@ -220,16 +220,16 @@ void PrefixConfigurationDialog::accept()
 
 	if (!m_labels.save()) {
 		QMessageBox::critical(this,
-							  tr("Enregistrement impossible"),
-							  tr("Le fichier %1 n'a pas pu être enregistré :\n%2")
+							  tr("Cannot save"),
+							  tr("The file %1 could not be saved:\n%2")
 							  .arg(m_labels.filePath(), m_labels.errorString()));
 		return;
 	}
 
 	if (!m_labels.backupPath().isEmpty()) {
 		QMessageBox::information(this,
-								 tr("Fichier endommagé remplacé"),
-								 tr("Le fichier %1 était illisible : il a été remplacé.\nSa copie a été conservée sous :\n%2")
+								 tr("Damaged file replaced"),
+								 tr("The file %1 could not be read: it has been replaced.\nIts copy was kept as:\n%2")
 								 .arg(m_labels.filePath(), m_labels.backupPath()));
 	}
 

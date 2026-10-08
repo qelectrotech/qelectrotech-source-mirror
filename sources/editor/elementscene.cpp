@@ -328,7 +328,7 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 			QPropertyUndoCommand *undo =
 					new QPropertyUndoCommand(
 						qgo,"pos",QVariant(original_pos),QVariant(p));
-			undo->setText(tr("Déplacer une primitive"));
+			undo->setText(tr("Move a primitive"));
 			undo->enableAnimation();
 			undoStack().push(undo);
 			event->accept();
@@ -937,12 +937,12 @@ void ElementScene::slot_editAuthorInformations()
 #endif
 	dialog_author.setMinimumSize(400, 260);
 	dialog_author.setWindowTitle(
-				tr("Éditer les informations sur l'auteur", "window title"));
+				tr("Edit author information", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
 
 	// adds an explanatory field to the dialogue
 	// ajoute un champ explicatif au dialogue
-	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'élément, sa licence, ou tout autre renseignement que vous jugerez utile."));
+	QLabel *information_label = new QLabel(tr("You can use this field to specify the authors of this element, its license, or any other information you may find useful."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);
@@ -1038,9 +1038,9 @@ void ElementScene::slot_editNames()
 
 	dialog_.setModal(true);
 	dialog_.setMinimumSize(400, 330);
-	dialog_.setWindowTitle(tr("Éditer les noms", "window title"));
+	dialog_.setWindowTitle(tr("Edit names", "window title"));
 
-	dialog_.setInformationText(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
+	dialog_.setInformationText(tr("You may enter the element name in several languages."));
 
 	NameListWidget *nlw_ = dialog_.namelistWidget();
 	nlw_->setNames(m_element_data.m_names_list);

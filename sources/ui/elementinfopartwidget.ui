@@ -58,7 +58,7 @@
    <item row="2" column="1">
     <widget class="QCheckBox" name="m_erase_text">
      <property name="toolTip">
-      <string>Supprimer ce texte</string>
+      <string>Delete this text</string>
      </property>
      <property name="text">
       <string/>
@@ -68,7 +68,7 @@
    <item row="2" column="2">
     <widget class="QToolButton" name="m_material_btn">
      <property name="toolTip">
-      <string extracomment="tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry">Choisir un article dans la liste de matériaux</string>
+      <string extracomment="tooltip of the button opening the material file; it fills the fields of this block from a catalogue entry">Choose an item from the materials list</string>
      </property>
      <property name="text">
       <string notr="true">…</string>

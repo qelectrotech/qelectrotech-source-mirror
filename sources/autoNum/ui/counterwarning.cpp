@@ -38,12 +38,15 @@ bool CounterWarning::confirm(QWidget *parent,
 	}
 	const auto answer = QET::QetMessageBox::question(
 				parent,
-				tr("Compteur de la numérotation"),
-				tr("Le prochain numéro serait %1, mais %n élément(s) de la numérotation « %2 » "
-				   "ont déjà un numéro égal ou supérieur (jusqu'à %3).", "", conflict->count)
+				tr("Numbering counter"),
+				tr("The next number would be %1, but %n elements of the “%2” numbering already "
+				   "have an equal or higher number (up to %3).", "", conflict->count)
 				.arg(conflict->counter).arg(title).arg(conflict->highest)
-				+ tr("\nLes nouveaux éléments sauteront les numéros déjà pris : ils ne recevront "
-					 "pas forcément les numéros à partir de %1.\n\nContinuer ?").arg(conflict->counter),
+				+ tr("\n"
+					 "New elements will skip numbers that are already taken: they will not "
+					 "necessarily receive numbers starting from %1.\n"
+					 "\n"
+					 "Continue?").arg(conflict->counter),
 				QMessageBox::Yes | QMessageBox::Cancel,
 				QMessageBox::Cancel);
 	return answer == QMessageBox::Yes;

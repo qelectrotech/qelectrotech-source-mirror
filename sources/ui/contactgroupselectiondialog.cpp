@@ -35,12 +35,12 @@ ContactGroupSelectionDialog::ContactGroupSelectionDialog(
 	: QDialog(parent)
 {
 	m_used_indices = usedGroupIndices;
-	setWindowTitle(tr("Sélectionner un groupe de contacts"));
+	setWindowTitle(tr("Select a group of contacts"));
 
 	auto *main_layout = new QVBoxLayout(this);
 
 	auto *info_label = new QLabel(
-		tr("Sélectionnez le groupe de contacts à assigner à cet élément esclave :"));
+		tr("Select the contact group to assign to this slave element :"));
 	main_layout->addWidget(info_label);
 
 	// Determine max terminal count for dynamic columns
@@ -54,9 +54,9 @@ ContactGroupSelectionDialog::ContactGroupSelectionDialog(
 	QStringList headers;
 	headers << tr("#")
 			<< tr("Type")
-			<< tr("Sous-type")
+			<< tr("Subtype")
 			<< tr("Contacts")
-			<< tr("Bornes");
+			<< tr("Terminals");
 	for (int t = 0; t < max_terminals; ++t) {
 		headers << tr("T%1").arg(t + 1);
 	}
@@ -116,18 +116,18 @@ ContactGroupSelectionDialog::ContactGroupSelectionDialog(
 
 		if (m_used_indices.contains(row)) {
 			disabled = true;
-			reason = tr("(déjà assigné)");
+			reason = tr("(already assigned)");
 		} else {
 			const auto &g = groups.at(row);
 			if (g.type != slaveData.m_slave_state) {
 				disabled = true;
-				reason = tr("(état ne correspond pas)");
+				reason = tr("(status does not match)");
 			} else if (g.subtype != slaveData.m_slave_type) {
 				disabled = true;
-				reason = tr("(sous-type ne correspond pas)");
+				reason = tr("(subtype does not match)");
 			} else if (g.contactCount != slaveData.m_contact_count) {
 				disabled = true;
-				reason = tr("(nombre de contacts ne correspond pas)");
+				reason = tr("(number of contacts does not match)");
 			}
 		}
 
@@ -189,7 +189,7 @@ ContactGroupSelectionDialog::ContactGroupSelectionDialog(
 	m_ok_button = new QPushButton(tr("OK"), this);
 	button_layout->addWidget(m_ok_button);
 
-	auto *cancel_button = new QPushButton(tr("Annuler"), this);
+	auto *cancel_button = new QPushButton(tr("Undo"), this);
 	button_layout->addWidget(cancel_button);
 
 	main_layout->addLayout(button_layout);
@@ -221,11 +221,11 @@ int ContactGroupSelectionDialog::selectedIndex() const
 QString ContactGroupSelectionDialog::typeToString(ElementData::SlaveState type)
 {
 	switch (type) {
-		case ElementData::NO:    return tr("Normalement ouvert");
-		case ElementData::NC:    return tr("Normalement fermé");
-		case ElementData::SW:    return tr("Inverseur");
-		case ElementData::Other: return tr("Autre");
-		default: return tr("Inconnu");
+		case ElementData::NO:    return tr("Switch normally open");
+		case ElementData::NC:    return tr("Switch normally closed");
+		case ElementData::SW:    return tr("switch");
+		case ElementData::Other: return tr("Other");
+		default: return tr("Unknown");
 	}
 }
 
@@ -233,10 +233,10 @@ QString ContactGroupSelectionDialog::subtypeToString(ElementData::SlaveType subt
 {
 	switch (subtype) {
 		case ElementData::SSimple:    return tr("Simple");
-		case ElementData::Power:      return tr("Puissance");
-		case ElementData::DelayOn:    return tr("Temporisé travail");
-		case ElementData::DelayOff:   return tr("Temporisé repos");
-		case ElementData::delayOnOff: return tr("Temporisé travail & repos");
-		default: return tr("Inconnu");
+		case ElementData::Power:      return tr("Power switch");
+		case ElementData::DelayOn:    return tr("Switch-on delayed");
+		case ElementData::DelayOff:   return tr("Switch-off delayed");
+		case ElementData::delayOnOff: return tr("Switch-on  and off delayed");
+		default: return tr("Unknown");
 	}
 }

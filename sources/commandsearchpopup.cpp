@@ -42,14 +42,14 @@ CommandSearchPopup::CommandSearchPopup(QWidget *owner) :
 	setMinimumWidth(380);
 
 	m_search = new QLineEdit(this);
-	m_search->setPlaceholderText(tr("Rechercher une commande…"));
+	m_search->setPlaceholderText(tr("Search for a command…"));
 	m_search->setClearButtonEnabled(true);
 	m_list = new QListWidget(this);
 	m_list->setIconSize(QSize(20, 20));
 	m_list->setMinimumHeight(280);
 	m_list->setFocusPolicy(Qt::NoFocus);
 
-	auto *hint = new QLabel(tr("Entrée pour lancer · Échap pour fermer"), this);
+	auto *hint = new QLabel(tr("Enter to launch · Esc to close"), this);
 	hint->setEnabled(false);
 
 	auto *layout = new QVBoxLayout(this);

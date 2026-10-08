@@ -49,12 +49,12 @@ bool ConductorNumExport::toCsv()
 		//save in csv file in same directory as project by default
 	QString dir = m_project->currentDir();
 	if (dir.isEmpty()) dir = QETApp::documentDir();
-	QString name = dir % "/" % QObject::tr("numero_de_fileries_") % m_project->title() % ".csv";
+	QString name = dir % "/" % QObject::tr("number_of_wiring_") % m_project->title() % ".csv";
 	//    if(!name.endsWith(".csv")) {
 	//        name += ".csv";
 	//    }
 
-	QString filename = QFileDialog::getSaveFileName(m_parent_widget, QObject::tr("Enregister sous... "), name, QObject::tr("Fichiers csv (*.csv)"));
+	QString filename = QFileDialog::getSaveFileName(m_parent_widget, QObject::tr("Save As... "), name, QObject::tr("Files csv (*.csv)"));
 	QFile file(filename);
 	if(!filename.isEmpty())
 	{
@@ -63,8 +63,8 @@ bool ConductorNumExport::toCsv()
 			// if file already exist -> delete it
 			if(!QFile::remove(filename))
 			{
-				QMessageBox::critical(m_parent_widget, QObject::tr("Erreur"),
-									  QObject::tr("Impossible de remplacer le fichier!\n\n") %
+				QMessageBox::critical(m_parent_widget, QObject::tr("Error"),
+									  QObject::tr("Unable to replace the file!\n\n") %
 									  "Destination : " % filename % "\n");
 				return false;
 			}
