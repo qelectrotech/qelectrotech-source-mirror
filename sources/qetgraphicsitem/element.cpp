@@ -1055,7 +1055,7 @@ bool Element::fromXml(QDomElement &e,
 			|| e.hasAttribute(QStringLiteral("seqt_1"))
 			|| e.hasAttribute(QStringLiteral("seqtf_1"))
 			|| e.hasAttribute(QStringLiteral("seqh_1"))
-			|| e.hasAttribute(QStringLiteral("sequf_1")))
+			|| e.hasAttribute(QStringLiteral("seqhf_1")))
 		ElementXmlRetroCompatibility::loadSequential(e, this);
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement(QStringLiteral("sequentialNumbers")));
