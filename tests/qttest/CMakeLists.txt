@@ -135,6 +135,13 @@ add_test(NAME tst_textgrid COMMAND tst_textgrid)
 target_include_directories(tst_textgrid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textgrid PRIVATE Qt::Test)
 
+# foliogrid.h is header-only: the folio grid step as read from the
+# settings, never 0 or negative, so no reader can divide by it or loop on it.
+add_executable(tst_foliogrid tst_foliogrid.cpp)
+target_include_directories(tst_foliogrid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_foliogrid PRIVATE Qt::Test Qt::Core)
+add_test(NAME tst_foliogrid COMMAND tst_foliogrid)
+
 # textlines.h is header-only: the lines of a text as they are laid out,
 # for the exports that write a text line by line.
 add_executable(tst_textlines tst_textlines.cpp)
