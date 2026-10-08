@@ -1001,6 +1001,16 @@ add_test(NAME tst_xrefpos COMMAND tst_xrefpos)
 target_include_directories(tst_xrefpos PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_xrefpos PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# BorderProperties::fromXml() -- the project's <border> for new folios:
+# column width and row height are decimals and are read as such.
+add_executable(
+  tst_borderpropertiesxml
+  tst_borderpropertiesxml.cpp
+  ${QET_DIR}/sources/borderproperties.cpp)
+add_test(NAME tst_borderpropertiesxml COMMAND tst_borderpropertiesxml)
+target_include_directories(tst_borderpropertiesxml PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_borderpropertiesxml PRIVATE Qt::Test Qt::Xml)
+
 # Qt 6.4.2 writes the attributes of an element in an order that changes from
 # one process to the next, so a project saved twice by two runs of the binary
 # differs in bytes only (seen on projects without any numbering, too). A fixed

@@ -117,9 +117,15 @@ void BorderProperties::toXml(QDomElement &e) const
 */
 void BorderProperties::fromXml(QDomElement &e) {
 	if (e.hasAttribute("cols"))        columns_count   = e.attribute("cols").toInt();
-	if (e.hasAttribute("colsize"))     columns_width   = e.attribute("colsize").toInt();
 	if (e.hasAttribute("rows"))        rows_count      = e.attribute("rows").toInt();
-	if (e.hasAttribute("rowsize"))     rows_height     = e.attribute("rowsize").toInt();
+		// The sizes are decimals (toXml() writes them with %1), read as
+		// BorderTitleBlock::borderFromXml() does; an unreadable value is
+		// left as it was.
+	bool ok;
+	qreal size = e.attribute("colsize").toDouble(&ok);
+	if (ok && qIsFinite(size)) columns_width = size;
+	size = e.attribute("rowsize").toDouble(&ok);
+	if (ok && qIsFinite(size)) rows_height = size;
 	if (e.hasAttribute("displaycols")) display_columns = e.attribute("displaycols") == "true";
 	if (e.hasAttribute("displayrows")) display_rows    = e.attribute("displayrows") == "true";
 }
