@@ -906,6 +906,20 @@ if(QET_HAS_SCRIPTING)
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 endif()
 
+# A picture whose saved crop does not match the picture shown (an undone
+# crop, saved before #1310) loads without that crop; a valid crop is kept.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_imagestalecrop
+    tst_imagestalecrop.cpp)
+  add_test(NAME tst_imagestalecrop COMMAND tst_imagestalecrop)
+  add_dependencies(tst_imagestalecrop qelectrotech)
+  target_link_libraries(tst_imagestalecrop PRIVATE Qt::Test Qt::Gui)
+  target_compile_definitions(tst_imagestalecrop PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
+
 # Saving a project that was just saved changes nothing: runs the real
 # binary's --resave twice on every project in examples/, and on one whose
 # title block holds a single-space value (#973).
