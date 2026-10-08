@@ -1,4 +1,4 @@
-        LangString installed         ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
+﻿        LangString installed         ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
         LangString wrongArch         ${LANG_ENGLISH} "This distribution is for 64 bits computers only."
         LangString Elements          ${LANG_ENGLISH}  "Elements"
         LangString Electric          ${LANG_ENGLISH}  "Electric"
