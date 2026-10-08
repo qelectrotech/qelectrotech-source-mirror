@@ -557,6 +557,18 @@ target_compile_definitions(tst_wiringlistexport PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# A label formula with ten or more sequential numbers gets the tenth value
+# for %sequ_10 (not the first one and a "0"): the real binary's
+# --export-bom on fixtures/ten_sequential_numbers.qet.
+add_executable(
+  tst_tensequentialnumbers
+  tst_tensequentialnumbers.cpp)
+add_test(NAME tst_tensequentialnumbers COMMAND tst_tensequentialnumbers)
+add_dependencies(tst_tensequentialnumbers qelectrotech)
+target_link_libraries(tst_tensequentialnumbers PRIVATE Qt::Test)
+target_compile_definitions(tst_tensequentialnumbers PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # --export-dxf writes a wrapped symbol text line by line, as it is drawn.
 add_executable(
   tst_dxfwrappedtext
