@@ -1686,7 +1686,12 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	// pivot), the same two-tier fallback QetShapeItem's own fromXml()
 	// already uses for its identical <transform> element.
 	m_transform.rotation = e.attribute("rotation").toDouble();
-	m_transform.scaleX = e.attribute("size").toDouble();
+		//A missing, unreadable, non-finite or zero size would scale the
+		//picture to nothing (and a resave wrote size="0" back): use 1,
+		//the size a picture is added with, as the <transform> branch does
+	bool size_ok = false;
+	const qreal size = e.attribute("size").toDouble(&size_ok);
+	m_transform.scaleX = (size_ok && qIsFinite(size) && size != 0) ? size : 1;
 	m_transform.scaleY = m_transform.scaleX;
 	m_transform.pivot = imageRect().center();
 	m_pivotIsCustom = false;

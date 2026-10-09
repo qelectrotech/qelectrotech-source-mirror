@@ -1037,6 +1037,19 @@ target_compile_definitions(tst_terminaluuids PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# A picture whose size attribute is missing, unreadable, "nan" or 0 is
+# loaded at size 1, not 0: the real binary's --resave and --export-svg on
+# fixtures/image_missing_size.qet.
+add_executable(
+  tst_imagemissingsize
+  tst_imagemissingsize.cpp)
+add_test(NAME tst_imagemissingsize COMMAND tst_imagemissingsize)
+set_tests_properties(tst_imagemissingsize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+add_dependencies(tst_imagemissingsize qelectrotech)
+target_link_libraries(tst_imagemissingsize PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_imagemissingsize PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Sequential numbers saved the old way, as sequ_1/.../seqhf_1 attributes,
 # are all read: the real binary's --resave on
 # fixtures/legacy_sequential_attributes.qet, whose element and conductor
