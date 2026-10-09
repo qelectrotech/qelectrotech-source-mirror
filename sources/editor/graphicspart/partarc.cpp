@@ -388,24 +388,24 @@ void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 			m_span_point = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16).at(1);
 
 			m_undo_command = new QPropertyUndoCommand(this, "startAngle", QVariant(m_start_angle));
-			m_undo_command->setText(tr("Modifier un arc"));
+			m_undo_command->setText(tr("Edit an arc"));
 			m_undo_command->enableAnimation();
 
 			m_undo_command2 = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle), m_undo_command);
-			m_undo_command2->setText(tr("Modifier un arc"));
+			m_undo_command2->setText(tr("Edit an arc"));
 			m_undo_command2->enableAnimation();
 		}
 		else if (m_vector_index == 1)
 		{
 			m_undo_command = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle));
-			m_undo_command->setText(tr("Modifier un arc"));
+			m_undo_command->setText(tr("Edit an arc"));
 			m_undo_command->enableAnimation();
 		}
 	}
 	else //resize rect
 	{
 		m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-		m_undo_command->setText(tr("Modifier un arc"));
+		m_undo_command->setText(tr("Edit an arc"));
 		m_undo_command->enableAnimation();
 	}
 }

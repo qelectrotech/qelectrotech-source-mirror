@@ -17,13 +17,13 @@
    <item>
     <widget class="QGroupBox" name="m_geometry_gb">
      <property name="title">
-      <string>Géométrie</string>
+      <string>Geometry</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
        <widget class="QLabel" name="m_geom_dim1_label">
         <property name="text">
-         <string>Largeur</string>
+         <string>Width</string>
         </property>
        </widget>
       </item>
@@ -43,7 +43,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="m_geom_dim2_label">
         <property name="text">
-         <string>Hauteur</string>
+         <string>Height</string>
         </property>
        </widget>
       </item>
@@ -89,7 +89,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Trait</string>
+      <string>Line</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
@@ -102,14 +102,14 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Épaisseur</string>
+         <string>Thickness</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Couleur</string>
+         <string>Color</string>
         </property>
        </widget>
       </item>
@@ -159,27 +159,27 @@
         </item>
         <item>
          <property name="text">
-          <string>Tiret</string>
+          <string>Dashed</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Pointillé</string>
+          <string>Dotted</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Traits et points</string>
+          <string>Dots and dashes</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Traits points points</string>
+          <string>Dash dot dot</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Tiret custom</string>
+          <string>Custom Dash Line</string>
          </property>
         </item>
        </widget>
@@ -190,54 +190,54 @@
    <item>
     <widget class="QGroupBox" name="m_filling_gb">
      <property name="title">
-      <string>Remplissage</string>
+      <string>Filling</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="1">
        <widget class="QComboBox" name="m_brush_style_cb">
         <item>
          <property name="text">
-          <string>Aucun</string>
+          <string>None</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Plein</string>
+          <string>Solid line</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 1</string>
+          <string>Dense 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 2</string>
+          <string>Dense 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 3</string>
+          <string>Dense 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 4</string>
+          <string>Dense 4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 5</string>
+          <string>Dense 5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 6</string>
+          <string>Dense 6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Densité 7</string>
+          <string>Dense 7</string>
          </property>
         </item>
         <item>
@@ -252,22 +252,22 @@
         </item>
         <item>
          <property name="text">
-          <string>Croix</string>
+          <string>Cross</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Diagonal arrière</string>
+          <string>BDiag</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Diagonal avant</string>
+          <string>FDiag</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Diagonal en croix</string>
+          <string>CrossDiag</string>
          </property>
         </item>
        </widget>
@@ -282,7 +282,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Couleur</string>
+         <string>Color</string>
         </property>
        </widget>
       </item>
@@ -295,14 +295,14 @@
    <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">
      <property name="text">
-      <string>Verrouiller la position</string>
+      <string>Lock Position</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QCheckBox" name="m_close_polygon">
      <property name="text">
-      <string>Forme fermée</string>
+      <string>Closed shape</string>
      </property>
     </widget>
    </item>

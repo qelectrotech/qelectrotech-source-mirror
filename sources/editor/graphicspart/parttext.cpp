@@ -89,8 +89,8 @@ void PartText::mirror(qreal axis_x) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
 	// then see, where we need to re-position depending on text, font ...
-	QFontMetrics qfm(font());
-	qreal textwidth  = qfm.horizontalAdvance(toPlainText());
+	// (the widest line, not the whole text measured as one line)
+	qreal textwidth  = document()->idealWidth() - 2 * document()->documentMargin();
 	// ... and angle!!!
 	qreal rot = qRound(QET::correctAngle(rotation(), true));
 	qreal c = qCos(qDegreesToRadians(rot));
@@ -164,6 +164,10 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	setPos(xml_element.attribute("x").toDouble(),
 			xml_element.attribute("y").toDouble());
 	QGraphicsObject::setRotation(QET::correctAngle(xml_element.attribute("rotation", QString::number(0)).toDouble()));
+
+	m_anchor_to_alignment = xml_element.attribute("anchor") == QLatin1String("alignment");
+	if (m_anchor_to_alignment)
+		setPos(pos() - anchorOffset());
 }
 
 /**
@@ -175,8 +179,10 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement(xmlName());
 
-	qreal x   = (qRound(pos().x() * 100.0) / 100.0);
-	qreal y   = (qRound(pos().y() * 100.0) / 100.0);
+	const QPointF anchor = m_anchor_to_alignment ? pos() + anchorOffset()
+												 : pos();
+	qreal x   = (qRound(anchor.x() * 100.0) / 100.0);
+	qreal y   = (qRound(anchor.y() * 100.0) / 100.0);
 	qreal rot = (qRound(rotation() * 10.0) /  10.0);
 	xml_element.setAttribute("x", QString::number(x));
 	xml_element.setAttribute("y", QString::number(y));
@@ -197,6 +203,8 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 		xml_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
 	else if (m_alignment & Qt::AlignVCenter)
 		xml_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+	if (m_anchor_to_alignment)
+		xml_element.setAttribute("anchor", "alignment");
 
 	return(xml_element);
 }
@@ -444,6 +452,25 @@ void PartText::finishAlignment()
 	setPos(pos() - (pa - p));
 }
 
+/**
+	@brief PartText::anchorOffset
+	@return the vector from the baseline-left of the text to the point
+	written as x/y with anchor="alignment" (#1251): the left edge, centre or
+	right edge of the text, without the document margin, on the baseline.
+	Uses the same width as ElementPictureFactory::parseText, which draws
+	without a margin.
+*/
+QPointF PartText::anchorOffset() const
+{
+	qreal width = document()->idealWidth() - 2 * document()->documentMargin();
+	qreal dx = 0;
+	if (m_alignment & Qt::AlignRight)
+		dx = width;
+	else if (m_alignment & Qt::AlignHCenter)
+		dx = width / 2;
+	return QTransform().rotate(rotation()).map(QPointF(dx, 0));
+}
+
 void PartText::setFont(const QFont &font) {
 	if (font != this -> font()) {
 		prepareAlignment();
@@ -494,7 +521,7 @@ void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_origin_pos != pos())
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
-		undo -> setText(tr("Déplacer un texte"));
+		undo -> setText(tr("Move a text"));
 		undo -> enableAnimation();
 		elementScene() -> undoStack().push(undo);
 	}
@@ -560,7 +587,7 @@ void PartText::endEdition()
 		QString new_text = toPlainText();
 		if (previous_text != new_text) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
-			undo -> setText(tr("Modifier un champ texte"));
+			undo -> setText(tr("Edit the text field"));
 			undoStack().push(undo);
 		}
 		previous_text = QString();

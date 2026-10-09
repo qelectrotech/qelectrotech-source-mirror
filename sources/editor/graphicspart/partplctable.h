@@ -43,7 +43,7 @@ class PartPlcTable : public CustomElementGraphicPart
 		enum { Type = UserType + 1120 };
 		int     type  () const override { return Type; }
 		void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
-		QString name  () const override { return QObject::tr("table PLC", "element part name"); }
+		QString name  () const override { return QObject::tr("PLC Table", "element part name"); }
 
 		QString           xmlName () const override { return QString("plc_table"); }
 		const QDomElement toXml   (QDomDocument &) const override;

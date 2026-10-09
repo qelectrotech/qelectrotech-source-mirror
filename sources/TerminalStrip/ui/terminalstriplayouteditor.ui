@@ -41,7 +41,7 @@
    <item row="0" column="1">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Décalage vertical</string>
+      <string>Vertical offset</string>
      </property>
     </widget>
    </item>
@@ -62,7 +62,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>Borne niveau 0 :</string>
+      <string>Level 0 terminal:</string>
      </property>
     </widget>
    </item>
@@ -107,14 +107,14 @@
    <item row="7" column="0">
     <widget class="QLabel" name="label_10">
      <property name="text">
-      <string>Borne niveau 3 :</string>
+      <string>Level 3 terminal:</string>
      </property>
     </widget>
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_9">
      <property name="text">
-      <string>Borne niveau 2 :</string>
+      <string>Level 2 terminal:</string>
      </property>
     </widget>
    </item>
@@ -142,7 +142,7 @@
    <item row="13" column="4">
     <widget class="QCheckBox" name="m_display_preview_help">
      <property name="text">
-      <string>Afficher l'aide</string>
+      <string>Show help</string>
      </property>
      <property name="checked">
       <bool>false</bool>
@@ -152,7 +152,7 @@
    <item row="0" column="2">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Largeur</string>
+      <string>Width</string>
      </property>
     </widget>
    </item>
@@ -166,7 +166,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Espace :</string>
+      <string>Space :</string>
      </property>
     </widget>
    </item>
@@ -194,7 +194,7 @@
    <item row="5" column="0">
     <widget class="QLabel" name="label_8">
      <property name="text">
-      <string>Borne niveau 1 :</string>
+      <string>Level 1 terminal:</string>
      </property>
     </widget>
    </item>
@@ -231,17 +231,17 @@
        <widget class="QComboBox" name="m_header_text_alignment_cb">
         <item>
          <property name="text">
-          <string>Gauche</string>
+          <string>Left</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Centre</string>
+          <string>Middle</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Droite</string>
+          <string>Right</string>
          </property>
         </item>
        </widget>
@@ -256,7 +256,7 @@
       <item row="6" column="2">
        <widget class="QLabel" name="label_15">
         <property name="text">
-         <string>Alignement</string>
+         <string>Alignment</string>
         </property>
        </widget>
       </item>
@@ -288,7 +288,7 @@
          <item>
           <widget class="QLabel" name="label_12">
            <property name="text">
-            <string>Taille :</string>
+            <string>Size :</string>
            </property>
           </widget>
          </item>
@@ -318,7 +318,7 @@
       <item row="2" column="3">
        <widget class="QLabel" name="label_20">
         <property name="text">
-         <string>Texte d'en tête</string>
+         <string>Header text</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -328,14 +328,14 @@
       <item row="7" column="2">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>Origine vertical</string>
+         <string>Vertical origin</string>
         </property>
        </widget>
       </item>
       <item row="8" column="2">
        <widget class="QLabel" name="label_19">
         <property name="text">
-         <string>Longueur maximal</string>
+         <string>Maximum length</string>
         </property>
        </widget>
       </item>
@@ -360,17 +360,17 @@
        <widget class="QComboBox" name="m_terminal_text_alignment_cb">
         <item>
          <property name="text">
-          <string>Gauche</string>
+          <string>Left</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Centre</string>
+          <string>Middle</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Droite</string>
+          <string>Right</string>
          </property>
         </item>
        </widget>
@@ -392,7 +392,7 @@
       <item row="2" column="4">
        <widget class="QLabel" name="label_21">
         <property name="text">
-         <string>Texte borne</string>
+         <string>Text terminal</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -402,7 +402,7 @@
       <item row="2" column="5">
        <widget class="QLabel" name="label_22">
         <property name="text">
-         <string>Référence croisée</string>
+         <string>Cross-reference</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -427,17 +427,17 @@
        <widget class="QComboBox" name="m_xref_alignment_cb">
         <item>
          <property name="text">
-          <string>Gauche</string>
+          <string>Left</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Centre</string>
+          <string>Middle</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Droite</string>
+          <string>Right</string>
          </property>
         </item>
        </widget>
@@ -453,6 +453,87 @@
        <widget class="QSpinBox" name="m_xref_height_sb">
         <property name="minimum">
          <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QLabel" name="label_symbol">
+        <property name="text">
+         <string>Symbol</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="6">
+       <widget class="QSpinBox" name="m_type_symbol_y_sb">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="6">
+       <widget class="QSpinBox" name="m_type_symbol_height_sb">
+        <property name="toolTip">
+         <string>Height of the terminal type symbol (fuse, ground, led...). 0 disable the symbol.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLabel" name="label_connection">
+        <property name="text">
+         <string>Connection length</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="3">
+       <widget class="QSpinBox" name="m_connection_length_sb">
+        <property name="toolTip">
+         <string>Length of the connections drawn above and under each terminal. 0 disable the connections.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="2">
+       <widget class="QLabel" name="label_cable">
+        <property name="text">
+         <string>Cable: wires / cable / end</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="3">
+       <widget class="QSpinBox" name="m_cable_wire_length_sb">
+        <property name="toolTip">
+         <string>Length of the wires between the terminals and the cable. 0 disable the drawing of the cables.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="4">
+       <widget class="QSpinBox" name="m_cable_length_sb">
+        <property name="toolTip">
+         <string>Length of the cable.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="5">
+       <widget class="QSpinBox" name="m_cable_end_length_sb">
+        <property name="toolTip">
+         <string>Length of the wires after the cable.</string>
         </property>
         <property name="maximum">
          <number>1000</number>
@@ -479,7 +560,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>En tête :</string>
+      <string>Headser :</string>
      </property>
     </widget>
    </item>
@@ -521,14 +602,14 @@
    <item row="0" column="3">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Hauteur</string>
+      <string>Height</string>
      </property>
     </widget>
    </item>
    <item row="3" column="4">
     <widget class="QLabel" name="label_18">
      <property name="text">
-      <string>Point de pont</string>
+      <string>Bridge point</string>
      </property>
     </widget>
    </item>
@@ -542,7 +623,7 @@
    <item row="13" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Prévisualisation :</string>
+      <string>Preview:</string>
      </property>
     </widget>
    </item>
@@ -1087,6 +1168,102 @@
     <hint type="sourcelabel">
      <x>836</x>
      <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_type_symbol_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>900</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_type_symbol_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>900</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_connection_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_wire_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_end_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
     </hint>
     <hint type="destinationlabel">
      <x>480</x>

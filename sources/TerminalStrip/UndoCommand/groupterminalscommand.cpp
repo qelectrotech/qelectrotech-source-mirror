@@ -34,7 +34,7 @@ GroupTerminalsCommand::GroupTerminalsCommand(TerminalStrip *strip,
 	m_receiver(receiver_),
 	m_to_group(to_group)
 {
-	setText(QObject::tr("Grouper un ensemble de bornes"));
+	setText(QObject::tr("Group a set of terminals"));
 }
 
 void GroupTerminalsCommand::undo() {
@@ -56,7 +56,7 @@ UnGroupTerminalsCommand::UnGroupTerminalsCommand(TerminalStrip *strip,
 	m_terminal_strip(strip)
 {
 	setUp(to_ungroup);
-	setText(QObject::tr("Dégrouper un ensemble de bornes"));
+	setText(QObject::tr("Ungroup a set of terminals"));
 }
 
 void UnGroupTerminalsCommand::undo()

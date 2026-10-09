@@ -44,8 +44,8 @@ IntegrationMoveTitleBlockTemplatesHandler::~IntegrationMoveTitleBlockTemplatesHa
 	@return the action to be done if the target template already exists
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(const TitleBlockTemplateLocation &src, const TitleBlockTemplateLocation &dst) {
-	QString no_parent_collection_error_message(tr("Impossible d'accéder à la catégorie parente", "error message"));
-	QString cant_get_xml_description_error_message(tr("Impossible d'obtenir la description XML de ce modèle", "error message"));
+	QString no_parent_collection_error_message(tr("Unable to get the parent category", "error message"));
+	QString cant_get_xml_description_error_message(tr("Unable to get this template's XML description", "error message"));
 	
 	// we'll need the parent collection of both templates
 	TitleBlockTemplatesCollection *src_tbt_parent_collection = src.parentCollection();
@@ -82,10 +82,10 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(con
 	@param message Error message.
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::errorWithATemplate(const TitleBlockTemplateLocation &tbt, const QString &message) {
-	QString error_message = tr("Une erreur s'est produite avec le modèle %1 : %2").arg(tbt.toString()).arg(message);
+	QString error_message = tr("An error occurred with the template %1: %2").arg(tbt.toString()).arg(message);
 	QET::QetMessageBox::critical(
 		parent_widget_,
-		tr("Erreur", "message box title"),
+		tr("Error", "message box title"),
 		error_message,
 		QMessageBox::Ok,
 		QMessageBox::Ok
@@ -150,15 +150,14 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 {
 	if (integ_dialog_) return;
 	integ_dialog_ = new QDialog(parent_widget_);
-	integ_dialog_ -> setWindowTitle(tr("Intégration d'un modèle de cartouche"));
+	integ_dialog_ -> setWindowTitle(tr("Integration of a title block template"));
 	
 	dialog_label_ = new QLabel(
 		QString(
 			tr(
-				"Le modèle a déjà été "
-				"intégré dans le projet. Toutefois, la version que vous "
-				"tentez d'appliquer semble différente. Que souhaitez-vous "
-				"faire ?",
+				"The template has already been integrated in the project. "
+				"However, the version you are trying to apply appears to "
+				"be different. What do you wish to do?",
 				"dialog content - %1 is a title block template name"
 			)
 		)
@@ -167,7 +166,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 	use_existing_template_ = new QRadioButton(
 		QString(
 			tr(
-				"Utiliser le modèle déjà intégré",
+				"Use the already integrated template",
 				"dialog content"
 			)
 		)
@@ -176,7 +175,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 	integrate_new_template_ = new QRadioButton(
 		QString(
 			tr(
-				"Intégrer le modèle déposé",
+				"Integrate the dropped template",
 				"dialog content"
 			)
 		)
@@ -186,7 +185,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 	erase_template_ = new QRadioButton(
 		QString(
 			tr(
-				"Écraser le modèle déjà intégré",
+				"Erase the already integrated template",
 				"dialog content"
 			)
 		)
@@ -196,7 +195,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
 	integrate_both_ = new QRadioButton(
 		QString(
 			tr(
-				"Faire cohabiter les deux modèles",
+				"Make both templates coexist",
 				"dialog content"
 			)
 		)

@@ -46,10 +46,11 @@ const int CABLE_WIRE_CELL = 10;
 const int TYPE_CELL = 11;
 const int FUNCTION_CELL = 12;
 const int LED_CELL = 13;
+const int SHIELD_CELL = 14;
 
-const int COLUMN_COUNT = 14;
+const int COLUMN_COUNT = 15;
 
-static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
 /**
  * @brief TerminalStripModel::levelForColumn
@@ -93,6 +94,7 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
 			case 11 : return Type;
 			case 12 : return Function;
 			case 13 : return Led;
+			case 14 : return Shield;
 			default : return Invalid;
 		}
 	}
@@ -177,6 +179,8 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		switch (index.column()) {
 			case LABEL_CELL : return mrtd.label_;
+			case CABLE_CELL : return mrtd.cable_;
+			case CABLE_WIRE_CELL : return mrtd.cable_wire;
 			default: return QVariant();
 
 		}
@@ -185,6 +189,11 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			   index.column() == LED_CELL)
 	{
 		return mrtd.led_ ? Qt::Checked : Qt::Unchecked;
+	}
+	else if (role == Qt::CheckStateRole &&
+			   index.column() == SHIELD_CELL)
+	{
+		return mrtd.shield_ ? Qt::Checked : Qt::Unchecked;
 	}
 	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
 	{
@@ -248,6 +257,28 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_ = true;
 		modified_cell = LABEL_CELL;
 	}
+	else if (column_ == CABLE_CELL &&
+			 role == Qt::EditRole &&
+			 mrtd.cable_ != value.toString())
+	{
+		mrtd.cable_ = value.toString();
+		modified_ = true;
+		modified_cell = CABLE_CELL;
+	}
+	else if (column_ == CABLE_WIRE_CELL &&
+			 role == Qt::EditRole &&
+			 mrtd.cable_wire != value.toString())
+	{
+		mrtd.cable_wire = value.toString();
+		modified_ = true;
+		modified_cell = CABLE_WIRE_CELL;
+	}
+	else if (column_ == SHIELD_CELL)
+	{
+		mrtd.shield_ = value.toBool();
+		modified_ = true;
+		modified_cell = SHIELD_CELL;
+	}
 
 		//Set the modification to the terminal data
 	if (modified_)
@@ -281,19 +312,20 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 		{
 			switch (section) {
 				case POS_CELL:        return tr("Position");
-				case LEVEL_CELL:      return tr("Étage");
+				case LEVEL_CELL:      return tr("Stage");
 				case LEVEL_0_CELL:    return QStringLiteral("0");
 				case LEVEL_1_CELL:    return QStringLiteral("1");
 				case LEVEL_2_CELL:    return QStringLiteral("2");
 				case LEVEL_3_CELL:    return QStringLiteral("3");
 				case LABEL_CELL:      return tr("Label");
-				case CONDUCTOR_CELL:  return tr("Numéro de conducteur");
-				case XREF_CELL:       return tr("Référence croisé");
-				case CABLE_CELL:      return tr("Câble");
-				case CABLE_WIRE_CELL: return tr("Couleur / numéro de fil câble");
+				case CONDUCTOR_CELL:  return tr("Number wire");
+				case XREF_CELL:       return tr("Cross-reference");
+				case CABLE_CELL:      return tr("Cable");
+				case CABLE_WIRE_CELL: return tr("Color / wire number of the cable");
 				case TYPE_CELL:       return tr("Type");
-				case FUNCTION_CELL :  return tr("Fonction");
+				case FUNCTION_CELL :  return tr("Function");
 				case LED_CELL:        return tr("led");
+				case SHIELD_CELL:     return tr("Shield");
 				default : return QVariant();
 			}
 		}
@@ -307,9 +339,10 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
 	auto c = index.column();
-	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL)
+	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL
+		|| c == CABLE_CELL || c == CABLE_WIRE_CELL)
 		flags = flags | Qt::ItemIsEditable;
-	if (c == LED_CELL) {
+	if (c == LED_CELL || c == SHIELD_CELL) {
 		flags = flags | Qt::ItemIsUserCheckable;
 	}
 	return flags;

@@ -300,11 +300,11 @@ GesturesConfigPage::GesturesConfigPage(QWidget *parent) :
 	}
 
 	auto *explanation = new QLabel(
-		tr("Faites glisser avec le bouton droit sur un folio : un anneau "
-		   "de commandes s'ouvre, relâchez vers celle à lancer. Tant que "
-		   "vous ne changez pas l'anneau d'un contexte, il montre les "
-		   "commandes de la barre de raccourcis. Les gestes s'activent "
-		   "ou se désactivent dans la page Général."), this);
+		tr("Drag with the right mouse button on a sheet: a ring of "
+		   "commands opens, release towards the one to run. Until you "
+		   "change the ring for a context, it shows the commands of the "
+		   "shortcut bar. Gestures are turned on or off in the General "
+		   "page."), this);
 	explanation->setWordWrap(true);
 
 	m_directions = new QComboBox(this);
@@ -344,10 +344,10 @@ GesturesConfigPage::GesturesConfigPage(QWidget *parent) :
 	m_state = new QLabel(this);
 	m_state->setWordWrap(true);
 
-	auto *place = new QPushButton(tr("Placer →"), this);
+	auto *place = new QPushButton(tr("Place →"), this);
 	place->setObjectName(QStringLiteral("placeButton"));
-	auto *clear = new QPushButton(tr("Vider la direction"), this);
-	auto *follow = new QPushButton(tr("Comme la barre de raccourcis"), this);
+	auto *clear = new QPushButton(tr("Clear the direction"), this);
+	auto *follow = new QPushButton(tr("Same as the shortcut bar"), this);
 	follow->setObjectName(QStringLiteral("followBarButton"));
 
 	auto *ring_column = new QVBoxLayout();
@@ -357,8 +357,8 @@ GesturesConfigPage::GesturesConfigPage(QWidget *parent) :
 	ring_column->addStretch();
 
 	auto *grid = new QGridLayout();
-	grid->addWidget(new QLabel(tr("Commandes disponibles"), this), 0, 0);
-	grid->addWidget(new QLabel(tr("Anneau, la direction choisie en surbrillance"), this), 0, 2);
+	grid->addWidget(new QLabel(tr("Available commands"), this), 0, 0);
+	grid->addWidget(new QLabel(tr("Ring, the chosen direction highlighted"), this), 0, 2);
 	grid->addWidget(m_available, 1, 0);
 	grid->addWidget(place, 1, 1, Qt::AlignVCenter);
 	grid->addLayout(ring_column, 1, 2);
@@ -366,10 +366,10 @@ GesturesConfigPage::GesturesConfigPage(QWidget *parent) :
 	grid->setColumnStretch(2, 1);
 
 	auto *top_row = new QHBoxLayout();
-	top_row->addWidget(new QLabel(tr("Directions :"), this));
+	top_row->addWidget(new QLabel(tr("Directions:"), this));
 	top_row->addWidget(m_directions);
 	top_row->addSpacing(12);
-	top_row->addWidget(new QLabel(tr("Contexte :"), this));
+	top_row->addWidget(new QLabel(tr("Context:"), this));
 	top_row->addWidget(m_context, 1);
 
 	auto *state_row = new QHBoxLayout();
@@ -422,7 +422,7 @@ void GesturesConfigPage::applyConf()
 
 QString GesturesConfigPage::title() const
 {
-	return tr("Gestes de la souris", "configuration page title");
+	return tr("Mouse gestures", "configuration page title");
 }
 
 QIcon GesturesConfigPage::icon() const
@@ -467,9 +467,9 @@ void GesturesConfigPage::updateState()
 	const int slot = m_ring->currentSlot();
 	const QStringList ids = m_ring->ids();
 	const QString id = slot < ids.count() ? ids.at(slot) : QString();
-	m_slot_name->setText(id.isEmpty() ? tr("(direction vide)")
+	m_slot_name->setText(id.isEmpty() ? tr("(empty direction)")
 					  : m_descriptions.value(id, id));
 	m_state->setText(m_custom.value(m_shown)
-			 ? tr("Anneau personnalisé pour ce contexte.")
-			 : tr("Cet anneau suit la barre de raccourcis."));
+			 ? tr("Custom ring for this context.")
+			 : tr("This ring follows the shortcut bar."));
 }

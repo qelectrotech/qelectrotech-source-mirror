@@ -33,7 +33,7 @@ AddDiagramCommand::AddDiagramCommand(QETProject *project, Diagram *diagram, int 
 	m_diagram(diagram),
 	m_position(pos)
 {
-	setText(QObject::tr("Ajouter un folio", "undo command text"));
+	setText(QObject::tr("Add a sheet", "undo command text"));
 }
 
 /**

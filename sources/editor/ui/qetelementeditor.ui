@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QElectroTech - Éditeur d'élément</string>
+   <string>QElectroTech - Element Editor</string>
   </property>
   <property name="windowIcon">
    <iconset theme="qet"/>
@@ -29,7 +29,7 @@
    </property>
    <widget class="QMenu" name="m_file_menu">
     <property name="title">
-     <string>&amp;Fichier</string>
+     <string>&amp;File</string>
     </property>
     <addaction name="m_new_action"/>
     <addaction name="m_open_action"/>
@@ -47,11 +47,11 @@
    </widget>
    <widget class="QMenu" name="m_edit_menu">
     <property name="title">
-     <string>&amp;Édition</string>
+     <string>&amp;Edit</string>
     </property>
     <widget class="QMenu" name="m_paste_from_menu">
      <property name="title">
-      <string>Coller depuis...</string>
+      <string>Paste from...</string>
      </property>
      <property name="icon">
       <iconset theme="edit-paste"/>
@@ -82,7 +82,7 @@
    </widget>
    <widget class="QMenu" name="m_display_menu">
     <property name="title">
-     <string>Afficha&amp;ge</string>
+     <string>Displ&amp;ay</string>
     </property>
     <addaction name="m_zoom_in_action"/>
     <addaction name="m_zoom_out_action"/>
@@ -92,7 +92,7 @@
    </widget>
    <widget class="QMenu" name="menu_Aide">
     <property name="title">
-     <string>&amp;Aide</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="separator"/>
     <addaction name="m_online_manual"/>
@@ -111,7 +111,7 @@
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Annulations</string>
+    <string>Undo</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -123,7 +123,7 @@
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Parties</string>
+    <string>Parts</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -144,7 +144,7 @@
   </widget>
   <widget class="QToolBar" name="m_main_toolbar">
    <property name="windowTitle">
-    <string>Outils</string>
+    <string>Tools</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -161,7 +161,7 @@
   </widget>
   <widget class="QToolBar" name="m_view_toolbar">
    <property name="windowTitle">
-    <string>Affichage</string>
+    <string>Display</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -176,7 +176,7 @@
   </widget>
   <widget class="QToolBar" name="m_element_toolbar">
    <property name="windowTitle">
-    <string>Élément</string>
+    <string>Element</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -189,7 +189,7 @@
   </widget>
   <widget class="QToolBar" name="m_undo_toolbar">
    <property name="windowTitle">
-    <string>Annulation</string>
+    <string>Cancellation</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -203,7 +203,7 @@
     <iconset theme="edit-select-all"/>
    </property>
    <property name="text">
-    <string>Tout sélectionner</string>
+    <string>Select All</string>
    </property>
   </action>
   <action name="m_new_action">
@@ -211,7 +211,7 @@
     <iconset theme="document-new"/>
    </property>
    <property name="text">
-    <string>&amp;Nouveau</string>
+    <string>&amp;New</string>
    </property>
   </action>
   <action name="m_open_action">
@@ -219,7 +219,7 @@
     <iconset theme="folder-open"/>
    </property>
    <property name="text">
-    <string>&amp;Ouvrir</string>
+    <string>&amp;Open</string>
    </property>
   </action>
   <action name="m_open_from_file_action">
@@ -227,7 +227,7 @@
     <iconset theme="folder-open"/>
    </property>
    <property name="text">
-    <string>&amp;Ouvrir depuis un fichier</string>
+    <string>Open from &amp;file</string>
    </property>
   </action>
   <action name="m_save_action">
@@ -235,7 +235,7 @@
     <iconset theme="document-save"/>
    </property>
    <property name="text">
-    <string>&amp;Enregistrer</string>
+    <string>&amp;Save</string>
    </property>
   </action>
   <action name="m_save_as_action">
@@ -243,7 +243,7 @@
     <iconset theme="document-save-as"/>
    </property>
    <property name="text">
-    <string>Enregistrer sous</string>
+    <string>Save as</string>
    </property>
   </action>
   <action name="m_save_as_file_action">
@@ -251,7 +251,7 @@
     <iconset theme="document-save"/>
    </property>
    <property name="text">
-    <string>Enregistrer dans un fichier</string>
+    <string>Save to a file</string>
    </property>
   </action>
   <action name="m_export_svg_action">
@@ -259,7 +259,7 @@
     <iconset theme="document-export"/>
    </property>
    <property name="text">
-    <string>Exporter en SVG</string>
+    <string>Export as SVG</string>
    </property>
   </action>
   <action name="m_reload_action">
@@ -267,7 +267,7 @@
     <iconset theme="view-refresh"/>
    </property>
    <property name="text">
-    <string>Recharger</string>
+    <string>Reload</string>
    </property>
   </action>
   <action name="m_quit_action">
@@ -275,10 +275,10 @@
     <iconset theme="application-exit"/>
    </property>
    <property name="text">
-    <string>&amp;Fermer cet éditeur</string>
+    <string>&amp;Close this editor</string>
    </property>
    <property name="toolTip">
-    <string>Fermer cet éditeur</string>
+    <string>Close this editor</string>
    </property>
   </action>
   <action name="m_deselect_all_action">
@@ -286,7 +286,7 @@
     <iconset theme="edit-select-none"/>
    </property>
    <property name="text">
-    <string>Désélectionner tout</string>
+    <string>Select none</string>
    </property>
   </action>
   <action name="m_cut_action">
@@ -294,7 +294,7 @@
     <iconset theme="edit-cut"/>
    </property>
    <property name="text">
-    <string>Co&amp;uper</string>
+    <string>Cu&amp;t</string>
    </property>
   </action>
   <action name="m_copy_action">
@@ -302,7 +302,7 @@
     <iconset theme="edit-copy"/>
    </property>
    <property name="text">
-    <string>Cop&amp;ier</string>
+    <string>&amp;Copy</string>
    </property>
   </action>
   <action name="m_paste_action">
@@ -310,7 +310,7 @@
     <iconset theme="edit-paste"/>
    </property>
    <property name="text">
-    <string>C&amp;oller</string>
+    <string>&amp;Paste</string>
    </property>
   </action>
   <action name="m_paste_in_area_action">
@@ -318,7 +318,7 @@
     <iconset theme="edit-paste"/>
    </property>
    <property name="text">
-    <string>C&amp;oller dans la zone</string>
+    <string>&amp;Paste in the area</string>
    </property>
   </action>
   <action name="m_paste_from_file_action">
@@ -326,7 +326,7 @@
     <iconset theme="text-xml"/>
    </property>
    <property name="text">
-    <string>Un fichier</string>
+    <string>A file</string>
    </property>
   </action>
   <action name="m_paste_from_element_action">
@@ -334,7 +334,7 @@
     <iconset theme="element"/>
    </property>
    <property name="text">
-    <string>Un élément</string>
+    <string>An element</string>
    </property>
   </action>
   <action name="m_revert_selection_action">
@@ -342,7 +342,7 @@
     <iconset theme="edit-select-invert"/>
    </property>
    <property name="text">
-    <string>Inverser la sélection</string>
+    <string>Invert selection</string>
    </property>
   </action>
   <action name="m_delete_action">
@@ -350,7 +350,7 @@
     <iconset theme="edit-delete"/>
    </property>
    <property name="text">
-    <string>&amp;Supprimer</string>
+    <string>&amp;Delete</string>
    </property>
   </action>
   <action name="m_edit_names_action">
@@ -358,7 +358,7 @@
     <iconset theme="names"/>
    </property>
    <property name="text">
-    <string>Éditer le nom et les traductions de l'élément</string>
+    <string>Edit name and information of the element</string>
    </property>
   </action>
   <action name="m_edit_author_action">
@@ -366,7 +366,7 @@
     <iconset theme="preferences-desktop-user"/>
    </property>
    <property name="text">
-    <string>Éditer les informations sur l'auteur</string>
+    <string>Edit author information</string>
    </property>
   </action>
   <action name="m_edit_element_properties_action">
@@ -374,7 +374,7 @@
     <iconset theme="element-edit"/>
    </property>
    <property name="text">
-    <string>Éditer les propriétés de l'élément</string>
+    <string>Edit element properties</string>
    </property>
   </action>
   <action name="m_zoom_in_action">
@@ -382,7 +382,7 @@
     <iconset theme="zoom-in"/>
    </property>
    <property name="text">
-    <string>Zoom avant</string>
+    <string>Zoom In</string>
    </property>
   </action>
   <action name="m_zoom_out_action">
@@ -390,7 +390,7 @@
     <iconset theme="zoom-out"/>
    </property>
    <property name="text">
-    <string>Zoom arrière</string>
+    <string>Zoom Out</string>
    </property>
   </action>
   <action name="m_zoom_fit_best_action">
@@ -398,7 +398,7 @@
     <iconset theme="zoom-fit-best"/>
    </property>
    <property name="text">
-    <string>Zoom adapté</string>
+    <string>Fit in view</string>
    </property>
   </action>
   <action name="m_zoom_original_action">
@@ -406,7 +406,7 @@
     <iconset theme="zoom-original"/>
    </property>
    <property name="text">
-    <string>Pas de zoom</string>
+    <string>Reset zoom</string>
    </property>
   </action>
   <action name="m_about_qet_action">
@@ -414,10 +414,10 @@
     <iconset theme="qet"/>
    </property>
    <property name="text">
-    <string>À &amp;propos de QElectroTech</string>
+    <string>A&amp;bout QElectroTech</string>
    </property>
    <property name="statusTip">
-    <string>Affiche des informations sur QElectroTech</string>
+    <string>Displays information about QElectroTech</string>
    </property>
   </action>
   <action name="m_online_manual">
@@ -425,10 +425,10 @@
     <iconset theme="help-contents"/>
    </property>
    <property name="text">
-    <string>Manuel en ligne</string>
+    <string>Online manual</string>
    </property>
    <property name="statusTip">
-    <string>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</string>
+    <string>Launches the default browser to the online manual QElectroTech</string>
    </property>
   </action>
   <action name="m_youtube_action">
@@ -436,10 +436,10 @@
     <iconset theme="kdenlive-show-video"/>
    </property>
    <property name="text">
-    <string>Chaine Youtube</string>
+    <string>Youtube channel</string>
    </property>
    <property name="statusTip">
-    <string>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</string>
+    <string>Launches the default browser on the Youtube channel of QElectroTech</string>
    </property>
   </action>
   <action name="m_donate_action">
@@ -447,10 +447,10 @@
     <iconset theme="help-donate"/>
    </property>
    <property name="text">
-    <string>Soutenir le projet par un don</string>
+    <string>Support the project with a donation</string>
    </property>
    <property name="statusTip">
-    <string>Soutenir le projet QElectroTech par un don</string>
+    <string>Support the QElectroTech project with a donation</string>
    </property>
   </action>
   <action name="m_about_qt_action">
@@ -458,10 +458,10 @@
     <iconset theme="qt"/>
    </property>
    <property name="text">
-    <string>À propos de &amp;Qt</string>
+    <string>About &amp;Qt</string>
    </property>
    <property name="statusTip">
-    <string>Affiche des informations sur la bibliothèque Qt</string>
+    <string>Displays information about Qt library</string>
    </property>
   </action>
   <action name="m_rotate_action">
@@ -501,7 +501,7 @@
     <iconset theme="run-dxf"/>
    </property>
    <property name="text">
-    <string>Importer un dxf</string>
+    <string>Import a dxf</string>
    </property>
   </action>
   <action name="m_import_scaled_element">
@@ -509,7 +509,7 @@
     <iconset theme="folder-open"/>
    </property>
    <property name="text">
-    <string>importer un élément à redimensionner</string>
+    <string comment="fr: importer un élément à redimensionner">Import an element to resize</string>
    </property>
   </action>
  </widget>

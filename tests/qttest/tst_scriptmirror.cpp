@@ -192,6 +192,48 @@ private slots:
 	}
 
 	/**
+		Mirroring a symbol twice the same way puts it back where it was,
+		for every symbol of the project, including those that do not sit
+		on the grid. Before, the second mirror snapped such a symbol onto
+		the grid, a few pixels away. Which symbol mirrorBackAndSave()
+		picks changes from run to run, so this checks them all.
+	*/
+	void mirrorTwiceComesBack_data()
+	{
+		QTest::addColumn<bool>("vertical");
+		QTest::newRow("horizontal") << false;
+		QTest::newRow("vertical")   << true;
+	}
+
+	void mirrorTwiceComesBack()
+	{
+		QFETCH(bool, vertical);
+		const QJsonObject r = run(script(QStringLiteral(
+			"var out = {count: 0, moved: []};\n"
+			"for (var f = 0; f < qet.folioCount(); f++) {\n"
+			"  var els = qet.elementUuids(f);\n"
+			"  for (var e = 0; e < els.length; e++) {\n"
+			"    var before = JSON.stringify(terms(f, els[e]));\n"
+			"    qet.mirrorElement(f, els[e], %1);\n"
+			"    qet.mirrorElement(f, els[e], %1);\n"
+			"    var after = JSON.stringify(terms(f, els[e]));\n"
+			"    out.count++;\n"
+			"    if (after !== before) out.moved.push(els[e] + ' ' + before + ' -> ' + after);\n"
+			"  }\n"
+			"}\n"
+			"qet.log('PROBE ' + JSON.stringify(out));\n")
+			.arg(vertical ? QStringLiteral("true") : QStringLiteral("false"))),
+			QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"));
+
+		QVERIFY2(!r.isEmpty(), "the script logged nothing");
+		QVERIFY(r.value(QStringLiteral("count")).toInt() > 0);
+		const QJsonArray moved = r.value(QStringLiteral("moved")).toArray();
+		for (const QJsonValue &m : moved)
+			qWarning("moved: %s", qPrintable(m.toString()));
+		QCOMPARE(moved.size(), 0);
+	}
+
+	/**
 		On a turned symbol a mirror of the folio is the other mirror of the
 		symbol itself, and its rotation does not change: a label kept
 		upright does not swing round.

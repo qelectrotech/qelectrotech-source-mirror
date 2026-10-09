@@ -17,12 +17,30 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Poignées :</string>
+      <string>Handles :</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QComboBox" name="comboBox">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>x 0.25</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>x 0.5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>x 0.75</string>
+      </property>
+     </item>
      <item>
       <property name="text">
        <string>x 1</string>

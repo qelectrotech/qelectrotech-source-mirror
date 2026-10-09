@@ -18,12 +18,12 @@
     <widget class="QTreeWidget" name="m_tree">
      <column>
       <property name="text">
-       <string>Langue</string>
+       <string>Language</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Texte</string>
+       <string>Text</string>
       </property>
      </column>
     </widget>
@@ -33,7 +33,7 @@
      <item>
       <widget class="QPushButton" name="m_add_line_pb">
        <property name="text">
-        <string>Ajouter une ligne</string>
+        <string>Add a line</string>
        </property>
        <property name="icon">
         <iconset theme="list-add"/>
@@ -44,7 +44,7 @@
       <widget class="QComboBox" name="m_clipboard_cb">
        <item>
         <property name="text">
-         <string>Copier dans le presse papier</string>
+         <string>Copy to clipboard</string>
         </property>
         <property name="icon">
          <iconset theme="edit-paste"/>

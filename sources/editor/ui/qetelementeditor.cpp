@@ -82,7 +82,7 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 
 	auto menu = createPopupMenu();
 	menu->setTearOffEnabled(true);
-	menu->setTitle(tr("Afficher", "menu entry"));
+	menu->setTitle(tr("Display", "menu entry"));
 	menu->setIcon(QET::Icons::ConfigureToolbars);
 	ui->m_display_menu->addMenu(menu);
 	//ui->m_display_menu->insertMenu(ui->m_zoom_in_action, menu);
@@ -228,26 +228,26 @@ void QETElementEditor::fromFile(const QString &filepath)
 	if (!infos_file.exists() || !infos_file.isFile())
 	{
 		state_ = false;
-		error_message = QString(tr("Le fichier %1 n'existe pas.", "message box content")).arg(filepath);
+		error_message = QString(tr("The file %1 does not exist.", "message box content")).arg(filepath);
 	}
 
 	QFile file(filepath);
 	if (state_ && !file.open(QIODevice::ReadOnly)) {
 		state_ = false;
-		error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(filepath);
+		error_message = QString(tr("Unable to open the file %1.", "message box content")).arg(filepath);
 	}
 
 	QDomDocument document_xml;
 	if (state_) {
 		if (!document_xml.setContent(&file)) {
 			state_ = false;
-			error_message = tr("Ce fichier n'est pas un document XML valide", "message box content");
+			error_message = tr("This file is not a valid XML document", "message box content");
 		}
 		file.close();
 	}
 
 	if (!state_) {
-		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+		QET::QetMessageBox::critical(this, tr("Error", "toolbar title"), error_message);
 		return;
 	}
 
@@ -258,8 +258,8 @@ void QETElementEditor::fromFile(const QString &filepath)
 	{
 		QET::QetMessageBox::warning(
 			this,
-			tr("Édition en lecture seule", "message box title"),
-			tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content")
+			tr("Read only edition", "message box title"),
+			tr("You are not allowed to modify this element. Thus it will be edited read-only.", "message box content")
 		);
 		setReadOnly(true);
 	}
@@ -290,8 +290,8 @@ bool QETElementEditor::toFile(const QString &filepath)
 	if (!writing) {
 		QET::QetMessageBox::warning(
 			this,
-			tr("Erreur", "message box title"),
-			tr("Impossible d'écrire dans ce fichier", "message box content")
+			tr("Error", "message box title"),
+			tr("Unable to write to this file", "message box content")
 		);
 	}
 	return(writing);
@@ -305,14 +305,14 @@ void QETElementEditor::fromLocation(const ElementsLocation &location)
 {
 	if (!location.isElement()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Élément inexistant.", "message box title"),
-									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
+									 tr("Non-existent element.", "message box title"),
+									 tr("The chosen virtual path does not match an element.", "message box content"));
 		return;
 	}
 	if (!location.exist()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Élément inexistant.", "message box title"),
-									 tr("L'élément n'existe pas.", "message box content"));
+									 tr("Non-existent element.", "message box title"),
+									 tr("The element does not exist.", "message box content"));
 		return;
 	}
 
@@ -328,8 +328,8 @@ void QETElementEditor::fromLocation(const ElementsLocation &location)
 		//location is read only
 	if (!location.isWritable()) {
 		QET::QetMessageBox::warning(this,
-									tr("Édition en lecture seule", "message box title"),
-									tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content"));
+									tr("Read only edition", "message box title"),
+									tr("You are not allowed to modify this element. Thus it will be edited read-only.", "message box content"));
 		setReadOnly(true);
 	}
 	else {
@@ -354,8 +354,8 @@ bool QETElementEditor::toLocation(const ElementsLocation &location)
 
 	if (!location.setXml(m_elmt_scene -> toXml())) {
 		QET::QetMessageBox::critical(this,
-									 tr("Erreur", "message box title"),
-									 tr("Impossible d'enregistrer l'élément", "message box content"));
+									 tr("Error", "message box title"),
+									 tr("Unable to save the element", "message box content"));
 		return(false);
 	}
 
@@ -457,12 +457,12 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
 {
 	QString user_filename = QFileDialog::getOpenFileName(
 		parent,
-		tr("Ouvrir un fichier", "dialog title"),
+		tr("Open a file", "dialog title"),
 		dir.isEmpty() ? QETApp::customElementsDir() : dir,
 		tr(
-			"Éléments QElectroTech (*.elmt);;"
-			"Fichiers XML (*.xml);;"
-			"Tous les fichiers (*)",
+			"QElectroTech elements "
+			"(*.elmt);;XML files (*.xml);;All "
+			"files (*)",
 			"filetypes allowed when opening an element file"
 		)
 	);
@@ -479,11 +479,11 @@ void QETElementEditor::updateTitle()
 	title += " - " + m_elmt_scene->elementData().m_names_list.name() + " ";
 	if (!m_file_name.isEmpty() || !m_location.isNull()) {
 		if (!m_elmt_scene -> undoStack().isClean()) {
-			title += tr("[Modifié]", "window title tag");
+			title += tr("[Changed]", "window title tag");
 		}
 	}
 	if (isReadOnly()) {
-		title += tr(" [lecture seule]", "window title tag");
+		title += tr(" [Read only]", "window title tag");
 	}
 	setWindowTitle(title);
 }
@@ -526,7 +526,7 @@ void QETElementEditor::fillPartsList()
 		}
 	}
 	else {
-		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée: %1").arg(qgis.count())));
+		m_parts_list -> addItem(new QListWidgetItem(tr("Too many primitives, list not generated: %1").arg(qgis.count())));
 	}
 	m_parts_list -> blockSignals(false);
 }
@@ -564,7 +564,7 @@ void QETElementEditor::updateInformations()
 	if (selected_qgis.isEmpty())
 	{
 		clearToolsDock();
-		m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
+		m_default_informations -> setText(tr("%n selected parts.",
 											 "",
 											 selected_qgis.size()));
 		m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -719,7 +719,7 @@ void QETElementEditor::updateInformations()
 	//Else we only display the number of selected items
 	else {
 		clearToolsDock();
-		m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
+		m_default_informations -> setText(tr("%n selected parts.",
 											 "",
 											 selected_qgis.size()));
 		m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -795,10 +795,10 @@ bool QETElementEditor::checkElement()
 		m_elmt_scene->elementData().m_type != ElementData::ConductorDefinition &&
 		m_elmt_scene->elementData().m_type != ElementData::Thumbnail) {
 		warnings << qMakePair(
-			tr("Absence de borne", "warning title"),
+			tr("Missing terminal", "warning title"),
 							  tr(
-								  "<br>En l'absence de borne, l'élément ne pourra être"
-								  " relié à d'autres éléments par l'intermédiaire de conducteurs.",
+								  "<br>Without terminal, the element can not be connected to "
+								  "other elements via conductors.",
 			"warning description"
 							  )
 		);
@@ -817,11 +817,10 @@ bool QETElementEditor::checkElement()
 
 		//Error folio report must have only one terminal
 		if (terminal != 1) {
-			errors << qMakePair (tr("Absence de borne"),
-								 tr("<br><b>Erreur</b> :"
-								 "<br>Les reports de folio doivent posséder une seul borne."
-								 "<br><b>Solution</b> :"
-								 "<br>Verifier que l'élément ne possède qu'une seul borne"));
+			errors << qMakePair (tr("Missing terminal"),
+								 tr("<br><b>Error</b>:<br>Sheet references must have a single "
+								 "terminal.<br><b>Solution</b>:<br>Check that the element "
+								 "has only one terminal"));
 		}
 	}
 
@@ -838,11 +837,10 @@ bool QETElementEditor::checkElement()
 
 		// Error: Conductor definition must have exactly one terminal
 		if (terminal != 1) {
-			errors << qMakePair (tr("Nombre de bornes incorrect"),
-								 tr("<br><b>Erreur</b> :"
-								 "<br>Les définitions de conducteur ne peuvent posséder qu'une seule borne."
-								 "<br><b>Solution</b> :"
-								 "<br>Vérifier que l'élément ne possède qu'une seule borne"));
+			errors << qMakePair (tr("Incorrect number of terminals"),
+								 tr("<br><b>Error</b>:<br>Conductor definitions can only have one "
+								 "terminal.<br><b>Solution</b>:<br>Verify that the element has only one "
+								 "terminal"));
 		}
 	}
 
@@ -861,12 +859,10 @@ bool QETElementEditor::checkElement()
 		const auto repeated = TerminalNameCheck::repeatedNames(names);
 		if (!repeated.isEmpty())
 		{
-			errors << qMakePair (tr("Noms de bornes en double"),
-								 tr("<br><b>Erreur</b> :"
-								 "<br>Plusieurs bornes portent le même nom : %1."
-								 "<br><b>Solution</b> :"
-								 "<br>Donner un nom unique à chaque borne, par exemple N.1 et N.2."
-								 " Les bornes concernées sont sélectionnées.")
+			errors << qMakePair (tr("Duplicate terminal names"),
+								 tr("<br><b>Error</b>:<br>Several terminals have the same name: "
+								 "%1.<br><b>Solution</b>:<br>Give each terminal a unique name, for "
+								 "example N.1 and N.2. The terminals concerned are selected.")
 								 .arg(TerminalNameCheck::describe(repeated).toHtmlEscaped()));
 
 			m_elmt_scene -> clearSelection();
@@ -885,11 +881,11 @@ bool QETElementEditor::checkElement()
 			m_elmt_scene->elementData().m_type != ElementData::ConductorDefinition &&
 			m_elmt_scene->elementData().m_type != ElementData::Thumbnail)
 		{
-			warnings << qMakePair (tr("Bornes sans nom"),
-								   tr("<br>%n borne(s) sans nom. Sans noms de bornes uniques,"
-								   " la liste de câblage (qui relie quoi à quoi) ne peut pas"
-								   " désigner chaque borne, et ne peut donc pas servir à"
-								   " câbler l'armoire en atelier.", "", unnamed));
+			warnings << qMakePair (tr("Terminals without a name"),
+								   tr("<br>%n terminals without a name. Without unique terminal "
+								   "names, the wiring list (what connects to what) cannot "
+								   "name each terminal, so it cannot be used to wire the "
+								   "cabinet in the workshop.", "", unnamed));
 		}
 	}
 
@@ -898,17 +894,17 @@ bool QETElementEditor::checkElement()
 	}
 
 		// Display warnings
-	QString dialog_message = tr("La vérification de cet élément a généré", "message box content");
+	QString dialog_message = tr("The verification of this element generated", "message box content");
 
 	if (errors.size()) {
-		dialog_message += QString(tr(" %n erreur(s)", "errors", errors.size()));
+		dialog_message += QString(tr(" %n errors", "errors", errors.size()));
 	}
 
 	if (warnings.size()) {
 		if (errors.size()) {
-			dialog_message += QString (tr(" et"));
+			dialog_message += QString (tr(" and"));
 		}
-		dialog_message += QString (tr(" %n avertissement(s)", "warnings", warnings.size()));
+		dialog_message += QString (tr(" %n Warnings", "warnings", warnings.size()));
 	}
 	dialog_message += " :";
 
@@ -925,10 +921,10 @@ bool QETElementEditor::checkElement()
 	dialog_message += "</ol>";
 
 	if (errors.size()) {
-		QMessageBox::critical(this, tr("Erreurs"), dialog_message);
+		QMessageBox::critical(this, tr("Errors"), dialog_message);
 	}
 	else {
-		QMessageBox::warning(this, tr("Avertissements"), dialog_message);
+		QMessageBox::warning(this, tr("Warnings"), dialog_message);
 	}
 
 		//if error == 0 that means they are only warning, we return true.
@@ -968,10 +964,10 @@ void QETElementEditor::openElement(const QString &filepath)
 	if (!QFile::exists(filepath)) {
 		QET::QetMessageBox::critical(
 			this,
-			tr("Impossible d'ouvrir le fichier", "message box title"),
+			tr("Unable to open file", "message box title"),
 			QString(
-				tr("Il semblerait que le fichier %1 que vous essayez d'ouvrir"
-				" n'existe pas ou plus.")
+				tr("It appears the %1 file which you are trying to open does "
+				"not exist or does not exist anymore.")
 			).arg(filepath)
 		);
 	}
@@ -1014,10 +1010,10 @@ bool QETElementEditor::canClose()
 		//First ask user to save
 	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
-		tr("Enregistrer l'élément en cours ?", "dialog title"),
+		tr("Save current element?", "dialog title"),
 		QString(
 			tr(
-				"Voulez-vous enregistrer l'élément %1 ?",
+				"Do you wish to save the element %1?",
 				"dialog content - %1 is an element name"
 			)
 		).arg(m_elmt_scene->elementData().m_names_list.name()),
@@ -1095,36 +1091,36 @@ void QETElementEditor::writeSettings() const
  */
 void QETElementEditor::setupActions()
 {
-	m_undo_action = m_elmt_scene -> undoStack().createUndoAction(this, tr("Annuler"));
-	m_redo_action = m_elmt_scene -> undoStack().createRedoAction(this, tr("Refaire"));
+	m_undo_action = m_elmt_scene -> undoStack().createUndoAction(this, tr("Undo", "fr: Annuler"));
+	m_redo_action = m_elmt_scene -> undoStack().createRedoAction(this, tr("Redo"));
 	m_undo_action -> setIcon(QET::Icons::EditUndo);
 	m_redo_action -> setIcon(QET::Icons::EditRedo);
-	ShortcutManager::instance().registerAction(m_undo_action, "elementeditor.undo", tr("Éditeur d'élément"), QKeySequence::Undo);
-	ShortcutManager::instance().registerAction(m_redo_action, "elementeditor.redo", tr("Éditeur d'élément"), QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(m_undo_action, "elementeditor.undo", tr("Element editors"), QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(m_redo_action, "elementeditor.redo", tr("Element editors"), QKeySequence::Redo);
 	ui->m_undo_toolbar->addAction(m_undo_action);
 	ui->m_undo_toolbar->addAction(m_redo_action);
 
-	ShortcutManager::instance().registerAction(ui->m_new_action, "elementeditor.new", tr("Éditeur d'élément"), QKeySequence::New);
-	ShortcutManager::instance().registerAction(ui->m_open_action, "elementeditor.open", tr("Éditeur d'élément"), QKeySequence::Open);
-	ShortcutManager::instance().registerAction(ui->m_open_from_file_action, "elementeditor.open_from_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
-	ShortcutManager::instance().registerAction(ui->m_save_action, "elementeditor.save", tr("Éditeur d'élément"), QKeySequence::Save);
-	ShortcutManager::instance().registerAction(ui->m_save_as_file_action, "elementeditor.save_as_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
-	ShortcutManager::instance().registerAction(ui->m_select_all_act, "elementeditor.select_all", tr("Éditeur d'élément"), QKeySequence::SelectAll);
-	ShortcutManager::instance().registerAction(ui->m_deselect_all_action, "elementeditor.deselect_all", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_A);
-	ShortcutManager::instance().registerAction(ui->m_revert_selection_action, "elementeditor.revert_selection", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_I);
-	ShortcutManager::instance().registerAction(ui->m_cut_action, "elementeditor.cut", tr("Éditeur d'élément"), QKeySequence::Cut);
-	ShortcutManager::instance().registerAction(ui->m_copy_action, "elementeditor.copy", tr("Éditeur d'élément"), QKeySequence::Copy);
-	ShortcutManager::instance().registerAction(ui->m_paste_action, "elementeditor.paste", tr("Éditeur d'élément"), QKeySequence::Paste);
-	ShortcutManager::instance().registerAction(ui->m_paste_in_area_action, "elementeditor.paste_in_area", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_V);
-	ShortcutManager::instance().registerAction(ui->m_edit_names_action, "elementeditor.edit_names", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_E);
-	ShortcutManager::instance().registerAction(ui->m_edit_author_action, "elementeditor.edit_author", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Y);
+	ShortcutManager::instance().registerAction(ui->m_new_action, "elementeditor.new", tr("Element editors"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(ui->m_open_action, "elementeditor.open", tr("Element editors"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(ui->m_open_from_file_action, "elementeditor.open_from_file", tr("Element editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	ShortcutManager::instance().registerAction(ui->m_save_action, "elementeditor.save", tr("Element editors"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(ui->m_save_as_file_action, "elementeditor.save_as_file", tr("Element editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(ui->m_select_all_act, "elementeditor.select_all", tr("Element editors"), QKeySequence::SelectAll);
+	ShortcutManager::instance().registerAction(ui->m_deselect_all_action, "elementeditor.deselect_all", tr("Element editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_A);
+	ShortcutManager::instance().registerAction(ui->m_revert_selection_action, "elementeditor.revert_selection", tr("Element editors"), Qt::CTRL | Qt::Key_I);
+	ShortcutManager::instance().registerAction(ui->m_cut_action, "elementeditor.cut", tr("Element editors"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(ui->m_copy_action, "elementeditor.copy", tr("Element editors"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(ui->m_paste_action, "elementeditor.paste", tr("Element editors"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(ui->m_paste_in_area_action, "elementeditor.paste_in_area", tr("Element editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+	ShortcutManager::instance().registerAction(ui->m_edit_names_action, "elementeditor.edit_names", tr("Element editors"), Qt::CTRL | Qt::Key_E);
+	ShortcutManager::instance().registerAction(ui->m_edit_author_action, "elementeditor.edit_author", tr("Element editors"), Qt::CTRL | Qt::Key_Y);
 
 #ifdef Q_OS_MAC
-	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Backspace);
-	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_W);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Element editors"), Qt::Key_Backspace);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Element editors"), Qt::CTRL | Qt::Key_W);
 #else
-	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Delete);
-	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Element editors"), Qt::Key_Delete);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Element editors"), Qt::CTRL | Qt::Key_Q);
 #endif
 
 		//Depth action
@@ -1134,51 +1130,51 @@ void QETElementEditor::setupActions()
 			new ChangeZValueCommand(this -> elementScene(), action -> data().value<QET::DepthOption>()));
 		emit(this -> elementScene() -> partsZValueChanged());
 	});
-	auto depth_toolbar = addToolBar(tr("Profondeur", "toolbar title"));
+	auto depth_toolbar = addToolBar(tr("Depth", "toolbar title"));
 	depth_toolbar -> setObjectName("depth_toolbar");
 	depth_toolbar -> addActions(m_depth_action_group -> actions());
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 		//Rotate action
-	ShortcutManager::instance().registerAction(ui->m_rotate_action, "elementeditor.rotate", tr("Éditeur d'élément"), Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotate_action, "elementeditor.rotate", tr("Element editors"), Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
 		//Rotate Fine action = rotate with smaller inkrement
-	ShortcutManager::instance().registerAction(ui->m_rotateFine_action, "elementeditor.rotate_fine", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotateFine_action, "elementeditor.rotate_fine", tr("Element editors"), Qt::CTRL | Qt::Key_Space);
 	connect(ui->m_rotateFine_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateFineElementsCommand(this->elementScene()));});
 
 		//Flip action
-	ShortcutManager::instance().registerAction(ui->m_flip_action, "elementeditor.flip", tr("Éditeur d'élément"), Qt::Key_F);
+	ShortcutManager::instance().registerAction(ui->m_flip_action, "elementeditor.flip", tr("Element editors"), Qt::Key_F);
 	connect(ui->m_flip_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new FlipElementsCommand(this->elementScene()));});
 
 		//Mirror action
-	ShortcutManager::instance().registerAction(ui->m_mirror_action, "elementeditor.mirror", tr("Éditeur d'élément"), Qt::Key_M);
+	ShortcutManager::instance().registerAction(ui->m_mirror_action, "elementeditor.mirror", tr("Element editors"), Qt::Key_M);
 	connect(ui->m_mirror_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new MirrorElementsCommand(this->elementScene()));});
 
 		//Scale the whole element by a factor that keeps its terminals on the grid
-	m_scale_element_action = new QAction(tr("Mettre l'élément à l'échelle..."), this);
+	m_scale_element_action = new QAction(tr("Scale the element..."), this);
 	ui->m_edit_menu->addAction(m_scale_element_action);
-	ShortcutManager::instance().registerAction(m_scale_element_action, "elementeditor.scale_element", tr("Éditeur d'élément"), QKeySequence());
+	ShortcutManager::instance().registerAction(m_scale_element_action, "elementeditor.scale_element", tr("Element editors"), QKeySequence());
 	connect(m_scale_element_action, &QAction::triggered, this, &QETElementEditor::scaleElement);
 
 
 		//Zoom action
-	ShortcutManager::instance().registerAction(ui->m_zoom_in_action, "elementeditor.zoom_in", tr("Éditeur d'élément"), QKeySequence::ZoomIn);
-	ShortcutManager::instance().registerAction(ui->m_zoom_out_action, "elementeditor.zoom_out", tr("Éditeur d'élément"), QKeySequence::ZoomOut);
-	ShortcutManager::instance().registerAction(ui->m_zoom_fit_best_action, "elementeditor.zoom_fit_best", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_9);
-	ShortcutManager::instance().registerAction(ui->m_zoom_original_action, "elementeditor.zoom_original", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(ui->m_zoom_in_action, "elementeditor.zoom_in", tr("Element editors"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(ui->m_zoom_out_action, "elementeditor.zoom_out", tr("Element editors"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(ui->m_zoom_fit_best_action, "elementeditor.zoom_fit_best", tr("Element editors"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(ui->m_zoom_original_action, "elementeditor.zoom_original", tr("Element editors"), Qt::CTRL | Qt::Key_0);
 
 		//Add primitive actions
 	m_add_part_action_grp = new QActionGroup(this);
 
-	auto *add_line               = new QAction(QET::Icons::PartLine,      tr("Ajouter une ligne"),                m_add_part_action_grp);
-	auto *add_rectangle          = new QAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"),             m_add_part_action_grp);
-	auto *add_ellipse            = new QAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"),              m_add_part_action_grp);
-	auto *add_polygon            = new QAction(QET::Icons::PartPolygon,   tr("Ajouter un polygone"),              m_add_part_action_grp);
-	auto *add_text               = new QAction(QET::Icons::PartText,      tr("Ajouter du texte"),                 m_add_part_action_grp);
-	auto *add_arc                = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),         m_add_part_action_grp);
-	auto *add_terminal           = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),                m_add_part_action_grp);
-	auto *add_dynamic_text_field = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ texte dynamique"), m_add_part_action_grp);
+	auto *add_line               = new QAction(QET::Icons::PartLine,      tr("Add a line"),                m_add_part_action_grp);
+	auto *add_rectangle          = new QAction(QET::Icons::PartRectangle, tr("Add a rectangle"),             m_add_part_action_grp);
+	auto *add_ellipse            = new QAction(QET::Icons::PartEllipse,   tr("Add an ellipse"),              m_add_part_action_grp);
+	auto *add_polygon            = new QAction(QET::Icons::PartPolygon,   tr("Add a polygon"),              m_add_part_action_grp);
+	auto *add_text               = new QAction(QET::Icons::PartText,      tr("Add text"),                 m_add_part_action_grp);
+	auto *add_arc                = new QAction(QET::Icons::PartArc,       tr("Add an arc"),         m_add_part_action_grp);
+	auto *add_terminal           = new QAction(QET::Icons::Terminal,      tr("Add a terminal"),                m_add_part_action_grp);
+	auto *add_dynamic_text_field = new QAction(QET::Icons::PartTextField, tr("Add a dynamic text field"), m_add_part_action_grp);
 
 	for (auto action : m_add_part_action_grp->actions()) {
 		action -> setCheckable(true);
@@ -1193,11 +1189,11 @@ void QETElementEditor::setupActions()
 	connect(add_terminal,  &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventAddTerminal(m_elmt_scene));});
 	connect(add_dynamic_text_field, &QAction::triggered, [this]() {m_elmt_scene->setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));});
 
-	add_polygon -> setStatusTip(tr("Double-click pour terminer la forme, Click droit pour annuler le dernier point"));
-	add_text    -> setStatusTip(tr("Ajouter un texte d'élément non éditable dans les schémas"));
-	add_dynamic_text_field -> setStatusTip(tr("Ajouter un texte d'élément pouvant être édité dans les schémas"));
+	add_polygon -> setStatusTip(tr("Double-click to finish the shape, Right click to cancel the last point"));
+	add_text    -> setStatusTip(tr("Add non-editable element text in diagrams"));
+	add_dynamic_text_field -> setStatusTip(tr("Add element text that can be edited in diagrams"));
 
-	auto parts_toolbar =  addToolBar(tr("Parties", "toolbar title"));
+	auto parts_toolbar =  addToolBar(tr("Parts", "toolbar title"));
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(m_add_part_action_grp -> actions());
@@ -1206,31 +1202,31 @@ void QETElementEditor::setupActions()
 		//Background frame action: a visual-only reference rectangle, never
 		//written to the saved .elmt file, to help proportion the drawing
 		//against a representative folio surface.
-	auto *toggle_background_frame_action = new QAction(QET::Icons::DocumentPrintFrame, tr("Afficher le cadre de fond"), this);
+	auto *toggle_background_frame_action = new QAction(QET::Icons::DocumentPrintFrame, tr("Show the background frame"), this);
 	toggle_background_frame_action -> setCheckable(true);
 	toggle_background_frame_action -> setChecked(m_elmt_scene -> backgroundFrameVisible());
 	connect(toggle_background_frame_action, &QAction::toggled, m_elmt_scene, &ElementScene::setBackgroundFrameVisible);
-	ShortcutManager::instance().registerAction(toggle_background_frame_action, "elementeditor.toggle_background_frame", tr("Éditeur d'élément"), QKeySequence());
+	ShortcutManager::instance().registerAction(toggle_background_frame_action, "elementeditor.toggle_background_frame", tr("Element editors"), QKeySequence());
 	ui->m_display_menu->addAction(toggle_background_frame_action);
 	ui->m_view_toolbar->addAction(toggle_background_frame_action);
 
-	auto *configure_background_frame_action = new QAction(tr("Taille du cadre de fond..."), this);
+	auto *configure_background_frame_action = new QAction(tr("Background frame size..."), this);
 	connect(configure_background_frame_action, &QAction::triggered, this, [this]() {
 		QDialog dialog(this);
-		dialog.setWindowTitle(tr("Taille du cadre de fond"));
+		dialog.setWindowTitle(tr("Background frame size"));
 		auto *layout = new QFormLayout(&dialog);
 
 		auto *width_spin = new QDoubleSpinBox(&dialog);
 		width_spin -> setRange(1.0, 100000.0);
 		width_spin -> setSuffix(tr(" px"));
 		width_spin -> setValue(m_elmt_scene -> backgroundFrameSize().width());
-		layout -> addRow(tr("Largeur"), width_spin);
+		layout -> addRow(tr("Width"), width_spin);
 
 		auto *height_spin = new QDoubleSpinBox(&dialog);
 		height_spin -> setRange(1.0, 100000.0);
 		height_spin -> setSuffix(tr(" px"));
 		height_spin -> setValue(m_elmt_scene -> backgroundFrameSize().height());
-		layout -> addRow(tr("Hauteur"), height_spin);
+		layout -> addRow(tr("Height"), height_spin);
 
 		auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
 		connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
@@ -1241,7 +1237,7 @@ void QETElementEditor::setupActions()
 			m_elmt_scene -> setBackgroundFrameSize(QSizeF(width_spin -> value(), height_spin -> value()));
 		}
 	});
-	ShortcutManager::instance().registerAction(configure_background_frame_action, "elementeditor.configure_background_frame", tr("Éditeur d'élément"), QKeySequence());
+	ShortcutManager::instance().registerAction(configure_background_frame_action, "elementeditor.configure_background_frame", tr("Element editors"), QKeySequence());
 	ui->m_display_menu->addAction(configure_background_frame_action);
 }
 
@@ -1358,7 +1354,7 @@ void QETElementEditor::initGui()
 
 		//Undo dock
 	auto undo_view = new QUndoView(&(m_elmt_scene->undoStack()), this);
-	undo_view->setEmptyLabel(tr("Aucune modification"));
+	undo_view->setEmptyLabel(tr("No modification"));
 	ui->m_undo_dock->setWidget(undo_view);
 
 		//parts list dock
@@ -1397,7 +1393,7 @@ void QETElementEditor::initGui()
 			.arg(pos.y(), 0, 'f', 1));
 	});
 
-	statusBar()->showMessage(tr("Éditeur d'éléments", "status bar message"));
+	statusBar()->showMessage(tr("Elements Editor", "status bar message"));
 }
 
 /**
@@ -1470,7 +1466,7 @@ bool QETElementEditor::on_m_save_action_triggered()
 		}
 	}
 
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Registration failed"), tr("The recording failed,\nthe conditions are not valid"));
 	return false;
 }
 
@@ -1499,7 +1495,7 @@ bool QETElementEditor::on_m_save_as_action_triggered()
 
 		return(result_save);
 	}
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Registration failed"), tr("The recording failed,\nthe conditions are not valid"));
 	return (false);
 }
 
@@ -1538,10 +1534,10 @@ bool QETElementEditor::on_m_save_as_file_action_triggered()
 		//Ask a filename to user, for save the element
 		QString fn = QFileDialog::getSaveFileName(
 						 this,
-						 tr("Enregistrer sous", "dialog title"),
+						 tr("Save as", "dialog title"),
 						 m_file_name.isEmpty() ? QETApp::customElementsDir() : QDir(m_file_name).absolutePath(),
 						 tr(
-							 "Éléments QElectroTech (*.elmt)",
+							 "QElectroTech elements (*.elmt)",
 							 "filetypes allowed when saving an element file"
 		)
 						 );
@@ -1565,7 +1561,7 @@ bool QETElementEditor::on_m_save_as_file_action_triggered()
 
 		return(result_save);
 	}
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Registration failed"), tr("The recording failed,\nthe conditions are not valid"));
 	return false;
 }
 
@@ -1599,9 +1595,9 @@ bool QETElementEditor::on_m_export_svg_action_triggered()
 
 	QString fn = QFileDialog::getSaveFileName(
 			this,
-			tr("Exporter en SVG", "dialog title"),
+			tr("Export as SVG", "dialog title"),
 			suggested_path,
-			tr("Image SVG (*.svg)", "filetypes allowed when exporting an element to SVG"));
+			tr("SVG image (*.svg)", "filetypes allowed when exporting an element to SVG"));
 
 	if (fn.isEmpty()) {
 		return false;
@@ -1612,8 +1608,8 @@ bool QETElementEditor::on_m_export_svg_action_triggered()
 
 	QFile file(fn);
 	if (!file.open(QIODevice::WriteOnly)) {
-		QMessageBox::critical(this, tr("Échec de l'export"),
-				      tr("Impossible d'écrire dans le fichier « %1 ».").arg(fn));
+		QMessageBox::critical(this, tr("Export failed"),
+				      tr("Unable to write to the file « %1 ».").arg(fn));
 		return false;
 	}
 
@@ -1662,8 +1658,8 @@ void QETElementEditor::on_m_reload_action_triggered()
 	//If user already edit the element, ask confirmation to reload
 	if (!m_elmt_scene -> undoStack().isClean()) {
 		QMessageBox::StandardButton answer = QET::QetMessageBox::question(this,
-																		  tr("Recharger l'élément", "dialog title"),
-																		  tr("Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'élément ?", "dialog content"),
+																		  tr("Reload element", "dialog title"),
+																		  tr("This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?", "dialog content"),
 																		  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 																		  QMessageBox::Cancel);
 		if (answer != QMessageBox::Yes){
@@ -1705,18 +1701,18 @@ void QETElementEditor::on_m_paste_from_file_action_triggered()
 	QFile element_file(element_file_path);
 	// le fichier doit etre lisible
 	if (!element_file.open(QIODevice::ReadOnly)) {
-		error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(element_file_path);
+		error_message = QString(tr("Unable to open the file %1.", "message box content")).arg(element_file_path);
 	}
 	else {
 		// le fichier doit etre un document XML
 		if (!xml_document.setContent(&element_file)) {
-			error_message = tr("Ce fichier n'est pas un document XML valide", "message box content");
+			error_message = tr("This file is not a valid XML document", "message box content");
 		}
 		element_file.close();
 	}
 
 	if (!error_message.isEmpty()) {
-		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+		QET::QetMessageBox::critical(this, tr("Error", "toolbar title"), error_message);
 	}
 	copyAndPasteXml(xml_document);
 }
@@ -1731,14 +1727,14 @@ void QETElementEditor::on_m_paste_from_element_action_triggered()
 
 	if (!location.isElement()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Élément inexistant.", "message box title"),
-									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
+									 tr("Non-existent element.", "message box title"),
+									 tr("The chosen virtual path does not match an element.", "message box content"));
 		return;
 	}
 	if (!location.exist()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Élément inexistant.", "message box title"),
-									 tr("L'élément n'existe pas.", "message box content"));
+									 tr("Non-existent element.", "message box title"),
+									 tr("The element does not exist.", "message box content"));
 		return;
 	}
 
@@ -1790,15 +1786,15 @@ void QETElementEditor::on_m_import_dxf_triggered()
 	if (dxf2ElmtIsPresent(true, this))
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
-													   QObject::tr("Importer un fichier dxf"),
+													   QObject::tr("Import a dxf file"),
 													   QETApp::documentDir(),
 													   "DXF (*.dxf)")};
 		if (file_path.isEmpty()) {
 			return;
 		}
 
-		QMessageBox::information(this, tr("Avertissement"), tr("L'import d'un dxf volumineux peut prendre du temps \n"
-															   "veuillez patienter durant l'import..."));
+		QMessageBox::information(this, tr("Warning"), tr("Importing a large dxf can take time \n"
+															   "please wait while importing..."));
 
 		const QByteArray array_{dxfToElmt(file_path)};
 		if (array_.isEmpty()) {
@@ -1838,9 +1834,9 @@ void QETElementEditor::on_m_import_scaled_element_triggered()
 	if (ElementScalerIsPresent(true, this))
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
-													   tr("Importer un élément à redimensionner"),
+													   tr("Import an element to resize"),
 													   QETApp::documentDir(),
-													   tr("Éléments QElectroTech (*.elmt)"))};
+													   tr("QElectroTech elements (*.elmt)"))};
 		if (file_path.isEmpty()) {
 			return;
 		}

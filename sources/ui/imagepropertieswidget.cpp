@@ -220,11 +220,11 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 		}
 	};
 
-	chain("scaleFactorX", m_scaleX, newScaleX, tr("Modifier la largeur d'une image"));
-	chain("scaleFactorY", m_scaleY, newScaleY, tr("Modifier la hauteur d'une image"));
-	chain("rotationAngle", m_rotation, newRotation, tr("Modifier l'angle d'une image"));
-	chain("skewX", m_skewX, newSkewX, tr("Modifier l'inclinaison d'une image"));
-	chain("skewY", m_skewY, newSkewY, tr("Modifier l'inclinaison d'une image"));
+	chain("scaleFactorX", m_scaleX, newScaleX, tr("Change the width of an image"));
+	chain("scaleFactorY", m_scaleY, newScaleY, tr("Change the height of an image"));
+	chain("rotationAngle", m_rotation, newRotation, tr("Change the angle of an image"));
+	chain("skewX", m_skewX, newSkewX, tr("Change the skew of an image"));
+	chain("skewY", m_skewY, newSkewY, tr("Change the skew of an image"));
 
 	// Not through chain(): a string cannot be animated.
 	const QString newLabel = ui->m_label_le->text();
@@ -235,7 +235,7 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 		else
 		{
 			undo = new QPropertyUndoCommand(m_image, "label", m_label, newLabel);
-			undo->setText(tr("Modifier le libellé d'une image"));
+			undo->setText(tr("Edit an image label"));
 		}
 	}
 
@@ -243,7 +243,7 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 	if (adapt != m_adapt_to_dark_theme) {
 		if (undo) new QPropertyUndoCommand(m_image, "adaptToDarkTheme", m_adapt_to_dark_theme, adapt, undo);
 		else {
-			undo = new QUndoCommand(tr("Modifier l'adaptation d'une image au thème sombre"));
+			undo = new QUndoCommand(tr("Change a picture's dark theme adaptation"));
 			new QPropertyUndoCommand(m_image, "adaptToDarkTheme", m_adapt_to_dark_theme, adapt, undo);
 		}
 	}
@@ -296,8 +296,8 @@ void ImagePropertiesWidget::on_m_lock_ratio_tb_toggled(bool checked)
 {
 	ui->m_lock_ratio_tb->setIcon(checked ? QET::Icons::ObjectLocked : QET::Icons::ObjectUnlocked);
 	ui->m_lock_ratio_tb->setToolTip(checked
-			? tr("Verrouillé : modifier la largeur ou la hauteur ajuste l'autre pour conserver les proportions. Cliquer pour déverrouiller.")
-			: tr("Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller."));
+			? tr("Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.")
+			: tr("Unlocked: width and height can be changed independently. Click to lock."));
 }
 
 /**

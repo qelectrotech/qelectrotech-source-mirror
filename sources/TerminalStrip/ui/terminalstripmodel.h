@@ -61,6 +61,7 @@ class TerminalStripModel : public QAbstractTableModel
 			Type = 11,
 			Function = 12,
 			Led = 13,
+			Shield = 14,
 			Invalid = 99
 		};
 

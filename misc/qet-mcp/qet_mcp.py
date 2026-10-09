@@ -896,19 +896,32 @@ def tool_element_info(path: str) -> dict:
     }
 
 
-def _launch_executable(src: Path, sandbox: Path, windows: bool) -> Path:
-    """The executable _run_qet() starts: a private copy, except on Windows.
+def _copies_executable(platform: str = sys.platform) -> bool:
+    """Whether _run_qet() runs a private copy of QElectroTech on @p platform:
+    not on Windows or macOS (see _launch_executable())."""
+    return platform not in ("win32", "darwin")
+
+
+def _launch_executable(src: Path, sandbox: Path, copy: bool) -> Path:
+    """The executable _run_qet() starts: a private copy when @p copy is set,
+    otherwise the original.
 
     The copy gives each run its own SingleApplication key, which is derived
-    from the executable's path. On Windows a program loads its DLLs from its
-    own folder, so a copy on its own dies before main() (0xC0000135, DLL not
-    found) and nothing could ever be exported or edited there. Run the
-    original instead: every flag this server passes is a CLI export flag or
-    --run, and QElectroTech handles both and returns before it constructs
-    SingleApplication (main.cpp), so there is no instance to be handed to.
-    The copy stays elsewhere for builds from before that early return.
+    from the executable's path. Two systems cannot run a copy:
+
+    - Windows: a program loads its DLLs from its own folder, so a copy on
+      its own dies before main() (0xC0000135, DLL not found).
+    - macOS: a copy taken out of the signed .app bundle is killed at launch
+      (exit 137) and has lost the path to the bundle's Qt frameworks
+      (qelectrotech-source-mirror#1178).
+
+    There, run the original instead: every flag this server passes is a CLI
+    export flag or --run, and QElectroTech handles both and returns before
+    it constructs SingleApplication (main.cpp), so there is no instance to
+    be handed to. The copy stays elsewhere for builds from before that
+    early return.
     """
-    if windows:
+    if not copy:
         return src
     exe = sandbox / f"qet-mcp-{os.getpid()}"
     shutil.copy2(src, exe)
@@ -996,7 +1009,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
         raise ValueError(f"not an executable: {src}")
     with tempfile.TemporaryDirectory(prefix="qet-mcp-") as tmp:
         sandbox = Path(tmp)
-        exe = _launch_executable(src, sandbox, os.name == "nt")
+        exe = _launch_executable(src, sandbox, _copies_executable())
         home = sandbox / "home"
         (home / ".config").mkdir(parents=True)
         (home / ".local" / "share").mkdir(parents=True)

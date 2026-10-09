@@ -74,11 +74,11 @@ QString ShortcutBarSettings::title(Context context)
 	switch (context)
 	{
 		case Canvas:
-			return QCoreApplication::translate("ShortcutBarSettings", "Folio, rien de sélectionné");
+			return QCoreApplication::translate("ShortcutBarSettings", "Sheet, nothing selected");
 		case Selection:
-			return QCoreApplication::translate("ShortcutBarSettings", "Éléments sélectionnés");
+			return QCoreApplication::translate("ShortcutBarSettings", "Selected elements");
 		case Conductor:
-			return QCoreApplication::translate("ShortcutBarSettings", "Conducteurs sélectionnés");
+			return QCoreApplication::translate("ShortcutBarSettings", "Selected conductors");
 	}
 	return QString();
 }

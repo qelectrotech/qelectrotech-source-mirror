@@ -17,7 +17,7 @@
    <item>
     <widget class="QGroupBox" name="report_label_gb">
      <property name="title">
-      <string>Label de report de folio</string>
+      <string>Sheet reference label</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -32,14 +32,14 @@
         <item>
          <widget class="QLabel" name="label_">
           <property name="text">
-           <string>Vous pouvez définir un label personnalisé pour les reports de folio.
-Créer votre propre texte en vous aidant des variables suivantes :
-%f : la position du folio dans le projet 
-%F : le numéro de folio
-%M :  l'installation
-%LM : la localisation
-%l : le numéro de ligne
-%c : le numéro de colonne</string>
+           <string>You can define a custom label for sheet references.
+Create your own text using the following variables:
+%f: the sheet position in the project
+%F: the sheet number
+%M: the installation
+%LM: the location
+%l: the row number
+%c: the column number</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>

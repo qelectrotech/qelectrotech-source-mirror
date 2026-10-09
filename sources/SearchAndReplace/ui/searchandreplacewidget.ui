@@ -35,7 +35,7 @@
       <item>
        <widget class="QLabel" name="m_search">
         <property name="text">
-         <string>Chercher :</string>
+         <string>Find :</string>
         </property>
        </widget>
       </item>
@@ -77,12 +77,12 @@
            </property>
            <item>
             <property name="text">
-             <string>Texte brut</string>
+             <string>Plain text</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Mots entiers</string>
+             <string>Whole words</string>
             </property>
            </item>
           </widget>
@@ -90,7 +90,7 @@
          <item>
           <widget class="QCheckBox" name="m_case_sensitive_cb">
            <property name="text">
-            <string>Sensible à la casse</string>
+            <string>Case sensitive</string>
            </property>
           </widget>
          </item>
@@ -100,7 +100,7 @@
       <item>
        <widget class="QPushButton" name="m_next_pb">
         <property name="toolTip">
-         <string>Aller à la correspondance suivante</string>
+         <string>Go to the next match</string>
         </property>
         <property name="text">
          <string/>
@@ -116,7 +116,7 @@
       <item>
        <widget class="QPushButton" name="m_previous_pb">
         <property name="toolTip">
-         <string>Aller à la correspondance précédente</string>
+         <string>Go to previous match</string>
         </property>
         <property name="text">
          <string/>
@@ -132,7 +132,7 @@
       <item>
        <widget class="QPushButton" name="m_reload_pb">
         <property name="toolTip">
-         <string>Actualiser</string>
+         <string>Actualize</string>
         </property>
         <property name="text">
          <string/>
@@ -148,7 +148,7 @@
       <item>
        <widget class="QPushButton" name="m_advanced_pb">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show advanced options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string/>
@@ -194,20 +194,20 @@
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in elements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Élément</string>
+         <string>Element</string>
         </property>
        </widget>
       </item>
       <item row="0" column="4">
        <widget class="QPushButton" name="m_conductor_pb">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in conductors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Conducteur</string>
+         <string>Conductor</string>
         </property>
        </widget>
       </item>
@@ -217,34 +217,34 @@
          <bool>false</bool>
         </property>
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace checked matches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Tout remplacer</string>
+         <string>Replace all</string>
         </property>
        </widget>
       </item>
       <item row="0" column="5">
        <widget class="QPushButton" name="m_advanced_replace_pb">
         <property name="text">
-         <string>avancé</string>
+         <string>advanced</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="m_replace">
         <property name="text">
-         <string>Remplacer :</string>
+         <string>Replace :</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="m_folio_pb">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in sheets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Folio</string>
+         <string>Sheet</string>
         </property>
        </widget>
       </item>
@@ -257,7 +257,7 @@
          </size>
         </property>
         <property name="placeholderText">
-         <string>Champ texte de folio</string>
+         <string>Sheet text field</string>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
@@ -270,10 +270,10 @@
          <bool>false</bool>
         </property>
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace the selected match&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Remplacer</string>
+         <string>Replace</string>
         </property>
        </widget>
       </item>
@@ -332,7 +332,7 @@
    <item row="1" column="0">
     <widget class="QPushButton" name="m_quit_button">
      <property name="toolTip">
-      <string>Quitter</string>
+      <string>Quit</string>
      </property>
      <property name="text">
       <string/>

@@ -180,7 +180,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 					if (new_line != old_line)
 					{
 						undo = new QPropertyUndoCommand(m_shape, "line", old_line, new_line);
-						undo->setText(tr("Modifier la longueur d'une ligne"));
+						undo->setText(tr("Change the length of a line"));
 					}
 				}
 				else
@@ -199,7 +199,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 					if (new_rect != old_rect)
 					{
 						undo = new QPropertyUndoCommand(m_shape, "rect", old_rect, new_rect);
-						undo->setText(tr("Modifier la taille d'une forme"));
+						undo->setText(tr("Change the size of a shape"));
 					}
 				}
 
@@ -212,7 +212,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 					else
 					{
 						undo = new QPropertyUndoCommand(m_shape, "rotation", old_angle, new_angle);
-						undo->setText(tr("Modifier l'angle d'une forme"));
+						undo->setText(tr("Change the angle of a shape"));
 					}
 				}
 			}
@@ -233,7 +233,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			if (new_pen != old_pen)
 			{
 				undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
-				undo->setText(tr("Modifier le trait d'une forme"));
+				undo->setText(tr("Edit line of a form"));
 				LastUsedStyle::setShapePen(new_pen);
 			}
 
@@ -249,7 +249,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				else
 				{
 					undo = new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush);
-					undo->setText(tr("Modifier le remplissage d'une forme"));
+					undo->setText(tr("Edit filling a form"));
 				}
 				LastUsedStyle::setShapeBrush(new_brush);
 			}
@@ -261,7 +261,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				else
 				{
 					undo = new QPropertyUndoCommand(m_shape, "close", m_shape->isClosed(), ui->m_close_polygon->isChecked(), undo);
-					undo->setText(tr("Fermer le polygone"));
+					undo->setText(tr("Close the polygon"));
 				}
 			}
 
@@ -317,7 +317,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			for (QPointer<QetShapeItem> qsi : pen_H.keys())
 			{
 				if (!parent_undo) {
-					parent_undo = new QUndoCommand(tr("Modifier une forme simple"));
+					parent_undo = new QUndoCommand(tr("Modify a simple form"));
 				}
 				new QPropertyUndoCommand(qsi, "pen", qsi->pen(), pen_H.value(qsi), parent_undo);
 			}
@@ -349,7 +349,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			for (QPointer<QetShapeItem> qsi : brush_H.keys())
 			{
 				if (!parent_undo) {
-					parent_undo = new QUndoCommand(tr("Modifier une forme simple"));
+					parent_undo = new QUndoCommand(tr("Modify a simple form"));
 				}
 
 				new QPropertyUndoCommand(qsi, "brush", qsi->brush(), brush_H.value(qsi), parent_undo);
@@ -361,7 +361,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 		//In mode not live edit, only one shape can be edited
 	else if (m_shapes_list.isEmpty())
 	{
-		QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'une forme simple"));
+		QUndoCommand *undo = new QUndoCommand(tr("Modify the properties of a simple form"));
 		QPen old_pen = m_shape->pen();
 		QPen new_pen = old_pen;
 
@@ -430,7 +430,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 			if (m_shape->shapeType() == QetShapeItem::Line)
 			{
-				ui->m_geom_dim1_label->setText(tr("Longueur"));
+				ui->m_geom_dim1_label->setText(tr("Length"));
 				ui->m_geom_dim1_dsb->setValue(m_shape->line().length());
 				ui->m_geom_dim2_label->setVisible(false);
 				ui->m_geom_dim2_dsb->setVisible(false);
@@ -439,8 +439,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 			{
 				const QRectF r = m_shape->rect().normalized();
 				const bool isEllipse = (m_shape->shapeType() == QetShapeItem::Ellipse);
-				ui->m_geom_dim1_label->setText(isEllipse ? tr("Rayon X") : tr("Largeur"));
-				ui->m_geom_dim2_label->setText(isEllipse ? tr("Rayon Y") : tr("Hauteur"));
+				ui->m_geom_dim1_label->setText(isEllipse ? tr("X radius") : tr("Width"));
+				ui->m_geom_dim2_label->setText(isEllipse ? tr("Y radius") : tr("Height"));
 				ui->m_geom_dim1_dsb->setValue(isEllipse ? r.width() / 2.0 : r.width());
 				ui->m_geom_dim2_dsb->setValue(isEllipse ? r.height() / 2.0 : r.height());
 				ui->m_geom_dim2_label->setVisible(true);

@@ -36,6 +36,7 @@ struct modelRealTerminalData
 				mrtd.cable_wire = real_t->cableWire();
 				mrtd.conductor_ = real_t->conductor();
 				mrtd.led_ = real_t->isLed();
+				mrtd.shield_ = real_t->isShield();
 				mrtd.type_ = real_t->type();
 				mrtd.function_ = real_t->function();
 				mrtd.element_ = real_t->element();
@@ -53,6 +54,7 @@ struct modelRealTerminalData
 		QString cable_wire;
 		QString conductor_;
 		bool led_ = false;
+		bool shield_ = false;
 		bool bridged_ = false;
 
 		ElementData::TerminalType type_ = ElementData::TerminalType::TTGeneric;

@@ -22,24 +22,27 @@
 #include "../projectview.h"
 #include "../diagramview.h"
 #include "../diagram.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../qetproject.h"
+#include <QSignalBlocker>
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 DiagramEditorHandlerSizeWidget::DiagramEditorHandlerSizeWidget(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::DiagramEditorHandlerSizeWidget)
 {
 	ui->setupUi(this);
+	const QSignalBlocker blocker(ui->comboBox);
+	const qreal sizes[] = {2.5, 5.0, 7.5, 10.0, 20.0, 30.0};
+	for (int i = 0; i < ui->comboBox->count(); ++i)
+		ui->comboBox->setItemData(i, sizes[i]);
+	ui->comboBox->setCurrentIndex(3); // x1 remains the default.
 
 	if (auto editor = QETApp::instance()->diagramEditorAncestorOf(this))
 	{
-		const auto size =  editor->property("graphics_handler_size").toInt();
-
-		if (size == 10 || size < 10)
-			ui->comboBox->setCurrentIndex(0);
-		else if (size == 20)
-			ui->comboBox->setCurrentIndex(1);
-		else if (size == 30 || size > 30)
-			ui->comboBox->setCurrentIndex(2);
+		const auto size = editor->property("graphics_handler_size").toReal();
+		const int index = ui->comboBox->findData(size);
+		if (index >= 0)
+			ui->comboBox->setCurrentIndex(index);
 	}
 }
 
@@ -50,20 +53,18 @@ DiagramEditorHandlerSizeWidget::~DiagramEditorHandlerSizeWidget()
 
 void DiagramEditorHandlerSizeWidget::on_comboBox_currentIndexChanged(int index)
 {
+	if (index < 0 || !ui->comboBox->itemData(index).isValid())
+		return;
+	const qreal size = ui->comboBox->itemData(index).toReal();
 	if (auto editor_ = QETApp::instance()->diagramEditorAncestorOf(this))
 	{
-		editor_->setProperty("graphics_handler_size", (index+1) * 10);
-		if (auto project_view = editor_->currentProjectView()) {
-			if (auto diagram_view = project_view->currentDiagram()) {
-				if (auto diagram = diagram_view->diagram())
-				{
-					for (const auto item : diagram->items())
-					{
-						if (item->type() == QetGraphicsHandlerItem::Type)
-						{
-							auto handler = qgraphicsitem_cast<QetGraphicsHandlerItem *>(item);
-							handler->setSize((index+1) * 10);
-						}
+		editor_->setProperty("graphics_handler_size", size);
+		for (auto project_view : editor_->openedProjects()) {
+			for (auto diagram : project_view->project()->diagrams()) {
+				for (const auto item : diagram->items()) {
+					if (item->type() == QetGraphicsHandlerItem::Type) {
+						auto handler = qgraphicsitem_cast<QetGraphicsHandlerItem *>(item);
+						handler->setSize(size);
 					}
 				}
 			}

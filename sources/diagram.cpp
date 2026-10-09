@@ -643,7 +643,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::AltModifier)
+	else if(event->modifiers() == Qt::ControlModifier)
 	{
 		QSettings settings;
 		int xKeyGridFine = settings.value(QStringLiteral("diagrameditor/key_fine_Xgrid"),
@@ -686,7 +686,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 			return;
 		}
 	}
-	else if(event->modifiers() == Qt::ControlModifier)
+	else if(event->modifiers() == Qt::AltModifier)
 	{
 		//Adjust the alignment of a texts group
 		if(selectedItems().size() == 1
@@ -1317,10 +1317,19 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	}
 
 	if (!list_conductors.isEmpty()) {
+			//Symbols copied in old versions can share one uuid. A wire
+			//saved by that uuid would reopen on the first of them (#1408).
+		QSet<QUuid> seen_uuids, shared_uuids;
+		for (auto elmt : std::as_const(list_elements)) {
+			if (seen_uuids.contains(elmt->uuid()))
+				shared_uuids.insert(elmt->uuid());
+			seen_uuids.insert(elmt->uuid());
+		}
 		auto dom_conductors = document.createElement(QStringLiteral("conductors"));
 		for (auto cond : list_conductors) {
 			dom_conductors.appendChild(cond->toXml(document,
-							       table_adr_id));
+							       table_adr_id,
+							       shared_uuids));
 		}
 		dom_root.appendChild(dom_conductors);
 	}
@@ -1467,18 +1476,20 @@ bool Diagram::initFromXml(QDomElement &document,
 }
 
 /**
-	@brief findTerminal
-	Find terminal to which the conductor should be connected
+	@brief findTerminals
+	Find the terminals to which the conductor could be connected
 	@param conductor_index 1 or 2 depending on which terminal is searched
 	@param f Conductor xml element
 	@param table_adr_id Hash table to all terminal id assignement (legacy)
 	@param added_elements Elements found in the xml file
-	@return
+	@return the terminal, or one per symbol when several symbols of the
+	folio carry the uuid the wire names (old copies could share one, #1408);
+	empty if none is found
 */
-Terminal* findTerminal(int conductor_index,
-					   QDomElement& f,
-					   QHash<int,Terminal *>& table_adr_id,
-					   QList<Element *>& added_elements)
+QList<Terminal *> findTerminals(int conductor_index,
+								QDomElement& f,
+								QHash<int,Terminal *>& table_adr_id,
+								QList<Element *>& added_elements)
 {
 	assert(conductor_index == 1 || conductor_index == 2);
 
@@ -1486,39 +1497,45 @@ Terminal* findTerminal(int conductor_index,
 	QString element_index  = QStringLiteral("element")  + str_index;
 	QString terminal_index = QStringLiteral("terminal") + str_index;
 
+	QList<Terminal *> found;
 	if (f.hasAttribute(element_index)) {
 		QUuid element_uuid = QUuid(f.attribute(element_index));
 		// element1 did not exist in the conductor part of the xml until prior 0.7
 		// It is used as an indicator that uuid's are used to identify terminals
 		bool element_found = false;
+		QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
 		for (auto element: added_elements) {
 			if (element->uuid() != element_uuid)
 				continue;
 			element_found = true;
-			QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
+			Terminal *match = nullptr;
 			for (auto terminal: element->terminals()) {
-				if (terminal->uuid() != terminal_uuid)
-					continue;
-
-				return terminal;
+				if (terminal->uuid() == terminal_uuid) {
+					match = terminal;
+					break;
+				}
 			}
 				//The uuid a project gave a terminal on opening is worked out
 				//from where the terminal is in its symbol: if the symbol's
 				//definition has since been replaced by one whose terminals
 				//carry other uuids, the terminal at that place is still it.
 			for (auto terminal: element->terminals()) {
+				if (match)
+					break;
 				if (terminal->derivedUuid() == terminal_uuid)
-					return terminal;
+					match = terminal;
 			}
-			qDebug() << "Diagram::fromXml() : "
-				 << terminal_index
-				 << ":"
-				 << terminal_uuid
-				 << "not found in "
-				 << element_index
-				 << ":"
-				 << element_uuid;
-			break;
+			if (match)
+				found << match;
+			else
+				qDebug() << "Diagram::fromXml() : "
+					 << terminal_index
+					 << ":"
+					 << terminal_uuid
+					 << "not found in "
+					 << element_index
+					 << ":"
+					 << element_uuid;
 		}
 		if (!element_found)
 			qDebug() << "Diagram::fromXml() : "
@@ -1535,9 +1552,83 @@ Terminal* findTerminal(int conductor_index,
 				 << id_p1
 				 << " not found";
 		} else
-			return table_adr_id.value(id_p1);
+			found << table_adr_id.value(id_p1);
 	}
-	return nullptr;
+	return found;
+}
+
+/**
+	@brief pickEnds
+	Choose the two ends of a wire when its uuids name several symbols of
+	the folio (#1408). The pair whose distance matches the wire's saved
+	path wins, then the symbols whose labels match the ones saved with the
+	wire, then two terminals no wire joins yet; on a tie, the first symbols
+	in the file, as before.
+	@param f Conductor xml element
+	@param ends1 candidates for the first end, from findTerminals()
+	@param ends2 candidates for the second end
+	@return the two terminals, or nullptr where a list is empty
+*/
+QPair<Terminal *, Terminal *> pickEnds(const QDomElement &f,
+									   const QList<Terminal *> &ends1,
+									   const QList<Terminal *> &ends2)
+{
+	if ((ends1.size() <= 1 && ends2.size() <= 1)
+		|| ends1.isEmpty() || ends2.isEmpty())
+		return {ends1.value(0), ends2.value(0)};
+
+		//The saved path runs from the first end to the second
+	QPointF path_length;
+	bool has_path = false;
+	for (QDomElement segment = f.firstChildElement(QStringLiteral("segment"));
+		 !segment.isNull();
+		 segment = segment.nextSiblingElement(QStringLiteral("segment"))) {
+		bool ok = false;
+		const qreal length = segment.attribute(QStringLiteral("length")).toDouble(&ok);
+		if (!ok || !qIsFinite(length))
+			continue;
+		has_path = true;
+		if (segment.attribute(QStringLiteral("orientation")) == QLatin1String("horizontal"))
+			path_length.rx() += length;
+		else
+			path_length.ry() += length;
+	}
+
+	auto label_matches = [&f](Terminal *terminal, const QString &index) {
+		const QString label = f.attribute(QStringLiteral("element") + index
+										  + QStringLiteral("_label"));
+		return !label.isEmpty()
+				&& terminal->parentElement()->actualLabel() == label;
+	};
+
+	QPair<Terminal *, Terminal *> best;
+	int best_score = -1;
+	for (auto t1 : ends1) {
+		for (auto t2 : ends2) {
+			if (t1 == t2)
+				continue;
+			int score = 0;
+			if (has_path) {
+				const QPointF gap = t2->dockConductor() - t1->dockConductor();
+				if (qAbs(gap.x() - path_length.x()) <= 1.0
+					&& qAbs(gap.y() - path_length.y()) <= 1.0)
+					score += 8;
+			}
+			if (label_matches(t1, QStringLiteral("1")))
+				score += 2;
+			if (label_matches(t2, QStringLiteral("2")))
+				score += 2;
+			if (!t1->isLinkedTo(t2))
+				score += 1;
+			if (score > best_score) {
+				best_score = score;
+				best = {t1, t2};
+			}
+		}
+	}
+	if (!best.first)
+		return {ends1.first(), ends2.first()};
+	return best;
 }
 
 /**
@@ -1895,8 +1986,11 @@ bool Diagram::fromXml(QDomElement &document,
 
 			   //Check if terminal that conductor must be linked is know
 
-		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
-		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
+		const auto ends = pickEnds(f,
+								   findTerminals(1, f, table_adr_id, added_elements),
+								   findTerminals(2, f, table_adr_id, added_elements));
+		Terminal* p1 = ends.first;
+		Terminal* p2 = ends.second;
 
 			//Keep a trace of the wire, it will be missing from the next save
 		if ((!p1 || !p2) && consider_informations)
@@ -2472,7 +2566,7 @@ void Diagram::loadFolioSeqHash(QHash<QString,
 void Diagram::changeZValue(QET::DepthOption option)
 {
 	DiagramContent dc(this);
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier la profondeur"));
+	QUndoCommand *undo = new QUndoCommand(tr("Change the depth"));
 	QList<QGraphicsItem *> l = dc.items(DiagramContent::SelectedOnly | \
 					    DiagramContent::Elements | \
 					    DiagramContent::Shapes | \

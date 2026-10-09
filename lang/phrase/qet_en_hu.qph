@@ -1,0 +1,1127 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="hu">
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
+</source>
+    <target>Érintkezők: NO: %1, NC: %2, váltó: %3, egyéb: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
+</source>
+    <target>Érintkezők: NO: %1/%2, NC: %3/%4, váltó: %5/%6, egyéb: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl while dragging = free position, no grid snapping)</source>
+    <target>(Ctrl húzás közben = szabad pozíció, rácshoz igazítás nélkül)</target>
+</phrase>
+<phrase>
+    <source> -- %1: mode %2</source>
+    <target>-- %1 : %2 mód</target>
+</phrase>
+<phrase>
+    <source> ; red point: drag to reposition the rotation center</source>
+    <target>; piros pont: húzza a forgatás középpontjának áthelyezéséhez</target>
+</phrase>
+<phrase>
+    <source> ; turquoise point: arc</source>
+    <target>; türkiz pont: ív</target>
+</phrase>
+<phrase>
+    <source> ; an edge: skew</source>
+    <target>; egy szél: döntés</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Click: mode %1</source>
+    <target>— Kattintás: %1 mód</target>
+</phrase>
+<phrase>
+    <source>, Alt = create handles</source>
+    <target>, Alt = fogantyúk létrehozása</target>
+</phrase>
+<phrase>
+    <source>, Alt = detach into a polyline</source>
+    <target>, Alt = leválasztás vonallánccá</target>
+</phrase>
+<phrase>
+    <source>150 DPI (screen)</source>
+    <target>150 DPI (képernyő)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (print)</source>
+    <target>300 DPI (nyomtatás)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (high quality)</source>
+    <target>600 DPI (kiváló minőség)</target>
+</phrase>
+<phrase>
+    <source>Adds a Bézier curve to the current sheet</source>
+    <target>Bézier-görbe hozzáadása az aktuális lapra</target>
+</phrase>
+<phrase>
+    <source>Adds a PDF page to the current sheet</source>
+    <target>PDF oldal hozzáadása az aktuális lapra</target>
+</phrase>
+<phrase>
+    <source>Add a PDF</source>
+    <target>PDF hozzáadása</target>
+</phrase>
+<phrase>
+    <source>Add a point to a curve</source>
+    <target>Pont hozzáadása görbéhez</target>
+</phrase>
+<phrase>
+    <source>Add a curve</source>
+    <target>Görbe hozzáadása</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Szög</target>
+</phrase>
+<phrase>
+    <source>Corner</source>
+    <target>Szögletes</target>
+</phrase>
+<phrase>
+    <source>Preview</source>
+    <target>Előnézet</target>
+</phrase>
+<phrase>
+    <source>Preview :</source>
+    <target>Előnézet:</target>
+</phrase>
+<phrase>
+    <source>Round the corners of %1</source>
+    <target>%1 sarkainak lekerekítése</target>
+</phrase>
+<phrase>
+    <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Figyelem: a relatív szélességek összege meghaladja a teljes szélesség 100%%-át, ez a cíblokk-sablon egyetlen szélességgel sem teljesíthető.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Figyelem: a rögzített szélességű oszlopok nem férnek el a fennmaradó szélességben, ez a cíblokk-sablon egyetlen szélességgel sem teljesíthető.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Awarded exclusively</source>
+    <target>Csak hozzárendeltek</target>
+</phrase>
+<phrase>
+    <source>Terminal 1</source>
+    <target>1. kapocs</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Terminal 2</source>
+    <target>2. kapocs</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Terminals</source>
+    <target>Kapcsok</target>
+</phrase>
+<phrase>
+    <source>Terminal blocks</source>
+    <target>Klemmcsíkok</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>A(z) %1 nem olvasható</target>
+</phrase>
+<phrase>
+    <source>Category</source>
+    <target>Kategória</target>
+</phrase>
+<phrase>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
+    <target>Ez a formátum nem támogatja az átlátszóságot: a kép úgy lesz mentve, ahogy az átlátszó szín alkalmazása előtt volt. Folytatja?</target>
+</phrase>
+<phrase>
+    <source>Text field</source>
+    <target>Szövegmező</target>
+</phrase>
+<phrase>
+    <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
+    <target>Kattintás: méretezés az eredeti méretre. Kattintás és húzás: pozicionálás és átméretezés. Jobb kattintás: 90°-os forgatás. Ctrl+görgő: méret beállítása.</target>
+</phrase>
+<phrase>
+    <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
+    <target>Bal kattintás: következő pont; dupla kattintás vagy Enter: befejezés; jobb kattintás: az utolsó pont törlése</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
+    <target>Bal kattintás: a szemközti sarok elhelyezése (Shift = négyzet, Ctrl = középponttól + szabad pozíció, Ctrl+Shift = középpontos négyzet); jobb kattintás: törlés</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
+    <target>Bal kattintás: a szemközti sarok elhelyezése (Shift = kör, Ctrl = középponttól + szabad pozíció, Ctrl+Shift = középpontos kör); jobb kattintás: törlés</target>
+</phrase>
+<phrase>
+    <source>Left click: position the starting point (Ctrl = free position)</source>
+    <target>Bal kattintás: a kezdőpont elhelyezése (Ctrl = szabad pozíció)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
+    <target>Bal kattintás: a végpont elhelyezése (Ctrl = szabad pozíció); jobb kattintás: törlés</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first corner (Ctrl = center point, free position)</source>
+    <target>Bal kattintás: az első sarok elhelyezése (Ctrl = középpont, szabad pozíció)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first point (Ctrl = free position)</source>
+    <target>Bal kattintás: az első pont elhelyezése (Ctrl = szabad pozíció)</target>
+</phrase>
+<phrase>
+    <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
+    <target>Kattintás: szögletes pont. Kattintás és húzás: görbe pont. Kattintás az első pontra: bezárás. Esc/Enter: befejezés. Jobb kattintás: az utolsó pont törlése.</target>
+</phrase>
+<phrase>
+    <source>Click</source>
+    <target>Kattintás</target>
+</phrase>
+<phrase>
+    <source>Click: mode %1</source>
+    <target>Kattintson: %1 mód</target>
+</phrase>
+<phrase>
+    <source>Click to choose a color</source>
+    <target>Kattintson egy szín kiválasztásához</target>
+</phrase>
+<phrase>
+    <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
+    <target>Kattintson a képre szín hozzáadásához. Állítsa be az egyes színek tűrését a csúszkával, vagy kattintson a × gombra az eltávolításhoz.</target>
+</phrase>
+<phrase>
+    <source>Click on the image to choose a color</source>
+    <target>Kattintson a képre egy szín kiválasztásához</target>
+</phrase>
+<phrase>
+    <source>Rounded corners</source>
+    <target>Lekerekített sarkok</target>
+</phrase>
+<phrase>
+    <source>Component 1</source>
+    <target>1. komponens</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Component 2</source>
+    <target>2. komponens</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Conflicts only</source>
+    <target>Csak ütközések</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a Bézier curve</source>
+    <target>%1 átalakítása Bézier-görbévé</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a polyline</source>
+    <target>%1 átalakítása vonallánccá</target>
+</phrase>
+<phrase>
+    <source>Convert to Bézier curve</source>
+    <target>Átalakítás Bézier-görbévé</target>
+</phrase>
+<phrase>
+    <source>Convert to polyline</source>
+    <target>Átalakítás vonallánccá</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Nem sikerült ideiglenes könyvtárat létrehozni: %1</target>
+</phrase>
+<phrase>
+    <source>Transparent color</source>
+    <target>Átlátszó szín</target>
+</phrase>
+<phrase>
+    <source>Transparent color...</source>
+    <target>Átlátszó szín...</target>
+</phrase>
+<phrase>
+    <source>Rated current</source>
+    <target>Névleges áram</target>
+</phrase>
+<phrase>
+    <source>Move the rotation center</source>
+    <target>A forgatás középpontjának áthelyezése</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Distance in pixels between the label and the slave cross reference</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Distance label - slave :</target>
+</phrase>
+<phrase>
+    <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
+    <target>Törölje a jelölést azon klemmcsíkokról, amelyek számozását ki kell zárni</target>
+</phrase>
+<phrase>
+    <source>Set a transparent color</source>
+    <target>Átlátszó szín megadása</target>
+</phrase>
+<phrase>
+    <source>Deform a curve</source>
+    <target>Görbe deformálása</target>
+</phrase>
+<phrase>
+    <source>Move an image&apos;s rotation center</source>
+    <target>Kép forgatási középpontjának mozgatása</target>
+</phrase>
+<phrase>
+    <source>Unlocked: width and height can be changed independently. Click to lock.</source>
+    <target>Feloldva: a szélesség és a magasság egymástól függetlenül módosítható. Kattintson a zároláshoz.</target>
+</phrase>
+<phrase>
+    <source>Save original image as...</source>
+    <target>Eredeti kép mentése másként...</target>
+</phrase>
+<phrase>
+    <source>Save image as...</source>
+    <target>Kép mentése másként...</target>
+</phrase>
+<phrase>
+    <source>Error</source>
+    <target>Hiba</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Exclude from the bill of materials</source>
+    <target>Kizárás a darabjegyzékből</target>
+</phrase>
+<phrase>
+    <source>Rotate %1</source>
+    <target>%1 elforgatása</target>
+</phrase>
+<phrase>
+    <source>Rotate an image</source>
+    <target>Kép forgatása</target>
+</phrase>
+<phrase>
+    <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
+    <target>Húzza a fogantyúkat vagy a keret belsejét a megtartandó terület beállításához.</target>
+</phrase>
+<phrase>
+    <source>PDF files (*.pdf)</source>
+    <target>PDF fájlok (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Wire</source>
+    <target>Vezeték</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>A fájl nem található: %1</target>
+</phrase>
+<phrase>
+    <source>Sheet</source>
+    <target>Rajzlap</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Closed shape</source>
+    <target>Zárt forma</target>
+</phrase>
+<phrase>
+    <source>Drag %1: rotation (Shift = 15°)</source>
+    <target>%1 húzása: forgatás (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
+    <target>Húzás: ív beállítása (Ctrl = szabad pozíció, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: round the corners (Ctrl = free position)</source>
+    <target>Húzás: sarkok lekerekítése (Ctrl = szabad pozíció)</target>
+</phrase>
+<phrase>
+    <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
+    <target>Húzás: görbe alakítása (Ctrl = szabad pozíció, Alt = érintő megtörése)</target>
+</phrase>
+<phrase>
+    <source>Drag: move this point</source>
+    <target>Húzás: e pont mozgatása</target>
+</phrase>
+<phrase>
+    <source>Drag: move the rotation center</source>
+    <target>Húzás: a forgatás középpontjának mozgatása</target>
+</phrase>
+<phrase>
+    <source>Drag: move the point (Ctrl = free position</source>
+    <target>Húzás: pont mozgatása (Ctrl = szabad pozíció</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
+    <target>Húzás: döntés (Ctrl = szabad pozíció, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Shift = 15° steps)</source>
+    <target>Húzás: döntés (Shift = 15°-os lépésekben)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotate (Shift = 15° steps)</source>
+    <target>Húzás: forgatás (Shift = 15°-os lépésekben)</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
+    <target>Húzás: átméretezés (Ctrl = középponttól + szabad pozíció, Shift = arányok</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
+    <target>Húzás: átméretezés (Shift = arányok megtartása, Ctrl = középponttól)</target>
+</phrase>
+<phrase>
+    <source>Drag: reposition the rotation center (Ctrl = free position)</source>
+    <target>Húzás: forgatás középpontjának áthelyezése (Ctrl = szabad pozíció)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
+    <target>Húzás: forgatás (Ctrl = szabad pozíció, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag the purple point: round the corners</source>
+    <target>Lila pont húzása: sarkok lekerekítése</target>
+</phrase>
+<phrase>
+    <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
+    <target>Húzza a sarkot: forgatás (Shift = 15°-os lépésekben); húzza az élt: döntés (Shift = 15°-os lépésekben); piros pont: a forgatás középpontjának mozgatása</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
+    <target>Húzza a sarkot/élt: átméretezés (Ctrl = középponttól, Shift = arányok megtartása)</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
+    <target>Sarok/szél húzása: átméretezés (Ctrl = középponttól, Shift = arányok, Alt = leválasztás vonallánccá)</target>
+</phrase>
+<phrase>
+    <source>Drag a point: move it</source>
+    <target>Pont húzása: mozgatás</target>
+</phrase>
+<phrase>
+    <source>Drag an endpoint: move it</source>
+    <target>Vég húzása: mozgatás</target>
+</phrase>
+<phrase>
+    <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
+    <target>Fogantyú vagy a görbe húzása: alakítás (Alt = érintő megtörése) ; Alt+szögletes pont húzása: fogantyúk létrehozása ; jobb kattintás: a legközelebbi csomópont menüje</target>
+</phrase>
+<phrase>
+    <source>Geometry</source>
+    <target>Geometria</target>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>Magasság</target>
+</phrase>
+<phrase>
+    <source>BMP image (*.bmp)</source>
+    <target>BMP kép (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Képfájlok (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>JPEG image (*.jpg *.jpeg)</source>
+    <target>JPEG kép (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>PNG image (*.png)</source>
+    <target>PNG kép (*.png)</target>
+</phrase>
+<phrase>
+    <source>Source image</source>
+    <target>Forráskép</target>
+</phrase>
+<phrase>
+    <source>SVG image (*.svg)</source>
+    <target>SVG kép (*.svg)</target>
+</phrase>
+<phrase>
+    <source>Images not included in the DXF export</source>
+    <target>A DXF export nem tartalmaz képeket</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Unable to save the image to this location.</source>
+    <target>A kép nem menthető erre a helyre.</target>
+</phrase>
+<phrase>
+    <source>Unable to save the parts list to %1.
+%2</source>
+    <target>A darabjegyzék nem menthető ide: %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Unable to save the template  ‘%1’.</source>
+    <target>A(z) „%1” sablon nem menthető.</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Unable to load the image.</source>
+    <target>A kép nem tölthető be.</target>
+</phrase>
+<phrase>
+    <source>Unable to load the PDF file.</source>
+    <target>A PDF fájl nem tölthető be.</target>
+</phrase>
+<phrase>
+    <source>It is not possible to determine the size of the PDF page.</source>
+    <target>A PDF oldal mérete nem határozható meg.</target>
+</phrase>
+<phrase>
+    <source>Unable to render the PDF page.</source>
+    <target>A PDF oldal nem jeleníthető meg.</target>
+</phrase>
+<phrase>
+    <source>X skew</source>
+    <target>X döntés</target>
+</phrase>
+<phrase>
+    <source>Y skew</source>
+    <target>Y döntés</target>
+</phrase>
+<phrase>
+    <source>Skew %1</source>
+    <target>%1 megdöntése</target>
+</phrase>
+<phrase>
+    <source>Skew an image</source>
+    <target>Kép döntése</target>
+</phrase>
+<phrase>
+    <source>Increment</source>
+    <target>Növekmény</target>
+</phrase>
+<phrase>
+    <source>Increment: the value added to the counter each time a new number is dialled</source>
+    <target>Növekmény: a számlálóhoz minden új számozáskor hozzáadott érték</target>
+</phrase>
+<phrase>
+    <source>Enter the component details</source>
+    <target>Alkatrész-információk beírása</target>
+</phrase>
+<phrase>
+    <source>The limit set for this master element has been reached (Limit: %1).
+
+Do you still want to link this slave contact?</source>
+    <target>Ennek a mester elemnek a megadott korlátja elérve (Korlát: %1).
+
+Mindenképpen hozzá kívánja kapcsolni ezt a slave érintkezőt?</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>Szélesség</target>
+</phrase>
+<phrase>
+    <source>The file could not be written.</source>
+    <target>A fájlt nem sikerült megírni.</target>
+</phrase>
+<phrase>
+    <source>The PDF file does not contain any pages.</source>
+    <target>A PDF fájl egyetlen oldalt sem tartalmaz.</target>
+</phrase>
+<phrase>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
+    <target>Az itt használt DXF formátum (AC1006) nem teszi lehetővé képek beillesztését. A képeket csak egy körvonal téglalap fogja ábrázolni (pozíció, méret, forgatás és döntés megőrizve), a kép tartalma nélkül.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The template has been successfully saved as :
+%1</source>
+    <target>A sablon sikeresen elmentve ide:
+%1</target>
+</phrase>
+<phrase>
+    <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
+    <target>A(z) „%1” név érvénytelen: nem tartalmazhatja a következő karaktereket: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Smooth</source>
+    <target>Simított</target>
+</phrase>
+<phrase>
+    <source>Wiring list</source>
+    <target>Huzalozási lista</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Wiring list (database)</source>
+    <target>Kábelezési lista (adatbázis)</target>
+</phrase>
+<phrase>
+    <source>Length</source>
+    <target>Hossz</target>
+</phrase>
+<phrase>
+    <source>Maximum length: %1px
+</source>
+    <target>Maximális hossz: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Unrestricted length.
+</source>
+    <target>Kötetlen hossz.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror</source>
+    <target>Vízszintes tükrözés</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of an image</source>
+    <target>Kép vízszintes tükrözése</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of %1</source>
+    <target>%1 vízszintes tükrözése</target>
+</phrase>
+<phrase>
+    <source>Mirror not possible: skew too extreme for this shape</source>
+    <target>Tükrözés nem lehetséges: a döntés túl szélsőséges ehhez a formához</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror</source>
+    <target>Függőleges tükrözés</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of an image</source>
+    <target>Kép függőleges tükrözése</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of %1</source>
+    <target>%1 függőleges tükrözése</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an arc</source>
+    <target>Ív szögének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the angle of a shape</source>
+    <target>Forma szögének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an image</source>
+    <target>Kép szögének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the skew of an image</source>
+    <target>Kép döntésének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the curvature of %1</source>
+    <target>%1 görbületének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the shape of %1</source>
+    <target>%1 alakjának módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the height of an image</source>
+    <target>Kép magasságának módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the width of an image</source>
+    <target>Kép szélességének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the length of a line</source>
+    <target>Vonal hosszának módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the size of a shape</source>
+    <target>Forma méretének módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the rotation point of a text field</source>
+    <target>Szövegmező forgáspontjának módosítása</target>
+</phrase>
+<phrase>
+    <source>Change the type of a node</source>
+    <target>Csomópont típusának módosítása</target>
+</phrase>
+<phrase>
+    <source>Edit an image</source>
+    <target>Kép módosítása</target>
+</phrase>
+<phrase>
+    <source>Model</source>
+    <target>Sablon</target>
+</phrase>
+<phrase>
+    <source>Registered template</source>
+    <target>Sablon elmentve</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>Nem található *.part.xml az .edz fájlban</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  not defined
+</source>
+    <target>A megadott slave érintkezők maximális száma: nincs megadva
+</target>
+</phrase>
+<phrase>
+    <source>Unallocated only</source>
+    <target>Csak nem hozzárendeltek</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Nem érvényes .edz csomag (ismeretlen archívumformátum).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Megjegyzések</target>
+</phrase>
+<phrase>
+    <source>Number the letters as well</source>
+    <target>Betűk számozása is</target>
+</phrase>
+<phrase>
+    <source>Nearest node</source>
+    <target>Legközelebbi csomópont</target>
+</phrase>
+<phrase>
+    <source>Page to import:</source>
+    <target>Importálandó oldal:</target>
+</phrase>
+<phrase>
+    <source>Rotates the selection as a group around its centre, rather than each element in place</source>
+    <target>A kijelölést egy csoportként forgatja a középpontja körül, ahelyett hogy minden elemet a helyén forgatna</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rotate the group</source>
+    <target>Csoport forgatása</target>
+</phrase>
+<phrase>
+    <source>rotate/skew</source>
+    <target>forgatás/döntés</target>
+</phrase>
+<phrase>
+    <source>The next value to be applied using this increment</source>
+    <target>A következő érték, amely ezzel a növekménnyel lesz alkalmazva</target>
+</phrase>
+<phrase>
+    <source>X radius</source>
+    <target>X-sugár</target>
+</phrase>
+<phrase>
+    <source>Y radius</source>
+    <target>Y-sugár</target>
+</phrase>
+<phrase>
+    <source>resize</source>
+    <target>átméretezés</target>
+</phrase>
+<phrase>
+    <source>Resize %1</source>
+    <target>%1 átméretezése</target>
+</phrase>
+<phrase>
+    <source>Resize an image</source>
+    <target>Kép átméretezése</target>
+</phrase>
+<phrase>
+    <source>Replace the image...</source>
+    <target>Kép cseréje...</target>
+</phrase>
+<phrase>
+    <source>Replace an image</source>
+    <target>Kép cseréje</target>
+</phrase>
+<phrase>
+    <source>Restore proportions</source>
+    <target>Arányok visszaállítása</target>
+</phrase>
+<phrase>
+    <source>Restore an image&apos;s proportions</source>
+    <target>Kép arányainak visszaállítása</target>
+</phrase>
+<phrase>
+    <source>Remove this color</source>
+    <target>Szín eltávolítása</target>
+</phrase>
+<phrase>
+    <source>Return to the full image, without cropping</source>
+    <target>Visszatérés a teljes képhez, körbevágás nélkül</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Crop the image</source>
+    <target>Kép körbevágása</target>
+</phrase>
+<phrase>
+    <source>Crop an image</source>
+    <target>Kép körbevágása</target>
+</phrase>
+<phrase>
+    <source>Crop...</source>
+    <target>Körbevágás...</target>
+</phrase>
+<phrase>
+    <source>Rotation/Skew</source>
+    <target>Forgatás/Döntés</target>
+</phrase>
+<phrase>
+    <source>Reset</source>
+    <target>Visszaállítás</target>
+</phrase>
+<phrase>
+    <source>Resolution:</source>
+    <target>Felbontás:</target>
+</phrase>
+<phrase>
+    <source>Select an image ...</source>
+    <target>Kép kiválasztása...</target>
+</phrase>
+<phrase>
+    <source>Next</source>
+    <target>Következő</target>
+</phrase>
+<phrase>
+    <source>Delete the nearest node</source>
+    <target>Legközelebbi csomópont törlése</target>
+</phrase>
+<phrase>
+    <source>Delete a point from a curve</source>
+    <target>Pont törlése görbéből</target>
+</phrase>
+<phrase>
+    <source>Symmetric</source>
+    <target>Szimmetrikus</target>
+</phrase>
+<phrase>
+    <source>Select a PDF file...</source>
+    <target>PDF fájl kiválasztása...</target>
+</phrase>
+<phrase>
+    <source>Select a page</source>
+    <target>Oldal kiválasztása</target>
+</phrase>
+<phrase>
+    <source>Potential separation</source>
+    <target>Potenciál szétválasztása</target>
+</phrase>
+<phrase>
+    <source>Size</source>
+    <target>Méret</target>
+</phrase>
+<phrase>
+    <source>Rated voltage</source>
+    <target>Névleges feszültség</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Ez az .edz egy zip formátumú csomag, amely még nem támogatott (csak 7-Zip .edz fájlok importálhatók).</target>
+</phrase>
+<phrase>
+    <source>Tolerance for this color</source>
+    <target>Színtűrés</target>
+</phrase>
+<phrase>
+    <source>Rotate about its own centre</source>
+    <target>Forgatás a saját középpontja körül</target>
+</phrase>
+<phrase>
+    <source>all</source>
+    <target>Összes</target>
+</phrase>
+<phrase>
+    <source>All files (*)</source>
+    <target>Minden fájl (*)</target>
+</phrase>
+<phrase>
+    <source>Transform %1</source>
+    <target>%1 átalakítása</target>
+</phrase>
+<phrase>
+    <source>Transparency not preserved</source>
+    <target>Az átlátszóság nem marad meg</target>
+</phrase>
+<phrase>
+    <source>an arc</source>
+    <target>egy ív</target>
+</phrase>
+<phrase>
+    <source>a corner</source>
+    <target>egy sarok</target>
+</phrase>
+<phrase>
+    <source>a point</source>
+    <target>egy pont</target>
+</phrase>
+<phrase>
+    <source>a curve</source>
+    <target>egy görbe</target>
+</phrase>
+<phrase>
+    <source>an endpoint</source>
+    <target>egy vég</target>
+</phrase>
+<phrase>
+    <source>image</source>
+    <target>egy kép</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>Érték</target>
+</phrase>
+<phrase>
+    <source>Lock automatic numbering</source>
+    <target>Automatikus számozás zárolása</target>
+</phrase>
+<phrase>
+    <source>Lock Position</source>
+    <target>Pozíció zárolása</target>
+</phrase>
+<phrase>
+    <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
+    <target>Zárolva: a szélesség vagy magasság módosítása az arányok megtartása érdekében a másikat is állítja. Kattintson a feloldáshoz.</target>
+</phrase>
+<phrase>
+    <source>Saving failed</source>
+    <target>A mentés sikertelen</target>
+</phrase>
+<phrase>
+    <source>Node editing</source>
+    <target>Csomópontok szerkesztése</target>
+</phrase>
+<phrase>
+    <source>cabinet</source>
+    <target>Kapcsolószekrény</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>coil</source>
+    <target>Tekercs</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>terminal</source>
+    <target>Csatlakozó</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>terminal strip</source>
+    <target>Sorkapocs</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>Kábel</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>rating</source>
+    <target>Névleges érték</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>title block</source>
+    <target>Rajzfejléc</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>Gyűjtemény</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conductor</source>
+    <target>Vezeték</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>Érintkező</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contactor</source>
+    <target>Kontaktor</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>current</source>
+    <target>Áram</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>circuit breaker</source>
+    <target>Megszakító</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>folder</source>
+    <target>Mappa</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>Elem</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>slave</source>
+    <target>Szolga</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fuse</source>
+    <target>Biztosíték</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grid</source>
+    <target>Rács</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>Kapcsoló</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>master</source>
+    <target>Mester</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>template</source>
+    <target>Sablon</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>motor</source>
+    <target>Motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutral</source>
+    <target>Nulla</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>parts list</source>
+    <target>Darabjegyzék</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numbering</source>
+    <target>Számozás</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>Fázis</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potential</source>
+    <target>Potenciál</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>project</source>
+    <target>Projekt</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>power</source>
+    <target>Teljesítmény</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relay</source>
+    <target>Relé</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>Lapkereszthivatkozás</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>designation</source>
+    <target>Jelölés</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>Lapkereszthivatkozás</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>diagram</source>
+    <target>Kapcsolási rajz</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>cross-section</source>
+    <target>Keresztmetszet</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>summary</source>
+    <target>Tartalomjegyzék</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>voltage</source>
+    <target>Feszültség</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>ground</source>
+    <target>Föld</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>text</source>
+    <target>Szöveg</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformer</source>
+    <target>Transzformátor</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

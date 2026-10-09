@@ -3045,7 +3045,8 @@ class BinaryPolicy(unittest.TestCase):
 
 class LaunchExecutable(unittest.TestCase):
     """Windows cannot run a lone copy of QElectroTech (F065): its DLLs sit
-    beside the original. Everywhere else the private copy stays."""
+    beside the original. Nor can macOS: a copy out of the signed .app is
+    killed at launch (#1178). Everywhere else the private copy stays."""
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -3059,9 +3060,14 @@ class LaunchExecutable(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def test_windows_runs_the_original(self):
-        self.assertEqual(m._launch_executable(self.src, self.sandbox, True), self.src)
-        self.assertEqual(list(self.sandbox.iterdir()), [], "nothing is copied on Windows")
+    def test_windows_and_macos_run_the_original(self):
+        self.assertEqual(m._launch_executable(self.src, self.sandbox, False), self.src)
+        self.assertEqual(list(self.sandbox.iterdir()), [], "nothing is copied")
+
+    def test_which_systems_copy(self):
+        self.assertFalse(m._copies_executable("win32"))
+        self.assertFalse(m._copies_executable("darwin"))
+        self.assertTrue(m._copies_executable("linux"))
 
     def test_windows_keeps_its_own_qt_platform(self):
         """The Windows packages have no offscreen plugin; asking for it
@@ -3083,7 +3089,7 @@ class LaunchExecutable(unittest.TestCase):
             self.assertEqual(env["QET_SETTINGS_DIR"], str(self.sandbox / ".config"))
 
     def test_elsewhere_runs_a_private_copy(self):
-        exe = m._launch_executable(self.src, self.sandbox, False)
+        exe = m._launch_executable(self.src, self.sandbox, True)
         self.assertEqual(exe.parent, self.sandbox)
         self.assertNotEqual(exe, self.src)
         self.assertEqual(exe.read_text(), self.src.read_text())

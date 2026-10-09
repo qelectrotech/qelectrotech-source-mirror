@@ -32,6 +32,13 @@
 #include "../physicalterminal.h"
 #include "../terminalstripbridge.h"
 
+#include <QApplication>
+#include <QClipboard>
+#include <QKeyEvent>
+
+#include <algorithm>
+#include <limits>
+
 /**
  * @brief TerminalStripEditor::TerminalStripEditor
  * @param project : Project to manage the terminal strip
@@ -45,6 +52,9 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	ui->setupUi(this);
 
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate{this});
+
+		//Copy, paste and delete of the cells with the keyboard
+	ui->m_table_widget->installEventFilter(this);
 
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
@@ -106,7 +116,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
-		ui->m_move_to_cb->addItem(tr("Bornes indépendantes"), QUuid());
+		ui->m_move_to_cb->addItem(tr("Independent terminals"), QUuid());
 
 		const auto project_{strip_->project()};
 		if (project_)
@@ -176,7 +186,7 @@ void TerminalStripEditor::apply()
 
 	if (m_current_strip)
 	{
-		m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+		m_project->undoStack()->beginMacro(tr("Modify terminal strip properties"));
 
 		TerminalStripData data;
 		data.m_installation = ui->m_installation_le->text();
@@ -198,6 +208,15 @@ void TerminalStripEditor::apply()
 					current_data.setTerminalFunction(data_.function_);
 					current_data.setTerminalLED(data_.led_);
 					current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
+					//The cable data are only stored when they are used
+					const auto set_info = [&current_data](const QString &key, const QString &value) {
+						if (!value.isEmpty() || current_data.m_informations.contains(key)) {
+							current_data.m_informations.addValue(key, value);
+						}
+					};
+					set_info(RealTerminal::cableInfoKey(), data_.cable_);
+					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+					set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
 
 					if (element->elementData() != current_data)
 						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
@@ -265,6 +284,8 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_type_cb           ->setDisabled(true);
 		ui->m_function_cb       ->setDisabled(true);
 		ui->m_led_cb            ->setDisabled(true);
+		ui->m_cable_le          ->setDisabled(true);
+		ui->m_cable_apply_pb    ->setDisabled(true);
 
 		ui->m_bridge_terminals_pb  ->setDisabled(true);
 		ui->m_unbridge_terminals_pb->setDisabled(true);
@@ -280,10 +301,14 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_type_cb     ->setDisabled(true);
 		ui->m_function_cb ->setDisabled(true);
 		ui->m_led_cb      ->setDisabled(true);
+		ui->m_cable_le      ->setDisabled(true);
+		ui->m_cable_apply_pb->setDisabled(true);
 	} else {
 		ui->m_type_cb     ->setEnabled(true);
 		ui->m_function_cb ->setEnabled(true);
 		ui->m_led_cb      ->setEnabled(true);
+		ui->m_cable_le      ->setEnabled(true);
+		ui->m_cable_apply_pb->setEnabled(true);
 	}
 
 	const auto model_physical_terminal_vector = m_model->modelPhysicalTerminalDataForIndex(index_list);
@@ -596,6 +621,222 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 			if (led_index.isValid()) {
 				m_model->setData(led_index,
 								 index == 0 ? false : true);
+			}
+		}
+	}
+}
+
+namespace {
+/**
+ * @return true if the cell at @a index contain a free text
+ * (label, cable or wire of the cable), so a text can be pasted in it.
+ */
+bool cellAcceptText(const QModelIndex &index)
+{
+	const auto column_ = TerminalStripModel::columnTypeForIndex(index);
+	return column_ == TerminalStripModel::Label
+			|| column_ == TerminalStripModel::Cable
+			|| column_ == TerminalStripModel::CableWire;
+}
+}
+
+/**
+ * @brief TerminalStripEditor::eventFilter
+ * Manage the shortcuts copy, paste and delete in the table
+ * @param watched
+ * @param event
+ * @return
+ */
+bool TerminalStripEditor::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched == ui->m_table_widget &&
+		event->type() == QEvent::KeyPress &&
+		m_model)
+	{
+		const auto key_event = static_cast<QKeyEvent *>(event);
+		if (key_event->matches(QKeySequence::Copy)) {
+			copySelectionToClipboard();
+			return true;
+		}
+		if (key_event->matches(QKeySequence::Paste)) {
+			pasteFromClipboard();
+			return true;
+		}
+		if (key_event->matches(QKeySequence::Delete)) {
+			clearSelectedTexts();
+			return true;
+		}
+	}
+
+	return QWidget::eventFilter(watched, event);
+}
+
+/**
+ * @brief TerminalStripEditor::copySelectionToClipboard
+ * Copy the selected cells to the clipboard, as a text where the columns
+ * are separated by a tabulation and the rows by a new line
+ * (the format used by the spreadsheets).
+ */
+void TerminalStripEditor::copySelectionToClipboard()
+{
+	if (!m_model || !ui->m_table_widget->selectionModel()) {
+		return;
+	}
+
+	const auto selection = ui->m_table_widget->selectionModel()->selectedIndexes();
+	if (selection.isEmpty()) {
+		return;
+	}
+
+	int top{std::numeric_limits<int>::max()}, left{std::numeric_limits<int>::max()}, bottom{-1}, right{-1};
+	QHash<qint64, QString> texts;
+	for (const auto &index : selection)
+	{
+		top    = std::min(top,    index.row());
+		left   = std::min(left,   index.column());
+		bottom = std::max(bottom, index.row());
+		right  = std::max(right,  index.column());
+		texts.insert((qint64(index.row()) << 32) | qint64(index.column()),
+					 index.data(Qt::DisplayRole).toString());
+	}
+
+	QStringList lines;
+	for (auto row = top ; row <= bottom ; ++row)
+	{
+		QStringList cells;
+		for (auto column = left ; column <= right ; ++column) {
+			cells << texts.value((qint64(row) << 32) | qint64(column));
+		}
+		lines << cells.join(QLatin1Char('\t'));
+	}
+
+	QApplication::clipboard()->setText(lines.join(QLatin1Char('\n')));
+}
+
+/**
+ * @brief TerminalStripEditor::pasteFromClipboard
+ * Paste the text of the clipboard in the table.
+ * - If the text is only one value and several cells are selected,
+ *   the value is set to every selected cell.
+ * - Otherwise the text is read like a table (tabulation between the columns
+ *   and new line between the rows) and written from the top left selected cell.
+ * Only the label, cable and cable wire cells are modified.
+ */
+void TerminalStripEditor::pasteFromClipboard()
+{
+	if (!m_model || !ui->m_table_widget->selectionModel()) {
+		return;
+	}
+
+	auto text = QApplication::clipboard()->text();
+	if (text.isEmpty()) {
+		return;
+	}
+	text.replace(QStringLiteral("\r\n"), QStringLiteral("\n"));
+	text.replace(QLatin1Char('\r'), QLatin1Char('\n'));
+
+	auto lines = text.split(QLatin1Char('\n'));
+		//A spreadsheet end the last row with a new line
+	if (lines.size() > 1 && lines.last().isEmpty()) {
+		lines.removeLast();
+	}
+
+	const auto selection = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		//One value, several cells : set the value to all of them
+	if (lines.size() == 1 &&
+		!lines.first().contains(QLatin1Char('\t')) &&
+		selection.size() > 1)
+	{
+		for (const auto &index : selection)
+		{
+			if (cellAcceptText(index)) {
+				m_model->setData(index, lines.first(), Qt::EditRole);
+			}
+		}
+		return;
+	}
+
+		//Else write the text like a table, from the top left selected cell
+	int first_row{-1}, first_column{-1};
+	if (selection.isEmpty())
+	{
+		const auto current_ = ui->m_table_widget->currentIndex();
+		if (!current_.isValid()) {
+			return;
+		}
+		first_row = current_.row();
+		first_column = current_.column();
+	}
+	else
+	{
+		first_row = std::numeric_limits<int>::max();
+		first_column = std::numeric_limits<int>::max();
+		for (const auto &index : selection) {
+			first_row    = std::min(first_row,    index.row());
+			first_column = std::min(first_column, index.column());
+		}
+	}
+
+	for (auto i = 0 ; i < lines.size() ; ++i)
+	{
+		const auto row = first_row + i;
+		if (row >= m_model->rowCount()) {
+			break;
+		}
+
+		const auto cells = lines.at(i).split(QLatin1Char('\t'));
+		for (auto j = 0 ; j < cells.size() ; ++j)
+		{
+			const auto column = first_column + j;
+			if (column >= m_model->columnCount()) {
+				break;
+			}
+
+			const auto index = m_model->index(row, column);
+			if (cellAcceptText(index)) {
+				m_model->setData(index, cells.at(j), Qt::EditRole);
+			}
+		}
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::clearSelectedTexts
+ * Erase the text of the selected cells who accept a text.
+ */
+void TerminalStripEditor::clearSelectedTexts()
+{
+	if (!m_model || !ui->m_table_widget->selectionModel()) {
+		return;
+	}
+
+	const auto selection = ui->m_table_widget->selectionModel()->selectedIndexes();
+	for (const auto &index : selection)
+	{
+		if (cellAcceptText(index)) {
+			m_model->setData(index, QString(), Qt::EditRole);
+		}
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_cable_apply_pb_clicked
+ * Set the cable name written in the line edit
+ * to every selected terminal.
+ */
+void TerminalStripEditor::on_m_cable_apply_pb_clicked()
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+		const auto cable_name = ui->m_cable_le->text();
+
+		for (auto model_index : index_list)
+		{
+			const auto cable_index = m_model->index(model_index.row(), TerminalStripModel::Cable, model_index.parent());
+			if (cable_index.isValid()) {
+				m_model->setData(cable_index, cable_name, Qt::EditRole);
 			}
 		}
 	}

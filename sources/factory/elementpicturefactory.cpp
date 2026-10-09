@@ -258,6 +258,29 @@ ElementPictureFactory::~ElementPictureFactory()
 }
 
 /**
+	@brief ElementPictureFactory::pictureFromDefinition
+	@return the drawing of an element @a definition that is in no
+	collection yet, such as one being made by a dialog, drawn by the same
+	code as a placed element. Not cached.
+*/
+QPicture ElementPictureFactory::pictureFromDefinition(const QDomElement &definition) const
+{
+	QPicture picture;
+	QPainter painter(&picture);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	painter.setRenderHint(QPainter::TextAntialiasing, true);
+	primitives primitives_;
+	const QDomElement description = definition.firstChildElement(QStringLiteral("description"));
+	for (QDomElement part = description.firstChildElement() ; !part.isNull() ;
+	     part = part.nextSiblingElement()) {
+		parseElement(part, painter, primitives_);
+	}
+	painter.end();
+	qDeleteAll(primitives_.m_texts);
+	return picture;
+}
+
+/**
 	@brief ElementPictureFactory::build
 	Build the picture from location.
 	@param location
@@ -286,9 +309,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		&& QetVersion::currentVersion() < elmt_version)
 	{
 		std::cerr << qPrintable(
-						 QObject::tr("Avertissement : l'élément "
-									 " a été enregistré avec une version"
-									 " ultérieure de QElectroTech.")
+						 QObject::tr("Warning: the element has been "
+									 "saved with a more recent version "
+									 "of QElectroTech.")
 						 ) << std::endl;
 	}
 
@@ -704,10 +727,11 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		//adjusts the offset by the margin of the text document
 	text_document.setDocumentMargin(0.0);
 
-		//Optional line alignment of multi-line texts (the anchor behaviour
-		//of the alignment is handled in the element editor; the saved x/y
-		//always stay the baseline-left of the text block). The document
-		//only honors the text option once a text width is set.
+		//Optional line alignment of multi-line texts. The document only
+		//honours the text option once a text width is set.
+		//x/y are the baseline-left of the text block, unless
+		//anchor="alignment": x is then the left edge, centre or right edge
+		//selected by Halignment, and y stays the baseline (#1251).
 	if (dom.hasAttribute("Halignment")) {
 		const QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 		const Qt::Alignment h_alignment = Qt::Alignment(
@@ -717,12 +741,18 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 			option.setAlignment(h_alignment & Qt::AlignHorizontal_Mask);
 			text_document.setDefaultTextOption(option);
 			text_document.setTextWidth(text_document.idealWidth());
+			if (dom.attribute("anchor") == QLatin1String("alignment"))
+				qpainter_offset.rx() -= h_alignment & Qt::AlignRight
+						? text_document.idealWidth()
+						: text_document.idealWidth() / 2;
 		}
 	}
 
 	QTransform text_transform;
 	text_transform.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
 	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
+		//baseline-left of the text block, for the DXF export below
+	const QPointF baseline_left = text_transform.map(QPointF(qpainter_offset.x(), 0));
 	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
 
 	if (!m_build_texts_undo.isIdentity())
@@ -748,7 +778,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	QGraphicsSimpleTextItem *qgsti = new QGraphicsSimpleTextItem();
 	qgsti->setText(dom.attribute("text"));
 	qgsti->setFont(font_);
-	qgsti->setPos(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	qgsti->setPos(baseline_left);
 	qgsti->setRotation(dom.attribute("rotation", "0").toDouble());
 	prim.m_texts << qgsti;
 
@@ -1424,10 +1454,10 @@ void ElementPictureFactory::parsePlcTable(const QDomElement &dom, const QDomElem
 	// Build header labels
 	QMap<int, QString> headers;
 	headers[COL_TYPE]     = QObject::tr("Type");
-	headers[COL_ADDRESS]  = QObject::tr("Adresse");
-	headers[COL_FUNCTION] = QObject::tr("Fonction");
-	headers[COL_COMMENT]  = QObject::tr("Commentaire");
-	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+	headers[COL_ADDRESS]  = QObject::tr("Address");
+	headers[COL_FUNCTION] = QObject::tr("Function");
+	headers[COL_COMMENT]  = QObject::tr("Annotation");
+	headers[COL_CROSSREF] = QObject::tr("Cross-reference");
 	for (auto it = column_names.constBegin(); it != column_names.constEnd(); ++it)
 		headers[it.key()] = it.value();
 

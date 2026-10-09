@@ -38,7 +38,7 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	QDialog(parent),
 	m_columns(columns)
 {
-	setWindowTitle(tr("Nouvelle entrée"));
+	setWindowTitle(tr("New entry"));
 
 		//Two fields per row : the form shows the whole article at once
 		//instead of stacking twenty lines in a narrow column.
@@ -48,8 +48,8 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	auto *main_layout = new QVBoxLayout(this);
 
 	auto *intro = new QLabel(
-		tr("Renseignez l'article à ajouter. Les champs laissés vides "
-		   "restent vides dans le fichier."), this);
+		tr("Fill in the item to add. Fields left empty stay empty in "
+		   "the file."), this);
 	intro->setWordWrap(true);
 	main_layout->addWidget(intro);
 
@@ -84,8 +84,8 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	main_layout->addWidget(scroll_area, 1);
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-	buttons->button(QDialogButtonBox::Ok)->setText(tr("Enregistrer"));
-	buttons->button(QDialogButtonBox::Cancel)->setText(tr("Annuler"));
+	buttons->button(QDialogButtonBox::Ok)->setText(tr("Save"));
+	buttons->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 	connect(buttons, &QDialogButtonBox::accepted, this, &MaterialEntryDialog::accept);
 	connect(buttons, &QDialogButtonBox::rejected, this, &MaterialEntryDialog::reject);
 	main_layout->addWidget(buttons);
@@ -137,9 +137,9 @@ void MaterialEntryDialog::accept()
 	if (record().values.isEmpty())
 	{
 		QET::QetMessageBox::warning(this,
-									tr("Aucun renseignement"),
-									tr("Saisissez au moins un renseignement "
-									   "pour créer une entrée."));
+									tr("Nothing filled in"),
+									tr("Fill in at least one field to create "
+									   "an entry."));
 		return;
 	}
 

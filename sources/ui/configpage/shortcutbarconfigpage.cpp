@@ -49,10 +49,9 @@ ShortcutBarConfigPage::ShortcutBarConfigPage(QWidget *parent) :
 	}
 
 	auto *explanation = new QLabel(
-		tr("La barre de raccourcis s'ouvre à la position du curseur "
-		   "(touche S par défaut). Elle montre les commandes choisies "
-		   "ici selon ce qui est sélectionné, puis le sélecteur "
-		   "d'éléments."), this);
+		tr("The shortcut bar opens at the cursor position (S key by "
+		   "default). It shows the commands chosen here based on what "
+		   "is selected, then the element picker."), this);
 	explanation->setWordWrap(true);
 
 	m_context = new QComboBox(this);
@@ -67,11 +66,11 @@ ShortcutBarConfigPage::ShortcutBarConfigPage(QWidget *parent) :
 	m_chosen->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_chosen->setDragDropMode(QAbstractItemView::InternalMove);
 
-	auto *add = new QPushButton(tr("Ajouter →"), this);
-	auto *remove = new QPushButton(tr("← Retirer"), this);
-	auto *up = new QPushButton(tr("Monter"), this);
-	auto *down = new QPushButton(tr("Descendre"), this);
-	auto *reset = new QPushButton(tr("Valeurs par défaut"), this);
+	auto *add = new QPushButton(tr("Add →"), this);
+	auto *remove = new QPushButton(tr("← Remove"), this);
+	auto *up = new QPushButton(tr("Move up"), this);
+	auto *down = new QPushButton(tr("Move down"), this);
+	auto *reset = new QPushButton(tr("Default values"), this);
 
 	auto *buttons = new QVBoxLayout();
 	buttons->addStretch();
@@ -83,14 +82,14 @@ ShortcutBarConfigPage::ShortcutBarConfigPage(QWidget *parent) :
 	buttons->addStretch();
 
 	auto *grid = new QGridLayout();
-	grid->addWidget(new QLabel(tr("Commandes disponibles"), this), 0, 0);
-	grid->addWidget(new QLabel(tr("Dans la barre, dans l'ordre"), this), 0, 2);
+	grid->addWidget(new QLabel(tr("Available commands"), this), 0, 0);
+	grid->addWidget(new QLabel(tr("In the bar, in order"), this), 0, 2);
 	grid->addWidget(m_available, 1, 0);
 	grid->addLayout(buttons, 1, 1);
 	grid->addWidget(m_chosen, 1, 2);
 
 	auto *context_row = new QHBoxLayout();
-	context_row->addWidget(new QLabel(tr("Contexte :"), this));
+	context_row->addWidget(new QLabel(tr("Context:"), this));
 	context_row->addWidget(m_context, 1);
 	context_row->addWidget(reset);
 
@@ -128,7 +127,7 @@ void ShortcutBarConfigPage::applyConf()
 
 QString ShortcutBarConfigPage::title() const
 {
-	return tr("Barre de raccourcis", "configuration page title");
+	return tr("Shortcut bar", "configuration page title");
 }
 
 QIcon ShortcutBarConfigPage::icon() const

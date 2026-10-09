@@ -137,7 +137,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 						m_table_item->pos().x(),
 						ui->m_x_pos->value());
 			undo->setAnimated(true, false);
-			undo->setText(tr("Déplacer un tableau"));
+			undo->setText(tr("Move a table"));
 			return undo;
 		}
 
@@ -148,7 +148,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 						m_table_item->pos().y(),
 						ui->m_y_pos->value());
 			undo->setAnimated(true, false);
-			undo->setText(tr("Déplacer un tableau"));
+			undo->setText(tr("Move a table"));
 			return undo;
 		}
 
@@ -158,7 +158,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 						"displayNRow",
 						m_table_item->displayNRow(),
 						ui->m_display_n_row_sb->value());
-			undo->setText(tr("Modifier le nombre de ligne affiché par un tableau"));
+			undo->setText(tr("Change the number of rows displayed by a table"));
 			return undo;
 		}
 
@@ -180,7 +180,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 						Qt::Horizontal,
 						QETUtils::marginsToString(edited_header_margins),
 						Qt::UserRole+1);
-			undo->setText(tr("Modifier les marges d'une en tête de tableau"));
+			undo->setText(tr("Change the margins of a table header"));
 			return undo;
 		}
 
@@ -199,7 +199,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 			undo->setData(
 						QETUtils::marginsToString(edited_table_margins),
 						Qt::UserRole+1);
-			undo->setText(tr("Modifier les marges d'un tableau"));
+			undo->setText(tr("Change the margins of a table"));
 			return undo;
 		}
 
@@ -215,7 +215,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 						Qt::Horizontal,
 						m_header_button_group->checkedId(),
 						Qt::TextAlignmentRole);
-			undo->setText(tr("Modifier l'alignement d'une en tête de tableau"));
+			undo->setText(tr("Change the alignment of a table header"));
 			return undo;
 		}
 
@@ -228,7 +228,7 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 			undo->setData(
 						m_table_button_group->checkedId(),
 						Qt::TextAlignmentRole);
-			undo->setText(tr("Modifier l'alignement des textes d'un tableau"));
+			undo->setText(tr("Change the alignment of texts in a table"));
 			return undo;
 		}
 	}
@@ -270,7 +270,7 @@ void GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked()
 						Qt::Horizontal,
 						QVariant::fromValue(font),
 						Qt::FontRole);
-			undo->setText(tr("Modifier la police d'une en tête de tableau"));
+			undo->setText(tr("Change the font of a table header"));
 			m_table_item->diagram()->undoStack().push(undo);
 		}
 	}
@@ -295,7 +295,7 @@ void GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked()
 			auto undo = new ModelIndexCommand(
 						m_table_item->model(), index);
 			undo->setData(QVariant::fromValue(new_font), Qt::FontRole);
-			undo->setText(tr("Changer la police d'un tableau"));
+			undo->setText(tr("Change the font of a table"));
 			m_table_item->diagram()->undoStack().push(undo);
 		}
 	}
@@ -324,7 +324,7 @@ void GraphicsTablePropertiesEditor::updateUi()
 	ui->m_previous_table_cb->clear();
 	m_other_table_vector.clear();
 
-	ui->m_previous_table_cb->addItem(tr("Aucun")); //Add no previous table
+	ui->m_previous_table_cb->addItem(tr("None")); //Add no previous table
 
 	if (auto item_ = m_table_item->previousTable()) //Add the current previous table
 	{
@@ -421,7 +421,7 @@ void GraphicsTablePropertiesEditor::updateInfoLabel()
 
 	auto value = m_table_item->model()->rowCount() - count_;
 	if (value > 0 && !infinite) {
-		ui->m_info_label->setText(tr("<center>ATTENTION :</center>\n il manque %1 lignes afin d'afficher l'intégralité des informations").arg(value));
+		ui->m_info_label->setText(tr("<center>WARNING:</center>\n %1 more rows are needed to display all the information").arg(value));
 		ui->m_info_label->show();
 	} else {
 		ui->m_info_label->hide();
@@ -533,7 +533,7 @@ void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_click
 	auto new_size          = m_table_item->size();
 	auto new_displayN_row  = m_table_item->displayNRow();
 		//Apply to all linked table
-	auto parent_undo = new QUndoCommand(tr("Appliquer la géometrie d'un tableau aux tableau liée à celui-ci"));
+	auto parent_undo = new QUndoCommand(tr("Apply the geometry of a table to the table linked to it"));
 	for (auto table : vector_)
 	{
 		new QPropertyUndoCommand(table, "pos", table->pos(), new_pos, parent_undo);

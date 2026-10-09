@@ -29,7 +29,7 @@
    <item>
     <widget class="QGroupBox" name="m_tbt_gb">
      <property name="title">
-      <string>Informations des cartouches</string>
+      <string>Title block information</string>
      </property>
      <property name="checkable">
       <bool>false</bool>
@@ -46,7 +46,7 @@
         <item>
          <widget class="QLabel" name="m_tbt_label">
           <property name="text">
-           <string>Modèle :</string>
+           <string>Template:</string>
           </property>
          </widget>
         </item>
@@ -81,7 +81,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the title block at the bottom (horizontal) or right (vertically) of the sheet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="iconSize">
            <size>
@@ -162,7 +162,7 @@
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
-          <string>Principales</string>
+          <string>Main</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -170,7 +170,7 @@
             <item row="3" column="1">
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Date :</string>
+               <string>Date:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -216,63 +216,63 @@
             <item row="2" column="1">
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Auteur :</string>
+               <string>Author:</string>
               </property>
              </widget>
             </item>
             <item row="9" column="1">
              <widget class="QLabel" name="label_12">
               <property name="text">
-               <string>Indice Rev:</string>
+               <string>Rev index:</string>
               </property>
              </widget>
             </item>
             <item row="8" column="3">
              <widget class="QLineEdit" name="m_loc">
               <property name="toolTip">
-               <string>Disponible en tant que %locmach pour les modèles de cartouches</string>
+               <string>Available as variable %locmach for title blocks</string>
               </property>
              </widget>
             </item>
             <item row="6" column="3">
              <widget class="QLineEdit" name="m_plant">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Available as% plant for title block templates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
             <item row="1" column="3">
              <widget class="QLineEdit" name="m_title_le">
               <property name="toolTip">
-               <string>Disponible en tant que %title pour les modèles de cartouches</string>
+               <string>Available as variable %title for title blocks</string>
               </property>
              </widget>
             </item>
             <item row="5" column="1">
              <widget class="QLabel" name="label_6">
               <property name="text">
-               <string>Folio :</string>
+               <string>Sheet:</string>
               </property>
              </widget>
             </item>
             <item row="4" column="1">
              <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>Fichier :</string>
+               <string>File:</string>
               </property>
              </widget>
             </item>
             <item row="2" column="3">
              <widget class="QLineEdit" name="m_author_le">
               <property name="toolTip">
-               <string>Disponible en tant que %author pour les modèles de cartouches</string>
+               <string>Available as variable %author for title blocks</string>
               </property>
              </widget>
             </item>
             <item row="4" column="3">
              <widget class="QLineEdit" name="m_file_le">
               <property name="toolTip">
-               <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+               <string>Available as variable %filename for title blocks</string>
               </property>
              </widget>
             </item>
@@ -281,21 +281,21 @@
               <item row="0" column="0">
                <widget class="QRadioButton" name="m_no_date_rb">
                 <property name="text">
-                 <string>Pas de date</string>
+                 <string>No date</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
                <widget class="QRadioButton" name="m_current_date_rb">
                 <property name="text">
-                 <string>Date courante</string>
+                 <string>Current date</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
                <widget class="QPushButton" name="m_date_now_pb">
                 <property name="toolTip">
-                 <string>Appliquer la date actuelle</string>
+                 <string>Set to current date</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -308,7 +308,7 @@
               <item row="2" column="1">
                <widget class="QDateEdit" name="m_date_edit">
                 <property name="toolTip">
-                 <string>Disponible en tant que %date pour les modèles de cartouches</string>
+                 <string>Available as variable %date for title blocks</string>
                 </property>
                 <property name="frame">
                  <bool>true</bool>
@@ -321,7 +321,7 @@
               <item row="2" column="0">
                <widget class="QRadioButton" name="m_fixed_date_rb">
                 <property name="text">
-                 <string>Date fixe :</string>
+                 <string>Fixed date:</string>
                 </property>
                </widget>
               </item>
@@ -330,18 +330,18 @@
             <item row="5" column="3">
              <widget class="QLineEdit" name="m_folio_le">
               <property name="toolTip">
-               <string>Disponible en tant que %folio pour les modèles de cartouches
-Les variables suivantes sont utilisables :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</string>
+               <string>Available as % folio for titleblock models
+The following variables can be used:
+-%id: current number of sheets in the project
+-%total: total number of sheets in the project
+-%autonum: sheet auto numbering</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>Titre :</string>
+               <string>Title:</string>
               </property>
              </widget>
             </item>
@@ -354,28 +354,28 @@ Les variables suivantes sont utilisables :
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Page Num:</string>
+               <string>Page no.:</string>
               </property>
              </widget>
             </item>
             <item row="9" column="3">
              <widget class="QLineEdit" name="m_indice">
               <property name="toolTip">
-               <string>Disponible en tant que %indexrev pour les modèles de cartouches</string>
+               <string>Available as variable %indexrev for title blocks</string>
               </property>
              </widget>
             </item>
             <item row="6" column="1">
              <widget class="QLabel" name="label_10">
               <property name="text">
-               <string>Installation :</string>
+               <string>Plant:</string>
               </property>
              </widget>
             </item>
             <item row="8" column="1">
              <widget class="QLabel" name="label_11">
               <property name="text">
-               <string>Localisation:</string>
+               <string>Location :</string>
               </property>
              </widget>
             </item>
@@ -398,7 +398,7 @@ Les variables suivantes sont utilisables :
         </widget>
         <widget class="QWidget" name="tab_2">
          <attribute name="title">
-          <string>Personnalisées</string>
+          <string>Custom</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
@@ -406,8 +406,7 @@ Les variables suivantes sont utilisables :
             <item>
              <widget class="QLabel" name="label_8">
               <property name="text">
-               <string>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
-associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</string>
+               <string>You may define here your own name/value associations so the title block takes them into account. E.g. associating the name "volta" with the value "1745" will replace %{volta} by 1745 within the title block.</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>

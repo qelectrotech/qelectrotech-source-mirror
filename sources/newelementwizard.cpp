@@ -47,8 +47,8 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 #endif
 
 	setPixmap(LogoPixmap, QIcon::fromTheme("qelectrotech").pixmap(64, 64));
-	setWindowTitle(tr("Créer un nouvel élément : Assistant", "window title"));
-	setButtonText(QWizard::NextButton, tr("&Suivant >"));
+	setWindowTitle(tr("Create a new element: wizard", "window title"));
+	setButtonText(QWizard::NextButton, tr("&Next >"));
 	addPage(buildStep1());
 	addPage(buildStep2());
 	addPage(buildStep3());
@@ -83,8 +83,8 @@ QWizardPage *NewElementWizard::buildStep1()
 {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
-	page -> setTitle(tr("Étape 1/3 : Catégorie parente", "wizard page title"));
-	page -> setSubTitle(tr("Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.", "wizard page subtitle"));
+	page -> setTitle(tr("Step 1 of 3: Parent category", "wizard page title"));
+	page -> setSubTitle(tr("Select a category which to save the new element in.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 
 	m_tree_view = new ElementsTreeView(this);
@@ -111,13 +111,13 @@ QWizardPage *NewElementWizard::buildStep2()
 {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
-	page -> setTitle(tr("Étape 2/3 : Nom du fichier", "wizard page title"));
-	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.", "wizard page subtitle"));
+	page -> setTitle(tr("Step 2 of 3: Filename", "wizard page title"));
+	page -> setSubTitle(tr("Enter the name of the file for the new element.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
-	m_qle_filename = new QFileNameEdit(tr("nouvel_element"));
+	m_qle_filename = new QFileNameEdit(tr("new_element"));
 	m_qle_filename -> selectAll();
-	QLabel *explication2 = new QLabel(tr("Vous n'êtes pas obligé de préciser l'extension *.elmt. Elle sera ajoutée automatiquement."));
+	QLabel *explication2 = new QLabel(tr("You don't have to specify the *.elmt extension. It will be added automatically."));
 	explication2 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication2 -> setWordWrap(true);
 	layout -> addWidget(m_qle_filename);
@@ -136,13 +136,13 @@ QWizardPage *NewElementWizard::buildStep3()
 {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
-	page -> setTitle(tr("Étape 3/3 : Noms de l'élément", "wizard page title"));
-	page -> setSubTitle(tr("Indiquez le ou les noms de l'élément.", "wizard page subtitle"));
+	page -> setTitle(tr("Step 3 of 3: Element names", "wizard page title"));
+	page -> setSubTitle(tr("Enter one or more names for the element.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	m_names_list = new NameListWidget(this);
 	NamesList hash_name;
-	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel élément", "default name when creating a new element"));
+	hash_name.addName(QLocale::system().name().left(2), tr("New element name", "default name when creating a new element"));
 	m_names_list -> setNames(hash_name);
 	layout -> addWidget(m_names_list);
 	
@@ -200,8 +200,8 @@ bool NewElementWizard::validStep1()
 
 	if (!step1_ok) {
 		QET::QetMessageBox::critical(parentWidget(),
-									 tr("Erreur", "message box title"),
-									 tr("Vous devez sélectionner une catégorie.", "message box content"));
+									 tr("Error", "message box title"),
+									 tr("You must select a category.", "message box content"));
 	}
 
 	return(step1_ok);
@@ -218,8 +218,8 @@ bool NewElementWizard::validStep2()
 
 	if (file_name.isEmpty()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Erreur", "message box title"),
-									 tr("Vous devez entrer un nom de fichier", "message box content"));
+									 tr("Error", "message box title"),
+									 tr("You must enter a filename", "message box content"));
 		return false;
 	}
 
@@ -231,8 +231,8 @@ bool NewElementWizard::validStep2()
 	loc_.addToPath(file_name);
 	if (loc_.exist()) {
 		QET::QetMessageBox::critical(this,
-									 tr("Erreur", "message box title"),
-									 tr("Un élément portant le même nom existe déjà"));
+									 tr("Error", "message box title"),
+									 tr("An element with the same name already exists"));
 		return false;
 	}
 

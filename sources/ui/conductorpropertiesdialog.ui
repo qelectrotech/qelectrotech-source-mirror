@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Éditer les propriétés d'un conducteur</string>
+   <string>Edit conductor properties</string>
   </property>
   <layout class="QVBoxLayout" name="main_layout">
    <item>
     <widget class="QCheckBox" name="m_apply_all_cb">
      <property name="text">
-      <string>Appliquer les propriétés à l'ensemble des conducteurs de ce potentiel</string>
+      <string>Apply properties to all conductors of this potential</string>
      </property>
      <property name="checked">
       <bool>true</bool>

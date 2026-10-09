@@ -149,7 +149,7 @@ QUndoCommand* ElementInfoWidget::associatedUndo() const
 	}
 
 	auto *macro = new QUndoCommand(
-				QObject::tr("Modifier les informations de l'élément : %1")
+				QObject::tr("Edit information of the element : %1")
 				.arg(m_element->name()));
 	DiagramContext base_info = old_info;
 	bool state_frozen = was_frozen;
@@ -285,12 +285,7 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	QStringList keys;
-	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
-		keys = QETInformation::terminalElementInfoKeys();
-	 } else {
-		keys = QETInformation::elementInfoKeys();
-	}
+	QStringList keys = QETInformation::elementInfoKeys();
 
 		//"exclude_from_bom" is part of elementInfoKeys() because the project
 		//database builds the element_info table from that list, but it is not
@@ -312,18 +307,18 @@ void ElementInfoWidget::buildInterface()
 	setupNumberRow();
 	setupFreezeRow();
 
-	m_add_custom_property_btn = new QPushButton(tr("Ajouter une propriété personnalisée"), this);
+	m_add_custom_property_btn = new QPushButton(tr("Add a custom property"), this);
 	connect(m_add_custom_property_btn, &QPushButton::clicked, this, [this]() { addCustomProperty(); });
 	ui->scroll_vlayout->addWidget(m_add_custom_property_btn);
 
 	ui->scroll_vlayout->addStretch();
 
 	// Existing potential isolating checkbox
-	m_potential_isolating_cb = new QCheckBox(tr("Séparation de potentiel"), this);
+	m_potential_isolating_cb = new QCheckBox(tr("Potential separation"), this);
 	m_potential_isolating_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
 
 	// English: Initialize and style the BOM exclusion checkbox
-	m_exclude_from_bom_cb = new QCheckBox(tr("Exclure de la nomenclature"), this);
+	m_exclude_from_bom_cb = new QCheckBox(tr("Exclude from the bill of materials"), this);
 	m_exclude_from_bom_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
 
 	if (QVBoxLayout *mainLayout = qobject_cast<QVBoxLayout*>(this->layout())) {
@@ -354,9 +349,7 @@ void ElementInfoWidget::buildInterface()
 */
 QStringList ElementInfoWidget::predefinedKeys() const
 {
-	QStringList keys = (m_element.data()->elementData().m_type == ElementData::Terminal)
-			? QETInformation::terminalElementInfoKeys()
-			: QETInformation::elementInfoKeys();
+	QStringList keys = QETInformation::elementInfoKeys();
 
 	keys << QETInformation::ELMT_FORMULA_ID
 		 << QStringLiteral("auto_num_locked")
@@ -490,9 +483,11 @@ void ElementInfoWidget::materialFromFile(int block)
 	{
 		const auto answer = QET::QetMessageBox::question(
 			this,
-			tr("Liste de matériaux absente"),
-			tr("Aucun fichier de liste de matériaux n'existe à cet emplacement :\n"
-			   "%1\n\nLe créer ?", "message asking to create the material file").arg(path),
+			tr("No materials list"),
+			tr("There is no materials list file at this location:\n"
+			   "%1\n"
+			   "\n"
+			   "Create it?", "message asking to create the material file").arg(path),
 			QMessageBox::Yes | QMessageBox::No,
 			QMessageBox::Yes);
 
@@ -504,8 +499,8 @@ void ElementInfoWidget::materialFromFile(int block)
 		if (!MaterialList::createFile(path, &error))
 		{
 			QET::QetMessageBox::critical(this,
-										 tr("Création impossible"),
-										 tr("Impossible de créer le fichier :\n%1\n%2")
+										 tr("Cannot create"),
+										 tr("Cannot create the file:\n%1\n%2")
 											.arg(path, error));
 			return;
 		}
@@ -779,7 +774,7 @@ void ElementInfoWidget::setupSchemeRow()
 	m_scheme_row = new QWidget(this);
 	auto *layout = new QHBoxLayout(m_scheme_row);
 	layout->setContentsMargins(0, 0, 0, 0);
-	layout->addWidget(new QLabel(tr("Numérotation automatique"), m_scheme_row));
+	layout->addWidget(new QLabel(tr("Automatic numbering"), m_scheme_row));
 
 	m_scheme_cb = new QComboBox(m_scheme_row);
 	m_scheme_cb->setObjectName(QStringLiteral("m_scheme_cb"));
@@ -787,7 +782,7 @@ void ElementInfoWidget::setupSchemeRow()
 	layout->addWidget(m_scheme_cb, 1);
 
 	auto *open = new QPushButton(tr("…"), m_scheme_row);
-	open->setToolTip(tr("Ouvrir les numérotations d'éléments du projet"));
+	open->setToolTip(tr("Open the project's element numberings"));
 	open->setMaximumWidth(32);
 	layout->addWidget(open);
 
@@ -815,9 +810,9 @@ void ElementInfoWidget::setupFreezeRow()
 	if (!label || !m_element) {
 		return;
 	}
-	m_freeze_cb = new QCheckBox(tr("Figer le nom"), this);
-	m_freeze_cb->setToolTip(tr("Un nom figé n'est pas changé par la numérotation automatique, "
-							   "et son numéro n'est pas donné à un autre élément."));
+	m_freeze_cb = new QCheckBox(tr("Freeze name"), this);
+	m_freeze_cb->setToolTip(tr("A frozen name is not changed by automatic numbering, and its "
+							   "number is not given to another element."));
 	ui->scroll_vlayout->insertWidget(ui->scroll_vlayout->indexOf(label) + 1, m_freeze_cb);
 	connect(m_freeze_cb, &QCheckBox::toggled, this, &ElementInfoWidget::updateNumberRow);
 }
@@ -852,12 +847,12 @@ void ElementInfoWidget::setupNumberRow()
 	m_number_row = new QWidget(this);
 	auto *layout = new QHBoxLayout(m_number_row);
 	layout->setContentsMargins(0, 0, 0, 0);
-	layout->addWidget(new QLabel(tr("Numéro"), m_number_row));
+	layout->addWidget(new QLabel(tr("Number"), m_number_row));
 	m_number_cb = new QComboBox(m_number_row);
 	m_number_cb->setObjectName(QStringLiteral("m_number_cb"));
 	m_number_cb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-	m_number_cb->setToolTip(tr("Seuls les numéros libres sont proposés : un élément qui doit garder son "
-							   "numéro réel peut le retrouver si personne ne l'a."));
+	m_number_cb->setToolTip(tr("Only free numbers are offered: an element that must keep its real number "
+							   "can get it back if nobody else has it."));
 	layout->addWidget(m_number_cb, 1);
 	ui->scroll_vlayout->insertWidget(ui->scroll_vlayout->indexOf(m_scheme_row) + 1, m_number_row);
 	m_number_row->hide();
@@ -890,9 +885,9 @@ void ElementInfoWidget::refreshNumberRow()
 	}
 	if (const auto own = ElementAutoNumSchemeCommand::numberOf(support, m_element)) {
 		m_number_current = *own;
-		m_number_cb->addItem(tr("%1  (actuel)").arg(*own), *own);
+		m_number_cb->addItem(tr("%1  (current)").arg(*own), *own);
 	} else {
-		m_number_cb->addItem(tr("— (numéro inconnu)"), 0);
+		m_number_cb->addItem(tr("— (unknown number)"), 0);
 	}
 	for (int n : ElementAutoNumSchemeCommand::freeNumbers(project, title, m_element)) {
 		if (n == m_number_current) continue;
@@ -918,10 +913,10 @@ void ElementInfoWidget::updateNumberRow()
 	const bool frozen = m_freeze_cb ? m_freeze_cb->isChecked() : m_element->isFreezeLabel();
 	m_number_cb->setEnabled(keeps && !frozen);
 	m_number_cb->setToolTip(
-				frozen ? tr("Le nom est figé : dégelez-le pour changer son numéro.")
-				: !keeps ? tr("Le numéro se choisit quand l'élément garde sa numérotation.")
-				: tr("Seuls les numéros libres sont proposés : un élément qui doit garder son "
-					 "numéro réel peut le retrouver si personne ne l'a."));
+				frozen ? tr("The name is frozen: unfreeze it to change its number.")
+				: !keeps ? tr("The number can be chosen when the element keeps its numbering.")
+				: tr("Only free numbers are offered: an element that must keep its real number "
+					 "can get it back if nobody else has it."));
 }
 
 /**
@@ -984,7 +979,7 @@ void ElementInfoWidget::refreshSchemeRow()
 
 	const QSignalBlocker blocker(m_scheme_cb);
 	m_scheme_cb->clear();
-	m_scheme_cb->addItem(tr("Aucune (nom saisi à la main)"), QString());
+	m_scheme_cb->addItem(tr("None (name entered by hand)"), QString());
 
 	QStringList titles(project->elementAutoNum().keys());
 	titles.sort(Qt::CaseInsensitive);
@@ -1003,7 +998,7 @@ void ElementInfoWidget::refreshSchemeRow()
 			.value(QETInformation::ELMT_FORMULA).toString();
 	if (!formula.isEmpty()) {
 			//Same data as "none" would clash: the entry is for display only
-		m_scheme_cb->insertItem(1, tr("Formule propre : %1").arg(formula), QStringLiteral("\x01"));
+		m_scheme_cb->insertItem(1, tr("Custom formula: %1").arg(formula), QStringLiteral("\x01"));
 		m_scheme_cb->setCurrentIndex(1);
 	}
 	m_scheme_index = m_scheme_cb->currentIndex();
@@ -1043,9 +1038,11 @@ void ElementInfoWidget::schemeChosen()
 	{
 		const auto answer = QET::QetMessageBox::question(
 					this,
-					tr("Nom figé"),
-					tr("Le nom de cet élément est figé.\n"
-					   "Changer sa numérotation le remplacera ou l'effacera.\n\nContinuer ?"),
+					tr("Frozen name"),
+					tr("This element's name is frozen.\n"
+					   "Changing its numbering will replace or erase it.\n"
+					   "\n"
+					   "Continue?"),
 					QMessageBox::Yes | QMessageBox::No,
 					QMessageBox::No);
 		if (answer != QMessageBox::Yes) {

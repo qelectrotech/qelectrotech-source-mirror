@@ -251,7 +251,7 @@ void DiagramEventAddElement::addElement()
 	element -> setRotation(m_element -> rotation());
 	m_diagram -> addItem(element);
 
-	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
+	QUndoCommand *undo_object = new QUndoCommand(tr("insert %1").arg(element->name()));
 	new AddGraphicsObjectCommand(element, m_diagram, m_element -> pos(), undo_object);
 
 	//When we search for free aligned terminal we temporally remove m_element to

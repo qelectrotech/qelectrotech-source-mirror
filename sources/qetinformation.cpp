@@ -281,98 +281,98 @@ QString QETInformation::infoToVar(const QString &info)
  */
 QString QETInformation::translatedInfoKey(const QString &info)
 {
-	if      (info == ELMT_MODEL)                       return QObject::tr("Modèle");
-	else if (info == ELMT_CATEGORY)                    return QObject::tr("Catégorie");
-	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Tension nominale");
-	else if (info == ELMT_CURRENT_RATING)              return QObject::tr("Courant nominal");
+	if      (info == ELMT_MODEL)                       return QObject::tr("Model");
+	else if (info == ELMT_CATEGORY)                    return QObject::tr("Category");
+	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Rated voltage");
+	else if (info == ELMT_CURRENT_RATING)              return QObject::tr("Rated current");
 	else if (info == ELMT_NOTES)                       return QObject::tr("Notes");
-	else if (info == DIA_AUTHOR)                       return QObject::tr("Auteur");
+	else if (info == DIA_AUTHOR)                       return QObject::tr("Author");
 	else if (info == DIA_DATE)                         return QObject::tr("Date");
-	else if (info == DIA_TITLE)                        return QObject::tr("Titre");
-	else if (info == DIA_FILENAME)                     return QObject::tr("Fichier");
-	else if (info == DIA_PLANT)                        return QObject::tr("Installation (=)");
-	else if (info == DIA_LOCMACH)                      return QObject::tr("Localisation (+)");
-	else if (info == DIA_INDEX_REV)                    return QObject::tr("Indice de révision");
+	else if (info == DIA_TITLE)                        return QObject::tr("Title");
+	else if (info == DIA_FILENAME)                     return QObject::tr("File");
+	else if (info == DIA_PLANT)                        return QObject::tr("Plant (=)");
+	else if (info == DIA_LOCMACH)                      return QObject::tr("Location (+)");
+	else if (info == DIA_INDEX_REV)                    return QObject::tr("Revision index");
 	else if (info == DIA_POS)                          return QObject::tr("Position");
-	else if (info == QET_VERSION)                      return QObject::tr("Version de QElectroTech");
-	else if (info == DIA_FOLIO)                        return QObject::tr("Numéro de folio");
-	else if (info == DIA_FOLIO_ID)                     return QObject::tr("Position du folio");
-	else if (info == PROJECT_FOLIO_TOTAL)              return QObject::tr("Nombre de folio");
-	else if (info == DIA_PREVIOUS_FOLIO_NUM)           return QObject::tr("Numéro du folio précédent");
-	else if (info == DIA_NEXT_FOLIO_NUM)               return QObject::tr("Numéro du folio suivant");
-	else if (info == PROJECT_TITLE)                    return QObject::tr("Titre du projet");
-	else if (info == PROJECT_PATH)                     return QObject::tr("Chemin du fichier du projet");
-	else if (info == PROJECT_FILE_NAME)                return QObject::tr("Nom du fichier");
-	else if (info == PROJECT_SAVE_DATE)                return QObject::tr("Date d'enregistrement du fichier format local");
-	else if (info == PROJECT_SAVE_DATE_EU)             return QObject::tr("Date d'enregistrement du fichier format dd-MM-yyyy");
-	else if (info == PROJECT_SAVE_DATE_US)             return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
-	else if (info == PROJECT_SAVE_TIME)                return QObject::tr("Heure d'enregistrement du fichier");
-	else if (info == PROJECT_SAVED_FILE_NAME)          return QObject::tr("Nom du fichier enregistré");
-	else if (info == PROJECT_SAVED_FILE_PATH)          return QObject::tr("Chemin du fichier enregistré");
-	else if (info == ELMT_FORMULA)                     return QObject::tr("Formule du label");
+	else if (info == QET_VERSION)                      return QObject::tr("Version of QElectroTech");
+	else if (info == DIA_FOLIO)                        return QObject::tr("Sheet number");
+	else if (info == DIA_FOLIO_ID)                     return QObject::tr("Sheet position");
+	else if (info == PROJECT_FOLIO_TOTAL)              return QObject::tr("Number of sheets");
+	else if (info == DIA_PREVIOUS_FOLIO_NUM)           return QObject::tr("Number of the previous sheet");
+	else if (info == DIA_NEXT_FOLIO_NUM)               return QObject::tr("Number of the following sheet");
+	else if (info == PROJECT_TITLE)                    return QObject::tr("Project title");
+	else if (info == PROJECT_PATH)                     return QObject::tr("Project file path");
+	else if (info == PROJECT_FILE_NAME)                return QObject::tr("File name");
+	else if (info == PROJECT_SAVE_DATE)                return QObject::tr("Date of saving of the file in local date format");
+	else if (info == PROJECT_SAVE_DATE_EU)             return QObject::tr("Date of saving of the file in the format DD-MM-YYYY");
+	else if (info == PROJECT_SAVE_DATE_US)             return QObject::tr("Date of saving of the file in the format YYYY-MM-DD");
+	else if (info == PROJECT_SAVE_TIME)                return QObject::tr("File saving time");
+	else if (info == PROJECT_SAVED_FILE_NAME)          return QObject::tr("Name of the saved file");
+	else if (info == PROJECT_SAVED_FILE_PATH)          return QObject::tr("Saved file path");
+	else if (info == ELMT_FORMULA)                     return QObject::tr("Label formula");
 	else if (info == ELMT_LABEL)                       return QObject::tr("Label");
-	else if (info == ELMT_COMMENT)                     return QObject::tr("Commentaire");
-	else if (info == ELMT_FUNCTION)                    return QObject::tr("Fonction");
-	else if (info == ELMT_DESCRIPTION)                 return QObject::tr("Description textuelle");
-	else if (info == ELMT_DESIGNATION)                 return QObject::tr("Numéro d'article");
-	else if (info == ELMT_MANUFACTURER)                return QObject::tr("Fabricant");
-	else if (info == ELMT_MANUFACTURER_REF)            return QObject::tr("Numéro de commande");
-	else if (info == ELMT_MACHINE_MANUFACTURER_REF)    return QObject::tr("Numéro interne");
-	else if (info == ELMT_SUPPLIER)                    return QObject::tr("Fournisseur");
-	else if (info == ELMT_QUANTITY)                    return QObject::tr("Quantité");
-	else if (info == ELMT_UNITY)                       return QObject::tr("Unité");
-	else if (info == ELMT_WIDTH)					   return QObject::tr("Largeur [mm]");
-	else if (info == ELMT_HEIGHT)                      return QObject::tr("Hauteur [mm]");
-	else if (info == ELMT_DEPTH)                       return QObject::tr("Profondeur [mm]");
-	else if (info == ELMT_LOCATION)                    return QObject::tr("Localisation (+)");
-	else if (info == COND_FUNCTION)                    return QObject::tr("Fonction");
-	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
-	else if (info == COND_COLOR)                       return QObject::tr("Couleur du fil");
-	else if (info == COND_SECTION)                     return QObject::tr("Section du fil");
-	else if (info == COND_TEXT)                        return QObject::tr("Texte");
-	else if (info == COND_FORMULA)                     return QObject::tr("Formule du texte");
-	else if (info == ELMT_AUX1)                        return QObject::tr("Bloc auxiliaire 1");
-	else if (info == ELMT_DESCRIPTION_AUX1)                 return QObject::tr("Description textuelle auxiliaire 1");
-	else if (info == ELMT_DESIGNATION_AUX1)                 return QObject::tr("Numéro d'article auxiliaire 1");
-	else if (info == ELMT_MANUFACTURER_AUX1)                return QObject::tr("Fabricant auxiliaire 1");
-	else if (info == ELMT_MANUFACTURER_REF_AUX1)            return QObject::tr("Numéro de commande auxiliaire 1");
-	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX1)    return QObject::tr("Numéro interne auxiliaire 1");
-	else if (info == ELMT_SUPPLIER_AUX1)                    return QObject::tr("Fournisseur auxiliaire 1");
-	else if (info == ELMT_QUANTITY_AUX1)                    return QObject::tr("Quantité auxiliaire 1");
-	else if (info == ELMT_UNITY_AUX1)                       return QObject::tr("Unité auxiliaire 1");
-	else if (info == ELMT_AUX2)                        return QObject::tr("Bloc auxiliaire 2");
-	else if (info == ELMT_DESCRIPTION_AUX2)                 return QObject::tr("Description textuelle auxiliaire 2");
-	else if (info == ELMT_DESIGNATION_AUX2)                 return QObject::tr("Numéro d'article auxiliaire 2");
-	else if (info == ELMT_MANUFACTURER_AUX2)                return QObject::tr("Fabricant auxiliaire 2");
-	else if (info == ELMT_MANUFACTURER_REF_AUX2)            return QObject::tr("Numéro de commande auxiliaire 2");
-	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX2)    return QObject::tr("Numéro interne auxiliaire 2");
-	else if (info == ELMT_SUPPLIER_AUX2)                    return QObject::tr("Fournisseur auxiliaire 2");
-	else if (info == ELMT_QUANTITY_AUX2)                    return QObject::tr("Quantité auxiliaire 2");
-	else if (info == ELMT_UNITY_AUX2)                       return QObject::tr("Unité auxiliaire 2");
-	else if (info == ELMT_AUX3)                        return QObject::tr("Bloc auxiliaire 3");
-	else if (info == ELMT_DESCRIPTION_AUX3)                 return QObject::tr("Description textuelle auxiliaire 3");
-	else if (info == ELMT_DESIGNATION_AUX3)                 return QObject::tr("Numéro d'article auxiliaire 3");
-	else if (info == ELMT_MANUFACTURER_AUX3)                return QObject::tr("Fabricant auxiliaire 3");
-	else if (info == ELMT_MANUFACTURER_REF_AUX3)            return QObject::tr("Numéro de commande auxiliaire 3");
-	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX3)    return QObject::tr("Numéro interne auxiliaire 3");
-	else if (info == ELMT_SUPPLIER_AUX3)                    return QObject::tr("Fournisseur auxiliaire 3");
-	else if (info == ELMT_QUANTITY_AUX3)                    return QObject::tr("Quantité auxiliaire 3");
-	else if (info == ELMT_UNITY_AUX3)                       return QObject::tr("Unité auxiliaire 3");
-	else if (info == ELMT_AUX4)                        return QObject::tr("Bloc auxiliaire 4");
-	else if (info == ELMT_DESCRIPTION_AUX4)                 return QObject::tr("Description textuelle auxiliaire 4");
-	else if (info == ELMT_DESIGNATION_AUX4)                 return QObject::tr("Numéro d'article auxiliaire 4");
-	else if (info == ELMT_MANUFACTURER_AUX4)                return QObject::tr("Fabricant auxiliaire 4");
-	else if (info == ELMT_MANUFACTURER_REF_AUX4)            return QObject::tr("Numéro de commande auxiliaire 4");
-	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX4)    return QObject::tr("Numéro interne auxiliaire 4");
-	else if (info == ELMT_SUPPLIER_AUX4)                    return QObject::tr("Fournisseur auxiliaire 4");
-	else if (info == ELMT_QUANTITY_AUX4)                    return QObject::tr("Quantité auxiliaire 4");
-	else if (info == ELMT_UNITY_AUX4)                       return QObject::tr("Unité auxiliaire 4");
+	else if (info == ELMT_COMMENT)                     return QObject::tr("Annotation");
+	else if (info == ELMT_FUNCTION)                    return QObject::tr("Function");
+	else if (info == ELMT_DESCRIPTION)                 return QObject::tr("Textual description");
+	else if (info == ELMT_DESIGNATION)                 return QObject::tr("Article number");
+	else if (info == ELMT_MANUFACTURER)                return QObject::tr("Manufacturer");
+	else if (info == ELMT_MANUFACTURER_REF)            return QObject::tr("Order number");
+	else if (info == ELMT_MACHINE_MANUFACTURER_REF)    return QObject::tr("Internal number");
+	else if (info == ELMT_SUPPLIER)                    return QObject::tr("Supplier");
+	else if (info == ELMT_QUANTITY)                    return QObject::tr("Quantity");
+	else if (info == ELMT_UNITY)                       return QObject::tr("Unity");
+	else if (info == ELMT_WIDTH)					   return QObject::tr("Width [mm]");
+	else if (info == ELMT_HEIGHT)                      return QObject::tr("Height [mm]");
+	else if (info == ELMT_DEPTH)                       return QObject::tr("Depth [mm]");
+	else if (info == ELMT_LOCATION)                    return QObject::tr("Location (+)");
+	else if (info == COND_FUNCTION)                    return QObject::tr("Function");
+	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Voltage / Protocol");
+	else if (info == COND_COLOR)                       return QObject::tr("Wire color");
+	else if (info == COND_SECTION)                     return QObject::tr("Wire section");
+	else if (info == COND_TEXT)                        return QObject::tr("Text");
+	else if (info == COND_FORMULA)                     return QObject::tr("Text Formula");
+	else if (info == ELMT_AUX1)                        return QObject::tr("Auxiliary block 1");
+	else if (info == ELMT_DESCRIPTION_AUX1)                 return QObject::tr("Auxiliary 1 text description");
+	else if (info == ELMT_DESIGNATION_AUX1)                 return QObject::tr("Auxiliary 1 article number");
+	else if (info == ELMT_MANUFACTURER_AUX1)                return QObject::tr("Manufacturer of auxiliary 1");
+	else if (info == ELMT_MANUFACTURER_REF_AUX1)            return QObject::tr("Order number auxiliary 1");
+	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX1)    return QObject::tr("Internal number of auxiliary 1");
+	else if (info == ELMT_SUPPLIER_AUX1)                    return QObject::tr("supplier of auxiliary 1");
+	else if (info == ELMT_QUANTITY_AUX1)                    return QObject::tr("Quantity of auxiliary 1");
+	else if (info == ELMT_UNITY_AUX1)                       return QObject::tr("Unity of auxiliary 1");
+	else if (info == ELMT_AUX2)                        return QObject::tr("Auxiliary block 2");
+	else if (info == ELMT_DESCRIPTION_AUX2)                 return QObject::tr("Auxiliary 2 text description");
+	else if (info == ELMT_DESIGNATION_AUX2)                 return QObject::tr("Auxiliary 2 article number");
+	else if (info == ELMT_MANUFACTURER_AUX2)                return QObject::tr("Manufacturer of auxiliary 2");
+	else if (info == ELMT_MANUFACTURER_REF_AUX2)            return QObject::tr("Order number auxiliary 2");
+	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX2)    return QObject::tr("Internal number of auxiliary 2");
+	else if (info == ELMT_SUPPLIER_AUX2)                    return QObject::tr("supplier of auxiliary 2");
+	else if (info == ELMT_QUANTITY_AUX2)                    return QObject::tr("Quantity of auxiliary 2");
+	else if (info == ELMT_UNITY_AUX2)                       return QObject::tr("Unity of auxiliary 2");
+	else if (info == ELMT_AUX3)                        return QObject::tr("Auxiliary block 3");
+	else if (info == ELMT_DESCRIPTION_AUX3)                 return QObject::tr("Auxiliary 3 text description");
+	else if (info == ELMT_DESIGNATION_AUX3)                 return QObject::tr("Auxiliary 3 article number");
+	else if (info == ELMT_MANUFACTURER_AUX3)                return QObject::tr("Manufacturer of auxiliary 3");
+	else if (info == ELMT_MANUFACTURER_REF_AUX3)            return QObject::tr("Order number auxiliary 3");
+	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX3)    return QObject::tr("Internal number of auxiliary 3");
+	else if (info == ELMT_SUPPLIER_AUX3)                    return QObject::tr("supplier of auxiliary 3");
+	else if (info == ELMT_QUANTITY_AUX3)                    return QObject::tr("Quantity of auxiliary 3");
+	else if (info == ELMT_UNITY_AUX3)                       return QObject::tr("Unity of auxiliary 3");
+	else if (info == ELMT_AUX4)                        return QObject::tr("Auxiliary block 4");
+	else if (info == ELMT_DESCRIPTION_AUX4)                 return QObject::tr("Auxiliary 4 text description");
+	else if (info == ELMT_DESIGNATION_AUX4)                 return QObject::tr("Auxiliary 4 article number");
+	else if (info == ELMT_MANUFACTURER_AUX4)                return QObject::tr("Manufacturer of auxiliary 4");
+	else if (info == ELMT_MANUFACTURER_REF_AUX4)            return QObject::tr("Order number auxiliary 4");
+	else if (info == ELMT_MACHINE_MANUFACTURER_REF_AUX4)    return QObject::tr("Internal number of auxiliary 4");
+	else if (info == ELMT_SUPPLIER_AUX4)                    return QObject::tr("supplier of auxiliary 4");
+	else if (info == ELMT_QUANTITY_AUX4)                    return QObject::tr("Quantity of auxiliary 4");
+	else if (info == ELMT_UNITY_AUX4)                       return QObject::tr("Unity of auxiliary 4");
 	else if (info == ELMT_PLC_TYPE)                          return QObject::tr("Type PLC");
-	else if (info == ELMT_PLC_ADDRESS)                       return QObject::tr("Adresse PLC");
-	else if (info == ELMT_PLC_FUNCTION)                      return QObject::tr("Fonction PLC");
-	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("Commentaire PLC");
-	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("Réf. croisée PLC");
-	else if (info == ELMT_XREF)                          return QObject::tr("Réf. croisée");
+	else if (info == ELMT_PLC_ADDRESS)                       return QObject::tr("PLC address");
+	else if (info == ELMT_PLC_FUNCTION)                      return QObject::tr("PLC function");
+	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("PLC comment");
+	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("PLC cross-reference");
+	else if (info == ELMT_XREF)                          return QObject::tr("Cross-reference");
 	else return QString();
 }
 
@@ -435,18 +435,5 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_SUPPLIER_AUX4,
 						 ELMT_QUANTITY_AUX4,
 						 ELMT_UNITY_AUX4 };
-	return list;
-}
-
-QStringList QETInformation::terminalElementInfoKeys()
-{
-	QStringList list = { ELMT_FORMULA,
-						 ELMT_LABEL,
-						 ELMT_COMMENT,
-						 ELMT_DESIGNATION,
-						 ELMT_MANUFACTURER,
-						 ELMT_MANUFACTURER_REF,
-						 ELMT_MACHINE_MANUFACTURER_REF,
-						 ELMT_SUPPLIER };
 	return list;
 }

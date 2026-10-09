@@ -79,10 +79,10 @@ void TitleBlockTemplateLogoManager::initWidgets()
 {
 	open_dialog_dir_.setPath(QETApp::documentDir());
 
-	setWindowTitle(tr("Gestionnaire de logos"));
+	setWindowTitle(tr("Logo manager"));
 	setWindowIcon(QET::Icons::InsertImage);
 	setWindowFlags(Qt::Dialog);
-	logos_label_ = new QLabel(tr("Logos embarqués dans ce modèle :"));
+	logos_label_ = new QLabel(tr("Logos embedded within this template:"));
 	logos_view_ = new QListWidget();
 	logos_view_ -> setViewMode(QListView::IconMode);
 	logos_view_ -> setGridSize(iconsize() * 1.4);
@@ -91,14 +91,14 @@ void TitleBlockTemplateLogoManager::initWidgets()
 	logos_view_ -> setWrapping(true);
 	logos_view_ -> setMovement(QListView::Static);
 	logos_view_ -> setResizeMode(QListView::Adjust);
-	add_button_ = new QPushButton(QET::Icons::Add, tr("Ajouter un logo"));
-	export_button_ = new QPushButton(QET::Icons::DocumentExport, tr("Exporter ce logo"));
-	delete_button_ = new QPushButton(QET::Icons::Remove, tr("Supprimer ce logo"));
-	logo_box_ = new QGroupBox(tr("Propriétés"));
-	logo_name_label_ = new QLabel(tr("Nom :"));
+	add_button_ = new QPushButton(QET::Icons::Add, tr("Add a logo"));
+	export_button_ = new QPushButton(QET::Icons::DocumentExport, tr("Export this logo"));
+	delete_button_ = new QPushButton(QET::Icons::Remove, tr("Remove this logo"));
+	logo_box_ = new QGroupBox(tr("Properties"));
+	logo_name_label_ = new QLabel(tr("Name:"));
 	logo_name_ = new QLineEdit();
-	rename_button_ = new QPushButton(QET::Icons::EditRename, tr("Renommer"));
-	logo_type_ = new QLabel(tr("Type :"));
+	rename_button_ = new QPushButton(QET::Icons::EditRename, tr("Rename"));
+	logo_type_ = new QLabel(tr("Type:"));
 	buttons_ = new QDialogButtonBox(QDialogButtonBox::Ok);
 
 	hlayout1_ = new QHBoxLayout();
@@ -193,14 +193,14 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 	while (managed_template_ -> logos().contains(name)) {
 		if (!rename_dialog) {
 			rename_dialog = new QDialog(this);
-			rename_dialog -> setWindowTitle(tr("Logo déjà existant"));
+			rename_dialog -> setWindowTitle(tr("Logo already existing"));
 
 			rd_label = new QLabel();
 			rd_label -> setWordWrap(true);
 			rd_input = new QLineEdit();
 			QDialogButtonBox *rd_buttons = new QDialogButtonBox();
-			QPushButton *replace_button = rd_buttons -> addButton(tr("Remplacer"), QDialogButtonBox::YesRole);
-			QPushButton *rename_button  = rd_buttons -> addButton(tr("Renommer"),  QDialogButtonBox::NoRole);
+			QPushButton *replace_button = rd_buttons -> addButton(tr("Replace"), QDialogButtonBox::YesRole);
+			QPushButton *rename_button  = rd_buttons -> addButton(tr("Rename"),  QDialogButtonBox::NoRole);
 			QPushButton *cancel_button  = rd_buttons -> addButton(QDialogButtonBox::Cancel);
 
 			QVBoxLayout *rd_vlayout0 = new QVBoxLayout();
@@ -220,10 +220,9 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 		}
 		rd_label -> setText(
 			QString(tr(
-				"Il existe déjà un logo portant le nom \"%1\" au sein de "
-				"ce modèle de cartouche. Voulez-vous le remplacer ou "
-				"préférez-vous spécifier un autre nom pour ce nouveau "
-				"logo ?"
+				"A logo named \"%1\" already exists. Do you wish to "
+				"replace it or do you prefer specifying another name "
+				"for the new logo?"
 			)).arg(name)
 		);
 		rd_input -> setText(name);
@@ -258,11 +257,11 @@ void TitleBlockTemplateLogoManager::updateLogoInformations(QListWidgetItem *curr
 		logo_name_ -> setText(logo_name);
 		if (managed_template_) {
 			QString logo_type = managed_template_ -> logoType(logo_name);
-			logo_type_ -> setText(tr("Type : %1").arg(logo_type));
+			logo_type_ -> setText(tr("Type: %1").arg(logo_type));
 		}
 	} else {
 		logo_name_ -> setText(QString());
-		logo_type_ -> setText(tr("Type :"));
+		logo_type_ -> setText(tr("Type:"));
 	}
 }
 
@@ -276,16 +275,16 @@ void TitleBlockTemplateLogoManager::addLogo()
 
 	QString filepath = QFileDialog::getOpenFileName(
 		this,
-		tr("Choisir une image / un logo"),
+		tr("Choose a picture /a logo"),
 		open_dialog_dir_.absolutePath(),
-		tr("Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)")
+		tr("Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;All files (*)")
 	);
 	if (filepath.isEmpty()) return;
 
 	// that filepath needs to point to a valid, readable file
 	QFileInfo filepath_info(filepath);
 	if (!filepath_info.exists() || !filepath_info.isReadable()) {
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier spécifié"));
+		QMessageBox::critical(this, tr("Error"), tr("Unable to open the specified file"));
 		return;
 	}
 
@@ -310,15 +309,15 @@ void TitleBlockTemplateLogoManager::exportLogo()
 
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
-		tr("Choisir un fichier pour exporter ce logo"),
+		tr("Choose a file to export this logo"),
 		open_dialog_dir_.absolutePath() % "/" % current_logo,
-		tr("Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)")
+		tr("All files (*);;Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)")
 	);
 	if (filepath.isEmpty()) return;
 
 	bool save_logo = managed_template_ -> saveLogoToFile(current_logo, filepath);
 	if (!save_logo) {
-		QMessageBox::critical(this, tr("Erreur"), QString(tr("Impossible d'exporter vers le fichier spécifié")));
+		QMessageBox::critical(this, tr("Error"), QString(tr("Unable to export to the specified file")));
 	} else {
 		open_dialog_dir_ = QDir(filepath);
 	}
@@ -347,12 +346,12 @@ void TitleBlockTemplateLogoManager::renameLogo()
 	if (current_logo.isNull()) return;
 
 	QString entered_name = logo_name_ -> text();
-	QString warning_title = tr("Renommer un logo");
+	QString warning_title = tr("Rename a logo");
 	if (entered_name == current_logo) {
 		QMessageBox::warning(
 			this,
 			warning_title,
-			tr("Vous devez saisir un nouveau nom.")
+			tr("You have to enter a new name.")
 		);
 		return;
 	}
@@ -361,7 +360,7 @@ void TitleBlockTemplateLogoManager::renameLogo()
 		QMessageBox::warning(
 			this,
 			warning_title,
-			tr("Le nouveau nom ne peut pas être vide.")
+			tr("The new name cannot be empty.")
 		);
 		return;
 	}
@@ -370,7 +369,7 @@ void TitleBlockTemplateLogoManager::renameLogo()
 		QMessageBox::warning(
 			this,
 			warning_title,
-			tr("Le nom saisi est déjà utilisé par un autre logo.")
+			tr("The name you entered is already used by another logo.")
 		);
 		return;
 	}

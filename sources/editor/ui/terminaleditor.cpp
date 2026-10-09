@@ -84,6 +84,7 @@ void TerminalEditor::updateForm()
 	ui->m_orientation_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->property("orientation")));
 	ui->m_name_le->setText(m_part->terminalName());
 	ui->m_type_cb->setCurrentIndex(ui->m_type_cb->findData(m_part->terminalType()));
+	ui->m_potential_le->setText(m_part->potential());
 
 	ui->m_show_name_cb->setChecked(m_part->showName());
 	ui->m_label_x_dsb->setValue(m_part->labelPos().x());
@@ -174,17 +175,17 @@ CustomElementPart *TerminalEditor::currentPart() const
  */
 void TerminalEditor::init()
 {
-	ui->m_orientation_cb->addItem(QET::Icons::North, tr("Nord"),  Qet::North);
-	ui->m_orientation_cb->addItem(QET::Icons::East,  tr("Est"),   Qet::East);
-	ui->m_orientation_cb->addItem(QET::Icons::South, tr("Sud"),   Qet::South);
-	ui->m_orientation_cb->addItem(QET::Icons::West,  tr("Ouest"), Qet::West);
+	ui->m_orientation_cb->addItem(QET::Icons::North, tr("North"),  Qet::North);
+	ui->m_orientation_cb->addItem(QET::Icons::East,  tr("East"),   Qet::East);
+	ui->m_orientation_cb->addItem(QET::Icons::South, tr("South"),   Qet::South);
+	ui->m_orientation_cb->addItem(QET::Icons::West,  tr("West"), Qet::West);
 
-	ui->m_type_cb->addItem(tr("Générique"),         TerminalData::Generic);
-	ui->m_type_cb->addItem(tr("Bornier intérieur"), TerminalData::Inner);
-	ui->m_type_cb->addItem(tr("Bornier extérieur"), TerminalData::Outer);
+	ui->m_type_cb->addItem(tr("Generic"),         TerminalData::Generic);
+	ui->m_type_cb->addItem(tr("Indoor terminal block"), TerminalData::Inner);
+	ui->m_type_cb->addItem(tr("External terminal block"), TerminalData::Outer);
 	ui->m_type_cb->addItem(tr("NO (contact SW)"),   TerminalData::No);
 	ui->m_type_cb->addItem(tr("NC (contact SW)"),   TerminalData::Nc);
-	ui->m_type_cb->addItem(tr("Commun (contact SW)"), TerminalData::Common);
+	ui->m_type_cb->addItem(tr("Common (contact SW)"), TerminalData::Common);
 
 	ui->m_text_props_gb->setEnabled(false);
 
@@ -213,7 +214,7 @@ void TerminalEditor::posEdited()
 	if (m_part->pos() != new_pos)
 	{
 		auto undo = new QPropertyUndoCommand(m_part, "pos", m_part->property("pos"), new_pos);
-		undo->setText(tr("Déplacer une borne"));
+		undo->setText(tr("Move a terminal"));
 		undo->setAnimated(true, false);
 		undoStack().push(undo);
 	}
@@ -235,7 +236,7 @@ void TerminalEditor::orientationEdited()
 	if (m_part->orientation() != ori_)
 	{
 		auto undo = new QPropertyUndoCommand(m_part, "orientation", m_part->property("orientation"), ori_);
-		undo->setText(tr("Modifier l'orientation d'une borne"));
+		undo->setText(tr("Change the orientation of a terminal"));
 		undoStack().push(undo);
 	}
 
@@ -257,10 +258,28 @@ void TerminalEditor::nameEdited()
 	if (m_part->terminalName() != name_)
 	{
 		auto undo = new QPropertyUndoCommand(m_part, "terminal_name", m_part->property("terminal_name"), name_);
-		undo->setText(tr("Modifier le nom du terminal"));
+		undo->setText(tr("Change the terminal name"));
 		undoStack().push(undo);
 	}
 	m_locked=false;
+}
+
+void TerminalEditor::potentialEdited()
+{
+	if (m_locked) {
+		return;
+	}
+
+	m_locked = true;
+	QString potential_(ui->m_potential_le->text());
+
+	if (m_part->potential() != potential_)
+	{
+		auto undo = new QPropertyUndoCommand(m_part, "potential", m_part->property("potential"), potential_);
+		undo->setText(tr("Change the potential of a terminal"));
+		undoStack().push(undo);
+	}
+	m_locked = false;
 }
 
 /**
@@ -276,7 +295,7 @@ void TerminalEditor::typeEdited()
 	auto type = ui->m_type_cb->currentData();
 	if (type != m_part->terminalType()) {
 		auto undo = new QPropertyUndoCommand(m_part, "terminal_type", m_part->terminalType(), type);
-		undo->setText(tr("Modifier le type d'une borne"));
+		undo->setText(tr("Change the type of a terminal"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -297,7 +316,7 @@ void TerminalEditor::showNameEdited()
 	bool show = ui->m_show_name_cb->isChecked();
 	if (m_part->showName() != show) {
 		auto undo = new QPropertyUndoCommand(m_part, "show_name", m_part->showName(), show);
-		undo->setText(tr("Afficher/cacher le nom du terminal"));
+		undo->setText(tr("Show/hide the terminal name"));
 		undoStack().push(undo);
 	}
 	ui->m_text_props_gb->setEnabled(show);
@@ -312,7 +331,7 @@ void TerminalEditor::labelPosEdited()
 	QPointF new_pos(ui->m_label_x_dsb->value(), ui->m_label_y_dsb->value());
 	if (m_part->labelPos() != new_pos) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_pos", m_part->labelPos(), new_pos);
-		undo->setText(tr("Modifier la position du label"));
+		undo->setText(tr("Change the position of the label"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -332,7 +351,7 @@ void TerminalEditor::labelFontClicked()
 		ui->m_label_size_sb->blockSignals(false);
 
 		auto undo = new QPropertyUndoCommand(m_part, "label_font", m_part->labelFont(), font);
-		undo->setText(tr("Modifier la police du label"));
+		undo->setText(tr("Change the label font"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -347,7 +366,7 @@ void TerminalEditor::labelSizeEdited()
 	new_font.setPointSize(ui->m_label_size_sb->value());
 	if (m_part->labelFont() != new_font) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_font", m_part->labelFont(), new_font);
-		undo->setText(tr("Modifier la taille de police du label"));
+		undo->setText(tr("Change the font size of the label"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -361,7 +380,7 @@ void TerminalEditor::labelRotationEdited()
 	qreal rot = static_cast<qreal>(ui->m_label_rotation_sb->value());
 	if (!qFuzzyCompare(m_part->labelRotation(), rot)) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_rotation", m_part->labelRotation(), rot);
-		undo->setText(tr("Modifier la rotation du label"));
+		undo->setText(tr("Change the rotation of the label"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -379,13 +398,13 @@ void TerminalEditor::labelAlignClicked()
 		if (new_h != m_part->labelHAlignment()) {
 			auto undo = new QPropertyUndoCommand(m_part, "label_halignment",
 				QVariant::fromValue(m_part->labelHAlignment()), QVariant::fromValue(new_h));
-			undo->setText(tr("Modifier l'alignement du label"));
+			undo->setText(tr("Change the alignment of the label"));
 			undoStack().push(undo);
 		}
 		if (new_v != m_part->labelVAlignment()) {
 			auto undo = new QPropertyUndoCommand(m_part, "label_valignment",
 				QVariant::fromValue(m_part->labelVAlignment()), QVariant::fromValue(new_v));
-			undo->setText(tr("Modifier l'alignement du label"));
+			undo->setText(tr("Change the alignment of the label"));
 			undoStack().push(undo);
 		}
 	}
@@ -399,7 +418,7 @@ void TerminalEditor::labelFrameEdited()
 	bool frame = ui->m_label_frame_cb->isChecked();
 	if (m_part->labelFrame() != frame) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_frame", m_part->labelFrame(), frame);
-		undo->setText(tr("Afficher/cacher le cadre du label"));
+		undo->setText(tr("Show/hide the label border"));
 		undoStack().push(undo);
 	}
 	m_locked = false;
@@ -415,14 +434,14 @@ void TerminalEditor::labelColorClicked()
 											QColorDialog::DontUseNativeDialog);
 	if (new_color.isValid() && m_part->labelColor() != new_color) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_color", m_part->labelColor(), new_color);
-		undo->setText(tr("Modifier la couleur du label"));
+		undo->setText(tr("Change the label colour"));
 		undoStack().push(undo);
 	}
 #else
 	QColor new_color = m_color_pb->color();
 	if (new_color.isValid() && m_part->labelColor() != new_color) {
 		auto undo = new QPropertyUndoCommand(m_part, "label_color", m_part->labelColor(), new_color);
-		undo->setText(tr("Modifier la couleur du label"));
+		undo->setText(tr("Change the label colour"));
 		undoStack().push(undo);
 	}
 #endif
@@ -458,6 +477,8 @@ void TerminalEditor::activeConnections(bool active)
 										this, &TerminalEditor::labelAlignClicked);
 		m_editor_connections << connect(ui->m_label_frame_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::labelFrameEdited);
+		m_editor_connections << connect(ui->m_potential_le, &QLineEdit::editingFinished,
+								this, &TerminalEditor::potentialEdited);
 		m_editor_connections << connect(ui->m_use_master_label_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::useMasterLabelEdited);
 		m_editor_connections << connect(ui->m_master_label_cb, QOverload<int>::of(&QComboBox::activated),
@@ -487,6 +508,7 @@ void TerminalEditor::activeChangeConnections(bool active)
 		m_change_connections << connect(m_part, &PartTerminal::labelVAlignmentChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelFrameChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelColorChanged, this, &TerminalEditor::updateForm);
+		m_change_connections << connect(m_part, &PartTerminal::potentialChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::useMasterLabelChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::masterLabelIndexChanged, this, &TerminalEditor::updateForm);
 	} else {
@@ -510,7 +532,7 @@ void TerminalEditor::useMasterLabelEdited()
 	if (m_part->useMasterLabel() != use) {
 		auto undo = new QPropertyUndoCommand(m_part, "use_master_label",
 			m_part->useMasterLabel(), use);
-		undo->setText(tr("Modifier l'étiquette du maître"));
+		undo->setText(tr("Edit the master label"));
 		undoStack().push(undo);
 	}
 
@@ -522,7 +544,7 @@ void TerminalEditor::useMasterLabelEdited()
 		if (m_part->terminalName() != t_label) {
 			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
 				m_part->terminalName(), t_label);
-			undo->setText(tr("Modifier le nom de la borne"));
+			undo->setText(tr("Change the name of the terminal"));
 			undoStack().push(undo);
 		}
 	} else {
@@ -530,7 +552,7 @@ void TerminalEditor::useMasterLabelEdited()
 		if (!m_part->terminalName().isEmpty()) {
 			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
 				m_part->terminalName(), QString());
-			undo->setText(tr("Modifier le nom de la borne"));
+			undo->setText(tr("Change the name of the terminal"));
 			undoStack().push(undo);
 		}
 		ui->m_name_le->clear();
@@ -549,7 +571,7 @@ void TerminalEditor::masterLabelIndexEdited()
 	if (m_part->masterLabelIndex() != idx) {
 		auto undo = new QPropertyUndoCommand(m_part, "master_label_index",
 			m_part->masterLabelIndex(), idx);
-		undo->setText(tr("Modifier l'index de l'étiquette du maître"));
+		undo->setText(tr("Change the master label index"));
 		undoStack().push(undo);
 	}
 
@@ -559,7 +581,7 @@ void TerminalEditor::masterLabelIndexEdited()
 		if (m_part->terminalName() != t_label) {
 			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
 				m_part->terminalName(), t_label);
-			undo->setText(tr("Modifier le nom de la borne"));
+			undo->setText(tr("Change the name of the terminal"));
 			undoStack().push(undo);
 		}
 	}

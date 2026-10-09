@@ -44,7 +44,7 @@ class TerminalStripLayoutPattern
 		TerminalStripLayoutPattern();
 
 			//Header of terminal strip
-        QRectF m_header_rect{0,30,50,130};
+        QRectF m_header_rect{0,30,50,146};
 		Qt::Orientation m_header_text_orientation{Qt::Horizontal};
 		void setHeaderTextAlignment(const Qt::Alignment &alignment);
 		Qt::Alignment headerTextAlignment() const;
@@ -60,10 +60,10 @@ class TerminalStripLayoutPattern
 			//Terminals
         QVector<QRectF> m_terminal_rect
 		{
-            QRectF{0, 0, 20, 190},
-            QRectF{0, 10, 20, 170},
-            QRectF{0, 20, 20, 150},
-            QRectF{0, 30, 20, 130}
+            QRectF{0, 0, 20, 206},
+            QRectF{0, 10, 20, 186},
+            QRectF{0, 20, 20, 166},
+            QRectF{0, 30, 20, 146}
 		};
 
             //Terminal text
@@ -82,6 +82,21 @@ class TerminalStripLayoutPattern
 		qreal m_xref_text_y{95};
 		Qt::Orientation m_xref_text_orientation {Qt::Vertical};
 
+			//Symbol of the terminal type (fuse, sectional, diode, ground, led).
+			//A height of 0 disable the symbol.
+		qreal m_type_symbol_y{160};
+		qreal m_type_symbol_height{14};
+			//Length of the connection drawn above and under each terminal,
+			//in the middle of the terminal. 0 disable the connections.
+		qreal m_connection_length{10};
+			//Cable drawn under the terminals which have a cable (hose).
+			//Length of the wires between the terminals and the cable
+			//0 disable the drawing of the cables.
+		qreal m_cable_wire_length{40};
+			//Length of the cable
+		qreal m_cable_length{60};
+			//Length of the wires after the cable
+		qreal m_cable_end_length{40};
         qreal m_bridge_point_d{5};
         QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 

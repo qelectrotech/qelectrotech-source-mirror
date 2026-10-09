@@ -1,0 +1,5981 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="ar">
+<phrase>
+    <source>
+Hold Shift and drag to move this text on its own</source>
+    <target>
+&lt;Shift&gt; للتحريك</target>
+</phrase>
+<phrase>
+    <source>
+Conductor color : %1</source>
+    <target>
+لون الموصل: %1</target>
+</phrase>
+<phrase>
+    <source>
+Conductor section : %1</source>
+    <target>
+مقطع الموصل: %1</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
+</source>
+    <target>التلامسات: NO: %1، NC: %2، المحولات: %3، أخرى: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
+</source>
+    <target>التلامسات: NO: %1/%2، NC: %3/%4، المحولات: %5/%6، أخرى: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Define data directory
+</source>
+    <target>--data-dir=DIR                تحديد مجلد البيانات
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl while dragging = free position, no grid snapping)</source>
+    <target>(Ctrl أثناء السحب = موضع حر، بدون التقاط بالشبكة)</target>
+</phrase>
+<phrase>
+    <source> (already used)</source>
+    <target>(مستخدم بالفعل)</target>
+</phrase>
+<phrase>
+    <source> -- %1: mode %2</source>
+    <target>-- %1 : وضع %2</target>
+</phrase>
+<phrase>
+    <source> ; red point: drag to reposition the rotation center</source>
+    <target>; نقطة حمراء: اسحب لإعادة تحديد مركز التدوير</target>
+</phrase>
+<phrase>
+    <source> ; turquoise point: arc</source>
+    <target>; نقطة فيروزية: قوس</target>
+</phrase>
+<phrase>
+    <source> ; an edge: skew</source>
+    <target>; حافة: إمالة</target>
+</phrase>
+<phrase>
+    <source> [edited]</source>
+    <target>[محرر]</target>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>من مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>من مجموعة الأطراف %1</target>
+</phrase>
+<phrase>
+    <source> The developers of QElectroTech</source>
+    <target>مطورو QElectroTech</target>
+    <definition>about tab, developers line</definition>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>مم</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Click: mode %1</source>
+    <target>— نقرة: وضع %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 س %2 د</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>%p% done (%v on %m)</source>
+    <target>%p% منجز (%v من %m)</target>
+</phrase>
+<phrase>
+    <source>&amp;Help</source>
+    <target>&amp;مساعدة</target>
+</phrase>
+<phrase>
+    <source>&amp;Close this editor</source>
+    <target>&amp;إغلاق هذا المحرر</target>
+</phrase>
+<phrase>
+    <source>&amp;Multiline</source>
+    <target>&amp;متعدد الأسلاك</target>
+</phrase>
+<phrase>
+    <source>(already assigned)</source>
+    <target>(معيَّن مسبقًا)</target>
+</phrase>
+<phrase>
+    <source>(number of contacts does not match)</source>
+    <target>(عدد التماسات غير مطابق)</target>
+</phrase>
+<phrase>
+    <source>(Reload the elements collections to apply the changes)</source>
+    <target>(أعد تحميل مجموعات العناصر لتطبيق التغييرات)</target>
+</phrase>
+<phrase>
+    <source>(subtype does not match)</source>
+    <target>(النوع الفرعي غير مطابق)</target>
+</phrase>
+<phrase>
+    <source>(status does not match)</source>
+    <target>(الحالة غير مطابقة)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = create handles</source>
+    <target>, Alt = إنشاء مقابض</target>
+</phrase>
+<phrase>
+    <source>, Alt = detach into a polyline</source>
+    <target>, Alt = فصل إلى خط متعدد</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ It is then possible that the opening of all or part of this document fails.
+What do you wish to do ?</source>
+    <target>.
+ من المحتمل حينها أن يفشل فتح هذا المستند كليًا أو جزئيًا.
+ماذا تريد أن تفعل؟</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (screen)</source>
+    <target>150 DPI (شاشة)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (print)</source>
+    <target>300 DPI (طباعة)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (high quality)</source>
+    <target>600 DPI (جودة عالية)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
+    <target>&lt;br&gt;&lt;b&gt;خطأ&lt;/b&gt; :&lt;br&gt;لا يمكن لتعريفات الموصلات أن تحتوي إلا على طرف توصيل واحد.&lt;br&gt;&lt;b&gt;الحل&lt;/b&gt; :&lt;br&gt;تحقق من أن العنصر يحتوي على طرف توصيل واحد فقط</target>
+</phrase>
+<phrase>
+    <source>&lt;center&gt;WARNING:&lt;/center&gt;
+ %1 more rows are needed to display all the information</source>
+    <target>&lt;center&gt;تنبيه:&lt;/center&gt;
+ ينقص %1 سطرًا لعرض كامل المعلومات</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show advanced options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;عرض الخيارات المتقدمة&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Available as% plant for title block templates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;متاح كـ %plant لقوالب لوحات العنوان&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in conductors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تحديد الخصائص المراد استبدالها في الموصلات&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in sheets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تحديد الخصائص المراد استبدالها في الصفحات&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in elements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تحديد الخصائص المراد استبدالها في العناصر&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unlink the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;فصل العنصر المحدد&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Link the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ربط العنصر المحدد&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace the selected match&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;استبدال التطابق المحدد&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace checked matches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;استبدال التطابقات المحددة&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Move down this sheet x100</source>
+    <target>خفض هذه الورقة x100</target>
+</phrase>
+<phrase>
+    <source>Access the collections</source>
+    <target>الوصول إلى المجموعات</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>الإجراء</target>
+</phrase>
+<phrase>
+    <source>Actualize</source>
+    <target>تحديث</target>
+</phrase>
+<phrase>
+    <source>Fit sheet to page</source>
+    <target>ملاءمة الصفحة مع الورقة</target>
+</phrase>
+<phrase>
+    <source>Address</source>
+    <target>العنوان</target>
+</phrase>
+<phrase>
+    <source>PLC address</source>
+    <target>عنوان PLC</target>
+</phrase>
+<phrase>
+    <source>Display</source>
+    <target>العرض</target>
+</phrase>
+<phrase>
+    <source>View grid</source>
+    <target>عرض الشبكة</target>
+</phrase>
+<phrase>
+    <source>Displays information about Qt library</source>
+    <target>عرض معلومات حول مكتبة Qt</target>
+</phrase>
+<phrase>
+    <source>Displays information about QElectroTech</source>
+    <target>عرض معلومات حول QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Shows or hides the guides</source>
+    <target>إظهار أو إخفاء الأدلة</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>عرض</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Display facing pages</source>
+    <target>عرض صفحتين</target>
+</phrase>
+<phrase>
+    <source>Show help</source>
+    <target>إظهار المساعدة</target>
+</phrase>
+<phrase>
+    <source>Show the default grid (applied the next time the programme is launched)</source>
+    <target>إظهار الشبكة افتراضيًا (يُطبَّق عند التشغيل التالي)</target>
+</phrase>
+<phrase>
+    <source>Show name</source>
+    <target>إظهار الاسم</target>
+</phrase>
+<phrase>
+    <source>Show headers on the sheet</source>
+    <target>إظهار العناوين على الصفحة</target>
+</phrase>
+<phrase>
+    <source>View the guides</source>
+    <target>إظهار الأدلة</target>
+</phrase>
+<phrase>
+    <source>Show default guides (applies from the next time the programme is launched)</source>
+    <target>إظهار الأدلة افتراضيًا (يُطبَّق عند التشغيل التالي)</target>
+</phrase>
+<phrase>
+    <source>Display terminal numbers in Xrefs</source>
+    <target>إظهار أرقام الأطراف في الإحالات المرجعية</target>
+</phrase>
+<phrase>
+    <source>Show or hide the column headings of the PLC table on the sheet</source>
+    <target>إظهار أو إخفاء عناوين أعمدة جدول PLC على الصفحة</target>
+</phrase>
+<phrase>
+    <source>Display all pages</source>
+    <target>عرض معاينة لجميع الصفحات</target>
+</phrase>
+<phrase>
+    <source>Show single page</source>
+    <target>عرض صفحة واحدة</target>
+</phrase>
+<phrase>
+    <source>Show/hide the label border</source>
+    <target>إظهار/إخفاء إطار التسمية</target>
+</phrase>
+<phrase>
+    <source>Show/hide the terminal name</source>
+    <target>إظهار/إخفاء اسم الطرف</target>
+</phrase>
+<phrase>
+    <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
+What do you wish to do ?</source>
+    <target>لجعله متوافقًا تمامًا، يرجى فتح هذا المشروع نفسه بإصدار 0.8 أو 0.80 من QElectroTech وحفظ المشروع ثم فتحه من جديد بهذا الإصدار.
+ماذا تريد أن تفعل؟</target>
+</phrase>
+<phrase>
+    <source>Adds a text field to the current sheet</source>
+    <target>إضافة حقل نص على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Adds a terminal plan to the current sheet</source>
+    <target>إضافة مخطط أطراف توصيل على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Adds a rectangle on the current sheet</source>
+    <target>إضافة مستطيل على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Adds a Bézier curve to the current sheet</source>
+    <target>إضافة منحنى بيزييه على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Add an ellipse to the current sheet</source>
+    <target>إضافة قطع ناقص على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Add an image to the current sheet</source>
+    <target>إضافة صورة على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Add a line to the current sheet</source>
+    <target>إضافة خط على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Adds a PDF page to the current sheet</source>
+    <target>إضافة صفحة PDF على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Adds a polyline to the current sheet</source>
+    <target>إضافة خط متعدد على الورقة الحالية</target>
+</phrase>
+<phrase>
+    <source>Add</source>
+    <target>إضافة</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>إضافة %1 أطراف</target>
+</phrase>
+<phrase>
+    <source>Add to bus: %1</source>
+    <target>إضافة إلى الناقل: %1</target>
+</phrase>
+<phrase>
+    <source>Add to cable: %1</source>
+    <target>إضافة إلى الكابل: %1</target>
+</phrase>
+<phrase>
+    <source>Add new sheet and table if necessary.</source>
+    <target>إضافة ورقة وجدول جديدين عند الحاجة.</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>إضافة الطرف %1</target>
+</phrase>
+<phrase>
+    <source>Add selection</source>
+    <target>إضافة التحديد</target>
+</phrase>
+<phrase>
+    <source>Add the following terminal plan :</source>
+    <target>أضف مخطط الأطراف التالي:</target>
+</phrase>
+<phrase>
+    <source>Add a terminal block</source>
+    <target>إضافة لوحة مربطات</target>
+</phrase>
+<phrase>
+    <source>Add a terminal strip to the project</source>
+    <target>إضافة لوحة مربطات إلى المشروع</target>
+</phrase>
+<phrase>
+    <source>Add a sheet</source>
+    <target>إضافة ورقة</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Add a group of terminals</source>
+    <target>إضافة مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source>Add a PDF</source>
+    <target>إضافة ملف PDF</target>
+</phrase>
+<phrase>
+    <source>Add a terminal plan</source>
+    <target>إضافة مخطط أطراف توصيل</target>
+</phrase>
+<phrase>
+    <source>Add a point</source>
+    <target>إضافة نقطة</target>
+</phrase>
+<phrase>
+    <source>Add a point to a polygon</source>
+    <target>إضافة نقطة إلى مضلع</target>
+</phrase>
+<phrase>
+    <source>Add a point to a curve</source>
+    <target>إضافة نقطة إلى منحنى</target>
+</phrase>
+<phrase>
+    <source>Add a summary</source>
+    <target>إضافة فهرس</target>
+</phrase>
+<phrase>
+    <source>Add a table</source>
+    <target>إضافة جدول</target>
+</phrase>
+<phrase>
+    <source>Add non-editable element text in diagrams</source>
+    <target>إضافة نص عنصر غير قابل للتحرير في المخططات</target>
+</phrase>
+<phrase>
+    <source>Add element text that can be edited in diagrams</source>
+    <target>إضافة نص عنصر قابل للتحرير في المخططات</target>
+</phrase>
+<phrase>
+    <source>Add a terminal</source>
+    <target>إضافة طرف</target>
+</phrase>
+<phrase>
+    <source>Add a curve</source>
+    <target>إضافة منحنى</target>
+</phrase>
+<phrase>
+    <source>Ajouter une ligne</source>
+    <target>إضافة سطر</target>
+</phrase>
+<phrase>
+    <source>Add a nomenclature</source>
+    <target>إضافة قائمة مكونات</target>
+</phrase>
+<phrase>
+    <source>Add a custom property</source>
+    <target>إضافة خاصية مخصصة</target>
+</phrase>
+<phrase>
+    <source>Fit to width</source>
+    <target>ضبط العرض</target>
+</phrase>
+<phrase>
+    <source>Fit to page</source>
+    <target>ضبط الصفحة</target>
+</phrase>
+<phrase>
+    <source>Adjust the size of the table to the sheet</source>
+    <target>ضبط حجم الجدول على الورقة</target>
+</phrase>
+<phrase>
+    <source>Fit table to sheet</source>
+    <target>ملاءمة الجدول مع الورقة</target>
+</phrase>
+<phrase>
+    <source>Alignment :</source>
+    <target>المحاذاة:</target>
+</phrase>
+<phrase>
+    <source>Alignment</source>
+    <target>المحاذاة</target>
+</phrase>
+<phrase>
+    <source>Alignment:</source>
+    <target>المحاذاة:</target>
+</phrase>
+<phrase>
+    <source>Go to previous match</source>
+    <target>الانتقال إلى التطابق السابق</target>
+</phrase>
+<phrase>
+    <source>Go to the next match</source>
+    <target>الانتقال إلى التطابق التالي</target>
+</phrase>
+<phrase>
+    <source>Go to the end of the project</source>
+    <target>الانتقال إلى نهاية المشروع</target>
+</phrase>
+<phrase>
+    <source>Alphabetical</source>
+    <target>أبجدي</target>
+</phrase>
+<phrase>
+    <source>Alphanumeric (A, B, C... 1, 2...)</source>
+    <target>أبجدي رقمي (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>الزاوية</target>
+</phrase>
+<phrase>
+    <source>Angle:</source>
+    <target>الزاوية:</target>
+</phrase>
+<phrase>
+    <source>Corner</source>
+    <target>زاوي</target>
+</phrase>
+<phrase>
+    <source>Cancellation</source>
+    <target>إلغاء</target>
+</phrase>
+<phrase>
+    <source>Undo</source>
+    <target>الإلغاءات</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>إلغاء</target>
+</phrase>
+<phrase>
+    <source>Preview</source>
+    <target>معاينة</target>
+</phrase>
+<phrase>
+    <source>Preview :</source>
+    <target>معاينة:</target>
+</phrase>
+<phrase>
+    <source>Appearance</source>
+    <target>المظهر</target>
+</phrase>
+<phrase>
+    <source>Set to current date</source>
+    <target>تطبيق التاريخ الحالي</target>
+</phrase>
+<phrase>
+    <source>Apply the geometry of a table to the table linked to it</source>
+    <target>تطبيق هندسة جدول على الجداول المرتبطة به</target>
+</phrase>
+<phrase>
+    <source>Apply geometry to all tables linked to this one</source>
+    <target>تطبيق الهندسة على كل الجداول المرتبطة بهذا الجدول</target>
+</phrase>
+<phrase>
+    <source>Apply displacement</source>
+    <target>تطبيق النقل</target>
+</phrase>
+<phrase>
+    <source>Round :</source>
+    <target>مستدير:</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.5 and more</source>
+    <target>تقريب للأعلى عند 0.5 فأكثر</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.75 and more</source>
+    <target>تقريب للأعلى عند 0.75 فأكثر</target>
+</phrase>
+<phrase>
+    <source>Round the corners of %1</source>
+    <target>تدوير زوايا %1</target>
+</phrase>
+<phrase>
+    <source>Navigate to an element</source>
+    <target>الانتقال إلى عنصر</target>
+</phrase>
+<phrase>
+    <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>تنبيه: مجموع العروض النسبية يتجاوز 100%% من العرض الإجمالي، لا يمكن تحقيق قالب الإطار هذا بأي عرض.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>تنبيه: لا يمكن أن تتسع الأعمدة ذات العرض الثابت في العرض المتبقي، لا يمكن تحقيق قالب الإطار هذا بأي عرض.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Awarded exclusively</source>
+    <target>المخصصة فقط</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>إلى مجموعة الأطراف %1</target>
+</phrase>
+<phrase>
+    <source>None</source>
+    <target>لا شيء</target>
+</phrase>
+<phrase>
+    <source>Author:</source>
+    <target>المؤلف:</target>
+</phrase>
+<phrase>
+    <source>Authors</source>
+    <target>المؤلفون</target>
+</phrase>
+<phrase>
+    <source>Programmable Logic Controller (PLC)</source>
+    <target>متحكم منطقي قابل للبرمجة (PLC)</target>
+</phrase>
+<phrase>
+    <source>PLCs (MAE/SPS)</source>
+    <target>المتحكمات المنطقية (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>ترقيم الأطراف التلقائي</target>
+</phrase>
+<phrase>
+    <source>Auto Numbering</source>
+    <target>الترقيم التلقائي</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>أخرى</target>
+</phrase>
+<phrase>
+    <source>Other texts</source>
+    <target>نصوص أخرى</target>
+</phrase>
+<phrase>
+    <source>advanced</source>
+    <target>متقدم</target>
+</phrase>
+<phrase>
+    <source>With</source>
+    <target>مع</target>
+</phrase>
+<phrase>
+    <source>Warning</source>
+    <target>تحذير</target>
+</phrase>
+<phrase>
+    <source>Warning </source>
+    <target>تحذير</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>WARNING:
+Any setting other than “No rounding” may cause rendering errors in the project, depending on:
+
+1 - the selected setting 
+2 - the screen&apos;s dpi 
+3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
+    <target>تحذير:
+أي قيمة غير ‘بدون تقريب’ قد تسبب أخطاء في عرض المشروع حسب:
+
+1 - القيمة المحددة
+2 - دقة الشاشة (dpi)
+3 - تعديل المشروع على حاسوب و/أو شاشة أخرى لا تملك نفس إعدادات النقطتين 1 و2.</target>
+</phrase>
+<phrase>
+    <source>Warning — Importing an EPLAN file (.edz)</source>
+    <target>تحذير — استيراد ملف EPLAN ‎(.edz)</target>
+</phrase>
+<phrase>
+    <source>Bottom :</source>
+    <target>الأسفل:</target>
+</phrase>
+<phrase>
+    <source>Libraries</source>
+    <target>المكتبات</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 1</source>
+    <target>الكتلة المساعدة 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 2</source>
+    <target>الكتلة المساعدة 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 3</source>
+    <target>الكتلة المساعدة 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 4</source>
+    <target>الكتلة المساعدة 4</target>
+</phrase>
+<phrase>
+    <source>Blue : Blue</source>
+    <target>أزرق : أزرق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>أزرق : أزرق زهرة الذرة</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>أزرق : أزرق غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>أزرق : أزرق سماوي عميق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>أزرق : أزرق دودجر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>أزرق : أزرق فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>أزرق : أزرق سماوي فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>أزرق : أزرق فولاذي فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>أزرق : أزرق متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>أزرق : أزرق منتصف الليل</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>أزرق : كحلي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>أزرق : أزرق مسحوقي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>أزرق : أزرق ملكي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>أزرق : أزرق سماوي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>أزرق : أزرق فولاذي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Terminal 1</source>
+    <target>الطرف 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Terminal 2</source>
+    <target>الطرف 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Level 0 terminal:</source>
+    <target>مربط المستوى 0 :</target>
+</phrase>
+<phrase>
+    <source>Level 1 terminal:</source>
+    <target>مربط المستوى 1 :</target>
+</phrase>
+<phrase>
+    <source>Level 2 terminal:</source>
+    <target>مربط المستوى 2 :</target>
+</phrase>
+<phrase>
+    <source>Level 3 terminal:</source>
+    <target>مربط المستوى 3 :</target>
+</phrase>
+<phrase>
+    <source>Terminals</source>
+    <target>الأطراف</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>مربطات مستقلة</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>مربطات مستقلة</target>
+</phrase>
+<phrase>
+    <source>External terminal block</source>
+    <target>مربط خارجي</target>
+</phrase>
+<phrase>
+    <source>Indoor terminal block</source>
+    <target>مربط داخلي</target>
+</phrase>
+<phrase>
+    <source>Terminal blocks</source>
+    <target>مشابك التوصيل</target>
+</phrase>
+<phrase>
+    <source>Bottom</source>
+    <target>أسفل</target>
+</phrase>
+<phrase>
+    <source>Buttons and switches</source>
+    <target>الأزرار والمفاتيح</target>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>بني : بسكويتي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>بني : لوز مسلوق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>بني : بني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>بني : خشبي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>بني : شوكولاتي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>بني : حريري ذرة</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>بني : ذهبي عصوي غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>بني : ذهبي عصوي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>بني : ماروني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>بني : أبيض نافاجو</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>بني : بيرو</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>بني : بني وردي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>بني : بني سروجي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>بني : بني رملي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>بني : سيينا</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>بني : سمري</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>بني : قمحي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>bus</source>
+    <target>ناقل</target>
+</phrase>
+<phrase>
+    <source>&amp;Paste in the area</source>
+    <target>ل&amp;صق في المنطقة</target>
+</phrase>
+<phrase>
+    <source>C&amp;reate new sheets</source>
+    <target>إنشاء أوراق جديدة</target>
+</phrase>
+<phrase>
+    <source>This is where you can define how new conductors will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+
+-The &quot;sheet&quot; type represents the number of the current sheet.
+The other fields are not used.
+
+-The &quot;Sheet&quot; type represents the name of the current sheet.
+The other fields are not used.</source>
+    <target>هنا يمكنك تحديد كيفية ترقيم الموصلات الجديدة.
+-يتكون الترقيم من متغير واحد على الأقل.
+-يمكنك إضافة أو حذف متغير ترقيم باستخدام الزرين - و +.
+-يتضمن متغير الترقيم: نوعًا وقيمة وزيادة.
+
+-الأنواع "رقم 1" و"رقم 01" و"رقم 001" تمثل نوعًا رقميًا محددًا في حقل "القيمة"، يزداد عند كل موصل جديد بمقدار قيمة حقل "الزيادة".
+-"رقم 01" و"رقم 001" يظهران على التوالي في المخطط برقمين وثلاثة أرقام على الأقل.
+إذا كان الرقم المحدد في حقل القيمة يحتوي على أرقام أقل من النوع المختار، فسيُسبق بصفر أو صفرين لاحترام نوعه.
+
+-النوع "نص" يمثل نصًا ثابتًا.
+لا يُستخدم حقل "الزيادة".
+
+-النوع "رقم الصفحة" يمثل رقم الصفحة الحالية.
+لا تُستخدم الحقول الأخرى.
+
+-النوع "الصفحة" يمثل اسم الصفحة الحالية.
+لا تُستخدم الحقول الأخرى.</target>
+    <definition>help dialog about the conductor autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>This is where you can define how new elements will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+
+-The &quot;sheet&quot; type represents the number of the current sheet.
+The other fields are not used.
+
+-The &quot;Sheet&quot; type represents the name of the current sheet.
+The other fields are not used.</source>
+    <target>هنا يمكنك تحديد كيفية ترقيم العناصر الجديدة.
+-يتكون الترقيم من متغير واحد على الأقل.
+-يمكنك إضافة أو حذف متغير ترقيم باستخدام الزرين - و +.
+-يتضمن متغير الترقيم: نوعًا وقيمة وزيادة.
+
+-الأنواع "رقم 1" و"رقم 01" و"رقم 001" تمثل نوعًا رقميًا محددًا في حقل "القيمة"، يزداد عند كل موصل جديد بمقدار قيمة حقل "الزيادة".
+-"رقم 01" و"رقم 001" يظهران على التوالي في المخطط برقمين وثلاثة أرقام على الأقل.
+إذا كان الرقم المحدد في حقل القيمة يحتوي على أرقام أقل من النوع المختار، فسيُسبق بصفر أو صفرين لاحترام نوعه.
+
+-النوع "نص" يمثل نصًا ثابتًا.
+لا يُستخدم حقل "الزيادة".
+
+-النوع "رقم الصفحة" يمثل رقم الصفحة الحالية.
+لا تُستخدم الحقول الأخرى.
+
+-النوع "الصفحة" يمثل اسم الصفحة الحالية.
+لا تُستخدم الحقول الأخرى.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>This is where you can define how the new sheets will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+-the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new sheet by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+</source>
+    <target>هنا يمكنك تحديد طريقة ترقيم الأوراق الجديدة.
+-يتكوّن الترقيم من متغيّر واحد على الأقل.
+-يمكنك إضافة متغيّر ترقيم أو حذفه بواسطة الزرّين - و +.
+-يتضمّن متغيّر الترقيم: نوعًا وقيمة وتزايدًا.
+
+-الأنواع "رقم 1" و"رقم 01" و"رقم 001" تمثّل نوعًا رقميًا محدّدًا في حقل "القيمة"، يتزايد عند كل ورقة جديدة بمقدار قيمة حقل "التزايد".
+-"رقم 01" و"رقم 001" يُمثَّلان على المخطط بحدّ أدنى من رقمين وثلاثة أرقام على التوالي.
+إذا كان الرقم المحدّد في حقل القيمة يحتوي على أرقام أقل من النوع المختار، فسيُسبق بصفر أو صفرين لاحترام نوعه.
+
+-النوع "نص" يمثّل نصًا ثابتًا.
+لا يُستخدم حقل "التزايد".
+</target>
+    <definition>help dialog about the folio autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>كابل</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>تعذّرت قراءة %1</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>بطاقات company</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>QET title blocks</source>
+    <target>بطاقات QET</target>
+    <definition>title of the title block templates 					collection provided by QElectroTech</definition>
+</phrase>
+<phrase>
+    <source>User title blocks</source>
+    <target>بطاقات المستخدم</target>
+    <definition>title of the user&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Category</source>
+    <target>الفئة</target>
+</phrase>
+<phrase>
+    <source>This document appears to have been saved with version %1
+ which is later than your version ! 
+You are currently using QElectroTech in version %2</source>
+    <target>يبدو أن هذا المستند قد حُفظ بإصدار %1
+ وهو أحدث من إصدارك! 
+أنت تستخدم حاليًا QElectroTech بإصدار %2</target>
+</phrase>
+<phrase>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
+    <target>هذا التنسيق لا يدعم الشفافية: ستُحفظ الصورة كما كانت قبل تطبيق اللون الشفاف. هل تريد المتابعة؟</target>
+</phrase>
+<phrase>
+    <source>This shortcut is also used by : %1</source>
+    <target>هذا الاختصار مستخدم أيضًا بواسطة : %1</target>
+</phrase>
+<phrase>
+    <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
+    <target>يحتوي هذا على آخر رسائل التسجيل لهذه الجلسة. تحقق من المحتوى قبل إرفاقه بتقرير خطأ عام.</target>
+</phrase>
+<phrase>
+    <source>This is the title block company collection -- use it to create, store and edit your own title blocks.</source>
+    <target>هذه هي مجموعة cartouches company -- استخدمها لإنشاء بطاقاتك الخاصة وتخزينها وتحريرها.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Middle</source>
+    <target>وسط</target>
+</phrase>
+<phrase>
+    <source>Center :</source>
+    <target>المركز:</target>
+</phrase>
+<phrase>
+    <source>Center</source>
+    <target>توسيط</target>
+</phrase>
+<phrase>
+    <source>This element is already linked</source>
+    <target>هذا العنصر مرتبط بالفعل</target>
+</phrase>
+<phrase>
+    <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
+    <target>تقوم هذه الوظيفة بترقيم مربطات المشروع حسب موضعها. يتم تجاهل المربطات الفارغة أو المقفلة. يجب إعداد ترقيم المربطات مسبقًا على النحو التالي: &apos;-X:AB&apos;. يمكن تسمية الجزء قبل النقطتين (لوحة المربطات) كما تشاء. يمكن أن يتكون &apos;AB&apos; من أرقام أو حروف."</target>
+</phrase>
+<phrase>
+    <source>Youtube channel</source>
+    <target>قناة Youtube</target>
+</phrase>
+<phrase>
+    <source>Text field</source>
+    <target>حقل نص</target>
+</phrase>
+<phrase>
+    <source>Sheet text field</source>
+    <target>حقل نص الصفحة</target>
+</phrase>
+<phrase>
+    <source>Text fields</source>
+    <target>حقول النص</target>
+</phrase>
+<phrase>
+    <source>Change the font of a table</source>
+    <target>تغيير خط جدول</target>
+</phrase>
+<phrase>
+    <source>load %p% (%v on %m)</source>
+    <target>جارٍ التحميل %p% (%v من %m)</target>
+</phrase>
+<phrase>
+    <source>Path of the Common Collection</source>
+    <target>مسار المجموعة المشتركة</target>
+</phrase>
+<phrase>
+    <source>Company collection path</source>
+    <target>مسار مجموعة company</target>
+</phrase>
+<phrase>
+    <source>User Collection Path</source>
+    <target>مسار مجموعة المستخدم</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>مسار بطاقات company</target>
+</phrase>
+<phrase>
+    <source>User Title blocks Path</source>
+    <target>مسار بطاقات المستخدم</target>
+</phrase>
+<phrase>
+    <source>User macro path</source>
+    <target>مسار وحدات الماكرو للمستخدم</target>
+</phrase>
+<phrase>
+    <source>Project file path</source>
+    <target>مسار ملف المشروع</target>
+</phrase>
+<phrase>
+    <source>Saved file path</source>
+    <target>مسار الملف المحفوظ</target>
+</phrase>
+<phrase>
+    <source>Find :</source>
+    <target>بحث :</target>
+</phrase>
+<phrase>
+    <source>Search / Replace</source>
+    <target>بحث/استبدال</target>
+</phrase>
+<phrase>
+    <source>Search / replace independent texts</source>
+    <target>بحث/استبدال النصوص المستقلة</target>
+</phrase>
+<phrase>
+    <source>Find / replace element properties.</source>
+    <target>بحث/استبدال خصائص العناصر.</target>
+</phrase>
+<phrase>
+    <source>Search / replace conductors properties.</source>
+    <target>بحث/استبدال خصائص الموصلات.</target>
+</phrase>
+<phrase>
+    <source>Find / replace sheet properties</source>
+    <target>بحث/استبدال خصائص الورقة</target>
+</phrase>
+<phrase>
+    <source>Chinese</source>
+    <target>الصينية</target>
+</phrase>
+<phrase>
+    <source>Select the location where you want to save your template.</source>
+    <target>اختر الموضع الذي تريد حفظ قالبك فيه.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
+    <target>نقرة: التموضع بالحجم الأصلي. سحب بالنقر: التموضع وتغيير الحجم. نقرة يمنى: تدوير 90°. Ctrl+عجلة: ضبط الحجم.</target>
+</phrase>
+<phrase>
+    <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
+    <target>نقرة يسرى: النقطة التالية؛ نقرة مزدوجة أو Enter: إنهاء؛ نقرة يمنى: إلغاء النقطة الأخيرة</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
+    <target>نقرة يسرى: تحديد الزاوية المقابلة (Shift = مربع، Ctrl = من المركز + موضع حر، Ctrl+Shift = مربع ممركز)؛ نقرة يمنى: إلغاء</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
+    <target>نقرة يسرى: تحديد الزاوية المقابلة (Shift = دائرة، Ctrl = من المركز + موضع حر، Ctrl+Shift = دائرة ممركزة)؛ نقرة يمنى: إلغاء</target>
+</phrase>
+<phrase>
+    <source>Left click: position the starting point (Ctrl = free position)</source>
+    <target>نقرة يسرى: تحديد نقطة البداية (Ctrl = موضع حر)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
+    <target>نقرة يسرى: تحديد النقطة النهائية (Ctrl = موضع حر)؛ نقرة يمنى: إلغاء</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first corner (Ctrl = center point, free position)</source>
+    <target>نقرة يسرى: تحديد الزاوية الأولى (Ctrl = نقطة مركزية، موضع حر)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first point (Ctrl = free position)</source>
+    <target>نقرة يسرى: تحديد النقطة الأولى (Ctrl = موضع حر)</target>
+</phrase>
+<phrase>
+    <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
+    <target>نقرة: نقطة زاوية. سحب بالنقر: نقطة منحنية. نقرة على النقطة الأولى: إغلاق. Esc/Enter: إنهاء. نقرة يمنى: إلغاء النقطة الأخيرة.</target>
+</phrase>
+<phrase>
+    <source>Click</source>
+    <target>نقر</target>
+</phrase>
+<phrase>
+    <source>Click: mode %1</source>
+    <target>نقر: وضع %1</target>
+</phrase>
+<phrase>
+    <source>Click here to cancel html formatting</source>
+    <target>انقر هنا لإلغاء تنسيق html</target>
+</phrase>
+<phrase>
+    <source>Click to choose a color</source>
+    <target>انقر لاختيار لون</target>
+</phrase>
+<phrase>
+    <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
+    <target>انقر على الصورة لإضافة لون. اضبط تسامح كل لون باستخدام شريط التمرير الخاص به، أو انقر على × لإزالته.</target>
+</phrase>
+<phrase>
+    <source>Click on the image to choose a color</source>
+    <target>انقر على الصورة لاختيار لون</target>
+</phrase>
+<phrase>
+    <source>Upper left corner :</source>
+    <target>الزاوية العلوية اليسرى:</target>
+</phrase>
+<phrase>
+    <source>Rounded corners</source>
+    <target>زوايا مستديرة</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>المجموعة</target>
+</phrase>
+<phrase>
+    <source>Company collection</source>
+    <target>شركة المجموعة</target>
+</phrase>
+<phrase>
+    <source>Collection of elements</source>
+    <target>مجموعة العناصر</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>المجموعات</target>
+</phrase>
+<phrase>
+    <source>Paste</source>
+    <target>لصق</target>
+</phrase>
+<phrase>
+    <source>Paste from the clipboard</source>
+    <target>لصق من الحافظة</target>
+</phrase>
+<phrase>
+    <source>Annotation</source>
+    <target>تعليق</target>
+</phrase>
+<phrase>
+    <source>Comment :</source>
+    <target>التعليق :</target>
+</phrase>
+<phrase>
+    <source>PLC comment</source>
+    <target>تعليق PLC</target>
+</phrase>
+<phrase>
+    <source>Common (contact SW)</source>
+    <target>مشترك (contact SW)</target>
+</phrase>
+<phrase>
+    <source>Compilation: </source>
+    <target>الترجمة:</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>الترجمة:</target>
+</phrase>
+<phrase>
+    <source>Component 1</source>
+    <target>المكوّن 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Component 2</source>
+    <target>المكوّن 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Conductor</source>
+    <target>موصل</target>
+</phrase>
+<phrase>
+    <source>Conductors</source>
+    <target>الموصلات</target>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>الإعدادات</target>
+</phrase>
+<phrase>
+    <source>PLC Configuration</source>
+    <target>إعداد PLC</target>
+</phrase>
+<phrase>
+    <source>Set the font for column headers</source>
+    <target>إعداد خط عناوين الأعمدة</target>
+</phrase>
+<phrase>
+    <source>Set the text font in the cells</source>
+    <target>إعداد خط النص في الخلايا</target>
+</phrase>
+<phrase>
+    <source>Conflicts only</source>
+    <target>التعارضات فقط</target>
+</phrase>
+<phrase>
+    <source>Log in</source>
+    <target>ربط</target>
+</phrase>
+<phrase>
+    <source>Connect the selected terminals</source>
+    <target>توصيل الأطراف المحددة</target>
+</phrase>
+<phrase>
+    <source>Maintain visual rotation</source>
+    <target>الحفاظ على التدوير المرئي</target>
+</phrase>
+<phrase>
+    <source>Keep conductors colors</source>
+    <target>الحفاظ على ألوان الموصلات</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>تلامس</target>
+</phrase>
+<phrase>
+    <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+    <target>اتصل: &lt;a href="mailto:qet@lists.tuxfamily.org"&gt;qet@lists.tuxfamily.org&lt;/a&gt;</target>
+    <definition>about tab, contact line</definition>
+</phrase>
+<phrase>
+    <source>Contactors and relays</source>
+    <target>المقاولات والمرحّلات</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>التماسات</target>
+</phrase>
+<phrase>
+    <source>Content</source>
+    <target>المحتوى</target>
+</phrase>
+<phrase>
+    <source>Contain</source>
+    <target>يحتوي</target>
+</phrase>
+<phrase>
+    <source>Contributors</source>
+    <target>المساهمون</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a Bézier curve</source>
+    <target>تحويل %1 إلى منحنى بيزيه</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a polyline</source>
+    <target>تحويل %1 إلى خط متعدد</target>
+</phrase>
+<phrase>
+    <source>Convert to Bézier curve</source>
+    <target>تحويل إلى منحنى بيزيه</target>
+</phrase>
+<phrase>
+    <source>Convert to polyline</source>
+    <target>تحويل إلى خط متعدد</target>
+</phrase>
+<phrase>
+    <source>DXF Element Converter</source>
+    <target>محوّل العناصر DXF</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>DXF converter</source>
+    <target>محول DXF</target>
+</phrase>
+<phrase>
+    <source>Copy to clipboard</source>
+    <target>نسخ إلى الحافظة</target>
+</phrase>
+<phrase>
+    <source>Copy and paste</source>
+    <target>نسخ ولصق</target>
+</phrase>
+<phrase>
+    <source>Correspondence:</source>
+    <target>التطابق :</target>
+</phrase>
+<phrase>
+    <source>Korean</source>
+    <target>الكورية</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>تعذّر إنشاء دليل مؤقت: %1</target>
+</phrase>
+<phrase>
+    <source>Color</source>
+    <target>اللون</target>
+</phrase>
+<phrase>
+    <source>Color / wire number of the cable</source>
+    <target>لون / رقم سلك الكابل</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>اللون:</target>
+</phrase>
+<phrase>
+    <source>Conductor color</source>
+    <target>لون الموصل</target>
+</phrase>
+<phrase>
+    <source>Wire color</source>
+    <target>لون السلك</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Text color :</source>
+    <target>لون النص:</target>
+</phrase>
+<phrase>
+    <source>Bridge color :</source>
+    <target>لون الجسر :</target>
+</phrase>
+<phrase>
+    <source>Secondary color :</source>
+    <target>اللون الثانوي:</target>
+</phrase>
+<phrase>
+    <source>Transparent color</source>
+    <target>لون شفاف</target>
+</phrase>
+<phrase>
+    <source>Transparent color...</source>
+    <target>لون شفاف...</target>
+</phrase>
+<phrase>
+    <source>Automatically cut existing conductors when placing an element</source>
+    <target>قطع الموصلات الموجودة تلقائيًا عند وضع عنصر</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Automatic disconnection of conductor(s)</source>
+    <target>قطع تلقائي للموصلات</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Rated current</source>
+    <target>التيار الاسمي</target>
+</phrase>
+<phrase>
+    <source>Creation of conductors</source>
+    <target>إنشاء الموصلات</target>
+</phrase>
+<phrase>
+    <source>Creation of terminal group</source>
+    <target>إنشاء مجموعة مربطات</target>
+</phrase>
+<phrase>
+    <source>Create a template</source>
+    <target>إنشاء قالب</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Create a backup copy?</source>
+    <target>إنشاء نسخة احتياطية؟</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>سماوي : أكوا</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>سماوي : أكوامارين</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>سماوي : أزرق كاديت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>سماوي : سماوي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>سماوي : سماوي غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>سماوي : فيروزي غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>سماوي : سماوي فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>سماوي : أخضر بحري فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>سماوي : فيروزي متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>سماوي : فيروزي باهت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>سماوي : أزرق بطي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>سماوي : فيروزي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclic (modulo)</source>
+    <target>دوري (مودولو)</target>
+</phrase>
+<phrase>
+    <source>Cable</source>
+    <target>الكابل</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>من مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source>Date:</source>
+    <target>التاريخ:</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format DD-MM-YYYY</source>
+    <target>تاريخ حفظ الملف بالتنسيق dd-MM-yyyy</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in local date format</source>
+    <target>تاريخ حفظ الملف بالتنسيق المحلي</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format YYYY-MM-DD</source>
+    <target>تاريخ حفظ الملف بالتنسيق yyyy-MM-dd</target>
+</phrase>
+<phrase>
+    <source>Fixed date:</source>
+    <target>تاريخ ثابت:</target>
+</phrase>
+<phrase>
+    <source>Ungroup the terminals</source>
+    <target>فصل المربطات</target>
+</phrase>
+<phrase>
+    <source>Move the rotation center</source>
+    <target>نقل مركز التدوير</target>
+</phrase>
+<phrase>
+    <source>Last page</source>
+    <target>الصفحة الأخيرة</target>
+</phrase>
+<phrase>
+    <source>go down the selection</source>
+    <target>خفض التحديد</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>الوصف</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>الوصف :</target>
+</phrase>
+<phrase>
+    <source>Textual description</source>
+    <target>الوصف النصي</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 text description</source>
+    <target>الوصف النصي المساعد 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 text description</source>
+    <target>الوصف النصي المساعد 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 text description</source>
+    <target>الوصف النصي المساعد 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 text description</source>
+    <target>الوصف النصي المساعد 4</target>
+</phrase>
+<phrase>
+    <source>Draw the border</source>
+    <target>رسم الإطار</target>
+</phrase>
+<phrase>
+    <source>Draw the title block</source>
+    <target>رسم بطاقة العنوان</target>
+</phrase>
+<phrase>
+    <source>Draw terminals</source>
+    <target>رسم الأطراف</target>
+</phrase>
+<phrase>
+    <source>Draw the names of the terminals</source>
+    <target>رسم أسماء المشابك</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor (key: left / right) xGrid</source>
+    <target>DiagramEditor (المفتاح: يسار / يمين) xGrid</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor (key: left / right) xGrid</source>
+    <target>DiagramEditor (المفتاح: يسار / يمين) xGrid</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor (key: up / down) yGrid</source>
+    <target>DiagramEditor (المفتاح: أعلى / أسفل) yGrid</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor (key: up / down) yGrid</source>
+    <target>DiagramEditor (المفتاح: أعلى / أسفل) yGrid</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor xGrid</source>
+    <target>شبكة المحرر البياني الأفقية</target>
+</phrase>
+<phrase>
+    <source>DiagramEditor yGrid</source>
+    <target>شبكة المحرر البياني الرأسية</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>مربع حوار</target>
+</phrase>
+<phrase>
+    <source>Diameters:</source>
+    <target>الأقطار:</target>
+</phrase>
+<phrase>
+    <source>Dimensions :</source>
+    <target>الأبعاد:</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>صمام ثنائي</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>الاتجاه</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %author pour les modèles de cartouches</source>
+    <target>متاح كـ %author لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %date pour les modèles de cartouches</source>
+    <target>متاح كـ %date لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %filename pour les modèles de cartouches</source>
+    <target>متاح كـ %filename لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Available as % folio for titleblock models
+The following variables can be used:
+-%id: current number of sheets in the project
+-%total: total number of sheets in the project
+-%autonum: sheet auto numbering</source>
+    <target>متاح كـ %folio لقوالب لوحات العنوان
+المتغيرات التالية قابلة للاستخدام:
+- %id: رقم الورقة الحالية في المشروع 
+- %total: العدد الإجمالي للأوراق في المشروع 
+- %autonum: ترقيم الورقة التلقائي</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
+    <target>متاح كـ %indexrev لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
+    <target>متاح كـ %locmach لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %title pour les modèles de cartouches</source>
+    <target>متاح كـ %title لقوالب لوحات العنوان</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>الترتيب</target>
+</phrase>
+<phrase>
+    <source>Default layout</source>
+    <target>التخطيط الافتراضي</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>المسافة بالبكسل بين التسمية والإحالة التابعة</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>مسافة التسمية - التابعة :</target>
+</phrase>
+<phrase>
+    <source>Documentation</source>
+    <target>التوثيق</target>
+</phrase>
+<phrase>
+    <source>Installation folder</source>
+    <target>مجلد التثبيت</target>
+</phrase>
+<phrase>
+    <source>Double-click to finish the shape, Right click to cancel the last point</source>
+    <target>انقر نقرًا مزدوجًا لإنهاء الشكل، وانقر بزر الفأرة الأيمن لإلغاء النقطة الأخيرة</target>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand the title block company collection</source>
+    <target>انقر نقرًا مزدوجًا لطيّ مجموعة cartouches company أو توسيعها</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Right :</source>
+    <target>اليمين:</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>يمين</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>من مجموعة الأطراف %1</target>
+</phrase>
+<phrase>
+    <source>Duplicate and edit this template</source>
+    <target>نسخ هذا القالب وتعديله</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+خطأ: تأكد من أن الملف %1 هو ملف .dxf صالح</target>
+</phrase>
+<phrase>
+    <source>Vertical offset</source>
+    <target>الإزاحة العمودية</target>
+</phrase>
+<phrase>
+    <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
+    <target>ألغِ تحديد لوحات المربطات التي يجب استبعاد ترقيمها</target>
+</phrase>
+<phrase>
+    <source>Set the maximum number of slaves</source>
+    <target>تحديد العدد الأقصى للعناصر التابعة</target>
+</phrase>
+<phrase>
+    <source>Define the slave elements</source>
+    <target>تحديد العناصر التابعة</target>
+</phrase>
+<phrase>
+    <source>Set a transparent color</source>
+    <target>تحديد لون شفاف</target>
+</phrase>
+<phrase>
+    <source>Conductor definition</source>
+    <target>تعريف الموصل</target>
+</phrase>
+<phrase>
+    <source>Deform a curve</source>
+    <target>تشويه منحنى</target>
+</phrase>
+<phrase>
+    <source>Unlink</source>
+    <target>فصل</target>
+</phrase>
+<phrase>
+    <source>Automatic name :</source>
+    <target>تسمية تلقائية:</target>
+</phrase>
+<phrase>
+    <source>Keyboard movement: 1 - 30</source>
+    <target>التحريك بلوحة المفاتيح: 1 - 30</target>
+</phrase>
+<phrase>
+    <source>Keyboard movement with the ALT key: 1 - 9</source>
+    <target>التحريك بلوحة المفاتيح مع المفتاح ALT: 1 - 9</target>
+</phrase>
+<phrase>
+    <source>Move to :</source>
+    <target>نقل إلى:</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>نقل أطراف</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>نقل الطرف %1</target>
+</phrase>
+<phrase>
+    <source>Move an image&apos;s rotation center</source>
+    <target>نقل مركز تدوير صورة</target>
+</phrase>
+<phrase>
+    <source>Move the label to a terminal</source>
+    <target>نقل تسمية طرف</target>
+</phrase>
+<phrase>
+    <source>Move the sheets</source>
+    <target>نقل الأوراق</target>
+</phrase>
+<phrase>
+    <source>Move a text field</source>
+    <target>نقل حقل نص</target>
+</phrase>
+<phrase>
+    <source>Moving a sheet</source>
+    <target>نقل ورقة</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Move a table</source>
+    <target>نقل جدول</target>
+</phrase>
+<phrase>
+    <source>Move a terminal</source>
+    <target>نقل طرف</target>
+</phrase>
+<phrase>
+    <source>Unbridge the terminals</source>
+    <target>إزالة جسر المربطات</target>
+</phrase>
+<phrase>
+    <source>Development</source>
+    <target>التطوير</target>
+</phrase>
+<phrase>
+    <source>Unlocked: width and height can be changed independently. Click to lock.</source>
+    <target>غير مقفل: يمكن تعديل العرض والارتفاع بشكل مستقل. انقر للقفل.</target>
+</phrase>
+<phrase>
+    <source>Edit margins</source>
+    <target>تعديل الهوامش</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>المحرر</target>
+</phrase>
+<phrase>
+    <source>Make the move</source>
+    <target>تنفيذ النقل</target>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>عنصر</target>
+</phrase>
+<phrase>
+    <source>Element Auto Numbering</source>
+    <target>عنصر الترقيم التلقائي</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>Elements</source>
+    <target>العناصر</target>
+</phrase>
+<phrase>
+    <source>Terminal elements</source>
+    <target>عناصر صندوق الأطراف</target>
+</phrase>
+<phrase>
+    <source>Slave elements</source>
+    <target>عناصر تابعة</target>
+</phrase>
+<phrase>
+    <source>Master elements</source>
+    <target>عناصر رئيسية</target>
+</phrase>
+<phrase>
+    <source>Sheet reference elements</source>
+    <target>عناصر إحالة الصفحة</target>
+</phrase>
+<phrase>
+    <source>Simple elements</source>
+    <target>عناصر بسيطة</target>
+</phrase>
+<phrase>
+    <source>Below</source>
+    <target>إلى الأسفل</target>
+</phrase>
+<phrase>
+    <source>Up</source>
+    <target>إلى الأعلى</target>
+</phrase>
+<phrase>
+    <source>Header</source>
+    <target>الترويسة</target>
+</phrase>
+<phrase>
+    <source>Headser :</source>
+    <target>الترويسة :</target>
+</phrase>
+<phrase>
+    <source>Frame the text</source>
+    <target>تأطير النص</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>إزالة %1 أطراف</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>إزالة طرف</target>
+</phrase>
+<phrase>
+    <source>Save As... </source>
+    <target>حفظ باسم...</target>
+</phrase>
+<phrase>
+    <source>Save original image as...</source>
+    <target>حفظ الصورة الأصلية باسم...</target>
+</phrase>
+<phrase>
+    <source>Save image as...</source>
+    <target>حفظ الصورة باسم...</target>
+</phrase>
+<phrase>
+    <source>Save the diagnostic report</source>
+    <target>حفظ تقرير التشخيص</target>
+</phrase>
+<phrase>
+    <source>Save a diagnostic report...</source>
+    <target>حفظ تقرير تشخيص...</target>
+</phrase>
+<phrase>
+    <source>Save a template</source>
+    <target>حفظ قالب</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Save...</source>
+    <target>حفظ...</target>
+</phrase>
+<phrase>
+    <source>Enter the scale factor</source>
+    <target>أدخل معامل المقياس</target>
+</phrase>
+<phrase>
+    <source>Enter your text here</source>
+    <target>أدخل نصك هنا</target>
+</phrase>
+<phrase>
+    <source>Analogue input</source>
+    <target>مدخل تماثلي</target>
+</phrase>
+<phrase>
+    <source>Digital input</source>
+    <target>مدخل رقمي</target>
+</phrase>
+<phrase>
+    <source>Universal input</source>
+    <target>مدخل عام</target>
+</phrase>
+<phrase>
+    <source>Send in the backward the selection (s)</source>
+    <target>إرسال التحديدات إلى الخلفية</target>
+</phrase>
+<phrase>
+    <source>Error</source>
+    <target>خطأ</target>
+</phrase>
+<phrase>
+    <source>Error launching qet_tb_generator plugin</source>
+    <target>خطأ في تشغيل إضافة qet_tb_generator</target>
+</phrase>
+<phrase>
+    <source>PLC slave</source>
+    <target>تابع PLC</target>
+</phrase>
+<phrase>
+    <source>Space :</source>
+    <target>المسافة :</target>
+</phrase>
+<phrase>
+    <source>Is empty</source>
+    <target>فارغ</target>
+</phrase>
+<phrase>
+    <source>Is equal to</source>
+    <target>يساوي</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>مثال</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclude from the bill of materials</source>
+    <target>استبعاد من قائمة المكونات</target>
+</phrase>
+<phrase>
+    <source>Exclude from automatic numbering</source>
+    <target>استبعاد من الترقيم التلقائي</target>
+</phrase>
+<phrase>
+    <source>Terminal strip explorer</source>
+    <target>مستكشف لوحات المربطات</target>
+</phrase>
+<phrase>
+    <source>Export successful</source>
+    <target>تم التصدير بنجاح</target>
+</phrase>
+<phrase>
+    <source>Export one or more sheets of the current project</source>
+    <target>تصدير ورقة أو أكثر من المشروع الحالي</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Export to CSV</source>
+    <target>تصدير بصيغة CSV</target>
+</phrase>
+<phrase>
+    <source>Export in pdf</source>
+    <target>تصدير إلى PDF</target>
+</phrase>
+<phrase>
+    <source>Export as SVG</source>
+    <target>تصدير بصيغة SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Export the internal project database</source>
+    <target>تصدير قاعدة البيانات الداخلية للمشروع</target>
+</phrase>
+<phrase>
+    <source>Export the internal project database</source>
+    <target>تصدير قاعدة البيانات الداخلية للمشروع</target>
+</phrase>
+<phrase>
+    <source>Export the list of names of wires</source>
+    <target>تصدير قائمة أسماء الموصلات</target>
+</phrase>
+<phrase>
+    <source>Export the wiring diagram</source>
+    <target>تصدير مخطط التوصيلات</target>
+</phrase>
+<phrase>
+    <source>Export as : </source>
+    <target>تصدير باسم:</target>
+</phrase>
+<phrase>
+    <source>Manufacturer</source>
+    <target>الشركة المصنعة</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 1</source>
+    <target>الشركة المصنعة المساعدة 1</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 2</source>
+    <target>الشركة المصنعة المساعدة 2</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 3</source>
+    <target>الشركة المصنعة المساعدة 3</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 4</source>
+    <target>الشركة المصنعة المساعدة 4</target>
+</phrase>
+<phrase>
+    <source>X Factor:</source>
+    <target>معامل X:</target>
+</phrase>
+<phrase>
+    <source>Y Factor:</source>
+    <target>معامل Y:</target>
+</phrase>
+<phrase>
+    <source>Rotate %1</source>
+    <target>تدوير %1</target>
+</phrase>
+<phrase>
+    <source>Rotate an image</source>
+    <target>تدوير صورة</target>
+</phrase>
+<phrase>
+    <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
+    <target>اسحب المقابض، أو داخل الإطار، لضبط المنطقة المراد الاحتفاظ بها.</target>
+</phrase>
+<phrase>
+    <source>Close this editor</source>
+    <target>إغلاق هذا المحرر</target>
+</phrase>
+<phrase>
+    <source>File</source>
+    <target>ملف</target>
+</phrase>
+<phrase>
+    <source>File (*.pdf)</source>
+    <target>ملف (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>File:</source>
+    <target>الملف:</target>
+</phrase>
+<phrase>
+    <source>Fichiers csv (*.csv)</source>
+    <target>ملفات csv (*.csv)</target>
+</phrase>
+<phrase>
+    <source>PDF files (*.pdf)</source>
+    <target>ملفات PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Text files (*.txt);;All files (*)</source>
+    <target>ملفات نصية (*.txt);;كل الملفات (*)</target>
+</phrase>
+<phrase>
+    <source>Wire</source>
+    <target>سلك</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>الملف غير موجود: %1</target>
+</phrase>
+<phrase>
+    <source>Filter :</source>
+    <target>تصفية:</target>
+</phrase>
+<phrase>
+    <source>Filter</source>
+    <target>تصفية</target>
+</phrase>
+<phrase>
+    <source>Filter shortcuts…</source>
+    <target>تصفية الاختصارات…</target>
+</phrase>
+<phrase>
+    <source>End 1:</source>
+    <target>النهاية 1 :</target>
+</phrase>
+<phrase>
+    <source>End 2:</source>
+    <target>النهاية 2 :</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>تدوير دقيق</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>قلب</target>
+</phrase>
+<phrase>
+    <source>Sheet</source>
+    <target>الورقة</target>
+</phrase>
+<phrase>
+    <source>Sheet:</source>
+    <target>الورقة:</target>
+</phrase>
+<phrase>
+    <source>Untitled sheet</source>
+    <target>ورقة بدون عنوان</target>
+</phrase>
+<phrase>
+    <source>Sheets</source>
+    <target>الصفحات</target>
+</phrase>
+<phrase>
+    <source>Sheets to print :</source>
+    <target>الصفحات المراد طباعتها:</target>
+</phrase>
+<phrase>
+    <source>Function</source>
+    <target>الوظيفة</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Function :</source>
+    <target>الوظيفة:</target>
+</phrase>
+<phrase>
+    <source>PLC function</source>
+    <target>وظيفة PLC</target>
+</phrase>
+<phrase>
+    <source>Experimental feature</source>
+    <target>وظيفة تجريبية</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>نموذج</target>
+</phrase>
+<phrase>
+    <source>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</source>
+    <target>تنسيق العرض: سلسلة من الأصفار تعطي الحد الأدنى لعدد الأرقام (00 = 07، 000 = 007). فارغ = العرض الطبيعي للنوع.</target>
+</phrase>
+<phrase>
+    <source>Format as a part list</source>
+    <target>التنسيق كقائمة مواد</target>
+</phrase>
+<phrase>
+    <source>Closed shape</source>
+    <target>شكل مغلق</target>
+</phrase>
+<phrase>
+    <source>Formula</source>
+    <target>الصيغة</target>
+</phrase>
+<phrase>
+    <source>Label formula</source>
+    <target>صيغة التسمية</target>
+</phrase>
+<phrase>
+    <source>Text Formula</source>
+    <target>صيغة النص</target>
+</phrase>
+<phrase>
+    <source>Text Formula :</source>
+    <target>صيغة النص:</target>
+</phrase>
+<phrase>
+    <source>Supplier</source>
+    <target>المورّد</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 1</source>
+    <target>المورّد المساعد 1</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 2</source>
+    <target>المورّد المساعد 2</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 3</source>
+    <target>المورّد المساعد 3</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 4</source>
+    <target>المورّد المساعد 4</target>
+</phrase>
+<phrase>
+    <source>Fuse</source>
+    <target>مصهر</target>
+</phrase>
+<phrase>
+    <source>Left</source>
+    <target>يسار</target>
+</phrase>
+<phrase>
+    <source>Left :</source>
+    <target>اليسار:</target>
+</phrase>
+<phrase>
+    <source>Terminal manager</source>
+    <target>مدير لوحات المربطات</target>
+</phrase>
+<phrase>
+    <source>Terminal block manager (DEV)</source>
+    <target>مدير أطراف التوصيل (DEV)</target>
+</phrase>
+<phrase>
+    <source>Drag %1: rotation (Shift = 15°)</source>
+    <target>اسحب %1: تدوير (Maj = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
+    <target>اسحب: ضبط القوس (Ctrl = موضع حر، Maj = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: round the corners (Ctrl = free position)</source>
+    <target>اسحب: تدوير الزوايا (Ctrl = موضع حر)</target>
+</phrase>
+<phrase>
+    <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
+    <target>اسحب: تشويه المنحنى (Ctrl = موضع حر، Alt = كسر المماس)</target>
+</phrase>
+<phrase>
+    <source>Drag: move this point</source>
+    <target>اسحب: نقل هذه النقطة</target>
+</phrase>
+<phrase>
+    <source>Drag: move the rotation center</source>
+    <target>سحب: نقل مركز التدوير</target>
+</phrase>
+<phrase>
+    <source>Drag: move the point (Ctrl = free position</source>
+    <target>اسحب: نقل النقطة (Ctrl = موضع حر</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
+    <target>اسحب: إمالة (Ctrl = موضع حر، Maj = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Shift = 15° steps)</source>
+    <target>سحب: إمالة (Shift = بخطوات 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotate (Shift = 15° steps)</source>
+    <target>سحب: تدوير (Shift = بخطوات 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
+    <target>اسحب: تغيير الحجم (Ctrl = من المركز + موضع حر، Maj = النسب</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
+    <target>سحب: تغيير الحجم (Shift = الحفاظ على النسب، Ctrl = من المركز)</target>
+</phrase>
+<phrase>
+    <source>Drag: reposition the rotation center (Ctrl = free position)</source>
+    <target>اسحب: إعادة تحديد مركز التدوير (Ctrl = موضع حر)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
+    <target>اسحب: تدوير (Ctrl = موضع حر، Maj = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag the purple point: round the corners</source>
+    <target>اسحب النقطة البنفسجية: تدوير الزوايا</target>
+</phrase>
+<phrase>
+    <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
+    <target>سحب زاوية: تدوير (Shift = بخطوات 15°)؛ سحب حافة: إمالة (Shift = بخطوات 15°)؛ نقطة حمراء: نقل مركز التدوير</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
+    <target>سحب زاوية/حافة: تغيير الحجم (Ctrl = من المركز، Shift = الحفاظ على النسب)</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
+    <target>اسحب زاوية/حافة: تغيير الحجم (Ctrl = من المركز، Maj = النسب، Alt = فصل إلى خط متعدد)</target>
+</phrase>
+<phrase>
+    <source>Drag a point: move it</source>
+    <target>اسحب نقطة: نقلها</target>
+</phrase>
+<phrase>
+    <source>Drag an endpoint: move it</source>
+    <target>اسحب طرفًا: نقله</target>
+</phrase>
+<phrase>
+    <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
+    <target>اسحب مقبضًا أو المنحنى: تشويه (Alt = كسر المماس) ؛ Alt+سحب نقطة زاوية: إنشاء مقابض ؛ نقرة يمنى: قائمة أقرب عقدة</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>الانتقال صفحة واحدة إلى اليسار</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>الانتقال صفحة واحدة إلى اليمين</target>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>رمادي : Black</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>رمادي : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>رمادي : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>رمادي : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>رمادي : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>رمادي : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>رمادي : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>رمادي : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>رمادي : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>رمادي : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>أخضر : شارتروز</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>أخضر : أخضر غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>أخضر : أخضر زيتوني غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>أخضر : أخضر بحري غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>أخضر : أخضر غابي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>أخضر : أخضر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>أخضر : أصفر مخضر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>أخضر : أخضر عشبي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>أخضر : أخضر فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>أخضر : ليموني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>أخضر : أخضر ليموني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>أخضر : أكوامارين متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>أخضر : أخضر بحري متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>أخضر : أخضر ربيعي متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>أخضر : زيتوني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>أخضر : زيتوني باهت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>أخضر : أخضر باهت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>أخضر : أخضر بحري</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>أخضر : أخضر ربيعي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>أخضر : أخضر مصفر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Grid + Keyboard</source>
+    <target>الشبكة + لوحة المفاتيح</target>
+</phrase>
+<phrase>
+    <source>Grid: 1 - 30</source>
+    <target>الشبكة: 1 - 30</target>
+</phrase>
+<phrase>
+    <source>GroupBox</source>
+    <target>مربع مجموعة</target>
+</phrase>
+<phrase>
+    <source>Grouping element texts</source>
+    <target>تجميع نصوص العناصر</target>
+</phrase>
+<phrase>
+    <source>Group the terminals</source>
+    <target>تجميع المربطات</target>
+</phrase>
+<phrase>
+    <source>Group selected texts</source>
+    <target>تجميع النصوص المحددة</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>الأدلة</target>
+</phrase>
+<phrase>
+    <source>Generates a report containing the latest log entries, to be included in a bug report</source>
+    <target>إنشاء تقرير يحتوي على آخر رسائل التسجيل، لإدراجه في تقرير خطأ</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>General</source>
+    <target>عام</target>
+</phrase>
+<phrase>
+    <source>Lambda element generator</source>
+    <target>مولّد عنصر مخصص</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Generic</source>
+    <target>عام</target>
+</phrase>
+<phrase>
+    <source>Geometry and lines</source>
+    <target>الهندسة والخطوط</target>
+</phrase>
+<phrase>
+    <source>Geometry</source>
+    <target>الهندسة</target>
+</phrase>
+<phrase>
+    <source>Line H:</source>
+    <target>ارتفاع السطر:</target>
+</phrase>
+<phrase>
+    <source>Top :</source>
+    <target>الأعلى:</target>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>الارتفاع</target>
+</phrase>
+<phrase>
+    <source>File saving time</source>
+    <target>وقت حفظ الملف</target>
+</phrase>
+<phrase>
+    <source>Hungarian</source>
+    <target>الهنغارية</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>أفقي</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>أفقي + عمودي</target>
+</phrase>
+<phrase>
+    <source>Horizontal:</source>
+    <target>أفقي:</target>
+</phrase>
+<phrase>
+    <source>Icons</source>
+    <target>الأيقونات</target>
+</phrase>
+<phrase>
+    <source>Original concept</source>
+    <target>الفكرة الأصلية</target>
+</phrase>
+<phrase>
+    <source>BMP image (*.bmp)</source>
+    <target>صورة BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>ملفات الصور (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>JPEG image (*.jpg *.jpeg)</source>
+    <target>صورة JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>PNG image (*.png)</source>
+    <target>صورة PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Source image</source>
+    <target>الصورة المصدر</target>
+</phrase>
+<phrase>
+    <source>SVG image (*.svg)</source>
+    <target>صورة SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images not included in the DXF export</source>
+    <target>الصور غير مُضمّنة في تصدير DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>استيراد EPLAN</target>
+</phrase>
+<phrase>
+    <source>Import</source>
+    <target>استيراد</target>
+</phrase>
+<phrase>
+    <source>Import a dxf</source>
+    <target>استيراد ملف dxf</target>
+</phrase>
+<phrase>
+    <source>Import a dxf file</source>
+    <target>استيراد ملف dxf</target>
+</phrase>
+<phrase>
+    <source>Import an element to resize</source>
+    <target>استيراد عنصر لإعادة تحجيمه</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part</source>
+    <target>استيراد قطعة EPLAN</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part (.edz)…</source>
+    <target>استيراد قطعة EPLAN ‎(.edz)…</target>
+</phrase>
+<phrase>
+    <source>Unable to save the image to this location.</source>
+    <target>تعذّر حفظ الصورة في هذا الموضع.</target>
+</phrase>
+<phrase>
+    <source>Unable to save the parts list to %1.
+%2</source>
+    <target>تعذّر حفظ قائمة المواد في %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Unable to save the template  ‘%1’.</source>
+    <target>تعذّر حفظ القالب « %1 ».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Could not import this part:
+%1</source>
+    <target>تعذّر استيراد هذه القطعة:
+%1</target>
+</phrase>
+<phrase>
+    <source>Unable to open the file for writing.</source>
+    <target>تعذّر فتح الملف للكتابة.</target>
+</phrase>
+<phrase>
+    <source>Unable to write to the file « %1 ».</source>
+    <target>تعذّرت الكتابة في الملف «%1».</target>
+</phrase>
+<phrase>
+    <source>Unable to load the image.</source>
+    <target>تعذّر تحميل الصورة.</target>
+</phrase>
+<phrase>
+    <source>Unable to load the PDF file.</source>
+    <target>تعذر تحميل ملف PDF.</target>
+</phrase>
+<phrase>
+    <source>It is not possible to determine the size of the PDF page.</source>
+    <target>تعذر تحديد حجم صفحة PDF.</target>
+</phrase>
+<phrase>
+    <source>Unable to read the project&apos;s in-memory structure.</source>
+    <target>تعذّر قراءة البنية في ذاكرة المشروع.</target>
+</phrase>
+<phrase>
+    <source>Unable to render the PDF page.</source>
+    <target>تعذر عرض صفحة PDF.</target>
+</phrase>
+<phrase>
+    <source>Print</source>
+    <target>طباعة</target>
+</phrase>
+<phrase>
+    <source>X skew</source>
+    <target>إمالة X</target>
+</phrase>
+<phrase>
+    <source>Y skew</source>
+    <target>إمالة Y</target>
+</phrase>
+<phrase>
+    <source>Skew %1</source>
+    <target>إمالة %1</target>
+</phrase>
+<phrase>
+    <source>Skew an image</source>
+    <target>إمالة صورة</target>
+</phrase>
+<phrase>
+    <source>include headers</source>
+    <target>تضمين الرؤوس</target>
+</phrase>
+<phrase>
+    <source>Unknown</source>
+    <target>غير معروف</target>
+</phrase>
+<phrase>
+    <source>Unknown</source>
+    <target>غير معروف</target>
+</phrase>
+<phrase>
+    <source>Increment</source>
+    <target>الزيادة</target>
+</phrase>
+<phrase>
+    <source>Increment: the value added to the counter each time a new number is dialled</source>
+    <target>الزيادة: القيمة المضافة إلى العداد عند كل ترقيم جديد</target>
+</phrase>
+<phrase>
+    <source>Revision index</source>
+    <target>رقم المراجعة</target>
+</phrase>
+<phrase>
+    <source>Rev index</source>
+    <target>مؤشر المراجعة</target>
+</phrase>
+<phrase>
+    <source>Rev index:</source>
+    <target>فهرس المراجعة:</target>
+</phrase>
+<phrase>
+    <source>Information to display</source>
+    <target>المعلومات المراد عرضها</target>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>معلومات</target>
+</phrase>
+<phrase>
+    <source>Available information</source>
+    <target>المعلومات المتاحة</target>
+</phrase>
+<phrase>
+    <source>Information to export</source>
+    <target>المعلومات المطلوب تصديرها</target>
+</phrase>
+<phrase>
+    <source>Enter the component details</source>
+    <target>كتابة معلومات المكونات</target>
+</phrase>
+<phrase>
+    <source>Plant</source>
+    <target>التركيب</target>
+</phrase>
+<phrase>
+    <source>Plant (=)</source>
+    <target>التركيب (=)</target>
+</phrase>
+<phrase>
+    <source>Plant:</source>
+    <target>التركيب:</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number above</source>
+    <target>إدراج ورقة أعلاه</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number below</source>
+    <target>إدراج ورقة أدناه</target>
+</phrase>
+<phrase>
+    <source>Insert element text into a text group</source>
+    <target>إدراج نص عنصر في مجموعة نصوص</target>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>محوّل</target>
+</phrase>
+<phrase>
+    <source>Available I/O:</source>
+    <target>IO متاح:</target>
+</phrase>
+<phrase>
+    <source>I have read and accept these terms and conditions.</source>
+    <target>لقد قرأت هذه الشروط وأوافق عليها.</target>
+</phrase>
+<phrase>
+    <source>Japanese</source>
+    <target>اليابانية</target>
+</phrase>
+<phrase>
+    <source>Importing a large dxf can take time 
+please wait while importing...</source>
+    <target>قد يستغرق استيراد ملف dxf كبير بعض الوقت 
+يرجى الانتظار أثناء الاستيراد...</target>
+</phrase>
+<phrase>
+    <source>Importing dxf requires the dxf2elmt software.
+Please download it by following the link and unzip it in the installation folder</source>
+    <target>يتطلب استيراد dxf برنامج dxf2elmt.
+يرجى تنزيله عبر الرابط أدناه وفك ضغطه في مجلد التثبيت</target>
+</phrase>
+<phrase>
+    <source>The new potential formula contains variables incompatible with sheet references.
+Please enter a compatible formula for this potential.
+The following variables are incompatible:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
+    <target>تحتوي صيغة الجهد الجديد على متغيرات غير متوافقة مع إحالات الصفحات.
+يرجى إدخال صيغة متوافقة لهذا الجهد.
+المتغيرات التالية غير متوافقة:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</target>
+</phrase>
+<phrase>
+    <source>The Grid must be active to see the changes.</source>
+    <target>يجب تنشيط الشبكة لتتمكن من رؤية التعديلات.</target>
+</phrase>
+<phrase>
+    <source>The limit set for this master element has been reached (Limit: %1).
+
+Do you still want to link this slave contact?</source>
+    <target>تم بلوغ الحد المحدد لهذا العنصر الرئيسي (الحد: %1).
+
+هل تريد مع ذلك ربط هذا التلامس التابع؟</target>
+</phrase>
+<phrase>
+    <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
+Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
+    <target>لا يمكن إجراء الحذف لأن التحديد يحتوي على طرف توصيل واحد أو أكثر موصول بجسر و/أو ينتمي إلى طرف توصيل متعدد المستويات.
+افصل الجسر و/أو احذف مستويات أطراف التوصيل المعنية لتتمكن من حذفها</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>التسمية</target>
+</phrase>
+<phrase>
+    <source>Launches the default browser on the Youtube channel of QElectroTech</source>
+    <target>فتح المتصفح الافتراضي على قناة Youtube لـ QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Launches the default browser to the online manual QElectroTech</source>
+    <target>فتح المتصفح الافتراضي على الدليل عبر الإنترنت لـ QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Launch the terminal block creation plugin</source>
+    <target>تشغيل إضافة إنشاء أطراف التوصيل</target>
+</phrase>
+<phrase>
+    <source>Language</source>
+    <target>اللغة</target>
+</phrase>
+<phrase>
+    <source>Languages</source>
+    <target>اللغات</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>العرض</target>
+</phrase>
+<phrase>
+    <source>The contents, the size and the font of the text can not be modified because formatted in html.
+Please use the advanced editor for this.</source>
+    <target>لا يمكن تعديل محتوى النص وحجمه وخطه لأنه منسق بصيغة html.
+يرجى استخدام المحرر المتقدم لذلك.</target>
+</phrase>
+<phrase>
+    <source>The file could not be written.</source>
+    <target>تعذّرت كتابة الملف.</target>
+</phrase>
+<phrase>
+    <source>The PDF file does not contain any pages.</source>
+    <target>ملف PDF لا يحتوي على أي صفحة.</target>
+</phrase>
+<phrase>
+    <source>The file &quot;%1&quot; is missing or unreadable:
+the translated name of this folder could not be read, so its folder name is displayed instead.</source>
+    <target>الملف «%1» مفقود أو غير قابل للقراءة: تعذّر قراءة الاسم المترجم لهذا المجلد، ويُعرض اسم المجلد بدلاً منه.</target>
+</phrase>
+<phrase>
+    <source>The .edz file format can come from two different sources:
+• The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
+• A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
+QElectroTech cannot automatically determine the origin of the file you are importing, nor the terms and conditions that apply to it.
+By importing this file, you confirm that:
+• you are aware of its source and are authorised to use it in this context, in accordance with the terms and conditions applicable to that source;
+• this import is carried out at your own risk and responsibility;
+• neither QElectroTech, nor its maintainers, nor its contributors can be held liable for any unauthorised use of this data.</source>
+    <target>يمكن أن يأتي تنسيق ‎.edz من مصدرين مختلفين:
+
+• بوابة EPLAN Data Portal ‎(dataportal.eplan.com)، الخاضعة لشروط استخدام بيئة EPLAN Cloud؛
+• موقع مُصنّع مكوّنات (أو موزّع) يوفّر ملفات ‎.edz مباشرة، وفق شروطه الخاصة.
+
+لا يستطيع QElectroTech تحديد أصل الملف الذي تستورده تلقائيًا، ولا الشروط المطبّقة عليه.
+
+باستيرادك هذا الملف، فإنك تؤكد أنك:
+
+• تعرف أصله ومسموح لك باستخدامه في هذا السياق، وفق الشروط المطبّقة على هذا المصدر؛
+• تنفّذ هذا الاستيراد على مسؤوليتك الخاصة؛
+• لا يمكن تحميل QElectroTech ولا القائمين عليه ولا المساهمين فيه مسؤولية أي استخدام غير مطابق لهذه البيانات.</target>
+</phrase>
+<phrase>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
+    <target>لا يسمح تنسيق DXF المستخدم هنا ‎(AC1006) بتضمين الصور. ستُمثَّل الصور فقط بمستطيل محيطي (مع الحفاظ على الموضع والحجم والدوران والميل)، دون محتوى الصورة.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The QET_ElementScaler software is required to scale elements.
+Please download it from the link below and unzip it into the installation folder</source>
+    <target>برنامج QET_ElementScaler مطلوب لتحجيم العناصر.
+يرجى تنزيله عبر الرابط أدناه وفك ضغطه في مجلد التثبيت</target>
+</phrase>
+<phrase>
+    <source>The template has been successfully saved as :
+%1</source>
+    <target>تم حفظ القالب بنجاح في:
+%1</target>
+</phrase>
+<phrase>
+    <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
+    <target>الاسم « %1 » غير صالح: يجب ألا يحتوي على الأحرف التالية: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>The new element defines slave contact groups.
+Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
+
+Do you wish to continue?</source>
+    <target>يعرّف العنصر الجديد مجموعات تلامسات تابعة.
+لن تُعيَّن العناصر التابعة الموجودة تلقائيًا. سيتعين عليك ربط العناصر التابعة يدويًا وتعيين مجموعات التلامسات.
+
+هل تريد المتابعة؟</target>
+</phrase>
+<phrase>
+    <source>The wiring diagram has been successfully exported !</source>
+    <target>تم تصدير مخطط التوصيل بنجاح!</target>
+</phrase>
+<phrase>
+    <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
+</source>
+    <target>المشروع الذي تحاول فتحه متوافق جزئيًا مع إصدارك %1 من QElectroTech.
+</target>
+</phrase>
+<phrase>
+    <source>The template already exists. Do you want to overwrite it?</source>
+    <target>القالب موجود بالفعل. هل تريد استبداله؟</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>led</source>
+    <target>مصباح</target>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>مصباح :</target>
+</phrase>
+<phrase>
+    <source>Left</source>
+    <target>يسار</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the table.
+Please add a new table or adjust the existing table to display all information.</source>
+    <target>المعلومات المراد عرضها تتجاوز الحد الأقصى الذي يمكن للجدول عرضه.
+يرجى إضافة جدول جديد أو ضبط الجدول الموجود لعرض كامل المعلومات.</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the tables.
+Please add a new table or adjust the existing tables to show all information.</source>
+    <target>المعلومات المراد عرضها تتجاوز الحد الأقصى الذي يمكن للجداول عرضه.
+يرجى إضافة جدول جديد أو ضبط الجداول الموجودة لعرض كامل المعلومات.</target>
+</phrase>
+<phrase>
+    <source>Lower-case letters, numbers, hyphens and underscores only</source>
+    <target>أحرف صغيرة وأرقام وشرطة وشرطة سفلية فقط</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>التراخيص</target>
+</phrase>
+<phrase>
+    <source>Lines to display :</source>
+    <target>الخطوط المراد عرضها:</target>
+</phrase>
+<phrase>
+    <source>Table limitation</source>
+    <target>تحديد الجدول</target>
+</phrase>
+<phrase>
+    <source>Smooth</source>
+    <target>أملس</target>
+</phrase>
+<phrase>
+    <source>Wiring list</source>
+    <target>قائمة التوصيلات</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Wiring list (database)</source>
+    <target>قائمة التوصيلات (قاعدة البيانات)</target>
+</phrase>
+<phrase>
+    <source>Related to: %1</source>
+    <target>مرتبط بـ: %1</target>
+</phrase>
+<phrase>
+    <source>Location</source>
+    <target>الموقع</target>
+</phrase>
+<phrase>
+    <source>Location (+)</source>
+    <target>الموقع (+)</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>الموقع :</target>
+</phrase>
+<phrase>
+    <source>Location :</source>
+    <target>الموقع:</target>
+</phrase>
+<phrase>
+    <source>Log</source>
+    <target>سجل</target>
+</phrase>
+<phrase>
+    <source>Third party software required</source>
+    <target>برنامج طرف ثالث مطلوب</target>
+</phrase>
+<phrase>
+    <source>Length</source>
+    <target>الطول</target>
+</phrase>
+<phrase>
+    <source>Longueur :</source>
+    <target>الطول:</target>
+</phrase>
+<phrase>
+    <source>Maximum length</source>
+    <target>الطول الأقصى</target>
+</phrase>
+<phrase>
+    <source>Maximum length: %1px
+</source>
+    <target>الطول الأقصى : %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Unrestricted length.
+</source>
+    <target>الطول غير مقيّد.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target>النافذة الرئيسية</target>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>ماكرو</target>
+</phrase>
+<phrase>
+    <source>Online manual</source>
+    <target>الدليل عبر الإنترنت</target>
+</phrase>
+<phrase>
+    <source>Margin</source>
+    <target>الهامش</target>
+</phrase>
+<phrase>
+    <source>Margins :</source>
+    <target>الهوامش:</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>الحد الأقصى للقطع في قائمة محرّر العناصر</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>الأقصى:</target>
+</phrase>
+<phrase>
+    <source>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</source>
+    <target>ضع 0 لرقم لا يتقدم إلا بترحيل رقم دوري تالٍ (مثال: "0" في "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>الأدنى:</target>
+</phrase>
+<phrase>
+    <source>Mirror selection</source>
+    <target>انعكاس التحديد</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Horizontal mirror</source>
+    <target>انعكاس أفقي</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of an image</source>
+    <target>انعكاس أفقي لصورة</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of %1</source>
+    <target>انعكاس أفقي لـ %1</target>
+</phrase>
+<phrase>
+    <source>Mirror not possible: skew too extreme for this shape</source>
+    <target>الانعكاس مستحيل: الإمالة مفرطة جدًا لهذا الشكل</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror</source>
+    <target>انعكاس عمودي</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of an image</source>
+    <target>انعكاس عمودي لصورة</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of %1</source>
+    <target>انعكاس عمودي لـ %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>انعكاس</target>
+</phrase>
+<phrase>
+    <source>Page layout</source>
+    <target>تخطيط الصفحة</target>
+</phrase>
+<phrase>
+    <source>Layout (not available on Windows for PDF export)</source>
+    <target>تخطيط الصفحة (غير متاح في Windows لتصدير PDF)</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>تعديل.</target>
+</phrase>
+<phrase>
+    <source>Mode</source>
+    <target>الوضع</target>
+</phrase>
+<phrase>
+    <source>Edit</source>
+    <target>تعديل</target>
+</phrase>
+<phrase>
+    <source>Modify terminal strip properties</source>
+    <target>تعديل خصائص مشابك التوصيل</target>
+</phrase>
+<phrase>
+    <source>Modify the alignment of a text field</source>
+    <target>تعديل محاذاة حقل نص</target>
+</phrase>
+<phrase>
+    <source>Change the alignment of a table header</source>
+    <target>تعديل محاذاة رأس جدول</target>
+</phrase>
+<phrase>
+    <source>Change the alignment of texts in a table</source>
+    <target>تعديل محاذاة نصوص جدول</target>
+</phrase>
+<phrase>
+    <source>Change the alignment of the label</source>
+    <target>تعديل محاذاة التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an arc</source>
+    <target>تعديل زاوية قوس</target>
+</phrase>
+<phrase>
+    <source>Change the angle of a shape</source>
+    <target>تعديل زاوية شكل</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an image</source>
+    <target>تعديل زاوية صورة</target>
+</phrase>
+<phrase>
+    <source>Change the skew of an image</source>
+    <target>تعديل إمالة صورة</target>
+</phrase>
+<phrase>
+    <source>Change the master label index</source>
+    <target>تعديل فهرس تسمية الرئيسي</target>
+</phrase>
+<phrase>
+    <source>Edit the master label</source>
+    <target>تعديل تسمية الرئيسي</target>
+</phrase>
+<phrase>
+    <source>Modify the conservation of the angle</source>
+    <target>تعديل الحفاظ على الزاوية</target>
+</phrase>
+<phrase>
+    <source>Change the color of a terminal bridge</source>
+    <target>تعديل لون وصلة الأطراف</target>
+</phrase>
+<phrase>
+    <source>Change the color of a text</source>
+    <target>تعديل لون نص</target>
+</phrase>
+<phrase>
+    <source>Change the label colour</source>
+    <target>تعديل لون التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the curvature of %1</source>
+    <target>تعديل انحناء %1</target>
+</phrase>
+<phrase>
+    <source>Change the shape of %1</source>
+    <target>تعديل شكل %1</target>
+</phrase>
+<phrase>
+    <source>Modify the geometry of a table</source>
+    <target>تعديل هندسة جدول</target>
+</phrase>
+<phrase>
+    <source>Change the height of an image</source>
+    <target>تعديل ارتفاع صورة</target>
+</phrase>
+<phrase>
+    <source>Change the width of an image</source>
+    <target>تعديل عرض صورة</target>
+</phrase>
+<phrase>
+    <source>Change the length of a line</source>
+    <target>تعديل طول خط</target>
+</phrase>
+<phrase>
+    <source>Change the font of a text field</source>
+    <target>تعديل خط حقل نص</target>
+</phrase>
+<phrase>
+    <source>Change the font of a text</source>
+    <target>تعديل خط نص</target>
+</phrase>
+<phrase>
+    <source>Change the font of an element text</source>
+    <target>تعديل خط نص عنصر</target>
+</phrase>
+<phrase>
+    <source>Change the font of a table header</source>
+    <target>تعديل خط رأس جدول</target>
+</phrase>
+<phrase>
+    <source>Change the font of several text fields</source>
+    <target>تعديل خط عدة حقول نص</target>
+</phrase>
+<phrase>
+    <source>Change the label font</source>
+    <target>تعديل خط التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the position of the label</source>
+    <target>تعديل موضع التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the rotation of the label</source>
+    <target>تعديل دوران التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the size of a text field</source>
+    <target>تعديل حجم حقل نص</target>
+</phrase>
+<phrase>
+    <source>Change the size of a shape</source>
+    <target>تعديل حجم شكل</target>
+</phrase>
+<phrase>
+    <source>Change the size of multiple text fields</source>
+    <target>تعديل حجم عدة حقول نص</target>
+</phrase>
+<phrase>
+    <source>Change the font size of the label</source>
+    <target>تعديل حجم خط التسمية</target>
+</phrase>
+<phrase>
+    <source>Change the way item text stays rotated</source>
+    <target>تعديل الحفاظ على تدوير نص عنصر</target>
+</phrase>
+<phrase>
+    <source>Change the name of the terminal</source>
+    <target>تعديل اسم المربط</target>
+</phrase>
+<phrase>
+    <source>Change the terminal name</source>
+    <target>تعديل اسم الطرف</target>
+</phrase>
+<phrase>
+    <source>Change the number of rows displayed by a table</source>
+    <target>تعديل عدد الأسطر المعروضة في جدول</target>
+</phrase>
+<phrase>
+    <source>Change the rotation point of a text field</source>
+    <target>تعديل نقطة تدوير حقل نص</target>
+</phrase>
+<phrase>
+    <source>Change the type of a node</source>
+    <target>تعديل نوع عقدة</target>
+</phrase>
+<phrase>
+    <source>Change the type of a terminal</source>
+    <target>تعديل نوع المربط</target>
+</phrase>
+<phrase>
+    <source>Edit information for multiple items</source>
+    <target>تعديل معلومات عدة عناصر</target>
+</phrase>
+<phrase>
+    <source>Change the margins of a table</source>
+    <target>تعديل هوامش جدول</target>
+</phrase>
+<phrase>
+    <source>Change the margins of a table header</source>
+    <target>تعديل هوامش رأس جدول</target>
+</phrase>
+<phrase>
+    <source>Modify item properties</source>
+    <target>تعديل خصائص العنصر</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of a text</source>
+    <target>تعديل خصائص نص</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of an element</source>
+    <target>تعديل خصائص عنصر</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of a simple form</source>
+    <target>تعديل خصائص شكل بسيط</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of a terminal group</source>
+    <target>تعديل خصائص مجموعة الأطراف</target>
+</phrase>
+<phrase>
+    <source>Edit the text field</source>
+    <target>تعديل حقل نص</target>
+</phrase>
+<phrase>
+    <source>Modify a simple form</source>
+    <target>تعديل شكل بسيط</target>
+</phrase>
+<phrase>
+    <source>Edit an image</source>
+    <target>تعديل صورة</target>
+</phrase>
+<phrase>
+    <source>PLC module</source>
+    <target>وحدة PLC</target>
+</phrase>
+<phrase>
+    <source>Model</source>
+    <target>الطراز</target>
+</phrase>
+<phrase>
+    <source>Registered template</source>
+    <target>تم حفظ القالب</target>
+</phrase>
+<phrase>
+    <source>Templates</source>
+    <target>القوالب</target>
+</phrase>
+<phrase>
+    <source>Mongolian</source>
+    <target>المنغولية</target>
+</phrase>
+<phrase>
+    <source>go up the selection</source>
+    <target>رفع التحديد</target>
+</phrase>
+<phrase>
+    <source>Whole words</source>
+    <target>كلمات كاملة</target>
+</phrase>
+<phrase>
+    <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
+    <target>طريقة تحجيم الشاشات عالية كثافة البكسل (hdpi) (يُطبَّق عند التشغيل التالي لـ QElectroTech):</target>
+</phrase>
+<phrase>
+    <source>Is not empty</source>
+    <target>ليس فارغًا</target>
+</phrase>
+<phrase>
+    <source>Is not equal to</source>
+    <target>لا يساوي</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>العدد</target>
+</phrase>
+<phrase>
+    <source>No. of terminals</source>
+    <target>عدد الأطراف</target>
+</phrase>
+<phrase>
+    <source>No. of contacts</source>
+    <target>عدد التلامسات</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>مغلق (contact SW)</target>
+</phrase>
+<phrase>
+    <source>Does not contain</source>
+    <target>لا يحتوي</target>
+</phrase>
+<phrase>
+    <source>Do not store the labels of items in the copy paste</source>
+    <target>عدم الاحتفاظ بتسميات العناصر عند النسخ واللصق</target>
+</phrase>
+<phrase>
+    <source>Do not change</source>
+    <target>عدم التعديل</target>
+</phrase>
+<phrase>
+    <source>Neutral</source>
+    <target>محايد</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>مفتوح (contact SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>لم يُعثر على أي *.part.xml داخل ملف .edz</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>الاسم</target>
+</phrase>
+<phrase>
+    <source>Name:</source>
+    <target>الاسم :</target>
+</phrase>
+<phrase>
+    <source>Element file name</source>
+    <target>اسم ملف العنصر</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>The element&apos;s file name: digits, lowercase letters, &apos;-&apos;, &apos;_&apos; and &apos;.&apos; only.
+The element&apos;s display name is edited separately in the element properties.</source>
+    <target>اسم ملف العنصر: أرقام وحروف صغيرة و«-» و«_» و«.» فقط.
+يُعدَّل الاسم المعروض للعنصر بشكل منفصل في خصائص العنصر.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Terminal name</source>
+    <target>اسم المربط</target>
+</phrase>
+<phrase>
+    <source>File name</source>
+    <target>اسم الملف</target>
+</phrase>
+<phrase>
+    <source>Name of the saved file</source>
+    <target>اسم الملف المحفوظ</target>
+</phrase>
+<phrase>
+    <source>Name of the new template</source>
+    <target>اسم القالب الجديد</target>
+</phrase>
+<phrase>
+    <source>Table name</source>
+    <target>اسم الجدول</target>
+</phrase>
+<phrase>
+    <source>Custom column name (blank = default)</source>
+    <target>اسم العمود المخصص (فارغ = افتراضي)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>اسم العنصر أو تسميته أو معلوماته…</target>
+</phrase>
+<phrase>
+    <source>name_of_the_property</source>
+    <target>اسم_الخاصية</target>
+</phrase>
+<phrase>
+    <source>Incorrect number of terminals</source>
+    <target>عدد أطراف التوصيل غير صحيح</target>
+</phrase>
+<phrase>
+    <source>Number of slave contacts used : %1
+</source>
+    <target>عدد تلامسات التابع المستخدمة: %1
+</target>
+</phrase>
+<phrase>
+    <source>Number of sheets</source>
+    <target>عدد الأوراق</target>
+</phrase>
+<phrase>
+    <source>Number of phase</source>
+    <target>عدد الأطوار</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slaves reached.</source>
+    <target>تم بلوغ العدد الأقصى من التوابع.</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  %1
+</source>
+    <target>العدد الأقصى لتلامسات التابع المحددة: %1
+</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  not defined
+</source>
+    <target>العدد الأقصى لتلامسات التابع المحددة: غير محدد
+</target>
+</phrase>
+<phrase>
+    <source>parts list_</source>
+    <target>قائمة_المواد_</target>
+</phrase>
+<phrase>
+    <source>No</source>
+    <target>لا</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Unallocated only</source>
+    <target>غير المخصصة فقط</target>
+</phrase>
+<phrase>
+    <source>Switch normally closed</source>
+    <target>مغلق عادةً</target>
+</phrase>
+<phrase>
+    <source>Switch normally open</source>
+    <target>مفتوح عادةً</target>
+</phrase>
+<phrase>
+    <source>Norwegian</source>
+    <target>النرويجية</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>ليست حزمة .edz صالحة (صيغة أرشيف غير معروفة).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>ملاحظات</target>
+</phrase>
+<phrase>
+    <source>New sheets</source>
+    <target>أوراق جديدة</target>
+</phrase>
+<phrase>
+    <source>number_of_wiring_</source>
+    <target>numero_de_fileries_</target>
+</phrase>
+<phrase>
+    <source>Numeric only (1, 2, 3...)</source>
+    <target>رقمي فقط (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Article number</source>
+    <target>رقم البند</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 article number</source>
+    <target>رقم البند المساعد 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 article number</source>
+    <target>رقم البند المساعد 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 article number</source>
+    <target>رقم البند المساعد 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 article number</source>
+    <target>رقم البند المساعد 4</target>
+</phrase>
+<phrase>
+    <source>Order number</source>
+    <target>رقم الطلب</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 1</source>
+    <target>رقم الطلب المساعد 1</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 2</source>
+    <target>رقم الطلب المساعد 2</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 3</source>
+    <target>رقم الطلب المساعد 3</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 4</source>
+    <target>رقم الطلب المساعد 4</target>
+</phrase>
+<phrase>
+    <source>Number wire</source>
+    <target>رقم الموصل</target>
+</phrase>
+<phrase>
+    <source>Sheet number</source>
+    <target>رقم الورقة</target>
+</phrase>
+<phrase>
+    <source>Sheet number</source>
+    <target>رقم الورقة</target>
+</phrase>
+<phrase>
+    <source>Number of the previous sheet</source>
+    <target>رقم الورقة السابقة</target>
+</phrase>
+<phrase>
+    <source>Number of the following sheet</source>
+    <target>رقم الورقة التالية</target>
+</phrase>
+<phrase>
+    <source>Internal number</source>
+    <target>الرقم الداخلي</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 1</source>
+    <target>الرقم الداخلي المساعد 1</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 2</source>
+    <target>الرقم الداخلي المساعد 2</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 3</source>
+    <target>الرقم الداخلي المساعد 3</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 4</source>
+    <target>الرقم الداخلي المساعد 4</target>
+</phrase>
+<phrase>
+    <source>Auto Numbering</source>
+    <target>ترقيم تلقائي</target>
+</phrase>
+<phrase>
+    <source>Sheet Auto Numbering</source>
+    <target>ترقيم تلقائي للصفحات</target>
+</phrase>
+<phrase>
+    <source>Automatic numbering of terminals</source>
+    <target>ترقيم تلقائي لأطراف التوصيل</target>
+</phrase>
+<phrase>
+    <source>Automatic numbering of selected sheets</source>
+    <target>ترقيم تلقائي للأوراق المحددة</target>
+</phrase>
+<phrase>
+    <source>Automatically number a conductor</source>
+    <target>ترقيم موصل تلقائيًا</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Automatically number an element</source>
+    <target>ترقيم عنصر تلقائيًا</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Number the title block columns from 0 (1 otherwise)</source>
+    <target>ترقيم أعمدة البطاقة انطلاقًا من 0 (1 خلاف ذلك)</target>
+</phrase>
+<phrase>
+    <source>Number the letters as well</source>
+    <target>ترقيم الحروف أيضًا</target>
+</phrase>
+<phrase>
+    <source>Nearest node</source>
+    <target>أقرب عقدة</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>موافق</target>
+</phrase>
+<phrase>
+    <source>Printing option</source>
+    <target>خيار الطباعة</target>
+</phrase>
+<phrase>
+    <source>Rendering option</source>
+    <target>خيار العرض</target>
+</phrase>
+<phrase>
+    <source>Print options</source>
+    <target>خيارات الطباعة</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>برتقالي : مرجاني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>برتقالي : برتقالي غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>برتقالي : برتقالي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>برتقالي : برتقالي محمر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>برتقالي : طماطمي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Protection devices</source>
+    <target>أجهزة الحماية</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>الاتجاه</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>الاتجاه :</target>
+</phrase>
+<phrase>
+    <source>Vertical origin</source>
+    <target>الأصل العمودي</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>أخرى</target>
+</phrase>
+<phrase>
+    <source>Yes</source>
+    <target>نعم</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Elements translation tool</source>
+    <target>أداة ترجمة العناصر</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Tools</source>
+    <target>أدوات</target>
+</phrase>
+<phrase>
+    <source>Open the selected configuration</source>
+    <target>فتح الإعداد المحدد</target>
+</phrase>
+<phrase>
+    <source>Open an item</source>
+    <target>فتح عنصر</target>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>صفحة</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Previous page</source>
+    <target>الصفحة السابقة</target>
+</phrase>
+<phrase>
+    <source>Next page</source>
+    <target>الصفحة التالية</target>
+</phrase>
+<phrase>
+    <source>Page to import:</source>
+    <target>الصفحة المراد استيرادها:</target>
+</phrase>
+<phrase>
+    <source>Elements panel</source>
+    <target>لوحة العناصر</target>
+</phrase>
+<phrase>
+    <source>Archlinux AUR packages</source>
+    <target>حزم Archlinux AUR</target>
+</phrase>
+<phrase>
+    <source>Debian packages</source>
+    <target>حزم Debian</target>
+</phrase>
+<phrase>
+    <source>Fedora and Red Hat packages</source>
+    <target>حزم Fedora و Red Hat</target>
+</phrase>
+<phrase>
+    <source>FreeBSD packages</source>
+    <target>حزم FreeBSD</target>
+</phrase>
+<phrase>
+    <source>Gentoo packages</source>
+    <target>حزم Gentoo</target>
+</phrase>
+<phrase>
+    <source>MAC OS X packages</source>
+    <target>حزم MAC OS X</target>
+</phrase>
+<phrase>
+    <source>Mageia packages</source>
+    <target>حزم Mageia</target>
+</phrase>
+<phrase>
+    <source>OS/2 packages</source>
+    <target>حزم OS/2</target>
+</phrase>
+<phrase>
+    <source>Snap package</source>
+    <target>حزم Snap</target>
+</phrase>
+<phrase>
+    <source>by:</source>
+    <target>بواسطة:</target>
+</phrase>
+<phrase>
+    <source>By default</source>
+    <target>افتراضي</target>
+</phrase>
+<phrase>
+    <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>افتراضيًا، المتغيرات التالية متاحة:&lt;ul&gt;&lt;li&gt;%{author} : مؤلف الصفحة&lt;/li&gt;&lt;li&gt;%{date} : تاريخ الصفحة&lt;/li&gt;&lt;li&gt;%{title} : عنوان الصفحة&lt;/li&gt;&lt;li&gt;%{filename} : اسم ملف المشروع&lt;/li&gt;&lt;li&gt;%{plant} : اسم المنشأة (=) التي توجد بها الصفحة&lt;/li&gt;&lt;li&gt;%{locmach} : اسم الموقع (+) الذي توجد به الصفحة&lt;/li&gt;&lt;li&gt;%{indexrev} : فهرس مراجعة الصفحة&lt;/li&gt;&lt;li&gt;%{version} : إصدار البرنامج&lt;/li&gt;&lt;li&gt;%{folio} : رقم الصفحة&lt;/li&gt;&lt;li&gt;%{folio-id} : موضع الصفحة في المشروع&lt;/li&gt;&lt;li&gt;%{folio-total} : العدد الإجمالي للصفحات في المشروع&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : رقم الصفحة السابقة&lt;/li&gt;&lt;li&gt;%{next-folio-num} : رقم الصفحة التالية&lt;/li&gt;&lt;li&gt;%{projecttitle} : عنوان المشروع&lt;/li&gt;&lt;li&gt;%{projectpath} : مسار المشروع&lt;/li&gt;&lt;li&gt;%{projectfilename} : اسم الملف&lt;/li&gt;&lt;li&gt;%{saveddate} : تاريخ حفظ الملف بالتنسيق المحلي&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : تاريخ حفظ الملف بتنسيق dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : تاريخ حفظ الملف بتنسيق yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : وقت حفظ الملف&lt;/li&gt;&lt;li&gt;%{savedfilename} : اسم الملف المحفوظ&lt;/li&gt;&lt;li&gt;%{savedfilepath} : مسار الملف المحفوظ&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Browse...</source>
+    <target>استعراض...</target>
+</phrase>
+<phrase>
+    <source>Parts</source>
+    <target>الأجزاء</target>
+</phrase>
+<phrase>
+    <source>No rounding</source>
+    <target>بدون تقريب</target>
+</phrase>
+<phrase>
+    <source>No date</source>
+    <target>بدون تاريخ</target>
+</phrase>
+<phrase>
+    <source>No filter</source>
+    <target>بلا مرشح</target>
+</phrase>
+<phrase>
+    <source>Landscape</source>
+    <target>أفقي</target>
+</phrase>
+<phrase>
+    <source>PEN</source>
+    <target>PEN</target>
+</phrase>
+<phrase>
+    <source>Custom</source>
+    <target>مخصصة</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>طور</target>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>وردي : وردي عميق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>وردي : وردي ساخن</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>وردي : وردي فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>وردي : أحمر بنفسجي متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>وردي : أحمر بنفسجي باهت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink: Pink</source>
+    <target>وردي : وردي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Rotates the selection as a group around its centre, rather than each element in place</source>
+    <target>تدوير التحديد كمجموعة حول مركزه، بدلًا من كل عنصر في مكانه</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rotate the selection</source>
+    <target>تدوير التحديد</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Rotate the group</source>
+    <target>تدوير المجموعة</target>
+</phrase>
+<phrase>
+    <source>Rotate multiple text fields</source>
+    <target>تدوير عدة حقول نص</target>
+</phrase>
+<phrase>
+    <source>Rotate a text field</source>
+    <target>تدوير حقل نص</target>
+</phrase>
+<phrase>
+    <source>rotate/skew</source>
+    <target>تدوير/إمالة</target>
+</phrase>
+<phrase>
+    <source>EPLAN parts (*.edz)</source>
+    <target>قطع EPLAN ‎(*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan of terminals</source>
+    <target>مخطط المربطات</target>
+</phrase>
+<phrase>
+    <source>Terminal Block plugin</source>
+    <target>إضافة طرفية</target>
+</phrase>
+<phrase>
+    <source>Handles :</source>
+    <target>المقابض:</target>
+</phrase>
+<phrase>
+    <source>ext anchor point and alignment of lines relative to one another</source>
+    <target>نقطة ارتكاز النص ومحاذاة الأسطر فيما بينها</target>
+</phrase>
+<phrase>
+    <source>Bridge point</source>
+    <target>نقطة الجسر</target>
+</phrase>
+<phrase>
+    <source>Font</source>
+    <target>الخط</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>الخط:</target>
+</phrase>
+<phrase>
+    <source>Header font</source>
+    <target>خط العناوين</target>
+</phrase>
+<phrase>
+    <source>Column header formatting</source>
+    <target>خط عناوين الأعمدة</target>
+</phrase>
+<phrase>
+    <source>Heading font size: %1 %2pt</source>
+    <target>خط العناوين: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Text font</source>
+    <target>خط النص</target>
+</phrase>
+<phrase>
+    <source>Cell text font</source>
+    <target>خط نص الخلايا</target>
+</phrase>
+<phrase>
+    <source>Font size: %1 %2pt</source>
+    <target>خط النص: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Project fonts</source>
+    <target>خطوط المشروع</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Bridging terminals together</source>
+    <target>توصيل الأطراف ببعضها</target>
+</phrase>
+<phrase>
+    <source>Bridging the terminals</source>
+    <target>جسر المربطات</target>
+</phrase>
+<phrase>
+    <source>Portrait</source>
+    <target>عمودي</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>الموضع</target>
+</phrase>
+<phrase>
+    <source>Automatic position</source>
+    <target>الموضع التلقائي</target>
+</phrase>
+<phrase>
+    <source>Sheet position</source>
+    <target>موضع الورقة</target>
+</phrase>
+<phrase>
+    <source>First page</source>
+    <target>الصفحة الأولى</target>
+</phrase>
+<phrase>
+    <source>Main</source>
+    <target>الرئيسية</target>
+</phrase>
+<phrase>
+    <source>Priority of axes</source>
+    <target>أولوية المحاور</target>
+</phrase>
+<phrase>
+    <source>Priority to the X-axis (horizontal)</source>
+    <target>الأولوية للمحور X (أفقي)</target>
+</phrase>
+<phrase>
+    <source>Priority to the Y-axis (vertical)</source>
+    <target>الأولوية للمحور Y (عمودي)</target>
+</phrase>
+<phrase>
+    <source>The next value to be applied using this increment</source>
+    <target>القيمة التالية التي ستُطبَّق مع هذه الزيادة</target>
+</phrase>
+<phrase>
+    <source>Depth</source>
+    <target>العمق</target>
+</phrase>
+<phrase>
+    <source>project</source>
+    <target>مشروع</target>
+    <definition>string used to generate a filename</definition>
+</phrase>
+<phrase>
+    <source>Side project</source>
+    <target>مشروع ملحق</target>
+</phrase>
+<phrase>
+    <source>Untitled project</source>
+    <target>مشروع بدون عنوان</target>
+</phrase>
+<phrase>
+    <source>Properties</source>
+    <target>الخصائص</target>
+</phrase>
+<phrase>
+    <source>Selection properties</source>
+    <target>خصائص التحديد</target>
+</phrase>
+<phrase>
+    <source>Text properties</source>
+    <target>خصائص النص</target>
+</phrase>
+<phrase>
+    <source>Protective Earth Neutral</source>
+    <target>الطور الأرضي المحايد</target>
+</phrase>
+<phrase>
+    <source>Preview:</source>
+    <target>المعاينة :</target>
+</phrase>
+<phrase>
+    <source>Power switch</source>
+    <target>القدرة</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>أرجواني : BlueViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>أرجواني : DarkMagenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>أرجواني : DarkOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>أرجواني : DarkSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>أرجواني : DarkViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>أرجواني : فوشيا</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>أرجواني : Indigo</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>أرجواني : لافندر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>أرجواني : ماجنتا</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>أرجواني : أوركيد متوسط</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>أرجواني : MediumPurple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>أرجواني : MediumSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>أرجواني : أوركيد</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>أرجواني : برقوقي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>أرجواني : Purple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>أرجواني : SlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>أرجواني : ثيستل</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>أرجواني : بنفسجي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>PushButton</source>
+    <target>زر ضغط</target>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>بكسل</target>
+</phrase>
+<phrase>
+    <source>QElectroTech - Element Editor</source>
+    <target>QElectroTech - محرر العناصر</target>
+</phrase>
+<phrase>
+    <source>QElectroTech did not close correctly the last time it was run.
+Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
+    <target>لم يُغلق QElectroTech بشكل صحيح عند آخر تشغيل له.
+فيما يلي آخر الرسائل المسجلة قبل التوقف -- يمكنك حفظها لإرفاقها بتقرير خطأ.</target>
+</phrase>
+<phrase>
+    <source>QElectroTech, an application to design electric diagrams.</source>
+    <target>QElectroTech، تطبيق لإنشاء المخططات الكهربائية.</target>
+    <definition>about tab, description line</definition>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+معلومات إضافية حول استيراد / تحجيم %1</target>
+</phrase>
+<phrase>
+    <source>Quantity</source>
+    <target>الكمية</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 1</source>
+    <target>الكمية المساعدة 1</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 2</source>
+    <target>الكمية المساعدة 2</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 3</source>
+    <target>الكمية المساعدة 3</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 4</source>
+    <target>الكمية المساعدة 4</target>
+</phrase>
+<phrase>
+    <source>Designation quantity</source>
+    <target>الكمية رقم البند</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Where:</source>
+    <target>مَن:</target>
+</phrase>
+<phrase>
+    <source>Quit</source>
+    <target>خروج</target>
+</phrase>
+<phrase>
+    <source>What:</source>
+    <target>ماذا:</target>
+</phrase>
+<phrase>
+    <source>Shortcut</source>
+    <target>الاختصار</target>
+</phrase>
+<phrase>
+    <source>Shortcuts</source>
+    <target>الاختصارات</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Bring the selection (s) to front</source>
+    <target>إحضار التحديدات إلى المقدمة</target>
+</phrase>
+<phrase>
+    <source>Diagnostic report</source>
+    <target>تقرير التشخيص</target>
+</phrase>
+<phrase>
+    <source>Crash report</source>
+    <target>تقرير الانهيار</target>
+</phrase>
+<phrase>
+    <source>Approach the selection (s)</source>
+    <target>تقريب التحديدات</target>
+</phrase>
+<phrase>
+    <source>X radius</source>
+    <target>نصف القطر X</target>
+</phrase>
+<phrase>
+    <source>Y radius</source>
+    <target>نصف القطر Y</target>
+</phrase>
+<phrase>
+    <source>Reload</source>
+    <target>إعادة تحميل</target>
+</phrase>
+<phrase>
+    <source>Reload the terminals</source>
+    <target>إعادة تحميل لوحات المربطات</target>
+</phrase>
+<phrase>
+    <source>Search</source>
+    <target>بحث</target>
+</phrase>
+<phrase>
+    <source>Quickly search for and select an element in the sheet</source>
+    <target>بحث وتحديد سريع لعنصر في الورقة</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Search / replace advanced</source>
+    <target>بحث / استبدال متقدم</target>
+</phrase>
+<phrase>
+    <source>Search...</source>
+    <target>بحث...</target>
+</phrase>
+<phrase>
+    <source>Search / replace advanced</source>
+    <target>بحث/استبدال متقدّم</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>أحمر : قرمزي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>أحمر : أحمر غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>أحمر : سلمون غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>أحمر : طوبي ناري</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>أحمر : أحمر هندي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>أحمر : مرجاني فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>أحمر : سلمون فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>أحمر : أحمر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>أحمر : سلمون</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>resize</source>
+    <target>تغيير الحجم</target>
+</phrase>
+<phrase>
+    <source>Resize %1</source>
+    <target>تغيير حجم %1</target>
+</phrase>
+<phrase>
+    <source>Resize an image</source>
+    <target>تغيير حجم صورة</target>
+</phrase>
+<phrase>
+    <source>Elements  resizer</source>
+    <target>أداة تغيير حجم العناصر</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Note: Master elements that have reached their maximum number of slaves are hidden.</source>
+    <target>ملاحظة: العناصر الرئيسية التي بلغت عددها الأقصى من التوابع تكون مخفية.</target>
+</phrase>
+<phrase>
+    <source>Move this sheet up x100</source>
+    <target>رفع هذه الورقة x100</target>
+</phrase>
+<phrase>
+    <source>Replace</source>
+    <target>استبدال</target>
+</phrase>
+<phrase>
+    <source>Remplacer :</source>
+    <target>استبدال :</target>
+</phrase>
+<phrase>
+    <source>Replace the image...</source>
+    <target>استبدال الصورة...</target>
+</phrase>
+<phrase>
+    <source>Replace an image</source>
+    <target>استبدال صورة</target>
+</phrase>
+<phrase>
+    <source>Learning from the master</source>
+    <target>استرجاع من الرئيسي</target>
+</phrase>
+<phrase>
+    <source>Request</source>
+    <target>استعلام</target>
+</phrase>
+<phrase>
+    <source>SQL request  :</source>
+    <target>استعلام SQL:</target>
+</phrase>
+<phrase>
+    <source>Custom SQL Query</source>
+    <target>استعلام SQL مخصص</target>
+</phrase>
+<phrase>
+    <source>Restore proportions</source>
+    <target>استعادة النسب</target>
+</phrase>
+<phrase>
+    <source>Restore an image&apos;s proportions</source>
+    <target>استعادة نسب صورة</target>
+</phrase>
+<phrase>
+    <source>Remove this color</source>
+    <target>إزالة هذا اللون</target>
+</phrase>
+<phrase>
+    <source>Mirror element :</source>
+    <target>قلب العنصر:</target>
+</phrase>
+<phrase>
+    <source>Flip selection</source>
+    <target>قلب التحديد</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Go back to the start of the project</source>
+    <target>العودة إلى بداية المشروع</target>
+</phrase>
+<phrase>
+    <source>Return to the full image, without cropping</source>
+    <target>العودة إلى الصورة الكاملة، دون قص</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>يمين</target>
+</phrase>
+<phrase>
+    <source>Crop the image</source>
+    <target>قص الصورة</target>
+</phrase>
+<phrase>
+    <source>Crop an image</source>
+    <target>قص صورة</target>
+</phrase>
+<phrase>
+    <source>Crop...</source>
+    <target>قص...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>التدوير</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>الدوران:</target>
+</phrase>
+<phrase>
+    <source>Rotation/Skew</source>
+    <target>تدوير/إمالة</target>
+</phrase>
+<phrase>
+    <source>Ref.</source>
+    <target>المرجع</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>إحالة مرجعية</target>
+</phrase>
+<phrase>
+    <source>PLC cross-reference</source>
+    <target>الإحالة المرجعية PLC</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>الإحالة المرجعية</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>الإحالة المرجعية</target>
+</phrase>
+<phrase>
+    <source>Reset</source>
+    <target>إعادة تعيين</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Reset this shortcut</source>
+    <target>إعادة تعيين هذا الاختصار</target>
+</phrase>
+<phrase>
+    <source>Reset to the default value</source>
+    <target>إعادة التعيين إلى القيمة الابتدائية</target>
+</phrase>
+<phrase>
+    <source>Common collection directory</source>
+    <target>دليل المجموعة المشتركة</target>
+</phrase>
+<phrase>
+    <source>Company collection directory</source>
+    <target>دليل مجموعة company</target>
+</phrase>
+<phrase>
+    <source>User collection directory</source>
+    <target>دليل مجموعة المستخدم</target>
+</phrase>
+<phrase>
+    <source>Company title-block directory</source>
+    <target>دليل بطاقات company</target>
+</phrase>
+<phrase>
+    <source>User title blocks directory</source>
+    <target>دليل بطاقات المستخدم</target>
+</phrase>
+<phrase>
+    <source>User Macro Directory</source>
+    <target>دليل وحدات الماكرو للمستخدم</target>
+</phrase>
+<phrase>
+    <source>Resolution:</source>
+    <target>الدقة:</target>
+</phrase>
+<phrase>
+    <source>Without</source>
+    <target>بدون</target>
+</phrase>
+<phrase>
+    <source>untitled</source>
+    <target>sans_nom</target>
+</phrase>
+<phrase>
+    <source>untitled</source>
+    <target>بدون اسم</target>
+</phrase>
+<phrase>
+    <source>Jump to %1 after:</source>
+    <target>فاصل %1 بعد:</target>
+</phrase>
+<phrase>
+    <source>Save the current configuration</source>
+    <target>حفظ الإعداد الحالي</target>
+</phrase>
+<phrase>
+    <source>Conductor section</source>
+    <target>مقطع الموصل</target>
+</phrase>
+<phrase>
+    <source>Wire section</source>
+    <target>مقطع السلك</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>قابل للفصل</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>قابل للفصل</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>انظر التفاصيل هنا:</target>
+</phrase>
+<phrase>
+    <source>Select an image ...</source>
+    <target>اختيار صورة...</target>
+</phrase>
+<phrase>
+    <source>Case sensitive</source>
+    <target>حساس لحالة الأحرف</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the sheet will be enlarged or shrunk to fill the entire printable surface of one and only one page. &quot;</source>
+    <target>إذا تم تحديد هذا الخيار، ستُكبَّر الصفحة أو تُصغَّر لملء كامل السطح القابل للطباعة في صفحة واحدة فقط."</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the margins of the sheet will be ignored and its entire surface will be used for printing. This may not be supported by your printer.</source>
+    <target>إذا تم تحديد هذا الخيار، سيتم تجاهل هوامش الورقة وسيُستخدم كامل سطحها للطباعة. قد لا تدعم طابعتك ذلك.</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>بسيط</target>
+</phrase>
+<phrase>
+    <source>Simples</source>
+    <target>بسيطة</target>
+</phrase>
+<phrase>
+    <source>Analogue output</source>
+    <target>مخرج تماثلي</target>
+</phrase>
+<phrase>
+    <source>Digital output</source>
+    <target>مخرج رقمي</target>
+</phrase>
+<phrase>
+    <source>Universal output</source>
+    <target>مخرج عام</target>
+</phrase>
+<phrase>
+    <source>Would you like to create a backup copy?</source>
+    <target>هل تريد إنشاء نسخة احتياطية؟</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Subtype</source>
+    <target>النوع الفرعي</target>
+</phrase>
+<phrase>
+    <source>Sub-type : %1
+</source>
+    <target>النوع الفرعي: %1
+</target>
+</phrase>
+<phrase>
+    <source>Support the project with a donation</source>
+    <target>دعم المشروع بالتبرع</target>
+</phrase>
+<phrase>
+    <source>Support the QElectroTech project with a donation</source>
+    <target>دعم مشروع QElectroTech بالتبرع</target>
+</phrase>
+<phrase>
+    <source>Style:</source>
+    <target>النمط:</target>
+</phrase>
+<phrase>
+    <source>Next</source>
+    <target>التالي</target>
+</phrase>
+<phrase>
+    <source>Track the time spent on this project (recorded locally in this file only)</source>
+    <target>تتبع الوقت المستغرق في هذا المشروع (يُسجَّل محليًا في هذا الملف فقط)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Unable to delete the terminal</source>
+    <target>تعذّر حذف طرف التوصيل</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>حذف</target>
+</phrase>
+<phrase>
+    <source>Delete %1 sheets</source>
+    <target>حذف %1 ورقة</target>
+</phrase>
+<phrase>
+    <source>Delete this point</source>
+    <target>حذف هذه النقطة</target>
+</phrase>
+<phrase>
+    <source>Delete this text</source>
+    <target>حذف هذا النص</target>
+</phrase>
+<phrase>
+    <source>Delete this property</source>
+    <target>حذف هذه الخاصية</target>
+</phrase>
+<phrase>
+    <source>Delete terminal bridges</source>
+    <target>حذف وصلات الأطراف</target>
+</phrase>
+<phrase>
+    <source>Delete selection</source>
+    <target>حذف التحديد</target>
+</phrase>
+<phrase>
+    <source>Remove terminal block</source>
+    <target>حذف لوحة المربطات</target>
+</phrase>
+<phrase>
+    <source>Delete terminal strip from project</source>
+    <target>حذف لوحة المربطات من المشروع</target>
+</phrase>
+<phrase>
+    <source>Delete the nearest node</source>
+    <target>حذف أقرب عقدة</target>
+</phrase>
+<phrase>
+    <source>Delete the sheets</source>
+    <target>حذف الأوراق</target>
+</phrase>
+<phrase>
+    <source>Delete a sheet</source>
+    <target>حذف ورقة</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Delete a group of terminals</source>
+    <target>حذف مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source>Delete a point from a polygon</source>
+    <target>حذف نقطة من مضلع</target>
+</phrase>
+<phrase>
+    <source>Delete a point from a curve</source>
+    <target>حذف نقطة من منحنى</target>
+</phrase>
+<phrase>
+    <source>Swedish</source>
+    <target>السويدية</target>
+</phrase>
+<phrase>
+    <source>SVG-background transparent</source>
+    <target>SVG: خلفية شفافة</target>
+</phrase>
+<phrase>
+    <source>Symmetric</source>
+    <target>متماثل</target>
+</phrase>
+<phrase>
+    <source>Modified contact system</source>
+    <target>تم تغيير نظام التلامسات</target>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>قابل للفصل</target>
+</phrase>
+<phrase>
+    <source>Auto numbering selection</source>
+    <target>اختيار الترقيم التلقائي</target>
+</phrase>
+<phrase>
+    <source>Select the text configuration to add to the element</source>
+    <target>اختيار إعداد النصوص المراد إضافته إلى العنصر</target>
+</phrase>
+<phrase>
+    <source>Select the font of the table cells</source>
+    <target>اختر خط خلايا الجدول</target>
+</phrase>
+<phrase>
+    <source>Select the font at the top of the table</source>
+    <target>اختر خط رؤوس الجدول</target>
+</phrase>
+<phrase>
+    <source>Select the conductors of this sheet</source>
+    <target>تحديد موصلات هذه الصفحة</target>
+</phrase>
+<phrase>
+    <source>Select the texts of this sheet</source>
+    <target>تحديد نصوص هذه الصفحة</target>
+</phrase>
+<phrase>
+    <source>Select the elements of this sheet</source>
+    <target>تحديد عناصر هذه الصفحة</target>
+</phrase>
+<phrase>
+    <source>Select a PDF file...</source>
+    <target>اختيار ملف PDF...</target>
+</phrase>
+<phrase>
+    <source>Select a group of contacts</source>
+    <target>اختر مجموعة تماسات</target>
+</phrase>
+<phrase>
+    <source>Select a PLC I/O</source>
+    <target>اختيار IO PLC</target>
+</phrase>
+<phrase>
+    <source>Select a text configuration</source>
+    <target>اختيار إعداد نصوص</target>
+</phrase>
+<phrase>
+    <source>Select a page</source>
+    <target>اختيار صفحة</target>
+</phrase>
+<phrase>
+    <source>Select the contact group to assign to this slave element :</source>
+    <target>اختر مجموعة التماسات التي ستُعيَّن إلى هذا العنصر التابع:</target>
+</phrase>
+<phrase>
+    <source>Potential separation</source>
+    <target>فصل الجهد</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>PLC Table</source>
+    <target>جدول PLC</target>
+</phrase>
+<phrase>
+    <source>PLC table (empty)</source>
+    <target>جدول PLC (فارغ)</target>
+</phrase>
+<phrase>
+    <source>Table</source>
+    <target>جدول</target>
+</phrase>
+<phrase>
+    <source>Previous table</source>
+    <target>الجدول السابق</target>
+</phrase>
+<phrase>
+    <source>Previous table :</source>
+    <target>الجدول السابق:</target>
+</phrase>
+<phrase>
+    <source>Next table</source>
+    <target>الجدول التالي</target>
+</phrase>
+<phrase>
+    <source>Size</source>
+    <target>الحجم</target>
+</phrase>
+<phrase>
+    <source>Size :</source>
+    <target>الحجم:</target>
+</phrase>
+<phrase>
+    <source>Line size :</source>
+    <target>حجم الخط:</target>
+</phrase>
+<phrase>
+    <source>Point-size in diagram-editor: 1 - 5</source>
+    <target>حجم نقاط شبكة Diagram-Editor: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Point-size in element-editor: 1 - 5</source>
+    <target>حجم نقاط شبكة محرّر العناصر: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Text size :</source>
+    <target>حجم النص:</target>
+</phrase>
+<phrase>
+    <source>Switch-off delayed</source>
+    <target>تأخير عند الراحة</target>
+</phrase>
+<phrase>
+    <source>Switch-on delayed</source>
+    <target>تأخير عند العمل</target>
+</phrase>
+<phrase>
+    <source>Switch-on  and off delayed</source>
+    <target>تأخير عند العمل والراحة</target>
+</phrase>
+<phrase>
+    <source>Time spent on this project:</source>
+    <target>الوقت المستغرق في هذا المشروع:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Voltage / Protocol :</source>
+    <target>الجهد / البروتوكول:</target>
+</phrase>
+<phrase>
+    <source>Voltage / Protocol</source>
+    <target>الجهد / البروتوكول</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Rated voltage</source>
+    <target>الجهد الاسمي</target>
+</phrase>
+<phrase>
+    <source>Ground</source>
+    <target>الأرضي</target>
+</phrase>
+<phrase>
+    <source>Text alignment</source>
+    <target>محاذاة النص</target>
+</phrase>
+<phrase>
+    <source>Text</source>
+    <target>نص</target>
+</phrase>
+<phrase>
+    <source>Text:</source>
+    <target>النص:</target>
+</phrase>
+<phrase>
+    <source>Text terminal</source>
+    <target>نص المربط</target>
+</phrase>
+<phrase>
+    <source>Plain text</source>
+    <target>نص خام</target>
+</phrase>
+<phrase>
+    <source>Header text</source>
+    <target>نص الترويسة</target>
+</phrase>
+<phrase>
+    <source>Header text</source>
+    <target>نص الرؤوس</target>
+</phrase>
+<phrase>
+    <source>Text of the table</source>
+    <target>نص الجدول</target>
+</phrase>
+<phrase>
+    <source>Independent text</source>
+    <target>نص مستقل</target>
+</phrase>
+<phrase>
+    <source>Text or regular expression</source>
+    <target>نص أو تعبير نمطي</target>
+</phrase>
+<phrase>
+    <source>Text on horizontal conductor :</source>
+    <target>النص على موصل أفقي:</target>
+</phrase>
+<phrase>
+    <source>Text on vertical conductor :</source>
+    <target>النص على موصل عمودي:</target>
+</phrase>
+<phrase>
+    <source>Visible text</source>
+    <target>النص مرئي</target>
+</phrase>
+<phrase>
+    <source>texts</source>
+    <target>النصوص</target>
+</phrase>
+<phrase>
+    <source>Elements texts</source>
+    <target>نصوص العناصر</target>
+</phrase>
+<phrase>
+    <source>Independent texts</source>
+    <target>نصوص مستقلة</target>
+</phrase>
+<phrase>
+    <source>TextLabel</source>
+    <target>تسمية نصية</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>ملف .edz هذا حزمة بصيغة zip، وهي غير مدعومة بعد (يمكن استيراد ملفات .edz بصيغة 7-Zip فقط).</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>هذا خطأ في الشيفرة</target>
+</phrase>
+<phrase>
+    <source>Title:</source>
+    <target>العنوان:</target>
+</phrase>
+<phrase>
+    <source>Sheet title</source>
+    <target>عنوان الورقة</target>
+</phrase>
+<phrase>
+    <source>Project title</source>
+    <target>عنوان المشروع</target>
+</phrase>
+<phrase>
+    <source>Values that are too high might cause the application to crash</source>
+    <target>قد تؤدي القيم المرتفعة جدًا إلى تعطّل التطبيق.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolerance for this color</source>
+    <target>التسامح لهذا اللون</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>شريط الأدوات</target>
+</phrase>
+<phrase>
+    <source>Top</source>
+    <target>أعلى</target>
+</phrase>
+<phrase>
+    <source>Always rounded down</source>
+    <target>دائمًا تقريب للأسفل</target>
+</phrase>
+<phrase>
+    <source>Always top rounding</source>
+    <target>دائمًا تقريب للأعلى</target>
+</phrase>
+<phrase>
+    <source>Rotate about its own centre</source>
+    <target>التدوير حول مركزه</target>
+</phrase>
+<phrase>
+    <source>all</source>
+    <target>الكل</target>
+</phrase>
+<phrase>
+    <source>All files (*)</source>
+    <target>كل الملفات (*)</target>
+</phrase>
+<phrase>
+    <source>Check all</source>
+    <target>تحديد الكل</target>
+</phrase>
+<phrase>
+    <source>Uncheck all</source>
+    <target>إلغاء تحديد الكل</target>
+</phrase>
+<phrase>
+    <source>Replace all</source>
+    <target>استبدال الكل</target>
+</phrase>
+<phrase>
+    <source>Reset everything</source>
+    <target>إعادة تعيين الكل</target>
+</phrase>
+<phrase>
+    <source>All</source>
+    <target>الكل</target>
+</phrase>
+<phrase>
+    <source>All dates</source>
+    <target>كل التواريخ</target>
+</phrase>
+<phrase>
+    <source>Translators</source>
+    <target>المترجمون</target>
+</phrase>
+<phrase>
+    <source>German translation</source>
+    <target>الترجمة إلى الألمانية</target>
+</phrase>
+<phrase>
+    <source>Arabic translation</source>
+    <target>الترجمة إلى العربية</target>
+</phrase>
+<phrase>
+    <source>Brazilian translation</source>
+    <target>الترجمة إلى البرازيلية</target>
+</phrase>
+<phrase>
+    <source>Catalan translation</source>
+    <target>الترجمة إلى الكتالونية</target>
+</phrase>
+<phrase>
+    <source>Translation into Korean</source>
+    <target>الترجمة إلى الكورية</target>
+</phrase>
+<phrase>
+    <source>Croatian translation</source>
+    <target>الترجمة إلى الكرواتية</target>
+</phrase>
+<phrase>
+    <source>Danish translation</source>
+    <target>الترجمة إلى الدنماركية</target>
+</phrase>
+<phrase>
+    <source>Spanish translation</source>
+    <target>الترجمة إلى الإسبانية</target>
+</phrase>
+<phrase>
+    <source>Flemish translation</source>
+    <target>الترجمة إلى الفلمنكية</target>
+</phrase>
+<phrase>
+    <source>Greek translation</source>
+    <target>الترجمة إلى اليونانية</target>
+</phrase>
+<phrase>
+    <source>Hungarian translation</source>
+    <target>الترجمة إلى الهنغارية</target>
+</phrase>
+<phrase>
+    <source>Italian translation</source>
+    <target>الترجمة إلى الإيطالية</target>
+</phrase>
+<phrase>
+    <source>Japanese translation</source>
+    <target>الترجمة إلى اليابانية</target>
+</phrase>
+<phrase>
+    <source>Mongolian Translation</source>
+    <target>الترجمة إلى المنغولية</target>
+</phrase>
+<phrase>
+    <source>Norwegian Translation</source>
+    <target>الترجمة إلى النرويجية</target>
+</phrase>
+<phrase>
+    <source>Dutch translation</source>
+    <target>الترجمة إلى الهولندية</target>
+</phrase>
+<phrase>
+    <source>Polish translation</source>
+    <target>الترجمة إلى البولندية</target>
+</phrase>
+<phrase>
+    <source>Portuguese translation</source>
+    <target>الترجمة إلى البرتغالية</target>
+</phrase>
+<phrase>
+    <source>Romanian translation</source>
+    <target>الترجمة إلى الرومانية</target>
+</phrase>
+<phrase>
+    <source>Russian translation</source>
+    <target>الترجمة إلى الروسية</target>
+</phrase>
+<phrase>
+    <source>Serbian Translation</source>
+    <target>الترجمة إلى الصربية</target>
+</phrase>
+<phrase>
+    <source>Slovenian translation</source>
+    <target>الترجمة إلى السلوفينية</target>
+</phrase>
+<phrase>
+    <source>Czech translation</source>
+    <target>الترجمة إلى التشيكية</target>
+</phrase>
+<phrase>
+    <source>Turkish translation</source>
+    <target>الترجمة إلى التركية</target>
+</phrase>
+<phrase>
+    <source>Ukrainian translation</source>
+    <target>الترجمة إلى الأوكرانية</target>
+</phrase>
+<phrase>
+    <source>Dashed line</source>
+    <target>خط متقطع</target>
+    <definition>conductor style: dashed line</definition>
+</phrase>
+<phrase>
+    <source>Solid line</source>
+    <target>خط متصل</target>
+    <definition>conductor style: solid line</definition>
+</phrase>
+<phrase>
+    <source>Dots and dashes</source>
+    <target>خطوط ونقاط</target>
+    <definition>conductor style: dashed and dotted line</definition>
+</phrase>
+<phrase>
+    <source>Transform %1</source>
+    <target>تحويل %1</target>
+</phrase>
+<phrase>
+    <source>Transparency not preserved</source>
+    <target>الشفافية غير محفوظة</target>
+</phrase>
+<phrase>
+    <source>Sort terminal block %1</source>
+    <target>ترتيب شريط الأطراف %1</target>
+</phrase>
+<phrase>
+    <source>Too many primitives, list not generated: %1</source>
+    <target>عناصر أولية كثيرة جدًا، لم تُنشأ القائمة: %1</target>
+</phrase>
+<phrase>
+    <source>Turkish</source>
+    <target>التركية</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>النوع</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>النوع:</target>
+</phrase>
+<phrase>
+    <source>Type: %1
+</source>
+    <target>النوع: %1
+</target>
+</phrase>
+<phrase>
+    <source>Type of elements</source>
+    <target>نوع العناصر</target>
+</phrase>
+<phrase>
+    <source>Type of numbering</source>
+    <target>نوع الترقيم</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>نوع PLC</target>
+</phrase>
+<phrase>
+    <source>Download</source>
+    <target>التنزيل</target>
+</phrase>
+<phrase>
+    <source>Ukrainian</source>
+    <target>الأوكرانية</target>
+</phrase>
+<phrase>
+    <source>an arc</source>
+    <target>قوس</target>
+</phrase>
+<phrase>
+    <source>a corner</source>
+    <target>زاوية</target>
+</phrase>
+<phrase>
+    <source>a graphic element</source>
+    <target>عنصر رسومي</target>
+</phrase>
+<phrase>
+    <source>A file</source>
+    <target>ملف</target>
+</phrase>
+<phrase>
+    <source>a point</source>
+    <target>نقطة</target>
+</phrase>
+<phrase>
+    <source>An element</source>
+    <target>عنصر</target>
+</phrase>
+<phrase>
+    <source>A text configuration named &lt;&lt;%1 &gt;&gt; already exists.
+Do you want to replace it ?</source>
+    <target>يوجد بالفعل إعداد نصوص باسم &lt;&lt;%1&gt;&gt;.
+هل تريد استبداله؟</target>
+</phrase>
+<phrase>
+    <source>a curve</source>
+    <target>منحنى</target>
+</phrase>
+<phrase>
+    <source>An error occurred while opening file %1.</source>
+    <target>حدث خطأ أثناء فتح الملف %1.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>An error occurred while writing file %1, error %2 encountered.</source>
+    <target>حدث خطأ أثناء كتابة الملف %1، الخطأ %2.</target>
+    <definition>error message when attempting to write an XML file</definition>
+</phrase>
+<phrase>
+    <source>an endpoint</source>
+    <target>طرف</target>
+</phrase>
+<phrase>
+    <source>image</source>
+    <target>صورة</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Single line</source>
+    <target>أحادي الخط</target>
+</phrase>
+<phrase>
+    <source>Unity</source>
+    <target>الوحدة</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 1</source>
+    <target>الوحدة المساعدة 1</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 2</source>
+    <target>الوحدة المساعدة 2</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 3</source>
+    <target>الوحدة المساعدة 3</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 4</source>
+    <target>الوحدة المساعدة 4</target>
+</phrase>
+<phrase>
+    <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
+    <target>استخدام النوافذ (يُطبَّق عند التشغيل التالي لـ QElectroTech)</target>
+</phrase>
+<phrase>
+    <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
+    <target>استخدام علامات التبويب (يُطبَّق عند التشغيل التالي لـ QElectroTech)</target>
+</phrase>
+<phrase>
+    <source>Use sheet numbers instead of their position in the project</source>
+    <target>استخدام أرقام الأوراق بدلًا من موضعها في المشروع</target>
+</phrase>
+<phrase>
+    <source>Use the whole page</source>
+    <target>استخدام الورقة كاملة</target>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>القيمة</target>
+</phrase>
+<phrase>
+    <source>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</source>
+    <target>القيمة الحالية للعداد. أدخل قيمة جديدة وأكّد لتعديلها.</target>
+</phrase>
+<phrase>
+    <source>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</source>
+    <target>القيمة التي يعود عندها هذا الرقم إلى 0 عند زيادة الرقم السابق (0 = بدون دورة)</target>
+</phrase>
+<phrase>
+    <source>Title block variables</source>
+    <target>متغيرات بطاقة العنوان</target>
+</phrase>
+<phrase>
+    <source>Lock automatic numbering</source>
+    <target>قفل الترقيم التلقائي</target>
+</phrase>
+<phrase>
+    <source>Lock Position</source>
+    <target>قفل الموضع</target>
+</phrase>
+<phrase>
+    <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
+    <target>مقفل: تعديل العرض أو الارتفاع يضبط الآخر للحفاظ على النسب. انقر لإلغاء القفل.</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>إلى مجموعة الأطراف %1</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>إلى مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source>Version</source>
+    <target>الإصدار</target>
+</phrase>
+<phrase>
+    <source>Version of QElectroTech</source>
+    <target>إصدار QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>عمودي</target>
+</phrase>
+<phrase>
+    <source>Vertical:</source>
+    <target>عمودي:</target>
+</phrase>
+<phrase>
+    <source>Please select an electrical potential from the list 
+to use for the new potential</source>
+    <target>يرجى اختيار جهد كهربائي من القائمة 
+لاستخدامه للجهد الجديد</target>
+</phrase>
+<phrase>
+    <source>Thumbnail</source>
+    <target>صورة مصغرة</target>
+</phrase>
+<phrase>
+    <source>Thumbnails</source>
+    <target>البطاقات</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>مرئي</target>
+</phrase>
+<phrase>
+    <source>View this item</source>
+    <target>عرض هذا العنصر</target>
+</phrase>
+<phrase>
+    <source>Here you can define the default appearance of the different texts of QElectroTech</source>
+    <target>يمكنك هنا تحديد المظهر الافتراضي لمختلف نصوص QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+associer le nom "volta" et la valeur "1745" remplacera %{volta} par 1745 dans le cartouche.</source>
+    <target>يمكنك هنا تحديد اقترانات الأسماء/القيم الخاصة بك حتى تأخذها لوحة العنوان في الحسبان. مثال:
+اقتران الاسم "volta" والقيمة "1745" سيستبدل %{volta} بـ 1745 في لوحة العنوان.</target>
+</phrase>
+<phrase>
+    <source>You can define a custom label for sheet references.
+Create your own text using the following variables:
+%f: the sheet position in the project
+%F: the sheet number
+%M: the installation
+%LM: the location
+%l: the row number
+%c: the column number</source>
+    <target>يمكنك تحديد تسمية مخصصة لإحالات الأوراق.
+أنشئ نصك الخاص بمساعدة المتغيرات التالية:
+%f: موضع الورقة في المشروع 
+%F: رقم الورقة
+%M: التركيب
+%LM: الموقع
+%l: رقم السطر
+%c: رقم العمود</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>أبيض : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>أبيض : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>أبيض : Azure</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>أبيض : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>أبيض : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>أبيض : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>أبيض : Honeydew</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>أبيض : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>أبيض : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>أبيض : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>أبيض : MintCream</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>أبيض : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>أبيض : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>أبيض : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>أبيض : Snow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>أبيض : White</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>أبيض : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target>س</target>
+</phrase>
+<phrase>
+    <source>x 1</source>
+    <target>x 1</target>
+</phrase>
+<phrase>
+    <source>x 2</source>
+    <target>x 2</target>
+</phrase>
+<phrase>
+    <source>x 3</source>
+    <target>x 3</target>
+</phrase>
+<phrase>
+    <source>X :</source>
+    <target>س :</target>
+</phrase>
+<phrase>
+    <source>X1:</source>
+    <target>X1 :</target>
+</phrase>
+<phrase>
+    <source>X2:</source>
+    <target>X2 :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>X: %1 Y: %2</source>
+    <target>X: %1 Y: %2</target>
+</phrase>
+<phrase>
+    <source>XRef slave position</source>
+    <target>موضع الإحالة التابعة</target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target>ص</target>
+</phrase>
+<phrase>
+    <source>Y :</source>
+    <target>ص :</target>
+</phrase>
+<phrase>
+    <source>Y1:</source>
+    <target>Y1 :</target>
+</phrase>
+<phrase>
+    <source>Y2:</source>
+    <target>Y2 :</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>أصفر : كاكي غامق</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>أصفر : ذهبي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>أصفر : كاكي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>أصفر : شيفون ليموني</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>أصفر : أصفر ذهبي فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>أصفر : أصفر فاتح</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>أصفر : موكاسان</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>أصفر : ذهبي باهت</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>أصفر : بابايا</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>أصفر : خوخي</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>أصفر : أصفر</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>تصغير</target>
+</phrase>
+<phrase>
+    <source>Zoom In</source>
+    <target>تكبير</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>A&amp;bout QElectroTech</source>
+    <target>ح&amp;ول QElectroTech</target>
+</phrase>
+<phrase>
+    <source>To the right</source>
+    <target>إلى اليمين</target>
+</phrase>
+<phrase>
+    <source>To the left</source>
+    <target>إلى اليسار</target>
+</phrase>
+<phrase>
+    <source>In date of  :</source>
+    <target>إلى تاريخ:</target>
+</phrase>
+<phrase>
+    <source>From the date of:</source>
+    <target>من تاريخ:</target>
+</phrase>
+<phrase>
+    <source>About</source>
+    <target>حول</target>
+</phrase>
+<phrase>
+    <source>About &amp;Qt</source>
+    <target>حول &amp;Qt</target>
+</phrase>
+<phrase>
+    <source>About QElectroTech</source>
+    <target>حول QElectrotech</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>إلى مجموعة أطراف</target>
+</phrase>
+<phrase>
+    <source>Saving failed</source>
+    <target>فشل الحفظ</target>
+</phrase>
+<phrase>
+    <source>Export failed</source>
+    <target>فشل التصدير</target>
+</phrase>
+<phrase>
+    <source>Overwrite the template?</source>
+    <target>استبدال القالب؟</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Erase existing texts</source>
+    <target>استبدال النصوص الموجودة</target>
+</phrase>
+<phrase>
+    <source>Edit</source>
+    <target>تحرير</target>
+</phrase>
+<phrase>
+    <source>Advanced Editor</source>
+    <target>محرر متقدم</target>
+</phrase>
+<phrase>
+    <source>Element editors</source>
+    <target>محرر العناصر</target>
+</phrase>
+<phrase>
+    <source>Title block template editors</source>
+    <target>محرر البطاقة</target>
+</phrase>
+<phrase>
+    <source>Diagram editors</source>
+    <target>محرر المخططات</target>
+</phrase>
+<phrase>
+    <source>Text editor</source>
+    <target>محرّر النصوص</target>
+</phrase>
+<phrase>
+    <source>Node editing</source>
+    <target>تحرير العقد</target>
+</phrase>
+<phrase>
+    <source>Élement
+</source>
+    <target>العنصر
+</target>
+</phrase>
+<phrase>
+    <source>Move away the selection (s)</source>
+    <target>إبعاد التحديدات</target>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>عنصر</target>
+</phrase>
+<phrase>
+    <source>Terminal block element</source>
+    <target>عنصر طرفية</target>
+</phrase>
+<phrase>
+    <source>QElectroTech elements (*.elmt)</source>
+    <target>عناصر QElectroTech (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Thickness :</source>
+    <target>السماكة :</target>
+</phrase>
+<phrase>
+    <source>Stage</source>
+    <target>الطبقة</target>
+</phrase>
+<phrase>
+    <source>Stage :</source>
+    <target>الطبقة :</target>
+</phrase>
+<phrase>
+    <source>Master’s label</source>
+    <target>تسمية الرئيسي</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet?</source>
+    <target>هل أنت متأكد من رغبتك في حذف هذه الورقة؟</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet from the project?</source>
+    <target>هل أنت متأكد من رغبتك في حذف هذه الورقة من المشروع؟</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete the selected %1 sheets ?</source>
+    <target>هل أنت متأكد من رغبتك في حذف %1 ورقة محددة؟</target>
+</phrase>
+<phrase>
+    <source>cabinet</source>
+    <target>خزانة</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>coil</source>
+    <target>ملف</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>terminal</source>
+    <target>طرف</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>terminal strip</source>
+    <target>مشط الأطراف</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>rating</source>
+    <target>تصنيف</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>title block</source>
+    <target>إطار المعلومات</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>contactor</source>
+    <target>مُشغّل</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>current</source>
+    <target>تيار</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>circuit breaker</source>
+    <target>قاطع</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>folder</source>
+    <target>مجلد</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>slave</source>
+    <target>تابع</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grid</source>
+    <target>شبكة</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>مفتاح</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>master</source>
+    <target>رئيسي</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>template</source>
+    <target>قالب</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>motor</source>
+    <target>محرك</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>parts list</source>
+    <target>قائمة المكونات</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numbering</source>
+    <target>ترقيم</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potential</source>
+    <target>كمون</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>relay</source>
+    <target>مرحّل</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>إحالة الورقة</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>designation</source>
+    <target>علامة تعريف</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>إحالة الورقة</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>diagram</source>
+    <target>مخطط</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>cross-section</source>
+    <target>مقطع</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>summary</source>
+    <target>فهرس المحتويات</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>voltage</source>
+    <target>جهد</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>transformer</source>
+    <target>محول</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

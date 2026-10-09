@@ -48,7 +48,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="QLineEdit" name="m_name_le"/>
    </item>
    <item row="2" column="1">
@@ -57,50 +57,64 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>x :</string>
+      <string>x:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Nom :</string>
+      <string>Name:</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Type :</string>
+      <string>Type:</string>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
     <widget class="QComboBox" name="m_type_cb"/>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_potential">
+     <property name="text">
+      <string>Potential:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="m_potential_le">
+     <property name="toolTip">
+      <string>No effect unless "Potential isolation" is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
     <widget class="QGroupBox" name="m_label_gb">
      <property name="title">
-      <string>Nom de la borne</string>
+      <string>Terminal name</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QCheckBox" name="m_show_name_cb">
         <property name="text">
-         <string>Afficher le nom</string>
+         <string>Show name</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QGroupBox" name="m_text_props_gb">
         <property name="title">
-         <string>Propriétés du texte</string>
+         <string>Text properties</string>
         </property>
          <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
             <widget class="QPushButton" name="m_font_pb">
              <property name="text">
-              <string>Police</string>
+              <string>Font</string>
              </property>
             </widget>
            </item>
@@ -180,14 +194,14 @@
            <item row="4" column="0" colspan="2">
             <widget class="QPushButton" name="m_align_pb">
              <property name="text">
-              <string>Alignement</string>
+              <string>Alignment</string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_13">
              <property name="text">
-              <string>Couleur :</string>
+              <string>Color :</string>
              </property>
             </widget>
            </item>
@@ -204,7 +218,7 @@
            <item row="6" column="0" colspan="2">
             <widget class="QCheckBox" name="m_label_frame_cb">
              <property name="text">
-              <string>Encadrer le texte</string>
+              <string>Frame the text</string>
              </property>
             </widget>
            </item>
@@ -214,10 +228,10 @@
      </layout>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <widget class="QGroupBox" name="m_master_label_gb">
      <property name="title">
-      <string>Étiquette du maître</string>
+      <string>Master’s label</string>
      </property>
      <property name="visible">
       <bool>false</bool>
@@ -226,7 +240,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="m_use_master_label_cb">
         <property name="text">
-         <string>Reprendre du maître</string>
+         <string>Learning from the master</string>
         </property>
        </widget>
       </item>

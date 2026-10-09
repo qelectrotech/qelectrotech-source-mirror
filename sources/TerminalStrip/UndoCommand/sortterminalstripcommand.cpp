@@ -19,12 +19,13 @@
 #include "../terminalstrip.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
+#include "../../utils/qetutils.h"
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_strip(strip)
 {
-	setText(QObject::tr("Trier le bornier %1").arg(m_strip->name()));
+	setText(QObject::tr("Sort terminal block %1").arg(m_strip->name()));
 	m_old_order = m_strip->physicalTerminal();
 	m_new_order = m_strip->physicalTerminal();
 	sort();
@@ -46,46 +47,16 @@ void SortTerminalStripCommand::redo()
 
 void SortTerminalStripCommand::sort()
 {
-	std::sort(m_new_order.begin(), m_new_order.end(), [](QSharedPointer<PhysicalTerminal> arg1, QSharedPointer<PhysicalTerminal> arg2)
+	auto label_of = [](const QSharedPointer<PhysicalTerminal> &t) -> QString
 	{
-		const QRegularExpression rx(QStringLiteral("^\\d+"));
+		return t->realTerminalCount() ? t->realTerminals().constLast()->label()
+										: QString();
+	};
 
-		QString str1;
-		QString str2;
-		int int1 =-1;
-		int int2 =-1;
-
-		if (arg1->realTerminalCount())
-		{
-			str1 = arg1->realTerminals().constLast()->label();
-
-			auto match = rx.match(str1);
-			if (match.hasMatch()) {
-				int1 = match.captured(0).toInt();
-			}
-		}
-
-		if (arg2->realTerminalCount())
-		{
-			str2 = arg2->realTerminals().constLast()->label();
-
-			auto match = rx.match(str2);
-			if (match.hasMatch()) {
-				int2 = match.captured(0).toInt();
-			}
-		}
-
-			//Sort as numbers if both string
-			//start at least by a digit and
-			//the number of each string are different.
-			//Else sort as string
-		if (int1 >= 0 &&
-			int2 >= 0 &&
-			int1 != int2) {
-			return int1<int2;
-		}
-		else {
-			return str1<str2;
-		}
+	std::stable_sort(m_new_order.begin(), m_new_order.end(),
+			[&label_of](const QSharedPointer<PhysicalTerminal> &arg1,
+						const QSharedPointer<PhysicalTerminal> &arg2)
+	{
+		return QETUtils::naturalLessThan(label_of(arg1), label_of(arg2));
 	});
 }

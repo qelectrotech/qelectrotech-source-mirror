@@ -157,15 +157,15 @@ QString FileElementCollectionItem::localName()
 			if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
 
 			if (m_path == QETApp::commonElementsDirN())
-				setText(QObject::tr("Collection QET"));
+				setText(QObject::tr("QET Collection"));
 			else if (m_path == QETApp::companyElementsDirN())
-				setText(QObject::tr("Collection Company"));
+				setText(QObject::tr("Company collection"));
 			else if (m_path == QETApp::customElementsDirN())
-				setText(QObject::tr("Collection utilisateur"));
+				setText(QObject::tr("User Collection"));
 			else if (m_path == macrosPath)
 				setText(QObject::tr("Macros"));
 			else
-				setText(QObject::tr("Collection inconnue"));
+				setText(QObject::tr("Unknown collection"));
 		}
 		else
 		{
@@ -419,9 +419,9 @@ void FileElementCollectionItem::setUpData()
 	QStringList tip;
 	if (isDir() && m_qet_directory_unreadable)
 	{
-		tip << QObject::tr("Le fichier « %1 » est absent ou illisible : "
-				   "le nom traduit de ce dossier n'a pas pu être lu, "
-				   "son nom de dossier est affiché à la place.")
+		tip << QObject::tr("The file \"%1\" is missing or unreadable:\n"
+				   "the translated name of this folder could not be "
+				   "read, so its folder name is displayed instead.")
 		       .arg(fileSystemPath() % "/qet_directory");
 	}
 	tip << collectionPath();

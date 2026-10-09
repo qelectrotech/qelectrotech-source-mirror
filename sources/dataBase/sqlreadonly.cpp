@@ -78,8 +78,8 @@ QSqlQuery execReadOnly(const QSqlDatabase &db, const QString &query, QString *er
 	if (!QSqlQuery(db).exec(QStringLiteral("PRAGMA query_only = ON"))) {
 		if (error) {
 			*error = QCoreApplication::translate("QETSql",
-				"Impossible de vérifier la requête : "
-				"la base de données ne peut pas être mise en lecture seule.");
+				"Unable to verify the query: the database cannot be set to "
+				"read-only.");
 		}
 		return QSqlQuery(db);
 	}
@@ -103,11 +103,11 @@ QSqlQuery execReadOnly(const QSqlDatabase &db, const QString &query, QString *er
 		// SQLITE_READONLY is 8; extended codes keep it in the low byte.
 		if ((result.lastError().nativeErrorCode().toInt() & 0xff) == 8) {
 			*error = QCoreApplication::translate("QETSql",
-				"Seules les requêtes en lecture seule sont autorisées : "
-				"cette requête modifierait la base de données.");
+				"Only read-only queries are allowed: this query would "
+				"modify the database.");
 		} else {
 			*error = QCoreApplication::translate("QETSql",
-					"Requête SQL invalide : %1")
+					"Invalid SQL query: %1")
 				 .arg(result.lastError().databaseText());
 		}
 	}

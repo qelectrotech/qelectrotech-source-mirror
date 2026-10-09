@@ -59,6 +59,7 @@ namespace QETUtils
 	};
 
 	bool sortBeginIntString(const QString &str_a, const QString &str_b);
+	bool naturalLessThan(const QString &str_a, const QString &str_b);
 
 	template <typename T>
 	QVector<QWeakPointer<T>> sharedVectorToWeak(const QVector<QSharedPointer<T>> &vector)

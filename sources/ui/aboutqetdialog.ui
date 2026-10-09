@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>À propos de QElectrotech</string>
+   <string>About QElectroTech</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -27,7 +27,7 @@
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>À propos</string>
+       <string>About</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -50,7 +50,7 @@
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Auteurs</string>
+       <string>Authors</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
@@ -130,7 +130,7 @@
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Traducteurs</string>
+       <string>Translators</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <property name="spacing">
@@ -213,7 +213,7 @@
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>Contributeurs</string>
+       <string>Contributors</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="spacing">
@@ -345,7 +345,7 @@
      </widget>
      <widget class="QWidget" name="m_annex_project_tab">
       <attribute name="title">
-       <string>Projet annexe</string>
+       <string>Side project</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <property name="spacing">
@@ -425,7 +425,7 @@
      </widget>
      <widget class="QWidget" name="tab_7">
       <attribute name="title">
-       <string>Bibliothèques</string>
+       <string>Libraries</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="spacing">
@@ -529,7 +529,7 @@
      </widget>
      <widget class="QWidget" name="tab_8">
       <attribute name="title">
-       <string>log</string>
+       <string>Log</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>

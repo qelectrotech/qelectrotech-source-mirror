@@ -20,12 +20,12 @@ void GuidesPropertiesWidget::setupUi() {
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 
 	m_table = new QTableWidget(0, 3, this);
-	m_table->setHorizontalHeaderLabels({tr("Orientation"), tr("Position"), tr("Couleur")});
+	m_table->setHorizontalHeaderLabels({tr("Orientation"), tr("Position"), tr("Color")});
 	m_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-	m_add_btn = new QPushButton(tr("Ajouter"), this);
-	m_remove_btn = new QPushButton(tr("Supprimer"), this);
+	m_add_btn = new QPushButton(tr("Add"), this);
+	m_remove_btn = new QPushButton(tr("Delete"), this);
 
 	QHBoxLayout *btn_layout = new QHBoxLayout();
 	btn_layout->addWidget(m_add_btn);
@@ -90,7 +90,7 @@ void GuidesPropertiesWidget::addGuide() {
 	spin->setValue(100.0);
 	m_table->setCellWidget(row, 1, spin);
 
-	QPushButton *colorBtn = new QPushButton(tr("Couleur"), this);
+	QPushButton *colorBtn = new QPushButton(tr("Color"), this);
 	QColor defaultColor = Qt::lightGray;
 	colorBtn->setProperty("color", defaultColor);
 	colorBtn->setStyleSheet(QString("background-color: %1; color: white; font-weight: bold;").arg(defaultColor.name()));

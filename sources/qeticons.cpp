@@ -233,6 +233,7 @@ namespace QET {
 		QIcon listDrawings;
 		QIcon AutoNum;
 		QIcon TerminalStrip;
+		QIcon GenericDevice;
 		QIcon QETManual;
 		QIcon QETDonate;
 		QIcon QETDownload;
@@ -594,6 +595,7 @@ void QET::Icons::initIcons()
 	TableOfContent      = QIcon::fromTheme("table-of-content");
 	Terminal            = QIcon::fromTheme("terminal");
 	TerminalStrip       = QIcon::fromTheme("terminalstrip");
+	GenericDevice       = QIcon::fromTheme("generic-device");
 	TitleBlock          = QIcon::fromTheme("label");
 	TitleBlockBottom    = QIcon::fromTheme("titleblock-bottom");
 	TitleBlockRight     = QIcon::fromTheme("titleblock-right");

@@ -516,7 +516,7 @@ void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGrap
 
 	m_modifie_radius_equaly = false;
 
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier un rectangle"));
+	QUndoCommand *undo = new QUndoCommand(tr("Change a rectangle"));
 	if (m_old_rect != m_rect) {
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
 		u->setAnimated(true, false);

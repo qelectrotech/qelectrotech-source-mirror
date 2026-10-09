@@ -194,36 +194,36 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			if(ui->m_x_sb->value() != m_text->pos().x()) {
 				undo = new QPropertyUndoCommand(m_text.data(), "x", QVariant(m_text->pos().x()), QVariant(ui->m_x_sb->value()));
 				undo->setAnimated(true, false);
-				undo->setText(tr("Déplacer un champ texte"));
+				undo->setText(tr("Move a text field"));
 			}
 			if(ui->m_y_sb->value() != m_text->pos().y()) {
 				undo = new QPropertyUndoCommand(m_text.data(), "y", QVariant(m_text->pos().y()), QVariant(ui->m_y_sb->value()));
 				undo->setAnimated(true, false);
-				undo->setText(tr("Déplacer un champ texte"));
+				undo->setText(tr("Move a text field"));
 			}
 			if(ui->m_angle_sb->value() != m_text->rotation()) {
 				undo = new QPropertyUndoCommand(m_text.data(), "rotation", QVariant(m_text->rotation()), QVariant(ui->m_angle_sb->value()));
 				undo->setAnimated(true, false);
-				undo->setText(tr("Pivoter un champ texte"));
+				undo->setText(tr("Rotate a text field"));
 			}
 			if (ui->m_line_edit->text() != m_text->toPlainText()) {
 				undo = new QPropertyUndoCommand(m_text.data(), "plainText", m_text->toPlainText(), ui->m_line_edit->text());
-				undo->setText(tr("Modifier un champ texte"));
+				undo->setText(tr("Edit the text field"));
 			}
 			if (ui->m_size_sb->value() != m_text->font().pointSize()) {
 				QFont font = m_text->font();
 				font.setPointSize(ui->m_size_sb->value());
 				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font);
-				undo->setText(tr("Modifier la taille d'un champ texte"));
+				undo->setText(tr("Change the size of a text field"));
 			}
 			if (m_font_is_selected &&
 				m_selected_font != m_text->font()) {
 				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), m_selected_font);
-				undo->setText(tr("Modifier la police d'un champ texte"));
+				undo->setText(tr("Change the font of a text field"));
 			}
 			if (ui->m_width_sb->value() != spinBoxWidth(m_text->textWidth())) {
 				undo = new QPropertyUndoCommand(m_text.data(), "textWidth", m_text->textWidth(), qreal(ui->m_width_sb->value()));
-				undo->setText(tr("Modifier la largeur d'un champ texte"));
+				undo->setText(tr("Change the width of a text field"));
 			}
 			
 			return undo;
@@ -263,7 +263,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					if (piti)
 					{
 						if (!parent_undo) {
-							parent_undo = new QUndoCommand(tr("Pivoter plusieurs champs texte"));
+							parent_undo = new QUndoCommand(tr("Rotate multiple text fields"));
 						}
 						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "rotation", QVariant(piti->rotation()), QVariant(ui->m_angle_sb->value()), parent_undo);
 						qpuc->setAnimated(true, false);
@@ -278,7 +278,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					if (piti)
 					{
 						if (!parent_undo) {
-							parent_undo = new QUndoCommand(tr("Modifier la taille de plusieurs champs texte"));
+							parent_undo = new QUndoCommand(tr("Change the size of multiple text fields"));
 						}
 						QFont font = piti->font();
 						font.setPointSize(ui->m_size_sb->value());
@@ -294,7 +294,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					if (piti)
 					{
 						if (!parent_undo) {
-							parent_undo = new QUndoCommand(tr("Modifier la police de plusieurs champs texte"));
+							parent_undo = new QUndoCommand(tr("Change the font of several text fields"));
 						}
 						new QPropertyUndoCommand(piti.data(), "font", piti->font(), m_selected_font, parent_undo);
 					}
@@ -308,7 +308,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					if (piti)
 					{
 						if (!parent_undo) {
-							parent_undo = new QUndoCommand(tr("Modifier la largeur de plusieurs champs texte"));
+							parent_undo = new QUndoCommand(tr("Change the width of several text fields"));
 						}
 						new QPropertyUndoCommand(piti.data(), "textWidth", piti->textWidth(), qreal(ui->m_width_sb->value()), parent_undo);
 					}
@@ -320,7 +320,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 		//In mode not live edit, only one text can be edited
 	else if (m_text_list.isEmpty())
 	{
-		QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'un texte"));
+		QUndoCommand *undo = new QUndoCommand(tr("Modify the properties of a text"));
 		if(ui->m_x_sb->value() != m_text->pos().x()) {
 			new QPropertyUndoCommand(m_text.data(), "x", QVariant(m_text->pos().x()), QVariant(ui->m_x_sb->value()), undo);
 		}
@@ -418,7 +418,7 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_label->setVisible(m_text->isHtml() ? true : false);
 		ui->m_break_html_pb->setVisible(m_text->isHtml() ? true : false);
 		ui->m_font_pb->setDisabled(m_text->isHtml() ? true : false);
-		ui->m_font_pb->setText(m_text->isHtml() ? tr("Police") : m_text->font().family());
+		ui->m_font_pb->setText(m_text->isHtml() ? tr("Font") : m_text->font().family());
 	}
 	else
 	{
@@ -457,7 +457,7 @@ void IndiTextPropertiesWidget::updateUi()
 			}
 		}
 		ui->m_font_pb->setEnabled(valid_);
-		ui->m_font_pb->setText(font_equal ? font_.family() : tr("Police"));
+		ui->m_font_pb->setText(font_equal ? font_.family() : tr("Font"));
 		ui->m_size_sb->setEnabled(valid_);
 		ui->m_size_sb->setValue(size_equal ? size_ : 0);
 		ui->m_label->setVisible(false);
@@ -506,7 +506,7 @@ void IndiTextPropertiesWidget::on_m_font_pb_clicked()
 		LastUsedStyle::setTextFont(m_selected_font);
 		apply();
 	} else {
-		ui->m_font_pb->setText(tr("Police"));
+		ui->m_font_pb->setText(tr("Font"));
 		m_font_is_selected = false;
 	}
 }

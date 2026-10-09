@@ -324,7 +324,7 @@ void PartEllipse::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 	Q_UNUSED(event);
 
 	m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-	m_undo_command->setText(tr("Modifier un rectangle"));
+	m_undo_command->setText(tr("Change a rectangle"));
 	m_undo_command->enableAnimation();
 	return;
 }

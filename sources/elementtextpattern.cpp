@@ -62,9 +62,9 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 	if (QFileInfo::exists(dir.absoluteFilePath(m_name % ".xml")))
 	{
 		bool r = QMessageBox::question(parentWidget(),
-									   QObject::tr("Configuration de textes"),
-									   QObject::tr("Une configuration de textes nommée << %1 >> existe déjà.\n"
-												   "Voulez-vous la remplacer ?").arg(m_name));
+									   QObject::tr("Text configuration"),
+									   QObject::tr("A text configuration named <<%1 >> already exists.\n"
+												   "Do you want to replace it ?").arg(m_name));
 		
 		if(r == false)
 			return;
@@ -82,8 +82,8 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 QString ExportElementTextPattern::getName(bool &ok) const
 {	
 	QString text = QInputDialog::getText(parentWidget(),
-										 QObject::tr("Nom de la configuration"),
-										 QObject::tr("Entrer le nom de la configuration à créer"),
+										 QObject::tr("Configuration name"),
+										 QObject::tr("Enter the name of the configuration to create"),
 										 QLineEdit::Normal,
 										 QString(),
 										 &ok);
@@ -143,8 +143,8 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	{
 		QMessageBox::information(
 					parentWidget(),
-					QObject::tr("Configuration de textes"),
-					QObject::tr("Aucune configuration de textes existante."));
+					QObject::tr("Text configuration"),
+					QObject::tr("No existing text configuration."));
 		return;
 	}
 	
@@ -174,8 +174,8 @@ QString ImportElementTextPattern::getName(const QStringList& list,
 {
 	return ImportElementTextPatternDialog::getItem(
 				parentWidget(),
-				QObject::tr("Sélectionner une configuration de textes"),
-				QObject::tr("Sélectionner la configuration de textes à ajouter à l'élément"),
+				QObject::tr("Select a text configuration"),
+				QObject::tr("Select the text configuration to add to the element"),
 				list,
 				ok,
 				erase);
@@ -243,7 +243,7 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 	}
 	
 	QUndoStack &undo_stack = m_element->diagram()->undoStack();
-	undo_stack.beginMacro(QObject::tr("Importer la configuration de texte : %1").arg(name.remove(".xml")));
+	undo_stack.beginMacro(QObject::tr("Import the text configuration : %1").arg(name.remove(".xml")));
 	
 		//erase existing texts and groups
 	if (erase)

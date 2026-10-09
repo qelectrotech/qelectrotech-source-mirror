@@ -434,15 +434,15 @@ void ModifyTemplateGridCommand::updateText()
 {
 	if (type_) {
 		if (insertion_) {
-			setText(QObject::tr("Insertion d'une ligne", "label used in the title block template editor undo list"));
+			setText(QObject::tr("Row insertion", "label used in the title block template editor undo list"));
 		} else {
-			setText(QObject::tr("Suppression d'une ligne", "label used in the title block template editor undo list"));
+			setText(QObject::tr("Row deletion", "label used in the title block template editor undo list"));
 		}
 	} else {
 		if (insertion_) {
-			setText(QObject::tr("Insertion d'une colonne", "label used in the title block template editor undo list"));
+			setText(QObject::tr("Column insertion", "label used in the title block template editor undo list"));
 		} else {
-			setText(QObject::tr("Suppression d'une colonne", "label used in the title block template editor undo list"));
+			setText(QObject::tr("Column deletion", "label used in the title block template editor undo list"));
 		}
 	}
 }
@@ -583,9 +583,9 @@ void ModifyTemplateDimension::redo()
 void ModifyTemplateDimension::updateText()
 {
 	if (type_) {
-		setText(QObject::tr("Modification d'une ligne", "label used in the title block template editor undo list"));
+		setText(QObject::tr("Row edition", "label used in the title block template editor undo list"));
 	} else {
-		setText(QObject::tr("Modification d'une colonne", "label used in the title block template editor undo list"));
+		setText(QObject::tr("Column edition", "label used in the title block template editor undo list"));
 	}
 }
 
@@ -651,7 +651,7 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 	setText(
 		QString(
 			QObject::tr(
-				"Fusion de %1 cellules",
+				"Merge of %1 cells",
 				"label used in the title block template editor undo list; %1 is the number of merged cells"
 			)
 		).arg(merged_cells.count())
@@ -795,7 +795,7 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 	setText(
 		QString(
 			QObject::tr(
-				"Séparation d'une cellule en %1",
+				"Split of a cell into%1 ones",
 				"label used in the title block template editor undo list; %1 is the number of cells after the split"
 			)
 		).arg(spanned_cells_.count() + 1)
@@ -890,7 +890,7 @@ void SplitCellsCommand::redo()
 	@param parent Parent QUndoCommand
 */
 ChangeTemplateInformationsCommand::ChangeTemplateInformationsCommand(TitleBlockTemplate *tbt, const QString &old_info, const QString &new_info, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modification des informations complémentaires", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modify extra information", "undo caption"), parent),
 	tbtemplate_(tbt),
 	old_information_(old_info),
 	new_information_(new_info)
@@ -970,7 +970,7 @@ void CutTemplateCellsCommand::setCutCells(const QList<TitleBlockCell *> &cells) 
 */
 void CutTemplateCellsCommand::updateText()
 {
-	setText(QObject::tr("Couper %n cellule(s)", "undo caption", cut_cells_.count()));
+	setText(QObject::tr("Cut %n cells", "undo caption", cut_cells_.count()));
 }
 
 
@@ -996,7 +996,7 @@ PasteTemplateCellsCommand::~PasteTemplateCellsCommand()
 */
 void PasteTemplateCellsCommand::updateText()
 {
-	setText(QObject::tr("Coller %n cellule(s)", "undo caption", erased_cells_.count()));
+	setText(QObject::tr("Paste %n cells", "undo caption", erased_cells_.count()));
 }
 
 /**

@@ -211,7 +211,7 @@ void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 							 "closed",
 							 m_part->property("closed"),
 							 close);
-		undo->setText(tr("Modifier un polygone"));
+		undo->setText(tr("Change a polygon"));
 		undoStack().push(undo);
 	}
 }
@@ -234,9 +234,9 @@ void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item,
 	if (points.count() < 2)
 	{
 		QET::QetMessageBox::warning(this,
-					    tr("Erreur",
+					    tr("Error",
 					       "message box title"),
-					    tr("Le polygone doit comporter au moins deux points.",
+					    tr("The polygon must contain at least two points.",
 					       "message box content"));
 		return;
 	}
@@ -248,7 +248,7 @@ void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item,
 					"polygon",
 					m_part->property("polygon"),
 					points);
-		undo->setText(tr("Modifier un polygone"));
+		undo->setText(tr("Change a polygon"));
 		undoStack().push(undo);
 	}
 }
@@ -309,7 +309,7 @@ void PolygonEditor::on_m_add_point_action_triggered()
 	}
 	
 	//Wrap the undo for avoid to merge the undo commands when user add several points.
-	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+	QUndoCommand *undo = new QUndoCommand(tr("Add a point to a polygon"));
 	new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
 	elementScene()->undoStack().push(undo);
 	
@@ -328,7 +328,7 @@ void PolygonEditor::on_m_remove_point_action_triggered()
 	new_polygon.removeAt(ui->m_points_list_tree->indexOfTopLevelItem(qtwi));
 	
 	//Wrap the undo for avoid to merge the undo commands when user remove several points.
-	QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
+	QUndoCommand *undo = new QUndoCommand(tr("Delete a point from a polygon"));
 	new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
 	elementScene()->undoStack().push(undo);
 }

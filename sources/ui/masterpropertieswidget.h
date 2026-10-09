@@ -64,7 +64,7 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 			@return QString title
 		*/
 		QString title() const override {
-			return tr("Référence croisée (maître)");}
+			return tr("Cross-reference (master)");}
 		bool setLiveEdit(bool live_edit) override;
 
 	public slots:

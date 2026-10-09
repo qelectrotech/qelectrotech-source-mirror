@@ -31,7 +31,7 @@
          </property>
          <widget class="QWidget" name="Multifilaire">
           <attribute name="title">
-           <string>&amp;Multifilaire</string>
+           <string>&amp;Multiline</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_7">
            <item row="0" column="0">
@@ -43,7 +43,7 @@
               </size>
              </property>
              <property name="title">
-              <string>&amp;Multifilaire</string>
+              <string>&amp;Multiline</string>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -55,14 +55,14 @@
               <item row="4" column="0">
                <widget class="QLabel" name="label_14">
                 <property name="text">
-                 <string>Couleur du texte:</string>
+                 <string>Text color :</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="3">
                <widget class="QLabel" name="label_4">
                 <property name="text">
-                 <string>Couleur du conducteur</string>
+                 <string>Conductor color</string>
                 </property>
                </widget>
               </item>
@@ -72,7 +72,7 @@
               <item row="3" column="1">
                <widget class="QLineEdit" name="m_text_le">
                 <property name="toolTip">
-                 <string>Texte</string>
+                 <string>Text</string>
                 </property>
                 <property name="clearButtonEnabled">
                  <bool>true</bool>
@@ -82,14 +82,14 @@
               <item row="2" column="3">
                <widget class="QLabel" name="label_9">
                 <property name="text">
-                 <string>Tension / Protocole :</string>
+                 <string>Voltage / Protocol :</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="0">
                <widget class="QLabel" name="m_autonum_label">
                 <property name="text">
-                 <string>Autonumérotation</string>
+                 <string>Auto Numbering</string>
                 </property>
                </widget>
               </item>
@@ -99,7 +99,7 @@
               <item row="1" column="1">
                <widget class="QSpinBox" name="m_text_size_sb">
                 <property name="toolTip">
-                 <string>Taille du texte</string>
+                 <string>Text size</string>
                 </property>
                 <property name="wrapping">
                  <bool>false</bool>
@@ -128,14 +128,14 @@
               <item row="4" column="3">
                <widget class="QLabel" name="label_5">
                 <property name="text">
-                 <string>Section du conducteur</string>
+                 <string>Conductor section</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="2">
                <widget class="QCheckBox" name="m_show_text_cb">
                 <property name="toolTip">
-                 <string>Texte visible</string>
+                 <string>Visible text</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -148,17 +148,17 @@
               <item row="0" column="0" colspan="3">
                <widget class="QCheckBox" name="m_one_text_per_folio_cb">
                 <property name="toolTip">
-                 <string>activer l'option un texte par potentiel</string>
+                 <string>Activate the option text by potential</string>
                 </property>
                 <property name="text">
-                 <string>Afficher un texte de potentiel par folio. </string>
+                 <string>Show one text per sheet potential. </string>
                 </property>
                </widget>
               </item>
               <item row="1" column="3">
                <widget class="QLabel" name="label_8">
                 <property name="text">
-                 <string>Fonction :</string>
+                 <string>Function :</string>
                 </property>
                </widget>
               </item>
@@ -168,12 +168,12 @@
                  <widget class="QComboBox" name="m_verti_cb">
                   <item>
                    <property name="text">
-                    <string>Vertical à gauche</string>
+                    <string>Vertical left</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Vertical à droite</string>
+                    <string>Vertical right</string>
                    </property>
                   </item>
                  </widget>
@@ -181,7 +181,7 @@
                 <item row="0" column="0" colspan="2">
                  <widget class="QLabel" name="label_3">
                   <property name="text">
-                   <string>Position et rotation du texte de conducteur :</string>
+                   <string>Position and rotation of the conductor text:</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -192,12 +192,12 @@
                  <widget class="QComboBox" name="m_horiz_cb">
                   <item>
                    <property name="text">
-                    <string>Horizontal en haut</string>
+                    <string>Horizontal at the top</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Horizontal en bas</string>
+                    <string>Horizontal down</string>
                    </property>
                   </item>
                  </widget>
@@ -210,7 +210,7 @@
               <item row="3" column="0">
                <widget class="QLabel" name="label">
                 <property name="text">
-                 <string>Texte :</string>
+                 <string>Text:</string>
                 </property>
                </widget>
               </item>
@@ -220,14 +220,14 @@
               <item row="1" column="0">
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>Taille du texte :</string>
+                 <string>Text size :</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="2">
                <widget class="QPushButton" name="m_edit_autonum_pb">
                 <property name="toolTip">
-                 <string>éditer les numérotations</string>
+                 <string>Edit numbering</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -250,7 +250,7 @@
               <item row="2" column="0">
                <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string>Formule du texte :</string>
+                 <string>Text Formula :</string>
                 </property>
                </widget>
               </item>
@@ -297,7 +297,7 @@
          </widget>
          <widget class="QWidget" name="Unifilaire">
           <attribute name="title">
-           <string>Unifilaire</string>
+           <string>Single line</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_5">
            <item row="0" column="0">
@@ -309,7 +309,7 @@
               </size>
              </property>
              <property name="title">
-              <string>Unifilaire</string>
+              <string>Single line</string>
              </property>
              <property name="flat">
               <bool>false</bool>
@@ -336,7 +336,7 @@
                 <item row="2" column="3">
                  <widget class="QSpinBox" name="m_phase_sb">
                   <property name="toolTip">
-                   <string>Nombre de phase</string>
+                   <string>Number of phase</string>
                   </property>
                   <property name="minimum">
                    <number>1</number>
@@ -356,10 +356,10 @@
                 <item row="1" column="1">
                  <widget class="QCheckBox" name="m_neutral_cb">
                   <property name="toolTip">
-                   <string>Neutre</string>
+                   <string>Neutral</string>
                   </property>
                   <property name="text">
-                   <string>neutre</string>
+                   <string>neutral</string>
                   </property>
                   <property name="icon">
                    <iconset theme="neutral"/>
@@ -369,10 +369,10 @@
                 <item row="0" column="1">
                  <widget class="QCheckBox" name="m_earth_cb">
                   <property name="toolTip">
-                   <string>Terre</string>
+                   <string>Ground</string>
                   </property>
                   <property name="text">
-                   <string>terre</string>
+                   <string>ground</string>
                   </property>
                   <property name="icon">
                    <iconset theme="ground"/>
@@ -401,7 +401,7 @@
                    </sizepolicy>
                   </property>
                   <property name="toolTip">
-                   <string>Nombre de phase</string>
+                   <string>Number of phase</string>
                   </property>
                   <property name="minimum">
                    <number>1</number>
@@ -450,7 +450,7 @@
      </widget>
      <widget class="QWidget" name="appearance">
       <attribute name="title">
-       <string>Apparence</string>
+       <string>Appearance</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="1">
@@ -459,7 +459,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
-          <string>Taille :</string>
+          <string>Size :</string>
          </property>
         </widget>
        </item>
@@ -479,17 +479,17 @@
        <item row="1" column="0">
         <widget class="QLabel" name="label_7">
          <property name="toolTip">
-          <string>Style du conducteur</string>
+          <string>Conductor style</string>
          </property>
          <property name="text">
-          <string>Style :</string>
+          <string>Style:</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
         <widget class="QGroupBox" name="m_color_2_gb">
          <property name="title">
-          <string>Couleur secondaire :</string>
+          <string>Secondary color :</string>
          </property>
          <property name="flat">
           <bool>true</bool>
@@ -504,7 +504,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_13">
             <property name="text">
-             <string>Taille de trait :</string>
+             <string>Line size :</string>
             </property>
            </widget>
           </item>
@@ -521,7 +521,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_12">
             <property name="text">
-             <string>Couleur :</string>
+             <string>Color:</string>
             </property>
            </widget>
           </item>
@@ -550,17 +550,17 @@
        <item row="1" column="1">
         <widget class="QComboBox" name="m_line_style_cb">
          <property name="toolTip">
-          <string>Style du conducteur</string>
+          <string>Conductor style</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_6">
          <property name="toolTip">
-          <string>Couleur du conducteur</string>
+          <string>Conductor color</string>
          </property>
          <property name="text">
-          <string>Couleur :</string>
+          <string>Color:</string>
          </property>
         </widget>
        </item>

@@ -19,7 +19,7 @@
      <item>
       <widget class="QToolButton" name="m_export_pb">
        <property name="toolTip">
-        <string>Exporter l'actuelle configuration des textes</string>
+        <string>Export the current text configuration</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -32,7 +32,7 @@
      <item>
       <widget class="QToolButton" name="m_import_pb">
        <property name="toolTip">
-        <string>Importer une configuration de texte</string>
+        <string>Import a text configuration</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -58,7 +58,7 @@
      <item>
       <widget class="QToolButton" name="m_add_text">
        <property name="toolTip">
-        <string>Ajouter un texte</string>
+        <string>Add text</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -71,7 +71,7 @@
      <item>
       <widget class="QToolButton" name="m_add_group">
        <property name="toolTip">
-        <string>Ajouter un groupe de textes</string>
+        <string>Add a group of texts</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -84,7 +84,7 @@
      <item>
       <widget class="QToolButton" name="m_remove_selection">
        <property name="toolTip">
-        <string>Supprimer la sélection</string>
+        <string>Delete selection</string>
        </property>
        <property name="text">
         <string>...</string>

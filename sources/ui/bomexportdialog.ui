@@ -17,13 +17,13 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Mise en page</string>
+      <string>Page layout</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QCheckBox" name="m_include_headers">
         <property name="text">
-         <string>inclure les en-têtes</string>
+         <string>include headers</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -33,7 +33,7 @@
       <item>
        <widget class="QCheckBox" name="m_format_as_bom">
         <property name="text">
-         <string>Formater en tant que liste de materiel</string>
+         <string>Format as a part list</string>
         </property>
         <property name="checked">
          <bool>false</bool>
@@ -43,10 +43,10 @@
       <item>
        <widget class="QCheckBox" name="m_no_junctions">
         <property name="toolTip">
-         <string>Bornes sans repère, désignation, fabricant ni référence fabricant</string>
+         <string>Terminals with no label, designation, manufacturer or manufacturer reference</string>
         </property>
         <property name="text">
-         <string>Laisser de côté les jonctions</string>
+         <string>Leave out junctions</string>
         </property>
         <property name="checked">
          <bool>false</bool>
@@ -74,7 +74,7 @@
      <item>
       <widget class="QPushButton" name="m_preview_pb">
        <property name="text">
-        <string>Aperçu</string>
+        <string>Preview</string>
        </property>
       </widget>
      </item>

@@ -20,6 +20,7 @@
 
 #include <QCheckBox>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QDockWidget>
 #include <QMainWindow>
 #include <QSettings>
@@ -48,6 +49,11 @@ private slots:
 	void initTestCase()
 	{
 		QStandardPaths::setTestModeEnabled(true);
+			//A scope of this test's own. Without an organization name,
+			//QSettings on Windows has no registry key: it drops every
+			//write and reads only defaults.
+		QCoreApplication::setOrganizationName(QStringLiteral("QElectroTech-tst_toolbarsettings"));
+		QCoreApplication::setApplicationName(QStringLiteral("tst_toolbarsettings"));
 		QSettings().remove(QStringLiteral("toolbars"));
 
 		m_window = new QMainWindow();

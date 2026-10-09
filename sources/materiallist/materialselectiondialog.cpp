@@ -256,8 +256,8 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	connect(ui->m_table_view->verticalHeader(), &QHeaderView::sectionClicked,
 			this, &MaterialSelectionDialog::resetSorting);
 
-	ui->m_button_box->button(QDialogButtonBox::Ok)->setText(tr("Appliquer"));
-	ui->m_button_box->button(QDialogButtonBox::Cancel)->setText(tr("Annuler"));
+	ui->m_button_box->button(QDialogButtonBox::Ok)->setText(tr("Apply"));
+	ui->m_button_box->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 
 	connect(ui->m_search_edit, &QLineEdit::textChanged,
 			this, &MaterialSelectionDialog::searchChanged);
@@ -447,8 +447,8 @@ void MaterialSelectionDialog::reload()
 	if (!MaterialList::load(m_path, &data, &error))
 	{
 		QET::QetMessageBox::warning(this,
-									tr("Lecture impossible"),
-									tr("Impossible de lire le fichier :\n%1\n%2")
+									tr("Cannot read"),
+									tr("Cannot read the file:\n%1\n%2")
 										.arg(m_path, error));
 		data = MaterialListData();
 	}
@@ -468,9 +468,9 @@ void MaterialSelectionDialog::updateCount()
 	const int shown = m_proxy->rowCount();
 
 	if (m_proxy->tokens().isEmpty()) {
-		ui->m_count_label->setText(tr("Entrées : %1").arg(total));
+		ui->m_count_label->setText(tr("Entries: %1").arg(total));
 	} else {
-		ui->m_count_label->setText(tr("Entrées : %1 sur %2").arg(shown).arg(total));
+		ui->m_count_label->setText(tr("Entries: %1 of %2").arg(shown).arg(total));
 	}
 }
 
@@ -603,8 +603,8 @@ void MaterialSelectionDialog::accept()
 	if (selectedRecord().values.isEmpty())
 	{
 		QET::QetMessageBox::information(this,
-										tr("Aucune sélection"),
-										tr("Sélectionnez d'abord un article dans la liste."));
+										tr("Nothing selected"),
+										tr("Select an item in the list first."));
 		return;
 	}
 
@@ -634,8 +634,8 @@ void MaterialSelectionDialog::on_m_new_entry_btn_clicked()
 	if (!MaterialList::appendRecord(m_path, record, &error))
 	{
 		QET::QetMessageBox::critical(this,
-									 tr("Écriture impossible"),
-									 tr("Impossible d'écrire dans le fichier :\n%1\n%2")
+									 tr("Cannot write"),
+									 tr("Cannot write to the file:\n%1\n%2")
 										.arg(m_path, error));
 		return;
 	}

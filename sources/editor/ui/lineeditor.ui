@@ -49,21 +49,21 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>X1 :</string>
+        <string>X1:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Y1 :</string>
+        <string>Y1:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>X2 :</string>
+        <string>X2:</string>
        </property>
       </widget>
      </item>
@@ -80,21 +80,21 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Fin 1 :</string>
+        <string>End 1:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Y2 :</string>
+        <string>Y2:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>Fin 2 :</string>
+        <string>End 2:</string>
        </property>
       </widget>
      </item>
@@ -107,14 +107,14 @@
      <item row="2" column="2">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Longueur :</string>
+        <string>Length:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="2">
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>Longueur :</string>
+        <string>Length:</string>
        </property>
       </widget>
      </item>

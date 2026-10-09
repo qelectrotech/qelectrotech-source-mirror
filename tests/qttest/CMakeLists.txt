@@ -74,6 +74,13 @@ target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
+  add_test(NAME tst_handlersizeintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_handle_size_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/handle_size_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   add_test(NAME tst_attachedplainpaste
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
@@ -178,12 +185,24 @@ add_test(NAME tst_symbolscale COMMAND tst_symbolscale)
 target_include_directories(tst_symbolscale PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_symbolscale PRIVATE Qt::Test)
 
+# genericdevice.cpp is pure: the generic device wizard's layout, pattern
+# lines, groups and pin numbers, and the symbol it writes.
+add_executable(tst_genericdevice tst_genericdevice.cpp
+  ${QET_DIR}/sources/genericdevice/genericdevice.cpp)
+add_test(NAME tst_genericdevice COMMAND tst_genericdevice)
+set_tests_properties(tst_genericdevice PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_genericdevice PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_genericdevice PRIVATE Qt::Test Qt::Gui Qt::Xml)
+
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
-add_executable(tst_configprofile tst_configprofile.cpp)
+# borderproperties.cpp: the real writer of the folio size defaults, to check
+# that what it writes falls in the part for new projects.
+add_executable(tst_configprofile tst_configprofile.cpp
+  ${QET_DIR}/sources/borderproperties.cpp)
 add_test(NAME tst_configprofile COMMAND tst_configprofile)
 target_include_directories(tst_configprofile PRIVATE ${QET_DIR}/sources)
-target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui)
+target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui Qt::Xml)
 
 # itemgroups.cpp keeps group membership and the selection rule apart from
 # Diagram, so it is tested here on a plain scene of rectangles.
@@ -207,6 +226,14 @@ add_test(NAME tst_textanchor COMMAND tst_textanchor)
 set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
+
+# Shared handle geometry and picking, including fractional sizes.
+add_executable(tst_handlersize tst_handlersize.cpp
+  ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.cpp)
+add_test(NAME tst_handlersize COMMAND tst_handlersize)
+set_tests_properties(tst_handlersize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_handlersize PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_handlersize PRIVATE Qt::Test Qt::Widgets)
 
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
@@ -621,6 +648,17 @@ target_link_libraries(tst_dxfcurves PRIVATE Qt::Test)
 target_compile_definitions(tst_dxfcurves PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A static text with anchor="alignment" has its x at the edge or centre its
+# Halignment selects, not at its left edge (#1251).
+add_executable(
+  tst_statictextanchor
+  tst_statictextanchor.cpp)
+add_test(NAME tst_statictextanchor COMMAND tst_statictextanchor)
+add_dependencies(tst_statictextanchor qelectrotech)
+target_link_libraries(tst_statictextanchor PRIVATE Qt::Test)
+target_compile_definitions(tst_statictextanchor PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # --export-dxf --dxf-blocks: a symbol placed twice is one BLOCK and two
 # INSERTs (issue #1339).
 add_executable(
@@ -922,6 +960,18 @@ target_compile_definitions(tst_derivedwireuuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Symbols sharing one uuid on a folio keep their wires through save and
+# reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
+add_executable(
+  tst_sharedsymboluuid
+  tst_sharedsymboluuid.cpp)
+add_test(NAME tst_sharedsymboluuid COMMAND tst_sharedsymboluuid)
+add_dependencies(tst_sharedsymboluuid qelectrotech)
+target_link_libraries(tst_sharedsymboluuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_sharedsymboluuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # Element numbering schemes carry an id and elements follow them by it:
 # a legacy file gets stable ids on --resave; through --run, rename, edit,
 # refused removal and undo/redo keep the elements following the scheme.
@@ -1080,6 +1130,17 @@ add_executable(
 add_test(NAME tst_borderpropertiesxml COMMAND tst_borderpropertiesxml)
 target_include_directories(tst_borderpropertiesxml PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_borderpropertiesxml PRIVATE Qt::Test Qt::Xml)
+
+# Picture files dropped on a folio: which files are taken, the size and
+# pixel limits before a picture is embedded, fitting into the view and the
+# cascade of several pictures.
+add_executable(
+  tst_imagedrop
+  tst_imagedrop.cpp
+  ${QET_DIR}/sources/imagedrop.cpp)
+add_test(NAME tst_imagedrop COMMAND tst_imagedrop)
+target_include_directories(tst_imagedrop PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_imagedrop PRIVATE Qt::Test Qt::Gui)
 
 # Qt 6.4.2 writes the attributes of an element in an order that changes from
 # one process to the next, so a project saved twice by two runs of the binary

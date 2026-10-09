@@ -119,6 +119,7 @@ class Diagram : public QGraphicsScene
 		ElementTextsMover m_element_texts_mover;
 		QGIManager        *qgi_manager_;
 		QETProject        *m_project;
+		QPointer<QGraphicsObject> m_keyboard_item;
 
 		QDomDocument xml_document_;
 
@@ -282,6 +283,11 @@ class Diagram : public QGraphicsScene
 		
 		QUndoStack &undoStack();
 		QGIManager &qgiManager();
+		/// The item that gets keys before the view's own shortcuts, while
+		/// it is in a state Escape must end (a picture whose handle is
+		/// dragged). nullptr the rest of the time.
+		void setKeyboardItem(QGraphicsObject *item) { m_keyboard_item = item; }
+		QGraphicsObject *keyboardItem() const { return m_keyboard_item; }
 	
 		//methods related to element label Update Policy
 		void freezeElements(bool freeze);

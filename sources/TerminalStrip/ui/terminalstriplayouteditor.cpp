@@ -151,6 +151,14 @@ void TerminalStripLayoutEditor::valueEdited()
 	m_layout.data()->m_xref_text_y = ui->m_xref_y_sb->value();
 	m_layout.data()->m_xref_text_height = ui->m_xref_height_sb->value();
 
+		//Terminal type symbol
+	m_layout.data()->m_type_symbol_y = ui->m_type_symbol_y_sb->value();
+	m_layout.data()->m_type_symbol_height = ui->m_type_symbol_height_sb->value();
+	m_layout.data()->m_connection_length = ui->m_connection_length_sb->value();
+	m_layout.data()->m_cable_wire_length = ui->m_cable_wire_length_sb->value();
+	m_layout.data()->m_cable_length = ui->m_cable_length_sb->value();
+	m_layout.data()->m_cable_end_length = ui->m_cable_end_length_sb->value();
+
 	updateUi();
 	m_preview_strip_item.update();
 }
@@ -255,6 +263,13 @@ void TerminalStripLayoutEditor::updateUi()
 
 	ui->m_xref_y_sb->setValue(data->m_xref_text_y);
 	ui->m_xref_height_sb->setValue(data->m_xref_text_height);
+
+	ui->m_type_symbol_y_sb->setValue(data->m_type_symbol_y);
+	ui->m_type_symbol_height_sb->setValue(data->m_type_symbol_height);
+	ui->m_connection_length_sb->setValue(data->m_connection_length);
+	ui->m_cable_wire_length_sb->setValue(data->m_cable_wire_length);
+	ui->m_cable_length_sb->setValue(data->m_cable_length);
+	ui->m_cable_end_length_sb->setValue(data->m_cable_end_length);
 
 	m_ui_updating = false;
 	updatePreview();

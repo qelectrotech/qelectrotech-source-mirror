@@ -55,7 +55,17 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	Destructor
 */
 QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor()
-{}
+{
+		// QWidget's destructor deletes the children, and some of them
+		// signal this editor as they go: the scene deselects its cells (the
+		// view emits selectedCellsChanged()), the undo stack is cleared
+		// (cleanChanged()). By then this editor is already destroyed, so
+		// stop listening to all of its children first.
+	const auto children = findChildren<QObject *>();
+	for (QObject *child : children) {
+		disconnect(child, nullptr, this, nullptr);
+	}
+}
 
 /**
 	@return the location of the currently edited template
@@ -117,10 +127,10 @@ bool QETTitleBlockTemplateEditor::canClose()
 	// ask the user whether he wants to save the current template
 	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
-		tr("Enregistrer le modèle en cours ?", "dialog title"),
+		tr("Save current template?", "dialog title"),
 		QString(
 			tr(
-				"Voulez-vous enregistrer le modèle %1 ?",
+				"Do you wish to save the template %1?",
 				"dialog content - %1 is a title block template name"
 			)
 		).arg(location_.name()),
@@ -172,7 +182,7 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation()
 
 	QString proposed_name;
 	if (location_.name().isEmpty()) {
-		proposed_name = tr("nouveau_modele",
+		proposed_name = tr("new_template",
 				   "template name suggestion when duplicating the default one");
 	} else {
 		proposed_name = QString("%1_copy").arg(location_.name());
@@ -181,8 +191,8 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation()
 	bool accepted = false;
 	QString new_template_name = QInputDialog::getText(
 		this,
-		tr("Dupliquer un modèle de cartouche", "input dialog title"),
-		tr("Pour dupliquer ce modèle, entrez le nom voulu pour sa copie",
+		tr("Duplicate a title block template", "input dialog title"),
+		tr("In order to duplicate this template, please enter a name for its copy",
 		   "input dialog text"),
 		QLineEdit::Normal,
 		proposed_name,
@@ -368,51 +378,51 @@ void QETTitleBlockTemplateEditor::newTemplate()
 */
 void QETTitleBlockTemplateEditor::initActions()
 {
-	new_            = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau",                     "menu entry"), this);
-	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir",                      "menu entry"), this);
-	open_from_file_ = new QAction(QET::Icons::DocumentOpen,         tr("Ouvrir depuis un fichier",     "menu entry"), this);
-	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
-	save_as_        = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous",             "menu entry"), this);
-	save_as_file_   = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer vers un fichier",  "menu entry"), this);
-	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
+	new_            = new QAction(QET::Icons::DocumentNew,          tr("&New",                     "menu entry"), this);
+	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Open",                      "menu entry"), this);
+	open_from_file_ = new QAction(QET::Icons::DocumentOpen,         tr("Open from a file",     "menu entry"), this);
+	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Save",                 "menu entry"), this);
+	save_as_        = new QAction(QET::Icons::DocumentSaveAs,       tr("Save as",             "menu entry"), this);
+	save_as_file_   = new QAction(QET::Icons::DocumentSaveAs,       tr("Save to a file",  "menu entry"), this);
+	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quit",                     "menu entry"), this);
 	undo_           = undo_stack_ -> createUndoAction(this);
 	redo_           = undo_stack_ -> createRedoAction(this);
-	cut_            = new QAction(QET::Icons::EditCut,              tr("Co&uper", "menu entry"),                      this);
-	copy_           = new QAction(QET::Icons::EditCopy,             tr("Cop&ier", "menu entry"),                      this);
-	paste_          = new QAction(QET::Icons::EditPaste,            tr("C&oller", "menu entry"),                      this);
-	edit_logos_     = new QAction(QET::Icons::InsertImage,          tr("Gérer les logos", "menu entry"),           this);
-	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations complémentaires", "menu entry"), this);
-	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
-	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arrière",              "menu entry"), this);
-	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapté",               "menu entry"), this);
-	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom",                  "menu entry"), this);
-	add_row_        = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une &ligne",      "menu entry"), this);
-	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une &colonne",    "menu entry"), this);
-	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Fusionner les cellules",      "menu entry"), this);
-	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&Séparer les cellules",     "menu entry"), this);
+	cut_            = new QAction(QET::Icons::EditCut,              tr("Cu&t", "menu entry"),                      this);
+	copy_           = new QAction(QET::Icons::EditCopy,             tr("&Copy", "menu entry"),                      this);
+	paste_          = new QAction(QET::Icons::EditPaste,            tr("&Paste", "menu entry"),                      this);
+	edit_logos_     = new QAction(QET::Icons::InsertImage,          tr("Manage logos", "menu entry"),           this);
+	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("Edit extra information", "menu entry"), this);
+	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom In",                   "menu entry"), this);
+	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom out",              "menu entry"), this);
+	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Fit in view",               "menu entry"), this);
+	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Reset zoom",                  "menu entry"), this);
+	add_row_        = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Add a &row",      "menu entry"), this);
+	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Add a &column",    "menu entry"), this);
+	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Merge cells",      "menu entry"), this);
+	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&Split cells",     "menu entry"), this);
 
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);
 
-	ShortcutManager::instance().registerAction(new_, "titleblockeditor.new", tr("Éditeur de cartouche"), QKeySequence::New);
-	ShortcutManager::instance().registerAction(open_, "titleblockeditor.open", tr("Éditeur de cartouche"), QKeySequence::Open);
-	ShortcutManager::instance().registerAction(open_from_file_, "titleblockeditor.open_from_file", tr("Éditeur de cartouche"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
-	ShortcutManager::instance().registerAction(save_, "titleblockeditor.save", tr("Éditeur de cartouche"), QKeySequence::Save);
-	ShortcutManager::instance().registerAction(save_as_file_, "titleblockeditor.save_as_file", tr("Éditeur de cartouche"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
-	ShortcutManager::instance().registerAction(quit_, "titleblockeditor.quit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_Q);
-	ShortcutManager::instance().registerAction(undo_, "titleblockeditor.undo", tr("Éditeur de cartouche"), QKeySequence::Undo);
-	ShortcutManager::instance().registerAction(redo_, "titleblockeditor.redo", tr("Éditeur de cartouche"), QKeySequence::Redo);
-	ShortcutManager::instance().registerAction(cut_, "titleblockeditor.cut", tr("Éditeur de cartouche"), QKeySequence::Cut);
-	ShortcutManager::instance().registerAction(copy_, "titleblockeditor.copy", tr("Éditeur de cartouche"), QKeySequence::Copy);
-	ShortcutManager::instance().registerAction(paste_, "titleblockeditor.paste", tr("Éditeur de cartouche"), QKeySequence::Paste);
-	ShortcutManager::instance().registerAction(edit_logos_, "titleblockeditor.edit_logos", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_T);
-	ShortcutManager::instance().registerAction(edit_info_, "titleblockeditor.edit_info", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_Y);
-	ShortcutManager::instance().registerAction(merge_cells_, "titleblockeditor.merge_cells", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_J);
-	ShortcutManager::instance().registerAction(split_cell_, "titleblockeditor.split_cell", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_K);
-	ShortcutManager::instance().registerAction(zoom_in_, "titleblockeditor.zoom_in", tr("Éditeur de cartouche"), QKeySequence::ZoomIn);
-	ShortcutManager::instance().registerAction(zoom_out_, "titleblockeditor.zoom_out", tr("Éditeur de cartouche"), QKeySequence::ZoomOut);
-	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_9);
-	ShortcutManager::instance().registerAction(zoom_reset_, "titleblockeditor.zoom_reset", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(new_, "titleblockeditor.new", tr("Title block template editors"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(open_, "titleblockeditor.open", tr("Title block template editors"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(open_from_file_, "titleblockeditor.open_from_file", tr("Title block template editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	ShortcutManager::instance().registerAction(save_, "titleblockeditor.save", tr("Title block template editors"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(save_as_file_, "titleblockeditor.save_as_file", tr("Title block template editors"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(quit_, "titleblockeditor.quit", tr("Title block template editors"), Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(undo_, "titleblockeditor.undo", tr("Title block template editors"), QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(redo_, "titleblockeditor.redo", tr("Title block template editors"), QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(cut_, "titleblockeditor.cut", tr("Title block template editors"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(copy_, "titleblockeditor.copy", tr("Title block template editors"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(paste_, "titleblockeditor.paste", tr("Title block template editors"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(edit_logos_, "titleblockeditor.edit_logos", tr("Title block template editors"), Qt::CTRL | Qt::Key_T);
+	ShortcutManager::instance().registerAction(edit_info_, "titleblockeditor.edit_info", tr("Title block template editors"), Qt::CTRL | Qt::Key_Y);
+	ShortcutManager::instance().registerAction(merge_cells_, "titleblockeditor.merge_cells", tr("Title block template editors"), Qt::CTRL | Qt::Key_J);
+	ShortcutManager::instance().registerAction(split_cell_, "titleblockeditor.split_cell", tr("Title block template editors"), Qt::CTRL | Qt::Key_K);
+	ShortcutManager::instance().registerAction(zoom_in_, "titleblockeditor.zoom_in", tr("Title block template editors"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(zoom_out_, "titleblockeditor.zoom_out", tr("Title block template editors"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Title block template editors"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(zoom_reset_, "titleblockeditor.zoom_reset", tr("Title block template editors"), Qt::CTRL | Qt::Key_0);
 
 	connect(new_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::newTemplate);
 	connect(open_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::open);
@@ -441,9 +451,9 @@ void QETTitleBlockTemplateEditor::initActions()
 */
 void QETTitleBlockTemplateEditor::initMenus()
 {
-	file_menu_	  = new QMenu(tr("&Fichier", "menu title"), this);
-	edit_menu_	  = new QMenu(tr("&Édition", "menu title"), this);
-	display_menu_ = new QMenu(tr("Afficha&ge", "menu title"), this);
+	file_menu_	  = new QMenu(tr("&File", "menu title"), this);
+	edit_menu_	  = new QMenu(tr("&Edit", "menu title"), this);
+	display_menu_ = new QMenu(tr("Displ&ay", "menu title"), this);
 
 	file_menu_    -> addAction(new_);
 	file_menu_    -> addAction(open_);
@@ -483,7 +493,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 */
 void QETTitleBlockTemplateEditor::initToolbars()
 {
-	QToolBar *main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
+	QToolBar *main_toolbar = new QToolBar(tr("Tools", "toolbar title"), this);
 	main_toolbar -> setObjectName("tbt_main_toolbar");
 	main_toolbar -> addAction(new_);
 	main_toolbar -> addAction(open_);
@@ -491,7 +501,7 @@ void QETTitleBlockTemplateEditor::initToolbars()
 	main_toolbar -> addAction(save_as_);
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
 
-	QToolBar *edit_toolbar = new QToolBar(tr("Édition", "toolbar title"), this);
+	QToolBar *edit_toolbar = new QToolBar(tr("Edit", "toolbar title"), this);
 	edit_toolbar -> setObjectName("tbt_edit_toolbar");
 	edit_toolbar -> addAction(undo_);
 	edit_toolbar -> addAction(redo_);
@@ -500,7 +510,7 @@ void QETTitleBlockTemplateEditor::initToolbars()
 	edit_toolbar -> addAction(split_cell_);
 	addToolBar(Qt::TopToolBarArea, edit_toolbar);
 
-	QToolBar *display_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
+	QToolBar *display_toolbar = new QToolBar(tr("Display", "toolbar title"), this);
 	display_toolbar -> setObjectName("tbt_display_toolbar");
 	display_toolbar -> addAction(zoom_in_);
 	display_toolbar -> addAction(zoom_out_);
@@ -519,9 +529,9 @@ void QETTitleBlockTemplateEditor::initWidgets()
 	// undo list on the right
 	undo_stack_ = new QUndoStack(this);
 	undo_view_ = new QUndoView(undo_stack_);
-	undo_view_ -> setEmptyLabel(tr("Aucune modification", "label displayed in the undo list when empty"));
+	undo_view_ -> setEmptyLabel(tr("No modification", "label displayed in the undo list when empty"));
 
-	undo_dock_widget_ = new QDockWidget(tr("Annulations", "dock title"));
+	undo_dock_widget_ = new QDockWidget(tr("Undo", "dock title"));
 	undo_dock_widget_ -> setObjectName("tbt_undo_dock");
 	undo_dock_widget_ -> setFeatures(
 				QDockWidget::DockWidgetClosable
@@ -543,7 +553,7 @@ void QETTitleBlockTemplateEditor::initWidgets()
 
 	// cell edition widget at the bottom
 	template_cell_editor_widget_ = new TitleBlockTemplateCellWidget(tb_template_);
-	template_cell_editor_dock_widget_ = new QDockWidget(tr("Propriétés de la cellule", "dock title"), this);
+	template_cell_editor_dock_widget_ = new QDockWidget(tr("Cell properties", "dock title"), this);
 	template_cell_editor_dock_widget_ -> setObjectName("tbt_celleditor_dock");
 	template_cell_editor_dock_widget_ -> setFeatures(
 				QDockWidget::DockWidgetClosable
@@ -621,10 +631,10 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
 	if (!titleblock_title.isEmpty()) {
 		QString tag;
 		if (!undo_stack_ -> isClean()) {
-			tag = tr("[Modifié]", "window title tag");
+			tag = tr("[Changed]", "window title tag");
 		}
 		if (read_only_) {
-			tag = tr("[Lecture seule]", "window title tag");
+			tag = tr("[Read only]", "window title tag");
 		}
 		titleblock_title = QString(
 			tr(
@@ -733,7 +743,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle()
 	// base title
 	QString min_title(
 		tr(
-			"QElectroTech - Éditeur de modèle de cartouche",
+			"QElectroTech - Title block template editor",
 			"titleblock template editor: base window title"
 		)
 	);
@@ -800,9 +810,9 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 			// be discarded here.
 		QET::QetMessageBox::critical(
 			this,
-			tr("Erreur", "message box title"),
+			tr("Error", "message box title"),
 			tr(
-				"Impossible d'enregistrer le modèle « %1 ».",
+				"Unable to save the template  ‘%1’.",
 				"message box content - %1 is a title block template name"
 			).arg(location.name())
 		);
@@ -839,7 +849,7 @@ bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
 void QETTitleBlockTemplateEditor::open()
 {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
-		tr("Ouvrir un modèle", "File > open dialog window title"),
+		tr("Open a title block template", "File > open dialog window title"),
 		true
 	);
 	if (location.isValid()) {
@@ -861,12 +871,11 @@ void QETTitleBlockTemplateEditor::openFromFile()
 	// ask the user to choose a filepath
 	QString user_filepath = QFileDialog::getOpenFileName(
 		this,
-		tr("Ouvrir un fichier", "dialog title"),
+		tr("Open a file", "dialog title"),
 		initial_dir,
 		tr(
-			"Modèles de cartouches QElectroTech (*%1);;"
-			"Fichiers XML (*.xml);;"
-			"Tous les fichiers (*)",
+			"QElectroTech title block templates "
+			"(*%1);;XML files (*.xml);; All files (*)",
 			"filetypes allowed when opening a title block template file"
 			" - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
@@ -905,7 +914,7 @@ bool QETTitleBlockTemplateEditor::save()
 bool QETTitleBlockTemplateEditor::saveAs()
 {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
-		tr("Enregistrer le modèle sous", "dialog window title"),
+		tr("Save template as", "dialog window title"),
 		false
 	);
 	if (location.isValid()) {
@@ -918,10 +927,10 @@ bool QETTitleBlockTemplateEditor::saveAs()
 			// nothing (bugtracker #251).
 		QET::QetMessageBox::critical(
 			this,
-			tr("Erreur", "message box title"),
+			tr("Error", "message box title"),
 			tr(
-				"Le nom « %1 » n'est pas valide : il ne doit pas contenir "
-				"les caractères suivants : \\ / : * ? \" < > |",
+				"The name ‘%1’ is invalid: it must not contain the "
+				"following characters: \\ / : * ? \" < > |",
 				"message box content - %1 is the rejected template name"
 			).arg(location.name())
 		);
@@ -942,10 +951,10 @@ bool QETTitleBlockTemplateEditor::saveAsFile()
 	// ask the user to choose a target file
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
-		tr("Enregistrer sous", "dialog title"),
+		tr("Save as", "dialog title"),
 		initial_dir,
 		tr(
-			"Modèles de cartouches QElectroTech (*%1)",
+			"QElectroTech title block templates (*%1)",
 			"filetypes allowed when saving a title block template file - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
 	);
@@ -1052,11 +1061,11 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);
-	dialog_author.setWindowTitle(tr("Éditer les informations complémentaires", "window title"));
+	dialog_author.setWindowTitle(tr("Edit extra information", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
 
 	// explanation label
-	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile."));
+	QLabel *information_label = new QLabel(tr("You can use this field to specify the authors of this template, its license, or any other information you may find useful."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);

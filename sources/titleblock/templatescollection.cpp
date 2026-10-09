@@ -148,7 +148,7 @@ QString TitleBlockTemplatesProjectCollection::title() const
 		if (project_title.isEmpty()) {
 			final_title = QString(
 				tr(
-					"Cartouches du projet sans titre (id %1)",
+					"Title blocks of untitled project (id %1)",
 					"collection title when the parent project has an empty title -- %1 is the project internal id"
 				)
 			);
@@ -156,7 +156,7 @@ QString TitleBlockTemplatesProjectCollection::title() const
 		} else {
 			final_title = QString(
 				tr(
-					"Cartouches du projet \"%1\"",
+					"Title blocks of project \"%1\"",
 					"collection title when the project has a suitable title -- %1 is the project title"
 				)
 			);

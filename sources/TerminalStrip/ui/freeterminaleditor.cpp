@@ -119,7 +119,7 @@ void FreeTerminalEditor::apply()
 	const auto modified_data = m_model->modifiedModelRealTerminalData();
 	if (modified_data.size())
 	{
-		m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+		m_project->undoStack()->beginMacro(tr("Modify terminal strip properties"));
 
 		for (const auto &data_ : modified_data)
 		{
@@ -294,13 +294,13 @@ void FreeTerminalEditor::selectionChanged()
 
 		//Say why the button is disabled, the most basic reason first
 	if (!has_strip) {
-		ui->m_move_pb->setToolTip(tr("Le projet n'a aucun bornier : créez-en un avec le bouton +"));
+		ui->m_move_pb->setToolTip(tr("The project has no terminal strip: create one with the + button"));
 	} else if (has_pending) {
-		ui->m_move_pb->setToolTip(tr("Appliquez ou annulez les modifications en cours avant de déplacer"));
+		ui->m_move_pb->setToolTip(tr("Apply or cancel the current changes before moving"));
 	} else if (!has_selection) {
-		ui->m_move_pb->setToolTip(tr("Sélectionnez dans le tableau les bornes à déplacer"));
+		ui->m_move_pb->setToolTip(tr("Select the terminals to move in the table"));
 	} else {
-		ui->m_move_pb->setToolTip(tr("Déplacer les bornes sélectionnées vers le bornier choisi"));
+		ui->m_move_pb->setToolTip(tr("Move the selected terminals to the chosen terminal block"));
 	}
 }
 

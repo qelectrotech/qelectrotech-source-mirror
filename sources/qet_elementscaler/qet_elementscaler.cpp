@@ -40,8 +40,8 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 	}
 
 	bool ok;
-	double fx = QInputDialog::getDouble(parent, QObject::tr("Entrer le facteur d'échelle"),
-										QObject::tr("Facteur X:"), 1.0, 0.1, 100, 5, &ok,
+	double fx = QInputDialog::getDouble(parent, QObject::tr("Enter the scale factor"),
+										QObject::tr("X Factor:"), 1.0, 0.1, 100, 5, &ok,
 										Qt::WindowFlags());
 	QString sFactorX = "1.0";
 	if (ok)
@@ -49,8 +49,8 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 	else
 		return QByteArray();
 
-	double fy = QInputDialog::getDouble(parent, QObject::tr("Entrer le facteur d'échelle"),
-										QObject::tr("Facteur Y:"), fx, 0.1, 100, 5, &ok,
+	double fy = QInputDialog::getDouble(parent, QObject::tr("Enter the scale factor"),
+										QObject::tr("Y Factor:"), fx, 0.1, 100, 5, &ok,
 										Qt::WindowFlags());
 	QString sFactorY = "1.0";
 	if (ok)
@@ -58,12 +58,12 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 	else
 		return QByteArray();
 
-	const QStringList items{QObject::tr("sans"),
+	const QStringList items{QObject::tr("none"),
 							QObject::tr("horizontal"),
 							QObject::tr("vertical"),
 							QObject::tr("horizontal + vertical")};
 	QString item = QInputDialog::getItem(parent,
-										 QObject::tr("Retourner l'élément :"),
+										 QObject::tr("Mirror element :"),
 										 QObject::tr("direction"), items, 0, false, &ok);
 	int8_t mirrorIndex = 0;
 	if (ok && !item.isEmpty()) {
@@ -146,8 +146,8 @@ bool ElementScalerIsPresent(bool install_dialog, QWidget *parent)
 
 	if (!exist && install_dialog)
 	{
-		auto string_{QObject::tr("Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l'échelle.\n"
-								 "Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d'installation")};
+		auto string_{QObject::tr("The QET_ElementScaler software is required to scale elements.\n"
+								 "Please download it from the link below and unzip it into the installation folder")};
 
 		ThirdPartyBinaryInstallDialog dialog_(string_,
 											  QStringLiteral("https://github.com/plc-user/QET_ElementScaler/releases"),

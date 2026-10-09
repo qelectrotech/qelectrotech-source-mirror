@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Rechercher/Remplacer avancé</string>
+   <string>Search / replace advanced</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
    <item row="1" column="3">
@@ -24,14 +24,14 @@
    <item row="1" column="2">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>par :</string>
+      <string>by:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Remplacer :</string>
+      <string>Replace:</string>
      </property>
     </widget>
    </item>
@@ -48,14 +48,14 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Qui :</string>
+      <string>Where:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
     <widget class="QLineEdit" name="m_search_le">
      <property name="placeholderText">
-      <string>Texte ou expression régulière</string>
+      <string>Text or regular expression</string>
      </property>
     </widget>
    </item>
@@ -66,22 +66,22 @@
     <widget class="QComboBox" name="m_who_cb">
      <item>
       <property name="text">
-       <string>Folio</string>
+       <string>Sheet</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Élément</string>
+       <string>Element</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Conducteur</string>
+       <string>Conductor</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Texte indépendant</string>
+       <string>Independent text</string>
       </property>
      </item>
     </widget>
@@ -89,7 +89,7 @@
    <item row="0" column="2">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Quoi :</string>
+      <string>What:</string>
      </property>
     </widget>
    </item>

@@ -65,7 +65,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 #ifdef Q_OS_MACOS
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
-		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
+		print_dialog.setWindowTitle(tr("Print options", "window title"));
 		print_dialog.setOption(QAbstractPrintDialog::PrintShowPageSize, true);
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
@@ -99,7 +99,7 @@ QString ProjectPrintWindow::docName(QETProject *project)
 	}
 
 	if (doc_name.isEmpty()) {
-		doc_name = tr("projet", "string used to generate a filename");
+		doc_name = tr("project", "string used to generate a filename");
 	}
 
 	return doc_name;
@@ -130,13 +130,13 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 
 	if (m_printer->outputFormat() == QPrinter::NativeFormat) //Print to physical printer
 	{
-		auto print_button = new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer"));
+		auto print_button = new QPushButton(QET::Icons::DocumentPrint, tr("Print"));
 		ui->m_button_box->addButton(print_button, QDialogButtonBox::ActionRole);
 		connect(print_button, &QPushButton::clicked, this, &ProjectPrintWindow::print);
 	}
 	else	//export to pdf
 	{
-		auto pdf_button = new QPushButton(QET::Icons::PDF, tr("Exporter en pdf"));
+		auto pdf_button = new QPushButton(QET::Icons::PDF, tr("Export in pdf"));
 		ui->m_button_box->addButton(pdf_button, QDialogButtonBox::ActionRole);
 		connect(pdf_button, &QPushButton::clicked, this, &ProjectPrintWindow::exportToPDF);
 	}
@@ -166,7 +166,7 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	if (m_printer->outputFormat() == QPrinter::PdfFormat)
 	{
 		ui->m_page_setup->setDisabled(true);
-		ui->m_page_setup->setText(tr("Mise en page (non disponible sous Windows pour l'export PDF)"));
+		ui->m_page_setup->setText(tr("Layout (not available on Windows for PDF export)"));
 	}
 #endif
 
@@ -562,7 +562,7 @@ void ProjectPrintWindow::setUpDiagramList()
 	{
 		auto title = diagram->title();
 		if (title.isEmpty()) {
-			title = tr("Folio sans titre");
+			title = tr("Untitled sheet");
 		}
 
 		auto checkbox = new QCheckBox(title);
@@ -745,7 +745,7 @@ QList<Diagram *> ProjectPrintWindow::selectedDiagram() const
 
 void ProjectPrintWindow::exportToPDF()
 {
-	auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf)"));
+	auto file_name = QFileDialog::getSaveFileName(this, tr("Export as : "), m_printer->outputFileName(), tr("File (*.pdf)"));
 	if (file_name.isEmpty()) {
 		return;
 	}

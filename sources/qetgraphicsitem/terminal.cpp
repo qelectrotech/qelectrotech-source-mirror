@@ -73,7 +73,7 @@ void Terminal::init()
 
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	setToolTip(QObject::tr("Borne", "tooltip"));
+	setToolTip(QObject::tr("Terminal", "tooltip"));
 	setZValue(Z);
 }
 
@@ -650,8 +650,8 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 							 : nullptr;
 		if (full) {
 			QToolTip::showText(e->screenPos(),
-							   tr("Cette borne a déjà %n conducteur(s), la limite du projet. "
-								  "Ajoutez une borne pour raccorder un conducteur de plus.",
+							   tr("This terminal already has %n conductors, the project's "
+								  "limit. Add a terminal to connect one more conductor.",
 								  "wire refused by the wires-per-terminal limit",
 								  full->wireLimit()));
 		}
@@ -1040,6 +1040,18 @@ TerminalData::Type Terminal::terminalType() const
 }
 
 /**
+	@brief Terminal::potential
+	@return this terminal's own potential-group identifier (@see
+	TerminalData::m_potential).
+	An author-chosen grouping used only
+	within a single multi-terminal element.
+*/
+QString Terminal::potential() const
+{
+	return d->m_potential;
+}
+
+/**
 	@brief Terminal::setUseMasterLabel
 	Set whether this terminal uses a label from the master's contact group
 	@param use true to use master label
@@ -1089,8 +1101,22 @@ QList<Terminal *> relatedPotentialTerminal (
 	{
 		// English: Check if the user activated the potential isolation checkbox for this terminal
 		if (QET::infoFlagIsTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
-			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
-			return QList<Terminal *>();
+			// English: Potential is isolated -- but terminals sharing this
+			// terminal's own, non-empty potential-group identifier
+			// (@see TerminalData::m_potential, set per-terminal in the
+			// element editor) still belong to the same physical terminal
+			// and stay linked to each other. An empty/unset potential on
+			// every terminal reproduces the previous, fully-isolated
+			// behavior exactly, so existing elements are unaffected.
+			const QString this_potential = terminal->potential();
+			QList<Terminal *> same_potential;
+			if (!this_potential.isEmpty()) {
+				for (Terminal *t : terminal->parentElement()->terminals()) {
+					if (t != terminal && t->potential() == this_potential)
+						same_potential << t;
+				}
+			}
+			return same_potential;
 		}
 
 		QList <Terminal *> terminals = terminal->parentElement()->terminals();

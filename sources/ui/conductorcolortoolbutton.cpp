@@ -48,15 +48,15 @@ namespace {
 	QList<NamedColor> standardColors()
 	{
 		return {
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Noir"),        QColor(0x00, 0x00, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Marron"),      QColor(0x7B, 0x3F, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Gris"),        QColor(0x80, 0x80, 0x80)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Bleu"),        QColor(0x00, 0x00, 0xFF)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Vert"),        QColor(0x00, 0x80, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Rouge"),       QColor(0xFF, 0x00, 0x00)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Black"),        QColor(0x00, 0x00, 0x00)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Brown"),      QColor(0x7B, 0x3F, 0x00)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Gray"),        QColor(0x80, 0x80, 0x80)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Blue"),        QColor(0x00, 0x00, 0xFF)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Green"),        QColor(0x00, 0x80, 0x00)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Red"),       QColor(0xFF, 0x00, 0x00)},
 			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Orange"),      QColor(0xFF, 0x80, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Violet"),      QColor(0x80, 0x00, 0x80)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Blanc"),       QColor(0xFF, 0xFF, 0xFF)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Purple"),      QColor(0x80, 0x00, 0x80)},
+			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "White"),       QColor(0xFF, 0xFF, 0xFF)},
 		};
 	}
 
@@ -73,8 +73,8 @@ ConductorColorToolButton::ConductorColorToolButton(QETDiagramEditor *editor, QWi
 	m_editor(editor)
 {
 	setPopupMode(QToolButton::InstantPopup);
-	setToolTip(tr("Couleur de conducteur"));
-	setStatusTip(tr("Applique une couleur aux conducteurs sélectionnés, et l'utilise pour les prochains conducteurs tracés",
+	setToolTip(tr("Conductor color"));
+	setStatusTip(tr("Applies a color to the selected conductors, and uses it for the next conductors drawn",
 			"status bar tip"));
 
 	m_current = LastUsedStyle::hasConductorColor() ? LastUsedStyle::conductorColor()
@@ -128,7 +128,7 @@ void ConductorColorToolButton::rebuildMenu()
 	if (!m_recent.isEmpty())
 	{
 		m->addSeparator();
-		QAction *title = m->addAction(tr("Récemment utilisées"));
+		QAction *title = m->addAction(tr("Recently used"));
 		title->setEnabled(false);
 		for (const QColor &c : std::as_const(m_recent))
 		{
@@ -138,7 +138,7 @@ void ConductorColorToolButton::rebuildMenu()
 	}
 
 	m->addSeparator();
-	QAction *other = m->addAction(tr("Autre couleur…"));
+	QAction *other = m->addAction(tr("Other color…"));
 	connect(other, &QAction::triggered, this, &ConductorColorToolButton::chooseOtherColor);
 }
 
@@ -185,7 +185,7 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 		conductors += conductor->relatedPotentialConductors();
 	}
 
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier la couleur de %n conducteur(s)",
+	QUndoCommand *undo = new QUndoCommand(tr("Change the colour of %n conductors",
 						 "undo caption", conductors.count()));
 	int changed = 0;
 	for (Conductor *conductor : conductors)
@@ -219,7 +219,7 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 void ConductorColorToolButton::chooseOtherColor()
 {
 	QColorDialog dialog(m_current, this);
-	dialog.setWindowTitle(tr("Choisir une couleur de conducteur"));
+	dialog.setWindowTitle(tr("Choose a conductor color"));
 	dialog.setOption(QColorDialog::DontUseNativeDialog);
 	ColorDialogDoubleClick::install(&dialog);
 	if (dialog.exec() == QDialog::Accepted && dialog.selectedColor().isValid()) {

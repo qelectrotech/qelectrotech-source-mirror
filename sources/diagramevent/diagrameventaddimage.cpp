@@ -17,6 +17,7 @@
 */
 
 #include "diagrameventaddimage.h"
+#include "../imagedrop.h"
 
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
@@ -91,9 +92,8 @@ void DiagramEventAddImage::showHint() const
 	if (m_diagram->views().isEmpty())
 		return;
 	if (auto *editor = QETApp::diagramEditorAncestorOf(m_diagram->views().constFirst()))
-		editor->statusBar()->showMessage(tr("Clic : positionner à la taille d'origine. "
-		                                     "Cliquer-glisser : positionner et redimensionner. "
-		                                     "Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille."));
+		editor->statusBar()->showMessage(tr("Click: position at original size. Click-drag: position and "
+		                                     "resize. Right-click: rotate 90°. Ctrl+wheel: adjust size."));
 }
 
 /**
@@ -338,14 +338,15 @@ void DiagramEventAddImage::openDialog()
 	
 	//Open dialog to select image
 	QString pathPictures = QETApp::pictureDir();
-	QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
+	QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Select an image ..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
 	
 	if (fileName.isEmpty()) return;
 	
-	QImage image(fileName);
+	QString error;
+	const QImage image = ImageDrop::load(fileName, &error);
 	if(image.isNull())
 	{
-		QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Erreur"), QObject::tr("Impossible de charger l'image."));
+		QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Error"), QObject::tr("Unable to load the image.") + "\n" + error);
 		return;
 	}
 	

@@ -61,14 +61,19 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QCheckBox>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontDatabase>
+#include <QLabel>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QVBoxLayout>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -155,7 +160,7 @@ QETApp::QETApp() :
 		this, &QETApp::checkRemainingWindows);
 
 	setSplashScreenStep(
-		tr("Chargement... Initialisation du cache des collections d'éléments",
+		tr("Loading... Initializing the elements collection cache",
 		   "splash screen caption"));
 	if (!collections_cache_) {
 	QString cache_path = QETApp::dataDir() + "/elements_cache.sqlite";
@@ -166,12 +171,12 @@ QETApp::QETApp() :
 
 	if (qet_arguments_.files().isEmpty())
 	{
-		setSplashScreenStep(tr("Chargement... Éditeur de schéma",
+		setSplashScreenStep(tr("Loading... Sheets editor",
 					   "splash screen caption"));
 		new QETDiagramEditor();
 	} else
 	{
-		setSplashScreenStep(tr("Chargement... Ouverture des fichiers",
+		setSplashScreenStep(tr("Loading... Opening files",
 					   "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
@@ -290,10 +295,11 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// charge les traductions pour l'application QET
 	// desired_language may be a full locale such as "pt_BR": try that exact
 	// translation, then the base language ("pt"), then fall back to English.
-	// French is the application's source language and needs no translation.
+	// English is the application's source language: qet_en only adds the
+	// plural forms, and French is a translation like any other.
 	// A .qm compiled from an untranslated .ts (0% done) loads "successfully"
 	// but is empty: treat it as missing, so the user falls back to English
-	// instead of silently getting the French source strings.
+	// instead of silently getting the untranslated source strings.
 	const QString base_language = desired_language.section('_', 0, 0);
 	auto loadQet = [this, &languages_path](const QString &name) {
 		return qetTranslator.load(name, languages_path)
@@ -302,7 +308,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 	bool loaded = loadQet("qet_" + desired_language);
 	if (!loaded && base_language != desired_language)
 		loaded = loadQet("qet_" + base_language);
-	if (!loaded && base_language != "fr") {
+	if (!loaded) {
 		// use of the English version by default
 		// utilisation de la version anglaise par defaut
 		if(!loadQet("qet_en"))
@@ -514,7 +520,7 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 				new TitleBlockTemplatesFilesCollection(
 					QETApp::commonTitleBlockTemplatesDir());
 		m_common_tbt_collection -> setTitle(
-					tr("Cartouches QET",
+					tr("QET title blocks",
 					   "title of the title block templates \
 					collection provided by QElectroTech"));
 		m_common_tbt_collection -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
@@ -535,7 +541,7 @@ TitleBlockTemplatesFilesCollection *QETApp::companyTitleBlockTemplatesCollection
 				new TitleBlockTemplatesFilesCollection(
 					QETApp::companyTitleBlockTemplatesDir());
 		m_company_tbt_collection -> setTitle(
-					tr("Cartouches company",
+					tr("Company title-blocks",
 					   "title of the company's \
 					title block templates collection"));
 		m_company_tbt_collection -> setProtocol(QETAPP_COMPANY_TBT_PROTOCOL);
@@ -555,7 +561,7 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 		m_custom_tbt_collection =
 				new TitleBlockTemplatesFilesCollection(
 					QETApp::customTitleBlockTemplatesDir());
-		m_custom_tbt_collection -> setTitle(tr("Cartouches utilisateur",
+		m_custom_tbt_collection -> setTitle(tr("User title blocks",
 							   "title of the user's \
 					title block templates collection"));
 		m_custom_tbt_collection -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
@@ -1717,9 +1723,9 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget()
 				  "Single-letter example text - translate length, not meaning")
 		<< QETApp::tr("QET",
 				  "Small example text - translate length, not meaning")
-		<< QETApp::tr("Schema",
+		<< QETApp::tr("Diagram",
 				  "Normal example text - translate length, not meaning")
-		<< QETApp::tr("Electrique",
+		<< QETApp::tr("Electric",
 				  "Normal example text - translate length, not meaning")
 		<< QETApp::tr("QElectroTech",
 				  "Long example text - translate length, not meaning")
@@ -2310,7 +2316,7 @@ void QETApp::configureQET()
 	// create dialogue
 	// cree le dialogue
 	ConfigDialog cd;
-	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
+	cd.setWindowTitle(tr("Configure QElectroTech", "window title"));
 	// ApplicationModal so no other window can dispatch events while the dialog
 	// holds raw pointers derived from the current project list.  Same class of
 	// bug as ProjectPropertiesDialog — see issue #527.
@@ -2381,6 +2387,88 @@ void QETApp::customizeQET(int tab)
 	dialog.setParent(nullptr, dialog.windowFlags());
 }
 
+namespace {
+/**
+	@brief partLabel
+	@return the name of @a part shown to the user
+*/
+QString partLabel(ConfigProfile::Part part)
+{
+	switch (part) {
+		case ConfigProfile::Part::Controls:
+			return QETApp::tr("Toolbars, keyboard shortcuts, mouse and trackpad gestures");
+		case ConfigProfile::Part::NewProject:
+			return QETApp::tr("Defaults for new projects: folio, title block, "
+							  "wires, numbering");
+		case ConfigProfile::Part::Other:
+			return QETApp::tr("All other settings: appearance, grid, language...");
+		case ConfigProfile::Part::Folders:
+			return QETApp::tr("Folders of the collections");
+	}
+	return QString();
+}
+
+/**
+	@brief choosePartsToSave
+	Ask which parts of the settings to save, all of them ticked to begin
+	with.
+	@return the parts chosen, or an empty list if the user cancelled
+*/
+QList<ConfigProfile::Part> choosePartsToSave(QWidget *parent)
+{
+	QDialog dialog(parent);
+	dialog.setWindowTitle(QETApp::tr("Save settings as...", "dialog title"));
+
+	auto *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(new QLabel(QETApp::tr("Settings to save:"), &dialog));
+
+	QMap<ConfigProfile::Part, QCheckBox *> boxes;
+	for (ConfigProfile::Part part : ConfigProfile::choosableParts()) {
+		auto *box = new QCheckBox(partLabel(part), &dialog);
+		box->setChecked(true);
+		layout->addWidget(box);
+		boxes.insert(part, box);
+	}
+
+	auto *note = new QLabel(QETApp::tr("The folders of your collections are "
+									   "saved only when every part is ticked."),
+							&dialog);
+	note->setWordWrap(true);
+	layout->addWidget(note);
+
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok
+										 | QDialogButtonBox::Cancel,
+										 &dialog);
+	layout->addWidget(buttons);
+	QObject::connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	QObject::connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+		//Nothing ticked, nothing to save
+	auto update_ok = [&boxes, buttons]() {
+		bool any = false;
+		for (QCheckBox *box : std::as_const(boxes)) {
+			any = any || box->isChecked();
+		}
+		buttons->button(QDialogButtonBox::Ok)->setEnabled(any);
+	};
+	for (QCheckBox *box : std::as_const(boxes)) {
+		QObject::connect(box, &QCheckBox::toggled, &dialog, update_ok);
+	}
+
+	if (dialog.exec() != QDialog::Accepted) {
+		return {};
+	}
+
+	QList<ConfigProfile::Part> parts;
+	for (ConfigProfile::Part part : ConfigProfile::choosableParts()) {
+		if (boxes.value(part)->isChecked()) {
+			parts << part;
+		}
+	}
+	return parts;
+}
+}
+
 /**
 	@brief QETApp::exportConfiguration
 	Save the settings of QElectroTech to a file the user chooses, to keep
@@ -2388,16 +2476,24 @@ void QETApp::customizeQET(int tab)
 	#610). The file is always written in the ini format, whatever the
 	platform stores its live settings in, so a profile saved on Windows
 	loads on Linux and macOS. See ConfigProfile for the keys left out.
+
+	The user first chooses which parts of the settings to save, to share
+	the defaults for new projects alone for example (discussion #1405).
 */
 void QETApp::exportConfiguration()
 {
 	QWidget *parent_widget = qApp->activeWindow();
 
+	const QList<ConfigProfile::Part> parts = choosePartsToSave(parent_widget);
+	if (parts.isEmpty()) {
+		return;
+	}
+
 	QString path = QFileDialog::getSaveFileName(
 				parent_widget,
-				tr("Enregistrer la configuration sous...", "dialog title"),
+				tr("Save settings as...", "dialog title"),
 				QString(),
-				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+				tr("QElectroTech settings (*.conf)", "file dialog filter"));
 	if (path.isEmpty()) {
 		return;
 	}
@@ -2407,20 +2503,23 @@ void QETApp::exportConfiguration()
 
 	QSettings live_settings;
 	QSettings file_settings(path, QSettings::IniFormat);
-	ConfigProfile::exportTo(live_settings, file_settings);
+	ConfigProfile::exportTo(live_settings, file_settings, parts);
 
 	if (file_settings.status() != QSettings::NoError) {
 		QET::QetMessageBox::critical(
 					parent_widget,
-					tr("Erreur", "message box title"),
-					tr("Impossible d'enregistrer la configuration dans « %1 ».").arg(path));
+					tr("Error", "message box title"),
+					tr("Cannot save the settings to “%1”.").arg(path));
 	}
 }
 
 /**
 	@brief QETApp::importConfiguration
 	Replace the settings of QElectroTech with a file saved by
-	exportConfiguration(), then close QElectroTech.
+	exportConfiguration(), then close QElectroTech. A file holding only
+	some parts of the settings replaces only those parts. A file holding
+	only the defaults for new projects needs no restart: they are read
+	again for every new project.
 
 	The settings are read by each part of QElectroTech when it starts, and
 	there is no signal telling all of them that a setting changed, so the
@@ -2434,37 +2533,74 @@ void QETApp::importConfiguration()
 
 	const QString path = QFileDialog::getOpenFileName(
 				parent_widget,
-				tr("Charger une configuration...", "dialog title"),
+				tr("Load settings...", "dialog title"),
 				QString(),
-				tr("Configurations QElectroTech (*.conf)", "file dialog filter"));
+				tr("QElectroTech settings (*.conf)", "file dialog filter"));
 	if (path.isEmpty()) {
 		return;
 	}
 
 	QSettings file_settings(path, QSettings::IniFormat);
+	const QList<ConfigProfile::Part> parts = ConfigProfile::partsOf(file_settings);
 	if (file_settings.status() != QSettings::NoError
-		|| !ConfigProfile::isProfile(file_settings))
+		|| !ConfigProfile::isProfile(file_settings)
+		|| parts.isEmpty())
 	{
 		QET::QetMessageBox::critical(
 					parent_widget,
-					tr("Erreur", "message box title"),
-					tr("« %1 » n'est pas une configuration enregistrée par QElectroTech.").arg(path));
+					tr("Error", "message box title"),
+					tr("“%1” is not a settings file saved by QElectroTech.").arg(path));
 		return;
+	}
+
+	const bool complete = parts.contains(ConfigProfile::Part::Folders);
+	const bool restart = ConfigProfile::needsRestart(parts);
+	QString question;
+	if (complete) {
+		question = tr("These settings will replace your current ones, except the "
+					  "window layout and the list of recent files.\n"
+					  "\n"
+					  "QElectroTech will then close. Start it again to use the new "
+					  "settings.\n"
+					  "\n"
+					  "Do you want to continue?");
+	} else {
+		QStringList labels;
+		for (ConfigProfile::Part part : parts) {
+			labels << QStringLiteral("• ") + partLabel(part);
+		}
+		question = tr("These settings will replace your current ones for:\n"
+					  "%1\n"
+					  "All your other settings are kept.")
+				   .arg(labels.join(QLatin1Char('\n')));
+		question += QStringLiteral("\n\n");
+		question += restart
+				? tr("QElectroTech will then close. Start it again to use the new "
+					 "settings.")
+				: tr("Projects already open keep their own defaults.");
+		question += QStringLiteral("\n\n") + tr("Do you want to continue?");
 	}
 
 		//Said before anything closes: once the last window is closed,
 		//QElectroTech quits by itself (checkRemainingWindows()).
 	const auto answer = QET::QetMessageBox::question(
 				parent_widget,
-				tr("Charger une configuration", "message box title"),
-				tr("Cette configuration va remplacer vos réglages actuels, sauf la "
-				   "disposition des fenêtres et la liste des fichiers récents.\n\n"
-				   "QElectroTech va ensuite se fermer. Relancez-le pour utiliser "
-				   "la nouvelle configuration.\n\n"
-				   "Voulez-vous continuer ?"),
+				tr("Load settings", "message box title"),
+				question,
 				QMessageBox::Yes | QMessageBox::No,
 				QMessageBox::No);
 	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+	if (!restart) {
+		QSettings live_settings;
+		ConfigProfile::importFrom(file_settings, live_settings);
+		QET::QetMessageBox::information(
+					parent_widget,
+					tr("Load settings", "message box title"),
+					tr("The settings are loaded. They are used for the next "
+					   "new project."));
 		return;
 	}
 
@@ -2626,7 +2762,7 @@ void QETApp::initSplashScreen()
 	if (non_interactive_execution_) return;
 	m_splash_screen = new QSplashScreen(QPixmap(":/ico/splash.png"));
 	m_splash_screen -> show();
-	setSplashScreenStep(tr("Chargement...", "splash screen caption"));
+	setSplashScreenStep(tr("Loading...", "splash screen caption"));
 }
 
 /**
@@ -2863,44 +2999,44 @@ void QETApp::initConfiguration()
 */
 void QETApp::initSystemTray()
 {
-	setSplashScreenStep(tr("Chargement... icône du systray",
+	setSplashScreenStep(tr("Loading... Systray icon",
 				   "splash screen caption"));
 	// initialization of the icon menus in the systray
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 
 	quitter_qet       = new QAction(QET::Icons::ApplicationExit,
-					tr("&Quitter"),this);
+					tr("&Quit"),this);
 	reduce_appli      = new QAction(QET::Icons::Hide,
-					tr("&Masquer"),this);
+					tr("&Hide"),this);
 	restore_appli     = new QAction(QET::Icons::Restore,
-					tr("&Restaurer"),this);
+					tr("&Show"),this);
 	reduce_diagrams   = new QAction(QET::Icons::Hide,
-					tr("&Masquer tous les éditeurs de schéma"),
+					tr("&Hide diagram editor"),
 					this);
 	restore_diagrams  = new QAction(QET::Icons::Restore,
-					tr("&Restaurer tous les éditeurs de schéma"),
+					tr("&Show diagram editors"),
 					this);
 	reduce_elements   = new QAction(QET::Icons::Hide,
-					tr("&Masquer tous les éditeurs d'élément"),
+					tr("&Hide element editor"),
 					this);
 	restore_elements  = new QAction(QET::Icons::Restore,
-					tr("&Restaurer tous les éditeurs d'élément"),
+					tr("&Show element editor"),
 					this);
 	reduce_templates  = new QAction(QET::Icons::Hide,
-					tr("&Masquer tous les éditeurs de cartouche",
+					tr("&Hide title block template editor",
 					   "systray submenu entry"), this);
 	restore_templates = new QAction(QET::Icons::Restore,
-					tr("&Restaurer tous les éditeurs de cartouche",
+					tr("&Show title block template editors",
 					   "systray submenu entry"), this);
 	new_diagram       = new QAction(QET::Icons::WindowNew,
-					tr("&Nouvel éditeur de schéma"),this);
+					tr("&New diagram editor"),this);
 	new_element       = new QAction(QET::Icons::WindowNew,
-					tr("&Nouvel éditeur d'élément"),this);
+					tr("&New element editor"),this);
 
-	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
-	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
-	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
+	quitter_qet   -> setStatusTip(tr("Closes QElectroTech"));
+	reduce_appli  -> setToolTip(tr("Reduces QElectroTech into the systray"));
+	restore_appli -> setToolTip(tr("Restore QElectroTech"));
 
 	connect(quitter_qet, &QAction::triggered, this, &QETApp::quitQET);
 	connect(reduce_appli, &QAction::triggered, this, &QETApp::reduceEveryEditor);
@@ -3011,7 +3147,7 @@ void QETApp::buildSystemTrayMenu()
 
 	// add schema editors in a submenu
 	// ajoute les editeurs de schemas dans un sous-menu
-	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("Éditeurs de schémas"));
+	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("Diagram editors"));
 	diagrams_submenu -> addAction(reduce_diagrams);
 	diagrams_submenu -> addAction(restore_diagrams);
 	diagrams_submenu -> addAction(new_diagram);
@@ -3021,7 +3157,7 @@ void QETApp::buildSystemTrayMenu()
 
 	// add item editors to the menu
 	// ajoute les editeurs d'elements au menu
-	QMenu *elements_submenu = menu_systray -> addMenu(tr("Éditeurs d'élément"));
+	QMenu *elements_submenu = menu_systray -> addMenu(tr("Element editors"));
 	elements_submenu -> addAction(reduce_elements);
 	elements_submenu -> addAction(restore_elements);
 	elements_submenu -> addAction(new_element);
@@ -3032,7 +3168,7 @@ void QETApp::buildSystemTrayMenu()
 
 	// add title block template editors in a submenu
 	// add title block template editors in a submenu
-	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Éditeurs de cartouche",
+	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Title block template editors",
 								"systray menu entry"));
 	tbtemplates_submenu -> addAction(reduce_templates);
 	tbtemplates_submenu -> addAction(restore_templates);
@@ -3168,10 +3304,10 @@ void QETApp::checkCrashDump()
 	const QByteArray content = logger.pendingCrashDumpContents(offered);
 
 	DiagnosticsReportDialog dialog(
-			tr("Rapport de plantage"),
-			tr("QElectroTech ne s'est pas fermé correctement lors de sa dernière exécution.\n"
-			   "Voici les derniers messages enregistrés avant l'arrêt -- vous pouvez les "
-			   "enregistrer pour les joindre à un rapport de bug."),
+			tr("Crash report"),
+			tr("QElectroTech did not close correctly the last time it was run.\n"
+			   "Here are the last messages logged before it closed — you can save them to "
+			   "include them in a bug report."),
 			content);
 	dialog.exec();
 
@@ -3191,9 +3327,9 @@ void QETApp::showDiagnosticsReport()
 	const QByteArray content = QetLogger::instance().buildDiagnosticsReport();
 
 	DiagnosticsReportDialog dialog(
-			tr("Rapport de diagnostic"),
-			tr("Ceci contient les derniers messages de journalisation de cette session. "
-			   "Vérifiez le contenu avant de le joindre à un rapport de bug public."),
+			tr("Diagnostic report"),
+			tr("This contains the latest log entries for this session. Please check the "
+			   "contents before attaching it to a public bug report."),
 			content);
 	dialog.exec();
 }
@@ -3272,27 +3408,28 @@ bool QETApp::eventFilter(QObject *object, QEvent *e) {
 void QETApp::printHelp()
 {
 	QString help(
-		tr("Usage : ")
+		tr("Usage: ")
 		+ QFileInfo(qApp->applicationFilePath()).fileName()
-		+ tr(" [options] [fichier]...\n\n")
-		+ tr("QElectroTech, une application de réalisation de schémas électriques.\n\n"
-		"Options disponibles : \n"
-		"  --help                        Afficher l'aide sur les options\n"
-		"  -v, --version                 Afficher la version\n"
-		"  --license                     Afficher la licence\n")
+		+ tr(" [options] [file]...\n\n")
+		+ tr("QElectroTech, an application to design electric diagrams.\n"
+		"\n"
+		"Available options: \n"
+		"  --help                        Display this help\n"
+		"  -v, --version                 Display the version\n"
+		"  --license                     Display the license\n")
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		+ tr("  --common-elements-dir=DIR     Definir le dossier de la collection d'elements\n")
+		+ tr("  --common-elements-dir=DIR     Define the elements collection directory\n")
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
-		+ tr("  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches\n")
+		+ tr("  --common-tbt-dir=DIR          Define the title block templates collection directory\n")
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
-		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")
+		+ tr("  --config-dir=DIR              Define configuration directory\n")
 #endif
 #ifdef QET_ALLOW_OVERRIDE_DD_OPTION
-		+ tr("  --data-dir=DIR                Definir le dossier de data\n")
+		+ tr("  --data-dir=DIR                Define data directory\n")
 #endif
-		+ tr("  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue\n")
+		+ tr("  --lang-dir=DIR                Define the language files directory\n")
 	);
 	std::cout << qPrintable(help) << std::endl;
 }

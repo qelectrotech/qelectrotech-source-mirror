@@ -184,7 +184,7 @@ void TextEditor::setUpEditConnection()
 			PartText* partText = m_parts[i];
 			if (text_ != partText -> toPlainText()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "text", partText -> toPlainText(), text_);
-				undo -> setText(tr("Modifier le contenu d'un champ texte"));
+				undo -> setText(tr("Modify the contents of a text field"));
 				undoStack().push(undo);
 			}
 		}
@@ -197,7 +197,7 @@ void TextEditor::setUpEditConnection()
 			pos.setY(partText -> pos().y());
 			if (pos != partText -> pos()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "pos", partText -> pos(), pos);
-				undo -> setText(tr("Déplacer un champ texte"));
+				undo -> setText(tr("Move a text field"));
 				undo -> setAnimated(true, false);
 				undoStack().push(undo);
 			}
@@ -212,7 +212,7 @@ void TextEditor::setUpEditConnection()
 			pos.setX(partText -> pos().x());
 			if (pos != partText -> pos()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "pos", partText -> pos(), pos);
-				undo -> setText(tr("Déplacer un champ texte"));
+				undo -> setText(tr("Move a text field"));
 				undo -> setAnimated(true, false);
 				undoStack().push(undo);
 			}
@@ -226,7 +226,7 @@ void TextEditor::setUpEditConnection()
 			if (m_rotation_sb -> value() != partText -> rotation()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(
 					partText, "rotation", partText -> rotation(), m_rotation_sb -> value());
-				undo -> setText(tr("Pivoter un champ texte"));
+				undo -> setText(tr("Rotate a text field"));
 				undo -> setAnimated(true, false);
 				undoStack().push(undo);
 			}
@@ -241,7 +241,7 @@ void TextEditor::setUpEditConnection()
 				QFont font_ = partText -> font();
 				font_.setPointSize(m_size_sb -> value());
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText -> font(), font_);
-				undo -> setText(tr("Modifier la police d'un texte"));
+				undo -> setText(tr("Change the font of a text"));
 				undoStack().push(undo);
 			}
 		}
@@ -269,7 +269,7 @@ void TextEditor::on_m_font_pb_clicked()
 		PartText* partText = m_parts[i];
 		if (ok && font_ != partText -> font()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText -> font(), font_);
-			undo -> setText(tr("Modifier la police d'un texte"));
+			undo -> setText(tr("Change the font of a text"));
 			undoStack().push(undo);
 		}
 	}
@@ -285,7 +285,7 @@ void TextEditor::on_m_color_pb_changed(const QColor &newColor) {
 		if (newColor != partText -> defaultTextColor()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(
 				partText, "color", partText -> defaultTextColor(), newColor);
-			undo -> setText(tr("Modifier la couleur d'un texte"));
+			undo -> setText(tr("Change the color of a text"));
 			undoStack().push(undo);
 		}
 	  }
@@ -308,7 +308,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	gridLayout->addWidget(label_2, 1, 2, 1, 1);
 
-	QLabel*label_4 = new QLabel(tr("Police :"),parent);
+	QLabel*label_4 = new QLabel(tr("Font :"),parent);
 
 	gridLayout->addWidget(label_4, 2, 0, 1, 1);
 
@@ -343,7 +343,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 	m_line_edit = new QLineEdit(parent);
 	m_line_edit->setObjectName(QString::fromUtf8("m_line_edit"));
 	m_line_edit->setClearButtonEnabled(true);
-	m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
+	m_line_edit->setPlaceholderText(tr("Enter your text here"));
 
 	gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
 #ifdef BUILD_WITHOUT_KF
@@ -364,7 +364,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	gridLayout->addWidget(label_5, 2, 4, 1, 1);
 
-	m_font_pb = new QPushButton(tr("Couleur :"),parent);
+	m_font_pb = new QPushButton(tr("Color :"),parent);
 	connect(m_font_pb,
 		&QPushButton::pressed,
 		this,
@@ -372,9 +372,9 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	gridLayout->addWidget(m_font_pb, 2, 2, 1, 2);
 
-	QPushButton *alignment_pb = new QPushButton(tr("Alignement"), parent);
-	alignment_pb->setToolTip(tr("Point d'ancrage du texte et alignement"
-								" des lignes entre elles"));
+	QPushButton *alignment_pb = new QPushButton(tr("Alignment"), parent);
+	alignment_pb->setToolTip(tr("ext anchor point and alignment of "
+								"lines relative to one another"));
 	connect(alignment_pb, &QPushButton::clicked, [this]() {
 		if (m_text.isNull()) {
 			return;
@@ -390,7 +390,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 					part_text, "alignment",
 					QVariant(part_text->alignment()),
 					QVariant(atd.alignment()));
-				undo->setText(tr("Modifier l'alignement d'un champ texte"));
+				undo->setText(tr("Modify the alignment of a text field"));
 				undoStack().push(undo);
 			}
 		}

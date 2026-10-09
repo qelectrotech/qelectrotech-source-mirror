@@ -1,0 +1,107 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="de">
+<phrase>
+    <source>modifié</source>
+    <target>verändert</target>
+</phrase>
+<phrase>
+    <source>project</source>
+    <target>Projekt</target>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Einstellungen</target>
+</phrase>
+<phrase>
+    <source>Save</source>
+    <target>Speichern</target>
+</phrase>
+<phrase>
+    <source>QElectroTech</source>
+    <target>QElectroTech</target>
+</phrase>
+<phrase>
+    <source>&amp;Quit</source>
+    <target>&amp;Beenden</target>
+</phrase>
+<phrase>
+    <source>Fermer</source>
+    <target>Schließen</target>
+</phrase>
+<phrase>
+    <source>Text</source>
+    <target>Text</target>
+</phrase>
+<phrase>
+    <source>Text:</source>
+    <target>Text:</target>
+</phrase>
+<phrase>
+    <source>Diagram</source>
+    <target>Schaltplan</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>Name</target>
+</phrase>
+<phrase>
+    <source></source>
+    <target>Vertikal</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horizontal</target>
+</phrase>
+<phrase>
+    <source>Middle</source>
+    <target>Mittelpunkt</target>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>px</target>
+</phrase>
+<phrase>
+    <source>Abscisse :</source>
+    <target>Abszisse:</target>
+</phrase>
+<phrase>
+    <source>Error</source>
+    <target>Fehler</target>
+</phrase>
+<phrase>
+    <source>Preview</source>
+    <target>Vorschau</target>
+</phrase>
+<phrase>
+    <source>élément</source>
+    <target>Bauteil</target>
+</phrase>
+<phrase>
+    <source>Élement</source>
+    <target>Bauteil</target>
+</phrase>
+<phrase>
+    <source>y</source>
+    <target>y</target>
+</phrase>
+<phrase>
+    <source>x</source>
+    <target>x</target>
+</phrase>
+<phrase>
+    <source>Conductors</source>
+    <target>Leitungen</target>
+</phrase>
+<phrase>
+    <source>title block</source>
+    <target>Schriftfeld</target>
+</phrase>
+<phrase>
+    <source>traduction</source>
+    <target>Übersetzung</target>
+</phrase>
+<phrase>
+    <source>Change the name of the terminal</source>
+    <target>Klemmenname ändern</target>
+</phrase>
+</QPH>

@@ -1732,10 +1732,10 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	// Column headers (French)
 	QMap<int, QString> headers;
 	headers[COL_TYPE]     = QObject::tr("Type");
-	headers[COL_ADDRESS]  = QObject::tr("Adresse");
-	headers[COL_FUNCTION] = QObject::tr("Fonction");
-	headers[COL_COMMENT]  = QObject::tr("Commentaire");
-	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+	headers[COL_ADDRESS]  = QObject::tr("Address");
+	headers[COL_FUNCTION] = QObject::tr("Function");
+	headers[COL_COMMENT]  = QObject::tr("Annotation");
+	headers[COL_CROSSREF] = QObject::tr("Cross-reference");
 
 	// Build visible columns (must match Element::drawPlcTable logic)
 	QList<int> visible_cols;

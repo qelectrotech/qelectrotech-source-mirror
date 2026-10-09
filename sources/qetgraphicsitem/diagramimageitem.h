@@ -174,6 +174,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 	void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 	bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+	void keyPressEvent(QKeyEvent *event) override;
 	QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	private:
@@ -203,6 +204,8 @@ class DiagramImageItem : public QetGraphicsItem {
 	void handlerMousePressEvent(int index, Qt::KeyboardModifiers mods);
 	void handlerMouseMoveEvent(int index, QGraphicsSceneMouseEvent *event);
 	void handlerMouseReleaseEvent(int index);
+	void cancelHandleDrag();
+	void endHandleDrag();
 	void dragResize(int index, const QPointF &localPos, Qt::KeyboardModifiers mods);
 	void dragRotateHandle(int cornerIndex, const QPointF &scenePos, Qt::KeyboardModifiers mods);
 	void dragSkewHandle(int edgeIndex, const QPointF &scenePos, Qt::KeyboardModifiers mods);
@@ -264,6 +267,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	QVector<HandleRole> m_handleRoles;
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
+	bool m_drag_cancelled = false;   // Escape pressed: ignore the rest of this mouse gesture
 	ShapeTransform m_original_transform;
 	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment

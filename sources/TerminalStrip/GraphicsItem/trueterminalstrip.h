@@ -59,6 +59,11 @@ namespace TerminalStripDrawer
             bool isBridged() const override;
             AbstractBridgeInterface* bridge() const override;
 			QString xref() const override;
+			ElementData::TerminalType type() const override;
+			bool isLed() const override;
+			QString cable() const override;
+			QString cableWire() const override;
+			bool isShield() const override;
 
 		private:
 			QSharedPointer<RealTerminal> m_real;

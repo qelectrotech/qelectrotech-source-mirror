@@ -17,7 +17,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Nouveau nom :</string>
+      <string>new name :</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -27,21 +27,21 @@
    <item row="2" column="0">
     <widget class="QPushButton" name="m_erase_pb">
      <property name="text">
-      <string>Écraser</string>
+      <string>Erase</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
     <widget class="QPushButton" name="m_rename_pb">
      <property name="text">
-      <string>Renommer</string>
+      <string>Rename</string>
      </property>
     </widget>
    </item>
    <item row="2" column="2">
     <widget class="QPushButton" name="m_cancel_pb">
      <property name="text">
-      <string>Annuler</string>
+      <string>Undo</string>
      </property>
     </widget>
    </item>

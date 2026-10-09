@@ -1,0 +1,3824 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="nb">
+<phrase>
+    <source>
+Hold Shift and drag to move this text on its own</source>
+    <target>
+&lt;Shift&gt; for å flytte</target>
+</phrase>
+<phrase>
+    <source>
+Conductor color : %1</source>
+    <target>
+Lederfarge: %1</target>
+</phrase>
+<phrase>
+    <source>
+Conductor section : %1</source>
+    <target>
+Lederens tverrsnitt: %1</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
+</source>
+    <target>Kontakter: NO: %1, NC: %2, vekslere: %3, andre: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
+</source>
+    <target>Kontakter: NO: %1/%2, NC: %3/%4, vekslere: %5/%6, andre: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Define data directory
+</source>
+    <target>--data-dir=DIR                Angi mappen for data
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl while dragging = free position, no grid snapping)</source>
+    <target>(Ctrl under dragging = fri posisjon, uten snapping til rutenettet)</target>
+</phrase>
+<phrase>
+    <source> (already used)</source>
+    <target>(allerede brukt)</target>
+</phrase>
+<phrase>
+    <source> -- %1: mode %2</source>
+    <target>-- %1 : modus %2</target>
+</phrase>
+<phrase>
+    <source> ; red point: drag to reposition the rotation center</source>
+    <target>; rødt punkt: dra for å flytte rotasjonssenteret</target>
+</phrase>
+<phrase>
+    <source> ; turquoise point: arc</source>
+    <target>; turkis punkt: bue</target>
+</phrase>
+<phrase>
+    <source> ; an edge: skew</source>
+    <target>; en kant: helling</target>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>fra en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>fra gruppen med klemmer %1</target>
+</phrase>
+<phrase>
+    <source> The developers of QElectroTech</source>
+    <target>QElectroTech-utviklerne</target>
+    <definition>about tab, developers line</definition>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>mm</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Click: mode %1</source>
+    <target>— Klikk: modus %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 t %2 min</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Help</source>
+    <target>&amp;Hjelp</target>
+</phrase>
+<phrase>
+    <source>&amp;Close this editor</source>
+    <target>&amp;Lukk denne editoren</target>
+</phrase>
+<phrase>
+    <source>(already assigned)</source>
+    <target>(allerede tilordnet)</target>
+</phrase>
+<phrase>
+    <source>(number of contacts does not match)</source>
+    <target>(antall kontakter samsvarer ikke)</target>
+</phrase>
+<phrase>
+    <source>(subtype does not match)</source>
+    <target>(undertype samsvarer ikke)</target>
+</phrase>
+<phrase>
+    <source>(status does not match)</source>
+    <target>(tilstand samsvarer ikke)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = create handles</source>
+    <target>, Alt = opprett håndtak</target>
+</phrase>
+<phrase>
+    <source>, Alt = detach into a polyline</source>
+    <target>, Alt = løsne til polylinje</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ It is then possible that the opening of all or part of this document fails.
+What do you wish to do ?</source>
+    <target>.
+ Det er derfor mulig at åpning av hele eller deler av dette dokumentet mislykkes.
+Hva vil du gjøre?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (screen)</source>
+    <target>150 DPI (skjerm)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (print)</source>
+    <target>300 DPI (utskrift)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (high quality)</source>
+    <target>600 DPI (høy kvalitet)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
+    <target>&lt;br&gt;&lt;b&gt;Feil&lt;/b&gt; :&lt;br&gt;Lederdefinisjoner kan bare ha én klemme.&lt;br&gt;&lt;b&gt;Løsning&lt;/b&gt; :&lt;br&gt;Kontroller at elementet bare har én klemme</target>
+</phrase>
+<phrase>
+    <source>&lt;center&gt;WARNING:&lt;/center&gt;
+ %1 more rows are needed to display all the information</source>
+    <target>&lt;center&gt;ADVARSEL:&lt;/center&gt;
+ %1 linjer mangler for å vise all informasjonen</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Move down this sheet x100</source>
+    <target>Flytt dette arket ned x100</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Handling</target>
+</phrase>
+<phrase>
+    <source>Fit sheet to page</source>
+    <target>Tilpass arket til siden</target>
+</phrase>
+<phrase>
+    <source>Address</source>
+    <target>Adresse</target>
+</phrase>
+<phrase>
+    <source>PLC address</source>
+    <target>PLC-adresse</target>
+</phrase>
+<phrase>
+    <source>Display</source>
+    <target>Visning</target>
+</phrase>
+<phrase>
+    <source>View grid</source>
+    <target>Vis rutenett</target>
+</phrase>
+<phrase>
+    <source>Displays information about Qt library</source>
+    <target>Viser informasjon om Qt-biblioteket</target>
+</phrase>
+<phrase>
+    <source>Displays information about QElectroTech</source>
+    <target>Viser informasjon om QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Shows or hides the guides</source>
+    <target>Viser eller skjuler hjelpelinjer</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>Vis</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Display facing pages</source>
+    <target>Vis to sider</target>
+</phrase>
+<phrase>
+    <source>Show help</source>
+    <target>Vis hjelp</target>
+</phrase>
+<phrase>
+    <source>Show the default grid (applied the next time the programme is launched)</source>
+    <target>Vis rutenettet som standard (brukes ved neste oppstart)</target>
+</phrase>
+<phrase>
+    <source>Show name</source>
+    <target>Vis navnet</target>
+</phrase>
+<phrase>
+    <source>Show headers on the sheet</source>
+    <target>Vis overskrifter på arket</target>
+</phrase>
+<phrase>
+    <source>View the guides</source>
+    <target>Vis hjelpelinjer</target>
+</phrase>
+<phrase>
+    <source>Show default guides (applies from the next time the programme is launched)</source>
+    <target>Vis hjelpelinjene som standard (brukes ved neste oppstart)</target>
+</phrase>
+<phrase>
+    <source>Display terminal numbers in Xrefs</source>
+    <target>Vis rekkeklemmenumre i kryssreferanser</target>
+</phrase>
+<phrase>
+    <source>Show or hide the column headings of the PLC table on the sheet</source>
+    <target>Vis eller skjul kolonneoverskriftene i PLC-tabellen på arket</target>
+</phrase>
+<phrase>
+    <source>Display all pages</source>
+    <target>Vis forhåndsvisning av alle sider</target>
+</phrase>
+<phrase>
+    <source>Show single page</source>
+    <target>Vis én side</target>
+</phrase>
+<phrase>
+    <source>Show/hide the label border</source>
+    <target>Vis/skjul rammen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Show/hide the terminal name</source>
+    <target>Vis/skjul navnet på rekkeklemmen</target>
+</phrase>
+<phrase>
+    <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
+What do you wish to do ?</source>
+    <target>For å gjøre det fullt kompatibelt, åpne det samme prosjektet med versjon 0.8 eller 0.80 av QElectroTech, lagre prosjektet og åpne det på nytt med denne versjonen.
+Hva vil du gjøre?</target>
+</phrase>
+<phrase>
+    <source>Adds a terminal plan to the current sheet</source>
+    <target>Legger til en klemmelistplan på gjeldende ark</target>
+</phrase>
+<phrase>
+    <source>Adds a Bézier curve to the current sheet</source>
+    <target>Legger til en Bézier-kurve på gjeldende ark</target>
+</phrase>
+<phrase>
+    <source>Adds a PDF page to the current sheet</source>
+    <target>Legger til en PDF-side på gjeldende ark</target>
+</phrase>
+<phrase>
+    <source>Add</source>
+    <target>Legg til</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>Legg til %1 klemmer</target>
+</phrase>
+<phrase>
+    <source>Add to bus: %1</source>
+    <target>Legg til i bussen: %1</target>
+</phrase>
+<phrase>
+    <source>Add to cable: %1</source>
+    <target>Legg til i kabelen: %1</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>Legg til klemmen %1</target>
+</phrase>
+<phrase>
+    <source>Add the following terminal plan :</source>
+    <target>Legg til følgende rekkeklemmeplan:</target>
+</phrase>
+<phrase>
+    <source>Add a terminal block</source>
+    <target>Legg til en rekkeklemmerad</target>
+</phrase>
+<phrase>
+    <source>Add a terminal strip to the project</source>
+    <target>Legg til en rekkeklemmerad i prosjektet</target>
+</phrase>
+<phrase>
+    <source>Add a sheet</source>
+    <target>Legg til et ark</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Add a group of terminals</source>
+    <target>Legg til en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Add a PDF</source>
+    <target>Legg til en PDF</target>
+</phrase>
+<phrase>
+    <source>Add a terminal plan</source>
+    <target>Legg til en klemmeplan</target>
+</phrase>
+<phrase>
+    <source>Add a point to a curve</source>
+    <target>Legg til et punkt på en kurve</target>
+</phrase>
+<phrase>
+    <source>Add a summary</source>
+    <target>Legg til en innholdsfortegnelse</target>
+</phrase>
+<phrase>
+    <source>Add a terminal</source>
+    <target>Legg til en klemme</target>
+</phrase>
+<phrase>
+    <source>Add a curve</source>
+    <target>Legg til en kurve</target>
+</phrase>
+<phrase>
+    <source>Add a custom property</source>
+    <target>Legg til en egendefinert egenskap</target>
+</phrase>
+<phrase>
+    <source>Fit to width</source>
+    <target>Tilpass bredden</target>
+</phrase>
+<phrase>
+    <source>Fit to page</source>
+    <target>Tilpass siden</target>
+</phrase>
+<phrase>
+    <source>Fit table to sheet</source>
+    <target>Tilpass tabellen til arket</target>
+</phrase>
+<phrase>
+    <source>Alignment</source>
+    <target>Justering</target>
+</phrase>
+<phrase>
+    <source>Go to the end of the project</source>
+    <target>Gå til slutten av prosjektet</target>
+</phrase>
+<phrase>
+    <source>Alphabetical</source>
+    <target>Alfabetisk</target>
+</phrase>
+<phrase>
+    <source>Alphanumeric (A, B, C... 1, 2...)</source>
+    <target>Alfanumerisk (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Vinkel</target>
+</phrase>
+<phrase>
+    <source>Corner</source>
+    <target>Kantete</target>
+</phrase>
+<phrase>
+    <source>Cancellation</source>
+    <target>Angre</target>
+</phrase>
+<phrase>
+    <source>Undo</source>
+    <target>Angre</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Avbryt</target>
+</phrase>
+<phrase>
+    <source>Preview</source>
+    <target>Forhåndsvisning</target>
+</phrase>
+<phrase>
+    <source>Preview :</source>
+    <target>Forhåndsvisning:</target>
+</phrase>
+<phrase>
+    <source>Apply the geometry of a table to the table linked to it</source>
+    <target>Bruk geometrien til en tabell på tabellene knyttet til denne</target>
+</phrase>
+<phrase>
+    <source>Apply geometry to all tables linked to this one</source>
+    <target>Bruk geometrien på alle tabeller knyttet til denne</target>
+</phrase>
+<phrase>
+    <source>Apply displacement</source>
+    <target>Bruk flyttingen</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.5 and more</source>
+    <target>Rund opp for 0,5 og mer</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.75 and more</source>
+    <target>Rund opp for 0,75 og mer</target>
+</phrase>
+<phrase>
+    <source>Round the corners of %1</source>
+    <target>Avrund hjørnene til %1</target>
+</phrase>
+<phrase>
+    <source>Navigate to an element</source>
+    <target>Åpne et element</target>
+</phrase>
+<phrase>
+    <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Advarsel: summen av de relative breddene overstiger 100%% av den totale bredden, denne tittelfeltmalen kan ikke oppfylles med noen bredde.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Advarsel: kolonnene med fast bredde får ikke plass i den gjenværende bredden, denne tittelfeltmalen kan ikke oppfylles med noen bredde.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Awarded exclusively</source>
+    <target>Kun tilordnede</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>til gruppen med klemmer %1</target>
+</phrase>
+<phrase>
+    <source>None</source>
+    <target>Ingen</target>
+</phrase>
+<phrase>
+    <source>Programmable Logic Controller (PLC)</source>
+    <target>Automat (PLC)</target>
+</phrase>
+<phrase>
+    <source>PLCs (MAE/SPS)</source>
+    <target>Automater (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Automatic terminal numbering</target>
+</phrase>
+<phrase>
+    <source>Auto Numbering</source>
+    <target>Autonummerering</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>Annet</target>
+</phrase>
+<phrase>
+    <source>With</source>
+    <target>Med</target>
+</phrase>
+<phrase>
+    <source>Warning</source>
+    <target>Advarsel</target>
+</phrase>
+<phrase>
+    <source>Warning </source>
+    <target>Advarsel</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>WARNING:
+Any setting other than “No rounding” may cause rendering errors in the project, depending on:
+
+1 - the selected setting 
+2 - the screen&apos;s dpi 
+3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
+    <target>ADVARSEL:
+Alle andre verdier enn «Ingen avrunding» kan forårsake feil i gjengivelsen av prosjektet avhengig av:
+
+1 – den valgte verdien 
+2 – skjermens dpi 
+3 – endring av prosjektet på en annen datamaskin og/eller skjerm som ikke har de samme innstillingene for punktene 1 og 2.</target>
+</phrase>
+<phrase>
+    <source>Warning — Importing an EPLAN file (.edz)</source>
+    <target>Advarsel – import av en EPLAN-fil (.edz)</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 1</source>
+    <target>Hjelpeblokk 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 2</source>
+    <target>Hjelpeblokk 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 3</source>
+    <target>Hjelpeblokk 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 4</source>
+    <target>Hjelpeblokk 4</target>
+</phrase>
+<phrase>
+    <source>Terminal 1</source>
+    <target>Rekkeklemme 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Terminal 2</source>
+    <target>Rekkeklemme 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Level 0 terminal:</source>
+    <target>Rekkeklemme nivå 0:</target>
+</phrase>
+<phrase>
+    <source>Level 1 terminal:</source>
+    <target>Rekkeklemme nivå 1:</target>
+</phrase>
+<phrase>
+    <source>Level 2 terminal:</source>
+    <target>Rekkeklemme nivå 2:</target>
+</phrase>
+<phrase>
+    <source>Level 3 terminal:</source>
+    <target>Rekkeklemme nivå 3:</target>
+</phrase>
+<phrase>
+    <source>Terminals</source>
+    <target>Rekkeklemmer</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>Uavhengig rekkeklemme</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>Uavhengige rekkeklemmer</target>
+</phrase>
+<phrase>
+    <source>External terminal block</source>
+    <target>Ytre rekkeklemme</target>
+</phrase>
+<phrase>
+    <source>Indoor terminal block</source>
+    <target>Indre rekkeklemme</target>
+</phrase>
+<phrase>
+    <source>Terminal blocks</source>
+    <target>Rekkeklemmerader</target>
+</phrase>
+<phrase>
+    <source>bus</source>
+    <target>buss</target>
+</phrase>
+<phrase>
+    <source>&amp;Paste in the area</source>
+    <target>&amp;Lim inn i området</target>
+</phrase>
+<phrase>
+    <source>This is where you can define how new elements will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+
+-The &quot;sheet&quot; type represents the number of the current sheet.
+The other fields are not used.
+
+-The &quot;Sheet&quot; type represents the name of the current sheet.
+The other fields are not used.</source>
+    <target>Her kan du angi hvordan nye elementer skal nummereres.
+-En nummerering består av minst én variabel.
+-Du kan legge til eller fjerne en nummereringsvariabel med knappene - og +.
+-En nummereringsvariabel består av: en type, en verdi og en økning.
+
+-typene "Siffer 1", "Siffer 01" og "Siffer 001" representerer en numerisk type definert i feltet "Verdi", som økes med verdien i feltet "Økning" for hver nye ledning.
+-"Siffer 01" og "Siffer 001" vises henholdsvis med minimum to og tre sifre i skjemaet.
+Hvis sifferet i feltet Verdi har færre sifre enn den valgte typen, blir det innledet med ett eller to 0 for å overholde typen.
+
+-Typen "Tekst" representerer en fast tekst.
+Feltet "Økning" brukes ikke.
+
+-Typen "Ark nr." representerer nummeret til gjeldende ark.
+De andre feltene brukes ikke.
+
+-Typen "Ark" representerer navnet på gjeldende ark.
+De andre feltene brukes ikke.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>kabel</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>Kan ikke lese %1</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>Firma-tittelfelt</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>QET title blocks</source>
+    <target>QET-tittelfelt</target>
+    <definition>title of the title block templates 					collection provided by QElectroTech</definition>
+</phrase>
+<phrase>
+    <source>User title blocks</source>
+    <target>Bruker-tittelfelt</target>
+    <definition>title of the user&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Category</source>
+    <target>Kategori</target>
+</phrase>
+<phrase>
+    <source>This document appears to have been saved with version %1
+ which is later than your version ! 
+You are currently using QElectroTech in version %2</source>
+    <target>Dette dokumentet ser ut til å ha blitt lagret med en versjon %1
+ som er nyere enn din versjon! 
+Du bruker for øyeblikket QElectroTech versjon %2</target>
+</phrase>
+<phrase>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
+    <target>Dette formatet støtter ikke transparens: bildet lagres slik det var før den gjennomsiktige fargen ble brukt. Fortsette?</target>
+</phrase>
+<phrase>
+    <source>This shortcut is also used by : %1</source>
+    <target>Denne snarveien brukes også av: %1</target>
+</phrase>
+<phrase>
+    <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
+    <target>Dette inneholder de siste loggmeldingene fra denne økten. Kontroller innholdet før du legger det ved en offentlig feilrapport.</target>
+</phrase>
+<phrase>
+    <source>This is the title block company collection -- use it to create, store and edit your own title blocks.</source>
+    <target>Dette er samlingen company med tittelblokker – bruk den til å opprette, lagre og redigere dine egne tittelblokker.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Middle</source>
+    <target>Senter</target>
+</phrase>
+<phrase>
+    <source>Center :</source>
+    <target>Senter:</target>
+</phrase>
+<phrase>
+    <source>This element is already linked</source>
+    <target>Dette elementet er allerede koblet</target>
+</phrase>
+<phrase>
+    <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
+    <target>Denne funksjonen nummererer rekkeklemmene i prosjektet etter posisjonen deres. Tomme eller låste rekkeklemmer ignoreres. Merkingen av rekkeklemmene må konfigureres på forhånd slik: &apos;-X:AB&apos;. Delen før kolon (rekkeklemmeraden) kan navngis fritt. &apos;AB&apos; kan bestå av tall eller bokstaver.</target>
+</phrase>
+<phrase>
+    <source>Youtube channel</source>
+    <target>Youtube-kanal</target>
+</phrase>
+<phrase>
+    <source>Text field</source>
+    <target>Tekstfelt</target>
+</phrase>
+<phrase>
+    <source>Company collection path</source>
+    <target>Sti til samlingen company</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>Sti til tittelblokkene company</target>
+</phrase>
+<phrase>
+    <source>User macro path</source>
+    <target>Sti til brukermakroer</target>
+</phrase>
+<phrase>
+    <source>Chinese</source>
+    <target>Kinesisk</target>
+</phrase>
+<phrase>
+    <source>Select the location where you want to save your template.</source>
+    <target>Velg stedet der du vil lagre malen.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
+    <target>Klikk: plasser i opprinnelig størrelse. Klikk-og-dra: plasser og endre størrelse. Høyreklikk: roter 90°. Ctrl+rullehjul: juster størrelsen.</target>
+</phrase>
+<phrase>
+    <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
+    <target>Venstreklikk: neste punkt; dobbeltklikk eller Enter: avslutt; høyreklikk: angre siste punkt</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
+    <target>Venstreklikk: plasser motsatt hjørne (Shift = kvadrat, Ctrl = fra midten + fri posisjon, Ctrl+Shift = sentrert kvadrat); høyreklikk: avbryt</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
+    <target>Venstreklikk: plasser motsatt hjørne (Shift = sirkel, Ctrl = fra midten + fri posisjon, Ctrl+Shift = sentrert sirkel); høyreklikk: avbryt</target>
+</phrase>
+<phrase>
+    <source>Left click: position the starting point (Ctrl = free position)</source>
+    <target>Venstreklikk: plasser startpunktet (Ctrl = fri posisjon)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
+    <target>Venstreklikk: plasser sluttpunktet (Ctrl = fri posisjon); høyreklikk: avbryt</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first corner (Ctrl = center point, free position)</source>
+    <target>Venstreklikk: plasser første hjørne (Ctrl = midtpunkt, fri posisjon)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first point (Ctrl = free position)</source>
+    <target>Venstreklikk: plasser første punkt (Ctrl = fri posisjon)</target>
+</phrase>
+<phrase>
+    <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
+    <target>Klikk: kantete punkt. Klikk-og-dra: kurvepunkt. Klikk på første punkt: lukk. Escape/Enter: avslutt. Høyreklikk: angre siste punkt.</target>
+</phrase>
+<phrase>
+    <source>Click</source>
+    <target>Klikk</target>
+</phrase>
+<phrase>
+    <source>Click: mode %1</source>
+    <target>Klikk: modus %1</target>
+</phrase>
+<phrase>
+    <source>Click to choose a color</source>
+    <target>Klikk for å velge en farge</target>
+</phrase>
+<phrase>
+    <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
+    <target>Klikk på bildet for å legge til en farge. Juster toleransen for hver farge med skyveknappen, eller klikk på × for å fjerne den.</target>
+</phrase>
+<phrase>
+    <source>Click on the image to choose a color</source>
+    <target>Klikk på bildet for å velge en farge</target>
+</phrase>
+<phrase>
+    <source>Rounded corners</source>
+    <target>Avrundede hjørner</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>Samling</target>
+</phrase>
+<phrase>
+    <source>Company collection</source>
+    <target>Collection Company</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Samlinger</target>
+</phrase>
+<phrase>
+    <source>Paste</source>
+    <target>Lim inn</target>
+</phrase>
+<phrase>
+    <source>paste %1</source>
+    <target>lim inn %1</target>
+    <definition>undo caption - %1 is a sentence listing the content to paste</definition>
+</phrase>
+<phrase>
+    <source>Paste from the clipboard</source>
+    <target>Lim inn fra utklippstavlen</target>
+</phrase>
+<phrase>
+    <source>Annotation</source>
+    <target>Kommentar</target>
+</phrase>
+<phrase>
+    <source>Comment :</source>
+    <target>Kommentar:</target>
+</phrase>
+<phrase>
+    <source>PLC comment</source>
+    <target>PLC-kommentar</target>
+</phrase>
+<phrase>
+    <source>Common (contact SW)</source>
+    <target>Felles (SW-kontakt)</target>
+</phrase>
+<phrase>
+    <source>Compilation: </source>
+    <target>Kompilering:</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>Kompilering:</target>
+</phrase>
+<phrase>
+    <source>Component 1</source>
+    <target>Komponent 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Component 2</source>
+    <target>Komponent 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Konfigurasjon</target>
+</phrase>
+<phrase>
+    <source>PLC Configuration</source>
+    <target>PLC-konfigurasjon</target>
+</phrase>
+<phrase>
+    <source>Set the font for column headers</source>
+    <target>Konfigurer skriften for kolonneoverskrifter</target>
+</phrase>
+<phrase>
+    <source>Set the text font in the cells</source>
+    <target>Konfigurer skriften for tekst i cellene</target>
+</phrase>
+<phrase>
+    <source>Conflicts only</source>
+    <target>Bare konflikter</target>
+</phrase>
+<phrase>
+    <source>Log in</source>
+    <target>Koble til</target>
+</phrase>
+<phrase>
+    <source>Maintain visual rotation</source>
+    <target>Behold visuell rotasjon</target>
+</phrase>
+<phrase>
+    <source>Keep conductors colors</source>
+    <target>Behold ledernes farger</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Kontakt</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Kontakter</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a Bézier curve</source>
+    <target>Konverter %1 til Bézier-kurve</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a polyline</source>
+    <target>Konverter %1 til polylinje</target>
+</phrase>
+<phrase>
+    <source>Convert to Bézier curve</source>
+    <target>Konverter til Bézier-kurve</target>
+</phrase>
+<phrase>
+    <source>Convert to polyline</source>
+    <target>Konverter til polylinje</target>
+</phrase>
+<phrase>
+    <source>DXF Element Converter</source>
+    <target>DXF-elementkonverterer</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copy and paste</source>
+    <target>Kopier og lim inn</target>
+</phrase>
+<phrase>
+    <source>Korean</source>
+    <target>Koreansk</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Kunne ikke opprette en midlertidig mappe: %1</target>
+</phrase>
+<phrase>
+    <source>Color</source>
+    <target>Farge</target>
+</phrase>
+<phrase>
+    <source>Color / wire number of the cable</source>
+    <target>Farge / nummer på kabeltråd</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Farge:</target>
+</phrase>
+<phrase>
+    <source>Conductor color</source>
+    <target>Lederfarge</target>
+</phrase>
+<phrase>
+    <source>Wire color</source>
+    <target>Trådfarge</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Text color :</source>
+    <target>Tekstfarge:</target>
+</phrase>
+<phrase>
+    <source>Bridge color :</source>
+    <target>Brofarge:</target>
+</phrase>
+<phrase>
+    <source>Transparent color</source>
+    <target>Transparent farge</target>
+</phrase>
+<phrase>
+    <source>Transparent color...</source>
+    <target>Gjennomsiktig farge...</target>
+</phrase>
+<phrase>
+    <source>Automatically cut existing conductors when placing an element</source>
+    <target>Kapp automatisk eksisterende ledere når et element plasseres</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Automatic disconnection of conductor(s)</source>
+    <target>Automatisk kapping av leder(e)</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Rated current</source>
+    <target>Nominell strøm</target>
+</phrase>
+<phrase>
+    <source>Creation of terminal group</source>
+    <target>Opprett gruppe av rekkeklemmer</target>
+</phrase>
+<phrase>
+    <source>Create a template</source>
+    <target>Opprett en mal</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Create a backup copy?</source>
+    <target>Opprette en sikkerhetskopi?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyclic (modulo)</source>
+    <target>Syklisk (modulo)</target>
+</phrase>
+<phrase>
+    <source>Cable</source>
+    <target>Kabel</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>fra en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format DD-MM-YYYY</source>
+    <target>Dato for filregistrering, format dd-MM-yyyy</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in local date format</source>
+    <target>Filens lagringsdato lokalt format</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format YYYY-MM-DD</source>
+    <target>Filens lagringsdato format yyyy-MM-dd</target>
+</phrase>
+<phrase>
+    <source>Ungroup the terminals</source>
+    <target>Del opp rekkeklemmene</target>
+</phrase>
+<phrase>
+    <source>Move the rotation center</source>
+    <target>Flytt rotasjonssenteret</target>
+</phrase>
+<phrase>
+    <source>Last page</source>
+    <target>Siste side</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>Beskrivelse</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>Beskrivelse:</target>
+</phrase>
+<phrase>
+    <source>Textual description</source>
+    <target>Tekstlig beskrivelse</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 text description</source>
+    <target>Tekstlig beskrivelse hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 text description</source>
+    <target>Tekstlig beskrivelse hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 text description</source>
+    <target>Tekstlig beskrivelse hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 text description</source>
+    <target>Tekstlig beskrivelse hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Draw the border</source>
+    <target>Tegn rammen</target>
+</phrase>
+<phrase>
+    <source>Draw the title block</source>
+    <target>Tegn tittelfeltet</target>
+</phrase>
+<phrase>
+    <source>Draw terminals</source>
+    <target>Tegn klemmene</target>
+</phrase>
+<phrase>
+    <source>Draw the names of the terminals</source>
+    <target>Tegn terminalnavnene</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Dialog</target>
+</phrase>
+<phrase>
+    <source>Diameters:</source>
+    <target>Diametere:</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>Diode</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>retning</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>Plassering</target>
+</phrase>
+<phrase>
+    <source>Default layout</source>
+    <target>Standard plassering</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Avstand i piksler mellom etiketten og slavekryssreferansen</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Avstand etikett - slave:</target>
+</phrase>
+<phrase>
+    <source>Installation folder</source>
+    <target>Installasjonsmappe</target>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand the title block company collection</source>
+    <target>Dobbeltklikk for å lukke eller utvide samlingen company med tittelblokker</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Høyre</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>fra gruppen med klemmer %1</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Feil: Kontroller at filen %1 er en gyldig .dxf-fil</target>
+</phrase>
+<phrase>
+    <source>Vertical offset</source>
+    <target>Vertikal forskyvning</target>
+</phrase>
+<phrase>
+    <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
+    <target>Fjern merket for rekkeklemmeradene som skal utelates fra nummereringen</target>
+</phrase>
+<phrase>
+    <source>Set the maximum number of slaves</source>
+    <target>Angi maksimalt antall slaver</target>
+</phrase>
+<phrase>
+    <source>Define the slave elements</source>
+    <target>Angi slaveelementer</target>
+</phrase>
+<phrase>
+    <source>Set a transparent color</source>
+    <target>Angi en gjennomsiktig farge</target>
+</phrase>
+<phrase>
+    <source>Conductor definition</source>
+    <target>Ledningsdefinisjon</target>
+</phrase>
+<phrase>
+    <source>Deform a curve</source>
+    <target>Deformer en kurve</target>
+</phrase>
+<phrase>
+    <source>Unlink</source>
+    <target>Koble fra</target>
+</phrase>
+<phrase>
+    <source>Move to :</source>
+    <target>Flytt til:</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>Flytt klemmer</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>Flytt klemmen %1</target>
+</phrase>
+<phrase>
+    <source>Move an image&apos;s rotation center</source>
+    <target>Flytt rotasjonssenteret til et bilde</target>
+</phrase>
+<phrase>
+    <source>Move the label to a terminal</source>
+    <target>Flytt etiketten til en klemme</target>
+</phrase>
+<phrase>
+    <source>Move the sheets</source>
+    <target>Flytt arkene</target>
+</phrase>
+<phrase>
+    <source>Moving a sheet</source>
+    <target>Flytt et ark</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Move a terminal</source>
+    <target>Flytt en klemme</target>
+</phrase>
+<phrase>
+    <source>Unbridge the terminals</source>
+    <target>Fjern brokobling av rekkeklemmene</target>
+</phrase>
+<phrase>
+    <source>Unlocked: width and height can be changed independently. Click to lock.</source>
+    <target>Ulåst: bredde og høyde kan endres uavhengig. Klikk for å låse.</target>
+</phrase>
+<phrase>
+    <source>Edit margins</source>
+    <target>Rediger marger</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Editor</target>
+</phrase>
+<phrase>
+    <source>Make the move</source>
+    <target>Utfør flyttingen</target>
+</phrase>
+<phrase>
+    <source>Element Auto Numbering</source>
+    <target>Element for autonummerering</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>Headser :</source>
+    <target>Overskrift:</target>
+</phrase>
+<phrase>
+    <source>Frame the text</source>
+    <target>Ram inn teksten</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>Fjern %1 klemmer</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>Fjern en klemme</target>
+</phrase>
+<phrase>
+    <source>Save original image as...</source>
+    <target>Lagre originalbildet som...</target>
+</phrase>
+<phrase>
+    <source>Save image as...</source>
+    <target>Lagre bildet som...</target>
+</phrase>
+<phrase>
+    <source>Save the diagnostic report</source>
+    <target>Lagre diagnoserapporten</target>
+</phrase>
+<phrase>
+    <source>Save a diagnostic report...</source>
+    <target>Lagre en diagnostikkrapport...</target>
+</phrase>
+<phrase>
+    <source>Save a template</source>
+    <target>Lagre en mal</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Save...</source>
+    <target>Lagre...</target>
+</phrase>
+<phrase>
+    <source>Enter the scale factor</source>
+    <target>Skriv inn skaleringsfaktoren</target>
+</phrase>
+<phrase>
+    <source>Analogue input</source>
+    <target>Analog inngang</target>
+</phrase>
+<phrase>
+    <source>Digital input</source>
+    <target>Digital inngang</target>
+</phrase>
+<phrase>
+    <source>Universal input</source>
+    <target>Universell inngang</target>
+</phrase>
+<phrase>
+    <source>Error</source>
+    <target>Feil</target>
+</phrase>
+<phrase>
+    <source>Error launching qet_tb_generator plugin</source>
+    <target>Feil ved start av programtillegget qet_tb_generator</target>
+</phrase>
+<phrase>
+    <source>PLC slave</source>
+    <target>PLC-slave</target>
+</phrase>
+<phrase>
+    <source>Space :</source>
+    <target>Mellomrom:</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Eksempel</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclude from the bill of materials</source>
+    <target>Utelat fra varelisten</target>
+</phrase>
+<phrase>
+    <source>Exclude from automatic numbering</source>
+    <target>Utelat fra automatisk nummerering</target>
+</phrase>
+<phrase>
+    <source>Terminal strip explorer</source>
+    <target>Utforsker for rekkeklemmerader</target>
+</phrase>
+<phrase>
+    <source>Export successful</source>
+    <target>Eksporten var vellykket</target>
+</phrase>
+<phrase>
+    <source>Export one or more sheets of the current project</source>
+    <target>Eksporterer ett eller flere ark fra gjeldende prosjekt</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Export in pdf</source>
+    <target>Eksporter til pdf</target>
+</phrase>
+<phrase>
+    <source>Export as SVG</source>
+    <target>Eksporter til SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Export the wiring diagram</source>
+    <target>Eksporter koblingsplanen</target>
+</phrase>
+<phrase>
+    <source>Export as : </source>
+    <target>Eksporter som:</target>
+</phrase>
+<phrase>
+    <source>Manufacturer</source>
+    <target>Produsent</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 1</source>
+    <target>Produsent hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 2</source>
+    <target>Produsent hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 3</source>
+    <target>Produsent hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 4</source>
+    <target>Produsent hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>X Factor:</source>
+    <target>Faktor X:</target>
+</phrase>
+<phrase>
+    <source>Y Factor:</source>
+    <target>Faktor Y:</target>
+</phrase>
+<phrase>
+    <source>Rotate %1</source>
+    <target>Roter %1</target>
+</phrase>
+<phrase>
+    <source>Rotate an image</source>
+    <target>Roter et bilde</target>
+</phrase>
+<phrase>
+    <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
+    <target>Dra i håndtakene, eller inne i rammen, for å justere området som skal beholdes.</target>
+</phrase>
+<phrase>
+    <source>Close this editor</source>
+    <target>Lukk denne editoren</target>
+</phrase>
+<phrase>
+    <source>File (*.pdf)</source>
+    <target>Fil (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>CSV files (*.csv)</source>
+    <target>CSV-filer (*.csv)</target>
+</phrase>
+<phrase>
+    <source>PDF files (*.pdf)</source>
+    <target>PDF-filer (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Text files (*.txt);;All files (*)</source>
+    <target>Tekstfiler (*.txt);;Alle filer (*)</target>
+</phrase>
+<phrase>
+    <source>Wire</source>
+    <target>Tråd</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Fant ikke filen: %1</target>
+</phrase>
+<phrase>
+    <source>Filter shortcuts…</source>
+    <target>Filtrer hurtigtaster…</target>
+</phrase>
+<phrase>
+    <source>End 1:</source>
+    <target>Ende 1 :</target>
+</phrase>
+<phrase>
+    <source>End 2:</source>
+    <target>Ende 2 :</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Finrotasjon</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Vend</target>
+</phrase>
+<phrase>
+    <source>Sheet</source>
+    <target>Ark</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Untitled sheet</source>
+    <target>Ark uten tittel</target>
+</phrase>
+<phrase>
+    <source>Sheets to print :</source>
+    <target>Ark som skal skrives ut:</target>
+</phrase>
+<phrase>
+    <source>Function</source>
+    <target>Funksjon</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Function :</source>
+    <target>Funksjon:</target>
+</phrase>
+<phrase>
+    <source>PLC function</source>
+    <target>PLC-funksjon</target>
+</phrase>
+<phrase>
+    <source>Experimental feature</source>
+    <target>Eksperimentell funksjon</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Skjema</target>
+</phrase>
+<phrase>
+    <source>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</source>
+    <target>Visningsformat: en serie med nuller gir minimum antall sifre (00 = 07, 000 = 007). Tomt = naturlig bredde for typen.</target>
+</phrase>
+<phrase>
+    <source>Format as a part list</source>
+    <target>Formater som materielliste</target>
+</phrase>
+<phrase>
+    <source>Closed shape</source>
+    <target>Lukket form</target>
+</phrase>
+<phrase>
+    <source>Label formula</source>
+    <target>Etikettformel</target>
+</phrase>
+<phrase>
+    <source>Text Formula</source>
+    <target>Tekstformel</target>
+</phrase>
+<phrase>
+    <source>Supplier</source>
+    <target>Leverandør</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 1</source>
+    <target>Leverandør hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 2</source>
+    <target>Leverandør hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 3</source>
+    <target>Leverandør hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 4</source>
+    <target>Leverandør hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Fuse</source>
+    <target>Sikring</target>
+</phrase>
+<phrase>
+    <source>Left</source>
+    <target>Venstre</target>
+</phrase>
+<phrase>
+    <source>Terminal manager</source>
+    <target>Behandling av rekkeklemmerader</target>
+</phrase>
+<phrase>
+    <source>Terminal block manager (DEV)</source>
+    <target>Klemmelistbehandler (DEV)</target>
+</phrase>
+<phrase>
+    <source>Drag %1: rotation (Shift = 15°)</source>
+    <target>Dra %1: rotasjon (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
+    <target>Dra: juster buen (Ctrl = fri posisjon, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: round the corners (Ctrl = free position)</source>
+    <target>Dra: avrund hjørnene (Ctrl = fri posisjon)</target>
+</phrase>
+<phrase>
+    <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
+    <target>Dra: deformer kurven (Ctrl = fri posisjon, Alt = bryt tangenten)</target>
+</phrase>
+<phrase>
+    <source>Drag: move this point</source>
+    <target>Dra: flytt dette punktet</target>
+</phrase>
+<phrase>
+    <source>Drag: move the rotation center</source>
+    <target>Dra: flytt rotasjonssenteret</target>
+</phrase>
+<phrase>
+    <source>Drag: move the point (Ctrl = free position</source>
+    <target>Dra: flytt punktet (Ctrl = fri posisjon</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
+    <target>Dra: helling (Ctrl = fri posisjon, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Shift = 15° steps)</source>
+    <target>Dra: vipp (Shift = i trinn på 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotate (Shift = 15° steps)</source>
+    <target>Dra: roter (Shift = i trinn på 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
+    <target>Dra: endre størrelse (Ctrl = fra midten + fri posisjon, Shift = proporsjoner</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
+    <target>Dra: endre størrelse (Shift = behold proporsjonene, Ctrl = fra midten)</target>
+</phrase>
+<phrase>
+    <source>Drag: reposition the rotation center (Ctrl = free position)</source>
+    <target>Dra: flytt rotasjonssenteret (Ctrl = fri posisjon)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
+    <target>Dra: rotasjon (Ctrl = fri posisjon, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag the purple point: round the corners</source>
+    <target>Dra det lilla punktet: avrund hjørnene</target>
+</phrase>
+<phrase>
+    <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
+    <target>Dra et hjørne: roter (Shift = i trinn på 15°); dra en kant: vipp (Shift = i trinn på 15°); rødt punkt: flytt rotasjonssenteret</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
+    <target>Dra et hjørne/kant: endre størrelse (Ctrl = fra midten, Shift = behold proporsjonene)</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
+    <target>Dra et hjørne/kant: endre størrelse (Ctrl = fra midten, Shift = proporsjoner, Alt = løsne til polylinje)</target>
+</phrase>
+<phrase>
+    <source>Drag a point: move it</source>
+    <target>Dra et punkt: flytt det</target>
+</phrase>
+<phrase>
+    <source>Drag an endpoint: move it</source>
+    <target>Dra et endepunkt: flytt det</target>
+</phrase>
+<phrase>
+    <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
+    <target>Dra et håndtak eller kurven: deformer (Alt = bryt tangenten) ; Alt+dra et kantete punkt: opprett håndtak ; høyreklikk: meny for nærmeste knutepunkt</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>gå én side til venstre</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>gå én side til høyre</target>
+</phrase>
+<phrase>
+    <source>Group the terminals</source>
+    <target>Grupper rekkeklemmene</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Hjelpelinjer</target>
+</phrase>
+<phrase>
+    <source>Generates a report containing the latest log entries, to be included in a bug report</source>
+    <target>Genererer en rapport med de siste loggmeldingene, for å inkludere i en feilrapport</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>General</source>
+    <target>Generelt</target>
+</phrase>
+<phrase>
+    <source>Lambda element generator</source>
+    <target>Generator for lambda-element</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Generic</source>
+    <target>Generisk</target>
+</phrase>
+<phrase>
+    <source>Geometry and lines</source>
+    <target>Geometri og linjer</target>
+</phrase>
+<phrase>
+    <source>Geometry</source>
+    <target>Geometri</target>
+</phrase>
+<phrase>
+    <source>Line H:</source>
+    <target>Radh.:</target>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>Høyde</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horisontal</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>horisontal + vertikal</target>
+</phrase>
+<phrase>
+    <source>Horizontal:</source>
+    <target>Horisontalt:</target>
+</phrase>
+<phrase>
+    <source>BMP image (*.bmp)</source>
+    <target>BMP-bilde (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Bildefiler (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>JPEG image (*.jpg *.jpeg)</source>
+    <target>JPEG-bilde (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>PNG image (*.png)</source>
+    <target>PNG-bilde (*.png)</target>
+</phrase>
+<phrase>
+    <source>Source image</source>
+    <target>Kildebilde</target>
+</phrase>
+<phrase>
+    <source>SVG image (*.svg)</source>
+    <target>SVG-bilde (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images not included in the DXF export</source>
+    <target>Bilder inkluderes ikke i DXF-eksporten</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLAN-import</target>
+</phrase>
+<phrase>
+    <source>Import</source>
+    <target>Importer</target>
+</phrase>
+<phrase>
+    <source>Import a dxf</source>
+    <target>Importer en dxf</target>
+</phrase>
+<phrase>
+    <source>Import a dxf file</source>
+    <target>Importer en dxf-fil</target>
+</phrase>
+<phrase>
+    <source>Import an element to resize</source>
+    <target>importer et element som skal endres størrelse på</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part</source>
+    <target>Importer en EPLAN-del</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part (.edz)…</source>
+    <target>Importer en EPLAN-del (.edz) …</target>
+</phrase>
+<phrase>
+    <source>Unable to save the image to this location.</source>
+    <target>Kan ikke lagre bildet på dette stedet.</target>
+</phrase>
+<phrase>
+    <source>Unable to save the parts list to %1.
+%2</source>
+    <target>Kan ikke lagre stykklisten i %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Unable to save the template  ‘%1’.</source>
+    <target>Kan ikke lagre malen « %1 ».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Could not import this part:
+%1</source>
+    <target>Kan ikke importere denne delen:
+%1</target>
+</phrase>
+<phrase>
+    <source>Unable to open the file for writing.</source>
+    <target>Kan ikke åpne filen for skriving.</target>
+</phrase>
+<phrase>
+    <source>Unable to write to the file « %1 ».</source>
+    <target>Kan ikke skrive til filen «%1».</target>
+</phrase>
+<phrase>
+    <source>Unable to load the image.</source>
+    <target>Kan ikke laste bildet.</target>
+</phrase>
+<phrase>
+    <source>Unable to load the PDF file.</source>
+    <target>Kan ikke laste PDF-filen.</target>
+</phrase>
+<phrase>
+    <source>It is not possible to determine the size of the PDF page.</source>
+    <target>Kan ikke fastslå størrelsen på PDF-siden.</target>
+</phrase>
+<phrase>
+    <source>Unable to read the project&apos;s in-memory structure.</source>
+    <target>Kan ikke lese prosjektets minnestruktur.</target>
+</phrase>
+<phrase>
+    <source>Unable to render the PDF page.</source>
+    <target>Kan ikke gjengi PDF-siden.</target>
+</phrase>
+<phrase>
+    <source>Print</source>
+    <target>Skriv ut</target>
+</phrase>
+<phrase>
+    <source>X skew</source>
+    <target>Helning X</target>
+</phrase>
+<phrase>
+    <source>Y skew</source>
+    <target>Helning Y</target>
+</phrase>
+<phrase>
+    <source>Skew %1</source>
+    <target>Helling av %1</target>
+</phrase>
+<phrase>
+    <source>Skew an image</source>
+    <target>Vipp et bilde</target>
+</phrase>
+<phrase>
+    <source>include headers</source>
+    <target>inkluder overskrifter</target>
+</phrase>
+<phrase>
+    <source>Unknown</source>
+    <target>Ukjent</target>
+</phrase>
+<phrase>
+    <source>Increment</source>
+    <target>Inkrement</target>
+</phrase>
+<phrase>
+    <source>Increment: the value added to the counter each time a new number is dialled</source>
+    <target>Inkrement: verdi som legges til telleren ved hver nye nummerering</target>
+</phrase>
+<phrase>
+    <source>Information to display</source>
+    <target>Informasjon som skal vises</target>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>Informasjon</target>
+</phrase>
+<phrase>
+    <source>Available information</source>
+    <target>Tilgjengelig informasjon</target>
+</phrase>
+<phrase>
+    <source>Enter the component details</source>
+    <target>Skriv inn komponentenes informasjon</target>
+</phrase>
+<phrase>
+    <source>Plant:</source>
+    <target>Installasjon:</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number above</source>
+    <target>Sett inn et ark over</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number below</source>
+    <target>Sett inn et ark under</target>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>Veksler</target>
+</phrase>
+<phrase>
+    <source>Available I/O:</source>
+    <target>Tilgjengelig IO:</target>
+</phrase>
+<phrase>
+    <source>I have read and accept these terms and conditions.</source>
+    <target>Jeg har lest og godtar disse vilkårene.</target>
+</phrase>
+<phrase>
+    <source>Japanese</source>
+    <target>Japansk</target>
+</phrase>
+<phrase>
+    <source>Importing a large dxf can take time 
+please wait while importing...</source>
+    <target>Import av en stor dxf kan ta tid 
+vennligst vent mens importen pågår...</target>
+</phrase>
+<phrase>
+    <source>Importing dxf requires the dxf2elmt software.
+Please download it by following the link and unzip it in the installation folder</source>
+    <target>Dxf-import krever programmet dxf2elmt.
+Last det ned via lenken nedenfor og pakk det ut i installasjonsmappen</target>
+</phrase>
+<phrase>
+    <source>The limit set for this master element has been reached (Limit: %1).
+
+Do you still want to link this slave contact?</source>
+    <target>Grensen satt for dette masterelementet er nådd (Grense: %1).
+
+Vil du likevel koble denne slavekontakten?</target>
+</phrase>
+<phrase>
+    <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
+Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
+    <target>Slettingen kan ikke utføres fordi utvalget har en eller flere klemmer som er brokoblet og/eller tilhører en klemme med flere nivåer.
+Fjern brokoblingen og/eller nivåene til de berørte klemmene for å kunne slette dem</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Etikett</target>
+</phrase>
+<phrase>
+    <source>Launches the default browser on the Youtube channel of QElectroTech</source>
+    <target>Åpner standardnettleseren på QElectroTechs Youtube-kanal</target>
+</phrase>
+<phrase>
+    <source>Launches the default browser to the online manual QElectroTech</source>
+    <target>Åpner standardnettleseren på QElectroTechs nettbaserte brukerhåndbok</target>
+</phrase>
+<phrase>
+    <source>Languages</source>
+    <target>Språk</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>Bredde</target>
+</phrase>
+<phrase>
+    <source>The file could not be written.</source>
+    <target>Filen kunne ikke skrives.</target>
+</phrase>
+<phrase>
+    <source>The PDF file does not contain any pages.</source>
+    <target>PDF-filen inneholder ingen sider.</target>
+</phrase>
+<phrase>
+    <source>The file &quot;%1&quot; is missing or unreadable:
+the translated name of this folder could not be read, so its folder name is displayed instead.</source>
+    <target>Filen « %1 » mangler eller er uleselig: det oversatte navnet på denne mappen kunne ikke leses, mappenavnet vises i stedet.</target>
+</phrase>
+<phrase>
+    <source>The .edz file format can come from two different sources:
+• The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
+• A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
+QElectroTech cannot automatically determine the origin of the file you are importing, nor the terms and conditions that apply to it.
+By importing this file, you confirm that:
+• you are aware of its source and are authorised to use it in this context, in accordance with the terms and conditions applicable to that source;
+• this import is carried out at your own risk and responsibility;
+• neither QElectroTech, nor its maintainers, nor its contributors can be held liable for any unauthorised use of this data.</source>
+    <target>Formatet .edz kan komme fra to forskjellige kilder:
+
+• EPLAN Data Portal (dataportal.eplan.com), underlagt vilkårene for bruk av EPLAN Cloud-miljøet;
+• nettstedet til en komponentprodusent (eller distributør) som gjør sine .edz-filer tilgjengelige direkte, etter sine egne vilkår.
+
+QElectroTech kan ikke automatisk fastslå opprinnelsen til filen du importerer, eller vilkårene som gjelder for den.
+
+Ved å importere denne filen bekrefter du at:
+
+• du kjenner opprinnelsen og har tillatelse til å bruke den i denne sammenhengen, i henhold til vilkårene som gjelder for denne kilden;
+• denne importen skjer på egen risiko og eget ansvar;
+• verken QElectroTech, dets vedlikeholdere eller dets bidragsytere kan holdes ansvarlige for bruk av disse dataene som ikke er i samsvar med vilkårene.</target>
+</phrase>
+<phrase>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
+    <target>DXF-formatet som brukes her (AC1006), tillater ikke å inkludere bilder. Bildene vil bare bli representert av et omrissrektangel (posisjon, størrelse, rotasjon og helning beholdes), uten innholdet i bildet.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The QET_ElementScaler software is required to scale elements.
+Please download it from the link below and unzip it into the installation folder</source>
+    <target>Programmet QET_ElementScaler er nødvendig for å skalere elementene.
+Last det ned via lenken nedenfor og pakk det ut i installasjonsmappen</target>
+</phrase>
+<phrase>
+    <source>The template has been successfully saved as :
+%1</source>
+    <target>Malen ble lagret med hell under:
+%1</target>
+</phrase>
+<phrase>
+    <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
+    <target>Navnet « %1 » er ikke gyldig: det må ikke inneholde følgende tegn: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>The new element defines slave contact groups.
+Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
+
+Do you wish to continue?</source>
+    <target>Det nye elementet definerer grupper av slavekontakter.
+Eksisterende slavementer vil ikke bli tilordnet automatisk. Du må koble slavene manuelt og tilordne kontaktgruppene.
+
+Vil du fortsette?</target>
+</phrase>
+<phrase>
+    <source>The wiring diagram has been successfully exported !</source>
+    <target>Koblingsplanen ble eksportert!</target>
+</phrase>
+<phrase>
+    <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
+</source>
+    <target>Prosjektet du prøver å åpne, er delvis kompatibelt med din versjon %1 av QElectroTech.
+</target>
+</phrase>
+<phrase>
+    <source>The template already exists. Do you want to overwrite it?</source>
+    <target>Malen finnes allerede. Vil du overskrive den?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>led</source>
+    <target>led</target>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED:</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the table.
+Please add a new table or adjust the existing table to display all information.</source>
+    <target>Informasjonen som skal vises, er større enn maksimal mengde som tabellen kan vise.
+Legg til en ny tabell eller juster den eksisterende tabellen for å vise all informasjonen.</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the tables.
+Please add a new table or adjust the existing tables to show all information.</source>
+    <target>Informasjonen som skal vises, er større enn maksimal mengde som tabellene kan vise.
+Legg til en ny tabell eller juster de eksisterende tabellene for å vise all informasjonen.</target>
+</phrase>
+<phrase>
+    <source>Lower-case letters, numbers, hyphens and underscores only</source>
+    <target>Kun små bokstaver, tall, bindestrek og understrek</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Lisenser</target>
+</phrase>
+<phrase>
+    <source>Table limitation</source>
+    <target>Tabellbegrensning</target>
+</phrase>
+<phrase>
+    <source>Smooth</source>
+    <target>Jevn</target>
+</phrase>
+<phrase>
+    <source>Wiring list</source>
+    <target>Koblingsliste</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Wiring list (database)</source>
+    <target>Koblingsliste (database)</target>
+</phrase>
+<phrase>
+    <source>Related to: %1</source>
+    <target>Koblet til: %1</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>Plassering:</target>
+</phrase>
+<phrase>
+    <source>Log</source>
+    <target>logg</target>
+</phrase>
+<phrase>
+    <source>Third party software required</source>
+    <target>Tredjepartsprogramvare kreves</target>
+</phrase>
+<phrase>
+    <source>Length</source>
+    <target>Lengde</target>
+</phrase>
+<phrase>
+    <source>Longueur :</source>
+    <target>Lengde :</target>
+</phrase>
+<phrase>
+    <source>Maximum length</source>
+    <target>Maksimal lengde</target>
+</phrase>
+<phrase>
+    <source>Maximum length: %1px
+</source>
+    <target>Maksimal lengde: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Unrestricted length.
+</source>
+    <target>Lengde uten begrensning.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target>MainWindow</target>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Makroer</target>
+</phrase>
+<phrase>
+    <source>Online manual</source>
+    <target>Nettbasert brukerhåndbok</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Maks. deler i elementeditorens liste</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>maks:</target>
+</phrase>
+<phrase>
+    <source>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</source>
+    <target>Sett til 0 for et siffer som bare øker ved overføring av et påfølgende syklisk siffer (f.eks. "0" i "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>min:</target>
+</phrase>
+<phrase>
+    <source>Mirror selection</source>
+    <target>Speil utvalget</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Horizontal mirror</source>
+    <target>Horisontalt speil</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of an image</source>
+    <target>Horisontalt speil av et bilde</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of %1</source>
+    <target>Horisontal speiling av %1</target>
+</phrase>
+<phrase>
+    <source>Mirror not possible: skew too extreme for this shape</source>
+    <target>Speiling ikke mulig: hellingen er for ekstrem for denne formen</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror</source>
+    <target>Vertikalt speil</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of an image</source>
+    <target>Vertikalt speil av et bilde</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of %1</source>
+    <target>Vertikal speiling av %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Speil</target>
+</phrase>
+<phrase>
+    <source>Page layout</source>
+    <target>sideoppsett</target>
+</phrase>
+<phrase>
+    <source>Layout (not available on Windows for PDF export)</source>
+    <target>Sideoppsett (ikke tilgjengelig i Windows for PDF-eksport)</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>mod.</target>
+</phrase>
+<phrase>
+    <source>Modify terminal strip properties</source>
+    <target>Endre egenskaper for terminalstriper</target>
+</phrase>
+<phrase>
+    <source>Modify the alignment of a text field</source>
+    <target>Endre justeringen til et tekstfelt</target>
+</phrase>
+<phrase>
+    <source>Change the alignment of the label</source>
+    <target>Endre justeringen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an arc</source>
+    <target>Endre vinkelen til en bue</target>
+</phrase>
+<phrase>
+    <source>Change the angle of a shape</source>
+    <target>Endre vinkelen på en form</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an image</source>
+    <target>Endre vinkelen på et bilde</target>
+</phrase>
+<phrase>
+    <source>Change the skew of an image</source>
+    <target>Endre helningen på et bilde</target>
+</phrase>
+<phrase>
+    <source>Change the master label index</source>
+    <target>Endre indeksen til mastermerkingen</target>
+</phrase>
+<phrase>
+    <source>Edit the master label</source>
+    <target>Endre merkingen til masteren</target>
+</phrase>
+<phrase>
+    <source>Modify the conservation of the angle</source>
+    <target>Endre bevaringen av vinkelen</target>
+</phrase>
+<phrase>
+    <source>Change the color of a terminal bridge</source>
+    <target>Endre fargen på en bro mellom klemmer</target>
+</phrase>
+<phrase>
+    <source>Change the label colour</source>
+    <target>Endre fargen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the curvature of %1</source>
+    <target>Endre krumningen til %1</target>
+</phrase>
+<phrase>
+    <source>Change the shape of %1</source>
+    <target>Endre formen til %1</target>
+</phrase>
+<phrase>
+    <source>Change the height of an image</source>
+    <target>Endre høyden på et bilde</target>
+</phrase>
+<phrase>
+    <source>Change the width of an image</source>
+    <target>Endre bredden på et bilde</target>
+</phrase>
+<phrase>
+    <source>Change the length of a line</source>
+    <target>Endre lengden på en linje</target>
+</phrase>
+<phrase>
+    <source>Change the label font</source>
+    <target>Endre skriften til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the position of the label</source>
+    <target>Endre posisjonen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the rotation of the label</source>
+    <target>Endre rotasjonen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the size of a shape</source>
+    <target>Endre størrelsen på en form</target>
+</phrase>
+<phrase>
+    <source>Change the font size of the label</source>
+    <target>Endre skriftstørrelsen til etiketten</target>
+</phrase>
+<phrase>
+    <source>Change the way item text stays rotated</source>
+    <target>Endre opprettholdelsen av rotasjonen til en elementtekst</target>
+</phrase>
+<phrase>
+    <source>Change the name of the terminal</source>
+    <target>Endre navnet på rekkeklemmen</target>
+</phrase>
+<phrase>
+    <source>Change the terminal name</source>
+    <target>Endre navn på rekkeklemmen</target>
+</phrase>
+<phrase>
+    <source>Change the rotation point of a text field</source>
+    <target>Endre rotasjonspunktet til et tekstfelt</target>
+</phrase>
+<phrase>
+    <source>Change the type of a node</source>
+    <target>Endre typen til et knutepunkt</target>
+</phrase>
+<phrase>
+    <source>Change the type of a terminal</source>
+    <target>Endre type for en rekkeklemme</target>
+</phrase>
+<phrase>
+    <source>Edit information for multiple items</source>
+    <target>Endre informasjonen til flere elementer</target>
+</phrase>
+<phrase>
+    <source>Modify item properties</source>
+    <target>Endre egenskapene til elementet</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of an element</source>
+    <target>Endre egenskapene til et element</target>
+</phrase>
+<phrase>
+    <source>Modify the properties of a terminal group</source>
+    <target>Endre egenskapene til en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Edit an image</source>
+    <target>Endre et bilde</target>
+</phrase>
+<phrase>
+    <source>PLC module</source>
+    <target>PLC-modul</target>
+</phrase>
+<phrase>
+    <source>Model</source>
+    <target>Mal</target>
+</phrase>
+<phrase>
+    <source>Registered template</source>
+    <target>Mal lagret</target>
+</phrase>
+<phrase>
+    <source>Templates</source>
+    <target>Maler</target>
+</phrase>
+<phrase>
+    <source>Mongolian</source>
+    <target>Mongolsk</target>
+</phrase>
+<phrase>
+    <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
+    <target>Metode for skalering av skjermer med høy pikseltetthet (hdpi) (brukes ved neste oppstart av QElectroTech):</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Ant.</target>
+</phrase>
+<phrase>
+    <source>No. of terminals</source>
+    <target>Antall terminaler</target>
+</phrase>
+<phrase>
+    <source>No. of contacts</source>
+    <target>Antall kontakter</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (SW-kontakt)</target>
+</phrase>
+<phrase>
+    <source>Neutral</source>
+    <target>Nøytral</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (SW-kontakt)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>Ingen *.part.xml funnet i .edz-filen</target>
+</phrase>
+<phrase>
+    <source>Name:</source>
+    <target>Navn:</target>
+</phrase>
+<phrase>
+    <source>Element file name</source>
+    <target>Elementets filnavn</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>The element&apos;s file name: digits, lowercase letters, &apos;-&apos;, &apos;_&apos; and &apos;.&apos; only.
+The element&apos;s display name is edited separately in the element properties.</source>
+    <target>Elementets filnavn: kun tall, små bokstaver, «-», «_» og «.». 
+Elementets visningsnavn endres separat i elementets egenskaper.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Terminal name</source>
+    <target>Navn på rekkeklemmen</target>
+</phrase>
+<phrase>
+    <source>Name of the new template</source>
+    <target>Navn på den nye malen</target>
+</phrase>
+<phrase>
+    <source>Custom column name (blank = default)</source>
+    <target>Egendefinert kolonnenavn (tomt = standard)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Navn, etikett eller informasjon om elementet…</target>
+</phrase>
+<phrase>
+    <source>name_of_the_property</source>
+    <target>egenskapsnavn</target>
+</phrase>
+<phrase>
+    <source>Incorrect number of terminals</source>
+    <target>Feil antall klemmer</target>
+</phrase>
+<phrase>
+    <source>Number of slave contacts used : %1
+</source>
+    <target>Antall brukte slavekontakter: %1
+</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slaves reached.</source>
+    <target>Maksimalt antall slaver nådd.</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  %1
+</source>
+    <target>Maksimalt antall definerte slavekontakter: %1
+</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  not defined
+</source>
+    <target>Maksimalt antall definerte slavekontakter: ikke definert
+</target>
+</phrase>
+<phrase>
+    <source>No</source>
+    <target>Nei</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Unallocated only</source>
+    <target>Kun ikke-tilordnede</target>
+</phrase>
+<phrase>
+    <source>Switch normally closed</source>
+    <target>Normalt lukket</target>
+</phrase>
+<phrase>
+    <source>Switch normally open</source>
+    <target>Normalt åpen</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Ikke en gyldig .edz-pakke (ukjent arkivformat).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Merknader</target>
+</phrase>
+<phrase>
+    <source>Numeric only (1, 2, 3...)</source>
+    <target>Kun numerisk (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Article number</source>
+    <target>Varenummer</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 article number</source>
+    <target>Varenummer hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 article number</source>
+    <target>Varenummer hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 article number</source>
+    <target>Varenummer hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 article number</source>
+    <target>Varenummer hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Order number</source>
+    <target>Ordrenummer</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 1</source>
+    <target>Ordrenummer hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 2</source>
+    <target>Ordrenummer hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 3</source>
+    <target>Ordrenummer hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 4</source>
+    <target>Ordrenummer hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Number wire</source>
+    <target>Ledernummer</target>
+</phrase>
+<phrase>
+    <source>Internal number</source>
+    <target>Internt nummer</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 1</source>
+    <target>Internt nummer hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 2</source>
+    <target>Internt nummer hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 3</source>
+    <target>Internt nummer hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 4</source>
+    <target>Internt nummer hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Automatic numbering of terminals</source>
+    <target>Automatisk nummerering av klemmer</target>
+</phrase>
+<phrase>
+    <source>Automatically number a conductor</source>
+    <target>Nummerer en leder automatisk</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Automatically number an element</source>
+    <target>Nummerer et element automatisk</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Number the letters as well</source>
+    <target>Nummerer også bokstaver</target>
+</phrase>
+<phrase>
+    <source>Nearest node</source>
+    <target>Nærmeste knutepunkt</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Printing option</source>
+    <target>Utskriftsalternativ</target>
+</phrase>
+<phrase>
+    <source>Rendering option</source>
+    <target>Gjengivelsesalternativ</target>
+</phrase>
+<phrase>
+    <source>Print options</source>
+    <target>Utskriftsalternativer</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Retning</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>Retning:</target>
+</phrase>
+<phrase>
+    <source>Vertical origin</source>
+    <target>Vertikalt opphav</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>Annet</target>
+</phrase>
+<phrase>
+    <source>Yes</source>
+    <target>Ja</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Elements translation tool</source>
+    <target>Verktøy for oversettelse av elementer</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Tools</source>
+    <target>Verktøy</target>
+</phrase>
+<phrase>
+    <source>Open an item</source>
+    <target>Åpne et element</target>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Side</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Previous page</source>
+    <target>Forrige side</target>
+</phrase>
+<phrase>
+    <source>Next page</source>
+    <target>Neste side</target>
+</phrase>
+<phrase>
+    <source>Page to import:</source>
+    <target>Side som skal importeres:</target>
+</phrase>
+<phrase>
+    <source>Elements panel</source>
+    <target>Elementpanel</target>
+</phrase>
+<phrase>
+    <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>Som standard er følgende variabler tilgjengelige:&lt;ul&gt;&lt;li&gt;%{author}: forfatter av arket&lt;/li&gt;&lt;li&gt;%{date}: dato for arket&lt;/li&gt;&lt;li&gt;%{title}: tittel på arket&lt;/li&gt;&lt;li&gt;%{filename}: filnavn på prosjektet&lt;/li&gt;&lt;li&gt;%{plant}: navn på installasjonen (=) som arket ligger i&lt;/li&gt;&lt;li&gt;%{locmach}: navn på plasseringen (+) som arket ligger i&lt;/li&gt;&lt;li&gt;%{indexrev}: revisjonsindeks for arket&lt;/li&gt;&lt;li&gt;%{version}: programvareversjon&lt;/li&gt;&lt;li&gt;%{folio}: arkets nummer&lt;/li&gt;&lt;li&gt;%{folio-id}: arkets posisjon i prosjektet&lt;/li&gt;&lt;li&gt;%{folio-total}: totalt antall ark i prosjektet&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: nummeret til forrige ark&lt;/li&gt;&lt;li&gt;%{next-folio-num}: nummeret til neste ark&lt;/li&gt;&lt;li&gt;%{projecttitle}: prosjekttittel&lt;/li&gt;&lt;li&gt;%{projectpath}: prosjektsti&lt;/li&gt;&lt;li&gt;%{projectfilename}: filnavn&lt;/li&gt;&lt;li&gt;%{saveddate}: lagringsdato for filen i lokalt format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: lagringsdato for filen i formatet dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us}: lagringsdato for filen i formatet yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime}: lagringstidspunkt for filen&lt;/li&gt;&lt;li&gt;%{savedfilename}: navn på lagret fil&lt;/li&gt;&lt;li&gt;%{savedfilepath}: sti til lagret fil&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Parts</source>
+    <target>Deler</target>
+</phrase>
+<phrase>
+    <source>No rounding</source>
+    <target>Ingen avrunding</target>
+</phrase>
+<phrase>
+    <source>Landscape</source>
+    <target>Liggende</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>Fase</target>
+</phrase>
+<phrase>
+    <source>Rotates the selection as a group around its centre, rather than each element in place</source>
+    <target>Roterer utvalget som en gruppe rundt sitt sentrum, i stedet for hvert element på stedet</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rotate the selection</source>
+    <target>Roter utvalget</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Rotate the group</source>
+    <target>Roter gruppen</target>
+</phrase>
+<phrase>
+    <source>rotate/skew</source>
+    <target>roter/vipp</target>
+</phrase>
+<phrase>
+    <source>EPLAN parts (*.edz)</source>
+    <target>EPLAN-deler (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan of terminals</source>
+    <target>rekkeklemmeplan</target>
+</phrase>
+<phrase>
+    <source>Handles :</source>
+    <target>Håndtak:</target>
+</phrase>
+<phrase>
+    <source>ext anchor point and alignment of lines relative to one another</source>
+    <target>Ankerpunkt for teksten og justering av linjene seg imellom</target>
+</phrase>
+<phrase>
+    <source>Bridge point</source>
+    <target>Brokoblingspunkt</target>
+</phrase>
+<phrase>
+    <source>Font</source>
+    <target>Skrift</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Skrift:</target>
+</phrase>
+<phrase>
+    <source>Header font</source>
+    <target>Skrift for overskrifter</target>
+</phrase>
+<phrase>
+    <source>Column header formatting</source>
+    <target>Skrift for kolonneoverskrifter</target>
+</phrase>
+<phrase>
+    <source>Heading font size: %1 %2pt</source>
+    <target>Skrift for overskrifter: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Text font</source>
+    <target>Skrift for tekst</target>
+</phrase>
+<phrase>
+    <source>Cell text font</source>
+    <target>Skrift for tekst i celler</target>
+</phrase>
+<phrase>
+    <source>Font size: %1 %2pt</source>
+    <target>Skrift for tekst: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Project fonts</source>
+    <target>Prosjektets skrifter</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Bridging terminals together</source>
+    <target>Bro klemmer sammen</target>
+</phrase>
+<phrase>
+    <source>Bridging the terminals</source>
+    <target>Brokoble rekkeklemmene</target>
+</phrase>
+<phrase>
+    <source>Portrait</source>
+    <target>Stående</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Posisjon</target>
+</phrase>
+<phrase>
+    <source>Automatic position</source>
+    <target>Automatisk posisjon</target>
+</phrase>
+<phrase>
+    <source>Sheet position</source>
+    <target>Arkets posisjon</target>
+</phrase>
+<phrase>
+    <source>First page</source>
+    <target>Første side</target>
+</phrase>
+<phrase>
+    <source>Priority of axes</source>
+    <target>Akseprioritet</target>
+</phrase>
+<phrase>
+    <source>Priority to the X-axis (horizontal)</source>
+    <target>Prioriter X-aksen (horisontal)</target>
+</phrase>
+<phrase>
+    <source>Priority to the Y-axis (vertical)</source>
+    <target>Prioriter Y-aksen (vertikal)</target>
+</phrase>
+<phrase>
+    <source>The next value to be applied using this increment</source>
+    <target>Neste verdi som vil bli brukt med dette inkrementet</target>
+</phrase>
+<phrase>
+    <source>Depth</source>
+    <target>Dybde</target>
+</phrase>
+<phrase>
+    <source>project</source>
+    <target>prosjekt</target>
+    <definition>string used to generate a filename</definition>
+</phrase>
+<phrase>
+    <source>Side project</source>
+    <target>Vedleggsprosjekt</target>
+</phrase>
+<phrase>
+    <source>Untitled project</source>
+    <target>Prosjekt uten tittel</target>
+</phrase>
+<phrase>
+    <source>Properties</source>
+    <target>Egenskaper</target>
+</phrase>
+<phrase>
+    <source>Text properties</source>
+    <target>Tekstegenskaper</target>
+</phrase>
+<phrase>
+    <source>Preview:</source>
+    <target>Forhåndsvisning:</target>
+</phrase>
+<phrase>
+    <source>Power switch</source>
+    <target>Effekt</target>
+</phrase>
+<phrase>
+    <source>QElectroTech - Element Editor</source>
+    <target>QElectroTech - Elementseditor</target>
+</phrase>
+<phrase>
+    <source>QElectroTech did not close correctly the last time it was run.
+Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
+    <target>QElectroTech ble ikke lukket på riktig måte ved forrige kjøring.
+Her er de siste meldingene som ble logget før avslutningen -- du kan lagre dem for å legge ved en feilrapport.</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+tilleggsinformasjon om %1-import / skalering</target>
+</phrase>
+<phrase>
+    <source>Quantity</source>
+    <target>Antall</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 1</source>
+    <target>Antall hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 2</source>
+    <target>Antall hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 3</source>
+    <target>Antall hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 4</source>
+    <target>Antall hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Designation quantity</source>
+    <target>Antall artikkelnummer</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Shortcut</source>
+    <target>Snarvei</target>
+</phrase>
+<phrase>
+    <source>Shortcuts</source>
+    <target>Snarveier</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Diagnostic report</source>
+    <target>Diagnostikkrapport</target>
+</phrase>
+<phrase>
+    <source>Crash report</source>
+    <target>Krasjrapport</target>
+</phrase>
+<phrase>
+    <source>X radius</source>
+    <target>Radius X</target>
+</phrase>
+<phrase>
+    <source>Y radius</source>
+    <target>Radius Y</target>
+</phrase>
+<phrase>
+    <source>Reload</source>
+    <target>Last inn på nytt</target>
+</phrase>
+<phrase>
+    <source>Reload the terminals</source>
+    <target>Last inn rekkeklemmeradene på nytt</target>
+</phrase>
+<phrase>
+    <source>Search</source>
+    <target>Søk</target>
+</phrase>
+<phrase>
+    <source>Quickly search for and select an element in the sheet</source>
+    <target>Søk og velg raskt et element på arket</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Search...</source>
+    <target>Søk …</target>
+</phrase>
+<phrase>
+    <source>resize</source>
+    <target>endre størrelse</target>
+</phrase>
+<phrase>
+    <source>Resize %1</source>
+    <target>Endre størrelsen på %1</target>
+</phrase>
+<phrase>
+    <source>Resize an image</source>
+    <target>Endre størrelsen på et bilde</target>
+</phrase>
+<phrase>
+    <source>Elements  resizer</source>
+    <target>Endringsverktøy for elementer</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Note: Master elements that have reached their maximum number of slaves are hidden.</source>
+    <target>Merk: masterelementer som har nådd maksimalt antall slaver, er skjult.</target>
+</phrase>
+<phrase>
+    <source>Move this sheet up x100</source>
+    <target>Flytt dette arket opp x100</target>
+</phrase>
+<phrase>
+    <source>Replace the image...</source>
+    <target>Erstatt bildet...</target>
+</phrase>
+<phrase>
+    <source>Replace an image</source>
+    <target>Erstatt et bilde</target>
+</phrase>
+<phrase>
+    <source>Learning from the master</source>
+    <target>Hent fra master</target>
+</phrase>
+<phrase>
+    <source>Request</source>
+    <target>Forespørsel</target>
+</phrase>
+<phrase>
+    <source>SQL request  :</source>
+    <target>SQL-spørring:</target>
+</phrase>
+<phrase>
+    <source>Restore proportions</source>
+    <target>Gjenopprett proporsjonene</target>
+</phrase>
+<phrase>
+    <source>Restore an image&apos;s proportions</source>
+    <target>Gjenopprett proporsjonene til et bilde</target>
+</phrase>
+<phrase>
+    <source>Remove this color</source>
+    <target>Fjern denne fargen</target>
+</phrase>
+<phrase>
+    <source>Mirror element :</source>
+    <target>Roter elementet:</target>
+</phrase>
+<phrase>
+    <source>Flip selection</source>
+    <target>Vend utvalget</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Go back to the start of the project</source>
+    <target>Gå tilbake til begynnelsen av prosjektet</target>
+</phrase>
+<phrase>
+    <source>Return to the full image, without cropping</source>
+    <target>Gå tilbake til hele bildet, uten beskjæring</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Høyre</target>
+</phrase>
+<phrase>
+    <source>Crop the image</source>
+    <target>Beskjær bildet</target>
+</phrase>
+<phrase>
+    <source>Crop an image</source>
+    <target>Beskjær et bilde</target>
+</phrase>
+<phrase>
+    <source>Crop...</source>
+    <target>Beskjær...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>Rotasjon</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Rotasjon:</target>
+</phrase>
+<phrase>
+    <source>Rotation/Skew</source>
+    <target>Rotasjon/Helling</target>
+</phrase>
+<phrase>
+    <source>Ref.</source>
+    <target>Ref.</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Kryssreferanse</target>
+</phrase>
+<phrase>
+    <source>PLC cross-reference</source>
+    <target>PLC-kryssreferanse</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Kryssreferanse</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Kryssreferanse</target>
+</phrase>
+<phrase>
+    <source>Reset</source>
+    <target>Tilbakestill</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Reset this shortcut</source>
+    <target>Tilbakestill denne snarveien</target>
+</phrase>
+<phrase>
+    <source>Reset to the default value</source>
+    <target>Tilbakestill til startverdi</target>
+</phrase>
+<phrase>
+    <source>Company collection directory</source>
+    <target>Katalog for samlingen company</target>
+</phrase>
+<phrase>
+    <source>Company title-block directory</source>
+    <target>Katalog for tittelblokkene company</target>
+</phrase>
+<phrase>
+    <source>User Macro Directory</source>
+    <target>Katalog for brukermakroer</target>
+</phrase>
+<phrase>
+    <source>Resolution:</source>
+    <target>Oppløsning:</target>
+</phrase>
+<phrase>
+    <source>Without</source>
+    <target>Uten</target>
+</phrase>
+<phrase>
+    <source>Jump to %1 after:</source>
+    <target>Linjeskift %1 etter:</target>
+</phrase>
+<phrase>
+    <source>Conductor section</source>
+    <target>Lederens tverrsnitt</target>
+</phrase>
+<phrase>
+    <source>Wire section</source>
+    <target>Trådtverrsnitt</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Med skille</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Avtakbar</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Se detaljer her:</target>
+</phrase>
+<phrase>
+    <source>Select an image ...</source>
+    <target>Velg et bilde...</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the sheet will be enlarged or shrunk to fill the entire printable surface of one and only one page. &quot;</source>
+    <target>Hvis dette alternativet er valgt, blir arket forstørret eller forminsket slik at det fyller hele det utskrivbare området på én enkelt side.</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the margins of the sheet will be ignored and its entire surface will be used for printing. This may not be supported by your printer.</source>
+    <target>Hvis dette alternativet er valgt, ignoreres arkets marger og hele overflaten brukes til utskrift. Dette støttes kanskje ikke av skriveren din.</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Enkel</target>
+</phrase>
+<phrase>
+    <source>Analogue output</source>
+    <target>Analog utgang</target>
+</phrase>
+<phrase>
+    <source>Digital output</source>
+    <target>Digital utgang</target>
+</phrase>
+<phrase>
+    <source>Universal output</source>
+    <target>Universell utgang</target>
+</phrase>
+<phrase>
+    <source>Would you like to create a backup copy?</source>
+    <target>Ønsker du å opprette en sikkerhetskopi?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Subtype</source>
+    <target>Undertype</target>
+</phrase>
+<phrase>
+    <source>Sub-type : %1
+</source>
+    <target>Undertype: %1
+</target>
+</phrase>
+<phrase>
+    <source>Support the project with a donation</source>
+    <target>Støtt prosjektet med en donasjon</target>
+</phrase>
+<phrase>
+    <source>Support the QElectroTech project with a donation</source>
+    <target>Støtt QElectroTech-prosjektet med en donasjon</target>
+</phrase>
+<phrase>
+    <source>Next</source>
+    <target>Neste</target>
+</phrase>
+<phrase>
+    <source>Track the time spent on this project (recorded locally in this file only)</source>
+    <target>Følg tiden brukt på dette prosjektet (lagres kun lokalt i denne filen)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Unable to delete the terminal</source>
+    <target>Kan ikke slette klemme</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>Fjern</target>
+</phrase>
+<phrase>
+    <source>Delete %1 sheets</source>
+    <target>Slett %1 ark</target>
+</phrase>
+<phrase>
+    <source>Delete this property</source>
+    <target>Slett denne egenskapen</target>
+</phrase>
+<phrase>
+    <source>Delete terminal bridges</source>
+    <target>Slett broer mellom klemmer</target>
+</phrase>
+<phrase>
+    <source>Remove terminal block</source>
+    <target>Slett rekkeklemmeraden</target>
+</phrase>
+<phrase>
+    <source>Delete terminal strip from project</source>
+    <target>Slett rekkeklemmeraden fra prosjektet</target>
+</phrase>
+<phrase>
+    <source>Delete the nearest node</source>
+    <target>Slett det nærmeste knutepunktet</target>
+</phrase>
+<phrase>
+    <source>Delete the sheets</source>
+    <target>Slett arkene</target>
+</phrase>
+<phrase>
+    <source>Delete a sheet</source>
+    <target>Slett et ark</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Delete a group of terminals</source>
+    <target>Slett en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Delete a point from a curve</source>
+    <target>Slett et punkt på en kurve</target>
+</phrase>
+<phrase>
+    <source>Swedish</source>
+    <target>Svensk</target>
+</phrase>
+<phrase>
+    <source>SVG-background transparent</source>
+    <target>SVG: gjennomsiktig bakgrunn</target>
+</phrase>
+<phrase>
+    <source>Symmetric</source>
+    <target>Symmetrisk</target>
+</phrase>
+<phrase>
+    <source>Modified contact system</source>
+    <target>Kontaktsystemet er endret</target>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Avtakbar</target>
+</phrase>
+<phrase>
+    <source>Select the conductors of this sheet</source>
+    <target>Velg ledningene i dette arket</target>
+</phrase>
+<phrase>
+    <source>Select the texts of this sheet</source>
+    <target>Velg tekstene i dette arket</target>
+</phrase>
+<phrase>
+    <source>Select the elements of this sheet</source>
+    <target>Velg elementene i dette arket</target>
+</phrase>
+<phrase>
+    <source>Select a PDF file...</source>
+    <target>Velg en PDF-fil...</target>
+</phrase>
+<phrase>
+    <source>Select a group of contacts</source>
+    <target>Velg en kontaktgruppe</target>
+</phrase>
+<phrase>
+    <source>Select a PLC I/O</source>
+    <target>Velg en IO-PLC</target>
+</phrase>
+<phrase>
+    <source>Select a page</source>
+    <target>Velg en side</target>
+</phrase>
+<phrase>
+    <source>Select the contact group to assign to this slave element :</source>
+    <target>Velg kontaktgruppen som skal tilordnes dette slave-elementet:</target>
+</phrase>
+<phrase>
+    <source>Potential separation</source>
+    <target>Potensialskille</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>PLC Table</source>
+    <target>PLC-tabell</target>
+</phrase>
+<phrase>
+    <source>PLC table (empty)</source>
+    <target>PLC-tabell (tom)</target>
+</phrase>
+<phrase>
+    <source>Size</source>
+    <target>Størrelse</target>
+</phrase>
+<phrase>
+    <source>Size :</source>
+    <target>Størrelse:</target>
+</phrase>
+<phrase>
+    <source>Point-size in diagram-editor: 1 - 5</source>
+    <target>Størrelse på rutenettpunktene i Diagram-Editor: 1–5</target>
+</phrase>
+<phrase>
+    <source>Point-size in element-editor: 1 - 5</source>
+    <target>Størrelse på rutenettpunktene i elementeditoren: 1–5</target>
+</phrase>
+<phrase>
+    <source>Switch-off delayed</source>
+    <target>Tidsforsinket hvile</target>
+</phrase>
+<phrase>
+    <source>Switch-on delayed</source>
+    <target>Tidsforsinket arbeid</target>
+</phrase>
+<phrase>
+    <source>Switch-on  and off delayed</source>
+    <target>Tidsforsinket arbeid og hvile</target>
+</phrase>
+<phrase>
+    <source>Time spent on this project:</source>
+    <target>Tid brukt på dette prosjektet:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Voltage / Protocol</source>
+    <target>Spenning / protokoll</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Rated voltage</source>
+    <target>Nominell spenning</target>
+</phrase>
+<phrase>
+    <source>Ground</source>
+    <target>Jord</target>
+</phrase>
+<phrase>
+    <source>Text terminal</source>
+    <target>Rekkeklemmetekst</target>
+</phrase>
+<phrase>
+    <source>Header text</source>
+    <target>Overskriftstekst</target>
+</phrase>
+<phrase>
+    <source>TextLabel</source>
+    <target>TextLabel</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Denne .edz-filen er en pakke i zip-format, som ennå ikke støttes (bare 7-Zip .edz-filer kan importeres).</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>this is an error in the code</target>
+</phrase>
+<phrase>
+    <source>Values that are too high might cause the application to crash</source>
+    <target>For høye verdier kan føre til at programmet krasjer.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolerance for this color</source>
+    <target>Toleranse for denne fargen</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>toolBar</target>
+</phrase>
+<phrase>
+    <source>Always rounded down</source>
+    <target>Rund alltid ned</target>
+</phrase>
+<phrase>
+    <source>Always top rounding</source>
+    <target>Rund alltid opp</target>
+</phrase>
+<phrase>
+    <source>Rotate about its own centre</source>
+    <target>Roter rundt sitt eget senter</target>
+</phrase>
+<phrase>
+    <source>all</source>
+    <target>Alle</target>
+</phrase>
+<phrase>
+    <source>All files (*)</source>
+    <target>Alle filer (*)</target>
+</phrase>
+<phrase>
+    <source>Check all</source>
+    <target>Merk alle</target>
+</phrase>
+<phrase>
+    <source>Uncheck all</source>
+    <target>Fjern alle merker</target>
+</phrase>
+<phrase>
+    <source>Reset everything</source>
+    <target>Tilbakestill alt</target>
+</phrase>
+<phrase>
+    <source>All dates</source>
+    <target>Alle datoer</target>
+</phrase>
+<phrase>
+    <source>Translation into Korean</source>
+    <target>Oversettelse til koreansk</target>
+</phrase>
+<phrase>
+    <source>Japanese translation</source>
+    <target>Oversettelse til japansk</target>
+</phrase>
+<phrase>
+    <source>Mongolian Translation</source>
+    <target>Oversettelse til mongolsk</target>
+</phrase>
+<phrase>
+    <source>Norwegian Translation</source>
+    <target>Oversettelse til norsk</target>
+</phrase>
+<phrase>
+    <source>Serbian Translation</source>
+    <target>Oversettelse til serbisk</target>
+</phrase>
+<phrase>
+    <source>Slovenian translation</source>
+    <target>Oversettelse til slovensk</target>
+</phrase>
+<phrase>
+    <source>Ukrainian translation</source>
+    <target>Oversettelse til ukrainsk</target>
+</phrase>
+<phrase>
+    <source>Transform %1</source>
+    <target>Transformer %1</target>
+</phrase>
+<phrase>
+    <source>Transparency not preserved</source>
+    <target>Transparens beholdes ikke</target>
+</phrase>
+<phrase>
+    <source>Sort terminal block %1</source>
+    <target>Sorter klemrekken %1</target>
+</phrase>
+<phrase>
+    <source>Too many primitives, list not generated: %1</source>
+    <target>For mange primitiver, listen ble ikke generert: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>Type:</target>
+</phrase>
+<phrase>
+    <source>Type: %1
+</source>
+    <target>Type: %1
+</target>
+</phrase>
+<phrase>
+    <source>Type of numbering</source>
+    <target>Nummertype</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLC-type</target>
+</phrase>
+<phrase>
+    <source>Download</source>
+    <target>Nedlasting</target>
+</phrase>
+<phrase>
+    <source>Ukrainian</source>
+    <target>Ukrainsk</target>
+</phrase>
+<phrase>
+    <source>an arc</source>
+    <target>en bue</target>
+</phrase>
+<phrase>
+    <source>a corner</source>
+    <target>et hjørne</target>
+</phrase>
+<phrase>
+    <source>a graphic element</source>
+    <target>et grafisk element</target>
+</phrase>
+<phrase>
+    <source>A file</source>
+    <target>En fil</target>
+</phrase>
+<phrase>
+    <source>a point</source>
+    <target>et punkt</target>
+</phrase>
+<phrase>
+    <source>An element</source>
+    <target>Et element</target>
+</phrase>
+<phrase>
+    <source>a curve</source>
+    <target>en kurve</target>
+</phrase>
+<phrase>
+    <source>an endpoint</source>
+    <target>et endepunkt</target>
+</phrase>
+<phrase>
+    <source>image</source>
+    <target>et bilde</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unity</source>
+    <target>Enhet</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 1</source>
+    <target>Enhet hjelpe 1</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 2</source>
+    <target>Enhet hjelpe 2</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 3</source>
+    <target>Enhet hjelpe 3</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 4</source>
+    <target>Enhet hjelpe 4</target>
+</phrase>
+<phrase>
+    <source>Use the whole page</source>
+    <target>Bruk hele arket</target>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>Verdi</target>
+</phrase>
+<phrase>
+    <source>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</source>
+    <target>Gjeldende tellerverdi. Skriv inn en ny verdi og bekreft for å endre den.</target>
+</phrase>
+<phrase>
+    <source>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</source>
+    <target>Verdien dette sifferet går tilbake til 0 ved ved inkrementering av forrige siffer (0 = ingen syklus)</target>
+</phrase>
+<phrase>
+    <source>Lock automatic numbering</source>
+    <target>Lås automatisk nummerering</target>
+</phrase>
+<phrase>
+    <source>Lock Position</source>
+    <target>Lås posisjonen</target>
+</phrase>
+<phrase>
+    <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
+    <target>Låst: endring av bredde eller høyde justerer den andre for å bevare proporsjonene. Klikk for å låse opp.</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>til gruppen med klemmer %1</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>til en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Vertikal</target>
+</phrase>
+<phrase>
+    <source>Vertical:</source>
+    <target>Vertikalt:</target>
+</phrase>
+<phrase>
+    <source>Thumbnail</source>
+    <target>Miniatyrbilde</target>
+</phrase>
+<phrase>
+    <source>Thumbnails</source>
+    <target>Miniatyrbilder</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Synlig</target>
+</phrase>
+<phrase>
+    <source>View this item</source>
+    <target>Vis dette elementet</target>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target>X</target>
+</phrase>
+<phrase>
+    <source>x 1</source>
+    <target>x 1</target>
+</phrase>
+<phrase>
+    <source>x 2</source>
+    <target>x 2</target>
+</phrase>
+<phrase>
+    <source>x 3</source>
+    <target>x 3</target>
+</phrase>
+<phrase>
+    <source>x:</source>
+    <target>x:</target>
+</phrase>
+<phrase>
+    <source>X1:</source>
+    <target>X1 :</target>
+</phrase>
+<phrase>
+    <source>X2:</source>
+    <target>X2 :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>X: %1 Y: %2</source>
+    <target>X: %1 Y: %2</target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target>Y</target>
+</phrase>
+<phrase>
+    <source>y :</source>
+    <target>y:</target>
+</phrase>
+<phrase>
+    <source>Y1:</source>
+    <target>Y1 :</target>
+</phrase>
+<phrase>
+    <source>Y2:</source>
+    <target>Y2 :</target>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>Zoom ut</target>
+</phrase>
+<phrase>
+    <source>Zoom In</source>
+    <target>Zoom inn</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>A&amp;bout QElectroTech</source>
+    <target>&amp;Om QElectroTech</target>
+</phrase>
+<phrase>
+    <source>In date of  :</source>
+    <target>Til datoen:</target>
+</phrase>
+<phrase>
+    <source>From the date of:</source>
+    <target>Fra datoen:</target>
+</phrase>
+<phrase>
+    <source>About &amp;Qt</source>
+    <target>Om &amp;Qt</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>til en gruppe med klemmer</target>
+</phrase>
+<phrase>
+    <source>Saving failed</source>
+    <target>Lagring mislyktes</target>
+</phrase>
+<phrase>
+    <source>Export failed</source>
+    <target>Eksporten mislyktes</target>
+</phrase>
+<phrase>
+    <source>Overwrite the template?</source>
+    <target>Overskriv malen?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Element editors</source>
+    <target>Elementseditor</target>
+</phrase>
+<phrase>
+    <source>Title block template editors</source>
+    <target>Tegningshodeeditor</target>
+</phrase>
+<phrase>
+    <source>Diagram editors</source>
+    <target>Skjemaeditor</target>
+</phrase>
+<phrase>
+    <source>Text editor</source>
+    <target>Tekstredigering</target>
+</phrase>
+<phrase>
+    <source>Node editing</source>
+    <target>Redigering av knutepunkter</target>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>Element</target>
+</phrase>
+<phrase>
+    <source>Terminal block element</source>
+    <target>Terminalstripelement</target>
+</phrase>
+<phrase>
+    <source>QElectroTech elements (*.elmt)</source>
+    <target>QElectroTech-elementer (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Stage</source>
+    <target>Trinn</target>
+</phrase>
+<phrase>
+    <source>Stage :</source>
+    <target>Trinn:</target>
+</phrase>
+<phrase>
+    <source>Master’s label</source>
+    <target>Mastermerking</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet?</source>
+    <target>Er du sikker på at du vil slette dette arket?</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet from the project?</source>
+    <target>Er du sikker på at du vil slette dette arket fra prosjektet?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete the selected %1 sheets ?</source>
+    <target>Er du sikker på at du vil slette de %1 valgte arkene?</target>
+</phrase>
+<phrase>
+    <source>cabinet</source>
+    <target>Fordelingsskap</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>coil</source>
+    <target>Spole</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>terminal</source>
+    <target>Klemme</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>terminal strip</source>
+    <target>Rekkeklemme</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>rating</source>
+    <target>Merkeytelse</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>title block</source>
+    <target>Tittelfelt</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>conductor</source>
+    <target>Leder</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contactor</source>
+    <target>Kontaktor</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>current</source>
+    <target>Strøm</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>circuit breaker</source>
+    <target>Vern</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>folder</source>
+    <target>Mappe</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>Element</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>slave</source>
+    <target>Slave</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grid</source>
+    <target>Rutenett</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>Bryter</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>master</source>
+    <target>Master</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>template</source>
+    <target>Mal</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>motor</source>
+    <target>Motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>parts list</source>
+    <target>Stykklister</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numbering</source>
+    <target>Nummerering</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potential</source>
+    <target>Potensial</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>relay</source>
+    <target>Rele</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>Arkhenvisning</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>designation</source>
+    <target>Betegnelse</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>Arkhenvisning</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>diagram</source>
+    <target>Skjema</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>cross-section</source>
+    <target>Tverrsnitt</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>summary</source>
+    <target>Innholdsfortegnelse</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>voltage</source>
+    <target>Spenning</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>text</source>
+    <target>Tekst</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformer</source>
+    <target>Transformator</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

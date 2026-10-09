@@ -216,6 +216,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramposition.h
   ${QET_DIR}/sources/diagramview.cpp
   ${QET_DIR}/sources/diagramview.h
+  ${QET_DIR}/sources/imagedrop.cpp
+  ${QET_DIR}/sources/imagedrop.h
   ${QET_DIR}/sources/elementdialog.cpp
   ${QET_DIR}/sources/elementdialog.h
   ${QET_DIR}/sources/elementprovider.cpp
@@ -242,6 +244,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/genericdevice/genericdevice.cpp
+  ${QET_DIR}/sources/genericdevice/genericdevice.h
+  ${QET_DIR}/sources/genericdevice/genericdevicewizard.cpp
+  ${QET_DIR}/sources/genericdevice/genericdevicewizard.h
   ${QET_DIR}/sources/itemgroups.cpp
   ${QET_DIR}/sources/itemgroups.h
   ${QET_DIR}/sources/shownkinds.cpp

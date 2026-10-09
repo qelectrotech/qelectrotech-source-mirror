@@ -34,6 +34,7 @@
 #include "qetdiagrameditor.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
 #include "qetpalette.h"
@@ -46,6 +47,7 @@
 #include "diagram.h"
 #include "foliogrid.h"
 #include "diagramcontexttoolbar.h"
+#include "imagedrop.h"
 #include "diagramgestureoverlay.h"
 #include "gesturesettings.h"
 #include "shortcutbarsettings.h"
@@ -53,12 +55,14 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
+#include "genericdevice/genericdevicewizard.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
 #include "qetinformation.h"
 #include "qetversion.h"
 #include <QApplication>
 #include <QDropEvent>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPointer>
 #include <QSet>
@@ -104,9 +108,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setInteractive(true);
 
 	QString whatsthis = tr(
-		"Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant"
-		" des éléments et en posant des conducteurs entre leurs bornes. Il est"
-		" également possible d'ajouter des textes indépendants.",
+		"In this area you conceive your diagrams by adding elements and "
+		"conductors between their terminals. You may also add independent "
+		"texts.",
 		"\"What's this?\" tip"
 	);
 	setWhatsThis(whatsthis);
@@ -128,25 +132,25 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_diagram->loadElmtFolioSeq();
 	m_diagram->loadCndFolioSeq();
 
-	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
+	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Paste Here", "context menu action"), this);
 	connect(m_paste_here, &QAction::triggered, this, &DiagramView::pasteHere);
 
-	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
+	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Multiple paste"), this);
 	connect(m_multi_paste, &QAction::triggered, [this]() {
 		MultiPasteDialog d(this->m_diagram, this);
 		d.exec();
 	});
 
 	// Setup the action to create a template
-	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
+	m_create_template = new QAction(tr("Create a template", "context menu action"), this);
 	connect(m_create_template, &QAction::triggered, this, &DiagramView::createTemplateFromSelection);
 
 		//Setup the action to generate cabinet placement thumbnails (discussion #602)
-	m_generate_cabinet_thumbnail = new QAction(tr("Générer une vignette d'armoire", "context menu action"), this);
+	m_generate_cabinet_thumbnail = new QAction(tr("Make a cabinet thumbnail", "context menu action"), this);
 	connect(m_generate_cabinet_thumbnail, &QAction::triggered, this, &DiagramView::generateCabinetThumbnails);
 
 		//Filled each time the context menu opens, see updateFolioReportMenu()
-	m_folio_report_menu = new QMenu(tr("Renvoi de folio"), this);
+	m_folio_report_menu = new QMenu(tr("Sheet reference"), this);
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -202,7 +206,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 
 			// prepare a color dialog showing the initial conductor color
 		QPointer<QColorDialog> color_dialog = new QColorDialog(this);
-		color_dialog->setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
+		color_dialog->setWindowTitle(tr("Choose the new color for this conductor"));
 #ifdef Q_OS_MACOS
 		color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
@@ -225,7 +229,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 				new_value.setValue(initial_properties);
 
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
-				undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+				undo->setText(tr("Edit conductor properties", "undo caption"));
 				m_diagram->undoStack().push(undo);
 
 					// remember it for the next conductor drawn this session,
@@ -249,7 +253,14 @@ DiagramView::~DiagramView()
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
-	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+	// Picture files from the file manager are checked first: a file drag
+	// also carries its path as text, which would otherwise become a text.
+	// Any other file (a .qet project...) is left to the main window.
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) {
+		e -> acceptProposedAction();
+	} else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) {
+		e -> ignore();
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
 		e -> acceptProposedAction();
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		e -> acceptProposedAction();
@@ -265,7 +276,9 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	@param e le QDragMoveEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
-	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) e -> acceptProposedAction();
+	else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) e -> ignore();
+	else if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
 	else e-> ignore();
 }
 
@@ -275,7 +288,11 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 */
 void DiagramView::dropEvent(QDropEvent *e) {
 
-	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+	if (!ImageDrop::imageFiles(e -> mimeData()).isEmpty()) {
+		handleImageFilesDrop(e);
+	} else if (ImageDrop::hasOnlyOtherUrls(e -> mimeData())) {
+		e -> ignore();
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
 		handleElementDrop(e);
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		handleTitleBlockDrop(e);
@@ -436,6 +453,87 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 
 	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
 									iti, m_diagram, mapToScene(e->position().toPoint())));
+}
+
+/**
+	@brief DiagramView::handleImageFilesDrop
+	Add the picture files dropped from the file manager. A single one is
+	centred on the drop point and kept inside the frame; a picture too
+	large for the folio is scaled down to leave a free margin of
+	ImageDrop::frameMargin to the frame on every side. Several pictures
+	are spread side by side in a grid over that same area
+	(ImageDrop::gridLayout). One undo step removes them all. Files that cannot be used are
+	listed once, after the others have been placed.
+	@param e the QDropEvent describing the current drag'n drop
+*/
+void DiagramView::handleImageFilesDrop(QDropEvent *e)
+{
+	if (m_diagram -> isReadOnly()) return;
+	e -> acceptProposedAction();
+
+	const QStringList files = ImageDrop::imageFiles(e -> mimeData());
+	const QPointF drop_pos = mapToScene(e -> position().toPoint());
+	const QRectF frame = m_diagram -> border_and_titleblock.insideBorderRect();
+
+	QStringList refused;
+	QList<DiagramImageItem *> items;
+	for (const QString &file : files)
+	{
+		QString error;
+		const QImage image = ImageDrop::load(file, &error);
+		if (image.isNull())
+			refused << QStringLiteral("%1 : %2").arg(QFileInfo(file).fileName(), error);
+		else
+			items << new DiagramImageItem(QPixmap::fromImage(image));
+	}
+
+	// Where each picture goes, as it will look on the folio: one picture
+	// is centred on the drop point and fitted to the frame, several are
+	// spread over the frame in a grid.
+	QList<QRectF> targets;
+	if (items.size() == 1)
+	{
+		const QSizeF size = items.first() -> mapRectToScene(items.first() -> boundingRect()).size();
+		const qreal scale = ImageDrop::fitScale(size, frame);
+		QRectF r(QPointF(), size * scale);
+		r.moveCenter(drop_pos);
+		targets << ImageDrop::keepInside(r, scale < 1.0 ? ImageDrop::innerFrame(frame) : frame);
+	}
+	else
+	{
+		QList<QSizeF> sizes;
+		for (DiagramImageItem *item : items)
+			sizes << item -> mapRectToScene(item -> boundingRect()).size();
+		targets = ImageDrop::gridLayout(sizes, ImageDrop::innerFrame(frame));
+	}
+
+	auto *undo = new QUndoCommand();
+	const int placed = int(items.size());
+	for (int i = 0 ; i < placed ; ++i)
+	{
+		DiagramImageItem *item = items.at(i);
+		const QRectF natural = item -> mapRectToScene(item -> boundingRect());
+		const qreal scale = natural.width() > 0 ? targets.at(i).width() / natural.width() : 1.0;
+		if (scale < 1.0) {
+			item -> setScaleFactorX(scale);
+			item -> setScaleFactorY(scale);
+		}
+		const QPointF offset = item -> mapRectToScene(item -> boundingRect()).topLeft() - item -> pos();
+		new AddGraphicsObjectCommand(item, m_diagram, targets.at(i).topLeft() - offset, undo);
+	}
+
+	if (placed) {
+		undo -> setText(placed == 1 ? tr("Add an image")
+									: tr("Add %n image(s)", nullptr, placed));
+		m_diagram -> undoStack().push(undo);
+	} else {
+		delete undo;
+	}
+
+	if (!refused.isEmpty())
+		QMessageBox::warning(this, tr("Images not added"),
+							 tr("These files could not be added:") + "\n\n"
+							 + refused.join("\n"));
 }
 
 /**
@@ -1078,7 +1176,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		{
 				//Popup a menu with an action to create conductors between
 				//all selected terminals.
-			QAction *act = new QAction(tr("Connecter les bornes sélectionnées"), this);
+			QAction *act = new QAction(tr("Connect the selected terminals"), this);
 			QPolygonF polygon_ = m_free_rubberband;
 			connect(act, &QAction::triggered, [this, polygon_]()
 			{
@@ -1301,6 +1399,17 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	if (m_event_interface && m_event_interface->keyPressEvent(e))
 		return;
 
+		//An item in a state Escape must end -- a picture while one of its
+		//handles is dragged -- sees each key before the shortcuts below,
+		//which would otherwise clear the selection under it.
+	QGraphicsObject *keyboard_item = m_diagram ? m_diagram->keyboardItem() : nullptr;
+	if (keyboard_item && keyboard_item->scene() == m_diagram) {
+		e->ignore();
+		m_diagram->sendEvent(keyboard_item, e);
+		if (e->isAccepted())
+			return;
+	}
+
 	ProjectView *current_project = this->diagramEditor()->currentProjectView();
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
@@ -1510,7 +1619,7 @@ QString DiagramView::title() const
 	QString view_title;
 	QString diagram_title(m_diagram -> title());
 	if (diagram_title.isEmpty()) {
-		view_title = tr("Sans titre", "what to display for untitled diagrams");
+		view_title = tr("Untitled", "what to display for untitled diagrams");
 	} else {
 		view_title = diagram_title;
 	}
@@ -2360,11 +2469,11 @@ void DiagramView::createTemplateFromSelection()
 		for (QETDiagramEditor *qde : QETApp::diagramEditors())
 			qde->templateSaved(template_location);
 
-		QMessageBox::information(this, tr("Modèle enregistré"),
-								 tr("Le modèle a été enregistré avec succès sous :\n%1").arg(full_path));
+		QMessageBox::information(this, tr("Registered template"),
+								 tr("The template has been successfully saved as :\n%1").arg(full_path));
 	} else {
 		qDebug() << "Error: Could not open file for writing:" << full_path;
-		QMessageBox::critical(this, tr("Erreur"), tr("Le fichier n'a pas pu être écrit."));
+		QMessageBox::critical(this, tr("Error"), tr("The file could not be written."));
 	}
 }
 
@@ -2526,6 +2635,64 @@ void DiagramView::generateCabinetThumbnails()
 	if (created) {
 		project->setModified(true);
 	}
+}
+
+/**
+	@brief DiagramView::addGenericDevice
+	Edit > Add > Generic device. Open the wizard; on Finish, write the box
+	it describes as an ordinary symbol into the folder "Generic devices" of
+	this project's embedded collection and put it on the cursor, ready to
+	be placed. The file name carries a short uuid, so two devices given the
+	same name never overwrite each other.
+*/
+void DiagramView::addGenericDevice()
+{
+	QETProject *project = m_diagram ? m_diagram->project() : nullptr;
+	if (!project || project->isReadOnly() || m_diagram->isReadOnly()) {
+		return;
+	}
+	XmlElementCollection *collection = project->embeddedElementCollection();
+	if (!collection) {
+		return;
+	}
+
+		//Measured with the fonts the folio draws with, so names fit
+	const GenericDevice::Fonts fonts{QETApp::diagramTextsFont(7),
+					 QETApp::dynamicTextsItemFont(9)};
+	GenericDeviceWizard wizard(fonts, this);
+	if (wizard.exec() != QDialog::Accepted) {
+		return;
+	}
+	const GenericDevice::Spec spec = wizard.spec();
+
+	const QString dir_name = QStringLiteral("Generic devices");
+	const QString dir_path = QStringLiteral("import/") + dir_name;
+	if (!collection->exist(dir_path))
+	{
+		NamesList dir_names;
+		dir_names.addName(QStringLiteral("en"), dir_name);
+			//Stored per language, like an element's names: not tr(), which
+			//would store the interface's language under "en"
+		dir_names.addName(QStringLiteral("fr"), QStringLiteral("Appareils génériques"));
+		if (!collection->createDir(QStringLiteral("import"), dir_name, dir_names)) {
+			return;
+		}
+	}
+
+	const QString file_name = QET::stringToFileName(spec.name)
+				  + QLatin1Char('-')
+				  + QUuid::createUuid().toString(QUuid::Id128).left(8)
+				  + QStringLiteral(".elmt");
+	QDomDocument doc;
+	const QDomElement definition = GenericDevice::toDefinition(
+				spec, fonts, doc, QetVersion::currentVersion().toString());
+	if (!collection->addElementDefinition(dir_path, file_name, definition)) {
+		return;
+	}
+	project->setModified(true);
+
+	const ElementsLocation location(dir_path + QLatin1Char('/') + file_name, project);
+	startElementPlacement(location, defaultPlacementPos());
 }
 
 /**

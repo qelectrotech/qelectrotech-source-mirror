@@ -71,10 +71,10 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 			qghi->setZValue(this->zValue()+1);
 	});
 
-	m_insert_point = new QAction(tr("Ajouter un point"), this);
+	m_insert_point = new QAction(tr("Add a point"), this);
 	m_insert_point->setIcon(QET::Icons::Add);
 	connect(m_insert_point, &QAction::triggered, this, &QetShapeItem::insertPoint);
-	m_remove_point = new QAction(tr("Supprimer ce point"), this);
+	m_remove_point = new QAction(tr("Delete this point"), this);
 	m_remove_point->setIcon(QET::Icons::Remove);
 	connect(m_remove_point, &QAction::triggered, this, &QetShapeItem::removePoint);
 }
@@ -920,7 +920,7 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 				m_nodes = after;
 				const QDomElement afterXml = snapshotXml();
 				auto *undo = new PromoteShapeCommand(this, before, afterXml);
-				undo->setText(tr("Déformer une courbe"));
+				undo->setText(tr("Deform a curve"));
 				diagram()->undoStack().push(undo);
 			}
 		}
@@ -1121,14 +1121,14 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 						{
 							const int seg = segmentHit.first;
 							const qreal t = segmentHit.second;
-							QAction *insertAct = menu.data()->addAction(tr("Ajouter un point"));
+							QAction *insertAct = menu.data()->addAction(tr("Add a point"));
 							connect(insertAct, &QAction::triggered, this, [this, seg, t]() { insertPathPoint(seg, t); });
 						}
 
-						QMenu *nodeMenu = menu.data()->addMenu(tr("Nœud le plus proche"));
-						QAction *toSmooth    = nodeMenu->addAction(tr("Lisse"));
-						QAction *toSymmetric = nodeMenu->addAction(tr("Symétrique"));
-						QAction *toCorner    = nodeMenu->addAction(tr("Anguleux"));
+						QMenu *nodeMenu = menu.data()->addMenu(tr("Nearest node"));
+						QAction *toSmooth    = nodeMenu->addAction(tr("Smooth"));
+						QAction *toSymmetric = nodeMenu->addAction(tr("Symmetric"));
+						QAction *toCorner    = nodeMenu->addAction(tr("Corner"));
 
 						auto *group = new QActionGroup(nodeMenu);
 						for (QAction *a : {toSmooth, toSymmetric, toCorner})
@@ -1147,7 +1147,7 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 						if (m_nodes.size() > 2)
 						{
-							QAction *removeAct = menu.data()->addAction(tr("Supprimer le nœud le plus proche"));
+							QAction *removeAct = menu.data()->addAction(tr("Delete the nearest node"));
 							connect(removeAct, &QAction::triggered, this, [this, nearest]() { removePathPoint(nearest); });
 						}
 					}
@@ -1164,7 +1164,7 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 						// actually get, rather than always claiming "polyligne"
 						// regardless of what's about to happen.
 						const bool needsBezier = (m_shapeType == Ellipse) || (m_xRadius > 0 || m_yRadius > 0);
-						QAction *convert = menu.data()->addAction(needsBezier ? tr("Convertir en courbe de Bézier") : tr("Convertir en polyligne"));
+						QAction *convert = menu.data()->addAction(needsBezier ? tr("Convert to Bézier curve") : tr("Convert to polyline"));
 						if(needsBezier && m_shapeType == Rectangle) {
 							convert->setIcon(QET::Icons::RectToBezier);
 						}
@@ -1177,9 +1177,9 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 						connect(convert, &QAction::triggered, this, &QetShapeItem::convertToPathOrPolygon);
 					}
 
-					QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
+					QAction *mirrorH = menu.data()->addAction(tr("Horizontal mirror"));
 					mirrorH->setIcon(QET::Icons::ImageFlipHorizontal);
-					QAction *mirrorV = menu.data()->addAction(tr("Miroir vertical"));
+					QAction *mirrorV = menu.data()->addAction(tr("Vertical mirror"));
 					mirrorV->setIcon(QET::Icons::ImageFlipVertical);
 					connect(mirrorH, &QAction::triggered, this, [this]() { mirror(true); });
 					connect(mirrorV, &QAction::triggered, this, [this]() { mirror(false); });
@@ -1254,10 +1254,10 @@ QString QetShapeItem::handleModeLabel(HandleMode mode)
 {
 	switch (mode)
 	{
-		case HandleMode::Size:       return tr("Taille");
-		case HandleMode::Corner:     return tr("Coins arrondis");
-		case HandleMode::NodeEdit:   return tr("Édition des nœuds");
-		case HandleMode::RotateSkew: return tr("Rotation/Inclinaison");
+		case HandleMode::Size:       return tr("Size");
+		case HandleMode::Corner:     return tr("Rounded corners");
+		case HandleMode::NodeEdit:   return tr("Node editing");
+		case HandleMode::RotateSkew: return tr("Rotation/Skew");
 	}
 	return QString();
 }
@@ -1275,7 +1275,7 @@ QString QetShapeItem::handleModeLabel(HandleMode mode)
 void QetShapeItem::updateModeHint()
 {
 	setToolTip(isSelected()
-			? tr("Cliquer : mode %1").arg(handleModeLabel(nextHandleMode()))
+			? tr("Click: mode %1").arg(handleModeLabel(nextHandleMode()))
 			: QString());
 }
 
@@ -1355,29 +1355,28 @@ QString QetShapeItem::currentModeStatusHint() const
 		case HandleMode::Size:
 			if (m_shapeType == Rectangle || m_shapeType == Ellipse)
 			{
-				hint = tr("Glisser un coin/bord : redimensionner "
-						"(Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)");
+				hint = tr("Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt "
+						"= detach into a polyline)");
 				if (m_shapeType == Ellipse)
-					hint += tr(" ; point turquoise : arc");
+					hint += tr(" ; turquoise point: arc");
 			}
 			else if (m_shapeType == Line)
 			{
-				hint = tr("Glisser une extrémité : la déplacer");
+				hint = tr("Drag an endpoint: move it");
 			}
 			else
 			{
-				hint = tr("Glisser un point : le déplacer");
+				hint = tr("Drag a point: move it");
 			}
 			break;
 
 		case HandleMode::Corner:
-			hint = tr("Glisser le point violet : arrondir les coins");
+			hint = tr("Drag the purple point: round the corners");
 			break;
 
 		case HandleMode::NodeEdit:
-			hint = tr("Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; "
-					"Alt+glisser un point anguleux : créer des poignées ; "
-					"clic droit : menu du nœud le plus proche");
+			hint = tr("Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a "
+					"corner point: create handles; right click: nearest node menu");
 			break;
 
 		case HandleMode::RotateSkew:
@@ -1386,13 +1385,13 @@ QString QetShapeItem::currentModeStatusHint() const
 			// this mode (see rebuildHandles()) -- Line/Polygon/Path
 			// don't, so mentioning "un bord : inclinaison" for them
 			// would describe a handle that doesn't exist.
-			const QString handleWord = (m_shapeType == Line) ? tr("une extrémité")
-					: (m_shapeType == Rectangle || m_shapeType == Ellipse) ? tr("un coin")
-					: tr("un point");
-			hint = tr("Glisser %1 : rotation (Maj = 15°)").arg(handleWord);
+			const QString handleWord = (m_shapeType == Line) ? tr("an endpoint")
+					: (m_shapeType == Rectangle || m_shapeType == Ellipse) ? tr("a corner")
+					: tr("a point");
+			hint = tr("Drag %1: rotation (Shift = 15°)").arg(handleWord);
 			if (m_shapeType == Rectangle || m_shapeType == Ellipse)
-				hint += tr(" ; un bord : inclinaison");
-			hint += tr(" ; point rouge : glisser pour repositionner le centre de rotation");
+				hint += tr(" ; an edge: skew");
+			hint += tr(" ; red point: drag to reposition the rotation center");
 			break;
 		}
 	}
@@ -1404,8 +1403,8 @@ QString QetShapeItem::currentModeStatusHint() const
 	// so it isn't really a property of any one mode.
 	if (!hint.isEmpty())
 	{
-		hint += tr(" (Ctrl pendant le glissement = position libre, sans accrochage à la grille)");
-		hint += tr(" — Cliquer : mode %1").arg(handleModeLabel(nextHandleMode()));
+		hint += tr(" (Ctrl while dragging = free position, no grid snapping)");
+		hint += tr(" — Click: mode %1").arg(handleModeLabel(nextHandleMode()));
 	}
 
 	return hint;
@@ -1435,36 +1434,36 @@ QString QetShapeItem::handleRoleTooltip(HandleRole role, int slot) const
 			// entirely (see dragResize()'s early-return for Line) --
 			// no modifier applies to them at all.
 			if (m_shapeType == Line)
-				return tr("Glisser : déplacer ce point");
-			QString text = tr("Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions");
+				return tr("Drag: move this point");
+			QString text = tr("Drag: resize (Ctrl = from center + free position, Shift = proportions");
 			if (isResizeCornerSlot(slot))
-				text += tr(", Alt = détacher en polyligne");
+				text += tr(", Alt = detach into a polyline");
 			text += ")";
 			return text;
 		}
 		case HandleRole::Rotate:
-			return tr("Glisser : rotation (Ctrl = position libre, Maj = 15°)");
+			return tr("Drag: rotation (Ctrl = free position, Shift = 15°)");
 		case HandleRole::SkewEdge:
-			return tr("Glisser : inclinaison (Ctrl = position libre, Maj = 15°)");
+			return tr("Drag: skew (Ctrl = free position, Shift = 15°)");
 		case HandleRole::Pivot:
-			return tr("Glisser : repositionner le centre de rotation (Ctrl = position libre)");
+			return tr("Drag: reposition the rotation center (Ctrl = free position)");
 		case HandleRole::CornerRadius:
-			return tr("Glisser : arrondir les coins (Ctrl = position libre)");
+			return tr("Drag: round the corners (Ctrl = free position)");
 		case HandleRole::ArcEndpoint:
-			return tr("Glisser : ajuster l'arc (Ctrl = position libre, Maj = 15°)");
+			return tr("Drag: adjust the arc (Ctrl = free position, Shift = 15°)");
 		case HandleRole::ArcBulge:
-			return tr("Glisser : creuser ou aplatir l'arc, ses extrémités restent en place (Ctrl = position libre)");
+			return tr("Drag: deepen or flatten the arc, its ends stay in place (Ctrl = free position)");
 		case HandleRole::PathAnchor:
 		{
-			QString text = tr("Glisser : déplacer le point (Ctrl = position libre");
+			QString text = tr("Drag: move the point (Ctrl = free position");
 			if (m_shapeType == Path)
-				text += tr(", Alt = créer des poignées");
+				text += tr(", Alt = create handles");
 			text += ")";
 			return text;
 		}
 		case HandleRole::PathControlIn:
 		case HandleRole::PathControlOut:
-			return tr("Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)");
+			return tr("Drag: deform the curve (Ctrl = free position, Alt = break the tangent)");
 	}
 	return QString();
 }
@@ -1813,7 +1812,7 @@ void QetShapeItem::insertPoint()
 		if(new_polygon != m_polygon)
 		{
 				//Wrap the undo for avoid to merge the undo commands when user add several points.
-			QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+			QUndoCommand *undo = new QUndoCommand(tr("Add a point to a polygon"));
 			new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
 			diagram()->undoStack().push(undo);
 		}
@@ -1847,7 +1846,7 @@ void QetShapeItem::removePoint()
 		polygon.removeAt(index);
 
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
-		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
+		QUndoCommand *undo = new QUndoCommand(tr("Delete a point from a polygon"));
 		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
 		diagram()->undoStack().push(undo);
 	}
@@ -2015,7 +2014,7 @@ void QetShapeItem::insertPathPoint(int segmentIndex, qreal t)
 	if (diagram())
 	{
 		auto *undo = new PromoteShapeCommand(this, before, after);
-		undo->setText(tr("Ajouter un point à une courbe"));
+		undo->setText(tr("Add a point to a curve"));
 		diagram()->undoStack().push(undo);
 	}
 
@@ -2044,7 +2043,7 @@ void QetShapeItem::removePathPoint(int nodeIndex)
 	if (diagram())
 	{
 		auto *undo = new PromoteShapeCommand(this, before, after);
-		undo->setText(tr("Supprimer un point d'une courbe"));
+		undo->setText(tr("Delete a point from a curve"));
 		diagram()->undoStack().push(undo);
 	}
 
@@ -2135,8 +2134,8 @@ void QetShapeItem::convertToPathOrPolygon()
 	{
 		auto *undo = new PromoteShapeCommand(this, before, after);
 		undo->setText(m_shapeType == Path
-				? tr("Convertir %1 en courbe de Bézier").arg(originalName)
-				: tr("Convertir %1 en polyligne").arg(originalName));
+				? tr("Convert %1 to a Bézier curve").arg(originalName)
+				: tr("Convert %1 to a polyline").arg(originalName));
 		diagram()->undoStack().push(undo);
 	}
 
@@ -2323,7 +2322,7 @@ void QetShapeItem::mirror(bool horizontal)
 		if (!diagram()->views().isEmpty())
 		{
 			if (auto *editor = QETApp::diagramEditorAncestorOf(diagram()->views().constFirst()))
-				editor->statusBar()->showMessage(tr("Miroir impossible : inclinaison trop extrême pour cette forme"), 4000);
+				editor->statusBar()->showMessage(tr("Mirror not possible: skew too extreme for this shape"), 4000);
 		}
 		return;
 	}
@@ -2338,7 +2337,7 @@ void QetShapeItem::mirror(bool horizontal)
 	const QDomElement after = snapshotXml();
 
 	auto *undo = new PromoteShapeCommand(this, before, after);
-	undo->setText(horizontal ? tr("Miroir horizontal de %1").arg(name()) : tr("Miroir vertical de %1").arg(name()));
+	undo->setText(horizontal ? tr("Horizontal mirror of %1").arg(name()) : tr("Vertical mirror of %1").arg(name()));
 	diagram()->undoStack().push(undo);
 }
 
@@ -2411,7 +2410,7 @@ void QetShapeItem::setNodeKind(int nodeIndex, NodeKind kind)
 	if (diagram())
 	{
 		auto *undo = new PromoteShapeCommand(this, before, after);
-		undo->setText(tr("Modifier le type d'un nœud"));
+		undo->setText(tr("Change the type of a node"));
 		diagram()->undoStack().push(undo);
 	}
 
@@ -2810,6 +2809,7 @@ void QetShapeItem::handlerMousePressEvent(int handlerIndex)
 	m_old_endAngle = m_endAngle;
 	m_old_transform = m_transform;
 	m_old_pos = pos();
+	m_old_pivotIsCustom = m_pivotIsCustom;
 	m_old_nodes = m_nodes;
 	if(m_xRadius == 0 && m_yRadius == 0) {
 		m_modifie_radius_equaly = true;
@@ -2888,14 +2888,14 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				undo = new QPropertyUndoCommand(this, "rect", QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized());
 			}
 			if (undo)
-				undo->setText(tr("Redimensionner %1").arg(name()));
+				undo->setText(tr("Resize %1").arg(name()));
 			break;
 
 		case HandleRole::Rotate:
 			if (!qFuzzyCompare(m_transform.rotation, m_old_transform.rotation))
 			{
 				undo = new QPropertyUndoCommand(this, "rotation", m_old_transform.rotation, m_transform.rotation);
-				undo->setText(tr("Faire pivoter %1").arg(name()));
+				undo->setText(tr("Rotate %1").arg(name()));
 			}
 			break;
 
@@ -2905,16 +2905,21 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			else if (!qFuzzyCompare(m_transform.skewY, m_old_transform.skewY))
 				undo = new QPropertyUndoCommand(this, "skewY", m_old_transform.skewY, m_transform.skewY);
 			if (undo)
-				undo->setText(tr("Incliner %1").arg(name()));
+				undo->setText(tr("Skew %1").arg(name()));
 			break;
 
 		case HandleRole::Pivot:
 			if (m_transform.pivot != m_old_transform.pivot)
 			{
-				undo = new QUndoCommand(tr("Deplacer le centre de rotation"));
+				undo = new QUndoCommand(tr("Move the rotation center"));
 				new QPropertyUndoCommand(this, "pos", m_old_pos, pos(), undo);
 				new QPropertyUndoCommand(this, "pivot", m_old_transform.pivot, m_transform.pivot, undo);
+				// dragPivotHandle() marked the pivot as hand-placed; undoing
+				// the move has to take that back as well.
+				new QPropertyUndoCommand(this, "pivotIsCustom", m_old_pivotIsCustom, m_pivotIsCustom, undo);
 			}
+			else
+				m_pivotIsCustom = m_old_pivotIsCustom;   // dragged back to where it was: nothing to undo
 			break;
 
 		case HandleRole::CornerRadius:
@@ -2922,7 +2927,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			{
 				undo = new QPropertyUndoCommand(this, "xRadius", m_old_xRadius, m_xRadius);
 				new QPropertyUndoCommand(this, "yRadius", m_old_yRadius, m_yRadius, undo);
-				undo->setText(tr("Arrondir les coins d'%1").arg(name()));
+				undo->setText(tr("Round the corners of %1").arg(name()));
 			}
 			break;
 
@@ -2945,13 +2950,13 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				undo = new QPropertyUndoCommand(this, "endAngle", m_old_endAngle, m_endAngle);
 			}
 			if (undo)
-				undo->setText(tr("Modifier l'angle d'un arc"));
+				undo->setText(tr("Change the angle of an arc"));
 			break;
 
 		case HandleRole::ArcBulge:
 			if (m_P1 != m_old_P1 || m_P2 != m_old_P2 || !qFuzzyCompare(m_endAngle, m_old_endAngle))
 			{
-				undo = new QUndoCommand(tr("Modifier la courbure d'un arc"));
+				undo = new QUndoCommand(tr("Change the curve of an arc"));
 				new QPropertyUndoCommand(this, "rect", QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized(), undo);
 				if (!qFuzzyCompare(m_endAngle, m_old_endAngle))
 					new QPropertyUndoCommand(this, "endAngle", m_old_endAngle, m_endAngle, undo);
@@ -2962,7 +2967,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			if (m_shapeType == Polygon && m_polygon != m_old_polygon)
 			{
 				undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
-				undo->setText(tr("Modifier la forme d'%1").arg(name()));
+				undo->setText(tr("Change the shape of %1").arg(name()));
 			}
 			else if (m_shapeType == Path && m_nodes != m_old_nodes)
 			{
@@ -2977,7 +2982,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				m_nodes = after;
 				const QDomElement afterXml = snapshotXml();
 				undo = new PromoteShapeCommand(this, before, afterXml);
-				undo->setText(tr("Modifier la forme d'%1").arg(name()));
+				undo->setText(tr("Change the shape of %1").arg(name()));
 			}
 			break;
 
@@ -2991,7 +2996,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				m_nodes = after;
 				const QDomElement afterXml = snapshotXml();
 				undo = new PromoteShapeCommand(this, before, afterXml);
-				undo->setText(tr("Modifier la courbure d'%1").arg(name()));
+				undo->setText(tr("Change the curvature of %1").arg(name()));
 			}
 			break;
 	}
@@ -3006,7 +3011,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 		// still matters if some future role is ever added without
 		// setting one of its own.
 		if (undo->text().isEmpty())
-			undo->setText(tr("Modifier %1").arg(name()));
+			undo->setText(tr("Edit %1").arg(name()));
 
 		// Every push here is one complete, finished gesture (press,
 		// drag, release) -- never a continuation of an earlier one, the
@@ -3373,11 +3378,11 @@ void QetShapeItem::editProperty()
 QString QetShapeItem::name() const
 {
 	switch (m_shapeType) {
-		case Line:	    return tr("une ligne");
-		case Rectangle:	return tr("un rectangle");
-		case Ellipse:	return isFullEllipse() ? tr("une éllipse") : tr("un arc");
-		case Polygon:	return tr("une polyligne");
-		case Path:	    return tr("une courbe");
-		default:	    return tr("une shape");
+		case Line:	    return tr("a line");
+		case Rectangle:	return tr("rectangle");
+		case Ellipse:	return isFullEllipse() ? tr("an ellipse") : tr("an arc");
+		case Polygon:	return tr("polyline");
+		case Path:	    return tr("a curve");
+		default:	    return tr("an shape");
 	}
 }

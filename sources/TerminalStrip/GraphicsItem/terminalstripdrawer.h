@@ -22,6 +22,7 @@
 #include <QUuid>
 
 #include "properties/terminalstriplayoutpattern.h"
+#include "../../properties/elementdata.h"
 
 class QPainter;
 class TerminalStrip;
@@ -56,6 +57,14 @@ namespace TerminalStripDrawer
             virtual bool isBridged() const = 0;
             virtual AbstractBridgeInterface* bridge() const = 0;
 			virtual QString xref() const = 0;
+			//Type and led are only used to draw the symbol of the terminal.
+			//They are not pure virtual, so an implementation can ignore them.
+			virtual ElementData::TerminalType type() const { return ElementData::TTGeneric; }
+			virtual bool isLed() const { return false; }
+			//Cable (hose) connected to the terminal, drawn under the strip.
+			virtual QString cable() const { return QString(); }
+			virtual QString cableWire() const { return QString(); }
+			virtual bool isShield() const { return false; }
     };
 
 	class AbstractPhysicalTerminalInterface

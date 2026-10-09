@@ -1362,7 +1362,7 @@ void CustomElementGraphicPart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event
 	if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origin_pos != pos())
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
-		undo->setText(tr("Déplacer une primitive"));
+		undo->setText(tr("Move a primitive"));
 		undo->enableAnimation();
 		elementScene()->undoStack().push(undo);
 	}

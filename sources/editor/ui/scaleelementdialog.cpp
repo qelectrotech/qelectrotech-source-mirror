@@ -37,7 +37,7 @@
 ScaleElementDialog::ScaleElementDialog(const QList<QPointF> &terminals, QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Mettre l'élément à l'échelle"));
+	setWindowTitle(tr("Scale the element"));
 
 	auto layout = new QVBoxLayout(this);
 	auto form = new QFormLayout();
@@ -52,23 +52,23 @@ ScaleElementDialog::ScaleElementDialog(const QList<QPointF> &terminals, QWidget 
 	if (two >= 0) {
 		m_factor->setCurrentIndex(two);
 	}
-	form->addRow(tr("Facteur :"), m_factor);
+	form->addRow(tr("Factor:"), m_factor);
 
-	m_scale_text = new QCheckBox(tr("Mettre aussi les textes à l'échelle"), this);
+	m_scale_text = new QCheckBox(tr("Also scale the texts"), this);
 	m_scale_text->setChecked(true);
 	form->addRow(m_scale_text);
 
 	QString explanation;
 	const int off_grid = SymbolScale::offGridCount(terminals);
 	if (off_grid && factors.isEmpty()) {
-		explanation = tr("%n borne(s) de cet élément ne sont pas sur la grille, "
-						 "et aucun facteur ne les y amène.", "", off_grid);
+		explanation = tr("%n terminals of this element are not on the grid, and "
+						 "no factor brings them there.", "", off_grid);
 	} else if (off_grid) {
-		explanation = tr("%n borne(s) de cet élément ne sont pas sur la grille. "
-						 "Seuls les facteurs qui les y amènent sont proposés.", "", off_grid);
+		explanation = tr("%n terminals of this element are not on the grid. Only "
+						 "the factors that bring them there are offered.", "", off_grid);
 	} else {
-		explanation = tr("Seuls les facteurs qui gardent les bornes sur la grille "
-						 "sont proposés. L'élément est mis à l'échelle autour de son point de saisie.");
+		explanation = tr("Only the factors that keep the terminals on the grid are offered. The "
+						 "element is scaled around its grab point.");
 	}
 	auto label = new QLabel(explanation, this);
 	label->setWordWrap(true);

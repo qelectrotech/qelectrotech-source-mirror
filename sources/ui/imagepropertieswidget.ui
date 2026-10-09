@@ -20,7 +20,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label_width">
      <property name="text">
-      <string>Largeur</string>
+      <string>Width</string>
      </property>
     </widget>
    </item>
@@ -43,7 +43,7 @@
    <item row="0" column="2" rowspan="2">
     <widget class="QToolButton" name="m_lock_ratio_tb">
      <property name="toolTip">
-      <string>Verrouillé : modifier la largeur ou la hauteur ajuste l'autre pour conserver les proportions. Cliquer pour déverrouiller.</string>
+      <string>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -56,7 +56,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label_height">
      <property name="text">
-      <string>Hauteur</string>
+      <string>Height</string>
      </property>
     </widget>
    </item>
@@ -79,7 +79,7 @@
    <item row="2" column="0" colspan="3">
     <widget class="QPushButton" name="m_restore_ratio_pb">
      <property name="text">
-      <string>Restaurer les proportions</string>
+      <string>Restore proportions</string>
      </property>
     </widget>
    </item>
@@ -109,7 +109,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label_skew_x">
      <property name="text">
-      <string>Inclinaison X</string>
+      <string>X skew</string>
      </property>
     </widget>
    </item>
@@ -132,7 +132,7 @@
    <item row="5" column="0">
     <widget class="QLabel" name="label_skew_y">
      <property name="text">
-      <string>Inclinaison Y</string>
+      <string>Y skew</string>
      </property>
     </widget>
    </item>
@@ -155,31 +155,31 @@
    <item row="6" column="0">
     <widget class="QLabel" name="label_label">
      <property name="text">
-      <string>Libellé</string>
+      <string>Label</string>
      </property>
     </widget>
    </item>
    <item row="6" column="1" colspan="2">
     <widget class="QLineEdit" name="m_label_le">
      <property name="toolTip">
-      <string>Texte affiché sous l'image. Il suit l'image quand elle est déplacée, copiée ou tournée.</string>
+      <string>Text displayed under the image. It follows the image when it is moved, copied or rotated.</string>
      </property>
     </widget>
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="QCheckBox" name="m_lock_pos_cb">
      <property name="text">
-      <string>Verrouiller la position</string>
+      <string>Lock Position</string>
      </property>
     </widget>
    </item>
    <item row="8" column="0" colspan="3">
     <widget class="QCheckBox" name="m_adapt_to_dark_theme_cb">
      <property name="text">
-      <string>Adapter l’image au thème sombre</string>
+      <string>Adapt the picture to the dark theme</string>
      </property>
      <property name="toolTip">
-      <string>Adapte les couleurs à l’affichage sombre uniquement. L’image originale, les exports et les impressions restent inchangés.</string>
+      <string>Adapts the colors for the dark display only. The original picture, exports and printouts stay unchanged.</string>
      </property>
     </widget>
    </item>

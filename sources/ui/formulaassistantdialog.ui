@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Assistant de formule</string>
+   <string>Formula Wizard</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,7 +24,7 @@
    <item>
     <widget class="QLineEdit" name="m_line_edit">
      <property name="placeholderText">
-      <string>Formule</string>
+      <string>Formula</string>
      </property>
     </widget>
    </item>

@@ -159,6 +159,7 @@ class DiagramView : public PaletteGraphicsView
 		bool cableCoreMenu(const QPoint &menu_pos, const QPoint &global_pos);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
+		void handleImageFilesDrop(QDropEvent *);
 		void scrollOnMovement(QKeyEvent *);
 		bool gestureEvent(QGestureEvent *event);
 		QRectF viewedSceneRect() const;
@@ -209,6 +210,7 @@ class DiagramView : public PaletteGraphicsView
 		void adjustSceneRect();
 		void updateWindowTitle();
 		void resetConductors();
+		void addGenericDevice();
 	
 	private slots:
 		void adjustGridToZoom();

@@ -25,7 +25,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Numérotations disponibles :</string>
+        <string>Availables numbering :</string>
        </property>
       </widget>
      </item>
@@ -49,7 +49,7 @@
        </property>
        <item>
         <property name="text">
-         <string>Nom de la nouvelle numérotation</string>
+         <string>Name of the new numbering</string>
         </property>
        </item>
       </widget>
@@ -57,7 +57,7 @@
      <item>
       <widget class="QPushButton" name="m_remove_pb">
        <property name="toolTip">
-        <string>Supprimer la numérotation</string>
+        <string>Delete numbering</string>
        </property>
        <property name="text">
         <string/>
@@ -96,7 +96,7 @@
          </sizepolicy>
         </property>
         <property name="title">
-         <string>Définition</string>
+         <string>Definition</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -129,7 +129,7 @@
            <item>
             <widget class="QPushButton" name="remove_button">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string/>
@@ -145,7 +145,7 @@
            <item>
             <widget class="QPushButton" name="add_button">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string/>
@@ -202,10 +202,10 @@
              <item>
               <widget class="QLabel" name="value_label">
                <property name="toolTip">
-                <string>Pour un numéro : le prochain numéro attribué. Pour un texte : le texte fixe.</string>
+                <string>For a number: the next number to be assigned. For text: the fixed text.</string>
                </property>
                <property name="text">
-                <string>Valeur</string>
+                <string>Value</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -221,7 +221,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Incrémentation</string>
+                <string>Incrementing</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

@@ -157,18 +157,38 @@ QString RealTerminal::Xref() const
 
 /**
  * @brief RealTerminal::cable
- * @return
+ * @return The name of the cable (hose) connected to this terminal.
+ * The value is stored in the informations of the element.
  */
 QString RealTerminal::cable() const {
+	if (m_element) {
+		return m_element->elementData().m_informations.value(cableInfoKey()).toString();
+	}
 	return QString();
 }
 
 /**
  * @brief RealTerminal::cableWire
- * @return
+ * @return The color / number of the wire of the cable, connected to this terminal.
  */
 QString RealTerminal::cableWire() const {
+	if (m_element) {
+		return m_element->elementData().m_informations.value(cableWireInfoKey()).toString();
+	}
 	return QString();
+}
+
+/**
+ * @brief RealTerminal::isShield
+ * @return true if this terminal is the shield of the cable
+ * and not one of its wires.
+ */
+bool RealTerminal::isShield() const {
+	if (m_element) {
+		return QET::infoFlagIsTrue(
+			m_element->elementData().m_informations.value(shieldInfoKey()).toString());
+	}
+	return false;
 }
 
 /**

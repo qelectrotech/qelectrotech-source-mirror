@@ -364,19 +364,21 @@ would happen under `-j`/parallel builds) can corrupt a `.ts` file mid-write,
 causing `lrelease` to fail with "Premature end of document". Run it on its
 own, review the diff, and commit the updated `.ts` files separately.
 
-The strings in the code are French, so `lang/qet_fr.ts` is the source
+The strings in the code are English, so `lang/qet_en.ts` is the source
 language's own file. After `update_translations`, run
 
 ```sh
-python3 misc/i18n/mirror_source_language.py lang/qet_fr.ts
+python3 misc/i18n/mirror_source_language.py lang/qet_en.ts
 ```
 
-before committing: it copies every new French source string into its own
-translation, so `qet_fr.qm` stays complete and French wording can later be
+before committing: it copies every new English source string into its own
+translation, so `qet_en.qm` stays complete and English wording can later be
 corrected in the `.ts` alone, without changing the key that the other
 languages are attached to. Forgetting it breaks nothing (an empty entry
 falls back to the code text); `--check` reports whether a run is needed.
-A French correction typed into `qet_fr.ts` is lost like any other
-translation when the code string is reworded; the vanished entry keeps the
-old text for recovery. Never add `-removeidentical` to the `lrelease`
-options: it would strip these entries again.
+The script refuses any other language's file, such as `qet_fr.ts`, where it
+would copy English into a translation. An English correction typed into
+`qet_en.ts` is lost like any other translation when the code string is
+reworded; the vanished entry keeps the old text for recovery. Never add
+`-removeidentical` to the `lrelease` options: it would strip these entries
+again.

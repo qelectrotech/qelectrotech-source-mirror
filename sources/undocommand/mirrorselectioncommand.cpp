@@ -55,8 +55,8 @@ MirrorSelectionCommand::MirrorSelectionCommand(const QList<Element *> &elements,
 	QUndoCommand(parent)
 {
 	setText(orientation == Qt::Horizontal
-			? QObject::tr("Miroir horizontal")
-			: QObject::tr("Miroir vertical"));
+			? QObject::tr("Horizontal mirror")
+			: QObject::tr("Vertical mirror"));
 
 	for (Element *element : elements)
 	{
@@ -83,15 +83,17 @@ MirrorSelectionCommand::MirrorSelectionCommand(const QList<Element *> &elements,
 
 			//The mirror is about the element's hotspot, which is often a
 			//corner of the symbol: move it so that it stays where it was,
-			//centre on centre, and on the grid
+			//centre on centre. The move is snapped to the grid, not the new
+			//position: an element on the grid stays on it, one off the grid
+			//keeps its offset, and a second mirror moves it exactly back.
 		QPointF centre = element->boundingRect().center();
 		centre = QTransform::fromScale(new_horizontal ? -1 : 1, new_vertical ? -1 : 1)
 				 .map(centre);
 		centre = QTransform().rotate(element->rotation()).map(centre);
 
 		const QPointF old_pos = element->pos();
-		const QPointF new_pos = Diagram::snapToGrid(
-					element->mapToScene(element->boundingRect().center()) - centre);
+		const QPointF new_pos = old_pos + Diagram::snapToGrid(
+					element->mapToScene(element->boundingRect().center()) - centre - old_pos);
 		if (new_pos != old_pos)
 			new QPropertyUndoCommand(element, "pos", old_pos, new_pos, this);
 	}

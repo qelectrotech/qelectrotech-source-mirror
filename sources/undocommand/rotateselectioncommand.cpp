@@ -35,7 +35,7 @@ RotateSelectionCommand::RotateSelectionCommand(Diagram *diagram, qreal angle, QU
 QUndoCommand(parent),
 m_diagram(diagram)
 {
-	setText(rotate_as_group ? QObject::tr("Pivoter le groupe") : QObject::tr("Pivoter la selection"));
+	setText(rotate_as_group ? QObject::tr("Rotate the group") : QObject::tr("Rotate the selection"));
 
 	if(!m_diagram->isReadOnly())
 	{
@@ -109,9 +109,17 @@ m_diagram(diagram)
 				}
 					break;
 				case DiagramImageItem::Type:
-					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+				{
+						//A picture keeps its rotation in its own transform
+						//("rotationAngle", around its pivot), which is what
+						//toXml() saves. QGraphicsItem's plain "rotation" is
+						//not saved, so a picture turned with it came back
+						//unrotated once the project was reopened.
+					auto *image = static_cast<DiagramImageItem *>(item);
+					m_undo << new QPropertyUndoCommand(image, "rotationAngle", QVariant(image->rotationAngle()), QVariant(image->rotationAngle()+angle), this);
 					if (rotate_as_group)
-						addGroupPositionUndo(item, pivot, angle);
+						addGroupPositionUndo(item, pivot, angle, image->mapToScene(image->pivot()) - image->pos());
+				}
 					break;
 				default:
 					break;
@@ -135,11 +143,16 @@ m_diagram(diagram)
 	@param item : item to reposition, its own rotation undo already queued
 	@param pivot : shared pivot point, in scene coordinates
 	@param angle : rotation angle in degrees
+	@param anchor : the point of @a item, relative to its pos(), that
+	orbits @a pivot -- null for items that turn around pos() itself, the
+	picture's own pivot for a DiagramImageItem, which turns around that.
+	Only a null anchor is snapped to the grid: the centre of a picture is
+	rarely on it.
 */
-void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle)
+void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle, const QPointF &anchor)
 {
 	const QPointF old_pos = item->pos();
-	const QPointF delta = old_pos - pivot;
+	const QPointF delta = old_pos + anchor - pivot;
 
 		/* Exact arithmetic for the right angles instead of qCos()/qSin().
 		 * The rotate actions only ever pass multiples of 90 degrees, and
@@ -168,8 +181,8 @@ void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPo
 			delta.x() * qSin(radians) + delta.y() * qCos(radians));
 	}
 
-	QPointF new_pos = pivot + offset;
-	if (exact_quadrant)
+	QPointF new_pos = pivot + offset - anchor;
+	if (exact_quadrant && anchor.isNull())
 	{
 			/* Swapping X/Y deltas for a 90/270 turn only stays on the
 			 * user's configured grid if xGrid == yGrid. With an

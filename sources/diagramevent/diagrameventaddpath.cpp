@@ -89,9 +89,9 @@ void DiagramEventAddPath::showHint() const
 	if (!m_diagram || m_diagram->views().isEmpty())
 		return;
 	if (auto *editor = QETApp::diagramEditorAncestorOf(m_diagram->views().constFirst()))
-		editor->statusBar()->showMessage(tr("Clic: point anguleux. Cliquer-glisser: point courbe. "
-		                                     "Clic sur le premier point: fermer. Échap/Entrée: terminer. "
-		                                     "Clic droit: annuler le dernier point."));
+		editor->statusBar()->showMessage(tr("Click: corner point. Click-drag: curve point. Click on the "
+		                                     "first point: close. Esc/Enter: finish. Right-click: undo "
+		                                     "the last point."));
 }
 
 void DiagramEventAddPath::init()

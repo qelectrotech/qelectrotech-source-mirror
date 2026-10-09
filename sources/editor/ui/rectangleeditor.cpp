@@ -170,7 +170,7 @@ void RectangleEditor::editingFinished()
 	m_locked = true;
 	
 	QUndoCommand *undo = new QUndoCommand();
-	undo->setText(tr("Modifier un rectangle"));
+	undo->setText(tr("Change a rectangle"));
 	
 	QRectF rect(editedTopLeft(), QSizeF(ui->m_width_sb->value(), ui->m_height_sb->value()));
 	if (m_part->rect() != rect)

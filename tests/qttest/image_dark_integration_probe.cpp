@@ -66,8 +66,8 @@ int main(int argc, char **argv)
 		const QByteArray pristine=png(image->pixmap()); const auto transform=image->transform(); const auto bounds=image->boundingRect();
 		ImagePropertiesWidget widget(image); auto *box=widget.findChild<QCheckBox *>("m_adapt_to_dark_theme_cb");
 		check(box && !box->isChecked(),"unchecked properties default");
-		check(box->text()==QString::fromUtf8("Adapter l’image au thème sombre"),"checkbox wording");
-		check(box->toolTip()==QString::fromUtf8("Adapte les couleurs à l’affichage sombre uniquement. L’image originale, les exports et les impressions restent inchangés."),"tooltip wording");
+		check(box->text()==QStringLiteral("Adapt the picture to the dark theme"),"checkbox wording");
+		check(box->toolTip()==QStringLiteral("Adapts the colors for the dark display only. The original picture, exports and printouts stay unchanged."),"tooltip wording");
 		box->setChecked(true); check(image->adaptToDarkTheme(),"preview"); widget.reset(); check(!image->adaptToDarkTheme(),"reset cancels preview");
 		diagram->undoStack().clear(); box->setChecked(true); widget.apply(); check(image->adaptToDarkTheme(),"apply");
 		diagram->undoStack().undo(); check(!image->adaptToDarkTheme()&&!box->isChecked(),"undo updates checkbox");

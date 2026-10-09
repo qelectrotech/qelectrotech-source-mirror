@@ -287,7 +287,7 @@ void DiagramEventAddPaste::showHint()
 {
 	if (m_status_bar) {
 		m_status_bar->showMessage(
-			tr("Cliquez pour poser le collage, Échap ou clic droit pour annuler",
+			tr("Click to place the pasted content, Esc or right-click to cancel",
 			   "status bar tip while positioning a paste"));
 	}
 }

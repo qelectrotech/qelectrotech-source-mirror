@@ -21,6 +21,7 @@
 #include "../conductorproperties.h"
 
 #include <QGraphicsPathItem>
+#include <QSet>
 #include <QUuid>
 
 class ConductorProfile;
@@ -108,7 +109,8 @@ class Conductor : public QGraphicsObject
 		QDomElement toXml (
 				QDomDocument &,
 				QHash<Terminal *,
-				int> &) const;
+				int> &,
+				const QSet<QUuid> &shared_uuids = QSet<QUuid>()) const;
 	private:
 		bool pathFromXml(const QDomElement &);
 

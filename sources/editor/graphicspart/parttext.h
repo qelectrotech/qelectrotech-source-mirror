@@ -63,7 +63,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 			@return the QGraphicsItem type
 		*/
 		int type() const override { return Type; }
-		QString name() const override { return(QObject::tr("texte", "element part name")); }
+		QString name() const override { return(QObject::tr("text", "element part name")); }
 		QString xmlName() const override { return(QString("text")); }
 		void fromXml(const QDomElement &) override;
 		const QDomElement toXml(QDomDocument &) const override;
@@ -109,6 +109,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		void applyLineAlignment();
 		void prepareAlignment();
 		void finishAlignment();
+		QPointF anchorOffset() const;
 		QString previous_text;
 		qreal real_font_size_;
 		QPointF saved_point_;
@@ -117,5 +118,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		QPointF m_origin_pos;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 		QRectF m_alignment_rect;
+			/// x/y in the .elmt are the aligned point, not the
+			/// baseline-left (anchor="alignment", #1251)
+		bool m_anchor_to_alignment = false;
 };
 #endif

@@ -149,6 +149,7 @@ Comment:
   ico/qet/traced/*/circle.svg, ellipse.svg, view-fit-window.svg by ispyisail from the QElectroTech team, 16 pixel versions by the QElectroTech team
   ico/qet/traced/*/ellipse-to-bezier.svg, rect-to-bezier.svg, rect-to-polyline.svg by the QElectroTech team, redrawn from Andre Rummler's drawings, with permission
   ico/qet/traced/* other than the above by the QElectroTech team, traced from QElectroTech's PNG icons of the same names
+  ico/qet/scalable/generic-device.svg by ispyisail from the QElectroTech team, a box with terminals and a divider on each side
   ico/qet/scalable/16/* by the QElectroTech team, 16 pixel versions of the ico/qet/scalable/ icons of the same names
   ico/colors/* by Arnaud, contributed in 2020
 

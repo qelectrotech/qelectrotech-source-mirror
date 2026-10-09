@@ -37,12 +37,12 @@ namespace {
 	QList<NamedColor> standardColors()
 	{
 		return {
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Blanc"),      QColor(0xFF, 0xFF, 0xFF)},
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Blanc cassé"),  QColor(0xFD, 0xFB, 0xF5)},
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Gris clair"),   QColor(0xE0, 0xE0, 0xE0)},
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Gris"),         QColor(0x80, 0x80, 0x80)},
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Gris foncé"),   QColor(0x40, 0x40, 0x40)},
-			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Noir"),         QColor(0x00, 0x00, 0x00)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "White"),      QColor(0xFF, 0xFF, 0xFF)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Off-white"),  QColor(0xFD, 0xFB, 0xF5)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Light gray"),   QColor(0xE0, 0xE0, 0xE0)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Gray"),         QColor(0x80, 0x80, 0x80)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Dark gray"),   QColor(0x40, 0x40, 0x40)},
+			{QT_TRANSLATE_NOOP("DiagramBgColorToolButton", "Black"),         QColor(0x00, 0x00, 0x00)},
 		};
 	}
 
@@ -59,8 +59,8 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 	m_editor(editor)
 {
 	setPopupMode(QToolButton::InstantPopup);
-	setToolTip(tr("Couleur de fond du folio"));
-	setStatusTip(tr("Choisir la couleur de fond du folio",
+	setToolTip(tr("Sheet background color"));
+	setStatusTip(tr("Choose the sheet background color",
 		"status bar tip"));
 
 		//main() already restored the stored choice onto the global
@@ -85,7 +85,7 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 		m_recent.removeLast();
 	}
 
-	setMenu(new QMenu(tr("Couleur de fond du folio"), this));
+	setMenu(new QMenu(tr("Sheet background color"), this));
 	rebuildMenu();
 	setSwatch(m_current);
 }
@@ -98,7 +98,7 @@ void DiagramBgColorToolButton::rebuildMenu()
 	QMenu *m = menu();
 	m->clear();
 
-	QAction *sys = m->addAction(tr("Couleur système"));
+	QAction *sys = m->addAction(tr("System color"));
 	connect(sys, &QAction::triggered, this, &DiagramBgColorToolButton::applySystemColor);
 	m->addSeparator();
 
@@ -113,7 +113,7 @@ void DiagramBgColorToolButton::rebuildMenu()
 	if (!m_recent.isEmpty())
 	{
 		m->addSeparator();
-		QAction *title = m->addAction(tr("Récemment utilisées"));
+		QAction *title = m->addAction(tr("Recently used"));
 		title->setEnabled(false);
 		for (const QColor &c : std::as_const(m_recent))
 		{
@@ -123,7 +123,7 @@ void DiagramBgColorToolButton::rebuildMenu()
 	}
 
 	m->addSeparator();
-	QAction *other = m->addAction(tr("Autre couleur…"));
+	QAction *other = m->addAction(tr("Other color…"));
 	connect(other, &QAction::triggered, this, &DiagramBgColorToolButton::chooseOtherColor);
 }
 
@@ -186,7 +186,7 @@ void DiagramBgColorToolButton::applySystemColor()
 void DiagramBgColorToolButton::chooseOtherColor()
 {
 	const QColor c = QColorDialog::getColor(m_current, this,
-						tr("Choisir une couleur de fond"),
+						tr("Choose a background color"),
 						QColorDialog::DontUseNativeDialog);
 	if (c.isValid()) {
 		applyColor(c);

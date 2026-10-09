@@ -1,0 +1,5566 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="en" language="mn">
+<phrase>
+    <source>
+Hold Shift and drag to move this text on its own</source>
+    <target>
+&lt;Shift&gt; зөөх</target>
+</phrase>
+<phrase>
+    <source>
+Conductor color : %1</source>
+    <target>
+Дамжуулагчийн өнгө : %1</target>
+</phrase>
+<phrase>
+    <source>
+Function : %1</source>
+    <target>
+Функц : %1</target>
+</phrase>
+<phrase>
+    <source>
+Number: %1</source>
+    <target>
+Дугаар : %1</target>
+</phrase>
+<phrase>
+    <source>
+Conductor section : %1</source>
+    <target>
+Дамжуулагчийн огтлол : %1</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
+</source>
+    <target>Контакт: NO: %1, NC: %2, шилжүүлэгч: %3, бусад: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
+</source>
+    <target>Контакт: NO: %1/%2, NC: %3/%4, шилжүүлэгч: %5/%6, бусад: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Define data directory
+</source>
+    <target>--data-dir=DIR                Дата хавтасыг тодорхойлох
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl while dragging = free position, no grid snapping)</source>
+    <target>(чирэх үед Ctrl = чөлөөт байрлал, тор руу наалдахгүй)</target>
+</phrase>
+<phrase>
+    <source> (already used)</source>
+    <target>(аль хэдийн ашиглагдсан)</target>
+</phrase>
+<phrase>
+    <source> -- %1: mode %2</source>
+    <target>-- %1 : %2 горим</target>
+</phrase>
+<phrase>
+    <source> ; red point: drag to reposition the rotation center</source>
+    <target>; улаан цэг: эргэлтийн төвийг шилжүүлэхээр чирэх</target>
+</phrase>
+<phrase>
+    <source> ; turquoise point: arc</source>
+    <target>; оюу цэг: нум</target>
+</phrase>
+<phrase>
+    <source> ; an edge: skew</source>
+    <target>; ирмэг: хазайлгах</target>
+</phrase>
+<phrase>
+    <source> [Read only]</source>
+    <target>[зөвхөн унших]</target>
+    <definition>window title tag</definition>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>клеммийн бүлгээс</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>%1 клеммийн бүлгээс</target>
+</phrase>
+<phrase>
+    <source> min</source>
+    <target>мин</target>
+    <definition>minute</definition>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>мм</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Click: mode %1</source>
+    <target>— Товших: %1 горим</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 ц %2 мин</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Help</source>
+    <target>&amp;Тусламж</target>
+</phrase>
+<phrase>
+    <source>&amp;Close this editor</source>
+    <target>&amp;Энэ редакторыг хаах</target>
+</phrase>
+<phrase>
+    <source>&amp;File</source>
+    <target>&amp;Файл</target>
+</phrase>
+<phrase>
+    <source>&amp;New diagram editor</source>
+    <target>&amp;Шинэ схемийн редактор</target>
+</phrase>
+<phrase>
+    <source>Open from &amp;file</source>
+    <target>&amp;Файлаас нээх</target>
+</phrase>
+<phrase>
+    <source>&amp;Edit</source>
+    <target>&amp;Засварлах</target>
+</phrase>
+<phrase>
+    <source>(already assigned)</source>
+    <target>(аль хэдийн оноосон)</target>
+</phrase>
+<phrase>
+    <source>(number of contacts does not match)</source>
+    <target>(контактын тоо тохирохгүй)</target>
+</phrase>
+<phrase>
+    <source>(Reload the elements collections to apply the changes)</source>
+    <target>(Элементүүдийн цуглуулгыг дахин ачаалж өөрчлөлтийг хэрэглэх)</target>
+</phrase>
+<phrase>
+    <source>(subtype does not match)</source>
+    <target>(дэд төрөл тохирохгүй)</target>
+</phrase>
+<phrase>
+    <source>(status does not match)</source>
+    <target>(төлөв тохирохгүй)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = create handles</source>
+    <target>, Alt = бариул үүсгэх</target>
+</phrase>
+<phrase>
+    <source>, Alt = detach into a polyline</source>
+    <target>, Alt = полилин болгон салгах</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ It is then possible that the opening of all or part of this document fails.
+What do you wish to do ?</source>
+    <target>.
+ Энэ тохиолдолд энэ баримт бичгийг бүхэлд нь эсвэл хэсэгчлэн нээх нь амжилтгүй болж болзошгүй.
+Та юу хийхийг хүсэж байна?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>10px corresponds to 1 tile displacement</source>
+    <target>10px corresponds to 1 tile displacement</target>
+</phrase>
+<phrase>
+    <source>150 DPI (screen)</source>
+    <target>150 DPI (дэлгэц)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (print)</source>
+    <target>300 DPI (хэвлэл)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (high quality)</source>
+    <target>600 DPI (өндөр чанар)</target>
+</phrase>
+<phrase>
+    <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
+    <target>&lt;b&gt;%1&lt;/b&gt; : %2</target>
+    <definition>warning title: warning description</definition>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
+    <target>&lt;br&gt;&lt;b&gt;Алдаа&lt;/b&gt; :&lt;br&gt;Дамжуулагчийн тодорхойлолт нь зөвхөн нэг борнцертой байж болно.&lt;br&gt;&lt;b&gt;Шийдэл&lt;/b&gt; :&lt;br&gt;Элемент зөвхөн нэг борнцертой эсэхийг шалгана уу</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Sheet references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</source>
+    <target>&lt;br&gt;&lt;b&gt;Алдаа&lt;/b&gt; :&lt;br&gt;Фолио заалтууд нь зөвхөн нэг борнцертой байх ёстой.&lt;br&gt;&lt;b&gt;Шийдэл&lt;/b&gt; :&lt;br&gt;Элемент зөвхөн нэг борнцертой эсэхийг шалгана уу</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</source>
+    <target>&lt;br&gt;Борнцер байхгүй тохиолдолд элементийг бусад элементтэй дамжуулагчаар холбох боломжгүй.</target>
+    <definition>warning description</definition>
+</phrase>
+<phrase>
+    <source>&lt;center&gt;WARNING:&lt;/center&gt;
+ %1 more rows are needed to display all the information</source>
+    <target>&lt;center&gt;АНХААРУУЛГА :&lt;/center&gt;
+ бүх мэдээллийг харуулахад %1 мөр дутуу байна</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in conductors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Дамжуулагч дахь солигдох шинж чанаруудыг тодорхойлох&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating sheet tabs :&lt;/p&gt;</source>
+    <target>&lt;p align="center"&gt;&lt;b&gt;Төслийг нээж байна...&lt;/b&gt;&lt;br/&gt;Хуудасны табуудыг үүсгэж байна:&lt;/p&gt;</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>[Changed]</source>
+    <target>[Өөрчлөгдсөн]</target>
+    <definition>window title tag</definition>
+</phrase>
+<phrase>
+    <source>Move down this sheet x100</source>
+    <target>Энэ фолиог x100 доошлуулах</target>
+</phrase>
+<phrase>
+    <source>Missing terminal</source>
+    <target>Борнцер байхгүй</target>
+</phrase>
+<phrase>
+    <source>Access the collections</source>
+    <target>Цуглуулгад нэвтрэх</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Үйлдэл</target>
+</phrase>
+<phrase>
+    <source>Adjusts the zoom to display all the contents of sheet regardless of context</source>
+    <target>Хүрээнээс үл хамааран хуудасны бүх агуулгыг харуулахын тулд томруулалтыг тохируулах</target>
+</phrase>
+<phrase>
+    <source>Adjusts the zoom on exactly the part of the sheet</source>
+    <target>Томруулалтыг хуудасны хүрээнд яг тохируулах</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Fit sheet to page</source>
+    <target>Хуудсыг хуудасны хэмжээнд тохируулах</target>
+</phrase>
+<phrase>
+    <source>Address</source>
+    <target>Хаяг</target>
+</phrase>
+<phrase>
+    <source>PLC address</source>
+    <target>PLC хаяг</target>
+</phrase>
+<phrase>
+    <source>Displ&amp;ay</source>
+    <target>Хара&amp;гдац</target>
+</phrase>
+<phrase>
+    <source>Display</source>
+    <target>Харагдац</target>
+</phrase>
+<phrase>
+    <source>View grid</source>
+    <target>Торыг харуулах</target>
+</phrase>
+<phrase>
+    <source>Displays information about Qt library</source>
+    <target>Qt номын сангийн мэдээллийг харуулна</target>
+</phrase>
+<phrase>
+    <source>Displays information about QElectroTech</source>
+    <target>QElectroTech-ийн талаарх мэдээллийг харуулах</target>
+</phrase>
+<phrase>
+    <source>Shows or hides the guides</source>
+    <target>Хөтөч шугамуудыг харуулах эсвэл нуух</target>
+</phrase>
+<phrase>
+    <source>&amp;View contacts</source>
+    <target>Контактоор харуулах</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>Харуулах</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Display facing pages</source>
+    <target>Хоёр хуудас харуулах</target>
+</phrase>
+<phrase>
+    <source>View cross</source>
+    <target>Загалмайгаар харуулах</target>
+</phrase>
+<phrase>
+    <source>Show help</source>
+    <target>Тусламжийг харуулах</target>
+</phrase>
+<phrase>
+    <source>Show the default grid (applied the next time the programme is launched)</source>
+    <target>Анхдагч торыг харуулах (дараагийн ажиллагаанд хэрэгжинэ)</target>
+</phrase>
+<phrase>
+    <source>Show name</source>
+    <target>Нэрийг харуулах</target>
+</phrase>
+<phrase>
+    <source>Show the power contacts in the cross</source>
+    <target>Загалмайд чадлын контактуудыг харуулах</target>
+</phrase>
+<phrase>
+    <source>Show headers on the sheet</source>
+    <target>Толгойг хуудсан дээр харуулах</target>
+</phrase>
+<phrase>
+    <source>View the guides</source>
+    <target>Хөтөч шугамуудыг харуулах</target>
+</phrase>
+<phrase>
+    <source>Show default guides (applies from the next time the programme is launched)</source>
+    <target>Анхдагч чиглүүлэгчийг харуулах (дараагийн ажиллагаанд хэрэгжинэ)</target>
+</phrase>
+<phrase>
+    <source>Display terminal numbers in Xrefs</source>
+    <target>Xref-д холболтын цэгийн дугаарыг харуулах</target>
+</phrase>
+<phrase>
+    <source>Show or hide the column headings of the PLC table on the sheet</source>
+    <target>PLC хүснэгтийн баганын толгойг хуудсан дээр харуулах эсвэл нуух</target>
+</phrase>
+<phrase>
+    <source>Display all pages</source>
+    <target>Бүх хуудсын урьдчилан харах</target>
+</phrase>
+<phrase>
+    <source>Show single page</source>
+    <target>Нэг хуудас харуулах</target>
+</phrase>
+<phrase>
+    <source>Show/hide the label border</source>
+    <target>Шошгын хүрээг харуулах/нуух</target>
+</phrase>
+<phrase>
+    <source>Show/hide the terminal name</source>
+    <target>Терминалын нэрийг харуулах/нуух</target>
+</phrase>
+<phrase>
+    <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
+What do you wish to do ?</source>
+    <target>Бүрэн нийцтэй болгохын тулд энэ төслийг QElectroTech-ийн 0.8 эсвэл 0.80 хувилбараар нээж, төслийг хадгалаад, дараа нь энэ хувилбараар дахин нээнэ үү.
+Та юу хийхийг хүсэж байна?</target>
+</phrase>
+<phrase>
+    <source>Adds a terminal plan to the current sheet</source>
+    <target>Одоогийн хуудсанд клеммийн хавтангийн төлөвлөгөө нэмэх</target>
+</phrase>
+<phrase>
+    <source>Adds a Bézier curve to the current sheet</source>
+    <target>Одоогийн хуудсанд Безье муруй нэмэх</target>
+</phrase>
+<phrase>
+    <source>Adds a PDF page to the current sheet</source>
+    <target>Одоогийн хуудсанд PDF хуудас нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add</source>
+    <target>Нэмэх</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>%1 клемм нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add to bus: %1</source>
+    <target>Автобус руу нэмэх: %1</target>
+</phrase>
+<phrase>
+    <source>Add to cable: %1</source>
+    <target>Кабельд нэмэх: %1</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>%1 клеммийг нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add the following terminal plan :</source>
+    <target>Дараах терминалын төлөвлөгөөг нэмэх:</target>
+</phrase>
+<phrase>
+    <source>Add a terminal block</source>
+    <target>Клеммийн хавтан нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a terminal strip to the project</source>
+    <target>Төсөлд клеммийн хавтан нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a dynamic text field</source>
+    <target>Динамик текст талбар нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a sheet</source>
+    <target>Хуудас нэмэх</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Add a group of terminals</source>
+    <target>Клеммийн бүлэг нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a PDF</source>
+    <target>PDF нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a terminal plan</source>
+    <target>Клеммийн төлөвлөгөө нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a point to a curve</source>
+    <target>Муруйд цэг нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add non-editable element text in diagrams</source>
+    <target>Схемд засварлагдахгүй элементийн текст нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add element text that can be edited in diagrams</source>
+    <target>Схемд засварлагдах элементийн текст нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a terminal</source>
+    <target>Клемм нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a curve</source>
+    <target>Муруй нэмэх</target>
+</phrase>
+<phrase>
+    <source>Add a custom property</source>
+    <target>Хэрэглэгчийн шинж чанар нэмэх</target>
+</phrase>
+<phrase>
+    <source>Fit to width</source>
+    <target>Өргөнийг тохируулах</target>
+</phrase>
+<phrase>
+    <source>Fit to page</source>
+    <target>Хуудсыг тохируулах</target>
+</phrase>
+<phrase>
+    <source>Alignment</source>
+    <target>Зэрэгцүүлэлт</target>
+</phrase>
+<phrase>
+    <source>Go to the end of the project</source>
+    <target>Төслийн төгсгөлд очих</target>
+</phrase>
+<phrase>
+    <source>Alphabetical</source>
+    <target>Цагаан толгойн</target>
+</phrase>
+<phrase>
+    <source>Alphanumeric (A, B, C... 1, 2...)</source>
+    <target>Үсэг тоон (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Bring to front</source>
+    <target>Урд талд гаргах</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Өнцөг</target>
+</phrase>
+<phrase>
+    <source>Corner</source>
+    <target>Өнцөгтэй</target>
+</phrase>
+<phrase>
+    <source>Cancellation</source>
+    <target>Буцаах</target>
+</phrase>
+<phrase>
+    <source>Undo</source>
+    <target>Буцаах</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Цуцлах</target>
+</phrase>
+<phrase>
+    <source>Preview</source>
+    <target>Урьдчилан харах</target>
+</phrase>
+<phrase>
+    <source>Preview :</source>
+    <target>Урьдчилан харах :</target>
+</phrase>
+<phrase>
+    <source>Appearance</source>
+    <target>Харагдац</target>
+</phrase>
+<phrase>
+    <source>Apply displacement</source>
+    <target>Зөөлтийг хэрэглэх</target>
+</phrase>
+<phrase>
+    <source>Applied to the next launch of QElectroTech</source>
+    <target>QElectroTech-ийн дараагийн ажиллагаанд хэрэгжинэ</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.5 and more</source>
+    <target>0.5 ба түүнээс дээш бол дээш дугуйлах</target>
+</phrase>
+<phrase>
+    <source>Rounding up for 0.75 and more</source>
+    <target>0.75 ба түүнээс дээш бол дээш дугуйлах</target>
+</phrase>
+<phrase>
+    <source>Round the corners of %1</source>
+    <target>%1-г буланг бөөрөнхийлөх</target>
+</phrase>
+<phrase>
+    <source>Navigate to an element</source>
+    <target>Элемент рүү очих</target>
+</phrase>
+<phrase>
+    <source>Please note: the sum of the relative widths exceeds 100 per cent of the total width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Анхаар : харьцангуй өргөнүүдийн нийлбэр нийт өргөний 100%%-иас хэтэрсэн тул энэ картушийн загварыг ямар ч өргөнөөр хангах боломжгүй.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Please note: fixed-width columns cannot fit within the remaining width; this cartouche template cannot be accommodated by any width.
+</source>
+    <target>Анхаар : тогтмол өргөнтэй баганууд үлдсэн өргөнд багтахгүй тул энэ картушийн загварыг ямар ч өргөнөөр хангах боломжгүй.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Awarded exclusively</source>
+    <target>Зөвхөн оноосон</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>%1 клеммийн бүлэгт</target>
+</phrase>
+<phrase>
+    <source>None</source>
+    <target>Байхгүй</target>
+</phrase>
+<phrase>
+    <source>no active project</source>
+    <target>төсөл харагдахгүй байна</target>
+    <definition>error message</definition>
+</phrase>
+<phrase>
+    <source>No existing text configuration.</source>
+    <target>Текстийн тохиргоо байхгүй.</target>
+</phrase>
+<phrase>
+    <source>Programmable Logic Controller (PLC)</source>
+    <target>Автомат (PLC)</target>
+</phrase>
+<phrase>
+    <source>PLCs (MAE/SPS)</source>
+    <target>Автомат (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Клеммийн автомат дугаарлалт</target>
+</phrase>
+<phrase>
+    <source>Auto Numbering</source>
+    <target>Автомат дугаарлалт</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>Бусад</target>
+</phrase>
+<phrase>
+    <source>With</source>
+    <target>Тай</target>
+</phrase>
+<phrase>
+    <source>Warning</source>
+    <target>Анхааруулга</target>
+</phrase>
+<phrase>
+    <source>Warning </source>
+    <target>Анхааруулга</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>WARNING:
+Any setting other than “No rounding” may cause rendering errors in the project, depending on:
+
+1 - the selected setting 
+2 - the screen&apos;s dpi 
+3 - editing the project on another computer and/or screen that does not have the same settings as in points 1 and 2.</source>
+    <target>АНХААРУУЛГА:
+&apos;Дугуйлахгүй&apos;-ээс бусад бүх утга нь дараах зүйлсээс хамааран төслийн дүрслэлийн алдаа үүсгэж болно:
+
+1 - сонгосон утга 
+2 - дэлгэцийн dpi 
+3 - 1 ба 2-р зүйлсийн ижил тохиргоогүй өөр компьютер болон/эсвэл дэлгэц дээр төслийг өөрчлөх.</target>
+</phrase>
+<phrase>
+    <source>Warning: the element has been saved with a more recent version of QElectroTech.</source>
+    <target>Анхааруулга: элемент QElectroTech-ийн хожуу хувилбараар хадгалагдсан.</target>
+</phrase>
+<phrase>
+    <source>Warning — Importing an EPLAN file (.edz)</source>
+    <target>Анхааруулга — EPLAN файл (.edz) импортлох</target>
+</phrase>
+<phrase>
+    <source>Warnings</source>
+    <target>Анхааруулгууд</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 3</source>
+    <target>Туслах блок 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary block 4</source>
+    <target>Туслах блок 4</target>
+</phrase>
+<phrase>
+    <source>Terminal 1</source>
+    <target>Холболтын цэг 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Terminal 2</source>
+    <target>Холболтын цэг 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Level 0 terminal:</source>
+    <target>Түвшин 0-ийн клемм :</target>
+</phrase>
+<phrase>
+    <source>Level 1 terminal:</source>
+    <target>Түвшин 1-ийн клемм :</target>
+</phrase>
+<phrase>
+    <source>Level 2 terminal:</source>
+    <target>Түвшин 2-ын клемм :</target>
+</phrase>
+<phrase>
+    <source>Level 3 terminal:</source>
+    <target>Түвшин 3-ын клемм :</target>
+</phrase>
+<phrase>
+    <source>Terminals</source>
+    <target>Терминалууд</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>Бие даасан клемм</target>
+</phrase>
+<phrase>
+    <source>Independent terminals</source>
+    <target>Бие даасан клеммүүд</target>
+</phrase>
+<phrase>
+    <source>External terminal block</source>
+    <target>Гадаад клемм</target>
+</phrase>
+<phrase>
+    <source>Indoor terminal block</source>
+    <target>Дотоод клемм</target>
+</phrase>
+<phrase>
+    <source>Terminal blocks</source>
+    <target>Клеммийн хавтангууд</target>
+</phrase>
+<phrase>
+    <source>bus</source>
+    <target>автобус</target>
+</phrase>
+<phrase>
+    <source>&amp;Paste in the area</source>
+    <target>Талбарт &amp;буулгах</target>
+</phrase>
+<phrase>
+    <source>This is where you can define how new elements will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+
+-The &quot;sheet&quot; type represents the number of the current sheet.
+The other fields are not used.
+
+-The &quot;Sheet&quot; type represents the name of the current sheet.
+The other fields are not used.</source>
+    <target>Шинэ элементүүдийг хэрхэн дугаарлахыг энд тодорхойлж болно.
+-Дугаарлалт нь хамгийн багадаа нэг хувьсагчаас бүрдэнэ.
+-Та - ба + товчлуураар дугаарлалтын хувьсагч нэмэх эсвэл устгах боломжтой.
+-Дугаарлалтын хувьсагч нь: төрөл, утга ба өсөлтийг агуулна.
+
+-"Цифр 1", "Цифр 01" ба "Цифр 001" төрлүүд нь "Утга" талбарт тодорхойлсон тоон төрлийг илэрхийлэх бөгөөд шинэ дамжуулагч бүрт "Өсөлт" талбарын утгаар нэмэгдэнэ.
+-"Цифр 01" ба "Цифр 001" нь схем дээр хамгийн багадаа хоёр ба гурван оронтойгоор тус тус илэрхийлэгдэнэ.
+Хэрэв Утга талбарт тодорхойлсон цифр сонгосон төрлөөс цөөн оронтой бол төрлийг нь хадгалахын тулд өмнө нь нэг эсвэл хоёр 0 нэмэгдэнэ.
+
+-"Текст" төрөл нь тогтмол текстийг илэрхийлнэ.
+"Өсөлт" талбар ашиглагдахгүй.
+
+-"Фолио №" төрөл нь одоогийн фолиогийн дугаарыг илэрхийлнэ.
+Бусад талбар ашиглагдахгүй.
+
+-"Фолио" төрөл нь одоогийн фолиогийн нэрийг илэрхийлнэ.
+Бусад талбар ашиглагдахгүй.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>This is where you can define how the new sheets will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+-the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new sheet by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+</source>
+    <target>Энд та шинэ фолионууд хэрхэн дугаарлагдахыг тодорхойлж болно.
+-Дугаарлалт нь дор хаяж нэг хувьсагчаас бүрдэнэ.
+-Та - ба + товчнуудаар дугаарлалтын хувьсагч нэмэх эсвэл устгах боломжтой.
+-Дугаарлалтын хувьсагч нь: төрөл, утга болон өсөлтийг агуулна.
+
+-"Цифр 1", "Цифр 01" болон "Цифр 001" төрлүүд нь "Утга" талбарт тодорхойлсон тоон төрлийг илэрхийлэх бөгөөд шинэ фолио бүрт "Өсөлт" талбарын утгаар нэмэгдэнэ.
+-"Цифр 01" болон "Цифр 001" нь схем дээр харгалзан дор хаяж хоёр ба гурван оронтойгоор илэрхийлэгдэнэ.
+Хэрэв Утга талбарт тодорхойлсон цифр сонгосон төрлөөс цөөн оронтой бол төрлийг нь хадгалахын тулд нэг эсвэл хоёр 0-ээр өмнө нь нэмэгдэнэ.
+
+-"Текст" төрөл нь тогтмол текстийг илэрхийлнэ.
+"Өсөлт" талбар ашиглагдахгүй.
+</target>
+    <definition>help dialog about the folio autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>кабель</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>%1-г унших боломжгүй</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>Компанийн гарчгийн хэсгүүд</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Embedded title blocks</source>
+    <target>Суулгасан хүрээ</target>
+</phrase>
+<phrase>
+    <source>QET title blocks</source>
+    <target>QET гарчгийн хэсгүүд</target>
+    <definition>title of the title block templates 					collection provided by QElectroTech</definition>
+</phrase>
+<phrase>
+    <source>User title blocks</source>
+    <target>Хэрэглэгчийн гарчгийн хэсгүүд</target>
+    <definition>title of the user&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Category</source>
+    <target>Ангилал</target>
+</phrase>
+<phrase>
+    <source>Non-existent category</source>
+    <target>Категори байхгүй</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>This document appears to have been saved with version %1
+ which is later than your version ! 
+You are currently using QElectroTech in version %2</source>
+    <target>Энэ баримт бичиг таны хувилбараас хожуу %1 хувилбараар
+ хадгалагдсан бололтой! 
+Та одоогоор QElectroTech-ийн %2 хувилбарыг ашиглаж байна</target>
+</phrase>
+<phrase>
+    <source>This file is not a valid XML document</source>
+    <target>Энэ файл хүчинтэй XML баримт бичиг биш</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</source>
+    <target>Энэ формат тунгалаг байдлыг дэмжихгүй: зураг тунгалаг өнгө хэрэглэхээс өмнөх байдлаараа хадгалагдана. Үргэлжлүүлэх үү?</target>
+</phrase>
+<phrase>
+    <source>This panel lists the various changes applied to the current sheet. Clicking a change gets the sheet back to its state right after it was applied.</source>
+    <target>Энэ самбар нь одоогийн хуудсанд хийгдсэн янз бүрийн үйлдлүүдийг жагсаана. Үйлдэл дээр дарах нь схемийг тухайн үйлдэл хийгдсэний дараах төлөвт буцаана.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>This project is read-only. Thus it can not be cleaned.</source>
+    <target>Энэ төсөл зөвхөн уншихаар байна. Тиймээс цэвэрлэх боломжгүй.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>This project does not contain any sheet</source>
+    <target>Энэ төсөл ямар ч хуудас агуулаагүй байна</target>
+    <definition>label displayed when a project contains no diagram</definition>
+</phrase>
+<phrase>
+    <source>This shortcut is also used by : %1</source>
+    <target>Энэ товчлолыг мөн ашигладаг: %1</target>
+</phrase>
+<phrase>
+    <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
+    <target>Энэ нь энэ сессийн сүүлийн лог мессежүүдийг агуулна. Нийтийн алдааны тайланд хавсаргахаасаа өмнө агуулгыг шалгана уу.</target>
+</phrase>
+<phrase>
+    <source>This is the title block company collection -- use it to create, store and edit your own title blocks.</source>
+    <target>Энэ бол company хүрээний цуглуулга -- үүнийг өөрийн хүрээг үүсгэх, хадгалах, засахад ашиглана уу.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>This is the title blocks collection provided along with QElectroTech. Installed as a system component, you normally cannot customize it.</source>
+    <target>Энэ бол QElectroTech-тэй хамт нийлүүлэгддэг хүрээний цуглуулга юм. Системийн бүрэлдэхүүн хэсэг болгон суулгагдсан тул та үүнийг ердийн үед өөрчлөх боломжгүй.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>This is your custom title blocks collection -- use it to create, store and edit your own title blocks.</source>
+    <target>Энэ бол таны хувийн хүрээний цуглуулга -- үүнийг өөрийн хүрээг үүсгэх, хадгалах, засахад ашиглана уу.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Middle</source>
+    <target>Төв</target>
+</phrase>
+<phrase>
+    <source>Center :</source>
+    <target>Төв:</target>
+</phrase>
+<phrase>
+    <source>This element is already linked</source>
+    <target>Энэ элемент аль хэдийн холбогдсон</target>
+</phrase>
+<phrase>
+    <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
+    <target>Энэ функц нь төслийн клеммүүдийг байрлалаар нь дугаарлана. Хоосон эсвэл түгжигдсэн клеммүүдийг алгасна. Клеммийн тэмдэглэгээг урьдчилан дараах байдлаар тохируулсан байх ёстой: &apos;-X:AB&apos;. Хоёр цэгийн өмнөх хэсэг (клеммийн хавтан) дурын нэртэй байж болно. &apos;AB&apos; нь тоо эсвэл үсгээс бүрдэж болно."</target>
+</phrase>
+<phrase>
+    <source>Youtube channel</source>
+    <target>Youtube суваг</target>
+</phrase>
+<phrase>
+    <source>Text field</source>
+    <target>Текст талбар</target>
+</phrase>
+<phrase>
+    <source>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the sheet.</source>
+    <target>Картушийн нүд бүр утга харуулах ба шаардлагатай бол өмнө нь шошго тавьж болно. Хоёулаа олон хэлээр орчуулагдаж болно.&lt;br/&gt;Таны одоо засварлаж буй зүйл нь картушийн &lt;em&gt;загвар&lt;/em&gt; тул шууд түүхий өгөгдөл оруулахгүй, харин %{хувьсагчийн-нэр} хэлбэрийн хувьсагчууд оруулах бөгөөд тэдгээр нь фолио дээр тохирох утгаар солигдоно.</target>
+</phrase>
+<phrase>
+    <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
+    <target>Элемент бүр өөрийн зохиогч, лиценз болон бусад шаардлагатай мэдээллийг чөлөөт талбарт агуулна.
+Та өөрийн үүсгэх элементүүдэд энэ талбарын анхдагч утгыг энд зааж болно:</target>
+</phrase>
+<phrase>
+    <source>Path of the Common Collection</source>
+    <target>Нийтлэг цуглуулгын зам</target>
+</phrase>
+<phrase>
+    <source>Company collection path</source>
+    <target>Компанийн цуглуулгын зам</target>
+</phrase>
+<phrase>
+    <source>User Collection Path</source>
+    <target>Хэрэглэгчийн цуглуулгын зам</target>
+</phrase>
+<phrase>
+    <source>Company title-blocks</source>
+    <target>Компанийн цулын зам</target>
+</phrase>
+<phrase>
+    <source>User Title blocks Path</source>
+    <target>Хэрэглэгчийн цулын зам</target>
+</phrase>
+<phrase>
+    <source>User macro path</source>
+    <target>Хэрэглэгчийн макросын зам</target>
+</phrase>
+<phrase>
+    <source>Chinese</source>
+    <target>Хятад</target>
+</phrase>
+<phrase>
+    <source>Select the location where you want to save your template.</source>
+    <target>Загвараа хадгалах байршлыг сонгоно уу.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Click: position at original size. Click-drag: position and resize. Right-click: rotate 90°. Ctrl+wheel: adjust size.</source>
+    <target>Дар: анхны хэмжээгээр байрлуулах. Чирж дар: байрлуулах ба хэмжээ өөрчлөх. Баруун дар: 90° эргүүлэх. Ctrl+хүрд: хэмжээг тохируулах.</target>
+</phrase>
+<phrase>
+    <source>Left click: next point; double-click or Enter: finish; right click: undo the last point</source>
+    <target>Зүүн дар: дараагийн цэг; давхар дар эсвэл Enter: дуусгах; баруун дар: сүүлийн цэгийг цуцлах</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = square, Ctrl = from center + free position, Ctrl+Shift = centered square); right click: cancel</source>
+    <target>Зүүн дар: эсрэг буланг байрлуулах (Shift = квадрат, Ctrl = төвөөс + чөлөөт байрлал, Ctrl+Shift = төвтэй квадрат); баруун дар: цуцлах</target>
+</phrase>
+<phrase>
+    <source>Left click: position the opposite corner (Shift = circle, Ctrl = from center + free position, Ctrl+Shift = centered circle); right click: cancel</source>
+    <target>Зүүн дар: эсрэг буланг байрлуулах (Shift = тойрог, Ctrl = төвөөс + чөлөөт байрлал, Ctrl+Shift = төвтэй тойрог); баруун дар: цуцлах</target>
+</phrase>
+<phrase>
+    <source>Left click: position the starting point (Ctrl = free position)</source>
+    <target>Зүүн дар: эхлэх цэгийг байрлуулах (Ctrl = чөлөөт байрлал)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the end point (Ctrl = free position); right click: cancel</source>
+    <target>Зүүн дар: төгсгөлийн цэгийг байрлуулах (Ctrl = чөлөөт байрлал); баруун дар: цуцлах</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first corner (Ctrl = center point, free position)</source>
+    <target>Зүүн дар: эхний буланг байрлуулах (Ctrl = төв цэг, чөлөөт байрлал)</target>
+</phrase>
+<phrase>
+    <source>Left click: position the first point (Ctrl = free position)</source>
+    <target>Зүүн дар: эхний цэгийг байрлуулах (Ctrl = чөлөөт байрлал)</target>
+</phrase>
+<phrase>
+    <source>Click: corner point. Click-drag: curve point. Click on the first point: close. Esc/Enter: finish. Right-click: undo the last point.</source>
+    <target>Дар: өнцөгт цэг. Чирж дар: муруй цэг. Эхний цэг дээр дар: хаах. Escape/Enter: дуусгах. Баруун дар: сүүлийн цэгийг цуцлах.</target>
+</phrase>
+<phrase>
+    <source>Click</source>
+    <target>Дар</target>
+</phrase>
+<phrase>
+    <source>Click: mode %1</source>
+    <target>Дар: %1 горим</target>
+</phrase>
+<phrase>
+    <source>Click to choose a color</source>
+    <target>Өнгө сонгохын тулд дарна уу</target>
+</phrase>
+<phrase>
+    <source>Click on the image to add a color. Adjust each color&apos;s tolerance with its slider, or click × to remove it.</source>
+    <target>Өнгө нэмэхийн тулд зураг дээр дарна уу. Өнгө бүрийн хүлцлийг гулсуураар тохируулах, эсвэл хасахын тулд × дээр дарна уу.</target>
+</phrase>
+<phrase>
+    <source>Click on the image to choose a color</source>
+    <target>Өнгө сонгохын тулд зураг дээр дарна уу</target>
+</phrase>
+<phrase>
+    <source>Click an action to get back in the changes you made to your diagram</source>
+    <target>Схемийн засварын түүхэнд буцахын тулд үйлдэл дээр дарна уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Rounded corners</source>
+    <target>Бөөрөнхий булан</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>Цуглуулга</target>
+</phrase>
+<phrase>
+    <source>Company collection</source>
+    <target>Цуглуулгын Компани</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Цуглуулгууд</target>
+</phrase>
+<phrase>
+    <source>Paste</source>
+    <target>Буулгах</target>
+</phrase>
+<phrase>
+    <source>Paste from the clipboard</source>
+    <target>Самбараас буулгах</target>
+</phrase>
+<phrase>
+    <source>Paste from...</source>
+    <target>Эндээс буулгах...</target>
+</phrase>
+<phrase>
+    <source>Annotation</source>
+    <target>Тайлбар</target>
+</phrase>
+<phrase>
+    <source>Comment :</source>
+    <target>Сэтгэгдэл :</target>
+</phrase>
+<phrase>
+    <source>PLC comment</source>
+    <target>PLC тайлбар</target>
+</phrase>
+<phrase>
+    <source>Common (contact SW)</source>
+    <target>Нийтлэг (SW контакт)</target>
+</phrase>
+<phrase>
+    <source>Compilation: </source>
+    <target>Компиляц :</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>Компиляц :</target>
+</phrase>
+<phrase>
+    <source>Component 1</source>
+    <target>Бүрэлдэхүүн хэсэг 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Component 2</source>
+    <target>Бүрэлдэхүүн хэсэг 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Text configuration</source>
+    <target>Текстийн тохиргоо</target>
+</phrase>
+<phrase>
+    <source>PLC Configuration</source>
+    <target>PLC тохиргоо</target>
+</phrase>
+<phrase>
+    <source>Set the font for column headers</source>
+    <target>Баганын толгойн фоныг тохируулах</target>
+</phrase>
+<phrase>
+    <source>Set the text font in the cells</source>
+    <target>Нүдэн дэх текстийн фоныг тохируулах</target>
+</phrase>
+<phrase>
+    <source>Conflicts only</source>
+    <target>Зөвхөн зөрчилтэй</target>
+</phrase>
+<phrase>
+    <source>Log in</source>
+    <target>Холбох</target>
+</phrase>
+<phrase>
+    <source>Maintain visual rotation</source>
+    <target>Харагдах эргэлтийг хадгалах</target>
+</phrase>
+<phrase>
+    <source>Keep conductors colors</source>
+    <target>Дамжуулагчийн өнгийг хадгалах</target>
+</phrase>
+<phrase>
+    <source>Keep aspect ratio</source>
+    <target>Пропорцийг хадгалах</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Контакт</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Контактууд</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a Bézier curve</source>
+    <target>%1-г Безье муруй болгон хувиргах</target>
+</phrase>
+<phrase>
+    <source>Convert %1 to a polyline</source>
+    <target>%1-г полилин болгон хувиргах</target>
+</phrase>
+<phrase>
+    <source>Convert to Bézier curve</source>
+    <target>Безье муруй болгон хувиргах</target>
+</phrase>
+<phrase>
+    <source>Convert to polyline</source>
+    <target>Полилин болгон хувиргах</target>
+</phrase>
+<phrase>
+    <source>DXF Element Converter</source>
+    <target>DXF элемент хөрвүүлэгч</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Copy and paste</source>
+    <target>Хуулах ба буулгах</target>
+</phrase>
+<phrase>
+    <source>Korean</source>
+    <target>Солонгос</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Түр зуурын хавтас үүсгэх боломжгүй: %1</target>
+</phrase>
+<phrase>
+    <source>Color</source>
+    <target>Өнгө</target>
+</phrase>
+<phrase>
+    <source>Color / wire number of the cable</source>
+    <target>Кабелийн судлын өнгө / дугаар</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Өнгө :</target>
+</phrase>
+<phrase>
+    <source>Wire color</source>
+    <target>Утасны өнгө</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Text color :</source>
+    <target>Текстийн өнгө:</target>
+</phrase>
+<phrase>
+    <source>Bridge color :</source>
+    <target>Холбоосын өнгө :</target>
+</phrase>
+<phrase>
+    <source>Transparent color</source>
+    <target>Тунгалаг өнгө</target>
+</phrase>
+<phrase>
+    <source>Transparent color...</source>
+    <target>Тунгалаг өнгө...</target>
+</phrase>
+<phrase>
+    <source>Automatically cut existing conductors when placing an element</source>
+    <target>Элемент байрлуулах үед одоо байгаа дамжуулагчийг автоматаар таслах</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>cut parts</source>
+    <target>хэсгүүдийг таслах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Automatic disconnection of conductor(s)</source>
+    <target>Дамжуулагчийг автоматаар таслах</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Rated current</source>
+    <target>Нэрлэсэн гүйдэл</target>
+</phrase>
+<phrase>
+    <source>Creation of conductors</source>
+    <target>Дамжуулагч үүсгэх</target>
+</phrase>
+<phrase>
+    <source>Creation of terminal group</source>
+    <target>Клеммийн бүлэг үүсгэх</target>
+</phrase>
+<phrase>
+    <source>Create a template</source>
+    <target>Загвар үүсгэх</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Create a backup copy?</source>
+    <target>Нөөц хуулбар үүсгэх үү?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Add a new category</source>
+    <target>Шинэ категори үүсгэх</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Create your own text using the following variables:
+%f: the sheet number
+%F: the sheet label
+%l: the row number
+%c: the column number
+%M: the installation
+%LM: the location</source>
+    <target>Дараах хувьсагчдыг ашиглан өөрийн текстийг үүсгэ:
+%f : хуудасны дугаар 
+%F: хуудасны шошго
+%l : мөрийн дугаар
+%c : баганын дугаар
+%M: Суурилуулалт 
+%LM: Байршил</target>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>Цэнхэр : Цайвар далайн ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>Цэнхэр : Дунд оюу</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>Цэнхэр : Цайвар цэнхэр</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>Цэнхэр : Номин цэнхэр</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>Цэнхэр : Оюу</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclic (modulo)</source>
+    <target>Цикл (модуло)</target>
+</phrase>
+<phrase>
+    <source>Cable</source>
+    <target>Кабель</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>клеммийн бүлгээс</target>
+</phrase>
+<phrase>
+    <source>Date</source>
+    <target>Огноо</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format DD-MM-YYYY</source>
+    <target>Файл хадгалагдсан огноо, dd-MM-yyyy формат</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in local date format</source>
+    <target>Файл хадгалагдсан огноо, локал формат</target>
+</phrase>
+<phrase>
+    <source>Date of saving of the file in the format YYYY-MM-DD</source>
+    <target>Файл хадгалагдсан огноо, yyyy-MM-dd формат</target>
+</phrase>
+<phrase>
+    <source>Default - Fit to XRef height</source>
+    <target>Өгөгдмөл - XRef өндөрт тохируулах</target>
+</phrase>
+<phrase>
+    <source>Ungroup the terminals</source>
+    <target>Клеммүүдийг бүлгээс салгах</target>
+</phrase>
+<phrase>
+    <source>Move the rotation center</source>
+    <target>Эргэлтийн төвийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Last page</source>
+    <target>Сүүлийн хуудас</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>Тайлбар</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>Тайлбар :</target>
+</phrase>
+<phrase>
+    <source>Textual description</source>
+    <target>Текстийн тайлбар</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 text description</source>
+    <target>Туслах текстийн тайлбар 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 text description</source>
+    <target>Туслах текст тайлбар 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 text description</source>
+    <target>Туслах текст тайлбар 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 text description</source>
+    <target>Туслах текст тайлбар 4</target>
+</phrase>
+<phrase>
+    <source>Draw the border</source>
+    <target>Хүрээг зурах</target>
+</phrase>
+<phrase>
+    <source>Draw the title block</source>
+    <target>Гарчгийн хэсгийг зурах</target>
+</phrase>
+<phrase>
+    <source>Draw terminals</source>
+    <target>Клеммүүдийг зурах</target>
+</phrase>
+<phrase>
+    <source>Draw the names of the terminals</source>
+    <target>Боомтын нэрсийг зурах</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Диалог</target>
+</phrase>
+<phrase>
+    <source>Diameters:</source>
+    <target>Диаметрүүд:</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>Диод</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>чиглэл</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %author pour les modèles de cartouches</source>
+    <target>Картушийн загварт %author болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %date pour les modèles de cartouches</source>
+    <target>Картушийн загварт %date болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %filename pour les modèles de cartouches</source>
+    <target>Картушийн загварт %filename болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Available as % folio for titleblock models
+The following variables can be used:
+-%id: current number of sheets in the project
+-%total: total number of sheets in the project
+-%autonum: sheet auto numbering</source>
+    <target>Картушийн загварт %folio болгон ашиглах боломжтой
+Дараах хувьсагчдыг ашиглаж болно:
+- %id : төсөл дэх одоогийн фолиогийн дугаар 
+- %total : төсөл дэх нийт фолиогийн тоо 
+- %autonum : Фолио авто дугаарлалт</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
+    <target>Картушийн загварт %indexrev болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
+    <target>Картушийн загварт %locmach болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Disponible en tant que %title pour les modèles de cartouches</source>
+    <target>Картушийн загварт %title болгон ашиглах боломжтой</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>Байршил</target>
+</phrase>
+<phrase>
+    <source>Default layout</source>
+    <target>Анхдагч байрлал</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Шошго ба дагалдагч хөндлөн холбоосын хоорондох пикселийн зай</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Шошго - дагалдагч хоорондын зай:</target>
+</phrase>
+<phrase>
+    <source>Installation folder</source>
+    <target>Суурилуулалтын хавтас</target>
+</phrase>
+<phrase>
+    <source>Double-click to finish the shape, Right click to cancel the last point</source>
+    <target>Хэлбэрийг дуусгахын тулд давхар товших, сүүлийн цэгийг цуцлахын тулд баруун товших</target>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand this project</source>
+    <target>Энэ төслийг хураах эсвэл дэлгэхийн тулд давхар товшино уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand this embedded title blocks collection</source>
+    <target>Энэ суулгасан хүрээний цуглуулгыг хураах эсвэл дэлгэхийн тулд давхар товшино уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand the title block company collection</source>
+    <target>company хүрээний цуглуулгыг хураах эсвэл дэлгэхийн тулд давхар товшино уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand the QElectrotech title blocks collection</source>
+    <target>QElectroTech хүрээний цуглуулгыг хураах эсвэл дэлгэхийн тулд давхар товшино уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Double-click to collapse or expand your own title blocks collection</source>
+    <target>Өөрийн хувийн хүрээний цуглуулгыг хураах эсвэл дэлгэхийн тулд давхар товшино уу</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Баруун</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>%1 клеммийн бүлгээс</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Алдаа: %1 файл хүчинтэй .dxf файл эсэхийг шалгана уу</target>
+</phrase>
+<phrase>
+    <source>Vertical offset</source>
+    <target>Босоо шилжилт</target>
+</phrase>
+<phrase>
+    <source>Uncheck the terminal blocks whose numbering is to be excluded</source>
+    <target>Дугаарлалтаас хасах клеммийн хавтангуудыг сонголтоос хас</target>
+</phrase>
+<phrase>
+    <source>Set the maximum number of slaves</source>
+    <target>Боолын хамгийн их тоог тодорхойлох</target>
+</phrase>
+<phrase>
+    <source>Define the slave elements</source>
+    <target>Боол элементүүдийг тодорхойлох</target>
+</phrase>
+<phrase>
+    <source>Set a transparent color</source>
+    <target>Тунгалаг өнгө тодорхойлох</target>
+</phrase>
+<phrase>
+    <source>Conductor definition</source>
+    <target>Дамжуулагчийн тодорхойлолт</target>
+</phrase>
+<phrase>
+    <source>Deform a curve</source>
+    <target>Муруйг гажуудуулах</target>
+</phrase>
+<phrase>
+    <source>Unlink</source>
+    <target>Салгах</target>
+</phrase>
+<phrase>
+    <source>Automatic name :</source>
+    <target>Автомат нэршил:</target>
+</phrase>
+<phrase>
+    <source>Déplacer</source>
+    <target>Зөөх</target>
+</phrase>
+<phrase>
+    <source>Déplacer %1 textes d&apos;élément</source>
+    <target>%1 элементийн текстийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Move to :</source>
+    <target>Руу зөөх:</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>Клеммүүдийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>%1 клеммийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Move an image&apos;s rotation center</source>
+    <target>Зургийн эргэлтийн төвийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Move the label to a terminal</source>
+    <target>Терминалын шошгыг зөөх</target>
+</phrase>
+<phrase>
+    <source>Move the sheets</source>
+    <target>Хуудсуудыг зөөх</target>
+</phrase>
+<phrase>
+    <source>Moving a sheet</source>
+    <target>Хуудас зөөх</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Move an item text</source>
+    <target>Элементийн текстийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Move a terminal</source>
+    <target>Клемм зөөх</target>
+</phrase>
+<phrase>
+    <source>Unbridge the terminals</source>
+    <target>Клеммүүдийн холбоосыг салгах</target>
+</phrase>
+<phrase>
+    <source>Disabled</source>
+    <target>Идэвхгүй</target>
+</phrase>
+<phrase>
+    <source>Unlocked: width and height can be changed independently. Click to lock.</source>
+    <target>Түгжээгүй: өргөн ба өндрийг тус тусад нь өөрчилж болно. Түгжихийн тулд дарна уу.</target>
+</phrase>
+<phrase>
+    <source>Registration failed</source>
+    <target>Хадгалах амжилтгүй</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Засварлагч</target>
+</phrase>
+<phrase>
+    <source>Make the move</source>
+    <target>Зөөлтийг гүйцэтгэх</target>
+</phrase>
+<phrase>
+    <source>Element Auto Numbering</source>
+    <target>Авто дугаарлалтын элемент</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>Ellipse</source>
+    <target>Эллипс</target>
+</phrase>
+<phrase>
+    <source>Sheet reference elements</source>
+    <target>Фолио заалтын элементүүд</target>
+</phrase>
+<phrase>
+    <source>Headser :</source>
+    <target>Толгой хэсэг :</target>
+</phrase>
+<phrase>
+    <source>using windows</source>
+    <target>цонхнуудыг ашиглах</target>
+</phrase>
+<phrase>
+    <source>using tabs</source>
+    <target>табуудыг ашиглах</target>
+</phrase>
+<phrase>
+    <source>Frame the text</source>
+    <target>Текстийг хүрээлэх</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>%1 клемм хасах</target>
+</phrase>
+<phrase>
+    <source>Remove an element text from a group of texts</source>
+    <target>Элементийн текстийг текстийн бүлгээс хасах</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>Клемм хасах</target>
+</phrase>
+<phrase>
+    <source>Save As... </source>
+    <target>Өөр нэрээр хадгалах...</target>
+</phrase>
+<phrase>
+    <source>Save to a file</source>
+    <target>Файлд хадгалах</target>
+</phrase>
+<phrase>
+    <source>Save original image as...</source>
+    <target>Анхны зургийг өөр нэрээр хадгалах...</target>
+</phrase>
+<phrase>
+    <source>Save image as...</source>
+    <target>Зургийг өөр нэрээр хадгалах...</target>
+</phrase>
+<phrase>
+    <source>Save current element?</source>
+    <target>Одоогийн элементийг хадгалах уу?</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Save the diagnostic report</source>
+    <target>Оношилгооны тайланг хадгалах</target>
+</phrase>
+<phrase>
+    <source>Save as</source>
+    <target>Өөр нэрээр хадгалах</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Save a diagnostic report...</source>
+    <target>Оношилгооны тайлан хадгалах...</target>
+</phrase>
+<phrase>
+    <source>Save a template</source>
+    <target>Загвар хадгалах</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Save...</source>
+    <target>Хадгалах...</target>
+</phrase>
+<phrase>
+    <source>Enter the scale factor</source>
+    <target>Масштабын коэффициентийг оруулна уу</target>
+</phrase>
+<phrase>
+    <source>Enter the name of the configuration to create</source>
+    <target>Үүсгэх тохиргооны нэрийг оруулна уу</target>
+</phrase>
+<phrase>
+    <source>Analogue input</source>
+    <target>Аналог оролт</target>
+</phrase>
+<phrase>
+    <source>Digital input</source>
+    <target>Дижитал оролт</target>
+</phrase>
+<phrase>
+    <source>Universal input</source>
+    <target>Бүх нийтийн оролт</target>
+</phrase>
+<phrase>
+    <source>Send in the backward the selection (s)</source>
+    <target>Сонгосон объектыг ар талд илгээх</target>
+</phrase>
+<phrase>
+    <source>Send backward</source>
+    <target>Ар талд илгээх</target>
+</phrase>
+<phrase>
+    <source>Error</source>
+    <target>Алдаа</target>
+</phrase>
+<phrase>
+    <source>Error launching qet_tb_generator plugin</source>
+    <target>qet_tb_generator залгуурыг эхлүүлэхэд алдаа гарлаа</target>
+</phrase>
+<phrase>
+    <source>PLC slave</source>
+    <target>PLC боол</target>
+</phrase>
+<phrase>
+    <source>Space :</source>
+    <target>Зай :</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Жишээ</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclude from the bill of materials</source>
+    <target>Нэрсийн жагсаалтаас хасах</target>
+</phrase>
+<phrase>
+    <source>Exclude from automatic numbering</source>
+    <target>Автомат дугаарлалтаас хасах</target>
+</phrase>
+<phrase>
+    <source>Terminal strip explorer</source>
+    <target>Клеммийн хавтангийн хөтөч</target>
+</phrase>
+<phrase>
+    <source>Export successful</source>
+    <target>Экспорт амжилттай</target>
+</phrase>
+<phrase>
+    <source>Export one or more sheets of the current project</source>
+    <target>Одоогийн төслийн нэг буюу хэд хэдэн хуудсыг экспортлох</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Export in pdf</source>
+    <target>PDF рүү экспортлох</target>
+</phrase>
+<phrase>
+    <source>Export as SVG</source>
+    <target>SVG руу экспортлох</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Export the internal project database</source>
+    <target>Төслийн дотоод мэдээллийн санг экспортлох</target>
+</phrase>
+<phrase>
+    <source>Export the wiring diagram</source>
+    <target>Утас холболтын схемийг экспортлох</target>
+</phrase>
+<phrase>
+    <source>Export as : </source>
+    <target>Хадгалах нэр:</target>
+</phrase>
+<phrase>
+    <source>Export to clipboard</source>
+    <target>Самбар руу экспортлох</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 1</source>
+    <target>Туслах үйлдвэрлэгч 1</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 2</source>
+    <target>Туслах үйлдвэрлэгч 2</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 3</source>
+    <target>Туслах үйлдвэрлэгч 3</target>
+</phrase>
+<phrase>
+    <source>Manufacturer of auxiliary 4</source>
+    <target>Туслах үйлдвэрлэгч 4</target>
+</phrase>
+<phrase>
+    <source>X Factor:</source>
+    <target>X коэффициент:</target>
+</phrase>
+<phrase>
+    <source>Y Factor:</source>
+    <target>Y коэффициент:</target>
+</phrase>
+<phrase>
+    <source>Make both templates coexist</source>
+    <target>Хоёр загварыг зэрэгцүүлэн ашиглах</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Rotate %1</source>
+    <target>%1-г эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>Rotate an image</source>
+    <target>Зургийг эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>Drag the handles, or the inside of the frame, to adjust the area to keep.</source>
+    <target>Хадгалах хэсгийг тохируулахын тулд бариулуудыг эсвэл хүрээний дотоод хэсгийг чирнэ үү.</target>
+</phrase>
+<phrase>
+    <source>Close this editor</source>
+    <target>Энэ редакторыг хаах</target>
+</phrase>
+<phrase>
+    <source>File</source>
+    <target>Файл</target>
+</phrase>
+<phrase>
+    <source>File (*.pdf)</source>
+    <target>Файл (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers csv (*.csv)</source>
+    <target>csv файлууд (*.csv)</target>
+</phrase>
+<phrase>
+    <source>PDF files (*.pdf)</source>
+    <target>PDF файлууд (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Text files (*.txt);;All files (*)</source>
+    <target>Текст файлууд (*.txt);;Бүх файлууд (*)</target>
+</phrase>
+<phrase>
+    <source>Wire</source>
+    <target>Судс</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Файл олдсонгүй: %1</target>
+</phrase>
+<phrase>
+    <source>Filter shortcuts…</source>
+    <target>Товчлолуудыг шүүх…</target>
+</phrase>
+<phrase>
+    <source>End 1:</source>
+    <target>Төгсгөл 1 :</target>
+</phrase>
+<phrase>
+    <source>End 2:</source>
+    <target>Төгсгөл 2 :</target>
+</phrase>
+<phrase>
+    <source>Thin</source>
+    <target>Нимгэн</target>
+    <definition>element part weight</definition>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Нарийн эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Хөрвүүлэх</target>
+</phrase>
+<phrase>
+    <source>Sheet</source>
+    <target>Фолио</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Untitled sheet</source>
+    <target>Гарчиггүй хуудас</target>
+</phrase>
+<phrase>
+    <source>Sheets to print :</source>
+    <target>Хэвлэх хуудсууд:</target>
+</phrase>
+<phrase>
+    <source>Function</source>
+    <target>Функц</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Function :</source>
+    <target>Функц:</target>
+</phrase>
+<phrase>
+    <source>PLC function</source>
+    <target>PLC функц</target>
+</phrase>
+<phrase>
+    <source>Experimental feature</source>
+    <target>Туршилтын функц</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Форм</target>
+</phrase>
+<phrase>
+    <source>Format:</source>
+    <target>Формат:</target>
+</phrase>
+<phrase>
+    <source>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</source>
+    <target>Харуулах формат: тэгүүдийн дараалал нь хамгийн бага тооны оронгийг өгнө (00 = 07, 000 = 007). Хоосон = төрлийн байгалийн өргөн.</target>
+</phrase>
+<phrase>
+    <source>Format as a part list</source>
+    <target>Материалын жагсаалт хэлбэрээр форматлах</target>
+</phrase>
+<phrase>
+    <source>Closed shape</source>
+    <target>Хаалттай хэлбэр</target>
+</phrase>
+<phrase>
+    <source>Label formula</source>
+    <target>Шошгоны томьёо</target>
+</phrase>
+<phrase>
+    <source>Text Formula</source>
+    <target>Текстийн томьёо</target>
+</phrase>
+<phrase>
+    <source>Strong</source>
+    <target>Бүдүүн</target>
+    <definition>element part weight</definition>
+</phrase>
+<phrase>
+    <source>Supplier</source>
+    <target>Нийлүүлэгч</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 1</source>
+    <target>Туслах нийлүүлэгч 1</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 2</source>
+    <target>Туслах нийлүүлэгч 2</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 3</source>
+    <target>Туслах нийлүүлэгч 3</target>
+</phrase>
+<phrase>
+    <source>supplier of auxiliary 4</source>
+    <target>Туслах нийлүүлэгч 4</target>
+</phrase>
+<phrase>
+    <source>Fuse</source>
+    <target>Гал хамгаалагч</target>
+</phrase>
+<phrase>
+    <source>Merge of %1 cells</source>
+    <target>%1 нүдийг нэгтгэх</target>
+    <definition>label used in the title block template editor undo list; %1 is the number of merged cells</definition>
+</phrase>
+<phrase>
+    <source>Left</source>
+    <target>Зүүн</target>
+</phrase>
+<phrase>
+    <source>Elements management</source>
+    <target>Элементүүдийн удирдлага</target>
+</phrase>
+<phrase>
+    <source>Terminal manager</source>
+    <target>Клеммийн хавтангийн менежер</target>
+</phrase>
+<phrase>
+    <source>Terminal block manager (DEV)</source>
+    <target>Клеммийн хавтангийн менежер (DEV)</target>
+</phrase>
+<phrase>
+    <source>Drag %1: rotation (Shift = 15°)</source>
+    <target>%1-г чирэх: эргүүлэх (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: adjust the arc (Ctrl = free position, Shift = 15°)</source>
+    <target>Чирэх: нумыг тохируулах (Ctrl = чөлөөт байрлал, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: round the corners (Ctrl = free position)</source>
+    <target>Чирэх: буланг бөөрөнхийлөх (Ctrl = чөлөөт байрлал)</target>
+</phrase>
+<phrase>
+    <source>Drag: deform the curve (Ctrl = free position, Alt = break the tangent)</source>
+    <target>Чирэх: муруйг гажуудуулах (Ctrl = чөлөөт байрлал, Alt = шүргэгчийг таслах)</target>
+</phrase>
+<phrase>
+    <source>Drag: move this point</source>
+    <target>Чирэх: энэ цэгийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Drag: move the rotation center</source>
+    <target>Чирэх: эргэлтийн төвийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Drag: move the point (Ctrl = free position</source>
+    <target>Чирэх: цэгийг зөөх (Ctrl = чөлөөт байрлал</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Ctrl = free position, Shift = 15°)</source>
+    <target>Чирэх: хазайлгах (Ctrl = чөлөөт байрлал, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag: skew (Shift = 15° steps)</source>
+    <target>Чирэх: хазайлгах (Shift = 15°-ийн алхамаар)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotate (Shift = 15° steps)</source>
+    <target>Чирэх: эргүүлэх (Shift = 15°-ийн алхамаар)</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Ctrl = from center + free position, Shift = proportions</source>
+    <target>Чирэх: хэмжээг өөрчлөх (Ctrl = төвөөс + чөлөөт байрлал, Shift = харьцаа</target>
+</phrase>
+<phrase>
+    <source>Drag: resize (Shift = keep proportions, Ctrl = from center)</source>
+    <target>Чирэх: хэмжээ өөрчлөх (Shift = харьцааг хадгалах, Ctrl = төвөөс)</target>
+</phrase>
+<phrase>
+    <source>Drag: reposition the rotation center (Ctrl = free position)</source>
+    <target>Чирэх: эргэлтийн төвийг шилжүүлэх (Ctrl = чөлөөт байрлал)</target>
+</phrase>
+<phrase>
+    <source>Drag: rotation (Ctrl = free position, Shift = 15°)</source>
+    <target>Чирэх: эргүүлэх (Ctrl = чөлөөт байрлал, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Drag the purple point: round the corners</source>
+    <target>Ягаан цэгийг чирэх: буланг бөөрөнхийлөх</target>
+</phrase>
+<phrase>
+    <source>Drag a corner: rotate (Shift = 15° steps); drag an edge: skew (Shift = 15° steps); red point: move the rotation center</source>
+    <target>Буланг чирэх: эргүүлэх (Shift = 15°-ийн алхамаар); ирмэгийг чирэх: хазайлгах (Shift = 15°-ийн алхамаар); улаан цэг: эргэлтийн төвийг зөөх</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = keep proportions)</source>
+    <target>Булан/ирмэгийг чирэх: хэмжээ өөрчлөх (Ctrl = төвөөс, Shift = харьцааг хадгалах)</target>
+</phrase>
+<phrase>
+    <source>Drag a corner/edge: resize (Ctrl = from center, Shift = proportions, Alt = detach into a polyline)</source>
+    <target>Булан/ирмэгийг чирэх: хэмжээг өөрчлөх (Ctrl = төвөөс, Shift = харьцаа, Alt = полилин болгон салгах)</target>
+</phrase>
+<phrase>
+    <source>Drag a point: move it</source>
+    <target>Цэгийг чирэх: зөөх</target>
+</phrase>
+<phrase>
+    <source>Drag an endpoint: move it</source>
+    <target>Үзүүрийг чирэх: зөөх</target>
+</phrase>
+<phrase>
+    <source>Drag a handle or the curve: deform (Alt = break the tangent); Alt+drag a corner point: create handles; right click: nearest node menu</source>
+    <target>Бариул эсвэл муруйг чирэх: гажуудуулах (Alt = шүргэгчийг таслах) ; Alt+өнцөгт цэгийг чирэх: бариул үүсгэх ; баруун товшилт: хамгийн ойрын зангилааны цэс</target>
+</phrase>
+<phrase>
+    <source>Drag and drop this title block template onto a sheet to apply it.</source>
+    <target>Энэ хүрээний загварыг фолио дээр чирж тавиад хэрэглэнэ үү.</target>
+    <definition>Status tip displayed when selecting a title block template</definition>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>нэг хуудас зүүн тийш</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>нэг хуудас баруун тийш</target>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>Саарал : Black</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>Саарал : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>Саарал : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>Саарал : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>Саарал : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>Саарал : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>Саарал : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>Саарал : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>Саарал : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>Саарал : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>Ногоон : Шартуу</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>Ногоон : Бараан ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>Ногоон : Бараан чидун ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>Ногоон : Бараан далайн ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>Ногоон : Ойн ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>Ногоон : Ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>Ногоон : Ногоон шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>Ногоон : Зүлэг ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>Ногоон : Цайвар ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>Ногоон : Шохой</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>Ногоон : Шохой ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>Ногоон : Дунд аквамарин</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>Ногоон : Дунд далайн ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>Ногоон : Дунд хавар ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>Ногоон : Чидун</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>Ногоон : Чидун бор</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>Ногоон : Бүдэг ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>Ногоон : Далайн ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>Ногоон : Хавар ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>Ногоон : Шар ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Grid + Keyboard</source>
+    <target>Тор + Гар</target>
+</phrase>
+<phrase>
+    <source>Grid: 1 - 30</source>
+    <target>Тор : 1 - 30</target>
+</phrase>
+<phrase>
+    <source>Gray</source>
+    <target>Саарал</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Light gray</source>
+    <target>Цайвар саарал</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Grouping element texts</source>
+    <target>Элементийн текстийг бүлэглэх</target>
+</phrase>
+<phrase>
+    <source>Group the terminals</source>
+    <target>Клеммүүдийг бүлэглэх</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Чиглүүлэгчид</target>
+</phrase>
+<phrase>
+    <source>Generates a report containing the latest log entries, to be included in a bug report</source>
+    <target>Алдааны тайланд оруулахын тулд сүүлийн лог мессежүүдтэй тайлан үүсгэнэ</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>General</source>
+    <target>Ерөнхий</target>
+</phrase>
+<phrase>
+    <source>Lambda element generator</source>
+    <target>Ламбда элемент үүсгэгч</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Generic</source>
+    <target>Ерөнхий</target>
+</phrase>
+<phrase>
+    <source>Geometry</source>
+    <target>Геометр</target>
+</phrase>
+<phrase>
+    <source>geometry:</source>
+    <target>Геометр :</target>
+</phrase>
+<phrase>
+    <source>Line H:</source>
+    <target>Мөрийн өндөр:</target>
+</phrase>
+<phrase>
+    <source>Hatch right</source>
+    <target>Баруун штрихлэл</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Hatch left</source>
+    <target>Зүүн штрихлэл</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>Өндөр</target>
+</phrase>
+<phrase>
+    <source>File saving time</source>
+    <target>Файл хадгалсан цаг</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Хэвтээ</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>хэвтээ + босоо</target>
+</phrase>
+<phrase>
+    <source>Horizontal:</source>
+    <target>Хэвтээ:</target>
+</phrase>
+<phrase>
+    <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
+    <target>%1 файл нь QElectroTech төслийн файл биш юм шиг байна. Тиймээс нээх боломжгүй.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
+    <target>Таны нээх гэж буй %1 файл байхгүй эсвэл устсан бололтой.</target>
+</phrase>
+<phrase>
+    <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
+    <target>Таны нээх гэж буй файл уншихад боломжгүй юм шиг байна. Тиймээс нээх боломжгүй. Файлын зөвшөөрлийг шалгана уу.</target>
+</phrase>
+<phrase>
+    <source>The project you try to open does not seem writable. It will be opened read-only.</source>
+    <target>Таны нээх гэж буй төсөл бичихэд боломжгүй юм шиг байна. Тиймээс зөвхөн уншихаар нээгдэнэ.</target>
+</phrase>
+<phrase>
+    <source>BMP image (*.bmp)</source>
+    <target>BMP зураг (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
+    <target>Зургийн файлууд (*.png *.jpg  *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Зургийн файлууд (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>JPEG image (*.jpg *.jpeg)</source>
+    <target>JPEG зураг (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>PNG image (*.png)</source>
+    <target>PNG зураг (*.png)</target>
+</phrase>
+<phrase>
+    <source>Source image</source>
+    <target>Эх зураг</target>
+</phrase>
+<phrase>
+    <source>SVG image (*.svg)</source>
+    <target>SVG зураг (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images not included in the DXF export</source>
+    <target>DXF экспортод зураг ороогүй</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLAN импорт</target>
+</phrase>
+<phrase>
+    <source>Import</source>
+    <target>Импортлох</target>
+</phrase>
+<phrase>
+    <source>Import the text configuration : %1</source>
+    <target>Текстийн тохиргоог импортлох: %1</target>
+</phrase>
+<phrase>
+    <source>Import a dxf</source>
+    <target>dxf импортлох</target>
+</phrase>
+<phrase>
+    <source>Import a dxf file</source>
+    <target>dxf файл импортлох</target>
+</phrase>
+<phrase>
+    <source>Import an element to resize</source>
+    <target>хэмжээ өөрчлөх элемент импортлох</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part</source>
+    <target>EPLAN эд анги импортлох</target>
+</phrase>
+<phrase>
+    <source>Import an EPLAN part (.edz)…</source>
+    <target>EPLAN эд анги (.edz) импортлох…</target>
+</phrase>
+<phrase>
+    <source>Unable to get the parent category</source>
+    <target>Эх категорид нэвтрэх боломжгүй</target>
+    <definition>error message</definition>
+</phrase>
+<phrase>
+    <source>Unable to save the image to this location.</source>
+    <target>Зургийг энэ байршилд хадгалах боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to save the element</source>
+    <target>Элементийг хадгалах боломжгүй</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Unable to save the parts list to %1.
+%2</source>
+    <target>Нэрлэлийг %1 руу хадгалах боломжгүй.
+%2</target>
+</phrase>
+<phrase>
+    <source>Unable to save the template  ‘%1’.</source>
+    <target>«%1» загварыг хадгалах боломжгүй.</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Could not import this part:
+%1</source>
+    <target>Энэ эд ангийг импортлох боломжгүй:
+%1</target>
+</phrase>
+<phrase>
+    <source>Unable to get this template&apos;s XML description</source>
+    <target>Энэ загварын XML тайлбарыг авах боломжгүй</target>
+    <definition>error message</definition>
+</phrase>
+<phrase>
+    <source>Unable to open file</source>
+    <target>Файлыг нээх боломжгүй</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Unable to open file %1 with write access, encountered error %2.</source>
+    <target>%1 файлыг бичихээр нээх боломжгүй, %2 алдаа гарлаа.</target>
+    <definition>error message when attempting to write an XML file</definition>
+</phrase>
+<phrase>
+    <source>Unable to open the file for writing.</source>
+    <target>Файлыг бичихээр нээх боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans ce fichier</source>
+    <target>Энэ файлд бичих боломжгүй</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Unable to write to the file « %1 ».</source>
+    <target>«%1» файл руу бичих боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to load the image.</source>
+    <target>Зургийг ачаалах боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to load the PDF file.</source>
+    <target>PDF файлыг ачаалж чадсангүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to create the category</source>
+    <target>Категори үүсгэх боломжгүй</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>It is not possible to determine the size of the PDF page.</source>
+    <target>PDF хуудасны хэмжээг тодорхойлох боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to read the project&apos;s in-memory structure.</source>
+    <target>Төслийн санах ойн бүтцийг унших боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Unable to replace the file!
+
+</source>
+    <target>Файлыг солих боломжгүй!
+
+</target>
+</phrase>
+<phrase>
+    <source>Unable to render the PDF page.</source>
+    <target>PDF хуудсыг дүрслэх боломжгүй.</target>
+</phrase>
+<phrase>
+    <source>Print</source>
+    <target>Хэвлэх</target>
+</phrase>
+<phrase>
+    <source>X skew</source>
+    <target>X хазайлт</target>
+</phrase>
+<phrase>
+    <source>Y skew</source>
+    <target>Y хазайлт</target>
+</phrase>
+<phrase>
+    <source>Skew %1</source>
+    <target>%1-г хазайлгах</target>
+</phrase>
+<phrase>
+    <source>Skew an image</source>
+    <target>Зургийг хазайлгах</target>
+</phrase>
+<phrase>
+    <source>include headers</source>
+    <target>толгой хэсгүүдийг оруулах</target>
+</phrase>
+<phrase>
+    <source>Unknown</source>
+    <target>Тодорхойгүй</target>
+</phrase>
+<phrase>
+    <source>Increment</source>
+    <target>Өсөлт</target>
+</phrase>
+<phrase>
+    <source>Increment: the value added to the counter each time a new number is dialled</source>
+    <target>Өсөлт: шинэ дугаарлалт бүрт тоолуурт нэмэгдэх утга</target>
+</phrase>
+<phrase>
+    <source>Revision index</source>
+    <target>Засварын дугаар</target>
+</phrase>
+<phrase>
+    <source>Enter the name of the file for the new element.</source>
+    <target>Шинэ элементийг хадгалах файлын нэрийг оруулна уу.</target>
+    <definition>wizard page subtitle</definition>
+</phrase>
+<phrase>
+    <source>Enter one or more names for the element.</source>
+    <target>Элементийн нэр эсвэл нэрсийг оруулна уу.</target>
+    <definition>wizard page subtitle</definition>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>Мэдээлэл</target>
+</phrase>
+<phrase>
+    <source>Enter the component details</source>
+    <target>Бүрэлдэхүүн хэсгүүдийн мэдээллийг бичих</target>
+</phrase>
+<phrase>
+    <source>Column insertion</source>
+    <target>Багана оруулах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>Row insertion</source>
+    <target>Мөр оруулах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>Plant (=)</source>
+    <target>Суулгац (=)</target>
+</phrase>
+<phrase>
+    <source>Plant:</source>
+    <target>Суурилуулалт :</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number above</source>
+    <target>Дээр нь фолио оруулах</target>
+</phrase>
+<phrase>
+    <source>Insert a sheet number below</source>
+    <target>Доор нь фолио оруулах</target>
+</phrase>
+<phrase>
+    <source>Insert element text into a text group</source>
+    <target>Элементийн текстийг текстийн бүлэгт оруулах</target>
+</phrase>
+<phrase>
+    <source>Integration of a title block template</source>
+    <target>Цулын загварыг нэгтгэх</target>
+</phrase>
+<phrase>
+    <source>Integrate the dropped template</source>
+    <target>Оруулсан загварыг нэгтгэх</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>Шилжүүлэгч</target>
+</phrase>
+<phrase>
+    <source>Available I/O:</source>
+    <target>Боломжтой IO:</target>
+</phrase>
+<phrase>
+    <source>I have read and accept these terms and conditions.</source>
+    <target>Би эдгээр нөхцөлийг уншиж, зөвшөөрч байна.</target>
+</phrase>
+<phrase>
+    <source>Japanese</source>
+    <target>Япон</target>
+</phrase>
+<phrase>
+    <source>Yellow</source>
+    <target>Шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>The recording failed,
+the conditions are not valid</source>
+    <target>Хадгалалт амжилтгүй болсон,
+шаардлагатай нөхцөл хангагдаагүй</target>
+</phrase>
+<phrase>
+    <source>Importing a large dxf can take time 
+please wait while importing...</source>
+    <target>Том dxf импортлоход удаан хугацаа шаардаж болно 
+импортлох хугацаанд түр хүлээнэ үү...</target>
+</phrase>
+<phrase>
+    <source>Importing dxf requires the dxf2elmt software.
+Please download it by following the link and unzip it in the installation folder</source>
+    <target>dxf импортлоход dxf2elmt програм шаардлагатай.
+Доорх холбоосоор татаж аваад суулгах хавтас руу задална уу</target>
+</phrase>
+<phrase>
+    <source>The item requested is not a category. Abort.</source>
+    <target>Хүссэн зүйл категори биш. Зогсоов.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The item is not a category</source>
+    <target>Энэ зүйл категори биш</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>The element does not exist.</source>
+    <target>Элемент байхгүй.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The required category does not exist. Giving up.</source>
+    <target>Хүссэн категори байхгүй. Зогсоов.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The new potential formula contains variables incompatible with sheet references.
+Please enter a compatible formula for this potential.
+The following variables are incompatible:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
+    <target>Шинэ потенциалын томьёо нь хуудасны холбоосыг дэмждэггүй хувьсагчдыг агуулж байна.
+Энэ потенциалд тохирох томьёог оруулна уу.
+Дараах хувьсагчид тохирохгүй байна:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</target>
+</phrase>
+<phrase>
+    <source>The limit set for this master element has been reached (Limit: %1).
+
+Do you still want to link this slave contact?</source>
+    <target>Энэ maitre элементийн тогтоосон хязгаарт хүрсэн (Хязгаар: %1).
+
+Та энэ esclave контактыг холбохыг хүсэж байна уу?</target>
+</phrase>
+<phrase>
+    <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
+Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
+    <target>Сонголт нь холбогдсон ба/эсвэл олон түвшний клеммд хамаарах нэг буюу хэд хэдэн клеммтэй тул устгах боломжгүй.
+Холбоосыг салгаж ба/эсвэл холбогдох клеммүүдийн түвшнүүдийг устгаснаар тэдгээрийг устгах боломжтой болно</target>
+</phrase>
+<phrase>
+    <source>The verification of this element generated</source>
+    <target>Энэ элементийг шалгахад үүссэн</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Шошго</target>
+</phrase>
+<phrase>
+    <source>Label cross reference</source>
+    <target>Харилцан холбоосын шошго</target>
+</phrase>
+<phrase>
+    <source>Launches the default browser on the Youtube channel of QElectroTech</source>
+    <target>QElectroTech-ийн Youtube сувгийг анхдагч хөтчөөр нээнэ</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Launches the default browser to the online repository Nightly QElectroTech</source>
+    <target>QElectroTech-ийн онлайн Nightly репозиторийг анхдагч хөтчөөр нээнэ</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Launches the default browser to the online manual QElectroTech</source>
+    <target>QElectroTech-ийн онлайн гарын авлагыг анхдагч хөтчөөр нээнэ</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Languages</source>
+    <target>Хэлнүүд</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>Өргөн</target>
+</phrase>
+<phrase>
+    <source>The chosen virtual path does not match an element.</source>
+    <target>Сонгосон виртуал зам элементтэй тохирохгүй.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>the folder %1 contains</source>
+    <target>%1 хавтас агуулж байна</target>
+</phrase>
+<phrase>
+    <source>The file could not be written.</source>
+    <target>Файл руу бичих боломжгүй байсан.</target>
+</phrase>
+<phrase>
+    <source>The PDF file does not contain any pages.</source>
+    <target>PDF файлд ямар ч хуудас байхгүй.</target>
+</phrase>
+<phrase>
+    <source>The text file containing the GNU/GPL license could not be found - however, you know it by heart, don&apos;t you?</source>
+    <target>Гну/GPL лицензийг агуулсан текст файл олдсонгүй - ямар ч байсан та үүнийг цээжээр мэднэ биз дээ?</target>
+</phrase>
+<phrase>
+    <source>The text file containing the GNU/GPL license exists but could not be opened - however, you know it by heart, don&apos;t you?</source>
+    <target>Гну/GPL лицензийг агуулсан текст файл байгаа боловч нээж чадсангүй - ямар ч байсан та үүнийг цээжээр мэднэ биз дээ?</target>
+</phrase>
+<phrase>
+    <source>The file &quot;%1&quot; is missing or unreadable:
+the translated name of this folder could not be read, so its folder name is displayed instead.</source>
+    <target>«%1» файл байхгүй эсвэл уншигдахгүй: энэ хавтасны орчуулсан нэрийг уншиж чадсангүй, оронд нь хавтасны нэр харагдаж байна.</target>
+</phrase>
+<phrase>
+    <source>The .edz file format can come from two different sources:
+• The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
+• A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
+QElectroTech cannot automatically determine the origin of the file you are importing, nor the terms and conditions that apply to it.
+By importing this file, you confirm that:
+• you are aware of its source and are authorised to use it in this context, in accordance with the terms and conditions applicable to that source;
+• this import is carried out at your own risk and responsibility;
+• neither QElectroTech, nor its maintainers, nor its contributors can be held liable for any unauthorised use of this data.</source>
+    <target>.edz формат нь хоёр өөр эх сурвалжаас гаралтай байж болно:
+
+• EPLAN Data Portal (dataportal.eplan.com), EPLAN Cloud орчны ашиглах нөхцөлд захирагдана;
+• Бүрэлдэхүүн хэсгийн үйлдвэрлэгч (эсвэл түгээгч) өөрийн .edz файлуудыг өөрийн нөхцөлөөр шууд нийтэд санал болгодог сайт.
+
+QElectroTech нь таны импортолж буй файлын гарал үүслийг, түүнд хамаарах нөхцөлийг автоматаар тодорхойлж чадахгүй.
+
+Энэ файлыг импортолсноор та дараахь зүйлийг баталж байна:
+
+• та түүний гарал үүслийг мэдэж, тухайн эх сурвалжид хамаарах нөхцөлийн дагуу энэ хүрээнд ашиглах эрхтэй;
+• энэ импорт нь таны өөрийн эрсдэл, хариуцлагаар хийгдэнэ;
+• QElectroTech, түүний засварлагчид болон хувь нэмэр оруулагчид эдгээр өгөгдлийг зохисгүй ашигласны төлөө хариуцлага хүлээхгүй.</target>
+</phrase>
+<phrase>
+    <source>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</source>
+    <target>Энд ашигласан DXF формат (AC1006) зураг оруулахыг зөвшөөрөхгүй. Зургуудыг зөвхөн хүрээний тэгш өнцөгтөөр (байрлал, хэмжээ, эргэлт болон хазайлт хадгалагдана) төлөөлнө, зургийн агуулгагүйгээр.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The QET_ElementScaler software is required to scale elements.
+Please download it from the link below and unzip it into the installation folder</source>
+    <target>Элементүүдийг масштаблахын тулд QET_ElementScaler програм шаардлагатай.
+Доорх холбоосоор татаж аваад суулгах хавтас руу задална уу</target>
+</phrase>
+<phrase>
+    <source>The template has already been integrated in the project. However, the version you are trying to apply appears to be different. What do you wish to do?</source>
+    <target>Загвар төсөлд аль хэдийн нэгтгэгдсэн байна. Гэхдээ таны хэрэглэх гэж буй хувилбар өөр байна. Та юу хийхийг хүсэж байна вэ?</target>
+    <definition>dialog content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>The template has been successfully saved as :
+%1</source>
+    <target>Загвар амжилттай хадгалагдсан:
+%1</target>
+</phrase>
+<phrase>
+    <source>The internal name you chose is already used by another category. Please choose another one.</source>
+    <target>Таны сонгосон дотоод нэрийг одоо байгаа категори аль хэдийн ашиглаж байна. Өөр нэр сонгоно уу.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>The name ‘%1’ is invalid: it must not contain the following characters: \ / : * ? &quot; &lt; &gt; |</source>
+    <target>«%1» нэр хүчингүй: дараах тэмдэгтүүдийг агуулж болохгүй: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>The new element defines slave contact groups.
+Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
+
+Do you wish to continue?</source>
+    <target>Шинэ элемент нь эзэмшигч контактын бүлгүүдийг тодорхойлсон.
+Одоо байгаа эзэмшигч элементүүд автоматаар оноогдохгүй. Та эзэмшигч элементүүдийг гараар холбож, контактын бүлгүүдийг оноох шаардлагатай.
+
+Үргэлжлүүлэх үү?</target>
+</phrase>
+<phrase>
+    <source>The wiring diagram has been successfully exported !</source>
+    <target>Утасны холболтын зураг амжилттай экспортлогдлоо!</target>
+</phrase>
+<phrase>
+    <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
+</source>
+    <target>Таны нээх гэж буй төсөл таны QElectroTech-ийн %1 хувилбартай хэсэгчлэн нийцтэй.
+</target>
+</phrase>
+<phrase>
+    <source>The project was modified.
+Do you want to save changes?</source>
+    <target>Төсөл өөрчлөгдсөн.
+Өөрчлөлтүүдийг хадгалах уу?</target>
+</phrase>
+<phrase>
+    <source>The template already exists. Do you want to overwrite it?</source>
+    <target>Загвар аль хэдийн байна. Дарж бичих үү?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED :</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the table.
+Please add a new table or adjust the existing table to display all information.</source>
+    <target>Харуулах мэдээлэл нь хүснэгтэд харуулах боломжтой дээд хэмжээнээс их байна.
+Бүх мэдээллийг харуулахын тулд шинэ хүснэгт нэмэх эсвэл одоо байгаа хүснэгтийг тохируулна уу.</target>
+</phrase>
+<phrase>
+    <source>The information to be displayed is greater than the maximum quantity that can be displayed by the tables.
+Please add a new table or adjust the existing tables to show all information.</source>
+    <target>Харуулах мэдээлэл нь хүснэгтэд харуулах боломжтой дээд хэмжээнээс их байна.
+Бүх мэдээллийг харуулахын тулд шинэ хүснэгт нэмэх эсвэл одоо байгаа хүснэгтүүдийг тохируулна уу.</target>
+</phrase>
+<phrase>
+    <source>Lower-case letters, numbers, hyphens and underscores only</source>
+    <target>Зөвхөн жижиг үсэг, тоо, зураас болон доогуур зураас</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Лицензүүд</target>
+</phrase>
+<phrase>
+    <source>line</source>
+    <target>шугам</target>
+    <definition>element part name</definition>
+</phrase>
+<phrase>
+    <source>Horizontal lines</source>
+    <target>Хэвтээ шугамууд</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Vertical Lines</source>
+    <target>Босоо шугамууд</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Table limitation</source>
+    <target>Хүснэгтийн хязгаарлалт</target>
+</phrase>
+<phrase>
+    <source>Smooth</source>
+    <target>Гөлгөр</target>
+</phrase>
+<phrase>
+    <source>Wiring list</source>
+    <target>Утас холболтын жагсаалт</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Wiring list (database)</source>
+    <target>Утас холболтын жагсаалт (мэдээллийн сан)</target>
+</phrase>
+<phrase>
+    <source>Related to: %1</source>
+    <target>Холбогдсон: %1</target>
+</phrase>
+<phrase>
+    <source>Location (+)</source>
+    <target>Байршил (+)</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>Байршил :</target>
+</phrase>
+<phrase>
+    <source>Log</source>
+    <target>лoг</target>
+</phrase>
+<phrase>
+    <source>Third party software required</source>
+    <target>Гуравдагч этгээдийн програм шаардлагатай</target>
+</phrase>
+<phrase>
+    <source>logo</source>
+    <target>лого</target>
+    <definition>title block cell property human name</definition>
+</phrase>
+<phrase>
+    <source>Length</source>
+    <target>Урт</target>
+</phrase>
+<phrase>
+    <source>Longueur :</source>
+    <target>Урт :</target>
+</phrase>
+<phrase>
+    <source>Maximum length</source>
+    <target>Хамгийн их урт</target>
+</phrase>
+<phrase>
+    <source>Maximum length: %1px
+</source>
+    <target>Хамгийн их урт : %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Unrestricted length.
+</source>
+    <target>Урт нь хязгаарлагдаагүй.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>Magenta</source>
+    <target>Магента</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Макросууд</target>
+</phrase>
+<phrase>
+    <source>Online manual</source>
+    <target>Онлайн гарын авлага</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Brown</source>
+    <target>Бор</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Элемент засварлагчийн жагсаалтын хамгийн их хэсэг</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>макс:</target>
+</phrase>
+<phrase>
+    <source>Highlight freshly integrated elements in the panel</source>
+    <target>Саяхан нэмэгдсэн элементүүдийг самбарт онцлон харуулах</target>
+</phrase>
+<phrase>
+    <source>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</source>
+    <target>Дараагийн цикл тооны report-оор л урагшлах тоонд 0 тавина (жишээ нь: "0.7"-ийн "0")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>мин:</target>
+</phrase>
+<phrase>
+    <source>Mirror selection</source>
+    <target>Сонголтын толь</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Horizontal mirror</source>
+    <target>Хэвтээ толь</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of an image</source>
+    <target>Зургийн хэвтээ толь</target>
+</phrase>
+<phrase>
+    <source>Horizontal mirror of %1</source>
+    <target>%1-г хэвтээ тольдох</target>
+</phrase>
+<phrase>
+    <source>Mirror not possible: skew too extreme for this shape</source>
+    <target>Толь үүсгэх боломжгүй: энэ хэлбэрт хазайлт хэт их байна</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror</source>
+    <target>Босоо толь</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of an image</source>
+    <target>Зургийн босоо толь</target>
+</phrase>
+<phrase>
+    <source>Vertical mirror of %1</source>
+    <target>%1-г босоо тольдох</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Толь</target>
+</phrase>
+<phrase>
+    <source>Page layout</source>
+    <target>хуудасны тохиргоо</target>
+</phrase>
+<phrase>
+    <source>Layout (not available on Windows for PDF export)</source>
+    <target>Хуудасны тохиргоо (PDF экспортлоход Windows дээр боломжгүй)</target>
+</phrase>
+<phrase>
+    <source>Column edition</source>
+    <target>Багана засах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>Row edition</source>
+    <target>Мөр засах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>modify extra information</source>
+    <target>нэмэлт мэдээллийг засах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Modification complementary information</source>
+    <target>нэмэлт мэдээллийг засах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Modify terminal strip properties</source>
+    <target>Боомтын шинж чанарыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Modify the alignment of a text field</source>
+    <target>Текст талбарын зэрэгцүүлэлтийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Modify the alignment of a group of texts</source>
+    <target>Текстийн бүлгийн зэрэгцүүлэлтийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the alignment of the label</source>
+    <target>Шошгын зэрэгцүүлэлтийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an arc</source>
+    <target>Нумын өнцгийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the angle of a shape</source>
+    <target>Хэлбэрийн өнцгийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the angle of an image</source>
+    <target>Зургийн өнцгийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the skew of an image</source>
+    <target>Зургийн хазайлтыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the master label index</source>
+    <target>Мастерийн шошгын индексийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Edit the master label</source>
+    <target>Мастерийн шошгыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Modify the conservation of the angle</source>
+    <target>Өнцгийн хадгалалтыг засах</target>
+</phrase>
+<phrase>
+    <source>Change the color of a terminal bridge</source>
+    <target>Клеммийн холболтын өнгийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the label colour</source>
+    <target>Шошгын өнгийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the curvature of %1</source>
+    <target>%1-г муруйлтыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the shape of %1</source>
+    <target>%1-г хэлбэрийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the height of an image</source>
+    <target>Зургийн өндрийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the width of an image</source>
+    <target>Зургийн өргөнийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the length of a line</source>
+    <target>Шугамын уртыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the font of an element text</source>
+    <target>Элементийн текстийн фонтыг засах</target>
+</phrase>
+<phrase>
+    <source>Change the label font</source>
+    <target>Шошгын фонтыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the position of the label</source>
+    <target>Шошгын байрлалыг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the rotation of the label</source>
+    <target>Шошгын эргэлтийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the size of a shape</source>
+    <target>Хэлбэрийн хэмжээг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the font size of the label</source>
+    <target>Шошгын фонтын хэмжээг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>modify the title block</source>
+    <target>картушийг засах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Change the way item text stays rotated</source>
+    <target>Элементийн текстийн эргэлтийн хадгалалтыг засах</target>
+</phrase>
+<phrase>
+    <source>Change the name of the terminal</source>
+    <target>Клеммийн нэрийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the terminal name</source>
+    <target>Терминалын нэрийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the rotation point of a text field</source>
+    <target>Текст талбарын эргэлтийн цэгийг засах</target>
+</phrase>
+<phrase>
+    <source>Change the type of a node</source>
+    <target>Зангилааны төрлийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Change the type of a terminal</source>
+    <target>Клеммийн төрлийг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>change the sheet size</source>
+    <target>фолиогийн хэмжээг өөрчлөх</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Edit information of the element : %1</source>
+    <target>Элементийн мэдээллийг засах : %1</target>
+</phrase>
+<phrase>
+    <source>Edit information for multiple items</source>
+    <target>Хэд хэдэн элементийн мэдээллийг засах</target>
+</phrase>
+<phrase>
+    <source>Modify item properties</source>
+    <target>Элементийн шинж чанарыг засах</target>
+</phrase>
+<phrase>
+    <source>Edit conductor properties</source>
+    <target>Дамжуулагчийн шинж чанарыг засах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Modify the properties of an element</source>
+    <target>Элементийн шинж чанарыг засах</target>
+</phrase>
+<phrase>
+    <source>Edit the properties of several conductors</source>
+    <target>Олон дамжуулагчийн шинж чанарыг өөрчлөх</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Modify the properties of a terminal group</source>
+    <target>Клеммийн бүлгийн шинж чанарыг засах</target>
+</phrase>
+<phrase>
+    <source>Edit an image</source>
+    <target>Зургийг засах</target>
+</phrase>
+<phrase>
+    <source>PLC module</source>
+    <target>PLC модуль</target>
+</phrase>
+<phrase>
+    <source>Model</source>
+    <target>Загвар</target>
+</phrase>
+<phrase>
+    <source>Registered template</source>
+    <target>Загвар хадгалагдсан</target>
+</phrase>
+<phrase>
+    <source>Templates</source>
+    <target>Загварууд</target>
+</phrase>
+<phrase>
+    <source>Mongolian</source>
+    <target>Монгол</target>
+</phrase>
+<phrase>
+    <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
+    <target>Өндөр нягтралтай пикселийн (hdpi) дэлгэцийг масштаблах арга (QElectroTech дараагийн удаа эхлэхэд хэрэгжинэ):</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Тоо</target>
+</phrase>
+<phrase>
+    <source>No. of terminals</source>
+    <target>Боомтын тоо</target>
+</phrase>
+<phrase>
+    <source>No. of contacts</source>
+    <target>Контактын тоо</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (SW контакт)</target>
+</phrase>
+<phrase>
+    <source>Clean project</source>
+    <target>Төслийг цэвэрлэх</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Neutral</source>
+    <target>Нейтр</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (SW контакт)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>.edz дотор *.part.xml олдсонгүй</target>
+</phrase>
+<phrase>
+    <source>Black</source>
+    <target>Хар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>name</source>
+    <target>нэр</target>
+    <definition>title block cell property human name</definition>
+</phrase>
+<phrase>
+    <source>Name:</source>
+    <target>Нэр :</target>
+</phrase>
+<phrase>
+    <source>Element file name</source>
+    <target>Элементийн файлын нэр</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>The element&apos;s file name: digits, lowercase letters, &apos;-&apos;, &apos;_&apos; and &apos;.&apos; only.
+The element&apos;s display name is edited separately in the element properties.</source>
+    <target>Элементийн файлын нэр: зөвхөн цифр, жижиг үсэг, «-», «_» болон «.».
+Элементийн харагдах нэрийг элементийн шинж чанарт тусад нь өөрчилнө.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Terminal name</source>
+    <target>Клеммийн нэр</target>
+</phrase>
+<phrase>
+    <source>Configuration name</source>
+    <target>Тохиргооны нэр</target>
+</phrase>
+<phrase>
+    <source>Name of the new category</source>
+    <target>Шинэ категорийн нэр</target>
+    <definition>default name when creating a new category</definition>
+</phrase>
+<phrase>
+    <source>File name</source>
+    <target>Файлын нэр</target>
+</phrase>
+<phrase>
+    <source>Name of the saved file</source>
+    <target>Хадгалсан файлын нэр</target>
+</phrase>
+<phrase>
+    <source>Name of the new template</source>
+    <target>Шинэ загварын нэр</target>
+</phrase>
+<phrase>
+    <source>Internal name : </source>
+    <target>Дотоод нэр:</target>
+</phrase>
+<phrase>
+    <source>Internal name already used</source>
+    <target>Дотоод нэр аль хэдийн ашиглагдсан</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Missing internal name</source>
+    <target>Дотоод нэр дутуу</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Custom column name (blank = default)</source>
+    <target>Баганын хэрэглэгчийн нэр (хоосон = өгөгдмөл)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Элементийн нэр, шошго эсвэл мэдээлэл…</target>
+</phrase>
+<phrase>
+    <source>name_of_the_property</source>
+    <target>nom_de_la_propriete</target>
+</phrase>
+<phrase>
+    <source>Incorrect number of terminals</source>
+    <target>Борнцерын тоо буруу</target>
+</phrase>
+<phrase>
+    <source>Number of slave contacts used : %1
+</source>
+    <target>Ашигласан боол контактын тоо: %1
+</target>
+</phrase>
+<phrase>
+    <source>Number of sheets</source>
+    <target>Хуудасны тоо</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slaves reached.</source>
+    <target>Хамгийн их esclave тоонд хүрсэн.</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  %1
+</source>
+    <target>Тодорхойлсон боол контактын хамгийн их тоо: %1
+</target>
+</phrase>
+<phrase>
+    <source>Maximum number of slave contacts defined:  not defined
+</source>
+    <target>Тодорхойлсон боол контактын хамгийн их тоо: тодорхойлоогүй
+</target>
+</phrase>
+<phrase>
+    <source>No</source>
+    <target>Үгүй</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Unallocated only</source>
+    <target>Зөвхөн оноогоогүй</target>
+</phrase>
+<phrase>
+    <source>Normal</source>
+    <target>Хэвийн</target>
+    <definition>element part line style</definition>
+</phrase>
+<phrase>
+    <source>Normal</source>
+    <target>Хэвийн</target>
+    <definition>element part weight</definition>
+</phrase>
+<phrase>
+    <source>Switch normally closed</source>
+    <target>Хэвийн хаалттай</target>
+</phrase>
+<phrase>
+    <source>Switch normally open</source>
+    <target>Хэвийн нээлттэй</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Хүчинтэй .edz багц биш (танигдахгүй архив формат).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Тэмдэглэл</target>
+</phrase>
+<phrase>
+    <source>None</source>
+    <target>Тэг</target>
+    <definition>element part weight</definition>
+</phrase>
+<phrase>
+    <source>number_of_wiring_</source>
+    <target>numero_de_fileries_</target>
+</phrase>
+<phrase>
+    <source>Numeric only (1, 2, 3...)</source>
+    <target>Зөвхөн тоон (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Article number</source>
+    <target>Барааны дугаар</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 1 article number</source>
+    <target>Туслах барааны дугаар 1</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 2 article number</source>
+    <target>Туслах зүйлийн дугаар 2</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 3 article number</source>
+    <target>Туслах зүйлийн дугаар 3</target>
+</phrase>
+<phrase>
+    <source>Auxiliary 4 article number</source>
+    <target>Туслах зүйлийн дугаар 4</target>
+</phrase>
+<phrase>
+    <source>Order number</source>
+    <target>Захиалгын дугаар</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 1</source>
+    <target>Туслах захиалгын дугаар 1</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 2</source>
+    <target>Туслах захиалгын дугаар 2</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 3</source>
+    <target>Туслах захиалгын дугаар 3</target>
+</phrase>
+<phrase>
+    <source>Order number auxiliary 4</source>
+    <target>Туслах захиалгын дугаар 4</target>
+</phrase>
+<phrase>
+    <source>Number wire</source>
+    <target>Дамжуулагчийн дугаар</target>
+</phrase>
+<phrase>
+    <source>Sheet number</source>
+    <target>Фолиогийн дугаар</target>
+</phrase>
+<phrase>
+    <source>Number of the previous sheet</source>
+    <target>Өмнөх хуудасны дугаар</target>
+</phrase>
+<phrase>
+    <source>Number of the following sheet</source>
+    <target>Дараагийн хуудасны дугаар</target>
+</phrase>
+<phrase>
+    <source>Internal number</source>
+    <target>Дотоод дугаар</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 1</source>
+    <target>Туслах дотоод дугаар 1</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 2</source>
+    <target>Туслах дотоод дугаар 2</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 3</source>
+    <target>Туслах дотоод дугаар 3</target>
+</phrase>
+<phrase>
+    <source>Internal number of auxiliary 4</source>
+    <target>Туслах дотоод дугаар 4</target>
+</phrase>
+<phrase>
+    <source>Automatic numbering of terminals</source>
+    <target>Клеммүүдийн автомат дугаарлалт</target>
+</phrase>
+<phrase>
+    <source>Automatically number a conductor</source>
+    <target>Дамжуулагчийг автоматаар дугаарлах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Automatically number an element</source>
+    <target>Элементийг автоматаар дугаарлах</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Number the title block columns from 0 (1 otherwise)</source>
+    <target>Гарчгийн хүрээний багануудыг 0-ээс эхлэн дугаарлах (эс бөгөөс 1)</target>
+</phrase>
+<phrase>
+    <source>Number the letters as well</source>
+    <target>Үсгүүдийг мөн дугаарлах</target>
+</phrase>
+<phrase>
+    <source>Nearest node</source>
+    <target>Хамгийн ойрын зангилаа</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>OK</target>
+</phrase>
+<phrase>
+    <source>Option display cross</source>
+    <target>Загалмайгаар харуулах тохиргоо</target>
+</phrase>
+<phrase>
+    <source>Printing option</source>
+    <target>Хэвлэх сонголт</target>
+</phrase>
+<phrase>
+    <source>Rendering option</source>
+    <target>Дүрслэх сонголт</target>
+</phrase>
+<phrase>
+    <source>Print options</source>
+    <target>Хэвлэх сонголтууд</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Orange</source>
+    <target>Улбар шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>Улбар шар : Шүр</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>Улбар шар : Бараан улбар шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>Улбар шар : Улбар шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>Улбар шар : Улаан улбар шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>Улбар шар : Улаан лооль</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Чиглэл</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>Чиглэл :</target>
+</phrase>
+<phrase>
+    <source>Choose orientation for selected texts</source>
+    <target>Сонгосон текстийг чиглүүлэх</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Vertical origin</source>
+    <target>Босоо эхлэл</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>Бусад</target>
+</phrase>
+<phrase>
+    <source>Yes</source>
+    <target>Тийм</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Elements translation tool</source>
+    <target>Элемент орчуулах хэрэгсэл</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Tools</source>
+    <target>Хэрэгслүүд</target>
+</phrase>
+<phrase>
+    <source>Ouvrir le dossier correspondant</source>
+    <target>Харгалзах хавтсыг нээх</target>
+</phrase>
+<phrase>
+    <source>Open an item</source>
+    <target>Элемент нээх</target>
+</phrase>
+<phrase>
+    <source>Open a file</source>
+    <target>Файл нээх</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Хуудас</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Previous page</source>
+    <target>Өмнөх хуудас</target>
+</phrase>
+<phrase>
+    <source>Next page</source>
+    <target>Дараагийн хуудас</target>
+</phrase>
+<phrase>
+    <source>Page to import:</source>
+    <target>Импортлох хуудас :</target>
+</phrase>
+<phrase>
+    <source>Elements panel</source>
+    <target>Элементийн самбар</target>
+</phrase>
+<phrase>
+    <source>by:</source>
+    <target>-аар :</target>
+</phrase>
+<phrase>
+    <source>By default</source>
+    <target>Анхдагчаар</target>
+</phrase>
+<phrase>
+    <source>By default, the following variables are available: &lt;ul&gt;&lt;li&gt;%{author}: author of the sheet&lt;/li&gt;&lt;li&gt;%{date}: sheet date&lt;/li&gt;&lt;li&gt;%{title}: sheet title&lt;/li&gt;&lt;li&gt;%{filename}: filename of file&lt;/li&gt; &lt;li&gt;%{plant}: name of the installation (=) in which the sheet is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) where the sheet is located&lt;/li&gt;&lt;li&gt;%{indexrev}: sheet revision index&lt;/li&gt;&lt;li&gt;%{version}: version number&lt;/li&gt;&lt;li&gt;%{folio}: sheet number&lt;/li&gt;&lt;li&gt;%{folio-id}: position of sheet in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of sheets in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous sheet&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the next sheet&lt; / li&gt;&lt;li&gt;%{projecttitle}: title of the project&lt;/li&gt;&lt;li&gt;%{projectpath}: path of the project&lt;/li&gt;&lt;li&gt;%{projectfilename}: filename of the projectfile&lt;/li&gt;&lt;li &gt;%{saveddate}: date of saving the file in local format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: date of saving the file in format DD-MM-YYYY&lt;/li&gt; &lt;li&gt;%{ saveddate-us}: date of saving the file in format YYYY-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: time of saving the file&lt;/li&gt;&lt;li&gt;%{savedfilename}: name of the file saved&lt;/li&gt;&lt;li&gt;%{savedfilepath}: path of the saved file&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>Анхдагчаар дараах хувьсагчууд боломжтой :&lt;ul&gt;&lt;li&gt;%{author} : фолиогийн зохиогч&lt;/li&gt;&lt;li&gt;%{date} : фолиогийн огноо&lt;/li&gt;&lt;li&gt;%{title} : фолиогийн гарчиг&lt;/li&gt;&lt;li&gt;%{filename} : төслийн файлын нэр&lt;/li&gt;&lt;li&gt;%{plant} : фолио байрлах суурилуулалтын (=) нэр&lt;/li&gt;&lt;li&gt;%{locmach} : фолио байрлах байршлын (+) нэр&lt;/li&gt;&lt;li&gt;%{indexrev} : фолиогийн засварын индекс&lt;/li&gt;&lt;li&gt;%{version} : програмын хувилбар&lt;/li&gt;&lt;li&gt;%{folio} : фолиогийн дугаар&lt;/li&gt;&lt;li&gt;%{folio-id} : төсөл дэх фолиогийн байрлал&lt;/li&gt;&lt;li&gt;%{folio-total} : төсөл дэх нийт фолиогийн тоо&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : өмнөх фолиогийн дугаар&lt;/li&gt;&lt;li&gt;%{next-folio-num} : дараагийн фолиогийн дугаар&lt;/li&gt;&lt;li&gt;%{projecttitle} : төслийн гарчиг&lt;/li&gt;&lt;li&gt;%{projectpath} : төслийн зам&lt;/li&gt;&lt;li&gt;%{projectfilename} : файлын нэр&lt;/li&gt;&lt;li&gt;%{saveddate} : файл хадгалсан огноо, орон нутгийн формат&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : файл хадгалсан огноо, dd-MM-yyyy формат&lt;/li&gt;&lt;li&gt;%{saveddate-us} : файл хадгалсан огноо, yyyy-MM-dd формат&lt;/li&gt;&lt;li&gt;%{savedtime} : файл хадгалсан цаг&lt;/li&gt;&lt;li&gt;%{savedfilename} : хадгалсан файлын нэр&lt;/li&gt;&lt;li&gt;%{savedfilepath} : хадгалсан файлын зам&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Browse...</source>
+    <target>Сонгох...</target>
+</phrase>
+<phrase>
+    <source>Parts</source>
+    <target>Хэсгүүд</target>
+</phrase>
+<phrase>
+    <source>No rounding</source>
+    <target>Дугуйлахгүй</target>
+</phrase>
+<phrase>
+    <source>Landscape</source>
+    <target>Хэвтээ</target>
+</phrase>
+<phrase>
+    <source>PEN</source>
+    <target>PEN</target>
+</phrase>
+<phrase>
+    <source>Allows to specify various parameters for QElectroTech</source>
+    <target>QElectroTech-ийн янз бүрийн параметрийг тохируулах боломж олгоно</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Custom</source>
+    <target>Хэрэглэгчийн</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>Фаз</target>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>Ягаан : Гүн ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>Ягаан : Халуун ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>Ягаан : Цайвар ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>Ягаан : Дунд ягаан улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>Ягаан : Цайвар ягаан улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink: Pink</source>
+    <target>Ягаан : Ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Rotates the selection as a group around its centre, rather than each element in place</source>
+    <target>Сонголтыг элемент бүрийг тус тусад нь биш, харин бүлэг болгон төвөө тойруулан эргүүлэх</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rotate the selection</source>
+    <target>Сонголтыг эргүүлэх</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Rotate the group</source>
+    <target>Бүлгийг эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>rotate/skew</source>
+    <target>эргүүлэх/хазайлгах</target>
+</phrase>
+<phrase>
+    <source>EPLAN parts (*.edz)</source>
+    <target>EPLAN эд анги (*.edz)</target>
+</phrase>
+<phrase>
+    <source>Pastes elements from the clipboard into the sheet</source>
+    <target>Санах ойн элементүүдийг хуудсанд байрлуулах</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>plan of terminals</source>
+    <target>клеммийн план</target>
+</phrase>
+<phrase>
+    <source>Handles :</source>
+    <target>Бариул:</target>
+</phrase>
+<phrase>
+    <source>ext anchor point and alignment of lines relative to one another</source>
+    <target>Текстийн бэхлэх цэг ба мөрүүдийн харилцан зэрэгцүүлэлт</target>
+</phrase>
+<phrase>
+    <source>Bridge point</source>
+    <target>Холбоосын цэг</target>
+</phrase>
+<phrase>
+    <source>Dotted</source>
+    <target>Цэгтэй</target>
+    <definition>element part line style</definition>
+</phrase>
+<phrase>
+    <source>Font</source>
+    <target>Фонт</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Фонт:</target>
+</phrase>
+<phrase>
+    <source>Header font</source>
+    <target>Толгойн фонт</target>
+</phrase>
+<phrase>
+    <source>Column header formatting</source>
+    <target>Баганын толгойн фонт</target>
+</phrase>
+<phrase>
+    <source>Heading font size: %1 %2pt</source>
+    <target>Толгойн фонт: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Text font</source>
+    <target>Текстийн фонт</target>
+</phrase>
+<phrase>
+    <source>Cell text font</source>
+    <target>Нүдний текстийн фонт</target>
+</phrase>
+<phrase>
+    <source>Font size: %1 %2pt</source>
+    <target>Текстийн фонт: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Project fonts</source>
+    <target>Төслийн фонтууд</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Bridging terminals together</source>
+    <target>Клеммүүдийг хооронд нь холбох</target>
+</phrase>
+<phrase>
+    <source>Bridging the terminals</source>
+    <target>Клеммүүдийг холбох</target>
+</phrase>
+<phrase>
+    <source>Portrait</source>
+    <target>Босоо</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Байрлал</target>
+</phrase>
+<phrase>
+    <source>Automatic position</source>
+    <target>Автомат байрлал</target>
+</phrase>
+<phrase>
+    <source>Sheet position</source>
+    <target>Хуудасны байрлал</target>
+</phrase>
+<phrase>
+    <source>First page</source>
+    <target>Эхний хуудас</target>
+</phrase>
+<phrase>
+    <source>Priority of axes</source>
+    <target>Тэнхлэгийн давуу эрх</target>
+</phrase>
+<phrase>
+    <source>Priority to the X-axis (horizontal)</source>
+    <target>X тэнхлэгт давуу эрх (хэвтээ)</target>
+</phrase>
+<phrase>
+    <source>Priority to the Y-axis (vertical)</source>
+    <target>Y тэнхлэгт давуу эрх (босоо)</target>
+</phrase>
+<phrase>
+    <source>The next value to be applied using this increment</source>
+    <target>Энэ өсөлтөөр хэрэглэгдэх дараагийн утга</target>
+</phrase>
+<phrase>
+    <source>Depth</source>
+    <target>Гүн</target>
+</phrase>
+<phrase>
+    <source>project</source>
+    <target>төсөл</target>
+    <definition>string used to generate a filename</definition>
+</phrase>
+<phrase>
+    <source>Side project</source>
+    <target>Хавсралт төсөл</target>
+</phrase>
+<phrase>
+    <source>Read-only project</source>
+    <target>Төсөл зөвхөн уншихаар</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Project QElectroTech (*.qet)</source>
+    <target>QElectroTech төсөл (*.qet)</target>
+    <definition>filetypes allowed when saving a project file</definition>
+</phrase>
+<phrase>
+    <source>Untitled project</source>
+    <target>Гарчиггүй төсөл</target>
+</phrase>
+<phrase>
+    <source>Projects</source>
+    <target>Төслүүд</target>
+</phrase>
+<phrase>
+    <source>Properties</source>
+    <target>Шинж чанарууд</target>
+</phrase>
+<phrase>
+    <source>Text properties</source>
+    <target>Текстийн шинж чанарууд</target>
+</phrase>
+<phrase>
+    <source>Prefix of power contacts :</source>
+    <target>Чадлын контактуудын угтвар:</target>
+</phrase>
+<phrase>
+    <source>Prefix changeover contacts :</source>
+    <target>Урвуулагч контактуудын угтвар:</target>
+</phrase>
+<phrase>
+    <source>Prefix delayed contacts :</source>
+    <target>Хугацааны контактуудын угтвар:</target>
+</phrase>
+<phrase>
+    <source>Preview:</source>
+    <target>Урьдчилан харах :</target>
+</phrase>
+<phrase>
+    <source>Power switch</source>
+    <target>Чадал</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>Нил ягаан : Хөх ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>Нил ягаан : Бараан магента</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>Нил ягаан : Бараан орхид</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>Нил ягаан : Бараан шифер хөх</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>Нил ягаан : Бараан ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>Нил ягаан : Фуксия</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>Нил ягаан : Индиго</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>Нил ягаан : Лаванда</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>Нил ягаан : Магента</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>Нил ягаан : Дунд орхид</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>Нил ягаан : Дунд нил ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>Нил ягаан : Дунд шифер хөх</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>Нил ягаан : Орхид</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>Нил ягаан : Чавга</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>Нил ягаан : Нил ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>Нил ягаан : Шифер хөх</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>Нил ягаан : Гэзэг</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>Нил ягаан : Ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech - Element Editor</source>
+    <target>QElectroTech - Элементийн редактор</target>
+</phrase>
+<phrase>
+    <source>QElectroTech did not close correctly the last time it was run.
+Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
+    <target>QElectroTech сүүлийн удаа зөв хаагдаагүй байна.
+Хаагдахаас өмнө бүртгэгдсэн сүүлийн мессежүүд энд байна -- та тэдгээрийг хадгалаад алдааны тайланд хавсаргаж болно.</target>
+</phrase>
+<phrase>
+    <source>QElectroTech, an application to design electric diagrams.
+
+Available options: 
+  --help                        Display this help
+  -v, --version                 Display the version
+  --license                     Display the license
+</source>
+    <target>QElectroTech, цахилгаан схемийн зураг бүтээх програм.
+
+Боломжтой сонголтууд: 
+  --help                        Сонголтуудын тусламжийг харуулах
+  -v, --version                 Хувилбарыг харуулах
+  --license                     Лицензийг харуулах
+</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+%1 импортлох / масштаблах талаар нэмэлт мэдээлэл</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 1</source>
+    <target>Туслах тоо хэмжээ 1</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 2</source>
+    <target>Туслах тоо хэмжээ 2</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 3</source>
+    <target>Туслах тоо хэмжээ 3</target>
+</phrase>
+<phrase>
+    <source>Quantity of auxiliary 4</source>
+    <target>Туслах тоо хэмжээ 4</target>
+</phrase>
+<phrase>
+    <source>Designation quantity</source>
+    <target>Тоо ширхэг, зүйлийн дугаар</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Shortcut</source>
+    <target>Товчлол</target>
+</phrase>
+<phrase>
+    <source>Shortcuts</source>
+    <target>Товчлолууд</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Diagnostic report</source>
+    <target>Оношилгооны тайлан</target>
+</phrase>
+<phrase>
+    <source>Crash report</source>
+    <target>Гэмтлийн тайлан</target>
+</phrase>
+<phrase>
+    <source>X radius</source>
+    <target>X радиус</target>
+</phrase>
+<phrase>
+    <source>Y radius</source>
+    <target>Y радиус</target>
+</phrase>
+<phrase>
+    <source>Reset the conductors path ignoring the user changes</source>
+    <target>Өөрчлөлтүүдийг харгалзахгүйгээр дамжуулагчийн замыг дахин тооцоолох</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Reload</source>
+    <target>Дахин ачаалах</target>
+</phrase>
+<phrase>
+    <source>Reload element</source>
+    <target>Элементийг дахин ачаалах</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Reload the terminals</source>
+    <target>Клеммийн хавтангуудыг дахин ачаалах</target>
+</phrase>
+<phrase>
+    <source>Search</source>
+    <target>Хайлт</target>
+</phrase>
+<phrase>
+    <source>Quickly search for and select an element in the sheet</source>
+    <target>Хуудасны элементийг хурдан хайж сонгох</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Search...</source>
+    <target>Хайх...</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>Улаан : Кримсон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>Улаан : Бараан улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>Улаан : Бараан хулд</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>Улаан : Галт тоосго</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>Улаан : Энэтхэг улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>Улаан : Цайвар шүр</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>Улаан : Цайвар хулд</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>Улаан : Улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>Улаан : Хулд</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>resize</source>
+    <target>хэмжээ өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Resize %1</source>
+    <target>%1-г хэмжээг өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Resize an image</source>
+    <target>Зургийн хэмжээ өөрчлөх</target>
+</phrase>
+<phrase>
+    <source>Elements  resizer</source>
+    <target>Элементийн хэмжээ өөрчлөгч</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Redo</source>
+    <target>Дахин хийх</target>
+</phrase>
+<phrase>
+    <source>Note: Master elements that have reached their maximum number of slaves are hidden.</source>
+    <target>Тэмдэглэл: хамгийн их esclave тоонд хүрсэн maitre элементүүд нуугдана.</target>
+</phrase>
+<phrase>
+    <source>Move this sheet up x100</source>
+    <target>Энэ фолиог x100 дээшлүүлэх</target>
+</phrase>
+<phrase>
+    <source>Replace the image...</source>
+    <target>Зургийг солих...</target>
+</phrase>
+<phrase>
+    <source>Replace an image</source>
+    <target>Зургийг солих</target>
+</phrase>
+<phrase>
+    <source>Learning from the master</source>
+    <target>Мастерээс авах</target>
+</phrase>
+<phrase>
+    <source>Restore proportions</source>
+    <target>Харьцааг сэргээх</target>
+</phrase>
+<phrase>
+    <source>Restore an image&apos;s proportions</source>
+    <target>Зургийн харьцааг сэргээх</target>
+</phrase>
+<phrase>
+    <source>Remove this color</source>
+    <target>Энэ өнгийг хасах</target>
+</phrase>
+<phrase>
+    <source>Mirror element :</source>
+    <target>Элементийг эргүүлэх :</target>
+</phrase>
+<phrase>
+    <source>Flip selection</source>
+    <target>Сонголтыг хөрвүүлэх</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Find in the panel</source>
+    <target>Самбараас олох</target>
+</phrase>
+<phrase>
+    <source>Go back to the start of the project</source>
+    <target>Төслийн эхэнд буцах</target>
+</phrase>
+<phrase>
+    <source>Return to the full image, without cropping</source>
+    <target>Тайралгүй бүтэн зураг руу буцах</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Баруун</target>
+</phrase>
+<phrase>
+    <source>Crop the image</source>
+    <target>Зургийг тайрах</target>
+</phrase>
+<phrase>
+    <source>Crop an image</source>
+    <target>Зургийг тайрах</target>
+</phrase>
+<phrase>
+    <source>Crop...</source>
+    <target>Тайрах...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>Эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Эргэлт :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Skew</source>
+    <target>Эргүүлэх/Хазайлгах</target>
+</phrase>
+<phrase>
+    <source>Red</source>
+    <target>Улаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Ref.</source>
+    <target>Холб.</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Хөндлөн холбоос</target>
+</phrase>
+<phrase>
+    <source>PLC cross-reference</source>
+    <target>PLC хөндлөн холбоос</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Хөндлөн холбоос</target>
+</phrase>
+<phrase>
+    <source>Cross-reference</source>
+    <target>Хөндлөн холбоос</target>
+</phrase>
+<phrase>
+    <source>Reset</source>
+    <target>Дахин тохируулах</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Reset this shortcut</source>
+    <target>Энэ товчлолыг дахин тохируулах</target>
+</phrase>
+<phrase>
+    <source>Reset to the default value</source>
+    <target>Эхний утга руу буцаах</target>
+</phrase>
+<phrase>
+    <source>Common collection directory</source>
+    <target>Нийтлэг цуглуулгын хавтас</target>
+</phrase>
+<phrase>
+    <source>Company collection directory</source>
+    <target>Компанийн цуглуулгын хавтас</target>
+</phrase>
+<phrase>
+    <source>User collection directory</source>
+    <target>Хэрэглэгчийн цуглуулгын хавтас</target>
+</phrase>
+<phrase>
+    <source>Company title-block directory</source>
+    <target>Компанийн цулын хавтас</target>
+</phrase>
+<phrase>
+    <source>User title blocks directory</source>
+    <target>Хэрэглэгчийн цулын хавтас</target>
+</phrase>
+<phrase>
+    <source>User Macro Directory</source>
+    <target>Хэрэглэгчийн макросын хавтас</target>
+</phrase>
+<phrase>
+    <source>Resolution:</source>
+    <target>Нарийвчлал :</target>
+</phrase>
+<phrase>
+    <source>Without</source>
+    <target>Гүй</target>
+</phrase>
+<phrase>
+    <source>untitled</source>
+    <target>нэргүй</target>
+</phrase>
+<phrase>
+    <source>untitled</source>
+    <target>нэргүй</target>
+</phrase>
+<phrase>
+    <source>Jump to %1 after:</source>
+    <target>%1-ийн дараа шинэ мөр:</target>
+</phrase>
+<phrase>
+    <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
+    <target>Төслүүдийн автомат хадгалалт (QElectroTech дараагийн удаа эхлэхэд хэрэгжинэ)</target>
+</phrase>
+<phrase>
+    <source>Wire section</source>
+    <target>Утасны огтлол</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Салах боломжтой</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Салгагчтай</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Дэлгэрэнгүйг эндээс үзнэ үү:</target>
+</phrase>
+<phrase>
+    <source>Select an image ...</source>
+    <target>Зураг сонгох...</target>
+</phrase>
+<phrase>
+    <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
+    <target>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the sheet will be enlarged or shrunk to fill the entire printable surface of one and only one page. &quot;</source>
+    <target>Хэрэв энэ сонголтыг сонговол хуудас нь нэг хуудасны бүх хэвлэх талбайг дүүргэхийн тулд томорч эсвэл багасах болно.</target>
+</phrase>
+<phrase>
+    <source>If this option is checked, the margins of the sheet will be ignored and its entire surface will be used for printing. This may not be supported by your printer.</source>
+    <target>Хэрэв энэ сонголтыг сонговол хуудасны захын зайг үл тоомсорлож, бүх талбайг хэвлэхэд ашиглана. Энэ нь таны принтерээр дэмжигдэхгүй байж болно.</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Энгийн</target>
+</phrase>
+<phrase>
+    <source>Analogue output</source>
+    <target>Аналог гаралт</target>
+</phrase>
+<phrase>
+    <source>Digital output</source>
+    <target>Дижитал гаралт</target>
+</phrase>
+<phrase>
+    <source>Universal output</source>
+    <target>Бүх нийтийн гаралт</target>
+</phrase>
+<phrase>
+    <source>Would you like to create a backup copy?</source>
+    <target>Та нөөц хуулбар үүсгэхийг хүсэж байна уу?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Subtype</source>
+    <target>Дэд төрөл</target>
+</phrase>
+<phrase>
+    <source>Sub-type : %1
+</source>
+    <target>Дэд төрөл: %1
+</target>
+</phrase>
+<phrase>
+    <source>Support the project with a donation</source>
+    <target>Төслийг хандиваар дэмжих</target>
+</phrase>
+<phrase>
+    <source>Support the QElectroTech project with a donation</source>
+    <target>QElectroTech төслийг хандиваар дэмжих</target>
+</phrase>
+<phrase>
+    <source>Style:</source>
+    <target>Загвар :</target>
+</phrase>
+<phrase>
+    <source>antialiasing style</source>
+    <target>antialiasing загвар</target>
+</phrase>
+<phrase>
+    <source>color style</source>
+    <target>өнгөний загвар</target>
+</phrase>
+<phrase>
+    <source>weight style</source>
+    <target>зузааны загвар</target>
+</phrase>
+<phrase>
+    <source>line style</source>
+    <target>шугамын загвар</target>
+</phrase>
+<phrase>
+    <source>filling style</source>
+    <target>дүүргэлтийн загвар</target>
+</phrase>
+<phrase>
+    <source>Next</source>
+    <target>Дараах</target>
+</phrase>
+<phrase>
+    <source>Track the time spent on this project (recorded locally in this file only)</source>
+    <target>Энэ төсөлд зарцуулсан цагийг хянах (зөвхөн энэ файлд локалаар хадгалагдана)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Column deletion</source>
+    <target>Багана устгах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>Row deletion</source>
+    <target>Мөр устгах</target>
+    <definition>label used in the title block template editor undo list</definition>
+</phrase>
+<phrase>
+    <source>Unable to delete the terminal</source>
+    <target>Клемм устгах боломжгүй</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>Устгах</target>
+</phrase>
+<phrase>
+    <source>Delete %1 sheets</source>
+    <target>%1 хуудсыг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete this property</source>
+    <target>Энэ шинж чанарыг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete terminal bridges</source>
+    <target>Клеммийн холболтыг устгах</target>
+</phrase>
+<phrase>
+    <source>Remove terminal block</source>
+    <target>Клеммийн хавтанг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete terminal strip from project</source>
+    <target>Төслөөс клеммийн хавтанг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete this sheet ?</source>
+    <target>Хуудсыг устгах уу?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Delete the nearest node</source>
+    <target>Хамгийн ойрын зангилааг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete empty categories</source>
+    <target>Хоосон категориудыг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete the sheets</source>
+    <target>Хуудсуудыг устгах</target>
+</phrase>
+<phrase>
+    <source>delete unused templates in the project</source>
+    <target>Төсөлд ашиглагдаагүй гарчгийн хэсгийн загваруудыг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete unused elements in  the project</source>
+    <target>Төсөлд ашиглагдаагүй элементүүдийг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete a sheet</source>
+    <target>Хуудас устгах</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Delete a group of terminals</source>
+    <target>Клеммийн бүлэг устгах</target>
+</phrase>
+<phrase>
+    <source>Delete a point from a curve</source>
+    <target>Муруйнаас цэг устгах</target>
+</phrase>
+<phrase>
+    <source>Swedish</source>
+    <target>Швед</target>
+</phrase>
+<phrase>
+    <source>SVG-background transparent</source>
+    <target>SVG: тунгалаг дэвсгэр</target>
+</phrase>
+<phrase>
+    <source>Symmetric</source>
+    <target>Тэгш хэмтэй</target>
+</phrase>
+<phrase>
+    <source>Modified contact system</source>
+    <target>Контактын систем өөрчлөгдсөн</target>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Салгагчтай</target>
+</phrase>
+<phrase>
+    <source>Select the text configuration to add to the element</source>
+    <target>Элементэд нэмэх текстийн тохиргоог сонгох</target>
+</phrase>
+<phrase>
+    <source>Select the electric potential</source>
+    <target>Цахилгаан потенциалыг сонгох</target>
+</phrase>
+<phrase>
+    <source>Select the conductors of this sheet</source>
+    <target>Энэ фолиогийн дамжуулагчдыг сонгох</target>
+</phrase>
+<phrase>
+    <source>Select the texts of this sheet</source>
+    <target>Энэ фолиогийн текстүүдийг сонгох</target>
+</phrase>
+<phrase>
+    <source>Select the elements of this sheet</source>
+    <target>Энэ фолиогийн элементүүдийг сонгох</target>
+</phrase>
+<phrase>
+    <source>Select a PDF file...</source>
+    <target>PDF файл сонгох...</target>
+</phrase>
+<phrase>
+    <source>Select a group of contacts</source>
+    <target>Контактын бүлэг сонгох</target>
+</phrase>
+<phrase>
+    <source>Select a PLC I/O</source>
+    <target>IO PLC сонгох</target>
+</phrase>
+<phrase>
+    <source>Select a text configuration</source>
+    <target>Текстийн тохиргоог сонгох</target>
+</phrase>
+<phrase>
+    <source>Select a page</source>
+    <target>Хуудас сонгох</target>
+</phrase>
+<phrase>
+    <source>Select the contact group to assign to this slave element :</source>
+    <target>Энэ боол элементэд оноох контактын бүлгийг сонгоно уу:</target>
+</phrase>
+<phrase>
+    <source>Select a category which to save the new element in.</source>
+    <target>Шинэ элементийг хадгалах категорийг сонгоно уу.</target>
+    <definition>wizard page subtitle</definition>
+</phrase>
+<phrase>
+    <source>Split of a cell into%1 ones</source>
+    <target>Нүдийг %1 болгон салгах</target>
+    <definition>label used in the title block template editor undo list; %1 is the number of cells after the split</definition>
+</phrase>
+<phrase>
+    <source>Potential separation</source>
+    <target>Потенциалын тусгаарлалт</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>PLC Table</source>
+    <target>PLC хүснэгт</target>
+</phrase>
+<phrase>
+    <source>PLC table (empty)</source>
+    <target>PLC хүснэгт (хоосон)</target>
+</phrase>
+<phrase>
+    <source>Size</source>
+    <target>Хэмжээ</target>
+</phrase>
+<phrase>
+    <source>Size :</source>
+    <target>Хэмжээ :</target>
+</phrase>
+<phrase>
+    <source>Point-size in diagram-editor: 1 - 5</source>
+    <target>Diagram-Editor-ийн торны цэгүүдийн хэмжээ: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Point-size in element-editor: 1 - 5</source>
+    <target>Элемент засварлагчийн торны цэгүүдийн хэмжээ: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Switch-off delayed</source>
+    <target>Ангидах сааталтай</target>
+</phrase>
+<phrase>
+    <source>Switch-on delayed</source>
+    <target>Ажиллах сааталтай</target>
+</phrase>
+<phrase>
+    <source>Switch-on  and off delayed</source>
+    <target>Ажиллах &amp; ангидах сааталтай</target>
+</phrase>
+<phrase>
+    <source>Time spent on this project:</source>
+    <target>Энэ төсөлд зарцуулсан цаг:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Voltage / Protocol</source>
+    <target>Хүчдэл / Протокол</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Rated voltage</source>
+    <target>Нэрлэсэн хүчдэл</target>
+</phrase>
+<phrase>
+    <source>Ground</source>
+    <target>Газар</target>
+</phrase>
+<phrase>
+    <source>Text terminal</source>
+    <target>Клеммийн текст</target>
+</phrase>
+<phrase>
+    <source>Header text</source>
+    <target>Толгойн текст</target>
+</phrase>
+<phrase>
+    <source>Independent text</source>
+    <target>Бие даасан текст</target>
+</phrase>
+<phrase>
+    <source>texts</source>
+    <target>Текстүүд</target>
+</phrase>
+<phrase>
+    <source>Elements texts</source>
+    <target>Элементүүдийн текстүүд</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Энэ .edz нь zip форматын багц бөгөөд одоогоор дэмжигдэхгүй (зөвхөн 7-Zip .edz файлуудыг импортлох боломжтой).</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>энэ нь кодонд алдаа байна</target>
+</phrase>
+<phrase>
+    <source>Dashed</source>
+    <target>Зураас</target>
+    <definition>element part line style</definition>
+</phrase>
+<phrase>
+    <source>Values that are too high might cause the application to crash</source>
+    <target>Хэт өндөр утгууд нь програмын эвдрэлд хүргэж болзошгүй.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>qet_tb_generator залгуурыг суулгахын тулд&lt;br&gt;Зочлох  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX дээр анх удаа суулгах&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Шаардлагатай бол зөвхөн python 3.11 багцыг суулгана, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Profile.command скриптийг ажиллуулна&lt;br&gt;учир нь програм qet-tb-generator залгуурыг олохын тулд хатуу кодлосон PATH-г ашигладаг &lt;br&gt; Зочлох :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX дээр шинэчлэх&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>qet_tb_generator залгуурыг суулгахын тулд&lt;br&gt;Зочлох :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Python 3.5 буюу түүнээс дээш хувилбар шаардлагатай.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux дээр анх удаа суулгах&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. pip3 суулгасан эсэхийг шалгана: pip3 --version&lt;br&gt;Хэрэв суулгаагүй бол: sudo apt-get install python3-pip&lt;br&gt;2. Программыг суулгана: sudo pip3 install qet_tb_generator&lt;br&gt;3. Программыг ажиллуулна: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux дээр шинэчлэх&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
+    <target>qet_tb_generator залгуурыг суулгахын тулд&lt;br&gt;Зочлох :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Python 3.5 буюу түүнээс дээш хувилбар шаардлагатай.&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows дээр анх удаа суулгах&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Шаардлагатай бол Python 3.5 буюу түүнээс дээш хувилбарыг суулгана&lt;br&gt; Зочлох :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows дээр шинэчлэх&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;хэрэглэгч терминал дээр энэ скриптийг энэ хавтаснаас ажиллуулж болно&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolerance for this color</source>
+    <target>Энэ өнгөний хүлцэл</target>
+</phrase>
+<phrase>
+    <source>Always rounded down</source>
+    <target>Үргэлж доош дугуйлах</target>
+</phrase>
+<phrase>
+    <source>Always top rounding</source>
+    <target>Үргэлж дээш дугуйлах</target>
+</phrase>
+<phrase>
+    <source>Rotate about its own centre</source>
+    <target>Өөрийн төвөөр эргүүлэх</target>
+</phrase>
+<phrase>
+    <source>all</source>
+    <target>Бүгд</target>
+</phrase>
+<phrase>
+    <source>All files (*)</source>
+    <target>Бүх файлууд (*)</target>
+</phrase>
+<phrase>
+    <source>Check all</source>
+    <target>Бүгдийг сонгох</target>
+</phrase>
+<phrase>
+    <source>Uncheck all</source>
+    <target>Бүгдийг сонголтоос хасах</target>
+</phrase>
+<phrase>
+    <source>Reset everything</source>
+    <target>Бүгдийг дахин тохируулах</target>
+</phrase>
+<phrase>
+    <source>All dates</source>
+    <target>Бүх огноо</target>
+</phrase>
+<phrase>
+    <source>Translation into Korean</source>
+    <target>Солонгос хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Japanese translation</source>
+    <target>Япон хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Mongolian Translation</source>
+    <target>Монгол хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Norwegian Translation</source>
+    <target>Норвеги хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Serbian Translation</source>
+    <target>Серб хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Slovenian translation</source>
+    <target>Словени хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Ukrainian translation</source>
+    <target>Украин хэл дээрх орчуулга</target>
+</phrase>
+<phrase>
+    <source>Dots and dashes</source>
+    <target>Зураас ба цэг</target>
+    <definition>element part line style</definition>
+</phrase>
+<phrase>
+    <source>Transform %1</source>
+    <target>%1-г хувиргах</target>
+</phrase>
+<phrase>
+    <source>Puts selected elements into the clipboard</source>
+    <target>Сонгосон элементүүдийг санах ой руу шилжүүлэх</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Transparency not preserved</source>
+    <target>Тунгалаг байдал хадгалагдахгүй</target>
+</phrase>
+<phrase>
+    <source>Sort terminal block %1</source>
+    <target>%1 клеммийн хавтанг эрэмбэлэх</target>
+</phrase>
+<phrase>
+    <source>Too many primitives, list not generated: %1</source>
+    <target>Хэт олон примитив, жагсаалт үүсгэгдээгүй: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Төрөл</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>Төрөл:</target>
+</phrase>
+<phrase>
+    <source>Type: %1
+</source>
+    <target>Төрөл: %1
+</target>
+</phrase>
+<phrase>
+    <source>Type of numbering</source>
+    <target>Дугаарлалтын төрөл</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLC төрөл</target>
+</phrase>
+<phrase>
+    <source>Download</source>
+    <target>Татаж авах</target>
+</phrase>
+<phrase>
+    <source>Ukrainian</source>
+    <target>Украин</target>
+</phrase>
+<phrase>
+    <source>an arc</source>
+    <target>нум</target>
+</phrase>
+<phrase>
+    <source>a corner</source>
+    <target>булан</target>
+</phrase>
+<phrase>
+    <source>a graphic element</source>
+    <target>график элемент</target>
+</phrase>
+<phrase>
+    <source>A file</source>
+    <target>Файл</target>
+</phrase>
+<phrase>
+    <source>a point</source>
+    <target>цэг</target>
+</phrase>
+<phrase>
+    <source>An element</source>
+    <target>Элемент</target>
+</phrase>
+<phrase>
+    <source>A text configuration named &lt;&lt;%1 &gt;&gt; already exists.
+Do you want to replace it ?</source>
+    <target>&lt;&lt; %1 &gt;&gt; нэртэй текстийн тохиргоо аль хэдийн байна.
+Үүнийг солих уу?</target>
+</phrase>
+<phrase>
+    <source>a curve</source>
+    <target>муруй</target>
+</phrase>
+<phrase>
+    <source>An error occurred while writing file %1, error %2 encountered.</source>
+    <target>%1 файлыг бичих үед алдаа гарлаа, %2 алдаа гарлаа.</target>
+    <definition>error message when attempting to write an XML file</definition>
+</phrase>
+<phrase>
+    <source>an endpoint</source>
+    <target>үзүүр</target>
+</phrase>
+<phrase>
+    <source>image</source>
+    <target>зураг</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 1</source>
+    <target>Туслах нэгж 1</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 2</source>
+    <target>Туслах нэгж 2</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 3</source>
+    <target>Туслах нэгж 3</target>
+</phrase>
+<phrase>
+    <source>Unity of auxiliary 4</source>
+    <target>Туслах нэгж 4</target>
+</phrase>
+<phrase>
+    <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
+    <target>Цонх ашиглах (QElectroTech дараагийн удаа эхлэхэд хэрэгжинэ)</target>
+</phrase>
+<phrase>
+    <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
+    <target>Таб ашиглах (QElectroTech дараагийн удаа эхлэхэд хэрэгжинэ)</target>
+</phrase>
+<phrase>
+    <source>Use the already integrated template</source>
+    <target>Аль хэдийн нэгтгэсэн загварыг ашиглах</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Use system colors</source>
+    <target>Системийн өнгийг ашиглах</target>
+</phrase>
+<phrase>
+    <source>Use gestures touchpad</source>
+    <target>Мэдрэгч самбарын дохиог ашиглах</target>
+</phrase>
+<phrase>
+    <source>Use sheet numbers instead of their position in the project</source>
+    <target>Төсөл дэх байрлалын оронд фолионы дугаарыг ашиглах</target>
+</phrase>
+<phrase>
+    <source>Use the whole page</source>
+    <target>Бүх хуудсыг ашиглах</target>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>Утга</target>
+</phrase>
+<phrase>
+    <source>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</source>
+    <target>Тоолуурын одоогийн утга. Шинэ утга оруулаад өөрчлөхийн тулд баталгаажуулна уу.</target>
+</phrase>
+<phrase>
+    <source>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</source>
+    <target>Өмнөх тоог нэмэгдүүлэхэд энэ тоо 0 болж буцах утга (0 = циклгүй)</target>
+</phrase>
+<phrase>
+    <source>Lock automatic numbering</source>
+    <target>Автомат дугаарлалтыг түгжих</target>
+</phrase>
+<phrase>
+    <source>Lock Position</source>
+    <target>Байрлалыг түгжих</target>
+</phrase>
+<phrase>
+    <source>Locked: changing the width or height adjusts the other to keep proportions. Click to unlock.</source>
+    <target>Түгжигдсэн: өргөн эсвэл өндрийг өөрчлөхөд харьцааг хадгалахын тулд нөгөөг нь тохируулна. Түгжээг тайлахын тулд дарна уу.</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>%1 клеммийн бүлэг рүү</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>клеммийн бүлэг рүү</target>
+</phrase>
+<phrase>
+    <source>Green</source>
+    <target>Ногоон</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Босоо</target>
+</phrase>
+<phrase>
+    <source>Vertical:</source>
+    <target>Босоо:</target>
+</phrase>
+<phrase>
+    <source>Please select an electrical potential from the list 
+to use for the new potential</source>
+    <target>Жагсаалтаас шинэ потенциалд ашиглах цахилгаан потенциалыг сонгоно уу</target>
+</phrase>
+<phrase>
+    <source>Thumbnail</source>
+    <target>Жижиг зураг</target>
+</phrase>
+<phrase>
+    <source>Thumbnails</source>
+    <target>Жижиг зургууд</target>
+</phrase>
+<phrase>
+    <source>Purple</source>
+    <target>Ягаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Харагдах</target>
+</phrase>
+<phrase>
+    <source>View this item</source>
+    <target>Энэ элементийг харах</target>
+</phrase>
+<phrase>
+    <source>Do you wish to save the element %1?</source>
+    <target>%1 элементийг хадгалах уу?</target>
+    <definition>dialog content - %1 is an element name</definition>
+</phrase>
+<phrase>
+    <source>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?</source>
+    <target>Та энэ элементэд өөрчлөлт хийсэн. Хэрэв дахин ачаалбал эдгээр өөрчлөлт устана. Элементийг дахин ачаалахдаа итгэлтэй байна уу?</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>You must provide an internal name.</source>
+    <target>Та дотоод нэр заавал өгөх ёстой.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>You are not allowed to modify this element. Thus it will be edited read-only.</source>
+    <target>Танд энэ элементийг засах эрх байхгүй. Тиймээс зөвхөн унших горимд нээгдэнэ.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>You are not allowed to modify this category. Thus it will be edited read-only.</source>
+    <target>Танд энэ категорийг өөрчлөх эрх байхгүй. Тиймээс зөвхөн унших горимд нээгдэнэ.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>You don&apos;t have to specify the *.elmt extension. It will be added automatically.</source>
+    <target>*.elmt өргөтгөлийг заавал оруулах шаардлагагүй. Автоматаар нэмэгдэнэ.</target>
+</phrase>
+<phrase>
+    <source>You may define below custom properties that will be made available to all sheets of the project (typically to use within title blocks).</source>
+    <target>Та доор энэ төслийн бүх хуудсанд (ихэвчлэн хүрээний хэсэгт) боломжтой хэрэглэгчийн тодорхойлсон шинж чанаруудыг тодорхойлж болно.</target>
+    <definition>informative label</definition>
+</phrase>
+<phrase>
+    <source>Here you can define the default appearance of the different texts of QElectroTech</source>
+    <target>Та QElectroTech-ийн янз бүрийн текстүүдийн анхдагч харагдах байдлыг энд тодорхойлж болно</target>
+</phrase>
+<phrase>
+    <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+associer le nom "volta" et la valeur "1745" remplacera %{volta} par 1745 dans le cartouche.</source>
+    <target>Энд та өөрийн нэр/утгын харгалзалтыг тодорхойлж, картуш үүнийг харгалзан үзнэ. Жишээ:
+"volta" нэр ба "1745" утгыг харгалзуулбал картуш дахь %{volta} нь 1745 болж солигдоно.</target>
+</phrase>
+<phrase>
+    <source>You can add a name per language for the category.</source>
+    <target>Категорид хэл тус бүрээр нэр өгч болно.</target>
+</phrase>
+<phrase>
+    <source>You try to link two different potentials together.
+Please select the properties to be applied to new potential.</source>
+    <target>Та хоёр өөр потенциалыг холбохыг оролдож байна.
+Шинэ потенциалд хэрэглэх шинж чанаруудыг сонгоно уу.</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>Цагаан : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>Цагаан : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>Цагаан : Тэнгэрийн хөх</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>Цагаан : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>Цагаан : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>Цагаан : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>Цагаан : Зөгийн бал</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>Цагаан : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>Цагаан : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>Цагаан : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>Цагаан : Гаатай цөцгий</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>Цагаан : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>Цагаан : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>Цагаан : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>Цагаан : Цас</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>Цагаан : Цагаан</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>Цагаан : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>x 1</source>
+    <target>x 1</target>
+</phrase>
+<phrase>
+    <source>x 2</source>
+    <target>x 2</target>
+</phrase>
+<phrase>
+    <source>x 3</source>
+    <target>x 3</target>
+</phrase>
+<phrase>
+    <source>X1:</source>
+    <target>X1 :</target>
+</phrase>
+<phrase>
+    <source>X2:</source>
+    <target>X2 :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>X: %1 Y: %2</source>
+    <target>X: %1 Y: %2</target>
+</phrase>
+<phrase>
+    <source>XRef slave position</source>
+    <target>XRef дагалдагч байрлал</target>
+</phrase>
+<phrase>
+    <source>XRef Vertical Offset:</source>
+    <target>XRef Босоо Зөрүү:</target>
+</phrase>
+<phrase>
+    <source>Y1:</source>
+    <target>Y1 :</target>
+</phrase>
+<phrase>
+    <source>Y2:</source>
+    <target>Y2 :</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>Шар : Бараан хаки</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>Шар : Алт</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>Шар : Хаки</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>Шар : Нимбэгний торго</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>Шар : Цайвар алтан саваг шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>Шар : Цайвар шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>Шар : Моокасин</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>Шар : Цайвар алтан саваг</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>Шар : Папая ташуур</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>Шар : Тоор хөвөн</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>Шар : Шар</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>You can use the following variables to your formula:
+ -%prefix: Default Element Prefix
+ -%l: Element Line
+ -%c: Element Column
+ -%F: Sheet Name
+ -%f or %id: Sheet ID
+ -%total: Total of sheets
+You can also assign any other titleblock variable 
+that you create. Text and number inputs are
+ also available.</source>
+    <target>Та томьёодоо дараах хувьсагчдыг ашиглаж болно:
+ -%prefix: Элементийн өгөгдмөл угтвар
+ -%l: Элементийн мөр
+ -%c: Элементийн багана
+ -%F: Фолионы нэр
+ -%f эсвэл %id: Фолионы ID
+ -%total: Нийт фолионы тоо
+Мөн та өөрийн үүсгэсэн бусад гарчгийн хүрээний хувьсагчийг оноож болно. Текст болон тоон оруулалт
+ мөн боломжтой.</target>
+</phrase>
+<phrase>
+    <source>Fit in view</source>
+    <target>Тохируулсан томруулалт</target>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>Жижигрүүлэх</target>
+</phrase>
+<phrase>
+    <source>Zoom In</source>
+    <target>Томруулах</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>A&amp;bout QElectroTech</source>
+    <target>QElectroTech-&amp;ийн тухай</target>
+</phrase>
+<phrase>
+    <source>In date of  :</source>
+    <target>Дуусах огноо:</target>
+</phrase>
+<phrase>
+    <source>From the date of:</source>
+    <target>Эхлэх огноо:</target>
+</phrase>
+<phrase>
+    <source>About &amp;Qt</source>
+    <target>&amp;Qt-ийн тухай</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>клеммийн бүлэгт</target>
+</phrase>
+<phrase>
+    <source>Saving failed</source>
+    <target>Хадгалалт амжилтгүй</target>
+</phrase>
+<phrase>
+    <source>Export failed</source>
+    <target>Экспортлох амжилтгүй</target>
+</phrase>
+<phrase>
+    <source>Erase the already integrated template</source>
+    <target>Аль хэдийн нэгтгэсэн загварыг дарж бичих</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Overwrite the template?</source>
+    <target>Загварыг дарж бичих үү?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Edits the properties of the sheet (size, title block information, conductor properties...)</source>
+    <target>Хуудасны шинж чанарыг засах (хэмжээ, гарчгийн хэсгийн мэдээлэл, дамжуулагчийн шинж чанар...)</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Edit name and information of the element</source>
+    <target>Элементийн нэр болон орчуулгыг засах</target>
+</phrase>
+<phrase>
+    <source>Edit author information</source>
+    <target>Зохиогчийн мэдээллийг засах</target>
+</phrase>
+<phrase>
+    <source>Edit element properties</source>
+    <target>Элементийн шинж чанарыг засах</target>
+</phrase>
+<phrase>
+    <source>Edit the cross reference</source>
+    <target>Хөндлөн холбоосыг засах</target>
+    <definition>edite the cross reference</definition>
+</phrase>
+<phrase>
+    <source>Element editors</source>
+    <target>Элементийн засварлагч</target>
+</phrase>
+<phrase>
+    <source>Elements Editor</source>
+    <target>Элементийн засварлагч</target>
+    <definition>status bar message</definition>
+</phrase>
+<phrase>
+    <source>Title block template editors</source>
+    <target>Картуш засварлагч</target>
+</phrase>
+<phrase>
+    <source>Diagram editors</source>
+    <target>Схемийн редактор</target>
+</phrase>
+<phrase>
+    <source>Text editor</source>
+    <target>Текст засварлагч</target>
+</phrase>
+<phrase>
+    <source>Node editing</source>
+    <target>Зангилаа засах</target>
+</phrase>
+<phrase>
+    <source>Read only edition</source>
+    <target>Зөвхөн унших горимд засах</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>High</source>
+    <target>Өндөр</target>
+    <definition>element part weight</definition>
+</phrase>
+<phrase>
+    <source>Move away the selection (s)</source>
+    <target>Сонгосон объектыг холдуулах</target>
+</phrase>
+<phrase>
+    <source>Lower</source>
+    <target>Холдуулах</target>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>Элемент</target>
+</phrase>
+<phrase>
+    <source>Terminal block element</source>
+    <target>Боомтын элемент</target>
+</phrase>
+<phrase>
+    <source>Non-existent element.</source>
+    <target>Элемент байхгүй.</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech elements (*.elmt)</source>
+    <target>QElectroTech элементүүд (*.elmt)</target>
+    <definition>filetypes allowed when saving an element file</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</source>
+    <target>QElectroTech элементүүд (*.elmt);;XML файлууд (*.xml);;Бүх файл (*)</target>
+    <definition>filetypes allowed when opening an element file</definition>
+</phrase>
+<phrase>
+    <source>Thickness :</source>
+    <target>Зузаан :</target>
+</phrase>
+<phrase>
+    <source>Stage</source>
+    <target>Давхар</target>
+</phrase>
+<phrase>
+    <source>Stage :</source>
+    <target>Давхар :</target>
+</phrase>
+<phrase>
+    <source>Step 1 of 3: Parent category</source>
+    <target>1/3 алхам: Эх категори</target>
+    <definition>wizard page title</definition>
+</phrase>
+<phrase>
+    <source>Step 2 of 3: Filename</source>
+    <target>2/3 алхам: Файлын нэр</target>
+    <definition>wizard page title</definition>
+</phrase>
+<phrase>
+    <source>Step 3 of 3: Element names</source>
+    <target>3/3 алхам: Элементийн нэрс</target>
+    <definition>wizard page title</definition>
+</phrase>
+<phrase>
+    <source>Master’s label</source>
+    <target>Мастерийн шошго</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet?</source>
+    <target>Энэ хуудсыг устгахдаа итгэлтэй байна уу?</target>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete this sheet from the project?</source>
+    <target>Энэ хуудсыг төслөөс устгахдаа итгэлтэй байна уу?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Are you sure you want to delete the selected %1 sheets ?</source>
+    <target>Сонгосон %1 хуудсыг устгахдаа итгэлтэй байна уу?</target>
+</phrase>
+<phrase>
+    <source>cabinet</source>
+    <target>шкаф</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>coil</source>
+    <target>ороомог</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>terminal</source>
+    <target>холболтын цэг</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>terminal strip</source>
+    <target>холболтын хавтан</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>rating</source>
+    <target>нэрлэсэн утга</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>title block</source>
+    <target>гарчгийн хүрээ</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>conductor</source>
+    <target>дамжуулагч</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contactor</source>
+    <target>контактор</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>current</source>
+    <target>гүйдэл</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>circuit breaker</source>
+    <target>автомат унтраалга</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>folder</source>
+    <target>хавтас</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>элемент</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>slave</source>
+    <target>слэйв</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grid</source>
+    <target>тор</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>switch</source>
+    <target>унтраалга</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>master</source>
+    <target>мастер</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>template</source>
+    <target>загвар</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>motor</source>
+    <target>мотор</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>parts list</source>
+    <target>эд ангийн жагсаалт</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numbering</source>
+    <target>дугаарлалт</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potential</source>
+    <target>потенциал</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>relay</source>
+    <target>реле</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>хуудасны холбоос</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>designation</source>
+    <target>тэмдэглэгээ</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>sheet cross-reference</source>
+    <target>хуудасны холбоос</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>diagram</source>
+    <target>схем</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>cross-section</source>
+    <target>огтлол</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>summary</source>
+    <target>агуулга</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>voltage</source>
+    <target>хүчдэл</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>text</source>
+    <target>текст</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformer</source>
+    <target>трансформатор</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

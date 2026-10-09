@@ -82,21 +82,21 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 	vlayout->addWidget(horiz_line);
 
 	m_filter_edit = new QLineEdit(this);
-	m_filter_edit->setPlaceholderText(tr("Filtrer les raccourcis…"));
+	m_filter_edit->setPlaceholderText(tr("Filter shortcuts…"));
 	connect(m_filter_edit, &QLineEdit::textChanged, this, &ShortcutsConfigPage::filterRows);
 
 	m_quick_filter = new QComboBox(this);
 	m_quick_filter->setObjectName(QStringLiteral("quickFilterCombo"));
-	m_quick_filter->addItem(tr("Tous"));
-	m_quick_filter->addItem(tr("Attribués uniquement"));
-	m_quick_filter->addItem(tr("Non attribués uniquement"));
-	m_quick_filter->addItem(tr("Conflits uniquement"));
+	m_quick_filter->addItem(tr("all"));
+	m_quick_filter->addItem(tr("Awarded exclusively"));
+	m_quick_filter->addItem(tr("Unallocated only"));
+	m_quick_filter->addItem(tr("Conflicts only"));
 	connect(m_quick_filter, QOverload<int>::of(&QComboBox::currentIndexChanged),
 			this, &ShortcutsConfigPage::quickFilterChanged);
 
 	m_category_filter = new QComboBox(this);
 	m_category_filter->setObjectName(QStringLiteral("categoryFilterCombo"));
-	m_category_filter->addItem(tr("Toutes les catégories"));
+	m_category_filter->addItem(tr("All categories"));
 	connect(m_category_filter, QOverload<int>::of(&QComboBox::currentIndexChanged),
 			this, &ShortcutsConfigPage::quickFilterChanged);
 
@@ -114,7 +114,7 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 		//know how QElectroTech spells it ("Ctrl+Maj+S", "Ctrl+Shift+S"…)
 	m_key_search = new QKeySequenceEdit(this);
 	m_key_search->setObjectName(QStringLiteral("keySearchEdit"));
-	m_key_search->setToolTip(tr("Appuyez sur une combinaison de touches pour voir quelle commande l'utilise"));
+	m_key_search->setToolTip(tr("Press a key combination to see which command uses it"));
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	m_key_search->setMaximumSequenceLength(1);
 #endif
@@ -122,19 +122,19 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 
 	auto *clear_key_button = new QToolButton(this);
 	clear_key_button->setIcon(QET::Icons::EditClear);
-	clear_key_button->setToolTip(tr("Effacer la touche recherchée"));
+	clear_key_button->setToolTip(tr("Clear the searched key"));
 	clear_key_button->setAutoRaise(true);
 	connect(clear_key_button, &QToolButton::clicked, m_key_search, &QKeySequenceEdit::clear);
 
 	auto *key_layout = new QHBoxLayout();
-	key_layout->addWidget(new QLabel(tr("Rechercher par touche :"), this));
+	key_layout->addWidget(new QLabel(tr("Search by key:"), this));
 	key_layout->addWidget(m_key_search);
 	key_layout->addWidget(clear_key_button);
 	key_layout->addStretch();
 	vlayout->addLayout(key_layout);
 
 	m_tree = new QTreeWidget(this);
-	m_tree->setHeaderLabels({tr("Action"), tr("Menu"), tr("Raccourci"), QString()});
+	m_tree->setHeaderLabels({tr("Action"), tr("Menu"), tr("Shortcut"), QString()});
 	m_tree->header()->setSectionResizeMode(ActionColumn, QHeaderView::Stretch);
 	m_tree->header()->setSectionResizeMode(MenuColumn, QHeaderView::ResizeToContents);
 	m_tree->header()->setSectionResizeMode(SequenceColumn, QHeaderView::ResizeToContents);
@@ -143,11 +143,11 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 	m_tree->setSelectionMode(QAbstractItemView::NoSelection);
 	vlayout->addWidget(m_tree);
 
-	auto *reset_all_button = new QPushButton(tr("Tout réinitialiser"), this);
+	auto *reset_all_button = new QPushButton(tr("Reset everything"), this);
 	connect(reset_all_button, &QPushButton::clicked, this, &ShortcutsConfigPage::resetAllRows);
 
-	auto *copy_button = new QPushButton(QET::Icons::EditCopy, tr("Copier la liste"), this);
-	copy_button->setToolTip(tr("Copie les raccourcis affichés, à coller dans un tableur ou un document"));
+	auto *copy_button = new QPushButton(QET::Icons::EditCopy, tr("Copy list"), this);
+	copy_button->setToolTip(tr("Copies the shortcuts shown, to paste into a spreadsheet or a document"));
 	connect(copy_button, &QPushButton::clicked, this, &ShortcutsConfigPage::copyList);
 
 	auto *bottom_layout = new QHBoxLayout();
@@ -214,7 +214,7 @@ void ShortcutsConfigPage::populateTable()
 
 		auto *reset_button = new QToolButton(m_tree);
 		reset_button->setIcon(QET::Icons::EditUndo);
-		reset_button->setToolTip(tr("Réinitialiser ce raccourci"));
+		reset_button->setToolTip(tr("Reset this shortcut"));
 		reset_button->setAutoRaise(true);
 		const int row_index = m_rows.size();
 		connect(reset_button, &QToolButton::clicked, this, [this, row_index]() { resetRow(row_index); });
@@ -334,7 +334,7 @@ void ShortcutsConfigPage::applyFilter()
 		top->setExpanded(filtering && any_visible);
 	}
 
-	m_count_label->setText(tr("%n action(s)", nullptr, visible_actions));
+	m_count_label->setText(tr("%n actions", nullptr, visible_actions));
 }
 
 // IDs use stable context prefixes; translated display categories are not scopes.
@@ -392,7 +392,7 @@ void ShortcutsConfigPage::checkConflicts()
 			}
 			current_row.item->setBackground(ActionColumn, QColor(255, 205, 205));
 			current_row.edit->setToolTip(
-				tr("Ce raccourci est aussi utilisé par : %1").arg(other_descriptions.join(QStringLiteral(", "))));
+				tr("This shortcut is also used by : %1").arg(other_descriptions.join(QStringLiteral(", "))));
 		} else {
 			current_row.item->setBackground(ActionColumn, QBrush());
 			current_row.edit->setToolTip(QString());
@@ -487,7 +487,7 @@ QString ShortcutsConfigPage::menuPath(const QAction *action)
 QString ShortcutsConfigPage::listAsText() const
 {
 	QStringList lines;
-	lines << QStringList{tr("Catégorie"), tr("Menu"), tr("Action"), tr("Raccourci")}
+	lines << QStringList{tr("Category"), tr("Menu"), tr("Action"), tr("Shortcut")}
 		 .join(QLatin1Char('\t'));
 	for (const Row &row : std::as_const(m_rows)) {
 		if (row.item->isHidden()) {
@@ -511,7 +511,7 @@ void ShortcutsConfigPage::copyList()
 
 QString ShortcutsConfigPage::title() const
 {
-	return tr("Raccourcis", "configuration page title");
+	return tr("Shortcuts", "configuration page title");
 }
 
 QIcon ShortcutsConfigPage::icon() const

@@ -481,6 +481,13 @@ void PartTerminal::setMasterLabelIndex(int index)
 	emit masterLabelIndexChanged();
 }
 
+void PartTerminal::setPotential(const QString &potential)
+{
+	if (d->m_potential == potential) return;
+	d->m_potential = potential;
+	emit potentialChanged();
+}
+
 /**
 	Updates the position of the second point according to the position
 	and orientation of the terminal.
@@ -578,7 +585,7 @@ void PartTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		if (m_original_label_pos != d->m_label_pos) {
 			auto undo = new QPropertyUndoCommand(this, "label_pos",
 				QVariant(m_original_label_pos), QVariant(d->m_label_pos));
-			undo->setText(tr("Déplacer le label d'une borne"));
+			undo->setText(tr("Move the label to a terminal"));
 			undo->enableAnimation();
 			elementScene()->undoStack().push(undo);
 		}
