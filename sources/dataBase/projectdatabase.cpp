@@ -1764,6 +1764,11 @@ void projectDataBase::createElementNomenclatureView()
 					 "ei.plc_function AS plc_function,"
 					 "ei.plc_comment AS plc_comment,"
 					 "ei.plc_crossref AS plc_crossref,"
+
+					 "ei.width AS width,"
+					 "ei.height AS height,"
+					 "ei.depth AS depth,"
+					 "e.uuid AS element_uuid,"
 					
 					 "d.pos AS diagram_position,"
 						 "e.type AS element_type,"

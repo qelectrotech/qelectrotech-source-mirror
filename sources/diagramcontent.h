@@ -35,6 +35,7 @@ class Diagram;
 class DiagramTextItem;
 class QetGraphicsTableItem;
 class TerminalStripItem;
+class CabinetLayoutReferenceItem;
 
 /**
 	This class provides a container that makes the transmission of diagram content
@@ -66,8 +67,9 @@ class DiagramContent
 			TextGroup = 256,
 			Tables = 512,
 			TerminalStrip = 1024,
-			All = 2047,
-			SelectedOnly = 2048
+			LayoutReference = 2048,
+			All = 4095,
+			SelectedOnly = 4096
 		};
 		
 		QList<Element *> m_elements;
@@ -84,7 +86,7 @@ class DiagramContent
 		QVector<QetGraphicsTableItem *> m_tables;
 		QVector<TerminalStripItem *> m_terminal_strip;
 		QVector<QPointer<TerminalElement>> m_terminal_elements;
-
+		QSet<CabinetLayoutReferenceItem *> m_layout_references;
 		
 		QList<DiagramTextItem *> selectedTexts() const;
 		QList<ElementTextItemGroup *> selectedTextsGroup() const;

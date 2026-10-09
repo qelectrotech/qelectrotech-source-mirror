@@ -20,10 +20,12 @@
 
 #include "../../diagramcontext.h"
 #include "../../properties/elementdata.h"
+#include "elementslocation.h"
 
 #include <QAbstractButton>
 #include <QDialog>
 #include <QItemDelegate>
+#include <QLabel>
 
 class QTableWidget;
 class QSpinBox;
@@ -76,6 +78,11 @@ class ElementPropertiesEditorWidget : public QDialog
 		void setUpInterface();
 		void updateTree();
 		void populateTree();
+		void setUpReferenceUi();
+		void updateReferenceUi(const ElementData::ReferenceData &ref,
+				QLabel *status_lbl, QCheckBox *convert_cb, QLabel *preview_lbl);
+		QPixmap renderReferencePreview(const QByteArray &data, const QString &format) const;
+		bool checkIfSizeAllowed(qint64 size) const;
 		void populateSlaveGroupsTable();
 		void readSlaveGroupsFromTable();
 		void createPlcConfigWidgets();
@@ -88,6 +95,10 @@ class ElementPropertiesEditorWidget : public QDialog
 		void on_m_base_type_cb_currentIndexChanged(int index);
 		void on_m_slave_groups_checkbox_toggled(bool checked);
 		void on_max_slaves_checkbox_toggled(bool checked);
+		void onLayoutReferencePickFile();
+		void onLayoutReferencePickElement();
+		void on_m_layout_reference_clear_pb_clicked();
+		void on_m_layout_reference_convert_cb_toggled(bool checked);
 		void plcAddRow();
 		void plcRemoveRow();
 		void plcPasteFromClipboard();

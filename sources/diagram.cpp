@@ -19,7 +19,9 @@
 #include "autoNum/elementautonumschemecommand.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "cabinetlayoutreferenceitem.h"
 #include "xml/terminalstripitemxml.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcontent.h"
@@ -49,6 +51,7 @@
 #include <QGraphicsView>
 #include <QTextStream>
 #include <algorithm>
+
 #include <climits>
 #include <cassert>
 #include <math.h>
@@ -1107,6 +1110,17 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 					  m_freeze_new_conductors_
 					  ? QStringLiteral("true") : QStringLiteral("false"));
 
+		//Cabinet layout
+		if (m_cabinet_layout_enabled) {
+			dom_root.setAttribute(QStringLiteral("cabinetLayoutEnabled"),
+						  QStringLiteral("true"));
+			dom_root.setAttribute(QStringLiteral("cabinetLayoutScale"),
+						  QString::number(m_cabinet_layout_scale, 'g', 10));
+			dom_root.setAttribute(QStringLiteral("cabinetLayoutView"),
+						  m_cabinet_layout_view == CabinetLayoutSide
+						  ? QStringLiteral("side") : QStringLiteral("front"));
+		}
+
 		//Element Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty()
 				|| !m_elmt_tenfolio_max.isEmpty()
@@ -1211,6 +1225,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
 	QVector<TerminalStripItem *> strip_vector;
+	QVector<CabinetLayoutReferenceItem *> list_layout_references;
 
 	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
@@ -1271,6 +1286,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				if (whole_content || strip->isSelected()) {
 					strip_vector << strip;
 				}
+				break;
+			}
+			case CabinetLayoutReferenceItem::Type: {
+				auto layout_reference = static_cast<CabinetLayoutReferenceItem *>(qgi);
+				if (whole_content || layout_reference->isSelected())
+					list_layout_references << layout_reference;
 				break;
 			}
 		}
@@ -1340,6 +1361,14 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 
 	if (!strip_vector.isEmpty()) {
 		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
+	}
+
+	if (!list_layout_references.isEmpty()) {
+		auto layout_references = document.createElement(QStringLiteral("cabinetLayoutReferences"));
+		for (auto layout_reference : list_layout_references) {
+			layout_references.appendChild(layout_reference->toXml(document));
+		}
+		dom_root.appendChild(layout_references);
 	}
 
 
@@ -1622,6 +1651,15 @@ bool Diagram::fromXml(QDomElement &document,
 		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor"))
 				== QLatin1String("true");
 
+			// Load cabinet layout
+		m_cabinet_layout_enabled =
+				root.attribute(QStringLiteral("cabinetLayoutEnabled")) == QLatin1String("true");
+		m_cabinet_layout_scale =
+				root.attribute(QStringLiteral("cabinetLayoutScale"), QStringLiteral("2")).toDouble();
+		m_cabinet_layout_view =
+				root.attribute(QStringLiteral("cabinetLayoutView")) == QLatin1String("side")
+				? CabinetLayoutSide : CabinetLayoutFront;
+
 			//Load Element Folio Sequential
 		folioSequentialsFromXml(root,
 					&m_elmt_unitfolio_max,
@@ -1837,6 +1875,17 @@ bool Diagram::fromXml(QDomElement &document,
 		//Load terminal strip item
 	QVector<TerminalStripItem *> added_strips { TerminalStripItemXml::fromXml(this, root) };
 
+		//load layout reference
+	QList<CabinetLayoutReferenceItem *> added_layout_references;
+	for (auto ref_xml : QET::findInDomElement(root,
+											   QStringLiteral("cabinetLayoutReferences"),
+											   QStringLiteral("cabinetLayoutReference"))) {
+		auto *layout_reference = new CabinetLayoutReferenceItem(QUuid(), false);
+		addItem(layout_reference);
+		layout_reference->fromXml(ref_xml);
+		added_layout_references << layout_reference;
+											   }
+
 	//Translate items if a new position was given in parameter
 	if (position != QPointF())
 	{
@@ -1847,6 +1896,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto image   : std::as_const(added_images     )) added_items << image;
 		for (auto table   : std::as_const(added_tables     )) added_items << table;
 		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
+		for (auto layout_reference : std::as_const(added_layout_references)) added_items << layout_reference;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -2038,6 +2088,10 @@ void Diagram::refreshContents()
 	for (auto &strip :std::as_const(dc_.m_terminal_strip)) {
 		strip->refreshPending();
 	}
+
+	for (auto &reference : std::as_const(dc_.m_layout_references)) {
+		reference->linkToSource(project());
+	}
 }
 
 /**
@@ -2075,6 +2129,11 @@ void Diagram::addItem(QGraphicsItem *item)
 			m_project->dataBase()->addDrawingItem(item);
 			break;
 		}
+		case CabinetLayoutReferenceItem::Type:
+		{
+			emit cabinetLayoutReferencesChanged();
+			break;
+		}
 		default: {break;}
 	}
 }
@@ -2088,6 +2147,9 @@ void Diagram::addItem(QGraphicsItem *item)
 void Diagram::removeItem(QGraphicsItem *item)
 {
 	if (!item || isReadOnly()) return;
+
+	const bool is_cabinet_layout_reference =
+			(item->type() == CabinetLayoutReferenceItem::Type);
 
 	switch (item->type())
 	{
@@ -2117,6 +2179,9 @@ void Diagram::removeItem(QGraphicsItem *item)
 	}
 
 	QGraphicsScene::removeItem(item);
+
+	if (is_cabinet_layout_reference)
+		emit cabinetLayoutReferencesChanged();
 }
 /**
 	@brief Diagram::titleChanged
@@ -3126,7 +3191,8 @@ bool Diagram::canRotateSelection() const
 			qgi->type() == ConductorTextItem::Type ||
 			qgi->type() == DiagramImageItem::Type ||
 			qgi->type() == Element::Type ||
-			qgi->type() == DynamicElementTextItem::Type)
+			qgi->type() == DynamicElementTextItem::Type ||
+			qgi->type() == CabinetLayoutReferenceItem::Type)
 			return true;
 
 		if(qgi->type() == QGraphicsItemGroup::Type)

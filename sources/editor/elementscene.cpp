@@ -553,6 +553,16 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information.trimmed()));
 	}
 
+	//layout / principle references
+	if (!m_element_data.m_layout_reference.source.isEmpty()) {
+		root.appendChild(m_element_data.referenceDataToXml(
+			xml_document, m_element_data.m_layout_reference, QStringLiteral("layoutReference")));
+	}
+	if (!m_element_data.m_principle_reference.source.isEmpty()) {
+		root.appendChild(m_element_data.referenceDataToXml(
+			xml_document, m_element_data.m_principle_reference, QStringLiteral("principleReference")));
+	}
+
 	QDomElement description = xml_document.createElement("description");
 
 	//the graphic description of the element

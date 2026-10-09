@@ -55,6 +55,49 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
 	border_infos -> setReadOnly(diagram_is_read_only);
 
+	//Cabinet layout
+	QGroupBox *cabinet_layout_infos = new QGroupBox(tr("Vue de disposition"), this);
+	cabinet_layout_infos->setCheckable(true);
+	cabinet_layout_infos->setChecked(diagram->cabinetLayoutEnabled());
+	cabinet_layout_infos->setEnabled(!diagram_is_read_only);
+
+	auto *cabinet_layout_px_sb = new QDoubleSpinBox(cabinet_layout_infos);
+	cabinet_layout_px_sb->setDecimals(4);
+	cabinet_layout_px_sb->setRange(0.0001, 100000.0);
+	cabinet_layout_px_sb->setSuffix(tr(" px"));
+	cabinet_layout_px_sb->setMaximumWidth(100);
+	cabinet_layout_px_sb->setValue(diagram->cabinetLayoutScale());
+
+	auto *cabinet_layout_mm_sb = new QDoubleSpinBox(cabinet_layout_infos);
+	cabinet_layout_mm_sb->setDecimals(4);
+	cabinet_layout_mm_sb->setRange(0.0001, 100000.0);
+	cabinet_layout_mm_sb->setSuffix(tr(" mm"));
+	cabinet_layout_mm_sb->setMaximumWidth(100);
+	cabinet_layout_mm_sb->setValue(1.0);
+
+	auto *cabinet_layout_scale_row = new QWidget(cabinet_layout_infos);
+	auto *cabinet_layout_scale_layout = new QHBoxLayout(cabinet_layout_scale_row);
+	cabinet_layout_scale_layout->setContentsMargins(0, 0, 0, 0);
+	cabinet_layout_scale_layout->setSpacing(4);
+	cabinet_layout_scale_layout->addWidget(cabinet_layout_px_sb);
+	cabinet_layout_scale_layout->addWidget(new QLabel(tr("pour"), cabinet_layout_scale_row));
+	cabinet_layout_scale_layout->addWidget(cabinet_layout_mm_sb);
+	cabinet_layout_scale_layout->addStretch();
+
+	auto *cabinet_layout_view_cb = new QComboBox(cabinet_layout_infos);
+	cabinet_layout_view_cb->addItem(tr("Face"), Diagram::CabinetLayoutFront);
+	cabinet_layout_view_cb->addItem(tr("Côté"), Diagram::CabinetLayoutSide);
+	cabinet_layout_view_cb->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+	cabinet_layout_view_cb->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+	cabinet_layout_view_cb->setCurrentIndex(
+		diagram->cabinetLayoutView() == Diagram::CabinetLayoutSide ? 1 : 0);
+
+	auto *cabinet_layout_form = new QFormLayout;
+	//cabinet_layout_form->setLabelAlignment(Qt::AlignLeft);
+	cabinet_layout_form->addRow(tr("Échelle :"), cabinet_layout_scale_row);
+	cabinet_layout_form->addRow(tr("Vue :"), cabinet_layout_view_cb);
+	cabinet_layout_infos->setLayout(cabinet_layout_form);
+
 	//Title block widget
 	TitleBlockPropertiesWidget  *titleblock_infos;
 
@@ -88,7 +131,8 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	QGridLayout *glayout = new QGridLayout;
 	glayout->addWidget(border_infos,0,0);
-	glayout->addWidget(titleblock_infos, 1, 0);
+	glayout->addWidget(cabinet_layout_infos, 1, 0);
+	glayout->addWidget(titleblock_infos, 2, 0);
 	glayout->addWidget(m_cpw, 0, 1, 0, 1);
 
 	QVBoxLayout vlayout(this);
@@ -140,6 +184,15 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 			diagram->setConductorsAutonumName (autonum_combobox->currentText());
 			diagram->project()->conductorAutoNumChanged();
 		}
+
+		//Cabinet layout
+		//No dedicated undo command yet, same as the conductor
+		diagram->setCabinetLayoutEnabled(cabinet_layout_infos->isChecked());
+		if (cabinet_layout_mm_sb->value() > 0.0)
+			diagram->setCabinetLayoutScale(cabinet_layout_px_sb->value() / cabinet_layout_mm_sb->value());
+		diagram->setCabinetLayoutView(
+			cabinet_layout_view_cb->currentData().toInt() == Diagram::CabinetLayoutSide
+				? Diagram::CabinetLayoutSide : Diagram::CabinetLayoutFront);
 	}
 }
 

@@ -90,7 +90,6 @@ class DiagramView : public PaletteGraphicsView
 		QTransform m_rulers_transform;
 		bool m_cell_lines_shown = false;
 
-		
 	public:
 		QString title() const;
 		void editDiagramProperties();
@@ -105,7 +104,7 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
-	
+
 		bool startElementPlacement(const ElementsLocation &location,
 					   const QPointF &scene_pos);
 		QPointF defaultPlacementPos() const;
@@ -145,6 +144,7 @@ class DiagramView : public PaletteGraphicsView
 		void updateFolioReportMenu();
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
+		void handleCabinetLayoutDrop(QDropEvent *);
 		void scrollOnMovement(QKeyEvent *);
 		bool gestureEvent(QGestureEvent *event);
 		QRectF viewedSceneRect() const;
@@ -177,7 +177,7 @@ class DiagramView : public PaletteGraphicsView
 			/// Signal emitted when the placement mode is entered for an
 			/// element (not a macro), whether from a drop or not.
 		void elementPlacementStarted(const ElementsLocation &);
-	
+
 	public slots:
 		void setVisualisationMode();
 		void setSelectionMode();

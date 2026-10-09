@@ -33,6 +33,8 @@
 #include <QTextDocument>
 #include <iostream>
 #include <algorithm>
+#include <QSvgGenerator>
+#include <QBuffer>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
@@ -234,6 +236,50 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 	return QPixmap();
 }
 
+/**
+	@brief ElementPictureFactory::getSvg
+	@param location
+	@return an SVG rendering of the element at location, as raw file
+	bytes -- or an empty QByteArray if the element couldn't be built.
+*/
+QByteArray ElementPictureFactory::getSvg(const ElementsLocation &location)
+{
+	QUuid uuid = location.uuid();
+	if (!m_pictures_H.contains(uuid) && !build(location))
+		return QByteArray();
+
+	auto doc = location.pugiXml();
+	const int hsx = doc.document_element().attribute("hotspot_x").as_int();
+	const int hsy = doc.document_element().attribute("hotspot_y").as_int();
+
+	const QPicture &pic = m_pictures_H.value(uuid);
+	const QRect content_rect = pic.boundingRect().translated(hsx, hsy);
+	if (content_rect.isEmpty())
+		return QByteArray();
+
+	QByteArray svg_bytes;
+	QBuffer buffer(&svg_bytes);
+	buffer.open(QIODevice::WriteOnly);
+
+	QSvgGenerator generator;
+	generator.setOutputDevice(&buffer);
+	//QPicture recording assumes the usual 96 DPI screen convention,
+	//but QSvgGenerator's own default resolution differs (72 DPI) --
+	//left unset, that mismatch silently bakes a 72/96 = 0.75 scale
+	//into every drawn primitive's transform on export.
+	generator.setResolution(96);
+	generator.setSize(content_rect.size());
+	generator.setViewBox(QRect(QPoint(0, 0), content_rect.size()));
+	generator.setTitle(location.name());
+
+	QPainter painter(&generator);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	painter.translate(hsx - content_rect.left(), hsy - content_rect.top());
+	painter.drawPicture(0, 0, pic);
+	painter.end();
+
+	return svg_bytes;
+}
 
 /**
 	@brief ElementPictureFactory::getPrimitives

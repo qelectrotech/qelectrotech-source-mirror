@@ -17,6 +17,8 @@
 */
 #include "diagramcontent.h"
 
+#include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "cabinetlayoutreferenceitem.h"
 #include "diagram.h"
 #include "itemgroups.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
@@ -29,7 +31,6 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/terminal.h"
-#include "TerminalStrip/GraphicsItem/terminalstripitem.h"
 
 #include <QGraphicsItem>
 
@@ -99,6 +100,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 			}
 			case QetGraphicsTableItem::Type: { m_tables << qgraphicsitem_cast<QetGraphicsTableItem *>(item); break;}
 			case TerminalStripItem::Type : {m_terminal_strip << qgraphicsitem_cast<TerminalStripItem *>(item); break;}
+			case CabinetLayoutReferenceItem::Type: {m_layout_references << qgraphicsitem_cast<CabinetLayoutReferenceItem *>(item); break;}
 		}
 	}
 		
@@ -212,7 +214,8 @@ bool DiagramContent::hasDeletableItems() const
 			|| qgi->type() == DiagramImageItem::Type
 			|| qgi->type() == DynamicElementTextItem::Type
 			|| qgi->type() == QetGraphicsTableItem::Type
-			|| qgi->type() == TerminalStripItem::Type)
+			|| qgi->type() == TerminalStripItem::Type
+			|| qgi->type() == CabinetLayoutReferenceItem::Type)
 			return true;
 		if(qgi->type() == QGraphicsItemGroup::Type)
 			if(dynamic_cast<ElementTextItemGroup *>(qgi))
@@ -253,6 +256,7 @@ void DiagramContent::clear()
 	m_selected_items.clear();
 	m_tables.clear();
 	m_terminal_strip.clear();
+	m_layout_references.clear();
 }
 
 /**
@@ -354,6 +358,10 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 	for(QetShapeItem *qsi : other.m_shapes)
 		if(!m_shapes.contains(qsi))
 			m_shapes << qsi;
+
+	for(CabinetLayoutReferenceItem *lri : other.m_layout_references)
+		if(!m_layout_references.contains(lri))
+			m_layout_references << lri;
 	
 	for(Conductor *c : other.m_conductors_to_update)
 		if(!m_conductors_to_update.contains(c))
@@ -447,6 +455,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 	if (filter & TextGroup)			for(auto qgi : m_texts_groups)  items_list << qgi;
 	if (filter & Tables)            for(auto qgi : m_tables)        items_list << qgi;
 	if (filter & TerminalStrip)     for(const auto qgi : std::as_const(m_terminal_strip)) items_list << qgi;
+	if (filter & LayoutReference)  for(auto qgi : m_layout_references) items_list << qgi;
 
 	if (filter & SelectedOnly) {
 		for(const auto &qgi : std::as_const(items_list)) {
@@ -476,6 +485,7 @@ int DiagramContent::count(int filter) const
 		if (filter & TextGroup)          for(auto etig      : m_texts_groups)         { if (etig      -> isSelected()) ++ count; }
 		if (filter & Tables)             for(auto table     : m_tables)               { if (table     -> isSelected()) ++ count;  }
 		if (filter & TerminalStrip)      for(const auto &strip : std::as_const(m_terminal_strip)) {if (strip->isSelected()) ++ count;}
+		if (filter & LayoutReference)   for(auto lri : m_layout_references) { if (lri -> isSelected()) ++ count; }
 	}
 	else {
 		if (filter & Elements)           count += m_elements.count();
@@ -489,6 +499,7 @@ int DiagramContent::count(int filter) const
 		if (filter & TextGroup)			 count += m_texts_groups.count();
 		if (filter & Tables)             count += m_tables.count();
 		if (filter & TerminalStrip)      count += m_terminal_strip.count();
+		if (filter & LayoutReference)   count += m_layout_references.count();
 	}
 	return(count);
 }

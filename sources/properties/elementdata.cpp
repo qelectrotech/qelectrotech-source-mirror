@@ -61,6 +61,9 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 		m_drawing_information = xml_draw_info.text();
 	}
 
+	referenceDataFromXml(xml_element.firstChildElement(QStringLiteral("layoutReference")), m_layout_reference);
+	referenceDataFromXml(xml_element.firstChildElement(QStringLiteral("principleReference")), m_principle_reference);
+
 	return true;
 }
 
@@ -265,6 +268,61 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 	}
 
 	return returned_elmt;
+}
+
+/**
+	@brief ElementData::referenceDataToXml
+	Writes a ReferenceData as its own XML element. SVG data is
+	stored as a literal CDATA section (readable, no base64 overhead);
+	PNG/JPEG data is base64-encoded, since it can't be embedded as
+	raw XML text safely.
+*/
+QDomElement ElementData::referenceDataToXml(QDomDocument &document, const ReferenceData &ref, const QString &tag_name) const
+{
+	QDomElement element = document.createElement(tag_name);
+	if (ref.source.isEmpty())
+		return element;
+
+	element.setAttribute(QStringLiteral("source"), ref.source);
+
+	if (ref.source == QLatin1String("reference")) {
+		element.setAttribute(QStringLiteral("reference"), ref.reference);
+	}
+
+	if (!ref.data.isEmpty()) {
+		element.setAttribute(QStringLiteral("format"), ref.format);
+		if (ref.format == QLatin1String("svg")) {
+			element.appendChild(document.createCDATASection(QString::fromUtf8(ref.data)));
+		} else {
+			element.appendChild(document.createTextNode(QString::fromLatin1(ref.data.toBase64())));
+		}
+	}
+	return element;
+}
+
+/**
+	@brief ElementData::referenceDataFromXml
+	See referenceDataToXml().
+*/
+void ElementData::referenceDataFromXml(const QDomElement &xml_element, ReferenceData &ref)
+{
+	ref = ReferenceData();
+	if (xml_element.isNull())
+		return;
+
+	ref.source = xml_element.attribute(QStringLiteral("source"));
+	if (ref.source == QLatin1String("reference")) {
+		ref.reference = xml_element.attribute(QStringLiteral("reference"));
+	}
+
+	if (xml_element.hasAttribute(QStringLiteral("format"))) {
+		ref.format = xml_element.attribute(QStringLiteral("format"));
+		if (ref.format == QLatin1String("svg")) {
+			ref.data = xml_element.text().toUtf8();
+		} else {
+			ref.data = QByteArray::fromBase64(xml_element.text().toLatin1());
+		}
+	}
 }
 
 /**

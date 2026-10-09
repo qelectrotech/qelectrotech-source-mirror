@@ -27,6 +27,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qetgraphicsitem/independenttextitem.h"
+#include "cabinetlayoutreferenceitem.h"
 
 #include <QGraphicsItem>
 #include <QtMath>
@@ -109,6 +110,11 @@ m_diagram(diagram)
 				}
 					break;
 				case DiagramImageItem::Type:
+					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+					if (rotate_as_group)
+						addGroupPositionUndo(item, pivot, angle);
+					break;
+				case CabinetLayoutReferenceItem::Type:
 					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 					if (rotate_as_group)
 						addGroupPositionUndo(item, pivot, angle);

@@ -16,7 +16,7 @@
 
 message(" - qet_compilation_vars")
 
-# Note: GuiPrivate is intentionally NOT in this list. 
+# Note: GuiPrivate is intentionally NOT in this list.
 # Qt >= 6.7 ships it as a proper find_package component, but some distro
 # packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
 # and only provide the implicit Qt6::GuiPrivate target created alongside
@@ -62,6 +62,10 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.ui
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.ui
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.ui
+  ${QET_DIR}/sources/dataBase/ui/cabinetlayoutsourcemodel.cpp
+  ${QET_DIR}/sources/dataBase/ui/cabinetlayoutsourcemodel.h
+  ${QET_DIR}/sources/dataBase/ui/cabinetlayoutsourcewidget.cpp
+  ${QET_DIR}/sources/dataBase/ui/cabinetlayoutsourcewidget.h
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.ui
   ${QET_DIR}/sources/editor/ui/dynamictextfieldeditor.ui
   ${QET_DIR}/sources/editor/ui/elementpropertieseditorwidget.ui
@@ -95,6 +99,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/alignmenttextdialog.ui
   ${QET_DIR}/sources/ui/bomexportdialog.ui
   ${QET_DIR}/sources/ui/borderpropertieswidget.ui
+  ${QET_DIR}/sources/ui/cabinetlayoutreferencepropertieswidget.ui
   ${QET_DIR}/sources/ui/compositetexteditdialog.ui
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.ui
   ${QET_DIR}/sources/ui/conductorpropertieswidget.ui
@@ -389,6 +394,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddmacro.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddpaste.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddpaste.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddcabinetlayoutreference.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddcabinetlayoutreference.h
 
   ${QET_DIR}/sources/dvevent/dveventinterface.cpp
   ${QET_DIR}/sources/dvevent/dveventinterface.h
@@ -585,6 +592,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/elementtextitemgroup.h
   ${QET_DIR}/sources/qetgraphicsitem/independenttextitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/independenttextitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/cabinetlayoutreferenceitem.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/cabinetlayoutreferenceitem.h
   ${QET_DIR}/sources/qetgraphicsitem/masterelement.cpp
   ${QET_DIR}/sources/qetgraphicsitem/masterelement.h
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.cpp
@@ -761,6 +770,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/bomexportdialog.h
   ${QET_DIR}/sources/ui/borderpropertieswidget.cpp
   ${QET_DIR}/sources/ui/borderpropertieswidget.h
+  ${QET_DIR}/sources/ui/cabinetlayoutreferencepropertieswidget.cpp
+  ${QET_DIR}/sources/ui/cabinetlayoutreferencepropertieswidget.h
   ${QET_DIR}/sources/ui/compositetexteditdialog.cpp
   ${QET_DIR}/sources/ui/compositetexteditdialog.h
   ${QET_DIR}/sources/ui/conductorpropertieseditorwidget.cpp

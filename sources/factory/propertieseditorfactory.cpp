@@ -30,12 +30,14 @@
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../qetgraphicsitem/cabinetlayoutreferenceitem.h"
 #include "../ui/dynamicelementtextitemeditor.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../ui/conductorpropertieseditorwidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
+#include "../ui/cabinetlayoutreferencepropertieswidget.h"
 
 #include <QGraphicsItem>
 #include <QSet>
@@ -246,6 +248,21 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 				return editor;
 			}
 			return new GraphicsTablePropertiesEditor(table, parent);
+		}
+		case CabinetLayoutReferenceItem::Type:
+		{
+			if (count_ > 1) {
+				return nullptr;
+			}
+
+			auto *ref = static_cast<CabinetLayoutReferenceItem*>(item);
+			
+			if (class_name == CabinetLayoutReferencePropertiesWidget::staticMetaObject.className())
+			{
+				static_cast<CabinetLayoutReferencePropertiesWidget*>(editor)->setItem(ref);
+				return editor;
+			}
+			return new CabinetLayoutReferencePropertiesWidget(ref, parent);
 		}
 		default:
 			return nullptr;

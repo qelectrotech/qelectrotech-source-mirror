@@ -211,6 +211,29 @@ class ElementData : public PropertiesInterface
 			}
 		};
 
+		/**
+		* @brief The ReferenceData struct
+		* An optional layout/principle-schematic reference attached to
+		* this element: either a directly embedded SVG/PNG/JPEG, or a
+		* reference to another element in the collection. For the
+		* "reference" case, data/format are only populated once the
+		* user converts it via ElementPictureFactory::getSvg(); the
+		* reference itself is kept alongside for later re-conversion.
+		* Project-embedded elements are rejected at selection time.
+		*/
+		struct ReferenceData {
+			QString    source;      ///< "" (none), "direct", or "reference"
+			QByteArray data;        ///< embedded bytes, only when source == "direct"
+			QString    format;      ///< "svg"/"png"/"jpg", only when source == "direct"
+			QString    reference;   ///< ElementsLocation::toString(), only when source == "reference"
+
+			bool operator==(const ReferenceData &other) const {
+				return source == other.source && data == other.data
+					&& format == other.format && reference == other.reference;
+			}
+			bool operator!=(const ReferenceData &other) const { return !(*this == other); }
+		};
+
 		ElementData() {}
 		~ElementData() override {}
 
@@ -219,8 +242,12 @@ class ElementData : public PropertiesInterface
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);
-	QDomElement plcMasterDataToXml(QDomDocument &document) const;
-	void plcMasterDataFromXml(const QDomElement &xml_plc);
+
+		QDomElement referenceDataToXml(QDomDocument &document, const ReferenceData &ref, const QString &tag_name) const;
+		void referenceDataFromXml(const QDomElement &xml_element, ReferenceData &ref);
+
+		QDomElement plcMasterDataToXml(QDomDocument &document) const;
+		void plcMasterDataFromXml(const QDomElement &xml_plc);
 
 		void setTerminalType(ElementData::TerminalType t_type);
 		ElementData::TerminalType terminalType() const;
@@ -285,6 +312,9 @@ class ElementData : public PropertiesInterface
 		DiagramContext m_informations;
 		NamesList m_names_list;
 		QString m_drawing_information;
+
+		ReferenceData m_layout_reference;
+		ReferenceData m_principle_reference;
 
 	private:
 		ElementData::TerminalType m_override_terminal_type = ElementData::TTGeneric;

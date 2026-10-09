@@ -88,6 +88,7 @@ class ElementPictureFactory
 		void getReadablePictures(const ElementsLocation &location, const QTransform &texts_transform,
 								 QPicture &picture, QPicture &low_picture);
 		QPixmap pixmap(const ElementsLocation &location);
+		QByteArray getSvg(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
 		void dropCache(const ElementsLocation &location);
 

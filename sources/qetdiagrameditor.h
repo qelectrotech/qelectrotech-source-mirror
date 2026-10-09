@@ -19,6 +19,7 @@
 #define QET_DIAGRAM_EDITOR_H
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "cabinetlayoutsourcewidget.h"
 #include "diagramcontext.h"
 #include "qetmainwindow.h"
 
@@ -65,7 +66,7 @@ class QETDiagramEditor : public QETMainWindow
         friend class TerminalStripEditorWindow;
         friend class LiveServer;
         friend class MacroRecorder;
-	
+
 	public:
 		QETDiagramEditor(
 				const QStringList & = QStringList(),
@@ -94,6 +95,7 @@ class QETDiagramEditor : public QETMainWindow
 		QETDiagramEditor(const QETDiagramEditor &);
 		void setUpElementsPanel ();
 		void setUpElementsCollectionWidget();
+		void setUpCabinetLayoutSourceWidget();
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
 		void setUpAutonumberingWidget();
@@ -214,7 +216,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
 		*m_align_menu = nullptr,      ///< Submenu of m_align_actions_group
 		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
-	
+
 	private:
 		QActionGroup
 		*grp_visu_sel,            ///< Action group for visualisation vs edition mode
@@ -307,6 +309,7 @@ class QETDiagramEditor : public QETMainWindow
 		QDockWidget
 		*qdw_pa, /// Dock for the elements panel
 		*m_qdw_elmt_collection,
+		*m_qdw_cabinet_layout_source,
 		*qdw_undo; /// Dock for the undo list
 
 		ElementPickerPopup *elementPicker();
@@ -320,9 +323,11 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_command_search = nullptr;
 		CommandSearchPopup *m_command_search_popup = nullptr; ///< Built on first use
 		ElementsCollectionWidget *m_element_collection_widget;
+
+		CabinetLayoutSourceWidget *m_cabinet_layout_source_widget = nullptr;
 			/// Last element placed from the collection, for "insert last"
 		ElementsLocation m_last_inserted_element;
-			
+
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
 			/// Information of the one element on the clipboard, read when
 			/// the clipboard changes; see slot_updatePasteAction()
