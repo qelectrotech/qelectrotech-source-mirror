@@ -89,8 +89,8 @@ void PartText::mirror(qreal axis_x) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
 	// then see, where we need to re-position depending on text, font ...
-	QFontMetrics qfm(font());
-	qreal textwidth  = qfm.horizontalAdvance(toPlainText());
+	// (the widest line, not the whole text measured as one line)
+	qreal textwidth  = document()->idealWidth() - 2 * document()->documentMargin();
 	// ... and angle!!!
 	qreal rot = qRound(QET::correctAngle(rotation(), true));
 	qreal c = qCos(qDegreesToRadians(rot));
