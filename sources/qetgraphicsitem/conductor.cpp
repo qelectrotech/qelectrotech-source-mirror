@@ -1162,11 +1162,16 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	@param table_adr_id :
 	Hash stockant les correspondances entre les ids des
 	bornes dans le document XML et leur adresse en memoire
+	@param shared_uuids : uuids carried by more than one symbol of the
+	folio. An end on such a symbol is written by its terminal id, as for a
+	terminal without uuid: by uuid it would reopen on the first symbol
+	carrying it (#1408).
 	@return Un element XML representant le conducteur
 */
 QDomElement Conductor::toXml(QDomDocument &dom_document,
 				 QHash<Terminal *,
-				 int> &table_adr_id) const
+				 int> &table_adr_id,
+				 const QSet<QUuid> &shared_uuids) const
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
@@ -1176,7 +1181,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	
 	// Terminal is uniquely identified by the uuid of the terminal and the element
-	if (terminal1->uuid().isNull()) {
+	if (terminal1->uuid().isNull()
+		|| shared_uuids.contains(terminal1->parentElement()->uuid())) {
 		// legacy method to identify the terminal
 		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compatibility
 	} else {
@@ -1192,7 +1198,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		dom_element.setAttribute("terminalname1", terminal1->name());
 	}
 
-	if (terminal2->uuid().isNull()) {
+	if (terminal2->uuid().isNull()
+		|| shared_uuids.contains(terminal2->parentElement()->uuid())) {
 		// legacy method to identify the terminal
 		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compatibility
 	} else {
