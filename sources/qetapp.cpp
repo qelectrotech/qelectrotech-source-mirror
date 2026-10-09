@@ -61,14 +61,19 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QCheckBox>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontDatabase>
+#include <QLabel>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QVBoxLayout>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -2291,6 +2296,88 @@ void QETApp::customizeQET(int tab)
 	dialog.setParent(nullptr, dialog.windowFlags());
 }
 
+namespace {
+/**
+	@brief partLabel
+	@return the name of @a part shown to the user
+*/
+QString partLabel(ConfigProfile::Part part)
+{
+	switch (part) {
+		case ConfigProfile::Part::Controls:
+			return QETApp::tr("Toolbars, keyboard shortcuts, mouse and trackpad gestures");
+		case ConfigProfile::Part::NewProject:
+			return QETApp::tr("Defaults for new projects: folio, title block, "
+							  "wires, numbering");
+		case ConfigProfile::Part::Other:
+			return QETApp::tr("All other settings: appearance, grid, language...");
+		case ConfigProfile::Part::Folders:
+			return QETApp::tr("Folders of the collections");
+	}
+	return QString();
+}
+
+/**
+	@brief choosePartsToSave
+	Ask which parts of the settings to save, all of them ticked to begin
+	with.
+	@return the parts chosen, or an empty list if the user cancelled
+*/
+QList<ConfigProfile::Part> choosePartsToSave(QWidget *parent)
+{
+	QDialog dialog(parent);
+	dialog.setWindowTitle(QETApp::tr("Save settings as...", "dialog title"));
+
+	auto *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(new QLabel(QETApp::tr("Settings to save:"), &dialog));
+
+	QMap<ConfigProfile::Part, QCheckBox *> boxes;
+	for (ConfigProfile::Part part : ConfigProfile::choosableParts()) {
+		auto *box = new QCheckBox(partLabel(part), &dialog);
+		box->setChecked(true);
+		layout->addWidget(box);
+		boxes.insert(part, box);
+	}
+
+	auto *note = new QLabel(QETApp::tr("The folders of your collections are "
+									   "saved only when every part is ticked."),
+							&dialog);
+	note->setWordWrap(true);
+	layout->addWidget(note);
+
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok
+										 | QDialogButtonBox::Cancel,
+										 &dialog);
+	layout->addWidget(buttons);
+	QObject::connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	QObject::connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+		//Nothing ticked, nothing to save
+	auto update_ok = [&boxes, buttons]() {
+		bool any = false;
+		for (QCheckBox *box : std::as_const(boxes)) {
+			any = any || box->isChecked();
+		}
+		buttons->button(QDialogButtonBox::Ok)->setEnabled(any);
+	};
+	for (QCheckBox *box : std::as_const(boxes)) {
+		QObject::connect(box, &QCheckBox::toggled, &dialog, update_ok);
+	}
+
+	if (dialog.exec() != QDialog::Accepted) {
+		return {};
+	}
+
+	QList<ConfigProfile::Part> parts;
+	for (ConfigProfile::Part part : ConfigProfile::choosableParts()) {
+		if (boxes.value(part)->isChecked()) {
+			parts << part;
+		}
+	}
+	return parts;
+}
+}
+
 /**
 	@brief QETApp::exportConfiguration
 	Save the settings of QElectroTech to a file the user chooses, to keep
@@ -2298,10 +2385,18 @@ void QETApp::customizeQET(int tab)
 	#610). The file is always written in the ini format, whatever the
 	platform stores its live settings in, so a profile saved on Windows
 	loads on Linux and macOS. See ConfigProfile for the keys left out.
+
+	The user first chooses which parts of the settings to save, to share
+	the defaults for new projects alone for example (discussion #1405).
 */
 void QETApp::exportConfiguration()
 {
 	QWidget *parent_widget = qApp->activeWindow();
+
+	const QList<ConfigProfile::Part> parts = choosePartsToSave(parent_widget);
+	if (parts.isEmpty()) {
+		return;
+	}
 
 	QString path = QFileDialog::getSaveFileName(
 				parent_widget,
@@ -2317,7 +2412,7 @@ void QETApp::exportConfiguration()
 
 	QSettings live_settings;
 	QSettings file_settings(path, QSettings::IniFormat);
-	ConfigProfile::exportTo(live_settings, file_settings);
+	ConfigProfile::exportTo(live_settings, file_settings, parts);
 
 	if (file_settings.status() != QSettings::NoError) {
 		QET::QetMessageBox::critical(
@@ -2330,7 +2425,10 @@ void QETApp::exportConfiguration()
 /**
 	@brief QETApp::importConfiguration
 	Replace the settings of QElectroTech with a file saved by
-	exportConfiguration(), then close QElectroTech.
+	exportConfiguration(), then close QElectroTech. A file holding only
+	some parts of the settings replaces only those parts. A file holding
+	only the defaults for new projects needs no restart: they are read
+	again for every new project.
 
 	The settings are read by each part of QElectroTech when it starts, and
 	there is no signal telling all of them that a setting changed, so the
@@ -2352,8 +2450,10 @@ void QETApp::importConfiguration()
 	}
 
 	QSettings file_settings(path, QSettings::IniFormat);
+	const QList<ConfigProfile::Part> parts = ConfigProfile::partsOf(file_settings);
 	if (file_settings.status() != QSettings::NoError
-		|| !ConfigProfile::isProfile(file_settings))
+		|| !ConfigProfile::isProfile(file_settings)
+		|| parts.isEmpty())
 	{
 		QET::QetMessageBox::critical(
 					parent_widget,
@@ -2362,21 +2462,54 @@ void QETApp::importConfiguration()
 		return;
 	}
 
+	const bool complete = parts.contains(ConfigProfile::Part::Folders);
+	const bool restart = ConfigProfile::needsRestart(parts);
+	QString question;
+	if (complete) {
+		question = tr("These settings will replace your current ones, except the "
+					  "window layout and the list of recent files.\n"
+					  "\n"
+					  "QElectroTech will then close. Start it again to use the new "
+					  "settings.\n"
+					  "\n"
+					  "Do you want to continue?");
+	} else {
+		QStringList labels;
+		for (ConfigProfile::Part part : parts) {
+			labels << QStringLiteral("• ") + partLabel(part);
+		}
+		question = tr("These settings will replace your current ones for:\n"
+					  "%1\n"
+					  "All your other settings are kept.")
+				   .arg(labels.join(QLatin1Char('\n')));
+		question += QStringLiteral("\n\n");
+		question += restart
+				? tr("QElectroTech will then close. Start it again to use the new "
+					 "settings.")
+				: tr("Projects already open keep their own defaults.");
+		question += QStringLiteral("\n\n") + tr("Do you want to continue?");
+	}
+
 		//Said before anything closes: once the last window is closed,
 		//QElectroTech quits by itself (checkRemainingWindows()).
 	const auto answer = QET::QetMessageBox::question(
 				parent_widget,
 				tr("Load settings", "message box title"),
-				tr("These settings will replace your current ones, except the "
-				   "window layout and the list of recent files.\n"
-				   "\n"
-				   "QElectroTech will then close. Start it again to use the new "
-				   "settings.\n"
-				   "\n"
-				   "Do you want to continue?"),
+				question,
 				QMessageBox::Yes | QMessageBox::No,
 				QMessageBox::No);
 	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+	if (!restart) {
+		QSettings live_settings;
+		ConfigProfile::importFrom(file_settings, live_settings);
+		QET::QetMessageBox::information(
+					parent_widget,
+					tr("Load settings", "message box title"),
+					tr("The settings are loaded. They are used for the next "
+					   "new project."));
 		return;
 	}
 
