@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagram.h"
+#include "autoNum/elementautonumschemecommand.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
@@ -46,6 +47,7 @@
 #include "diagramsortkeys.h"
 #include "itemgroups.h"
 #include "textgrid.h"
+#include "foliogrid.h"
 #include <QGraphicsView>
 #include <QTextStream>
 #include <algorithm>
@@ -340,10 +342,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-		int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-								   Diagram::xGrid).toInt();
-		int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-								   Diagram::yGrid).toInt();
+		const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+		const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 		qreal limit_x = rect.x() + rect.width();
 		qreal limit_y = rect.y() + rect.height();
@@ -931,7 +931,7 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
 	if (!use_border_) {
-		source_area = itemsBoundingRect();
+		source_area = visibleItemsBoundingRect();
 		source_area.translate(-margin, -margin);
 		source_area.setWidth (source_area.width () + 2.0 * margin);
 		source_area.setHeight(source_area.height() + 2.0 * margin);
@@ -999,7 +999,7 @@ QSize Diagram::imageSize() const
 	// determine la zone source =  contenu du schema + marges
 	qreal image_width, image_height;
 	if (!use_border_) {
-		QRectF items_rect = itemsBoundingRect();
+		QRectF items_rect = visibleItemsBoundingRect();
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
@@ -1291,6 +1291,13 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
 			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
+
+		// A copy carries the numberings its elements follow: pasted into
+		// another project, which does not know them, it can offer to import
+		// them (see PasteNumberingImport)
+	if (is_copy_command) {
+		ElementAutoNumSchemeCommand::writeCopiedSchemes(document, dom_root, m_project, list_elements);
+	}
 
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
@@ -1610,10 +1617,14 @@ bool Diagram::fromXml(QDomElement &document,
 		m_conductors_autonum_name = root.attribute(QStringLiteral("conductorAutonum"));
 
 			// Load Freeze New Element
-		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement")).toInt();
+			// Written as "true"/"false" by toXml(), so compare the text:
+			// toInt() of either word is 0.
+		m_freeze_new_elements = root.attribute(QStringLiteral("freezeNewElement"))
+				== QLatin1String("true");
 
 			// Load Freeze New Conductor
-		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor")).toInt();
+		m_freeze_new_conductors_ = root.attribute(QStringLiteral("freezeNewConductor"))
+				== QLatin1String("true");
 
 			//Load Element Folio Sequential
 		folioSequentialsFromXml(root,
@@ -2854,8 +2865,27 @@ void Diagram::adjustSceneRect()
 {
 	QRectF old_rect = sceneRect();
 	setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(
-			     itemsBoundingRect()));
+			     visibleItemsBoundingRect()));
 	update(old_rect.united(sceneRect()));
+}
+
+/**
+	@brief Diagram::visibleItemsBoundingRect
+	Same as QGraphicsScene::itemsBoundingRect(), but only counts items that
+	are shown. A hidden item keeps whatever position it last had: the text of
+	a single-line wire, and the wire texts hidden by "one text per potential",
+	are never positioned again and can sit far outside the drawing (#1281).
+	@return the bounding rect of the visible items, in scene coordinates
+*/
+QRectF Diagram::visibleItemsBoundingRect() const
+{
+	QRectF rect;
+	const auto scene_items = items();
+	for (QGraphicsItem *item : scene_items) {
+		if (item->isVisible())
+			rect |= item->sceneBoundingRect();
+	}
+	return rect;
 }
 
 /**
@@ -2931,10 +2961,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 QPointF Diagram::snapToGrid(const QPointF &p)
 {
 	QSettings settings;
-	int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-							   Diagram::xGrid).toInt();
-	int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-							   Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	//Return a point rounded to the nearest pixel
 	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
@@ -2966,10 +2994,8 @@ QPointF Diagram::snapToTextGrid(const QPointF &p)
 			: settings.value(TextGrid::settings_key, 1).toReal();
 
 	return TextGrid::snap(p,
-						  settings.value(QStringLiteral("diagrameditor/Xgrid"),
-										 Diagram::xGrid).toInt(),
-						  settings.value(QStringLiteral("diagrameditor/Ygrid"),
-										 Diagram::yGrid).toInt(),
+						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
+						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
 						  divisor);
 }
 

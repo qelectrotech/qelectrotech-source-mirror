@@ -157,7 +157,9 @@ void DynamicTextFieldEditor::updateForm()
 			m_color_kpb -> setColor(m_text_field.data() -> color());
 		}
 #endif
-		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
+			//Rounded as on_m_width_sb_editingFinished() compares it;
+			//setValue(int) would truncate 61.7 to 61
+		ui -> m_width_sb -> setValue(qRound(m_text_field.data() -> textWidth()));
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 
 		switch (m_text_field.data() -> textFrom()) {
@@ -363,7 +365,9 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	qreal width = (qreal)ui -> m_width_sb -> value();
 
 	for (int i = 0; i < m_parts.length(); i++) {
-		if(width != m_parts[i] -> textWidth()) {
+			//The box shows whole pixels: a width fitted to the text is not
+			//rounded just by leaving the box.
+		if(ui -> m_width_sb -> value() != qRound(m_parts[i] -> textWidth())) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "textWidth", m_parts[i] -> textWidth(), width);
 			undo -> setText(tr("Modifier la largeur d'un texte"));
 			undoStack().push(undo);

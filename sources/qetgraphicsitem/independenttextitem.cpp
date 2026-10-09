@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
+#include "../shownkinds.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -25,7 +26,9 @@
 #include "../utils/qetutils.h"
 
 #include <QDomElement>
+#include <QScopedPointer>
 #include <QSettings>
+#include <QtCore/qnumeric.h>
 
 /**
 	Constructeur
@@ -34,6 +37,8 @@
 IndependentTextItem::IndependentTextItem() :
 	DiagramTextItem(nullptr)
 {
+	ShownKinds::tag(this, ShownKinds::FreeTexts);
+	wrapAtWords();
 		//Start from the font last applied to a text item this session,
 		//falling back to the app-wide Preferences default otherwise.
 	setFont(LastUsedStyle::hasTextFont() ? LastUsedStyle::textFont()
@@ -49,7 +54,22 @@ IndependentTextItem::IndependentTextItem() :
 */
 IndependentTextItem::IndependentTextItem(const QString &text) :
 	DiagramTextItem(text, nullptr)
-{}
+{
+	ShownKinds::tag(this, ShownKinds::FreeTexts);
+	wrapAtWords();
+}
+
+/**
+	@brief IndependentTextItem::wrapAtWords
+	A text with a width wraps between words only: a word longer than the
+	width goes past it rather than being cut, as for the texts of symbols.
+*/
+void IndependentTextItem::wrapAtWords()
+{
+	QTextOption option = document()->defaultTextOption();
+	option.setWrapMode(QTextOption::WordWrap);
+	document()->setDefaultTextOption(option);
+}
 
 /// Destructeur
 IndependentTextItem::~IndependentTextItem()
@@ -74,6 +94,10 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 		QETUtils::fontFromString(font, e.attribute("font"));
 		setFont(font);
 	}
+		//Optional: absent for a text with the automatic width, the only
+		//kind older versions know (they show such a text unwrapped).
+		//Read after the text, setHtml() sets a width of its own.
+	setTextWidth(e.attribute(QStringLiteral("text_width"), QStringLiteral("-1")).toDouble());
 }
 
 /**
@@ -89,8 +113,49 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 	result.setAttribute("text", toHtml());
 	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	result.setAttribute("font", QETUtils::fontToString(font()));
+		//Only when set, so a text with the automatic width is saved as before
+	if (m_text_width > 0)
+		result.setAttribute("text_width", QString::number(m_text_width));
 	
 	return(result);
+}
+
+/**
+	@brief IndependentTextItem::setTextWidth
+	Set the width of this text (-1 = automatic width): the text wraps to
+	it, its top-left corner stays in place.
+	@param width
+*/
+void IndependentTextItem::setTextWidth(qreal width)
+{
+	if (!qIsFinite(width) || width <= 0)
+		width = -1;
+	if (qFuzzyCompare(width, m_text_width))
+		return;
+
+	qreal document_width = width;
+		//The automatic width of a text with centred or right-aligned
+		//lines, as setHtml() gives it
+	if (width < 0 && m_non_left_alignment)
+	{
+		QScopedPointer<QTextDocument> natural(document()->clone());
+		natural->setTextWidth(-1);
+		document_width = natural->idealWidth() + 40.0;
+	}
+
+	document()->setTextWidth(document_width);
+	m_text_width = width;
+	emit textWidthChanged(width);
+}
+
+/**
+	@brief IndependentTextItem::textResizeHandlesWanted
+	@return true when this text is selected and not being typed in: the
+	corner handles then change its width.
+*/
+bool IndependentTextItem::textResizeHandlesWanted() const
+{
+	return isSelected() && !isEditing();
 }
 
 void IndependentTextItem::focusOutEvent(QFocusEvent *event)

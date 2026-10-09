@@ -44,6 +44,7 @@ class ConductorCreator
 		static QList<Conductor *> existingPotential(const QList<Terminal *> &terminals_list);
 		bool setUpPropertieToUse();
 		Terminal *hubTerminal();
+		QList<QPair<Terminal *, Terminal *>> terminalPairs(bool chain);
 		
 		
 		QList<Terminal *> m_terminals_list;

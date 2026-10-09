@@ -85,7 +85,7 @@ DiagramBgColorToolButton::DiagramBgColorToolButton(QETDiagramEditor *editor, QWi
 		m_recent.removeLast();
 	}
 
-	setMenu(new QMenu(this));
+	setMenu(new QMenu(tr("Couleur de fond du folio"), this));
 	rebuildMenu();
 	setSwatch(m_current);
 }
@@ -186,7 +186,8 @@ void DiagramBgColorToolButton::applySystemColor()
 void DiagramBgColorToolButton::chooseOtherColor()
 {
 	const QColor c = QColorDialog::getColor(m_current, this,
-						tr("Choisir une couleur de fond"));
+						tr("Choisir une couleur de fond"),
+						QColorDialog::DontUseNativeDialog);
 	if (c.isValid()) {
 		applyColor(c);
 	}

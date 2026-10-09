@@ -54,6 +54,8 @@
 #include "../../dxf/dxftoelmt.h"
 #include "../../qet_elementscaler/qet_elementscaler.h"
 #include "../UndoCommand/openelmtcommand.h"
+#include "scaleelementdialog.h"
+#include "../../toolbarsettings.h"
 
 #include <QSettings>
 #include <QActionGroup>
@@ -89,6 +91,7 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	readSettings();  // restoreGeometry before show()
 	show();
 	readSettingsState();  // restoreState() must be called after show() in Qt6
+	ToolbarSettings::applyTo(this);
 }
 
 /**
@@ -765,6 +768,9 @@ void QETElementEditor::updateSelectionFromPartsList()
 	}
 	m_parts_list -> blockSignals(false);
 	m_elmt_scene -> blockSignals(false);
+		//selectionChanged was blocked above, so the selection decorator must be
+		//updated by hand, otherwise dragging moves only the part under the cursor
+	m_elmt_scene -> managePrimitivesGroups();
 	updateInformations();
 	updateAction();
 }
@@ -1149,6 +1155,12 @@ void QETElementEditor::setupActions()
 	ShortcutManager::instance().registerAction(ui->m_mirror_action, "elementeditor.mirror", tr("Éditeur d'élément"), Qt::Key_M);
 	connect(ui->m_mirror_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new MirrorElementsCommand(this->elementScene()));});
 
+		//Scale the whole element by a factor that keeps its terminals on the grid
+	m_scale_element_action = new QAction(tr("Mettre l'élément à l'échelle..."), this);
+	ui->m_edit_menu->addAction(m_scale_element_action);
+	ShortcutManager::instance().registerAction(m_scale_element_action, "elementeditor.scale_element", tr("Éditeur d'élément"), QKeySequence());
+	connect(m_scale_element_action, &QAction::triggered, this, &QETElementEditor::scaleElement);
+
 
 		//Zoom action
 	ShortcutManager::instance().registerAction(ui->m_zoom_in_action, "elementeditor.zoom_in", tr("Éditeur d'élément"), QKeySequence::ZoomIn);
@@ -1242,7 +1254,8 @@ void QETElementEditor::updateAction()
 		//Action disabled if read only
 	auto ro_list = m_add_part_action_grp->actions();
 	ro_list << ui->m_paste_from_file_action
-			<< ui->m_paste_from_element_action;
+			<< ui->m_paste_from_element_action
+			<< m_scale_element_action;
 	for (auto action : std::as_const(ro_list)) {
 		action->setDisabled(m_read_only);
 	}
@@ -1796,6 +1809,28 @@ void QETElementEditor::on_m_import_dxf_triggered()
 
 		m_elmt_scene->undoStack().push(new OpenElmtCommand(xml_, m_elmt_scene));
 	}
+}
+
+/**
+	@brief QETElementEditor::scaleElement
+	Ask for a factor that keeps the terminals on the grid,
+	then scale the whole element by it.
+*/
+void QETElementEditor::scaleElement()
+{
+	QList<QPointF> terminals;
+	for (CustomElementPart *part : m_elmt_scene->primitives()) {
+		if (auto terminal = qgraphicsitem_cast<PartTerminal *>(part->toItem())) {
+			terminals << terminal->scenePos();
+		}
+	}
+
+	ScaleElementDialog dialog(terminals, this);
+	if (dialog.exec() != QDialog::Accepted || dialog.factor() == 1.0) {
+		return;
+	}
+	m_elmt_scene->undoStack().push(
+				new ScaleElementCommand(m_elmt_scene, dialog.factor(), dialog.scaleText()));
 }
 
 void QETElementEditor::on_m_import_scaled_element_triggered()

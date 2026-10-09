@@ -56,6 +56,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_button_group.addButton(ui->m_protection_cb, 5);
 	m_button_group.addButton(ui->m_thumbnail_cb, 6);
 	m_button_group.addButton(ui->m_plc_cb, 7);
+	m_button_group.addButton(ui->m_slave_cb, 8);
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
 
 	{
@@ -78,27 +79,12 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 		}
 		else
 		{
-			int checked = 0;
-			for (int i=1 ; i<8 ; ++i) {
-				if (m_button_group.button(i)->isChecked()) {++checked;}
-			}
-
-			switch (checked)
-			{
-				case 0 :
-					check_box->setCheckState(Qt::Unchecked);
-					break;
-				case 7:
-					check_box->setCheckState(Qt::Checked);
-					break;
-				default:
-					check_box->setCheckState(Qt::PartiallyChecked);
-					break;
-			}
+			updateAllCheckState();
 		}
 
 		updateQueryLine();
 	});
+	updateAllCheckState();
 
 	setUpItems();
 	fillSavedQuery();
@@ -203,8 +189,12 @@ void ElementQueryWidget::setQuery(const QString &query)
 			if (ui->m_plc_cb->isChecked()) {
 				++c;
 			}
+			ui->m_slave_cb->setChecked     (str_type.contains(ElementData::typeToString(ElementData::Slave)));
+			if (ui->m_slave_cb->isChecked()) {
+				++c;
+			}
 
-			if (c == 7) {
+			if (c == 8) {
 					ui->m_all_cb->setCheckState(Qt::Checked);
 				} else if (c > 0) {
 					ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
@@ -395,6 +385,11 @@ QString ElementQueryWidget::queryStr() const
 		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::PLC) += "'";
 		b = true;
 	}
+	if (ui->m_slave_cb->isChecked()) {
+		if (b) where +=" OR";
+		where +=  QStringLiteral(" element_type = '") += ElementData::typeToString(ElementData::Slave) += "'";
+		b = true;
+	}
 	where.append(")");
 
 	if (where == " WHERE ()") {
@@ -405,6 +400,10 @@ QString ElementQueryWidget::queryStr() const
 	// (see createElementNomenclatureView() in projectdatabase.cpp); this
 	// widget's query reads FROM that view, so a flagged element never
 	// reaches this point in the first place.
+
+	if (!m_extra_filter.isEmpty()) {
+		filter_ += QStringLiteral(" AND ") + m_extra_filter;
+	}
 
 	if (where.isEmpty() && !filter_.isEmpty()) {
 		filter_.remove(0, 4); //Remove the first " AND" of filter.
@@ -452,6 +451,64 @@ void ElementQueryWidget::setCount(QString text, bool set)
 		m_count = QString(", " % text % " ");
 	} else {
 		m_count.clear();
+	}
+	updateQueryLine();
+}
+
+/**
+	@brief ElementQueryWidget::setSlavesIncluded
+	Check or uncheck the contact blocks (slave elements) in the element
+	type filter. The box is unchecked by default, which keeps the tables
+	made before it existed as they were.
+	@param included
+*/
+void ElementQueryWidget::setSlavesIncluded(bool included)
+{
+	ui->m_slave_cb->setChecked(included);
+	updateAllCheckState();
+	updateQueryLine();
+}
+
+/**
+	@brief ElementQueryWidget::updateAllCheckState
+	Set the "all" check box from the element type check boxes.
+*/
+void ElementQueryWidget::updateAllCheckState()
+{
+	int checked = 0;
+	for (int i=1 ; i<9 ; ++i) {
+		if (m_button_group.button(i)->isChecked()) {++checked;}
+	}
+
+	switch (checked)
+	{
+		case 0 :
+			ui->m_all_cb->setCheckState(Qt::Unchecked);
+			break;
+		case 8:
+			ui->m_all_cb->setCheckState(Qt::Checked);
+			break;
+		default:
+			ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
+			break;
+	}
+}
+
+/**
+	@brief ElementQueryWidget::setExtraFilter
+	Add a condition every row of the query must meet, on top of the filters
+	chosen in this widget.
+	@param text : the condition, ex : "label != ''"
+	@param set :
+	true by default -> the condition is used.
+	false -> the condition is removed.
+*/
+void ElementQueryWidget::setExtraFilter(const QString &text, bool set)
+{
+	if (set) {
+		m_extra_filter = text;
+	} else {
+		m_extra_filter.clear();
 	}
 	updateQueryLine();
 }

@@ -180,7 +180,36 @@ struct DocumentTerminal
 	QString uuid;
 	QString name;
 	bool master_label = false;
+	QVariant index;
 };
+
+	//The index each of @p points has in Element::terminals() -- the index
+	//the scripting API's addConductor() and conductor calls take -- or a
+	//null QVariant for a point another terminal shares. Element::
+	//parseTerminal() sorts the list top to bottom, then left to right, on
+	//each terminal's position in its definition, and the sort is not
+	//stable, so which of two terminals at the same point comes first is
+	//not defined: no index is given rather than one that can change.
+QList<QVariant> terminalIndexes(const QList<QPointF> &points)
+{
+	QList<int> order;
+	for (int i = 0 ; i < points.size() ; ++i) {
+		order << i;
+	}
+	std::stable_sort(order.begin(), order.end(), [&points](int a, int b) {
+		if (points.at(a).y() == points.at(b).y()) {
+			return points.at(a).x() < points.at(b).x();
+		}
+		return points.at(a).y() < points.at(b).y();
+	});
+	QList<QVariant> indexes(points.size());
+	for (int i = 0 ; i < order.size() ; ++i) {
+		if (points.count(points.at(order.at(i))) == 1) {
+			indexes[order.at(i)] = i;
+		}
+	}
+	return indexes;
+}
 
 struct DocumentDefinition
 {
@@ -207,7 +236,7 @@ struct DocumentElement
 	//the attributes files written before <sequentialNumbers> carry.
 bool readSequence(const QDomElement &item, autonum::sequentialNumbers *sequence)
 {
-	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1"}) {
+	for (const char *name : {"sequ_1", "sequf_1", "seqt_1", "seqtf_1", "seqh_1", "seqhf_1"}) {
 		if (item.hasAttribute(QLatin1String(name))) {
 			return false;
 		}
@@ -391,6 +420,25 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 				data.fromXml(definition);
 				read.type = data.typeToString();
 				read.sub_type = data.masterTypeToString();
+					//Every terminal the element is built with counts towards
+					//the indexes, as Element::parseTerminal() keeps every one
+					//whose position reads, in every <description>.
+				QList<QDomElement> parsed;
+				QList<QPointF> points;
+				for (QDomElement d = definition.firstChildElement(QStringLiteral("description")) ;
+					 !d.isNull() ; d = d.nextSiblingElement(QStringLiteral("description"))) {
+					for (QDomElement t = d.firstChildElement(QStringLiteral("terminal")) ;
+						 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal")))
+					{
+						qreal x, y;
+						if (QET::attributeIsAReal(t, QStringLiteral("x"), &x)
+							&& QET::attributeIsAReal(t, QStringLiteral("y"), &y)) {
+							parsed << t;
+							points << QPointF(x, y);
+						}
+					}
+				}
+				const QList<QVariant> indexes = terminalIndexes(points);
 				const QDomElement description = definition.firstChildElement(QStringLiteral("description"));
 				for (QDomElement t = description.firstChildElement(QStringLiteral("terminal")) ;
 					 !t.isNull() ; t = t.nextSiblingElement(QStringLiteral("terminal")))
@@ -403,6 +451,10 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 					terminal.uuid = terminal_uuid.toString();
 					terminal.name = t.attribute(QStringLiteral("name"));
 					terminal.master_label = t.attribute(QStringLiteral("use_master_label")) == QLatin1String("true");
+					const int place = parsed.indexOf(t);
+					if (place >= 0) {
+						terminal.index = indexes.at(place);
+					}
 					read.terminals.insert(terminal_uuid, terminal);
 				}
 				known = definitions.insert(type, read);
@@ -582,8 +634,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		for (const auto &end : {std::make_pair(conductor.element1, conductor.terminal1),
 								std::make_pair(conductor.element2, conductor.terminal2)}) {
 			const DocumentElement &owner = elements.at(element_index.value(end.first));
-			insertTerminal(end.second, end.first,
-						   owner.terminals.value(QUuid(end.second)).name);
+			const DocumentTerminal &terminal = owner.terminals.value(QUuid(end.second));
+			insertTerminal(end.second, end.first, terminal.name, terminal.index);
 		}
 		m_insert_conductor_query.bindValue(QStringLiteral(":uuid"), conductor.uuid);
 		m_insert_conductor_query.bindValue(QStringLiteral(":diagram_uuid"), conductor.diagram_uuid);
@@ -1196,6 +1248,8 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 	}
 	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
 		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);
+			//Also changes the height of the text, kept in the row
+		connect(text, &IndependentTextItem::textWidthChanged, this, &projectDataBase::drawingItemChanged, unique);
 			//Sent by the document, not the item: drawingItemChanged() walks
 			//back up to the item. It is the one signal that catches every way
 			//the text changes -- typing, undo, a script's setTextContent().
@@ -1372,6 +1426,9 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 		query = &m_insert_independent_text_query;
 		query->bindValue(QStringLiteral(":text"), text->toPlainText());
 		query->bindValue(QStringLiteral(":rotation"), text->rotation());
+			//NULL for the automatic width
+		query->bindValue(QStringLiteral(":text_width"), text->textWidth() > 0
+						 ? QVariant(text->textWidth()) : QVariant());
 	}
 	else if (auto image = qobject_cast<DiagramImageItem *>(object))
 	{
@@ -1560,6 +1617,7 @@ bool projectDataBase::createDataBase()
 						  "uuid VARCHAR(50) NOT NULL, "
 						  "element_uuid VARCHAR(50) NOT NULL,"
 						  "name VARCHAR(50),"
+						  "terminal_index INTEGER,"
 						  "PRIMARY KEY (uuid, element_uuid),"
 						  "FOREIGN KEY (element_uuid) REFERENCES element (uuid)"
 						  ")");
@@ -1614,7 +1672,7 @@ bool projectDataBase::createDataBase()
 				"type VARCHAR(20), color VARCHAR(20), fill VARCHAR(20), "
 				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
 			QStringLiteral("CREATE TABLE independent_text (") + drawing_columns +
-				"text TEXT, rotation REAL, "
+				"text TEXT, rotation REAL, text_width REAL, "
 				"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))",
 			QStringLiteral("CREATE TABLE image (") + drawing_columns +
 				"pixel_width INTEGER, pixel_height INTEGER, "
@@ -1812,7 +1870,11 @@ void projectDataBase::createWiringListView()
 						 "t2.element_uuid AS to_element_uuid,"
 						 "ei2.label AS to_element_label,"
 						 "t2.name AS to_terminal,"
-						 "d.pos AS diagram_position"
+						 "d.pos AS diagram_position,"
+						 "t1.uuid AS from_terminal_uuid,"
+						 "t1.terminal_index AS from_terminal_index,"
+						 "t2.uuid AS to_terminal_uuid,"
+						 "t2.terminal_index AS to_terminal_index"
 						 " FROM conductor c"
 						 " JOIN terminal t1 ON c.terminal1_uuid = t1.uuid AND c.terminal1_element_uuid = t1.element_uuid"
 						 " JOIN terminal t2 ON c.terminal2_uuid = t2.uuid AND c.terminal2_element_uuid = t2.element_uuid"
@@ -1999,9 +2061,15 @@ void projectDataBase::populateConductorTable()
 */
 void projectDataBase::insertTerminal(Terminal *terminal)
 {
+	const QList<Terminal *> terminals = terminal->parentElement()->terminals();
+	QList<QPointF> points;
+	for (const Terminal *t : terminals) {
+		points << terminal->parentElement()->mapFromScene(t->dockConductor());
+	}
 	insertTerminal(terminal->stableUuid().toString(),
 				   terminal->parentElement()->uuid().toString(),
-				   terminal->name());
+				   terminal->name(),
+				   terminalIndexes(points).value(terminals.indexOf(terminal)));
 }
 
 /**
@@ -2009,11 +2077,12 @@ void projectDataBase::insertTerminal(Terminal *terminal)
 	insertTerminal(Terminal *) from values rather than a live terminal.
 */
 void projectDataBase::insertTerminal(const QString &uuid, const QString &element_uuid,
-									 const QString &name)
+									 const QString &name, const QVariant &index)
 {
 	m_insert_terminal_query.bindValue(":uuid", uuid);
 	m_insert_terminal_query.bindValue(":element_uuid", element_uuid);
 	m_insert_terminal_query.bindValue(":name", name);
+	m_insert_terminal_query.bindValue(":terminal_index", index);
 	if (!m_insert_terminal_query.exec()) {
 		qDebug() << "projectDataBase::insertTerminal insert error : " << m_insert_terminal_query.lastError();
 	}
@@ -2059,8 +2128,8 @@ void projectDataBase::prepareQuery()
 								 ", :type, :color, :fill)");
 	m_insert_independent_text_query = QSqlQuery(m_data_base);
 	m_insert_independent_text_query.prepare("INSERT OR REPLACE INTO independent_text (" + drawing_columns +
-											", text, rotation) VALUES (" + drawing_values +
-											", :text, :rotation)");
+											", text, rotation, text_width) VALUES (" + drawing_values +
+											", :text, :rotation, :text_width)");
 	m_insert_image_query = QSqlQuery(m_data_base);
 	m_insert_image_query.prepare("INSERT OR REPLACE INTO image (" + drawing_columns +
 								 ", pixel_width, pixel_height) VALUES (" + drawing_values +
@@ -2146,7 +2215,7 @@ void projectDataBase::prepareQuery()
 
 		//INSERT TERMINAL
 	m_insert_terminal_query = QSqlQuery(m_data_base);
-	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name) VALUES (:uuid, :element_uuid, :name)");
+	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name, terminal_index) VALUES (:uuid, :element_uuid, :name, :terminal_index)");
 
 		//INSERT CONDUCTOR
 	m_insert_conductor_query = QSqlQuery(m_data_base);

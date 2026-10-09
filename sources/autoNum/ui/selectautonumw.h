@@ -28,6 +28,8 @@ class QAbstractButton;
 class FormulaAutonumberingW;
 class QComboBox;
 class QPushButton;
+class QToolButton;
+class QHBoxLayout;
 
 namespace Ui {
 	class SelectAutonumW;
@@ -89,6 +91,7 @@ class SelectAutonumW : public QWidget
 			@param can_remove true when a rule is really there
 		*/
 		void setRuleRemovable(bool can_remove);
+		void setExplicitNaming();
 
 	signals:
 		void applyPressed();
@@ -101,6 +104,9 @@ class SelectAutonumW : public QWidget
 				write now.
 			*/
 		void contextEdited();
+			/// Only with setExplicitNaming()
+		void newClicked();
+		void renameClicked();
 
 		//SLOT
 	private slots:
@@ -108,16 +114,30 @@ class SelectAutonumW : public QWidget
 		void on_remove_button_clicked();
 		void on_buttonBox_clicked(QAbstractButton *);
 		void applyEnable (bool = true);
-		void on_m_next_pb_clicked();
-		void on_m_previous_pb_clicked();
 		void on_m_comboBox_currentTextChanged(const QString &arg1);
 		
 		//ATTRIBUTES
 		void on_m_remove_pb_clicked();
-		
+
 	private:
+			/// A part of the definition, with the buttons at its right
+		struct PartRow
+		{
+			QWidget *row = nullptr;
+			NumPartEditorW *part = nullptr;
+			QToolButton *up = nullptr;
+			QToolButton *down = nullptr;
+			QToolButton *remove = nullptr;
+		};
+		void insertPartRow(NumPartEditorW *part);
+		void removePartRow(QWidget *row);
+		void movePartRow(QWidget *row, int step);
+		void updatePartButtons();
+		void clearPartRows();
 		Ui::SelectAutonumW *ui;
 		QList <NumPartEditorW *> num_part_list_;
+		QList <PartRow> m_rows;
+		QWidget *m_add_row = nullptr;   ///< holds the add button, under the last part
 		NumerotationContext m_context;
 		FormulaAutonumberingW *m_feaw;
 		FormulaAutonumberingW *m_fcaw;

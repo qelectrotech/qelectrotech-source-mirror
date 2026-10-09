@@ -21,6 +21,8 @@
 #include <QMutex>
 #include <QSharedPointer>
 #include <QHash>
+#include <QPair>
+#include <QTransform>
 
 class ElementsLocation;
 class QPicture;
@@ -83,6 +85,8 @@ class ElementPictureFactory
 		}
 
 		void getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture);
+		void getReadablePictures(const ElementsLocation &location, const QTransform &texts_transform,
+								 QPicture &picture, QPicture &low_picture);
 		QPixmap pixmap(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
 		void dropCache(const ElementsLocation &location);
@@ -94,7 +98,9 @@ class ElementPictureFactory
 		~ElementPictureFactory();
 
 		static QUuid cacheKey(const ElementsLocation &location);
-		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr);
+		static int readableKey(const QTransform &texts_transform);
+		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr,
+				   const QTransform &texts_transform=QTransform());
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseLine   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseRect   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
@@ -108,6 +114,13 @@ class ElementPictureFactory
 		
 		QHash<QUuid, QPicture> m_pictures_H;
 		QHash<QUuid, QPicture> m_low_pictures_H;
+			/// Drawings whose texts read normally once an element has
+			/// mirrored or turned them, by element and readableKey(), see
+			/// getReadablePictures()
+		QHash<QPair<QUuid, int>, QPicture> m_readable_pictures_H;
+		QHash<QPair<QUuid, int>, QPicture> m_readable_low_pictures_H;
+			/// What build() undoes on each text, read by parseText()
+		QTransform m_build_texts_undo;
 		QHash<QUuid, QPixmap> m_pixmap_H;
 		QHash<QUuid, primitives> m_primitives_H;
 		static ElementPictureFactory* m_factory;

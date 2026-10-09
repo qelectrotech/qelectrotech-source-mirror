@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <g transform="scale(1)">
+  <defs><linearGradient id="g" x1="0" y1="1" x2="0" y2="15" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#93bff3"/><stop offset="0.08" stop-color="#72aaec"/><stop offset="0.92" stop-color="#3473bf"/><stop offset="1" stop-color="#588bc9"/></linearGradient></defs>
+  <rect x="1" y="1" width="14" height="14" style="fill:url(#g)"/>
+  <rect x="1" y="1" width="1" height="14" style="fill:#ffffff;opacity:0.18"/>
+  <rect x="14" y="1" width="1" height="14" style="fill:#ffffff;opacity:0.18"/>
+  <polygon points="7,2 10,2 8,6.55 10.9,6.1 9.22,10.83 10.27,11.17 7.4,13.8 6.65,9.99 7.7,10.33 8.29,8.52 4.3,9 5,7" style="fill:#ffcc00"/>
+  </g>
+</svg>

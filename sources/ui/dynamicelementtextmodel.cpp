@@ -1729,7 +1729,8 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				 * handling, so it didn't crash). Resolving the dialog
 				 * before returning removes the second, competing teardown
 				 * path entirely. */
-			QColor color = QColorDialog::getColor(index.data(Qt::EditRole).value<QColor>(), parent);
+			QColor color = QColorDialog::getColor(index.data(Qt::EditRole).value<QColor>(), parent,
+											 QString(), QColorDialog::DontUseNativeDialog);
 			QWidget *w = new QWidget(parent);
 			if (color.isValid())
 			{

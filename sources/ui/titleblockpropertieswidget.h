@@ -70,6 +70,8 @@ class TitleBlockPropertiesWidget : public QWidget
 
 		void setTitleBlockTemplatesVisible(const bool &visible);
 		void setReadOnly (const bool &ro);
+		int currentTitleBlockHeight() const;
+		Qt::Edge currentTitleBlockEdge() const;
 
 		static void addTemplateVariables(
 				DiagramContext &context,
@@ -96,15 +98,22 @@ class TitleBlockPropertiesWidget : public QWidget
 	signals:
 		void set_auto_page_num() const;
 		void openAutoNumFolioEditor (QString);
+		void titleBlockSizeChanged(int height, Qt::Edge edge);
 
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;
 		DiagramContextWidget *m_dcw;
+			/// keys of the context given to setProperties()
+		QStringList m_context_keys;
 		QAction *m_tbt_edit, *m_tbt_duplicate;
 		QMenu *m_tbt_menu;
 		QList <TitleBlockTemplatesCollection *> m_tbt_collection_list;
 		QList <QET::QetCollection> m_map_index_to_collection_type;
 		QList <QString> keys_2;
+			/// auto_page_num as given to setProperties(), returned
+			/// unchanged unless the user picks another folio numbering
+		QString m_auto_page_num;
+		bool m_auto_page_num_picked = false;
 };
 
 #endif // TITLEBLOCKPROPERTIESWIDGET_H

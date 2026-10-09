@@ -205,6 +205,7 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 	Q_UNUSED(previous)
 
 	if (!current) {
+		m_current_is_free_terminal = false;
 		setCurrentStrip(nullptr);
 		return;
 	}
@@ -225,11 +226,12 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 		}
 	}
 
-	if (strip_ != m_current_strip) {
-		setCurrentStrip(strip_);
-	} else if (current_is_free != m_current_is_free_terminal) {
+		//The flag must follow every selection change, or a reload of the tree
+		//(e.g. after moving a free terminal) leaves it stale and the next
+		//click on a free terminal shows nothing (#1306)
+	if (strip_ != m_current_strip || current_is_free != m_current_is_free_terminal) {
 		m_current_is_free_terminal = current_is_free;
-		emit currentStripChanged(nullptr);
+		setCurrentStrip(strip_);
 	}
 }
 

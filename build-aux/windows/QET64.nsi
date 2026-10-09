@@ -1,4 +1,4 @@
-; this file is part of installer for QElectroTech
+﻿; this file is part of installer for QElectroTech
 ; Copyright (C)2015 QElectroTech Team <scorpio@qelectrotech.org>
 ;
 ; This program is free software; you can redistribute it and/or
@@ -34,7 +34,7 @@
 ;--------------------------------
 ; NSIS 3 requires SetCompressor BEFORE any Section or Function
 SetCompressor /FINAL /SOLID lzma
-
+Unicode true
 ;--------------------------------
 ; Includes
 !include x64.nsh

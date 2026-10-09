@@ -708,13 +708,26 @@ void BorderTitleBlock::drawDxf(
 	// render the titleblock, using the TitleBlockTemplate object
 	if (display_titleblock_) {
 		Createdxf::layer = DxfExport::Layer::TitleBlock;
-		//qp -> translate(titleblock_rect_.topLeft());
-		QRectF rect = titleBlockRect();
+			//Laid out horizontally, then turned like the QPainter in
+			//draw(): a quarter turn counter-clockwise around its top
+			//left, which for a title block at the right is the bottom
+			//right of the diagram (issue #1339).
+		QRectF rect = titleBlockRectForQPainter();
+		QTransform dxf_transform;
+		if (m_edge != Qt::BottomEdge)
+		{
+			const QPointF pivot(rect.left() * Createdxf::xScale,
+					    Createdxf::sheetHeight
+					    - rect.top() * Createdxf::yScale);
+			dxf_transform.translate(pivot.x(), pivot.y());
+			dxf_transform.rotate(90);
+			dxf_transform.translate(-pivot.x(), -pivot.y());
+		}
 		m_titleblock_template_renderer -> renderDxf(rect,
 							    rect.width(),
 							    file_path,
-							    color);
-		//qp -> translate(-titleblock_rect_.topLeft());
+							    color,
+							    dxf_transform);
 	}
 
 	// Transform back to QET scale

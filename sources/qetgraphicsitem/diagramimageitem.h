@@ -49,6 +49,12 @@ class DiagramImageItem : public QetGraphicsItem {
 	Q_PROPERTY(qreal skewY READ skewY WRITE setSkewY NOTIFY transformChanged)
 	Q_PROPERTY(QPointF pivot READ pivot WRITE setPivot NOTIFY transformChanged)
 	Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
+	// The picture's source -- original, crop rectangle, transparent
+	// colours -- as one value. The displayed pixmap is computed from it,
+	// so every edit of it (crop, colour key, mirror, replace) is one
+	// undo step on this property alone.
+	Q_PROPERTY(QVariant imageSource READ imageSourceVariant WRITE setImageSourceVariant)
+	Q_PROPERTY(bool adaptToDarkTheme READ adaptToDarkTheme WRITE setAdaptToDarkTheme NOTIFY adaptToDarkThemeChanged)
 	// A second, deliberately non-compensating property on the SAME
 	// underlying value -- setPivot() (above) intentionally adjusts
 	// pos() to keep the image visually in place, which is exactly
@@ -59,12 +65,29 @@ class DiagramImageItem : public QetGraphicsItem {
 	// would silently overwrite that already-correct pos() a second
 	// time. rawPivot exists solely for that one caller.
 	Q_PROPERTY(QPointF rawPivot READ pivot WRITE setPivotRaw NOTIFY transformChanged)
+	// Whether the pivot was placed by hand: a hand-placed pivot is saved
+	// and kept through a resize. Changes in the same undo step as the
+	// pivot itself, so that Ctrl+Z restores both.
+	Q_PROPERTY(bool pivotIsCustom READ pivotIsCustom WRITE setPivotIsCustom)
 
 	// constructors, destructor
 	public:
 	DiagramImageItem(QetGraphicsItem * = nullptr);
 	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = nullptr);
 	~DiagramImageItem() override;
+
+	struct ImageSource
+	{
+		QPixmap base;
+		QRect crop;
+		QList<ImageTransparentColorDialog::PickedColor> colors;
+	};
+	ImageSource imageSource() const { return {m_base_pixmap, m_crop_rect, m_transparent_colors}; }
+	void setImageSource(const ImageSource &source);
+	QVariant imageSourceVariant() const;
+	void setImageSourceVariant(const QVariant &source);
+	QRect cropRect() const { return m_crop_rect; }
+	bool applyCrop(const QRect &cropRect);
 	
 	// attributes
 	public:
@@ -101,6 +124,8 @@ class DiagramImageItem : public QetGraphicsItem {
 	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
 	QPixmap pixmap() const { return pixmap_; }
+	bool pivotIsCustom() const { return m_pivotIsCustom; }
+	void setPivotIsCustom(bool custom) { m_pivotIsCustom = custom; }
 	QRectF boundingRect() const override;
 	QString name() const override;
 
@@ -132,12 +157,15 @@ class DiagramImageItem : public QetGraphicsItem {
 	void setPivotRaw(const QPointF &pivot);
 	QString label() const { return m_label; }
 	void setLabel(const QString &label);
+	bool adaptToDarkTheme() const { return m_adapt_to_dark_theme; }
+	void setAdaptToDarkTheme(bool adapt);
 
 	signals:
 	void pixmapChanged();
 	void transformChanged();
 	void uuidChanged();
 	void labelChanged();
+	void adaptToDarkThemeChanged();
 
 	protected:
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
@@ -153,6 +181,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	void mirror(bool horizontal);
 	void setTransparentColor();
 	void crop();
+	void pushImageSourceChange(const QString &text, const ImageSource &oldSource, const ImageSource &newSource);
 	void restoreAspectRatio();
 	void saveImageAs();
 	void saveOriginalImageAs();
@@ -236,14 +265,18 @@ class DiagramImageItem : public QetGraphicsItem {
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
 	ShapeTransform m_original_transform;
+	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment
 	// Optional caption drawn centred under the picture (issue #349).
 	// Empty by default, and then neither saved nor painted, so a picture
 	// without one costs exactly what it did before.
 	QString m_label;
+	bool m_adapt_to_dark_theme = false;
 	QFont m_label_font;
 	QSizeF m_label_size;   // in scene units, measured once in setLabel()
 	QPointF m_label_scale{1.0, 1.0};   // scale the label rect was last computed for -- see updateLabelScale()
 	bool m_resizeCenterAnchored = false;   // decided once, at press time -- see handlerMousePressEvent()'s comment for why, mirroring the identical fix already made for shape creation
 };
+Q_DECLARE_METATYPE(DiagramImageItem::ImageSource)
+
 #endif

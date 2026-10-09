@@ -43,6 +43,7 @@
 #include <QDirIterator>
 #include <QDomDocument>
 #include <QDate>
+#include <QDateTime>
 #include <QFile>
 #include <QSaveFile>
 #include <QFileInfo>
@@ -59,6 +60,7 @@
 #include <QSqlQuery>
 #include <QSvgGenerator>
 #include <QTextStream>
+#include <QTimeZone>
 #include <QTransform>
 
 namespace {
@@ -147,6 +149,23 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target,
 	diagram->setDrawTerminalNames(was_drawing_terminal_names);
 }
 
+/// The time SOURCE_DATE_EPOCH names, in seconds since 1970 UTC, or an
+/// invalid QDateTime when it is unset. A value that is not a whole number of
+/// seconds is reported and ignored.
+QDateTime sourceDateEpoch()
+{
+	const QByteArray value = qgetenv("SOURCE_DATE_EPOCH");
+	if (value.isEmpty())
+		return {};
+	bool ok = false;
+	const qlonglong seconds = value.toLongLong(&ok);
+	if (!ok || seconds < 0) {
+		err << "SOURCE_DATE_EPOCH '" << value << "' is not a number of seconds; ignored.\n";
+		return {};
+	}
+	return QDateTime::fromSecsSinceEpoch(seconds, QTimeZone::utc());
+}
+
 int exportPdf(QETProject &project, const QString &output,
 			 bool showTerminals = false)
 {
@@ -166,16 +185,37 @@ int exportPdf(QETProject &project, const QString &output,
 	writer.setCreator("QElectroTech");
 	writer.setResolution(96);
 
+	// SOURCE_DATE_EPOCH (reproducible-builds.org) asks for the same file
+	// from the same input: the time it names instead of now, and a document
+	// id from what the PDF shows instead of a random one. Qt has no setter
+	// for the dates, and the content is not known yet, so both are
+	// rewritten once the file is written; Qt writes a fixed id until then.
+	// The id does not come from the project file, whose uuids are new each
+	// time a project is generated again from the same data. Before Qt 6.8
+	// there is no document id to set: it is only written for PDF/A.
+	const QDateTime sourceDate = sourceDateEpoch();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	if (sourceDate.isValid())
+		writer.setDocumentId(PdfLinks::placeholderDocumentId());
+#endif
+
 	QPainter painter;
 	bool first = true;
 	for (Diagram *diagram : diagrams) {
 		const QRect r = diagramRect(diagram);
 		// Match the page to the diagram (in points: 1px @ 96dpi = 0.75pt).
-		const QPageSize page(QSizeF(r.width() * 72.0 / 96.0,
-									r.height() * 72.0 / 96.0),
-							 QPageSize::Point);
-		writer.setPageSize(page);
-		writer.setPageMargins(QMarginsF(0, 0, 0, 0));
+		// QPageSize rounds a size within 3 pt of a standard sheet to the
+		// sheet, but knows the sheets upright only (bar Ledger), so a wide
+		// folio is matched upright and turned: otherwise an A3 landscape
+		// folio became a 1190 x 841 pt page while an A3 portrait one was
+		// 842 x 1191, the sheet.
+		QSizeF points(r.width() * 72.0 / 96.0, r.height() * 72.0 / 96.0);
+		const bool wide = points.width() > points.height();
+		if (wide) points.transpose();
+		writer.setPageLayout(QPageLayout(QPageSize(points, QPageSize::Point),
+										 wide ? QPageLayout::Landscape
+											  : QPageLayout::Portrait,
+										 QMarginsF(0, 0, 0, 0)));
 
 		if (first) {
 			if (!painter.begin(&writer)) {
@@ -233,6 +273,10 @@ int exportPdf(QETProject &project, const QString &output,
 	// the cross-references jump inside the document in any PDF viewer.
 	PdfLinks::convertUriToGoTo(output);
 	PdfLinks::removeUnusedPdfxNamespace(output);
+	if (sourceDate.isValid()) {
+		PdfLinks::setDocumentDate(output, sourceDate);
+		PdfLinks::setDocumentIdFromContent(output);
+	}
 
 	out << "Exported " << diagrams.size() << " page(s) -> " << output << "\n";
 	return 0;
@@ -287,7 +331,8 @@ int exportImages(QETProject &project, const QString &format,
 /// One DXF file per diagram, written by the same code as the export dialog
 /// (DxfExport) with the dialog's default options -- the export settings of
 /// the preferences -- so both give the same file.
-int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals)
+int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
+			  bool dxfBlocks, bool dxfAttributes)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -300,6 +345,10 @@ int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals)
 	properties.format = QStringLiteral("DXF");
 	if (showTerminals)
 		properties.draw_terminals = true;
+	if (dxfBlocks || dxfAttributes)
+		properties.dxf_blocks = true;
+	if (dxfAttributes)
+		properties.dxf_attributes = true;
 
 	int index = 0;
 	bool has_images = false;
@@ -364,10 +413,12 @@ int exportCsv(QETProject &project, const QString &format, const QString &output)
 
 /// Bill of materials from the same project database and default query as the
 /// GUI nomenclature export.
-int exportBom(QETProject &project, const QString &output)
+int exportBom(QETProject &project, const QString &output,
+			  bool includeSlaves, bool includeJunctions)
 {
 	project.dataBase()->updateDB();
-	QSqlQuery query = project.dataBase()->newQuery(BomExport::defaultQuery());
+	QSqlQuery query = project.dataBase()->newQuery(
+			BomExport::defaultQuery(includeSlaves, includeJunctions));
 	if (!query.exec()) {
 		err << "BOM query failed: " << query.lastError().text() << "\n";
 		return 1;
@@ -620,6 +671,12 @@ QHash<Element *, int> folioIndex(QETProject &project)
 /// From-to wiring list: one row per conductor, each endpoint resolved to its
 /// element label and terminal name.
 ///
+/// Most symbols leave their terminals unnamed, so each end also carries the
+/// terminal's index -- the one the scripting API's addConductor() takes,
+/// empty for two terminals at one point -- and its uuid, the one the project
+/// file names the terminal by. These come last, after the columns the list
+/// has always had, so a reader of those is not disturbed.
+///
 /// Reads wiring_list_view out of the project database. --export-cables produces
 /// the same logical list from the document XML instead, and the two are meant
 /// to agree: running both and diffing them is a direct check that the database
@@ -632,7 +689,8 @@ int exportWiring(QETProject &project, const QString &output)
 
 	static const QStringList columns {
 		"wire_number", "from_element_label", "from_terminal",
-		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid"
+		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid",
+		"from_terminal_index", "from_terminal_uuid", "to_terminal_index", "to_terminal_uuid"
 	};
 
 	QSqlQuery query = project.dataBase()->newQuery(
@@ -929,6 +987,11 @@ int run(const QStringList &args)
 	// collected below.
 	QStringList filtered = args;
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
+	const bool dxfBlocks = filtered.removeAll("--dxf-blocks") > 0;
+	const bool dxfAttributes = filtered.removeAll("--dxf-attributes") > 0;
+	// --no-slaves and --no-junctions leave rows out of --export-bom.
+	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
+	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 
 	QString flag;
 	QStringList rest;
@@ -982,11 +1045,11 @@ int run(const QStringList &args)
 	if (format == "pdf")
 		return exportPdf(project, output, showTerminals);
 	if (format == "dxf")
-		return exportDxf(project, output, showTerminals);
+		return exportDxf(project, output, showTerminals, dxfBlocks, dxfAttributes);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")
-		return exportBom(project, output);
+		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")
 		return exportWiring(project, output);
 	if (format == "nets")

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductortextitem.h"
+#include "../shownkinds.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -31,6 +32,7 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	moved_by_user_(false),
 	rotate_by_user_(false)
 {
+	ShownKinds::tag(this, ShownKinds::WireNumbers);
 	setAcceptHoverEvents(true);
 }
 
@@ -45,7 +47,9 @@ ConductorTextItem::ConductorTextItem(
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
 	rotate_by_user_(false)
-{}
+{
+	ShownKinds::tag(this, ShownKinds::WireNumbers);
+}
 
 /**
 	Destructeur

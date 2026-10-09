@@ -97,6 +97,28 @@ private slots:
 		QVERIFY(r.value(QStringLiteral("junk")).toArray().isEmpty());
 		QVERIFY(r.value(QStringLiteral("badFolio")).toArray().isEmpty());
 	}
+
+	// qet.deleteElement() takes the wires on the element's terminals with
+	// it, as the Delete key does; they used to stay on the folio, attached
+	// to an element that was gone.
+	void deleteElementTakesItsWires()
+	{
+		const QJsonObject r = run(QStringLiteral(
+			"var p = 'embed://import/probe/v2_fuse.elmt';\n"
+			"var a = qet.addElement(0, p, 400, 400);\n"
+			"var b = qet.addElement(0, p, 470, 490);\n"
+			"qet.addConductor(0, a, 0, b, 0);\n"
+			"var before = qet.conductorUuids(0).length;\n"
+			"var deleted = qet.deleteElement(0, a);\n"
+			"var dangling = qet.conductorUuids(0).filter(function (u) {\n"
+			"  return qet.conductorEnds(0, u).some(function (e) { return e.indexOf(a) === 0; }); });\n"
+			"qet.log('PROBE ' + JSON.stringify({deleted: deleted, before: before,\n"
+			"  after: qet.conductorUuids(0).length, dangling: dangling.length}));\n"));
+		QVERIFY2(!r.isEmpty(), "the script logged nothing");
+		QVERIFY(r.value(QStringLiteral("deleted")).toBool());
+		QCOMPARE(r.value(QStringLiteral("dangling")).toInt(), 0);
+		QCOMPARE(r.value(QStringLiteral("after")).toInt(), r.value(QStringLiteral("before")).toInt() - 1);
+	}
 };
 
 QTEST_APPLESS_MAIN(tst_scriptconductoruuid)

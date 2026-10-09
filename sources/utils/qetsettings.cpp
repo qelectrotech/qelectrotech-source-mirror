@@ -154,6 +154,81 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief liveAssistantEnabled
+	* @return whether an AI assistant may connect to this QElectroTech and
+	* act on the open project while the user watches (live mode, see
+	* LiveServer). Off unless the user turned it on, and even then every
+	* start asks before anything can connect. No environment override:
+	* this is a choice made by the person in front of the window.
+	*/
+	bool liveAssistantEnabled()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_assistant", false).toBool();
+	}
+
+	void setLiveAssistantEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_assistant", enabled);
+			//Turned off and on again: the start warning comes back, so
+			//"don't ask again" never outlives the choice it was made for
+		if (!enabled) settings.remove("scripting/live_skip_warning");
+	}
+
+	/**
+	* @brief liveSkipStartWarning
+	* @return true when the user ticked "don't ask again" in live mode's
+	* start warning: live mode then opens at every start without asking,
+	* until it is switched off in the settings. False unless they did.
+	*/
+	bool liveSkipStartWarning()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_skip_warning", false).toBool();
+	}
+
+	void setLiveSkipStartWarning(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_skip_warning", skip);
+	}
+
+	/**
+	* @brief liveAskFirst
+	* @return whether live mode shows each script the assistant wrote and
+	* asks before running it. On unless the user chose "always".
+	*/
+	bool liveAskFirst()
+	{
+		QSettings settings;
+		return settings.value("scripting/live_ask_first", true).toBool();
+	}
+
+	void setLiveAskFirst(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("scripting/live_ask_first", ask);
+	}
+
+	/**
+	* @brief houseStyle
+	* @return this installation's drawing conventions, in the user's own
+	* words -- empty when nobody has set any.
+	*/
+	QString houseStyle()
+	{
+		QSettings settings;
+		return settings.value("assistant/house_style", QString()).toString();
+	}
+
+	void setHouseStyle(const QString &text)
+	{
+		QSettings settings;
+		settings.setValue("assistant/house_style", text);
+	}
+
+	/**
 	* @brief setSheetBackground
 	* Store the sheet background last picked in the diagram editor, so the
 	* next start opens on it for every project, old or new. @sa sheetBackground

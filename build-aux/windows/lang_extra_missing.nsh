@@ -1,4 +1,4 @@
-; Missing language translations for QElectroTech installer
+﻿; Missing language translations for QElectroTech installer
 ; Languages added: hu, ja, mn, nb, nl_BE, nl_NL, pt_BR, rs/sr, sk, sl, sv, tr, uk, zh
 
         ; ----------------------------------------------------------------

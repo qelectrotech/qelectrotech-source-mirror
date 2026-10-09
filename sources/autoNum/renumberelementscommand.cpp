@@ -26,8 +26,9 @@ RenumberElementsCommand::RenumberElementsCommand(
         QVector<ElementChange> changes,
         QHash<QString, NumerotationContext> old_ctx,
         QHash<QString, NumerotationContext> new_ctx,
-        const QString &text)
-    : QUndoCommand(text)
+        const QString &text,
+        QUndoCommand *parent)
+    : QUndoCommand(text, parent)
     , project_(project)
     , changes_(std::move(changes))
     , old_ctx_(std::move(old_ctx))
@@ -61,18 +62,23 @@ void RenumberElementsCommand::apply(bool use_new)
 
     // Apply per-element changes
     for (const ElementChange &c : changes_) {
-        if (!c.element) continue;
-
-        const bool frozen = use_new ? c.new_frozen : c.old_frozen;
-        const auto &infos = use_new ? c.new_infos : c.old_infos;
-        const auto &seq   = use_new ? c.new_seq   : c.old_seq;
-
-        // Temporarily unfreeze so that label/infos update correctly.
-        const bool was_frozen = c.element->isFreezeLabel();
-        if (was_frozen) c.element->freezeLabel(false);
-
-        c.element->rSequenceStruct() = seq;
-        c.element->setElementInformations(infos);
-        c.element->freezeLabel(frozen);
+        applyChange(c, use_new);
     }
+}
+
+void RenumberElementsCommand::applyChange(const ElementChange &c, bool use_new)
+{
+    if (!c.element) return;
+
+    const bool frozen = use_new ? c.new_frozen : c.old_frozen;
+    const auto &infos = use_new ? c.new_infos : c.old_infos;
+    const auto &seq   = use_new ? c.new_seq   : c.old_seq;
+
+    // Temporarily unfreeze so that label/infos update correctly.
+    const bool was_frozen = c.element->isFreezeLabel();
+    if (was_frozen) c.element->freezeLabel(false);
+
+    c.element->rSequenceStruct() = seq;
+    c.element->setElementInformations(infos);
+    c.element->freezeLabel(frozen);
 }

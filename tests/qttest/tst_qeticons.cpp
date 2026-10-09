@@ -271,7 +271,7 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 }
 
 /**
-	QET's own vector icons live in ico/scalable/, the Breeze ones in
+	QET's own vector icons live in ico/qet/scalable/, the Breeze ones in
 	ico/breeze/: one file for every size from the toolbar up. Line art
 	has a recolored copy in the dark theme; colored art has none and is
 	inherited. Each must resolve in both themes at 22, 24, 32 and 64 px,
@@ -415,7 +415,7 @@ void tst_qeticons::breezeIconsAreSharpAtEverySize()
 }
 
 /**
-	A traced icon (ico/traced/, misc/make_icon_themes.py) is the PNG copied
+	A traced icon (ico/qet/traced/, misc/make_icon_themes.py) is the PNG copied
 	pixel by pixel at 16 and 22 pixels, so those files and the 24 pixel
 	canvas must be drawn unscaled. At every size, at 1x and at 2x, Qt must
 	pick the folder's own file.

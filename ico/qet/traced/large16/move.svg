@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+    </style>
+  </defs>
+  <path d="M4.5 8V3.75A1.25 1.25 0 0 1 7 3.75V7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M7 3.75V2.75A1.25 1.25 0 0 1 9.5 2.75V7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M9.5 2.75A1.25 1.25 0 0 1 12 2.75V7" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M12 4.75A1.25 1.25 0 0 1 14.5 4.75V8L13.5 10V14.5H6.5Q5.5 14.5 5 13.5L2 10Q1.4 9.2 2.1 8.5Q2.8 7.9 3.6 8.5L4.5 9.3V8" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"/>
+</svg>

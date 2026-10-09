@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <path d="M0 0H15V4H0ZM1 1V3H14V1Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <path d="M0 12H15V16H0ZM1 13V15H14V13Z" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="3" y="3" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="4" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="5" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="3" y="6" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="3" y="7" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="3" y="8" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="3" y="9" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="3" y="10" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="3" y="11" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="3" y="12" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="7" y="3" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="7" y="4" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="7" y="5" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="6" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="7" y="7" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="7" y="8" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="7" y="9" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="7" y="10" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="7" y="11" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="7" y="12" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="11" y="3" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="11" y="4" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="11" y="5" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="11" y="6" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="11" y="7" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="11" y="8" width="1" height="1" style="fill:#00bb00"/>
+  <rect x="11" y="9" width="1" height="1" style="fill:#55dd55"/>
+  <rect x="11" y="10" width="1" height="1" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <rect x="11" y="11" width="1" height="1" style="fill:#ff0000"/>
+  <rect x="11" y="12" width="1" height="1" style="fill:#ff0000"/>
+</svg>

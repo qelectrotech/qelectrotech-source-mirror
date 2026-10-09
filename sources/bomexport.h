@@ -27,7 +27,9 @@ class QSqlQuery;
 namespace BomExport
 {
 	QStringList defaultColumns();
-	QString defaultQuery();
+	QString defaultQuery(bool include_slaves = true,
+						 bool include_junctions = true);
+	QString junctionFilter();
 		/// One CSV record: every field quoted, ';' between them, '\n'
 		/// after -- the format every CSV export of this program writes.
 		/// Public so a list which is not read from the project database

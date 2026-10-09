@@ -28,7 +28,7 @@ class CompositeTextEditDialog : public QDialog
 		QString plainText() const;
 	
 	private slots:
-		void on_m_info_cb_activated(const QString &arg1);
+		void on_m_info_cb_activated(int index);
 		
 	protected:
 		void focusInEvent(QFocusEvent *event) override;

@@ -26,6 +26,7 @@
 #include <QFileInfo>
 #include <QObject>
 #include <QTextStream>
+#include <QUndoStack>
 
 #ifdef QET_HAS_SCRIPTING
 #include <QJSEngine>
@@ -112,7 +113,24 @@ namespace {
 	constexpr int kScriptTimeoutMs = 30000;
 }
 
-bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view)
+bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view,
+		  const QString &title)
+{
+	QFile file(scriptPath);
+	if (QetSettings::scriptingEnabled()
+	    && !file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		err << "Cannot open script: " << scriptPath << "\n";
+		return false;
+	}
+	const QString source = QString::fromUtf8(file.readAll());
+	file.close();
+	return runSource(source, scriptPath,
+			 title.isEmpty() ? QFileInfo(scriptPath).completeBaseName() : title,
+			 project, view, nullptr);
+}
+
+bool runSource(const QString &source, const QString &fileName, const QString &title,
+	       QETProject *project, DiagramView *view, LiveRun *live)
 {
 	// Checked here as well as at each caller, deliberately: this is the
 	// one function that actually evaluates JavaScript, so it is the one
@@ -121,23 +139,18 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 	// on the command line, an offer to switch the setting on in the editor.
 	if (!QetSettings::scriptingEnabled()) {
 		err << refusalMessage() << "\n";
-		if (view) {
+		if (live) {
+			live->error = refusalMessage();
+		} else if (view) {
 			QET::QetMessageBox::warning(nullptr, QObject::tr("Script"),
 						    refusalMessage());
 		}
 		return false;
 	}
 
-	QFile file(scriptPath);
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-		err << "Cannot open script: " << scriptPath << "\n";
-		return false;
-	}
-	const QString source = QString::fromUtf8(file.readAll());
-	file.close();
-
 	QJSEngine engine;
 	auto *api = new QetScriptApi(project, view, &engine);
+	if (live) api->setLive(&live->log);
 	QJSValue qet_value = engine.newQObject(api);
 	// newQObject() takes ownership by default (QJSEngine::JavaScriptOwnership),
 	// which would delete api as soon as the engine's GC decides to -- api's
@@ -162,7 +175,22 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 		}
 	});
 
-	QJSValue result = engine.evaluate(source, scriptPath);
+	// From the editor, a run is one undo step: a script that places
+	// twenty items is undone with one Ctrl+Z, not twenty. Headless --run
+	// keeps one step per call, which is what a script calling qet.undo()
+	// itself relies on. QUndoStack keeps an empty macro as a blank entry
+	// (and marks the project modified), so a script that changed nothing
+	// has its macro taken off again: an obsolete command is deleted by
+	// QUndoStack::undo() instead of being undone onto the redo side.
+	QUndoStack *stack = (view && project) ? project->undoStack() : nullptr;
+	const QString undo_text = live ? QObject::tr("Assistant : %1").arg(title)
+				       : QObject::tr("Script : %1").arg(title);
+	if (stack) {
+		stack->beginMacro(undo_text);
+		api->setUndoGrouped(true);
+	}
+
+	QJSValue result = engine.evaluate(source, fileName);
 	{
 		std::lock_guard<std::mutex> lock(mtx);
 		finished = true;
@@ -170,9 +198,23 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 	cv.notify_one();
 	watchdog.join();
 
+	if (stack) {
+		api->setUndoGrouped(false);
+		stack->endMacro();
+		// Always the top of the undo side once the macro is closed, even
+		// when beginMacro() dropped a redo tail and count() went down.
+		const QUndoCommand *macro = stack->command(stack->index() - 1);
+		if (macro && macro->childCount() == 0) {
+			const_cast<QUndoCommand *>(macro)->setObsolete(true);
+			stack->undo();
+		} else if (live) {
+			live->undoText = undo_text;
+		}
+	}
+
 	if (result.isError()) {
 		const QString message = QStringLiteral("Script error: %1:%2: %3")
-				.arg(scriptPath)
+				.arg(fileName)
 				.arg(result.property(QStringLiteral("lineNumber")).toInt())
 				.arg(result.toString());
 		err << message << "\n";
@@ -180,7 +222,11 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 		// launched the GUI normally (nowhere on Windows, easy to miss
 		// everywhere else). Headless --run has no GUI to show this in, and
 		// no session for it to block.
-		if (view) {
+		if (live) {
+			// The assistant gets the error and the user sees it in the
+			// log: a box here would wait on someone who did not ask.
+			live->error = message;
+		} else if (view) {
 			QET::QetMessageBox::critical(nullptr, QObject::tr("Script"), message);
 		}
 		return false;
@@ -202,7 +248,14 @@ int run(const QStringList &)
 	return 1;
 }
 
-bool runOnProject(const QString &, QETProject *, DiagramView *)
+bool runSource(const QString &, const QString &, const QString &, QETProject *,
+	       DiagramView *, LiveRun *live)
+{
+	if (live) live->error = QStringLiteral("built without Qt Qml: no scripting");
+	return false;
+}
+
+bool runOnProject(const QString &, QETProject *, DiagramView *, const QString &)
 {
 	err << "This build of QElectroTech was compiled without the Qt Qml "
 		   "module, so JavaScript scripting is not available.\n";

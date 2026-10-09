@@ -136,6 +136,32 @@ jobs:
           echo "=== ccache statistics ==="
           /ucrt64/bin/ccache -s
 
+      - name: Run the unit tests
+        shell: msys2 {0}
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/build"
+          ctest --output-on-failure --timeout 300 && exit 0
+          # ctest shows no output for failed tests in this shell, so run each
+          # failed test again with QtTest writing its log to a file, and print it.
+          set +e
+          while IFS=: read -r _ name; do
+            name=${name%$'\r'}
+            exe=$(find tests -name "$name.exe" | head -1)
+            echo "::group::$name"
+            if [ -n "$exe" ]; then
+              QT_QPA_PLATFORM=offscreen "$exe" -o "$name.txt,txt"
+              echo "exit code $?"
+              cat "$name.txt" 2>/dev/null
+            else
+              echo "no executable for $name"
+            fi
+            echo "::endgroup::"
+          done < Testing/Temporary/LastTestsFailed.log
+          exit 1
+
       - name: Verify exe was built
         shell: msys2 {0}
         run: |
@@ -373,6 +399,15 @@ jobs:
           echo "=== Contents of nsis_root/files/ ==="
           ls "$GITHUB_WORKSPACE/nsis_root/files/"
 
+      - name: Diagnose NSIS plugins
+        shell: msys2 {0}
+        run: |
+          pacman -Q mingw-w64-ucrt-x86_64-nsis || true
+          echo "=== nsDialogs.dll ==="
+          find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' || true
+          echo "=== Plugins tree ==="
+          find "$MSYSTEM_PREFIX/share/nsis/Plugins" -maxdepth 2 | head -60 || true
+
       - name: Build NSIS installer
         shell: msys2 {0}
         run: |
@@ -380,8 +415,28 @@ jobs:
           NSIS_ROOT="$GITHUB_WORKSPACE/nsis_root"
           cd "$NSIS_ROOT"
           echo "=== CWD : $(pwd) ==="
-          MSYS2_ARG_CONV_EXCL="*" makensis /V4 QET64.nsi
-          RC=$?
+          echo "=== Unicode/Target directives in QET64.nsi ==="
+          grep -niE '^[[:space:]]*(unicode|target)[[:space:]]' QET64.nsi || echo "(none)"
+
+          # Fallback: if makensis does not register its plugin dir, point it
+          # at the folder that actually contains nsDialogs.dll.
+          EXTRA=()
+          DLL=$(find "$MSYSTEM_PREFIX/share/nsis" -iname 'nsDialogs.dll' | head -1 || true)
+          if [ -n "$DLL" ]; then
+            PLUGDIR_WIN=$(cygpath -w "$(dirname "$DLL")")
+            echo "nsDialogs.dll found in: $PLUGDIR_WIN"
+            # Plugin dirs are per target in NSIS: declare it for all of them so
+            # it applies whatever Unicode/Target directive QET64.nsi uses.
+            EXTRA=(-X"!addplugindir /x86-ansi $PLUGDIR_WIN"
+                   -X"!addplugindir /x86-unicode $PLUGDIR_WIN"
+                   -X"!addplugindir /amd64-unicode $PLUGDIR_WIN")
+          else
+            echo "::error::nsDialogs.dll not found in the MSYS2 NSIS package"
+            exit 1
+          fi
+
+          RC=0
+          MSYS2_ARG_CONV_EXCL="*" makensis /V4 "${EXTRA[@]}" QET64.nsi || RC=$?
           echo "=== Contents of nsis_root after makensis ==="
           ls "$NSIS_ROOT/"
           [ $RC -eq 0 ] || { echo "ERROR: makensis failed (exit $RC)"; exit 1; }
@@ -407,6 +462,7 @@ jobs:
           name: build-logs-qt6
           path: |
             build/CMakeFiles/*.log
+            build/Testing/Temporary/LastTest*.log
             nsis_root/files/bin/
           if-no-files-found: warn
 

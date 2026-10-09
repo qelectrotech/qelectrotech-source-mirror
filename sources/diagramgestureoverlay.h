@@ -29,8 +29,9 @@ class QAction;
 	mouse's direction highlighted. Releasing runs it, releasing near the
 	centre cancels -- SolidWorks' mouse gestures.
 
-	Commands are placed clockwise from the top. The ring only draws; the
-	view tracks the mouse and asks sectorAt() on release.
+	Commands are placed clockwise from the top, one per direction (4 or 8).
+	A null entry is an empty direction. The ring only draws; the view
+	tracks the mouse and asks sectorAt() on release.
 */
 class DiagramGestureOverlay : public QWidget
 {
@@ -39,14 +40,15 @@ class DiagramGestureOverlay : public QWidget
 	public:
 		explicit DiagramGestureOverlay(QWidget *viewport);
 
-		void showAt(const QPoint &center, const QList<QAction *> &actions);
+		void showAt(const QPoint &center, const QList<QAction *> &actions,
+			    int sectors = 8);
 		void setPointer(const QPoint &viewport_pos);
 		int sectorAt(const QPoint &viewport_pos) const;
 		QAction *actionAt(const QPoint &viewport_pos) const;
 
-		static bool isEnabled();
+		int sectors() const { return m_sectors; }
 
-		static const int sectors = 8;
+		static bool isEnabled();
 
 	protected:
 		void paintEvent(QPaintEvent *event) override;
@@ -55,6 +57,7 @@ class DiagramGestureOverlay : public QWidget
 		QPoint m_center;
 		QList<QAction *> m_actions;
 		int m_active = -1;
+		int m_sectors = 8;
 };
 
 #endif // DIAGRAMGESTUREOVERLAY_H

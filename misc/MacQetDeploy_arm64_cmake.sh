@@ -149,7 +149,47 @@ if [ ! -d $BUNDLE ] ; then
     exit 1
 fi
 
-macdeployqt $BUNDLE
+macdeployqt $BUNDLE || { echo "ERROR: macdeployqt failed"; exit 1; }
+
+### offscreen platform plugin (headless use, e.g. qet_mcp.py) ########
+# macdeployqt only deploys libqcocoa. Without libqoffscreen, running
+# QT_QPA_PLATFORM=offscreen aborts. macdeployqt has no option to add it,
+# so copy it from the Homebrew Qt and make it point to the
+# frameworks of the bundle. It is signed with the other plugins below.
+OFFSCREEN="$BUNDLE/Contents/PlugIns/platforms/libqoffscreen.dylib"
+if [ ! -f "$OFFSCREEN" ] ; then
+    echo "libqoffscreen.dylib not deployed by macdeployqt, copying it:"
+    SRC_OFFSCREEN=""
+    for d in "$(brew --prefix qt 2>/dev/null)/share/qt/plugins" \
+             "$(brew --prefix qt 2>/dev/null)/plugins" \
+             /opt/homebrew/share/qt/plugins ; do
+        if [ -f "$d/platforms/libqoffscreen.dylib" ] ; then
+            SRC_OFFSCREEN="$d/platforms/libqoffscreen.dylib"
+            break
+        fi
+    done
+    if [ -z "$SRC_OFFSCREEN" ] ; then
+        echo "ERROR: libqoffscreen.dylib not found in the Qt plugins"
+        exit 1
+    fi
+    mkdir -p "$BUNDLE/Contents/PlugIns/platforms"
+    cp -L "$SRC_OFFSCREEN" "$OFFSCREEN"
+    chmod u+w "$OFFSCREEN"
+    # Qt frameworks: /opt/homebrew/.../QtGui.framework/Versions/A/QtGui
+    # -> inside the bundle
+    otool -L "$OFFSCREEN" | awk 'NR>1 { print $1 }' \
+        | grep -E '/Qt[A-Za-z0-9]+\.framework/' | while read ref; do
+        fwname=$(echo "$ref" | sed -E 's#.*/(Qt[A-Za-z0-9]+)\.framework/.*#\1#')
+        install_name_tool -change "$ref" \
+            "@executable_path/../Frameworks/$fwname.framework/Versions/A/$fwname" \
+            "$OFFSCREEN"
+        echo "  Fixed ref: $fwname"
+    done
+fi
+if [ ! -f "$OFFSCREEN" ] ; then
+    echo "ERROR: libqoffscreen.dylib missing from the bundle"
+    exit 1
+fi
 
 ### fix Homebrew dependencies macdeployqt could not handle ##########
 # Recent Homebrew bottles (brotli, webp, sharpyuv...) reference their own

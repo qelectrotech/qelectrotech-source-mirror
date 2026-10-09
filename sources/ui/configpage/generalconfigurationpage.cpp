@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
+#include "../../scripting/liveserver.h"
+#include "../../scripting/assistantinfo.h"
 
 #include "../../qetapp.h"
 #include "../../qeticons.h"
@@ -26,6 +28,8 @@
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
 #include "../../textgrid.h"
+#include "../../wiringrules.h"
+#include "../wiringruleswarning.h"
 #include "../../editor/terminalnamecheck.h"
 #include "../../ElementsCollection/qetlabelsfile.h"
 #include "../prefixconfigurationdialog.h"
@@ -142,8 +146,23 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
+	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
+	{
+			//The rules every project follows unless it sets its own (#1158)
+		const WiringRules::Settings rules = WiringRules::applicationSettings();
+		ui->m_wiring_max_wires_sb->setValue(rules.max_wires);
+		ui->m_wiring_one_wire_per_report_cb->setChecked(rules.one_wire_per_report);
+		auto enable = [this](bool on) {
+			ui->m_wiring_max_wires_label->setEnabled(on);
+			ui->m_wiring_max_wires_sb->setEnabled(on);
+			ui->m_wiring_one_wire_per_report_cb->setEnabled(on);
+		};
+		enable(ui->m_wiring_rules_cb->isChecked());
+		connect(ui->m_wiring_rules_cb, &QCheckBox::toggled, this, enable);
+	}
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
+	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
 #ifdef QET_HAS_SCRIPTING
 	if (QetSettings::scriptingForcedByEnvironment()) {
@@ -162,6 +181,11 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		//quietly clear a preference set on a build that does have Qml.
 	ui->m_enable_scripting->setVisible(false);
 	ui->m_enable_scripting->setEnabled(false);
+#endif
+	ui->m_live_assistant->setChecked(QetSettings::liveAssistantEnabled());
+#ifndef QET_HAS_SCRIPTING
+	ui->m_live_assistant->setVisible(false);
+	ui->m_live_assistant->setEnabled(false);
 #endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
@@ -352,6 +376,7 @@ void GeneralConfigurationPage::applyConf()
 
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
+	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled
@@ -360,6 +385,15 @@ void GeneralConfigurationPage::applyConf()
 	if (ui->m_enable_scripting->isEnabled()) {
 		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
 	}
+	if (ui->m_live_assistant->isEnabled()) {
+		QetSettings::setLiveAssistantEnabled(ui->m_live_assistant->isChecked());
+#ifdef QET_HAS_SCRIPTING
+			//Switching it off closes the door now, not at the next start
+		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
+#endif
+	}
+		//What an assistant reads about this QElectroTech follows the change
+	AssistantInfo::write();
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
@@ -371,6 +405,17 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
+	{
+		const WiringRules::Settings before = WiringRules::applicationSettings();
+		WiringRules::Settings rules = before;
+		rules.max_wires = ui->m_wiring_max_wires_sb->value();
+		rules.one_wire_per_report = ui->m_wiring_one_wire_per_report_cb->isChecked();
+		WiringRules::setApplicationSettings(rules);
+		if (WiringRules::masterEnabled() && WiringRules::turnsRuleOn(before, rules)) {
+			WiringRulesWarning::show(this);
+		}
+	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());

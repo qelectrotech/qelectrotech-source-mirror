@@ -18,7 +18,13 @@
 #include "elementinfowidget.h"
 #include "../qet.h"
 #include <QCheckBox>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QMessageBox>
 #include <QPushButton>
+#include "../autoNum/elementautonumschemecommand.h"
+#include "../undocommand/freezeelementlabelcommand.h"
 #include "../diagram.h"
 #include "../materiallist/materiallist.h"
 #include "../materiallist/materialselectiondialog.h"
@@ -28,6 +34,7 @@
 #include "../dataBase/projectdatabase.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../ui/projectpropertiesdialog.h"
 #include "../ui_elementinfowidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
 #include "customelementinfopartwidget.h"
@@ -113,13 +120,76 @@ void ElementInfoWidget::apply()
 */
 QUndoCommand* ElementInfoWidget::associatedUndo() const
 {
-	const auto new_info = currentInfo();
+	auto new_info = currentInfo();
 	const auto old_info = m_element -> elementInformations();
 
-	if (old_info != new_info)
-		return (new ChangeElementInformationCommand(m_element, old_info, new_info));
+	const bool was_frozen = m_element->isFreezeLabel();
+	const bool want_frozen = m_freeze_cb ? m_freeze_cb->isChecked() : was_frozen;
 
-	return nullptr;
+		//A numbering chosen in the list is given to the element the way
+		//a placed one gets it: its formula, and the next number of the
+		//numbering, which moves on. That is a command of its own, first,
+		//so the other edited fields are changed on top of its result.
+	const QString chosen = chosenScheme();
+	const bool assign_wanted = !chosen.isEmpty()
+			&& chosen != followedScheme()
+			&& m_element->diagram();
+		//A number picked among the free ones, for an element which keeps its numbering
+	const bool number_wanted = !assign_wanted && m_number_cb && m_number_row
+			&& !m_number_row->isHidden() && m_number_cb->isEnabled()
+			&& m_number_cb->currentData().toInt() > 0
+			&& m_number_cb->currentData().toInt() != m_number_current
+			&& m_element->diagram();
+
+	if (!assign_wanted && !number_wanted && was_frozen == want_frozen)
+	{
+		if (old_info != new_info)
+			return (new ChangeElementInformationCommand(m_element, old_info, new_info));
+		return nullptr;
+	}
+
+	auto *macro = new QUndoCommand(
+				QObject::tr("Modifier les informations de l'élément : %1")
+				.arg(m_element->name()));
+	DiagramContext base_info = old_info;
+	bool state_frozen = was_frozen;
+
+	if (assign_wanted || number_wanted)
+	{
+		RenumberElementsCommand *assign = assign_wanted
+				? ElementAutoNumSchemeCommand::assign(
+					  m_element->diagram()->project(), chosen,
+					  {m_element.data()}, true, nullptr, macro)
+				: ElementAutoNumSchemeCommand::assignNumber(
+					  m_element->diagram()->project(), m_element.data(),
+					  m_number_cb->currentData().toInt(), nullptr, macro);
+		if (assign && !assign->changes().isEmpty())
+		{
+			const auto &change = assign->changes().first();
+			base_info = change.new_infos;
+			state_frozen = change.new_frozen;
+			for (const QString &key : {QETInformation::ELMT_FORMULA,
+									   QETInformation::ELMT_FORMULA_ID,
+									   QETInformation::ELMT_LABEL}) {
+				if (base_info.contains(key)) {
+					new_info.addValue(key, base_info.value(key), key != QETInformation::ELMT_FORMULA_ID);
+				}
+			}
+		}
+	}
+
+	if (base_info != new_info) {
+		new ChangeElementInformationCommand(m_element, base_info, new_info, macro);
+	}
+	if (state_frozen != want_frozen) {
+		new FreezeElementLabelCommand(m_element, state_frozen, want_frozen, macro);
+	}
+
+	if (macro->childCount() == 0) {
+		delete macro;
+		return nullptr;
+	}
+	return macro;
 }
 
 /**
@@ -177,6 +247,12 @@ void ElementInfoWidget::enableLiveEdit()
 	if (m_exclude_from_bom_cb) {
 		connect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
+	if (m_freeze_cb) {
+		connect(m_freeze_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_number_cb) {
+		connect(m_number_cb, QOverload<int>::of(&QComboBox::activated), this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -191,6 +267,12 @@ void ElementInfoWidget::disableLiveEdit()
 
 	if (m_potential_isolating_cb) {
 		disconnect(m_potential_isolating_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_freeze_cb) {
+		disconnect(m_freeze_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_number_cb) {
+		disconnect(m_number_cb, QOverload<int>::of(&QComboBox::activated), this, &ElementInfoWidget::apply);
 	}
 	if (m_exclude_from_bom_cb) {
 		disconnect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
@@ -226,6 +308,9 @@ void ElementInfoWidget::buildInterface()
 	}
 
 	setupMaterialButtons();
+	setupSchemeRow();
+	setupNumberRow();
+	setupFreezeRow();
 
 	m_add_custom_property_btn = new QPushButton(tr("Ajouter une propriété personnalisée"), this);
 	connect(m_add_custom_property_btn, &QPushButton::clicked, this, [this]() { addCustomProperty(); });
@@ -273,7 +358,8 @@ QStringList ElementInfoWidget::predefinedKeys() const
 			? QETInformation::terminalElementInfoKeys()
 			: QETInformation::elementInfoKeys();
 
-	keys << QStringLiteral("auto_num_locked")
+	keys << QETInformation::ELMT_FORMULA_ID
+		 << QStringLiteral("auto_num_locked")
 		 << QStringLiteral("potential_isolating")
 		 << QStringLiteral("exclude_from_bom");
 
@@ -573,6 +659,12 @@ void ElementInfoWidget::updateUi()
 	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw -> setText (element_info[eipw->key()].toString());
 	}
+	refreshSchemeRow();
+	if (m_freeze_cb) {
+		m_freeze_cb->setChecked(m_element->isFreezeLabel());
+		updateFreezeRow();
+	}
+	refreshNumberRow();
 	updateSuggestions();
 
 	// Rebuild the custom-property rows to match whatever
@@ -658,8 +750,362 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	if (m_exclude_from_bom_cb) {
 		info_.addValue(QStringLiteral("exclude_from_bom"), m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 	}
+
+		//The element keeps following its numbering scheme as long as its
+		//formula is left as it is; a formula edited by hand is its own.
+	const DiagramContext &elmt_info = m_element->elementInformations();
+	if (elmt_info.contains(QETInformation::ELMT_FORMULA_ID)
+			&& !info_.value(QETInformation::ELMT_FORMULA).toString().isEmpty()
+			&& info_.value(QETInformation::ELMT_FORMULA) == elmt_info.value(QETInformation::ELMT_FORMULA)) {
+		info_.addValue(QETInformation::ELMT_FORMULA_ID,
+					   elmt_info.value(QETInformation::ELMT_FORMULA_ID), false);
+	}
 	return info_;
 }
+/**
+	@brief ElementInfoWidget::setupSchemeRow
+	Add above the formula the list of the numberings of the project, the
+	formula of the element being the one of the numbering picked there:
+	no formula to type, a numbering to choose, and a button to open the
+	numberings without leaving this window.
+*/
+void ElementInfoWidget::setupSchemeRow()
+{
+	ElementInfoPartWidget *formula = infoPartWidgetForKey(QETInformation::ELMT_FORMULA);
+	if (!formula || !m_element || !m_element->diagram()) {
+		return;
+	}
+
+	m_scheme_row = new QWidget(this);
+	auto *layout = new QHBoxLayout(m_scheme_row);
+	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(new QLabel(tr("Numérotation automatique"), m_scheme_row));
+
+	m_scheme_cb = new QComboBox(m_scheme_row);
+	m_scheme_cb->setObjectName(QStringLiteral("m_scheme_cb"));
+	m_scheme_cb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	layout->addWidget(m_scheme_cb, 1);
+
+	auto *open = new QPushButton(tr("…"), m_scheme_row);
+	open->setToolTip(tr("Ouvrir les numérotations d'éléments du projet"));
+	open->setMaximumWidth(32);
+	layout->addWidget(open);
+
+	ui->scroll_vlayout->insertWidget(ui->scroll_vlayout->indexOf(formula), m_scheme_row);
+
+		//The formula is shown, not typed: it comes from the numbering
+	formula->setDisabled(true);
+
+	connect(m_scheme_cb, QOverload<int>::of(&QComboBox::activated),
+			this, &ElementInfoWidget::schemeChosen);
+	connect(m_scheme_cb, QOverload<int>::of(&QComboBox::activated),
+			this, &ElementInfoWidget::updateNumberRow);
+	connect(open, &QPushButton::clicked, this, &ElementInfoWidget::openSchemePage);
+}
+
+/**
+	@brief ElementInfoWidget::setupFreezeRow
+	Add below the label a check box which freezes it: a frozen label is
+	not touched by the numbering of elements, and its number is not given
+	to another element.
+*/
+void ElementInfoWidget::setupFreezeRow()
+{
+	ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
+	if (!label || !m_element) {
+		return;
+	}
+	m_freeze_cb = new QCheckBox(tr("Figer le nom"), this);
+	m_freeze_cb->setToolTip(tr("Un nom figé n'est pas changé par la numérotation automatique, "
+							   "et son numéro n'est pas donné à un autre élément."));
+	ui->scroll_vlayout->insertWidget(ui->scroll_vlayout->indexOf(label) + 1, m_freeze_cb);
+	connect(m_freeze_cb, &QCheckBox::toggled, this, &ElementInfoWidget::updateNumberRow);
+}
+
+/**
+	@brief ElementInfoWidget::updateFreezeRow
+	Freezing means something for a label a formula gives: the box can be
+	ticked when there is one, and always unticked, so that a frozen
+	element can be given back.
+*/
+void ElementInfoWidget::updateFreezeRow()
+{
+	ElementInfoPartWidget *formula = infoPartWidgetForKey(QETInformation::ELMT_FORMULA);
+	if (!m_freeze_cb || !formula) {
+		return;
+	}
+	m_freeze_cb->setEnabled(!formula->text().isEmpty() || m_freeze_cb->isChecked());
+	updateNumberRow();
+}
+
+/**
+	@brief ElementInfoWidget::setupNumberRow
+	Add under the numbering a list of the numbers the element may be given
+	by hand: its own, then the free ones, each with the label it would give.
+	For an element which follows a numbering whose numbers are one sequence.
+*/
+void ElementInfoWidget::setupNumberRow()
+{
+	if (!m_scheme_row || !m_element || !m_element->diagram()) {
+		return;
+	}
+	m_number_row = new QWidget(this);
+	auto *layout = new QHBoxLayout(m_number_row);
+	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(new QLabel(tr("Numéro"), m_number_row));
+	m_number_cb = new QComboBox(m_number_row);
+	m_number_cb->setObjectName(QStringLiteral("m_number_cb"));
+	m_number_cb->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	m_number_cb->setToolTip(tr("Seuls les numéros libres sont proposés : un élément qui doit garder son "
+							   "numéro réel peut le retrouver si personne ne l'a."));
+	layout->addWidget(m_number_cb, 1);
+	ui->scroll_vlayout->insertWidget(ui->scroll_vlayout->indexOf(m_scheme_row) + 1, m_number_row);
+	m_number_row->hide();
+	connect(m_number_cb, QOverload<int>::of(&QComboBox::activated), this, &ElementInfoWidget::numberChosen);
+}
+
+/**
+	@brief ElementInfoWidget::refreshNumberRow
+	Fill the list of numbers: the element's own, then the free ones. Hidden
+	when the element follows no numbering, or one whose numbers are not one
+	sequence.
+*/
+void ElementInfoWidget::refreshNumberRow()
+{
+	if (!m_number_cb || !m_element || !m_element->diagram()) {
+		return;
+	}
+	QETProject *project = m_element->diagram()->project();
+	const QString title = followedScheme();
+	const auto support = title.isEmpty()
+			? ElementAutoNumSchemeCommand::NumberSupport()
+			: ElementAutoNumSchemeCommand::numberSupport(project->elementAutoNum().value(title));
+
+	const QSignalBlocker blocker(m_number_cb);
+	m_number_cb->clear();
+	m_number_current = -1;
+	if (!support.supported) {
+		m_number_row->hide();
+		return;
+	}
+	if (const auto own = ElementAutoNumSchemeCommand::numberOf(support, m_element)) {
+		m_number_current = *own;
+		m_number_cb->addItem(tr("%1  (actuel)").arg(*own), *own);
+	} else {
+		m_number_cb->addItem(tr("— (numéro inconnu)"), 0);
+	}
+	for (int n : ElementAutoNumSchemeCommand::freeNumbers(project, title, m_element)) {
+		if (n == m_number_current) continue;
+		m_number_cb->addItem(tr("%1  →  %2").arg(n).arg(
+								 ElementAutoNumSchemeCommand::labelForNumber(project, title, m_element, n)), n);
+	}
+	m_number_cb->setCurrentIndex(0);
+	m_number_row->show();
+	updateNumberRow();
+}
+
+/**
+	@brief ElementInfoWidget::updateNumberRow
+	A number is chosen only for an element which keeps its numbering and
+	whose name is not frozen.
+*/
+void ElementInfoWidget::updateNumberRow()
+{
+	if (!m_number_cb || !m_number_row || m_number_row->isHidden()) {
+		return;
+	}
+	const bool keeps = chosenScheme() == followedScheme() && !chosenScheme().isEmpty();
+	const bool frozen = m_freeze_cb ? m_freeze_cb->isChecked() : m_element->isFreezeLabel();
+	m_number_cb->setEnabled(keeps && !frozen);
+	m_number_cb->setToolTip(
+				frozen ? tr("Le nom est figé : dégelez-le pour changer son numéro.")
+				: !keeps ? tr("Le numéro se choisit quand l'élément garde sa numérotation.")
+				: tr("Seuls les numéros libres sont proposés : un élément qui doit garder son "
+					 "numéro réel peut le retrouver si personne ne l'a."));
+}
+
+/**
+	@brief ElementInfoWidget::numberChosen
+	Show the label the number picked gives, in the field of the label.
+*/
+void ElementInfoWidget::numberChosen()
+{
+	ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
+	if (!label || !m_element || !m_element->diagram()) {
+		return;
+	}
+	const int number = m_number_cb->currentData().toInt();
+	if (number <= 0 || number == m_number_current) {
+		label->setText(m_element->elementInformations().value(QETInformation::ELMT_LABEL).toString());
+		return;
+	}
+	label->setText(ElementAutoNumSchemeCommand::labelForNumber(
+					   m_element->diagram()->project(), followedScheme(), m_element, number));
+}
+
+/**
+	@brief ElementInfoWidget::followedScheme
+	@return the title of the numbering the element follows, empty if none
+*/
+QString ElementInfoWidget::followedScheme() const
+{
+	if (!m_element || !m_element->diagram()) {
+		return QString();
+	}
+	return m_element->diagram()->project()->elementAutoNumTitle(
+				QUuid(m_element->elementInformations()
+					  .value(QETInformation::ELMT_FORMULA_ID).toString()));
+}
+
+/**
+	@brief ElementInfoWidget::chosenScheme
+	@return the title of the numbering picked in the list, empty if the
+	element is to follow none
+*/
+QString ElementInfoWidget::chosenScheme() const
+{
+	const QString data = m_scheme_cb ? m_scheme_cb->currentData().toString() : QString();
+	return data == QLatin1String("\x01") ? QString() : data;
+}
+
+/**
+	@brief ElementInfoWidget::refreshSchemeRow
+	Fill the list with the numberings of the project and show the one the
+	element follows. An element with a formula of its own, followed from
+	no numbering, gets an entry for it, so that it is neither hidden nor
+	lost by looking at it.
+*/
+void ElementInfoWidget::refreshSchemeRow()
+{
+	if (!m_scheme_cb || !m_element || !m_element->diagram()) {
+		return;
+	}
+	QETProject *project = m_element->diagram()->project();
+
+	const QSignalBlocker blocker(m_scheme_cb);
+	m_scheme_cb->clear();
+	m_scheme_cb->addItem(tr("Aucune (nom saisi à la main)"), QString());
+
+	QStringList titles(project->elementAutoNum().keys());
+	titles.sort(Qt::CaseInsensitive);
+	for (const QString &title : titles) {
+		m_scheme_cb->addItem(title, title);
+	}
+
+	const QString followed = followedScheme();
+	if (!followed.isEmpty()) {
+		m_scheme_cb->setCurrentIndex(m_scheme_cb->findData(followed));
+		m_scheme_index = m_scheme_cb->currentIndex();
+		return;
+	}
+
+	const QString formula = m_element->elementInformations()
+			.value(QETInformation::ELMT_FORMULA).toString();
+	if (!formula.isEmpty()) {
+			//Same data as "none" would clash: the entry is for display only
+		m_scheme_cb->insertItem(1, tr("Formule propre : %1").arg(formula), QStringLiteral("\x01"));
+		m_scheme_cb->setCurrentIndex(1);
+	}
+	m_scheme_index = m_scheme_cb->currentIndex();
+}
+
+/**
+	@brief ElementInfoWidget::schemeChosen
+	The user picked an entry of the list.
+
+	The formula shown is the one of the numbering picked; the label is
+	typed only when there is no formula. Leaving a numbering, or the
+	element's own formula, for "none" also empties the label: what stays
+	would pass for a number the numbering gave, and could be given again
+	to another element. Going back to what the element has at present
+	gives its label back.
+
+	An element whose label is frozen is changed only if the user agrees.
+*/
+void ElementInfoWidget::schemeChosen()
+{
+	ElementInfoPartWidget *formula = infoPartWidgetForKey(QETInformation::ELMT_FORMULA);
+	ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
+	if (!formula || !label || !m_element || !m_element->diagram()) {
+		return;
+	}
+
+	const DiagramContext info = m_element->elementInformations();
+	const QString own_formula = info.value(QETInformation::ELMT_FORMULA).toString();
+	const bool own_entry = m_scheme_cb->currentData().toString() == QLatin1String("\x01");
+	const QString chosen = chosenScheme();
+	const bool unchanged = own_entry
+			|| (!chosen.isEmpty() && chosen == followedScheme())
+			|| (chosen.isEmpty() && own_formula.isEmpty());
+
+	const bool frozen_now = m_freeze_cb ? m_freeze_cb->isChecked() : m_element->isFreezeLabel();
+	if (!unchanged && frozen_now)
+	{
+		const auto answer = QET::QetMessageBox::question(
+					this,
+					tr("Nom figé"),
+					tr("Le nom de cet élément est figé.\n"
+					   "Changer sa numérotation le remplacera ou l'effacera.\n\nContinuer ?"),
+					QMessageBox::Yes | QMessageBox::No,
+					QMessageBox::No);
+		if (answer != QMessageBox::Yes) {
+			m_scheme_cb->setCurrentIndex(m_scheme_index);
+			return;
+		}
+	}
+	m_scheme_index = m_scheme_cb->currentIndex();
+		//The user agreed: the element is no longer protected
+	if (!unchanged && m_freeze_cb) {
+		m_freeze_cb->setChecked(false);
+	}
+
+		//Setting the fields one by one must not apply each step
+	const bool live = m_live_edit;
+	if (live) disableLiveEdit();
+
+	if (unchanged) {
+		formula->setText(own_formula);
+		label->setText(info.value(QETInformation::ELMT_LABEL).toString());
+	} else if (chosen.isEmpty()) {
+		formula->setText(QString());
+		if (!own_formula.isEmpty()) {
+			label->setText(QString());
+		}
+	} else {
+		formula->setText(m_element->diagram()->project()->elementAutoNumFormula(chosen));
+	}
+	updateFreezeRow();
+
+	if (live) {
+		enableLiveEdit();
+		apply();
+	}
+}
+
+/**
+	@brief ElementInfoWidget::openSchemePage
+	Open the numberings of the project, on the one of elements, then show
+	again the list, which may have changed.
+*/
+void ElementInfoWidget::openSchemePage()
+{
+	if (!m_element || !m_element->diagram()) {
+		return;
+	}
+	const QString before = chosenScheme();
+
+	ProjectPropertiesDialog ppd(m_element->diagram()->project(), this);
+	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	ppd.changeToElement();
+	ppd.exec();
+
+	refreshSchemeRow();
+	const int index = m_scheme_cb->findData(before);
+	if (index >= 0) {
+		m_scheme_cb->setCurrentIndex(index);
+	}
+}
+
 /**
 	@brief ElementInfoWidget::firstActivated
 	Slot activated when this widget is show.

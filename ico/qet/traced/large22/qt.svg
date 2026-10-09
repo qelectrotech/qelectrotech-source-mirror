@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+    </style>
+  </defs>
+  <g transform="scale(1)">
+  <polygon points="4,4 32,4 32,24 28,28 0,28 0,8" style="fill:#41cd52"/>
+  <ellipse cx="11.7" cy="15.2" rx="4.5" ry="6.3" style="fill:none;stroke:#ffffff;stroke-width:2.2"/>
+  <path d="M14 19.8L16.3 24.3" style="fill:none;stroke:#ffffff;stroke-width:2.2;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M21 9V19.4Q21 21.4 23 21.4H25" style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round"/>
+  <path d="M18.8 12.8H25" style="fill:none;stroke:#ffffff;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:round"/>
+  </g>
+</svg>

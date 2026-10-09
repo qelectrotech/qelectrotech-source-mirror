@@ -1,4 +1,4 @@
-        LangString wrongArch         ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
+﻿        LangString wrongArch         ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
         LangString installed         ${LANG_FRENCH}  "${SOFT_NAME} est déja installé. $\n$\nCliquer sur `OK` pour désinstaller l'ancienne version `Annuler` pour annuler cet upgrade."
         LangString Elements          ${LANG_FRENCH}  "Eléments"
         LangString Electric          ${LANG_FRENCH}  "Electrique"

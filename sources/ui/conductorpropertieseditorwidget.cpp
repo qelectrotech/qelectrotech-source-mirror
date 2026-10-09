@@ -17,7 +17,7 @@
 */
 #include "conductorpropertieseditorwidget.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../conductormultiedit.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "conductorpropertieswidget.h"
@@ -35,6 +35,7 @@
 #include <QComboBox>
 #include <QGroupBox>
 #include <QKeyEvent>
+#include <QLabel>
 #include <QLineEdit>
 #include <QScrollArea>
 #include <QSettings>
@@ -44,11 +45,11 @@
 
 /**
 	@brief ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget
-	@param conductor : conductor to edit
+	@param conductors : conductors to edit
 	@param parent : parent widget
 */
 ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
-		Conductor *conductor, QWidget *parent) :
+		const QList<Conductor *> &conductors, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	m_cpw(new ConductorPropertiesWidget(this))
 {
@@ -76,12 +77,19 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 			QStringLiteral("diagrameditor/conductor_apply_all"), on);
 	});
 
+		//Shown only when several conductors are selected: the fields hold
+		//the first one's values, and only the edited ones reach the others.
+	m_count_label = new QLabel(this);
+	m_count_label->setWordWrap(true);
+	m_count_label->hide();
+
 	auto *scroll = new QScrollArea(this);
 	scroll->setWidgetResizable(true);
 	scroll->setFrameShape(QFrame::NoFrame);
 	scroll->setWidget(m_cpw);
 	auto *layout = new QVBoxLayout(this);
 	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(m_count_label);
 	layout->addWidget(m_apply_all_cb);
 	layout->addWidget(scroll);
 	setMinimumWidth(120);
@@ -100,7 +108,7 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 			gb->installEventFilter(this);
 
 	setDisabled(true);
-	setConductor(conductor);
+	setConductors(conductors);
 }
 
 /**
@@ -123,24 +131,62 @@ ConductorPropertiesEditorWidget::~ConductorPropertiesEditorWidget()
 {}
 
 /**
-	@brief ConductorPropertiesEditorWidget::setConductor
-	Set (or change) the conductor whose properties are edited.
-	@param conductor
+	@brief ConductorPropertiesEditorWidget::setConductors
+	Set (or change) the conductors whose properties are edited.
+	@param conductors
 */
-void ConductorPropertiesEditorWidget::setConductor(Conductor *conductor)
+void ConductorPropertiesEditorWidget::setConductors(
+		const QList<Conductor *> &conductors)
 {
-	if (!conductor) return;
-	if (m_conductor && m_conductor != conductor)
-		disconnect(m_conductor, &Conductor::propertiesChange,
-				   this, &ConductorPropertiesEditorWidget::updateUi);
-	m_conductor = conductor;
-		//Keep the dock in sync when the conductor is edited elsewhere (e.g. the
-		//modal "Edit conductor" dialog); otherwise a stale snapshot would be
-		//written back on the next apply() and overwrite that change (issue #500).
-	connect(m_conductor, &Conductor::propertiesChange,
-			this, &ConductorPropertiesEditorWidget::updateUi, Qt::UniqueConnection);
+	if (conductors.isEmpty()) return;
+
+	for (const QPointer<Conductor> &c : std::as_const(m_conductors))
+		if (c)
+			disconnect(c, &Conductor::propertiesChange,
+					   this, &ConductorPropertiesEditorWidget::scheduleUpdateUi);
+	m_conductors.clear();
+
+		//The scene gives no order for its selection: sort, so the same
+		//wires always show the same "first" one.
+	QList<Conductor *> sorted = conductors;
+	ConductorMultiEdit::sortByPosition(sorted, [](Conductor *c) {
+		return c->sceneBoundingRect().topLeft();
+	});
+
+	for (Conductor *c : std::as_const(sorted))
+	{
+		m_conductors << c;
+			//Keep the dock in sync when a conductor is edited elsewhere (e.g.
+			//the modal "Edit conductor" dialog); otherwise a stale snapshot
+			//would be written back on the next apply() and overwrite that
+			//change (issue #500). One edit of N conductors emits N signals:
+			//they are gathered into one reload.
+		connect(c, &Conductor::propertiesChange,
+				this, &ConductorPropertiesEditorWidget::scheduleUpdateUi,
+				Qt::UniqueConnection);
+	}
+
+	const int count = conductors.size();
+	m_count_label->setText(
+		tr("%n conducteurs sélectionnés : seuls les champs modifiés leur sont appliqués.",
+		   "selection properties panel", count));
+	m_count_label->setVisible(count > 1);
+
 	setEnabled(true);
 	updateUi();
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::firstConductor
+	@return the first edited conductor still alive, its values are the ones
+	shown, or nullptr
+*/
+Conductor *ConductorPropertiesEditorWidget::firstConductor() const
+{
+	for (const QPointer<Conductor> &c : m_conductors)
+		if (c)
+			return c;
+	return nullptr;
 }
 
 /**
@@ -153,10 +199,25 @@ void ConductorPropertiesEditorWidget::apply()
 	// programmatically (updateUi/reset): mid-load the widget holds a partial
 	// state that must not be committed onto the conductor.
 	if (m_updating) return;
-	if (!m_conductor || !m_conductor->diagram()) return;
+	Conductor *first = firstConductor();
+	if (!first || !first->diagram()) return;
 	if (QUndoCommand *undo = associatedUndo())
-		m_conductor->diagram()->undoStack().push(undo);
-	m_shown = m_cpw->properties();
+		first->diagram()->undoStack().push(undo);
+	updateUi();
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::scheduleUpdateUi
+	Reload the widget once the current event is done, however many
+	conductors changed in it.
+*/
+void ConductorPropertiesEditorWidget::scheduleUpdateUi()
+{
+	if (m_update_pending) return;
+	m_update_pending = true;
+	QMetaObject::invokeMethod(this, [this]() {
+		if (m_update_pending) updateUi();
+	}, Qt::QueuedConnection);
 }
 
 /**
@@ -242,7 +303,7 @@ void ConductorPropertiesEditorWidget::disconnectChangeSignals()
 */
 void ConductorPropertiesEditorWidget::reset()
 {
-	if (!m_conductor) return;
+	if (!firstConductor()) return;
 	m_updating = true;
 	m_cpw->setProperties(m_shown);
 	m_updating = false;
@@ -250,13 +311,24 @@ void ConductorPropertiesEditorWidget::reset()
 
 /**
 	@brief ConductorPropertiesEditorWidget::updateUi
-	Reload the widget from the conductor (e.g. when the selection changes).
+	Reload the widget from the conductors (e.g. when the selection
+	changes): the first one's values, with the text fields they do not
+	agree on left blank.
 */
 void ConductorPropertiesEditorWidget::updateUi()
 {
-	if (!m_conductor) return;
+	m_update_pending = false;
+	QList<ConductorProperties> list;
+	for (const QPointer<Conductor> &c : std::as_const(m_conductors))
+		if (c)
+			list << c->properties();
+	if (list.isEmpty()) return;
+
+	const auto mixed = ConductorMultiEdit::mixedTextFields(list);
 	m_updating = true;
-	m_cpw->setProperties(m_conductor->properties());
+	m_cpw->setProperties(ConductorMultiEdit::shown(list, mixed));
+	m_cpw->setMixedTextFields(mixed);
+	m_cpw->setTextLocked(list.size() > 1);
 		//Read back rather than keep the conductor's own values: a value the
 		//widget cannot show exactly must not count as an edit.
 	m_shown = m_cpw->properties();
@@ -267,51 +339,31 @@ void ConductorPropertiesEditorWidget::updateUi()
 	@brief ConductorPropertiesEditorWidget::associatedUndo
 	@return the edit as one undo step, or nullptr if nothing changes.
 
-	Only the fields the user changed are written: the conductor keeps every
-	other value, including one the widget cannot show exactly.
+	Only the fields the user changed are applied, to each edited conductor:
+	with several conductors selected, each keeps its own text, function,
+	cable... unless that is the field being edited.
 
-	When "apply to all" is ticked, every conductor on the same potential is
-	updated too, in the same undo step (one undo reverts them all), as the
-	modal dialog does (ConductorPropertiesDialog::PropertiesDialog).
+	When "apply to all" is ticked, every conductor on the same potential as
+	an edited one is updated too, in the same undo step (one undo reverts
+	them all), as the modal dialog does
+	(ConductorPropertiesDialog::PropertiesDialog).
 */
 QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 {
-	if (!m_conductor) return nullptr;
+		//Most calls are a field losing focus with nothing edited: answer
+		//before walking the potentials.
+	const ConductorProperties edited = m_cpw->properties();
+	if (edited == m_shown) return nullptr;
 
-	const ConductorProperties new_properties = m_cpw->properties();
-	if (new_properties == m_shown) return nullptr;
+	QList<Conductor *> selected;
+	for (const QPointer<Conductor> &c : m_conductors)
+		if (c)
+			selected << c.data();
 
-	QList<Conductor *> targets {m_conductor};
-	if (m_apply_all_cb && m_apply_all_cb->isChecked())
-		for (Conductor *potential_conductor : m_conductor->relatedPotentialConductors())
-			if (!targets.contains(potential_conductor))
-				targets << potential_conductor;
-
-	auto *undo = new QUndoCommand();
-	int changed = 0;
-	for (Conductor *conductor : std::as_const(targets))
-	{
-		const ConductorProperties old_properties = conductor->properties();
-		ConductorProperties properties = old_properties;
-		properties.applyChanges(m_shown, new_properties);
-		if (properties == old_properties) continue;
-
-		QVariant old_value, new_value;
-		old_value.setValue(old_properties);
-		new_value.setValue(properties);
-		new QPropertyUndoCommand(conductor, "properties", old_value, new_value, undo);
-		++changed;
-	}
-
-	if (!changed)
-	{
-		delete undo;
-		return nullptr;
-	}
-	undo->setText(changed == 1
-		? tr("Modifier les propriétés d'un conducteur", "undo caption")
-		: tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
-	return undo;
+	return ConductorMultiEdit::undo(
+		ConductorMultiEdit::targets(
+			selected, m_apply_all_cb && m_apply_all_cb->isChecked()),
+		m_shown, edited);
 }
 
 /**

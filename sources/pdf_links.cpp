@@ -29,12 +29,15 @@
 #include <private/qpdf_p.h>
 
 #include <QByteArray>
+#include <QCryptographicHash>
 #include <QFile>
 #include <QGraphicsTextItem>
 #include <QList>
 #include <QRegularExpression>
 #include <QUrl>
 #include <QVector>
+
+#include <algorithm>
 
 namespace PdfLinks {
 
@@ -87,6 +90,14 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 					  QPointF(qMax(a.x(), b.x()), qMax(a.y(), b.y())));
 	};
 
+	// The links are collected first and drawn sorted, not in the order the
+	// loop below finds them: a cross-reference's contacts are keyed by
+	// Element pointer and the scene's items come in stacking order, so that
+	// order changes from run to run and the same project gave a different
+	// PDF each time it was exported.
+	struct Link { QRectF rect; QUrl url; };
+	QList<Link> links;
+
 	// One clickable link: @p sceneRect on THIS folio leads to
 	// @p targetDiagram, framed around @p targetScene over there.
 	auto injectLinkTo = [&](const QRectF &sceneRect, Diagram *targetDiagram,
@@ -106,7 +117,7 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 
 		QUrl url = QUrl::fromLocalFile(outputFileName);
 		url.setFragment(frag);
-		engine->drawHyperlink(devRect, url);
+		links.append({devRect, url});
 	};
 
 	auto injectLink = [&](const QRectF &sceneRect, Element *targetElmt) {
@@ -187,6 +198,38 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 			continue;
 		}
 	}
+
+	// Top to bottom, then left to right; the target breaks a tie between
+	// two links on the same spot.
+	std::sort(links.begin(), links.end(), [](const Link &a, const Link &b) {
+		if (a.rect.top() != b.rect.top())
+			return a.rect.top() < b.rect.top();
+		if (a.rect.left() != b.rect.left())
+			return a.rect.left() < b.rect.left();
+		if (a.rect.bottom() != b.rect.bottom())
+			return a.rect.bottom() < b.rect.bottom();
+		if (a.rect.right() != b.rect.right())
+			return a.rect.right() < b.rect.right();
+		return a.url.fragment() < b.url.fragment();
+	});
+	for (const Link &link : std::as_const(links))
+		engine->drawHyperlink(link.rect, link.url);
+}
+
+/// The trailer dictionary of the xref table at \a xrefStart, from
+/// "trailer" up to its startxref, which the caller writes again with the
+/// new offset. Copying the old startxref too left a second one in the
+/// file, with the size the file had before its links were rewritten, so
+/// the bytes depended on the output path the links carry (#1178).
+static QByteArray trailerDictionary(const QByteArray &data, int xrefStart)
+{
+	const int start = data.indexOf("trailer", xrefStart);
+	if (start == -1)
+		return "trailer\n<<>>";
+	const int end = data.indexOf("startxref", start);
+	if (end == -1)
+		return "trailer\n<<>>";
+	return data.mid(start, end - start).trimmed();
 }
 
 void convertUriToGoTo(const QString &pdfPath)
@@ -378,19 +421,7 @@ void convertUriToGoTo(const QString &pdfPath)
 		}
 	}
 
-	// Find trailer dict from the original xref section
-	int trailerPos = data.indexOf("trailer", xrefStart);
-	int trailerEnd = -1;
-	if (trailerPos != -1) {
-		trailerEnd = data.indexOf("%%EOF", trailerPos);
-		if (trailerEnd != -1) trailerEnd += 5;
-	}
-
-	QByteArray trailer;
-	if (trailerPos != -1 && trailerEnd != -1)
-		trailer = data.mid(trailerPos, trailerEnd - trailerPos);
-	else
-		trailer = "trailer\n<<>>\n%%EOF";
+	const QByteArray trailer = trailerDictionary(data, xrefStart);
 
 	int newXrefOffset = body.size();
 
@@ -430,6 +461,171 @@ void removeUnusedPdfxNamespace(const QString &pdfPath)
 
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 	f.write(data);
+	f.close();
+}
+
+QUuid placeholderDocumentId()
+{
+	// Any fixed uuid: it is also the namespace of the ids made from it.
+	return QUuid(QStringLiteral("{6f1c2d4e-9a3b-4c5d-8e7f-0a1b2c3d4e5f}"));
+}
+
+void setDocumentIdFromContent(const QString &pdfPath)
+{
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	QByteArray data = f.readAll();
+	f.close();
+
+	// Qt writes the id as text in the XMP ("uuid:6f1c...") and as the hex
+	// of that same text in the trailer ("/ID [ <3666...> <3666...> ]").
+	const QUuid placeholder = placeholderDocumentId();
+	const QByteArray text = placeholder.toByteArray(QUuid::WithoutBraces);
+	if (!data.contains(text) && !data.contains(text.toHex())) return;
+
+	const QUuid id = QUuid::createUuidV5(
+		placeholder, QCryptographicHash::hash(data, QCryptographicHash::Sha256));
+	const QByteArray idText = id.toByteArray(QUuid::WithoutBraces);
+	data.replace(text, idText);
+	data.replace(text.toHex(), idText.toHex());
+
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	f.write(data);
+}
+
+void setDocumentDate(const QString &pdfPath, const QDateTime &when)
+{
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	const QByteArray data = f.readAll();
+	f.close();
+
+	const QDateTime utc = when.toUTC();
+	const QByteArray pdfDate =
+		"(D:" + utc.toString(QStringLiteral("yyyyMMddHHmmss")).toLatin1() + "Z)";
+	const QByteArray xmpDate =
+		utc.toString(QStringLiteral("yyyy-MM-ddTHH:mm:ss")).toLatin1() + "Z";
+
+	// Each edit replaces [start, end) of the original file.
+	struct Edit { int start; int end; QByteArray text; };
+	QList<Edit> edits;
+
+	// The document information: "/CreationDate (D:...)" and, from Qt 6.8,
+	// "/ModDate (D:...)". Its other strings are UTF-16, so they cannot hold
+	// these keys.
+	for (const QByteArray &key : {QByteArray("/CreationDate "), QByteArray("/ModDate ")}) {
+		const int k = data.indexOf(key);
+		if (k == -1) {
+			if (key.startsWith("/ModDate")) continue;
+			return;
+		}
+		const int start = k + key.size();
+		const int end = data.indexOf(')', start);
+		if (end == -1 || data.at(start) != '(') return;
+		edits.append({start, end + 1, pdfDate});
+	}
+
+	// The XMP metadata stream, which Qt writes uncompressed from Qt 6.8
+	// (before, only for PDF/A): its three dates, and its /Length, which
+	// changes with them.
+	const QByteArray metadata("/Type /Metadata /Subtype /XML");
+	const int m = data.indexOf(metadata);
+	if (m != -1) {
+		const QByteArray lengthKey("/Length ");
+		const int l = data.indexOf(lengthKey, m);
+		const int streamStart = data.indexOf("stream\n", m);
+		if (l == -1 || streamStart == -1 || l > streamStart) return;
+		const int lengthStart = l + lengthKey.size();
+		int lengthEnd = lengthStart;
+		while (lengthEnd < data.size() && QChar(data.at(lengthEnd)).isDigit())
+			++lengthEnd;
+		const int streamEnd = data.indexOf("endstream", streamStart);
+		if (lengthEnd == lengthStart || streamEnd == -1) return;
+
+		// The last of each in the stream: the title and author come before
+		// the dates, and are text a project could fill with anything.
+		int xmpDelta = 0;
+		QList<Edit> xmpEdits;
+		for (const QByteArray &attr : {QByteArray("xmp:CreateDate=\""),
+									   QByteArray("xmp:ModifyDate=\""),
+									   QByteArray("xmp:MetadataDate=\"")}) {
+			const int a = data.lastIndexOf(attr, streamEnd);
+			if (a < streamStart) return;
+			const int start = a + attr.size();
+			const int end = data.indexOf('"', start);
+			if (end == -1 || end > streamEnd) return;
+			xmpEdits.append({start, end, xmpDate});
+			xmpDelta += xmpDate.size() - (end - start);
+		}
+		const int length = data.mid(lengthStart, lengthEnd - lengthStart).toInt();
+		edits.append({lengthStart, lengthEnd, QByteArray::number(length + xmpDelta)});
+		edits.append(xmpEdits);
+	}
+
+	std::sort(edits.begin(), edits.end(),
+			  [](const Edit &a, const Edit &b) { return a.start < b.start; });
+
+	// Where an offset in the original file is in the new one.
+	auto moved = [&edits](int offset) {
+		int shift = 0;
+		for (const Edit &e : std::as_const(edits))
+			if (e.end <= offset)
+				shift += e.text.size() - (e.end - e.start);
+		return offset + shift;
+	};
+
+	// The xref table the last startxref points at, which is the one a
+	// reader uses.
+	const int sx = data.lastIndexOf("startxref");
+	if (sx == -1) return;
+	int numStart = sx + 9;
+	while (numStart < data.size() && QChar(data.at(numStart)).isSpace())
+		++numStart;
+	int numEnd = numStart;
+	while (numEnd < data.size() && QChar(data.at(numEnd)).isDigit())
+		++numEnd;
+	const int xref = data.mid(numStart, numEnd - numStart).toInt();
+	if (numEnd == numStart || !data.mid(xref).startsWith("xref")) return;
+	for (const Edit &e : std::as_const(edits))
+		if (e.end > xref) return;    // every edit is in the objects before it
+
+	QByteArray out;
+	out.reserve(data.size() + 64);
+	int pos = 0;
+	for (const Edit &e : std::as_const(edits)) {
+		if (e.start < pos) return;   // overlapping: not a file Qt wrote
+		out += data.mid(pos, e.start - pos);
+		out += e.text;
+		pos = e.end;
+	}
+
+	// The xref entries: "0000012345 00000 n \n", 20 bytes each, after the
+	// "xref" line and one "first count" line.
+	int line = data.indexOf('\n', xref) + 1;
+	line = data.indexOf('\n', line) + 1;
+	if (line <= 0) return;
+	out += data.mid(pos, line - pos);
+	pos = line;
+	static const QRegularExpression entry(QStringLiteral(R"(^(\d{10}) (\d{5}) ([nf])\s*$)"));
+	while (pos + 18 <= data.size()) {
+		const QByteArray row = data.mid(pos, 20);
+		const auto match = entry.match(QString::fromLatin1(row));
+		if (!match.hasMatch()) break;
+		if (match.captured(3) == QLatin1String("n")) {
+			const int offset = match.captured(1).toInt();
+			out += QByteArray::number(moved(offset)).rightJustified(10, '0');
+			out += row.mid(10);
+		} else {
+			out += row;
+		}
+		pos += 20;
+	}
+	out += data.mid(pos, numStart - pos);
+	out += QByteArray::number(moved(xref));
+	out += data.mid(numEnd);
+
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	f.write(out);
 	f.close();
 }
 
@@ -644,18 +840,7 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 	}
 
 	// Copy trailer and bump /Size to account for the new XObject
-	QByteArray trailer;
-	{
-		int tPos = data.indexOf("trailer", xrefStart);
-		if (tPos != -1) {
-			int tEnd = data.indexOf("%%EOF", tPos);
-			if (tEnd != -1) tEnd += 5;
-			if (tEnd != -1)
-				trailer = data.mid(tPos, tEnd - tPos);
-		}
-	}
-	if (trailer.isEmpty())
-		trailer = "trailer\n<<>>\n%%EOF";
+	QByteArray trailer = trailerDictionary(data, xrefStart);
 
 	// Bump /Size: original was maxObjNum+1, now it's emptyXObjNum+1
 	{
@@ -670,16 +855,6 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 								QByteArray::number(emptyXObjNum + 1));
 			}
 		}
-	}
-
-	// Remove duplicate startxref if present in copied trailer
-	{
-		int stPos = trailer.indexOf("\nstartxref\n");
-		if (stPos != -1)
-			trailer = trailer.left(stPos);
-		// Ensure trailer ends with %%EOF
-		if (!trailer.endsWith("%%EOF\n"))
-			trailer += "\n%%EOF\n";
 	}
 
 	QByteArray result;

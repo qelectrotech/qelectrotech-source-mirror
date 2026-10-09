@@ -709,12 +709,20 @@ pugi::xml_document ElementsLocation::pugiXml() const
 #endif
 	if (!m_project)
 	{
+			//Read through QFile, not pugi's load_file(): on Windows load_file()
+			//fails once the full path reaches MAX_PATH (260 characters), while
+			//QFile handles long paths.
+		QFile file(m_file_system_path);
+		if (!file.open(QIODevice::ReadOnly)) {
+			return docu;
+		}
+		const QByteArray data = file.readAll();
 #ifndef Q_OS_LINUX
-		if (docu.load_file(m_file_system_path.toStdWString().c_str())) {
+		if (docu.load_buffer(data.constData(), data.size())) {
 			docu.save(m_string_stream);
 		}
 #else
-		docu.load_file(m_file_system_path.toStdWString().c_str());
+		docu.load_buffer(data.constData(), data.size());
 #endif
 	}
 	else

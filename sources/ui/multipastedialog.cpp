@@ -17,6 +17,7 @@
 */
 
 #include "multipastedialog.h"
+#include "../autoNum/elementautonumschemecommand.h"
 #include "../qetproject.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
@@ -105,22 +106,28 @@ void MultiPasteDialog::on_m_button_box_accepted()
 	{
 		m_diagram->undoStack().beginMacro(tr("Multi-collage"));
 
-		QSettings settings;
-		bool erase_label = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
-			//Ensure when 'auto_num' is checked, the settings 'save_label' is to true.
-			//Because in the class PasteDiagramCommand, if the settings 'save_label' is to false,
-			//the function redo of PasteDiagramCommand, clear the formula and the label of the pasted element
-			//and so the auto_num below do nothing (there is not a formula to compare)
-		if(ui->m_auto_num_cb->isChecked())
-			settings.setValue("diagramcommands/erase-label-on-copy", false);
+		QETProject *project = m_diagram->project();
 
-
+			//The element numberings the copies follow, read now: the paste
+			//erases the formulas of its elements, unless the preference
+			//keeps them, and the numbering below is meant to work either way
+		QList<QMap<QString, QVector<Element *>>> copy_schemes;
+		for(const DiagramContent &dc : std::as_const(m_pasted_content_list))
+		{
+			copy_schemes << (ui->m_auto_num_cb->isChecked()
+							 ? ElementAutoNumSchemeCommand::pastedSchemes(project, dc.m_elements)
+							 : QMap<QString, QVector<Element *>>());
+		}
 
 		m_diagram->clearSelection();
-		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_pasted_content));
+			//The copies are numbered by this dialog, copy by copy, below
+		auto *paste = new PasteDiagramCommand(m_diagram, m_pasted_content);
+		paste->setAutoNumbering(false);
+		m_diagram->undoStack().push(paste);
 
-		for(DiagramContent dc : m_pasted_content_list)
+		for(int copy = 0 ; copy < m_pasted_content_list.size() ; ++copy)
 		{
+			const DiagramContent &dc = m_pasted_content_list.at(copy);
 			QList<Element *> pasted_elements = dc.m_elements;
 				//Sort the list element by there pos (top -> bottom)
 			std::sort(pasted_elements.begin(), pasted_elements.end(), [](Element *a, Element *b){return (a->pos().y() < b->pos().y());});
@@ -147,32 +154,21 @@ void MultiPasteDialog::on_m_button_box_accepted()
 				}
 			}
 
-				//Set up the label of element
-				//Instead of use the current autonum of project,
-				//we try to fetch the same formula of the pasted element, in the several autonum of the project
-				//for apply the good formula for each elements
-			if(ui->m_auto_num_cb->isChecked())
+				//Number the elements of this copy with the numberings they
+				//follow: the next numbers, in the order of the Renumber
+				//button, the counters moving on, so that the next copy goes
+				//on from there. The project's current numbering is not
+				//changed, and labels which other elements keep are not given.
+			if(!copy_schemes.at(copy).isEmpty())
 			{
-				for(Element *elmt : pasted_elements)
-				{
-					QString formula = elmt->elementInformations()["formula"].toString();
-					if(!formula.isEmpty())
-					{
-						QHash <QString, NumerotationContext> autonums = m_diagram->project()->elementAutoNum();
-						QHashIterator<QString, NumerotationContext> hash_iterator(autonums);
-
-						while(hash_iterator.hasNext())
-						{
-							hash_iterator.next();
-							if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
-							{
-								m_diagram->project()->setCurrrentElementAutonum(hash_iterator.key());
-								elmt->setUpFormula();
-							}
-						}
-					}
-				}
+				auto *numbering = new QUndoCommand(tr("Numéroter les éléments collés"));
+				ElementAutoNumSchemeCommand::numberPasted(project, copy_schemes.at(copy), numbering);
+				if(numbering->childCount())
+					m_diagram->undoStack().push(numbering);
+				else
+					delete numbering;
 			}
+
 				//Like elements, we compare formula of pasted conductor with the autonums available in the project.
 			if(ui->m_auto_num_cond_cb->isChecked())
 			{
@@ -216,7 +212,6 @@ void MultiPasteDialog::on_m_button_box_accepted()
 
 		m_diagram->adjustSceneRect();
 		m_accept = true;
-		settings.setValue("diagramcommands/erase-label-on-copy", erase_label);
 		m_diagram->undoStack().endMacro();
 	}
 }

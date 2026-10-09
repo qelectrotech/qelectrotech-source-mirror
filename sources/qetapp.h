@@ -115,6 +115,7 @@ class QETApp : public QObject
 		static QStringList handledFiles(const QList<QUrl> &);
 		static RecentFiles *projectsRecentFiles();
 		static RecentFiles *elementsRecentFiles();
+		static void applyDirectoryArguments(const QETArguments &);
 		
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	public:
@@ -281,6 +282,8 @@ class QETApp : public QObject
 	signals:
 			/// The text grid setting changed, see TextGrid.
 		void textGridChanged();
+			/// A kind of item was shown or hidden, see ShownKinds.
+		void shownKindsChanged();
 
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
@@ -309,6 +312,7 @@ class QETApp : public QObject
 		void openTitleBlockTemplate(const QString &);
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
+		void customizeQET(int tab = 0);
 			/// Save the settings to a file (discussion #610)
 		void exportConfiguration();
 			/// Replace the settings with a saved file, then close QElectroTech

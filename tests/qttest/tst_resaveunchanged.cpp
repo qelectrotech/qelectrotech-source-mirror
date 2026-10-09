@@ -17,8 +17,9 @@
 //  - information values were trimmed on save but not on load, so a label
 //    with stray spaces kept them in its displayed copy until the project
 //    was opened again (m_000.qet).
-// Runs the real binary's --resave twice on every example, and on a
-// project whose title block holds a value that is a single space (#973).
+// Runs the real binary's --resave twice on every example, on a project
+// whose title block holds a value that is a single space (#973), and on
+// one that used to crash on opening (bugtracker #345).
 class tst_resaveunchanged : public QObject
 {
 	Q_OBJECT
@@ -83,10 +84,47 @@ private slots:
 		QVERIFY2(a == b, "the second save changed the file");
 	}
 
+	// A contact not linked to a coil, carrying a text built from %{label}:
+	// opening it dereferenced the missing coil and crashed (bugtracker #345).
+	// The fixture is a blank project with one such contact.
+	void unlinkedContactLabelTextOpens()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/unlinked_contact_label.qet");
+		QVERIFY(!fixture.isEmpty());
+		const QString first = resave(fixture);
+		QVERIFY2(!first.isEmpty(), "--resave failed: QElectroTech crashed opening the project");
+		const QString second = resave(first);
+		QVERIFY2(!second.isEmpty(), "second --resave failed");
+		QVERIFY2(read(first) == read(second), "the second save changed the file");
+	}
+
+	// %{machine_manufacturer_reference_auxiliary1..4} resolve like their
+	// neighbours: they were missing from AssignVariables::replaceVariable()
+	// and printed as literal text. The fixture has one terminal whose
+	// four texts are "[%{machine_..._auxiliaryN}|%{manufacturer_reference_auxiliaryN}]",
+	// saved by a build without the fix, so the literal text is in the file.
+	void auxiliaryMachineReferenceResolves()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/aux_machine_reference.qet");
+		QVERIFY(!fixture.isEmpty());
+		const QString saved = resave(fixture);
+		QVERIFY2(!saved.isEmpty(), "--resave failed");
+		const QString xml = QString::fromUtf8(read(saved));
+		for (int n = 1; n <= 4; ++n) {
+			const QString shown = QStringLiteral("<text>[MMR-AUX%1|MR-AUX%1]</text>").arg(n);
+			QVERIFY2(xml.contains(shown), qPrintable(shown + QStringLiteral(" not in the saved file")));
+		}
+		QVERIFY2(!xml.contains(QStringLiteral("<text>[%{machine")),
+				 "a machine manufacturer reference variable was left unresolved");
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()
 	{
+#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
+		QSKIP("QDomDocument::PreserveSpacingOnlyNodes needs Qt 6.5 (see QETProject::openFile)");
+#endif
 		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/Projet_vierge.qet"));
 		QVERIFY(xml.contains("<properties>"));
 		xml.replace("<properties>",

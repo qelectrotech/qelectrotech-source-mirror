@@ -126,6 +126,12 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
+		//The box starts at 2, so the default size 1 shows as 2: keep the
+		//stored size unless the box shows something else.
+	if (properties_.m_dash_size == qBound(ui->m_dash_size_sb->minimum(),
+										  m_properties.m_dash_size,
+										  ui->m_dash_size_sb->maximum()))
+		properties_.m_dash_size = m_properties.m_dash_size;
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
@@ -192,11 +198,59 @@ void ConductorPropertiesWidget::setHiddenOneTextPerFolio(const bool &hide) {
 }
 
 /**
+	@brief ConductorPropertiesWidget::setMixedTextFields
+	Mark the text fields whose value differs between several edited
+	conductors: they are shown blank, with a hint saying why.
+	@param mixed
+*/
+void ConductorPropertiesWidget::setMixedTextFields(
+		const QList<ConductorMultiEdit::TextField> &mixed)
+{
+	using namespace ConductorMultiEdit;
+	const QList<QPair<TextField, QLineEdit *>> edits {
+		{Text,            ui->m_text_le},
+		{Formula,         ui->m_formula_le},
+		{Function,        ui->m_function_le},
+		{TensionProtocol, ui->m_tension_protocol_le},
+		{WireColor,       ui->m_wire_color_le},
+		{WireSection,     ui->m_wire_section_le},
+		{Cable,           ui->m_cable_le},
+		{Bus,             ui->m_bus_le}};
+
+	for (const auto &edit : edits)
+		edit.second->setPlaceholderText(mixed.contains(edit.first)
+			? tr("Plusieurs valeurs", "several conductors, different values")
+			: QString());
+}
+
+/**
+	@brief ConductorPropertiesWidget::setTextLocked
+	Lock the conductor text while several conductors are edited at once:
+	the same number on all of them would make duplicates.
+	@param locked
+*/
+void ConductorPropertiesWidget::setTextLocked(bool locked)
+{
+	m_text_locked = locked;
+	ui->m_text_le->setEnabled(!locked && ui->m_formula_le->text().isEmpty());
+	ui->m_text_le->setToolTip(locked
+		? tr("Plusieurs conducteurs sélectionnés : le texte se modifie "
+		     "sur un seul conducteur à la fois.")
+		: tr("Texte"));
+}
+
+/**
 	@brief ConductorPropertiesWidget::setDisabledShowText
 	@param disable
 */
 void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
 	ui->m_show_text_cb->setDisabled(disable==true? true : false);
+		//Say why the box is locked: the setting that locks it is not in this dialog
+	ui->m_show_text_cb->setToolTip(disable
+		? tr("Texte visible\n"
+		     "Verrouillé par l'option « Afficher un texte de potentiel par "
+		     "folio » de ce folio, dans Propriétés du folio.")
+		: tr("Texte visible"));
 }
 
 /**
@@ -239,7 +293,7 @@ void ConductorPropertiesWidget::initWidget()
 
 	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
 	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
-	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(text.isEmpty());});
+	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(!m_text_locked && text.isEmpty());});
 	ui->m_multiwires_gb->setChecked(true);
 	ui->m_singlewire_gb->setChecked(true);
 #if TODO_LIST

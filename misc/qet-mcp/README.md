@@ -39,8 +39,15 @@ here read the model.
 | `qet_element_build` | **author a `.elmt`** — draw a new symbol, with terminals to wire it by |
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
-| `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios |
+| `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios, terminals with more than four wires, folio reports with several wires |
+| `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings, labels over wires, 4-way junction dots, side branches out of line; and the moves that fix them, ready for `qet_edit` |
 | `qet_query` | **ask the project database** — read-only SQL over the views and tables |
+| `qet_about` | **start here** — where QElectroTech keeps things, what is switched on, the stored scripts, the calls a script can make (from `qet-assistant.json`), the installation's standard symbols if it has any, and your house style |
+| `qet_script_api` | **what a script can call** — every `qet.*` call of this build, and the header that makes a script a button |
+| `qet_script_test` | **try a script** on a copy of a project: what it would change, what it logged, its errors |
+| `qet_script_install` | **make a button** — store a script (and an SVG icon) where QElectroTech shows it in Project > Scripts and the Scripts toolbar |
+| `qet_script_list`, `qet_script_read`, `qet_script_remove` | the stored scripts: list, read one to change it, delete one |
+| `qet_recording_list`, `qet_recording_read`, `qet_recording_check`, `qet_recording_remove` | **macro recordings** — what you did by hand, and whether a script does the same |
 
 `qet_export` and `qet_edit` launch QElectroTech. Everything else parses the
 file directly, which is faster, needs no display, and cannot be confused by
@@ -172,17 +179,17 @@ tools that read files work there: `qet_project_info`, `qet_elements`,
 `qet_conductors`, `qet_items`, `qet_diff`, `qet_scan`,
 `qet_element_info`, `qet_element_search` and `qet_element_build`.
 
-## Five tools need scripting switched on
+## Some tools need scripting switched on
 
 A QElectroTech with JavaScript scripting switched off refuses `--run`, and
 off is the default from
 [#984](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/984)
-onwards. Five tools here drive it that way and stop working until it is
-turned on:
+onwards. These tools drive it that way, or store a script that runs when
+clicked, and stop working until it is turned on:
 
 | | |
 |---|---|
-| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_project_new`, `qet_edit` |
+| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_layout_check`, `qet_project_new`, `qet_edit`, `qet_script_api`, `qet_script_test`, `qet_script_install`, `qet_script_remove` |
 | unaffected | everything else — they read the `.qet` directly, or, in `qet_export`'s case, use a plain CLI flag |
 
 The variable goes in the environment this server is started in, which for an
@@ -193,7 +200,7 @@ configured this server and pointed it at a QElectroTech binary made that
 choice, and their interactive QElectroTech keeps whatever its own setting
 says.
 
-Without it, those five come back `"ok": false` with a `hint` naming the
+Without it, those come back `"ok": false` with a `hint` naming the
 variable. Older builds, from before the setting existed, need nothing.
 
 ## What the server is allowed to touch
@@ -226,6 +233,8 @@ file or one listed by whoever configured the server:
 | `QET_MCP_BINARIES` | other executables a call may name, separated like `QET_MCP_WORKSPACE` (for comparing two builds) |
 | `QET_MCP_ALLOW_ANY_BINARY=1` | turns the check off: a call can then run any program |
 | `QET_MCP_ELEMENTS` | element collections a call may name as `elements_dir` besides the workspace and the installed one |
+| `QET_MCP_CACHE_DIR` | where the parsed element index is kept between runs (default `~/.cache/qet-mcp`); a new server then loads a collection in well under a second instead of parsing every symbol |
+| `QET_MCP_STANDARD_SYMBOLS` | the installation's standard symbols, one per device role (default `standard-symbols.json` in QElectroTech's data folder); `qet_about` lists them |
 
 Anything else is refused, even a file inside the workspace: being there
 makes it readable, not runnable. Before this rule any executable a call
@@ -247,6 +256,152 @@ each tool. Importing `qet_mcp` and calling `tool_export()` from your own
 Python is not confined and is not meant to be — that is your code calling a
 library, and you already chose the paths.
 
+## What QElectroTech tells the server: `qet-assistant.json`
+
+Each time an editor window opens, and whenever its stored scripts,
+settings or live channel change, QElectroTech writes `qet-assistant.json`
+in its standard data folder (`~/.local/share/QElectroTech/QElectroTech/`
+on Linux, `%APPDATA%\QElectroTech\QElectroTech\` on Windows). It names
+every folder actually in use, even when QElectroTech was started with
+`--data-dir`, which features are on, every call a script can make, and the
+stored scripts. The server reads it instead of guessing; `qet_about` shows
+it. Set `QET_MCP_INFO_FILE` to read it from somewhere else.
+
+The server also sends the assistant a short note at first contact: the two
+ways of working (files, or live), the usual order of tools, and to start
+with `qet_about`.
+
+## Script buttons
+
+QElectroTech turns every `.js` file in its scripts folder that starts with a
+`// ==QETScript==` header into a command with an icon: in Project > Scripts,
+on the Scripts toolbar, in command search and in the shortcut bar. A person
+can write that file by hand; an assistant uses the tools above. Both end
+with the same file, and an open QElectroTech picks it up without a restart.
+
+```js
+// ==QETScript==
+// @name     Add revision note
+// @icon     add-revision-note.svg
+// @tooltip  Puts a "Rev A" note on the folio on screen
+// @shortcut Ctrl+Alt+R
+// @context  canvas
+// ==/QETScript==
+qet.addText(qet.currentFolio(), "Rev A", 40, 40);
+```
+
+The usual round: `qet_script_api` for the calls, `qet_script_test` on a
+project until the diff is what was wanted, then `qet_script_install` with
+`test_project` set, so a script that fails is not stored. The assistant
+never presses the button: the user does, and one Ctrl+Z undoes the run.
+
+| | |
+|---|---|
+| folder | QElectroTech's data folder + `/scripts`: `~/.local/share/QElectroTech/QElectroTech/scripts` on Linux, `%APPDATA%\QElectroTech\QElectroTech\scripts` on Windows, `~/Library/Application Support/QElectroTech/QElectroTech/scripts` on macOS |
+| `QET_MCP_SCRIPTS_DIR` | another folder, for a QElectroTech started with `--data-dir` |
+
+The folder is chosen by the server, never by a call, and a script's id
+becomes its file name only if it is `a-z`, `0-9`, `-` and `_`. Storing or
+removing a script needs `QET_ENABLE_SCRIPTING=1` like an edit does: a
+stored script runs with the user's rights when they click it.
+
+## Macro recordings: from something done by hand to a button
+
+In QElectroTech, Project > Scripts > Record a macro records what you
+do on a project until you click it again. It saves the project before and
+after, and each step from the undo history with the folio after it. At Stop
+it offers to copy a ready-made request; paste that into the assistant.
+
+| | |
+|---|---|
+| `qet_recording_list` | the recordings, newest first |
+| `qet_recording_read` | one recording: each step as structured changes, and the overall change |
+| `qet_recording_check` | run a script on the "before" project, from the same folio and selection, and say whether the result **matches** the "after" project, or what differs |
+| `qet_recording_remove` | delete one |
+
+The usual round: read the recording, write a script that does the same in
+general (on the selected elements, say, not on these exact ones),
+`qet_recording_check` it until it matches, then `qet_script_install` it.
+
+## Your house style
+
+Drawing conventions you want every assistant to follow -- grid, flow
+direction, wire routing, tags, grouping -- written once, in your own words,
+and kept by QElectroTech itself rather than by any one assistant:
+
+```js
+qet.setHouseStyle("Never place a symbol off the 10 px grid.\n...");
+```
+
+It is stored in QElectroTech's settings (needs `QET_ENABLE_SCRIPTING=1`, as
+for any change), written to `qet-assistant.json` as `house_style`, and shown
+by `qet_about`, whose description tells the assistant to follow it. Every
+assistant that connects, of any make, reads the same text.
+
+## Live mode: working in the QElectroTech you have open
+
+Every tool above works on files, with no QElectroTech window involved. The
+`qet_live_*` tools instead act on the project open in **your**
+QElectroTech, in front of you, so you can watch, stop or undo:
+
+| | |
+|---|---|
+| `qet_live_status` | what is on screen: project, folio, selection, last undo step, stored scripts |
+| `qet_live_run_script` | run script text on the open project: one undo step named "Assistant: …" |
+| `qet_live_run_stored` | press a stored script's button |
+| `qet_live_command` | an editor command from an allow-list that opens no dialog: selection, zoom, rotate, snap, group, reset wires |
+| `qet_live_show_folio` | show another folio |
+| `qet_live_undo_last` | undo the newest step, only if the assistant made it |
+| `qet_live_screenshot` | a picture of the folio on screen, as an MCP image, cropped to the folio |
+| `qet_live_new_project` | a new project, as File > New makes it, made current; optional title, number of folios and a file to save it to (never over an existing one) |
+| `qet_live_open_project` | open a saved project and make it current, with no dialog; one already open is only made current |
+| `qet_live_switch_project` | make another open project current, by its index in `qet_live_status`'s `projects` or its file |
+| `qet_live_save_project` | save the current project, or save it as a new file (never over an existing one) |
+| `qet_live_close_project` | close a project, only when it has no unsaved changes |
+| `qet_live_print` | print folios to the default or a named printer with no print dialog -- QElectroTech always asks you first -- or to a new PDF file |
+| `qet_live_changes` | the undo history, each step marked assistant or you; `since` gives what changed after a point |
+| `qet_live_layout_check` | `qet_layout_check` on the drawing as it is on screen, unsaved changes included, without saving it |
+
+Every `qet_live_*` call works on the current project. Pages and links
+between pages need no tool of their own: in `qet_live_run_script`,
+`qet.addFolio()` and `qet.setFolioTitle()` add and name folios, and
+`qet.linkElements()` links a folio report arrow, or a coil and its
+contacts, across folios.
+
+A script the assistant writes on the spot is shown to you first, with
+*Run*, *Decline* or *Always* (remembered after a restart; untick "Ask
+before running" in the Assistant panel to be asked again); the Assistant
+panel lists everything it did.
+
+QElectroTech only listens when three things are true:
+
+1. the server has `QET_ENABLE_SCRIPTING=1`, as for editing;
+2. in QElectroTech, Settings > Configure QElectroTech > General, on the
+   Projects tab, "Allow an AI assistant to act on the open project (live
+   mode)" is ticked (off by default; in French, Configurer QElectroTech >
+   Général > Projets);
+3. at this start, you answered *Continue* to the warning QElectroTech shows
+   when it starts with that setting on -- or, once, ticked "Don't ask again
+   at start" in it, which lasts until the setting is switched off.
+
+While it listens, the status bar says so and shows the assistant's last
+action, with a *Stop* button that closes the channel for the rest of
+the session. Each action is one Ctrl+Z. A script's `qet.showMessage()` is
+logged instead of opening a box nobody asked for.
+
+To see where a live request spends its time, start QElectroTech and this
+server with the same `QET_LIVE_PERF_LOG=/path/to/log.jsonl`. Each side
+appends one JSON line per request, with the same `id`: the server its
+total, the time reading `qet-assistant.json` and the gap since its previous
+call (the assistant's own turn); QElectroTech the time queued, waiting on
+your answer, running, and until the folio is next repainted. Nothing is
+written when the variable is unset.
+
+The channel is a local socket only your user can open. QElectroTech puts
+its name and a random token in the `live` part of `qet-assistant.json`,
+and clears it when the channel closes; `qet_about` says whether one is
+open but never shows the token.
+
 ## Worked examples
 
 **What did that edit change?**
@@ -263,6 +418,61 @@ library, and you already chose the paths.
 
 Four elements moved by one uniform delta; nothing was relabelled. That is
 the answer a screenshot gave wrongly.
+
+**Tidy a drawing: straight wires, symbols in line**
+
+A wire is straight only when its two terminals are exactly in line. A symbol
+is placed by its origin and its terminals sit at an offset from it, so
+symbols placed "under each other" by eye are often a few pixels apart and
+the wire jogs. After drawing:
+
+```json
+{"name": "qet_layout_check", "arguments": {"project": "drawn.qet"}}
+```
+
+```json
+{"ok": true, "style": "iec", "score": 40,
+ "summary": {"wires": 4, "straight_wires": 0, "avoidable_bends": 4, "off_grid": 0, ...},
+ "findings": [{"rule": "avoidable_bend", "folio": 1, "offset": 3.0, ...}],
+ "fixes": [{"op": "move_element", "folio": 0, "element": "{...}", "dx": -3.0, "dy": 0.0}, ...]}
+```
+
+Pass `fixes` as they are, all in one call, to `qet_edit`, then check again;
+the same drawing then scores 100. The moves are planned together: a wire
+that is already straight pins its two symbols, a move never puts a symbol
+on another one or across another wire, and symbols lined up with each other
+go onto the grid together. A jog no move can fix (two symbols whose
+terminals are not spaced alike) is reported with `"conflict": true`.
+
+`style` is `iec` (current paths as columns, wires mostly vertical), `nfpa`
+(ladder rungs as rows, wires mostly horizontal) or `auto`, which goes by the
+drawing. The check is read-only. On a QElectroTech build without
+`conductorPath()`, a wire whose two terminals both carry other wires cannot
+be read; the answer names those in `unread_wires` and leaves them out of the
+score.
+
+**Draw with straight wires from the start**
+
+A wire is straight only when its two terminals are exactly in line, and a
+symbol is placed by its origin, not by its terminals. `place_element` does
+the arithmetic: it adds a symbol with one of its terminals in line with
+another symbol's, `gap` pixels away (40 by default), on the side that
+terminal faces.
+
+```json
+{"op": "add_element", "folio": 0, "path": "common://…/borne_2.elmt", "x": 100, "y": 100, "id": "x1"},
+{"op": "place_element", "folio": 0, "path": "common://…/contact.elmt",
+ "terminal": 0, "next_to": "$x1", "next_to_terminal": 2, "id": "k1"},
+{"op": "add_conductor", "folio": 0, "from": "$x1", "from_terminal": 2, "to": "$k1", "to_terminal": 0}
+```
+
+For a column of current paths (IEC) the next symbol goes below; for a
+ladder rung (NFPA) to the right, with the symbols rotated so their
+terminals face along the rung. If the named terminal faces the wrong way,
+the op says so in its `note`. `align_terminal` lines up a symbol that is
+already placed; `align_elements` and `distribute_elements` line up and
+space whole rows or columns. `place_element` and `align_terminal` need a
+QElectroTech with `qet.terminalPosition()`.
 
 **Draw something, and check it landed**
 
@@ -421,6 +631,34 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   the file until it is saved once: since #1107 QElectroTech works one out
   from the wire's two ends on load and writes it on the next save, so it
   appears after a first `qet_edit`.
+- **Wires can be routed around symbols.** By default a new conductor gets
+  QElectroTech's own two or three straight segments, which run through
+  whatever symbol or wire lies between the two terminals. Give
+  `add_conductor` `"route": "avoid"` to redraw it around the symbols
+  instead, or use `route_conductor` (addressed like `move_conductor_segment`,
+  by `element` + `terminal` or by `"conductor": "{uuid}"`) to redraw one
+  already drawn. The route leaves and enters each terminal in its own
+  direction, runs on the folio grid, stays inside the folio's border, and is
+  the cheapest found by a search that charges for length, for each bend
+  and, less heavily, for running along or crossing another wire. Obstacles
+  are each symbol's own rectangle plus half a grid step; texts, images,
+  shapes and tables are not obstacles. Running along another wire costs
+  more but is not forbidden, so where there is no other way two wires
+  can end up drawn on top of each other. The path is saved as a
+  hand-edited one, so it survives a reload and one undo puts the
+  default back. Where
+  no route exists, the wire keeps its path: `route_conductor` returns
+  `"no-route"` and both ops say so in `note` -- it is not a failure, and
+  the run goes on. Like a hand-edited path, it is stretched rather than
+  rerouted when a symbol is moved afterwards; route again after moving
+  things. Needs `qet.routeConductor()` / `qet.routeConductorBetween()` in
+  the build, and only an edit that routes requires them. A symbol drawn
+  around either end's own symbol (a cabinet made as one element) is not
+  an obstacle, so a wire between two symbols inside one is routed inside
+  it. Two terminals facing each other on one line, with nothing between
+  them, are joined by a straight line however close they are. A
+  terminal pointing straight into another symbol has no route, rather
+  than one through that symbol.
 - **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
   `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
   in place of its index, on the op's own element (for `add_conductor`, on
@@ -431,6 +669,46 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   `qet.terminalIndex()` in the build. A symbol file saved without terminal
   uuids lists them empty; QElectroTech gives the terminals of every
   project's copy of it a uuid on opening (#1118), written on the next save.
+- **A folio can be sized for a sheet of paper**: `set_folio_border` with
+  `"property": "preset"` and a value such as `"tabloid-landscape"` (A0–A5,
+  letter, legal, tabloid or ledger, each `-portrait` or `-landscape`) picks
+  the column and row counts and sizes that fill the sheet best without
+  going over it, as one undo step, keeping each size as near the folio's
+  current one as it can. The title block and headers are measured from the
+  folio, not assumed, so it holds for any template on either edge. Sizes
+  stay whole numbers, because the folio properties panel edits them in
+  whole pixels and would round a fraction off the first time it was
+  opened; so the page can come out up to 0.75 pt short of the sheet a
+  side. The op's `note` says what it chose and the size of the frame a PDF
+  export measures, e.g. `23 columns of 70, 12 rows of 82; frame 1223.25 x
+  791.25 pt` for tabloid landscape from a new folio. (The PDF export
+  measures the frame and title block plus its one-pixel line, at 96 pixels
+  an inch: 0.75 pt a pixel, and writes it on the standard sheet it is
+  within 3 pt of.) Needs `qet.folioPresets()` in the build.
+- **The `wiring` export names unnamed terminals.** Most shipped symbols
+  leave their terminals unnamed, so `from_terminal`/`to_terminal` are often
+  empty. Each row also ends with `from_terminal_index`,
+  `from_terminal_uuid`, `to_terminal_index` and `to_terminal_uuid`: the
+  index `add_conductor` takes, and the uuid the `.qet` names the terminal
+  by (as `qet_edit` accepts in place of the index). The index is empty for
+  a terminal sharing its point with another, where the order is undefined;
+  the uuid tells those apart. `wiring_list_view` carries the same four
+  columns for `qet_query`.
+- **`"reproducible": true` makes a PDF comparable byte for byte.** Two
+  exports of the same project otherwise differ in their dates and document
+  id. The option sets `SOURCE_DATE_EPOCH` for the run
+  ([reproducible-builds.org](https://reproducible-builds.org/specs/source-date-epoch/)):
+  the PDF then carries that date in UTC, a document id derived from the
+  project file, and its fonts in a fixed order. The date is
+  `source_date_epoch` if given, else the server's own `SOURCE_DATE_EPOCH`,
+  else 0 (1 January 1970). The result's `"reproducible"` is false, with a
+  hint, when the QElectroTech build is too old to honour it.
+- **`"no_slaves"` and `"no_junctions"` shorten a `bom` export.** The first
+  leaves out the contact blocks, which otherwise get a row of their own; the
+  second leaves out terminal-type elements with no label, designation,
+  manufacturer or manufacturer reference, such as the junction dots of
+  `114_connections`. They pass `--no-slaves` and `--no-junctions`; an older
+  QElectroTech ignores both and exports every row, so check the row count.
 - **`qet_export` isolates its launch.** SingleApplication keys its socket
   on `applicationFilePath()`, so a second launch of the same binary path
   forwards its request to an already-running instance and returns *that*
@@ -487,6 +765,13 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   at names none of them and is refused, so address a potential from one of
   its leaves. Property names are the file's own, so `qet_conductors` reads
   back exactly what was set.
+- **`set_conductor_default` sets a folio's conductor defaults**, the
+  Conductors tab of Folio properties: `onetextperfolio` (`"true"` shows one
+  wire number per potential on the folio), or any `set_conductor` property,
+  which conductors drawn later on that folio start from. `"folio": -1` sets
+  the project's defaults instead, which each folio added afterwards copies;
+  it does not change existing folios. Like the dialogs, it is not on the
+  undo stack.
 - **`link_elements` takes a folio for each end**, because a master and its
   slave are normally on different folios. Whether a pair may be linked is
   decided by QElectroTech's own `isLinkable()`, so a script cannot make a

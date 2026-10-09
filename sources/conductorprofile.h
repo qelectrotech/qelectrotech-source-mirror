@@ -38,10 +38,12 @@ class ConductorProfile {
 	public:
 	/// Segments composing the conductor
 	QList<ConductorSegmentProfile *> segments;
-	/// Orientation of the start terminal
-	Qet::Orientation beginOrientation;
+	/// Orientation of the start terminal. Initialised because the default
+	/// constructor leaves it as is, and the copy constructor and operator=
+	/// then read it from such a profile.
+	Qet::Orientation beginOrientation = Qet::North;
 	/// Orientation of the end terminal.
-	Qet::Orientation endOrientation;
+	Qet::Orientation endOrientation = Qet::North;
 	
 	// methods
 	public:

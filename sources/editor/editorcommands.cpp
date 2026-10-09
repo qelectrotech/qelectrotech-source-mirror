@@ -17,6 +17,7 @@
 */
 #include "editorcommands.h"
 #include "../diagram.h"
+#include "symbolscale.h"
 
 /**
 	@brief ElementEditionCommand::ElementEditionCommand
@@ -784,4 +785,98 @@ void FlipElementsCommand::redo()
 void FlipElementsCommand::undo()
 {
 	redo();
+}
+
+/**
+	@brief ScaleElementCommand::ScaleElementCommand
+	@param scene : the element to scale
+	@param factor : scale factor, applied about the hotspot
+	@param scale_text : also scale font sizes
+	@param parent : parent undo command
+*/
+ScaleElementCommand::ScaleElementCommand(ElementScene *scene,
+										 qreal factor,
+										 bool scale_text,
+										 QUndoCommand *parent) :
+	ElementEditionCommand(QObject::tr("mise à l'échelle de l'élément", "undo caption"),
+						  scene, nullptr, parent),
+	m_factor(factor)
+{
+	const auto scaledFont = [factor, scale_text](QFont font) {
+		if (scale_text) {
+			if (font.pointSizeF() > 0) {
+				font.setPointSize(SymbolScale::scaledFontSize(font.pointSizeF(), factor));
+			} else if (font.pixelSize() > 0) {
+				font.setPixelSize(SymbolScale::scaledFontSize(font.pixelSize(), factor));
+			}
+		}
+		return font;
+	};
+
+	const auto parts = scene->primitives();
+	for (CustomElementPart *part : parts)
+	{
+		QGraphicsItem *item = part->toItem();
+			//Font before position: changing the font can move a text
+			//to keep its alignment.
+		if (auto text = qgraphicsitem_cast<PartText *>(item)) {
+			addChange(text, "font", scaledFont(text->font()));
+			addChange(text, "pos", text->pos() * factor);
+		}
+		else if (auto field = qgraphicsitem_cast<PartDynamicTextField *>(item)) {
+			addChange(field, "font", scaledFont(field->font()));
+			if (field->textWidth() > 0) {
+				addChange(field, "textWidth", field->textWidth() * factor);
+			}
+			addChange(field, "pos", field->pos() * factor);
+		}
+		else if (auto terminal = qgraphicsitem_cast<PartTerminal *>(item)) {
+			addChange(terminal, "label_font", scaledFont(terminal->labelFont()));
+			addChange(terminal, "label_pos", terminal->labelPos() * factor);
+			addChange(terminal, "pos", terminal->pos() * factor);
+		}
+		else {
+			m_geometry_parts << part;
+			if (auto line = qgraphicsitem_cast<PartLine *>(item)) {
+				addChange(line, "length1", line->firstEndLength() * factor);
+				addChange(line, "length2", line->secondEndLength() * factor);
+			}
+		}
+	}
+}
+
+void ScaleElementCommand::addChange(QObject *object, const char *name, const QVariant &after)
+{
+	m_changes << PropertyChange{object, name, object->property(name), after};
+}
+
+/**
+	@brief ScaleElementCommand::scaleGeometry
+	Scale the drawn parts about the hotspot, from \a from times their
+	original size to \a to times it.
+*/
+void ScaleElementCommand::scaleGeometry(qreal from, qreal to)
+{
+	const QRectF before(0, 0, from, from);
+	const QRectF after(0, 0, to, to);
+	for (CustomElementPart *part : std::as_const(m_geometry_parts)) {
+		part->startUserTransformation(before);
+		part->handleUserTransformation(before, after);
+	}
+}
+
+void ScaleElementCommand::undo()
+{
+	scaleGeometry(m_factor, 1);
+	for (const PropertyChange &change : std::as_const(m_changes)) {
+		change.object->setProperty(change.name.constData(), change.before);
+	}
+}
+
+void ScaleElementCommand::redo()
+{
+	scaleGeometry(1, m_factor);
+	for (const PropertyChange &change : std::as_const(m_changes)) {
+		change.object->setProperty(change.name.constData(), change.after);
+	}
 }

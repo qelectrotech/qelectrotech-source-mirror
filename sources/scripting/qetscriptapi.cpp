@@ -43,8 +43,12 @@
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../conductorsegment.h"
+#include "../conductorrouter.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
+#include "../utils/qetsettings.h"
+#include "assistantinfo.h"
 
 // See diagrameventaddpdf.h: a missing QtPdf module (or Qt < 6.4) is not
 // fatal at build time, so addPdfPage() is always declared -- a script
@@ -55,9 +59,12 @@
 #include <QPdfDocument>
 #include <QPainter>
 #endif
+#include <QPageSize>
+#include <cmath>
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../undocommand/mirrorselectioncommand.h"
 #include "../undocommand/promoteshapecommand.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
 #include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
@@ -67,6 +74,8 @@
 #include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../TerminalStrip/terminalstrip.h"
+#include "../autoNum/autonumschemecommand.h"
+#include "../autoNum/elementautonumschemecommand.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 #include "../borderproperties.h"
@@ -88,6 +97,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QDir>
 #include <QDomDocument>
 #include <QFileInfo>
 #include <QFont>
@@ -116,6 +126,67 @@ QString QetScriptApi::filePath() const
 int QetScriptApi::folioCount() const
 {
 	return m_project ? m_project->diagrams().count() : 0;
+}
+
+/**
+	@brief QetScriptApi::currentFolio
+	The index of the folio on screen, so a script started from the editor
+	acts where the user is looking. With no view (--run) there is no such
+	folio, and the first one stands in for it so a script written for the
+	editor can still be tried headless; -1 if the project has none.
+*/
+/**
+	@brief QetScriptApi::apiSignatures
+	Every call a script can make, as "returnType name(type param, ...)",
+	read from the meta-object rather than written out by hand, so the list
+	is the one this build has and cannot drift from it: for a person
+	writing a script, and for an assistant that has to write one without
+	the source at hand. A call with default arguments is listed once, with
+	all of them.
+*/
+QStringList QetScriptApi::apiSignatures() const
+{
+	return signatures();
+}
+
+/**
+	@brief QetScriptApi::signatures
+	apiSignatures() without a script running: what qet-assistant.json lists
+	for an assistant before it has run anything.
+*/
+QStringList QetScriptApi::signatures()
+{
+	QStringList list;
+	const QMetaObject *meta = &staticMetaObject;
+	for (int i = meta->methodOffset(); i < meta->methodCount(); ++i) {
+		const QMetaMethod method = meta->method(i);
+		if (method.methodType() != QMetaMethod::Method
+		    || method.access() != QMetaMethod::Public
+		    || (method.attributes() & QMetaMethod::Cloned)) {
+			continue;
+		}
+		const QList<QByteArray> types = method.parameterTypes();
+		const QList<QByteArray> names = method.parameterNames();
+		QStringList params;
+		for (int p = 0; p < types.size(); ++p) {
+			params << QString::fromLatin1(types.at(p) + ' ' + names.value(p));
+		}
+		list << QStringLiteral("%1 %2(%3)")
+			.arg(QString::fromLatin1(method.typeName()),
+			     QString::fromLatin1(method.name()),
+			     params.join(QStringLiteral(", ")));
+	}
+	return list;
+}
+
+int QetScriptApi::currentFolio() const
+{
+	if (!m_project) return -1;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (m_view && m_view->diagram()) {
+		return diagrams.indexOf(m_view->diagram());
+	}
+	return diagrams.isEmpty() ? -1 : 0;
 }
 
 QString QetScriptApi::folioTitle(int index) const
@@ -258,9 +329,13 @@ bool QetScriptApi::exportWires(const QString &output)
 	return runFlag(QStringLiteral("--export-wires"), {output});
 }
 
-bool QetScriptApi::exportBom(const QString &output)
+bool QetScriptApi::exportBom(const QString &output, bool noSlaves,
+							 bool noJunctions)
 {
-	return runFlag(QStringLiteral("--export-bom"), {output});
+	QStringList args{output};
+	if (noSlaves) args << QStringLiteral("--no-slaves");
+	if (noJunctions) args << QStringLiteral("--no-junctions");
+	return runFlag(QStringLiteral("--export-bom"), args);
 }
 
 /**
@@ -370,6 +445,18 @@ bool QetScriptApi::save(const QString &output)
 void QetScriptApi::log(const QString &message)
 {
 	QTextStream(stderr) << message << "\n";
+	if (m_live_log) m_live_log->append(message);
+}
+
+/**
+	@brief QetScriptApi::setLive
+	A run asked for by an assistant (LiveServer): what the script logs is
+	collected in @p log for the answer, and a message box -- which would
+	wait for someone who did not ask for it -- is logged instead.
+*/
+void QetScriptApi::setLive(QStringList *log)
+{
+	m_live_log = log;
 }
 
 /**
@@ -559,6 +646,11 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 		log(QStringLiteral("qet.%1: empty information key").arg(caller));
 		return false;
 	}
+	if (key == QETInformation::ELMT_FORMULA_ID) {
+		log(QStringLiteral("qet.%1: \"%2\" is internal, follow a numbering with numberElement()")
+				.arg(caller, key));
+		return false;
+	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
 
@@ -566,6 +658,10 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 	if (old_info.value(key).toString() == value) return true; // nothing to push
 	DiagramContext new_info = old_info;
 	new_info.addValue(key, value);
+		// A formula written by hand follows no numbering scheme
+	if (key == QETInformation::ELMT_FORMULA) {
+		new_info.remove(QETInformation::ELMT_FORMULA_ID);
+	}
 
 	auto *cmd = new ChangeElementInformationCommand(element, old_info, new_info);
 	m_project->undoStack()->push(cmd);
@@ -631,6 +727,17 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 		const QString import_path = location.isFileSystem()
 				? QStringLiteral("import/") + location.collectionPath(false)
 				: location.collectionPath(false);
+		// An element file that exists but cannot be read gives a null
+		// uuid(), which the collision check below would misreport as "a
+		// different element" -- say what actually went wrong instead.
+		if (location.isFileSystem()
+				&& location.pugiXml().document_element().empty()) {
+			const QString file = QDir::toNativeSeparators(
+						QFileInfo(location.fileSystemPath()).absoluteFilePath());
+			log(QStringLiteral("qet.addElement: could not read element '%1' (file '%2', "
+								"%3 characters)").arg(locationPath, file).arg(file.size()));
+			return QString();
+		}
 		const ElementsLocation existing(import_path, m_project);
 		if (existing.exist() && existing.uuid() != location.uuid()) {
 			log(QStringLiteral("qet.addElement: '%1' would collide with a different element "
@@ -711,6 +818,16 @@ bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 
 	DiagramContent content;
 	content.m_elements << element;
+		// The wires on its terminals go with it, as when the Delete key
+		// removes a selected element (DiagramContent puts them in
+		// m_conductors_to_update); without them they stay on the folio,
+		// attached to an element that is no longer there.
+	for (Terminal *terminal : element->terminals()) {
+		for (Conductor *conductor : terminal->conductors()) {
+			if (!content.m_conductors_to_update.contains(conductor))
+				content.m_conductors_to_update << conductor;
+		}
+	}
 	if (DeleteQGraphicsItemCommand::hasNonDeletableTerminal(content)) {
 		log(QStringLiteral("qet.deleteElement: %1 has a non-deletable terminal (linked master/slave?), refusing").arg(elementUuid));
 		return false;
@@ -743,6 +860,43 @@ bool QetScriptApi::rotateElement(int folioIndex, const QString &elementUuid, dou
 	cmd->setText(QObject::tr("Pivoter %1").arg(element->name()));
 	m_project->undoStack()->push(cmd);
 	return true;
+}
+
+/**
+	@brief QetScriptApi::mirrorElement
+	Mirror an element in place, as "Miroir horizontal" (left and right
+	swap) or, with @p vertical, "Miroir vertical" (top and bottom swap)
+	do on a selection. Mirroring twice the same way puts it back.
+	@return false if the element is not found or the project is read only
+*/
+bool QetScriptApi::mirrorElement(int folioIndex, const QString &elementUuid, bool vertical)
+{
+	if (m_project && m_project->isReadOnly()) {
+		log(QStringLiteral("qet.mirrorElement: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	m_project->undoStack()->push(new MirrorSelectionCommand(
+		{element}, vertical ? Qt::Vertical : Qt::Horizontal));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::elementMirror
+	@return the mirrors of the element about its own axes, as saved in the
+	project (Element::setMirror()): "horizontal", "vertical", "both", or ""
+	if it is not mirrored or not found. On a turned element, a horizontal
+	mirror of the folio is a vertical mirror of the element.
+*/
+QString QetScriptApi::elementMirror(int folioIndex, const QString &elementUuid) const
+{
+	const Element *element = findElement(folioIndex, elementUuid);
+	if (!element || !element->isMirrored()) return QString();
+	if (!element->hasVerticalMirror()) return QStringLiteral("horizontal");
+	if (!element->hasHorizontalMirror()) return QStringLiteral("vertical");
+	return QStringLiteral("both");
 }
 
 QStringList QetScriptApi::elementUuids(int folioIndex) const
@@ -900,6 +1054,11 @@ bool QetScriptApi::addConductor(int folioIndex,
 	}
 	if (t1->isLinkedTo(t2)) {
 		log(QStringLiteral("qet.addConductor: those two terminals are already wired together"));
+		return false;
+	}
+	if (!t1->hasRoomForWire() || !t2->hasRoomForWire()) {
+		log(QStringLiteral("qet.addConductor: a terminal already has as many wires as the "
+						   "project's wires-per-terminal limit allows"));
 		return false;
 	}
 	if (!t1->canBeLinkedTo(t2)) {
@@ -1146,6 +1305,129 @@ bool QetScriptApi::moveConductorSegment(int folioIndex, const QString &elementUu
 	}
 
 	return conductor->moveSegment(segmentIndex, dx, dy);
+}
+
+namespace {
+ConductorRouter::Direction routerDirection(Qet::Orientation o)
+{
+	switch (o) {
+		case Qet::North: return ConductorRouter::Direction::North;
+		case Qet::East:  return ConductorRouter::Direction::East;
+		case Qet::South: return ConductorRouter::Direction::South;
+		case Qet::West:  return ConductorRouter::Direction::West;
+	}
+	return ConductorRouter::Direction::North;
+}
+} // namespace
+
+/**
+	@brief QetScriptApi::applyRoute
+	Redraw @p conductor around the symbols on its folio (ConductorRouter),
+	as one undo step through Conductor::setPathPoints() -- the same
+	ChangeConductorCommand a handle drag pushes, so the path is saved and
+	survives a reload. Obstacles are every element's own rectangle, its
+	texts left out, except one drawn around either end's own symbol (a
+	frame); the other conductors are not obstacles but cost extra to run
+	along or cross.
+	@return "routed", or "no-route" with the reason logged when there is
+	no such path -- the conductor then keeps the path it had. Not a
+	failure: the wire exists and joins the right terminals either way.
+*/
+QString QetScriptApi::applyRoute(Conductor *conductor, const QString &caller)
+{
+	Diagram *diagram = conductor->diagram();
+	if (!diagram) return QString();
+
+	ConductorRouter::Request request;
+	request.start = conductor->terminal1->dockConductor();
+	request.start_direction = routerDirection(conductor->terminal1->orientation());
+	request.end = conductor->terminal2->dockConductor();
+	request.end_direction = routerDirection(conductor->terminal2->orientation());
+	request.grid = Diagram::xGrid;
+	request.bounds = diagram->border_and_titleblock.insideBorderRect();
+	for (Element *e : diagram->elements())
+		request.obstacles << e->mapRectToScene(e->boundingRect());
+	if (Element *e = conductor->terminal1->parentElement())
+		request.start_symbol = e->mapRectToScene(e->boundingRect());
+	if (Element *e = conductor->terminal2->parentElement())
+		request.end_symbol = e->mapRectToScene(e->boundingRect());
+	for (Conductor *other : diagram->conductors()) {
+		if (other == conductor) continue;
+		QVector<QPointF> wire;
+		const QList<ConductorSegment *> segs = other->segmentsList();
+		for (ConductorSegment *seg : segs) {
+			if (wire.isEmpty()) wire << other->mapToScene(seg->firstPoint());
+			wire << other->mapToScene(seg->secondPoint());
+		}
+		request.wires << wire;
+	}
+
+	const ConductorRouter::Result route = ConductorRouter::route(request);
+	if (route.points.isEmpty()) {
+		log(QStringLiteral("qet.%1: %2; the conductor keeps its path")
+			.arg(caller, route.error));
+		return QStringLiteral("no-route");
+	}
+	if (!conductor->setPathPoints(route.points)) {
+			// ConductorRouter always gives at least the two terminals and an
+			// exit point between them, so this is a route that is not a run
+			// of horizontal and vertical segments from one terminal to the
+			// other -- a bug in the router, not something the folio did.
+		log(QStringLiteral("qet.%1: the route found was refused (it must run in "
+						   "horizontal and vertical segments from one terminal to "
+						   "the other); the conductor keeps its path").arg(caller));
+		return QStringLiteral("no-route");
+	}
+	return QStringLiteral("routed");
+}
+
+/**
+	@brief QetScriptApi::routeConductor
+	Redraw the conductor on a terminal so it goes around the symbols in
+	its way instead of through them -- see applyRoute(). Addressed as the
+	other conductor calls address one.
+	@return "routed", "no-route" (path unchanged, reason logged), or an
+	empty string if there is no such conductor or the project is read-only
+*/
+QString QetScriptApi::routeConductor(int folioIndex, const QString &elementUuid,
+									 int terminalIndex)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.routeConductor: project is read-only"));
+		return QString();
+	}
+	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex,
+										 QStringLiteral("routeConductor"));
+	if (!conductor) return QString();
+	return applyRoute(conductor, QStringLiteral("routeConductor"));
+}
+
+/**
+	@brief QetScriptApi::routeConductorBetween
+	routeConductor() for the conductor joining two given terminals, which
+	names it even where either terminal carries other conductors too --
+	the case just after addConductor() onto a terminal already wired.
+*/
+QString QetScriptApi::routeConductorBetween(int folioIndex,
+											const QString &elementUuidA, int terminalIndexA,
+											const QString &elementUuidB, int terminalIndexB)
+{
+	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.routeConductorBetween: project is read-only"));
+		return QString();
+	}
+	const QString caller = QStringLiteral("routeConductorBetween");
+	Terminal *a = findTerminal(folioIndex, elementUuidA, terminalIndexA, caller);
+	Terminal *b = findTerminal(folioIndex, elementUuidB, terminalIndexB, caller);
+	if (!a || !b) return QString();
+	for (Conductor *c : a->conductors()) {
+		if (c->terminal1 == b || c->terminal2 == b)
+			return applyRoute(c, caller);
+	}
+	log(QStringLiteral("qet.%1: no conductor joins those two terminals").arg(caller));
+	return QString();
 }
 
 QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid) const
@@ -2937,9 +3219,108 @@ bool QetScriptApi::addAutoNum(const QString &kind, const QString &name, const QS
 		}
 	}
 
-	if (kind == QLatin1String("conductor"))     m_project->addConductorAutoNum(name, context);
-	else if (kind == QLatin1String("element"))  m_project->addElementAutoNum(name, context);
-	else                                        m_project->addFolioAutoNum(name, context);
+	if (kind == QLatin1String("element")) {
+			// Through the undo stack, and an existing scheme is edited
+			// rather than replaced: the elements following it follow
+			// the new definition (see ElementAutoNumSchemeCommand)
+		ElementAutoNumSchemeCommand *cmd = nullptr;
+		if (m_project->elementAutoNum().contains(name)) {
+			const int frozen = ElementAutoNumSchemeCommand::editBlockedBy(m_project, name, context).size();
+			if (frozen) {
+				log(QStringLiteral("qet.addAutoNum: %1 element(s) with a frozen label follow '%2', "
+								   "its formula cannot change").arg(frozen).arg(name));
+				return false;
+			}
+			if (const auto conflict = ElementAutoNumSchemeCommand::counterConflict(m_project, name, context)) {
+				log(QStringLiteral("qet.addAutoNum: the counter %1 of '%2' is at or below %3 number(s) in use "
+								   "(up to %4); new elements will skip them")
+						.arg(conflict->counter).arg(name).arg(conflict->count).arg(conflict->highest));
+			}
+			cmd = ElementAutoNumSchemeCommand::edit(m_project, name, name, context, false);
+		} else {
+			const QString problem = ElementAutoNumSchemeCommand::nameProblem(m_project, name);
+			if (!problem.isEmpty()) {
+				log(QStringLiteral("qet.addAutoNum: %1").arg(problem));
+				return false;
+			}
+			cmd = ElementAutoNumSchemeCommand::create(m_project, name, context, QUuid(), false);
+		}
+		if (cmd) m_project->undoStack()->push(cmd);
+		return true;
+	}
+		// Conductor and folio numberings: undoable too, an existing one is
+		// edited, and a new name is unique and not empty
+	const auto scheme_kind = kind == QLatin1String("conductor")
+			? AutoNumSchemeCommand::Kind::Conductor
+			: AutoNumSchemeCommand::Kind::Folio;
+	AutoNumSchemeCommand *cmd = nullptr;
+	if (AutoNumSchemeCommand::contains(m_project, scheme_kind, name)) {
+		cmd = AutoNumSchemeCommand::edit(m_project, scheme_kind, name, name, context);
+	} else {
+		const QString problem = AutoNumSchemeCommand::nameProblem(m_project, scheme_kind, name);
+		if (!problem.isEmpty()) {
+			log(QStringLiteral("qet.addAutoNum: %1").arg(problem));
+			return false;
+		}
+		cmd = AutoNumSchemeCommand::create(m_project, scheme_kind, name, context);
+	}
+	if (cmd) m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::renameAutoNum
+	Rename a numbering context. What follows it follows it under its new
+	name: the elements for an element numbering, the folios for a conductor
+	or folio numbering. Undoable.
+*/
+bool QetScriptApi::renameAutoNum(const QString &kind, const QString &name, const QString &newName)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.renameAutoNum: project is read-only"));
+		return false;
+	}
+	if (kind != QLatin1String("element") && kind != QLatin1String("conductor")
+			&& kind != QLatin1String("folio")) {
+		log(QStringLiteral("qet.renameAutoNum: unknown kind '%1'; expected conductor, element or folio").arg(kind));
+		return false;
+	}
+
+	if (kind != QLatin1String("element"))
+	{
+			// The folios which follow it follow it under its new name
+		const auto scheme_kind = kind == QLatin1String("conductor")
+				? AutoNumSchemeCommand::Kind::Conductor
+				: AutoNumSchemeCommand::Kind::Folio;
+		if (!AutoNumSchemeCommand::contains(m_project, scheme_kind, name)) {
+			log(QStringLiteral("qet.renameAutoNum: no %1 auto-numbering named '%2'").arg(kind, name));
+			return false;
+		}
+		const QString problem = AutoNumSchemeCommand::nameProblem(m_project, scheme_kind, newName, name);
+		if (!problem.isEmpty()) {
+			log(QStringLiteral("qet.renameAutoNum: %1").arg(problem));
+			return false;
+		}
+		auto *cmd = AutoNumSchemeCommand::edit(
+					m_project, scheme_kind, name, newName,
+					AutoNumSchemeCommand::contextOf(m_project, scheme_kind, name));
+		if (cmd) m_project->undoStack()->push(cmd);
+		return true;
+	}
+
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.renameAutoNum: no element auto-numbering named '%1'").arg(name));
+		return false;
+	}
+	const QString problem = ElementAutoNumSchemeCommand::nameProblem(m_project, newName, name);
+	if (!problem.isEmpty()) {
+		log(QStringLiteral("qet.renameAutoNum: %1").arg(problem));
+		return false;
+	}
+	auto *cmd = ElementAutoNumSchemeCommand::edit(
+				m_project, name, newName, m_project->elementAutoNum(name), false);
+	if (cmd) m_project->undoStack()->push(cmd);
 	return true;
 }
 
@@ -2956,9 +3337,30 @@ bool QetScriptApi::removeAutoNum(const QString &kind, const QString &name)
 		log(QStringLiteral("qet.removeAutoNum: no %1 auto-numbering named '%2'").arg(kind, name));
 		return false;
 	}
-	if (kind == QLatin1String("conductor"))     m_project->removeConductorAutoNum(name);
-	else if (kind == QLatin1String("element"))  m_project->removeElementAutoNum(name);
-	else                                        m_project->removeFolioAutoNum(name);
+	if (kind == QLatin1String("element")) {
+		const int used = m_project->elementsUsingElementAutoNum(name).size();
+		if (used) {
+			log(QStringLiteral("qet.removeAutoNum: %1 element(s) follow '%2', it cannot be removed")
+					.arg(used).arg(name));
+			return false;
+		}
+		if (auto *cmd = ElementAutoNumSchemeCommand::remove(m_project, name)) {
+			m_project->undoStack()->push(cmd);
+		}
+		return true;
+	}
+	const auto scheme_kind = kind == QLatin1String("conductor")
+			? AutoNumSchemeCommand::Kind::Conductor
+			: AutoNumSchemeCommand::Kind::Folio;
+	const int used = AutoNumSchemeCommand::usersOf(m_project, scheme_kind, name).size();
+	if (used) {
+		log(QStringLiteral("qet.removeAutoNum: %1 folio(s) follow '%2', it cannot be removed")
+				.arg(used).arg(name));
+		return false;
+	}
+	if (auto *cmd = AutoNumSchemeCommand::remove(m_project, scheme_kind, name)) {
+		m_project->undoStack()->push(cmd);
+	}
 	return true;
 }
 
@@ -3165,6 +3567,50 @@ bool QetScriptApi::setImageRotation(int folioIndex, int imageIndex, double angle
 	return true;
 }
 
+/**
+	@brief QetScriptApi::cropImage
+	Show only the rectangle (x, y, width, height) of the image's original,
+	in the original's own pixels, as the crop tool does: one undo step,
+	the kept region staying where it is on the folio.
+	@return false if nothing was cropped: no such image, read-only
+	project, or a rectangle that is empty, outside the original, or the
+	current crop.
+*/
+bool QetScriptApi::cropImage(int folioIndex, int imageIndex, int x, int y, int width, int height)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.cropImage: project is read-only"));
+		return false;
+	}
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) {
+		log(QStringLiteral("qet.cropImage: folio %1 has %2 image(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(imageIndex));
+		return false;
+	}
+	return list.at(imageIndex)->applyCrop(QRect(x, y, width, height));
+}
+
+/**
+	@brief QetScriptApi::imageCrop
+	@return the image's crop rectangle in its original's pixels, as
+	{x, y, width, height} like elementGeometry(), or an empty map for no
+	such image.
+*/
+QVariantMap QetScriptApi::imageCrop(int folioIndex, int imageIndex) const
+{
+	QVariantMap crop;
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) return crop;
+	const QRect r = list.at(imageIndex)->cropRect();
+	crop.insert(QStringLiteral("x"), r.x());
+	crop.insert(QStringLiteral("y"), r.y());
+	crop.insert(QStringLiteral("width"), r.width());
+	crop.insert(QStringLiteral("height"), r.height());
+	return crop;
+}
+
 bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 {
 	if (!m_project) return false;
@@ -3183,6 +3629,25 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 	content.m_images << list.at(imageIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
 	return true;
+}
+
+/**
+	@brief QetScriptApi::elementTextGeometry
+	Where one of a symbol's text fields is drawn on the folio, in folio
+	coordinates: left, top, right, bottom of the text as shown. A label
+	that sits on a wire is visible here, not from x/y alone (x/y are
+	relative to the symbol and say nothing about the text's size).
+	@return an empty map when the text does not exist
+*/
+QVariantMap QetScriptApi::elementTextGeometry(int folioIndex, const QString &elementUuid,
+											  int textIndex) const
+{
+	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
+												QStringLiteral("elementTextGeometry"));
+	if (!t) return {};
+	const QRectF r = t->sceneBoundingRect();
+	return {{QStringLiteral("left"), r.left()}, {QStringLiteral("top"), r.top()},
+			{QStringLiteral("right"), r.right()}, {QStringLiteral("bottom"), r.bottom()}};
 }
 
 /**
@@ -3559,13 +4024,137 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	element->setUpFormula(true);
 	const DiagramContext new_info = element->elementInformations();
 	if (new_info.value(QETInformation::ELMT_LABEL) == old_info.value(QETInformation::ELMT_LABEL)
-		&& new_info.value(QStringLiteral("formula")) == old_info.value(QStringLiteral("formula"))) {
+		&& new_info.value(QStringLiteral("formula")) == old_info.value(QStringLiteral("formula"))
+		&& new_info.value(QETInformation::ELMT_FORMULA_ID) == old_info.value(QETInformation::ELMT_FORMULA_ID)) {
 		stack->endMacro();
 		return false;
 	}
 	element->setElementInformations(old_info);
 	stack->push(new ChangeElementInformationCommand(element, old_info, new_info));
 	stack->endMacro();
+	return true;
+}
+
+/**
+	@brief QetScriptApi::renumberElementAutoNum
+	Number again, from the first number, the elements following the
+	element auto-numbering @p name, in folio and position order, as the
+	"Renumber" button of the project's numberings does. Undoable, one
+	step.
+
+	An element whose label is frozen is left as it is, and its label is
+	not given to another element.
+	@return how many elements were left as they are because their label
+	is frozen, -1 if there is no such numbering or the project is read-only
+*/
+int QetScriptApi::renumberElementAutoNum(const QString &name)
+{
+	if (!m_project) return -1;
+	const QString caller = QStringLiteral("renumberElementAutoNum");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return -1;
+	}
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.%1: no element auto-numbering named '%2'").arg(caller, name));
+		return -1;
+	}
+	QVector<Element *> frozen;
+	if (auto *cmd = ElementAutoNumSchemeCommand::renumber(
+				m_project, name, &frozen,
+				QObject::tr("Renuméroter les éléments (%1)").arg(name))) {
+		m_project->undoStack()->push(cmd);
+	}
+	return static_cast<int>(frozen.size());
+}
+
+/**
+	@brief QetScriptApi::freeElementNumbers
+	The numbers an element which follows an element auto-numbering may be
+	given by hand with assignElementNumber(): from 1 to a few past the
+	highest in use, those no other element of the numbering carries and which
+	would not give it the label of another element. Empty if the element
+	follows no auto-numbering, or one whose numbers are not a single sequence
+	(a folio number, a cycle or letters in the definition).
+*/
+QVariantList QetScriptApi::freeElementNumbers(int folioIndex, const QString &elementUuid)
+{
+	QVariantList list;
+	if (!m_project) return list;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return list;
+	const QString title = m_project->elementAutoNumTitle(
+				QUuid(element->elementInformations().value(QETInformation::ELMT_FORMULA_ID).toString()));
+	for (int n : ElementAutoNumSchemeCommand::freeNumbers(m_project, title, element)) {
+		list << n;
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::assignElementNumber
+	Give an element which follows an element auto-numbering the number
+	@p number of it, which must be free (see freeElementNumbers()): its label
+	is the formula worked out with that number and it keeps following the
+	numbering. If the counter of the numbering is at or below @p number it
+	moves past it. Undoable, one step.
+*/
+bool QetScriptApi::assignElementNumber(int folioIndex, const QString &elementUuid, int number)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("assignElementNumber");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	QString problem;
+	auto *cmd = ElementAutoNumSchemeCommand::assignNumber(m_project, element, number, &problem);
+	if (!cmd) {
+		log(QStringLiteral("qet.%1: %2").arg(caller, problem));
+		return false;
+	}
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::assignElementAutoNum
+	Make an element follow the element auto-numbering @p name: it gets
+	the formula and the next number of that numbering, which moves on.
+	The same command as picking the numbering in the element's
+	information window. Undoable, one step.
+
+	The element is left alone, and false returned, when it follows that
+	numbering already, is a slave or a report, or when something would be
+	lost: a frozen label, or a formula it follows or holds already, unless
+	@p overwrite is true. A label typed by hand, with no formula, is
+	replaced.
+*/
+bool QetScriptApi::assignElementAutoNum(const QString &name, int folioIndex,
+										const QString &elementUuid, bool overwrite)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("assignElementAutoNum");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.%1: no element auto-numbering named '%2'").arg(caller, name));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	auto *cmd = ElementAutoNumSchemeCommand::assign(m_project, name, {element}, overwrite);
+	if (!cmd) {
+		log(QStringLiteral("qet.%1: the element was left as it is").arg(caller));
+		return false;
+	}
+	m_project->undoStack()->push(cmd);
 	return true;
 }
 
@@ -3578,6 +4167,10 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	elements are selected for the moment and the previous selection restored
 	before returning; the paste is Diagram::fromXml() at the position,
 	followed by one PasteDiagramCommand so it is a single undo step.
+
+	As for a paste in the editor, the copies of elements which follow an
+	element numbering get the next numbers of it (the preference "number
+	pasted elements"), and the numbering moves on; undoing gives them back.
 	@return the uuids of the new elements, or an empty list on failure
 */
 QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
@@ -3694,7 +4287,107 @@ QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 	if (property == QLatin1String("rows"))            return QString::number(b.rows_count);
 	if (property == QLatin1String("row-height"))      return QString::number(b.rows_height);
 	if (property == QLatin1String("display-rows"))    return b.display_rows ? QStringLiteral("true") : QStringLiteral("false");
+	const QRectF r = diagrams.at(folioIndex)->border_and_titleblock.borderAndTitleBlockRect();
+	if (property == QLatin1String("width"))           return QString::number(r.width());
+	if (property == QLatin1String("height"))          return QString::number(r.height());
 	return QString();
+}
+
+namespace {
+/// The sheets "preset" knows, by the name it takes before -portrait or
+/// -landscape. Tabloid and ledger are the same 11 x 17 in sheet.
+const QList<QPair<QString, QPageSize::PageSizeId>> &folioPaper()
+{
+	static const QList<QPair<QString, QPageSize::PageSizeId>> p{
+		{QStringLiteral("a0"), QPageSize::A0}, {QStringLiteral("a1"), QPageSize::A1},
+		{QStringLiteral("a2"), QPageSize::A2}, {QStringLiteral("a3"), QPageSize::A3},
+		{QStringLiteral("a4"), QPageSize::A4}, {QStringLiteral("a5"), QPageSize::A5},
+		{QStringLiteral("letter"), QPageSize::Letter}, {QStringLiteral("legal"), QPageSize::Legal},
+		{QStringLiteral("tabloid"), QPageSize::Tabloid}, {QStringLiteral("ledger"), QPageSize::Tabloid}};
+	return p;
+}
+
+/**
+	The count (1-99) and whole size (20-200) of cells that fill @p available
+	without going over it. Any fill within two units of it will do -- a PDF
+	export rounds a page that close to a standard sheet up to the sheet
+	(QPageSize's fuzzy match allows 3 pt, and two units are 1.5 pt) -- and
+	among those the size nearest @p current wins, so the grid keeps the
+	look it had rather than turning into nine huge columns that happen to
+	divide the sheet exactly. Failing that, the fullest fill. False if not
+	even one cell of the smallest size fits.
+*/
+bool fitCells(qreal available, qreal current, int &count, qreal &size)
+{
+	constexpr qreal slack = 2.0;
+	int best_n = 0, best_s = 0, best_fill = 0;
+	bool best_close = false;
+	for (int s = 20; s <= 200; ++s) {
+		const int n = qMin(99, int(std::floor(available / s + 1e-9)));
+		if (n < 1) continue;
+		const int fill = n * s;
+		const bool close = fill >= available - slack;
+		bool better;
+		if (close != best_close)
+			better = close;
+		else if (close && qAbs(s - current) != qAbs(best_s - current))
+			better = qAbs(s - current) < qAbs(best_s - current);
+		else
+			better = fill > best_fill;
+		if (!best_n || better) {
+			best_n = n;
+			best_s = s;
+			best_fill = fill;
+			best_close = close;
+		}
+	}
+	if (!best_n) return false;
+	count = best_n;
+	size = best_s;
+	return true;
+}
+} // namespace
+
+/**
+	@brief QetScriptApi::folioPresets
+	The values setFolioBorder() takes for "preset".
+*/
+QStringList QetScriptApi::folioPresets() const
+{
+	QStringList names;
+	for (const auto &paper : folioPaper())
+		names << paper.first + QStringLiteral("-portrait")
+			  << paper.first + QStringLiteral("-landscape");
+	return names;
+}
+
+/**
+	@brief QetScriptApi::houseStyle
+	This installation's drawing conventions (grid, flow direction, routing,
+	tagging, grouping, ...), as free text the user wrote once. Empty when
+	nobody has set any. Not project-scoped: the same text for every
+	project this QElectroTech opens, same as liveAssistantEnabled().
+	@return the text
+*/
+QString QetScriptApi::houseStyle() const
+{
+	return QetSettings::houseStyle();
+}
+
+/**
+	@brief QetScriptApi::setHouseStyle
+	Write the installation's drawing conventions. Always succeeds (a plain
+	setting, not project data, so there is nothing here to refuse); @return
+	is for a consistent call shape with the rest of the API.
+	@param text
+*/
+bool QetScriptApi::setHouseStyle(const QString &text)
+{
+	QetSettings::setHouseStyle(text);
+		//qet-assistant.json carries it: an assistant reading the file
+		//now must see the new text, not the one from the last start
+	AssistantInfo::refresh();
+	return true;
 }
 
 /**
@@ -3707,6 +4400,9 @@ QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 	tested, so it is left refused rather than assumed safe. The extremes
 	that are offered (99 x 99 cells, widths from 1 to 1000) were exported to
 	PNG and did not hang or crash.
+
+	"preset" sets all four at once for a sheet of paper, as one command:
+	see the class comment.
 */
 bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const QString &value)
 {
@@ -3716,8 +4412,8 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return false;
 	}
-	if (!folioBorderNames().contains(property)) {
-		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+	if (!folioBorderNames().contains(property) && property != QLatin1String("preset")) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3, preset")
 			.arg(caller, property, folioBorderNames().join(QStringLiteral(", "))));
 		return false;
 	}
@@ -3728,7 +4424,45 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 	const BorderProperties old_b = diagram->border_and_titleblock.exportBorder();
 	BorderProperties new_b = old_b;
 	bool ok = false;
-	if (property == QLatin1String("columns") || property == QLatin1String("rows")) {
+	if (property == QLatin1String("preset")) {
+		const QString v = value.toLower();
+		const int dash = v.lastIndexOf(QLatin1Char('-'));
+		const QString orientation = v.mid(dash + 1);
+		bool known = dash > 0 && (orientation == QLatin1String("portrait")
+								  || orientation == QLatin1String("landscape"));
+		QSizeF mm;
+		if (known) {
+			known = false;
+			for (const auto &paper : folioPaper()) {
+				if (paper.first != v.left(dash)) continue;
+				mm = QPageSize(paper.second).size(QPageSize::Millimeter);
+				known = true;
+			}
+		}
+		if (!known) {
+			log(QStringLiteral("qet.%1: unknown preset '%2'; expected one of %3")
+				.arg(caller, value, folioPresets().join(QStringLiteral(", "))));
+			return false;
+		}
+		if ((orientation == QLatin1String("landscape")) != (mm.width() > mm.height()))
+			mm.transpose();
+		// Scene units are pixels at 96 per inch, as the PDF export draws
+		// them; the export adds one for the frame's own line.
+		const qreal page_w = std::floor(mm.width()  / 25.4 * 96.0 + 1e-6) - 1;
+		const qreal page_h = std::floor(mm.height() / 25.4 * 96.0 + 1e-6) - 1;
+		// Whatever is not columns or rows -- the headers, and the title
+		// block on whichever edge it sits -- measured rather than assumed,
+		// since it depends on the template.
+		const QRectF r = diagram->border_and_titleblock.borderAndTitleBlockRect();
+		const qreal extra_w = r.width()  - old_b.columns_count * old_b.columns_width;
+		const qreal extra_h = r.height() - old_b.rows_count * old_b.rows_height;
+		if (!fitCells(page_w - extra_w, old_b.columns_width, new_b.columns_count, new_b.columns_width)
+			|| !fitCells(page_h - extra_h, old_b.rows_height, new_b.rows_count, new_b.rows_height)) {
+			log(QStringLiteral("qet.%1: preset '%2' leaves no room for a column or a row "
+							   "beside this folio's title block").arg(caller, value));
+			return false;
+		}
+	} else if (property == QLatin1String("columns") || property == QLatin1String("rows")) {
 		const int n = value.toInt(&ok);
 		if (!ok || n < 1 || n > 99) {
 			log(QStringLiteral("qet.%1: %2 must be a whole number from 1 to 99, not '%3'").arg(caller, property, value));
@@ -3756,6 +4490,86 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 }
 
 /**
+	@brief QetScriptApi::conductorDefault
+	One property of the conductor defaults: a folio's (what its new
+	conductors start from, and where "one text per potential" lives), or
+	with folioIndex -1, the project's, which each new folio copies.
+	Empty if the folio or the property does not exist.
+*/
+QString QetScriptApi::conductorDefault(int folioIndex, const QString &property) const
+{
+	if (!m_project) return QString();
+	ConductorProperties p;
+	if (folioIndex == -1) {
+		p = m_project->defaultConductorProperties();
+	} else {
+		const QList<Diagram *> diagrams = m_project->diagrams();
+		if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+		p = diagrams.at(folioIndex)->defaultConductorProperties;
+	}
+	if (property == QLatin1String("onetextperfolio"))
+		return p.m_one_text_per_folio ? QStringLiteral("true") : QStringLiteral("false");
+	return conductorPropertyValue(p, property);
+}
+
+/**
+	@brief QetScriptApi::setConductorDefault
+	Set one property of the conductor defaults, under the names
+	setConductorProperty() takes plus "onetextperfolio" (true/false: one
+	number per potential on each folio). Like the Folio properties and
+	Project properties dialogs, this is not on the undo stack: neither
+	dialog has an undo command for it.
+*/
+bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setConductorDefault: project is read-only"));
+		return false;
+	}
+	Diagram *diagram = nullptr;
+	if (folioIndex != -1) {
+		const QList<Diagram *> diagrams = m_project->diagrams();
+		if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+		diagram = diagrams.at(folioIndex);
+	}
+	const ConductorProperties old_p = diagram ? diagram->defaultConductorProperties
+											  : m_project->defaultConductorProperties();
+	ConductorProperties new_p = old_p;
+	if (property == QLatin1String("onetextperfolio")) {
+		const QString v = value.toLower();
+		if (v != QLatin1String("true") && v != QLatin1String("false")) {
+			log(QStringLiteral("qet.setConductorDefault: onetextperfolio is true or false, not '%1'").arg(value));
+			return false;
+		}
+		new_p.m_one_text_per_folio = (v == QLatin1String("true"));
+	} else if (!setConductorPropertyValue(new_p, property, value)) {
+		log(QStringLiteral("qet.setConductorDefault: cannot set '%1' to '%2'; properties are onetextperfolio, %3")
+			.arg(property, value, conductorPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	if (new_p == old_p) return true;
+
+	if (!diagram) {
+		m_project->setDefaultConductorProperties(new_p);
+		return true;
+	}
+	diagram->defaultConductorProperties = new_p;
+	// Show or hide the conductor texts now, as the Folio properties dialog
+	// does (DiagramPropertiesDialog), or an export later in this run would
+	// draw them as they were.
+	if (new_p.m_one_text_per_folio != old_p.m_one_text_per_folio)
+	{
+		const QList<Conductor *> conductor_list = diagram->conductors();
+		for (Conductor *c : conductor_list)
+			c->updateTextVisibility();
+		for (Conductor *c : conductor_list)
+			c->calculateTextItemPosition();
+	}
+	return true;
+}
+
+/**
 	@brief QetScriptApi::elementGeometry
 	Where an element is: x and y are its origin (what setElementPosition()
 	sets), rotation is in degrees, and left/top/right/bottom are the box it
@@ -3777,6 +4591,76 @@ QVariantMap QetScriptApi::elementGeometry(int folioIndex, const QString &element
 	g.insert(QStringLiteral("right"), box.right());
 	g.insert(QStringLiteral("bottom"), box.bottom());
 	return g;
+}
+
+/**
+	@brief QetScriptApi::terminalPosition
+	Where a wire docks on terminal @p terminalIndex of the element, in folio
+	coordinates (Terminal::dockConductor(), the point conductorSegments()
+	and conductorPath() start or end at), and which way the terminal sends
+	its wire on the folio, the element's rotation included: "n", "e", "s"
+	or "w". Two terminals facing each other are joined by a straight wire
+	exactly when their x (n/s) or y (e/w) are equal, which is what a
+	script needs to place a symbol in line with another before wiring it.
+	Empty if the element or terminal is not found.
+*/
+QVariantMap QetScriptApi::terminalPosition(int folioIndex, const QString &elementUuid,
+										   int terminalIndex) const
+{
+	// const_cast: findTerminal logs, and log() writes to stderr, which is
+	// not a const operation on this object. The lookup itself changes
+	// nothing.
+	auto *self = const_cast<QetScriptApi *>(this);
+	Terminal *terminal = self->findTerminal(folioIndex, elementUuid, terminalIndex,
+											QStringLiteral("terminalPosition"));
+	if (!terminal) return {};
+	const QPointF p = terminal->dockConductor();
+	static const char *const facing[] = {"n", "e", "s", "w"};
+	const int o = static_cast<int>(terminal->orientation());
+	QVariantMap m;
+	m.insert(QStringLiteral("x"), p.x());
+	m.insert(QStringLiteral("y"), p.y());
+	m.insert(QStringLiteral("facing"),
+			 QString::fromLatin1(o >= 0 && o < 4 ? facing[o] : "?"));
+	return m;
+}
+
+/**
+	@brief QetScriptApi::conductorPath
+	The drawn path of the conductor carrying @p conductorUuid on the folio,
+	as a list of {x, y} points in folio coordinates: the first is where it
+	docks on its first terminal (conductorEnds()[0]), the last where it
+	docks on its second, and every point between is a corner or a segment
+	end. The same points conductorSegments() lists, but for any conductor
+	-- conductorSegments() names one by a terminal and so refuses a
+	terminal that carries two. Empty if there is no such conductor.
+*/
+QVariantList QetScriptApi::conductorPath(int folioIndex, const QString &conductorUuid) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	const QUuid wanted(conductorUuid);
+	if (wanted.isNull()) return {};
+
+	DiagramContent content(diagrams.at(folioIndex), false);
+	for (Conductor *c : content.conductors(DiagramContent::AnyConductor)) {
+		if (c->uuid() != wanted) continue;
+		QVariantList points;
+		auto add = [&points](const QPointF &p) {
+			QVariantMap m;
+			m.insert(QStringLiteral("x"), p.x());
+			m.insert(QStringLiteral("y"), p.y());
+			points << m;
+		};
+		const QList<ConductorSegment *> segs = c->segmentsList();
+		for (int i = 0; i < segs.count(); ++i) {
+			if (i == 0) add(c->mapToScene(segs.at(i)->firstPoint()));
+			add(c->mapToScene(segs.at(i)->secondPoint()));
+		}
+		return points;
+	}
+	return {};
 }
 
 /**
@@ -3908,8 +4792,24 @@ bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
 	return true;
 }
 
+/**
+	@brief QetScriptApi::setUndoGrouped
+	Set by QetScripting::runOnProject() while the whole run is one undo
+	macro. QUndoStack cannot undo or redo inside a macro: it prints a
+	warning and does nothing, so undo() and redo() say so instead.
+*/
+void QetScriptApi::setUndoGrouped(bool grouped)
+{
+	m_undo_grouped = grouped;
+}
+
 bool QetScriptApi::undo()
 {
+	if (m_undo_grouped) {
+		log(QStringLiteral("qet.undo: not available here -- this run is one "
+				   "undo step; press Ctrl+Z after it to undo it"));
+		return false;
+	}
 	if (!m_project || !m_project->undoStack()->canUndo()) return false;
 	m_project->undoStack()->undo();
 	return true;
@@ -3917,6 +4817,10 @@ bool QetScriptApi::undo()
 
 bool QetScriptApi::redo()
 {
+	if (m_undo_grouped) {
+		log(QStringLiteral("qet.redo: not available while this run is one undo step"));
+		return false;
+	}
 	if (!m_project || !m_project->undoStack()->canRedo()) return false;
 	m_project->undoStack()->redo();
 	return true;
@@ -4369,5 +5273,9 @@ bool QetScriptApi::zoomReset()
 */
 void QetScriptApi::showMessage(const QString &text)
 {
+	if (m_live_log) {
+		log(QStringLiteral("qet.showMessage: ") + text);
+		return;
+	}
 	QET::QetMessageBox::information(nullptr, QObject::tr("Script"), text);
 }

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color:#4d4d4d; }
+      .ColorScheme-Highlight { color:#1892d2; }
+    </style>
+  </defs>
+  <polygon points="4.5,1.5 11,1.5 8,4.5 1.5,4.5" class="ColorScheme-Highlight" style="fill:currentColor"/>
+  <polygon points="4.5,6.5 8.5,6.5 5.7,9.3 1.7,9.3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polygon points="4.5,11 8.5,11 5.5,14 1.5,14" class="ColorScheme-Text" style="fill:currentColor"/>
+  <rect x="12" y="3.8" width="1" height="11.3" class="ColorScheme-Text" style="fill:currentColor"/>
+  <polyline points="9.5,6.2 12.5,3.2 15.5,6.2" class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:miter;stroke-linecap:butt"/>
+</svg>

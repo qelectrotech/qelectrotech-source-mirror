@@ -45,6 +45,7 @@ class BOMExportDialog : public QDialog
 
 	private slots:
 		void on_m_format_as_bom_clicked(bool checked);
+		void on_m_no_junctions_clicked(bool checked);
 		void on_m_preview_pb_clicked();
 
 		private:

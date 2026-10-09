@@ -26,6 +26,7 @@
 #include "cable/cable.h"
 #include "cable/cablemanager.h"
 #include "cable/cablepart.h"
+#include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetapp.h"
@@ -38,6 +39,7 @@
 #include "ui/importelementdialog.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "qetxml.h"
+#include "qetinformation.h"
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
 
@@ -74,6 +76,11 @@ m_project_properties_handler{this}
 
 	m_elements_collection = new XmlElementCollection(this);
 	init();
+
+		//A new project keeps the texts of its turned symbols horizontal; a
+		//project saved without the setting is read with it off, so it looks
+		//as it always did (readSymbolTextsXml())
+	m_upright_symbol_texts = true;
 
 	QSettings settings;
 
@@ -964,9 +971,8 @@ void QETProject::setCableXAxisFirst(bool x_axis_first)
 	@brief QETProject::renumberElementsBySchemeTitle
 	Renumber existing elements by element autonumbering scheme title.
 
-	Elements do not store the scheme title; they store a "formula" (elementInformations["formula"]).
-	This method matches elements to schemes by comparing the stored formula with the formula derived
-	from each scheme's NumerotationContext.
+	Elements follow a scheme by its uuid (elementInformations["formula_id"]),
+	see elementsUsingElementAutoNum().
 
 	If scheme_title is empty, all schemes are renumbered. Otherwise only that scheme is renumbered.
 	The operation is undoable.
@@ -974,93 +980,14 @@ void QETProject::setCableXAxisFirst(bool x_axis_first)
 void QETProject::renumberElementsBySchemeTitle(const QString &scheme_title)
 {
 	if (!m_undo_stack) return;
-	if (isReadOnly()) return;
 
-	// Build map: scheme title -> canonical formula
-	QHash<QString, QString> scheme_formula;
-	for (const QString &k : m_element_autonum.keys()) {
-		if (!scheme_title.isEmpty() && k != scheme_title) continue;
-		scheme_formula.insert(k, autonum::numerotationContextToFormula(m_element_autonum.value(k)));
+	auto *cmd = ElementAutoNumSchemeCommand::renumber(
+				this, scheme_title, nullptr,
+				scheme_title.isEmpty() ? tr("Renumber elements")
+									   : tr("Renumber elements (%1)").arg(scheme_title));
+	if (cmd) {
+		m_undo_stack->push(cmd);
 	}
-	if (scheme_formula.isEmpty()) return;
-
-	// Collect elements per scheme by formula match
-	QHash<QString, QVector<Element*>> by_key;
-	for (Diagram *d : diagrams()) {
-		if (!d) continue;
-		const auto items = d->items();
-		for (QGraphicsItem *it : items) {
-			auto *el = qgraphicsitem_cast<Element*>(it);
-			if (!el) continue;
-			if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport))
-				continue;
-
-			const QString el_formula = el->elementInformations().value(QStringLiteral("formula")).toString();
-			if (el_formula.isEmpty()) continue;
-
-			QString matched_key;
-			for (auto itf = scheme_formula.constBegin(); itf != scheme_formula.constEnd(); ++itf) {
-				if (itf.value() == el_formula) { matched_key = itf.key(); break; }
-			}
-			if (matched_key.isEmpty()) continue;
-			by_key[matched_key].append(el);
-		}
-	}
-	if (by_key.isEmpty()) return;
-
-	QVector<RenumberElementsCommand::ElementChange> changes;
-	QHash<QString, NumerotationContext> old_ctx;
-	QHash<QString, NumerotationContext> new_ctx;
-
-	for (auto it = by_key.constBegin(); it != by_key.constEnd(); ++it) {
-		old_ctx.insert(it.key(), m_element_autonum.value(it.key()));
-	}
-
-	for (auto it = by_key.begin(); it != by_key.end(); ++it) {
-		const QString key = it.key();
-		auto &elements = it.value();
-		std::sort(elements.begin(), elements.end(), [](Element *a, Element *b){ return comparPos(a, b); });
-
-		NumerotationContext base_tmpl = m_element_autonum.value(key);
-		NumerotationContext nc = autonum::resetContextCounters(base_tmpl);
-		NumerotationContextCommands ncc(nc);
-
-		for (Element *el : elements) {
-			RenumberElementsCommand::ElementChange ch;
-			ch.element = el;
-			ch.old_infos = el->elementInformations();
-			ch.old_seq = el->sequenceStruct();
-			ch.old_frozen = el->isFreezeLabel();
-			ch.new_frozen = ch.old_frozen; // preserve frozen state
-
-			const QString formula = ch.old_infos.value(QStringLiteral("formula")).toString();
-			autonum::sequentialNumbers new_seq;
-			new_seq.clear();
-			autonum::setSequential(formula, new_seq, nc, el->diagram(), key);
-
-			DiagramContext new_infos = ch.old_infos;
-			new_infos.addValue(QStringLiteral("label"), autonum::AssignVariables::formulaToLabel(formula, new_seq, el->diagram(), el, nullptr));
-			ch.new_infos = new_infos;
-			ch.new_seq = new_seq;
-			changes.append(ch);
-
-			// advance
-			nc = ncc.next();
-			ncc = NumerotationContextCommands(nc);
-		}
-
-		new_ctx.insert(key, nc);
-	}
-
-	if (changes.isEmpty()) return;
-
-	auto *cmd = new RenumberElementsCommand(
-			this,
-			changes,
-			old_ctx,
-			new_ctx,
-			scheme_title.isEmpty() ? tr("Renumber elements") : tr("Renumber elements (%1)").arg(scheme_title));
-	m_undo_stack->push(cmd);
 }
 
 /**
@@ -1123,9 +1050,230 @@ void QETProject::addConductorAutoNum(const QString& key, const NumerotationConte
 */
 void QETProject::addElementAutoNum(const QString& key, const NumerotationContext& context)
 {
+	addElementAutoNum(key, context, QUuid());
+}
+
+/**
+	@brief QETProject::addElementAutoNum
+	Add or replace the element numbering scheme @p key.
+	A scheme that already exists keeps its uuid unless @p id is given;
+	a new one takes @p id, or a new uuid when @p id is null or already
+	used by another scheme.
+	@param key : title of the scheme
+	@param context : its numerotation context
+	@param id : its uuid, null to keep or create one
+*/
+void QETProject::addElementAutoNum(const QString &key,
+								   const NumerotationContext &context,
+								   const QUuid &id)
+{
+	QUuid scheme_id = id;
+	if (!scheme_id.isNull()) {
+		const QString owner = elementAutoNumTitle(scheme_id);
+		if (!owner.isEmpty() && owner != key) {
+			scheme_id = QUuid();
+		}
+	}
+	if (scheme_id.isNull()) {
+		scheme_id = m_element_autonum_id.value(key);
+	}
+	if (scheme_id.isNull()) {
+		scheme_id = QUuid::createUuid();
+	}
+	m_element_autonum_id.insert(key, scheme_id);
 	m_element_autonum.insert(key, context);
 	emit elementAutoNumAdded(key);
 	emit autoNumContextUpdated();
+}
+
+/**
+	@brief QETProject::elementAutoNumId
+	@return the uuid of the element numbering scheme @p title, null if
+	there is no such scheme
+*/
+QUuid QETProject::elementAutoNumId(const QString &title) const
+{
+	return m_element_autonum_id.value(title);
+}
+
+/**
+	@brief QETProject::elementAutoNumTitle
+	@return the title of the element numbering scheme with uuid @p id,
+	empty if there is none
+*/
+QString QETProject::elementAutoNumTitle(const QUuid &id) const
+{
+	if (id.isNull()) {
+		return QString();
+	}
+	for (auto it = m_element_autonum_id.constBegin();
+		 it != m_element_autonum_id.constEnd(); ++it) {
+		if (it.value() == id) {
+			return it.key();
+		}
+	}
+	return QString();
+}
+
+/**
+	@brief QETProject::renameElementAutoNum
+	Give the element numbering scheme @p old_title the title @p new_title.
+	It keeps its uuid, so the elements following it are not touched;
+	the folios' per-scheme maxima of folio sequential numbers and the
+	project's current scheme follow the new title.
+	Not undoable by itself: see ElementAutoNumSchemeCommand.
+	@return false if there is no scheme @p old_title or a scheme
+	@p new_title already exists
+*/
+bool QETProject::renameElementAutoNum(const QString &old_title, const QString &new_title)
+{
+	if (old_title == new_title) {
+		return m_element_autonum.contains(old_title);
+	}
+	if (!m_element_autonum.contains(old_title)
+			|| m_element_autonum.contains(new_title)
+			|| new_title.isEmpty()) {
+		return false;
+	}
+
+	m_element_autonum.insert(new_title, m_element_autonum.take(old_title));
+	m_element_autonum_id.insert(new_title, m_element_autonum_id.take(old_title));
+	if (m_current_element_autonum == old_title) {
+		m_current_element_autonum = new_title;
+	}
+
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d) continue;
+		for (auto *hash : {&d->m_elmt_unitfolio_max,
+						   &d->m_elmt_tenfolio_max,
+						   &d->m_elmt_hundredfolio_max}) {
+			if (hash->contains(old_title)) {
+				hash->insert(new_title, hash->take(old_title));
+			}
+		}
+	}
+
+	emit elementAutoNumRemoved(old_title);
+	emit elementAutoNumAdded(new_title);
+	emit autoNumContextUpdated();
+	return true;
+}
+
+/**
+	@brief QETProject::normalizedAutoNumName
+	@return @p name as it is stored as the title of a numbering scheme
+*/
+QString QETProject::normalizedAutoNumName(const QString &name)
+{
+	return name.simplified();
+}
+
+/**
+	@brief QETProject::elementAutoNumNameClash
+	Two element numbering schemes may not have the same name, compared
+	without regard to case or surrounding white space, so that the name
+	alone identifies a scheme for the user and for scripts.
+	@param name : the name to check
+	@param ignored_title : a scheme not to compare with (the one being
+	renamed)
+	@return the title of the existing scheme @p name clashes with, empty
+	if none
+*/
+QString QETProject::elementAutoNumNameClash(const QString &name,
+											const QString &ignored_title) const
+{
+	const QString wanted = normalizedAutoNumName(name);
+	for (auto it = m_element_autonum.constBegin();
+		 it != m_element_autonum.constEnd(); ++it) {
+		if (it.key() == ignored_title) {
+			continue;
+		}
+		if (QString::compare(normalizedAutoNumName(it.key()), wanted,
+							 Qt::CaseInsensitive) == 0) {
+			return it.key();
+		}
+	}
+	return QString();
+}
+
+/**
+	@brief QETProject::elementsUsingElementAutoNum
+	@return the elements whose label follows the element numbering
+	scheme @p title, in no particular order
+*/
+QVector<Element *> QETProject::elementsUsingElementAutoNum(const QString &title) const
+{
+	QVector<Element *> list;
+	const QUuid id = elementAutoNumId(title);
+	if (id.isNull()) {
+		return list;
+	}
+	for (Diagram *d : m_diagrams_list) {
+		if (!d) continue;
+		const auto items = d->items();
+		for (QGraphicsItem *it : items) {
+			auto *el = qgraphicsitem_cast<Element *>(it);
+			if (!el) continue;
+			const DiagramContext &info = el->elementInformations();
+			if (info.value(QETInformation::ELMT_FORMULA).toString().isEmpty()) {
+				continue;
+			}
+			if (QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString()) == id) {
+				list << el;
+			}
+		}
+	}
+	return list;
+}
+
+/**
+	@brief QETProject::linkElementsToElementAutoNums
+	Called once the diagrams of a file are loaded. Makes every element's
+	ELMT_FORMULA_ID name an element numbering scheme of this project:
+	- an id naming one of the schemes is kept;
+	- an id naming none (the scheme was renamed by a version of
+	QElectroTech that lost the ids, or the element was pasted from
+	another project) and, in a file written before the ids existed,
+	an element with no id at all, are linked to the one scheme whose
+	formula is the element's formula; with no such scheme, or more than
+	one, the element is left unlinked.
+	The label is not touched: nothing it is built from changes.
+*/
+void QETProject::linkElementsToElementAutoNums()
+{
+	QHash<QString, QStringList> titles_by_formula;
+	for (auto it = m_element_autonum.constBegin();
+		 it != m_element_autonum.constEnd(); ++it) {
+		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
+	}
+
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d) continue;
+		const auto items = d->items();
+		for (QGraphicsItem *it : items) {
+			auto *el = qgraphicsitem_cast<Element *>(it);
+			if (!el) continue;
+			const DiagramContext &info = el->elementInformations();
+			const QString formula = info.value(QETInformation::ELMT_FORMULA).toString();
+			const bool has_id = info.contains(QETInformation::ELMT_FORMULA_ID);
+			const QUuid id(info.value(QETInformation::ELMT_FORMULA_ID).toString());
+
+			if (formula.isEmpty()) {
+				if (has_id) el->setFormulaSchemeId(QUuid());
+				continue;
+			}
+			if (!elementAutoNumTitle(id).isEmpty()) {
+				continue;
+			}
+			if (!has_id && !m_legacy_element_autonums) {
+				continue; //A formula typed by hand
+			}
+			const QStringList matches = titles_by_formula.value(formula);
+			el->setFormulaSchemeId(matches.size() == 1
+								   ? elementAutoNumId(matches.first())
+								   : QUuid());
+		}
+	}
 }
 
 /**
@@ -1183,6 +1331,7 @@ void QETProject::removeConductorAutoNum(const QString& key) {
 void QETProject::removeElementAutoNum(const QString& key)
 {
 	m_element_autonum.remove(key);
+	m_element_autonum_id.remove(key);
 	emit elementAutoNumRemoved(key);
 }
 
@@ -1391,6 +1540,68 @@ void QETProject::setWireHops(WireHops::Mode mode)
 }
 
 /**
+	@brief QETProject::uprightSymbolTexts
+	@return true if the texts drawn in a symbol stay horizontal, and read
+	normally, when the symbol is turned or mirrored on a folio, instead of
+	turning with it. A mirrored symbol always keeps its texts readable.
+*/
+bool QETProject::uprightSymbolTexts() const {
+	return m_upright_symbol_texts;
+}
+
+/**
+	@brief QETProject::setUprightSymbolTexts
+	Set whether the texts drawn in a turned symbol stay horizontal, and
+	redraw every symbol of the project.
+	@param upright
+*/
+void QETProject::setUprightSymbolTexts(bool upright)
+{
+	if (upright == m_upright_symbol_texts) {
+		return;
+	}
+	m_upright_symbol_texts = upright;
+	for (Diagram *diagram : diagrams()) {
+		for (QGraphicsItem *item : diagram->items()) {
+			if (Element *element = qgraphicsitem_cast<Element *>(item)) {
+				element->updateSymbolPictures();
+			}
+		}
+	}
+}
+
+/**
+	@brief QETProject::wiringRules
+	@return how many wires a terminal of this project may take
+	(discussion #1158): the project's own rules when it sets them,
+	otherwise the application's (Settings > General).
+*/
+WiringRules::Settings QETProject::wiringRules() const {
+	return WiringRules::effective(m_wiring_rules, WiringRules::applicationSettings());
+}
+
+/**
+	@brief QETProject::projectWiringRules
+	@return the rules as the project stores them: Settings::own false when
+	it follows the application's.
+*/
+WiringRules::Settings QETProject::projectWiringRules() const {
+	return m_wiring_rules;
+}
+
+/**
+	@brief QETProject::setWiringRules
+	Set the project's own wiring rules, or (Settings::own false) make it
+	follow the application's. Only wires drawn from now on are affected:
+	none already drawn is removed.
+	@param rules
+*/
+void QETProject::setWiringRules(const WiringRules::Settings &rules)
+{
+	m_wiring_rules = rules;
+}
+
+/**
 	@brief QETProject::autoBreakConductor
 	@return true if use of auto break conductor is authorized.
 	See also Q_PROPERTY autoBreakConductor
@@ -1500,6 +1711,8 @@ QDomDocument QETProject::toXml()
 	// local, non-transmitted usage tracking (time spent on this project)
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
+	writeSymbolTextsXml(project_root);
+	writeWiringRulesXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -2022,6 +2235,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the local, non-transmitted usage tracking
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
+	readSymbolTextsXml(xml_project);
+	readWiringRulesXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -2045,6 +2260,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the diagrams
 	readDiagramsXml(xml_project);
 	const qint64 diagrams_ms = phase_timer.restart();
+
+		//Tie the elements to the numbering schemes they follow
+	linkElementsToElementAutoNums();
 
 		//Load the terminal strip
 	readTerminalStripXml(xml_project);
@@ -2230,6 +2448,32 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readSymbolTextsXml
+	Read the <symbol_texts> element of the project, if any. A project
+	without it was saved before the setting existed, or with it off, and
+	keeps the texts of its turned symbols turned.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
+{
+	const QDomElement texts = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("symbol_texts"));
+	m_upright_symbol_texts = !texts.isNull()
+			&& texts.attribute(QStringLiteral("upright")) == QLatin1String("true");
+}
+
+/**
+	@brief QETProject::readWiringRulesXml
+	Read the <wiring_rules> element of the project, if any.
+	A project without it sets no rule.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readWiringRulesXml(QDomDocument &xml_project)
+{
+	m_wiring_rules = WiringRules::fromXml(xml_project.documentElement());
+}
+
+/**
 	@brief QETProject::readDefaultPropertiesXml
 	load default properties for new diagram, found in the xml of this project
 	or by default find in the QElectroTech global conf
@@ -2323,7 +2567,25 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
-			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+			const QString title = elmt.attribute(QStringLiteral("title"));
+			QUuid id(elmt.attribute(QStringLiteral("id")));
+			if (id.isNull() || !elementAutoNumTitle(id).isEmpty()) {
+					//Saved before schemes had an id: derive one, the
+					//same on every load of the file.
+				m_legacy_element_autonums = true;
+					//Of this project: another project may have a numbering of the
+					//same name, which is not the same numbering
+				id = derivedItemUuid(QStringLiteral("element_autonum"),
+									 m_uuid.toString() + QLatin1Char('\n') + title);
+			}
+			m_element_autonum.insert(title, nc);
+			m_element_autonum_id.insert(title, id);
+		}
+			//The id is authoritative, the title is kept for older versions
+		const QString current_title = elementAutoNumTitle(
+					QUuid(element_autonums.attribute(QStringLiteral("current_autonum_id"))));
+		if (!current_title.isEmpty()) {
+			m_current_element_autonum = current_title;
 		}
 	}
 	if (!cable_autonums.isNull())
@@ -2467,6 +2729,33 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeSymbolTextsXml
+	Export whether the texts of turned symbols stay horizontal, as a
+	<symbol_texts> child of \a xml_element. Written only when on, so a
+	project with it off saves exactly as before.
+*/
+void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
+{
+	if (!m_upright_symbol_texts) {
+		return;
+	}
+	QDomElement texts = xml_element.ownerDocument()
+			.createElement(QStringLiteral("symbol_texts"));
+	texts.setAttribute(QStringLiteral("upright"), QStringLiteral("true"));
+	xml_element.appendChild(texts);
+}
+
+/**
+	@brief QETProject::writeWiringRulesXml
+	Export the project's wiring rules as a <wiring_rules> child of
+	\a xml_element, only when one is set.
+*/
+void QETProject::writeWiringRulesXml(QDomElement &xml_element)
+{
+	WiringRules::toXml(m_wiring_rules, xml_element);
+}
+
+/**
 	@brief QETProject::writeDefaultPropertiesXml
 	Export all defaults properties used by a new diagram and his content
 	size of border
@@ -2552,6 +2841,10 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	//Export Element Autonums
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
+	if (!elementAutoNumId(m_current_element_autonum).isNull()) {
+		element_autonums.setAttribute("current_autonum_id",
+									  elementAutoNumId(m_current_element_autonum).toString());
+	}
 	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
 	QStringList element_autonum_keys = elementAutoNum().keys();
 	element_autonum_keys.sort();
@@ -2559,6 +2852,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {
 			element_autonum.setAttribute("title", key);
+			element_autonum.setAttribute("id", elementAutoNumId(key).toString());
 			element_autonum.setAttribute("formula", elementAutoNumFormula(key));
 			element_autonums.appendChild(element_autonum);
 		}

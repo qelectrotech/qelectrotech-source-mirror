@@ -95,6 +95,49 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 }
 
 /**
+	@brief ElementPictureFactory::getReadablePictures
+	Same as getPictures(), for an element that mirrors or turns its symbol
+	on a folio (Element::symbolTextsTransform()). The drawing is the same;
+	only the texts differ: each one is drawn so that, once the element has
+	applied @p texts_transform, its box lands where the element puts it but
+	its letters read as they do in the symbol itself.
+	@param location
+	@param texts_transform : the mirrors, then the turn, of the element
+	@param picture
+	@param low_picture
+*/
+void ElementPictureFactory::getReadablePictures(const ElementsLocation &location,
+												const QTransform &texts_transform,
+												QPicture &picture,
+												QPicture &low_picture)
+{
+	if(!location.exist() || texts_transform.isIdentity()) {
+		return;
+	}
+
+	const QPair<QUuid, int> key(cacheKey(location), readableKey(texts_transform));
+
+	if(!m_readable_pictures_H.contains(key)
+	   && !build(location, nullptr, nullptr, texts_transform)) {
+		return;
+	}
+	picture = m_readable_pictures_H.value(key);
+	low_picture = m_readable_low_pictures_H.value(key);
+}
+
+/**
+	@brief ElementPictureFactory::readableKey
+	@param texts_transform : mirrors and quarter turns only
+	@return a number for @p texts_transform, the same for the same one
+*/
+int ElementPictureFactory::readableKey(const QTransform &texts_transform)
+{
+	auto digit = [](qreal value) {return qRound(value) + 1;}; // -1, 0 or 1
+	return ((digit(texts_transform.m11()) * 3 + digit(texts_transform.m12())) * 3
+			+ digit(texts_transform.m21())) * 3 + digit(texts_transform.m22());
+}
+
+/**
 	@brief ElementPictureFactory::dropCache
 	Forget the cached drawing of the element at @p location, so the next
 	getPictures()/pixmap()/getPrimitives() call rebuilds it from the
@@ -113,8 +156,16 @@ void ElementPictureFactory::dropCache(const ElementsLocation &location)
 	const QUuid uuid = cacheKey(location);
 	m_pictures_H.remove(uuid);
 	m_low_pictures_H.remove(uuid);
+	const auto keys = m_readable_pictures_H.keys();
+	for (const auto &key : keys) {
+		if (key.first == uuid) {
+			m_readable_pictures_H.remove(key);
+			m_readable_low_pictures_H.remove(key);
+		}
+	}
 	m_pixmap_H.remove(uuid);
-	m_primitives_H.remove(uuid);
+		//The text items belong to the cache; nothing else holds them.
+	qDeleteAll(m_primitives_H.take(uuid).m_texts);
 }
 
 /**
@@ -135,13 +186,28 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 	{
 		auto doc = location.pugiXml();
 			//size
-		int w = doc.document_element().attribute("width").as_int();
-		int h = doc.document_element().attribute("height").as_int();
+			//Bounded first, so the rounding below cannot overflow on a
+			//crafted file.
+		int w = qBound(0, doc.document_element().attribute("width").as_int(), 1000000);
+		int h = qBound(0, doc.document_element().attribute("height").as_int(), 1000000);
 		while (w % 10) ++ w;
 		while (h % 10) ++ h;
 			//hotspot
 		int hsx = qMin(doc.document_element().attribute("hotspot_x").as_int(), w);
 		int hsy = qMin(doc.document_element().attribute("hotspot_y").as_int(), h);
+
+			//The size comes straight from the file. A symbol whose parts
+			//span hundreds of thousands of pixels would ask for a pixmap of
+			//hundreds of gigabytes; draw it scaled down to fit instead. The
+			//largest symbols in the shipped collection are about 3200 px,
+			//so this only changes files nobody would draw on purpose.
+		const int max_side = 4096;
+		qreal scale = 1.0;
+		if (w > max_side || h > max_side) {
+			scale = qreal(max_side) / qMax(w, h);
+			w = qMax(1, qRound(w * scale));
+			h = qMax(1, qRound(h * scale));
+		}
 
 		QPixmap pix(w, h);
 			//Element definitions almost always draw with a hardcoded black
@@ -157,6 +223,7 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+		painter.scale(scale, scale);
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
 
@@ -200,11 +267,16 @@ ElementPictureFactory::~ElementPictureFactory()
 	this function draw on it and don't store it.
 	if null, this function create a QPicture for normal and low zoom,
 	draw on it and store it in m_pictures_H and m_low_pictures_H
+	(m_readable_pictures_H and m_readable_low_pictures_H if
+	@p texts_transform is not the identity)
+	@param texts_transform : what an element does to the texts of its
+	symbol, which the drawing undoes, see getReadablePictures()
 	@return
 */
 bool ElementPictureFactory::build(const ElementsLocation &location,
 				  QPicture *picture,
-				  QPicture *low_picture)
+				  QPicture *low_picture,
+				  const QTransform &texts_transform)
 {
 	QDomElement dom = location.xml();
 
@@ -233,6 +305,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	QPainter painter;
 	QPicture pic;
 	primitives primitives_;
+		//The low-zoom pass fills a second set of primitives that is only
+		//drawn, never kept: its text items are deleted at the end.
+	primitives low_primitives;
 	if (picture) {
 		painter.begin(picture);
 	}
@@ -260,6 +335,8 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	tmp.setWidthF(1.0); //Vaudoo line to take into account the setCosmetic - don't remove
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
+
+	m_build_texts_undo = texts_transform.inverted();
 
 	//scroll of the Children of the Definition: Parts of the Drawing
 	// Extract PLC master data for rendering plc_table parts
@@ -304,8 +381,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 					// complex font/text operations.
 				} else {
 					parseElement(qde, painter, primitives_);
-					primitives fake_prim;
-					parseElement(qde, low_painter, fake_prim);
+					parseElement(qde, low_painter, low_primitives);
 				}
 			}
 		}
@@ -314,8 +390,23 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		//End of the drawing
 	painter.end();
 	low_painter.end();
+	m_build_texts_undo = QTransform();
+	qDeleteAll(low_primitives.m_texts);
 
 	const auto uuid_ = cacheKey(location);
+	if (!texts_transform.isIdentity()) {
+			//The primitives are those of the plain drawing, already kept
+			//by the build of that one
+		qDeleteAll(primitives_.m_texts);
+		const QPair<QUuid, int> key(uuid_, readableKey(texts_transform));
+		if (!picture) {
+			m_readable_pictures_H.insert(key, pic);
+		}
+		if (!low_picture) {
+			m_readable_low_pictures_H.insert(key, low_pic);
+		}
+		return true;
+	}
 	if (!picture) {
 		m_pictures_H.insert(uuid_, pic);
 		m_primitives_H.insert(uuid_, primitives_);
@@ -596,8 +687,6 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	text_document.setPlainText(dom.attribute("text"));
 
 	painter.setTransform(QTransform(), false);
-	painter.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
-	painter.rotate(dom.attribute("rotation", "0").toDouble());
 
 	/*
 		Moves the QPainter's coordinate system to render in the right place;
@@ -631,7 +720,24 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		}
 	}
 
-	painter.translate(qpainter_offset);
+	QTransform text_transform;
+	text_transform.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
+	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
+
+	if (!m_build_texts_undo.isIdentity())
+	{
+			//The element mirrors or turns its symbol when it is drawn.
+			//Undo that on the text first, about the centre of its box: the
+			//letters read as in the symbol itself, and the box still ends
+			//up where the element puts it.
+		const QRectF box(QPointF(0, 0), text_document.size());
+		const QPointF centre = text_transform.mapRect(box).center();
+		painter.setTransform(QTransform::fromTranslate(-centre.x(), -centre.y())
+							 * m_build_texts_undo
+							 * QTransform::fromTranslate(centre.x(), centre.y()));
+	}
+	painter.setTransform(text_transform, true);
 
 		// force the palette used to render the QTextDocument
 	QAbstractTextDocumentLayout::PaintContext ctx;

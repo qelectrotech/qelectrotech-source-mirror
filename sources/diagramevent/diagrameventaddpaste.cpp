@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddpaste.h"
+#include "../autoNum/ui/pastenumberingimport.h"
 
 #include "../cable/addcablecommand.h"
 #include "../cable/cablecopy.h"
 #include "../cable/cablepart.h"
 #include "../cable/editcablecommand.h"
 #include "../diagram.h"
+#include "../foliogrid.h"
 #include "../diagramcommands.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
@@ -33,42 +35,30 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QCoreApplication>
+#include <QCursor>
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
 #include <QKeyEvent>
 #include <QStatusBar>
 
 #include <utility>
 
 /**
-	@brief batchWith
-	Keep the cable lines of a paste together with the rest of it, so one
-	Ctrl+Z takes the whole thing back in one go. Mirrors the helper
-	DiagramView uses for its one-step paste; BatchCommand's own name
-	says "Supprimer", so the name of what the user actually did is put
-	back onto the batch.
-	@param first the step already assembled, may be null
-	@param second the step to add; ownership goes to the result
-	@return both steps as one command, or the only one of them
-*/
-static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
-{
-	if (!first) return second;
-	if (!second) return first;
-
-	auto *batched = new BatchCommand(first, second);
-	if (!first->text().isEmpty()) batched->setText(first->text());
-	return batched;
-}
-
-/**
 	@brief DiagramEventAddPaste::DiagramEventAddPaste
 	@param diagram : diagram to paste into
 	@param start_pos : where the pasted items first appear, in scene
-	coordinates -- normally the cursor
+	coordinates -- normally the cursor. Only used for UnderCursor; an
+	AtOrigin paste stays at the coordinates it was copied from.
+	@param placement : UnderCursor moves the group under the cursor
+	(default), AtOrigin leaves it at its original XML position and warps
+	the OS cursor to the group's origin so baseline and screen match.
 */
-	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos) :
+	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos,
+						   PastePlacement placement) :
 	DiagramEventInterface(diagram)
 {
+	m_placement = placement;
+
 		//DiagramEventInterface::init() is called by Diagram::setEventInterface
 		//only when it is replacing an earlier interface, so call it here as
 		//DiagramEventAddMacro does.
@@ -97,6 +87,7 @@ static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
 		//items -- and it travels as a whole, colour labels and all,
 		//whether or not the place it is going to holds a wire.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content, &m_cables);
+	m_copied_schemes = PasteNumberingImport::copiedBy(document_xml);
 
 	if (db) {
 		db->blockSignals(false);
@@ -135,30 +126,38 @@ static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
 	}
 	const QPointF top_left = items_rect.topLeft();
 	QSettings settings;
-	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-					  Diagram::xGrid).toInt();
-	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-					  Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 	const auto snapGrid = [xGrid, yGrid](const QPointF &p) -> QPointF {
 		return QPointF(
 			qRound(p.x() / xGrid) * xGrid,
 			qRound(p.y() / yGrid) * yGrid);
 	};
-	const QPointF grid_origin = snapGrid(start_pos);
+	const QPointF grid_origin = (m_placement == AtOrigin)
+			? snapGrid(top_left)
+			: snapGrid(start_pos);
 
-		//Land the pasted content under the cursor immediately, rather than
-		//leaving it at the copied source's own coordinates: fromXml() above
-		//loads items at their original position purely because it doesn't
-		//know the target yet, not because that is where a paste should end
-		//up. The previous approach instead left items there and warped the
-		//OS cursor to match -- QCursor::setPos() is silently ignored by
-		//many window managers and compositors (Wayland in particular), so
-		//on any of those the warp simply never happened and the paste was
-		//left wherever it had originally been copied from, which could be
-		//anywhere on the folio -- exactly the "far from the cursor" bug.
-	const QPointF initial_delta = grid_origin - snapGrid(top_left);
-	for (auto *item : movable) {
-		item->setPos(item->pos() + initial_delta);
+	if (m_placement == UnderCursor) {
+			//Land the pasted content under the cursor immediately, rather than
+			//leaving it at the copied source's own coordinates: fromXml() above
+			//loads items at their original position purely because it doesn't
+			//know the target yet, not because that is where a paste should end
+			//up. The previous approach instead left items there and warped the
+			//OS cursor to match -- QCursor::setPos() is silently ignored by
+			//many window managers and compositors (Wayland in particular), so
+			//on any of those the warp simply never happened and the paste was
+			//left wherever it had originally been copied from, which could be
+			//anywhere on the folio -- exactly the "far from the cursor" bug.
+		const QPointF initial_delta = grid_origin - snapGrid(top_left);
+		for (auto *item : movable) {
+			item->setPos(item->pos() + initial_delta);
+		}
+	} else {
+			//AtOrigin: the items keep the coordinates they were copied from,
+			//so the copy stands exactly where the original stands. No delta is
+			//applied; what has to move is the cursor -- it is warped to the
+			//group's grid-snapped origin below, once m_group_origin is set,
+			//so the baseline and the physical cursor position agree.
 	}
 
 		//Store each item's now-placed position.  moveTo() applies a
@@ -176,10 +175,41 @@ static QUndoCommand *batchWith(QUndoCommand *first, QUndoCommand *second)
 		conductor->updatePath();
 	}
 
-		//The baseline is the group's grid-snapped origin, so moveTo()
-		//does not have to capture one from the first mouse movement.
-	m_initial_cursor = m_group_origin;
-	m_baseline_captured = true;
+		//The baseline is the group's grid-snapped origin. For UnderCursor
+		//the group was just put there, so the baseline is known outright.
+		//For AtOrigin the group stayed where it was copied from and the
+		//OS cursor is warped to match instead -- but only a warp that
+		//verifiably landed may be trusted as the baseline: QCursor::setPos()
+		//needs pointer focus inside the target window (on Wayland it goes
+		//through wp_pointer_warp_v1, and is a silent no-op without it), and
+		//a baseline that assumes a warp which did not happen would move the
+		//whole group by the warp-sized delta on the first mouse move. So
+		//when the warp cannot be confirmed, leave m_baseline_captured
+		//false: moveTo() re-baselines from the first real mouse position
+		//instead, which costs at most the first movement but never flings
+		//the group across the folio.
+	if (m_placement == AtOrigin && !m_diagram->views().isEmpty()) {
+		if (auto *view = m_diagram->views().at(0)) {
+				//An origin outside the visible area cannot be warped to
+				//(the compositor rejects targets outside the window) and
+				//would leave the paste invisible, so scroll it into view
+				//first.
+			if (!view->viewport()->rect().contains(view->mapFromScene(m_group_origin))) {
+				view->ensureVisible(items_rect, 50, 50);
+			}
+			const QPoint view_pos = view->mapFromScene(m_group_origin);
+			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
+			QCursor::setPos(global_pos);
+			if ((QCursor::pos() - global_pos).manhattanLength() <= 4) {
+				m_initial_cursor = m_group_origin;
+				m_baseline_captured = true;
+			}
+		}
+	}
+	if (m_placement == UnderCursor) {
+		m_initial_cursor = m_group_origin;
+		m_baseline_captured = true;
+	}
 
 	m_diagram->clearSelection();
 	for (auto *item : movable) {
@@ -273,10 +303,8 @@ void DiagramEventAddPaste::showHint()
 void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 {
 	QSettings settings;
-	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
-					  Diagram::xGrid).toInt();
-	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
-					  Diagram::yGrid).toInt();
+	const int xGrid = FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid);
+	const int yGrid = FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid);
 
 	const auto snapGrid = [xGrid, yGrid](const QPointF &p) -> QPointF {
 		return QPointF(
@@ -396,10 +424,10 @@ void DiagramEventAddPaste::commit()
 			m_content.conductors(DiagramContent::AnyConductor));
 	m_cables.clear();
 
-	QUndoCommand *command = nullptr;
-	if (m_content.count()) {
-		command = new PasteDiagramCommand(m_diagram, m_content);
-	}
+		//The cable lines the copy brings are not part of the paste
+		//itself: they are handed to the paste so that one Ctrl+Z takes
+		//the whole of it back in one go.
+	QList<QUndoCommand *> cable_commands;
 	for (const CableCopy::Wired &line : std::as_const(wired))
 	{
 		if (!line.part) continue;
@@ -407,11 +435,14 @@ void DiagramEventAddPaste::commit()
 		auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
 										  m_diagram, true, line.taken);
 		added->setText(QCoreApplication::translate("CableCopy", "Coller un câble"));
-		command = batchWith(command, added);
+		cable_commands << added;
 	}
-	if (command) {
-		m_diagram->undoStack().push(command);
-	}
+
+		//Asks whether to import the numberings the copy brings, if the
+		//project has not got them; the paste itself and the cable lines
+		//travel inside the same step of the undo stack.
+	PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
+							   m_diagram, m_content, m_copied_schemes, cable_commands);
 
 		//The undo stack has just run its first redo, which may have
 		//renewed the identity of a pasted conductor: the cores are

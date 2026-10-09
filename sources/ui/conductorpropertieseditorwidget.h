@@ -23,18 +23,22 @@
 
 #include <QList>
 #include <QMetaObject>
+#include <QPointer>
 
 class Conductor;
 class ConductorPropertiesWidget;
 class QCheckBox;
+class QLabel;
 
 /**
 	@brief The ConductorPropertiesEditorWidget class
 	Hosts the existing ConductorPropertiesWidget in the dockable selection-
-	properties panel, so a selected conductor can be edited in place like the
+	properties panel, so selected conductors can be edited in place like the
 	other item types, instead of only through the modal dialog (issue #500).
 	A pinned "apply to all conductors of the potential" checkbox (persisted)
 	mirrors the modal dialog's option to propagate edits to the whole potential.
+	When several conductors are selected, the panel shows the first one and
+	applies to each only the fields the user changed.
 */
 class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 {
@@ -42,10 +46,11 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 
 	public:
 		explicit ConductorPropertiesEditorWidget(
-			Conductor *conductor = nullptr, QWidget *parent = nullptr);
+			const QList<Conductor *> &conductors = {},
+			QWidget *parent = nullptr);
 		~ConductorPropertiesEditorWidget() override;
 
-		void setConductor(Conductor *conductor);
+		void setConductors(const QList<Conductor *> &conductors);
 
 		void apply() override;
 		void reset() override;
@@ -60,16 +65,20 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 	private:
 		void connectChangeSignals();
 		void disconnectChangeSignals();
+		void scheduleUpdateUi();
+		Conductor *firstConductor() const;
 
 	private:
 		ConductorPropertiesWidget *m_cpw = nullptr;
 		QCheckBox *m_apply_all_cb = nullptr;
-		Conductor *m_conductor = nullptr;
+		QLabel *m_count_label = nullptr;
+		QList<QPointer<Conductor>> m_conductors;
 			//What the widget showed before the edit: the fields that
 			//differ from it are the ones the user changed.
 		ConductorProperties m_shown;
 		QList<QMetaObject::Connection> m_live_connections;
 		bool m_updating = false;
+		bool m_update_pending = false;
 };
 
 #endif // CONDUCTORPROPERTIESEDITORWIDGET_H

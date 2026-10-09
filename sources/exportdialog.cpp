@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportdialog.h"
+#include "shownkinds.h"
 
 #include "conductorsegment.h"
 #include "createdxf.h"
@@ -497,7 +498,9 @@ void ExportDialog::slot_export()
 		{
 			for (QGraphicsItem *item : diagram_line->diagram->items())
 			{
-				if (qgraphicsitem_cast<DiagramImageItem *>(item)) {
+					//A picture hidden by View > Show is not exported
+				if (qgraphicsitem_cast<DiagramImageItem *>(item)
+						&& !ShownKinds::isHidden(item)) {
 					any_images = true;
 					break;
 				}

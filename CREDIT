@@ -58,6 +58,36 @@ Thanks to Elbert from the NL for packaging OS/2
 Thanks to zloidemon from for packaging FreeBsd (port GCC)
 Thanks to Mrbit for ebuild Gentoo packaging.
 
+[de]
+Dank an Qt Software für die Qt-Bibliothek (http://www.qtsoftware.com/), lizenziert unter der GNU/GPL.
+Dank an das KDE-Projekt (http://www.kde.org/).
+Dank an Loic für seine mathematischen Erläuterungen.
+Dank an Remi Collet für die Fedora-Paketierung.
+Dank an Laurent Trinques für die Debian-Paketierung.
+Dank an „trem“ für die Mandriva-Paketierung.
+Dank an TuxFamily (http://tuxfamily.org/) für das Hosting des Projekts.
+Dank an „Nishiki“ für seine Elemente und seine Unterstützung.
+Dank an qtcentre.org für die „SingleApplication“-Klasse.
+Dank an Alfredo Carreto für seine spanischen Übersetzungen und die Korrektur der spanischen Übersetzungen (http://electronicosmx.net)
+Dank an „Dr.Slump“ und Sivio für ihre Übersetzungen ins Italienische.
+Dank an Jose Carlos Martins für seine Übersetzungen ins Portugiesische.
+Dank an Pavel Fric für seine Übersetzungen ins Tschechische.
+Dank an Pawel Smiech für seine polnischen Übersetzungen.
+Dank an Yuriy Litkevich für seine Übersetzungen ins Russische.
+Dank an Youssef Ouamalkran für seine Übersetzungen ins Katalanische.
+Dank an Gabi Mandoc für seine Übersetzungen ins Rumänische.
+Dank an Markus Budde, Jonas Stein und Noah Braden für ihre Übersetzungen ins Deutsche.
+Dank an Mohamed Souabni für seine Übersetzungen ins Arabische.
+Dank an Uroš Platiše für seine Übersetzungen ins Slowenische.
+Dank an Antun Marakovic für seine Übersetzungen ins Kroatische.
+Dank an Nikos Papadopoylos und Yannis Gyftomitros für ihre griechischen Übersetzungen.
+Dank an Markos Chandras für die Gentoo-Paketierung.
+Dank an David für die Paketierung von Slackware.
+Dank an Chipsterjulien für die Paketierung der Archlinux-AUR-Pakete.
+Dank an Elbert aus den Niederlanden für die Paketierung von OS/2.
+Dank an zloidemon für die Paketierung von FreeBSD (GCC-Port).
+Dank an Mrbit für die ebuild-Paketierung für Gentoo.
+
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
 Merci au projet KDE ( http://www.kde.org/ ).

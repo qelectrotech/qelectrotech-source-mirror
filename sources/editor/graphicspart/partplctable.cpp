@@ -668,7 +668,7 @@ void PartPlcTable::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraph
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
 
-	QUndoCommand *undo = new QUndoCommand("Modifier une table PLC");
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier une table PLC"));
 	if (m_old_rect != m_rect) {
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
 		u->setAnimated(true, false);

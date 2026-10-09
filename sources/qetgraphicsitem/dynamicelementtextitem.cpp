@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include "../shownkinds.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
@@ -34,6 +35,42 @@
 #include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
 #include <QAbstractTextDocumentLayout>
+#include <QApplication>
+#include <QClipboard>
+#include <QKeyEvent>
+#include <QKeySequence>
+#include <QMimeData>
+#include <QTextCursor>
+#include <QTextDocumentFragment>
+
+void DynamicElementTextItem::keyPressEvent(QKeyEvent *event)
+{
+	if (!event->matches(QKeySequence::Paste) || m_text_from != UserText ||
+	    !(textInteractionFlags() & Qt::TextEditable)) {
+		DiagramTextItem::keyPressEvent(event);
+		return;
+	}
+	if (diagram() && diagram()->isReadOnly()) {
+		event->accept();
+		return;
+	}
+	const QMimeData *mime = QApplication::clipboard()->mimeData();
+	if (mime && (mime->hasText() || mime->hasHtml())) {
+		const QString text = mime->hasText() ? mime->text() :
+		    QTextDocumentFragment::fromHtml(mime->html()).toPlainText();
+		prepareAlignment();
+		QTextCursor cursor = textCursor();
+		cursor.beginEditBlock();
+		// An empty character format inherits the field's default font,
+		// rather than the clipboard's font or the preceding character's.
+		cursor.insertText(text, QTextCharFormat());
+		cursor.setCharFormat(QTextCharFormat());
+		cursor.endEditBlock();
+		setTextCursor(cursor);
+		finishAlignment();
+	}
+	event->accept();
+}
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
@@ -44,6 +81,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	m_parent_element(parent_element),
 	m_uuid(QUuid::createUuid())
 {
+	ShownKinds::tag(this, ShownKinds::SymbolTexts);
 	setFont(QETApp::dynamicTextsItemFont());
 	setText(tr("Texte"));
 	setParentItem(parent_element);
@@ -73,6 +111,16 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		QTextOption option = document()->defaultTextOption();
 		option.setAlignment(alignment & Qt::AlignHorizontal_Mask);
 		document()->setDefaultTextOption(option);
+		fitAutoTextWidth();
+	});
+	connect(document(), &QTextDocument::contentsChanged, this, &DynamicElementTextItem::fitAutoTextWidth);
+		//The new font can make the lines wider or narrower than the width
+		//fitted for the old one: fit again, keeping the text's anchor
+	connect(this, &DiagramTextItem::fontChanged, this, [this]()
+	{
+		prepareAlignment();
+		fitAutoTextWidth();
+		finishAlignment();
 	});
 }
 
@@ -1347,8 +1395,13 @@ void DynamicElementTextItem::updateLabel()
 		}
 		else if (m_text_from == CompositeText) {
 			// Use actualLabel() to ensure %{label} reflects the current
-			// resolved label (e.g. after a folio/page-number change)
-			dc.addValue(QStringLiteral("label"), element->actualLabel());
+			// resolved label (e.g. after a folio/page-number change).
+			// A contact not linked to a coil has no element to read from
+			// (bugtracker #345): %{label} then shows empty, as it did
+			// before actualLabel() was used here.
+			if (element) {
+				dc.addValue(QStringLiteral("label"), element->actualLabel());
+			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}
@@ -1657,6 +1710,7 @@ void DynamicElementTextItem::updateXref()
 					if(!m_slave_Xref_item)
 					{
 						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						ShownKinds::tag(m_slave_Xref_item, ShownKinds::CrossReferences);
 						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 							// Match the parent text's user-configurable color instead of
 							// hardcoding black, which renders invisible under dark themes
@@ -1788,7 +1842,26 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 {
 	this->document()->setTextWidth(width);
 	m_text_width = width;
+	fitAutoTextWidth();
 	emit textWidthChanged(width);
+}
+
+/**
+	@brief DynamicElementTextItem::fitAutoTextWidth
+	With no width set by the user, a QTextDocument has no width to centre
+	or right-align its lines in, so every line of a multi-line text stays
+	on the left whatever the alignment. Give the document the width of its
+	longest line instead. This does not change the size of the text, only
+	where the shorter lines sit.
+*/
+void DynamicElementTextItem::fitAutoTextWidth()
+{
+	if (m_text_width > 0)
+		return;
+
+	document()->setTextWidth(-1);
+	if (alignment() & (Qt::AlignHCenter | Qt::AlignRight))
+		document()->setTextWidth(document()->idealWidth());
 }
 
 void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)

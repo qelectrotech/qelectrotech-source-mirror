@@ -90,11 +90,15 @@ class PaletteGraphicsView : public QGraphicsView
 		void paintInverted(QPaintEvent *event);
 		void blitInverted(const QRect &area);
 		void drawRubberBand(QPainter &painter);
+		void flushLayer(bool invert, const QRect &bounds = QRect());
 
 		/// The off-screen image the hooks paint into while m_inverting:
 		/// the viewport's size, in its coordinates. Kept between paints,
 		/// dropped when the view paints on a light palette again.
 		QImage m_buffer;
+		QImage m_composite;
+		QRect m_exposed;
+		bool m_layered = false;
 		QPainter m_buffer_painter;
 		/// True while paintEvent() paints for an inverted display.
 		bool m_inverting = false;

@@ -46,6 +46,9 @@ class Element : public QetGraphicsItem
 	friend class DynamicElementTextItem;
 
 	Q_OBJECT
+	Q_PROPERTY(bool horizontalMirror READ hasHorizontalMirror WRITE setHorizontalMirror NOTIFY mirrorChanged)
+	Q_PROPERTY(bool verticalMirror READ hasVerticalMirror WRITE setVerticalMirror NOTIFY mirrorChanged)
+
 	public:
 			/**
 				@brief The kind enum
@@ -111,6 +114,7 @@ class Element : public QetGraphicsItem
 		void textRemovedFromGroup(
 				DynamicElementTextItem *text,
 				ElementTextItemGroup *group);
+		void mirrorChanged();
 
 	public slots:
 		void updateConductorTexts();
@@ -150,6 +154,7 @@ class Element : public QetGraphicsItem
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
 		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
+		void setFormulaSchemeId(const QUuid &id);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
@@ -184,6 +189,16 @@ class Element : public QetGraphicsItem
 				int> &) const;
 		QUuid uuid() const;
 		int orientation() const;
+		bool hasHorizontalMirror() const {return m_horizontal_mirror;}
+		bool hasVerticalMirror() const {return m_vertical_mirror;}
+		bool isMirrored() const {return m_horizontal_mirror || m_vertical_mirror;}
+		void setHorizontalMirror(bool mirror);
+		void setVerticalMirror(bool mirror);
+		QTransform mirrorTransform() const;
+		bool hasUprightSymbolTexts() const;
+		QTransform symbolTextsTransform() const;
+		void updateSymbolPictures(bool force = false);
+		void keepReadable(QGraphicsItem *child) const;
 
 			//METHODS related to texts
 		void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
@@ -295,10 +310,18 @@ class Element : public QetGraphicsItem
 	QList <Terminal *> m_terminals;
 	QPicture m_picture;
 	QPicture m_low_zoom_picture;
+		/// The drawing with its texts kept readable, when the symbol's
+		/// mirror or turn would not leave them so (m_readable_transform)
+	QPicture m_readable_picture;
+	QPicture m_readable_low_zoom_picture;
+	QTransform m_readable_transform;
 	ElementData m_data;
 	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
 
 	void drawPlcTable(QPainter *painter);
+	void setMirror(bool horizontal, bool vertical);
+	void applyMirrorTransform();
+	void keepChildrenReadable() const;
 
 	public:
 		/// Positions where the PLC IO table is drawn (from the .elmt file).
@@ -309,6 +332,8 @@ class Element : public QetGraphicsItem
 		QSize   dimensions;
 		QPoint  hotspot_coord;
 		bool m_mouse_over = false;
+		bool m_horizontal_mirror = false;
+		bool m_vertical_mirror = false;
 		QString m_prefix;
 		QList <DynamicElementTextItem *> m_dynamic_text_list;
 		QList <ElementTextItemGroup *> m_texts_group;

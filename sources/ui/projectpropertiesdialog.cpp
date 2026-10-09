@@ -107,3 +107,15 @@ void ProjectPropertiesDialog::changeToCable()
 				m_properties_dialog->pages.at(2));
 	autoNumPage->changeToCableTab();
 }
+
+/**
+	@brief ProjectPropertiesDialog::changeToElement
+	Change the current displayed tab to the element numberings tab.
+*/
+void ProjectPropertiesDialog::changeToElement()
+{
+	ProjectAutoNumConfigPage *autoNumPage =
+			static_cast <ProjectAutoNumConfigPage*>(
+				m_properties_dialog->pages.at(2));
+	autoNumPage->changeToTab(2);
+}

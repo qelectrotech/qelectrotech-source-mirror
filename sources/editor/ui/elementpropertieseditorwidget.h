@@ -23,6 +23,7 @@
 
 #include <QAbstractButton>
 #include <QDialog>
+#include <QItemDelegate>
 
 class QTableWidget;
 class QSpinBox;
@@ -35,6 +36,24 @@ class QScrollBar;
 namespace Ui {
 	class ElementPropertiesEditorWidget;
 }
+
+/**
+	@brief The EditorDelegate class
+	This delegate is only use for disable the edition of the first
+	column of the information tree widget
+*/
+class EditorDelegate : public QItemDelegate
+{
+	Q_OBJECT
+	public:
+		EditorDelegate(QObject *parent) :
+			QItemDelegate(parent)
+		{}
+
+		QWidget* createEditor(QWidget *parent,
+			      const QStyleOptionViewItem &option,
+				  const QModelIndex &index) const override;
+};
 
 /**
 	@brief The ElementPropertiesEditorWidget class

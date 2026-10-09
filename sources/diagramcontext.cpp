@@ -42,6 +42,7 @@ void DiagramContext::add(DiagramContext other)
 */
 void DiagramContext::remove(const QString &key) {
 	m_content.remove(key);
+	m_content_show.remove(key);
 }
 
 /**

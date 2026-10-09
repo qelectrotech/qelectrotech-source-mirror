@@ -18,13 +18,17 @@
 #ifndef PROJECTCONFIGPAGES_H
 #define PROJECTCONFIGPAGES_H
 #include "configpage.h"
+#include <QPointer>
+#include <QVector>
+#include "../../autoNum/autonumschemecommand.h"
 
 class QLabel;
 class QComboBox;
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
-class QTabWidget;
+class QSpinBox;
+class QGroupBox;
 class QETProject;
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
@@ -32,6 +36,11 @@ class DiagramContextWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
 class SelectAutonumW;
+class QTabWidget;
+class QGroupBox;
+class Element;
+class QTableWidget;
+class ElementAutoNumSchemeCommand;
 class FolioAutonumberingW;
 class FormulaAutonumberingW;
 class AutoNumberingManagementW;
@@ -115,6 +124,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 
 	private slots:
 	void resetUsageTracker();
+	void updateWiringRulesWidgets();
 
 	// attributes
 	protected:
@@ -129,6 +139,13 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QPushButton *usage_reset_pb_;
 	QLabel *wire_hops_label_;
 	QComboBox *wire_hops_cb_;
+	QCheckBox *upright_symbol_texts_cb_;
+	QGroupBox *wiring_rules_gb_;
+	QCheckBox *use_application_rules_cb_;
+	QLabel *max_wires_label_;
+	QSpinBox *max_wires_sb_;
+	QCheckBox *one_wire_per_report_cb_;
+	QLabel *wiring_rules_off_label_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {
@@ -165,10 +182,36 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void removeContextElement();
 		void saveContextCable();     //cable: one rule, no name to pick
 		void removeContextCable();
+		void newContextElement();
+		void renameContextElement();
+		void refreshElementSchemes(const QString &selected);
+		void refreshElementUsers();
+		void assignFreeNumber();
+		void updateAssignNumberButton();
+		void newContextConductor();
+		void renameContextConductor();
+		void newContextFolio();
+		void renameContextFolio();
+		QString askElementSchemeName(const QString &title, QString name,
+									 const QString &ignored_title);
+		bool pushElementSchemeCommand(ElementAutoNumSchemeCommand *cmd);
 		void importFromProject();
 
 		void applyAutoNum();
 		void applyManagement();
+
+	private:
+			//Conductor and folio numberings
+		using SchemeKind = AutoNumSchemeCommand::Kind;
+		SelectAutonumW *sawFor(SchemeKind kind) const;
+		void refreshSchemes(SchemeKind kind, const QString &selected);
+		void refreshSchemeUsers(SchemeKind kind);
+		QString askSchemeName(SchemeKind kind, const QString &title, QString name,
+							  const QString &ignored_title);
+		void newScheme(SchemeKind kind);
+		void renameScheme(SchemeKind kind);
+		void saveScheme(SchemeKind kind);
+		void removeScheme(SchemeKind kind);
 
 	signals:
 		void setAutoNum(QString);
@@ -182,11 +225,18 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;
 		SelectAutonumW        *m_saw_cable;
+		QTabWidget            *m_tab_widget = nullptr;
+		QGroupBox             *m_conductor_users_box = nullptr;
+		QTableWidget          *m_conductor_users = nullptr;
+		QGroupBox             *m_folio_users_box = nullptr;
+		QTableWidget          *m_folio_users = nullptr;
+		QGroupBox             *m_element_users_box = nullptr;
+		QTableWidget          *m_element_users = nullptr;
+		QPushButton           *m_assign_number_pb = nullptr;
+		QVector<QPointer<Element>> m_element_rows;   ///< the element of each row of the table, none for a gap
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
 		QPushButton           *m_import_pb = nullptr;
-			/// The tabs of this page, kept to switch between them
-		QTabWidget            *m_tab_widget = nullptr;
 
 };
 

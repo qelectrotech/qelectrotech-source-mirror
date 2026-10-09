@@ -29,7 +29,9 @@ class ElementInfoPartWidget;
 class CustomElementInfoPartWidget;
 class ChangeElementInformationCommand;
 class QCheckBox;
+class QComboBox;
 class QPushButton;
+class QWidget;
 struct MaterialRecord;
 
 namespace Ui {
@@ -71,6 +73,18 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
 		QStringList predefinedKeys() const;
 		void updateSuggestions();
+		void setupSchemeRow();
+		void setupFreezeRow();
+		void setupNumberRow();
+		void refreshNumberRow();
+		void updateNumberRow();
+		void numberChosen();
+		void updateFreezeRow();
+		void refreshSchemeRow();
+		void schemeChosen();
+		void openSchemePage();
+		QString chosenScheme() const;
+		QString followedScheme() const;
 
 	private slots:
 		void firstActivated();
@@ -86,6 +100,13 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		QPushButton                     *m_add_custom_property_btn = nullptr;
 		QCheckBox                       *m_potential_isolating_cb = nullptr;
 		QCheckBox                        *m_exclude_from_bom_cb = nullptr;
+		QComboBox                        *m_scheme_cb = nullptr;
+		QCheckBox                        *m_freeze_cb = nullptr;
+		QWidget                          *m_number_row = nullptr;
+		QComboBox                        *m_number_cb = nullptr;
+		int                               m_number_current = -1;   ///< the number the element has, -1 if unknown
+		int                               m_scheme_index = 0;
+		QWidget                          *m_scheme_row = nullptr;
 		bool m_first_activation;
 		bool m_ui_builded = false;
 };
