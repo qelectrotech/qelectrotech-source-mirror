@@ -207,6 +207,19 @@ class QETProject : public QObject
 		bool cableXAxisFirst() const;
 		void setCableXAxisFirst(bool x_axis_first);
 			/**
+				Whether the cable tool asks this project whether a
+				numbering rule should be defined, when he is picked up
+				and the project has none. Saying no in that question is
+				remembered with the project rather than in the program
+				settings, so one project saying no does not silence
+				every other one -- each project asks again until it
+				has answered for itself, and taking the rule away
+				brings the question back (see the cable tab of the
+				project properties and the numbering window).
+			*/
+		bool cableAskNumbering() const;
+		void setCableAskNumbering(bool ask);
+			/**
 				The name the single cable numbering rule is kept under.
 				Fixed and never translated: it is a key which goes into
 				the settings and into the project file, so it must read
@@ -449,6 +462,9 @@ class QETProject : public QObject
 		QString m_current_cable_autonum;
 			///< which axis the cables are numbered along (see cableXAxisFirst)
 		bool m_cable_axis_x_first = true;
+			///< whether the cable tool still asks about a numbering rule
+			///< for this project (see cableAskNumbering)
+		bool m_cable_ask_numbering = true;
 			/// True when the loaded file had element numbering schemes
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;

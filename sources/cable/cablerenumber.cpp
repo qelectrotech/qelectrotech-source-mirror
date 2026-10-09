@@ -121,8 +121,18 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 			"être renumérotés.");
 		return result;
 	}
-	const QString key = project->cableCurrentAutoNum();
-	if (key.isEmpty() || rule.isEmpty())
+		//The rule may be one the numbering window is drawing right now
+		//and has not written into the project yet: the numbering writes
+		//it together with the numbers themselves, so the project does
+		//not have to hold it beforehand. What the counters are kept
+		//under is the name the rule is stored with, which for cables is
+		//fixed either way -- so numbering starts from a project which
+		//has no rule saved yet just as well.
+	QString key = project->cableCurrentAutoNum();
+	if (key.isEmpty()) {
+		key = QETProject::cableAutoNumRuleName();
+	}
+	if (rule.isEmpty())
 	{
 		result.error = QCoreApplication::translate(
 			"CableRenumber",

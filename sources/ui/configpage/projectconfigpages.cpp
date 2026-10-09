@@ -41,8 +41,6 @@
 #include "../titleblockpropertieswidget.h"
 #include "../xrefpropertieswidget.h"
 
-#include <QSettings>
-
 //#include "ui_autonumberingmanagementw.h"
 
 #include <QtWidgets>
@@ -1141,11 +1139,9 @@ void ProjectAutoNumConfigPage::removeContextCable()
 		//No rule left, so the button which takes one away goes too. And
 		//having just taken the rule away means numbering cables by hand
 		//again: the question of defining one comes back the next time a
-		//cable is drawn, so it is not held back any more.
+		//cable is drawn, so it is not held back in this project any more.
 	m_saw_cable->setRuleRemovable(false);
-	QSettings settings;
-	settings.setValue(QStringLiteral("cable-management/ask_numbering_rule"),
-					  true);
+	m_project->setCableAskNumbering(true);
 	m_project->setModified(true);
 }
 

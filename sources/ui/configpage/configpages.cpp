@@ -480,13 +480,11 @@ void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
 		//A tab which keeps one single rule has no list to delete it
 		//from, so this is where the button of its own goes away too.
 		//And having just taken the rule away means numbering cables by
-		//hand again: the question of defining one comes back the next
-		//time a cable is drawn, so it is not held back any more.
+		//hand again: every project of its own asks once more whether
+		//one should be defined -- that answer is kept per project, so
+		//there is nothing to take back here.
 	if (!tab.fixed_name.isEmpty()) {
 		tab.widget->setRuleRemovable(false);
-		QSettings settings;
-		settings.setValue(QStringLiteral("cable-management/ask_numbering_rule"),
-						  true);
 	}
 }
 

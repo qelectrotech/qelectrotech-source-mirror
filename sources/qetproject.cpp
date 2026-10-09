@@ -968,6 +968,32 @@ void QETProject::setCableXAxisFirst(bool x_axis_first)
 }
 
 /**
+	@brief QETProject::cableAskNumbering
+	@return true when the cable tool may still ask this project whether
+	a numbering rule should be defined. The answer to that question is
+	kept with the project rather than in the program settings, so that
+	one project being answered with no does not stop every other
+	project from asking.
+*/
+bool QETProject::cableAskNumbering() const
+{
+	return m_cable_ask_numbering;
+}
+
+/**
+	@brief QETProject::setCableAskNumbering
+	Take the answer he gave to the numbering question down with the
+	project. False means he has said no once here and is not to be
+	asked again in this project; taking the rule away puts it back to
+	true so the question comes again.
+	@param ask
+*/
+void QETProject::setCableAskNumbering(bool ask)
+{
+	m_cable_ask_numbering = ask;
+}
+
+/**
 	@brief QETProject::renumberElementsBySchemeTitle
 	Renumber existing elements by element autonumbering scheme title.
 
@@ -2597,6 +2623,13 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		m_cable_axis_x_first = cable_autonums.attribute(
 			QStringLiteral("axis_priority"), QStringLiteral("x"))
 			!= QLatin1String("y");
+			//Whether the numbering question was already answered with
+			//no in this project. A file which does not hold the answer
+			//yet asks again rather than staying silent: it is his own
+			//answer per project which is kept, not a default saying no.
+		m_cable_ask_numbering = cable_autonums.attribute(
+			QStringLiteral("ask_numbering_rule"), QStringLiteral("true"))
+			!= QLatin1String("false");
 		for (auto elmt : QET::findInDomElement(cable_autonums, QStringLiteral("cable_autonum")))
 		{
 			NumerotationContext nc;
@@ -2865,6 +2898,12 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	cable_autonums.setAttribute("current_autonum", m_current_cable_autonum);
 	cable_autonums.setAttribute("axis_priority",
 								m_cable_axis_x_first ? "x" : "y");
+		//Only the no is written down: a project which has not answered
+		//the numbering question yet asks again, so silence in the file
+		//means asking rather than holding back.
+	if (!m_cable_ask_numbering) {
+		cable_autonums.setAttribute("ask_numbering_rule", "false");
+	}
 	QStringList cable_autonum_keys = cableAutoNum().keys();
 	cable_autonum_keys.sort();
 	for (const QString &key : std::as_const(cable_autonum_keys)) {

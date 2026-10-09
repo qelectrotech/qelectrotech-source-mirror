@@ -30,7 +30,6 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QRadioButton>
-#include <QSettings>
 #include <QUndoStack>
 #include <QVBoxLayout>
 
@@ -214,11 +213,9 @@ void CableNumberingDialog::removeRule()
 		//No rule left, so the button which takes one away goes too. And
 		//having just taken the rule away means numbering cables by hand
 		//again: the question of defining one comes back the next time a
-		//cable is drawn, so it is not held back any more.
+		//cable is drawn, so it is not held back in this project any more.
 	m_rule->setRuleRemovable(false);
-	QSettings settings;
-	settings.setValue(QStringLiteral("cable-management/ask_numbering_rule"),
-					  true);
+	m_project->setCableAskNumbering(true);
 	m_project->setModified(true);
 	updateEnabling();
 }

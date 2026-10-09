@@ -2331,11 +2331,20 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 bool QETDiagramEditor::cableNumberingGate(Diagram *diagram)
 {
 	if (!diagram || !diagram->project()) return true;
-	if (diagram->project()->hasCableAutoNum()) return true;
+	QETProject *project = diagram->project();
+	if (project->hasCableAutoNum()) return true;
 
-	QSettings settings;
-	const QString ask_key = QStringLiteral("cable-management/ask_numbering_rule");
-	if (!settings.value(ask_key, true).toBool()) {
+		//A read-only project is left alone without a question: there is
+		//nowhere to define a rule in it, so asking whether he wants to
+		//would be a way to nowhere. Its cables are drawn called W, the
+		//same as any project without a rule.
+	if (project->isReadOnly()) return true;
+
+		//Whether he has once answered no in THIS project. The answer is
+		//kept with the project rather than in the program settings, so
+		//one project being answered with no does not stop every other
+		//project from being asked.
+	if (!project->cableAskNumbering()) {
 		return true;
 	}
 
@@ -2358,9 +2367,11 @@ bool QETDiagramEditor::cableNumberingGate(Diagram *diagram)
 	box.exec();
 
 	if (box.clickedButton() == later_button) {
-			//For good, in the program settings: he has answered this
-			//once and should not be asked again at every start.
-		settings.setValue(ask_key, false);
+			//With this project only: he has answered once here and
+			//should not be asked again every time he picks the tool
+			//up in this project -- another project is free to ask.
+		project->setCableAskNumbering(false);
+		project->setModified(true);
 		return true;
 	}
 	if (box.clickedButton() != define_button) {
