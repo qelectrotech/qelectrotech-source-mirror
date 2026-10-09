@@ -187,10 +187,13 @@ target_link_libraries(tst_symbolscale PRIVATE Qt::Test)
 
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
-add_executable(tst_configprofile tst_configprofile.cpp)
+# borderproperties.cpp: the real writer of the folio size defaults, to check
+# that what it writes falls in the part for new projects.
+add_executable(tst_configprofile tst_configprofile.cpp
+  ${QET_DIR}/sources/borderproperties.cpp)
 add_test(NAME tst_configprofile COMMAND tst_configprofile)
 target_include_directories(tst_configprofile PRIVATE ${QET_DIR}/sources)
-target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui)
+target_link_libraries(tst_configprofile PRIVATE Qt::Test Qt::Gui Qt::Xml)
 
 # itemgroups.cpp keeps group membership and the selection rule apart from
 # Diagram, so it is tested here on a plain scene of rectangles.
