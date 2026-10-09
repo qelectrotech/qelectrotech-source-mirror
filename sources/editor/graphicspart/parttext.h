@@ -109,6 +109,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		void applyLineAlignment();
 		void prepareAlignment();
 		void finishAlignment();
+		QPointF anchorOffset() const;
 		QString previous_text;
 		qreal real_font_size_;
 		QPointF saved_point_;
@@ -117,5 +118,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		QPointF m_origin_pos;
 		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 		QRectF m_alignment_rect;
+			/// x/y in the .elmt are the aligned point, not the
+			/// baseline-left (anchor="alignment", #1251)
+		bool m_anchor_to_alignment = false;
 };
 #endif

@@ -704,10 +704,11 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		//adjusts the offset by the margin of the text document
 	text_document.setDocumentMargin(0.0);
 
-		//Optional line alignment of multi-line texts (the anchor behaviour
-		//of the alignment is handled in the element editor; the saved x/y
-		//always stay the baseline-left of the text block). The document
-		//only honors the text option once a text width is set.
+		//Optional line alignment of multi-line texts. The document only
+		//honors the text option once a text width is set.
+		//x/y are the baseline-left of the text block, unless
+		//anchor="alignment": x is then the left edge, centre or right edge
+		//selected by Halignment, and y stays the baseline (#1251).
 	if (dom.hasAttribute("Halignment")) {
 		const QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 		const Qt::Alignment h_alignment = Qt::Alignment(
@@ -717,12 +718,18 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 			option.setAlignment(h_alignment & Qt::AlignHorizontal_Mask);
 			text_document.setDefaultTextOption(option);
 			text_document.setTextWidth(text_document.idealWidth());
+			if (dom.attribute("anchor") == QLatin1String("alignment"))
+				qpainter_offset.rx() -= h_alignment & Qt::AlignRight
+						? text_document.idealWidth()
+						: text_document.idealWidth() / 2;
 		}
 	}
 
 	QTransform text_transform;
 	text_transform.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
 	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
+		//baseline-left of the text block, for the dxf export below
+	const QPointF baseline_left = text_transform.map(QPointF(qpainter_offset.x(), 0));
 	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
 
 	if (!m_build_texts_undo.isIdentity())
@@ -748,7 +755,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	QGraphicsSimpleTextItem *qgsti = new QGraphicsSimpleTextItem();
 	qgsti->setText(dom.attribute("text"));
 	qgsti->setFont(font_);
-	qgsti->setPos(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	qgsti->setPos(baseline_left);
 	qgsti->setRotation(dom.attribute("rotation", "0").toDouble());
 	prim.m_texts << qgsti;
 
