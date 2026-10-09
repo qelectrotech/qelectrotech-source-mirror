@@ -263,6 +263,10 @@ set_tests_properties(tst_textresizehandles PROPERTIES ENVIRONMENT "QT_QPA_PLATFO
 target_include_directories(tst_textresizehandles PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 
+# A line's pivot follows its centre when one of its ends is dragged, as a
+# rectangle's does; a pivot placed by hand stays.
+qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
+
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
 add_executable(tst_legacyelementtypes tst_legacyelementtypes.cpp)
