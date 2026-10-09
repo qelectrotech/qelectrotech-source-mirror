@@ -2509,6 +2509,34 @@ Maintenir Maj et faire glisser pour déplacer ce texte seul</translation>
         <translation>Renvoi de folio</translation>
     </message>
     <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="457"/>
+        <source>%1: %2</source>
+        <translation>%1 : %2</translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="498"/>
+        <source>Add an image</source>
+        <translation>Ajouter une image</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="499"/>
+        <source>Add %n image(s)</source>
+        <translation>
+            <numerusform>Ajouter %n image</numerusform>
+            <numerusform>Ajouter %n images</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="506"/>
+        <source>Images not added</source>
+        <translation>Images non ajoutées</translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="507"/>
+        <source>These files could not be added:</source>
+        <translation>Ces fichiers n&apos;ont pas pu être ajoutés :</translation>
+    </message>
+    <message>
         <location filename="../sources/diagramview.cpp" line="786"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
@@ -6800,6 +6828,29 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
         <location filename="../sources/ui/imagecropdialog.cpp" line="265"/>
         <source>Return to the full image, without cropping</source>
         <translation>Revenir à l&apos;image complète, sans rognage</translation>
+    </message>
+</context>
+<context>
+    <name>ImageDrop</name>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/imagedrop.cpp" line="77"/>
+        <source>not a file</source>
+        <translation>ce n&apos;est pas un fichier</translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/imagedrop.cpp" line="79"/>
+        <source>the file is larger than 10 MB</source>
+        <translation>le fichier dépasse 10 Mo</translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/imagedrop.cpp" line="84"/>
+        <source>the image has too many pixels</source>
+        <translation>l&apos;image a trop de pixels</translation>
+    </message>
+    <message>
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/imagedrop.cpp" line="88"/>
+        <source>unable to read the image</source>
+        <translation>impossible de lire l&apos;image</translation>
     </message>
 </context>
 <context>
