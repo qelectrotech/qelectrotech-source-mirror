@@ -251,6 +251,10 @@ endfunction()
 # alone and with a group.
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
+# Escape during a picture's resize, rotate or pivot drag puts it back, keeps
+# it selected and records no undo step (#1414); the key goes to the view.
+qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
+
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
 add_executable(
