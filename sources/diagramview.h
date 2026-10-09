@@ -196,6 +196,7 @@ class DiagramView : public PaletteGraphicsView
 		void adjustSceneRect();
 		void updateWindowTitle();
 		void resetConductors();
+		void addGenericDevice();
 	
 	private slots:
 		void adjustGridToZoom();

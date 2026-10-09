@@ -90,6 +90,7 @@ class ElementPictureFactory
 		QPixmap pixmap(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
 		void dropCache(const ElementsLocation &location);
+		QPicture pictureFromDefinition(const QDomElement &definition) const;
 
 	private:
 		ElementPictureFactory() {}
