@@ -1155,6 +1155,17 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	if (m_event_interface && m_event_interface->keyPressEvent(e))
 		return;
 
+		//An item in a state Escape must end -- a picture while one of its
+		//handles is dragged -- sees each key before the shortcuts below,
+		//which would otherwise clear the selection under it.
+	QGraphicsObject *keyboard_item = m_diagram ? m_diagram->keyboardItem() : nullptr;
+	if (keyboard_item && keyboard_item->scene() == m_diagram) {
+		e->ignore();
+		m_diagram->sendEvent(keyboard_item, e);
+		if (e->isAccepted())
+			return;
+	}
+
 	ProjectView *current_project = this->diagramEditor()->currentProjectView();
 	DiagramContent dc(m_diagram);
 	switch(e -> key())

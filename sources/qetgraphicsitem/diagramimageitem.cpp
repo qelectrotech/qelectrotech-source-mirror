@@ -33,6 +33,7 @@
 #include "../utils/qetutils.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
+#include <QKeyEvent>
 #include <QAction>
 #include <QBuffer>
 #include <QFileDialog>
@@ -599,6 +600,10 @@ void DiagramImageItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 */
 void DiagramImageItem::clearHandles()
 {
+	// The handles go (deselected, or another handle mode): a drag of one
+	// of them cannot end with its release any more.
+	if (m_vector_index != -1)
+		endHandleDrag();
 	if (!m_handler_vector.isEmpty())
 	{
 		qDeleteAll(m_handler_vector);
@@ -726,17 +731,22 @@ bool DiagramImageItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 
 	if (event->type() == QEvent::GraphicsSceneMousePress)
 	{
+		m_drag_cancelled = false;
 		handlerMousePressEvent(index, static_cast<QGraphicsSceneMouseEvent *>(event)->modifiers());
 		return true;
 	}
 	if (event->type() == QEvent::GraphicsSceneMouseMove)
 	{
-		handlerMouseMoveEvent(index, static_cast<QGraphicsSceneMouseEvent *>(event));
+		if (!m_drag_cancelled)
+			handlerMouseMoveEvent(index, static_cast<QGraphicsSceneMouseEvent *>(event));
 		return true;
 	}
 	if (event->type() == QEvent::GraphicsSceneMouseRelease)
 	{
-		handlerMouseReleaseEvent(index);
+		if (m_drag_cancelled)
+			m_drag_cancelled = false;
+		else
+			handlerMouseReleaseEvent(index);
 		return true;
 	}
 	if (event->type() == QEvent::GraphicsSceneHoverEnter)
@@ -806,6 +816,12 @@ void DiagramImageItem::handlerMousePressEvent(int index, Qt::KeyboardModifiers m
 	m_original_pos = pos();
 	m_original_transform = m_transform;
 	m_original_pivotIsCustom = m_pivotIsCustom;
+	// The handle has the mouse, not the keyboard: ask the view for the
+	// keys for the length of the drag, so that Escape reaches
+	// keyPressEvent() and not the view's own Escape, which clears the
+	// selection.
+	if (diagram())
+		diagram()->setKeyboardItem(this);
 
 	if (m_handleRoles.at(index) == HandleRole::Resize)
 	{
@@ -959,7 +975,60 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 		}
 	}
 
+	endHandleDrag();
+}
+
+/**
+	@brief DiagramImageItem::keyPressEvent
+	The view sends keys here only while one of the picture's handles is
+	dragged (see handlerMousePressEvent()): Escape cancels that drag. Any
+	other key is left to the view.
+*/
+void DiagramImageItem::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Escape && m_vector_index != -1)
+	{
+		cancelHandleDrag();
+		event->accept();
+		return;
+	}
+	QetGraphicsItem::keyPressEvent(event);
+}
+
+/**
+	@brief DiagramImageItem::endHandleDrag
+	The drag is over: no handle is dragged any more, and the keyboard
+	goes back to the view.
+*/
+void DiagramImageItem::endHandleDrag()
+{
 	m_vector_index = -1;
+	if (diagram() && diagram()->keyboardItem() == this)
+		diagram()->setKeyboardItem(nullptr);
+}
+
+/**
+	@brief DiagramImageItem::cancelHandleDrag
+	Put the picture back exactly as it was when the handle was pressed --
+	transform, pivot (Resize moves it for the drag) and position -- and
+	ignore the rest of the mouse gesture, so its release pushes no undo
+	command.
+*/
+void DiagramImageItem::cancelHandleDrag()
+{
+	prepareGeometryChange();
+	m_deferHandleReposition = true;
+	m_transform = m_original_transform;
+	m_pivotIsCustom = m_original_pivotIsCustom;   // a pivot drag marks it as hand-placed
+	// Not the snapping setPos(): see handlerMousePressEvent().
+	QGraphicsObject::setPos(m_original_pos);
+	setTransform(m_transform.toMatrix());
+	m_deferHandleReposition = false;
+	emit transformChanged();
+	repositionHandles();
+	endHandleDrag();
+	m_drag_cancelled = true;
+	clearStatusHint();
 }
 
 /**
