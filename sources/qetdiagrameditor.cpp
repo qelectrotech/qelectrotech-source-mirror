@@ -1242,6 +1242,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_path      = m_add_item_actions_group.addAction(QET::Icons::PartBezier,   tr("Add a curve"));
 	QAction *add_fillet    = m_add_item_actions_group.addAction(QET::Icons::DrawFillet,   tr("Add a fillet"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Add a terminal plan"));
+	QAction *add_generic_device = m_add_item_actions_group.addAction(QET::Icons::GenericDevice, tr("Add a generic device…"));
 
 	add_text     ->setStatusTip(tr("Adds a text field to the current sheet"));
 	add_image    ->setStatusTip(tr("Add an image to the current sheet"));
@@ -1256,6 +1257,7 @@ void QETDiagramEditor::setUpActions()
 	add_path     ->setStatusTip(tr("Adds a Bézier curve to the current sheet"));
 	add_fillet   ->setStatusTip(tr("Rounds the corner between two lines of the current sheet"));
 	add_terminal_strip->setStatusTip(tr("Adds a terminal plan to the current sheet"));
+	add_generic_device->setStatusTip(tr("Makes a box symbol with terminals on any side and places it on the current sheet"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1270,6 +1272,7 @@ void QETDiagramEditor::setUpActions()
 	add_path     ->setData(QStringLiteral("path"));
 	add_fillet   ->setData(QStringLiteral("fillet"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
+	add_generic_device->setData(QStringLiteral("generic_device"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -2320,6 +2323,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	else if (value == "text")
 	{
 		diagram_event = new DiagramEventAddText(d);
+	}
+	else if (value == QLatin1String("generic_device"))
+	{
+		currentDiagramView()->addGenericDevice();
 	}
 	else if (value == QLatin1String("terminal_strip"))
 	{

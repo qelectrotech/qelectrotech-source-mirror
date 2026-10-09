@@ -185,6 +185,15 @@ add_test(NAME tst_symbolscale COMMAND tst_symbolscale)
 target_include_directories(tst_symbolscale PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_symbolscale PRIVATE Qt::Test)
 
+# genericdevice.cpp is pure: the generic device wizard's layout, pattern
+# lines, groups and pin numbers, and the symbol it writes.
+add_executable(tst_genericdevice tst_genericdevice.cpp
+  ${QET_DIR}/sources/genericdevice/genericdevice.cpp)
+add_test(NAME tst_genericdevice COMMAND tst_genericdevice)
+set_tests_properties(tst_genericdevice PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_genericdevice PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_genericdevice PRIVATE Qt::Test Qt::Gui Qt::Xml)
+
 # configprofile.h is header-only: which settings a saved configuration
 # profile carries, and how loading one replaces the live settings.
 # borderproperties.cpp: the real writer of the folio size defaults, to check

@@ -240,6 +240,7 @@ namespace QET {
 		extern QIcon listDrawings;
 		extern QIcon AutoNum;
 		extern QIcon TerminalStrip;
+		extern QIcon GenericDevice;
 		extern QIcon QETManual;
 		extern QIcon QETDonate;
 		extern QIcon QETDownload;

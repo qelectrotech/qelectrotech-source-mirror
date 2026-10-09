@@ -51,6 +51,7 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
+#include "genericdevice/genericdevicewizard.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
 #include "qetinformation.h"
@@ -2414,6 +2415,64 @@ void DiagramView::generateCabinetThumbnails()
 	if (created) {
 		project->setModified(true);
 	}
+}
+
+/**
+	@brief DiagramView::addGenericDevice
+	Edit > Add > Generic device. Open the wizard; on Finish, write the box
+	it describes as an ordinary symbol into the folder "Generic devices" of
+	this project's embedded collection and put it on the cursor, ready to
+	be placed. The file name carries a short uuid, so two devices given the
+	same name never overwrite each other.
+*/
+void DiagramView::addGenericDevice()
+{
+	QETProject *project = m_diagram ? m_diagram->project() : nullptr;
+	if (!project || project->isReadOnly() || m_diagram->isReadOnly()) {
+		return;
+	}
+	XmlElementCollection *collection = project->embeddedElementCollection();
+	if (!collection) {
+		return;
+	}
+
+		//Measured with the fonts the folio draws with, so names fit
+	const GenericDevice::Fonts fonts{QETApp::diagramTextsFont(7),
+					 QETApp::dynamicTextsItemFont(9)};
+	GenericDeviceWizard wizard(fonts, this);
+	if (wizard.exec() != QDialog::Accepted) {
+		return;
+	}
+	const GenericDevice::Spec spec = wizard.spec();
+
+	const QString dir_name = QStringLiteral("Generic devices");
+	const QString dir_path = QStringLiteral("import/") + dir_name;
+	if (!collection->exist(dir_path))
+	{
+		NamesList dir_names;
+		dir_names.addName(QStringLiteral("en"), dir_name);
+			//Stored per language, like an element's names: not tr(), which
+			//would store the interface's language under "en"
+		dir_names.addName(QStringLiteral("fr"), QStringLiteral("Appareils génériques"));
+		if (!collection->createDir(QStringLiteral("import"), dir_name, dir_names)) {
+			return;
+		}
+	}
+
+	const QString file_name = QET::stringToFileName(spec.name)
+				  + QLatin1Char('-')
+				  + QUuid::createUuid().toString(QUuid::Id128).left(8)
+				  + QStringLiteral(".elmt");
+	QDomDocument doc;
+	const QDomElement definition = GenericDevice::toDefinition(
+				spec, fonts, doc, QetVersion::currentVersion().toString());
+	if (!collection->addElementDefinition(dir_path, file_name, definition)) {
+		return;
+	}
+	project->setModified(true);
+
+	const ElementsLocation location(dir_path + QLatin1Char('/') + file_name, project);
+	startElementPlacement(location, defaultPlacementPos());
 }
 
 /**

@@ -258,6 +258,29 @@ ElementPictureFactory::~ElementPictureFactory()
 }
 
 /**
+	@brief ElementPictureFactory::pictureFromDefinition
+	@return the drawing of an element @a definition that is in no
+	collection yet, such as one being made by a dialog, drawn by the same
+	code as a placed element. Not cached.
+*/
+QPicture ElementPictureFactory::pictureFromDefinition(const QDomElement &definition) const
+{
+	QPicture picture;
+	QPainter painter(&picture);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	painter.setRenderHint(QPainter::TextAntialiasing, true);
+	primitives primitives_;
+	const QDomElement description = definition.firstChildElement(QStringLiteral("description"));
+	for (QDomElement part = description.firstChildElement() ; !part.isNull() ;
+	     part = part.nextSiblingElement()) {
+		parseElement(part, painter, primitives_);
+	}
+	painter.end();
+	qDeleteAll(primitives_.m_texts);
+	return picture;
+}
+
+/**
 	@brief ElementPictureFactory::build
 	Build the picture from location.
 	@param location

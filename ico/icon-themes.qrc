@@ -21,6 +21,7 @@
         <file alias="themes/qet/scalable/folio-delete.svg">qet/scalable/folio-delete.svg</file>
         <file alias="themes/qet/scalable/folio-new.svg">qet/scalable/folio-new.svg</file>
         <file alias="themes/qet/scalable/folio-properties.svg">qet/scalable/folio-properties.svg</file>
+        <file alias="themes/qet/scalable/generic-device.svg">qet/scalable/generic-device.svg</file>
         <file alias="themes/qet/scalable/label.svg">qet/scalable/label.svg</file>
         <file alias="themes/qet/scalable/pdf-import.svg">qet/scalable/pdf-import.svg</file>
         <file alias="themes/qet/scalable/snap-to-grid.svg">qet/scalable/snap-to-grid.svg</file>
@@ -1332,6 +1333,18 @@
         <file alias="themes/qet/48x48@2/format-text-underline.svg">themes/generated/breeze-24/format-text-underline.svg</file>
         <file alias="themes/qet/64x64@2/format-text-underline.svg">breeze/16/format-text-underline.svg</file>
         <file alias="themes/qet/128x128@2/format-text-underline.svg">breeze/16/format-text-underline.svg</file>
+        <file alias="themes/qet/16x16/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/22x22/generic-device.svg">themes/generated/scalable-22/generic-device.svg</file>
+        <file alias="themes/qet/32x32/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/48x48/generic-device.svg">qet/scalable/generic-device.svg</file>
+        <file alias="themes/qet/64x64/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/128x128/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/16x16@2/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/22x22@2/generic-device.svg">themes/generated/scalable-22/generic-device.svg</file>
+        <file alias="themes/qet/32x32@2/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/48x48@2/generic-device.svg">qet/scalable/generic-device.svg</file>
+        <file alias="themes/qet/64x64@2/generic-device.svg">qet/scalable/16/generic-device.svg</file>
+        <file alias="themes/qet/128x128@2/generic-device.svg">qet/scalable/16/generic-device.svg</file>
         <file alias="themes/qet/16x16/go-bottom.svg">breeze/16/go-bottom.svg</file>
         <file alias="themes/qet/22x22/go-bottom.svg">breeze/22/go-bottom.svg</file>
         <file alias="themes/qet/scalable/go-bottom.svg">themes/generated/breeze-24/go-bottom.svg</file>
@@ -2623,6 +2636,7 @@
         <file>themes/qet-dark/scalable/folio-delete.svg</file>
         <file>themes/qet-dark/scalable/folio-new.svg</file>
         <file>themes/qet-dark/scalable/folio-properties.svg</file>
+        <file>themes/qet-dark/scalable/generic-device.svg</file>
         <file>themes/qet-dark/scalable/label.svg</file>
         <file>themes/qet-dark/scalable/pdf-import.svg</file>
         <file>themes/qet-dark/scalable/snap-to-grid.svg</file>
@@ -2994,6 +3008,8 @@
         <file>themes/qet-dark/breeze/16/format-text-underline.svg</file>
         <file>themes/qet-dark/breeze/22/format-text-underline.svg</file>
         <file>themes/qet-dark/breeze-24/format-text-underline.svg</file>
+        <file>themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file>themes/qet-dark/scalable-22/generic-device.svg</file>
         <file>themes/qet-dark/breeze/16/go-bottom.svg</file>
         <file>themes/qet-dark/breeze/22/go-bottom.svg</file>
         <file>themes/qet-dark/breeze-24/go-bottom.svg</file>
@@ -4520,6 +4536,18 @@
         <file alias="themes/qet-dark/48x48@2/format-text-underline.svg">themes/qet-dark/breeze-24/format-text-underline.svg</file>
         <file alias="themes/qet-dark/64x64@2/format-text-underline.svg">themes/qet-dark/breeze/16/format-text-underline.svg</file>
         <file alias="themes/qet-dark/128x128@2/format-text-underline.svg">themes/qet-dark/breeze/16/format-text-underline.svg</file>
+        <file alias="themes/qet-dark/16x16/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/22x22/generic-device.svg">themes/qet-dark/scalable-22/generic-device.svg</file>
+        <file alias="themes/qet-dark/32x32/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/48x48/generic-device.svg">themes/qet-dark/scalable/generic-device.svg</file>
+        <file alias="themes/qet-dark/64x64/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/128x128/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/16x16@2/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/22x22@2/generic-device.svg">themes/qet-dark/scalable-22/generic-device.svg</file>
+        <file alias="themes/qet-dark/32x32@2/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/48x48@2/generic-device.svg">themes/qet-dark/scalable/generic-device.svg</file>
+        <file alias="themes/qet-dark/64x64@2/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
+        <file alias="themes/qet-dark/128x128@2/generic-device.svg">themes/qet-dark/scalable-16/generic-device.svg</file>
         <file alias="themes/qet-dark/16x16/go-bottom.svg">themes/qet-dark/breeze/16/go-bottom.svg</file>
         <file alias="themes/qet-dark/22x22/go-bottom.svg">themes/qet-dark/breeze/22/go-bottom.svg</file>
         <file alias="themes/qet-dark/scalable/go-bottom.svg">themes/qet-dark/breeze-24/go-bottom.svg</file>

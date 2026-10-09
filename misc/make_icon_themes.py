@@ -183,6 +183,7 @@ SVGS = [
     "qet/scalable/folio-delete.svg",
     "qet/scalable/folio-new.svg",
     "qet/scalable/folio-properties.svg",
+    "qet/scalable/generic-device.svg",
     "qet/scalable/label.svg",
     "qet/scalable/pdf-import.svg",
     "qet/scalable/snap-to-grid.svg",
