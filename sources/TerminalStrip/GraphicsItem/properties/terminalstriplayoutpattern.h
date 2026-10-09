@@ -89,6 +89,14 @@ class TerminalStripLayoutPattern
 			//Length of the connection drawn above and under each terminal,
 			//in the middle of the terminal. 0 disable the connections.
 		qreal m_connection_length{10};
+			//Cable drawn under the terminals which have a cable (hose).
+			//Length of the wires between the terminals and the cable
+			//0 disable the drawing of the cables.
+		qreal m_cable_wire_length{40};
+			//Length of the cable
+		qreal m_cable_length{60};
+			//Length of the wires after the cable
+		qreal m_cable_end_length{40};
         qreal m_bridge_point_d{5};
         QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 

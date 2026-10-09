@@ -503,6 +503,43 @@
         </property>
        </widget>
       </item>
+      <item row="10" column="2">
+       <widget class="QLabel" name="label_cable">
+        <property name="text">
+         <string>Cable: wires / cable / end</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="3">
+       <widget class="QSpinBox" name="m_cable_wire_length_sb">
+        <property name="toolTip">
+         <string>Length of the wires between the terminals and the cable. 0 disable the drawing of the cables.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="4">
+       <widget class="QSpinBox" name="m_cable_length_sb">
+        <property name="toolTip">
+         <string>Length of the cable.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="5">
+       <widget class="QSpinBox" name="m_cable_end_length_sb">
+        <property name="toolTip">
+         <string>Length of the wires after the cable.</string>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -1179,6 +1216,54 @@
     <hint type="sourcelabel">
      <x>700</x>
      <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_wire_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cable_end_length_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>700</x>
+     <y>460</y>
     </hint>
     <hint type="destinationlabel">
      <x>480</x>

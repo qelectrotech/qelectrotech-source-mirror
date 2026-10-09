@@ -61,6 +61,10 @@ namespace TerminalStripDrawer
 			//They are not pure virtual, so an implementation can ignore them.
 			virtual ElementData::TerminalType type() const { return ElementData::TTGeneric; }
 			virtual bool isLed() const { return false; }
+			//Cable (hose) connected to the terminal, drawn under the strip.
+			virtual QString cable() const { return QString(); }
+			virtual QString cableWire() const { return QString(); }
+			virtual bool isShield() const { return false; }
     };
 
 	class AbstractPhysicalTerminalInterface

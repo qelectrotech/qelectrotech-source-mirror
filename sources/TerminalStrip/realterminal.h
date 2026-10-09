@@ -65,6 +65,13 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		bool isShield() const;
+
+		//Keys used to store the cable data in the element informations
+		static QString cableInfoKey()     { return QStringLiteral("terminal_cable"); }
+		static QString cableWireInfoKey() { return QStringLiteral("terminal_cable_wire"); }
+		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
+
 		QString conductor() const;
 
 		ElementData::TerminalType type() const;

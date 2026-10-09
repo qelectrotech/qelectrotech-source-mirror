@@ -67,7 +67,7 @@
             </property>
            </widget>
           </item>
-          <item row="12" column="1" colspan="2">
+          <item row="14" column="1" colspan="2">
            <widget class="KColorCombo" name="m_bridge_color_cb"/>
           </item>
           <item row="5" column="0">
@@ -90,7 +90,7 @@
             </property>
            </widget>
           </item>
-          <item row="12" column="0">
+          <item row="14" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
              <string>Bridge color :</string>
@@ -139,14 +139,41 @@
             </property>
            </widget>
           </item>
-          <item row="9" column="0" colspan="3">
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_cable">
+            <property name="text">
+             <string>Cable :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1" colspan="2">
+           <widget class="QLineEdit" name="m_cable_le">
+            <property name="toolTip">
+             <string>Name of the cable of the selected terminals</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1" colspan="2">
+           <widget class="QPushButton" name="m_cable_apply_pb">
+            <property name="toolTip">
+             <string>Set the cable name to all the selected terminals</string>
+            </property>
+            <property name="text">
+             <string>Apply the cable to the selection</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0" colspan="3">
            <widget class="Line" name="line_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="13" column="0">
+          <item row="15" column="0">
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -233,14 +260,14 @@
             </property>
            </widget>
           </item>
-          <item row="10" column="1" colspan="2">
+          <item row="12" column="1" colspan="2">
            <widget class="QPushButton" name="m_bridge_terminals_pb">
             <property name="text">
              <string>Bridging the terminals</string>
             </property>
            </widget>
           </item>
-          <item row="11" column="1" colspan="2">
+          <item row="13" column="1" colspan="2">
            <widget class="QPushButton" name="m_unbridge_terminals_pb">
             <property name="text">
              <string>Unbridge the terminals</string>

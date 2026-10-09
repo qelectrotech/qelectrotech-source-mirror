@@ -18,6 +18,7 @@
 #include "terminalstripdrawer.h"
 
 #include <QPainter>
+#include <QFontMetricsF>
 #include <QHash>
 
 #include <algorithm>
@@ -168,13 +169,15 @@ void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalT
 
 /**
  * @brief drawConnections
- * Draw a connection above and a connection under @a terminal_rect, in the middle
- * of the rect. A connection is a short line ended by a little circle.
+ * Draw a connection above and, if @a draw_bottom is true, a connection under
+ * @a terminal_rect, in the middle of the rect.
+ * A connection is a short line ended by a little circle.
  * @param painter
  * @param terminal_rect
  * @param length : the total length of a connection, circle included
+ * @param draw_bottom : false if the cable is drawn under the terminal
  */
-void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length)
+void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length, bool draw_bottom)
 {
 	const qreal radius{qMin<qreal>(length / 4, 2)};
 	const qreal x{terminal_rect.width() / 2};
@@ -184,8 +187,163 @@ void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal lengt
 	painter->drawLine(QPointF{x, top}, QPointF{x, top - length + radius * 2});
 	painter->drawEllipse(QPointF{x, top - length + radius}, radius, radius);
 
-	painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length - radius * 2});
-	painter->drawEllipse(QPointF{x, bottom + length - radius}, radius, radius);
+	if (draw_bottom)
+	{
+		painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length - radius * 2});
+		painter->drawEllipse(QPointF{x, bottom + length - radius}, radius, radius);
+	}
+}
+
+/**
+ * @brief The CableCell struct
+ * What is needed to draw the cable under a terminal.
+ */
+struct CableCell
+{
+	qreal x{0};          ///< x of the middle of the terminal, in the strip coordinates
+	qreal bottom{0};     ///< y of the bottom of the terminal
+	QString cable;       ///< name of the cable (hose)
+	QString wire;        ///< color / number of the wire
+	bool shield{false};  ///< true if the terminal is the shield of the cable
+};
+
+/**
+ * @brief drawCables
+ * Draw the cables under the terminals. Consecutive terminals who have the same cable name
+ * share the same cable: the wires go down from the terminals, join in the cable,
+ * and leave the cable with the same wire marks. The shield is linked to a dashed ellipse
+ * drawn around the cable.
+ * @param painter : the pen and the font must be set
+ * @param cells : one cell per terminal, in the drawing order
+ * @param pattern
+ */
+void drawCables(QPainter *painter, const QVector<CableCell> &cells, const TerminalStripLayoutPattern &pattern)
+{
+	const qreal wire_length{pattern.m_cable_wire_length};
+	if (wire_length <= 0 || cells.isEmpty()) {
+		return;
+	}
+
+	const qreal cable_length{qMax<qreal>(0, pattern.m_cable_length)};
+	const qreal end_length{qMax<qreal>(0, pattern.m_cable_end_length)};
+	const qreal radius{2};
+	const QFontMetricsF font_metrics{painter->font()};
+	const qreal text_height{font_metrics.height()};
+
+		//Draw a mark (small oblique line) on a wire and the number of the wire next to it.
+		//The text is written from the bottom to the top, at the left of the wire.
+	const auto draw_wire_mark = [&](qreal x, qreal mark_y, const QString &text, bool text_above)
+	{
+		painter->drawLine(QPointF{x - 3, mark_y + 3}, QPointF{x + 3, mark_y - 3});
+		if (text.isEmpty()) {
+			return;
+		}
+
+		const qreal text_width{font_metrics.horizontalAdvance(text)};
+		painter->save();
+		painter->translate(x - 1, text_above ? mark_y - 4 : mark_y + 4 + text_width);
+		painter->rotate(270);
+		painter->drawText(QRectF{0, -text_height, text_width + 2, text_height},
+						  Qt::AlignLeft | Qt::AlignVCenter,
+						  text);
+		painter->restore();
+	};
+
+	auto first{0};
+	while (first < cells.size())
+	{
+		if (cells.at(first).cable.isEmpty()) {
+			++first;
+			continue;
+		}
+
+			//Find the last terminal of the cable
+		auto last{first};
+		while (last + 1 < cells.size() &&
+			   cells.at(last + 1).cable == cells.at(first).cable) {
+			++last;
+		}
+
+		QVector<CableCell> wires, shields;
+		qreal max_bottom{cells.at(first).bottom};
+		for (auto i = first ; i <= last ; ++i)
+		{
+			max_bottom = qMax(max_bottom, cells.at(i).bottom);
+			if (cells.at(i).shield) {
+				shields << cells.at(i);
+			} else {
+				wires << cells.at(i);
+			}
+		}
+			//A cable with only a shield is drawn like a cable with only one wire
+		if (wires.isEmpty()) {
+			wires = shields;
+			shields.clear();
+		}
+
+		const qreal min_x{wires.first().x};
+		const qreal max_x{wires.last().x};
+		const qreal cable_x{(min_x + max_x) / 2};
+		const qreal bar_1_y{max_bottom + wire_length};
+		const qreal bar_2_y{bar_1_y + cable_length};
+		const qreal end_y{bar_2_y + end_length};
+
+			//Wires between the terminals and the cable
+		for (const auto &wire : std::as_const(wires))
+		{
+			painter->drawLine(QPointF{wire.x, wire.bottom}, QPointF{wire.x, bar_1_y});
+			draw_wire_mark(wire.x, qMax(wire.bottom + 4, bar_1_y - 10), wire.wire, true);
+		}
+		painter->drawLine(QPointF{min_x, bar_1_y}, QPointF{max_x, bar_1_y});
+
+			//The cable
+		painter->drawLine(QPointF{cable_x, bar_1_y}, QPointF{cable_x, bar_2_y});
+
+			//Wires after the cable
+		painter->drawLine(QPointF{min_x, bar_2_y}, QPointF{max_x, bar_2_y});
+		for (const auto &wire : std::as_const(wires))
+		{
+			painter->drawLine(QPointF{wire.x, bar_2_y}, QPointF{wire.x, end_y});
+			draw_wire_mark(wire.x, qMin(bar_2_y + 10, end_y), wire.wire, false);
+			painter->drawEllipse(QPointF{wire.x, end_y + radius}, radius, radius);
+		}
+
+			//The shield, linked to an ellipse around the cable
+		const qreal ellipse_ry{6};
+		const qreal ellipse_rx{qMax<qreal>((max_x - min_x) / 2 + 4, 12)};
+		const qreal ellipse_y{shields.isEmpty() ? bar_2_y : qMax(bar_1_y + ellipse_ry, bar_2_y - 12)};
+
+		if (!shields.isEmpty())
+		{
+			for (const auto &shield : std::as_const(shields))
+			{
+				painter->drawLine(QPointF{shield.x, shield.bottom}, QPointF{shield.x, ellipse_y});
+				const qreal edge_x{shield.x > cable_x ? cable_x + ellipse_rx : cable_x - ellipse_rx};
+				painter->drawLine(QPointF{shield.x, ellipse_y}, QPointF{edge_x, ellipse_y});
+			}
+
+			painter->save();
+			auto dashed_pen{painter->pen()};
+			dashed_pen.setStyle(Qt::DashLine);
+			painter->setPen(dashed_pen);
+			painter->drawEllipse(QPointF{cable_x, ellipse_y}, ellipse_rx, ellipse_ry);
+			painter->restore();
+		}
+
+			//Name of the cable, at the left of the cable, above the ellipse
+		const qreal name_width{font_metrics.horizontalAdvance(cells.at(first).cable)};
+		const qreal name_top{bar_1_y};
+		const qreal name_bottom{shields.isEmpty() ? bar_2_y : ellipse_y - ellipse_ry};
+		painter->save();
+		painter->translate(cable_x - 2, (name_top + name_bottom) / 2 + name_width / 2);
+		painter->rotate(270);
+		painter->drawText(QRectF{0, -text_height, name_width + 2, text_height},
+						  Qt::AlignLeft | Qt::AlignVCenter,
+						  cells.at(first).cable);
+		painter->restore();
+
+		first = last + 1;
+	}
 }
 
 } //End anonymous namespace
@@ -271,6 +429,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		QRectF xref_rect;
 
 		QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
+		QVector<CableCell> cable_cells;
 
 		m_hovered_xref = hoverTerminal{};
 		int physical_index = 0;
@@ -291,6 +450,19 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				}
 
                 terminal_rect = m_pattern->m_terminal_rect[index_];
+
+					//Cable (hose) of this terminal
+				CableCell cable_cell;
+				if (real_terminal_vector[i])
+				{
+					cable_cell.x = x_offset + terminal_rect.width()/2;
+					cable_cell.bottom = terminal_rect.y() + terminal_rect.height();
+					cable_cell.cable = real_terminal_vector[i]->cable();
+					cable_cell.wire = real_terminal_vector[i]->cableWire();
+					cable_cell.shield = real_terminal_vector[i]->isShield();
+				}
+				const bool have_cable{m_pattern->m_cable_wire_length > 0 && !cable_cell.cable.isEmpty()};
+				cable_cells.append(cable_cell);
                     //Draw terminal rect
                 painter->drawRect(terminal_rect);
 
@@ -306,7 +478,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 					//Draw the connections, above and under the terminal
 				if (m_pattern->m_connection_length > 0) {
-					drawConnections(painter, terminal_rect, m_pattern->m_connection_length);
+					//The cable replace the connection under the terminal
+					drawConnections(painter, terminal_rect, m_pattern->m_connection_length, !have_cable);
 				}
                     //Draw a stronger line if the current terminal have level
                     //and the current level is the first
@@ -442,6 +615,17 @@ void TerminalStripDrawer::paint(QPainter *painter)
 			painter->drawPolyline(QPolygonF(points_));
 			painter->restore();
 		}
+
+			//Draw the cables
+		painter->save();
+		auto cable_pen{painter->pen()};
+		cable_pen.setColor(Qt::black);
+		cable_pen.setWidth(1);
+		painter->setPen(cable_pen);
+		painter->setFont(m_pattern->font());
+		painter->setBrush(Qt::NoBrush);
+		drawCables(painter, cable_cells, *m_pattern);
+		painter->restore();
 	}
 }
 
@@ -449,16 +633,52 @@ QRectF TerminalStripDrawer::boundingRect() const
 {
 	QRectF rect_{0, 0, width(), height()};
 
-		//The connections are drawn above and under the terminals
-	if (m_pattern && m_pattern->m_connection_length > 0)
+	if (m_pattern)
 	{
-		const auto length_{m_pattern->m_connection_length};
-		qreal top_{0};
-		for (const auto &terminal_rect : std::as_const(m_pattern->m_terminal_rect)) {
-			top_ = std::min(top_, terminal_rect.top() - length_);
+		qreal extra_bottom{0};
+
+			//The connections are drawn above and under the terminals
+		if (m_pattern->m_connection_length > 0)
+		{
+			const auto length_{m_pattern->m_connection_length};
+			qreal top_{0};
+			for (const auto &terminal_rect : std::as_const(m_pattern->m_terminal_rect)) {
+				top_ = std::min(top_, terminal_rect.top() - length_);
+			}
+			rect_.setTop(top_);
+			extra_bottom = length_;
 		}
-		rect_.setBottom(rect_.bottom() + length_);
-		rect_.setTop(top_);
+
+			//The cables are drawn under the terminals
+		if (m_strip && m_pattern->m_cable_wire_length > 0)
+		{
+			bool have_cable{false};
+			for (const auto &physical_t : m_strip->physicalTerminal())
+			{
+				for (const auto &real_t : physical_t->realTerminals())
+				{
+					if (real_t && !real_t->cable().isEmpty()) {
+						have_cable = true;
+						break;
+					}
+				}
+				if (have_cable) {
+					break;
+				}
+			}
+
+			if (have_cable)
+			{
+					//4 is the diameter of the circle at the end of the wires
+				extra_bottom = std::max(extra_bottom,
+										m_pattern->m_cable_wire_length
+										+ std::max<qreal>(0, m_pattern->m_cable_length)
+										+ std::max<qreal>(0, m_pattern->m_cable_end_length)
+										+ 4);
+			}
+		}
+
+		rect_.setBottom(rect_.bottom() + extra_bottom);
 	}
 
 	return rect_;
