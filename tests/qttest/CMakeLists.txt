@@ -934,6 +934,18 @@ target_compile_definitions(tst_derivedwireuuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# Symbols sharing one uuid on a folio keep their wires through save and
+# reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
+add_executable(
+  tst_sharedsymboluuid
+  tst_sharedsymboluuid.cpp)
+add_test(NAME tst_sharedsymboluuid COMMAND tst_sharedsymboluuid)
+add_dependencies(tst_sharedsymboluuid qelectrotech)
+target_link_libraries(tst_sharedsymboluuid PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_sharedsymboluuid PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # Element numbering schemes carry an id and elements follow them by it:
 # a legacy file gets stable ids on --resave; through --run, rename, edit,
 # refused removal and undo/redo keep the elements following the scheme.
