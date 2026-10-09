@@ -18,22 +18,27 @@
 mirror_source_language.py — give every source-language string its own
 translation in the source language's .ts file.
 
-    python3 misc/i18n/mirror_source_language.py lang/qet_fr.ts
-    python3 misc/i18n/mirror_source_language.py --check lang/qet_fr.ts
+    python3 misc/i18n/mirror_source_language.py lang/qet_en.ts
+    python3 misc/i18n/mirror_source_language.py --check lang/qet_en.ts
 
 WHY THIS EXISTS
 
-The strings in the code are French, and they are both the translation
-key and the text the French UI shows. lang/qet_fr.ts was almost empty:
-an empty entry falls back to the code text at run time, so French never
-needed a translation. The price is that a French wording fix is a key
-change, which orphans the translation of that string in every other
-language file.
+The strings in the code are English (French until #1390), and they are
+both the translation key and the text the English UI shows. An empty
+entry in lang/qet_en.ts falls back to the code text at run time, so the
+source language never strictly needs a translation. The price is that an
+English wording fix in the code is a key change, which orphans the
+translation of that string in every other language file.
 
-With every French string mirrored into qet_fr.ts, the French UI is
-served from qet_fr.qm like any other language, and French wording can
-be corrected in the .ts alone. The key in the code then only has to
+With every source string mirrored into its own .ts file, the source
+language is served from its .qm like any other language, and its wording
+can be corrected in the .ts alone. The key in the code then only has to
 stay stable.
+
+Only the source language's own file may be mirrored: a run on any other
+file would copy English into it. The script therefore refuses a file
+whose <TS> header names a language different from its sourcelanguage
+(lang/qet_fr.ts says language="fr_FR" sourcelanguage="en").
 
 WHAT IT DOES
 
@@ -41,7 +46,7 @@ For every message whose translation is empty, the source text is copied
 into the translation and the entry is finished. Nothing else changes:
 
   - a translation with text is never touched, whether it is a French
-    rendering of an English source, identical to the source, or marked
+    rendering of a source in another language, identical to the source, or marked
     unfinished (a translator's work in progress), with one exception:
     an unfinished translation identical to its source is finished.
     That is what lupdate's same-text heuristic leaves behind when a new
@@ -85,6 +90,39 @@ CLOSE_INDENT = " " * 8
 
 class SourceError(ValueError):
     """A <source> that cannot be copied verbatim."""
+
+
+class LanguageError(ValueError):
+    """The file is a translation into another language, not a mirror."""
+
+
+TS_HEADER_RE = re.compile(r"<TS\b[^>]*>")
+ATTR_RE = r'\b{}="([^"]*)"'
+
+
+def _base_language(code: str) -> str:
+    return code.replace("-", "_").split("_")[0].lower()
+
+
+def check_languages(text: str) -> None:
+    """Refuse a .ts whose language is not its source language.
+
+    A file without a sourcelanguage attribute is accepted: lupdate writes
+    one only when it knows the source language, and the fixtures and old
+    files have none.
+    """
+    header = TS_HEADER_RE.search(text)
+    if header is None:
+        return
+    lang = re.search(ATTR_RE.format("language"), header.group(0))
+    source = re.search(ATTR_RE.format("sourcelanguage"), header.group(0))
+    if lang is None or source is None:
+        return
+    if _base_language(lang.group(1)) != _base_language(source.group(1)):
+        raise LanguageError(
+            f'the file is a translation into "{lang.group(1)}" of '
+            f'"{source.group(1)}" text; only the source language\'s own '
+            "file can be mirrored")
 
 
 @dataclass
@@ -195,6 +233,7 @@ def _mirror_message(match: re.Match, forms: int, stats: Stats) -> str:
 
 def mirror_text(text: str, forms: int = 2) -> tuple[str, Stats]:
     """Return the mirrored .ts text and what was done to it."""
+    check_languages(text)
     stats = Stats()
     new = MESSAGE_RE.sub(lambda m: _mirror_message(m, forms, stats), text)
     return new, stats
@@ -204,12 +243,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Copy each empty translation's source text into the "
                     "translation of a source-language .ts file.")
-    parser.add_argument("ts", type=Path, help="the .ts file, e.g. lang/qet_fr.ts")
+    parser.add_argument("ts", type=Path, help="the .ts file, e.g. lang/qet_en.ts")
     parser.add_argument("--check", action="store_true",
                         help="change nothing; exit 1 if a run would change the file")
     parser.add_argument("--forms", type=int, default=2,
                         help="plural forms to write when a plural message has "
-                             "none (default 2, French)")
+                             "none (default 2, as in English and French)")
     args = parser.parse_args(argv)
 
     with open(args.ts, encoding="utf-8", newline="") as f:
@@ -217,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         new, stats = mirror_text(text, args.forms)
         ET.fromstring(new.encode("utf-8"))
-    except (SourceError, ET.ParseError) as e:
+    except (SourceError, LanguageError, ET.ParseError) as e:
         print(f"{args.ts}: {e}", file=sys.stderr)
         return 2
     print(f"{args.ts}: {stats.summary()}")

@@ -10,7 +10,7 @@ byte for byte. Every message class the script distinguishes appears
 once in the pair, so a change in behaviour shows up as a diff in a
 known place.
 
-The last test looks at the repository's own lang/qet_fr.ts and fails
+The last test looks at the repository's own lang/qet_en.ts and fails
 when it needs a mirror run: that is the maintenance rule from
 INSTALL.md, kept honest.
 """
@@ -33,6 +33,7 @@ import mirror_source_language as m  # noqa: E402
 SCRIPT = HERE / "mirror_source_language.py"
 BEFORE = HERE / "fixtures" / "mirror_before.ts"
 AFTER = HERE / "fixtures" / "mirror_after.ts"
+REPO_EN = HERE.parent.parent / "lang" / "qet_en.ts"
 REPO_FR = HERE.parent.parent / "lang" / "qet_fr.ts"
 
 
@@ -153,6 +154,27 @@ class MirrorText(unittest.TestCase):
         self.assertNotIn("unfinished", out)
         ET.fromstring(out)
 
+    def test_translation_into_another_language_is_refused(self):
+        for header in ('<TS version="2.1" language="fr_FR" sourcelanguage="en">',
+                       '<TS language="de" sourcelanguage="en_US">'):
+            text = (header + '<context><name>C</name><message>\n'
+                    '        <source>Open</source>\n'
+                    '        <translation></translation>\n'
+                    '    </message></context></TS>')
+            with self.assertRaises(m.LanguageError, msg=header):
+                m.mirror_text(text)
+
+    def test_source_language_file_is_accepted(self):
+        for header in ('<TS version="2.1" language="en_US" sourcelanguage="en">',
+                       '<TS version="2.1" language="fr_FR">'):  # no sourcelanguage
+            text = (header + '<context><name>C</name><message>\n'
+                    '        <source>Open</source>\n'
+                    '        <translation></translation>\n'
+                    '    </message></context></TS>')
+            out, stats = m.mirror_text(text)
+            self.assertEqual(stats.mirrored_messages, 1, header)
+            self.assertIn("<translation>Open</translation>", out)
+
     def test_source_with_child_element_is_refused(self):
         text = ('<TS><context><name>C</name><message>\n'
                 '        <source>a<byte value="7"/>b</source>\n'
@@ -198,12 +220,24 @@ class CommandLine(unittest.TestCase):
         self.assertIn("child element", r.stderr)
         self.assertEqual(read(tmp), bad)
 
-    @unittest.skipUnless(REPO_FR.is_file(), "lang/qet_fr.ts not found next to the tool")
-    def test_repository_french_file_is_mirrored(self):
-        """The maintenance rule: run the mirror after update_translations."""
-        r = self.run_script("--check", str(REPO_FR))
+    @unittest.skipUnless(REPO_EN.is_file(), "lang/qet_en.ts not found next to the tool")
+    def test_repository_source_language_file_is_mirrored(self):
+        """The maintenance rule: run the mirror after update_translations.
+
+        Until 2026-10-09 this checked lang/qet_fr.ts, which #1390 had turned
+        into an ordinary translation; it passed while the rule was wrong."""
+        r = self.run_script("--check", str(REPO_EN))
         self.assertEqual(r.returncode, 0,
-                         f"lang/qet_fr.ts needs a mirror run:\n{r.stdout}")
+                         f"lang/qet_en.ts needs a mirror run:\n{r.stdout}")
+
+    @unittest.skipUnless(REPO_FR.is_file(), "lang/qet_fr.ts not found next to the tool")
+    def test_repository_translation_file_is_refused(self):
+        """A run on the French translation would copy English into it."""
+        before = REPO_FR.read_bytes()
+        r = self.run_script(str(REPO_FR))
+        self.assertEqual(r.returncode, 2, r.stdout)
+        self.assertIn("only the source language", r.stderr)
+        self.assertEqual(REPO_FR.read_bytes(), before)
 
 
 if __name__ == "__main__":
