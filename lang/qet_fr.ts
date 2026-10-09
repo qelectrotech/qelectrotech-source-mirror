@@ -1357,8 +1357,8 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <source>Change the colour of %n conductors</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform>Modifier la couleur de %n conducteur(s)</numerusform>
-            <numerusform>Modifier la couleur de %n conducteur(s)</numerusform>
+            <numerusform>Modifier la couleur de %n conducteur</numerusform>
+            <numerusform>Modifier la couleur de %n conducteurs</numerusform>
         </translation>
     </message>
     <message>
@@ -7543,8 +7543,8 @@ Ce réglage se trouve dans Configurer QElectroTech &gt; Général &gt; Projets.<
         <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>The assistant wants to print %n folios of “%1” on “%2”.</source>
         <translation>
-            <numerusform>L&apos;assistant veut imprimer %n folio(s) de « %1 » sur « %2 ».</numerusform>
-            <numerusform>L&apos;assistant veut imprimer %n folio(s) de « %1 » sur « %2 ».</numerusform>
+            <numerusform>L&apos;assistant veut imprimer %n folio de « %1 » sur « %2 ».</numerusform>
+            <numerusform>L&apos;assistant veut imprimer %n folios de « %1 » sur « %2 ».</numerusform>
         </translation>
     </message>
     <message>
@@ -7606,9 +7606,9 @@ Ce réglage se trouve dans Configurer QElectroTech &gt; Général &gt; Projets.<
         <source>I recorded a macro in QElectroTech: “%1”, %n steps (id %2, folder %3).
 With the qet MCP server: read it with qet_recording_read, write a script that does the same thing in general (for example on the selected elements rather than on those exact ones), check it with qet_recording_check until it matches, then offer it as a button with qet_script_install.</source>
         <translation>
-            <numerusform>J&apos;ai enregistré une macro dans QElectroTech : « %1 », %n étape(s) (identifiant %2, dossier %3).
+            <numerusform>J&apos;ai enregistré une macro dans QElectroTech : « %1 », %n étape (identifiant %2, dossier %3).
 Avec le serveur MCP qet : lis-la avec qet_recording_read, écris un script qui fait la même chose de façon générale (par exemple sur les éléments sélectionnés plutôt que sur ceux-là précisément), vérifie-le avec qet_recording_check jusqu&apos;à ce qu&apos;il corresponde, puis propose-le comme bouton avec qet_script_install.</numerusform>
-            <numerusform>J&apos;ai enregistré une macro dans QElectroTech : « %1 », %n étape(s) (identifiant %2, dossier %3).
+            <numerusform>J&apos;ai enregistré une macro dans QElectroTech : « %1 », %n étapes (identifiant %2, dossier %3).
 Avec le serveur MCP qet : lis-la avec qet_recording_read, écris un script qui fait la même chose de façon générale (par exemple sur les éléments sélectionnés plutôt que sur ceux-là précisément), vérifie-le avec qet_recording_check jusqu&apos;à ce qu&apos;il corresponde, puis propose-le comme bouton avec qet_script_install.</numerusform>
         </translation>
     </message>
@@ -8491,8 +8491,8 @@ Les importer ? Les éléments recevront alors les prochains numéros, à partir 
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="62"/>
         <source>This PDF document contains %n pages</source>
         <translation>
-            <numerusform>Ce document PDF contient %n page(s)</numerusform>
-            <numerusform>Ce document PDF contient %n page(s)</numerusform>
+            <numerusform>Ce document PDF contient %n page</numerusform>
+            <numerusform>Ce document PDF contient %n pages</numerusform>
         </translation>
     </message>
     <message>
@@ -8820,9 +8820,9 @@ Un champ vide signifie que le dossier reprend le préfixe de son dossier parent.
         <source>%n entries of qet_labels.xml match no folder of the collection:
 keep them or delete them?</source>
         <translation>
-            <numerusform>%n entrée(s) de qet_labels.xml ne correspond à aucun dossier de la collection :
-les conserver ou les supprimer ?</numerusform>
-            <numerusform>%n entrée(s) de qet_labels.xml ne correspond à aucun dossier de la collection :
+            <numerusform>%n entrée de qet_labels.xml ne correspond à aucun dossier de la collection :
+la conserver ou la supprimer ?</numerusform>
+            <numerusform>%n entrées de qet_labels.xml ne correspondent à aucun dossier de la collection :
 les conserver ou les supprimer ?</numerusform>
         </translation>
     </message>
@@ -11201,10 +11201,10 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</translation>
 If you save the project, these conductors will disappear from the file. Close it without saving to keep the file as it is.</source>
         <comment>message box content</comment>
         <translation>
-            <numerusform>%n conducteur(s) n&apos;ont pas pu être reliés à leurs bornes et n&apos;ont pas été chargés. La définition de l&apos;élément dans le projet a probablement été remplacée par une autre dont les bornes diffèrent.
+            <numerusform>%n conducteur n&apos;a pas pu être relié à ses bornes et n&apos;a pas été chargé. La définition de l&apos;élément dans le projet a probablement été remplacée par une autre dont les bornes diffèrent.
 
-Si vous enregistrez le projet, ces conducteurs disparaîtront du fichier. Fermez-le sans enregistrer pour conserver le fichier tel quel.</numerusform>
-            <numerusform>%n conducteur(s) n&apos;ont pas pu être reliés à leurs bornes et n&apos;ont pas été chargés. La définition de l&apos;élément dans le projet a probablement été remplacée par une autre dont les bornes diffèrent.
+Si vous enregistrez le projet, ce conducteur disparaîtra du fichier. Fermez-le sans enregistrer pour conserver le fichier tel quel.</numerusform>
+            <numerusform>%n conducteurs n&apos;ont pas pu être reliés à leurs bornes et n&apos;ont pas été chargés. La définition de l&apos;élément dans le projet a probablement été remplacée par une autre dont les bornes diffèrent.
 
 Si vous enregistrez le projet, ces conducteurs disparaîtront du fichier. Fermez-le sans enregistrer pour conserver le fichier tel quel.</numerusform>
         </translation>
@@ -11213,8 +11213,8 @@ Si vous enregistrez le projet, ces conducteurs disparaîtront du fichier. Fermez
         <location filename="../sources/qetdiagrameditor.cpp" line="2493"/>
         <source>%n items aligned</source>
         <translation>
-            <numerusform>%n objet(s) aligné(s)</numerusform>
-            <numerusform>%n objet(s) aligné(s)</numerusform>
+            <numerusform>%n objet aligné</numerusform>
+            <numerusform>%n objets alignés</numerusform>
         </translation>
     </message>
     <message>
@@ -11246,24 +11246,24 @@ Si vous enregistrez le projet, ces conducteurs disparaîtront du fichier. Fermez
         <location filename="../sources/qetdiagrameditor.cpp" line="4066"/>
         <source>%n elements redrawn.</source>
         <translation>
-            <numerusform>%n élément(s) redessiné(s).</numerusform>
-            <numerusform>%n élément(s) redessiné(s).</numerusform>
+            <numerusform>%n élément redessiné.</numerusform>
+            <numerusform>%n éléments redessinés.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4070"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
-            <numerusform>%n élément(s) dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</numerusform>
-            <numerusform>%n élément(s) dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</numerusform>
+            <numerusform>%n élément dont la définition est introuvable ou illisible : son dessin actuel a été conservé.</numerusform>
+            <numerusform>%n éléments dont la définition est introuvable ou illisible : leur dessin actuel a été conservé.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="4082"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
-            <numerusform>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</numerusform>
-            <numerusform>%n élément(s) non redessiné(s) : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</numerusform>
+            <numerusform>%n élément non redessiné : sa taille, son point de saisie ou ses bornes ont changé (borne ajoutée, supprimée ou déplacée).</numerusform>
+            <numerusform>%n éléments non redessinés : leur taille, leur point de saisie ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).</numerusform>
         </translation>
     </message>
     <message>
@@ -11320,8 +11320,8 @@ Activer les scripts ? Ce réglage est modifiable dans Configurer QElectroTech &g
         <location filename="../sources/qetdiagrameditor.cpp" line="4267"/>
         <source>● Recording: %n steps</source>
         <translation>
-            <numerusform>● Enregistrement : %n étape(s)</numerusform>
-            <numerusform>● Enregistrement : %n étape(s)</numerusform>
+            <numerusform>● Enregistrement : %n étape</numerusform>
+            <numerusform>● Enregistrement : %n étapes</numerusform>
         </translation>
     </message>
     <message>
@@ -11335,10 +11335,10 @@ Activer les scripts ? Ce réglage est modifiable dans Configurer QElectroTech &g
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
         <translation>
-            <numerusform>« %1 » : %n étape(s).
+            <numerusform>« %1 » : %n étape.
 
 Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessous copie la demande, il suffit de la coller dans sa fenêtre.</numerusform>
-            <numerusform>« %1 » : %n étape(s).
+            <numerusform>« %1 » : %n étapes.
 
 Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessous copie la demande, il suffit de la coller dans sa fenêtre.</numerusform>
         </translation>
@@ -11730,8 +11730,8 @@ Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessou
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
-            <numerusform>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</numerusform>
-            <numerusform>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</numerusform>
+            <numerusform>%n description de police écrite dans un format étranger ou corrompu a été restaurée. Elle sera réécrite dans un format stable au prochain enregistrement du projet.</numerusform>
+            <numerusform>%n descriptions de police écrites dans un format étranger ou corrompu ont été restaurées. Elles seront réécrites dans un format stable au prochain enregistrement du projet.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -11739,8 +11739,8 @@ Pour en faire un script, demandez-le à votre assistant IA : le bouton ci-dessou
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
         <translation>
-            <numerusform>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</numerusform>
-            <numerusform>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</numerusform>
+            <numerusform>%n description de police n&apos;a pas pu être lue ; la police par défaut sera utilisée pour ce texte.</numerusform>
+            <numerusform>%n descriptions de police n&apos;ont pas pu être lues ; la police par défaut sera utilisée pour ces textes.</numerusform>
         </translation>
     </message>
     <message>
@@ -11770,8 +11770,8 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/qetdiagrameditor.cpp" line="2492"/>
         <source>%n items put back on the grid</source>
         <translation>
-            <numerusform>%n objet(s) remis sur la grille</numerusform>
-            <numerusform>%n objet(s) remis sur la grille</numerusform>
+            <numerusform>%n objet remis sur la grille</numerusform>
+            <numerusform>%n objets remis sur la grille</numerusform>
         </translation>
     </message>
     <message>
@@ -11783,8 +11783,8 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/qetdiagrameditor.cpp" line="2507"/>
         <source>(%n locked objects left in place)</source>
         <translation>
-            <numerusform>(%n objet(s) verrouillé(s) laissé(s) en place)</numerusform>
-            <numerusform>(%n objet(s) verrouillé(s) laissé(s) en place)</numerusform>
+            <numerusform>(%n objet verrouillé laissé en place)</numerusform>
+            <numerusform>(%n objets verrouillés laissés en place)</numerusform>
         </translation>
     </message>
     <message>
@@ -12407,8 +12407,8 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
         <source>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</source>
         <translation>
-            <numerusform>&lt;br&gt;%n borne(s) sans nom. Sans noms de bornes uniques, la liste de câblage (qui relie quoi à quoi) ne peut pas désigner chaque borne, et ne peut donc pas servir à câbler l&apos;armoire en atelier.</numerusform>
-            <numerusform>&lt;br&gt;%n borne(s) sans nom. Sans noms de bornes uniques, la liste de câblage (qui relie quoi à quoi) ne peut pas désigner chaque borne, et ne peut donc pas servir à câbler l&apos;armoire en atelier.</numerusform>
+            <numerusform>&lt;br&gt;%n borne sans nom. Sans noms de bornes uniques, la liste de câblage (qui relie quoi à quoi) ne peut pas désigner chaque borne, et ne peut donc pas servir à câbler l&apos;armoire en atelier.</numerusform>
+            <numerusform>&lt;br&gt;%n bornes sans nom. Sans noms de bornes uniques, la liste de câblage (qui relie quoi à quoi) ne peut pas désigner chaque borne, et ne peut donc pas servir à câbler l&apos;armoire en atelier.</numerusform>
         </translation>
     </message>
     <message>
@@ -15203,8 +15203,8 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
         <location filename="../sources/undocommand/alignselectioncommand.cpp" line="188"/>
         <source>Align %n items</source>
         <translation>
-            <numerusform>Aligner %n objet(s)</numerusform>
-            <numerusform>Aligner %n objet(s)</numerusform>
+            <numerusform>Aligner %n objet</numerusform>
+            <numerusform>Aligner %n objets</numerusform>
         </translation>
     </message>
     <message>
@@ -15322,16 +15322,16 @@ Pour l&apos;activer : Configurer QElectroTech &gt; Général &gt; Projets, ou d�
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="55"/>
         <source>Group %n items</source>
         <translation>
-            <numerusform>Grouper %n objet(s)</numerusform>
-            <numerusform>Grouper %n objet(s)</numerusform>
+            <numerusform>Grouper %n objet</numerusform>
+            <numerusform>Grouper %n objets</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/undocommand/groupitemscommand.cpp" line="75"/>
         <source>Ungroup %n items</source>
         <translation>
-            <numerusform>Dégrouper %n objet(s)</numerusform>
-            <numerusform>Dégrouper %n objet(s)</numerusform>
+            <numerusform>Dégrouper %n objet</numerusform>
+            <numerusform>Dégrouper %n objets</numerusform>
         </translation>
     </message>
     <message>
@@ -16438,16 +16438,16 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="64"/>
         <source>%n terminals of this element are not on the grid, and no factor brings them there.</source>
         <translation>
-            <numerusform>%n borne(s) de cet élément ne sont pas sur la grille, et aucun facteur ne les y amène.</numerusform>
-            <numerusform>%n borne(s) de cet élément ne sont pas sur la grille, et aucun facteur ne les y amène.</numerusform>
+            <numerusform>%n borne de cet élément n&apos;est pas sur la grille, et aucun facteur ne l&apos;y amène.</numerusform>
+            <numerusform>%n bornes de cet élément ne sont pas sur la grille, et aucun facteur ne les y amène.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="67"/>
         <source>%n terminals of this element are not on the grid. Only the factors that bring them there are offered.</source>
         <translation>
-            <numerusform>%n borne(s) de cet élément ne sont pas sur la grille. Seuls les facteurs qui les y amènent sont proposés.</numerusform>
-            <numerusform>%n borne(s) de cet élément ne sont pas sur la grille. Seuls les facteurs qui les y amènent sont proposés.</numerusform>
+            <numerusform>%n borne de cet élément n&apos;est pas sur la grille. Seuls les facteurs qui l&apos;y amènent sont proposés.</numerusform>
+            <numerusform>%n bornes de cet élément ne sont pas sur la grille. Seuls les facteurs qui les y amènent sont proposés.</numerusform>
         </translation>
     </message>
     <message>
@@ -17478,8 +17478,8 @@ Les autres champs ne sont pas utilisés.</translation>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="337"/>
         <source>%n actions</source>
         <translation>
-            <numerusform>%n action(s)</numerusform>
-            <numerusform>%n action(s)</numerusform>
+            <numerusform>%n action</numerusform>
+            <numerusform>%n actions</numerusform>
         </translation>
     </message>
     <message>
@@ -21473,8 +21473,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>%n conductors listed.</source>
         <comment>wiring list summary</comment>
         <translation>
-            <numerusform>%n conducteur(s) listé(s).</numerusform>
-            <numerusform>%n conducteur(s) listé(s).</numerusform>
+            <numerusform>%n conducteur listé.</numerusform>
+            <numerusform>%n conducteurs listés.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -21482,8 +21482,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>%n conductors excluded: one end is not attached to any element.</source>
         <comment>wiring list exclusion warning</comment>
         <translation>
-            <numerusform>%n conducteur(s) exclu(s) : une extrémité n&apos;est rattachée à aucun élément.</numerusform>
-            <numerusform>%n conducteur(s) exclu(s) : une extrémité n&apos;est rattachée à aucun élément.</numerusform>
+            <numerusform>%n conducteur exclu : une extrémité n&apos;est rattachée à aucun élément.</numerusform>
+            <numerusform>%n conducteurs exclus : une extrémité n&apos;est rattachée à aucun élément.</numerusform>
         </translation>
     </message>
 </context>
