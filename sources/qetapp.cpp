@@ -2305,7 +2305,7 @@ QString partLabel(ConfigProfile::Part part)
 {
 	switch (part) {
 		case ConfigProfile::Part::Controls:
-			return QETApp::tr("Toolbars, keyboard shortcuts and mouse gestures");
+			return QETApp::tr("Toolbars, keyboard shortcuts, mouse and trackpad gestures");
 		case ConfigProfile::Part::NewProject:
 			return QETApp::tr("Defaults for new projects: folio, title block, "
 							  "wires, numbering");
@@ -2505,6 +2505,11 @@ void QETApp::importConfiguration()
 	if (!restart) {
 		QSettings live_settings;
 		ConfigProfile::importFrom(file_settings, live_settings);
+		QET::QetMessageBox::information(
+					parent_widget,
+					tr("Load settings", "message box title"),
+					tr("The settings are loaded. They are used for the next "
+					   "new project."));
 		return;
 	}
 

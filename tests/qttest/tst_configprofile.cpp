@@ -18,6 +18,7 @@ private slots:
 		QVERIFY(ConfigProfile::isLocalKey("diagrameditor/geometry"));
 		QVERIFY(ConfigProfile::isLocalKey("elementeditor/state"));
 		QVERIFY(ConfigProfile::isLocalKey("projects-recentfiles/file1"));
+		QVERIFY(ConfigProfile::isLocalKey("dialoggeometry/ConfigDialog"));
 		QVERIFY(ConfigProfile::isLocalKey(ConfigProfile::marker_key));
 		QVERIFY(!ConfigProfile::isLocalKey("diagrameditor/Xgrid"));
 		QVERIFY(!ConfigProfile::isLocalKey("shortcuts/mainwindow.fullscreen"));
@@ -32,6 +33,7 @@ private slots:
 		live.setValue("lang", "de");
 		live.setValue("diagrameditor/geometry", QByteArray("xyz"));
 		live.setValue("projects-recentfiles/file1", "/home/a/b.qet");
+		live.setValue("dialoggeometry/ConfigDialog", QByteArray("xyz"));
 
 		QSettings file(path("profile1.conf"), QSettings::IniFormat);
 		QCOMPARE(ConfigProfile::exportTo(live, file), 2);
@@ -39,6 +41,7 @@ private slots:
 		QCOMPARE(file.value("diagrameditor/Xgrid").toInt(), 7);
 		QVERIFY(!file.contains("diagrameditor/geometry"));
 		QVERIFY(!file.contains("projects-recentfiles/file1"));
+		QVERIFY(!file.contains("dialoggeometry/ConfigDialog"));
 	}
 
 	// Import replaces every setting, removes the ones the profile does not
@@ -100,6 +103,7 @@ private slots:
 		QCOMPARE(ConfigProfile::partOf("diagrameditor/gestures/directions"), P::Controls);
 		QCOMPARE(ConfigProfile::partOf("diagrameditor/mouse_gestures"), P::Controls);
 		QCOMPARE(ConfigProfile::partOf("diagrameditor/context_toolbar"), P::Controls);
+		QCOMPARE(ConfigProfile::partOf("diagramview/gestures"), P::Controls);
 
 		QCOMPARE(ConfigProfile::partOf("diagrameditor/defaultconductortype"), P::NewProject);
 		QCOMPARE(ConfigProfile::partOf("diagrameditor/defaultreportlabel"), P::NewProject);

@@ -29,8 +29,8 @@
 
 	Two kinds of keys stay out of a profile, because they describe this
 	computer rather than how the user wants QElectroTech to behave: window
-	sizes, positions and dock layouts (".../geometry", ".../state"), and
-	the recent-files lists ("...-recentfiles/..."). They are not written to
+	sizes, positions and dock layouts (".../geometry", ".../state",
+	"dialoggeometry/..."), and the recent-files lists ("...-recentfiles/..."). They are not written to
 	the file, and loading a profile keeps the current ones.
 
 	A file can hold every other setting (a complete profile), or only some
@@ -52,7 +52,7 @@ namespace ConfigProfile
 
 		/// The parts the settings are split into.
 	enum class Part {
-		Controls,	///< toolbars, keyboard shortcuts, shortcut bar, mouse gestures
+		Controls,	///< toolbars, keyboard shortcuts, shortcut bar, mouse and trackpad gestures
 		NewProject,	///< defaults for new projects: folio, title block, wires, numbering...
 		Other,		///< everything else: appearance, grid, language...
 		Folders		///< folders of the collections, title blocks and macros
@@ -71,6 +71,7 @@ namespace ConfigProfile
 	{
 		return key.endsWith(QLatin1String("/geometry"))
 			|| key.endsWith(QLatin1String("/state"))
+			|| key.startsWith(QLatin1String("dialoggeometry/"))
 			|| key.contains(QLatin1String("-recentfiles/"))
 			|| key == marker_key
 			|| key == parts_key;
@@ -88,7 +89,8 @@ namespace ConfigProfile
 			QStringLiteral("diagrameditor/shortcut_bar/"),
 			QStringLiteral("diagrameditor/gestures/"),
 			QStringLiteral("diagrameditor/mouse_gestures"),
-			QStringLiteral("diagrameditor/context_toolbar")};
+			QStringLiteral("diagrameditor/context_toolbar"),
+			QStringLiteral("diagramview/gestures")};
 		static const QStringList new_project{
 				//BorderProperties, TitleBlockProperties, ConductorProperties,
 				//report, cross-reference and guide defaults all start so
