@@ -619,6 +619,17 @@ target_link_libraries(tst_dxfcurves PRIVATE Qt::Test)
 target_compile_definitions(tst_dxfcurves PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A static text with anchor="alignment" has its x at the edge or centre its
+# Halignment selects, not at its left edge (#1251).
+add_executable(
+  tst_statictextanchor
+  tst_statictextanchor.cpp)
+add_test(NAME tst_statictextanchor COMMAND tst_statictextanchor)
+add_dependencies(tst_statictextanchor qelectrotech)
+target_link_libraries(tst_statictextanchor PRIVATE Qt::Test)
+target_compile_definitions(tst_statictextanchor PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # --export-dxf --dxf-blocks: a symbol placed twice is one BLOCK and two
 # INSERTs (issue #1339).
 add_executable(
