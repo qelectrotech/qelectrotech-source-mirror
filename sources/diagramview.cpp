@@ -455,7 +455,7 @@ void DiagramView::handleImageFilesDrop(QDropEvent *e)
 		QString error;
 		const QImage image = ImageDrop::load(file, &error);
 		if (image.isNull())
-			refused << QStringLiteral("%1 : %2").arg(QFileInfo(file).fileName(), error);
+			refused << tr("%1: %2").arg(QFileInfo(file).fileName(), error);
 		else
 			items << new DiagramImageItem(QPixmap::fromImage(image));
 	}
