@@ -2507,6 +2507,14 @@ Hold Shift and drag to move this text on its own</translation>
         <source>Sheet reference</source>
         <translation>Sheet reference</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../../../Users/beathangartner/Projects/qet-wt-crop/sources/diagramview.cpp" line="499"/>
+        <source>Add %n image(s)</source>
+        <translation>
+            <numerusform>Add %n image</numerusform>
+            <numerusform>Add %n images</numerusform>
+        </translation>
+    </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="786"/>
         <source>X: %1 Y: %2</source>
