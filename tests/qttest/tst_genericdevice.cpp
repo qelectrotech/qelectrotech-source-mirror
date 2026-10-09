@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+#include <QFontMetricsF>
 #include <QtTest>
 
 #include "genericdevice/genericdevice.h"
@@ -353,7 +354,11 @@ private slots:
 			//No terminals: the minimum, or as wide as the label needs
 		QVERIFY(l.body_width >= MinWidth);
 		QCOMPARE(l.body_width % Grid, 0);
-		QCOMPARE(l.body_height, MinHeight);
+			//The label sets the floor when its font is taller than
+			//MinHeight allows, which depends on the fonts installed
+		const int label_h = int(qCeil(QFontMetricsF(fonts().label).height()));
+		const int floor_h = std::max(MinHeight, 2 * label_h);
+		QCOMPARE(l.body_height, (floor_h + Grid - 1) / Grid * Grid);
 		QVERIFY(l.terminals.isEmpty());
 
 		Spec one;
