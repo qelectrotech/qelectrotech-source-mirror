@@ -705,7 +705,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	text_document.setDocumentMargin(0.0);
 
 		//Optional line alignment of multi-line texts. The document only
-		//honors the text option once a text width is set.
+		//honours the text option once a text width is set.
 		//x/y are the baseline-left of the text block, unless
 		//anchor="alignment": x is then the left edge, centre or right edge
 		//selected by Halignment, and y stays the baseline (#1251).
@@ -728,7 +728,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	QTransform text_transform;
 	text_transform.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
 	text_transform.rotate(dom.attribute("rotation", "0").toDouble());
-		//baseline-left of the text block, for the dxf export below
+		//baseline-left of the text block, for the DXF export below
 	const QPointF baseline_left = text_transform.map(QPointF(qpainter_offset.x(), 0));
 	text_transform.translate(qpainter_offset.x(), qpainter_offset.y());
 

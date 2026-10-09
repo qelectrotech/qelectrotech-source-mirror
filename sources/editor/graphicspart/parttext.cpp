@@ -457,8 +457,8 @@ void PartText::finishAlignment()
 	@return the vector from the baseline-left of the text to the point
 	written as x/y with anchor="alignment" (#1251): the left edge, centre or
 	right edge of the text, without the document margin, on the baseline.
-	Same width as ElementPictureFactory::parseText, which draws without
-	a margin.
+	Uses the same width as ElementPictureFactory::parseText, which draws
+	without a margin.
 */
 QPointF PartText::anchorOffset() const
 {
