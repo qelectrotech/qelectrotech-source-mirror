@@ -72,6 +72,18 @@ QMainWindow *makeWindow(QMenu **file_menu)
 	return w;
 }
 
+/*
+	Menu mnemonics and the F10 shortcut (a Qt::WindowShortcut) only fire
+	in the active window. Being exposed is not enough: on a loaded Xvfb or
+	with another application in front on macOS, activation arrives later,
+	and a key sent before it is dropped. Every test waits for activation
+	before pressing anything.
+*/
+bool waitForActiveWindow(QMainWindow *w)
+{
+	return QTest::qWaitForWindowExposed(w) && QTest::qWaitForWindowActive(w);
+}
+
 }
 
 /*
@@ -95,12 +107,12 @@ void TstMenuBarKeyboard::altLetterOpensMenu()
 {
 	QMenu *file = nullptr;
 	QScopedPointer<QMainWindow> w(makeWindow(&file));
-	QVERIFY(QTest::qWaitForWindowExposed(w.data()));
+	QVERIFY2(waitForActiveWindow(w.data()),
+		 "the test window never became active");
 
 	QTest::keyClick(w.data(), Qt::Key_F, Qt::AltModifier);
-	QTest::qWait(300);
 
-	QVERIFY2(file->isVisible(),
+	QTRY_VERIFY2(file->isVisible(),
 		 "control failed: Alt+F did not open a menu, so this environment "
 		 "cannot judge any of the keyboard tests below");
 }
@@ -113,7 +125,8 @@ void TstMenuBarKeyboard::plainF10DoesNothingInQt()
 {
 	QMenu *file = nullptr;
 	QScopedPointer<QMainWindow> w(makeWindow(&file));
-	QVERIFY(QTest::qWaitForWindowExposed(w.data()));
+	QVERIFY2(waitForActiveWindow(w.data()),
+		 "the test window never became active");
 
 	QTest::keyClick(w.data(), Qt::Key_F10, Qt::NoModifier);
 	QTest::qWait(300);
@@ -139,7 +152,7 @@ void TstMenuBarKeyboard::shortcutOpensMenuBar()
 	QMenu *file = nullptr;
 	QScopedPointer<QMainWindow> holder(makeWindow(&file));
 	QMainWindow *w = holder.data();
-	QVERIFY(QTest::qWaitForWindowExposed(w));
+	QVERIFY2(waitForActiveWindow(w), "the test window never became active");
 
 	auto *shortcut = new QShortcut(QKeySequence(Qt::Key_F10), w);
 	shortcut->setContext(Qt::WindowShortcut);
@@ -153,9 +166,8 @@ void TstMenuBarKeyboard::shortcutOpensMenuBar()
 	});
 
 	QTest::keyClick(w, Qt::Key_F10, Qt::NoModifier);
-	QTest::qWait(300);
 
-	QVERIFY2(w->menuBar()->activeAction() != nullptr,
+	QTRY_VERIFY2(w->menuBar()->activeAction() != nullptr,
 		 "F10 did not activate the menu bar");
 	QCOMPARE(w->menuBar()->activeAction()->text(), QStringLiteral("&File"));
 }
