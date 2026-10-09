@@ -85,9 +85,14 @@ IndependentTextItem::~IndependentTextItem()
 void IndependentTextItem::fromXml(const QDomElement &e) {
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
 	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+		//"nan" and "inf" parse as numbers; a non-finite position or
+		//rotation is kept at 0, as for conductors and element texts
+	const qreal x = e.attribute("x").toDouble();
+	const qreal y = e.attribute("y").toDouble();
+	setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 	setHtml(e.attribute("text"));
-	setRotation(e.attribute("rotation").toDouble());
+	const qreal rotation = e.attribute("rotation").toDouble();
+	setRotation(qIsFinite(rotation) ? rotation : 0);
 	if (e.hasAttribute("font"))
 	{
 		QFont font;
