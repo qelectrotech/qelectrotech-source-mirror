@@ -29,6 +29,7 @@
 #include "../diagramcontent.h"
 #include "../diagramview.h"
 #include "../factory/elementfactory.h"
+#include "../imagedrop.h"
 #include "../factory/qetgraphicstablefactory.h"
 #include "../factory/ui/addtabledialog.h"
 #include "../qet.h"
@@ -3437,20 +3438,12 @@ int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, do
 	const QList<Diagram *> diagrams = m_project->diagrams();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 
-	const QFileInfo info(filePath);
-	if (!info.isFile()) {
-		log(QStringLiteral("qet.addImage: '%1' is not a file").arg(filePath));
-		return -1;
-	}
-	constexpr qint64 max_bytes = 10LL * 1024 * 1024;
-	if (info.size() > max_bytes) {
-		log(QStringLiteral("qet.addImage: '%1' is %2 bytes; images are embedded in the project, "
-						   "so files over 10 MB are refused").arg(filePath).arg(info.size()));
-		return -1;
-	}
-	const QImage image(filePath);
+	// Same checks as a picture dropped on a folio: a regular file of at
+	// most 10 MB (it is embedded in the project) and a bounded pixel count.
+	QString error;
+	const QImage image = ImageDrop::load(filePath, &error);
 	if (image.isNull()) {
-		log(QStringLiteral("qet.addImage: '%1' could not be read as an image").arg(filePath));
+		log(QStringLiteral("qet.addImage: '%1': %2").arg(filePath, error));
 		return -1;
 	}
 

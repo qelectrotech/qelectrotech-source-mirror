@@ -17,6 +17,7 @@
 */
 
 #include "diagrameventaddimage.h"
+#include "../imagedrop.h"
 
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
@@ -341,10 +342,11 @@ void DiagramEventAddImage::openDialog()
 	
 	if (fileName.isEmpty()) return;
 	
-	QImage image(fileName);
+	QString error;
+	const QImage image = ImageDrop::load(fileName, &error);
 	if(image.isNull())
 	{
-		QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Error"), QObject::tr("Unable to load the image."));
+		QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Error"), QObject::tr("Unable to load the image.") + "\n" + error);
 		return;
 	}
 	

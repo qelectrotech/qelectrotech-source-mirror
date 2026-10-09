@@ -1105,6 +1105,17 @@ add_test(NAME tst_borderpropertiesxml COMMAND tst_borderpropertiesxml)
 target_include_directories(tst_borderpropertiesxml PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_borderpropertiesxml PRIVATE Qt::Test Qt::Xml)
 
+# Picture files dropped on a folio: which files are taken, the size and
+# pixel limits before a picture is embedded, fitting into the view and the
+# cascade of several pictures.
+add_executable(
+  tst_imagedrop
+  tst_imagedrop.cpp
+  ${QET_DIR}/sources/imagedrop.cpp)
+add_test(NAME tst_imagedrop COMMAND tst_imagedrop)
+target_include_directories(tst_imagedrop PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_imagedrop PRIVATE Qt::Test Qt::Gui)
+
 # Qt 6.4.2 writes the attributes of an element in an order that changes from
 # one process to the next, so a project saved twice by two runs of the binary
 # differs in bytes only (seen on projects without any numbering, too). A fixed

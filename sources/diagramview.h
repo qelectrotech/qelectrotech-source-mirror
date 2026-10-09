@@ -145,6 +145,7 @@ class DiagramView : public PaletteGraphicsView
 		void updateFolioReportMenu();
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
+		void handleImageFilesDrop(QDropEvent *);
 		void scrollOnMovement(QKeyEvent *);
 		bool gestureEvent(QGestureEvent *event);
 		QRectF viewedSceneRect() const;
