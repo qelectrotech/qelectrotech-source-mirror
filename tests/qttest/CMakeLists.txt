@@ -584,6 +584,19 @@ target_link_libraries(tst_freetextwidth PRIVATE Qt::Test Qt::Gui Qt::Xml)
 target_compile_definitions(tst_freetextwidth PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A free text whose x, y or rotation is "nan" or "inf" is loaded at 0 for
+# that number, so a resave and the SVG export carry no non-finite number:
+# the real binary on fixtures/free_text_nonfinite.qet.
+add_executable(
+  tst_freetextnonfinite
+  tst_freetextnonfinite.cpp)
+add_test(NAME tst_freetextnonfinite COMMAND tst_freetextnonfinite)
+set_tests_properties(tst_freetextnonfinite PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+add_dependencies(tst_freetextnonfinite qelectrotech)
+target_link_libraries(tst_freetextnonfinite PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_freetextnonfinite PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # The wiring list export (--export-cables) keeps every wire drawn to a folio
 # report when a report has several, joins only one-to-one report pairs, and
 # prints the folio number rather than its template. fixtures/wiring_list_arrows.qet

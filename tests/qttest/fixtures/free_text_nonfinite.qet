@@ -1,0 +1,43 @@
+<project title="Free texts with non-finite numbers" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a00}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">free_text_nonfinite</property>
+        <property name="savedtime" show="1">18:39</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a10}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <inputs>
+            <input font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" rotation="0" text="NanX" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a01}" x="nan" y="100"/>
+            <input font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" rotation="0" text="InfY" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a02}" x="200" y="inf"/>
+            <input font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" rotation="0" text="MinusInfX" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a03}" x="-inf" y="300"/>
+            <input font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" rotation="nan" text="NanRotation" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a04}" x="400" y="400"/>
+            <input font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" rotation="37" text="Plain" uuid="{6a1f0c3e-2b44-4d1e-8f0a-3c5d7e9b1a05}" x="61.7" y="61.3"/>
+        </inputs>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="en">Imported elements</name>
+            </names>
+        </category>
+    </collection>
+</project>
