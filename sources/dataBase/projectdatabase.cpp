@@ -121,6 +121,7 @@ void projectDataBase::updateDB()
 	if (!m_content_changed)
 	{
 		flushDrawingItems();
+		flushLinks();
 		emit dataBaseUpdated();
 		return;
 	}
@@ -130,6 +131,7 @@ void projectDataBase::updateDB()
 	populateElementTable();
 	populateElementInfoTable();
 	populateConductorTable();
+	populateLinkTable();
 	populateDrawingItemTables();
 	m_content_changed = false;
 
@@ -140,8 +142,8 @@ void projectDataBase::updateDB()
 	@brief projectDataBase::updateDB
 	updateDB() for a project just read from @p document.
 
-	The diagram, diagram_info, element, element_info, terminal and conductor
-	tables are filled from the document itself when it carries everything
+	The diagram, diagram_info, element, element_info, terminal, conductor
+	and link tables are filled from the document itself when it carries everything
 	they need -- see populateFromDocument() -- and from the built folios
 	otherwise, as updateDB() does. Shapes, texts and pictures always come from
 	the built folios: their boxes need the fonts and pens a folio renders with.
@@ -229,6 +231,7 @@ struct DocumentElement
 	DiagramContext informations;
 	QString label;
 	QHash<QUuid, DocumentTerminal> terminals;
+	QList<QPair<QString, int>> links;   //linked uuid, group index
 };
 
 	//The sequential values an element or a conductor was saved with, as
@@ -256,8 +259,8 @@ struct DocumentConductor
 
 /**
 	@brief projectDataBase::populateFromDocument
-	Fill the diagram, diagram_info, element, element_info, terminal and
-	conductor tables from @p document, the project as read from its file,
+	Fill the diagram, diagram_info, element, element_info, terminal,
+	conductor and link tables from @p document, the project as read from its file,
 	with the same values the built folios give -- using the same code:
 	a BorderTitleBlock read from each folio's XML gives the title-block
 	values and each element's grid cell, the project's embedded collection
@@ -270,8 +273,10 @@ struct DocumentConductor
 	a folio number uses %autonum, a conductor ends on a terminal that shows
 	its master's contact label, an element's definition is missing or
 	not one the folios could build, two elements on a folio number their
-	terminals alike, or sequential numbers are saved as the attributes
-	older files carry. A file saved by a current QElectroTech carries
+	terminals alike, sequential numbers are saved as the attributes
+	older files carry, or a link is listed by one side only, joins kinds
+	that cannot link, or gives a contact or a folio report a second
+	partner. A file saved by a current QElectroTech carries
 	everything else.
 
 	A label or a conductor text made from a formula is worked out again,
@@ -491,6 +496,13 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 				element.label = autonum::AssignVariables::formulaToLabel(formula, sequence, context);
 			}
 
+			for (const QDomElement &link : QET::findInDomElement(
+					 element_xml, QStringLiteral("links_uuids"), QStringLiteral("link_uuid"))) {
+				element.links << qMakePair(QUuid(link.attribute(QStringLiteral("uuid"))).toString(),
+										   link.attribute(QStringLiteral("group_index"),
+														  QStringLiteral("-1")).toInt());
+			}
+
 			on_this_folio.insert(uuid, int(elements.size()));
 			elements << element;
 		}
@@ -585,13 +597,58 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		diagram_dates << border->date();
 	}
 
+		//The links the folios make (Element::initLink()): a link to an
+		//element the project does not have is dropped there too. Anything
+		//else they would resolve one way or another -- a link only one side
+		//lists, between kinds that cannot link, or a second coil for a
+		//contact -- is left to them.
+	QHash<QString, int> element_index;
+	for (int i = 0 ; i < elements.size() ; ++i) {
+		element_index.insert(elements.at(i).uuid, i);
+	}
+	auto canLink = [](const QString &a, const QString &b) {
+		return (a == QLatin1String("master") && b == QLatin1String("slave"))
+			|| (a == QLatin1String("slave") && b == QLatin1String("master"))
+			|| (a == QLatin1String("next_report") && b == QLatin1String("previous_report"))
+			|| (a == QLatin1String("previous_report") && b == QLatin1String("next_report"));
+	};
+	for (DocumentElement &element : elements)
+	{
+		QList<QPair<QString, int>> kept;
+		QSet<QString> seen;
+		for (const auto &link : std::as_const(element.links))
+		{
+			const int other = element_index.value(link.first, -1);
+			if (other < 0) {
+				continue;
+			}
+			const DocumentElement &partner = elements.at(other);
+			bool listed_back = false;
+			for (const auto &back : partner.links) {
+				listed_back |= back.first == element.uuid;
+			}
+			if (seen.contains(link.first) || !listed_back
+				|| !canLink(element.type, partner.type)) {
+				return refuse(QStringLiteral("a link is not one the folios would make as saved"));
+			}
+			seen.insert(link.first);
+			kept << link;
+		}
+		if (kept.size() > 1 && element.type != QLatin1String("master")) {
+			return refuse(QStringLiteral("a link is not one the folios would make as saved"));
+		}
+		element.links = kept;
+	}
+
 		//Everything could be read: write it.
 	QSqlQuery query(m_data_base);
 	for (const QString &table : {QStringLiteral("diagram"), QStringLiteral("diagram_info"),
 								 QStringLiteral("element"), QStringLiteral("element_info"),
-								 QStringLiteral("conductor"), QStringLiteral("terminal")}) {
+								 QStringLiteral("conductor"), QStringLiteral("terminal"),
+								 QStringLiteral("link")}) {
 		query.exec(QStringLiteral("DELETE FROM ") + table);
 	}
+	m_dirty_link_elements.clear();
 
 	for (int i = 0 ; i < diagram_uuids.size() ; ++i)
 	{
@@ -625,10 +682,19 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		}
 	}
 
-	QHash<QString, int> element_index;
-	for (int i = 0 ; i < elements.size() ; ++i) {
-		element_index.insert(elements.at(i).uuid, i);
+	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
+								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+	for (const DocumentElement &element : std::as_const(elements)) {
+		for (const auto &link : element.links) {
+			query.bindValue(QStringLiteral(":element_uuid"), element.uuid);
+			query.bindValue(QStringLiteral(":linked_uuid"), link.first);
+			query.bindValue(QStringLiteral(":group_index"), link.second >= 0 ? QVariant(link.second) : QVariant());
+			if (!query.exec()) {
+				qDebug() << "projectDataBase::populateFromDocument link insert error : " << query.lastError();
+			}
+		}
 	}
+
 	for (const DocumentConductor &conductor : std::as_const(conductors))
 	{
 		for (const auto &end : {std::make_pair(conductor.element1, conductor.terminal1),
@@ -758,7 +824,9 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//Drawing-item rows are rewritten lazily, see drawingItemChanged().
 		//Every read from outside comes through here, so this is the one
 		//place the queue has to be emptied for a reader to see current rows.
+		//The same goes for link rows, see linksChanged().
 	flushDrawingItems();
+	flushLinks();
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -850,6 +918,8 @@ void projectDataBase::addElement(Element *element)
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
+	connect(element, &Element::linkedElementChanged,
+			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
 
 	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
@@ -880,6 +950,13 @@ void projectDataBase::removeElement(Element *element)
 		changed = true;
 	} else {
 		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
+	}
+
+	QSqlQuery remove_links(m_data_base);
+	remove_links.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
+	remove_links.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	if (!remove_links.exec()) {
+		qDebug() << "projectDataBase::removeElement remove link error : " << remove_links.lastError();
 	}
 
 	if (changed) {
@@ -971,6 +1048,18 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		//locked DB) can't leave the diagram row deleted while its
 		//element/terminal/element_info/conductor rows survive.
 	m_data_base.transaction();
+
+	QSqlQuery cascade_links(m_data_base);
+	cascade_links.prepare(QStringLiteral(
+			"DELETE FROM link WHERE element_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :uuid) "
+			"OR linked_uuid IN (SELECT uuid FROM element WHERE diagram_uuid = :uuid)"));
+	cascade_links.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!cascade_links.exec()) {
+		qDebug() << "projectDataBase::removeDiagram link cascade error : "
+				 << cascade_links.lastError();
+		m_data_base.rollback();
+		return;
+	}
 
 	m_cascade_remove_element_info_query.bindValue(":uuid", uuid_str);
 	if (!m_cascade_remove_element_info_query.exec()) {
@@ -1605,6 +1694,20 @@ bool projectDataBase::createDataBase()
 		qDebug() << " element_info_table query : " << query_.lastError();
 	}
 
+		//Create the link table: one row per element and element it is
+		//linked to -- a coil and its contacts, a pair of folio reports --
+		//from each side, with the contact group the element saved for it.
+	const QString link_table(QStringLiteral(
+			"CREATE TABLE link ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"linked_uuid VARCHAR(50) NOT NULL, "
+			"group_index INTEGER, "
+			"PRIMARY KEY (element_uuid, linked_uuid), "
+			"FOREIGN KEY (element_uuid) REFERENCES element (uuid))"));
+	if (!query_.exec(link_table)) {
+		qDebug() << " link_table query : " << query_.lastError();
+	}
+
 	//Create the terminal table.
 	//Terminal::uuid() is the terminal-position id baked into the catalog
 	//.elmt definition (e.g. "the top terminal") -- identical across every
@@ -1998,6 +2101,96 @@ void projectDataBase::populateElementInfoTable()
 				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 			}
 		}
+	}
+}
+
+/**
+	@brief projectDataBase::populateLinkTable
+	Populate the link table from the built folios
+*/
+void projectDataBase::populateLinkTable()
+{
+	m_dirty_link_elements.clear();
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("DELETE FROM link"));
+	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
+								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+
+	for (const auto &diagram : m_project->diagrams())
+	{
+		const ElementProvider ep(diagram);
+		for (const auto &elmt : ep.find(allElementTypes()))
+		{
+			for (Element *linked : elmt->linkedElements())
+			{
+				const int group = elmt->groupIndexForElement(linked);
+				query.bindValue(QStringLiteral(":element_uuid"), elmt->uuid().toString());
+				query.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
+				query.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
+				if (!query.exec()) {
+					qDebug() << "projectDataBase::populateLinkTable insert error : " << query.lastError();
+				}
+			}
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::linksChanged
+	A link of the sender() was made or undone: its rows are written again
+	by the next flushLinks().
+*/
+void projectDataBase::linksChanged()
+{
+	m_content_changed = true;
+	auto *element = qobject_cast<Element *>(sender());
+	if (element && !m_dirty_link_elements.contains(element)) {
+		m_dirty_link_elements << element;
+	}
+}
+
+/**
+	@brief projectDataBase::flushLinks
+	Write the link rows of every element queued by linksChanged()
+*/
+void projectDataBase::flushLinks()
+{
+	if (m_dirty_link_elements.isEmpty()) {
+		return;
+	}
+
+	const auto dirty = m_dirty_link_elements;
+	m_dirty_link_elements.clear();
+	const bool own_transaction = m_data_base.transaction();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid"));
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
+								  "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+	for (const QPointer<Element> &element : dirty)
+	{
+		if (!element) {
+			continue;
+		}
+		remove.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+		if (!remove.exec()) {
+			qDebug() << "projectDataBase::flushLinks remove error : " << remove.lastError();
+		}
+			//An element taken off its folio is unlinked first (Diagram::
+			//removeItem()), so it writes no rows here.
+		for (Element *linked : element->linkedElements())
+		{
+			const int group = element->groupIndexForElement(linked);
+			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
+			insert.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
+			insert.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
+			if (!insert.exec()) {
+				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
+			}
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
 	}
 }
 
@@ -2403,6 +2596,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	// requiring access to the SQLite driver's native connection handle.
 	const auto escaped_path = path_.replace("'", "''");
 	db->flushDrawingItems();
+	db->flushLinks();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();

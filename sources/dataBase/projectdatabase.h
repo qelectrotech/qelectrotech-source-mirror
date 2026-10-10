@@ -124,6 +124,8 @@ class projectDataBase : public QObject
 			//Queue the sender()'s drawing-item row for rewriting.
 		void drawingItemChanged();
 		void drawingItemDestroyed(QObject *object);
+			//Queue the sender()'s link rows for rewriting.
+		void linksChanged();
 
 	public:
 
@@ -141,6 +143,8 @@ class projectDataBase : public QObject
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
+		void populateLinkTable();
+		void flushLinks();
 		void populateDrawingItemTables();
 		bool populateFromDocument(const QDomDocument &document, QString *why = nullptr);
 		bool writeDrawingItem(QObject *object);
@@ -206,6 +210,10 @@ class projectDataBase : public QObject
 		QHash<QObject *, QUuid> m_drawing_item_row;
 		QHash<QUuid, QObject *> m_drawing_row_owner;
 		QSet<QObject *> m_dirty_drawing_items;
+			//Elements whose links changed since their link rows were last
+			//written: a link is made first and its contact group set after,
+			//so the rows are written when next read, as drawing items are.
+		QList<QPointer<Element>> m_dirty_link_elements;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

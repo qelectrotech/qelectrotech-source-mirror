@@ -15,7 +15,7 @@
 // what the same database filled from the built folios holds. Every example
 // is saved once (so that it carries the uuids a current QElectroTech
 // writes), then opened twice through the real binary's --run: once as is,
-// once with QET_DATABASE_FROM_FOLIOS=1, and the six tables compared.
+// once with QET_DATABASE_FROM_FOLIOS=1, and the seven tables compared.
 class tst_databasefromdocument : public QObject
 {
 	Q_OBJECT
@@ -50,7 +50,7 @@ class tst_databasefromdocument : public QObject
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
-	// The six tables, each as a sorted list of its rows, and which way the
+	// The seven tables, each as a sorted list of its rows, and which way the
 	// database was filled.
 	QJsonObject dump(const QString &project, bool from_folios, QString *how)
 	{
@@ -102,7 +102,7 @@ class tst_databasefromdocument : public QObject
 		QVERIFY2(how_document == QLatin1String("Project database filled from the document"),
 				 qPrintable(how_document));
 		QVERIFY2(how_folios.contains(QStringLiteral("QET_DATABASE_FROM_FOLIOS")), qPrintable(how_folios));
-		QCOMPARE(document.keys().size(), 6);
+		QCOMPARE(document.keys().size(), 7);
 		for (const QString &table : folios.keys()) {
 			const QJsonArray a = document.value(table).toArray(), b = folios.value(table).toArray();
 			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows from the document, %3 from the folios")
@@ -121,7 +121,7 @@ private slots:
 		QFile js(m_dir.filePath(QStringLiteral("dump.js")));
 		QVERIFY(js.open(QIODevice::WriteOnly));
 		js.write("var out = {};\n"
-				 "['diagram', 'diagram_info', 'element', 'element_info', 'terminal', 'conductor']"
+				 "['diagram', 'diagram_info', 'element', 'element_info', 'terminal', 'conductor', 'link']"
 				 ".forEach(function (t) { out[t] = qet.query('SELECT * FROM ' + t); });\n"
 				 "qet.log('DUMP ' + JSON.stringify(out));\n");
 	}
@@ -278,6 +278,71 @@ private slots:
 		dump(saved, false, &how);
 		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
 									 "two elements on a folio number their terminals alike"));
+	}
+
+	// m_000.qet saved once, as a document to change
+	QDomDocument resavedWithLinks(const QString &saved)
+	{
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"), saved});
+		QFile file(saved);
+		QDomDocument document;
+		if (file.open(QIODevice::ReadOnly))
+			document.setContent(&file);
+		return document;
+	}
+
+	// A coil and its contacts are in the link table, from each side, with
+	// both fills: m_000.qet's coil b02216df and its contact 998190fa.
+	void linksAreListed()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("links.qet"));
+		QDomDocument document = resavedWithLinks(saved);
+		const QString coil = QStringLiteral("{b02216df-0851-4732-893b-901fea80703e}"),
+				contact = QStringLiteral("{998190fa-5b4c-4be3-bc67-8a828eaab2b4}");
+			//The coil puts this contact in its contact group 1.
+		bool grouped = false;
+		const QDomNodeList elements = document.elementsByTagName(QStringLiteral("element"));
+		for (int i = 0 ; i < elements.size() ; ++i) {
+			const QDomElement e = elements.at(i).toElement();
+			if (e.attribute(QStringLiteral("uuid")) != coil) continue;
+			for (QDomElement l = e.firstChildElement(QStringLiteral("links_uuids")).firstChildElement(QStringLiteral("link_uuid")) ;
+				 !l.isNull() ; l = l.nextSiblingElement(QStringLiteral("link_uuid"))) {
+				if (l.attribute(QStringLiteral("uuid")) == contact) {
+					l.setAttribute(QStringLiteral("group_index"), 1);
+					grouped = true;
+				}
+			}
+		}
+		QVERIFY(grouped);
+		QVERIFY(write(saved, document));
+		compareBothWays(saved);
+		bool coil_side = false, contact_side = false;
+		for (const QJsonValue &row : m_last.value(QStringLiteral("link")).toArray()) {
+			const QJsonObject link = QJsonDocument::fromJson(row.toString().toUtf8()).object();
+			const QString from = link.value(QStringLiteral("element_uuid")).toString(),
+					to = link.value(QStringLiteral("linked_uuid")).toString();
+			coil_side |= from == coil && to == contact
+					&& link.value(QStringLiteral("group_index")).toVariant().toInt() == 1;
+			contact_side |= from == contact && to == coil;
+		}
+		QVERIFY2(coil_side, "the coil's link to its contact, in group 1, is missing");
+		QVERIFY2(contact_side, "the contact's link to its coil is missing");
+	}
+
+	// A link only one side lists: the folios decide what it becomes.
+	void oneSidedLinkFallsBack()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("onesided.qet"));
+		QDomDocument document = resavedWithLinks(saved);
+		const QDomNodeList links = document.elementsByTagName(QStringLiteral("link_uuid"));
+		QVERIFY(links.size() > 0);
+		QDomNode link = links.at(0);
+		link.parentNode().removeChild(link);
+		QVERIFY(write(saved, document));
+		QString how;
+		dump(saved, false, &how);
+		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
+									 "a link is not one the folios would make as saved"));
 	}
 
 	// A file whose items carry no saved uuid is filled from the folios,
