@@ -357,6 +357,24 @@ private slots:
 		QVERIFY2(out.contains(QStringLiteral("wire properties store: 0 differ")), qPrintable(out.right(600)));
 	}
 
+	// The stores filled from the document before the folios are built
+	// hold what building them gives, for a
+	// project saved by this version (every symbol, folio and wire carries
+	// a uuid): nothing differs, nothing is left unplaced.
+	void storesFilledBeforeBuilding()
+	{
+		const QString saved = resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY2(!saved.isEmpty(), "--resave failed");
+		const QString out = runChecked({QStringLiteral("--resave"), saved,
+										m_dir.filePath(QStringLiteral("prefilled.qet"))});
+		const QRegularExpression line(QStringLiteral(
+				"filled before building: symbols (\\d+) agree, 0 differ, 0 not placed; "
+				"folios (\\d+) agree, 0 differ, 0 not placed; wires (\\d+) agree, 0 differ, 0 not placed"));
+		const QRegularExpressionMatch m = line.match(out);
+		QVERIFY2(m.hasMatch(), qPrintable(out.right(600)));
+		QVERIFY(m.captured(1).toInt() > 600 && m.captured(2).toInt() == 50 && m.captured(3).toInt() > 600);
+	}
+
 	// Title block fields stamped on every folio go through the store, and
 	// the saved folios carry them (a folio saves what the store holds).
 	void folioTitleBlockStoreAfterSetTitleBlock()

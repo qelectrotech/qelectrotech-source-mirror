@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdatabase.h"
+#include "../qetversion.h"
 
 #include "sqlreadonly.h"
 
@@ -2934,6 +2935,179 @@ QStringList projectDataBase::conductorPropertiesMismatches() const
 		if (!placed.contains(it.key()))
 			out << it.key().toString() + QStringLiteral(": stored, not placed");
 	return out;
+}
+
+/**
+	@brief projectDataBase::prefillFromDocument
+	Fill the stores of symbol information, folio title blocks and wire
+	properties from @p document, the project being opened, before its
+	folios are built: what step 5 (lazy folios) needs, a folio's data
+	without its scene. In a .qetz these blocks come from project.sqlite.
+
+	Only what the document names by a uuid it holds once: a symbol, wire
+	or folio without one gets its uuid while it is built, and a uuid
+	several symbols share (F100) names none of them. Building then writes
+	the same stores again; endPrefill() says how often it agreed.
+*/
+void projectDataBase::prefillFromDocument(const QDomDocument &document)
+{
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
+
+	QHash<QUuid, int> seen;
+	QHash<QUuid, DiagramContext> elements;
+	QHash<QUuid, ConductorProperties> conductors;
+	const QDomElement root = document.documentElement();
+	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
+		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
+	{
+		const QUuid folio_uuid(folio.attribute(QStringLiteral("uuid")));
+		if (!folio_uuid.isNull() && ++seen[folio_uuid] == 1) {
+			TitleBlockProperties properties;
+			properties.fromXml(folio);
+				//What BorderTitleBlock::importTitleBlock() makes of them
+			properties.version = QetVersion::displayedVersion();
+			properties.collection = QET::QetCollection::Embedded;
+			m_prefilled_folios.insert(folio_uuid, properties);
+		}
+		const QDomElement element_list = folio.firstChildElement(QStringLiteral("elements"));
+		for (QDomElement element = element_list.firstChildElement(QStringLiteral("element")) ;
+			 !element.isNull() ; element = element.nextSiblingElement(QStringLiteral("element")))
+		{
+			const QUuid uuid(element.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || ++seen[uuid] > 1) continue;
+			DiagramContext information;
+			information.fromXml(element.firstChildElement(QStringLiteral("elementInformations")),
+								QStringLiteral("elementInformation"));
+			elements.insert(uuid, information);
+		}
+		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
+		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
+			 !conductor.isNull() ; conductor = conductor.nextSiblingElement(QStringLiteral("conductor")))
+		{
+			const QUuid uuid(conductor.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || ++seen[uuid] > 1) continue;
+			ConductorProperties properties;
+			properties.fromXml(conductor);
+			conductors.insert(uuid, properties);
+		}
+	}
+		//A uuid held twice names nothing
+	for (auto it = elements.constBegin() ; it != elements.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_elements.insert(it.key(), it.value());
+	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_conductors.insert(it.key(), it.value());
+	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
+		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
+
+	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it)
+		storeElementInformation(it.key(), it.value());
+	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
+		storeFolioTitleBlock(it.key(), it.value());
+	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
+		storeConductorProperties(it.key(), it.value());
+}
+
+/**
+	@brief projectDataBase::endPrefill
+	The folios are built: compare what prefillFromDocument() stored with
+	what building stored, and forget what nothing was placed for.
+*/
+void projectDataBase::endPrefill()
+{
+	auto tally = [](PrefillTally &t, const QStringList &differing) {
+		if (differing.isEmpty()) { ++t.agree; return; }
+		++t.differ;
+		for (const QString &field : differing) ++t.fields[field];
+	};
+	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it) {
+		if (!placedElementCount(it.key())) {
+			++m_prefill_tally[0].unplaced;
+			if (!m_placed_elements.contains(it.key())) forgetElementInformation(it.key());
+			continue;
+		}
+		const DiagramContext built = m_element_information.value(it.key());
+		QStringList differing;
+		const QList<QString> built_keys = built.keys();
+		QSet<QString> names(built_keys.cbegin(), built_keys.cend());
+		const QList<QString> prefilled_keys = it.value().keys();
+		names.unite(QSet<QString>(prefilled_keys.cbegin(), prefilled_keys.cend()));
+		for (const QString &name : names)
+			if (built.value(name) != it.value().value(name)
+				|| built.keyMustShow(name) != it.value().keyMustShow(name))
+				differing << name;
+		tally(m_prefill_tally[0], differing);
+	}
+	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it) {
+		if (!m_placed_folios.value(it.key())) {
+			++m_prefill_tally[1].unplaced;
+			m_folio_titleblocks.remove(it.key());
+			continue;
+		}
+		const TitleBlockProperties built = m_folio_titleblocks.value(it.key());
+		const TitleBlockProperties &p = it.value();
+		QStringList differing;
+		if (built.title != p.title) differing << QStringLiteral("title");
+		if (built.author != p.author) differing << QStringLiteral("author");
+		if (built.date != p.date) differing << QStringLiteral("date");
+		if (built.filename != p.filename) differing << QStringLiteral("filename");
+		if (built.plant != p.plant) differing << QStringLiteral("plant");
+		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
+		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
+		if (built.version != p.version) differing << QStringLiteral("version");
+		if (built.folio != p.folio) differing << QStringLiteral("folio");
+		if (built.auto_page_num != p.auto_page_num) differing << QStringLiteral("auto_page_num");
+		if (built.template_name != p.template_name) differing << QStringLiteral("template_name");
+		if (!(built.context == p.context)) differing << QStringLiteral("context");
+		if (built.display_at != p.display_at) differing << QStringLiteral("display_at");
+		if (built.collection != p.collection) differing << QStringLiteral("collection");
+		tally(m_prefill_tally[1], differing);
+	}
+	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it) {
+		if (!placedConductorCount(it.key())) {
+			++m_prefill_tally[2].unplaced;
+			if (!m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
+				m_dirty_conductor_properties.insert(it.key());
+			continue;
+		}
+		QHash<QString, QString> built, prefilled;
+		for (const auto &a : m_conductor_properties.value(it.key()).attributes()) built.insert(a.first, a.second);
+		for (const auto &a : it.value().attributes()) prefilled.insert(a.first, a.second);
+		QStringList differing;
+		QSet<QString> names(built.keyBegin(), built.keyEnd());
+		names.unite(QSet<QString>(prefilled.keyBegin(), prefilled.keyEnd()));
+		for (const QString &name : names)
+			if (built.value(name) != prefilled.value(name)) differing << name;
+		tally(m_prefill_tally[2], differing);
+	}
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+}
+
+/**
+	@brief projectDataBase::prefillReport
+	@return how the last prefillFromDocument() compared with building, one
+	line: per store, values that agreed, differed (and in which fields),
+	and were not placed
+*/
+QString projectDataBase::prefillReport() const
+{
+	static const char *names[] = {"symbols", "folios", "wires"};
+	QStringList parts;
+	for (int i = 0 ; i < 3 ; ++i) {
+		const PrefillTally &t = m_prefill_tally[i];
+		QStringList fields;
+		for (auto it = t.fields.constBegin() ; it != t.fields.constEnd() ; ++it)
+			fields << QStringLiteral("%1 %2").arg(it.key()).arg(it.value());
+		parts << QStringLiteral("%1 %2 agree, %3 differ%4, %5 not placed")
+				 .arg(QLatin1String(names[i])).arg(t.agree).arg(t.differ)
+				 .arg(fields.isEmpty() ? QString() : QStringLiteral(" (") + fields.join(QStringLiteral(", ")) + QLatin1Char(')'))
+				 .arg(t.unplaced);
+	}
+	return parts.join(QStringLiteral("; "));
 }
 
 /**

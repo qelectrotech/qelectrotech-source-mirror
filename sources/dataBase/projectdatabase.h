@@ -24,6 +24,8 @@
 #include <QPointer>
 #include <QFileDialog>
 #include <QHash>
+#include <QMap>
+#include <QDomDocument>
 #include <QSet>
 #include <QUuid>
 
@@ -141,6 +143,13 @@ class projectDataBase : public QObject
 		void conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties);
 		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
 		QStringList conductorPropertiesMismatches() const;
+
+			//Fill the three stores from a project's document before its
+			//folios are built, then, once
+			//they are, say how many of those values building agreed with.
+		void prefillFromDocument(const QDomDocument &document);
+		void endPrefill();
+		QString prefillReport() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -283,6 +292,14 @@ class projectDataBase : public QObject
 			//The rows of conductor_properties, to write only what changes
 		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
 		QSet<QUuid> m_dirty_conductor_properties;
+		QHash<QUuid, DiagramContext> m_prefilled_elements;
+		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
+		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
+		struct PrefillTally {
+			int agree = 0, differ = 0, unplaced = 0;
+			QMap<QString, int> fields;
+		};
+		PrefillTally m_prefill_tally[3];
 		void flushConductorProperties();
 		QMultiHash<QUuid, QPointer<Conductor>> m_placed_conductors;
 		bool storeConductorProperties(const QUuid &conductor, const ConductorProperties &properties);

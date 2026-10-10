@@ -2344,6 +2344,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//before the diagrams because the terminal strip items use it
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
 
+		//The stores of symbol information, folio title blocks and wire
+		//properties are filled from the document before the folios are
+		//built
+	m_data_base.prefillFromDocument(xml_project);
+
 		//Load the diagrams
 	readDiagramsXml(xml_project);
 	const qint64 diagrams_ms = phase_timer.restart();
@@ -2375,6 +2380,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
+	m_data_base.endPrefill();
+	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1)
+		qWarning().noquote() << "filled before building:" << m_data_base.prefillReport();
 	const qint64 database_ms = phase_timer.elapsed();
 
 	qInfo().nospace()
