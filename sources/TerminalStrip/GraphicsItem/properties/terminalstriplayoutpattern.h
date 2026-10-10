@@ -18,6 +18,7 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include <QDomElement>
 #include <QFont>
 #include <QRect>
 #include <QSize>
@@ -102,6 +103,11 @@ class TerminalStripLayoutPattern
 
 		QUuid m_uuid{QUuid::createUuid()};
 		QString m_name;
+
+			//Save / load of the layout in the project xml
+		QDomElement toXml(QDomDocument &document) const;
+		void fromXml(const QDomElement &layout_element);
+		static QString xmlTagName();
 
 	private:
 		void updateHeaderTextOption();

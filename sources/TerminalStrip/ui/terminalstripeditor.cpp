@@ -569,6 +569,8 @@ void TerminalStripEditor::on_m_type_cb_activated(int index)
 						override_type = ElementData::TTDiode; break;
 					case 4:
 						override_type = ElementData::TTGround; break;
+					case 5:
+						override_type = ElementData::TTAntiParallelDiodes; break;
 					default:
 						override_type = ElementData::TTGeneric; break;
 				}
