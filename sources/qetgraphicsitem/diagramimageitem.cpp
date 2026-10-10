@@ -281,6 +281,11 @@ void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 */
 void DiagramImageItem::setImageSource(const ImageSource &source)
 {
+	// An undo or redo that changes the picture under a crop being edited
+	// ends that crop: its frame and its preview were made for the source
+	// that is replaced here. Nothing is applied, since this may run
+	// inside an undo command.
+	finishCropMode(false);
 	m_base_pixmap = source.base;
 	m_crop_rect = source.crop;
 	m_transparent_colors = source.colors;
@@ -1625,6 +1630,13 @@ QVariant DiagramImageItem::itemChange(GraphicsItemChange change, const QVariant 
 	{
 		if (!m_deferHandleReposition)
 			repositionHandles();
+	}
+	else if (change == ItemSceneChange)
+	{
+		// Leaving the folio (undoing the picture's insertion, for one)
+		// drops a crop in progress while diagram() is still there to
+		// give the keys back to the view.
+		finishCropMode(false);
 	}
 	else if (change == ItemSceneHasChanged)
 	{
