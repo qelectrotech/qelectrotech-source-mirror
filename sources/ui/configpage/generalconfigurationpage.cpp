@@ -58,10 +58,10 @@ namespace {
 		if (font.bold()) {
 			style = font.italic()
 					? QCoreApplication::translate("GeneralConfigurationPage",
-												  "Gras et italique")
-					: QCoreApplication::translate("GeneralConfigurationPage", "Gras");
+												  "Bold italic")
+					: QCoreApplication::translate("GeneralConfigurationPage", "Bold");
 		} else if (font.italic()) {
-			style = QCoreApplication::translate("GeneralConfigurationPage", "Italique");
+			style = QCoreApplication::translate("GeneralConfigurationPage", "Italic");
 		} else if (style.isEmpty()) {
 			style = QCoreApplication::translate("GeneralConfigurationPage", "Normal");
 		}
@@ -319,7 +319,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (path.isEmpty())
 	{
 		ui->m_cable_type_list_path_le->setPlaceholderText(
-			tr("Non configuré (par défaut : %1)",
+			tr("Not set (default: %1)",
 			   "hint shown in the cable type file field when no file is configured yet")
 				.arg(CableTypeList::defaultPath()));
 	}
@@ -691,7 +691,7 @@ void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
 {
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
-			tr("Police des textes de câble"));
+			tr("Cable text font"));
 	if (!ok) return;
 
 	QSettings settings;
@@ -709,7 +709,7 @@ void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
 {
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
-			tr("Police des couleurs des âmes"));
+			tr("Core colors font"));
 	if (!ok) return;
 
 	QSettings settings;
@@ -967,9 +967,9 @@ void GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked()
 
 	const QString path = QFileDialog::getOpenFileName(
 		this,
-		tr("Sélectionner le fichier de la liste des types de câbles"),
+		tr("Select the cable types file"),
 		start_dir,
-		tr("Fichiers csv (*.csv)"));
+		tr("CSV files (*.csv)"));
 
 	if (!path.isEmpty()) {
 		ui->m_cable_type_list_path_le->setText(path);
@@ -990,9 +990,9 @@ void GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked()
 
 	path = QFileDialog::getSaveFileName(
 		this,
-		tr("Créer le fichier de la liste des types de câbles"),
+		tr("Create the cable types file"),
 		path,
-		tr("Fichiers csv (*.csv)"));
+		tr("CSV files (*.csv)"));
 	if (path.isEmpty()) {
 		return;
 	}
@@ -1008,8 +1008,8 @@ void GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked()
 		if (!CableTypeList::createFile(path, &error))
 		{
 			QET::QetMessageBox::critical(this,
-										 tr("Création impossible"),
-										 tr("Impossible de créer le fichier :\n%1\n%2")
+										 tr("Cannot be created"),
+										 tr("Cannot create the file:\n%1\n%2")
 											.arg(path, error));
 			return;
 		}

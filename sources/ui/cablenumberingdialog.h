@@ -27,7 +27,7 @@ class QRadioButton;
 class SelectAutonumW;
 
 /**
-	@brief The window behind the "Numérotation des câbles" entry of the
+	@brief The window behind the "Cable numbering" entry of the
 	numbering menu: the one numbering rule the project numbers its
 	cables with, the axis those cables are laid out along when the whole
 	project is numbered again, and the button which does that numbering.

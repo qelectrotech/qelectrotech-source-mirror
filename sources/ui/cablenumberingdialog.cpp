@@ -45,7 +45,7 @@ CableNumberingDialog::CableNumberingDialog(QETProject *project, QWidget *parent)
 	QDialog(parent),
 	m_project(project)
 {
-	setWindowTitle(tr("Numérotation des câbles"));
+	setWindowTitle(tr("Cable numbering"));
 		//The rule editor needs room to be read: this window opens with
 		//the size it needs rather than with whatever its contents
 		//happen to add up to, so nothing of the rule is cramped from
@@ -55,10 +55,10 @@ CableNumberingDialog::CableNumberingDialog(QETProject *project, QWidget *parent)
 	auto *layout = new QVBoxLayout(this);
 
 	auto *note = new QLabel(tr(
-		"Cette fenêtre montre la règle de numérotation automatique des "
-		"câbles de ce projet et la modifie. Une règle changée ici est "
-		"celle que le projet garde : elle est écrite dans le projet quand "
-		"vous validez."), this);
+		"This window shows the automatic numbering rule for the cables "
+		"of this project and edits it. A rule changed here is the one "
+		"the project keeps: it is written into the project when you "
+		"apply it."), this);
 	note->setWordWrap(true);
 	layout->addWidget(note);
 
@@ -68,27 +68,27 @@ CableNumberingDialog::CableNumberingDialog(QETProject *project, QWidget *parent)
 	m_rule->setSingleRuleMode(true);
 	layout->addWidget(m_rule);
 
-	auto *axis_group = new QGroupBox(tr("Priorité des axes"), this);
+	auto *axis_group = new QGroupBox(tr("Axis priority"), this);
 	auto *axis_layout = new QHBoxLayout(axis_group);
-	m_axis_x = new QRadioButton(tr("Priorité à l'axe X (horizontal)"), axis_group);
-	m_axis_y = new QRadioButton(tr("Priorité à l'axe Y (vertical)"), axis_group);
+	m_axis_x = new QRadioButton(tr("Priority to the X axis (horizontal)"), axis_group);
+	m_axis_y = new QRadioButton(tr("Priority to the Y axis (vertical)"), axis_group);
 	axis_layout->addWidget(m_axis_x);
 	axis_layout->addWidget(m_axis_y);
 	layout->addWidget(axis_group);
 
 	auto *axis_note = new QLabel(tr(
-		"L'axe choisi décide l'ordre dans lequel les câbles sont "
-		"renumérotés : X les numérote de gauche à droite, Y les numérote "
-		"de haut en bas."), this);
+		"The chosen axis decides the order in which the cables are "
+		"renumbered: X numbers them from left to right, Y numbers them "
+		"from top to bottom."), this);
 	axis_note->setWordWrap(true);
 	layout->addWidget(axis_note);
 
 	auto *actions = new QHBoxLayout();
-	m_renumber_pb = new QPushButton(tr("Renumérotter tous les câbles"), this);
+	m_renumber_pb = new QPushButton(tr("Renumber all cables"), this);
 	m_renumber_pb->setToolTip(tr(
-		"Remet le numéro de chaque câble du projet d'après la règle, en "
-		"partant du début : un numéro manquant après la suppression d'un "
-		"câble se referme ainsi."));
+		"Sets the number of each cable of the project again from the "
+		"rule, starting at the beginning: a number left missing after "
+		"a cable is deleted is filled in this way."));
 	actions->addWidget(m_renumber_pb);
 	actions->addStretch();
 
@@ -100,7 +100,7 @@ CableNumberingDialog::CableNumberingDialog(QETProject *project, QWidget *parent)
 		//thing twice.
 	m_box = new QDialogButtonBox(this);
 	m_box->addButton(QDialogButtonBox::Cancel);
-	m_box->button(QDialogButtonBox::Cancel)->setText(tr("Annuler"));
+	m_box->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 	actions->addWidget(m_box);
 	layout->addLayout(actions);
 
@@ -170,9 +170,9 @@ bool CableNumberingDialog::save()
 	{
 		if (!m_rule->isValid())
 		{
-			QMessageBox::warning(this, tr("Numérotation des câbles"),
-								 tr("La règle n'est pas encore complète : "
-									"il reste un champ vide dedans."));
+			QMessageBox::warning(this, tr("Cable numbering"),
+								 tr("The rule is not complete yet: "
+									"there is still an empty field in it."));
 			return false;
 		}
 
@@ -260,19 +260,19 @@ int CableNumberingDialog::askAboutHandWritten(int count)
 {
 	if (count <= 0) return 1;
 
-	QMessageBox box(QMessageBox::Question, tr("Numérotation des câbles"),
-					tr("%n nom(s) de câble(s) de ce projet ont été saisis à "
-					   "la main.\n\n"
-					   "Les renuméroter aussi ?", "", count),
+	QMessageBox box(QMessageBox::Question, tr("Cable numbering"),
+					tr("%n cable(s) of this project were entered by "
+					   "hand.\n\n"
+					   "Do you want to renumber them too?", "", count),
 					QMessageBox::NoButton, this);
 	QPushButton *take = box.addButton(
-		tr("Oui", "Les noms saisis à la main sont remplacés eux aussi."),
+		tr("Yes", "Les noms saisis à la main sont remplacés eux aussi."),
 		QMessageBox::YesRole);
 	QPushButton *leave = box.addButton(
-		tr("Non", "Les noms saisis à la main sont laissés tels quels."),
+		tr("No", "Les noms saisis à la main sont laissés tels quels."),
 		QMessageBox::NoRole);
 	QPushButton *cancel = box.addButton(
-		tr("Annuler", "Ne renumérote rien du tout."),
+		tr("Cancel", "Ne renumérote rien du tout."),
 		QMessageBox::RejectRole);
 		//Keeping his own names is the safe answer under his finger
 	box.setDefaultButton(leave);
@@ -305,8 +305,8 @@ void CableNumberingDialog::renumber()
 	const NumerotationContext rule = m_rule->toNumContext();
 	if (!m_rule->isValid() || rule.isEmpty())
 	{
-		QMessageBox::warning(this, tr("Numérotation des câbles"),
-							 tr("La règle n'est pas encore complète."));
+		QMessageBox::warning(this, tr("Cable numbering"),
+							 tr("The rule is not complete yet."));
 		return;
 	}
 	const bool axis_first = m_axis_x->isChecked();
@@ -318,7 +318,7 @@ void CableNumberingDialog::renumber()
 												 true);
 	if (!plan.ok())
 	{
-		QMessageBox::warning(this, tr("Numérotation des câbles"), plan.error);
+		QMessageBox::warning(this, tr("Cable numbering"), plan.error);
 		return;
 	}
 
@@ -333,14 +333,14 @@ void CableNumberingDialog::renumber()
 		plan = CableRenumber::plan(m_project, rule, axis_first, false);
 		if (!plan.ok())
 		{
-			QMessageBox::warning(this, tr("Numérotation des câbles"), plan.error);
+			QMessageBox::warning(this, tr("Cable numbering"), plan.error);
 			return;
 		}
 	}
 	if (plan.cables.isEmpty())
 	{
-		QMessageBox::information(this, tr("Numérotation des câbles"),
-								 tr("Aucun câble à renuméroter dans ce projet."));
+		QMessageBox::information(this, tr("Cable numbering"),
+								 tr("No cable to renumber in this project."));
 		return;
 	}
 
@@ -358,9 +358,9 @@ void CableNumberingDialog::renumber()
 	}
 	if (!changed)
 	{
-		QMessageBox::information(this, tr("Numérotation des câbles"),
-								 tr("Tous les câbles portent déjà le numéro "
-									"que la règle leur donne."));
+		QMessageBox::information(this, tr("Cable numbering"),
+								 tr("All the cables already carry the number "
+									"that the rule gives them."));
 		return;
 	}
 

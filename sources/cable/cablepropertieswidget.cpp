@@ -49,16 +49,16 @@ CablePropertiesWidget::CablePropertiesWidget(QWidget *parent) :
 	grid->setHorizontalSpacing(6);
 	grid->setVerticalSpacing(3);
 
-	auto *plan = new QLabel(tr("Plan",
+	auto *plan = new QLabel(tr("Drawing",
 							   "column header: the drawing shows this field"), this);
 	plan->setAlignment(Qt::AlignCenter);
-	plan->setToolTip(tr("À cocher pour écrire ce champ sur le plan.",
+	plan->setToolTip(tr("Tick to write this field on the drawing.",
 						"tooltip of the tick before each field"));
 	grid->addWidget(plan, 0, 1, Qt::AlignCenter);
 
 	int row = 1;
 	addField(grid, row++, QStringLiteral("designation"),
-			 tr("Désignation"), &m_designation, &m_show_designation);
+			 tr("Designation"), &m_designation, &m_show_designation);
 	const int type_row = row;
 	addField(grid, row++, QStringLiteral("type"),
 			 tr("Type"), &m_type, &m_show_type);
@@ -71,26 +71,26 @@ CablePropertiesWidget::CablePropertiesWidget(QWidget *parent) :
 	auto *pick_type = new QPushButton(this);
 	pick_type->setFocusPolicy(Qt::NoFocus);
 	pick_type->setIcon(QET::Icons::Cable);
-	pick_type->setToolTip(tr("Choisir le type de ce câble dans la liste des "
-							 "types de câbles…"));
+	pick_type->setToolTip(tr("Choose the type of this cable from the list of "
+							 "cable types…"));
 	connect(pick_type, &QPushButton::clicked,
 			this, &CablePropertiesWidget::typeChangeRequested);
 	grid->addWidget(pick_type, type_row, 4, Qt::AlignRight | Qt::AlignVCenter);
 
 	addField(grid, row++, QStringLiteral("installation"),
-			 tr("Installation (=)"), &m_installation, &m_show_installation);
+			 tr("Plant (=)"), &m_installation, &m_show_installation);
 	addField(grid, row++, QStringLiteral("location"),
-			 tr("Localisation (+)"), &m_location, &m_show_location);
+			 tr("Location (+)"), &m_location, &m_show_location);
 	addField(grid, row++, QStringLiteral("length"),
-			 tr("Longueur"), &m_length, &m_show_length);
+			 tr("Length"), &m_length, &m_show_length);
 
 		//The colours of the cores: one setting for every one of them at
 		//once, since they are written in one row along the line and are
 		//read as one row.
-	auto *cores_label = new QLabel(tr("Couleurs des âmes"), this);
+	auto *cores_label = new QLabel(tr("Core colors"), this);
 	cores_label->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-	cores_label->setToolTip(tr("La police des couleurs de toutes les âmes "
-							   "de ce câble, écrites le long de la ligne."));
+	cores_label->setToolTip(tr("The font of the colors of all the cores "
+							   "of this cable, written along the line."));
 	grid->addWidget(cores_label, row, 0, Qt::AlignRight | Qt::AlignVCenter);
 	addFormatButton(grid, row, QStringLiteral("cores"));
 
@@ -98,18 +98,18 @@ CablePropertiesWidget::CablePropertiesWidget(QWidget *parent) :
 		//one across it, in pixels, moving the label as one thing --
 		//installation, place and designation over the line, type and
 		//length under it -- and the line not at all.
-	addOffsetRow(grid, row + 1, tr("Position du texte"),
-				 tr("Décale tout le texte du câble : installation, emplacement "
-					"et désignation d'un côté, type et longueur de l'autre. "
-					"La ligne, les slashes et le câblage restent en place. "
-					"10 px font une case de la grille."),
+	addOffsetRow(grid, row + 1, tr("Text position"),
+				 tr("Shifts all the cable text: plant, location "
+					"and designation on one side, type and length "
+					"on the other. The line, the slashes and the "
+					"wiring stay in place. 10 px make one grid cell."),
 				 &m_text_offset_x, &m_text_offset_y);
 
 		//And where the row of colours stands from the slashes it names.
-	addOffsetRow(grid, row + 2, tr("Position des couleurs"),
-				 tr("Décale les couleurs des âmes par rapport à leurs slashes. "
-					"Les slashes, les entrées et le câblage restent en place. "
-					"10 px font une case de la grille."),
+	addOffsetRow(grid, row + 2, tr("Core colors position"),
+				 tr("Shifts the core colors relative to their slashes. "
+					"The slashes, the entries and the wiring stay in place. "
+					"10 px make one grid cell."),
 				 &m_core_offset_x, &m_core_offset_y);
 
 	grid->setColumnStretch(2, 1);
@@ -134,7 +134,7 @@ void CablePropertiesWidget::addField(QGridLayout *grid,
 {
 	auto *label = new QLabel(name, this);
 	auto *check = new QCheckBox(this);
-	check->setToolTip(tr("À cocher pour écrire ce champ sur le plan.",
+	check->setToolTip(tr("Tick to write this field on the drawing.",
 						"tooltip of the tick before each field"));
 	auto *field = new QLineEdit(this);
 	field->setClearButtonEnabled(true);
@@ -284,13 +284,13 @@ void CablePropertiesWidget::refreshFormatButton(const QString &key)
 	button->setText(tr("%1 pt").arg(QString::number(font.pointSizeF(), 'g', 3)));
 
 	const QString tip = coresKey(key)
-			? tr("Police, taille et style des couleurs des âmes.")
-			: tr("Police, taille, style et alignement de ce texte.");
+			? tr("Font, size and style of the core colors.")
+			: tr("Font, size, style and alignment of this text.");
 	const CableTextFormat format = m_formats.value(key);
 	const bool its_own = !format.font.isEmpty() || format.alignment != 0;
 	button->setToolTip(tip + QLatin1Char(' ') + (its_own
-			? tr("Réglé pour ce câble.")
-			: tr("Valeur définie dans les préférences.")));
+			? tr("Set for this cable.")
+			: tr("Value defined in the preferences.")));
 }
 
 /**

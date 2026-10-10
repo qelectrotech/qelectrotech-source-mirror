@@ -259,7 +259,7 @@ QFont CablePart::fontOf(const QString &key) const
 
 		//The reference to the other folios this cable runs on has a
 		//font of its own, set with the button next to its text under
-		//Querverweise -- he sets it there and not in the cable itself.
+		//Cross-references -- he sets it there and not in the cable itself.
 		//When he has left that alone, the reference follows the texts
 		//of the cable like every other line of the label does.
 	if (key == QLatin1String("xref") && m_cable && diagram() && diagram()->project())
@@ -539,7 +539,7 @@ QList<CablePart::CrossRef> CablePart::crossRefs() const
 	if (elsewhere.isEmpty()) return refs;
 
 		//The format this project asks for such a reference, chosen under
-		//Querverweise for the type "Câble": one text per folio, written
+		//Cross-references for the type "Cable": one text per folio, written
 		//out with that folio's own numbers and fields.
 	const XRefProperties xref = project->defaultXRefProperties(QStringLiteral("cable"));
 	const QString format = xref.masterLabel();
@@ -680,7 +680,7 @@ QList<CablePart::PdfRef> CablePart::pdfRefs() const
 	@brief CablePart::setUpXrefHooks
 	Keep the reference lines up to date with what the project does: a
 	folio which is added, removed or moved changes which lines there are
-	and what they say, and so does the format chosen under Querverweise.
+	and what they say, and so does the format chosen under Cross-references.
 
 	Only this line is redrawn, which is enough: the references of a
 	cable are worked out again from the cable itself every time its
@@ -1946,7 +1946,7 @@ void CablePart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			diagram()->undoStack().push(new BatchCommand(
 				pending,
 				QCoreApplication::translate(
-					"BatchCommand", "Déplacer %n câble(s)",
+					"BatchCommand", "Move %n cable(s)",
 					"Un geste déplace plusieurs lignes à la fois.",
 					pending.size())));
 			pending.clear();
@@ -2231,7 +2231,7 @@ bool CablePart::rebindCore(int core, const QPointF &dropped_at,
 			//for what it did rather than for where it went.
 		const QString text = before_cores
 				? QCoreApplication::translate("ChangeCableCoresCommand",
-											  "Placer une âme de câble")
+											  "Place a cable core")
 				: QString();
 		diagram()->undoStack().push(
 			new ChangeCableCoresCommand(m_cable, before, after, text));
@@ -2276,7 +2276,7 @@ bool CablePart::takeCoreOffLine(int core)
 	diagram()->undoStack().push(new ChangeCableCoresCommand(
 		m_cable, before, after,
 		QCoreApplication::translate("ChangeCableCoresCommand",
-									"Retirer une âme de la ligne")));
+									"Remove a core from the line")));
 	return true;
 }
 
@@ -2657,13 +2657,13 @@ CablePart::ClaimAnswer CablePart::askClaim(QWidget *parent,
 {
 	QMessageBox box(QMessageBox::Question, title, question, QMessageBox::NoButton, parent);
 	QPushButton *take = box.addButton(
-		tr("Oui", "Prendre le conducteur à l'autre câble."),
+		tr("Yes", "Prendre le conducteur à l'autre câble."),
 		QMessageBox::YesRole);
 	QPushButton *leave = box.addButton(
-		tr("Non", "Laisser le conducteur à l'autre câble, on ne change rien."),
+		tr("No", "Laisser le conducteur à l'autre câble, on ne change rien."),
 		QMessageBox::NoRole);
 	QPushButton *cancel = box.addButton(
-		tr("Annuler", "Annuler le geste entier : rien n'est écrit, la ligne et ses couleurs reviennent où elles étaient."),
+		tr("Cancel", "Annuler le geste entier : rien n'est écrit, la ligne et ses couleurs reviennent où elles étaient."),
 		QMessageBox::RejectRole);
 		//The safe answer is the one under his finger, and the escape
 		//key throws the whole gesture away rather than taking a wire.
@@ -2699,9 +2699,9 @@ CablePart::ClaimAnswer CablePart::mayClaim(Conductor *conductor) const
 	const QString other_name = other ? other->designation() : QString();
 
 	const QString text = other_name.isEmpty()
-		? tr("Ce conducteur est déjà décrit par un autre câble. Voulez-vous l'attribuer au câble %1 ?",
+		? tr("This conductor is already described by another cable. Do you want to assign it to cable %1?",
 			 "Un conducteur ne peut appartenir qu'à un câble : on demande avant de le prendre à l'autre.")
-		: tr("Ce conducteur est déjà décrit par le câble %1. Voulez-vous l'attribuer au câble %2 ?",
+		: tr("This conductor is already described by cable %1. Do you want to assign it to cable %2?",
 			 "Un conducteur ne peut appartenir qu'à un câble : on demande avant de le prendre à l'autre.");
 
 	QWidget *parent = nullptr;
@@ -2710,7 +2710,7 @@ CablePart::ClaimAnswer CablePart::mayClaim(Conductor *conductor) const
 	}
 
 	return askClaim(parent,
-					tr("Conducteur déjà attribué", "Un conducteur ne peut appartenir qu'à un câble."),
+					tr("Conductor already assigned", "Un conducteur ne peut appartenir qu'à un câble."),
 					other_name.isEmpty() ? text.arg(m_cable->designation())
 										 : text.arg(other_name, m_cable->designation()));
 }
@@ -2752,19 +2752,19 @@ CablePart::ClaimAnswer CablePart::mayClaimSeveral(const QList<Conductor *> &cond
 
 	const int n = conductors.size();
 	const QString title = n <= 1
-		? tr("Conducteur déjà attribué", "Un conducteur ne peut appartenir qu'à un câble.")
-		: tr("Conducteurs déjà attribués", "Plusieurs conducteurs sont pris en une seule fois.", n);
+		? tr("Conductor already assigned", "Un conducteur ne peut appartenir qu'à un câble.")
+		: tr("Conductors already assigned", "Plusieurs conducteurs sont pris en une seule fois.", n);
 
 	const QString text = n <= 1
 		? (unnamed
-			? tr("Ce conducteur est déjà décrit par un autre câble. Voulez-vous l'attribuer au câble %1 ?",
+			? tr("This conductor is already described by another cable. Do you want to assign it to cable %1?",
 				 "Un conducteur ne peut appartenir qu'à un câble : on demande avant de le prendre à l'autre.")
-			: tr("Ce conducteur est déjà décrit par le câble %1. Voulez-vous l'attribuer au câble %2 ?",
+			: tr("This conductor is already described by cable %1. Do you want to assign it to cable %2?",
 				 "Un conducteur ne peut appartenir qu'à un câble : on demande avant de le prendre à l'autre."))
 		: (unnamed
-			? tr("%n conducteurs sont déjà décrits par d'autres câbles. Voulez-vous les attribuer au câble %1 ?",
+			? tr("%n conductors are already described by other cables. Do you want to assign them to cable %1?",
 				 "On prend plusieurs conducteurs à la fois : on demande avant de les prendre aux autres câbles.", n)
-			: tr("%n conducteurs sont déjà décrits par le câble %1. Voulez-vous les attribuer au câble %2 ?",
+			: tr("%n conductors are already described by cable %1. Do you want to assign them to cable %2?",
 				 "On prend plusieurs conducteurs à la fois : on demande avant de les prendre à l'autre câble.", n));
 
 	const QString question = unnamed

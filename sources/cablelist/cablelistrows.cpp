@@ -150,21 +150,21 @@ QString labelOfEnd(const CableEnd &end)
 const QList<CableList::Column> &CableList::allColumns()
 {
 	static const QList<Column> columns = {
-		{QStringLiteral("nr"),                tr("N°")},
-		{QStringLiteral("installation_cable"), tr("Installation câble")},
-		{QStringLiteral("location_cable"),    tr("Localisation câble")},
-		{QStringLiteral("bmk_cable"),         tr("Label câble")},
-		{QStringLiteral("installation_start"), tr("Installation début")},
-		{QStringLiteral("location_start"),    tr("Localisation début")},
-		{QStringLiteral("bmk_start"),         tr("Label début")},
-		{QStringLiteral("folio_start"),       tr("Folio début")},
-		{QStringLiteral("installation_end"),  tr("Installation fin")},
-		{QStringLiteral("location_end"),      tr("Localisation fin")},
-		{QStringLiteral("bmk_end"),           tr("Label fin")},
-		{QStringLiteral("folio_end"),         tr("Folio fin")},
-		{QStringLiteral("type"),              tr("Type de câble")},
-		{QStringLiteral("length"),            tr("Longueur")},
-		{QStringLiteral("cores_used"),        tr("Âmes utilisées")},
+		{QStringLiteral("nr"),                tr("No.")},
+		{QStringLiteral("installation_cable"), tr("Plant (cable)")},
+		{QStringLiteral("location_cable"),    tr("Location (cable)")},
+		{QStringLiteral("bmk_cable"),         tr("Label (cable)")},
+		{QStringLiteral("installation_start"), tr("Plant (start)")},
+		{QStringLiteral("location_start"),    tr("Location (start)")},
+		{QStringLiteral("bmk_start"),         tr("Label (start)")},
+		{QStringLiteral("folio_start"),       tr("Sheet (start)")},
+		{QStringLiteral("installation_end"),  tr("Plant (end)")},
+		{QStringLiteral("location_end"),      tr("Location (end)")},
+		{QStringLiteral("bmk_end"),           tr("Label (end)")},
+		{QStringLiteral("folio_end"),         tr("Sheet (end)")},
+		{QStringLiteral("type"),              tr("Cable type")},
+		{QStringLiteral("length"),            tr("Length")},
+		{QStringLiteral("cores_used"),        tr("Used cores")},
 	};
 	return columns;
 }

@@ -85,8 +85,8 @@ void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
 				new AddTableDialog(
 					new CableQueryWidget(),
 					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Ajouter une liste de câbles"));
-	d->setTableName(QObject::tr("Liste des câbles"));
+	d->setWindowTitle(QObject::tr("Add a cable list"));
+	d->setTableName(QObject::tr("Cable list"));
 
 	if (d->exec()) {
 		create(diagram, d.data());

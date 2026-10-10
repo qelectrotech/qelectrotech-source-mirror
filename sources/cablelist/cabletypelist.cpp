@@ -265,20 +265,20 @@ QString CableTypeList::translatedColumn(const QString &column)
 	//The columns which are specific to a cable keep their own wording,
 	//the ones shared with the material file reuse the element
 	//information wording, so both catalogues read the same. The type
-	//column is the exception: it is called Désignation here, the way
-	//the cable form calls it, and not "Numéro d'article", which is
+	//column is the exception: it is called Designation here, the way
+	//the cable form calls it, and not "Article number", which is
 	//what an element means by it.
 	static const QMap<QString, QString> own = {
 		{QStringLiteral("designation"),
-		 QCoreApplication::translate("CableTypeList", "Désignation")},
+		 QCoreApplication::translate("CableTypeList", "Designation")},
 		{QStringLiteral("cores"),
-		 QCoreApplication::translate("CableTypeList", "Nombre d'âmes")},
+		 QCoreApplication::translate("CableTypeList", "Number of cores")},
 		{QStringLiteral("core_colors"),
-		 QCoreApplication::translate("CableTypeList", "Couleurs des âmes")},
+		 QCoreApplication::translate("CableTypeList", "Core colors")},
 		{QStringLiteral("section"),
-		 QCoreApplication::translate("CableTypeList", "Section du câble")},
+		 QCoreApplication::translate("CableTypeList", "Cable section")},
 		{QStringLiteral("color"),
-		 QCoreApplication::translate("CableTypeList", "Couleur du fourreau")}
+		 QCoreApplication::translate("CableTypeList", "Sheath color")}
 	};
 
 	const auto it = own.constFind(column);
@@ -386,7 +386,7 @@ QMap<QString, QString> CableTypeList::headerAliasMap()
 			map.insert(translated.toLower(), key);
 		}
 			//The element information spells the same column another way
-			//("Numéro d'article" for designation); both are accepted, so
+			//("Article number" for designation); both are accepted, so
 			//that a file written with either wording reads the same.
 		const QString info_key = QETInformation::translatedInfoKey(key);
 		if (!info_key.isEmpty() && info_key != translated) {
@@ -406,6 +406,24 @@ QMap<QString, QString> CableTypeList::headerAliasMap()
 		const QString translated = QETInformation::translatedInfoKey(key);
 		if (!translated.isEmpty()) {
 			map.insert(translated.toLower(), key);
+		}
+	}
+
+		//The wording older files were written with : these French names
+		//were the ones the label line carried before the interface text
+		//became English, and a catalogue written with them must keep
+		//reading, so each of them still means its column here.
+	static const QMap<QString, QString> older_wording = {
+		{QStringLiteral("désignation"),         QStringLiteral("designation")},
+		{QStringLiteral("nombre d'âmes"),       QStringLiteral("cores")},
+		{QStringLiteral("couleurs des âmes"),   QStringLiteral("core_colors")},
+		{QStringLiteral("section du câble"),    QStringLiteral("section")},
+		{QStringLiteral("couleur du fourreau"), QStringLiteral("color")}
+	};
+	for (auto it = older_wording.constBegin(); it != older_wording.constEnd(); ++it)
+	{
+		if (!map.contains(it.key())) {
+			map.insert(it.key(), it.value());
 		}
 	}
 
@@ -517,7 +535,7 @@ bool CableTypeList::load(const QString &path, CableTypeListData *data, QString *
 	}
 	if (!data) {
 		if (error) {
-			*error = QCoreApplication::translate("CableTypeList", "Aucun récepteur pour le fichier des types de câbles.");
+			*error = QCoreApplication::translate("CableTypeList", "No receiver for the cable types file.");
 		}
 		return false;
 	}
@@ -695,7 +713,7 @@ bool CableTypeList::appendRecord(const QString &path, const CableTypeRecord &rec
 		if (data.columns.isEmpty())
 		{
 			if (error) {
-				*error = QCoreApplication::translate("CableTypeList", "Le fichier ne contient pas d'en-tête : colonnes manquantes.");
+				*error = QCoreApplication::translate("CableTypeList", "The file contains no header: missing columns.");
 			}
 			return false;
 		}
@@ -740,7 +758,7 @@ bool CableTypeList::updateRecord(const QString &path,
 	if (data.columns.isEmpty())
 	{
 		if (error) {
-			*error = QCoreApplication::translate("CableTypeList", "Le fichier ne contient pas d'en-tête : colonnes manquantes.");
+			*error = QCoreApplication::translate("CableTypeList", "The file contains no header: missing columns.");
 		}
 		return false;
 	}
@@ -759,7 +777,7 @@ bool CableTypeList::updateRecord(const QString &path,
 			//there now would overwrite somebody else's work.
 		if (error) {
 			*error = QCoreApplication::translate("CableTypeList",
-												 "Cette entrée n'existe plus dans le fichier : elle a peut-être été modifiée entre-temps.");
+												 "This entry no longer exists in the file: it may have been modified in the meantime.");
 		}
 		return false;
 	}
@@ -784,7 +802,7 @@ bool CableTypeList::createFile(const QString &path, QString *error)
 	if (hasContent(path))
 	{
 		if (error) {
-			*error = QCoreApplication::translate("CableTypeList", "Le fichier existe déjà et n'est pas vide.");
+			*error = QCoreApplication::translate("CableTypeList", "The file already exists and is not empty.");
 		}
 		return false;
 	}

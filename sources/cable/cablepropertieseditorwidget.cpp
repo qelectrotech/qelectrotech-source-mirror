@@ -56,14 +56,14 @@ CablePropertiesEditorWidget::CablePropertiesEditorWidget(Cable *cable,
 		//no keyboard focus, so clicking it never takes the drawing away
 		//from the user -- startPlacingCore() hands the focus to the
 		//sheet itself, which is where Escape has to be heard.
-	m_free_label->setText(tr("Âmes non placées :"));
+	m_free_label->setText(tr("Unplaced cores:"));
 	m_free_label->setVisible(false);
 	m_free_cores->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_free_cores->setAlternatingRowColors(true);
 	m_free_cores->setFocusPolicy(Qt::NoFocus);
-	m_free_cores->setToolTip(tr("Double-cliquer sur une âme pour la poser sur la "
-								"ligne : le trait suit la souris et le clic la "
-								"laisse à l'endroit visé."));
+	m_free_cores->setToolTip(tr("Double-click a core to place it on the "
+								"line: the line follows the mouse and a "
+								"click leaves it where you aimed."));
 	m_free_cores->setVisible(false);
 	m_free_cores->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_free_cores, &QWidget::customContextMenuRequested,
@@ -255,7 +255,7 @@ void CablePropertiesEditorWidget::updateInfo()
 {
 	if (!m_cable) return;
 
-	m_info->setText(tr("%1 âme(s) sur %2 reliée(s) à un conducteur",
+	m_info->setText(tr("%1 of %2 cores wired to a conductor",
 					   "how many cores of this cable are wired",
 					   m_cable->usedCoreCount())
 						.arg(m_cable->usedCoreCount())
@@ -289,8 +289,8 @@ void CablePropertiesEditorWidget::updateFreeCores()
 
 			const QString color = m_cable->colorOfCore(i);
 			auto *item = new QListWidgetItem(
-				color.isEmpty() ? tr("Âme %1").arg(i + 1)
-								: tr("Âme %1 — %2").arg(i + 1).arg(color),
+				color.isEmpty() ? tr("Core %1").arg(i + 1)
+								: tr("Core %1 — %2").arg(i + 1).arg(color),
 				m_free_cores);
 			item->setData(Qt::UserRole, i);
 		}
@@ -342,7 +342,7 @@ void CablePropertiesEditorWidget::freeCoreMenu(const QPoint &pos)
 	m_free_cores->setCurrentItem(item);
 
 	QMenu menu(m_free_cores);
-	QAction *place = menu.addAction(tr("Placer cette âme sur la ligne"));
+	QAction *place = menu.addAction(tr("Place this core on the line"));
 	place->setIcon(QET::Icons::Cable);
 
 	if (menu.exec(m_free_cores->viewport()->mapToGlobal(pos)) == place) {
@@ -385,5 +385,5 @@ void CablePropertiesEditorWidget::updateUi()
 */
 QString CablePropertiesEditorWidget::title() const
 {
-	return tr("Câble");
+	return tr("Cable");
 }

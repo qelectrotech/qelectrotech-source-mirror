@@ -176,7 +176,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conductors"));
 		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Elements"));
 		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Sheets"));
-		autonum_inner_tab->addTab(m_autonum_cable.widget, tr("Câbles"));
+		autonum_inner_tab->addTab(m_autonum_cable.widget, tr("Cables"));
 		autonum_layout->addWidget(autonum_inner_tab);
 		tab_widget -> addTab (autonum_widget, tr("Auto Numbering"));
 	}

@@ -117,9 +117,9 @@ class tst_cabletypelist : public QObject
 		QVERIFY(data.records.isEmpty());
 		//The label line reads the way the cable form names the type.
 		QCOMPARE(CableTypeList::translatedHeader(data.columns), QStringList({
-					 QStringLiteral("Désignation"),
-					 QStringLiteral("Nombre d'âmes"),
-					 QStringLiteral("Couleurs des âmes")}));
+					 QStringLiteral("Designation"),
+					 QStringLiteral("Number of cores"),
+					 QStringLiteral("Core colors")}));
 
 		CableTypeRecord record;
 		record.setValue(QStringLiteral("designation"),

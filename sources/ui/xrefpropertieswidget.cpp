@@ -133,13 +133,16 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 */
 void XRefPropertiesWidget::buildUi()
 {
+	//Wording of the master label as the .ui wrote it, kept to put it
+	//back for every type which does not rename it.
+	m_master_label_text = ui->label_6->text();
 	ui -> m_type_cb -> addItem(tr("Coil"), "coil");
 	ui -> m_type_cb -> addItem(tr("Organ of protection"), "protection");
 	ui -> m_type_cb -> addItem(tr("Switch / button"), "commutator");
 	ui -> m_type_cb -> addItem(tr("Programmable Logic Controller (PLC)"), "plc");
 		//Not an element: the type of the cross references a cable writes
 		//in its own label when it runs on several folios.
-	ui -> m_type_cb -> addItem(tr("Câble"), "cable");
+	ui -> m_type_cb -> addItem(tr("Cable"), "cable");
 
 	ui -> m_snap_to_cb -> addItem(tr("Footer"), "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Under the label of the element"), "label");
@@ -288,7 +291,9 @@ void XRefPropertiesWidget::updateDisplay()
 	ui->m_display_gb->setVisible(!is_cable);
 	ui->label_7->setVisible(!is_cable);
 	ui->m_slave_le->setVisible(!is_cable);
-	ui->label_6->setText(is_cable ? tr("Texte :") : tr("Maitre"));
+		//The wording of every type which is not a cable comes back from
+	//the .ui, so the label cannot drift away from the designer one.
+	ui->label_6->setText(is_cable ? tr("Text:") : m_master_label_text);
 
 	//Only a cable writes its reference into its own label, so only a
 	//cable has a text whose font to choose here: the cross references
@@ -296,13 +301,13 @@ void XRefPropertiesWidget::updateDisplay()
 	ui->m_font_pb->setVisible(is_cable);
 	if (m_current_font.isEmpty())
 	{
-		ui->m_font_pb->setToolTip(tr("Police et taille : celles des textes de câble"));
+		ui->m_font_pb->setToolTip(tr("Font and size: those of the cable texts"));
 	}
 	else
 	{
 		QFont font;
 		if (QETUtils::fontFromString(font, m_current_font)) {
-			ui->m_font_pb->setToolTip(tr("Police et taille : %1, %2 pt")
+			ui->m_font_pb->setToolTip(tr("Font and size: %1, %2 pt")
 									  .arg(font.family()).arg(font.pointSizeF()));
 		}
 	}
@@ -361,10 +366,10 @@ void XRefPropertiesWidget::chooseXRefFont()
 
 	bool ok = false;
 	const QFont font = QFontDialog::getFont(&ok, initial, this,
-											tr("Police du texte de querverweis"));
+											tr("Font of the cross-reference text"));
 	if (!ok) return;
 
 	m_current_font = QETUtils::fontToString(font);
-	ui->m_font_pb->setToolTip(tr("Police et taille : %1, %2 pt")
+	ui->m_font_pb->setToolTip(tr("Font and size: %1, %2 pt")
 							  .arg(font.family()).arg(font.pointSizeF()));
 }

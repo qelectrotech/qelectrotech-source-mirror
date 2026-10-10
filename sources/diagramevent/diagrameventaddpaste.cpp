@@ -434,7 +434,7 @@ void DiagramEventAddPaste::commit()
 
 		auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
 										  m_diagram, true, line.taken);
-		added->setText(QCoreApplication::translate("CableCopy", "Coller un câble"));
+		added->setText(QCoreApplication::translate("CableCopy", "Paste a cable"));
 		cable_commands << added;
 	}
 

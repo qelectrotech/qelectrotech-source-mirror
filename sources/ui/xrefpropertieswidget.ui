@@ -234,10 +234,10 @@
           <item>
            <widget class="QPushButton" name="m_font_pb">
             <property name="toolTip">
-             <string>Choisir la police et la taille du texte du querverweis du câble</string>
+             <string>Choose the font and size of the cable cross-reference text</string>
             </property>
             <property name="text">
-             <string>Police…</string>
+             <string>Font…</string>
             </property>
            </widget>
           </item>

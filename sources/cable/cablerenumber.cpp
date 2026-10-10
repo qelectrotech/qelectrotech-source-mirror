@@ -110,15 +110,15 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 	if (!project)
 	{
 		result.error = QCoreApplication::translate(
-			"CableRenumber", "Aucun projet n'est ouvert.");
+			"CableRenumber", "No project is open.");
 		return result;
 	}
 	if (project->isReadOnly())
 	{
 		result.error = QCoreApplication::translate(
 			"CableRenumber",
-			"Ce projet est en lecture seule : ses câbles ne peuvent pas "
-			"être renumérotés.");
+			"This project is read-only: its cables cannot be "
+			"renumbered.");
 		return result;
 	}
 		//The rule may be one the numbering window is drawing right now
@@ -136,9 +136,9 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 	{
 		result.error = QCoreApplication::translate(
 			"CableRenumber",
-			"Aucune règle de numérotation des câbles n'est définie pour ce "
-			"projet. Définissez-en une dans cette fenêtre avant de "
-			"renuméroter ses câbles.");
+			"No cable numbering rule is defined for this "
+			"project. Define one in this window before "
+			"renumbering its cables.");
 		return result;
 	}
 
@@ -221,8 +221,8 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 		{
 			result.error = QCoreApplication::translate(
 				"CableRenumber",
-				"Un câble n'est sur aucun folio du projet : rien n'a été "
-				"changé.");
+				"A cable is not on any sheet of the project: "
+				"nothing was changed.");
 			return result;
 		}
 
@@ -241,8 +241,8 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 		{
 			result.error = QCoreApplication::translate(
 				"CableRenumber",
-				"La règle en cours ne donne aucun numéro ici : rien n'a été "
-				"changé.");
+				"The current rule gives no number here: "
+				"nothing was changed.");
 			return result;
 		}
 			//A rule which does not count hands out the same number
@@ -252,9 +252,9 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 		{
 			result.error = QCoreApplication::translate(
 				"CableRenumber",
-				"La règle en cours donne deux fois le même numéro (%1) : "
-				"elle doit compter pour renuméroter un projet entier. "
-				"Rien n'a été changé.")
+				"The current rule gives the same number (%1) twice: "
+				"it must count to renumber a whole project. "
+				"Nothing was changed.")
 				.arg(candidate);
 			return result;
 		}
@@ -264,8 +264,8 @@ CableRenumberPlan CableRenumber::plan(QETProject *project,
 		{
 			result.error = QCoreApplication::translate(
 				"CableRenumber",
-				"Le numéro %1 est déjà porté par un câble dont le nom est "
-				"laissé tel quel : rien n'a été changé.")
+				"Number %1 is already used by a cable whose name "
+				"is left as it is: nothing was changed.")
 				.arg(candidate);
 			return result;
 		}

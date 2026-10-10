@@ -91,8 +91,8 @@ CableTextFormatDialog::CableTextFormatDialog(const CableTextFormat &format,
 	QDialog(parent),
 	m_cores(cores)
 {
-	setWindowTitle(cores ? tr("Couleurs des âmes")
-						 : tr("Format du texte"));
+	setWindowTitle(cores ? tr("Core colors")
+						 : tr("Text format"));
 	buildUi();
 
 		//The font this text is written with right now: the one this
@@ -145,42 +145,42 @@ void CableTextFormatDialog::buildUi()
 
 	m_family = new QFontComboBox(this);
 	m_family->setFontFilters(QFontComboBox::AllFonts);
-	form->addRow(tr("Police :"), m_family);
+	form->addRow(tr("Font:"), m_family);
 
 	m_size = new QDoubleSpinBox(this);
 	m_size->setRange(1.0, 300.0);
 	m_size->setDecimals(1);
 	m_size->setSingleStep(0.5);
 	m_size->setSuffix(tr(" pt"));
-	form->addRow(tr("Taille :"), m_size);
+	form->addRow(tr("Size:"), m_size);
 
 	m_style = new QComboBox(this);
 	m_style->addItem(tr("Normal"));
-	m_style->addItem(tr("Gras"));
-	m_style->addItem(tr("Italique"));
-	m_style->addItem(tr("Gras et italique"));
-	form->addRow(tr("Style :"), m_style);
+	m_style->addItem(tr("Bold"));
+	m_style->addItem(tr("Italic"));
+	m_style->addItem(tr("Bold italic"));
+	form->addRow(tr("Style:"), m_style);
 
 		//The colours of the cores stand turned by a quarter along their
 		//own line: there is nothing for them to line up with.
 	if (!m_cores)
 	{
 		m_alignment = new QComboBox(this);
-		m_alignment->addItem(tr("Aligné à droite"));
-		m_alignment->addItem(tr("Centré"));
-		m_alignment->addItem(tr("Aligné à gauche"));
-		form->addRow(tr("Alignement :"), m_alignment);
+		m_alignment->addItem(tr("Right aligned"));
+		m_alignment->addItem(tr("Centred"));
+		m_alignment->addItem(tr("Left aligned"));
+		form->addRow(tr("Alignment:"), m_alignment);
 	}
 
-	m_preview = new QLabel(tr("15W1 · H07V-K 3G1,5"), this);
+	m_preview = new QLabel(tr("15W1 · H07V-K 3G1.5"), this);
 	m_preview->setFrameStyle(QFrame::Box | QFrame::Plain);
 	m_preview->setMinimumHeight(30);
 	m_preview->setIndent(6);
-	form->addRow(tr("Aperçu :"), m_preview);
+	form->addRow(tr("Preview:"), m_preview);
 
 	auto *buttons = new QDialogButtonBox(
 				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-	m_reset = buttons->addButton(tr("Réinitialiser"), QDialogButtonBox::ResetRole);
+	m_reset = buttons->addButton(tr("Reset"), QDialogButtonBox::ResetRole);
 	connect(buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
 	connect(m_reset, &QPushButton::clicked, this, [this]() {

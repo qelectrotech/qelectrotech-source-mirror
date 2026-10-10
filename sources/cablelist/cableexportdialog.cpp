@@ -46,7 +46,7 @@ CableExportDialog::CableExportDialog(QETProject *project, QWidget *parent) :
 	QDialog(parent),
 	m_project(project)
 {
-	setWindowTitle(tr("Exporter la liste des câbles au format CSV"));
+	setWindowTitle(tr("Export the cable list as CSV"));
 	QET::trackDialogGeometry(this);
 
 	auto *main_layout = new QVBoxLayout(this);
@@ -56,16 +56,16 @@ CableExportDialog::CableExportDialog(QETProject *project, QWidget *parent) :
 	m_query_widget = new CableQueryWidget(this);
 	main_layout->addWidget(m_query_widget);
 
-	auto *page_group = new QGroupBox(tr("Mise en page"), this);
+	auto *page_group = new QGroupBox(tr("Layout"), this);
 	auto *page_layout = new QVBoxLayout(page_group);
-	m_include_headers = new QCheckBox(tr("inclure les en-têtes"), page_group);
+	m_include_headers = new QCheckBox(tr("include headers"), page_group);
 	m_include_headers->setChecked(true);
 	page_layout->addWidget(m_include_headers);
 	page_layout->addStretch();
 	main_layout->addWidget(page_group);
 
 	auto *preview_layout = new QHBoxLayout;
-	auto *preview_pb = new QPushButton(tr("Aperçu"), this);
+	auto *preview_pb = new QPushButton(tr("Preview"), this);
 	preview_layout->addWidget(preview_pb);
 	preview_layout->addStretch();
 	main_layout->addLayout(preview_layout);
@@ -105,11 +105,11 @@ int CableExportDialog::exec()
 		QString dir = m_project->currentDir();
 		if (dir.isEmpty()) dir = QETApp::documentDir();
 		const QString file_name = dir + QLatin1Char('/')
-				+ tr("liste_cables_") + m_project->title()
+				+ tr("cable_list_") + m_project->title()
 				+ QStringLiteral(".csv");
 		const QString file_path = QFileDialog::getSaveFileName(
-				this, tr("Enregistrer sous... "), file_name,
-				tr("Fichiers csv (*.csv)"));
+				this, tr("Save As... "), file_name,
+				tr("CSV files (*.csv)"));
 		if (!file_path.isEmpty())
 		{
 			QString error;
@@ -118,8 +118,8 @@ int CableExportDialog::exec()
 					m_include_headers->isChecked());
 			if (!BomExport::writeCsv(file_path, csv, &error)) {
 				QMessageBox::critical(
-						this, tr("Erreur"),
-						tr("Impossible d'enregistrer la liste des câbles dans %1.\n%2")
+						this, tr("Error"),
+						tr("Cannot save the cable list to %1.\n%2")
 								.arg(file_path, error));
 			}
 		}

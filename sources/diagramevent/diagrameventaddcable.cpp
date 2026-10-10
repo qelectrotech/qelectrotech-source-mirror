@@ -158,16 +158,16 @@ void DiagramEventAddCable::updateHint() const
 	if (!m_has_anchor)
 	{
 		editor->statusBar()->showMessage(tr(
-			"Clic gauche : poser le départ du câble ; "
-			"glisser ou second clic : terminer ; "
-			"clic droit : annuler ; Échap : quitter"));
+			"Left click: place the cable start; "
+			"drag or second click: finish; "
+			"right click: cancel; Esc: quit"));
 		return;
 	}
 
 	editor->statusBar()->showMessage(tr(
-		"Clic gauche ou relâcher : terminer la ligne "
-		"(%n âme(s) reconnue(s) ; toujours horizontale ou verticale) ; "
-		"clic droit : annuler la ligne",
+		"Left click or release: finish the line "
+		"(%n core(s) recognized; always horizontal or vertical); "
+		"right click: cancel the line",
 		"how many conductors the line being drawn already crosses",
 		m_crossings.size()));
 }

@@ -47,7 +47,7 @@ CableQueryWidget::CableQueryWidget(QWidget *parent) :
 	auto *lists = new QHBoxLayout;
 
 	auto *left = new QVBoxLayout;
-	left->addWidget(new QLabel(tr("Colonnes disponibles"), this));
+	left->addWidget(new QLabel(tr("Available columns"), this));
 	m_available_list = new QListWidget(this);
 	left->addWidget(m_available_list);
 
@@ -59,10 +59,10 @@ CableQueryWidget::CableQueryWidget(QWidget *parent) :
 		button->setToolTip(tip);
 		return button;
 	};
-	auto *add_pb = make_button(QStyle::SP_ArrowRight, tr("Ajouter la colonne sélectionnée"));
-	auto *remove_pb = make_button(QStyle::SP_ArrowLeft, tr("Retirer la colonne sélectionnée"));
-	auto *up_pb = make_button(QStyle::SP_ArrowUp, tr("Monter la colonne sélectionnée"));
-	auto *down_pb = make_button(QStyle::SP_ArrowDown, tr("Descendre la colonne sélectionnée"));
+	auto *add_pb = make_button(QStyle::SP_ArrowRight, tr("Add the selected column"));
+	auto *remove_pb = make_button(QStyle::SP_ArrowLeft, tr("Remove the selected column"));
+	auto *up_pb = make_button(QStyle::SP_ArrowUp, tr("Move the selected column up"));
+	auto *down_pb = make_button(QStyle::SP_ArrowDown, tr("Move the selected column down"));
 	buttons->addWidget(add_pb);
 	buttons->addWidget(remove_pb);
 	buttons->addWidget(up_pb);
@@ -70,7 +70,7 @@ CableQueryWidget::CableQueryWidget(QWidget *parent) :
 	buttons->addStretch();
 
 	auto *right = new QVBoxLayout;
-	right->addWidget(new QLabel(tr("Colonnes du tableau"), this));
+	right->addWidget(new QLabel(tr("Table columns"), this));
 	m_choosen_list = new QListWidget(this);
 	right->addWidget(m_choosen_list);
 

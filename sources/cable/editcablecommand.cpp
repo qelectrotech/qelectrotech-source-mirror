@@ -35,7 +35,7 @@ BatchCommand::BatchCommand(QUndoCommand *first, QUndoCommand *second) :
 	m_steps({first, second})
 {
 	m_steps.removeAll(nullptr);
-	setText(QCoreApplication::translate("BatchCommand", "Supprimer"));
+	setText(QCoreApplication::translate("BatchCommand", "Delete"));
 }
 
 /**
@@ -113,7 +113,7 @@ MoveCablePartCommand::MoveCablePartCommand(Cable *cable,
 	m_before_cores(before_cores),
 	m_after_cores(after_cores)
 {
-	setText(QCoreApplication::translate("MoveCablePartCommand", "Déplacer un câble"));
+	setText(QCoreApplication::translate("MoveCablePartCommand", "Move a cable"));
 }
 
 void MoveCablePartCommand::undo()
@@ -161,7 +161,7 @@ ChangeCablePropertiesCommand::ChangeCablePropertiesCommand(Cable *cable,
 	m_after(after)
 {
 	setText(QCoreApplication::translate("ChangeCablePropertiesCommand",
-										"Modifier les propriétés d'un câble"));
+										"Edit the properties of a cable"));
 }
 
 void ChangeCablePropertiesCommand::undo()
@@ -214,7 +214,7 @@ RenumberCablesCommand::RenumberCablesCommand(const QList<Cable *> &cables,
 	}
 
 	setText(QCoreApplication::translate("RenumberCablesCommand",
-										"Renumérotter %n câble(s)",
+										"Renumber %n cable(s)",
 										"", m_cables.size()));
 }
 
@@ -283,7 +283,7 @@ ChangeCableTypeCommand::ChangeCableTypeCommand(Cable *cable,
 	m_after(after)
 {
 	setText(QCoreApplication::translate("ChangeCableTypeCommand",
-										"Changer le type du câble"));
+										"Change the cable type"));
 }
 
 void ChangeCableTypeCommand::undo()
@@ -330,7 +330,7 @@ ChangeCableCoresCommand::ChangeCableCoresCommand(Cable *cable,
 {
 	setText(text.isEmpty()
 			? QCoreApplication::translate("ChangeCableCoresCommand",
-										  "Déplacer une âme de câble")
+										  "Move a cable core")
 			: text);
 }
 
@@ -366,7 +366,7 @@ void ChangeCableCoresCommand::apply(const QList<CableCore> &cores)
 RemoveCableCommand::RemoveCableCommand(Diagram *diagram, const QList<CablePart *> &parts) :
 	m_diagram(diagram)
 {
-	setText(QCoreApplication::translate("RemoveCableCommand", "Supprimer un câble"));
+	setText(QCoreApplication::translate("RemoveCableCommand", "Delete a cable"));
 
 	for (CablePart *part : parts)
 	{

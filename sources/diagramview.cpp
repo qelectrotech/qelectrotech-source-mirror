@@ -748,7 +748,7 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 			if (!line.part) continue;
 			auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
 											  m_diagram, true, line.taken);
-			added->setText(QCoreApplication::translate("CableCopy", "Coller un câble"));
+			added->setText(QCoreApplication::translate("CableCopy", "Paste a cable"));
 			cable_commands << added;
 		}
 			//The copies end up selected, like everything else a paste
@@ -872,7 +872,7 @@ void DiagramView::duplicate(const QPoint &stepOffset)
 		if (!line.part) continue;
 		auto *added = new AddCableCommand(line.part->cable(), line.part.data(),
 										  m_diagram, true, line.taken);
-		added->setText(QCoreApplication::translate("CableCopy", "Dupliquer un câble"));
+		added->setText(QCoreApplication::translate("CableCopy", "Duplicate a cable"));
 		command = batchWith(command, added);
 	}
 	for (const CableCopy::Wired &line : std::as_const(wired)) {
@@ -2194,7 +2194,7 @@ bool DiagramView::cableCoreMenu(const QPoint &menu_pos, const QPoint &global_pos
 	}
 
 	QMenu menu(this);
-	QAction *take = menu.addAction(tr("Retirer cette âme de la ligne"));
+	QAction *take = menu.addAction(tr("Remove this core from the line"));
 	take->setIcon(QET::Icons::Cable);
 
 	if (menu.exec(global_pos) == take) {

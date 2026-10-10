@@ -338,11 +338,11 @@ void SelectAutonumW::setSingleRuleMode(bool single)
 		//only shown when there is really a rule to take away -- see
 		//setRuleRemovable.
 	if (single && !m_rule_remove_pb) {
-		m_rule_remove_pb = new QPushButton(tr("Supprimer la règle"), this);
+		m_rule_remove_pb = new QPushButton(tr("Delete the rule"), this);
 		m_rule_remove_pb->setToolTip(tr(
-			"Supprimer la règle de numérotation des câbles : les câbles "
-			"sont à nouveau numérotés comme avant, et la question d'en "
-			"définir une revient au prochain dessin."));
+			"Delete the cable numbering rule: cables are "
+			"numbered again as before, and the question of "
+			"defining one comes back on the next drawing."));
 		m_rule_remove_pb->setObjectName(QStringLiteral("m_rule_remove_pb"));
 		if (ui->m_definition_groupe && ui->m_definition_groupe->layout()) {
 			ui->m_definition_groupe->layout()->addWidget(m_rule_remove_pb);
@@ -457,24 +457,24 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 			{
 				QMessageBox::information (
 							this,
-							tr("Câble Autonumérotation",
+							tr("Cable Auto Numbering",
 							   "title window"),
-							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux câbles.\n"
-							   "-Une numérotation est composée d'une variable minimum.\n"
-							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
+							tr("This is where you can define how new cables will be numbered.\n"
+							   "-A numbering is composed of a minimum variable.\n"
+							   "-You can add or delete a dialing variable through the - and + buttons.\n"
+							   "-A numbering variable includes: a type, a value and an increment.\n"
 
-							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-							   "qui s'incrémente à chaque nouveau câble de la valeur du champ \"Incrémentation\".\n"
-							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+							   "\n-the \"Digit 1\", \"Digit 01\" and \"Digit 001\" types represent a numeric type defined in the \"Value\" field, "
+							   "which is incremented to each new cable by the value of the \"Increment\" field.\n"
+							   "-\"Digit 01\" and \"Digit 001\", are respectively represented on the diagram by two and three digits minimum.\n"
+							   "If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in "
+							   "order to respect its type.\n"
 
-							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
+							   "\n-Type \"Text\", represents a fixed text.\nThe \"Increment\" field is not used.\n"
 
-							   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
+							   "\n-The \"Sheet no.\" type represents the number of the current sheet.\nThe other fields are not used.\n"
 
-							   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
+							   "\n-The \"Sheet\" type represents the name of the current sheet.\nThe other fields are not used.",
 							   "help dialog about the cable autonumerotation"
 							   ));
 				break;

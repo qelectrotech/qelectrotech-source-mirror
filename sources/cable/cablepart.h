@@ -246,7 +246,7 @@ class CablePart : public QetGraphicsItem
 				runs on besides this one: that folio, the section of the
 				cable standing there, and the text this project asks for
 				such a reference -- the format chosen for the type
-				"Câble" under Querverweise, written out once per folio,
+				"Cable" under Cross-references, written out once per folio,
 				in the order the folios turn.
 			*/
 		struct CrossRef
@@ -326,7 +326,7 @@ class CablePart : public QetGraphicsItem
 			/**
 				Keep the reference lines up to date with the project: a
 				folio which is added, removed or moved changes what they
-				say, and so does the format chosen under Querverweise.
+				say, and so does the format chosen under Cross-references.
 			*/
 		void setUpXrefHooks();
 		QString typeText() const;

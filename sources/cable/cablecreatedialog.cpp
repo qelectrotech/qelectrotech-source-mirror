@@ -167,7 +167,7 @@ CableCreateDialog::CableCreateDialog(Diagram *diagram,
 */
 void CableCreateDialog::build()
 {
-	setWindowTitle(tr("Câble"));
+	setWindowTitle(tr("Cable"));
 
 	auto *layout = new QVBoxLayout(this);
 
@@ -176,14 +176,14 @@ void CableCreateDialog::build()
 			//What this window is for, and how many cores the cable has
 			//right now: the type he picks is measured against that number.
 		const QString name = m_change->type().isEmpty()
-			? tr("(aucun type)") : m_change->type();
-		m_header = new QLabel(tr("Changer le type : %1, %n âme(s)",
+			? tr("(no type)") : m_change->type();
+		m_header = new QLabel(tr("Change the type: %1, %n core(s)",
 								 "which type this window changes, and how many cores that cable has now",
 								 m_change->coreCount()).arg(name), this);
 	}
 	else
 	{
-		m_header = new QLabel(tr("%n âme(s) reconnue(s)",
+		m_header = new QLabel(tr("%n recognized core(s)",
 								 "how many cores the line just crossed",
 								 m_crossings.size()), this);
 	}
@@ -256,10 +256,10 @@ void CableCreateDialog::buildNewTab()
 	layout->setContentsMargins(4, 4, 4, 4);
 
 	auto *search_row = new QHBoxLayout;
-	search_row->addWidget(new QLabel(tr("Rechercher :"), page));
+	search_row->addWidget(new QLabel(tr("Search:"), page));
 	m_new_search = new QLineEdit(page);
 	m_new_search->setClearButtonEnabled(true);
-	m_new_search->setPlaceholderText(tr("Filtrer les types de câbles"));
+	m_new_search->setPlaceholderText(tr("Filter cable types"));
 	search_row->addWidget(m_new_search, 1);
 	layout->addLayout(search_row);
 
@@ -268,10 +268,10 @@ void CableCreateDialog::buildNewTab()
 		//being changed rather than drawn -- too few cores to keep this
 		//cable as it stands, since taking such a type takes cores off it.
 	m_new_hide = new QCheckBox(changeMode()
-							   ? tr("Masquer les types qui ont moins d'âmes "
-									"que ce câble")
-							   : tr("Masquer les types qui ont moins d'âmes "
-									"que de conducteurs reconnus"), page);
+							   ? tr("Hide types which have fewer cores "
+									"than this cable")
+							   : tr("Hide types which have fewer cores "
+									"than recognized conductors"), page);
 	m_new_hide->setChecked(true);
 	layout->addWidget(m_new_hide);
 
@@ -279,12 +279,12 @@ void CableCreateDialog::buildNewTab()
 		//picked: the user sees the lines crossed out the moment the
 		//checkbox shows them, and asks why straight away.
 	auto *why = new QLabel(changeMode()
-						   ? tr("Décochez pour voir aussi les types qui ont "
-								"moins d'âmes : en les prenant, les âmes "
-								"au-delà de leur nombre quittent le câble.")
-						   : tr("Une ligne barrée est un type qui a moins "
-								"d'âmes que de conducteurs reconnus : il ne "
-								"peut pas porter ce câble."), page);
+						   ? tr("Uncheck to also see the types which have "
+								"fewer cores: taking them makes the cores "
+								"beyond their number leave the cable.")
+						   : tr("A struck through line is a type which has "
+								"fewer cores than recognized conductors: it "
+								"cannot carry this cable."), page);
 	why->setWordWrap(true);
 	layout->addWidget(why);
 
@@ -316,15 +316,15 @@ void CableCreateDialog::buildNewTab()
 		//would then be nothing to rewrite.
 	auto *add_row = new QHBoxLayout;
 	add_row->addStretch(1);
-	auto *add_button = new QPushButton(tr("Nouvelle entrée"), page);
-	add_button->setToolTip(tr("Ajouter un nouveau type de câble à la liste"));
+	auto *add_button = new QPushButton(tr("New entry"), page);
+	add_button->setToolTip(tr("Add a new cable type to the list"));
 	connect(add_button, &QPushButton::clicked,
 			this, &CableCreateDialog::addTypeRecord);
 	add_row->addWidget(add_button);
 
-	m_edit_button = new QPushButton(tr("Modifier l'entrée"), page);
-	m_edit_button->setToolTip(tr("Modifier le type de câble sélectionné dans "
-								 "la liste."));
+	m_edit_button = new QPushButton(tr("Edit entry"), page);
+	m_edit_button->setToolTip(tr("Edit the cable type selected in "
+								 "the list."));
 	m_edit_button->setEnabled(false);
 	connect(m_edit_button, &QPushButton::clicked,
 			this, &CableCreateDialog::editTypeRecord);
@@ -332,7 +332,7 @@ void CableCreateDialog::buildNewTab()
 
 	layout->addLayout(add_row);
 
-	m_tabs->addTab(page, tr("Nouveau câble"));
+	m_tabs->addTab(page, tr("New cable"));
 
 	connect(m_new_search, &QLineEdit::textChanged, this, [this](const QString &text) {
 		m_new_proxy->setTokens(text.split(QLatin1Char(' '), Qt::SkipEmptyParts));
@@ -365,23 +365,23 @@ void CableCreateDialog::buildExistingTab()
 	layout->setContentsMargins(4, 4, 4, 4);
 
 	auto *search_row = new QHBoxLayout;
-	search_row->addWidget(new QLabel(tr("Rechercher :"), page));
+	search_row->addWidget(new QLabel(tr("Search:"), page));
 	m_existing_search = new QLineEdit(page);
 	m_existing_search->setClearButtonEnabled(true);
-	m_existing_search->setPlaceholderText(tr("Filtrer les câbles existants"));
+	m_existing_search->setPlaceholderText(tr("Filter existing cables"));
 	search_row->addWidget(m_existing_search, 1);
 	layout->addLayout(search_row);
 
-	m_existing_hide = new QCheckBox(tr("Masquer les câbles qui ont moins "
-									   "d'adresses libres que de conducteurs reconnus"), page);
+	m_existing_hide = new QCheckBox(tr("Hide cables which have fewer "
+									   "free cores than recognized conductors"), page);
 	m_existing_hide->setChecked(true);
 	layout->addWidget(m_existing_hide);
 
 		//Same as on the first tab: the reason a line is crossed out is
 		//said where the crossed out lines appear, not only afterwards.
-	auto *why = new QLabel(tr("Une ligne barrée est un câble qui a moins "
-							  "d'adresses libres que de conducteurs "
-							  "reconnus : il ne peut pas les recevoir."), page);
+	auto *why = new QLabel(tr("A struck through line is a cable which has "
+							  "fewer free cores than recognized "
+							  "conductors: it cannot receive them."), page);
 	why->setWordWrap(true);
 	layout->addWidget(why);
 
@@ -405,7 +405,7 @@ void CableCreateDialog::buildExistingTab()
 	m_existing_note->setVisible(false);
 	layout->addWidget(m_existing_note);
 
-	m_tabs->addTab(page, tr("Câbles existants"));
+	m_tabs->addTab(page, tr("Existing cables"));
 
 	connect(m_existing_search, &QLineEdit::textChanged, this, [this](const QString &text) {
 		m_existing_proxy->setTokens(text.split(QLatin1Char(' '), Qt::SkipEmptyParts));
@@ -445,9 +445,9 @@ void CableCreateDialog::buildPropertyRow()
 	m_installation = new QLineEdit(m_property_row);
 	m_location = new QLineEdit(m_property_row);
 
-	form->addRow(tr("Désignation"), m_designation);
-	form->addRow(tr("Installation (=)"), m_installation);
-	form->addRow(tr("Localisation (+)"), m_location);
+	form->addRow(tr("Designation"), m_designation);
+	form->addRow(tr("Plant (=)"), m_installation);
+	form->addRow(tr("Location (+)"), m_location);
 }
 
 /**
@@ -528,11 +528,11 @@ void CableCreateDialog::refreshExisting()
 	if (!m_diagram || !m_diagram->project()) return;
 
 	m_existing_model->setHorizontalHeaderLabels({
-		tr("Désignation"),
+		tr("Designation"),
 		tr("Type"),
-		tr("Âmes"),
-		tr("Installation"),
-		tr("Localisation")
+		tr("Cores"),
+		tr("Plant"),
+		tr("Location")
 	});
 
 	const int needed = m_crossings.size();
@@ -606,21 +606,21 @@ QString CableCreateDialog::unsuitableNote() const
 			//loud before he says yes to it.
 		if (changeMode())
 		{
-			return tr("Ce type a moins d'âmes que ce câble : %1 au lieu de %2. "
-					  "Les âmes au-delà de %1 quittent le câble et leurs marques "
-					  "disparaissent du tracé.")
+			return tr("This type has fewer cores than this cable: %1 instead of %2. "
+					  "The cores beyond %1 leave the cable and their marks "
+					  "disappear from the drawing.")
 				.arg(cores)
 				.arg(needed);
 		}
 
-		return tr("Trop d'âmes sélectionnées : le type n'en propose que %1, "
-				  "%2 conducteurs sont reconnus")
+		return tr("Too many cores selected: the type offers only %1, "
+				  "%2 conductors are recognized")
 			.arg(cores)
 			.arg(needed);
 	}
 
 	const Cable *cable = m_existing.value(index.row());
-	return tr("Seulement %1 adresses libres, %2 demandées")
+	return tr("Only %1 free cores, %2 requested")
 		.arg(cable ? cable->freeCoreCount() : 0)
 		.arg(needed);
 }
@@ -649,8 +649,8 @@ void CableCreateDialog::selectionChanged()
 
 	if (on_new_tab && m_types.columns.isEmpty())
 	{
-		note->setText(tr("Aucun type de câble disponible : configurez le fichier "
-						 "des types de câbles dans les préférences."));
+		note->setText(tr("No cable type available: configure the cable "
+						 "type file in the preferences."));
 		note->show();
 		acceptable = false;
 	}
@@ -664,8 +664,8 @@ void CableCreateDialog::selectionChanged()
 	}
 	else if (!acceptable)
 	{
-		note->setText(on_new_tab ? tr("Choisissez un type de câble.")
-								 : tr("Choisissez un câble existant."));
+		note->setText(on_new_tab ? tr("Choose a cable type.")
+								 : tr("Choose an existing cable."));
 		note->show();
 	}
 
@@ -678,8 +678,8 @@ void CableCreateDialog::selectionChanged()
 		const int cores = CableTypeList::coreCount(m_types.records.at(index.row()));
 		if (cores > m_change->coreCount())
 		{
-			note->setText(tr("%1 âme(s) au lieu de %2 : les âmes supplémentaires "
-							 "restent sans être placées.")
+			note->setText(tr("%1 cores instead of %2: the extra cores "
+							 "stay unplaced.")
 						  .arg(cores)
 						  .arg(m_change->coreCount()));
 			note->show();
@@ -910,12 +910,12 @@ void CableCreateDialog::accept()
 	if (!m_taken.isEmpty())
 	{
 		const QString text = tr(
-			"%n conducteur(s) traversé(s) déjà rattaché(s) à un autre câble\n\n"
-			"En validant, l'autre câble perdra ces âmes. Voulez-vous continuer ?",
+			"%n crossed conductor(s) already bound to another cable\n\n"
+			"If you confirm, the other cable will lose these cores. Do you want to continue?",
 			"ask before taking cores away from another cable",
 			m_taken.size());
 
-		if (QMessageBox::warning(this, tr("Câble"), text,
+		if (QMessageBox::warning(this, tr("Cable"), text,
 								 QMessageBox::Yes | QMessageBox::No,
 								 QMessageBox::No) != QMessageBox::Yes) {
 			m_taken.clear();
@@ -1013,8 +1013,8 @@ void CableCreateDialog::addTypeRecord()
 	if (!CableTypeList::appendRecord(path, entry.record(), &error))
 	{
 		QMessageBox::critical(this,
-							  tr("Écriture impossible"),
-							  tr("Impossible d'écrire dans le fichier :\n%1\n%2")
+							  tr("Cannot be written"),
+							  tr("Cannot write to the file:\n%1\n%2")
 								  .arg(path, error));
 		return;
 	}
@@ -1079,8 +1079,8 @@ void CableCreateDialog::editTypeRecord()
 	if (!CableTypeList::updateRecord(path, before, after, &error))
 	{
 		QMessageBox::critical(this,
-							  tr("Écriture impossible"),
-							  tr("Impossible d'écrire dans le fichier :\n%1\n%2")
+							  tr("Cannot be written"),
+							  tr("Cannot write to the file:\n%1\n%2")
 								  .arg(path, error));
 		return;
 	}
@@ -1161,13 +1161,13 @@ void CableCreateDialog::acceptTypeChange()
 	if (wired > 0)
 	{
 		const QString text = tr(
-			"%n âme(s) de ce câble est/sont rattachée(s) à un conducteur. "
-			"Avec le type choisi, elle(s) quitte(nt) ce câble et leur marque "
-			"disparaît du tracé. Continuer ?",
+			"%n core(s) of this cable bound to a conductor. "
+			"With the chosen type, they leave this cable and their mark "
+			"disappears from the drawing. Continue?",
 			"ask before cores lose the mark they show on the drawing",
 			wired);
 
-		if (QMessageBox::warning(this, tr("Câble"), text,
+		if (QMessageBox::warning(this, tr("Cable"), text,
 								 QMessageBox::Yes | QMessageBox::No,
 								 QMessageBox::Yes) != QMessageBox::Yes) {
 			return;
@@ -1209,7 +1209,7 @@ void CableCreateDialog::acceptTypeChange()
 	QUndoCommand *step = steps.size() == 1
 		? steps.takeFirst()
 		: new BatchCommand(steps, QCoreApplication::translate("ChangeCableTypeCommand",
-															  "Changer le type du câble"));
+															  "Change the cable type"));
 
 		//The folio is the usual place this step is taken back from. When
 		//no folio is known -- a cable picked without a line -- the
@@ -1251,12 +1251,12 @@ CableTypeEntryDialog::CableTypeEntryDialog(const QStringList &columns, QWidget *
 	QDialog(parent),
 	m_columns(columns)
 {
-	setWindowTitle(tr("Nouvelle entrée"));
+	setWindowTitle(tr("New entry"));
 
 	auto *main_layout = new QVBoxLayout(this);
 
-	auto *intro = new QLabel(tr("Renseignez le type de câble à ajouter. Les champs "
-								"laissés vides restent vides dans le fichier."), this);
+	auto *intro = new QLabel(tr("Enter the cable type to add. Fields "
+								"left empty stay empty in the file."), this);
 	intro->setWordWrap(true);
 	m_intro = intro;
 	main_layout->addWidget(intro);
@@ -1275,8 +1275,8 @@ CableTypeEntryDialog::CableTypeEntryDialog(const QStringList &columns, QWidget *
 			auto *spin = new QSpinBox(this);
 			spin->setRange(0, 99);
 			spin->setSpecialValueText(QStringLiteral("—"));
-			spin->setToolTip(tr("Combien d'âmes ce type a. Le tiret veut dire que "
-								"le fichier ne le dit pas."));
+			spin->setToolTip(tr("How many cores this type has. The dash means "
+								"the file does not specify."));
 			field = spin;
 		}
 		else
@@ -1286,8 +1286,8 @@ CableTypeEntryDialog::CableTypeEntryDialog(const QStringList &columns, QWidget *
 			if (column == QLatin1String("core_colors"))
 			{
 				edit->setPlaceholderText(QStringLiteral("br,sw,gr,bl,gnge"));
-				edit->setToolTip(tr("La couleur de chaque âme, séparées par une "
-									"virgule et dans l'ordre des âmes."));
+				edit->setToolTip(tr("The color of each core, separated by a "
+									"comma and in the order of the cores."));
 			}
 			field = edit;
 		}
@@ -1301,8 +1301,8 @@ CableTypeEntryDialog::CableTypeEntryDialog(const QStringList &columns, QWidget *
 	main_layout->addLayout(grid);
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-	buttons->button(QDialogButtonBox::Ok)->setText(tr("Enregistrer"));
-	buttons->button(QDialogButtonBox::Cancel)->setText(tr("Annuler"));
+	buttons->button(QDialogButtonBox::Ok)->setText(tr("Save"));
+	buttons->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 	connect(buttons, &QDialogButtonBox::accepted, this, &CableTypeEntryDialog::accept);
 	connect(buttons, &QDialogButtonBox::rejected, this, &CableTypeEntryDialog::reject);
 	main_layout->addWidget(buttons);
@@ -1362,11 +1362,11 @@ CableTypeRecord CableTypeEntryDialog::record() const
 */
 void CableTypeEntryDialog::setValues(const CableTypeRecord &values)
 {
-	setWindowTitle(tr("Modifier l'entrée"));
+	setWindowTitle(tr("Edit entry"));
 	if (m_intro)
 	{
-		m_intro->setText(tr("Modifiez le type de câble sélectionné dans la liste. "
-							"Les champs laissés vides restent vides dans le fichier."));
+		m_intro->setText(tr("Edit the cable type selected in the list. "
+							"Fields left empty stay empty in the file."));
 	}
 
 	for (int i = 0; i < m_columns.size() && i < m_fields.size(); ++i)
@@ -1397,9 +1397,9 @@ void CableTypeEntryDialog::accept()
 	if (record().values.isEmpty())
 	{
 		QMessageBox::warning(this,
-							 tr("Aucun renseignement"),
-							 tr("Saisissez au moins un renseignement "
-								"pour créer une entrée."));
+							 tr("No details"),
+							 tr("Enter at least one detail "
+								"to create an entry."));
 		return;
 	}
 

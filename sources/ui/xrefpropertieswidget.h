@@ -62,6 +62,8 @@ class XRefPropertiesWidget : public QWidget
 	int m_previous_type_index;
 		///The font picked for the type shown, as the settings describe it
 	QString m_current_font;
+		///Wording of the master label, as the .ui gives it
+	QString m_master_label_text;
 };
 
 #endif // XREFPROPERTIESWIDGET_H

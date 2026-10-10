@@ -37,8 +37,8 @@ CableListModelPropertiesWidget::CableListModelPropertiesWidget(
 	PropertiesEditorWidget(parent)
 {
 	auto *layout = new QHBoxLayout(this);
-	m_edit_pb = new QPushButton(tr("Modifier les colonnes..."), this);
-	m_refresh_pb = new QPushButton(tr("Rafraîchir"), this);
+	m_edit_pb = new QPushButton(tr("Edit columns..."), this);
+	m_refresh_pb = new QPushButton(tr("Refresh"), this);
 	layout->addWidget(m_edit_pb);
 	layout->addWidget(m_refresh_pb);
 	layout->addStretch();
@@ -73,7 +73,7 @@ void CableListModelPropertiesWidget::editColumns()
 	}
 
 	QDialog d(this);
-	d.setWindowTitle(tr("Colonnes de la liste des câbles"));
+	d.setWindowTitle(tr("Cable list columns"));
 	auto *layout = new QVBoxLayout(&d);
 	auto *widget = new CableQueryWidget(&d);
 	widget->setFields(m_model->fields());

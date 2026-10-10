@@ -571,7 +571,7 @@ void ProjectAutoNumConfigPage::initWidgets()
 		//numberings stays hidden and there is nothing to choose between.
 	m_saw_cable = new SelectAutonumW(3);
 	m_saw_cable->setSingleRuleMode(true);
-	tab_widget->addTab(m_saw_cable, tr("Câbles"));
+	tab_widget->addTab(m_saw_cable, tr("Cables"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
@@ -1772,6 +1772,6 @@ void ProjectAutoNumConfigPage::changeToTab(int i)
 */
 void ProjectAutoNumConfigPage::changeToCableTab()
 {
-		//Tabs in order : Management, Conducteurs, Eléments, Folios, Câbles
+		//Tabs in order : Management, Conductors, Elements, Folios, Cables
 	changeToTab(4);
 }
