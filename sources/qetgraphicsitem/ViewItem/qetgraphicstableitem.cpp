@@ -448,7 +448,7 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 		m_previous_table->setNextTable(this);
 		setModel(m_previous_table->m_model);
 	}
-	else //Copie the model of old previous table
+	else if (old_previous_table->model()) //Copie the model of old previous table
 	{
 		setModel(new ProjectDBModel(*static_cast<ProjectDBModel *>(old_previous_table->model())));
 	}
@@ -596,11 +596,23 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 		//Add the header xml
 	dom_table.appendChild(m_header_item->toXml(dom_document));
 
-		//Add previous table, the model is save by the previous table
-	if (m_previous_table)
+		//Add previous table, the model is save by the previous table.
+		//A folio deleted with undo still possible keeps its tables in the
+		//chain, but it is not saved: name the nearest previous table that
+		//is, or save the model if none is.
+	const auto project_ = diagram() ? diagram()->project() : nullptr;
+	auto in_project = [project_](const QetGraphicsTableItem *table) {
+		return project_ && table->diagram()
+				&& project_->diagrams().contains(table->diagram());
+	};
+	QetGraphicsTableItem *previous_ = m_previous_table;
+	while (previous_ && !in_project(previous_)) {
+		previous_ = previous_->previousTable();
+	}
+	if (previous_)
 	{
 		auto dom_previous_table = dom_document.createElement("previous_table");
-		dom_previous_table.setAttribute("uuid", m_previous_table->m_uuid.toString());
+		dom_previous_table.setAttribute("uuid", previous_->m_uuid.toString());
 		dom_table.appendChild(dom_previous_table);
 	}
 	else if (m_model) //There is not a previous table, we need to save the model
