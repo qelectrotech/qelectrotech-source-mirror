@@ -197,26 +197,22 @@ void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalT
  * @brief drawConnections
  * Draw a connection above and, if @a draw_bottom is true, a connection under
  * @a terminal_rect, in the middle of the rect.
- * A connection is a short line ended by a little circle.
+ * A connection is a short line, without circle at its end.
  * @param painter
  * @param terminal_rect
- * @param length : the total length of a connection, circle included
+ * @param length : the total length of a connection
  * @param draw_bottom : false if the cable is drawn under the terminal
  */
 void drawConnections(QPainter *painter, const QRectF &terminal_rect, qreal length, bool draw_bottom)
 {
-	const qreal radius{qMin<qreal>(length / 4, 2)};
 	const qreal x{terminal_rect.width() / 2};
 	const qreal top{terminal_rect.top()};
 	const qreal bottom{terminal_rect.top() + terminal_rect.height()};
 
-	painter->drawLine(QPointF{x, top}, QPointF{x, top - length + radius * 2});
-	painter->drawEllipse(QPointF{x, top - length + radius}, radius, radius);
+	painter->drawLine(QPointF{x, top}, QPointF{x, top - length});
 
-	if (draw_bottom)
-	{
-		painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length - radius * 2});
-		painter->drawEllipse(QPointF{x, bottom + length - radius}, radius, radius);
+	if (draw_bottom) {
+		painter->drawLine(QPointF{x, bottom}, QPointF{x, bottom + length});
 	}
 }
 
@@ -252,7 +248,6 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 
 	const qreal cable_length{qMax<qreal>(0, pattern.m_cable_length)};
 	const qreal end_length{qMax<qreal>(0, pattern.m_cable_end_length)};
-	const qreal radius{2};
 	const QFontMetricsF font_metrics{painter->font()};
 	const qreal text_height{font_metrics.height()};
 
@@ -331,7 +326,6 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 		{
 			painter->drawLine(QPointF{wire.x, bar_2_y}, QPointF{wire.x, end_y});
 			draw_wire_mark(wire.x, qMin(bar_2_y + 10, end_y), wire.wire, false);
-			painter->drawEllipse(QPointF{wire.x, end_y + radius}, radius, radius);
 		}
 
 			//The shield, linked to an ellipse around the cable
