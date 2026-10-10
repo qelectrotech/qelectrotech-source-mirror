@@ -17,14 +17,14 @@
 */
 #include "elementpropertieswidget.h"
 
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../qetgraphicsitem/masterelement.h"
-#include "../qeticons.h"
+#include <diagram.h>
+#include <diagramposition.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qetgraphicsitem/masterelement.h>
+#include <qeticons.h>
 #include "dynamicelementtextitemeditor.h"
 #include "elementinfowidget.h"
 #include "linksingleelementwidget.h"

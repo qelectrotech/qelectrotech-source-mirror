@@ -17,8 +17,8 @@
 */
 #ifndef TITLEBLOCK_SLASH_QET_TEMPLATE_EDITOR_H
 #define TITLEBLOCK_SLASH_QET_TEMPLATE_EDITOR_H
-#include "../qet.h"
-#include "../qetmainwindow.h"
+#include <qet.h>
+#include <qetmainwindow.h>
 #include "templatelocation.h"
 #include "templateview.h"
 

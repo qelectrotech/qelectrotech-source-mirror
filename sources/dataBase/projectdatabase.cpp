@@ -19,26 +19,26 @@
 
 #include "sqlreadonly.h"
 
-#include "../autoNum/assignvariables.h"
-#include "../borderproperties.h"
-#include "../bordertitleblock.h"
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../elementprovider.h"
-#include "../itemgroups.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
-#include "../qet.h"
-#include "../titleblockproperties.h"
-#include "../ElementsCollection/xmlelementcollection.h"
-#include "../properties/elementdata.h"
+#include <autoNum/assignvariables.h>
+#include <borderproperties.h>
+#include <bordertitleblock.h>
+#include <diagram.h>
+#include <diagramposition.h>
+#include <elementprovider.h>
+#include <itemgroups.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qetgraphicsitem/qetshapeitem.h>
+#include <qetgraphicsitem/terminal.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <qet.h>
+#include <titleblockproperties.h>
+#include <ElementsCollection/xmlelementcollection.h>
+#include <properties/elementdata.h>
 
 #include <QLocale>
 #include <QDate>

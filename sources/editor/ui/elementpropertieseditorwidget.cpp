@@ -17,12 +17,12 @@
 */
 #include "elementpropertieseditorwidget.h"
 
-#include "../../qet.h"
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
+#include <qet.h>
+#include <qetapp.h>
+#include <qetinformation.h>
 #include "ui_elementpropertieseditorwidget.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QItemDelegate>
 #include <QComboBox>
 #include <QSpinBox>

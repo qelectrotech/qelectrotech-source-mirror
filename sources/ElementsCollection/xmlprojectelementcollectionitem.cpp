@@ -17,8 +17,8 @@
 */
 #include "xmlprojectelementcollectionitem.h"
 
-#include "../qeticons.h"
-#include "../qetproject.h"
+#include <qeticons.h>
+#include <qetproject.h>
 #include "xmlelementcollection.h"
 
 #include <QFileInfo>

@@ -18,7 +18,7 @@
 #ifndef CROSSREFITEM_H
 #define CROSSREFITEM_H
 
-#include "../properties/xrefproperties.h"
+#include <properties/xrefproperties.h>
 
 #include <QGraphicsObject>
 #include <QMultiMap>

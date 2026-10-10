@@ -18,7 +18,7 @@
 #ifndef DIAGRAMEVENTADDPATH_H
 #define DIAGRAMEVENTADDPATH_H
 
-#include "../qetgraphicsitem/qetshapeitem.h"
+#include <qetgraphicsitem/qetshapeitem.h>
 #include "diagrameventinterface.h"
 
 class QGraphicsLineItem;

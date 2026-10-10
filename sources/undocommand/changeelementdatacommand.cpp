@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "changeelementdatacommand.h"
-#include "../qetgraphicsitem/element.h"
+#include <qetgraphicsitem/element.h>
 
 ChangeElementDataCommand::ChangeElementDataCommand(Element *element, ElementData new_data, QUndoCommand *parent) :
 	QUndoCommand(parent),

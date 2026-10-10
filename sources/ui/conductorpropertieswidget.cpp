@@ -17,9 +17,9 @@
 */
 #include "conductorpropertieswidget.h"
 
-#include "../conductorproperties.h"
-#include "../qetapp.h"
-#include "../qtextorientationspinboxwidget.h"
+#include <conductorproperties.h>
+#include <qetapp.h>
+#include <qtextorientationspinboxwidget.h>
 #include "ui_conductorpropertieswidget.h"
 
 /**

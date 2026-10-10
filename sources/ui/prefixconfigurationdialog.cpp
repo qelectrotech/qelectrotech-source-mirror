@@ -17,7 +17,7 @@
 */
 #include "prefixconfigurationdialog.h"
 
-#include "../ElementsCollection/qetlabelsfile.h"
+#include <ElementsCollection/qetlabelsfile.h>
 
 #include <QDialogButtonBox>
 #include <QHash>

@@ -17,15 +17,15 @@
 */
 #include "dynamictextfieldeditor.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../editor/graphicspart/customelementpart.h"
-#include "../../editor/graphicspart/partdynamictextfield.h"
-#include "../../qetapp.h"
-#include "../../qetinformation.h"
-#include "../../ui/alignmenttextdialog.h"
-#include "../../ui/compositetexteditdialog.h"
-#include "../ui/qetelementeditor.h"
-#include "../elementscene.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <editor/graphicspart/customelementpart.h>
+#include <editor/graphicspart/partdynamictextfield.h>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <ui/alignmenttextdialog.h>
+#include <ui/compositetexteditdialog.h>
+#include <editor/ui/qetelementeditor.h>
+#include <editor/elementscene.h>
 #include "ui_dynamictextfieldeditor.h"
 
 #include <QColorDialog>

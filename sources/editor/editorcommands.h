@@ -17,8 +17,8 @@
 */
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
-#include "../editor/graphicspart/customelementpart.h"
-#include "../qgimanager.h"
+#include <editor/graphicspart/customelementpart.h>
+#include <qgimanager.h>
 #include "elementcontent.h"
 #include "elementscene.h"
 #include "elementview.h"
@@ -33,7 +33,7 @@
 #include "graphicspart/partrectangle.h"
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include "UndoCommand/deletepartscommand.h"
 
 

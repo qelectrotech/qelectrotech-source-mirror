@@ -18,7 +18,7 @@
 #ifndef BORDERPROPERTIESWIDGET_H
 #define BORDERPROPERTIESWIDGET_H
 
-#include "../borderproperties.h"
+#include <borderproperties.h>
 
 #include <QWidget>
 

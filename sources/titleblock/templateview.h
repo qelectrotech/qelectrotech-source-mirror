@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_VIEW_H
 #define TITLEBLOCK_SLASH_TEMPLATE_VIEW_H
-#include "../titleblocktemplate.h"
+#include <titleblocktemplate.h>
 
 #include <QGraphicsView>
 #include <QGraphicsGridLayout>

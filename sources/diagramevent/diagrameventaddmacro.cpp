@@ -4,14 +4,14 @@
  */
 #include "diagrameventaddmacro.h"
 
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetproject.h"
-#include "../ElementsCollection/xmlelementcollection.h"
-#include "../NameList/nameslist.h"
-#include "../diagramcommands.h"
-#include "../diagramcontent.h"
+#include <diagram.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
+#include <ElementsCollection/xmlelementcollection.h>
+#include <NameList/nameslist.h>
+#include <diagramcommands.h>
+#include <diagramcontent.h>
 #include <QFile>
 #include <QDebug>
 #include <QGraphicsSceneMouseEvent>

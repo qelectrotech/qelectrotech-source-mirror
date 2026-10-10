@@ -18,10 +18,10 @@
 #ifndef TITLEBLOCKPROPERTIESWIDGET_H
 #define TITLEBLOCKPROPERTIESWIDGET_H
 
-#include "../autoNum/numerotationcontext.h"
-#include "../qet.h"
-#include "../qetproject.h"
-#include "../titleblockproperties.h"
+#include <autoNum/numerotationcontext.h>
+#include <qet.h>
+#include <qetproject.h>
+#include <titleblockproperties.h>
 #include "diagramcontextwidget.h"
 
 #include <QWidget>

@@ -18,7 +18,7 @@
 #include "formulaassistantdialog.h"
 #include "ui_formulaassistantdialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 #include <QPushButton>
 
 FormulaAssistantDialog::FormulaAssistantDialog(QWidget *parent) :

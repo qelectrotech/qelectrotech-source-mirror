@@ -17,8 +17,8 @@
 */
 #ifndef ASSIGNVARIABLES_H
 #define ASSIGNVARIABLES_H
-#include "../diagramcontext.h"
-#include "../diagramposition.h"
+#include <diagramcontext.h>
+#include <diagramposition.h>
 #include "numerotationcontext.h"
 
 #include <QPointF>

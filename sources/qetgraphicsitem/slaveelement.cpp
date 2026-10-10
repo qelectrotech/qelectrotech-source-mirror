@@ -17,7 +17,7 @@
 */
 #include "slaveelement.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 #include "dynamicelementtextitem.h"
 
 /**

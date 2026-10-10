@@ -17,14 +17,14 @@
 */
 #include "bomexportdialog.h"
 
-#include "../dataBase/ui/elementquerywidget.h"
-#include "../bomexport.h"
-#include "../qetapp.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
+#include <dataBase/ui/elementquerywidget.h>
+#include <bomexport.h>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <qetproject.h>
 #include "ui_bomexportdialog.h"
 
-#include "../qet.h"
+#include <qet.h>
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSqlQueryModel>

@@ -16,10 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "wiringlistdialog.h"
-#include "../qet.h"
+#include <qet.h>
 
-#include "../dataBase/projectdatabase.h"
-#include "../qetproject.h"
+#include <dataBase/projectdatabase.h>
+#include <qetproject.h>
 
 #include <QDialogButtonBox>
 #include <QHeaderView>

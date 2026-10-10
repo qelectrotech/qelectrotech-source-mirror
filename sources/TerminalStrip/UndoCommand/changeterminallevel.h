@@ -20,7 +20,7 @@
 
 #include <QUndoCommand>
 #include <QPointer>
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 class ChangeTerminalLevel : public QUndoCommand
 {

@@ -17,20 +17,20 @@
 */
 #include "terminalstripeditor.h"
 #include "ui_terminalstripeditor.h"
-#include "../UndoCommand/addterminaltostripcommand.h"
-#include "../../qetproject.h"
-#include "../terminalstrip.h"
-#include "../UndoCommand/changeterminalstripdata.h"
-#include "../undocommand/changeelementdatacommand.h"
+#include <TerminalStrip/UndoCommand/addterminaltostripcommand.h>
+#include <qetproject.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/UndoCommand/changeterminalstripdata.h>
+#include <undocommand/changeelementdatacommand.h>
 #include "terminalstripmodel.h"
-#include "../diagram.h"
-#include "../UndoCommand/sortterminalstripcommand.h"
-#include "../UndoCommand/groupterminalscommand.h"
-#include "../UndoCommand/changeterminallevel.h"
-#include "../UndoCommand/bridgeterminalscommand.h"
-#include "../UndoCommand/changeterminalstripcolor.h"
-#include "../physicalterminal.h"
-#include "../terminalstripbridge.h"
+#include <diagram.h>
+#include <TerminalStrip/UndoCommand/sortterminalstripcommand.h>
+#include <TerminalStrip/UndoCommand/groupterminalscommand.h>
+#include <TerminalStrip/UndoCommand/changeterminallevel.h>
+#include <TerminalStrip/UndoCommand/bridgeterminalscommand.h>
+#include <TerminalStrip/UndoCommand/changeterminalstripcolor.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/terminalstripbridge.h>
 
 #include <QApplication>
 #include <QClipboard>

@@ -16,20 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "crossrefitem.h"
-#include "../shownkinds.h"
+#include <shownkinds.h>
 
 #include <QTimer>
-#include "../qetproject.h"
-#include "../autoNum/assignvariables.h"
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetapp.h"
+#include <qetproject.h>
+#include <autoNum/assignvariables.h>
+#include <diagram.h>
+#include <diagramposition.h>
+#include <qetapp.h>
 #include "dynamicelementtextitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
 #include "qgraphicsitemutility.h"
 #include "terminal.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <algorithm>
 

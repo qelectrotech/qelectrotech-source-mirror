@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "changeterminalstripcolor.h"
-#include "../terminalstripbridge.h"
+#include <TerminalStrip/terminalstripbridge.h>
 
 /**
  * @brief ChangeTerminalStripColor::ChangeTerminalStripColor

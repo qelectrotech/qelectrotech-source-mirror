@@ -17,13 +17,13 @@
 */
 #include "ui_terminalstripeditorwindow.h"
 
-#include "../UndoCommand/addterminalstripcommand.h"
+#include <TerminalStrip/UndoCommand/addterminalstripcommand.h>
 #include "freeterminaleditor.h"
-#include "../../qetapp.h"
-#include "../../qetdiagrameditor.h"
-#include "../../qetproject.h"
-#include "../realterminal.h"
-#include "../terminalstrip.h"
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/terminalstrip.h>
 #include "terminalstripcreatordialog.h"
 #include "terminalstripeditor.h"
 #include "terminalstripeditorwindow.h"

@@ -16,9 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "materialentrydialog.h"
-#include "../qet.h"
+#include <qet.h>
 
-#include "../qetmessagebox.h"
+#include <qetmessagebox.h>
 
 #include <QDialogButtonBox>
 #include <QGridLayout>

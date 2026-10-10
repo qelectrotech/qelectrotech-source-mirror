@@ -19,7 +19,7 @@
 
 #include "elementviewgrid.h"
 
-#include "../qetapp.h"
+#include <qetapp.h>
 #include "UndoCommand/pastepartscommand.h"
 #include "ui/qetelementeditor.h"
 /**

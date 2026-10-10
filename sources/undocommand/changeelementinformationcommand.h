@@ -18,7 +18,7 @@
 #ifndef CHANGEELEMENTINFORMATIONCOMMAND_H
 #define CHANGEELEMENTINFORMATIONCOMMAND_H
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 
 #include <QUndoCommand>
 

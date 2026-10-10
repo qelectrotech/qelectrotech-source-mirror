@@ -18,8 +18,8 @@
 #include "qetlogger.h"
 
 #include "crashhandler.h"
-#include "../qetapp.h"
-#include "../qetversion.h"
+#include <qetapp.h>
+#include <qetversion.h>
 
 #include <QCoreApplication>
 #include <QDateTime>

@@ -20,7 +20,7 @@
 
 #include <QSharedPointer>
 #include <QDomElement>
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class TerminalStrip;
 class Element;

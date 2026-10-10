@@ -19,8 +19,8 @@
 #define MODELTERMINALDATA_H
 
 #include <QString>
-#include "../../qetgraphicsitem/element.h"
-#include "../realterminal.h"
+#include <qetgraphicsitem/element.h>
+#include <TerminalStrip/realterminal.h>
 
 struct modelRealTerminalData
 {

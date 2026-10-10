@@ -18,7 +18,7 @@
 #include "scriptmanagerdialog.h"
 
 #include "scriptlibrary.h"
-#include "../qetmessagebox.h"
+#include <qetmessagebox.h>
 
 #include <QCloseEvent>
 #include <QComboBox>

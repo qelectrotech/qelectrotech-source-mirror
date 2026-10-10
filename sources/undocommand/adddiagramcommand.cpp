@@ -17,8 +17,8 @@
 */
 #include "adddiagramcommand.h"
 
-#include "../qetproject.h"
-#include "../diagram.h"
+#include <qetproject.h>
+#include <diagram.h>
 
 /**
 	@brief AddDiagramCommand::AddDiagramCommand

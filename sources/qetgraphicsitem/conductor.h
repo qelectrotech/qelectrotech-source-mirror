@@ -17,8 +17,8 @@
 */
 #ifndef CONDUCTOR_H
 #define CONDUCTOR_H
-#include "../autoNum/assignvariables.h"
-#include "../conductorproperties.h"
+#include <autoNum/assignvariables.h>
+#include <conductorproperties.h>
 
 #include <QGraphicsPathItem>
 #include <QSet>

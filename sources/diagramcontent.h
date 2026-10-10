@@ -21,7 +21,7 @@
 #include <QSet>
 #include <QVector>
 
-#include "../qetgraphicsitem/terminalelement.h"
+#include <qetgraphicsitem/terminalelement.h>
 
 class QGraphicsItem;
 class Conductor;

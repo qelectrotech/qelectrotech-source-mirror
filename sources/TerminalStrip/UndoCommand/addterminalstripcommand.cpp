@@ -16,10 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "addterminalstripcommand.h"
-#include "../../qetproject.h"
-#include "../terminalstrip.h"
-#include "../qetgraphicsitem/element.h"
-#include "../realterminal.h"
+#include <qetproject.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <qetgraphicsitem/element.h>
+#include <TerminalStrip/realterminal.h>
 
 #include <QObject>
 

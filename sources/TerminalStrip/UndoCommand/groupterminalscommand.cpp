@@ -16,8 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "groupterminalscommand.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
 
 /**
  * @brief GroupTerminalsCommand::GroupTerminalsCommand

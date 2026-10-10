@@ -18,7 +18,7 @@
 #ifndef DYNAMICELEMENTTEXTITEM_H
 #define DYNAMICELEMENTTEXTITEM_H
 
-#include "../properties/xrefproperties.h"
+#include <properties/xrefproperties.h>
 #include "diagramtextitem.h"
 #include "element.h"
 

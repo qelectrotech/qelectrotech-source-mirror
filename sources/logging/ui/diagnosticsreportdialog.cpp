@@ -17,8 +17,8 @@
 */
 #include "diagnosticsreportdialog.h"
 
-#include "../../qet.h"
-#include "../../qetmessagebox.h"
+#include <qet.h>
+#include <qetmessagebox.h>
 
 #include <QDialogButtonBox>
 #include <QFile>

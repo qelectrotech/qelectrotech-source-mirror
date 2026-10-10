@@ -17,8 +17,8 @@
 */
 #include "shortcutsconfigpage.h"
 
-#include "../../qeticons.h"
-#include "../../shortcutmanager.h"
+#include <qeticons.h>
+#include <shortcutmanager.h>
 
 #include <QAction>
 #include <QApplication>

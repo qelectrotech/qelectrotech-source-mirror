@@ -17,7 +17,7 @@
 */
 #include "xrefproperties.h"
 
-#include "../qetapp.h"
+#include <qetapp.h>
 
 #include <QHash>
 #include <QMetaEnum>

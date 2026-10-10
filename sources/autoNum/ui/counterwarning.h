@@ -18,7 +18,7 @@
 #ifndef COUNTERWARNING_H
 #define COUNTERWARNING_H
 
-#include "../numerotationcontext.h"
+#include <autoNum/numerotationcontext.h>
 
 #include <QCoreApplication>
 

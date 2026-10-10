@@ -17,9 +17,9 @@
 */
 #include "templatelogomanager.h"
 
-#include "../qetapp.h"
-#include "../qeticons.h"
-#include "../titleblocktemplate.h"
+#include <qetapp.h>
+#include <qeticons.h>
+#include <titleblocktemplate.h>
 
 /**
 	Constructor

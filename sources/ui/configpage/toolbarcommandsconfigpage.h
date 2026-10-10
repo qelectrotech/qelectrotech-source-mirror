@@ -19,7 +19,7 @@
 #define TOOLBARCOMMANDSCONFIGPAGE_H
 
 #include "configpage.h"
-#include "../../diagramtoolbarsettings.h"
+#include <diagramtoolbarsettings.h>
 
 #include <QHash>
 

@@ -17,25 +17,25 @@
 */
 #include "propertieseditorfactory.h"
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
-#include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
-#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
-#include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
-#include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/conductortextitem.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
-#include "../ui/dynamicelementtextitemeditor.h"
-#include "../ui/elementpropertieswidget.h"
-#include "../ui/conductorpropertieseditorwidget.h"
-#include "../ui/imagepropertieswidget.h"
-#include "../ui/inditextpropertieswidget.h"
-#include "../ui/shapegraphicsitempropertieswidget.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
+#include <qetgraphicsitem/ViewItem/projectdbmodel.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
+#include <qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h>
+#include <qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/conductortextitem.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qetgraphicsitem/qetshapeitem.h>
+#include <ui/dynamicelementtextitemeditor.h>
+#include <ui/elementpropertieswidget.h>
+#include <ui/conductorpropertieseditorwidget.h>
+#include <ui/imagepropertieswidget.h>
+#include <ui/inditextpropertieswidget.h>
+#include <ui/shapegraphicsitempropertieswidget.h>
 
 #include <QGraphicsItem>
 #include <QSet>

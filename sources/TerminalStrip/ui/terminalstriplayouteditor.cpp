@@ -19,7 +19,7 @@
 
 #include "terminalstriplayouteditor.h"
 #include "ui_terminalstriplayouteditor.h"
-#include "../GraphicsItem/properties/terminalstriplayoutpattern.h"
+#include <TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.h>
 
 TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStripLayoutPattern> layout,
 													 QWidget *parent) :

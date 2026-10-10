@@ -313,38 +313,7 @@ target_link_libraries(
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
-    ${QET_DIR}/sources/titleblock
-    ${QET_DIR}/sources/ui
-    ${QET_DIR}/sources/qetgraphicsitem
-    ${QET_DIR}/sources/qetgraphicsitem/ViewItem
-    ${QET_DIR}/sources/qetgraphicsitem/ViewItem/ui
-    ${QET_DIR}/sources/richtext
-    ${QET_DIR}/sources/factory
-    ${QET_DIR}/sources/properties
-    ${QET_DIR}/sources/dvevent
-    ${QET_DIR}/sources/editor
-    ${QET_DIR}/sources/editor/esevent
-    ${QET_DIR}/sources/editor/graphicspart
-    ${QET_DIR}/sources/editor/ui
-    ${QET_DIR}/sources/editor/UndoCommand
-    ${QET_DIR}/sources/undocommand
-    ${QET_DIR}/sources/diagramevent
-    ${QET_DIR}/sources/ElementsCollection
-    ${QET_DIR}/sources/ElementsCollection/ui
-    ${QET_DIR}/sources/autoNum
-    ${QET_DIR}/sources/autoNum/ui
-    ${QET_DIR}/sources/ui/configpage
-    ${QET_DIR}/sources/SearchAndReplace
-    ${QET_DIR}/sources/SearchAndReplace/ui
-    ${QET_DIR}/sources/NameList
-    ${QET_DIR}/sources/NameList/ui
-    ${QET_DIR}/sources/utils
-    ${QET_DIR}/sources/dataBase
-    ${QET_DIR}/sources/dataBase/ui
-    ${QET_DIR}/sources/factory/ui
-    ${QET_DIR}/sources/print
-    ${QET_DIR}/sources/svg
-    ${QET_DIR}/sources/materiallist
+    ${QET_DIR}/sources
 )
 
 if(NOT BUILD_WITH_KF)

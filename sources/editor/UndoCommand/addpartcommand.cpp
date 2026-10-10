@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "addpartcommand.h"
-#include "../elementscene.h"
+#include <editor/elementscene.h>
 
 /**
  * @brief AddPartCommand::AddPartCommand

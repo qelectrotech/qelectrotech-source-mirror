@@ -17,9 +17,9 @@
 */
 #include "renumberpreviewdialog.h"
 
-#include "../../diagram.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../qetinformation.h"
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
+#include <qetinformation.h>
 
 #include <QBrush>
 #include <QDialog>

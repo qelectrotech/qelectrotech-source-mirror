@@ -17,11 +17,11 @@
 */
 #include "conductorpropertieseditorwidget.h"
 
-#include "../conductormultiedit.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/conductor.h"
+#include <conductormultiedit.h>
+#include <diagram.h>
+#include <qetgraphicsitem/conductor.h>
 #include "conductorpropertieswidget.h"
-#include "../qtextorientationspinboxwidget.h"
+#include <qtextorientationspinboxwidget.h>
 
 #ifdef BUILD_WITHOUT_KF
 #	include "nokde/kcolorbutton.h"

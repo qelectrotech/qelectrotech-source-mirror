@@ -18,7 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_TEMPLATES_COLLECTION_H
 #define TITLEBLOCK_SLASH_TEMPLATES_COLLECTION_H
 #define TITLEBLOCKS_FILE_EXTENSION ".titleblock"
-#include "../qet.h"
+#include <qet.h>
 #include "templatelocation.h"
 
 #include <QtCore>

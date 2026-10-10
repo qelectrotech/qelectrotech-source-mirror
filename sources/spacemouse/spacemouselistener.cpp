@@ -29,12 +29,12 @@
 #	include "connexionbackend.h"
 #endif
 
-#include "../diagramview.h"
-#include "../editor/elementview.h"
-#include "../editor/ui/qetelementeditor.h"
-#include "../projectview.h"
-#include "../qetdiagrameditor.h"
-#include "../shortcutmanager.h"
+#include <diagramview.h>
+#include <editor/elementview.h>
+#include <editor/ui/qetelementeditor.h>
+#include <projectview.h>
+#include <qetdiagrameditor.h>
+#include <shortcutmanager.h>
 
 #include <QApplication>
 #include <QScrollBar>

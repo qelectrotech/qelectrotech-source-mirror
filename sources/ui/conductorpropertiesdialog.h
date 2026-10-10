@@ -19,7 +19,7 @@
 #ifndef CONDUCTORPROPERTIESDIALOG_H
 #define CONDUCTORPROPERTIESDIALOG_H
 
-#include "../conductorproperties.h"
+#include <conductorproperties.h>
 
 #include <QDialog>
 

@@ -17,17 +17,17 @@
 */
 #include "qettemplateeditor.h"
 
-#include "../qetapp.h"
-#include "../qeticons.h"
-#include "../shortcutmanager.h"
-#include "../qetmessagebox.h"
-#include "../qetproject.h"
+#include <qetapp.h>
+#include <qeticons.h>
+#include <shortcutmanager.h>
+#include <qetmessagebox.h>
+#include <qetproject.h>
 #include "templatecellwidget.h"
 #include "templatecommands.h"
 #include "templatelocationsaver.h"
 #include "templatelogomanager.h"
 #include "templateview.h"
-#include "../toolbarsettings.h"
+#include <toolbarsettings.h>
 
 /**
 	@param parent parent QWidget of this window

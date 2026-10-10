@@ -17,15 +17,15 @@
 */
 #include "elementscollectionwidget.h"
 
-#include "../editor/ui/qetelementeditor.h"
-#include "../elementscategoryeditor.h"
-#include "../import/edz/edzimporter.h"
-#include "../newelementwizard.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qeticons.h"
-#include "../qetmessagebox.h"
-#include "../qetproject.h"
+#include <editor/ui/qetelementeditor.h>
+#include <elementscategoryeditor.h>
+#include <import/edz/edzimporter.h>
+#include <newelementwizard.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qeticons.h>
+#include <qetmessagebox.h>
+#include <qetproject.h>
 #include "elementcollectionitem.h"
 #include "elementpreviewdelegate.h"
 #include "elementscollectionmodel.h"

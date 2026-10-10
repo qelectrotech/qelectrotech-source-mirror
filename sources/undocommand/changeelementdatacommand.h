@@ -18,7 +18,7 @@
 #ifndef CHANGEELEMENTDATACOMMAND_H
 #define CHANGEELEMENTDATACOMMAND_H
 
-#include <../properties/elementdata.h>
+#include <properties/elementdata.h>
 #include <QUndoCommand>
 
 class Element;

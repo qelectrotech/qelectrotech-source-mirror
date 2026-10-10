@@ -18,13 +18,13 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "../ElementsCollection/elementslocation.h"
-#include "../NameList/nameslist.h"
-#include "../autoNum/assignvariables.h"
-#include "../diagramcontext.h"
-#include "../qet.h"
+#include <ElementsCollection/elementslocation.h>
+#include <NameList/nameslist.h>
+#include <autoNum/assignvariables.h>
+#include <diagramcontext.h>
+#include <qet.h>
 #include "qetgraphicsitem.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <QHash>
 #include <QPicture>

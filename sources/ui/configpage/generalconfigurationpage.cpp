@@ -16,23 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
-#include "../../scripting/liveserver.h"
-#include "../../scripting/assistantinfo.h"
+#include <scripting/liveserver.h>
+#include <scripting/assistantinfo.h>
 
-#include "../../qetapp.h"
-#include "../../qeticons.h"
+#include <qetapp.h>
+#include <qeticons.h>
 #include "ui_generalconfigurationpage.h"
-#include "../../materiallist/materiallist.h"
-#include "../../utils/qetsettings.h"
-#include "../../utils/qetutils.h"
-#include "../../qetmessagebox.h"
-#include "../../textgrid.h"
-#include "../../wiringrules.h"
-#include "../wiringruleswarning.h"
-#include "../../editor/terminalnamecheck.h"
-#include "../../ElementsCollection/qetlabelsfile.h"
-#include "../prefixconfigurationdialog.h"
-#include "../nokde/kcolorbutton.h"
+#include <materiallist/materiallist.h>
+#include <utils/qetsettings.h>
+#include <utils/qetutils.h>
+#include <qetmessagebox.h>
+#include <textgrid.h>
+#include <wiringrules.h>
+#include <ui/wiringruleswarning.h>
+#include <editor/terminalnamecheck.h>
+#include <ElementsCollection/qetlabelsfile.h>
+#include <ui/prefixconfigurationdialog.h>
+#include <ui/nokde/kcolorbutton.h>
 #include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>

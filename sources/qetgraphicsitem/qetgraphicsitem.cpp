@@ -17,7 +17,7 @@
 */
 #include "qetgraphicsitem.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 /**
 	@brief QetGraphicsItem::QetGraphicsItem

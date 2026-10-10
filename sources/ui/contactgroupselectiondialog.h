@@ -22,7 +22,7 @@
 #include <QVector>
 #include <QSet>
 
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 class QTableWidget;
 class QTableWidgetItem;

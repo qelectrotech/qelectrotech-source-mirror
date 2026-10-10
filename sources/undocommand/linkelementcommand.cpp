@@ -17,19 +17,19 @@
 */
 #include "linkelementcommand.h"
 
-#include "../conductorautonumerotation.h"
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetproject.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/terminal.h"
-#include "../ui/potentialselectordialog.h"
-#include "../qetinformation.h"
-#include "../properties/elementdata.h"
-#include "../properties/xrefproperties.h"
-#include "../autoNum/assignvariables.h"
-#include "../autoNum/numerotationcontextcommands.h"
+#include <conductorautonumerotation.h>
+#include <diagram.h>
+#include <diagramposition.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/terminal.h>
+#include <ui/potentialselectordialog.h>
+#include <qetinformation.h>
+#include <properties/elementdata.h>
+#include <properties/xrefproperties.h>
+#include <autoNum/assignvariables.h>
+#include <autoNum/numerotationcontextcommands.h>
 
 #include <algorithm>
 #include <QCollator>

@@ -17,7 +17,7 @@
 */
 #include "numerotationcontext.h"
 
-#include "../qet.h"
+#include <qet.h>
 
 #include <QRegularExpression>
 #include <utility>

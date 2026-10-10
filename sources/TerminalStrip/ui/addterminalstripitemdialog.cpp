@@ -17,13 +17,13 @@
 */
 #include "addterminalstripitemdialog.h"
 #include "ui_addterminalstripitemdialog.h"
-#include "../../qetproject.h"
-#include "../../undocommand/addgraphicsobjectcommand.h"
-#include "../terminalstrip.h"
-#include "../GraphicsItem/terminalstripitem.h"
-#include "../../diagram.h"
+#include <qetproject.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/GraphicsItem/terminalstripitem.h>
+#include <diagram.h>
 
-#include "../../qet.h"
+#include <qet.h>
 void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 {
 	AddTerminalStripItemDialog d(diagram->project(), parent);

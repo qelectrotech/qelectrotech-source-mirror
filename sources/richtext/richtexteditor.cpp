@@ -47,8 +47,8 @@
 
 #include "richtexteditor_p.h"
 #include "ui_addlinkdialog.h"
-#include "../shortcutmanager.h"
-#include "../qet.h"
+#include <shortcutmanager.h>
+#include <qet.h>
 
 //#include <QtDesigner/QDesignerFormEditorInterface>
 

@@ -17,12 +17,12 @@
 */
 #include "elementslocation.h"
 
-#include "../elementscollectioncache.h"
-#include "../factory/elementpicturefactory.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetproject.h"
-#include "../qetxml.h"
+#include <elementscollectioncache.h>
+#include <factory/elementpicturefactory.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/element.h>
+#include <qetproject.h>
+#include <qetxml.h>
 #include "xmlelementcollection.h"
 
 #include <QPicture>
