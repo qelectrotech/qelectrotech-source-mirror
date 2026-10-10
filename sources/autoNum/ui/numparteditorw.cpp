@@ -105,16 +105,6 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 		if (strl.at(0)=="wrap" && strl.size() > 4)
 			ui -> modulus_spinBox -> setValue(strl.at(4).toInt());
 		ui -> format_le -> setText(NumerotationContext::formatOf(strl));
-			//A counter bound to the folio keeps the start it was
-			//configured with: value_field shows the live counter, and
-			//writing that back as the start would make every folio
-			//begin at the last number the previous numbering gave out
-		if ((strl.at(0)==QLatin1String("unitfolio")
-			 || strl.at(0)==QLatin1String("tenfolio")
-			 || strl.at(0)==QLatin1String("hundredfolio"))
-			 && strl.size() > 3 && !strl.at(3).isEmpty()) {
-			m_initial_value = strl.at(3).toInt();
-		}
 	}
 }
 
@@ -141,12 +131,8 @@ void NumPartEditorW::setVisibleItems()
 			<< tr("Alphabetical")
 			<< tr("Text");
 	}
-	else if (m_edited_type == 1 || m_edited_type == 3)
+	else if (m_edited_type == 1)
 	{
-			//Type 3 is a cable: it is drawn along a folio just like a
-			//conductor is, so it takes the same kinds of variable and
-			//none of the ones an element has and a cable has not (its
-			//line, its column, its prefix).
 		items	<< tr("number format 1")
 			<< tr("number format 1 - Sheet")
 			<< tr("number format 01")
@@ -246,8 +232,7 @@ NumerotationContext NumPartEditorW::toNumContext()
 		nc.addValue(type_str,
 			    ui -> value_field -> displayText(),
 			    ui -> increase_spinBox -> value(),
-			    m_initial_value >= 0 ? m_initial_value
-					 : ui->value_field->displayText().toInt(),
+			    ui->value_field->displayText().toInt(),
 			    0,
 			    number_format);
 	else if (type_str == "wrap")
@@ -330,10 +315,6 @@ void NumPartEditorW::on_type_cb_activated(int) {
 */
 void NumPartEditorW::on_value_field_textEdited()
 {
-		//What the user types in is a deliberate start for a counter
-		//bound to the folio; merely showing the live counter (as
-		//setContext() does) never changes the start.
-	m_initial_value = ui -> value_field -> text().toInt();
 	emit changed();
 }
 

@@ -37,33 +37,14 @@ QList<ElementAutoNumSchemeCommand::Scheme> PasteNumberingImport::copiedBy(const 
 	elements follow and the project does not have.
 	@param parent : parent of the question
 	@param copied : the numberings the copy carries
-	@param extra : commands the copy brings beside the paste itself
-	(the cable lines of a fragment, for example); they are pushed inside
-	the same macro, so one Ctrl+Z undoes all of it at once.
 */
 void PasteNumberingImport::push(QWidget *parent,
 								Diagram *diagram,
 								const DiagramContent &content,
-								const QList<ElementAutoNumSchemeCommand::Scheme> &copied,
-								const QList<QUndoCommand *> &extra)
+								const QList<ElementAutoNumSchemeCommand::Scheme> &copied)
 {
 	QETProject *project = diagram->project();
 	auto *paste = new PasteDiagramCommand(diagram, content);
-
-		//The paste and the commands beside it are one step: only the
-		//macros really need more than the single push.
-	const auto push_all = [&]() {
-		if (extra.isEmpty()) {
-			diagram->undoStack().push(paste);
-			return;
-		}
-		diagram->undoStack().beginMacro(paste->text());
-		diagram->undoStack().push(paste);
-		for (QUndoCommand *cmd : extra) {
-			diagram->undoStack().push(cmd);
-		}
-		diagram->undoStack().endMacro();
-	};
 
 	QList<ElementAutoNumSchemeCommand::Scheme> missing;
 	if (project && !copied.isEmpty()
@@ -71,7 +52,7 @@ void PasteNumberingImport::push(QWidget *parent,
 		missing = ElementAutoNumSchemeCommand::missingForPaste(project, copied, content.m_elements);
 	}
 	if (missing.isEmpty()) {
-		push_all();
+		diagram->undoStack().push(paste);
 		return;
 	}
 
@@ -90,7 +71,7 @@ void PasteNumberingImport::push(QWidget *parent,
 				QMessageBox::Yes | QMessageBox::No,
 				QMessageBox::Yes);
 	if (answer != QMessageBox::Yes) {
-		push_all();
+		diagram->undoStack().push(paste);
 		return;
 	}
 
@@ -110,8 +91,5 @@ void PasteNumberingImport::push(QWidget *parent,
 		}
 	}
 	diagram->undoStack().push(paste);
-	for (QUndoCommand *cmd : extra) {
-		diagram->undoStack().push(cmd);
-	}
 	diagram->undoStack().endMacro();
 }

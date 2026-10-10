@@ -138,9 +138,6 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 
 	updatePartButtons();
 	applyEnable(false);
-		//Everything the rule held before is read now, so nothing of it
-		//is left to write: what is on show is what there is.
-	m_dirty = false;
 }
 
 /**
@@ -150,11 +147,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 */
 void SelectAutonumW::insertPartRow(NumPartEditorW *part)
 {
-	connect(part, &NumPartEditorW::changed, this, [this]() {
-		m_dirty = true;
-		applyEnable();
-		emit contextEdited();
-	});
+	connect(part, &NumPartEditorW::changed, this, [this]() { applyEnable(); });
 
 	PartRow r;
 	r.part = part;
@@ -270,10 +263,7 @@ NumerotationContext SelectAutonumW::toNumContext() const
 void SelectAutonumW::on_add_button_clicked()
 {
 	insertPartRow(new NumPartEditorW(m_edited_type, this));
-	m_dirty = true;
-	ui -> remove_button -> setEnabled(true);
 	applyEnable();
-	emit contextEdited();
 }
 
 /**
@@ -282,16 +272,9 @@ void SelectAutonumW::on_add_button_clicked()
 */
 void SelectAutonumW::on_remove_button_clicked()
 {
-	//remove if @num_part_list contains more than one item
-	if (num_part_list_.size() > 1) {
-		m_dirty = true;
+	if (!m_rows.isEmpty()) {
 		removePartRow(m_rows.last().row);
-		if (num_part_list_.size() == 1) {
-			ui -> remove_button -> setDisabled(true);
-		}
 	}
-	applyEnable();
-	emit contextEdited();
 }
 
 /**
@@ -311,78 +294,6 @@ QString SelectAutonumW::formula()
 QComboBox *SelectAutonumW::contextComboBox() const
 {
 	return ui->m_comboBox;
-}
-
-/**
-	@brief SelectAutonumW::setSingleRuleMode
-	@param single true to show this editor as the one and only rule of
-	its kind.
-
-	The row which lists the available numberings -- its label, its combo
-	box and the button which deletes one -- is hidden, so there is
-	nothing to name a rule with and nothing to choose between: the rule
-	being edited is all there is. The combo box itself stays where it is
-	and keeps holding the rule's name, so everything which reads or
-	writes the rule through contextComboBox() carries on untouched; he
-	just cannot see it.
-*/
-void SelectAutonumW::setSingleRuleMode(bool single)
-{
-	m_single_rule = single;
-	ui->label->setVisible(!single);
-	ui->m_comboBox->setVisible(!single);
-	ui->m_remove_pb->setVisible(!single);
-
-		//A single rule has no list to be deleted from, so it needs a
-		//button of its own to get out of the numbering again. It is
-		//only shown when there is really a rule to take away -- see
-		//setRuleRemovable.
-	if (single && !m_rule_remove_pb) {
-		m_rule_remove_pb = new QPushButton(tr("Delete the rule"), this);
-		m_rule_remove_pb->setToolTip(tr(
-			"Delete the cable numbering rule: cables are "
-			"numbered again as before, and the question of "
-			"defining one comes back on the next drawing."));
-		m_rule_remove_pb->setObjectName(QStringLiteral("m_rule_remove_pb"));
-		if (ui->m_definition_groupe && ui->m_definition_groupe->layout()) {
-			ui->m_definition_groupe->layout()->addWidget(m_rule_remove_pb);
-		}
-		connect(m_rule_remove_pb, &QPushButton::clicked,
-				this, &SelectAutonumW::removeClicked);
-	}
-	if (m_rule_remove_pb) {
-		m_rule_remove_pb->setVisible(m_single_rule && m_rule_removable);
-	}
-}
-
-/**
-	@brief SelectAutonumW::setRuleRemovable
-	Whether the button which takes the whole rule away is worth showing:
-	it has nothing to do while this editor holds no rule at all, and it
-	would only be a button which does nothing.
-	@param can_remove true when a rule is there to be taken away
-*/
-void SelectAutonumW::setRuleRemovable(bool can_remove)
-{
-	m_rule_removable = can_remove;
-	if (m_rule_remove_pb) {
-		m_rule_remove_pb->setVisible(m_single_rule && can_remove);
-	}
-}
-
-/**
-	@brief SelectAutonumW::isValid
-	@return true when there is at least one variable in the editor and
-	every one of them holds what it needs. An editor which has only just
-	been opened holds an empty rule, and an empty rule is not one.
-*/
-bool SelectAutonumW::isValid()
-{
-	if (num_part_list_.isEmpty()) return false;
-	for (NumPartEditorW *npe : num_part_list_) {
-		if (!npe || !npe->isValid()) return false;
-	}
-	return true;
 }
 
 /**
@@ -453,32 +364,6 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 							   ));
 				break;
 			}
-			else if (m_edited_type == 3)
-			{
-				QMessageBox::information (
-							this,
-							tr("Cable Auto Numbering",
-							   "title window"),
-							tr("This is where you can define how new cables will be numbered.\n"
-							   "-A numbering is composed of a minimum variable.\n"
-							   "-You can add or delete a dialing variable through the - and + buttons.\n"
-							   "-A numbering variable includes: a type, a value and an increment.\n"
-
-							   "\n-the \"Digit 1\", \"Digit 01\" and \"Digit 001\" types represent a numeric type defined in the \"Value\" field, "
-							   "which is incremented to each new cable by the value of the \"Increment\" field.\n"
-							   "-\"Digit 01\" and \"Digit 001\", are respectively represented on the diagram by two and three digits minimum.\n"
-							   "If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in "
-							   "order to respect its type.\n"
-
-							   "\n-Type \"Text\", represents a fixed text.\nThe \"Increment\" field is not used.\n"
-
-							   "\n-The \"Sheet no.\" type represents the number of the current sheet.\nThe other fields are not used.\n"
-
-							   "\n-The \"Sheet\" type represents the name of the current sheet.\nThe other fields are not used.",
-							   "help dialog about the cable autonumerotation"
-							   ));
-				break;
-			}
 			else
 			{
 				QMessageBox::information (
@@ -512,9 +397,6 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 		case QDialogButtonBox::ApplyRole:
 			applyEnable(false);
 			emit applyPressed();
-				//Whatever was edited is written now, so there is
-				//nothing of it left for a later save to write again.
-			m_dirty = false;
 			break;
 	};
 }

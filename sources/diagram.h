@@ -33,7 +33,6 @@
 #include <QtXml>
 
 class Conductor;
-class CablePart;
 class CustomElement;
 class DiagramContent;
 class DiagramPosition;
@@ -204,21 +203,14 @@ class Diagram : public QGraphicsScene
 				 QPointF = QPointF(),
 				 bool = true,
 				 DiagramContent * = nullptr);
-			//The last argument is only for a copy fragment: when it is
-			//given, the cable lines that fragment carries are built as
-			//well and handed back through it -- they are not part of a
-			//DiagramContent, so the caller has to know about them to
-			//put them on the undo stack (see CableCopy)
 		bool fromXml(QDomDocument &,
 			     QPointF = QPointF(),
 			     bool = true,
-			     DiagramContent * = nullptr,
-			     QList<CablePart *> * = nullptr);
+			     DiagramContent * = nullptr);
 		bool fromXml(QDomElement &,
 			     QPointF = QPointF(),
 			     bool = true,
-			     DiagramContent * = nullptr,
-			     QList<CablePart *> * = nullptr);
+			     DiagramContent * = nullptr);
 		void folioSequentialsToXml(QHash<QString,
 					   QStringList>*,
 					   QDomElement *,
@@ -239,7 +231,6 @@ class Diagram : public QGraphicsScene
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 		bool eventInterfaceIsRunning() const;
-		bool cableToolIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);

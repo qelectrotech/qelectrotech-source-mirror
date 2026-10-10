@@ -17,8 +17,6 @@
 */
 #include "qetgraphicstablefactory.h"
 
-#include "../cablelist/cablelistmodel.h"
-#include "../cablelist/cablequerywidget.h"
 #include "../dataBase/ui/elementquerywidget.h"
 #include "../dataBase/ui/summaryquerywidget.h"
 #include "../diagram.h"
@@ -67,26 +65,6 @@ void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 					new SummaryQueryWidget(),
 					diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Add a summary"));
-
-	if (d->exec()) {
-		create(diagram, d.data());
-	}
-}
-
-/**
-	@brief QetGraphicsTableFactory::createAndAddCableList
-	Open a dialog for ask user the config of the table,
-	create a cable list table and add it to diagram
-	@param diagram
-*/
-void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
-{
-	QScopedPointer<AddTableDialog> d(
-				new AddTableDialog(
-					new CableQueryWidget(),
-					diagram->views().first()));
-	d->setWindowTitle(QObject::tr("Add a cable list"));
-	d->setTableName(QObject::tr("Cable list"));
 
 	if (d->exec()) {
 		create(diagram, d.data());
@@ -146,33 +124,20 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 
 	if (!previous_table)
 	{
-		QAbstractTableModel *model = nullptr;
+		QString identifier_;
+		QString query_;
 
 		if (auto query_widget = dynamic_cast<ElementQueryWidget *>(dialog->contentWidget())) {
-			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
-			db_model->setIdentifier(query_widget->modelIdentifier());
-			db_model->setQuery(query_widget->queryStr());
-			model = db_model;
+			identifier_ = query_widget->modelIdentifier();
+			query_ = query_widget->queryStr();
 		} else if (auto query_widget = dynamic_cast<SummaryQueryWidget *>(dialog->contentWidget())) {
-			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
-			db_model->setIdentifier(query_widget->modelIdentifier());
-			db_model->setQuery(query_widget->queryStr());
-			model = db_model;
-		} else if (auto query_widget = dynamic_cast<CableQueryWidget *>(dialog->contentWidget())) {
-			auto *cable_model = new CableListModel(diagram->project(), diagram->project());
-			cable_model->setIdentifier(CableQueryWidget::modelIdentifier());
-				//No entries chosen is no mistake to correct: an empty
-				//set of columns makes an empty table, the same grey
-				//frame a nomenclature table makes without entries
-			cable_model->setFields(query_widget->selectedKeys());
-			model = cable_model;
-		} else {
-				//A content widget this factory does not know leaves an
-				//empty database model behind, which is what it has
-				//always done
-			model = new ProjectDBModel(diagram->project(), diagram->project());
+			identifier_ = query_widget->modelIdentifier();
+			query_ = query_widget->queryStr();
 		}
 
+		auto model = new ProjectDBModel(diagram->project(), diagram->project());
+		model->setIdentifier(identifier_);
+		model->setQuery(query_);
 		model->setData(model->index(0,0), int(dialog->tableAlignment()), Qt::TextAlignmentRole);
 		model->setData(model->index(0,0), dialog->tableFont(), Qt::FontRole);
 		model->setData(model->index(0,0), QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);

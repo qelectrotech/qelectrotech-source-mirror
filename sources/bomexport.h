@@ -30,11 +30,6 @@ namespace BomExport
 	QString defaultQuery(bool include_slaves = true,
 						 bool include_junctions = true);
 	QString junctionFilter();
-		/// One CSV record: every field quoted, ';' between them, '\n'
-		/// after -- the format every CSV export of this program writes.
-		/// Public so a list which is not read from the project database
-		/// (the cable list) writes the same bytes.
-	QByteArray csvRecord(const QStringList &values);
 	QByteArray toCsv(QSqlQuery &query, const QStringList &headers,
 					 bool include_headers = true, int *row_count = nullptr);
 	bool writeCsv(const QString &file_path, const QByteArray &csv,

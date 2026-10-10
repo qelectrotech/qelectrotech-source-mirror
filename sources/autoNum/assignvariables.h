@@ -117,31 +117,6 @@ namespace autonum
 	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName);
 	void setSequential(const QString& label, autonum::sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey);
 	QString numerotationContextToFormula(const NumerotationContext &nc);
-	/**
-		Put back every part of a numbering rule whose counter belongs to
-		one single folio -- "Chiffre 1 - Folio" and its two longer forms
-		-- to the beginning that folio is numbered from, which is the
-		initial value written into the rule itself. The parts which count
-		over the whole project are left exactly as they are: a folio
-		starts again, the project does not.
-		@param nc the rule to read
-		@return the same rule, with its folio-bound counters restarted
-	*/
-	NumerotationContext resetFolioCounters(const NumerotationContext &nc);
-	/**
-		Set every part of a numbering rule which counts back to its very
-		first value, so that numbering starts at the beginning again --
-		which is what numbering a whole project over has to do, whatever
-		the last number handed out happened to be. A part which counts
-		from an initial value of its own goes back to that value, a plain
-		number goes back to 1, a cyclic one to 0 and an alphabetic one to
-		"a". The parts which do not count -- a fixed text, the number of
-		the folio, the plant -- are left exactly as they are: they say
-		what a number is made of, they are not the part which goes on.
-		@param nc the rule to read
-		@return the same rule, with its counters at their beginning
-	*/
-	NumerotationContext resetContextCounters(const NumerotationContext &nc);
 	QString elementPrefixForLocation(const ElementsLocation &location);
 }
 
