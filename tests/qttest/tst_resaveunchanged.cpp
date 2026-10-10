@@ -160,6 +160,73 @@ private slots:
 		QVERIFY2(sb < sa, "the coil's contacts were saved in another order than the file's");
 	}
 
+	// A table split over several folios whose part names a previous part
+	// that is not in the file: opening and closing it crashed (the part
+	// has no data of its own and handed its missing data on when it was
+	// destroyed). industrial.qet's third <previous_table> is changed.
+	void missingPreviousTableOpens()
+	{
+		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		int at = -1;
+		for (int n = 0 ; n < 3 ; ++n) {
+			at = xml.indexOf("<previous_table uuid=\"", at + 1);
+			QVERIFY(at > 0);
+		}
+		at += int(qstrlen("<previous_table uuid=\""));
+		xml.replace(at, 38, "{00000000-0000-4000-8000-000000000000}");
+		const QString in = m_dir.filePath(QStringLiteral("missing_previous.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(xml);
+		f.close();
+		QVERIFY2(!resave(in).isEmpty(), "--resave failed: QElectroTech crashed closing the project");
+	}
+
+	// Deleting the folio that holds a middle part of a split table, then
+	// saving: every <previous_table> in the file names a table that is in
+	// it. It used to name the deleted part, so every part after it opened
+	// with no data. industrial.qet's folio 46 (index 45) holds such a part.
+	void deletedFolioKeepsTableChain()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString out = m_dir.filePath(QStringLiteral("deleted_folio.qet"));
+		const QString script = m_dir.filePath(QStringLiteral("deleted_folio.js"));
+		QFile js(script);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral("qet.log('REMOVED ' + qet.removeFolio(45));\n"
+								"qet.log('SAVED ' + qet.save('%1'));\n").arg(out).toUtf8());
+		js.close();
+		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		env.insert(QStringLiteral("HOME"), home);
+		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
+		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+		QProcess proc;
+		proc.setProcessEnvironment(env);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), script, QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
+		QVERIFY(proc.waitForFinished(180000));
+		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("SAVED true")),
+				 qPrintable(log.right(400)));
+
+		const QString saved = QString::fromUtf8(read(out));
+		QSet<QString> tables;
+		for (const auto &m : QRegularExpression(QStringLiteral("<graphics_table [^>]*uuid=\"([^\"]+)\"")).globalMatch(saved))
+			tables.insert(m.captured(1));
+		int references = 0;
+		for (const auto &m : QRegularExpression(QStringLiteral("<previous_table uuid=\"([^\"]+)\"")).globalMatch(saved)) {
+			++references;
+			QVERIFY2(tables.contains(m.captured(1)),
+					 qPrintable(QStringLiteral("a table names %1, which is not in the file").arg(m.captured(1))));
+		}
+		QVERIFY(references > 0);
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()
