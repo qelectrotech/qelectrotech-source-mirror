@@ -95,20 +95,6 @@ void ProjectPropertiesDialog::changeToFolio()
 }
 
 /**
-	@brief ProjectPropertiesDialog::changeToCable
-	Change the current displayed tab to the cable numbering tab.
-	The caller is the cable tool, which opens this window when it finds
-	that the project numbers its cables by no rule at all.
-*/
-void ProjectPropertiesDialog::changeToCable()
-{
-	ProjectAutoNumConfigPage *autoNumPage =
-			static_cast <ProjectAutoNumConfigPage*>(
-				m_properties_dialog->pages.at(2));
-	autoNumPage->changeToCableTab();
-}
-
-/**
 	@brief ProjectPropertiesDialog::changeToElement
 	Change the current displayed tab to the element numberings tab.
 */

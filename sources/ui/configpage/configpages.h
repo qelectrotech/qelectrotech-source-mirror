@@ -82,16 +82,10 @@ public slots:
 		SelectAutonumW            *widget = nullptr;
 		QHash<QString, NumerotationContext> contexts;
 		QString                    prefix;
-			/// When set, this tab keeps one single rule, always saved
-			/// and read under this name: there is no visible combo box
-			/// to name a rule with (see SelectAutonumW::
-			/// setSingleRuleMode). The cable numbering works that way.
-		QString                    fixed_name;
 	};
 	AutoNumTab m_autonum_conductor;
 	AutoNumTab m_autonum_element;
 	AutoNumTab m_autonum_folio;
-	AutoNumTab m_autonum_cable;
 
 	void initAutoNumTab(AutoNumTab &tab, SelectAutonumW *w, const QString &prefix);
 	void loadAutoNumTab(AutoNumTab &tab, QSettings &settings);

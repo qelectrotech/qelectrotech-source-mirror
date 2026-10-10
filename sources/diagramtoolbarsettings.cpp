@@ -193,11 +193,6 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			QStringLiteral("diagrameditor.conductor_reset"),
 			QStringLiteral("diagrameditor.auto_conductor"),
 			QStringLiteral("diagrameditor.auto_break_conductor"),
-				//The cable tool is drawn across the conductors those two
-				//actions work on, so it sits with them rather than with
-				//the shapes of the "Ajouter" toolbar.
-			sep,
-			QStringLiteral("diagrameditor.add_cable"),
 			QStringLiteral("widget:conductor_color")};
 	}
 	if (name == QLatin1String("adding")) {

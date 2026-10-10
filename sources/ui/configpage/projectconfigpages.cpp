@@ -471,20 +471,9 @@ QIcon ProjectAutoNumConfigPage::icon() const
 
 /**
 	@brief ProjectAutoNumConfigPage::applyProjectConf
-	Save what this page has to save when the window is confirmed.
-	The cable rule is written from here as well as by its own Apply
-	button: the cable tool asks the project for that rule the moment
-	he tries to draw a cable, so filling it in and confirming this
-	window only to be asked once more would be a surprise. A rule he
-	has not finished filling in is left alone, and a page he has not
-	touched leaves the project exactly as it was.
 */
 void ProjectAutoNumConfigPage::applyProjectConf()
-{
-	if (m_saw_cable && m_saw_cable->isModified() && m_saw_cable->isValid()) {
-		saveContextCable();
-	}
-}
+{}
 
 namespace {
 /**
@@ -566,12 +555,6 @@ void ProjectAutoNumConfigPage::initWidgets()
 	m_saw_folio = new SelectAutonumW(2);
 	m_saw_folio->setExplicitNaming();
 	tab_widget->addTab(schemeTab(m_saw_folio, m_folio_users_box, m_folio_users), tr("Sheets"));
-
-		//Cable tab: one rule only, so the row which lists the available
-		//numberings stays hidden and there is nothing to choose between.
-	m_saw_cable = new SelectAutonumW(3);
-	m_saw_cable->setSingleRuleMode(true);
-	tab_widget->addTab(m_saw_cable, tr("Cables"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
@@ -606,7 +589,6 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 	m_saw_conductor->contextComboBox()->clear();
 	m_saw_element->contextComboBox()->clear();
 	m_saw_folio->contextComboBox()->clear();
-	m_saw_cable->contextComboBox()->clear();
 
 		//Conductor Tab
 	refreshSchemes(SchemeKind::Conductor, m_project->conductorCurrentAutoNum());
@@ -616,25 +598,6 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 	
 		//Folio Tab
 	refreshSchemes(SchemeKind::Folio, QString());
-
-		//Cable tab: the rule goes straight into the editor, since with the
-		//row of available numberings hidden he can never pick it out of
-		//the combo box himself. With no rule at all the editor shows an
-		//empty one to fill in, exactly like a numbering which has just
-		//been opened for the first time.
-	const QStringList strlk(m_project->cableAutoNum().keys());
-	m_saw_cable->contextComboBox()->addItems(strlk);
-	const QString cable_rule = m_project->cableCurrentAutoNum();
-	const bool cable_rule_ok = !cable_rule.isEmpty()
-			&& !m_project->cableAutoNum(cable_rule).isEmpty();
-	if (cable_rule_ok) {
-		m_saw_cable->setContext(m_project->cableAutoNum(cable_rule));
-	} else {
-		m_saw_cable->setContext(NumerotationContext());
-	}
-		//The button which takes the rule away is only worth showing when
-		//there is one, and only clickable when the project allows changes.
-	m_saw_cable->setRuleRemovable(cable_rule_ok && !m_project->isReadOnly());
 	
 		//Folio AutoNumbering Tab
 	m_faw->setContext(m_project->folioAutoNum().keys());
@@ -648,15 +611,6 @@ void ProjectAutoNumConfigPage::adjustReadOnly()
 {
 	if (m_import_pb && m_project) {
 		m_import_pb->setDisabled(m_project->isReadOnly());
-	}
-		//The button which takes the cable numbering rule away does the
-		//same thing as the import button: nothing while the project
-		//cannot be written.
-	if (m_saw_cable && m_project) {
-		const QString title = m_project->cableCurrentAutoNum();
-		m_saw_cable->setRuleRemovable(!m_project->isReadOnly()
-									  && !title.isEmpty()
-									  && !m_project->cableAutoNum(title).isEmpty());
 	}
 }
 
@@ -689,11 +643,6 @@ void ProjectAutoNumConfigPage::buildConnections()
 	connect(m_saw_folio, &SelectAutonumW::newClicked,    this, &ProjectAutoNumConfigPage::newContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::renameClicked, this, &ProjectAutoNumConfigPage::renameContextFolio);
 	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
-
-		//Cable tab: one rule, so there is no name to pick in the hidden
-		//combo box -- applying always writes the single rule.
-	connect(m_saw_cable, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextCable);
-	connect(m_saw_cable, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextCable);
 
 		//	Auto Folio Numbering
 	connect(m_faw, &FolioAutonumberingW::applyPressed, this, &ProjectAutoNumConfigPage::applyAutoNum);
@@ -1083,66 +1032,6 @@ void ProjectAutoNumConfigPage::saveContextElement()
 	if (pushElementSchemeCommand(cmd)) {
 		refreshElementSchemes(shown);
 	}
-}
-
-/**
-	@brief ProjectAutoNumConfigPage::saveContextCable
-	Save the cable numbering rule into the project.
-
-	There is one rule only, and it has no name the user could have typed
-	(the row which holds those names is hidden): it always goes in under
-	the fixed name, and it is the rule in use from the moment it exists.
-*/
-void ProjectAutoNumConfigPage::saveContextCable()
-{
-	if (!m_project || m_project->isReadOnly()) return;
-
-	const QString title = QETProject::cableAutoNumRuleName();
-	m_project->addCableAutoNum(title, m_saw_cable->toNumContext());
-	m_project->setCurrentCableAutoNum(title);
-
-		//Keep the hidden combo box in step with what the project holds,
-		//so the next reading of this page shows the rule just saved.
-	if (m_saw_cable->contextComboBox()->findText(title) == -1) {
-		m_saw_cable->contextComboBox()->addItem(title);
-	}
-	m_saw_cable->contextComboBox()->setCurrentText(title);
-		//There is a rule now, so there is something to take away again.
-	m_saw_cable->setRuleRemovable(true);
-		//This is applied straight away rather than at the end of the
-		//window, so the project has to say so itself: otherwise the rule
-		//would be dropped by a Cancel which comes after it.
-	m_project->setModified(true);
-}
-
-/**
-	@brief ProjectAutoNumConfigPage::removeContextCable
-	Take the cable numbering rule out of the project. The project then
-	numbers its cables by no rule at all -- they are called W until one
-	is defined again -- and the cable tool asks once more whether one
-	should be defined.
-*/
-void ProjectAutoNumConfigPage::removeContextCable()
-{
-	if (!m_project || m_project->isReadOnly()) return;
-
-	const QString title = m_project->cableCurrentAutoNum();
-	if (title.isEmpty()) return;
-
-	m_project->removeCableAutoNum(title);
-	const int idx = m_saw_cable->contextComboBox()->findText(title);
-	if (idx != -1) {
-		m_saw_cable->contextComboBox()->removeItem(idx);
-	}
-	m_saw_cable->contextComboBox()->setCurrentText(QString());
-	m_saw_cable->setContext(NumerotationContext());
-		//No rule left, so the button which takes one away goes too. And
-		//having just taken the rule away means numbering cables by hand
-		//again: the question of defining one comes back the next time a
-		//cable is drawn, so it is not held back in this project any more.
-	m_saw_cable->setRuleRemovable(false);
-	m_project->setCableAskNumbering(true);
-	m_project->setModified(true);
 }
 
 /**
@@ -1763,15 +1652,4 @@ void ProjectAutoNumConfigPage::changeToTab(int i)
 	if (m_tab_widget && i >= 0 && i < m_tab_widget->count()) {
 		m_tab_widget->setCurrentIndex(i);
 	}
-}
-
-/**
-	@brief ProjectAutoNumConfigPage::changeToCableTab
-	Show the cable tab -- the one the cable tool opens when it finds out
-	that the project has no numbering rule yet.
-*/
-void ProjectAutoNumConfigPage::changeToCableTab()
-{
-		//Tabs in order : Management, Conductors, Elements, Folios, Cables
-	changeToTab(4);
 }

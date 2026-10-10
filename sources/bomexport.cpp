@@ -29,15 +29,14 @@ QString csvField(QString value)
 	return QLatin1Char('"') + value + QLatin1Char('"');
 }
 
-}
-
-QByteArray BomExport::csvRecord(const QStringList &values)
+QByteArray csvRecord(const QStringList &values)
 {
 	QStringList escaped;
 	for (const auto &value : values) {
 		escaped.append(csvField(value));
 	}
 	return (escaped.join(QLatin1Char(';')) + QLatin1Char('\n')).toUtf8();
+}
 }
 
 QStringList BomExport::defaultColumns()

@@ -23,7 +23,6 @@
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../materiallist/materiallist.h"
-#include "../../cablelist/cabletypelist.h"
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
@@ -34,42 +33,12 @@
 #include "../../ElementsCollection/qetlabelsfile.h"
 #include "../prefixconfigurationdialog.h"
 #include "../nokde/kcolorbutton.h"
-#include <QCoreApplication>
 #include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
-
-#include "../../diagram.h"
-#include "../../qetproject.h"
-
-namespace {
-	/**
-		@brief What one of those font buttons says: the family, the size
-		and the style, the way it would read on the sheet.
-		@param font the font that text is written with
-		@return e.g. "Liberation Sans 8,1 (Regular)"
-	*/
-	QString fontButtonLabel(const QFont &font)
-	{
-		QString style = font.styleName();
-		if (font.bold()) {
-			style = font.italic()
-					? QCoreApplication::translate("GeneralConfigurationPage",
-												  "Bold italic")
-					: QCoreApplication::translate("GeneralConfigurationPage", "Bold");
-		} else if (font.italic()) {
-			style = QCoreApplication::translate("GeneralConfigurationPage", "Italic");
-		} else if (style.isEmpty()) {
-			style = QCoreApplication::translate("GeneralConfigurationPage", "Normal");
-		}
-		return font.family() + QLatin1Char(' ')
-				+ QString::number(font.pointSizeF(), 'g', 3)
-				+ QLatin1String(" (") + style + QLatin1Char(')');
-	}
-}
 
 /**
 	@brief GeneralConfigurationPage::GeneralConfigurationPage
@@ -223,17 +192,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 							font.styleName() + ")";
 		ui->m_indi_text_font_pb->setText(fontInfos);
 	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
-
-		//Cable texts: what every cable writes along its own line when
-		//it has not been given a font of its own.
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
-
-		//Where those texts stop in relation to the beginning of their
-		//own line, for the cables which say nothing about it themselves
-	const int align_index = int(QETApp::cableTextAlignment()) == int(Qt::AlignLeft) ? 2
-							: (int(QETApp::cableTextAlignment()) == int(Qt::AlignHCenter) ? 1 : 0);
-	ui->m_cable_align_cb->setCurrentIndex(align_index);
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
@@ -311,17 +269,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 			tr("Not set (default: %1)",
 			   "hint shown in the material file field when no file is configured yet")
 				.arg(MaterialList::defaultPath()));
-	}
-
-		//CABLE TYPE FILE
-	path = CableTypeList::configuredPath();
-	ui->m_cable_type_list_path_le->setText(path);
-	if (path.isEmpty())
-	{
-		ui->m_cable_type_list_path_le->setPlaceholderText(
-			tr("Not set (default: %1)",
-			   "hint shown in the cable type file field when no file is configured yet")
-				.arg(CableTypeList::defaultPath()));
 	}
 
 	fillLang();	
@@ -536,30 +483,6 @@ void GeneralConfigurationPage::applyConf()
 		//kept as chosen even when it doesn't exist yet : the user may well
 		//point QElectroTech at a file he intends to write later.
 	MaterialList::setConfiguredPath(ui->m_material_list_path_le->text().trimmed());
-
-		//CABLE TYPE FILE
-		//Same rule as the material file : it is a plain file, kept as
-		//chosen even when it doesn't exist yet.
-	CableTypeList::setConfiguredPath(ui->m_cable_type_list_path_le->text().trimmed());
-
-		//The way a cable lines up its texts at the beginning of its
-		//line, for every cable which says nothing about it itself --
-		//written now, so the sheets drawn again just below show it.
-	const int align_index = ui->m_cable_align_cb->currentIndex();
-	QETApp::setCableTextAlignment(align_index == 2 ? Qt::AlignLeft
-												   : (align_index == 1
-													  ? Qt::AlignHCenter
-													  : Qt::AlignRight));
-
-		//Every folio is drawn again: the texts of the cables are written
-		//from the settings, so that what he just picked reaches the
-		//sheets without his having to touch anything on them first.
-	for (QETProject *project : QETApp::registeredProjects())
-	{
-		for (Diagram *diagram : project->diagrams()) {
-			diagram->update();
-		}
-	}
 }
 
 /**
@@ -676,45 +599,6 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 							font.styleName() + ")";
 		ui->m_dyn_text_font_pb->setText(fontInfos);
 	}
-}
-
-/**
-	@brief GeneralConfigurationPage::on_m_cable_text_font_pb_clicked
-	Let him pick the font the texts of a cable are written with by
-	default: designation, type, installation, location and length.
-
-	Every cable which has not been given a font of its own follows it,
-	from now on: one which has keeps the one it was given, which is why
-	those are set on the cable itself rather than here.
-*/
-void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
-{
-	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
-			tr("Cable text font"));
-	if (!ok) return;
-
-	QSettings settings;
-	settings.setValue("cable-management/cable-text-font", QETUtils::fontToString(font));
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
-}
-
-/**
-	@brief GeneralConfigurationPage::on_m_cable_core_font_pb_clicked
-	Let him pick the font the colours of the cores are written with by
-	default -- all of them together, the way they are drawn: one row of
-	colours beside the line, never set apart from each other.
-*/
-void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
-{
-	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
-			tr("Core colors font"));
-	if (!ok) return;
-
-	QSettings settings;
-	settings.setValue("cable-management/cable-core-font", QETUtils::fontToString(font));
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
 }
 
 
@@ -952,70 +836,6 @@ void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
 	}
 
 	ui->m_material_list_path_le->setText(path);
-}
-
-/**
-	@brief GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked
-	Let the user pick an existing cable type file.
-*/
-void GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked()
-{
-	QString start_dir = ui->m_cable_type_list_path_le->text();
-	start_dir = start_dir.isEmpty()
-			? QETApp::documentDir()
-			: QFileInfo(start_dir).absolutePath();
-
-	const QString path = QFileDialog::getOpenFileName(
-		this,
-		tr("Select the cable types file"),
-		start_dir,
-		tr("CSV files (*.csv)"));
-
-	if (!path.isEmpty()) {
-		ui->m_cable_type_list_path_le->setText(path);
-	}
-}
-
-/**
-	@brief GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked
-	Create the cable type file with its header line, so the columns are
-	known before the user fills them from his spreadsheet.
-*/
-void GeneralConfigurationPage::on_m_cable_type_list_create_pb_clicked()
-{
-	QString path = ui->m_cable_type_list_path_le->text();
-	path = path.isEmpty()
-			? CableTypeList::defaultPath()
-			: QFileInfo(path).absolutePath() + QLatin1Char('/') + CableTypeList::defaultFileName();
-
-	path = QFileDialog::getSaveFileName(
-		this,
-		tr("Create the cable types file"),
-		path,
-		tr("CSV files (*.csv)"));
-	if (path.isEmpty()) {
-		return;
-	}
-	if (QFileInfo(path).suffix().isEmpty()) {
-		path += QStringLiteral(".csv");
-	}
-
-		//An existing file is kept as it is : this button creates the
-		//header, it never overwrites a catalogue.
-	if (CableTypeList::isEmptyFile(path))
-	{
-		QString error;
-		if (!CableTypeList::createFile(path, &error))
-		{
-			QET::QetMessageBox::critical(this,
-										 tr("Cannot be created"),
-										 tr("Cannot create the file:\n%1\n%2")
-											.arg(path, error));
-			return;
-		}
-	}
-
-	ui->m_cable_type_list_path_le->setText(path);
 }
 
 void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()

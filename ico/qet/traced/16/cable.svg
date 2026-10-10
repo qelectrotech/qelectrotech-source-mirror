@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <path fill="none" stroke="currentColor" stroke-width="2" d="M2 5h12"/>
-  <path fill="none" stroke="currentColor" stroke-width="1" d="M11 1v14"/>
-  <path fill="none" stroke="currentColor" stroke-width="1.5" d="M9 9L13 1"/>
-  <path fill="currentColor" d="M1 9h5v1H1zM1 11h3v1H1z"/>
-</svg>

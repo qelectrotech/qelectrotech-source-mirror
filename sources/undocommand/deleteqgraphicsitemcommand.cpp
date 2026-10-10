@@ -18,7 +18,6 @@
 #include "deleteqgraphicsitemcommand.h"
 #include "../wiringrules.h"
 
-#include "../cable/cablemanager.h"
 #include "../diagram.h"
 #include "../qetproject.h"
 #include "addgraphicsobjectcommand.h"
@@ -338,15 +337,6 @@ void DeleteQGraphicsItemCommand::undo()
 		}
 	}
 
-		//Back on the sheet and linked again: the cables which run over
-		//this report claim their wire on the other side once more.
-	for (Element *e : m_removed_contents.m_elements) {
-		if (e && (e->linkType() & Element::AllReport)) {
-			CableManager::refreshLabels(m_diagram->project());
-			break;
-		}
-	}
-
 	QUndoCommand::undo();
 }
 
@@ -399,17 +389,6 @@ void DeleteQGraphicsItemCommand::redo()
 
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
-
-		//A folio report carries a cable core over to the next sheet:
-		//taking one away (putting it back is undo, below) changes which
-		//wires belong to which cable, so the cable fields are worked
-		//out again straight away.
-	for (Element *e : m_removed_contents.m_elements) {
-		if (e && (e->linkType() & Element::AllReport)) {
-			CableManager::refreshLabels(m_diagram->project());
-			break;
-		}
-	}
 
 	QUndoCommand::redo();
 }

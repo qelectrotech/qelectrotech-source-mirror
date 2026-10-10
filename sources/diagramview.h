@@ -143,20 +143,6 @@ class DiagramView : public PaletteGraphicsView
 	private:
 		void handleElementDrop(QDropEvent *);
 		void updateFolioReportMenu();
-			/**
-				The menu of one single core: the right button coming down
-				on a colour label which stands on a line asks about that
-				core rather than about the whole folio -- taking it off the
-				line, which is the exact opposite of the menu the free
-				cores offer, of putting one down on a line.
-
-				Nothing opens when the point carries no colour label: the
-				folio's own menu is then still the right one.
-				@param menu_pos where he right-clicked, in view coordinates
-				@param global_pos the same place, in global coordinates
-				@return true when that menu was the one to open
-			*/
-		bool cableCoreMenu(const QPoint &menu_pos, const QPoint &global_pos);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
 		void handleImageFilesDrop(QDropEvent *);
