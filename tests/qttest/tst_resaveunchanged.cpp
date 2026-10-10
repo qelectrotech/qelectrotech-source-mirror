@@ -379,6 +379,57 @@ private slots:
 		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
 	}
 
+	// After copies of linked symbols and the undo of a folio's removal, the
+	// project database's symbol and link rows are those a fresh open of
+	// the saved project builds (F106, F107): a copy is placed while it
+	// still carries its original's uuid, and an undone folio removal put
+	// back its symbols but not their rows.
+	void symbolRowsAfterCopyAndFolioUndo()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString rows = QStringLiteral(
+				 "function rows() { return JSON.stringify(["
+				 "qet.query('SELECT uuid, diagram_uuid, type FROM element ORDER BY uuid'),"
+				 "qet.query('SELECT element_uuid, label, comment FROM element_info ORDER BY element_uuid'),"
+				 "qet.query('SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, linked_uuid')]); }\n");
+		const QString edit = m_dir.filePath(QStringLiteral("rows_edit.js")),
+				dump = m_dir.filePath(QStringLiteral("rows_dump.js")),
+				saved = m_dir.filePath(QStringLiteral("rows.qet"));
+		QFile js(edit);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write((rows + QStringLiteral(
+				 "var copied = 0, linked = -1;\n"
+				 "for (var f = 0; f < qet.folioCount() && copied < 3; ++f) {\n"
+				 "  var e = qet.elementUuids(f);\n"
+				 "  for (var i = 0; i < e.length && copied < 3; ++i)\n"
+				 "    if (qet.linkedElements(f, e[i]).length) {\n"
+				 "      copied += qet.duplicateElements(f, [e[i]], f, 300, 300).length; linked = f; }\n"
+				 "}\n"
+				 "qet.log('COPIED ' + copied);\n"
+				 "qet.log('UNDONE ' + (qet.removeFolio(linked) && qet.undo()));\n"
+				 "qet.log('ROWS ' + rows());\n"
+				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(saved)).toUtf8());
+		js.close();
+		QFile js2(dump);
+		QVERIFY(js2.open(QIODevice::WriteOnly));
+		js2.write((rows + QStringLiteral("qet.log('ROWS ' + rows());\n")).toUtf8());
+		js2.close();
+
+		const QString edited = runChecked({QStringLiteral("--run"), edit,
+										   QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
+		QVERIFY2(edited.contains(QStringLiteral("COPIED 3")) && edited.contains(QStringLiteral("UNDONE true"))
+				 && edited.contains(QStringLiteral("SAVED true")), qPrintable(edited.right(600)));
+		const QString reopened = runChecked({QStringLiteral("--run"), dump, saved});
+		auto rowsOf = [](const QString &log) {
+			const int at = log.indexOf(QStringLiteral("ROWS "));
+			return at < 0 ? QString() : log.mid(at + 5, log.indexOf(QLatin1Char('\n'), at) - at - 5);
+		};
+		QVERIFY(!rowsOf(reopened).isEmpty());
+		QCOMPARE(rowsOf(edited), rowsOf(reopened));
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()

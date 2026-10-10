@@ -907,22 +907,13 @@ void projectDataBase::addElement(Element *element)
 		return;
 	}
 
-	bindElementValues(m_insert_elements_query, element, element->diagram());
-	if (!m_insert_elements_query.exec()) {
-		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
-	}
 	placeElement(element);
 	connect(element, &Element::linkedElementChanged,
 			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
 	connect(element, &QGraphicsObject::xChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
 	connect(element, &QGraphicsObject::yChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
-
-	bindElementInfoValues(m_insert_element_info_query, element);
-	if (!m_insert_element_info_query.exec()) {
-		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
-	} else {
-		emit dataBaseUpdated();
-	}
+	writeElementRows(element);
+	emit dataBaseUpdated();
 }
 
 /**
@@ -932,34 +923,14 @@ void projectDataBase::addElement(Element *element)
 void projectDataBase::removeElement(Element *element)
 {
 	m_content_changed = true;
-	bool changed = false;
-
-	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
-	if (m_remove_element_query.exec()) {
-		changed = true;
-	} else {
-		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	const QUuid uuid = element->uuid();
+	removeElementRows(uuid);
+	unplaceElement(element, uuid);
+		//Another symbol still holds the uuid (F100): the rows are its own.
+	if (Element *other = otherHolder(uuid, element)) {
+		writeElementRows(other);
 	}
-
-	m_remove_element_info_query.bindValue(":uuid", element->uuid().toString());
-	if (m_remove_element_info_query.exec()) {
-		changed = true;
-	} else {
-		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
-	}
-
-	unplaceElement(element, element->uuid());
-
-	QSqlQuery remove_links(m_data_base);
-	remove_links.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
-	remove_links.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
-	if (!remove_links.exec()) {
-		qDebug() << "projectDataBase::removeElement remove link error : " << remove_links.lastError();
-	}
-
-	if (changed) {
-		emit dataBaseUpdated();
-	}
+	emit dataBaseUpdated();
 }
 
 /**
@@ -1019,8 +990,20 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	for (QGraphicsItem *item : items) {
 		addDrawingItem(item);
 	}
-	for (Element *element : diagram->elements())
-		placeElement(element);
+		//So do its symbols, their wires and the links to and from them
+		//(F107).
+	const QList<Element *> elements = diagram->elements();
+	const bool own_transaction = !elements.isEmpty() && m_data_base.transaction();
+	for (Element *element : elements) {
+		addElement(element);
+		queueLinks(element);
+		for (Element *linked : element->linkedElements())
+			queueLinks(linked);
+	}
+	for (Conductor *conductor : diagram->conductors())
+		addConductor(conductor);
+	if (own_transaction)
+		m_data_base.commit();
 
 		//The folios after the new one moved down, and a folio number made
 		//from %id or %total changed on every folio.
@@ -2200,20 +2183,58 @@ void projectDataBase::populateElementTable()
 
 /**
 	@brief projectDataBase::populateElementInfoTable
-	Populate the element info table
+	Populate the element info table from the symbol information store
+	in the order of the element table.
+	The label column is the label a symbol shows, which its folio's
+	numbering decides: the symbol holding the uuid gives it.
+
+	A project where several symbols share a uuid (F100) is read from its
+	folios as before: the first symbol on them owns the row, and the store
+	does not know which one that is.
 */
 void projectDataBase::populateElementInfoTable()
 {
 	QSqlQuery query(m_data_base);
 	query.exec(QStringLiteral("DELETE FROM element_info"));
 
+	for (auto it = m_placed_elements.constBegin() ; it != m_placed_elements.constEnd() ; ++it) {
+		if (placedElementCount(it.key()) > 1) {
+			populateElementInfoTableFromFolios();
+			return;
+		}
+	}
+
+	QSqlQuery uuids(m_data_base);
+	if (!uuids.exec(QStringLiteral("SELECT uuid FROM element ORDER BY rowid"))) {
+		qDebug() << "projectDataBase::populateElementInfoTable select error : " << uuids.lastError();
+		return;
+	}
+	while (uuids.next())
+	{
+		const QString uuid_str = uuids.value(0).toString();
+		const QUuid uuid(uuid_str);
+		Element *holder = otherHolder(uuid, nullptr);
+		if (!holder) {
+			continue;
+		}
+		bindElementInfoValues(m_insert_element_info_query, uuid_str,
+							  m_element_information.value(uuid), holder->actualLabel());
+		if (!m_insert_element_info_query.exec()) {
+			qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::populateElementInfoTableFromFolios
+	populateElementInfoTable() from the symbols on the folios
+*/
+void projectDataBase::populateElementInfoTableFromFolios()
+{
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(allElementTypes());
-
-			//Insert all values into the database
-		for (const auto &elmt : elmt_vector)
+		for (const auto &elmt : ep.find(allElementTypes()))
 		{
 			bindElementInfoValues(m_insert_element_info_query, elmt);
 			if (!m_insert_element_info_query.exec()) {
@@ -2250,24 +2271,21 @@ int projectDataBase::placedElementCount(const QUuid &element) const
 	@brief projectDataBase::storeElementInformation
 	Store @p information as the information of the placed symbol @p element,
 	in the element_information table and the cache in front of it.
+	@return true if that changed what was stored
 */
-void projectDataBase::storeElementInformation(const QUuid &element, const DiagramContext &information)
+bool projectDataBase::storeElementInformation(const QUuid &element, const DiagramContext &information)
 {
-	if (element.isNull()) return;
+	if (element.isNull()) return false;
 	auto known = m_element_information.constFind(element);
-	if (known != m_element_information.constEnd() && *known == information) return;
+	if (known != m_element_information.constEnd() && *known == information) return false;
 	m_element_information.insert(element, information);
 
 	const QString uuid = element.toString();
-	QSqlQuery remove(m_data_base);
-	remove.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
-	remove.bindValue(QStringLiteral(":uuid"), uuid);
-	if (!remove.exec()) {
-		qDebug() << "projectDataBase::storeElementInformation remove error : " << remove.lastError();
+	m_store_remove_query.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!m_store_remove_query.exec()) {
+		qDebug() << "projectDataBase::storeElementInformation remove error : " << m_store_remove_query.lastError();
 	}
-	QSqlQuery insert(m_data_base);
-	insert.prepare(QStringLiteral("INSERT INTO element_information (element_uuid, ord, name, value, show) "
-								  "VALUES (:uuid, :ord, :name, :value, :show)"));
+	QSqlQuery &insert = m_store_insert_query;
 	int ord = 0;
 	for (const QString &key : information.keys()) {
 		insert.bindValue(QStringLiteral(":uuid"), uuid);
@@ -2279,6 +2297,34 @@ void projectDataBase::storeElementInformation(const QUuid &element, const Diagra
 			qDebug() << "projectDataBase::storeElementInformation insert error : " << insert.lastError();
 		}
 	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::elementInformationChanged
+	The placed symbol @p element now has @p information: the store keeps
+	it, and its element_info row follows (F106: a pasted symbol's label is
+	erased or numbered after its row is written, by
+	Element::setElementInformations(), which tells no table).
+	A uuid other symbols share (F100) keeps the row of the first of them.
+*/
+void projectDataBase::elementInformationChanged(Element *element, const DiagramContext &information)
+{
+	if (!storeElementInformation(element->uuid(), information)) {
+		return;
+	}
+	m_content_changed = true;
+	if (m_update_blocked || placedElementCount(element->uuid()) != 1) {
+		return;
+	}
+	const auto hash = elementInfoToString(element);
+	for (const auto &key : QETInformation::elementInfoKeys()) {
+		m_update_element_query.bindValue(QStringLiteral(":") + key, hash.value(key));
+	}
+	m_update_element_query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	if (!m_update_element_query.exec()) {
+		qDebug() << "projectDataBase::elementInformationChanged update error : " << m_update_element_query.lastError();
+	}
 }
 
 /**
@@ -2288,11 +2334,9 @@ void projectDataBase::storeElementInformation(const QUuid &element, const Diagra
 void projectDataBase::forgetElementInformation(const QUuid &element)
 {
 	if (!m_element_information.remove(element)) return;
-	QSqlQuery remove(m_data_base);
-	remove.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
-	remove.bindValue(QStringLiteral(":uuid"), element.toString());
-	if (!remove.exec()) {
-		qDebug() << "projectDataBase::forgetElementInformation error : " << remove.lastError();
+	m_store_remove_query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!m_store_remove_query.exec()) {
+		qDebug() << "projectDataBase::forgetElementInformation error : " << m_store_remove_query.lastError();
 	}
 }
 
@@ -2327,16 +2371,97 @@ void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
 }
 
 /**
-	@brief projectDataBase::renameElementInformation
+	@brief projectDataBase::elementUuidChanged
 	The uuid of the placed symbol @p element changed from @p old_uuid (a
-	paste or a folio copy renews it): its information follows it, and the
-	old uuid keeps a row only if another symbol still holds it.
+	paste or a folio copy renews it): its information and its element,
+	element_info and link rows follow it. A copy is placed while it still
+	carries its original's uuid, so its rows could not be written then
+	(the uuid was taken): they are written now. The old uuid keeps its rows
+	only if another symbol still holds it (F106).
 */
-void projectDataBase::renameElementInformation(Element *element, const QUuid &old_uuid)
+void projectDataBase::elementUuidChanged(Element *element, const QUuid &old_uuid)
 {
 	if (!m_placed_elements.contains(old_uuid, element) || old_uuid == element->uuid()) return;
+	m_content_changed = true;
+	Element *other = otherHolder(old_uuid, element);
 	unplaceElement(element, old_uuid);
+	removeElementRows(old_uuid);
+	if (other) {
+			//The old uuid's rows may have been written from this symbol
+			//while both held it: write them again from the one keeping it.
+		writeElementRows(other);
+		queueLinks(other);
+		for (Element *linked : other->linkedElements())
+			queueLinks(linked);
+	}
 	placeElement(element);
+	writeElementRows(element);
+	queueLinks(element);
+	for (Element *linked : element->linkedElements())
+		queueLinks(linked);
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::otherHolder
+	@return a placed symbol other than @p element holding @p uuid, or
+	nullptr. Two hold one uuid while a copy is being placed, and for good
+	in files several symbols share a uuid in (F100).
+*/
+Element *projectDataBase::otherHolder(const QUuid &uuid, const Element *element) const
+{
+	for (const QPointer<Element> &other : m_placed_elements.values(uuid))
+		if (other && other != element) return other;
+	return nullptr;
+}
+
+/**
+	@brief projectDataBase::writeElementRows
+	Write the element and element_info rows of @p element, a placed symbol.
+	A uuid that already has rows keeps them: the first symbol to hold a
+	uuid owns its rows, as in a full rebuild.
+
+	Nothing is written while updates are blocked (a project being opened,
+	a paste being read): the rebuild that ends them writes every row.
+*/
+void projectDataBase::writeElementRows(Element *element)
+{
+	if (m_update_blocked) {
+		return;
+	}
+	bindElementValues(m_insert_elements_query, element, element->diagram());
+	if (!m_insert_elements_query.exec()) {
+		qDebug() << "projectDataBase::writeElementRows insert element error : " << m_insert_elements_query.lastError();
+	}
+	bindElementInfoValues(m_insert_element_info_query, element);
+	if (!m_insert_element_info_query.exec()) {
+		qDebug() << "projectDataBase::writeElementRows insert element info error : " << m_insert_element_info_query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::removeElementRows
+	Remove the element, element_info and link rows of @p uuid; nothing
+	while updates are blocked, as writeElementRows().
+*/
+void projectDataBase::removeElementRows(const QUuid &uuid)
+{
+	if (m_update_blocked) {
+		return;
+	}
+	const QString uuid_str = uuid.toString();
+	m_remove_element_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_element_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove error : " << m_remove_element_query.lastError();
+	}
+	m_remove_element_info_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_element_info_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove element_info error : " << m_remove_element_info_query.lastError();
+	}
+	m_remove_links_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_links_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove link error : " << m_remove_links_query.lastError();
+	}
 }
 
 /**
@@ -2412,8 +2537,16 @@ void projectDataBase::populateLinkTable()
 */
 void projectDataBase::linksChanged()
 {
+	queueLinks(qobject_cast<Element *>(sender()));
+}
+
+/**
+	@brief projectDataBase::queueLinks
+	The link rows of @p element are written again by the next flushLinks().
+*/
+void projectDataBase::queueLinks(Element *element)
+{
 	m_content_changed = true;
-	auto *element = qobject_cast<Element *>(sender());
 	if (element && !m_dirty_link_elements.contains(element)) {
 		m_dirty_link_elements << element;
 	}
@@ -2447,9 +2580,18 @@ void projectDataBase::flushLinks()
 			qDebug() << "projectDataBase::flushLinks remove error : " << remove.lastError();
 		}
 			//An element taken off its folio is unlinked first (Diagram::
-			//removeItem()), so it writes no rows here.
+			//removeItem()), so it writes no rows here; one on a removed
+			//folio is not, and writes none either.
+		if (!m_placed_elements.contains(element->uuid(), element)) {
+			continue;
+		}
 		for (Element *linked : element->linkedElements())
 		{
+				//A symbol on a removed folio stays linked, for the undo,
+				//but the project no longer has it
+			if (!m_placed_elements.contains(linked->uuid(), linked)) {
+				continue;
+			}
 			const int group = element->groupIndexForElement(linked);
 			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
 			insert.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
@@ -2576,6 +2718,15 @@ void projectDataBase::prepareQuery()
 	m_cascade_remove_element_query = QSqlQuery(m_data_base);
 	m_cascade_remove_element_query.prepare(
 		"DELETE FROM element WHERE diagram_uuid = :uuid");
+
+		//The symbol information store and an element's link rows
+	m_store_remove_query = QSqlQuery(m_data_base);
+	m_store_remove_query.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
+	m_store_insert_query = QSqlQuery(m_data_base);
+	m_store_insert_query.prepare(QStringLiteral("INSERT INTO element_information (element_uuid, ord, name, value, show) "
+												"VALUES (:uuid, :ord, :name, :value, :show)"));
+	m_remove_links_query = QSqlQuery(m_data_base);
+	m_remove_links_query.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
 
 	m_remove_diagram_query = QSqlQuery(m_data_base);
 	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");

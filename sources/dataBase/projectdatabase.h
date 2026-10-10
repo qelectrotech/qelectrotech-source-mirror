@@ -110,9 +110,10 @@ class projectDataBase : public QObject
 			//file whose symbols were copied by an old version (F100), or
 			//for a moment while a copy's uuid is renewed
 		int placedElementCount(const QUuid &element) const;
-		void storeElementInformation(const QUuid &element, const DiagramContext &information);
+		bool storeElementInformation(const QUuid &element, const DiagramContext &information);
+		void elementInformationChanged(Element *element, const DiagramContext &information);
 		void forgetElementInformation(const QUuid &element);
-		void renameElementInformation(Element *element, const QUuid &old_uuid);
+		void elementUuidChanged(Element *element, const QUuid &old_uuid);
 			//Placed symbols whose information differs from the store's,
 			//each as "uuid: why"; empty when they all agree
 		QStringList elementInformationMismatches() const;
@@ -164,6 +165,7 @@ class projectDataBase : public QObject
 		void flushElementPositions();
 		void populateElementTable();
 		void populateElementInfoTable();
+		void populateElementInfoTableFromFolios();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
 		void populateLinkTable();
@@ -222,7 +224,10 @@ class projectDataBase : public QObject
 				  m_cascade_remove_element_query,
 				  m_insert_shape_query,
 				  m_insert_independent_text_query,
-				  m_insert_image_query;
+				  m_insert_image_query,
+				  m_store_remove_query,
+				  m_store_insert_query,
+				  m_remove_links_query;
 
 			//Which uuid's row each drawing item last wrote, and which item
 			//wrote each row. A pasted copy is added to the folio still
@@ -247,6 +252,10 @@ class projectDataBase : public QObject
 			//two symbols until the copy's is renewed.
 		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
 		void placeElement(Element *element);
+		Element *otherHolder(const QUuid &uuid, const Element *element) const;
+		void writeElementRows(Element *element);
+		void queueLinks(Element *element);
+		void removeElementRows(const QUuid &uuid);
 		void unplaceElement(Element *element, const QUuid &uuid);
 
 #ifdef QET_EXPORT_PROJECT_DB

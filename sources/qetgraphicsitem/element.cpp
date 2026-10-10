@@ -1805,15 +1805,15 @@ void Element::setFormulaSchemeId(const QUuid &id)
 
 /**
 	@brief Element::setUuid
-	A placed symbol's stored information follows its uuid (a paste or a
-	folio copy renews it).
+	A placed symbol's stored information and its database rows follow its
+	uuid (a paste or a folio copy renews it).
 */
 void Element::setUuid(const QUuid &uuid)
 {
 	const QUuid old_uuid = m_uuid;
 	m_uuid = uuid;
 	if (diagram() && diagram()->project() && diagram()->project()->dataBase())
-		diagram()->project()->dataBase()->renameElementInformation(this, old_uuid);
+		diagram()->project()->dataBase()->elementUuidChanged(this, old_uuid);
 }
 
 /**
@@ -1822,11 +1822,11 @@ void Element::setUuid(const QUuid &uuid)
 	placed: every change of a placed
 	symbol's information comes through here.
 */
-void Element::storeInformation() const
+void Element::storeInformation()
 {
 	if (diagram() && diagram()->project() && diagram()->project()->dataBase()
 		&& diagram()->project()->dataBase()->hasElementInformation(m_uuid))
-		diagram()->project()->dataBase()->storeElementInformation(m_uuid, m_data.m_informations);
+		diagram()->project()->dataBase()->elementInformationChanged(this, m_data.m_informations);
 }
 
 void Element::setElementInformations(DiagramContext dc)

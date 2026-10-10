@@ -330,7 +330,7 @@ class Element : public QetGraphicsItem
 
 	private:
 		void restoreSavedLinkOrder();
-		void storeInformation() const;
+		void storeInformation();
 		projectDataBase *placedStore() const;
 		bool m_must_highlight = false;
 		QSize   dimensions;
