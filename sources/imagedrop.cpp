@@ -35,11 +35,6 @@ namespace
 		const QString suffix = QFileInfo(url.toLocalFile()).suffix().toLower();
 		return ImageDrop::supportedSuffixes().contains(suffix);
 	}
-
-	QString tr(const char *text)
-	{
-		return QCoreApplication::translate("ImageDrop", text);
-	}
 }
 
 QStringList ImageDrop::supportedSuffixes()
@@ -74,18 +69,18 @@ QImage ImageDrop::load(const QString &path, QString *error)
 
 	const QFileInfo info(path);
 	if (!info.isFile())
-		return fail(tr("not a file"));
+		return fail(QCoreApplication::translate("ImageDrop", "not a file"));
 	if (info.size() > maxFileBytes)
-		return fail(tr("the file is larger than 10 MB"));
+		return fail(QCoreApplication::translate("ImageDrop", "the file is larger than 10 MB"));
 
 	QImageReader reader(path);
 	const QSize size = reader.size();
 	if (size.isValid() && qint64(size.width()) * size.height() > maxPixels)
-		return fail(tr("the image has too many pixels"));
+		return fail(QCoreApplication::translate("ImageDrop", "the image has too many pixels"));
 
 	const QImage image = reader.read();
 	if (image.isNull())
-		return fail(tr("unable to read the image"));
+		return fail(QCoreApplication::translate("ImageDrop", "unable to read the image"));
 	return image;
 }
 
