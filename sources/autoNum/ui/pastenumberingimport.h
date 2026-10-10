@@ -23,6 +23,7 @@
 
 #include <QCoreApplication>
 #include <QList>
+#include <QUndoCommand>
 
 class Diagram;
 class QWidget;
@@ -40,6 +41,11 @@ class QWidget;
 	without a numbering.
 
 	The import and the paste are one undo step.
+
+	A paste which brings more than itself (the cable lines of the copy,
+	for instance, which are no part of a DiagramContent) hands those
+	commands over through @p extra: they are pushed inside the very
+	same macro, so one Ctrl+Z still takes the whole of it back.
 */
 class PasteNumberingImport
 {
@@ -49,7 +55,8 @@ class PasteNumberingImport
 		static void push(QWidget *parent,
 						 Diagram *diagram,
 						 const DiagramContent &content,
-						 const QList<ElementAutoNumSchemeCommand::Scheme> &copied);
+						 const QList<ElementAutoNumSchemeCommand::Scheme> &copied,
+						 const QList<QUndoCommand *> &extra = QList<QUndoCommand *>());
 
 		static QList<ElementAutoNumSchemeCommand::Scheme> copiedBy(const QDomDocument &clipboard);
 };

@@ -189,7 +189,8 @@ class QetGraphicsTableItem;
 	  button applies, not a rule reimplemented here. sortTerminalStrip()
 	  reorders the strip's physical positions into the canonical order the
 	  editor's own sort button computes.
-	- @b Tables: a BOM/nomenclature or a summary (table of contents) placed
+	- @b Tables: a BOM/nomenclature, a summary (table of contents) or a
+	  cable list placed
 	  on a folio, through QetGraphicsTableFactory::create() -- the same
 	  factory call the "add table" menu action makes, minus the modal
 	  AddTableDialog it collects its settings from first. That dialog is
@@ -201,7 +202,11 @@ class QetGraphicsTableItem;
 	  calling addTable() once should create exactly the one table it asked
 	  for, not possibly several spread across folios it never asked to add.
 	  A script that wants either behaviour can resize the result itself or
-	  add its own folio.
+	  add its own folio. kind is "nomenclature" (over placed elements),
+	  "summary" (over folios) or "cable_list" (over the cables of the
+	  project): the first two require a real SQL query, the last takes
+	  comma-joined column keys instead and accepts an empty query, which
+	  means its default columns.
 
 	  Neither creating nor deleting a table is undoable:
 	  QetGraphicsTableFactory::newTable(), which create() calls, calls
@@ -386,6 +391,7 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool exportWires(const QString &output);
 		Q_INVOKABLE bool exportBom(const QString &output, bool noSlaves = false,
 								   bool noJunctions = false);
+		Q_INVOKABLE bool exportCableList(const QString &output);
 		Q_INVOKABLE bool exportWiring(const QString &output);
 		Q_INVOKABLE bool exportNets(const QString &output);
 		Q_INVOKABLE bool exportLinks(const QString &output);

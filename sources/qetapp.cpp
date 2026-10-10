@@ -1537,6 +1537,97 @@ QFont QETApp::indiTextsItemFont(qreal size)
 }
 
 /**
+	@brief QETApp::cableTextsFont
+	@return the font the texts of a cable (designation, type,
+	installation, location, length) are written with when the cable
+	itself has been given no font of its own.
+
+	That is what the preferences offer on the "Textes" page, and -- when
+	nothing has been chosen there yet -- the font the drawing writes its
+	own texts with, a shade smaller: the way every cable has always been
+	drawn, so that opening the preferences changes nothing until he
+	picks something.
+*/
+QFont QETApp::cableTextsFont()
+{
+	QSettings settings;
+	if (settings.contains("cable-management/cable-text-font"))
+	{
+		QFont font;
+		if (QETUtils::fontFromString(
+				font, settings.value("cable-management/cable-text-font").toString())) {
+			return font;
+		}
+	}
+
+	QFont font = QApplication::font();
+	font.setPointSizeF(font.pointSizeF() * 0.9);
+	return font;
+}
+
+/**
+	@brief QETApp::cableCoreFont
+	@return the font the colour labels of the cores are written with
+	when the cable itself has been given no font of its own.
+
+	That is what the preferences offer on the "Textes" page; until he
+	picks something there, the colours follow the texts of the cable,
+	so one setting alone already resizes the whole label of a cable.
+*/
+QFont QETApp::cableCoreFont()
+{
+	QSettings settings;
+	if (settings.contains("cable-management/cable-core-font"))
+	{
+		QFont font;
+		if (QETUtils::fontFromString(
+				font, settings.value("cable-management/cable-core-font").toString())) {
+			return font;
+		}
+	}
+	return cableTextsFont();
+}
+
+/**
+	@brief QETApp::cableTextAlignment
+	@return how the texts of a cable line up at the left end of their
+	line when the cable itself asks for nothing: what the preferences
+	offer on the "Textes" page, and -- until he has picked something
+	there -- the way every text has always stood, with its right end at
+	the place where the line begins.
+*/
+Qt::Alignment QETApp::cableTextAlignment()
+{
+	const QSettings settings;
+	const QString name = settings.value("cable-management/cable-align").toString();
+	if (name == QLatin1String("left")) {
+		return Qt::AlignLeft;
+	}
+	if (name == QLatin1String("center")) {
+		return Qt::AlignHCenter;
+	}
+	return Qt::AlignRight;
+}
+
+/**
+	@brief QETApp::setCableTextAlignment
+	Keep what the preferences chose as the way every cable lines up its
+	texts, for the cables which say nothing about it themselves.
+	@param alignment Qt::AlignRight, Qt::AlignHCenter or Qt::AlignLeft
+*/
+void QETApp::setCableTextAlignment(Qt::Alignment alignment)
+{
+	QString name = QLatin1String("right");
+	if (alignment == Qt::AlignLeft) {
+		name = QLatin1String("left");
+	} else if (alignment == Qt::AlignHCenter) {
+		name = QLatin1String("center");
+	}
+	QSettings settings;
+	settings.setValue("cable-management/cable-align", name);
+}
+
+/**
 	@brief QETApp::diagramEditors
 	@return schema editors
 	\~French les editeurs de schemas
