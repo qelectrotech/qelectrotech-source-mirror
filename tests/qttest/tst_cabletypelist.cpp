@@ -142,6 +142,25 @@ class tst_cabletypelist : public QObject
 							  QStringLiteral("bl")}));
 	}
 
+	//The folder a cable type file goes into may not exist yet: a fresh
+	//profile has no documents folder, and a path typed into the settings
+	//may name one which was never created. The write makes the folder
+	//rather than failing with a message which says nothing about why.
+	void aMissingFolderIsCreated()
+	{
+		const QString path = m_dir.filePath(
+			QStringLiteral("not/there/yet/qet_cable_types.csv"));
+		QVERIFY(!QFile::exists(path));
+
+		QString error;
+		QVERIFY2(CableTypeList::createFile(path, &error), qPrintable(error));
+		QVERIFY2(QFile::exists(path), "the file was not created");
+
+		CableTypeListData data;
+		QVERIFY2(load(path, &data), "the file just created could not be read");
+		QVERIFY(data.records.isEmpty());
+	}
+
 	void labelLineAloneStillGivesTheType()
 	{
 		const QString path = write(QStringLiteral("hand.csv"),

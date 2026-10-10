@@ -635,6 +635,22 @@ bool CableTypeList::writeFile(const QString &path, const CableTypeListData &data
 	header_lines.append(data.columns);
 	const QByteArray content = MaterialList::serializeCsv(header_lines, rows, data.separator);
 
+		//The folder may not be there yet: a fresh profile has no
+		//documents folder, and a path typed into the settings may name a
+		//folder which was never created. QSaveFile cannot write into a
+		//folder which does not exist, so without this the whole write
+		//fails and the message says nothing about the real reason.
+	const QString folder = QFileInfo(path).absolutePath();
+	if (!folder.isEmpty() && !QDir(folder).exists() && !QDir().mkpath(folder))
+	{
+		if (error) {
+			*error = QCoreApplication::translate(
+				"CableTypeList",
+				"Cannot create the folder %1 for the cable types file.").arg(folder);
+		}
+		return false;
+	}
+
 	QSaveFile file(path);
 	if (!file.open(QIODevice::WriteOnly) || file.write(content) != content.size())
 	{
