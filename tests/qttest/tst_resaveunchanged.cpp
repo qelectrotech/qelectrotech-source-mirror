@@ -19,7 +19,8 @@
 //    was opened again (m_000.qet).
 // Runs the real binary's --resave twice on every example, on a project
 // whose title block holds a value that is a single space (#973), and on
-// one that used to crash on opening (bugtracker #345).
+// one that used to crash on opening (bugtracker #345); and that a coil's
+// contacts keep the order the file saved them in.
 class tst_resaveunchanged : public QObject
 {
 	Q_OBJECT
@@ -116,6 +117,47 @@ private slots:
 		}
 		QVERIFY2(!xml.contains(QStringLiteral("<text>[%{machine")),
 				 "a machine manufacturer reference variable was left unresolved");
+	}
+
+	// A coil's contacts are saved in the order the file listed them.
+	// They used to come back in the order the folios were visited, so a
+	// list that disagreed with it changed on every save, and contacts on
+	// one folio swapped places from run to run. m_000.qet's coil b02216df
+	// (folio 13) lists its contacts on folios 7 and 12; the test lists
+	// them the other way round.
+	void savedLinkOrderKept()
+	{
+		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"));
+		const QRegularExpression coil(QStringLiteral(
+				"<element [^>]*uuid=\"\\{b02216df-0851-4732-893b-901fea80703e\\}\""));
+		// byte offset of the coil's <element> tag in @p file, or -1
+		const auto coilAt = [&coil](const QByteArray &file) {
+			const QRegularExpressionMatch m = coil.match(QString::fromLatin1(file));
+			return m.hasMatch() ? int(m.capturedStart()) : -1;
+		};
+		const QByteArray a = "<link_uuid uuid=\"{998190fa-5b4c-4be3-bc67-8a828eaab2b4}\"/>";
+		const QByteArray b = "<link_uuid uuid=\"{112aa911-",
+				b_end = "\"/>";
+		const int start = coilAt(xml);
+		QVERIFY(start > 0);
+		const int ia = xml.indexOf(a, start), ib = xml.indexOf(b, start);
+		QVERIFY2(ia > 0 && ib > ia, "m_000.qet no longer lists the coil's contacts as expected");
+		const QByteArray link_b = xml.mid(ib, xml.indexOf(b_end, ib) + b_end.size() - ib);
+		xml.replace(ib, link_b.size(), a);
+		xml.replace(ia, a.size(), link_b);
+		const QString in = m_dir.filePath(QStringLiteral("links.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(xml);
+		f.close();
+
+		const QByteArray saved = read(resave(in));
+		QVERIFY2(!saved.isEmpty(), "--resave failed");
+		const int s = coilAt(saved);
+		QVERIFY(s > 0);
+		const int sa = saved.indexOf(a, s), sb = saved.indexOf(b, s);
+		QVERIFY2(sa > 0 && sb > 0, "a link was lost");
+		QVERIFY2(sb < sa, "the coil's contacts were saved in another order than the file's");
 	}
 
 	// A title-block value that is a single space is kept through two saves
