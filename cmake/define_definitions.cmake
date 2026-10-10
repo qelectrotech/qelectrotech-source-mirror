@@ -60,7 +60,6 @@ message("PROJECT_DESCRIPTION       :" ${PROJECT_DESCRIPTION})
 message("PROJECT_HOMEPAGE_URL      :" ${PROJECT_HOMEPAGE_URL})
 message("PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
 message("QET_DIR                   :" ${QET_DIR})
-message("GIT_COMMIT_SHA            :" ${GIT_COMMIT_SHA})
 
 if(BUILD_WITH_KF)
   message("KF_GIT_TAG                :" ${KF_GIT_TAG})

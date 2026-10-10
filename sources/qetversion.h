@@ -33,6 +33,7 @@ namespace QetVersion
 
 	QVersionNumber currentVersion();
 	QString displayedVersion();
+	QString gitCommitSha();
 
 	QVersionNumber versionZeroDotSix();
 
