@@ -2213,7 +2213,7 @@ Continuer ?</translation>
         <translation>pivoter/incliner</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="670"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="675"/>
         <source>crop</source>
         <translation>rogner</translation>
     </message>
@@ -2223,7 +2223,7 @@ Continuer ?</translation>
         <translation>Cliquer : mode %1</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="726"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="731"/>
         <source>Crop: drag the handles or the frame -- Enter, double-click or click elsewhere: apply; Escape: cancel</source>
         <translation>Rogner : glisser les poignées ou le cadre -- Entrée, double-clic ou clic à côté : appliquer ; Échap : annuler</translation>
     </message>
@@ -2268,7 +2268,7 @@ Continuer ?</translation>
         <translation>Glisser : déplacer le centre de rotation</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="806"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="811"/>
         <source>Drag: crop (Enter = apply, Escape = cancel)</source>
         <translation>Glisser : rogner (Entrée = appliquer, Échap = annuler)</translation>
     </message>
@@ -2375,7 +2375,7 @@ Continuer ?</translation>
         <translation>Couleur transparente...</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="2089"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2101"/>
         <source>Crop on the folio</source>
         <translation>Rogner sur le folio</translation>
     </message>
@@ -2385,7 +2385,7 @@ Continuer ?</translation>
         <translation>Rogner...</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="2097"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2109"/>
         <source>Reset crop</source>
         <translation>Réinitialiser le rognage</translation>
     </message>
@@ -2405,7 +2405,7 @@ Continuer ?</translation>
         <translation>Restaurer les proportions</translation>
     </message>
     <message>
-        <location filename="../../../../../../Users/beathangartner/Projects/qet-wt-crop/sources/qetgraphicsitem/diagramimageitem.cpp" line="2113"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2125"/>
         <source>Properties...</source>
         <translation>Propriétés...</translation>
     </message>
