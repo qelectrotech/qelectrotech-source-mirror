@@ -227,6 +227,61 @@ private slots:
 		QVERIFY(references > 0);
 	}
 
+	// A folio report arrow linked to one that has no terminal -- such as
+	// ref_voyant_2_h.elmt from the collection -- crashed QElectroTech on
+	// opening: the arrow's text looked for a wire on the other arrow's
+	// first terminal. Projet_vierge.qet with a previous-folio arrow (one
+	// terminal, a label text) on folio 1 linked to a ref_voyant_2_h on
+	// folio 2.
+	void reportArrowWithoutTerminalOpens()
+	{
+		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/Projet_vierge.qet"));
+		const QByteArray a = "{0a000000-0000-4000-8000-00000000000a}",
+				b = "{0b000000-0000-4000-8000-00000000000b}";
+		const QByteArray arrow =
+				"<element type=\"embed://import/10_electric/10_allpole/100_sheet_referencing/01previous_folio.elmt\""
+				" x=\"200\" y=\"200\" z=\"10\" orientation=\"0\" prefix=\"\" freezeLabel=\"false\" uuid=\"" + a + "\">"
+				"<terminals/><inputs/><links_uuids><link_uuid uuid=\"" + b + "\"/></links_uuids>"
+				"<dynamic_texts><dynamic_elmt_text text_from=\"ElementInfo\" x=\"5\" y=\"-10\""
+				" uuid=\"{0c000000-0000-4000-8000-00000000000c}\" rotation=\"0\" frame=\"false\" text_width=\"-1\">"
+				"<text>x</text><info_name>label</info_name></dynamic_elmt_text></dynamic_texts>"
+				"<texts_groups/></element>";
+		const QByteArray no_terminal =
+				"<element type=\"embed://import/10_electric/98_graphics/01_auxiliary_symbols/01_cross_ref_symbols/"
+				"01_with_linking_function/01_parents/ref_voyant_2_h.elmt\""
+				" x=\"300\" y=\"200\" z=\"10\" orientation=\"0\" prefix=\"\" freezeLabel=\"false\" uuid=\"" + b + "\">"
+				"<terminals/><inputs/><links_uuids><link_uuid uuid=\"" + a + "\"/></links_uuids>"
+				"<dynamic_texts/><texts_groups/></element>";
+		QVERIFY(xml.contains("ref_voyant_2_h.elmt") && xml.contains("01previous_folio.elmt"));
+		// put @p element first in the elements of folio @p n
+		auto put = [&xml](int n, const QByteArray &element) {
+			int at = -1;
+			for (int i = 0 ; i <= n ; ++i) {
+				at = xml.indexOf("<diagram ", at + 1);
+				if (at < 0) return false;
+			}
+			const int empty = xml.indexOf("<elements/>", at), open = xml.indexOf("<elements>", at),
+					end = xml.indexOf("</diagram>", at);
+			if (empty >= 0 && empty < end && (open < 0 || empty < open))
+				xml.replace(empty, int(qstrlen("<elements/>")), "<elements>" + element + "</elements>");
+			else if (open >= 0 && open < end)
+				xml.insert(open + int(qstrlen("<elements>")), element);
+			else
+				return false;
+			return true;
+		};
+		QVERIFY(put(0, arrow));
+		QVERIFY(put(1, no_terminal));
+		const QString in = m_dir.filePath(QStringLiteral("report_without_terminal.qet"));
+		QFile f(in);
+		QVERIFY(f.open(QIODevice::WriteOnly));
+		f.write(xml);
+		f.close();
+		const QString saved = resave(in);
+		QVERIFY2(!saved.isEmpty(), "--resave failed: QElectroTech crashed opening the project");
+		QVERIFY2(read(saved).contains(b), "the arrow without a terminal was not kept");
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()
