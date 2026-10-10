@@ -842,6 +842,14 @@ QString ElementData::terminalTypeToString(ElementData::TerminalType type)
 			return QStringLiteral("ground");
 		case ElementData::TTAntiParallelDiodes:
 			return QStringLiteral("antiparallel_diodes");
+		case ElementData::TTResistor:
+			return QStringLiteral("resistor");
+		case ElementData::TTVaristor:
+			return QStringLiteral("varistor");
+		case ElementData::TTTestSocket:
+			return QStringLiteral("test_socket");
+		case ElementData::TTDiodeReversed:
+			return QStringLiteral("diode_reversed");
 	}
 	return QStringLiteral("generic");
 }
@@ -860,6 +868,14 @@ ElementData::TerminalType ElementData::terminalTypeFromString(const QString &str
 		return ElementData::TTGround;
 	} else if (string == QLatin1String("antiparallel_diodes")) {
 		return ElementData::TTAntiParallelDiodes;
+	} else if (string == QLatin1String("resistor")) {
+		return ElementData::TTResistor;
+	} else if (string == QLatin1String("varistor")) {
+		return ElementData::TTVaristor;
+	} else if (string == QLatin1String("test_socket")) {
+		return ElementData::TTTestSocket;
+	} else if (string == QLatin1String("diode_reversed")) {
+		return ElementData::TTDiodeReversed;
 	}
 
 	qDebug() << "ElementData::terminalTypeFromString : string : "
@@ -883,6 +899,14 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 			return QObject::tr("Ground", "ground terminal element type");
 		case ElementData::TTAntiParallelDiodes:
 			return QObject::tr("Anti-parallel diodes", "anti-parallel diodes terminal element type");
+		case ElementData::TTResistor:
+			return QObject::tr("Resistor", "resistor terminal element type");
+		case ElementData::TTVaristor:
+			return QObject::tr("Varistor", "varistor terminal element type");
+		case ElementData::TTTestSocket:
+			return QObject::tr("Test socket", "test socket terminal element type");
+		case ElementData::TTDiodeReversed:
+			return QObject::tr("Diode (reversed)", "reversed diode terminal element type");
 	}
 	return QObject::tr("Generic", "generic terminal element type");
 }

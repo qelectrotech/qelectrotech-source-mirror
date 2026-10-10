@@ -115,6 +115,41 @@ void drawAntiParallelDiodesSymbol(QPainter *painter)
 	painter->drawLine(QPointF{5, 2}, QPointF{5, 5});
 }
 
+void drawResistorSymbol(QPainter *painter)
+{
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -5});
+	painter->drawRect(QRectF{-3, -5, 6, 10});
+	painter->drawLine(QPointF{0, 5}, QPointF{0, 7});
+}
+
+	//A resistor crossed by an oblique line ended by a short bar
+void drawVaristorSymbol(QPainter *painter)
+{
+	drawResistorSymbol(painter);
+	painter->drawLine(QPointF{-5, 5}, QPointF{5, -5});
+	painter->drawLine(QPointF{5, -5}, QPointF{8, -5});
+}
+
+	//A measuring point : the line is interrupted by a small circle
+void drawTestSocketSymbol(QPainter *painter)
+{
+	const qreal r{2.5};
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -r});
+	painter->drawEllipse(QPointF{0, 0}, r, r);
+	painter->drawLine(QPointF{0, r}, QPointF{0, 7});
+}
+
+	//Same as the diode, the anode is at the bottom
+void drawDiodeReversedSymbol(QPainter *painter)
+{
+	const qreal t{symbol_height / 3};
+	const QPointF triangle[3] { {-t, t}, {t, t}, {0, -t} };
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -t});
+	painter->drawLine(QPointF{-t, -t}, QPointF{t, -t});
+	painter->drawPolygon(triangle, 3);
+	painter->drawLine(QPointF{0, t}, QPointF{0, 7});
+}
+
 /**
  * @brief drawScaled
  * Call @a draw with the painter moved by @a dx and scaled by @a factor.
@@ -173,6 +208,10 @@ void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalT
 			case ElementData::TTDiode     : drawDiodeSymbol(p); break;
 			case ElementData::TTGround    : drawGroundSymbol(p); break;
 			case ElementData::TTAntiParallelDiodes : drawAntiParallelDiodesSymbol(p); break;
+			case ElementData::TTResistor   : drawResistorSymbol(p); break;
+			case ElementData::TTVaristor   : drawVaristorSymbol(p); break;
+			case ElementData::TTTestSocket : drawTestSocketSymbol(p); break;
+			case ElementData::TTDiodeReversed : drawDiodeReversedSymbol(p); break;
 			default: break;
 		}
 	};

@@ -430,6 +430,10 @@ QWidget *FreeTerminalModelDelegate::createEditor(QWidget *parent, const QStyleOp
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTDiode),     ElementData::TTDiode);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTGround),    ElementData::TTGround);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTAntiParallelDiodes), ElementData::TTAntiParallelDiodes);
+		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTResistor),     ElementData::TTResistor);
+		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTVaristor),     ElementData::TTVaristor);
+		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTTestSocket),   ElementData::TTTestSocket);
+		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTDiodeReversed), ElementData::TTDiodeReversed);
 
 		return qcb;
 	}

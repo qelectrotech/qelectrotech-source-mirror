@@ -127,6 +127,26 @@
        <string>Anti-parallel diodes</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>Resistor</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Varistor</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Test socket</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diode (reversed)</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="3" column="2" colspan="2">

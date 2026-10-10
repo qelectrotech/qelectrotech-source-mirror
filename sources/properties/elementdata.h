@@ -176,7 +176,11 @@ class ElementData : public PropertiesInterface
 			TTSectional,
 			TTDiode,
 			TTGround,
-			TTAntiParallelDiodes
+			TTAntiParallelDiodes,
+			TTResistor,
+			TTVaristor,
+			TTTestSocket,
+			TTDiodeReversed
 		};
 		Q_ENUM(TerminalType)
 

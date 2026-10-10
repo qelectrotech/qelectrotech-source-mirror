@@ -226,6 +226,10 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::TTDiode);
 	ui->m_terminal_type_cb->addItem(tr("Ground"),        ElementData::TTGround);
 	ui->m_terminal_type_cb->addItem(tr("Anti-parallel diodes"), ElementData::TTAntiParallelDiodes);
+	ui->m_terminal_type_cb->addItem(tr("Resistor"),      ElementData::TTResistor);
+	ui->m_terminal_type_cb->addItem(tr("Varistor"),      ElementData::TTVaristor);
+	ui->m_terminal_type_cb->addItem(tr("Test socket"),   ElementData::TTTestSocket);
+	ui->m_terminal_type_cb->addItem(tr("Diode (reversed)"), ElementData::TTDiodeReversed);
 
 	ui->m_terminal_func_cb->addItem(tr("Generic"), ElementData::TFGeneric);
 	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
