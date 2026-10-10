@@ -1697,6 +1697,26 @@ class ElementSearch(unittest.TestCase):
         self.assertEqual(r["path"], "common://dir/x.elmt")
         self.assertEqual(r["terminal_names"], ["t1", "t0"])     # t1 is at y=-20: index 0
 
+    def test_the_scheme_follows_the_collection_searched(self):
+        """Every result used to say common://, so a symbol found in the user
+        collection could not be placed (#1450)."""
+        info = self.root / "qet-assistant.json"
+        info.write_text(json.dumps({"folders": {
+            "elements_custom": str(self.root / "mine") + "/",
+            "elements_company": str(self.root / "firm") + "/"}}))
+        self.put("mine/SOLION/inverter.elmt", {"en": "Inverter"})
+        self.put("firm/pump.elmt", {"en": "Pump"})
+        self.put("other/lamp.elmt", {"en": "Lamp"})
+        path = lambda d, q: m.tool_element_search(str(self.root / d), q)["results"][0]["path"]
+        with mock.patch.dict(os.environ, {"QET_MCP_INFO_FILE": str(info)}):
+            self.assertEqual(path("mine", "inverter"), "custom://SOLION/inverter.elmt")
+            self.assertEqual(path("mine/SOLION", "inverter"), "custom://SOLION/inverter.elmt")
+            self.assertEqual(path("firm", "pump"), "company://pump.elmt")
+            self.assertEqual(path("other", "lamp"), "common://lamp.elmt")
+        # the same folder, no longer the user collection: re-indexed
+        with mock.patch.dict(os.environ, {"QET_MCP_INFO_FILE": str(self.root / "none.json")}):
+            self.assertEqual(path("mine", "inverter"), "common://SOLION/inverter.elmt")
+
     def test_new_file_is_found_without_a_manual_reindex(self):
         """A symbol written by qet_element_build must be searchable at once."""
         self.put("a/one.elmt", {"en": "One"})
@@ -3110,11 +3130,46 @@ class ElementsDirSetting(unittest.TestCase):
             return subprocess.CompletedProcess(argv, 0, "", "")
 
         with tempfile.TemporaryDirectory() as coll, \
+                mock.patch.object(m, "_user_collections", dict), \
                 mock.patch.object(m.subprocess, "run", run):
             m._run_qet(TRUE, ["x.qet"], elements_dir=coll)
         want = m._collection_setting(Path(coll))
         self.assertEqual(seen, {"QElectroTech.ini": want, "QElectroTech.conf": want})
         self.assertIn(f"common-collection-path={Path(coll).as_posix()}", want)
+
+    def test_user_and_company_collections_reach_the_sandbox(self):
+        """custom:// failed in the sandbox on Linux, which replaces
+        XDG_DATA_HOME, and worked on macOS, which ignores it (#1450)."""
+        seen = {}
+
+        def run(argv, **kwargs):
+            cfg = Path(kwargs["env"]["QET_SETTINGS_DIR"]) / "QElectroTech"
+            seen.update({f.name: f.read_text(encoding="utf-8") for f in cfg.iterdir()})
+            return subprocess.CompletedProcess(argv, 0, "", "")
+
+        with tempfile.TemporaryDirectory() as d:
+            mine, firm = Path(d) / "mine", Path(d) / "firm"
+            mine.mkdir()
+            firm.mkdir()
+            info = Path(d) / "qet-assistant.json"
+            info.write_text(json.dumps({"folders": {
+                "elements_custom": str(mine) + "/", "elements_company": str(firm) + "/",
+                "elements_common": str(Path(d) / "gone") + "/"}}))
+            with mock.patch.dict(os.environ, {"QET_MCP_INFO_FILE": str(info)}), \
+                    mock.patch.object(m.subprocess, "run", run):
+                m._run_qet(TRUE, ["x.qet"])
+                self.assertEqual(seen["QElectroTech.ini"],
+                                 "[elements-collections]\n"
+                                 f"custom-collection-path={mine.as_posix()}\n"
+                                 f"company-collection-path={firm.as_posix()}\n")
+                self.assertEqual(seen["QElectroTech.conf"], seen["QElectroTech.ini"])
+                # a folder that is not there is left to QElectroTech's default
+                shutil.rmtree(firm)
+                seen.clear()
+                m._run_qet(TRUE, ["x.qet"], elements_dir=d)
+                self.assertNotIn("company-collection-path", seen["QElectroTech.ini"])
+                self.assertIn(f"common-collection-path={Path(d).as_posix()}\n",
+                              seen["QElectroTech.ini"])
 
     def test_a_windows_path_has_forward_slashes(self):
         """Qt reads a backslash in the file as an escape."""
@@ -3753,6 +3808,10 @@ class ElementIndexCache(unittest.TestCase):
                 (root / "b.elmt").write_text(elmt.format("Beta lamp"))
                 m._ELEMENT_INDEX.clear()
                 self.assertEqual(len(m._index_collection(root)), 2)
+                m._ELEMENT_INDEX.clear()
+                # a cache written for another scheme is not reused
+                with mock.patch.object(m, "_collection_prefix", lambda r: "custom://"):
+                    self.assertEqual(m._index_collection(root)[0]["path"], "custom://a.elmt")
                 m._ELEMENT_INDEX.clear()
 
 

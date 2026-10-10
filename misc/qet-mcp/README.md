@@ -758,6 +758,9 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   reads `QET_SETTINGS_DIR` (#1178): an older one keeps its settings in the
   registry or the system preferences, never sees the path written for the
   run, and uses the collection it was installed with.
+  `custom://` and `company://` paths need nothing: each run is given the
+  user and company collections that `qet-assistant.json` names, and
+  `qet_element_search` returns those schemes when it searches them (#1450).
 - **`set_conductor` changes the whole potential, not one segment.** That is
   what the application does — a wire number describes a potential — so name
   a terminal carrying exactly one conductor and the change reaches every

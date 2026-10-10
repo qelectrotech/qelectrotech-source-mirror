@@ -956,13 +956,35 @@ def _launch_env(env: dict, home: Path, windows: bool) -> dict:
     return env
 
 
-def _collection_setting(collection: PurePath) -> str:
-    """The settings file that points QElectroTech at @p collection.
+def _collection_setting(collection: PurePath | None = None,
+                        custom: PurePath | None = None,
+                        company: PurePath | None = None) -> str:
+    """The settings file that points QElectroTech at its collections.
 
     Forward slashes: Qt reads a backslash in these files as an escape, so a
     Windows path written as-is arrives mangled."""
-    return ("[elements-collections]\n"
-            f"common-collection-path={collection.as_posix()}\n")
+    lines = ["[elements-collections]"]
+    for key, path in (("common", collection), ("custom", custom), ("company", company)):
+        if path is not None:
+            lines.append(f"{key}-collection-path={path.as_posix()}")
+    return "\n".join(lines) + "\n"
+
+
+def _user_collections() -> dict:
+    """The user and company collections of the QElectroTech this server
+    works with, as qet-assistant.json names them: {"custom": Path, ...}.
+
+    The sandbox's own HOME hides them: on Linux QElectroTech finds the user
+    collection under XDG_DATA_HOME, which the sandbox replaces, so a
+    custom:// path failed there while the same call worked on macOS
+    (qelectrotech-source-mirror#1450). Only folders that exist are kept."""
+    folders = (assistant_info() or {}).get("folders") or {}
+    found = {}
+    for scheme in ("custom", "company"):
+        named = folders.get(f"elements_{scheme}")
+        if isinstance(named, str) and named and Path(named).is_dir():
+            found[scheme] = Path(named)
+    return found
 
 
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
@@ -983,7 +1005,11 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
     that has never run `make install` does not exist. Every "common://..."
     path then fails to resolve and the only symptom is addElement()
     reporting "does not resolve to an element" for a file that is plainly
-    there. elements_dir writes the one setting that fixes it. The file name
+    there. elements_dir writes the one setting that fixes it. The user and
+    company collections are written too, from qet-assistant.json, so that
+    custom:// and company:// paths resolve as they do in the application;
+    on Linux the sandbox's XDG_DATA_HOME would otherwise hide the user
+    collection (#1450). The file name
     is not free-choice: QSettings derives it from the organisation and
     application names main.cpp sets before this branch runs. It is written
     twice: QElectroTech/QElectroTech.ini is what a QElectroTech that knows
@@ -1013,14 +1039,18 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
         home = sandbox / "home"
         (home / ".config").mkdir(parents=True)
         (home / ".local" / "share").mkdir(parents=True)
+        coll = None
         if elements_dir:
             coll = Path(elements_dir).expanduser()
             if not coll.is_dir():
                 raise ValueError(f"no such elements directory: {coll}")
+        user = _user_collections()
+        if coll or user:
             cfg = home / ".config" / "QElectroTech"
             cfg.mkdir(parents=True, exist_ok=True)
+            setting = _collection_setting(coll, user.get("custom"), user.get("company"))
             for name in ("QElectroTech.ini", "QElectroTech.conf"):
-                (cfg / name).write_text(_collection_setting(coll), encoding="utf-8")
+                (cfg / name).write_text(setting, encoding="utf-8")
         if script is not None:
             script_path = sandbox / "qet-mcp-edit.js"
             script_path.write_text(script, encoding="utf-8")
@@ -2467,16 +2497,35 @@ def _index_cache_file(root: Path) -> Path:
     return Path(base) / f"element-index-{digest}.json"
 
 
-_INDEX_CACHE_FORMAT = 1
+_INDEX_CACHE_FORMAT = 2
 
 
-def _load_index_cache(root: Path, sig) -> list | None:
+def _collection_prefix(root: Path) -> str:
+    """What goes before a path relative to root to make it a collection path.
+
+    "custom://" for the user collection and "company://" for the company
+    one, as qet-assistant.json names them, with the folder's own place in
+    the collection when root is a folder inside one. Any other directory is
+    taken to be a common collection: that is what qet_edit's elements_dir
+    makes of it, so common:// is what places a symbol found there.
+    """
+    resolved = root.resolve()
+    for scheme, folder in _user_collections().items():
+        try:
+            rel = resolved.relative_to(folder.resolve()).as_posix()
+        except ValueError:
+            continue
+        return f"{scheme}://" + ("" if rel == "." else rel + "/")
+    return "common://"
+
+
+def _load_index_cache(root: Path, sig, prefix: str) -> list | None:
     try:
         data = json.loads(_index_cache_file(root).read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
     if (data.get("format") != _INDEX_CACHE_FORMAT or data.get("root") != str(root)
-            or tuple(data.get("sig") or ()) != tuple(sig)):
+            or data.get("prefix") != prefix or tuple(data.get("sig") or ()) != tuple(sig)):
         return None
     items = data.get("items") or []
     for it in items:
@@ -2484,7 +2533,7 @@ def _load_index_cache(root: Path, sig) -> list | None:
     return items
 
 
-def _save_index_cache(root: Path, sig, items: list) -> None:
+def _save_index_cache(root: Path, sig, prefix: str, items: list) -> None:
     """Best effort: a cache that cannot be written only costs the next
     start its 6 s; it never fails a search."""
     path = _index_cache_file(root)
@@ -2492,7 +2541,8 @@ def _save_index_cache(root: Path, sig, items: list) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         tmp = path.with_suffix(".tmp")
         tmp.write_text(json.dumps({
-            "format": _INDEX_CACHE_FORMAT, "root": str(root), "sig": list(sig),
+            "format": _INDEX_CACHE_FORMAT, "root": str(root), "prefix": prefix,
+            "sig": list(sig),
             "items": [dict(it, haystack=sorted(it["haystack"])) for it in items]}),
             encoding="utf-8")
         os.replace(tmp, path)
@@ -2506,16 +2556,19 @@ def _index_collection(root: Path) -> list:
     Cached for the life of the process and rebuilt when the file count or
     the newest modification time changes -- which is what makes a symbol
     written by qet_element_build findable straight away, without the caller
-    knowing there is an index at all.
+    knowing there is an index at all. The paths carry the scheme of the
+    collection that root is in (_collection_prefix), so the index is
+    rebuilt when that changes too.
     """
     key = str(root.resolve())
     sig = _collection_signature(root)
+    prefix = _collection_prefix(root)
     cached = _ELEMENT_INDEX.get(key)
-    if cached and cached["sig"] == sig:
+    if cached and cached["sig"] == sig and cached["prefix"] == prefix:
         return cached["items"]
-    items = _load_index_cache(root.resolve(), sig)
+    items = _load_index_cache(root.resolve(), sig, prefix)
     if items is not None:
-        _ELEMENT_INDEX[key] = {"sig": sig, "items": items}
+        _ELEMENT_INDEX[key] = {"sig": sig, "prefix": prefix, "items": items}
         return items
 
     items = []
@@ -2535,7 +2588,7 @@ def _index_collection(root: Path) -> list:
         terminals = [t.get("name") or "" for t in ordered]
         rel = f.relative_to(root).as_posix()
         items.append({
-            "path": "common://" + rel,
+            "path": prefix + rel,
             "file": str(f),
             "name": names.get("en") or names.get("fr") or next(iter(names.values()), ""),
             "names": names,
@@ -2547,8 +2600,8 @@ def _index_collection(root: Path) -> list:
             "width": d.get("width"), "height": d.get("height"),
             "haystack": frozenset(_search_words(" ".join([*names.values(), rel, kind]))),
         })
-    _ELEMENT_INDEX[key] = {"sig": sig, "items": items}
-    _save_index_cache(root.resolve(), sig, items)
+    _ELEMENT_INDEX[key] = {"sig": sig, "prefix": prefix, "items": items}
+    _save_index_cache(root.resolve(), sig, prefix, items)
     return items
 
 
@@ -2560,9 +2613,12 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
     Matches every word of query against all the translated names, the
     element's path and its kind, ignoring case and accents -- so a French
     or German search finds the same symbol an English one does. Results
-    carry a common:// path that qet_edit's add_element takes directly, and
-    the terminal names in the order add_conductor indexes them -- which is
-    top to bottom then left to right, not the order the file lists them.
+    carry a path that qet_edit's add_element takes directly (custom:// in
+    the user collection, company:// in the company one, common:// anywhere
+    else, which qet_edit places when given the same directory as
+    elements_dir), and the terminal names in the order add_conductor
+    indexes them -- which is top to bottom then left to right, not the
+    order the file lists them.
     """
     root = Path(directory).expanduser()
     if not root.is_dir():
@@ -5153,7 +5209,9 @@ TOOLS = [
                                    "elements/ directory. Required for \"common://\" "
                                    "paths: the sandboxed run has no settings of its "
                                    "own and would not find the collection otherwise. "
-                                   "An absolute .elmt path works without it.",
+                                   "An absolute .elmt path works only for a file "
+                                   "inside a collection: this one, the user's or "
+                                   "the company's.",
                 },
                 "timeout": {"type": "integer", "default": 180},
             },
@@ -5259,8 +5317,11 @@ TOOLS = [
         "name": "qet_element_search",
         "description": "Find a symbol in an element collection by name (any "
                        "language, ignoring case and accents), link type, kind or "
-                       "terminal count. Results carry a common:// path that "
-                       "qet_edit's add_element takes directly, and the terminal "
+                       "terminal count. Results carry a path that qet_edit's "
+                       "add_element takes directly: custom:// in the user "
+                       "collection, company:// in the company one, common:// "
+                       "in any other directory, which needs that directory "
+                       "as qet_edit's elements_dir. Also the terminal "
                        "names in add_conductor's index order (top-to-bottom, then "
                        "left-to-right; not file order). Indexes the "
                        "collection on first use and re-indexes when it changes, so "
