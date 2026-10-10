@@ -826,7 +826,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="294"/>
         <source>Auto Numbering</source>
-        <translation>Automatische Nummerierung</translation>
+        <translation>Autom. Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="386"/>
@@ -1512,7 +1512,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Auto Numbering</source>
-        <translation>Automatische Nummerierung:</translation>
+        <translation>Autom. Nummerierung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
@@ -3468,7 +3468,7 @@ Der angezeigte Name des Elements lässt sich separat in den Eigenschaften des El
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="321"/>
         <source>Exclude from the bill of materials</source>
-        <translation>Aus der Materialliste ausschließen</translation>
+        <translation>Aus Materialliste ausschließen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="486"/>
@@ -3504,7 +3504,7 @@ Soll sie erstellt werden?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="777"/>
         <source>Automatic numbering</source>
-        <translation>Automatische Nummerierung</translation>
+        <translation>Autom. Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="784"/>
@@ -3565,7 +3565,7 @@ Soll sie erstellt werden?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="982"/>
         <source>None (name entered by hand)</source>
-        <translation>Keine (von Hand eingegebener Name)</translation>
+        <translation>Keine (von Hand vergeben)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="1001"/>
@@ -3702,7 +3702,7 @@ Fortfahren?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclude from the bill of materials</source>
-        <translation>Aus der Materialliste ausschließen</translation>
+        <translation>Aus Materialliste ausschließen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
