@@ -1642,6 +1642,7 @@ void Element::initLink(QETProject *prj)
 			}
 		}
 	}
+	restoreSavedLinkOrder();
 	tmp_uuids_link.clear();
 }
 
@@ -1669,7 +1670,34 @@ void Element::initLink(const QList<Element *> &candidates)
 			}
 		}
 	}
+	restoreSavedLinkOrder();
 	tmp_uuids_link.clear();
+}
+
+/**
+	@brief Element::restoreSavedLinkOrder
+	Put connected_elements back in the order tmp_uuids_link saved them.
+	Partners link in the order the folios' items are visited, and for
+	items at the same height that order changes from run to run, so a
+	master's contacts were saved in a different order each time.
+	Linked elements missing from the saved list keep their place after it.
+*/
+void Element::restoreSavedLinkOrder()
+{
+	QList<Element *> ordered;
+	for (const auto &link_info : std::as_const(tmp_uuids_link)) {
+		for (Element *elmt : std::as_const(connected_elements)) {
+			if (elmt->uuid() == link_info.uuid && !ordered.contains(elmt)) {
+				ordered << elmt;
+				break;
+			}
+		}
+	}
+	for (Element *elmt : std::as_const(connected_elements)) {
+		if (!ordered.contains(elmt))
+			ordered << elmt;
+	}
+	connected_elements = ordered;
 }
 
 /**

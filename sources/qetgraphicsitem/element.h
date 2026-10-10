@@ -328,6 +328,7 @@ class Element : public QetGraphicsItem
 		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
 
 	private:
+		void restoreSavedLinkOrder();
 		bool m_must_highlight = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;
