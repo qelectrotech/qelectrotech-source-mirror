@@ -193,6 +193,7 @@ Diagram::Diagram(QETProject *project) :
 	 * http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
 	 */
 
+	border_and_titleblock.setOwnerFolio(this);
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter_ = new QGraphicsLineItem(nullptr);
@@ -1701,6 +1702,7 @@ bool Diagram::fromXml(QDomElement &document,
 			// persisted, or uuid already taken by another folio) gets a
 			// deterministic one instead, see derivedUuid().
 		const QUuid persisted_uuid(root.attribute(QStringLiteral("uuid")));
+		const QUuid old_uuid = m_uuid;
 		if (persisted_uuid.isNull()) {
 			m_uuid = derivedUuid(root, QStringLiteral("legacy"));
 		} else if (uuidUsedByOtherDiagram(persisted_uuid)) {
@@ -1709,6 +1711,9 @@ bool Diagram::fromXml(QDomElement &document,
 		} else {
 			m_uuid = persisted_uuid;
 		}
+			//A placed folio's stored title block follows its uuid
+		if (m_project && m_project->dataBase())
+			m_project->dataBase()->folioUuidChanged(this, old_uuid);
 
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);

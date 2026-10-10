@@ -972,6 +972,7 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 void projectDataBase::addDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
+	placeFolio(diagram);
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 	if(!m_insert_diagram_query.exec()) {
@@ -1083,6 +1084,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
 	const QString uuid_str = diagram->uuid().toString();
+	unplaceFolio(diagram, diagram->uuid());
 		//Its symbols are no longer placed (they live on in the undo stack)
 	for (Element *element : diagram->elements())
 		unplaceElement(element, element->uuid());
@@ -1794,6 +1796,21 @@ bool projectDataBase::createDataBase()
 			"PRIMARY KEY (element_uuid, ord))"))) {
 		qDebug() << " element_information_table query : " << query_.lastError();
 	}
+		//Create the folio_titleblock table: the title block properties of
+		//every folio, as a folio saves them, the store folios write
+		//through (storeFolioTitleBlock()). One row per property, then one
+		//per additional field ("custom:" and its name).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_titleblock ("
+			"diagram_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (diagram_uuid, ord))"))) {
+		qDebug() << " folio_titleblock_table query : " << query_.lastError();
+	}
+
 
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
@@ -2496,6 +2513,140 @@ QStringList projectDataBase::elementInformationMismatches() const
 		if (rows.value(0).toInt() != expected)
 			out << QStringLiteral("table holds %1 rows, the cache %2").arg(rows.value(0).toInt()).arg(expected);
 	}
+	return out;
+}
+
+/**
+	@brief projectDataBase::folioTitleBlock
+	@return the stored title block properties of the folio @p folio
+*/
+TitleBlockProperties projectDataBase::folioTitleBlock(const QUuid &folio) const
+{
+	return m_folio_titleblocks.value(folio);
+}
+
+/**
+	@brief projectDataBase::placedFolio
+	@return the folio of the project holding @p folio, or nullptr
+*/
+Diagram *projectDataBase::placedFolio(const QUuid &folio) const
+{
+	return m_placed_folios.value(folio);
+}
+
+/**
+	@brief projectDataBase::storeFolioTitleBlock
+	Store @p properties as the title block of the folio @p folio, in the
+	folio_titleblock table and the cache in front of it.
+*/
+void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockProperties &properties)
+{
+	if (folio.isNull()) return;
+	auto known = m_folio_titleblocks.find(folio);
+	if (known != m_folio_titleblocks.end() && *known == properties) return;
+	m_folio_titleblocks.insert(folio, properties);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioTitleBlock remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO folio_titleblock (diagram_uuid, ord, name, value, show) "
+								  "VALUES (:uuid, :ord, :name, :value, :show)"));
+	int ord = 0;
+	auto row = [&](const QString &name, const QString &value, bool show) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), name);
+		insert.bindValue(QStringLiteral(":value"), value);
+		insert.bindValue(QStringLiteral(":show"), show ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeFolioTitleBlock insert error : " << insert.lastError();
+		}
+	};
+	row(QStringLiteral("title"), properties.title, true);
+	row(QStringLiteral("author"), properties.author, true);
+	row(QStringLiteral("date"), properties.date.isValid()
+			? properties.date.toString(Qt::ISODate) : QString(), true);
+	row(QStringLiteral("filename"), properties.filename, true);
+	row(QStringLiteral("plant"), properties.plant, true);
+	row(QStringLiteral("locmach"), properties.locmach, true);
+	row(QStringLiteral("indexrev"), properties.indexrev, true);
+	row(QStringLiteral("version"), properties.version, true);
+	row(QStringLiteral("folio"), properties.folio, true);
+	row(QStringLiteral("auto_page_num"), properties.auto_page_num, true);
+	row(QStringLiteral("template_name"), properties.template_name, true);
+	row(QStringLiteral("display_at"), properties.display_at == Qt::RightEdge
+			? QStringLiteral("right") : QStringLiteral("bottom"), true);
+	for (const QString &key : properties.context.keys()) {
+		row(QStringLiteral("custom:") + key, properties.context.value(key).toString(),
+			properties.context.keyMustShow(key));
+	}
+}
+
+/**
+	@brief projectDataBase::placeFolio
+	@p folio is now a folio of the project: its title block is stored under
+	its uuid.
+*/
+void projectDataBase::placeFolio(Diagram *folio)
+{
+	m_placed_folios.insert(folio->uuid(), folio);
+	storeFolioTitleBlock(folio->uuid(), folio->border_and_titleblock.localTitleBlock());
+}
+
+/**
+	@brief projectDataBase::unplaceFolio
+	@p folio no longer holds @p uuid (it was removed, or its uuid changed):
+	the title block stored under it goes.
+*/
+void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
+{
+	if (m_placed_folios.value(uuid) != folio) return;
+	m_placed_folios.remove(uuid);
+	m_folio_titleblocks.remove(uuid);
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio error : " << remove.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::folioUuidChanged
+	The uuid of the placed folio @p folio changed from @p old_uuid: its
+	stored title block follows it.
+*/
+void projectDataBase::folioUuidChanged(Diagram *folio, const QUuid &old_uuid)
+{
+	if (old_uuid == folio->uuid() || m_placed_folios.value(old_uuid) != folio) return;
+	unplaceFolio(folio, old_uuid);
+	placeFolio(folio);
+}
+
+/**
+	@brief projectDataBase::folioTitleBlockMismatches
+	Compare the store with every folio's own title block, both ways.
+*/
+QStringList projectDataBase::folioTitleBlockMismatches() const
+{
+	QStringList out;
+	QSet<QUuid> folios;
+	for (Diagram *diagram : m_project->diagrams()) {
+		folios.insert(diagram->uuid());
+		if (m_placed_folios.value(diagram->uuid()) != diagram)
+			out << diagram->uuid().toString() + QStringLiteral(": not stored");
+		else if (TitleBlockProperties(m_folio_titleblocks.value(diagram->uuid()))
+				 != diagram->border_and_titleblock.localTitleBlock())
+			out << diagram->uuid().toString() + QStringLiteral(": differs");
+	}
+	for (auto it = m_folio_titleblocks.constBegin() ; it != m_folio_titleblocks.constEnd() ; ++it)
+		if (!folios.contains(it.key()))
+			out << it.key().toString() + QStringLiteral(": stored, not a folio");
 	return out;
 }
 

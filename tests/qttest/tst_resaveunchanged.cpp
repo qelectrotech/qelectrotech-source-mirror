@@ -337,8 +337,9 @@ private slots:
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
-	// The store of symbol information (DB-ACCESSORS-PLAN.md stage 4.1)
-	// agrees with every placed symbol once a project is open: every example.
+	// The stores of symbol information and folio title blocks agree with
+	// every placed symbol
+	// and folio once a project is open: every example.
 	void elementInfoStoreAgrees_data()
 	{
 		QTest::addColumn<QString>("project");
@@ -352,6 +353,21 @@ private slots:
 		const QString out = runChecked({QStringLiteral("--resave"), project,
 										m_dir.filePath(QStringLiteral("store%1.qet").arg(m_run))});
 		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
+		QVERIFY2(out.contains(QStringLiteral("folio title block store: 0 differ")), qPrintable(out.right(600)));
+	}
+
+	// Title block fields stamped on every folio go through the store, and
+	// the saved folios carry them (a folio saves what the store holds).
+	void folioTitleBlockStoreAfterSetTitleBlock()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("stamped.qet"));
+		const QString out = runChecked({QStringLiteral("--set-titleblock"),
+										QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), saved,
+										QStringLiteral("author=Ann"), QStringLiteral("extrafield=Hello")});
+		QVERIFY2(out.contains(QStringLiteral("folio title block store: 0 differ")), qPrintable(out.right(600)));
+		const QByteArray xml = read(saved);
+		QCOMPARE(xml.count("<diagram "), xml.count("author=\"Ann\"") - 1);
+		QCOMPARE(xml.count("<diagram "), xml.count("name=\"extrafield\"") - 1);
 	}
 
 	// ... and after a copy of a symbol, which briefly shares its original's

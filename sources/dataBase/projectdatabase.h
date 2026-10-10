@@ -28,6 +28,7 @@
 #include <QUuid>
 
 #include "../diagramcontext.h"
+#include "../titleblockproperties.h"
 
 class Element;
 class QETProject;
@@ -117,6 +118,17 @@ class projectDataBase : public QObject
 			//Placed symbols whose information differs from the store's,
 			//each as "uuid: why"; empty when they all agree
 		QStringList elementInformationMismatches() const;
+
+			//The title block properties of every folio of the project, by
+			//folio uuid: the store each folio's title block is written
+			//through. A folio not in a
+			//project keeps its own.
+		TitleBlockProperties folioTitleBlock(const QUuid &folio) const;
+		Diagram *placedFolio(const QUuid &folio) const;
+		void storeFolioTitleBlock(const QUuid &folio, const TitleBlockProperties &properties);
+		void placeFolio(Diagram *folio);
+		void folioUuidChanged(Diagram *folio, const QUuid &old_uuid);
+		QStringList folioTitleBlockMismatches() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -251,6 +263,9 @@ class projectDataBase : public QObject
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
 		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
+		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
+		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
+		void unplaceFolio(Diagram *folio, const QUuid &uuid);
 		void placeElement(Element *element);
 		Element *otherHolder(const QUuid &uuid, const Element *element) const;
 		void writeElementRows(Element *element);

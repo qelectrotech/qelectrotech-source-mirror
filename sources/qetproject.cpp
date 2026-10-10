@@ -1705,13 +1705,16 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 */
 QDomDocument QETProject::toXml()
 {
-		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the store of symbol
-		//information (DB-ACCESSORS-PLAN.md) agrees with every placed
-		//symbol, at each save. A test and debugging aid; it changes nothing.
+		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
+		//information and folio title blocks (DB-ACCESSORS-PLAN.md) agree
+		//with every placed symbol and folio, at each save. A test and debugging aid; it changes nothing.
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1) {
 		const QStringList mismatches = m_data_base.elementInformationMismatches();
 		qWarning().noquote() << "element information store:" << mismatches.size() << "differ"
 							 << mismatches.mid(0, 5).join(QStringLiteral(", "));
+		const QStringList folios = m_data_base.folioTitleBlockMismatches();
+		qWarning().noquote() << "folio title block store:" << folios.size() << "differ"
+							 << folios.mid(0, 5).join(QStringLiteral(", "));
 	}
 	// racine du projet
 	QDomDocument xml_doc;
@@ -2445,6 +2448,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
 			diagram->initFromXml(diagram_xml_element);
+			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
 		}
