@@ -188,6 +188,9 @@ private slots:
 	// with no data. industrial.qet's folio 46 (index 45) holds such a part.
 	void deletedFolioKeepsTableChain()
 	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
 		const QString out = m_dir.filePath(QStringLiteral("deleted_folio.qet"));
 		const QString script = m_dir.filePath(QStringLiteral("deleted_folio.js"));
 		QFile js(script);
