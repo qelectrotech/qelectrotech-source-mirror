@@ -833,6 +833,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTSectional), ElementData::TTSectional);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTDiode),     ElementData::TTDiode);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTGround),    ElementData::TTGround);
+		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTAntiParallelDiodes), ElementData::TTAntiParallelDiodes);
 
 		return qcb;
 	}

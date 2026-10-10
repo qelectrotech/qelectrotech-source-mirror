@@ -90,6 +90,31 @@ void drawGroundSymbol(QPainter *painter)
 	painter->drawLine(QPointF{-1, 4}, QPointF{1, 4});
 }
 
+	//Two diodes side by side, wired in anti-parallel between the top and
+	//the bottom of the terminal (current flows through the left one from
+	//the top to the bottom and through the right one the other way)
+void drawAntiParallelDiodesSymbol(QPainter *painter)
+{
+	painter->drawLine(QPointF{0, -7}, QPointF{0, -5});
+	painter->drawLine(QPointF{-5, -5}, QPointF{5, -5});
+	painter->drawLine(QPointF{0, 5}, QPointF{0, 7});
+	painter->drawLine(QPointF{-5, 5}, QPointF{5, 5});
+
+		//Left diode, anode on top
+	const QPointF left_diode[3] { {-8, -3}, {-2, -3}, {-5, 2} };
+	painter->drawLine(QPointF{-5, -5}, QPointF{-5, -3});
+	painter->drawPolygon(left_diode, 3);
+	painter->drawLine(QPointF{-8, 2}, QPointF{-2, 2});
+	painter->drawLine(QPointF{-5, 2}, QPointF{-5, 5});
+
+		//Right diode, anode at the bottom
+	const QPointF right_diode[3] { {2, 2}, {8, 2}, {5, -3} };
+	painter->drawLine(QPointF{5, -5}, QPointF{5, -3});
+	painter->drawPolygon(right_diode, 3);
+	painter->drawLine(QPointF{2, -3}, QPointF{8, -3});
+	painter->drawLine(QPointF{5, 2}, QPointF{5, 5});
+}
+
 /**
  * @brief drawScaled
  * Call @a draw with the painter moved by @a dx and scaled by @a factor.
@@ -147,6 +172,7 @@ void drawTypeSymbol(QPainter *painter, const QRectF &box, ElementData::TerminalT
 			case ElementData::TTSectional : drawSectionalSymbol(p); break;
 			case ElementData::TTDiode     : drawDiodeSymbol(p); break;
 			case ElementData::TTGround    : drawGroundSymbol(p); break;
+			case ElementData::TTAntiParallelDiodes : drawAntiParallelDiodesSymbol(p); break;
 			default: break;
 		}
 	};

@@ -840,6 +840,8 @@ QString ElementData::terminalTypeToString(ElementData::TerminalType type)
 			return QStringLiteral("diode");
 		case ElementData::TTGround:
 			return QStringLiteral("ground");
+		case ElementData::TTAntiParallelDiodes:
+			return QStringLiteral("antiparallel_diodes");
 	}
 	return QStringLiteral("generic");
 }
@@ -856,6 +858,8 @@ ElementData::TerminalType ElementData::terminalTypeFromString(const QString &str
 		return ElementData::TTDiode;
 	} else if (string == QLatin1String("ground")) {
 		return ElementData::TTGround;
+	} else if (string == QLatin1String("antiparallel_diodes")) {
+		return ElementData::TTAntiParallelDiodes;
 	}
 
 	qDebug() << "ElementData::terminalTypeFromString : string : "
@@ -877,6 +881,8 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 			return QObject::tr("Diode", "diode terminal element type");
 		case ElementData::TTGround:
 			return QObject::tr("Ground", "ground terminal element type");
+		case ElementData::TTAntiParallelDiodes:
+			return QObject::tr("Anti-parallel diodes", "anti-parallel diodes terminal element type");
 	}
 	return QObject::tr("Generic", "generic terminal element type");
 }

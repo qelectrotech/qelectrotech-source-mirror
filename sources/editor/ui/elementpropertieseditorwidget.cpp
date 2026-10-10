@@ -225,6 +225,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_terminal_type_cb->addItem(tr("Sectionable"), ElementData::TTSectional);
 	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::TTDiode);
 	ui->m_terminal_type_cb->addItem(tr("Ground"),        ElementData::TTGround);
+	ui->m_terminal_type_cb->addItem(tr("Anti-parallel diodes"), ElementData::TTAntiParallelDiodes);
 
 	ui->m_terminal_func_cb->addItem(tr("Generic"), ElementData::TFGeneric);
 	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
