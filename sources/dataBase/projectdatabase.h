@@ -126,6 +126,8 @@ class projectDataBase : public QObject
 		void drawingItemDestroyed(QObject *object);
 			//Queue the sender()'s link rows for rewriting.
 		void linksChanged();
+			//Queue the sender() element's folio cell for rewriting.
+		void elementMoved();
 
 	public:
 
@@ -139,6 +141,8 @@ class projectDataBase : public QObject
 		void createWiringListView();
 		void createDrawingItemView();
 		void populateDiagramTable();
+		void updateFolioPositions();
+		void flushElementPositions();
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
@@ -214,6 +218,10 @@ class projectDataBase : public QObject
 			//written: a link is made first and its contact group set after,
 			//so the rows are written when next read, as drawing items are.
 		QList<QPointer<Element>> m_dirty_link_elements;
+			//Elements moved since their folio cell was last written: a move
+			//sends xChanged and yChanged for every step of a drag, so the
+			//cell is written when next read, as drawing items are.
+		QList<QPointer<Element>> m_moved_elements;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:
