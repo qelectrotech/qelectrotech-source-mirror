@@ -17,13 +17,13 @@
 */
 #include "diagrambgcolorbutton.h"
 
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../palettegraphicsview.h"
-#include "../qetdiagrameditor.h"
-#include "../projectview.h"
-#include "../qetproject.h"
-#include "../utils/qetsettings.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <palettegraphicsview.h>
+#include <qetdiagrameditor.h>
+#include <projectview.h>
+#include <qetproject.h>
+#include <utils/qetsettings.h>
 
 #include <QApplication>
 #include <QColorDialog>

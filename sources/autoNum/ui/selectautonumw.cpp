@@ -17,13 +17,13 @@
 */
 #include "selectautonumw.h"
 
-#include "../assignvariables.h"
+#include <autoNum/assignvariables.h>
 #include "formulaautonumberingw.h"
 #include "numparteditorw.h"
 #include "ui_formulaautonumberingw.h"
 #include "ui_selectautonumw.h"
 
-#include "../../qeticons.h"
+#include <qeticons.h>
 
 #include <QHBoxLayout>
 #include <QMessageBox>

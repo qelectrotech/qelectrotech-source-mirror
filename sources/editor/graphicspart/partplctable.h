@@ -19,7 +19,7 @@
 #define PARTPLCTABLE_H
 
 #include "customelementgraphicpart.h"
-#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
 
 #include <QVector>
 

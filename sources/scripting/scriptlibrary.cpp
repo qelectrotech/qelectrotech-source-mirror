@@ -17,7 +17,7 @@
 */
 #include "scriptlibrary.h"
 
-#include "../qetapp.h"
+#include <qetapp.h>
 
 #include <QDir>
 #include <QFile>

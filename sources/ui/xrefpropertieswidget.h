@@ -18,7 +18,7 @@
 #ifndef XREFPROPERTIESWIDGET_H
 #define XREFPROPERTIESWIDGET_H
 
-#include "../properties/xrefproperties.h"
+#include <properties/xrefproperties.h>
 
 #include <QHash>
 #include <QWidget>

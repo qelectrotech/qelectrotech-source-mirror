@@ -18,7 +18,7 @@
 #include "materialselectiondialog.h"
 
 #include "materialentrydialog.h"
-#include "../qetmessagebox.h"
+#include <qetmessagebox.h>
 #include "ui_materialselectiondialog.h"
 
 #include <QAbstractButton>

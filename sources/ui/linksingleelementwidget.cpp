@@ -17,16 +17,16 @@
 */
 #include "linksingleelementwidget.h"
 #include "contactgroupselectiondialog.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetgraphicsitem/element.h"
-#include "../elementprovider.h"
-#include "../undocommand/linkelementcommand.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
-#include "../qetgraphicsitem/masterelement.h"
-#include "../ui_linksingleelementwidget.h"
+#include <qetgraphicsitem/conductor.h>
+#include <diagram.h>
+#include <diagramposition.h>
+#include <qetgraphicsitem/element.h>
+#include <elementprovider.h>
+#include <undocommand/linkelementcommand.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <qetgraphicsitem/masterelement.h>
+#include <ui_linksingleelementwidget.h>
 
 #include <QTreeWidgetItem>
 #include <QInputDialog>

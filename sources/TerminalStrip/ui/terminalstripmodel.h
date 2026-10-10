@@ -25,7 +25,7 @@
 #include <QHash>
 #include <QColor>
 
-#include "../terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 #include "modelTerminalData.h"
 
 //Code to use QColor as key for QHash

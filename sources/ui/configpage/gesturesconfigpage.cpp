@@ -17,9 +17,9 @@
 */
 #include "gesturesconfigpage.h"
 
-#include "../../gesturesettings.h"
-#include "../../qeticons.h"
-#include "../../shortcutmanager.h"
+#include <gesturesettings.h>
+#include <qeticons.h>
+#include <shortcutmanager.h>
 
 #include <QAction>
 #include <QComboBox>

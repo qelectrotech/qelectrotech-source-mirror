@@ -16,10 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "sortterminalstripcommand.h"
-#include "../terminalstrip.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../../utils/qetutils.h"
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
+#include <utils/qetutils.h>
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),

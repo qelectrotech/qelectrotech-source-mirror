@@ -19,7 +19,7 @@
 #define SHORTCUTBARCONFIGPAGE_H
 
 #include "configpage.h"
-#include "../../shortcutbarsettings.h"
+#include <shortcutbarsettings.h>
 
 #include <QHash>
 

@@ -18,7 +18,7 @@
 
 #include "changetitleblockcommand.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 /**
 	@brief ChangeTitleBlockCommand::ChangeTitleBlockCommand

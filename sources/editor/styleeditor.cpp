@@ -17,9 +17,9 @@
 */
 #include "styleeditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../editor/graphicspart/customelementgraphicpart.h"
-#include "../qeticons.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <editor/graphicspart/customelementgraphicpart.h>
+#include <qeticons.h>
 
 #include <QCheckBox>
 #include <QComboBox>

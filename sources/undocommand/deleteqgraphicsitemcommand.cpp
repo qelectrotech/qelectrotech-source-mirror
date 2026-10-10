@@ -16,23 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "deleteqgraphicsitemcommand.h"
-#include "../wiringrules.h"
+#include <wiringrules.h>
 
-#include "../diagram.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetproject.h>
 #include "addgraphicsobjectcommand.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/conductortextitem.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../shownkinds.h"
-#include "../qetgraphicsitem/terminal.h"
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/conductortextitem.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <shownkinds.h>
+#include <qetgraphicsitem/terminal.h>
 #include "addelementtextcommand.h"
-#include "../TerminalStrip/realterminal.h"
-#include "../TerminalStrip/physicalterminal.h"
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/physicalterminal.h>
 
 /**
 	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand

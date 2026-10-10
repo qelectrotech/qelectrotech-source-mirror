@@ -17,21 +17,21 @@
 */
 #include "autonumberingdockwidget.h"
 
-#include "../../diagram.h"
-#include "../../diagramview.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../qeticons.h"
-#include "../elementautonumschemecommand.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <qetgraphicsitem/element.h>
+#include <qeticons.h>
+#include <autoNum/elementautonumschemecommand.h>
 #include "counterwarning.h"
 #include "renumberpreviewdialog.h"
-#include "../../qetapp.h"
-#include "../../shortcutmanager.h"
-#include "../../titleblockproperties.h"
-#include "../../ui/projectpropertiesdialog.h"
-#include "../numerotationcontext.h"
-#include "../numerotationcontextcommands.h"
+#include <qetapp.h>
+#include <shortcutmanager.h>
+#include <titleblockproperties.h>
+#include <ui/projectpropertiesdialog.h>
+#include <autoNum/numerotationcontext.h>
+#include <autoNum/numerotationcontextcommands.h>
 #include "ui_autonumberingdockwidget.h"
-#include "../../undocommand/changetitleblockcommand.h"
+#include <undocommand/changetitleblockcommand.h>
 
 #include <QComboBox>
 #include <QHBoxLayout>

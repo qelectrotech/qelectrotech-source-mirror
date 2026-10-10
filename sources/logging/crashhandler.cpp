@@ -18,7 +18,7 @@
 #include "crashhandler.h"
 
 #include "logring.h"
-#include "../qetversion.h"
+#include <qetversion.h>
 
 #include <QByteArray>
 #include <QSysInfo>

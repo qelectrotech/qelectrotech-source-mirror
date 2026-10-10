@@ -17,9 +17,9 @@
 */
 #include "qetgraphicsheaderitem.h"
 
-#include "../../createdxf.h"
-#include "../../qetxml.h"
-#include "../../utils/qetutils.h"
+#include <createdxf.h>
+#include <qetxml.h>
+#include <utils/qetutils.h>
 #include "qabstractitemmodel.h"
 
 #include <QFontMetrics>

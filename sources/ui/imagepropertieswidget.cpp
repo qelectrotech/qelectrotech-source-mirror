@@ -17,11 +17,11 @@
 */
 #include "imagepropertieswidget.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/diagramimageitem.h"
-#include "../qeticons.h"
-#include "../ui_imagepropertieswidget.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetgraphicsitem/diagramimageitem.h>
+#include <qeticons.h>
+#include <ui_imagepropertieswidget.h>
 #include <QSignalBlocker>
 #include <QDialog>
 #include <QEvent>

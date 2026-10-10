@@ -18,8 +18,8 @@
 #ifndef CONDUCTORPROPERTIESEDITORWIDGET_H
 #define CONDUCTORPROPERTIESEDITORWIDGET_H
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
-#include "../conductorproperties.h"
+#include <PropertiesEditor/propertieseditorwidget.h>
+#include <conductorproperties.h>
 
 #include <QList>
 #include <QMetaObject>

@@ -17,8 +17,8 @@
 */
 #include "terminaldata.h"
 
-#include "../qetapp.h"
-#include "../utils/qetutils.h"
+#include <qetapp.h>
+#include <utils/qetutils.h>
 
 #include <QGraphicsObject>
 

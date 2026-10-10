@@ -17,12 +17,12 @@
 */
 #include "addtabledialog.h"
 
-#include "../../dataBase/ui/elementquerywidget.h"
-#include "../../ui/marginseditdialog.h"
-#include "../../utils/qetutils.h"
+#include <dataBase/ui/elementquerywidget.h>
+#include <ui/marginseditdialog.h>
+#include <utils/qetutils.h>
 #include "ui_addtabledialog.h"
 
-#include "../../qet.h"
+#include <qet.h>
 #include <QFontDialog>
 
 /**

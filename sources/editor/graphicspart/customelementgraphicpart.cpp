@@ -17,8 +17,8 @@
 */
 #include "customelementgraphicpart.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../elementscene.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <editor/elementscene.h>
 
 #include <QApplication>
 #include <QRegularExpression>

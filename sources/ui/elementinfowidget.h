@@ -18,7 +18,7 @@
 #ifndef ELEMENTINFOWIDGET_H
 #define ELEMENTINFOWIDGET_H
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QWidget>

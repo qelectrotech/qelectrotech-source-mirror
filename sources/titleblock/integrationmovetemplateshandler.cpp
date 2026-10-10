@@ -17,7 +17,7 @@
 */
 #include "integrationmovetemplateshandler.h"
 
-#include "../qetmessagebox.h"
+#include <qetmessagebox.h>
 #include "templatescollection.h"
 
 /**

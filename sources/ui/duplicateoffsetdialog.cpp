@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "duplicateoffsetdialog.h"
-#include "../qet.h"
+#include <qet.h>
 
 #include <QComboBox>
 #include <QDialogButtonBox>

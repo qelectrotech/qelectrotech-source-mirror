@@ -16,15 +16,15 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstableitem.h"
-#include "../../shownkinds.h"
-#include "../../qetproject.h"
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../createdxf.h"
-#include "../../diagram.h"
-#include "../../elementprovider.h"
-#include "../../qetmessagebox.h"
-#include "../../qetxml.h"
-#include "../../utils/qetutils.h"
+#include <shownkinds.h>
+#include <qetproject.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <createdxf.h>
+#include <diagram.h>
+#include <elementprovider.h>
+#include <qetmessagebox.h>
+#include <qetxml.h>
+#include <utils/qetutils.h>
 #include "projectdbmodel.h"
 #include "qetgraphicsheaderitem.h"
 

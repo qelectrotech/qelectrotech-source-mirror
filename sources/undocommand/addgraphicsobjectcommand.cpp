@@ -16,10 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/qetgraphicsitem.h"
-#include "../qetgraphicsitem/independenttextitem.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../diagram.h"
+#include <qetgraphicsitem/qetgraphicsitem.h>
+#include <qetgraphicsitem/independenttextitem.h>
+#include <qetgraphicsitem/conductor.h>
+#include <diagram.h>
 
 /**
  * @brief AddGraphicsObjectCommand::AddGraphicsObjectCommand

@@ -17,7 +17,7 @@
 */
 #include "simpleelement.h"
 
-#include "../diagram.h"
+#include <diagram.h>
 
 /**
 	@brief SimpleElement::SimpleElement

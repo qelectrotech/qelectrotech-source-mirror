@@ -21,13 +21,13 @@
 #include "macrorecorder.h"
 #include "qetscripting.h"
 #include "scriptlibrary.h"
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qet.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetproject.h"
-#include "../utils/qetsettings.h"
+#include <diagram.h>
+#include <diagramview.h>
+#include <qet.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetproject.h>
+#include <utils/qetsettings.h>
 
 #include <QApplication>
 #include <QFontDatabase>
@@ -63,8 +63,8 @@
 #include <QPrinter>
 #include <QDialogButtonBox>
 #include <QLabel>
-#include "../projectview.h"
-#include "../shortcutmanager.h"
+#include <projectview.h>
+#include <shortcutmanager.h>
 
 namespace {
 	/**

@@ -18,7 +18,7 @@
 #ifndef DIAGRAMCONTEXTWIDGET_H
 #define DIAGRAMCONTEXTWIDGET_H
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 
 #include <QWidget>
 

@@ -18,9 +18,9 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include "configpage.h"
-#include "../projectpropertiesdialog.h"
-#include "../titleblockpropertieswidget.h"
-#include "../autoNum/numerotationcontext.h"
+#include <ui/projectpropertiesdialog.h>
+#include <ui/titleblockpropertieswidget.h>
+#include <autoNum/numerotationcontext.h>
 
 #include <QDialog>
 #include <QtWidgets>

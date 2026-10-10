@@ -20,7 +20,7 @@
 
 
 #include "element.h"
-#include "../TerminalStrip/terminalstrip.h"
+#include <TerminalStrip/terminalstrip.h>
 
 class QETProject;
 class RealTerminal;

@@ -16,22 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
-#include "../darkimagerendering.h"
-#include "../shownkinds.h"
+#include <darkimagerendering.h>
+#include <shownkinds.h>
 
-#include "../PropertiesEditor/propertieseditordialog.h"
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../diagramview.h"
-#include "../qet.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qeticons.h"
-#include "../ui/imagepropertieswidget.h"
-#include "../ui/imagecropdialog.h"
-#include "../ui/imagetransparentcolordialog.h"
-#include "../utils/qetutils.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <PropertiesEditor/propertieseditordialog.h>
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <diagramview.h>
+#include <qet.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qeticons.h>
+#include <ui/imagepropertieswidget.h>
+#include <ui/imagecropdialog.h>
+#include <ui/imagetransparentcolordialog.h>
+#include <utils/qetutils.h>
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
 
 #include <QKeyEvent>
 #include <QAction>

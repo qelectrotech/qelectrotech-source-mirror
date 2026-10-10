@@ -17,9 +17,9 @@
 */
 #include "mirrorselectioncommand.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/element.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
 
 /**
 	@brief MirrorSelectionCommand::MirrorSelectionCommand

@@ -16,9 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "changeelementinformationcommand.h"
-#include "../qetproject.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/element.h"
+#include <qetproject.h>
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
 
 #include <QObject>
 

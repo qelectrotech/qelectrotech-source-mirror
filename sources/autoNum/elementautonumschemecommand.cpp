@@ -19,10 +19,10 @@
 
 #include "assignvariables.h"
 #include "numerotationcontextcommands.h"
-#include "../diagram.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
+#include <qetinformation.h>
+#include <qetproject.h>
 
 #include <QRegularExpression>
 

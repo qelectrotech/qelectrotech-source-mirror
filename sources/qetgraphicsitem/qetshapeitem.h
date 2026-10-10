@@ -18,7 +18,7 @@
 #ifndef QETSHAPEITEM_H
 #define QETSHAPEITEM_H
 
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QetGraphicsItemModeler/qetgraphicshandleritem.h>
 #include "qetgraphicsitem.h"
 #include "shapetransform.h"
 

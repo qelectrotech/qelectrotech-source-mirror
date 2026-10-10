@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstriplayoutpattern.h"
-#include "../../../utils/qetutils.h"
+#include <utils/qetutils.h>
 
 #include <QDomDocument>
 

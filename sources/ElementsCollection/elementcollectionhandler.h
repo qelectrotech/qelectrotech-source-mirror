@@ -18,7 +18,7 @@
 #ifndef ELEMENTCOLLECTIONHANDLER_H
 #define ELEMENTCOLLECTIONHANDLER_H
 
-#include "../NameList/nameslist.h"
+#include <NameList/nameslist.h>
 #include "elementslocation.h"
 
 class QWidget;

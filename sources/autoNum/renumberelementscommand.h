@@ -23,7 +23,7 @@
 #include <QHash>
 #include <QVector>
 
-#include "../diagramcontext.h"
+#include <diagramcontext.h>
 #include "assignvariables.h" // defines autonum::sequentialNumbers
 
 class Element;

@@ -17,7 +17,7 @@
 */
 #include "materiallist.h"
 
-#include "../qetinformation.h"
+#include <qetinformation.h>
 
 #include <QCoreApplication>
 #include <QDir>

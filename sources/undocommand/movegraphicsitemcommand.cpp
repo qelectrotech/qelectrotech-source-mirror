@@ -20,11 +20,11 @@
 
 #include "movegraphicsitemcommand.h"
 
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
-#include "../qetgraphicsitem/conductortextitem.h"
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
+#include <qetgraphicsitem/conductortextitem.h>
 
-#include "../diagram.h"
+#include <diagram.h>
 
 /**
  * @brief MoveGraphicsItemCommand::MoveGraphicsItemCommand

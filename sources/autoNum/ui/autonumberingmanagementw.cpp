@@ -16,13 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "autonumberingmanagementw.h"
-#include "../elementautonumschemecommand.h"
+#include <autoNum/elementautonumschemecommand.h>
 #include "renumberpreviewdialog.h"
 
-#include "../../diagram.h"
-#include "../../qetgraphicsitem/element.h"
-#include "../../qetproject.h"
-#include "../numerotationcontextcommands.h"
+#include <diagram.h>
+#include <qetgraphicsitem/element.h>
+#include <qetproject.h>
+#include <autoNum/numerotationcontextcommands.h>
 #include "formulaautonumberingw.h"
 #include "numparteditorw.h"
 #include "qdebug.h"

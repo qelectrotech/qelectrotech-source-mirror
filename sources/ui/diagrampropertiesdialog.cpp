@@ -17,11 +17,11 @@
 */
 #include "diagrampropertiesdialog.h"
 
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetgraphicsitem/conductortextitem.h"
-#include "../undocommand/changetitleblockcommand.h"
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetgraphicsitem/conductortextitem.h>
+#include <undocommand/changetitleblockcommand.h>
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "projectpropertiesdialog.h"

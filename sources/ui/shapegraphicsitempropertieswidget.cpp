@@ -18,11 +18,11 @@
 
 #include "shapegraphicsitempropertieswidget.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../diagram.h"
-#include "../lastusedstyle.h"
-#include "../qetgraphicsitem/qetshapeitem.h"
-#include "../ui_shapegraphicsitempropertieswidget.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <diagram.h>
+#include <lastusedstyle.h>
+#include <qetgraphicsitem/qetshapeitem.h>
+#include <ui_shapegraphicsitempropertieswidget.h>
 
 #include <QHash>
 

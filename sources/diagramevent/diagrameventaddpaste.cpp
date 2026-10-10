@@ -16,15 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddpaste.h"
-#include "../autoNum/ui/pastenumberingimport.h"
+#include <autoNum/ui/pastenumberingimport.h>
 
-#include "../diagram.h"
-#include "../foliogrid.h"
-#include "../diagramcommands.h"
-#include "../qetapp.h"
-#include "../qetdiagrameditor.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../qetproject.h"
+#include <diagram.h>
+#include <foliogrid.h>
+#include <diagramcommands.h>
+#include <qetapp.h>
+#include <qetdiagrameditor.h>
+#include <qetgraphicsitem/conductor.h>
+#include <qetproject.h>
 
 #include <QSettings>
 

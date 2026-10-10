@@ -17,9 +17,9 @@
 */
 #include "borderpropertieswidget.h"
 
-#include "../diagram.h"
-#include "../qetapp.h"
-#include "../titleblocktemplate.h"
+#include <diagram.h>
+#include <qetapp.h>
+#include <titleblocktemplate.h>
 #include "ui_borderpropertieswidget.h"
 
 #include <iterator>

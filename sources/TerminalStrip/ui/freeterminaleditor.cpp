@@ -18,12 +18,12 @@
 #include "freeterminaleditor.h"
 #include "ui_freeterminaleditor.h"
 
-#include "../undocommand/changeelementdatacommand.h"
-#include "../../diagram.h"
-#include "../../elementprovider.h"
+#include <undocommand/changeelementdatacommand.h>
+#include <diagram.h>
+#include <elementprovider.h>
 #include "freeterminalmodel.h"
-#include "../terminalstrip.h"
-#include "../UndoCommand/addterminaltostripcommand.h"
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/UndoCommand/addterminaltostripcommand.h>
 
 /**
  * @brief FreeTerminalEditor::FreeTerminalEditor

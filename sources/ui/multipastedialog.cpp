@@ -17,17 +17,17 @@
 */
 
 #include "multipastedialog.h"
-#include "../autoNum/elementautonumschemecommand.h"
-#include "../qetproject.h"
-#include "../conductorautonumerotation.h"
-#include "../diagram.h"
-#include "../diagramcommands.h"
-#include "../undocommand/addgraphicsobjectcommand.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../ui_multipastedialog.h"
+#include <autoNum/elementautonumschemecommand.h>
+#include <qetproject.h>
+#include <conductorautonumerotation.h>
+#include <diagram.h>
+#include <diagramcommands.h>
+#include <undocommand/addgraphicsobjectcommand.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/conductor.h>
+#include <ui_multipastedialog.h>
 
-#include "../qet.h"
+#include <qet.h>
 #include <QHash>
 #include <QSettings>
 

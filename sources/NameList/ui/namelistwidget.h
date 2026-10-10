@@ -18,7 +18,7 @@
 #ifndef NAMELISTWIDGET_H
 #define NAMELISTWIDGET_H
 
-#include "../nameslist.h"
+#include <NameList/nameslist.h>
 
 #include <QHash>
 #include <QWidget>

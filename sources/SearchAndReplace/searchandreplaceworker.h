@@ -18,8 +18,8 @@
 #ifndef SEARCHANDREPLACEWORKER_H
 #define SEARCHANDREPLACEWORKER_H
 
-#include "../conductorproperties.h"
-#include "../titleblockproperties.h"
+#include <conductorproperties.h>
+#include <titleblockproperties.h>
 
 #include <QDate>
 

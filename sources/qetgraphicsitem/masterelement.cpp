@@ -16,12 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterelement.h"
-#include "../qetproject.h"
-#include "../diagram.h"
-#include "../qetinformation.h"
+#include <qetproject.h>
+#include <diagram.h>
+#include <qetinformation.h>
 #include "crossrefitem.h"
 #include "dynamicelementtextitem.h"
-#include "../properties/elementdata.h"
+#include <properties/elementdata.h>
 
 #include <QRegularExpression>
 

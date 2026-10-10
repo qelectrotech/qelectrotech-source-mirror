@@ -17,9 +17,9 @@
 */
 #include "texteditor.h"
 
-#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../../ui/alignmenttextdialog.h"
-#include "../graphicspart/parttext.h"
+#include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <ui/alignmenttextdialog.h>
+#include <editor/graphicspart/parttext.h>
 
 #include <cassert>
 

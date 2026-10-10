@@ -16,27 +16,27 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
-#include "../qet.h"
+#include <qet.h>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMessageBox>
 #include <QPushButton>
-#include "../autoNum/elementautonumschemecommand.h"
-#include "../undocommand/freezeelementlabelcommand.h"
-#include "../diagram.h"
-#include "../materiallist/materiallist.h"
-#include "../materiallist/materialselectiondialog.h"
-#include "../qetapp.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetmessagebox.h"
-#include "../dataBase/projectdatabase.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
-#include "../ui/projectpropertiesdialog.h"
-#include "../ui_elementinfowidget.h"
-#include "../undocommand/changeelementinformationcommand.h"
+#include <autoNum/elementautonumschemecommand.h>
+#include <undocommand/freezeelementlabelcommand.h>
+#include <diagram.h>
+#include <materiallist/materiallist.h>
+#include <materiallist/materialselectiondialog.h>
+#include <qetapp.h>
+#include <qetgraphicsitem/element.h>
+#include <qetmessagebox.h>
+#include <dataBase/projectdatabase.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <ui/projectpropertiesdialog.h>
+#include <ui_elementinfowidget.h>
+#include <undocommand/changeelementinformationcommand.h>
 #include "customelementinfopartwidget.h"
 #include "elementinfopartwidget.h"
 

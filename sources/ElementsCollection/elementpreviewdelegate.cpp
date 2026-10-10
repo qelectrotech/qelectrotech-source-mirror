@@ -19,7 +19,7 @@
 
 #include <QWidget>
 
-#include "../qetpalette.h"
+#include <qetpalette.h>
 
 /**
 	@brief ElementPreviewDelegate::initStyleOption

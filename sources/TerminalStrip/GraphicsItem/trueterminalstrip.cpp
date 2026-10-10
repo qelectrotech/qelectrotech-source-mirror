@@ -16,11 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "trueterminalstrip.h"
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../terminalstrip.h"
-#include "../terminalstripbridge.h"
-#include "../../autoNum/assignvariables.h"
+#include <TerminalStrip/physicalterminal.h>
+#include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/terminalstrip.h>
+#include <TerminalStrip/terminalstripbridge.h>
+#include <autoNum/assignvariables.h>
 
 #include "terminalstripdrawer.h"
 

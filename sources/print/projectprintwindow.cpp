@@ -17,16 +17,16 @@
 */
 #include "projectprintwindow.h"
 
-#include "../diagram.h"
-#include "../pdf_links.h"
-#include "../qeticons.h"
-#include "../qetinformation.h"
-#include "../qetproject.h"
-#include "../qetversion.h"
-#include "../qetgraphicsitem/crossrefitem.h"
-#include "../qetgraphicsitem/dynamicelementtextitem.h"
-#include "../qetgraphicsitem/element.h"
-#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include <diagram.h>
+#include <pdf_links.h>
+#include <qeticons.h>
+#include <qetinformation.h>
+#include <qetproject.h>
+#include <qetversion.h>
+#include <qetgraphicsitem/crossrefitem.h>
+#include <qetgraphicsitem/dynamicelementtextitem.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/elementtextitemgroup.h>
 
 #include "ui_projectprintwindow.h"
 

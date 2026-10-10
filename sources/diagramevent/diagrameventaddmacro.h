@@ -5,7 +5,7 @@
 #ifndef DIAGRAMEVENTADDMACRO_H
 #define DIAGRAMEVENTADDMACRO_H
 
-#include "../ElementsCollection/elementslocation.h"
+#include <ElementsCollection/elementslocation.h>
 #include "diagrameventinterface.h"
 
 #include <QDomDocument>

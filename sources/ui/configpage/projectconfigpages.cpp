@@ -17,29 +17,29 @@
 */
 #include "projectconfigpages.h"
 
-#include "../autoNum/autonumschemecommand.h"
-#include "../autoNum/elementautonumschemecommand.h"
-#include "../autoNum/ui/counterwarning.h"
-#include "../autoNum/ui/renumberpreviewdialog.h"
-#include "../autoNum/numerotationcontext.h"
-#include "../autoNum/ui/autonumberingmanagementw.h"
-#include "../autoNum/ui/folioautonumbering.h"
-#include "../autoNum/ui/formulaautonumberingw.h"
-#include "../autoNum/ui/selectautonumw.h"
-#include "../project/projectpropertieshandler.h"
-#include "../qet.h"
-#include "../qeticons.h"
-#include "../qetproject.h"
-#include "../wiringrules.h"
-#include "../wiringruleswarning.h"
-#include "../qetgraphicsitem/element.h"
-#include "../diagram.h"
-#include "../borderpropertieswidget.h"
-#include "../conductorpropertieswidget.h"
-#include "../diagramcontextwidget.h"
-#include "../reportpropertiewidget.h"
-#include "../titleblockpropertieswidget.h"
-#include "../xrefpropertieswidget.h"
+#include <autoNum/autonumschemecommand.h>
+#include <autoNum/elementautonumschemecommand.h>
+#include <autoNum/ui/counterwarning.h>
+#include <autoNum/ui/renumberpreviewdialog.h>
+#include <autoNum/numerotationcontext.h>
+#include <autoNum/ui/autonumberingmanagementw.h>
+#include <autoNum/ui/folioautonumbering.h>
+#include <autoNum/ui/formulaautonumberingw.h>
+#include <autoNum/ui/selectautonumw.h>
+#include <project/projectpropertieshandler.h>
+#include <qet.h>
+#include <qeticons.h>
+#include <qetproject.h>
+#include <wiringrules.h>
+#include <ui/wiringruleswarning.h>
+#include <qetgraphicsitem/element.h>
+#include <diagram.h>
+#include <ui/borderpropertieswidget.h>
+#include <ui/conductorpropertieswidget.h>
+#include <ui/diagramcontextwidget.h>
+#include <ui/reportpropertiewidget.h>
+#include <ui/titleblockpropertieswidget.h>
+#include <ui/xrefpropertieswidget.h>
 
 //#include "ui_autonumberingmanagementw.h"
 
