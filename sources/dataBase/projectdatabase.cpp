@@ -75,18 +75,7 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	connect(m_project, &QETProject::projectDiagramsOrderChanged, [this]()
 	{
 		m_content_changed = true;
-		for (auto diagram : m_project->diagrams())
-		{
-			m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
-			m_diagram_order_changed.bindValue(":uuid", diagram->uuid());
-			m_diagram_order_changed.exec();
-
-
-			m_diagram_info_order_changed.bindValue(":folio", diagram->border_and_titleblock.titleblockInformation().value("folio"));
-			m_diagram_info_order_changed.bindValue(":uuid", diagram->uuid());
-			m_diagram_info_order_changed.exec();
-
-		}
+		updateFolioPositions();
 		emit dataBaseUpdated();
 	});
 }
@@ -122,6 +111,7 @@ void projectDataBase::updateDB()
 	{
 		flushDrawingItems();
 		flushLinks();
+		flushElementPositions();
 		emit dataBaseUpdated();
 		return;
 	}
@@ -649,6 +639,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		query.exec(QStringLiteral("DELETE FROM ") + table);
 	}
 	m_dirty_link_elements.clear();
+	m_moved_elements.clear();
 
 	for (int i = 0 ; i < diagram_uuids.size() ; ++i)
 	{
@@ -824,9 +815,11 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//Drawing-item rows are rewritten lazily, see drawingItemChanged().
 		//Every read from outside comes through here, so this is the one
 		//place the queue has to be emptied for a reader to see current rows.
-		//The same goes for link rows, see linksChanged().
+		//The same goes for link rows and elements' folio cells, see
+		//linksChanged() and elementMoved().
 	flushDrawingItems();
 	flushLinks();
+	flushElementPositions();
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -920,6 +913,8 @@ void projectDataBase::addElement(Element *element)
 	}
 	connect(element, &Element::linkedElementChanged,
 			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
+	connect(element, &QGraphicsObject::xChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
+	connect(element, &QGraphicsObject::yChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
 
 	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
@@ -1022,18 +1017,78 @@ void projectDataBase::addDiagram(Diagram *diagram)
 		addDrawingItem(item);
 	}
 
-		//The information "folio" of other existing diagram can have the variable %total,
-		//so when a new diagram is added this variable change.
-		//We need to update this information in the database.
-	for (auto diagram : project()->diagrams())
+		//The folios after the new one moved down, and a folio number made
+		//from %id or %total changed on every folio.
+	updateFolioPositions();
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::elementMoved
+	The sender() element moved: its folio cell is written again by the
+	next flushElementPositions().
+*/
+void projectDataBase::elementMoved()
+{
+	auto *element = qobject_cast<Element *>(sender());
+	if (element && !m_moved_elements.contains(element)) {
+		m_moved_elements << element;
+	}
+}
+
+/**
+	@brief projectDataBase::flushElementPositions
+	Write the folio cell of every element queued by elementMoved()
+*/
+void projectDataBase::flushElementPositions()
+{
+	if (m_moved_elements.isEmpty()) {
+		return;
+	}
+
+	const auto moved = m_moved_elements;
+	m_moved_elements.clear();
+	const bool own_transaction = m_data_base.transaction();
+	QSqlQuery update(m_data_base);
+	update.prepare(QStringLiteral("UPDATE element SET pos = :pos WHERE uuid = :uuid"));
+	for (const QPointer<Element> &element : moved)
 	{
-		m_diagram_info_order_changed.bindValue(":folio", diagram->border_and_titleblock.titleblockInformation().value("folio"));
-		m_diagram_info_order_changed.bindValue(":uuid", diagram->uuid());
-		if (!m_diagram_info_order_changed.exec()) {
-			qDebug() << "projectDataBase::addDiagram update diagram infp order error : " << m_diagram_info_order_changed.lastError();
+		if (!element || !element->diagram()) {
+			continue;
+		}
+		update.bindValue(QStringLiteral(":pos"),
+						 element->diagram()->convertPosition(element->scenePos()).toString());
+		update.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+		if (!update.exec()) {
+			qDebug() << "projectDataBase::flushElementPositions error : " << update.lastError();
 		}
 	}
-	emit dataBaseUpdated();
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::updateFolioPositions
+	Write every folio's position and folio number again, after a folio was
+	added, removed or moved.
+*/
+void projectDataBase::updateFolioPositions()
+{
+	for (auto diagram : m_project->diagrams())
+	{
+		m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
+		m_diagram_order_changed.bindValue(":uuid", diagram->uuid().toString());
+		if (!m_diagram_order_changed.exec()) {
+			qDebug() << "projectDataBase::updateFolioPositions position error : " << m_diagram_order_changed.lastError();
+		}
+
+		m_diagram_info_order_changed.bindValue(":folio", diagram->border_and_titleblock.titleblockInformation().value("folio"));
+		m_diagram_info_order_changed.bindValue(":uuid", diagram->uuid().toString());
+		if (!m_diagram_info_order_changed.exec()) {
+			qDebug() << "projectDataBase::updateFolioPositions folio error : " << m_diagram_info_order_changed.lastError();
+		}
+	}
 }
 
 void projectDataBase::removeDiagram(Diagram *diagram)
@@ -1118,6 +1173,15 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 		}
 	}
 
+	QSqlQuery remove_info(m_data_base);
+	remove_info.prepare(QStringLiteral("DELETE FROM diagram_info WHERE diagram_uuid = :uuid"));
+	remove_info.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!remove_info.exec()) {
+		qDebug() << "projectDataBase::removeDiagram diagram_info delete error : " << remove_info.lastError();
+		m_data_base.rollback();
+		return;
+	}
+
 	m_remove_diagram_query.bindValue(":uuid", uuid_str);
 	if (!m_remove_diagram_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
@@ -1126,6 +1190,8 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	}
 
 	m_data_base.commit();
+		//The folios after it moved up, and %id / %total changed.
+	updateFolioPositions();
 	emit dataBaseUpdated();
 }
 
@@ -1187,12 +1253,39 @@ void projectDataBase::addConductor(Conductor *conductor)
 void projectDataBase::removeConductor(Conductor *conductor)
 {
 	m_content_changed = true;
+		//The terminal table lists the terminals a conductor ends on: the
+		//conductor's two ends go with it unless another conductor ends there.
+	QList<QPair<QString, QString>> ends;
+	QSqlQuery read_ends(m_data_base);
+	read_ends.prepare(QStringLiteral("SELECT terminal1_uuid, terminal1_element_uuid, "
+									 "terminal2_uuid, terminal2_element_uuid "
+									 "FROM conductor WHERE uuid = :uuid"));
+	read_ends.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	if (read_ends.exec() && read_ends.next()) {
+		ends << qMakePair(read_ends.value(0).toString(), read_ends.value(1).toString())
+			 << qMakePair(read_ends.value(2).toString(), read_ends.value(3).toString());
+	}
+
 	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
 	if (!m_remove_conductor_query.exec()) {
 		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
-	} else {
-		emit dataBaseUpdated();
+		return;
 	}
+
+	QSqlQuery remove_end(m_data_base);
+	remove_end.prepare(QStringLiteral(
+			"DELETE FROM terminal WHERE uuid = :uuid AND element_uuid = :element_uuid "
+			"AND NOT EXISTS (SELECT 1 FROM conductor WHERE "
+			"(terminal1_uuid = :uuid AND terminal1_element_uuid = :element_uuid) OR "
+			"(terminal2_uuid = :uuid AND terminal2_element_uuid = :element_uuid))"));
+	for (const auto &end : std::as_const(ends)) {
+		remove_end.bindValue(QStringLiteral(":uuid"), end.first);
+		remove_end.bindValue(QStringLiteral(":element_uuid"), end.second);
+		if (!remove_end.exec()) {
+			qDebug() << "projectDataBase::removeConductor terminal delete error : " << remove_end.lastError();
+		}
+	}
+	emit dataBaseUpdated();
 }
 
 /**
@@ -2061,6 +2154,7 @@ static ElementData::Types allElementTypes()
 */
 void projectDataBase::populateElementTable()
 {
+	m_moved_elements.clear();
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM element");
 
@@ -2597,6 +2691,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	const auto escaped_path = path_.replace("'", "''");
 	db->flushDrawingItems();
 	db->flushLinks();
+	db->flushElementPositions();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();

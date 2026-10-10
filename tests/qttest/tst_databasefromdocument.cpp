@@ -56,6 +56,12 @@ class tst_databasefromdocument : public QObject
 	{
 		const QString out = run({QStringLiteral("--run"), m_dir.filePath(QStringLiteral("dump.js")),
 								 project}, from_folios);
+		return tablesIn(out, how);
+	}
+
+	// The DUMP line of a --run output, each table as a sorted list of rows
+	static QJsonObject tablesIn(const QString &out, QString *how)
+	{
 		QJsonObject tables;
 		for (const QString &line : out.split(QLatin1Char('\n'))) {
 			if (line.contains(QStringLiteral("Project database filled")))
@@ -343,6 +349,105 @@ private slots:
 		dump(saved, false, &how);
 		QCOMPARE(how, QStringLiteral("Project database filled from the folios: "
 									 "a link is not one the folios would make as saved"));
+	}
+
+	// After a folio is added and another removed, the folio tables hold
+	// what a fresh open of the saved project gives: every folio's position
+	// and folio number, and no row for the removed folio. Positions only
+	// changed when folios were reordered, and the removed folio's
+	// diagram_info row stayed.
+	void folioAddedAndRemoved()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("folios.qet"));
+		const QString edited = m_dir.filePath(QStringLiteral("folios-edited.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), saved});
+		QVERIFY(QFile::exists(saved));
+		QFile js(m_dir.filePath(QStringLiteral("folios.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral(
+				 "qet.log('ADDED ' + qet.insertFolio(0));\n"
+				 "qet.log('REMOVED ' + qet.removeFolio(2));\n"
+				 "var out = {};\n"
+				 "['diagram', 'diagram_info'].forEach(function (t) { out[t] = qet.query('SELECT * FROM ' + t); });\n"
+				 "qet.log('DUMP ' + JSON.stringify(out));\n"
+				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(edited).toUtf8());
+		js.close();
+		const QString log = run({QStringLiteral("--run"), js.fileName(), saved});
+		QVERIFY2(log.contains(QStringLiteral("ADDED 0")) && log.contains(QStringLiteral("REMOVED true"))
+				 && log.contains(QStringLiteral("SAVED true")), qPrintable(log.right(400)));
+		QString unused;
+		const QJsonObject after_edits = tablesIn(log, &unused);
+		const QJsonObject reopened = dump(edited, false, &unused);
+		for (const QString &table : {QStringLiteral("diagram"), QStringLiteral("diagram_info")}) {
+			const QJsonArray a = after_edits.value(table).toArray(), b = reopened.value(table).toArray();
+			QVERIFY2(!a.isEmpty(), qPrintable(table));
+			QVERIFY2(a == b, qPrintable(QStringLiteral("%1: %2 rows after the edits, %3 on reopening, or different")
+										.arg(table).arg(a.size()).arg(b.size())));
+		}
+	}
+
+	// After an element is moved several columns, its folio cell in the
+	// element table is the one a fresh open of the saved project gives.
+	// It used to stay where the element was added.
+	void movedElementCell()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("moved.qet"));
+		const QString edited = m_dir.filePath(QStringLiteral("moved-edited.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), saved});
+		QVERIFY(QFile::exists(saved));
+		QFile js(m_dir.filePath(QStringLiteral("moved.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral(
+				 "var e = qet.elementUuids(0)[0];\n"
+				 "var before = qet.query(\"SELECT pos FROM element WHERE uuid = '\" + e + \"'\")[0].pos;\n"
+				 "qet.log('MOVED ' + qet.moveElement(0, e, 300, 0));\n"
+				 "var after = qet.query(\"SELECT pos FROM element WHERE uuid = '\" + e + \"'\")[0].pos;\n"
+				 "qet.log('CELL ' + before + ' ' + after);\n"
+				 "qet.log('DUMP ' + JSON.stringify({element: qet.query('SELECT * FROM element')}));\n"
+				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(edited).toUtf8());
+		js.close();
+		const QString log = run({QStringLiteral("--run"), js.fileName(), saved});
+		QVERIFY2(log.contains(QStringLiteral("MOVED true")) && log.contains(QStringLiteral("SAVED true")),
+				 qPrintable(log.right(400)));
+		QString unused;
+		const QJsonArray a = tablesIn(log, &unused).value(QStringLiteral("element")).toArray();
+		const QJsonArray b = dump(edited, false, &unused).value(QStringLiteral("element")).toArray();
+		QVERIFY(!a.isEmpty());
+		QVERIFY2(a == b, qPrintable(log.mid(log.indexOf(QStringLiteral("CELL")), 40)));
+	}
+
+	// After every conductor on a folio is deleted, the terminal table
+	// holds what a fresh open of the saved project gives: a terminal is
+	// listed while a conductor ends on it. The ends of a deleted conductor
+	// used to stay.
+	void deletedWireTerminals()
+	{
+		const QString saved = m_dir.filePath(QStringLiteral("unwired.qet"));
+		const QString edited = m_dir.filePath(QStringLiteral("unwired-edited.qet"));
+		run({QStringLiteral("--resave"), QStringLiteral(QET_EXAMPLES_DIR "/tremie_vibrante.qet"), saved});
+		QVERIFY(QFile::exists(saved));
+		QFile js(m_dir.filePath(QStringLiteral("unwired.js")));
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral(
+				 "var n = 0;\n"
+				 "qet.conductorUuids(0).forEach(function (c) {\n"
+				 "  var end = qet.conductorEnds(0, c)[0];\n"
+				 "  if (!end) return;\n"
+				 "  var m = end.match(/^(\\{[^}]+\\}) terminal (\\d+)$/);\n"
+				 "  if (m && qet.deleteConductor(0, m[1], parseInt(m[2]))) ++n;\n"
+				 "});\n"
+				 "qet.log('DELETED ' + n);\n"
+				 "qet.log('DUMP ' + JSON.stringify({terminal: qet.query('SELECT * FROM terminal')}));\n"
+				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(edited).toUtf8());
+		js.close();
+		const QString log = run({QStringLiteral("--run"), js.fileName(), saved});
+		QVERIFY2(!log.contains(QStringLiteral("DELETED 0")) && log.contains(QStringLiteral("SAVED true")),
+				 qPrintable(log.right(400)));
+		QString unused;
+		const QJsonArray a = tablesIn(log, &unused).value(QStringLiteral("terminal")).toArray();
+		const QJsonArray b = dump(edited, false, &unused).value(QStringLiteral("terminal")).toArray();
+		QVERIFY2(a == b, qPrintable(QStringLiteral("%1 terminal rows after the edits, %2 on reopening")
+									.arg(a.size()).arg(b.size())));
 	}
 
 	// A file whose items carry no saved uuid is filled from the folios,
