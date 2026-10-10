@@ -1412,7 +1412,7 @@
   <customwidget>
    <class>KColorButton</class>
    <extends>QPushButton</extends>
-   <header>nokde/kcolorbutton.h</header>
+   <header>kcolorbutton.h</header>
   </customwidget>
  </customwidgets>
 </ui>

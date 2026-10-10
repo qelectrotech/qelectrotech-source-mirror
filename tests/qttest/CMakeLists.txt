@@ -1162,3 +1162,12 @@ if(Qt6_VERSION VERSION_LESS 6.5.0)
     endif()
   endforeach()
 endif()
+
+# Compiled only when the bundled minimal KF path is built. KAutoSaveFile
+# comes from the bundled static library: kautosavefile.cpp has Q_OBJECT, so
+# compiling it into the test would duplicate staticMetaObject.
+if(BUILD_WITH_KF AND BUILD_KF AND BUILD_KF_MINIMAL)
+  add_executable(tst_kautosavefile_kf tst_kautosavefile_kf.cpp)
+  add_test(NAME tst_kautosavefile_kf COMMAND tst_kautosavefile_kf)
+  target_link_libraries(tst_kautosavefile_kf PRIVATE Qt::Test ${KF_PRIVATE_LIBRARIES})
+endif()

@@ -32,7 +32,11 @@
 #include "../../editor/terminalnamecheck.h"
 #include "../../ElementsCollection/qetlabelsfile.h"
 #include "../prefixconfigurationdialog.h"
-#include "../nokde/kcolorbutton.h"
+#ifdef BUILD_WITHOUT_KF
+#	include "../nokde/kcolorbutton.h"
+#else
+#	include <KColorButton>
+#endif
 #include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
