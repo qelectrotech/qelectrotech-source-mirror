@@ -1269,10 +1269,11 @@ QDomElement Element::toXml(
 	}
 
 	//save information of this element
-	if (! m_data.m_informations.keys().isEmpty()) {
+	const DiagramContext informations = elementInformations();
+	if (! informations.keys().isEmpty()) {
 		QDomElement infos =
 				document.createElement(QStringLiteral("elementInformations"));
-		m_data.m_informations.toXml(infos, QStringLiteral("elementInformation"));
+		informations.toXml(infos, QStringLiteral("elementInformation"));
 			//toXml() skips empty values: an element whose information is
 			//all empty would otherwise be written an empty block, which the
 			//next load reads as no information and the next save drops.
@@ -1873,7 +1874,41 @@ void Element::setElementInformations(DiagramContext dc)
  */
 ElementData Element::elementData() const
 {
+	if (projectDataBase *store = placedStore()) {
+		ElementData data = m_data;
+		data.m_informations = store->elementInformation(m_uuid);
+		return data;
+	}
 	return m_data;
+}
+
+/**
+	@brief Element::elementInformations
+	@return this symbol's information: for a placed symbol the project's
+	store holds it, for one not placed
+	(a preview, the symbol editor) its own copy.
+*/
+DiagramContext Element::elementInformations() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->elementInformation(m_uuid);
+	return m_data.m_informations;
+}
+
+/**
+	@brief Element::placedStore
+	@return the project database holding this symbol's information, or
+	nullptr if it is not placed in a project
+*/
+projectDataBase *Element::placedStore() const
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+		//A uuid other placed symbols share (F100) names no single symbol's
+		//information: this one answers from its own copy.
+	return store && store->hasElementInformation(m_uuid)
+			&& store->placedElementCount(m_uuid) == 1 ? store : nullptr;
 }
 
 /**
@@ -2234,6 +2269,8 @@ void Element::freezeNewAddedElement()
 */
 QString Element::actualLabel()
 {
+		//The symbol's own copy, not the store: this runs while the
+		//information is being changed, before the store has the change.
 	if (m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty()) {
 		return m_data.m_informations.value(QStringLiteral("label")).toString();
 	} else {

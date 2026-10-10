@@ -2238,6 +2238,14 @@ bool projectDataBase::hasElementInformation(const QUuid &element) const
 	return m_element_information.contains(element);
 }
 
+int projectDataBase::placedElementCount(const QUuid &element) const
+{
+	int n = 0;
+	for (const QPointer<Element> &e : m_placed_elements.values(element))
+		if (e) ++n;
+	return n;
+}
+
 /**
 	@brief projectDataBase::storeElementInformation
 	Store @p information as the information of the placed symbol @p element,
@@ -2343,6 +2351,10 @@ QStringList projectDataBase::elementInformationMismatches() const
 	for (Diagram *diagram : m_project->diagrams()) {
 		for (Element *element : diagram->elements()) {
 			placed.insert(element->uuid());
+				//A uuid several symbols share has one row and cannot agree
+				//with them all; those symbols answer from their own copy.
+			if (placedElementCount(element->uuid()) > 1)
+				continue;
 			if (!m_element_information.contains(element->uuid()))
 				out << element->uuid().toString() + QStringLiteral(": not stored");
 			else if (m_element_information.value(element->uuid()) != element->elementInformations())

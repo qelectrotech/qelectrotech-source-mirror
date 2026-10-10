@@ -106,6 +106,10 @@ class projectDataBase : public QObject
 			//(a preview, the symbol editor) keeps its own.
 		DiagramContext elementInformation(const QUuid &element) const;
 		bool hasElementInformation(const QUuid &element) const;
+			//How many placed symbols hold @p element: more than one in a
+			//file whose symbols were copied by an old version (F100), or
+			//for a moment while a copy's uuid is renewed
+		int placedElementCount(const QUuid &element) const;
 		void storeElementInformation(const QUuid &element, const DiagramContext &information);
 		void forgetElementInformation(const QUuid &element);
 		void renameElementInformation(Element *element, const QUuid &old_uuid);

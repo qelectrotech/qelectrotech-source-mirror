@@ -40,6 +40,8 @@ class QUndoCommand;
 /**
 	This is the base class for electrical elements.
 */
+class projectDataBase;
+
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
@@ -130,8 +132,7 @@ class Element : public QetGraphicsItem
 		}
 
 			//METHODS related to information
-		DiagramContext elementInformations()const
-		{return m_data.m_informations;}
+		DiagramContext elementInformations()const;
 		virtual void setElementInformations(DiagramContext dc);
 
 		ElementData elementData() const;
@@ -330,6 +331,7 @@ class Element : public QetGraphicsItem
 	private:
 		void restoreSavedLinkOrder();
 		void storeInformation() const;
+		projectDataBase *placedStore() const;
 		bool m_must_highlight = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;
