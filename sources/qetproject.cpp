@@ -494,8 +494,12 @@ void QETProject::refresh()
 		dlgWaiting->show();
 	}
 
-	for(const auto &diagram : diagrams())
+		//A folio not built yet is refreshed when it is (folioLoaded())
+	for(const auto &diagram : folios())
 	{
+		if (!diagram->isLoaded()) {
+			continue;
+		}
 		if(dlgWaiting)
 		{
 			dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
@@ -520,7 +524,82 @@ QETProject::ProjectState QETProject::state() const
 */
 QList<Diagram *> QETProject::diagrams() const
 {
+		//Every caller of diagrams() expects every folio built: those that
+		//do not are moved to folios() one by one
+	loadFolios();
 	return(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::folios
+	@return the folios of this project, whether their items are built yet
+	or not (a project opened with QET_LAZY_FOLIOS); see Diagram::isLoaded()
+*/
+QList<Diagram *> QETProject::folios() const
+{
+	return(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::unloadedFolioCount
+	@return how many folios of this project wait to be built
+*/
+int QETProject::unloadedFolioCount() const
+{
+	int n = 0;
+	for (const Diagram *d : m_diagrams_list)
+		if (!d->isLoaded()) ++n;
+	return n;
+}
+
+/**
+	@brief QETProject::loadFolios
+	Build every folio of this project still waiting to be built.
+	QET_LAZY_FOLIOS_TRACE=1 says when it happens, to find the callers that
+	still need every folio.
+*/
+void QETProject::loadFolios() const
+{
+	const int waiting = unloadedFolioCount();
+	if (!waiting) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << waiting << "folios built for a caller of diagrams()";
+	}
+	buildFolios(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::buildFolios
+	Build those of @p folios still waiting, as opening builds them: all
+	first, then what opening does after building (the cross-references of
+	each look for symbols on the others), with the project in the state
+	opening has, which keeps the texts where the file put them (a text
+	aligned right is not moved when its content is set).
+*/
+void QETProject::buildFolios(const QList<Diagram *> &folios) const
+{
+	auto *self = const_cast<QETProject *>(this);
+	const ProjectState state = m_state;
+	self->m_state = ProjectParsingRunning;
+	QList<Diagram *> built;
+	for (Diagram *d : folios)
+		if (d->buildDeferred()) built << d;
+	for (Diagram *d : std::as_const(built))
+		self->folioLoaded(d);
+	self->m_state = state;
+}
+
+/**
+	@brief QETProject::folioLoaded
+	@p folio's items were just built, after the project was opened: do for
+	them what opening does for every folio's.
+*/
+void QETProject::folioLoaded(Diagram *folio)
+{
+	linkElementsToElementAutoNums(folio);
+	folio->refreshContents();
 }
 
 /**
@@ -1240,6 +1319,7 @@ QString QETProject::elementAutoNumNameClash(const QString &name,
 */
 QVector<Element *> QETProject::elementsUsingElementAutoNum(const QString &title) const
 {
+	loadFolios(); //walks the folios' symbols
 	QVector<Element *> list;
 	const QUuid id = elementAutoNumId(title);
 	if (id.isNull()) {
@@ -1278,15 +1358,25 @@ QVector<Element *> QETProject::elementsUsingElementAutoNum(const QString &title)
 */
 void QETProject::linkElementsToElementAutoNums()
 {
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (d) linkElementsToElementAutoNums(d);
+	}
+}
+
+/**
+	@brief QETProject::linkElementsToElementAutoNums
+	linkElementsToElementAutoNums() for the elements of @p folio alone
+*/
+void QETProject::linkElementsToElementAutoNums(Diagram *folio)
+{
 	QHash<QString, QStringList> titles_by_formula;
 	for (auto it = m_element_autonum.constBegin();
 		 it != m_element_autonum.constEnd(); ++it) {
 		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
 	}
 
-	for (Diagram *d : std::as_const(m_diagrams_list)) {
-		if (!d) continue;
-		const auto items = d->items();
+	{
+		const auto items = folio->items();
 		for (QGraphicsItem *it : items) {
 			auto *el = qgraphicsitem_cast<Element *>(it);
 			if (!el) continue;
@@ -1451,6 +1541,7 @@ NumerotationContext QETProject::cableAutoNum(const QString &key) const
 	@param to - last folio index to apply freeze
 */
 void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
+	loadFolios(); //walks the folios' wires
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeConductors(freeze);
 	}
@@ -1494,6 +1585,7 @@ void QETProject::setFreezeNewConductors(bool set) {
 	@param to - last folio index to apply freeze
 */
 void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
+	loadFolios(); //walks the folios' symbols
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeElements(freeze);
 	}
@@ -1705,6 +1797,8 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 */
 QDomDocument QETProject::toXml()
 {
+		//Every folio is written from its built items (QET_LAZY_FOLIOS)
+	loadFolios();
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
 		//information, folio title blocks and wire properties agree with every placed symbol, folio and
 		//wire, at each save. A test and debugging aid; it changes nothing.
@@ -1941,6 +2035,7 @@ void QETProject::setReadOnly(bool read_only)
 */
 bool QETProject::isEmpty() const
 {
+	loadFolios(); //asks the folios whether they hold anything
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
 
@@ -2380,7 +2475,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
-	m_data_base.endPrefill();
+	m_data_base.endPrefill(unloadedFolioCount() > 0);
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1)
+		qWarning().noquote() << "lazy folios: opened with" << unloadedFolioCount() << "of" << m_diagrams_list.size() << "folios not built";
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1)
 		qWarning().noquote() << "filled before building:" << m_data_base.prefillReport();
 	const qint64 database_ms = phase_timer.elapsed();
@@ -2458,7 +2555,9 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
+			m_deferring_folios = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
 			diagram->initFromXml(diagram_xml_element);
+			m_deferring_folios = false;
 			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());

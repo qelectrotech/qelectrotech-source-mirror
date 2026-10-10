@@ -148,7 +148,11 @@ class projectDataBase : public QObject
 			//folios are built, then, once
 			//they are, say how many of those values building agreed with.
 		void prefillFromDocument(const QDomDocument &document);
-		void endPrefill();
+		void endPrefill(bool keep_unplaced = false);
+			//A folio of a project opened with QET_LAZY_FOLIOS is being built:
+			//its rows came from the document already, so none are written
+			//and the database is not marked changed
+		void setBuildingFolio(bool building);
 		QString prefillReport() const;
 
 		void addElement         (Element *element);
@@ -292,6 +296,8 @@ class projectDataBase : public QObject
 			//The rows of conductor_properties, to write only what changes
 		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
 		QSet<QUuid> m_dirty_conductor_properties;
+		int m_building_folios = 0;
+		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
 		QHash<QUuid, ConductorProperties> m_prefilled_conductors;

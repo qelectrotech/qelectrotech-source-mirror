@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagram.h"
+#include "dataBase/projectdatabase.h"
 #include "autoNum/elementautonumschemecommand.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
@@ -769,6 +770,48 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 }
 
 /**
+	@brief Diagram::ensureLoaded
+	Build this folio's items from the XML kept when the project was
+	opened with QET_LAZY_FOLIOS, and do for them what opening does for
+	every folio's (QETProject::folioLoaded()). Nothing for a folio built
+	already.
+*/
+void Diagram::ensureLoaded()
+{
+	if (m_deferred.isNull()) {
+		return;
+	}
+	if (m_project) {
+		m_project->buildFolios({this});
+	} else {
+		buildDeferred();
+	}
+}
+
+/**
+	@brief Diagram::buildDeferred
+	Build this folio's items from the XML kept for later, and nothing else.
+	Their rows are in the project database already, filled from the same
+	XML: building writes none.
+	@return true if there was something to build
+*/
+bool Diagram::buildDeferred()
+{
+	if (m_deferred.isNull()) {
+		return false;
+	}
+	QDomElement xml = m_deferred;
+	m_deferred = QDomElement();
+	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
+	if (db) db->setBuildingFolio(true);
+	m_loading_deferred = true;
+	fromXml(xml, QPointF(), true, nullptr);
+	m_loading_deferred = false;
+	if (db) db->setBuildingFolio(false);
+	return true;
+}
+
+/**
 	@brief Diagram::uuid
 	@return the uuid of this diagram
 */
@@ -802,7 +845,7 @@ bool Diagram::uuidUsedByOtherDiagram(const QUuid &uuid) const
 	if (!m_project) {
 		return false;
 	}
-	const auto diagrams = m_project->diagrams();
+	const auto diagrams = m_project->folios(); //uuids only: no need to build them
 	for (const Diagram *diagram : diagrams) {
 		if (diagram != this && diagram->m_uuid == uuid) {
 			return true;
@@ -839,7 +882,7 @@ QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
 				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
 
 	const int index = m_project
-			? m_project->diagrams().indexOf(const_cast<Diagram *>(this))
+			? m_project->folios().indexOf(const_cast<Diagram *>(this))
 			: -1;
 	const QString project_title = root.ownerDocument()
 			.documentElement()
@@ -1089,6 +1132,9 @@ QList < QSet <Conductor *> > Diagram::potentials()
 	\~French Un Document XML (QDomDocument)
 */
 QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
+		//A folio of a project opened with QET_LAZY_FOLIOS is written from
+		//its built items
+	ensureLoaded();
 	// document
 	QDomDocument document;
 
@@ -1308,8 +1354,15 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		// since those ids are assigned sequentially in element order.
 	std::stable_sort(list_elements.begin(), list_elements.end(),
 			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
+		//Wires that tie on their ends (common: several from one terminal)
+		//keep the order they were made in, which for a project's is its
+		//file's -- the order the scene gave them so far, except for a folio
+		//built late (QET_LAZY_FOLIOS), whose scene order differed
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
-			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
+			  [](Conductor *a, Conductor *b) {
+		const QString ka = conductorSortKey(a), kb = conductorSortKey(b);
+		return ka != kb ? ka < kb : a->creationRank() < b->creationRank();
+	});
 
 		// A copy carries the numberings its elements follow: pasted into
 		// another project, which does not know them, it can offer to import
@@ -1693,8 +1746,9 @@ bool Diagram::fromXml(QDomElement &document,
 		return(false);
 	}
 
-		// Read attributes of this diagram
-	if (consider_informations)
+		// Read attributes of this diagram (already read for a folio whose
+		// items are built later, see ensureLoaded())
+	if (consider_informations && !m_loading_deferred)
 	{
 			// Restore the persisted folio uuid. Done first, before any item is
 			// loaded, so that everything created below sees the final uuid.
@@ -1778,6 +1832,16 @@ bool Diagram::fromXml(QDomElement &document,
 
 	// if child haven't got a child, loading is finish (diagram is empty)
 	if (root.firstChild().isNull()) {
+		return(true);
+	}
+
+		//A project opened with QET_LAZY_FOLIOS builds a folio's items when
+		//they are first needed: until then the folio has what it says
+		//about itself (uuid, title block, border, numbering) and keeps its
+		//XML, which belongs to the project's document.
+	if (consider_informations && !m_loading_deferred && m_project
+		&& m_project->deferringFolios()) {
+		m_deferred = root;
 		return(true);
 	}
 

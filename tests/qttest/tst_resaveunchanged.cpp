@@ -319,7 +319,7 @@ private slots:
 
 	// QElectroTech run in a sandbox of its own with @p args, the store
 	// check on (QET_CHECK_ELEMENT_INFO_STORE); its output
-	QString runChecked(const QStringList &args)
+	QString runChecked(const QStringList &args, bool eager = false)
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
@@ -327,6 +327,9 @@ private slots:
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QStringLiteral("QET_CHECK_ELEMENT_INFO_STORE"), QStringLiteral("1"));
+		if (eager) {
+			env.remove(QStringLiteral("QET_LAZY_FOLIOS")); //every folio built on opening
+		}
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
@@ -366,7 +369,7 @@ private slots:
 		const QString saved = resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
 		QVERIFY2(!saved.isEmpty(), "--resave failed");
 		const QString out = runChecked({QStringLiteral("--resave"), saved,
-										m_dir.filePath(QStringLiteral("prefilled.qet"))});
+										m_dir.filePath(QStringLiteral("prefilled.qet"))}, true);
 		const QRegularExpression line(QStringLiteral(
 				"filled before building: symbols (\\d+) agree, 0 differ, 0 not placed; "
 				"folios (\\d+) agree, 0 differ, 0 not placed; wires (\\d+) agree, 0 differ, 0 not placed"));

@@ -119,6 +119,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setZValue(11);
 	m_previous_z_value = zValue();
 	m_uuid = QUuid::createUuid();
+	static quint64 created = 0;
+	m_creation_rank = ++created;
 
 		//Add this conductor to the list of conductors of each of the two terminals
 	bool ajout_p1 = terminal1 -> addConductor(this);

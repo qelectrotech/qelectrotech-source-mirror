@@ -293,7 +293,9 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//The folios, in the order the project read them (readDiagramsXml()),
 		//each with its saved uuid -- the one the built folio has.
 	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
-	const QList<Diagram *> diagrams = m_project->diagrams();
+		//Built or not (QET_LAZY_FOLIOS): only their uuids are read, and the
+		//conductors of those built
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (diagram_nodes.size() != diagrams.size()) {
 		return refuse(QStringLiteral("the folios are not the document's"));
 	}
@@ -733,6 +735,26 @@ void projectDataBase::setUpdateBlocked(bool blocked)
 }
 
 /**
+	@brief projectDataBase::setBuildingFolio
+	@see the declaration. The stores still take what building writes.
+*/
+void projectDataBase::setBuildingFolio(bool building)
+{
+		//A folio built while another is (a caller of diagrams() reached
+		//from building it) nests: only the outermost restores.
+	if (building) {
+		if (m_building_folios++ == 0) {
+			m_changed_before_folio = m_content_changed;
+			m_blocked_before_folio = m_update_blocked;
+			m_update_blocked = true;
+		}
+	} else if (m_building_folios > 0 && --m_building_folios == 0) {
+		m_update_blocked = m_blocked_before_folio;
+		m_content_changed = m_changed_before_folio;
+	}
+}
+
+/**
 	@brief projectDataBase::project
 	@return the project of this  database
 */
@@ -822,6 +844,16 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//The same goes for link rows, elements' folio cells and wires'
 		//properties, see linksChanged(), elementMoved() and
 		//storeConductorProperties().
+		//The drawing tables hold what only built items know (a text's
+		//laid-out size, a picture's pixels): with folios not built yet
+		//(QET_LAZY_FOLIOS) a read of them builds those first. Every other
+		//table was filled from the document.
+	static const QRegularExpression drawing_tables(
+			QStringLiteral("\\b(shape|independent_text|image)\\b"),
+			QRegularExpression::CaseInsensitiveOption);
+	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
+		m_project->loadFolios();
+	}
 	flushDrawingItems();
 	flushLinks();
 	flushElementPositions();
@@ -1617,7 +1649,7 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 {
 	auto *item = dynamic_cast<QGraphicsItem *>(object);
 	auto *diagram = item ? qobject_cast<Diagram *>(item->scene()) : nullptr;
-	if (!diagram || !m_project || !m_project->diagrams().contains(diagram)) {
+	if (!diagram || !m_project || !m_project->folios().contains(diagram)) {
 			//Not on a folio of this project (any more): nothing to write,
 			//and nothing to wait for.
 		return true;
@@ -1733,8 +1765,10 @@ void projectDataBase::populateDrawingItemTables()
 
 		//Queued directly, not through addDrawingItem(): every one of them
 		//came onto its folio through Diagram::addItem(), which connected it
-		//already, and a full rebuild runs on every load.
-	for (auto diagram : m_project->diagrams())
+		//already, and a full rebuild runs on every load. A folio not built
+		//yet (QET_LAZY_FOLIOS) has none: its items write their rows as it
+		//is built.
+	for (auto diagram : m_project->folios())
 	{
 		const QList<QGraphicsItem *> items = diagram->items();
 		for (QGraphicsItem *item : items)
@@ -3013,9 +3047,11 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 /**
 	@brief projectDataBase::endPrefill
 	The folios are built: compare what prefillFromDocument() stored with
-	what building stored, and forget what nothing was placed for.
+	what building stored, and forget what nothing was placed for -- unless
+	@p keep_unplaced, when some folios are not built yet (QET_LAZY_FOLIOS):
+	the store then answers for their items until they are.
 */
-void projectDataBase::endPrefill()
+void projectDataBase::endPrefill(bool keep_unplaced)
 {
 	auto tally = [](PrefillTally &t, const QStringList &differing) {
 		if (differing.isEmpty()) { ++t.agree; return; }
@@ -3025,7 +3061,7 @@ void projectDataBase::endPrefill()
 	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it) {
 		if (!placedElementCount(it.key())) {
 			++m_prefill_tally[0].unplaced;
-			if (!m_placed_elements.contains(it.key())) forgetElementInformation(it.key());
+			if (!keep_unplaced && !m_placed_elements.contains(it.key())) forgetElementInformation(it.key());
 			continue;
 		}
 		const DiagramContext built = m_element_information.value(it.key());
@@ -3043,7 +3079,7 @@ void projectDataBase::endPrefill()
 	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it) {
 		if (!m_placed_folios.value(it.key())) {
 			++m_prefill_tally[1].unplaced;
-			m_folio_titleblocks.remove(it.key());
+			if (!keep_unplaced) m_folio_titleblocks.remove(it.key());
 			continue;
 		}
 		const TitleBlockProperties built = m_folio_titleblocks.value(it.key());
@@ -3068,7 +3104,7 @@ void projectDataBase::endPrefill()
 	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it) {
 		if (!placedConductorCount(it.key())) {
 			++m_prefill_tally[2].unplaced;
-			if (!m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
+			if (!keep_unplaced && !m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
 				m_dirty_conductor_properties.insert(it.key());
 			continue;
 		}
@@ -3632,6 +3668,9 @@ void projectDataBase::exportDb(projectDataBase *db,
 	// VACUUM INTO creates a standalone copy of the current database without
 	// requiring access to the SQLite driver's native connection handle.
 	const auto escaped_path = path_.replace("'", "''");
+	if (db->m_project) {
+		db->m_project->loadFolios(); //the drawing tables need built folios
+	}
 	db->flushDrawingItems();
 	db->flushLinks();
 	db->flushElementPositions();

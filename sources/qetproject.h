@@ -119,6 +119,14 @@ class QETProject : public QObject
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
+			//The folios whether their items are built or not
+			//(QET_LAZY_FOLIOS); diagrams() builds them
+		QList<Diagram *> folios() const;
+		bool deferringFolios() const {return m_deferring_folios;}
+		int unloadedFolioCount() const;
+		void loadFolios() const;
+		void buildFolios(const QList<Diagram *> &folios) const;
+		void folioLoaded(Diagram *folio);
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
@@ -474,6 +482,8 @@ class QETProject : public QObject
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;
 		void linkElementsToElementAutoNums();
+		void linkElementsToElementAutoNums(Diagram *folio);
+		bool m_deferring_folios = false;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
