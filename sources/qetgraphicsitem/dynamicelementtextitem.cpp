@@ -1469,7 +1469,9 @@ void DynamicElementTextItem::setPotentialConductor()
 			m_watched_conductor = c_list.first();
 			connect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
 		}
-		else if(m_watched_conductor.isNull() && m_other_report)
+		else if(m_watched_conductor.isNull() && m_other_report
+				//A report symbol can have no terminal (some older collections')
+				&& !m_other_report.data()->terminals().isEmpty())
 		{
 			if (!m_other_report.data()->terminals().first()->conductors().isEmpty())
 			{
