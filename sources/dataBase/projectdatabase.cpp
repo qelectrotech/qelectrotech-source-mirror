@@ -911,6 +911,7 @@ void projectDataBase::addElement(Element *element)
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
+	placeElement(element);
 	connect(element, &Element::linkedElementChanged,
 			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
 	connect(element, &QGraphicsObject::xChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
@@ -946,6 +947,8 @@ void projectDataBase::removeElement(Element *element)
 	} else {
 		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
 	}
+
+	unplaceElement(element, element->uuid());
 
 	QSqlQuery remove_links(m_data_base);
 	remove_links.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
@@ -1016,6 +1019,8 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	for (QGraphicsItem *item : items) {
 		addDrawingItem(item);
 	}
+	for (Element *element : diagram->elements())
+		placeElement(element);
 
 		//The folios after the new one moved down, and a folio number made
 		//from %id or %total changed on every folio.
@@ -1095,6 +1100,9 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
 	const QString uuid_str = diagram->uuid().toString();
+		//Its symbols are no longer placed (they live on in the undo stack)
+	for (Element *element : diagram->elements())
+		unplaceElement(element, element->uuid());
 
 		//Order matters: element_info and terminal are scoped through a
 		//subquery on element, so they must run before element itself is
@@ -1787,6 +1795,23 @@ bool projectDataBase::createDataBase()
 		qDebug() << " element_info_table query : " << query_.lastError();
 	}
 
+		//Create the element_information table: the information of every
+		//symbol placed in the project, in full -- each key with its value
+		//and whether it is shown -- the store symbols write through
+		//(storeElementInformation()). Unlike element_info, which has one
+		//column per known key and is filled again on every rebuild, this
+		//is kept by the edits themselves.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_information ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (element_uuid, ord))"))) {
+		qDebug() << " element_information_table query : " << query_.lastError();
+	}
+
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
 		//from each side, with the contact group the element saved for it.
@@ -2196,6 +2221,145 @@ void projectDataBase::populateElementInfoTable()
 			}
 		}
 	}
+}
+
+/**
+	@brief projectDataBase::elementInformation
+	@return the stored information of the placed symbol @p element, empty
+	if it has none
+*/
+DiagramContext projectDataBase::elementInformation(const QUuid &element) const
+{
+	return m_element_information.value(element);
+}
+
+bool projectDataBase::hasElementInformation(const QUuid &element) const
+{
+	return m_element_information.contains(element);
+}
+
+/**
+	@brief projectDataBase::storeElementInformation
+	Store @p information as the information of the placed symbol @p element,
+	in the element_information table and the cache in front of it.
+*/
+void projectDataBase::storeElementInformation(const QUuid &element, const DiagramContext &information)
+{
+	if (element.isNull()) return;
+	auto known = m_element_information.constFind(element);
+	if (known != m_element_information.constEnd() && *known == information) return;
+	m_element_information.insert(element, information);
+
+	const QString uuid = element.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeElementInformation remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO element_information (element_uuid, ord, name, value, show) "
+								  "VALUES (:uuid, :ord, :name, :value, :show)"));
+	int ord = 0;
+	for (const QString &key : information.keys()) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), key);
+		insert.bindValue(QStringLiteral(":value"), information.value(key).toString());
+		insert.bindValue(QStringLiteral(":show"), information.keyMustShow(key) ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeElementInformation insert error : " << insert.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::forgetElementInformation
+	The symbol @p element is no longer placed: its stored information goes.
+*/
+void projectDataBase::forgetElementInformation(const QUuid &element)
+{
+	if (!m_element_information.remove(element)) return;
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::forgetElementInformation error : " << remove.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::placeElement
+	@p element is now placed: its information is stored under its uuid.
+*/
+void projectDataBase::placeElement(Element *element)
+{
+	if (!m_placed_elements.contains(element->uuid(), element))
+		m_placed_elements.insert(element->uuid(), element);
+	storeElementInformation(element->uuid(), element->elementInformations());
+}
+
+/**
+	@brief projectDataBase::unplaceElement
+	@p element no longer holds @p uuid. If another placed symbol still does
+	(the original of a copy), the row is written again from it; otherwise
+	it goes.
+*/
+void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
+{
+	m_placed_elements.remove(uuid, element);
+	for (const QPointer<Element> &other : m_placed_elements.values(uuid)) {
+		if (other) {
+			storeElementInformation(uuid, other->elementInformations());
+			return;
+		}
+	}
+	m_placed_elements.remove(uuid);
+	forgetElementInformation(uuid);
+}
+
+/**
+	@brief projectDataBase::renameElementInformation
+	The uuid of the placed symbol @p element changed from @p old_uuid (a
+	paste or a folio copy renews it): its information follows it, and the
+	old uuid keeps a row only if another symbol still holds it.
+*/
+void projectDataBase::renameElementInformation(Element *element, const QUuid &old_uuid)
+{
+	if (!m_placed_elements.contains(old_uuid, element) || old_uuid == element->uuid()) return;
+	unplaceElement(element, old_uuid);
+	placeElement(element);
+}
+
+/**
+	@brief projectDataBase::elementInformationMismatches
+	Compare the store with every placed symbol, both ways: a symbol whose
+	information differs or is missing, and a stored row no symbol has.
+*/
+QStringList projectDataBase::elementInformationMismatches() const
+{
+	QStringList out;
+	QSet<QUuid> placed;
+	for (Diagram *diagram : m_project->diagrams()) {
+		for (Element *element : diagram->elements()) {
+			placed.insert(element->uuid());
+			if (!m_element_information.contains(element->uuid()))
+				out << element->uuid().toString() + QStringLiteral(": not stored");
+			else if (m_element_information.value(element->uuid()) != element->elementInformations())
+				out << element->uuid().toString() + QStringLiteral(": differs");
+		}
+	}
+	for (auto it = m_element_information.constBegin() ; it != m_element_information.constEnd() ; ++it)
+		if (!placed.contains(it.key()))
+			out << it.key().toString() + QStringLiteral(": stored, not placed");
+	QSqlQuery rows(m_data_base);
+	if (rows.exec(QStringLiteral("SELECT count(*) FROM element_information")) && rows.next()) {
+		int expected = 0;
+		for (const DiagramContext &dc : m_element_information) expected += int(dc.keys().size());
+		if (rows.value(0).toInt() != expected)
+			out << QStringLiteral("table holds %1 rows, the cache %2").arg(rows.value(0).toInt()).arg(expected);
+	}
+	return out;
 }
 
 /**

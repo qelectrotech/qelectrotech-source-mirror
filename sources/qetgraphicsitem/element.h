@@ -259,8 +259,8 @@ class Element : public QetGraphicsItem
 		 */
 		QString linkTypeToString() const;
 
-		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
-		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
+		void newUuid() {setUuid(QUuid::createUuid());} 	//create new uuid for this element
+		void setUuid(const QUuid &uuid);
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -329,6 +329,7 @@ class Element : public QetGraphicsItem
 
 	private:
 		void restoreSavedLinkOrder();
+		void storeInformation() const;
 		bool m_must_highlight = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;

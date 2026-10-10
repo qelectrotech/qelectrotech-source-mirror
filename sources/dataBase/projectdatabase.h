@@ -27,6 +27,8 @@
 #include <QSet>
 #include <QUuid>
 
+#include "../diagramcontext.h"
+
 class Element;
 class QETProject;
 class Diagram;
@@ -97,6 +99,19 @@ class projectDataBase : public QObject
 		static constexpr int MaxResultRows = 100000;
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
+
+			//The information of every symbol placed in the project, by
+			//symbol uuid: the store each symbol's information is written
+			//through. A symbol not placed
+			//(a preview, the symbol editor) keeps its own.
+		DiagramContext elementInformation(const QUuid &element) const;
+		bool hasElementInformation(const QUuid &element) const;
+		void storeElementInformation(const QUuid &element, const DiagramContext &information);
+		void forgetElementInformation(const QUuid &element);
+		void renameElementInformation(Element *element, const QUuid &old_uuid);
+			//Placed symbols whose information differs from the store's,
+			//each as "uuid: why"; empty when they all agree
+		QStringList elementInformationMismatches() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -222,6 +237,13 @@ class projectDataBase : public QObject
 			//sends xChanged and yChanged for every step of a drag, so the
 			//cell is written when next read, as drawing items are.
 		QList<QPointer<Element>> m_moved_elements;
+		QHash<QUuid, DiagramContext> m_element_information;
+			//The placed symbols holding each uuid: a paste or a folio copy
+			//briefly gives a copy its original's uuid, so one uuid can have
+			//two symbols until the copy's is renewed.
+		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
+		void placeElement(Element *element);
+		void unplaceElement(Element *element, const QUuid &uuid);
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

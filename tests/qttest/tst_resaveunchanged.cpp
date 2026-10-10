@@ -317,6 +317,68 @@ private slots:
 		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
 	}
 
+	// QElectroTech run in a sandbox of its own with @p args, the store
+	// check on (QET_CHECK_ELEMENT_INFO_STORE); its output
+	QString runChecked(const QStringList &args)
+	{
+		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
+		QDir().mkpath(home);
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		env.insert(QStringLiteral("QET_CHECK_ELEMENT_INFO_STORE"), QStringLiteral("1"));
+		env.insert(QStringLiteral("HOME"), home);
+		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
+		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+		QProcess proc;
+		proc.setProcessEnvironment(env);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), args);
+		if (!proc.waitForFinished(180000)) return {};
+		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+	}
+
+	// The store of symbol information (DB-ACCESSORS-PLAN.md stage 4.1)
+	// agrees with every placed symbol once a project is open: every example.
+	void elementInfoStoreAgrees_data()
+	{
+		QTest::addColumn<QString>("project");
+		const QDir examples(QStringLiteral(QET_EXAMPLES_DIR));
+		for (const QString &f : examples.entryList({QStringLiteral("*.qet")}, QDir::Files, QDir::Name))
+			QTest::newRow(f.toUtf8().constData()) << examples.filePath(f);
+	}
+	void elementInfoStoreAgrees()
+	{
+		QFETCH(QString, project);
+		const QString out = runChecked({QStringLiteral("--resave"), project,
+										m_dir.filePath(QStringLiteral("store%1.qet").arg(m_run))});
+		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
+	}
+
+	// ... and after a copy of a symbol, which briefly shares its original's
+	// uuid, and an undo: the original kept no row once (duplicateElements
+	// is the copy the paste and folio duplication make).
+	void elementInfoStoreAfterCopyAndUndo()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString script = m_dir.filePath(QStringLiteral("copy.js"));
+		QFile js(script);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral(
+				 "var f = 0; while (qet.elementUuids(f).length < 3) ++f;\n"
+				 "var e = qet.elementUuids(f);\n"
+				 "qet.log('COPY ' + qet.duplicateElements(f, [e[0], e[1]], f, 300, 300).length);\n"
+				 "qet.log('DELETE ' + qet.deleteElement(f, e[2]) + ' UNDO ' + qet.undo());\n"
+				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(m_dir.filePath(QStringLiteral("copied.qet"))).toUtf8());
+		js.close();
+		const QString out = runChecked({QStringLiteral("--run"), script,
+										QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
+		QVERIFY2(out.contains(QStringLiteral("COPY 2")) && out.contains(QStringLiteral("UNDO true"))
+				 && out.contains(QStringLiteral("SAVED true")), qPrintable(out.right(600)));
+		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()

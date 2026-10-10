@@ -18,6 +18,7 @@
 #include "element.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
+#include "../dataBase/projectdatabase.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/elementautonumschemecommand.h"
@@ -718,6 +719,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),
 				QStringLiteral("elementInformation"));
+	storeInformation();
 
 		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;
@@ -1042,7 +1044,9 @@ bool Element::fromXml(QDomElement &e,
 	}
 
 	//uuid of this element
-	m_uuid = QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString()));
+	//Through setUuid(): a folio adds a symbol before reading it, so its
+	//stored information has to follow from the uuid it was born with.
+	setUuid(QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString())));
 
 		//load prefix
 	m_prefix = e.attribute(QStringLiteral("prefix"));
@@ -1795,6 +1799,33 @@ void Element::setFormulaSchemeId(const QUuid &id)
 		m_data.m_informations.addValue(QETInformation::ELMT_FORMULA_ID,
 									   id.toString(), false);
 	}
+	storeInformation();
+}
+
+/**
+	@brief Element::setUuid
+	A placed symbol's stored information follows its uuid (a paste or a
+	folio copy renews it).
+*/
+void Element::setUuid(const QUuid &uuid)
+{
+	const QUuid old_uuid = m_uuid;
+	m_uuid = uuid;
+	if (diagram() && diagram()->project() && diagram()->project()->dataBase())
+		diagram()->project()->dataBase()->renameElementInformation(this, old_uuid);
+}
+
+/**
+	@brief Element::storeInformation
+	Write this symbol's information to its project's store, once it is
+	placed: every change of a placed
+	symbol's information comes through here.
+*/
+void Element::storeInformation() const
+{
+	if (diagram() && diagram()->project() && diagram()->project()->dataBase()
+		&& diagram()->project()->dataBase()->hasElementInformation(m_uuid))
+		diagram()->project()->dataBase()->storeElementInformation(m_uuid, m_data.m_informations);
 }
 
 void Element::setElementInformations(DiagramContext dc)
@@ -1811,6 +1842,7 @@ void Element::setElementInformations(DiagramContext dc)
 	if (!actual_label.isEmpty()) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
+	storeInformation();
 	emit elementInfoChange(old_info, m_data.m_informations);
 
 	// Propagate label change to linked PLC slaves (label is changed via
@@ -1860,6 +1892,7 @@ void Element::setElementData(ElementData data)
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
+		storeInformation();
 		if (diagram()) {
 			diagram()->project()->dataBase()->elementInfoChanged(this);
 		}
@@ -2078,6 +2111,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 				->elementAutoNumCurrentFormula();
 
 		m_data.m_informations.addValue(QStringLiteral("formula"), formula);
+		storeInformation();
 
 		QString element_currentAutoNum = diagram()
 				->project()
@@ -2146,6 +2180,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		{
 			DiagramContext dc = m_data.m_informations;
 			m_data.m_informations.addValue(QStringLiteral("label"), actualLabel());
+			storeInformation();
 			emit elementInfoChange(dc, m_data.m_informations);
 		}
 	}
