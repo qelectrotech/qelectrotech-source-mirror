@@ -275,7 +275,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	QVector<HandleRole> m_handleRoles;
 	int m_vector_index = -1;
 	QPointF m_original_pos;   // scene position at the start of a resize/rotate/pivot drag, for Escape-to-cancel
-	bool m_drag_cancelled = false;
+	bool m_drag_cancelled = false;   // Escape pressed: ignore the rest of this mouse gesture
 	// Crop mode: the crop being edited, in the original's pixels; the
 	// whole original, colour-keyed, shown dimmed around it; and the
 	// state of a drag that moves the crop window.
@@ -285,7 +285,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPointF m_crop_move_start;
 	QRectF m_crop_move_origin;
 	QRectF cropFrameLocal() const;
-	void dragCropHandle(int index, const QPointF &scenePos);   // Escape pressed: ignore the rest of this mouse gesture
+	void dragCropHandle(int index, const QPointF &scenePos);
 	ShapeTransform m_original_transform;
 	bool m_original_pivotIsCustom = false;
 	bool m_deferHandleReposition = false;   // see setPivot()'s comment
