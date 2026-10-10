@@ -931,52 +931,62 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	m_swallow_native_menu = false;
 	m_gesture_over_tool = false;
 
-		//A right click on a running tool belongs to the tool alone: it
-		//cancels the line being drawn or ends the tool, and ending the
-		//tool puts the context menu policy of the views back before this
-		//very click is over. The platform then still sends its own
-		//context menu for the same click -- on X11 with the press, on
-		//Windows with the release -- and the menu would open on the
-		//click which was meant to cancel. So it is swallowed here, the
-		//way a gesture swallows it further down; the next press which no
-		//tool handles puts this flag back to false.
+		//A right click on the running cable tool belongs to the tool
+		//alone: it cancels the line being drawn, and ending the tool puts
+		//the context menu policy of the views back before this very click
+		//is over. The platform then still sends its own context menu for
+		//the same click -- on X11 with the press, on Windows with the
+		//release -- and the menu would open on the click which was meant
+		//to cancel. So it is swallowed here, the way a gesture swallows
+		//it further down; the next press which no tool handles puts this
+		//flag back to false. No other tool is touched: they hand the
+		//button back and are surrounded by the ring, as they always were.
 	if (e->button() == Qt::RightButton && m_diagram
-	    && m_diagram->eventInterfaceIsRunning()) {
+	    && m_diagram->cableToolIsRunning()) {
 		m_swallow_native_menu = true;
 	}
 	if (e->button() == Qt::RightButton
 	    && DiagramGestureOverlay::isEnabled()
 	    && !m_diagram->focusItem()
-	    && !m_diagram->eventInterfaceIsRunning())
+	    && !m_diagram->cableToolIsRunning())
 	{
-			//No tool is running: the right button draws the quick command
-			//ring, or opens the context menu on release. When a tool *is*
-			//running, no gesture is tracked at all: the tool owns the right
-			//button (it cancels the line being drawn or ends itself), and
+			//The right button draws the quick command ring, or opens the
+			//context menu on release. The cable tool alone does not let go
+			//of it: while it runs no gesture is tracked at all, because
 			//tracking one would both pop the ring up in the middle of the
-			//drawing and take the tool away from under the user (see
-			//mouseMoveEvent, which ends the tool as soon as a gesture is
-			//recognised).
+			//drawing and take the tool away from the click meant to
+			//cancel it (see mouseMoveEvent, which ends the tool as soon
+			//as a gesture is recognised).
 		m_gesture_tracking = true;
 		m_gesture_origin = e->position().toPoint();
 		m_context_toolbar->hide();
 
-		m_swallow_native_menu = true;
+			//Another tool is running, often one a gesture just started. A
+			//right click still goes to it -- it cancels or finishes the
+			//tool -- so the press carries on to the scene. A drag ends the
+			//tool and shows the ring (see mouseMoveEvent).
+		if (m_diagram->eventInterfaceIsRunning()) {
+			m_gesture_over_tool = true;
+		}
+		else
+		{
+			m_swallow_native_menu = true;
 
-			//Select what is under the mouse, as the context menu does, so
-			//a gesture acts on it
-		if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-			if (!item->isSelected()) {
-				m_diagram->clearSelection();
-					//Clearing the selection can delete handler items, so
-					//look the item up again (see contextMenuEvent)
-				if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
-					again->setSelected(true);
+				//Select what is under the mouse, as the context menu does, so
+				//a gesture acts on it
+			if (QGraphicsItem *item = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+				if (!item->isSelected()) {
+					m_diagram->clearSelection();
+						//Clearing the selection can delete handler items, so
+						//look the item up again (see contextMenuEvent)
+					if (QGraphicsItem *again = m_diagram->itemAt(mapToScene(m_gesture_origin), transform())) {
+						again->setSelected(true);
+					}
 				}
 			}
+			e->accept();
+			return;
 		}
-		e->accept();
-		return;
 	}
 
 		//Start drag view when hold the middle button

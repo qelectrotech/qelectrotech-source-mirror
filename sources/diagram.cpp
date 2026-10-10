@@ -25,6 +25,7 @@
 #include "xml/terminalstripitemxml.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcontent.h"
+#include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
@@ -900,6 +901,23 @@ void Diagram::clearEventInterface()
 bool Diagram::eventInterfaceIsRunning() const
 {
 	return m_event_interface && m_event_interface->isRunning();
+}
+
+/**
+	@brief Diagram::cableToolIsRunning
+	@return true while the cable drawing tool is the running tool.
+
+	That tool is the one which takes the right mouse button away from
+	everything else: while it runs, a right click cancels the line being
+	drawn and must not open the quick command ring nor any context menu
+	with it. Every other tool lets go of the button again and is
+	surrounded by the ring the way it always was.
+*/
+bool Diagram::cableToolIsRunning() const
+{
+	return m_event_interface
+	       && m_event_interface->isRunning()
+	       && qobject_cast<DiagramEventAddCable *>(m_event_interface);
 }
 
 /**
