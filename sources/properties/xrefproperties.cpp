@@ -172,7 +172,14 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
 	xml_element.setAttribute("slave_label", slave_label);
-	xml_element.setAttribute("font", m_font);
+		//Only the cable cross-reference has a font of its own, and only
+		//it ever sets one. Writing the attribute unconditionally put
+		//font="" on every cross-reference type of every project the
+		//program saved; a file which does not hold the attribute reads
+		//back as no font, which is what all of them are.
+	if (!m_font.isEmpty()) {
+		xml_element.setAttribute("font", m_font);
+	}
 	foreach (QString key, m_prefix.keys()) {
 		xml_element.setAttribute(key % "prefix", m_prefix.value(key));
 	}

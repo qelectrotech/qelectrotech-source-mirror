@@ -2891,6 +2891,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 	//Export Cable Autonum -- one rule, but stored exactly like the others
 	//so it travels with the project and survives a re-save untouched.
+	//
+	//Only when it holds something, though. An element which is not there
+	//reads back as exactly the defaults a project which never touched
+	//cable numbering already has, so writing it every time put
+	//<cable_autonums> into every file the program saved -- into the
+	//example projects and into projects without a single cable in them.
+	//
+	//That is not the same as writing it only for projects with cables,
+	//which would cost data: a rule named before the first cable is
+	//drawn, an axis chosen before it, and the numbering question
+	//answered with no are answers only this element can carry.
 	QDomElement cable_autonums = xml_document.createElement("cable_autonums");
 	cable_autonums.setAttribute("current_autonum", m_current_cable_autonum);
 	cable_autonums.setAttribute("axis_priority",
@@ -2901,6 +2912,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	if (!m_cable_ask_numbering) {
 		cable_autonums.setAttribute("ask_numbering_rule", "false");
 	}
+	int written_cable_rules = 0;
 	QStringList cable_autonum_keys = cableAutoNum().keys();
 	cable_autonum_keys.sort();
 	for (const QString &key : std::as_const(cable_autonum_keys)) {
@@ -2909,9 +2921,19 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 			cable_autonum.setAttribute("title", key);
 			cable_autonum.setAttribute("formula", cableAutoNumFormula(key));
 			cable_autonums.appendChild(cable_autonum);
+			++written_cable_rules;
 		}
 	}
-	xml_element.appendChild(cable_autonums);
+		//Nothing to keep when the project never named a rule, never
+		//chose an axis other than the default and has not answered the
+		//numbering question with no -- then this element would say
+		//nothing the reader does not assume anyway.
+	if (!m_current_cable_autonum.isEmpty()
+	    || !m_cable_ask_numbering
+	    || !m_cable_axis_x_first
+	    || written_cable_rules > 0) {
+		xml_element.appendChild(cable_autonums);
+	}
 
 	// Export default guides
 	QDomElement guides_elmt = xml_document.createElement("guides");
