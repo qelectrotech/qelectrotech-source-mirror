@@ -354,6 +354,7 @@ private slots:
 										m_dir.filePath(QStringLiteral("store%1.qet").arg(m_run))});
 		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
 		QVERIFY2(out.contains(QStringLiteral("folio title block store: 0 differ")), qPrintable(out.right(600)));
+		QVERIFY2(out.contains(QStringLiteral("wire properties store: 0 differ")), qPrintable(out.right(600)));
 	}
 
 	// Title block fields stamped on every folio go through the store, and
@@ -395,11 +396,12 @@ private slots:
 		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
 	}
 
-	// After copies of linked symbols and the undo of a folio's removal, the
-	// project database's symbol and link rows are those a fresh open of
-	// the saved project builds (F106, F107): a copy is placed while it
-	// still carries its original's uuid, and an undone folio removal put
-	// back its symbols but not their rows.
+	// After copies of linked symbols, of wired symbols, and the undo of a
+	// folio's removal, the project database's symbol, link, wire and
+	// terminal rows are those a fresh open of the saved project builds
+	// (F106, F107): a copy is placed while it still carries its original's
+	// uuid, and an undone folio removal put back its symbols but not their
+	// rows.
 	void symbolRowsAfterCopyAndFolioUndo()
 	{
 #ifndef QET_HAS_SCRIPTING
@@ -409,22 +411,31 @@ private slots:
 				 "function rows() { return JSON.stringify(["
 				 "qet.query('SELECT uuid, diagram_uuid, type FROM element ORDER BY uuid'),"
 				 "qet.query('SELECT element_uuid, label, comment FROM element_info ORDER BY element_uuid'),"
-				 "qet.query('SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, linked_uuid')]); }\n");
+				 "qet.query('SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, linked_uuid'),"
+				 "qet.query('SELECT uuid, terminal1_element_uuid, terminal2_element_uuid, text FROM conductor ORDER BY uuid'),"
+				 "qet.query('SELECT uuid, element_uuid FROM terminal ORDER BY uuid, element_uuid')]); }\n");
 		const QString edit = m_dir.filePath(QStringLiteral("rows_edit.js")),
 				dump = m_dir.filePath(QStringLiteral("rows_dump.js")),
 				saved = m_dir.filePath(QStringLiteral("rows.qet"));
 		QFile js(edit);
 		QVERIFY(js.open(QIODevice::WriteOnly));
 		js.write((rows + QStringLiteral(
-				 "var copied = 0, linked = -1;\n"
+				 "var linked = -1;\n"
+				 "for (var f = 0; f < qet.folioCount() && linked < 0; ++f)\n"
+				 "  qet.elementUuids(f).forEach(function (u) { if (qet.linkedElements(f, u).length) linked = f; });\n"
+				 "qet.log('UNDONE ' + (qet.removeFolio(linked) && qet.undo()));\n"
+				 "var copied = 0;\n"
 				 "for (var f = 0; f < qet.folioCount() && copied < 3; ++f) {\n"
 				 "  var e = qet.elementUuids(f);\n"
 				 "  for (var i = 0; i < e.length && copied < 3; ++i)\n"
-				 "    if (qet.linkedElements(f, e[i]).length) {\n"
-				 "      copied += qet.duplicateElements(f, [e[i]], f, 300, 300).length; linked = f; }\n"
+				 "    if (qet.linkedElements(f, e[i]).length)\n"
+				 "      copied += qet.duplicateElements(f, [e[i]], f, 300, 300).length;\n"
 				 "}\n"
 				 "qet.log('COPIED ' + copied);\n"
-				 "qet.log('UNDONE ' + (qet.removeFolio(linked) && qet.undo()));\n"
+				 "var wf = 0; while (qet.elementUuids(wf).length < 6) ++wf;\n"
+				 "var wires = qet.conductorCount(wf), w = qet.elementUuids(wf);\n"
+				 "qet.log('WIRED ' + qet.duplicateElements(wf, w.slice(0, 6), wf, 300, 300).length"
+				 " + (qet.conductorCount(wf) > wires ? ' with wires' : ''));\n"
 				 "qet.log('ROWS ' + rows());\n"
 				 "qet.log('SAVED ' + qet.save('%1'));\n").arg(saved)).toUtf8());
 		js.close();
@@ -435,7 +446,8 @@ private slots:
 
 		const QString edited = runChecked({QStringLiteral("--run"), edit,
 										   QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet")});
-		QVERIFY2(edited.contains(QStringLiteral("COPIED 3")) && edited.contains(QStringLiteral("UNDONE true"))
+		QVERIFY2(edited.contains(QStringLiteral("COPIED 3")) && edited.contains(QStringLiteral("WIRED 6 with wires"))
+				 && edited.contains(QStringLiteral("UNDONE true"))
 				 && edited.contains(QStringLiteral("SAVED true")), qPrintable(edited.right(600)));
 		const QString reopened = runChecked({QStringLiteral("--run"), dump, saved});
 		auto rowsOf = [](const QString &log) {

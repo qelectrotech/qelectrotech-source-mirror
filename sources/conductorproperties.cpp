@@ -217,10 +217,22 @@ void SingleLineProperties::drawPen(QPainter *painter,
 */
 void SingleLineProperties::toXml(QDomElement &e) const
 {
-	e.setAttribute("ground",  hasGround  ? "true" : "false");
-	e.setAttribute("neutral", hasNeutral ? "true" : "false");
-	e.setAttribute("phase",   phases);
-	if (isPen()) e.setAttribute("pen", "true");
+	for (const auto &attribute : attributes())
+		e.setAttribute(attribute.first, attribute.second);
+}
+
+/**
+	@brief SingleLineProperties::attributes
+	@return the attributes toXml() writes, in its order
+*/
+QList<QPair<QString, QString>> SingleLineProperties::attributes() const
+{
+	QList<QPair<QString, QString>> a;
+	a << qMakePair(QStringLiteral("ground"), QString::fromLatin1(hasGround ? "true" : "false"));
+	a << qMakePair(QStringLiteral("neutral"), QString::fromLatin1(hasNeutral ? "true" : "false"));
+	a << qMakePair(QStringLiteral("phase"), QString::number(phases));
+	if (isPen()) a << qMakePair(QStringLiteral("pen"), QStringLiteral("true"));
+	return a;
 }
 
 /**
@@ -268,50 +280,66 @@ ConductorProperties::~ConductorProperties()
 */
 void ConductorProperties::toXml(QDomElement &e) const
 {
-	e.setAttribute("type", typeToString(type));
+	for (const auto &attribute : attributes())
+		e.setAttribute(attribute.first, attribute.second);
+}
+
+/**
+	@brief ConductorProperties::attributes
+	@return the attributes toXml() writes, in the order it writes them: the
+	project database stores a placed wire's properties as these.
+*/
+QList<QPair<QString, QString>> ConductorProperties::attributes() const
+{
+	QList<QPair<QString, QString>> a;
+	auto add = [&a](const char *name, const QString &value) {
+		a << qMakePair(QString::fromLatin1(name), value);
+	};
+	add("type", typeToString(type));
 
 	if (color != QColor(Qt::black))
-		e.setAttribute("color", color.name());
+		add("color", color.name());
 
-	e.setAttribute("bicolor", m_bicolor? "true" : "false");
-	e.setAttribute("color2", m_color_2.name());
-	e.setAttribute("dash-size", QString::number(m_dash_size));
+	add("bicolor", m_bicolor? "true" : "false");
+	add("color2", m_color_2.name());
+	add("dash-size", QString::number(m_dash_size));
 
 	if (type == Single)
-		singleLineProperties.toXml(e);
+		a << singleLineProperties.attributes();
 
-	e.setAttribute("num", text);
-	e.setAttribute("text_color", text_color.name());
-	e.setAttribute("formula", m_formula);
-	e.setAttribute("cable", m_cable);
+	add("num", text);
+	add("text_color", text_color.name());
+	add("formula", m_formula);
+	add("cable", m_cable);
 	if (!m_cable_uuid.isNull())
 	{
 			//Only written when there is a cable: a conductor which is no
 			//part of one keeps whatever cable text it had and no reference
 			//at all, so a hand written value is never mistaken for a
 			//generated one.
-		e.setAttribute("cable_uuid", m_cable_uuid.toString());
-		e.setAttribute("cable_slot", QString::number(m_cable_slot));
+		add("cable_uuid", m_cable_uuid.toString());
+		add("cable_slot", QString::number(m_cable_slot));
 	}
-	e.setAttribute("bus", m_bus);
-	e.setAttribute("function", m_function);
-	e.setAttribute("tension_protocol", m_tension_protocol);
-	e.setAttribute("conductor_color", m_wire_color);
-	e.setAttribute("conductor_section", m_wire_section);
-	e.setAttribute("numsize", QString::number(text_size));
-	e.setAttribute("condsize", QString::number(cond_size));
-	e.setAttribute("displaytext", m_show_text);
-	e.setAttribute("onetextperfolio", m_one_text_per_folio);
-	e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
-	e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
+	add("bus", m_bus);
+	add("function", m_function);
+	add("tension_protocol", m_tension_protocol);
+	add("conductor_color", m_wire_color);
+	add("conductor_section", m_wire_section);
+	add("numsize", QString::number(text_size));
+	add("condsize", QString::number(cond_size));
+	add("displaytext", QString::number(m_show_text));
+	add("onetextperfolio", QString::number(m_one_text_per_folio));
+	add("vertirotatetext", QString::number(verti_rotate_text));
+	add("horizrotatetext", QString::number(horiz_rotate_text));
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
-	e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
+	add("horizontal-alignment", QString::fromLatin1(me.valueToKey(m_horizontal_alignment)));
+	add("vertical-alignment", QString::fromLatin1(me.valueToKey(m_vertical_alignment)));
 
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
-		e.setAttribute("style", conductor_style);
+		add("style", conductor_style);
+	return a;
 }
 
 

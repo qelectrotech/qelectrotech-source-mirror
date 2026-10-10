@@ -25,6 +25,7 @@
 #include "../conductorsegment.h"
 #include "../conductorsegmentprofile.h"
 #include "../diagram.h"
+#include "../dataBase/projectdatabase.h"
 #include "../diagramcommands.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/terminal.h"
@@ -1114,6 +1115,7 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
+	const QUuid old_uuid = m_uuid;
 		//Older project files have no conductor uuid attribute at all --
 		//generate one on load, same treatment terminal uuids got when
 		//that field was introduced (see terminal1/terminal2 handling in
@@ -1129,6 +1131,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 			//single load-and-resave (see #754).
 		m_uuid = QUuid::createUuid();
 	}
+	uuidChanged(old_uuid);
 
 		//"nan" and "inf" parse as numbers; a non-finite position is kept at 0
 	const qreal x = dom_element.attribute("x", nullptr).toDouble();
@@ -1235,7 +1238,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	dom_element.appendChild(dom_seq);
 
 		// Export the properties and text
-	m_properties. toXml(dom_element);
+	properties().toXml(dom_element);
 	if(m_text_item->wasMovedByUser())
 	{
 		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
@@ -1735,6 +1738,7 @@ void Conductor::refreshText()
 				m_properties.text = m_properties.m_formula;
 				m_text_item->setPlainText(m_properties.text);
 			}
+			storeProperties();
 		}
 		else
 		{
@@ -1833,6 +1837,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 	calculateTextItemPosition();
 	update();
 
+	storeProperties();
 	emit propertiesChange();
 }
 
@@ -1842,6 +1847,8 @@ void Conductor::setProperties(const ConductorProperties &property)
 */
 ConductorProperties Conductor::properties() const
 {
+	if (projectDataBase *store = placedStore())
+		return store->conductorProperties(m_uuid);
 	return(m_properties);
 }
 
@@ -1868,7 +1875,72 @@ void Conductor::setCableReference(const QString &label,
 	m_properties.m_cable = label;
 	m_properties.m_cable_uuid = cable_uuid;
 	m_properties.m_cable_slot = slot;
+	storeProperties();
 	emit propertiesChange();
+}
+
+/**
+	@brief Conductor::placedStore
+	@return the project database holding this wire's properties
+	or nullptr if it is not placed in a
+	project, or shares its uuid with another wire for the moment a copy
+	takes to get its own
+*/
+projectDataBase *Conductor::placedStore() const
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	return store && store->hasConductorProperties(m_uuid)
+			&& store->placedConductorCount(m_uuid) == 1 ? store : nullptr;
+}
+
+/**
+	@brief Conductor::storeProperties
+	Write this wire's properties to its project's store, once it is placed:
+	every change of a placed wire's properties comes through here.
+*/
+void Conductor::storeProperties()
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	if (project && project->dataBase() && project->dataBase()->hasConductorProperties(m_uuid))
+		project->dataBase()->conductorPropertiesStored(this, m_properties);
+}
+
+/**
+	@brief Conductor::newUuid
+	Make a new uuid for this conductor; its stored properties and its row
+	follow it.
+*/
+void Conductor::newUuid()
+{
+	setUuid(QUuid::createUuid());
+}
+
+/**
+	@brief Conductor::setUuid
+	@param uuid : the uuid of this conductor, saved from now on
+*/
+void Conductor::setUuid(const QUuid &uuid)
+{
+	const QUuid old_uuid = m_uuid;
+	m_uuid = uuid;
+	m_persist_uuid = true;
+	uuidChanged(old_uuid);
+}
+
+/**
+	@brief Conductor::uuidChanged
+	Tell the project's store this placed wire's uuid changed from
+	@p old_uuid (a paste renews it, a file gives it).
+*/
+void Conductor::uuidChanged(const QUuid &old_uuid)
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	if (project && project->dataBase())
+		project->dataBase()->conductorUuidChanged(this, old_uuid);
 }
 
 /**

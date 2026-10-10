@@ -133,6 +133,8 @@ class Element : public QetGraphicsItem
 
 			//METHODS related to information
 		DiagramContext elementInformations()const;
+			/// This symbol's own copy of its information, whatever the store holds
+		DiagramContext ownInformations() const {return m_data.m_informations;}
 		virtual void setElementInformations(DiagramContext dc);
 
 		ElementData elementData() const;

@@ -1706,8 +1706,8 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 QDomDocument QETProject::toXml()
 {
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
-		//information and folio title blocks (DB-ACCESSORS-PLAN.md) agree
-		//with every placed symbol and folio, at each save. A test and debugging aid; it changes nothing.
+		//information, folio title blocks and wire properties agree with every placed symbol, folio and
+		//wire, at each save. A test and debugging aid; it changes nothing.
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1) {
 		const QStringList mismatches = m_data_base.elementInformationMismatches();
 		qWarning().noquote() << "element information store:" << mismatches.size() << "differ"
@@ -1715,6 +1715,9 @@ QDomDocument QETProject::toXml()
 		const QStringList folios = m_data_base.folioTitleBlockMismatches();
 		qWarning().noquote() << "folio title block store:" << folios.size() << "differ"
 							 << folios.mid(0, 5).join(QStringLiteral(", "));
+		const QStringList wires = m_data_base.conductorPropertiesMismatches();
+		qWarning().noquote() << "wire properties store:" << wires.size() << "differ"
+							 << wires.mid(0, 5).join(QStringLiteral(", "));
 	}
 	// racine du projet
 	QDomDocument xml_doc;

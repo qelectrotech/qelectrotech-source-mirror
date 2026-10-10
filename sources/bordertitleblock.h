@@ -113,30 +113,30 @@ class BorderTitleBlock : public QObject
 		// project reads them from the project's store, any other from its
 		// own copy.
 		/// @return the value of the title block "Author" field
-		QString author() const { return(current().author); }
+		QString author() const { const TitleBlockProperties *s = stored(); return(s ? s->author : btb_author_); }
 		/// @return the value of the title block "Date" field
-		QDate date() const { return(current().date); }
+		QDate date() const { const TitleBlockProperties *s = stored(); return(s ? s->date : btb_date_); }
 		/// @return the value of the title block "Title" field
-		QString title() const { return(current().title); }
+		QString title() const { const TitleBlockProperties *s = stored(); return(s ? s->title : btb_title_); }
 		/// @return the value of the title block "Folio" field
-		QString folio() const { return(current().folio); }
+		QString folio() const { const TitleBlockProperties *s = stored(); return(s ? s->folio : btb_folio_); }
 		/// @return the value of the title block "Folio" field as displayed
 		QString finalfolio() const { return(btb_final_folio_); }
 		/// @return the value of the title block "Plant" field
-		QString plant() const { return(current().plant); }
+		QString plant() const { const TitleBlockProperties *s = stored(); return(s ? s->plant : btb_plant_); }
 		/// @return the value of the title block "Locmach" field
-		QString locmach() const { return(current().locmach); }
+		QString locmach() const { const TitleBlockProperties *s = stored(); return(s ? s->locmach : btb_locmach_); }
 		/// @return the value of the revision index block "Folio" field
-		QString indexrev() const { return(current().indexrev); }
+		QString indexrev() const { const TitleBlockProperties *s = stored(); return(s ? s->indexrev : btb_indexrev_); }
 		/// @return the value of the title block "File" field
-		QString fileName() const { return(current().filename); }
+		QString fileName() const { const TitleBlockProperties *s = stored(); return(s ? s->filename : btb_filename_); }
 		/// @return the value of the title block Additional Fields
-		QString version() const { return(current().version); }
+		QString version() const { const TitleBlockProperties *s = stored(); return(s ? s->version : btb_version_); }
 		/// @return the value of the title block Additional Fields
 		DiagramContext additionalFields() const {
-			return (current().context); }
+			const TitleBlockProperties *s = stored(); return(s ? s->context : additional_fields_); }
 		/// @return the value of the title block
-		QString autoPageNum() const { return(current().auto_page_num); }
+		QString autoPageNum() const { const TitleBlockProperties *s = stored(); return(s ? s->auto_page_num : btb_auto_page_num_); }
 			/// The title of the folio numbering this folio follows, nothing else changes
 		void setAutoPageNum(const QString &title);
 		/// @return the value of the total number of folios
@@ -297,6 +297,7 @@ class BorderTitleBlock : public QObject
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 		Diagram *m_owner_folio = nullptr;
 		TitleBlockProperties current() const;
+		const TitleBlockProperties *stored() const;
 		projectDataBase *placedStore() const;
 		void storeTitleBlock();
 };

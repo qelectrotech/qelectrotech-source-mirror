@@ -326,9 +326,23 @@ TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 */
 TitleBlockProperties BorderTitleBlock::current() const
 {
-	if (projectDataBase *store = placedStore())
-		return store->folioTitleBlock(m_owner_folio->uuid());
+	if (const TitleBlockProperties *s = stored())
+		return *s;
 	return localTitleBlock();
+}
+
+/**
+	@brief BorderTitleBlock::stored
+	@return the properties the project's store holds for this titleblock's
+	folio, or nullptr if it is not placed. Read at once: the getters use it
+	field by field, as label formulas ask for the folio and title of every
+	symbol's folio, and copying the whole properties each time costs.
+*/
+const TitleBlockProperties *BorderTitleBlock::stored() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioTitleBlock(m_owner_folio->uuid());
+	return nullptr;
 }
 
 /**

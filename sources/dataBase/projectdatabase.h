@@ -29,6 +29,7 @@
 
 #include "../diagramcontext.h"
 #include "../titleblockproperties.h"
+#include "../conductorproperties.h"
 
 class Element;
 class QETProject;
@@ -124,11 +125,22 @@ class projectDataBase : public QObject
 			//through. A folio not in a
 			//project keeps its own.
 		TitleBlockProperties folioTitleBlock(const QUuid &folio) const;
+		const TitleBlockProperties *storedFolioTitleBlock(const QUuid &folio) const;
 		Diagram *placedFolio(const QUuid &folio) const;
 		void storeFolioTitleBlock(const QUuid &folio, const TitleBlockProperties &properties);
 		void placeFolio(Diagram *folio);
 		void folioUuidChanged(Diagram *folio, const QUuid &old_uuid);
 		QStringList folioTitleBlockMismatches() const;
+
+			//The properties of every wire placed in the project, by wire
+			//uuid: the store each wire's properties are written through
+			//A wire not placed keeps its own.
+		ConductorProperties conductorProperties(const QUuid &conductor) const;
+		bool hasConductorProperties(const QUuid &conductor) const;
+		int placedConductorCount(const QUuid &conductor) const;
+		void conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties);
+		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
+		QStringList conductorPropertiesMismatches() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -239,7 +251,9 @@ class projectDataBase : public QObject
 				  m_insert_image_query,
 				  m_store_remove_query,
 				  m_store_insert_query,
-				  m_remove_links_query;
+				  m_remove_links_query,
+				  m_conductor_properties_insert_query,
+				  m_conductor_property_remove_query;
 
 			//Which uuid's row each drawing item last wrote, and which item
 			//wrote each row. A pasted copy is added to the folio still
@@ -265,6 +279,18 @@ class projectDataBase : public QObject
 		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
+		QHash<QUuid, ConductorProperties> m_conductor_properties;
+			//The rows of conductor_properties, to write only what changes
+		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
+		QSet<QUuid> m_dirty_conductor_properties;
+		void flushConductorProperties();
+		QMultiHash<QUuid, QPointer<Conductor>> m_placed_conductors;
+		bool storeConductorProperties(const QUuid &conductor, const ConductorProperties &properties);
+		void placeConductor(Conductor *conductor);
+		void unplaceConductor(Conductor *conductor, const QUuid &uuid);
+		Conductor *otherConductorHolder(const QUuid &uuid, const Conductor *conductor) const;
+		void writeConductorRow(Conductor *conductor);
+		void removeConductorRow(const QUuid &uuid);
 		void unplaceFolio(Diagram *folio, const QUuid &uuid);
 		void placeElement(Element *element);
 		Element *otherHolder(const QUuid &uuid, const Element *element) const;
