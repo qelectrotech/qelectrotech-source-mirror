@@ -235,6 +235,22 @@ set_tests_properties(tst_handlersize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=off
 target_include_directories(tst_handlersize PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_handlersize PRIVATE Qt::Test Qt::Widgets)
 
+# Tests that need the application around the class they test -- a folio,
+# its view, the editor window and its actions -- link the application's own
+# code (the qelectrotech_objects library) and run a real QETApp offscreen,
+# with settings and folders of their own (qetapptest.h).
+function(qet_add_app_test name)
+  add_executable(${name} ${ARGN} qetapptest.h)
+  add_test(NAME ${name} COMMAND ${name})
+  set_tests_properties(${name} PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  target_include_directories(${name} PRIVATE ${QET_DIR}/sources)
+  target_link_libraries(${name} PRIVATE qelectrotech_objects Qt::Test)
+endfunction()
+
+# Space on a picture turns its own transform, which the file saves (#1413),
+# alone and with a group.
+qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
+
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
 add_executable(
@@ -246,6 +262,10 @@ add_test(NAME tst_textresizehandles COMMAND tst_textresizehandles)
 set_tests_properties(tst_textresizehandles PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_textresizehandles PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
+
+# A line's pivot follows its centre when one of its ends is dragged, as a
+# rectangle's does; a pivot placed by hand stays.
+qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 
 # legacyelementtypes.h is header-only: the rewrite of element type names in
 # nomenclature queries saved before June 2022.
