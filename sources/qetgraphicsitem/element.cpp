@@ -1630,7 +1630,10 @@ void Element::initLink(QETProject *prj)
 		// if nothing to link return now
 	if (tmp_uuids_link.isEmpty()) return;
 
-	ElementProvider ep(prj);
+		//The built folios only: a partner on a folio not built yet
+		//(QET_LAZY_FOLIOS) is linked when its folio is, and the saved list
+		//is kept until then, for the order it gives
+	ElementProvider ep(prj->builtFolios());
 	QList<QUuid> uuids;
 	for (const auto &linkInfo : tmp_uuids_link) {
 		uuids.append(linkInfo.uuid);
@@ -1648,7 +1651,27 @@ void Element::initLink(QETProject *prj)
 		}
 	}
 	restoreSavedLinkOrder();
-	tmp_uuids_link.clear();
+	if (pendingLinks().isEmpty() || !prj->unloadedFolioCount()) {
+		tmp_uuids_link.clear();
+	}
+}
+
+/**
+	@brief Element::pendingLinks
+	@return the uuids of the partners this symbol was saved linked to and
+	is not linked to yet: those on a folio not built yet (QET_LAZY_FOLIOS),
+	until initLink() runs again once it is
+*/
+QSet<QUuid> Element::pendingLinks() const
+{
+	QSet<QUuid> pending;
+	for (const auto &link_info : tmp_uuids_link) {
+		pending.insert(link_info.uuid);
+	}
+	for (Element *elmt : connected_elements) {
+		pending.remove(elmt->uuid());
+	}
+	return pending;
 }
 
 /**

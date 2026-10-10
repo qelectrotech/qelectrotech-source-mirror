@@ -308,6 +308,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;
+	QSet<QUuid> unjoined;
 	QList<DocumentElement> elements;
 	QList<DocumentConductor> conductors;
 	QSet<QUuid> element_uuids;
@@ -528,6 +529,9 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 				const QUuid terminal(conductor_xml.attribute(QStringLiteral("terminal") + index));
 				const int e = on_this_folio.value(owner, -1);
 				if (e < 0) {
+						//Building the folio leaves this wire out and
+						//says so (Diagram::wiresNotReconnected())
+					unjoined.insert(diagram_uuid);
 					found = false;
 					break;
 				}
@@ -722,7 +726,41 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			}
 		}
 	}
+	m_folios_with_unjoined_wires = unjoined;
 	return true;
+}
+
+/**
+	@brief projectDataBase::foliosWithUnjoinedWires
+	@return the uuids of the folios whose document has a wire that building
+	them will leave out, an end of it not being found: those whose
+	Diagram::wiresNotReconnected() will not be empty. Known when the
+	database was last filled from the document, else empty.
+*/
+QSet<QUuid> projectDataBase::foliosWithUnjoinedWires() const
+{
+	return m_folios_with_unjoined_wires;
+}
+
+/**
+	@brief projectDataBase::folioUuidsOfElements
+	@return the uuids of the folios the symbols @p elements are on, read
+	from the element table as it is, without bringing it up to date: for a
+	symbol on a folio not built yet (QET_LAZY_FOLIOS) its row came from the
+	document and nothing can have changed it.
+*/
+QSet<QUuid> projectDataBase::folioUuidsOfElements(const QSet<QUuid> &elements) const
+{
+	QSet<QUuid> folios;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT diagram_uuid FROM element WHERE uuid = :uuid"));
+	for (const QUuid &uuid : elements) {
+		query.bindValue(QStringLiteral(":uuid"), uuid.toString());
+		if (query.exec() && query.next()) {
+			folios.insert(QUuid(query.value(0).toString()));
+		}
+	}
+	return folios;
 }
 
 /**

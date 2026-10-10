@@ -210,6 +210,7 @@ class Diagram : public QGraphicsScene
 			/// false while this folio's items wait in its XML to be
 			/// built (QET_LAZY_FOLIOS)
 		bool isLoaded() const {return m_deferred.isNull();}
+		QDomElement deferredXml() const {return m_deferred;}
 		void ensureLoaded();
 		bool buildDeferred();
 			//The last argument is only for a copy fragment: when it is

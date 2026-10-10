@@ -124,6 +124,10 @@ class QETProject : public QObject
 		QList<Diagram *> folios() const;
 		bool deferringFolios() const {return m_deferring_folios;}
 		int unloadedFolioCount() const;
+		QList<Diagram *> builtFolios() const;
+		QList<Diagram *> foliosWithWiresNotReconnected();
+		void buildFolioToShow(Diagram *folio);
+		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
 		void loadFolios() const;
 		void buildFolios(const QList<Diagram *> &folios) const;
 		void folioLoaded(Diagram *folio);
@@ -301,6 +305,7 @@ class QETProject : public QObject
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &) const;
 		QList <ElementsLocation> unusedElements() const;
+		QList<ElementsLocation> unbuiltFolioElements() const;
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 		bool projectWasModified();
 		bool projectOptionsWereModified();

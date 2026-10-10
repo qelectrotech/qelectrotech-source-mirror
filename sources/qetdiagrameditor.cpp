@@ -2004,7 +2004,7 @@ bool QETDiagramEditor::openAndAddProject(
 		//was not found: they would otherwise vanish on the next save
 		//without the user ever being told.
 	QStringList lost_wires;
-	for (Diagram *diagram : project->diagrams()) {
+	for (Diagram *diagram : project->foliosWithWiresNotReconnected()) {
 		for (const QString &wire : diagram->wiresNotReconnected()) {
 			lost_wires << tr("Sheet %1: %2").arg(diagram->folioIndex() + 1).arg(wire);
 		}

@@ -41,6 +41,7 @@ class ElementProvider
 	public:
 		ElementProvider(QETProject *prj, Diagram *diagram=nullptr);
 		ElementProvider(Diagram *diag);
+		explicit ElementProvider(const QList<Diagram *> &diagrams);
 		QVector <QPointer<Element>> freeElement(ElementData::Types filter) const;
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;

@@ -45,6 +45,14 @@ ElementProvider::ElementProvider(Diagram *diag) {
 }
 
 /**
+	@brief ElementProvider::ElementProvider Constructor
+	@param diagrams the diagrams to search, e.g. QETProject::builtFolios()
+*/
+ElementProvider::ElementProvider(const QList<Diagram *> &diagrams) :
+	m_diagram_list(diagrams)
+{}
+
+/**
 	@brief ElementProvider::FreeElement
 	Search and return the asked element corresponding with the given filter
 	All returned element are free,

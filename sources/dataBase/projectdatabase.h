@@ -153,7 +153,10 @@ class projectDataBase : public QObject
 			//its rows came from the document already, so none are written
 			//and the database is not marked changed
 		void setBuildingFolio(bool building);
+		bool isBuildingFolio() const {return m_building_folios > 0;}
 		QString prefillReport() const;
+		QSet<QUuid> foliosWithUnjoinedWires() const;
+		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -297,6 +300,7 @@ class projectDataBase : public QObject
 		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
 		QSet<QUuid> m_dirty_conductor_properties;
 		int m_building_folios = 0;
+		QSet<QUuid> m_folios_with_unjoined_wires;
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;

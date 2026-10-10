@@ -225,6 +225,8 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+		QSet<QUuid> pendingLinks() const;
+		bool keepsSavedLinks() const {return !tmp_uuids_link.isEmpty();}
 			/**
 				Resolve tmp_uuids_link against a caller-supplied candidate
 				list instead of a project-wide search (bugtracker #607).

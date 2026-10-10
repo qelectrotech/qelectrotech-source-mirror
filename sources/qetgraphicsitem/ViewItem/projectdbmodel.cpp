@@ -37,7 +37,8 @@
 */
 ProjectDBModel::ProjectDBModel(QETProject *project, QObject *parent) :
 	QAbstractTableModel(parent),
-	m_project(project)
+	m_project(project),
+	m_fill_when_built(project->dataBase()->isBuildingFolio())
 {
 	connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &ProjectDBModel::dataBaseUpdated);
 }
@@ -321,6 +322,21 @@ void ProjectDBModel::setIdentifier(const QString &identifier) {
 }
 
 /**
+	@brief ProjectDBModel::folioBuilt
+	The folio of a table made while it was being built (QET_LAZY_FOLIOS)
+	is built: read the database, as opening does once it has filled it.
+	Nothing for any other model.
+*/
+void ProjectDBModel::folioBuilt()
+{
+	if (!m_fill_when_built) {
+		return;
+	}
+	m_fill_when_built = false;
+	dataBaseUpdated();
+}
+
+/**
 	@brief ProjectDBModel::dataBaseUpdated
 	slot called when the project database is updated
 */
@@ -374,6 +390,13 @@ void ProjectDBModel::setHeaderString()
 void ProjectDBModel::fillValue()
 {
 	m_record.clear();
+		//Opening builds a table before the database is filled, and fills
+		//it after: a table on a folio built late (QET_LAZY_FOLIOS) does
+		//the same, so that it is laid out as it would have been on
+		//opening -- empty until its folio is built (folioBuilt())
+	if (m_fill_when_built) {
+		return;
+	}
 	
 	auto query_ = m_project->dataBase()->newQuery(m_query);
 	if (!query_.exec()) {
