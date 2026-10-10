@@ -370,15 +370,14 @@ inline QUuid Element::uuid() const
 
 /**
 	@brief Element::linkedElements
-	@return the list of linked elements, the list is sorted by position
+	@return the list of linked elements, sorted by position. A sorted copy:
+	the element's own list keeps the order it is saved in.
 */
 inline QList <Element *> Element::linkedElements()
 {
-	 std::sort(
-				 connected_elements.begin(),
-				 connected_elements.end(),
-				 comparPos);
-	return connected_elements;
+	QList <Element *> sorted = connected_elements;
+	std::sort(sorted.begin(), sorted.end(), comparPos);
+	return sorted;
 }
 
 #endif
