@@ -55,8 +55,17 @@ class AddCableCommand : public QUndoCommand
 		QETProject *project() const;
 
 	private:
-		///The cable the line belongs to
-		Cable *m_cable = nullptr;
+		/**
+			The cable the line belongs to.
+
+			A pointer, not a raw one: RemoveCableCommand deletes the
+			cable when it goes, and both of them are torn down together
+			when the stack takes a new command. Whoever of the two runs
+			first frees the cable, so the other one must not follow it
+			into the freed memory -- QPointer goes null instead, and
+			this command then simply has nothing left to clean up.
+		*/
+		QPointer<Cable> m_cable;
 		///The line itself, owned by the folio once it is drawn
 		QPointer<CablePart> m_part;
 		QPointer<Diagram> m_diagram;

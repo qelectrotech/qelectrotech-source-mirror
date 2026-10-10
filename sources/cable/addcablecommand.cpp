@@ -87,11 +87,19 @@ AddCableCommand::AddCableCommand(Cable *cable,
 	Whatever the stack leaves behind has to be cleaned up here: a cable
 	which is not held by the project any more belongs to this command,
 	and so does a line which never made it onto a folio.
+
+	The cable is a QPointer, so if another command took it away first it
+	is already null here and there is nothing left to do -- which is
+	exactly the point, since following a raw pointer here meant freeing
+	the same cable a second time.
 */
 AddCableCommand::~AddCableCommand()
 {
-	if (m_cable && m_own_cable && !project()->cables().contains(m_cable)) {
-		delete m_cable;
+	if (m_cable && m_own_cable) {
+		QETProject *proj = project();
+		if (!proj || !proj->cables().contains(m_cable.data())) {
+			delete m_cable.data();
+		}
 	}
 	if (m_part && !m_part->scene()) {
 		delete m_part;

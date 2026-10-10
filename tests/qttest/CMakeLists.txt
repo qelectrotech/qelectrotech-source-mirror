@@ -87,6 +87,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
   set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
+  # Deleting a cable, undoing the delete twice and then editing anything
+  # has both cable commands tearing down the same cable. Runs under the
+  # same objects the application uses, so a second free is caught.
+  add_test(NAME tst_cableundointegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_cable_undo_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
+  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_darkimageintegration
