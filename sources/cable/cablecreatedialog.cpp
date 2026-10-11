@@ -63,8 +63,7 @@ void CableFilterProxy::setTokens(const QStringList &tokens)
 {
 	if (m_tokens == tokens) return;
 	m_tokens = tokens;
-	beginFilterChange();
-	endFilterChange(QSortFilterProxyModel::Direction::Rows);
+	invalidateFilter();
 }
 
 /**
@@ -78,8 +77,7 @@ void CableFilterProxy::setHideUnsuitable(bool hide)
 {
 	if (m_hide_unsuitable == hide) return;
 	m_hide_unsuitable = hide;
-	beginFilterChange();
-	endFilterChange(QSortFilterProxyModel::Direction::Rows);
+	invalidateFilter();
 }
 
 /**
