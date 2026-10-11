@@ -301,6 +301,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_close_file,			///< Close current project file
 		*m_save_file,			///< Save current project
 		*m_save_file_as,		///< Save current project as a specific file
+		*m_save_copy_for_older,	///< Write a .qet copy for an older QElectroTech
 		*m_find = nullptr,
 		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
 
