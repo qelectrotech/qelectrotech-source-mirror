@@ -1536,8 +1536,10 @@ int projectDataBase::excludedConductorCount() const
 		return 0;
 	}
 
+		//A folio not built (QET_LAZY_FOLIOS) has none: reading a wire
+		//drops it unless both its ends are found (Conductor::fromXml())
 	int count = 0;
-	for (auto *diagram : m_project->diagrams())
+	for (auto *diagram : m_project->builtFolios())
 	{
 		const auto conductor_list = diagram->conductors();
 		for (auto *conductor : conductor_list)
@@ -1722,11 +1724,12 @@ void projectDataBase::flushElementPositions()
 /**
 	@brief projectDataBase::updateFolioPositions
 	Write every folio's position and folio number again, after a folio was
-	added, removed or moved.
+	added, removed or moved. A folio not built yet (QET_LAZY_FOLIOS) has
+	its position and title block already: it is not built for this.
 */
 void projectDataBase::updateFolioPositions()
 {
-	for (auto diagram : m_project->diagrams())
+	for (auto diagram : m_project->folios())
 	{
 		m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
 		m_diagram_order_changed.bindValue(":uuid", diagram->uuid().toString());

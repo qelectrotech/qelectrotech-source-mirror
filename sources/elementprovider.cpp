@@ -199,7 +199,14 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(
 		}
 	}
 
-	for (auto d : allFolios()) {
+		//Only the folios holding a table are built for it
+	QList<Diagram *> folios = m_diagram_list;
+	if (m_project) {
+		m_project->buildFoliosHoldingTables();
+		folios = m_project->builtFolios();
+		folios.removeOne(m_excluded);
+	}
+	for (auto d : std::as_const(folios)) {
 		for (auto item_ : d->items())
 		{
 			if(item_->type() == QetGraphicsTableItem::Type)

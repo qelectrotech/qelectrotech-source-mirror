@@ -725,6 +725,61 @@ int main(int argc, char **argv)
 				check(asked.folioPartsRead() == built, "asking a .qetz reads no file of a folio not built");
 			}
 
+				//A folio added, moved and removed: no other folio built, the
+				//folios' rows as when every folio is built (D5)
+			{
+				auto shuffle = [](QETProject &project) {
+					Diagram *added = project.addNewDiagram();
+					project.diagramOrderChanged(1, 0);
+					project.removeDiagram(added);
+				};
+				auto folioRows = [](QETProject &project) {
+					QStringList rows;
+					for (const QString &row : tables(project))
+						if (row.startsWith("diagram")) rows << row;
+					return rows;
+				};
+				QETProject shuffled(zipped);
+				const int unbuilt = shuffled.unloadedFolioCount();
+				shuffle(shuffled);
+				std::printf(".qetz folio added, moved, removed: %d folios built\n",
+							unbuilt - shuffled.unloadedFolioCount());
+				check(shuffled.unloadedFolioCount() == unbuilt, "adding, moving and removing a folio builds no other");
+				qunsetenv("QET_LAZY_FOLIOS");
+				QETProject usual_shuffled(zipped);
+				qputenv("QET_LAZY_FOLIOS", "1");
+				shuffle(usual_shuffled);
+				check(folioRows(shuffled) == folioRows(usual_shuffled), "folios' rows after a move as when built");
+			}
+
+				//The tables a table can continue (its properties editor) and
+				//the wiring list's count of wires left out: only the folios
+				//holding a table built (D5)
+			{
+				QETProject listed(zipped);
+				const int unbuilt = listed.unloadedFolioCount();
+				auto tableUuids = [](const QVector<QetGraphicsTableItem *> &list) {
+					QStringList uuids;
+					for (QetGraphicsTableItem *table : list) uuids << table->uuid().toString();
+					uuids.sort();
+					return uuids;
+				};
+				const QStringList lazy_tables = tableUuids(ElementProvider(&listed).table(nullptr, nullptr));
+				check(!lazy_tables.isEmpty(), "the project has tables");
+				check(lazy_tables == tableUuids(ElementProvider(&eager).table(nullptr, nullptr)),
+					  "the project's tables listed as when built");
+				check(listed.dataBase()->excludedConductorCount() == eager.dataBase()->excludedConductorCount(),
+					  "wires left out of the wiring list counted as when built");
+				int with_tables = 0;
+				for (Diagram *folio : folios) {
+					for (QGraphicsItem *item : folio->items())
+						if (item->type() == QetGraphicsTableItem::Type) { ++with_tables; break; }
+				}
+				std::printf(".qetz tables listed: %d folios built, %d hold a table\n",
+							unbuilt - listed.unloadedFolioCount(), with_tables);
+				check(listed.unloadedFolioCount() > 0, "listing the tables does not build every folio");
+			}
+
 				//Saved as a .qetz without building the folios not touched
 				//(D4): their parts and rows copied as they were
 			QETProject untouched(zipped);
