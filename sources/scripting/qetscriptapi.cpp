@@ -434,11 +434,11 @@ bool QetScriptApi::save(const QString &output)
 		return true;
 	}
 
-	QDomDocument xml_doc(m_project->toXml());
 	QString error_message;
 	if (QETProject::isContainerPath(output)
-			? !QETProject::writeContainer(xml_doc, output, &error_message)
-			: !QET::writeXmlFile(xml_doc, output, &error_message)) {
+			? !m_project->writeContainerFile(output, &error_message)
+			: ![&]() { QDomDocument xml_doc(m_project->toXml());
+					   return QET::writeXmlFile(xml_doc, output, &error_message); }()) {
 		log(QStringLiteral("qet.save: %1").arg(error_message));
 		return false;
 	}

@@ -39,6 +39,7 @@ namespace QetContainerDb
 {
 	QByteArray extract(QDomElement project, QString *error = nullptr);
 	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr);
+	bool restoreFolio(QDomElement diagram, const QByteArray &database, QString *error = nullptr);
 }
 
 #endif // QETCONTAINERDB_H

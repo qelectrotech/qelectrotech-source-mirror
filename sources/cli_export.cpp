@@ -870,9 +870,8 @@ int exportLinks(QETProject &project, const QString &output)
 int resaveProject(QETProject &project, const QString &output)
 {
 	if (QETProject::isContainerPath(output)) {
-		const QDomDocument doc = project.toXml();
 		QString error;
-		if (!QETProject::writeContainer(doc, output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
@@ -968,9 +967,8 @@ int setTitleBlock(QETProject &project, const QString &output,
 	}
 
 	if (QETProject::isContainerPath(output)) {
-		const QDomDocument doc = project.toXml();
 		QString error;
-		if (!QETProject::writeContainer(doc, output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}

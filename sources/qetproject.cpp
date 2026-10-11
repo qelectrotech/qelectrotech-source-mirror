@@ -30,6 +30,7 @@
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/ViewItem/projectdbmodel.h"
 #include "qetapp.h"
@@ -462,7 +463,40 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// QetContainer::parse() does exactly that, for a .qet and for each part
 	// of a .qetz alike.
 	QString read_error;
-	if (!QetContainer::readDocument(content, &xml_project, &read_error))
+		//A .qetz holding the index of its database opens from it, the
+		//folios' parts read when they are built (stage D2);
+		//any other, or one whose index cannot be used, is read whole
+	m_opened_from_index = false;
+	if (QetContainer::isZip(content) && qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1)
+	{
+		QList<QetZip::Entry> entries;
+		QString why;
+		if (QetZip::fromBytes(content, &entries, &why))
+		{
+			QHash<QString, QByteArray> files;
+			for (const QetZip::Entry &entry : std::as_const(entries))
+				files.insert(entry.name, entry.data);
+			QStringList folio_files;
+			QDomDocument document;
+			if (files.contains(QStringLiteral("index.sqlite"))
+					&& QetContainer::join(entries, &document, &why, &folio_files))
+			{
+				if (m_data_base.fillFromIndex(files.value(QStringLiteral("index.sqlite")),
+											  &m_folio_headers, &why)
+						&& m_folio_headers.size() == folio_files.size()) {
+					xml_project = document;
+					m_container_files = files;
+					m_folio_files = folio_files;
+					m_opened_from_index = true;
+				} else {
+					m_data_base.discardFill();
+					m_folio_headers.clear();
+					qInfo().noquote() << "Not opened from the index of" << fi.fileName() << ":" << why;
+				}
+			}
+		}
+	}
+	if (!m_opened_from_index && !QetContainer::readDocument(content, &xml_project, &read_error))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		if(opened_here) {
@@ -798,6 +832,16 @@ void QETProject::buildFoliosHoldingSymbols(const QSet<QUuid> &symbols)
 		return;
 	}
 	QList<Diagram *> to_build;
+		//Opened from an index, the database knows where every symbol is
+		//without reading the folios' parts
+	if (m_opened_from_index) {
+		const QSet<QUuid> folios = m_data_base.folioUuidsOfElements(symbols);
+		for (Diagram *d : std::as_const(m_diagrams_list))
+			if (!d->isLoaded() && folios.contains(d->uuid()))
+				to_build << d;
+		buildFolios(to_build);
+		return;
+	}
 	for (Diagram *d : std::as_const(m_diagrams_list))
 	{
 		if (d->isLoaded()) {
@@ -2471,13 +2515,57 @@ bool QETProject::isContainerPath(const QString &path)
 	document, in parts, zipped (#1440). The file is replaced only once
 	the whole archive is written.
 */
-bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error)
+bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error,
+								const QByteArray &index)
 {
-	const QList<QetZip::Entry> entries = QetContainer::split(
+	QList<QetZip::Entry> entries = QetContainer::split(
 				project,
 				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
 				error);
+		//The project database, for opening without reading the folios
+		//(stage D2); a reader that does not know it skips it
+	if (!entries.isEmpty() && !index.isEmpty())
+		entries.append(QetZip::Entry{QStringLiteral("index.sqlite"), index, true});
 	return !entries.isEmpty() && QetZip::write(path, entries, error);
+}
+
+/**
+	@brief QETProject::writeContainerFile
+	Write this project to @p path as a .qetz, with the index of its
+	database a .qetz is opened from (stage D2) when every
+	folio, symbol and wire has a uuid of its own -- what opening from the
+	index relies on, as opening without building folios does.
+*/
+bool QETProject::writeContainerFile(const QString &path, QString *error)
+{
+	const QDomDocument document = toXml();   //every folio built
+	return writeContainer(document, path, error, containerIndex());
+}
+
+/**
+	@brief QETProject::containerIndex
+	@return the index of this project's database for a .qetz, empty when a
+	folio, symbol or wire has no uuid of its own
+*/
+QByteArray QETProject::containerIndex()
+{
+	loadFolios();
+	QSet<QUuid> seen;
+	QList<std::pair<QUuid, QString>> headers;
+	auto unique = [&seen](const QUuid &uuid) {
+		if (uuid.isNull() || seen.contains(uuid)) return false;
+		seen.insert(uuid);
+		return true;
+	};
+	for (Diagram *diagram : std::as_const(m_diagrams_list)) {
+		if (!unique(diagram->uuid())) return QByteArray();
+		for (Element *element : diagram->elements())
+			if (!unique(element->uuid())) return QByteArray();
+		for (Conductor *conductor : diagram->conductors())
+			if (!unique(conductor->uuid())) return QByteArray();
+		headers.append({diagram->uuid(), diagram->headerXml()});
+	}
+	return m_data_base.indexFile(headers);
 }
 
 /**
@@ -2539,9 +2627,9 @@ QETResult QETProject::write()
 	QString error_message;
 	if (isContainerPath(m_file_path))
 	{
-		// A container must contain complete folios, not lazy placeholders.
-		QDomDocument xml_project(toXml());
-		if (!writeContainer(xml_project, m_file_path, &error_message))
+			//A container is written from the whole document: every folio
+			//built (stage D4 writes it from the database)
+		if (!writeContainerFile(m_file_path, &error_message))
 			return(error_message);
 	}
 	else
@@ -3059,7 +3147,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
 		//built
-	m_data_base.prefillFromDocument(xml_project);
+	if (!m_opened_from_index) {
+		m_data_base.prefillFromDocument(xml_project);
+	}
 
 		//QET_LAZY_FOLIOS leaves the folios to be built when needed only
 		//when the database can be filled from the document: otherwise
@@ -3075,7 +3165,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 		//Load the diagrams
-	readDiagramsXml(xml_project);
+	if (m_opened_from_index) {
+		readFoliosFromIndex();
+	} else {
+		readDiagramsXml(xml_project);
+	}
 	const qint64 diagrams_ms = phase_timer.restart();
 
 		//Tie the elements to the numbering schemes they follow
@@ -3104,7 +3198,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
-	m_data_base.updateDB(xml_project);
+	if (m_opened_from_index) {
+			//Filled from the index already: making the folios changed
+			//nothing their rows say
+		m_data_base.markCurrent();
+		m_data_base.updateDB();
+	} else {
+		m_data_base.updateDB(xml_project);
+	}
 	m_data_base.endPrefill(unloadedFolioCount() > 0);
 		//Saving may write the folios not built as they were read, when
 		//building them would write the same: a file written by this
@@ -3143,6 +3244,51 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 			<< ", database " << database_ms / 1000.0 << ")";
 
 	m_state = Ok;
+}
+
+/**
+	@brief QETProject::readFoliosFromIndex
+	readDiagramsXml() for a .qetz opened from its index: each folio made
+	from its own data as the index has it, its items left in its part
+	(stage D2)
+*/
+void QETProject::readFoliosFromIndex()
+{
+	for (int i = 0 ; i < m_folio_headers.size() ; ++i)
+	{
+		QDomDocument header;
+		header.setContent(m_folio_headers.at(i).second);
+		auto diagram = new Diagram(this);
+		m_diagrams_list << diagram;
+		connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData,
+				this, &QETProject::updateDiagramsFolioData);
+		connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+				this, &QETProject::usedTitleBlockTemplateChanged);
+		m_deferring_folios = true;
+		QDomElement header_element = header.documentElement();
+		diagram->initFromXml(header_element);
+		m_deferring_folios = false;
+		diagram->setDeferredPart(m_folio_files.at(i));
+		m_data_base.placeFolio(diagram);
+	}
+	updateDiagramsFolioData();
+}
+
+/**
+	@brief QETProject::readFolioPart
+	@return the folio part @p file of the .qetz this project was opened
+	from, read now, its engineering data back from project.sqlite; null
+	if it cannot be read (said in the log)
+*/
+QDomElement QETProject::readFolioPart(const QString &file)
+{
+	QDomDocument folio;
+	QString error;
+	if (!QetContainer::readFolio(m_container_files, file, &folio, &error)) {
+		qWarning().noquote() << "Unable to read the folio" << file << ":" << error;
+		return QDomElement();
+	}
+	return folio.documentElement();
 }
 
 /**

@@ -778,7 +778,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 */
 void Diagram::ensureLoaded()
 {
-	if (m_deferred.isNull()) {
+	if (isLoaded()) {
 		return;
 	}
 	if (m_project) {
@@ -786,6 +786,23 @@ void Diagram::ensureLoaded()
 	} else {
 		buildDeferred();
 	}
+}
+
+/**
+	@brief Diagram::deferredXml
+	@return the XML of this folio's items while they are not built: kept
+	from the project's document, or read now from the folio's part of the
+	.qetz the project was opened from
+*/
+QDomElement Diagram::deferredXml()
+{
+	if (m_deferred.isNull() && !m_deferred_part.isEmpty() && m_project) {
+		m_deferred = m_project->readFolioPart(m_deferred_part);
+		if (!m_deferred.isNull()) {
+			m_deferred_part.clear();
+		}
+	}
+	return m_deferred;
 }
 
 /**
@@ -797,11 +814,15 @@ void Diagram::ensureLoaded()
 */
 bool Diagram::buildDeferred()
 {
-	if (m_deferred.isNull()) {
+	if (isLoaded()) {
 		return false;
 	}
-	QDomElement xml = m_deferred;
+	QDomElement xml = deferredXml();
 	m_deferred = QDomElement();
+	m_deferred_part.clear();
+	if (xml.isNull()) {
+		return true;   //its part could not be read: QETProject::readFolioPart() said why
+	}
 	m_kept_text.clear();
 	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
 	if (db) db->setBuildingFolio(true);

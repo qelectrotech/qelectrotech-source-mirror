@@ -259,13 +259,51 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 }
 
 /**
+	@brief QetContainer::readFolio
+	The folio part @p file of the .qetz whose entries are @p files, as
+	join() puts it in the project: its pictures back as base64 and its
+	engineering data back from project.sqlite.
+*/
+bool QetContainer::readFolio(const QHash<QString, QByteArray> &files, const QString &file,
+							 QDomDocument *folio, QString *error)
+{
+	if (!files.contains(file)) {
+		setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
+		return false;
+	}
+	QString part_error;
+	if (!parse(files.value(file), folio, &part_error)) {
+		setError(error, QStringLiteral("%1: %2").arg(file, part_error));
+		return false;
+	}
+	const QDomNodeList images = folio->elementsByTagName(QStringLiteral("image"));
+	for (int i = 0 ; i < images.size() ; ++i)
+	{
+		QDomElement image = images.at(i).toElement();
+		if (!image.hasAttribute(ImageFileAttribute)) continue;
+		const QString picture = image.attribute(ImageFileAttribute);
+		if (!files.contains(picture)) {
+			setError(error, QStringLiteral("picture \"%1\" is missing").arg(picture));
+			return false;
+		}
+		image.removeAttribute(ImageFileAttribute);
+		image.insertBefore(folio->createTextNode(QString::fromLatin1(files.value(picture).toBase64())),
+						   image.firstChild());
+	}
+	return !files.contains(QStringLiteral("project.sqlite"))
+			|| QetContainerDb::restoreFolio(folio->documentElement(),
+											files.value(QStringLiteral("project.sqlite")), error);
+}
+
+/**
 	@brief QetContainer::join
 	Rebuild in @p project the document split() made @p entries from.
 	Refused, with @p error set: not a .qetz, made for a later QElectroTech
 	(the manifest's min-reader), or a part missing or unreadable. Entries
 	nothing names are ignored, so a later format may add some.
 */
-bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error)
+bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
+						QStringList *folio_files)
 {
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
@@ -297,6 +335,16 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 	for (QDomElement part : placeholders)
 	{
 		const QString file = part.attribute(FileAttribute);
+			//With @p folio_files, the folios stay parts, read when built
+		if (folio_files && part.parentNode() == project->documentElement()
+				&& file.startsWith(QLatin1String("folios/"))) {
+			if (!files.contains(file)) {
+				setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
+				return false;
+			}
+			folio_files->append(file);
+			continue;
+		}
 		if (!files.contains(file)) {
 			setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
 			return false;

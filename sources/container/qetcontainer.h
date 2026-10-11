@@ -53,7 +53,11 @@ namespace QetContainer
 							   const QString &writer = QString(),
 							   QString *error = nullptr);
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr);
+			  QString *error = nullptr, QStringList *folio_files = nullptr);
+		/// A folio part of @p files, which join() left out, with its
+		/// pictures and its engineering data back (stage D2)
+	bool readFolio(const QHash<QString, QByteArray> &files, const QString &file,
+				   QDomDocument *folio, QString *error = nullptr);
 
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
