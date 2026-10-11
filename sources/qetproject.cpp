@@ -661,6 +661,138 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 }
 
 /**
+	@brief QETProject::buildFoliosHolding
+	Build the folios not built yet (QET_LAZY_FOLIOS) holding a symbol of
+	one of the kinds @p kinds -- if @p free_only, one which may be linked
+	to nothing once built: none of the partners it was saved linked to is
+	in the project. What a search for such symbols must build to find
+	every one (ElementProvider), and no more.
+*/
+void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
+{
+	if (!unloadedFolioCount()) {
+		return;
+	}
+	QSet<QUuid> unbuilt;
+	QSet<QUuid> placed;
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d->isLoaded()) {
+			unbuilt.insert(d->uuid());
+		} else if (free_only) {
+			for (Element *element : d->elements())
+				placed.insert(element->uuid());
+		}
+	}
+		//A symbol the database has no row for is one building leaves out
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	if (free_only) {
+		for (auto it = types.cbegin() ; it != types.cend() ; ++it)
+			placed.insert(it.key());
+	}
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element")))
+		{
+			const auto type = types.constFind(QUuid(element_xml.attribute(QStringLiteral("uuid"))));
+			if (type == types.constEnd()
+					|| !(kinds & ElementData::typeFromString(*type))) {
+				continue;
+			}
+			bool linked = false;
+			if (free_only) {
+				for (const QDomElement &link :
+					 QET::findInDomElement(element_xml,
+										   QStringLiteral("links_uuids"),
+										   QStringLiteral("link_uuid"))) {
+					if (placed.contains(QUuid(link.attribute(QStringLiteral("uuid"))))) {
+						linked = true;
+						break;
+					}
+				}
+			}
+			if (!linked) {
+				to_build << d;
+				break;
+			}
+		}
+	}
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for a search of"
+							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::buildFoliosHoldingSymbols
+	Build the folios not built yet (QET_LAZY_FOLIOS) holding one of the
+	symbols @p symbols, found in the XML kept for them: what needs those
+	symbols while the project is being read, before the database knows
+	where they are (a terminal strip's terminals)
+*/
+void QETProject::buildFoliosHoldingSymbols(const QSet<QUuid> &symbols)
+{
+	if (symbols.isEmpty() || !unloadedFolioCount()) {
+		return;
+	}
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element"))) {
+			if (symbols.contains(QUuid(element_xml.attribute(QStringLiteral("uuid"))))) {
+				to_build << d;
+				break;
+			}
+		}
+	}
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for the symbols asked for by uuid";
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::symbolsOnUnbuiltFolios
+	@return the uuids of the symbols on the folios not built yet
+	(QET_LAZY_FOLIOS) that building them places
+*/
+QSet<QUuid> QETProject::symbolsOnUnbuiltFolios() const
+{
+	QSet<QUuid> unbuilt;
+	for (Diagram *d : m_diagrams_list)
+		if (!d->isLoaded()) unbuilt.insert(d->uuid());
+	QSet<QUuid> symbols;
+	if (unbuilt.isEmpty()) {
+		return symbols;
+	}
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	for (auto it = types.cbegin() ; it != types.cend() ; ++it)
+		symbols.insert(it.key());
+	return symbols;
+}
+
+/**
 	@brief QETProject::tableChainFolios
 	@return the folios holding a table chained to one on @p folio, before
 	or after it, read from the folios built and the XML kept for the
@@ -1536,38 +1668,134 @@ void QETProject::linkElementsToElementAutoNums()
 */
 void QETProject::linkElementsToElementAutoNums(Diagram *folio)
 {
-	QHash<QString, QStringList> titles_by_formula;
-	for (auto it = m_element_autonum.constBegin();
-		 it != m_element_autonum.constEnd(); ++it) {
-		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
-	}
-
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
 	{
 		const auto items = folio->items();
 		for (QGraphicsItem *it : items) {
 			auto *el = qgraphicsitem_cast<Element *>(it);
 			if (!el) continue;
-			const DiagramContext &info = el->elementInformations();
-			const QString formula = info.value(QETInformation::ELMT_FORMULA).toString();
-			const bool has_id = info.contains(QETInformation::ELMT_FORMULA_ID);
-			const QUuid id(info.value(QETInformation::ELMT_FORMULA_ID).toString());
-
-			if (formula.isEmpty()) {
-				if (has_id) el->setFormulaSchemeId(QUuid());
-				continue;
+			if (const auto id = elementAutoNumIdToLink(el->elementInformations(),
+													   titles_by_formula)) {
+				el->setFormulaSchemeId(*id);
 			}
-			if (!elementAutoNumTitle(id).isEmpty()) {
-				continue;
-			}
-			if (!has_id && !m_legacy_element_autonums) {
-				continue; //A formula typed by hand
-			}
-			const QStringList matches = titles_by_formula.value(formula);
-			el->setFormulaSchemeId(matches.size() == 1
-								   ? elementAutoNumId(matches.first())
-								   : QUuid());
 		}
 	}
+}
+
+/**
+	@brief QETProject::elementAutoNumTitlesByFormula
+	@return the titles of the element numbering schemes, by their formula
+*/
+QHash<QString, QStringList> QETProject::elementAutoNumTitlesByFormula() const
+{
+	QHash<QString, QStringList> titles_by_formula;
+	for (auto it = m_element_autonum.constBegin();
+		 it != m_element_autonum.constEnd(); ++it) {
+		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
+	}
+	return titles_by_formula;
+}
+
+/**
+	@brief QETProject::elementAutoNumIdToLink
+	The rule of linkElementsToElementAutoNums() for one element, whose
+	information is @p information.
+	@return the scheme id the element must be given, or nothing when the
+	one it has is kept
+*/
+std::optional<QUuid> QETProject::elementAutoNumIdToLink(
+		const DiagramContext &information,
+		const QHash<QString, QStringList> &titles_by_formula) const
+{
+	const QString formula = information.value(QETInformation::ELMT_FORMULA).toString();
+	const bool has_id = information.contains(QETInformation::ELMT_FORMULA_ID);
+	const QUuid id(information.value(QETInformation::ELMT_FORMULA_ID).toString());
+
+	if (formula.isEmpty()) {
+		if (has_id) return QUuid();
+		return std::nullopt;
+	}
+	if (!elementAutoNumTitle(id).isEmpty()) {
+		return std::nullopt;
+	}
+	if (!has_id && !m_legacy_element_autonums) {
+		return std::nullopt; //A formula typed by hand
+	}
+	const QStringList matches = titles_by_formula.value(formula);
+	return matches.size() == 1 ? elementAutoNumId(matches.first()) : QUuid();
+}
+
+/**
+	@brief QETProject::symbolNumbering
+	@return the numbering of every symbol placed on the folios, read from
+	the symbol on a folio built and, on a folio not built yet
+	(QET_LAZY_FOLIOS), from what building it would give: its information
+	in the project database's store, the scheme it would be linked to,
+	its sequential numbers and its kind as the file has them.
+*/
+QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
+{
+	QList<SymbolNumbering> list;
+	QSet<QUuid> unbuilt;
+	for (Diagram *d : m_diagrams_list)
+	{
+		if (!d->isLoaded()) {
+			unbuilt.insert(d->uuid());
+			continue;
+		}
+		for (QGraphicsItem *item : d->items()) {
+			auto *el = qgraphicsitem_cast<Element *>(item);
+			if (!el) continue;
+			const DiagramContext &info = el->elementInformations();
+			SymbolNumbering symbol;
+			symbol.element = el;
+			symbol.label = info.value(QETInformation::ELMT_LABEL).toString();
+			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
+			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
+			symbol.sequence = el->sequenceStruct();
+			symbol.numbered = el->linkType() != Element::Slave
+					&& !(el->linkType() & Element::AllReport);
+			list << symbol;
+		}
+	}
+	if (unbuilt.isEmpty()) {
+		return list;
+	}
+
+		//A symbol the database has no row for is one building leaves out
+		//(its definition is missing)
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	for (Diagram *d : m_diagrams_list)
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element")))
+		{
+			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+			const auto type = types.constFind(uuid);
+			if (type == types.constEnd()) {
+				continue;
+			}
+			const DiagramContext info = m_data_base.elementInformation(uuid);
+			SymbolNumbering symbol;
+			symbol.label = info.value(QETInformation::ELMT_LABEL).toString();
+			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
+			const auto linked = elementAutoNumIdToLink(info, titles_by_formula);
+			symbol.scheme = linked ? *linked
+								   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
+			symbol.sequence.fromXml(element_xml.firstChildElement(QStringLiteral("sequentialNumbers")));
+			const ElementData::Type kind = ElementData::typeFromString(*type);
+			symbol.numbered = kind != ElementData::Slave
+					&& !(kind & ElementData::AllReport);
+			list << symbol;
+		}
+	}
+	return list;
 }
 
 /**

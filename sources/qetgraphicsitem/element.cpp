@@ -1703,6 +1703,23 @@ void Element::initLink(const QList<Element *> &candidates)
 }
 
 /**
+	@brief Element::waitingLinks
+	@return pendingLinks() in the order this symbol was saved with them,
+	each with its group index (-1 for none)
+*/
+QList<std::pair<QUuid, int>> Element::waitingLinks() const
+{
+	const QSet<QUuid> pending = pendingLinks();
+	QList<std::pair<QUuid, int>> list;
+	for (const auto &link_info : tmp_uuids_link) {
+		if (pending.contains(link_info.uuid)) {
+			list.append({link_info.uuid, link_info.group_index});
+		}
+	}
+	return list;
+}
+
+/**
 	@brief Element::restoreSavedLinkOrder
 	Put connected_elements back in the order tmp_uuids_link saved them.
 	Partners link in the order the folios' items are visited, and for

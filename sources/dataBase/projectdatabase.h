@@ -157,6 +157,7 @@ class projectDataBase : public QObject
 		QString prefillReport() const;
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
+		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -301,6 +302,14 @@ class projectDataBase : public QObject
 		QSet<QUuid> m_dirty_conductor_properties;
 		int m_building_folios = 0;
 		QSet<QUuid> m_folios_with_unjoined_wires;
+			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
+		QSet<Diagram *> m_kept_folios;
+			//The tables' rows were filled from the document: those of a
+			//folio not built yet are right (QET_LAZY_FOLIOS)
+		bool m_rows_from_document = false;
+		void keepUnbuiltFolioRows();
+		void restoreKeptRows(const QString &table, Diagram *folio, const QString &where);
+		void dropKeptRows();
 		bool m_changed_before_folio = false, m_blocked_before_folio = false;
 		QHash<QUuid, DiagramContext> m_prefilled_elements;
 		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;

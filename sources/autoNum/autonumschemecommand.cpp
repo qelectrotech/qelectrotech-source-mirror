@@ -105,7 +105,9 @@ QList<Diagram *> AutoNumSchemeCommand::usersOf(const QETProject *project, Kind k
 	if (!project || title.isEmpty()) {
 		return users;
 	}
-	for (Diagram *diagram : project->diagrams()) {
+		//The schemes a folio uses are its own data, read on opening:
+		//folios() builds nothing
+	for (Diagram *diagram : project->folios()) {
 		if (kind == Kind::Conductor) {
 			if (diagram->conductorsAutonumName() == title) {
 				users << diagram;
@@ -234,7 +236,8 @@ void AutoNumSchemeCommand::rename(const QString &from, const QString &to)
 		if (m_project->conductorCurrentAutoNum() == from) {
 			m_project->setCurrentConductorAutoNum(to);
 		}
-		for (Diagram *d : m_project->diagrams()) {
+			//Folios' own data, read on opening: folios() builds nothing
+		for (Diagram *d : m_project->folios()) {
 				//The highest folio number given, kept by scheme title
 			for (auto *hash : {&d->m_cnd_unitfolio_max, &d->m_cnd_tenfolio_max, &d->m_cnd_hundredfolio_max}) {
 				if (hash->contains(from)) {

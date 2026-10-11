@@ -208,7 +208,7 @@ void ProjectPrintWindow::requestPaint()
 			#endif
 		#endif
 
-	if (!m_project->diagrams().count()) {
+	if (!m_project->folios().count()) {
 		return;
 	}
 

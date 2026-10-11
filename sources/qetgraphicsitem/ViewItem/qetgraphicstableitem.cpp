@@ -629,7 +629,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	const auto project_ = diagram() ? diagram()->project() : nullptr;
 	auto in_project = [project_](const QetGraphicsTableItem *table) {
 		return project_ && table->diagram()
-				&& project_->diagrams().contains(table->diagram());
+				&& project_->folios().contains(table->diagram());
 	};
 	QetGraphicsTableItem *previous_ = m_previous_table;
 	while (previous_ && !in_project(previous_)) {

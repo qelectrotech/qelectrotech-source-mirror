@@ -30,11 +30,10 @@
 	@param prj the project where we must find element
 	@param diagram the diagram to exclude from the search
 */
-ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
-{
-	m_diagram_list = prj->diagrams();
-	m_diagram_list.removeOne(diagram);
-}
+ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram) :
+	m_project(prj),
+	m_excluded(diagram)
+{}
 
 /**
 	@brief ElementProvider::ElementProvider Constructor
@@ -53,6 +52,38 @@ ElementProvider::ElementProvider(const QList<Diagram *> &diagrams) :
 {}
 
 /**
+	@brief ElementProvider::folios
+	@return the folios to search for symbols of the kinds @p kinds (free
+	ones only if @p free_only). For a project, the folios not built yet
+	(QET_LAZY_FOLIOS) holding such a symbol are built first, and only them
+	(QETProject::buildFoliosHolding()).
+*/
+QList<Diagram *> ElementProvider::folios(ElementData::Types kinds, bool free_only) const
+{
+	if (!m_project) {
+		return m_diagram_list;
+	}
+	m_project->buildFoliosHolding(kinds, free_only);
+	QList<Diagram *> list = m_project->builtFolios();
+	list.removeOne(m_excluded);
+	return list;
+}
+
+/**
+	@brief ElementProvider::allFolios
+	@return the folios to search for anything else: every one, built
+*/
+QList<Diagram *> ElementProvider::allFolios() const
+{
+	if (!m_project) {
+		return m_diagram_list;
+	}
+	QList<Diagram *> list = m_project->diagrams();
+	list.removeOne(m_excluded);
+	return list;
+}
+
+/**
 	@brief ElementProvider::FreeElement
 	Search and return the asked element corresponding with the given filter
 	All returned element are free,
@@ -65,16 +96,22 @@ QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filt
 {
 	QVector<QPointer<Element>> free_elmt;
 	QList<Element *> elmt_list;
+	const QList<Diagram *> searched = folios(filter, true);
+		//A symbol whose saved partner is on a folio not built yet
+		//(QET_LAZY_FOLIOS) is not linked yet, but is not free: it will be
+	const QSet<QUuid> waiting = m_project ? m_project->symbolsOnUnbuiltFolios()
+										  : QSet<QUuid>();
 
 		//search in all diagram
-	for (const auto &diagram_ : std::as_const(m_diagram_list))
+	for (const auto &diagram_ : std::as_const(searched))
 	{
 			//get all element in diagram d
 		elmt_list = diagram_->elements();
 		for (const auto &elmt_ : std::as_const(elmt_list))
 		{
 			if (filter & elmt_->elementData().m_type &&
-				elmt_->isFree())
+				elmt_->isFree() &&
+				!elmt_->pendingLinks().intersects(waiting))
 			{
 				free_elmt << elmt_;
 			}
@@ -94,7 +131,7 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
 {
 	QList <Element *> found_element;
 
-	foreach (Diagram *d, m_diagram_list) {
+	foreach (Diagram *d, allFolios()) {
 		foreach(Element *elmt, d->elements()) {
 			if (uuid_list.contains(elmt->uuid())) {
 				found_element << elmt;
@@ -114,7 +151,8 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
 QVector<QPointer<Element>> ElementProvider::find(ElementData::Types elmt_type) const
 {
 	QVector<QPointer<Element>> returned_vector;
-	for (const auto &diagram_ : std::as_const(m_diagram_list))
+	const QList<Diagram *> searched = folios(elmt_type, false);
+	for (const auto &diagram_ : std::as_const(searched))
 	{
 		const auto elmt_list = diagram_->elements();
 		for (const auto &elmt_ : elmt_list)
@@ -161,7 +199,7 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(
 		}
 	}
 
-	for (auto d : m_diagram_list) {
+	for (auto d : allFolios()) {
 		for (auto item_ : d->items())
 		{
 			if(item_->type() == QetGraphicsTableItem::Type)
@@ -205,8 +243,9 @@ QetGraphicsTableItem *ElementProvider::tableFromUuid(const QUuid &uuid)
 QVector<TerminalElement *> ElementProvider::freeTerminal() const
 {
 	QVector<TerminalElement *> vector_;
+	const QList<Diagram *> searched = folios(ElementData::Terminal, false);
 
-	for (const auto &diagram : std::as_const(m_diagram_list))
+	for (const auto &diagram : std::as_const(searched))
 	{
 		const auto elmt_list{diagram->elements()};
 

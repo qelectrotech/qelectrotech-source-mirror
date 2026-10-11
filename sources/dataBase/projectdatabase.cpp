@@ -118,6 +118,7 @@ void projectDataBase::updateDB()
 		return;
 	}
 
+	keepUnbuiltFolioRows();
 	populateDiagramTable();
 	populateDiagramInfoTable();
 	populateElementTable();
@@ -125,10 +126,91 @@ void projectDataBase::updateDB()
 	populateConductorTable();
 	populateLinkTable();
 	populateDrawingItemTables();
+	dropKeptRows();
 	flushConductorProperties();
 	m_content_changed = false;
 
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::keepUnbuiltFolioRows
+	Before the tables are rebuilt from the folios: keep the element,
+	element_info, terminal, conductor and link rows of the folios not built
+	yet (QET_LAZY_FOLIOS). They came from the document, nothing of those
+	folios can have changed since, and the rebuild puts them back where
+	each folio comes (restoreKeptRows()). Nothing to do when every folio
+	is built.
+*/
+void projectDataBase::keepUnbuiltFolioRows()
+{
+	m_kept_folios.clear();
+	if (!m_project->unloadedFolioCount()) {
+		return;
+	}
+		//Rows filled from the folios have none for a folio not built: it
+		//is built (diagrams()) and the tables come from it
+	if (!m_rows_from_document) {
+		m_project->diagrams();
+		return;
+	}
+	for (Diagram *folio : m_project->folios())
+		if (!folio->isLoaded()) m_kept_folios.insert(folio);
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("CREATE TEMP TABLE kept_folio (uuid VARCHAR(50) PRIMARY KEY)"));
+	query.prepare(QStringLiteral("INSERT INTO kept_folio (uuid) VALUES (:uuid)"));
+	for (Diagram *folio : std::as_const(m_kept_folios)) {
+		query.bindValue(QStringLiteral(":uuid"), folio->uuid().toString());
+		query.exec();
+	}
+	for (const QString &sql : {
+		 QStringLiteral("CREATE TEMP TABLE kept_element AS SELECT * FROM element "
+						"WHERE diagram_uuid IN (SELECT uuid FROM kept_folio) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_element_info AS SELECT * FROM element_info "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_terminal AS SELECT * FROM terminal "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_conductor AS SELECT * FROM conductor "
+						"WHERE diagram_uuid IN (SELECT uuid FROM kept_folio) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_link AS SELECT * FROM link "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid")}) {
+		if (!query.exec(sql)) {
+			qDebug() << "projectDataBase::keepUnbuiltFolioRows error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::restoreKeptRows
+	Put back into @p table the rows kept for @p folio, not built
+	(keepUnbuiltFolioRows()), in the order they had. @p where selects them
+	in the kept table, with :folio for the folio's uuid.
+*/
+void projectDataBase::restoreKeptRows(const QString &table, Diagram *folio, const QString &where)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("INSERT INTO %1 SELECT * FROM kept_%1 WHERE %2 ORDER BY rowid")
+				  .arg(table, where));
+	query.bindValue(QStringLiteral(":folio"), folio->uuid().toString());
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::restoreKeptRows error : " << table << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::dropKeptRows
+	The rows kept by keepUnbuiltFolioRows() are back: drop their copies
+*/
+void projectDataBase::dropKeptRows()
+{
+	if (m_kept_folios.isEmpty()) {
+		return;
+	}
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"kept_folio", "kept_element", "kept_element_info",
+							  "kept_terminal", "kept_conductor", "kept_link"})
+		query.exec(QStringLiteral("DROP TABLE %1").arg(QLatin1String(table)));
+	m_kept_folios.clear();
 }
 
 /**
@@ -160,6 +242,7 @@ void projectDataBase::updateDB(const QDomDocument &document)
 		why = QStringLiteral("QET_DATABASE_FROM_FOLIOS is set");
 	} else if (populateFromDocument(document, &why)) {
 		qInfo() << "Project database filled from the document";
+		m_rows_from_document = true;
 		populateDrawingItemTables();
 		flushConductorProperties();
 		m_content_changed = false;
@@ -740,6 +823,31 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 QSet<QUuid> projectDataBase::foliosWithUnjoinedWires() const
 {
 	return m_folios_with_unjoined_wires;
+}
+
+/**
+	@brief projectDataBase::elementTypesOnFolios
+	@return the kind (ElementData::typeToString()) of every symbol on the
+	folios @p folios, by uuid, read from the element table as it is: for
+	folios not built yet (QET_LAZY_FOLIOS) its rows came from the document
+	and nothing can have changed them. A symbol whose definition was not
+	found has no row.
+*/
+QHash<QUuid, QString> projectDataBase::elementTypesOnFolios(const QSet<QUuid> &folios) const
+{
+	QHash<QUuid, QString> types;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT uuid, type FROM element WHERE diagram_uuid = :folio"));
+	for (const QUuid &folio : folios) {
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (!query.exec()) {
+			continue;
+		}
+		while (query.next()) {
+			types.insert(QUuid(query.value(0).toString()), query.value(1).toString());
+		}
+	}
+	return types;
 }
 
 /**
@@ -2270,7 +2378,8 @@ void projectDataBase::populateDiagramTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM diagram");
 
-	for (auto diagram : m_project->diagrams())
+		//The folios' own data: folios() builds nothing
+	for (auto diagram : m_project->folios())
 	{
 		m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 		m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
@@ -2314,8 +2423,12 @@ void projectDataBase::populateElementTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM element");
 
-	for (auto diagram : m_project->diagrams())
+	for (auto diagram : m_project->folios())
 	{
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("element"), diagram, QStringLiteral("diagram_uuid = :folio"));
+			continue;
+		}
 		const ElementProvider ep(diagram);
 		const auto elmt_vector = ep.find(allElementTypes());
 			//Insert all values into the database
@@ -2363,6 +2476,14 @@ void projectDataBase::populateElementInfoTable()
 		const QUuid uuid(uuid_str);
 		Element *holder = otherHolder(uuid, nullptr);
 		if (!holder) {
+				//A symbol on a folio not built: its row as it was
+			if (!m_kept_folios.isEmpty()) {
+				QSqlQuery kept(m_data_base);
+				kept.prepare(QStringLiteral("INSERT INTO element_info SELECT * FROM kept_element_info "
+											"WHERE element_uuid = :uuid"));
+				kept.bindValue(QStringLiteral(":uuid"), uuid_str);
+				kept.exec();
+			}
 			continue;
 		}
 		bindElementInfoValues(m_insert_element_info_query, uuid_str,
@@ -2379,8 +2500,15 @@ void projectDataBase::populateElementInfoTable()
 */
 void projectDataBase::populateElementInfoTableFromFolios()
 {
-	for (const auto &diagram : m_project->diagrams())
+	for (const auto &diagram : m_project->folios())
 	{
+			//A folio not built: its rows as they were
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("element_info"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio)"));
+			continue;
+		}
 		const ElementProvider ep(diagram);
 		for (const auto &elmt : ep.find(allElementTypes()))
 		{
@@ -3196,17 +3324,30 @@ void projectDataBase::populateLinkTable()
 	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
 								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
 
-	for (const auto &diagram : m_project->diagrams())
+	for (const auto &diagram : m_project->folios())
 	{
+			//A folio not built: its rows, but to a partner since removed
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("link"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio) "
+										   "AND linked_uuid IN (SELECT uuid FROM element)"));
+			continue;
+		}
 		const ElementProvider ep(diagram);
 		for (const auto &elmt : ep.find(allElementTypes()))
 		{
+			QList<std::pair<QString, int>> rows;
 			for (Element *linked : elmt->linkedElements())
+				rows.append({linked->uuid().toString(), elmt->groupIndexForElement(linked)});
+				//Partners on a folio not built, which it will be linked to
+			for (const auto &waiting : elmt->waitingLinks())
+				rows.append({waiting.first.toString(), waiting.second});
+			for (const auto &row : std::as_const(rows))
 			{
-				const int group = elmt->groupIndexForElement(linked);
 				query.bindValue(QStringLiteral(":element_uuid"), elmt->uuid().toString());
-				query.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
-				query.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
+				query.bindValue(QStringLiteral(":linked_uuid"), row.first);
+				query.bindValue(QStringLiteral(":group_index"), row.second >= 0 ? QVariant(row.second) : QVariant());
 				if (!query.exec()) {
 					qDebug() << "projectDataBase::populateLinkTable insert error : " << query.lastError();
 				}
@@ -3285,6 +3426,17 @@ void projectDataBase::flushLinks()
 				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
 			}
 		}
+			//Partners on a folio not built (QET_LAZY_FOLIOS), which it will
+			//be linked to once that folio is
+		for (const auto &waiting : element->waitingLinks())
+		{
+			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
+			insert.bindValue(QStringLiteral(":linked_uuid"), waiting.first.toString());
+			insert.bindValue(QStringLiteral(":group_index"), waiting.second >= 0 ? QVariant(waiting.second) : QVariant());
+			if (!insert.exec()) {
+				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
+			}
+		}
 	}
 	if (own_transaction) {
 		m_data_base.commit();
@@ -3296,7 +3448,8 @@ void projectDataBase::populateDiagramInfoTable()
 	QSqlQuery query(m_data_base);
 	query.exec("DELETE FROM diagram_info");
 
-	for (auto *diagram : m_project->diagrams())
+		//The folios' own data: folios() builds nothing
+	for (auto *diagram : m_project->folios())
 	{
 		bindDiagramInfoValues(m_insert_diagram_info_query, diagram);
 
@@ -3318,8 +3471,15 @@ void projectDataBase::populateConductorTable()
 	query.exec(QStringLiteral("DELETE FROM conductor"));
 	query.exec(QStringLiteral("DELETE FROM terminal"));
 
-	for (auto *diagram : m_project->diagrams())
+	for (auto *diagram : m_project->folios())
 	{
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("terminal"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio)"));
+			restoreKeptRows(QStringLiteral("conductor"), diagram, QStringLiteral("diagram_uuid = :folio"));
+			continue;
+		}
 		const auto conductor_list = diagram->conductors();
 		for (auto *conductor : conductor_list)
 		{

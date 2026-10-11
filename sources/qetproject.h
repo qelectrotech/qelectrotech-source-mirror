@@ -31,6 +31,7 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
+#include "autoNum/assignvariables.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -44,6 +45,7 @@
 #include <QFuture>
 
 #include <array>
+#include <optional>
 
 class Diagram;
 class Element;
@@ -127,6 +129,9 @@ class QETProject : public QObject
 		QList<Diagram *> builtFolios() const;
 		QList<Diagram *> foliosWithWiresNotReconnected();
 		void buildFolioToShow(Diagram *folio);
+		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
+		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
+		QSet<QUuid> symbolsOnUnbuiltFolios() const;
 		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
 		void loadFolios() const;
 		void buildFolios(const QList<Diagram *> &folios) const;
@@ -252,6 +257,18 @@ class QETProject : public QObject
 										const QString &ignored_title = QString()) const;
 		static QString normalizedAutoNumName(const QString &name);
 		QVector<Element *> elementsUsingElementAutoNum(const QString &title) const;
+			/// A placed symbol's numbering, whether its folio is built or
+			/// not (QET_LAZY_FOLIOS): what is asked of every symbol of the
+			/// project when one is numbered
+		struct SymbolNumbering {
+			const Element *element = nullptr; ///< null on a folio not built
+			QString label;
+			QString formula;
+			QUuid scheme;   ///< the element numbering scheme it follows
+			autonum::sequentialNumbers sequence;
+			bool numbered = false; ///< neither a slave nor a report
+		};
+		QList<SymbolNumbering> symbolNumbering() const;
 
 		/**
 		 * @brief Renumber existing elements by element autonumbering scheme.
@@ -488,6 +505,10 @@ class QETProject : public QObject
 		bool m_legacy_element_autonums = false;
 		void linkElementsToElementAutoNums();
 		void linkElementsToElementAutoNums(Diagram *folio);
+		QHash<QString, QStringList> elementAutoNumTitlesByFormula() const;
+		std::optional<QUuid> elementAutoNumIdToLink(
+				const DiagramContext &information,
+				const QHash<QString, QStringList> &titles_by_formula) const;
 		bool m_deferring_folios = false;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
