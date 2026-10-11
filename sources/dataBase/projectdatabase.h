@@ -34,6 +34,7 @@
 #include "../diagramcontext.h"
 #include "../titleblockproperties.h"
 #include "../conductorproperties.h"
+#include "../autoNum/assignvariables.h"
 
 class Element;
 class QETProject;
@@ -180,6 +181,18 @@ class projectDataBase : public QObject
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
 		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
+			/// A symbol placed on a folio, as the element table has it
+		struct FolioSymbol {
+			QUuid uuid;
+			QUuid folio;
+			QString kind;       ///< ElementData::typeToString()
+			QString location;   ///< its definition, ElementsLocation::path()
+			autonum::sequentialNumbers sequence;
+		};
+		QList<FolioSymbol> symbolsOnFolios(const QList<QUuid> &folios) const;
+		QList<QUuid> linkedSymbols(const QUuid &element) const;
+		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
+		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);

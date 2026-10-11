@@ -696,6 +696,35 @@ int main(int argc, char **argv)
 			}
 			check(continued > 0, "a folio whose table continues another");
 
+				//Numbering, the searches for symbols and the unused symbols
+				//are answered from the database: no folio file is read
+				//but those of the folios built (D5)
+			{
+				QETProject asked(zipped);
+				check(numbering(asked) == numbering(eager), "numbering of a .qetz as when built");
+				for (const QString &title : eager.elementAutoNum().keys())
+					check(gaps(asked, title) == gaps(eager, title), "a .qetz scheme's gaps as when built");
+				auto locations = [](const QList<ElementsLocation> &list) {
+					QStringList strings;
+					for (const ElementsLocation &location : list) strings << location.toString();
+					strings.sort();
+					return strings;
+				};
+				check(locations(asked.unusedElements()) == locations(eager.unusedElements()),
+					  "a .qetz's unused symbols as when built");
+				const ElementProvider usual_search(&eager), search(&asked);
+				for (const ElementData::Types kinds : {ElementData::Types(ElementData::Slave),
+													   ElementData::Types(ElementData::Master),
+													   ElementData::Types(ElementData::AllReport)})
+					check(found(search.freeElement(kinds)) == found(usual_search.freeElement(kinds)),
+						  "free symbols of a .qetz found as when built");
+				const int built = int(folios.size()) - asked.unloadedFolioCount();
+				std::printf(".qetz asked numbering, searches, unused symbols: %d folio files read, %d folios built\n",
+							asked.folioPartsRead(), built);
+				check(asked.unloadedFolioCount() > 0, "asking a .qetz does not build every folio");
+				check(asked.folioPartsRead() == built, "asking a .qetz reads no file of a folio not built");
+			}
+
 				//Saved as a .qetz without building the folios not touched
 				//(D4): their parts and rows copied as they were
 			QETProject untouched(zipped);

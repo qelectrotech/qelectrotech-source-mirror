@@ -50,6 +50,8 @@
 #include <QTextDocument>
 #include <QFile>
 #include <QCryptographicHash>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QTemporaryDir>
 #include <QRegularExpression>
 #include <QSqlDriver>
@@ -359,6 +361,8 @@ struct DocumentElement
 	QString type;
 	QString sub_type;
 	QVariant group;
+	QString location;
+	autonum::sequentialNumbers sequence;
 	DiagramContext informations;
 	QString label;
 	QHash<QUuid, DocumentTerminal> terminals;
@@ -377,6 +381,27 @@ bool readSequence(const QDomElement &item, autonum::sequentialNumbers *sequence)
 	}
 	sequence->fromXml(item.firstChildElement(QStringLiteral("sequentialNumbers")));
 	return true;
+}
+
+	//The sequential values an element was saved with, as Element::fromXml()
+	//reads them, the older attributes included
+autonum::sequentialNumbers elementSequence(const QDomElement &item)
+{
+	autonum::sequentialNumbers sequence;
+	if (readSequence(item, &sequence)) {
+		return sequence;
+	}
+	auto load = [&item](const QString &prefix, QStringList *list) {
+		for (int i = 1 ; !item.attribute(prefix + QString::number(i)).isEmpty() ; ++i)
+			list->append(item.attribute(prefix + QString::number(i)));
+	};
+	load(QStringLiteral("sequ_"),  &sequence.unit);
+	load(QStringLiteral("sequf_"), &sequence.unit_folio);
+	load(QStringLiteral("seqt_"),  &sequence.ten);
+	load(QStringLiteral("seqtf_"), &sequence.ten_folio);
+	load(QStringLiteral("seqh_"),  &sequence.hundred);
+	load(QStringLiteral("seqhf_"), &sequence.hundred_folio);
+	return sequence;
 }
 
 struct DocumentConductor
@@ -609,6 +634,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			element.type = known->type;
 			element.sub_type = known->sub_type;
 			element.terminals = known->terminals;
+			element.location = element_xml.attribute(QStringLiteral("type"));
+			element.sequence = elementSequence(element_xml);
 			const QUuid group = ItemGroups::read(element_xml);
 			element.group = group.isNull() ? QVariant() : QVariant(group.toString());
 			element.informations.fromXml(
@@ -810,6 +837,8 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		m_insert_elements_query.bindValue(QStringLiteral(":type"), element.type);
 		m_insert_elements_query.bindValue(QStringLiteral(":sub_type"), element.sub_type);
 		m_insert_elements_query.bindValue(QStringLiteral(":group_uuid"), element.group);
+		m_insert_elements_query.bindValue(QStringLiteral(":definition"), element.location);
+		m_insert_elements_query.bindValue(QStringLiteral(":sequence"), sequenceValue(element.sequence));
 		if (!m_insert_elements_query.exec()) {
 			qDebug() << "projectDataBase::populateFromDocument element insert error : " << m_insert_elements_query.lastError();
 		}
@@ -1205,6 +1234,94 @@ QHash<QUuid, QString> projectDataBase::elementTypesOnFolios(const QSet<QUuid> &f
 		}
 	}
 	return types;
+}
+
+/**
+	@brief projectDataBase::symbolsOnFolios
+	@return the symbols on the folios @p folios, folio by folio in that
+	order and on each in the order of its rows -- the order the folio
+	places them -- read from the element table as it is (see
+	elementTypesOnFolios()). A symbol whose definition was not found has
+	no row.
+*/
+QList<projectDataBase::FolioSymbol> projectDataBase::symbolsOnFolios(const QList<QUuid> &folios) const
+{
+	QList<FolioSymbol> symbols;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT uuid, type, definition, sequence FROM element "
+								 "WHERE diagram_uuid = :folio ORDER BY rowid"));
+	for (const QUuid &folio : folios) {
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (!query.exec()) {
+			continue;
+		}
+		while (query.next()) {
+			symbols.append({QUuid(query.value(0).toString()), folio, query.value(1).toString(),
+							query.value(2).toString(), sequenceFromValue(query.value(3))});
+		}
+	}
+	return symbols;
+}
+
+/**
+	@brief projectDataBase::linkedSymbols
+	@return the symbols @p element is linked to, read from the link table
+	as it is (see elementTypesOnFolios())
+*/
+QList<QUuid> projectDataBase::linkedSymbols(const QUuid &element) const
+{
+	QList<QUuid> linked;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT linked_uuid FROM link WHERE element_uuid = :uuid ORDER BY rowid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (query.exec()) {
+		while (query.next())
+			linked.append(QUuid(query.value(0).toString()));
+	}
+	return linked;
+}
+
+/**
+	@brief projectDataBase::sequenceValue
+	@return @p sequence as the element table's sequence column holds it:
+	each part the file would save (sequentialNumbers::toXml()), by its tag,
+	as JSON; null when the file would save none. sequenceFromValue() reads
+	it back as reading the file would (sequentialNumbers::fromXml()).
+*/
+QVariant projectDataBase::sequenceValue(const autonum::sequentialNumbers &sequence)
+{
+	QDomDocument document;
+	const QDomElement xml = sequence.toXml(document);
+	if (!xml.hasChildNodes()) {
+		return QVariant();
+	}
+	QJsonObject parts;
+	for (QDomElement part = xml.firstChildElement() ; !part.isNull() ;
+		 part = part.nextSiblingElement())
+		parts.insert(part.tagName(), part.text());
+	return QString::fromUtf8(QJsonDocument(parts).toJson(QJsonDocument::Compact));
+}
+
+/**
+	@brief projectDataBase::sequenceFromValue
+	@return the sequential numbers held by @p value (sequenceValue())
+*/
+autonum::sequentialNumbers projectDataBase::sequenceFromValue(const QVariant &value)
+{
+	autonum::sequentialNumbers sequence;
+	if (value.isNull()) {
+		return sequence;
+	}
+	const QJsonObject parts = QJsonDocument::fromJson(value.toString().toUtf8()).object();
+	QDomDocument document;
+	QDomElement xml = document.createElement(QStringLiteral("sequentialNumbers"));
+	for (auto it = parts.constBegin() ; it != parts.constEnd() ; ++it) {
+		QDomElement part = document.createElement(it.key());
+		part.appendChild(document.createTextNode(it.value().toString()));
+		xml.appendChild(part);
+	}
+	sequence.fromXml(xml);
+	return sequence;
 }
 
 /**
@@ -2322,6 +2439,8 @@ bool projectDataBase::createDataBase()
 						  "type VARCHAR(50),"
 						  "sub_type VARCHAR(50),"
 						  "group_uuid VARCHAR(50),"
+						  "definition TEXT,"
+						  "sequence TEXT,"
 						  "FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
 						  ")");
 	if (!query_.exec(element_table)) {
@@ -3985,7 +4104,8 @@ void projectDataBase::prepareQuery()
 	m_diagram_info_order_changed.prepare("UPDATE diagram_info SET folio = :folio WHERE diagram_uuid = :uuid");
 
 		//INSERT ELEMENT
-	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type, group_uuid) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type, :group_uuid)");
+	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type, group_uuid, definition, sequence) "
+								 "VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type, :group_uuid, :definition, :sequence)");
 	m_insert_elements_query = QSqlQuery(m_data_base);
 	m_insert_elements_query.prepare(insert_element_query);
 
@@ -4100,6 +4220,8 @@ void projectDataBase::bindElementValues(QSqlQuery &query, Element *element, Diag
 	query.bindValue(QStringLiteral(":type"), element_data.typeToString());
 	query.bindValue(QStringLiteral(":sub_type"), element_data.masterTypeToString());
 	query.bindValue(QStringLiteral(":group_uuid"), groupValue(element));
+	query.bindValue(QStringLiteral(":definition"), element->location().path());
+	query.bindValue(QStringLiteral(":sequence"), sequenceValue(element->sequenceStruct()));
 }
 
 /**

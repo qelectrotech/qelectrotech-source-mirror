@@ -332,6 +332,7 @@ class QETProject : public QObject
 		bool usesElement(const ElementsLocation &) const;
 		QList <ElementsLocation> unusedElements() const;
 		QList<ElementsLocation> unbuiltFolioElements() const;
+		bool unbuiltFolioHasTables(Diagram *folio) const;
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 		bool projectWasModified();
 		bool projectOptionsWereModified();
@@ -455,6 +456,8 @@ class QETProject : public QObject
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
 		QByteArray containerIndex();
 		QDomElement readFolioPart(const QString &file);
+			/// How many folio parts of the .qetz were read so far
+		int folioPartsRead() const {return m_folio_parts_read;}
 		bool openedFromIndex() const {return m_opened_from_index;}
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
@@ -550,6 +553,7 @@ class QETProject : public QObject
 		QHash<QString, QByteArray> m_container_files;
 			///Reads the folio parts' engineering data, opened once
 		std::unique_ptr<QetContainerDb::FolioReader> m_folio_reader;
+		int m_folio_parts_read = 0;
 		QStringList m_folio_files;
 		QList<std::pair<QUuid, QString>> m_folio_headers;
 			///The drawn tables of the index opened from, if it has them
