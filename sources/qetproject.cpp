@@ -2762,6 +2762,27 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 }
 
 /**
+	@brief QETProject::buildFoliosHoldingTables
+	Build the folios not built yet (QET_LAZY_FOLIOS) that hold a drawn
+	table, found from the index the project was opened from when it has
+	one: what a list of the project's tables needs, and no more
+*/
+void QETProject::buildFoliosHoldingTables()
+{
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (!d->isLoaded() && unbuiltFolioHasTables(d))
+			to_build << d;
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size() << "folios built for their tables";
+	}
+	buildFolios(to_build);
+}
+
+/**
 	@brief QETProject::unbuiltFolioHasTables
 	@return true if @p folio, not built yet (QET_LAZY_FOLIOS), has a drawn
 	table: from the index it was opened from, else from its XML
