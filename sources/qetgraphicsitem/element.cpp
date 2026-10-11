@@ -1250,17 +1250,41 @@ QDomElement Element::toXml(
 
 	//if this element is linked to other elements,
 	//save the uuid of each other elements
-	if (! isFree()) {
+		//A partner on a folio not built yet (QET_LAZY_FOLIOS), which this
+		//symbol will be linked to, is saved too, in the order the symbol was
+		//saved with: saving needs no partner built (QETZ-DB-TRUTH-PLAN.md D5a)
+	QList<std::pair<QUuid, int>> links;
+	if (keepsSavedLinks() && diagram() && diagram()->project()) {
+		const QSet<QUuid> waiting = diagram()->project()->waitingLinkTargets();
+		QSet<Element *> written;
+		for (const auto &link_info : std::as_const(tmp_uuids_link)) {
+			Element *linked = nullptr;
+			for (Element *elmt : std::as_const(connected_elements))
+				if (elmt->uuid() == link_info.uuid && !written.contains(elmt)) { linked = elmt; break; }
+			if (linked) {
+				written.insert(linked);
+				links.append({linked->uuid(), m_group_index_map.value(linked, -1)});
+			} else if (waiting.contains(link_info.uuid)) {
+				links.append({link_info.uuid, link_info.group_index});
+			}
+		}
+		for (Element *elmt : std::as_const(connected_elements))
+			if (!written.contains(elmt))
+				links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
+	} else {
+		for (Element *elmt : std::as_const(connected_elements))
+			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
+	}
+	if (!links.isEmpty()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
-		foreach (Element *elmt, connected_elements) {
+		for (const auto &link : std::as_const(links)) {
 			QDomElement link_uuid =
 					document.createElement(QStringLiteral("link_uuid"));
-			link_uuid.setAttribute(QStringLiteral("uuid"), elmt->uuid().toString());
+			link_uuid.setAttribute(QStringLiteral("uuid"), link.first.toString());
 
 			// Save group index if assigned (for slave->master links)
-			int gi = m_group_index_map.value(elmt, -1);
-			if (gi >= 0) {
-				link_uuid.setAttribute(QStringLiteral("group_index"), gi);
+			if (link.second >= 0) {
+				link_uuid.setAttribute(QStringLiteral("group_index"), link.second);
 			}
 
 			links_uuids.appendChild(link_uuid);

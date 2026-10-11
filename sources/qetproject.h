@@ -131,6 +131,9 @@ class QETProject : public QObject
 		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
 		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
 		QSet<QUuid> symbolsOnUnbuiltFolios() const;
+			/// While saving: the symbols on folios not built a built symbol
+			/// may be saved linked to (Element::toXml())
+		QSet<QUuid> waitingLinkTargets() const {return m_waiting_link_targets;}
 		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
 		void loadFolios() const;
 		void buildFolios(const QList<Diagram *> &folios) const;
@@ -469,6 +472,7 @@ class QETProject : public QObject
 			/// Saving a .qetz may copy the part of a folio not built
 			/// (toXml(), QETZ-DB-TRUTH-PLAN.md D4)
 		bool m_kept_parts_trusted = false;
+		QSet<QUuid> m_waiting_link_targets;
 		QHash<QString, QByteArray> m_container_files;
 		QStringList m_folio_files;
 		QList<std::pair<QUuid, QString>> m_folio_headers;
