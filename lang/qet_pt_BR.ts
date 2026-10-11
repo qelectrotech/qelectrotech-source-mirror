@@ -627,17 +627,17 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="175"/>
         <source>Change the start angle of an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o ângulo inicial de um arco</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="200"/>
         <source>Change the angle of an arc</source>
-        <translation type="unfinished">Alterar o ângulo de um arco</translation>
+        <translation>Alterar o ângulo de um arco</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="243"/>
         <source>Change an arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar um arco</translation>
     </message>
 </context>
 <context>
@@ -1043,12 +1043,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="46"/>
         <source>Terminals with no label, designation, manufacturer or manufacturer reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminais sem legenda, designação, fabricante ou referência do fabricante</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="49"/>
         <source>Leave out junctions</source>
-        <translation type="unfinished"></translation>
+        <translation>Omitir as junções</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="77"/>
@@ -1167,15 +1167,15 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/cable/cablepart.cpp" line="1948"/>
         <source>Move %n cable(s)</source>
         <comment>Un geste déplace plusieurs lignes à la fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Mover %n cabo</numerusform>
+            <numerusform>Mover %n cabos</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="38"/>
         <source>Delete</source>
-        <translation type="unfinished">Excluir</translation>
+        <translation>Excluir</translation>
     </message>
 </context>
 <context>
@@ -1217,12 +1217,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="86"/>
         <source>Format:</source>
-        <translation type="unfinished">Formato:</translation>
+        <translation>Formato:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="93"/>
         <source>Sets the columns and rows so the sheet, title block included, has the size of this paper format, at 96 dots per inch like the PDF export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajusta as colunas e as linhas para que a página, incluindo o carimbo, tenha o tamanho deste formato de papel, a 96 pontos por polegada como a exportação em PDF.</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
@@ -1233,17 +1233,17 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="116"/>
         <source>Custom</source>
-        <translation type="unfinished">Personalizados</translation>
+        <translation>Personalizado</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="119"/>
         <source>Landscape</source>
-        <translation type="unfinished">Paisagem</translation>
+        <translation>Paisagem</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.cpp" line="120"/>
         <source>Portrait</source>
-        <translation type="unfinished">Retrato</translation>
+        <translation>Retrato</translation>
     </message>
 </context>
 <context>
@@ -1252,12 +1252,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/diagramview.cpp" line="751"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="437"/>
         <source>Paste a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar um cabo</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Duplicate a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicar um cabo</translation>
     </message>
 </context>
 <context>
@@ -1267,182 +1267,182 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/cable/cablecreatedialog.cpp" line="928"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1180"/>
         <source>Cable</source>
-        <translation type="unfinished">Cabo</translation>
+        <translation>Cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="189"/>
         <source>(no type)</source>
-        <translation type="unfinished"></translation>
+        <translation>(sem tipo)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="190"/>
         <source>Change the type: %1, %n core(s)</source>
         <comment>which type this window changes, and how many cores that cable has now</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Alterar o tipo: %1, %n veia</numerusform>
+            <numerusform>Alterar o tipo: %1, %n veias</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="196"/>
         <source>%n recognized core(s)</source>
         <comment>how many cores the line just crossed</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n veia reconhecida</numerusform>
+            <numerusform>%n veias reconhecidas</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="269"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="378"/>
         <source>Search:</source>
-        <translation type="unfinished">Pesquisar:</translation>
+        <translation>Pesquisar:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="272"/>
         <source>Filter cable types</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar os tipos de cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="281"/>
         <source>Hide types which have fewer cores than this cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar os tipos que têm menos veias que este cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="283"/>
         <source>Hide types which have fewer cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar os tipos que têm menos veias que os condutores reconhecidos</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="292"/>
         <source>Uncheck to also see the types which have fewer cores: taking them makes the cores beyond their number leave the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarque para ver também os tipos que têm menos veias: ao escolhê-los, as veias além do seu número saem do cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="295"/>
         <source>A struck through line is a type which has fewer cores than recognized conductors: it cannot carry this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uma linha riscada é um tipo que tem menos veias que os condutores reconhecidos: ele não pode transportar este cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="329"/>
         <source>New entry</source>
-        <translation type="unfinished">Nova entrada</translation>
+        <translation>Nova entrada</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="330"/>
         <source>Add a new cable type to the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar um novo tipo de cabo à lista</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="335"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar a entrada</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="336"/>
         <source>Edit the cable type selected in the list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar o tipo de cabo selecionado na lista.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="345"/>
         <source>New cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="381"/>
         <source>Filter existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar os cabos existentes</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="385"/>
         <source>Hide cables which have fewer free cores than recognized conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar os cabos que têm menos veias livres que os condutores reconhecidos</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="392"/>
         <source>A struck through line is a cable which has fewer free cores than recognized conductors: it cannot receive them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uma linha riscada é um cabo que tem menos veias livres que os condutores reconhecidos: ele não pode recebê-los.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="418"/>
         <source>Existing cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabos existentes</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="458"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="541"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Designação</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="459"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Instalação (=)</translation>
+        <translation>Instalação (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="460"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Localização (+)</translation>
+        <translation>Localização (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="542"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="543"/>
         <source>Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Veias</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="544"/>
         <source>Plant</source>
-        <translation type="unfinished">Instalação</translation>
+        <translation>Instalação</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="545"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="557"/>
         <source>%1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 / %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="619"/>
         <source>This type has fewer cores than this cable: %1 instead of %2. The cores beyond %1 leave the cable and their marks disappear from the drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este tipo tem menos veias que este cabo: %1 em vez de %2. As veias além de %1 saem do cabo e as suas marcas desaparecem do desenho.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="626"/>
         <source>Too many cores selected: the type offers only %1, %2 conductors are recognized</source>
-        <translation type="unfinished"></translation>
+        <translation>Veias demais selecionadas: o tipo oferece apenas %1, e %2 condutores foram reconhecidos</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="633"/>
         <source>Only %1 free cores, %2 requested</source>
-        <translation type="unfinished"></translation>
+        <translation>Apenas %1 veias livres, %2 solicitadas</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="662"/>
         <source>No cable type available: configure the cable type file in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum tipo de cabo disponível: configure o arquivo de tipos de cabo nas preferências.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="677"/>
         <source>Choose a cable type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha um tipo de cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="678"/>
         <source>Choose an existing cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha um cabo existente.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="691"/>
         <source>%1 cores instead of %2: the extra cores stay unplaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 veias em vez de %2: as veias extras permanecem sem posição.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablecreatedialog.cpp" line="922"/>
@@ -1450,16 +1450,20 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
 
 If you confirm, the other cable will lose these cores. Do you want to continue?</source>
         <comment>ask before taking cores away from another cable</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n condutor atravessado já está ligado a outro cabo
+
+Se você confirmar, o outro cabo perderá essa veia. Deseja continuar?</numerusform>
+            <numerusform>%n condutores atravessados já estão ligados a outro cabo
+
+Se você confirmar, o outro cabo perderá essas veias. Deseja continuar?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1026"/>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1092"/>
         <source>Cannot be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível gravar</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1027"/>
@@ -1467,7 +1471,7 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <source>Cannot write to the file:
 %1
 %2</source>
-        <translation type="unfinished">Não foi possível gravar no arquivo:
+        <translation>Não foi possível gravar no arquivo:
 %1
 %2</translation>
     </message>
@@ -1475,9 +1479,9 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1173"/>
         <source>%n core(s) of this cable bound to a conductor. With the chosen type, they leave this cable and their mark disappears from the drawing. Continue?</source>
         <comment>ask before cores lose the mark they show on the drawing</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n veia deste cabo está ligada a um condutor. Com o tipo escolhido, ela sai deste cabo e a sua marca desaparece do desenho. Continuar?</numerusform>
+            <numerusform>%n veias deste cabo estão ligadas a um condutor. Com o tipo escolhido, elas saem deste cabo e as suas marcas desaparecem do desenho. Continuar?</numerusform>
         </translation>
     </message>
 </context>
@@ -1486,48 +1490,49 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="49"/>
         <source>Export the cable list as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar a lista de cabos em CSV</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="59"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Layout</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="61"/>
         <source>include headers</source>
-        <translation type="unfinished">incluir cabeçalhos</translation>
+        <translation>incluir cabeçalhos</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="68"/>
         <source>Preview</source>
-        <translation type="unfinished">Visualização</translation>
+        <translation>Visualização</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="108"/>
         <source>cable_list_</source>
-        <translation type="unfinished"></translation>
+        <translation>lista_de_cabos_</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="111"/>
         <source>Save As... </source>
-        <translation type="unfinished">Salvar como... </translation>
+        <translation>Salvar como... </translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="112"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="121"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cableexportdialog.cpp" line="122"/>
         <source>Cannot save the cable list to %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível salvar a lista de cabos em %1.
+%2</translation>
     </message>
 </context>
 <context>
@@ -1535,77 +1540,77 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="153"/>
         <source>No.</source>
-        <translation type="unfinished">N.º</translation>
+        <translation>N.º</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="154"/>
         <source>Plant (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalação (cabo)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="155"/>
         <source>Location (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização (cabo)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="156"/>
         <source>Label (cable)</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda (cabo)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="157"/>
         <source>Plant (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalação (início)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="158"/>
         <source>Location (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização (início)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="159"/>
         <source>Label (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda (início)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="160"/>
         <source>Sheet (start)</source>
-        <translation type="unfinished"></translation>
+        <translation>Página (início)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="161"/>
         <source>Plant (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalação (fim)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="162"/>
         <source>Location (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização (fim)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="163"/>
         <source>Label (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda (fim)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="164"/>
         <source>Sheet (end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Página (fim)</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="165"/>
         <source>Cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de cabo</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="166"/>
         <source>Length</source>
-        <translation type="unfinished">Comprimento</translation>
+        <translation>Comprimento</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="167"/>
         <source>Used cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Veias utilizadas</translation>
     </message>
 </context>
 <context>
@@ -1613,17 +1618,17 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="40"/>
         <source>Edit columns...</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar colunas...</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="41"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistmodelpropertieswidget.cpp" line="76"/>
         <source>Cable list columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Colunas da lista de cabos</translation>
     </message>
 </context>
 <context>
@@ -1638,95 +1643,99 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="342"/>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="361"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeração dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="57"/>
         <source>This window shows the automatic numbering rule for the cables of this project and edits it. A rule changed here is the one the project keeps: it is written into the project when you apply it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Esta janela mostra a regra de numeração automática dos cabos deste projeto e permite editá-la. Uma regra alterada aqui é a que o projeto mantém: ela é gravada no projeto quando você a aplica.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="71"/>
         <source>Axis priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioridade dos eixos</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="73"/>
         <source>Priority to the X axis (horizontal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioridade ao eixo X (horizontal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="74"/>
         <source>Priority to the Y axis (vertical)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioridade ao eixo Y (vertical)</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="79"/>
         <source>The chosen axis decides the order in which the cables are renumbered: X numbers them from left to right, Y numbers them from top to bottom.</source>
-        <translation type="unfinished"></translation>
+        <translation>O eixo escolhido decide a ordem em que os cabos são renumerados: X os numera da esquerda para a direita, Y os numera de cima para baixo.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="87"/>
         <source>Renumber all cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Renumerar todos os cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="88"/>
         <source>Sets the number of each cable of the project again from the rule, starting at the beginning: a number left missing after a cable is deleted is filled in this way.</source>
-        <translation type="unfinished"></translation>
+        <translation>Define novamente o número de cada cabo do projeto a partir da regra, desde o início: um número que ficou faltando após a exclusão de um cabo é preenchido dessa forma.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="103"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="174"/>
         <source>The rule is not complete yet: there is still an empty field in it.</source>
-        <translation type="unfinished"></translation>
+        <translation>A regra ainda não está completa: ainda há um campo vazio nela.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="264"/>
         <source>%n cable(s) of this project were entered by hand.
 
 Do you want to renumber them too?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n cabo deste projeto foi inserido manualmente.
+
+Deseja renumerá-lo também?</numerusform>
+            <numerusform>%n cabos deste projeto foram inseridos manualmente.
+
+Deseja renumerá-los também?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="269"/>
         <source>Yes</source>
         <comment>Les noms saisis à la main sont remplacés eux aussi.</comment>
-        <translation type="unfinished">Sim</translation>
+        <translation>Sim</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="272"/>
         <source>No</source>
         <comment>Les noms saisis à la main sont laissés tels quels.</comment>
-        <translation type="unfinished">Não</translation>
+        <translation>Não</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="275"/>
         <source>Cancel</source>
         <comment>Ne renumérote rien du tout.</comment>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="309"/>
         <source>The rule is not complete yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>A regra ainda não está completa.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="343"/>
         <source>No cable to renumber in this project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum cabo para renumerar neste projeto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/cablenumberingdialog.cpp" line="362"/>
         <source>All the cables already carry the number that the rule gives them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos os cabos já têm o número que a regra lhes atribui.</translation>
     </message>
 </context>
 <context>
@@ -1735,66 +1744,66 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepart.cpp" line="2660"/>
         <source>Yes</source>
         <comment>Prendre le conducteur à l&apos;autre câble.</comment>
-        <translation type="unfinished">Sim</translation>
+        <translation>Sim</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2663"/>
         <source>No</source>
         <comment>Laisser le conducteur à l&apos;autre câble, on ne change rien.</comment>
-        <translation type="unfinished">Não</translation>
+        <translation>Não</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2666"/>
         <source>Cancel</source>
         <comment>Annuler le geste entier : rien n&apos;est écrit, la ligne et ses couleurs reviennent où elles étaient.</comment>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2702"/>
         <location filename="../sources/cable/cablepart.cpp" line="2760"/>
         <source>This conductor is already described by another cable. Do you want to assign it to cable %1?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Este condutor já é descrito por outro cabo. Deseja atribuí-lo ao cabo %1?</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2704"/>
         <location filename="../sources/cable/cablepart.cpp" line="2762"/>
         <source>This conductor is already described by cable %1. Do you want to assign it to cable %2?</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble : on demande avant de le prendre à l&apos;autre.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Este condutor já é descrito pelo cabo %1. Deseja atribuí-lo ao cabo %2?</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2713"/>
         <location filename="../sources/cable/cablepart.cpp" line="2755"/>
         <source>Conductor already assigned</source>
         <comment>Un conducteur ne peut appartenir qu&apos;à un câble.</comment>
-        <translation type="unfinished"></translation>
+        <translation>Condutor já atribuído</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2756"/>
         <source>Conductors already assigned</source>
         <comment>Plusieurs conducteurs sont pris en une seule fois.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Condutores já atribuídos</numerusform>
+            <numerusform>Condutores já atribuídos</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2765"/>
         <source>%n conductors are already described by other cables. Do you want to assign them to cable %1?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre aux autres câbles.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n condutor já é descrito por outro cabo. Deseja atribuí-lo ao cabo %1?</numerusform>
+            <numerusform>%n condutores já são descritos por outros cabos. Deseja atribuí-los ao cabo %1?</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepart.cpp" line="2767"/>
         <source>%n conductors are already described by cable %1. Do you want to assign them to cable %2?</source>
         <comment>On prend plusieurs conducteurs à la fois : on demande avant de les prendre à l&apos;autre câble.</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n condutor já é descrito pelo cabo %1. Deseja atribuí-lo ao cabo %2?</numerusform>
+            <numerusform>%n condutores já são descritos pelo cabo %1. Deseja atribuí-los ao cabo %2?</numerusform>
         </translation>
     </message>
 </context>
@@ -1803,46 +1812,46 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="54"/>
         <source>Cable</source>
-        <translation type="unfinished">Cabo</translation>
+        <translation>Cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="73"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veias sem posição:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="77"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Clique duas vezes em uma veia para colocá-la na linha: a linha segue o mouse e um clique a deixa onde você apontou.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="117"/>
         <source>No cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum cabo.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="121"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 de %2 veia ligada a um condutor</numerusform>
+            <numerusform>%1 de %2 veias ligadas a um condutor</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="171"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Veia %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="172"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Veia %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertiesdialog.cpp" line="233"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Colocar esta veia na linha</translation>
     </message>
 </context>
 <context>
@@ -1850,41 +1859,41 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="59"/>
         <source>Unplaced cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veias sem posição:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="64"/>
         <source>Double-click a core to place it on the line: the line follows the mouse and a click leaves it where you aimed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Clique duas vezes em uma veia para colocá-la na linha: a linha segue o mouse e um clique a deixa onde você apontou.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="258"/>
         <source>%1 of %2 cores wired to a conductor</source>
         <comment>how many cores of this cable are wired</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 de %2 veia ligada a um condutor</numerusform>
+            <numerusform>%1 de %2 veias ligadas a um condutor</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="292"/>
         <source>Core %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Veia %1</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="293"/>
         <source>Core %1 — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Veia %1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="345"/>
         <source>Place this core on the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Colocar esta veia na linha</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieseditorwidget.cpp" line="388"/>
         <source>Cable</source>
-        <translation type="unfinished">Cabo</translation>
+        <translation>Cabo</translation>
     </message>
 </context>
 <context>
@@ -1893,109 +1902,109 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="52"/>
         <source>Drawing</source>
         <comment>column header: the drawing shows this field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Desenho</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="55"/>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="137"/>
         <source>Tick to write this field on the drawing.</source>
         <comment>tooltip of the tick before each field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Marque para escrever este campo no desenho.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="61"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Designação</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="64"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="74"/>
         <source>Choose the type of this cable from the list of cable types…</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha o tipo deste cabo na lista de tipos de cabo…</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="81"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Instalação (=)</translation>
+        <translation>Instalação (=)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="83"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Localização (+)</translation>
+        <translation>Localização (+)</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="85"/>
         <source>Length</source>
-        <translation type="unfinished">Comprimento</translation>
+        <translation>Comprimento</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="90"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Cores das veias</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="92"/>
         <source>The font of the colors of all the cores of this cable, written along the line.</source>
-        <translation type="unfinished"></translation>
+        <translation>A fonte das cores de todas as veias deste cabo, escritas ao longo da linha.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="101"/>
         <source>Text position</source>
-        <translation type="unfinished"></translation>
+        <translation>Posição do texto</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="102"/>
         <source>Shifts all the cable text: plant, location and designation on one side, type and length on the other. The line, the slashes and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Desloca todo o texto do cabo: instalação, localização e designação de um lado, tipo e comprimento do outro. A linha, as barras e a ligação permanecem no lugar. 10 px equivalem a uma célula da grade.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="109"/>
         <source>Core colors position</source>
-        <translation type="unfinished"></translation>
+        <translation>Posição das cores das veias</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="110"/>
         <source>Shifts the core colors relative to their slashes. The slashes, the entries and the wiring stay in place. 10 px make one grid cell.</source>
-        <translation type="unfinished"></translation>
+        <translation>Desloca as cores das veias em relação às suas barras. As barras, as entradas e a ligação permanecem no lugar. 10 px equivalem a uma célula da grade.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="228"/>
         <source>X :</source>
-        <translation type="unfinished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="230"/>
         <source>Y :</source>
-        <translation type="unfinished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="284"/>
         <source>%1 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="287"/>
         <source>Font, size and style of the core colors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte, tamanho e estilo das cores das veias.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="288"/>
         <source>Font, size, style and alignment of this text.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte, tamanho, estilo e alinhamento deste texto.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="292"/>
         <source>Set for this cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Definido para este cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="293"/>
         <source>Value defined in the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor definido nas preferências.</translation>
     </message>
 </context>
 <context>
@@ -2003,32 +2012,32 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="50"/>
         <source>Available columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Colunas disponíveis</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="62"/>
         <source>Add the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar a coluna selecionada</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="63"/>
         <source>Remove the selected column</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover a coluna selecionada</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="64"/>
         <source>Move the selected column up</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a coluna selecionada para cima</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="65"/>
         <source>Move the selected column down</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a coluna selecionada para baixo</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablequerywidget.cpp" line="73"/>
         <source>Table columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Colunas da tabela</translation>
     </message>
 </context>
 <context>
@@ -2036,37 +2045,37 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="112"/>
         <source>No project is open.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum projeto está aberto.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="118"/>
         <source>This project is read-only: its cables cannot be renumbered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este projeto é somente leitura: seus cabos não podem ser renumerados.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="137"/>
         <source>No cable numbering rule is defined for this project. Define one in this window before renumbering its cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhuma regra de numeração de cabos está definida para este projeto. Defina uma nesta janela antes de renumerar seus cabos.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="222"/>
         <source>A cable is not on any sheet of the project: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Um cabo não está em nenhuma página do projeto: nada foi alterado.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="242"/>
         <source>The current rule gives no number here: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>A regra atual não fornece nenhum número aqui: nada foi alterado.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="253"/>
         <source>The current rule gives the same number (%1) twice: it must count to renumber a whole project. Nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>A regra atual fornece o mesmo número (%1) duas vezes: ela precisa contar para renumerar um projeto inteiro. Nada foi alterado.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablerenumber.cpp" line="265"/>
         <source>Number %1 is already used by a cable whose name is left as it is: nothing was changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>O número %1 já é usado por um cabo cujo nome foi mantido como está: nada foi alterado.</translation>
     </message>
 </context>
 <context>
@@ -2074,87 +2083,87 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="94"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Cores das veias</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="95"/>
         <source>Text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formato do texto</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="148"/>
         <source>Font:</source>
-        <translation type="unfinished">Fonte:</translation>
+        <translation>Fonte:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="154"/>
         <source> pt</source>
-        <translation type="unfinished"></translation>
+        <translation> pt</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="155"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="158"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="159"/>
         <source>Bold</source>
-        <translation type="unfinished">Texto em negrito</translation>
+        <translation>Negrito</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="160"/>
         <source>Italic</source>
-        <translation type="unfinished">Texto em itálico</translation>
+        <translation>Itálico</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="161"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Negrito itálico</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="162"/>
         <source>Style:</source>
-        <translation type="unfinished">Estilo:</translation>
+        <translation>Estilo:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="169"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhado à direita</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="170"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Centralizado</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="171"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhado à esquerda</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="172"/>
         <source>Alignment:</source>
-        <translation type="unfinished">Alinhamento:</translation>
+        <translation>Alinhamento:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="175"/>
         <source>15W1 · H07V-K 3G1.5</source>
-        <translation type="unfinished"></translation>
+        <translation>15W1 · H07V-K 3G1.5</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="179"/>
         <source>Preview:</source>
-        <translation type="unfinished">Visualização :</translation>
+        <translation>Visualização:</translation>
     </message>
     <message>
         <location filename="../sources/cable/cabletextformatdialog.cpp" line="183"/>
         <source>Reset</source>
-        <translation type="unfinished">Redefinir</translation>
+        <translation>Redefinir</translation>
     </message>
 </context>
 <context>
@@ -2162,52 +2171,52 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1264"/>
         <source>New entry</source>
-        <translation type="unfinished">Nova entrada</translation>
+        <translation>Nova entrada</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1268"/>
         <source>Enter the cable type to add. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe o tipo de cabo a adicionar. Os campos deixados vazios permanecem vazios no arquivo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1288"/>
         <source>How many cores this type has. The dash means the file does not specify.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantas veias este tipo tem. O traço significa que o arquivo não especifica.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1299"/>
         <source>The color of each core, separated by a comma and in the order of the cores.</source>
-        <translation type="unfinished"></translation>
+        <translation>A cor de cada veia, separadas por vírgula e na ordem das veias.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1314"/>
         <source>Save</source>
-        <translation type="unfinished">Salvar</translation>
+        <translation>Salvar</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1315"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1375"/>
         <source>Edit entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar a entrada</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1378"/>
         <source>Edit the cable type selected in the list. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Edite o tipo de cabo selecionado na lista. Os campos deixados vazios permanecem vazios no arquivo.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1410"/>
         <source>No details</source>
-        <translation type="unfinished"></translation>
+        <translation>Sem detalhes</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1411"/>
         <source>Enter at least one detail to create an entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe pelo menos um detalhe para criar uma entrada.</translation>
     </message>
 </context>
 <context>
@@ -2215,53 +2224,53 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="273"/>
         <source>Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Designação</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="275"/>
         <source>Number of cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de veias</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="277"/>
         <source>Core colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Cores das veias</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="279"/>
         <source>Cable section</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do cabo</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="281"/>
         <source>Sheath color</source>
-        <translation type="unfinished"></translation>
+        <translation>Cor da capa</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="538"/>
         <source>No receiver for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum receptor para o arquivo de tipos de cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="665"/>
         <source>Cannot create the folder %1 for the cable types file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível criar a pasta %1 para o arquivo de tipos de cabo.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="716"/>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="761"/>
         <source>The file contains no header: missing columns.</source>
-        <translation type="unfinished"></translation>
+        <translation>O arquivo não contém cabeçalho: colunas ausentes.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="779"/>
         <source>This entry no longer exists in the file: it may have been modified in the meantime.</source>
-        <translation type="unfinished"></translation>
+        <translation>Esta entrada não existe mais no arquivo: ela pode ter sido modificada nesse meio tempo.</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cabletypelist.cpp" line="805"/>
         <source>The file already exists and is not empty.</source>
-        <translation type="unfinished">O arquivo já existe e não está vazio.</translation>
+        <translation>O arquivo já existe e não está vazio.</translation>
     </message>
 </context>
 <context>
@@ -2269,17 +2278,17 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2233"/>
         <source>Place a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Colocar uma veia do cabo</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepart.cpp" line="2278"/>
         <source>Remove a core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover uma veia da linha</translation>
     </message>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="332"/>
         <source>Move a cable core</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover uma veia do cabo</translation>
     </message>
 </context>
 <context>
@@ -2287,7 +2296,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="163"/>
         <source>Edit the properties of a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar as propriedades de um cabo</translation>
     </message>
 </context>
 <context>
@@ -2296,7 +2305,7 @@ Do you want to renumber them too?</source>
         <location filename="../sources/cable/cablecreatedialog.cpp" line="1221"/>
         <location filename="../sources/cable/editcablecommand.cpp" line="285"/>
         <source>Change the cable type</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o tipo de cabo</translation>
     </message>
 </context>
 <context>
@@ -2960,7 +2969,7 @@ Continuar?</translation>
         <location filename="../sources/ui/customizedialog.cpp" line="30"/>
         <source>Customize</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Personalizar</translation>
     </message>
 </context>
 <context>
@@ -3103,17 +3112,17 @@ Continuar?</translation>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="31"/>
         <source>x 0.25</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,25</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="36"/>
         <source>x 0.5</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="41"/>
         <source>x 0.75</source>
-        <translation type="unfinished"></translation>
+        <translation>x 0,75</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="46"/>
@@ -3136,15 +3145,15 @@ Continuar?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="160"/>
         <source>Left click: place the cable start; drag or second click: finish; right click: cancel; Esc: quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Clique esquerdo: posicionar o início do cabo; arrastar ou segundo clique: concluir; clique direito: cancelar; Esc: sair</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramevent/diagrameventaddcable.cpp" line="167"/>
         <source>Left click or release: finish the line (%n core(s) recognized; always horizontal or vertical); right click: cancel the line</source>
         <comment>how many conductors the line being drawn already crosses</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Clique esquerdo ou soltar: concluir a linha (%n veia reconhecida; sempre horizontal ou vertical); clique direito: cancelar a linha</numerusform>
+            <numerusform>Clique esquerdo ou soltar: concluir a linha (%n veias reconhecidas; sempre horizontal ou vertical); clique direito: cancelar a linha</numerusform>
         </translation>
     </message>
 </context>
@@ -3302,7 +3311,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="675"/>
         <source>crop</source>
-        <translation type="unfinished"></translation>
+        <translation>recortar</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="693"/>
@@ -3312,7 +3321,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="731"/>
         <source>Crop: drag the handles or the frame -- Enter, double-click or click elsewhere: apply; Escape: cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Recortar: arraste as alças ou a moldura -- Enter, clique duplo ou clique em outro lugar: aplicar; Escape: cancelar</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="733"/>
@@ -3357,7 +3366,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="811"/>
         <source>Drag: crop (Enter = apply, Escape = cancel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrastar: recortar (Enter = aplicar, Escape = cancelar)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1090"/>
@@ -3464,7 +3473,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2106"/>
         <source>Crop on the folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Recortar na página</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2110"/>
@@ -3474,7 +3483,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2114"/>
         <source>Reset crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir o recorte</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2118"/>
@@ -3494,7 +3503,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2130"/>
         <source>Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriedades...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="2161"/>
@@ -3571,22 +3580,22 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="271"/>
         <source>Handle size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho das alças</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="273"/>
         <source>Text grid</source>
-        <translation type="unfinished">Grade dos textos</translation>
+        <translation>Grade dos textos</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="275"/>
         <source>Sheet background color</source>
-        <translation type="unfinished">Cor de fundo da página</translation>
+        <translation>Cor de fundo da página</translation>
     </message>
     <message>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="277"/>
         <source>Conductor color</source>
-        <translation type="unfinished">Cor do condutor</translation>
+        <translation>Cor do condutor</translation>
     </message>
 </context>
 <context>
@@ -3628,30 +3637,30 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="485"/>
         <source>%1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="526"/>
         <source>Add an image</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar uma imagem</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramview.cpp" line="527"/>
         <source>Add %n image(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Adicionar %n imagem</numerusform>
+            <numerusform>Adicionar %n imagens</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="534"/>
         <source>Images not added</source>
-        <translation type="unfinished"></translation>
+        <translation>Imagens não adicionadas</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="535"/>
         <source>These files could not be added:</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível adicionar estes arquivos:</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1040"/>
@@ -3672,7 +3681,7 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="2197"/>
         <source>Remove this core from the line</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover esta veia da linha</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="2482"/>
@@ -4136,12 +4145,12 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automático</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="108"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="128"/>
@@ -5059,27 +5068,27 @@ Continuar?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="228"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodos antiparalelos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="229"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Resistor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="230"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="231"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Tomada de teste</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="232"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodo (invertido)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="235"/>
@@ -5502,7 +5511,7 @@ Continuar?</translation>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="324"/>
         <source>Slave contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Contatos escravos</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="347"/>
@@ -6238,7 +6247,7 @@ Ao importar este arquivo, você confirma que:
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.cpp" line="152"/>
         <source>Change an ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar uma elipse</translation>
     </message>
 </context>
 <context>
@@ -6455,22 +6464,22 @@ Ao importar este arquivo, você confirma que:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="229"/>
         <source>DXF: symbols as blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: símbolos como blocos</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="230"/>
         <source>Each symbol becomes a DXF block, selectable with one click in CAD software</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada símbolo se torna um bloco DXF, selecionável com um clique em programas de CAD</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="234"/>
         <source>DXF: symbol texts as attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF: textos dos símbolos como atributos</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="235"/>
         <source>A symbol&apos;s texts (label, function...) become attributes of its block. LibreCAD does not show attributes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Os textos de um símbolo (legenda, função...) tornam-se atributos do seu bloco. O LibreCAD não exibe atributos.</translation>
     </message>
 </context>
 <context>
@@ -6629,7 +6638,7 @@ que você cria. Entradas de texto e números
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
         <source>Filter by label (e.g. Z1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar por legenda (ex.: Z1)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="30"/>
@@ -6685,27 +6694,27 @@ que você cria. Entradas de texto e números
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodos antiparalelos</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Resistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="147"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="152"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Tomada de teste</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="157"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodo (invertido)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="171"/>
@@ -7155,19 +7164,19 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="606"/>
         <source>Cable type list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo da lista de tipos de cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pasta dos tipos de cabo usados para definir um cabo (número de veias, cores, seção)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="635"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Criar o arquivo da lista de tipos de cabo com a sua linha de cabeçalho</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
@@ -7221,52 +7230,52 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="911"/>
         <source>Cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Textos dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="917"/>
         <source>Designation, type, plant, location, length :</source>
-        <translation type="unfinished"></translation>
+        <translation>Designação, tipo, instalação, localização, comprimento:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="940"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte dos textos escritos ao longo da linha do cabo; um cabo que tem a sua própria a mantém.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="950"/>
         <source>Core colors (all of them) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cores das veias (todas):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="973"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte das cores das veias escritas ao longo da linha; um cabo que tem a sua própria a mantém.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="983"/>
         <source>Text alignment :</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhamento do texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="993"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Onde os textos de um cabo terminam em relação ao início da sua linha; um cabo que tem o seu próprio a mantém.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="997"/>
         <source>Right aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhado à direita</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1002"/>
         <source>Centred</source>
-        <translation type="unfinished"></translation>
+        <translation>Centralizado</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1007"/>
         <source>Left aligned</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhado à esquerda</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
@@ -7365,22 +7374,22 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="60"/>
         <source>Bold italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Negrito itálico</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="62"/>
         <source>Bold</source>
-        <translation type="unfinished">Texto em negrito</translation>
+        <translation>Negrito</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="64"/>
         <source>Italic</source>
-        <translation type="unfinished">Texto em itálico</translation>
+        <translation>Itálico</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="66"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="87"/>
@@ -7428,7 +7437,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="322"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
-        <translation type="unfinished">Não configurado (padrão: %1)</translation>
+        <translation>Não configurado (padrão: %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="571"/>
@@ -7584,12 +7593,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Cable text font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Core colors font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte das cores das veias</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="741"/>
@@ -7720,17 +7729,17 @@ não contém nenhuma subpasta: portanto não há nenhum prefixo a configurar.</t
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
         <source>Select the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione o arquivo de tipos de cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="993"/>
         <source>Create the cable types file</source>
-        <translation type="unfinished"></translation>
+        <translation>Criar o arquivo de tipos de cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
         <source>Cannot be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível criar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1041"/>
@@ -7763,59 +7772,59 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="114"/>
         <source>Left</source>
-        <translation type="unfinished">Esquerda</translation>
+        <translation>Esquerda</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="115"/>
         <source>Right</source>
-        <translation type="unfinished">Direita</translation>
+        <translation>Direita</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="116"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Cima</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="117"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="154"/>
         <source>Cannot read &quot;%1&quot;: use one {n}, {zn} or {a-b} per name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível ler "%1": use um único {n}, {zn} ou {a-b} por nome.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="163"/>
         <source>Cannot read &quot;%1&quot;: z does not go with a range.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível ler "%1": o z não combina com um intervalo.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="176"/>
         <source>&quot;%1&quot; gives no terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>"%1" não gera nenhum terminal.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="181"/>
         <source>&quot;%1&quot; gives %2 terminals; at most %3 at once.</source>
-        <translation type="unfinished"></translation>
+        <translation>"%1" gera %2 terminais; no máximo %3 de uma vez.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="600"/>
         <source>At a pitch of 1 grid square the names of neighbouring terminals overlap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Com um passo de 1 quadrado da grade, os nomes dos terminais vizinhos se sobrepõem.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="605"/>
         <source>Repeated terminal names: %1. Fine if the device really repeats them, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomes de terminais repetidos: %1. Sem problema se o dispositivo realmente os repete, como costumam fazer N ou PE.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevice.cpp" line="608"/>
         <source>%n terminal(s) without a name.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n terminal sem nome.</numerusform>
+            <numerusform>%n terminais sem nome.</numerusform>
         </translation>
     </message>
 </context>
@@ -7824,52 +7833,52 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="645"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informações</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="646"/>
         <source>The name is how the symbol is listed in the project&apos;s collection; the rest can be changed later on the placed device.</source>
-        <translation type="unfinished"></translation>
+        <translation>O nome é como o símbolo aparece na coleção do projeto; o restante pode ser alterado depois no dispositivo posicionado.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="650"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivo genérico</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="652"/>
         <source>e.g. -U1</source>
-        <translation type="unfinished"></translation>
+        <translation>ex.: -U1</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="656"/>
         <source>Show the manufacturer reference in the box</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar a referência do fabricante na caixa</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="659"/>
         <source>Name:</source>
-        <translation type="unfinished">Nome:</translation>
+        <translation>Nome:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="660"/>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="661"/>
         <source>Manufacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabricante:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="662"/>
         <source>Manufacturer reference:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referência do fabricante:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="663"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descrição:</translation>
     </message>
 </context>
 <context>
@@ -7877,79 +7886,79 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="168"/>
         <source>Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Layout</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="171"/>
         <source>How many terminals on each side, 0 for none. They are numbered 1…n; name them on the next page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantos terminais em cada lado, 0 para nenhum. Eles são numerados de 1…n; dê-lhes nomes na próxima página.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="175"/>
         <source>Terminals</source>
-        <translation type="unfinished">Terminais</translation>
+        <translation>Terminais</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="176"/>
         <source>Group every</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrupar a cada</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="184"/>
         <source>no groups</source>
-        <translation type="unfinished"></translation>
+        <translation>sem grupos</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="185"/>
         <source>Leave a gap after every this many terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Deixar um espaço após cada este número de terminais</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="194"/>
         <source>Mark gaps with a divider</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar os espaços com um divisor</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="195"/>
         <source>Line up groups across opposite sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhar os grupos entre lados opostos</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="196"/>
         <source>Adds blank rows to the shorter group, so that the gaps on facing sides fall on the same row</source>
-        <translation type="unfinished"></translation>
+        <translation>Adiciona linhas em branco ao grupo mais curto, para que os espaços dos lados opostos fiquem na mesma linha</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="201"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="204"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="207"/>
         <source> grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation> quadrados da grade</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="210"/>
         <source>Space between terminals:</source>
-        <translation type="unfinished"></translation>
+        <translation>Espaço entre terminais:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="211"/>
         <source>Extra width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Largura extra:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="212"/>
         <source>Extra height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Altura extra:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="283"/>
         <source>Group terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrupar terminais</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="284"/>
         <source>Grouping replaces the gaps you made on the %1 side. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>O agrupamento substitui os espaços que você criou no lado %1. Continuar?</translation>
     </message>
 </context>
 <context>
@@ -7957,130 +7966,130 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="327"/>
         <source>Terminals</source>
-        <translation type="unfinished">Terminais</translation>
+        <translation>Terminais</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="330"/>
         <source>Name the terminals. A side can be typed as one line: In{4} gives In1 to In4, Q{z4} Q0 to Q3, X{3-6} X3 to X6, and an empty entry is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dê nomes aos terminais. Um lado pode ser digitado em uma única linha: In{4} gera In1 a In4, Q{z4} Q0 a Q3, X{3-6} X3 a X6, e uma entrada vazia é um espaço.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="340"/>
         <source>As a line:</source>
-        <translation type="unfinished"></translation>
+        <translation>Em uma linha:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="342"/>
         <source>e.g. L1,L2,L3,,PE</source>
-        <translation type="unfinished"></translation>
+        <translation>ex.: L1,L2,L3,,PE</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Function</source>
-        <translation type="unfinished">Função</translation>
+        <translation>Função</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="364"/>
         <source>Add terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar terminal</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="365"/>
         <source>Add gap</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar espaço</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="366"/>
         <source>Delete</source>
-        <translation type="unfinished">Excluir</translation>
+        <translation>Excluir</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="367"/>
         <source>Up</source>
-        <translation type="unfinished">Em cima</translation>
+        <translation>Subir</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="368"/>
         <source>Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Descer</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="374"/>
         <source>Number pins 1…n</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerar os pinos de 1…n</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="375"/>
         <source>Rename every terminal by its pin number, counter-clockwise from the top of the left side</source>
-        <translation type="unfinished"></translation>
+        <translation>Renomear cada terminal pelo seu número de pino, no sentido anti-horário a partir do topo do lado esquerdo</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="377"/>
         <source>Paste table</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar tabela</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="378"/>
         <source>Rows of side, name, function and type, copied from a spreadsheet or a CSV file. Side is left, right, top, bottom or L, R, T, B; an empty name is a gap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Linhas de lado, nome, função e tipo, copiadas de uma planilha ou de um arquivo CSV. O lado é left, right, top, bottom ou L, R, T, B; um nome vazio é um espaço.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="449"/>
         <source>gap</source>
-        <translation type="unfinished"></translation>
+        <translation>espaço</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="461"/>
         <source>Generic</source>
-        <translation type="unfinished">Genérico</translation>
+        <translation>Genérico</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="462"/>
         <source>Inner</source>
-        <translation type="unfinished"></translation>
+        <translation>Interno</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="463"/>
         <source>Outer</source>
-        <translation type="unfinished"></translation>
+        <translation>Externo</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="498"/>
         <source>This name is used more than once. Fine if the device repeats it, as N or PE often are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este nome é usado mais de uma vez. Sem problema se o dispositivo o repete, como costumam fazer N ou PE.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="513"/>
         <source>A name holds a comma or a brace, which a line cannot say: edit this side in the table.</source>
-        <translation type="unfinished"></translation>
+        <translation>Um nome contém uma vírgula ou uma chave, o que uma linha não consegue expressar: edite este lado na tabela.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="598"/>
         <source>Nothing to paste: copy rows of side, name, function from a spreadsheet or a CSV file first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nada para colar: copie primeiro linhas de lado, nome, função de uma planilha ou de um arquivo CSV.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="609"/>
         <source>Pasted %n row(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n linha colada.</numerusform>
+            <numerusform>%n linhas coladas.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="611"/>
         <source>Pasted %1 rows; skipped these, which could not be read: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 linhas coladas; estas foram ignoradas por não poderem ser lidas: %2</translation>
     </message>
 </context>
 <context>
@@ -8088,13 +8097,13 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="95"/>
         <source>Box: %1 × %2 grid squares</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa: %1 × %2 quadrados da grade</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="723"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="750"/>
         <source>Generic device</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivo genérico</translation>
     </message>
 </context>
 <context>
@@ -8152,73 +8161,73 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="303"/>
         <source>Drag with the right mouse button on a sheet: a ring of commands opens, release towards the one to run. Until you change the ring for a context, it shows the commands of the shortcut bar. Gestures are turned on or off in the General page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Arraste com o botão direito do mouse em uma página: um anel de comandos se abre, solte em direção ao que deseja executar. Enquanto você não alterar o anel de um contexto, ele mostra os comandos da barra de atalhos. Os gestos são ativados ou desativados na página Geral.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="312"/>
         <source>8 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>8 direções</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="313"/>
         <source>4 directions</source>
-        <translation type="unfinished"></translation>
+        <translation>4 direções</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="347"/>
         <source>Place →</source>
-        <translation type="unfinished"></translation>
+        <translation>Atribuir →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="349"/>
         <source>Clear the direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpar a direção</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="350"/>
         <source>Same as the shortcut bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Igual à barra de atalhos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="360"/>
         <source>Available commands</source>
-        <translation type="unfinished">Comandos disponíveis</translation>
+        <translation>Comandos disponíveis</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="361"/>
         <source>Ring, the chosen direction highlighted</source>
-        <translation type="unfinished"></translation>
+        <translation>Anel, com a direção escolhida destacada</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="369"/>
         <source>Directions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Direções:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="372"/>
         <source>Context:</source>
-        <translation type="unfinished">Contexto:</translation>
+        <translation>Contexto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="425"/>
         <source>Mouse gestures</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gestos do mouse</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="470"/>
         <source>(empty direction)</source>
-        <translation type="unfinished"></translation>
+        <translation>(direção vazia)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="473"/>
         <source>Custom ring for this context.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anel personalizado para este contexto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/gesturesconfigpage.cpp" line="474"/>
         <source>This ring follows the shortcut bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este anel segue a barra de atalhos.</translation>
     </message>
 </context>
 <context>
@@ -8445,22 +8454,22 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/imagedrop.cpp" line="72"/>
         <source>not a file</source>
-        <translation type="unfinished"></translation>
+        <translation>não é um arquivo</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="74"/>
         <source>the file is larger than 10 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>o arquivo é maior que 10 MB</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="79"/>
         <source>the image has too many pixels</source>
-        <translation type="unfinished"></translation>
+        <translation>a imagem tem pixels demais</translation>
     </message>
     <message>
         <location filename="../sources/imagedrop.cpp" line="83"/>
         <source>unable to read the image</source>
-        <translation type="unfinished"></translation>
+        <translation>não foi possível ler a imagem</translation>
     </message>
 </context>
 <context>
@@ -8537,12 +8546,12 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="179"/>
         <source>Adapt the picture to the dark theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Adaptar a imagem ao tema escuro</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="182"/>
         <source>Adapts the colors for the dark display only. The original picture, exports and printouts stay unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Adapta as cores somente para a exibição escura. A imagem original, as exportações e as impressões permanecem inalteradas.</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="223"/>
@@ -8573,7 +8582,7 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="246"/>
         <source>Change a picture&apos;s dark theme adaptation</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a adaptação de uma imagem ao tema escuro</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="300"/>
@@ -8759,7 +8768,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="226"/>
         <source>Change the width of a text field</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a largura de um campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="266"/>
@@ -8779,7 +8788,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="311"/>
         <source>Change the width of several text fields</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a largura de vários campos de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="323"/>
@@ -8804,7 +8813,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="85"/>
         <source>An error occurred with the template %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocorreu um erro com o modelo %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="88"/>
@@ -9153,12 +9162,12 @@ Esta configuração fica em Configurar QElectroTech &gt; Geral &gt; Projetos.</t
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="210"/>
         <source>Don&apos;t ask again at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Não perguntar novamente ao iniciar</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="211"/>
         <source>Live mode will open at every start. To be warned again, turn it off and back on in Configure QElectroTech &gt; General &gt; Projects.</source>
-        <translation type="unfinished"></translation>
+        <translation>O modo ao vivo será aberto a cada inicialização. Para ser avisado novamente, desative-o e ative-o de novo em Configurar o QElectroTech &gt; Geral &gt; Projetos.</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="500"/>
@@ -9169,25 +9178,25 @@ Esta configuração fica em Configurar QElectroTech &gt; Geral &gt; Projetos.</t
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="850"/>
         <source>Print</source>
-        <translation type="unfinished">Imprimir</translation>
+        <translation>Imprimir</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/scripting/liveserver.cpp" line="851"/>
         <source>The assistant wants to print %n folios of “%1” on “%2”.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>O assistente deseja imprimir %n página de “%1” em “%2”.</numerusform>
+            <numerusform>O assistente deseja imprimir %n páginas de “%1” em “%2”.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="854"/>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Imprimir</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="855"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancelar</translation>
+        <translation>&amp;Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="944"/>
@@ -9218,7 +9227,7 @@ Esta configuração fica em Configurar QElectroTech &gt; Geral &gt; Projetos.</t
     <message>
         <location filename="../sources/scripting/liveserver.cpp" line="1038"/>
         <source>&amp;Always</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sempre</translation>
     </message>
 </context>
 <context>
@@ -9569,7 +9578,7 @@ Deseja vincular este contato escravo mesmo assim?</translation>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="116"/>
         <source>Move a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover um cabo</translation>
     </message>
 </context>
 <context>
@@ -9722,7 +9731,7 @@ Deseja vincular este contato escravo mesmo assim?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="179"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="181"/>
@@ -10043,7 +10052,7 @@ Deseja vincular este contato escravo mesmo assim?</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="671"/>
         <source>Change a PLC table</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar uma tabela de CLP</translation>
     </message>
 </context>
 <context>
@@ -10079,7 +10088,7 @@ Deseja vincular este contato escravo mesmo assim?</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="519"/>
         <source>Change a rectangle</source>
-        <translation type="unfinished">Editar um retângulo</translation>
+        <translation>Alterar um retângulo</translation>
     </message>
 </context>
 <context>
@@ -10594,7 +10603,7 @@ Sua cópia foi mantida em:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="574"/>
         <source>Cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="578"/>
@@ -10982,13 +10991,13 @@ Dê a elas outra numeração primeiro.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="261"/>
         <source>Keep the texts of rotated elements horizontal</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Manter na horizontal os textos dos elementos girados</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="263"/>
         <source>Texts drawn in an element and the names of its terminals stay readable when the element is rotated: their frame turns with the element, not the text. Uncheck to make them turn with the element, as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Os textos desenhados em um elemento e os nomes dos seus terminais permanecem legíveis quando o elemento é girado: é o quadro deles que gira com o elemento, não o texto. Desmarque para fazê-los girar com o elemento, como antes.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="269"/>
@@ -11536,59 +11545,61 @@ Deseja continuar?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="2399"/>
         <source>Toolbars, keyboard shortcuts, mouse and trackpad gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Barras de ferramentas, atalhos de teclado, gestos do mouse e do trackpad</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2401"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Padrões para novos projetos: página, carimbo, condutores, numeração</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2404"/>
         <source>All other settings: appearance, grid, language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Todas as outras configurações: aparência, grade, idioma...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2406"/>
         <source>Folders of the collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Pastas das coleções</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2423"/>
         <source>Settings to save:</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurações a salvar:</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2433"/>
         <source>The folders of your collections are saved only when every part is ticked.</source>
-        <translation type="unfinished"></translation>
+        <translation>As pastas das suas coleções só são salvas quando todas as partes estão marcadas.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2572"/>
         <source>These settings will replace your current ones for:
 %1
 All your other settings are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Estas configurações substituirão as atuais para:
+%1
+Todas as suas outras configurações serão mantidas.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2578"/>
         <source>QElectroTech will then close. Start it again to use the new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>O QElectroTech será então fechado. Inicie-o novamente para usar as novas configurações.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2580"/>
         <source>Projects already open keep their own defaults.</source>
-        <translation type="unfinished"></translation>
+        <translation>Os projetos já abertos mantêm os seus próprios padrões.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2581"/>
         <source>Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deseja continuar?</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2602"/>
         <source>The settings are loaded. They are used for the next new project.</source>
-        <translation type="unfinished"></translation>
+        <translation>As configurações foram carregadas. Elas serão usadas no próximo novo projeto.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2765"/>
@@ -12105,7 +12116,7 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="411"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3198"/>
         <source>Paste element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar as informações do elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="423"/>
@@ -12117,7 +12128,7 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="424"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Copia as informações preenchidas do elemento na área de transferência para os elementos selecionados</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
@@ -12263,12 +12274,12 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="754"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar uma lista de cabos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="762"/>
         <source>Export the cable list to CSV format</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar a lista de cabos em formato CSV</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="775"/>
@@ -12293,12 +12304,12 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="816"/>
         <source>Cable numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeração dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="818"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra a regra de numeração dos cabos do projeto e renumera os seus cabos com ela</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
@@ -12497,12 +12508,12 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1030"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished">Espelhar horizontalmente</translation>
+        <translation>Espelhar horizontalmente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1031"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished">Espelhar verticalmente</translation>
+        <translation>Espelhar verticalmente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1032"/>
@@ -12609,13 +12620,13 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
         <location filename="../sources/qetdiagrameditor.cpp" line="1138"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Inverte os elementos selecionados da esquerda para a direita</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1139"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Inverte os elementos selecionados de cima para baixo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1140"/>
@@ -12881,12 +12892,12 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1280"/>
         <source>Add a generic device…</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar um dispositivo genérico…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1283"/>
         <source>Draw a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenhar um cabo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1293"/>
@@ -12901,12 +12912,12 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1298"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Cria um símbolo em caixa com terminais em qualquer lado e o posiciona na página atual</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1299"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenha a linha principal de um cabo: cada condutor atravessado se torna uma das suas veias</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1415"/>
@@ -12917,22 +12928,22 @@ Mantenha Ctrl pressionado durante o movimento para posicionar livremente.</trans
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1488"/>
         <source>Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeração</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1489"/>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleção</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1585"/>
         <source>Depth</source>
-        <translation type="unfinished">Profundidade</translation>
+        <translation>Profundidade</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1613"/>
@@ -12970,13 +12981,13 @@ Se você salvar o projeto, estes condutores desaparecerão do arquivo. Feche-o s
         <location filename="../sources/qetdiagrameditor.cpp" line="2353"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
-        <translation type="unfinished">Numeração automática</translation>
+        <translation>Numeração automática</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2354"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nenhuma numeração automática de cabos está definida.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2358"/>
@@ -12984,25 +12995,27 @@ Se você salvar o projeto, estes condutores desaparecerão do arquivo. Feche-o s
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
         <comment>ask whether a cable numbering rule should be defined now</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deseja definir uma agora?
+
+Você também pode numerar os cabos automaticamente mais tarde: a regra pode ser definida a qualquer momento nas propriedades do projeto, na página "Autonumeração".</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
         <source>Yes</source>
         <comment>yes</comment>
-        <translation type="unfinished">Sim</translation>
+        <translation>Sim</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2365"/>
         <source>No</source>
         <comment>no</comment>
-        <translation type="unfinished">Não</translation>
+        <translation>Não</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2366"/>
         <source>Cancel</source>
         <comment>cancel</comment>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="2686"/>
@@ -13026,7 +13039,7 @@ You can also number the cables automatically later: the rule is set at any time 
         <location filename="../sources/qetdiagrameditor.cpp" line="2977"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar o cabo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="3991"/>
@@ -13094,7 +13107,7 @@ Ativar os scripts? Esta configuração pode ser alterada em Configurar o QElectr
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4573"/>
         <source>Remembered after a restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Lembrado após uma reinicialização</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="4352"/>
@@ -14250,7 +14263,7 @@ Remova as pontes e/ou exclua os níveis dos terminais envolvidos para poder excl
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1155"/>
         <source>Scale the element...</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensionar o elemento...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1193"/>
@@ -14529,13 +14542,13 @@ as condições não são válidas</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="96"/>
         <source>&amp;Customize...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Personalizar...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="98"/>
         <source>Toolbars, shortcut bar, keyboard and mouse gestures, in one window</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Barras de ferramentas, barra de atalhos, teclado e gestos do mouse, em uma única janela</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="106"/>
@@ -15357,7 +15370,7 @@ O que você deseja fazer?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="801"/>
         <source>scale the element</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>redimensionar o elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -16528,12 +16541,12 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="88"/>
         <source>Add a cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar uma lista de cabos</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="89"/>
         <source>Cable list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de cabos</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="62"/>
@@ -16619,31 +16632,31 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="901"/>
         <source>Anti-parallel diodes</source>
         <comment>anti-parallel diodes terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Diodos antiparalelos</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="903"/>
         <source>Resistor</source>
         <comment>resistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Resistor</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="905"/>
         <source>Varistor</source>
         <comment>varistor terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="907"/>
         <source>Test socket</source>
         <comment>test socket terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tomada de teste</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="909"/>
         <source>Diode (reversed)</source>
         <comment>reversed diode terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Diodo (invertido)</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="946"/>
@@ -17193,28 +17206,28 @@ Para ativá-la: Configurar o QElectroTech &gt; Geral &gt; Projetos, ou defina a 
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="37"/>
         <source>Group a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrupar um conjunto de terminais</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="59"/>
         <source>Ungroup a set of terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Desagrupar um conjunto de terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="49"/>
         <source>(No action)</source>
         <comment>spacemouse config: unbound button</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Nenhuma ação)</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="58"/>
         <source>Horizontal mirror</source>
-        <translation type="unfinished">Espelhar horizontalmente</translation>
+        <translation>Espelhar horizontalmente</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/mirrorselectioncommand.cpp" line="59"/>
         <source>Vertical mirror</source>
-        <translation type="unfinished">Espelhar verticalmente</translation>
+        <translation>Espelhar verticalmente</translation>
     </message>
 </context>
 <context>
@@ -17722,7 +17735,7 @@ nada foi modificado.</translation>
     <message>
         <location filename="../sources/cable/editcablecommand.cpp" line="369"/>
         <source>Delete a cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Excluir um cabo</translation>
     </message>
 </context>
 <context>
@@ -17768,9 +17781,9 @@ nada foi modificado.</translation>
     <message numerus="yes">
         <location filename="../sources/cable/editcablecommand.cpp" line="216"/>
         <source>Renumber %n cable(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Renumerar %n cabo</numerusform>
+            <numerusform>Renumerar %n cabos</numerusform>
         </translation>
     </message>
 </context>
@@ -18283,38 +18296,38 @@ Crie seu próprio texto usando as seguintes variáveis:
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="40"/>
         <source>Scale the element</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensionar o elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="55"/>
         <source>Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fator:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="57"/>
         <source>Also scale the texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensionar também os textos</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="64"/>
         <source>%n terminals of this element are not on the grid, and no factor brings them there.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n terminal deste elemento não está na grade, e nenhum fator o leva até lá.</numerusform>
+            <numerusform>%n terminais deste elemento não estão na grade, e nenhum fator os leva até lá.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="67"/>
         <source>%n terminals of this element are not on the grid. Only the factors that bring them there are offered.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n terminal deste elemento não está na grade. Somente os fatores que o levam até lá são oferecidos.</numerusform>
+            <numerusform>%n terminais deste elemento não estão na grade. Somente os fatores que os levam até lá são oferecidos.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/scaleelementdialog.cpp" line="70"/>
         <source>Only the factors that keep the terminals on the grid are offered. The element is scaled around its grab point.</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente os fatores que mantêm os terminais na grade são oferecidos. O elemento é redimensionado em torno do seu ponto de captura.</translation>
     </message>
 </context>
 <context>
@@ -18806,12 +18819,12 @@ qet.addText(f, &quot;Texto&quot;, 40, 40);
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="341"/>
         <source>Delete the rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Excluir a regra</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="342"/>
         <source>Delete the cable numbering rule: cables are numbered again as before, and the question of defining one comes back on the next drawing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exclui a regra de numeração dos cabos: os cabos voltam a ser numerados como antes, e a pergunta sobre definir uma regra volta no próximo desenho.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="408"/>
@@ -18889,7 +18902,7 @@ Os outros campos não são utilizados.</translation>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="460"/>
         <source>Cable Auto Numbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumeração dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="462"/>
@@ -18911,7 +18924,23 @@ The other fields are not used.
 -The &quot;Sheet&quot; type represents the name of the current sheet.
 The other fields are not used.</source>
         <comment>help dialog about the cable autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>É aqui que você pode definir como os novos cabos serão numerados.
+-Uma numeração é composta por no mínimo uma variável.
+-Você pode adicionar ou excluir uma variável de numeração com os botões - e +.
+-Uma variável de numeração inclui: um tipo, um valor e um incremento.
+
+-Os tipos "Dígito 1", "Dígito 01" e "Dígito 001" representam um tipo numérico definido no campo "Valor", que é incrementado a cada novo cabo pelo valor do campo "Incremento".
+-"Dígito 01" e "Dígito 001" são representados no esquema por, respectivamente, no mínimo dois e três dígitos.
+Se o dígito definido no campo Valor tiver menos dígitos que o tipo escolhido, ele será precedido por um ou dois 0 para respeitar o seu tipo.
+
+-O tipo "Texto" representa um texto fixo.
+O campo "Incremento" não é utilizado.
+
+-O tipo "N° da página" representa o número da página atual.
+Os outros campos não são utilizados.
+
+-O tipo "Página" representa o nome da página atual.
+Os outros campos não são utilizados.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="486"/>
@@ -19319,22 +19348,22 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="99"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Todas as categorias</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="117"/>
         <source>Press a key combination to see which command uses it</source>
-        <translation type="unfinished"></translation>
+        <translation>Pressione uma combinação de teclas para ver qual comando a utiliza</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="125"/>
         <source>Clear the searched key</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpar a tecla pesquisada</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="130"/>
         <source>Search by key:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar por tecla:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
@@ -19352,7 +19381,7 @@ Os outros campos não são usados.</translation>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="137"/>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="146"/>
@@ -19362,12 +19391,12 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="149"/>
         <source>Copy list</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar a lista</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="150"/>
         <source>Copies the shortcuts shown, to paste into a spreadsheet or a document</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia os atalhos exibidos, para colar em uma planilha ou em um documento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="217"/>
@@ -19390,7 +19419,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="490"/>
         <source>Category</source>
-        <translation type="unfinished">Categoria</translation>
+        <translation>Categoria</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="514"/>
@@ -19405,93 +19434,93 @@ Os outros campos não são usados.</translation>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="71"/>
         <source>Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a QElectroTech action. The button number depends on your device and its driver -- see its documentation, or try the values one by one starting from 0.</source>
         <comment>spacemouse config page intro</comment>
-        <translation type="unfinished"></translation>
+        <translation>Associe um número de botão do seu mouse 3D (SpaceMouse, SpacePilot...) a uma ação do QElectroTech. O número do botão depende do seu dispositivo e do seu driver -- consulte a documentação dele, ou experimente os valores um a um a partir de 0.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Button no.</source>
-        <translation type="unfinished"></translation>
+        <translation>Botão n.º</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Action</source>
-        <translation type="unfinished">Ação</translation>
+        <translation>Ação</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="90"/>
         <source>Add a link</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar uma associação</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="98"/>
         <source>Buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Botões</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="134"/>
         <source>Small movements below this threshold are ignored. Raise it if the view drifts when you are not touching the mouse.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pequenos movimentos abaixo deste limite são ignorados. Aumente-o se a vista se deslocar quando você não estiver tocando no mouse.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="138"/>
         <source>Push / pull the cap</source>
-        <translation type="unfinished"></translation>
+        <translation>Empurrar / puxar a tampa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="140"/>
         <source>Twist the cap</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar a tampa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="145"/>
         <source>Reverse horizontal movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverter o movimento horizontal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="147"/>
         <source>Reverse vertical movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverter o movimento vertical</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="149"/>
         <source>Reverse zoom</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverter o zoom</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="153"/>
         <source>Pan speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocidade de deslocamento:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="154"/>
         <source>Zoom speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocidade do zoom:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="155"/>
         <source>Zoom by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom de:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="156"/>
         <source>Dead zone:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zona morta:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="161"/>
         <source>Movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Movimento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="219"/>
         <source>Remove this link</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover esta associação</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="295"/>
         <source>3D mouse</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mouse 3D</translation>
     </message>
 </context>
 <context>
@@ -21606,7 +21635,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="279"/>
         <source>Change the potential of a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o potencial de um terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="298"/>
@@ -21705,12 +21734,12 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
         <source>Potential:</source>
-        <translation type="unfinished"></translation>
+        <translation>Potencial:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="91"/>
         <source>No effect unless &quot;Potential isolation&quot; is checked (all terminals of the block then stay connected). When it is checked, terminals sharing the same value stay connected to each other and the others are isolated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sem efeito, a menos que "Isolamento de potencial" esteja marcado (todos os terminais do bloco permanecem então conectados). Quando está marcado, os terminais que compartilham o mesmo valor permanecem conectados entre si e os outros ficam isolados.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="98"/>
@@ -21970,47 +21999,47 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Anti-parallel diodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodos antiparalelos</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="137"/>
         <source>Resistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Resistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Varistor</source>
-        <translation type="unfinished"></translation>
+        <translation>Varistor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="147"/>
         <source>Test socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Tomada de teste</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="152"/>
         <source>Diode (reversed)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodo (invertido)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="170"/>
         <source>Cable :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabo:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="180"/>
         <source>Name of the cable of the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome do cabo dos terminais selecionados</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
         <source>Set the cable name to all the selected terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Define o nome do cabo para todos os terminais selecionados</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="190"/>
         <source>Apply the cable to the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar o cabo à seleção</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="227"/>
@@ -22209,42 +22238,42 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="465"/>
         <source>Symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Símbolo</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="482"/>
         <source>Height of the terminal type symbol (fuse, ground, led...). 0 disable the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Altura do símbolo do tipo de terminal (fusível, terra, led...). 0 desativa o símbolo.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="492"/>
         <source>Connection length</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento da conexão</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="499"/>
         <source>Length of the connections drawn above and under each terminal. 0 disable the connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento das conexões desenhadas acima e abaixo de cada terminal. 0 desativa as conexões.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="509"/>
         <source>Cable: wires / cable / end</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabo: fios / cabo / fim</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="516"/>
         <source>Length of the wires between the terminals and the cable. 0 disable the drawing of the cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento dos fios entre os terminais e o cabo. 0 desativa o desenho dos cabos.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="526"/>
         <source>Length of the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento do cabo.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="536"/>
         <source>Length of the wires after the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento dos fios após o cabo.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="605"/>
@@ -22362,7 +22391,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="328"/>
         <source>Shield</source>
-        <translation type="unfinished"></translation>
+        <translation>Blindagem</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="321"/>
@@ -22486,7 +22515,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="235"/>
         <source>Resize a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensionar um texto</translation>
     </message>
 </context>
 <context>
@@ -22494,7 +22523,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/QetGraphicsItemModeler/textresizehandles.cpp" line="48"/>
         <source>Drag to change the text width, double-click for automatic width</source>
-        <translation type="unfinished"></translation>
+        <translation>Arraste para alterar a largura do texto, clique duas vezes para largura automática</translation>
     </message>
 </context>
 <context>
@@ -23250,99 +23279,99 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="51"/>
         <source>Choose the commands of each toolbar of the diagram editor. Drag a command from the list on the left to the bar, or double-click it; Delete removes it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha os comandos de cada barra de ferramentas do editor de esquemas. Arraste um comando da lista à esquerda para a barra, ou clique duas vezes nele; Delete o remove.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="58"/>
         <source>New bar…</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova barra…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="60"/>
         <source>Rename…</source>
-        <translation type="unfinished"></translation>
+        <translation>Renomear…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="61"/>
         <source>Delete the bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Excluir a barra</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="63"/>
         <source>Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Padrões</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="67"/>
         <source>Search for a command</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar um comando</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="83"/>
         <source>Add →</source>
-        <translation type="unfinished">Adicionar →</translation>
+        <translation>Adicionar →</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="84"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Separador</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="86"/>
         <source>← Remove</source>
-        <translation type="unfinished">← Remover</translation>
+        <translation>← Remover</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="87"/>
         <source>Move up</source>
-        <translation type="unfinished">Subir</translation>
+        <translation>Subir</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="88"/>
         <source>Move down</source>
-        <translation type="unfinished">Descer</translation>
+        <translation>Descer</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="101"/>
         <source>Available commands</source>
-        <translation type="unfinished">Comandos disponíveis</translation>
+        <translation>Comandos disponíveis</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="102"/>
         <source>In the bar, in order</source>
-        <translation type="unfinished">Na barra, em ordem</translation>
+        <translation>Na barra, em ordem</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="109"/>
         <source>Toolbar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Barra de ferramentas:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="173"/>
         <source>Toolbar contents</source>
         <comment>configuration page title: what each toolbar holds</comment>
-        <translation type="unfinished"></translation>
+        <translation>Conteúdo das barras de ferramentas</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="351"/>
         <source>New toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="352"/>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="373"/>
         <source>Toolbar name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome da barra de ferramentas:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="372"/>
         <source>Rename the toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Renomear a barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarcommandsconfigpage.cpp" line="411"/>
         <source>─── Separator ───</source>
-        <translation type="unfinished"></translation>
+        <translation>─── Separador ───</translation>
     </message>
 </context>
 <context>
@@ -23350,68 +23379,68 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="41"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Padrão</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="42"/>
         <source>Small (16 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pequeno (16 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="43"/>
         <source>Medium (24 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Médio (24 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="44"/>
         <source>Large (32 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Grande (32 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="45"/>
         <source>Very large (48 px)</source>
-        <translation type="unfinished"></translation>
+        <translation>Muito grande (48 px)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="51"/>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente ícone</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="52"/>
         <source>Text beside the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto ao lado do ícone</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="53"/>
         <source>Text under the icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto sob o ícone</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="56"/>
         <source>Lock the toolbars (they can no longer be moved)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloquear as barras de ferramentas (elas não poderão mais ser movidas)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="61"/>
         <source>Icon size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho dos ícones:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="62"/>
         <source>Buttons:</source>
-        <translation type="unfinished"></translation>
+        <translation>Botões:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="66"/>
         <source>To show or hide a toolbar, right-click on a toolbar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Para mostrar ou ocultar uma barra de ferramentas, clique com o botão direito em uma barra de ferramentas.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/toolbarsconfigpage.cpp" line="82"/>
         <source>Toolbars</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Barras de ferramentas</translation>
     </message>
 </context>
 <context>
@@ -23635,12 +23664,12 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="96"/>
         <source>When the texts of two cross-references overlap, the one of the higher element is placed above the other.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quando os textos de duas referências cruzadas se sobrepõem, a do elemento mais alto é colocada acima da outra.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
         <source>Stack references whose texts overlap</source>
-        <translation type="unfinished"></translation>
+        <translation>Empilhar as referências cujos textos se sobrepõem</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
@@ -23700,12 +23729,12 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="237"/>
         <source>Choose the font and size of the cable cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha a fonte e o tamanho do texto da referência cruzada de cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>Font…</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte…</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="263"/>
@@ -23782,7 +23811,7 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="145"/>
         <source>Cable</source>
-        <translation type="unfinished">Cabo</translation>
+        <translation>Cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="147"/>
@@ -23827,23 +23856,23 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="296"/>
         <source>Text:</source>
-        <translation type="unfinished">Texto:</translation>
+        <translation>Texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="304"/>
         <source>Font and size: those of the cable texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte e tamanho: os dos textos dos cabos</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="310"/>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="373"/>
         <source>Font and size: %1, %2 pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte e tamanho: %1, %2 pt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="369"/>
         <source>Font of the cross-reference text</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto da referência cruzada</translation>
     </message>
 </context>
 <context>
