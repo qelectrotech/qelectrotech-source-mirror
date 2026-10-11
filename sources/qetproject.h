@@ -140,6 +140,7 @@ class QETProject : public QObject
 			/// While saving: the symbols on folios not built a built symbol
 			/// may be saved linked to (Element::toXml())
 		QSet<QUuid> waitingLinkTargets() const {return m_waiting_link_targets;}
+		QDomDocument folioXml(Diagram *folio);
 		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
 		void loadFolios() const;
 		void buildFolios(const QList<Diagram *> &folios) const;

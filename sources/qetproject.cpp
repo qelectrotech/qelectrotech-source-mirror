@@ -2979,6 +2979,20 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 }
 
 /**
+	@brief QETProject::folioXml
+	@return the built folio @p folio written as saving writes it: its
+	symbols keep the links to partners on folios not built yet
+	(QET_LAZY_FOLIOS), which Diagram::toXml() alone leaves out
+*/
+QDomDocument QETProject::folioXml(Diagram *folio)
+{
+	m_waiting_link_targets = unloadedFolioCount() ? symbolsOnUnbuiltFolios() : QSet<QUuid>();
+	const QDomDocument xml = folio->toXml();
+	m_waiting_link_targets.clear();
+	return xml;
+}
+
+/**
 	@brief QETProject::buildFoliosHoldingTables
 	Build the folios not built yet (QET_LAZY_FOLIOS) that hold a drawn
 	table, found from the index the project was opened from when it has

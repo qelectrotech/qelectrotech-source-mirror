@@ -385,8 +385,16 @@ int main(int argc, char **argv)
 			QETProject exported(path);
 			check(ConductorNumExport(&exported).wiresNum() == ConductorNumExport(&eager).wiresNum(),
 				  "wire numbers of a .qet exported as when built");
+			const QString wiring = WiringListExport(&exported).toCsvString(), usual_wiring = WiringListExport(&eager).toCsvString();
+			if (wiring != usual_wiring) {
+				const QStringList a = wiring.split('\n'), b = usual_wiring.split('\n');
+				for (const QString &line : b) if (!a.contains(line)) std::printf("  wiring when built: %s\n", qPrintable(line));
+				for (const QString &line : a) if (!b.contains(line)) std::printf("  wiring lazily:     %s\n", qPrintable(line));
+				std::printf("  %d lines lazily, %d when built\n", int(a.size()), int(b.size()));
+			}
+			check(wiring == usual_wiring, "wiring list of a .qet exported as when built");
 			check(exported.unloadedFolioCount() == folios.size() - strip_folios.size(),
-				  "exporting a .qet's wire numbers builds no folio");
+				  "exporting a .qet's wire numbers and wiring list builds no folio");
 		}
 			//A symbol placed on a folio, numbered by a scheme others follow
 		QString location, title;
@@ -707,13 +715,6 @@ int main(int argc, char **argv)
 				++continued;
 			}
 			check(continued > 0, "a folio whose table continues another");
-			{
-					//The wiring list export writes the whole project out
-					//(toXml()), building every folio: as when built
-				QETProject exported(zipped);
-				check(WiringListExport(&exported).toCsvString() == WiringListExport(&eager).toCsvString(),
-					  "wiring list exported as when built");
-			}
 
 				//Numbering, the searches for symbols and the unused symbols
 				//are answered from the database: no folio file is read
@@ -799,7 +800,7 @@ int main(int argc, char **argv)
 				check(listed.unloadedFolioCount() > 0, "listing the tables does not build every folio");
 			}
 
-				//The wire numbers export and the terminal
+				//The wire numbers and wiring list exports, and the terminal
 				//numbering dialog: as when built, building only the folios
 				//holding a terminal (D5)
 			{
@@ -807,7 +808,14 @@ int main(int argc, char **argv)
 				const int unbuilt = exported.unloadedFolioCount();
 				check(ConductorNumExport(&exported).wiresNum() == ConductorNumExport(&eager).wiresNum(),
 					  "wire numbers exported as when built");
-				check(exported.unloadedFolioCount() == unbuilt, "exporting wire numbers builds no folio");
+				const QString wiring = WiringListExport(&exported).toCsvString(), usual_wiring = WiringListExport(&eager).toCsvString();
+				if (wiring != usual_wiring) {
+					const QStringList a = wiring.split('\n'), b = usual_wiring.split('\n');
+					for (const QString &line : b) if (!a.contains(line)) std::printf("  wiring when built: %s\n", qPrintable(line));
+					for (const QString &line : a) if (!b.contains(line)) std::printf("  wiring lazily:     %s\n", qPrintable(line));
+				}
+				check(wiring == usual_wiring, "wiring list exported as when built");
+				check(exported.unloadedFolioCount() == unbuilt, "exporting wire numbers and the wiring list builds no folio");
 				{ TerminalNumberingDialog dialog(nullptr, &exported); }
 				int with_terminals = 0;
 				for (Diagram *folio : folios)

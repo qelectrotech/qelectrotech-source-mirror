@@ -229,6 +229,8 @@ class Diagram : public QGraphicsScene
 			/// Symbols built as partners (buildSymbols()) changed since:
 			/// the folio must be built to be saved
 		bool partialChanged() const {return m_partial_changed;}
+			/// The symbols built as partners (buildSymbols()), by uuid
+		QHash<QUuid, Element *> partialElements() const {return m_partial_elements;}
 		QString headerXml();
 			/// The folio's text in the file it was read from, while it is
 			/// not built (QETProject::toXml())

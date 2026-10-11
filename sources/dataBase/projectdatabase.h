@@ -195,6 +195,8 @@ class projectDataBase : public QObject
 			/// symbols at its ends (ElementData::typeToString())
 		struct FolioWire { QString text; QString kind1; QString kind2; };
 		QList<FolioWire> wiresOnFolios(const QList<QUuid> &folios) const;
+		QString elementLabel(const QUuid &element) const;
+		QString terminalName(const QUuid &terminal, const QUuid &element) const;
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
