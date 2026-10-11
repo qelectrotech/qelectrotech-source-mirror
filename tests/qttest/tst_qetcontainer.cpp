@@ -69,6 +69,18 @@ class tst_qetcontainer : public QObject
 		return QetContainer::split(*original, QStringLiteral("tst_qetcontainer"), &error);
 	}
 
+		//@p document without what QElectroTech computes, which a .qetz
+		//does not keep (format 3); tst_resaveunchanged checks that
+		//QElectroTech gives it back
+	static QDomDocument withoutComputed(const QDomDocument &document)
+	{
+		QDomDocument copy = document.cloneNode(true).toDocument();
+		for (QDomElement diagram = copy.documentElement().firstChildElement(QStringLiteral("diagram"));
+			 !diagram.isNull() ; diagram = diagram.nextSiblingElement(QStringLiteral("diagram")))
+			QetContainer::dropComputed(diagram, false);
+		return copy;
+	}
+
 private slots:
 	void sameDocumentBack_data()
 	{
@@ -100,7 +112,8 @@ private slots:
 		QVERIFY2(QetZip::fromBytes(QetZip::toBytes(entries, &error), &unzipped, &error), qPrintable(error));
 		QDomDocument back;
 		QVERIFY2(QetContainer::join(unzipped, &back, &error), qPrintable(error));
-		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		const QString d = difference(withoutComputed(original).documentElement(),
+									 back.documentElement(), QString());
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
@@ -136,7 +149,9 @@ private slots:
 
 	// The engineering data is in project.sqlite and nowhere else: the folio
 	// files hold no symbol information, links, wire numbers or title-block
-	// fields, and the database holds them all (industrial.qet: 50 folios).
+	// fields, nor what QElectroTech computes from them (a wire's
+	// description of its ends, a symbol text showing its information), and
+	// the database holds them all (industrial.qet: 50 folios).
 	void databaseHoldsTheData()
 	{
 		QDomDocument original;
@@ -181,6 +196,37 @@ private slots:
 		sqlite3_close(db);
 	}
 
+	// Nor does a folio file hold what QElectroTech computes (format 3): a
+	// wire's description of its ends, a symbol text showing its information.
+	// A file holding both, so that the check can fail.
+	void computedNotKept()
+	{
+		QDomDocument original;
+		QString error;
+		QVERIFY(QetContainer::parse(read(QStringLiteral(QET_EXAMPLES_DIR "/schema_unifilaire_voltaique2.qet")),
+									&original, &error));
+		const QDomNodeList texts = original.elementsByTagName(QStringLiteral("dynamic_elmt_text"));
+		bool filled = false;
+		for (int i = 0 ; i < texts.size() && !filled ; ++i) {
+			QDomElement text = texts.at(i).toElement();
+			if (text.attribute(QStringLiteral("text_from")) != QLatin1String("ElementInfo")) continue;
+			QDomElement content = text.firstChildElement(QStringLiteral("text"));
+			while (content.hasChildNodes()) content.removeChild(content.firstChild());
+			content.appendChild(original.createTextNode(QStringLiteral("COMPUTED-LABEL")));
+			filled = true;
+		}
+		QVERIFY(filled);
+		QVERIFY(original.toString().contains(QStringLiteral("element1_label=")));
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		for (const QetZip::Entry &e : entries) {
+			if (!e.name.startsWith(QStringLiteral("folios/"))) continue;
+			QVERIFY2(!e.data.contains("element1_label=") && !e.data.contains("terminalname2="),
+					 qPrintable(e.name));
+			QVERIFY2(!e.data.contains("COMPUTED-LABEL"), qPrintable(e.name));
+		}
+	}
+
 	// Terminal strips move into the database, and come back exactly:
 	// industrial.qet with two strips on its own terminal symbols, parsed as
 	// a save leaves it (no whitespace text).
@@ -217,7 +263,8 @@ private slots:
 				QVERIFY2(!e.data.contains("<terminal_strip>"), "the strips stayed in project.xml");
 		QDomDocument back;
 		QVERIFY2(QetContainer::join(entries, &back, &error), qPrintable(error));
-		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		const QString d = difference(withoutComputed(original).documentElement(),
+									 back.documentElement(), QString());
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
