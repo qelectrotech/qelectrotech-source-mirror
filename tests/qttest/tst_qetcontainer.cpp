@@ -170,14 +170,14 @@ private slots:
 			return n;
 		};
 		const QDomNodeList diagrams = original.elementsByTagName(QStringLiteral("diagram"));
-		QCOMPARE(count("folio"), int(diagrams.size()));
-		QCOMPARE(count("element"), int(original.elementsByTagName(QStringLiteral("element")).size())
+		QCOMPARE(count("doc_folio"), int(diagrams.size()));
+		QCOMPARE(count("doc_element"), int(original.elementsByTagName(QStringLiteral("element")).size())
 				 - int(original.elementsByTagName(QStringLiteral("collection")).at(0).toElement()
 					   .elementsByTagName(QStringLiteral("element")).size()));
-		QCOMPARE(count("element_info"), int(original.elementsByTagName(QStringLiteral("elementInformation")).size()));
-		QCOMPARE(count("link"), int(original.elementsByTagName(QStringLiteral("link_uuid")).size()));
-		QCOMPARE(count("conductor"), int(original.elementsByTagName(QStringLiteral("conductor")).size()));
-		QVERIFY(count("folio_property") + count("project_property") > 0);
+		QCOMPARE(count("doc_element_info"), int(original.elementsByTagName(QStringLiteral("elementInformation")).size()));
+		QCOMPARE(count("doc_link"), int(original.elementsByTagName(QStringLiteral("link_uuid")).size()));
+		QCOMPARE(count("doc_conductor"), int(original.elementsByTagName(QStringLiteral("conductor")).size()));
+		QVERIFY(count("doc_folio_property") + count("doc_project_property") > 0);
 		sqlite3_close(db);
 	}
 
@@ -285,8 +285,8 @@ private slots:
 			memcpy(copy, e.data.constData(), size_t(e.data.size()));
 			sqlite3_deserialize(db, "main", copy, e.data.size(), e.data.size(),
 								SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE);
-			QCOMPARE(sqlite3_exec(db, "ALTER TABLE element RENAME TO element_data;"
-									  "CREATE VIEW element AS SELECT * FROM element_data;",
+			QCOMPARE(sqlite3_exec(db, "ALTER TABLE doc_element RENAME TO element_data;"
+									  "CREATE VIEW doc_element AS SELECT * FROM element_data;",
 								  nullptr, nullptr, nullptr), SQLITE_OK);
 			sqlite3_int64 size = 0;
 			unsigned char *bytes = sqlite3_serialize(db, "main", &size, 0);

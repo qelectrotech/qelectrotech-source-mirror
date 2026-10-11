@@ -47,11 +47,12 @@ namespace QetContainer
 	extern const char MimeType[];
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 2;
+	constexpr int Format = 3;
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
-							   QString *error = nullptr);
+							   QString *error = nullptr,
+							   const QByteArray &index = QByteArray());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
 			  QString *error = nullptr, QStringList *folio_files = nullptr);
 		/// A folio part of @p files, which join() left out, with its
