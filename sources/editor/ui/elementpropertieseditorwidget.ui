@@ -255,7 +255,7 @@
              <string>margin: 5px; font-weight: bold;</string>
             </property>
             <property name="text">
-             <string>Potential separation</string>
+             <string>Function separation</string>
             </property>
            </widget>
           </item>

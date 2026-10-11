@@ -1187,6 +1187,10 @@ QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUu
 	describes a potential and not one drawn segment. Setting it on one
 	conductor and leaving the rest of the potential disagreeing would
 	produce a file no GUI action could have produced.
+
+	One thing stops at a terminal element with its function separation
+	enabled: every property but the voltage / protocol, which still
+	crosses it (@see Conductor::functionSeparatedConductors).
 	@return true if anything was changed, or if it already held that value
 */
 bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUuid,
@@ -1224,6 +1228,21 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 		QVariant old_value, new_value;
 		old_value.setValue(c->properties());
 		new_value.setValue(properties);
+		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+	}
+		//The other side of a function separated terminal element gets the
+		//voltage / protocol only: it is the one property that still
+		//describes the electrical node rather than one side of it.
+	for (Conductor *c : conductor->functionSeparatedConductors(true))
+	{
+		ConductorProperties separated_properties = c->properties();
+		separated_properties.applyTensionProtocolChange(c->properties(), properties);
+		if (separated_properties == c->properties())
+			continue;
+
+		QVariant old_value, new_value;
+		old_value.setValue(c->properties());
+		new_value.setValue(separated_properties);
 		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
 	}
 	m_project->undoStack()->endMacro();

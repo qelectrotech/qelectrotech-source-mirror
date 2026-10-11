@@ -824,6 +824,25 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 }
 
 /**
+	@brief ConductorProperties::applyTensionProtocolChange
+	Copy into this the voltage / protocol when it differs between before
+	and after, and leave every other attribute as it is. This is the one
+	property a function separated terminal element lets through
+	(@see Conductor::functionSeparatedConductors): the voltage /
+	protocol describes the electrical node itself, while the text, the
+	function, the wire color... describe one side of the separation and
+	stay local to it.
+	@param before : the properties as they were shown to the user
+	@param after : the properties after the user's edit
+*/
+void ConductorProperties::applyTensionProtocolChange(const ConductorProperties &before,
+						     const ConductorProperties &after)
+{
+	if (before.m_tension_protocol != after.m_tension_protocol)
+		m_tension_protocol = after.m_tension_protocol;
+}
+
+/**
 	@brief ConductorProperties::defaultProperties
 	@return the default properties stored in the setting file
 */

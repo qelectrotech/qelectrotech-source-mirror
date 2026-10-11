@@ -62,10 +62,16 @@ namespace ConductorMultiEdit
 		@brief targets
 		@param selected : the edited conductors
 		@param apply_all : true to add every conductor of their potentials
+		@param function_separated : set to the conductors that share the
+		potential of an edited one only by crossing a function separated
+		terminal element -- conductors undo() then gives the voltage /
+		protocol only, and no other property. nullptr, the default, leaves
+		those conductors out of the returned list entirely.
 		@return each conductor an edit reaches, once
 	*/
 	template <typename T>
-	QList<T *> targets(const QList<T *> &selected, bool apply_all)
+	QList<T *> targets(const QList<T *> &selected, bool apply_all,
+			   QSet<T *> *function_separated = nullptr)
 	{
 		QList<T *> list;
 		QSet<T *> seen;
@@ -88,6 +94,19 @@ namespace ConductorMultiEdit
 					list << other;
 				}
 			}
+			if (function_separated)
+			{
+				const QSet<T *> separated = conductor->functionSeparatedConductors();
+				for (T *other : separated)
+				{
+					if (!seen.contains(other))
+					{
+						seen.insert(other);
+						list << other;
+						function_separated->insert(other);
+					}
+				}
+			}
 		}
 		return list;
 	}
@@ -97,13 +116,18 @@ namespace ConductorMultiEdit
 		@param targets : the conductors to change, see targets()
 		@param shown : the properties as the panel showed them
 		@param edited : the properties after the user's edit
+		@param function_separated : the targets of targets() that only a
+		function separated terminal element links to the edited
+		conductors: they get the voltage / protocol and nothing else
+		(@see ConductorProperties::applyTensionProtocolChange)
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
 	*/
 	template <typename T>
 	QUndoCommand *undo(const QList<T *> &targets,
 			   const ConductorProperties &shown,
-			   const ConductorProperties &edited)
+			   const ConductorProperties &edited,
+			   const QSet<T *> &function_separated = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
@@ -114,7 +138,10 @@ namespace ConductorMultiEdit
 		{
 			const ConductorProperties old_properties = conductor->properties();
 			ConductorProperties properties = old_properties;
-			properties.applyChanges(shown, edited);
+			if (function_separated.contains(conductor))
+				properties.applyTensionProtocolChange(shown, edited);
+			else
+				properties.applyChanges(shown, edited);
 			if (properties == old_properties)
 				continue;
 

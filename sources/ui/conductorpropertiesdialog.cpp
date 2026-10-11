@@ -88,6 +88,30 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 		}
 	}
 
+		//A function separated terminal element (element information
+		//potential_isolating) keeps the two sides of the terminal apart:
+		//every property but one stays local to the side it was edited on.
+		//The voltage / protocol still crosses, because it describes the
+		//electrical node and not one side of it.
+	if (cpd.applyAll())
+	{
+		foreach (Conductor *separated_conductor, conductor->functionSeparatedConductors())
+		{
+			ConductorProperties separated_properties = separated_conductor->properties();
+			separated_properties.applyTensionProtocolChange(
+						separated_conductor->properties(),
+						cpd.properties());
+			if (separated_properties == separated_conductor->properties())
+				continue;
+
+			QVariant separated_old_value, separated_new_value;
+			separated_old_value.setValue(separated_conductor->properties());
+			separated_new_value.setValue(separated_properties);
+			new QPropertyUndoCommand (separated_conductor, "properties",
+						  separated_old_value, separated_new_value, undo);
+		}
+	}
+
 	conductor->diagram()->undoStack().push(undo);
 }
 

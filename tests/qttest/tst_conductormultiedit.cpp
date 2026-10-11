@@ -29,6 +29,10 @@ class FakeWire : public QObject
 		ConductorProperties properties() const { return m_properties; }
 		void setProperties(const ConductorProperties &p) { m_properties = p; }
 		QSet<FakeWire *> relatedPotentialConductors() const { return m_potential; }
+			// The wires of the other side of a function separated terminal
+			// element: same electrical node, but only the voltage /
+			// protocol crosses.
+		QSet<FakeWire *> functionSeparatedConductors() const { return m_separated; }
 		QPointF pos() const { return m_pos; }
 
 			// Joins wires into one potential; like the real one, a wire's
@@ -41,10 +45,24 @@ class FakeWire : public QObject
 						w->m_potential.insert(o);
 		}
 
+			// Marks two groups as separated by a function separated
+			// terminal element, without joining their potentials.
+		static void separate(const QList<FakeWire *> &one,
+				     const QList<FakeWire *> &other)
+		{
+			for (FakeWire *w : one)
+				for (FakeWire *o : other)
+				{
+					w->m_separated.insert(o);
+					o->m_separated.insert(w);
+				}
+		}
+
 		ConductorProperties m_properties;
 
 	private:
 		QSet<FakeWire *> m_potential;
+		QSet<FakeWire *> m_separated;
 		QPointF m_pos;
 };
 
@@ -100,6 +118,51 @@ class tst_conductormultiedit : public QObject
 			QCOMPARE(t.size(), 4);
 			QCOMPARE(QSet<FakeWire *>(t.begin(), t.end()),
 				 (QSet<FakeWire *> {&a, &b, &c, &d}));
+		}
+
+			// A function separated terminal element: the other side of the
+			// terminal is reached too, but only the voltage / protocol
+			// crosses it -- not the function, not the number.
+		void functionSeparatedGetsVoltageProtocolOnly()
+		{
+			FakeWire a("1", "fnA", "", {}), b("2", "fnB", "", {}),
+				 c("3", "fnC", "", {});
+			FakeWire::join({&a, &b});
+			FakeWire::separate({&a}, {&c});
+
+			QSet<FakeWire *> separated;
+			const Wires t = ConductorMultiEdit::targets(Wires {&a}, true,
+								      &separated);
+			QCOMPARE(QSet<FakeWire *>(t.begin(), t.end()),
+				 (QSet<FakeWire *> {&a, &b, &c}));
+			QCOMPARE(separated, (QSet<FakeWire *> {&c}));
+				// A caller that does not know about the rule gets the
+				// separated side left out, as before
+			QCOMPARE(ConductorMultiEdit::targets(Wires {&a}, true),
+				 (Wires {&a, &b}));
+
+			const ConductorProperties shown = a.properties();
+			ConductorProperties after = edited(shown,
+				&ConductorProperties::m_function, "PWR");
+			after.m_tension_protocol = "24V";
+
+			QUndoStack stack;
+			stack.push(ConductorMultiEdit::undo(t, shown, after, separated));
+			QCOMPARE(stack.count(), 1);
+
+			for (FakeWire *w : {&a, &b})
+			{
+				QCOMPARE(w->m_properties.m_function, QStringLiteral("PWR"));
+				QCOMPARE(w->m_properties.m_tension_protocol,
+					 QStringLiteral("24V"));
+			}
+			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
+			QCOMPARE(c.m_properties.text, QStringLiteral("3"));
+			QCOMPARE(c.m_properties.m_tension_protocol, QStringLiteral("24V"));
+
+			stack.undo();
+			QVERIFY(c.properties().m_tension_protocol.isEmpty());
+			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
 		}
 
 			// One edit of three wires: each takes the function, keeps its

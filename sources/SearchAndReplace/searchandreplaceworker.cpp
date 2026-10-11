@@ -239,6 +239,22 @@ void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 				new_value.setValue(cp);
 				project_->undoStack()->push(new QPropertyUndoCommand(cc, "properties", old_value, new_value));
 			}
+
+				//The other side of a function separated terminal element
+				//only receives the voltage / protocol (@see
+				//Conductor::functionSeparatedConductors).
+			for (Conductor *cc : c->functionSeparatedConductors(true))
+			{
+				ConductorProperties separated_cp = cc->properties();
+				separated_cp.applyTensionProtocolChange(cc->properties(), cp);
+				if (separated_cp == cc->properties())
+					continue;
+
+				QVariant old_value, new_value;
+				old_value.setValue(cc->properties());
+				new_value.setValue(separated_cp);
+				project_->undoStack()->push(new QPropertyUndoCommand(cc, "properties", old_value, new_value));
+			}
 		}
 	}
 	project_->undoStack()->endMacro();
@@ -349,6 +365,22 @@ void SearchAndReplaceWorker::replaceAdvanced(
 					QVariant old_value, new_value;
 					old_value.setValue(c->properties());
 					new_value.setValue(new_properties);
+					project_->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+				}
+
+					//The other side of a function separated terminal element
+					//only receives the voltage / protocol (@see
+					//Conductor::functionSeparatedConductors).
+				for (Conductor *c : conductor->functionSeparatedConductors(true))
+				{
+					ConductorProperties separated_properties = c->properties();
+					separated_properties.applyTensionProtocolChange(c->properties(), new_properties);
+					if (separated_properties == c->properties())
+						continue;
+
+					QVariant old_value, new_value;
+					old_value.setValue(c->properties());
+					new_value.setValue(separated_properties);
 					project_->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
 				}
 			}
