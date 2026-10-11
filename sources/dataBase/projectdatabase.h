@@ -191,6 +191,10 @@ class projectDataBase : public QObject
 		};
 		QList<FolioSymbol> symbolsOnFolios(const QList<QUuid> &folios) const;
 		QList<QUuid> linkedSymbols(const QUuid &element) const;
+			/// A wire placed on a folio: its text and the kinds of the
+			/// symbols at its ends (ElementData::typeToString())
+		struct FolioWire { QString text; QString kind1; QString kind2; };
+		QList<FolioWire> wiresOnFolios(const QList<QUuid> &folios) const;
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 

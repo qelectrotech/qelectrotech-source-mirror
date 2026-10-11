@@ -28,8 +28,8 @@ QString WiringListExport::findDiagramFolio(const QDomElement &diagramElem) const
     // The folio number as the folio shows it ("3/12"). The saved "folio"
     // attribute is its template ("%id/%total").
     const int index = diagramElem.attribute("order").toInt();
-    if (m_project && index >= 1 && index <= m_project->diagrams().size()) {
-        return m_project->diagrams().at(index - 1)->border_and_titleblock
+    if (m_project && index >= 1 && index <= m_project->folios().size()) {
+        return m_project->folios().at(index - 1)->border_and_titleblock
                 .titleblockInformation().value("folio").toString();
     }
     if (diagramElem.hasAttribute("folio")) return diagramElem.attribute("folio");

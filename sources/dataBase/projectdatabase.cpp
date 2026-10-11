@@ -1264,6 +1264,32 @@ QList<projectDataBase::FolioSymbol> projectDataBase::symbolsOnFolios(const QList
 }
 
 /**
+	@brief projectDataBase::wiresOnFolios
+	@return the wires on the folios @p folios, folio by folio in that order,
+	read from the conductor table as it is (see elementTypesOnFolios())
+*/
+QList<projectDataBase::FolioWire> projectDataBase::wiresOnFolios(const QList<QUuid> &folios) const
+{
+	QList<FolioWire> wires;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT c.text, e1.type, e2.type FROM conductor c "
+								 "LEFT JOIN element e1 ON e1.uuid = c.terminal1_element_uuid "
+								 "LEFT JOIN element e2 ON e2.uuid = c.terminal2_element_uuid "
+								 "WHERE c.diagram_uuid = :folio ORDER BY c.rowid"));
+	for (const QUuid &folio : folios) {
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (!query.exec()) {
+			continue;
+		}
+		while (query.next()) {
+			wires.append({query.value(0).toString(), query.value(1).toString(),
+						  query.value(2).toString()});
+		}
+	}
+	return wires;
+}
+
+/**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
 	as it is (see elementTypesOnFolios())
