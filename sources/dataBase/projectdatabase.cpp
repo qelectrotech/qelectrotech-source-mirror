@@ -1238,6 +1238,34 @@ QList<projectDataBase::FolioWire> projectDataBase::wiresOnFolios(const QList<QUu
 }
 
 /**
+	@brief projectDataBase::elementLabel
+	@return the label the symbol @p element shows, read from the element
+	info table as it is (see elementTypesOnFolios())
+*/
+QString projectDataBase::elementLabel(const QUuid &element) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT label FROM element_info WHERE element_uuid = :uuid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	return query.exec() && query.next() ? query.value(0).toString() : QString();
+}
+
+/**
+	@brief projectDataBase::terminalName
+	@return the name of the terminal @p terminal of the symbol @p element,
+	read from the terminal table as it is (see elementTypesOnFolios()): a
+	terminal a wire ends on has a row
+*/
+QString projectDataBase::terminalName(const QUuid &terminal, const QUuid &element) const
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT name FROM terminal WHERE uuid = :uuid AND element_uuid = :element"));
+	query.bindValue(QStringLiteral(":uuid"), terminal.toString());
+	query.bindValue(QStringLiteral(":element"), element.toString());
+	return query.exec() && query.next() ? query.value(0).toString() : QString();
+}
+
+/**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
 	as it is (see elementTypesOnFolios())
