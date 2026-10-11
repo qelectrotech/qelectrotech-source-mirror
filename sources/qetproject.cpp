@@ -32,6 +32,7 @@
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/ViewItem/projectdbmodel.h"
 #include "qetapp.h"
@@ -487,7 +488,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			if (!index.isEmpty() && index.contains("folio_header")
 					&& QetContainer::join(entries, &document, &why, &folio_files))
 			{
-				if (m_data_base.fillFromIndex(index, &m_folio_headers, &why)
+				if (m_data_base.fillFromIndex(index, &m_folio_headers, &why, &m_index_tables)
 						&& m_folio_headers.size() == folio_files.size()) {
 					xml_project = document;
 					m_container_files = files;
@@ -496,6 +497,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 				} else {
 					m_data_base.discardFill();
 					m_folio_headers.clear();
+					m_index_tables.reset();
 					qInfo().noquote() << "Not opened from the index of" << fi.fileName() << ":" << why;
 				}
 			}
@@ -728,6 +730,21 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 			for (Element *elmt : d->elements())
 				if (elmt->keepsSavedLinks())
 					elmt->initLink(self);
+		//A linked folio report's texts show a wire's properties: the
+		//report's own wire, else its partner's. A report built alone
+		//first, as a partner (buildPartnerSymbols()), linked before it had
+		//wires, and a report elsewhere may watch that partner: both look
+		//again now, as opening has them do once every wire exists (an
+		//unlinked report keeps its texts, as opening leaves them)
+	for (Diagram *d : std::as_const(built))
+		for (Element *elmt : d->elements())
+			if ((elmt->linkType() & Element::AllReport) && !elmt->linkedElements().isEmpty())
+			{
+				emit elmt->linkedElementChanged();
+				for (Element *partner : elmt->linkedElements())
+					if (!built.contains(partner->diagram()))
+						emit partner->linkedElementChanged();
+			}
 		//Likewise a table whose previous table was on a folio not built
 	for (Diagram *d : builtFolios())
 		for (QGraphicsItem *item : d->items())
@@ -914,6 +931,16 @@ QSet<Diagram *> QETProject::tableChainFolios(Diagram *folio) const
 			}
 			continue;
 		}
+			//Opened from an index: its tables, not the folio's part
+		if (m_index_tables) {
+			for (const projectDataBase::FolioTable &table : std::as_const(*m_index_tables)) {
+				if (table.folio == d->uuid()) {
+					folio_of.insert(table.table, d);
+					previous_of.insert(table.table, table.previous);
+				}
+			}
+			continue;
+		}
 		const QDomNodeList tables = d->deferredXml().elementsByTagName(
 					QetGraphicsTableItem::xmlTagName());
 		for (int i = 0 ; i < tables.size() ; ++i) {
@@ -983,11 +1010,43 @@ void QETProject::buildFolioToShow(Diagram *folio)
 		return;
 	}
 	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
-		qWarning().noquote() << "lazy folios:" << to_build.size()
-							 << "folios built for the partners of folio"
-							 << folio->folioIndex() + 1;
+		qWarning().noquote() << "lazy folios: the partners of folio" << folio->folioIndex() + 1
+							 << "built alone, on" << to_build.size() << "folios";
 	}
-	buildFolios(to_build);
+		//The partners alone, not their folios (stage D5b)
+	buildPartnerSymbols(to_build, partners);
+}
+
+/**
+	@brief QETProject::buildPartnerSymbols
+	Build on the folios @p folios, not built, the symbols @p partners alone
+	(Diagram::buildSymbols()), as opening builds them: linked to the symbols
+	built already, their texts refreshed, in the state opening has.
+*/
+void QETProject::buildPartnerSymbols(const QList<Diagram *> &folios, const QSet<QUuid> &partners)
+{
+	const ProjectState state = m_state;
+	m_state = ProjectParsingRunning;
+	QList<Element *> built;
+	for (Diagram *d : folios) {
+		const QList<Element *> symbols = d->buildSymbols(partners);
+		if (!symbols.isEmpty()) {
+			built += symbols;
+			linkElementsToElementAutoNums(d);
+		}
+	}
+	for (Element *element : std::as_const(built)) {
+		element->initLink(this);
+		for (auto &text : element->dynamicTextItems())
+			text->refreshLabelConnection();
+	}
+		//A built symbol linked to one of them puts its partners back in
+		//their saved order
+	for (Diagram *d : builtFolios())
+		for (Element *element : d->elements())
+			if (element->keepsSavedLinks())
+				element->initLink(this);
+	m_state = state;
 }
 
 /**
@@ -2316,6 +2375,11 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	const bool keep = unloadedFolioCount() && !m_kept_folios_stale
 			&& ((kept_folios && m_kept_folios_trusted) || (kept_parts && m_kept_parts_trusted));
 	if (keep) {
+			//Partners built alone and linked or unlinked since: their folio
+			//is not what was read
+		for (Diagram *diagram : std::as_const(m_diagrams_list))
+			if (!diagram->isLoaded() && diagram->partialChanged())
+				buildFolios({diagram});
 		for (Diagram *diagram : std::as_const(m_diagrams_list))
 			if (diagram->headerChanged())
 				buildFolioToShow(diagram);
@@ -2588,10 +2652,27 @@ QByteArray QETProject::containerIndex()
 		seen.insert(uuid);
 		return true;
 	};
+		//The drawn tables and the tables they continue: which folios a
+		//folio's tables are built with (tableChainFolios())
+	QList<projectDataBase::FolioTable> tables;
 	for (Diagram *diagram : std::as_const(m_diagrams_list)) {
 		if (!unique(diagram->uuid())) return QByteArray();
 		if (!diagram->isLoaded()) {
 			headers.append({diagram->uuid(), diagram->headerXml()});
+			if (m_index_tables) {
+				for (const projectDataBase::FolioTable &table : std::as_const(*m_index_tables))
+					if (table.folio == diagram->uuid())
+						tables.append(table);
+				continue;
+			}
+			const QDomNodeList items = diagram->deferredXml().elementsByTagName(
+						QetGraphicsTableItem::xmlTagName());
+			for (int i = 0 ; i < items.size() ; ++i) {
+				const QDomElement table = items.at(i).toElement();
+				tables.append({QUuid(table.attribute(QStringLiteral("uuid"))), diagram->uuid(),
+							   QUuid(table.firstChildElement(QStringLiteral("previous_table"))
+									 .attribute(QStringLiteral("uuid")))});
+			}
 			continue;
 		}
 		for (Element *element : diagram->elements())
@@ -2599,8 +2680,14 @@ QByteArray QETProject::containerIndex()
 		for (Conductor *conductor : diagram->conductors())
 			if (!unique(conductor->uuid())) return QByteArray();
 		headers.append({diagram->uuid(), diagram->headerXml()});
+		for (QGraphicsItem *item : diagram->items()) {
+			if (item->type() == QetGraphicsTableItem::Type) {
+				auto table = static_cast<QetGraphicsTableItem *>(item);
+				tables.append({table->uuid(), diagram->uuid(), table->previousTableUuid()});
+			}
+		}
 	}
-	return m_data_base.indexFile(headers);
+	return m_data_base.indexFile(headers, tables);
 }
 
 /**
@@ -3323,7 +3410,10 @@ QDomElement QETProject::readFolioPart(const QString &file)
 {
 	QDomDocument folio;
 	QString error;
-	if (!QetContainer::readFolio(m_container_files, file, &folio, &error)) {
+	if (!m_folio_reader)
+		m_folio_reader = std::make_unique<QetContainerDb::FolioReader>(
+					m_container_files.value(QStringLiteral("project.sqlite")));
+	if (!QetContainer::readFolio(m_container_files, file, &folio, &error, m_folio_reader.get())) {
 		qWarning().noquote() << "Unable to read the folio" << file << ":" << error;
 		return QDomElement();
 	}

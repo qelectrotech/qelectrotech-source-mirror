@@ -143,6 +143,11 @@ class Diagram : public QGraphicsScene
 			/// The XML of this folio's items, while they are not built yet
 		QDomElement m_deferred;
 		QString m_deferred_part;
+		QHash<QUuid, Element *> m_partial_elements;
+		QHash<int, Terminal *> m_partial_table;
+		bool m_partial_changed = false;
+		Element *buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
+							  bool consider_informations);
 		QString m_opened_header;
 		QByteArray m_kept_text;
 		bool m_loading_deferred = false;
@@ -220,6 +225,10 @@ class Diagram : public QGraphicsScene
 			/// (stage D2)
 		void setDeferredPart(const QString &file) {m_deferred = QDomElement(); m_deferred_part = file;}
 		QString deferredPart() const {return m_deferred_part;}
+		QList<Element *> buildSymbols(const QSet<QUuid> &uuids);
+			/// Symbols built as partners (buildSymbols()) changed since:
+			/// the folio must be built to be saved
+		bool partialChanged() const {return m_partial_changed;}
 		QString headerXml();
 			/// The folio's text in the file it was read from, while it is
 			/// not built (QETProject::toXml())

@@ -907,11 +907,14 @@ QStringList indexTables(const QSqlDatabase &db)
 	This database written to an SQLite file, for a .qetz to be opened from
 	(stage D2): every table but the drawing items, brought
 	up to date first, with the folios' own data @p folio_headers (in folio
-	order, each as Diagram::headerXml() writes it) and the stamp of the
-	schema it was written with.
+	order, each as Diagram::headerXml() writes it), the drawn tables
+	@p tables and how they continue one another (which folios a folio's
+	tables must be built with), and the stamp of the schema it was written
+	with.
 	@return the file, or nothing if it could not be written
 */
-QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &folio_headers)
+QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &folio_headers,
+									  const QList<FolioTable> &tables)
 {
 	if (m_content_changed) {
 		updateDB();
@@ -952,7 +955,9 @@ QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &fo
 					&& query.exec(QStringLiteral("DROP TABLE image"))
 					&& query.exec(QStringLiteral("CREATE TABLE index_meta (key TEXT PRIMARY KEY, value TEXT)"))
 					&& query.exec(QStringLiteral("CREATE TABLE folio_header (pos INTEGER PRIMARY KEY, "
-												 "uuid TEXT NOT NULL, xml TEXT NOT NULL)"));
+												 "uuid TEXT NOT NULL, xml TEXT NOT NULL)"))
+					&& query.exec(QStringLiteral("CREATE TABLE folio_table (uuid TEXT NOT NULL, "
+												 "folio_uuid TEXT NOT NULL, previous_uuid TEXT)"));
 			file.transaction();
 			query.prepare(QStringLiteral("INSERT INTO index_meta (key, value) VALUES (?, ?)"));
 			for (const auto &meta : {std::pair<QString, QString>{QStringLiteral("schema"), stamp},
@@ -968,6 +973,14 @@ QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &fo
 				query.addBindValue(pos++);
 				query.addBindValue(header.first.toString());
 				query.addBindValue(header.second);
+				ok = ok && query.exec();
+			}
+			query.prepare(QStringLiteral("INSERT INTO folio_table (uuid, folio_uuid, previous_uuid) "
+										 "VALUES (?, ?, ?)"));
+			for (const FolioTable &table : tables) {
+				query.addBindValue(table.table.toString());
+				query.addBindValue(table.folio.toString());
+				query.addBindValue(table.previous.isNull() ? QVariant() : QVariant(table.previous.toString()));
 				ok = ok && query.exec();
 			}
 			ok = file.commit() && ok;
@@ -1015,12 +1028,15 @@ void projectDataBase::discardFill()
 	when written with this database's schema, its tables plain tables, and
 	nothing in its schema run.
 	@param folio_headers : the folios' own data, in folio order
+	@param folio_tables : if not null, the drawn tables indexFile() wrote, or
+	nothing if the index predates them
 	@return false, with @p why set and nothing changed in the tables, if
 	the file cannot be read
 */
 bool projectDataBase::fillFromIndex(const QByteArray &index,
 									QList<std::pair<QUuid, QString>> *folio_headers,
-									QString *why)
+									QString *why,
+									std::optional<QList<FolioTable>> *folio_tables)
 {
 	auto refuse = [why](const QString &reason) {
 		if (why) *why = reason;
@@ -1093,6 +1109,17 @@ bool projectDataBase::fillFromIndex(const QByteArray &index,
 	query.exec(QStringLiteral("SELECT uuid, xml FROM idx.folio_header ORDER BY pos"));
 	while (query.next())
 		folio_headers->append({QUuid(query.value(0).toString()), query.value(1).toString()});
+	if (folio_tables) {
+		folio_tables->reset();
+		if (isTable(QStringLiteral("folio_table"))) {
+			QList<FolioTable> read;
+			query.exec(QStringLiteral("SELECT uuid, folio_uuid, previous_uuid FROM idx.folio_table"));
+			while (query.next())
+				read.append({QUuid(query.value(0).toString()), QUuid(query.value(1).toString()),
+							 QUuid(query.value(2).toString())});
+			*folio_tables = read;
+		}
+	}
 	detach();
 
 		//The stores, from their tables, as the document would fill them

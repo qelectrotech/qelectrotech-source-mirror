@@ -18,6 +18,7 @@
 #ifndef QETCONTAINER_H
 #define QETCONTAINER_H
 
+#include "qetcontainerdb.h"
 #include "qetzip.h"
 
 #include <QDomDocument>
@@ -59,8 +60,10 @@ namespace QetContainer
 			  QString *error = nullptr, QStringList *folio_files = nullptr);
 		/// A folio part of @p files, which join() left out, with its
 		/// pictures and its engineering data back (stage D2)
+		/// @p reader, if any, reads the engineering data of @p files
 	bool readFolio(const QHash<QString, QByteArray> &files, const QString &file,
-				   QDomDocument *folio, QString *error = nullptr);
+				   QDomDocument *folio, QString *error = nullptr,
+				   QetContainerDb::FolioReader *reader = nullptr);
 
 		/// Take what QElectroTech computes out of a folio (format 3)
 	void dropComputed(QDomElement diagram, bool terminal_lists);
