@@ -387,6 +387,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventfillet.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddcable.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddcable.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -812,6 +814,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementinfowidget.h
   ${QET_DIR}/sources/ui/terminalnumberingdialog.cpp
   ${QET_DIR}/sources/ui/terminalnumberingdialog.h
+  ${QET_DIR}/sources/ui/cablenumberingdialog.cpp
+  ${QET_DIR}/sources/ui/cablenumberingdialog.h
   ${QET_DIR}/sources/ui/elementpropertieswidget.cpp
   ${QET_DIR}/sources/ui/elementpropertieswidget.h
   ${QET_DIR}/sources/ui/formulaassistantdialog.cpp
@@ -936,6 +940,44 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/materiallist/materiallist.h
   ${QET_DIR}/sources/materiallist/materialselectiondialog.cpp
   ${QET_DIR}/sources/materiallist/materialselectiondialog.h
+
+  ${QET_DIR}/sources/cablelist/cabletypelist.cpp
+  ${QET_DIR}/sources/cablelist/cabletypelist.h
+  ${QET_DIR}/sources/cablelist/cableexportdialog.cpp
+  ${QET_DIR}/sources/cablelist/cableexportdialog.h
+  ${QET_DIR}/sources/cablelist/cablelistmodel.cpp
+  ${QET_DIR}/sources/cablelist/cablelistmodel.h
+  ${QET_DIR}/sources/cablelist/cablelistmodelpropertieswidget.cpp
+  ${QET_DIR}/sources/cablelist/cablelistmodelpropertieswidget.h
+  ${QET_DIR}/sources/cablelist/cablelistrows.cpp
+  ${QET_DIR}/sources/cablelist/cablelistrows.h
+  ${QET_DIR}/sources/cablelist/cablequerywidget.cpp
+  ${QET_DIR}/sources/cablelist/cablequerywidget.h
+
+  ${QET_DIR}/sources/cable/addcablecommand.cpp
+  ${QET_DIR}/sources/cable/addcablecommand.h
+  ${QET_DIR}/sources/cable/cable.cpp
+  ${QET_DIR}/sources/cable/cable.h
+  ${QET_DIR}/sources/cable/cablecopy.cpp
+  ${QET_DIR}/sources/cable/cablecopy.h
+  ${QET_DIR}/sources/cable/cablecreatedialog.cpp
+  ${QET_DIR}/sources/cable/cablecreatedialog.h
+  ${QET_DIR}/sources/cable/cablemanager.cpp
+  ${QET_DIR}/sources/cable/cablemanager.h
+  ${QET_DIR}/sources/cable/cablepart.cpp
+  ${QET_DIR}/sources/cable/cablepart.h
+  ${QET_DIR}/sources/cable/cablepropertiesdialog.cpp
+  ${QET_DIR}/sources/cable/cablepropertiesdialog.h
+  ${QET_DIR}/sources/cable/cablepropertieseditorwidget.cpp
+  ${QET_DIR}/sources/cable/cablepropertieseditorwidget.h
+  ${QET_DIR}/sources/cable/cablepropertieswidget.cpp
+  ${QET_DIR}/sources/cable/cablepropertieswidget.h
+  ${QET_DIR}/sources/cable/cablerenumber.cpp
+  ${QET_DIR}/sources/cable/cablerenumber.h
+  ${QET_DIR}/sources/cable/cabletextformatdialog.cpp
+  ${QET_DIR}/sources/cable/cabletextformatdialog.h
+  ${QET_DIR}/sources/cable/editcablecommand.cpp
+  ${QET_DIR}/sources/cable/editcablecommand.h
 
   ${QET_DIR}/sources/xml/terminalstripitemxml.cpp
   ${QET_DIR}/sources/xml/terminalstripitemxml.h

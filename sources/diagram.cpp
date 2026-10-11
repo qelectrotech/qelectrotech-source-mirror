@@ -20,9 +20,12 @@
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "cable/cablecopy.h"
+#include "cable/cablepart.h"
 #include "xml/terminalstripitemxml.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcontent.h"
+#include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
@@ -901,6 +904,23 @@ bool Diagram::eventInterfaceIsRunning() const
 }
 
 /**
+	@brief Diagram::cableToolIsRunning
+	@return true while the cable drawing tool is the running tool.
+
+	That tool is the one which takes the right mouse button away from
+	everything else: while it runs, a right click cancels the line being
+	drawn and must not open the quick command ring nor any context menu
+	with it. Every other tool lets go of the button again and is
+	surrounded by the ring the way it always was.
+*/
+bool Diagram::cableToolIsRunning() const
+{
+	return m_event_interface
+	       && m_event_interface->isRunning()
+	       && qobject_cast<DiagramEventAddCable *>(m_event_interface);
+}
+
+/**
 	@brief Diagram::conductorsAutonumName
 	@return the name of autonum to use.
 */
@@ -1420,9 +1440,10 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 bool Diagram::fromXml(QDomDocument &document,
 				QPointF position,
 				bool consider_informations,
-				DiagramContent *content_ptr) {
+				DiagramContent *content_ptr,
+				QList<CablePart *> *cables_added) {
 	QDomElement root = document.documentElement();
-	return(fromXml(root, position, consider_informations, content_ptr));
+	return(fromXml(root, position, consider_informations, content_ptr, cables_added));
 }
 
 /**
@@ -1662,7 +1683,8 @@ QPair<Terminal *, Terminal *> pickEnds(const QDomElement &f,
 bool Diagram::fromXml(QDomElement &document,
 				QPointF position,
 				bool consider_informations,
-				DiagramContent *content_ptr)
+				DiagramContent *content_ptr,
+				QList<CablePart *> *cables_added)
 {
 	const QDomElement& root = document;
 		// The first element must be a diagram
@@ -1928,6 +1950,17 @@ bool Diagram::fromXml(QDomElement &document,
 		//Load terminal strip item
 	QVector<TerminalStripItem *> added_strips { TerminalStripItemXml::fromXml(this, root) };
 
+		//Load the cable lines a copy fragment carries -- built here
+		//rather than in the caller so that they are placed with the rest
+		//of the selection, but only when the caller asked to be handed
+		//them: a folio loaded from a project file holds no cable of its
+		//own, the cables of a project are read at project level.
+	QList<CablePart *> added_cables;
+	if (cables_added) {
+		added_cables = CableCopy::read(this, root);
+		*cables_added = added_cables;
+	}
+
 	//Translate items if a new position was given in parameter
 	if (position != QPointF())
 	{
@@ -1938,6 +1971,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto image   : std::as_const(added_images     )) added_items << image;
 		for (auto table   : std::as_const(added_tables     )) added_items << table;
 		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
+		for (const auto &cable : std::as_const(added_cables)) added_items << cable;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
