@@ -385,7 +385,11 @@ class QETProject : public QObject
 		QString besideContainerPath() const;
 		QETResult writeCopyForOlderVersions(const QString &path);
 		static bool writeContainer(const QDomDocument &project, const QString &path,
-								   QString *error = nullptr);
+								   QString *error = nullptr, const QByteArray &index = QByteArray());
+		bool writeContainerFile(const QString &path, QString *error = nullptr);
+		QByteArray containerIndex();
+		QDomElement readFolioPart(const QString &file);
+		bool openedFromIndex() const {return m_opened_from_index;}
 	private:
 		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
@@ -457,6 +461,13 @@ class QETProject : public QObject
 		bool m_kept_folios_trusted = false;
 			/// Read from a .qet whose path nobody chose since: saved beside it
 		bool m_opened_from_qet = false;
+			/// Opened from a .qetz's index (QETZ-DB-TRUTH-PLAN.md D2): the
+			/// database filled from it, each folio's items in its part
+		bool m_opened_from_index = false;
+		QHash<QString, QByteArray> m_container_files;
+		QStringList m_folio_files;
+		QList<std::pair<QUuid, QString>> m_folio_headers;
+		void readFoliosFromIndex();
 		bool m_kept_folios_stale = false;
 			/// Something was edited since the project was opened: a table
 			/// filled from the database may have changed

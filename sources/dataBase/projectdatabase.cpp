@@ -49,6 +49,8 @@
 #include <QMetaEnum>
 #include <QTextDocument>
 #include <QFile>
+#include <QCryptographicHash>
+#include <QTemporaryDir>
 #include <QRegularExpression>
 #include <QSqlDriver>
 #include <QSqlError>
@@ -810,6 +812,282 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		}
 	}
 	m_folios_with_unjoined_wires = unjoined;
+	return true;
+}
+
+/**
+	@brief projectDataBase::schemaStamp
+	@return a stamp of the tables of this database as created: an index
+	file (indexFile()) is read back only into a database with the same
+*/
+QString projectDataBase::schemaStamp() const
+{
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("SELECT sql FROM sqlite_master WHERE type IN ('table', 'index') "
+							  "AND name NOT LIKE 'sqlite_%' ORDER BY name"));
+	QCryptographicHash hash(QCryptographicHash::Sha256);
+	while (query.next())
+		hash.addData(query.value(0).toString().toUtf8() + ';');
+	return QString::fromLatin1(hash.result().toHex());
+}
+
+namespace {
+	//The tables an index file carries, all of this database's but the
+	//drawing items, which exist for built folios only
+QStringList indexTables(const QSqlDatabase &db)
+{
+	QStringList tables;
+	QSqlQuery query(db);
+	query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'table' "
+							  "AND name NOT LIKE 'sqlite_%' ORDER BY name"));
+	while (query.next()) {
+		const QString name = query.value(0).toString();
+		if (name != QLatin1String("shape") && name != QLatin1String("independent_text")
+				&& name != QLatin1String("image"))
+			tables << name;
+	}
+	return tables;
+}
+}
+
+/**
+	@brief projectDataBase::indexFile
+	This database written to an SQLite file, for a .qetz to be opened from
+	(QETZ-DB-TRUTH-PLAN.md D2): every table but the drawing items, brought
+	up to date first, with the folios' own data @p folio_headers (in folio
+	order, each as Diagram::headerXml() writes it) and the stamp of the
+	schema it was written with.
+	@return the file, or nothing if it could not be written
+*/
+QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &folio_headers)
+{
+	if (m_content_changed) {
+		updateDB();
+	}
+	flushLinks();
+	flushElementPositions();
+	flushConductorProperties();
+
+	QTemporaryDir dir;
+	if (!dir.isValid()) {
+		return QByteArray();
+	}
+	const QString path = dir.filePath(QStringLiteral("index.sqlite"));
+	QString escaped = path;
+	escaped.replace(QLatin1Char('\''), QStringLiteral("''"));
+	QSqlQuery vacuum(m_data_base);
+	if (!vacuum.exec(QStringLiteral("VACUUM INTO '%1'").arg(escaped))) {
+		qWarning() << "projectDataBase::indexFile:" << vacuum.lastError().text();
+		return QByteArray();
+	}
+	const QString stamp = schemaStamp();
+	const QString connection = QStringLiteral("qet_index_") + QUuid::createUuid().toString();
+	bool ok = false;
+	{
+		QSqlDatabase file = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), connection);
+		file.setDatabaseName(path);
+		if (file.open())
+		{
+			QSqlQuery query(file);
+				//Its views read the drawing items too: an index holds tables
+			QStringList views;
+			query.exec(QStringLiteral("SELECT name FROM sqlite_master WHERE type = 'view'"));
+			while (query.next()) views << query.value(0).toString();
+			for (const QString &view : std::as_const(views))
+				query.exec(QStringLiteral("DROP VIEW \"%1\"").arg(view));
+			ok = query.exec(QStringLiteral("DROP TABLE shape"))
+					&& query.exec(QStringLiteral("DROP TABLE independent_text"))
+					&& query.exec(QStringLiteral("DROP TABLE image"))
+					&& query.exec(QStringLiteral("CREATE TABLE index_meta (key TEXT PRIMARY KEY, value TEXT)"))
+					&& query.exec(QStringLiteral("CREATE TABLE folio_header (pos INTEGER PRIMARY KEY, "
+												 "uuid TEXT NOT NULL, xml TEXT NOT NULL)"));
+			file.transaction();
+			query.prepare(QStringLiteral("INSERT INTO index_meta (key, value) VALUES (?, ?)"));
+			for (const auto &meta : {std::pair<QString, QString>{QStringLiteral("schema"), stamp},
+									 std::pair<QString, QString>{QStringLiteral("writer"),
+										 QStringLiteral("QElectroTech ") + QetVersion::currentVersion().toString()}}) {
+				query.addBindValue(meta.first);
+				query.addBindValue(meta.second);
+				ok = ok && query.exec();
+			}
+			query.prepare(QStringLiteral("INSERT INTO folio_header (pos, uuid, xml) VALUES (?, ?, ?)"));
+			int pos = 0;
+			for (const auto &header : folio_headers) {
+				query.addBindValue(pos++);
+				query.addBindValue(header.first.toString());
+				query.addBindValue(header.second);
+				ok = ok && query.exec();
+			}
+			ok = file.commit() && ok;
+			ok = query.exec(QStringLiteral("VACUUM")) && ok;
+			file.close();
+		}
+	}
+	QSqlDatabase::removeDatabase(connection);
+	if (!ok) {
+		return QByteArray();
+	}
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly)) {
+		return QByteArray();
+	}
+	return file.readAll();
+}
+
+/**
+	@brief projectDataBase::discardFill
+	Undo fillFromIndex(): the project is read from its document instead
+*/
+void projectDataBase::discardFill()
+{
+	QSqlQuery query(m_data_base);
+	for (const QString &table : indexTables(m_data_base))
+		query.exec(QStringLiteral("DELETE FROM \"%1\"").arg(table));
+	m_element_information.clear();
+	m_folio_titleblocks.clear();
+	m_conductor_properties.clear();
+	m_conductor_attributes.clear();
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+	m_rows_from_document = false;
+	m_content_changed = true;
+}
+
+/**
+	@brief projectDataBase::fillFromIndex
+	Fill this database from @p index, a file indexFile() wrote, instead of
+	from the project's document: its tables, and the stores of symbol
+	information and wire properties (the folios' title blocks are filled
+	from @p folio_headers by the folios). The file is untrusted: read only
+	when written with this database's schema, its tables plain tables, and
+	nothing in its schema run.
+	@param folio_headers : the folios' own data, in folio order
+	@return false, with @p why set and nothing changed in the tables, if
+	the file cannot be read
+*/
+bool projectDataBase::fillFromIndex(const QByteArray &index,
+									QList<std::pair<QUuid, QString>> *folio_headers,
+									QString *why)
+{
+	auto refuse = [why](const QString &reason) {
+		if (why) *why = reason;
+		return false;
+	};
+	QTemporaryDir dir;
+	if (!dir.isValid()) {
+		return refuse(QStringLiteral("no temporary folder"));
+	}
+	const QString path = dir.filePath(QStringLiteral("index.sqlite"));
+	{
+		QFile file(path);
+		if (!file.open(QIODevice::WriteOnly) || file.write(index) != index.size()) {
+			return refuse(QStringLiteral("cannot write the index to a temporary file"));
+		}
+	}
+	QString escaped = path;
+	escaped.replace(QLatin1Char('\''), QStringLiteral("''"));
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+	if (!query.exec(QStringLiteral("ATTACH DATABASE '%1' AS idx").arg(escaped))) {
+		return refuse(QStringLiteral("the index cannot be read"));
+	}
+	auto detach = [this]() {
+		QSqlQuery q(m_data_base);
+		q.exec(QStringLiteral("DETACH DATABASE idx"));
+	};
+
+	const QStringList tables = indexTables(m_data_base);
+	auto isTable = [this](const QString &name) {
+		QSqlQuery kind(m_data_base);
+		kind.prepare(QStringLiteral("SELECT type FROM idx.sqlite_master WHERE name = ?"));
+		kind.addBindValue(name);
+		return kind.exec() && kind.next() && kind.value(0).toString() == QLatin1String("table");
+	};
+	for (const QString &table : tables + QStringList{QStringLiteral("index_meta"),
+													 QStringLiteral("folio_header")}) {
+		if (!isTable(table)) {
+			detach();
+			return refuse(QStringLiteral("the index has no table %1").arg(table));
+		}
+	}
+	query.exec(QStringLiteral("SELECT value FROM idx.index_meta WHERE key = 'schema'"));
+	if (!query.next() || query.value(0).toString() != schemaStamp()) {
+		detach();
+		return refuse(QStringLiteral("the index was written with another database schema"));
+	}
+
+	m_data_base.transaction();
+	bool ok = true;
+	for (const QString &table : tables) {
+		QSqlQuery columns(m_data_base);
+		columns.exec(QStringLiteral("PRAGMA main.table_info(\"%1\")").arg(table));
+		QStringList names;
+		while (columns.next())
+			names << QStringLiteral("\"%1\"").arg(columns.value(1).toString());
+		const QString list = names.join(QLatin1Char(','));
+		ok = ok && query.exec(QStringLiteral("DELETE FROM main.\"%1\"").arg(table))
+				&& query.exec(QStringLiteral("INSERT INTO main.\"%1\" (%2) SELECT %2 FROM idx.\"%1\"")
+							  .arg(table, list));
+	}
+	if (!ok) {
+		m_data_base.rollback();
+		detach();
+		return refuse(QStringLiteral("the index's rows cannot be read"));
+	}
+	m_data_base.commit();
+
+	folio_headers->clear();
+	query.exec(QStringLiteral("SELECT uuid, xml FROM idx.folio_header ORDER BY pos"));
+	while (query.next())
+		folio_headers->append({QUuid(query.value(0).toString()), query.value(1).toString()});
+	detach();
+
+		//The stores, from their tables, as the document would fill them
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
+	query.exec(QStringLiteral("SELECT element_uuid, name, value, show FROM element_information "
+							  "ORDER BY element_uuid, ord"));
+	while (query.next()) {
+		const QUuid uuid(query.value(0).toString());
+		m_prefilled_elements[uuid].addValue(query.value(1).toString(), query.value(2).toString(),
+											query.value(3).toInt() != 0);
+	}
+	QHash<QUuid, QHash<QString, QString>> attributes;
+	query.exec(QStringLiteral("SELECT conductor_uuid, name, value FROM conductor_properties"));
+	while (query.next())
+		attributes[QUuid(query.value(0).toString())].insert(query.value(1).toString(),
+															query.value(2).toString());
+	QDomDocument scratch;
+	for (auto it = attributes.cbegin() ; it != attributes.cend() ; ++it) {
+		QDomElement e = scratch.createElement(QStringLiteral("conductor"));
+		for (auto a = it.value().cbegin() ; a != it.value().cend() ; ++a)
+			e.setAttribute(a.key(), a.value());
+		ConductorProperties properties;
+		properties.fromXml(e);
+		m_prefilled_conductors.insert(it.key(), properties);
+	}
+	for (auto it = m_prefilled_elements.cbegin() ; it != m_prefilled_elements.cend() ; ++it)
+		m_element_information.insert(it.key(), it.value());
+	for (auto it = m_prefilled_conductors.cbegin() ; it != m_prefilled_conductors.cend() ; ++it)
+		m_conductor_properties.insert(it.key(), it.value());
+	m_conductor_attributes = attributes;
+	for (const auto &header : std::as_const(*folio_headers)) {
+		QDomDocument document;
+		if (!document.setContent(header.second)) continue;
+		TitleBlockProperties properties;
+		properties.fromXml(document.documentElement());
+		properties.version = QetVersion::displayedVersion();
+		properties.collection = QET::QetCollection::Embedded;
+		m_prefilled_folios.insert(header.first, properties);
+		m_folio_titleblocks.insert(header.first, properties);
+	}
+
+	m_rows_from_document = true;
+	m_content_changed = false;
+	emit dataBaseUpdated();
 	return true;
 }
 

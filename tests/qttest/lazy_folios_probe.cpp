@@ -568,6 +568,25 @@ int main(int argc, char **argv)
 			std::printf("potential through reports: %d wires, %d folios not built\n",
 						int(potential(wire).size()), followed.unloadedFolioCount());
 		}
+			//A .qetz opened from its index (QETZ-DB-TRUTH-PLAN.md D2): no
+			//folio read, each read from its part when shown, drawn and
+			//linked as when built, saved as the .qet is
+		{
+			const QString zipped = output + "/lazy_folios.qetz";
+			QString error;
+			check(eager.writeContainerFile(zipped, &error), "saved as a .qetz");
+			QETProject indexed(zipped);
+			check(indexed.state() == QETProject::Ok, "the .qetz opens");
+			check(indexed.openedFromIndex(), "the .qetz opens from its index");
+			std::printf(".qetz opened from its index: %d of %d folios not built (strip folios %d)\n",
+						indexed.unloadedFolioCount(), int(folios.size()), int(strip_folios.size()));
+			check(indexed.unloadedFolioCount() == folios.size() - strip_folios.size(),
+				  "the .qetz opens building only the folios of the terminal strip's terminals");
+			check(numbering(indexed) == numbering(eager), "symbols' numbering from the index as when built");
+			for (int i = 0; i < folios.size(); ++i)
+				same(indexed, i, "shown from the .qetz");
+			check(indexed.toXml().toString() == eager.toXml().toString(), "the .qetz saves as when built");
+		}
 		std::printf("PASS: %d folios\n", int(folios.size()));
 	} catch (const std::exception &error) {
 		std::printf("FAIL: %s\n", error.what());

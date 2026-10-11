@@ -1020,8 +1020,9 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 			terminals.insert(QUuid(xml_reals.at(i).toElement().attribute(QStringLiteral("element_uuid"))));
 		m_project->buildFoliosHoldingSymbols(terminals);
 
-			//Get all free elements terminal of the project
-		const ElementProvider ep(m_project);
+			//Get all free elements terminal of the project: its own are on
+			//the folios just built
+		const ElementProvider ep(m_project->builtFolios());
 		auto free_terminals = ep.freeTerminal();
 
 			//Read each physical terminal

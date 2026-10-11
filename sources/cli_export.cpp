@@ -871,7 +871,7 @@ int resaveProject(QETProject &project, const QString &output)
 {
 	if (QETProject::isContainerPath(output)) {
 		QString error;
-		if (!QETProject::writeContainer(project.toXml(), output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
@@ -968,7 +968,7 @@ int setTitleBlock(QETProject &project, const QString &output,
 
 	if (QETProject::isContainerPath(output)) {
 		QString error;
-		if (!QETProject::writeContainer(project.toXml(), output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}

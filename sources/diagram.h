@@ -141,6 +141,7 @@ class Diagram : public QGraphicsScene
 		QUuid m_uuid = QUuid::createUuid();
 			/// The XML of this folio's items, while they are not built yet
 		QDomElement m_deferred;
+		QString m_deferred_part;
 		QString m_opened_header;
 		QByteArray m_kept_text;
 		bool m_loading_deferred = false;
@@ -211,8 +212,12 @@ class Diagram : public QGraphicsScene
 				 DiagramContent * = nullptr);
 			/// false while this folio's items wait in its XML to be
 			/// built (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md)
-		bool isLoaded() const {return m_deferred.isNull();}
-		QDomElement deferredXml() const {return m_deferred;}
+		bool isLoaded() const {return m_deferred.isNull() && m_deferred_part.isEmpty();}
+		QDomElement deferredXml();
+			/// The folio's items are in the part @p file of the .qetz the
+			/// project was opened from, read when they are first needed
+			/// (QETZ-DB-TRUTH-PLAN.md D2)
+		void setDeferredPart(const QString &file) {m_deferred = QDomElement(); m_deferred_part = file;}
 		QString headerXml();
 			/// The folio's text in the file it was read from, while it is
 			/// not built (QETProject::toXml())
