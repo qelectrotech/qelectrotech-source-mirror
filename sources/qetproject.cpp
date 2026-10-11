@@ -478,11 +478,15 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 				files.insert(entry.name, entry.data);
 			QStringList folio_files;
 			QDomDocument document;
-			if (files.contains(QStringLiteral("index.sqlite"))
+				//The index: in project.sqlite from format 3, its own entry
+				//before
+			const QByteArray index = files.contains(QStringLiteral("index.sqlite"))
+					? files.value(QStringLiteral("index.sqlite"))
+					: files.value(QStringLiteral("project.sqlite"));
+			if (!index.isEmpty() && index.contains("folio_header")
 					&& QetContainer::join(entries, &document, &why, &folio_files))
 			{
-				if (m_data_base.fillFromIndex(files.value(QStringLiteral("index.sqlite")),
-											  &m_folio_headers, &why)
+				if (m_data_base.fillFromIndex(index, &m_folio_headers, &why)
 						&& m_folio_headers.size() == folio_files.size()) {
 					xml_project = document;
 					m_container_files = files;
@@ -2518,14 +2522,13 @@ bool QETProject::isContainerPath(const QString &path)
 bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error,
 								const QByteArray &index)
 {
+		//The project database, for opening without reading the folios
+		//(stage D2), is in project.sqlite with the
+		//document's engineering data (format 3, D3)
 	QList<QetZip::Entry> entries = QetContainer::split(
 				project,
 				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
-				error);
-		//The project database, for opening without reading the folios
-		//(stage D2); a reader that does not know it skips it
-	if (!entries.isEmpty() && !index.isEmpty())
-		entries.append(QetZip::Entry{QStringLiteral("index.sqlite"), index, true});
+				error, index);
 	return !entries.isEmpty() && QetZip::write(path, entries, error);
 }
 

@@ -172,7 +172,7 @@ bool QetContainer::readDocument(const QByteArray &content, QDomDocument *documen
 	set if @p project is not a project
 */
 QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QString &writer,
-										 QString *error)
+										 QString *error, const QByteArray &index)
 {
 	QDomDocument document = project.cloneNode(true).toDocument();
 	QDomElement root = document.documentElement();
@@ -182,7 +182,7 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	}
 
 		//The engineering data out of the document, into project.sqlite
-	const QByteArray database = QetContainerDb::extract(root, error);
+	const QByteArray database = QetContainerDb::extract(root, error, index);
 	if (database.isEmpty())
 		return {};
 
