@@ -23,6 +23,9 @@
 #include "../../sources/qetgraphicsitem/element.h"
 #include "../../sources/autoNum/elementautonumschemecommand.h"
 #include "../../sources/elementprovider.h"
+#include "../../sources/container/qetzip.h"
+#include <QSqlDatabase>
+#include <QMap>
 #include "../../sources/TerminalStrip/terminalstrip.h"
 #include "../../sources/ui/elementpropertieswidget.h"
 #include "../../sources/conductorautonumerotation.h"
@@ -191,6 +194,38 @@ static QStringList sortedLines(QString xml, const QString &path)
 	QStringList list = xml.split(QLatin1Char('\n'));
 	list.sort();
 	return list;
+}
+
+	//The saved links of a .qetz, symbol by symbol in their order: what a
+	//symbol saves of its partners, as its file holds it
+static QStringList savedLinks(const QString &qetz, const QString &path)
+{
+	QFile file(qetz); file.open(QIODevice::ReadOnly);
+	QList<QetZip::Entry> entries;
+	QString error;
+	check(QetZip::fromBytes(file.readAll(), &entries, &error), "a .qetz read");
+	QTemporaryDir dir;
+	const QString db_path = dir.filePath(QStringLiteral("project.sqlite"));
+	for (const QetZip::Entry &entry : entries)
+		if (entry.name == QLatin1String("project.sqlite")) {
+			QFile db(db_path); db.open(QIODevice::WriteOnly); db.write(entry.data);
+		}
+	QMap<QString, QStringList> links;   //symbol -> its partners in order
+	{
+		QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("saved_links"));
+		db.setDatabaseName(db_path);
+		check(db.open(), "a .qetz's database opened");
+		QSqlQuery query(db);
+		check(query.exec(QStringLiteral("SELECT element_key, linked_uuid FROM doc_link ORDER BY element_key, ord")),
+			  "saved links read");
+		while (query.next())
+			links[query.value(0).toString()] << query.value(1).toString();
+	}
+	QSqlDatabase::removeDatabase(QStringLiteral("saved_links"));
+	QStringList rows;
+	for (auto it = links.cbegin() ; it != links.cend() ; ++it)
+		rows << it.key() + QStringLiteral(": ") + it.value().join(QLatin1Char(','));
+	return sortedLines(rows.join(QLatin1Char('\n')), path);
 }
 
 	//The rows of the project database's tables, in their order, read as
@@ -680,6 +715,10 @@ int main(int argc, char **argv)
 			qputenv("QET_LAZY_FOLIOS", "1");
 			check(sortedLines(edited_back.toXml().toString(), path) == sortedLines(usual_back.toXml().toString(), path),
 				  "an edited .qetz saved without building holds what the edits made");
+				//Each symbol's links as saved, partners on folios not built
+				//included, in their order (D5a)
+			check(savedLinks(edited_path, path) == savedLinks(usual_path, path),
+				  "an edited .qetz saved without building keeps every symbol's links");
 		}
 		std::printf("PASS: %d folios\n", int(folios.size()));
 	} catch (const std::exception &error) {

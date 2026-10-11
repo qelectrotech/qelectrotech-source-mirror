@@ -2327,17 +2327,21 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 						QetGraphicsTableItem::xmlTagName()).isEmpty())
 					buildFolioToShow(diagram);
 			//A built folio is written from its items, which need their
-			//partners: a symbol saves its links, a report the position of
-			//its partner. Build the folios of every partner still waiting,
-			//and of every table chain, until none is
+			//partners: a table saves the table before it, and in a .qet a
+			//report the position of its partner. Build the folios of every
+			//table chain, and for a .qet of every partner still waiting,
+			//until none is. A symbol saves the partners it waits for itself
+			//(Element::toXml()), and a .qetz keeps no partner's text (D3c):
+			//saving a .qetz builds no partner (stage D5a)
 		for (int built = -1 ; built != unloadedFolioCount() ; )
 		{
 			built = unloadedFolioCount();
 			QSet<QUuid> waiting;
 			QSet<Diagram *> chained;
 			for (Diagram *diagram : builtFolios()) {
-				for (Element *element : diagram->elements())
-					waiting.unite(element->pendingLinks());
+				if (kept_folios)
+					for (Element *element : diagram->elements())
+						waiting.unite(element->pendingLinks());
 				for (Diagram *other : tableChainFolios(diagram))
 					if (!other->isLoaded()) chained.insert(other);
 			}
@@ -2351,6 +2355,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	} else {
 		loadFolios();
 	}
+	m_waiting_link_targets = unloadedFolioCount() ? symbolsOnUnbuiltFolios() : QSet<QUuid>();
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
 		//information, folio title blocks and wire properties agree with every placed symbol, folio and
 		//wire, at each save. A test and debugging aid; it changes nothing.
@@ -2478,6 +2483,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
+	m_waiting_link_targets.clear();
 	return(xml_doc);
 }
 
