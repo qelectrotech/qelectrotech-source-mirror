@@ -62,8 +62,14 @@ CableFilterProxy::CableFilterProxy(QObject *parent) :
 void CableFilterProxy::setTokens(const QStringList &tokens)
 {
 	if (m_tokens == tokens) return;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+	beginFilterChange();
+	m_tokens = tokens;
+	endFilterChange(QSortFilterProxyModel::Direction::Rows);
+#else
 	m_tokens = tokens;
 	invalidateFilter();
+#endif
 }
 
 /**
@@ -76,8 +82,14 @@ void CableFilterProxy::setTokens(const QStringList &tokens)
 void CableFilterProxy::setHideUnsuitable(bool hide)
 {
 	if (m_hide_unsuitable == hide) return;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+	beginFilterChange();
+	m_hide_unsuitable = hide;
+	endFilterChange(QSortFilterProxyModel::Direction::Rows);
+#else
 	m_hide_unsuitable = hide;
 	invalidateFilter();
+#endif
 }
 
 /**
