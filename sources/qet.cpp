@@ -771,6 +771,15 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 */
 bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message)
 {
+	return writeXmlText(xml_doc.toString(4), filepath, error_message);
+}
+
+/**
+	@brief QET::writeXmlText
+	writeXmlFile() for a document already written as @p text
+*/
+bool QET::writeXmlText(const QString &text, const QString &filepath, QString *error_message)
+{
 	QSaveFile file(filepath);
 
 	// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
@@ -789,7 +798,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	QTextStream out(&file);
 	out.setEncoding(QStringConverter::Utf8);
 	out.setGenerateByteOrderMark(false);
-	out << xml_doc.toString(4);
+	out << text;
 	if  (!file.commit())
 	{
 		if (error_message) {
@@ -896,6 +905,15 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 
 bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message)
 {
+	return writeTextToFile(xml_doc.toString(4), file, error_message);
+}
+
+/**
+	@brief QET::writeTextToFile
+	writeToFile() for a document already written as @p text
+*/
+bool QET::writeTextToFile(const QString &text, QFile *file, QString *error_message)
+{
 	bool opened_here = file->isOpen() ? false : true;
 
 	if (!file->isOpen())
@@ -920,7 +938,7 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 	out.seek(0);
 	out.setEncoding(QStringConverter::Utf8);
 	out.setGenerateByteOrderMark(false);
-	out << xml_doc.toString(4);
+	out << text;
 	if (opened_here) {
 		file->close();
 	}

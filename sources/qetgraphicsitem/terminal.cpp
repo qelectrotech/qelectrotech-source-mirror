@@ -1090,6 +1090,17 @@ QList<Terminal *> relatedPotentialTerminal (
 	// If terminal parent element is a folio report.
 	if (all_diagram && terminal -> parentElement() -> linkType() & Element::AllReport)
 	{
+			//The report's partner on a folio not built yet (QET_LAZY_FOLIOS)
+			//is built, so that a potential is followed as far as when every
+			//folio is; not while folios are being read or built, which
+			//would build whole report chains
+		Element *report = terminal->parentElement();
+		const QSet<QUuid> waiting = report->pendingLinks();
+		QETProject *project = report->diagram() ? report->diagram()->project() : nullptr;
+		if (!waiting.isEmpty() && project
+				&& project->state() != QETProject::ProjectParsingRunning) {
+			project->buildFoliosHoldingSymbols(waiting);
+		}
 		QList <Element *> elmt_list = terminal -> parentElement() -> linkedElements();
 		if (!elmt_list.isEmpty())
 		{

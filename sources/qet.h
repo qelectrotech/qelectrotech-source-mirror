@@ -202,6 +202,8 @@ namespace QET {
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);
+	bool writeXmlText(const QString &text, const QString &filepath, QString *error_message = nullptr);
+	bool writeTextToFile(const QString &text, QFile *file, QString *error_message = nullptr);
 	bool eachStrIsEqual (const QStringList &qsl);
 	QActionGroup *depthActionGroup(QObject *parent = nullptr);
 	void saveCustomColors();

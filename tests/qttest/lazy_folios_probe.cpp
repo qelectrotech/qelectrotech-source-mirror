@@ -165,6 +165,15 @@ static void edit(QETProject &project, int i)
 	project.undoStack()->redo();
 }
 
+	//The project as saving writes it: folios not built written as read
+	//when building them would write the same (QETProject::toXml())
+static QString saved(QETProject &project)
+{
+	QHash<int, QByteArray> kept;
+	const QDomDocument document = project.toXml(&kept);
+	return QETProject::spliceKeptFolios(document.toString(4), kept);
+}
+
 	//The rows of the project database's tables, in their order, read as
 	//every caller reads them (newQuery(): brought up to date first)
 static QStringList tables(QETProject &project)
@@ -224,6 +233,9 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QETLazyFoliosRegression");
 	QETProject::setBackupEnabled(false); QET::QetMessageBox::setNonInteractive(true);
 	QFontDatabase::addApplicationFont(":/fonts/LiberationSans-Regular.ttf");
+		//Folios not built saved as read (QETProject::toXml()): this
+		//fixture is written by this version's own save
+	qputenv("QET_LAZY_SAVE_KEPT", "1");
 	try {
 		const QString output = QString::fromLocal8Bit(argv[3]);
 		qunsetenv("QET_LAZY_FOLIOS");
@@ -447,6 +459,114 @@ int main(int argc, char **argv)
 			}
 			check(a == b,
 				  "edits save as when every folio is built");
+		}
+			//Saving writes the folios not built as they were read, the same
+			//bytes as building them would write
+		const QString usual_text = saved(eager);
+		{
+			QETProject untouched(path);
+			const int unbuilt = untouched.unloadedFolioCount();
+			const QString untouched_text = saved(untouched);
+			if (untouched_text != usual_text) {
+				QFile fa(output + "/untouched-lazy.xml"); fa.open(QIODevice::WriteOnly); fa.write(untouched_text.toUtf8());
+				QFile fb(output + "/untouched-usual.xml"); fb.open(QIODevice::WriteOnly); fb.write(usual_text.toUtf8());
+			}
+			check(untouched_text == usual_text, "a project saved without building, as when built");
+				//Only the partners of the folios the terminal strip built
+			std::printf("saved untouched: %d of %d folios not built built to save\n",
+						unbuilt - untouched.unloadedFolioCount(), unbuilt);
+			check(untouched.unloadedFolioCount() > 0, "saving does not build every folio");
+		}
+			//After everyday edits on a folio: as when built, others not built
+		{
+			QETProject edited(path), usual(path);
+			qunsetenv("QET_LAZY_FOLIOS");
+			QETProject usual_edited(path);
+			qputenv("QET_LAZY_FOLIOS", "1");
+			edit(edited, busiest);
+			edit(usual_edited, busiest);
+			QFile file(path); file.open(QIODevice::ReadOnly);
+			const QString before = QString::fromUtf8(file.readAll());
+			static const QRegularExpression uuid_re(QStringLiteral("\\{[0-9a-f-]{36}\\}"));
+			auto lines = [&before](QString text) {
+				for (auto it = uuid_re.globalMatch(QString(text)) ; it.hasNext() ; ) {
+					const QString uuid = it.next().captured(0);
+					if (!before.contains(uuid)) text.replace(uuid, QStringLiteral("new"));
+				}
+				QStringList list = text.split(QLatin1Char('\n'));
+				list.sort();
+				return list;
+			};
+			const QStringList la = lines(saved(edited)), lb = lines(saved(usual_edited));
+			if (la != lb) {
+				int shown = 0;
+				for (const QString &l : lb) if (!la.contains(l) && shown++ < 6) std::printf("  only usual: %s\n", qPrintable(l.trimmed().left(150)));
+				shown = 0;
+				for (const QString &l : la) if (!lb.contains(l) && shown++ < 6) std::printf("  only lazy:  %s\n", qPrintable(l.trimmed().left(150)));
+			}
+			check(la == lb, "edits saved without building, as when built");
+			std::printf("saved after the edits: %d folios not built\n", edited.unloadedFolioCount());
+			check(edited.unloadedFolioCount() > 0, "saving after edits does not build every folio");
+		}
+			//A folio not built given a new title: it and the folios its
+			//links reach are built to be saved, the others not
+		{
+			QETProject renamed(path);
+			qunsetenv("QET_LAZY_FOLIOS");
+			QETProject usual_renamed(path);
+			qputenv("QET_LAZY_FOLIOS", "1");
+			for (QETProject *project : {&renamed, &usual_renamed}) {
+				Diagram *folio = project->folios().at(busiest);
+				TitleBlockProperties block = folio->border_and_titleblock.exportTitleBlock();
+				block.title += QStringLiteral(" (renamed)");
+				folio->border_and_titleblock.importTitleBlock(block);
+			}
+			check(saved(renamed) == saved(usual_renamed), "a renamed folio saved as when built");
+			std::printf("saved after a folio not built was renamed: %d folios not built\n", renamed.unloadedFolioCount());
+			check(renamed.unloadedFolioCount() > 0, "renaming a folio does not build every folio to save");
+		}
+			//Project properties, which any folio's texts can use: every
+			//folio is built to be saved
+		{
+			QETProject changed(path);
+			qunsetenv("QET_LAZY_FOLIOS");
+			QETProject usual_changed(path);
+			qputenv("QET_LAZY_FOLIOS", "1");
+			for (QETProject *project : {&changed, &usual_changed}) {
+				DiagramContext properties = project->projectProperties();
+				properties.addValue(QStringLiteral("lazy_test"), QStringLiteral("1"));
+				project->setProjectProperties(properties);
+			}
+			check(saved(changed) == saved(usual_changed), "changed project properties saved as when built");
+			check(changed.unloadedFolioCount() == 0, "changed project properties build every folio to save");
+		}
+			//A potential through folio reports is followed as far as when
+			//every folio is built
+		{
+			Conductor *usual_wire = nullptr;
+			for (Diagram *folio : eager.folios())
+				for (Element *element : folio->elements())
+					if ((element->linkType() & Element::AllReport) && !element->conductors().isEmpty()
+							&& !usual_wire)
+						usual_wire = element->conductors().first();
+			check(usual_wire, "a wire on a folio report");
+			auto potential = [](Conductor *wire) {
+				QStringList list;
+				for (Conductor *c : wire->relatedPotentialConductors(true))
+					list << c->uuid().toString();
+				list.sort();
+				return list;
+			};
+			QETProject followed(path);
+			Diagram *folio = followed.folios().at(eager.folioIndex(usual_wire->diagram()));
+			followed.buildFolioToShow(folio);
+			Conductor *wire = nullptr;
+			for (Conductor *c : folio->conductors())
+				if (c->uuid() == usual_wire->uuid()) wire = c;
+			check(wire, "the same wire");
+			check(potential(wire) == potential(usual_wire), "a potential followed as when built");
+			std::printf("potential through reports: %d wires, %d folios not built\n",
+						int(potential(wire).size()), followed.unloadedFolioCount());
 		}
 		std::printf("PASS: %d folios\n", int(folios.size()));
 	} catch (const std::exception &error) {
