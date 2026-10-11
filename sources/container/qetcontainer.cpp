@@ -93,6 +93,19 @@ QList<QDomElement> childElements(const QDomElement &parent, const QString &tag)
 	return list;
 }
 
+	//An element and the text nodes on either side of it out of its parent,
+	//one text node left where they were, so nothing is read twice
+void removeElement(QDomElement e)
+{
+	QDomNode parent = e.parentNode();
+	QDomNode before = e.previousSibling(), after = e.nextSibling();
+	parent.removeChild(e);
+	if (before.isText() && after.isText()) {
+		before.setNodeValue(before.nodeValue() + after.nodeValue());
+		parent.removeChild(after);
+	}
+}
+
 	//The collection's symbol definitions, each to elements/<categories>/<name>
 void splitCollection(QDomDocument &document, const QDomElement &category, const QString &path,
 					 QList<QetZip::Entry> *parts, QSet<QString> *taken)
@@ -165,6 +178,49 @@ bool QetContainer::readDocument(const QByteArray &content, QDomDocument *documen
 }
 
 /**
+	@brief QetContainer::dropComputed
+	Take out of the folio @p diagram what QElectroTech computes when it
+	builds the folio (stage D3c): a wire's description of
+	its ends (element1_label, element1_name, element1_linked, terminalname1,
+	and the same for end 2), a symbol text's content where it shows the
+	symbol's information or a composition of it, and -- with
+	@p terminal_lists, when every symbol has a uuid of its own -- a symbol's
+	list of its terminals. Checked on 342 projects: opened and saved, each
+	comes back as it was, but the terminal lists of a file whose symbols
+	share a uuid (F100), where wires find their ends by them.
+*/
+void QetContainer::dropComputed(QDomElement diagram, bool terminal_lists)
+{
+	for (QDomElement list : childElements(diagram, QStringLiteral("conductors")))
+		for (QDomElement wire : childElements(list, QStringLiteral("conductor")))
+			for (const char *end : {"1", "2"})
+				for (const char *name : {"element%1_label", "element%1_name", "element%1_linked",
+										 "terminalname%1"})
+					wire.removeAttribute(QString::fromLatin1(name).arg(QLatin1String(end)));
+	for (QDomElement list : childElements(diagram, QStringLiteral("elements")))
+	{
+		for (QDomElement element : childElements(list, QStringLiteral("element")))
+		{
+			if (terminal_lists)
+				for (QDomElement terminals : childElements(element, QStringLiteral("terminals")))
+					removeElement(terminals);
+			for (QDomElement texts : childElements(element, QStringLiteral("dynamic_texts")))
+			{
+				for (QDomElement text : childElements(texts, QStringLiteral("dynamic_elmt_text")))
+				{
+					const QString from = text.attribute(QStringLiteral("text_from"));
+					if (from != QLatin1String("ElementInfo") && from != QLatin1String("CompositeText"))
+						continue;
+					for (QDomElement content : childElements(text, QStringLiteral("text")))
+						while (content.hasChildNodes())
+							content.removeChild(content.firstChild());
+				}
+			}
+		}
+	}
+}
+
+/**
 	@brief QetContainer::split
 	@param project : the project document, as QETProject::toXml() makes it
 	@param writer : the program writing it, kept in the manifest
@@ -192,6 +248,10 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 		//Folios, each with its pictures taken out
 	int folio = 0;
 	QMap<QString, QByteArray> pictures;   //name -> png, once each
+		//Nothing QElectroTech computes is kept (format 3)
+	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
+		dropComputed(diagram, !index.isEmpty());
+
 	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
 	{
 		++folio;

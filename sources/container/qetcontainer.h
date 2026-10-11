@@ -60,6 +60,8 @@ namespace QetContainer
 	bool readFolio(const QHash<QString, QByteArray> &files, const QString &file,
 				   QDomDocument *folio, QString *error = nullptr);
 
+		/// Take what QElectroTech computes out of a folio (format 3)
+	void dropComputed(QDomElement diagram, bool terminal_lists);
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
 		/// true if @p content is a zip, so a .qetz rather than a .qet
