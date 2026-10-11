@@ -29,6 +29,9 @@
 #include "../../sources/TerminalStrip/terminalstrip.h"
 #include "../../sources/ui/elementpropertieswidget.h"
 #include "../../sources/conductorautonumerotation.h"
+#include "../../sources/conductornumexport.h"
+#include "../../sources/wiringlistexport.h"
+#include "../../sources/ui/terminalnumberingdialog.h"
 #include "../../sources/diagramcontent.h"
 #include "../../sources/diagramview.h"
 #include "../../sources/diagramevent/diagrameventaddpaste.h"
@@ -374,6 +377,15 @@ int main(int argc, char **argv)
 		for (const QString &title : titles)
 			check(gaps(numbered, title) == gaps(eager, title), "a scheme's gaps as when built");
 		check(numbered.unloadedFolioCount() == folios.size() - strip_folios.size(), "numbering read without building");
+		{
+				//Wire numbers exported from the database filled from the
+				//document, as when built (D5)
+			QETProject exported(path);
+			check(ConductorNumExport(&exported).wiresNum() == ConductorNumExport(&eager).wiresNum(),
+				  "wire numbers of a .qet exported as when built");
+			check(exported.unloadedFolioCount() == folios.size() - strip_folios.size(),
+				  "exporting a .qet's wire numbers builds no folio");
+		}
 			//A symbol placed on a folio, numbered by a scheme others follow
 		QString location, title;
 		int folio = -1;
@@ -655,6 +667,13 @@ int main(int argc, char **argv)
 				++continued;
 			}
 			check(continued > 0, "a folio whose table continues another");
+			{
+					//The wiring list export writes the whole project out
+					//(toXml()), building every folio: as when built
+				QETProject exported(zipped);
+				check(WiringListExport(&exported).toCsvString() == WiringListExport(&eager).toCsvString(),
+					  "wiring list exported as when built");
+			}
 
 				//Numbering, the searches for symbols and the unused symbols
 				//are answered from the database: no folio file is read
@@ -738,6 +757,26 @@ int main(int argc, char **argv)
 				std::printf(".qetz tables listed: %d folios built, %d hold a table\n",
 							unbuilt - listed.unloadedFolioCount(), with_tables);
 				check(listed.unloadedFolioCount() > 0, "listing the tables does not build every folio");
+			}
+
+				//The wire numbers export and the terminal
+				//numbering dialog: as when built, building only the folios
+				//holding a terminal (D5)
+			{
+				QETProject exported(zipped);
+				const int unbuilt = exported.unloadedFolioCount();
+				check(ConductorNumExport(&exported).wiresNum() == ConductorNumExport(&eager).wiresNum(),
+					  "wire numbers exported as when built");
+				check(exported.unloadedFolioCount() == unbuilt, "exporting wire numbers builds no folio");
+				{ TerminalNumberingDialog dialog(nullptr, &exported); }
+				int with_terminals = 0;
+				for (Diagram *folio : folios)
+					for (Element *element : folio->elements())
+						if (element->elementData().m_type == ElementData::Terminal) { ++with_terminals; break; }
+				std::printf(".qetz terminal numbering: %d folios built, %d hold a terminal\n",
+							unbuilt - exported.unloadedFolioCount(), with_terminals);
+				check(exported.folios().size() - exported.unloadedFolioCount() <= with_terminals + (folios.size() - unbuilt),
+					  "terminal numbering builds only the folios holding a terminal");
 			}
 
 				//Saved as a .qetz without building the folios not touched
