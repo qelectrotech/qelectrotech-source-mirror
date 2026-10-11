@@ -799,6 +799,7 @@ bool Diagram::buildDeferred()
 	}
 	QDomElement xml = m_deferred;
 	m_deferred = QDomElement();
+	m_kept_text.clear();
 	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
 	if (db) db->setBuildingFolio(true);
 	m_loading_deferred = true;
@@ -1113,7 +1114,8 @@ QList < QSet <Conductor *> > Diagram::potentials()
 */
 QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		//A folio of a project opened with QET_LAZY_FOLIOS is written from
-		//its built items
+		//its built items (QETProject::toXml() may write one not built as
+		//it was read instead)
 	ensureLoaded();
 	// document
 	QDomDocument document;
@@ -1125,120 +1127,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	// schema properties
 	// proprietes du schema
 	if (whole_content) {
-			//Persist the folio identity, so that a folio keeps the same uuid
-			//across save/load. Without it every load invents a new one, and
-			//nothing outside the running instance (version control, a lock,
-			//a diff tool...) can tell which folio is which.
-		dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
-		border_and_titleblock.titleBlockToXml(dom_root);
-		border_and_titleblock.borderToXml(dom_root);
-
-		// Default conductor properties
-		QDomElement default_conductor =
-				document.createElement(QStringLiteral("defaultconductor"));
-		defaultConductorProperties.toXml(default_conductor);
-		dom_root.appendChild(default_conductor);
-
-		// Conductor autonum
-		if (!m_conductors_autonum_name.isEmpty()) {
-			dom_root.setAttribute(QStringLiteral("conductorAutonum"),
-						  m_conductors_autonum_name);
-		}
-
-		//Default New Element
-		dom_root.setAttribute(QStringLiteral("freezeNewElement"),
-					  m_freeze_new_elements ? QStringLiteral("true") : QStringLiteral("false"));
-
-		//Default New Conductor
-		dom_root.setAttribute(QStringLiteral("freezeNewConductor"),
-					  m_freeze_new_conductors_
-					  ? QStringLiteral("true") : QStringLiteral("false"));
-
-		//Element Folio Sequential Variables
-		if (!m_elmt_unitfolio_max.isEmpty()
-				|| !m_elmt_tenfolio_max.isEmpty()
-				|| !m_elmt_hundredfolio_max.isEmpty()) {
-			QDomElement elmtfoliosequential =
-					document.createElement(
-						QStringLiteral("elementautonumfoliosequentials"));
-			if (!m_elmt_unitfolio_max.isEmpty()) {
-				QDomElement elmtfolioseq =
-						document.createElement(
-							QStringLiteral("elementunitfolioseq"));
-				folioSequentialsToXml(&m_elmt_unitfolio_max,
-							  &elmtfolioseq,
-							  QStringLiteral("sequf_"),
-							  QStringLiteral("unitfolioseq"),
-							  &document);
-				elmtfoliosequential.appendChild(elmtfolioseq);
-			}
-			if (!m_elmt_tenfolio_max.isEmpty()) {
-				QDomElement elmtfolioseq =
-						document.createElement(
-							QStringLiteral("elementtenfolioseq"));
-				folioSequentialsToXml(&m_elmt_tenfolio_max,
-							  &elmtfolioseq,
-							  QStringLiteral("seqtf_"),
-							  QStringLiteral("tenfolioseq"),
-							  &document);
-				elmtfoliosequential.appendChild(elmtfolioseq);
-			}
-			if (!m_elmt_hundredfolio_max.isEmpty()) {
-				QDomElement elmtfolioseq =
-						document.createElement(
-							QStringLiteral("elementhundredfolioseq"));
-				folioSequentialsToXml(&m_elmt_hundredfolio_max,
-							  &elmtfolioseq,
-							  QStringLiteral("seqhf_"),
-							  QStringLiteral("hundredfolioseq"),
-							  &document);
-				elmtfoliosequential.appendChild(elmtfolioseq);
-			}
-			dom_root.appendChild(elmtfoliosequential);
-		}
-		// Conductor Folio Sequential Variables
-		if (!m_cnd_unitfolio_max.isEmpty()
-				|| !m_cnd_tenfolio_max.isEmpty() ||
-				!m_cnd_hundredfolio_max.isEmpty()) {
-			QDomElement cndfoliosequential =
-					document.createElement(
-						QStringLiteral("conductorautonumfoliosequentials"));
-			QHash<QString, QStringList>::iterator i;
-			if (!m_cnd_unitfolio_max.isEmpty()) {
-				QDomElement cndfolioseq =
-						document.createElement(
-							QStringLiteral("conductorunitfolioseq"));
-				folioSequentialsToXml(&m_cnd_unitfolio_max,
-							  &cndfolioseq,
-							  QStringLiteral("sequf_"),
-							  QStringLiteral("unitfolioseq"),
-							  &document);
-				cndfoliosequential.appendChild(cndfolioseq);
-			}
-			if (!m_cnd_tenfolio_max.isEmpty()) {
-				QDomElement cndfolioseq =
-						document.createElement(
-							QStringLiteral("conductortenfolioseq"));
-				folioSequentialsToXml(&m_cnd_tenfolio_max,
-							  &cndfolioseq,
-							  QStringLiteral("seqtf_"),
-							  QStringLiteral("tenfolioseq"),
-							  &document);
-				cndfoliosequential.appendChild(cndfolioseq);
-			}
-			if (!m_cnd_hundredfolio_max.isEmpty()) {
-				QDomElement cndfolioseq =
-						document.createElement(
-							QStringLiteral("conductorhundredfolioseq"));
-				folioSequentialsToXml(&m_cnd_hundredfolio_max,
-							  &cndfolioseq,
-							  QStringLiteral("seqhf_"),
-							  QStringLiteral("hundredfolioseq"),
-							  &document);
-				cndfoliosequential.appendChild(cndfolioseq);
-			}
-			dom_root.appendChild(cndfoliosequential);
-		}
+		writeHeader(document, dom_root);
 	}
 	else {
 		//this method with whole_content to false,
@@ -1407,6 +1296,143 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 
 
 	return(document);
+}
+
+/**
+	@brief Diagram::writeHeader
+	Write this folio's own data -- its uuid, title block, border, default
+	wire, numbering -- into @p dom_root, the folio's element of @p document:
+	what toXml() writes before the folio's items.
+*/
+void Diagram::writeHeader(QDomDocument &document, QDomElement &dom_root)
+{
+		//Persist the folio identity, so that a folio keeps the same uuid
+		//across save/load. Without it every load invents a new one, and
+		//nothing outside the running instance (version control, a lock,
+		//a diff tool...) can tell which folio is which.
+	dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	border_and_titleblock.titleBlockToXml(dom_root);
+	border_and_titleblock.borderToXml(dom_root);
+
+	// Default conductor properties
+	QDomElement default_conductor =
+			document.createElement(QStringLiteral("defaultconductor"));
+	defaultConductorProperties.toXml(default_conductor);
+	dom_root.appendChild(default_conductor);
+
+	// Conductor autonum
+	if (!m_conductors_autonum_name.isEmpty()) {
+		dom_root.setAttribute(QStringLiteral("conductorAutonum"),
+					  m_conductors_autonum_name);
+	}
+
+	//Default New Element
+	dom_root.setAttribute(QStringLiteral("freezeNewElement"),
+				  m_freeze_new_elements ? QStringLiteral("true") : QStringLiteral("false"));
+
+	//Default New Conductor
+	dom_root.setAttribute(QStringLiteral("freezeNewConductor"),
+				  m_freeze_new_conductors_
+				  ? QStringLiteral("true") : QStringLiteral("false"));
+
+	//Element Folio Sequential Variables
+	if (!m_elmt_unitfolio_max.isEmpty()
+			|| !m_elmt_tenfolio_max.isEmpty()
+			|| !m_elmt_hundredfolio_max.isEmpty()) {
+		QDomElement elmtfoliosequential =
+				document.createElement(
+					QStringLiteral("elementautonumfoliosequentials"));
+		if (!m_elmt_unitfolio_max.isEmpty()) {
+			QDomElement elmtfolioseq =
+					document.createElement(
+						QStringLiteral("elementunitfolioseq"));
+			folioSequentialsToXml(&m_elmt_unitfolio_max,
+						  &elmtfolioseq,
+						  QStringLiteral("sequf_"),
+						  QStringLiteral("unitfolioseq"),
+						  &document);
+			elmtfoliosequential.appendChild(elmtfolioseq);
+		}
+		if (!m_elmt_tenfolio_max.isEmpty()) {
+			QDomElement elmtfolioseq =
+					document.createElement(
+						QStringLiteral("elementtenfolioseq"));
+			folioSequentialsToXml(&m_elmt_tenfolio_max,
+						  &elmtfolioseq,
+						  QStringLiteral("seqtf_"),
+						  QStringLiteral("tenfolioseq"),
+						  &document);
+			elmtfoliosequential.appendChild(elmtfolioseq);
+		}
+		if (!m_elmt_hundredfolio_max.isEmpty()) {
+			QDomElement elmtfolioseq =
+					document.createElement(
+						QStringLiteral("elementhundredfolioseq"));
+			folioSequentialsToXml(&m_elmt_hundredfolio_max,
+						  &elmtfolioseq,
+						  QStringLiteral("seqhf_"),
+						  QStringLiteral("hundredfolioseq"),
+						  &document);
+			elmtfoliosequential.appendChild(elmtfolioseq);
+		}
+		dom_root.appendChild(elmtfoliosequential);
+	}
+	// Conductor Folio Sequential Variables
+	if (!m_cnd_unitfolio_max.isEmpty()
+			|| !m_cnd_tenfolio_max.isEmpty() ||
+			!m_cnd_hundredfolio_max.isEmpty()) {
+		QDomElement cndfoliosequential =
+				document.createElement(
+					QStringLiteral("conductorautonumfoliosequentials"));
+		QHash<QString, QStringList>::iterator i;
+		if (!m_cnd_unitfolio_max.isEmpty()) {
+			QDomElement cndfolioseq =
+					document.createElement(
+						QStringLiteral("conductorunitfolioseq"));
+			folioSequentialsToXml(&m_cnd_unitfolio_max,
+						  &cndfolioseq,
+						  QStringLiteral("sequf_"),
+						  QStringLiteral("unitfolioseq"),
+						  &document);
+			cndfoliosequential.appendChild(cndfolioseq);
+		}
+		if (!m_cnd_tenfolio_max.isEmpty()) {
+			QDomElement cndfolioseq =
+					document.createElement(
+						QStringLiteral("conductortenfolioseq"));
+			folioSequentialsToXml(&m_cnd_tenfolio_max,
+						  &cndfolioseq,
+						  QStringLiteral("seqtf_"),
+						  QStringLiteral("tenfolioseq"),
+						  &document);
+			cndfoliosequential.appendChild(cndfolioseq);
+		}
+		if (!m_cnd_hundredfolio_max.isEmpty()) {
+			QDomElement cndfolioseq =
+					document.createElement(
+						QStringLiteral("conductorhundredfolioseq"));
+			folioSequentialsToXml(&m_cnd_hundredfolio_max,
+						  &cndfolioseq,
+						  QStringLiteral("seqhf_"),
+						  QStringLiteral("hundredfolioseq"),
+						  &document);
+			cndfoliosequential.appendChild(cndfolioseq);
+		}
+		dom_root.appendChild(cndfoliosequential);
+	}
+}
+
+/**
+	@brief Diagram::headerXml
+	@return the folio's own data as writeHeader() writes it, as text
+*/
+QString Diagram::headerXml()
+{
+	QDomDocument document;
+	auto dom_root = document.createElement(QStringLiteral("diagram"));
+	document.appendChild(dom_root);
+	writeHeader(document, dom_root);
+	return document.toString();
 }
 
 /**

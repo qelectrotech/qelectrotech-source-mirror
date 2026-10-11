@@ -268,7 +268,8 @@ class QETProject : public QObject
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
 
-		QDomDocument toXml();
+		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr);
+		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write();
 		bool isReadOnly() const;
@@ -438,6 +439,18 @@ class QETProject : public QObject
 				const DiagramContext &information,
 				const QHash<QString, QStringList> &titles_by_formula) const;
 		bool m_deferring_folios = false;
+			/// Saving may write a folio not built as it was read
+			/// (writesKeptFolios()): the file is this version's, its
+			/// database rows came from it, and nothing project-wide that
+			/// a folio's saved items depend on has changed since
+		bool m_kept_folios_trusted = false;
+		bool m_kept_folios_stale = false;
+			/// Something was edited since the project was opened: a table
+			/// filled from the database may have changed
+		bool m_edited_since_open = false;
+		void markKeptFoliosStale() {m_kept_folios_stale = true;}
+			/// The file being read, for each folio's text (readDiagramsXml())
+		QByteArray m_opened_content;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
 			/// Texts drawn in a turned symbol stay horizontal (on for a new

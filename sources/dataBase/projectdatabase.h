@@ -154,6 +154,7 @@ class projectDataBase : public QObject
 			//and the database is not marked changed
 		void setBuildingFolio(bool building);
 		bool isBuildingFolio() const {return m_building_folios > 0;}
+		bool rowsFromDocument() const {return m_rows_from_document;}
 		QString prefillReport() const;
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;

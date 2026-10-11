@@ -307,7 +307,20 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
+		//What changes the saved items of folios not built (QET_LAZY_FOLIOS):
+		//a folio's position, number or the folio total in their texts,
+		//the report and cross-reference settings, a symbol's definition.
+		//A folio not built is then built to be saved (writesKeptFolios())
+	connect(this, &QETProject::diagramAdded, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::diagramRemoved, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::projectDiagramsOrderChanged, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::reportPropertiesChanged, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::XRefPropertiesChanged, this, &QETProject::markKeptFoliosStale);
+
 	m_undo_stack = new QUndoStack(this);
+		//Folios not built are saved as read until something is edited
+		//(m_edited_since_open, toXml())
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
@@ -319,6 +332,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, &QETProject::markKeptFoliosStale);
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
@@ -398,6 +412,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
+		//Each folio's text is kept while it is not built (readDiagramsXml())
+	m_opened_content = content;
 	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
@@ -438,6 +454,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
+	m_opened_content.clear();
 
 	const qint64 total_ms = load_timer.elapsed();
 	qInfo().nospace().noquote()
@@ -2001,10 +2018,59 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 	@brief QETProject::toXml
 	@return un document XML representant le projet
 */
-QDomDocument QETProject::toXml()
+QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios)
 {
-		//Every folio is written from its built items (QET_LAZY_FOLIOS)
-	loadFolios();
+		//With @p kept_folios, a folio not built (QET_LAZY_FOLIOS) is
+		//written as a placeholder <diagram qet_kept_folio="n"/> and its text
+		//as read from the file goes in kept_folios, for
+		//spliceKeptFolios() -- when building it would write that same
+		//text: the file is this version's and its database rows came from
+		//it (m_kept_folios_trusted), and nothing a folio's saved items are
+		//made from changed since: the folios' order and number, the
+		//project's properties, report and cross-reference settings, a
+		//symbol's definition (m_kept_folios_stale). Otherwise every folio is
+		//built and written from its items. A folio whose own data changed
+		//is built with the folios its links reach, as when it is shown:
+		//their saved texts can show its data (a report, its partner's
+		//folio label).
+	const bool keep = kept_folios && unloadedFolioCount()
+			&& m_kept_folios_trusted && !m_kept_folios_stale;
+	if (keep) {
+		for (Diagram *diagram : std::as_const(m_diagrams_list))
+			if (diagram->headerChanged())
+				buildFolioToShow(diagram);
+			//A table filled from the database saves the size its rows
+			//give it, which any edit can change
+		if (m_edited_since_open)
+			for (Diagram *diagram : std::as_const(m_diagrams_list))
+				if (!diagram->isLoaded() && !diagram->deferredXml().elementsByTagName(
+						QetGraphicsTableItem::xmlTagName()).isEmpty())
+					buildFolioToShow(diagram);
+			//A built folio is written from its items, which need their
+			//partners: a symbol saves its links, a report the position of
+			//its partner. Build the folios of every partner still waiting,
+			//and of every table chain, until none is
+		for (int built = -1 ; built != unloadedFolioCount() ; )
+		{
+			built = unloadedFolioCount();
+			QSet<QUuid> waiting;
+			QSet<Diagram *> chained;
+			for (Diagram *diagram : builtFolios()) {
+				for (Element *element : diagram->elements())
+					waiting.unite(element->pendingLinks());
+				for (Diagram *other : tableChainFolios(diagram))
+					if (!other->isLoaded()) chained.insert(other);
+			}
+			buildFoliosHoldingSymbols(waiting);
+			QList<Diagram *> chain_list;
+			for (Diagram *diagram : std::as_const(m_diagrams_list))
+				if (chained.contains(diagram) && !diagram->isLoaded())
+					chain_list << diagram;
+			buildFolios(chain_list);
+		}
+	} else {
+		loadFolios();
+	}
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
 		//information, folio title blocks and wire properties
 		//(DB-ACCESSORS-PLAN.md) agree with every placed symbol, folio and
@@ -2083,6 +2149,13 @@ QDomDocument QETProject::toXml()
 			 << "["
 			 << diagram
 			 << "]";
+		if (keep && !diagram->isLoaded()) {
+			auto placeholder = xml_doc.createElement(QStringLiteral("diagram"));
+			placeholder.setAttribute(QStringLiteral("qet_kept_folio"), order_num);
+			kept_folios->insert(order_num ++, diagram->keptText());
+			project_root.appendChild(placeholder);
+			continue;
+		}
 		QDomElement xml_diagram = diagram->toXml().documentElement();
 		QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
 
@@ -2106,6 +2179,28 @@ QDomDocument QETProject::toXml()
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
 	return(xml_doc);
+}
+
+/**
+	@brief QETProject::spliceKeptFolios
+	@return @p text, a project written by toXml() with kept folios, with
+	each placeholder line replaced by the folio's text as it was read
+*/
+QString QETProject::spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios)
+{
+	for (auto it = kept_folios.cbegin() ; it != kept_folios.cend() ; ++it)
+	{
+		const QString placeholder = QStringLiteral("<diagram qet_kept_folio=\"%1\"/>").arg(it.key());
+		const qsizetype at = text.indexOf(placeholder);
+		if (at < 0) {
+			continue;
+		}
+		const qsizetype line_start = text.lastIndexOf(QLatin1Char('\n'), at) + 1;
+		qsizetype line_end = text.indexOf(QLatin1Char('\n'), at);
+		line_end = line_end < 0 ? text.size() : line_end + 1;
+		text.replace(line_start, line_end - line_start, QString::fromUtf8(it.value()));
+	}
+	return text;
 }
 
 /**
@@ -2143,9 +2238,11 @@ QETResult QETProject::write()
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
-	QDomDocument xml_project(toXml());
+	QHash<int, QByteArray> kept_folios;
+	QDomDocument xml_project(toXml(&kept_folios));
 	QString error_message;
-	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
+	if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
+						   m_file_path, &error_message))
 		return(error_message);
 
 		// The project has just been written to a writable file (e.g. saved to
@@ -2675,6 +2772,26 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
 	m_data_base.endPrefill(unloadedFolioCount() > 0);
+		//Saving may write the folios not built as they were read, when
+		//building them would write the same: a file written by this
+		//version, whose database rows came from it (toXml()). A .qet does
+		//not say which program wrote it, and one with this version's
+		//number can hold what a save rewrites (tst_freetextnonfinite,
+		//tst_foliofreezeflags): only with QET_LAZY_SAVE_KEPT=1, until a
+		//.qetz, whose manifest names its writer, does it
+		//(QETZ-DB-TRUTH-PLAN.md D4)
+	m_kept_folios_trusted = qEnvironmentVariableIntValue("QET_LAZY_SAVE_KEPT") == 1
+			&& unloadedFolioCount() > 0
+			&& m_project_qet_version == QetVersion::currentVersion()
+			&& m_data_base.rowsFromDocument();
+	for (Diagram *diagram : std::as_const(m_diagrams_list))
+		if (!diagram->isLoaded() && diagram->keptText().isEmpty())
+			m_kept_folios_trusted = false;
+	m_kept_folios_stale = false;
+	m_edited_since_open = false;
+	if (m_kept_folios_trusted)
+		for (Diagram *diagram : std::as_const(m_diagrams_list))
+			diagram->rememberHeader();
 	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1)
 		qWarning().noquote() << "lazy folios: opened with" << unloadedFolioCount() << "of" << m_diagrams_list.size() << "folios not built";
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1)
@@ -2735,6 +2852,38 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
 
+		//Where each line of the file starts, for a folio's text: lines
+		//[its start, the next element's start) (QETProject::toXml())
+	QList<qsizetype> line_starts;
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1 && !m_opened_content.isEmpty()) {
+		line_starts << 0;
+		for (qsizetype i = 0 ; i < m_opened_content.size() ; ++i)
+			if (m_opened_content.at(i) == '\n') line_starts << i + 1;
+	}
+	auto folio_text = [this, &line_starts](const QDomElement &folio) {
+		const int first = folio.lineNumber();
+		const QDomElement next = folio.nextSiblingElement();
+		int last = next.isNull() ? -1 : next.lineNumber();
+		if (last < 0) {
+				//The last folio: up to the project's closing tag
+			const qsizetype end = m_opened_content.lastIndexOf("</project>");
+			last = end < 0 ? -1 : int(std::upper_bound(line_starts.cbegin(), line_starts.cend(), end)
+									  - line_starts.cbegin());
+		}
+		if (first < 1 || last <= first || last > line_starts.size()) {
+			return QByteArray();
+		}
+		const QByteArray text = m_opened_content.mid(line_starts.at(first - 1),
+													 line_starts.at(last - 1) - line_starts.at(first - 1));
+			//One folio, whole: else it is built to be saved
+		const QByteArray trimmed = text.trimmed();
+		if (!trimmed.startsWith("<diagram ") || text.count("<diagram ") != 1
+				|| !(trimmed.endsWith("</diagram>") || (trimmed.endsWith("/>") && !text.contains("</diagram>")))) {
+			return QByteArray();
+		}
+		return text;
+	};
+
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
 		if(dlgWaiting)
@@ -2756,6 +2905,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			m_deferring_folios = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
 			diagram->initFromXml(diagram_xml_element);
 			m_deferring_folios = false;
+			if (!diagram->isLoaded() && !line_starts.isEmpty())
+				diagram->setKeptText(folio_text(diagram_xml_element));
 			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
@@ -3264,11 +3415,13 @@ void QETProject::writeBackup()
 		//Capture the document by value (implicitly shared, so cheap): the
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.
-	QDomDocument xml_project(toXml());
+	QHash<int, QByteArray> kept_folios;
+	QDomDocument xml_project(toXml(&kept_folios));
 	KAutoSaveFile *target = &m_backup_files[m_next_backup_slot];
 	m_next_backup_slot = (m_next_backup_slot + 1) % BackupGenerations;
-	m_backup_future = QtConcurrent::run([target, xml_project]() mutable {
-		return QET::writeToFile(xml_project, target, nullptr);
+	m_backup_future = QtConcurrent::run([target, xml_project, kept_folios]() mutable {
+		return QET::writeTextToFile(spliceKeptFolios(xml_project.toString(4), kept_folios),
+									target, nullptr);
 	});
 }
 
@@ -3296,6 +3449,8 @@ DiagramContext QETProject::projectProperties()
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
+		//Folio and symbol texts are made from them
+	markKeptFoliosStale();
 	updateDiagramsFolioData();
 	emit projectInformationsChanged(this);
 }
