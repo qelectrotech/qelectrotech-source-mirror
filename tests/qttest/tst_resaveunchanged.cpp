@@ -479,6 +479,41 @@ private slots:
 		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
 	}
 
+	// A project read from a .qet and saved where it is, is saved as a .qetz
+	// beside it, and the .qet is left as it was (QETZ-DB-TRUTH-PLAN.md D1).
+	// What the .qetz holds is what a plain save of the .qet holds.
+	void qetSavedAsQetzBeside()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString qet = m_dir.filePath(QStringLiteral("beside.qet"));
+		QFile::remove(qet);
+		QVERIFY(QFile::copy(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), qet));
+		const QByteArray before = read(qet);
+		const QString script = m_dir.filePath(QStringLiteral("beside.js"));
+		QFile js(script);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("qet.log('SAVED ' + qet.save(''));\n");
+		js.close();
+		const QString log = runChecked({QStringLiteral("--run"), script, qet});
+		QVERIFY2(log.contains(QStringLiteral("SAVED true")), qPrintable(log.right(400)));
+
+		QCOMPARE(read(qet), before);
+		const QString qetz = m_dir.filePath(QStringLiteral("beside.qetz"));
+		QVERIFY2(read(qetz).startsWith("PK\x03\x04"), "no .qetz beside the .qet");
+
+		auto without_save_stamps = [](QByteArray xml) {
+			static const QRegularExpression stamp(QStringLiteral(
+				"\\s*<property [^>]*name=\"saved(filename|filepath|filenamedir|date|date-us|date-eu|time)\"[^>]*>[^<]*</property>"));
+			return QString::fromUtf8(xml).remove(stamp);
+		};
+		const QString straight = resave(qet);
+		const QString back = resave(qetz);
+		QVERIFY(!straight.isEmpty() && !back.isEmpty());
+		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
+	}
+
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.
 	void singleSpaceValueKept()

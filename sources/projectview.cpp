@@ -341,13 +341,15 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// ask the user for a filepath in order to save the project
 	const QString qet_filter = tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file");
 	const QString qetz_filter = tr("Zipped project QElectroTech (*.qetz)", "filetypes allowed when saving a project file");
-	QString selected_filter = QETProject::isContainerPath(m_project->filePath()) ? qetz_filter : qet_filter;
+		//A project is saved as a .qetz unless a .qet is chosen
+		//(QETZ-DB-TRUTH-PLAN.md D1)
+	QString selected_filter = qetz_filter;
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Save as", "dialog title"),
 		m_project -> currentDir() + "/" + tr("untitled")
 				+ (selected_filter == qetz_filter ? ".qetz" : ".qet"),
-		qet_filter + ";;" + qetz_filter,
+		qetz_filter + ";;" + qet_filter,
 		&selected_filter
 	);
 
@@ -726,6 +728,32 @@ QETResult ProjectView::saveAs()
 }
 
 /**
+	@brief ProjectView::saveCopyForOlderVersions
+	Ask for a .qet path and write the project there, for a version of
+	QElectroTech that cannot open a .qetz. The project keeps its file.
+	@return a QETResult object reflecting the situation; a valid one if
+	the operation was cancelled
+*/
+QETResult ProjectView::saveCopyForOlderVersions()
+{
+	if (!m_project) return(noProjectResult());
+
+	QString base = m_project->filePath().isEmpty()
+			? m_project->currentDir() + "/" + tr("untitled")
+			: m_project->filePath();
+	for (const QString &suffix : {QStringLiteral(".qetz"), QStringLiteral(".qet")})
+		if (base.endsWith(suffix, Qt::CaseInsensitive)) base.chop(suffix.size());
+	QString path = QFileDialog::getSaveFileName(
+				this,
+				tr("Save a copy for an older QElectroTech", "dialog title"),
+				base + ".qet",
+				tr("Project QElectroTech (*.qet)", "filetypes allowed when saving a project file"));
+	if (path.isEmpty()) return(QETResult());
+	if (!path.endsWith(".qet", Qt::CaseInsensitive)) path += ".qet";
+	return(m_project->writeCopyForOlderVersions(path));
+}
+
+/**
 	Save project content, then write the project file. May
 	call saveAs if no filepath was provided before.
 	@return a QETResult object reflecting the situation; note that a valid
@@ -739,6 +767,31 @@ QETResult ProjectView::doSave()
 		// The project has not been saved to a file yet,
 		// so save() actually means saveAs().
 		return(saveAs());
+	}
+
+		//A project read from a .qet is saved as a .qetz beside it: say so,
+		//and ask before replacing a .qetz already there
+	if (m_project->savesBesideOpenedFile()) {
+		const QString beside = m_project->besideContainerPath();
+		const QString message = tr("This project was opened from %1. It is saved as %2, "
+								   "beside it, in the zipped project format; %1 stays as "
+								   "it is.\n\nTo write a file for a version of "
+								   "QElectroTech that cannot open %2, use File > Save a "
+								   "copy for an older QElectroTech.")
+				.arg(QFileInfo(m_project->filePath()).fileName(), QFileInfo(beside).fileName());
+		if (QFileInfo::exists(beside)) {
+			if (QET::QetMessageBox::question(
+						this, tr("Save as a zipped project", "message box title"),
+						message + QStringLiteral("\n\n")
+						+ tr("%1 already exists. Replace it?").arg(QFileInfo(beside).fileName()),
+						QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel)
+					!= QMessageBox::Yes) {
+				return(QETResult());
+			}
+		} else {
+			QET::QetMessageBox::information(
+						this, tr("Save as a zipped project", "message box title"), message);
+		}
 	}
 
 	// write to file

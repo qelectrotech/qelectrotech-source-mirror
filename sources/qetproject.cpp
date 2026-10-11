@@ -178,6 +178,8 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 	}
 		//Set the real path, instead of the path of the backup.
 	setFilePath(backup->managedFile().path());
+		//A project read from a .qet is saved as a .qetz beside it
+	m_opened_from_qet = !isContainerPath(m_file_path);
 	delete  backup;
 
 		//Set the project to read only mode if the file it.
@@ -427,6 +429,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
 		m_opened_content = content;
+		//A project read from a .qet is saved as a .qetz beside it
+	m_opened_from_qet = !content.startsWith("PK\x03\x04");
 	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
@@ -967,6 +971,8 @@ void QETProject::setFilePath(const QString &filepath)
 	}
 	m_next_backup_slot = 0;
 	m_file_path = filepath;
+		//A path chosen is saved to as it is
+	m_opened_from_qet = false;
 
 	QFileInfo fi(m_file_path);
 	if (fi.isWritable()) {
@@ -2255,11 +2261,47 @@ bool QETProject::writeContainer(const QDomDocument &project, const QString &path
 	return !entries.isEmpty() && QetZip::write(path, entries, error);
 }
 
+/**
+	@brief QETProject::besideContainerPath
+	@return the .qetz a project read from a .qet is saved to: the same
+	name, beside it
+*/
+QString QETProject::besideContainerPath() const
+{
+	QString path = m_file_path;
+	if (path.endsWith(QStringLiteral(".qet"), Qt::CaseInsensitive)) {
+		path.chop(4);
+	}
+	return path + QStringLiteral(".qetz");
+}
+
+/**
+	@brief QETProject::writeCopyForOlderVersions
+	Write this project as a .qet at @p path, which a QElectroTech that
+	reads no .qetz opens. The project keeps its own file and state.
+*/
+QETResult QETProject::writeCopyForOlderVersions(const QString &path)
+{
+	QHash<int, QByteArray> kept_folios;
+	QDomDocument xml_project(toXml(&kept_folios));
+	QString error_message;
+	if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
+						   path, &error_message))
+		return(error_message);
+	return(QETResult());
+}
+
 QETResult QETProject::write()
 {
 		// this operation requires a filepath
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
+
+		//A project read from a .qet is saved as a .qetz beside it; the
+		//.qet stays as it was (QETZ-DB-TRUTH-PLAN.md D1)
+	if (m_opened_from_qet) {
+		setFilePath(besideContainerPath());
+	}
 
 		// If the project was opened read-only, only refuse when the target
 		// really can't be written: an existing file that is not writable, or a
