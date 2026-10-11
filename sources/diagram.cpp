@@ -798,9 +798,6 @@ QDomElement Diagram::deferredXml()
 {
 	if (m_deferred.isNull() && !m_deferred_part.isEmpty() && m_project) {
 		m_deferred = m_project->readFolioPart(m_deferred_part);
-		if (!m_deferred.isNull()) {
-			m_deferred_part.clear();
-		}
 	}
 	return m_deferred;
 }

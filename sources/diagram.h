@@ -219,6 +219,7 @@ class Diagram : public QGraphicsScene
 			/// project was opened from, read when they are first needed
 			/// (stage D2)
 		void setDeferredPart(const QString &file) {m_deferred = QDomElement(); m_deferred_part = file;}
+		QString deferredPart() const {return m_deferred_part;}
 		QString headerXml();
 			/// The folio's text in the file it was read from, while it is
 			/// not built (QETProject::toXml())

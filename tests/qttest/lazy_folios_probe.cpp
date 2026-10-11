@@ -176,6 +176,23 @@ static QString saved(QETProject &project)
 	return QETProject::spliceKeptFolios(document.toString(4), kept);
 }
 
+	//@p xml's lines in order, any uuid not in the file @p path "new": a
+	//pasted copy's and a new wire's are random, and a folio's symbols are
+	//saved in uuid order
+static QStringList sortedLines(QString xml, const QString &path)
+{
+	QFile file(path); file.open(QIODevice::ReadOnly);
+	const QString before = QString::fromUtf8(file.readAll());
+	static const QRegularExpression uuid_re(QStringLiteral("\\{[0-9a-f-]{36}\\}"));
+	for (auto it = uuid_re.globalMatch(QString(xml)) ; it.hasNext() ; ) {
+		const QString uuid = it.next().captured(0);
+		if (!before.contains(uuid)) xml.replace(uuid, QStringLiteral("new"));
+	}
+	QStringList list = xml.split(QLatin1Char('\n'));
+	list.sort();
+	return list;
+}
+
 	//The rows of the project database's tables, in their order, read as
 	//every caller reads them (newQuery(): brought up to date first)
 static QStringList tables(QETProject &project)
@@ -626,6 +643,43 @@ int main(int argc, char **argv)
 			for (int i = 0; i < folios.size(); ++i)
 				same(indexed, i, "shown from the .qetz");
 			check(indexed.toXml().toString() == eager.toXml().toString(), "the .qetz saves as when built");
+
+				//Saved as a .qetz without building the folios not touched
+				//(D4): their parts and rows copied as they were
+			QETProject untouched(zipped);
+			const int unbuilt = untouched.unloadedFolioCount();
+			const QString kept_path = output + "/kept.qetz";
+			check(untouched.writeContainerFile(kept_path, &error), "saved as a .qetz without building");
+			std::printf(".qetz saved untouched: %d of %d folios not built before, %d after\n",
+						unbuilt, int(folios.size()), untouched.unloadedFolioCount());
+			check(untouched.unloadedFolioCount() > 0, "saving an untouched .qetz does not build every folio");
+			qunsetenv("QET_LAZY_FOLIOS");
+			QETProject kept_back(kept_path);
+			qputenv("QET_LAZY_FOLIOS", "1");
+			check(kept_back.toXml().toString() == eager.toXml().toString(),
+				  "a .qetz saved without building holds the project");
+
+				//After everyday edits on a folio
+			QETProject edited_z(zipped);
+			edit(edited_z, busiest);
+			const QString edited_path = output + "/edited.qetz";
+			check(edited_z.writeContainerFile(edited_path, &error), "edited .qetz saved");
+			std::printf(".qetz saved after the edits: %d folios not built\n", edited_z.unloadedFolioCount());
+			check(edited_z.unloadedFolioCount() > 0, "saving an edited .qetz does not build every folio");
+				//Against the same edits made with every folio built, saved and
+				//read back too: what a save and a reading do to a project is
+				//not what is checked here
+			const QString usual_path = output + "/edited-usual.qetz";
+			qunsetenv("QET_LAZY_FOLIOS");
+			{
+				QETProject edited_usual(path);
+				edit(edited_usual, busiest);
+				check(edited_usual.writeContainerFile(usual_path, &error), "edits saved with every folio built");
+			}
+			QETProject edited_back(edited_path), usual_back(usual_path);
+			qputenv("QET_LAZY_FOLIOS", "1");
+			check(sortedLines(edited_back.toXml().toString(), path) == sortedLines(usual_back.toXml().toString(), path),
+				  "an edited .qetz saved without building holds what the edits made");
 		}
 		std::printf("PASS: %d folios\n", int(folios.size()));
 	} catch (const std::exception &error) {

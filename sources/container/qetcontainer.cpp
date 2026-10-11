@@ -22,6 +22,7 @@
 #include <QHash>
 #include <QMap>
 #include <QSet>
+#include <QRegularExpression>
 
 const char QetContainer::MimeType[] = "application/x-qelectrotech-project+zip";
 
@@ -228,7 +229,8 @@ void QetContainer::dropComputed(QDomElement diagram, bool terminal_lists)
 	set if @p project is not a project
 */
 QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QString &writer,
-										 QString *error, const QByteArray &index)
+										 QString *error, const QByteArray &index,
+										 const QHash<QString, QByteArray> &kept_from)
 {
 	QDomDocument document = project.cloneNode(true).toDocument();
 	QDomElement root = document.documentElement();
@@ -238,7 +240,11 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	}
 
 		//The engineering data out of the document, into project.sqlite
-	const QByteArray database = QetContainerDb::extract(root, error, index);
+		//A folio written as it was read (<diagram qetz-kept-part="..."/>,
+		//stage D4) keeps its part and, through
+		//@p kept_from's project.sqlite, its rows
+	const QByteArray database = QetContainerDb::extract(
+				root, error, index, kept_from.value(QStringLiteral("project.sqlite")));
 	if (database.isEmpty())
 		return {};
 
@@ -247,10 +253,34 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 
 		//Folios, each with its pictures taken out
 	int folio = 0;
-	QMap<QString, QByteArray> pictures;   //name -> png, once each
 		//Nothing QElectroTech computes is kept (format 3)
 	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
 		dropComputed(diagram, !index.isEmpty());
+
+		//The parts of the folios kept as they were, and their pictures
+	QMap<QString, QByteArray> pictures;   //name -> png, once each
+	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
+	{
+		const QString kept = diagram.attribute(QStringLiteral("qetz-kept-part"));
+		if (kept.isEmpty()) continue;
+		if (!kept_from.contains(kept)) {
+			setError(error, QStringLiteral("the part \"%1\" of a folio kept as it was is missing").arg(kept));
+			return {};
+		}
+		taken.insert(kept);
+		const QByteArray part = kept_from.value(kept);
+		static const QRegularExpression image_file(QStringLiteral("%1=\"(images/[^\"]+)\"").arg(ImageFileAttribute));
+		for (const auto &match : image_file.globalMatch(QString::fromUtf8(part))) {
+			const QString name = match.captured(1);
+			if (!kept_from.contains(name)) {
+				setError(error, QStringLiteral("the picture \"%1\" of a folio kept as it was is missing").arg(name));
+				return {};
+			}
+			pictures.insert(name, kept_from.value(name));
+		}
+		parts.append(QetZip::Entry{kept, part, true});
+		root.replaceChild(placeholder(document, kept), diagram);
+	}
 
 	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
 	{

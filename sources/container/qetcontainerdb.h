@@ -38,9 +38,12 @@
 namespace QetContainerDb
 {
 	QByteArray extract(QDomElement project, QString *error = nullptr,
-					   const QByteArray &index = QByteArray());
+					   const QByteArray &index = QByteArray(),
+					   const QByteArray &kept_from = QByteArray());
 	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr);
 	bool restoreFolio(QDomElement diagram, const QByteArray &database, QString *error = nullptr);
+		/// true if @p database names its folios by their uuid (format 3)
+	bool foliosByUuid(const QByteArray &database);
 }
 
 #endif // QETCONTAINERDB_H
