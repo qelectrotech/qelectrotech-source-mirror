@@ -786,6 +786,48 @@ void Diagram::ensureLoaded()
 }
 
 /**
+	@brief Diagram::buildSymbols
+	Build, of this folio not built yet (QET_LAZY_FOLIOS), the symbols
+	@p uuids only -- partners a shown folio draws from -- and keep them for
+	when the folio is built (QETZ-DB-TRUTH-PLAN.md D5b). They belong to the
+	folio's scene; the folio stays not built.
+	@return the symbols built now
+*/
+QList<Element *> Diagram::buildSymbols(const QSet<QUuid> &uuids)
+{
+	QList<Element *> built;
+	if (isLoaded() || uuids.isEmpty()) {
+		return built;
+	}
+	const QDomElement xml = deferredXml();
+	if (xml.isNull()) {
+		return built;
+	}
+	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
+	if (db) db->setBuildingFolio(true);
+	for (QDomElement element_xml :
+		 QET::findInDomElement(xml, QStringLiteral("elements"), QStringLiteral("element")))
+	{
+		const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+		if (uuid.isNull() || !uuids.contains(uuid) || m_partial_elements.contains(uuid)
+				|| !Element::valideXml(element_xml)) {
+			continue;
+		}
+		if (Element *element = buildElement(element_xml, m_partial_table, true)) {
+			m_partial_elements.insert(uuid, element);
+				//A partner unlinked or linked again: the folio is not
+				//saved as it was read any more
+			connect(element, &Element::linkedElementChanged, this, [this]() {
+				if (!isLoaded()) m_partial_changed = true;
+			});
+			built << element;
+		}
+	}
+	if (db) db->setBuildingFolio(false);
+	return built;
+}
+
+/**
 	@brief Diagram::deferredXml
 	@return the XML of this folio's items while they are not built: kept
 	from the project's document, or read now from the folio's part of the
@@ -823,6 +865,9 @@ bool Diagram::buildDeferred()
 	m_loading_deferred = true;
 	fromXml(xml, QPointF(), true, nullptr);
 	m_loading_deferred = false;
+	m_partial_elements.clear();
+	m_partial_table.clear();
+	m_partial_changed = false;
 	if (db) db->setBuildingFolio(false);
 	return true;
 }
@@ -1485,6 +1530,73 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 }
 
 /**
+	@brief Diagram::buildElement
+	Make the symbol @p element_xml describes and add it to this folio, as
+	fromXml() does for each symbol it reads.
+	@return the symbol, or nullptr if it could not be made (said in the log)
+*/
+Element *Diagram::buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
+							   bool consider_informations)
+{
+	// cree un element dont le type correspond a l'id type
+	QString type_id = element_xml.attribute(QStringLiteral("type"));
+	ElementsLocation element_location;
+	if (type_id.startsWith(QStringLiteral("embed://"))) {
+		element_location = ElementsLocation(type_id, m_project);
+	}
+	else {
+		element_location = ElementsLocation(type_id);
+	}
+
+	int state = 0;
+	Element *nvel_elmt =
+			ElementFactory::Instance() -> createElement(
+				element_location, nullptr, &state);
+	if (state)
+	{
+		QString debug_message =
+			QString("Diagram::fromXml() : Le chargement de "
+				"la description de l'element %1 a "
+				"echoue avec le code d'erreur %2").arg(
+				element_location.path()).arg(state);
+		qDebug() << qPrintable(debug_message);
+		delete nvel_elmt;
+		return nullptr;
+	}
+
+	addItem(nvel_elmt);
+	//Loading fail, remove item from the diagram
+	if (!nvel_elmt->fromXml(element_xml, table_adr_id))
+	{
+		removeItem(nvel_elmt);
+		delete nvel_elmt;
+		qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
+		return nullptr;
+	} else {
+			//A symbol saved without a uuid got a random one from
+			//Element::fromXml(): a different identity on every load,
+			//written out on the next save. Derive it instead from what
+			//the symbol is and where it sits on its folio -- never from
+			//the folio's index, so inserting or moving a folio does not
+			//change it. Only for a folio being loaded: a paste renews
+			//uuids anyway.
+		if (consider_informations && m_project
+			&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+			nvel_elmt->setUuid(m_project->derivedItemUuid(
+								   QStringLiteral("element"),
+								   QStringList{type_id,
+											   element_xml.attribute(QStringLiteral("x")),
+											   element_xml.attribute(QStringLiteral("y")),
+											   element_xml.attribute(QStringLiteral("orientation"))}
+								   .join(QLatin1Char('\n'))));
+		}
+		ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
+		return nvel_elmt;
+	}
+return nullptr;
+}
+
+/**
 	@brief Diagram::fromXml
 	Imports the described schema into an XML document.
 	If a position is specified,
@@ -1903,65 +2015,23 @@ bool Diagram::fromXml(QDomElement &document,
 		//Load all elements from the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
+	if (m_loading_deferred) {
+		table_adr_id = m_partial_table;   //the terminals of symbols built already
+	}
 	for (auto element_xml :
 		 QET::findInDomElement(root, QStringLiteral("elements"), QStringLiteral("element")))
 	{
 		if (!Element::valideXml(element_xml)) continue;
-
-		// cree un element dont le type correspond a l'id type
-		QString type_id = element_xml.attribute(QStringLiteral("type"));
-		ElementsLocation element_location;
-		if (type_id.startsWith(QStringLiteral("embed://"))) {
-			element_location = ElementsLocation(type_id, m_project);
-		}
-		else {
-			element_location = ElementsLocation(type_id);
-		}
-
-		int state = 0;
-		Element *nvel_elmt =
-				ElementFactory::Instance() -> createElement(
-					element_location, nullptr, &state);
-		if (state)
-		{
-			QString debug_message =
-				QString("Diagram::fromXml() : Le chargement de "
-					"la description de l'element %1 a "
-					"echoue avec le code d'erreur %2").arg(
-					element_location.path()).arg(state);
-			qDebug() << qPrintable(debug_message);
-			delete nvel_elmt;
-			continue;
-		}
-
-		addItem(nvel_elmt);
-		//Loading fail, remove item from the diagram
-		if (!nvel_elmt->fromXml(element_xml, table_adr_id))
-		{
-			removeItem(nvel_elmt);
-			delete nvel_elmt;
-			qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
-		} else {
-				//A symbol saved without a uuid got a random one from
-				//Element::fromXml(): a different identity on every load,
-				//written out on the next save. Derive it instead from what
-				//the symbol is and where it sits on its folio -- never from
-				//the folio's index, so inserting or moving a folio does not
-				//change it. Only for a folio being loaded: a paste renews
-				//uuids anyway.
-			if (consider_informations && m_project
-				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
-				nvel_elmt->setUuid(m_project->derivedItemUuid(
-									   QStringLiteral("element"),
-									   QStringList{type_id,
-												   element_xml.attribute(QStringLiteral("x")),
-												   element_xml.attribute(QStringLiteral("y")),
-												   element_xml.attribute(QStringLiteral("orientation"))}
-									   .join(QLatin1Char('\n'))));
+			//Built already as another folio's partner (buildSymbols())
+		if (m_loading_deferred) {
+			Element *built = m_partial_elements.value(QUuid(element_xml.attribute(QStringLiteral("uuid"))));
+			if (built) {
+				added_elements << built;
+				continue;
 			}
-			ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
-			added_elements << nvel_elmt;
 		}
+		if (Element *nvel_elmt = buildElement(element_xml, table_adr_id, consider_informations))
+			added_elements << nvel_elmt;
 	}
 
 		//Texts, images and shapes written before they carried a uuid (or

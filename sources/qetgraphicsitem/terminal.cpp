@@ -1102,6 +1102,14 @@ QList<Terminal *> relatedPotentialTerminal (
 			project->buildFoliosHoldingSymbols(waiting);
 		}
 		QList <Element *> elmt_list = terminal -> parentElement() -> linkedElements();
+			//A partner built alone (QETZ-DB-TRUTH-PLAN.md D5b) has no wires
+			//yet: its folio is built
+		if (!elmt_list.isEmpty() && project && elmt_list.first()->diagram()
+				&& !elmt_list.first()->diagram()->isLoaded()
+				&& project->state() != QETProject::ProjectParsingRunning) {
+			project->buildFolios({elmt_list.first()->diagram()});
+			elmt_list = terminal->parentElement()->linkedElements();
+		}
 		if (!elmt_list.isEmpty())
 		{
 			return (elmt_list.first()->terminals());

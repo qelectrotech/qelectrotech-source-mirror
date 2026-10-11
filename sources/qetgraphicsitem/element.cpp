@@ -1654,10 +1654,11 @@ void Element::initLink(QETProject *prj)
 		// if nothing to link return now
 	if (tmp_uuids_link.isEmpty()) return;
 
-		//The built folios only: a partner on a folio not built yet
-		//(QET_LAZY_FOLIOS) is linked when its folio is, and the saved list
-		//is kept until then, for the order it gives
-	ElementProvider ep(prj->builtFolios());
+		//The symbols built: on the folios built, and those built alone as
+		//partners on folios not built (Diagram::buildSymbols()). A partner
+		//not built yet (QET_LAZY_FOLIOS) is linked when it is, and the
+		//saved list is kept until then, for the order it gives
+	ElementProvider ep(prj->folios());
 	QList<QUuid> uuids;
 	for (const auto &linkInfo : tmp_uuids_link) {
 		uuids.append(linkInfo.uuid);

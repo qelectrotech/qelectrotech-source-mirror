@@ -355,7 +355,8 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	engineering data back from project.sqlite.
 */
 bool QetContainer::readFolio(const QHash<QString, QByteArray> &files, const QString &file,
-							 QDomDocument *folio, QString *error)
+							 QDomDocument *folio, QString *error,
+							 QetContainerDb::FolioReader *reader)
 {
 	if (!files.contains(file)) {
 		setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
@@ -380,9 +381,11 @@ bool QetContainer::readFolio(const QHash<QString, QByteArray> &files, const QStr
 		image.insertBefore(folio->createTextNode(QString::fromLatin1(files.value(picture).toBase64())),
 						   image.firstChild());
 	}
-	return !files.contains(QStringLiteral("project.sqlite"))
-			|| QetContainerDb::restoreFolio(folio->documentElement(),
-											files.value(QStringLiteral("project.sqlite")), error);
+	if (!files.contains(QStringLiteral("project.sqlite")))
+		return true;
+	return reader ? reader->restore(folio->documentElement(), error)
+				  : QetContainerDb::restoreFolio(folio->documentElement(),
+												 files.value(QStringLiteral("project.sqlite")), error);
 }
 
 /**

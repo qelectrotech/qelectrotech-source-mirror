@@ -34,6 +34,7 @@
 #include "../../sources/diagramevent/diagrameventaddpaste.h"
 #include <QKeyEvent>
 #include "../../sources/qetgraphicsitem/conductor.h"
+#include "../../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../../sources/qetgraphicsitem/terminal.h"
 #include "../../sources/undocommand/changeelementinformationcommand.h"
 #include "../../sources/undocommand/changetitleblockcommand.h"
@@ -638,6 +639,22 @@ int main(int argc, char **argv)
 			for (int i = 0; i < folios.size(); ++i)
 				same(indexed, i, "shown from the .qetz");
 			check(indexed.toXml().toString() == eager.toXml().toString(), "the .qetz saves as when built");
+				//A folio whose table continues one on another folio, shown
+				//first: the index, not the folios' parts, says which folios
+				//its table is built with (D5)
+			int continued = 0;
+			for (int i = 0; i < folios.size(); ++i) {
+				bool continues = false;
+				for (QGraphicsItem *item : folios.at(i)->items())
+					if (item->type() == QetGraphicsTableItem::Type
+							&& !static_cast<QetGraphicsTableItem *>(item)->previousTableUuid().isNull())
+						continues = true;
+				if (!continues) continue;
+				QETProject fresh(zipped);
+				same(fresh, i, "a continued table shown first from the .qetz");
+				++continued;
+			}
+			check(continued > 0, "a folio whose table continues another");
 
 				//Saved as a .qetz without building the folios not touched
 				//(D4): their parts and rows copied as they were

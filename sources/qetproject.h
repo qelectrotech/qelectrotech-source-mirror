@@ -32,6 +32,7 @@
 #include "wiringrules.h"
 #include "diagram.h"
 #include "autoNum/assignvariables.h"
+#include "container/qetcontainerdb.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -45,6 +46,7 @@
 #include <QFuture>
 
 #include <array>
+#include <memory>
 #include <optional>
 
 class Diagram;
@@ -128,6 +130,7 @@ class QETProject : public QObject
 		QList<Diagram *> builtFolios() const;
 		QList<Diagram *> foliosWithWiresNotReconnected();
 		void buildFolioToShow(Diagram *folio);
+		void buildPartnerSymbols(const QList<Diagram *> &folios, const QSet<QUuid> &partners);
 		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
 		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
 		QSet<QUuid> symbolsOnUnbuiltFolios() const;
@@ -474,8 +477,12 @@ class QETProject : public QObject
 		bool m_kept_parts_trusted = false;
 		QSet<QUuid> m_waiting_link_targets;
 		QHash<QString, QByteArray> m_container_files;
+			///Reads the folio parts' engineering data, opened once
+		std::unique_ptr<QetContainerDb::FolioReader> m_folio_reader;
 		QStringList m_folio_files;
 		QList<std::pair<QUuid, QString>> m_folio_headers;
+			///The drawn tables of the index opened from, if it has them
+		std::optional<QList<projectDataBase::FolioTable>> m_index_tables;
 		void readFoliosFromIndex();
 		bool m_kept_folios_stale = false;
 			/// Something was edited since the project was opened: a table

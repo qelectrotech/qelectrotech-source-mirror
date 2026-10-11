@@ -929,6 +929,47 @@ bool QetContainerDb::restoreFolio(QDomElement diagram, const QByteArray &databas
 	return openDatabase(db, database, error) && restoreDiagram(db, diagram, error);
 }
 
+struct QetContainerDb::FolioReader::Private
+{
+	QByteArray database;
+	Database db;
+	bool opened = false;
+	QString open_error;
+};
+
+/**
+	@brief QetContainerDb::FolioReader::FolioReader
+	Reads folios' engineering data from @p database, opened the first time
+	one is read and kept open: a folio built after the project was opened
+	from a .qetz no longer copies the whole database (QETZ-DB-TRUTH-PLAN.md D5)
+*/
+QetContainerDb::FolioReader::FolioReader(const QByteArray &database) :
+	d(std::make_unique<Private>())
+{
+	d->database = database;
+}
+
+QetContainerDb::FolioReader::~FolioReader() = default;
+
+/**
+	@brief QetContainerDb::FolioReader::restore
+	restoreFolio() for @p diagram
+*/
+bool QetContainerDb::FolioReader::restore(QDomElement diagram, QString *error)
+{
+	if (!d->opened) {
+		d->opened = true;
+		if (!openDatabase(d->db, d->database, &d->open_error) && d->open_error.isEmpty())
+			d->open_error = QStringLiteral("the project database cannot be read");
+		d->database = QByteArray();
+	}
+	if (!d->open_error.isEmpty()) {
+		setError(error, d->open_error);
+		return false;
+	}
+	return restoreDiagram(d->db, diagram, error);
+}
+
 /**
 	@brief QetContainerDb::foliosByUuid
 	@return true if @p database, a format 3 project.sqlite, names its
