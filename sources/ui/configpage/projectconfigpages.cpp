@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../../container/qetcontainer.h"
 #include "projectconfigpages.h"
 
 #include "../autoNum/autonumschemecommand.h"
@@ -1054,7 +1055,7 @@ void ProjectAutoNumConfigPage::importFromProject()
 				this,
 				tr("Import numbering from a project"),
 				m_project->currentDir(),
-				tr("Project QElectroTech (*.qet)"));
+				tr("Project QElectroTech (*.qet *.qetz)"));
 	if (path.isEmpty()) {
 		return;
 	}
@@ -1067,7 +1068,7 @@ void ProjectAutoNumConfigPage::importFromProject()
 	}
 
 	QDomDocument doc;
-	if (!doc.setContent(&file)) {
+	if (!QetContainer::readDocument(file.readAll(), &doc)) {
 		QMessageBox::warning(this, tr("Import not possible"),
 					 tr("%1 is not a valid QElectroTech project.")
 					 .arg(QFileInfo(path).fileName()));

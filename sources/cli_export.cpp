@@ -869,6 +869,15 @@ int exportLinks(QETProject &project, const QString &output)
 /// diff can reveal markup QET silently normalises (tolerated-but-invalid XML).
 int resaveProject(QETProject &project, const QString &output)
 {
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!QETProject::writeContainer(project.toXml(), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+		out << "Re-saved project -> " << output << "\n";
+		return 0;
+	}
 		//Folios not built (QET_LAZY_FOLIOS) written as read when that is
 		//what building them would write (QETProject::toXml())
 	QHash<int, QByteArray> kept_folios;
@@ -957,18 +966,26 @@ int setTitleBlock(QETProject &project, const QString &output,
 		++folios;
 	}
 
-		//Folios not built (QET_LAZY_FOLIOS) written as read when that is
-		//what building them would write (QETProject::toXml())
-	QHash<int, QByteArray> kept_folios;
-	const QDomDocument doc = project.toXml(&kept_folios);
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
-		return 1;
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!QETProject::writeContainer(project.toXml(), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+	} else {
+			//Folios not built (QET_LAZY_FOLIOS) written as read when that
+			//is what building them would write (QETProject::toXml())
+		QHash<int, QByteArray> kept_folios;
+		const QDomDocument doc = project.toXml(&kept_folios);
+		QFile file(output);
+		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+			err << "Cannot open '" << output << "' for writing.\n";
+			return 1;
+		}
+		QTextStream fout(&file);
+		fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
+		file.close();
 	}
-	QTextStream fout(&file);
-	fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
-	file.close();
 	out << "Stamped " << fields.size() << " field(s) on "
 		<< folios << " folio(s) -> " << output << "\n";
 	return 0;

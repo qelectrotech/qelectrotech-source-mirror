@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "container/qetcontainer.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -401,10 +402,20 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	load_timer.start();
 
 	bool opened_here = file->isOpen() ? false : true;
-	if (!file->isOpen()
-			&& !file->open(QIODevice::ReadOnly
-					   | QIODevice::Text)) {
-		return FileOpenFailed;
+	if (opened_here)
+	{
+			//A .qetz is a zip and is read as bytes: text mode would turn
+			//its CR LF pairs into LF on Windows. A .qet is read as text,
+			//as it always was.
+		if (!file->open(QIODevice::ReadOnly)) {
+			return FileOpenFailed;
+		}
+		if (!QetContainer::isZip(file->peek(4))) {
+			file->close();
+			if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+				return FileOpenFailed;
+			}
+		}
 	}
 	QFileInfo fi(*file);
 	setFilePath(fi.absoluteFilePath());
@@ -412,8 +423,10 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
-		//Each folio's text is kept while it is not built (readDiagramsXml())
-	m_opened_content = content;
+		//Each folio's text is kept while it is not built (readDiagramsXml()):
+		//from a .qet only, a .qetz is a zip of parts
+	if (!content.startsWith("PK\x03\x04"))
+		m_opened_content = content;
 	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
@@ -428,12 +441,12 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// call .text() on themselves -- which is exactly where the bug was.
 	// The option exists since Qt 6.5; older Qt always drops such nodes,
 	// so there an all-whitespace value still reloads as "".
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-	if (!xml_project.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes))
-#else
-	if (!xml_project.setContent(content))
-#endif
+	// QetContainer::parse() does exactly that, for a .qet and for each part
+	// of a .qetz alike.
+	QString read_error;
+	if (!QetContainer::readDocument(content, &xml_project, &read_error))
 	{
+		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		if(opened_here) {
 			file->close();
 		}
@@ -2218,6 +2231,30 @@ bool QETProject::close()
 	@see setFilePath()
 	@return true if the project was successfully saved, else false
 */
+/**
+	@brief QETProject::isContainerPath
+	@return true if @p path names a .qetz file: write() saves it zipped
+*/
+bool QETProject::isContainerPath(const QString &path)
+{
+	return path.endsWith(QLatin1String(".qetz"), Qt::CaseInsensitive);
+}
+
+/**
+	@brief QETProject::writeContainer
+	Write the project document @p project to @p path as a .qetz: the same
+	document, in parts, zipped (#1440). The file is replaced only once
+	the whole archive is written.
+*/
+bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error)
+{
+	const QList<QetZip::Entry> entries = QetContainer::split(
+				project,
+				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
+				error);
+	return !entries.isEmpty() && QetZip::write(path, entries, error);
+}
+
 QETResult QETProject::write()
 {
 		// this operation requires a filepath
@@ -2238,12 +2275,24 @@ QETResult QETProject::write()
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
-	QHash<int, QByteArray> kept_folios;
-	QDomDocument xml_project(toXml(&kept_folios));
 	QString error_message;
-	if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
-						   m_file_path, &error_message))
-		return(error_message);
+	if (isContainerPath(m_file_path))
+	{
+			//A container is written from the whole document: every folio
+			//built (QETZ-DB-TRUTH-PLAN.md D4 writes it from the database)
+		if (!writeContainer(toXml(), m_file_path, &error_message))
+			return(error_message);
+	}
+	else
+	{
+			//Folios not built (QET_LAZY_FOLIOS) written as read when that
+			//is what building them would write (toXml())
+		QHash<int, QByteArray> kept_folios;
+		QDomDocument xml_project(toXml(&kept_folios));
+		if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
+							   m_file_path, &error_message))
+			return(error_message);
+	}
 
 		// The project has just been written to a writable file (e.g. saved to
 		// a new location with "Save As"), so it is no longer read-only.

@@ -1749,7 +1749,7 @@ bool QETDiagramEditor::openProject()
 		this,
 		tr("Open a file"),
 		open_dialog_dir.absolutePath(),
-		tr("QElectroTech project(*.qet);;XML Files (*.xml);;All files (*)")
+		tr("QElectroTech project(*.qet *.qetz);;XML Files (*.xml);;All files (*)")
 	);
 	if (filepath.isEmpty()) return(false);
 
