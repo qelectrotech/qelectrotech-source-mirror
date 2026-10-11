@@ -24,12 +24,15 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QSet>
+#include <QUuid>
 #include <QVariant>
 
 #include <sqlite3.h>
 
 namespace {
 const QString KeyAttribute = QStringLiteral("qetz-key");
+	//A folio written as it was read (QETZ-DB-TRUTH-PLAN.md D4): its part
+const QString KeptPartAttribute = QStringLiteral("qetz-kept-part");
 const QString FolioAttribute = QStringLiteral("qetz-folio");
 	//What a moved block leaves where it was. Removing it instead would leave
 	//the whitespace before and after it side by side, read back as one text
@@ -604,7 +607,8 @@ bool restoreDiagram(Database &db, QDomElement d, QString *error)
 	folios still in it) into a new database.
 	@return the database file, or an empty array with @p error set
 */
-QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QByteArray &index)
+QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QByteArray &index,
+								   const QByteArray &kept_from)
 {
 	Database db;
 	db.m_prefix = QStringLiteral("doc_");
@@ -627,6 +631,28 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 	if (!db.exec(schema())) {
 		setError(error, QStringLiteral("cannot create the project database"));
 		return {};
+	}
+		//The database of the .qetz this project was read from, for the folios
+		//kept as they were (QETZ-DB-TRUTH-PLAN.md D4)
+	if (!kept_from.isEmpty()) {
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(kept_from.size())));
+		if (!copy) { setError(error, QStringLiteral("out of memory")); return {}; }
+		memcpy(copy, kept_from.constData(), size_t(kept_from.size()));
+		if (!db.exec(QStringLiteral("ATTACH DATABASE ':memory:' AS old"))
+				|| sqlite3_deserialize(db.m_db, "old", copy, kept_from.size(), kept_from.size(),
+									   SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_READONLY) != SQLITE_OK) {
+			setError(error, QStringLiteral("cannot read the database the kept folios come from"));
+			return {};
+		}
+		db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+		for (const QString &table : DocTables) {
+			Statement kind(db, QStringLiteral("SELECT type FROM old.sqlite_master WHERE name = ?"));
+			kind.bind({db.table(table)});
+			if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
+				setError(error, QStringLiteral("the kept folios' database has no table %1").arg(table));
+				return {};
+			}
+		}
 	}
 	db.exec(QStringLiteral("BEGIN"));
 
@@ -683,10 +709,53 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 	const QStringList conductor_keys = keys(all_conductors, QStringLiteral("c"));
 	int e_index = 0, c_index = 0;
 
+		//A folio's id is its uuid when every folio has one of its own, so
+		//that a folio kept as it was keeps its rows (format 3, D4)
+	bool uuid_ids = true;
+	{
+		QSet<QString> seen;
+		for (const QDomElement &d : diagrams) {
+			const QString uuid = d.attribute(QStringLiteral("uuid"));
+			if (QUuid(uuid).isNull() || seen.contains(uuid)) { uuid_ids = false; break; }
+			seen.insert(uuid);
+		}
+	}
+	if (uuid_ids) {
+		ok = ok && meta.run({QStringLiteral("folio_ids"), QStringLiteral("uuid")});
+	}
+
 	int pos = 0;
 	for (QDomElement d : diagrams)
 	{
-		const QString id = QStringLiteral("f%1").arg(++pos);
+		++pos;
+		const QString id = uuid_ids ? d.attribute(QStringLiteral("uuid")) : QStringLiteral("f%1").arg(pos);
+			//Kept as it was: its rows from the database it was read from
+		if (d.hasAttribute(KeptPartAttribute)) {
+			if (kept_from.isEmpty() || !uuid_ids) {
+				setError(error, QStringLiteral("a folio kept as it was, without its database"));
+				return {};
+			}
+			Statement copy(db, QStringLiteral("INSERT INTO folio SELECT id, ?, %1, props_at, props_attrs "
+											  "FROM old.folio WHERE id = ?")
+						   .arg(QStringLiteral("\"") + FolioData.join(QStringLiteral("\", \"")) + QStringLiteral("\"")));
+			ok = ok && copy.run({pos, id}) && sqlite3_changes(db.m_db) == 1;
+			for (const QString &sql : {
+					 QStringLiteral("INSERT INTO folio_property SELECT * FROM old.folio_property WHERE folio_id = ? ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO element SELECT * FROM old.element WHERE folio_id = ? ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO element_info SELECT * FROM old.element_info WHERE element_key IN "
+									"(SELECT key FROM old.element WHERE folio_id = ?) ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO link SELECT * FROM old.link WHERE element_key IN "
+									"(SELECT key FROM old.element WHERE folio_id = ?) ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO conductor SELECT * FROM old.conductor WHERE folio_id = ? ORDER BY rowid")}) {
+				Statement rows(db, sql);
+				ok = ok && rows.run({id});
+			}
+			if (!ok) {
+				setError(error, QStringLiteral("folio %1 kept as it was is not in its database").arg(id));
+				return {};
+			}
+			continue;
+		}
 		QVariantList row{id, pos};
 		row += take(d, FolioData);
 		QDomElement props = d.firstChildElement(QStringLiteral("properties"));
@@ -858,4 +927,19 @@ bool QetContainerDb::restoreFolio(QDomElement diagram, const QByteArray &databas
 {
 	Database db;
 	return openDatabase(db, database, error) && restoreDiagram(db, diagram, error);
+}
+
+/**
+	@brief QetContainerDb::foliosByUuid
+	@return true if @p database, a format 3 project.sqlite, names its
+	folios by their uuid: a folio written as it was read keeps its rows
+	under it (QETZ-DB-TRUTH-PLAN.md D4)
+*/
+bool QetContainerDb::foliosByUuid(const QByteArray &database)
+{
+	Database db;
+	if (!openDatabase(db, database, nullptr) || db.m_prefix.isEmpty())
+		return false;
+	Statement s(db, QStringLiteral("SELECT value FROM meta WHERE key = 'folio_ids'"));
+	return s.next() && s.value(0).toString() == QLatin1String("uuid");
 }

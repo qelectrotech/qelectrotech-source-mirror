@@ -21,6 +21,7 @@
 #include "qetzip.h"
 
 #include <QDomDocument>
+#include <QHash>
 
 /**
 	@brief The QetContainer namespace
@@ -52,7 +53,8 @@ namespace QetContainer
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
 							   QString *error = nullptr,
-							   const QByteArray &index = QByteArray());
+							   const QByteArray &index = QByteArray(),
+							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
 			  QString *error = nullptr, QStringList *folio_files = nullptr);
 		/// A folio part of @p files, which join() left out, with its

@@ -268,7 +268,8 @@ class QETProject : public QObject
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
 
-		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr);
+		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr,
+						   QStringList *kept_parts = nullptr);
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write();
@@ -385,7 +386,8 @@ class QETProject : public QObject
 		QString besideContainerPath() const;
 		QETResult writeCopyForOlderVersions(const QString &path);
 		static bool writeContainer(const QDomDocument &project, const QString &path,
-								   QString *error = nullptr, const QByteArray &index = QByteArray());
+								   QString *error = nullptr, const QByteArray &index = QByteArray(),
+								   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 		bool writeContainerFile(const QString &path, QString *error = nullptr);
 		QByteArray containerIndex();
 		QDomElement readFolioPart(const QString &file);
@@ -464,6 +466,9 @@ class QETProject : public QObject
 			/// Opened from a .qetz's index (QETZ-DB-TRUTH-PLAN.md D2): the
 			/// database filled from it, each folio's items in its part
 		bool m_opened_from_index = false;
+			/// Saving a .qetz may copy the part of a folio not built
+			/// (toXml(), QETZ-DB-TRUTH-PLAN.md D4)
+		bool m_kept_parts_trusted = false;
 		QHash<QString, QByteArray> m_container_files;
 		QStringList m_folio_files;
 		QList<std::pair<QUuid, QString>> m_folio_headers;
