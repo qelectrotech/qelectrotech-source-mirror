@@ -102,6 +102,18 @@ class QETDiagramEditor : public QETMainWindow
 		void setUpMenu          ();
 		
 		bool addProject(QETProject *, bool = true);
+			/**
+				Checked while the cable tool is about to start, when the
+				project has no numbering rule for its cables. He is then
+				asked whether one should be defined now (the window which
+				opens goes straight to the cable page of the automatic
+				numbering) or not -- and having answered no, he is not
+				asked again, whatever he draws from then on. A project
+				which does number its cables is never asked at all, and
+				one which lost the rule again is.
+				@return true when the cable tool may start.
+			*/
+			bool cableNumberingGate(Diagram *diagram);
 		DiagramView *currentDiagramView() const;
 		Element *currentElement() const;
 		ProjectView *findProject(DiagramView *) const;
@@ -158,6 +170,7 @@ class QETDiagramEditor : public QETMainWindow
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
 		void slot_terminalNumbering();
+		void slot_cableNumbering();
 		void slot_reloadElementDrawings();
 #ifdef QET_HAS_SCRIPTING
 		void slot_runScript();
@@ -241,6 +254,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
+		*m_add_cable = nullptr,		///< Draw the trunk line of a cable
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
 		*m_cell_rulers = nullptr,	///< Keep the folio column/row headers in sight or not
@@ -258,6 +272,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_export_wiring_list, ///< Action to export the wiring list
 		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
+		*m_cable_numbering,            ///< Action to open the cable numbering window (rule + numbering of every cable)
+		*m_add_cable_list,             ///< Add a cable list graphics item
+		*m_export_cable_list,          ///< Export the cable list of the project to CSV
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
 #ifdef QET_HAS_SCRIPTING
 		*m_run_script,                 ///< Action to run a JavaScript macro against the current project

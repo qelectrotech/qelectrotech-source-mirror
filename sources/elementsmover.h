@@ -18,13 +18,16 @@
 #ifndef ELEMENTS_MOVER_H
 #define ELEMENTS_MOVER_H
 
+#include <QHash>
 #include <QPointF>
 #include <QPointer>
 #include "diagramcontent.h"
 
+class CablePart;
 class ConductorTextItem;
 class Diagram;
 class QStatusBar;
+class QUndoCommand;
 
 /**
 	This class manages the interactive movement of different items (elements,
@@ -53,6 +56,27 @@ class ElementsMover {
 		void continueMovement(const QPointF &);
 		void endMovement();
 		bool holds(const QGraphicsItem *item) const;
+			/**
+				Steps of items this mover does not move itself -- the
+				cable lines the user dragged himself, which know how to
+				carry their own colour labels along -- handed over so
+				that the end of this movement pushes them together with
+				its own: one gesture, one undo step, whatever the
+				selection is made of.
+				@param steps the commands, given away with them
+			*/
+		void addExtraCommands(const QList<QUndoCommand *> &steps);
+			/**
+				Call the whole movement off without writing anything:
+				every element goes back to the place the gesture found it
+				and every line of the selection puts itself back too (see
+				CablePart), so nothing at all has to be undone.
+
+				Answering "Annuler" to a question asked while the lines
+				settle is what calls it: one gesture is written as a
+				whole or not at all.
+			*/
+		void cancelMovement();
 	
 		// attributes
 	private:
@@ -63,6 +87,17 @@ class ElementsMover {
 		bool m_driver_held{false};
 		DiagramContent m_moved_content;
 		QPointer<QStatusBar> m_status_bar;
+			///The cable lines marked together with the elements, moved
+			///by this mover from one gesture to the next (see
+			///CablePart::beginLineGesture) -- empty whenever the finger
+			///is on a line itself, since a line then carries its own
+		QList<CablePart *> m_moved_cables;
+			///Steps handed over by a line the user dragged himself, to
+			///be pushed together with the rest of the movement
+		QList<QUndoCommand *> m_extra_commands;
+			///Where every item of the movement stood when it began, so
+			///that calling it off puts them all back exactly there
+		QHash<QGraphicsItem *, QPointF> m_start_positions;
 
 };
 #endif

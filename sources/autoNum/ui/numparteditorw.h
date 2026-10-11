@@ -77,6 +77,14 @@ class NumPartEditorW : public QWidget
 		QValidator *intValidator;
 		QValidator *alphaValidator;
 		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
+			/**
+				The value a counter bound to the folio counts each folio
+				from (-1 while the row carries none): value_field shows
+				the live counter, which numbering a project over leaves
+				at the last number given out, so the start has to be
+				kept apart from what is on show.
+			*/
+		int m_initial_value = -1;
 	
 
 

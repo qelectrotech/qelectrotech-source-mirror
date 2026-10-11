@@ -284,6 +284,15 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("text_color", text_color.name());
 	e.setAttribute("formula", m_formula);
 	e.setAttribute("cable", m_cable);
+	if (!m_cable_uuid.isNull())
+	{
+			//Only written when there is a cable: a conductor which is no
+			//part of one keeps whatever cable text it had and no reference
+			//at all, so a hand written value is never mistaken for a
+			//generated one.
+		e.setAttribute("cable_uuid", m_cable_uuid.toString());
+		e.setAttribute("cable_slot", QString::number(m_cable_slot));
+	}
 	e.setAttribute("bus", m_bus);
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension_protocol", m_tension_protocol);
@@ -343,6 +352,8 @@ void ConductorProperties::fromXml(QDomElement &e)
 	text_color = (xml_text_color.isValid()? xml_text_color : QColor(Qt::black));
 	m_formula            = e.attribute("formula");
 	m_cable              = e.attribute("cable");
+	m_cable_uuid         = QUuid(e.attribute("cable_uuid"));
+	m_cable_slot         = e.attribute("cable_slot", QString::number(-1)).toInt();
 	m_bus                = e.attribute("bus");
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension_protocol");
@@ -844,6 +855,8 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.text_color == text_color &&\
 		other.m_formula == m_formula &&\
 		other.m_cable == m_cable &&\
+		other.m_cable_uuid == m_cable_uuid &&\
+		other.m_cable_slot == m_cable_slot &&\
 		other.m_bus == m_bus &&\
 		other.m_function == m_function &&\
 		other.m_tension_protocol == m_tension_protocol &&\

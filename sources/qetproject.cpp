@@ -23,6 +23,9 @@
 #include "autoNum/numerotationcontext.h"
 #include "autoNum/numerotationcontextcommands.h"
 #include "autoNum/renumberelementscommand.h"
+#include "cable/cable.h"
+#include "cable/cablemanager.h"
+#include "cable/cablepart.h"
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
@@ -116,6 +119,17 @@ m_project_properties_handler{this}
 		auto folioData = NumerotationContext::loadFromSettings(settings, QStringLiteral("autonum/folio"));
 		for (auto it = folioData.first.constBegin(); it != folioData.first.constEnd(); ++it) {
 			addFolioAutoNum(it.key(), it.value());
+		}
+
+			//The cable numbering rule a project starts with, so a project
+			//made from these defaults numbers its cables the way the
+			//global settings say without having to be opened first.
+		auto cableData = NumerotationContext::loadFromSettings(settings, QStringLiteral("autonum/cable"));
+		for (auto it = cableData.first.constBegin(); it != cableData.first.constEnd(); ++it) {
+			addCableAutoNum(it.key(), it.value());
+		}
+		if (!cableData.second.isEmpty()) {
+			setCurrentCableAutoNum(cableData.second);
 		}
 	}
 }
@@ -827,6 +841,16 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const
 }
 
 /**
+	@brief QETProject::cableAutoNum
+	@return the cable numerotation stored in the project -- one entry at
+	most, since cables are numbered by a single rule
+*/
+QHash <QString, NumerotationContext> QETProject::cableAutoNum() const
+{
+	return m_cable_autonum;
+}
+
+/**
 	@brief QETProject::elementAutoNumFormula
 	@param key : autonum title
 	@return Formula of element autonum stored in element autonum
@@ -864,6 +888,109 @@ QString QETProject::elementCurrentAutoNum () const
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
+}
+
+/**
+	@brief QETProject::cableAutoNumFormula
+	@param key : autonum title
+	@return Formula of the cable numerotation stored with key
+*/
+QString QETProject::cableAutoNumFormula(const QString& key) const
+{
+	if (m_cable_autonum.contains(key)) {
+		return autonum::numerotationContextToFormula(m_cable_autonum.value(key));
+	}
+
+	return QString();
+}
+
+/**
+	@brief QETProject::hasCableAutoNum
+	@return true when a numbering rule for cables is set: a context
+	stored under the name which is in use. A project which has never been
+	given one answers false, and that is what makes the cable tool ask
+	whether one should be defined (see QETDiagramEditor).
+*/
+bool QETProject::hasCableAutoNum() const
+{
+	if (m_current_cable_autonum.isEmpty()) return false;
+	return !cableAutoNum(m_current_cable_autonum).isEmpty();
+}
+
+/**
+	@brief QETProject::cableCurrentAutoNum
+	@return title of the cable numerotation in use (one rule only)
+*/
+QString QETProject::cableCurrentAutoNum() const
+{
+	return m_current_cable_autonum;
+}
+
+/**
+	@brief QETProject::setCurrentCableAutoNum
+	@param autoNum : the rule which from now on numbers the cables
+*/
+void QETProject::setCurrentCableAutoNum(QString autoNum)
+{
+	m_current_cable_autonum = std::move(autoNum);
+}
+
+/**
+	@brief QETProject::cableAutoNumRuleName
+	@return the name the one and only cable numbering rule is kept under
+*/
+QString QETProject::cableAutoNumRuleName()
+{
+	return QStringLiteral("Cable");
+}
+
+/**
+	@brief QETProject::cableXAxisFirst
+	@return true when the cables are numbered along the X axis (the
+	leftmost first), false when they are numbered along the Y axis (the
+	topmost first)
+*/
+bool QETProject::cableXAxisFirst() const
+{
+	return m_cable_axis_x_first;
+}
+
+/**
+	@brief QETProject::setCableXAxisFirst
+	Which axis the whole project numbers its cables along. Stored with
+	the rule rather than on its own, since it only means anything while
+	a rule is being applied to every cable at once.
+	@param x_axis_first
+*/
+void QETProject::setCableXAxisFirst(bool x_axis_first)
+{
+	m_cable_axis_x_first = x_axis_first;
+}
+
+/**
+	@brief QETProject::cableAskNumbering
+	@return true when the cable tool may still ask this project whether
+	a numbering rule should be defined. The answer to that question is
+	kept with the project rather than in the program settings, so that
+	one project being answered with no does not stop every other
+	project from asking.
+*/
+bool QETProject::cableAskNumbering() const
+{
+	return m_cable_ask_numbering;
+}
+
+/**
+	@brief QETProject::setCableAskNumbering
+	Take the answer he gave to the numbering question down with the
+	project. False means he has said no once here and is not to be
+	asked again in this project; taking the rule away puts it back to
+	true so the question comes again.
+	@param ask
+*/
+void QETProject::setCableAskNumbering(bool ask)
+{
+	m_cable_ask_numbering = ask;
 }
 
 /**
@@ -1188,6 +1315,32 @@ void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& 
 }
 
 /**
+	@brief QETProject::addCableAutoNum
+	Store the cable numbering rule. There is room for exactly one: saving
+	it under a name drops every other entry, so a project can never end up
+	with a list of cable rules to choose from.
+	@param key
+	@param context
+*/
+void QETProject::addCableAutoNum(const QString& key, const NumerotationContext& context)
+{
+	if (!key.isEmpty()) {
+		const QStringList others = m_cable_autonum.keys();
+		for (const QString &other : others) {
+			if (other != key) m_cable_autonum.remove(other);
+		}
+	}
+	m_cable_autonum.insert(key, context);
+		//The rule in use must always be one which exists: after a save
+		//under another name the old entry is gone, so follow the new one.
+	if (!key.isEmpty() && (m_current_cable_autonum.isEmpty()
+						   || !m_cable_autonum.contains(m_current_cable_autonum))) {
+		m_current_cable_autonum = key;
+	}
+	emit autoNumContextUpdated();
+}
+
+/**
 	@brief QETProject::removeConductorAutoNum
 	Remove Conductor Numerotation Context stored with key
 	@param key
@@ -1215,6 +1368,21 @@ void QETProject::removeElementAutoNum(const QString& key)
 */
 void QETProject::removeFolioAutoNum(const QString& key) {
 	m_folio_autonum.remove(key);
+}
+
+/**
+	@brief QETProject::removeCableAutoNum
+	Forget the cable numbering rule stored with key
+	@param key
+*/
+void QETProject::removeCableAutoNum(const QString& key)
+{
+	m_cable_autonum.remove(key);
+	if (m_current_cable_autonum == key) {
+		m_current_cable_autonum = m_cable_autonum.isEmpty()
+				? QString() : m_cable_autonum.keys().first();
+	}
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -1249,6 +1417,18 @@ NumerotationContext QETProject::elementAutoNum (const QString &key) {
 NumerotationContext QETProject::folioAutoNum (const QString &key) const
 {
 	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
+	else return NumerotationContext();
+}
+
+/**
+	@brief QETProject::cableAutoNum
+	Return the cable numerotation context stored with key.
+	If key is not found, return an empty numerotation context
+	@param key
+*/
+NumerotationContext QETProject::cableAutoNum(const QString &key) const
+{
+	if (m_cable_autonum.contains(key)) return m_cable_autonum.value(key);
 	else return NumerotationContext();
 }
 
@@ -1594,6 +1774,18 @@ QDomDocument QETProject::toXml()
 			xml_strip.appendChild(strip->toXml(xml_doc));
 		}
 		project_root.appendChild(xml_strip);
+	}
+
+		//Write the cables to xml. Their sections are written here too,
+		//beside the cable they belong to, so a cable and everything drawn
+		//for it are read back together and can never come apart.
+	if (m_cables.count())
+	{
+		auto xml_cables = xml_doc.createElement(QStringLiteral("cables"));
+		for (auto &cable : m_cables) {
+			xml_cables.appendChild(cable->toXml(xml_doc));
+		}
+		project_root.appendChild(xml_cables);
 	}
 
 	// Write the elements collection.
@@ -2109,9 +2301,22 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readTerminalStripXml(xml_project);
 	const qint64 strips_ms = phase_timer.restart();
 
+		//Load the cables, after the diagrams their sections are drawn on
+	readCableXml(xml_project);
+	const qint64 cables_ms = phase_timer.restart();
+
 		//Now that all are loaded we refresh content of the project.
 	refresh();
 	const qint64 refresh_ms = phase_timer.restart();
+
+		//refresh() above resolved the folio report links for the first
+		//time (refreshContents() -> initLink). The cable label pass at
+		//the end of readCableXml() ran before that, while no element
+		//knew its partners yet, so a core running through a report could
+		//not be carried over there -- it was even cleared off the far
+		//wire again. Run the pass once more now that the links exist:
+		//it recomputes everything from the project as it now stands.
+	CableManager::refreshLabels(this);
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
@@ -2120,11 +2325,12 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 	qInfo().nospace()
 			<< "Project content built in "
-			<< (elements_ms + diagrams_ms + strips_ms
+			<< (elements_ms + diagrams_ms + strips_ms + cables_ms
 				+ refresh_ms + database_ms) / 1000.0
 			<< " seconds (elements collection " << elements_ms / 1000.0
 			<< ", diagrams " << diagrams_ms / 1000.0
 			<< ", terminal strips " << strips_ms / 1000.0
+			<< ", cables " << cables_ms / 1000.0
 			<< ", refresh " << refresh_ms / 1000.0
 			<< ", database " << database_ms / 1000.0 << ")";
 
@@ -2318,7 +2524,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, guides_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, cable_autonums, guides_elmt;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -2341,6 +2547,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			folio_autonums = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
 			element_autonums = child_elmt;
+		else if (child_elmt.tagName()== QLatin1String("cable_autonums"))
+			cable_autonums = child_elmt;
 		else if (child_elmt.tagName() == QLatin1String("guides"))
 			guides_elmt = child_elmt;
 	}
@@ -2409,6 +2617,37 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			m_current_element_autonum = current_title;
 		}
 	}
+	if (!cable_autonums.isNull())
+	{
+		m_current_cable_autonum = cable_autonums.attribute(QStringLiteral("current_autonum"));
+			//Which axis the cables are numbered along. A file written
+			//before this existed has no say in it and stays with the
+			//axis the terminals have always started from.
+		m_cable_axis_x_first = cable_autonums.attribute(
+			QStringLiteral("axis_priority"), QStringLiteral("x"))
+			!= QLatin1String("y");
+			//Whether the numbering question was already answered with
+			//no in this project. A file which does not hold the answer
+			//yet asks again rather than staying silent: it is his own
+			//answer per project which is kept, not a default saying no.
+		m_cable_ask_numbering = cable_autonums.attribute(
+			QStringLiteral("ask_numbering_rule"), QStringLiteral("true"))
+			!= QLatin1String("false");
+		for (auto elmt : QET::findInDomElement(cable_autonums, QStringLiteral("cable_autonum")))
+		{
+			NumerotationContext nc;
+			nc.fromXml(elmt);
+			if (elmt.attribute(QStringLiteral("title")).isEmpty()) continue;
+			m_cable_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+		}
+			//A file written by hand, or written before this rule existed,
+			//may name a rule which is not in the list: the numbering must
+			//never be left pointing at something which is not there.
+		if (!m_cable_autonum.contains(m_current_cable_autonum)) {
+			m_current_cable_autonum = m_cable_autonum.isEmpty()
+					? QString() : m_cable_autonum.keys().first();
+		}
+	}
 	// Read guides from XML (if missing, e.g. in old projects, list stays empty)
 	m_default_guides.clear();
 
@@ -2441,6 +2680,55 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 			addTerminalStrip(terminal_strip);
 		}
 	}
+}
+
+/**
+ * @brief QETProject::readCableXml
+ * Read the cables of the project, and draw a section for each of them on
+ * the folio it belongs to.
+ *
+ * The diagrams have already been read at this point, which is what makes
+ * it possible to put the sections back where they were: a folio is
+ * identified by its uuid, so reordering or renumbering pages never moves
+ * a cable onto the wrong one.
+ * @param xml_project
+ */
+void QETProject::readCableXml(const QDomDocument &xml_project)
+{
+	auto xml_elmt = xml_project.documentElement();
+	auto xml_cables = xml_elmt.firstChildElement(QStringLiteral("cables"));
+	if (xml_cables.isNull()) return;
+
+	for (auto xml_cable = xml_cables.firstChildElement(QStringLiteral("cable"));
+		 !xml_cable.isNull();
+		 xml_cable = xml_cable.nextSiblingElement(QStringLiteral("cable")))
+	{
+		auto cable = new Cable(this);
+		cable->fromXml(xml_cable);
+		addCable(cable);
+
+		for (const CablePartData &part_data : cable->parts())
+		{
+			Diagram *diagram = diagramByUuid(part_data.diagram);
+			if (!diagram)
+			{
+					//The folio this section was drawn on has been removed:
+					//the section goes with it, and so do the cores which
+					//were only ever shown on it.
+				cable->removePart(part_data.uuid);
+				continue;
+			}
+
+			auto part = new CablePart(part_data);
+			part->setCable(cable);
+			diagram->addItem(part);
+		}
+	}
+
+		//The file holds the generated cable field of every conductor as
+		//well as the cables themselves; working it out again here makes
+		//sure the two agree even if a file was edited by hand.
+	CableManager::refreshLabels(this);
 }
 
 /**
@@ -2606,6 +2894,52 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		}
 	}
 	xml_element.appendChild(element_autonums);
+
+	//Export Cable Autonum -- one rule, but stored exactly like the others
+	//so it travels with the project and survives a re-save untouched.
+	//
+	//Only when it holds something, though. An element which is not there
+	//reads back as exactly the defaults a project which never touched
+	//cable numbering already has, so writing it every time put
+	//<cable_autonums> into every file the program saved -- into the
+	//example projects and into projects without a single cable in them.
+	//
+	//That is not the same as writing it only for projects with cables,
+	//which would cost data: a rule named before the first cable is
+	//drawn, an axis chosen before it, and the numbering question
+	//answered with no are answers only this element can carry.
+	QDomElement cable_autonums = xml_document.createElement("cable_autonums");
+	cable_autonums.setAttribute("current_autonum", m_current_cable_autonum);
+	cable_autonums.setAttribute("axis_priority",
+								m_cable_axis_x_first ? "x" : "y");
+		//Only the no is written down: a project which has not answered
+		//the numbering question yet asks again, so silence in the file
+		//means asking rather than holding back.
+	if (!m_cable_ask_numbering) {
+		cable_autonums.setAttribute("ask_numbering_rule", "false");
+	}
+	int written_cable_rules = 0;
+	QStringList cable_autonum_keys = cableAutoNum().keys();
+	cable_autonum_keys.sort();
+	for (const QString &key : std::as_const(cable_autonum_keys)) {
+		QDomElement cable_autonum = cableAutoNum(key).toXml(xml_document, "cable_autonum");
+		if (key != "" && cableAutoNumFormula(key) != "") {
+			cable_autonum.setAttribute("title", key);
+			cable_autonum.setAttribute("formula", cableAutoNumFormula(key));
+			cable_autonums.appendChild(cable_autonum);
+			++written_cable_rules;
+		}
+	}
+		//Nothing to keep when the project never named a rule, never
+		//chose an axis other than the default and has not answered the
+		//numbering question with no -- then this element would say
+		//nothing the reader does not assume anyway.
+	if (!m_current_cable_autonum.isEmpty()
+	    || !m_cable_ask_numbering
+	    || !m_cable_axis_x_first
+	    || written_cable_rules > 0) {
+		xml_element.appendChild(cable_autonums);
+	}
 
 	// Export default guides
 	QDomElement guides_elmt = xml_document.createElement("guides");
@@ -2790,6 +3124,86 @@ bool QETProject::addTerminalStrip(TerminalStrip *strip)
  */
 bool QETProject::removeTerminalStrip(TerminalStrip *strip) {
 	return m_terminal_strip_vector.removeOne(strip);
+}
+
+/**
+ * @brief QETProject::cables
+ * @return every cable of this project
+ */
+QVector<Cable *> QETProject::cables() const {
+	return m_cables;
+}
+
+/**
+ * @brief QETProject::newCable
+ * Create a cable owned by this project and watch it: whenever it changes,
+ * the cable field of every conductor it feeds is worked out again.
+ * @return the new cable
+ */
+Cable *QETProject::newCable()
+{
+	auto cable = new Cable(this);
+	addCable(cable);
+	return cable;
+}
+
+/**
+ * @brief QETProject::addCable
+ * @param cable
+ * @return true when the cable is now held by this project
+ */
+bool QETProject::addCable(Cable *cable)
+{
+	if (!cable || cable->parent() != this)
+		return false;
+
+	if (m_cables.contains(cable))
+		return true;
+
+	m_cables.append(cable);
+	connect(cable, &Cable::changed, this, [this]() {
+		CableManager::refreshLabels(this);
+		setModified(true);
+	});
+	emit cableAdded(cable);
+	return true;
+}
+
+/**
+ * @brief QETProject::removeCable
+ * Cable is removed from the list but not deleted, so an undo command can
+ * put it back.
+ * @param cable
+ * @return true when the cable was in the list
+ */
+bool QETProject::removeCable(Cable *cable) {
+	if (!m_cables.removeOne(cable))
+		return false;
+
+	disconnect(cable, nullptr, this, nullptr);
+
+		//A cable which is no longer one of ours stops writing its labels
+		//into the conductors it used to feed.
+	CableManager::refreshLabels(this);
+	setModified(true);
+	emit cableRemoved(cable);
+	return true;
+}
+
+/**
+ * @brief QETProject::diagramByUuid
+ * @param uuid
+ * @return the folio with that identity, or nullptr. A cable section says
+ * which folio it is drawn on by identity, since folios are reordered and
+ * renumbered freely.
+ */
+Diagram *QETProject::diagramByUuid(const QUuid &uuid)
+{
+	if (uuid.isNull()) return nullptr;
+	for (Diagram *diagram : m_diagrams_list) {
+		if (diagram && diagram->uuid() == uuid) return diagram;
+	}
+	return nullptr;
 }
 
 /**
