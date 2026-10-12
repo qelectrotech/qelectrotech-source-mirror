@@ -15,7 +15,7 @@
 
 namespace {
 	//The folios holding a terminal, built: a folio not built yet
-	//(QET_LAZY_FOLIOS) holding none is not built for this
+	//(lazy folios) holding none is not built for this
 QList<Diagram *> terminalFolios(QETProject *project)
 {
 	project->buildFoliosHolding(ElementData::Terminal, false);

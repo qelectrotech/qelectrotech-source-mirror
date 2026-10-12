@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -878,7 +878,7 @@ int resaveProject(QETProject &project, const QString &output)
 		out << "Re-saved project -> " << output << "\n";
 		return 0;
 	}
-		//Folios not built (QET_LAZY_FOLIOS) written as read when that is
+		//Folios not built (lazy folios) written as read when that is
 		//what building them would write (QETProject::toXml())
 	QHash<int, QByteArray> kept_folios;
 	const QDomDocument doc = project.toXml(&kept_folios);
@@ -973,7 +973,7 @@ int setTitleBlock(QETProject &project, const QString &output,
 			return 1;
 		}
 	} else {
-			//Folios not built (QET_LAZY_FOLIOS) written as read when that
+			//Folios not built (lazy folios) written as read when that
 			//is what building them would write (QETProject::toXml())
 		QHash<int, QByteArray> kept_folios;
 		const QDomDocument doc = project.toXml(&kept_folios);

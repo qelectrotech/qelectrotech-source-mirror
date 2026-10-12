@@ -437,7 +437,7 @@ void QetScriptApi::setLive(QStringList *log)
 /**
 	@brief QetScriptApi::unbuiltInformation
 	@return the information of the symbol @p elementUuid on the folio
-	@p folioIndex when that folio is not built (QET_LAZY_FOLIOS) and the
+	@p folioIndex when that folio is not built (lazy folios) and the
 	symbol's information can be read and changed through the project
 	database alone (projectDataBase::canEditUnbuilt()); nothing otherwise,
 	the folio to be built
@@ -458,7 +458,7 @@ std::optional<DiagramContext> QetScriptApi::unbuiltInformation(int folioIndex, c
 
 /**
 	@brief QetScriptApi::built
-	@return @p folio, built if it was not yet (QET_LAZY_FOLIOS), as showing
+	@return @p folio, built if it was not yet (lazy folios), as showing
 	it builds it: what a call reading or changing its items needs. A
 	folio's own data (title block, border, wire defaults) needs no build.
 */

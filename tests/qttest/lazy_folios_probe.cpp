@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: GPL-2.0-or-later
-// Lazy folios (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md stages 5.2 and 5.3),
+// Lazy folios (on by default since QETZ-DB-TRUTH D6, QET_EAGER_FOLIOS=1 for every folio built; LAZY-FOLIO-PLAN.md stages 5.2 and 5.3),
 // linked against the application's objects: a folio shown in a project
 // opened without building its folios draws and links as in the project
 // opened as usual, building only it and the folios its links and tables
@@ -57,7 +57,7 @@ static void revisionEveryFolio(const QString &source, const QString &output, con
 							   const QString &path, int label_folio = -1)
 {
 	QString error;
-	qputenv("QET_LAZY_FOLIOS", "1");
+	qunsetenv("QET_EAGER_FOLIOS");
 	QETProject revised(source);
 	const int unbuilt = revised.unloadedFolioCount();
 	QetScriptApi api(&revised);
@@ -83,7 +83,7 @@ static void revisionEveryFolio(const QString &source, const QString &output, con
 		check(built <= with_tables, "saving a new revision builds only the folios holding a table");
 	else
 		check(revised.folios().at(label_folio)->isLoaded(), "a folio whose label changed is built to save");
-	qunsetenv("QET_LAZY_FOLIOS");
+	qputenv("QET_EAGER_FOLIOS", "1");
 	const QString usual_path = output + "/" + name + "-usual" + (qetz ? ".qetz" : ".qet");
 	{
 		QETProject usual(source);
@@ -97,7 +97,7 @@ static void revisionEveryFolio(const QString &source, const QString &output, con
 		else { usual.setFilePath(usual_path); check(usual.write().isOk(), "revision saved when built"); }
 	}
 	QETProject lazy_back(lazy_path), usual_back(usual_path);
-	qputenv("QET_LAZY_FOLIOS", "1");
+	qunsetenv("QET_EAGER_FOLIOS");
 		//What a save says of itself (file name, path, time) left out
 	auto lines = [&path](QETProject &project) {
 		QStringList list = sortedLines(project.toXml().toString(), path);
@@ -362,7 +362,7 @@ int main(int argc, char **argv)
 	qputenv("QET_LAZY_SAVE_KEPT", "1");
 	try {
 		const QString output = QString::fromLocal8Bit(argv[3]);
-		qunsetenv("QET_LAZY_FOLIOS");
+		qputenv("QET_EAGER_FOLIOS", "1");
 			//A file saved by this version: its folios carry their uuids,
 			//which opening without building them needs
 		const QString path = output + "/lazy_folios.qet";
@@ -389,9 +389,9 @@ int main(int argc, char **argv)
 		QETProject eager(path);
 		check(eager.state() == QETProject::Ok, "project opens");
 		{
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			QETProject lazy_strips(path);
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			auto strip_of = [](const QETProject &project) {
 				for (TerminalStrip *strip : project.terminalStrip())
 					if (strip->name() == QStringLiteral("X99")) return strip->physicalTerminalCount();
@@ -412,7 +412,7 @@ int main(int argc, char **argv)
 		}
 		check(linked > 0, "the project has linked symbols");
 
-		qputenv("QET_LAZY_FOLIOS", "1");
+		qunsetenv("QET_EAGER_FOLIOS");
 		auto same = [&](QETProject &lazy, int i, const char *what) {
 			Diagram *folio = lazy.folios().at(i);
 			lazy.buildFolioToShow(folio);
@@ -540,9 +540,9 @@ int main(int argc, char **argv)
 		}
 		{
 			QETProject edited(path), usual(path);
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			QETProject usual_edited(path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			edit(edited, busiest);
 			std::printf("edits on folio %d (%d links to other folios): %d folios not built\n",
 						busiest + 1, most, edited.unloadedFolioCount());
@@ -622,9 +622,9 @@ int main(int argc, char **argv)
 			//After everyday edits on a folio: as when built, others not built
 		{
 			QETProject edited(path), usual(path);
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			QETProject usual_edited(path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			edit(edited, busiest);
 			edit(usual_edited, busiest);
 			QFile file(path); file.open(QIODevice::ReadOnly);
@@ -654,9 +654,9 @@ int main(int argc, char **argv)
 			//links reach are built to be saved, the others not
 		{
 			QETProject renamed(path);
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			QETProject usual_renamed(path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			for (QETProject *project : {&renamed, &usual_renamed}) {
 				Diagram *folio = project->folios().at(busiest);
 				TitleBlockProperties block = folio->border_and_titleblock.exportTitleBlock();
@@ -671,9 +671,9 @@ int main(int argc, char **argv)
 			//folio is built to be saved
 		{
 			QETProject changed(path);
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			QETProject usual_changed(path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			for (QETProject *project : {&changed, &usual_changed}) {
 				DiagramContext properties = project->projectProperties();
 				properties.addValue(QStringLiteral("lazy_test"), QStringLiteral("1"));
@@ -794,9 +794,9 @@ int main(int argc, char **argv)
 				std::printf(".qetz folio added, moved, removed: %d folios built\n",
 							unbuilt - shuffled.unloadedFolioCount());
 				check(shuffled.unloadedFolioCount() == unbuilt, "adding, moving and removing a folio builds no other");
-				qunsetenv("QET_LAZY_FOLIOS");
+				qputenv("QET_EAGER_FOLIOS", "1");
 				QETProject usual_shuffled(zipped);
-				qputenv("QET_LAZY_FOLIOS", "1");
+				qunsetenv("QET_EAGER_FOLIOS");
 				shuffle(usual_shuffled);
 				check(folioRows(shuffled) == folioRows(usual_shuffled), "folios' rows after a move as when built");
 			}
@@ -883,7 +883,7 @@ int main(int argc, char **argv)
 				check(changed.writeContainerFile(changed_path, &error), "saved after the change");
 				std::printf(".qetz symbol on folio %d changed by a script: %d folios built, %d by saving\n",
 							folio_index + 1, 0, unbuilt - changed.unloadedFolioCount());
-				qunsetenv("QET_LAZY_FOLIOS");
+				qputenv("QET_EAGER_FOLIOS", "1");
 				const QString usual_path = output + "/changed-usual.qetz";
 				{
 					QETProject usual_changed(zipped);
@@ -892,7 +892,7 @@ int main(int argc, char **argv)
 					check(usual_changed.writeContainerFile(usual_path, &error), "saved after the change when built");
 				}
 				QETProject changed_back(changed_path), usual_back(usual_path);
-				qputenv("QET_LAZY_FOLIOS", "1");
+				qunsetenv("QET_EAGER_FOLIOS");
 				check(sortedLines(changed_back.toXml().toString(), path) == sortedLines(usual_back.toXml().toString(), path),
 					  "a symbol changed through the database saved as when built");
 				check(QetScriptApi(&changed_back).elementInfo(folio_index, uuid, "comment") == value, "the change saved");
@@ -949,9 +949,9 @@ int main(int argc, char **argv)
 			std::printf(".qetz saved untouched: %d of %d folios not built before, %d after\n",
 						unbuilt, int(folios.size()), untouched.unloadedFolioCount());
 			check(untouched.unloadedFolioCount() > 0, "saving an untouched .qetz does not build every folio");
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			QETProject kept_back(kept_path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			check(kept_back.toXml().toString() == eager.toXml().toString(),
 				  "a .qetz saved without building holds the project");
 
@@ -966,14 +966,14 @@ int main(int argc, char **argv)
 				//read back too: what a save and a reading do to a project is
 				//not what is checked here
 			const QString usual_path = output + "/edited-usual.qetz";
-			qunsetenv("QET_LAZY_FOLIOS");
+			qputenv("QET_EAGER_FOLIOS", "1");
 			{
 				QETProject edited_usual(path);
 				edit(edited_usual, busiest);
 				check(edited_usual.writeContainerFile(usual_path, &error), "edits saved with every folio built");
 			}
 			QETProject edited_back(edited_path), usual_back(usual_path);
-			qputenv("QET_LAZY_FOLIOS", "1");
+			qunsetenv("QET_EAGER_FOLIOS");
 			check(sortedLines(edited_back.toXml().toString(), path) == sortedLines(usual_back.toXml().toString(), path),
 				  "an edited .qetz saved without building holds what the edits made");
 				//Each symbol's links as saved, partners on folios not built

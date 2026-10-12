@@ -118,7 +118,7 @@ void ConductorNumExport::fillHash()
 	auto count = [this](const QString &num) {
 		m_hash.insert(num, m_hash.value(num, 0) + 1);
 	};
-		//The folios not built (QET_LAZY_FOLIOS): their wires from the
+		//The folios not built (lazy folios): their wires from the
 		//project database, by the same rules
 	QList<QUuid> unbuilt;
 	for (Diagram *d : m_project->folios())

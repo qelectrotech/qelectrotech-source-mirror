@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -1090,7 +1090,7 @@ QList<Terminal *> relatedPotentialTerminal (
 	// If terminal parent element is a folio report.
 	if (all_diagram && terminal -> parentElement() -> linkType() & Element::AllReport)
 	{
-			//The report's partner on a folio not built yet (QET_LAZY_FOLIOS)
+			//The report's partner on a folio not built yet (lazy folios)
 			//is built, so that a potential is followed as far as when every
 			//folio is; not while folios are being read or built, which
 			//would build whole report chains

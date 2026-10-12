@@ -123,7 +123,7 @@ class QETProject : public QObject
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
-			//(QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md); diagrams() builds them
+			//(lazy folios, LAZY-FOLIO-PLAN.md); diagrams() builds them
 		QList<Diagram *> folios() const;
 		bool deferringFolios() const {return m_deferring_folios;}
 		int unloadedFolioCount() const;
@@ -159,6 +159,12 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+
+			/// Whether a folio is built only when it is needed, not all on
+			/// opening (QETZ-DB-TRUTH-PLAN.md D6): yes, unless the
+			/// environment variable QET_EAGER_FOLIOS=1 asks for every folio
+			/// built on opening, as QElectroTech did before
+		static bool lazyFolios();
 
 		/// Number of crash-recovery snapshots kept per project, written in
 		/// turn by writeBackup(), so one bad write cannot replace the only copy
@@ -222,7 +228,7 @@ class QETProject : public QObject
 		static QString normalizedAutoNumName(const QString &name);
 		QVector<Element *> elementsUsingElementAutoNum(const QString &title) const;
 			/// A placed symbol's numbering, whether its folio is built or
-			/// not (QET_LAZY_FOLIOS): what is asked of every symbol of the
+			/// not (lazy folios): what is asked of every symbol of the
 			/// project when one is numbered
 		struct SymbolNumbering {
 			const Element *element = nullptr; ///< null on a folio not built

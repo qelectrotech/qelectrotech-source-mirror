@@ -1116,7 +1116,7 @@ bool Element::fromXml(QDomElement &e,
 	dc.fromXml(e.firstChildElement(QStringLiteral("elementInformations")),
 			   QStringLiteral("elementInformation"));
 		//Changed through the project database while its folio was not
-		//built (QET_LAZY_FOLIOS): the change, not what the file says
+		//built (lazy folios): the change, not what the file says
 	if (diagram() && diagram()->project())
 		if (const auto edited = diagram()->project()->dataBase()->takeUnbuiltEdit(m_uuid))
 			dc = *edited;
@@ -1255,7 +1255,7 @@ QDomElement Element::toXml(
 
 	//if this element is linked to other elements,
 	//save the uuid of each other elements
-		//A partner on a folio not built yet (QET_LAZY_FOLIOS), which this
+		//A partner on a folio not built yet (lazy folios), which this
 		//symbol will be linked to, is saved too, in the order the symbol was
 		//saved with: saving needs no partner built (QETZ-DB-TRUTH-PLAN.md D5a)
 	QList<std::pair<QUuid, int>> links;
@@ -1661,7 +1661,7 @@ void Element::initLink(QETProject *prj)
 
 		//The symbols built: on the folios built, and those built alone as
 		//partners on folios not built (Diagram::buildSymbols()). A partner
-		//not built yet (QET_LAZY_FOLIOS) is linked when it is, and the
+		//not built yet (lazy folios) is linked when it is, and the
 		//saved list is kept until then, for the order it gives
 	ElementProvider ep(prj->folios());
 	QList<QUuid> uuids;
@@ -1689,7 +1689,7 @@ void Element::initLink(QETProject *prj)
 /**
 	@brief Element::pendingLinks
 	@return the uuids of the partners this symbol was saved linked to and
-	is not linked to yet: those on a folio not built yet (QET_LAZY_FOLIOS),
+	is not linked to yet: those on a folio not built yet (lazy folios),
 	until initLink() runs again once it is
 */
 QSet<QUuid> Element::pendingLinks() const

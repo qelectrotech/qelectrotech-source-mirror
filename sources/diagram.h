@@ -216,7 +216,7 @@ class Diagram : public QGraphicsScene
 				 bool = true,
 				 DiagramContent * = nullptr);
 			/// false while this folio's items wait in its XML to be
-			/// built (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md)
+			/// built (lazy folios, LAZY-FOLIO-PLAN.md)
 		bool isLoaded() const {return m_deferred.isNull() && m_deferred_part.isEmpty();}
 		QDomElement deferredXml();
 			/// The folio's items are in the part @p file of the .qetz the

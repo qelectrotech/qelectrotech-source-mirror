@@ -152,7 +152,7 @@ class projectDataBase : public QObject
 			//they are, say how many of those values building agreed with.
 		void prefillFromDocument(const QDomDocument &document);
 		void endPrefill(bool keep_unplaced = false);
-			//A folio of a project opened with QET_LAZY_FOLIOS is being built:
+			//A folio of a project opened with lazy folios is being built:
 			//its rows came from the document already, so none are written
 			//and the database is not marked changed
 		void setBuildingFolio(bool building);
@@ -349,7 +349,7 @@ class projectDataBase : public QObject
 			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
 		QSet<Diagram *> m_kept_folios;
 			//The tables' rows were filled from the document: those of a
-			//folio not built yet are right (QET_LAZY_FOLIOS)
+			//folio not built yet are right (lazy folios)
 		bool m_rows_from_document = false;
 		void keepUnbuiltFolioRows();
 		void restoreKeptRows(const QString &table, Diagram *folio, const QString &where);
