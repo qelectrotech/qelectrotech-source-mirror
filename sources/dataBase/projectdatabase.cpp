@@ -931,6 +931,38 @@ QStringList indexTables(const QSqlDatabase &db)
 }
 }
 
+namespace {
+	//A wire's properties read from @p attributes, as a saved wire's are
+ConductorProperties propertiesFrom(const QHash<QString, QString> &attributes)
+{
+	QDomDocument scratch;
+	QDomElement e = scratch.createElement(QStringLiteral("conductor"));
+	for (auto it = attributes.cbegin() ; it != attributes.cend() ; ++it)
+		e.setAttribute(it.key(), it.value());
+	ConductorProperties properties;
+	properties.fromXml(e);
+	return properties;
+}
+
+	//@p attributes without those reading them would give anyway: each
+	//left out in turn when the properties read without it are the same
+	//(stage D3b)
+QHash<QString, QString> fewestAttributes(QHash<QString, QString> attributes)
+{
+	const ConductorProperties full = propertiesFrom(attributes);
+	QStringList names = attributes.keys();
+	names.sort();
+	for (const QString &name : std::as_const(names)) {
+		QHash<QString, QString> without = attributes;
+		without.remove(name);
+		const ConductorProperties read = propertiesFrom(without);
+		if (read == full && read.attributes() == full.attributes())
+			attributes = without;
+	}
+	return attributes;
+}
+}
+
 /**
 	@brief projectDataBase::indexFile
 	This database written to an SQLite file, for a .qetz to be opened from
@@ -1011,6 +1043,29 @@ QByteArray projectDataBase::indexFile(const QList<std::pair<QUuid, QString>> &fo
 				query.addBindValue(table.folio.toString());
 				query.addBindValue(table.previous.isNull() ? QVariant() : QVariant(table.previous.toString()));
 				ok = ok && query.exec();
+			}
+				//A wire's properties: only the attributes reading them needs,
+				//by wire and name (fillFromIndex() writes the others back)
+			{
+				QMap<QString, QHash<QString, QString>> wires;
+				QSqlQuery rows(file);
+				rows.exec(QStringLiteral("SELECT conductor_uuid, name, value FROM conductor_properties"));
+				while (rows.next())
+					wires[rows.value(0).toString()].insert(rows.value(1).toString(), rows.value(2).toString());
+				ok = ok && query.exec(QStringLiteral("DELETE FROM conductor_properties"));
+				query.prepare(QStringLiteral("INSERT INTO conductor_properties (conductor_uuid, name, value) "
+											 "VALUES (?, ?, ?)"));
+				for (auto wire = wires.cbegin() ; wire != wires.cend() ; ++wire) {
+					const QHash<QString, QString> fewest = fewestAttributes(wire.value());
+					QStringList names = fewest.keys();
+					names.sort();
+					for (const QString &name : std::as_const(names)) {
+						query.addBindValue(wire.key());
+						query.addBindValue(name);
+						query.addBindValue(fewest.value(name));
+						ok = ok && query.exec();
+					}
+				}
 			}
 			ok = file.commit() && ok;
 			ok = query.exec(QStringLiteral("VACUUM")) && ok;
@@ -1164,18 +1219,29 @@ bool projectDataBase::fillFromIndex(const QByteArray &index,
 											query.value(3).toInt() != 0);
 	}
 	QHash<QUuid, QHash<QString, QString>> attributes;
-	query.exec(QStringLiteral("SELECT conductor_uuid, name, value FROM conductor_properties"));
-	while (query.next())
-		attributes[QUuid(query.value(0).toString())].insert(query.value(1).toString(),
-															query.value(2).toString());
-	QDomDocument scratch;
-	for (auto it = attributes.cbegin() ; it != attributes.cend() ; ++it) {
-		QDomElement e = scratch.createElement(QStringLiteral("conductor"));
-		for (auto a = it.value().cbegin() ; a != it.value().cend() ; ++a)
-			e.setAttribute(a.key(), a.value());
-		ConductorProperties properties;
-		properties.fromXml(e);
-		m_prefilled_conductors.insert(it.key(), properties);
+	QList<QUuid> wire_order;
+	query.exec(QStringLiteral("SELECT conductor_uuid, name, value FROM conductor_properties ORDER BY rowid"));
+	while (query.next()) {
+		const QUuid wire(query.value(0).toString());
+		if (!attributes.contains(wire)) wire_order << wire;
+		attributes[wire].insert(query.value(1).toString(), query.value(2).toString());
+	}
+		//A file may hold only the attributes reading needs (indexFile()):
+		//the table gets every attribute a saved wire carries, as before
+	query.exec(QStringLiteral("DELETE FROM conductor_properties"));
+	query.prepare(QStringLiteral("INSERT INTO conductor_properties (conductor_uuid, name, value) VALUES (?, ?, ?)"));
+	for (const QUuid &wire : std::as_const(wire_order)) {
+		const ConductorProperties properties = propertiesFrom(attributes.value(wire));
+		m_prefilled_conductors.insert(wire, properties);
+		QHash<QString, QString> &full = attributes[wire];
+		full.clear();
+		for (const auto &attribute : properties.attributes()) {
+			full.insert(attribute.first, attribute.second);
+			query.addBindValue(wire.toString());
+			query.addBindValue(attribute.first);
+			query.addBindValue(attribute.second);
+			query.exec();
+		}
 	}
 	for (auto it = m_prefilled_elements.cbegin() ; it != m_prefilled_elements.cend() ; ++it)
 		m_element_information.insert(it.key(), it.value());
