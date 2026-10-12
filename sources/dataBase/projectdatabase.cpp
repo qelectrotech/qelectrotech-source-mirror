@@ -2052,6 +2052,13 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 void projectDataBase::diagramInfoChanged(Diagram *diagram)
 {
 	m_content_changed = true;
+		//Not while the project is being read: a folio's header read gives
+		//it a folio number counted from the folios read so far ("1/1" for
+		//the first of three); the rows are filled once every folio is
+		//read, from the document or from the index a .qetz was saved with
+	if (m_update_blocked) {
+		return;
+	}
 	bindDiagramInfoValues(m_update_diagram_info_query, diagram);
 
 	if (!m_update_diagram_info_query.exec()) {

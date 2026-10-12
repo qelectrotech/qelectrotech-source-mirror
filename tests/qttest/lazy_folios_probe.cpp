@@ -765,6 +765,37 @@ int main(int argc, char **argv)
 			check(indexed.unloadedFolioCount() == folios.size() - strip_folios.size(),
 				  "the .qetz opens building only the folios of the terminal strip's terminals");
 			check(numbering(indexed) == numbering(eager), "symbols' numbering from the index as when built");
+				//The folios' rows as saved, not as reading their headers one
+				//by one numbers them ("1/1" for the first of three, D7)
+			{
+				auto folioRows = [](QETProject &project) {
+					QStringList rows;
+					for (const QString &row : tables(project))
+						if (row.startsWith("diagram")) rows << row;
+					return rows;
+				};
+				check(folioRows(indexed) == folioRows(eager), "the folios' rows from the index as when built");
+					//Folio numbers that count the folios ("%id/%total")
+				const QString totals = output + "/totals.qetz";
+				qputenv("QET_EAGER_FOLIOS", "1");
+				{
+					QETProject numbered(zipped);
+					QetScriptApi api(&numbered);
+					for (int i = 0 ; i < api.folioCount() ; ++i)
+						api.setFolioProperty(i, "folio", "%id/%total");
+					check(numbered.writeContainerFile(totals, &error), "folio numbers with totals saved");
+				}
+				QETProject usual_totals(totals);
+				qunsetenv("QET_EAGER_FOLIOS");
+				QETProject lazy_totals(totals);
+				check(lazy_totals.openedFromIndex(), "opened from its index");
+				const QStringList lazy_rows = folioRows(lazy_totals), usual_rows = folioRows(usual_totals);
+				if (lazy_rows != usual_rows)
+					for (int i = 0 ; i < lazy_rows.size() && i < 3 ; ++i)
+						std::printf("  lazily %s\n  built  %s\n", qPrintable(lazy_rows.at(i).left(140)),
+									qPrintable(usual_rows.value(i).left(140)));
+				check(lazy_rows == usual_rows, "folio numbers with totals from the index as when built");
+			}
 			for (int i = 0; i < folios.size(); ++i)
 				same(indexed, i, "shown from the .qetz");
 			check(indexed.toXml().toString() == eager.toXml().toString(), "the .qetz saves as when built");

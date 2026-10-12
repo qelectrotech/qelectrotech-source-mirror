@@ -149,7 +149,11 @@ class Statement
 		}
 		~Statement() { sqlite3_finalize(m_stmt); }
 		bool ok() const { return m_stmt; }
+			//A statement that could not be prepared (the database is not
+			//one, a table is missing) binds nothing and steps to no row:
+			//SQLite's own calls are not all safe on a null statement
 		void bind(const QVariantList &values) {
+			if (!m_stmt) return;
 			sqlite3_reset(m_stmt);
 			sqlite3_clear_bindings(m_stmt);
 			for (int i = 0 ; i < values.size() ; ++i) {
@@ -165,11 +169,13 @@ class Statement
 			}
 		}
 		bool run(const QVariantList &values) {
+			if (!m_stmt) return false;
 			bind(values);
 			return sqlite3_step(m_stmt) == SQLITE_DONE;
 		}
-		bool next() { return sqlite3_step(m_stmt) == SQLITE_ROW; }
+		bool next() { return m_stmt && sqlite3_step(m_stmt) == SQLITE_ROW; }
 		QVariant value(int column) const {
+			if (!m_stmt) return QVariant();
 			switch (sqlite3_column_type(m_stmt, column)) {
 				case SQLITE_NULL: return QVariant();
 				case SQLITE_INTEGER: return QVariant(sqlite3_column_int(m_stmt, column));
