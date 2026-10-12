@@ -135,6 +135,7 @@ class QETProject : public QObject
 		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
 		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
 		void buildFoliosHoldingTables();
+		QList<Diagram *> cableLabelFolios();
 		QSet<QUuid> symbolsOnUnbuiltFolios() const;
 			/// While saving: the symbols on folios not built a built symbol
 			/// may be saved linked to (Element::toXml())
