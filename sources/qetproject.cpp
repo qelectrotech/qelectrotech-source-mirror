@@ -2305,6 +2305,17 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 					const QDomElement old_information = element.firstChildElement(QStringLiteral("elementInformations"));
 					element.replaceChild(information, old_information);   //it has one (unbuiltEditsOnFolio())
 				}
+				//Its wires whose properties changed
+			const QHash<QUuid, ConductorProperties> wire_edits = m_data_base.unbuiltWireEditsOnFolio(diagram->uuid());
+			if (!wire_edits.isEmpty())
+				for (const QDomElement &list : QET::findInDomElement(xml_diagram, QStringLiteral("conductors")))
+					for (QDomElement wire = list.firstChildElement(QStringLiteral("conductor")) ; !wire.isNull() ;
+						 wire = wire.nextSiblingElement(QStringLiteral("conductor"))) {
+						const auto edit = wire_edits.constFind(QUuid(wire.attribute(QStringLiteral("uuid"))));
+						if (edit == wire_edits.constEnd()) continue;
+						for (const auto &attribute : edit->attributes())
+							wire.setAttribute(attribute.first, attribute.second);
+					}
 			xml_diagram.setAttribute("order", order_num ++);
 			project_root.appendChild(xml_diagram);
 			continue;
@@ -2323,6 +2334,16 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 				it.value().toXml(information, QStringLiteral("elementInformation"));
 				symbol.appendChild(information);
 				placeholder.appendChild(symbol);
+			}
+				//Its wires whose properties changed: what the .qetz database
+				//holds of them (only that can change, QetScriptApi)
+			const QHash<QUuid, ConductorProperties> wire_edits = m_data_base.unbuiltWireEditsOnFolio(diagram->uuid());
+			for (auto it = wire_edits.cbegin() ; it != wire_edits.cend() ; ++it) {
+				auto wire = xml_doc.createElement(QStringLiteral("qetz-edited-conductor"));
+				wire.setAttribute(QStringLiteral("uuid"), it.key().toString());
+				for (const auto &attribute : it.value().attributes())
+					wire.setAttribute(attribute.first, attribute.second);
+				placeholder.appendChild(wire);
 			}
 			kept_parts->append(diagram->deferredPart());
 			project_root.appendChild(placeholder);

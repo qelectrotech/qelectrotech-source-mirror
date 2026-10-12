@@ -819,6 +819,23 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 												 value, attributesJson(i, QStringLiteral("name"), true)});
 				}
 			}
+				//Its wires whose properties changed since: their columns
+			for (const QDomElement &edited : children(d, QStringLiteral("qetz-edited-conductor"))) {
+				QStringList set;
+				QVariantList values;
+				for (const QString &column : ConductorData) {
+					if (column == QLatin1String("uuid") || column.startsWith(QLatin1String("element"))
+							|| column.startsWith(QLatin1String("terminal")) || column == QLatin1String("freezeLabel")
+							|| !edited.hasAttribute(column))
+						continue;
+					set << QStringLiteral("\"%1\" = ?").arg(column);
+					values << edited.attribute(column);
+				}
+				values << id << edited.attribute(QStringLiteral("uuid"));
+				Statement update(db, QStringLiteral("UPDATE conductor SET %1 WHERE folio_id = ? AND uuid = ?")
+								 .arg(set.join(QStringLiteral(", "))));
+				ok = ok && !set.isEmpty() && update.run(values) && sqlite3_changes(db.m_db) == 1;
+			}
 			if (!ok) {
 				setError(error, QStringLiteral("folio %1 kept as it was is not in its database").arg(id));
 				return {};

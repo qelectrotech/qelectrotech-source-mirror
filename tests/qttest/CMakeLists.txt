@@ -92,7 +92,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/lazy_folios_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet)
-  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 600 RUN_SERIAL TRUE
+  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 1800 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")

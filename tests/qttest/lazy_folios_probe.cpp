@@ -738,6 +738,28 @@ int main(int argc, char **argv)
 				check(built > 0, "the project has drawn items");
 				check(lazily == built, "the drawn items' view as when built");
 			}
+				//Every wire's potential from the database as QElectroTech
+				//follows it with every folio built
+			{
+				QETProject indexed_potentials(zipped);
+				int same = 0, differ = 0, unknown = 0;
+				for (Diagram *folio : eager.folios())
+					for (Conductor *wire : folio->conductors()) {
+						QSet<QUuid> live{wire->uuid()};
+						for (Conductor *c : wire->relatedPotentialConductors(true)) live.insert(c->uuid());
+						for (QETProject *project : {&eager, &indexed_potentials}) {
+							const auto stored = project->dataBase()->potentialWires(wire->uuid());
+							if (!stored) { ++unknown; continue; }
+							if (*stored == live) { ++same; continue; }
+							if (differ++ < 3)
+								std::printf("  potential of %s: %d wires followed, %d from the database\n",
+											qPrintable(wire->uuid().toString()), int(live.size()), int(stored->size()));
+						}
+					}
+				std::printf("potentials from the database: %d same, %d differ, %d not answered\n", same, differ, unknown);
+				check(differ == 0 && same > 0, "every wire's potential from the database as followed");
+				check(indexed_potentials.unloadedFolioCount() > 0, "potentials read without building");
+			}
 				//The folios' rows as saved, not as reading their headers one
 				//by one numbers them ("1/1" for the first of three, D7)
 			{
@@ -956,6 +978,76 @@ int main(int argc, char **argv)
 				//not built; a label change builds its folio (D5)
 			revisionEveryFolio(zipped, output, "revised", path);
 			revisionEveryFolio(zipped, output, "relabelled", path, busiest);
+
+				//A script changes a wire's cable by its uuid, on folios not
+				//built, the wire and its potential numbered by hand: through
+				//the project database, no folio built; saved as when built;
+				//undone; the folio built afterwards shows it (D5)
+			{
+				QETProject cabled(zipped);
+				const int unbuilt = cabled.unloadedFolioCount();
+				int folio_index = -1;
+				QString uuid;
+				QSet<QUuid> potential;
+				for (int i = 0 ; i < folios.size() && uuid.isEmpty() ; ++i) {
+					if (cabled.folios().at(i)->isLoaded()) continue;
+					for (Conductor *wire : folios.at(i)->conductors()) {
+						QSet<Conductor *> wires = wire->relatedPotentialConductors(true);
+						wires << wire;
+						bool usable = true;
+						for (Conductor *c : std::as_const(wires))
+							if (!c->properties().m_formula.isEmpty()
+									|| cabled.folios().at(eager.folioIndex(c->diagram()))->isLoaded())
+								usable = false;
+						if (!usable || wires.size() < 2) continue;
+						folio_index = i;
+						uuid = wire->uuid().toString();
+						for (Conductor *c : std::as_const(wires)) potential.insert(c->uuid());
+						break;
+					}
+				}
+				check(!uuid.isEmpty(), "a wire numbered by hand, its potential on folios not built");
+				QetScriptApi api(&cabled);
+				const QString before = api.conductorPropertyByUuid(folio_index, uuid, "cable");
+				const QString value = QStringLiteral("W-42");
+				check(api.setConductorPropertyByUuid(folio_index, uuid, "cable", value), "a script changes a wire not built");
+				check(api.conductorPropertyByUuid(folio_index, uuid, "cable") == value, "the wire's change read back");
+				for (const QUuid &wire : std::as_const(potential))
+					check(cabled.dataBase()->conductorProperties(wire).m_cable == value, "every wire of the potential changed");
+				check(cabled.unloadedFolioCount() == unbuilt, "changing wires not built builds no folio");
+				const QString cabled_path = output + "/cabled.qetz";
+				check(cabled.writeContainerFile(cabled_path, &error), "saved after the wire change");
+				std::printf(".qetz wire on folio %d, potential of %d wires, cable changed by uuid: 0 folios built, %d by saving\n",
+							folio_index + 1, int(potential.size()), unbuilt - cabled.unloadedFolioCount());
+				qputenv("QET_EAGER_FOLIOS", "1");
+				const QString usual_path = output + "/cabled-usual.qetz";
+				{
+					QETProject usual_cabled(zipped);
+					check(QetScriptApi(&usual_cabled).setConductorPropertyByUuid(folio_index, uuid, "cable", value),
+						  "the same wire change when built");
+					check(usual_cabled.writeContainerFile(usual_path, &error), "saved after the wire change when built");
+				}
+				QETProject cabled_back(cabled_path), usual_back(usual_path);
+				qunsetenv("QET_EAGER_FOLIOS");
+				auto lines = [&path](QETProject &project) {
+					QStringList list = sortedLines(project.toXml().toString(), path);
+					list.removeIf([](const QString &line) { return line.contains(QLatin1String("name=\"saved")); });
+					return list;
+				};
+				check(lines(cabled_back) == lines(usual_back), "a wire changed through the database saved as when built");
+				cabled.undoStack()->undo();
+				check(api.conductorPropertyByUuid(folio_index, uuid, "cable") == before, "the wire change undone");
+				cabled.undoStack()->redo();
+				Conductor *built_wire = nullptr;
+				for (Conductor *wire : cabled.folios().at(folio_index)->conductors())
+					if (wire->uuid().toString() == uuid) built_wire = wire;
+				check(!built_wire, "the folio not built yet");
+				cabled.buildFolioToShow(cabled.folios().at(folio_index));
+				for (Conductor *wire : cabled.folios().at(folio_index)->conductors())
+					if (wire->uuid().toString() == uuid) built_wire = wire;
+				check(built_wire && built_wire->properties().m_cable == value,
+					  "a wire changed before its folio was built shows the change");
+			}
 
 				//The wire numbers and wiring list exports, and the terminal
 				//numbering dialog: as when built, building only the folios

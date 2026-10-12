@@ -1266,6 +1266,77 @@ QString projectDataBase::terminalName(const QUuid &terminal, const QUuid &elemen
 }
 
 /**
+	@brief projectDataBase::potentialWires
+	@return the wires at the potential of @p wire, @p wire included, read
+	from the conductor, element and link tables as they are (see
+	elementTypesOnFolios()), followed as Conductor::relatedPotentialConductors()
+	follows them over every folio: through a wire's ends, from a folio
+	report to the terminals of the first symbol it is linked to, and from a
+	terminal block's terminal to its others. Nothing when a terminal block
+	on the way isolates its terminals (their groups are in its definition,
+	not in the database) or @p wire has no row.
+*/
+std::optional<QSet<QUuid>> projectDataBase::potentialWires(const QUuid &wire) const
+{
+	using Node = std::pair<QString, QString>;   //element uuid, terminal uuid
+	QHash<QString, std::pair<Node, Node>> ends;
+	QHash<Node, QStringList> wires_at;
+	QHash<QString, QList<Node>> nodes_of;
+	{
+		QSqlQuery query(m_data_base);
+		query.exec(QStringLiteral("SELECT uuid, terminal1_element_uuid, terminal1_uuid, "
+								  "terminal2_element_uuid, terminal2_uuid FROM conductor"));
+		while (query.next()) {
+			const Node a{query.value(1).toString(), query.value(2).toString()};
+			const Node b{query.value(3).toString(), query.value(4).toString()};
+			const QString uuid = query.value(0).toString();
+			ends.insert(uuid, {a, b});
+			for (const Node &n : {a, b}) {
+				wires_at[n] << uuid;
+				if (!nodes_of.value(n.first).contains(n)) nodes_of[n.first] << n;
+			}
+		}
+	}
+	const auto start = ends.constFind(wire.toString());
+	if (start == ends.constEnd()) {
+		return std::nullopt;
+	}
+	QHash<QString, ElementData::Type> kinds;
+	{
+		QSqlQuery query(m_data_base);
+		query.exec(QStringLiteral("SELECT uuid, type FROM element"));
+		while (query.next())
+			kinds.insert(query.value(0).toString(), ElementData::typeFromString(query.value(1).toString()));
+	}
+	QSet<QUuid> wires;
+	QSet<Node> seen;
+	QList<Node> todo{start->first, start->second};
+	while (!todo.isEmpty()) {
+		const Node node = todo.takeLast();
+		if (seen.contains(node)) continue;
+		seen.insert(node);
+		for (const QString &w : wires_at.value(node)) {
+			if (wires.contains(QUuid(w))) continue;
+			wires.insert(QUuid(w));
+			const auto e = ends.value(w);
+			todo << e.first << e.second;
+		}
+		const ElementData::Type kind = kinds.value(node.first, ElementData::Simple);
+		if (kind & ElementData::AllReport) {
+			const QList<QUuid> partners = linkedSymbols(QUuid(node.first));
+			if (!partners.isEmpty())
+				todo << nodes_of.value(partners.first().toString());
+		} else if (kind & ElementData::Terminal) {
+			if (QET::infoFlagIsTrue(m_element_information.value(QUuid(node.first))
+									.value(QStringLiteral("potential_isolating")).toString()))
+				return std::nullopt;
+			todo << nodes_of.value(node.first);
+		}
+	}
+	return wires;
+}
+
+/**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
 	as it is (see elementTypesOnFolios())
@@ -1415,7 +1486,109 @@ QSet<QUuid> projectDataBase::foliosWithUnbuiltEdits() const
 {
 	QSet<QUuid> folios;
 	for (const auto &edit : m_unbuilt_edits) folios.insert(edit.folio);
+	for (const auto &edit : m_unbuilt_wire_edits) folios.insert(edit.folio);
 	return folios;
+}
+
+/**
+	@brief projectDataBase::unbuiltWire
+	@return true if the wire @p wire is on a folio not built (lazy folios):
+	it has a row and its properties are stored, and no wire built holds its
+	uuid. @p folio is set to its folio.
+*/
+bool projectDataBase::unbuiltWire(const QUuid &wire, QUuid *folio) const
+{
+	if (placedConductorCount(wire) != 0 || !hasConductorProperties(wire)) {
+		return false;
+	}
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT diagram_uuid FROM conductor WHERE uuid = :uuid"));
+	query.bindValue(QStringLiteral(":uuid"), wire.toString());
+	if (!query.exec() || !query.next()) {
+		return false;
+	}
+	if (folio) *folio = QUuid(query.value(0).toString());
+	return !query.next();
+}
+
+/**
+	@brief projectDataBase::editUnbuiltConductorProperties
+	Give the wire @p wire, on a folio not built (unbuiltWire()), the
+	properties @p properties as Conductor::setProperties() would: the store,
+	its rows and its conductor row's text. Building it takes them
+	(takeUnbuiltWireEdit()); a .qetz saves them in its database (QETProject::
+	toXml()), anything else builds its folio to save.
+*/
+void projectDataBase::editUnbuiltConductorProperties(const QUuid &wire, const ConductorProperties &properties)
+{
+	QUuid folio;
+	if (!unbuiltWire(wire, &folio)) {
+		return;
+	}
+	m_unbuilt_wire_edits.insert(wire, {properties, folio});
+	if (!storeConductorProperties(wire, properties)) {
+		return;
+	}
+	m_content_changed = true;
+	if (!m_update_blocked) {
+		m_update_conductor_query.bindValue(QStringLiteral(":uuid"), wire.toString());
+		m_update_conductor_query.bindValue(QStringLiteral(":text"), properties.text);
+		if (!m_update_conductor_query.exec()) {
+			qDebug() << "projectDataBase::editUnbuiltConductorProperties update error : " << m_update_conductor_query.lastError();
+		}
+	}
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::takeUnbuiltWireEdit
+	@return the properties @p wire was given while its folio was not built,
+	forgotten here: the wire being built takes them
+*/
+std::optional<ConductorProperties> projectDataBase::takeUnbuiltWireEdit(const QUuid &wire)
+{
+	const auto edit = m_unbuilt_wire_edits.constFind(wire);
+	if (edit == m_unbuilt_wire_edits.constEnd()) {
+		return std::nullopt;
+	}
+	const ConductorProperties properties = edit->properties;
+	m_unbuilt_wire_edits.erase(edit);
+	return properties;
+}
+
+/**
+	@brief projectDataBase::unbuiltWireEditsOnFolio
+	@return the properties given to the wires of the folio @p folio while it
+	was not built, by wire
+*/
+QHash<QUuid, ConductorProperties> projectDataBase::unbuiltWireEditsOnFolio(const QUuid &folio) const
+{
+	QHash<QUuid, ConductorProperties> edits;
+	for (auto it = m_unbuilt_wire_edits.cbegin() ; it != m_unbuilt_wire_edits.cend() ; ++it)
+		if (it->folio == folio) edits.insert(it.key(), it->properties);
+	return edits;
+}
+
+/**
+	@brief projectDataBase::setPlacedConductorProperties
+	Give the wire @p wire its properties @p properties: through the wire when
+	it is built, through the store when it is not (unbuiltWire()). What
+	undoing and redoing a change of wires not built does, the wires having
+	perhaps been built since.
+	@return false if neither can
+*/
+bool projectDataBase::setPlacedConductorProperties(const QUuid &wire, const ConductorProperties &properties)
+{
+	const QList<QPointer<Conductor>> placed = m_placed_conductors.values(wire);
+	if (placed.size() == 1 && placed.first()) {
+		placed.first()->setProperties(properties);
+		return true;
+	}
+	if (placed.isEmpty() && unbuiltWire(wire)) {
+		editUnbuiltConductorProperties(wire, properties);
+		return true;
+	}
+	return false;
 }
 
 /**

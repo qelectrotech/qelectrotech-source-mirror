@@ -178,6 +178,11 @@ class projectDataBase : public QObject
 		QSet<QUuid> foliosWithUnbuiltEdits() const;
 		QHash<QUuid, DiagramContext> unbuiltEditsOnFolio(const QUuid &folio, bool *need_build = nullptr) const;
 		bool setPlacedElementInformation(const QUuid &element, const DiagramContext &information);
+		bool unbuiltWire(const QUuid &wire, QUuid *folio = nullptr) const;
+		void editUnbuiltConductorProperties(const QUuid &wire, const ConductorProperties &properties);
+		std::optional<ConductorProperties> takeUnbuiltWireEdit(const QUuid &wire);
+		QHash<QUuid, ConductorProperties> unbuiltWireEditsOnFolio(const QUuid &folio) const;
+		bool setPlacedConductorProperties(const QUuid &wire, const ConductorProperties &properties);
 		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
 			/// A symbol placed on a folio, as the element table has it
 		struct FolioSymbol {
@@ -195,6 +200,7 @@ class projectDataBase : public QObject
 		QList<FolioWire> wiresOnFolios(const QList<QUuid> &folios) const;
 		QString elementLabel(const QUuid &element) const;
 		QString terminalName(const QUuid &terminal, const QUuid &element) const;
+		std::optional<QSet<QUuid>> potentialWires(const QUuid &wire) const;
 		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
 		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
@@ -338,6 +344,9 @@ class projectDataBase : public QObject
 			/// each is on: building the symbol takes it (takeUnbuiltEdit())
 		struct UnbuiltEdit { DiagramContext information; QUuid folio; bool had_information; };
 		QHash<QUuid, UnbuiltEdit> m_unbuilt_edits;
+			/// The same for wires (editUnbuiltConductorProperties())
+		struct UnbuiltWireEdit { ConductorProperties properties; QUuid folio; };
+		QHash<QUuid, UnbuiltWireEdit> m_unbuilt_wire_edits;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;

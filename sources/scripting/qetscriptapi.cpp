@@ -1237,6 +1237,16 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 			.arg(caller, value, property));
 		return false;
 	}
+	return applyConductorProperties(conductor, properties);
+}
+
+/**
+	@brief QetScriptApi::applyConductorProperties
+	Give @p conductor and every wire at its potential the properties
+	@p properties, one undo step
+*/
+bool QetScriptApi::applyConductorProperties(Conductor *conductor, const ConductorProperties &properties)
+{
 	if (properties == conductor->properties()) return true; // already so
 
 	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
@@ -1252,6 +1262,174 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 	}
 	m_project->undoStack()->endMacro();
 	return true;
+}
+
+namespace {
+	//The wire properties a .qetz's database holds in its own columns, which
+	//nothing on a folio computes from but a wire's number formula
+const QStringList &storedConductorPropertyNames()
+{
+	static const QStringList names {
+		QStringLiteral("num"), QStringLiteral("function"), QStringLiteral("bus"),
+		QStringLiteral("cable"), QStringLiteral("tension_protocol"),
+		QStringLiteral("conductor_color"), QStringLiteral("conductor_section")};
+	return names;
+}
+
+	//true if @p a and @p b differ only in storedConductorPropertyNames()
+bool differOnlyInStored(const ConductorProperties &a, const ConductorProperties &b)
+{
+	QHash<QString, QString> left, right;
+	for (const auto &attribute : a.attributes()) left.insert(attribute.first, attribute.second);
+	for (const auto &attribute : b.attributes()) right.insert(attribute.first, attribute.second);
+	QSet<QString> names(left.keyBegin(), left.keyEnd());
+	for (const QString &name : right.keys()) names.insert(name);
+	for (const QString &name : std::as_const(names))
+		if (left.value(name) != right.value(name) && !storedConductorPropertyNames().contains(name))
+			return false;
+	return true;
+}
+
+	//Wires given their properties by uuid, built or not (lazy folios):
+	//projectDataBase::setPlacedConductorProperties()
+class ChangeStoredConductorPropertiesCommand : public QUndoCommand
+{
+	public:
+		ChangeStoredConductorPropertiesCommand(QETProject *project,
+											   const QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> &changes) :
+			m_project(project), m_changes(changes)
+		{ setText(QObject::tr("Edit the conductor properties")); }
+		void undo() override { apply(false); }
+		void redo() override { apply(true); }
+	private:
+		void apply(bool forward) {
+			if (!m_project) return;
+			for (auto it = m_changes.cbegin() ; it != m_changes.cend() ; ++it)
+				m_project->dataBase()->setPlacedConductorProperties(
+							it.key(), forward ? it->second : it->first);
+		}
+		QPointer<QETProject> m_project;
+		QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> m_changes;
+};
+}
+
+/**
+	@brief QetScriptApi::findConductorByUuid
+	@return the wire @p conductorUuid of the folio @p folioIndex, the folio
+	built, or nullptr (said in the log)
+*/
+Conductor *QetScriptApi::findConductorByUuid(int folioIndex, const QString &conductorUuid,
+											 const QString &caller)
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) {
+		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
+		return nullptr;
+	}
+	const QUuid wanted(conductorUuid);
+	for (Conductor *c : built(m_project->folios().at(folioIndex))->conductors())
+		if (c->uuid() == wanted) return c;
+	log(QStringLiteral("qet.%1: no conductor %2 on folio %3").arg(caller, conductorUuid).arg(folioIndex));
+	return nullptr;
+}
+
+/**
+	@brief QetScriptApi::unbuiltConductorChange
+	Change the property @p property of the wire @p wire, on the folio
+	@p folioIndex not built (lazy folios), and of every wire at its potential,
+	through the project database, as applyConductorProperties() would: when
+	they are all on folios not built, none is numbered by a formula, and what
+	changes in each is only what the .qetz database holds
+	(storedConductorPropertyNames()) -- nothing then is computed from it.
+	@return true if done; false for the folio to be built, @p refused set when
+	the value itself is not one
+*/
+bool QetScriptApi::unbuiltConductorChange(int folioIndex, const QUuid &wire, const QString &property,
+										  const QString &value, bool *refused)
+{
+	*refused = false;
+	projectDataBase *database = m_project->dataBase();
+	Diagram *folio = m_project->folios().at(folioIndex);
+	QUuid on;
+	if (folio->isLoaded() || !database->rowsFromDocument() || !storedConductorPropertyNames().contains(property)
+			|| !database->unbuiltWire(wire, &on) || on != folio->uuid()) {
+		return false;
+	}
+	ConductorProperties properties = database->conductorProperties(wire);
+	if (!setConductorPropertyValue(properties, property, value)) {
+		*refused = true;
+		return false;
+	}
+	if (!properties.m_formula.isEmpty()) {
+		return false;
+	}
+	const auto potential = database->potentialWires(wire);
+	if (!potential) {
+		return false;
+	}
+	QHash<QUuid, std::pair<ConductorProperties, ConductorProperties>> changes;
+	for (const QUuid &other : *potential) {
+		if (!database->unbuiltWire(other)) return false;
+		const ConductorProperties old = database->conductorProperties(other);
+		if (!differOnlyInStored(old, properties)) return false;
+		if (!(old == properties)) changes.insert(other, {old, properties});
+	}
+	if (!changes.isEmpty())
+		m_project->undoStack()->push(new ChangeStoredConductorPropertiesCommand(m_project, changes));
+	return true;
+}
+
+QString QetScriptApi::conductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+											  const QString &property) const
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) return QString();
+	Diagram *folio = m_project->folios().at(folioIndex);
+	projectDataBase *database = m_project->dataBase();
+	QUuid on;
+	if (!folio->isLoaded() && database->rowsFromDocument()
+			&& database->unbuiltWire(QUuid(conductorUuid), &on) && on == folio->uuid())
+		return conductorPropertyValue(database->conductorProperties(QUuid(conductorUuid)), property);
+	auto *self = const_cast<QetScriptApi *>(this);
+	Conductor *conductor = self->findConductorByUuid(folioIndex, conductorUuid,
+													 QStringLiteral("conductorPropertyByUuid"));
+	return conductor ? conductorPropertyValue(conductor->properties(), property) : QString();
+}
+
+bool QetScriptApi::setConductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+											  const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setConductorPropertyByUuid");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!conductorPropertyNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, conductorPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	if (folioIndex < 0 || folioIndex >= m_project->folios().count()) {
+		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
+		return false;
+	}
+		//The folio left unbuilt when the change can go through the project
+		//database (QETZ-DB-TRUTH-PLAN.md D5)
+	bool refused = false;
+	if (unbuiltConductorChange(folioIndex, QUuid(conductorUuid), property, value, &refused))
+		return true;
+	if (refused) {
+		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3").arg(caller, value, property));
+		return false;
+	}
+	Conductor *conductor = findConductorByUuid(folioIndex, conductorUuid, caller);
+	if (!conductor) return false;
+	ConductorProperties properties = conductor->properties();
+	if (!setConductorPropertyValue(properties, property, value)) {
+		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3")
+			.arg(caller, value, property));
+		return false;
+	}
+	return applyConductorProperties(conductor, properties);
 }
 
 /**
