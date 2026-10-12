@@ -830,6 +830,57 @@ QList<Element *> Diagram::buildSymbols(const QSet<QUuid> &uuids)
 	return built;
 }
 
+namespace {
+	//The title block fields nothing on a folio is computed from: a formula
+	//reads the folio's label, plant, location, extra fields and grid
+	//(autonum::FormulaContext), none of these
+const QStringList ShownOnlyFields = {
+	QStringLiteral("title"), QStringLiteral("author"), QStringLiteral("date"),
+	QStringLiteral("indexrev"), QStringLiteral("version"), QStringLiteral("filename"),
+	QStringLiteral("titleblocktemplate"), QStringLiteral("titleblocktemplateCollection")};
+
+QString headerWithoutShownOnly(const QString &header)
+{
+	QDomDocument document;
+	document.setContent(header);
+	QDomElement root = document.documentElement();
+	for (const QString &field : ShownOnlyFields) root.removeAttribute(field);
+	return document.toString();
+}
+}
+
+/**
+	@brief Diagram::headerChangeShowsOnly
+	@return true if what changed in this folio's own data since it was read
+	(headerChanged()) is only title block fields nothing on the folio is
+	computed from (its title, author, date, revision, file name, template):
+	its items, as read, are what building it would write
+*/
+bool Diagram::headerChangeShowsOnly()
+{
+	return headerWithoutShownOnly(headerXml()) == headerWithoutShownOnly(m_opened_header);
+}
+
+/**
+	@brief Diagram::deferredXmlWithHeader
+	@return this folio, not built, as it saves: its own data as it is now
+	(writeHeader()) and its items as read (deferredXml()), in @p document --
+	when its items are what building it would write (headerChangeShowsOnly())
+*/
+QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
+{
+	QDomElement folio = document.createElement(QStringLiteral("diagram"));
+	writeHeader(document, folio);
+	QSet<QString> header_children;
+	for (QDomElement child = folio.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
+		header_children.insert(child.tagName());
+	const QDomElement items = deferredXml();
+	for (QDomElement child = items.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
+		if (!header_children.contains(child.tagName()))
+			folio.appendChild(document.importNode(child, true));
+	return folio;
+}
+
 /**
 	@brief Diagram::deferredXml
 	@return the XML of this folio's items while they are not built: kept

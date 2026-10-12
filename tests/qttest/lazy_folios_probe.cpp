@@ -49,6 +49,73 @@
 #include <QDomDocument>
 
 static void check(bool value, const char *message) { if (!value) throw std::runtime_error(message); }
+static QStringList sortedLines(QString xml, const QString &path);
+
+	//A new revision on every folio (its title block's revision index and
+	//author), saved lazily and with every folio built: what saving builds,
+	//and whether the two saves hold the same. A change to folio
+	//@p label_folio's label (what formulas read) when it is not -1
+static void revisionEveryFolio(const QString &source, const QString &output, const QString &name,
+							   const QString &path, int label_folio = -1)
+{
+	QString error;
+	qputenv("QET_LAZY_FOLIOS", "1");
+	QETProject revised(source);
+	const int unbuilt = revised.unloadedFolioCount();
+	QetScriptApi api(&revised);
+	for (int i = 0 ; i < api.folioCount() ; ++i) {
+		check(api.setFolioProperty(i, "indexrev", "B"), "a folio's revision set");
+		check(api.setFolioProperty(i, "author", "Revised"), "a folio's author set");
+	}
+	if (label_folio >= 0)
+		check(api.setFolioProperty(label_folio, "folio", "X%id"), "a folio's label set");
+	check(revised.unloadedFolioCount() == unbuilt, "setting the folios' title blocks builds none");
+	int with_tables = 0;
+	for (Diagram *folio : revised.folios())
+		if (!folio->isLoaded() && revised.unbuiltFolioHasTables(folio)) ++with_tables;
+	const bool qetz = QETProject::isContainerPath(source);
+	const QString lazy_path = output + "/" + name + (qetz ? ".qetz" : ".qet");
+	if (qetz) check(revised.writeContainerFile(lazy_path, &error), "revised project saved");
+	else { revised.setFilePath(lazy_path); check(revised.write().isOk(), "revised project saved"); }
+	const int built = unbuilt - revised.unloadedFolioCount();
+	std::printf("%s: new revision on every folio, %d folios built by saving, %d hold a table%s\n",
+				qPrintable(name), built, with_tables,
+				label_folio >= 0 ? ", one label changed" : "");
+	if (label_folio < 0)
+		check(built <= with_tables, "saving a new revision builds only the folios holding a table");
+	else
+		check(revised.folios().at(label_folio)->isLoaded(), "a folio whose label changed is built to save");
+	qunsetenv("QET_LAZY_FOLIOS");
+	const QString usual_path = output + "/" + name + "-usual" + (qetz ? ".qetz" : ".qet");
+	{
+		QETProject usual(source);
+		QetScriptApi usual_api(&usual);
+		for (int i = 0 ; i < usual_api.folioCount() ; ++i) {
+			usual_api.setFolioProperty(i, "indexrev", "B");
+			usual_api.setFolioProperty(i, "author", "Revised");
+		}
+		if (label_folio >= 0) usual_api.setFolioProperty(label_folio, "folio", "X%id");
+		if (qetz) check(usual.writeContainerFile(usual_path, &error), "revision saved when built");
+		else { usual.setFilePath(usual_path); check(usual.write().isOk(), "revision saved when built"); }
+	}
+	QETProject lazy_back(lazy_path), usual_back(usual_path);
+	qputenv("QET_LAZY_FOLIOS", "1");
+		//What a save says of itself (file name, path, time) left out
+	auto lines = [&path](QETProject &project) {
+		QStringList list = sortedLines(project.toXml().toString(), path);
+		list.removeIf([](const QString &line) { return line.contains(QLatin1String("name=\"saved")); });
+		return list;
+	};
+	const QStringList lazy_lines = lines(lazy_back), usual_lines = lines(usual_back);
+	if (lazy_lines != usual_lines) {
+		int shown = 0;
+		for (const QString &line : usual_lines)
+			if (!lazy_lines.contains(line) && shown++ < 8) std::printf("  when built: %s\n", qPrintable(line.left(300)));
+		for (const QString &line : lazy_lines)
+			if (!usual_lines.contains(line) && shown++ < 16) std::printf("  lazily:     %s\n", qPrintable(line.left(300)));
+	}
+	check(lazy_lines == usual_lines, "a new revision saved as when built");
+}
 
 	//Every symbol's numbering, in a stable order
 static QStringList numbering(const QETProject &project)
@@ -380,6 +447,7 @@ int main(int argc, char **argv)
 		for (const QString &title : titles)
 			check(gaps(numbered, title) == gaps(eager, title), "a scheme's gaps as when built");
 		check(numbered.unloadedFolioCount() == folios.size() - strip_folios.size(), "numbering read without building");
+		revisionEveryFolio(path, output, "revised-qet", path);
 		{
 				//Wire numbers exported from the database filled from the
 				//document, as when built (D5)
@@ -879,6 +947,11 @@ int main(int argc, char **argv)
 				check(built_symbol && built_symbol->elementInformations().value("comment").toString() == value,
 					  "a symbol changed before its folio was built shows the change");
 			}
+
+				//A new revision on every folio: saved from the folios as read,
+				//not built; a label change builds its folio (D5)
+			revisionEveryFolio(zipped, output, "revised", path);
+			revisionEveryFolio(zipped, output, "relabelled", path, busiest);
 
 				//The wire numbers and wiring list exports, and the terminal
 				//numbering dialog: as when built, building only the folios
