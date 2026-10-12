@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -1115,6 +1115,11 @@ bool Element::fromXml(QDomElement &e,
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement(QStringLiteral("elementInformations")),
 			   QStringLiteral("elementInformation"));
+		//Changed through the project database while its folio was not
+		//built (QET_LAZY_FOLIOS): the change, not what the file says
+	if (diagram() && diagram()->project())
+		if (const auto edited = diagram()->project()->dataBase()->takeUnbuiltEdit(m_uuid))
+			dc = *edited;
 
 		//Load override properties (For now, only used when the element is a terminal)
 	if (m_data.m_type == ElementData::Terminal)

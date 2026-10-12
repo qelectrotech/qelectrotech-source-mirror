@@ -435,6 +435,28 @@ void QetScriptApi::setLive(QStringList *log)
 }
 
 /**
+	@brief QetScriptApi::unbuiltInformation
+	@return the information of the symbol @p elementUuid on the folio
+	@p folioIndex when that folio is not built (QET_LAZY_FOLIOS) and the
+	symbol's information can be read and changed through the project
+	database alone (projectDataBase::canEditUnbuilt()); nothing otherwise,
+	the folio to be built
+*/
+std::optional<DiagramContext> QetScriptApi::unbuiltInformation(int folioIndex, const QString &elementUuid) const
+{
+	if (!m_project || folioIndex < 0 || folioIndex >= m_project->folios().count()) return std::nullopt;
+	Diagram *folio = m_project->folios().at(folioIndex);
+	const QUuid uuid(elementUuid);
+	projectDataBase *database = m_project->dataBase();
+	if (folio->isLoaded() || !database->rowsFromDocument()
+			|| !database->folioUuidsOfElements({uuid}).contains(folio->uuid())
+			|| !database->canEditUnbuilt(uuid)) {
+		return std::nullopt;
+	}
+	return database->elementInformation(uuid);
+}
+
+/**
 	@brief QetScriptApi::built
 	@return @p folio, built if it was not yet (QET_LAZY_FOLIOS), as showing
 	it builds it: what a call reading or changing its items needs. A
@@ -638,6 +660,19 @@ bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 		log(QStringLiteral("qet.%1: \"%2\" is internal, follow a numbering with numberElement()")
 				.arg(caller, key));
 		return false;
+	}
+		//A symbol on a folio not built whose information nothing else
+		//shows is changed through the project database, its folio left
+		//unbuilt (QETZ-DB-TRUTH-PLAN.md D5)
+	if (key != QETInformation::ELMT_FORMULA) {
+		if (const auto stored = unbuiltInformation(folioIndex, elementUuid)) {
+			if (stored->value(key).toString() == value) return true; // nothing to push
+			DiagramContext new_info = *stored;
+			new_info.addValue(key, value);
+			m_project->undoStack()->push(new ChangeStoredElementInformationCommand(
+											 m_project, QUuid(elementUuid), *stored, new_info));
+			return true;
+		}
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
@@ -981,6 +1016,8 @@ int QetScriptApi::terminalIndex(int folioIndex, const QString &elementUuid,
 
 QString QetScriptApi::elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const
 {
+	if (const auto stored = unbuiltInformation(folioIndex, elementUuid))
+		return stored->value(key).toString();
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return QString();
 	return element->elementInformations().value(key).toString();

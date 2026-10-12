@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -118,4 +118,28 @@ void ChangeElementInformationCommand::updateProjectDB()
 
 		elmt->diagram()->project()->dataBase()->elementInfoChanged(list_);
 	}
+}
+
+ChangeStoredElementInformationCommand::ChangeStoredElementInformationCommand(
+		QETProject *project, const QUuid &element, const DiagramContext &old_info,
+		const DiagramContext &new_info, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_project(project),
+	m_element(element),
+	m_old_info(old_info),
+	m_new_info(new_info)
+{
+	setText(QObject::tr("Change the information of the element"));
+}
+
+void ChangeStoredElementInformationCommand::undo()
+{
+	if (m_project)
+		m_project->dataBase()->setPlacedElementInformation(m_element, m_old_info);
+}
+
+void ChangeStoredElementInformationCommand::redo()
+{
+	if (m_project)
+		m_project->dataBase()->setPlacedElementInformation(m_element, m_new_info);
 }

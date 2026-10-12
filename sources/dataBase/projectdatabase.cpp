@@ -1327,6 +1327,146 @@ autonum::sequentialNumbers projectDataBase::sequenceFromValue(const QVariant &va
 }
 
 /**
+	@brief projectDataBase::canEditUnbuilt
+	@return true if the information of the symbol @p element can be changed
+	through the store alone, its folio not built (QET_LAZY_FOLIOS): it is
+	placed once, on a folio not built, and nothing else shows its
+	information -- no symbol built (alone or with its folio) holds it, no
+	partner is linked to it, and it has no label formula, which could read
+	what changes
+*/
+bool projectDataBase::canEditUnbuilt(const QUuid &element) const
+{
+	if (!hasElementInformation(element) || placedElementCount(element) != 0
+			|| !linkedSymbols(element).isEmpty()
+			|| !m_element_information.value(element).value(QStringLiteral("formula")).toString().isEmpty()) {
+		return false;
+	}
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT COUNT(*) FROM element WHERE uuid = :uuid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	return query.exec() && query.next() && query.value(0).toInt() == 1;
+}
+
+/**
+	@brief projectDataBase::editUnbuiltElementInformation
+	Change the information of the symbol @p element, on a folio not built
+	(canEditUnbuilt()), to @p information, as Element::setElementInformations()
+	would: the store and the symbol's element info row. Building the symbol
+	takes it (takeUnbuiltEdit()); saving builds its folio first
+	(foliosWithUnbuiltEdits()).
+*/
+void projectDataBase::editUnbuiltElementInformation(const QUuid &element, DiagramContext information)
+{
+	if (information.contains(QStringLiteral("formula_id"))
+			&& information.value(QStringLiteral("formula")).toString().isEmpty()) {
+		information.remove(QStringLiteral("formula_id"));
+	}
+	QUuid folio;
+	{
+		QSqlQuery query(m_data_base);
+		query.prepare(QStringLiteral("SELECT diagram_uuid FROM element WHERE uuid = :uuid"));
+		query.bindValue(QStringLiteral(":uuid"), element.toString());
+		if (query.exec() && query.next()) folio = QUuid(query.value(0).toString());
+	}
+		//Whether the file has a block of information for it: a symbol
+		//saves one when it has any (Element::toXml())
+	const bool had_information = m_unbuilt_edits.contains(element)
+			? m_unbuilt_edits.value(element).had_information
+			: !m_element_information.value(element).keys().isEmpty();
+	m_unbuilt_edits.insert(element, {information, folio, had_information});
+	if (!storeElementInformation(element, information)) {
+		return;
+	}
+	m_content_changed = true;
+	if (!m_update_blocked) {
+		bindElementInfoValues(m_update_element_query, element.toString(), information,
+							  information.value(QStringLiteral("label")).toString());
+		if (!m_update_element_query.exec()) {
+			qDebug() << "projectDataBase::editUnbuiltElementInformation update error : " << m_update_element_query.lastError();
+		}
+	}
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::takeUnbuiltEdit
+	@return the information @p element was given while its folio was not
+	built (editUnbuiltElementInformation()), forgotten here: the symbol
+	being built takes it. Nothing if it was given none.
+*/
+std::optional<DiagramContext> projectDataBase::takeUnbuiltEdit(const QUuid &element)
+{
+	const auto edit = m_unbuilt_edits.constFind(element);
+	if (edit == m_unbuilt_edits.constEnd()) {
+		return std::nullopt;
+	}
+	const DiagramContext information = edit->information;
+	m_unbuilt_edits.erase(edit);
+	return information;
+}
+
+/**
+	@brief projectDataBase::foliosWithUnbuiltEdits
+	@return the folios holding a symbol whose information was changed while
+	they were not built (editUnbuiltElementInformation())
+*/
+QSet<QUuid> projectDataBase::foliosWithUnbuiltEdits() const
+{
+	QSet<QUuid> folios;
+	for (const auto &edit : m_unbuilt_edits) folios.insert(edit.folio);
+	return folios;
+}
+
+/**
+	@brief projectDataBase::unbuiltEditsOnFolio
+	@return the information changed through the store of the symbols on the
+	folio @p folio, not built (editUnbuiltElementInformation()), by symbol.
+	@p need_build is set when a .qetz cannot save one in place of the rows it
+	was read with: the file has no block of information for the symbol, or
+	the change empties it (a symbol with none saves no block)
+*/
+QHash<QUuid, DiagramContext> projectDataBase::unbuiltEditsOnFolio(const QUuid &folio, bool *need_build) const
+{
+	QHash<QUuid, DiagramContext> edits;
+	if (need_build) *need_build = false;
+	for (auto it = m_unbuilt_edits.cbegin() ; it != m_unbuilt_edits.cend() ; ++it) {
+		if (it->folio != folio) continue;
+		edits.insert(it.key(), it->information);
+		if (need_build && (!it->had_information || it->information.keys().isEmpty()))
+			*need_build = true;
+	}
+	return edits;
+}
+
+/**
+	@brief projectDataBase::setPlacedElementInformation
+	Give the symbol @p element its information @p information: through the
+	symbol when it is built, through the store when it is not
+	(canEditUnbuilt()). What undoing and redoing a change of a symbol not
+	built does, the symbol having perhaps been built since.
+	@return false if neither can
+*/
+bool projectDataBase::setPlacedElementInformation(const QUuid &element, const DiagramContext &information)
+{
+	const QList<QPointer<Element>> placed = m_placed_elements.values(element);
+	if (placed.size() == 1 && placed.first()) {
+		placed.first()->setElementInformations(information);
+		elementInfoChanged(placed.first().data());
+		return true;
+	}
+	if (placed.isEmpty() && m_unbuilt_edits.contains(element)) {
+		editUnbuiltElementInformation(element, information);
+		return true;
+	}
+	if (placed.isEmpty() && canEditUnbuilt(element)) {
+		editUnbuiltElementInformation(element, information);
+		return true;
+	}
+	return false;
+}
+
+/**
 	@brief projectDataBase::folioUuidsOfElements
 	@return the uuids of the folios the symbols @p elements are on, read
 	from the element table as it is, without bringing it up to date: for a

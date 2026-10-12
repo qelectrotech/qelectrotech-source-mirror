@@ -789,6 +789,57 @@ int main(int argc, char **argv)
 				check(unbuilt - scripted.unloadedFolioCount() == 1, "a script reading one folio builds that folio only");
 			}
 
+				//A script changes the information of a symbol on a folio not
+				//built, which nothing else shows: through the project
+				//database, no folio built; saved as when built; undone (D5)
+			{
+				QETProject changed(zipped);
+				const int unbuilt = changed.unloadedFolioCount();
+				int folio_index = -1;
+				QString uuid;
+				for (int i = 0 ; i < folios.size() && uuid.isEmpty() ; ++i) {
+					if (changed.folios().at(i)->isLoaded()) continue;
+					for (Element *element : folios.at(i)->elements())
+						if (changed.dataBase()->canEditUnbuilt(element->uuid())) {
+							folio_index = i; uuid = element->uuid().toString(); break;
+						}
+				}
+				check(!uuid.isEmpty(), "a symbol to change through the database");
+				QetScriptApi api(&changed);
+				const QString before = api.elementInfo(folio_index, uuid, "comment");
+				const QString value = QStringLiteral("changed through the database");
+				check(api.setElementInfo(folio_index, uuid, "comment", value), "a script changes a symbol not built");
+				check(api.elementInfo(folio_index, uuid, "comment") == value, "the change read back");
+				check(changed.unloadedFolioCount() == unbuilt, "changing a symbol not built builds no folio");
+				const QString changed_path = output + "/changed.qetz";
+				check(changed.writeContainerFile(changed_path, &error), "saved after the change");
+				std::printf(".qetz symbol on folio %d changed by a script: %d folios built, %d by saving\n",
+							folio_index + 1, 0, unbuilt - changed.unloadedFolioCount());
+				qunsetenv("QET_LAZY_FOLIOS");
+				const QString usual_path = output + "/changed-usual.qetz";
+				{
+					QETProject usual_changed(zipped);
+					QetScriptApi usual_api(&usual_changed);
+					check(usual_api.setElementInfo(folio_index, uuid, "comment", value), "the same change when built");
+					check(usual_changed.writeContainerFile(usual_path, &error), "saved after the change when built");
+				}
+				QETProject changed_back(changed_path), usual_back(usual_path);
+				qputenv("QET_LAZY_FOLIOS", "1");
+				check(sortedLines(changed_back.toXml().toString(), path) == sortedLines(usual_back.toXml().toString(), path),
+					  "a symbol changed through the database saved as when built");
+				check(QetScriptApi(&changed_back).elementInfo(folio_index, uuid, "comment") == value, "the change saved");
+					//Undone, then redone and the folio built: the symbol shows it
+				changed.undoStack()->undo();
+				check(api.elementInfo(folio_index, uuid, "comment") == before, "the change undone");
+				changed.undoStack()->redo();
+				changed.buildFolioToShow(changed.folios().at(folio_index));
+				Element *built_symbol = nullptr;
+				for (Element *element : changed.folios().at(folio_index)->elements())
+					if (element->uuid().toString() == uuid) built_symbol = element;
+				check(built_symbol && built_symbol->elementInformations().value("comment").toString() == value,
+					  "a symbol changed before its folio was built shows the change");
+			}
+
 				//The wire numbers and wiring list exports, and the terminal
 				//numbering dialog: as when built, building only the folios
 				//holding a terminal (D5)

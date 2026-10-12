@@ -2152,9 +2152,20 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	if (keep) {
 			//Partners built alone and linked or unlinked since: their folio
 			//is not what was read
-		for (Diagram *diagram : std::as_const(m_diagrams_list))
-			if (!diagram->isLoaded() && diagram->partialChanged())
-				buildFolios({diagram});
+			//and symbols whose information was changed through the project
+			//database while their folio was not built: built together
+			//-- a .qetz writes those in its database instead, when it can
+		const QSet<QUuid> edited = m_data_base.foliosWithUnbuiltEdits();
+		QList<Diagram *> changed;
+		for (Diagram *diagram : std::as_const(m_diagrams_list)) {
+			if (diagram->isLoaded()) continue;
+			bool need_build = !kept_parts;
+			if (edited.contains(diagram->uuid()) && kept_parts)
+				m_data_base.unbuiltEditsOnFolio(diagram->uuid(), &need_build);
+			if (diagram->partialChanged() || (edited.contains(diagram->uuid()) && need_build))
+				changed << diagram;
+		}
+		buildFolios(changed);
 		for (Diagram *diagram : std::as_const(m_diagrams_list))
 			if (diagram->headerChanged())
 				buildFolioToShow(diagram);
@@ -2276,6 +2287,17 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 			auto placeholder = xml_doc.createElement(QStringLiteral("diagram"));
 			placeholder.setAttribute(QStringLiteral("qetz-kept-part"), diagram->deferredPart());
 			placeholder.setAttribute(QStringLiteral("uuid"), diagram->uuid().toString());
+				//Symbols whose information changed while the folio was
+				//not built: the rows QetContainer::split() writes for them
+			const QHash<QUuid, DiagramContext> edits = m_data_base.unbuiltEditsOnFolio(diagram->uuid());
+			for (auto it = edits.cbegin() ; it != edits.cend() ; ++it) {
+				auto symbol = xml_doc.createElement(QStringLiteral("qetz-edited-element"));
+				symbol.setAttribute(QStringLiteral("uuid"), it.key().toString());
+				auto information = xml_doc.createElement(QStringLiteral("elementInformations"));
+				it.value().toXml(information, QStringLiteral("elementInformation"));
+				symbol.appendChild(information);
+				placeholder.appendChild(symbol);
+			}
 			kept_parts->append(diagram->deferredPart());
 			project_root.appendChild(placeholder);
 			++order_num;
