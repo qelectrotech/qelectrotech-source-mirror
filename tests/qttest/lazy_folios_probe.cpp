@@ -30,6 +30,7 @@
 #include "../../sources/ui/elementpropertieswidget.h"
 #include "../../sources/conductorautonumerotation.h"
 #include "../../sources/conductornumexport.h"
+#include "../../sources/scripting/qetscriptapi.h"
 #include "../../sources/wiringlistexport.h"
 #include "../../sources/ui/terminalnumberingdialog.h"
 #include "../../sources/diagramcontent.h"
@@ -758,6 +759,34 @@ int main(int argc, char **argv)
 				std::printf(".qetz tables listed: %d folios built, %d hold a table\n",
 							unbuilt - listed.unloadedFolioCount(), with_tables);
 				check(listed.unloadedFolioCount() > 0, "listing the tables does not build every folio");
+			}
+
+				//A script (and the assistant's live mode) asking about the
+				//folios and one folio's items: that folio built, no other (D5)
+			{
+				QETProject scripted(zipped);
+				const int unbuilt = scripted.unloadedFolioCount();
+				QetScriptApi api(&scripted), usual_api(&eager);
+				check(api.folioCount() == usual_api.folioCount(), "a script counts the folios as when built");
+				for (int i = 0 ; i < folios.size() ; ++i) {
+					check(api.folioTitle(i) == usual_api.folioTitle(i) && api.folioUuid(i) == usual_api.folioUuid(i)
+						  && api.folioBorder(i, "columns") == usual_api.folioBorder(i, "columns"),
+						  "a script reads a folio's own data as when built");
+				}
+				check(scripted.unloadedFolioCount() == unbuilt, "reading the folios' own data builds none");
+					//The folio with the most links to other folios
+				const int target = busiest;
+				check(!scripted.folios().at(target)->isLoaded(), "a folio not built");
+				QStringList lazy_uuids = api.elementUuids(target), usual_uuids = usual_api.elementUuids(target);
+				lazy_uuids.sort(); usual_uuids.sort();
+				check(lazy_uuids == usual_uuids, "a script lists a folio's symbols as when built");
+				QStringList lazy_wires = api.conductors(target), usual_wires = usual_api.conductors(target);
+				lazy_wires.sort(); usual_wires.sort();
+				check(lazy_wires == usual_wires, "a script lists a folio's wires as when built");
+				check(scripted.folios().at(target)->isLoaded(), "the folio a script reads is built");
+				std::printf(".qetz script on folio %d: %d folios built\n", target + 1,
+							unbuilt - scripted.unloadedFolioCount());
+				check(unbuilt - scripted.unloadedFolioCount() == 1, "a script reading one folio builds that folio only");
 			}
 
 				//The wire numbers and wiring list exports, and the terminal

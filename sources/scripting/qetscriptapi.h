@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -25,6 +25,7 @@
 #include <QVariantMap>
 
 class QETProject;
+class Diagram;
 class DiagramView;
 class Element;
 class Terminal;
@@ -636,6 +637,7 @@ class QetScriptApi : public QObject
 
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
+		Diagram *built(Diagram *folio) const;
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);
