@@ -1154,6 +1154,11 @@ bool Conductor::fromXml(QDomElement &dom_element)
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
 
+		//Changed through the project database while its folio was not
+		//built (lazy folios): the change, not what the file says
+	if (diagram() && diagram()->project())
+		if (const auto edited = diagram()->project()->dataBase()->takeUnbuiltWireEdit(m_uuid))
+			pr = *edited;
 	setProperties(pr);
 
 	return retval;
