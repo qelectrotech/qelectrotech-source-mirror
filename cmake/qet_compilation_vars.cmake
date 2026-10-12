@@ -291,7 +291,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetresult.h
   ${QET_DIR}/sources/qetxml.cpp
   ${QET_DIR}/sources/qetxml.h
-  ${QET_DIR}/sources/qetversion.cpp
   ${QET_DIR}/sources/qetversion.h
   ${QET_DIR}/sources/qfilenameedit.cpp
   ${QET_DIR}/sources/qfilenameedit.h
