@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0-or-later
+﻿// SPDX-License-Identifier: GPL-2.0-or-later
 #include <QtTest>
 
 #include <QDir>
@@ -319,6 +319,25 @@ private slots:
 
 	// A crafted project.sqlite whose "element" is a view, not a table, is
 	// refused: nothing in a file's schema is trusted.
+	void garbageDatabaseRefused()
+	{
+			//Bytes that are no database: refused, not read (crashed reading
+			//the first statement until QETZ-DB-TRUTH D7)
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"), &original);
+		bool replaced = false;
+		for (QetZip::Entry &entry : entries)
+			if (entry.name == QLatin1String("project.sqlite")) {
+				entry.data = QByteArray("not a database").repeated(100);
+				replaced = true;
+			}
+		QVERIFY(replaced);
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY(!error.isEmpty());
+	}
+
 	void viewInsteadOfTableRefused()
 	{
 		QDomDocument original;
