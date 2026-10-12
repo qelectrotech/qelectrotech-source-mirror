@@ -2166,9 +2166,17 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 				changed << diagram;
 		}
 		buildFolios(changed);
-		for (Diagram *diagram : std::as_const(m_diagrams_list))
-			if (diagram->headerChanged())
+			//-- unless it changed only in what nothing is computed from (its
+			//title, date, revision...): written from its items as read
+			//(Diagram::deferredXmlWithHeader())
+		for (Diagram *diagram : std::as_const(m_diagrams_list)) {
+			if (!diagram->headerChanged()) continue;
+			bool edits_need_build = false;
+			if (!diagram->isLoaded())
+				m_data_base.unbuiltEditsOnFolio(diagram->uuid(), &edits_need_build);
+			if (diagram->isLoaded() || !diagram->headerChangeShowsOnly() || edits_need_build)
 				buildFolioToShow(diagram);
+		}
 			//A table filled from the database saves the size its rows
 			//give it, which any edit can change
 		if (m_edited_since_open)
@@ -2283,6 +2291,24 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 			 << "["
 			 << diagram
 			 << "]";
+		if (keep && !diagram->isLoaded() && diagram->headerChanged()) {
+			QDomElement xml_diagram = diagram->deferredXmlWithHeader(xml_doc);
+				//Its symbols whose information changed while it was not built
+			const QHash<QUuid, DiagramContext> edits = m_data_base.unbuiltEditsOnFolio(diagram->uuid());
+			for (const QDomElement &list : QET::findInDomElement(xml_diagram, QStringLiteral("elements")))
+				for (QDomElement element = list.firstChildElement(QStringLiteral("element")) ; !element.isNull() ;
+					 element = element.nextSiblingElement(QStringLiteral("element"))) {
+					const auto edit = edits.constFind(QUuid(element.attribute(QStringLiteral("uuid"))));
+					if (edit == edits.constEnd()) continue;
+					QDomElement information = xml_doc.createElement(QStringLiteral("elementInformations"));
+					edit->toXml(information, QStringLiteral("elementInformation"));
+					const QDomElement old_information = element.firstChildElement(QStringLiteral("elementInformations"));
+					element.replaceChild(information, old_information);   //it has one (unbuiltEditsOnFolio())
+				}
+			xml_diagram.setAttribute("order", order_num ++);
+			project_root.appendChild(xml_diagram);
+			continue;
+		}
 		if (keep && !diagram->isLoaded() && kept_parts) {
 			auto placeholder = xml_doc.createElement(QStringLiteral("diagram"));
 			placeholder.setAttribute(QStringLiteral("qetz-kept-part"), diagram->deferredPart());

@@ -239,6 +239,8 @@ class Diagram : public QGraphicsScene
 			/// headerChanged() (QETProject::toXml())
 		void rememberHeader() {m_opened_header = headerXml();}
 		bool headerChanged() {return headerXml() != m_opened_header;}
+		bool headerChangeShowsOnly();
+		QDomElement deferredXmlWithHeader(QDomDocument &document);
 		void ensureLoaded();
 		bool buildDeferred();
 		bool fromXml(QDomDocument &,
