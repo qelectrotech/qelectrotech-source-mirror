@@ -50,7 +50,11 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_prefix_pb_clicked();
 		void on_m_material_list_browse_pb_clicked();
 		void on_m_material_list_create_pb_clicked();
+		void on_m_cable_type_list_browse_pb_clicked();
+		void on_m_cable_type_list_create_pb_clicked();
 		void on_m_indi_text_font_pb_clicked();
+		void on_m_cable_text_font_pb_clicked();
+		void on_m_cable_core_font_pb_clicked();
 		void on_MaxPartsElementEditorList_sb_valueChanged(int value);
 		void on_DiagramEditor_Grid_PointSize_min_sb_valueChanged(int value);
 		void on_ElementEditor_Grid_PointSize_min_sb_valueChanged(int value);
