@@ -58,7 +58,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 /**
 	@brief The ChangeStoredElementInformationCommand class
 	Change the information of a symbol given by its uuid, built or not
-	(QET_LAZY_FOLIOS): through the symbol when it is built, through the
+	(lazy folios): through the symbol when it is built, through the
 	project database when it is not (projectDataBase::canEditUnbuilt()).
 */
 class ChangeStoredElementInformationCommand : public QUndoCommand

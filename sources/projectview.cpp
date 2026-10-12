@@ -1257,7 +1257,7 @@ void ProjectView::rebuildDiagramsMap()
 */
 void ProjectView::tabChanged(int tab_id)
 {
-		//A folio opened without its items (QET_LAZY_FOLIOS) is built when
+		//A folio opened without its items (lazy folios) is built when
 		//its tab is first shown. Read the tab itself: the first tab is
 		//shown while loadDiagrams() is still filling m_diagram_ids
 	if (auto dv = qobject_cast<DiagramView *>(m_tab->widget(tab_id)))

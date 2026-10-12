@@ -566,7 +566,7 @@ void QetGraphicsTableItem::initLink()
 	if (!m_pending_previous_table_uuid.isNull())
 	{
 			//The built folios only: a previous table on a folio not built
-			//yet (QET_LAZY_FOLIOS) is linked when that folio is
+			//yet (lazy folios) is linked when that folio is
 		QETProject *project = this->diagram()->project();
 		ElementProvider provider_(project->builtFolios());
 		auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid);
@@ -583,7 +583,7 @@ void QetGraphicsTableItem::initLink()
 /**
 	@brief QetGraphicsTableItem::previousTableUuid
 	@return the uuid of the table before this one in its chain, linked or
-	still waiting for its folio to be built (QET_LAZY_FOLIOS); null if none
+	still waiting for its folio to be built (lazy folios); null if none
 */
 QUuid QetGraphicsTableItem::previousTableUuid() const
 {

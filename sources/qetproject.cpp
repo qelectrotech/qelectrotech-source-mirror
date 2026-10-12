@@ -327,7 +327,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
-		//What changes the saved items of folios not built (QET_LAZY_FOLIOS):
+		//What changes the saved items of folios not built (lazy folios):
 		//a folio's position, number or the folio total in their texts,
 		//the report and cross-reference settings, a symbol's definition.
 		//A folio not built is then built to be saved (writesKeptFolios())
@@ -469,7 +469,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//folios' parts read when they are built (stage D2);
 		//any other, or one whose index cannot be used, is read whole
 	m_opened_from_index = false;
-	if (QetContainer::isZip(content) && qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1)
+	if (QetContainer::isZip(content) && lazyFolios())
 	{
 		QList<QetZip::Entry> entries;
 		QString why;
@@ -599,7 +599,7 @@ QList<Diagram *> QETProject::diagrams() const
 /**
 	@brief QETProject::folios
 	@return the folios of this project, whether their items are built yet
-	or not (a project opened with QET_LAZY_FOLIOS); see Diagram::isLoaded()
+	or not (a project opened with lazy folios); see Diagram::isLoaded()
 */
 QList<Diagram *> QETProject::folios() const
 {
@@ -637,7 +637,7 @@ QList<Diagram *> QETProject::cableLabelFolios()
 /**
 	@brief QETProject::builtFolios
 	@return the folios of this project whose items are built: all of them,
-	but for a project opened with QET_LAZY_FOLIOS
+	but for a project opened with lazy folios
 */
 QList<Diagram *> QETProject::builtFolios() const
 {
@@ -769,7 +769,7 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 
 /**
 	@brief QETProject::buildFoliosHolding
-	Build the folios not built yet (QET_LAZY_FOLIOS) holding a symbol of
+	Build the folios not built yet (lazy folios) holding a symbol of
 	one of the kinds @p kinds -- if @p free_only, one which may be linked
 	to nothing once built: none of the partners it was saved linked to is
 	in the project. What a search for such symbols must build to find
@@ -836,7 +836,7 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 
 /**
 	@brief QETProject::buildFoliosHoldingSymbols
-	Build the folios not built yet (QET_LAZY_FOLIOS) holding one of the
+	Build the folios not built yet (lazy folios) holding one of the
 	symbols @p symbols, found in the project database once it holds the
 	folios not built, else in the XML kept for them: what needs those
 	symbols while the project is being read, before the database knows
@@ -886,7 +886,7 @@ void QETProject::buildFoliosHoldingSymbols(const QSet<QUuid> &symbols)
 /**
 	@brief QETProject::symbolsOnUnbuiltFolios
 	@return the uuids of the symbols on the folios not built yet
-	(QET_LAZY_FOLIOS) that building them places
+	(lazy folios) that building them places
 */
 QSet<QUuid> QETProject::symbolsOnUnbuiltFolios() const
 {
@@ -1884,7 +1884,7 @@ std::optional<QUuid> QETProject::elementAutoNumIdToLink(
 	@brief QETProject::symbolNumbering
 	@return the numbering of every symbol placed on the folios, read from
 	the symbol on a folio built and, on a folio not built yet
-	(QET_LAZY_FOLIOS), from what building it would give: its information
+	(lazy folios), from what building it would give: its information
 	in the project database's store, the scheme it would be linked to,
 	its sequential numbers and its kind as the database has them.
 */
@@ -2342,7 +2342,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 		//folio not built is written as <diagram qetz-kept-part="..."/>, its
 		//part and its rows copied by QetContainer::split()
 		//(stage D4)
-		//With @p kept_folios, a folio not built (QET_LAZY_FOLIOS) is
+		//With @p kept_folios, a folio not built (lazy folios) is
 		//written as a placeholder <diagram qet_kept_folio="n"/> and its text
 		//as read from the file goes in kept_folios, for
 		//spliceKeptFolios() -- when building it would write that same
@@ -2786,6 +2786,8 @@ QETResult QETProject::write()
 	}
 	else
 	{
+			//Folios not built (lazy folios) written as read when that
+			//is what building them would write (toXml())
 		QHash<int, QByteArray> kept_folios;
 		QDomDocument xml_project(toXml(&kept_folios));
 		if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
@@ -3030,7 +3032,7 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 	@brief QETProject::folioXml
 	@return the built folio @p folio written as saving writes it: its
 	symbols keep the links to partners on folios not built yet
-	(QET_LAZY_FOLIOS), which Diagram::toXml() alone leaves out
+	(lazy folios), which Diagram::toXml() alone leaves out
 */
 QDomDocument QETProject::folioXml(Diagram *folio)
 {
@@ -3042,7 +3044,7 @@ QDomDocument QETProject::folioXml(Diagram *folio)
 
 /**
 	@brief QETProject::buildFoliosHoldingTables
-	Build the folios not built yet (QET_LAZY_FOLIOS) that hold a drawn
+	Build the folios not built yet (lazy folios) that hold a drawn
 	table, found from the index the project was opened from when it has
 	one: what a list of the project's tables needs, and no more
 */
@@ -3063,7 +3065,7 @@ void QETProject::buildFoliosHoldingTables()
 
 /**
 	@brief QETProject::unbuiltFolioHasTables
-	@return true if @p folio, not built yet (QET_LAZY_FOLIOS), has a drawn
+	@return true if @p folio, not built yet (lazy folios), has a drawn
 	table: from the index it was opened from, else from its XML
 */
 bool QETProject::unbuiltFolioHasTables(Diagram *folio) const
@@ -3079,7 +3081,7 @@ bool QETProject::unbuiltFolioHasTables(Diagram *folio) const
 /**
 	@brief QETProject::unbuiltFolioElements
 	@return the locations of the symbols placed on the folios not built yet
-	(QET_LAZY_FOLIOS), each once, read from the project database once it
+	(lazy folios), each once, read from the project database once it
 	holds those folios, else from the XML kept for them as building them
 	reads it (Diagram::fromXml())
 */
@@ -3362,11 +3364,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		m_data_base.prefillFromDocument(xml_project);
 	}
 
-		//QET_LAZY_FOLIOS leaves the folios to be built when needed only
+		//Folios are left to be built when needed (lazyFolios()) only
 		//when the database can be filled from the document: otherwise
 		//filling it from the folios builds every one of them anyway, late
 		//and more slowly than reading them now
-	m_lazy_open = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
+	m_lazy_open = lazyFolios();
 	if (m_lazy_open) {
 		const QString why = projectDataBase::documentRefusal(xml_project);
 		if (!why.isEmpty()) {
@@ -3487,6 +3489,15 @@ void QETProject::readFoliosFromIndex()
 		m_data_base.placeFolio(diagram);
 	}
 	updateDiagramsFolioData();
+}
+
+/**
+	@brief QETProject::lazyFolios
+	@see the declaration
+*/
+bool QETProject::lazyFolios()
+{
+	return qEnvironmentVariableIntValue("QET_EAGER_FOLIOS") != 1;
 }
 
 /**

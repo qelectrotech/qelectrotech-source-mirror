@@ -328,7 +328,7 @@ private slots:
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QStringLiteral("QET_CHECK_ELEMENT_INFO_STORE"), QStringLiteral("1"));
 		if (eager) {
-			env.remove(QStringLiteral("QET_LAZY_FOLIOS")); //every folio built on opening
+			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));

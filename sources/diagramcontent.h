@@ -108,7 +108,7 @@ class DiagramContent
 		QList<Conductor *> m_potential_candidates;
 			/// One wire of each potential, worked out when first asked:
 			/// following a potential goes through folio reports to other
-			/// folios, building those not built yet (QET_LAZY_FOLIOS)
+			/// folios, building those not built yet (lazy folios)
 		mutable std::optional<QList<Conductor *>> m_potential_conductors;
 };
 QDebug &operator<<(QDebug, DiagramContent &);

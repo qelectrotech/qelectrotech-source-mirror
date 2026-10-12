@@ -53,7 +53,7 @@ QDomElement WiringListExport::climbToDiagram(QDomNode node) const
 
 /**
     The project as the export reads it: its symbol collection and its folios
-    in order, each with its "order". A folio not built (QET_LAZY_FOLIOS) is
+    in order, each with its "order". A folio not built (lazy folios) is
     not built for it: its XML is copied, and what QElectroTech computes for
     its wires' ends -- the labels of the symbols they end on and of their
     partners, the terminals' names -- is filled in from the symbols built

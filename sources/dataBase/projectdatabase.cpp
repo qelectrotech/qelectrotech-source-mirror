@@ -141,7 +141,7 @@ void projectDataBase::updateDB()
 	@brief projectDataBase::keepUnbuiltFolioRows
 	Before the tables are rebuilt from the folios: keep the element,
 	element_info, terminal, conductor and link rows of the folios not built
-	yet (QET_LAZY_FOLIOS). They came from the document, nothing of those
+	yet (lazy folios). They came from the document, nothing of those
 	folios can have changed since, and the rebuild puts them back where
 	each folio comes (restoreKeptRows()). Nothing to do when every folio
 	is built.
@@ -455,7 +455,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//The folios, in the order the project read them (readDiagramsXml()),
 		//each with its saved uuid -- the one the built folio has.
 	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
-		//Built or not (QET_LAZY_FOLIOS): only their uuids are read, and the
+		//Built or not (lazy folios): only their uuids are read, and the
 		//conductors of those built
 	const QList<Diagram *> diagrams = m_project->folios();
 	if (diagram_nodes.size() != diagrams.size()) {
@@ -1215,7 +1215,7 @@ QSet<QUuid> projectDataBase::foliosWithUnjoinedWires() const
 	@brief projectDataBase::elementTypesOnFolios
 	@return the kind (ElementData::typeToString()) of every symbol on the
 	folios @p folios, by uuid, read from the element table as it is: for
-	folios not built yet (QET_LAZY_FOLIOS) its rows came from the document
+	folios not built yet (lazy folios) its rows came from the document
 	and nothing can have changed them. A symbol whose definition was not
 	found has no row.
 */
@@ -1381,7 +1381,7 @@ autonum::sequentialNumbers projectDataBase::sequenceFromValue(const QVariant &va
 /**
 	@brief projectDataBase::canEditUnbuilt
 	@return true if the information of the symbol @p element can be changed
-	through the store alone, its folio not built (QET_LAZY_FOLIOS): it is
+	through the store alone, its folio not built (lazy folios): it is
 	placed once, on a folio not built, and nothing else shows its
 	information -- no symbol built (alone or with its folio) holds it, no
 	partner is linked to it, and it has no label formula, which could read
@@ -1522,7 +1522,7 @@ bool projectDataBase::setPlacedElementInformation(const QUuid &element, const Di
 	@brief projectDataBase::folioUuidsOfElements
 	@return the uuids of the folios the symbols @p elements are on, read
 	from the element table as it is, without bringing it up to date: for a
-	symbol on a folio not built yet (QET_LAZY_FOLIOS) its row came from the
+	symbol on a folio not built yet (lazy folios) its row came from the
 	document and nothing can have changed it.
 */
 QSet<QUuid> projectDataBase::folioUuidsOfElements(const QSet<QUuid> &elements) const
@@ -1660,7 +1660,7 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//storeConductorProperties().
 		//The drawing tables hold what only built items know (a text's
 		//laid-out size, a picture's pixels): with folios not built yet
-		//(QET_LAZY_FOLIOS) a read of them builds those first. Every other
+		//(lazy folios) a read of them builds those first. Every other
 		//table was filled from the document.
 	static const QRegularExpression drawing_tables(
 			QStringLiteral("\\b(shape|independent_text|image)\\b"),
@@ -1730,7 +1730,7 @@ int projectDataBase::excludedConductorCount() const
 		return 0;
 	}
 
-		//A folio not built (QET_LAZY_FOLIOS) has none: reading a wire
+		//A folio not built (lazy folios) has none: reading a wire
 		//drops it unless both its ends are found (Conductor::fromXml())
 	int count = 0;
 	for (auto *diagram : m_project->builtFolios())
@@ -1918,7 +1918,7 @@ void projectDataBase::flushElementPositions()
 /**
 	@brief projectDataBase::updateFolioPositions
 	Write every folio's position and folio number again, after a folio was
-	added, removed or moved. A folio not built yet (QET_LAZY_FOLIOS) has
+	added, removed or moved. A folio not built yet (lazy folios) has
 	its position and title block already: it is not built for this.
 */
 void projectDataBase::updateFolioPositions()
@@ -2583,7 +2583,7 @@ void projectDataBase::populateDrawingItemTables()
 		//Queued directly, not through addDrawingItem(): every one of them
 		//came onto its folio through Diagram::addItem(), which connected it
 		//already, and a full rebuild runs on every load. A folio not built
-		//yet (QET_LAZY_FOLIOS) has none: its items write their rows as it
+		//yet (lazy folios) has none: its items write their rows as it
 		//is built.
 	for (auto diagram : m_project->folios())
 	{
@@ -3887,7 +3887,7 @@ void projectDataBase::prefillFromDocument(const QDomDocument &document)
 	@brief projectDataBase::endPrefill
 	The folios are built: compare what prefillFromDocument() stored with
 	what building stored, and forget what nothing was placed for -- unless
-	@p keep_unplaced, when some folios are not built yet (QET_LAZY_FOLIOS):
+	@p keep_unplaced, when some folios are not built yet (lazy folios):
 	the store then answers for their items until they are.
 */
 void projectDataBase::endPrefill(bool keep_unplaced)
@@ -4099,7 +4099,7 @@ void projectDataBase::flushLinks()
 				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
 			}
 		}
-			//Partners on a folio not built (QET_LAZY_FOLIOS), which it will
+			//Partners on a folio not built (lazy folios), which it will
 			//be linked to once that folio is
 		for (const auto &waiting : element->waitingLinks())
 		{

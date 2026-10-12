@@ -772,7 +772,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 /**
 	@brief Diagram::ensureLoaded
 	Build this folio's items from the XML kept when the project was
-	opened with QET_LAZY_FOLIOS, and do for them what opening does for
+	opened with lazy folios, and do for them what opening does for
 	every folio's (QETProject::folioLoaded()). Nothing for a folio built
 	already.
 */
@@ -790,7 +790,7 @@ void Diagram::ensureLoaded()
 
 /**
 	@brief Diagram::buildSymbols
-	Build, of this folio not built yet (QET_LAZY_FOLIOS), the symbols
+	Build, of this folio not built yet (lazy folios), the symbols
 	@p uuids only -- partners a shown folio draws from -- and keep them for
 	when the folio is built (stage D5b). They belong to the
 	folio's scene; the folio stays not built.
@@ -1247,7 +1247,7 @@ QList < QSet <Conductor *> > Diagram::potentials()
 	\~French Un Document XML (QDomDocument)
 */
 QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
-		//A folio of a project opened with QET_LAZY_FOLIOS is written from
+		//A folio of a project opened with lazy folios is written from
 		//its built items (QETProject::toXml() may write one not built as
 		//it was read instead)
 	ensureLoaded();
@@ -1360,7 +1360,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		//Wires that tie on their ends (common: several from one terminal)
 		//keep the order they were made in, which for a project's is its
 		//file's -- the order the scene gave them so far, except for a folio
-		//built late (QET_LAZY_FOLIOS), whose scene order differed
+		//built late (lazy folios), whose scene order differed
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
 			  [](Conductor *a, Conductor *b) {
 		const QString ka = conductorSortKey(a), kb = conductorSortKey(b);
@@ -2042,7 +2042,7 @@ bool Diagram::fromXml(QDomElement &document,
 		return(true);
 	}
 
-		//A project opened with QET_LAZY_FOLIOS builds a folio's items when
+		//A project opened with lazy folios builds a folio's items when
 		//they are first needed: until then the folio has what it says
 		//about itself (uuid, title block, border, numbering) and keeps its
 		//XML, which belongs to the project's document.
