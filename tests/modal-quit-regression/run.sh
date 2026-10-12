@@ -33,7 +33,13 @@
 #   2. let it run for a moment, then interrupt it -- the main thread is now
 #      inside the dialog's nested loop, which is the only place the bug lives
 #      (a deleteLater() posted before exec() started is not processed by it);
-#   3. call QETApp::quitQET(), which closes every editor;
+#   3. let it run on to the start of the loop's next QEventLoop::processEvents()
+#      on the main thread, and call QETApp::quitQET() there, which closes
+#      every editor. Not where the interrupt lands: that can be inside
+#      malloc(), whose lock a call into the program then waits on for ever
+#      (1 run in 20 timed out that way, on master too). Between two
+#      events the loop holds nothing, and QElectroTech's event loop
+#      watchdog wakes it every 50 ms, so the stop comes at once;
 #   4. let it run again: the unfixed build aborts within a second, the fixed
 #      one keeps running until the test interrupts it.
 #
@@ -104,14 +110,32 @@ if command -v nm >/dev/null; then
 fi
 
 SANDBOX="$(mktemp -d /tmp/qet-modal-quit.XXXXXX)"
-cleanup() { [ "${KEEP_LOGS:-0}" = "1" ] || rm -rf "$SANDBOX"; }
+
+# SingleApplication keeps a System V shared memory block, keyed from a file in
+# the temporary folder: 16 bits of the key vary. This run ends QElectroTech
+# with gdb's kill, which leaves its block behind; blocks left so pile up, and
+# once a new run's key falls on one, SingleApplication cannot start ("Unable to
+# attach to shared memory block") -- 1 run in 40 with 976 of them. So the
+# blocks this run leaves, attached to no process, are removed at the end, and
+# a run that meets someone else's is tried again (below).
+orphan_blocks() {
+    command -v ipcs >/dev/null || return 0
+    ipcs -m 2>/dev/null | awk -v me="$(id -un)" 'NR > 3 && $3 == me && $6 == 0 { print $2 }'
+}
+BLOCKS_BEFORE=" $(orphan_blocks | tr '\n' ' ') "
+cleanup() {
+    if command -v ipcrm >/dev/null; then
+        for id in $(orphan_blocks); do
+            case "$BLOCKS_BEFORE" in *" $id "*) ;; *) ipcrm -m "$id" 2>/dev/null ;; esac
+        done
+    fi
+    [ "${KEEP_LOGS:-0}" = "1" ] || rm -rf "$SANDBOX"
+}
 trap cleanup EXIT
 
 # A unique binary path gives this run its own SingleApplication socket, so it
 # can neither be captured by nor capture a QElectroTech already running. A
 # symlink would not do: applicationFilePath() resolves it back to the real path.
-TEST_BINARY="$SANDBOX/qelectrotech-modalquit"
-cp "$BINARY" "$TEST_BINARY" || { echo "could not copy binary" >&2; exit 2; }
 
 # Keep the original file name. QElectroTech decides what to open from the
 # extension, so copying a .elmt to "project.qet" would quietly turn an
@@ -141,9 +165,16 @@ end
 break QDialog::exec
 run
 delete
+if \$_isvoid(\$_exitcode)
 printf "QET_TEST: dialog exec() entered\n"
+else
+printf "QET_TEST: exited before any dialog, code %d\n", \$_exitcode
+end
 python qet_interrupt_later($SETTLE)
 continue
+tbreak QEventLoop::processEvents thread 1
+continue
+printf "QET_TEST: at the dialog's event loop\n"
 thread 1
 set \$app = ((void* (*)(void))'QETApp::instance()')()
 call ((void (*)(void*))'QETApp::quitQET()')(\$app)
@@ -162,14 +193,29 @@ EOF
 # the full watchdog period no matter how fast gdb finished: ten seconds of
 # work reported as two minutes, a stone's throw from the CTest timeout.
 GDB_TIMEOUT=120
-if command -v timeout >/dev/null; then
-    timeout --signal=KILL "$GDB_TIMEOUT" \
+# Each try under a binary path of its own: a new SingleApplication key. Tried
+# again only when QElectroTech stopped before any dialog because
+# SingleApplication met a block it could not use -- the scenario never ran,
+# the code under test played no part.
+for attempt in 1 2 3; do
+    TEST_BINARY="$SANDBOX/qelectrotech-modalquit-$attempt"
+    cp "$BINARY" "$TEST_BINARY" || { echo "could not copy binary" >&2; exit 2; }
+    if command -v timeout >/dev/null; then
+        timeout --signal=KILL "$GDB_TIMEOUT" \
+            gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
+            > "$SANDBOX/gdb.log" 2>&1
+    else
         gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
-        > "$SANDBOX/gdb.log" 2>&1
-else
-    gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
-        > "$SANDBOX/gdb.log" 2>&1
-fi
+            > "$SANDBOX/gdb.log" 2>&1
+    fi
+    if grep -q "QET_TEST: exited before any dialog" "$SANDBOX/gdb.log" \
+            && grep -q "SingleApplication: Unable to" "$SANDBOX/gdb.log"; then
+        echo "note: try $attempt: SingleApplication could not set up its shared memory (a block left by another run); trying again"
+        cp "$SANDBOX/gdb.log" "$SANDBOX/gdb-try$attempt.log"
+        continue
+    fi
+    break
+done
 
 log="$SANDBOX/gdb.log"
 if ! grep -q "QET_TEST: dialog exec() entered" "$log"; then
