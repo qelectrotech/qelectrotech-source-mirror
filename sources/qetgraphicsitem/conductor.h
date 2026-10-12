@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -131,6 +131,15 @@ class Conductor : public QGraphicsObject
 			/// The order wires were made in this session: a project's are
 			/// made in the order its file lists them
 		quint64 creationRank() const {return m_creation_rank;}
+			/// Records which cable core this conductor shows and writes the
+			/// label that assignment generates (15W1:br) into its cable
+			/// field. Deliberately not routed through
+			/// setPropertyToPotential(): a core of a cable belongs to this
+			/// conductor alone and must never spill over a pass-through
+			/// terminal onto the neighbouring half conductor.
+		void setCableReference(const QString &label,
+							   const QUuid &cable_uuid,
+							   int slot);
 
 		void setProfile(const ConductorProfile &, Qt::Corner);
 		ConductorProfile profile(Qt::Corner) const;
