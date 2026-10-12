@@ -765,6 +765,19 @@ int main(int argc, char **argv)
 			check(indexed.unloadedFolioCount() == folios.size() - strip_folios.size(),
 				  "the .qetz opens building only the folios of the terminal strip's terminals");
 			check(numbering(indexed) == numbering(eager), "symbols' numbering from the index as when built");
+				//The drawn items, through the view made of their tables: the
+				//folios built for it, as for the tables (D6: none were)
+			{
+				QETProject drawn(zipped);
+				auto count = [](QETProject &project) {
+					QSqlQuery query = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM drawing_item_view"));
+					return query.exec() && query.next() ? query.value(0).toInt() : -1;
+				};
+				const int lazily = count(drawn), built = count(eager);
+				std::printf(".qetz drawn items through their view: %d lazily, %d when built\n", lazily, built);
+				check(built > 0, "the project has drawn items");
+				check(lazily == built, "the drawn items' view as when built");
+			}
 				//The folios' rows as saved, not as reading their headers one
 				//by one numbers them ("1/1" for the first of three, D7)
 			{

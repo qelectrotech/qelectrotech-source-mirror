@@ -1660,10 +1660,11 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//storeConductorProperties().
 		//The drawing tables hold what only built items know (a text's
 		//laid-out size, a picture's pixels): with folios not built yet
-		//(lazy folios) a read of them builds those first. Every other
-		//table was filled from the document.
+		//(lazy folios) a read of them builds those first, and so does a
+		//read of the view made of them. Every other table was filled from
+		//the document.
 	static const QRegularExpression drawing_tables(
-			QStringLiteral("\\b(shape|independent_text|image)\\b"),
+			QStringLiteral("\\b(shape|independent_text|image|drawing_item_view)\\b"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
 		m_project->loadFolios();
