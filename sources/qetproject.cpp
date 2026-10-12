@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -282,6 +282,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
+	autoLinkReportElements();
 
 	const qint64 total_ms = load_timer.elapsed();
 	qInfo().nospace().noquote()
@@ -1252,7 +1253,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 				// Warn if the new element introduces slave contact groups
 				QDomElement new_kind = location.xml().firstChildElement("kindInformations");
 				if (!new_kind.firstChildElement("slaveContactGroups").isNull()) {
-					QMessageBox::StandardButton answer = QMessageBox::warning(nullptr,
+					QMessageBox::StandardButton answer = QET::QetMessageBox::warning(nullptr,
 						tr("Système de contacts modifié"),
 						tr("Le nouvel élément définit des groupes de contacts esclaves.\n"
 						   "Les éléments esclaves existants ne seront pas automatiquement "
@@ -2222,4 +2223,102 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 	emit diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name);
+}
+
+
+#include "qetgraphicsitem/reportelement.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+
+void QETProject::autoLinkReportElements()
+{
+	QHash<QString, QList<ReportElement*>> reportsByLabel;
+	QList<ReportElement*> all_reports;
+
+	for (Diagram *diagram : m_diagrams_list) {
+		for (QGraphicsItem *item : diagram->items()) {
+			if (ReportElement *report = dynamic_cast<ReportElement*>(item)) {
+				all_reports.append(report);
+				QString label = report->elementInformations().value("label").toString();
+				if (!label.isEmpty()) {
+					reportsByLabel[label].append(report);
+				}
+			}
+		}
+	}
+
+	for (const QString &label : reportsByLabel.keys()) {
+		QList<ReportElement*> &reports = reportsByLabel[label];
+		
+		std::sort(reports.begin(), reports.end(), [this](ReportElement *a, ReportElement *b) {
+			int idxA = m_diagrams_list.indexOf(a->diagram());
+			int idxB = m_diagrams_list.indexOf(b->diagram());
+			if (idxA != idxB) return idxA < idxB;
+			if (a->scenePos().x() != b->scenePos().x()) return a->scenePos().x() < b->scenePos().x();
+			return a->scenePos().y() < b->scenePos().y();
+		});
+		
+		QList<ReportElement*> unmatched_next;
+		QList<ReportElement*> unmatched_prev;
+
+		// Take the first element of the list which is NOT on the given diagram
+		// (a chain link always goes from one page to another page).
+		auto takeOnOtherDiagram = [](QList<ReportElement*> &list, Diagram *diagram) -> ReportElement* {
+			for (int i = 0; i < list.size(); ++i) {
+				if (list.at(i)->diagram() != diagram) {
+					return list.takeAt(i);
+				}
+			}
+			return nullptr;
+		};
+
+		auto linkPair = [](ReportElement *next_rep, ReportElement *prev_rep) {
+			if (next_rep->linkedElements().isEmpty() || next_rep->linkedElements().first() != prev_rep) {
+				next_rep->linkToElement(prev_rep);
+			}
+		};
+		
+		for (ReportElement *report : reports) {
+			if (report->linkType() == Element::NextReport) {
+				unmatched_next.append(report);
+			} else if (report->linkType() == Element::PreviousReport) {
+				if (ReportElement *next_rep = takeOnOtherDiagram(unmatched_next, report->diagram())) {
+					linkPair(next_rep, report);
+				} else {
+					unmatched_prev.append(report);
+				}
+			}
+		}
+		
+		// Fallback 1: Link leftover backward cross-references (e.g., Page 5 to Page 2)
+		for (int i = 0; i < unmatched_next.size(); ) {
+			ReportElement *next_rep = unmatched_next.at(i);
+			if (ReportElement *prev_rep = takeOnOtherDiagram(unmatched_prev, next_rep->diagram())) {
+				linkPair(next_rep, prev_rep);
+				unmatched_next.removeAt(i);
+			} else {
+				++i;
+			}
+		}
+
+		// Fallback 2: last resort, a link on the same page
+		while (!unmatched_next.isEmpty() && !unmatched_prev.isEmpty()) {
+			linkPair(unmatched_next.takeFirst(), unmatched_prev.takeFirst());
+		}
+	}
+
+	// Make sure every report shows the text matching its current link state.
+	// A pasted report may still display the text copied from the clipboard
+	// (e.g. the old cross reference) if its link didn't change here.
+	// setPlainText() does nothing when the text is unchanged.
+	for (ReportElement *report : std::as_const(all_reports)) {
+		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
+			deti->refreshReportText();
+		}
+		for (ElementTextItemGroup *group : report->textGroups()) {
+			for (DynamicElementTextItem *deti : group->texts()) {
+				deti->refreshReportText();
+			}
+		}
+	}
 }

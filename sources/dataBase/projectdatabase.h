@@ -49,6 +49,8 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
+		QSqlDatabase database() const {return m_data_base;}
+		int excludedConductorCount() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -77,6 +79,7 @@ class projectDataBase : public QObject
 		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
+		void createWiringListView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
@@ -89,6 +92,8 @@ class projectDataBase : public QObject
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
 		void bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram);
+		static void bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram);
+		static void bindElementInfoValues(QSqlQuery &query, Element *element);
 
 	private:
 		QPointer<QETProject> m_project;
@@ -106,7 +111,11 @@ class projectDataBase : public QObject
 				  m_insert_terminal_query,
 				  m_insert_conductor_query,
 				  m_update_conductor_query,
-				  m_remove_conductor_query;
+				  m_remove_conductor_query,
+				  m_cascade_remove_element_info_query,
+				  m_cascade_remove_terminal_query,
+				  m_cascade_remove_conductor_query,
+				  m_cascade_remove_element_query;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

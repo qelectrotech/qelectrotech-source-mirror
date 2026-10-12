@@ -7465,6 +7465,41 @@ Verfügbare Optionen:
         <translation>E&amp;infügen</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
+        <source>Copier le style de texte</source>
+        <translation>Beschriftungsart kopieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
+        <source>Appliquer le style de texte</source>
+        <translation>Beschriftungsart zuweisen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
+        <source>Copie le format de texte de l&apos;élément sélectionné comme modèle</source>
+        <comment>status bar tip</comment>
+        <translation>Kopiert das Beschriftungsformat des ausgewählten Elements als Vorlage</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
+        <source>Applique le format de texte copié aux éléments sélectionnés</source>
+        <comment>status bar tip</comment>
+        <translation>Weist das kopierte Beschriftungsformat den ausgewählten Elementen zu</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2966"/>
+        <source>Style de texte de « %1 » copié</source>
+        <translation>Beschriftungsart von „%1“ kopiert</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="2994"/>
+        <source>Style de texte appliqué à %n élément(s)</source>
+        <translation>
+            <numerusform>Beschriftungsart auf %n Element zugewiesen</numerusform>
+            <numerusform>Beschriftungsart auf %n Elemente zugewiesen</numerusform>
+        </translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="425"/>
         <source>Propriétés du folio</source>
         <translation>Seiteneigenschaften</translation>
@@ -9711,6 +9746,11 @@ Was möchten Sie tun?</translation>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="432"/>
+        <source>Appliquer le style de texte</source>
+        <translation>Beschriftungsart zuweisen</translation>
+    </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="172"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="429"/>

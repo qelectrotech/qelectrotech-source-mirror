@@ -104,7 +104,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		
 	private:
 		void updateXref();
-		void adjustSlaveXrefPos();
+		void adjustSlaveXrefPos(int slave_offset = 0);
 		void autoPos();
 
 	private:

@@ -1,0 +1,37 @@
+
+
+#include "qetgraphicsitem/reportelement.h"
+
+void QETProject::autoLinkReportElements()
+{
+	QHash<QString, QList<ReportElement*>> reportsByLabel;
+
+	for (Diagram *diagram : m_diagrams_list) {
+		for (QGraphicsItem *item : diagram->items()) {
+			if (ReportElement *report = dynamic_cast<ReportElement*>(item)) {
+				QString label = report->elementInformations().value("label").toString();
+				if (!label.isEmpty()) {
+					reportsByLabel[label].append(report);
+				}
+			}
+		}
+	}
+
+	for (const QString &label : reportsByLabel.keys()) {
+		QList<ReportElement*> &reports = reportsByLabel[label];
+		if (reports.size() >= 2) {
+			// For simplicity, link the first two found with the same label
+			ReportElement *first = reports[0];
+			ReportElement *second = reports[1];
+			
+			// Only link if they are inverse report types
+			if (first->linkType() != second->linkType() && 
+			    (first->linkType() == Element::NextReport || first->linkType() == Element::PreviousReport) &&
+			    (second->linkType() == Element::NextReport || second->linkType() == Element::PreviousReport)) 
+			{
+				first->linkToElement(second);
+			}
+		}
+	}
+}
+

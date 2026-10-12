@@ -174,6 +174,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
@@ -856,6 +858,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_hu.ts
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_ko.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts

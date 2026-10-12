@@ -42,7 +42,7 @@
 	<key>CFBundleIconFile</key>
 	<string>qelectrotech</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.qelectrotech</string>
+	<string>org.qelectrotech.QElectroTech</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

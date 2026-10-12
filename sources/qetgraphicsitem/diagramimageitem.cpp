@@ -24,6 +24,7 @@
 #include "../qet.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
+#include "../qeticons.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/imagecropdialog.h"
 #include "../ui/imagetransparentcolordialog.h"
@@ -31,10 +32,14 @@
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 #include <QAction>
+#include <QBuffer>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QGraphicsSceneContextMenuEvent>
+#include <QImageWriter>
 #include <QMenu>
 #include <QMessageBox>
+#include <QTextStream>
 
 /**
 	@brief DiagramImageItem::DiagramImageItem
@@ -811,11 +816,16 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 					else
 						undo = new QPropertyUndoCommand(this, "scaleFactorY", m_original_transform.scaleY, m_transform.scaleY);
 				}
+				if (undo)
+					undo->setText(tr("Redimensionner une image"));
 				break;
 
 			case HandleRole::Rotate:
 				if (!qFuzzyCompare(m_transform.rotation, m_original_transform.rotation))
+				{
 					undo = new QPropertyUndoCommand(this, "rotationAngle", m_original_transform.rotation, m_transform.rotation);
+					undo->setText(tr("Faire pivoter une image"));
+				}
 				break;
 
 			case HandleRole::SkewEdge:
@@ -823,6 +833,8 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 					undo = new QPropertyUndoCommand(this, "skewX", m_original_transform.skewX, m_transform.skewX);
 				else if (!qFuzzyCompare(m_transform.skewY, m_original_transform.skewY))
 					undo = new QPropertyUndoCommand(this, "skewY", m_original_transform.skewY, m_transform.skewY);
+				if (undo)
+					undo->setText(tr("Incliner une image"));
 				break;
 
 			case HandleRole::Pivot:
@@ -837,8 +849,28 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 
 		if (undo)
 		{
+			// Defensive fallback only -- every role above now sets its
+			// own, distinct label directly (Resize/Rotate/SkewEdge used
+			// to all fall through to this same generic text, making the
+			// undo list unable to tell three completely different edits
+			// apart); this only still matters if some future role is
+			// ever added without setting one of its own.
 			if (undo->text().isEmpty())
 				undo->setText(tr("Modifier une image"));
+
+			// Every push here is one complete, finished gesture (press,
+			// drag, release) -- never a continuation of an earlier one.
+			// QPropertyUndoCommand::mergeWith() already treats any
+			// command with children as never mergeable; a dummy child
+			// guarantees that here regardless of which role produced
+			// undo. Without this, a single-property change (Rotate and
+			// SkewEdge always are; Resize sometimes is, when only one
+			// axis actually changed) would silently coalesce into
+			// whatever identically-labelled edit came right before it
+			// -- even after a deselect/reselect proved they were two
+			// separate actions, since the shared label alone is
+			// otherwise indistinguishable from a genuine continuation.
+			new QUndoCommand(undo);
 			diagram()->undoStack().push(undo);
 		}
 	}
@@ -1027,6 +1059,177 @@ void DiagramImageItem::restoreAspectRatio()
 	auto *undo = new QPropertyUndoCommand(this, "scaleFactorY", m_transform.scaleY, m_transform.scaleX);
 	undo->setText(tr("Restaurer les proportions d'une image"));
 	diagram()->undoStack().push(undo);
+}
+
+/**
+	@brief DiagramImageItem::saveImageAs
+	Saves the currently displayed pixmap (crop and colour-keyed
+	transparency already applied -- what the item actually looks like
+	on the diagram, not the pristine original) to an arbitrary file on
+	disk.
+*/
+void DiagramImageItem::saveImageAs()
+{
+	saveImagePixmapAs(pixmap_, tr("Enregistrer l'image sous..."), !m_transparent_colors.isEmpty());
+}
+
+/**
+	@brief DiagramImageItem::saveOriginalImageAs
+	Saves m_base_pixmap -- the true, pristine original, before any crop
+	or colour-keyed transparency -- rather than the item's current,
+	possibly-cropped-and-keyed display pixmap. The only way to recover
+	the un-cropped, un-keyed source once either of those has actually
+	been applied, short of undoing every edit back to the point it was
+	first inserted or replaced.
+*/
+void DiagramImageItem::saveOriginalImageAs()
+{
+	saveImagePixmapAs(m_base_pixmap, tr("Enregistrer l'image d'origine sous..."), false);
+}
+
+/**
+	@brief DiagramImageItem::saveImagePixmapAs
+	Shared by saveImageAs() and saveOriginalImageAs(): prompts for a
+	destination, resolves whichever format was actually intended, warns
+	before silently dropping transparency, and writes the file. A
+	read-only export, not an edit: doesn't touch diagram()'s undo stack,
+	and works even on a read-only diagram, unlike every other action in
+	this item's context menu.
+	@param pixmap the pixmap to save -- pixmap_ or m_base_pixmap
+	@param dialogTitle distinguishes the two callers in the save dialog's own title bar
+	@param hasTransparency whether `pixmap` has colour-keyed transparency worth warning about losing (never true for the pristine original, which predates any such keying)
+*/
+void DiagramImageItem::saveImagePixmapAs(const QPixmap &pixmap, const QString &dialogTitle, bool hasTransparency)
+{
+	QWidget *parentWidget = (diagram() && !diagram()->views().isEmpty()) ? diagram()->views().first() : nullptr;
+
+	// Filter text -> extension. Built once and used both to construct
+	// the dialog's filter list and, below, to resolve whichever one the
+	// person actually had selected -- rather than only ever falling
+	// back to a single hardcoded format regardless of their choice,
+	// which is what this used to do (getSaveFileName() doesn't reliably
+	// auto-append the selected filter's extension on every platform,
+	// and the previous version's fallback ignored the selected filter
+	// entirely, defaulting to PNG even when JPEG or BMP had been
+	// explicitly chosen).
+	const QList<QPair<QString, QString>> filters = {
+		{tr("Image PNG (*.png)"), QStringLiteral("png")},
+		{tr("Image JPEG (*.jpg *.jpeg)"), QStringLiteral("jpg")},
+		{tr("Image BMP (*.bmp)"), QStringLiteral("bmp")},
+		// SVG here always means a raster image wrapped in an SVG
+		// container (an <image> element embedding this same pixmap as
+		// base64 PNG), never a true vector export -- this item only
+		// ever holds raster data, even when originally inserted from an
+		// SVG file, since that file was rasterized once at import time
+		// and its vector information is already gone by the time this
+		// runs.
+		{tr("Image SVG (*.svg)"), QStringLiteral("svg")},
+	};
+	QStringList filterStrings;
+	for (const auto &f : filters)
+		filterStrings << f.first;
+	filterStrings << tr("Tous les fichiers (*)");
+
+	QString selectedFilter;
+	QString path = QFileDialog::getSaveFileName(
+			parentWidget, dialogTitle, QString(), filterStrings.join(QLatin1String(";;")), &selectedFilter);
+	if (path.isEmpty())
+		return;
+
+	// Resolve the target format: prefer an extension already present
+	// and actually writable, otherwise fall back to whichever filter
+	// was selected in the dialog (not a fixed default), so the format
+	// picked in the dropdown is the one that's actually honoured even
+	// when the typed name carries no extension of its own.
+	QString suffix = QFileInfo(path).suffix().toLower();
+	const bool suffixIsSvg = (suffix == QLatin1String("svg"));
+	const bool suffixIsWritableRaster = QImageWriter::supportedImageFormats().contains(suffix.toUtf8());
+	if (!suffixIsSvg && !suffixIsWritableRaster)
+	{
+		QString fallbackExt = QStringLiteral("png");
+		for (const auto &f : filters)
+			if (f.first == selectedFilter) { fallbackExt = f.second; break; }
+		path += QLatin1Char('.') + fallbackExt;
+		suffix = fallbackExt;
+	}
+
+	// JPEG and BMP have no usable alpha channel here -- Qt's writers for
+	// both silently drop it. That alone wouldn't be too bad (the
+	// warning already tells the person transparency won't survive),
+	// except pixmap_ itself has already lost the true colour
+	// information wherever it's transparent by this point: QPixmap
+	// stores its data premultiplied internally, which zeroes out RGB
+	// at alpha=0 the moment applyColorKey()'s QImage result gets
+	// wrapped into a QPixmap -- confirmed directly, not assumed
+	// (QPixmap::fromImage() on a white, alpha=0 pixel reliably comes
+	// back black on toImage()). Saving pixmap_ as-is to a format with
+	// no alpha channel doesn't fall back to the original picture, it
+	// reveals that already-lost black. The fix below substitutes the
+	// cropped base pixmap for the save in this specific case -- it has
+	// the same, correct RGB values everywhere applyColorKey() left a
+	// pixel opaque (colour-keying only ever changes alpha, never RGB),
+	// so it's an exact reproduction of what the image looked like
+	// before any colour was ever keyed out, not an approximation.
+	const bool formatPreservesAlpha = (suffix == QLatin1String("png") || suffix == QLatin1String("svg"));
+	QPixmap toSave = pixmap;
+	if (hasTransparency && !formatPreservesAlpha)
+	{
+		if (QMessageBox::warning(parentWidget,
+				tr("Transparence non conservée"),
+				tr("Ce format ne prend pas en charge la transparence : l'image sera enregistrée "
+				   "telle qu'elle était avant l'application de la couleur transparente. Continuer ?"),
+				QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
+			return;
+
+		toSave = m_base_pixmap.copy(m_crop_rect);
+	}
+
+	bool ok;
+	if (suffix == QLatin1String("svg"))
+		ok = writeRasterAsSvg(toSave, path);
+	else
+		ok = toSave.save(path);
+
+	if (!ok)
+	{
+		QMessageBox::warning(parentWidget,
+				tr("Échec de l'enregistrement"),
+				tr("Impossible d'enregistrer l'image à cet emplacement."));
+	}
+}
+
+/**
+	@brief DiagramImageItem::writeRasterAsSvg
+	Wraps `pixmap` as a base64-embedded PNG inside a minimal, valid SVG
+	document -- the closest this can honestly offer to "save as SVG"
+	given this item only ever holds raster data (see the note in
+	saveImagePixmapAs()). Opens in any SVG viewer at the pixmap's own
+	pixel size, but is not, and cannot be, a vector re-export.
+	@param pixmap the raster image to embed
+	@param path destination file path
+	@return whether the file was written successfully
+*/
+bool DiagramImageItem::writeRasterAsSvg(const QPixmap &pixmap, const QString &path)
+{
+	QByteArray pngData;
+	QBuffer buffer(&pngData);
+	buffer.open(QIODevice::WriteOnly);
+	if (!pixmap.save(&buffer, "PNG"))
+		return false;
+
+	QFile file(path);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+		return false;
+
+	QTextStream out(&file);
+	out << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+	    << "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" "
+	    << "width=\"" << pixmap.width() << "\" height=\"" << pixmap.height() << "\" "
+	    << "viewBox=\"0 0 " << pixmap.width() << ' ' << pixmap.height() << "\">\n"
+	    << "  <image width=\"" << pixmap.width() << "\" height=\"" << pixmap.height() << "\" "
+	    << "xlink:href=\"data:image/png;base64," << QString::fromLatin1(pngData.toBase64()) << "\"/>\n"
+	    << "</svg>\n";
+	return true;
 }
 
 /**
@@ -1382,23 +1585,33 @@ void DiagramImageItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 			QAction *replace = menu.data()->addAction(tr("Remplacer l'image..."));
 			connect(replace, &QAction::triggered, this, &DiagramImageItem::replaceImage);
 
+			QAction *saveAs = menu.data()->addAction(tr("Enregistrer l'image sous..."));
+			connect(saveAs, &QAction::triggered, this, &DiagramImageItem::saveImageAs);
+
+			QAction *saveOriginalAs = menu.data()->addAction(tr("Enregistrer l'image d'origine sous..."));
+			connect(saveOriginalAs, &QAction::triggered, this, &DiagramImageItem::saveOriginalImageAs);
+
 			QAction *transparentColor = menu.data()->addAction(tr("Couleur transparente..."));
+			transparentColor->setIcon(QET::Icons::EditOpacity);
 			connect(transparentColor, &QAction::triggered, this, &DiagramImageItem::setTransparentColor);
 
 			QAction *cropAction = menu.data()->addAction(tr("Rogner..."));
+			cropAction->setIcon(QET::Icons::TransformCrop);
 			connect(cropAction, &QAction::triggered, this, &DiagramImageItem::crop);
 
 			QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
+			mirrorH->setIcon(QET::Icons::ImageFlipHorizontal);
 			QAction *mirrorV = menu.data()->addAction(tr("Miroir vertical"));
+			mirrorV->setIcon(QET::Icons::ImageFlipVertical);
 			connect(mirrorH, &QAction::triggered, this, [this]() { mirror(true); });
 			connect(mirrorV, &QAction::triggered, this, [this]() { mirror(false); });
 
 			QAction *restoreRatio = menu.data()->addAction(tr("Restaurer les proportions"));
 			connect(restoreRatio, &QAction::triggered, this, &DiagramImageItem::restoreAspectRatio);
 
-			menu.data()->addSeparator();
-			QAction *properties = menu.data()->addAction(tr("Propriétés..."));
-			connect(properties, &QAction::triggered, this, &DiagramImageItem::editProperty);
+			// menu.data()->addSeparator();
+			// QAction *properties = menu.data()->addAction(tr("Propriétés..."));
+			// connect(properties, &QAction::triggered, this, &DiagramImageItem::editProperty);
 
 			menu.data()->addSeparator();
 			menu.data()->addActions(d_view->contextMenuActions());
@@ -1454,6 +1667,15 @@ void DiagramImageItem::replaceImage()
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Remplacer une image"));
+	// Every call here is a separate, deliberate menu action with no
+	// compound child of its own (unlike crop(), which always chains a
+	// pos/rawPivot change and is naturally immune) -- two of them in a
+	// row would carry the exact same object, property, and text, which
+	// is indistinguishable from a legitimate merge to
+	// QPropertyUndoCommand::mergeWith(). A dummy child (already treated
+	// as "never merge" by that check) keeps each one its own, separate
+	// undo step regardless.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1497,6 +1719,11 @@ void DiagramImageItem::mirror(bool horizontal)
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"));
+	// See replaceImage()'s identical comment: a separate, deliberate
+	// action with no compound child of its own, so a dummy one is
+	// needed to stop two consecutive same-direction mirrors (identical
+	// object, property, and text) from silently merging into one.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1546,6 +1773,11 @@ void DiagramImageItem::setTransparentColor()
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Définir une couleur transparente"));
+	// See replaceImage()'s identical comment: a separate, deliberate
+	// action with no compound child of its own, so a dummy one is
+	// needed to stop two consecutive transparency edits (identical
+	// object, property, and text) from silently merging into one.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 

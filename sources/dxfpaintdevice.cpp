@@ -200,18 +200,35 @@ void DxfPaintEngine::drawTextItem(const QPointF &p, const QTextItem &textItem)
 
 /**
 	@brief DxfPaintEngine::drawPixmap
-	Not implemented in v1 - out of scope per the design note in the
-	header (CrossRefItem, the only item exported through this engine so
-	far, never draws a pixmap). qWarning() rather than a hard failure, so
-	an item that does call this in the future degrades to "one entity
-	missing" instead of crashing the whole export.
+	No DXF dialect this old (AC1006, AutoCAD R10 from 1988) has any
+	raster image representation at all -- IMAGE/IMAGEDEF wasn't
+	introduced until R2000, over a decade later, and even there the
+	pixels are never embedded, only referenced by external file path.
+	Actually supporting images means upgrading the DXF version target
+	and managing a second file alongside the DXF; until then, this
+	draws a placeholder rectangle outline (the item's own destination
+	rect, mapped through m_world_transform exactly like drawRects()
+	does) instead of silently dropping the item -- so its position,
+	size, rotation, and skew all survive the export even though the
+	picture itself can't yet. A fixed, plain pen, not m_pen: an image
+	item has no meaningful pen of its own for this engine to have
+	picked up from a prior updateState().
 */
 void DxfPaintEngine::drawPixmap(const QRectF &r, const QPixmap &pm, const QRectF &sr)
 {
-	Q_UNUSED(r)
 	Q_UNUSED(pm)
 	Q_UNUSED(sr)
-	qWarning() << "DxfPaintEngine::drawPixmap: not supported, entity skipped";
+
+	QPolygonF corners;
+	corners << r.topLeft() << r.topRight() << r.bottomRight() << r.bottomLeft();
+
+	QPolygonF mapped;
+	mapped.reserve(corners.size() + 1);
+	for (const QPointF &p : corners)
+		mapped << toDxf(p);
+	mapped << mapped.first();
+
+	Createdxf::drawPolyline(m_filepath, mapped, Createdxf::dxfColor(QPen(Qt::black)));
 }
 
 /**
@@ -261,8 +278,21 @@ int DxfPaintDevice::metric(PaintDeviceMetric metric) const
 		case PdmDepth:
 			return 24;
 		case PdmDevicePixelRatio:
-		case PdmDevicePixelRatioScaled:
 			return 1;
+		case PdmDevicePixelRatioScaled:
+			// Not just 1: Qt's own convention (see QPaintDevice's docs)
+			// is that this metric equals PdmDevicePixelRatio scaled by
+			// devicePixelRatioFScale() -- a large constant (65536)
+			// used internally for sub-integer precision. Returning the
+			// plain, unscaled ratio here (as this used to) meant
+			// QPainter's own transform bookkeeping divided by it
+			// expecting the scaled value, silently shrinking every
+			// drawPixmap() destination rect by a factor of 65536 --
+			// this is what was actually behind the placeholder
+			// rectangle rendering at a barely-visible fraction of its
+			// real size instead of the size the item's own
+			// sceneTransform() correctly specified.
+			return int(1 * QPaintDevice::devicePixelRatioFScale());
 		default:
 			return 0;
 	}

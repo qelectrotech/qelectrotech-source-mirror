@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -197,10 +197,12 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 
 		//Text
 	QDomElement dom_text = dom_elmt.firstChildElement("text");
-		//Clear the current text.
-	setPlainText("");
 	if (!dom_text.isNull()) {
 		setText(dom_text.text());
+		setPlainText(dom_text.text());
+	}
+	else {
+		setPlainText("");
 	}
 
 		//Info name
@@ -329,8 +331,8 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 */
 void DynamicElementTextItem::refreshLabelConnection()
 {
-	if ((m_text_from == ElementInfo && m_info_name == "label") ||
-		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+	if ((m_text_from == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref")) ||
+		(m_text_from == CompositeText && (m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}"))))
 	{
 		if((m_parent_element.data()->linkType() & Element::AllReport) ||
 			m_parent_element.data()->linkType() == Element::ConductorDefinition)
@@ -381,10 +383,16 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		if(m_info_name == "label")
 		{
 			setupFormulaConnection();
-			updateLabel();
+			if (!m_parent_element || (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml)) {
+				updateLabel();
+			}
 		}
 		else
-			setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
+		{
+			if (!m_parent_element || (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml)) {
+				setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
+			}
+		}
 		
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
@@ -394,10 +402,17 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		if(m_composite_text.contains("%{label}"))
 		{
 			setupFormulaConnection();
-			updateLabel();
+			if (!m_parent_element || (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml)) {
+				updateLabel();
+			}
 		}
 		else
-			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
+		{
+			if (!m_parent_element || (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml)) {
+				DiagramContext dc = elementUseForInfo()->elementInformations();
+				setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+			}
+		}
 		
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
@@ -443,7 +458,7 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	m_info_name = info_name;
 
 	
-	if(old_info_name == "label")
+	if(old_info_name == "label" || old_info_name == "cross_ref")
 	{
 		clearFormulaConnection();
 		updateXref();
@@ -454,13 +469,16 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	{
 		if(old_info_name != info_name)
 		{
-			if(old_info_name == "label") {
+			if(old_info_name == "label" || old_info_name == "cross_ref") {
 				removeConnectionForReportFormula(m_report_formula);
 			}
-			if(info_name == "label")
+			if(info_name == "label" || info_name == "cross_ref")
 			{
+				setupFormulaConnection();
 				setConnectionForReportFormula(m_report_formula);
-				updateReportText();
+				if (m_parent_element.data()->state() != QET::GIBuildingFromXml && m_parent_element.data()->state() != QET::GILoadingFromXml) {
+					updateReportText();
+				}
 			}
 			else
 				conductorPropertiesChanged();
@@ -515,8 +533,10 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			 */
 		if(old_composite_text.contains("%{label}"))
 			removeConnectionForReportFormula(m_report_formula);
-		if(m_composite_text.contains("%{label}"))
+		if(m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}")) {
+			setupFormulaConnection();
 			setConnectionForReportFormula(m_report_formula);
+		}
 		
 		updateReportText();
 	}
@@ -922,8 +942,8 @@ void DynamicElementTextItem::reportChanged()
 	
 	bool text_have_label = false;
 	
-	if((textFrom() == ElementInfo && m_info_name == "label") ||
-	   (textFrom() == CompositeText && m_composite_text.contains("%{label}")))
+	if((textFrom() == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref")) ||
+	   (textFrom() == CompositeText && (m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}"))))
 		text_have_label = true;
 	
 	if(text_have_label)
@@ -951,7 +971,7 @@ void DynamicElementTextItem::reportFormulaChanged()
 {
 	m_report_formula = parentElement()->diagram()->project()->defaultReportProperties();
 	
-	if(m_text_from == ElementInfo && m_info_name == "label")
+	if(m_text_from == ElementInfo && (m_info_name == "label" || m_info_name == "cross_ref"))
 		updateReportText();
 }
 
@@ -1080,19 +1100,59 @@ void DynamicElementTextItem::updateReportText()
 		m_parent_element.data()->linkType() != Element::ConductorDefinition)
 		return;
 	
-	if (m_text_from == ElementInfo && m_info_name == "label")
+	bool should_update = false;
+	if (m_text_from == ElementInfo)
+	{
+		if (m_info_name == "cross_ref") {
+			should_update = true;
+		} else if (m_info_name == "label") {
+			should_update = true;
+		}
+	}
+
+	if (should_update)
 	{
 		if(m_other_report)
 		{
 			Element *elmt = m_other_report.data();
-			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-			setPlainText(label);
+			QString xref_str = m_report_formula;
+			xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+			
+			if (m_info_name == "label") {
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				if (!lbl.isEmpty() && !xref_str.isEmpty()) {
+					if (m_parent_element && m_parent_element.data()->linkType() == Element::PreviousReport) {
+						setPlainText(xref_str + " / " + lbl);
+					} else {
+						setPlainText(lbl + " / " + xref_str);
+					}
+				} else if (!lbl.isEmpty()) {
+					setPlainText(lbl);
+				} else {
+					setPlainText(xref_str);
+				}
+			} else {
+				setPlainText(xref_str);
+			}
 		}
 		else
 		{
-			setPlainText("");
+			if (m_info_name == "label") {
+				QString lbl = m_parent_element ? m_parent_element.data()->actualLabel() : "";
+				setPlainText(lbl);
+			} else {
+				setPlainText("");
+			}
 		}
+	}
+	else if (m_text_from == ElementInfo && m_info_name == "label")
+	{
+		// if we are label and NOT supposed to update with report text, update as normal label
+		QString lbl = elementUseForInfo() ? elementUseForInfo()->actualLabel() : "";
+		if (lbl.isEmpty() && elementUseForInfo()) {
+			lbl = elementUseForInfo()->elementInformations().value("label").toString();
+		}
+		setPlainText(lbl);
 	}
 	else if (m_text_from == CompositeText) {
 		setPlainText(reportReplacedCompositeText());
@@ -1108,7 +1168,7 @@ void DynamicElementTextItem::updateReportText()
 void DynamicElementTextItem::updateLabel()
 {
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
-		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+		(m_text_from == CompositeText && (m_composite_text.contains("%{label}") || m_composite_text.contains("%{cross_ref}"))))
 	{
 		DiagramContext dc;
 		Element *element = elementUseForInfo();
@@ -1248,17 +1308,22 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 	{
 		string = m_composite_text;
 		
-		if (string.contains("%{label}") && m_other_report)
+		if (string.contains("%{cross_ref}") && m_other_report)
 		{
 			Element *elmt = m_other_report.data();
-			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-			string.replace("%{label}", label);
+			QString xref_str = m_report_formula;
+			xref_str = autonum::AssignVariables::formulaToLabel(xref_str, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+			string.replace("%{cross_ref}", xref_str);
 		}
 			// if element is not linked, replace an empty string
 		else
 		{
-			string.replace("%{label}", "");
+			string.replace("%{cross_ref}", "");
+		}
+
+		if (string.contains("%{label}"))
+		{
+			string.replace("%{label}", m_parent_element.data()->actualLabel());
 		}
 
 		if (m_watched_conductor)
@@ -1358,6 +1423,10 @@ void DynamicElementTextItem::thisRotationChanged() {
 */
 void DynamicElementTextItem::updateXref()
 {
+	if (m_parent_element && m_parent_element.data()->state() == QET::GILoadingFromXml) {
+		return;
+	}
+
 	if(diagram())
 	{
 		if(m_parent_element.data()->linkType() == Element::Master)
@@ -1382,36 +1451,68 @@ void DynamicElementTextItem::updateXref()
 				!m_parent_element.data()->linkedElements().isEmpty())
 		{
 			Element *master_elmt = m_parent_element.data()->linkedElements().first();
-			if(master_elmt && !parentGroup() &&
-			   (
+			if(master_elmt && !parentGroup())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+
+				//Champ de texte: store xref in element informations
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					if(m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "xref")
+					{
+						QString xref_label = xrp.slaveLabel();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+						DiagramContext dc = m_parent_element->elementInformations();
+						if(dc.value("xref").toString() != xref_label)
+						{
+							dc.addValue("xref", xref_label);
+							m_parent_element->setElementInformations(dc);
+						}
+
+						//Set up connections for future updates
+						if(m_update_slave_Xref_connection.isEmpty())
+						{
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+						}
+						return;
+					}
+					//For label/composite text: fall through to cleanup (delete m_slave_Xref_item)
+				}
+				else if(
 				   (m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "label") ||
 				   (m_text_from == DynamicElementTextItem::CompositeText && m_composite_text.contains("%{label}"))
 			   )
-			  )
-			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-				QString xref_label = xrp.slaveLabel();
-				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
-				
-				if(!m_slave_Xref_item)
 				{
-					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
-					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
-					m_slave_Xref_item->setDefaultTextColor(Qt::black);
-					m_slave_Xref_item->installSceneEventFilter(this);
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
 					
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					if(!m_slave_Xref_item)
+					{
+						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
+						m_slave_Xref_item->setDefaultTextColor(Qt::black);
+						m_slave_Xref_item->installSceneEventFilter(this);
+						
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					}
+					else
+						m_slave_Xref_item->setPlainText(xref_label);
+					setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
+					return;
 				}
-				else
-					m_slave_Xref_item->setPlainText(xref_label);
-				setXref_item(xrp.getXrefPos());
-				return;
 			}
 		}
 	}
@@ -1428,6 +1529,29 @@ void DynamicElementTextItem::updateXref()
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
 		m_update_slave_Xref_connection.clear();
+
+		//If position changed to Champ de texte, store xref in element info
+		if(m_parent_element->linkType() == Element::Slave &&
+		   !m_parent_element->linkedElements().isEmpty())
+		{
+			Element *master_elmt = m_parent_element->linkedElements().first();
+			if(master_elmt && diagram())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+					DiagramContext dc = m_parent_element->elementInformations();
+					if(dc.value("xref").toString() != xref_label)
+					{
+						dc.addValue("xref", xref_label);
+						m_parent_element->setElementInformations(dc);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1443,7 +1567,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	if (m_parent_element.data()->state() == QET::GIBuildingFromXml ||
 		m_parent_element.data()->state() == QET::GILoadingFromXml)
 		update_alignment = false;
-	
+
 	if (update_alignment) {
 		prepareAlignment();
 	}
@@ -1476,7 +1600,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			? nullptr : m_parent_element.data()->linkedElements().first();
 		if (master_elmt) {
 			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-			setXref_item(xrp.getXrefPos());
+			setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 		}
 	}
 }
@@ -1488,44 +1612,44 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
-void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos;
 	//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
 	if (m_exHrefPos == Qt::AlignBottom)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignTop)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignLeft)  //
 	{
-		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignRight)  //
 	{
-		pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignBaseline)  //
 	{
 		if(this->alignment() &Qt::AlignBottom)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignTop)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignLeft)
 		{
-			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 		else if(this->alignment() &Qt::AlignRight)
 		{
-			pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 	}
 	m_slave_Xref_item->setPos(pos);

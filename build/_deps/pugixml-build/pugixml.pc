@@ -1,0 +1,11 @@
+prefix=C:/Program Files (x86)/qelectrotech
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: pugixml
+Description: Light-weight, simple and fast XML parser for C++ with XPath support.
+URL: https://pugixml.org/
+Version: 1.15
+Cflags: -I${includedir}
+Libs: -L${libdir} -lpugixml

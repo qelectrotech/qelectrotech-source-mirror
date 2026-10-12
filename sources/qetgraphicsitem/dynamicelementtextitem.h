@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -96,6 +96,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
+		/// Re-evaluate the text of a folio report (label / cross reference).
+		void refreshReportText() { updateReportText(); }
 
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
@@ -112,7 +114,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;

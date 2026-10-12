@@ -17,7 +17,6 @@
 */
 #include "linksingleelementwidget.h"
 #include "contactgroupselectiondialog.h"
-#include "../qetgraphicsitem/masterelement.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -353,8 +352,16 @@ void LinkSingleElementWidget::buildTree()
 		
 		QSettings settings;
 		QVariant v = settings.value(QStringLiteral("link-element-widget/report-state"));
-		if(!v.isNull())
-			ui->m_tree_widget->header()->restoreState(v.toByteArray());
+		auto *header = ui->m_tree_widget->header();
+		if (v.isNull() || !header->restoreState(v.toByteArray()))
+		{
+			// Keep logical column IDs stable for saved layouts, but show the
+			// folio identity first even when the candidate has no conductor.
+			for (int column = 5; column < 8; ++column)
+				header->moveSection(header->visualIndex(column), column - 5);
+			ui->m_tree_widget->resizeColumnToContents(5);
+			ui->m_tree_widget->resizeColumnToContents(6);
+		}
 	}
 	
 	setUpCompleter();
@@ -410,11 +417,12 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 				continue;
 			}
 
-			// If the master is full, we'll remove it from the list!
-			MasterElement *master = static_cast<MasterElement*>(elmt);
-			if (master->isFull()) {
-				elmt_vector.removeAt(i);
-			}
+				// A master at its declared limit stays in the list. Removing
+				// it made a full master indistinguishable from one that does
+				// not exist: the candidate simply was not there, with nothing
+				// to say why. The limit is advisory -- see the prompt in
+				// MasterPropertiesWidget::on_link_button_clicked() -- so the
+				// user decides, rather than the list deciding for them.
 		}
 	}
 	return elmt_vector;

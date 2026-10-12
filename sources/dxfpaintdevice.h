@@ -56,11 +56,18 @@
 	  - fillPath       -> same outline-only handling as drawRects; no HATCH
 	                       support in v1 (see design note in the PR)
 
-	Anything outside this list (images, gradients, etc.) is intentionally
-	unimplemented and asserts in debug builds rather than silently
-	producing an incomplete drawing - callers should know immediately if
-	an item they're exporting uses something this engine doesn't cover
-	yet, rather than getting a DXF file quietly missing content.
+	  - drawPixmap     -> no raster image entity exists in this DXF
+	                       dialect at all (see drawPixmap()'s own
+	                       comment) -- draws a placeholder rectangle
+	                       outline instead, preserving the item's
+	                       position/size/rotation/skew even though the
+	                       picture itself can't be included yet
+
+	Anything else outside this list (gradients, etc.) is intentionally
+	unimplemented and logs a warning rather than silently producing an
+	incomplete drawing - callers should know immediately if an item
+	they're exporting uses something this engine doesn't cover yet,
+	rather than getting a DXF file quietly missing content.
 */
 class DxfPaintEngine : public QPaintEngine
 {

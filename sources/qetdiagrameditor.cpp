@@ -39,6 +39,7 @@
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "elementtextpattern.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
@@ -57,6 +58,7 @@
 #include "ui/diagrameditorhandlersizewidget.h"
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 #include "wiringlistexport.h"
+#include "ui/wiringlistdialog.h"
 #include "ui/terminalnumberingdialog.h"
 #include <QDateTime>
 #include <QDebug>
@@ -352,6 +354,19 @@ void QETDiagramEditor::setUpActions()
 			currentDiagramView()->paste();
 	});
 
+		//Format painter actions (Beschriftungsformat kopieren / zuweisen)
+	m_copy_text_format  = new QAction(QET::Icons::CopyElementTextFormat,  tr("Copier le style de texte"), this);
+	m_apply_text_format = new QAction(QET::Icons::ApplyElementTextFormat, tr("Appliquer le style de texte"), this);
+
+	ShortcutManager::instance().registerAction(m_copy_text_format, "diagrameditor.copy_text_format", tr("Éditeur de schémas"), Qt::CTRL | Qt::SHIFT | Qt::Key_C);
+	ShortcutManager::instance().registerAction(m_apply_text_format, "diagrameditor.apply_text_format", tr("Éditeur de schémas"), Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+
+	m_copy_text_format  -> setStatusTip(tr("Copie le format de texte de l'élément sélectionné comme modèle", "status bar tip"));
+	m_apply_text_format -> setStatusTip(tr("Applique le format de texte copié aux éléments sélectionnés", "status bar tip"));
+
+	connect(m_copy_text_format,  &QAction::triggered, this, &QETDiagramEditor::copyTextFormat);
+	connect(m_apply_text_format, &QAction::triggered, this, &QETDiagramEditor::applyTextFormat);
+
 		//Reset conductor path
 	m_conductor_reset = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
 	ShortcutManager::instance().registerAction(m_conductor_reset, "diagrameditor.conductor_reset", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_K);
@@ -516,6 +531,17 @@ void QETDiagramEditor::setUpActions()
 		{
 			WiringListExport wle(project, this);
 			wle.toCsv();
+		}
+	});
+
+	// Show the wiring list read from the project database
+	m_project_wiring_list_view = new QAction(QET::Icons::DocumentSpreadsheet, tr("Liste de câblage (base de données)"), this);
+	connect(m_project_wiring_list_view, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (project)
+		{
+			WiringListDialog dialog(project, this);
+			dialog.exec();
 		}
 	});
 
@@ -835,6 +861,8 @@ void QETDiagramEditor::setUpToolBar()
 	main_tool_bar -> addAction(m_cut);
 	main_tool_bar -> addAction(m_copy);
 	main_tool_bar -> addAction(m_paste);
+	main_tool_bar -> addAction(m_copy_text_format);
+	main_tool_bar -> addAction(m_apply_text_format);
 	main_tool_bar -> addSeparator();
 	main_tool_bar -> addAction(m_delete_selection);
 	main_tool_bar -> addAction(m_rotate_selection);
@@ -910,6 +938,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
+	menu_edition -> addAction(m_copy_text_format);
+	menu_edition -> addAction(m_apply_text_format);
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
@@ -940,6 +970,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
 	menu_project -> addAction(m_project_export_wiring_list);
+	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_terminal_numbering);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
@@ -1789,6 +1820,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
 	m_project_export_wiring_list  -> setEnabled(opened_project);
+	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
@@ -1846,7 +1878,9 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_rotate_selection
 			    << m_rotate_group_selection
 			    << m_edit_selection
-			    << m_group_selected_texts;
+			    << m_group_selected_texts
+			    << m_copy_text_format
+			    << m_apply_text_format;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 
@@ -1865,6 +1899,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
+	m_copy_text_format->setEnabled(selected_elements_count >= 1);
+	m_apply_text_format->setEnabled(!ro && selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern());
 
 	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 	bool copiable_items  = dc.hasCopiableItems();
@@ -2903,3 +2939,58 @@ void QETDiagramEditor::slot_terminalNumbering() {
 		}
 	}
 }
+
+/**
+ * @brief QETDiagramEditor::copyTextFormat
+ * Copies the text/label layout and formatting from the currently selected element as a template.
+ */
+void QETDiagramEditor::copyTextFormat()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram()) return;
+
+	Element *sourceElmt = nullptr;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			sourceElmt = elmt;
+			break;
+		}
+	}
+
+	if (!sourceElmt) return;
+
+	ElementTextFormatPattern pattern = ElementTextFormatPattern::fromElement(sourceElmt);
+	if (pattern.isValid()) {
+		ElementTextFormatPattern::setCurrentPattern(pattern);
+		slot_updateComplexActions();
+		statusBar()->showMessage(tr("Style de texte de « %1 » copié").arg(sourceElmt->name()), 3000);
+	}
+}
+
+/**
+ * @brief QETDiagramEditor::applyTextFormat
+ * Applies the stored text formatting template to all selected elements in the active diagram.
+ */
+void QETDiagramEditor::applyTextFormat()
+{
+	if (!ElementTextFormatPattern::hasPattern()) return;
+
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram()) return;
+	if (dv->diagram()->isReadOnly()) return;
+
+	QList<Element *> targetElements;
+	for (QGraphicsItem *item : dv->diagram()->selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			targetElements.append(elmt);
+		}
+	}
+
+	if (targetElements.isEmpty()) return;
+
+	const ElementTextFormatPattern &pattern = ElementTextFormatPattern::currentPattern();
+	dv->diagram()->undoStack().push(new ApplyElementTextFormatCommand(targetElements, pattern));
+
+	statusBar()->showMessage(tr("Style de texte appliqué à %n élément(s)", "", targetElements.size()), 3000);
+}
+

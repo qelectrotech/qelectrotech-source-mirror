@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -83,6 +83,8 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER_AUX4                     = "supplier_auxiliary4";
 	static QString ELMT_QUANTITY_AUX4                     = "quantity_auxiliary4";
 	static QString ELMT_UNITY_AUX4                        = "unity_auxiliary4";
+	static QString ELMT_XREF                         = "xref";
+	static QString ELMT_CROSS_REF                    = "cross_ref";
 
 
 	/** Default information related to conductor **/

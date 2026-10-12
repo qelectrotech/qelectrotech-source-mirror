@@ -65,7 +65,17 @@ ClickableImageLabel::ClickableImageLabel(const QImage &sourceImage, QWidget *par
 */
 void ClickableImageLabel::mousePressEvent(QMouseEvent *event)
 {
-	if (event->button() != Qt::LeftButton || pixmap().isNull())
+		// QLabel::pixmap() returns a pointer in Qt5 and a value in Qt6.
+		// Qt 5.15 offers the by-value form behind Qt::ReturnByValue; the
+		// pointer overload is deprecated there, so take the by-value one
+		// on both and the difference reduces to the argument.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	const QPixmap label_pixmap = pixmap(Qt::ReturnByValue);
+#else
+	const QPixmap label_pixmap = pixmap();
+#endif
+
+	if (event->button() != Qt::LeftButton || label_pixmap.isNull())
 		return;
 
 	// The label may be larger than its pixmap (layout stretching); the
@@ -73,9 +83,9 @@ void ClickableImageLabel::mousePressEvent(QMouseEvent *event)
 	// so the click has to be re-based against the pixmap's own rect
 	// within the label, not the label's own top-left.
 	const QRect pixmapRect(
-			(width() - pixmap().width()) / 2,
-			(height() - pixmap().height()) / 2,
-			pixmap().width(), pixmap().height());
+			(width() - label_pixmap.width()) / 2,
+			(height() - label_pixmap.height()) / 2,
+			label_pixmap.width(), label_pixmap.height());
 	if (!pixmapRect.contains(event->pos()))
 		return;
 
@@ -112,7 +122,8 @@ ImageTransparentColorDialog::ImageTransparentColorDialog(const QPixmap &basePixm
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	m_okButton = buttons->button(QDialogButtonBox::Ok);
-	m_okButton->setEnabled(!m_pickedColors.isEmpty());   // nothing to apply until at least one colour has been picked
+	m_startedWithColors = !m_pickedColors.isEmpty();
+	updateOkEnabled();
 
 	auto *grid = new QGridLayout;
 	grid->addWidget(new QLabel(tr("Image source")), 0, 0);
@@ -159,7 +170,7 @@ void ImageTransparentColorDialog::onColorPicked(const QColor &color)
 			return;
 
 	m_pickedColors.append({color, m_lastToleranceUsed});
-	m_okButton->setEnabled(true);
+	updateOkEnabled();
 	rebuildSwatches();
 	updatePreview();
 }
@@ -184,6 +195,22 @@ void ImageTransparentColorDialog::setToleranceForIndex(int index, int value)
 }
 
 /**
+	@brief ImageTransparentColorDialog::updateOkEnabled
+	OK is disabled only for the one case where accepting would genuinely
+	do nothing: a dialog that started with no colours and still has
+	none. Removing every colour from a dialog that DID start with some
+	is a different, meaningful action -- clearing all transparency back
+	to a plain, opaque image -- and has to stay confirmable, not silently
+	blocked the same way. Re-run after every add or remove, since either
+	can cross the "any colours at all, ever" threshold in either
+	direction.
+*/
+void ImageTransparentColorDialog::updateOkEnabled()
+{
+	m_okButton->setEnabled(!m_pickedColors.isEmpty() || m_startedWithColors);
+}
+
+/**
 	@brief ImageTransparentColorDialog::removeColor
 	Removes one colour from the set -- the counterpart onColorPicked()
 	was missing entirely before: picking the wrong pixel by mistake had
@@ -196,7 +223,7 @@ void ImageTransparentColorDialog::removeColor(int index)
 		return;
 
 	m_pickedColors.removeAt(index);
-	m_okButton->setEnabled(!m_pickedColors.isEmpty());
+	updateOkEnabled();
 	rebuildSwatches();
 	updatePreview();
 }

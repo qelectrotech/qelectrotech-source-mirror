@@ -40,6 +40,7 @@
 #include "iostream"
 
 #include <QCollator>
+#include <QTimer>
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -881,6 +882,18 @@ bool Element::fromXml(QDomElement &e,
 			m_data.plcMasterDataFromXml(xml_plc);
 	}
 
+	// Folio reports: the displayed text was saved together with its position.
+	// Loading the informations below would replace it with the bare label
+	// (the report isn't linked yet) WITHOUT moving the text, so the saved
+	// position would no longer match the displayed text and the next aligned
+	// update (when the report gets linked) would shift the text by the width
+	// difference. Remember the saved text to restore it afterwards.
+	QList<QPair<DynamicElementTextItem *, QString>> saved_report_texts;
+	if (linkType() & Element::AllReport) {
+		for (DynamicElementTextItem *deti : std::as_const(m_dynamic_text_list))
+			saved_report_texts.append(qMakePair(deti, deti->toPlainText()));
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -888,6 +901,10 @@ bool Element::fromXml(QDomElement &e,
 	setElementInformations(dc);
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = false;
+
+	// Still in GILoadingFromXml state: this doesn't move the texts.
+	for (const auto &saved : std::as_const(saved_report_texts))
+		saved.first->setPlainText(saved.second);
 
 	m_state = QET::GIOK;
 	return(true);
@@ -1419,6 +1436,12 @@ void Element::setElementInformations(DiagramContext dc)
 		return;
 	}
 
+	bool label_changed = m_data.m_informations.value("label").toString() != dc.value("label").toString();
+
+	if (label_changed && (linkType() & Element::AllReport)) {
+		unlinkAllElements();
+	}
+
 	const auto old_info = m_data.m_informations;
 	m_data.m_informations = dc;
 
@@ -1427,6 +1450,14 @@ void Element::setElementInformations(DiagramContext dc)
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
+
+	if (label_changed && (linkType() & Element::AllReport)) {
+		if (diagram() && diagram()->project()) {
+			QTimer::singleShot(0, diagram()->project(), [prj = diagram()->project()]() {
+				prj->autoLinkReportElements();
+			});
+		}
+	}
 
 	// Propagate label change to linked PLC slaves (label is changed via
 	// setElementInformations through the undo stack, not via setElementData)

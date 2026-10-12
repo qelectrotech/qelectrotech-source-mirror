@@ -249,7 +249,9 @@ class QetShapeItem : public QetGraphicsItem
 		void repositionHandles();    // moves existing handler items -- safe to call every frame of a live drag
 		void insertPoint();
 		void removePoint();
-		void convertToPathExplicitly();   // context-menu action; see promoteRectangleOrEllipseToPolygon()
+		void convertToPathOrPolygon();   // context-menu action; see promoteRectangleOrEllipseToPolygon() for the separate Alt+drag mechanism
+		static QVector<PathNode> bezierNodesForArc(const QRectF &rect, qreal startAngleDeg, qreal spanAngleDeg);
+		static QVector<PathNode> bezierNodesForRoundedRect(const QRectF &rect, qreal xRadius, qreal yRadius);
 		void mirror(bool horizontal);   // context-menu action: flips scaleFactorX (horizontal) or scaleFactorY (vertical) around the current pivot
 		void setNodeKind(int nodeIndex, NodeKind kind);   // context-menu action on a Path node
 
@@ -312,7 +314,9 @@ class QetShapeItem : public QetGraphicsItem
 		qreal		 m_xRadius = 0,
 				 m_yRadius = 0,
 				 m_old_xRadius,
-				 m_old_yRadius;
+				 m_old_yRadius,
+				 m_old_startAngle,
+				 m_old_endAngle;
 
 		ShapeTransform   m_transform;
 		ShapeTransform   m_old_transform;

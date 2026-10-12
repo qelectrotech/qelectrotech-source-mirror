@@ -1194,6 +1194,8 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_cut;
 			list << qde->m_copy;
 			list << m_multi_paste;
+			list << qde->m_copy_text_format;
+			list << qde->m_apply_text_format;
 			list << m_separators.at(0);
 			list << m_create_template; // Add the create template action
 			list << qde->m_conductor_reset;

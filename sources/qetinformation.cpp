@@ -86,10 +86,13 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 QStringList QETInformation::folioReportInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,
+						 ELMT_CROSS_REF,
 						 COND_FUNCTION,
 						 COND_TENSION_PROTOCOL,
 						 COND_COLOR,
-						 COND_SECTION };
+						 COND_SECTION,
+						 ELMT_PLANT,
+						 ELMT_LOCATION};
 
 	return list;
 }
@@ -97,10 +100,13 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 {
 	QHash <QString, QString> H_;
 	H_.insert(ELMT_LABEL,            infoToVar(ELMT_LABEL));
+	H_.insert(ELMT_CROSS_REF,        infoToVar(ELMT_CROSS_REF));
 	H_.insert(COND_FUNCTION,         infoToVar(COND_FUNCTION));
 	H_.insert(COND_TENSION_PROTOCOL, infoToVar(COND_TENSION_PROTOCOL));
 	H_.insert(COND_COLOR,            infoToVar(COND_COLOR));
 	H_.insert(COND_SECTION,          infoToVar(COND_SECTION));
+	H_.insert(ELMT_PLANT,            infoToVar(ELMT_PLANT));
+	H_.insert(ELMT_LOCATION,         infoToVar(ELMT_LOCATION));
 
 	return H_;
 }
@@ -194,8 +200,9 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_PLC_ADDRESS,
 						 ELMT_PLC_FUNCTION,
 						 ELMT_PLC_COMMENT,
-						 ELMT_PLC_CROSSREF,
-						 "exclude_from_bom" };
+					 ELMT_PLC_CROSSREF,
+					 ELMT_XREF, ELMT_CROSS_REF,
+					 "exclude_from_bom" };
 	return list;
 }
 
@@ -316,12 +323,15 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_PLC_FUNCTION)                      return QObject::tr("Fonction PLC");
 	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("Commentaire PLC");
 	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("Réf. croisée PLC");
+	else if (info == ELMT_XREF)                          return QObject::tr("Réf. croisée");
+	else if (info == ELMT_CROSS_REF)                     return QObject::tr("Querverweis (Ziel)");
 	else return QString();
 }
 
 QStringList QETInformation::elementEditorElementInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,
+						 ELMT_CROSS_REF,
 						 ELMT_PLANT,
 						 ELMT_LOCATION,
 						 ELMT_COMMENT,

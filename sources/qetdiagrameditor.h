@@ -156,6 +156,8 @@ class QETDiagramEditor : public QETMainWindow
 		void showError(const QETResult &);
 		void showError(const QString &);
 		void subWindowActivated(QMdiSubWindow *subWindows);
+		void copyTextFormat();
+		void applyTextFormat();
 
 	private slots:
 		void selectionChanged();
@@ -165,7 +167,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_edit_diagram_properties, ///< Show a dialog to edit diagram properties
 		*m_conductor_reset,         ///< Reset paths of selected conductors
 		*m_cut,                     ///< Cut selection to clipboard
-		*m_copy;                    ///< Copy selection to clipboard
+		*m_copy,                    ///< Copy selection to clipboard
+		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
+		*m_apply_text_format = nullptr; ///< Apply label/text formatting template
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
@@ -209,6 +213,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_project_export_wiring_list, ///< Action to export the wiring list
+		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile

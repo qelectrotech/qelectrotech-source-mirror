@@ -1,0 +1,7 @@
+set(__QT_DEPLOY_TARGET_SingleApplication_FILE C:/Users/jkid/Documents/qet/qelectrotech-source-mirror-master/build/_deps/singleapplication-build/libSingleApplication.a)
+set(__QT_DEPLOY_TARGET_SingleApplication_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_pugixml-static_FILE C:/Users/jkid/Documents/qet/qelectrotech-source-mirror-master/build/_deps/pugixml-build/libpugixml.a)
+set(__QT_DEPLOY_TARGET_pugixml-static_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_qelectrotech_FILE C:/Users/jkid/Documents/qet/qelectrotech-source-mirror-master/build/qelectrotech.exe)
+set(__QT_DEPLOY_TARGET_qelectrotech_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_qelectrotech_RUNTIME_DLLS C:/Qt/6.11.0/mingw_64/bin/Qt6PrintSupport.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Xml.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Svg.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Sql.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Network.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Widgets.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Concurrent.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Network.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Widgets.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Gui.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Core.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Gui.dll;C:/Qt/6.11.0/mingw_64/bin/Qt6Core.dll)
