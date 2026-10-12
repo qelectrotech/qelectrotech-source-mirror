@@ -25,6 +25,13 @@ here read the model.
 
 ## Tools
 
+Every tool takes a `.qet` or a `.qetz` (the same project, zipped). The
+tools that read a project's XML read the `.qet` QElectroTech saves from a
+`.qetz`, made once per version of the file with the configured
+QElectroTech (`QET_BINARY`); the first read of a big `.qetz` takes as long
+as QElectroTech needs to save it. The tools that launch QElectroTech hand
+it the `.qetz` itself, and write one when the output path ends in `.qetz`.
+
 | Tool | What it answers |
 |---|---|
 | `qet_project_info` | title, format version, folios with their uuids, element and conductor counts |
