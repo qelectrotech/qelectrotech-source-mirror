@@ -750,6 +750,28 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 				Statement rows(db, sql);
 				ok = ok && rows.run({id});
 			}
+				//Its symbols whose information changed since (QETProject::toXml()):
+				//their information rows written as a symbol's block writes them
+			for (const QDomElement &edited : children(d, QStringLiteral("qetz-edited-element"))) {
+				Statement find(db, QStringLiteral("SELECT key FROM element WHERE folio_id = ? AND uuid = ? AND info_at IS NOT NULL"));
+				find.bind({id, edited.attribute(QStringLiteral("uuid"))});
+				if (!find.next()) {
+					setError(error, QStringLiteral("a symbol changed on folio %1 kept as it was is not in its database").arg(id));
+					return {};
+				}
+				const QString key = find.value(0).toString();
+				Statement drop(db, QStringLiteral("DELETE FROM element_info WHERE element_key = ?"));
+				ok = ok && drop.run({key});
+				int ord = 0;
+				for (QDomElement i : children(edited.firstChildElement(QStringLiteral("elementInformations")),
+											  QStringLiteral("elementInformation"))) {
+					QVariant value;
+					simpleValue(i, &value);
+					ok = ok && element_info.run({key, ord++, i.hasAttribute(QStringLiteral("name"))
+													? QVariant(i.attribute(QStringLiteral("name"))) : QVariant(),
+												 value, attributesJson(i, QStringLiteral("name"), true)});
+				}
+			}
 			if (!ok) {
 				setError(error, QStringLiteral("folio %1 kept as it was is not in its database").arg(id));
 				return {};

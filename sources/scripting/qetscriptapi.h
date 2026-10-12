@@ -24,6 +24,10 @@
 #include <QVariantList>
 #include <QVariantMap>
 
+#include <optional>
+
+#include "../diagramcontext.h"
+
 class QETProject;
 class Diagram;
 class DiagramView;
@@ -644,6 +648,7 @@ class QetScriptApi : public QObject
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
 		Diagram *built(Diagram *folio) const;
+		std::optional<DiagramContext> unbuiltInformation(int folioIndex, const QString &elementUuid) const;
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);

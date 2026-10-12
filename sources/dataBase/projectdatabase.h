@@ -180,6 +180,12 @@ class projectDataBase : public QObject
 		QString prefillReport() const;
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
+		bool canEditUnbuilt(const QUuid &element) const;
+		void editUnbuiltElementInformation(const QUuid &element, DiagramContext information);
+		std::optional<DiagramContext> takeUnbuiltEdit(const QUuid &element);
+		QSet<QUuid> foliosWithUnbuiltEdits() const;
+		QHash<QUuid, DiagramContext> unbuiltEditsOnFolio(const QUuid &folio, bool *need_build = nullptr) const;
+		bool setPlacedElementInformation(const QUuid &element, const DiagramContext &information);
 		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
 			/// A symbol placed on a folio, as the element table has it
 		struct FolioSymbol {
@@ -335,6 +341,11 @@ class projectDataBase : public QObject
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
 		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
+			/// Information changed through the store for symbols on folios
+			/// not built (editUnbuiltElementInformation()), with the folio
+			/// each is on: building the symbol takes it (takeUnbuiltEdit())
+		struct UnbuiltEdit { DiagramContext information; QUuid folio; bool had_information; };
+		QHash<QUuid, UnbuiltEdit> m_unbuilt_edits;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
