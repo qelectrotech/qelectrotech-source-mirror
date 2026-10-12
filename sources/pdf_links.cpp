@@ -23,6 +23,7 @@
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "TerminalStrip/GraphicsItem/terminalstripitem.h"
 
 // Private Qt PDF engine for drawHyperlink() — not public API.
 // Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
@@ -145,6 +146,14 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 		// name the folio it goes on to) ---
 		if (auto *cable = dynamic_cast<CablePart*>(item)) {
 			for (const CablePart::PdfRef &ref : cable->pdfRefs()) {
+				injectLinkTo(ref.here, ref.diagram, ref.there);
+			}
+			continue;
+		}
+
+		// --- Terminal strip plan: the xref of each terminal leads to its element ---
+		if (auto *strip_item = dynamic_cast<TerminalStripItem*>(item)) {
+			for (const TerminalStripItem::PdfRef &ref : strip_item->pdfRefs()) {
 				injectLinkTo(ref.here, ref.diagram, ref.there);
 			}
 			continue;

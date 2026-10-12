@@ -416,6 +416,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
     if (m_strip && m_pattern)
     {
 		m_united_xref_text_rect = QRectF();
+		m_xref_rects.clear();
             //To draw text, QPainter need a Qrect. Instead of create an instance
             //for each text, we re-use the same instance of QRect.
         QRect text_rect;
@@ -612,6 +613,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				auto xref_string = shared_real_terminal->xref();
 
 				const auto mapped_xref_text_rect = transform.mapRect(painter->boundingRect(xref_rect, xref_string, xref_text_option));
+				if (!xref_string.isEmpty()) {
+					m_xref_rects.append({mapped_xref_text_rect, physical_index, i});
+				}
 				if (m_united_xref_text_rect.isNull()) {
 					m_united_xref_text_rect = mapped_xref_text_rect;
 				} else {
@@ -790,6 +794,16 @@ bool TerminalStripDrawer::needUpdate()
 hoverTerminal TerminalStripDrawer::hoveredXref() const
 {
 	return m_hovered_xref;
+}
+
+/**
+ * @brief TerminalStripDrawer::xrefRects
+ * @return the rectangle of every xref text drawn by the last call
+ * of paint(), in the coordinates of the painter.
+ */
+QVector<XrefRect> TerminalStripDrawer::xrefRects() const
+{
+	return m_xref_rects;
 }
 
 qreal TerminalStripDrawer::height() const

@@ -40,6 +40,18 @@ namespace TerminalStripDrawer
 		int real{-1};
 	};
 
+	/**
+	 * @brief The XrefRect struct
+	 * Where the xref text of a real terminal was drawn, in the coordinates
+	 * of the item, with the physical and real index of that terminal.
+	 * Filled by paint(): used to make the xref clickable in an exported PDF.
+	 */
+	struct XrefRect{
+		QRectF rect;
+		int physical{-1};
+		int real{-1};
+	};
+
     class AbstractBridgeInterface
     {
         public:
@@ -105,6 +117,7 @@ namespace TerminalStripDrawer
 			bool mouseHoverXref() const;
 			bool needUpdate();
 			hoverTerminal hoveredXref() const;
+			QVector<XrefRect> xrefRects() const;
 
         private:
             qreal height() const;
@@ -118,6 +131,7 @@ namespace TerminalStripDrawer
 			QRectF m_united_xref_text_rect;
 			bool m_last_mouse_pos_in_xrefs_rect{false};
 			hoverTerminal m_hovered_xref;
+			QVector<XrefRect> m_xref_rects;
     };
 }
 

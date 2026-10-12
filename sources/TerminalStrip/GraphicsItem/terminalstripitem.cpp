@@ -96,6 +96,45 @@ QString TerminalStripItem::name() const {
 	return tr("plan of terminals");
 }
 
+/**
+ * @brief TerminalStripItem::pdfRefs
+ * @return the xref texts of the plan which lead to an element,
+ * as the folio and rectangles needed to make them clickable in a PDF.
+ * The rectangles are those of the last paint, so call this after
+ * the item was rendered.
+ */
+QList<TerminalStripItem::PdfRef> TerminalStripItem::pdfRefs() const
+{
+	QList<PdfRef> refs;
+	if (m_strip.isNull()) {
+		return refs;
+	}
+
+	const auto xref_rects = m_drawer.xrefRects();
+	for (const auto &xref_rect : xref_rects)
+	{
+		const auto physical_terminal = m_strip->physicalTerminal(xref_rect.physical);
+		if (physical_terminal.isNull()) {
+			continue;
+		}
+		const auto real_terminal = physical_terminal->realTerminal(xref_rect.real);
+		if (real_terminal.isNull() || !real_terminal->isElement()) {
+			continue;
+		}
+		const QPointer<Element> element = real_terminal->element();
+		if (element.isNull() || !element->diagram()) {
+			continue;
+		}
+
+		PdfRef ref;
+		ref.diagram = element->diagram();
+		ref.here    = mapRectToScene(xref_rect.rect);
+		ref.there   = element->mapRectToScene(element->boundingRect());
+		refs.append(ref);
+	}
+	return refs;
+}
+
 void TerminalStripItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 {
 	QetGraphicsItem::hoverMoveEvent(event);

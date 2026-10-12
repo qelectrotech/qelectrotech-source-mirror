@@ -19,11 +19,14 @@
 #define TERMINALSTRIPITEM_H
 
 #include <QGraphicsObject>
+#include <QList>
+#include <QRectF>
 #include <QUuid>
 
 #include "terminalstripdrawer.h"
 #include "../../qetgraphicsitem/qetgraphicsitem.h"
 
+class Diagram;
 class TerminalStrip;
 
 class TerminalStripItem : public QetGraphicsItem
@@ -51,6 +54,22 @@ class TerminalStripItem : public QetGraphicsItem
         void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
         void refreshPending();
         void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+
+		/**
+		 * @brief The PdfRef struct
+		 * One xref of the plan which leads to an element: used to make
+		 * it a clickable link in an exported PDF.
+		 */
+		struct PdfRef
+		{
+				///The folio of the element the xref points at
+			Diagram *diagram = nullptr;
+				///Where the text of the xref stands on the folio of this item
+			QRectF here;
+				///Where the element stands on its folio
+			QRectF there;
+		};
+		QList<PdfRef> pdfRefs() const;
 
 	private:
 		void setDefaultLayout();
