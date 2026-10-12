@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QList>
 #include <QStringList>
+#include <QDomDocument>
 
 class QETProject;
 class QWidget;
