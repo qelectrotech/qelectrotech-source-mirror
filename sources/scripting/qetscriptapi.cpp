@@ -126,7 +126,7 @@ QString QetScriptApi::filePath() const
 
 int QetScriptApi::folioCount() const
 {
-	return m_project ? m_project->diagrams().count() : 0;
+	return m_project ? m_project->folios().count() : 0;
 }
 
 /**
@@ -183,7 +183,7 @@ QStringList QetScriptApi::signatures()
 int QetScriptApi::currentFolio() const
 {
 	if (!m_project) return -1;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (m_view && m_view->diagram()) {
 		return diagrams.indexOf(m_view->diagram());
 	}
@@ -193,7 +193,7 @@ int QetScriptApi::currentFolio() const
 QString QetScriptApi::folioTitle(int index) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (index < 0 || index >= diagrams.count()) return QString();
 	return diagrams.at(index)->title();
 }
@@ -207,7 +207,7 @@ QString QetScriptApi::folioTitle(int index) const
 QString QetScriptApi::folioUuid(int index) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (index < 0 || index >= diagrams.count()) return QString();
 	return diagrams.at(index)->uuid().toString();
 }
@@ -222,7 +222,7 @@ int QetScriptApi::folioIndex(const QString &uuid) const
 	if (!m_project) return -1;
 	const QUuid wanted(uuid);
 	if (wanted.isNull()) return -1;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	for (int i = 0 ; i < diagrams.count() ; ++i) {
 		if (diagrams.at(i)->uuid() == wanted) return i;
 	}
@@ -232,18 +232,18 @@ int QetScriptApi::folioIndex(const QString &uuid) const
 int QetScriptApi::elementCount(int folioIndex) const
 {
 	if (!m_project) return 0;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return 0;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return content.m_elements.count();
 }
 
 int QetScriptApi::conductorCount(int folioIndex) const
 {
 	if (!m_project) return 0;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return 0;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return content.conductors(DiagramContent::AnyConductor).count();
 }
 
@@ -463,6 +463,19 @@ void QetScriptApi::setLive(QStringList *log)
 }
 
 /**
+	@brief QetScriptApi::built
+	@return @p folio, built if it was not yet (QET_LAZY_FOLIOS), as showing
+	it builds it: what a call reading or changing its items needs. A
+	folio's own data (title block, border, wire defaults) needs no build.
+*/
+Diagram *QetScriptApi::built(Diagram *folio) const
+{
+	if (folio && m_project)
+		m_project->buildFolioToShow(folio);
+	return folio;
+}
+
+/**
 	@brief QetScriptApi::findElement
 	@param folioIndex
 	@param elementUuid as returned by addElement(), or read from the
@@ -472,9 +485,9 @@ void QetScriptApi::setLive(QStringList *log)
 Element *QetScriptApi::findElement(int folioIndex, const QString &elementUuid) const
 {
 	if (!m_project) return nullptr;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return nullptr;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Element *elmt : std::as_const(content.m_elements)) {
 		if (elmt->uuid().toString() == elementUuid)
 			return elmt;
@@ -705,9 +718,9 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 		log(QStringLiteral("qet.addElement: project is read-only"));
 		return QString();
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	// ElementsLocation::setPath() forces ANY path to embed:// as soon as a
 	// non-null project is given, common://custom:// included -- passing
@@ -817,7 +830,7 @@ bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_elements << element;
@@ -906,9 +919,9 @@ QStringList QetScriptApi::elementUuids(int folioIndex) const
 {
 	QStringList uuids;
 	if (!m_project) return uuids;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return uuids;
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Element *elmt : std::as_const(content.m_elements)) {
 		uuids << elmt->uuid().toString();
 	}
@@ -1077,7 +1090,7 @@ bool QetScriptApi::addConductor(int folioIndex,
 		return false;
 	}
 
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	ConductorCreator creator(diagram, terminals);
 	Q_UNUSED(creator)
 
@@ -1110,10 +1123,10 @@ QStringList QetScriptApi::conductors(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
 	for (Conductor *c : all)
 	{
@@ -1132,10 +1145,10 @@ QStringList QetScriptApi::conductorUuids(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
 		list << c->uuid().toString();
 	return list;
@@ -1152,12 +1165,12 @@ QStringList QetScriptApi::conductorUuids(int folioIndex) const
 QStringList QetScriptApi::conductorEnds(int folioIndex, const QString &uuid) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
 	const QUuid wanted(uuid);
 	if (wanted.isNull()) return {};
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor))
 		if (c->uuid() == wanted)
 			return {describeEnd(c->terminal1), describeEnd(c->terminal2)};
@@ -1787,18 +1800,18 @@ QList<T *> sortedByPosition(const QSet<T *> &items)
 QList<IndependentTextItem *> QetScriptApi::sortedTexts(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_text_fields);
 }
 
 QList<QetShapeItem *> QetScriptApi::sortedShapes(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_shapes);
 }
 
@@ -1843,9 +1856,9 @@ int QetScriptApi::addText(int folioIndex, const QString &text, double x, double 
 		log(QStringLiteral("qet.addText: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	auto *item = new IndependentTextItem();
 	item->setPlainText(text);
@@ -1929,7 +1942,7 @@ bool QetScriptApi::deleteText(int folioIndex, int textIndex)
 	}
 	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("deleteText"));
 	if (!item) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_text_fields << item;
@@ -1969,7 +1982,7 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 		log(QStringLiteral("qet.addShape: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 
 	QetShapeItem::ShapeType shape_type;
@@ -1984,7 +1997,7 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(QPointF(x1, y1), QPointF(x2, y2), shape_type);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
 	return sortedShapes(folioIndex).indexOf(shape);
@@ -2116,7 +2129,7 @@ bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
 			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
 		return false;
 	}
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_shapes << list.at(shapeIndex);
@@ -2223,7 +2236,7 @@ int QetScriptApi::addPolygon(int folioIndex, const QVariantList &points, bool cl
 		log(QStringLiteral("qet.addPolygon: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (points.count() < 2) {
 		log(QStringLiteral("qet.addPolygon: at least 2 points are required, got %1")
@@ -2237,7 +2250,7 @@ int QetScriptApi::addPolygon(int folioIndex, const QVariantList &points, bool cl
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(poly.first(), poly.last(), QetShapeItem::Polygon);
 	shape->setPolygon(poly);
 	shape->setClosed(closed);
@@ -2321,7 +2334,7 @@ int QetScriptApi::addPath(int folioIndex, const QVariantList &nodes, bool closed
 		log(QStringLiteral("qet.addPath: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (nodes.count() < 2) {
 		log(QStringLiteral("qet.addPath: at least 2 nodes are required, got %1").arg(nodes.count()));
@@ -2338,7 +2351,7 @@ int QetScriptApi::addPath(int folioIndex, const QVariantList &nodes, bool closed
 		path_nodes << node;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *shape = new QetShapeItem(path_nodes.first().anchor, path_nodes.last().anchor,
 								   QetShapeItem::Path);
 	shape->setPathNodes(path_nodes);
@@ -2582,7 +2595,7 @@ bool QetScriptApi::deleteConductor(int folioIndex, const QString &elementUuid, i
 	}
 	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex, caller);
 	if (!conductor) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 
 	DiagramContent content;
 	content.m_conductors_to_move << conductor;
@@ -2603,10 +2616,10 @@ bool QetScriptApi::removeFolio(int folioIndex)
 		log(QStringLiteral("qet.removeFolio: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	m_project->undoStack()->push(new RemoveDiagramCommand(m_project, diagrams.at(folioIndex)));
-	return m_project->diagrams().count() == diagrams.count() - 1;
+	return m_project->folios().count() == diagrams.count() - 1;
 }
 
 namespace {
@@ -2640,7 +2653,7 @@ const QStringList &titleBlockFieldNames()
 QString QetScriptApi::folioProperty(int folioIndex, const QString &property) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 	Diagram *diagram = diagrams.at(folioIndex);
 	if (property == QLatin1String("template"))
@@ -2665,7 +2678,7 @@ bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, con
 		log(QStringLiteral("qet.setFolioProperty: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -2958,9 +2971,9 @@ bool QetScriptApi::sortTerminalStrip(int stripIndex)
 QList<QetGraphicsTableItem *> QetScriptApi::sortedTables(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_tables);
 }
 
@@ -3020,7 +3033,7 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
 		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
 		return -1;
@@ -3089,7 +3102,7 @@ int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &n
 	dialog.setAddNewTableToNewDiagram(false);
 
 	const QList<QetGraphicsTableItem *> before = sortedTables(folioIndex);
-	QetGraphicsTableFactory::create(diagrams.at(folioIndex), &dialog);
+	QetGraphicsTableFactory::create(built(diagrams.at(folioIndex)), &dialog);
 	const QList<QetGraphicsTableItem *> after = sortedTables(folioIndex);
 	for (QetGraphicsTableItem *t : after) {
 		if (!before.contains(t)) return after.indexOf(t);
@@ -3105,9 +3118,9 @@ bool QetScriptApi::deleteTable(int folioIndex, int tableIndex)
 		log(QStringLiteral("qet.deleteTable: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 
 	const QList<QetGraphicsTableItem *> all = sortedTables(folioIndex);
 	if (tableIndex < 0 || tableIndex >= all.count()) {
@@ -3381,7 +3394,7 @@ bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
 		log(QStringLiteral("qet.useConductorAutoNum: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	if (!name.isEmpty() && !m_project->conductorAutoNum().contains(name)) {
 		log(QStringLiteral("qet.useConductorAutoNum: no conductor auto-numbering named '%1'").arg(name));
@@ -3395,9 +3408,9 @@ bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
 QList<DiagramImageItem *> QetScriptApi::sortedImages(int folioIndex) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	return sortedByPosition(content.m_images);
 }
 
@@ -3491,7 +3504,7 @@ int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, do
 		log(QStringLiteral("qet.addImage: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 
 	// Same checks as a picture dropped on a folio: a regular file of at
@@ -3503,7 +3516,7 @@ int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, do
 		return -1;
 	}
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *item = new DiagramImageItem(QPixmap::fromImage(image));
 	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
 	return sortedImages(folioIndex).indexOf(item);
@@ -3619,7 +3632,7 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 			.arg(folioIndex).arg(list.count()).arg(imageIndex));
 		return false;
 	}
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	DiagramContent content;
 	content.m_images << list.at(imageIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
@@ -3675,7 +3688,7 @@ int QetScriptApi::addPdfPage(int folioIndex, const QString &pdfPath, int pageNum
 		log(QStringLiteral("qet.addPdfPage: project is read-only"));
 		return -1;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
 	if (dpi <= 0) {
 		log(QStringLiteral("qet.addPdfPage: dpi must be positive, got %1").arg(dpi));
@@ -3724,7 +3737,7 @@ int QetScriptApi::addPdfPage(int folioIndex, const QString &pdfPath, int pageNum
 	painter.drawImage(0, 0, rendered);
 	painter.end();
 
-	Diagram *diagram = diagrams.at(folioIndex);
+	Diagram *diagram = built(diagrams.at(folioIndex));
 	auto *item = new DiagramImageItem(QPixmap::fromImage(background));
 	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
 	return sortedImages(folioIndex).indexOf(item);
@@ -3948,7 +3961,7 @@ bool QetScriptApi::deleteElementText(int folioIndex, const QString &elementUuid,
 	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
 												QStringLiteral("deleteElementText"));
 	if (!t) return false;
-	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	Diagram *diagram = built(m_project->folios().at(folioIndex));
 	DiagramContent content;
 	content.m_element_texts << t;
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
@@ -4178,7 +4191,7 @@ QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringLis
 		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
 		return created;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (fromFolioIndex < 0 || fromFolioIndex >= diagrams.count()
 		|| toFolioIndex < 0 || toFolioIndex >= diagrams.count()) {
 		log(QStringLiteral("qet.%1: folio index out of range").arg(caller));
@@ -4188,8 +4201,8 @@ QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringLis
 		log(QStringLiteral("qet.%1: no elements named").arg(caller));
 		return created;
 	}
-	Diagram *source = diagrams.at(fromFolioIndex);
-	Diagram *target = diagrams.at(toFolioIndex);
+	Diagram *source = built(diagrams.at(fromFolioIndex));
+	Diagram *target = built(diagrams.at(toFolioIndex));
 
 	QList<Element *> chosen;
 	for (const QString &uuid : elementUuids) {
@@ -4273,7 +4286,7 @@ const QStringList &folioBorderNames()
 QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
 {
 	if (!m_project) return QString();
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 	const BorderProperties b = diagrams.at(folioIndex)->border_and_titleblock.exportBorder();
 	if (property == QLatin1String("columns"))         return QString::number(b.columns_count);
@@ -4412,7 +4425,7 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 			.arg(caller, property, folioBorderNames().join(QStringLiteral(", "))));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -4498,7 +4511,7 @@ QString QetScriptApi::conductorDefault(int folioIndex, const QString &property) 
 	if (folioIndex == -1) {
 		p = m_project->defaultConductorProperties();
 	} else {
-		const QList<Diagram *> diagrams = m_project->diagrams();
+		const QList<Diagram *> diagrams = m_project->folios();
 		if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 		p = diagrams.at(folioIndex)->defaultConductorProperties;
 	}
@@ -4524,7 +4537,7 @@ bool QetScriptApi::setConductorDefault(int folioIndex, const QString &property, 
 	}
 	Diagram *diagram = nullptr;
 	if (folioIndex != -1) {
-		const QList<Diagram *> diagrams = m_project->diagrams();
+		const QList<Diagram *> diagrams = m_project->folios();
 		if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 		diagram = diagrams.at(folioIndex);
 	}
@@ -4633,12 +4646,12 @@ QVariantMap QetScriptApi::terminalPosition(int folioIndex, const QString &elemen
 QVariantList QetScriptApi::conductorPath(int folioIndex, const QString &conductorUuid) const
 {
 	if (!m_project) return {};
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
 	const QUuid wanted(conductorUuid);
 	if (wanted.isNull()) return {};
 
-	DiagramContent content(diagrams.at(folioIndex), false);
+	DiagramContent content(built(diagrams.at(folioIndex)), false);
 	for (Conductor *c : content.conductors(DiagramContent::AnyConductor)) {
 		if (c->uuid() != wanted) continue;
 		QVariantList points;
@@ -4673,14 +4686,14 @@ int QetScriptApi::insertFolio(int position)
 		log(QStringLiteral("qet.insertFolio: project is read-only"));
 		return -1;
 	}
-	if (position < 0 || position > m_project->diagrams().count()) {
+	if (position < 0 || position > m_project->folios().count()) {
 		log(QStringLiteral("qet.insertFolio: position %1 is outside 0..%2")
-			.arg(position).arg(m_project->diagrams().count()));
+			.arg(position).arg(m_project->folios().count()));
 		return -1;
 	}
 	Diagram *diagram = m_project->addNewDiagram(position);
 	if (!diagram) return -1;
-	return m_project->diagrams().indexOf(diagram);
+	return m_project->folios().indexOf(diagram);
 }
 
 /**
@@ -4760,7 +4773,7 @@ int QetScriptApi::addFolio()
 	}
 	Diagram *diagram = m_project->addNewDiagram();
 	if (!diagram) return -1;
-	return m_project->diagrams().indexOf(diagram);
+	return m_project->folios().indexOf(diagram);
 }
 
 bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
@@ -4770,7 +4783,7 @@ bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
 		log(QStringLiteral("qet.setFolioTitle: project is read-only"));
 		return false;
 	}
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
 
@@ -5202,7 +5215,15 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 bool QetScriptApi::selectElement(const QString &elementUuid)
 {
 	if (!m_project) return false;
-	for (Diagram *diagram : m_project->diagrams()) {
+		//The folio the project database places it on, built; every folio
+		//when it places it on none
+	QList<Diagram *> folios;
+	const QSet<QUuid> on = m_project->dataBase()->folioUuidsOfElements({QUuid(elementUuid)});
+	for (Diagram *diagram : m_project->folios())
+		if (on.contains(diagram->uuid())) folios << built(diagram);
+	if (folios.isEmpty())
+		folios = m_project->diagrams();
+	for (Diagram *diagram : std::as_const(folios)) {
 		DiagramContent content(diagram, false);
 		for (Element *elmt : std::as_const(content.m_elements)) {
 			if (elmt->uuid().toString() == elementUuid) {
@@ -5218,7 +5239,7 @@ QStringList QetScriptApi::selectedElements(int folioIndex) const
 {
 	QStringList list;
 	if (!m_project) return list;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
 	for (QGraphicsItem *item : diagrams.at(folioIndex)->selectedItems()) {
 		if (item->type() == Element::Type) {
@@ -5232,7 +5253,7 @@ QStringList QetScriptApi::selectedElements(int folioIndex) const
 void QetScriptApi::deselectAll(int folioIndex)
 {
 	if (!m_project) return;
-	const QList<Diagram *> diagrams = m_project->diagrams();
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return;
 	diagrams.at(folioIndex)->clearSelection();
 }

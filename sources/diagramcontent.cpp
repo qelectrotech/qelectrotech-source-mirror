@@ -79,13 +79,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 					m_other_conductors << c;
 				}
 
-				if (m_potential_conductors.isEmpty()) {
-					m_potential_conductors << c;
-				} else {
-					if (!potentialIsManaged(c->relatedPotentialConductors(true).values())) {
-						m_potential_conductors << c;
-					}
-				}
+				m_potential_candidates << c;
 				break;
 			}
 			case DiagramImageItem::Type:       { m_images        << qgraphicsitem_cast<DiagramImageItem *>(item);       break;}
@@ -379,12 +373,14 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 		if(!m_selected_items.contains(qgi))
 			m_selected_items << qgi;
 	
-	for (Conductor *c : other.m_potential_conductors)
+	QList<Conductor *> potentials = potentialConductors();
+	for (Conductor *c : other.potentialConductors())
 	{
 	        QList<Conductor *> c_list = c->relatedPotentialConductors(true).values();
 		c_list << c;
 		if (!potentialIsManaged(c_list)) {
-			m_potential_conductors << c;
+			potentials << c;
+			m_potential_conductors = potentials;
 		}
 	}
 
@@ -402,15 +398,38 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 */
 bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
 {
+	const QList<Conductor *> potentials = potentialConductors();
 	bool b = false;
 	
 	for (Conductor *c : conductors)
 	{
-		if (m_potential_conductors.contains(c))
+		if (potentials.contains(c))
 			b = true;
 	}
 	
 	return b;
+}
+
+/**
+	@brief DiagramContent::potentialConductors
+	@return one wire of each potential of the wires of this content, worked
+	out the first time it is asked (see m_potential_conductors)
+*/
+QList<Conductor *> DiagramContent::potentialConductors() const
+{
+	if (!m_potential_conductors) {
+		QList<Conductor *> potentials;
+		for (Conductor *c : m_potential_candidates) {
+			bool managed = false;
+			if (!potentials.isEmpty())
+				for (Conductor *related : c->relatedPotentialConductors(true))
+					if (potentials.contains(related)) { managed = true; break; }
+			if (!managed)
+				potentials << c;
+		}
+		m_potential_conductors = potentials;
+	}
+	return *m_potential_conductors;
 }
 
 /**
