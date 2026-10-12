@@ -19,6 +19,8 @@
 #include "qetproject.h"
 #include "autobreakconductor.h"
 #include "conductorautonumerotation.h"
+#include "cable/cablepart.h"
+#include "cable/editcablecommand.h"
 #include "diagram.h"
 #include "itemgroups.h"
 #include "qetgraphicsitem/conductor.h"
@@ -116,6 +118,54 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 
 	if (!m_moved_content.count()) return(-1);
 
+		//Steps left over by a gesture which never reached its end are
+		//never worth keeping: whatever starts here starts from nothing.
+	qDeleteAll(m_extra_commands);
+	m_extra_commands.clear();
+
+		//The cable lines he marked together with the elements come along
+		//too: a selection of elements and lines is one thing to move.
+		//When the finger is on a line itself, that line carries its own
+		//kind -- every line of the selection is begun by the one being
+		//dragged (see CablePart) -- so there is nothing to collect here.
+	m_moved_cables.clear();
+	if (!qgraphicsitem_cast<CablePart *>(m_movement_driver))
+	{
+		for (QGraphicsItem *item : diagram->selectedItems())
+		{
+			auto *cable = qgraphicsitem_cast<CablePart *>(item);
+			if (!cable || !cable->cable()) continue;
+
+			cable->beginLineGesture();
+			m_moved_cables.append(cable);
+		}
+	}
+
+		//Where every one of them stands at this moment: calling the
+		//movement off puts them all back here, recorded rather than
+		//worked out from the movement, since every step of that movement
+		//was snapped to the grid on its way and need not land on the
+		//same place coming back.
+	m_start_positions.clear();
+	typedef DiagramContent dc;
+	for (auto &qgi : m_moved_content.items(dc::Elements
+										   | dc::TextFields
+										   | dc::Images
+										   | dc::Shapes
+										   | dc::ElementTextFields
+										   | dc::TextGroup))
+	{
+		m_start_positions.insert(qgi, qgi->pos());
+	}
+	for (auto *conductor : m_moved_content.m_conductors_to_move)
+	{
+		if (conductor && conductor->textItem()
+			&& conductor->textItem()->wasMovedByUser()) {
+			m_start_positions.insert(conductor->textItem(),
+									 conductor->textItem()->pos());
+		}
+	}
+
 	/* At this point, we've got all info to manage movement.
 	 * There is now a move in progress */
 	m_movement_running = true;
@@ -177,9 +227,25 @@ void ElementsMover::continueMovement(const QPointF &movement)
 		conductor->updatePath();
 	}
 
+		//The cable lines he marked together with the elements come along
+		//by the very same step: one gesture moves the whole selection
+		//instead of the lines standing still while the elements go, or
+		//the other way round. They are drawn where the gesture brings
+		//them, exactly as if the finger had been on the line itself, and
+		//settled once at the end (see endMovement).
+	for (CablePart *cable : std::as_const(m_moved_cables))
+	{
+		if (cable) cable->continueLineGesture(movement);
+	}
+
 	if (m_status_bar && m_movement_driver)
 	{
-		const auto point_{m_movement_driver->scenePos()};
+			//A line does not stand at a point of its own -- it is drawn
+			//straight on the sheet -- so its own end is what is worth
+			//showing rather than its origin, which never moves.
+		auto *cable = qgraphicsitem_cast<CablePart *>(m_movement_driver);
+		const auto point_{cable ? cable->firstPoint()
+								: m_movement_driver->scenePos()};
 		m_status_bar->showMessage(QString("x %1 : y %2").arg(QString::number(point_.x()), QString::number(point_.y())));
 	}
 }
@@ -194,6 +260,30 @@ void ElementsMover::endMovement()
 {
 		// A movement must be inited
 	if (!m_movement_running) return;
+
+		//The lines he marked together with the elements settle first:
+		//they may have to be asked something before they can rest, and
+		//their answer decides whether the whole gesture is written at
+		//all -- one of them calling it off calls off everything, the
+		//elements included, and there is nothing to undo because nothing
+		//at all has been written.
+	QList<QUndoCommand *> cable_steps;
+	for (CablePart *cable : std::as_const(m_moved_cables))
+	{
+		if (!cable) continue;
+		if (!cable->settleLineGesture(cable_steps))
+		{
+			qDeleteAll(cable_steps);
+			cable_steps.clear();
+			cancelMovement();
+			return;
+		}
+	}
+	for (CablePart *cable : std::as_const(m_moved_cables))
+	{
+		if (cable) cable->doneLineGesture();
+	}
+	m_moved_cables.clear();
 
 		//empty command to be used has parent of commands below
 	QUndoCommand *undo_object{new QUndoCommand()};
@@ -270,17 +360,117 @@ void ElementsMover::endMovement()
 		}
 	}
 
-		//Add undo_object if have child
-	if (undo_object->childCount())
-		m_diagram->undoStack().push(undo_object);
+		//Add undo_object if have child -- or, when the lines of this
+		//selection brought their own undo over (see addExtraCommands),
+		//one single step for the whole gesture: taking it back has to
+		//take all of it back, or half the selection would stay where
+		//the gesture left it.
+	QList<QUndoCommand *> steps = m_extra_commands;
+	m_extra_commands.clear();
+	steps.append(cable_steps);
+
+	if (steps.isEmpty())
+	{
+		if (undo_object->childCount())
+			m_diagram->undoStack().push(undo_object);
+		else
+			delete undo_object;
+	}
 	else
-		delete undo_object;
+	{
+		QString text = undo_object->text();
+		if (text.isEmpty())
+			text = steps.first()->text();
+
+		if (undo_object->childCount())
+			steps.prepend(undo_object);
+		else
+			delete undo_object;
+
+		if (steps.size() == 1)
+			m_diagram->undoStack().push(steps.takeFirst());
+		else
+			m_diagram->undoStack().push(new BatchCommand(steps, text));
+	}
 
 		// There is no movement in progress now
 	m_movement_running = false;
 	m_moved_content.clear();
+	m_moved_cables.clear();
+	m_start_positions.clear();
 
 		//Keep saying why a held group did not move
+	if (m_status_bar && !m_driver_held) {
+		m_status_bar->clearMessage();
+	}
+}
+
+/**
+	@brief ElementsMover::addExtraCommands
+	Take over undo steps of items this mover does not move itself --
+	the cable lines the user dragged himself -- so that the end of the
+	movement pushes them together with its own: one gesture, one step
+	in the history, whatever the selection is made of.
+
+	They are thrown away by cancelMovement() if the gesture is called
+	off, and pushed by endMovement() otherwise.
+	@param steps the commands, given away with them
+*/
+void ElementsMover::addExtraCommands(const QList<QUndoCommand *> &steps)
+{
+	for (QUndoCommand *step : steps)
+	{
+		if (step) m_extra_commands.append(step);
+	}
+}
+
+/**
+	@brief ElementsMover::cancelMovement
+	Call the whole movement off without writing anything: every element
+	goes back to the place the gesture found it, every line of the
+	selection puts itself back where it stood and the undo steps which
+	were waiting for this movement are thrown away.
+
+	One gesture is written as a whole or not at all, which is what a
+	"Annuler" answer to a question asked while the lines settle means.
+*/
+void ElementsMover::cancelMovement()
+{
+	if (!m_movement_running) return;
+
+		//Back to the places the gesture found them in: the recorded
+		//ones rather than the movement taken back, since every step of
+		//that movement was snapped to the grid on its way and coming
+		//back by the same amount need not land on the same place.
+	for (auto it = m_start_positions.constBegin();
+		 it != m_start_positions.constEnd(); ++it)
+	{
+		if (it.key()) it.key()->setPos(it.value());
+	}
+	m_start_positions.clear();
+
+	for (auto *conductor : m_moved_content.m_conductors_to_move)
+	{
+		if (conductor) conductor->updatePath();
+	}
+
+		//Every line of the selection puts itself back where it stood
+	for (CablePart *cable : std::as_const(m_moved_cables))
+	{
+		if (cable) cable->abortLineGesture();
+	}
+	m_moved_cables.clear();
+
+		//Steps handed over by a line he dragged himself go with
+		//everything else: nothing has been written, so there is nothing
+		//to take back.
+	qDeleteAll(m_extra_commands);
+	m_extra_commands.clear();
+
+	m_current_movement -= m_current_movement;
+	m_movement_running = false;
+	m_moved_content.clear();
+
 	if (m_status_bar && !m_driver_held) {
 		m_status_bar->clearMessage();
 	}

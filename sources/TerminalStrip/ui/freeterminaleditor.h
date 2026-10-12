@@ -24,6 +24,7 @@
 class RealTerminal;
 class FreeTerminalModel;
 class QTableView;
+class QSortFilterProxyModel;
 
 namespace Ui {
 	class FreeTerminalEditor;
@@ -57,5 +58,6 @@ class FreeTerminalEditor : public QWidget
 		Ui::FreeTerminalEditor *ui;
         QPointer <QETProject> m_project;
         FreeTerminalModel *m_model {nullptr};
+		QSortFilterProxyModel *m_proxy_model {nullptr};
 };
 #endif // FREETERMINALEDITOR_H

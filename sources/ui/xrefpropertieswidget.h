@@ -46,7 +46,9 @@ class XRefPropertiesWidget : public QWidget
 
 	private:
 	void buildUi();
+	void fillMissingTypes();
 	void saveProperties(int index);
+	void chooseXRefFont();
 
 	private slots:
 	void updateDisplay();
@@ -58,6 +60,10 @@ class XRefPropertiesWidget : public QWidget
 	Ui::XRefPropertiesWidget *ui;
 	QHash <QString, XRefProperties> m_properties;
 	int m_previous_type_index;
+		///The font picked for the type shown, as the settings describe it
+	QString m_current_font;
+		///Wording of the master label, as the .ui gives it
+	QString m_master_label_text;
 };
 
 #endif // XREFPROPERTIESWIDGET_H

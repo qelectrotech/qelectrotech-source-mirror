@@ -650,6 +650,74 @@ namespace autonum
 	}
 
 	/**
+		@brief resetFolioCounters
+		@param nc the rule to read
+		@return the same rule, with the parts whose counter belongs to a
+		single folio put back to the beginning that folio is numbered
+		from -- the initial value the rule carries for it -- while the
+		parts counting over the whole project are left alone
+	*/
+	NumerotationContext resetFolioCounters(const NumerotationContext &nc)
+	{
+		NumerotationContext out = nc;
+		for (int i = 0; i < out.size(); ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty()) continue;
+
+			const QString &type = parts.at(0);
+			if (type == QLatin1String("unitfolio")
+					|| type == QLatin1String("tenfolio")
+					|| type == QLatin1String("hundredfolio"))
+			{
+					//The beginning a folio is numbered from is the one
+					//written into the rule, never a hard 1: a counter
+					//starting at 5 starts every folio at 5.
+				const bool has_start = parts.size() > 3
+						&& !parts.at(3).isEmpty();
+				out.replaceValue(i, has_start ? parts.at(3)
+											  : QStringLiteral("1"));
+			}
+		}
+		return out;
+	}
+
+	/**
+		@brief resetContextCounters
+		@param nc the rule to read
+		@return the same rule, with every part which counts set back to
+		the value it started from
+	*/
+	NumerotationContext resetContextCounters(const NumerotationContext &nc)
+	{
+		NumerotationContext out = resetFolioCounters(nc);
+		for (int i = 0; i < out.size(); ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty()) continue;
+
+			const QString &type = parts.at(0);
+			if (type == QLatin1String("unit")
+					|| type == QLatin1String("ten")
+					|| type == QLatin1String("hundred"))
+			{
+				out.replaceValue(i, QStringLiteral("1"));
+			}
+			else if (type == QLatin1String("wrap"))
+			{
+					//A cyclic part walks over [0, modulus), so it goes
+					//back to 0 rather than to 1
+				out.replaceValue(i, QStringLiteral("0"));
+			}
+			else if (type == QLatin1String("alpha"))
+			{
+				out.replaceValue(i, QStringLiteral("a"));
+			}
+		}
+		return out;
+	}
+
+	/**
 		@brief numerotationContextToFormula
 		@param nc
 		@return the numerotation context, converted to formula

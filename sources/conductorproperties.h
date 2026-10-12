@@ -21,6 +21,7 @@
 #include "qet.h"
 #include <QColor>
 #include <QSettings>
+#include <QUuid>
 
 class QPainter;
 
@@ -96,6 +97,14 @@ class ConductorProperties
 		m_formula,
 		m_bus,
 		m_cable;
+
+			/// The cable of the project this conductor is a core of, null
+			/// when it belongs to no cable. The text shown in m_cable is
+			/// generated from the cable and never typed in: this reference
+			/// plus the slot below is all it takes to work it out again.
+		QUuid m_cable_uuid;
+			/// Which core of that cable this conductor shows, -1 when none
+		int m_cable_slot = -1;
 
 		int
 		text_size,
