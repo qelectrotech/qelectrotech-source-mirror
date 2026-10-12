@@ -127,6 +127,7 @@ class QETProject : public QObject
 		bool deferringFolios() const {return m_deferring_folios;}
 		int unloadedFolioCount() const;
 		QList<Diagram *> builtFolios() const;
+		QList<Diagram *> cableLabelFolios();
 		QList<Diagram *> foliosWithWiresNotReconnected();
 		void buildFolioToShow(Diagram *folio);
 		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
