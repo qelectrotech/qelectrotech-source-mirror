@@ -9276,6 +9276,10 @@ Donnez-leur une autre numérotation d&apos;abord.</numerusform>
         <source>Management</source>
         <translation>Management</translation>
     </message>
+    <message>
+        <source>Project QElectroTech (*.qet *.qetz)</source>
+        <translation>Projets QElectroTech (*.qet *.qetz)</translation>
+    </message>
 </context>
 <context>
     <name>ProjectDBModel</name>
@@ -9789,6 +9793,33 @@ Voulez-vous enregistrer les modifications ?</translation>
         <source>Project</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projet</translation>
+    </message>
+    <message>
+        <source>Zipped project QElectroTech (*.qetz)</source>
+        <comment>filetypes allowed when saving a project file</comment>
+        <translation>Projet QElectroTech compressé (*.qetz)</translation>
+    </message>
+    <message>
+        <source>Save a copy for an older QElectroTech</source>
+        <comment>dialog title</comment>
+        <translation>Enregistrer une copie pour une version antérieure de QElectroTech</translation>
+    </message>
+    <message>
+        <source>This project was opened from %1. It is saved as %2, beside it, in the zipped project format; %1 stays as it is.
+
+To write a file for a version of QElectroTech that cannot open %2, use File &gt; Save a copy for an older QElectroTech.</source>
+        <translation>Ce projet a été ouvert depuis %1. Il est enregistré sous %2, à côté, au format de projet compressé ; %1 reste tel quel.
+
+Pour écrire un fichier lisible par une version de QElectroTech qui ne peut pas ouvrir %2, utilisez Fichier &gt; Enregistrer une copie pour une version antérieure de QElectroTech.</translation>
+    </message>
+    <message>
+        <source>Save as a zipped project</source>
+        <comment>message box title</comment>
+        <translation>Enregistrement au format de projet compressé</translation>
+    </message>
+    <message>
+        <source>%1 already exists. Replace it?</source>
+        <translation>%1 existe déjà. Le remplacer ?</translation>
     </message>
 </context>
 <context>
@@ -11915,6 +11946,19 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <source>Error</source>
         <comment>message box title</comment>
         <translation>Erreur</translation>
+    </message>
+    <message>
+        <source>Save a copy for an older QElectroTech</source>
+        <translation>Enregistrer une copie pour une version antérieure de QElectroTech</translation>
+    </message>
+    <message>
+        <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
+        <comment>status bar tip</comment>
+        <translation>Enregistre une copie du projet courant au format .qet, que savent ouvrir les versions de QElectroTech qui ne peuvent pas ouvrir un .qetz</translation>
+    </message>
+    <message>
+        <source>QElectroTech project(*.qet *.qetz);;XML Files (*.xml);;All files (*)</source>
+        <translation>Projets QElectroTech (*.qet *.qetz);;Fichiers XML (*.xml);;Tous les fichiers (*)</translation>
     </message>
 </context>
 <context>
@@ -15425,6 +15469,10 @@ Pour l&apos;activer : Configurer QElectroTech &gt; Général &gt; Projets, ou d�
         <location filename="../sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp" line="59"/>
         <source>Ungroup a set of terminals</source>
         <translation>Dégrouper un ensemble de bornes</translation>
+    </message>
+    <message>
+        <source>Change the information of the element</source>
+        <translation>Modifier les informations de l&apos;élément</translation>
     </message>
 </context>
 <context>
