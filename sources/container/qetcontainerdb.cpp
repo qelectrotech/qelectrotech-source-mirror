@@ -468,6 +468,36 @@ QStringList keys(const QList<QDomElement> &items, const QString &prefix)
 namespace {
 	//@p database opened read only in @p db, its tables checked to be plain
 	//tables: a file is untrusted
+	//Every table of @p db written again without its keys and indexes, in
+	//the order of its rows, and the file compacted: the file a .qetz holds
+	//is read whole, its lookups indexed once read (openDatabase(),
+	//projectDataBase::fillFromIndex()), and keys and indexes of text uuids
+	//were half of it (QETZ-DB-TRUTH-PLAN.md D3b)
+bool plainTables(sqlite3 *db)
+{
+	QStringList tables;
+	{
+		sqlite3_stmt *list = nullptr;
+		sqlite3_prepare_v2(db, "SELECT name FROM main.sqlite_master WHERE type = 'table' "
+							   "AND name NOT LIKE 'sqlite_%' ORDER BY name", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			tables << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)));
+		sqlite3_finalize(list);
+	}
+	auto run = [db](const QString &sql) {
+		return sqlite3_exec(db, sql.toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
+	};
+	bool ok = run(QStringLiteral("BEGIN"));
+	for (const QString &table : std::as_const(tables)) {
+		const QString plain = table + QStringLiteral("__plain");
+		ok = ok && run(QStringLiteral("CREATE TABLE \"%1\" AS SELECT * FROM \"%2\" ORDER BY rowid").arg(plain, table))
+				&& run(QStringLiteral("DROP TABLE \"%1\"").arg(table))
+				&& run(QStringLiteral("ALTER TABLE \"%1\" RENAME TO \"%2\"").arg(plain, table));
+	}
+	ok = ok && run(QStringLiteral("COMMIT"));
+	return ok && run(QStringLiteral("VACUUM"));
+}
+
 bool openDatabase(Database &db, const QByteArray &database, QString *error)
 {
 	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK) {
@@ -477,15 +507,15 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 	unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
 	if (!copy) { setError(error, QStringLiteral("out of memory")); return false; }
 	memcpy(copy, database.constData(), size_t(database.size()));
+		//A copy of its own, writable: its lookups are indexed below
 	if (sqlite3_deserialize(db.m_db, "main", copy, database.size(), database.size(),
-							SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_READONLY) != SQLITE_OK) {
+							SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE) != SQLITE_OK) {
 		setError(error, QStringLiteral("the project database cannot be read"));
 		return false;
 	}
 		//A file is untrusted: nothing in its schema may run, and every name
 		//read must be a plain table.
 	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
-	db.exec(QStringLiteral("PRAGMA query_only = ON"));
 		//Format 3 names the document's tables doc_<name>, format 2 not
 	{
 		Statement doc(db, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'doc_meta'"));
@@ -501,6 +531,17 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 			return false;
 		}
 	}
+		//What the folios are read by: a file holds no index (plainTables())
+	for (const char *index : {"folio(id)", "folio_property(folio_id)", "element(key)", "element(folio_id)",
+							  "element_info(element_key)", "link(element_key)", "conductor(key)", "meta(key)"}) {
+		const QString on = QString::fromLatin1(index);
+		const QString name = QStringLiteral("qetz_read_") + QString(on).replace(QLatin1Char('('), QLatin1Char('_')).remove(QLatin1Char(')'));
+		if (!db.exec(QStringLiteral("CREATE INDEX IF NOT EXISTS %1 ON %2").arg(name, on))) {
+			setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
+			return false;
+		}
+	}
+	db.exec(QStringLiteral("PRAGMA query_only = ON"));
 	return true;
 }
 
@@ -864,6 +905,13 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 
 	if (!ok || !db.exec(QStringLiteral("COMMIT"))) {
 		setError(error, QStringLiteral("cannot fill the project database: %1").arg(db.error()));
+		return {};
+	}
+	if (!kept_from.isEmpty()) {
+		sqlite3_exec(db.m_db, "DETACH DATABASE old", nullptr, nullptr, nullptr);
+	}
+	if (!plainTables(db.m_db)) {
+		setError(error, QStringLiteral("cannot write the project database: %1").arg(db.error()));
 		return {};
 	}
 
