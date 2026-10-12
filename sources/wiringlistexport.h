@@ -1,4 +1,4 @@
-﻿#ifndef WIRINGLISTEXPORT_H
+#ifndef WIRINGLISTEXPORT_H
 #define WIRINGLISTEXPORT_H
 
 #include <QObject>

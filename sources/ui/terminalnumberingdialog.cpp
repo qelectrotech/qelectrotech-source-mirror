@@ -1,4 +1,4 @@
-﻿#include "terminalnumberingdialog.h"
+#include "terminalnumberingdialog.h"
 #include "ui_terminalnumberingdialog.h"
 #include "../qet.h"
 #include "../qetproject.h"

@@ -1,4 +1,4 @@
-﻿#include "wiringlistexport.h"
+#include "wiringlistexport.h"
 #include "qetproject.h"
 #include "diagram.h"
 #include "dataBase/projectdatabase.h"
