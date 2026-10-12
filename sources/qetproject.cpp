@@ -560,6 +560,34 @@ QList<Diagram *> QETProject::folios() const
 }
 
 /**
+	@brief QETProject::cableLabelFolios
+	@return the folios CableManager::refreshLabels() works on, built: every
+	folio when the project has cables (a core is followed through folio
+	reports to any folio); without cables, the folios built and those not
+	built yet (QET_LAZY_FOLIOS) holding a wire that still refers to a
+	cable -- the only wires the pass changes then, taking the reference
+	away -- found in the XML kept for them
+*/
+QList<Diagram *> QETProject::cableLabelFolios()
+{
+	if (!cables().isEmpty()) {
+		return diagrams();
+	}
+	QList<Diagram *> referring;
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (d->isLoaded()) continue;
+		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
+															 QStringLiteral("conductor")))
+			if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
+				referring << d;
+				break;
+			}
+	}
+	buildFolios(referring);
+	return builtFolios();
+}
+
+/**
 	@brief QETProject::builtFolios
 	@return the folios of this project whose items are built: all of them,
 	but for a project opened with QET_LAZY_FOLIOS
