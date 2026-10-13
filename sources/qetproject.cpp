@@ -30,6 +30,8 @@
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/ViewItem/projectdbmodel.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
 #include "qetresult.h"
@@ -320,7 +322,20 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
+		//What changes the saved items of folios not built (QET_LAZY_FOLIOS):
+		//a folio's position, number or the folio total in their texts,
+		//the report and cross-reference settings, a symbol's definition.
+		//A folio not built is then built to be saved (writesKeptFolios())
+	connect(this, &QETProject::diagramAdded, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::diagramRemoved, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::projectDiagramsOrderChanged, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::reportPropertiesChanged, this, &QETProject::markKeptFoliosStale);
+	connect(this, &QETProject::XRefPropertiesChanged, this, &QETProject::markKeptFoliosStale);
+
 	m_undo_stack = new QUndoStack(this);
+		//Folios not built are saved as read until something is edited
+		//(m_edited_since_open, toXml())
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, [this]() {m_edited_since_open = true;});
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 		//What counts as a change for writeBackup(): the undo stack moving,
@@ -332,6 +347,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, &QETProject::markKeptFoliosStale);
 	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
@@ -421,6 +437,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
+		//Each folio's text is kept while it is not built (readDiagramsXml())
+	m_opened_content = content;
 	QDomDocument xml_project;
 	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
 	// whitespace -- e.g. a title-block custom variable deliberately set to
@@ -461,6 +479,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
+	m_opened_content.clear();
 
 	const qint64 total_ms = load_timer.elapsed();
 	qInfo().nospace().noquote()
@@ -494,8 +513,12 @@ void QETProject::refresh()
 		dlgWaiting->show();
 	}
 
-	for(const auto &diagram : diagrams())
+		//A folio not built yet is refreshed when it is (folioLoaded())
+	for(const auto &diagram : folios())
 	{
+		if (!diagram->isLoaded()) {
+			continue;
+		}
 		if(dlgWaiting)
 		{
 			dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
@@ -520,7 +543,407 @@ QETProject::ProjectState QETProject::state() const
 */
 QList<Diagram *> QETProject::diagrams() const
 {
+		//Every caller of diagrams() expects every folio built: those that
+		//do not are moved to folios() one by one (LAZY-FOLIO-PLAN.md)
+	loadFolios();
 	return(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::folios
+	@return the folios of this project, whether their items are built yet
+	or not (a project opened with QET_LAZY_FOLIOS); see Diagram::isLoaded()
+*/
+QList<Diagram *> QETProject::folios() const
+{
+	return(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::cableLabelFolios
+	@return the folios CableManager::refreshLabels() works on, built: every
+	folio when the project has cables (a core is followed through folio
+	reports to any folio); without cables, the folios built and those not
+	built yet (QET_LAZY_FOLIOS) holding a wire that still refers to a
+	cable -- the only wires the pass changes then, taking the reference
+	away -- found in the XML kept for them
+*/
+QList<Diagram *> QETProject::cableLabelFolios()
+{
+	if (!cables().isEmpty()) {
+		return diagrams();
+	}
+	QList<Diagram *> referring;
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (d->isLoaded()) continue;
+		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
+															 QStringLiteral("conductor")))
+			if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
+				referring << d;
+				break;
+			}
+	}
+	buildFolios(referring);
+	return builtFolios();
+}
+
+/**
+	@brief QETProject::builtFolios
+	@return the folios of this project whose items are built: all of them,
+	but for a project opened with QET_LAZY_FOLIOS
+*/
+QList<Diagram *> QETProject::builtFolios() const
+{
+	QList<Diagram *> built;
+	for (Diagram *d : m_diagrams_list)
+		if (d->isLoaded()) built << d;
+	return built;
+}
+
+/**
+	@brief QETProject::unloadedFolioCount
+	@return how many folios of this project wait to be built
+*/
+int QETProject::unloadedFolioCount() const
+{
+	int n = 0;
+	for (const Diagram *d : m_diagrams_list)
+		if (!d->isLoaded()) ++n;
+	return n;
+}
+
+/**
+	@brief QETProject::foliosWithWiresNotReconnected
+	@return the folios that left out a wire of the file, an end of it not
+	being found (Diagram::wiresNotReconnected()). A folio not built yet is
+	built only when the database, filled from the document, says it has
+	such a wire: the others are not built to find out.
+*/
+QList<Diagram *> QETProject::foliosWithWiresNotReconnected()
+{
+	const QSet<QUuid> unjoined = m_data_base.foliosWithUnjoinedWires();
+	QList<Diagram *> found;
+	for (Diagram *diagram : std::as_const(m_diagrams_list))
+	{
+		if (!diagram->isLoaded()) {
+			if (!unjoined.contains(diagram->uuid())) {
+				continue;
+			}
+			diagram->ensureLoaded();
+		}
+		if (!diagram->wiresNotReconnected().isEmpty()) {
+			found << diagram;
+		}
+	}
+	return found;
+}
+
+/**
+	@brief QETProject::loadFolios
+	Build every folio of this project still waiting to be built.
+	QET_LAZY_FOLIOS_TRACE=1 says when it happens, to find the callers that
+	still need every folio.
+*/
+void QETProject::loadFolios() const
+{
+	const int waiting = unloadedFolioCount();
+	if (!waiting) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << waiting << "folios built for a caller of diagrams()";
+	}
+	buildFolios(m_diagrams_list);
+}
+
+/**
+	@brief QETProject::buildFolios
+	Build those of @p folios still waiting, as opening builds them: all
+	first, then what opening does after building (the cross-references of
+	each look for symbols on the others), with the project in the state
+	opening has, which keeps the texts where the file put them (a text
+	aligned right is not moved when its content is set).
+*/
+void QETProject::buildFolios(const QList<Diagram *> &folios) const
+{
+	auto *self = const_cast<QETProject *>(this);
+	const ProjectState state = m_state;
+	self->m_state = ProjectParsingRunning;
+	QList<Diagram *> built;
+	for (Diagram *d : folios)
+		if (d->buildDeferred()) built << d;
+	for (Diagram *d : std::as_const(built))
+		self->folioLoaded(d);
+		//A symbol built before still keeping the links it was saved with
+		//(a partner on a folio not built): its initLink() links those just
+		//built, puts its partners back in their saved order and drops what
+		//is done
+	for (Diagram *d : builtFolios())
+		if (!built.contains(d))
+			for (Element *elmt : d->elements())
+				if (elmt->keepsSavedLinks())
+					elmt->initLink(self);
+		//Likewise a table whose previous table was on a folio not built
+	for (Diagram *d : builtFolios())
+		for (QGraphicsItem *item : d->items())
+			if (item->type() == QetGraphicsTableItem::Type)
+				if (auto table = static_cast<QetGraphicsTableItem *>(item);
+						table->hasPendingLink())
+					table->initLink();
+		//The tables just built were filled with nothing, as opening builds
+		//them before the database is filled (ProjectDBModel::fillValue()):
+		//fill them now, as opening does then
+	QSet<ProjectDBModel *> models;
+	for (Diagram *d : std::as_const(built))
+		for (QGraphicsItem *item : d->items())
+			if (item->type() == QetGraphicsTableItem::Type)
+				if (auto model = qobject_cast<ProjectDBModel *>(
+						static_cast<QetGraphicsTableItem *>(item)->model()))
+					models.insert(model);
+	for (ProjectDBModel *model : std::as_const(models))
+		model->folioBuilt();
+	self->m_state = state;
+}
+
+/**
+	@brief QETProject::buildFoliosHolding
+	Build the folios not built yet (QET_LAZY_FOLIOS) holding a symbol of
+	one of the kinds @p kinds -- if @p free_only, one which may be linked
+	to nothing once built: none of the partners it was saved linked to is
+	in the project. What a search for such symbols must build to find
+	every one (ElementProvider), and no more.
+*/
+void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
+{
+	if (!unloadedFolioCount()) {
+		return;
+	}
+	QSet<QUuid> unbuilt;
+	QSet<QUuid> placed;
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d->isLoaded()) {
+			unbuilt.insert(d->uuid());
+		} else if (free_only) {
+			for (Element *element : d->elements())
+				placed.insert(element->uuid());
+		}
+	}
+		//A symbol the database has no row for is one building leaves out
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	if (free_only) {
+		for (auto it = types.cbegin() ; it != types.cend() ; ++it)
+			placed.insert(it.key());
+	}
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element")))
+		{
+			const auto type = types.constFind(QUuid(element_xml.attribute(QStringLiteral("uuid"))));
+			if (type == types.constEnd()
+					|| !(kinds & ElementData::typeFromString(*type))) {
+				continue;
+			}
+			bool linked = false;
+			if (free_only) {
+				for (const QDomElement &link :
+					 QET::findInDomElement(element_xml,
+										   QStringLiteral("links_uuids"),
+										   QStringLiteral("link_uuid"))) {
+					if (placed.contains(QUuid(link.attribute(QStringLiteral("uuid"))))) {
+						linked = true;
+						break;
+					}
+				}
+			}
+			if (!linked) {
+				to_build << d;
+				break;
+			}
+		}
+	}
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for a search of"
+							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::buildFoliosHoldingSymbols
+	Build the folios not built yet (QET_LAZY_FOLIOS) holding one of the
+	symbols @p symbols, found in the XML kept for them: what needs those
+	symbols while the project is being read, before the database knows
+	where they are (a terminal strip's terminals)
+*/
+void QETProject::buildFoliosHoldingSymbols(const QSet<QUuid> &symbols)
+{
+	if (symbols.isEmpty() || !unloadedFolioCount()) {
+		return;
+	}
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element"))) {
+			if (symbols.contains(QUuid(element_xml.attribute(QStringLiteral("uuid"))))) {
+				to_build << d;
+				break;
+			}
+		}
+	}
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for the symbols asked for by uuid";
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::symbolsOnUnbuiltFolios
+	@return the uuids of the symbols on the folios not built yet
+	(QET_LAZY_FOLIOS) that building them places
+*/
+QSet<QUuid> QETProject::symbolsOnUnbuiltFolios() const
+{
+	QSet<QUuid> unbuilt;
+	for (Diagram *d : m_diagrams_list)
+		if (!d->isLoaded()) unbuilt.insert(d->uuid());
+	QSet<QUuid> symbols;
+	if (unbuilt.isEmpty()) {
+		return symbols;
+	}
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	for (auto it = types.cbegin() ; it != types.cend() ; ++it)
+		symbols.insert(it.key());
+	return symbols;
+}
+
+/**
+	@brief QETProject::tableChainFolios
+	@return the folios holding a table chained to one on @p folio, before
+	or after it, read from the folios built and the XML kept for the
+	others: a chain shares its model and its columns' widths
+*/
+QSet<Diagram *> QETProject::tableChainFolios(Diagram *folio) const
+{
+	QHash<QUuid, Diagram *> folio_of;
+	QHash<QUuid, QUuid> previous_of;
+	for (Diagram *d : m_diagrams_list)
+	{
+		if (d->isLoaded()) {
+			for (QGraphicsItem *item : d->items()) {
+				if (item->type() == QetGraphicsTableItem::Type) {
+					auto table = static_cast<QetGraphicsTableItem *>(item);
+					folio_of.insert(table->uuid(), d);
+					previous_of.insert(table->uuid(), table->previousTableUuid());
+				}
+			}
+			continue;
+		}
+		const QDomNodeList tables = d->deferredXml().elementsByTagName(
+					QetGraphicsTableItem::xmlTagName());
+		for (int i = 0 ; i < tables.size() ; ++i) {
+			const QDomElement table = tables.at(i).toElement();
+			const QUuid uuid(table.attribute(QStringLiteral("uuid")));
+			folio_of.insert(uuid, d);
+			const QDomElement previous = table.firstChildElement(QStringLiteral("previous_table"));
+			previous_of.insert(uuid, QUuid(previous.attribute(QStringLiteral("uuid"))));
+		}
+	}
+		//Every table's chain head, then the folios of the heads @p folio has
+	auto head = [&previous_of](QUuid uuid) {
+		QSet<QUuid> seen;
+		while (!previous_of.value(uuid).isNull() && !seen.contains(uuid)) {
+			seen.insert(uuid);
+			uuid = previous_of.value(uuid);
+		}
+		return uuid;
+	};
+	QSet<QUuid> heads;
+	for (auto it = folio_of.cbegin() ; it != folio_of.cend() ; ++it)
+		if (it.value() == folio)
+			heads.insert(head(it.key()));
+	QSet<Diagram *> folios;
+	if (heads.isEmpty()) {
+		return folios;
+	}
+	for (auto it = folio_of.cbegin() ; it != folio_of.cend() ; ++it)
+		if (heads.contains(head(it.key())))
+			folios.insert(it.value());
+	return folios;
+}
+
+/**
+	@brief QETProject::buildFolioToShow
+	Build @p folio to show it, and the folios holding the partners its
+	symbols were saved linked to: a cross-reference or a folio report
+	draws what it knows of its partner, which must be built for that.
+	Their own partners on folios further away wait until those are built.
+*/
+void QETProject::buildFolioToShow(Diagram *folio)
+{
+		//A folio built earlier as another's partner may still have partners
+		//of its own waiting: it is looked at again
+	if (!folio || !unloadedFolioCount()) {
+		return;
+	}
+		//A table chain is built at once: its model is in its first table
+	QSet<Diagram *> chained = tableChainFolios(folio);
+	chained.insert(folio);
+	QList<Diagram *> first;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (chained.contains(d))
+			first << d;
+	buildFolios(first);
+	QSet<QUuid> partners;
+	for (Element *elmt : folio->elements())
+		partners.unite(elmt->pendingLinks());
+	const QSet<QUuid> folio_uuids = partners.isEmpty()
+			? QSet<QUuid>()
+			: m_data_base.folioUuidsOfElements(partners);
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (!d->isLoaded() && folio_uuids.contains(d->uuid()))
+			to_build << d;
+	if (to_build.isEmpty()) {
+		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for the partners of folio"
+							 << folio->folioIndex() + 1;
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::folioLoaded
+	@p folio's items were just built, after the project was opened: do for
+	them what opening does for every folio's.
+*/
+void QETProject::folioLoaded(Diagram *folio)
+{
+	linkElementsToElementAutoNums(folio);
+	folio->refreshContents();
 }
 
 /**
@@ -1240,6 +1663,7 @@ QString QETProject::elementAutoNumNameClash(const QString &name,
 */
 QVector<Element *> QETProject::elementsUsingElementAutoNum(const QString &title) const
 {
+	loadFolios(); //walks the folios' symbols
 	QVector<Element *> list;
 	const QUuid id = elementAutoNumId(title);
 	if (id.isNull()) {
@@ -1278,39 +1702,145 @@ QVector<Element *> QETProject::elementsUsingElementAutoNum(const QString &title)
 */
 void QETProject::linkElementsToElementAutoNums()
 {
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (d) linkElementsToElementAutoNums(d);
+	}
+}
+
+/**
+	@brief QETProject::linkElementsToElementAutoNums
+	linkElementsToElementAutoNums() for the elements of @p folio alone
+*/
+void QETProject::linkElementsToElementAutoNums(Diagram *folio)
+{
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	{
+		const auto items = folio->items();
+		for (QGraphicsItem *it : items) {
+			auto *el = qgraphicsitem_cast<Element *>(it);
+			if (!el) continue;
+			if (const auto id = elementAutoNumIdToLink(el->elementInformations(),
+													   titles_by_formula)) {
+				el->setFormulaSchemeId(*id);
+			}
+		}
+	}
+}
+
+/**
+	@brief QETProject::elementAutoNumTitlesByFormula
+	@return the titles of the element numbering schemes, by their formula
+*/
+QHash<QString, QStringList> QETProject::elementAutoNumTitlesByFormula() const
+{
 	QHash<QString, QStringList> titles_by_formula;
 	for (auto it = m_element_autonum.constBegin();
 		 it != m_element_autonum.constEnd(); ++it) {
 		titles_by_formula[autonum::numerotationContextToFormula(it.value())] << it.key();
 	}
+	return titles_by_formula;
+}
 
-	for (Diagram *d : std::as_const(m_diagrams_list)) {
-		if (!d) continue;
-		const auto items = d->items();
-		for (QGraphicsItem *it : items) {
-			auto *el = qgraphicsitem_cast<Element *>(it);
+/**
+	@brief QETProject::elementAutoNumIdToLink
+	The rule of linkElementsToElementAutoNums() for one element, whose
+	information is @p information.
+	@return the scheme id the element must be given, or nothing when the
+	one it has is kept
+*/
+std::optional<QUuid> QETProject::elementAutoNumIdToLink(
+		const DiagramContext &information,
+		const QHash<QString, QStringList> &titles_by_formula) const
+{
+	const QString formula = information.value(QETInformation::ELMT_FORMULA).toString();
+	const bool has_id = information.contains(QETInformation::ELMT_FORMULA_ID);
+	const QUuid id(information.value(QETInformation::ELMT_FORMULA_ID).toString());
+
+	if (formula.isEmpty()) {
+		if (has_id) return QUuid();
+		return std::nullopt;
+	}
+	if (!elementAutoNumTitle(id).isEmpty()) {
+		return std::nullopt;
+	}
+	if (!has_id && !m_legacy_element_autonums) {
+		return std::nullopt; //A formula typed by hand
+	}
+	const QStringList matches = titles_by_formula.value(formula);
+	return matches.size() == 1 ? elementAutoNumId(matches.first()) : QUuid();
+}
+
+/**
+	@brief QETProject::symbolNumbering
+	@return the numbering of every symbol placed on the folios, read from
+	the symbol on a folio built and, on a folio not built yet
+	(QET_LAZY_FOLIOS), from what building it would give: its information
+	in the project database's store, the scheme it would be linked to,
+	its sequential numbers and its kind as the file has them.
+*/
+QList<QETProject::SymbolNumbering> QETProject::symbolNumbering() const
+{
+	QList<SymbolNumbering> list;
+	QSet<QUuid> unbuilt;
+	for (Diagram *d : m_diagrams_list)
+	{
+		if (!d->isLoaded()) {
+			unbuilt.insert(d->uuid());
+			continue;
+		}
+		for (QGraphicsItem *item : d->items()) {
+			auto *el = qgraphicsitem_cast<Element *>(item);
 			if (!el) continue;
 			const DiagramContext &info = el->elementInformations();
-			const QString formula = info.value(QETInformation::ELMT_FORMULA).toString();
-			const bool has_id = info.contains(QETInformation::ELMT_FORMULA_ID);
-			const QUuid id(info.value(QETInformation::ELMT_FORMULA_ID).toString());
-
-			if (formula.isEmpty()) {
-				if (has_id) el->setFormulaSchemeId(QUuid());
-				continue;
-			}
-			if (!elementAutoNumTitle(id).isEmpty()) {
-				continue;
-			}
-			if (!has_id && !m_legacy_element_autonums) {
-				continue; //A formula typed by hand
-			}
-			const QStringList matches = titles_by_formula.value(formula);
-			el->setFormulaSchemeId(matches.size() == 1
-								   ? elementAutoNumId(matches.first())
-								   : QUuid());
+			SymbolNumbering symbol;
+			symbol.element = el;
+			symbol.label = info.value(QETInformation::ELMT_LABEL).toString();
+			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
+			symbol.scheme = QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
+			symbol.sequence = el->sequenceStruct();
+			symbol.numbered = el->linkType() != Element::Slave
+					&& !(el->linkType() & Element::AllReport);
+			list << symbol;
 		}
 	}
+	if (unbuilt.isEmpty()) {
+		return list;
+	}
+
+		//A symbol the database has no row for is one building leaves out
+		//(its definition is missing)
+	const QHash<QUuid, QString> types = m_data_base.elementTypesOnFolios(unbuilt);
+	const QHash<QString, QStringList> titles_by_formula = elementAutoNumTitlesByFormula();
+	for (Diagram *d : m_diagrams_list)
+	{
+		if (d->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(d->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element")))
+		{
+			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+			const auto type = types.constFind(uuid);
+			if (type == types.constEnd()) {
+				continue;
+			}
+			const DiagramContext info = m_data_base.elementInformation(uuid);
+			SymbolNumbering symbol;
+			symbol.label = info.value(QETInformation::ELMT_LABEL).toString();
+			symbol.formula = info.value(QETInformation::ELMT_FORMULA).toString();
+			const auto linked = elementAutoNumIdToLink(info, titles_by_formula);
+			symbol.scheme = linked ? *linked
+								   : QUuid(info.value(QETInformation::ELMT_FORMULA_ID).toString());
+			symbol.sequence.fromXml(element_xml.firstChildElement(QStringLiteral("sequentialNumbers")));
+			const ElementData::Type kind = ElementData::typeFromString(*type);
+			symbol.numbered = kind != ElementData::Slave
+					&& !(kind & ElementData::AllReport);
+			list << symbol;
+		}
+	}
+	return list;
 }
 
 /**
@@ -1451,6 +1981,7 @@ NumerotationContext QETProject::cableAutoNum(const QString &key) const
 	@param to - last folio index to apply freeze
 */
 void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
+	loadFolios(); //walks the folios' wires
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeConductors(freeze);
 	}
@@ -1494,6 +2025,7 @@ void QETProject::setFreezeNewConductors(bool set) {
 	@param to - last folio index to apply freeze
 */
 void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
+	loadFolios(); //walks the folios' symbols
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeElements(freeze);
 	}
@@ -1571,7 +2103,8 @@ void QETProject::setWireHops(WireHops::Mode mode)
 		return;
 	}
 	m_wire_hops = mode;
-	for (Diagram *diagram : diagrams()) {
+		//A folio not built yet reads the mode when its wires are drawn
+	for (Diagram *diagram : folios()) {
 		diagram->update();
 	}
 }
@@ -1598,7 +2131,8 @@ void QETProject::setUprightSymbolTexts(bool upright)
 		return;
 	}
 	m_upright_symbol_texts = upright;
-	for (Diagram *diagram : diagrams()) {
+		//A folio not built yet reads the setting when its symbols are drawn
+	for (Diagram *diagram : folios()) {
 		for (QGraphicsItem *item : diagram->items()) {
 			if (Element *element = qgraphicsitem_cast<Element *>(item)) {
 				element->updateSymbolPictures();
@@ -1703,8 +2237,74 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 	@brief QETProject::toXml
 	@return un document XML representant le projet
 */
-QDomDocument QETProject::toXml()
+QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios)
 {
+		//With @p kept_folios, a folio not built (QET_LAZY_FOLIOS) is
+		//written as a placeholder <diagram qet_kept_folio="n"/> and its text
+		//as read from the file goes in kept_folios, for
+		//spliceKeptFolios() -- when building it would write that same
+		//text: the file is this version's and its database rows came from
+		//it (m_kept_folios_trusted), and nothing a folio's saved items are
+		//made from changed since: the folios' order and number, the
+		//project's properties, report and cross-reference settings, a
+		//symbol's definition (m_kept_folios_stale). Otherwise every folio is
+		//built and written from its items. A folio whose own data changed
+		//is built with the folios its links reach, as when it is shown:
+		//their saved texts can show its data (a report, its partner's
+		//folio label).
+	const bool keep = kept_folios && unloadedFolioCount()
+			&& m_kept_folios_trusted && !m_kept_folios_stale;
+	if (keep) {
+		for (Diagram *diagram : std::as_const(m_diagrams_list))
+			if (diagram->headerChanged())
+				buildFolioToShow(diagram);
+			//A table filled from the database saves the size its rows
+			//give it, which any edit can change
+		if (m_edited_since_open)
+			for (Diagram *diagram : std::as_const(m_diagrams_list))
+				if (!diagram->isLoaded() && !diagram->deferredXml().elementsByTagName(
+						QetGraphicsTableItem::xmlTagName()).isEmpty())
+					buildFolioToShow(diagram);
+			//A built folio is written from its items, which need their
+			//partners: a symbol saves its links, a report the position of
+			//its partner. Build the folios of every partner still waiting,
+			//and of every table chain, until none is
+		for (int built = -1 ; built != unloadedFolioCount() ; )
+		{
+			built = unloadedFolioCount();
+			QSet<QUuid> waiting;
+			QSet<Diagram *> chained;
+			for (Diagram *diagram : builtFolios()) {
+				for (Element *element : diagram->elements())
+					waiting.unite(element->pendingLinks());
+				for (Diagram *other : tableChainFolios(diagram))
+					if (!other->isLoaded()) chained.insert(other);
+			}
+			buildFoliosHoldingSymbols(waiting);
+			QList<Diagram *> chain_list;
+			for (Diagram *diagram : std::as_const(m_diagrams_list))
+				if (chained.contains(diagram) && !diagram->isLoaded())
+					chain_list << diagram;
+			buildFolios(chain_list);
+		}
+	} else {
+		loadFolios();
+	}
+		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
+		//information, folio title blocks and wire properties
+		//(DB-ACCESSORS-PLAN.md) agree with every placed symbol, folio and
+		//wire, at each save. A test and debugging aid; it changes nothing.
+	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1) {
+		const QStringList mismatches = m_data_base.elementInformationMismatches();
+		qWarning().noquote() << "element information store:" << mismatches.size() << "differ"
+							 << mismatches.mid(0, 5).join(QStringLiteral(", "));
+		const QStringList folios = m_data_base.folioTitleBlockMismatches();
+		qWarning().noquote() << "folio title block store:" << folios.size() << "differ"
+							 << folios.mid(0, 5).join(QStringLiteral(", "));
+		const QStringList wires = m_data_base.conductorPropertiesMismatches();
+		qWarning().noquote() << "wire properties store:" << wires.size() << "differ"
+							 << wires.mid(0, 5).join(QStringLiteral(", "));
+	}
 	// racine du projet
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
@@ -1768,6 +2368,13 @@ QDomDocument QETProject::toXml()
 			 << "["
 			 << diagram
 			 << "]";
+		if (keep && !diagram->isLoaded()) {
+			auto placeholder = xml_doc.createElement(QStringLiteral("diagram"));
+			placeholder.setAttribute(QStringLiteral("qet_kept_folio"), order_num);
+			kept_folios->insert(order_num ++, diagram->keptText());
+			project_root.appendChild(placeholder);
+			continue;
+		}
 		QDomElement xml_diagram = diagram->toXml().documentElement();
 		QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
 
@@ -1803,6 +2410,28 @@ QDomDocument QETProject::toXml()
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
 	return(xml_doc);
+}
+
+/**
+	@brief QETProject::spliceKeptFolios
+	@return @p text, a project written by toXml() with kept folios, with
+	each placeholder line replaced by the folio's text as it was read
+*/
+QString QETProject::spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios)
+{
+	for (auto it = kept_folios.cbegin() ; it != kept_folios.cend() ; ++it)
+	{
+		const QString placeholder = QStringLiteral("<diagram qet_kept_folio=\"%1\"/>").arg(it.key());
+		const qsizetype at = text.indexOf(placeholder);
+		if (at < 0) {
+			continue;
+		}
+		const qsizetype line_start = text.lastIndexOf(QLatin1Char('\n'), at) + 1;
+		qsizetype line_end = text.indexOf(QLatin1Char('\n'), at);
+		line_end = line_end < 0 ? text.size() : line_end + 1;
+		text.replace(line_start, line_end - line_start, QString::fromUtf8(it.value()));
+	}
+	return text;
 }
 
 /**
@@ -1864,15 +2493,22 @@ QETResult QETProject::write()
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
-	QDomDocument xml_project(toXml());
 	QString error_message;
 	if (isContainerPath(m_file_path))
 	{
+		// A container must contain complete folios, not lazy placeholders.
+		QDomDocument xml_project(toXml());
 		if (!writeContainer(xml_project, m_file_path, &error_message))
 			return(error_message);
 	}
-	else if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
-		return(error_message);
+	else
+	{
+		QHash<int, QByteArray> kept_folios;
+		QDomDocument xml_project(toXml(&kept_folios));
+		if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
+						   m_file_path, &error_message))
+			return(error_message);
+	}
 
 		// The project has just been written to a writable file (e.g. saved to
 		// a new location with "Save As"), so it is no longer read-only.
@@ -1927,6 +2563,7 @@ void QETProject::setReadOnly(bool read_only)
 */
 bool QETProject::isEmpty() const
 {
+	loadFolios(); //asks the folios whether they hold anything
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
 
@@ -2098,12 +2735,42 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 */
 bool QETProject::usesElement(const ElementsLocation &location) const
 {
-	foreach(Diagram *diagram, diagrams()) {
+	foreach(Diagram *diagram, builtFolios()) {
 		if (diagram -> usesElement(location)) {
 			return(true);
 		}
 	}
-	return(false);
+	return(unbuiltFolioElements().contains(location));
+}
+
+/**
+	@brief QETProject::unbuiltFolioElements
+	@return the locations of the symbols placed on the folios not built yet
+	(QET_LAZY_FOLIOS), each once, read from the XML kept for them as
+	building them reads it (Diagram::fromXml())
+*/
+QList<ElementsLocation> QETProject::unbuiltFolioElements() const
+{
+	QSet<QString> types;
+	for (Diagram *diagram : m_diagrams_list) {
+		if (diagram->isLoaded()) {
+			continue;
+		}
+		for (const QDomElement &element_xml :
+			 QET::findInDomElement(diagram->deferredXml(),
+								   QStringLiteral("elements"),
+								   QStringLiteral("element"))) {
+			types.insert(element_xml.attribute(QStringLiteral("type")));
+		}
+	}
+	QList<ElementsLocation> locations;
+	auto *self = const_cast<QETProject *>(this);
+	for (const QString &type : std::as_const(types)) {
+		locations << (type.startsWith(QStringLiteral("embed://"))
+					  ? ElementsLocation(type, self)
+					  : ElementsLocation(type));
+	}
+	return locations;
 }
 
 /**
@@ -2116,10 +2783,25 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 QList<ElementsLocation> QETProject::unusedElements() const
 {
 	QList <ElementsLocation> unused_list;
+	const QList<Diagram *> built = builtFolios();
+	const QList<ElementsLocation> unbuilt = unbuiltFolioElements();
 
 	foreach(ElementsLocation location, m_elements_collection->elementsLocation())
-		if (location.isElement() && !usesElement(location))
+	{
+		if (!location.isElement() || unbuilt.contains(location)) {
+			continue;
+		}
+		bool used = false;
+		for (Diagram *diagram : built) {
+			if (diagram->usesElement(location)) {
+				used = true;
+				break;
+			}
+		}
+		if (!used) {
 			unused_list << location;
+		}
+	}
 
 	return unused_list;
 }
@@ -2133,7 +2815,8 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 	// a diagram can only use a title block template embedded within its parent project
 	if (location.parentProject() != this) return(false);
 
-	foreach (Diagram *diagram, diagrams()) {
+		//The template is the folio's own data: folios() builds nothing
+	foreach (Diagram *diagram, folios()) {
 		if (diagram -> usesTitleBlockTemplate(location.name())) {
 			return(true);
 		}
@@ -2330,6 +3013,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//before the diagrams because the terminal strip items use it
 	m_project_properties_handler.terminalStripLayoutHandler().fromXml(xml_project.documentElement());
 
+		//The stores of symbol information, folio title blocks and wire
+		//properties are filled from the document before the folios are
+		//built (DB-ACCESSORS-PLAN.md stage 4.6)
+	m_data_base.prefillFromDocument(xml_project);
+
 		//Load the diagrams
 	readDiagramsXml(xml_project);
 	const qint64 diagrams_ms = phase_timer.restart();
@@ -2361,6 +3049,31 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
+	m_data_base.endPrefill(unloadedFolioCount() > 0);
+		//Saving may write the folios not built as they were read, when
+		//building them would write the same: a file written by this
+		//version, whose database rows came from it (toXml()). A .qet does
+		//not say which program wrote it, and one with this version's
+		//number can hold what a save rewrites (tst_freetextnonfinite,
+		//tst_foliofreezeflags): only with QET_LAZY_SAVE_KEPT=1, until a
+		//.qetz, whose manifest names its writer, does it
+		//(QETZ-DB-TRUTH-PLAN.md D4)
+	m_kept_folios_trusted = qEnvironmentVariableIntValue("QET_LAZY_SAVE_KEPT") == 1
+			&& unloadedFolioCount() > 0
+			&& m_project_qet_version == QetVersion::currentVersion()
+			&& m_data_base.rowsFromDocument();
+	for (Diagram *diagram : std::as_const(m_diagrams_list))
+		if (!diagram->isLoaded() && diagram->keptText().isEmpty())
+			m_kept_folios_trusted = false;
+	m_kept_folios_stale = false;
+	m_edited_since_open = false;
+	if (m_kept_folios_trusted)
+		for (Diagram *diagram : std::as_const(m_diagrams_list))
+			diagram->rememberHeader();
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1)
+		qWarning().noquote() << "lazy folios: opened with" << unloadedFolioCount() << "of" << m_diagrams_list.size() << "folios not built";
+	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1)
+		qWarning().noquote() << "filled before building:" << m_data_base.prefillReport();
 	const qint64 database_ms = phase_timer.elapsed();
 
 	qInfo().nospace()
@@ -2418,6 +3131,38 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
 
+		//Where each line of the file starts, for a folio's text: lines
+		//[its start, the next element's start) (QETProject::toXml())
+	QList<qsizetype> line_starts;
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1 && !m_opened_content.isEmpty()) {
+		line_starts << 0;
+		for (qsizetype i = 0 ; i < m_opened_content.size() ; ++i)
+			if (m_opened_content.at(i) == '\n') line_starts << i + 1;
+	}
+	auto folio_text = [this, &line_starts](const QDomElement &folio) {
+		const int first = folio.lineNumber();
+		const QDomElement next = folio.nextSiblingElement();
+		int last = next.isNull() ? -1 : next.lineNumber();
+		if (last < 0) {
+				//The last folio: up to the project's closing tag
+			const qsizetype end = m_opened_content.lastIndexOf("</project>");
+			last = end < 0 ? -1 : int(std::upper_bound(line_starts.cbegin(), line_starts.cend(), end)
+									  - line_starts.cbegin());
+		}
+		if (first < 1 || last <= first || last > line_starts.size()) {
+			return QByteArray();
+		}
+		const QByteArray text = m_opened_content.mid(line_starts.at(first - 1),
+													 line_starts.at(last - 1) - line_starts.at(first - 1));
+			//One folio, whole: else it is built to be saved
+		const QByteArray trimmed = text.trimmed();
+		if (!trimmed.startsWith("<diagram ") || text.count("<diagram ") != 1
+				|| !(trimmed.endsWith("</diagram>") || (trimmed.endsWith("/>") && !text.contains("</diagram>")))) {
+			return QByteArray();
+		}
+		return text;
+	};
+
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
 		if(dlgWaiting)
@@ -2436,7 +3181,12 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
+			m_deferring_folios = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
 			diagram->initFromXml(diagram_xml_element);
+			m_deferring_folios = false;
+			if (!diagram->isLoaded() && !line_starts.isEmpty())
+				diagram->setKeptText(folio_text(diagram_xml_element));
+			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
 		}
@@ -3072,11 +3822,13 @@ void QETProject::writeBackup()
 		//Capture the document by value (implicitly shared, so cheap): the
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.
-	QDomDocument xml_project(toXml());
+	QHash<int, QByteArray> kept_folios;
+	QDomDocument xml_project(toXml(&kept_folios));
 	KAutoSaveFile *target = &m_backup_files[m_next_backup_slot];
 	m_next_backup_slot = (m_next_backup_slot + 1) % BackupGenerations;
-	m_backup_future = QtConcurrent::run([target, xml_project]() mutable {
-		return QET::writeToFile(xml_project, target, nullptr);
+	m_backup_future = QtConcurrent::run([target, xml_project, kept_folios]() mutable {
+		return QET::writeTextToFile(spliceKeptFolios(xml_project.toString(4), kept_folios),
+									target, nullptr);
 	});
 }
 
@@ -3104,6 +3856,8 @@ DiagramContext QETProject::projectProperties()
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
+		//Folio and symbol texts are made from them
+	markKeptFoliosStale();
 	updateDiagramsFolioData();
 	emit projectInformationsChanged(this);
 }

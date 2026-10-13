@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdatabase.h"
+#include "../qetversion.h"
 
 #include "sqlreadonly.h"
 
@@ -112,10 +113,12 @@ void projectDataBase::updateDB()
 		flushDrawingItems();
 		flushLinks();
 		flushElementPositions();
+		flushConductorProperties();
 		emit dataBaseUpdated();
 		return;
 	}
 
+	keepUnbuiltFolioRows();
 	populateDiagramTable();
 	populateDiagramInfoTable();
 	populateElementTable();
@@ -123,9 +126,91 @@ void projectDataBase::updateDB()
 	populateConductorTable();
 	populateLinkTable();
 	populateDrawingItemTables();
+	dropKeptRows();
+	flushConductorProperties();
 	m_content_changed = false;
 
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::keepUnbuiltFolioRows
+	Before the tables are rebuilt from the folios: keep the element,
+	element_info, terminal, conductor and link rows of the folios not built
+	yet (QET_LAZY_FOLIOS). They came from the document, nothing of those
+	folios can have changed since, and the rebuild puts them back where
+	each folio comes (restoreKeptRows()). Nothing to do when every folio
+	is built.
+*/
+void projectDataBase::keepUnbuiltFolioRows()
+{
+	m_kept_folios.clear();
+	if (!m_project->unloadedFolioCount()) {
+		return;
+	}
+		//Rows filled from the folios have none for a folio not built: it
+		//is built (diagrams()) and the tables come from it
+	if (!m_rows_from_document) {
+		m_project->diagrams();
+		return;
+	}
+	for (Diagram *folio : m_project->folios())
+		if (!folio->isLoaded()) m_kept_folios.insert(folio);
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("CREATE TEMP TABLE kept_folio (uuid VARCHAR(50) PRIMARY KEY)"));
+	query.prepare(QStringLiteral("INSERT INTO kept_folio (uuid) VALUES (:uuid)"));
+	for (Diagram *folio : std::as_const(m_kept_folios)) {
+		query.bindValue(QStringLiteral(":uuid"), folio->uuid().toString());
+		query.exec();
+	}
+	for (const QString &sql : {
+		 QStringLiteral("CREATE TEMP TABLE kept_element AS SELECT * FROM element "
+						"WHERE diagram_uuid IN (SELECT uuid FROM kept_folio) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_element_info AS SELECT * FROM element_info "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_terminal AS SELECT * FROM terminal "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_conductor AS SELECT * FROM conductor "
+						"WHERE diagram_uuid IN (SELECT uuid FROM kept_folio) ORDER BY rowid"),
+		 QStringLiteral("CREATE TEMP TABLE kept_link AS SELECT * FROM link "
+						"WHERE element_uuid IN (SELECT uuid FROM kept_element) ORDER BY rowid")}) {
+		if (!query.exec(sql)) {
+			qDebug() << "projectDataBase::keepUnbuiltFolioRows error : " << query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::restoreKeptRows
+	Put back into @p table the rows kept for @p folio, not built
+	(keepUnbuiltFolioRows()), in the order they had. @p where selects them
+	in the kept table, with :folio for the folio's uuid.
+*/
+void projectDataBase::restoreKeptRows(const QString &table, Diagram *folio, const QString &where)
+{
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("INSERT INTO %1 SELECT * FROM kept_%1 WHERE %2 ORDER BY rowid")
+				  .arg(table, where));
+	query.bindValue(QStringLiteral(":folio"), folio->uuid().toString());
+	if (!query.exec()) {
+		qDebug() << "projectDataBase::restoreKeptRows error : " << table << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::dropKeptRows
+	The rows kept by keepUnbuiltFolioRows() are back: drop their copies
+*/
+void projectDataBase::dropKeptRows()
+{
+	if (m_kept_folios.isEmpty()) {
+		return;
+	}
+	QSqlQuery query(m_data_base);
+	for (const char *table : {"kept_folio", "kept_element", "kept_element_info",
+							  "kept_terminal", "kept_conductor", "kept_link"})
+		query.exec(QStringLiteral("DROP TABLE %1").arg(QLatin1String(table)));
+	m_kept_folios.clear();
 }
 
 /**
@@ -157,7 +242,9 @@ void projectDataBase::updateDB(const QDomDocument &document)
 		why = QStringLiteral("QET_DATABASE_FROM_FOLIOS is set");
 	} else if (populateFromDocument(document, &why)) {
 		qInfo() << "Project database filled from the document";
+		m_rows_from_document = true;
 		populateDrawingItemTables();
+		flushConductorProperties();
 		m_content_changed = false;
 		emit dataBaseUpdated();
 		return;
@@ -289,7 +376,9 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		//The folios, in the order the project read them (readDiagramsXml()),
 		//each with its saved uuid -- the one the built folio has.
 	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
-	const QList<Diagram *> diagrams = m_project->diagrams();
+		//Built or not (QET_LAZY_FOLIOS): only their uuids are read, and the
+		//conductors of those built
+	const QList<Diagram *> diagrams = m_project->folios();
 	if (diagram_nodes.size() != diagrams.size()) {
 		return refuse(QStringLiteral("the folios are not the document's"));
 	}
@@ -302,6 +391,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 	QList<DiagramContext> diagram_infos;
 	QList<QDate> diagram_dates;
 	QList<QUuid> diagram_uuids;
+	QSet<QUuid> unjoined;
 	QList<DocumentElement> elements;
 	QList<DocumentConductor> conductors;
 	QSet<QUuid> element_uuids;
@@ -522,6 +612,9 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 				const QUuid terminal(conductor_xml.attribute(QStringLiteral("terminal") + index));
 				const int e = on_this_folio.value(owner, -1);
 				if (e < 0) {
+						//Building the folio leaves this wire out and
+						//says so (Diagram::wiresNotReconnected())
+					unjoined.insert(diagram_uuid);
 					found = false;
 					break;
 				}
@@ -716,7 +809,66 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			}
 		}
 	}
+	m_folios_with_unjoined_wires = unjoined;
 	return true;
+}
+
+/**
+	@brief projectDataBase::foliosWithUnjoinedWires
+	@return the uuids of the folios whose document has a wire that building
+	them will leave out, an end of it not being found: those whose
+	Diagram::wiresNotReconnected() will not be empty. Known when the
+	database was last filled from the document, else empty.
+*/
+QSet<QUuid> projectDataBase::foliosWithUnjoinedWires() const
+{
+	return m_folios_with_unjoined_wires;
+}
+
+/**
+	@brief projectDataBase::elementTypesOnFolios
+	@return the kind (ElementData::typeToString()) of every symbol on the
+	folios @p folios, by uuid, read from the element table as it is: for
+	folios not built yet (QET_LAZY_FOLIOS) its rows came from the document
+	and nothing can have changed them. A symbol whose definition was not
+	found has no row.
+*/
+QHash<QUuid, QString> projectDataBase::elementTypesOnFolios(const QSet<QUuid> &folios) const
+{
+	QHash<QUuid, QString> types;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT uuid, type FROM element WHERE diagram_uuid = :folio"));
+	for (const QUuid &folio : folios) {
+		query.bindValue(QStringLiteral(":folio"), folio.toString());
+		if (!query.exec()) {
+			continue;
+		}
+		while (query.next()) {
+			types.insert(QUuid(query.value(0).toString()), query.value(1).toString());
+		}
+	}
+	return types;
+}
+
+/**
+	@brief projectDataBase::folioUuidsOfElements
+	@return the uuids of the folios the symbols @p elements are on, read
+	from the element table as it is, without bringing it up to date: for a
+	symbol on a folio not built yet (QET_LAZY_FOLIOS) its row came from the
+	document and nothing can have changed it.
+*/
+QSet<QUuid> projectDataBase::folioUuidsOfElements(const QSet<QUuid> &elements) const
+{
+	QSet<QUuid> folios;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT diagram_uuid FROM element WHERE uuid = :uuid"));
+	for (const QUuid &uuid : elements) {
+		query.bindValue(QStringLiteral(":uuid"), uuid.toString());
+		if (query.exec() && query.next()) {
+			folios.insert(QUuid(query.value(0).toString()));
+		}
+	}
+	return folios;
 }
 
 /**
@@ -726,6 +878,26 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 void projectDataBase::setUpdateBlocked(bool blocked)
 {
 	m_update_blocked = blocked;
+}
+
+/**
+	@brief projectDataBase::setBuildingFolio
+	@see the declaration. The stores still take what building writes.
+*/
+void projectDataBase::setBuildingFolio(bool building)
+{
+		//A folio built while another is (a caller of diagrams() reached
+		//from building it) nests: only the outermost restores.
+	if (building) {
+		if (m_building_folios++ == 0) {
+			m_changed_before_folio = m_content_changed;
+			m_blocked_before_folio = m_update_blocked;
+			m_update_blocked = true;
+		}
+	} else if (m_building_folios > 0 && --m_building_folios == 0) {
+		m_update_blocked = m_blocked_before_folio;
+		m_content_changed = m_changed_before_folio;
+	}
 }
 
 /**
@@ -815,11 +987,23 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//Drawing-item rows are rewritten lazily, see drawingItemChanged().
 		//Every read from outside comes through here, so this is the one
 		//place the queue has to be emptied for a reader to see current rows.
-		//The same goes for link rows and elements' folio cells, see
-		//linksChanged() and elementMoved().
+		//The same goes for link rows, elements' folio cells and wires'
+		//properties, see linksChanged(), elementMoved() and
+		//storeConductorProperties().
+		//The drawing tables hold what only built items know (a text's
+		//laid-out size, a picture's pixels): with folios not built yet
+		//(QET_LAZY_FOLIOS) a read of them builds those first. Every other
+		//table was filled from the document.
+	static const QRegularExpression drawing_tables(
+			QStringLiteral("\\b(shape|independent_text|image)\\b"),
+			QRegularExpression::CaseInsensitiveOption);
+	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
+		m_project->loadFolios();
+	}
 	flushDrawingItems();
 	flushLinks();
 	flushElementPositions();
+	flushConductorProperties();
 
 	// First gate: which kind of statement is acceptable here at all. A
 	// textual check is the right tool for that and the wrong tool for
@@ -907,21 +1091,13 @@ void projectDataBase::addElement(Element *element)
 		return;
 	}
 
-	bindElementValues(m_insert_elements_query, element, element->diagram());
-	if (!m_insert_elements_query.exec()) {
-		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
-	}
+	placeElement(element);
 	connect(element, &Element::linkedElementChanged,
 			this, &projectDataBase::linksChanged, Qt::UniqueConnection);
 	connect(element, &QGraphicsObject::xChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
 	connect(element, &QGraphicsObject::yChanged, this, &projectDataBase::elementMoved, Qt::UniqueConnection);
-
-	bindElementInfoValues(m_insert_element_info_query, element);
-	if (!m_insert_element_info_query.exec()) {
-		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
-	} else {
-		emit dataBaseUpdated();
-	}
+	writeElementRows(element);
+	emit dataBaseUpdated();
 }
 
 /**
@@ -931,32 +1107,14 @@ void projectDataBase::addElement(Element *element)
 void projectDataBase::removeElement(Element *element)
 {
 	m_content_changed = true;
-	bool changed = false;
-
-	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
-	if (m_remove_element_query.exec()) {
-		changed = true;
-	} else {
-		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	const QUuid uuid = element->uuid();
+	removeElementRows(uuid);
+	unplaceElement(element, uuid);
+		//Another symbol still holds the uuid (F100): the rows are its own.
+	if (Element *other = otherHolder(uuid, element)) {
+		writeElementRows(other);
 	}
-
-	m_remove_element_info_query.bindValue(":uuid", element->uuid().toString());
-	if (m_remove_element_info_query.exec()) {
-		changed = true;
-	} else {
-		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
-	}
-
-	QSqlQuery remove_links(m_data_base);
-	remove_links.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
-	remove_links.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
-	if (!remove_links.exec()) {
-		qDebug() << "projectDataBase::removeElement remove link error : " << remove_links.lastError();
-	}
-
-	if (changed) {
-		emit dataBaseUpdated();
-	}
+	emit dataBaseUpdated();
 }
 
 /**
@@ -998,6 +1156,7 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 void projectDataBase::addDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
+	placeFolio(diagram);
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 	if(!m_insert_diagram_query.exec()) {
@@ -1016,6 +1175,24 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	for (QGraphicsItem *item : items) {
 		addDrawingItem(item);
 	}
+		//So do its symbols, their wires and the links to and from them
+		//(F107).
+	const QList<Element *> elements = diagram->elements();
+	const bool own_transaction = !elements.isEmpty() && m_data_base.transaction();
+		//One signal for the folio, not one per symbol and wire: each makes
+		//every folio table query the database again.
+	const bool blocked = blockSignals(true);
+	for (Element *element : elements) {
+		addElement(element);
+		queueLinks(element);
+		for (Element *linked : element->linkedElements())
+			queueLinks(linked);
+	}
+	for (Conductor *conductor : diagram->conductors())
+		addConductor(conductor);
+	blockSignals(blocked);
+	if (own_transaction)
+		m_data_base.commit();
 
 		//The folios after the new one moved down, and a folio number made
 		//from %id or %total changed on every folio.
@@ -1095,6 +1272,12 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
 	const QString uuid_str = diagram->uuid().toString();
+	unplaceFolio(diagram, diagram->uuid());
+	for (Conductor *conductor : diagram->conductors())
+		unplaceConductor(conductor, conductor->uuid());
+		//Its symbols are no longer placed (they live on in the undo stack)
+	for (Element *element : diagram->elements())
+		unplaceElement(element, element->uuid());
 
 		//Order matters: element_info and terminal are scoped through a
 		//subquery on element, so they must run before element itself is
@@ -1224,6 +1407,24 @@ void projectDataBase::addConductor(Conductor *conductor)
 		return;
 	}
 
+	placeConductor(conductor);
+	watchConductor(conductor);
+	writeConductorRow(conductor);
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::writeConductorRow
+	Write the conductor row of @p conductor, a placed wire, and the rows of
+	the terminals it ends on. A uuid that already has a row keeps it, as in
+	a full rebuild; nothing is written while updates are blocked (the
+	rebuild that ends them writes every row).
+*/
+void projectDataBase::writeConductorRow(Conductor *conductor)
+{
+	if (m_update_blocked) {
+		return;
+	}
 		//Both endpoints must belong to an element: the terminal table is keyed
 		//on (terminal, element) and a terminal with no parent has no identity
 		//to key on. Terminals whose *definition* predates terminal uuids are
@@ -1237,12 +1438,9 @@ void projectDataBase::addConductor(Conductor *conductor)
 	insertTerminal(conductor->terminal1);
 	insertTerminal(conductor->terminal2);
 
-	watchConductor(conductor);
 	bindConductorValues(m_insert_conductor_query, conductor, conductor->diagram());
 	if (!m_insert_conductor_query.exec()) {
-		qDebug() << "projectDataBase::addConductor insert error : " << m_insert_conductor_query.lastError();
-	} else {
-		emit dataBaseUpdated();
+		qDebug() << "projectDataBase::writeConductorRow insert error : " << m_insert_conductor_query.lastError();
 	}
 }
 
@@ -1253,6 +1451,27 @@ void projectDataBase::addConductor(Conductor *conductor)
 void projectDataBase::removeConductor(Conductor *conductor)
 {
 	m_content_changed = true;
+	const QUuid uuid = conductor->uuid();
+	removeConductorRow(uuid);
+	unplaceConductor(conductor, uuid);
+		//Another wire still holds the uuid: the row is its own.
+	if (Conductor *other = otherConductorHolder(uuid, conductor)) {
+		writeConductorRow(other);
+	}
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::removeConductorRow
+	Remove the conductor row of @p uuid, and the rows of the terminals it
+	ended on unless another conductor ends there; nothing while updates are
+	blocked, as writeConductorRow().
+*/
+void projectDataBase::removeConductorRow(const QUuid &uuid)
+{
+	if (m_update_blocked) {
+		return;
+	}
 		//The terminal table lists the terminals a conductor ends on: the
 		//conductor's two ends go with it unless another conductor ends there.
 	QList<QPair<QString, QString>> ends;
@@ -1260,15 +1479,15 @@ void projectDataBase::removeConductor(Conductor *conductor)
 	read_ends.prepare(QStringLiteral("SELECT terminal1_uuid, terminal1_element_uuid, "
 									 "terminal2_uuid, terminal2_element_uuid "
 									 "FROM conductor WHERE uuid = :uuid"));
-	read_ends.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	read_ends.bindValue(QStringLiteral(":uuid"), uuid.toString());
 	if (read_ends.exec() && read_ends.next()) {
 		ends << qMakePair(read_ends.value(0).toString(), read_ends.value(1).toString())
 			 << qMakePair(read_ends.value(2).toString(), read_ends.value(3).toString());
 	}
 
-	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
+	m_remove_conductor_query.bindValue(":uuid", uuid.toString());
 	if (!m_remove_conductor_query.exec()) {
-		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
+		qDebug() << "projectDataBase::removeConductorRow delete error : " << m_remove_conductor_query.lastError();
 		return;
 	}
 
@@ -1282,10 +1501,9 @@ void projectDataBase::removeConductor(Conductor *conductor)
 		remove_end.bindValue(QStringLiteral(":uuid"), end.first);
 		remove_end.bindValue(QStringLiteral(":element_uuid"), end.second);
 		if (!remove_end.exec()) {
-			qDebug() << "projectDataBase::removeConductor terminal delete error : " << remove_end.lastError();
+			qDebug() << "projectDataBase::removeConductorRow terminal delete error : " << remove_end.lastError();
 		}
 	}
-	emit dataBaseUpdated();
 }
 
 /**
@@ -1577,7 +1795,7 @@ bool projectDataBase::writeDrawingItem(QObject *object)
 {
 	auto *item = dynamic_cast<QGraphicsItem *>(object);
 	auto *diagram = item ? qobject_cast<Diagram *>(item->scene()) : nullptr;
-	if (!diagram || !m_project || !m_project->diagrams().contains(diagram)) {
+	if (!diagram || !m_project || !m_project->folios().contains(diagram)) {
 			//Not on a folio of this project (any more): nothing to write,
 			//and nothing to wait for.
 		return true;
@@ -1693,8 +1911,10 @@ void projectDataBase::populateDrawingItemTables()
 
 		//Queued directly, not through addDrawingItem(): every one of them
 		//came onto its folio through Diagram::addItem(), which connected it
-		//already, and a full rebuild runs on every load.
-	for (auto diagram : m_project->diagrams())
+		//already, and a full rebuild runs on every load. A folio not built
+		//yet (QET_LAZY_FOLIOS) has none: its items write their rows as it
+		//is built.
+	for (auto diagram : m_project->folios())
 	{
 		const QList<QGraphicsItem *> items = diagram->items();
 		for (QGraphicsItem *item : items)
@@ -1786,6 +2006,50 @@ bool projectDataBase::createDataBase()
 	if (!query_.exec(element_info_table)) {
 		qDebug() << " element_info_table query : " << query_.lastError();
 	}
+
+		//Create the element_information table: the information of every
+		//symbol placed in the project, in full -- each key with its value
+		//and whether it is shown -- the store symbols write through
+		//(storeElementInformation()). Unlike element_info, which has one
+		//column per known key and is filled again on every rebuild, this
+		//is kept by the edits themselves.
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE element_information ("
+			"element_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (element_uuid, ord))"))) {
+		qDebug() << " element_information_table query : " << query_.lastError();
+	}
+		//Create the folio_titleblock table: the title block properties of
+		//every folio, as a folio saves them, the store folios write
+		//through (storeFolioTitleBlock()). One row per property, then one
+		//per additional field ("custom:" and its name).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE folio_titleblock ("
+			"diagram_uuid VARCHAR(50) NOT NULL, "
+			"ord INTEGER NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"show INTEGER NOT NULL, "
+			"PRIMARY KEY (diagram_uuid, ord))"))) {
+		qDebug() << " folio_titleblock_table query : " << query_.lastError();
+	}
+
+		//Create the conductor_properties table: the properties of every
+		//wire placed in the project, as the attributes a saved wire carries,
+		//the store wires write through (storeConductorProperties()).
+	if (!query_.exec(QStringLiteral(
+			"CREATE TABLE conductor_properties ("
+			"conductor_uuid VARCHAR(50) NOT NULL, "
+			"name TEXT NOT NULL, "
+			"value TEXT, "
+			"PRIMARY KEY (conductor_uuid, name))"))) {
+		qDebug() << " conductor_properties_table query : " << query_.lastError();
+	}
+
 
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
@@ -2114,7 +2378,8 @@ void projectDataBase::populateDiagramTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM diagram");
 
-	for (auto diagram : m_project->diagrams())
+		//The folios' own data: folios() builds nothing
+	for (auto diagram : m_project->folios())
 	{
 		m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 		m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
@@ -2158,8 +2423,12 @@ void projectDataBase::populateElementTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM element");
 
-	for (auto diagram : m_project->diagrams())
+	for (auto diagram : m_project->folios())
 	{
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("element"), diagram, QStringLiteral("diagram_uuid = :folio"));
+			continue;
+		}
 		const ElementProvider ep(diagram);
 		const auto elmt_vector = ep.find(allElementTypes());
 			//Insert all values into the database
@@ -2175,20 +2444,73 @@ void projectDataBase::populateElementTable()
 
 /**
 	@brief projectDataBase::populateElementInfoTable
-	Populate the element info table
+	Populate the element info table from the symbol information store
+	(DB-ACCESSORS-PLAN.md stage 4.3), in the order of the element table.
+	The label column is the label a symbol shows, which its folio's
+	numbering decides: the symbol holding the uuid gives it.
+
+	A project where several symbols share a uuid (F100) is read from its
+	folios as before: the first symbol on them owns the row, and the store
+	does not know which one that is.
 */
 void projectDataBase::populateElementInfoTable()
 {
 	QSqlQuery query(m_data_base);
 	query.exec(QStringLiteral("DELETE FROM element_info"));
 
-	for (const auto &diagram : m_project->diagrams())
-	{
-		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(allElementTypes());
+	for (auto it = m_placed_elements.constBegin() ; it != m_placed_elements.constEnd() ; ++it) {
+		if (placedElementCount(it.key()) > 1) {
+			populateElementInfoTableFromFolios();
+			return;
+		}
+	}
 
-			//Insert all values into the database
-		for (const auto &elmt : elmt_vector)
+	QSqlQuery uuids(m_data_base);
+	if (!uuids.exec(QStringLiteral("SELECT uuid FROM element ORDER BY rowid"))) {
+		qDebug() << "projectDataBase::populateElementInfoTable select error : " << uuids.lastError();
+		return;
+	}
+	while (uuids.next())
+	{
+		const QString uuid_str = uuids.value(0).toString();
+		const QUuid uuid(uuid_str);
+		Element *holder = otherHolder(uuid, nullptr);
+		if (!holder) {
+				//A symbol on a folio not built: its row as it was
+			if (!m_kept_folios.isEmpty()) {
+				QSqlQuery kept(m_data_base);
+				kept.prepare(QStringLiteral("INSERT INTO element_info SELECT * FROM kept_element_info "
+											"WHERE element_uuid = :uuid"));
+				kept.bindValue(QStringLiteral(":uuid"), uuid_str);
+				kept.exec();
+			}
+			continue;
+		}
+		bindElementInfoValues(m_insert_element_info_query, uuid_str,
+							  m_element_information.value(uuid), holder->actualLabel());
+		if (!m_insert_element_info_query.exec()) {
+			qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::populateElementInfoTableFromFolios
+	populateElementInfoTable() from the symbols on the folios
+*/
+void projectDataBase::populateElementInfoTableFromFolios()
+{
+	for (const auto &diagram : m_project->folios())
+	{
+			//A folio not built: its rows as they were
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("element_info"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio)"));
+			continue;
+		}
+		const ElementProvider ep(diagram);
+		for (const auto &elmt : ep.find(allElementTypes()))
 		{
 			bindElementInfoValues(m_insert_element_info_query, elmt);
 			if (!m_insert_element_info_query.exec()) {
@@ -2196,6 +2518,798 @@ void projectDataBase::populateElementInfoTable()
 			}
 		}
 	}
+}
+
+/**
+	@brief projectDataBase::elementInformation
+	@return the stored information of the placed symbol @p element, empty
+	if it has none
+*/
+DiagramContext projectDataBase::elementInformation(const QUuid &element) const
+{
+	return m_element_information.value(element);
+}
+
+bool projectDataBase::hasElementInformation(const QUuid &element) const
+{
+	return m_element_information.contains(element);
+}
+
+int projectDataBase::placedElementCount(const QUuid &element) const
+{
+		//Without values(), which makes a list: this is asked on every read
+		//of a placed symbol's information.
+	int n = 0;
+	for (auto it = m_placed_elements.constFind(element) ;
+		 it != m_placed_elements.constEnd() && it.key() == element ; ++it)
+		if (it.value()) ++n;
+	return n;
+}
+
+/**
+	@brief projectDataBase::storeElementInformation
+	Store @p information as the information of the placed symbol @p element,
+	in the element_information table and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeElementInformation(const QUuid &element, const DiagramContext &information)
+{
+	if (element.isNull()) return false;
+	auto known = m_element_information.constFind(element);
+	if (known != m_element_information.constEnd() && *known == information) return false;
+	m_element_information.insert(element, information);
+
+	const QString uuid = element.toString();
+	m_store_remove_query.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!m_store_remove_query.exec()) {
+		qDebug() << "projectDataBase::storeElementInformation remove error : " << m_store_remove_query.lastError();
+	}
+	QSqlQuery &insert = m_store_insert_query;
+	int ord = 0;
+	for (const QString &key : information.keys()) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), key);
+		insert.bindValue(QStringLiteral(":value"), information.value(key).toString());
+		insert.bindValue(QStringLiteral(":show"), information.keyMustShow(key) ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeElementInformation insert error : " << insert.lastError();
+		}
+	}
+	return true;
+}
+
+/**
+	@brief projectDataBase::elementInformationChanged
+	The placed symbol @p element now has @p information: the store keeps
+	it, and its element_info row follows (F106: a pasted symbol's label is
+	erased or numbered after its row is written, by
+	Element::setElementInformations(), which tells no table).
+	A uuid other symbols share (F100) keeps the row of the first of them.
+*/
+void projectDataBase::elementInformationChanged(Element *element, const DiagramContext &information)
+{
+	if (!storeElementInformation(element->uuid(), information)) {
+		return;
+	}
+	m_content_changed = true;
+	if (m_update_blocked || placedElementCount(element->uuid()) != 1) {
+		return;
+	}
+	const auto hash = elementInfoToString(element);
+	for (const auto &key : QETInformation::elementInfoKeys()) {
+		m_update_element_query.bindValue(QStringLiteral(":") + key, hash.value(key));
+	}
+	m_update_element_query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	if (!m_update_element_query.exec()) {
+		qDebug() << "projectDataBase::elementInformationChanged update error : " << m_update_element_query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::forgetElementInformation
+	The symbol @p element is no longer placed: its stored information goes.
+*/
+void projectDataBase::forgetElementInformation(const QUuid &element)
+{
+	if (!m_element_information.remove(element)) return;
+	m_store_remove_query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (!m_store_remove_query.exec()) {
+		qDebug() << "projectDataBase::forgetElementInformation error : " << m_store_remove_query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::placeElement
+	@p element is now placed: its information is stored under its uuid.
+*/
+void projectDataBase::placeElement(Element *element)
+{
+	if (!m_placed_elements.contains(element->uuid(), element))
+		m_placed_elements.insert(element->uuid(), element);
+	storeElementInformation(element->uuid(), element->ownInformations());
+}
+
+/**
+	@brief projectDataBase::unplaceElement
+	@p element no longer holds @p uuid. If another placed symbol still does
+	(the original of a copy), the row is written again from it; otherwise
+	it goes.
+*/
+void projectDataBase::unplaceElement(Element *element, const QUuid &uuid)
+{
+	m_placed_elements.remove(uuid, element);
+	for (const QPointer<Element> &other : m_placed_elements.values(uuid)) {
+		if (other) {
+				//Its own copy: the store still holds this symbol's
+			storeElementInformation(uuid, other->ownInformations());
+			return;
+		}
+	}
+	m_placed_elements.remove(uuid);
+	forgetElementInformation(uuid);
+}
+
+/**
+	@brief projectDataBase::elementUuidChanged
+	The uuid of the placed symbol @p element changed from @p old_uuid (a
+	paste or a folio copy renews it): its information and its element,
+	element_info and link rows follow it. A copy is placed while it still
+	carries its original's uuid, so its rows could not be written then
+	(the uuid was taken): they are written now. The old uuid keeps its rows
+	only if another symbol still holds it (F106).
+*/
+void projectDataBase::elementUuidChanged(Element *element, const QUuid &old_uuid)
+{
+	if (!m_placed_elements.contains(old_uuid, element) || old_uuid == element->uuid()) return;
+	m_content_changed = true;
+	Element *other = otherHolder(old_uuid, element);
+	unplaceElement(element, old_uuid);
+	removeElementRows(old_uuid);
+	if (other) {
+			//The old uuid's rows may have been written from this symbol
+			//while both held it: write them again from the one keeping it.
+		writeElementRows(other);
+		queueLinks(other);
+		for (Element *linked : other->linkedElements())
+			queueLinks(linked);
+	}
+	placeElement(element);
+	writeElementRows(element);
+		//Its wires' rows name their ends' symbols: write them again
+		//(a pasted wire is placed before its symbols get their uuids).
+	for (Conductor *conductor : element->conductors()) {
+		if (placedConductorCount(conductor->uuid()) == 1) {
+			removeConductorRow(conductor->uuid());
+			writeConductorRow(conductor);
+		}
+	}
+	queueLinks(element);
+	for (Element *linked : element->linkedElements())
+		queueLinks(linked);
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::otherHolder
+	@return a placed symbol other than @p element holding @p uuid, or
+	nullptr. Two hold one uuid while a copy is being placed, and for good
+	in files several symbols share a uuid in (F100).
+*/
+Element *projectDataBase::otherHolder(const QUuid &uuid, const Element *element) const
+{
+	for (const QPointer<Element> &other : m_placed_elements.values(uuid))
+		if (other && other != element) return other;
+	return nullptr;
+}
+
+/**
+	@brief projectDataBase::writeElementRows
+	Write the element and element_info rows of @p element, a placed symbol.
+	A uuid that already has rows keeps them: the first symbol to hold a
+	uuid owns its rows, as in a full rebuild.
+
+	Nothing is written while updates are blocked (a project being opened,
+	a paste being read): the rebuild that ends them writes every row.
+*/
+void projectDataBase::writeElementRows(Element *element)
+{
+	if (m_update_blocked) {
+		return;
+	}
+	bindElementValues(m_insert_elements_query, element, element->diagram());
+	if (!m_insert_elements_query.exec()) {
+		qDebug() << "projectDataBase::writeElementRows insert element error : " << m_insert_elements_query.lastError();
+	}
+	bindElementInfoValues(m_insert_element_info_query, element);
+	if (!m_insert_element_info_query.exec()) {
+		qDebug() << "projectDataBase::writeElementRows insert element info error : " << m_insert_element_info_query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::removeElementRows
+	Remove the element, element_info and link rows of @p uuid; nothing
+	while updates are blocked, as writeElementRows().
+*/
+void projectDataBase::removeElementRows(const QUuid &uuid)
+{
+	if (m_update_blocked) {
+		return;
+	}
+	const QString uuid_str = uuid.toString();
+	m_remove_element_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_element_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove error : " << m_remove_element_query.lastError();
+	}
+	m_remove_element_info_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_element_info_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove element_info error : " << m_remove_element_info_query.lastError();
+	}
+	m_remove_links_query.bindValue(QStringLiteral(":uuid"), uuid_str);
+	if (!m_remove_links_query.exec()) {
+		qDebug() << "projectDataBase::removeElementRows remove link error : " << m_remove_links_query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::elementInformationMismatches
+	Compare the store with every placed symbol, both ways: a symbol whose
+	information differs or is missing, and a stored row no symbol has.
+*/
+QStringList projectDataBase::elementInformationMismatches() const
+{
+	QStringList out;
+	QSet<QUuid> placed;
+	for (Diagram *diagram : m_project->diagrams()) {
+		for (Element *element : diagram->elements()) {
+			placed.insert(element->uuid());
+				//A uuid several symbols share has one row and cannot agree
+				//with them all; those symbols answer from their own copy.
+			if (placedElementCount(element->uuid()) > 1)
+				continue;
+			if (!m_element_information.contains(element->uuid()))
+				out << element->uuid().toString() + QStringLiteral(": not stored");
+			else if (m_element_information.value(element->uuid()) != element->elementInformations())
+				out << element->uuid().toString() + QStringLiteral(": differs");
+		}
+	}
+	for (auto it = m_element_information.constBegin() ; it != m_element_information.constEnd() ; ++it)
+		if (!placed.contains(it.key()))
+			out << it.key().toString() + QStringLiteral(": stored, not placed");
+	QSqlQuery rows(m_data_base);
+	if (rows.exec(QStringLiteral("SELECT count(*) FROM element_information")) && rows.next()) {
+		int expected = 0;
+		for (const DiagramContext &dc : m_element_information) expected += int(dc.keys().size());
+		if (rows.value(0).toInt() != expected)
+			out << QStringLiteral("table holds %1 rows, the cache %2").arg(rows.value(0).toInt()).arg(expected);
+	}
+	return out;
+}
+
+/**
+	@brief projectDataBase::folioTitleBlock
+	@return the stored title block properties of the folio @p folio
+*/
+TitleBlockProperties projectDataBase::folioTitleBlock(const QUuid &folio) const
+{
+	return m_folio_titleblocks.value(folio);
+}
+
+/**
+	@brief projectDataBase::storedFolioTitleBlock
+	@return the stored title block properties of the folio @p folio, or
+	nullptr; valid until the store next changes
+*/
+const TitleBlockProperties *projectDataBase::storedFolioTitleBlock(const QUuid &folio) const
+{
+	auto it = m_folio_titleblocks.constFind(folio);
+	return it == m_folio_titleblocks.constEnd() ? nullptr : &it.value();
+}
+
+/**
+	@brief projectDataBase::placedFolio
+	@return the folio of the project holding @p folio, or nullptr
+*/
+Diagram *projectDataBase::placedFolio(const QUuid &folio) const
+{
+	return m_placed_folios.value(folio);
+}
+
+/**
+	@brief projectDataBase::storeFolioTitleBlock
+	Store @p properties as the title block of the folio @p folio, in the
+	folio_titleblock table and the cache in front of it.
+*/
+void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockProperties &properties)
+{
+	if (folio.isNull()) return;
+	auto known = m_folio_titleblocks.find(folio);
+	if (known != m_folio_titleblocks.end() && *known == properties) return;
+	m_folio_titleblocks.insert(folio, properties);
+
+	const QString uuid = folio.toString();
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid);
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::storeFolioTitleBlock remove error : " << remove.lastError();
+	}
+	QSqlQuery insert(m_data_base);
+	insert.prepare(QStringLiteral("INSERT INTO folio_titleblock (diagram_uuid, ord, name, value, show) "
+								  "VALUES (:uuid, :ord, :name, :value, :show)"));
+	int ord = 0;
+	auto row = [&](const QString &name, const QString &value, bool show) {
+		insert.bindValue(QStringLiteral(":uuid"), uuid);
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		insert.bindValue(QStringLiteral(":name"), name);
+		insert.bindValue(QStringLiteral(":value"), value);
+		insert.bindValue(QStringLiteral(":show"), show ? 1 : 0);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::storeFolioTitleBlock insert error : " << insert.lastError();
+		}
+	};
+	row(QStringLiteral("title"), properties.title, true);
+	row(QStringLiteral("author"), properties.author, true);
+	row(QStringLiteral("date"), properties.date.isValid()
+			? properties.date.toString(Qt::ISODate) : QString(), true);
+	row(QStringLiteral("filename"), properties.filename, true);
+	row(QStringLiteral("plant"), properties.plant, true);
+	row(QStringLiteral("locmach"), properties.locmach, true);
+	row(QStringLiteral("indexrev"), properties.indexrev, true);
+	row(QStringLiteral("version"), properties.version, true);
+	row(QStringLiteral("folio"), properties.folio, true);
+	row(QStringLiteral("auto_page_num"), properties.auto_page_num, true);
+	row(QStringLiteral("template_name"), properties.template_name, true);
+	row(QStringLiteral("display_at"), properties.display_at == Qt::RightEdge
+			? QStringLiteral("right") : QStringLiteral("bottom"), true);
+	for (const QString &key : properties.context.keys()) {
+		row(QStringLiteral("custom:") + key, properties.context.value(key).toString(),
+			properties.context.keyMustShow(key));
+	}
+}
+
+/**
+	@brief projectDataBase::placeFolio
+	@p folio is now a folio of the project: its title block is stored under
+	its uuid.
+*/
+void projectDataBase::placeFolio(Diagram *folio)
+{
+	m_placed_folios.insert(folio->uuid(), folio);
+	storeFolioTitleBlock(folio->uuid(), folio->border_and_titleblock.localTitleBlock());
+}
+
+/**
+	@brief projectDataBase::unplaceFolio
+	@p folio no longer holds @p uuid (it was removed, or its uuid changed):
+	the title block stored under it goes.
+*/
+void projectDataBase::unplaceFolio(Diagram *folio, const QUuid &uuid)
+{
+	if (m_placed_folios.value(uuid) != folio) return;
+	m_placed_folios.remove(uuid);
+	m_folio_titleblocks.remove(uuid);
+	QSqlQuery remove(m_data_base);
+	remove.prepare(QStringLiteral("DELETE FROM folio_titleblock WHERE diagram_uuid = :uuid"));
+	remove.bindValue(QStringLiteral(":uuid"), uuid.toString());
+	if (!remove.exec()) {
+		qDebug() << "projectDataBase::unplaceFolio error : " << remove.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::folioUuidChanged
+	The uuid of the placed folio @p folio changed from @p old_uuid: its
+	stored title block follows it.
+*/
+void projectDataBase::folioUuidChanged(Diagram *folio, const QUuid &old_uuid)
+{
+	if (old_uuid == folio->uuid() || m_placed_folios.value(old_uuid) != folio) return;
+	unplaceFolio(folio, old_uuid);
+	placeFolio(folio);
+}
+
+/**
+	@brief projectDataBase::folioTitleBlockMismatches
+	Compare the store with every folio's own title block, both ways.
+*/
+QStringList projectDataBase::folioTitleBlockMismatches() const
+{
+	QStringList out;
+	QSet<QUuid> folios;
+	for (Diagram *diagram : m_project->diagrams()) {
+		folios.insert(diagram->uuid());
+		if (m_placed_folios.value(diagram->uuid()) != diagram)
+			out << diagram->uuid().toString() + QStringLiteral(": not stored");
+		else if (TitleBlockProperties(m_folio_titleblocks.value(diagram->uuid()))
+				 != diagram->border_and_titleblock.localTitleBlock())
+			out << diagram->uuid().toString() + QStringLiteral(": differs");
+	}
+	for (auto it = m_folio_titleblocks.constBegin() ; it != m_folio_titleblocks.constEnd() ; ++it)
+		if (!folios.contains(it.key()))
+			out << it.key().toString() + QStringLiteral(": stored, not a folio");
+	return out;
+}
+
+/**
+	@brief projectDataBase::conductorProperties
+	@return the stored properties of the placed wire @p conductor
+*/
+ConductorProperties projectDataBase::conductorProperties(const QUuid &conductor) const
+{
+	return m_conductor_properties.value(conductor);
+}
+
+bool projectDataBase::hasConductorProperties(const QUuid &conductor) const
+{
+	return m_conductor_properties.contains(conductor);
+}
+
+int projectDataBase::placedConductorCount(const QUuid &conductor) const
+{
+		//Without values(), as placedElementCount()
+	int n = 0;
+	for (auto it = m_placed_conductors.constFind(conductor) ;
+		 it != m_placed_conductors.constEnd() && it.key() == conductor ; ++it)
+		if (it.value()) ++n;
+	return n;
+}
+
+/**
+	@brief projectDataBase::storeConductorProperties
+	Store @p properties as the properties of the placed wire @p conductor,
+	in the conductor_properties table -- the attributes a saved wire
+	carries -- and the cache in front of it.
+	@return true if that changed what was stored
+*/
+bool projectDataBase::storeConductorProperties(const QUuid &conductor, const ConductorProperties &properties)
+{
+	if (conductor.isNull()) return false;
+	auto known = m_conductor_properties.constFind(conductor);
+	if (known != m_conductor_properties.constEnd() && *known == properties) return false;
+	m_conductor_properties.insert(conductor, properties);
+		//The rows are written by the next flushConductorProperties(): a
+		//folio inserted or removed renumbers the wires of every folio after
+		//it, one change each, and nothing reads them in between.
+	m_dirty_conductor_properties.insert(conductor);
+	return true;
+}
+
+/**
+	@brief projectDataBase::flushConductorProperties
+	Write the conductor_properties rows of every wire changed since the last
+	flush; only the attributes that changed.
+*/
+void projectDataBase::flushConductorProperties()
+{
+	if (m_dirty_conductor_properties.isEmpty()) {
+		return;
+	}
+	const QSet<QUuid> dirty = m_dirty_conductor_properties;
+	m_dirty_conductor_properties.clear();
+	const bool own_transaction = m_data_base.transaction();
+	for (const QUuid &conductor : dirty)
+	{
+		const QString uuid = conductor.toString();
+		QHash<QString, QString> attributes;
+		auto known = m_conductor_properties.constFind(conductor);
+		if (known != m_conductor_properties.constEnd()) {
+			for (const auto &attribute : known->attributes())
+				attributes.insert(attribute.first, attribute.second);
+		}
+		QHash<QString, QString> &rows = m_conductor_attributes[conductor];
+		for (auto it = rows.constBegin() ; it != rows.constEnd() ; ++it) {
+			if (attributes.contains(it.key())) continue;
+			m_conductor_property_remove_query.bindValue(QStringLiteral(":uuid"), uuid);
+			m_conductor_property_remove_query.bindValue(QStringLiteral(":name"), it.key());
+			if (!m_conductor_property_remove_query.exec()) {
+				qDebug() << "projectDataBase::flushConductorProperties remove error : " << m_conductor_property_remove_query.lastError();
+			}
+		}
+		for (auto it = attributes.constBegin() ; it != attributes.constEnd() ; ++it) {
+			auto row = rows.constFind(it.key());
+			if (row != rows.constEnd() && *row == it.value()) continue;
+			m_conductor_properties_insert_query.bindValue(QStringLiteral(":uuid"), uuid);
+			m_conductor_properties_insert_query.bindValue(QStringLiteral(":name"), it.key());
+			m_conductor_properties_insert_query.bindValue(QStringLiteral(":value"), it.value());
+			if (!m_conductor_properties_insert_query.exec()) {
+				qDebug() << "projectDataBase::flushConductorProperties insert error : " << m_conductor_properties_insert_query.lastError();
+			}
+		}
+		if (attributes.isEmpty())
+			m_conductor_attributes.remove(conductor);
+		else
+			rows = attributes;
+
+			//The conductor row's text, if the row is this wire's alone
+		if (known != m_conductor_properties.constEnd() && !m_update_blocked
+			&& placedConductorCount(conductor) == 1) {
+			m_update_conductor_query.bindValue(QStringLiteral(":uuid"), uuid);
+			m_update_conductor_query.bindValue(QStringLiteral(":text"), known->text);
+			if (!m_update_conductor_query.exec()) {
+				qDebug() << "projectDataBase::flushConductorProperties update error : " << m_update_conductor_query.lastError();
+			}
+		}
+	}
+	if (own_transaction) {
+		m_data_base.commit();
+	}
+}
+
+/**
+	@brief projectDataBase::conductorPropertiesStored
+	The placed wire @p conductor now has @p properties: the store keeps
+	them, and its conductor row's text follows at the next flush (a formula
+	is numbered by Conductor::refreshText(), which tells no table).
+*/
+void projectDataBase::conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties)
+{
+	if (storeConductorProperties(conductor->uuid(), properties)) {
+		m_content_changed = true;
+	}
+}
+
+/**
+	@brief projectDataBase::placeConductor
+	@p conductor is now placed: its properties are stored under its uuid.
+*/
+void projectDataBase::placeConductor(Conductor *conductor)
+{
+	if (!m_placed_conductors.contains(conductor->uuid(), conductor))
+		m_placed_conductors.insert(conductor->uuid(), conductor);
+	storeConductorProperties(conductor->uuid(), conductor->ownProperties());
+}
+
+/**
+	@brief projectDataBase::unplaceConductor
+	@p conductor no longer holds @p uuid. If another placed wire still does
+	(the original of a copy), its properties are stored again; otherwise
+	they go.
+*/
+void projectDataBase::unplaceConductor(Conductor *conductor, const QUuid &uuid)
+{
+	m_placed_conductors.remove(uuid, conductor);
+	if (Conductor *other = otherConductorHolder(uuid, nullptr)) {
+		storeConductorProperties(uuid, other->ownProperties());
+		return;
+	}
+	m_placed_conductors.remove(uuid);
+	if (m_conductor_properties.remove(uuid))
+		m_dirty_conductor_properties.insert(uuid);
+}
+
+/**
+	@brief projectDataBase::otherConductorHolder
+	@return a placed wire other than @p conductor holding @p uuid, or nullptr
+*/
+Conductor *projectDataBase::otherConductorHolder(const QUuid &uuid, const Conductor *conductor) const
+{
+	for (const QPointer<Conductor> &other : m_placed_conductors.values(uuid))
+		if (other && other != conductor) return other;
+	return nullptr;
+}
+
+/**
+	@brief projectDataBase::conductorUuidChanged
+	The uuid of the placed wire @p conductor changed from @p old_uuid (a
+	paste renews it, a file gives it): its properties and its row follow
+	it. A copy is placed while it still carries its original's uuid, so its
+	row could not be written then; the original's is written again.
+*/
+void projectDataBase::conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid)
+{
+	if (!m_placed_conductors.contains(old_uuid, conductor) || old_uuid == conductor->uuid()) return;
+	m_content_changed = true;
+	Conductor *other = otherConductorHolder(old_uuid, conductor);
+	unplaceConductor(conductor, old_uuid);
+	removeConductorRow(old_uuid);
+	if (other) {
+		writeConductorRow(other);
+	}
+	placeConductor(conductor);
+	writeConductorRow(conductor);
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::conductorPropertiesMismatches
+	Compare the store with every placed wire, both ways.
+*/
+QStringList projectDataBase::conductorPropertiesMismatches() const
+{
+	QStringList out;
+	QSet<QUuid> placed;
+	for (Diagram *diagram : m_project->diagrams()) {
+		for (Conductor *conductor : diagram->conductors()) {
+			placed.insert(conductor->uuid());
+			if (placedConductorCount(conductor->uuid()) > 1)
+				continue;
+			if (!m_conductor_properties.contains(conductor->uuid()))
+				out << conductor->uuid().toString() + QStringLiteral(": not stored");
+			else if (m_conductor_properties.value(conductor->uuid()) != conductor->ownProperties())
+				out << conductor->uuid().toString() + QStringLiteral(": differs");
+		}
+	}
+	for (auto it = m_conductor_properties.constBegin() ; it != m_conductor_properties.constEnd() ; ++it)
+		if (!placed.contains(it.key()))
+			out << it.key().toString() + QStringLiteral(": stored, not placed");
+	return out;
+}
+
+/**
+	@brief projectDataBase::prefillFromDocument
+	Fill the stores of symbol information, folio title blocks and wire
+	properties from @p document, the project being opened, before its
+	folios are built: what step 5 (lazy folios) needs, a folio's data
+	without its scene. In a .qetz these blocks come from project.sqlite.
+
+	Only what the document names by a uuid it holds once: a symbol, wire
+	or folio without one gets its uuid while it is built, and a uuid
+	several symbols share (F100) names none of them. Building then writes
+	the same stores again; endPrefill() says how often it agreed.
+*/
+void projectDataBase::prefillFromDocument(const QDomDocument &document)
+{
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+	for (PrefillTally &tally : m_prefill_tally) tally = PrefillTally();
+
+	QHash<QUuid, int> seen;
+	QHash<QUuid, DiagramContext> elements;
+	QHash<QUuid, ConductorProperties> conductors;
+	const QDomElement root = document.documentElement();
+	for (QDomElement folio = root.firstChildElement(QStringLiteral("diagram")) ; !folio.isNull() ;
+		 folio = folio.nextSiblingElement(QStringLiteral("diagram")))
+	{
+		const QUuid folio_uuid(folio.attribute(QStringLiteral("uuid")));
+		if (!folio_uuid.isNull() && ++seen[folio_uuid] == 1) {
+			TitleBlockProperties properties;
+			properties.fromXml(folio);
+				//What BorderTitleBlock::importTitleBlock() makes of them
+			properties.version = QetVersion::displayedVersion();
+			properties.collection = QET::QetCollection::Embedded;
+			m_prefilled_folios.insert(folio_uuid, properties);
+		}
+		const QDomElement element_list = folio.firstChildElement(QStringLiteral("elements"));
+		for (QDomElement element = element_list.firstChildElement(QStringLiteral("element")) ;
+			 !element.isNull() ; element = element.nextSiblingElement(QStringLiteral("element")))
+		{
+			const QUuid uuid(element.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || ++seen[uuid] > 1) continue;
+			DiagramContext information;
+			information.fromXml(element.firstChildElement(QStringLiteral("elementInformations")),
+								QStringLiteral("elementInformation"));
+			elements.insert(uuid, information);
+		}
+		const QDomElement conductor_list = folio.firstChildElement(QStringLiteral("conductors"));
+		for (QDomElement conductor = conductor_list.firstChildElement(QStringLiteral("conductor")) ;
+			 !conductor.isNull() ; conductor = conductor.nextSiblingElement(QStringLiteral("conductor")))
+		{
+			const QUuid uuid(conductor.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || ++seen[uuid] > 1) continue;
+			ConductorProperties properties;
+			properties.fromXml(conductor);
+			conductors.insert(uuid, properties);
+		}
+	}
+		//A uuid held twice names nothing
+	for (auto it = elements.constBegin() ; it != elements.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_elements.insert(it.key(), it.value());
+	for (auto it = conductors.constBegin() ; it != conductors.constEnd() ; ++it)
+		if (seen.value(it.key()) == 1) m_prefilled_conductors.insert(it.key(), it.value());
+	for (auto it = m_prefilled_folios.begin() ; it != m_prefilled_folios.end() ; )
+		it = seen.value(it.key()) == 1 ? std::next(it) : m_prefilled_folios.erase(it);
+
+	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it)
+		storeElementInformation(it.key(), it.value());
+	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it)
+		storeFolioTitleBlock(it.key(), it.value());
+	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it)
+		storeConductorProperties(it.key(), it.value());
+}
+
+/**
+	@brief projectDataBase::endPrefill
+	The folios are built: compare what prefillFromDocument() stored with
+	what building stored, and forget what nothing was placed for -- unless
+	@p keep_unplaced, when some folios are not built yet (QET_LAZY_FOLIOS):
+	the store then answers for their items until they are.
+*/
+void projectDataBase::endPrefill(bool keep_unplaced)
+{
+	auto tally = [](PrefillTally &t, const QStringList &differing) {
+		if (differing.isEmpty()) { ++t.agree; return; }
+		++t.differ;
+		for (const QString &field : differing) ++t.fields[field];
+	};
+	for (auto it = m_prefilled_elements.constBegin() ; it != m_prefilled_elements.constEnd() ; ++it) {
+		if (!placedElementCount(it.key())) {
+			++m_prefill_tally[0].unplaced;
+			if (!keep_unplaced && !m_placed_elements.contains(it.key())) forgetElementInformation(it.key());
+			continue;
+		}
+		const DiagramContext built = m_element_information.value(it.key());
+		QStringList differing;
+		const QList<QString> built_keys = built.keys();
+		QSet<QString> names(built_keys.cbegin(), built_keys.cend());
+		const QList<QString> prefilled_keys = it.value().keys();
+		names.unite(QSet<QString>(prefilled_keys.cbegin(), prefilled_keys.cend()));
+		for (const QString &name : names)
+			if (built.value(name) != it.value().value(name)
+				|| built.keyMustShow(name) != it.value().keyMustShow(name))
+				differing << name;
+		tally(m_prefill_tally[0], differing);
+	}
+	for (auto it = m_prefilled_folios.constBegin() ; it != m_prefilled_folios.constEnd() ; ++it) {
+		if (!m_placed_folios.value(it.key())) {
+			++m_prefill_tally[1].unplaced;
+			if (!keep_unplaced) m_folio_titleblocks.remove(it.key());
+			continue;
+		}
+		const TitleBlockProperties built = m_folio_titleblocks.value(it.key());
+		const TitleBlockProperties &p = it.value();
+		QStringList differing;
+		if (built.title != p.title) differing << QStringLiteral("title");
+		if (built.author != p.author) differing << QStringLiteral("author");
+		if (built.date != p.date) differing << QStringLiteral("date");
+		if (built.filename != p.filename) differing << QStringLiteral("filename");
+		if (built.plant != p.plant) differing << QStringLiteral("plant");
+		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
+		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
+		if (built.version != p.version) differing << QStringLiteral("version");
+		if (built.folio != p.folio) differing << QStringLiteral("folio");
+		if (built.auto_page_num != p.auto_page_num) differing << QStringLiteral("auto_page_num");
+		if (built.template_name != p.template_name) differing << QStringLiteral("template_name");
+		if (!(built.context == p.context)) differing << QStringLiteral("context");
+		if (built.display_at != p.display_at) differing << QStringLiteral("display_at");
+		if (built.collection != p.collection) differing << QStringLiteral("collection");
+		tally(m_prefill_tally[1], differing);
+	}
+	for (auto it = m_prefilled_conductors.constBegin() ; it != m_prefilled_conductors.constEnd() ; ++it) {
+		if (!placedConductorCount(it.key())) {
+			++m_prefill_tally[2].unplaced;
+			if (!keep_unplaced && !m_placed_conductors.contains(it.key()) && m_conductor_properties.remove(it.key()))
+				m_dirty_conductor_properties.insert(it.key());
+			continue;
+		}
+		QHash<QString, QString> built, prefilled;
+		for (const auto &a : m_conductor_properties.value(it.key()).attributes()) built.insert(a.first, a.second);
+		for (const auto &a : it.value().attributes()) prefilled.insert(a.first, a.second);
+		QStringList differing;
+		QSet<QString> names(built.keyBegin(), built.keyEnd());
+		names.unite(QSet<QString>(prefilled.keyBegin(), prefilled.keyEnd()));
+		for (const QString &name : names)
+			if (built.value(name) != prefilled.value(name)) differing << name;
+		tally(m_prefill_tally[2], differing);
+	}
+	m_prefilled_elements.clear();
+	m_prefilled_folios.clear();
+	m_prefilled_conductors.clear();
+}
+
+/**
+	@brief projectDataBase::prefillReport
+	@return how the last prefillFromDocument() compared with building, one
+	line: per store, values that agreed, differed (and in which fields),
+	and were not placed
+*/
+QString projectDataBase::prefillReport() const
+{
+	static const char *names[] = {"symbols", "folios", "wires"};
+	QStringList parts;
+	for (int i = 0 ; i < 3 ; ++i) {
+		const PrefillTally &t = m_prefill_tally[i];
+		QStringList fields;
+		for (auto it = t.fields.constBegin() ; it != t.fields.constEnd() ; ++it)
+			fields << QStringLiteral("%1 %2").arg(it.key()).arg(it.value());
+		parts << QStringLiteral("%1 %2 agree, %3 differ%4, %5 not placed")
+				 .arg(QLatin1String(names[i])).arg(t.agree).arg(t.differ)
+				 .arg(fields.isEmpty() ? QString() : QStringLiteral(" (") + fields.join(QStringLiteral(", ")) + QLatin1Char(')'))
+				 .arg(t.unplaced);
+	}
+	return parts.join(QStringLiteral("; "));
 }
 
 /**
@@ -2210,17 +3324,30 @@ void projectDataBase::populateLinkTable()
 	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
 								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
 
-	for (const auto &diagram : m_project->diagrams())
+	for (const auto &diagram : m_project->folios())
 	{
+			//A folio not built: its rows, but to a partner since removed
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("link"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio) "
+										   "AND linked_uuid IN (SELECT uuid FROM element)"));
+			continue;
+		}
 		const ElementProvider ep(diagram);
 		for (const auto &elmt : ep.find(allElementTypes()))
 		{
+			QList<std::pair<QString, int>> rows;
 			for (Element *linked : elmt->linkedElements())
+				rows.append({linked->uuid().toString(), elmt->groupIndexForElement(linked)});
+				//Partners on a folio not built, which it will be linked to
+			for (const auto &waiting : elmt->waitingLinks())
+				rows.append({waiting.first.toString(), waiting.second});
+			for (const auto &row : std::as_const(rows))
 			{
-				const int group = elmt->groupIndexForElement(linked);
 				query.bindValue(QStringLiteral(":element_uuid"), elmt->uuid().toString());
-				query.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
-				query.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
+				query.bindValue(QStringLiteral(":linked_uuid"), row.first);
+				query.bindValue(QStringLiteral(":group_index"), row.second >= 0 ? QVariant(row.second) : QVariant());
 				if (!query.exec()) {
 					qDebug() << "projectDataBase::populateLinkTable insert error : " << query.lastError();
 				}
@@ -2236,8 +3363,16 @@ void projectDataBase::populateLinkTable()
 */
 void projectDataBase::linksChanged()
 {
+	queueLinks(qobject_cast<Element *>(sender()));
+}
+
+/**
+	@brief projectDataBase::queueLinks
+	The link rows of @p element are written again by the next flushLinks().
+*/
+void projectDataBase::queueLinks(Element *element)
+{
 	m_content_changed = true;
-	auto *element = qobject_cast<Element *>(sender());
 	if (element && !m_dirty_link_elements.contains(element)) {
 		m_dirty_link_elements << element;
 	}
@@ -2271,13 +3406,33 @@ void projectDataBase::flushLinks()
 			qDebug() << "projectDataBase::flushLinks remove error : " << remove.lastError();
 		}
 			//An element taken off its folio is unlinked first (Diagram::
-			//removeItem()), so it writes no rows here.
+			//removeItem()), so it writes no rows here; one on a removed
+			//folio is not, and writes none either.
+		if (!m_placed_elements.contains(element->uuid(), element)) {
+			continue;
+		}
 		for (Element *linked : element->linkedElements())
 		{
+				//A symbol on a removed folio stays linked, for the undo,
+				//but the project no longer has it
+			if (!m_placed_elements.contains(linked->uuid(), linked)) {
+				continue;
+			}
 			const int group = element->groupIndexForElement(linked);
 			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
 			insert.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
 			insert.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
+			if (!insert.exec()) {
+				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
+			}
+		}
+			//Partners on a folio not built (QET_LAZY_FOLIOS), which it will
+			//be linked to once that folio is
+		for (const auto &waiting : element->waitingLinks())
+		{
+			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
+			insert.bindValue(QStringLiteral(":linked_uuid"), waiting.first.toString());
+			insert.bindValue(QStringLiteral(":group_index"), waiting.second >= 0 ? QVariant(waiting.second) : QVariant());
 			if (!insert.exec()) {
 				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
 			}
@@ -2293,7 +3448,8 @@ void projectDataBase::populateDiagramInfoTable()
 	QSqlQuery query(m_data_base);
 	query.exec("DELETE FROM diagram_info");
 
-	for (auto *diagram : m_project->diagrams())
+		//The folios' own data: folios() builds nothing
+	for (auto *diagram : m_project->folios())
 	{
 		bindDiagramInfoValues(m_insert_diagram_info_query, diagram);
 
@@ -2315,8 +3471,15 @@ void projectDataBase::populateConductorTable()
 	query.exec(QStringLiteral("DELETE FROM conductor"));
 	query.exec(QStringLiteral("DELETE FROM terminal"));
 
-	for (auto *diagram : m_project->diagrams())
+	for (auto *diagram : m_project->folios())
 	{
+		if (m_kept_folios.contains(diagram)) {
+			restoreKeptRows(QStringLiteral("terminal"), diagram,
+							QStringLiteral("element_uuid IN (SELECT uuid FROM kept_element "
+										   "WHERE diagram_uuid = :folio)"));
+			restoreKeptRows(QStringLiteral("conductor"), diagram, QStringLiteral("diagram_uuid = :folio"));
+			continue;
+		}
 		const auto conductor_list = diagram->conductors();
 		for (auto *conductor : conductor_list)
 		{
@@ -2400,6 +3563,20 @@ void projectDataBase::prepareQuery()
 	m_cascade_remove_element_query = QSqlQuery(m_data_base);
 	m_cascade_remove_element_query.prepare(
 		"DELETE FROM element WHERE diagram_uuid = :uuid");
+
+		//The symbol information store and an element's link rows
+	m_store_remove_query = QSqlQuery(m_data_base);
+	m_store_remove_query.prepare(QStringLiteral("DELETE FROM element_information WHERE element_uuid = :uuid"));
+	m_store_insert_query = QSqlQuery(m_data_base);
+	m_store_insert_query.prepare(QStringLiteral("INSERT INTO element_information (element_uuid, ord, name, value, show) "
+												"VALUES (:uuid, :ord, :name, :value, :show)"));
+	m_conductor_properties_insert_query = QSqlQuery(m_data_base);
+	m_conductor_properties_insert_query.prepare(QStringLiteral("INSERT OR REPLACE INTO conductor_properties (conductor_uuid, name, value) "
+															   "VALUES (:uuid, :name, :value)"));
+	m_conductor_property_remove_query = QSqlQuery(m_data_base);
+	m_conductor_property_remove_query.prepare(QStringLiteral("DELETE FROM conductor_properties WHERE conductor_uuid = :uuid AND name = :name"));
+	m_remove_links_query = QSqlQuery(m_data_base);
+	m_remove_links_query.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid OR linked_uuid = :uuid"));
 
 	m_remove_diagram_query = QSqlQuery(m_data_base);
 	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");
@@ -2689,9 +3866,13 @@ void projectDataBase::exportDb(projectDataBase *db,
 	// VACUUM INTO creates a standalone copy of the current database without
 	// requiring access to the SQLite driver's native connection handle.
 	const auto escaped_path = path_.replace("'", "''");
+	if (db->m_project) {
+		db->m_project->loadFolios(); //the drawing tables need built folios
+	}
 	db->flushDrawingItems();
 	db->flushLinks();
 	db->flushElementPositions();
+	db->flushConductorProperties();
 	QSqlQuery query(db->m_data_base);
 	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();

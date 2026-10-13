@@ -84,6 +84,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QPointer<QetGraphicsTableItem> nextTable() const;
 		void setToMinimumHeight();
 		void initLink();
+		bool hasPendingLink() const {return !m_pending_previous_table_uuid.isNull();}
+		QUuid previousTableUuid() const;
 		QUuid uuid() const {return m_uuid;}
 		int minimumRowHeight() const;
 

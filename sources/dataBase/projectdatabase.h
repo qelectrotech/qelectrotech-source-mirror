@@ -24,8 +24,14 @@
 #include <QPointer>
 #include <QFileDialog>
 #include <QHash>
+#include <QMap>
+#include <QDomDocument>
 #include <QSet>
 #include <QUuid>
+
+#include "../diagramcontext.h"
+#include "../titleblockproperties.h"
+#include "../conductorproperties.h"
 
 class Element;
 class QETProject;
@@ -98,6 +104,62 @@ class projectDataBase : public QObject
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
+			//The information of every symbol placed in the project, by
+			//symbol uuid: the store each symbol's information is written
+			//through (DB-ACCESSORS-PLAN.md stage 4.1). A symbol not placed
+			//(a preview, the symbol editor) keeps its own.
+		DiagramContext elementInformation(const QUuid &element) const;
+		bool hasElementInformation(const QUuid &element) const;
+			//How many placed symbols hold @p element: more than one in a
+			//file whose symbols were copied by an old version (F100), or
+			//for a moment while a copy's uuid is renewed
+		int placedElementCount(const QUuid &element) const;
+		bool storeElementInformation(const QUuid &element, const DiagramContext &information);
+		void elementInformationChanged(Element *element, const DiagramContext &information);
+		void forgetElementInformation(const QUuid &element);
+		void elementUuidChanged(Element *element, const QUuid &old_uuid);
+			//Placed symbols whose information differs from the store's,
+			//each as "uuid: why"; empty when they all agree
+		QStringList elementInformationMismatches() const;
+
+			//The title block properties of every folio of the project, by
+			//folio uuid: the store each folio's title block is written
+			//through (DB-ACCESSORS-PLAN.md stage 4.4). A folio not in a
+			//project keeps its own.
+		TitleBlockProperties folioTitleBlock(const QUuid &folio) const;
+		const TitleBlockProperties *storedFolioTitleBlock(const QUuid &folio) const;
+		Diagram *placedFolio(const QUuid &folio) const;
+		void storeFolioTitleBlock(const QUuid &folio, const TitleBlockProperties &properties);
+		void placeFolio(Diagram *folio);
+		void folioUuidChanged(Diagram *folio, const QUuid &old_uuid);
+		QStringList folioTitleBlockMismatches() const;
+
+			//The properties of every wire placed in the project, by wire
+			//uuid: the store each wire's properties are written through
+			//(DB-ACCESSORS-PLAN.md stage 4.5). A wire not placed keeps its own.
+		ConductorProperties conductorProperties(const QUuid &conductor) const;
+		bool hasConductorProperties(const QUuid &conductor) const;
+		int placedConductorCount(const QUuid &conductor) const;
+		void conductorPropertiesStored(Conductor *conductor, const ConductorProperties &properties);
+		void conductorUuidChanged(Conductor *conductor, const QUuid &old_uuid);
+		QStringList conductorPropertiesMismatches() const;
+
+			//Fill the three stores from a project's document before its
+			//folios are built (DB-ACCESSORS-PLAN.md stage 4.6), then, once
+			//they are, say how many of those values building agreed with.
+		void prefillFromDocument(const QDomDocument &document);
+		void endPrefill(bool keep_unplaced = false);
+			//A folio of a project opened with QET_LAZY_FOLIOS is being built:
+			//its rows came from the document already, so none are written
+			//and the database is not marked changed
+		void setBuildingFolio(bool building);
+		bool isBuildingFolio() const {return m_building_folios > 0;}
+		bool rowsFromDocument() const {return m_rows_from_document;}
+		QString prefillReport() const;
+		QSet<QUuid> foliosWithUnjoinedWires() const;
+		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
+		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
+
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
 		void elementInfoChanged (Element *element);
@@ -145,6 +207,7 @@ class projectDataBase : public QObject
 		void flushElementPositions();
 		void populateElementTable();
 		void populateElementInfoTable();
+		void populateElementInfoTableFromFolios();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
 		void populateLinkTable();
@@ -203,7 +266,12 @@ class projectDataBase : public QObject
 				  m_cascade_remove_element_query,
 				  m_insert_shape_query,
 				  m_insert_independent_text_query,
-				  m_insert_image_query;
+				  m_insert_image_query,
+				  m_store_remove_query,
+				  m_store_insert_query,
+				  m_remove_links_query,
+				  m_conductor_properties_insert_query,
+				  m_conductor_property_remove_query;
 
 			//Which uuid's row each drawing item last wrote, and which item
 			//wrote each row. A pasted copy is added to the folio still
@@ -222,6 +290,51 @@ class projectDataBase : public QObject
 			//sends xChanged and yChanged for every step of a drag, so the
 			//cell is written when next read, as drawing items are.
 		QList<QPointer<Element>> m_moved_elements;
+		QHash<QUuid, DiagramContext> m_element_information;
+			//The placed symbols holding each uuid: a paste or a folio copy
+			//briefly gives a copy its original's uuid, so one uuid can have
+			//two symbols until the copy's is renewed.
+		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
+		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
+		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
+		QHash<QUuid, ConductorProperties> m_conductor_properties;
+			//The rows of conductor_properties, to write only what changes
+		QHash<QUuid, QHash<QString, QString>> m_conductor_attributes;
+		QSet<QUuid> m_dirty_conductor_properties;
+		int m_building_folios = 0;
+		QSet<QUuid> m_folios_with_unjoined_wires;
+			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
+		QSet<Diagram *> m_kept_folios;
+			//The tables' rows were filled from the document: those of a
+			//folio not built yet are right (QET_LAZY_FOLIOS)
+		bool m_rows_from_document = false;
+		void keepUnbuiltFolioRows();
+		void restoreKeptRows(const QString &table, Diagram *folio, const QString &where);
+		void dropKeptRows();
+		bool m_changed_before_folio = false, m_blocked_before_folio = false;
+		QHash<QUuid, DiagramContext> m_prefilled_elements;
+		QHash<QUuid, TitleBlockProperties> m_prefilled_folios;
+		QHash<QUuid, ConductorProperties> m_prefilled_conductors;
+		struct PrefillTally {
+			int agree = 0, differ = 0, unplaced = 0;
+			QMap<QString, int> fields;
+		};
+		PrefillTally m_prefill_tally[3];
+		void flushConductorProperties();
+		QMultiHash<QUuid, QPointer<Conductor>> m_placed_conductors;
+		bool storeConductorProperties(const QUuid &conductor, const ConductorProperties &properties);
+		void placeConductor(Conductor *conductor);
+		void unplaceConductor(Conductor *conductor, const QUuid &uuid);
+		Conductor *otherConductorHolder(const QUuid &uuid, const Conductor *conductor) const;
+		void writeConductorRow(Conductor *conductor);
+		void removeConductorRow(const QUuid &uuid);
+		void unplaceFolio(Diagram *folio, const QUuid &uuid);
+		void placeElement(Element *element);
+		Element *otherHolder(const QUuid &uuid, const Element *element) const;
+		void writeElementRows(Element *element);
+		void queueLinks(Element *element);
+		void removeElementRows(const QUuid &uuid);
+		void unplaceElement(Element *element, const QUuid &uuid);
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

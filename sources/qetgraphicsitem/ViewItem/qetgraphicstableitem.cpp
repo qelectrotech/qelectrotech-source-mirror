@@ -565,13 +565,32 @@ void QetGraphicsTableItem::initLink()
 {
 	if (!m_pending_previous_table_uuid.isNull())
 	{
-		ElementProvider provider_(this->diagram()->project());
-		if (auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid)) {
+			//The built folios only: a previous table on a folio not built
+			//yet (QET_LAZY_FOLIOS) is linked when that folio is
+		QETProject *project = this->diagram()->project();
+		ElementProvider provider_(project->builtFolios());
+		auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid);
+		if (previous_table) {
 			setPreviousTable(previous_table);
 		}
-		m_pending_previous_table_uuid = QUuid(); //Set to null in case initLink is called again
+		if (previous_table || !project->unloadedFolioCount()) {
+			m_pending_previous_table_uuid = QUuid(); //Set to null in case initLink is called again
+		}
 	}
 	setSize(m_pending_size);
+}
+
+/**
+	@brief QetGraphicsTableItem::previousTableUuid
+	@return the uuid of the table before this one in its chain, linked or
+	still waiting for its folio to be built (QET_LAZY_FOLIOS); null if none
+*/
+QUuid QetGraphicsTableItem::previousTableUuid() const
+{
+	if (m_previous_table) {
+		return m_previous_table->uuid();
+	}
+	return m_pending_previous_table_uuid;
 }
 
 /**
@@ -610,7 +629,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	const auto project_ = diagram() ? diagram()->project() : nullptr;
 	auto in_project = [project_](const QetGraphicsTableItem *table) {
 		return project_ && table->diagram()
-				&& project_->diagrams().contains(table->diagram());
+				&& project_->folios().contains(table->diagram());
 	};
 	QetGraphicsTableItem *previous_ = m_previous_table;
 	while (previous_ && !in_project(previous_)) {

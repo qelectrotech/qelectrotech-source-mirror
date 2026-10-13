@@ -869,8 +869,8 @@ int exportLinks(QETProject &project, const QString &output)
 /// diff can reveal markup QET silently normalises (tolerated-but-invalid XML).
 int resaveProject(QETProject &project, const QString &output)
 {
-	const QDomDocument doc = project.toXml();
 	if (QETProject::isContainerPath(output)) {
+		const QDomDocument doc = project.toXml();
 		QString error;
 		if (!QETProject::writeContainer(doc, output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
@@ -879,13 +879,17 @@ int resaveProject(QETProject &project, const QString &output)
 		out << "Re-saved project -> " << output << "\n";
 		return 0;
 	}
+		//Folios not built (QET_LAZY_FOLIOS) written as read when that is
+		//what building them would write (QETProject::toXml())
+	QHash<int, QByteArray> kept_folios;
+	const QDomDocument doc = project.toXml(&kept_folios);
 	QFile file(output);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		err << "Cannot open '" << output << "' for writing.\n";
 		return 1;
 	}
 	QTextStream fout(&file);
-	fout << doc.toString(4);
+	fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
 	file.close();
 	out << "Re-saved project -> " << output << "\n";
 	return 0;
@@ -963,21 +967,25 @@ int setTitleBlock(QETProject &project, const QString &output,
 		++folios;
 	}
 
-	const QDomDocument doc = project.toXml();
 	if (QETProject::isContainerPath(output)) {
+		const QDomDocument doc = project.toXml();
 		QString error;
 		if (!QETProject::writeContainer(doc, output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
 	} else {
+			//Folios not built (QET_LAZY_FOLIOS) written as read when that is
+			//what building them would write (QETProject::toXml())
+		QHash<int, QByteArray> kept_folios;
+		const QDomDocument doc = project.toXml(&kept_folios);
 		QFile file(output);
 		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 			err << "Cannot open '" << output << "' for writing.\n";
 			return 1;
 		}
 		QTextStream fout(&file);
-		fout << doc.toString(4);
+		fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
 		file.close();
 	}
 	out << "Stamped " << fields.size() << " field(s) on "

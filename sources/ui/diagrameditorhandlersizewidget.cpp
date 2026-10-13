@@ -60,7 +60,8 @@ void DiagramEditorHandlerSizeWidget::on_comboBox_currentIndexChanged(int index)
 	{
 		editor_->setProperty("graphics_handler_size", size);
 		for (auto project_view : editor_->openedProjects()) {
-			for (auto diagram : project_view->project()->diagrams()) {
+				//Handles exist on built folios only
+			for (auto diagram : project_view->project()->builtFolios()) {
 				for (const auto item : diagram->items()) {
 					if (item->type() == QetGraphicsHandlerItem::Type) {
 						auto handler = qgraphicsitem_cast<QetGraphicsHandlerItem *>(item);
