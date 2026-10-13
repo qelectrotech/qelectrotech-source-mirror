@@ -467,5 +467,7 @@
 	<file>licenses/QElectroTech.LICENSE</file>
 	<file>licenses/QET-Elements.NOTICE</file>
 	<file>licenses/QET-Elements.LICENSE</file>
+	<file>ico/format-copy.svg</file>
+	<file>ico/format-apply.svg</file>
     </qresource>
 </RCC>

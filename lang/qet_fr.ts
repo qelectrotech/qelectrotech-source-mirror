@@ -11818,6 +11818,41 @@ Options disponibles :
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="468"/>
+        <source>Copy text format</source>
+        <translation>Copier le style de texte</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="469"/>
+        <source>Apply text format</source>
+        <translation>Appliquer le style de texte</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
+        <source>Copy the text format of the selected element as a template</source>
+        <comment>status bar tip</comment>
+        <translation>Copie le format de texte de l'élément sélectionné comme modèle</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="475"/>
+        <source>Apply the copied text format to the selected elements</source>
+        <comment>status bar tip</comment>
+        <translation>Applique le format de texte copié aux éléments sélectionnés</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4720"/>
+        <source>Text format of "%1" copied</source>
+        <translation>Style de texte de « %1 » copié</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="4748"/>
+        <source>Text format applied to %n element(s)</source>
+        <translation>
+            <numerusform>Style de texte appliqué à %n élément</numerusform>
+            <numerusform>Style de texte appliqué à %n éléments</numerusform>
+        </translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="175"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3925"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="3928"/>
@@ -15154,6 +15189,11 @@ Que désirez vous faire ?</translation>
 </context>
 <context>
     <name>QObject</name>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="432"/>
+        <source>Apply text format</source>
+        <translation>Appliquer le style de texte</translation>
+    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="352"/>
         <source>%n elements</source>

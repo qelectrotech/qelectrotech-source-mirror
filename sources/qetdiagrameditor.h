@@ -202,6 +202,8 @@ class QETDiagramEditor : public QETMainWindow
 		void showError(const QETResult &);
 		void showError(const QString &);
 		void subWindowActivated(QMdiSubWindow *subWindows);
+		void copyTextFormat();
+		void applyTextFormat();
 
 	private slots:
 		void updateTextGridButton();
@@ -215,7 +217,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_cut,                     ///< Cut selection to clipboard
 		*m_copy,                    ///< Copy selection to clipboard
 		*m_paste_element_info,      ///< Copy the information of the copied element onto the selected elements (#1375)
-		*m_insert_last_element = nullptr; ///< Place the last placed element again
+		*m_insert_last_element = nullptr, ///< Place the last placed element again
+		*m_copy_text_format = nullptr,  ///< Copy label/text formatting template
+		*m_apply_text_format = nullptr; ///< Apply label/text formatting template
 		
 		QActionGroup
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
