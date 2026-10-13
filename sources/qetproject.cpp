@@ -3018,6 +3018,19 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//built (DB-ACCESSORS-PLAN.md stage 4.6)
 	m_data_base.prefillFromDocument(xml_project);
 
+		//QET_LAZY_FOLIOS leaves the folios to be built when needed only
+		//when the database can be filled from the document: otherwise
+		//filling it from the folios builds every one of them anyway, late
+		//and more slowly than reading them now
+	m_lazy_open = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
+	if (m_lazy_open) {
+		const QString why = projectDataBase::documentRefusal(xml_project);
+		if (!why.isEmpty()) {
+			qInfo().noquote() << "Project opened with every folio built:" << why;
+			m_lazy_open = false;
+		}
+	}
+
 		//Load the diagrams
 	readDiagramsXml(xml_project);
 	const qint64 diagrams_ms = phase_timer.restart();
@@ -3134,7 +3147,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		//Where each line of the file starts, for a folio's text: lines
 		//[its start, the next element's start) (QETProject::toXml())
 	QList<qsizetype> line_starts;
-	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1 && !m_opened_content.isEmpty()) {
+	if (m_lazy_open && !m_opened_content.isEmpty()) {
 		line_starts << 0;
 		for (qsizetype i = 0 ; i < m_opened_content.size() ; ++i)
 			if (m_opened_content.at(i) == '\n') line_starts << i + 1;
@@ -3181,7 +3194,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
-			m_deferring_folios = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
+			m_deferring_folios = m_lazy_open;
 			diagram->initFromXml(diagram_xml_element);
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())

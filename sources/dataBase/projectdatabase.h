@@ -68,6 +68,14 @@ class projectDataBase : public QObject
 			*/
 		void updateDB(const QDomDocument &document);
 			/**
+				Why updateDB(document) will fill the tables from the folios
+				rather than from @p document, for the reasons the document
+				alone can tell; empty when it knows of none. Read before the
+				folios are: a project whose tables will come from the folios
+				builds every folio as it opens, even with QET_LAZY_FOLIOS.
+			*/
+		static QString documentRefusal(const QDomDocument &document);
+			/**
 				Suppress the full rebuild performed by updateDB().
 
 				While blocked, updateDB() returns immediately instead of
