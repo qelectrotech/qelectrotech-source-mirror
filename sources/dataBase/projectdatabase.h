@@ -114,7 +114,7 @@ class projectDataBase : public QObject
 
 			//The information of every symbol placed in the project, by
 			//symbol uuid: the store each symbol's information is written
-			//through (DB-ACCESSORS-PLAN.md stage 4.1). A symbol not placed
+			//through. A symbol not placed
 			//(a preview, the symbol editor) keeps its own.
 		DiagramContext elementInformation(const QUuid &element) const;
 		bool hasElementInformation(const QUuid &element) const;
@@ -132,7 +132,7 @@ class projectDataBase : public QObject
 
 			//The title block properties of every folio of the project, by
 			//folio uuid: the store each folio's title block is written
-			//through (DB-ACCESSORS-PLAN.md stage 4.4). A folio not in a
+			//through. A folio not in a
 			//project keeps its own.
 		TitleBlockProperties folioTitleBlock(const QUuid &folio) const;
 		const TitleBlockProperties *storedFolioTitleBlock(const QUuid &folio) const;
@@ -144,7 +144,7 @@ class projectDataBase : public QObject
 
 			//The properties of every wire placed in the project, by wire
 			//uuid: the store each wire's properties are written through
-			//(DB-ACCESSORS-PLAN.md stage 4.5). A wire not placed keeps its own.
+			//A wire not placed keeps its own.
 		ConductorProperties conductorProperties(const QUuid &conductor) const;
 		bool hasConductorProperties(const QUuid &conductor) const;
 		int placedConductorCount(const QUuid &conductor) const;
@@ -153,7 +153,7 @@ class projectDataBase : public QObject
 		QStringList conductorPropertiesMismatches() const;
 
 			//Fill the three stores from a project's document before its
-			//folios are built (DB-ACCESSORS-PLAN.md stage 4.6), then, once
+			//folios are built, then, once
 			//they are, say how many of those values building agreed with.
 		void prefillFromDocument(const QDomDocument &document);
 		void endPrefill(bool keep_unplaced = false);

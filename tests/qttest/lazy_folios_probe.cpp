@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Lazy folios (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md stages 5.2 and 5.3),
+// Lazy folios (QET_LAZY_FOLIOS),
 // linked against the application's objects: a folio shown in a project
 // opened without building its folios draws and links as in the project
 // opened as usual, building only it and the folios its links and tables

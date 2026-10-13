@@ -110,8 +110,8 @@ class BorderTitleBlock : public QObject
 		QRectF insideBorderRect() const;
 	
 		// methods to get title block basic data. A folio placed in a
-		// project reads them from the project's store
-		// (DB-ACCESSORS-PLAN.md stage 4.4), any other from its own copy.
+		// project reads them from the project's store, any other from its
+		// own copy.
 		/// @return the value of the title block "Author" field
 		QString author() const { const TitleBlockProperties *s = stored(); return(s ? s->author : btb_author_); }
 		/// @return the value of the title block "Date" field

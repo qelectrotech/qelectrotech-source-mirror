@@ -1857,7 +1857,7 @@ ConductorProperties Conductor::properties() const
 /**
 	@brief Conductor::placedStore
 	@return the project database holding this wire's properties
-	(DB-ACCESSORS-PLAN.md stage 4.5), or nullptr if it is not placed in a
+	or nullptr if it is not placed in a
 	project, or shares its uuid with another wire for the moment a copy
 	takes to get its own
 */

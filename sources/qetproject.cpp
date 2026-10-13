@@ -544,7 +544,7 @@ QETProject::ProjectState QETProject::state() const
 QList<Diagram *> QETProject::diagrams() const
 {
 		//Every caller of diagrams() expects every folio built: those that
-		//do not are moved to folios() one by one (LAZY-FOLIO-PLAN.md)
+		//do not are moved to folios() one by one
 	loadFolios();
 	return(m_diagrams_list);
 }
@@ -2291,8 +2291,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios)
 		loadFolios();
 	}
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
-		//information, folio title blocks and wire properties
-		//(DB-ACCESSORS-PLAN.md) agree with every placed symbol, folio and
+		//information, folio title blocks and wire properties agree with every placed symbol, folio and
 		//wire, at each save. A test and debugging aid; it changes nothing.
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1) {
 		const QStringList mismatches = m_data_base.elementInformationMismatches();
@@ -3015,7 +3014,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
-		//built (DB-ACCESSORS-PLAN.md stage 4.6)
+		//built
 	m_data_base.prefillFromDocument(xml_project);
 
 		//QET_LAZY_FOLIOS leaves the folios to be built when needed only
@@ -3070,7 +3069,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//number can hold what a save rewrites (tst_freetextnonfinite,
 		//tst_foliofreezeflags): only with QET_LAZY_SAVE_KEPT=1, until a
 		//.qetz, whose manifest names its writer, does it
-		//(QETZ-DB-TRUTH-PLAN.md D4)
 	m_kept_folios_trusted = qEnvironmentVariableIntValue("QET_LAZY_SAVE_KEPT") == 1
 			&& unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()

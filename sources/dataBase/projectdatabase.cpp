@@ -2497,7 +2497,7 @@ void projectDataBase::populateElementTable()
 /**
 	@brief projectDataBase::populateElementInfoTable
 	Populate the element info table from the symbol information store
-	(DB-ACCESSORS-PLAN.md stage 4.3), in the order of the element table.
+	in the order of the element table.
 	The label column is the label a symbol shows, which its folio's
 	numbering decides: the symbol holding the uuid gives it.
 

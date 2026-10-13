@@ -122,7 +122,7 @@ class QETProject : public QObject
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
-			//(QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md); diagrams() builds them
+			//(QET_LAZY_FOLIOS); diagrams() builds them
 		QList<Diagram *> folios() const;
 		bool deferringFolios() const {return m_deferring_folios;}
 		int unloadedFolioCount() const;
