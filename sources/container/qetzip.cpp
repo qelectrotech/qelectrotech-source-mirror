@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QSaveFile>
 #include <QSet>
+#include <QtEndian>
 
 namespace {
 void setError(QString *error, const QString &text)
@@ -43,6 +44,42 @@ bool safeName(const QString &name)
 		if (part == QLatin1String("..")) return false;
 	}
 	return true;
+}
+
+	//Built with MINIZ_NO_TIME, miniz leaves each entry's DOS date at 0,
+	//day 0 of month 0, which is no date: unzip shows 30 Nov 1979, other
+	//tools 13 Dec 1901. Give every entry 1 Jan 1980 00:00 instead, the
+	//first valid DOS date, so the bytes still do not depend on the time.
+constexpr quint16 EntryDosDate = (1 << 5) | 1;
+
+bool setEntryDates(QByteArray *bytes)
+{
+	char *data = bytes->data();
+	mz_zip_archive zip;
+	mz_zip_zero_struct(&zip);
+	if (!mz_zip_reader_init_mem(&zip, data, size_t(bytes->size()), 0)) return false;
+
+	bool ok = true;
+	const mz_uint count = mz_zip_reader_get_num_files(&zip);
+	for (mz_uint i = 0 ; i < count && ok ; ++i)
+	{
+		mz_zip_archive_file_stat stat;
+		if (!mz_zip_reader_file_stat(&zip, i, &stat)) {
+			ok = false;
+			break;
+		}
+			//date at offset 12 of the local header, 14 of the central one
+		const quint64 local = stat.m_local_header_ofs + 12;
+		const quint64 central = zip.m_central_directory_file_ofs + stat.m_central_dir_ofs + 14;
+		if (local + 2 > quint64(bytes->size()) || central + 2 > quint64(bytes->size())) {
+			ok = false;
+			break;
+		}
+		qToLittleEndian<quint16>(EntryDosDate, data + local);
+		qToLittleEndian<quint16>(EntryDosDate, data + central);
+	}
+	mz_zip_reader_end(&zip);
+	return ok;
 }
 }
 
@@ -87,8 +124,12 @@ QByteArray QetZip::toBytes(const QList<Entry> &entries, QString *error)
 		mz_zip_writer_end(&zip);
 		return {};
 	}
-	const QByteArray bytes(static_cast<const char *>(buffer), qsizetype(size));
+	QByteArray bytes(static_cast<const char *>(buffer), qsizetype(size));
 	mz_zip_writer_end(&zip);   //frees buffer
+	if (!setEntryDates(&bytes)) {
+		setError(error, QStringLiteral("cannot date the zip entries"));
+		return {};
+	}
 	return bytes;
 }
 
