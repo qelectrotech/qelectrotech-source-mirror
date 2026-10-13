@@ -611,9 +611,10 @@ QList<Diagram *> QETProject::folios() const
 	@return the folios CableManager::refreshLabels() works on, built: every
 	folio when the project has cables (a core is followed through folio
 	reports to any folio); without cables, the folios built and those not
-	built yet (QET_LAZY_FOLIOS) holding a wire that still refers to a
-	cable -- the only wires the pass changes then, taking the reference
-	away -- found in the XML kept for them
+	built yet holding a wire that still refers to a cable -- the only
+	wires the pass changes then, taking the reference away. Read from the
+	project database for a .qetz opened from it, from the folios' XML
+	otherwise.
 */
 QList<Diagram *> QETProject::cableLabelFolios()
 {
@@ -621,14 +622,25 @@ QList<Diagram *> QETProject::cableLabelFolios()
 		return diagrams();
 	}
 	QList<Diagram *> referring;
-	for (Diagram *d : std::as_const(m_diagrams_list)) {
-		if (d->isLoaded()) continue;
-		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
-															 QStringLiteral("conductor")))
-			if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
-				referring << d;
-				break;
-			}
+	if (m_opened_from_index) {
+		QSet<QUuid> folios;
+		QSqlQuery query = m_data_base.newQuery(QStringLiteral(
+				"SELECT DISTINCT c.diagram_uuid FROM conductor c JOIN conductor_properties p "
+				"ON p.conductor_uuid = c.uuid WHERE p.name = 'cable_uuid' AND p.value != ''"));
+		if (query.exec())
+			while (query.next()) folios.insert(QUuid(query.value(0).toString()));
+		for (Diagram *d : std::as_const(m_diagrams_list))
+			if (!d->isLoaded() && folios.contains(d->uuid())) referring << d;
+	} else {
+		for (Diagram *d : std::as_const(m_diagrams_list)) {
+			if (d->isLoaded()) continue;
+			for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
+																 QStringLiteral("conductor")))
+				if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
+					referring << d;
+					break;
+				}
+		}
 	}
 	buildFolios(referring);
 	return builtFolios();
