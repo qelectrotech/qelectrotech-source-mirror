@@ -49,20 +49,24 @@ namespace QetContainer
 		/// unless their min-reader allows this one.
 	constexpr int Format = 3;
 		/// 3: the database's rows keyed by the items' uuids, true/false as
-		/// 1/0, its PRAGMA user_version the format. Format 2 is still read.
+		/// 1/0, its PRAGMA user_version the format, the symbols' type left
+		/// in the folio files, no column for where a block sat. Format 2 is
+		/// still read; a later format whose min-reader allows this one is
+		/// read too, and said so through join()'s @p format.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
 							   QString *error = nullptr);
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr);
+			  QString *error = nullptr, int *format = nullptr);
 
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
 		/// true if @p content is a zip, so a .qetz rather than a .qet
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
-	bool readDocument(const QByteArray &content, QDomDocument *document, QString *error = nullptr);
+	bool readDocument(const QByteArray &content, QDomDocument *document, QString *error = nullptr,
+					  int *format = nullptr);
 }
 
 #endif // QETCONTAINER_H

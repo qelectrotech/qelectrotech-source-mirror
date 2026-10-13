@@ -58,6 +58,15 @@ bool replaceMarker(QDomElement parent, const QDomElement &block)
 	return false;
 }
 
+	//true if @p parent holds the marker of a block @p tag moved out: where
+	//the block goes back, and that it was there at all
+bool hasMarker(const QDomElement &parent, const QString &tag)
+{
+	for (QDomElement m = parent.firstChildElement(MarkerTag) ; !m.isNull() ; m = m.nextSiblingElement(MarkerTag))
+		if (m.attribute(MarkerBlock) == tag) return true;
+	return false;
+}
+
 const QStringList FolioData = {
 	QStringLiteral("title"), QStringLiteral("author"), QStringLiteral("date"),
 	QStringLiteral("folio"), QStringLiteral("indexrev"), QStringLiteral("filename"),
@@ -114,11 +123,11 @@ QString schema()
 		"CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);"
 		"CREATE TABLE project_property (ord INTEGER PRIMARY KEY, name TEXT, value TEXT, attrs TEXT);"
 		"CREATE TABLE folio (uuid TEXT PRIMARY KEY, pos INTEGER NOT NULL UNIQUE, %1,"
-		" props_at INTEGER, props_attrs TEXT);"
+		" props_attrs TEXT);"
 		"CREATE TABLE folio_property (folio_uuid TEXT NOT NULL REFERENCES folio, ord INTEGER NOT NULL,"
 		" name TEXT, value TEXT, attrs TEXT, PRIMARY KEY (folio_uuid, ord));"
 		"CREATE TABLE element (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio, %2,"
-		" info_at INTEGER, info_attrs TEXT, links_at INTEGER, links_attrs TEXT);"
+		" info_attrs TEXT, links_attrs TEXT);"
 		"CREATE TABLE element_info (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,"
 		" name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (element_uuid, ord));"
 		"CREATE TABLE link (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,"
@@ -290,15 +299,6 @@ bool listBlock(const QDomElement &block, const QString &entry)
 	}
 	return true;
 }
-
-int childIndex(const QDomNode &child)
-{
-	int i = 0;
-	for (QDomNode n = child.parentNode().firstChild() ; !n.isNull() ; n = n.nextSibling(), ++i)
-		if (n == child) return i;
-	return -1;
-}
-
 
 	//The attributes @p names of @p e, taken out of it; one that cannot be
 	//stored stays, its value null
@@ -511,9 +511,9 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 
 	Statement meta(db.m_db, QStringLiteral("INSERT INTO meta VALUES (?,?)"));
 	Statement project_property(db.m_db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?)"));
-	Statement folio(db.m_db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?,?)").arg(placeholders(FolioData.size())));
+	Statement folio(db.m_db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?)").arg(placeholders(FolioData.size())));
 	Statement folio_property(db.m_db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?)"));
-	Statement element(db.m_db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?,?,?)").arg(placeholders(ElementData.size())));
+	Statement element(db.m_db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?)").arg(placeholders(ElementData.size())));
 	Statement element_info(db.m_db, QStringLiteral("INSERT INTO element_info VALUES (?,?,?,?,?,?)"));
 	Statement link(db.m_db, QStringLiteral("INSERT INTO link VALUES (?,?,?,?)"));
 	Statement conductor(db.m_db, QStringLiteral("INSERT INTO conductor VALUES (?,?,%1)").arg(placeholders(ConductorData.size())));
@@ -538,7 +538,6 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 		//Project properties
 	const QDomElement project_props = project.firstChildElement(QStringLiteral("properties"));
 	if (!project_props.isNull() && listBlock(project_props, QStringLiteral("property"))) {
-		ok = ok && meta.run({QStringLiteral("props_at"), QString::number(childIndex(project_props))});
 		ok = ok && meta.run({QStringLiteral("props_attrs"), blockJson(project_props)});
 		int ord = 0;
 		for (QDomElement p : children(project_props, QStringLiteral("property"))) {
@@ -575,8 +574,7 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 		row += take(d, FolioData);
 		QDomElement props = d.firstChildElement(QStringLiteral("properties"));
 		const bool move_props = !props.isNull() && listBlock(props, QStringLiteral("property"));
-		row << (move_props ? QVariant(childIndex(props)) : QVariant())
-			<< (move_props ? blockJson(props) : QVariant());
+		row << (move_props ? blockJson(props) : QVariant());
 		ok = ok && folio.run(row);
 		if (move_props) {
 			moveProperties(props, folio_property, {id});
@@ -594,14 +592,10 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 				QDomElement links = e.firstChildElement(QStringLiteral("links_uuids"));
 				if (!info.isNull() && !listBlock(info, QStringLiteral("elementInformation"))) info = QDomElement();
 				if (!links.isNull() && !listBlock(links, QStringLiteral("link_uuid"))) links = QDomElement();
-				const int info_at = info.isNull() ? -1 : childIndex(info);
-				const int links_at = links.isNull() ? -1 : childIndex(links);
-				erow << (info_at < 0 ? QVariant() : QVariant(info_at))
-					 << (info_at < 0 ? QVariant() : blockJson(info))
-					 << (links_at < 0 ? QVariant() : QVariant(links_at))
-					 << (links_at < 0 ? QVariant() : blockJson(links));
+				erow << (info.isNull() ? QVariant() : blockJson(info))
+					 << (links.isNull() ? QVariant() : blockJson(links));
 				ok = ok && element.run(erow);
-				if (info_at >= 0) {
+				if (!info.isNull()) {
 					int ord = 0;
 					for (QDomElement i : children(info, QStringLiteral("elementInformation"))) {
 						QVariant value;
@@ -616,15 +610,15 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 													 attributesJson(i, kept, QStringLiteral("elementInformation"))});
 					}
 				}
-				if (links_at >= 0) {
+				if (!links.isNull()) {
 					int ord = 0;
 					for (QDomElement l : children(links, QStringLiteral("link_uuid")))
 						ok = ok && link.run({key, ord++, l.hasAttribute(QStringLiteral("uuid"))
 												? QVariant(l.attribute(QStringLiteral("uuid"))) : QVariant(),
 											 attributesJson(l, {QStringLiteral("uuid")}, QStringLiteral("link_uuid"))});
 				}
-				if (info_at >= 0) leaveMarker(info);
-				if (links_at >= 0) leaveMarker(links);
+				if (!info.isNull()) leaveMarker(info);
+				if (!links.isNull()) leaveMarker(links);
 				if (!own_key) e.setAttribute(KeyAttribute, key);
 			}
 		}
@@ -729,9 +723,11 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		//apart from the items' uuids: "f1", "e1", "c1" where an item had
 		//none of its own, and every item's key in the folio file
 	const int format = meta.value(QStringLiteral("format")).toString().toInt();
-	if (format < 2 || format > QetContainer::Format) {
-		setError(error, QStringLiteral("the project database is of format %1, this reads 2 to %2")
-				 .arg(meta.value(QStringLiteral("format")).toString()).arg(QetContainer::Format));
+		//A later format is read when the manifest's min-reader allows it
+		//(QetContainer::join()): its writer kept what this reads
+	if (format < 2) {
+		setError(error, QStringLiteral("the project database is of format %1, this reads format 2 on")
+				 .arg(meta.value(QStringLiteral("format")).toString()));
 		return false;
 	}
 	const bool v2 = format == 2;
@@ -754,7 +750,9 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		}
 		return v2 ? QString() : e.attribute(QStringLiteral("uuid"));
 	};
-	if (meta.contains(QStringLiteral("props_at"))) {
+		//A moved block goes back where its marker is: the marker says it
+		//was there
+	if (hasMarker(project, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, meta.value(QStringLiteral("props_attrs")));
 		Statement s(db.m_db, QStringLiteral("SELECT name, value, attrs FROM project_property ORDER BY ord"));
@@ -804,22 +802,22 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		const QString id = keyOf(d, FolioAttribute);
 		if (id.isEmpty()) continue;
 		if (!use(folios_used, id, QStringLiteral("folio"))) return false;
-		Statement f(db.m_db, QStringLiteral("SELECT %1, props_at, props_attrs FROM folio WHERE %2 = ?")
+		Statement f(db.m_db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE %2 = ?")
 					.arg(quoted(FolioData), folio_key));
 		f.bind({id});
 		if (!f.next()) { setError(error, QStringLiteral("folio %1 is not in the database").arg(id)); return false; }
 		QVariantList values;
-		for (int i = 0 ; i < FolioData.size() + 2 ; ++i) values << f.value(i);
+		for (int i = 0 ; i < FolioData.size() + 1 ; ++i) values << f.value(i);
 		put(d, FolioData, values, 0);
-		if (!values.at(FolioData.size()).isNull()) {
+		if (hasMarker(d, QStringLiteral("properties"))) {
 			QDomElement props = document.createElement(QStringLiteral("properties"));
-			setAttributesJson(props, values.at(FolioData.size() + 1));
+			setAttributesJson(props, values.at(FolioData.size()));
 			Statement p(db.m_db, QStringLiteral("SELECT name, value, attrs FROM folio_property WHERE %1 = ? ORDER BY ord").arg(folio_ref));
 			p.bind({id});
 			while (p.next())
 				props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
 										QStringLiteral("property")));
-			restoreWhitespace(props, values.at(FolioData.size() + 1));
+			restoreWhitespace(props, values.at(FolioData.size()));
 			if (!replaceMarker(d, props)) {
 				setError(error, QStringLiteral("folio %1's properties have no place").arg(id));
 				return false;
@@ -831,39 +829,39 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 				const QString key = keyOf(e, KeyAttribute);
 				if (key.isEmpty()) continue;
 				if (!use(elements_used, key, QStringLiteral("symbol"))) return false;
-				Statement s(db.m_db, QStringLiteral("SELECT %1, info_at, info_attrs, links_at, links_attrs, %2 FROM element WHERE %3 = ?")
+				Statement s(db.m_db, QStringLiteral("SELECT %1, info_attrs, links_attrs, %2 FROM element WHERE %3 = ?")
 							.arg(quoted(element_data), folio_ref, item_key));
 				s.bind({key});
 				if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
-				if (s.value(element_data.size() + 4).toString() != id) {
+				if (s.value(element_data.size() + 2).toString() != id) {
 					setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
 					return false;
 				}
 				QVariantList v;
-				for (int i = 0 ; i < element_data.size() + 4 ; ++i) v << s.value(i);
+				for (int i = 0 ; i < element_data.size() + 2 ; ++i) v << s.value(i);
 				put(e, element_data, v, 0);
 				const int n = element_data.size();
 				QDomElement info, links;
-				if (!v.at(n).isNull()) {
+				if (hasMarker(e, QStringLiteral("elementInformations"))) {
 					info = document.createElement(QStringLiteral("elementInformations"));
-					setAttributesJson(info, v.at(n + 1));
+					setAttributesJson(info, v.at(n));
 					Statement i(db.m_db, QStringLiteral("SELECT name, value, attrs, %1 FROM element_info WHERE %2 = ? ORDER BY ord")
 								.arg(show_column, element_ref));
 					i.bind({key});
 					while (i.next())
 						info.appendChild(entry(i.value(0), QStringLiteral("name"), i.value(1), i.value(2),
 											   QStringLiteral("elementInformation"), i.value(3)));
-					restoreWhitespace(info, v.at(n + 1));
+					restoreWhitespace(info, v.at(n));
 				}
-				if (!v.at(n + 2).isNull()) {
+				if (hasMarker(e, QStringLiteral("links_uuids"))) {
 					links = document.createElement(QStringLiteral("links_uuids"));
-					setAttributesJson(links, v.at(n + 3));
+					setAttributesJson(links, v.at(n + 1));
 					Statement l(db.m_db, QStringLiteral("SELECT linked_uuid, attrs FROM link WHERE %1 = ? ORDER BY ord").arg(element_ref));
 					l.bind({key});
 					while (l.next())
 						links.appendChild(entry(l.value(0), QStringLiteral("uuid"), QVariant(), l.value(1),
 												QStringLiteral("link_uuid")));
-					restoreWhitespace(links, v.at(n + 3));
+					restoreWhitespace(links, v.at(n + 1));
 				}
 				if ((!info.isNull() && !replaceMarker(e, info))
 					|| (!links.isNull() && !replaceMarker(e, links))) {

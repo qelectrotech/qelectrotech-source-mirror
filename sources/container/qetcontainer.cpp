@@ -153,15 +153,18 @@ bool QetContainer::isZip(const QByteArray &content)
 /**
 	@brief QetContainer::readDocument
 	The project document held in @p content: unzipped and joined for a
-	.qetz, parsed for a .qet.
+	.qetz, parsed for a .qet. @p format, if any: the .qetz's format, 0
+	for a .qet.
 */
-bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document, QString *error)
+bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document, QString *error,
+								int *format)
 {
+	if (format) *format = 0;
 	if (!isZip(content))
 		return parse(content, document, error);
 	QList<QetZip::Entry> entries;
 	return QetZip::fromBytes(content, &entries, error)
-			&& join(entries, document, error);
+			&& join(entries, document, error, format);
 }
 
 /**
@@ -264,8 +267,11 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	Refused, with @p error set: not a .qetz, made for a later QElectroTech
 	(the manifest's min-reader), or a part missing or unreadable. Entries
 	nothing names are ignored, so a later format may add some.
+	@p format, if any: the format the file says it is, above Format for a
+	later one this may read (its min-reader allows it)
 */
-bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error)
+bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
+						int *format)
 {
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
@@ -286,6 +292,8 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 				 .arg(Format));
 		return false;
 	}
+	if (format)
+		*format = manifest.documentElement().attribute(QStringLiteral("format")).toInt();
 
 	if (!parse(files.value(QStringLiteral("project.xml")), project, error))
 		return false;
