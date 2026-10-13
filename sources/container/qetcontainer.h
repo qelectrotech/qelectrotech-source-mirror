@@ -33,7 +33,7 @@
 	  manifest.xml             format and oldest format allowed to read it
 	  project.xml              the project, each part replaced by
 	                           <qetz-part file="..."/>
-	  project.sqlite           the engineering data (format 2,
+	  project.sqlite           the engineering data (format 2 on,
 	                           QetContainerDb): title-block fields, symbol
 	                           information, links, wires
 	  folios/<uuid>.xml        one per folio
@@ -56,7 +56,12 @@ namespace QetContainer
 	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 3;
+	constexpr int Format = 4;
+		/// 3: the database's rows keyed by the items' uuids, true/false as
+		/// 1/0, its PRAGMA user_version the format.
+		/// 4: what QElectroTech computes left out of the folios
+		/// (dropComputed()), the tables written without keys or indexes.
+		/// Formats 2 and 3 are still read.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
@@ -75,7 +80,7 @@ namespace QetContainer
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
 
-		/// Take what QElectroTech computes out of a folio (format 3)
+		/// Take what QElectroTech computes out of a folio (format 4)
 	void dropComputed(QDomElement diagram, bool terminal_lists);
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);

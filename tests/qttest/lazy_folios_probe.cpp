@@ -288,7 +288,7 @@ static QStringList savedLinks(const QString &qetz, const QString &path)
 		db.setDatabaseName(db_path);
 		check(db.open(), "a .qetz's database opened");
 		QSqlQuery query(db);
-		check(query.exec(QStringLiteral("SELECT element_key, linked_uuid FROM doc_link ORDER BY element_key, ord")),
+		check(query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM doc_link ORDER BY element_uuid, ord")),
 			  "saved links read");
 		while (query.next())
 			links[query.value(0).toString()] << query.value(1).toString();

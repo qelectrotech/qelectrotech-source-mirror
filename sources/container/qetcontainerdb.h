@@ -32,8 +32,10 @@
 	drawn. extract() takes them out of the document into a database,
 	restore() puts them back, so that restore(extract(d)) is d.
 
-	Each moved item leaves its key in the document (qetz-key, qetz-folio):
-	its uuid where that is unique, else a made-up one. A block of a shape
+	A row's key is its item's uuid, which stays in the folio file. An item
+	without a uuid of its own -- none, or one another item shares -- gets a
+	uuid made from what it holds, left in the document as qetz-key or
+	qetz-folio. A block of a shape
 	this does not model -- a value holding elements, say -- stays in the
 	document, so nothing can be lost by moving.
 */
@@ -55,8 +57,8 @@ namespace QetContainerDb
 			struct Private;
 			std::unique_ptr<Private> d;
 	};
-		/// true if @p database names its folios by their uuid (format 3)
-	bool foliosByUuid(const QByteArray &database);
+		/// true if @p database is of the format this writes
+	bool currentFormat(const QByteArray &database);
 }
 
 #endif // QETCONTAINERDB_H

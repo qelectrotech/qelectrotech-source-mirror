@@ -3485,7 +3485,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_kept_parts_trusted = m_opened_from_index && unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()
 			&& m_data_base.rowsFromDocument()
-			&& QetContainerDb::foliosByUuid(m_container_files.value(QStringLiteral("project.sqlite")));
+			&& QetContainerDb::currentFormat(m_container_files.value(QStringLiteral("project.sqlite")));
 	m_kept_folios_stale = false;
 	m_edited_since_open = false;
 	if (m_kept_folios_trusted || m_kept_parts_trusted)
