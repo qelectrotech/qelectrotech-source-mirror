@@ -63,9 +63,14 @@ const QStringList FolioData = {
 	QStringLiteral("folio"), QStringLiteral("indexrev"), QStringLiteral("filename"),
 	QStringLiteral("locmach"), QStringLiteral("plant"), QStringLiteral("auto_page_num")};
 	//From format 3 on an item's uuid is its row's key, not a column of its
-	//own: it stays in the folio file, where it says which row is the item's
+	//own: it stays in the folio file, where it says which row is the item's.
+	//So does a symbol's type, the symbol it is: a folio file read alone
+	//still says what is drawn where
 const QStringList ElementData = {
-	QStringLiteral("type"), QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
+	QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
+	//Format 2 also moved the type
+const QStringList ElementDataV2 = {
+	QStringLiteral("uuid"), QStringLiteral("type"), QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
 const QStringList ConductorData = {
 	QStringLiteral("element1"), QStringLiteral("terminal1"),
 	QStringLiteral("element2"), QStringLiteral("terminal2"), QStringLiteral("num"),
@@ -735,7 +740,7 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 	const QString item_key = v2 ? QStringLiteral("key") : QStringLiteral("uuid");
 	const QString element_ref = v2 ? QStringLiteral("element_key") : QStringLiteral("element_uuid");
 	const QString show_column = v2 ? QStringLiteral("NULL") : QStringLiteral("show");
-	const QStringList element_data = v2 ? QStringList{QStringLiteral("uuid")} + ElementData : ElementData;
+	const QStringList element_data = v2 ? ElementDataV2 : ElementData;
 	const QStringList conductor_data = v2 ? QStringList{QStringLiteral("uuid")} + ConductorData : ConductorData;
 	auto quoted = [](const QStringList &names) {
 		return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
@@ -783,10 +788,22 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		}
 	}
 
+		//Every row must be an item's, once, on the folio the item is on:
+		//nothing enforces it in the file, which is untrusted
+	QSet<QString> folios_used, elements_used, conductors_used;
+	auto use = [error](QSet<QString> &used, const QString &key, const QString &what) {
+		if (used.contains(key)) {
+			setError(error, QStringLiteral("%1 %2 is in the folios twice").arg(what, key));
+			return false;
+		}
+		used.insert(key);
+		return true;
+	};
 	for (QDomElement d : children(project, QStringLiteral("diagram")))
 	{
 		const QString id = keyOf(d, FolioAttribute);
 		if (id.isEmpty()) continue;
+		if (!use(folios_used, id, QStringLiteral("folio"))) return false;
 		Statement f(db.m_db, QStringLiteral("SELECT %1, props_at, props_attrs FROM folio WHERE %2 = ?")
 					.arg(quoted(FolioData), folio_key));
 		f.bind({id});
@@ -813,10 +830,15 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 			for (QDomElement e : children(list, QStringLiteral("element"))) {
 				const QString key = keyOf(e, KeyAttribute);
 				if (key.isEmpty()) continue;
-				Statement s(db.m_db, QStringLiteral("SELECT %1, info_at, info_attrs, links_at, links_attrs FROM element WHERE %2 = ?")
-							.arg(quoted(element_data), item_key));
+				if (!use(elements_used, key, QStringLiteral("symbol"))) return false;
+				Statement s(db.m_db, QStringLiteral("SELECT %1, info_at, info_attrs, links_at, links_attrs, %2 FROM element WHERE %3 = ?")
+							.arg(quoted(element_data), folio_ref, item_key));
 				s.bind({key});
 				if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
+				if (s.value(element_data.size() + 4).toString() != id) {
+					setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
+					return false;
+				}
 				QVariantList v;
 				for (int i = 0 ; i < element_data.size() + 4 ; ++i) v << s.value(i);
 				put(e, element_data, v, 0);
@@ -854,14 +876,44 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 			for (QDomElement c : children(list, QStringLiteral("conductor"))) {
 				const QString key = keyOf(c, KeyAttribute);
 				if (key.isEmpty()) continue;
-				Statement s(db.m_db, QStringLiteral("SELECT %1 FROM conductor WHERE %2 = ?")
-							.arg(quoted(conductor_data), item_key));
+				if (!use(conductors_used, key, QStringLiteral("wire"))) return false;
+				Statement s(db.m_db, QStringLiteral("SELECT %1, %2 FROM conductor WHERE %3 = ?")
+							.arg(quoted(conductor_data), folio_ref, item_key));
 				s.bind({key});
 				if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
+				if (s.value(conductor_data.size()).toString() != id) {
+					setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
+					return false;
+				}
 				QVariantList v;
 				for (int i = 0 ; i < conductor_data.size() ; ++i) v << s.value(i);
 				put(c, conductor_data, v, 0);
 			}
+		}
+	}
+
+		//No row left over: each table's rows, counted, are the items read,
+		//and every entry belongs to a row
+	auto count = [&db](const QString &sql) {
+		Statement s(db.m_db, sql);
+		return s.next() ? s.value(0).toInt() : -1;
+	};
+	const struct { QString sql; int expected; QString what; } checks[] = {
+		{QStringLiteral("SELECT count(*) FROM folio"), int(folios_used.size()), QStringLiteral("folio rows")},
+		{QStringLiteral("SELECT count(*) FROM element"), int(elements_used.size()), QStringLiteral("symbol rows")},
+		{QStringLiteral("SELECT count(*) FROM conductor"), int(conductors_used.size()), QStringLiteral("wire rows")},
+		{QStringLiteral("SELECT count(*) FROM folio_property WHERE %1 NOT IN (SELECT %2 FROM folio)")
+				.arg(folio_ref, folio_key), 0, QStringLiteral("folio property rows of no folio")},
+		{QStringLiteral("SELECT count(*) FROM element_info WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(element_ref, item_key), 0, QStringLiteral("information rows of no symbol")},
+		{QStringLiteral("SELECT count(*) FROM link WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(element_ref, item_key), 0, QStringLiteral("link rows of no symbol")}};
+	for (const auto &check : checks) {
+		const int found = count(check.sql);
+		if (found != check.expected) {
+			setError(error, QStringLiteral("the project database does not match its folios: %1 %2, %3 expected")
+					 .arg(found).arg(check.what).arg(check.expected));
+			return false;
 		}
 	}
 	return true;
