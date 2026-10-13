@@ -30,8 +30,8 @@
 	megabytes, not gigabytes -- and written through QSaveFile, so a failed
 	save leaves the previous file as it was.
 
-	Entries carry no timestamp: saving the same project twice gives the
-	same bytes.
+	Every entry is dated 1 Jan 1980 00:00, not the time of saving: saving
+	the same project twice gives the same bytes.
 */
 namespace QetZip
 {

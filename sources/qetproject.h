@@ -121,6 +121,7 @@ class QETProject : public QObject
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
+		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
@@ -477,6 +478,9 @@ class QETProject : public QObject
 		static bool m_backup_enabled;
 			/// Something changed since the last backup, see writeBackup()
 		bool m_backup_needed = true;
+			/// The pictures of the .qetz this project was opened from, see
+			/// containerPicture()
+		QHash<QString, QByteArray> m_container_pictures;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project

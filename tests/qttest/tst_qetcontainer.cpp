@@ -289,6 +289,43 @@ private slots:
 		QVERIFY(pictures < 121);   // the 121 placed pictures repeat a few files
 	}
 
+	// Given a map, join() hands the pictures over as bytes instead of
+	// putting them back in the document as base64
+	void picturesKeptAside()
+	{
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(
+					QStringLiteral(QET_EXAMPLES_DIR "/weneedpolonez-Polonez_MR89_wiring_diagram.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		QHash<QString, QByteArray> files;
+		for (const QetZip::Entry &e : entries) files.insert(e.name, e.data);
+
+		QDomDocument back;
+		QetContainer::Pictures pictures;
+		QString error;
+		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, &pictures), qPrintable(error));
+		const QDomNodeList images = back.elementsByTagName(QStringLiteral("image"));
+		const QDomNodeList original_images = original.elementsByTagName(QStringLiteral("image"));
+		QCOMPARE(images.size(), 121);
+		QCOMPARE(images.size(), original_images.size());
+		for (int i = 0 ; i < images.size() ; ++i) {
+			const QDomElement image = images.at(i).toElement();
+			const QString file = QetContainer::pictureFile(image);
+			QVERIFY(!file.isEmpty());
+			QVERIFY(!image.firstChild().isText());
+			QCOMPARE(pictures.value(file), files.value(file));
+			QCOMPARE(pictures.value(file),
+					 QByteArray::fromBase64(original_images.at(i).firstChild().toText().data().toLatin1()));
+		}
+
+		// still refused when a picture is missing
+		for (int i = 0 ; i < entries.size() ; ++i)
+			if (entries.at(i).name.startsWith(QStringLiteral("images/"))) { entries.removeAt(i); break; }
+		QDomDocument broken;
+		QVERIFY(!QetContainer::join(entries, &broken, &error, nullptr, &pictures));
+		QVERIFY2(error.contains(QStringLiteral("missing")), qPrintable(error));
+	}
+
 	// A file whose manifest needs a later reader is refused, not half read
 	void laterFormatRefused()
 	{

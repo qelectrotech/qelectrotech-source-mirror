@@ -43,10 +43,17 @@
 
 	join(split(d)) is d. Nothing here knows what the parts mean: the
 	project is read and written by the same code as a .qet file.
+
+	Given a Pictures map, join() leaves the pictures out of the document:
+	each <image> keeps the name of its file, pictureFile(), and the bytes
+	go in the map. Turning them back into base64 text costs seconds on a
+	project with large pictures, and the folio would only decode it again.
 */
 namespace QetContainer
 {
 	extern const char MimeType[];
+		/// Picture bytes by file name, see join()
+	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
 	constexpr int Format = 3;
@@ -57,13 +64,16 @@ namespace QetContainer
 							   const QByteArray &index = QByteArray(),
 							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr, QStringList *folio_files = nullptr);
+			  QString *error = nullptr, QStringList *folio_files = nullptr,
+			  Pictures *pictures = nullptr);
 		/// A folio part of @p files, which join() left out, with its
 		/// pictures and its engineering data back (stage D2)
 		/// @p reader, if any, reads the engineering data of @p files
 	bool readFolio(const QHash<QString, QByteArray> &files, const QString &file,
 				   QDomDocument *folio, QString *error = nullptr,
 				   QetContainerDb::FolioReader *reader = nullptr);
+		/// The file join() left the picture of @p image in, or an empty string
+	QString pictureFile(const QDomElement &image);
 
 		/// Take what QElectroTech computes out of a folio (format 3)
 	void dropComputed(QDomElement diagram, bool terminal_lists);
@@ -72,7 +82,8 @@ namespace QetContainer
 		/// true if @p content is a zip, so a .qetz rather than a .qet
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
-	bool readDocument(const QByteArray &content, QDomDocument *document, QString *error = nullptr);
+	bool readDocument(const QByteArray &content, QDomDocument *document,
+					  QString *error = nullptr, Pictures *pictures = nullptr);
 }
 
 #endif // QETCONTAINER_H

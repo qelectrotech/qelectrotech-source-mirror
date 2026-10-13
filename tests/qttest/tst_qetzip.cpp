@@ -2,6 +2,7 @@
 #include <QtTest>
 
 #include <QTemporaryDir>
+#include <QtEndian>
 
 #include "container/qetzip.h"
 #include "container/miniz/miniz.h"
@@ -70,6 +71,33 @@ private slots:
 	void sameBytesTwice()
 	{
 		QCOMPARE(QetZip::toBytes(sample()), QetZip::toBytes(sample()));
+	}
+
+	// every entry carries a valid date in both of its headers, not the
+	// 0 miniz writes without a clock (shown as 1979 or 1901 by unzip tools)
+	void entriesHaveValidDate()
+	{
+		const QByteArray zip = QetZip::toBytes(sample());
+		QVERIFY(!zip.isEmpty());
+		mz_zip_archive archive;
+		mz_zip_zero_struct(&archive);
+		QVERIFY(mz_zip_reader_init_mem(&archive, zip.constData(), size_t(zip.size()), 0));
+		const mz_uint count = mz_zip_reader_get_num_files(&archive);
+		QCOMPARE(int(count), sample().size());
+		for (mz_uint i = 0 ; i < count ; ++i) {
+			mz_zip_archive_file_stat stat;
+			QVERIFY(mz_zip_reader_file_stat(&archive, i, &stat));
+			const char *local = zip.constData() + stat.m_local_header_ofs;
+			const char *central = zip.constData() + archive.m_central_directory_file_ofs + stat.m_central_dir_ofs;
+			QCOMPARE(qFromLittleEndian<quint16>(local), quint16(0x50 | 0x4b << 8));   // "PK"
+			QCOMPARE(qFromLittleEndian<quint16>(central), quint16(0x50 | 0x4b << 8));
+			// 1 Jan 1980: day 1, month 1, year 0 since 1980; time 00:00:00
+			QCOMPARE(qFromLittleEndian<quint16>(local + 12), quint16(0x21));
+			QCOMPARE(qFromLittleEndian<quint16>(central + 14), quint16(0x21));
+			QCOMPARE(qFromLittleEndian<quint16>(local + 10), quint16(0));
+			QCOMPARE(qFromLittleEndian<quint16>(central + 12), quint16(0));
+		}
+		mz_zip_reader_end(&archive);
 	}
 
 	void refusesUnsafeNamesOnWrite_data()
