@@ -331,6 +331,26 @@ private slots:
 		QCOMPARE(query(database, "SELECT count(*) FROM meta WHERE key = 'props_at'"), QStringLiteral("0"));
 	}
 
+	// A project as QElectroTech saves it needs no JSON: every attribute it
+	// writes has a column, the show flag of a property too
+	void savedProjectNeedsNoJson()
+	{
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(savedProject(), QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		QVERIFY(query(database, "SELECT count(*) FROM project_property").toInt() > 0);
+		QCOMPARE(query(database, "SELECT count(*) FROM project_property WHERE show IS NOT NULL"),
+				 query(database, "SELECT count(*) FROM project_property"));
+		for (const char *sql : {"SELECT count(*) FROM project_property WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM folio_property WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM element_info WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM link WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM folio WHERE props_attrs IS NOT NULL",
+								"SELECT count(*) FROM element WHERE info_attrs IS NOT NULL OR links_attrs IS NOT NULL"})
+			QVERIFY2(query(database, sql) == QLatin1String("0"), sql);
+	}
+
 	void laterFormatRefused()
 	{
 		QDomDocument original;

@@ -48,8 +48,8 @@ namespace QetContainer
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
 	constexpr int Format = 3;
-		/// 3: the database's rows keyed by the items' uuids, true/false as
-		/// 1/0, its PRAGMA user_version the format, the symbols' type left
+		/// 3: the database's rows keyed by the items' uuids, true/false and
+		/// show flags as 1/0, its PRAGMA user_version the format, the symbols' type left
 		/// in the folio files, no column for where a block sat. Format 2 is
 		/// still read; a later format whose min-reader allows this one is
 		/// read too, and said so through join()'s @p format.
