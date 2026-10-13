@@ -226,9 +226,12 @@ void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 	project_->undoStack()->beginMacro(QObject::tr("Search / replace conductors properties."));
 	for (Conductor *c : list)
 	{
-		ConductorProperties cp = applyChange(c->properties(), m_conductor_properties);
+			//Captured before the pushes below: QPropertyUndoCommand applies
+			//on push, so reading it afterwards would give back @a cp.
+		const ConductorProperties old_properties = c->properties();
+		ConductorProperties cp = applyChange(old_properties, m_conductor_properties);
 
-		if (cp != c->properties())
+		if (cp != old_properties)
 		{
 			QSet <Conductor *> conductors_list = c->relatedPotentialConductors(true);
 			conductors_list << c;
@@ -241,12 +244,16 @@ void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 			}
 
 				//The other side of a function separated terminal element
-				//only receives the voltage / protocol (@see
+				//only receives the voltage / protocol, and only when this
+				//replacement really changed it: the comparison is this
+				//replacement's own before / after (@a old_properties vs
+				//@a cp), never the far wire's own value, which would make
+				//every replacement overwrite it (@see
 				//Conductor::functionSeparatedConductors).
 			for (Conductor *cc : c->functionSeparatedConductors(true))
 			{
 				ConductorProperties separated_cp = cc->properties();
-				separated_cp.applyTensionProtocolChange(cc->properties(), cp);
+				separated_cp.applyTensionProtocolChange(old_properties, cp);
 				if (separated_cp == cc->properties())
 					continue;
 
@@ -369,12 +376,15 @@ void SearchAndReplaceWorker::replaceAdvanced(
 				}
 
 					//The other side of a function separated terminal element
-					//only receives the voltage / protocol (@see
+					//only receives the voltage / protocol, and only when
+					//this replacement really changed it: the comparison is
+					//this replacement's own before / after, never the far
+					//wire's own value (@see
 					//Conductor::functionSeparatedConductors).
 				for (Conductor *c : conductor->functionSeparatedConductors(true))
 				{
 					ConductorProperties separated_properties = c->properties();
-					separated_properties.applyTensionProtocolChange(c->properties(), new_properties);
+					separated_properties.applyTensionProtocolChange(old_properties, new_properties);
 					if (separated_properties == c->properties())
 						continue;
 

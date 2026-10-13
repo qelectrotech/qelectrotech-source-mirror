@@ -832,6 +832,13 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	protocol describes the electrical node itself, while the text, the
 	function, the wire color... describe one side of the separation and
 	stay local to it.
+
+	Both arguments describe one edit -- what was shown to the user, and
+	what the user made of it -- so that only an edit which really
+	changed the voltage / protocol passes it on. Passing the far wire's
+	own properties as @a before instead would make every edit overwrite
+	its voltage: the two sides differ on that field just as often as
+	not, so the comparison would hold no matter what was edited.
 	@param before : the properties as they were shown to the user
 	@param after : the properties after the user's edit
 */

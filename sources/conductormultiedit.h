@@ -67,6 +67,13 @@ namespace ConductorMultiEdit
 		terminal element -- conductors undo() then gives the voltage /
 		protocol only, and no other property. nullptr, the default, leaves
 		those conductors out of the returned list entirely.
+
+		A conductor the user picked themselves is never part of it: the
+		selection is the edit reaching that conductor, so it takes the
+		full edit however remote it is from the other selected ones --
+		picking a wire on each side of a separation and editing them is
+		exactly that. Nor is a conductor that belongs to a potential, on
+		any path, however far that potential is reached.
 		@return each conductor an edit reaches, once
 	*/
 	template <typename T>
@@ -75,19 +82,38 @@ namespace ConductorMultiEdit
 	{
 		QList<T *> list;
 		QSet<T *> seen;
+			//The explicitly picked ones, so a separation met while walking
+			//the list cannot demote a wire the user asked to edit.
+		QSet<T *> chosen;
+		for (T *conductor : selected)
+			if (conductor)
+				chosen.insert(conductor);
+			//What the potentials reach, and what only a function separation
+			//reaches. A conductor can be in both -- wired normally on one
+			//path and across a separation on another -- and then belongs to
+			//the potential.
+		QSet<T *> potential_reached, separated_reached;
+
 		for (T *conductor : selected)
 		{
-				//Already reached through an earlier conductor's potential:
-				//its own potential is the same one.
-			if (!conductor || seen.contains(conductor))
+			if (!conductor)
 				continue;
-			seen.insert(conductor);
-			list << conductor;
-			if (!apply_all)
+				//Already reached through an earlier conductor's potential or
+				//separation: its own potential adds nothing new to walk over
+				//-- unless the user picked it, because a separation may have
+				//put it in the list before its potential was ever reached.
+			const bool fresh = !seen.contains(conductor);
+			if (fresh)
+			{
+				seen.insert(conductor);
+				list << conductor;
+			}
+			if (!apply_all || (!fresh && !chosen.contains(conductor)))
 				continue;
 			const QSet<T *> potential = conductor->relatedPotentialConductors();
 			for (T *other : potential)
 			{
+				potential_reached.insert(other);
 				if (!seen.contains(other))
 				{
 					seen.insert(other);
@@ -99,15 +125,17 @@ namespace ConductorMultiEdit
 				const QSet<T *> separated = conductor->functionSeparatedConductors();
 				for (T *other : separated)
 				{
+					separated_reached.insert(other);
 					if (!seen.contains(other))
 					{
 						seen.insert(other);
 						list << other;
-						function_separated->insert(other);
 					}
 				}
 			}
 		}
+		if (function_separated)
+			*function_separated = separated_reached - potential_reached - chosen;
 		return list;
 	}
 

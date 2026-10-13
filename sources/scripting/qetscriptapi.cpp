@@ -1211,13 +1211,17 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex, caller);
 	if (!conductor) return false;
 
-	ConductorProperties properties = conductor->properties();
+	//Captured before the pushes below: QPropertyUndoCommand applies on
+	//push, so reading the properties afterwards would already give back
+	//@a properties.
+	const ConductorProperties before = conductor->properties();
+	ConductorProperties properties = before;
 	if (!setConductorPropertyValue(properties, property, value)) {
 		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3")
 			.arg(caller, value, property));
 		return false;
 	}
-	if (properties == conductor->properties()) return true; // already so
+	if (properties == before) return true; // already so
 
 	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
 	potential << conductor;
@@ -1232,11 +1236,15 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 	}
 		//The other side of a function separated terminal element gets the
 		//voltage / protocol only: it is the one property that still
-		//describes the electrical node rather than one side of it.
+		//describes the electrical node rather than one side of it. And it
+		//only arrives when this call really changed it -- before / after
+		//is the edit, not the far wire's own value, which differs from it
+		//just as often as not and would then be overwritten by every call,
+		//colour included.
 	for (Conductor *c : conductor->functionSeparatedConductors(true))
 	{
 		ConductorProperties separated_properties = c->properties();
-		separated_properties.applyTensionProtocolChange(c->properties(), properties);
+		separated_properties.applyTensionProtocolChange(before, properties);
 		if (separated_properties == c->properties())
 			continue;
 
