@@ -48,6 +48,7 @@
 #include "diagramsortkeys.h"
 #include "itemgroups.h"
 #include "textgrid.h"
+#include "container/qetcontainer.h"
 #include "foliogrid.h"
 #include <QGraphicsView>
 #include <QTextStream>
@@ -1915,7 +1916,11 @@ bool Diagram::fromXml(QDomElement &document,
 												QStringLiteral("images"),
 												QStringLiteral("image"))) {
 		DiagramImageItem *dii = new DiagramImageItem ();
-		dii -> fromXml(image_xml);
+		const QString picture_file = QetContainer::pictureFile(image_xml);
+		if (!picture_file.isEmpty() && project())
+			dii -> fromXml(image_xml, project() -> containerPicture(picture_file));
+		else
+			dii -> fromXml(image_xml);
 		settle_uuid(dii, image_xml, QStringLiteral("image"), added_images.size());
 		ItemGroups::setGroup(dii, ItemGroups::read(image_xml));
 		addItem(dii);
