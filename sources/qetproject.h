@@ -123,7 +123,7 @@ class QETProject : public QObject
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
-			//(QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md); diagrams() builds them
+			//(QET_LAZY_FOLIOS); diagrams() builds them
 		QList<Diagram *> folios() const;
 		bool deferringFolios() const {return m_deferring_folios;}
 		int unloadedFolioCount() const;
@@ -516,6 +516,9 @@ class QETProject : public QObject
 				const DiagramContext &information,
 				const QHash<QString, QStringList> &titles_by_formula) const;
 		bool m_deferring_folios = false;
+			/// Opening with folios built only when needed: QET_LAZY_FOLIOS
+			/// is set and the database can be filled from the document
+		bool m_lazy_open = false;
 			/// Saving may write a folio not built as it was read
 			/// (writesKeptFolios()): the file is this version's, its
 			/// database rows came from it, and nothing project-wide that
