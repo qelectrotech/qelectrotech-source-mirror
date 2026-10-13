@@ -562,7 +562,21 @@ bool plainTables(sqlite3 *db)
 	bool ok = run(QStringLiteral("BEGIN"));
 	for (const QString &table : std::as_const(tables)) {
 		const QString plain = table + QStringLiteral("__plain");
-		ok = ok && run(QStringLiteral("CREATE TABLE \"%1\" AS SELECT * FROM \"%2\" ORDER BY rowid").arg(plain, table))
+			//The same columns and types (QETZ-FORMAT.md), no key or constraint
+		QStringList columns;
+		{
+			sqlite3_stmt *info = nullptr;
+			sqlite3_prepare_v2(db, QStringLiteral("SELECT name, type FROM pragma_table_info('%1') ORDER BY cid")
+							   .arg(table).toUtf8().constData(), -1, &info, nullptr);
+			while (info && sqlite3_step(info) == SQLITE_ROW)
+				columns << QStringLiteral("\"%1\" %2").arg(
+							   QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(info, 0))),
+							   QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(info, 1))));
+			sqlite3_finalize(info);
+		}
+		ok = ok && !columns.isEmpty()
+				&& run(QStringLiteral("CREATE TABLE \"%1\" (%2)").arg(plain, columns.join(QStringLiteral(", "))))
+				&& run(QStringLiteral("INSERT INTO \"%1\" SELECT * FROM \"%2\" ORDER BY rowid").arg(plain, table))
 				&& run(QStringLiteral("DROP TABLE \"%1\"").arg(table))
 				&& run(QStringLiteral("ALTER TABLE \"%1\" RENAME TO \"%2\"").arg(plain, table));
 	}

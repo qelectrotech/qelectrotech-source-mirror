@@ -1257,4 +1257,5 @@ target_include_directories(tst_qetcontainer PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetcontainer PRIVATE Qt::Test Qt::Xml SQLite3::SQLite3)
 target_compile_definitions(tst_qetcontainer PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
-  "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+  "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\""
+  "QET_FORMAT_SPEC=\"${QET_DIR}/sources/container/QETZ-FORMAT.md\"")

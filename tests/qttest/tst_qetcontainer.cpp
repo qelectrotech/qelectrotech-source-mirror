@@ -436,6 +436,53 @@ private slots:
 			QVERIFY2(query(database, sql) == QLatin1String("0"), sql);
 	}
 
+	// The schema in QETZ-FORMAT.md is the one written: same tables, same
+	// columns in the same order, same types; written without keys (format 4)
+	void specMatchesSchema()
+	{
+		const QString spec = QString::fromUtf8(read(QStringLiteral(QET_FORMAT_SPEC)));
+		const int from = spec.indexOf(QStringLiteral("```sql\n"));
+		const int to = spec.indexOf(QStringLiteral("```"), from + 7);
+		QVERIFY2(from >= 0 && to > from, "no schema in QETZ-FORMAT.md");
+		const QByteArray sql = spec.mid(from + 7, to - from - 7).toUtf8();
+
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		const QByteArray written = entry(entries, QStringLiteral("project.sqlite"));
+
+		auto describe = [](sqlite3 *db, const char *columns = "m.name, p.name, p.type") {
+			QStringList out;
+			sqlite3_stmt *st = nullptr;
+			sqlite3_prepare_v2(db, QByteArray("SELECT ") + columns + " FROM sqlite_master m, "
+									"pragma_table_info(m.name) p WHERE m.type = 'table' ORDER BY m.name, p.cid",
+							   -1, &st, nullptr);
+			while (st && sqlite3_step(st) == SQLITE_ROW) {
+				QStringList row;
+				for (int i = 0 ; i < sqlite3_column_count(st) ; ++i)
+					row << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(st, i)));
+				out << row.join(QLatin1Char(' '));
+			}
+			sqlite3_finalize(st);
+			return out;
+		};
+		sqlite3 *from_spec = nullptr;
+		sqlite3_open(":memory:", &from_spec);
+		QCOMPARE(sqlite3_exec(from_spec, sql.constData(), nullptr, nullptr, nullptr), SQLITE_OK);
+		sqlite3 *from_file = nullptr;
+		sqlite3_open(":memory:", &from_file);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(written.size())));
+		memcpy(copy, written.constData(), size_t(written.size()));
+		sqlite3_deserialize(from_file, "main", copy, written.size(), written.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		const QStringList spec_tables = describe(from_spec), file_tables = describe(from_file);
+		const QStringList keys = describe(from_file, "p.pk + p.\"notnull\"");
+		QVERIFY(!keys.isEmpty());
+		QCOMPARE(keys.count(QStringLiteral("0")), keys.size());
+		sqlite3_close(from_spec);
+		sqlite3_close(from_file);
+		QVERIFY(!spec_tables.isEmpty());
+		QCOMPARE(spec_tables, file_tables);
+	}
+
 	void laterFormatRefused()
 	{
 		QDomDocument original;

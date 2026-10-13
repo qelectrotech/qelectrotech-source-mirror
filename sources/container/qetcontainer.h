@@ -47,6 +47,8 @@
 	each <image> keeps the name of its file, pictureFile(), and the bytes
 	go in the map. Turning them back into base64 text costs seconds on a
 	project with large pictures, and the folio would only decode it again.
+
+	The format is written down in QETZ-FORMAT.md, beside this file.
 */
 namespace QetContainer
 {
