@@ -123,11 +123,11 @@ QString schema()
 {
 	return QStringLiteral(
 		"CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);"
-		"CREATE TABLE project_property (ord INTEGER PRIMARY KEY, name TEXT, value TEXT, attrs TEXT);"
+		"CREATE TABLE project_property (ord INTEGER PRIMARY KEY, name TEXT, value TEXT, show INTEGER, attrs TEXT);"
 		"CREATE TABLE folio (uuid TEXT PRIMARY KEY, pos INTEGER NOT NULL UNIQUE, %1,"
 		" props_attrs TEXT);"
 		"CREATE TABLE folio_property (folio_uuid TEXT NOT NULL REFERENCES folio, ord INTEGER NOT NULL,"
-		" name TEXT, value TEXT, attrs TEXT, PRIMARY KEY (folio_uuid, ord));"
+		" name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (folio_uuid, ord));"
 		"CREATE TABLE element (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio, %2,"
 		" info_attrs TEXT, links_attrs TEXT);"
 		"CREATE TABLE element_info (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,"
@@ -484,6 +484,21 @@ QList<QDomElement> children(const QDomElement &parent, const QString &tag)
 	return list;
 }
 
+	//A list entry -- a <property>, an <elementInformation> -- as its row:
+	//its name, value, show flag (0 or 1, else left in the JSON) and any
+	//other attribute as JSON, its tag too if it is not @p usual_tag
+QVariantList entryRow(const QDomElement &e, const QString &usual_tag)
+{
+	QVariant value;
+	simpleValue(e, &value);
+	const QString show = e.attribute(QStringLiteral("show"));
+	const bool show_stored = show == QLatin1String("0") || show == QLatin1String("1");
+	QStringList kept{QStringLiteral("name")};
+	if (show_stored) kept << QStringLiteral("show");
+	return {e.hasAttribute(QStringLiteral("name")) ? QVariant(e.attribute(QStringLiteral("name"))) : QVariant(),
+			value, show_stored ? QVariant(show.toInt()) : QVariant(), attributesJson(e, kept, usual_tag)};
+}
+
 	//The key of each of @p items: its uuid, when it has one no other of
 	//@p items has and @p reserved does not hold, so the uuid the folio file
 	//already holds says which row is the item's (@p own true). Else (F100:
@@ -680,12 +695,12 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 	if (hasMarker(d, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, values.at(FolioData.size()));
-		Statement p(db, QStringLiteral("SELECT name, value, attrs FROM folio_property WHERE %1 = ? ORDER BY ord")
-					.arg(db.folioRef()));
+		Statement p(db, QStringLiteral("SELECT name, value, attrs, %1 FROM folio_property WHERE %2 = ? ORDER BY ord")
+					.arg(db.showColumn(), db.folioRef()));
 		p.bind({id});
 		while (p.next())
 			props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
-									QStringLiteral("property")));
+									QStringLiteral("property"), p.value(3)));
 		restoreWhitespace(props, values.at(FolioData.size()));
 		if (!replaceMarker(d, props)) {
 			setError(error, QStringLiteral("folio %1's properties have no place").arg(id));
@@ -832,9 +847,9 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 	db.exec(QStringLiteral("BEGIN"));
 
 	Statement meta(db, QStringLiteral("INSERT INTO meta VALUES (?,?)"));
-	Statement project_property(db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?)"));
+	Statement project_property(db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?,?)"));
 	Statement folio(db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?)").arg(placeholders(FolioData.size())));
-	Statement folio_property(db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?)"));
+	Statement folio_property(db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?,?)"));
 	Statement element(db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?)").arg(placeholders(ElementData.size())));
 	Statement element_info(db, QStringLiteral("INSERT INTO element_info VALUES (?,?,?,?,?,?)"));
 	Statement link(db, QStringLiteral("INSERT INTO link VALUES (?,?,?,?)"));
@@ -848,44 +863,22 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 		//<properties> of a block, as rows of @p rows (with @p prefix values)
 	auto moveProperties = [&](QDomElement block, Statement &rows, const QVariantList &prefix) {
 		int ord = 0;
-		for (QDomElement p : children(block, QStringLiteral("property"))) {
-			QVariant value;
-			simpleValue(p, &value);
-			ok = ok && rows.run(QVariantList(prefix) << ord++ << (p.hasAttribute(QStringLiteral("name"))
-													   ? QVariant(p.attribute(QStringLiteral("name"))) : QVariant())
-							   << value << attributesJson(p, {QStringLiteral("name")}, QStringLiteral("property")));
-		}
+		for (QDomElement p : children(block, QStringLiteral("property")))
+			ok = ok && rows.run(QVariantList(prefix) << ord++ << entryRow(p, QStringLiteral("property")));
 	};
 		//The <elementInformation> entries of @p block, as the rows of the
 		//symbol @p key
 	auto moveInformation = [&](const QDomElement &block, const QString &key) {
 		int ord = 0;
-		for (QDomElement i : children(block, QStringLiteral("elementInformation"))) {
-			QVariant value;
-			simpleValue(i, &value);
-			const QString show = i.attribute(QStringLiteral("show"));
-			const bool show_stored = show == QLatin1String("0") || show == QLatin1String("1");
-			QStringList kept{QStringLiteral("name")};
-			if (show_stored) kept << QStringLiteral("show");
-			ok = ok && element_info.run({key, ord++, i.hasAttribute(QStringLiteral("name"))
-											? QVariant(i.attribute(QStringLiteral("name"))) : QVariant(),
-										 value, show_stored ? QVariant(show.toInt()) : QVariant(),
-										 attributesJson(i, kept, QStringLiteral("elementInformation"))});
-		}
+		for (QDomElement i : children(block, QStringLiteral("elementInformation")))
+			ok = ok && element_info.run(QVariantList{key, ord++} << entryRow(i, QStringLiteral("elementInformation")));
 	};
 
 		//Project properties
 	const QDomElement project_props = project.firstChildElement(QStringLiteral("properties"));
 	if (!project_props.isNull() && listBlock(project_props, QStringLiteral("property"))) {
 		ok = ok && meta.run({QStringLiteral("props_attrs"), blockJson(project_props)});
-		int ord = 0;
-		for (QDomElement p : children(project_props, QStringLiteral("property"))) {
-			QVariant value;
-			simpleValue(p, &value);
-			ok = ok && project_property.run({ord++, p.hasAttribute(QStringLiteral("name"))
-												? QVariant(p.attribute(QStringLiteral("name"))) : QVariant(),
-											 value, attributesJson(p, {QStringLiteral("name")}, QStringLiteral("property"))});
-		}
+		moveProperties(project_props, project_property, {});
 		leaveMarker(project_props);
 	}
 
@@ -1090,10 +1083,11 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 	if (hasMarker(project, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, meta.value(QStringLiteral("props_attrs")));
-		Statement s(db, QStringLiteral("SELECT name, value, attrs FROM project_property ORDER BY ord"));
+		Statement s(db, QStringLiteral("SELECT name, value, attrs, %1 FROM project_property ORDER BY ord")
+					.arg(db.showColumn()));
 		while (s.next())
 			props.appendChild(entryElement(document, s.value(0), QStringLiteral("name"), s.value(1), s.value(2),
-										   QStringLiteral("property")));
+										   QStringLiteral("property"), s.value(3)));
 		restoreWhitespace(props, meta.value(QStringLiteral("props_attrs")));
 		if (!replaceMarker(project, props)) {
 			setError(error, QStringLiteral("the project's properties have no place"));
@@ -1143,7 +1137,8 @@ bool QetContainerDb::currentFormat(const QByteArray &database)
 	const QList<std::pair<QString, int>> columns = {
 		{QStringLiteral("folio"), int(FolioData.size()) + 3},
 		{QStringLiteral("element"), int(ElementData.size()) + 4},
-		{QStringLiteral("conductor"), int(ConductorData.size()) + 2}};
+		{QStringLiteral("conductor"), int(ConductorData.size()) + 2},
+		{QStringLiteral("folio_property"), 6}, {QStringLiteral("element_info"), 6}};
 	for (const auto &table : columns) {
 		Statement s(db, QStringLiteral("SELECT count(*) FROM pragma_table_info('%1')").arg(table.first));
 		if (!s.next() || s.value(0).toInt() != table.second)
