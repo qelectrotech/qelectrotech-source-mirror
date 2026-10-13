@@ -41,6 +41,8 @@
 
 	join(split(d)) is d. Nothing here knows what the parts mean: the
 	project is read and written by the same code as a .qet file.
+
+	The format is written down in QETZ-FORMAT.md, beside this file.
 */
 namespace QetContainer
 {
