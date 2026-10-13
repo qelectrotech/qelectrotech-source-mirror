@@ -65,9 +65,14 @@ const QStringList FolioData = {
 	QStringLiteral("folio"), QStringLiteral("indexrev"), QStringLiteral("filename"),
 	QStringLiteral("locmach"), QStringLiteral("plant"), QStringLiteral("auto_page_num")};
 	//From format 3 on an item's uuid is its row's key, not a column of its
-	//own: it stays in the folio file, where it says which row is the item's
+	//own: it stays in the folio file, where it says which row is the item's.
+	//So does a symbol's type, the symbol it is: a folio file read alone
+	//still says what is drawn where
 const QStringList ElementData = {
-	QStringLiteral("type"), QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
+	QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
+	//Format 2 also moved the type
+const QStringList ElementDataV2 = {
+	QStringLiteral("uuid"), QStringLiteral("type"), QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
 const QStringList ConductorData = {
 	QStringLiteral("element1"), QStringLiteral("terminal1"),
 	QStringLiteral("element2"), QStringLiteral("terminal2"), QStringLiteral("num"),
@@ -162,7 +167,7 @@ class Database
 		QString itemKey() const { return v2() ? QStringLiteral("key") : QStringLiteral("uuid"); }
 		QString elementRef() const { return v2() ? QStringLiteral("element_key") : QStringLiteral("element_uuid"); }
 		QString showColumn() const { return v2() ? QStringLiteral("NULL") : QStringLiteral("show"); }
-		QStringList elementData() const { return v2() ? QStringList{QStringLiteral("uuid")} + ElementData : ElementData; }
+		QStringList elementData() const { return v2() ? ElementDataV2 : ElementData; }
 		QStringList conductorData() const { return v2() ? QStringList{QStringLiteral("uuid")} + ConductorData : ConductorData; }
 };
 
@@ -634,8 +639,24 @@ QString quoted(const QStringList &names)
 	return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
 }
 
+	//The keys of the rows restore() read, each once: every row must be an
+	//item's, on the folio the item is on -- nothing in the file, which is
+	//untrusted, enforces it
+struct UsedRows
+{
+	QSet<QString> folios, elements, conductors;
+	bool use(QSet<QString> &used, const QString &key, const QString &what, QString *error) {
+		if (used.contains(key)) {
+			setError(error, QStringLiteral("%1 %2 is in the folios twice").arg(what, key));
+			return false;
+		}
+		used.insert(key);
+		return true;
+	}
+};
+
 	//The engineering data of the folio @p d back from @p db
-bool restoreDiagram(Database &db, QDomElement d, QString *error)
+bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 {
 	QDomDocument document = d.ownerDocument();
 	auto entry = [&document](const QVariant &name_attr, const QString &name, const QVariant &value,
@@ -644,6 +665,7 @@ bool restoreDiagram(Database &db, QDomElement d, QString *error)
 	};
 	const QString id = keyOf(db, d, FolioAttribute);
 	if (id.isEmpty()) return true;
+	if (!used.use(used.folios, id, QStringLiteral("folio"), error)) return false;
 	Statement f(db, QStringLiteral("SELECT %1, props_at, props_attrs FROM folio WHERE %2 = ?")
 				.arg(quoted(FolioData), db.folioKey()));
 	f.bind({id});
@@ -673,10 +695,15 @@ bool restoreDiagram(Database &db, QDomElement d, QString *error)
 		for (QDomElement e : children(list, QStringLiteral("element"))) {
 			const QString key = keyOf(db, e, KeyAttribute);
 			if (key.isEmpty()) continue;
-			Statement s(db, QStringLiteral("SELECT %1, info_at, info_attrs, links_at, links_attrs FROM element WHERE %2 = ?")
-						.arg(quoted(element_data), db.itemKey()));
+			if (!used.use(used.elements, key, QStringLiteral("symbol"), error)) return false;
+			Statement s(db, QStringLiteral("SELECT %1, info_at, info_attrs, links_at, links_attrs, %2 FROM element WHERE %3 = ?")
+						.arg(quoted(element_data), db.folioRef(), db.itemKey()));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
+			if (s.value(element_data.size() + 4).toString() != id) {
+				setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
+				return false;
+			}
 			QVariantList v;
 			for (int i = 0 ; i < element_data.size() + 4 ; ++i) v << s.value(i);
 			put(e, element_data, v, 0);
@@ -715,13 +742,48 @@ bool restoreDiagram(Database &db, QDomElement d, QString *error)
 		for (QDomElement c : children(list, QStringLiteral("conductor"))) {
 			const QString key = keyOf(db, c, KeyAttribute);
 			if (key.isEmpty()) continue;
-			Statement s(db, QStringLiteral("SELECT %1 FROM conductor WHERE %2 = ?")
-						.arg(quoted(conductor_data), db.itemKey()));
+			if (!used.use(used.conductors, key, QStringLiteral("wire"), error)) return false;
+			Statement s(db, QStringLiteral("SELECT %1, %2 FROM conductor WHERE %3 = ?")
+						.arg(quoted(conductor_data), db.folioRef(), db.itemKey()));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
+			if (s.value(conductor_data.size()).toString() != id) {
+				setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
+				return false;
+			}
 			QVariantList v;
 			for (int i = 0 ; i < conductor_data.size() ; ++i) v << s.value(i);
 			put(c, conductor_data, v, 0);
+		}
+	}
+	return true;
+}
+
+	//No row of @p db left over once restoreDiagram() read every folio:
+	//each table's rows, counted, are the items read (@p used), and every
+	//entry belongs to a row
+bool noRowLeft(const Database &db, const UsedRows &used, QString *error)
+{
+	auto count = [&db](const QString &sql) {
+		Statement s(db, sql);
+		return s.next() ? s.value(0).toInt() : -1;
+	};
+	const struct { QString sql; int expected; QString what; } checks[] = {
+		{QStringLiteral("SELECT count(*) FROM folio"), int(used.folios.size()), QStringLiteral("folio rows")},
+		{QStringLiteral("SELECT count(*) FROM element"), int(used.elements.size()), QStringLiteral("symbol rows")},
+		{QStringLiteral("SELECT count(*) FROM conductor"), int(used.conductors.size()), QStringLiteral("wire rows")},
+		{QStringLiteral("SELECT count(*) FROM folio_property WHERE %1 NOT IN (SELECT %2 FROM folio)")
+				.arg(db.folioRef(), db.folioKey()), 0, QStringLiteral("folio property rows of no folio")},
+		{QStringLiteral("SELECT count(*) FROM element_info WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("information rows of no symbol")},
+		{QStringLiteral("SELECT count(*) FROM link WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("link rows of no symbol")}};
+	for (const auto &check : checks) {
+		const int found = count(check.sql);
+		if (found != check.expected) {
+			setError(error, QStringLiteral("the project database does not match its folios: %1 %2, %3 expected")
+					 .arg(found).arg(check.what).arg(check.expected));
+			return false;
 		}
 	}
 	return true;
@@ -1060,10 +1122,11 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		}
 	}
 
+	UsedRows used;
 	for (QDomElement d : children(project, QStringLiteral("diagram")))
-		if (!restoreDiagram(db, d, error))
+		if (!restoreDiagram(db, d, used, error))
 			return false;
-	return true;
+	return noRowLeft(db, used, error);
 }
 
 /**
@@ -1075,5 +1138,17 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 bool QetContainerDb::currentFormat(const QByteArray &database)
 {
 	Database db;
-	return openDatabase(db, database, nullptr) && db.m_format == QetContainer::Format;
+	if (!openDatabase(db, database, nullptr) || db.m_format != QetContainer::Format)
+		return false;
+		//Its rows are copied as they are: the same columns as this writes
+	const QList<std::pair<QString, int>> columns = {
+		{QStringLiteral("folio"), int(FolioData.size()) + 4},
+		{QStringLiteral("element"), int(ElementData.size()) + 6},
+		{QStringLiteral("conductor"), int(ConductorData.size()) + 2}};
+	for (const auto &table : columns) {
+		Statement s(db, QStringLiteral("SELECT count(*) FROM pragma_table_info('%1')").arg(table.first));
+		if (!s.next() || s.value(0).toInt() != table.second)
+			return false;
+	}
+	return true;
 }

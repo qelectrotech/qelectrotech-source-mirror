@@ -427,6 +427,89 @@ private slots:
 		QVERIFY(!error.isEmpty());
 	}
 
+	// project.sqlite changed by @p sql in @p entries
+	static void alterDatabase(QList<QetZip::Entry> &entries, const char *sql)
+	{
+		for (QetZip::Entry &e : entries) {
+			if (e.name != QLatin1String("project.sqlite")) continue;
+			sqlite3 *db = nullptr;
+			sqlite3_open(":memory:", &db);
+			unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(e.data.size())));
+			memcpy(copy, e.data.constData(), size_t(e.data.size()));
+			sqlite3_deserialize(db, "main", copy, e.data.size(), e.data.size(),
+								SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE);
+			QCOMPARE(sqlite3_exec(db, sql, nullptr, nullptr, nullptr), SQLITE_OK);
+			sqlite3_int64 size = 0;
+			unsigned char *bytes = sqlite3_serialize(db, "main", &size, 0);
+			e.data = QByteArray(reinterpret_cast<const char *>(bytes), qsizetype(size));
+			sqlite3_free(bytes);
+			sqlite3_close(db);
+		}
+	}
+
+	// A database that does not match its folio files -- a row no item has,
+	// an item's row on another folio, entries of no symbol -- is refused
+	// with what is wrong, not read as far as it goes
+	void mismatchRefused_data()
+	{
+		QTest::addColumn<QByteArray>("sql");
+		QTest::addColumn<QString>("said");
+		QTest::newRow("symbol row of no symbol")
+				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_at, info_attrs,"
+							  " links_at, links_attrs FROM element LIMIT 1")
+				<< QStringLiteral("symbol rows");
+		QTest::newRow("symbol row twice")
+				<< QByteArray("INSERT INTO element SELECT * FROM element LIMIT 1")
+				<< QStringLiteral("symbol rows");
+		QTest::newRow("wire row of no wire")
+				<< QByteArray("INSERT INTO conductor SELECT 'x', folio_uuid, element1, terminal1, element2, terminal2,"
+							  " num, formula, function, tension_protocol, conductor_color, conductor_section, cable,"
+							  " bus, freezeLabel FROM conductor LIMIT 1")
+				<< QStringLiteral("wire rows");
+		QTest::newRow("symbol on another folio")
+				<< QByteArray("UPDATE element SET folio_uuid = (SELECT uuid FROM folio WHERE pos = 2)"
+							  " WHERE folio_uuid = (SELECT uuid FROM folio WHERE pos = 1)")
+				<< QStringLiteral("the database says another");
+		QTest::newRow("information of no symbol")
+				<< QByteArray("UPDATE element_info SET element_uuid = 'x' WHERE rowid = 1")
+				<< QStringLiteral("information rows of no symbol");
+	}
+	void mismatchRefused()
+	{
+		QFETCH(QByteArray, sql);
+		QFETCH(QString, said);
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		{
+			QDomDocument back;
+			QString error;
+			QVERIFY2(QetContainer::join(entries, &back, &error), qPrintable(error));
+		}
+		alterDatabase(entries, sql.constData());
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY2(error.contains(said), qPrintable(error));
+	}
+
+	// A folio file says which symbol each item is (its type), read alone
+	void folioSaysWhichSymbol()
+	{
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		int typed = 0, symbols = 0;
+		for (const QetZip::Entry &e : entries) {
+			if (!e.name.startsWith(QStringLiteral("folios/"))) continue;
+			const QString text = QString::fromUtf8(e.data);
+			symbols += int(text.count(QStringLiteral("<element ")));
+			typed += int(text.count(QRegularExpression(QStringLiteral("<element [^>]*type=\"embed://"))));
+		}
+		QVERIFY(symbols > 0);
+		QCOMPARE(typed, symbols);
+	}
+
 	void viewInsteadOfTableRefused()
 	{
 		QDomDocument original;
