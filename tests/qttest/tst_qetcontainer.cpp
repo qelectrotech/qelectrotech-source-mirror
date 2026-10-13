@@ -70,14 +70,15 @@ class tst_qetcontainer : public QObject
 	}
 
 		//@p document without what QElectroTech computes, which a .qetz
-		//does not keep (format 3); tst_resaveunchanged checks that
+		//does not keep (format 4); tst_resaveunchanged checks that
 		//QElectroTech gives it back
 	static QDomDocument withoutComputed(const QDomDocument &document)
 	{
 		QDomDocument copy = document.cloneNode(true).toDocument();
+		const bool own_uuids = QetContainer::ownUuids(copy.documentElement());
 		for (QDomElement diagram = copy.documentElement().firstChildElement(QStringLiteral("diagram"));
 			 !diagram.isNull() ; diagram = diagram.nextSiblingElement(QStringLiteral("diagram")))
-			QetContainer::dropComputed(diagram, false);
+			QetContainer::dropComputed(diagram, own_uuids);
 		return copy;
 	}
 
@@ -243,7 +244,7 @@ private slots:
 		QCOMPARE(count("element_info"), int(original.elementsByTagName(QStringLiteral("elementInformation")).size()));
 		QCOMPARE(count("link"), int(original.elementsByTagName(QStringLiteral("link_uuid")).size()));
 		QCOMPARE(count("conductor"), int(original.elementsByTagName(QStringLiteral("conductor")).size()));
-		QVERIFY(count("folio_property") + count("doc_project_property") > 0);
+		QVERIFY(count("folio_property") + count("project_property") > 0);
 		sqlite3_close(db);
 	}
 

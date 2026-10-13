@@ -142,7 +142,7 @@ class Diagram : public QGraphicsScene
 		QUuid m_uuid = QUuid::createUuid();
 			/// The XML of this folio's items, while they are not built yet
 		QDomElement m_deferred;
-		QString m_deferred_part;
+		QString m_kept_part;
 		QHash<QUuid, Element *> m_partial_elements;
 		QHash<int, Terminal *> m_partial_table;
 		bool m_partial_changed = false;
@@ -218,13 +218,13 @@ class Diagram : public QGraphicsScene
 				 DiagramContent * = nullptr);
 			/// false while this folio's items wait in its XML to be
 			/// built (lazy folios)
-		bool isLoaded() const {return m_deferred.isNull() && m_deferred_part.isEmpty();}
-		QDomElement deferredXml();
-			/// The folio's items are in the part @p file of the .qetz the
-			/// project was opened from, read when they are first needed
-			/// (stage D2)
-		void setDeferredPart(const QString &file) {m_deferred = QDomElement(); m_deferred_part = file;}
-		QString deferredPart() const {return m_deferred_part;}
+		bool isLoaded() const {return m_deferred.isNull();}
+		QDomElement deferredXml() const {return m_deferred;}
+			/// The part @p file of the .qetz the project was opened from
+			/// holds this folio as it is while not built: saving may copy it
+			/// (QETProject::toXml(), stage D4)
+		void setKeptPart(const QString &file) {m_kept_part = file;}
+		QString keptPart() const {return m_kept_part;}
 		QList<Element *> buildSymbols(const QSet<QUuid> &uuids);
 			/// Symbols built as partners (buildSymbols()) changed since:
 			/// the folio must be built to be saved

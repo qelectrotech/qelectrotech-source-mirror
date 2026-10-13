@@ -288,7 +288,7 @@ static QStringList savedLinks(const QString &qetz, const QString &path)
 		db.setDatabaseName(db_path);
 		check(db.open(), "a .qetz's database opened");
 		QSqlQuery query(db);
-		check(query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM doc_link ORDER BY element_uuid, ord")),
+		check(query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, ord")),
 			  "saved links read");
 		while (query.next())
 			links[query.value(0).toString()] << query.value(1).toString();
@@ -750,8 +750,8 @@ int main(int argc, char **argv)
 			check(opened.unloadedFolioCount() == 0, "a project with a shared uuid opens with every folio built");
 			check(built_late == 0, "a project with a shared uuid builds its folios as it reads them, not later");
 		}
-			//A .qetz opened from its index (stage D2): no
-			//folio read, each read from its part when shown, drawn and
+			//A .qetz opened lazily: no folio built but those
+			//the terminal strip needs, each built when shown, drawn and
 			//linked as when built, saved as the .qet is
 		{
 			const QString zipped = output + "/lazy_folios.qetz";
@@ -759,12 +759,11 @@ int main(int argc, char **argv)
 			check(eager.writeContainerFile(zipped, &error), "saved as a .qetz");
 			QETProject indexed(zipped);
 			check(indexed.state() == QETProject::Ok, "the .qetz opens");
-			check(indexed.openedFromIndex(), "the .qetz opens from its index");
-			std::printf(".qetz opened from its index: %d of %d folios not built (strip folios %d)\n",
+			std::printf(".qetz opened: %d of %d folios not built (strip folios %d)\n",
 						indexed.unloadedFolioCount(), int(folios.size()), int(strip_folios.size()));
 			check(indexed.unloadedFolioCount() == folios.size() - strip_folios.size(),
 				  "the .qetz opens building only the folios of the terminal strip's terminals");
-			check(numbering(indexed) == numbering(eager), "symbols' numbering from the index as when built");
+			check(numbering(indexed) == numbering(eager), "symbols' numbering of a .qetz as when built");
 				//The drawn items, through the view made of their tables: the
 				//folios built for it, as for the tables (D6: none were)
 			{
@@ -809,7 +808,7 @@ int main(int argc, char **argv)
 						if (row.startsWith("diagram")) rows << row;
 					return rows;
 				};
-				check(folioRows(indexed) == folioRows(eager), "the folios' rows from the index as when built");
+				check(folioRows(indexed) == folioRows(eager), "the folios' rows of a .qetz as when built");
 					//Folio numbers that count the folios ("%id/%total")
 				const QString totals = output + "/totals.qetz";
 				qputenv("QET_EAGER_FOLIOS", "1");
@@ -823,20 +822,19 @@ int main(int argc, char **argv)
 				QETProject usual_totals(totals);
 				qunsetenv("QET_EAGER_FOLIOS");
 				QETProject lazy_totals(totals);
-				check(lazy_totals.openedFromIndex(), "opened from its index");
+				check(lazy_totals.unloadedFolioCount() > 0, "opened lazily");
 				const QStringList lazy_rows = folioRows(lazy_totals), usual_rows = folioRows(usual_totals);
 				if (lazy_rows != usual_rows)
 					for (int i = 0 ; i < lazy_rows.size() && i < 3 ; ++i)
 						std::printf("  lazily %s\n  built  %s\n", qPrintable(lazy_rows.at(i).left(140)),
 									qPrintable(usual_rows.value(i).left(140)));
-				check(lazy_rows == usual_rows, "folio numbers with totals from the index as when built");
+				check(lazy_rows == usual_rows, "folio numbers with totals of a .qetz as when built");
 			}
 			for (int i = 0; i < folios.size(); ++i)
 				same(indexed, i, "shown from the .qetz");
 			check(indexed.toXml().toString() == eager.toXml().toString(), "the .qetz saves as when built");
 				//A folio whose table continues one on another folio, shown
-				//first: the index, not the folios' parts, says which folios
-				//its table is built with (D5)
+				//first: the folios its table is built with (D5)
 			int continued = 0;
 			for (int i = 0; i < folios.size(); ++i) {
 				bool continues = false;
@@ -852,8 +850,7 @@ int main(int argc, char **argv)
 			check(continued > 0, "a folio whose table continues another");
 
 				//Numbering, the searches for symbols and the unused symbols
-				//are answered from the database: no folio file is read
-				//but those of the folios built (D5)
+				//are answered from the database (D5)
 			{
 				QETProject asked(zipped);
 				check(numbering(asked) == numbering(eager), "numbering of a .qetz as when built");
@@ -874,10 +871,8 @@ int main(int argc, char **argv)
 					check(found(search.freeElement(kinds)) == found(usual_search.freeElement(kinds)),
 						  "free symbols of a .qetz found as when built");
 				const int built = int(folios.size()) - asked.unloadedFolioCount();
-				std::printf(".qetz asked numbering, searches, unused symbols: %d folio files read, %d folios built\n",
-							asked.folioPartsRead(), built);
+				std::printf(".qetz asked numbering, searches, unused symbols: %d folios built\n", built);
 				check(asked.unloadedFolioCount() > 0, "asking a .qetz does not build every folio");
-				check(asked.folioPartsRead() == built, "asking a .qetz reads no file of a folio not built");
 			}
 
 				//A folio added, moved and removed: no other folio built, the

@@ -166,17 +166,6 @@ class projectDataBase : public QObject
 		void setBuildingFolio(bool building);
 		bool isBuildingFolio() const {return m_building_folios > 0;}
 		bool rowsFromDocument() const {return m_rows_from_document;}
-		QString schemaStamp() const;
-			/// A drawn table of a folio and the table it continues
-		struct FolioTable { QUuid table; QUuid folio; QUuid previous; };
-		QByteArray indexFile(const QList<std::pair<QUuid, QString>> &folio_headers,
-							 const QList<FolioTable> &tables = QList<FolioTable>());
-		void discardFill();
-			/// The tables are right as they are (filled from an index)
-		void markCurrent() {m_content_changed = false;}
-		bool fillFromIndex(const QByteArray &index, QList<std::pair<QUuid, QString>> *folio_headers,
-						   QString *why = nullptr,
-						   std::optional<QList<FolioTable>> *folio_tables = nullptr);
 		QString prefillReport() const;
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;

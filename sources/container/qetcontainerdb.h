@@ -21,8 +21,6 @@
 #include <QByteArray>
 #include <QDomElement>
 
-#include <memory>
-
 /**
 	@brief The QetContainerDb namespace
 	The engineering data of a project, moved between its document and the
@@ -42,21 +40,8 @@
 namespace QetContainerDb
 {
 	QByteArray extract(QDomElement project, QString *error = nullptr,
-					   const QByteArray &index = QByteArray(),
 					   const QByteArray &kept_from = QByteArray());
 	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr);
-	bool restoreFolio(QDomElement diagram, const QByteArray &database, QString *error = nullptr);
-		/// restoreFolio() for the folios of one database, opened once
-	class FolioReader
-	{
-		public:
-			explicit FolioReader(const QByteArray &database);
-			~FolioReader();
-			bool restore(QDomElement diagram, QString *error = nullptr);
-		private:
-			struct Private;
-			std::unique_ptr<Private> d;
-	};
 		/// true if @p database is of the format this writes
 	bool currentFormat(const QByteArray &database);
 }

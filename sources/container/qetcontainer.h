@@ -18,7 +18,6 @@
 #ifndef QETCONTAINER_H
 #define QETCONTAINER_H
 
-#include "qetcontainerdb.h"
 #include "qetzip.h"
 
 #include <QDomDocument>
@@ -61,27 +60,24 @@ namespace QetContainer
 		/// 1/0, its PRAGMA user_version the format.
 		/// 4: what QElectroTech computes left out of the folios
 		/// (dropComputed()), the tables written without keys or indexes.
+		/// project.sqlite holds the engineering data once: QElectroTech's
+		/// own project database is built from it when the project opens.
 		/// Formats 2 and 3 are still read.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
 							   QString *error = nullptr,
-							   const QByteArray &index = QByteArray(),
 							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
 			  QString *error = nullptr, QStringList *folio_files = nullptr,
 			  Pictures *pictures = nullptr);
-		/// A folio part of @p files, which join() left out, with its
-		/// pictures and its engineering data back (stage D2)
-		/// @p reader, if any, reads the engineering data of @p files
-	bool readFolio(const QHash<QString, QByteArray> &files, const QString &file,
-				   QDomDocument *folio, QString *error = nullptr,
-				   QetContainerDb::FolioReader *reader = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
 
 		/// Take what QElectroTech computes out of a folio (format 4)
 	void dropComputed(QDomElement diagram, bool terminal_lists);
+		/// true if every folio, symbol and wire has a uuid of its own
+	bool ownUuids(const QDomElement &project);
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
 		/// true if @p content is a zip, so a .qetz rather than a .qet

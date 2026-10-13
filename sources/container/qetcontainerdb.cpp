@@ -19,7 +19,6 @@
 
 #include "qetcontainer.h"
 
-#include <QRegularExpression>
 #include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -134,9 +133,7 @@ QString schema()
 			.arg(columns(FolioData), columns(ElementData), columns(ConductorData));
 }
 
-	//The tables of a document's engineering data. While the project
-	//database's own tables were in the same file they were named
-	//doc_<name> (stage D3)
+	//The tables of a document's engineering data
 const QStringList DocTables = {
 	QStringLiteral("strip_bridge_terminal"), QStringLiteral("strip_bridge"),
 	QStringLiteral("strip_terminal"), QStringLiteral("terminal_strip"),
@@ -144,26 +141,16 @@ const QStringList DocTables = {
 	QStringLiteral("element_info"), QStringLiteral("element"), QStringLiteral("link"),
 	QStringLiteral("conductor"), QStringLiteral("meta")};
 
-	//Owns an sqlite3 handle; its SQL names the document's tables by their
-	//plain names, given their prefix here, and its columns as the format of
-	//the database read names them
+	//Owns an sqlite3 handle; names its columns as the format of the
+	//database read names them
 class Database
 {
 	public:
 		~Database() { if (m_db) sqlite3_close(m_db); }
 		sqlite3 *m_db = nullptr;
-		QString m_prefix;
 		int m_format = QetContainer::Format;
-		QString sql(const QString &text) const {
-			if (m_prefix.isEmpty()) return text;
-			static const QRegularExpression names(QStringLiteral("(?<![\"\\w])(%1)(?![\\w\"])")
-												  .arg(DocTables.join(QLatin1Char('|'))));
-			QString out = text;
-			return out.replace(names, m_prefix + QStringLiteral("\\1"));
-		}
-		QString table(const QString &name) const { return m_prefix + name; }
-		bool exec(const QString &text) {
-			return sqlite3_exec(m_db, sql(text).toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
+		bool exec(const QString &sql) {
+			return sqlite3_exec(m_db, sql.toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
 		}
 		QString error() const { return QString::fromUtf8(sqlite3_errmsg(m_db)); }
 			//Format 2 (QElectroTech 0.200.1 development builds) keyed its
@@ -184,7 +171,7 @@ class Statement
 {
 	public:
 		Statement(const Database &db, const QString &sql) {
-			sqlite3_prepare_v2(db.m_db, db.sql(sql).toUtf8().constData(), -1, &m_stmt, nullptr);
+			sqlite3_prepare_v2(db.m_db, sql.toUtf8().constData(), -1, &m_stmt, nullptr);
 		}
 		~Statement() { sqlite3_finalize(m_stmt); }
 		bool ok() const { return m_stmt; }
@@ -583,19 +570,11 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 		//A file is untrusted: nothing in its schema may run, and every name
 		//read must be a plain table.
 	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
-		//Beside the project database's own tables the document's are
-		//named doc_<name>
-	{
-		Statement doc(db, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'doc_meta'"));
-		if (doc.next() && doc.value(0).toInt() > 0) db.m_prefix = QStringLiteral("doc_");
-	}
-	for (const char *table : {"meta", "project_property", "folio", "folio_property",
-							  "element", "element_info", "link", "conductor", "terminal_strip",
-							  "strip_terminal", "strip_bridge", "strip_bridge_terminal"}) {
+	for (const QString &table : DocTables) {
 		Statement kind(db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
-		kind.bind({db.table(QString::fromLatin1(table))});
+		kind.bind({table});
 		if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
-			setError(error, QStringLiteral("the project database has no table %1").arg(QLatin1String(table)));
+			setError(error, QStringLiteral("the project database has no table %1").arg(table));
 			return false;
 		}
 	}
@@ -755,28 +734,10 @@ bool restoreDiagram(Database &db, QDomElement d, QString *error)
 	folios still in it) into a new database.
 	@return the database file, or an empty array with @p error set
 */
-QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QByteArray &index,
-								   const QByteArray &kept_from)
+QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QByteArray &kept_from)
 {
 	Database db;
-	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK) {
-		setError(error, QStringLiteral("cannot create the project database"));
-		return {};
-	}
-		//The project database's own tables first, when given: one file
-		//holds both (stage D3), the document's named doc_<name>
-	if (!index.isEmpty()) {
-		db.m_prefix = QStringLiteral("doc_");
-		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(index.size())));
-		if (!copy) { setError(error, QStringLiteral("out of memory")); return {}; }
-		memcpy(copy, index.constData(), size_t(index.size()));
-		if (sqlite3_deserialize(db.m_db, "main", copy, index.size(), index.size(),
-								SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE) != SQLITE_OK) {
-			setError(error, QStringLiteral("cannot read the project database's index"));
-			return {};
-		}
-	}
-	if (!db.exec(schema())) {
+	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK || !db.exec(schema())) {
 		setError(error, QStringLiteral("cannot create the project database"));
 		return {};
 	}
@@ -795,7 +756,7 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 		db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
 		for (const QString &table : DocTables) {
 			Statement kind(db, QStringLiteral("SELECT type FROM old.sqlite_master WHERE name = ?"));
-			kind.bind({db.table(table)});
+			kind.bind({table});
 			if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
 				setError(error, QStringLiteral("the kept folios' database has no table %1").arg(table));
 				return {};
@@ -1103,58 +1064,6 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		if (!restoreDiagram(db, d, error))
 			return false;
 	return true;
-}
-
-/**
-	@brief QetContainerDb::restoreFolio
-	restore() for the one folio @p diagram, read from its own part (a folio
-	built after its project was opened from a .qetz, stage D2)
-*/
-bool QetContainerDb::restoreFolio(QDomElement diagram, const QByteArray &database, QString *error)
-{
-	Database db;
-	return openDatabase(db, database, error) && restoreDiagram(db, diagram, error);
-}
-
-struct QetContainerDb::FolioReader::Private
-{
-	QByteArray database;
-	Database db;
-	bool opened = false;
-	QString open_error;
-};
-
-/**
-	@brief QetContainerDb::FolioReader::FolioReader
-	Reads folios' engineering data from @p database, opened the first time
-	one is read and kept open: a folio built after the project was opened
-	from a .qetz no longer copies the whole database (stage D5)
-*/
-QetContainerDb::FolioReader::FolioReader(const QByteArray &database) :
-	d(std::make_unique<Private>())
-{
-	d->database = database;
-}
-
-QetContainerDb::FolioReader::~FolioReader() = default;
-
-/**
-	@brief QetContainerDb::FolioReader::restore
-	restoreFolio() for @p diagram
-*/
-bool QetContainerDb::FolioReader::restore(QDomElement diagram, QString *error)
-{
-	if (!d->opened) {
-		d->opened = true;
-		if (!openDatabase(d->db, d->database, &d->open_error) && d->open_error.isEmpty())
-			d->open_error = QStringLiteral("the project database cannot be read");
-		d->database = QByteArray();
-	}
-	if (!d->open_error.isEmpty()) {
-		setError(error, d->open_error);
-		return false;
-	}
-	return restoreDiagram(d->db, diagram, error);
 }
 
 /**

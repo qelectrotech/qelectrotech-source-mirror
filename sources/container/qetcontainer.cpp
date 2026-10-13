@@ -23,6 +23,7 @@
 #include <QMap>
 #include <QSet>
 #include <QRegularExpression>
+#include <QUuid>
 
 const char QetContainer::MimeType[] = "application/x-qelectrotech-project+zip";
 
@@ -107,6 +108,7 @@ void removeElement(QDomElement e)
 	}
 }
 
+
 	//The collection's symbol definitions, each to elements/<categories>/<name>
 void splitCollection(QDomDocument &document, const QDomElement &category, const QString &path,
 					 QList<QetZip::Entry> *parts, QSet<QString> *taken)
@@ -185,6 +187,33 @@ QString QetContainer::pictureFile(const QDomElement &image)
 }
 
 /**
+	@brief QetContainer::ownUuids
+	@return true if every folio, symbol and wire of @p project has a uuid
+	no other has: a wire then finds its ends without the symbols' terminal
+	lists, which split() leaves out
+*/
+bool QetContainer::ownUuids(const QDomElement &project)
+{
+	QSet<QString> seen;
+	auto own = [&seen](const QDomElement &item) {
+		const QString uuid = item.attribute(QStringLiteral("uuid"));
+		if (QUuid(uuid).isNull() || seen.contains(uuid)) return false;
+		seen.insert(uuid);
+		return true;
+	};
+	for (const QDomElement &diagram : childElements(project, QStringLiteral("diagram"))) {
+		if (!own(diagram)) return false;
+		for (const QDomElement &list : childElements(diagram, QStringLiteral("elements")))
+			for (const QDomElement &element : childElements(list, QStringLiteral("element")))
+				if (!own(element)) return false;
+		for (const QDomElement &list : childElements(diagram, QStringLiteral("conductors")))
+			for (const QDomElement &wire : childElements(list, QStringLiteral("conductor")))
+				if (!own(wire)) return false;
+	}
+	return true;
+}
+
+/**
 	@brief QetContainer::dropComputed
 	Take out of the folio @p diagram what QElectroTech computes when it
 	builds the folio (stage D3c): a wire's description of
@@ -235,8 +264,7 @@ void QetContainer::dropComputed(QDomElement diagram, bool terminal_lists)
 	set if @p project is not a project
 */
 QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QString &writer,
-										 QString *error, const QByteArray &index,
-										 const QHash<QString, QByteArray> &kept_from)
+										 QString *error, const QHash<QString, QByteArray> &kept_from)
 {
 	QDomDocument document = project.cloneNode(true).toDocument();
 	QDomElement root = document.documentElement();
@@ -250,7 +278,7 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 		//stage D4) keeps its part and, through
 		//@p kept_from's project.sqlite, its rows
 	const QByteArray database = QetContainerDb::extract(
-				root, error, index, kept_from.value(QStringLiteral("project.sqlite")));
+				root, error, kept_from.value(QStringLiteral("project.sqlite")));
 	if (database.isEmpty())
 		return {};
 
@@ -259,9 +287,10 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 
 		//Folios, each with its pictures taken out
 	int folio = 0;
-		//Nothing QElectroTech computes is kept (format 3)
+		//Nothing QElectroTech computes is kept (format 4)
+	const bool own_uuids = ownUuids(root);
 	for (QDomElement diagram : childElements(root, QStringLiteral("diagram")))
-		dropComputed(diagram, !index.isEmpty());
+		dropComputed(diagram, own_uuids);
 
 		//The parts of the folios kept as they were, and their pictures
 	QMap<QString, QByteArray> pictures;   //name -> png, once each
@@ -355,53 +384,14 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 }
 
 /**
-	@brief QetContainer::readFolio
-	The folio part @p file of the .qetz whose entries are @p files, as
-	join() puts it in the project: its pictures back as base64 and its
-	engineering data back from project.sqlite.
-*/
-bool QetContainer::readFolio(const QHash<QString, QByteArray> &files, const QString &file,
-							 QDomDocument *folio, QString *error,
-							 QetContainerDb::FolioReader *reader)
-{
-	if (!files.contains(file)) {
-		setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
-		return false;
-	}
-	QString part_error;
-	if (!parse(files.value(file), folio, &part_error)) {
-		setError(error, QStringLiteral("%1: %2").arg(file, part_error));
-		return false;
-	}
-	const QDomNodeList images = folio->elementsByTagName(QStringLiteral("image"));
-	for (int i = 0 ; i < images.size() ; ++i)
-	{
-		QDomElement image = images.at(i).toElement();
-		if (!image.hasAttribute(ImageFileAttribute)) continue;
-		const QString picture = image.attribute(ImageFileAttribute);
-		if (!files.contains(picture)) {
-			setError(error, QStringLiteral("picture \"%1\" is missing").arg(picture));
-			return false;
-		}
-		image.removeAttribute(ImageFileAttribute);
-		image.insertBefore(folio->createTextNode(QString::fromLatin1(files.value(picture).toBase64())),
-						   image.firstChild());
-	}
-	if (!files.contains(QStringLiteral("project.sqlite")))
-		return true;
-	return reader ? reader->restore(folio->documentElement(), error)
-				  : QetContainerDb::restoreFolio(folio->documentElement(),
-												 files.value(QStringLiteral("project.sqlite")), error);
-}
-
-/**
 	@brief QetContainer::join
 	Rebuild in @p project the document split() made @p entries from.
 	Refused, with @p error set: not a .qetz, made for a later QElectroTech
 	(the manifest's min-reader), or a part missing or unreadable. Entries
 	nothing names are ignored, so a later format may add some.
 	With @p pictures, the pictures stay out of the document: see the
-	namespace.
+	namespace. With @p folio_files, the part each folio was read from, in
+	order.
 */
 bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
 						QStringList *folio_files, Pictures *pictures)
@@ -436,16 +426,9 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 	for (QDomElement part : placeholders)
 	{
 		const QString file = part.attribute(FileAttribute);
-			//With @p folio_files, the folios stay parts, read when built
 		if (folio_files && part.parentNode() == project->documentElement()
-				&& file.startsWith(QLatin1String("folios/"))) {
-			if (!files.contains(file)) {
-				setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
-				return false;
-			}
+				&& file.startsWith(QLatin1String("folios/")))
 			folio_files->append(file);
-			continue;
-		}
 		if (!files.contains(file)) {
 			setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
 			return false;

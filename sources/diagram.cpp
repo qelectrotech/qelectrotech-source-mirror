@@ -883,20 +883,6 @@ QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
 }
 
 /**
-	@brief Diagram::deferredXml
-	@return the XML of this folio's items while they are not built: kept
-	from the project's document, or read now from the folio's part of the
-	.qetz the project was opened from
-*/
-QDomElement Diagram::deferredXml()
-{
-	if (m_deferred.isNull() && !m_deferred_part.isEmpty() && m_project) {
-		m_deferred = m_project->readFolioPart(m_deferred_part);
-	}
-	return m_deferred;
-}
-
-/**
 	@brief Diagram::buildDeferred
 	Build this folio's items from the XML kept for later, and nothing else.
 	Their rows are in the project database already, filled from the same
@@ -908,12 +894,9 @@ bool Diagram::buildDeferred()
 	if (isLoaded()) {
 		return false;
 	}
-	QDomElement xml = deferredXml();
+	QDomElement xml = m_deferred;
 	m_deferred = QDomElement();
-	m_deferred_part.clear();
-	if (xml.isNull()) {
-		return true;   //its part could not be read: QETProject::readFolioPart() said why
-	}
+	m_kept_part.clear();
 	m_kept_text.clear();
 	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
 	if (db) db->setBuildingFolio(true);

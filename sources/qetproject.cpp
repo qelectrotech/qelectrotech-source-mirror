@@ -479,48 +479,27 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// QetContainer::parse() does exactly that, for a .qet and for each part
 	// of a .qetz alike.
 	QString read_error;
-		//A .qetz holding the index of its database opens from it, the
-		//folios' parts read when they are built (stage D2);
-		//any other, or one whose index cannot be used, is read whole
-	m_opened_from_index = false;
-	if (QetContainer::isZip(content) && lazyFolios())
-	{
+		//A .qetz: its entries are kept, for a save to copy the parts of the
+		//folios not built (stage D4)
+	m_container_files.clear();
+	m_folio_parts.clear();
+	bool read = false;
+	if (QetContainer::isZip(content)) {
 		QList<QetZip::Entry> entries;
-		QString why;
-		if (QetZip::fromBytes(content, &entries, &why))
-		{
-			QHash<QString, QByteArray> files;
+		read = QetZip::fromBytes(content, &entries, &read_error)
+				&& QetContainer::join(entries, &xml_project, &read_error, &m_folio_parts,
+									  &m_container_pictures);
+		if (read)
 			for (const QetZip::Entry &entry : std::as_const(entries))
-				files.insert(entry.name, entry.data);
-			QStringList folio_files;
-			QDomDocument document;
-				//The index: in project.sqlite from format 3, its own entry
-				//before
-			const QByteArray index = files.contains(QStringLiteral("index.sqlite"))
-					? files.value(QStringLiteral("index.sqlite"))
-					: files.value(QStringLiteral("project.sqlite"));
-			if (!index.isEmpty() && index.contains("folio_header")
-					&& QetContainer::join(entries, &document, &why, &folio_files))
-			{
-				if (m_data_base.fillFromIndex(index, &m_folio_headers, &why, &m_index_tables)
-						&& m_folio_headers.size() == folio_files.size()) {
-					xml_project = document;
-					m_container_files = files;
-					m_folio_files = folio_files;
-					m_opened_from_index = true;
-				} else {
-					m_data_base.discardFill();
-					m_folio_headers.clear();
-					m_index_tables.reset();
-					qInfo().noquote() << "Not opened from the index of" << fi.fileName() << ":" << why;
-				}
-			}
-		}
+				m_container_files.insert(entry.name, entry.data);
+	} else {
+		read = QetContainer::readDocument(content, &xml_project, &read_error);
 	}
-	if (!m_opened_from_index && !QetContainer::readDocument(content, &xml_project, &read_error, &m_container_pictures))
+	if (!read)
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		m_container_pictures.clear();
+		m_folio_parts.clear();
 		if(opened_here) {
 			file->close();
 		}
@@ -627,9 +606,8 @@ QList<Diagram *> QETProject::folios() const
 	folio when the project has cables (a core is followed through folio
 	reports to any folio); without cables, the folios built and those not
 	built yet holding a wire that still refers to a cable -- the only
-	wires the pass changes then, taking the reference away. Read from the
-	project database for a .qetz opened from it, from the folios' XML
-	otherwise.
+	wires the pass changes then, taking the reference away, read from the
+	folios' XML.
 */
 QList<Diagram *> QETProject::cableLabelFolios()
 {
@@ -637,25 +615,14 @@ QList<Diagram *> QETProject::cableLabelFolios()
 		return diagrams();
 	}
 	QList<Diagram *> referring;
-	if (m_opened_from_index) {
-		QSet<QUuid> folios;
-		QSqlQuery query = m_data_base.newQuery(QStringLiteral(
-				"SELECT DISTINCT c.diagram_uuid FROM conductor c JOIN conductor_properties p "
-				"ON p.conductor_uuid = c.uuid WHERE p.name = 'cable_uuid' AND p.value != ''"));
-		if (query.exec())
-			while (query.next()) folios.insert(QUuid(query.value(0).toString()));
-		for (Diagram *d : std::as_const(m_diagrams_list))
-			if (!d->isLoaded() && folios.contains(d->uuid())) referring << d;
-	} else {
-		for (Diagram *d : std::as_const(m_diagrams_list)) {
-			if (d->isLoaded()) continue;
-			for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
-																 QStringLiteral("conductor")))
-				if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
-					referring << d;
-					break;
-				}
-		}
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (d->isLoaded()) continue;
+		for (const QDomElement &wire : QET::findInDomElement(d->deferredXml(), QStringLiteral("conductors"),
+															 QStringLiteral("conductor")))
+			if (!QUuid(wire.attribute(QStringLiteral("cable_uuid"))).isNull()) {
+				referring << d;
+				break;
+			}
 	}
 	buildFolios(referring);
 	return builtFolios();
@@ -875,9 +842,8 @@ void QETProject::buildFoliosHoldingSymbols(const QSet<QUuid> &symbols)
 		return;
 	}
 	QList<Diagram *> to_build;
-		//Opened from an index, the database knows where every symbol is
-		//without reading the folios' parts
-	if (m_opened_from_index || m_data_base.rowsFromDocument()) {
+		//Filled from the document, the database knows where every symbol is
+	if (m_data_base.rowsFromDocument()) {
 		const QSet<QUuid> folios = m_data_base.folioUuidsOfElements(symbols);
 		for (Diagram *d : std::as_const(m_diagrams_list))
 			if (!d->isLoaded() && folios.contains(d->uuid()))
@@ -948,16 +914,6 @@ QSet<Diagram *> QETProject::tableChainFolios(Diagram *folio) const
 					auto table = static_cast<QetGraphicsTableItem *>(item);
 					folio_of.insert(table->uuid(), d);
 					previous_of.insert(table->uuid(), table->previousTableUuid());
-				}
-			}
-			continue;
-		}
-			//Opened from an index: its tables, not the folio's part
-		if (m_index_tables) {
-			for (const projectDataBase::FolioTable &table : std::as_const(*m_index_tables)) {
-				if (table.folio == d->uuid()) {
-					folio_of.insert(table.table, d);
-					previous_of.insert(table.table, table.previous);
 				}
 			}
 			continue;
@@ -2365,7 +2321,7 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 */
 QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList *kept_parts)
 {
-		//With @p kept_parts, the same for a .qetz opened from its index: a
+		//With @p kept_parts, for a .qetz: a
 		//folio not built is written as <diagram qetz-kept-part="..."/>, its
 		//part and its rows copied by QetContainer::split()
 		//(stage D4)
@@ -2556,7 +2512,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 		}
 		if (keep && !diagram->isLoaded() && kept_parts) {
 			auto placeholder = xml_doc.createElement(QStringLiteral("diagram"));
-			placeholder.setAttribute(QStringLiteral("qetz-kept-part"), diagram->deferredPart());
+			placeholder.setAttribute(QStringLiteral("qetz-kept-part"), diagram->keptPart());
 			placeholder.setAttribute(QStringLiteral("uuid"), diagram->uuid().toString());
 				//Symbols whose information changed while the folio was
 				//not built: the rows QetContainer::split() writes for them
@@ -2579,7 +2535,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 					wire.setAttribute(attribute.first, attribute.second);
 				placeholder.appendChild(wire);
 			}
-			kept_parts->append(diagram->deferredPart());
+			kept_parts->append(diagram->keptPart());
 			project_root.appendChild(placeholder);
 			++order_num;
 			continue;
@@ -2682,24 +2638,18 @@ bool QETProject::isContainerPath(const QString &path)
 	the whole archive is written.
 */
 bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error,
-								const QByteArray &index, const QHash<QString, QByteArray> &kept_from)
+								const QHash<QString, QByteArray> &kept_from)
 {
-		//The project database, for opening without reading the folios
-		//(stage D2), is in project.sqlite with the
-		//document's engineering data (format 3, D3)
 	QList<QetZip::Entry> entries = QetContainer::split(
 				project,
 				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
-				error, index, kept_from);
+				error, kept_from);
 	return !entries.isEmpty() && QetZip::write(path, entries, error);
 }
 
 /**
 	@brief QETProject::writeContainerFile
-	Write this project to @p path as a .qetz, with the index of its
-	database a .qetz is opened from (stage D2) when every
-	folio, symbol and wire has a uuid of its own -- what opening from the
-	index relies on, as opening without building folios does.
+	Write this project to @p path as a .qetz
 */
 bool QETProject::writeContainerFile(const QString &path, QString *error)
 {
@@ -2707,65 +2657,8 @@ bool QETProject::writeContainerFile(const QString &path, QString *error)
 		//what building them would write (toXml()); every other folio built
 	QStringList kept;
 	const QDomDocument document = toXml(nullptr, &kept);
-	return writeContainer(document, path, error, containerIndex(),
+	return writeContainer(document, path, error,
 						  kept.isEmpty() ? QHash<QString, QByteArray>() : m_container_files);
-}
-
-/**
-	@brief QETProject::containerIndex
-	@return the index of this project's database for a .qetz, empty when a
-	folio, symbol or wire has no uuid of its own
-*/
-QByteArray QETProject::containerIndex()
-{
-		//Opened from an index, the folios not built have their rows in the
-		//database, whose keys are unique; the built ones are looked at
-	if (!m_kept_parts_trusted) {
-		loadFolios();
-	}
-	QSet<QUuid> seen;
-	QList<std::pair<QUuid, QString>> headers;
-	auto unique = [&seen](const QUuid &uuid) {
-		if (uuid.isNull() || seen.contains(uuid)) return false;
-		seen.insert(uuid);
-		return true;
-	};
-		//The drawn tables and the tables they continue: which folios a
-		//folio's tables are built with (tableChainFolios())
-	QList<projectDataBase::FolioTable> tables;
-	for (Diagram *diagram : std::as_const(m_diagrams_list)) {
-		if (!unique(diagram->uuid())) return QByteArray();
-		if (!diagram->isLoaded()) {
-			headers.append({diagram->uuid(), diagram->headerXml()});
-			if (m_index_tables) {
-				for (const projectDataBase::FolioTable &table : std::as_const(*m_index_tables))
-					if (table.folio == diagram->uuid())
-						tables.append(table);
-				continue;
-			}
-			const QDomNodeList items = diagram->deferredXml().elementsByTagName(
-						QetGraphicsTableItem::xmlTagName());
-			for (int i = 0 ; i < items.size() ; ++i) {
-				const QDomElement table = items.at(i).toElement();
-				tables.append({QUuid(table.attribute(QStringLiteral("uuid"))), diagram->uuid(),
-							   QUuid(table.firstChildElement(QStringLiteral("previous_table"))
-									 .attribute(QStringLiteral("uuid")))});
-			}
-			continue;
-		}
-		for (Element *element : diagram->elements())
-			if (!unique(element->uuid())) return QByteArray();
-		for (Conductor *conductor : diagram->conductors())
-			if (!unique(conductor->uuid())) return QByteArray();
-		headers.append({diagram->uuid(), diagram->headerXml()});
-		for (QGraphicsItem *item : diagram->items()) {
-			if (item->type() == QetGraphicsTableItem::Type) {
-				auto table = static_cast<QetGraphicsTableItem *>(item);
-				tables.append({table->uuid(), diagram->uuid(), table->previousTableUuid()});
-			}
-		}
-	}
-	return m_data_base.indexFile(headers, tables);
 }
 
 /**
@@ -3093,8 +2986,7 @@ QDomDocument QETProject::folioXml(Diagram *folio)
 /**
 	@brief QETProject::buildFoliosHoldingTables
 	Build the folios not built yet (lazy folios) that hold a drawn
-	table, found from the index the project was opened from when it has
-	one: what a list of the project's tables needs, and no more
+	table: what a list of the project's tables needs, and no more
 */
 void QETProject::buildFoliosHoldingTables()
 {
@@ -3114,15 +3006,10 @@ void QETProject::buildFoliosHoldingTables()
 /**
 	@brief QETProject::unbuiltFolioHasTables
 	@return true if @p folio, not built yet (lazy folios), has a drawn
-	table: from the index it was opened from, else from its XML
+	table, read from its XML
 */
 bool QETProject::unbuiltFolioHasTables(Diagram *folio) const
 {
-	if (m_index_tables) {
-		for (const projectDataBase::FolioTable &table : std::as_const(*m_index_tables))
-			if (table.folio == folio->uuid()) return true;
-		return false;
-	}
 	return !folio->deferredXml().elementsByTagName(QetGraphicsTableItem::xmlTagName()).isEmpty();
 }
 
@@ -3408,9 +3295,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
 		//built
-	if (!m_opened_from_index) {
-		m_data_base.prefillFromDocument(xml_project);
-	}
+	m_data_base.prefillFromDocument(xml_project);
 
 		//Folios are left to be built when needed (lazyFolios()) only
 		//when the database can be filled from the document: otherwise
@@ -3426,11 +3311,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 		//Load the diagrams
-	if (m_opened_from_index) {
-		readFoliosFromIndex();
-	} else {
-		readDiagramsXml(xml_project);
-	}
+	readDiagramsXml(xml_project);
 	const qint64 diagrams_ms = phase_timer.restart();
 
 		//Tie the elements to the numbering schemes they follow
@@ -3459,14 +3340,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 	m_data_base.blockSignals(false);
 	m_data_base.setUpdateBlocked(false);
-	if (m_opened_from_index) {
-			//Filled from the index already: making the folios changed
-			//nothing their rows say
-		m_data_base.markCurrent();
-		m_data_base.updateDB();
-	} else {
-		m_data_base.updateDB(xml_project);
-	}
+	m_data_base.updateDB(xml_project);
 	m_data_base.endPrefill(unloadedFolioCount() > 0);
 		//Saving may write the folios not built as they were read, when
 		//building them would write the same: a file written by this
@@ -3482,10 +3356,13 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	for (Diagram *diagram : std::as_const(m_diagrams_list))
 		if (!diagram->isLoaded() && diagram->keptText().isEmpty())
 			m_kept_folios_trusted = false;
-	m_kept_parts_trusted = m_opened_from_index && unloadedFolioCount() > 0
+	m_kept_parts_trusted = !m_folio_parts.isEmpty() && unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()
 			&& m_data_base.rowsFromDocument()
 			&& QetContainerDb::currentFormat(m_container_files.value(QStringLiteral("project.sqlite")));
+	for (Diagram *diagram : std::as_const(m_diagrams_list))
+		if (!diagram->isLoaded() && diagram->keptPart().isEmpty())
+			m_kept_parts_trusted = false;
 	m_kept_folios_stale = false;
 	m_edited_since_open = false;
 	if (m_kept_folios_trusted || m_kept_parts_trusted)
@@ -3512,61 +3389,12 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 }
 
 /**
-	@brief QETProject::readFoliosFromIndex
-	readDiagramsXml() for a .qetz opened from its index: each folio made
-	from its own data as the index has it, its items left in its part
-	(stage D2)
-*/
-void QETProject::readFoliosFromIndex()
-{
-	for (int i = 0 ; i < m_folio_headers.size() ; ++i)
-	{
-		QDomDocument header;
-		header.setContent(m_folio_headers.at(i).second);
-		auto diagram = new Diagram(this);
-		m_diagrams_list << diagram;
-		connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData,
-				this, &QETProject::updateDiagramsFolioData);
-		connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
-				this, &QETProject::usedTitleBlockTemplateChanged);
-		m_deferring_folios = true;
-		QDomElement header_element = header.documentElement();
-		diagram->initFromXml(header_element);
-		m_deferring_folios = false;
-		diagram->setDeferredPart(m_folio_files.at(i));
-		m_data_base.placeFolio(diagram);
-	}
-	updateDiagramsFolioData();
-}
-
-/**
 	@brief QETProject::lazyFolios
 	@see the declaration
 */
 bool QETProject::lazyFolios()
 {
 	return qEnvironmentVariableIntValue("QET_EAGER_FOLIOS") != 1;
-}
-
-/**
-	@brief QETProject::readFolioPart
-	@return the folio part @p file of the .qetz this project was opened
-	from, read now, its engineering data back from project.sqlite; null
-	if it cannot be read (said in the log)
-*/
-QDomElement QETProject::readFolioPart(const QString &file)
-{
-	QDomDocument folio;
-	QString error;
-	if (!m_folio_reader)
-		m_folio_reader = std::make_unique<QetContainerDb::FolioReader>(
-					m_container_files.value(QStringLiteral("project.sqlite")));
-	++m_folio_parts_read;
-	if (!QetContainer::readFolio(m_container_files, file, &folio, &error, m_folio_reader.get())) {
-		qWarning().noquote() << "Unable to read the folio" << file << ":" << error;
-		return QDomElement();
-	}
-	return folio.documentElement();
 }
 
 /**
@@ -3665,6 +3493,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())
 				diagram->setKeptText(folio_text(diagram_xml_element));
+			if (!diagram->isLoaded() && m_folio_parts.size() == diagram_nodes.length())
+				diagram->setKeptPart(m_folio_parts.at(i));
 			m_data_base.placeFolio(diagram);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());

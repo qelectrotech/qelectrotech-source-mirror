@@ -1060,10 +1060,13 @@ endif()
 
 add_executable(
   tst_resaveunchanged
-  tst_resaveunchanged.cpp)
+  tst_resaveunchanged.cpp
+  ${QET_DIR}/sources/container/qetzip.cpp
+  ${QET_DIR}/sources/container/miniz/miniz.c)
 add_test(NAME tst_resaveunchanged COMMAND tst_resaveunchanged)
 add_dependencies(tst_resaveunchanged qelectrotech)
-target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test)
+target_include_directories(tst_resaveunchanged PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test SQLite3::SQLite3)
 target_compile_definitions(tst_resaveunchanged PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")

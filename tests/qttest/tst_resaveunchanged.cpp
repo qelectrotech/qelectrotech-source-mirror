@@ -8,6 +8,10 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 
+#include "container/qetzip.h"
+
+#include <sqlite3.h>
+
 // Saving a project that was just saved must change nothing. Two things
 // made the second save differ from the first, both cleanup done on save
 // but not on load:
@@ -306,6 +310,10 @@ private slots:
 		QVERIFY2(!zipped.isEmpty(), "--resave as .qetz failed");
 		QVERIFY2(read(zipped).startsWith("PK\x03\x04"), "the .qetz is not a zip");
 		QVERIFY2(read(zipped).size() < read(straight).size() / 2, "the .qetz is not smaller");
+		QCOMPARE(databaseTables(zipped), QStringList({
+			"conductor", "element", "element_info", "folio", "folio_property", "link", "meta",
+			"project_property", "strip_bridge", "strip_bridge_terminal", "strip_terminal",
+			"terminal_strip"}));
 		const QString back = resave(zipped);
 		QVERIFY2(!back.isEmpty(), "opening the .qetz failed");
 
@@ -315,6 +323,31 @@ private slots:
 			return QString::fromUtf8(xml).remove(stamp);
 		};
 		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
+	}
+
+	// The tables of the database in the .qetz @p path: the document's
+	// engineering data only, each fact once -- not QElectroTech's own
+	// project database, built from it when the project opens
+	static QStringList databaseTables(const QString &path)
+	{
+		QList<QetZip::Entry> entries;
+		if (!QetZip::fromBytes(read(path), &entries)) return {QStringLiteral("not a zip")};
+		QByteArray database;
+		for (const QetZip::Entry &entry : std::as_const(entries))
+			if (entry.name == QLatin1String("project.sqlite")) database = entry.data;
+		sqlite3 *db = nullptr;
+		sqlite3_open(":memory:", &db);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+		memcpy(copy, database.constData(), size_t(database.size()));
+		sqlite3_deserialize(db, "main", copy, database.size(), database.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		sqlite3_stmt *list = nullptr;
+		QStringList tables;
+		sqlite3_prepare_v2(db, "SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			tables << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)));
+		sqlite3_finalize(list);
+		sqlite3_close(db);
+		return tables;
 	}
 
 	// QElectroTech run in a sandbox of its own with @p args, the store
