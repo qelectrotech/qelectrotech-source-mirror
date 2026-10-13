@@ -279,6 +279,20 @@ QUuid QETProject::uuid() const
 }
 
 /**
+	@brief QETProject::containerPicture
+	The folio pictures of a .qetz are kept as bytes beside the document,
+	not as base64 text in it (QetContainer::join()), for as long as the
+	project is open: a folio built after opening still finds its pictures.
+	They cost almost no memory, sharing their bytes with the pictures
+	built from them.
+	@return the picture in @p file, or an empty array when there is none
+*/
+QByteArray QETProject::containerPicture(const QString &file) const
+{
+	return m_container_pictures.value(file);
+}
+
+/**
 	@brief QETProject::derivedItemUuid
 	A uuid for an item of this project that was saved without one, the same
 	on every load of the same file.
@@ -456,9 +470,10 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// QetContainer::parse() does exactly that, for a .qet and for each part
 	// of a .qetz alike.
 	QString read_error;
-	if (!QetContainer::readDocument(content, &xml_project, &read_error))
+	if (!QetContainer::readDocument(content, &xml_project, &read_error, &m_container_pictures))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
+		m_container_pictures.clear();
 		if(opened_here) {
 			file->close();
 		}

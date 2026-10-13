@@ -120,6 +120,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	int type() const override { return Type; }
 	
 	virtual bool fromXml(const QDomElement &);
+	bool fromXml(const QDomElement &, const QByteArray &picture);
 	virtual QDomElement toXml(QDomDocument &) const;
 	QUuid uuid() const {return m_uuid;}
 	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}

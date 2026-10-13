@@ -1788,6 +1788,17 @@ const QByteArray &DiagramImageItem::encodedPng(const QPixmap &pixmap, QByteArray
 */
 bool DiagramImageItem::fromXml(const QDomElement &e)
 {
+	return fromXml(e, QByteArray());
+}
+
+/**
+	@brief DiagramImageItem::fromXml
+	Load this image from xml element e, its picture being @p picture, not
+	the base64 text of @p e, unless @p picture is empty. A .qetz keeps its
+	pictures as files (QetContainer::join()).
+*/
+bool DiagramImageItem::fromXml(const QDomElement &e, const QByteArray &picture)
+{
 	if (e.tagName() != "image") {
 		return (false);
 	}
@@ -1796,28 +1807,27 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
 	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 
-	QDomNode image_node = e.firstChild();
-	if (!image_node.isText()) {
-		return (false);
+	// From the first text node only, not e.text(): that also collects the
+	// text of every child element, so on a cropped or colour-keyed picture
+	// it carries <image_base>'s bytes too. Decoded once: on a project with
+	// large pictures each decoding costs seconds.
+	QByteArray array = picture;
+	if (array.isEmpty())
+	{
+		QDomNode image_node = e.firstChild();
+		if (!image_node.isText()) {
+			return (false);
+		}
+		array = QByteArray::fromBase64(image_node.toText().data().toLatin1());
 	}
-
-	//load xml image to QByteArray
-	QByteArray array;
-	array = QByteArray::fromBase64(e.text().toLatin1());
 
 	//Set QPixmap from the array
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
-	// From the first text node only, not e.text(): that also collects the
-	// text of every child element, so on a cropped or colour-keyed picture
-	// it carries <image_base>'s bytes too. loadFromData() stops at the end
-	// of the first PNG and never notices; a cache written back verbatim
-	// would.
-	const QByteArray ownArray = QByteArray::fromBase64(image_node.toText().data().toLatin1());
-	if (isPng(ownArray) && !pixmap_.isNull())
+	if (isPng(array) && !pixmap_.isNull())
 	{
-		m_png_cache = ownArray;
+		m_png_cache = array;
 		m_png_cache_key = pixmap_.cacheKey();
 	}
 
