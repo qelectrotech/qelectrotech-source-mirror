@@ -484,11 +484,12 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	m_container_files.clear();
 	m_folio_parts.clear();
 	bool read = false;
+	int container_format = 0;
 	if (QetContainer::isZip(content)) {
 		QList<QetZip::Entry> entries;
 		read = QetZip::fromBytes(content, &entries, &read_error)
 				&& QetContainer::join(entries, &xml_project, &read_error, &m_folio_parts,
-									  &m_container_pictures);
+									  &m_container_pictures, &container_format);
 		if (read)
 			for (const QetZip::Entry &entry : std::as_const(entries))
 				m_container_files.insert(entry.name, entry.data);
@@ -530,8 +531,15 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			<< xml_parse_ms / 1000.0 << ", content "
 			<< (total_ms - xml_parse_ms) / 1000.0 << ")";
 
-	if (!fi.isWritable()) {
+		//Written by a later QElectroTech that lets this one read it: saving
+		//here would drop what this version does not know
+	m_from_later_version = container_format > QetContainer::Format;
+	if (!fi.isWritable() || m_from_later_version) {
 		setReadOnly(true);
+	}
+	if (m_from_later_version) {
+		qInfo().noquote() << QStringLiteral("Project %1 is of .qetz format %2 (this version writes %3): opened read-only")
+							 .arg(fi.fileName()).arg(container_format).arg(QetContainer::Format);
 	}
 	if(opened_here) {
 		file->close();

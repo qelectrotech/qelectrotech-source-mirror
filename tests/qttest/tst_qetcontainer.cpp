@@ -379,6 +379,43 @@ private slots:
 	}
 
 	// A file whose manifest needs a later reader is refused, not half read
+	// A later format whose min-reader allows this one opens, and join() says
+	// it is later: QElectroTech opens it read-only
+	void laterFormatAllowedRead()
+	{
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		const int later = QetContainer::Format + 1;
+		for (QetZip::Entry &e : entries)
+			if (e.name == QLatin1String("manifest.xml"))
+				e.data = QString::fromUtf8(e.data).replace(QRegularExpression(QStringLiteral(" format=\"\\d+\"")),
+														   QStringLiteral(" format=\"%1\"").arg(later)).toUtf8();
+		alterDatabase(entries, QStringLiteral("UPDATE meta SET value = '%1' WHERE key = 'format'")
+					  .arg(later).toUtf8().constData());
+		QDomDocument back;
+		QString error;
+		int format = 0;
+		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, nullptr, &format), qPrintable(error));
+		QCOMPARE(format, later);
+		const QString d = difference(withoutComputed(original).documentElement(), back.documentElement(), QString());
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// The database holds data, not where a block sat in the XML: the folio
+	// file's marker says where it goes back
+	void noPositionColumns()
+	{
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		QCOMPARE(query(database, "SELECT group_concat(name) FROM pragma_table_info('element')"),
+				 QStringLiteral("uuid,folio_uuid,prefix,freezeLabel,info_attrs,links_attrs"));
+		QCOMPARE(query(database, "SELECT count(*) FROM pragma_table_info('folio') WHERE name LIKE '%_at'"),
+				 QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM meta WHERE key = 'props_at'"), QStringLiteral("0"));
+	}
+
 	void laterFormatRefused()
 	{
 		QDomDocument original;
@@ -455,8 +492,8 @@ private slots:
 		QTest::addColumn<QByteArray>("sql");
 		QTest::addColumn<QString>("said");
 		QTest::newRow("symbol row of no symbol")
-				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_at, info_attrs,"
-							  " links_at, links_attrs FROM element LIMIT 1")
+				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_attrs,"
+							  " links_attrs FROM element LIMIT 1")
 				<< QStringLiteral("symbol rows");
 		QTest::newRow("symbol row twice")
 				<< QByteArray("INSERT INTO element SELECT * FROM element LIMIT 1")

@@ -169,16 +169,18 @@ bool QetContainer::isZip(const QByteArray &content)
 /**
 	@brief QetContainer::readDocument
 	The project document held in @p content: unzipped and joined for a
-	.qetz, parsed for a .qet.
+	.qetz, parsed for a .qet. @p format, if any: the .qetz's format, 0
+	for a .qet.
 */
 bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document,
-								QString *error, Pictures *pictures)
+								QString *error, Pictures *pictures, int *format)
 {
+	if (format) *format = 0;
 	if (!isZip(content))
 		return parse(content, document, error);
 	QList<QetZip::Entry> entries;
 	return QetZip::fromBytes(content, &entries, error)
-			&& join(entries, document, error, nullptr, pictures);
+			&& join(entries, document, error, nullptr, pictures, format);
 }
 
 QString QetContainer::pictureFile(const QDomElement &image)
@@ -277,6 +279,29 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 		//A folio written as it was read (<diagram qetz-kept-part="..."/>,
 		//stage D4) keeps its part and, through
 		//@p kept_from's project.sqlite, its rows
+		//A symbol changed on a folio kept as it was gets its information
+		//rows written anew: its part must have the place they go back to
+	for (const QDomElement &diagram : childElements(root, QStringLiteral("diagram")))
+	{
+		const QList<QDomElement> edited = childElements(diagram, QStringLiteral("qetz-edited-element"));
+		if (edited.isEmpty()) continue;
+		QDomDocument part;
+		if (!parse(kept_from.value(diagram.attribute(QStringLiteral("qetz-kept-part"))), &part, error))
+			return {};
+		QSet<QString> placed;
+		const QDomNodeList elements = part.elementsByTagName(QStringLiteral("element"));
+		for (int i = 0 ; i < elements.size() ; ++i) {
+			const QDomElement element = elements.at(i).toElement();
+			for (const QDomElement &marker : childElements(element, QStringLiteral("qetz-db")))
+				if (marker.attribute(QStringLiteral("block")) == QLatin1String("elementInformations"))
+					placed.insert(element.attribute(QStringLiteral("uuid")));
+		}
+		for (const QDomElement &symbol : edited)
+			if (!placed.contains(symbol.attribute(QStringLiteral("uuid")))) {
+				setError(error, QStringLiteral("a symbol changed on a folio kept as it was has no place for its information"));
+				return {};
+			}
+	}
 	const QByteArray database = QetContainerDb::extract(
 				root, error, kept_from.value(QStringLiteral("project.sqlite")));
 	if (database.isEmpty())
@@ -391,10 +416,11 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	nothing names are ignored, so a later format may add some.
 	With @p pictures, the pictures stay out of the document: see the
 	namespace. With @p folio_files, the part each folio was read from, in
-	order.
+	order. @p format, if any: the format the file says it is, above Format
+	for a later one this may read (its min-reader allows it).
 */
 bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
-						QStringList *folio_files, Pictures *pictures)
+						QStringList *folio_files, Pictures *pictures, int *format)
 {
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
@@ -415,6 +441,8 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 				 .arg(Format));
 		return false;
 	}
+	if (format)
+		*format = manifest.documentElement().attribute(QStringLiteral("format")).toInt();
 
 	if (!parse(files.value(QStringLiteral("project.xml")), project, error))
 		return false;

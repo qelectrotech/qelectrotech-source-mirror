@@ -57,12 +57,15 @@ namespace QetContainer
 		/// unless their min-reader allows this one.
 	constexpr int Format = 4;
 		/// 3: the database's rows keyed by the items' uuids, true/false as
-		/// 1/0, its PRAGMA user_version the format.
+		/// 1/0, its PRAGMA user_version the format, the symbols' type left
+		/// in the folio files, no column for where a block sat.
 		/// 4: what QElectroTech computes left out of the folios
 		/// (dropComputed()), the tables written without keys or indexes.
 		/// project.sqlite holds the engineering data once: QElectroTech's
 		/// own project database is built from it when the project opens.
-		/// Formats 2 and 3 are still read.
+		/// Formats 2 and 3 are still read; a later format whose min-reader
+		/// allows this one is read too, and said so through join()'s
+		/// @p format.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
@@ -70,7 +73,7 @@ namespace QetContainer
 							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
 			  QString *error = nullptr, QStringList *folio_files = nullptr,
-			  Pictures *pictures = nullptr);
+			  Pictures *pictures = nullptr, int *format = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
 
@@ -84,7 +87,7 @@ namespace QetContainer
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
 	bool readDocument(const QByteArray &content, QDomDocument *document,
-					  QString *error = nullptr, Pictures *pictures = nullptr);
+					  QString *error = nullptr, Pictures *pictures = nullptr, int *format = nullptr);
 }
 
 #endif // QETCONTAINER_H

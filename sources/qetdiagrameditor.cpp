@@ -1984,6 +1984,16 @@ bool QETDiagramEditor::openAndAddProject(
 	addProject(project);
 	DialogWaiting::dropInstance();
 
+	if (interactive && project->isFromLaterVersion()) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Opening the file read-only", "message box title"),
+			tr("This project was saved by a later version of QElectroTech. "
+			   "It is opened read-only, so that saving it cannot lose what "
+			   "this version does not know. Use Save As to keep a copy "
+			   "in this version's format."));
+	}
+
 		//Report font descriptions which could not be read as-is (written by
 		//an incompatible Qt version or corrupted), so the user learns about
 		//it from somewhere else than the console. See issue #553.
