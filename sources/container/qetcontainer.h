@@ -31,7 +31,7 @@
 	  manifest.xml             format and oldest format allowed to read it
 	  project.xml              the project, each part replaced by
 	                           <qetz-part file="..."/>
-	  project.sqlite           the engineering data (format 2,
+	  project.sqlite           the engineering data (format 2 on,
 	                           QetContainerDb): title-block fields, symbol
 	                           information, links, wires
 	  folios/<uuid>.xml        one per folio
@@ -47,7 +47,9 @@ namespace QetContainer
 	extern const char MimeType[];
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 2;
+	constexpr int Format = 3;
+		/// 3: the database's rows keyed by the items' uuids, true/false as
+		/// 1/0, its PRAGMA user_version the format. Format 2 is still read.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
