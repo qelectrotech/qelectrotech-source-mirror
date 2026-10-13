@@ -18,6 +18,7 @@
 #ifndef ELEMENTAUTONUMSCHEMECOMMAND_H
 #define ELEMENTAUTONUMSCHEMECOMMAND_H
 
+#include "assignvariables.h"
 #include "numerotationcontext.h"
 #include "renumberelementscommand.h"
 
@@ -201,6 +202,8 @@ class ElementAutoNumSchemeCommand : public QUndoCommand
 		static QSet<QString> labelsHeldBesides(const QETProject *project, const Element *element);
 		static NumberSupport numberSupport(const NumerotationContext &context);
 		static std::optional<int> numberOf(const NumberSupport &support, const Element *element);
+		static std::optional<int> numberOf(const NumberSupport &support,
+										   const autonum::sequentialNumbers &seq);
 		static QList<GapRange> gapRanges(const QETProject *project, const QString &title);
 		static QList<int> freeNumbers(const QETProject *project, const QString &title,
 									  const Element *element, int limit = 500);

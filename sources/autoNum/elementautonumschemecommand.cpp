@@ -369,10 +369,19 @@ ElementAutoNumSchemeCommand::NumberSupport ElementAutoNumSchemeCommand::numberSu
 std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &support,
 														 const Element *element)
 {
-	if (!support.supported || !element) {
+	if (!element) {
 		return std::nullopt;
 	}
-	const autonum::sequentialNumbers seq = element->sequenceStruct();
+	return numberOf(support, element->sequenceStruct());
+}
+
+/// @return the number the sequential numbers @p seq give, if the scheme knows it
+std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &support,
+														 const autonum::sequentialNumbers &seq)
+{
+	if (!support.supported) {
+		return std::nullopt;
+	}
 	const QStringList &list = support.type == QLatin1String("unit") ? seq.unit
 							: support.type == QLatin1String("ten") ? seq.ten
 							: seq.hundred;
@@ -385,14 +394,18 @@ std::optional<int> ElementAutoNumSchemeCommand::numberOf(const NumberSupport &su
 }
 
 namespace {
-/// The elements of @p project which follow the scheme @p title and are not slaves or reports
-QVector<Element *> numberedFollowers(const QETProject *project, const QString &title)
+/// The symbols of @p project which follow the scheme @p title and are not
+/// slaves or reports, built or not (QETProject::symbolNumbering())
+QList<QETProject::SymbolNumbering> numberedFollowers(const QETProject *project, const QString &title)
 {
-	QVector<Element *> list;
-	const auto followers = project->elementsUsingElementAutoNum(title);
-	for (Element *el : followers) {
-		if (el->linkType() != Element::Slave && !(el->linkType() & Element::AllReport)) {
-			list << el;
+	QList<QETProject::SymbolNumbering> list;
+	const QUuid id = project->elementAutoNumId(title);
+	if (id.isNull()) {
+		return list;
+	}
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.numbered && !symbol.formula.isEmpty() && symbol.scheme == id) {
+			list << symbol;
 		}
 	}
 	return list;
@@ -411,13 +424,10 @@ QSet<QString> ElementAutoNumSchemeCommand::labelsHeldBesides(const QETProject *p
 	if (!project) {
 		return labels;
 	}
-	for (Diagram *d : project->diagrams()) {
-		for (QGraphicsItem *item : d->items()) {
-			if (auto *el = qgraphicsitem_cast<Element *>(item)) {
-				if (el != element) {
-					labels << el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
-				}
-			}
+		//Folios not built yet answer from what building them would give
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.element != element) {
+			labels << symbol.label;
 		}
 	}
 	labels.remove(QString());
@@ -453,8 +463,8 @@ std::optional<ElementAutoNumSchemeCommand::CounterConflict> ElementAutoNumScheme
 
 	CounterConflict conflict;
 	conflict.counter = counter;
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			if (*number >= counter) {
 				++conflict.count;
 				conflict.highest = std::max(conflict.highest, *number);
@@ -486,8 +496,8 @@ QList<ElementAutoNumSchemeCommand::GapRange> ElementAutoNumSchemeCommand::gapRan
 		return ranges;
 	}
 	QSet<int> used;
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			used << *number;
 		}
 	}
@@ -559,22 +569,19 @@ QList<int> ElementAutoNumSchemeCommand::freeNumbers(const QETProject *project,
 
 	QSet<int> used;
 	int highest = context.itemAt(support.partIndex).value(1).toInt();
-	for (const Element *el : numberedFollowers(project, title)) {
-		if (el == element) continue;
-		if (const auto number = numberOf(support, el)) {
+	for (const auto &symbol : numberedFollowers(project, title)) {
+		if (symbol.element == element) continue;
+		if (const auto number = numberOf(support, symbol.sequence)) {
 			used << *number;
 			highest = std::max(highest, *number);
 		}
 	}
 
 	QSet<QString> labels;
-	for (Diagram *d : project->diagrams()) {
-		for (QGraphicsItem *item : d->items()) {
-			if (auto *el = qgraphicsitem_cast<Element *>(item)) {
-				if (el != element) {
-					labels << el->elementInformations().value(QETInformation::ELMT_LABEL).toString();
-				}
-			}
+		//Folios not built yet answer from what building them would give
+	for (const auto &symbol : project->symbolNumbering()) {
+		if (symbol.element != element) {
+			labels << symbol.label;
 		}
 	}
 	labels.remove(QString());

@@ -18,6 +18,7 @@
 #include "element.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
+#include "../dataBase/projectdatabase.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/elementautonumschemecommand.h"
@@ -718,6 +719,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),
 				QStringLiteral("elementInformation"));
+	storeInformation();
 
 		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;
@@ -1042,7 +1044,9 @@ bool Element::fromXml(QDomElement &e,
 	}
 
 	//uuid of this element
-	m_uuid = QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString()));
+	//Through setUuid(): a folio adds a symbol before reading it, so its
+	//stored information has to follow from the uuid it was born with.
+	setUuid(QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString())));
 
 		//load prefix
 	m_prefix = e.attribute(QStringLiteral("prefix"));
@@ -1265,10 +1269,11 @@ QDomElement Element::toXml(
 	}
 
 	//save information of this element
-	if (! m_data.m_informations.keys().isEmpty()) {
+	const DiagramContext informations = elementInformations();
+	if (! informations.keys().isEmpty()) {
 		QDomElement infos =
 				document.createElement(QStringLiteral("elementInformations"));
-		m_data.m_informations.toXml(infos, QStringLiteral("elementInformation"));
+		informations.toXml(infos, QStringLiteral("elementInformation"));
 			//toXml() skips empty values: an element whose information is
 			//all empty would otherwise be written an empty block, which the
 			//next load reads as no information and the next save drops.
@@ -1625,7 +1630,10 @@ void Element::initLink(QETProject *prj)
 		// if nothing to link return now
 	if (tmp_uuids_link.isEmpty()) return;
 
-	ElementProvider ep(prj);
+		//The built folios only: a partner on a folio not built yet
+		//(QET_LAZY_FOLIOS) is linked when its folio is, and the saved list
+		//is kept until then, for the order it gives
+	ElementProvider ep(prj->builtFolios());
 	QList<QUuid> uuids;
 	for (const auto &linkInfo : tmp_uuids_link) {
 		uuids.append(linkInfo.uuid);
@@ -1643,7 +1651,27 @@ void Element::initLink(QETProject *prj)
 		}
 	}
 	restoreSavedLinkOrder();
-	tmp_uuids_link.clear();
+	if (pendingLinks().isEmpty() || !prj->unloadedFolioCount()) {
+		tmp_uuids_link.clear();
+	}
+}
+
+/**
+	@brief Element::pendingLinks
+	@return the uuids of the partners this symbol was saved linked to and
+	is not linked to yet: those on a folio not built yet (QET_LAZY_FOLIOS),
+	until initLink() runs again once it is
+*/
+QSet<QUuid> Element::pendingLinks() const
+{
+	QSet<QUuid> pending;
+	for (const auto &link_info : tmp_uuids_link) {
+		pending.insert(link_info.uuid);
+	}
+	for (Element *elmt : connected_elements) {
+		pending.remove(elmt->uuid());
+	}
+	return pending;
 }
 
 /**
@@ -1672,6 +1700,23 @@ void Element::initLink(const QList<Element *> &candidates)
 	}
 	restoreSavedLinkOrder();
 	tmp_uuids_link.clear();
+}
+
+/**
+	@brief Element::waitingLinks
+	@return pendingLinks() in the order this symbol was saved with them,
+	each with its group index (-1 for none)
+*/
+QList<std::pair<QUuid, int>> Element::waitingLinks() const
+{
+	const QSet<QUuid> pending = pendingLinks();
+	QList<std::pair<QUuid, int>> list;
+	for (const auto &link_info : tmp_uuids_link) {
+		if (pending.contains(link_info.uuid)) {
+			list.append({link_info.uuid, link_info.group_index});
+		}
+	}
+	return list;
 }
 
 /**
@@ -1795,6 +1840,33 @@ void Element::setFormulaSchemeId(const QUuid &id)
 		m_data.m_informations.addValue(QETInformation::ELMT_FORMULA_ID,
 									   id.toString(), false);
 	}
+	storeInformation();
+}
+
+/**
+	@brief Element::setUuid
+	A placed symbol's stored information and its database rows follow its
+	uuid (a paste or a folio copy renews it).
+*/
+void Element::setUuid(const QUuid &uuid)
+{
+	const QUuid old_uuid = m_uuid;
+	m_uuid = uuid;
+	if (diagram() && diagram()->project() && diagram()->project()->dataBase())
+		diagram()->project()->dataBase()->elementUuidChanged(this, old_uuid);
+}
+
+/**
+	@brief Element::storeInformation
+	Write this symbol's information to its project's store, once it is
+	placed (DB-ACCESSORS-PLAN.md stage 4.1): every change of a placed
+	symbol's information comes through here.
+*/
+void Element::storeInformation()
+{
+	if (diagram() && diagram()->project() && diagram()->project()->dataBase()
+		&& diagram()->project()->dataBase()->hasElementInformation(m_uuid))
+		diagram()->project()->dataBase()->elementInformationChanged(this, m_data.m_informations);
 }
 
 void Element::setElementInformations(DiagramContext dc)
@@ -1811,6 +1883,7 @@ void Element::setElementInformations(DiagramContext dc)
 	if (!actual_label.isEmpty()) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
+	storeInformation();
 	emit elementInfoChange(old_info, m_data.m_informations);
 
 	// Propagate label change to linked PLC slaves (label is changed via
@@ -1841,7 +1914,41 @@ void Element::setElementInformations(DiagramContext dc)
  */
 ElementData Element::elementData() const
 {
+	if (projectDataBase *store = placedStore()) {
+		ElementData data = m_data;
+		data.m_informations = store->elementInformation(m_uuid);
+		return data;
+	}
 	return m_data;
+}
+
+/**
+	@brief Element::elementInformations
+	@return this symbol's information: for a placed symbol the project's
+	store holds it (DB-ACCESSORS-PLAN.md stage 4.2), for one not placed
+	(a preview, the symbol editor) its own copy.
+*/
+DiagramContext Element::elementInformations() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->elementInformation(m_uuid);
+	return m_data.m_informations;
+}
+
+/**
+	@brief Element::placedStore
+	@return the project database holding this symbol's information, or
+	nullptr if it is not placed in a project
+*/
+projectDataBase *Element::placedStore() const
+{
+	Diagram *d = diagram();
+	QETProject *project = d ? d->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+		//A uuid other placed symbols share (F100) names no single symbol's
+		//information: this one answers from its own copy.
+	return store && store->hasElementInformation(m_uuid)
+			&& store->placedElementCount(m_uuid) == 1 ? store : nullptr;
 }
 
 /**
@@ -1860,6 +1967,7 @@ void Element::setElementData(ElementData data)
 
 	if (old_info != m_data.m_informations) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
+		storeInformation();
 		if (diagram()) {
 			diagram()->project()->dataBase()->elementInfoChanged(this);
 		}
@@ -2078,6 +2186,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 				->elementAutoNumCurrentFormula();
 
 		m_data.m_informations.addValue(QStringLiteral("formula"), formula);
+		storeInformation();
 
 		QString element_currentAutoNum = diagram()
 				->project()
@@ -2146,6 +2255,7 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 		{
 			DiagramContext dc = m_data.m_informations;
 			m_data.m_informations.addValue(QStringLiteral("label"), actualLabel());
+			storeInformation();
 			emit elementInfoChange(dc, m_data.m_informations);
 		}
 	}
@@ -2199,6 +2309,8 @@ void Element::freezeNewAddedElement()
 */
 QString Element::actualLabel()
 {
+		//The symbol's own copy, not the store: this runs while the
+		//information is being changed, before the store has the change.
 	if (m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty()) {
 		return m_data.m_informations.value(QStringLiteral("label")).toString();
 	} else {

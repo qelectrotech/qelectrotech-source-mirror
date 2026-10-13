@@ -473,14 +473,16 @@ void ElementsPanelWidget::updateButtons()
 		if (!selected_diagrams.isEmpty()) {
 			QETProject *selected_diagram_project = selected_diagrams.first() -> project();
 			bool is_writable           = !(selected_diagram_project -> isReadOnly());
-			int project_diagrams_count = selected_diagram_project -> diagrams().count();
+				//Positions only: folios() does not build the folios' items
+			const QList<Diagram *> folios = selected_diagram_project -> folios();
+			int project_diagrams_count = folios.count();
 
 			// Find the highest (min) and lowest (max) index among the selection
 			int min_position = project_diagrams_count;
 			int max_position = -1;
 
 			for (Diagram *diagram : selected_diagrams) {
-				int pos = selected_diagram_project -> diagrams().indexOf(diagram);
+				int pos = folios.indexOf(diagram);
 				if (pos < min_position) min_position = pos;
 				if (pos > max_position) max_position = pos;
 			}

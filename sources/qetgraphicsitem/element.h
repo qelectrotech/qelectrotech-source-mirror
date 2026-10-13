@@ -40,6 +40,8 @@ class QUndoCommand;
 /**
 	This is the base class for electrical elements.
 */
+class projectDataBase;
+
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
@@ -130,8 +132,9 @@ class Element : public QetGraphicsItem
 		}
 
 			//METHODS related to information
-		DiagramContext elementInformations()const
-		{return m_data.m_informations;}
+		DiagramContext elementInformations()const;
+			/// This symbol's own copy of its information, whatever the store holds
+		DiagramContext ownInformations() const {return m_data.m_informations;}
 		virtual void setElementInformations(DiagramContext dc);
 
 		ElementData elementData() const;
@@ -222,6 +225,9 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+		QSet<QUuid> pendingLinks() const;
+		bool keepsSavedLinks() const {return !tmp_uuids_link.isEmpty();}
+		QList<std::pair<QUuid, int>> waitingLinks() const;
 			/**
 				Resolve tmp_uuids_link against a caller-supplied candidate
 				list instead of a project-wide search (bugtracker #607).
@@ -259,8 +265,8 @@ class Element : public QetGraphicsItem
 		 */
 		QString linkTypeToString() const;
 
-		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
-		void setUuid(const QUuid &uuid) {m_uuid = uuid;}
+		void newUuid() {setUuid(QUuid::createUuid());} 	//create new uuid for this element
+		void setUuid(const QUuid &uuid);
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -329,6 +335,8 @@ class Element : public QetGraphicsItem
 
 	private:
 		void restoreSavedLinkOrder();
+		void storeInformation();
+		projectDataBase *placedStore() const;
 		bool m_must_highlight = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;

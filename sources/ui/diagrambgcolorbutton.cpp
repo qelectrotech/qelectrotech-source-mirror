@@ -150,8 +150,9 @@ void DiagramBgColorToolButton::applyColor(const QColor &color)
 	if (!editor) {
 		return;
 	}
+		//A folio not built yet takes the colour when it is drawn
 	for (ProjectView *pv : editor->openedProjects())
-		for (Diagram *d : pv->project()->diagrams())
+		for (Diagram *d : pv->project()->folios())
 			d->update();
 }
 
@@ -175,8 +176,9 @@ void DiagramBgColorToolButton::applySystemColor()
 	if (!editor) {
 		return;
 	}
+		//A folio not built yet takes the colour when it is drawn
 	for (ProjectView *pv : editor->openedProjects())
-		for (Diagram *d : pv->project()->diagrams())
+		for (Diagram *d : pv->project()->folios())
 			d->update();
 }
 

@@ -1646,6 +1646,25 @@ void DiagramView::editDiagramProperties()
 }
 
 /**
+	@brief DiagramView::buildFolio
+	Build the items of the folio this view shows, and those of the folios
+	its cross-references need, if the project was opened without them
+	(QET_LAZY_FOLIOS); then fit the view to them.
+*/
+void DiagramView::buildFolio()
+{
+	if (QETProject *project = m_diagram->project()) {
+		if (!project->unloadedFolioCount()) {
+			return;
+		}
+		project->buildFolioToShow(m_diagram);
+	} else {
+		m_diagram->ensureLoaded();
+	}
+	adjustSceneRect();
+}
+
+/**
 	@brief DiagramView::adjustSceneRect
 	Calcul and set the area of the scene visualized by this view
 */

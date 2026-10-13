@@ -140,6 +140,11 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+			/// The XML of this folio's items, while they are not built yet
+		QDomElement m_deferred;
+		QString m_opened_header;
+		QByteArray m_kept_text;
+		bool m_loading_deferred = false;
 
 			//Selection before the current click, see completeGroupSelection()
 		QList<QPointer<QGraphicsObject>> m_previous_selection;
@@ -200,10 +205,26 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool wholeContent = true, bool is_copy_command = false);
+		void writeHeader(QDomDocument &document, QDomElement &dom_root);
 		bool initFromXml(QDomElement &,
 				 QPointF = QPointF(),
 				 bool = true,
 				 DiagramContent * = nullptr);
+			/// false while this folio's items wait in its XML to be
+			/// built (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md)
+		bool isLoaded() const {return m_deferred.isNull();}
+		QDomElement deferredXml() const {return m_deferred;}
+		QString headerXml();
+			/// The folio's text in the file it was read from, while it is
+			/// not built (QETProject::toXml())
+		QByteArray keptText() const {return m_kept_text;}
+		void setKeptText(const QByteArray &text) {m_kept_text = text;}
+			/// Remember the folio's own data as it is now, for
+			/// headerChanged() (QETProject::toXml())
+		void rememberHeader() {m_opened_header = headerXml();}
+		bool headerChanged() {return headerXml() != m_opened_header;}
+		void ensureLoaded();
+		bool buildDeferred();
 			//The last argument is only for a copy fragment: when it is
 			//given, the cable lines that fragment carries are built as
 			//well and handed back through it -- they are not part of a

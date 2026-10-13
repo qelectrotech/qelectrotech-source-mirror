@@ -29,6 +29,8 @@ class QPainter;
 class DiagramPosition;
 class TitleBlockTemplate;
 class TitleBlockTemplateRenderer;
+class Diagram;
+class projectDataBase;
 /**
 	@brief The BorderTitleBlock class
 	This class represents the border and the titleblock which frame a
@@ -107,34 +109,36 @@ class BorderTitleBlock : public QObject
 		QRectF outsideBorderRect() const;
 		QRectF insideBorderRect() const;
 	
-		// methods to get title block basic data
+		// methods to get title block basic data. A folio placed in a
+		// project reads them from the project's store
+		// (DB-ACCESSORS-PLAN.md stage 4.4), any other from its own copy.
 		/// @return the value of the title block "Author" field
-		QString author() const { return(btb_author_); }
+		QString author() const { const TitleBlockProperties *s = stored(); return(s ? s->author : btb_author_); }
 		/// @return the value of the title block "Date" field
-		QDate date() const { return(btb_date_); }
+		QDate date() const { const TitleBlockProperties *s = stored(); return(s ? s->date : btb_date_); }
 		/// @return the value of the title block "Title" field
-		QString title() const { return(btb_title_); }
+		QString title() const { const TitleBlockProperties *s = stored(); return(s ? s->title : btb_title_); }
 		/// @return the value of the title block "Folio" field
-		QString folio() const { return(btb_folio_); }
+		QString folio() const { const TitleBlockProperties *s = stored(); return(s ? s->folio : btb_folio_); }
 		/// @return the value of the title block "Folio" field as displayed
 		QString finalfolio() const { return(btb_final_folio_); }
 		/// @return the value of the title block "Plant" field
-		QString plant() const { return(btb_plant_); }
+		QString plant() const { const TitleBlockProperties *s = stored(); return(s ? s->plant : btb_plant_); }
 		/// @return the value of the title block "Locmach" field
-		QString locmach() const { return(btb_locmach_); }
+		QString locmach() const { const TitleBlockProperties *s = stored(); return(s ? s->locmach : btb_locmach_); }
 		/// @return the value of the revision index block "Folio" field
-		QString indexrev() const { return(btb_indexrev_); }
+		QString indexrev() const { const TitleBlockProperties *s = stored(); return(s ? s->indexrev : btb_indexrev_); }
 		/// @return the value of the title block "File" field
-		QString fileName() const { return(btb_filename_); }
+		QString fileName() const { const TitleBlockProperties *s = stored(); return(s ? s->filename : btb_filename_); }
 		/// @return the value of the title block Additional Fields
-		QString version() const { return(btb_version_); }
+		QString version() const { const TitleBlockProperties *s = stored(); return(s ? s->version : btb_version_); }
 		/// @return the value of the title block Additional Fields
 		DiagramContext additionalFields() const {
-			return (additional_fields_); }
+			const TitleBlockProperties *s = stored(); return(s ? s->context : additional_fields_); }
 		/// @return the value of the title block
-		QString autoPageNum() const { return(btb_auto_page_num_); }
+		QString autoPageNum() const { const TitleBlockProperties *s = stored(); return(s ? s->auto_page_num : btb_auto_page_num_); }
 			/// The title of the folio numbering this folio follows, nothing else changes
-		void setAutoPageNum(const QString &title) { btb_auto_page_num_ = title; }
+		void setAutoPageNum(const QString &title);
 		/// @return the value of the total number of folios
 		int folioTotal() const { return(folio_total_);}
 	
@@ -175,7 +179,9 @@ class BorderTitleBlock : public QObject
 		void borderToXml(QDomElement &);
 		void borderFromXml(const QDomElement &);
 		
-		TitleBlockProperties exportTitleBlock();
+		TitleBlockProperties exportTitleBlock() const;
+		TitleBlockProperties localTitleBlock() const;
+		void setOwnerFolio(Diagram *folio);
 		void importTitleBlock(const TitleBlockProperties &);
 		BorderProperties exportBorder();
 		void importBorder(const BorderProperties &);
@@ -289,5 +295,10 @@ class BorderTitleBlock : public QObject
 		bool display_rows_ = false;
 		bool display_border_ = false;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
+		Diagram *m_owner_folio = nullptr;
+		TitleBlockProperties current() const;
+		const TitleBlockProperties *stored() const;
+		projectDataBase *placedStore() const;
+		void storeTitleBlock();
 };
 #endif

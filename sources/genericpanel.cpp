@@ -253,11 +253,13 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
 				this,&GenericPanel::projectDiagramsOrderChanged);
 		} else {
 			// remove diagrams unknown to the project (presumably removed)
-			removeObsoleteItems(project -> diagrams(),
+			removeObsoleteItems(project -> folios(),
 					    project_qtwi, QET::Diagram, false);
 		}
 		int index = 0;
-		foreach (Diagram *diagram, project -> diagrams()) {
+			//A folio's entry shows its own data (title, folio label):
+			//folios(), which does not build the folios' items
+		foreach (Diagram *diagram, project -> folios()) {
 			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram,
 								   nullptr,
 								   options);

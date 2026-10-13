@@ -31,6 +31,7 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
+#include "autoNum/assignvariables.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -44,6 +45,7 @@
 #include <QFuture>
 
 #include <array>
+#include <optional>
 
 class Diagram;
 class Element;
@@ -119,6 +121,22 @@ class QETProject : public QObject
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
+			//The folios whether their items are built or not
+			//(QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md); diagrams() builds them
+		QList<Diagram *> folios() const;
+		bool deferringFolios() const {return m_deferring_folios;}
+		int unloadedFolioCount() const;
+		QList<Diagram *> builtFolios() const;
+		QList<Diagram *> cableLabelFolios();
+		QList<Diagram *> foliosWithWiresNotReconnected();
+		void buildFolioToShow(Diagram *folio);
+		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
+		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
+		QSet<QUuid> symbolsOnUnbuiltFolios() const;
+		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
+		void loadFolios() const;
+		void buildFolios(const QList<Diagram *> &folios) const;
+		void folioLoaded(Diagram *folio);
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
@@ -240,6 +258,18 @@ class QETProject : public QObject
 										const QString &ignored_title = QString()) const;
 		static QString normalizedAutoNumName(const QString &name);
 		QVector<Element *> elementsUsingElementAutoNum(const QString &title) const;
+			/// A placed symbol's numbering, whether its folio is built or
+			/// not (QET_LAZY_FOLIOS): what is asked of every symbol of the
+			/// project when one is numbered
+		struct SymbolNumbering {
+			const Element *element = nullptr; ///< null on a folio not built
+			QString label;
+			QString formula;
+			QUuid scheme;   ///< the element numbering scheme it follows
+			autonum::sequentialNumbers sequence;
+			bool numbered = false; ///< neither a slave nor a report
+		};
+		QList<SymbolNumbering> symbolNumbering() const;
 
 		/**
 		 * @brief Renumber existing elements by element autonumbering scheme.
@@ -283,7 +313,8 @@ class QETProject : public QObject
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
 
-		QDomDocument toXml();
+		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr);
+		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
 		QETResult write();
 		bool isReadOnly() const;
@@ -293,6 +324,7 @@ class QETProject : public QObject
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &) const;
 		QList <ElementsLocation> unusedElements() const;
+		QList<ElementsLocation> unbuiltFolioElements() const;
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 		bool projectWasModified();
 		bool projectOptionsWereModified();
@@ -474,6 +506,24 @@ class QETProject : public QObject
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;
 		void linkElementsToElementAutoNums();
+		void linkElementsToElementAutoNums(Diagram *folio);
+		QHash<QString, QStringList> elementAutoNumTitlesByFormula() const;
+		std::optional<QUuid> elementAutoNumIdToLink(
+				const DiagramContext &information,
+				const QHash<QString, QStringList> &titles_by_formula) const;
+		bool m_deferring_folios = false;
+			/// Saving may write a folio not built as it was read
+			/// (writesKeptFolios()): the file is this version's, its
+			/// database rows came from it, and nothing project-wide that
+			/// a folio's saved items depend on has changed since
+		bool m_kept_folios_trusted = false;
+		bool m_kept_folios_stale = false;
+			/// Something was edited since the project was opened: a table
+			/// filled from the database may have changed
+		bool m_edited_since_open = false;
+		void markKeptFoliosStale() {m_kept_folios_stale = true;}
+			/// The file being read, for each folio's text (readDiagramsXml())
+		QByteArray m_opened_content;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
 			/// Texts drawn in a turned symbol stay horizontal (on for a new

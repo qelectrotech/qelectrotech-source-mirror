@@ -959,7 +959,9 @@ void ProjectView::loadDiagrams()
 {
 	if (!m_project) return;
 
-	setDisplayFallbackWidget(m_project -> diagrams().isEmpty());
+		//The folios' items are built when their tab is first shown
+		//(tabChanged()), not here: a tab needs only the folio's own data
+	setDisplayFallbackWidget(m_project -> folios().isEmpty());
 
 	auto dialog = DialogWaiting::instance();
 	if(dialog)
@@ -968,7 +970,7 @@ void ProjectView::loadDiagrams()
 												"...</b><br/>Creating sheet tabs :</p>"));
 	}
 
-	for(auto diagram : m_project->diagrams())
+	for(auto diagram : m_project->folios())
 	{
 		if(dialog)
 		{
@@ -1202,6 +1204,12 @@ void ProjectView::rebuildDiagramsMap()
 */
 void ProjectView::tabChanged(int tab_id)
 {
+		//A folio opened without its items (QET_LAZY_FOLIOS) is built when
+		//its tab is first shown. Read the tab itself: the first tab is
+		//shown while loadDiagrams() is still filling m_diagram_ids
+	if (auto dv = qobject_cast<DiagramView *>(m_tab->widget(tab_id)))
+		dv->buildFolio();
+
 	if (tab_id == -1)
 		setDisplayFallbackWidget(true);
 	else if(m_tab->count() == 1)

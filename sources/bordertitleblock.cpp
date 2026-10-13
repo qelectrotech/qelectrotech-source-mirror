@@ -29,6 +29,10 @@
 #include "titleblocktemplaterenderer.h"
 
 
+#include "diagram.h"
+#include "qetproject.h"
+#include "dataBase/projectdatabase.h"
+
 #include <QLocale>
 #include <QPainter>
 #include <QRegularExpression>
@@ -282,26 +286,96 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	@return the properties of the titleblock
 	\~French les proprietes du cartouches
 */
-TitleBlockProperties BorderTitleBlock::exportTitleBlock()
+TitleBlockProperties BorderTitleBlock::exportTitleBlock() const
+{
+	return current();
+}
+
+/**
+	@brief BorderTitleBlock::localTitleBlock
+	@return the properties of the titleblock this object holds itself,
+	whether or not its folio is placed in a project
+*/
+TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 {
 	TitleBlockProperties ip;
 
-	ip.author = author();
-	ip.date = date();
-	ip.title = title();
-	ip.filename = fileName();
-	ip.plant = plant();
-	ip.locmach = locmach();
-	ip.indexrev = indexrev();
-	ip.version = version();
-	ip.folio = folio();
+	ip.author = btb_author_;
+	ip.date = btb_date_;
+	ip.title = btb_title_;
+	ip.filename = btb_filename_;
+	ip.plant = btb_plant_;
+	ip.locmach = btb_locmach_;
+	ip.indexrev = btb_indexrev_;
+	ip.version = btb_version_;
+	ip.folio = btb_folio_;
 	ip.template_name = titleBlockTemplateName();
 	ip.display_at = m_edge;
-	ip.auto_page_num = autoPageNum();
+	ip.auto_page_num = btb_auto_page_num_;
 	ip.context = additional_fields_;
 	ip.collection = QET::QetCollection::Embedded;
 
 	return(ip);
+}
+
+/**
+	@brief BorderTitleBlock::current
+	@return the properties of the titleblock: for a folio placed in a
+	project the project's store holds them (DB-ACCESSORS-PLAN.md stage
+	4.4), for any other this object's own copy.
+*/
+TitleBlockProperties BorderTitleBlock::current() const
+{
+	if (const TitleBlockProperties *s = stored())
+		return *s;
+	return localTitleBlock();
+}
+
+/**
+	@brief BorderTitleBlock::stored
+	@return the properties the project's store holds for this titleblock's
+	folio, or nullptr if it is not placed. Read at once: the getters use it
+	field by field, as label formulas ask for the folio and title of every
+	symbol's folio, and copying the whole properties each time costs.
+*/
+const TitleBlockProperties *BorderTitleBlock::stored() const
+{
+	if (projectDataBase *store = placedStore())
+		return store->storedFolioTitleBlock(m_owner_folio->uuid());
+	return nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::setOwnerFolio
+	@param folio : the folio this border and title block belongs to
+*/
+void BorderTitleBlock::setOwnerFolio(Diagram *folio)
+{
+	m_owner_folio = folio;
+}
+
+/**
+	@brief BorderTitleBlock::placedStore
+	@return the project database holding this titleblock's properties, or
+	nullptr if its folio is not placed in a project
+*/
+projectDataBase *BorderTitleBlock::placedStore() const
+{
+	QETProject *project = m_owner_folio ? m_owner_folio->project() : nullptr;
+	projectDataBase *store = project ? project->dataBase() : nullptr;
+	return store && store->placedFolio(m_owner_folio->uuid()) == m_owner_folio
+			? store : nullptr;
+}
+
+/**
+	@brief BorderTitleBlock::storeTitleBlock
+	Write this titleblock's properties to its project's store, once its
+	folio is placed: every change of them comes through here.
+*/
+void BorderTitleBlock::storeTitleBlock()
+{
+	if (projectDataBase *store = placedStore())
+		store->storeFolioTitleBlock(m_owner_folio->uuid(), localTitleBlock());
 }
 
 /**
@@ -333,6 +407,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 	// through setFolioData(),
 	// which in turn calls updateDiagramContextForTitleBlock().
 	emit(needTitleBlockTemplate(ip.template_name));
+	storeTitleBlock();
 	emit informationChanged();
 }
 
@@ -391,6 +466,7 @@ void BorderTitleBlock::setTitleBlockTemplate(
 		const TitleBlockTemplate *titleblock_template) {
 	m_titleblock_template_renderer -> setTitleBlockTemplate(
 				titleblock_template);
+	storeTitleBlock();
 }
 
 /**
@@ -889,7 +965,19 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 void BorderTitleBlock::setFolio(const QString &folio)
 {
 	btb_folio_ = folio;
+	storeTitleBlock();
 	emit (titleBlockFolioChanged(folio));
+}
+
+/**
+	@brief BorderTitleBlock::setAutoPageNum
+	@param title : the title of the folio numbering this folio follows,
+	nothing else changes
+*/
+void BorderTitleBlock::setAutoPageNum(const QString &title)
+{
+	btb_auto_page_num_ = title;
+	storeTitleBlock();
 }
 
 /**
@@ -915,9 +1003,10 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// So an empty page-level value is skipped only when a real project-level
 	// one is already there to show through; otherwise it still goes in
 	// empty, which is what makes the placeholder resolve to nothing.
+	const TitleBlockProperties tb = current();
 	DiagramContext context = initial_context;
-	foreach (QString key, additional_fields_.keys()) {
-		const QVariant value = additional_fields_[key];
+	foreach (QString key, tb.context.keys()) {
+		const QVariant value = tb.context[key];
 		if (!value.toString().isEmpty() || !context.contains(key))
 			context.addValue(key, value);
 	}
@@ -925,20 +1014,20 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// ... overridden by the historical and/or dynamically generated fields
 	QLocale var;
 	var.dateFormat(QLocale::ShortFormat);
-	context.addValue("author",      btb_author_);
+	context.addValue("author",      tb.author);
 	context.addValue(
 		"date",
-		QLocale::system().toString(btb_date_, QLocale::ShortFormat));
-	context.addValue("title",       btb_title_);
-	context.addValue("filename",    btb_filename_);
-	context.addValue("plant",     btb_plant_);
-	context.addValue("locmach",     btb_locmach_);
-	context.addValue("indexrev",    btb_indexrev_);
-	context.addValue("version",     btb_version_);
+		QLocale::system().toString(tb.date, QLocale::ShortFormat));
+	context.addValue("title",       tb.title);
+	context.addValue("filename",    tb.filename);
+	context.addValue("plant",     tb.plant);
+	context.addValue("locmach",     tb.locmach);
+	context.addValue("indexrev",    tb.indexrev);
+	context.addValue("version",     tb.version);
 	context.addValue("folio",       btb_final_folio_);
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
-	context.addValue("auto_page_num", btb_auto_page_num_);
+	context.addValue("auto_page_num", tb.auto_page_num);
 	context.addValue("previous-folio-num", m_previous_folio_num);
 	context.addValue("next-folio-num", m_next_folio_num);
 
@@ -1041,11 +1130,12 @@ void BorderTitleBlock::setFolioData(
 
 	// regenerate the content of the folio field
 	// regenere le contenu du champ folio
-	btb_final_folio_ = btb_folio_;
+	btb_final_folio_ = folio();
 
 	if (btb_final_folio_.contains("%autonum")){
 		btb_final_folio_.replace("%autonum", autonum);
 		btb_folio_ = btb_final_folio_;
+		storeTitleBlock();
 	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
