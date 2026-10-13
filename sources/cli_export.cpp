@@ -870,6 +870,15 @@ int exportLinks(QETProject &project, const QString &output)
 int resaveProject(QETProject &project, const QString &output)
 {
 	const QDomDocument doc = project.toXml();
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!QETProject::writeContainer(doc, output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+		out << "Re-saved project -> " << output << "\n";
+		return 0;
+	}
 	QFile file(output);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		err << "Cannot open '" << output << "' for writing.\n";
@@ -955,14 +964,22 @@ int setTitleBlock(QETProject &project, const QString &output,
 	}
 
 	const QDomDocument doc = project.toXml();
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
-		return 1;
+	if (QETProject::isContainerPath(output)) {
+		QString error;
+		if (!QETProject::writeContainer(doc, output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
+			return 1;
+		}
+	} else {
+		QFile file(output);
+		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+			err << "Cannot open '" << output << "' for writing.\n";
+			return 1;
+		}
+		QTextStream fout(&file);
+		fout << doc.toString(4);
+		file.close();
 	}
-	QTextStream fout(&file);
-	fout << doc.toString(4);
-	file.close();
 	out << "Stamped " << fields.size() << " field(s) on "
 		<< folios << " folio(s) -> " << output << "\n";
 	return 0;

@@ -30,9 +30,12 @@ class tst_resaveunchanged : public QObject
 
 	// --resave @p in to a new file, in a sandbox of its own (so a running
 	// QElectroTech cannot answer instead); returns the new file's path.
-	QString resave(const QString &in)
+	QString resave(const QString &in, const QString &suffix = QStringLiteral(".qet"))
 	{
-		const QString out = m_dir.filePath(QStringLiteral("out%1.qet").arg(m_run));
+			//Always p.qet, in its own folder: an untitled project takes its
+			//file name as title, so two names would make two projects.
+		QDir().mkpath(m_dir.filePath(QStringLiteral("run%1").arg(m_run)));
+		const QString out = m_dir.filePath(QStringLiteral("run%1/p").arg(m_run) + suffix);
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -280,6 +283,38 @@ private slots:
 		const QString saved = resave(in);
 		QVERIFY2(!saved.isEmpty(), "--resave failed: QElectroTech crashed opening the project");
 		QVERIFY2(read(saved).contains(b), "the arrow without a terminal was not kept");
+	}
+
+	// Saved as a .qetz (the zipped project, #1440) and that saved again as a
+	// .qet, a project is what it is saved straight as a .qet: the same
+	// file but for when and where it was saved. The examples with pictures
+	// (weneedpolonez), tables and links (industrial) and several title
+	// blocks (m_000).
+	void containerSavesTheSameProject_data()
+	{
+		QTest::addColumn<QString>("project");
+		for (const char *name : {"Projet_vierge.qet", "industrial.qet", "m_000.qet",
+								 "weneedpolonez-Polonez_MR89_wiring_diagram.qet"})
+			QTest::newRow(name) << QStringLiteral(QET_EXAMPLES_DIR "/") + QLatin1String(name);
+	}
+	void containerSavesTheSameProject()
+	{
+		QFETCH(QString, project);
+		const QString straight = resave(project);
+		QVERIFY2(!straight.isEmpty(), "--resave as .qet failed");
+		const QString zipped = resave(project, QStringLiteral(".qetz"));
+		QVERIFY2(!zipped.isEmpty(), "--resave as .qetz failed");
+		QVERIFY2(read(zipped).startsWith("PK\x03\x04"), "the .qetz is not a zip");
+		QVERIFY2(read(zipped).size() < read(straight).size() / 2, "the .qetz is not smaller");
+		const QString back = resave(zipped);
+		QVERIFY2(!back.isEmpty(), "opening the .qetz failed");
+
+		auto without_save_stamps = [](QByteArray xml) {
+			static const QRegularExpression stamp(QStringLiteral(
+				"\\s*<property [^>]*name=\"saved(filename|filepath|filenamedir|date|date-us|date-eu|time)\"[^>]*>[^<]*</property>"));
+			return QString::fromUtf8(xml).remove(stamp);
+		};
+		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
 	}
 
 	// A title-block value that is a single space is kept through two saves

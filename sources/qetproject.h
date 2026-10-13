@@ -402,6 +402,11 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
+	public:
+		static bool isContainerPath(const QString &path);
+		static bool writeContainer(const QDomDocument &project, const QString &path,
+								   QString *error = nullptr);
+	private:
 		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
 

@@ -102,6 +102,13 @@ else()
     message(STATUS "Qt Qml module not available: JavaScript scripting (--run) disabled")
 endif()
 
+# The zip container of a .qetz project is read and written with the bundled
+# miniz (sources/container/miniz): in memory only, and without timestamps so
+# that saving the same project twice gives the same bytes. The names must not
+# clash with the zlib Qt links. Every target including miniz.h needs the same
+# three, hence directory-wide.
+add_compile_definitions(MINIZ_NO_TIME MINIZ_NO_STDIO MINIZ_NO_ZLIB_COMPATIBLE_NAMES)
+
 # The crash handler writes a backtrace into the dump. Detecting this with
 # __has_include(<execinfo.h>) is not enough: the header is present on FreeBSD
 # too, but backtrace() lives in a separate libexecinfo there, so the compile

@@ -2669,8 +2669,8 @@ void projectDataBase::exportDb(projectDataBase *db,
 		if (dir_.isEmpty()) {
 			dir_ = QETApp::documentDir() % "/" % tr("untitled") % ".sqlite";
 		} else {
-			dir_.remove(".qet");
-			dir_.append(".sqlite");
+			const QFileInfo project_file(dir_);
+			dir_ = project_file.path() % "/" % project_file.completeBaseName() % ".sqlite";
 		}
 	}
 

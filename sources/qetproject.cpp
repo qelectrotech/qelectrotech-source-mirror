@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "container/qetcontainer.h"
 
 #include "ElementsCollection/xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -399,10 +400,20 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	load_timer.start();
 
 	bool opened_here = file->isOpen() ? false : true;
-	if (!file->isOpen()
-			&& !file->open(QIODevice::ReadOnly
-					   | QIODevice::Text)) {
-		return FileOpenFailed;
+	if (opened_here)
+	{
+			//A .qetz is a zip and is read as bytes: text mode would turn
+			//its CR LF pairs into LF on Windows. A .qet is read as text,
+			//as it always was.
+		if (!file->open(QIODevice::ReadOnly)) {
+			return FileOpenFailed;
+		}
+		if (!QetContainer::isZip(file->peek(4))) {
+			file->close();
+			if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+				return FileOpenFailed;
+			}
+		}
 	}
 	QFileInfo fi(*file);
 	setFilePath(fi.absoluteFilePath());
@@ -424,12 +435,12 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// call .text() on themselves -- which is exactly where the bug was.
 	// The option exists since Qt 6.5; older Qt always drops such nodes,
 	// so there an all-whitespace value still reloads as "".
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-	if (!xml_project.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes))
-#else
-	if (!xml_project.setContent(content))
-#endif
+	// QetContainer::parse() does exactly that, for a .qet and for each part
+	// of a .qetz alike.
+	QString read_error;
+	if (!QetContainer::readDocument(content, &xml_project, &read_error))
 	{
+		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		if(opened_here) {
 			file->close();
 		}
@@ -1809,6 +1820,30 @@ bool QETProject::close()
 	@see setFilePath()
 	@return true if the project was successfully saved, else false
 */
+/**
+	@brief QETProject::isContainerPath
+	@return true if @p path names a .qetz file: write() saves it zipped
+*/
+bool QETProject::isContainerPath(const QString &path)
+{
+	return path.endsWith(QLatin1String(".qetz"), Qt::CaseInsensitive);
+}
+
+/**
+	@brief QETProject::writeContainer
+	Write the project document @p project to @p path as a .qetz: the same
+	document, in parts, zipped (#1440). The file is replaced only once
+	the whole archive is written.
+*/
+bool QETProject::writeContainer(const QDomDocument &project, const QString &path, QString *error)
+{
+	const QList<QetZip::Entry> entries = QetContainer::split(
+				project,
+				QStringLiteral("QElectroTech %1").arg(QetVersion::currentVersion().toString()),
+				error);
+	return !entries.isEmpty() && QetZip::write(path, entries, error);
+}
+
 QETResult QETProject::write()
 {
 		// this operation requires a filepath
@@ -1831,7 +1866,12 @@ QETResult QETProject::write()
 
 	QDomDocument xml_project(toXml());
 	QString error_message;
-	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
+	if (isContainerPath(m_file_path))
+	{
+		if (!writeContainer(xml_project, m_file_path, &error_message))
+			return(error_message);
+	}
+	else if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
 
 		// The project has just been written to a writable file (e.g. saved to
