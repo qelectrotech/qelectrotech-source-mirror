@@ -3184,7 +3184,8 @@ void QETDiagramEditor::pasteElementInformations()
 			new_info.remove(QETInformation::ELMT_FORMULA_ID);
 		}
 		for (const QString &key : source.keys()) {
-			if (key == QETInformation::ELMT_FORMULA_ID && !keep_scheme_id)
+			if (key == QETInformation::ELMT_FORMULA_ID && !keep_scheme_id
+					|| key == "exclude_from_bom")
 				continue;
 			new_info.addValue(key, source.value(key), source.keyMustShow(key));
 		}
