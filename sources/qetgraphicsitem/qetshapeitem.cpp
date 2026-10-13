@@ -2465,6 +2465,10 @@ void QetShapeItem::dragResize(int index, const QPointF &localPos, Qt::KeyboardMo
 	{
 		prepareGeometryChange();
 		(index == 0 ? m_P1 : m_P2) = localPos;
+		// The same rule as setLine() and setRect(): a pivot nobody placed
+		// by hand follows the centre.
+		if (!m_pivotIsCustom)
+			resetPivotToBoundingRectCenter();
 		repositionHandles();
 		emit geometryChanged();
 		return;
