@@ -37,6 +37,8 @@
 #include "../../sources/undocommand/deleteqgraphicsitemcommand.h"
 #include "../../sources/factory/elementfactory.h"
 #include "../../sources/undocommand/addgraphicsobjectcommand.h"
+#include "../../sources/dataBase/projectdatabase.h"
+#include <QDomDocument>
 
 static void check(bool value, const char *message) { if (!value) throw std::runtime_error(message); }
 
@@ -567,6 +569,44 @@ int main(int argc, char **argv)
 			check(potential(wire) == potential(usual_wire), "a potential followed as when built");
 			std::printf("potential through reports: %d wires, %d folios not built\n",
 						int(potential(wire).size()), followed.unloadedFolioCount());
+		}
+			//Two symbols sharing a uuid: the database is filled from the
+			//folios, which builds every one of them, so the project opens
+			//with every folio built rather than building them all later
+		{
+			QFile file(path);
+			check(file.open(QIODevice::ReadOnly), "fixture read");
+			QDomDocument document;
+			check(bool(document.setContent(&file)), "fixture parsed");
+			file.close();
+			check(projectDataBase::documentRefusal(document).isEmpty(), "the fixture fills the database itself");
+			QDomNodeList elements = document.elementsByTagName(QStringLiteral("element"));
+			QList<QDomElement> placed;
+			for (int i = 0; i < elements.size(); ++i) {
+				QDomElement e = elements.at(i).toElement();
+				if (Element::valideXml(e)) placed << e;
+			}
+			check(placed.size() > 1, "two placed symbols");
+			placed.last().setAttribute(QStringLiteral("uuid"), placed.first().attribute(QStringLiteral("uuid")));
+			check(!projectDataBase::documentRefusal(document).isEmpty(), "a shared uuid is seen before the folios are read");
+			const QString shared = output + "/lazy_folios_shared_uuid.qet";
+			QFile out(shared);
+			check(out.open(QIODevice::WriteOnly), "copy written");
+			out.write(document.toByteArray(4));
+			out.close();
+			qputenv("QET_LAZY_FOLIOS", "1");
+			qputenv("QET_LAZY_FOLIOS_TRACE", "1");
+			static int built_late; built_late = 0;
+			const QtMessageHandler previous = qInstallMessageHandler(
+					[](QtMsgType, const QMessageLogContext &, const QString &message) {
+				if (message.contains(QStringLiteral("built for a caller of diagrams()"))) ++built_late;
+			});
+			QETProject opened(shared);
+			qInstallMessageHandler(previous);
+			qunsetenv("QET_LAZY_FOLIOS_TRACE");
+			check(opened.state() == QETProject::Ok, "a project with a shared uuid opens");
+			check(opened.unloadedFolioCount() == 0, "a project with a shared uuid opens with every folio built");
+			check(built_late == 0, "a project with a shared uuid builds its folios as it reads them, not later");
 		}
 		std::printf("PASS: %d folios\n", int(folios.size()));
 	} catch (const std::exception &error) {
