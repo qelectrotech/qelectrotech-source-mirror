@@ -271,6 +271,10 @@ qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# A folio's pictures, decoded in parallel, each come back with its own
+# pixels and position; an <image> with no picture does not stop the others.
+qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
+
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
 add_executable(

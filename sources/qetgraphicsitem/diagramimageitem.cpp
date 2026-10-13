@@ -1799,6 +1799,60 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 */
 bool DiagramImageItem::fromXml(const QDomElement &e, const QByteArray &picture)
 {
+	Picture p = pictureOf(e, picture);
+	decodePicture(p);
+	return fromXml(e, std::move(p));
+}
+
+/**
+	@brief DiagramImageItem::pictureOf
+	@return the picture of @p e, @p picture unless it is empty, else the
+	base64 text of @p e, still encoded : decodePicture() does the slow part.
+	Reads the DOM, so GUI thread only.
+*/
+DiagramImageItem::Picture DiagramImageItem::pictureOf(const QDomElement &e,
+													  const QByteArray &picture)
+{
+	Picture p;
+	p.bytes = picture;
+	if (p.bytes.isEmpty())
+	{
+		// From the first text node only, not e.text(): that also collects
+		// the text of every child element, so on a cropped or colour-keyed
+		// picture it carries <image_base>'s bytes too.
+		const QDomNode image_node = e.firstChild();
+		if (image_node.isText())
+			p.base64 = image_node.toText().data();
+		else
+			p.found = false;
+	}
+	return p;
+}
+
+/**
+	@brief DiagramImageItem::decodePicture
+	Decodes the base64 text and the picture file of @p picture. Touches
+	nothing else, so it can run in any thread : a large photo takes about
+	a quarter of a second, and Diagram::fromXml() decodes a folio's
+	pictures in parallel.
+*/
+void DiagramImageItem::decodePicture(Picture &picture)
+{
+	if (picture.bytes.isEmpty() && !picture.base64.isEmpty())
+	{
+		picture.bytes = QByteArray::fromBase64(picture.base64.toLatin1());
+		picture.base64.clear();
+	}
+	picture.image = QImage::fromData(picture.bytes);
+}
+
+/**
+	@brief DiagramImageItem::fromXml
+	Load this image from xml element e, its picture already decoded by
+	decodePicture().
+*/
+bool DiagramImageItem::fromXml(const QDomElement &e, Picture picture)
+{
 	if (e.tagName() != "image") {
 		return (false);
 	}
@@ -1807,23 +1861,13 @@ bool DiagramImageItem::fromXml(const QDomElement &e, const QByteArray &picture)
 	const QUuid uuid(e.attribute(QStringLiteral("uuid")));
 	if (!uuid.isNull() && uuid != m_uuid) setUuid(uuid);
 
-	// From the first text node only, not e.text(): that also collects the
-	// text of every child element, so on a cropped or colour-keyed picture
-	// it carries <image_base>'s bytes too. Decoded once: on a project with
-	// large pictures each decoding costs seconds.
-	QByteArray array = picture;
-	if (array.isEmpty())
-	{
-		QDomNode image_node = e.firstChild();
-		if (!image_node.isText()) {
-			return (false);
-		}
-		array = QByteArray::fromBase64(image_node.toText().data().toLatin1());
+	if (!picture.found) {
+		return (false);
 	}
+	const QByteArray array = picture.bytes;
 
-	//Set QPixmap from the array
-	QPixmap pixmap;
-	pixmap.loadFromData(array);
+	//Set QPixmap from the decoded picture
+	QPixmap pixmap = QPixmap::fromImage(std::move(picture.image));
 	setPixmap(pixmap);
 	if (isPng(array) && !pixmap_.isNull())
 	{

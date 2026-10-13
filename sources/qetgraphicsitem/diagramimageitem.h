@@ -24,6 +24,7 @@
 
 #include <QColor>
 #include <QFont>
+#include <QImage>
 #include <QList>
 #include <QUuid>
 #include <QStyleOptionGraphicsItem>
@@ -119,8 +120,20 @@ class DiagramImageItem : public QetGraphicsItem {
 	*/
 	int type() const override { return Type; }
 	
+	/// A picture as read from its <image> element, before and after
+	/// decodePicture(), which may run outside the GUI thread.
+	struct Picture {
+		QString base64;		///< text of <image>, decoded when bytes is empty
+		QByteArray bytes;	///< the picture file (PNG, JPEG...)
+		QImage image;		///< bytes, decoded
+		bool found = true;	///< false : neither bytes nor text
+	};
+	static Picture pictureOf(const QDomElement &, const QByteArray &picture);
+	static void decodePicture(Picture &picture);
+
 	virtual bool fromXml(const QDomElement &);
 	bool fromXml(const QDomElement &, const QByteArray &picture);
+	bool fromXml(const QDomElement &, Picture picture);
 	virtual QDomElement toXml(QDomDocument &) const;
 	QUuid uuid() const {return m_uuid;}
 	void setUuid(const QUuid &uuid) {m_uuid = uuid; emit uuidChanged();}
