@@ -39,6 +39,7 @@ ExportProperties::ExportProperties() :
 	draw_colored_conductors(true),
 	dxf_blocks(false),
 	dxf_attributes(false),
+	svg_small_pictures(false),
 	exported_area(QET::BorderArea)
 {
 }
@@ -83,6 +84,8 @@ void ExportProperties::toSettings(QSettings &settings,
 			  dxf_blocks);
 	settings.setValue(prefix % "dxfattributes",
 			  dxf_attributes);
+	settings.setValue(prefix % "svgsmallpictures",
+			  svg_small_pictures);
 	settings.setValue(prefix % "area",
 			  QET::diagramAreaToString(exported_area));
 }
@@ -125,6 +128,8 @@ void ExportProperties::fromSettings(QSettings &settings,
 				    false).toBool();
 	dxf_attributes = settings.value(prefix % "dxfattributes",
 					false).toBool();
+	svg_small_pictures = settings.value(prefix % "svgsmallpictures",
+					    false).toBool();
 
 	exported_area  = QET::diagramAreaFromString(
 				settings.value(

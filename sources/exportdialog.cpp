@@ -417,12 +417,14 @@ void ExportDialog::generateSvg(
 	
 	// genere une QPicture a partir du schema
 	QPicture picture;
+	diagram -> setSmallPictures(epw -> exportProperties().svg_small_pictures);
 	diagram -> toPaintDevice(
 		picture,
 		width,
 		height,
 		keep_aspect_ratio ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
 	);
+	diagram -> setSmallPictures(false);
 	
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
