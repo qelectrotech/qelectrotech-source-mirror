@@ -748,6 +748,13 @@ target_link_libraries(tst_pdfpagesize PRIVATE Qt::Test Qt::Gui)
 target_compile_definitions(tst_pdfpagesize PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# The print window's PDF export turns each page to its folio when "Fit in
+# page" is on (#1480), and keeps the chosen orientation when it is off. The
+# links on a turned page are checked on examples/industrial.qet.
+qet_add_app_test(tst_printpdforientation tst_printpdforientation.cpp)
+target_compile_definitions(tst_printpdforientation PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # --export-pdf writes the cross-reference links in the same order in every
 # run, rather than in Element pointer order. Exports examples/industrial.qet
 # several times, in separate processes.
