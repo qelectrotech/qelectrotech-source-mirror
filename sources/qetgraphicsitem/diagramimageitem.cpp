@@ -167,7 +167,28 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		return;
 	}
 
-	DarkImageRendering::paintPixmap(painter, pixmap_, m_adapt_to_dark_theme);
+		// SVG export with smaller pictures: a copy four times the size the
+		// picture is drawn at, when that is smaller than the picture. An
+		// SVG stores what it is given, so a photo shown at a tenth of its
+		// size would otherwise be written whole.
+	const QTransform world = painter -> worldTransform();
+	const qreal drawn_scale = std::sqrt(std::abs(world.determinant()));
+	const QSize small_size = (QSizeF(pixmap_.size()) * drawn_scale * 4).toSize();
+	if (diagram() && diagram() -> smallPictures() && !pixmap_.isNull()
+			&& small_size.width() < pixmap_.width()
+			&& small_size.height() < pixmap_.height()
+			&& !small_size.isEmpty())
+	{
+		const QPixmap small = pixmap_.scaled(small_size, Qt::IgnoreAspectRatio,
+											 Qt::SmoothTransformation);
+		painter -> save();
+		painter -> scale(qreal(pixmap_.width()) / small.width(),
+						 qreal(pixmap_.height()) / small.height());
+		DarkImageRendering::paintPixmap(painter, small, m_adapt_to_dark_theme);
+		painter -> restore();
+	}
+	else
+		DarkImageRendering::paintPixmap(painter, pixmap_, m_adapt_to_dark_theme);
 
 	Q_UNUSED(option); Q_UNUSED(widget);
 

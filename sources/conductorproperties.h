@@ -139,6 +139,8 @@ class ConductorProperties
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 		void applyChanges(const ConductorProperties &before,
 				  const ConductorProperties &after);
+		void applyTensionProtocolChange(const ConductorProperties &before,
+					      const ConductorProperties &after);
 
 		static ConductorProperties defaultProperties();
 

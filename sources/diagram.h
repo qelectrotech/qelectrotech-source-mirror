@@ -133,6 +133,7 @@ class Diagram : public QGraphicsScene
 		bool draw_terminals_;
 		bool draw_terminal_names_;
 		bool draw_colored_conductors_;
+		bool m_small_pictures = false;
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
@@ -303,6 +304,11 @@ class Diagram : public QGraphicsScene
 		void setDrawTerminalNames(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
+			/// While true, pictures draw a copy of a few times the size
+			/// they are drawn at, not their full resolution (SVG export,
+			/// ExportProperties::svg_small_pictures)
+		bool smallPictures() const {return m_small_pictures;}
+		void setSmallPictures(bool small) {m_small_pictures = small;}
 	
 		QString title() const;
 		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,

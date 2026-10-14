@@ -168,6 +168,7 @@ inline int Terminal::conductorsCount() const
 }
 
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
-						const bool all_diagram = true);
+						const bool all_diagram = true,
+						const bool ignore_function_separation = false);
 
 #endif

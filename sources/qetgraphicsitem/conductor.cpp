@@ -2010,9 +2010,16 @@ void Conductor::displayedTextChanged()
 	@param all_diagram : if true search in all diagram of the project,
 	false search only in the parent diagram of this conductor
 	@param t_list : a list of terminal already found for this potential.
+	@param ignore_function_separation : if true, a terminal element whose
+	function separation is enabled does not stop the search, and the
+	conductors of both its sides are returned as one potential. Only
+	functionSeparatedConductors() passes true.
+	@sa functionSeparatedConductors
 	@return  a QSet of conductor at the same potential.
 */
-QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list)
+QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
+							QList <Terminal *> *t_list,
+							const bool ignore_function_separation)
 {
 	bool declar_t_list = false;
 	if (t_list == nullptr)
@@ -2035,7 +2042,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 
 				//Get the other terminals of the parent element of @terminal, who share the same potential
 				//This is use for element type "folio report" and "terminal element"
-			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram))
+			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram,
+								ignore_function_separation))
 			{
 				if (!t_list->contains(t))
 				{
@@ -2047,7 +2055,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 			other_conductors_list_t.removeAll(this);
 				//Get the conductors at the same potential for each conductors of other_conductors_list_t
 			for (Conductor *c : other_conductors_list_t) {
-				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
+				other_conductors += c->relatedPotentialConductors(all_diagram, t_list,
+								  ignore_function_separation);
 			}
 
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
@@ -2058,6 +2067,36 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 
 	if (declar_t_list) delete t_list;
 	return(other_conductors);
+}
+
+/**
+	@brief Conductor::functionSeparatedConductors
+	Return the conductors that belong to this conductor's potential only
+	by crossing a function separated terminal element -- a terminal
+	element whose function separation checkbox (element information
+	potential_isolating) is enabled, the checkbox the user ticks to stop
+	sharing a terminal's properties with the other side of the terminal.
+
+	Those conductors are deliberately not part of
+	relatedPotentialConductors(): no property may be copied over them
+	by default. One does cross that separation, though: the voltage /
+	protocol, which describes the electrical node itself. Callers that
+	push it over the whole potential use this method to reach the other
+	side (@see ConductorProperties::applyTensionProtocolChange).
+
+	It is simply the potential computed with the separations ignored,
+	minus the potential that respects them.
+	@param all_diagram : if true search in all diagram of the project,
+	false search only in the parent diagram of this conductor
+	@return a QSet of conductor, this conductor excluded
+*/
+QSet<Conductor *> Conductor::functionSeparatedConductors(const bool all_diagram)
+{
+	QSet<Conductor *> separated = relatedPotentialConductors(all_diagram, nullptr, true);
+	separated.subtract(relatedPotentialConductors(all_diagram));
+	separated.remove(this);
+
+	return separated;
 }
 
 /**

@@ -313,8 +313,9 @@ void ElementInfoWidget::buildInterface()
 
 	ui->scroll_vlayout->addStretch();
 
-	// Existing potential isolating checkbox
-	m_potential_isolating_cb = new QCheckBox(tr("Potential separation"), this);
+	// Existing function separation checkbox (stored as the
+	// "potential_isolating" element information)
+	m_potential_isolating_cb = new QCheckBox(tr("Function separation"), this);
 	m_potential_isolating_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
 
 	// English: Initialize and style the BOM exclusion checkbox

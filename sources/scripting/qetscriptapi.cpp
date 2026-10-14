@@ -1239,6 +1239,10 @@ QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUu
 	describes a potential and not one drawn segment. Setting it on one
 	conductor and leaving the rest of the potential disagreeing would
 	produce a file no GUI action could have produced.
+
+	One thing stops at a terminal element with its function separation
+	enabled: every property but the voltage / protocol, which still
+	crosses it (@see Conductor::functionSeparatedConductors).
 	@return true if anything was changed, or if it already held that value
 */
 bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUuid,
@@ -1275,7 +1279,11 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 */
 bool QetScriptApi::applyConductorProperties(Conductor *conductor, const ConductorProperties &properties)
 {
-	if (properties == conductor->properties()) return true; // already so
+	//Captured before the pushes below: QPropertyUndoCommand applies on
+	//push, so reading the properties afterwards would already give back
+	//@a properties.
+	const ConductorProperties before = conductor->properties();
+	if (properties == before) return true; // already so
 
 	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
 	potential << conductor;
@@ -1286,6 +1294,25 @@ bool QetScriptApi::applyConductorProperties(Conductor *conductor, const Conducto
 		QVariant old_value, new_value;
 		old_value.setValue(c->properties());
 		new_value.setValue(properties);
+		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+	}
+		//The other side of a function separated terminal element gets the
+		//voltage / protocol only: it is the one property that still
+		//describes the electrical node rather than one side of it. And it
+		//only arrives when this call really changed it -- before / after
+		//is the edit, not the far wire's own value, which differs from it
+		//just as often as not and would then be overwritten by every call,
+		//colour included.
+	for (Conductor *c : conductor->functionSeparatedConductors(true))
+	{
+		ConductorProperties separated_properties = c->properties();
+		separated_properties.applyTensionProtocolChange(before, properties);
+		if (separated_properties == c->properties())
+			continue;
+
+		QVariant old_value, new_value;
+		old_value.setValue(c->properties());
+		new_value.setValue(separated_properties);
 		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
 	}
 	m_project->undoStack()->endMacro();
