@@ -1859,7 +1859,7 @@ void Element::setUuid(const QUuid &uuid)
 /**
 	@brief Element::storeInformation
 	Write this symbol's information to its project's store, once it is
-	placed (DB-ACCESSORS-PLAN.md stage 4.1): every change of a placed
+	placed: every change of a placed
 	symbol's information comes through here.
 */
 void Element::storeInformation()
@@ -1925,7 +1925,7 @@ ElementData Element::elementData() const
 /**
 	@brief Element::elementInformations
 	@return this symbol's information: for a placed symbol the project's
-	store holds it (DB-ACCESSORS-PLAN.md stage 4.2), for one not placed
+	store holds it, for one not placed
 	(a preview, the symbol editor) its own copy.
 */
 DiagramContext Element::elementInformations() const

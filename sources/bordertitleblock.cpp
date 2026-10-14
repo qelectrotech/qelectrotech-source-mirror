@@ -321,8 +321,8 @@ TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 /**
 	@brief BorderTitleBlock::current
 	@return the properties of the titleblock: for a folio placed in a
-	project the project's store holds them (DB-ACCESSORS-PLAN.md stage
-	4.4), for any other this object's own copy.
+	project the project's store holds them, for any other this object's
+	own copy.
 */
 TitleBlockProperties BorderTitleBlock::current() const
 {

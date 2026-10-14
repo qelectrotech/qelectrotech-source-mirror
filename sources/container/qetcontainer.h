@@ -21,6 +21,7 @@
 #include "qetzip.h"
 
 #include <QDomDocument>
+#include <QHash>
 
 /**
 	@brief The QetContainer namespace
@@ -42,11 +43,18 @@
 	join(split(d)) is d. Nothing here knows what the parts mean: the
 	project is read and written by the same code as a .qet file.
 
+	Given a Pictures map, join() leaves the pictures out of the document:
+	each <image> keeps the name of its file, pictureFile(), and the bytes
+	go in the map. Turning them back into base64 text costs seconds on a
+	project with large pictures, and the folio would only decode it again.
+
 	The format is written down in QETZ-FORMAT.md, beside this file.
 */
 namespace QetContainer
 {
 	extern const char MimeType[];
+		/// Picture bytes by file name, see join()
+	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
 	constexpr int Format = 3;
@@ -60,14 +68,18 @@ namespace QetContainer
 							   const QString &writer = QString(),
 							   QString *error = nullptr);
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr, int *format = nullptr);
+			  QString *error = nullptr, Pictures *pictures = nullptr,
+			  int *format = nullptr);
+		/// The file join() left the picture of @p image in, or an empty string
+	QString pictureFile(const QDomElement &image);
 
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
 		/// true if @p content is a zip, so a .qetz rather than a .qet
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
-	bool readDocument(const QByteArray &content, QDomDocument *document, QString *error = nullptr,
+	bool readDocument(const QByteArray &content, QDomDocument *document,
+					  QString *error = nullptr, Pictures *pictures = nullptr,
 					  int *format = nullptr);
 }
 

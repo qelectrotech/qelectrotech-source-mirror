@@ -211,7 +211,7 @@ class Diagram : public QGraphicsScene
 				 bool = true,
 				 DiagramContent * = nullptr);
 			/// false while this folio's items wait in its XML to be
-			/// built (QET_LAZY_FOLIOS, LAZY-FOLIO-PLAN.md)
+			/// built (QET_LAZY_FOLIOS)
 		bool isLoaded() const {return m_deferred.isNull();}
 		QDomElement deferredXml() const {return m_deferred;}
 		QString headerXml();

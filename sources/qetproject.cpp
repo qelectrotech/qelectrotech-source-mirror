@@ -279,6 +279,20 @@ QUuid QETProject::uuid() const
 }
 
 /**
+	@brief QETProject::containerPicture
+	The folio pictures of a .qetz are kept as bytes beside the document,
+	not as base64 text in it (QetContainer::join()), for as long as the
+	project is open: a folio built after opening still finds its pictures.
+	They cost almost no memory, sharing their bytes with the pictures
+	built from them.
+	@return the picture in @p file, or an empty array when there is none
+*/
+QByteArray QETProject::containerPicture(const QString &file) const
+{
+	return m_container_pictures.value(file);
+}
+
+/**
 	@brief QETProject::derivedItemUuid
 	A uuid for an item of this project that was saved without one, the same
 	on every load of the same file.
@@ -457,9 +471,11 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// of a .qetz alike.
 	QString read_error;
 	int container_format = 0;
-	if (!QetContainer::readDocument(content, &xml_project, &read_error, &container_format))
+	if (!QetContainer::readDocument(content, &xml_project, &read_error, &m_container_pictures,
+									&container_format))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
+		m_container_pictures.clear();
 		if(opened_here) {
 			file->close();
 		}
@@ -552,7 +568,7 @@ QETProject::ProjectState QETProject::state() const
 QList<Diagram *> QETProject::diagrams() const
 {
 		//Every caller of diagrams() expects every folio built: those that
-		//do not are moved to folios() one by one (LAZY-FOLIO-PLAN.md)
+		//do not are moved to folios() one by one
 	loadFolios();
 	return(m_diagrams_list);
 }
@@ -2299,8 +2315,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios)
 		loadFolios();
 	}
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
-		//information, folio title blocks and wire properties
-		//(DB-ACCESSORS-PLAN.md) agree with every placed symbol, folio and
+		//information, folio title blocks and wire properties agree with every placed symbol, folio and
 		//wire, at each save. A test and debugging aid; it changes nothing.
 	if (qEnvironmentVariableIntValue("QET_CHECK_ELEMENT_INFO_STORE") == 1) {
 		const QStringList mismatches = m_data_base.elementInformationMismatches();
@@ -3023,8 +3038,21 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 		//The stores of symbol information, folio title blocks and wire
 		//properties are filled from the document before the folios are
-		//built (DB-ACCESSORS-PLAN.md stage 4.6)
+		//built
 	m_data_base.prefillFromDocument(xml_project);
+
+		//QET_LAZY_FOLIOS leaves the folios to be built when needed only
+		//when the database can be filled from the document: otherwise
+		//filling it from the folios builds every one of them anyway, late
+		//and more slowly than reading them now
+	m_lazy_open = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
+	if (m_lazy_open) {
+		const QString why = projectDataBase::documentRefusal(xml_project);
+		if (!why.isEmpty()) {
+			qInfo().noquote() << "Project opened with every folio built:" << why;
+			m_lazy_open = false;
+		}
+	}
 
 		//Load the diagrams
 	readDiagramsXml(xml_project);
@@ -3065,7 +3093,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//number can hold what a save rewrites (tst_freetextnonfinite,
 		//tst_foliofreezeflags): only with QET_LAZY_SAVE_KEPT=1, until a
 		//.qetz, whose manifest names its writer, does it
-		//(QETZ-DB-TRUTH-PLAN.md D4)
 	m_kept_folios_trusted = qEnvironmentVariableIntValue("QET_LAZY_SAVE_KEPT") == 1
 			&& unloadedFolioCount() > 0
 			&& m_project_qet_version == QetVersion::currentVersion()
@@ -3142,7 +3169,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		//Where each line of the file starts, for a folio's text: lines
 		//[its start, the next element's start) (QETProject::toXml())
 	QList<qsizetype> line_starts;
-	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1 && !m_opened_content.isEmpty()) {
+	if (m_lazy_open && !m_opened_content.isEmpty()) {
 		line_starts << 0;
 		for (qsizetype i = 0 ; i < m_opened_content.size() ; ++i)
 			if (m_opened_content.at(i) == '\n') line_starts << i + 1;
@@ -3189,7 +3216,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
-			m_deferring_folios = qEnvironmentVariableIntValue("QET_LAZY_FOLIOS") == 1;
+			m_deferring_folios = m_lazy_open;
 			diagram->initFromXml(diagram_xml_element);
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())

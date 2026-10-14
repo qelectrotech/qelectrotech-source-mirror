@@ -253,6 +253,58 @@ void projectDataBase::updateDB(const QDomDocument &document)
 	updateDB();
 }
 
+/**
+	@brief projectDataBase::documentRefusal
+	@return why populateFromDocument() will refuse @p document, for the
+	reasons it gives that the document alone can tell -- a folio, symbol
+	or wire with no saved uuid, two symbols sharing one, a folio number
+	using %autonum -- or an empty string. The other reasons need the
+	project's definitions or every folio's links; a document refused for
+	one of those is still filled from the folios, only later.
+*/
+QString projectDataBase::documentRefusal(const QDomDocument &document)
+{
+	if (qEnvironmentVariableIntValue("QET_DATABASE_FROM_FOLIOS") == 1) {
+		return QStringLiteral("QET_DATABASE_FROM_FOLIOS is set");
+	}
+	QSet<QUuid> element_uuids;
+	const QDomNodeList diagram_nodes = document.elementsByTagName(QStringLiteral("diagram"));
+	for (int i = 0 ; i < diagram_nodes.size() ; ++i)
+	{
+		QDomElement diagram_xml = diagram_nodes.at(i).toElement();
+		if (QUuid(diagram_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+			return QStringLiteral("a folio has no saved uuid");
+		}
+		if (diagram_xml.attribute(QStringLiteral("folio")).contains(QStringLiteral("%autonum"))) {
+			return QStringLiteral("a folio number uses %autonum");
+		}
+		for (QDomElement element_xml : QET::findInDomElement(
+				 diagram_xml, QStringLiteral("elements"), QStringLiteral("element")))
+		{
+				//Skipped by Diagram::fromXml() as well
+			if (!Element::valideXml(element_xml)) {
+				continue;
+			}
+			const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+			if (uuid.isNull() || element_uuids.contains(uuid)) {
+				return QStringLiteral("an element has no saved uuid, or shares one");
+			}
+			element_uuids.insert(uuid);
+		}
+		for (QDomElement conductor_xml : QET::findInDomElement(
+				 diagram_xml, QStringLiteral("conductors"), QStringLiteral("conductor")))
+		{
+			if (Conductor::valideXml(conductor_xml)
+				&& (QUuid(conductor_xml.attribute(QStringLiteral("uuid"))).isNull()
+					|| !conductor_xml.hasAttribute(QStringLiteral("element1"))
+					|| !conductor_xml.hasAttribute(QStringLiteral("element2")))) {
+				return QStringLiteral("a conductor has no saved uuid, or names its ends the older way");
+			}
+		}
+	}
+	return QString();
+}
+
 namespace {
 struct DocumentTerminal
 {
@@ -2445,7 +2497,7 @@ void projectDataBase::populateElementTable()
 /**
 	@brief projectDataBase::populateElementInfoTable
 	Populate the element info table from the symbol information store
-	(DB-ACCESSORS-PLAN.md stage 4.3), in the order of the element table.
+	in the order of the element table.
 	The label column is the label a symbol shows, which its folio's
 	numbering decides: the symbol holding the uuid gives it.
 

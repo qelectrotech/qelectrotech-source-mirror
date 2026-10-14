@@ -340,8 +340,8 @@ private slots:
 		return QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
 	}
 
-	// The stores of symbol information and folio title blocks
-	// (DB-ACCESSORS-PLAN.md stages 4.1, 4.4) agree with every placed symbol
+	// The stores of symbol information and folio title blocks agree with
+	// every placed symbol
 	// and folio once a project is open: every example.
 	void elementInfoStoreAgrees_data()
 	{
@@ -361,7 +361,7 @@ private slots:
 	}
 
 	// The stores filled from the document before the folios are built
-	// (DB-ACCESSORS-PLAN.md stage 4.6) hold what building them gives, for a
+	// hold what building them gives, for a
 	// project saved by this version (every symbol, folio and wire carries
 	// a uuid): nothing differs, nothing is left unplaced.
 	void storesFilledBeforeBuilding()

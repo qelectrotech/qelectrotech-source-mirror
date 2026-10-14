@@ -156,15 +156,20 @@ bool QetContainer::isZip(const QByteArray &content)
 	.qetz, parsed for a .qet. @p format, if any: the .qetz's format, 0
 	for a .qet.
 */
-bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document, QString *error,
-								int *format)
+bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document,
+								QString *error, Pictures *pictures, int *format)
 {
 	if (format) *format = 0;
 	if (!isZip(content))
 		return parse(content, document, error);
 	QList<QetZip::Entry> entries;
 	return QetZip::fromBytes(content, &entries, error)
-			&& join(entries, document, error, format);
+			&& join(entries, document, error, pictures, format);
+}
+
+QString QetContainer::pictureFile(const QDomElement &image)
+{
+	return image.attribute(ImageFileAttribute);
 }
 
 /**
@@ -267,11 +272,13 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	Refused, with @p error set: not a .qetz, made for a later QElectroTech
 	(the manifest's min-reader), or a part missing or unreadable. Entries
 	nothing names are ignored, so a later format may add some.
+	With @p pictures, the pictures stay out of the document: see the
+	namespace.
 	@p format, if any: the format the file says it is, above Format for a
 	later one this may read (its min-reader allows it)
 */
 bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
-						int *format)
+						Pictures *pictures, int *format)
 {
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
@@ -318,7 +325,8 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 		part.parentNode().replaceChild(project->importNode(document.documentElement(), true), part);
 	}
 
-		//Pictures back to base64, as the image's first child
+		//Pictures back to base64, as the image's first child, or into
+		//pictures
 	const QDomNodeList images = project->elementsByTagName(QStringLiteral("image"));
 	for (int i = 0 ; i < images.size() ; ++i)
 	{
@@ -328,6 +336,10 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 		if (!files.contains(file)) {
 			setError(error, QStringLiteral("picture \"%1\" is missing").arg(file));
 			return false;
+		}
+		if (pictures) {
+			pictures->insert(file, files.value(file));
+			continue;
 		}
 		image.removeAttribute(ImageFileAttribute);
 		image.insertBefore(project->createTextNode(QString::fromLatin1(files.value(file).toBase64())),
