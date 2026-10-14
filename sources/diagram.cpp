@@ -53,6 +53,8 @@
 #include "foliogrid.h"
 #include <QGraphicsView>
 #include <QTextStream>
+#include <QThreadPool>
+#include <QtConcurrentMap>
 #include <algorithm>
 #include <climits>
 #include <cassert>
@@ -2006,16 +2008,37 @@ bool Diagram::fromXml(QDomElement &document,
 	}
 
 		// Load image
-	QList<DiagramImageItem *> added_images;
-	for (auto image_xml : QET::findInDomElement(root,
-												QStringLiteral("images"),
-												QStringLiteral("image"))) {
-		DiagramImageItem *dii = new DiagramImageItem ();
+		// Decoding is most of the time of a folio with photos (a quarter of
+		// a second each), so the pictures are decoded first, in parallel,
+		// and the items built afterwards in this thread.
+	const QList<QDomElement> images_xml = QET::findInDomElement(
+				root, QStringLiteral("images"), QStringLiteral("image"));
+	QList<DiagramImageItem::Picture> pictures;
+	pictures.reserve(images_xml.size());
+	for (const QDomElement &image_xml : images_xml) {
 		const QString picture_file = QetContainer::pictureFile(image_xml);
-		if (!picture_file.isEmpty() && project())
-			dii -> fromXml(image_xml, project() -> containerPicture(picture_file));
-		else
-			dii -> fromXml(image_xml);
+		pictures << DiagramImageItem::pictureOf(
+						image_xml,
+						!picture_file.isEmpty() && project()
+						? project() -> containerPicture(picture_file)
+						: QByteArray());
+	}
+	if (pictures.size() > 1) {
+		QThreadPool pool;
+		pool.setMaxThreadCount(std::min<int>(QThread::idealThreadCount(),
+											 pictures.size()));
+		QtConcurrent::blockingMap(&pool, pictures,
+								  &DiagramImageItem::decodePicture);
+	} else {
+		for (DiagramImageItem::Picture &picture : pictures)
+			DiagramImageItem::decodePicture(picture);
+	}
+
+	QList<DiagramImageItem *> added_images;
+	for (qsizetype i = 0 ; i < images_xml.size() ; ++i) {
+		const QDomElement &image_xml = images_xml.at(i);
+		DiagramImageItem *dii = new DiagramImageItem ();
+		dii -> fromXml(image_xml, std::move(pictures[i]));
 		settle_uuid(dii, image_xml, QStringLiteral("image"), added_images.size());
 		ItemGroups::setGroup(dii, ItemGroups::read(image_xml));
 		addItem(dii);
