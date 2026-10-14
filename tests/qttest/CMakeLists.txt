@@ -275,6 +275,15 @@ qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 # pixels and position; an <image> with no picture does not stop the others.
 qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
 
+# SVG export with smaller pictures (--svg-small-pictures, the export dialog's
+# option): a picture drawn at a tenth of its size is stored at four times
+# that, a small one whole; without the option every picture is whole.
+qet_add_app_test(tst_svgsmallpictures tst_svgsmallpictures.cpp)
+add_dependencies(tst_svgsmallpictures qelectrotech)
+target_link_libraries(tst_svgsmallpictures PRIVATE Qt::Svg)
+target_compile_definitions(tst_svgsmallpictures PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # TextResizeHandles: the corner handles that change the width of a text box,
 # on a plain QGraphicsTextItem with the "textWidth" property QET texts have.
 add_executable(

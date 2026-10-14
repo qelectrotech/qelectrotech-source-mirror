@@ -1,0 +1,41 @@
+<project title="A large picture shown small" uuid="{3f6a2c91-8d47-4b5e-a0c3-91e2d7b4f600}" version="0.200.1">
+    <properties>
+        <property name="saveddate" show="1">10/2/26</property>
+        <property name="saveddate-eu" show="1">02-10-2026</property>
+        <property name="saveddate-us" show="1">2026-10-02</property>
+        <property name="savedfilename" show="1">svg_small_pictures</property>
+        <property name="savedtime" show="1">18:39</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" colsize="60" displaycols="true" displayrows="true" rows="8" rowsize="80"/>
+        <inset author="" auto_page_num="" date="null" displayAt="bottom" filename="" folio="" indexrev="" locmach="" plant="" title="" version=""/>
+        <conductors bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="coil" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="commutator" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="plc" xrefpos="AlignBottom"/>
+            <xref delayprefix="" displayhas="cross" master_label="%f-%l%c" offset="0" powerprefix="" showallconfiguredslaves="false" showpowerctc="true" showterminalname="true" slave_label="(%f-%l%c)" slave_offset="0" snapto="label" switchprefix="" type="protection" xrefpos="AlignBottom"/>
+        </xrefs>
+        <conductors_autonums auto_break_conductors="false" current_autonum="" freeze_new_conductors="false"/>
+        <folio_autonums/>
+        <element_autonums current_autonum="" freeze_new_elements="false"/>
+        <guides/>
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="null" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="" uuid="{3f6a2c91-8d47-4b5e-a0c3-91e2d7b4f610}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="1" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="_" numsize="7" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270"/>
+        <inputs/>
+        <images>
+            <image z="0" rotation="0" y="100" x="100" size="0.1" is_movable="1">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</image>
+            <image z="0" rotation="0" y="300" x="100" size="1" is_movable="1">iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAIAAADRv8uKAAAAP0lEQVR42u3PMQoAIAwEwRVC1F/7dFuxFoKwqS7XHNNgJSR0OMP1Pu+DQckFs2pYsWLFihUrVqxYsWLFir8Rb7mhAuQBqxaIAAAAAElFTkSuQmCC</image>
+        </images>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="en">Imported elements</name>
+            </names>
+        </category>
+    </collection>
+</project>
