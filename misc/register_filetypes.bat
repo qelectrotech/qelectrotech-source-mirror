@@ -69,6 +69,10 @@ set reg_file=qet_install_file_associations.reg
 	echo [HKEY_CURRENT_USER\Software\Classes\qet_diagram_file\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 	
+	rem *.qetz (zipped project): the same file type as *.qet
+	echo [HKEY_CURRENT_USER\Software\Classes\.qetz]
+	echo @="qet_diagram_file"
+	
 	rem association de fichier *.elmt
 	echo [HKEY_CURRENT_USER\Software\Classes\.elmt]
 	echo @="qet_element_file"

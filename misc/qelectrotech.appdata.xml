@@ -37,6 +37,12 @@
  <summary xml:lang="tr">Elektrik şeması düzenleyici</summary>
  <summary xml:lang="uk">Редактор електричних схем</summary>
  <summary xml:lang="zh">电气图编辑器</summary>
+ <provides>
+  <mediatype>application/x-qet-project</mediatype>
+  <mediatype>application/x-qet-project+zip</mediatype>
+  <mediatype>application/x-qet-element</mediatype>
+  <mediatype>application/x-qet-titleblock</mediatype>
+ </provides>
  <content_rating type="oars-1.1"/>
  <releases>
      <release version="0.100.1-dev" date="2026"/>
