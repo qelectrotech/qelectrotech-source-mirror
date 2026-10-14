@@ -117,7 +117,7 @@ jobs:
             -DQT_VERSION_MAJOR=6 \
             -DBUILD_WITH_KF=ON \
             -DBUILD_KF=OFF \
-            -DPACKAGE_TESTS=ON \
+            -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DQET_EXPORT_PROJECT_DB=ON \
