@@ -440,7 +440,9 @@ private slots:
 	// columns in the same order, same types; written without keys (format 4)
 	void specMatchesSchema()
 	{
-		const QString spec = QString::fromUtf8(read(QStringLiteral(QET_FORMAT_SPEC)));
+		// A Windows checkout may give the file CRLF line endings
+		const QString spec = QString::fromUtf8(read(QStringLiteral(QET_FORMAT_SPEC)))
+								 .remove(QLatin1Char('\r'));
 		const int from = spec.indexOf(QStringLiteral("```sql\n"));
 		const int to = spec.indexOf(QStringLiteral("```"), from + 7);
 		QVERIFY2(from >= 0 && to > from, "no schema in QETZ-FORMAT.md");
