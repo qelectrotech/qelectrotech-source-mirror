@@ -46,7 +46,7 @@ The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
 
 | Entry | Content |
 |---|---|
-| `mimetype` | `application/x-qelectrotech-project+zip`, the first entry, stored uncompressed |
+| `mimetype` | `application/x-qet-project+zip`, the first entry, stored uncompressed (files written before October 2026 say `application/x-qelectrotech-project+zip`; both are read) |
 | `manifest.xml` | `<qetz format="4" min-reader="4" writer="QElectroTech …"/>` |
 | `project.xml` | the project document, each part replaced by `<qetz-part file="…"/>` |
 | `project.sqlite` | the engineering data (section 4) |

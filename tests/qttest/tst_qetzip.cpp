@@ -17,7 +17,7 @@ class tst_qetzip : public QObject
 	static QList<QetZip::Entry> sample()
 	{
 		QList<QetZip::Entry> entries;
-		entries.append({QStringLiteral("mimetype"), QByteArray("application/x-qelectrotech-project+zip"), false});
+		entries.append({QStringLiteral("mimetype"), QByteArray("application/x-qet-project+zip"), false});
 		QByteArray xml("<project>");
 		for (int i = 0 ; i < 2000 ; ++i) xml += "<element name=\"K1\"/>";
 		xml += "</project>";
@@ -65,7 +65,7 @@ private slots:
 				QCOMPARE(out.at(i).compress, in.at(i).compress);
 		}
 		// mimetype first and stored: its bytes appear as is after the header
-		QCOMPARE(zip.indexOf("application/x-qelectrotech-project+zip"), 30 + int(qstrlen("mimetype")));
+		QCOMPARE(zip.indexOf("application/x-qet-project+zip"), 30 + int(qstrlen("mimetype")));
 	}
 
 	void sameBytesTwice()

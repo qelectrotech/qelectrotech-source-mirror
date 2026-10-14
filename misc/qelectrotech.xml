@@ -34,11 +34,13 @@
 		<comment xml:lang="zh">QElectroTech 项目文件</comment>
 		<glob pattern="*.qet" />
 	</mime-type>
-	<mime-type type="application/x-qelectrotech-project+zip">
+	<mime-type type="application/x-qet-project+zip">
+		<alias type="application/x-qelectrotech-project+zip"/>
 		<sub-class-of type="application/zip"/>
 		<comment>QElectroTech zipped project file</comment>
 		<glob pattern="*.qetz" />
 		<magic priority="60">
+			<match type="string" offset="30" value="mimetypeapplication/x-qet-project+zip"/>
 			<match type="string" offset="30" value="mimetypeapplication/x-qelectrotech-project+zip"/>
 		</magic>
 	</mime-type>

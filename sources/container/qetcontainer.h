@@ -53,6 +53,8 @@
 namespace QetContainer
 {
 	extern const char MimeType[];
+		/// The MIME type .qetz files had before it was renamed; still read
+	extern const char OldMimeType[];
 		/// Picture bytes by file name, see join()
 	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
