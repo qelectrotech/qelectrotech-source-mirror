@@ -29,9 +29,12 @@
 #include <QSet>
 #include <QUuid>
 
+#include <optional>
+
 #include "../diagramcontext.h"
 #include "../titleblockproperties.h"
 #include "../conductorproperties.h"
+#include "../autoNum/assignvariables.h"
 
 class Element;
 class QETProject;
@@ -157,7 +160,7 @@ class projectDataBase : public QObject
 			//they are, say how many of those values building agreed with.
 		void prefillFromDocument(const QDomDocument &document);
 		void endPrefill(bool keep_unplaced = false);
-			//A folio of a project opened with QET_LAZY_FOLIOS is being built:
+			//A folio of a project opened with lazy folios is being built:
 			//its rows came from the document already, so none are written
 			//and the database is not marked changed
 		void setBuildingFolio(bool building);
@@ -166,7 +169,37 @@ class projectDataBase : public QObject
 		QString prefillReport() const;
 		QSet<QUuid> foliosWithUnjoinedWires() const;
 		QSet<QUuid> folioUuidsOfElements(const QSet<QUuid> &elements) const;
+		bool canEditUnbuilt(const QUuid &element) const;
+		void editUnbuiltElementInformation(const QUuid &element, DiagramContext information);
+		std::optional<DiagramContext> takeUnbuiltEdit(const QUuid &element);
+		QSet<QUuid> foliosWithUnbuiltEdits() const;
+		QHash<QUuid, DiagramContext> unbuiltEditsOnFolio(const QUuid &folio, bool *need_build = nullptr) const;
+		bool setPlacedElementInformation(const QUuid &element, const DiagramContext &information);
+		bool unbuiltWire(const QUuid &wire, QUuid *folio = nullptr) const;
+		void editUnbuiltConductorProperties(const QUuid &wire, const ConductorProperties &properties);
+		std::optional<ConductorProperties> takeUnbuiltWireEdit(const QUuid &wire);
+		QHash<QUuid, ConductorProperties> unbuiltWireEditsOnFolio(const QUuid &folio) const;
+		bool setPlacedConductorProperties(const QUuid &wire, const ConductorProperties &properties);
 		QHash<QUuid, QString> elementTypesOnFolios(const QSet<QUuid> &folios) const;
+			/// A symbol placed on a folio, as the element table has it
+		struct FolioSymbol {
+			QUuid uuid;
+			QUuid folio;
+			QString kind;       ///< ElementData::typeToString()
+			QString location;   ///< its definition, ElementsLocation::path()
+			autonum::sequentialNumbers sequence;
+		};
+		QList<FolioSymbol> symbolsOnFolios(const QList<QUuid> &folios) const;
+		QList<QUuid> linkedSymbols(const QUuid &element) const;
+			/// A wire placed on a folio: its text and the kinds of the
+			/// symbols at its ends (ElementData::typeToString())
+		struct FolioWire { QString text; QString kind1; QString kind2; };
+		QList<FolioWire> wiresOnFolios(const QList<QUuid> &folios) const;
+		QString elementLabel(const QUuid &element) const;
+		QString terminalName(const QUuid &terminal, const QUuid &element) const;
+		std::optional<QSet<QUuid>> potentialWires(const QUuid &wire) const;
+		static QVariant sequenceValue(const autonum::sequentialNumbers &sequence);
+		static autonum::sequentialNumbers sequenceFromValue(const QVariant &value);
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -303,6 +336,14 @@ class projectDataBase : public QObject
 			//briefly gives a copy its original's uuid, so one uuid can have
 			//two symbols until the copy's is renewed.
 		QMultiHash<QUuid, QPointer<Element>> m_placed_elements;
+			/// Information changed through the store for symbols on folios
+			/// not built (editUnbuiltElementInformation()), with the folio
+			/// each is on: building the symbol takes it (takeUnbuiltEdit())
+		struct UnbuiltEdit { DiagramContext information; QUuid folio; bool had_information; };
+		QHash<QUuid, UnbuiltEdit> m_unbuilt_edits;
+			/// The same for wires (editUnbuiltConductorProperties())
+		struct UnbuiltWireEdit { ConductorProperties properties; QUuid folio; };
+		QHash<QUuid, UnbuiltWireEdit> m_unbuilt_wire_edits;
 		QHash<QUuid, TitleBlockProperties> m_folio_titleblocks;
 		QHash<QUuid, QPointer<Diagram>> m_placed_folios;
 		QHash<QUuid, ConductorProperties> m_conductor_properties;
@@ -314,7 +355,7 @@ class projectDataBase : public QObject
 			//The folios whose rows a rebuild keeps (keepUnbuiltFolioRows())
 		QSet<Diagram *> m_kept_folios;
 			//The tables' rows were filled from the document: those of a
-			//folio not built yet are right (QET_LAZY_FOLIOS)
+			//folio not built yet are right (lazy folios)
 		bool m_rows_from_document = false;
 		void keepUnbuiltFolioRows();
 		void restoreKeptRows(const QString &table, Diagram *folio, const QString &where);

@@ -8,6 +8,10 @@
 #include <QRegularExpression>
 #include <QTemporaryDir>
 
+#include "container/qetzip.h"
+
+#include <sqlite3.h>
+
 // Saving a project that was just saved must change nothing. Two things
 // made the second save differ from the first, both cleanup done on save
 // but not on load:
@@ -306,6 +310,10 @@ private slots:
 		QVERIFY2(!zipped.isEmpty(), "--resave as .qetz failed");
 		QVERIFY2(read(zipped).startsWith("PK\x03\x04"), "the .qetz is not a zip");
 		QVERIFY2(read(zipped).size() < read(straight).size() / 2, "the .qetz is not smaller");
+		QCOMPARE(databaseTables(zipped), QStringList({
+			"conductor", "element", "element_info", "folio", "folio_property", "link", "meta",
+			"project_property", "strip_bridge", "strip_bridge_terminal", "strip_terminal",
+			"terminal_strip"}));
 		const QString back = resave(zipped);
 		QVERIFY2(!back.isEmpty(), "opening the .qetz failed");
 
@@ -315,6 +323,31 @@ private slots:
 			return QString::fromUtf8(xml).remove(stamp);
 		};
 		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
+	}
+
+	// The tables of the database in the .qetz @p path: the document's
+	// engineering data only, each fact once -- not QElectroTech's own
+	// project database, built from it when the project opens
+	static QStringList databaseTables(const QString &path)
+	{
+		QList<QetZip::Entry> entries;
+		if (!QetZip::fromBytes(read(path), &entries)) return {QStringLiteral("not a zip")};
+		QByteArray database;
+		for (const QetZip::Entry &entry : std::as_const(entries))
+			if (entry.name == QLatin1String("project.sqlite")) database = entry.data;
+		sqlite3 *db = nullptr;
+		sqlite3_open(":memory:", &db);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+		memcpy(copy, database.constData(), size_t(database.size()));
+		sqlite3_deserialize(db, "main", copy, database.size(), database.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		sqlite3_stmt *list = nullptr;
+		QStringList tables;
+		sqlite3_prepare_v2(db, "SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			tables << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)));
+		sqlite3_finalize(list);
+		sqlite3_close(db);
+		return tables;
 	}
 
 	// QElectroTech run in a sandbox of its own with @p args, the store
@@ -328,7 +361,7 @@ private slots:
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
 		env.insert(QStringLiteral("QET_CHECK_ELEMENT_INFO_STORE"), QStringLiteral("1"));
 		if (eager) {
-			env.remove(QStringLiteral("QET_LAZY_FOLIOS")); //every folio built on opening
+			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
@@ -479,6 +512,40 @@ private slots:
 		QCOMPARE(rowsOf(edited), rowsOf(reopened));
 	}
 
+	// A project read from a .qet and saved where it is, is saved as a .qetz
+	// beside it, and the .qet is left as it was (stage D1).
+	// What the .qetz holds is what a plain save of the .qet holds.
+	void qetSavedAsQetzBeside()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString qet = m_dir.filePath(QStringLiteral("beside.qet"));
+		QFile::remove(qet);
+		QVERIFY(QFile::copy(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), qet));
+		const QByteArray before = read(qet);
+		const QString script = m_dir.filePath(QStringLiteral("beside.js"));
+		QFile js(script);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write("qet.log('SAVED ' + qet.save(''));\n");
+		js.close();
+		const QString log = runChecked({QStringLiteral("--run"), script, qet});
+		QVERIFY2(log.contains(QStringLiteral("SAVED true")), qPrintable(log.right(400)));
+
+		QCOMPARE(read(qet), before);
+		const QString qetz = m_dir.filePath(QStringLiteral("beside.qetz"));
+		QVERIFY2(read(qetz).startsWith("PK\x03\x04"), "no .qetz beside the .qet");
+
+		auto without_save_stamps = [](QByteArray xml) {
+			static const QRegularExpression stamp(QStringLiteral(
+				"\\s*<property [^>]*name=\"saved(filename|filepath|filenamedir|date|date-us|date-eu|time)\"[^>]*>[^<]*</property>"));
+			return QString::fromUtf8(xml).remove(stamp);
+		};
+		const QString straight = resave(qet);
+		const QString back = resave(qetz);
+		QVERIFY(!straight.isEmpty() && !back.isEmpty());
+		QCOMPARE(without_save_stamps(read(back)), without_save_stamps(read(straight)));
+	}
 
 	// A title-block value that is a single space is kept through two saves
 	// (#973), and a value with accents comes back as it went in.

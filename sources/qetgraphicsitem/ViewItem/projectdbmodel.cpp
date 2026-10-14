@@ -323,7 +323,7 @@ void ProjectDBModel::setIdentifier(const QString &identifier) {
 
 /**
 	@brief ProjectDBModel::folioBuilt
-	The folio of a table made while it was being built (QET_LAZY_FOLIOS)
+	The folio of a table made while it was being built (lazy folios)
 	is built: read the database, as opening does once it has filled it.
 	Nothing for any other model.
 */
@@ -391,7 +391,7 @@ void ProjectDBModel::fillValue()
 {
 	m_record.clear();
 		//Opening builds a table before the database is filled, and fills
-		//it after: a table on a folio built late (QET_LAZY_FOLIOS) does
+		//it after: a table on a folio built late (lazy folios) does
 		//the same, so that it is laid out as it would have been on
 		//opening -- empty until its folio is built (folioBuilt())
 	if (m_fill_when_built) {

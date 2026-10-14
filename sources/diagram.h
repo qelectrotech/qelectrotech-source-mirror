@@ -143,6 +143,12 @@ class Diagram : public QGraphicsScene
 		QUuid m_uuid = QUuid::createUuid();
 			/// The XML of this folio's items, while they are not built yet
 		QDomElement m_deferred;
+		QString m_kept_part;
+		QHash<QUuid, Element *> m_partial_elements;
+		QHash<int, Terminal *> m_partial_table;
+		bool m_partial_changed = false;
+		Element *buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
+							  bool consider_informations);
 		QString m_opened_header;
 		QByteArray m_kept_text;
 		bool m_loading_deferred = false;
@@ -212,9 +218,20 @@ class Diagram : public QGraphicsScene
 				 bool = true,
 				 DiagramContent * = nullptr);
 			/// false while this folio's items wait in its XML to be
-			/// built (QET_LAZY_FOLIOS)
+			/// built (lazy folios)
 		bool isLoaded() const {return m_deferred.isNull();}
 		QDomElement deferredXml() const {return m_deferred;}
+			/// The part @p file of the .qetz the project was opened from
+			/// holds this folio as it is while not built: saving may copy it
+			/// (QETProject::toXml(), stage D4)
+		void setKeptPart(const QString &file) {m_kept_part = file;}
+		QString keptPart() const {return m_kept_part;}
+		QList<Element *> buildSymbols(const QSet<QUuid> &uuids);
+			/// Symbols built as partners (buildSymbols()) changed since:
+			/// the folio must be built to be saved
+		bool partialChanged() const {return m_partial_changed;}
+			/// The symbols built as partners (buildSymbols()), by uuid
+		QHash<QUuid, Element *> partialElements() const {return m_partial_elements;}
 		QString headerXml();
 			/// The folio's text in the file it was read from, while it is
 			/// not built (QETProject::toXml())
@@ -224,6 +241,8 @@ class Diagram : public QGraphicsScene
 			/// headerChanged() (QETProject::toXml())
 		void rememberHeader() {m_opened_header = headerXml();}
 		bool headerChanged() {return headerXml() != m_opened_header;}
+		bool headerChangeShowsOnly();
+		QDomElement deferredXmlWithHeader(QDomDocument &document);
 		void ensureLoaded();
 		bool buildDeferred();
 			//The last argument is only for a copy fragment: when it is

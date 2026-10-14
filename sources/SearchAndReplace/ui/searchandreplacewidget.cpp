@@ -307,7 +307,7 @@ void SearchAndReplaceWidget::fillItemsList()
 
 	m_indi_text_qtwi->sortChildren(0, Qt::AscendingOrder);
 
-	for (Conductor *c : dc.m_potential_conductors)
+	for (Conductor *c : dc.potentialConductors())
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_conductor_qtwi);
 		qtwi->setText(0, c->properties().text);

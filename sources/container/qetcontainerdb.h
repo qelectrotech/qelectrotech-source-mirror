@@ -39,8 +39,11 @@
 */
 namespace QetContainerDb
 {
-	QByteArray extract(QDomElement project, QString *error = nullptr);
+	QByteArray extract(QDomElement project, QString *error = nullptr,
+					   const QByteArray &kept_from = QByteArray());
 	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr);
+		/// true if @p database is of the format this writes
+	bool currentFormat(const QByteArray &database);
 }
 
 #endif // QETCONTAINERDB_H

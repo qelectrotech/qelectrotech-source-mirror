@@ -21,8 +21,11 @@
 #include "../diagramcontext.h"
 
 #include <QUndoCommand>
+#include <QUuid>
+#include <QPointer>
 
 class Element;
+class QETProject;
 
 /**
 	@brief The ChangeElementInformationCommand class
@@ -50,6 +53,28 @@ class ChangeElementInformationCommand : public QUndoCommand
 
 	private:
 		QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> m_map;
+};
+
+/**
+	@brief The ChangeStoredElementInformationCommand class
+	Change the information of a symbol given by its uuid, built or not
+	(lazy folios): through the symbol when it is built, through the
+	project database when it is not (projectDataBase::canEditUnbuilt()).
+*/
+class ChangeStoredElementInformationCommand : public QUndoCommand
+{
+	public:
+		ChangeStoredElementInformationCommand(QETProject *project, const QUuid &element,
+											  const DiagramContext &old_info,
+											  const DiagramContext &new_info,
+											  QUndoCommand *parent = nullptr);
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<QETProject> m_project;
+		QUuid m_element;
+		DiagramContext m_old_info, m_new_info;
 };
 
 #endif // CHANGEELEMENTINFORMATIONCOMMAND_H

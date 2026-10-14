@@ -69,6 +69,19 @@ class tst_qetcontainer : public QObject
 		return QetContainer::split(*original, QStringLiteral("tst_qetcontainer"), &error);
 	}
 
+		//@p document without what QElectroTech computes, which a .qetz
+		//does not keep (format 4); tst_resaveunchanged checks that
+		//QElectroTech gives it back
+	static QDomDocument withoutComputed(const QDomDocument &document)
+	{
+		QDomDocument copy = document.cloneNode(true).toDocument();
+		const bool own_uuids = QetContainer::ownUuids(copy.documentElement());
+		for (QDomElement diagram = copy.documentElement().firstChildElement(QStringLiteral("diagram"));
+			 !diagram.isNull() ; diagram = diagram.nextSiblingElement(QStringLiteral("diagram")))
+			QetContainer::dropComputed(diagram, own_uuids);
+		return copy;
+	}
+
 	static QByteArray entry(const QList<QetZip::Entry> &entries, const QString &name)
 	{
 		for (const QetZip::Entry &e : entries)
@@ -117,7 +130,7 @@ class tst_qetcontainer : public QObject
 		QDomDocument back;
 		QString error;
 		if (!QetContainer::join(entries, &back, &error)) return error;
-		return difference(original.documentElement(), back.documentElement(), QString());
+		return difference(withoutComputed(original).documentElement(), back.documentElement(), QString());
 	}
 
 private slots:
@@ -151,7 +164,8 @@ private slots:
 		QVERIFY2(QetZip::fromBytes(QetZip::toBytes(entries, &error), &unzipped, &error), qPrintable(error));
 		QDomDocument back;
 		QVERIFY2(QetContainer::join(unzipped, &back, &error), qPrintable(error));
-		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		const QString d = difference(withoutComputed(original).documentElement(),
+									 back.documentElement(), QString());
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
@@ -187,7 +201,9 @@ private slots:
 
 	// The engineering data is in project.sqlite and nowhere else: the folio
 	// files hold no symbol information, links, wire numbers or title-block
-	// fields, and the database holds them all (industrial.qet: 50 folios).
+	// fields, nor what QElectroTech computes from them (a wire's
+	// description of its ends, a symbol text showing its information), and
+	// the database holds them all (industrial.qet: 50 folios).
 	void databaseHoldsTheData()
 	{
 		QDomDocument original;
@@ -232,6 +248,37 @@ private slots:
 		sqlite3_close(db);
 	}
 
+	// Nor does a folio file hold what QElectroTech computes (format 3): a
+	// wire's description of its ends, a symbol text showing its information.
+	// A file holding both, so that the check can fail.
+	void computedNotKept()
+	{
+		QDomDocument original;
+		QString error;
+		QVERIFY(QetContainer::parse(read(QStringLiteral(QET_EXAMPLES_DIR "/schema_unifilaire_voltaique2.qet")),
+									&original, &error));
+		const QDomNodeList texts = original.elementsByTagName(QStringLiteral("dynamic_elmt_text"));
+		bool filled = false;
+		for (int i = 0 ; i < texts.size() && !filled ; ++i) {
+			QDomElement text = texts.at(i).toElement();
+			if (text.attribute(QStringLiteral("text_from")) != QLatin1String("ElementInfo")) continue;
+			QDomElement content = text.firstChildElement(QStringLiteral("text"));
+			while (content.hasChildNodes()) content.removeChild(content.firstChild());
+			content.appendChild(original.createTextNode(QStringLiteral("COMPUTED-LABEL")));
+			filled = true;
+		}
+		QVERIFY(filled);
+		QVERIFY(original.toString().contains(QStringLiteral("element1_label=")));
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		for (const QetZip::Entry &e : entries) {
+			if (!e.name.startsWith(QStringLiteral("folios/"))) continue;
+			QVERIFY2(!e.data.contains("element1_label=") && !e.data.contains("terminalname2="),
+					 qPrintable(e.name));
+			QVERIFY2(!e.data.contains("COMPUTED-LABEL"), qPrintable(e.name));
+		}
+	}
+
 	// Terminal strips move into the database, and come back exactly:
 	// industrial.qet with two strips on its own terminal symbols, parsed as
 	// a save leaves it (no whitespace text).
@@ -268,7 +315,8 @@ private slots:
 				QVERIFY2(!e.data.contains("<terminal_strip>"), "the strips stayed in project.xml");
 		QDomDocument back;
 		QVERIFY2(QetContainer::join(entries, &back, &error), qPrintable(error));
-		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		const QString d = difference(withoutComputed(original).documentElement(),
+									 back.documentElement(), QString());
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
@@ -307,7 +355,7 @@ private slots:
 		QDomDocument back;
 		QetContainer::Pictures pictures;
 		QString error;
-		QVERIFY2(QetContainer::join(entries, &back, &error, &pictures), qPrintable(error));
+		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, &pictures), qPrintable(error));
 		const QDomNodeList images = back.elementsByTagName(QStringLiteral("image"));
 		const QDomNodeList original_images = original.elementsByTagName(QStringLiteral("image"));
 		QCOMPARE(images.size(), 121);
@@ -326,7 +374,7 @@ private slots:
 		for (int i = 0 ; i < entries.size() ; ++i)
 			if (entries.at(i).name.startsWith(QStringLiteral("images/"))) { entries.removeAt(i); break; }
 		QDomDocument broken;
-		QVERIFY(!QetContainer::join(entries, &broken, &error, &pictures));
+		QVERIFY(!QetContainer::join(entries, &broken, &error, nullptr, &pictures));
 		QVERIFY2(error.contains(QStringLiteral("missing")), qPrintable(error));
 	}
 
@@ -348,9 +396,9 @@ private slots:
 		QDomDocument back;
 		QString error;
 		int format = 0;
-		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, &format), qPrintable(error));
+		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, nullptr, &format), qPrintable(error));
 		QCOMPARE(format, later);
-		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		const QString d = difference(withoutComputed(original).documentElement(), back.documentElement(), QString());
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
@@ -389,7 +437,7 @@ private slots:
 	}
 
 	// The schema in QETZ-FORMAT.md is the one written: same tables, same
-	// columns in the same order, same types and keys
+	// columns in the same order, same types; written without keys (format 4)
 	void specMatchesSchema()
 	{
 		const QString spec = QString::fromUtf8(read(QStringLiteral(QET_FORMAT_SPEC)));
@@ -402,15 +450,15 @@ private slots:
 		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
 		const QByteArray written = entry(entries, QStringLiteral("project.sqlite"));
 
-		auto describe = [](sqlite3 *db) {
+		auto describe = [](sqlite3 *db, const char *columns = "m.name, p.name, p.type") {
 			QStringList out;
 			sqlite3_stmt *st = nullptr;
-			sqlite3_prepare_v2(db, "SELECT m.name, p.name, p.type, p.pk, p.\"notnull\" FROM sqlite_master m, "
+			sqlite3_prepare_v2(db, QByteArray("SELECT ") + columns + " FROM sqlite_master m, "
 									"pragma_table_info(m.name) p WHERE m.type = 'table' ORDER BY m.name, p.cid",
 							   -1, &st, nullptr);
 			while (st && sqlite3_step(st) == SQLITE_ROW) {
 				QStringList row;
-				for (int i = 0 ; i < 5 ; ++i)
+				for (int i = 0 ; i < sqlite3_column_count(st) ; ++i)
 					row << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(st, i)));
 				out << row.join(QLatin1Char(' '));
 			}
@@ -426,6 +474,9 @@ private slots:
 		memcpy(copy, written.constData(), size_t(written.size()));
 		sqlite3_deserialize(from_file, "main", copy, written.size(), written.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
 		const QStringList spec_tables = describe(from_spec), file_tables = describe(from_file);
+		const QStringList keys = describe(from_file, "p.pk + p.\"notnull\"");
+		QVERIFY(!keys.isEmpty());
+		QCOMPARE(keys.count(QStringLiteral("0")), keys.size());
 		sqlite3_close(from_spec);
 		sqlite3_close(from_file);
 		QVERIFY(!spec_tables.isEmpty());
@@ -461,6 +512,25 @@ private slots:
 
 	// A crafted project.sqlite whose "element" is a view, not a table, is
 	// refused: nothing in a file's schema is trusted.
+	void garbageDatabaseRefused()
+	{
+			//Bytes that are no database: refused, not read (crashed reading
+			//the first statement until stage D7)
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet"), &original);
+		bool replaced = false;
+		for (QetZip::Entry &entry : entries)
+			if (entry.name == QLatin1String("project.sqlite")) {
+				entry.data = QByteArray("not a database").repeated(100);
+				replaced = true;
+			}
+		QVERIFY(replaced);
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY(!error.isEmpty());
+	}
+
 	// project.sqlite changed by @p sql in @p entries
 	static void alterDatabase(QList<QetZip::Entry> &entries, const char *sql)
 	{
@@ -491,6 +561,9 @@ private slots:
 		QTest::newRow("symbol row of no symbol")
 				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_attrs,"
 							  " links_attrs FROM element LIMIT 1")
+				<< QStringLiteral("symbol rows");
+		QTest::newRow("symbol row twice")
+				<< QByteArray("INSERT INTO element SELECT * FROM element LIMIT 1")
 				<< QStringLiteral("symbol rows");
 		QTest::newRow("wire row of no wire")
 				<< QByteArray("INSERT INTO conductor SELECT 'x', folio_uuid, element1, terminal1, element2, terminal2,"

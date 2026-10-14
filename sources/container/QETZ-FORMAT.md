@@ -1,8 +1,8 @@
-# The `.qetz` project file, format 3
+# The `.qetz` project file, format 4
 
 A `.qetz` is a QElectroTech project saved as a zip archive: the same project
 a `.qet` holds, split into files, with the engineering data in an SQLite
-database. This document describes format 3. `tst_qetcontainer` checks that
+database. This document describes format 4. `tst_qetcontainer` checks that
 the schema below is the one QElectroTech writes.
 
 The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
@@ -29,15 +29,25 @@ The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
   | Terminal strip | its terminals, their order and bridges | the strip drawn on a folio |
 
   Cables are kept in `project.xml` in this format.
+- **Nothing computed is kept.** What QElectroTech works out again when it
+  builds a folio is left out of the folio file: a wire's description of its
+  ends (`element1_label`, `element1_name`, `element1_linked`,
+  `terminalname1`, and the same for end 2), the text of a symbol's text
+  item when it shows the symbol's information or a composition of it, and,
+  when every folio, symbol and wire has a uuid of its own, a symbol's list
+  of its terminals.
 - **Nothing is lost.** Anything the database does not model stays in the
   XML as it was. A block is moved only if it can be rebuilt exactly.
+- **The database holds the project's data only.** QElectroTech's own
+  working database (search, numbering, cross-references) is built from it
+  when the project opens; it is not stored.
 
 ## 2. The archive
 
 | Entry | Content |
 |---|---|
 | `mimetype` | `application/x-qelectrotech-project+zip`, the first entry, stored uncompressed |
-| `manifest.xml` | `<qetz format="3" min-reader="3" writer="QElectroTech …"/>` |
+| `manifest.xml` | `<qetz format="4" min-reader="4" writer="QElectroTech …"/>` |
 | `project.xml` | the project document, each part replaced by `<qetz-part file="…"/>` |
 | `project.sqlite` | the engineering data (section 4) |
 | `folios/<uuid>.xml` | one `<diagram>` per folio, named by the folio's uuid (or its position when it has none) |
@@ -79,11 +89,18 @@ The database repeats the format in `meta` (key `format`) and in
 | Format | Written by | Reading |
 |---|---|---|
 | 2 | QElectroTech 0.200.1 development builds (#1462) | read: rows keyed by position (`f1`, `e1`, `c1`) where an item had no uuid of its own, every value as text |
-| 3 | this document | read and written |
+| 3 | #1473 | read: as format 4, but with keys and constraints on its tables, and the computed text left in the folio files |
+| 4 | this document | read and written |
 
 ## 4. The database
 
 ### 4.1 Schema
+
+The tables are written **without keys or constraints**: each has the
+columns and types below, but no `PRIMARY KEY`, `NOT NULL`, `UNIQUE` or
+`REFERENCES`. With text uuids, keys and their indexes were half the file. A
+reader builds the indexes it needs once the file is read, and checks itself
+what the keys would have (section 5).
 
 <!-- schema: tst_qetcontainer checks it against the database written -->
 ```sql
@@ -176,7 +193,7 @@ A `.qetz` is untrusted. A reader:
   plain table (a view, say);
 - refuses the file, with a message saying what is wrong, if the database
   and the folio files disagree: an item whose row is missing or on another
-  folio, an item twice, a row no item has, or information, links or
-  properties of a symbol or folio that does not exist.
+  folio, an item twice, a row no item has or a row twice, or information,
+  links or properties of a symbol or folio that does not exist.
 
 A damaged archive is caught by the zip format's own checksums.

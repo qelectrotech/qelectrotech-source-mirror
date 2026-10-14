@@ -24,11 +24,17 @@
 #include <QVariantList>
 #include <QVariantMap>
 
+#include <optional>
+
+#include "../diagramcontext.h"
+
 class QETProject;
+class Diagram;
 class DiagramView;
 class Element;
 class Terminal;
 class Conductor;
+class ConductorProperties;
 class IndependentTextItem;
 class QetShapeItem;
 class DiagramImageItem;
@@ -435,6 +441,11 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setConductorProperty(int folioIndex, const QString &elementUuid,
 											  int terminalIndex, const QString &property,
 											  const QString &value);
+			// The same, the wire named by its uuid (conductorUuids())
+		Q_INVOKABLE QString conductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+													const QString &property) const;
+		Q_INVOKABLE bool setConductorPropertyByUuid(int folioIndex, const QString &conductorUuid,
+													const QString &property, const QString &value);
 
 		// -- a conductor's own drawn path, not the whole potential's
 		// properties above -- one conductor only, addressed the same way --
@@ -642,6 +653,12 @@ class QetScriptApi : public QObject
 
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
+		Diagram *built(Diagram *folio) const;
+		Conductor *findConductorByUuid(int folioIndex, const QString &conductorUuid, const QString &caller);
+		bool applyConductorProperties(Conductor *conductor, const ConductorProperties &properties);
+		bool unbuiltConductorChange(int folioIndex, const QUuid &wire, const QString &property,
+									const QString &value, bool *refused);
+		std::optional<DiagramContext> unbuiltInformation(int folioIndex, const QString &elementUuid) const;
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);

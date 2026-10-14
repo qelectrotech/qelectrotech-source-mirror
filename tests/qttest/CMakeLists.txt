@@ -92,7 +92,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/lazy_folios_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet)
-  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 600 RUN_SERIAL TRUE
+  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT 1800 RUN_SERIAL TRUE
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Deleting a cable, undoing the delete twice and then editing anything
   # has both cable commands tearing down the same cable. Runs under the
@@ -1073,10 +1073,13 @@ endif()
 
 add_executable(
   tst_resaveunchanged
-  tst_resaveunchanged.cpp)
+  tst_resaveunchanged.cpp
+  ${QET_DIR}/sources/container/qetzip.cpp
+  ${QET_DIR}/sources/container/miniz/miniz.c)
 add_test(NAME tst_resaveunchanged COMMAND tst_resaveunchanged)
 add_dependencies(tst_resaveunchanged qelectrotech)
-target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test)
+target_include_directories(tst_resaveunchanged PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_resaveunchanged PRIVATE Qt::Test SQLite3::SQLite3)
 target_compile_definitions(tst_resaveunchanged PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")

@@ -6476,6 +6476,95 @@ class CorpusIntegration(unittest.TestCase):
             sb.close()
 
 
+class ZippedProjectWithoutBinary(unittest.TestCase):
+    def test_reading_a_qetz_without_qelectrotech_says_what_to_set(self):
+        """A .qetz is read through QElectroTech (m._as_qet()): with none
+        configured, the answer names QET_BINARY rather than failing to
+        parse a zip as XML."""
+        with tempfile.TemporaryDirectory() as tmp:
+            z = Path(tmp) / "p.qetz"
+            z.write_bytes(b"PK\x03\x04 not read")
+            with mock.patch.object(m, "resolve_binary", return_value=None):
+                with self.assertRaises(ValueError) as caught:
+                    m.tool_project_info(str(z))
+            self.assertIn("QET_BINARY", str(caught.exception))
+
+
+@needs_examples
+class ZippedProjects(unittest.TestCase):
+    """Every tool reads and writes QElectroTech's zipped project (.qetz) as
+    it does the .qet: the XML tools read the .qet QElectroTech saves from
+    it, the tools that launch QElectroTech hand it the .qetz."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        root = Path(cls.tmp.name)
+        cls.env = mock.patch.dict(os.environ, {"QET_BINARY": BINARY, "QET_ENABLE_SCRIPTING": "1",
+                                               "QET_MCP_SCRIPTS_DIR": str(root / "scripts"),
+                                               "QET_MCP_INFO_FILE": str(root / "none.json")})
+        cls.env.start()
+        cls.qet, cls.qetz = root / "p.qet", root / "p.qetz"
+        source = str(Path(EXAMPLES) / "industrial.qet")
+        for out in (cls.qet, cls.qetz):
+            r = m._run_qet(BINARY, ["--resave", source, str(out)], timeout=600)
+            assert out.is_file(), r
+        assert cls.qetz.read_bytes()[:2] == b"PK"
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.env.stop()
+        cls.tmp.cleanup()
+
+    def test_read_tools_answer_as_for_the_qet(self):
+        def strip(d):
+            return {k: v for k, v in d.items() if k not in ("path", "file")}
+        for tool in (m.tool_project_info, m.tool_elements, m.tool_conductors, m.tool_items):
+            self.assertEqual(strip(tool(str(self.qetz))), strip(tool(str(self.qet))), tool.__name__)
+
+    def test_diff_finds_nothing_between_the_qet_and_the_qetz(self):
+        d = m.tool_diff(str(self.qet), str(self.qetz))
+        self.assertTrue(d.get("identical") or not any(
+            v.get("added") or v.get("removed") or v.get("changed")
+            for v in d.values() if isinstance(v, dict)), d)
+
+    def test_scan_counts_a_qetz(self):
+        folder = Path(self.tmp.name) / "scan"
+        folder.mkdir(exist_ok=True)
+        for f in (self.qet, self.qetz):
+            shutil.copy2(f, folder / f.name)
+        scan = m.tool_scan(str(folder), "conductor", "cable", recursive=False)
+        self.assertEqual(scan["files"], 2)
+        self.assertEqual(scan["unreadable"], [])
+        self.assertEqual(scan["per_file"][0]["conductor"], scan["per_file"][1]["conductor"])
+
+    def test_a_qetz_is_converted_once_while_it_does_not_change(self):
+        m._QETZ_COPIES.clear()
+        real = m._run_qet
+        with mock.patch.object(m, "_run_qet", side_effect=real) as run:
+            m.tool_project_info(str(self.qetz))
+            m.tool_elements(str(self.qetz))
+        self.assertEqual(run.call_count, 1)
+
+    def test_query_reads_the_qetz_itself(self):
+        sql = "SELECT COUNT(*) AS n FROM element"
+        self.assertEqual(m.tool_query(BINARY, str(self.qetz), sql)["rows"],
+                         m.tool_query(BINARY, str(self.qet), sql)["rows"])
+
+    def test_edit_writes_a_qetz(self):
+        first = m.tool_elements(str(self.qetz))["elements"][0]
+        out = Path(self.tmp.name) / "edited.qetz"
+        r = m.tool_edit(BINARY, str(self.qetz),
+                        [{"op": "rotate_element", "folio": first["folio"] - 1,
+                          "element": first["uuid"], "angle": 90}],
+                        str(out), ELEMENTS or None)
+        self.assertTrue(r.get("ok"), r)
+        self.assertEqual(out.read_bytes()[:2], b"PK")
+            # The rotation is what the diff of the two .qetz finds
+        diff = json.dumps(m.tool_diff(str(self.qetz), str(out)))
+        self.assertIn(m._uuid_key(first["uuid"]) if hasattr(m, "_uuid_key") else first["uuid"], diff.lower())
+
+
 if __name__ == "__main__":
     print(f"binary   : {BINARY or '(none: integration tests skipped)'}")
     print(f"elements : {ELEMENTS or '(none)'}")

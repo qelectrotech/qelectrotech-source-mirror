@@ -55,7 +55,7 @@ class ElementProvider
 
 		QList <Diagram *> m_diagram_list;
 			//Searching a project: its folios are asked for when searched,
-			//so that a project opened with QET_LAZY_FOLIOS builds only
+			//so that a project opened with lazy folios builds only
 			//those a search can find something on
 		QETProject *m_project = nullptr;
 		Diagram *m_excluded = nullptr;

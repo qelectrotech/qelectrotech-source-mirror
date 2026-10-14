@@ -19,6 +19,7 @@
 #define DIAGRAM_CONTENT_H
 
 #include <QSet>
+#include <optional>
 #include <QVector>
 
 #include "../qetgraphicsitem/terminalelement.h"
@@ -77,7 +78,6 @@ class DiagramContent
 		QList<Conductor *> m_conductors_to_update;
 		QList<Conductor *> m_conductors_to_move;
 		QList<Conductor *> m_other_conductors;
-		QList<Conductor *> m_potential_conductors;
 		QSet<DynamicElementTextItem *> m_element_texts;
 		QSet<ElementTextItemGroup *> m_texts_groups;
 		QList<QGraphicsItem *> m_selected_items;
@@ -89,6 +89,7 @@ class DiagramContent
 		QList<DiagramTextItem *> selectedTexts() const;
 		QList<ElementTextItemGroup *> selectedTextsGroup() const;
 		QList<Conductor *> conductors(int = AnyConductor) const;
+		QList<Conductor *> potentialConductors() const;
 		bool hasDeletableItems() const;
 		bool hasCopiableItems() const;
 		QList<QGraphicsItem *> items(int = All) const;
@@ -103,6 +104,12 @@ class DiagramContent
 
 	private:
 		int removePinnedGroups();
+			/// The wires potentialConductors() is made from, in order
+		QList<Conductor *> m_potential_candidates;
+			/// One wire of each potential, worked out when first asked:
+			/// following a potential goes through folio reports to other
+			/// folios, building those not built yet (lazy folios)
+		mutable std::optional<QList<Conductor *>> m_potential_conductors;
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif

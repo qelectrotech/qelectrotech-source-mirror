@@ -97,9 +97,54 @@ def _root(path: str) -> ET.Element:
     if not p.is_file():
         raise ValueError(f"no such file: {p}")
     try:
-        return ET.parse(p).getroot()
+        return ET.parse(_as_qet(p)).getroot()
     except ET.ParseError as exc:
         raise ValueError(f"{p.name} is not parseable XML: {exc}") from exc
+
+
+# --------------------------------------------------------------------------
+# zipped projects (.qetz)
+# --------------------------------------------------------------------------
+
+# A .qetz is QElectroTech's zipped project: a database and one file per
+# folio. The tools that read a project's XML read the .qet QElectroTech
+# saves from it, so they read what QElectroTech reads, whatever the zipped
+# format holds; one copy per version of the file (path, size, time).
+_QETZ_COPIES: dict = {}
+
+
+def _is_qetz(path) -> bool:
+    return str(path).lower().endswith(".qetz")
+
+
+def _as_qet(path) -> Path:
+    """The file the XML tools read for `path`: itself, or for a .qetz the
+    .qet QElectroTech saves from it (made with the configured binary)."""
+    p = Path(path).expanduser()
+    if not _is_qetz(p):
+        return p
+    if not p.is_file():
+        raise ValueError(f"no such file: {p}")
+    st = p.stat()
+    key = (str(p.resolve()), st.st_size, st.st_mtime_ns)
+    cached = _QETZ_COPIES.get(key)
+    if cached is not None and cached.is_file():
+        return cached
+    binary = resolve_binary()
+    if not binary:
+        raise ValueError(f"{p.name} is a zipped project (.qetz): reading it needs "
+                         "QElectroTech; set QET_BINARY")
+    folder = Path(tempfile.mkdtemp(prefix="qet-mcp-qetz-"))
+    out = folder / (p.stem + ".qet")
+    # Saving as .qet builds every folio: allow a big project its time
+    result = _run_qet(str(binary), ["--resave", str(p), str(out)], timeout=900)
+    if not out.is_file() or out.stat().st_size == 0:
+        shutil.rmtree(folder, ignore_errors=True)
+        detail = (result.get("stderr") or result.get("stdout") or "").strip()[-400:]
+        raise ValueError(f"QElectroTech could not read {p.name}"
+                         + (f": {detail}" if detail else ""))
+    _QETZ_COPIES[key] = out
+    return out
 
 
 def _element_info(el: ET.Element) -> dict:
@@ -796,7 +841,7 @@ def _num(v) -> float:
 
 def tool_scan(directory: str, tag: str = "conductor",
               attribute: str = "cable", recursive: bool = True) -> dict:
-    """Sweep every .qet in a directory, counting how many <tag> carry a
+    """Sweep every .qet and .qetz in a directory, counting how many <tag> carry a
     non-empty `attribute`.
 
     This is the corpus question: "3190 conductors, 0 cable values across
@@ -805,13 +850,14 @@ def tool_scan(directory: str, tag: str = "conductor",
     d = Path(directory).expanduser()
     if not d.is_dir():
         raise ValueError(f"not a directory: {d}")
-    files = sorted(d.rglob("*.qet") if recursive else d.glob("*.qet"))
+    files = sorted([f for pattern in ("*.qet", "*.qetz")
+                    for f in (d.rglob(pattern) if recursive else d.glob(pattern))])
     total = non_empty = 0
     per_file, values, unreadable = [], {}, []
     for f in files:
         try:
-            root = ET.parse(f).getroot()
-        except ET.ParseError as exc:
+            root = ET.parse(_as_qet(f)).getroot()
+        except (ET.ParseError, ValueError) as exc:
             unreadable.append({"file": f.name, "error": str(exc)})
             continue
         n = ne = 0
@@ -3919,8 +3965,10 @@ def scripts_dir() -> Path:
 
 SERVER_INSTRUCTIONS = (
     "This server works with QElectroTech, a free editor for electrical "
-    "diagrams. A project (.qet) holds folios (sheets) of symbols "
-    "(elements) joined by wires (conductors). Folio indexes count from 0.\n"
+    "diagrams. A project (.qet, or .qetz: the same project zipped) holds "
+    "folios (sheets) of symbols (elements) joined by wires (conductors). "
+    "Every tool takes either; a .qetz is read through QElectroTech, so the "
+    "first read of a big one takes a while. Folio indexes count from 0.\n"
     "Start with qet_about: where QElectroTech keeps things, what is "
     "switched on, the stored scripts, and house_style -- this "
     "installation's own drawing conventions if the user set any. Follow "

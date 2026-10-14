@@ -55,7 +55,7 @@ ElementProvider::ElementProvider(const QList<Diagram *> &diagrams) :
 	@brief ElementProvider::folios
 	@return the folios to search for symbols of the kinds @p kinds (free
 	ones only if @p free_only). For a project, the folios not built yet
-	(QET_LAZY_FOLIOS) holding such a symbol are built first, and only them
+	(lazy folios) holding such a symbol are built first, and only them
 	(QETProject::buildFoliosHolding()).
 */
 QList<Diagram *> ElementProvider::folios(ElementData::Types kinds, bool free_only) const
@@ -98,7 +98,7 @@ QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filt
 	QList<Element *> elmt_list;
 	const QList<Diagram *> searched = folios(filter, true);
 		//A symbol whose saved partner is on a folio not built yet
-		//(QET_LAZY_FOLIOS) is not linked yet, but is not free: it will be
+		//(lazy folios) is not linked yet, but is not free: it will be
 	const QSet<QUuid> waiting = m_project ? m_project->symbolsOnUnbuiltFolios()
 										  : QSet<QUuid>();
 
@@ -199,7 +199,14 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(
 		}
 	}
 
-	for (auto d : allFolios()) {
+		//Only the folios holding a table are built for it
+	QList<Diagram *> folios = m_diagram_list;
+	if (m_project) {
+		m_project->buildFoliosHoldingTables();
+		folios = m_project->builtFolios();
+		folios.removeOne(m_excluded);
+	}
+	for (auto d : std::as_const(folios)) {
 		for (auto item_ : d->items())
 		{
 			if(item_->type() == QetGraphicsTableItem::Type)

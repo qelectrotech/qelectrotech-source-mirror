@@ -57,30 +57,39 @@ namespace QetContainer
 	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 3;
+	constexpr int Format = 4;
 		/// 3: the database's rows keyed by the items' uuids, true/false and
 		/// show flags as 1/0, its PRAGMA user_version the format, the symbols' type left
-		/// in the folio files, no column for where a block sat. Format 2 is
-		/// still read; a later format whose min-reader allows this one is
-		/// read too, and said so through join()'s @p format.
+		/// in the folio files, no column for where a block sat.
+		/// 4: what QElectroTech computes left out of the folios
+		/// (dropComputed()), the tables written without keys or indexes.
+		/// project.sqlite holds the engineering data once: QElectroTech's
+		/// own project database is built from it when the project opens.
+		/// Formats 2 and 3 are still read; a later format whose min-reader
+		/// allows this one is read too, and said so through join()'s
+		/// @p format.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
-							   QString *error = nullptr);
+							   QString *error = nullptr,
+							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr, Pictures *pictures = nullptr,
-			  int *format = nullptr);
+			  QString *error = nullptr, QStringList *folio_files = nullptr,
+			  Pictures *pictures = nullptr, int *format = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
 
+		/// Take what QElectroTech computes out of a folio (format 4)
+	void dropComputed(QDomElement diagram, bool terminal_lists);
+		/// true if every folio, symbol and wire has a uuid of its own
+	bool ownUuids(const QDomElement &project);
 		/// Parse @p xml as a .qet is read (QETProject::openFile)
 	bool parse(const QByteArray &xml, QDomDocument *document, QString *error = nullptr);
 		/// true if @p content is a zip, so a .qetz rather than a .qet
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
 	bool readDocument(const QByteArray &content, QDomDocument *document,
-					  QString *error = nullptr, Pictures *pictures = nullptr,
-					  int *format = nullptr);
+					  QString *error = nullptr, Pictures *pictures = nullptr, int *format = nullptr);
 }
 
 #endif // QETCONTAINER_H

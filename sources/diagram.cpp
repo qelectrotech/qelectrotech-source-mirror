@@ -775,13 +775,13 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 /**
 	@brief Diagram::ensureLoaded
 	Build this folio's items from the XML kept when the project was
-	opened with QET_LAZY_FOLIOS, and do for them what opening does for
+	opened with lazy folios, and do for them what opening does for
 	every folio's (QETProject::folioLoaded()). Nothing for a folio built
 	already.
 */
 void Diagram::ensureLoaded()
 {
-	if (m_deferred.isNull()) {
+	if (isLoaded()) {
 		return;
 	}
 	if (m_project) {
@@ -789,6 +789,99 @@ void Diagram::ensureLoaded()
 	} else {
 		buildDeferred();
 	}
+}
+
+/**
+	@brief Diagram::buildSymbols
+	Build, of this folio not built yet (lazy folios), the symbols
+	@p uuids only -- partners a shown folio draws from -- and keep them for
+	when the folio is built (stage D5b). They belong to the
+	folio's scene; the folio stays not built.
+	@return the symbols built now
+*/
+QList<Element *> Diagram::buildSymbols(const QSet<QUuid> &uuids)
+{
+	QList<Element *> built;
+	if (isLoaded() || uuids.isEmpty()) {
+		return built;
+	}
+	const QDomElement xml = deferredXml();
+	if (xml.isNull()) {
+		return built;
+	}
+	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
+	if (db) db->setBuildingFolio(true);
+	for (QDomElement element_xml :
+		 QET::findInDomElement(xml, QStringLiteral("elements"), QStringLiteral("element")))
+	{
+		const QUuid uuid(element_xml.attribute(QStringLiteral("uuid")));
+		if (uuid.isNull() || !uuids.contains(uuid) || m_partial_elements.contains(uuid)
+				|| !Element::valideXml(element_xml)) {
+			continue;
+		}
+		if (Element *element = buildElement(element_xml, m_partial_table, true)) {
+			m_partial_elements.insert(uuid, element);
+				//A partner unlinked or linked again: the folio is not
+				//saved as it was read any more
+			connect(element, &Element::linkedElementChanged, this, [this]() {
+				if (!isLoaded()) m_partial_changed = true;
+			});
+			built << element;
+		}
+	}
+	if (db) db->setBuildingFolio(false);
+	return built;
+}
+
+namespace {
+	//The title block fields nothing on a folio is computed from: a formula
+	//reads the folio's label, plant, location, extra fields and grid
+	//(autonum::FormulaContext), none of these
+const QStringList ShownOnlyFields = {
+	QStringLiteral("title"), QStringLiteral("author"), QStringLiteral("date"),
+	QStringLiteral("indexrev"), QStringLiteral("version"), QStringLiteral("filename"),
+	QStringLiteral("titleblocktemplate"), QStringLiteral("titleblocktemplateCollection")};
+
+QString headerWithoutShownOnly(const QString &header)
+{
+	QDomDocument document;
+	document.setContent(header);
+	QDomElement root = document.documentElement();
+	for (const QString &field : ShownOnlyFields) root.removeAttribute(field);
+	return document.toString();
+}
+}
+
+/**
+	@brief Diagram::headerChangeShowsOnly
+	@return true if what changed in this folio's own data since it was read
+	(headerChanged()) is only title block fields nothing on the folio is
+	computed from (its title, author, date, revision, file name, template):
+	its items, as read, are what building it would write
+*/
+bool Diagram::headerChangeShowsOnly()
+{
+	return headerWithoutShownOnly(headerXml()) == headerWithoutShownOnly(m_opened_header);
+}
+
+/**
+	@brief Diagram::deferredXmlWithHeader
+	@return this folio, not built, as it saves: its own data as it is now
+	(writeHeader()) and its items as read (deferredXml()), in @p document --
+	when its items are what building it would write (headerChangeShowsOnly())
+*/
+QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
+{
+	QDomElement folio = document.createElement(QStringLiteral("diagram"));
+	writeHeader(document, folio);
+	QSet<QString> header_children;
+	for (QDomElement child = folio.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
+		header_children.insert(child.tagName());
+	const QDomElement items = deferredXml();
+	for (QDomElement child = items.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
+		if (!header_children.contains(child.tagName()))
+			folio.appendChild(document.importNode(child, true));
+	return folio;
 }
 
 /**
@@ -800,17 +893,21 @@ void Diagram::ensureLoaded()
 */
 bool Diagram::buildDeferred()
 {
-	if (m_deferred.isNull()) {
+	if (isLoaded()) {
 		return false;
 	}
 	QDomElement xml = m_deferred;
 	m_deferred = QDomElement();
+	m_kept_part.clear();
 	m_kept_text.clear();
 	projectDataBase *db = m_project ? m_project->dataBase() : nullptr;
 	if (db) db->setBuildingFolio(true);
 	m_loading_deferred = true;
 	fromXml(xml, QPointF(), true, nullptr);
 	m_loading_deferred = false;
+	m_partial_elements.clear();
+	m_partial_table.clear();
+	m_partial_changed = false;
 	if (db) db->setBuildingFolio(false);
 	return true;
 }
@@ -1136,7 +1233,7 @@ QList < QSet <Conductor *> > Diagram::potentials()
 	\~French Un Document XML (QDomDocument)
 */
 QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
-		//A folio of a project opened with QET_LAZY_FOLIOS is written from
+		//A folio of a project opened with lazy folios is written from
 		//its built items (QETProject::toXml() may write one not built as
 		//it was read instead)
 	ensureLoaded();
@@ -1249,7 +1346,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		//Wires that tie on their ends (common: several from one terminal)
 		//keep the order they were made in, which for a project's is its
 		//file's -- the order the scene gave them so far, except for a folio
-		//built late (QET_LAZY_FOLIOS), whose scene order differed
+		//built late (lazy folios), whose scene order differed
 	std::stable_sort(list_conductors.begin(), list_conductors.end(),
 			  [](Conductor *a, Conductor *b) {
 		const QString ka = conductorSortKey(a), kb = conductorSortKey(b);
@@ -1487,6 +1584,73 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 		}
 		domElement->appendChild(folioseq);
 	}
+}
+
+/**
+	@brief Diagram::buildElement
+	Make the symbol @p element_xml describes and add it to this folio, as
+	fromXml() does for each symbol it reads.
+	@return the symbol, or nullptr if it could not be made (said in the log)
+*/
+Element *Diagram::buildElement(QDomElement element_xml, QHash<int, Terminal *> &table_adr_id,
+							   bool consider_informations)
+{
+	// cree un element dont le type correspond a l'id type
+	QString type_id = element_xml.attribute(QStringLiteral("type"));
+	ElementsLocation element_location;
+	if (type_id.startsWith(QStringLiteral("embed://"))) {
+		element_location = ElementsLocation(type_id, m_project);
+	}
+	else {
+		element_location = ElementsLocation(type_id);
+	}
+
+	int state = 0;
+	Element *nvel_elmt =
+			ElementFactory::Instance() -> createElement(
+				element_location, nullptr, &state);
+	if (state)
+	{
+		QString debug_message =
+			QString("Diagram::fromXml() : Le chargement de "
+				"la description de l'element %1 a "
+				"echoue avec le code d'erreur %2").arg(
+				element_location.path()).arg(state);
+		qDebug() << qPrintable(debug_message);
+		delete nvel_elmt;
+		return nullptr;
+	}
+
+	addItem(nvel_elmt);
+	//Loading fail, remove item from the diagram
+	if (!nvel_elmt->fromXml(element_xml, table_adr_id))
+	{
+		removeItem(nvel_elmt);
+		delete nvel_elmt;
+		qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
+		return nullptr;
+	} else {
+			//A symbol saved without a uuid got a random one from
+			//Element::fromXml(): a different identity on every load,
+			//written out on the next save. Derive it instead from what
+			//the symbol is and where it sits on its folio -- never from
+			//the folio's index, so inserting or moving a folio does not
+			//change it. Only for a folio being loaded: a paste renews
+			//uuids anyway.
+		if (consider_informations && m_project
+			&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
+			nvel_elmt->setUuid(m_project->derivedItemUuid(
+								   QStringLiteral("element"),
+								   QStringList{type_id,
+											   element_xml.attribute(QStringLiteral("x")),
+											   element_xml.attribute(QStringLiteral("y")),
+											   element_xml.attribute(QStringLiteral("orientation"))}
+								   .join(QLatin1Char('\n'))));
+		}
+		ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
+		return nvel_elmt;
+	}
+return nullptr;
 }
 
 /**
@@ -1864,7 +2028,7 @@ bool Diagram::fromXml(QDomElement &document,
 		return(true);
 	}
 
-		//A project opened with QET_LAZY_FOLIOS builds a folio's items when
+		//A project opened with lazy folios builds a folio's items when
 		//they are first needed: until then the folio has what it says
 		//about itself (uuid, title block, border, numbering) and keeps its
 		//XML, which belongs to the project's document.
@@ -1910,65 +2074,23 @@ bool Diagram::fromXml(QDomElement &document,
 		//Load all elements from the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
+	if (m_loading_deferred) {
+		table_adr_id = m_partial_table;   //the terminals of symbols built already
+	}
 	for (auto element_xml :
 		 QET::findInDomElement(root, QStringLiteral("elements"), QStringLiteral("element")))
 	{
 		if (!Element::valideXml(element_xml)) continue;
-
-		// cree un element dont le type correspond a l'id type
-		QString type_id = element_xml.attribute(QStringLiteral("type"));
-		ElementsLocation element_location;
-		if (type_id.startsWith(QStringLiteral("embed://"))) {
-			element_location = ElementsLocation(type_id, m_project);
-		}
-		else {
-			element_location = ElementsLocation(type_id);
-		}
-
-		int state = 0;
-		Element *nvel_elmt =
-				ElementFactory::Instance() -> createElement(
-					element_location, nullptr, &state);
-		if (state)
-		{
-			QString debug_message =
-				QString("Diagram::fromXml() : Le chargement de "
-					"la description de l'element %1 a "
-					"echoue avec le code d'erreur %2").arg(
-					element_location.path()).arg(state);
-			qDebug() << qPrintable(debug_message);
-			delete nvel_elmt;
-			continue;
-		}
-
-		addItem(nvel_elmt);
-		//Loading fail, remove item from the diagram
-		if (!nvel_elmt->fromXml(element_xml, table_adr_id))
-		{
-			removeItem(nvel_elmt);
-			delete nvel_elmt;
-			qDebug() << QStringLiteral("Diagram::fromXml() : Le chargement des parametres d'un element a echoue");
-		} else {
-				//A symbol saved without a uuid got a random one from
-				//Element::fromXml(): a different identity on every load,
-				//written out on the next save. Derive it instead from what
-				//the symbol is and where it sits on its folio -- never from
-				//the folio's index, so inserting or moving a folio does not
-				//change it. Only for a folio being loaded: a paste renews
-				//uuids anyway.
-			if (consider_informations && m_project
-				&& QUuid(element_xml.attribute(QStringLiteral("uuid"))).isNull()) {
-				nvel_elmt->setUuid(m_project->derivedItemUuid(
-									   QStringLiteral("element"),
-									   QStringList{type_id,
-												   element_xml.attribute(QStringLiteral("x")),
-												   element_xml.attribute(QStringLiteral("y")),
-												   element_xml.attribute(QStringLiteral("orientation"))}
-									   .join(QLatin1Char('\n'))));
+			//Built already as another folio's partner (buildSymbols())
+		if (m_loading_deferred) {
+			Element *built = m_partial_elements.value(QUuid(element_xml.attribute(QStringLiteral("uuid"))));
+			if (built) {
+				added_elements << built;
+				continue;
 			}
-			ItemGroups::setGroup(nvel_elmt, ItemGroups::read(element_xml));
-			added_elements << nvel_elmt;
 		}
+		if (Element *nvel_elmt = buildElement(element_xml, table_adr_id, consider_informations))
+			added_elements << nvel_elmt;
 	}
 
 		//Texts, images and shapes written before they carried a uuid (or

@@ -978,6 +978,8 @@ void QETDiagramEditor::setUpActions()
 	QAction *open_file = m_file_actions_group.addAction(QET::Icons::DocumentOpen,   tr("&Open"));
 	m_save_file        = m_file_actions_group.addAction(QET::Icons::DocumentSave,   tr("&Save"));
 	m_save_file_as     = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs, tr("Save as"));
+	m_save_copy_for_older = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs,
+														   tr("Save a copy for an older QElectroTech"));
 	m_close_file       = m_file_actions_group.addAction(QET::Icons::ProjectClose,   tr("&Close"));
 
 	ShortcutManager::instance().registerAction(new_file, "diagrameditor.new_file", tr("Diagram editors"), QKeySequence::New);
@@ -991,6 +993,19 @@ void QETDiagramEditor::setUpActions()
 	m_close_file ->setStatusTip( tr("Closes the current project", "status bar tip") );
 	m_save_file    ->setStatusTip( tr("Saves the current project and all its sheets", "status bar tip") );
 	m_save_file_as ->setStatusTip( tr("Saves the current project with a different file name", "status bar tip") );
+	m_save_copy_for_older->setStatusTip(tr("Writes a copy of the current project as a .qet file, which "
+										   "versions of QElectroTech that cannot open a .qetz open",
+										   "status bar tip"));
+	ShortcutManager::instance().registerAction(m_save_copy_for_older, "diagrameditor.save_copy_for_older",
+											   tr("Diagram editors"), QKeySequence());
+	connect(m_save_copy_for_older, &QAction::triggered, this, [this]() {
+		if (ProjectView *project_view = currentProjectView()) {
+			const QETResult result = project_view->saveCopyForOlderVersions();
+			if (!result.isOk()) {
+				showError(result);
+			}
+		}
+	});
 
 	connect(m_save_file_as, &QAction::triggered, this, &QETDiagramEditor::saveAs);
 	connect(m_save_file,    &QAction::triggered, this, &QETDiagramEditor::save);
@@ -2760,6 +2775,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
 	m_save_file_as->                setEnabled(opened_project);
+	m_save_copy_for_older->         setEnabled(opened_project);
 	m_rotate_texts->                setEnabled(editable_project);
 	m_export_to_images->            setEnabled(opened_diagram);
 	m_print->                       setEnabled(opened_diagram);

@@ -338,6 +338,9 @@ Section ""
     WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\DefaultIcon"                      "" "$final_project_ico"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\shell\open\command"               "" '"$final_qet_exe" "%1"'
 
+    ; File associations - .qetz, the zipped project: the same file type
+    WriteRegStr   HKEY_CLASSES_ROOT ".qetz"                                             "" "qet_diagram_file"
+
     ; File associations - .elmt
     WriteRegStr   HKEY_CLASSES_ROOT ".elmt"                                             "" "qet_element_file"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                  "" "Element QET"
@@ -486,6 +489,7 @@ Section "Uninstall"
     ; Remove file associations registry keys
     DeleteRegKey HKEY_CLASSES_ROOT "Applications\qelectrotech.exe"
     DeleteRegKey HKEY_CLASSES_ROOT ".qet"
+    DeleteRegKey HKEY_CLASSES_ROOT ".qetz"
     DeleteRegKey HKEY_CLASSES_ROOT "qet_diagram_file"
     DeleteRegKey HKEY_CLASSES_ROOT ".elmt"
     DeleteRegKey HKEY_CLASSES_ROOT "qet_element_file"

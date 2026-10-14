@@ -1011,7 +1011,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	auto xml_layout = xml_element.firstChildElement(QStringLiteral("layout"));
 	if (!xml_layout.isNull())
 	{
-			//The folios holding its terminals are built (QET_LAZY_FOLIOS):
+			//The folios holding its terminals are built (lazy folios):
 			//a strip is read with the project, before the database could
 			//tell where any symbol is
 		QSet<QUuid> terminals;
@@ -1020,8 +1020,9 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 			terminals.insert(QUuid(xml_reals.at(i).toElement().attribute(QStringLiteral("element_uuid"))));
 		m_project->buildFoliosHoldingSymbols(terminals);
 
-			//Get all free elements terminal of the project
-		const ElementProvider ep(m_project);
+			//Get all free elements terminal of the project: its own are on
+			//the folios just built
+		const ElementProvider ep(m_project->builtFolios());
 		auto free_terminals = ep.freeTerminal();
 
 			//Read each physical terminal

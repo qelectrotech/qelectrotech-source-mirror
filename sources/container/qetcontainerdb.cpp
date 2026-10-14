@@ -33,6 +33,8 @@
 namespace {
 const QString KeyAttribute = QStringLiteral("qetz-key");
 const QString FolioAttribute = QStringLiteral("qetz-folio");
+	//A folio written as it was read (stage D4): its part
+const QString KeptPartAttribute = QStringLiteral("qetz-kept-part");
 	//What a moved block leaves where it was. Removing it instead would leave
 	//the whitespace before and after it side by side, read back as one text
 	//node: the parent would come back a child short.
@@ -145,28 +147,53 @@ QString schema()
 			.arg(columns(FolioData), columns(ElementData), columns(ConductorData));
 }
 
-	//Owns an sqlite3 handle
+	//The tables of a document's engineering data
+const QStringList DocTables = {
+	QStringLiteral("strip_bridge_terminal"), QStringLiteral("strip_bridge"),
+	QStringLiteral("strip_terminal"), QStringLiteral("terminal_strip"),
+	QStringLiteral("project_property"), QStringLiteral("folio_property"), QStringLiteral("folio"),
+	QStringLiteral("element_info"), QStringLiteral("element"), QStringLiteral("link"),
+	QStringLiteral("conductor"), QStringLiteral("meta")};
+
+	//Owns an sqlite3 handle; names its columns as the format of the
+	//database read names them
 class Database
 {
 	public:
 		~Database() { if (m_db) sqlite3_close(m_db); }
 		sqlite3 *m_db = nullptr;
+		int m_format = QetContainer::Format;
 		bool exec(const QString &sql) {
 			return sqlite3_exec(m_db, sql.toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
 		}
 		QString error() const { return QString::fromUtf8(sqlite3_errmsg(m_db)); }
+			//Format 2 (QElectroTech 0.200.1 development builds) keyed its
+			//rows apart from the items' uuids: "f1", "e1", "c1" where an item
+			//had none of its own, and every item's key in the folio file
+		bool v2() const { return m_format == 2; }
+		QString folioKey() const { return v2() ? QStringLiteral("id") : QStringLiteral("uuid"); }
+		QString folioRef() const { return v2() ? QStringLiteral("folio_id") : QStringLiteral("folio_uuid"); }
+		QString itemKey() const { return v2() ? QStringLiteral("key") : QStringLiteral("uuid"); }
+		QString elementRef() const { return v2() ? QStringLiteral("element_key") : QStringLiteral("element_uuid"); }
+		QString showColumn() const { return v2() ? QStringLiteral("NULL") : QStringLiteral("show"); }
+		QStringList elementData() const { return v2() ? ElementDataV2 : ElementData; }
+		QStringList conductorData() const { return v2() ? QStringList{QStringLiteral("uuid")} + ConductorData : ConductorData; }
 };
 
 	//Owns a prepared statement; binds and reads QVariants (null = SQL NULL)
 class Statement
 {
 	public:
-		Statement(sqlite3 *db, const QString &sql) {
-			sqlite3_prepare_v2(db, sql.toUtf8().constData(), -1, &m_stmt, nullptr);
+		Statement(const Database &db, const QString &sql) {
+			sqlite3_prepare_v2(db.m_db, sql.toUtf8().constData(), -1, &m_stmt, nullptr);
 		}
 		~Statement() { sqlite3_finalize(m_stmt); }
 		bool ok() const { return m_stmt; }
+			//A statement that could not be prepared (the database is not
+			//one, a table is missing) binds nothing and steps to no row:
+			//SQLite's own calls are not all safe on a null statement
 		void bind(const QVariantList &values) {
+			if (!m_stmt) return;
 			sqlite3_reset(m_stmt);
 			sqlite3_clear_bindings(m_stmt);
 			for (int i = 0 ; i < values.size() ; ++i) {
@@ -182,11 +209,13 @@ class Statement
 			}
 		}
 		bool run(const QVariantList &values) {
+			if (!m_stmt) return false;
 			bind(values);
 			return sqlite3_step(m_stmt) == SQLITE_DONE;
 		}
-		bool next() { return sqlite3_step(m_stmt) == SQLITE_ROW; }
+		bool next() { return m_stmt && sqlite3_step(m_stmt) == SQLITE_ROW; }
 		QVariant value(int column) const {
+			if (!m_stmt) return QVariant();
 			switch (sqlite3_column_type(m_stmt, column)) {
 				case SQLITE_NULL: return QVariant();
 				case SQLITE_INTEGER: return QVariant(sqlite3_column_int(m_stmt, column));
@@ -471,22 +500,26 @@ QVariantList entryRow(const QDomElement &e, const QString &usual_tag)
 }
 
 	//The key of each of @p items: its uuid, when it has one no other of
-	//@p items has, so the uuid the folio file already holds says which row
-	//is the item's (@p own true). Else (F100: symbols copied with their
-	//uuid) a uuid made from the item itself -- the same on every save,
-	//never from where the item is -- kept in the folio file as qetz-key.
-QStringList keys(const QList<QDomElement> &items, QList<bool> *own)
+	//@p items has and @p reserved does not hold, so the uuid the folio file
+	//already holds says which row is the item's (@p own true). Else (F100:
+	//symbols copied with their uuid) a uuid made from the item itself --
+	//the same on every save, never from where the item is -- kept in the
+	//folio file as qetz-key. @p reserved: the keys of rows copied from
+	//another database (a folio kept as it was)
+QStringList keys(const QList<QDomElement> &items, QList<bool> *own,
+				 const QSet<QString> &reserved = QSet<QString>())
 {
 	static const QUuid key_namespace(QStringLiteral("{3f0c6c1e-5b8e-4b8a-9d55-6b2f5f0f9a41}"));
 	QHash<QString, int> seen;
 	for (const QDomElement &e : items)
 		if (!QUuid(e.attribute(QStringLiteral("uuid"))).isNull()) ++seen[e.attribute(QStringLiteral("uuid"))];
 	QSet<QString> taken(seen.keyBegin(), seen.keyEnd());
+	taken.unite(reserved);
 	QHash<QString, int> twins;
 	QStringList out;
 	for (const QDomElement &e : items) {
 		const QString uuid = e.attribute(QStringLiteral("uuid"));
-		if (seen.value(uuid) == 1) {
+		if (seen.value(uuid) == 1 && !reserved.contains(uuid)) {
 			out << uuid;
 			*own << true;
 			continue;
@@ -507,6 +540,287 @@ QStringList keys(const QList<QDomElement> &items, QList<bool> *own)
 	}
 	return out;
 }
+
+	//Every table of @p db written again without its keys and indexes, in
+	//the order of its rows, and the file compacted: the file a .qetz holds
+	//is read whole, its lookups indexed once read (openDatabase()), and keys
+	//and indexes of text uuids were half of it (stage D3b)
+bool plainTables(sqlite3 *db)
+{
+	QStringList tables;
+	{
+		sqlite3_stmt *list = nullptr;
+		sqlite3_prepare_v2(db, "SELECT name FROM main.sqlite_master WHERE type = 'table' "
+							   "AND name NOT LIKE 'sqlite_%' ORDER BY name", -1, &list, nullptr);
+		while (list && sqlite3_step(list) == SQLITE_ROW)
+			tables << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(list, 0)));
+		sqlite3_finalize(list);
+	}
+	auto run = [db](const QString &sql) {
+		return sqlite3_exec(db, sql.toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
+	};
+	bool ok = run(QStringLiteral("BEGIN"));
+	for (const QString &table : std::as_const(tables)) {
+		const QString plain = table + QStringLiteral("__plain");
+			//The same columns and types (QETZ-FORMAT.md), no key or constraint
+		QStringList columns;
+		{
+			sqlite3_stmt *info = nullptr;
+			sqlite3_prepare_v2(db, QStringLiteral("SELECT name, type FROM pragma_table_info('%1') ORDER BY cid")
+							   .arg(table).toUtf8().constData(), -1, &info, nullptr);
+			while (info && sqlite3_step(info) == SQLITE_ROW)
+				columns << QStringLiteral("\"%1\" %2").arg(
+							   QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(info, 0))),
+							   QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(info, 1))));
+			sqlite3_finalize(info);
+		}
+		ok = ok && !columns.isEmpty()
+				&& run(QStringLiteral("CREATE TABLE \"%1\" (%2)").arg(plain, columns.join(QStringLiteral(", "))))
+				&& run(QStringLiteral("INSERT INTO \"%1\" SELECT * FROM \"%2\" ORDER BY rowid").arg(plain, table))
+				&& run(QStringLiteral("DROP TABLE \"%1\"").arg(table))
+				&& run(QStringLiteral("ALTER TABLE \"%1\" RENAME TO \"%2\"").arg(plain, table));
+	}
+	ok = ok && run(QStringLiteral("COMMIT"));
+	return ok && run(QStringLiteral("VACUUM"));
+}
+
+	//@p database opened in @p db, its tables checked to be plain tables and
+	//its format one this reads: a file is untrusted
+bool openDatabase(Database &db, const QByteArray &database, QString *error)
+{
+	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK) {
+		setError(error, QStringLiteral("cannot open the project database"));
+		return false;
+	}
+	unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+	if (!copy) { setError(error, QStringLiteral("out of memory")); return false; }
+	memcpy(copy, database.constData(), size_t(database.size()));
+		//A copy of its own, writable: its lookups are indexed below
+	if (sqlite3_deserialize(db.m_db, "main", copy, database.size(), database.size(),
+							SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE) != SQLITE_OK) {
+		setError(error, QStringLiteral("the project database cannot be read"));
+		return false;
+	}
+		//A file is untrusted: nothing in its schema may run, and every name
+		//read must be a plain table.
+	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+	for (const QString &table : DocTables) {
+		Statement kind(db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
+		kind.bind({table});
+		if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
+			setError(error, QStringLiteral("the project database has no table %1").arg(table));
+			return false;
+		}
+	}
+	{
+		Statement format(db, QStringLiteral("SELECT value FROM meta WHERE key = 'format'"));
+		const QString text = format.next() ? format.value(0).toString() : QString();
+		db.m_format = text.toInt();
+			//A later format is read when the manifest's min-reader allows it
+			//(QetContainer::join()): its writer kept what this reads
+		if (db.m_format < 2) {
+			setError(error, QStringLiteral("the project database is of format %1, this reads format 2 on")
+					 .arg(text));
+			return false;
+		}
+	}
+		//What the folios are read by: a file holds no index (plainTables())
+	const QStringList indexes = {
+		QStringLiteral("folio(%1)").arg(db.folioKey()), QStringLiteral("folio_property(%1)").arg(db.folioRef()),
+		QStringLiteral("element(%1)").arg(db.itemKey()), QStringLiteral("element(%1)").arg(db.folioRef()),
+		QStringLiteral("element_info(%1)").arg(db.elementRef()), QStringLiteral("link(%1)").arg(db.elementRef()),
+		QStringLiteral("conductor(%1)").arg(db.itemKey()), QStringLiteral("meta(key)")};
+	for (const QString &on : indexes) {
+		const QString name = QStringLiteral("qetz_read_") + QString(on).replace(QLatin1Char('('), QLatin1Char('_')).remove(QLatin1Char(')'));
+		if (!db.exec(QStringLiteral("CREATE INDEX IF NOT EXISTS %1 ON %2").arg(name, on))) {
+			setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
+			return false;
+		}
+	}
+	db.exec(QStringLiteral("PRAGMA query_only = ON"));
+	return true;
+}
+
+QDomElement entryElement(QDomDocument &document, const QVariant &name_attr, const QString &name,
+						 const QVariant &value, const QVariant &attrs, const QString &default_tag,
+						 const QVariant &show = QVariant())
+{
+	const QJsonObject o = QJsonDocument::fromJson(attrs.toString().toUtf8()).object();
+	QDomElement e = document.createElement(o.value(QStringLiteral("tag")).toString(default_tag));
+	if (!name_attr.isNull()) e.setAttribute(name, name_attr.toString());
+	if (!show.isNull()) e.setAttribute(QStringLiteral("show"), show.toString());
+	setAttributesJson(e, attrs);
+	if (!value.isNull()) e.appendChild(document.createTextNode(value.toString()));
+	return e;
+}
+
+	//An item's key: the one it was given, else (format 3 on) its uuid
+QString keyOf(const Database &db, QDomElement e, const QString &attribute)
+{
+	if (e.hasAttribute(attribute)) {
+		const QString key = e.attribute(attribute);
+		e.removeAttribute(attribute);
+		return key;
+	}
+	return db.v2() ? QString() : e.attribute(QStringLiteral("uuid"));
+}
+
+QString quoted(const QStringList &names)
+{
+	return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
+}
+
+	//The keys of the rows restore() read, each once: every row must be an
+	//item's, on the folio the item is on -- nothing in the file, which is
+	//untrusted, enforces it
+struct UsedRows
+{
+	QSet<QString> folios, elements, conductors;
+	bool use(QSet<QString> &used, const QString &key, const QString &what, QString *error) {
+		if (used.contains(key)) {
+			setError(error, QStringLiteral("%1 %2 is in the folios twice").arg(what, key));
+			return false;
+		}
+		used.insert(key);
+		return true;
+	}
+};
+
+	//The engineering data of the folio @p d back from @p db
+bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
+{
+	QDomDocument document = d.ownerDocument();
+	auto entry = [&document](const QVariant &name_attr, const QString &name, const QVariant &value,
+							 const QVariant &attrs, const QString &default_tag, const QVariant &show = QVariant()) {
+		return entryElement(document, name_attr, name, value, attrs, default_tag, show);
+	};
+	const QString id = keyOf(db, d, FolioAttribute);
+	if (id.isEmpty()) return true;
+	if (!used.use(used.folios, id, QStringLiteral("folio"), error)) return false;
+	Statement f(db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE %2 = ?")
+				.arg(quoted(FolioData), db.folioKey()));
+	f.bind({id});
+	if (!f.next()) { setError(error, QStringLiteral("folio %1 is not in the database").arg(id)); return false; }
+	QVariantList values;
+	for (int i = 0 ; i < FolioData.size() + 1 ; ++i) values << f.value(i);
+	put(d, FolioData, values, 0);
+		//A moved block goes back where its marker is: the marker says it
+		//was there
+	if (hasMarker(d, QStringLiteral("properties"))) {
+		QDomElement props = document.createElement(QStringLiteral("properties"));
+		setAttributesJson(props, values.at(FolioData.size()));
+		Statement p(db, QStringLiteral("SELECT name, value, attrs, %1 FROM folio_property WHERE %2 = ? ORDER BY ord")
+					.arg(db.showColumn(), db.folioRef()));
+		p.bind({id});
+		while (p.next())
+			props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
+									QStringLiteral("property"), p.value(3)));
+		restoreWhitespace(props, values.at(FolioData.size()));
+		if (!replaceMarker(d, props)) {
+			setError(error, QStringLiteral("folio %1's properties have no place").arg(id));
+			return false;
+		}
+	}
+
+	const QStringList element_data = db.elementData();
+	const QStringList conductor_data = db.conductorData();
+	for (const QDomElement &list : children(d, QStringLiteral("elements"))) {
+		for (QDomElement e : children(list, QStringLiteral("element"))) {
+			const QString key = keyOf(db, e, KeyAttribute);
+			if (key.isEmpty()) continue;
+			if (!used.use(used.elements, key, QStringLiteral("symbol"), error)) return false;
+			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, %2 FROM element WHERE %3 = ?")
+						.arg(quoted(element_data), db.folioRef(), db.itemKey()));
+			s.bind({key});
+			if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
+			if (s.value(element_data.size() + 2).toString() != id) {
+				setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
+				return false;
+			}
+			QVariantList v;
+			for (int i = 0 ; i < element_data.size() + 2 ; ++i) v << s.value(i);
+			put(e, element_data, v, 0);
+			const int n = element_data.size();
+			QDomElement info, links;
+			if (hasMarker(e, QStringLiteral("elementInformations"))) {
+				info = document.createElement(QStringLiteral("elementInformations"));
+				setAttributesJson(info, v.at(n));
+				Statement i(db, QStringLiteral("SELECT name, value, attrs, %1 FROM element_info WHERE %2 = ? ORDER BY ord")
+							.arg(db.showColumn(), db.elementRef()));
+				i.bind({key});
+				while (i.next())
+					info.appendChild(entry(i.value(0), QStringLiteral("name"), i.value(1), i.value(2),
+										   QStringLiteral("elementInformation"), i.value(3)));
+				restoreWhitespace(info, v.at(n));
+			}
+			if (hasMarker(e, QStringLiteral("links_uuids"))) {
+				links = document.createElement(QStringLiteral("links_uuids"));
+				setAttributesJson(links, v.at(n + 1));
+				Statement l(db, QStringLiteral("SELECT linked_uuid, attrs FROM link WHERE %1 = ? ORDER BY ord")
+							.arg(db.elementRef()));
+				l.bind({key});
+				while (l.next())
+					links.appendChild(entry(l.value(0), QStringLiteral("uuid"), QVariant(), l.value(1),
+											QStringLiteral("link_uuid")));
+				restoreWhitespace(links, v.at(n + 1));
+			}
+			if ((!info.isNull() && !replaceMarker(e, info))
+				|| (!links.isNull() && !replaceMarker(e, links))) {
+				setError(error, QStringLiteral("symbol %1's information has no place").arg(key));
+				return false;
+			}
+		}
+	}
+	for (const QDomElement &list : children(d, QStringLiteral("conductors"))) {
+		for (QDomElement c : children(list, QStringLiteral("conductor"))) {
+			const QString key = keyOf(db, c, KeyAttribute);
+			if (key.isEmpty()) continue;
+			if (!used.use(used.conductors, key, QStringLiteral("wire"), error)) return false;
+			Statement s(db, QStringLiteral("SELECT %1, %2 FROM conductor WHERE %3 = ?")
+						.arg(quoted(conductor_data), db.folioRef(), db.itemKey()));
+			s.bind({key});
+			if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
+			if (s.value(conductor_data.size()).toString() != id) {
+				setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
+				return false;
+			}
+			QVariantList v;
+			for (int i = 0 ; i < conductor_data.size() ; ++i) v << s.value(i);
+			put(c, conductor_data, v, 0);
+		}
+	}
+	return true;
+}
+
+	//No row of @p db left over once restoreDiagram() read every folio:
+	//each table's rows, counted, are the items read (@p used), and every
+	//entry belongs to a row
+bool noRowLeft(const Database &db, const UsedRows &used, QString *error)
+{
+	auto count = [&db](const QString &sql) {
+		Statement s(db, sql);
+		return s.next() ? s.value(0).toInt() : -1;
+	};
+	const struct { QString sql; int expected; QString what; } checks[] = {
+		{QStringLiteral("SELECT count(*) FROM folio"), int(used.folios.size()), QStringLiteral("folio rows")},
+		{QStringLiteral("SELECT count(*) FROM element"), int(used.elements.size()), QStringLiteral("symbol rows")},
+		{QStringLiteral("SELECT count(*) FROM conductor"), int(used.conductors.size()), QStringLiteral("wire rows")},
+		{QStringLiteral("SELECT count(*) FROM folio_property WHERE %1 NOT IN (SELECT %2 FROM folio)")
+				.arg(db.folioRef(), db.folioKey()), 0, QStringLiteral("folio property rows of no folio")},
+		{QStringLiteral("SELECT count(*) FROM element_info WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("information rows of no symbol")},
+		{QStringLiteral("SELECT count(*) FROM link WHERE %1 NOT IN (SELECT %2 FROM element)")
+				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("link rows of no symbol")}};
+	for (const auto &check : checks) {
+		const int found = count(check.sql);
+		if (found != check.expected) {
+			setError(error, QStringLiteral("the project database does not match its folios: %1 %2, %3 expected")
+					 .arg(found).arg(check.what).arg(check.expected));
+			return false;
+		}
+	}
+	return true;
+}
 }
 
 /**
@@ -515,23 +829,45 @@ QStringList keys(const QList<QDomElement> &items, QList<bool> *own)
 	folios still in it) into a new database.
 	@return the database file, or an empty array with @p error set
 */
-QByteArray QetContainerDb::extract(QDomElement project, QString *error)
+QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QByteArray &kept_from)
 {
 	Database db;
 	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK || !db.exec(schema())) {
 		setError(error, QStringLiteral("cannot create the project database"));
 		return {};
 	}
+		//The database of the .qetz this project was read from, for the folios
+		//kept as they were (stage D4): of this format (currentFormat())
+	if (!kept_from.isEmpty()) {
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(kept_from.size())));
+		if (!copy) { setError(error, QStringLiteral("out of memory")); return {}; }
+		memcpy(copy, kept_from.constData(), size_t(kept_from.size()));
+		if (!db.exec(QStringLiteral("ATTACH DATABASE ':memory:' AS old"))
+				|| sqlite3_deserialize(db.m_db, "old", copy, kept_from.size(), kept_from.size(),
+									   SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_READONLY) != SQLITE_OK) {
+			setError(error, QStringLiteral("cannot read the database the kept folios come from"));
+			return {};
+		}
+		db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+		for (const QString &table : DocTables) {
+			Statement kind(db, QStringLiteral("SELECT type FROM old.sqlite_master WHERE name = ?"));
+			kind.bind({table});
+			if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
+				setError(error, QStringLiteral("the kept folios' database has no table %1").arg(table));
+				return {};
+			}
+		}
+	}
 	db.exec(QStringLiteral("BEGIN"));
 
-	Statement meta(db.m_db, QStringLiteral("INSERT INTO meta VALUES (?,?)"));
-	Statement project_property(db.m_db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?,?)"));
-	Statement folio(db.m_db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?)").arg(placeholders(FolioData.size())));
-	Statement folio_property(db.m_db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?,?)"));
-	Statement element(db.m_db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?)").arg(placeholders(ElementData.size())));
-	Statement element_info(db.m_db, QStringLiteral("INSERT INTO element_info VALUES (?,?,?,?,?,?)"));
-	Statement link(db.m_db, QStringLiteral("INSERT INTO link VALUES (?,?,?,?)"));
-	Statement conductor(db.m_db, QStringLiteral("INSERT INTO conductor VALUES (?,?,%1)").arg(placeholders(ConductorData.size())));
+	Statement meta(db, QStringLiteral("INSERT INTO meta VALUES (?,?)"));
+	Statement project_property(db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?,?)"));
+	Statement folio(db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?)").arg(placeholders(FolioData.size())));
+	Statement folio_property(db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?,?)"));
+	Statement element(db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?)").arg(placeholders(ElementData.size())));
+	Statement element_info(db, QStringLiteral("INSERT INTO element_info VALUES (?,?,?,?,?,?)"));
+	Statement link(db, QStringLiteral("INSERT INTO link VALUES (?,?,?,?)"));
+	Statement conductor(db, QStringLiteral("INSERT INTO conductor VALUES (?,?,%1)").arg(placeholders(ConductorData.size())));
 	bool ok = meta.ok() && project_property.ok() && folio.ok() && folio_property.ok()
 			&& element.ok() && element_info.ok() && link.ok() && conductor.ok();
 
@@ -543,6 +879,13 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 		int ord = 0;
 		for (QDomElement p : children(block, QStringLiteral("property")))
 			ok = ok && rows.run(QVariantList(prefix) << ord++ << entryRow(p, QStringLiteral("property")));
+	};
+		//The <elementInformation> entries of @p block, as the rows of the
+		//symbol @p key
+	auto moveInformation = [&](const QDomElement &block, const QString &key) {
+		int ord = 0;
+		for (QDomElement i : children(block, QStringLiteral("elementInformation")))
+			ok = ok && element_info.run(QVariantList{key, ord++} << entryRow(i, QStringLiteral("elementInformation")));
 	};
 
 		//Project properties
@@ -561,10 +904,22 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 		for (const QDomElement &list : children(d, QStringLiteral("conductors")))
 			all_conductors += children(list, QStringLiteral("conductor"));
 	}
+		//The keys of the rows the folios kept as they were bring, which no
+		//other item may have
+	QSet<QString> kept_elements, kept_conductors;
+	for (const QDomElement &d : diagrams) {
+		if (!d.hasAttribute(KeptPartAttribute)) continue;
+		Statement e(db, QStringLiteral("SELECT uuid FROM old.element WHERE folio_uuid = ?"));
+		e.bind({d.attribute(QStringLiteral("uuid"))});
+		while (e.next()) kept_elements.insert(e.value(0).toString());
+		Statement c(db, QStringLiteral("SELECT uuid FROM old.conductor WHERE folio_uuid = ?"));
+		c.bind({d.attribute(QStringLiteral("uuid"))});
+		while (c.next()) kept_conductors.insert(c.value(0).toString());
+	}
 	QList<bool> folio_own, element_own, conductor_own;
 	const QStringList folio_keys = keys(diagrams, &folio_own);
-	const QStringList element_keys = keys(all_elements, &element_own);
-	const QStringList conductor_keys = keys(all_conductors, &conductor_own);
+	const QStringList element_keys = keys(all_elements, &element_own, kept_elements);
+	const QStringList conductor_keys = keys(all_conductors, &conductor_own, kept_conductors);
 	int e_index = 0, c_index = 0;
 
 	int pos = 0;
@@ -573,6 +928,64 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 		const QString id = folio_keys.at(pos);
 		const bool own_id = folio_own.at(pos);
 		++pos;
+			//Kept as it was: its rows from the database it was read from,
+			//under its uuid
+		if (d.hasAttribute(KeptPartAttribute)) {
+			if (kept_from.isEmpty() || !own_id) {
+				setError(error, QStringLiteral("a folio kept as it was, without its database"));
+				return {};
+			}
+			Statement copy(db, QStringLiteral("INSERT INTO folio SELECT uuid, ?, %1, props_attrs "
+											  "FROM old.folio WHERE uuid = ?").arg(quoted(FolioData)));
+			ok = ok && copy.run({pos, id}) && sqlite3_changes(db.m_db) == 1;
+			for (const QString &sql : {
+					 QStringLiteral("INSERT INTO folio_property SELECT * FROM old.folio_property WHERE folio_uuid = ? ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO element SELECT * FROM old.element WHERE folio_uuid = ? ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO element_info SELECT * FROM old.element_info WHERE element_uuid IN "
+									"(SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO link SELECT * FROM old.link WHERE element_uuid IN "
+									"(SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
+					 QStringLiteral("INSERT INTO conductor SELECT * FROM old.conductor WHERE folio_uuid = ? ORDER BY rowid")}) {
+				Statement rows(db, sql);
+				ok = ok && rows.run({id});
+			}
+				//Its symbols whose information changed since (QETProject::toXml()):
+				//their information rows written as a symbol's block writes them
+			for (const QDomElement &edited : children(d, QStringLiteral("qetz-edited-element"))) {
+					//Its part has the place they go back to (QetContainer::split())
+				Statement find(db, QStringLiteral("SELECT uuid FROM element WHERE folio_uuid = ? AND uuid = ?"));
+				find.bind({id, edited.attribute(QStringLiteral("uuid"))});
+				if (!find.next()) {
+					setError(error, QStringLiteral("a symbol changed on folio %1 kept as it was is not in its database").arg(id));
+					return {};
+				}
+				const QString key = find.value(0).toString();
+				Statement drop(db, QStringLiteral("DELETE FROM element_info WHERE element_uuid = ?"));
+				ok = ok && drop.run({key});
+				moveInformation(edited.firstChildElement(QStringLiteral("elementInformations")), key);
+			}
+				//Its wires whose properties changed since: their columns
+			for (const QDomElement &edited : children(d, QStringLiteral("qetz-edited-conductor"))) {
+				QStringList set;
+				QVariantList values;
+				for (const QString &column : ConductorData) {
+					if (column.startsWith(QLatin1String("element")) || column.startsWith(QLatin1String("terminal"))
+							|| BooleanData.contains(column) || !edited.hasAttribute(column))
+						continue;
+					set << QStringLiteral("\"%1\" = ?").arg(column);
+					values << edited.attribute(column);
+				}
+				values << id << edited.attribute(QStringLiteral("uuid"));
+				Statement update(db, QStringLiteral("UPDATE conductor SET %1 WHERE folio_uuid = ? AND uuid = ?")
+								 .arg(set.join(QStringLiteral(", "))));
+				ok = ok && !set.isEmpty() && update.run(values) && sqlite3_changes(db.m_db) == 1;
+			}
+			if (!ok) {
+				setError(error, QStringLiteral("folio %1 kept as it was is not in its database").arg(id));
+				return {};
+			}
+			continue;
+		}
 		QVariantList row{id, pos};
 		row += take(d, FolioData);
 		QDomElement props = d.firstChildElement(QStringLiteral("properties"));
@@ -598,12 +1011,8 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 				erow << (info.isNull() ? QVariant() : blockJson(info))
 					 << (links.isNull() ? QVariant() : blockJson(links));
 				ok = ok && element.run(erow);
-				if (!info.isNull()) {
-					int ord = 0;
-					for (QDomElement i : children(info, QStringLiteral("elementInformation")))
-						ok = ok && element_info.run(QVariantList{key, ord++}
-													<< entryRow(i, QStringLiteral("elementInformation")));
-				}
+				if (!info.isNull())
+					moveInformation(info, key);
 				if (!links.isNull()) {
 					int ord = 0;
 					for (QDomElement l : children(links, QStringLiteral("link_uuid")))
@@ -632,10 +1041,10 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 	const QDomElement strips = project.firstChildElement(QStringLiteral("terminal_strips"));
 	StripRows strip_rows;
 	if (!strips.isNull() && stripRows(strips, &strip_rows)) {
-		Statement st(db.m_db, QStringLiteral("INSERT INTO terminal_strip VALUES (?,?,?,?,?,?,?)"));
-		Statement tt(db.m_db, QStringLiteral("INSERT INTO strip_terminal VALUES (?,?,?,?)"));
-		Statement bt(db.m_db, QStringLiteral("INSERT INTO strip_bridge VALUES (?,?,?,?)"));
-		Statement btt(db.m_db, QStringLiteral("INSERT INTO strip_bridge_terminal VALUES (?,?,?)"));
+		Statement st(db, QStringLiteral("INSERT INTO terminal_strip VALUES (?,?,?,?,?,?,?)"));
+		Statement tt(db, QStringLiteral("INSERT INTO strip_terminal VALUES (?,?,?,?)"));
+		Statement bt(db, QStringLiteral("INSERT INTO strip_bridge VALUES (?,?,?,?)"));
+		Statement btt(db, QStringLiteral("INSERT INTO strip_bridge_terminal VALUES (?,?,?)"));
 		for (const QVariantList &r : strip_rows.strips) ok = ok && st.run(r);
 		for (const QVariantList &r : strip_rows.terminals) ok = ok && tt.run(r);
 		for (const QVariantList &r : strip_rows.bridges) ok = ok && bt.run(r);
@@ -646,6 +1055,13 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error)
 
 	if (!ok || !db.exec(QStringLiteral("COMMIT"))) {
 		setError(error, QStringLiteral("cannot fill the project database: %1").arg(db.error()));
+		return {};
+	}
+	if (!kept_from.isEmpty()) {
+		sqlite3_exec(db.m_db, "DETACH DATABASE old", nullptr, nullptr, nullptr);
+	}
+	if (!plainTables(db.m_db)) {
+		setError(error, QStringLiteral("cannot write the project database: %1").arg(db.error()));
 		return {};
 	}
 
@@ -669,91 +1085,23 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 {
 	QDomDocument document = project.ownerDocument();
 	Database db;
-	if (sqlite3_open(":memory:", &db.m_db) != SQLITE_OK) {
-		setError(error, QStringLiteral("cannot open the project database"));
+	if (!openDatabase(db, database, error))
 		return false;
-	}
-	unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
-	if (!copy) { setError(error, QStringLiteral("out of memory")); return false; }
-	memcpy(copy, database.constData(), size_t(database.size()));
-	if (sqlite3_deserialize(db.m_db, "main", copy, database.size(), database.size(),
-							SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_READONLY) != SQLITE_OK) {
-		setError(error, QStringLiteral("the project database cannot be read"));
-		return false;
-	}
-		//A file is untrusted: nothing in its schema may run, and every name
-		//read must be a plain table.
-	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
-	db.exec(QStringLiteral("PRAGMA query_only = ON"));
-	for (const char *table : {"meta", "project_property", "folio", "folio_property",
-							  "element", "element_info", "link", "conductor", "terminal_strip",
-							  "strip_terminal", "strip_bridge", "strip_bridge_terminal"}) {
-		Statement kind(db.m_db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
-		kind.bind({QString::fromLatin1(table)});
-		if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
-			setError(error, QStringLiteral("the project database has no table %1").arg(QLatin1String(table)));
-			return false;
-		}
-	}
-
-	auto entry = [&document](const QVariant &name_attr, const QString &name, const QVariant &value,
-							 const QVariant &attrs, const QString &default_tag, const QVariant &show = QVariant()) {
-		const QJsonObject o = QJsonDocument::fromJson(attrs.toString().toUtf8()).object();
-		QDomElement e = document.createElement(o.value(QStringLiteral("tag")).toString(default_tag));
-		if (!name_attr.isNull()) e.setAttribute(name, name_attr.toString());
-		if (!show.isNull()) e.setAttribute(QStringLiteral("show"), show.toString());
-		setAttributesJson(e, attrs);
-		if (!value.isNull()) e.appendChild(document.createTextNode(value.toString()));
-		return e;
-	};
 
 		//Project properties
 	QHash<QString, QVariant> meta;
 	{
-		Statement s(db.m_db, QStringLiteral("SELECT key, value FROM meta"));
+		Statement s(db, QStringLiteral("SELECT key, value FROM meta"));
 		while (s.next()) meta.insert(s.value(0).toString(), s.value(1));
 	}
-		//Format 2 (QElectroTech 0.200.1 development builds) keyed its rows
-		//apart from the items' uuids: "f1", "e1", "c1" where an item had
-		//none of its own, and every item's key in the folio file
-	const int format = meta.value(QStringLiteral("format")).toString().toInt();
-		//A later format is read when the manifest's min-reader allows it
-		//(QetContainer::join()): its writer kept what this reads
-	if (format < 2) {
-		setError(error, QStringLiteral("the project database is of format %1, this reads format 2 on")
-				 .arg(meta.value(QStringLiteral("format")).toString()));
-		return false;
-	}
-	const bool v2 = format == 2;
-	const QString folio_key = v2 ? QStringLiteral("id") : QStringLiteral("uuid");
-	const QString folio_ref = v2 ? QStringLiteral("folio_id") : QStringLiteral("folio_uuid");
-	const QString item_key = v2 ? QStringLiteral("key") : QStringLiteral("uuid");
-	const QString element_ref = v2 ? QStringLiteral("element_key") : QStringLiteral("element_uuid");
-	const QString show_column = v2 ? QStringLiteral("NULL") : QStringLiteral("show");
-	const QStringList element_data = v2 ? ElementDataV2 : ElementData;
-	const QStringList conductor_data = v2 ? QStringList{QStringLiteral("uuid")} + ConductorData : ConductorData;
-	auto quoted = [](const QStringList &names) {
-		return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
-	};
-		//An item's key: the one it was given, else (format 3) its uuid
-	auto keyOf = [v2](QDomElement e, const QString &attribute) {
-		if (e.hasAttribute(attribute)) {
-			const QString key = e.attribute(attribute);
-			e.removeAttribute(attribute);
-			return key;
-		}
-		return v2 ? QString() : e.attribute(QStringLiteral("uuid"));
-	};
-		//A moved block goes back where its marker is: the marker says it
-		//was there
 	if (hasMarker(project, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, meta.value(QStringLiteral("props_attrs")));
-		Statement s(db.m_db, QStringLiteral("SELECT name, value, attrs, %1 FROM project_property ORDER BY ord")
-					.arg(show_column));
+		Statement s(db, QStringLiteral("SELECT name, value, attrs, %1 FROM project_property ORDER BY ord")
+					.arg(db.showColumn()));
 		while (s.next())
-			props.appendChild(entry(s.value(0), QStringLiteral("name"), s.value(1), s.value(2),
-									QStringLiteral("property"), s.value(3)));
+			props.appendChild(entryElement(document, s.value(0), QStringLiteral("name"), s.value(1), s.value(2),
+										   QStringLiteral("property"), s.value(3)));
 		restoreWhitespace(props, meta.value(QStringLiteral("props_attrs")));
 		if (!replaceMarker(project, props)) {
 			setError(error, QStringLiteral("the project's properties have no place"));
@@ -764,7 +1112,7 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 	if (meta.contains(QStringLiteral("terminal_strips"))) {
 		StripRows rows;
 		auto read = [&db](const QString &sql, int columns, QList<QVariantList> *out) {
-			Statement s(db.m_db, sql);
+			Statement s(db, sql);
 			while (s.next()) {
 				QVariantList r;
 				for (int i = 0 ; i < columns ; ++i) r << s.value(i);
@@ -781,134 +1129,34 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		}
 	}
 
-		//Every row must be an item's, once, on the folio the item is on:
-		//nothing enforces it in the file, which is untrusted
-	QSet<QString> folios_used, elements_used, conductors_used;
-	auto use = [error](QSet<QString> &used, const QString &key, const QString &what) {
-		if (used.contains(key)) {
-			setError(error, QStringLiteral("%1 %2 is in the folios twice").arg(what, key));
-			return false;
-		}
-		used.insert(key);
-		return true;
-	};
+	UsedRows used;
 	for (QDomElement d : children(project, QStringLiteral("diagram")))
-	{
-		const QString id = keyOf(d, FolioAttribute);
-		if (id.isEmpty()) continue;
-		if (!use(folios_used, id, QStringLiteral("folio"))) return false;
-		Statement f(db.m_db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE %2 = ?")
-					.arg(quoted(FolioData), folio_key));
-		f.bind({id});
-		if (!f.next()) { setError(error, QStringLiteral("folio %1 is not in the database").arg(id)); return false; }
-		QVariantList values;
-		for (int i = 0 ; i < FolioData.size() + 1 ; ++i) values << f.value(i);
-		put(d, FolioData, values, 0);
-		if (hasMarker(d, QStringLiteral("properties"))) {
-			QDomElement props = document.createElement(QStringLiteral("properties"));
-			setAttributesJson(props, values.at(FolioData.size()));
-			Statement p(db.m_db, QStringLiteral("SELECT name, value, attrs, %1 FROM folio_property WHERE %2 = ? ORDER BY ord")
-						.arg(show_column, folio_ref));
-			p.bind({id});
-			while (p.next())
-				props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
-										QStringLiteral("property"), p.value(3)));
-			restoreWhitespace(props, values.at(FolioData.size()));
-			if (!replaceMarker(d, props)) {
-				setError(error, QStringLiteral("folio %1's properties have no place").arg(id));
-				return false;
-			}
-		}
-
-		for (const QDomElement &list : children(d, QStringLiteral("elements"))) {
-			for (QDomElement e : children(list, QStringLiteral("element"))) {
-				const QString key = keyOf(e, KeyAttribute);
-				if (key.isEmpty()) continue;
-				if (!use(elements_used, key, QStringLiteral("symbol"))) return false;
-				Statement s(db.m_db, QStringLiteral("SELECT %1, info_attrs, links_attrs, %2 FROM element WHERE %3 = ?")
-							.arg(quoted(element_data), folio_ref, item_key));
-				s.bind({key});
-				if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
-				if (s.value(element_data.size() + 2).toString() != id) {
-					setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
-					return false;
-				}
-				QVariantList v;
-				for (int i = 0 ; i < element_data.size() + 2 ; ++i) v << s.value(i);
-				put(e, element_data, v, 0);
-				const int n = element_data.size();
-				QDomElement info, links;
-				if (hasMarker(e, QStringLiteral("elementInformations"))) {
-					info = document.createElement(QStringLiteral("elementInformations"));
-					setAttributesJson(info, v.at(n));
-					Statement i(db.m_db, QStringLiteral("SELECT name, value, attrs, %1 FROM element_info WHERE %2 = ? ORDER BY ord")
-								.arg(show_column, element_ref));
-					i.bind({key});
-					while (i.next())
-						info.appendChild(entry(i.value(0), QStringLiteral("name"), i.value(1), i.value(2),
-											   QStringLiteral("elementInformation"), i.value(3)));
-					restoreWhitespace(info, v.at(n));
-				}
-				if (hasMarker(e, QStringLiteral("links_uuids"))) {
-					links = document.createElement(QStringLiteral("links_uuids"));
-					setAttributesJson(links, v.at(n + 1));
-					Statement l(db.m_db, QStringLiteral("SELECT linked_uuid, attrs FROM link WHERE %1 = ? ORDER BY ord").arg(element_ref));
-					l.bind({key});
-					while (l.next())
-						links.appendChild(entry(l.value(0), QStringLiteral("uuid"), QVariant(), l.value(1),
-												QStringLiteral("link_uuid")));
-					restoreWhitespace(links, v.at(n + 1));
-				}
-				if ((!info.isNull() && !replaceMarker(e, info))
-					|| (!links.isNull() && !replaceMarker(e, links))) {
-					setError(error, QStringLiteral("symbol %1's information has no place").arg(key));
-					return false;
-				}
-			}
-		}
-		for (const QDomElement &list : children(d, QStringLiteral("conductors"))) {
-			for (QDomElement c : children(list, QStringLiteral("conductor"))) {
-				const QString key = keyOf(c, KeyAttribute);
-				if (key.isEmpty()) continue;
-				if (!use(conductors_used, key, QStringLiteral("wire"))) return false;
-				Statement s(db.m_db, QStringLiteral("SELECT %1, %2 FROM conductor WHERE %3 = ?")
-							.arg(quoted(conductor_data), folio_ref, item_key));
-				s.bind({key});
-				if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
-				if (s.value(conductor_data.size()).toString() != id) {
-					setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
-					return false;
-				}
-				QVariantList v;
-				for (int i = 0 ; i < conductor_data.size() ; ++i) v << s.value(i);
-				put(c, conductor_data, v, 0);
-			}
-		}
-	}
-
-		//No row left over: each table's rows, counted, are the items read,
-		//and every entry belongs to a row
-	auto count = [&db](const QString &sql) {
-		Statement s(db.m_db, sql);
-		return s.next() ? s.value(0).toInt() : -1;
-	};
-	const struct { QString sql; int expected; QString what; } checks[] = {
-		{QStringLiteral("SELECT count(*) FROM folio"), int(folios_used.size()), QStringLiteral("folio rows")},
-		{QStringLiteral("SELECT count(*) FROM element"), int(elements_used.size()), QStringLiteral("symbol rows")},
-		{QStringLiteral("SELECT count(*) FROM conductor"), int(conductors_used.size()), QStringLiteral("wire rows")},
-		{QStringLiteral("SELECT count(*) FROM folio_property WHERE %1 NOT IN (SELECT %2 FROM folio)")
-				.arg(folio_ref, folio_key), 0, QStringLiteral("folio property rows of no folio")},
-		{QStringLiteral("SELECT count(*) FROM element_info WHERE %1 NOT IN (SELECT %2 FROM element)")
-				.arg(element_ref, item_key), 0, QStringLiteral("information rows of no symbol")},
-		{QStringLiteral("SELECT count(*) FROM link WHERE %1 NOT IN (SELECT %2 FROM element)")
-				.arg(element_ref, item_key), 0, QStringLiteral("link rows of no symbol")}};
-	for (const auto &check : checks) {
-		const int found = count(check.sql);
-		if (found != check.expected) {
-			setError(error, QStringLiteral("the project database does not match its folios: %1 %2, %3 expected")
-					 .arg(found).arg(check.what).arg(check.expected));
+		if (!restoreDiagram(db, d, used, error))
 			return false;
-		}
+	return noRowLeft(db, used, error);
+}
+
+/**
+	@brief QetContainerDb::currentFormat
+	@return true if @p database, a project.sqlite, is of the format this
+	writes: a folio written as it was read keeps its rows, copied as they
+	are (stage D4)
+*/
+bool QetContainerDb::currentFormat(const QByteArray &database)
+{
+	Database db;
+	if (!openDatabase(db, database, nullptr) || db.m_format != QetContainer::Format)
+		return false;
+		//Its rows are copied as they are: the same columns as this writes
+	const QList<std::pair<QString, int>> columns = {
+		{QStringLiteral("folio"), int(FolioData.size()) + 3},
+		{QStringLiteral("element"), int(ElementData.size()) + 4},
+		{QStringLiteral("conductor"), int(ConductorData.size()) + 2},
+		{QStringLiteral("folio_property"), 6}, {QStringLiteral("element_info"), 6}};
+	for (const auto &table : columns) {
+		Statement s(db, QStringLiteral("SELECT count(*) FROM pragma_table_info('%1')").arg(table.first));
+		if (!s.next() || s.value(0).toInt() != table.second)
+			return false;
 	}
 	return true;
 }

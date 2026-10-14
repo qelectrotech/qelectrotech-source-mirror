@@ -1,6 +1,9 @@
 #include "wiringlistexport.h"
 #include "qetproject.h"
 #include "diagram.h"
+#include "dataBase/projectdatabase.h"
+#include "ElementsCollection/xmlelementcollection.h"
+#include "qetgraphicsitem/element.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
@@ -28,8 +31,8 @@ QString WiringListExport::findDiagramFolio(const QDomElement &diagramElem) const
     // The folio number as the folio shows it ("3/12"). The saved "folio"
     // attribute is its template ("%id/%total").
     const int index = diagramElem.attribute("order").toInt();
-    if (m_project && index >= 1 && index <= m_project->diagrams().size()) {
-        return m_project->diagrams().at(index - 1)->border_and_titleblock
+    if (m_project && index >= 1 && index <= m_project->folios().size()) {
+        return m_project->folios().at(index - 1)->border_and_titleblock
                 .titleblockInformation().value("folio").toString();
     }
     if (diagramElem.hasAttribute("folio")) return diagramElem.attribute("folio");
@@ -46,6 +49,89 @@ QDomElement WiringListExport::climbToDiagram(QDomNode node) const
         node = node.parentNode();
     }
     return QDomElement();
+}
+
+/**
+    The project as the export reads it: its symbol collection and its folios
+    in order, each with its "order". A folio not built (lazy folios) is
+    not built for it: its XML is copied, and what QElectroTech computes for
+    its wires' ends -- the labels of the symbols they end on and of their
+    partners, the terminals' names -- is filled in from the symbols built
+    (on built folios or alone, as partners) and from the project database.
+*/
+QDomDocument WiringListExport::projectDocument() const
+{
+    QDomDocument document;
+    QDomElement root = document.createElement(QStringLiteral("project"));
+    document.appendChild(root);
+    if (XmlElementCollection *collection = m_project->embeddedElementCollection())
+        root.appendChild(document.importNode(collection->root(), true));
+
+        //A folio whose partners built alone were linked or unlinked since
+        //is not what its XML says: built, as saving builds it
+    for (Diagram *diagram : m_project->folios())
+        if (!diagram->isLoaded() && diagram->partialChanged())
+            m_project->buildFolios({diagram});
+
+    QHash<QUuid, Element *> built;
+    for (Diagram *diagram : m_project->folios()) {
+        if (diagram->isLoaded()) {
+            for (Element *element : diagram->elements()) built.insert(element->uuid(), element);
+        } else {
+            const QHash<QUuid, Element *> partial = diagram->partialElements();
+            for (auto it = partial.cbegin() ; it != partial.cend() ; ++it) built.insert(it.key(), it.value());
+        }
+    }
+    projectDataBase *database = m_project->dataBase();
+    auto label = [&built, database](const QUuid &uuid) {
+        Element *element = built.value(uuid);
+        return element ? element->actualLabel() : database->elementLabel(uuid);
+    };
+        //Conductor::toXml(): the label of the last of the symbol's partners.
+        //A symbol still waiting for a partner not built has its links as
+        //saved, in the database
+    auto linked = [&built, database, &label](const QUuid &uuid) -> std::optional<QString> {
+        Element *element = built.value(uuid);
+        if (element && element->pendingLinks().isEmpty()) {
+            if (element->linkedElements().isEmpty()) return std::nullopt;
+            return element->linkedElements().last()->actualLabel();
+        }
+        const QList<QUuid> links = database->linkedSymbols(uuid);
+        if (links.isEmpty()) return std::nullopt;
+        return label(links.last());
+    };
+
+    const QList<Diagram *> folios = m_project->folios();
+    for (int i = 0 ; i < folios.size() ; ++i) {
+        Diagram *diagram = folios.at(i);
+        QDomElement folio;
+        const bool is_built = diagram->isLoaded();
+        folio = document.importNode(is_built ? m_project->folioXml(diagram).documentElement()
+                                             : diagram->deferredXml(), true).toElement();
+            //A built folio's wires describe their ends but a partner not
+            //built yet; a folio not built has none of it in its part (.qetz)
+            //or as read, before any change (.qet)
+        QDomNodeList wires = folio.elementsByTagName(QStringLiteral("conductor"));
+        for (int w = 0 ; w < wires.size() ; ++w) {
+            QDomElement wire = wires.at(w).toElement();
+            for (const QString end : {QStringLiteral("1"), QStringLiteral("2")}) {
+                const QUuid element(wire.attribute(QStringLiteral("element") + end));
+                if (element.isNull()) continue;   //an end saved the older way
+                if (const auto partner = linked(element))
+                    wire.setAttribute(QStringLiteral("element") + end + QStringLiteral("_linked"), *partner);
+                else
+                    wire.removeAttribute(QStringLiteral("element") + end + QStringLiteral("_linked"));
+                if (is_built) continue;
+                wire.setAttribute(QStringLiteral("element") + end + QStringLiteral("_label"), label(element));
+                wire.setAttribute(QStringLiteral("terminalname") + end,
+                                  database->terminalName(QUuid(wire.attribute(QStringLiteral("terminal") + end)),
+                                                         element));
+            }
+        }
+        folio.setAttribute(QStringLiteral("order"), i + 1);
+        root.appendChild(folio);
+    }
+    return document;
 }
 
 QMap<QString, ElementInfo> WiringListExport::collectElementsInfo(const QDomElement &root) const
@@ -191,7 +277,7 @@ QString WiringListExport::toCsvString() const
 {
     if (!m_project) return QString();
 
-    QDomDocument doc = m_project->toXml();
+    QDomDocument doc = projectDocument();
     if (doc.isNull()) return QString();
 
     QSet<QString> conductorDefinitionTypes;

@@ -19,11 +19,12 @@
 #include "qetproject.h"
 #include "qetapp.h"
 #include "diagram.h"
-#include "diagramcontent.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
+#include "dataBase/projectdatabase.h"
+#include "properties/elementdata.h"
 
 #include <QFileDialog>
 
@@ -114,10 +115,30 @@ void ConductorNumExport::fillHash()
 {
 	//We used this rx to avoid insert num composed only withe white space.
 	QRegularExpression rx("^ *$");
-	for (Diagram *d : m_project->diagrams())
+	auto count = [this](const QString &num) {
+		m_hash.insert(num, m_hash.value(num, 0) + 1);
+	};
+		//The folios not built (lazy folios): their wires from the
+		//project database, by the same rules
+	QList<QUuid> unbuilt;
+	for (Diagram *d : m_project->folios())
+		if (!d->isLoaded()) unbuilt << d->uuid();
+	for (const auto &wire : m_project->dataBase()->wiresOnFolios(unbuilt))
 	{
-		DiagramContent dc(d, false);
-		for (Conductor *c : dc.conductors())
+		if (wire.text.isEmpty() || wire.text.contains(rx)) {
+			continue;
+		}
+		const bool report1 = ElementData::typeFromString(wire.kind1) & ElementData::AllReport;
+		const bool report2 = ElementData::typeFromString(wire.kind2) & ElementData::AllReport;
+		if (!(report1 && report2)) {
+			count(wire.text);
+		}
+	}
+	for (Diagram *d : m_project->builtFolios())
+	{
+			//Its wires only: a DiagramContent would follow their
+			//potentials onto other folios, building those not built
+		for (Conductor *c : d->conductors())
 		{
 			QString num = c->textItem()->toPlainText();
 			if (num.isEmpty() || num.contains(rx)) {

@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QList>
 #include <QStringList>
+#include <QDomDocument>
 
 class QETProject;
 class QWidget;
@@ -60,6 +61,7 @@ private:
     QString normalizeUuid(const QString &u) const;
     QString findDiagramFolio(const QDomElement &diagramElem) const;
     QDomElement climbToDiagram(QDomNode node) const;
+    QDomDocument projectDocument() const;
 
     QMap<QString, ElementInfo> collectElementsInfo(const QDomElement &root) const;
     QList<ConductorData> collectConductors(const QDomElement &root) const;

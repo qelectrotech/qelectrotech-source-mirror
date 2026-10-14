@@ -1649,7 +1649,7 @@ void DiagramView::editDiagramProperties()
 	@brief DiagramView::buildFolio
 	Build the items of the folio this view shows, and those of the folios
 	its cross-references need, if the project was opened without them
-	(QET_LAZY_FOLIOS); then fit the view to them.
+	(lazy folios); then fit the view to them.
 */
 void DiagramView::buildFolio()
 {

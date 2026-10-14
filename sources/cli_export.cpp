@@ -873,16 +873,15 @@ int exportLinks(QETProject &project, const QString &output)
 int resaveProject(QETProject &project, const QString &output)
 {
 	if (QETProject::isContainerPath(output)) {
-		const QDomDocument doc = project.toXml();
 		QString error;
-		if (!QETProject::writeContainer(doc, output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
 		out << "Re-saved project -> " << output << "\n";
 		return 0;
 	}
-		//Folios not built (QET_LAZY_FOLIOS) written as read when that is
+		//Folios not built (lazy folios) written as read when that is
 		//what building them would write (QETProject::toXml())
 	QHash<int, QByteArray> kept_folios;
 	const QDomDocument doc = project.toXml(&kept_folios);
@@ -971,15 +970,14 @@ int setTitleBlock(QETProject &project, const QString &output,
 	}
 
 	if (QETProject::isContainerPath(output)) {
-		const QDomDocument doc = project.toXml();
 		QString error;
-		if (!QETProject::writeContainer(doc, output, &error)) {
+		if (!project.writeContainerFile(output, &error)) {
 			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
 	} else {
-			//Folios not built (QET_LAZY_FOLIOS) written as read when that is
-			//what building them would write (QETProject::toXml())
+			//Folios not built (lazy folios) written as read when that
+			//is what building them would write (QETProject::toXml())
 		QHash<int, QByteArray> kept_folios;
 		const QDomDocument doc = project.toXml(&kept_folios);
 		QFile file(output);
