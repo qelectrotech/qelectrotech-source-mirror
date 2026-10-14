@@ -1034,6 +1034,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
 			{
 				const auto uuid_ = QUuid(xml_real.attribute(QStringLiteral("element_uuid")));
+				bool found = false;
 				for (auto terminal_elmt : std::as_const(free_terminals))
 				{
 					if (terminal_elmt->uuid() == uuid_)
@@ -1042,8 +1043,14 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 							//Remove the actual terminal element from the vector, they dicrease the size
 							//of the vector and so each iteration have less terminal element to check
 						free_terminals.removeOne(terminal_elmt);
+						found = true;
 						break;
 					}
+				}
+				if (!found) {
+					qWarning() << "TerminalStrip::fromXml: strip" << name()
+							   << "lists terminal" << uuid_.toString()
+							   << "but no free terminal symbol has this uuid; it is left out";
 				}
 			}
 
