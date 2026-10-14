@@ -46,6 +46,7 @@
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
 
+#include <QCryptographicHash>
 #include <QElapsedTimer>
 #include <QHash>
 #include <QTimer>
@@ -412,11 +413,25 @@ QUuid QETProject::derivedUuid(const QByteArray &content)
 	static const QUuid project_namespace(
 				QStringLiteral("{c8c75719-0fea-4b1c-9f4b-2dd179fb2f0c}"));
 
-	QByteArray normalized(content);
-	normalized.replace('\r', QByteArray());
-	return QUuid::createUuidV5(project_namespace,
-							   QByteArrayLiteral("qet-project-legacy\n")
-							   + normalized);
+		//Same result as QUuid::createUuidV5(project_namespace,
+		//"qet-project-legacy\n" + content without '\r'), hashed in place :
+		//copying the content twice took 2 s of opening a 263 MB project.
+	QCryptographicHash hash(QCryptographicHash::Sha1);
+	hash.addData(project_namespace.toRfc4122());
+	hash.addData(QByteArrayView("qet-project-legacy\n"));
+	const QByteArrayView view(content);
+	qsizetype start = 0;
+	while (start < view.size()) {
+		qsizetype cr = view.indexOf('\r', start);
+		if (cr < 0)
+			cr = view.size();
+		hash.addData(view.sliced(start, cr - start));
+		start = cr + 1;
+	}
+	QByteArray bytes = hash.result().left(16);
+	bytes[6] = char((bytes[6] & 0x0F) | 0x50); // version 5
+	bytes[8] = char((bytes[8] & 0x3F) | 0x80); // RFC 4122 variant
+	return QUuid::fromRfc4122(bytes);
 }
 
 /**
