@@ -62,33 +62,80 @@ namespace ConductorMultiEdit
 		@brief targets
 		@param selected : the edited conductors
 		@param apply_all : true to add every conductor of their potentials
+		@param function_separated : set to the conductors that share the
+		potential of an edited one only by crossing a function separated
+		terminal element -- conductors undo() then gives the voltage /
+		protocol only, and no other property. nullptr, the default, leaves
+		those conductors out of the returned list entirely.
+
+		A conductor the user picked themselves is never part of it: the
+		selection is the edit reaching that conductor, so it takes the
+		full edit however remote it is from the other selected ones --
+		picking a wire on each side of a separation and editing them is
+		exactly that. Nor is a conductor that belongs to a potential, on
+		any path, however far that potential is reached.
 		@return each conductor an edit reaches, once
 	*/
 	template <typename T>
-	QList<T *> targets(const QList<T *> &selected, bool apply_all)
+	QList<T *> targets(const QList<T *> &selected, bool apply_all,
+			   QSet<T *> *function_separated = nullptr)
 	{
 		QList<T *> list;
 		QSet<T *> seen;
+			//The explicitly picked ones, so a separation met while walking
+			//the list cannot demote a wire the user asked to edit.
+		QSet<T *> chosen;
+		for (T *conductor : selected)
+			if (conductor)
+				chosen.insert(conductor);
+			//What the potentials reach, and what only a function separation
+			//reaches. A conductor can be in both -- wired normally on one
+			//path and across a separation on another -- and then belongs to
+			//the potential.
+		QSet<T *> potential_reached, separated_reached;
+
 		for (T *conductor : selected)
 		{
-				//Already reached through an earlier conductor's potential:
-				//its own potential is the same one.
-			if (!conductor || seen.contains(conductor))
+			if (!conductor)
 				continue;
-			seen.insert(conductor);
-			list << conductor;
-			if (!apply_all)
+				//Already reached through an earlier conductor's potential or
+				//separation: its own potential adds nothing new to walk over
+				//-- unless the user picked it, because a separation may have
+				//put it in the list before its potential was ever reached.
+			const bool fresh = !seen.contains(conductor);
+			if (fresh)
+			{
+				seen.insert(conductor);
+				list << conductor;
+			}
+			if (!apply_all || (!fresh && !chosen.contains(conductor)))
 				continue;
 			const QSet<T *> potential = conductor->relatedPotentialConductors();
 			for (T *other : potential)
 			{
+				potential_reached.insert(other);
 				if (!seen.contains(other))
 				{
 					seen.insert(other);
 					list << other;
 				}
 			}
+			if (function_separated)
+			{
+				const QSet<T *> separated = conductor->functionSeparatedConductors();
+				for (T *other : separated)
+				{
+					separated_reached.insert(other);
+					if (!seen.contains(other))
+					{
+						seen.insert(other);
+						list << other;
+					}
+				}
+			}
 		}
+		if (function_separated)
+			*function_separated = separated_reached - potential_reached - chosen;
 		return list;
 	}
 
@@ -97,13 +144,18 @@ namespace ConductorMultiEdit
 		@param targets : the conductors to change, see targets()
 		@param shown : the properties as the panel showed them
 		@param edited : the properties after the user's edit
+		@param function_separated : the targets of targets() that only a
+		function separated terminal element links to the edited
+		conductors: they get the voltage / protocol and nothing else
+		(@see ConductorProperties::applyTensionProtocolChange)
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
 	*/
 	template <typename T>
 	QUndoCommand *undo(const QList<T *> &targets,
 			   const ConductorProperties &shown,
-			   const ConductorProperties &edited)
+			   const ConductorProperties &edited,
+			   const QSet<T *> &function_separated = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
@@ -114,7 +166,10 @@ namespace ConductorMultiEdit
 		{
 			const ConductorProperties old_properties = conductor->properties();
 			ConductorProperties properties = old_properties;
-			properties.applyChanges(shown, edited);
+			if (function_separated.contains(conductor))
+				properties.applyTensionProtocolChange(shown, edited);
+			else
+				properties.applyChanges(shown, edited);
 			if (properties == old_properties)
 				continue;
 

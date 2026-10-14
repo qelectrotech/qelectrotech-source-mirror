@@ -151,7 +151,10 @@ class Conductor : public QGraphicsObject
 		virtual void setHighlighted(Highlight);
 		QSet<Conductor *> relatedPotentialConductors(
 				const bool all_diagram = true,
-				QList <Terminal *> *t_list=nullptr);
+				QList <Terminal *> *t_list=nullptr,
+				const bool ignore_function_separation = false);
+		QSet<Conductor *> functionSeparatedConductors(
+				const bool all_diagram = true);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
