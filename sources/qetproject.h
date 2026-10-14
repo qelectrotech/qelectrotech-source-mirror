@@ -319,6 +319,8 @@ class QETProject : public QObject
 		bool close();
 		QETResult write();
 		bool isReadOnly() const;
+			/// Opened from a .qetz of a later format (opened read-only)
+		bool isFromLaterVersion() const {return m_from_later_version;}
 		void setReadOnly(bool);
 		bool isEmpty() const;
 		ElementsLocation importElement(ElementsLocation &location);
@@ -466,6 +468,7 @@ class QETProject : public QObject
 		bool m_modified = false;
 			/// Whether the project is read only
 		bool m_read_only = false;
+		bool m_from_later_version = false;
 			/// Filepath for which this project is considered read only
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project

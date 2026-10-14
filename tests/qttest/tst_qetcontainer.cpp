@@ -69,6 +69,57 @@ class tst_qetcontainer : public QObject
 		return QetContainer::split(*original, QStringLiteral("tst_qetcontainer"), &error);
 	}
 
+	static QByteArray entry(const QList<QetZip::Entry> &entries, const QString &name)
+	{
+		for (const QetZip::Entry &e : entries)
+			if (e.name == name) return e.data;
+		return {};
+	}
+
+	static QByteArray folioFiles(const QList<QetZip::Entry> &entries)
+	{
+		QByteArray all;
+		for (const QetZip::Entry &e : entries)
+			if (e.name.startsWith(QStringLiteral("folios/"))) all += e.data;
+		return all;
+	}
+
+		// The first column of the first row @p sql gives, from @p database
+	static QString query(const QByteArray &database, const char *sql)
+	{
+		sqlite3 *db = nullptr;
+		sqlite3_open(":memory:", &db);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(database.size())));
+		memcpy(copy, database.constData(), size_t(database.size()));
+		sqlite3_deserialize(db, "main", copy, database.size(), database.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		sqlite3_stmt *st = nullptr;
+		QString out;
+		if (sqlite3_prepare_v2(db, sql, -1, &st, nullptr) == SQLITE_OK && sqlite3_step(st) == SQLITE_ROW)
+			out = QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(st, 0)));
+		sqlite3_finalize(st);
+		sqlite3_close(db);
+		return out;
+	}
+
+		// grafcet.qet as QElectroTech saves it: every folio, symbol and wire
+		// with a uuid of its own, which the examples' wires and folios lack
+	static QDomDocument savedProject()
+	{
+		QList<QetZip::Entry> entries;
+		QDomDocument project;
+		QetZip::fromBytes(read(QStringLiteral(QET_FIXTURES_DIR "/qetz_format2.qetz")), &entries);
+		QetContainer::join(entries, &project);
+		return project;
+	}
+
+	static QString backDifference(const QDomDocument &original, const QList<QetZip::Entry> &entries)
+	{
+		QDomDocument back;
+		QString error;
+		if (!QetContainer::join(entries, &back, &error)) return error;
+		return difference(original.documentElement(), back.documentElement(), QString());
+	}
+
 private slots:
 	void sameDocumentBack_data()
 	{
@@ -280,6 +331,107 @@ private slots:
 	}
 
 	// A file whose manifest needs a later reader is refused, not half read
+	// A later format whose min-reader allows this one opens, and join() says
+	// it is later: QElectroTech opens it read-only
+	void laterFormatAllowedRead()
+	{
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		const int later = QetContainer::Format + 1;
+		for (QetZip::Entry &e : entries)
+			if (e.name == QLatin1String("manifest.xml"))
+				e.data = QString::fromUtf8(e.data).replace(QRegularExpression(QStringLiteral(" format=\"\\d+\"")),
+														   QStringLiteral(" format=\"%1\"").arg(later)).toUtf8();
+		alterDatabase(entries, QStringLiteral("UPDATE meta SET value = '%1' WHERE key = 'format'")
+					  .arg(later).toUtf8().constData());
+		QDomDocument back;
+		QString error;
+		int format = 0;
+		QVERIFY2(QetContainer::join(entries, &back, &error, nullptr, &format), qPrintable(error));
+		QCOMPARE(format, later);
+		const QString d = difference(original.documentElement(), back.documentElement(), QString());
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// The database holds data, not where a block sat in the XML: the folio
+	// file's marker says where it goes back
+	void noPositionColumns()
+	{
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		QCOMPARE(query(database, "SELECT group_concat(name) FROM pragma_table_info('element')"),
+				 QStringLiteral("uuid,folio_uuid,prefix,freezeLabel,info_attrs,links_attrs"));
+		QCOMPARE(query(database, "SELECT count(*) FROM pragma_table_info('folio') WHERE name LIKE '%_at'"),
+				 QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM meta WHERE key = 'props_at'"), QStringLiteral("0"));
+	}
+
+	// A project as QElectroTech saves it needs no JSON: every attribute it
+	// writes has a column, the show flag of a property too
+	void savedProjectNeedsNoJson()
+	{
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(savedProject(), QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		QVERIFY(query(database, "SELECT count(*) FROM project_property").toInt() > 0);
+		QCOMPARE(query(database, "SELECT count(*) FROM project_property WHERE show IS NOT NULL"),
+				 query(database, "SELECT count(*) FROM project_property"));
+		for (const char *sql : {"SELECT count(*) FROM project_property WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM folio_property WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM element_info WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM link WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM folio WHERE props_attrs IS NOT NULL",
+								"SELECT count(*) FROM element WHERE info_attrs IS NOT NULL OR links_attrs IS NOT NULL"})
+			QVERIFY2(query(database, sql) == QLatin1String("0"), sql);
+	}
+
+	// The schema in QETZ-FORMAT.md is the one written: same tables, same
+	// columns in the same order, same types and keys
+	void specMatchesSchema()
+	{
+		const QString spec = QString::fromUtf8(read(QStringLiteral(QET_FORMAT_SPEC)));
+		const int from = spec.indexOf(QStringLiteral("```sql\n"));
+		const int to = spec.indexOf(QStringLiteral("```"), from + 7);
+		QVERIFY2(from >= 0 && to > from, "no schema in QETZ-FORMAT.md");
+		const QByteArray sql = spec.mid(from + 7, to - from - 7).toUtf8();
+
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		const QByteArray written = entry(entries, QStringLiteral("project.sqlite"));
+
+		auto describe = [](sqlite3 *db) {
+			QStringList out;
+			sqlite3_stmt *st = nullptr;
+			sqlite3_prepare_v2(db, "SELECT m.name, p.name, p.type, p.pk, p.\"notnull\" FROM sqlite_master m, "
+									"pragma_table_info(m.name) p WHERE m.type = 'table' ORDER BY m.name, p.cid",
+							   -1, &st, nullptr);
+			while (st && sqlite3_step(st) == SQLITE_ROW) {
+				QStringList row;
+				for (int i = 0 ; i < 5 ; ++i)
+					row << QString::fromUtf8(reinterpret_cast<const char *>(sqlite3_column_text(st, i)));
+				out << row.join(QLatin1Char(' '));
+			}
+			sqlite3_finalize(st);
+			return out;
+		};
+		sqlite3 *from_spec = nullptr;
+		sqlite3_open(":memory:", &from_spec);
+		QCOMPARE(sqlite3_exec(from_spec, sql.constData(), nullptr, nullptr, nullptr), SQLITE_OK);
+		sqlite3 *from_file = nullptr;
+		sqlite3_open(":memory:", &from_file);
+		unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(written.size())));
+		memcpy(copy, written.constData(), size_t(written.size()));
+		sqlite3_deserialize(from_file, "main", copy, written.size(), written.size(), SQLITE_DESERIALIZE_FREEONCLOSE);
+		const QStringList spec_tables = describe(from_spec), file_tables = describe(from_file);
+		sqlite3_close(from_spec);
+		sqlite3_close(from_file);
+		QVERIFY(!spec_tables.isEmpty());
+		QCOMPARE(spec_tables, file_tables);
+	}
+
 	void laterFormatRefused()
 	{
 		QDomDocument original;
@@ -309,6 +461,86 @@ private slots:
 
 	// A crafted project.sqlite whose "element" is a view, not a table, is
 	// refused: nothing in a file's schema is trusted.
+	// project.sqlite changed by @p sql in @p entries
+	static void alterDatabase(QList<QetZip::Entry> &entries, const char *sql)
+	{
+		for (QetZip::Entry &e : entries) {
+			if (e.name != QLatin1String("project.sqlite")) continue;
+			sqlite3 *db = nullptr;
+			sqlite3_open(":memory:", &db);
+			unsigned char *copy = static_cast<unsigned char *>(sqlite3_malloc64(sqlite3_uint64(e.data.size())));
+			memcpy(copy, e.data.constData(), size_t(e.data.size()));
+			sqlite3_deserialize(db, "main", copy, e.data.size(), e.data.size(),
+								SQLITE_DESERIALIZE_FREEONCLOSE | SQLITE_DESERIALIZE_RESIZEABLE);
+			QCOMPARE(sqlite3_exec(db, sql, nullptr, nullptr, nullptr), SQLITE_OK);
+			sqlite3_int64 size = 0;
+			unsigned char *bytes = sqlite3_serialize(db, "main", &size, 0);
+			e.data = QByteArray(reinterpret_cast<const char *>(bytes), qsizetype(size));
+			sqlite3_free(bytes);
+			sqlite3_close(db);
+		}
+	}
+
+	// A database that does not match its folio files -- a row no item has,
+	// an item's row on another folio, entries of no symbol -- is refused
+	// with what is wrong, not read as far as it goes
+	void mismatchRefused_data()
+	{
+		QTest::addColumn<QByteArray>("sql");
+		QTest::addColumn<QString>("said");
+		QTest::newRow("symbol row of no symbol")
+				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_attrs,"
+							  " links_attrs FROM element LIMIT 1")
+				<< QStringLiteral("symbol rows");
+		QTest::newRow("wire row of no wire")
+				<< QByteArray("INSERT INTO conductor SELECT 'x', folio_uuid, element1, terminal1, element2, terminal2,"
+							  " num, formula, function, tension_protocol, conductor_color, conductor_section, cable,"
+							  " bus, freezeLabel FROM conductor LIMIT 1")
+				<< QStringLiteral("wire rows");
+		QTest::newRow("symbol on another folio")
+				<< QByteArray("UPDATE element SET folio_uuid = (SELECT uuid FROM folio WHERE pos = 2)"
+							  " WHERE folio_uuid = (SELECT uuid FROM folio WHERE pos = 1)")
+				<< QStringLiteral("the database says another");
+		QTest::newRow("information of no symbol")
+				<< QByteArray("UPDATE element_info SET element_uuid = 'x' WHERE rowid = 1")
+				<< QStringLiteral("information rows of no symbol");
+	}
+	void mismatchRefused()
+	{
+		QFETCH(QByteArray, sql);
+		QFETCH(QString, said);
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		{
+			QDomDocument back;
+			QString error;
+			QVERIFY2(QetContainer::join(entries, &back, &error), qPrintable(error));
+		}
+		alterDatabase(entries, sql.constData());
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY2(error.contains(said), qPrintable(error));
+	}
+
+	// A folio file says which symbol each item is (its type), read alone
+	void folioSaysWhichSymbol()
+	{
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		int typed = 0, symbols = 0;
+		for (const QetZip::Entry &e : entries) {
+			if (!e.name.startsWith(QStringLiteral("folios/"))) continue;
+			const QString text = QString::fromUtf8(e.data);
+			symbols += int(text.count(QStringLiteral("<element ")));
+			typed += int(text.count(QRegularExpression(QStringLiteral("<element [^>]*type=\"embed://"))));
+		}
+		QVERIFY(symbols > 0);
+		QCOMPARE(typed, symbols);
+	}
+
 	void viewInsteadOfTableRefused()
 	{
 		QDomDocument original;
@@ -335,6 +567,104 @@ private slots:
 		QString error;
 		QVERIFY(!QetContainer::join(entries, &back, &error));
 		QVERIFY2(error.contains(QStringLiteral("element")), qPrintable(error));
+	}
+
+	// A row's key is its item's uuid, which the folio file keeps: no key
+	// made up from where an item is (format 2 had f1, f2...), no key
+	// attribute in the folio files of a project as QElectroTech saves it,
+	// true/false held as 1/0, and the format in the database's
+	// user_version.
+	void keysAreTheUuids()
+	{
+		const QDomDocument original = savedProject();
+		original.elementsByTagName(QStringLiteral("conductor")).at(0).toElement()
+				.setAttribute(QStringLiteral("freezeLabel"), QStringLiteral("true"));
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		const QByteArray folios = folioFiles(entries);
+		QVERIFY(!folios.contains("qetz-key"));
+		QVERIFY(!folios.contains("qetz-folio"));
+		QCOMPARE(query(database, "PRAGMA user_version"), QString::number(QetContainer::Format));
+		const QString first = original.elementsByTagName(QStringLiteral("diagram")).at(0).toElement()
+				.attribute(QStringLiteral("uuid"));
+		QCOMPARE(query(database, "SELECT uuid FROM folio WHERE pos = 1"), first);
+		QCOMPARE(query(database, "SELECT count(*) FROM folio WHERE uuid NOT LIKE '{%}'"), QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM element WHERE uuid NOT LIKE '{%}'"), QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM conductor WHERE uuid NOT LIKE '{%}'"), QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM element WHERE typeof(freezeLabel) <> 'integer'"),
+				 QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM conductor WHERE typeof(freezeLabel) <> 'integer'"),
+				 QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT sum(freezeLabel) FROM conductor"), QStringLiteral("1"));
+		const QString d = backDifference(original, entries);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+		QCOMPARE(query(database, "SELECT count(*) FROM element_info WHERE typeof(show) <> 'integer'"),
+				 QStringLiteral("0"));
+		QCOMPARE(query(database, "SELECT count(*) FROM element_info WHERE attrs LIKE '%\"tag\"%'"),
+				 QStringLiteral("0"));
+	}
+
+	// Two symbols sharing a uuid (F100) each get a key made from what they
+	// hold, the same on every save, and come back as they were.
+	void sharedUuidKeyed()
+	{
+		QDomDocument original = savedProject();
+		const QDomNodeList elements = original.elementsByTagName(QStringLiteral("element"));
+		QDomElement a, b;
+		for (int i = 0 ; i < elements.size() && b.isNull() ; ++i) {
+			const QDomElement e = elements.at(i).toElement();
+			if (e.parentNode().nodeName() != QLatin1String("elements")) continue;
+			if (a.isNull()) a = e; else b = e;
+		}
+		QVERIFY(!b.isNull());
+		b.setAttribute(QStringLiteral("uuid"), a.attribute(QStringLiteral("uuid")));
+		QString error;
+		const QList<QetZip::Entry> once = QetContainer::split(original, QString(), &error);
+		const QList<QetZip::Entry> twice = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!once.isEmpty(), qPrintable(error));
+		QCOMPARE(folioFiles(once).count("qetz-key"), 2);
+		QCOMPARE(entry(once, QStringLiteral("project.sqlite")), entry(twice, QStringLiteral("project.sqlite")));
+		const QString d = backDifference(original, once);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// A true/false attribute QElectroTech would not write stays in the
+	// folio file as it was.
+	void oddBooleanKept()
+	{
+		QDomDocument original;
+		QVERIFY(QetContainer::parse(read(QStringLiteral(QET_EXAMPLES_DIR "/perceuse.qet")), &original));
+		const QDomNodeList conductors = original.elementsByTagName(QStringLiteral("conductor"));
+		QVERIFY(conductors.size() > 0);
+		conductors.at(0).toElement().setAttribute(QStringLiteral("freezeLabel"), QStringLiteral("yes"));
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		QVERIFY(folioFiles(entries).contains("freezeLabel=\"yes\""));
+		const QString d = backDifference(original, entries);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// A format 2 file, as QElectroTech 0.200.1 development builds wrote it
+	// (grafcet.qet saved as .qetz), still opens, and saved again as the
+	// current format comes back the same.
+	void format2Read()
+	{
+		QList<QetZip::Entry> entries;
+		QString error;
+		QVERIFY2(QetZip::fromBytes(read(QStringLiteral(QET_FIXTURES_DIR "/qetz_format2.qetz")), &entries, &error),
+				 qPrintable(error));
+		QVERIFY(entry(entries, QStringLiteral("manifest.xml")).contains("format=\"2\""));
+		QDomDocument project;
+		QVERIFY2(QetContainer::join(entries, &project, &error), qPrintable(error));
+		QVERIFY(project.toString().contains(QStringLiteral("<elementInformation ")));
+		QVERIFY(!project.toString().contains(QStringLiteral("qetz-")));
+		const QList<QetZip::Entry> resaved = QetContainer::split(project, QString(), &error);
+		QVERIFY2(!resaved.isEmpty(), qPrintable(error));
+		const QString d = backDifference(project, resaved);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
 	void notAProjectRefused()

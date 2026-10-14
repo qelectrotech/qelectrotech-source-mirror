@@ -153,16 +153,18 @@ bool QetContainer::isZip(const QByteArray &content)
 /**
 	@brief QetContainer::readDocument
 	The project document held in @p content: unzipped and joined for a
-	.qetz, parsed for a .qet.
+	.qetz, parsed for a .qet. @p format, if any: the .qetz's format, 0
+	for a .qet.
 */
 bool QetContainer::readDocument(const QByteArray &content, QDomDocument *document,
-								QString *error, Pictures *pictures)
+								QString *error, Pictures *pictures, int *format)
 {
+	if (format) *format = 0;
 	if (!isZip(content))
 		return parse(content, document, error);
 	QList<QetZip::Entry> entries;
 	return QetZip::fromBytes(content, &entries, error)
-			&& join(entries, document, error, pictures);
+			&& join(entries, document, error, pictures, format);
 }
 
 QString QetContainer::pictureFile(const QDomElement &image)
@@ -272,9 +274,11 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	nothing names are ignored, so a later format may add some.
 	With @p pictures, the pictures stay out of the document: see the
 	namespace.
+	@p format, if any: the format the file says it is, above Format for a
+	later one this may read (its min-reader allows it)
 */
 bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
-						Pictures *pictures)
+						Pictures *pictures, int *format)
 {
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
@@ -295,6 +299,8 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 				 .arg(Format));
 		return false;
 	}
+	if (format)
+		*format = manifest.documentElement().attribute(QStringLiteral("format")).toInt();
 
 	if (!parse(files.value(QStringLiteral("project.xml")), project, error))
 		return false;

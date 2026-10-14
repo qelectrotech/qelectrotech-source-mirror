@@ -485,7 +485,9 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	// QetContainer::parse() does exactly that, for a .qet and for each part
 	// of a .qetz alike.
 	QString read_error;
-	if (!QetContainer::readDocument(content, &xml_project, &read_error, &m_container_pictures))
+	int container_format = 0;
+	if (!QetContainer::readDocument(content, &xml_project, &read_error, &m_container_pictures,
+									&container_format))
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
 		m_container_pictures.clear();
@@ -519,8 +521,15 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 			<< xml_parse_ms / 1000.0 << ", content "
 			<< (total_ms - xml_parse_ms) / 1000.0 << ")";
 
-	if (!fi.isWritable()) {
+		//Written by a later QElectroTech that lets this one read it: saving
+		//here would drop what this version does not know
+	m_from_later_version = container_format > QetContainer::Format;
+	if (!fi.isWritable() || m_from_later_version) {
 		setReadOnly(true);
+	}
+	if (m_from_later_version) {
+		qInfo().noquote() << QStringLiteral("Project %1 is of .qetz format %2 (this version writes %3): opened read-only")
+							 .arg(fi.fileName()).arg(container_format).arg(QetContainer::Format);
 	}
 	if(opened_here) {
 		file->close();

@@ -32,7 +32,7 @@
 	  manifest.xml             format and oldest format allowed to read it
 	  project.xml              the project, each part replaced by
 	                           <qetz-part file="..."/>
-	  project.sqlite           the engineering data (format 2,
+	  project.sqlite           the engineering data (format 2 on,
 	                           QetContainerDb): title-block fields, symbol
 	                           information, links, wires
 	  folios/<uuid>.xml        one per folio
@@ -47,6 +47,8 @@
 	each <image> keeps the name of its file, pictureFile(), and the bytes
 	go in the map. Turning them back into base64 text costs seconds on a
 	project with large pictures, and the folio would only decode it again.
+
+	The format is written down in QETZ-FORMAT.md, beside this file.
 */
 namespace QetContainer
 {
@@ -55,13 +57,19 @@ namespace QetContainer
 	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 2;
+	constexpr int Format = 3;
+		/// 3: the database's rows keyed by the items' uuids, true/false and
+		/// show flags as 1/0, its PRAGMA user_version the format, the symbols' type left
+		/// in the folio files, no column for where a block sat. Format 2 is
+		/// still read; a later format whose min-reader allows this one is
+		/// read too, and said so through join()'s @p format.
 
 	QList<QetZip::Entry> split(const QDomDocument &project,
 							   const QString &writer = QString(),
 							   QString *error = nullptr);
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
-			  QString *error = nullptr, Pictures *pictures = nullptr);
+			  QString *error = nullptr, Pictures *pictures = nullptr,
+			  int *format = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
 
@@ -71,7 +79,8 @@ namespace QetContainer
 	bool isZip(const QByteArray &content);
 		/// The project document in @p content, a .qet or a .qetz
 	bool readDocument(const QByteArray &content, QDomDocument *document,
-					  QString *error = nullptr, Pictures *pictures = nullptr);
+					  QString *error = nullptr, Pictures *pictures = nullptr,
+					  int *format = nullptr);
 }
 
 #endif // QETCONTAINER_H
