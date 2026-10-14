@@ -455,6 +455,7 @@ class QETProject : public QObject
 		ProjectState openFile(QFile *file);
 	public:
 		static bool isContainerPath(const QString &path);
+		static QString openFileFilter();
 			/// Saving writes a .qetz: one read from a .qet is saved as
 			/// a .qetz beside it, the .qet left as it is
 			/// (stage D1)

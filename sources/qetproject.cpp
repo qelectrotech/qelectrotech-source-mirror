@@ -2655,6 +2655,15 @@ bool QETProject::isContainerPath(const QString &path)
 }
 
 /**
+	@brief QETProject::openFileFilter
+	@return the file-dialog filter for a project to open: .qet and .qetz
+*/
+QString QETProject::openFileFilter()
+{
+	return tr("QElectroTech project (*.qet *.qetz)");
+}
+
+/**
 	@brief QETProject::writeContainer
 	Write the project document @p project to @p path as a .qetz: the same
 	document, in parts, zipped (#1440). The file is replaced only once
