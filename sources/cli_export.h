@@ -44,7 +44,7 @@ namespace CLIExport {
 		Usage:
 		  qelectrotech --export-pdf     <project.qet> <output.pdf> [--show-terminals]
 		  qelectrotech --export-png     <project.qet> <output_dir> [--show-terminals]
-		  qelectrotech --export-svg     <project.qet> <output_dir> [--show-terminals]
+		  qelectrotech --export-svg     <project.qet> <output_dir> [--show-terminals] [--svg-small-pictures]
 		  qelectrotech --export-dxf     <project.qet> <output_dir> [--show-terminals] [--dxf-blocks] [--dxf-attributes]
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
@@ -71,6 +71,9 @@ namespace CLIExport {
 		--dxf-attributes: as --dxf-blocks, and a symbol's texts (its label,
 		      function...) are attributes of its INSERT. LibreCAD does not
 		      show attributes.
+		--svg-small-pictures: in an SVG, each picture at most four times the
+		      size it is drawn at instead of its full resolution: a much
+		      smaller file, still sharp when printed.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
 		bom: bill of materials (one row per element) as CSV.

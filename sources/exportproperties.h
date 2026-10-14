@@ -52,6 +52,7 @@ class ExportProperties {
 	bool draw_colored_conductors;   ///< Whether to render conductors colors
 	bool dxf_blocks;                ///< DXF: each symbol as a block, placed with an INSERT
 	bool dxf_attributes;            ///< DXF, with dxf_blocks: a symbol's texts as attributes of its INSERT
+	bool svg_small_pictures;        ///< SVG: pictures at most 4x the size they are drawn, not full resolution
 	QET::DiagramArea exported_area; ///< Area of diagrams to be rendered
 };
 #endif

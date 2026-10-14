@@ -283,7 +283,8 @@ int exportPdf(QETProject &project, const QString &output,
 }
 
 int exportImages(QETProject &project, const QString &format,
-				 const QString &out_dir, bool showTerminals = false)
+				 const QString &out_dir, bool showTerminals = false,
+				 bool svgSmallPictures = false)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -306,8 +307,10 @@ int exportImages(QETProject &project, const QString &format,
 			gen.setViewBox(QRect(0, 0, r.width(), r.height()));
 			gen.setTitle(diagram->title());
 			QPainter painter(&gen);
+			diagram->setSmallPictures(svgSmallPictures);
 			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()),
 						 showTerminals);
+			diagram->setSmallPictures(false);
 			painter.end();
 		} else { // png
 			QImage image(r.size(), QImage::Format_ARGB32);
@@ -1014,6 +1017,7 @@ int run(const QStringList &args)
 	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
 	const bool dxfBlocks = filtered.removeAll("--dxf-blocks") > 0;
 	const bool dxfAttributes = filtered.removeAll("--dxf-attributes") > 0;
+	const bool svgSmallPictures = filtered.removeAll("--svg-small-pictures") > 0;
 	// --no-slaves and --no-junctions leave rows out of --export-bom.
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
@@ -1085,7 +1089,8 @@ int run(const QStringList &args)
 		return resaveProject(project, output);
 	if (format == "settb")
 		return setTitleBlock(project, output, rest.mid(2));
-	return exportImages(project, format, output, showTerminals);
+	return exportImages(project, format, output, showTerminals,
+						svgSmallPictures);
 }
 
 } // namespace CLIExport
