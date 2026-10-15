@@ -15,6 +15,10 @@ platforms:
   amd64:
   arm64:
 
+layout:
+  /usr/share/qelectrotech:
+    symlink: $SNAP/usr/share/qelectrotech
+
 apps:
   qelectrotech:
     command: usr/bin/qelectrotech
