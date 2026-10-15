@@ -1577,6 +1577,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_rotate_selection);
 	menu_edition -> addAction(m_rotate_group_selection);
 	menu_edition -> addAction(m_rotate_texts);
+	menu_edition -> addAction(m_mirror_horizontal);
+	menu_edition -> addAction(m_mirror_vertical);
 	menu_edition -> addAction(m_find_element);
 	menu_edition -> addAction(m_edit_selection);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
