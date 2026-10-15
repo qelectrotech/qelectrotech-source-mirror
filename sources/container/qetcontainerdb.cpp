@@ -79,9 +79,6 @@ const QStringList FolioData = {
 	//still says what is drawn where
 const QStringList ElementData = {
 	QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
-	//Format 2 also moved the type
-const QStringList ElementDataV2 = {
-	QStringLiteral("uuid"), QStringLiteral("type"), QStringLiteral("prefix"), QStringLiteral("freezeLabel")};
 const QStringList ConductorData = {
 	QStringLiteral("element1"), QStringLiteral("terminal1"),
 	QStringLiteral("element2"), QStringLiteral("terminal2"), QStringLiteral("num"),
@@ -167,17 +164,6 @@ class Database
 			return sqlite3_exec(m_db, sql.toUtf8().constData(), nullptr, nullptr, nullptr) == SQLITE_OK;
 		}
 		QString error() const { return QString::fromUtf8(sqlite3_errmsg(m_db)); }
-			//Format 2 (QElectroTech 0.200.1 development builds) keyed its
-			//rows apart from the items' uuids: "f1", "e1", "c1" where an item
-			//had none of its own, and every item's key in the folio file
-		bool v2() const { return m_format == 2; }
-		QString folioKey() const { return v2() ? QStringLiteral("id") : QStringLiteral("uuid"); }
-		QString folioRef() const { return v2() ? QStringLiteral("folio_id") : QStringLiteral("folio_uuid"); }
-		QString itemKey() const { return v2() ? QStringLiteral("key") : QStringLiteral("uuid"); }
-		QString elementRef() const { return v2() ? QStringLiteral("element_key") : QStringLiteral("element_uuid"); }
-		QString showColumn() const { return v2() ? QStringLiteral("NULL") : QStringLiteral("show"); }
-		QStringList elementData() const { return v2() ? ElementDataV2 : ElementData; }
-		QStringList conductorData() const { return v2() ? QStringList{QStringLiteral("uuid")} + ConductorData : ConductorData; }
 };
 
 	//Owns a prepared statement; binds and reads QVariants (null = SQL NULL)
@@ -624,20 +610,6 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 			return false;
 		}
 	}
-		//What the folios are read by: a file holds no index (plainTables())
-	const QStringList indexes = {
-		QStringLiteral("folio(%1)").arg(db.folioKey()), QStringLiteral("folio_property(%1)").arg(db.folioRef()),
-		QStringLiteral("element(%1)").arg(db.itemKey()), QStringLiteral("element(%1)").arg(db.folioRef()),
-		QStringLiteral("element_info(%1)").arg(db.elementRef()), QStringLiteral("link(%1)").arg(db.elementRef()),
-		QStringLiteral("conductor(%1)").arg(db.itemKey()), QStringLiteral("meta(key)")};
-	for (const QString &on : indexes) {
-		const QString name = QStringLiteral("qetz_read_") + QString(on).replace(QLatin1Char('('), QLatin1Char('_')).remove(QLatin1Char(')'));
-		if (!db.exec(QStringLiteral("CREATE INDEX IF NOT EXISTS %1 ON %2").arg(name, on))) {
-			setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
-			return false;
-		}
-	}
-	db.exec(QStringLiteral("PRAGMA query_only = ON"));
 	return true;
 }
 
@@ -654,20 +626,111 @@ QDomElement entryElement(QDomDocument &document, const QVariant &name_attr, cons
 	return e;
 }
 
-	//An item's key: the one it was given, else (format 3 on) its uuid
-QString keyOf(const Database &db, QDomElement e, const QString &attribute)
+	//An item's key: the one it was given, else its uuid
+QString keyOf(QDomElement e, const QString &attribute)
 {
 	if (e.hasAttribute(attribute)) {
 		const QString key = e.attribute(attribute);
 		e.removeAttribute(attribute);
 		return key;
 	}
-	return db.v2() ? QString() : e.attribute(QStringLiteral("uuid"));
+	return e.attribute(QStringLiteral("uuid"));
 }
 
 QString quoted(const QStringList &names)
 {
 	return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
+}
+
+	//Format 2 (QElectroTech 0.200.1 development builds) to 3. Format 2
+	//keyed its rows apart from the items' uuids ("f1", "e1", "c1" where an
+	//item had none of its own) under other column names, every item it
+	//moved carrying its key in the folio file; it moved the uuids of
+	//symbols and wires and the symbols' type out of the folio files too,
+	//and held a property's show flag in its other attributes. Each table is
+	//written again under format 3's names, and what format 3 leaves in
+	//the folio files goes back there.
+bool upgrade2To3(Database &db, QDomElement project, QString *error)
+{
+		//An item's key is read from the folio file, else its uuid is
+		//(keyOf()). An item format 2 did not move has no row: an empty key
+		//says so.
+	const struct { QString tag; QStringList columns; } moved_back[] = {
+		{QStringLiteral("element"), {QStringLiteral("uuid"), QStringLiteral("type")}},
+		{QStringLiteral("conductor"), {QStringLiteral("uuid")}}};
+	for (QDomElement d : children(project, QStringLiteral("diagram"))) {
+		if (!d.hasAttribute(FolioAttribute)) d.setAttribute(FolioAttribute, QString());
+		for (const auto &item : moved_back) {
+			Statement s(db, QStringLiteral("SELECT %1 FROM %2 WHERE key = ?")
+						.arg(quoted(item.columns), item.tag));
+			for (const QDomElement &list : children(d, item.tag + QLatin1Char('s'))) {
+				for (QDomElement e : children(list, item.tag)) {
+					if (!e.hasAttribute(KeyAttribute)) {
+						e.setAttribute(KeyAttribute, QString());
+						continue;
+					}
+					s.bind({e.attribute(KeyAttribute)});
+					if (!s.next()) continue;	//the reader says it
+					QVariantList values;
+					for (int i = 0 ; i < item.columns.size() ; ++i) values << s.value(i);
+					put(e, item.columns, values, 0);
+				}
+			}
+		}
+	}
+	const struct { QString table; QString columns; } tables[] = {
+		{QStringLiteral("project_property"), QStringLiteral("ord, name, value, NULL AS show, attrs")},
+		{QStringLiteral("folio"), QStringLiteral("id AS uuid, pos, %1, props_attrs").arg(quoted(FolioData))},
+		{QStringLiteral("folio_property"),
+		 QStringLiteral("folio_id AS folio_uuid, ord, name, value, NULL AS show, attrs")},
+		{QStringLiteral("element"),
+		 QStringLiteral("key AS uuid, folio_id AS folio_uuid, %1, info_attrs, links_attrs").arg(quoted(ElementData))},
+		{QStringLiteral("element_info"),
+		 QStringLiteral("element_key AS element_uuid, ord, name, value, NULL AS show, attrs")},
+		{QStringLiteral("link"), QStringLiteral("element_key AS element_uuid, ord, linked_uuid, attrs")},
+		{QStringLiteral("conductor"),
+		 QStringLiteral("key AS uuid, folio_id AS folio_uuid, %1").arg(quoted(ConductorData))}};
+	bool ok = db.exec(QStringLiteral("BEGIN"));
+	for (const auto &t : tables)
+		ok = ok && db.exec(QStringLiteral("CREATE TABLE \"%1__3\" AS SELECT %2 FROM \"%1\" ORDER BY rowid;"
+										  "DROP TABLE \"%1\"; ALTER TABLE \"%1__3\" RENAME TO \"%1\"")
+						   .arg(t.table, t.columns));
+	ok = ok && db.exec(QStringLiteral("COMMIT"));
+	if (!ok) setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
+	return ok;
+}
+
+	//@p db, opened by openDatabase(), brought to this format one step at a
+	//time and made ready to read: what reads it knows only this format's
+	//tables. @p project: the document of the folio files it came with.
+bool readyToRead(Database &db, QDomElement project, QString *error)
+{
+	const struct { int from; bool (*step)(Database &, QDomElement, QString *); } steps[] = {
+		{2, upgrade2To3},
+			//Format 4 leaves out of the folios what QElectroTech works out
+			//again, and writes no keys or indexes: nothing to change to
+			//read it
+		{3, [](Database &, QDomElement, QString *) { return true; }}};
+	for (const auto &s : steps) {
+		if (db.m_format != s.from) continue;
+		if (!s.step(db, project, error)) return false;
+		db.m_format = s.from + 1;
+	}
+		//What the folios are read by: a file holds no index (plainTables())
+	const QStringList indexes = {
+		QStringLiteral("folio(uuid)"), QStringLiteral("folio_property(folio_uuid)"),
+		QStringLiteral("element(uuid)"), QStringLiteral("element(folio_uuid)"),
+		QStringLiteral("element_info(element_uuid)"), QStringLiteral("link(element_uuid)"),
+		QStringLiteral("conductor(uuid)"), QStringLiteral("meta(key)")};
+	for (const QString &on : indexes) {
+		const QString name = QStringLiteral("qetz_read_") + QString(on).replace(QLatin1Char('('), QLatin1Char('_')).remove(QLatin1Char(')'));
+		if (!db.exec(QStringLiteral("CREATE INDEX IF NOT EXISTS %1 ON %2").arg(name, on))) {
+			setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
+			return false;
+		}
+	}
+	db.exec(QStringLiteral("PRAGMA query_only = ON"));
+	return true;
 }
 
 	//The keys of the rows restore() read, each once: every row must be an
@@ -694,11 +757,10 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 							 const QVariant &attrs, const QString &default_tag, const QVariant &show = QVariant()) {
 		return entryElement(document, name_attr, name, value, attrs, default_tag, show);
 	};
-	const QString id = keyOf(db, d, FolioAttribute);
+	const QString id = keyOf(d, FolioAttribute);
 	if (id.isEmpty()) return true;
 	if (!used.use(used.folios, id, QStringLiteral("folio"), error)) return false;
-	Statement f(db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE %2 = ?")
-				.arg(quoted(FolioData), db.folioKey()));
+	Statement f(db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE uuid = ?").arg(quoted(FolioData)));
 	f.bind({id});
 	if (!f.next()) { setError(error, QStringLiteral("folio %1 is not in the database").arg(id)); return false; }
 	QVariantList values;
@@ -709,8 +771,7 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 	if (hasMarker(d, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, values.at(FolioData.size()));
-		Statement p(db, QStringLiteral("SELECT name, value, attrs, %1 FROM folio_property WHERE %2 = ? ORDER BY ord")
-					.arg(db.showColumn(), db.folioRef()));
+		Statement p(db, QStringLiteral("SELECT name, value, attrs, show FROM folio_property WHERE folio_uuid = ? ORDER BY ord"));
 		p.bind({id});
 		while (p.next())
 			props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
@@ -722,31 +783,28 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 		}
 	}
 
-	const QStringList element_data = db.elementData();
-	const QStringList conductor_data = db.conductorData();
 	for (const QDomElement &list : children(d, QStringLiteral("elements"))) {
 		for (QDomElement e : children(list, QStringLiteral("element"))) {
-			const QString key = keyOf(db, e, KeyAttribute);
+			const QString key = keyOf(e, KeyAttribute);
 			if (key.isEmpty()) continue;
 			if (!used.use(used.elements, key, QStringLiteral("symbol"), error)) return false;
-			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, %2 FROM element WHERE %3 = ?")
-						.arg(quoted(element_data), db.folioRef(), db.itemKey()));
+			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, folio_uuid FROM element WHERE uuid = ?")
+						.arg(quoted(ElementData)));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
-			if (s.value(element_data.size() + 2).toString() != id) {
+			if (s.value(ElementData.size() + 2).toString() != id) {
 				setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
 				return false;
 			}
 			QVariantList v;
-			for (int i = 0 ; i < element_data.size() + 2 ; ++i) v << s.value(i);
-			put(e, element_data, v, 0);
-			const int n = element_data.size();
+			for (int i = 0 ; i < ElementData.size() + 2 ; ++i) v << s.value(i);
+			put(e, ElementData, v, 0);
+			const int n = ElementData.size();
 			QDomElement info, links;
 			if (hasMarker(e, QStringLiteral("elementInformations"))) {
 				info = document.createElement(QStringLiteral("elementInformations"));
 				setAttributesJson(info, v.at(n));
-				Statement i(db, QStringLiteral("SELECT name, value, attrs, %1 FROM element_info WHERE %2 = ? ORDER BY ord")
-							.arg(db.showColumn(), db.elementRef()));
+				Statement i(db, QStringLiteral("SELECT name, value, attrs, show FROM element_info WHERE element_uuid = ? ORDER BY ord"));
 				i.bind({key});
 				while (i.next())
 					info.appendChild(entry(i.value(0), QStringLiteral("name"), i.value(1), i.value(2),
@@ -756,8 +814,7 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 			if (hasMarker(e, QStringLiteral("links_uuids"))) {
 				links = document.createElement(QStringLiteral("links_uuids"));
 				setAttributesJson(links, v.at(n + 1));
-				Statement l(db, QStringLiteral("SELECT linked_uuid, attrs FROM link WHERE %1 = ? ORDER BY ord")
-							.arg(db.elementRef()));
+				Statement l(db, QStringLiteral("SELECT linked_uuid, attrs FROM link WHERE element_uuid = ? ORDER BY ord"));
 				l.bind({key});
 				while (l.next())
 					links.appendChild(entry(l.value(0), QStringLiteral("uuid"), QVariant(), l.value(1),
@@ -773,20 +830,20 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 	}
 	for (const QDomElement &list : children(d, QStringLiteral("conductors"))) {
 		for (QDomElement c : children(list, QStringLiteral("conductor"))) {
-			const QString key = keyOf(db, c, KeyAttribute);
+			const QString key = keyOf(c, KeyAttribute);
 			if (key.isEmpty()) continue;
 			if (!used.use(used.conductors, key, QStringLiteral("wire"), error)) return false;
-			Statement s(db, QStringLiteral("SELECT %1, %2 FROM conductor WHERE %3 = ?")
-						.arg(quoted(conductor_data), db.folioRef(), db.itemKey()));
+			Statement s(db, QStringLiteral("SELECT %1, folio_uuid FROM conductor WHERE uuid = ?")
+						.arg(quoted(ConductorData)));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
-			if (s.value(conductor_data.size()).toString() != id) {
+			if (s.value(ConductorData.size()).toString() != id) {
 				setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
 				return false;
 			}
 			QVariantList v;
-			for (int i = 0 ; i < conductor_data.size() ; ++i) v << s.value(i);
-			put(c, conductor_data, v, 0);
+			for (int i = 0 ; i < ConductorData.size() ; ++i) v << s.value(i);
+			put(c, ConductorData, v, 0);
 		}
 	}
 	return true;
@@ -805,12 +862,9 @@ bool noRowLeft(const Database &db, const UsedRows &used, QString *error)
 		{QStringLiteral("SELECT count(*) FROM folio"), int(used.folios.size()), QStringLiteral("folio rows")},
 		{QStringLiteral("SELECT count(*) FROM element"), int(used.elements.size()), QStringLiteral("symbol rows")},
 		{QStringLiteral("SELECT count(*) FROM conductor"), int(used.conductors.size()), QStringLiteral("wire rows")},
-		{QStringLiteral("SELECT count(*) FROM folio_property WHERE %1 NOT IN (SELECT %2 FROM folio)")
-				.arg(db.folioRef(), db.folioKey()), 0, QStringLiteral("folio property rows of no folio")},
-		{QStringLiteral("SELECT count(*) FROM element_info WHERE %1 NOT IN (SELECT %2 FROM element)")
-				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("information rows of no symbol")},
-		{QStringLiteral("SELECT count(*) FROM link WHERE %1 NOT IN (SELECT %2 FROM element)")
-				.arg(db.elementRef(), db.itemKey()), 0, QStringLiteral("link rows of no symbol")}};
+		{QStringLiteral("SELECT count(*) FROM folio_property WHERE folio_uuid NOT IN (SELECT uuid FROM folio)"), 0, QStringLiteral("folio property rows of no folio")},
+		{QStringLiteral("SELECT count(*) FROM element_info WHERE element_uuid NOT IN (SELECT uuid FROM element)"), 0, QStringLiteral("information rows of no symbol")},
+		{QStringLiteral("SELECT count(*) FROM link WHERE element_uuid NOT IN (SELECT uuid FROM element)"), 0, QStringLiteral("link rows of no symbol")}};
 	for (const auto &check : checks) {
 		const int found = count(check.sql);
 		if (found != check.expected) {
@@ -1085,7 +1139,7 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 {
 	QDomDocument document = project.ownerDocument();
 	Database db;
-	if (!openDatabase(db, database, error))
+	if (!openDatabase(db, database, error) || !readyToRead(db, project, error))
 		return false;
 
 		//Project properties
@@ -1097,8 +1151,7 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 	if (hasMarker(project, QStringLiteral("properties"))) {
 		QDomElement props = document.createElement(QStringLiteral("properties"));
 		setAttributesJson(props, meta.value(QStringLiteral("props_attrs")));
-		Statement s(db, QStringLiteral("SELECT name, value, attrs, %1 FROM project_property ORDER BY ord")
-					.arg(db.showColumn()));
+		Statement s(db, QStringLiteral("SELECT name, value, attrs, show FROM project_property ORDER BY ord"));
 		while (s.next())
 			props.appendChild(entryElement(document, s.value(0), QStringLiteral("name"), s.value(1), s.value(2),
 										   QStringLiteral("property"), s.value(3)));
