@@ -1225,7 +1225,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
-          <string>Keyboard movement with the ALT key: 1 - 9</string>
+          <string>Keyboard movement with the Ctrl key: 1 - 9</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="1">
