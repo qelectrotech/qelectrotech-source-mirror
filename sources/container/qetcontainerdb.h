@@ -20,6 +20,7 @@
 
 #include <QByteArray>
 #include <QDomElement>
+#include <QStringList>
 
 /**
 	@brief The QetContainerDb namespace
@@ -41,7 +42,13 @@ namespace QetContainerDb
 {
 	QByteArray extract(QDomElement project, QString *error = nullptr,
 					   const QByteArray &kept_from = QByteArray());
-	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr);
+		/// With @p lost, a damaged project being recovered: what does not
+		/// match is noted there and left out, instead of refusing it all
+	bool restore(QDomElement project, const QByteArray &database, QString *error = nullptr,
+				 QStringList *lost = nullptr);
+		/// What only the database could fill, left in @p project after a
+		/// restore() with lost, taken out; said in @p lost
+	void dropLeftovers(QDomElement project, QStringList *lost);
 		/// true if @p database is of the format this writes
 	bool currentFormat(const QByteArray &database);
 }

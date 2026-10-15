@@ -162,9 +162,12 @@ bool QetZip::write(const QString &path, const QList<Entry> &entries, QString *er
 	Read every file entry of the zip @p zip into @p entries, in archive
 	order. Folders are skipped. An encrypted entry, an unsafe or repeated
 	name, a method miniz cannot read, or more than MaxEntries entries or
-	MaxUncompressedSize bytes refuse the whole archive.
+	MaxUncompressedSize bytes refuse the whole archive. With @p skipped (a
+	damaged project recovered), an entry that cannot be read is named
+	there and left out instead; the size limits still refuse it all.
 */
-bool QetZip::fromBytes(const QByteArray &zip_bytes, QList<Entry> *entries, QString *error)
+bool QetZip::fromBytes(const QByteArray &zip_bytes, QList<Entry> *entries, QString *error,
+					   QStringList *skipped)
 {
 	if (!entries) return false;
 	entries->clear();
@@ -190,6 +193,10 @@ bool QetZip::fromBytes(const QByteArray &zip_bytes, QList<Entry> *entries, QStri
 	{
 		mz_zip_archive_file_stat stat;
 		if (!mz_zip_reader_file_stat(&zip, i, &stat)) {
+			if (skipped) {
+				skipped->append(QStringLiteral("unreadable entry %1").arg(i));
+				continue;
+			}
 			setError(error, QStringLiteral("unreadable entry %1").arg(i));
 			mz_zip_reader_end(&zip);
 			return false;
@@ -199,6 +206,10 @@ bool QetZip::fromBytes(const QByteArray &zip_bytes, QList<Entry> *entries, QStri
 		const QString name = QString::fromUtf8(stat.m_filename);
 		if (stat.m_is_encrypted || !stat.m_is_supported || !safeName(name)
 			|| names.contains(name)) {
+			if (skipped) {
+				skipped->append(QStringLiteral("entry \"%1\" cannot be read").arg(name));
+				continue;
+			}
 			setError(error, QStringLiteral("entry \"%1\" cannot be read").arg(name));
 			mz_zip_reader_end(&zip);
 			return false;
@@ -213,8 +224,13 @@ bool QetZip::fromBytes(const QByteArray &zip_bytes, QList<Entry> *entries, QStri
 		size_t size = 0;
 		void *data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
 		if (!data) {
-			setError(error, QStringLiteral("cannot unpack \"%1\": %2")
-					 .arg(name, QString::fromLatin1(mz_zip_get_error_string(mz_zip_get_last_error(&zip)))));
+			const QString problem = QStringLiteral("cannot unpack \"%1\": %2")
+					.arg(name, QString::fromLatin1(mz_zip_get_error_string(mz_zip_get_last_error(&zip))));
+			if (skipped) {
+				skipped->append(problem);
+				continue;
+			}
+			setError(error, problem);
 			mz_zip_reader_end(&zip);
 			return false;
 		}
