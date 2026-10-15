@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QRegularExpression>
 #include <QTemporaryDir>
 #include <QUuid>
 
@@ -86,6 +87,65 @@ QString byUuid(int old_south_y)
 			.arg(uuid_a, derived(old_south_y, 2), uuid_b, derived(-10, 0));
 }
 
+
+// A symbol with any terminals, for the cases of several terminals moved at
+// once. A terminal is its orientation letter and its position.
+struct Term { QChar o; int x; int y; };
+
+QString multiDefinition(const QList<Term> &terms)
+{
+	QString out;
+	for (const Term &t : terms)
+		out += QStringLiteral("<terminal orientation=\"%1\" type=\"Generic\" name=\"t\""
+							  " x=\"%2\" y=\"%3\"/>").arg(t.o).arg(t.x).arg(t.y);
+	QString d = definition({});
+	// the lone north terminal of definition() is replaced
+	d.replace(QRegularExpression(QStringLiteral("<terminal [^>]*/>")), QString());
+	return d.replace(QStringLiteral("</description>"), out + QStringLiteral("</description>"));
+}
+
+// A placed symbol whose terminals were saved at the given positions (ids
+// first_id, first_id + 1, ...). The saved docking point is the position less
+// the stub of 4: north y+4, south y-4, east x-4, west x+4.
+QString multiPlaced(const QString &uuid, int first_id, int x, const QList<Term> &saved)
+{
+	QString out;
+	int id = first_id;
+	for (const Term &t : saved) {
+		int dx = t.x, dy = t.y, o = 0;
+		switch (t.o.toLatin1()) {
+			case 'n': dy += 4; o = 0; break;
+			case 'e': dx -= 4; o = 1; break;
+			case 's': dy -= 4; o = 2; break;
+			default : dx += 4; o = 3; break;
+		}
+		out += QStringLiteral("<terminal orientation=\"%1\" x=\"%2\" y=\"%3\" id=\"%4\"/>")
+				.arg(o).arg(dx).arg(dy).arg(id++);
+	}
+	return QStringLiteral(
+				"<element orientation=\"0\" type=\"embed://import/t/box.elmt\" z=\"10\""
+				" uuid=\"%1\" x=\"%2\" y=\"200\"><terminals>%3</terminals></element>")
+			.arg(uuid).arg(x).arg(out);
+}
+
+// Two copies of the symbol saved with terminals `saved`, now defined with
+// `now`; one wire joins each terminal of the first copy to the same terminal
+// of the second (by legacy id).
+QString multiProject(const QList<Term> &saved, const QList<Term> &now)
+{
+	QString wires;
+	for (int i = 0; i < saved.size(); ++i)
+		wires += QStringLiteral("<conductor terminal1=\"%1\" terminal2=\"%2\" type=\"multi\" num=\"\"/>")
+				.arg(i).arg(saved.size() + i);
+	return QStringLiteral(
+				"<project title=\"moved\" version=\"0.100.1\">"
+				"<diagram title=\"f\" cols=\"8\" rows=\"4\" colsize=\"60\" rowsize=\"80\">"
+				"<elements>%1%2</elements><conductors>%3</conductors></diagram>%4</project>")
+			.arg(multiPlaced(uuid_a, 0, 100, saved),
+				 multiPlaced(uuid_b, saved.size(), 300, saved),
+				 wires, multiDefinition(now));
+}
+
 } // namespace
 
 class tst_movedterminals : public QObject
@@ -95,7 +155,7 @@ class tst_movedterminals : public QObject
 	QTemporaryDir m_dir;
 	int m_run = 0;
 
-	struct Result { int wires = -1; QString log; };
+	struct Result { int wires = -1; QString log; QStringList pairs; };
 
 	// Open and save the project in a sandbox of its own (so a running
 	// QElectroTech cannot answer instead): the wires that survive.
@@ -125,6 +185,10 @@ class tst_movedterminals : public QObject
 		QFile saved(out);
 		if (!saved.open(QIODevice::ReadOnly) || !doc.setContent(&saved)) return {};
 		r.wires = doc.elementsByTagName(QStringLiteral("conductor")).size();
+		for (int i = 0; i < r.wires; ++i) {
+			const QDomElement c = doc.elementsByTagName(QStringLiteral("conductor")).at(i).toElement();
+			r.pairs << c.attribute(QStringLiteral("terminal1")) + QLatin1Char('>') + c.attribute(QStringLiteral("terminal2"));
+		}
 		return r;
 	}
 
@@ -183,6 +247,57 @@ private slots:
 		QCOMPARE(legacy.wires, 0);
 		QVERIFY(!said(legacy));
 		QCOMPARE(resave(project({13, 14}, byUuid(10))).wires, 0);
+	}
+
+	// A whole drawing moved by 5: two terminals 10 apart, so each saved
+	// one has two live terminals at 5 units. Only one shift fits both.
+	void wholeDrawingMovedPairsBothTerminals()
+	{
+		const Result r = resave(multiProject({{'n', -5, -10}, {'n', 5, -10}},
+											 {{'n', -10, -10}, {'n', 0, -10}}));
+		QCOMPARE(r.wires, 2);
+		QVERIFY(said(r));
+	}
+
+	// Two terminals at one place, moved by 1: paired in order.
+	void terminalsAtOnePlaceKeepTheirOrder()
+	{
+		const QList<Term> saved = {{'n', 1, -40}, {'n', 1, -40}};
+		const Result r = resave(multiProject(saved, {{'n', 0, -40}, {'n', 0, -40}}));
+		QCOMPARE(r.wires, 2);
+		QVERIFY(said(r));
+		// each wire runs between the same terminal of both copies, and the
+		// first saved one took the first live one (the rank-0 uuid)
+		QCOMPARE(r.pairs.size(), 2);
+		QCOMPARE(r.pairs.at(0), derived(-40, 0) + QLatin1Char('>') + derived(-40, 0));
+		QVERIFY(r.pairs.at(1) != r.pairs.at(0));
+		const QStringList second = r.pairs.at(1).split(QLatin1Char('>'));
+		QCOMPARE(second.at(0), second.at(1));
+	}
+
+	// Terminals that moved by different amounts have no common shift:
+	// each is still paired by itself.
+	void differentShiftsStillPairPerTerminal()
+	{
+		const Result r = resave(multiProject({{'n', -20, -10}, {'n', 20, -10}},
+											 {{'n', -18, -10}, {'n', 23, -10}}));
+		QCOMPARE(r.wires, 2);
+	}
+
+	// A terminal that moved while another did not leaves a lone saved
+	// terminal: no rigid shift is needed, the per-terminal rule pairs it.
+	void oneMovedAmongStaysStillPairs()
+	{
+		QCOMPARE(resave(multiProject({{'n', -20, -10}, {'n', 20, -10}},
+									 {{'n', -20, -10}, {'n', 23, -10}})).wires, 2);
+	}
+
+	// Still ambiguous: the two saved terminals could each be either live
+	// one, and no single shift maps both.
+	void ambiguousStillRefuses()
+	{
+		QCOMPARE(resave(multiProject({{'n', 0, -10}, {'n', 4, -10}},
+									 {{'n', 2, -10}, {'n', 6, -10}, {'n', -2, -10}})).wires, 0);
 	}
 };
 

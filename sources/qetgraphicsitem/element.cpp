@@ -980,8 +980,15 @@ bool Element::valideXml(QDomElement &e)
 	replaced or redrawn since the project was saved. A saved record gives
 	the old docking point and orientation of its terminal, so it is paired
 	with a live terminal of the same orientation whose docking point is
-	within moved_terminal_reach in x and y, when each is the only candidate
-	of the other. Anything less clear stays unmatched, as before.
+	within moved_terminal_reach in x and y. Two steps, both only where the
+	pairing is clear:
+	- a rigid offset: if exactly one offset (the same for every terminal)
+	  maps every unmatched record onto a distinct live terminal, as when a
+	  whole drawing was moved, all are paired by it;
+	- otherwise per terminal: a record and a live terminal that are each
+	  the only candidate of the other. Several records at one place and as
+	  many live terminals at one place are paired in order.
+	Anything less clear stays unmatched, as before.
 
 	A pair registers the record's legacy id, and the uuid TerminalUuids
 	derived for the terminal at its old place, so that a wire naming either
@@ -1021,10 +1028,10 @@ void Element::matchMovedTerminals(const QList<QDomElement> &records,
 		}
 	}
 
-	for (auto it = candidates.constBegin(); it != candidates.constEnd(); ++it) {
-		Terminal *t = it.value().value(0);
-		if (it.value().size() != 1 || claimants.value(t).size() != 1) continue;
-		const QDomElement &record = records.at(it.key());
+		//Pair a record with a live terminal: register its legacy id, and the
+		//uuid derived for the terminal at its old place
+	const auto pair_up = [&](int index, Terminal *t) {
+		const QDomElement &record = records.at(index);
 		const QPointF dock = dock_of(record);
 
 			//The old place of the terminal: its docking point less the
@@ -1039,7 +1046,7 @@ void Element::matchMovedTerminals(const QList<QDomElement> &records,
 			//The rank among the records at the same place, as the project
 			//counted it when it gave the terminals their uuids
 		int rank = 0;
-		for (int j = 0; j < it.key(); ++j) {
+		for (int j = 0; j < index; ++j) {
 			const QPointF other = dock_of(records.at(j));
 			if (orientation_of(records.at(j)) == orientation_of(record)
 				&& qAbs(other.x() - dock.x()) < 1e-6
@@ -1051,6 +1058,74 @@ void Element::matchMovedTerminals(const QList<QDomElement> &records,
 		m_old_place_terminals.insert(TerminalUuids::derived(old_pos.x(), old_pos.y(),
 															orientation_of(record), rank), t);
 		m_moved_terminals << t;
+	};
+	const auto same_place = [](const QPointF &a, const QPointF &b) {
+		return qAbs(a.x() - b.x()) < 1e-6 && qAbs(a.y() - b.y()) < 1e-6;
+	};
+
+		//Rigid offset: when a whole drawing was moved, every terminal moved
+		//by the same amount. Try each offset seen between a record and a
+		//live terminal; if exactly one maps every unmatched record onto a
+		//distinct live terminal, the pairs are settled by it.
+	QList<int> unmatched;
+	QList<QPointF> offsets;
+	for (int i = 0; i < records.size(); ++i) {
+		if (matched_records.contains(i)) continue;
+		unmatched << i;
+		for (Terminal *t : candidates.value(i)) {
+			const QPointF offset = t->dock_elmt_ - dock_of(records.at(i));
+			const bool known = std::any_of(offsets.cbegin(), offsets.cend(),
+										   [&](const QPointF &o) { return same_place(o, offset); });
+			if (!known) offsets << offset;
+		}
+	}
+	QList<QPair<int, Terminal *>> rigid;
+	int rigid_offsets = 0;
+	for (const QPointF &offset : std::as_const(offsets)) {
+		QList<QPair<int, Terminal *>> mapping;
+		QSet<Terminal *> used;
+		for (int i : std::as_const(unmatched)) {
+			Terminal *found = nullptr;  // records at one place take the live ones in order
+			for (Terminal *t : candidates.value(i)) {
+				if (!used.contains(t)
+					&& same_place(t->dock_elmt_, dock_of(records.at(i)) + offset)) {
+					found = t;
+					break;
+				}
+			}
+			if (!found) break;
+			used << found;
+			mapping.append({i, found});
+		}
+		if (mapping.size() != unmatched.size()) continue;
+		++rigid_offsets;
+		rigid = mapping;
+	}
+	if (rigid_offsets == 1) {
+		for (const auto &pair : std::as_const(rigid)) pair_up(pair.first, pair.second);
+		return;
+	}
+
+		//Per terminal: a record and a live terminal that are each the only
+		//candidate of the other. Several records at one place with as many
+		//live terminals at one place pair in order.
+	for (int i : std::as_const(unmatched)) {
+		const QList<Terminal *> live = candidates.value(i);
+		if (live.isEmpty()) continue;
+		QList<int> group;
+		for (int j : std::as_const(unmatched)) {
+			if (orientation_of(records.at(j)) == orientation_of(records.at(i))
+				&& same_place(dock_of(records.at(j)), dock_of(records.at(i))))
+				group << j;
+		}
+		if (group.first() != i || live.size() != group.size()) continue;
+		bool clear = true;
+		for (Terminal *t : live) {
+			if (!same_place(t->dock_elmt_, live.first()->dock_elmt_)
+				|| claimants.value(t) != group) clear = false;
+		}
+		if (!clear) continue;
+		for (int k = 0; k < group.size(); ++k) pair_up(group.at(k), live.at(k));
 	}
 }
 
