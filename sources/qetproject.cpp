@@ -2655,6 +2655,15 @@ bool QETProject::isContainerPath(const QString &path)
 }
 
 /**
+	@brief QETProject::openFileFilter
+	@return the file-dialog filter for a project to open: .qet and .qetz
+*/
+QString QETProject::openFileFilter()
+{
+	return tr("QElectroTech project (*.qet *.qetz)");
+}
+
+/**
 	@brief QETProject::writeContainer
 	Write the project document @p project to @p path as a .qetz: the same
 	document, in parts, zipped (#1440). The file is replaced only once
@@ -2721,10 +2730,20 @@ QETResult QETProject::write()
 		return(QString("unable to save project to file: no filepath was specified"));
 
 		//A project read from a .qet is saved as a .qetz beside it; the
-		//.qet stays as it was (stage D1)
+		//.qet stays as it was (stage D1). If the .qetz cannot be written
+		//(a read-only folder), the project stays the .qet it was.
+	const QString opened_qet = m_opened_from_qet ? m_file_path : QString();
 	if (m_opened_from_qet) {
 		setFilePath(besideContainerPath());
 	}
+	const auto failed = [this, &opened_qet](const QString &error) {
+		const QString message = tr("Cannot save %1: %2").arg(m_file_path, error);
+		if (!opened_qet.isEmpty()) {
+			setFilePath(opened_qet);
+			m_opened_from_qet = true;
+		}
+		return(QETResult(message));
+	};
 
 		// If the project was opened read-only, only refuse when the target
 		// really can't be written: an existing file that is not writable, or a
@@ -2746,7 +2765,7 @@ QETResult QETProject::write()
 			//A container is written from the whole document: every folio
 			//built (stage D4 writes it from the database)
 		if (!writeContainerFile(m_file_path, &error_message))
-			return(error_message);
+			return(failed(error_message));
 	}
 	else
 	{
@@ -2756,7 +2775,7 @@ QETResult QETProject::write()
 		QDomDocument xml_project(toXml(&kept_folios));
 		if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
 						   m_file_path, &error_message))
-			return(error_message);
+			return(failed(error_message));
 	}
 
 		// The project has just been written to a writable file (e.g. saved to

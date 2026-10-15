@@ -25,7 +25,8 @@
 #include <QRegularExpression>
 #include <QUuid>
 
-const char QetContainer::MimeType[] = "application/x-qelectrotech-project+zip";
+const char QetContainer::MimeType[] = "application/x-qet-project+zip";
+const char QetContainer::OldMimeType[] = "application/x-qelectrotech-project+zip";
 
 namespace {
 const QString PartTag = QStringLiteral("qetz-part");
@@ -426,7 +427,8 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 	for (const QetZip::Entry &entry : entries)
 		files.insert(entry.name, entry.data);
 
-	if (files.value(QStringLiteral("mimetype")) != QByteArray(MimeType)) {
+	const QByteArray mimetype = files.value(QStringLiteral("mimetype"));
+	if (mimetype != QByteArray(MimeType) && mimetype != QByteArray(OldMimeType)) {
 		setError(error, QStringLiteral("not a QElectroTech project (.qetz)"));
 		return false;
 	}

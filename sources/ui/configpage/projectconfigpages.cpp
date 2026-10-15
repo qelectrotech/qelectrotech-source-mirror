@@ -1166,7 +1166,7 @@ void ProjectAutoNumConfigPage::importFromProject()
 				this,
 				tr("Import numbering from a project"),
 				m_project->currentDir(),
-				tr("Project QElectroTech (*.qet *.qetz)"));
+				QETProject::openFileFilter());
 	if (path.isEmpty()) {
 		return;
 	}

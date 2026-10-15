@@ -6489,6 +6489,66 @@ class ZippedProjectWithoutBinary(unittest.TestCase):
                     m.tool_project_info(str(z))
             self.assertIn("QET_BINARY", str(caught.exception))
 
+    QET = '<project><diagram><conductors><conductor cable="W1"/></conductors></diagram></project>'
+
+    def fake_resave(self, ok=True, timed_out=False):
+        """A _run_qet that writes a small .qet where --resave was asked to"""
+        def run(binary, args, timeout=180, **kw):
+            Path(args[2]).write_text(self.QET)
+            if timed_out:
+                return {"ok": False, "timed_out": True, "timeout_s": timeout}
+            return {"ok": ok, "exit_code": 0 if ok else 1, "stderr": "", "stdout": ""}
+        return run
+
+    def qetz_files(self, tmp, n):
+        files = []
+        for i in range(n):
+            z = Path(tmp) / f"p{i}.qetz"
+            z.write_bytes(b"PK")
+            files.append(z)
+        return files
+
+    def test_a_failed_or_timed_out_conversion_is_not_kept(self):
+        """A .qet left behind by a run that did not finish is not read"""
+        for kind in ({"ok": False}, {"timed_out": True}):
+            with self.subTest(**kind), tempfile.TemporaryDirectory() as tmp:
+                m._forget_qetz_copies()
+                z, = self.qetz_files(tmp, 1)
+                with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                     mock.patch.object(m, "_run_qet", side_effect=self.fake_resave(**kind)):
+                    with self.assertRaises(ValueError):
+                        m._as_qet(z)
+                self.assertEqual(m._QETZ_COPIES, {})
+
+    def test_only_the_newest_conversions_are_kept_on_disk(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            m._forget_qetz_copies()
+            files = self.qetz_files(tmp, m._QETZ_COPIES_MAX + 2)
+            with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                 mock.patch.object(m, "_run_qet", side_effect=self.fake_resave()):
+                copies = [m._as_qet(z) for z in files]
+                self.assertEqual(len(m._QETZ_COPIES), m._QETZ_COPIES_MAX)
+                self.assertFalse(copies[0].parent.exists())
+                self.assertTrue(copies[-1].is_file())
+                    # A new version of a file replaces its old copy
+                os.utime(files[-1], ns=(1, 1))
+                newer = m._as_qet(files[-1])
+                self.assertFalse(copies[-1].parent.exists())
+            m._forget_qetz_copies()
+            self.assertFalse(newer.parent.exists())
+
+    def test_scan_reads_at_most_max_qetz(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            m._forget_qetz_copies()
+            self.qetz_files(tmp, 3)
+            with mock.patch.object(m, "resolve_binary", return_value="qet"), \
+                 mock.patch.object(m, "_run_qet", side_effect=self.fake_resave()) as run:
+                scan = m.tool_scan(tmp, max_qetz=2)
+            m._forget_qetz_copies()
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual((scan["total"], scan["non_empty"]), (2, 2))
+        self.assertEqual(scan["skipped_qetz"], ["p2.qetz"])
+
 
 @needs_examples
 class ZippedProjects(unittest.TestCase):
@@ -6561,8 +6621,9 @@ class ZippedProjects(unittest.TestCase):
         self.assertTrue(r.get("ok"), r)
         self.assertEqual(out.read_bytes()[:2], b"PK")
             # The rotation is what the diff of the two .qetz finds
-        diff = json.dumps(m.tool_diff(str(self.qetz), str(out)))
-        self.assertIn(m._uuid_key(first["uuid"]) if hasattr(m, "_uuid_key") else first["uuid"], diff.lower())
+        rotated = m.tool_diff(str(self.qetz), str(out))["elements"]["rotated"]
+        self.assertEqual([r["uuid"] for r in rotated], [first["uuid"]])
+        self.assertNotEqual(*rotated[0]["orientation"])
 
 
 if __name__ == "__main__":
