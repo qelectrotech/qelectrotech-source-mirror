@@ -940,6 +940,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetsettings.cpp
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
+  ${QET_DIR}/sources/utils/previousversions.cpp
+  ${QET_DIR}/sources/utils/previousversions.h
   ${QET_DIR}/sources/utils/qetutils.h
 
   ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
