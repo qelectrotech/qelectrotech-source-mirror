@@ -931,6 +931,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # Saving refuses a project file another user or program changed since it was
+  # opened (QETProject::changedOnDisk()); QET_OVERWRITE_CHANGED=1 overrides.
+  add_executable(
+    tst_changedondisk
+    tst_changedondisk.cpp)
+  add_test(NAME tst_changedondisk COMMAND tst_changedondisk)
+  add_dependencies(tst_changedondisk qelectrotech)
+  target_link_libraries(tst_changedondisk PRIVATE Qt::Test)
+  target_compile_definitions(tst_changedondisk PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
   # turns element uuid + terminal uuid back into the index the conductor
   # calls take, on examples/perceuse.qet (two terminals at one point).
