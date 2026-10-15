@@ -931,6 +931,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # A folio report keeps showing where its partner is when another of its
+  # information changes (F116), on examples/iso_sfc_example.qet.
+  add_executable(
+    tst_reporttextafterinfo
+    tst_reporttextafterinfo.cpp)
+  add_test(NAME tst_reporttextafterinfo COMMAND tst_reporttextafterinfo)
+  add_dependencies(tst_reporttextafterinfo qelectrotech)
+  target_link_libraries(tst_reporttextafterinfo PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_reporttextafterinfo PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
   # turns element uuid + terminal uuid back into the index the conductor
   # calls take, on examples/perceuse.qet (two terminals at one point).
