@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>955</width>
-    <height>570</height>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,29 +23,29 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <layout class="QHBoxLayout" name="m_system_color_layout">
-          <item>
-           <widget class="QCheckBox" name="m_use_system_color_cb">
-            <property name="text">
-             <string>Use system colors</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="KColorButton" name="m_custom_app_color_kpb">
-            <property name="toolTip">
-             <string>Application color</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="m_system_color_layout">
+         <item>
+          <widget class="QCheckBox" name="m_use_system_color_cb">
+           <property name="text">
+            <string>Use system colors</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="KColorButton" name="m_custom_app_color_kpb">
+           <property name="toolTip">
+            <string>Application color</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="Line" name="line">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -117,7 +117,13 @@
          <item>
           <spacer name="m_wiring_max_wires_spacer">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
            </property>
           </spacer>
          </item>
@@ -143,7 +149,7 @@
        <item>
         <widget class="Line" name="line_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -204,7 +210,7 @@
        <item>
         <widget class="Line" name="line_5">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -225,7 +231,7 @@
        <item>
         <widget class="Line" name="line_4">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -274,7 +280,7 @@
        <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -291,6 +297,23 @@
        <string>Projects</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="m_autonumber_pasted">
+         <property name="toolTip">
+          <string>A pasted element receives the next number of its numbering instead of the copied element's name, and the numbering advances.</string>
+         </property>
+         <property name="text">
+          <string>Automatically number pasted or duplicated elements that follow a numbering</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="m_border_0">
+         <property name="text">
+          <string extracomment="Choix de l'increment de depart 1 ou 0">Number the title block columns from 0 (1 otherwise)</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0">
         <widget class="QCheckBox" name="m_use_folio_label">
          <property name="text">
@@ -304,6 +327,62 @@
           <string>Automatic backup of projects (applied at the next launch of QElectroTech)</string>
          </property>
         </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="m_live_assistant">
+         <property name="toolTip">
+          <string>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</string>
+         </property>
+         <property name="text">
+          <string>Allow an AI assistant to act on the open project (live mode)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="m_enable_scripting">
+         <property name="toolTip">
+          <string>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</string>
+         </property>
+         <property name="text">
+          <string>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="m_reverse_order_col">
+         <property name="toolTip">
+          <string>False — left to right; truе — right to left.</string>
+         </property>
+         <property name="text">
+          <string>Reverse column order</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item row="3" column="2">
         <widget class="QSpinBox" name="m_autosave_sb">
@@ -327,16 +406,6 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <widget class="QCheckBox" name="m_autonumber_pasted">
-         <property name="text">
-          <string>Automatically number pasted or duplicated elements that follow a numbering</string>
-         </property>
-         <property name="toolTip">
-          <string>A pasted element receives the next number of its numbering instead of the copied element's name, and the numbering advances.</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_save_label_paste">
          <property name="text">
@@ -344,56 +413,13 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QCheckBox" name="m_enable_scripting">
-         <property name="text">
-          <string>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</string>
-         </property>
+       <item row="8" column="0">
+        <widget class="QCheckBox" name="m_reverse_order_row">
          <property name="toolTip">
-          <string>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</string>
+          <string>False - top to bottom; true - bottom to top.</string>
          </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QCheckBox" name="m_live_assistant">
          <property name="text">
-          <string>Allow an AI assistant to act on the open project (live mode)</string>
-         </property>
-         <property name="toolTip">
-          <string>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_border_0">
-         <property name="text">
-          <string extracomment="Choix de l'increment de depart 1 ou 0">Number the title block columns from 0 (1 otherwise)</string>
+          <string>Reverse row order</string>
          </property>
         </widget>
        </item>
@@ -410,7 +436,7 @@
           <string>Access the collections</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -650,7 +676,7 @@
           <string>Elements management</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -706,7 +732,7 @@
        <item row="1" column="0">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -719,7 +745,7 @@
        <item row="0" column="2">
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -746,7 +772,7 @@
        <item>
         <widget class="Line" name="line_3">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -803,7 +829,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_3">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -856,7 +882,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_7">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -885,7 +911,7 @@
           <item>
            <spacer name="horizontalSpacer_9">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -924,7 +950,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_cable_textes">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -957,7 +983,7 @@
           <item row="1" column="1">
            <spacer name="horizontalSpacer_cable_core_textes">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1015,7 +1041,7 @@
        <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -1109,7 +1135,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_6">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1121,11 +1147,11 @@
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="Label_Diagram_textGrid">
-            <property name="text">
-             <string>Grid for texts moved with the mouse</string>
-            </property>
             <property name="toolTip">
              <string>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</string>
+            </property>
+            <property name="text">
+             <string>Grid for texts moved with the mouse</string>
             </property>
            </widget>
           </item>
@@ -1209,7 +1235,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_5">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1289,7 +1315,7 @@
           <item row="0" column="2">
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1334,7 +1360,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_10">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1433,7 +1459,7 @@
        <item>
         <spacer name="verticalSpacer_5">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -1462,7 +1488,7 @@
          <item>
           <spacer name="horizontalSpacer_8">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -1503,7 +1529,7 @@
        <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -1519,6 +1545,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>nokde/kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
@@ -1556,11 +1589,4 @@
  </tabstops>
  <resources/>
  <connections/>
- <customwidgets>
-  <customwidget>
-   <class>KColorButton</class>
-   <extends>QPushButton</extends>
-   <header>nokde/kcolorbutton.h</header>
-  </customwidget>
- </customwidgets>
 </ui>
