@@ -1033,6 +1033,18 @@ target_compile_definitions(tst_derivedwireuuid PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# A wire follows a terminal that moved a little since the project was saved
+# (a symbol replaced by a newer definition), by its legacy id or by the uuid
+# derived from its old place: Element::fromXml() pairs them (F112).
+add_executable(
+  tst_movedterminals
+  tst_movedterminals.cpp)
+add_test(NAME tst_movedterminals COMMAND tst_movedterminals)
+add_dependencies(tst_movedterminals qelectrotech)
+target_link_libraries(tst_movedterminals PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_movedterminals PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # Symbols sharing one uuid on a folio keep their wires through save and
 # reopen (#1408): nets of examples/Habitat-Schemas_developpes.qet.
 add_executable(
