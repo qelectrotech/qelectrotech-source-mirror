@@ -123,6 +123,7 @@ class QETProject : public QObject
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
+		QString openError() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
 			//(lazy folios); diagrams() builds them
@@ -584,6 +585,8 @@ class QETProject : public QObject
 		QFuture<bool> m_backup_future;
 			/// Crash-recovery snapshots, written in turn by writeBackup()
 		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
+			/// Why the file could not be read, see openError()
+		QString m_open_error;
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;

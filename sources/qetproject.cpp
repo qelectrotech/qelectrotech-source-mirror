@@ -515,6 +515,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if (!read)
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
+		m_open_error = read_error;
 		m_container_pictures.clear();
 		m_folio_parts.clear();
 		if(opened_here) {
@@ -601,6 +602,16 @@ void QETProject::refresh()
 QETProject::ProjectState QETProject::state() const
 {
 	return(m_state);
+}
+
+/**
+	@brief QETProject::openError
+	@return why the file could not be read, when state() is
+	XmlParsingFailed: "picture ... is missing", say; empty otherwise
+*/
+QString QETProject::openError() const
+{
+	return m_open_error;
 }
 
 /**
