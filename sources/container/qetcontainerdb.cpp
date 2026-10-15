@@ -749,8 +749,22 @@ struct UsedRows
 	}
 };
 
-	//The engineering data of the folio @p d back from @p db
-bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
+	//A database that does not match its folios: refused, or, with @p lost
+	//(a damaged project recovered, QetContainer::recover()), @p problem
+	//noted and gone past. @return true to go on
+bool noted(QString *error, QStringList *lost, const QString &problem)
+{
+	if (lost) {
+		lost->append(problem);
+		return true;
+	}
+	setError(error, problem);
+	return false;
+}
+
+	//The engineering data of the folio @p d back from @p db; with @p lost,
+	//what does not match is noted and left out (noted())
+bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error, QStringList *lost)
 {
 	QDomDocument document = d.ownerDocument();
 	auto entry = [&document](const QVariant &name_attr, const QString &name, const QVariant &value,
@@ -759,10 +773,11 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 	};
 	const QString id = keyOf(d, FolioAttribute);
 	if (id.isEmpty()) return true;
-	if (!used.use(used.folios, id, QStringLiteral("folio"), error)) return false;
+	QString problem;
+	if (!used.use(used.folios, id, QStringLiteral("folio"), &problem)) return noted(error, lost, problem);
 	Statement f(db, QStringLiteral("SELECT %1, props_attrs FROM folio WHERE uuid = ?").arg(quoted(FolioData)));
 	f.bind({id});
-	if (!f.next()) { setError(error, QStringLiteral("folio %1 is not in the database").arg(id)); return false; }
+	if (!f.next()) return noted(error, lost, QStringLiteral("folio %1 is not in the database").arg(id));
 	QVariantList values;
 	for (int i = 0 ; i < FolioData.size() + 1 ; ++i) values << f.value(i);
 	put(d, FolioData, values, 0);
@@ -777,24 +792,30 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 			props.appendChild(entry(p.value(0), QStringLiteral("name"), p.value(1), p.value(2),
 									QStringLiteral("property"), p.value(3)));
 		restoreWhitespace(props, values.at(FolioData.size()));
-		if (!replaceMarker(d, props)) {
-			setError(error, QStringLiteral("folio %1's properties have no place").arg(id));
+		if (!replaceMarker(d, props)
+				&& !noted(error, lost, QStringLiteral("folio %1's properties have no place").arg(id)))
 			return false;
-		}
 	}
 
 	for (const QDomElement &list : children(d, QStringLiteral("elements"))) {
 		for (QDomElement e : children(list, QStringLiteral("element"))) {
 			const QString key = keyOf(e, KeyAttribute);
 			if (key.isEmpty()) continue;
-			if (!used.use(used.elements, key, QStringLiteral("symbol"), error)) return false;
+			if (!used.use(used.elements, key, QStringLiteral("symbol"), &problem)) {
+				if (!noted(error, lost, problem)) return false;
+				continue;
+			}
 			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, folio_uuid FROM element WHERE uuid = ?")
 						.arg(quoted(ElementData)));
 			s.bind({key});
-			if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
+			if (!s.next()) {
+				if (!noted(error, lost, QStringLiteral("symbol %1 is not in the database").arg(key))) return false;
+				continue;
+			}
 			if (s.value(ElementData.size() + 2).toString() != id) {
-				setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
-				return false;
+				if (!noted(error, lost, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id)))
+					return false;
+				continue;
 			}
 			QVariantList v;
 			for (int i = 0 ; i < ElementData.size() + 2 ; ++i) v << s.value(i);
@@ -821,25 +842,31 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 											QStringLiteral("link_uuid")));
 				restoreWhitespace(links, v.at(n + 1));
 			}
-			if ((!info.isNull() && !replaceMarker(e, info))
-				|| (!links.isNull() && !replaceMarker(e, links))) {
-				setError(error, QStringLiteral("symbol %1's information has no place").arg(key));
+			if (((!info.isNull() && !replaceMarker(e, info))
+				 || (!links.isNull() && !replaceMarker(e, links)))
+					&& !noted(error, lost, QStringLiteral("symbol %1's information has no place").arg(key)))
 				return false;
-			}
 		}
 	}
 	for (const QDomElement &list : children(d, QStringLiteral("conductors"))) {
 		for (QDomElement c : children(list, QStringLiteral("conductor"))) {
 			const QString key = keyOf(c, KeyAttribute);
 			if (key.isEmpty()) continue;
-			if (!used.use(used.conductors, key, QStringLiteral("wire"), error)) return false;
+			if (!used.use(used.conductors, key, QStringLiteral("wire"), &problem)) {
+				if (!noted(error, lost, problem)) return false;
+				continue;
+			}
 			Statement s(db, QStringLiteral("SELECT %1, folio_uuid FROM conductor WHERE uuid = ?")
 						.arg(quoted(ConductorData)));
 			s.bind({key});
-			if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
+			if (!s.next()) {
+				if (!noted(error, lost, QStringLiteral("wire %1 is not in the database").arg(key))) return false;
+				continue;
+			}
 			if (s.value(ConductorData.size()).toString() != id) {
-				setError(error, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id));
-				return false;
+				if (!noted(error, lost, QStringLiteral("wire %1 is on folio %2, the database says another").arg(key, id)))
+					return false;
+				continue;
 			}
 			QVariantList v;
 			for (int i = 0 ; i < ConductorData.size() ; ++i) v << s.value(i);
@@ -1135,12 +1162,14 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 	Put the engineering data in @p database back into @p project (the
 	<project> element, its folios joined back already).
 */
-bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QString *error)
+bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QString *error,
+							 QStringList *lost)
 {
 	QDomDocument document = project.ownerDocument();
 	Database db;
-	if (!openDatabase(db, database, error) || !readyToRead(db, project, error))
-		return false;
+	QString problem;
+	if (!openDatabase(db, database, &problem) || !readyToRead(db, project, &problem))
+		return noted(error, lost, problem);
 
 		//Project properties
 	QHash<QString, QVariant> meta;
@@ -1156,10 +1185,9 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 			props.appendChild(entryElement(document, s.value(0), QStringLiteral("name"), s.value(1), s.value(2),
 										   QStringLiteral("property"), s.value(3)));
 		restoreWhitespace(props, meta.value(QStringLiteral("props_attrs")));
-		if (!replaceMarker(project, props)) {
-			setError(error, QStringLiteral("the project's properties have no place"));
+		if (!replaceMarker(project, props)
+				&& !noted(error, lost, QStringLiteral("the project's properties have no place")))
 			return false;
-		}
 	}
 
 	if (meta.contains(QStringLiteral("terminal_strips"))) {
@@ -1176,17 +1204,53 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 		read(QStringLiteral("SELECT * FROM strip_terminal ORDER BY strip_uuid, pos, level"), 4, &rows.terminals);
 		read(QStringLiteral("SELECT * FROM strip_bridge ORDER BY ord"), 4, &rows.bridges);
 		read(QStringLiteral("SELECT * FROM strip_bridge_terminal ORDER BY bridge_uuid, ord"), 3, &rows.bridge_terminals);
-		if (!replaceMarker(project, stripsXml(document, rows))) {
-			setError(error, QStringLiteral("the terminal strips have no place"));
+		if (!replaceMarker(project, stripsXml(document, rows))
+				&& !noted(error, lost, QStringLiteral("the terminal strips have no place")))
 			return false;
-		}
 	}
 
 	UsedRows used;
 	for (QDomElement d : children(project, QStringLiteral("diagram")))
-		if (!restoreDiagram(db, d, used, error))
+		if (!restoreDiagram(db, d, used, error, lost))
 			return false;
-	return noRowLeft(db, used, error);
+	if (!noRowLeft(db, used, &problem))
+		return noted(error, lost, problem);
+	return true;
+}
+
+/**
+	@brief QetContainerDb::dropLeftovers
+	After restore() of a damaged project (with lost): take out of
+	@p project what only the database could have filled -- the markers of
+	blocks it held, the keys of rows -- and the wires whose ends it held,
+	which cannot be drawn without them. Each kind left out is said in @p lost.
+*/
+void QetContainerDb::dropLeftovers(QDomElement project, QStringList *lost)
+{
+	QList<QDomElement> markers, wires;
+	QList<QDomElement> all{project};
+	for (int i = 0 ; i < all.size() ; ++i) {
+		QDomElement e = all.at(i);
+		for (QDomElement c = e.firstChildElement() ; !c.isNull() ; c = c.nextSiblingElement())
+			all << c;
+		if (e.tagName() == MarkerTag) markers << e;
+		e.removeAttribute(KeyAttribute);
+		e.removeAttribute(FolioAttribute);
+		e.removeAttribute(KeptPartAttribute);
+		if (e.tagName() == QLatin1String("conductor") && e.parentNode().nodeName() == QLatin1String("conductors")
+				//Every format names a wire's ends by terminal (older files
+				//by terminal only), and a .qetz holds them in the database
+				&& (!e.hasAttribute(QStringLiteral("terminal1")) || !e.hasAttribute(QStringLiteral("terminal2"))))
+			wires << e;
+	}
+	for (QDomElement m : std::as_const(markers))
+		m.parentNode().removeChild(m);
+	for (QDomElement w : std::as_const(wires))
+		w.parentNode().removeChild(w);
+	if (lost && !markers.isEmpty())
+		lost->append(QStringLiteral("%1 blocks of information the database held").arg(markers.size()));
+	if (lost && !wires.isEmpty())
+		lost->append(QStringLiteral("%1 wires, whose ends the database held").arg(wires.size()));
 }
 
 /**
