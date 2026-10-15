@@ -885,14 +885,13 @@ int resaveProject(QETProject &project, const QString &output)
 		//what building them would write (QETProject::toXml())
 	QHash<int, QByteArray> kept_folios;
 	const QDomDocument doc = project.toXml(&kept_folios);
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
+		//Through a temporary file, as the GUI saves: a run stopped
+		//part-way leaves the previous file
+	QString error;
+	if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
-	file.close();
 	out << "Re-saved project -> " << output << "\n";
 	return 0;
 }
@@ -980,14 +979,11 @@ int setTitleBlock(QETProject &project, const QString &output,
 			//is what building them would write (QETProject::toXml())
 		QHash<int, QByteArray> kept_folios;
 		const QDomDocument doc = project.toXml(&kept_folios);
-		QFile file(output);
-		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-			err << "Cannot open '" << output << "' for writing.\n";
+		QString error;
+		if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
-		QTextStream fout(&file);
-		fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
-		file.close();
 	}
 	out << "Stamped " << fields.size() << " field(s) on "
 		<< folios << " folio(s) -> " << output << "\n";

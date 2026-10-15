@@ -941,6 +941,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
+  ${QET_DIR}/sources/utils/syncfolder.h
 
   ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
   ${QET_DIR}/sources/materiallist/materialentrydialog.h

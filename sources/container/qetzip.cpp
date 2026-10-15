@@ -18,6 +18,7 @@
 #include "qetzip.h"
 
 #include "miniz/miniz.h"
+#include "../utils/syncfolder.h"
 
 #include <QFile>
 #include <QSaveFile>
@@ -152,6 +153,7 @@ bool QetZip::write(const QString &path, const QList<Entry> &entries, QString *er
 		setError(error, file.errorString());
 		return false;
 	}
+	QET::syncFolderOf(path);
 	return true;
 }
 
