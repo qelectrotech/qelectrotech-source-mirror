@@ -4601,7 +4601,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="318"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Séparation des fonctions</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="322"/>
@@ -4917,7 +4917,7 @@ Continuer ?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
         <source>Function separation</source>
-        <translation type="unfinished"></translation>
+        <translation>Séparation des fonctions</translation>
     </message>
     <message>
         <source>Potential separation</source>
@@ -6492,12 +6492,12 @@ En important ce fichier, vous confirmez que :
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="243"/>
         <source>SVG: smaller pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG : images plus petites</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="244"/>
         <source>Pictures are stored at four times the size they have on the folio instead of their full resolution: a much smaller file, still sharp when printed</source>
-        <translation type="unfinished"></translation>
+        <translation>Les photos sont enregistrées à une taille quatre fois supérieure à celle affichée dans le folio, et non à leur résolution maximale : le fichier est ainsi beaucoup plus petit, tout en conservant une bonne netteté à l&apos;impression</translation>
     </message>
 </context>
 <context>
@@ -13024,12 +13024,12 @@ Maintenir Ctrl pendant le déplacement pour placer librement.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1831"/>
         <source>XML Files (*.xml);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers XML (*.xml) ;; Tous les fichiers (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1991"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce projet a été enregistré par une version plus récente de QElectroTech. Il s&apos;ouvre en lecture seule, afin que son enregistrement ne puisse pas entraîner la perte d&apos;informations que cette version ne contient pas. Utilisez la commande « Enregistrer sous » pour conserver une copie au format de cette version.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2038"/>
@@ -14799,12 +14799,12 @@ les conditions requises ne sont pas valides</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="2663"/>
         <source>QElectroTech project (*.qet *.qetz)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech projet (*.qet *.qetz)</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2740"/>
         <source>Cannot save %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;enregistrer %1 : %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="2902"/>
