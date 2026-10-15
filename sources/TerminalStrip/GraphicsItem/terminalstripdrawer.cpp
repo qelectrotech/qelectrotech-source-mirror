@@ -18,6 +18,7 @@
 #include "terminalstripdrawer.h"
 
 #include <QPainter>
+#include <QPolygonF>
 #include <QFontMetricsF>
 #include <QHash>
 
@@ -405,6 +406,105 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 	}
 }
 
+/*
+ * Width and color of a terminal.
+ */
+
+/**
+ * The width of the terminals of the layout is the width of a terminal
+ * of 5.2 mm (the usual width of the terminals of 2.5 mm2).
+ * The width set by the user, in mm, is converted according to this reference.
+ */
+constexpr qreal reference_terminal_width_mm{5.2};
+
+/**
+ * @brief terminalRect
+ * @param pattern
+ * @param index : level of the terminal (0 to 3)
+ * @param real_t : can be null
+ * @return The rectangle of the terminal : the one of the layout,
+ * with the width adapted to the width (in mm) of @a real_t if it is set.
+ */
+QRectF terminalRect(const TerminalStripLayoutPattern &pattern,
+					int index,
+					const QSharedPointer<AbstractRealTerminalInterface> &real_t)
+{
+	auto rect_{pattern.m_terminal_rect[index]};
+	if (real_t && real_t->widthMm() > 0) {
+		rect_.setWidth(rect_.width() * real_t->widthMm() / reference_terminal_width_mm);
+	}
+	return rect_;
+}
+
+/**
+ * @brief The TerminalColors struct
+ * Colors used to fill the rectangle of a terminal.
+ * An invalid fill color means that the rectangle is not filled.
+ * The stripe color (if valid) is drawn as stripes over the fill color.
+ */
+struct TerminalColors
+{
+	QColor fill;
+	QColor stripe;
+};
+
+/**
+ * @brief terminalColors
+ * @param real_t : can be null
+ * @return The colors of the terminal : the color set by the user,
+ * else the default color of the type of the terminal.
+ */
+TerminalColors terminalColors(const QSharedPointer<AbstractRealTerminalInterface> &real_t)
+{
+	if (!real_t) {
+		return {};
+	}
+	if (real_t->color().isValid()) {
+		return {real_t->color(), real_t->stripeColor()};
+	}
+	switch (real_t->type()) {
+		case ElementData::TTGround: return {QColor(255, 216, 0), QColor(46, 158, 46)};	//Green/Yellow
+		default: return {};
+	}
+}
+
+/**
+ * @brief drawStripes
+ * Draw diagonal stripes of @a color inside @a rect.
+ */
+void drawStripes(QPainter *painter, const QRectF &rect, const QColor &color)
+{
+	painter->save();
+	painter->setClipRect(rect);
+	painter->setPen(Qt::NoPen);
+	painter->setBrush(color);
+
+	const auto band_{std::max<qreal>(2, rect.width() / 2)};
+	for (auto x = rect.left() - rect.height() ; x < rect.right() ; x += 2 * band_)
+	{
+		QPolygonF polygon_;
+		polygon_ << QPointF(x, rect.bottom())
+				 << QPointF(x + band_, rect.bottom())
+				 << QPointF(x + band_ + rect.height(), rect.top())
+				 << QPointF(x + rect.height(), rect.top());
+		painter->drawPolygon(polygon_);
+	}
+	painter->restore();
+}
+
+/**
+ * @return The color (black or white) the more readable on @a background.
+ * If @a background is invalid, return black.
+ */
+QColor contrastColor(const QColor &background)
+{
+	if (!background.isValid()) {
+		return Qt::black;
+	}
+	const auto luminance_{0.299 * background.redF() + 0.587 * background.greenF() + 0.114 * background.blueF()};
+	return luminance_ < 0.5 ? QColor(Qt::white) : QColor(Qt::black);
+}
+
 } //End anonymous namespace
 
 /**
@@ -509,7 +609,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					break;
 				}
 
-                terminal_rect = m_pattern->m_terminal_rect[index_];
+                terminal_rect = terminalRect(*m_pattern, index_, real_terminal_vector[i]);
 
 					//Cable (hose) of this terminal
 				CableCell cable_cell;
@@ -523,17 +623,36 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				}
 				const bool have_cable{m_pattern->m_cable_wire_length > 0 && !cable_cell.cable.isEmpty()};
 				cable_cells.append(cable_cell);
-                    //Draw terminal rect
+                    //Draw terminal rect, filled with the color of the terminal (if any)
+				const auto colors_{terminalColors(real_terminal_vector[i])};
+				const auto fill_color_{colors_.fill};
+				const auto text_color_{contrastColor(fill_color_)};
+				painter->save();
+				if (fill_color_.isValid()) {
+					painter->setBrush(QBrush(fill_color_));
+				}
                 painter->drawRect(terminal_rect);
+				if (colors_.stripe.isValid())
+				{
+					drawStripes(painter, terminal_rect, colors_.stripe);
+					painter->setBrush(Qt::NoBrush);
+					painter->drawRect(terminal_rect);	//Draw again the outline, hidden by stripes
+				}
+				painter->restore();
 
 					//Draw the symbol of the terminal type (fuse, ground, led...)
 				if (m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i])
 				{
+					painter->save();
+					if (fill_color_.isValid()) {
+						painter->setPen(text_color_);
+					}
 					drawTypeSymbol(painter,
 								   QRectF{0, m_pattern->m_type_symbol_y,
 										  terminal_rect.width(), m_pattern->m_type_symbol_height},
 								   real_terminal_vector[i]->type(),
 								   real_terminal_vector[i]->isLed());
+					painter->restore();
 				}
 
 					//Draw the connections, above and under the terminal
@@ -570,6 +689,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
                     //Draw text
                 painter->save();
+				if (fill_color_.isValid()) {
+					painter->setPen(text_color_);
+				}
                 text_rect.setRect(0, terminals_text_y, terminal_rect.width(), terminals_text_height);
                 if (terminals_text_orientation == Qt::Vertical)
                 {
@@ -594,6 +716,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					//Draw xref
 				xref_rect.setRect(0, xref_text_y, terminal_rect.width(), xref_text_height);
 				painter->save();
+				if (fill_color_.isValid()) {
+					painter->setPen(text_color_);
+				}
 				if (xref_text_orientation == Qt::Vertical)
 				{
 					painter->translate(xref_rect.bottomLeft());
@@ -848,7 +973,7 @@ qreal TerminalStripDrawer::width() const
 						break;
 					}
 
-					width_ += m_pattern->m_terminal_rect[index_].width();
+					width_ += terminalRect(*m_pattern, index_, real_terminal_vector[i]).width();
 				}
 			}
 		}

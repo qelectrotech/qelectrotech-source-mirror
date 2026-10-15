@@ -62,6 +62,9 @@ class TerminalStripModel : public QAbstractTableModel
 			Function = 12,
 			Led = 13,
 			Shield = 14,
+			Color = 15,
+			Section = 16,
+			Width = 17,
 			Invalid = 99
 		};
 
@@ -123,6 +126,9 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 		QWidget *createEditor(
 				QWidget *parent,
 				const QStyleOptionViewItem &option,
+				const QModelIndex &index) const override;
+		void setEditorData(
+				QWidget *editor,
 				const QModelIndex &index) const override;
 		void setModelData(
 				QWidget *editor,

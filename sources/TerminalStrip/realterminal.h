@@ -19,6 +19,7 @@
 #define REALTERMINAL_H
 
 #include <QSharedPointer>
+#include <QColor>
 #include <QDomElement>
 #include "../properties/elementdata.h"
 
@@ -66,11 +67,20 @@ class RealTerminal
 		QString cable() const;
 		QString cableWire() const;
 		bool isShield() const;
+		QColor color() const;
+		QColor stripeColor() const;
+		qreal section() const;
+		qreal widthMm() const;
 
 		//Keys used to store the cable data in the element informations
 		static QString cableInfoKey()     { return QStringLiteral("terminal_cable"); }
 		static QString cableWireInfoKey() { return QStringLiteral("terminal_cable_wire"); }
 		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
+		//Keys used to store the color and the section (mm2) of the terminal
+		static QString colorInfoKey()     { return QStringLiteral("terminal_color"); }
+		static QString sectionInfoKey()   { return QStringLiteral("terminal_section"); }
+		//Key used to store the width (mm) of the terminal, drawn in the terminal strip
+		static QString widthInfoKey()     { return QStringLiteral("terminal_width"); }
 
 		QString conductor() const;
 

@@ -18,6 +18,7 @@
 #ifndef TERMINALSTRIPDRAWER_H
 #define TERMINALSTRIPDRAWER_H
 
+#include <QColor>
 #include <QPointer>
 #include <QUuid>
 
@@ -77,6 +78,13 @@ namespace TerminalStripDrawer
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
 			virtual bool isShield() const { return false; }
+			//Color and width (mm) of the terminal, only used to draw the terminal.
+			//An invalid color means "no override" : the default color of the type is used.
+			//A width <= 0 means "unknown" : the default width of the layout is used.
+			virtual QColor color() const { return QColor(); }
+			//Second color of a two-tone color (like green/yellow), drawn as stripes over color()
+			virtual QColor stripeColor() const { return QColor(); }
+			virtual qreal widthMm() const { return 0; }
     };
 
 	class AbstractPhysicalTerminalInterface

@@ -153,6 +153,21 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->isShield() : false;
 	}
 
+	QColor TrueRealTerminal::color() const
+	{
+		return m_real ? m_real->color() : QColor();
+	}
+
+	QColor TrueRealTerminal::stripeColor() const
+	{
+		return m_real ? m_real->stripeColor() : QColor();
+	}
+
+	qreal TrueRealTerminal::widthMm() const
+	{
+		return m_real ? m_real->widthMm() : 0;
+	}
+
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
         m_bridge { bridge }
     {}

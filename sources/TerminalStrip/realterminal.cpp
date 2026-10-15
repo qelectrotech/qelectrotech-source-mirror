@@ -19,6 +19,7 @@
 #include "terminalstrip.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "physicalterminal.h"
+#include "terminalcolor.h"
 #include "../qetgraphicsitem/conductor.h"
 
 /**
@@ -189,6 +190,78 @@ bool RealTerminal::isShield() const {
 			m_element->elementData().m_informations.value(shieldInfoKey()).toString());
 	}
 	return false;
+}
+
+/**
+ * @brief RealTerminal::color
+ * @return The color set by the user for this terminal, drawn in the
+ * terminal strip. An invalid color mean that the user did not set a color.
+ * The value is stored in the informations of the element.
+ * @sa stripeColor
+ */
+QColor RealTerminal::color() const
+{
+	QColor main_, stripe_;
+	if (m_element) {
+		TerminalColor::parse(m_element->elementData().m_informations.value(colorInfoKey()).toString(),
+							 &main_, &stripe_);
+	}
+	return main_;
+}
+
+/**
+ * @brief RealTerminal::stripeColor
+ * @return The second color of a two-tone color (green/yellow for example)
+ * or an invalid color if the color of this terminal is plain or not set.
+ */
+QColor RealTerminal::stripeColor() const
+{
+	QColor main_, stripe_;
+	if (m_element) {
+		TerminalColor::parse(m_element->elementData().m_informations.value(colorInfoKey()).toString(),
+							 &main_, &stripe_);
+	}
+	return stripe_;
+}
+
+/**
+ * @brief RealTerminal::section
+ * @return The section in mm2 set by the user for this terminal
+ * or 0 if no section was set.
+ * The value is stored in the informations of the element,
+ * with the dot as decimal separator, whatever the locale.
+ */
+qreal RealTerminal::section() const
+{
+	if (m_element)
+	{
+		bool ok_ = false;
+		const auto section_ = m_element->elementData().m_informations.value(sectionInfoKey()).toString().toDouble(&ok_);
+		if (ok_ && section_ > 0) {
+			return section_;
+		}
+	}
+	return 0;
+}
+
+/**
+ * @brief RealTerminal::widthMm
+ * @return The width in mm of this terminal (the width of the terminal
+ * sold by the manufacturer), set by the user, or 0 if no width was set.
+ * The value is stored in the informations of the element,
+ * with the dot as decimal separator, whatever the locale.
+ */
+qreal RealTerminal::widthMm() const
+{
+	if (m_element)
+	{
+		bool ok_ = false;
+		const auto width_ = m_element->elementData().m_informations.value(widthInfoKey()).toString().toDouble(&ok_);
+		if (ok_ && width_ > 0) {
+			return width_;
+		}
+	}
+	return 0;
 }
 
 /**

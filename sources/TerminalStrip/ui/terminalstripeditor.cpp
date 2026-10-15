@@ -31,6 +31,7 @@
 #include "../UndoCommand/changeterminalstripcolor.h"
 #include "../physicalterminal.h"
 #include "../terminalstripbridge.h"
+#include "../terminalcolor.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -217,6 +218,10 @@ void TerminalStripEditor::apply()
 					set_info(RealTerminal::cableInfoKey(), data_.cable_);
 					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
 					set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
+					//The color and the section are stored with the dot as decimal separator, whatever the locale
+					set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
+					set_info(RealTerminal::sectionInfoKey(), data_.section_ > 0 ? QString::number(data_.section_, 'g', 6) : QString());
+					set_info(RealTerminal::widthInfoKey(), data_.width_mm_ > 0 ? QString::number(data_.width_mm_, 'g', 6) : QString());
 
 					if (element->elementData() != current_data)
 						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
@@ -639,14 +644,17 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 namespace {
 /**
  * @return true if the cell at @a index contain a free text
- * (label, cable or wire of the cable), so a text can be pasted in it.
+ * (label, cable, wire of the cable, color, section or width), so a text can be pasted in it.
  */
 bool cellAcceptText(const QModelIndex &index)
 {
 	const auto column_ = TerminalStripModel::columnTypeForIndex(index);
 	return column_ == TerminalStripModel::Label
 			|| column_ == TerminalStripModel::Cable
-			|| column_ == TerminalStripModel::CableWire;
+			|| column_ == TerminalStripModel::CableWire
+			|| column_ == TerminalStripModel::Color
+			|| column_ == TerminalStripModel::Section
+			|| column_ == TerminalStripModel::Width;
 }
 }
 
@@ -730,7 +738,7 @@ void TerminalStripEditor::copySelectionToClipboard()
  *   the value is set to every selected cell.
  * - Otherwise the text is read like a table (tabulation between the columns
  *   and new line between the rows) and written from the top left selected cell.
- * Only the label, cable and cable wire cells are modified.
+ * Only the label, cable, cable wire, color, section and width cells are modified.
  */
 void TerminalStripEditor::pasteFromClipboard()
 {
