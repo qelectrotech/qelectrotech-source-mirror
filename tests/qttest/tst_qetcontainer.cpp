@@ -736,6 +736,22 @@ private slots:
 		QVERIFY2(QetContainer::join(entries, &project, &error), qPrintable(error));
 		QVERIFY(project.toString().contains(QStringLiteral("<elementInformation ")));
 		QVERIFY(!project.toString().contains(QStringLiteral("qetz-")));
+			//Format 2 moved the uuids of symbols and wires and the symbols'
+			//type out of the folio files: they come back
+		int symbols = 0, wires = 0;
+		const QDomNodeList diagrams = project.elementsByTagName(QStringLiteral("diagram"));
+		for (int i = 0 ; i < diagrams.size() ; ++i) {
+			const QDomElement d = diagrams.at(i).toElement();
+			for (QDomElement e = d.firstChildElement(QStringLiteral("elements")).firstChildElement(QStringLiteral("element"));
+				 !e.isNull() ; e = e.nextSiblingElement(QStringLiteral("element")), ++symbols) {
+				QVERIFY(!QUuid(e.attribute(QStringLiteral("uuid"))).isNull());
+				QVERIFY(e.attribute(QStringLiteral("type")).startsWith(QStringLiteral("embed://")));
+			}
+			for (QDomElement c = d.firstChildElement(QStringLiteral("conductors")).firstChildElement(QStringLiteral("conductor"));
+				 !c.isNull() ; c = c.nextSiblingElement(QStringLiteral("conductor")), ++wires)
+				QVERIFY(!QUuid(c.attribute(QStringLiteral("uuid"))).isNull());
+		}
+		QVERIFY(symbols > 0 && wires > 0);
 		const QList<QetZip::Entry> resaved = QetContainer::split(project, QString(), &error);
 		QVERIFY2(!resaved.isEmpty(), qPrintable(error));
 		const QString d = backDifference(project, resaved);
