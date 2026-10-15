@@ -881,6 +881,17 @@ QDomElement Diagram::deferredXmlWithHeader(QDomDocument &document)
 	for (QDomElement child = items.firstChildElement() ; !child.isNull() ; child = child.nextSiblingElement())
 		if (!header_children.contains(child.tagName()))
 			folio.appendChild(document.importNode(child, true));
+		//Its pictures written in, as building it writes them. A folio read
+		//from a .qetz names its pictures' files instead, which the next
+		//.qetz written from this document would leave out: that project
+		//then refused to open, "picture ... is missing" (F118).
+	for (QDomElement image : QET::findInDomElement(folio, QStringLiteral("images"), QStringLiteral("image"))) {
+		const QString file = QetContainer::pictureFile(image);
+		if (file.isEmpty() || !m_project) continue;
+		const QByteArray bytes = m_project->containerPicture(file);
+		if (!bytes.isEmpty())
+			QetContainer::inlinePicture(image, bytes);
+	}
 	return folio;
 }
 
