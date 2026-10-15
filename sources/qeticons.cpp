@@ -75,6 +75,8 @@ namespace QET {
 		QIcon EditDelete;
 		QIcon EditOpacity;		
 		QIcon EditPaste;
+		QIcon CopyElementTextFormat;
+		QIcon ApplyElementTextFormat;
 		QIcon EditRedo;
 		QIcon EditRename;
 		QIcon EditSelectAll;
@@ -464,6 +466,8 @@ void QET::Icons::initIcons()
 	EditDelete          = QIcon::fromTheme("edit-delete");
 	EditOpacity         = QIcon::fromTheme("edit-opacity");
 	EditPaste           = QIcon::fromTheme("edit-paste");
+	CopyElementTextFormat = QIcon(":/ico/format-copy.svg");
+	ApplyElementTextFormat = QIcon(":/ico/format-apply.svg");
 	if (rtl) {
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(16).transformed(reverse));
 		EditRedo.addPixmap(QIcon::fromTheme("edit-redo").pixmap(22).transformed(reverse));

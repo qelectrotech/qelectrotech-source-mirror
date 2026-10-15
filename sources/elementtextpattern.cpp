@@ -26,6 +26,7 @@
 #include "ui/importelementtextpatterndialog.h"
 #include "undocommand/addelementtextcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
+#include "shownkinds.h"
 
 #include <QDir>
 #include <QGraphicsScene>
@@ -271,4 +272,636 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 		undo_stack.push(new AddTextsGroupCommand(m_element, xml_group));
 	
 	undo_stack.endMacro();
+}
+
+//=============================================================================
+// ElementTextFormatPattern & ApplyElementTextFormatCommand (Format Painter)
+//=============================================================================
+
+#include "terminal.h"
+
+ElementTextFormatPattern ElementTextFormatPattern::s_current_pattern;
+bool ElementTextFormatPattern::s_has_pattern = false;
+
+bool ElementTextFormatPattern::hasPattern()
+{
+	return s_has_pattern && s_current_pattern.isValid();
+}
+
+const ElementTextFormatPattern &ElementTextFormatPattern::currentPattern()
+{
+	return s_current_pattern;
+}
+
+void ElementTextFormatPattern::setCurrentPattern(const ElementTextFormatPattern &pattern)
+{
+	s_current_pattern = pattern;
+	s_has_pattern = pattern.isValid();
+}
+
+ElementTextFormatPattern ElementTextFormatPattern::fromElement(Element *element)
+{
+	ElementTextFormatPattern pattern;
+	if (!element) return pattern;
+
+	pattern.m_source_element_name = element->name();
+
+	// 1. Capture groups
+	for (ElementTextItemGroup *group : element->textGroups()) {
+		TextGroupFormatItem gItem;
+		gItem.name = group->name();
+		gItem.pos = group->pos();
+		gItem.rotation = group->rotation();
+		gItem.alignment = group->alignment();
+		gItem.verticalAdjustment = group->verticalAdjustment();
+		gItem.frame = group->frame();
+		gItem.holdToBottomPage = group->holdToBottomPage();
+		pattern.m_groups.append(gItem);
+	}
+
+	// 2. Capture all dynamic texts
+	int idx = 0;
+	// Ungrouped texts
+	for (DynamicElementTextItem *deti : element->dynamicTextItems()) {
+		DynamicTextFormatItem tItem;
+		tItem.textFrom = deti->textFrom();
+		tItem.infoName = deti->infoName();
+		tItem.compositeText = deti->toPlainText();
+		tItem.font = deti->font();
+		tItem.color = deti->color();
+		tItem.alignment = deti->alignment();
+		tItem.pos = deti->pos();
+		tItem.rotation = deti->rotation();
+		tItem.keepVisualRotation = deti->keepVisualRotation();
+		tItem.rotationPointCenter = deti->rotationPointCenter();
+		tItem.frame = deti->frame();
+		tItem.textWidth = deti->textWidth();
+		tItem.visible = ShownKinds::wantsVisible(deti);
+		tItem.groupName = QString();
+		tItem.index = idx++;
+		tItem.isTerminalText = isTerminalTextItem(deti, element);
+		pattern.m_text_items.append(tItem);
+	}
+
+	// Grouped texts
+	for (ElementTextItemGroup *group : element->textGroups()) {
+		for (DynamicElementTextItem *deti : group->texts()) {
+			DynamicTextFormatItem tItem;
+			tItem.textFrom = deti->textFrom();
+			tItem.infoName = deti->infoName();
+			tItem.compositeText = deti->toPlainText();
+			tItem.font = deti->font();
+			tItem.color = deti->color();
+			tItem.alignment = deti->alignment();
+			tItem.pos = deti->pos();
+			tItem.rotation = deti->rotation();
+			tItem.keepVisualRotation = deti->keepVisualRotation();
+			tItem.rotationPointCenter = deti->rotationPointCenter();
+			tItem.frame = deti->frame();
+			tItem.textWidth = deti->textWidth();
+			tItem.visible = ShownKinds::wantsVisible(deti);
+			tItem.groupName = group->name();
+			tItem.index = idx++;
+			tItem.isTerminalText = isTerminalTextItem(deti, element);
+			pattern.m_text_items.append(tItem);
+		}
+	}
+
+	return pattern;
+}
+
+bool ElementTextFormatPattern::hasTerminalTextFormat() const
+{
+	for (const DynamicTextFormatItem &item : m_text_items) {
+		if (item.isTerminalText) return true;
+	}
+	return false;
+}
+
+DynamicTextFormatItem ElementTextFormatPattern::terminalTextFormat() const
+{
+	for (const DynamicTextFormatItem &item : m_text_items) {
+		if (item.isTerminalText) return item;
+	}
+	return DynamicTextFormatItem();
+}
+
+bool ElementTextFormatPattern::isTerminalTextItem(const DynamicElementTextItem *deti, const Element *element)
+{
+	if (!deti || !element) return false;
+	if (deti->textFrom() != DynamicElementTextItem::UserText) return false;
+
+	const QString text = deti->toPlainText().trimmed();
+	if (text.isEmpty()) return false;
+
+	const QList<Terminal *> terms = element->terminals();
+	for (const Terminal *t : terms) {
+		if (!t) continue;
+		if (t->name().trimmed() == text) {
+			return true;
+		}
+	}
+
+	// Secondary check: text is short (<= 6 chars, typical pin designation)
+	// and located close to a terminal (within 40 pixels)
+	if (text.length() <= 6) {
+		for (const Terminal *t : terms) {
+			if (!t) continue;
+			QPointF diff = deti->pos() - t->pos();
+			if ((diff.x() * diff.x() + diff.y() * diff.y()) <= (40.0 * 40.0)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+ApplyElementTextFormatCommand::ApplyElementTextFormatCommand(
+	Element *element,
+	const ElementTextFormatPattern &pattern,
+	QUndoCommand *parent)
+	: ApplyElementTextFormatCommand(QList<Element *>{element}, pattern, parent)
+{
+}
+
+ApplyElementTextFormatCommand::ApplyElementTextFormatCommand(
+	const QList<Element *> &elements,
+	const ElementTextFormatPattern &pattern,
+	QUndoCommand *parent)
+	: QUndoCommand(parent)
+{
+	setText(QObject::tr("Apply text format"));
+
+	for (Element *element : elements) {
+		if (!element) continue;
+
+		ElementFormatChange elChange;
+		elChange.element = element;
+
+		// Collect all existing texts on target element
+		QList<DynamicElementTextItem *> targetTexts;
+		targetTexts << element->dynamicTextItems();
+		for (ElementTextItemGroup *g : element->textGroups()) {
+			targetTexts << g->texts();
+		}
+
+		// Setup group changes
+		for (const TextGroupFormatItem &gItem : pattern.groups()) {
+			ElementFormatChange::GroupChange gc;
+			gc.name = gItem.name;
+			ElementTextItemGroup *existingGroup = element->textGroup(gItem.name);
+			if (existingGroup) {
+				gc.group = existingGroup;
+				gc.wasCreated = false;
+				gc.oldPos = existingGroup->pos();
+				gc.oldRotation = existingGroup->rotation();
+				gc.oldAlignment = existingGroup->alignment();
+				gc.oldVAdjust = existingGroup->verticalAdjustment();
+				gc.oldFrame = existingGroup->frame();
+				gc.oldHoldBottom = existingGroup->holdToBottomPage();
+			} else {
+				gc.group = nullptr;
+				gc.wasCreated = true;
+			}
+			gc.newPos = gItem.pos;
+			gc.newRotation = gItem.rotation;
+			gc.newAlignment = gItem.alignment;
+			gc.newVAdjust = gItem.verticalAdjustment;
+			gc.newFrame = gItem.frame;
+			gc.newHoldBottom = gItem.holdToBottomPage;
+			elChange.groupChanges.append(gc);
+		}
+
+		// Text matching
+		QSet<DynamicElementTextItem *> matchedTarget;
+		QSet<int> matchedPatternIndices;
+
+		// Identify terminal / pole texts on the target element
+		QSet<DynamicElementTextItem *> targetTerminalTexts;
+		for (DynamicElementTextItem *tDeti : targetTexts) {
+			if (ElementTextFormatPattern::isTerminalTextItem(tDeti, element)) {
+				targetTerminalTexts.insert(tDeti);
+			}
+		}
+
+		// Handle Terminal / Pole texts:
+		// They belong to physical terminals/poles of the element (e.g. 1..6, A1/A2, 13/14).
+		// Their positions, rotations, frames and visibilities are NEVER modified!
+		// If the pattern provides a terminal text style (font, color), apply it uniformly to all terminal texts.
+		const bool hasTermFmt = pattern.hasTerminalTextFormat();
+		const DynamicTextFormatItem termFmt = hasTermFmt ? pattern.terminalTextFormat() : DynamicTextFormatItem();
+
+		for (DynamicElementTextItem *tDeti : targetTerminalTexts) {
+			matchedTarget.insert(tDeti); // Exclude from general user text matching
+
+			// Only record a change if font or color actually changes
+			if (hasTermFmt && (tDeti->font() != termFmt.font || tDeti->color() != termFmt.color)) {
+				ElementFormatChange::TextChange tc;
+				tc.deti = tDeti;
+				tc.wasCreated = false;
+				tc.oldFont = tDeti->font();
+				tc.oldColor = tDeti->color();
+				tc.oldAlignment = tDeti->alignment();
+				tc.oldPos = tDeti->pos();
+				tc.oldRotation = tDeti->rotation();
+				tc.oldKeepVisualRotation = tDeti->keepVisualRotation();
+				tc.oldRotationPointCenter = tDeti->rotationPointCenter();
+				tc.oldFrame = tDeti->frame();
+				tc.oldTextWidth = tDeti->textWidth();
+				tc.oldVisible = ShownKinds::wantsVisible(tDeti);
+				tc.oldGroupName = tDeti->parentGroup() ? tDeti->parentGroup()->name() : QString();
+
+				tc.newFont = termFmt.font;
+				tc.newColor = termFmt.color;
+				// Positions, alignments, rotations, frames and visibilities are strictly preserved on terminals!
+				tc.newAlignment = tc.oldAlignment;
+				tc.newPos = tc.oldPos;
+				tc.newRotation = tc.oldRotation;
+				tc.newKeepVisualRotation = tc.oldKeepVisualRotation;
+				tc.newRotationPointCenter = tc.oldRotationPointCenter;
+				tc.newFrame = tc.oldFrame;
+				tc.newTextWidth = tc.oldTextWidth;
+				tc.newVisible = tc.oldVisible; // Always retain visibility!
+				tc.newGroupName = tc.oldGroupName;
+
+				elChange.textChanges.append(tc);
+			}
+		}
+
+		// Pass 1: ElementInfo with same infoName
+		for (int i = 0; i < pattern.textItems().size(); ++i) {
+			const DynamicTextFormatItem &pItem = pattern.textItems().at(i);
+			if (pItem.textFrom == DynamicElementTextItem::ElementInfo && !pItem.infoName.isEmpty()) {
+				for (DynamicElementTextItem *tDeti : targetTexts) {
+					if (!matchedTarget.contains(tDeti) &&
+					    tDeti->textFrom() == DynamicElementTextItem::ElementInfo &&
+					    tDeti->infoName() == pItem.infoName) {
+
+						matchedTarget.insert(tDeti);
+						matchedPatternIndices.insert(i);
+
+						ElementFormatChange::TextChange tc;
+						tc.deti = tDeti;
+						tc.wasCreated = false;
+						tc.oldFont = tDeti->font();
+						tc.oldColor = tDeti->color();
+						tc.oldAlignment = tDeti->alignment();
+						tc.oldPos = tDeti->pos();
+						tc.oldRotation = tDeti->rotation();
+						tc.oldKeepVisualRotation = tDeti->keepVisualRotation();
+						tc.oldRotationPointCenter = tDeti->rotationPointCenter();
+						tc.oldFrame = tDeti->frame();
+						tc.oldTextWidth = tDeti->textWidth();
+						tc.oldVisible = ShownKinds::wantsVisible(tDeti);
+						tc.oldGroupName = tDeti->parentGroup() ? tDeti->parentGroup()->name() : QString();
+
+						tc.newFont = pItem.font;
+						tc.newColor = pItem.color;
+						tc.newAlignment = pItem.alignment;
+						tc.newPos = pItem.pos;
+						tc.newRotation = pItem.rotation;
+						tc.newKeepVisualRotation = pItem.keepVisualRotation;
+						tc.newRotationPointCenter = pItem.rotationPointCenter;
+						tc.newFrame = pItem.frame;
+						tc.newTextWidth = pItem.textWidth;
+						tc.newVisible = pItem.visible;
+						tc.newGroupName = pItem.groupName;
+
+						elChange.textChanges.append(tc);
+						break;
+					}
+				}
+			}
+		}
+
+		// Pass 2: UserText (non-terminal texts only)
+		for (int i = 0; i < pattern.textItems().size(); ++i) {
+			if (matchedPatternIndices.contains(i)) continue;
+			const DynamicTextFormatItem &pItem = pattern.textItems().at(i);
+			if (pItem.isTerminalText) continue; // Skip terminal texts in generic user text matching
+			if (pItem.textFrom == DynamicElementTextItem::UserText) {
+				DynamicElementTextItem *foundDeti = nullptr;
+				for (DynamicElementTextItem *tDeti : targetTexts) {
+					if (!matchedTarget.contains(tDeti) &&
+					    tDeti->textFrom() == DynamicElementTextItem::UserText &&
+					    !pItem.compositeText.isEmpty() &&
+					    tDeti->toPlainText() == pItem.compositeText) {
+						foundDeti = tDeti;
+						break;
+					}
+				}
+				if (!foundDeti) {
+					for (DynamicElementTextItem *tDeti : targetTexts) {
+						if (!matchedTarget.contains(tDeti) &&
+						    tDeti->textFrom() == DynamicElementTextItem::UserText) {
+							foundDeti = tDeti;
+							break;
+						}
+					}
+				}
+				if (foundDeti) {
+					matchedTarget.insert(foundDeti);
+					matchedPatternIndices.insert(i);
+
+					ElementFormatChange::TextChange tc;
+					tc.deti = foundDeti;
+					tc.wasCreated = false;
+					tc.oldFont = foundDeti->font();
+					tc.oldColor = foundDeti->color();
+					tc.oldAlignment = foundDeti->alignment();
+					tc.oldPos = foundDeti->pos();
+					tc.oldRotation = foundDeti->rotation();
+					tc.oldKeepVisualRotation = foundDeti->keepVisualRotation();
+					tc.oldRotationPointCenter = foundDeti->rotationPointCenter();
+					tc.oldFrame = foundDeti->frame();
+					tc.oldTextWidth = foundDeti->textWidth();
+					tc.oldVisible = ShownKinds::wantsVisible(foundDeti);
+					tc.oldGroupName = foundDeti->parentGroup() ? foundDeti->parentGroup()->name() : QString();
+
+					tc.newFont = pItem.font;
+					tc.newColor = pItem.color;
+					tc.newAlignment = pItem.alignment;
+					tc.newPos = pItem.pos;
+					tc.newRotation = pItem.rotation;
+					tc.newKeepVisualRotation = pItem.keepVisualRotation;
+					tc.newRotationPointCenter = pItem.rotationPointCenter;
+					tc.newFrame = pItem.frame;
+					tc.newTextWidth = pItem.textWidth;
+					tc.newVisible = pItem.visible;
+					tc.newGroupName = pItem.groupName;
+
+					elChange.textChanges.append(tc);
+				}
+			}
+		}
+
+		// Pass 3: CompositeText or other unmatched (non-terminal)
+		for (int i = 0; i < pattern.textItems().size(); ++i) {
+			if (matchedPatternIndices.contains(i)) continue;
+			const DynamicTextFormatItem &pItem = pattern.textItems().at(i);
+			if (pItem.isTerminalText) continue;
+			DynamicElementTextItem *foundDeti = nullptr;
+			for (DynamicElementTextItem *tDeti : targetTexts) {
+				if (!matchedTarget.contains(tDeti) && tDeti->textFrom() == pItem.textFrom) {
+					foundDeti = tDeti;
+					break;
+				}
+			}
+			if (foundDeti) {
+				matchedTarget.insert(foundDeti);
+				matchedPatternIndices.insert(i);
+
+				ElementFormatChange::TextChange tc;
+				tc.deti = foundDeti;
+				tc.wasCreated = false;
+				tc.oldFont = foundDeti->font();
+				tc.oldColor = foundDeti->color();
+				tc.oldAlignment = foundDeti->alignment();
+				tc.oldPos = foundDeti->pos();
+				tc.oldRotation = foundDeti->rotation();
+				tc.oldKeepVisualRotation = foundDeti->keepVisualRotation();
+				tc.oldRotationPointCenter = foundDeti->rotationPointCenter();
+				tc.oldFrame = foundDeti->frame();
+				tc.oldTextWidth = foundDeti->textWidth();
+				tc.oldVisible = ShownKinds::wantsVisible(foundDeti);
+				tc.oldGroupName = foundDeti->parentGroup() ? foundDeti->parentGroup()->name() : QString();
+
+				tc.newFont = pItem.font;
+				tc.newColor = pItem.color;
+				tc.newAlignment = pItem.alignment;
+				tc.newPos = pItem.pos;
+				tc.newRotation = pItem.rotation;
+				tc.newKeepVisualRotation = pItem.keepVisualRotation;
+				tc.newRotationPointCenter = pItem.rotationPointCenter;
+				tc.newFrame = pItem.frame;
+				tc.newTextWidth = pItem.textWidth;
+				tc.newVisible = pItem.visible;
+				tc.newGroupName = pItem.groupName;
+
+				elChange.textChanges.append(tc);
+			}
+		}
+
+		// Pass 4: Pattern ElementInfo items that don't exist in target element
+		for (int i = 0; i < pattern.textItems().size(); ++i) {
+			if (matchedPatternIndices.contains(i)) continue;
+			const DynamicTextFormatItem &pItem = pattern.textItems().at(i);
+			if (pItem.textFrom == DynamicElementTextItem::ElementInfo && !pItem.infoName.isEmpty()) {
+				ElementFormatChange::TextChange tc;
+				tc.deti = nullptr;
+				tc.wasCreated = true;
+				tc.newFont = pItem.font;
+				tc.newColor = pItem.color;
+				tc.newAlignment = pItem.alignment;
+				tc.newPos = pItem.pos;
+				tc.newRotation = pItem.rotation;
+				tc.newKeepVisualRotation = pItem.keepVisualRotation;
+				tc.newRotationPointCenter = pItem.rotationPointCenter;
+				tc.newFrame = pItem.frame;
+				tc.newTextWidth = pItem.textWidth;
+				tc.newVisible = pItem.visible;
+				tc.newGroupName = pItem.groupName;
+				tc.oldGroupName = pItem.infoName; // infoName stored temporarily in oldGroupName
+				elChange.textChanges.append(tc);
+			}
+		}
+
+		// Pass 5 (Destructive hiding of unmatched texts) is completely removed:
+		// Non-matching target texts (such as additional poles on 3-pole/4-pole elements)
+		// are never hidden and retain their exact positions and visibilities!
+
+		m_changes.append(elChange);
+	}
+}
+
+ApplyElementTextFormatCommand::~ApplyElementTextFormatCommand()
+{
+	for (ElementFormatChange &elChange : m_changes) {
+		Element *element = elChange.element.data();
+		for (ElementFormatChange::TextChange &tc : elChange.textChanges) {
+			if (tc.wasCreated && tc.deti) {
+				DynamicElementTextItem *deti = tc.deti.data();
+				if (!deti) continue;
+				if (deti->parentGroup()) continue;
+				if (!element || !element->dynamicTextItems().contains(deti)) {
+					delete deti;
+				}
+			}
+		}
+		for (ElementFormatChange::GroupChange &gc : elChange.groupChanges) {
+			if (gc.wasCreated && gc.group) {
+				ElementTextItemGroup *group = gc.group.data();
+				if (!group) continue;
+				if (!element || !element->textGroups().contains(group)) {
+					delete group;
+				}
+			}
+		}
+	}
+}
+
+void ApplyElementTextFormatCommand::redo()
+{
+	for (ElementFormatChange &elChange : m_changes) {
+		Element *element = elChange.element.data();
+		if (!element) continue;
+
+		// 1. Create and update groups
+		for (ElementFormatChange::GroupChange &gc : elChange.groupChanges) {
+			ElementTextItemGroup *group = gc.group.data();
+			if (!group) {
+				group = element->textGroup(gc.name);
+				if (!group) {
+					group = element->addTextGroup(gc.name);
+				}
+				gc.group = group;
+			} else {
+				if (!element->textGroups().contains(group)) {
+					element->addTextGroup(group);
+				}
+			}
+			if (group) {
+				group->setPos(gc.newPos);
+				group->setRotation(gc.newRotation);
+				group->setAlignment(gc.newAlignment);
+				group->setVerticalAdjustment(gc.newVAdjust);
+				group->setFrame(gc.newFrame);
+				group->setHoldToBottomPage(gc.newHoldBottom);
+			}
+		}
+
+		// 2. Apply texts
+		for (ElementFormatChange::TextChange &tc : elChange.textChanges) {
+			DynamicElementTextItem *deti = tc.deti.data();
+			if (tc.wasCreated) {
+				if (!deti) {
+					deti = new DynamicElementTextItem(element);
+					deti->setTextFrom(DynamicElementTextItem::ElementInfo);
+					deti->setInfoName(tc.oldGroupName);
+					element->addDynamicTextItem(deti);
+					tc.deti = deti;
+				} else {
+					deti->setParentItem(element);
+					if (!element->dynamicTextItems().contains(deti)) {
+						element->addDynamicTextItem(deti);
+					}
+				}
+			}
+			if (!deti) continue;
+
+			// Group membership
+			if (!tc.newGroupName.isEmpty()) {
+				ElementTextItemGroup *targetGroup = element->textGroup(tc.newGroupName);
+				if (targetGroup) {
+					if (deti->parentGroup() != targetGroup) {
+						if (deti->parentGroup()) {
+							element->removeTextFromGroup(deti, deti->parentGroup());
+						}
+						element->addTextToGroup(deti, targetGroup);
+					}
+				}
+			} else {
+				if (deti->parentGroup()) {
+					element->removeTextFromGroup(deti, deti->parentGroup());
+				}
+			}
+
+			// Apply properties
+			deti->setFont(tc.newFont);
+			deti->setColor(tc.newColor);
+			deti->setAlignment(tc.newAlignment);
+			deti->setPos(tc.newPos);
+			deti->setRotation(tc.newRotation);
+			deti->setKeepVisualRotation(tc.newKeepVisualRotation);
+			deti->setRotationPointCenter(tc.newRotationPointCenter);
+			deti->setFrame(tc.newFrame);
+			deti->setTextWidth(tc.newTextWidth);
+			ShownKinds::setVisible(deti, tc.newVisible);
+			deti->update();
+		}
+
+		element->update();
+		if (element->diagram()) {
+			element->diagram()->update();
+		}
+	}
+}
+
+void ApplyElementTextFormatCommand::undo()
+{
+	for (ElementFormatChange &elChange : m_changes) {
+		Element *element = elChange.element.data();
+		if (!element) continue;
+
+		// 1. Restore texts
+		for (ElementFormatChange::TextChange &tc : elChange.textChanges) {
+			DynamicElementTextItem *deti = tc.deti.data();
+			if (!deti) continue;
+
+			if (tc.wasCreated) {
+				if (deti->parentGroup()) {
+					element->removeTextFromGroup(deti, deti->parentGroup());
+				}
+				element->removeDynamicTextItem(deti);
+				if (deti->scene()) {
+					deti->scene()->removeItem(deti);
+				}
+				continue;
+			}
+
+			// Restore group membership
+			if (!tc.oldGroupName.isEmpty()) {
+				ElementTextItemGroup *origGroup = element->textGroup(tc.oldGroupName);
+				if (origGroup) {
+					if (deti->parentGroup() != origGroup) {
+						if (deti->parentGroup()) {
+							element->removeTextFromGroup(deti, deti->parentGroup());
+						}
+						element->addTextToGroup(deti, origGroup);
+					}
+				}
+			} else {
+				if (deti->parentGroup()) {
+					element->removeTextFromGroup(deti, deti->parentGroup());
+				}
+			}
+
+			// Restore properties
+			deti->setFont(tc.oldFont);
+			deti->setColor(tc.oldColor);
+			deti->setAlignment(tc.oldAlignment);
+			deti->setPos(tc.oldPos);
+			deti->setRotation(tc.oldRotation);
+			deti->setKeepVisualRotation(tc.oldKeepVisualRotation);
+			deti->setRotationPointCenter(tc.oldRotationPointCenter);
+			deti->setFrame(tc.oldFrame);
+			deti->setTextWidth(tc.oldTextWidth);
+			ShownKinds::setVisible(deti, tc.oldVisible);
+			deti->update();
+		}
+
+		// 2. Restore groups
+		for (ElementFormatChange::GroupChange &gc : elChange.groupChanges) {
+			ElementTextItemGroup *group = gc.group.data();
+			if (!group) continue;
+
+			if (gc.wasCreated) {
+				element->removeTextGroup(group);
+				continue;
+			}
+
+			group->setPos(gc.oldPos);
+			group->setRotation(gc.oldRotation);
+			group->setAlignment(gc.oldAlignment);
+			group->setVerticalAdjustment(gc.oldVAdjust);
+			group->setFrame(gc.oldFrame);
+			group->setHoldToBottomPage(gc.oldHoldBottom);
+		}
+
+		element->update();
+		if (element->diagram()) {
+			element->diagram()->update();
+		}
+	}
 }
