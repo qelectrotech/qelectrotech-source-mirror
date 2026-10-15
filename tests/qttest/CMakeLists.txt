@@ -755,6 +755,13 @@ qet_add_app_test(tst_printpdforientation tst_printpdforientation.cpp)
 target_compile_definitions(tst_printpdforientation PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+# The crash-recovery backup is written soon after the user stops editing
+# (QET_BACKUP_IDLE_MS and QET_BACKUP_MIN_GAP_MS shorten the delays), not
+# without a change, and not while the edits keep coming.
+qet_add_app_test(tst_backupidle tst_backupidle.cpp)
+target_compile_definitions(tst_backupidle PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
 # --export-pdf writes the cross-reference links in the same order in every
 # run, rather than in Element pointer order. Exports examples/industrial.qet
 # several times, in separate processes.

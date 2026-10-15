@@ -60,6 +60,17 @@
 #include <utility>
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
+	//A backup is also written once the user has stopped editing for this long,
+	//but never sooner than BACKUP_MIN_GAP after the previous one.
+static const int BACKUP_IDLE = 30000;
+static const int BACKUP_MIN_GAP = 120000;
+	//Shortened by tests through QET_BACKUP_IDLE_MS and QET_BACKUP_MIN_GAP_MS
+static int backupTimeoutFromEnv(const char *name, int fallback)
+{
+	bool ok = false;
+	const int v = qEnvironmentVariableIntValue(name, &ok);
+	return ok && v > 0 ? v : fallback;
+}
 
 bool QETProject::m_backup_enabled = true;
 
@@ -361,7 +372,7 @@ void QETProject::init()
 		//What counts as a change for writeBackup(): the undo stack moving,
 		//setModified(true), and the embedded collections, which can change
 		//without going through either.
-	const auto backup_needed = [this]() { m_backup_needed = true; };
+	const auto backup_needed = [this]() { noteBackupNeeded(); };
 	connect(m_undo_stack, &QUndoStack::indexChanged, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
@@ -375,6 +386,8 @@ void QETProject::init()
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
 	m_save_backup_timer.start();
+	m_backup_idle_timer.setSingleShot(true);
+	connect(&m_backup_idle_timer, &QTimer::timeout, this, &QETProject::writeBackupWhenIdle);
 	writeBackup();
 
 	QSettings settings;
@@ -3212,7 +3225,7 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 */
 void QETProject::setModified(bool modified) {
 	if (modified) {
-		m_backup_needed = true;
+		noteBackupNeeded();
 	}
 	if (m_modified != modified) {
 		m_modified = modified;
@@ -4170,6 +4183,9 @@ void QETProject::writeBackup()
 	if (!m_backup_needed)
 		return;
 	m_backup_needed = false;
+	m_backup_idle_timer.stop();
+	QElapsedTimer cost;
+	cost.start();
 		//Capture the document by value (implicitly shared, so cheap): the
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.
@@ -4181,6 +4197,52 @@ void QETProject::writeBackup()
 		return QET::writeTextToFile(spliceKeptFolios(xml_project.toString(4), kept_folios),
 									target, nullptr);
 	});
+	m_backup_cost_ms = int(cost.elapsed());
+	m_last_backup.start();
+	if (!qEnvironmentVariableIsEmpty("QET_BACKUP_TIMING"))
+		qInfo() << "backup GUI-thread ms:" << m_backup_cost_ms;
+}
+
+/**
+	@brief QETProject::writeBackupWhenIdle
+	The user has stopped editing, see noteBackupNeeded(). A project with
+	folios not built (lazy folios) is left to the 20 minute timer: its
+	backup builds every folio, which can take as long as opening the project
+	did (measured: 26 s for 136 folios), and an idle moment is no excuse for
+	that.
+*/
+void QETProject::writeBackupWhenIdle()
+{
+	if (unloadedFolioCount() && !(m_kept_folios_trusted && !m_kept_folios_stale))
+		return;
+	writeBackup();
+}
+
+/**
+	@brief QETProject::noteBackupNeeded
+	Something changed: remember it, and write a backup once the user has
+	stopped editing for a while, instead of waiting for the 20 minute timer
+	(which stays as the ceiling). The idle delay restarts at every change, a
+	backup is never written sooner than BACKUP_MIN_GAP after the previous
+	one, and a project whose last backup stalled the GUI thread is backed up
+	less often (the delay grows with the measured cost).
+*/
+void QETProject::noteBackupNeeded()
+{
+	m_backup_needed = true;
+	if (!m_backup_enabled)
+		return;
+	int idle = backupTimeoutFromEnv("QET_BACKUP_IDLE_MS", BACKUP_IDLE);
+	const int gap = backupTimeoutFromEnv("QET_BACKUP_MIN_GAP_MS", BACKUP_MIN_GAP);
+		//Costly projects: the delay is at least 100 times what the last
+		//backup took on the GUI thread, so it never takes more than ~1 % of the time
+	idle = qMax(idle, m_backup_cost_ms * 100);
+	if (m_last_backup.isValid()) {
+		const qint64 wait = gap - m_last_backup.elapsed();
+		if (wait > idle)
+			idle = int(wait);
+	}
+	m_backup_idle_timer.start(idle);
 }
 
 /**

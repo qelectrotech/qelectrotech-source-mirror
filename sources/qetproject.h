@@ -44,6 +44,8 @@
 #include <QUuid>
 #include <QVector>
 #include <QFuture>
+#include <QElapsedTimer>
+#include <QTimer>
 
 #include <array>
 #include <memory>
@@ -451,6 +453,8 @@ class QETProject : public QObject
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
 		void writeBackup();
+		void noteBackupNeeded();
+		void writeBackupWhenIdle();
 		void init();
 		ProjectState openFile(QFile *file);
 	public:
@@ -580,7 +584,10 @@ class QETProject : public QObject
 		bool m_freeze_new_elements = false;
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
+			   m_backup_idle_timer,
 			   m_autosave_timer;
+		QElapsedTimer m_last_backup;
+		int m_backup_cost_ms = 0;
 		QFuture<bool> m_backup_future;
 			/// Crash-recovery snapshots, written in turn by writeBackup()
 		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
