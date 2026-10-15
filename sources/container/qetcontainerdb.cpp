@@ -570,6 +570,32 @@ bool plainTables(sqlite3 *db)
 	return ok && run(QStringLiteral("VACUUM"));
 }
 
+	//What SQLite advises for a database read from a file
+	//(https://www.sqlite.org/security.html): nothing in its schema runs, no
+	//trigger or view either, the defensive mode, no value longer than any
+	//project holds, and the size of each cell checked as its page is read.
+	//The database @p schema of @p db ("main", or an attached one) is then
+	//checked whole, so that damage is said as such before anything reads
+	//it, instead of showing as a missing row or not at all.
+bool readAsUntrusted(Database &db, const QString &schema, QString *error)
+{
+	sqlite3_db_config(db.m_db, SQLITE_DBCONFIG_DEFENSIVE, 1, nullptr);
+	sqlite3_db_config(db.m_db, SQLITE_DBCONFIG_ENABLE_TRIGGER, 0, nullptr);
+#ifdef SQLITE_DBCONFIG_ENABLE_VIEW
+	sqlite3_db_config(db.m_db, SQLITE_DBCONFIG_ENABLE_VIEW, 0, nullptr);
+#endif
+	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+	db.exec(QStringLiteral("PRAGMA cell_size_check = ON"));
+	sqlite3_limit(db.m_db, SQLITE_LIMIT_LENGTH, 256 * 1024 * 1024);
+	Statement check(db, QStringLiteral("PRAGMA %1.quick_check(1)").arg(schema));
+	const QString result = check.next() ? check.value(0).toString() : db.error();
+	if (result != QLatin1String("ok")) {
+		setError(error, QStringLiteral("the project database is damaged: %1").arg(result));
+		return false;
+	}
+	return true;
+}
+
 	//@p database opened in @p db, its tables checked to be plain tables and
 	//its format one this reads: a file is untrusted
 bool openDatabase(Database &db, const QByteArray &database, QString *error)
@@ -587,9 +613,10 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 		setError(error, QStringLiteral("the project database cannot be read"));
 		return false;
 	}
-		//A file is untrusted: nothing in its schema may run, and every name
-		//read must be a plain table.
-	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+		//A file is untrusted (readAsUntrusted()), and every name read must
+		//be a plain table.
+	if (!readAsUntrusted(db, QStringLiteral("main"), error))
+		return false;
 	for (const QString &table : DocTables) {
 		Statement kind(db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
 		kind.bind({table});
@@ -902,7 +929,8 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 			setError(error, QStringLiteral("cannot read the database the kept folios come from"));
 			return {};
 		}
-		db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
+		if (!readAsUntrusted(db, QStringLiteral("old"), error))
+			return {};
 		for (const QString &table : DocTables) {
 			Statement kind(db, QStringLiteral("SELECT type FROM old.sqlite_master WHERE name = ?"));
 			kind.bind({table});

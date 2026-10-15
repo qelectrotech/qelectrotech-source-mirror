@@ -3,6 +3,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QtEndian>
 
 #include <functional>
 
@@ -531,6 +532,38 @@ private slots:
 		QString error;
 		QVERIFY(!QetContainer::join(entries, &back, &error));
 		QVERIFY(!error.isEmpty());
+	}
+
+	// A page of the database overwritten, as a bad disk or a broken copy
+	// would: refused, and said to be damaged (quick_check on opening),
+	// whichever table the page held
+	void damagedDatabaseRefused_data()
+	{
+		QTest::addColumn<double>("where");
+		QTest::newRow("second page") << 0.0;
+		QTest::newRow("middle page") << 0.5;
+		QTest::newRow("last page") << 1.0;
+	}
+	void damagedDatabaseRefused()
+	{
+		QFETCH(double, where);
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		bool damaged = false;
+		for (QetZip::Entry &entry : entries) {
+			if (entry.name != QLatin1String("project.sqlite")) continue;
+			const int page_size = qFromBigEndian<quint16>(entry.data.constData() + 16);
+			const int pages = int(entry.data.size() / page_size);
+			QVERIFY(pages > 3);
+			const int page = 1 + int(where * (pages - 2));
+			entry.data.replace(page * page_size, page_size, QByteArray(page_size, char(0xff)));
+			damaged = true;
+		}
+		QVERIFY(damaged);
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY2(error.contains(QStringLiteral("damaged")), qPrintable(error));
 	}
 
 	// project.sqlite changed by @p sql in @p entries
