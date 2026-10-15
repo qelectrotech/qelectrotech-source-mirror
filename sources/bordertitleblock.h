@@ -150,7 +150,11 @@ class BorderTitleBlock : public QObject
 		bool rowsAreDisplayed() const { return(display_rows_); }
 		/// @return true si la bordure est affichee, false sinon
 		bool borderIsDisplayed() const { return(display_border_); }
-		
+		// @return reverse_order_col
+		bool reversedIsColumns() const { return(reverse_order_col_); }
+		// @return reverse_order_row
+		bool reversedIsRows() const { return (reverse_order_row_); }
+
 		// methods to set dimensions
 		void setColumnsCount(int);
 		void setRowsCount(int);
@@ -195,6 +199,8 @@ class BorderTitleBlock : public QObject
 		void displayColumns(bool);
 		void displayRows(bool);
 		void displayBorder(bool);
+		void reverseOrderCol(bool);
+		void reverseOrderRow(bool);
 	
 	private:
 		void updateRectangles();
@@ -288,6 +294,8 @@ class BorderTitleBlock : public QObject
 		bool display_columns_ = false;
 		bool display_rows_ = false;
 		bool display_border_ = false;
+		bool reverse_order_col_ = false;
+		bool reverse_order_row_ = false;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 };
 #endif

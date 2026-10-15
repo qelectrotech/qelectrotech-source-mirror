@@ -66,6 +66,9 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 
 	display_titleblock_ = true;
 	display_border_ = true;
+	QSettings settings;
+	reverse_order_col_ = settings.value("reverse_order_col", false).toBool();
+	reverse_order_row_ = settings.value("reverse_order_row", false).toBool();
 	setFolioData(1, 1);
 	updateRectangles();
 }
@@ -484,6 +487,28 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
+	@brief BorderTitleBlock::reverseOrderCol
+	@param db : true — counting direction inverted, false — otherwise
+*/
+void BorderTitleBlock::reverseOrderCol(bool db)
+{
+	bool change = (db != reverse_order_col_);
+	reverse_order_col_ = db;
+	if (change) emit(displayChanged());
+}
+
+/**
+	@brief BorderTitleBlock::reverseOrderRow
+	@param db : true — counting direction inverted, false — otherwise
+*/
+void BorderTitleBlock::reverseOrderRow(bool db)
+{
+	bool change = (db != reverse_order_row_);
+	reverse_order_row_ = db;
+	if (change) emit(displayChanged());
+}
+
+/**
 	@brief BorderTitleBlock::updateRectangles
 	This method update the diagram rect according
 	to the value of rows and columns (number and size)
@@ -516,6 +541,10 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> setBrush(Qt::NoBrush);
 
 	QSettings settings;
+
+	//Update columns and rows order settings
+	reverseOrderCol(settings.value("reverse_order_col", false).toBool());
+	reverseOrderRow(settings.value("reverse_order_row", false).toBool());
 
 	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
@@ -551,7 +580,9 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
+				BorderCellLabels::columnLabel(
+					reversedIsColumns() ? columns_count_ - i + 1 : i,
+					columns_start_at_zero));
 		}
 	}
 
@@ -572,7 +603,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    BorderCellLabels::rowLabel(i));
+				BorderCellLabels::rowLabel(reversedIsRows() ? rows_count_ - i + 1 : i));
 		}
 	}
 
@@ -656,7 +687,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-			   QString::number(i + offset),
+				QString::number((reversedIsColumns() ? columns_count_ - i + 1 : i) + offset),
 			   xCoord+recWidth/4,
 			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
@@ -673,7 +704,6 @@ void BorderTitleBlock::drawDxf(
 	// draw line numbering
 	// dessine la numerotation des lignes
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
@@ -690,7 +720,8 @@ void BorderTitleBlock::drawDxf(
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
-						   row_string,
+				BorderCellLabels::rowLabel(
+					reversedIsRows() ? rows_count_ - i + 1 : i),
 			   xCoord+recWidth*0.1,
 			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
@@ -701,7 +732,6 @@ void BorderTitleBlock::drawDxf(
 						   xCoord+recWidth/2,
 			   1,
 			   color);
-			row_string = incrementLetters(row_string);
 		}
 	}
 
@@ -875,11 +905,10 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
-	QString letter = "A";
-	for (int i = 1 ; i < column_number ; ++ i)
-		letter = incrementLetters(letter);
+	if (reversedIsColumns()) row_number = columnsCount() - row_number + 1;
+	if (reversedIsRows()) column_number = rowsCount() - column_number + 1;
 
-	return(DiagramPosition(letter, row_number));
+	return(DiagramPosition(BorderCellLabels::rowLabel(column_number), row_number));
 }
 
 /**
