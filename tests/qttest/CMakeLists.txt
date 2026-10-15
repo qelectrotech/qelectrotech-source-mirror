@@ -1264,6 +1264,17 @@ if(Qt6_VERSION VERSION_LESS 6.5.0)
   endforeach()
 endif()
 
+# The versions of a project kept before it is saved over: the newest
+# kept, same bytes not kept twice, a failed copy said
+# (sources/utils/previousversions.*).
+add_executable(
+  tst_previousversions
+  tst_previousversions.cpp
+  ${QET_DIR}/sources/utils/previousversions.cpp)
+add_test(NAME tst_previousversions COMMAND tst_previousversions)
+target_include_directories(tst_previousversions PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_previousversions PRIVATE Qt::Test)
+
 # The zip a .qetz project is stored in: round trip, same bytes twice,
 # unsafe entry names refused (sources/container/qetzip.*, bundled miniz).
 add_executable(

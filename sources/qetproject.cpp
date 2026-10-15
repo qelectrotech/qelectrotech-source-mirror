@@ -48,6 +48,7 @@
 #include "qetinformation.h"
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
+#include "utils/previousversions.h"
 
 #include <QCryptographicHash>
 #include <QElapsedTimer>
@@ -2758,6 +2759,13 @@ QETResult QETProject::write()
 		if (!can_write)
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
+
+		//The file as it was goes among its previous versions first
+		//(Settings > General > Projects); a copy that fails does not stop
+		//the save
+	QString backup_error;
+	if (!PreviousVersions::keep(m_file_path, PreviousVersions::count(), &backup_error))
+		qWarning().noquote() << "Previous version of" << m_file_path << "not kept:" << backup_error;
 
 	QString error_message;
 	if (isContainerPath(m_file_path))
