@@ -27,6 +27,7 @@
 #include "../properties/elementdata.h"
 
 #include <QHash>
+#include <QSet>
 #include <QPicture>
 #include <algorithm>
 
@@ -282,6 +283,23 @@ class Element : public QetGraphicsItem
 		DynamicElementTextItem *parseDynamicText(
 				const QDomElement &dom_element);
 		Terminal *parseTerminal(const QDomElement &dom_element);
+		void matchMovedTerminals(const QList<QDomElement> &records,
+								 const QSet<int> &matched_records,
+								 const QSet<Terminal *> &matched_terminals,
+								 QHash<int, Terminal *> &id_adr);
+
+	public:
+		Terminal *terminalFromOldPlace(const QUuid &old_place_uuid) const;
+		bool terminalWasMoved(const Terminal *terminal) const;
+
+	private:
+			/// How far, in x and y, a terminal may have moved from where
+			/// a project saved it and still be recognised
+		static constexpr qreal moved_terminal_reach = 5.0;
+			/// Terminals paired with a saved one that was elsewhere,
+			/// and the uuid derived from that old place
+		QHash<QUuid, Terminal *> m_old_place_terminals;
+		QSet<Terminal *> m_moved_terminals;
 
 		//Reimplemented from QGraphicsItem
 	public:

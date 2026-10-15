@@ -1790,6 +1790,11 @@ QList<Terminal *> findTerminals(int conductor_index,
 				if (terminal->derivedUuid() == terminal_uuid)
 					match = terminal;
 			}
+				//A terminal that moved since the project was saved: the
+				//uuid worked out from its old place was paired with it
+				//when the symbol was read (Element::fromXml()).
+			if (!match)
+				match = element->terminalFromOldPlace(terminal_uuid);
 			if (match)
 				found << match;
 			else
@@ -2241,6 +2246,7 @@ bool Diagram::fromXml(QDomElement &document,
 	if (consider_informations)
 		m_wires_not_reconnected.clear();
 	QList<Conductor *> added_conductors;
+	int moved_ends = 0;
 	for (auto f : QET::findInDomElement(root,
 										QStringLiteral("conductors"),
 										QStringLiteral("conductor")))
@@ -2312,10 +2318,18 @@ bool Diagram::fromXml(QDomElement &document,
 													  ends.join(QLatin1Char('\n'))));
 				}
 				added_conductors << c;
+				for (Terminal *end : {p1, p2})
+					if (end->parentElement()->terminalWasMoved(end)) ++moved_ends;
 			}
 			else
 				delete c;
 		}
+	}
+	if (consider_informations && moved_ends) {
+		qInfo().noquote() << "Diagram::fromXml():"
+						  << moved_ends
+						  << "wire end(s) on a terminal that moved since the project was saved,"
+						  << "matched to it by place";
 	}
 	if (consider_informations && !m_wires_not_reconnected.isEmpty()) {
 		qWarning().noquote() << "Diagram::fromXml():"
