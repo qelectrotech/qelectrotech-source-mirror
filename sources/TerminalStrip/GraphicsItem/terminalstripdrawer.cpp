@@ -469,6 +469,52 @@ TerminalColors terminalColors(const QSharedPointer<AbstractRealTerminalInterface
 }
 
 /**
+ * @brief drawTerminalBody Draw a terminal housing with simple connection details.
+ * The details are deliberately schematic and scale with the terminal width.
+ */
+void drawTerminalBody(QPainter *painter, const QRectF &rect)
+{
+    if (rect.width() <= 0 || rect.height() <= 0) {
+        return;
+    }
+
+    const qreal bevel = qMin(qreal(2.0), rect.width() * 0.12);
+    QPolygonF housing;
+    housing << QPointF(rect.left() + bevel, rect.top())
+            << QPointF(rect.right() - bevel, rect.top())
+            << QPointF(rect.right(), rect.top() + bevel)
+            << QPointF(rect.right(), rect.bottom() - bevel)
+            << QPointF(rect.right() - bevel, rect.bottom())
+            << QPointF(rect.left() + bevel, rect.bottom())
+            << QPointF(rect.left(), rect.bottom() - bevel)
+            << QPointF(rect.left(), rect.top() + bevel);
+    painter->drawPolygon(housing);
+
+    // Fine inner edge to give the housing some depth.
+    if (rect.width() >= 5.0 && rect.height() >= 12.0) {
+        const qreal margin = qMin(qreal(2.0), rect.width() * 0.12);
+        painter->drawLine(QPointF(rect.left() + margin, rect.top() + 3.0),
+                          QPointF(rect.right() - margin, rect.top() + 3.0));
+
+        // Schematic screw head and slot.
+        const qreal radius = qMin(qreal(1.8), rect.width() * 0.12);
+        const qreal screw_y = rect.top() + rect.height() * 0.18;
+        painter->drawEllipse(QPointF(rect.center().x(), screw_y), radius, radius);
+        painter->drawLine(QPointF(rect.center().x() - radius * 0.65, screw_y),
+                          QPointF(rect.center().x() + radius * 0.65, screw_y));
+
+        // Wire entry / clamp mark near the lower part of the terminal.
+        const qreal opening_width = qMin(qreal(5.0), rect.width() * 0.28);
+        const qreal opening_height = qMin(qreal(2.0), rect.height() * 0.025);
+        if (opening_width >= 1.0 && opening_height >= 1.0) {
+            painter->drawRect(QRectF(rect.center().x() - opening_width / 2,
+                                     rect.top() + rect.height() * 0.78,
+                                     opening_width, opening_height));
+        }
+    }
+}
+
+/**
  * @brief drawStripes
  * Draw diagonal stripes of @a color inside @a rect.
  */
@@ -631,7 +677,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				if (fill_color_.isValid()) {
 					painter->setBrush(QBrush(fill_color_));
 				}
-                painter->drawRect(terminal_rect);
+                drawTerminalBody(painter, terminal_rect);
 				if (colors_.stripe.isValid())
 				{
 					drawStripes(painter, terminal_rect, colors_.stripe);
