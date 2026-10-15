@@ -196,6 +196,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;
+			/// The text was emptied with its alignment kept (setPlainText())
+		bool m_emptied_aligned = false;
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
 		bool m_rotation_point_center = false;
