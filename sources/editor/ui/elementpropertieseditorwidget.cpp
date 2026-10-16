@@ -20,6 +20,9 @@
 #include "../../qet.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
+#include "../../TerminalStrip/terminalcatalog.h"
+#include "../../TerminalStrip/terminalcolor.h"
+#include "../../TerminalStrip/realterminal.h"
 #include "ui_elementpropertieseditorwidget.h"
 
 #include "../../qet.h"
@@ -36,7 +39,10 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QIcon>
 #include <QLabel>
+#include <QLocale>
+#include <QRegularExpression>
 #include <QPushButton>
 #include <QClipboard>
 #include <QApplication>
@@ -69,6 +75,61 @@ QWidget* EditorDelegate::createEditor(QWidget *parent,
 		return QItemDelegate::createEditor(parent, option, index);
 	}
 	return nullptr;
+}
+
+namespace {
+/**
+ * @brief leadingNumber
+ * Extract the first number of a text like "2,5 mm²" or "5.1 mm - WAGO".
+ * The comma and the dot are both accepted as decimal separator.
+ * @return the number, or 0 if the text is empty or has no number.
+ */
+double leadingNumber(const QString &text)
+{
+	static const QRegularExpression re(QStringLiteral("(\\d+(?:[.,]\\d+)?)"));
+	const auto match = re.match(text);
+	if (!match.hasMatch())
+		return 0;
+	auto number = match.captured(1);
+	number.replace(QLatin1Char(','), QLatin1Char('.'));
+	return number.toDouble();
+}
+
+/// Value of a terminal size combo (picked in the list or typed).
+double comboValue(const QComboBox *cb)
+{
+	return leadingNumber(cb->currentText());
+}
+
+/// Color of a terminal combo as "#rrggbb" or "#rrggbb/#rrggbb" (empty = none).
+/// A text which is not understood keeps the value the combo was loaded with.
+QString colorSpec(const QComboBox *cb)
+{
+	const auto index = cb->findText(cb->currentText());
+	if (index >= 0)
+		return cb->itemData(index).toString();
+
+	QColor main_, stripe_;
+	if (TerminalColor::parse(cb->currentText(), &main_, &stripe_))
+		return TerminalColor::toSpec(main_, stripe_);
+	return cb->property("origSpec").toString();
+}
+
+/// Set the text of an editable combo : select the item with this value or write the value.
+void setComboValue(QComboBox *cb, double value, const QString &suffix)
+{
+	if (value <= 0) {
+		cb->setCurrentIndex(0);
+		return;
+	}
+	for (int i = 1; i < cb->count(); ++i) {
+		if (qFuzzyCompare(1 + cb->itemData(i).toDouble(), 1 + value)) {
+			cb->setCurrentIndex(i);
+			return;
+		}
+	}
+	cb->setCurrentText(QLocale().toString(value, 'g', 6) + suffix);
+}
 }
 
 /**
@@ -177,6 +238,12 @@ void ElementPropertiesEditorWidget::upDateInterface()
 			QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString()));
 		ui->m_potential_isolating_cb->setChecked(
 			QET::infoFlagIsTrue(info.value(QStringLiteral("potential_isolating")).toString()));
+
+		//Section (mm2) and width (mm), stored with the dot as decimal separator
+		populateTerminalSizeCombos(
+			info.value(RealTerminal::sectionInfoKey()).toString().toDouble(),
+			info.value(RealTerminal::widthInfoKey()).toString().toDouble());
+		populateTerminalColorCombo(info.value(RealTerminal::colorInfoKey()).toString());
 	}
 
 	ui->m_exclude_from_bom_cb->setChecked(
@@ -362,6 +429,105 @@ void ElementPropertiesEditorWidget::populateTree()
 }
 
 /**
+	@brief ElementPropertiesEditorWidget::populateTerminalSizeCombos
+	Fill the section and width combo boxes of the terminal group box
+	and select @a section (mm2) and @a width (mm), 0 means "none".
+	The combo boxes are editable : a value not in the list can be typed.
+*/
+void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, double width)
+{
+	QSignalBlocker blocker(ui->m_terminal_section_cb);
+	ui->m_terminal_section_cb->clear();
+	ui->m_terminal_section_cb->addItem(tr("None (default)"), 0.0);
+	for (const auto section_ : TerminalCatalog::sections()) {
+		ui->m_terminal_section_cb->addItem(tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6)), section_);
+	}
+	setComboValue(ui->m_terminal_section_cb, section, tr(" mm²"));
+
+	connect(ui->m_terminal_section_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, [this]() { refreshTerminalWidthCombo(); });
+	connect(ui->m_terminal_section_cb->lineEdit(), &QLineEdit::editingFinished,
+			this, [this]() { refreshTerminalWidthCombo(); });
+
+	refreshTerminalWidthCombo();
+	setComboValue(ui->m_terminal_width_cb, width, tr(" mm"));
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::populateTerminalColorCombo
+	Fill the color combo box with the palette of the terminal strip
+	and select @a spec ("#rrggbb" or "#rrggbb/#rrggbb", empty = none).
+	The combo box is editable : a color can be typed as a name or as "#rrggbb".
+*/
+void ElementPropertiesEditorWidget::populateTerminalColorCombo(const QString &spec)
+{
+	auto *cb = ui->m_terminal_color_cb;
+	cb->setProperty("origSpec", spec);
+	cb->clear();
+	cb->addItem(tr("None (default)"), QString());
+	for (const auto &entry : TerminalColor::palette())
+	{
+		QColor main_, stripe_;
+		TerminalColor::parse(TerminalColor::specOf(entry), &main_, &stripe_);
+		cb->addItem(QIcon(TerminalColor::swatch(main_, stripe_)),
+					TerminalColor::translatedName(entry),
+					TerminalColor::specOf(entry));
+	}
+
+	if (spec.isEmpty()) {
+		cb->setCurrentIndex(0);
+		return;
+	}
+	const auto index = cb->findData(spec);
+	if (index >= 0) {
+		cb->setCurrentIndex(index);
+	} else {
+		//The color is not in the palette, keep it in the list
+		QColor main_, stripe_;
+		TerminalColor::parse(spec, &main_, &stripe_);
+		cb->addItem(QIcon(TerminalColor::swatch(main_, stripe_)), spec, spec);
+		cb->setCurrentIndex(cb->count() - 1);
+	}
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::refreshTerminalWidthCombo
+	List the manufacturer terminals compatible with the selected section.
+	If the section has no match in the catalog (or is not set),
+	all the widths are listed. The current width is kept.
+*/
+void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
+{
+	const auto current_width = comboValue(ui->m_terminal_width_cb);
+	const auto section = comboValue(ui->m_terminal_section_cb);
+
+	auto item_text = [](const TerminalCatalog::WidthEntry &entry) {
+		return tr("%1 mm").arg(QLocale().toString(entry.mm, 'g', 6))
+			   + QStringLiteral(" - ") + QString::fromUtf8(entry.label);
+	};
+
+	bool has_compatible_entry = false;
+	if (section > 0) {
+		for (const auto &entry : TerminalCatalog::widthEntries()) {
+			if (qFuzzyCompare(1 + entry.section, 1 + section)) {
+				has_compatible_entry = true;
+				break;
+			}
+		}
+	}
+
+	QSignalBlocker blocker(ui->m_terminal_width_cb);
+	ui->m_terminal_width_cb->clear();
+	ui->m_terminal_width_cb->addItem(tr("None (default)"), 0.0);
+	for (const auto &entry : TerminalCatalog::widthEntries()) {
+		if (!has_compatible_entry || qFuzzyCompare(1 + entry.section, 1 + section)) {
+			ui->m_terminal_width_cb->addItem(item_text(entry), entry.mm);
+		}
+	}
+	setComboValue(ui->m_terminal_width_cb, current_width, tr(" mm"));
+}
+
+/**
 	@brief ElementPropertiesEditorWidget::on_m_buttonBox_accepted
 	Action on button accepted : the new information is set
 */
@@ -424,6 +590,25 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 			m_data.m_informations.addValue(QStringLiteral("potential_isolating"), QStringLiteral("true"));
 		else
 			m_data.m_informations.remove(QStringLiteral("potential_isolating"));
+
+		//Section and width : stored with the dot as decimal separator, whatever the locale
+		const auto section_ = comboValue(ui->m_terminal_section_cb);
+		if (section_ > 0)
+			m_data.m_informations.addValue(RealTerminal::sectionInfoKey(), QString::number(section_, 'g', 6));
+		else
+			m_data.m_informations.remove(RealTerminal::sectionInfoKey());
+
+		const auto width_ = comboValue(ui->m_terminal_width_cb);
+		if (width_ > 0)
+			m_data.m_informations.addValue(RealTerminal::widthInfoKey(), QString::number(width_, 'g', 6));
+		else
+			m_data.m_informations.remove(RealTerminal::widthInfoKey());
+
+		const auto color_ = colorSpec(ui->m_terminal_color_cb);
+		if (!color_.isEmpty())
+			m_data.m_informations.addValue(RealTerminal::colorInfoKey(), color_);
+		else
+			m_data.m_informations.remove(RealTerminal::colorInfoKey());
 	}
 
 	if (ui->m_exclude_from_bom_cb->isChecked())

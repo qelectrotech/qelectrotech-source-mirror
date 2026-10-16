@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripmodel.h"
+#include "../terminalcatalog.h"
 #include "../terminalstrip.h"
 #include "../../qetgraphicsitem/element.h"
 #include "../physicalterminal.h"
@@ -911,34 +912,6 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
  **********************************************************/
 
 namespace {
-/**
- * Widths (mm) of terminals sold by the manufacturers.
- * Only the values found in the catalogs of the manufacturers are listed,
- * any other width can be typed in the cell.
- * For ABB Entrelec the value is the spacing (pitch) given by the catalog.
- */
-struct WidthEntry { double mm; const char *label; double section; };
-const WidthEntry WIDTH_ENTRIES[] {
-	{5.1,  "Weidmüller WDU 2.5", 2.5},
-	{5.2,  "WAGO 2002 (TOPJOB S)", 2.5},
-	{6.0,  "ABB Entrelec M 4/6", 4.0},
-	{6.1,  "Weidmüller WDU 4", 4.0},
-	{6.2,  "Phoenix Contact UT 4", 4.0},
-	{8.0,  "ABB Entrelec M 6/8", 6.0},
-	{8.0,  "ABB Entrelec M 4/8", 4.0},
-	{8.2,  "Phoenix Contact UT 6", 6.0},
-	{10.0, "ABB Entrelec M 10/10", 10.0},
-	{10.2, "Phoenix Contact UT 10", 10.0},
-	{11.9, "Weidmüller WDU 16/ZA", 16.0},
-	{12.2, "Phoenix Contact UT 16", 16.0},
-	{16.0, "Phoenix Contact UT 35", 35.0},
-	{16.0, "Weidmüller WDU 35N", 35.0},
-	{26.0, "ABB Entrelec M 35/26.FF", 35.0},
-	{31.0, "ABB Entrelec M 70/31.AF", 70.0},
-	{35.0, "ABB Entrelec M 120/35.F", 120.0},
-	{42.0, "ABB Entrelec M 300/42.FF", 300.0}
-};
-
 QString widthItemText(double mm, const QString &label = QString())
 {
 	const auto text_ = QCoreApplication::translate("TerminalStripModelDelegate", "%1 mm").arg(QLocale().toString(mm, 'g', 6));
@@ -982,8 +955,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 		qcb->setObjectName(QStringLiteral("terminal_section"));
 		qcb->addItem(tr("None (default)"), 0.0);
 			//Usual sections, in mm2
-		static const QVector<double> sections_ {0.5, 0.75, 1, 1.5, 2.5, 4, 6, 10, 16, 25, 35, 50, 70, 95, 120, 150, 185, 240, 300};
-		for (const auto section_ : sections_) {
+		for (const auto section_ : TerminalCatalog::sections()) {
 			qcb->addItem(tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6)), section_);
 		}
 
@@ -1000,7 +972,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 		const auto section = parsePositiveNumber(section_index.data(Qt::EditRole).toString(), &section_ok);
 		bool has_compatible_entry = false;
 		if (section_ok && section > 0.0) {
-			for (const auto &entry : WIDTH_ENTRIES) {
+			for (const auto &entry : TerminalCatalog::widthEntries()) {
 				if (qFuzzyCompare(1 + entry.section, 1 + section)) {
 					qcb->addItem(widthItemText(entry.mm, QString::fromUtf8(entry.label)), entry.mm);
 					has_compatible_entry = true;
@@ -1009,7 +981,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 		}
 		// If the section has no catalog match (or is unspecified), keep all widths available.
 		if (!has_compatible_entry) {
-			for (const auto &entry : WIDTH_ENTRIES) {
+			for (const auto &entry : TerminalCatalog::widthEntries()) {
 				qcb->addItem(widthItemText(entry.mm, QString::fromUtf8(entry.label)), entry.mm);
 			}
 		}

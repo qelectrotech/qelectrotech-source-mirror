@@ -81,6 +81,9 @@ class ElementPropertiesEditorWidget : public QDialog
 		void createPlcConfigWidgets();
 		void populatePlcTable();
 		void readPlcTable();
+		void populateTerminalSizeCombos(double section, double width);
+		void refreshTerminalWidthCombo();
+		void populateTerminalColorCombo(const QString &spec);
 
 		//SLOTS
 	private slots:
