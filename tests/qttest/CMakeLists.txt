@@ -596,6 +596,17 @@ else()
   target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml)
 endif()
 
+# projectlock.cpp is the sidecar file that says who has a project open; it
+# needs only Qt Core and the version number, so it is linked on its own.
+add_executable(
+  tst_projectlock
+  tst_projectlock.cpp
+  ${QET_DIR}/sources/projectlock.cpp
+  ${QET_DIR}/sources/qetversion.cpp)
+add_test(NAME tst_projectlock COMMAND tst_projectlock)
+target_include_directories(tst_projectlock PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_projectlock PRIVATE Qt::Test Qt::Xml)
+
 # The crash-dump bookkeeping from #905: which dumps get listed, offered and
 # deleted, and what redact() masks. qetlogger.cpp needs exactly one symbol
 # from the application (QETApp::dataDir()), which the test supplies itself,
@@ -952,6 +963,18 @@ if(QET_HAS_SCRIPTING)
   add_dependencies(tst_qetzheaderpictures qelectrotech)
   target_link_libraries(tst_qetzheaderpictures PRIVATE Qt::Test)
   target_compile_definitions(tst_qetzheaderpictures PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # Saving refuses a project file another user or program changed since it was
+  # opened (QETProject::changedOnDisk()); QET_OVERWRITE_CHANGED=1 overrides.
+  add_executable(
+    tst_changedondisk
+    tst_changedondisk.cpp)
+  add_test(NAME tst_changedondisk COMMAND tst_changedondisk)
+  add_dependencies(tst_changedondisk qelectrotech)
+  target_link_libraries(tst_changedondisk PRIVATE Qt::Test)
+  target_compile_definitions(tst_changedondisk PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
@@ -1326,3 +1349,18 @@ target_compile_definitions(tst_qetcontainer PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\""
   "QET_FORMAT_SPEC=\"${QET_DIR}/sources/container/QETZ-FORMAT.md\"")
+
+# A right-aligned report text emptied and set again while lazy folios are
+# built is saved where it was (F119): the real binary's --run on
+# fixtures/report_text_late_folio.qet, lazily and with every folio built.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_reporttextlatefolio
+    tst_reporttextlatefolio.cpp)
+  add_test(NAME tst_reporttextlatefolio COMMAND tst_reporttextlatefolio)
+  add_dependencies(tst_reporttextlatefolio qelectrotech)
+  target_link_libraries(tst_reporttextlatefolio PRIVATE Qt::Test)
+  target_compile_definitions(tst_reporttextlatefolio PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()

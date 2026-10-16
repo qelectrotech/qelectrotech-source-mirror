@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project title="F119 fixture" uuid="{d74092d0-fa83-5acd-a423-b80d435307d4}" version="0.200.1">
+    <usage enabled="true" time_spent="0" />
+    <diagram cols="19" colsize="57" date="20200729" displayAt="bottom" displaycols="true" displayrows="true" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="724" indexrev="" order="4" rows="11" rowsize="64" title="Folio A" uuid="{b49c091d-a567-59c5-ba26-ca294d8c4151}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="2" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="" numsize="6" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270" />
+        <elementautonumfoliosequentials>
+            <elementtenfolioseq>
+                <tenfolioseq seqtf_1="13" title="Outros" />
+            </elementtenfolioseq>
+        </elementautonumfoliosequentials>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="1" prefix="" type="embed://import/minha_colecao/desenho_esquematico/eletrica/paginas/02going_arrow.elmt" uuid="{e9d29932-2795-492c-9bb9-5d452a7275a3}" x="1020" y="650" z="10">
+                <terminals>
+                    <terminal id="113" orientation="3" x="-9" y="0" />
+                </terminals>
+                <inputs />
+                <links_uuids>
+                    <link_uuid uuid="{ab682893-34b6-4b0d-9633-0e299eedd061}" />
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{e7d33011-e3f8-4007-a3e6-3f0d08651193}" x="6" y="-11.5">
+                        <text>T</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" frame="false" keep_visual_rotation="true" rotation="180" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{81d56f5a-7bb8-4cca-a72f-9c569ae1519b}" x="-10" y="16">
+                        <text>Motor_X</text>
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/minha_colecao/desenho_esquematico/eletrica/Bobinas/Bobina.elmt" uuid="{6f789709-77a5-453e-859f-13f6d8fc5f7e}" x="730" y="410" z="10">
+                <terminals>
+                    <terminal id="48" orientation="0" x="0" y="-15" />
+                    <terminal id="49" orientation="2" x="0" y="11" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="comment" show="1" />
+                    <elementInformation name="description" show="1" />
+                    <elementInformation name="formula" show="1" />
+                    <elementInformation name="formula_id" show="0" />
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{f2464c8b-5737-4a3f-aeae-af2752020719}" x="-15" y="3">
+                        <text>T</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{e1f8fa0b-ea33-4588-b371-7fa22c02e070}" x="-15" y="-23.5">
+                        <text>T</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{1ec3af36-0a82-4051-882c-1bc045cbdeb6}" x="-74" y="-7">
+                        <text>T</text>
+                        <info_name>description</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignBottom" font="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0,Negrito" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{8663cde7-10c6-4b4c-8e1d-19cf8ae15091}" x="-51" y="-20">
+                        <text>T</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignVCenter" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{1ac145ed-e135-41a8-abde-90e85f48e3b9}" x="-68" y="2">
+                        <text>T</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="2" displaytext="1" element1="{e9d29932-2795-492c-9bb9-5d452a7275a3}" element1_label="" element1_linked="" element1_name="Going arrow" element2="{6f789709-77a5-453e-859f-13f6d8fc5f7e}" element2_label="" element2_name="Coil" formula="" freezeLabel="false" function="Motor_X" horizontal-alignment="AlignBottom" horizrotatetext="0" num="" numsize="6" onetextperfolio="0" tension_protocol="" terminal1="{ad5adb13-95cc-5965-bd72-53296c38ca8e}" terminal2="{edc05f1b-c54d-5259-8528-22b1ffb163dc}" terminalname1="" terminalname2="" text_color="#000000" type="multi" uuid="{72b15135-a00c-50fb-acb4-30be3e08c50a}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                </conductor>
+            </conductors>
+    </diagram>
+    <diagram cols="17" colsize="57" date="20200729" displayAt="bottom" displaycols="true" displayrows="true" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" order="10" rows="10" rowsize="64" title="Folio B" uuid="{9187f65e-2e30-5a51-a476-9ba6c92ebc2d}" version="0.200.1-dev">
+        <defaultconductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="2" displaytext="1" formula="" function="" horizontal-alignment="AlignBottom" horizrotatetext="0" num="" numsize="6" onetextperfolio="0" tension_protocol="" text_color="#000000" type="multi" vertical-alignment="AlignRight" vertirotatetext="270" />
+        <elementautonumfoliosequentials>
+            <elementtenfolioseq>
+                <tenfolioseq seqtf_1="0" title="Sensores" />
+                <tenfolioseq seqtf_1="03" title="Outros" />
+            </elementtenfolioseq>
+        </elementautonumfoliosequentials>
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="1" prefix="" type="embed://import/minha_colecao/desenho_esquematico/eletrica/paginas/01coming_arrow.elmt" uuid="{ab682893-34b6-4b0d-9633-0e299eedd061}" x="730" y="260" z="10">
+                <terminals>
+                    <terminal id="47" orientation="1" x="9" y="0" />
+                </terminals>
+                <inputs />
+                <links_uuids>
+                    <link_uuid uuid="{e9d29932-2795-492c-9bb9-5d452a7275a3}" />
+                </links_uuids>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" keep_visual_rotation="true" rotation="180" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{d4a2a5a3-e583-448f-ba3a-00c5c7f83cc2}" x="-10.4204" y="12.4104">
+                        <text>T</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" frame="false" keep_visual_rotation="true" rotation="180" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{cbaf051e-0ce0-40f1-ada9-b8f637a79f92}" x="60" y="16.6258">
+                        <text>Motor_X</text>
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://import/minha_colecao/desenho_esquematico/eletrica/Bobinas/Bobina.elmt" uuid="{794d8944-035d-4bcd-8ee6-c653d384fd4f}" x="730" y="410" z="10">
+                <terminals>
+                    <terminal id="48" orientation="0" x="0" y="-15" />
+                    <terminal id="49" orientation="2" x="0" y="11" />
+                </terminals>
+                <inputs />
+                <links_uuids>
+                    <link_uuid uuid="{1fabce73-12be-4fca-9a89-4f5731fba8da}" />
+                </links_uuids>
+                <elementInformations>
+                    <elementInformation name="comment" show="1" />
+                    <elementInformation name="description" show="1" />
+                    <elementInformation name="formula" show="1" />
+                    <elementInformation name="formula_id" show="0" />
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{f2464c8b-5737-4a3f-aeae-af2752020719}" x="-15" y="3">
+                        <text>T</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{e1f8fa0b-ea33-4588-b371-7fa22c02e070}" x="-15" y="-23.5">
+                        <text>T</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignTop" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{1ec3af36-0a82-4051-882c-1bc045cbdeb6}" x="-74" y="-7">
+                        <text>T</text>
+                        <info_name>description</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignBottom" font="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0,Negrito" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{8663cde7-10c6-4b4c-8e1d-19cf8ae15091}" x="-51" y="-20">
+                        <text>T</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignRight" Valignment="AlignVCenter" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="true" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{1ac145ed-e135-41a8-abde-90e85f48e3b9}" x="-68" y="2">
+                        <text>T</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            </elements>
+        <conductors>
+            <conductor bicolor="false" bus="" cable="" color2="#000000" condsize="1" conductor_color="" conductor_section="" dash-size="2" displaytext="1" element1="{ab682893-34b6-4b0d-9633-0e299eedd061}" element1_label="" element1_linked="" element1_name="Coming arrow" element2="{794d8944-035d-4bcd-8ee6-c653d384fd4f}" element2_label="" element2_linked="" element2_name="Coil" formula="" freezeLabel="false" function="Motor_X" horizontal-alignment="AlignBottom" horizrotatetext="0" num="" numsize="6" onetextperfolio="0" tension_protocol="" terminal1="{ab6bf883-5b38-52c1-be86-5ee2fa877ae4}" terminal2="{edc05f1b-c54d-5259-8528-22b1ffb163dc}" terminalname1="" terminalname2="" text_color="#000000" type="multi" uuid="{ff60fc27-efd9-58d3-83f2-34994c167010}" vertical-alignment="AlignRight" vertirotatetext="270" x="0" y="0">
+                </conductor>
+        </conductors>
+        <inputs>
+            </inputs>
+        <shapes>
+            </shapes>
+    </diagram>
+    <collection>
+        <category name="import">
+            <category name="minha_colecao">
+                <category name="desenho_esquematico">
+                    <category name="eletrica">
+                        <category name="paginas">
+                            <element name="02going_arrow.elmt">
+                                <definition height="30" hotspot_x="18" hotspot_y="15" ic="true" link_type="next_report" orientation="dyyy" type="element" version="0.3" width="40">
+                                    <uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}" />
+                                    <names>
+                                        <name lang="ru">Следующая страница</name>
+                                        <name lang="ar">الصفحة التالية</name>
+                                        <name lang="de">Nächste Folie</name>
+                                        <name lang="el">Επόμενη σελίδα</name>
+                                        <name lang="en">Going arrow</name>
+                                        <name lang="it">Foglio successivo</name>
+                                        <name lang="fr">Folio suivant</name>
+                                        <name lang="pl">Wyjście adresowe</name>
+                                        <name lang="es">Folio siguiente</name>
+                                        <name lang="cs">Další list</name>
+                                        <name lang="nl">Referentie volgend</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <polygon antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-9" x2="-9" x3="2" x4="-9" y1="-4" y2="4" y3="0" y4="-4" />
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-12" y1="0" y2="0" />
+                                        <input rotate="true" size="9" tagg="label" text="/" x="6" y="0" />
+                                        <terminal name="" nameHidden="0" number="" orientation="w" uuid="{ad5adb13-95cc-5965-bd72-53296c38ca8e}" x="-13" y="0" />
+                                    </description>
+                                </definition>
+                            </element>
+                            <element name="01coming_arrow.elmt">
+                                <definition height="30" hotspot_x="49" hotspot_y="15" ic="true" link_type="previous_report" orientation="dyyy" type="element" version="0.3" width="70">
+                                    <uuid uuid="{F549BEFB-F0CF-44ED-A948-F6F796BFB421}" />
+                                    <names>
+                                        <name lang="ru">Предыдущая страница</name>
+                                        <name lang="ar">الصفحة السابقة</name>
+                                        <name lang="de">Vorherige Folie</name>
+                                        <name lang="el">Προηγούμενη σελίδα</name>
+                                        <name lang="en">Coming arrow</name>
+                                        <name lang="it">Foglio precedente</name>
+                                        <name lang="fr">Folio précédent</name>
+                                        <name lang="pl">Wejście adresowe</name>
+                                        <name lang="es">folio anterior</name>
+                                        <name lang="cs">Předchozí list</name>
+                                        <name lang="nl">Referentie Vorig</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <polygon antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-1" x2="-1" x3="9" x4="-1" y1="-4" y2="4" y3="0" y4="-4" />
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="12" y1="0" y2="0" />
+                                        <input rotate="true" size="9" tagg="label" text="/" x="-44" y="0" />
+                                        <terminal name="" nameHidden="0" number="" orientation="e" uuid="{ab6bf883-5b38-52c1-be86-5ee2fa877ae4}" x="13" y="0" />
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                        <category name="Bobinas">
+                            <element name="Bobina.elmt">
+                                <definition height="50" hotspot_x="20" hotspot_y="26" link_type="master" orientation="dyyy" type="element" version="0.80" width="40">
+                                    <uuid uuid="{5787c961-0c43-4447-93b8-73fe28a1abc8}" />
+                                    <names>
+                                        <name lang="en">Coil</name>
+                                        <name lang="es">Bobina</name>
+                                        <name lang="el">Πηνίο</name>
+                                        <name lang="fr">Bobine</name>
+                                        <name lang="cs">Cívka</name>
+                                        <name lang="it">Bobina</name>
+                                        <name lang="pl">Cewka</name>
+                                        <name lang="ar">ملف</name>
+                                        <name lang="nl">Spoel</name>
+                                        <name lang="de">Spule</name>
+                                        <name lang="be">Relais spoel (algemeen)</name>
+                                        <name lang="ru">Обмотка</name>
+                                    </names>
+                                    <kindInformations>
+                                        <kindInformation name="type" show="1">coil</kindInformation>
+                                    </kindInformations>
+                                    <elementInformations>
+                                        <elementInformation name="unity" show="1" />
+                                        <elementInformation name="machine-manufacturer-reference" show="1" />
+                                        <elementInformation name="label" show="1">tag</elementInformation>
+                                        <elementInformation name="manufacturer-reference" show="1" />
+                                        <elementInformation name="supplier" show="1" />
+                                        <elementInformation name="manufacturer" show="1" />
+                                        <elementInformation name="description" show="1">Nome</elementInformation>
+                                        <elementInformation name="quantity" show="1" />
+                                        <elementInformation name="designation" show="1" />
+                                        <elementInformation name="comment" show="1">comentário</elementInformation>
+                                        <elementInformation name="plant" show="1" />
+                                    </elementInformations>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" rotation="0" text_from="UserText" text_width="-1" uuid="{78b380d5-4ddc-4446-a395-1cbc2e3517e8}" x="-15" y="3" z="1">
+                                            <text>A2</text>
+                                        </dynamic_text>
+                                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" rotation="0" text_from="UserText" text_width="-1" uuid="{4eea1909-0970-44cb-acf8-cd680990b691}" x="-15" y="-23.5" z="2">
+                                            <text>A1</text>
+                                        </dynamic_text>
+                                        <rect antialias="false" height="14" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="28" x="-14" y="-9" />
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="-19" y2="-9" />
+                                        <dynamic_text Halignment="AlignRight" Valignment="AlignTop" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{7fd76cd1-bba2-4218-8118-99c3d6d8ce5a}" x="-49" y="-7" z="5">
+                                            <text>Nome</text>
+                                            <info_name>description</info_name>
+                                        </dynamic_text>
+                                        <dynamic_text Halignment="AlignRight" Valignment="AlignBottom" font="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0,Negrito" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{7fd76cd1-bba2-4218-8118-99c3d6d8ce5a}" x="-48" y="-20" z="5">
+                                            <text>tag</text>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <dynamic_text Halignment="AlignRight" Valignment="AlignVCenter" font="Sans Serif,6,-1,5,50,0,0,0,0,0" frame="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{7fd76cd1-bba2-4218-8118-99c3d6d8ce5a}" x="-68" y="2" z="5">
+                                            <text>comentário</text>
+                                            <info_name>comment</info_name>
+                                        </dynamic_text>
+                                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="6" y2="15" />
+                                        <terminal orientation="n" uuid="{edc05f1b-c54d-5259-8528-22b1ffb163dc}" x="0" y="-19" />
+                                        <terminal orientation="s" uuid="{2854c355-83b6-5b7b-aeac-2ff2c4e04e5d}" x="0" y="15" />
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

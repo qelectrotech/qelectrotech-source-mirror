@@ -240,6 +240,9 @@ int main(int argc, char **argv)
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// Headless runs read locks, to refuse writing a project someone
+			// has open, but never take one
+			ProjectLock::setHeadless(true);
 			// Answer message boxes instead of showing them: opening a project
 			// saved by an older QElectroTech raises a warning from
 			// QETProject::readProjectXml(), and with nobody able to dismiss it
@@ -255,6 +258,7 @@ int main(int argc, char **argv)
 			installHeadlessMessageHandler();
 			QApplication script_app(argc, argv);
 			QETProject::setBackupEnabled(false);
+			ProjectLock::setHeadless(true);
 			QET::QetMessageBox::setNonInteractive(true);
 			return QetScripting::run(headlessArguments(script_app.arguments()));
 		}

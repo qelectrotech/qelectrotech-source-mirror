@@ -943,7 +943,7 @@ private slots:
 		QTest::newRow("nothing") << QString() << QString() << 0 << 0;
 		QTest::newRow("folio file missing") << QStringLiteral("folio") << QStringLiteral("is missing") << -1 << 0;
 		QTest::newRow("wire row deleted") << QStringLiteral("row") << QStringLiteral("not in the database") << 0 << -1;
-		QTest::newRow("database page overwritten") << QStringLiteral("page") << QStringLiteral("cannot be read") << 0 << -1000;
+		QTest::newRow("database page overwritten") << QStringLiteral("page") << QStringLiteral("is damaged") << 0 << -1000;
 	}
 	void recoverLeavesOutOnlyTheDamage()
 	{

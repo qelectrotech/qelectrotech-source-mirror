@@ -191,6 +191,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
+	ui->m_project_lock->setChecked(settings.value("projectlock/enabled", true).toBool());
 	ui->m_previous_versions_sb->setValue(PreviousVersions::count());
 	
 	QString fontInfos = settings.value("diagramitemfont", "Liberation Sans").toString() + " " +
@@ -419,6 +420,7 @@ void GeneralConfigurationPage::applyConf()
 		}
 	}
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+	settings.setValue("projectlock/enabled", ui->m_project_lock->isChecked());
 	PreviousVersions::setCount(ui->m_previous_versions_sb->value());
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());

@@ -42,6 +42,7 @@
 #include "../dataBase/projectdatabase.h"
 #include "../qetapp.h"
 #include "../qetproject.h"
+#include "../projectlock.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/conductortextitem.h"
@@ -269,6 +270,9 @@ bool QetScriptApi::runFlag(const QString &flag, const QStringList &args)
 	}
 	QStringList full_args;
 	full_args << flag << path << args;
+		//The project's own file, which this session has locked, is no conflict
+	if (m_project->lock() && m_project->lock()->isHeld() && args.value(0) == path)
+		full_args << QStringLiteral("--ignore-lock");
 
 	if (m_view)
 	{
@@ -419,6 +423,19 @@ bool QetScriptApi::setTitleBlock(const QString &output, const QStringList &assig
 bool QetScriptApi::save(const QString &output)
 {
 	if (!m_project) return false;
+
+		//Not onto a file someone else has open (their lock beside it); the
+		//lock this project holds itself is no conflict
+	{
+		const QString target = output.isEmpty() ? m_project->filePath() : output;
+		const ProjectLock::Holder holder = target.isEmpty() ? ProjectLock::Holder()
+			: ProjectLock::liveHolder(target, m_project->lock() ? m_project->lock()->session() : QString());
+		if (holder.valid) {
+			log(QStringLiteral("qet.save: %1 is open by %2 on %3 (lock file %4); not written -- pass another output path")
+				.arg(target, holder.user, holder.host, ProjectLock::lockPathFor(target)));
+			return false;
+		}
+	}
 
 	if (output.isEmpty())
 	{
