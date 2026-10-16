@@ -19,6 +19,7 @@
 
 #include <QPainter>
 #include <QPolygonF>
+#include <QPainterPath>
 #include <QFontMetricsF>
 #include <QHash>
 
@@ -464,45 +465,246 @@ TerminalColors terminalColors(const QSharedPointer<AbstractRealTerminalInterface
 	}
 	switch (real_t->type()) {
 		case ElementData::TTGround: return {QColor(255, 216, 0), QColor(46, 158, 46)};	//Green/Yellow
-		default: return {};
+		default: return {QColor(150, 150, 150), QColor()};	//Grey housing, like a real terminal block
 	}
 }
 
 /**
- * @brief drawTerminalBody Draw a terminal housing with simple connection details.
+ * @brief terminalBodyPath
+ * @param rect : rectangle of the terminal
+ * @return The outline of a terminal block seen from the front : a body of the full width
+ * with, at the top and at the bottom, a slightly narrower cap (the wire entry),
+ * linked to the body by a small slope.
+ * Two neighbouring terminals touch each other by their bodies and leave a small notch between their caps.
+ */
+QPainterPath terminalBodyPath(const QRectF &rect)
+{
+	QPainterPath path_;
+	if (rect.width() <= 0 || rect.height() <= 0) {
+		return path_;
+	}
+
+	const qreal inset_ = qMin(qreal(1.0), rect.width() * 0.1);
+	const qreal cap_ = qMin(qreal(6.0), rect.height() * 0.06);
+	const qreal slope_ = qMin(qreal(2.0), rect.height() * 0.03);
+	const qreal l_ = rect.left(), r_ = rect.right(), t_ = rect.top(), b_ = rect.bottom();
+
+	QPolygonF outline_;
+	outline_ << QPointF(l_ + inset_, t_)
+			 << QPointF(r_ - inset_, t_)
+			 << QPointF(r_ - inset_, t_ + cap_)
+			 << QPointF(r_, t_ + cap_ + slope_)
+			 << QPointF(r_, b_ - cap_ - slope_)
+			 << QPointF(r_ - inset_, b_ - cap_)
+			 << QPointF(r_ - inset_, b_)
+			 << QPointF(l_ + inset_, b_)
+			 << QPointF(l_ + inset_, b_ - cap_)
+			 << QPointF(l_, b_ - cap_ - slope_)
+			 << QPointF(l_, t_ + cap_ + slope_)
+			 << QPointF(l_ + inset_, t_ + cap_);
+	path_.addPolygon(outline_);
+	path_.closeSubpath();
+	return path_;
+}
+
+/**
+ * @brief The Zone struct
+ * A vertical zone (relative to the top of a terminal) already used by a text or a symbol.
+ */
+struct Zone
+{
+	qreal top{0};
+	qreal bottom{0};
+};
+
+/**
+ * @brief drawTerminalBody Draw a terminal housing seen from the front,
+ * like in a terminal line-up diagram : a grey body with wire entries (caps) at both ends,
+ * and clamping screws drawn in the free zones of the body.
+ * @param painter
+ * @param rect : rectangle of the terminal
+ * @param used_zones : zones used by the texts and the symbols (in the frame of the strip),
+ * the screws are drawn out of them.
+ * @param bottom_line : draw the line between the body and the lower wire entry.
+ * Must be false if a symbol (fuse, led...) is drawn over this line.
  * The details are deliberately schematic and scale with the terminal width.
  */
-void drawTerminalBody(QPainter *painter, const QRectF &rect)
+void drawTerminalBody(QPainter *painter, const QRectF &rect, const QVector<Zone> &used_zones, bool bottom_line)
 {
-    if (rect.width() <= 0 || rect.height() <= 0) {
-        return;
-    }
+	if (rect.width() <= 0 || rect.height() <= 0) {
+		return;
+	}
 
-    const qreal bevel = qMin(qreal(2.0), rect.width() * 0.12);
-    QPolygonF housing;
-    housing << QPointF(rect.left() + bevel, rect.top())
-            << QPointF(rect.right() - bevel, rect.top())
-            << QPointF(rect.right(), rect.top() + bevel)
-            << QPointF(rect.right(), rect.bottom() - bevel)
-            << QPointF(rect.right() - bevel, rect.bottom())
-            << QPointF(rect.left() + bevel, rect.bottom())
-            << QPointF(rect.left(), rect.bottom() - bevel)
-            << QPointF(rect.left(), rect.top() + bevel);
-    painter->drawPolygon(housing);
+	painter->drawPath(terminalBodyPath(rect));
 
-    // Fine inner edge to give the housing some depth.
-    if (rect.width() >= 5.0 && rect.height() >= 12.0) {
-        const qreal margin = qMin(qreal(2.0), rect.width() * 0.12);
-        painter->drawLine(QPointF(rect.left() + margin, rect.top() + 3.0),
-                          QPointF(rect.right() - margin, rect.top() + 3.0));
+	if (rect.width() < 5.0 || rect.height() < 12.0) {
+		return;
+	}
 
-        // Schematic screw head and slot.
-        const qreal radius = qMin(qreal(1.8), rect.width() * 0.12);
-        const qreal screw_y = rect.top() + rect.height() * 0.18;
-        painter->drawEllipse(QPointF(rect.center().x(), screw_y), radius, radius);
-        painter->drawLine(QPointF(rect.center().x() - radius * 0.65, screw_y),
-                          QPointF(rect.center().x() + radius * 0.65, screw_y));
-    }
+	const qreal cap_ = qMin(qreal(6.0), rect.height() * 0.06);
+	const qreal slope_ = qMin(qreal(2.0), rect.height() * 0.03);
+	const qreal body_top_ = rect.top() + cap_ + slope_;
+	const qreal body_bottom_ = rect.bottom() - cap_ - slope_;
+
+		//Limit between the body and the wire entries
+	painter->drawLine(QPointF(rect.left(), body_top_),
+					  QPointF(rect.right(), body_top_));
+	if (bottom_line) {
+		painter->drawLine(QPointF(rect.left(), body_bottom_),
+						  QPointF(rect.right(), body_bottom_));
+	}
+
+		//Free zones of the body : what remains when the used zones are removed
+	QVector<Zone> free_zones_;
+	free_zones_.append(Zone{body_top_, body_bottom_});
+	const qreal margin_ = 2.5;
+	for (const auto &used_ : used_zones)
+	{
+		QVector<Zone> new_free_;
+		for (const auto &free_ : std::as_const(free_zones_))
+		{
+			if (used_.bottom + margin_ <= free_.top || used_.top - margin_ >= free_.bottom) {
+				new_free_.append(free_);
+				continue;
+			}
+			if (used_.top - margin_ > free_.top) {
+				new_free_.append(Zone{free_.top, used_.top - margin_});
+			}
+			if (used_.bottom + margin_ < free_.bottom) {
+				new_free_.append(Zone{used_.bottom + margin_, free_.bottom});
+			}
+		}
+		free_zones_ = new_free_;
+	}
+
+		//In each free zone, draw the clamping parts like on a terminal block seen from the front :
+		//screw, castle tab, big center circle, castle tab, screw.
+		//If the zone is too small, only the center circle or one screw is drawn.
+	const qreal screw_r_ = qMin(qreal(5.0), rect.width() * 0.3);
+	const qreal center_r_ = qMin(screw_r_ * 1.5, rect.width() * 0.4);
+	if (screw_r_ < 1.0) {
+		return;
+	}
+	const qreal screw_h_ = screw_r_ * 2 + 3;
+	const qreal center_h_ = center_r_ * 2 + 2;
+	const qreal tab_h_ = 4.0;
+	const qreal tab_w_ = qMin(rect.width() * 0.3, qreal(5.0));
+	const qreal cx_ = rect.center().x();
+
+	auto draw_screw = [&](qreal y_, qreal r_, bool window_)
+	{
+		const QPointF c_{cx_, y_};
+		if (window_) {
+			const qreal half_{qMin(r_ + 1.5, rect.width() / 2 - 0.8)};
+			if (half_ > r_ + 0.3) {
+				painter->drawRoundedRect(QRectF(cx_ - half_, c_.y() - half_, half_ * 2, half_ * 2), 1.0, 1.0);
+			}
+		}
+		painter->drawEllipse(c_, r_, r_);
+		painter->drawLine(QPointF(c_.x() - r_ * 0.6, c_.y()), QPointF(c_.x() + r_ * 0.6, c_.y()));
+	};
+	auto draw_tab = [&](qreal y_)
+	{
+		painter->drawRect(QRectF(cx_ - tab_w_, y_ - tab_h_ / 2, tab_w_ * 2, tab_h_));
+	};
+
+	for (const auto &free_ : std::as_const(free_zones_))
+	{
+		const qreal h_ = free_.bottom - free_.top;
+		if (h_ >= screw_h_ * 2 + center_h_ + tab_h_ * 2 + 2)
+		{
+			const qreal top_y_ = free_.top + screw_h_ / 2;
+			const qreal bottom_y_ = free_.bottom - screw_h_ / 2;
+			const qreal middle_y_ = (top_y_ + bottom_y_) / 2;
+			draw_screw(top_y_, screw_r_, true);
+			draw_tab((top_y_ + screw_h_ / 2 + middle_y_ - center_h_ / 2) / 2);
+			draw_screw(middle_y_, center_r_, false);
+			draw_tab((middle_y_ + center_h_ / 2 + bottom_y_ - screw_h_ / 2) / 2);
+			draw_screw(bottom_y_, screw_r_, true);
+		}
+		else if (h_ >= center_h_ + 2) {
+			draw_screw((free_.top + free_.bottom) / 2, center_r_, false);
+		}
+		else if (h_ >= screw_h_) {
+			draw_screw((free_.top + free_.bottom) / 2, screw_r_, true);
+		}
+	}
+}
+
+/**
+ * @brief markerTagZone
+ * @return The vertical zone (in the frame of the strip) really covered by the marker tag of a text,
+ * which is smaller than the rectangle of the text.
+ * @param metrics : metrics of the font used to draw the text
+ * @param text_y : y of the rectangle of the text
+ * @param text_height : height of the rectangle of the text
+ * @param text : text drawn
+ * @param option : option used to draw the text
+ * @param vertical : true if the text is rotated
+ */
+Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height,
+				   const QString &text, const QTextOption &option, bool vertical)
+{
+	if (!vertical)
+	{
+		const qreal cross_ = qMin(text_height, metrics.height() + 2);
+		return Zone{text_y + (text_height - cross_) / 2, text_y + (text_height + cross_) / 2};
+	}
+	const qreal along_ = qMin(text_height, metrics.horizontalAdvance(text) + 4.0);
+	if (option.alignment() & Qt::AlignRight) {
+		return Zone{text_y, text_y + along_};
+	}
+	if (option.alignment() & Qt::AlignHCenter) {
+		return Zone{text_y + (text_height - along_) / 2, text_y + (text_height + along_) / 2};
+	}
+	return Zone{text_y + text_height - along_, text_y + text_height};
+}
+
+/**
+ * @brief drawMarkerTag
+ * Draw the marker tag of a terminal (white, or black and ribbed for an isolating terminal)
+ * behind a text. The tag fits the text and follows its alignment.
+ * Must be called with the painter in the frame of @a text_rect (the one used to draw the text).
+ * @param painter
+ * @param text_rect : rectangle used to draw the text
+ * @param text : text drawn
+ * @param option : option used to draw the text
+ * @param vertical : true if the text is rotated
+ * @param sectional : true for an isolating terminal
+ */
+void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &text,
+				   const QTextOption &option, bool vertical, bool sectional)
+{
+	if (text.isEmpty()) {
+		return;
+	}
+	const QFontMetricsF metrics_{painter->font()};
+	const qreal along_ = qMin(text_rect.width(), metrics_.horizontalAdvance(text) + 4.0);
+	const qreal cross_ = vertical ?
+							 text_rect.height() - 2 * qMin(qreal(1.2), text_rect.height() * 0.12) :
+							 qMin(text_rect.height(), metrics_.height() + 2);
+	qreal x_{text_rect.left()};
+	if (option.alignment() & Qt::AlignRight) {
+		x_ = text_rect.right() - along_;
+	} else if (option.alignment() & Qt::AlignHCenter) {
+		x_ = text_rect.left() + (text_rect.width() - along_) / 2;
+	}
+	const QRectF tag_rect_{x_, text_rect.top() + (text_rect.height() - cross_) / 2, along_, cross_};
+
+	painter->save();
+	painter->setBrush(sectional ? Qt::black : Qt::white);
+	painter->drawRoundedRect(tag_rect_, 0.8, 0.8);
+	if (sectional)
+	{
+			//Ribbed grip of the isolating terminals
+		painter->setPen(QPen(QColor(90, 90, 90), 0));
+		for (auto rib_x_ = tag_rect_.left() + 1.5 ; rib_x_ < tag_rect_.right() - 0.5 ; rib_x_ += 1.5) {
+			painter->drawLine(QPointF(rib_x_, tag_rect_.top() + 0.5),
+							  QPointF(rib_x_, tag_rect_.bottom() - 0.5));
+		}
+	}
+	painter->restore();
+	painter->setPen(sectional ? Qt::white : Qt::black);
 }
 
 /**
@@ -558,7 +760,7 @@ void fitTextToCell(QPainter *painter, qreal cell_width, bool text_is_vertical)
 void drawStripes(QPainter *painter, const QRectF &rect, const QColor &color)
 {
 	painter->save();
-	painter->setClipRect(rect);
+	painter->setClipPath(terminalBodyPath(rect));
 	painter->setPen(Qt::NoPen);
 	painter->setBrush(color);
 
@@ -714,12 +916,32 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				if (fill_color_.isValid()) {
 					painter->setBrush(QBrush(fill_color_));
 				}
-                drawTerminalBody(painter, terminal_rect);
+				QVector<Zone> used_zones_;
+				if (real_terminal_vector[i])
+				{
+					const QFontMetricsF metrics_{painter->font()};
+					used_zones_.append(markerTagZone(metrics_, terminals_text_y, terminals_text_height,
+													 terminalNumber(real_terminal_vector[i]->label()),
+													 terminals_text_option,
+													 terminals_text_orientation == Qt::Vertical));
+					used_zones_.append(markerTagZone(metrics_, xref_text_y, xref_text_height,
+													 real_terminal_vector[i]->xref(),
+													 xref_text_option,
+													 xref_text_orientation == Qt::Vertical));
+				}
+				const bool have_symbol_{m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i]
+										&& (real_terminal_vector[i]->type() != ElementData::TTGeneric
+											|| real_terminal_vector[i]->isLed())};
+				if (have_symbol_) {
+					used_zones_.append(Zone{m_pattern->m_type_symbol_y,
+											m_pattern->m_type_symbol_y + m_pattern->m_type_symbol_height});
+				}
+                drawTerminalBody(painter, terminal_rect, used_zones_, !have_symbol_);
 				if (colors_.stripe.isValid())
 				{
 					drawStripes(painter, terminal_rect, colors_.stripe);
 					painter->setBrush(Qt::NoBrush);
-					painter->drawRect(terminal_rect);	//Draw again the outline, hidden by stripes
+					drawTerminalBody(painter, terminal_rect, used_zones_, !have_symbol_);	//Draw again the outline and the details, hidden by stripes
 				}
 				painter->restore();
 
@@ -785,6 +1007,11 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 }
 
                 const auto shared_real_terminal{real_terminal_vector[i]};
+				if (shared_real_terminal && terminal_rect.width() >= 4.0) {
+					drawMarkerTag(painter, text_rect, terminalNumber(shared_real_terminal->label()),
+								  terminals_text_option, terminals_text_orientation == Qt::Vertical,
+								  shared_real_terminal->type() == ElementData::TTSectional);
+				}
 				painter->drawText(text_rect,
 								  shared_real_terminal ? terminalNumber(shared_real_terminal->label()) : QString(),
 								  terminals_text_option);
@@ -830,6 +1057,12 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					m_united_xref_text_rect = mapped_xref_text_rect;
 				} else {
 					m_united_xref_text_rect = m_united_xref_text_rect.united(mapped_xref_text_rect);
+				}
+
+				if (terminal_rect.width() >= 4.0) {
+					drawMarkerTag(painter, xref_rect, xref_string, xref_text_option,
+								  xref_text_orientation == Qt::Vertical,
+								  shared_real_terminal->type() == ElementData::TTSectional);
 				}
 
 					//if mouse hover the xref text, draw it in blue to advise user the xref is clickable.
