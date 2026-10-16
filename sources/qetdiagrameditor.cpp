@@ -1889,6 +1889,51 @@ bool QETDiagramEditor::closeProject(QETProject *project)
 }
 
 /**
+	@brief QETDiagramEditor::askAboutLock
+	Tell the user who has the project @p filepath open and let them choose.
+	Read-only is the default: opening anyway can lose the other person's
+	work, and a lock left by a crash on another machine cannot be told from
+	a live one, which is why the age of the last sign of life is shown.
+*/
+QETDiagramEditor::LockChoice QETDiagramEditor::askAboutLock(
+		const QString &filepath,
+		const ProjectLock::Holder &holder)
+{
+	const QString name = QFileInfo(filepath).fileName();
+	QString text;
+	if (holder.session == QLatin1String("?")) {
+		text = tr("%1 is being opened by another session of QElectroTech.").arg(name);
+	} else {
+		const QString since = QLocale::system().toString(holder.since.toLocalTime(), QLocale::ShortFormat);
+		text = tr("%1 is open by %2 on %3 since %4").arg(name, holder.user, holder.host, since);
+		const qint64 minutes = holder.heartbeat.isValid()
+				? holder.heartbeat.secsTo(QDateTime::currentDateTimeUtc()) / 60
+				: -1;
+		if (minutes >= 0) {
+			text += minutes < 1
+					? tr(" (active just now).")
+					: tr(" (active %n minute(s) ago).", nullptr, static_cast<int>(minutes));
+		} else {
+			text += QLatin1Char('.');
+		}
+	}
+
+	QMessageBox box(QMessageBox::Warning, tr("Project in use", "message box title"), text, QMessageBox::NoButton, this);
+	box.setInformativeText(tr("Open it read-only to look at it without changing it. "
+							  "Open it anyway only if you know that session is not "
+							  "using it any more: both of you could then save over each other."));
+	QPushButton *read_only = box.addButton(tr("Open read-only"), QMessageBox::AcceptRole);
+	QPushButton *anyway = box.addButton(tr("Open anyway"), QMessageBox::DestructiveRole);
+	box.addButton(QMessageBox::Cancel);
+	box.setDefaultButton(read_only);
+	box.setEscapeButton(box.button(QMessageBox::Cancel));
+	box.exec();
+	if (box.clickedButton() == read_only) return LockChoice::ReadOnly;
+	if (box.clickedButton() == anyway) return LockChoice::OpenAnyway;
+	return LockChoice::Cancel;
+}
+
+/**
 	Ouvre un projet depuis un fichier et l'ajoute a cet editeur
 	@param filepath Chemin du projet a ouvrir
 	@param interactive true pour afficher des messages a l'utilisateur, false sinon
@@ -1966,6 +2011,40 @@ bool QETDiagramEditor::openAndAddProject(
 		}
 	}
 
+		//Is someone else working on this file? Taken before the project is
+		//read, so a cancel costs nothing. Never blocks opening: a folder
+		//the lock cannot be made in, or the setting off, opens as before.
+	std::unique_ptr<ProjectLock> lock;
+	bool opened_read_only_by_lock = false;
+	if (ProjectLock::mayTake() && filepath_info.isWritable())
+	{
+		lock = std::make_unique<ProjectLock>();
+		if (lock->acquire(filepath) == ProjectLock::Result::Held)
+		{
+			const ProjectLock::Holder holder = lock->blockingHolder();
+			bool take_over = false;
+			if (interactive) {
+				switch (askAboutLock(filepath, holder)) {
+				case LockChoice::Cancel:
+					return(false);
+				case LockChoice::OpenAnyway:
+					take_over = true;
+					break;
+				case LockChoice::ReadOnly:
+					break;
+				}
+			}
+				//Not interactive (an assistant opening it): read-only, which
+				//is the safe answer to a question nobody is there to ask
+			if (take_over && lock->acquire(filepath, true) == ProjectLock::Result::Acquired) {
+				// ours now
+			} else if (!take_over) {
+				lock.reset();
+				opened_read_only_by_lock = true;
+			}
+		}
+	}
+
 	//Create the project
 	DialogWaiting::instance(this);
 
@@ -1996,6 +2075,17 @@ bool QETDiagramEditor::openAndAddProject(
 		delete project;
 		DialogWaiting::dropInstance();
 		return(false);
+	}
+
+	if (opened_read_only_by_lock) project->setOpenedReadOnlyByLock(true);
+	if (lock && lock->isHeld()) {
+		connect(lock.get(), &ProjectLock::lockTaken, this, [this, project](const ProjectLock::Holder &by) {
+			statusBar()->showMessage(
+				tr("%1 on %2 has taken over %3. Save your changes with Save As to keep them.")
+					.arg(by.user, by.host, QFileInfo(project->filePath()).fileName()),
+				30000);
+		});
+		project->setLock(std::move(lock));
 	}
 
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);

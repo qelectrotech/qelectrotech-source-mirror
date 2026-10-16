@@ -291,6 +291,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetmainwindow.h
   ${QET_DIR}/sources/qetmessagebox.cpp
   ${QET_DIR}/sources/qetmessagebox.h
+  ${QET_DIR}/sources/projectlock.cpp
+  ${QET_DIR}/sources/projectlock.h
   ${QET_DIR}/sources/qetproject.cpp
   ${QET_DIR}/sources/qetproject.h
   ${QET_DIR}/sources/qetregexpvalidator.cpp

@@ -383,12 +383,35 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	}
 	filepath += zipped ? ".qetz" : ".qet";
 
+		//Not onto a file someone else has open
+	if (!refuseIfLockedByOther(filepath)) return(QString());
+
 	if (assign) {
 		// assign the provided filepath to the currently edited project
 		m_project -> setFilePath(filepath);
 	}
 
 	return(filepath);
+}
+
+/**
+	@brief ProjectView::refuseIfLockedByOther
+	@return false, after telling the user, when another session holds the
+	lock of the file @p filepath this project is about to be saved to
+*/
+bool ProjectView::refuseIfLockedByOther(const QString &filepath)
+{
+	if (!ProjectLock::mayTake()) return(true);
+	const ProjectLock::Holder holder = ProjectLock::liveHolder(
+				filepath, m_project && m_project->lock() ? m_project->lock()->session() : QString());
+	if (!holder.valid) return(true);
+	QMessageBox::warning(
+		this,
+		tr("Project in use", "message box title"),
+		tr("%1 is open by %2 on %3. Choose another file name, or save again "
+		   "once it has been closed there.")
+			.arg(QFileInfo(filepath).fileName(), holder.user, holder.host));
+	return(false);
 }
 
 /**
@@ -773,6 +796,7 @@ QETResult ProjectView::doSave()
 		//and ask before replacing a .qetz already there
 	if (m_project->savesBesideOpenedFile()) {
 		const QString beside = m_project->besideContainerPath();
+		if (!refuseIfLockedByOther(beside)) return(QETResult());
 		const QString message = tr("This project was opened from %1. It is saved as %2, "
 								   "beside it, in the zipped project format; %1 stays as "
 								   "it is.\n\nTo write a file for a version of "
