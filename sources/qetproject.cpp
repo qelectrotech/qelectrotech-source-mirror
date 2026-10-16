@@ -48,6 +48,7 @@
 #include "qetinformation.h"
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
+#include "utils/previousversions.h"
 
 #include <QCryptographicHash>
 #include <QElapsedTimer>
@@ -514,6 +515,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if (!read)
 	{
 		qWarning().noquote() << "Unable to read" << fi.fileName() << ":" << read_error;
+		m_open_error = read_error;
 		m_container_pictures.clear();
 		m_folio_parts.clear();
 		if(opened_here) {
@@ -600,6 +602,16 @@ void QETProject::refresh()
 QETProject::ProjectState QETProject::state() const
 {
 	return(m_state);
+}
+
+/**
+	@brief QETProject::openError
+	@return why the file could not be read, when state() is
+	XmlParsingFailed: "picture ... is missing", say; empty otherwise
+*/
+QString QETProject::openError() const
+{
+	return m_open_error;
 }
 
 /**
@@ -2758,6 +2770,13 @@ QETResult QETProject::write()
 		if (!can_write)
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
+
+		//The file as it was goes among its previous versions first
+		//(Settings > General > Projects); a copy that fails does not stop
+		//the save
+	QString backup_error;
+	if (!PreviousVersions::keep(m_file_path, PreviousVersions::count(), &backup_error))
+		qWarning().noquote() << "Previous version of" << m_file_path << "not kept:" << backup_error;
 
 	QString error_message;
 	if (isContainerPath(m_file_path))

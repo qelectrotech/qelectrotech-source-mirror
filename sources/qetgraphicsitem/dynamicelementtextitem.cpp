@@ -1098,6 +1098,19 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 
 void DynamicElementTextItem::elementInfoChanged()
 {
+		//A folio report's label shows where its partner is
+		//(updateReportText()); the label in its information is only where
+		//the partner was when last saved, and changing any other
+		//information wrote that stale position back (F116)
+	if (m_text_from == ElementInfo && m_info_name == QLatin1String("label")
+			&& m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)
+			&& m_other_report) {
+		setupFormulaConnection();
+		updateReportText();
+		emit plainTextChanged();
+		return;
+	}
+
 	DiagramContext dc;
 	Element *element = elementUseForInfo();
 	if(element) {
