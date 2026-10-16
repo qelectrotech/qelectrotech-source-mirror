@@ -1,8 +1,8 @@
-# The `.qetz` project file, format 4
+# The `.qetz` project file, format 5
 
 A `.qetz` is a QElectroTech project saved as a zip archive: the same project
 a `.qet` holds, split into files, with the engineering data in an SQLite
-database. This document describes format 4. `tst_qetcontainer` checks that
+database. This document describes format 5. `tst_qetcontainer` checks that
 the schema below is the one QElectroTech writes.
 
 The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
@@ -27,6 +27,8 @@ The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
   | Wire | its ends, number, function, voltage, colour, section | its path, the number's text position and font |
   | Folio | title-block fields and custom variables | everything drawn on it |
   | Terminal strip | its terminals, their order and bridges | the strip drawn on a folio |
+  | Numbering | the schemes (formula, parts, counters) wires, symbols and folios are numbered by, and the counters of each symbol and wire | nothing |
+  | Cross references | the label formats and display settings of cross-reference and report symbols | the cross-reference drawn on a folio |
 
   Cables are kept in `project.xml` in this format.
 - **Nothing computed is kept.** What QElectroTech works out again when it
@@ -47,7 +49,7 @@ The code is `qetcontainer.cpp` (the zip and its files), `qetcontainerdb.cpp`
 | Entry | Content |
 |---|---|
 | `mimetype` | `application/x-qet-project+zip`, the first entry, stored uncompressed (files written before October 2026 say `application/x-qelectrotech-project+zip`; both are read) |
-| `manifest.xml` | `<qetz format="4" min-reader="4" writer="QElectroTech …"/>` |
+| `manifest.xml` | `<qetz format="5" min-reader="5" writer="QElectroTech …"/>` |
 | `project.xml` | the project document, each part replaced by `<qetz-part file="…"/>` |
 | `project.sqlite` | the engineering data (section 4) |
 | `folios/<uuid>.xml` | one `<diagram>` per folio, named by the folio's uuid (or its position when it has none) |
@@ -90,7 +92,8 @@ The database repeats the format in `meta` (key `format`) and in
 |---|---|---|
 | 2 | QElectroTech 0.200.1 development builds (#1462) | read: rows keyed by position (`f1`, `e1`, `c1`) where an item had no uuid of its own, every value as text |
 | 3 | #1473 | read: as format 4, but with keys and constraints on its tables, and the computed text left in the folio files |
-| 4 | this document | read and written |
+| 4 | #1472 | read: as format 5, but numbering, report and cross-reference settings and symbol counters are in `project.xml` and the folio files, with no marker where they would have been moved from; reading adds the format 5 tables, empty, and the document says the rest |
+| 5 | this document | read and written. `min-reader` is 5: a format 4 reader, given numbering schemes held in the database, would open the project with none and its next save would lose them |
 
 ## 4. The database
 
@@ -112,7 +115,7 @@ CREATE TABLE folio (uuid TEXT PRIMARY KEY, pos INTEGER NOT NULL UNIQUE,
 CREATE TABLE folio_property (folio_uuid TEXT NOT NULL REFERENCES folio, ord INTEGER NOT NULL,
     name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (folio_uuid, ord));
 CREATE TABLE element (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio,
-    "prefix" TEXT, "freezeLabel" INTEGER, info_attrs TEXT, links_attrs TEXT);
+    "prefix" TEXT, "freezeLabel" INTEGER, info_attrs TEXT, links_attrs TEXT, seq_attrs TEXT);
 CREATE TABLE element_info (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,
     name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (element_uuid, ord));
 CREATE TABLE link (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,
@@ -120,7 +123,7 @@ CREATE TABLE link (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NO
 CREATE TABLE conductor (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio,
     "element1" TEXT, "terminal1" TEXT, "element2" TEXT, "terminal2" TEXT, "num" TEXT,
     "formula" TEXT, "function" TEXT, "tension_protocol" TEXT, "conductor_color" TEXT,
-    "conductor_section" TEXT, "cable" TEXT, "bus" TEXT, "freezeLabel" INTEGER);
+    "conductor_section" TEXT, "cable" TEXT, "bus" TEXT, "freezeLabel" INTEGER, seq_attrs TEXT);
 CREATE TABLE terminal_strip (uuid TEXT PRIMARY KEY, ord INTEGER NOT NULL UNIQUE,
     installation TEXT, location TEXT, name TEXT, comment TEXT, description TEXT);
 CREATE TABLE strip_terminal (strip_uuid TEXT NOT NULL REFERENCES terminal_strip,
@@ -130,20 +133,36 @@ CREATE TABLE strip_bridge (uuid TEXT PRIMARY KEY, strip_uuid TEXT NOT NULL REFER
     ord INTEGER NOT NULL, color TEXT);
 CREATE TABLE strip_bridge_terminal (bridge_uuid TEXT NOT NULL REFERENCES strip_bridge,
     ord INTEGER NOT NULL, element_uuid TEXT, PRIMARY KEY (bridge_uuid, ord));
+CREATE TABLE numbering_set (kind TEXT PRIMARY KEY, freeze TEXT, current TEXT, auto_break TEXT, attrs TEXT);
+CREATE TABLE numbering (kind TEXT NOT NULL REFERENCES numbering_set, ord INTEGER NOT NULL,
+    title TEXT, formula TEXT, id TEXT, attrs TEXT, PRIMARY KEY (kind, ord));
+CREATE TABLE numbering_part (kind TEXT NOT NULL, scheme_ord INTEGER NOT NULL, ord INTEGER NOT NULL,
+    type TEXT, value TEXT, increase TEXT, attrs TEXT, PRIMARY KEY (kind, scheme_ord, ord));
+CREATE TABLE xref_setting (ord INTEGER PRIMARY KEY, type TEXT, master_label TEXT, slave_label TEXT,
+    displayhas TEXT, snapto TEXT, xrefpos TEXT, "offset" TEXT, slave_offset TEXT, showpowerctc TEXT,
+    powerprefix TEXT, delayprefix TEXT, switchprefix TEXT, showallconfiguredslaves TEXT,
+    showterminalname TEXT, stackoverlapping TEXT, attrs TEXT);
+CREATE TABLE sequential_number (kind TEXT NOT NULL, item_uuid TEXT NOT NULL, ord INTEGER NOT NULL,
+    name TEXT, value TEXT, attrs TEXT, PRIMARY KEY (kind, item_uuid, ord));
 ```
 
 ### 4.2 What each table holds
 
 | Table | One row per | Comes from |
 |---|---|---|
-| `meta` | setting of the file | `format`; `props_attrs` (attributes of the project's `<properties>`); `terminal_strips` = `1` when the strips are in the database |
+| `meta` | setting of the file | `format`; `props_attrs` (attributes of the project's `<properties>`); `terminal_strips` = `1` when the strips are in the database; `report_label` (the label of report symbols, `<newdiagrams><report label>`); `xrefs_attrs` (attributes of `<xrefs>`, whitespace between its entries) |
 | `project_property` | project property (project-wide variable) | `<project><properties><property>` |
 | `folio` | folio, in folio order (`pos` from 1) | the title-block attributes of `<diagram>` |
 | `folio_property` | custom title-block variable of a folio | `<diagram><properties><property>` |
-| `element` | symbol placed on a folio | `<element>`: its label prefix and frozen-label flag |
+| `element` | symbol placed on a folio | `<element>`: its label prefix and frozen-label flag; `seq_attrs`: attributes of its `<sequentialNumbers>` |
 | `element_info` | piece of symbol information, in order | `<elementInformations><elementInformation>` |
 | `link` | cross-reference link of a symbol, in order | `<links_uuids><link_uuid>` |
-| `conductor` | wire | `<conductor>`: its two ends (symbol uuid and terminal), number, formula, function, voltage/protocol, colour, section, cable, bus, frozen-label flag |
+| `conductor` | wire | `<conductor>`: its two ends (symbol uuid and terminal), number, formula, function, voltage/protocol, colour, section, cable, bus, frozen-label flag; `seq_attrs`: attributes of its `<sequentialNumbers>` |
+| `numbering_set` | numbering scheme list: `conductor`, `element` or `folio` | `<newdiagrams>` `<conductors_autonums>`, `<element_autonums>`, `<folio_autonums>`: `freeze` is the `freeze_new_conductors` / `freeze_new_elements` attribute (as text, `true` or `false`), `current` is `current_autonum`, `auto_break` is `auto_break_conductors` (wires only) |
+| `numbering` | numbering scheme, in order, per kind | `<conductor_autonum>`, `<element_autonum>`, `<folio_autonum>`: title, formula and `id` |
+| `numbering_part` | part of a scheme (`scheme_ord` is the scheme's `ord`), in order | `<part>`: type, `value` (the scheme's counter for a number part), `increase` |
+| `xref_setting` | cross-reference setting, in order | `<newdiagrams><xrefs><xref>`: one per kind of symbol (`type`), its master and slave label formats, display, prefixes, position |
+| `sequential_number` | counter of a symbol or a wire, in order (`kind` is `element` or `conductor`, `item_uuid` its key) | `<element>` or `<conductor>` `<sequentialNumbers>`: `name` is the counter's tag (`unit`, `wrap`, `unitFolio`, `ten`, `tenFolio`, `hundred`, `hundredFolio`, `alpha`), `value` its text (NULL when empty) |
 | `terminal_strip`, `strip_terminal`, `strip_bridge`, `strip_bridge_terminal` | terminal strip, terminal, bridge, bridged terminal | `<terminal_strips>` |
 
 A value is NULL when the XML has no such attribute.
@@ -175,9 +194,17 @@ It is written on the item as `qetz-key` (a symbol or wire) or `qetz-folio`
 ### 4.4 Markers
 
 A block moved into the database leaves `<qetz-db block="…"/>` where it was:
-`properties`, `elementInformations`, `links_uuids` or `terminal_strips`.
+`properties`, `elementInformations`, `links_uuids`, `sequentialNumbers`,
+`terminal_strips`, and, in `<newdiagrams>` of `project.xml`,
+`conductors_autonums`, `element_autonums`, `folio_autonums`, `xrefs` or
+`report`.
 Reading puts the block back where its marker is; a block without a marker
 was never moved.
+
+The numbering, cross-reference and report blocks, and a symbol's or wire's
+`<sequentialNumbers>`, are moved by the same rule. What stays in
+`<newdiagrams>` is the folio defaults (`border`, `inset`, `conductors`):
+how a new folio or wire looks, not engineering data.
 
 Only a block that can be rebuilt exactly is moved: entries of the expected
 tag with plain text values. Terminal strips are moved only if their rows

@@ -410,7 +410,7 @@ private slots:
 		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
 		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
 		QCOMPARE(query(database, "SELECT group_concat(name) FROM pragma_table_info('element')"),
-				 QStringLiteral("uuid,folio_uuid,prefix,freezeLabel,info_attrs,links_attrs"));
+				 QStringLiteral("uuid,folio_uuid,prefix,freezeLabel,info_attrs,links_attrs,seq_attrs"));
 		QCOMPARE(query(database, "SELECT count(*) FROM pragma_table_info('folio') WHERE name LIKE '%_at'"),
 				 QStringLiteral("0"));
 		QCOMPARE(query(database, "SELECT count(*) FROM meta WHERE key = 'props_at'"), QStringLiteral("0"));
@@ -432,7 +432,13 @@ private slots:
 								"SELECT count(*) FROM element_info WHERE attrs IS NOT NULL",
 								"SELECT count(*) FROM link WHERE attrs IS NOT NULL",
 								"SELECT count(*) FROM folio WHERE props_attrs IS NOT NULL",
-								"SELECT count(*) FROM element WHERE info_attrs IS NOT NULL OR links_attrs IS NOT NULL"})
+								"SELECT count(*) FROM element WHERE info_attrs IS NOT NULL OR links_attrs IS NOT NULL OR seq_attrs IS NOT NULL",
+								"SELECT count(*) FROM numbering_set WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM numbering WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM numbering_part WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM xref_setting WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM sequential_number WHERE attrs IS NOT NULL",
+								"SELECT count(*) FROM conductor WHERE seq_attrs IS NOT NULL"})
 			QVERIFY2(query(database, sql) == QLatin1String("0"), sql);
 	}
 
@@ -562,7 +568,7 @@ private slots:
 		QTest::addColumn<QString>("said");
 		QTest::newRow("symbol row of no symbol")
 				<< QByteArray("INSERT INTO element SELECT 'x', folio_uuid, prefix, freezeLabel, info_attrs,"
-							  " links_attrs FROM element LIMIT 1")
+							  " links_attrs, seq_attrs FROM element LIMIT 1")
 				<< QStringLiteral("symbol rows");
 		QTest::newRow("symbol row twice")
 				<< QByteArray("INSERT INTO element SELECT * FROM element LIMIT 1")
@@ -570,7 +576,7 @@ private slots:
 		QTest::newRow("wire row of no wire")
 				<< QByteArray("INSERT INTO conductor SELECT 'x', folio_uuid, element1, terminal1, element2, terminal2,"
 							  " num, formula, function, tension_protocol, conductor_color, conductor_section, cable,"
-							  " bus, freezeLabel FROM conductor LIMIT 1")
+							  " bus, freezeLabel, seq_attrs FROM conductor LIMIT 1")
 				<< QStringLiteral("wire rows");
 		QTest::newRow("symbol on another folio")
 				<< QByteArray("UPDATE element SET folio_uuid = (SELECT uuid FROM folio WHERE pos = 2)"
@@ -756,6 +762,134 @@ private slots:
 		QVERIFY2(!resaved.isEmpty(), qPrintable(error));
 		const QString d = backDifference(project, resaved);
 		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// Format 5: the numbering schemes and their counters, the report label,
+	// the cross-reference settings and each symbol's counters are rows of
+	// project.sqlite, and in neither project.xml nor a folio file
+	void settingsInDatabase()
+	{
+		QDomDocument original;
+		const QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		QVERIFY(entry(entries, QStringLiteral("manifest.xml")).contains("format=\"5\" min-reader=\"5\""));
+		for (const QetZip::Entry &e : entries) {
+			if (!e.name.startsWith(QStringLiteral("folios/")) && e.name != QLatin1String("project.xml")) continue;
+			for (const char *block : {"<conductors_autonums", "<element_autonums", "<folio_autonums",
+									  "<conductor_autonum", "<element_autonum", "<folio_autonum", "<part ",
+									  "<xrefs", "<xref ", "<report ", "<sequentialNumbers", "<unit>"})
+				QVERIFY2(!e.data.contains(block), qPrintable(e.name + QLatin1Char(' ') + QLatin1String(block)));
+			QVERIFY2(!e.data.contains("<newdiagrams") || e.name == QLatin1String("project.xml"), qPrintable(e.name));
+		}
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+
+		const QDomElement defaults = original.documentElement().firstChildElement(QStringLiteral("newdiagrams"));
+		auto count = [](const QDomElement &parent, const char *tag) {
+			return QString::number(parent.elementsByTagName(QString::fromLatin1(tag)).size());
+		};
+		QCOMPARE(query(database, "SELECT count(*) FROM numbering_set"), QStringLiteral("3"));
+		QCOMPARE(query(database, "SELECT count(*) FROM numbering"),
+				 QString::number(count(defaults, "conductor_autonum").toInt() + count(defaults, "element_autonum").toInt()
+								 + count(defaults, "folio_autonum").toInt()));
+		QCOMPARE(query(database, "SELECT count(*) FROM numbering_part"), count(defaults, "part"));
+		QCOMPARE(query(database, "SELECT count(*) FROM xref_setting"), count(defaults, "xref"));
+		int counters = 0;
+		const QDomNodeList sequential = original.elementsByTagName(QStringLiteral("sequentialNumbers"));
+		for (int i = 0 ; i < sequential.size() ; ++i)
+			for (QDomElement c = sequential.at(i).firstChildElement() ; !c.isNull() ; c = c.nextSiblingElement()) ++counters;
+		QVERIFY(counters > 0);
+		QCOMPARE(query(database, "SELECT count(*) FROM sequential_number"), QString::number(counters));
+		QVERIFY(query(database, "SELECT count(*) FROM sequential_number WHERE kind = 'conductor'").toInt() > 0);
+		QVERIFY(query(database, "SELECT count(*) FROM sequential_number WHERE kind = 'element'").toInt() > 0);
+			//Values, not just counts
+		QCOMPARE(query(database, "SELECT value FROM numbering_part WHERE kind = 'conductor' AND type = 'ten'"),
+				 QStringLiteral("38"));
+		QCOMPARE(query(database, "SELECT formula FROM numbering WHERE kind = 'element' AND title = 'XV'"),
+				 QStringLiteral("%prefix2:%sequ_1"));
+		QCOMPARE(query(database, "SELECT current FROM numbering_set WHERE kind = 'conductor'"), QStringLiteral("Wire"));
+		QCOMPARE(query(database, "SELECT freeze FROM numbering_set WHERE kind = 'element'"), QStringLiteral("false"));
+		QCOMPARE(query(database, "SELECT value FROM meta WHERE key = 'report_label'"), QStringLiteral("%f-%l%c"));
+		QCOMPARE(query(database, "SELECT master_label FROM xref_setting WHERE type = 'coil'"), QStringLiteral("%f-%l%c"));
+			//The folio defaults stay: they are how a new folio looks
+		QVERIFY(entry(entries, QStringLiteral("project.xml")).contains("<border "));
+		QVERIFY(entry(entries, QStringLiteral("project.xml")).contains("<inset "));
+		const QString d = backDifference(original, entries);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// A settings block that rows could not rebuild exactly stays in the
+	// document, the others still move
+	void oddSettingsKept()
+	{
+		QDomDocument original;
+		QVERIFY(original.setContent(read(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"))));
+		QDomElement defaults = original.documentElement().firstChildElement(QStringLiteral("newdiagrams"));
+			//A part with a child, a counter with a child
+		defaults.firstChildElement(QStringLiteral("conductors_autonums")).firstChildElement(QStringLiteral("conductor_autonum"))
+				.firstChildElement(QStringLiteral("part")).appendChild(original.createElement(QStringLiteral("odd")));
+		bool odd_counter = false;
+		const QDomNodeList sequential = original.elementsByTagName(QStringLiteral("sequentialNumbers"));
+		for (int i = 0 ; i < sequential.size() && !odd_counter ; ++i) {
+			QDomElement counter = sequential.at(i).firstChildElement();
+			if (counter.isNull()) continue;
+			counter.appendChild(original.createElement(QStringLiteral("odd")));
+			odd_counter = true;
+		}
+		QVERIFY(odd_counter);
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		const QByteArray xml = entry(entries, QStringLiteral("project.xml"));
+		QVERIFY(xml.contains("<conductors_autonums"));
+		QVERIFY(!xml.contains("<element_autonums"));
+		QVERIFY(folioFiles(entries).contains("<sequentialNumbers"));
+		const QByteArray database = entry(entries, QStringLiteral("project.sqlite"));
+		QCOMPARE(query(database, "SELECT count(*) FROM numbering_set"), QStringLiteral("2"));
+		const QString d = backDifference(original, entries);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+	}
+
+	// A format 4 file (industrial.qet saved as .qetz by the program before
+	// format 5) still opens: its settings are in project.xml and its folio
+	// files, so nothing is missing, and saved again as format 5 it holds
+	// what the .qet gives
+	void format4Read()
+	{
+		QList<QetZip::Entry> entries;
+		QString error;
+		QVERIFY2(QetZip::fromBytes(read(QStringLiteral(QET_FIXTURES_DIR "/qetz_format4.qetz")), &entries, &error),
+				 qPrintable(error));
+		QVERIFY(entry(entries, QStringLiteral("manifest.xml")).contains("format=\"4\""));
+		QCOMPARE(query(entry(entries, QStringLiteral("project.sqlite")),
+					   "SELECT count(*) FROM sqlite_master WHERE name = 'numbering'"), QStringLiteral("0"));
+		QDomDocument project;
+		QVERIFY2(QetContainer::join(entries, &project, &error), qPrintable(error));
+		const QString text = project.toString();
+		QVERIFY(text.contains(QStringLiteral("<conductor_autonum ")));
+		QVERIFY(text.contains(QStringLiteral("<xref ")));
+		QVERIFY(text.contains(QStringLiteral("<sequentialNumbers>")));
+		QVERIFY(!text.contains(QStringLiteral("qetz-")));
+
+		const QList<QetZip::Entry> resaved = QetContainer::split(project, QString(), &error);
+		QVERIFY2(!resaved.isEmpty(), qPrintable(error));
+		QVERIFY(entry(resaved, QStringLiteral("manifest.xml")).contains("format=\"5\" min-reader=\"5\""));
+		const QString d = backDifference(project, resaved);
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+
+		QDomDocument original;
+		const QList<QetZip::Entry> from_qet = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		const QByteArray a = entry(resaved, QStringLiteral("project.sqlite")), b = entry(from_qet, QStringLiteral("project.sqlite"));
+		for (const char *sql : {
+				 "SELECT group_concat(kind || title || formula) FROM (SELECT * FROM numbering ORDER BY kind, title)",
+				 "SELECT group_concat(kind || title || ord || type || value || increase) FROM (SELECT n.kind, n.title, p.ord, p.type, p.value, p.increase FROM numbering_part p JOIN numbering n ON n.kind = p.kind AND n.ord = p.scheme_ord ORDER BY n.kind, n.title, p.ord)",
+				 "SELECT group_concat(kind || coalesce(freeze, '') || coalesce(current, '')) FROM (SELECT * FROM numbering_set ORDER BY kind)",
+				 "SELECT group_concat(type || master_label || slave_label || offset) FROM (SELECT * FROM xref_setting WHERE type IN ('coil', '', 'protection', 'commutator') ORDER BY type)",
+				 "SELECT value FROM meta WHERE key = 'report_label'",
+				 "SELECT count(*) FROM sequential_number WHERE value IS NOT NULL",
+				 "SELECT group_concat(kind || name || coalesce(value, '')) FROM (SELECT * FROM sequential_number WHERE value IS NOT NULL ORDER BY kind, name, value)"}) {
+			QVERIFY2(!query(a, sql).isEmpty(), sql);
+			QCOMPARE(query(a, sql), query(b, sql));
+		}
 	}
 
 	void notAProjectRefused()

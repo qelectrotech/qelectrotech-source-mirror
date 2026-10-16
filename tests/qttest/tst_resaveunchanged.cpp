@@ -312,8 +312,9 @@ private slots:
 		QVERIFY2(read(zipped).size() < read(straight).size() / 2, "the .qetz is not smaller");
 		QCOMPARE(databaseTables(zipped), QStringList({
 			"conductor", "element", "element_info", "folio", "folio_property", "link", "meta",
-			"project_property", "strip_bridge", "strip_bridge_terminal", "strip_terminal",
-			"terminal_strip"}));
+			"numbering", "numbering_part", "numbering_set", "project_property", "sequential_number",
+			"strip_bridge", "strip_bridge_terminal", "strip_terminal", "terminal_strip",
+			"xref_setting"}));
 		const QString back = resave(zipped);
 		QVERIFY2(!back.isEmpty(), "opening the .qetz failed");
 

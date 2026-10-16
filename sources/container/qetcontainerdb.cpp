@@ -116,6 +116,22 @@ QString attributeText(const QString &name, const QVariant &value)
 	return value.toString();
 }
 
+	//Format 5: the numbering schemes and counters, the cross-reference
+	//settings, the symbols' counters. Format 4 files lack them
+	//(upgrade4To5())
+const QString NumberingSchema = QStringLiteral(
+	"CREATE TABLE numbering_set (kind TEXT PRIMARY KEY, freeze TEXT, current TEXT, auto_break TEXT, attrs TEXT);"
+	"CREATE TABLE numbering (kind TEXT NOT NULL REFERENCES numbering_set, ord INTEGER NOT NULL,"
+	" title TEXT, formula TEXT, id TEXT, attrs TEXT, PRIMARY KEY (kind, ord));"
+	"CREATE TABLE numbering_part (kind TEXT NOT NULL, scheme_ord INTEGER NOT NULL, ord INTEGER NOT NULL,"
+	" type TEXT, value TEXT, increase TEXT, attrs TEXT, PRIMARY KEY (kind, scheme_ord, ord));"
+	"CREATE TABLE xref_setting (ord INTEGER PRIMARY KEY, type TEXT, master_label TEXT, slave_label TEXT,"
+	" displayhas TEXT, snapto TEXT, xrefpos TEXT, \"offset\" TEXT, slave_offset TEXT, showpowerctc TEXT,"
+	" powerprefix TEXT, delayprefix TEXT, switchprefix TEXT, showallconfiguredslaves TEXT,"
+	" showterminalname TEXT, stackoverlapping TEXT, attrs TEXT);"
+	"CREATE TABLE sequential_number (kind TEXT NOT NULL, item_uuid TEXT NOT NULL, ord INTEGER NOT NULL,"
+	" name TEXT, value TEXT, attrs TEXT, PRIMARY KEY (kind, item_uuid, ord));");
+
 QString schema()
 {
 	return QStringLiteral(
@@ -126,12 +142,13 @@ QString schema()
 		"CREATE TABLE folio_property (folio_uuid TEXT NOT NULL REFERENCES folio, ord INTEGER NOT NULL,"
 		" name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (folio_uuid, ord));"
 		"CREATE TABLE element (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio, %2,"
-		" info_attrs TEXT, links_attrs TEXT);"
+		" info_attrs TEXT, links_attrs TEXT, seq_attrs TEXT);"
 		"CREATE TABLE element_info (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,"
 		" name TEXT, value TEXT, show INTEGER, attrs TEXT, PRIMARY KEY (element_uuid, ord));"
 		"CREATE TABLE link (element_uuid TEXT NOT NULL REFERENCES element, ord INTEGER NOT NULL,"
 		" linked_uuid TEXT, attrs TEXT, PRIMARY KEY (element_uuid, ord));"
-		"CREATE TABLE conductor (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio, %3);"
+		"CREATE TABLE conductor (uuid TEXT PRIMARY KEY, folio_uuid TEXT NOT NULL REFERENCES folio, %3,"
+		" seq_attrs TEXT);"
 		"CREATE TABLE terminal_strip (uuid TEXT PRIMARY KEY, ord INTEGER NOT NULL UNIQUE,"
 		" installation TEXT, location TEXT, name TEXT, comment TEXT, description TEXT);"
 		"CREATE TABLE strip_terminal (strip_uuid TEXT NOT NULL REFERENCES terminal_strip,"
@@ -141,10 +158,14 @@ QString schema()
 		" ord INTEGER NOT NULL, color TEXT);"
 		"CREATE TABLE strip_bridge_terminal (bridge_uuid TEXT NOT NULL REFERENCES strip_bridge,"
 		" ord INTEGER NOT NULL, element_uuid TEXT, PRIMARY KEY (bridge_uuid, ord));")
-			.arg(columns(FolioData), columns(ElementData), columns(ConductorData));
+			.arg(columns(FolioData), columns(ElementData), columns(ConductorData))
+			+ NumberingSchema;
 }
 
 	//The tables of a document's engineering data
+const QStringList NumberingTables = {
+	QStringLiteral("numbering_part"), QStringLiteral("numbering"), QStringLiteral("numbering_set"),
+	QStringLiteral("xref_setting"), QStringLiteral("sequential_number")};
 const QStringList DocTables = {
 	QStringLiteral("strip_bridge_terminal"), QStringLiteral("strip_bridge"),
 	QStringLiteral("strip_terminal"), QStringLiteral("terminal_strip"),
@@ -249,13 +270,13 @@ void setAttributesJson(QDomElement e, const QVariant &json)
 	//A list block's attributes, and the whitespace between its entries if
 	//it has any (a document read from a file does; a save has none):
 	//"qetz-ws" holds, for each entry and after the last, the text before it.
-QVariant blockJson(const QDomElement &block)
+QVariant blockJson(const QDomElement &block, const QStringList &skip = QStringList())
 {
 	QJsonObject o;
 	const QDomNamedNodeMap map = block.attributes();
 	for (int i = 0 ; i < map.count() ; ++i) {
 		const QDomAttr a = map.item(i).toAttr();
-		o.insert(a.name(), a.value());
+		if (!skip.contains(a.name())) o.insert(a.name(), a.value());
 	}
 	QJsonArray ws;
 	QString pending;
@@ -590,14 +611,18 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 		//A file is untrusted: nothing in its schema may run, and every name
 		//read must be a plain table.
 	db.exec(QStringLiteral("PRAGMA trusted_schema = OFF"));
-	for (const QString &table : DocTables) {
-		Statement kind(db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
-		kind.bind({table});
-		if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
-			setError(error, QStringLiteral("the project database has no table %1").arg(table));
-			return false;
+	auto checkTables = [&db, error](const QStringList &tables) {
+		for (const QString &table : tables) {
+			Statement kind(db, QStringLiteral("SELECT type FROM sqlite_master WHERE name = ?"));
+			kind.bind({table});
+			if (!kind.next() || kind.value(0).toString() != QLatin1String("table")) {
+				setError(error, QStringLiteral("the project database has no table %1").arg(table));
+				return false;
+			}
 		}
-	}
+		return true;
+	};
+	if (!checkTables(DocTables)) return false;
 	{
 		Statement format(db, QStringLiteral("SELECT value FROM meta WHERE key = 'format'"));
 		const QString text = format.next() ? format.value(0).toString() : QString();
@@ -610,7 +635,8 @@ bool openDatabase(Database &db, const QByteArray &database, QString *error)
 			return false;
 		}
 	}
-	return true;
+		//Format 5's tables: an older file has none, upgrade4To5() adds them
+	return db.m_format < 5 || checkTables(NumberingTables);
 }
 
 QDomElement entryElement(QDomDocument &document, const QVariant &name_attr, const QString &name,
@@ -640,6 +666,169 @@ QString keyOf(QDomElement e, const QString &attribute)
 QString quoted(const QStringList &names)
 {
 	return QStringLiteral("\"") + names.join(QStringLiteral("\", \"")) + QStringLiteral("\"");
+}
+
+
+	//Format 5: the settings blocks of <newdiagrams> and the counters of a
+	//symbol. Each is moved only if its rows rebuild it exactly (sameTree()),
+	//else it stays in the document as it was.
+
+	//The value of attribute @p name of @p e, null if it has none
+QVariant attributeOrNull(const QDomElement &e, const QString &name)
+{
+	return e.hasAttribute(name) ? QVariant(e.attribute(name)) : QVariant();
+}
+
+void setIfNotNull(QDomElement e, const QString &name, const QVariant &value)
+{
+	if (!value.isNull()) e.setAttribute(name, value.toString());
+}
+
+	//A block of numbering schemes: wires, symbols, folios
+struct NumberingKind
+{
+	QString kind, block, scheme, freeze, auto_break;
+};
+const QList<NumberingKind> NumberingKinds = {
+	{QStringLiteral("conductor"), QStringLiteral("conductors_autonums"),
+	 QStringLiteral("conductor_autonum"), QStringLiteral("freeze_new_conductors"),
+	 QStringLiteral("auto_break_conductors")},
+	{QStringLiteral("element"), QStringLiteral("element_autonums"),
+	 QStringLiteral("element_autonum"), QStringLiteral("freeze_new_elements"), QString()},
+	{QStringLiteral("folio"), QStringLiteral("folio_autonums"),
+	 QStringLiteral("folio_autonum"), QString(), QString()}};
+const QString CurrentAutonum = QStringLiteral("current_autonum");
+
+	//The rows of one numbering block, as the columns after the key:
+	//set {freeze, current, auto_break, attrs}, schemes {title, formula, id, attrs} in order,
+	//parts {scheme index, type, value, increase, attrs} in order
+struct NumberingRows
+{
+	QVariantList set;
+	QList<QVariantList> schemes, parts;
+};
+
+QDomElement numberingXml(QDomDocument &document, const NumberingKind &k, const NumberingRows &rows)
+{
+	QDomElement block = document.createElement(k.block);
+	setAttributesJson(block, rows.set.at(3));
+	if (!k.freeze.isEmpty()) setIfNotNull(block, k.freeze, rows.set.at(0));
+	setIfNotNull(block, CurrentAutonum, rows.set.at(1));
+	if (!k.auto_break.isEmpty()) setIfNotNull(block, k.auto_break, rows.set.at(2));
+	for (int i = 0 ; i < rows.schemes.size() ; ++i) {
+		const QVariantList &row = rows.schemes.at(i);
+		QDomElement scheme = block.appendChild(document.createElement(k.scheme)).toElement();
+		setIfNotNull(scheme, QStringLiteral("title"), row.at(0));
+		setIfNotNull(scheme, QStringLiteral("formula"), row.at(1));
+		setIfNotNull(scheme, QStringLiteral("id"), row.at(2));
+		setAttributesJson(scheme, row.at(3));
+		for (const QVariantList &part : rows.parts) {
+			if (part.at(0).toInt() != i) continue;
+			QDomElement e = scheme.appendChild(document.createElement(QStringLiteral("part"))).toElement();
+			setIfNotNull(e, QStringLiteral("type"), part.at(1));
+			setIfNotNull(e, QStringLiteral("value"), part.at(2));
+			setIfNotNull(e, QStringLiteral("increase"), part.at(3));
+			setAttributesJson(e, part.at(4));
+		}
+		restoreWhitespace(scheme, row.at(3));
+	}
+	restoreWhitespace(block, rows.set.at(3));
+	return block;
+}
+
+	//The rows of @p block, if rebuilding it from them gives @p block back
+bool numberingRows(const QDomElement &block, const NumberingKind &k, NumberingRows *rows)
+{
+	QStringList block_columns{CurrentAutonum};
+	if (!k.freeze.isEmpty()) block_columns << k.freeze;
+	if (!k.auto_break.isEmpty()) block_columns << k.auto_break;
+	rows->set = {k.freeze.isEmpty() ? QVariant() : attributeOrNull(block, k.freeze),
+				 attributeOrNull(block, CurrentAutonum),
+				 k.auto_break.isEmpty() ? QVariant() : attributeOrNull(block, k.auto_break),
+				 blockJson(block, block_columns)};
+	const QStringList scheme_columns{QStringLiteral("title"), QStringLiteral("formula"), QStringLiteral("id")};
+	const QStringList part_columns{QStringLiteral("type"), QStringLiteral("value"), QStringLiteral("increase")};
+	int index = 0;
+	for (const QDomElement &scheme : children(block, k.scheme)) {
+		rows->schemes << QVariantList{attributeOrNull(scheme, scheme_columns.at(0)),
+									  attributeOrNull(scheme, scheme_columns.at(1)),
+									  attributeOrNull(scheme, scheme_columns.at(2)),
+									  blockJson(scheme, scheme_columns)};
+		for (const QDomElement &part : children(scheme, QStringLiteral("part"))) {
+			if (part.hasChildNodes()) return false;
+			rows->parts << QVariantList{index, attributeOrNull(part, part_columns.at(0)),
+										attributeOrNull(part, part_columns.at(1)),
+										attributeOrNull(part, part_columns.at(2)),
+										attributesJson(part, part_columns, QStringLiteral("part"))};
+		}
+		++index;
+	}
+	QDomDocument scratch;
+	return sameTree(block, numberingXml(scratch, k, *rows));
+}
+
+	//The cross-reference settings: one <xref> per kind of symbol
+const QStringList XrefData = {
+	QStringLiteral("type"), QStringLiteral("master_label"), QStringLiteral("slave_label"),
+	QStringLiteral("displayhas"), QStringLiteral("snapto"), QStringLiteral("xrefpos"),
+	QStringLiteral("offset"), QStringLiteral("slave_offset"), QStringLiteral("showpowerctc"),
+	QStringLiteral("powerprefix"), QStringLiteral("delayprefix"), QStringLiteral("switchprefix"),
+	QStringLiteral("showallconfiguredslaves"), QStringLiteral("showterminalname"),
+	QStringLiteral("stackoverlapping")};
+
+	//@p rows: the XrefData values then attrs, in order; @p attrs: the block's
+QDomElement xrefsXml(QDomDocument &document, const QVariant &attrs, const QList<QVariantList> &rows)
+{
+	QDomElement block = document.createElement(QStringLiteral("xrefs"));
+	setAttributesJson(block, attrs);
+	for (const QVariantList &row : rows) {
+		QDomElement xref = block.appendChild(document.createElement(QStringLiteral("xref"))).toElement();
+		for (int i = 0 ; i < XrefData.size() ; ++i) setIfNotNull(xref, XrefData.at(i), row.at(i));
+		setAttributesJson(xref, row.at(XrefData.size()));
+	}
+	restoreWhitespace(block, attrs);
+	return block;
+}
+
+bool xrefRows(const QDomElement &block, QVariant *attrs, QList<QVariantList> *rows)
+{
+	*attrs = blockJson(block);
+	for (const QDomElement &xref : children(block, QStringLiteral("xref"))) {
+		if (xref.hasChildNodes()) return false;
+		QVariantList row;
+		for (const QString &n : XrefData) row << attributeOrNull(xref, n);
+		row << attributesJson(xref, XrefData, QStringLiteral("xref"));
+		*rows << row;
+	}
+	QDomDocument scratch;
+	return sameTree(block, xrefsXml(scratch, *attrs, *rows));
+}
+
+	//The counters of a symbol or a wire, <sequentialNumbers>: one entry per counter,
+	//named by its tag. @p entries: {name, value, attrs}; @p attrs: the block's
+QDomElement sequentialXml(QDomDocument &document, const QVariant &attrs, const QList<QVariantList> &entries)
+{
+	QDomElement block = document.createElement(QStringLiteral("sequentialNumbers"));
+	setAttributesJson(block, attrs);
+	for (const QVariantList &entry : entries) {
+		QDomElement e = block.appendChild(document.createElement(entry.at(0).toString())).toElement();
+		setAttributesJson(e, entry.at(2));
+		if (!entry.at(1).isNull()) e.appendChild(document.createTextNode(entry.at(1).toString()));
+	}
+	restoreWhitespace(block, attrs);
+	return block;
+}
+
+bool sequentialRows(const QDomElement &block, QVariant *attrs, QList<QVariantList> *entries)
+{
+	*attrs = blockJson(block);
+	for (QDomElement e = block.firstChildElement() ; !e.isNull() ; e = e.nextSiblingElement()) {
+		QVariant value;
+		if (!simpleValue(e, &value)) return false;
+		*entries << QVariantList{e.tagName(), value, attributesJson(e, QStringList(), e.tagName())};
+	}
+	QDomDocument scratch;
+	return sameTree(block, sequentialXml(scratch, *attrs, *entries));
 }
 
 	//Format 2 (QElectroTech 0.200.1 development builds) to 3. Format 2
@@ -700,6 +889,21 @@ bool upgrade2To3(Database &db, QDomElement project, QString *error)
 	return ok;
 }
 
+	//Format 4 to 5. Format 5 moves numbering, cross-reference settings and
+	//symbol counters out of the documents into tables format 4 lacks. A
+	//format 4 file still holds them in project.xml and its folio files,
+	//with no marker where they would have been moved from, so reading it
+	//needs only the tables empty: the document already says everything.
+bool upgrade4To5(Database &db, QDomElement, QString *error)
+{
+	const bool ok = db.exec(QStringLiteral("BEGIN"))
+			&& db.exec(QStringLiteral("ALTER TABLE element ADD COLUMN seq_attrs TEXT"))
+			&& db.exec(QStringLiteral("ALTER TABLE conductor ADD COLUMN seq_attrs TEXT"))
+			&& db.exec(NumberingSchema) && db.exec(QStringLiteral("COMMIT"));
+	if (!ok) setError(error, QStringLiteral("the project database cannot be read: %1").arg(db.error()));
+	return ok;
+}
+
 	//@p db, opened by openDatabase(), brought to this format one step at a
 	//time and made ready to read: what reads it knows only this format's
 	//tables. @p project: the document of the folio files it came with.
@@ -710,7 +914,8 @@ bool readyToRead(Database &db, QDomElement project, QString *error)
 			//Format 4 leaves out of the folios what QElectroTech works out
 			//again, and writes no keys or indexes: nothing to change to
 			//read it
-		{3, [](Database &, QDomElement, QString *) { return true; }}};
+		{3, [](Database &, QDomElement, QString *) { return true; }},
+		{4, upgrade4To5}};
 	for (const auto &s : steps) {
 		if (db.m_format != s.from) continue;
 		if (!s.step(db, project, error)) return false;
@@ -721,6 +926,7 @@ bool readyToRead(Database &db, QDomElement project, QString *error)
 		QStringLiteral("folio(uuid)"), QStringLiteral("folio_property(folio_uuid)"),
 		QStringLiteral("element(uuid)"), QStringLiteral("element(folio_uuid)"),
 		QStringLiteral("element_info(element_uuid)"), QStringLiteral("link(element_uuid)"),
+		QStringLiteral("sequential_number(item_uuid)"),
 		QStringLiteral("conductor(uuid)"), QStringLiteral("meta(key)")};
 	for (const QString &on : indexes) {
 		const QString name = QStringLiteral("qetz_read_") + QString(on).replace(QLatin1Char('('), QLatin1Char('_')).remove(QLatin1Char(')'));
@@ -739,6 +945,8 @@ bool readyToRead(Database &db, QDomElement project, QString *error)
 struct UsedRows
 {
 	QSet<QString> folios, elements, conductors;
+		//Format 5: rows put back (restoreSettings(), restoreDiagram())
+	int numbering_sets = 0, schemes = 0, parts = 0, xrefs = 0, counters = 0;
 	bool use(QSet<QString> &used, const QString &key, const QString &what, QString *error) {
 		if (used.contains(key)) {
 			setError(error, QStringLiteral("%1 %2 is in the folios twice").arg(what, key));
@@ -788,16 +996,16 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 			const QString key = keyOf(e, KeyAttribute);
 			if (key.isEmpty()) continue;
 			if (!used.use(used.elements, key, QStringLiteral("symbol"), error)) return false;
-			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, folio_uuid FROM element WHERE uuid = ?")
+			Statement s(db, QStringLiteral("SELECT %1, info_attrs, links_attrs, seq_attrs, folio_uuid FROM element WHERE uuid = ?")
 						.arg(quoted(ElementData)));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("symbol %1 is not in the database").arg(key)); return false; }
-			if (s.value(ElementData.size() + 2).toString() != id) {
+if (s.value(ElementData.size() + 3).toString() != id) {
 				setError(error, QStringLiteral("symbol %1 is on folio %2, the database says another").arg(key, id));
 				return false;
 			}
 			QVariantList v;
-			for (int i = 0 ; i < ElementData.size() + 2 ; ++i) v << s.value(i);
+for (int i = 0 ; i < ElementData.size() + 3 ; ++i) v << s.value(i);
 			put(e, ElementData, v, 0);
 			const int n = ElementData.size();
 			QDomElement info, links;
@@ -821,8 +1029,19 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 											QStringLiteral("link_uuid")));
 				restoreWhitespace(links, v.at(n + 1));
 			}
-			if ((!info.isNull() && !replaceMarker(e, info))
-				|| (!links.isNull() && !replaceMarker(e, links))) {
+				QDomElement sequential;
+				if (hasMarker(e, QStringLiteral("sequentialNumbers"))) {
+					QList<QVariantList> rows;
+					Statement q(db, QStringLiteral("SELECT name, value, attrs FROM sequential_number "
+												   "WHERE kind = 'element' AND item_uuid = ? ORDER BY ord"));
+					q.bind({key});
+					while (q.next()) rows << QVariantList{q.value(0), q.value(1), q.value(2)};
+					used.counters += int(rows.size());
+					sequential = sequentialXml(document, v.at(n + 2), rows);
+				}
+				if ((!info.isNull() && !replaceMarker(e, info))
+					|| (!links.isNull() && !replaceMarker(e, links))
+					|| (!sequential.isNull() && !replaceMarker(e, sequential))) {
 				setError(error, QStringLiteral("symbol %1's information has no place").arg(key));
 				return false;
 			}
@@ -833,7 +1052,7 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 			const QString key = keyOf(c, KeyAttribute);
 			if (key.isEmpty()) continue;
 			if (!used.use(used.conductors, key, QStringLiteral("wire"), error)) return false;
-			Statement s(db, QStringLiteral("SELECT %1, folio_uuid FROM conductor WHERE uuid = ?")
+			Statement s(db, QStringLiteral("SELECT %1, folio_uuid, seq_attrs FROM conductor WHERE uuid = ?")
 						.arg(quoted(ConductorData)));
 			s.bind({key});
 			if (!s.next()) { setError(error, QStringLiteral("wire %1 is not in the database").arg(key)); return false; }
@@ -844,6 +1063,74 @@ bool restoreDiagram(Database &db, QDomElement d, UsedRows &used, QString *error)
 			QVariantList v;
 			for (int i = 0 ; i < ConductorData.size() ; ++i) v << s.value(i);
 			put(c, ConductorData, v, 0);
+			if (hasMarker(c, QStringLiteral("sequentialNumbers"))) {
+				QList<QVariantList> rows;
+				Statement q(db, QStringLiteral("SELECT name, value, attrs FROM sequential_number "
+											   "WHERE kind = 'conductor' AND item_uuid = ? ORDER BY ord"));
+				q.bind({key});
+				while (q.next()) rows << QVariantList{q.value(0), q.value(1), q.value(2)};
+				used.counters += int(rows.size());
+				if (!replaceMarker(c, sequentialXml(document, s.value(ConductorData.size() + 1), rows))) {
+					setError(error, QStringLiteral("wire %1's counters have no place").arg(key));
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+
+	//The settings of <newdiagrams> back where their markers are
+bool restoreSettings(Database &db, QDomElement newdiagrams, const QHash<QString, QVariant> &meta,
+					 UsedRows &used, QString *error)
+{
+	QDomDocument document = newdiagrams.ownerDocument();
+	for (const NumberingKind &k : NumberingKinds) {
+		if (!hasMarker(newdiagrams, k.block)) continue;
+		NumberingRows rows;
+		Statement set(db, QStringLiteral("SELECT freeze, current, auto_break, attrs FROM numbering_set WHERE kind = ?"));
+		set.bind({k.kind});
+		if (!set.next()) {
+			setError(error, QStringLiteral("the %1 numbering is not in the database").arg(k.kind));
+			return false;
+		}
+		rows.set = {set.value(0), set.value(1), set.value(2), set.value(3)};
+		Statement schemes(db, QStringLiteral("SELECT title, formula, id, attrs FROM numbering WHERE kind = ? ORDER BY ord"));
+		schemes.bind({k.kind});
+		while (schemes.next()) rows.schemes << QVariantList{schemes.value(0), schemes.value(1), schemes.value(2), schemes.value(3)};
+		Statement parts(db, QStringLiteral("SELECT scheme_ord, type, value, increase, attrs FROM numbering_part "
+										   "WHERE kind = ? ORDER BY scheme_ord, ord"));
+		parts.bind({k.kind});
+		while (parts.next())
+			rows.parts << QVariantList{parts.value(0), parts.value(1), parts.value(2), parts.value(3), parts.value(4)};
+		++used.numbering_sets;
+		used.schemes += int(rows.schemes.size());
+		used.parts += int(rows.parts.size());
+		if (!replaceMarker(newdiagrams, numberingXml(document, k, rows))) {
+			setError(error, QStringLiteral("the %1 numbering has no place").arg(k.kind));
+			return false;
+		}
+	}
+	if (hasMarker(newdiagrams, QStringLiteral("xrefs"))) {
+		QList<QVariantList> rows;
+		Statement s(db, QStringLiteral("SELECT %1, attrs FROM xref_setting ORDER BY ord").arg(quoted(XrefData)));
+		while (s.next()) {
+			QVariantList row;
+			for (int i = 0 ; i < XrefData.size() + 1 ; ++i) row << s.value(i);
+			rows << row;
+		}
+		used.xrefs += int(rows.size());
+		if (!replaceMarker(newdiagrams, xrefsXml(document, meta.value(QStringLiteral("xrefs_attrs")), rows))) {
+			setError(error, QStringLiteral("the cross-reference settings have no place"));
+			return false;
+		}
+	}
+	if (hasMarker(newdiagrams, QStringLiteral("report"))) {
+		QDomElement report = document.createElement(QStringLiteral("report"));
+		setIfNotNull(report, QStringLiteral("label"), meta.value(QStringLiteral("report_label")));
+		if (!replaceMarker(newdiagrams, report)) {
+			setError(error, QStringLiteral("the report label has no place"));
+			return false;
 		}
 	}
 	return true;
@@ -864,7 +1151,12 @@ bool noRowLeft(const Database &db, const UsedRows &used, QString *error)
 		{QStringLiteral("SELECT count(*) FROM conductor"), int(used.conductors.size()), QStringLiteral("wire rows")},
 		{QStringLiteral("SELECT count(*) FROM folio_property WHERE folio_uuid NOT IN (SELECT uuid FROM folio)"), 0, QStringLiteral("folio property rows of no folio")},
 		{QStringLiteral("SELECT count(*) FROM element_info WHERE element_uuid NOT IN (SELECT uuid FROM element)"), 0, QStringLiteral("information rows of no symbol")},
-		{QStringLiteral("SELECT count(*) FROM link WHERE element_uuid NOT IN (SELECT uuid FROM element)"), 0, QStringLiteral("link rows of no symbol")}};
+{QStringLiteral("SELECT count(*) FROM link WHERE element_uuid NOT IN (SELECT uuid FROM element)"), 0, QStringLiteral("link rows of no symbol")},
+		{QStringLiteral("SELECT count(*) FROM sequential_number"), used.counters, QStringLiteral("counter rows")},
+		{QStringLiteral("SELECT count(*) FROM numbering_set"), used.numbering_sets, QStringLiteral("numbering rows")},
+		{QStringLiteral("SELECT count(*) FROM numbering"), used.schemes, QStringLiteral("numbering scheme rows")},
+		{QStringLiteral("SELECT count(*) FROM numbering_part"), used.parts, QStringLiteral("numbering part rows")},
+		{QStringLiteral("SELECT count(*) FROM xref_setting"), used.xrefs, QStringLiteral("cross-reference setting rows")}};
 	for (const auto &check : checks) {
 		const int found = count(check.sql);
 		if (found != check.expected) {
@@ -918,12 +1210,19 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 	Statement project_property(db, QStringLiteral("INSERT INTO project_property VALUES (?,?,?,?,?)"));
 	Statement folio(db, QStringLiteral("INSERT INTO folio VALUES (?,?,%1,?)").arg(placeholders(FolioData.size())));
 	Statement folio_property(db, QStringLiteral("INSERT INTO folio_property VALUES (?,?,?,?,?,?)"));
-	Statement element(db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?)").arg(placeholders(ElementData.size())));
+	Statement element(db, QStringLiteral("INSERT INTO element VALUES (?,?,%1,?,?,?)").arg(placeholders(ElementData.size())));
+	Statement numbering_set(db, QStringLiteral("INSERT INTO numbering_set VALUES (?,?,?,?,?)"));
+	Statement numbering(db, QStringLiteral("INSERT INTO numbering VALUES (?,?,?,?,?,?)"));
+	Statement numbering_part(db, QStringLiteral("INSERT INTO numbering_part VALUES (?,?,?,?,?,?,?)"));
+	Statement xref_setting(db, QStringLiteral("INSERT INTO xref_setting VALUES (?,%1,?)").arg(placeholders(XrefData.size())));
+	Statement sequential_number(db, QStringLiteral("INSERT INTO sequential_number VALUES (?,?,?,?,?,?)"));
 	Statement element_info(db, QStringLiteral("INSERT INTO element_info VALUES (?,?,?,?,?,?)"));
 	Statement link(db, QStringLiteral("INSERT INTO link VALUES (?,?,?,?)"));
-	Statement conductor(db, QStringLiteral("INSERT INTO conductor VALUES (?,?,%1)").arg(placeholders(ConductorData.size())));
+	Statement conductor(db, QStringLiteral("INSERT INTO conductor VALUES (?,?,%1,?)").arg(placeholders(ConductorData.size())));
 	bool ok = meta.ok() && project_property.ok() && folio.ok() && folio_property.ok()
-			&& element.ok() && element_info.ok() && link.ok() && conductor.ok();
+&& element.ok() && element_info.ok() && link.ok() && conductor.ok()
+			&& numbering_set.ok() && numbering.ok() && numbering_part.ok() && xref_setting.ok()
+			&& sequential_number.ok();
 
 	ok = ok && meta.run({QStringLiteral("format"), QString::number(QetContainer::Format)})
 			&& db.exec(QStringLiteral("PRAGMA user_version = %1").arg(QetContainer::Format));
@@ -948,6 +1247,43 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 		ok = ok && meta.run({QStringLiteral("props_attrs"), blockJson(project_props)});
 		moveProperties(project_props, project_property, {});
 		leaveMarker(project_props);
+	}
+
+		//Numbering schemes, report label and cross-reference settings: the
+		//project's defaults for what new folios, symbols and wires are
+		//numbered and labelled by (format 5)
+	QDomElement newdiagrams = project.firstChildElement(QStringLiteral("newdiagrams"));
+	if (!newdiagrams.isNull()) {
+		for (const NumberingKind &k : NumberingKinds) {
+			const QDomElement block = newdiagrams.firstChildElement(k.block);
+			NumberingRows rows;
+			if (block.isNull() || !numberingRows(block, k, &rows)) continue;
+			ok = ok && numbering_set.run(QVariantList{k.kind} << rows.set);
+			for (int i = 0 ; i < rows.schemes.size() ; ++i)
+				ok = ok && numbering.run(QVariantList{k.kind, i} << rows.schemes.at(i));
+			int part_ord = 0, last_scheme = -1;
+			for (const QVariantList &part : rows.parts) {
+				if (part.at(0).toInt() != last_scheme) { last_scheme = part.at(0).toInt(); part_ord = 0; }
+				ok = ok && numbering_part.run(QVariantList{k.kind, part.at(0), part_ord++} << part.mid(1));
+			}
+			leaveMarker(block);
+		}
+		const QDomElement xrefs = newdiagrams.firstChildElement(QStringLiteral("xrefs"));
+		QVariant xrefs_attrs;
+		QList<QVariantList> xref_rows;
+		if (!xrefs.isNull() && xrefRows(xrefs, &xrefs_attrs, &xref_rows)) {
+			ok = ok && meta.run({QStringLiteral("xrefs_attrs"), xrefs_attrs});
+			int ord = 0;
+			for (const QVariantList &row : xref_rows) ok = ok && xref_setting.run(QVariantList{ord++} << row);
+			leaveMarker(xrefs);
+		}
+			//The label of a report symbol, when that is all it says
+		const QDomElement report = newdiagrams.firstChildElement(QStringLiteral("report"));
+		if (!report.isNull() && report.attributes().count() == 1 && report.hasAttribute(QStringLiteral("label"))
+				&& !report.hasChildNodes()) {
+			ok = ok && meta.run({QStringLiteral("report_label"), report.attribute(QStringLiteral("label"))});
+			leaveMarker(report);
+		}
 	}
 
 	const QList<QDomElement> diagrams = children(project, QStringLiteral("diagram"));
@@ -997,8 +1333,12 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 					 QStringLiteral("INSERT INTO element SELECT * FROM old.element WHERE folio_uuid = ? ORDER BY rowid"),
 					 QStringLiteral("INSERT INTO element_info SELECT * FROM old.element_info WHERE element_uuid IN "
 									"(SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
-					 QStringLiteral("INSERT INTO link SELECT * FROM old.link WHERE element_uuid IN "
-									"(SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
+						 QStringLiteral("INSERT INTO link SELECT * FROM old.link WHERE element_uuid IN "
+										"(SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
+						 QStringLiteral("INSERT INTO sequential_number SELECT * FROM old.sequential_number WHERE kind = 'element' "
+										"AND item_uuid IN (SELECT uuid FROM old.element WHERE folio_uuid = ?) ORDER BY rowid"),
+						 QStringLiteral("INSERT INTO sequential_number SELECT * FROM old.sequential_number WHERE kind = 'conductor' "
+										"AND item_uuid IN (SELECT uuid FROM old.conductor WHERE folio_uuid = ?) ORDER BY rowid"),
 					 QStringLiteral("INSERT INTO conductor SELECT * FROM old.conductor WHERE folio_uuid = ? ORDER BY rowid")}) {
 				Statement rows(db, sql);
 				ok = ok && rows.run({id});
@@ -1062,9 +1402,21 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 				QDomElement links = e.firstChildElement(QStringLiteral("links_uuids"));
 				if (!info.isNull() && !listBlock(info, QStringLiteral("elementInformation"))) info = QDomElement();
 				if (!links.isNull() && !listBlock(links, QStringLiteral("link_uuid"))) links = QDomElement();
+				QDomElement sequential = e.firstChildElement(QStringLiteral("sequentialNumbers"));
+				QVariant sequential_attrs;
+				QList<QVariantList> counters;
+				if (!sequential.isNull() && !sequentialRows(sequential, &sequential_attrs, &counters))
+					sequential = QDomElement();
 				erow << (info.isNull() ? QVariant() : blockJson(info))
-					 << (links.isNull() ? QVariant() : blockJson(links));
+					 << (links.isNull() ? QVariant() : blockJson(links))
+					 << (sequential.isNull() ? QVariant() : sequential_attrs);
 				ok = ok && element.run(erow);
+				if (!sequential.isNull()) {
+					int counter_ord = 0;
+					for (const QVariantList &c : counters)
+						ok = ok && sequential_number.run(QVariantList{QStringLiteral("element"), key, counter_ord++} << c);
+					leaveMarker(sequential);
+				}
 				if (!info.isNull())
 					moveInformation(info, key);
 				if (!links.isNull()) {
@@ -1085,7 +1437,19 @@ QByteArray QetContainerDb::extract(QDomElement project, QString *error, const QB
 				const bool own_key = conductor_own.at(c_index++);
 				QVariantList crow{key, id};
 				crow += take(c, ConductorData);
+				QDomElement sequential = c.firstChildElement(QStringLiteral("sequentialNumbers"));
+				QVariant sequential_attrs;
+				QList<QVariantList> counters;
+				if (!sequential.isNull() && !sequentialRows(sequential, &sequential_attrs, &counters))
+					sequential = QDomElement();
+				crow << (sequential.isNull() ? QVariant() : sequential_attrs);
 				ok = ok && conductor.run(crow);
+				if (!sequential.isNull()) {
+					int counter_ord = 0;
+					for (const QVariantList &counter : counters)
+						ok = ok && sequential_number.run(QVariantList{QStringLiteral("conductor"), key, counter_ord++} << counter);
+					leaveMarker(sequential);
+				}
 				if (!own_key) c.setAttribute(KeyAttribute, key);
 			}
 		}
@@ -1183,6 +1547,9 @@ bool QetContainerDb::restore(QDomElement project, const QByteArray &database, QS
 	}
 
 	UsedRows used;
+	const QDomElement newdiagrams = project.firstChildElement(QStringLiteral("newdiagrams"));
+	if (!newdiagrams.isNull() && !restoreSettings(db, newdiagrams, meta, used, error))
+		return false;
 	for (QDomElement d : children(project, QStringLiteral("diagram")))
 		if (!restoreDiagram(db, d, used, error))
 			return false;
@@ -1203,8 +1570,8 @@ bool QetContainerDb::currentFormat(const QByteArray &database)
 		//Its rows are copied as they are: the same columns as this writes
 	const QList<std::pair<QString, int>> columns = {
 		{QStringLiteral("folio"), int(FolioData.size()) + 3},
-		{QStringLiteral("element"), int(ElementData.size()) + 4},
-		{QStringLiteral("conductor"), int(ConductorData.size()) + 2},
+		{QStringLiteral("element"), int(ElementData.size()) + 5},
+		{QStringLiteral("conductor"), int(ConductorData.size()) + 3},
 		{QStringLiteral("folio_property"), 6}, {QStringLiteral("element_info"), 6}};
 	for (const auto &table : columns) {
 		Statement s(db, QStringLiteral("SELECT count(*) FROM pragma_table_info('%1')").arg(table.first));

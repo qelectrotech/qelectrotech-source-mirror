@@ -59,15 +59,18 @@ namespace QetContainer
 	using Pictures = QHash<QString, QByteArray>;
 		/// The format written; files of a later format are refused by join()
 		/// unless their min-reader allows this one.
-	constexpr int Format = 4;
+	constexpr int Format = 5;
 		/// 3: the database's rows keyed by the items' uuids, true/false and
 		/// show flags as 1/0, its PRAGMA user_version the format, the symbols' type left
 		/// in the folio files, no column for where a block sat.
 		/// 4: what QElectroTech computes left out of the folios
 		/// (dropComputed()), the tables written without keys or indexes.
+		/// 5: numbering schemes and counters, the report label and the
+		/// cross-reference settings in project.sqlite, out of project.xml and
+		/// the folio files (symbol counters, <sequentialNumbers>).
 		/// project.sqlite holds the engineering data once: QElectroTech's
 		/// own project database is built from it when the project opens.
-		/// Formats 2 and 3 are still read; a later format whose min-reader
+		/// Formats 2, 3 and 4 are still read; a later format whose min-reader
 		/// allows this one is read too, and said so through join()'s
 		/// @p format.
 
