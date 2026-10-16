@@ -291,6 +291,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetmainwindow.h
   ${QET_DIR}/sources/qetmessagebox.cpp
   ${QET_DIR}/sources/qetmessagebox.h
+  ${QET_DIR}/sources/projectlock.cpp
+  ${QET_DIR}/sources/projectlock.h
   ${QET_DIR}/sources/qetproject.cpp
   ${QET_DIR}/sources/qetproject.h
   ${QET_DIR}/sources/qetregexpvalidator.cpp
@@ -940,7 +942,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetsettings.cpp
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
+  ${QET_DIR}/sources/utils/previousversions.cpp
+  ${QET_DIR}/sources/utils/previousversions.h
   ${QET_DIR}/sources/utils/qetutils.h
+  ${QET_DIR}/sources/utils/syncfolder.h
 
   ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
   ${QET_DIR}/sources/materiallist/materialentrydialog.h

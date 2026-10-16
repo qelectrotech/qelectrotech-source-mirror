@@ -596,6 +596,17 @@ else()
   target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml)
 endif()
 
+# projectlock.cpp is the sidecar file that says who has a project open; it
+# needs only Qt Core and the version number, so it is linked on its own.
+add_executable(
+  tst_projectlock
+  tst_projectlock.cpp
+  ${QET_DIR}/sources/projectlock.cpp
+  ${QET_DIR}/sources/qetversion.cpp)
+add_test(NAME tst_projectlock COMMAND tst_projectlock)
+target_include_directories(tst_projectlock PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_projectlock PRIVATE Qt::Test Qt::Xml)
+
 # The crash-dump bookkeeping from #905: which dumps get listed, offered and
 # deleted, and what redact() masks. qetlogger.cpp needs exactly one symbol
 # from the application (QETApp::dataDir()), which the test supplies itself,
@@ -938,6 +949,42 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # A folio report keeps showing where its partner is when another of its
+  # information changes (F116), on examples/iso_sfc_example.qet.
+  add_executable(
+    tst_reporttextafterinfo
+    tst_reporttextafterinfo.cpp)
+  add_test(NAME tst_reporttextafterinfo COMMAND tst_reporttextafterinfo)
+  add_dependencies(tst_reporttextafterinfo qelectrotech)
+  target_link_libraries(tst_reporttextafterinfo PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_reporttextafterinfo PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # A .qetz folio whose title only changed keeps its pictures when saved
+  # with folios built when needed (F118), on examples/grafcet.qet.
+  add_executable(
+    tst_qetzheaderpictures
+    tst_qetzheaderpictures.cpp)
+  add_test(NAME tst_qetzheaderpictures COMMAND tst_qetzheaderpictures)
+  add_dependencies(tst_qetzheaderpictures qelectrotech)
+  target_link_libraries(tst_qetzheaderpictures PRIVATE Qt::Test)
+  target_compile_definitions(tst_qetzheaderpictures PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+  # Saving refuses a project file another user or program changed since it was
+  # opened (QETProject::changedOnDisk()); QET_OVERWRITE_CHANGED=1 overrides.
+  add_executable(
+    tst_changedondisk
+    tst_changedondisk.cpp)
+  add_test(NAME tst_changedondisk COMMAND tst_changedondisk)
+  add_dependencies(tst_changedondisk qelectrotech)
+  target_link_libraries(tst_changedondisk PRIVATE Qt::Test)
+  target_compile_definitions(tst_changedondisk PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
   # turns element uuid + terminal uuid back into the index the conductor
   # calls take, on examples/perceuse.qet (two terminals at one point).
@@ -1271,6 +1318,17 @@ if(Qt6_VERSION VERSION_LESS 6.5.0)
   endforeach()
 endif()
 
+# The versions of a project kept before it is saved over: the newest
+# kept, same bytes not kept twice, a failed copy said
+# (sources/utils/previousversions.*).
+add_executable(
+  tst_previousversions
+  tst_previousversions.cpp
+  ${QET_DIR}/sources/utils/previousversions.cpp)
+add_test(NAME tst_previousversions COMMAND tst_previousversions)
+target_include_directories(tst_previousversions PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_previousversions PRIVATE Qt::Test)
+
 # The zip a .qetz project is stored in: round trip, same bytes twice,
 # unsafe entry names refused (sources/container/qetzip.*, bundled miniz).
 add_executable(
@@ -1298,3 +1356,18 @@ target_compile_definitions(tst_qetcontainer PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\""
   "QET_FORMAT_SPEC=\"${QET_DIR}/sources/container/QETZ-FORMAT.md\"")
+
+# A right-aligned report text emptied and set again while lazy folios are
+# built is saved where it was (F119): the real binary's --run on
+# fixtures/report_text_late_folio.qet, lazily and with every folio built.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_reporttextlatefolio
+    tst_reporttextlatefolio.cpp)
+  add_test(NAME tst_reporttextlatefolio COMMAND tst_reporttextlatefolio)
+  add_dependencies(tst_reporttextlatefolio qelectrotech)
+  target_link_libraries(tst_reporttextlatefolio PRIVATE Qt::Test)
+  target_compile_definitions(tst_reporttextlatefolio PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()

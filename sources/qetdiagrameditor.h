@@ -20,6 +20,7 @@
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
 #include "diagramcontext.h"
+#include "projectlock.h"
 #include "qetmainwindow.h"
 
 #include <QActionGroup>
@@ -75,6 +76,8 @@ class QETDiagramEditor : public QETMainWindow
 		QList<ProjectView *> openedProjects    () const;
 		void                 addProjectView    (ProjectView *);
 		bool                 openAndAddProject (const QString &, bool = true);
+		enum class LockChoice {ReadOnly, OpenAnyway, Cancel};
+		LockChoice           askAboutLock (const QString &, const ProjectLock::Holder &);
 		QList<QString>       editedFiles       () const;
 		ProjectView         *viewForFile       (const QString &) const;
 		ProjectView *currentProjectView() const;
@@ -86,6 +89,9 @@ class QETDiagramEditor : public QETMainWindow
 	  protected:
 		bool event(QEvent *) override;
 	private:
+		bool offerToRecover(const QString &filepath, const QString &reason);
+		bool openAsRecovered(const QString &source, const QString &original);
+		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).

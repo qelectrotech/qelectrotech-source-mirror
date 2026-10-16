@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "projectlock.h"
 #include "bomexport.h"
 
 #include "bordertitleblock.h"
@@ -28,6 +29,7 @@
 #include "dxfexport.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
+#include "container/qetcontainer.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/element.h"
@@ -85,6 +87,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--info", "info"},
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
+		{"--recover", "recover"},
 		{"--set-titleblock", "settb"},
 	};
 	return flags;
@@ -870,6 +873,42 @@ int exportLinks(QETProject &project, const QString &output)
 
 /// Round-trip: load the project and write its XML back out, so an external
 /// diff can reveal markup QET silently normalises (tolerated-but-invalid XML).
+/// What can be read of the damaged .qetz @p input, written to the .qet
+/// @p output, and what was left out (QetContainer::recover()).
+int recoverProject(const QString &input, const QString &output)
+{
+	QFile file(input);
+	if (!file.open(QIODevice::ReadOnly)) {
+		err << "Cannot read '" << input << "': " << file.errorString() << "\n";
+		return 2;
+	}
+	const QByteArray content = file.readAll();
+	if (!QetContainer::isZip(content)) {
+		err << "'" << input << "' is not a .qetz project; a .qet opens as it is, or can be fixed in a text editor\n";
+		return 2;
+	}
+	QDomDocument document;
+	QStringList lost;
+	QString error;
+	if (!QetContainer::recover(content, &document, &lost, &error)) {
+		err << "Nothing can be recovered from '" << input << "': " << error << "\n";
+		return 1;
+	}
+	if (!QET::writeXmlFile(document, output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
+	out << "Recovered " << input << " -> " << output << "\n";
+	if (lost.isEmpty()) {
+		out << "Nothing was left out.\n";
+	} else {
+		out << "Left out:\n";
+		for (const QString &item : std::as_const(lost))
+			out << "  " << item << "\n";
+	}
+	return 0;
+}
+
 int resaveProject(QETProject &project, const QString &output)
 {
 	if (QETProject::isContainerPath(output)) {
@@ -885,14 +924,13 @@ int resaveProject(QETProject &project, const QString &output)
 		//what building them would write (QETProject::toXml())
 	QHash<int, QByteArray> kept_folios;
 	const QDomDocument doc = project.toXml(&kept_folios);
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
+		//Through a temporary file, as the GUI saves: a run stopped
+		//part-way leaves the previous file
+	QString error;
+	if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
-	file.close();
 	out << "Re-saved project -> " << output << "\n";
 	return 0;
 }
@@ -980,14 +1018,11 @@ int setTitleBlock(QETProject &project, const QString &output,
 			//is what building them would write (QETProject::toXml())
 		QHash<int, QByteArray> kept_folios;
 		const QDomDocument doc = project.toXml(&kept_folios);
-		QFile file(output);
-		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-			err << "Cannot open '" << output << "' for writing.\n";
+		QString error;
+		if (!QET::writeXmlText(QETProject::spliceKeptFolios(doc.toString(4), kept_folios), output, &error)) {
+			err << "Cannot write '" << output << "': " << error << "\n";
 			return 1;
 		}
-		QTextStream fout(&file);
-		fout << QETProject::spliceKeptFolios(doc.toString(4), kept_folios);
-		file.close();
 	}
 	out << "Stamped " << fields.size() << " field(s) on "
 		<< folios << " folio(s) -> " << output << "\n";
@@ -1019,6 +1054,7 @@ int run(const QStringList &args)
 	// --no-slaves and --no-junctions leave rows out of --export-bom.
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
+	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1040,6 +1076,16 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return checkElements(rest.at(0));
+	}
+
+	// --recover reads what it can of a damaged .qetz, which a project
+	// cannot be opened from.
+	if (format == "recover") {
+		if (rest.size() < 2) {
+			err << "Usage: qelectrotech --recover <damaged.qetz> <output.qet>\n";
+			return 2;
+		}
+		return recoverProject(rest.at(0), rest.at(1));
 	}
 
 	const QString input = rest.value(0);
@@ -1083,6 +1129,19 @@ int run(const QStringList &args)
 		return exportNets(project, output);
 	if (format == "links")
 		return exportLinks(project, output);
+		//The verbs that write a project file leave alone one that someone
+		//has open (their lock beside it), unless told to: the read-only
+		//verbs above never look at locks
+	if ((format == "resave" || format == "settb") && !ignoreLock) {
+		const ProjectLock::Holder holder = ProjectLock::liveHolder(output);
+		if (holder.valid) {
+			err << "'" << output << "' is open by " << holder.user << " on "
+				<< holder.host << " (lock file " << ProjectLock::lockPathFor(output)
+				<< "). Not writing it; close it there, write to another file, "
+				   "or pass --ignore-lock.\n";
+			return 1;
+		}
+	}
 	if (format == "resave")
 		return resaveProject(project, output);
 	if (format == "settb")

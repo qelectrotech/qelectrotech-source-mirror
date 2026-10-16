@@ -3,6 +3,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QtEndian>
 
 #include <functional>
 
@@ -533,6 +534,38 @@ private slots:
 		QVERIFY(!error.isEmpty());
 	}
 
+	// A page of the database overwritten, as a bad disk or a broken copy
+	// would: refused, and said to be damaged (quick_check on opening),
+	// whichever table the page held
+	void damagedDatabaseRefused_data()
+	{
+		QTest::addColumn<double>("where");
+		QTest::newRow("second page") << 0.0;
+		QTest::newRow("middle page") << 0.5;
+		QTest::newRow("last page") << 1.0;
+	}
+	void damagedDatabaseRefused()
+	{
+		QFETCH(double, where);
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		bool damaged = false;
+		for (QetZip::Entry &entry : entries) {
+			if (entry.name != QLatin1String("project.sqlite")) continue;
+			const int page_size = qFromBigEndian<quint16>(entry.data.constData() + 16);
+			const int pages = int(entry.data.size() / page_size);
+			QVERIFY(pages > 3);
+			const int page = 1 + int(where * (pages - 2));
+			entry.data.replace(page * page_size, page_size, QByteArray(page_size, char(0xff)));
+			damaged = true;
+		}
+		QVERIFY(damaged);
+		QDomDocument back;
+		QString error;
+		QVERIFY(!QetContainer::join(entries, &back, &error));
+		QVERIFY2(error.contains(QStringLiteral("damaged")), qPrintable(error));
+	}
+
 	// project.sqlite changed by @p sql in @p entries
 	static void alterDatabase(QList<QetZip::Entry> &entries, const char *sql)
 	{
@@ -763,6 +796,119 @@ private slots:
 		QDomDocument back;
 		QString error;
 		QVERIFY(!QetContainer::join({{QStringLiteral("mimetype"), "application/zip", false}}, &back, &error));
+	}
+
+	// recover() reads what it can of a damaged .qetz: each kind of damage
+	// costs what it held and nothing else, and is said
+	void recoverLeavesOutOnlyTheDamage_data()
+	{
+		QTest::addColumn<QString>("damage");
+		QTest::addColumn<QString>("said");
+		QTest::addColumn<int>("folios");
+		QTest::addColumn<int>("wires");
+		QTest::newRow("nothing") << QString() << QString() << 0 << 0;
+		QTest::newRow("folio file missing") << QStringLiteral("folio") << QStringLiteral("is missing") << -1 << 0;
+		QTest::newRow("wire row deleted") << QStringLiteral("row") << QStringLiteral("not in the database") << 0 << -1;
+		QTest::newRow("database page overwritten") << QStringLiteral("page") << QStringLiteral("is damaged") << 0 << -1000;
+	}
+	void recoverLeavesOutOnlyTheDamage()
+	{
+		QFETCH(QString, damage);
+		QFETCH(QString, said);
+		QFETCH(int, folios);
+		QFETCH(int, wires);
+		QDomDocument original;
+		QList<QetZip::Entry> entries = splitFile(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"), &original);
+		QVERIFY(!entries.isEmpty());
+		auto count = [](const QDomDocument &d, const QString &tag) {
+			return int(d.documentElement().elementsByTagName(tag).size());
+		};
+		const int folios_before = count(original, QStringLiteral("diagram"));
+		const int wires_before = count(original, QStringLiteral("conductor"));
+		if (damage == QLatin1String("folio")) {
+			for (int i = 0 ; i < entries.size() ; ++i)
+				if (entries.at(i).name.startsWith(QStringLiteral("folios/"))) { entries.removeAt(i); break; }
+		} else if (damage == QLatin1String("row")) {
+			alterDatabase(entries, "DELETE FROM conductor WHERE rowid = (SELECT min(rowid) FROM conductor)");
+		} else if (damage == QLatin1String("page")) {
+			for (QetZip::Entry &entry : entries) {
+				if (entry.name != QLatin1String("project.sqlite")) continue;
+				const int page_size = qFromBigEndian<quint16>(entry.data.constData() + 16);
+				const int page = int(entry.data.size() / page_size / 2);
+				entry.data.replace(page * page_size, page_size, QByteArray(page_size, char(0xff)));
+			}
+		}
+		QByteArray zip;
+		QString error;
+		QVERIFY2(QetZip::toBytes(entries, &error).size() > 0, qPrintable(error));
+		zip = QetZip::toBytes(entries, &error);
+
+		QDomDocument back;
+		QStringList lost;
+		QVERIFY2(QetContainer::recover(zip, &back, &lost, &error), qPrintable(error));
+		if (said.isEmpty()) {
+			QVERIFY2(lost.isEmpty(), qPrintable(lost.join(QLatin1Char('\n'))));
+		} else {
+			QVERIFY2(lost.join(QLatin1Char('\n')).contains(said), qPrintable(lost.join(QLatin1Char('\n'))));
+				// Strict reading refuses it
+			QDomDocument strict;
+			QVERIFY(!QetContainer::join(entries, &strict));
+		}
+		QCOMPARE(count(back, QStringLiteral("diagram")), folios_before + folios);
+		if (wires == -1000)
+			QCOMPARE(count(back, QStringLiteral("conductor")), 0);
+		else
+			QCOMPARE(count(back, QStringLiteral("conductor")), wires_before + wires);
+			// Nothing of the container's own left in the document
+		QVERIFY(!back.toString().contains(QStringLiteral("qetz-")));
+	}
+
+	// A picture's file missing (F118 wrote such projects): the picture is
+	// left out, the rest read
+	void recoverMissingPicture()
+	{
+		QList<QetZip::Entry> entries;
+		QString error;
+		QVERIFY2(QetZip::fromBytes(read(QStringLiteral(QET_FIXTURES_DIR "/qetz_format2.qetz")), &entries, &error),
+				 qPrintable(error));
+		QDomDocument document;
+		QVERIFY2(QetContainer::join(entries, &document, &error), qPrintable(error));
+			// A picture on the first folio, then saved and its file dropped
+		QDomElement folio = document.documentElement().firstChildElement(QStringLiteral("diagram"));
+		QDomElement images = folio.firstChildElement(QStringLiteral("images"));
+		if (images.isNull()) images = folio.appendChild(document.createElement(QStringLiteral("images"))).toElement();
+		QDomElement image = document.createElement(QStringLiteral("image"));
+		image.setAttribute(QStringLiteral("type"), QStringLiteral("png"));
+		image.appendChild(document.createTextNode(QStringLiteral(
+			"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==")));
+		images.appendChild(image);
+		QList<QetZip::Entry> saved = QetContainer::split(document, QString(), &error);
+		QVERIFY2(!saved.isEmpty(), qPrintable(error));
+		bool dropped = false;
+		for (int i = 0 ; i < saved.size() ; ++i)
+			if (saved.at(i).name.startsWith(QStringLiteral("images/"))) { saved.removeAt(i); dropped = true; break; }
+		QVERIFY(dropped);
+		QDomDocument strict;
+		QVERIFY(!QetContainer::join(saved, &strict, &error));
+		QVERIFY(error.contains(QStringLiteral("picture")));
+
+		QDomDocument back;
+		QStringList lost;
+		QVERIFY2(QetContainer::recover(QetZip::toBytes(saved), &back, &lost, &error), qPrintable(error));
+		QCOMPARE(lost.size(), 1);
+		QVERIFY(lost.first().contains(QStringLiteral("picture")));
+		QCOMPARE(int(back.documentElement().elementsByTagName(QStringLiteral("image")).size()), 0);
+		QVERIFY(back.toString().contains(QStringLiteral("<elementInformation ")));
+	}
+
+	// What cannot be read as a zip at all is still refused
+	void recoverNotAZipRefused()
+	{
+		QDomDocument back;
+		QStringList lost;
+		QString error;
+		QVERIFY(!QetContainer::recover(QByteArray("not a zip").repeated(10), &back, &lost, &error));
+		QVERIFY(!error.isEmpty());
 	}
 };
 

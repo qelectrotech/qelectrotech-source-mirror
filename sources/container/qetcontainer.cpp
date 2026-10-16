@@ -184,9 +184,35 @@ bool QetContainer::readDocument(const QByteArray &content, QDomDocument *documen
 			&& join(entries, document, error, nullptr, pictures, format);
 }
 
+/**
+	@brief QetContainer::recover
+	What can be read of the .qetz @p content, a damaged one, into @p project:
+	a folio file, a picture or an entry that cannot be read is left out,
+	symbols and wires that do not match the database lose what it held, and
+	a database that cannot be read loses it all (wires, whose ends it holds,
+	go too). Each thing left out is said in @p lost.
+	@return false, with @p error, when nothing can be read: not a zip, no
+	project.xml, or a later format
+*/
+bool QetContainer::recover(const QByteArray &content, QDomDocument *project, QStringList *lost, QString *error)
+{
+	QStringList none;
+	if (!lost) lost = &none;
+	QList<QetZip::Entry> entries;
+	return QetZip::fromBytes(content, &entries, error, lost)
+			&& join(entries, project, error, nullptr, nullptr, nullptr, lost);
+}
+
 QString QetContainer::pictureFile(const QDomElement &image)
 {
 	return image.attribute(ImageFileAttribute);
+}
+
+void QetContainer::inlinePicture(QDomElement image, const QByteArray &bytes)
+{
+	image.removeAttribute(ImageFileAttribute);
+	image.insertBefore(image.ownerDocument().createTextNode(QString::fromLatin1(bytes.toBase64())),
+					   image.firstChild());
 }
 
 /**
@@ -421,23 +447,35 @@ QList<QetZip::Entry> QetContainer::split(const QDomDocument &project, const QStr
 	for a later one this may read (its min-reader allows it).
 */
 bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *project, QString *error,
-						QStringList *folio_files, Pictures *pictures, int *format)
+						QStringList *folio_files, Pictures *pictures, int *format, QStringList *lost)
 {
+		//Recovering a damaged project (recover()): what is missing or
+		//damaged is noted in lost and left out, instead of refusing it all
+	const auto noted = [error, lost](const QString &problem) {
+		if (lost) {
+			lost->append(problem);
+			return true;
+		}
+		setError(error, problem);
+		return false;
+	};
 	QHash<QString, QByteArray> files;
 	for (const QetZip::Entry &entry : entries)
 		files.insert(entry.name, entry.data);
 
 	const QByteArray mimetype = files.value(QStringLiteral("mimetype"));
-	if (mimetype != QByteArray(MimeType) && mimetype != QByteArray(OldMimeType)) {
-		setError(error, QStringLiteral("not a QElectroTech project (.qetz)"));
+	if (mimetype != QByteArray(MimeType) && mimetype != QByteArray(OldMimeType)
+			&& !noted(QStringLiteral("not a QElectroTech project (.qetz)")))
 		return false;
-	}
 	QDomDocument manifest;
-	if (!parse(files.value(QStringLiteral("manifest.xml")), &manifest, error))
+	QString manifest_error;
+	const bool has_manifest = parse(files.value(QStringLiteral("manifest.xml")), &manifest, &manifest_error);
+	if (!has_manifest && !noted(manifest_error))
 		return false;
 	bool ok = false;
 	const int min_reader = manifest.documentElement().attribute(QStringLiteral("min-reader")).toInt(&ok);
-	if (!ok || min_reader > Format) {
+		//A later format is not damage: refused all the same
+	if (has_manifest && (!ok || min_reader > Format)) {
 		setError(error, QStringLiteral("made by a later QElectroTech (format %1, this one reads up to %2)")
 				 .arg(manifest.documentElement().attribute(QStringLiteral("format")))
 				 .arg(Format));
@@ -460,29 +498,33 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 				&& file.startsWith(QLatin1String("folios/")))
 			folio_files->append(file);
 		if (!files.contains(file)) {
-			setError(error, QStringLiteral("part \"%1\" is missing").arg(file));
-			return false;
+			if (!noted(QStringLiteral("part \"%1\" is missing").arg(file))) return false;
+			part.parentNode().removeChild(part);
+			continue;
 		}
 		QDomDocument document;
 		QString part_error;
 		if (!parse(files.value(file), &document, &part_error)) {
-			setError(error, QStringLiteral("%1: %2").arg(file, part_error));
-			return false;
+			if (!noted(QStringLiteral("%1: %2").arg(file, part_error))) return false;
+			part.parentNode().removeChild(part);
+			continue;
 		}
 		part.parentNode().replaceChild(project->importNode(document.documentElement(), true), part);
 	}
 
 		//Pictures back to base64, as the image's first child, or into
 		//pictures
-	const QDomNodeList images = project->elementsByTagName(QStringLiteral("image"));
-	for (int i = 0 ; i < images.size() ; ++i)
+	const QDomNodeList image_list = project->elementsByTagName(QStringLiteral("image"));
+	QList<QDomElement> images;
+	for (int i = 0 ; i < image_list.size() ; ++i) images << image_list.at(i).toElement();
+	for (QDomElement image : images)
 	{
-		QDomElement image = images.at(i).toElement();
 		if (!image.hasAttribute(ImageFileAttribute)) continue;
 		const QString file = image.attribute(ImageFileAttribute);
 		if (!files.contains(file)) {
-			setError(error, QStringLiteral("picture \"%1\" is missing").arg(file));
-			return false;
+			if (!noted(QStringLiteral("picture \"%1\" is missing").arg(file))) return false;
+			image.parentNode().removeChild(image);
+			continue;
 		}
 		if (pictures) {
 			pictures->insert(file, files.value(file));
@@ -496,7 +538,12 @@ bool QetContainer::join(const QList<QetZip::Entry> &entries, QDomDocument *proje
 		//The engineering data back from project.sqlite (format 2 on)
 	if (files.contains(QStringLiteral("project.sqlite"))
 		&& !QetContainerDb::restore(project->documentElement(),
-									files.value(QStringLiteral("project.sqlite")), error))
+									files.value(QStringLiteral("project.sqlite")), error, lost))
 		return false;
+	if (lost) {
+		if (!files.contains(QStringLiteral("project.sqlite")))
+			lost->append(QStringLiteral("project.sqlite is missing"));
+		QetContainerDb::dropLeftovers(project->documentElement(), lost);
+	}
 	return true;
 }

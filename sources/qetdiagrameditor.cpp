@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "container/qetcontainer.h"
+#include "container/qetzip.h"
+#include "utils/previousversions.h"
 #include "shownkinds.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
@@ -25,6 +28,8 @@
 #include "scripting/macrorecorder.h"
 #include "scripting/assistantinfo.h"
 #endif
+#include <QDomDocument>
+#include <QTemporaryDir>
 #include <QCoreApplication>
 #include <QToolButton>
 #include <QWidgetAction>
@@ -1889,6 +1894,160 @@ bool QETDiagramEditor::closeProject(QETProject *project)
 }
 
 /**
+	@brief QETDiagramEditor::askAboutLock
+	Tell the user who has the project @p filepath open and let them choose.
+	Read-only is the default: opening anyway can lose the other person's
+	work, and a lock left by a crash on another machine cannot be told from
+	a live one, which is why the age of the last sign of life is shown.
+*/
+QETDiagramEditor::LockChoice QETDiagramEditor::askAboutLock(
+		const QString &filepath,
+		const ProjectLock::Holder &holder)
+{
+	const QString name = QFileInfo(filepath).fileName();
+	QString text;
+	if (holder.session == QLatin1String("?")) {
+		text = tr("%1 is being opened by another session of QElectroTech.").arg(name);
+	} else {
+		const QString since = QLocale::system().toString(holder.since.toLocalTime(), QLocale::ShortFormat);
+		text = tr("%1 is open by %2 on %3 since %4").arg(name, holder.user, holder.host, since);
+		const qint64 minutes = holder.heartbeat.isValid()
+				? holder.heartbeat.secsTo(QDateTime::currentDateTimeUtc()) / 60
+				: -1;
+		if (minutes >= 0) {
+			text += minutes < 1
+					? tr(" (active just now).")
+					: tr(" (active %n minute(s) ago).", nullptr, static_cast<int>(minutes));
+		} else {
+			text += QLatin1Char('.');
+		}
+	}
+
+	QMessageBox box(QMessageBox::Warning, tr("Project in use", "message box title"), text, QMessageBox::NoButton, this);
+	box.setInformativeText(tr("Open it read-only to look at it without changing it. "
+							  "Open it anyway only if you know that session is not "
+							  "using it any more: both of you could then save over each other."));
+	QPushButton *read_only = box.addButton(tr("Open read-only"), QMessageBox::AcceptRole);
+	QPushButton *anyway = box.addButton(tr("Open anyway"), QMessageBox::DestructiveRole);
+	box.addButton(QMessageBox::Cancel);
+	box.setDefaultButton(read_only);
+	box.setEscapeButton(box.button(QMessageBox::Cancel));
+	box.exec();
+	if (box.clickedButton() == read_only) return LockChoice::ReadOnly;
+	if (box.clickedButton() == anyway) return LockChoice::OpenAnyway;
+	return LockChoice::Cancel;
+}
+
+/**
+	@brief QETDiagramEditor::offerToRecover
+	@p filepath could not be read (@p reason): say why, and offer its newest
+	previous version (PreviousVersions) and, for a .qetz, what can be read
+	of it (QetContainer::recover()). Either opens as a new project,
+	"<name> (recovered)"; @p filepath is never moved or written.
+	@return true if a project was opened
+*/
+bool QETDiagramEditor::offerToRecover(const QString &filepath, const QString &reason)
+{
+	const QFileInfo info(filepath);
+	QFile file(filepath);
+	const bool zip = file.open(QIODevice::ReadOnly) && QetContainer::isZip(file.peek(4));
+	file.close();
+	const QStringList versions = PreviousVersions::kept(filepath);
+
+	QMessageBox box(QMessageBox::Warning, tr("Cannot open %1").arg(info.fileName()),
+					reason.isEmpty()
+					? tr("The file %1 cannot be read as a QElectroTech project.").arg(info.fileName())
+					: tr("The project file is damaged:\n%1").arg(reason),
+					QMessageBox::Cancel, this);
+	QAbstractButton *previous = nullptr, *recover = nullptr;
+	if (!versions.isEmpty()) {
+		const QDateTime saved = QFileInfo(versions.first()).lastModified();
+		previous = box.addButton(tr("Open the version saved %1")
+								 .arg(QLocale().toString(saved, QLocale::ShortFormat)),
+								 QMessageBox::AcceptRole);
+	}
+	if (zip)
+		recover = box.addButton(tr("Recover what can be read"), QMessageBox::AcceptRole);
+	if (previous || recover)
+		box.setInformativeText(tr("Either opens as a new project, \"%1\"; %2 is left as it is.")
+							   .arg(recoveredPath(filepath, info.suffix()).section(QLatin1Char('/'), -1),
+									info.fileName()));
+	box.exec();
+
+	if (previous && box.clickedButton() == previous)
+		return openAsRecovered(versions.first(), filepath);
+	if (recover && box.clickedButton() == recover) {
+		file.open(QIODevice::ReadOnly);
+		QDomDocument document;
+		QStringList lost;
+		QString error;
+		if (!QetContainer::recover(file.readAll(), &document, &lost, &error)) {
+			QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()),
+										tr("Nothing can be recovered from it:\n%1").arg(error));
+			return false;
+		}
+			//Opened from a .qetz written of it, as the project it replaces
+		QTemporaryDir dir;
+		const QString read = dir.filePath(info.completeBaseName() + QStringLiteral(".qetz"));
+		const QList<QetZip::Entry> parts = QetContainer::split(document, QString(), &error);
+		if (!dir.isValid() || parts.isEmpty() || !QetZip::write(read, parts, &error)
+				|| !openAsRecovered(read, filepath)) {
+			if (!error.isEmpty())
+				QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()), error);
+			return false;
+		}
+		if (!lost.isEmpty()) {
+			QMessageBox done(QMessageBox::Information, tr("Project recovered"),
+							 tr("What could be read of %1 is open as a new project. "
+								"Some parts could not be read and were left out: see the details.")
+							 .arg(info.fileName()),
+							 QMessageBox::Ok, this);
+			done.setDetailedText(lost.join(QLatin1Char('\n')));
+			done.exec();
+		}
+		return true;
+	}
+	return false;
+}
+
+/**
+	@brief QETDiagramEditor::recoveredPath
+	@return where a project recovered from @p filepath is saved: beside it,
+	"<name> (recovered).<suffix>", numbered if that is taken
+*/
+QString QETDiagramEditor::recoveredPath(const QString &filepath, const QString &suffix)
+{
+	const QFileInfo info(filepath);
+	QString path = info.absoluteDir().filePath(tr("%1 (recovered)").arg(info.completeBaseName())
+											   + QLatin1Char('.') + suffix);
+	for (int n = 2 ; QFileInfo::exists(path) ; ++n)
+		path = info.absoluteDir().filePath(tr("%1 (recovered %2)").arg(info.completeBaseName()).arg(n)
+										   + QLatin1Char('.') + suffix);
+	return path;
+}
+
+/**
+	@brief QETDiagramEditor::openAsRecovered
+	Open @p source as a new project saved beside @p original, of its type
+	(recoveredPath()), not saved yet.
+	@return true if it opened
+*/
+bool QETDiagramEditor::openAsRecovered(const QString &source, const QString &original)
+{
+	QETProject *project = new QETProject(source);
+	if (project->state() != QETProject::Ok) {
+		QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(QFileInfo(source).fileName()),
+									project->openError());
+		delete project;
+		return false;
+	}
+	project->setFilePath(recoveredPath(original, QFileInfo(original).suffix()));
+	project->setModified(true);
+	addProject(project);
+	return true;
+}
+
+/**
 	Ouvre un projet depuis un fichier et l'ajoute a cet editeur
 	@param filepath Chemin du projet a ouvrir
 	@param interactive true pour afficher des messages a l'utilisateur, false sinon
@@ -1966,6 +2125,40 @@ bool QETDiagramEditor::openAndAddProject(
 		}
 	}
 
+		//Is someone else working on this file? Taken before the project is
+		//read, so a cancel costs nothing. Never blocks opening: a folder
+		//the lock cannot be made in, or the setting off, opens as before.
+	std::unique_ptr<ProjectLock> lock;
+	bool opened_read_only_by_lock = false;
+	if (ProjectLock::mayTake() && filepath_info.isWritable())
+	{
+		lock = std::make_unique<ProjectLock>();
+		if (lock->acquire(filepath) == ProjectLock::Result::Held)
+		{
+			const ProjectLock::Holder holder = lock->blockingHolder();
+			bool take_over = false;
+			if (interactive) {
+				switch (askAboutLock(filepath, holder)) {
+				case LockChoice::Cancel:
+					return(false);
+				case LockChoice::OpenAnyway:
+					take_over = true;
+					break;
+				case LockChoice::ReadOnly:
+					break;
+				}
+			}
+				//Not interactive (an assistant opening it): read-only, which
+				//is the safe answer to a question nobody is there to ask
+			if (take_over && lock->acquire(filepath, true) == ProjectLock::Result::Acquired) {
+				// ours now
+			} else if (!take_over) {
+				lock.reset();
+				opened_read_only_by_lock = true;
+			}
+		}
+	}
+
 	//Create the project
 	DialogWaiting::instance(this);
 
@@ -1979,7 +2172,17 @@ bool QETDiagramEditor::openAndAddProject(
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok)
 	{
-		if (interactive && project -> state() != QETProject::FileOpenDiscard)
+			//A damaged project: its previous version or what can be read
+			//of it, as a new project; the file itself is left as it is
+		if (interactive && project->state() == QETProject::XmlParsingFailed
+				&& offerToRecover(filepath, project->openError()))
+		{
+			delete project;
+			DialogWaiting::dropInstance();
+			return(true);
+		}
+		if (interactive && project -> state() != QETProject::FileOpenDiscard
+				&& project -> state() != QETProject::XmlParsingFailed)
 		{
 			QET::QetMessageBox::warning(
 				this,
@@ -1996,6 +2199,17 @@ bool QETDiagramEditor::openAndAddProject(
 		delete project;
 		DialogWaiting::dropInstance();
 		return(false);
+	}
+
+	if (opened_read_only_by_lock) project->setOpenedReadOnlyByLock(true);
+	if (lock && lock->isHeld()) {
+		connect(lock.get(), &ProjectLock::lockTaken, this, [this, project](const ProjectLock::Holder &by) {
+			statusBar()->showMessage(
+				tr("%1 on %2 has taken over %3. Save your changes with Save As to keep them.")
+					.arg(by.user, by.host, QFileInfo(project->filePath()).fileName()),
+				30000);
+		});
+		project->setLock(std::move(lock));
 	}
 
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);

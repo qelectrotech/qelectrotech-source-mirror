@@ -33,12 +33,14 @@
 #include "diagram.h"
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
+#include "projectlock.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
 
+#include <QDateTime>
 #include <QHash>
 #include <QSet>
 #include <QUuid>
@@ -125,6 +127,7 @@ class QETProject : public QObject
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
+		QString openError() const;
 		QList<Diagram *> diagrams() const;
 			//The folios whether their items are built or not
 			//(lazy folios); diagrams() builds them
@@ -334,11 +337,18 @@ class QETProject : public QObject
 						   QStringList *kept_parts = nullptr);
 		static QString spliceKeptFolios(QString text, const QHash<int, QByteArray> &kept_folios);
 		bool close();
-		QETResult write();
+		QETResult write(bool overwrite_changed = false);
+		QString writeTarget() const;
+		void rememberDiskState();
+		bool changedOnDisk(QDateTime *when = nullptr) const;
 		bool isReadOnly() const;
 			/// Opened from a .qetz of a later format (opened read-only)
 		bool isFromLaterVersion() const {return m_from_later_version;}
 		void setReadOnly(bool);
+			/// The lock sidecar this session holds on the project file, if any
+		ProjectLock *lock() const {return m_lock.get();}
+		void setLock(std::unique_ptr<ProjectLock> lock);
+		void setOpenedReadOnlyByLock(bool by_lock);
 		bool isEmpty() const;
 		ElementsLocation importElement(ElementsLocation &location);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
@@ -498,6 +508,11 @@ class QETProject : public QObject
 			/// Whether the project is read only
 		bool m_read_only = false;
 		bool m_from_later_version = false;
+			/// The lock sidecar of the project file (see ProjectLock)
+		std::unique_ptr<ProjectLock> m_lock;
+			/// File this project was opened read-only for, because another
+			/// session holds its lock: write() does not write to it
+		QString m_locked_out_path;
 			/// Filepath for which this project is considered read only
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project
@@ -558,6 +573,11 @@ class QETProject : public QObject
 		bool m_kept_folios_trusted = false;
 			/// Read from a .qet whose path nobody chose since: saved beside it
 		bool m_opened_from_qet = false;
+			/// The project file as this QET last read or wrote it, to see
+			/// whether something else changed it since (changedOnDisk())
+		QString m_disk_path;
+		qint64 m_disk_size = -1;
+		QDateTime m_disk_mtime;
 			/// Saving a .qetz may copy the part of a folio not built
 			/// (toXml(), stage D4)
 		bool m_kept_parts_trusted = false;
@@ -591,6 +611,8 @@ class QETProject : public QObject
 		QFuture<bool> m_backup_future;
 			/// Crash-recovery snapshots, written in turn by writeBackup()
 		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
+			/// Why the file could not be read, see openError()
+		QString m_open_error;
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;

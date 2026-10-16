@@ -1098,6 +1098,19 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 
 void DynamicElementTextItem::elementInfoChanged()
 {
+		//A folio report's label shows where its partner is
+		//(updateReportText()); the label in its information is only where
+		//the partner was when last saved, and changing any other
+		//information wrote that stale position back (F116)
+	if (m_text_from == ElementInfo && m_info_name == QLatin1String("label")
+			&& m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)
+			&& m_other_report) {
+		setupFormulaConnection();
+		updateReportText();
+		emit plainTextChanged();
+		return;
+	}
+
 	DiagramContext dc;
 	Element *element = elementUseForInfo();
 	if(element) {
@@ -1797,12 +1810,36 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 
 
 	bool update_alignment = true;
+	bool parsing_only = false;
 	if (diagram() && (diagram()->project()->state() == QETProject::ProjectParsingRunning))
+	{
 		update_alignment = false;
+		parsing_only = true;
+	}
 	if (m_parent_element.data()->state() == QET::GIBuildingFromXml ||
 		m_parent_element.data()->state() == QET::GILoadingFromXml)
+	{
 		update_alignment = false;
-	
+		parsing_only = false;
+	}
+
+		//A text emptied with its alignment kept (the project not being
+		//opened) is filled again the same way, even if the project is
+		//being opened by then: lazy folios build the folios left late with
+		//the project in that state, and the text would stay where emptying
+		//moved it (F119)
+	if (text.isEmpty())
+		m_emptied_aligned = update_alignment;
+	else if (!toPlainText().isEmpty())
+		m_emptied_aligned = false;
+	else if (parsing_only && m_emptied_aligned)
+	{
+		update_alignment = true;
+		m_emptied_aligned = false;
+	}
+	else
+		m_emptied_aligned = false;
+
 	if (update_alignment) {
 		prepareAlignment();
 	}
