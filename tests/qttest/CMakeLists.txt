@@ -1349,3 +1349,18 @@ target_compile_definitions(tst_qetcontainer PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\""
   "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\""
   "QET_FORMAT_SPEC=\"${QET_DIR}/sources/container/QETZ-FORMAT.md\"")
+
+# A right-aligned report text emptied and set again while lazy folios are
+# built is saved where it was (F119): the real binary's --run on
+# fixtures/report_text_late_folio.qet, lazily and with every folio built.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_reporttextlatefolio
+    tst_reporttextlatefolio.cpp)
+  add_test(NAME tst_reporttextlatefolio COMMAND tst_reporttextlatefolio)
+  add_dependencies(tst_reporttextlatefolio qelectrotech)
+  target_link_libraries(tst_reporttextlatefolio PRIVATE Qt::Test)
+  target_compile_definitions(tst_reporttextlatefolio PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
+endif()
