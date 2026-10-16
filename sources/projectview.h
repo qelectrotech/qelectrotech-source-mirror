@@ -131,6 +131,7 @@ class ProjectView : public QWidget
 		QETResult save();
 		QETResult saveAs();
 		QETResult doSave();
+		QETResult writeProject(bool *cancelled);
 		QETResult saveCopyForOlderVersions();
 		int cleanProject();
 		void updateWindowTitle();

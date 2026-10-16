@@ -268,7 +268,9 @@ bool ProjectView::tryClosing()
 		QString filepath = askUserForFilePath();
 		if (filepath.isEmpty()) return(false); // users may cancel the closing
 	}
-	QETResult result = m_project -> write();
+	bool cancelled = false;
+	QETResult result = writeProject(&cancelled);
+	if (cancelled) return(false);
 	updateWindowTitle();
 	if (!result.isOk()) emit(errorEncountered(result.errorMessage()));
 	return(result.isOk());
@@ -754,6 +756,50 @@ QETResult ProjectView::saveCopyForOlderVersions()
 }
 
 /**
+	@brief ProjectView::writeProject
+	Write the project file. If the file was changed on disk since this QET
+	read or wrote it, ask what to do first: a plain save would replace
+	the other change.
+	@param cancelled set to true if the user gave up, or chose to save a
+	copy and did not complete it: nothing was saved to the project's file
+	@return the result of the write
+*/
+QETResult ProjectView::writeProject(bool *cancelled)
+{
+	*cancelled = false;
+	QDateTime when;
+	if (!m_project -> changedOnDisk(&when)) {
+		return(m_project -> write());
+	}
+
+	const QString name = QFileInfo(m_project -> writeTarget()).fileName();
+	QMessageBox box(QMessageBox::Warning,
+					tr("File changed on disk", "message box title"),
+					tr("Someone else changed %1 on disk at %2 since you opened it.\n\n"
+					   "Saving over it would lose their changes.")
+						.arg(name, QLocale::system().toString(when, QLocale::ShortFormat)),
+					QMessageBox::NoButton, this);
+	QPushButton *copy_button = box.addButton(tr("Save as a copy"), QMessageBox::AcceptRole);
+	QPushButton *overwrite_button = box.addButton(tr("Overwrite"), QMessageBox::DestructiveRole);
+	box.addButton(QMessageBox::Cancel);
+	box.setDefaultButton(copy_button);
+	box.setEscapeButton(QMessageBox::Cancel);
+	box.exec();
+
+	if (box.clickedButton() == overwrite_button) {
+		return(m_project -> write(true));
+	}
+	if (box.clickedButton() == copy_button) {
+		QETResult result = saveAs();
+			//The Save As dialog was cancelled: the project is still modified
+		if (m_project -> projectWasModified()) *cancelled = true;
+		return(result);
+	}
+	*cancelled = true;
+	return(QETResult());
+}
+
+/**
 	Save project content, then write the project file. May
 	call saveAs if no filepath was provided before.
 	@return a QETResult object reflecting the situation; note that a valid
@@ -795,7 +841,9 @@ QETResult ProjectView::doSave()
 	}
 
 	// write to file
-	QETResult result = m_project -> write();
+	bool cancelled = false;
+	QETResult result = writeProject(&cancelled);
+	if (cancelled) return(QETResult());
 	updateWindowTitle();
 	// This marks the stack's current index as the new "saved" point (so isClean()/cleanChanged() correctly
 	// resume tracking unsaved changes from here) without discarding the undo history. Edits made before this save 

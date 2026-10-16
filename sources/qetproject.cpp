@@ -387,7 +387,13 @@ void QETProject::init()
 		connect(&m_autosave_timer, &QTimer::timeout, this, [this]()
 		{
 			if(!this->m_file_path.isEmpty())
-				this->write();
+			{
+					//No one is there to ask: a file changed behind this
+					//QET is left alone
+				const QETResult result = this->write();
+				if (!result.isOk())
+					qWarning() << "autosave:" << result.errorMessage();
+			}
 		});
 		m_autosave_timer.start();
 	}
@@ -472,6 +478,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
+	rememberDiskState();
 		//Each folio's text is kept while it is not built (readDiagramsXml()):
 		//from a .qet only, a .qetz is a zip of parts
 	if (!content.startsWith("PK\x03\x04"))
@@ -2735,7 +2742,64 @@ QETResult QETProject::writeCopyForOlderVersions(const QString &path)
 	return(QETResult());
 }
 
-QETResult QETProject::write()
+/**
+	@brief QETProject::rememberDiskState
+	Remember the size and modification time of the project file, as this QET
+	has just read or written it. changedOnDisk() compares against them.
+*/
+void QETProject::rememberDiskState()
+{
+	const QFileInfo info(m_file_path);
+	m_disk_path = m_file_path;
+	m_disk_size = info.exists() ? info.size() : -1;
+	m_disk_mtime = info.exists() ? info.lastModified() : QDateTime();
+}
+
+/**
+	@brief QETProject::writeTarget
+	@return the file write() writes to: the .qetz beside a project read
+	from a .qet, else the project's own file
+*/
+QString QETProject::writeTarget() const
+{
+	return m_opened_from_qet ? besideContainerPath() : m_file_path;
+}
+
+/**
+	@brief QETProject::changedOnDisk
+	@param when set to the modification time of the file now on disk
+	@return true if the file write() would replace is not the one this QET
+	last read or wrote: another user, another program or another QET saved
+	it since. A file that does not exist yet, or one this QET never read
+	or wrote (Save As to another name), is not a change.
+*/
+bool QETProject::changedOnDisk(QDateTime *when) const
+{
+	const QString target = writeTarget();
+	if (target.isEmpty() || target != m_disk_path || m_disk_size < 0)
+		return false;
+	const QFileInfo info(target);
+	if (!info.exists())
+		return false;
+	if (info.size() == m_disk_size && info.lastModified() == m_disk_mtime)
+		return false;
+	if (when)
+		*when = info.lastModified();
+	return true;
+}
+
+/**
+	@brief QETProject::write
+	Save the project in a file.
+	If the file was changed on disk since this QET read or wrote it, nothing
+	is written and the result says so: the interactive save asks the user
+	first (ProjectView) and calls again with @p overwrite_changed; scripts,
+	the command line, autosave and MCP have no one to ask and keep the
+	refusal. Setting QET_OVERWRITE_CHANGED=1 in the environment overwrites
+	without asking, for a script that means to.
+	@param overwrite_changed write even if the file changed on disk
+*/
+QETResult QETProject::write(bool overwrite_changed)
 {
 		// this operation requires a filepath
 	if (m_file_path.isEmpty())
@@ -2771,6 +2835,15 @@ QETResult QETProject::write()
 			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 	}
 
+	if (!overwrite_changed && qEnvironmentVariableIntValue("QET_OVERWRITE_CHANGED") == 0) {
+		QDateTime when;
+		if (changedOnDisk(&when))
+			return(failed(tr("someone else changed the file on disk at %1 since it was opened, "
+							 "and saving would overwrite that. Save to another name, or "
+							 "set QET_OVERWRITE_CHANGED=1 to overwrite it.")
+						  .arg(QLocale::system().toString(when, QLocale::ShortFormat))));
+	}
+
 		//The file as it was goes among its previous versions first
 		//(Settings > General > Projects); a copy that fails does not stop
 		//the save
@@ -2796,6 +2869,8 @@ QETResult QETProject::write()
 						   m_file_path, &error_message))
 			return(failed(error_message));
 	}
+
+	rememberDiskState();
 
 		// The project has just been written to a writable file (e.g. saved to
 		// a new location with "Save As"), so it is no longer read-only.
