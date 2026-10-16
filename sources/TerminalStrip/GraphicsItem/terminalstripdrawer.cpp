@@ -502,16 +502,53 @@ void drawTerminalBody(QPainter *painter, const QRectF &rect)
         painter->drawEllipse(QPointF(rect.center().x(), screw_y), radius, radius);
         painter->drawLine(QPointF(rect.center().x() - radius * 0.65, screw_y),
                           QPointF(rect.center().x() + radius * 0.65, screw_y));
-
-        // Wire entry / clamp mark near the lower part of the terminal.
-        const qreal opening_width = qMin(qreal(5.0), rect.width() * 0.28);
-        const qreal opening_height = qMin(qreal(2.0), rect.height() * 0.025);
-        if (opening_width >= 1.0 && opening_height >= 1.0) {
-            painter->drawRect(QRectF(rect.center().x() - opening_width / 2,
-                                     rect.top() + rect.height() * 0.78,
-                                     opening_width, opening_height));
-        }
     }
+}
+
+/**
+ * @brief terminalNumber
+ * @param label : label of a terminal, for example "XAUZ1:1"
+ * @return The number of the terminal, the part after the last ':' ("1").
+ * The strip name is already written in the header of the strip.
+ * If the label have no ':', return the label.
+ */
+QString terminalNumber(const QString &label)
+{
+	const auto index_ = label.lastIndexOf(QLatin1Char(':'));
+	return index_ < 0 ? label : label.mid(index_ + 1).trimmed();
+}
+
+/**
+ * @brief fitTextToCell
+ * The text of a terminal is drawn vertically (or not) inside the width of the terminal.
+ * If the font is too big for a narrow terminal, the text overlaps the next ones.
+ * Clip the painter to the width of the terminal and reduce the font if needed.
+ * Must be called with the painter at the left of the terminal, before any rotation.
+ * @param painter
+ * @param cell_width : width of the terminal
+ * @param text_is_vertical : true if the text is rotated (the height of the font is then along the width of the terminal)
+ */
+void fitTextToCell(QPainter *painter, qreal cell_width, bool text_is_vertical)
+{
+	painter->setClipRect(QRectF(0, -100000, cell_width, 200000), Qt::IntersectClip);
+
+	if (!text_is_vertical || cell_width <= 0) {
+		return;
+	}
+	auto font_{painter->font()};
+	const auto available_{std::max<qreal>(1.0, cell_width - 1.0)};
+	const QFontMetricsF metrics_{font_};
+	if (metrics_.height() > available_ && metrics_.height() > 0)
+	{
+		const auto size_{font_.pixelSize() > 0 ? qreal(font_.pixelSize()) : font_.pointSizeF()};
+		const auto new_size_{std::max<qreal>(3.0, size_ * available_ / metrics_.height())};
+		if (font_.pixelSize() > 0) {
+			font_.setPixelSize(static_cast<int>(new_size_));
+		} else {
+			font_.setPointSizeF(new_size_);
+		}
+		painter->setFont(font_);
+	}
 }
 
 /**
@@ -738,6 +775,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				if (fill_color_.isValid()) {
 					painter->setPen(text_color_);
 				}
+                fitTextToCell(painter, terminal_rect.width(), terminals_text_orientation == Qt::Vertical);
                 text_rect.setRect(0, terminals_text_y, terminal_rect.width(), terminals_text_height);
                 if (terminals_text_orientation == Qt::Vertical)
                 {
@@ -748,7 +786,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
                 const auto shared_real_terminal{real_terminal_vector[i]};
 				painter->drawText(text_rect,
-								  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
+								  shared_real_terminal ? terminalNumber(shared_real_terminal->label()) : QString(),
 								  terminals_text_option);
 
 				if (m_preview_draw)
@@ -765,6 +803,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				if (fill_color_.isValid()) {
 					painter->setPen(text_color_);
 				}
+				fitTextToCell(painter, terminal_rect.width(), xref_text_orientation == Qt::Vertical);
 				if (xref_text_orientation == Qt::Vertical)
 				{
 					painter->translate(xref_rect.bottomLeft());
