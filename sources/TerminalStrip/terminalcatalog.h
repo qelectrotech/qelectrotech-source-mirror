@@ -20,6 +20,7 @@
 
 #include <QLocale>
 #include <QString>
+#include <QStringList>
 #include <QVector>
 
 /**
@@ -28,6 +29,7 @@
  * usual sections (mm2) and widths (mm) of the terminals sold by the manufacturers.
  * Only the values found in the catalogs of the manufacturers are listed,
  * any other value can be typed by the user.
+ * For Legrand and ABB Entrelec the value is the pitch ("pas") of the catalog.
  */
 namespace TerminalCatalog
 {
@@ -35,7 +37,7 @@ namespace TerminalCatalog
 	 * Width (mm) of a terminal sold by a manufacturer.
 	 * For ABB Entrelec the value is the spacing (pitch) given by the catalog.
 	 */
-	struct WidthEntry { double mm; const char *label; double section; };
+	struct WidthEntry { double mm; const char *label; double section; const char *manufacturer; };
 
 	inline const QVector<double> &sections()
 	{
@@ -91,26 +93,45 @@ namespace TerminalCatalog
 	inline const QVector<WidthEntry> &widthEntries()
 	{
 		static const QVector<WidthEntry> entries_ {
-			{5.1,  "Weidmüller WDU 2.5", 2.5},
-			{5.2,  "WAGO 2002 (TOPJOB S)", 2.5},
-			{6.0,  "ABB Entrelec M 4/6", 4.0},
-			{6.1,  "Weidmüller WDU 4", 4.0},
-			{6.2,  "Phoenix Contact UT 4", 4.0},
-			{8.0,  "ABB Entrelec M 6/8", 6.0},
-			{8.0,  "ABB Entrelec M 4/8", 4.0},
-			{8.2,  "Phoenix Contact UT 6", 6.0},
-			{10.0, "ABB Entrelec M 10/10", 10.0},
-			{10.2, "Phoenix Contact UT 10", 10.0},
-			{11.9, "Weidmüller WDU 16/ZA", 16.0},
-			{12.2, "Phoenix Contact UT 16", 16.0},
-			{16.0, "Phoenix Contact UT 35", 35.0},
-			{16.0, "Weidmüller WDU 35N", 35.0},
-			{26.0, "ABB Entrelec M 35/26.FF", 35.0},
-			{31.0, "ABB Entrelec M 70/31.AF", 70.0},
-			{35.0, "ABB Entrelec M 120/35.F", 120.0},
-			{42.0, "ABB Entrelec M 300/42.FF", 300.0}
+			{5.0,  "ABB Entrelec MA 2.5/5", 2.5, "ABB Entrelec"},
+			{5.1,  "Weidmüller WDU 2.5", 2.5, "Weidmüller"},
+			{5.2,  "WAGO 2002 (TOPJOB S)", 2.5, "WAGO"},
+			{6.0,  "ABB Entrelec M 4/6", 4.0, "ABB Entrelec"},
+			{6.0,  "Legrand Viking 3 (4 mm²)", 4.0, "Legrand"},
+			{6.1,  "Weidmüller WDU 4", 4.0, "Weidmüller"},
+			{6.2,  "Phoenix Contact UT 4", 4.0, "Phoenix Contact"},
+			{7.5,  "WAGO 2006 (TOPJOB S)", 6.0, "WAGO"},
+			{7.9,  "Weidmüller WDU 6", 6.0, "Weidmüller"},
+			{8.0,  "ABB Entrelec M 6/8", 6.0, "ABB Entrelec"},
+			{8.0,  "ABB Entrelec M 4/8", 4.0, "ABB Entrelec"},
+			{8.2,  "Phoenix Contact UT 6", 6.0, "Phoenix Contact"},
+			{10.0, "ABB Entrelec M 10/10", 10.0, "ABB Entrelec"},
+			{10.2, "Phoenix Contact UT 10", 10.0, "Phoenix Contact"},
+			{11.9, "Weidmüller WDU 16/ZA", 16.0, "Weidmüller"},
+			{12.0, "ABB Entrelec M 16/12", 16.0, "ABB Entrelec"},
+			{12.0, "Legrand Viking 3 (16 mm²)", 16.0, "Legrand"},
+			{12.2, "Phoenix Contact UT 16", 16.0, "Phoenix Contact"},
+			{16.0, "ABB Entrelec M 35/16", 35.0, "ABB Entrelec"},
+			{16.0, "Phoenix Contact UT 35", 35.0, "Phoenix Contact"},
+			{16.0, "Weidmüller WDU 35N", 35.0, "Weidmüller"},
+			{26.0, "ABB Entrelec M 35/26.FF", 35.0, "ABB Entrelec"},
+			{31.0, "ABB Entrelec M 70/31.AF", 70.0, "ABB Entrelec"},
+			{35.0, "ABB Entrelec M 120/35.F", 120.0, "ABB Entrelec"},
+			{42.0, "ABB Entrelec M 300/42.FF", 300.0, "ABB Entrelec"}
 		};
 		return entries_;
+	}
+	/// Manufacturers of the catalog, in the order of the first entry.
+	inline QStringList manufacturers()
+	{
+		QStringList list_;
+		for (const auto &entry : widthEntries()) {
+			const auto name_ = QString::fromUtf8(entry.manufacturer);
+			if (!list_.contains(name_)) {
+				list_ << name_;
+			}
+		}
+		return list_;
 	}
 }
 

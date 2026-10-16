@@ -39,6 +39,7 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QGridLayout>
 #include <QIcon>
 #include <QLabel>
 #include <QLocale>
@@ -93,6 +94,50 @@ double leadingNumber(const QString &text)
 	auto number = match.captured(1);
 	number.replace(QLatin1Char(','), QLatin1Char('.'));
 	return number.toDouble();
+}
+
+/// The manufacturer combo box of the terminal group box, created by the code.
+QComboBox *manufacturerCombo(QWidget *width_cb)
+{
+	return width_cb->parentWidget()->findChild<QComboBox *>(QStringLiteral("m_terminal_manufacturer_cb"));
+}
+
+/// Insert a "Manufacturer" row in the grid layout of the terminal group box, just before the width row.
+QComboBox *createManufacturerCombo(QComboBox *width_cb)
+{
+	auto *parent_ = width_cb->parentWidget();
+	auto *grid_ = qobject_cast<QGridLayout *>(parent_ ? parent_->layout() : nullptr);
+	if (!grid_)
+		return nullptr;
+
+	int row_ = 0, column_ = 0, row_span_ = 0, column_span_ = 0;
+	const auto index_ = grid_->indexOf(width_cb);
+	if (index_ < 0)
+		return nullptr;
+	grid_->getItemPosition(index_, &row_, &column_, &row_span_, &column_span_);
+
+	//Move down the rows from the width row
+	QList<QPair<QWidget *, QPair<int,int>>> moved_;
+	for (int i = 0; i < grid_->count(); ++i) {
+		int r = 0, c = 0, rs = 0, cs = 0;
+		grid_->getItemPosition(i, &r, &c, &rs, &cs);
+		if (r >= row_ && grid_->itemAt(i)->widget()) {
+			moved_.append({grid_->itemAt(i)->widget(), {r, c}});
+		}
+	}
+	for (const auto &m : moved_) {
+		grid_->removeWidget(m.first);
+	}
+	for (const auto &m : moved_) {
+		grid_->addWidget(m.first, m.second.first + 1, m.second.second);
+	}
+
+	auto *label_ = new QLabel(QObject::tr("Manufacturer"), parent_);
+	auto *cb_ = new QComboBox(parent_);
+	cb_->setObjectName(QStringLiteral("m_terminal_manufacturer_cb"));
+	grid_->addWidget(label_, row_, 0);
+	grid_->addWidget(cb_, row_, 1);
+	return cb_;
 }
 
 /// Value of a terminal size combo (picked in the list or typed).
@@ -446,6 +491,22 @@ void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, d
 	}
 	setComboValue(ui->m_terminal_section_cb, section, tr(" mm²"));
 
+	auto *man_cb = manufacturerCombo(ui->m_terminal_width_cb);
+	if (!man_cb) {
+		man_cb = createManufacturerCombo(ui->m_terminal_width_cb);
+		if (man_cb) {
+			connect(man_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+					this, [this]() { refreshTerminalWidthCombo(); });
+		}
+	}
+	if (man_cb) {
+		QSignalBlocker man_blocker(man_cb);
+		man_cb->clear();
+		man_cb->addItem(tr("All manufacturers"), QString());
+		for (const auto &name_ : TerminalCatalog::manufacturers()) {
+			man_cb->addItem(name_, name_);
+		}
+	}
 	connect(ui->m_terminal_section_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
 			this, [this]() { refreshTerminalWidthCombo(); });
 	connect(ui->m_terminal_section_cb->lineEdit(), &QLineEdit::editingFinished,
@@ -508,10 +569,17 @@ void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
 			   + QStringLiteral(" - ") + QString::fromUtf8(entry.label);
 	};
 
+	const auto *man_cb = manufacturerCombo(ui->m_terminal_width_cb);
+	const auto manufacturer = man_cb ? man_cb->currentData().toString() : QString();
+	auto manufacturer_ok = [&manufacturer](const TerminalCatalog::WidthEntry &entry) {
+		return manufacturer.isEmpty() || manufacturer == QString::fromUtf8(entry.manufacturer);
+	};
+
+	//Prefer the terminals of the selected section, if the selected manufacturer has some
 	bool has_compatible_entry = false;
 	if (section > 0) {
 		for (const auto &entry : TerminalCatalog::widthEntries()) {
-			if (qFuzzyCompare(1 + entry.section, 1 + section)) {
+			if (manufacturer_ok(entry) && qFuzzyCompare(1 + entry.section, 1 + section)) {
 				has_compatible_entry = true;
 				break;
 			}
@@ -522,7 +590,8 @@ void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
 	ui->m_terminal_width_cb->clear();
 	ui->m_terminal_width_cb->addItem(tr("None (default)"), 0.0);
 	for (const auto &entry : TerminalCatalog::widthEntries()) {
-		if (!has_compatible_entry || qFuzzyCompare(1 + entry.section, 1 + section)) {
+		if (manufacturer_ok(entry)
+			&& (!has_compatible_entry || qFuzzyCompare(1 + entry.section, 1 + section))) {
 			ui->m_terminal_width_cb->addItem(item_text(entry), entry.mm);
 		}
 	}
