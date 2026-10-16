@@ -208,6 +208,13 @@ QString QetContainer::pictureFile(const QDomElement &image)
 	return image.attribute(ImageFileAttribute);
 }
 
+void QetContainer::inlinePicture(QDomElement image, const QByteArray &bytes)
+{
+	image.removeAttribute(ImageFileAttribute);
+	image.insertBefore(image.ownerDocument().createTextNode(QString::fromLatin1(bytes.toBase64())),
+					   image.firstChild());
+}
+
 /**
 	@brief QetContainer::ownUuids
 	@return true if every folio, symbol and wire of @p project has a uuid

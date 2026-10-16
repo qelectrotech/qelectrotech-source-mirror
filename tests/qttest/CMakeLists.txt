@@ -943,6 +943,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # A .qetz folio whose title only changed keeps its pictures when saved
+  # with folios built when needed (F118), on examples/grafcet.qet.
+  add_executable(
+    tst_qetzheaderpictures
+    tst_qetzheaderpictures.cpp)
+  add_test(NAME tst_qetzheaderpictures COMMAND tst_qetzheaderpictures)
+  add_dependencies(tst_qetzheaderpictures qelectrotech)
+  target_link_libraries(tst_qetzheaderpictures PRIVATE Qt::Test)
+  target_compile_definitions(tst_qetzheaderpictures PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.elementTerminals() lists each terminal's uuid and qet.terminalIndex()
   # turns element uuid + terminal uuid back into the index the conductor
   # calls take, on examples/perceuse.qet (two terminals at one point).

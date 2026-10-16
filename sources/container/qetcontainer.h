@@ -84,6 +84,9 @@ namespace QetContainer
 				 QString *error = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
+		/// @p image, which names its picture's file (pictureFile()), given
+		/// the picture itself, @p bytes, as a document read whole has it
+	void inlinePicture(QDomElement image, const QByteArray &bytes);
 
 		/// Take what QElectroTech computes out of a folio (format 4)
 	void dropComputed(QDomElement diagram, bool terminal_lists);
