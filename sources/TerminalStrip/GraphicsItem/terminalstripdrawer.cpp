@@ -632,6 +632,20 @@ void drawTerminalBody(QPainter *painter, const QRectF &rect, const QVector<Zone>
 }
 
 /**
+ * @brief markerTagLength
+ * Like the real marker tags, every tag of a strip have the same size,
+ * whatever the text written on it ("1", "10"...).
+ * The length is the one needed by two digits, limited to the text zone.
+ * @param metrics : metrics of the font used to draw the text
+ * @param zone_length : length of the text zone, along the text
+ * @return the length of the marker tag along the text
+ */
+qreal markerTagLength(const QFontMetricsF &metrics, qreal zone_length)
+{
+	return qMin(zone_length, metrics.horizontalAdvance(QStringLiteral("00")) + 4.0);
+}
+
+/**
  * @brief markerTagZone
  * @return The vertical zone (in the frame of the strip) really covered by the marker tag of a text,
  * which is smaller than the rectangle of the text.
@@ -650,7 +664,9 @@ Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height
 		const qreal cross_ = qMin(text_height, metrics.height() + 2);
 		return Zone{text_y + (text_height - cross_) / 2, text_y + (text_height + cross_) / 2};
 	}
-	const qreal along_ = qMin(text_height, metrics.horizontalAdvance(text) + 4.0);
+	Q_UNUSED(text)
+		//Same length for every terminal, so the body of every terminal is drawn the same way
+	const qreal along_ = markerTagLength(metrics, text_height);
 	if (option.alignment() & Qt::AlignRight) {
 		return Zone{text_y, text_y + along_};
 	}
@@ -679,7 +695,9 @@ void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &te
 		return;
 	}
 	const QFontMetricsF metrics_{painter->font()};
-	const qreal along_ = qMin(text_rect.width(), metrics_.horizontalAdvance(text) + 4.0);
+		//Vertical text : fixed length, like a real marker tag.
+		//Horizontal text : the tag take the whole width of the terminal.
+	const qreal along_ = vertical ? markerTagLength(metrics_, text_rect.width()) : text_rect.width();
 	const qreal cross_ = vertical ?
 							 text_rect.height() - 2 * qMin(qreal(1.2), text_rect.height() * 0.12) :
 							 qMin(text_rect.height(), metrics_.height() + 2);
@@ -705,6 +723,22 @@ void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &te
 	}
 	painter->restore();
 	painter->setPen(sectional ? Qt::white : Qt::black);
+
+		//The text is longer than the tag ("100", "PE"...) : reduce the font, like on a real tag.
+	const qreal available_ = along_ - 2.0;
+	const qreal text_length_ = metrics_.horizontalAdvance(text);
+	if (text_length_ > available_ && available_ > 0)
+	{
+		auto font_{painter->font()};
+		const auto size_{font_.pixelSize() > 0 ? qreal(font_.pixelSize()) : font_.pointSizeF()};
+		const auto new_size_{std::max<qreal>(3.0, size_ * available_ / text_length_)};
+		if (font_.pixelSize() > 0) {
+			font_.setPixelSize(std::max(1, static_cast<int>(new_size_)));
+		} else {
+			font_.setPointSizeF(new_size_);
+		}
+		painter->setFont(font_);
+	}
 }
 
 /**
@@ -877,6 +911,23 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		QVector<CableCell> cable_cells;
 
 		m_hovered_xref = hoverTerminal{};
+
+			//Length of the longest xref of the strip, used to reserve the same
+			//zone in the body of every terminal.
+		qreal xref_zone_length_{0};
+		{
+			const QFontMetricsF xref_metrics_{painter->font()};
+			for (const auto &physical_t : m_strip->physicalTerminal()) {
+				for (const auto &real_t : physical_t->realTerminals()) {
+					if (real_t && !real_t->xref().isEmpty()) {
+						xref_zone_length_ = qMax(xref_zone_length_,
+												 xref_metrics_.horizontalAdvance(real_t->xref()) + 4.0);
+					}
+				}
+			}
+			xref_zone_length_ = qMin(xref_zone_length_, qreal(xref_text_height));
+		}
+
 		int physical_index = 0;
             //Loop over physical terminals
         for (const auto &physical_t : m_strip->physicalTerminal())
@@ -924,10 +975,24 @@ void TerminalStripDrawer::paint(QPainter *painter)
 													 terminalNumber(real_terminal_vector[i]->label()),
 													 terminals_text_option,
 													 terminals_text_orientation == Qt::Vertical));
-					used_zones_.append(markerTagZone(metrics_, xref_text_y, xref_text_height,
-													 real_terminal_vector[i]->xref(),
-													 xref_text_option,
-													 xref_text_orientation == Qt::Vertical));
+						//The zone of the xref have the length of the longest xref of the strip,
+						//so the body of every terminal is drawn the same way.
+					if (xref_text_orientation == Qt::Vertical)
+					{
+						if (xref_text_option.alignment() & Qt::AlignRight) {
+							used_zones_.append(Zone{xref_text_y, xref_text_y + xref_zone_length_});
+						} else if (xref_text_option.alignment() & Qt::AlignHCenter) {
+							used_zones_.append(Zone{xref_text_y + (xref_text_height - xref_zone_length_) / 2,
+													xref_text_y + (xref_text_height + xref_zone_length_) / 2});
+						} else {
+							used_zones_.append(Zone{xref_text_y + xref_text_height - xref_zone_length_,
+													xref_text_y + xref_text_height});
+						}
+					} else {
+						const qreal cross_ = qMin(xref_text_height, metrics_.height() + 2);
+						used_zones_.append(Zone{xref_text_y + (xref_text_height - cross_) / 2,
+												xref_text_y + (xref_text_height + cross_) / 2});
+					}
 				}
 				const bool have_symbol_{m_pattern->m_type_symbol_height > 0 && real_terminal_vector[i]
 										&& (real_terminal_vector[i]->type() != ElementData::TTGeneric
@@ -1057,12 +1122,6 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					m_united_xref_text_rect = mapped_xref_text_rect;
 				} else {
 					m_united_xref_text_rect = m_united_xref_text_rect.united(mapped_xref_text_rect);
-				}
-
-				if (terminal_rect.width() >= 4.0) {
-					drawMarkerTag(painter, xref_rect, xref_string, xref_text_option,
-								  xref_text_orientation == Qt::Vertical,
-								  shared_real_terminal->type() == ElementData::TTSectional);
 				}
 
 					//if mouse hover the xref text, draw it in blue to advise user the xref is clickable.
