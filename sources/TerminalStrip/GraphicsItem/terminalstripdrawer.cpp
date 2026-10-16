@@ -635,14 +635,18 @@ void drawTerminalBody(QPainter *painter, const QRectF &rect, const QVector<Zone>
  * @brief markerTagLength
  * Like the real marker tags, every tag of a strip have the same size,
  * whatever the text written on it ("1", "10"...).
- * The length is the one needed by two digits, limited to the text zone.
+ * The length is the one needed by the longest number of the strip
+ * (at least two digits), limited to the text zone.
  * @param metrics : metrics of the font used to draw the text
+ * @param longest_number : the longest number of the strip
  * @param zone_length : length of the text zone, along the text
  * @return the length of the marker tag along the text
  */
-qreal markerTagLength(const QFontMetricsF &metrics, qreal zone_length)
+qreal markerTagLength(const QFontMetricsF &metrics, const QString &longest_number, qreal zone_length)
 {
-	return qMin(zone_length, metrics.horizontalAdvance(QStringLiteral("00")) + 4.0);
+	const qreal text_ = qMax(metrics.horizontalAdvance(QStringLiteral("00")),
+							 metrics.horizontalAdvance(longest_number));
+	return qMin(zone_length, text_ + 4.0);
 }
 
 /**
@@ -655,9 +659,11 @@ qreal markerTagLength(const QFontMetricsF &metrics, qreal zone_length)
  * @param text : text drawn
  * @param option : option used to draw the text
  * @param vertical : true if the text is rotated
+ * @param tag_length : length of the marker tags of the strip, along the text
  */
 Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height,
-				   const QString &text, const QTextOption &option, bool vertical)
+				   const QString &text, const QTextOption &option, bool vertical,
+				   qreal tag_length)
 {
 	if (!vertical)
 	{
@@ -666,7 +672,7 @@ Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height
 	}
 	Q_UNUSED(text)
 		//Same length for every terminal, so the body of every terminal is drawn the same way
-	const qreal along_ = markerTagLength(metrics, text_height);
+	const qreal along_ = qMin(text_height, tag_length);
 	if (option.alignment() & Qt::AlignRight) {
 		return Zone{text_y, text_y + along_};
 	}
@@ -687,9 +693,11 @@ Zone markerTagZone(const QFontMetricsF &metrics, qreal text_y, qreal text_height
  * @param option : option used to draw the text
  * @param vertical : true if the text is rotated
  * @param sectional : true for an isolating terminal
+ * @param tag_length : length of the marker tags of the strip, along the text
  */
 void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &text,
-				   const QTextOption &option, bool vertical, bool sectional)
+				   const QTextOption &option, bool vertical, bool sectional,
+				   qreal tag_length)
 {
 	if (text.isEmpty()) {
 		return;
@@ -697,7 +705,7 @@ void drawMarkerTag(QPainter *painter, const QRectF &text_rect, const QString &te
 	const QFontMetricsF metrics_{painter->font()};
 		//Vertical text : fixed length, like a real marker tag.
 		//Horizontal text : the tag take the whole width of the terminal.
-	const qreal along_ = vertical ? markerTagLength(metrics_, text_rect.width()) : text_rect.width();
+	const qreal along_ = vertical ? qMin(text_rect.width(), tag_length) : text_rect.width();
 	const qreal cross_ = vertical ?
 							 text_rect.height() - 2 * qMin(qreal(1.2), text_rect.height() * 0.12) :
 							 qMin(text_rect.height(), metrics_.height() + 2);
@@ -928,6 +936,25 @@ void TerminalStripDrawer::paint(QPainter *painter)
 			xref_zone_length_ = qMin(xref_zone_length_, qreal(xref_text_height));
 		}
 
+			//Length of the marker tags of the strip, calibrated on the longest number
+		qreal tag_length_{0};
+		{
+			QString longest_number_;
+			const QFontMetricsF tag_metrics_{painter->font()};
+			for (const auto &physical_t : m_strip->physicalTerminal()) {
+				for (const auto &real_t : physical_t->realTerminals()) {
+					if (!real_t) {
+						continue;
+					}
+					const auto number_{terminalNumber(real_t->label())};
+					if (tag_metrics_.horizontalAdvance(number_) > tag_metrics_.horizontalAdvance(longest_number_)) {
+						longest_number_ = number_;
+					}
+				}
+			}
+			tag_length_ = markerTagLength(tag_metrics_, longest_number_, terminals_text_height);
+		}
+
 		int physical_index = 0;
             //Loop over physical terminals
         for (const auto &physical_t : m_strip->physicalTerminal())
@@ -974,7 +1001,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					used_zones_.append(markerTagZone(metrics_, terminals_text_y, terminals_text_height,
 													 terminalNumber(real_terminal_vector[i]->label()),
 													 terminals_text_option,
-													 terminals_text_orientation == Qt::Vertical));
+													 terminals_text_orientation == Qt::Vertical,
+													 tag_length_));
 						//The zone of the xref have the length of the longest xref of the strip,
 						//so the body of every terminal is drawn the same way.
 					if (xref_text_orientation == Qt::Vertical)
@@ -1075,7 +1103,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				if (shared_real_terminal && terminal_rect.width() >= 4.0) {
 					drawMarkerTag(painter, text_rect, terminalNumber(shared_real_terminal->label()),
 								  terminals_text_option, terminals_text_orientation == Qt::Vertical,
-								  shared_real_terminal->type() == ElementData::TTSectional);
+								  shared_real_terminal->type() == ElementData::TTSectional,
+								  tag_length_);
 				}
 				painter->drawText(text_rect,
 								  shared_real_terminal ? terminalNumber(shared_real_terminal->label()) : QString(),
