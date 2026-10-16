@@ -2414,6 +2414,8 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 	- linking the elements waiting to be linked
 	- Refresh the connection of the dynamic element text item
 	  (use for text with source of text label)
+	- Fill the texts of a report (or a wire label) that show the
+	  properties of the wire they are on.
 */
 void Diagram::refreshContents()
 {
@@ -2423,6 +2425,25 @@ void Diagram::refreshContents()
 		elmt->initLink(project());
 		for (auto &deti : elmt->dynamicTextItems())
 			deti->refreshLabelConnection();
+		/*
+		 * A report's texts showing a wire's properties are filled when
+		 * the wires are added, which is after the symbols are read
+		 * (Diagram::buildContents()), and once more 100 ms later by
+		 * DynamicElementTextItem::conductorWasAdded(). Both run after
+		 * the project left the parsing state, so the alignment is live
+		 * and the fill would take the rect of the still empty text for
+		 * anchor -- a right aligned one then shifts by the whole width
+		 * of its text, on every open.
+		 *
+		 * A linked report gets that fill here already, through
+		 * initLink() -> linkedElementChanged() -> reportChanged(), while
+		 * the project is still parsing; buildFolios() relies on it. An
+		 * unlinked one, and one whose partner is on a folio not built
+		 * yet, got nothing: fill them here too, in that same state. The
+		 * later fill then finds the text already set and changes
+		 * nothing.
+		 */
+		elmt->updateConductorTexts();
 	}
 
 	for (auto &conductor : dc_.conductors()) {
