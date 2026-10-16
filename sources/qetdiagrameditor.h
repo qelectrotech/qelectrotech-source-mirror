@@ -89,6 +89,9 @@ class QETDiagramEditor : public QETMainWindow
 	  protected:
 		bool event(QEvent *) override;
 	private:
+		bool offerToRecover(const QString &filepath, const QString &reason);
+		bool openAsRecovered(const QString &source, const QString &original);
+		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).

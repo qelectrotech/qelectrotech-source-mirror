@@ -21,6 +21,7 @@
 #include <QByteArray>
 #include <QList>
 #include <QString>
+#include <QStringList>
 
 /**
 	@brief The QetZip namespace
@@ -49,7 +50,8 @@ namespace QetZip
 	bool write(const QString &path, const QList<Entry> &entries, QString *error = nullptr);
 	QByteArray toBytes(const QList<Entry> &entries, QString *error = nullptr);
 	bool read(const QString &path, QList<Entry> *entries, QString *error = nullptr);
-	bool fromBytes(const QByteArray &zip, QList<Entry> *entries, QString *error = nullptr);
+	bool fromBytes(const QByteArray &zip, QList<Entry> *entries, QString *error = nullptr,
+				   QStringList *skipped = nullptr);
 }
 
 #endif // QETZIP_H

@@ -19,6 +19,7 @@
 #include "qetapp.h"
 #include "qeticons.h"
 #include "shortcutmanager.h"
+#include "utils/syncfolder.h"
 
 #include <cmath>
 #include <limits>
@@ -809,6 +810,7 @@ bool QET::writeXmlText(const QString &text, const QString &filepath, QString *er
 
 		return false;
 	}
+	syncFolderOf(filepath);
 
 	return(true);
 }

@@ -77,9 +77,16 @@ namespace QetContainer
 							   const QHash<QString, QByteArray> &kept_from = QHash<QString, QByteArray>());
 	bool join(const QList<QetZip::Entry> &entries, QDomDocument *project,
 			  QString *error = nullptr, QStringList *folio_files = nullptr,
-			  Pictures *pictures = nullptr, int *format = nullptr);
+			  Pictures *pictures = nullptr, int *format = nullptr,
+			  QStringList *lost = nullptr);
+		/// What can be read of a damaged .qetz, and in @p lost what could not
+	bool recover(const QByteArray &content, QDomDocument *project, QStringList *lost,
+				 QString *error = nullptr);
 		/// The file join() left the picture of @p image in, or an empty string
 	QString pictureFile(const QDomElement &image);
+		/// @p image, which names its picture's file (pictureFile()), given
+		/// the picture itself, @p bytes, as a document read whole has it
+	void inlinePicture(QDomElement image, const QByteArray &bytes);
 
 		/// Take what QElectroTech computes out of a folio (format 4)
 	void dropComputed(QDomElement diagram, bool terminal_lists);

@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#include "container/qetcontainer.h"
+#include "container/qetzip.h"
+#include "utils/previousversions.h"
 #include "shownkinds.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
@@ -25,6 +28,8 @@
 #include "scripting/macrorecorder.h"
 #include "scripting/assistantinfo.h"
 #endif
+#include <QDomDocument>
+#include <QTemporaryDir>
 #include <QCoreApplication>
 #include <QToolButton>
 #include <QWidgetAction>
@@ -1934,6 +1939,115 @@ QETDiagramEditor::LockChoice QETDiagramEditor::askAboutLock(
 }
 
 /**
+	@brief QETDiagramEditor::offerToRecover
+	@p filepath could not be read (@p reason): say why, and offer its newest
+	previous version (PreviousVersions) and, for a .qetz, what can be read
+	of it (QetContainer::recover()). Either opens as a new project,
+	"<name> (recovered)"; @p filepath is never moved or written.
+	@return true if a project was opened
+*/
+bool QETDiagramEditor::offerToRecover(const QString &filepath, const QString &reason)
+{
+	const QFileInfo info(filepath);
+	QFile file(filepath);
+	const bool zip = file.open(QIODevice::ReadOnly) && QetContainer::isZip(file.peek(4));
+	file.close();
+	const QStringList versions = PreviousVersions::kept(filepath);
+
+	QMessageBox box(QMessageBox::Warning, tr("Cannot open %1").arg(info.fileName()),
+					reason.isEmpty()
+					? tr("The file %1 cannot be read as a QElectroTech project.").arg(info.fileName())
+					: tr("The project file is damaged:\n%1").arg(reason),
+					QMessageBox::Cancel, this);
+	QAbstractButton *previous = nullptr, *recover = nullptr;
+	if (!versions.isEmpty()) {
+		const QDateTime saved = QFileInfo(versions.first()).lastModified();
+		previous = box.addButton(tr("Open the version saved %1")
+								 .arg(QLocale().toString(saved, QLocale::ShortFormat)),
+								 QMessageBox::AcceptRole);
+	}
+	if (zip)
+		recover = box.addButton(tr("Recover what can be read"), QMessageBox::AcceptRole);
+	if (previous || recover)
+		box.setInformativeText(tr("Either opens as a new project, \"%1\"; %2 is left as it is.")
+							   .arg(recoveredPath(filepath, info.suffix()).section(QLatin1Char('/'), -1),
+									info.fileName()));
+	box.exec();
+
+	if (previous && box.clickedButton() == previous)
+		return openAsRecovered(versions.first(), filepath);
+	if (recover && box.clickedButton() == recover) {
+		file.open(QIODevice::ReadOnly);
+		QDomDocument document;
+		QStringList lost;
+		QString error;
+		if (!QetContainer::recover(file.readAll(), &document, &lost, &error)) {
+			QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()),
+										tr("Nothing can be recovered from it:\n%1").arg(error));
+			return false;
+		}
+			//Opened from a .qetz written of it, as the project it replaces
+		QTemporaryDir dir;
+		const QString read = dir.filePath(info.completeBaseName() + QStringLiteral(".qetz"));
+		const QList<QetZip::Entry> parts = QetContainer::split(document, QString(), &error);
+		if (!dir.isValid() || parts.isEmpty() || !QetZip::write(read, parts, &error)
+				|| !openAsRecovered(read, filepath)) {
+			if (!error.isEmpty())
+				QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(info.fileName()), error);
+			return false;
+		}
+		if (!lost.isEmpty()) {
+			QMessageBox done(QMessageBox::Information, tr("Project recovered"),
+							 tr("What could be read of %1 is open as a new project. "
+								"Some parts could not be read and were left out: see the details.")
+							 .arg(info.fileName()),
+							 QMessageBox::Ok, this);
+			done.setDetailedText(lost.join(QLatin1Char('\n')));
+			done.exec();
+		}
+		return true;
+	}
+	return false;
+}
+
+/**
+	@brief QETDiagramEditor::recoveredPath
+	@return where a project recovered from @p filepath is saved: beside it,
+	"<name> (recovered).<suffix>", numbered if that is taken
+*/
+QString QETDiagramEditor::recoveredPath(const QString &filepath, const QString &suffix)
+{
+	const QFileInfo info(filepath);
+	QString path = info.absoluteDir().filePath(tr("%1 (recovered)").arg(info.completeBaseName())
+											   + QLatin1Char('.') + suffix);
+	for (int n = 2 ; QFileInfo::exists(path) ; ++n)
+		path = info.absoluteDir().filePath(tr("%1 (recovered %2)").arg(info.completeBaseName()).arg(n)
+										   + QLatin1Char('.') + suffix);
+	return path;
+}
+
+/**
+	@brief QETDiagramEditor::openAsRecovered
+	Open @p source as a new project saved beside @p original, of its type
+	(recoveredPath()), not saved yet.
+	@return true if it opened
+*/
+bool QETDiagramEditor::openAsRecovered(const QString &source, const QString &original)
+{
+	QETProject *project = new QETProject(source);
+	if (project->state() != QETProject::Ok) {
+		QET::QetMessageBox::warning(this, tr("Cannot open %1").arg(QFileInfo(source).fileName()),
+									project->openError());
+		delete project;
+		return false;
+	}
+	project->setFilePath(recoveredPath(original, QFileInfo(original).suffix()));
+	project->setModified(true);
+	addProject(project);
+	return true;
+}
+
+/**
 	Ouvre un projet depuis un fichier et l'ajoute a cet editeur
 	@param filepath Chemin du projet a ouvrir
 	@param interactive true pour afficher des messages a l'utilisateur, false sinon
@@ -2058,7 +2172,17 @@ bool QETDiagramEditor::openAndAddProject(
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok)
 	{
-		if (interactive && project -> state() != QETProject::FileOpenDiscard)
+			//A damaged project: its previous version or what can be read
+			//of it, as a new project; the file itself is left as it is
+		if (interactive && project->state() == QETProject::XmlParsingFailed
+				&& offerToRecover(filepath, project->openError()))
+		{
+			delete project;
+			DialogWaiting::dropInstance();
+			return(true);
+		}
+		if (interactive && project -> state() != QETProject::FileOpenDiscard
+				&& project -> state() != QETProject::XmlParsingFailed)
 		{
 			QET::QetMessageBox::warning(
 				this,
