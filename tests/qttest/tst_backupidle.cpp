@@ -111,14 +111,22 @@ private slots:
 		forgetBackups();
 		QETProject project(copyOfExample(QStringLiteral("industrial.qet")));
 		QetScriptApi api(&project);
-		QElapsedTimer t;
+			//An idle delay well above one edit, which takes several times
+			//longer on a slow CI runner than here
+		qputenv("QET_BACKUP_IDLE_MS", "2000");
+		QElapsedTimer t, gap;
 		t.start();
-		for (int i = 0; t.elapsed() < 1500; ++i) {
+		gap.start();
+		qint64 longest = 0;
+		for (int i = 0; t.elapsed() < 4000; ++i) {
 			QVERIFY(api.setFolioProperty(0, QStringLiteral("title"), QString::number(i)));
 			QTest::qWait(100);
+			longest = qMax(longest, gap.restart());
 		}
+		qputenv("QET_BACKUP_IDLE_MS", "300");
 		for (qint64 s : backups())
-			QCOMPARE(s, qint64(0));
+			QVERIFY2(s == 0, qPrintable(QStringLiteral("backed up while editing; longest gap between edits %1 ms")
+										.arg(longest)));
 	}
 
 	// A project opened with its folios not built is left to the 20 minute
