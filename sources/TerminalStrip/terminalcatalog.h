@@ -18,6 +18,8 @@
 #ifndef TERMINALCATALOG_H
 #define TERMINALCATALOG_H
 
+#include <QLocale>
+#include <QString>
 #include <QVector>
 
 /**
@@ -39,6 +41,51 @@ namespace TerminalCatalog
 	{
 		static const QVector<double> sections_ {0.5, 0.75, 1, 1.5, 2.5, 4, 6, 10, 16, 25, 35, 50, 70, 95, 120, 150, 185, 240, 300};
 		return sections_;
+	}
+
+	/**
+	 * @brief awgForSection
+	 * @param mm2 : a section in mm2
+	 * @return the nearest AWG / kcmil size, as text ("14", "1/0", "250 kcmil"),
+	 * or an empty string if the section has no usual equivalent.
+	 * The correspondence is approximate (the usual table of the manufacturers),
+	 * the two systems don't have the same steps.
+	 */
+	inline QString awgForSection(double mm2)
+	{
+		struct Awg { double mm2; const char *awg; };
+		static const Awg table_[] {
+			{0.5,  "20"},      {0.75, "18"},      {1,   "17"},
+			{1.5,  "16"},      {2.5,  "14"},      {4,   "12"},
+			{6,    "10"},      {10,   "8"},       {16,  "6"},
+			{25,   "4"},       {35,   "2"},       {50,  "1/0"},
+			{70,   "2/0"},     {95,   "3/0"},     {120, "250 kcmil"},
+			{150,  "300 kcmil"}, {185, "350 kcmil"}, {240, "500 kcmil"},
+			{300,  "600 kcmil"}
+		};
+		for (const auto &entry : table_) {
+			if (qAbs(entry.mm2 - mm2) < 0.0001) {
+				return QString::fromLatin1(entry.awg);
+			}
+		}
+		return QString();
+	}
+
+	/**
+	 * @brief sectionText
+	 * @param mm2 : a section in mm2
+	 * @param unit_text : the text of the section with its unit, for example "2,5 mm²"
+	 * @return @a unit_text followed by the AWG size if there is one : "2,5 mm² (AWG 14)"
+	 */
+	inline QString sectionText(double mm2, const QString &unit_text)
+	{
+		const auto awg_ = awgForSection(mm2);
+		if (awg_.isEmpty()) {
+			return unit_text;
+		}
+		return awg_.contains(QLatin1String("kcmil"))
+				? unit_text + QStringLiteral(" (%1)").arg(awg_)
+				: unit_text + QStringLiteral(" (AWG %1)").arg(awg_);
 	}
 
 	inline const QVector<WidthEntry> &widthEntries()

@@ -440,7 +440,9 @@ void ElementPropertiesEditorWidget::populateTerminalSizeCombos(double section, d
 	ui->m_terminal_section_cb->clear();
 	ui->m_terminal_section_cb->addItem(tr("None (default)"), 0.0);
 	for (const auto section_ : TerminalCatalog::sections()) {
-		ui->m_terminal_section_cb->addItem(tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6)), section_);
+		ui->m_terminal_section_cb->addItem(
+			TerminalCatalog::sectionText(section_, tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6))),
+			section_);
 	}
 	setComboValue(ui->m_terminal_section_cb, section, tr(" mm²"));
 

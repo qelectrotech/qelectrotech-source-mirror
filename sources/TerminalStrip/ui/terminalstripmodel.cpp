@@ -956,7 +956,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 		qcb->addItem(tr("None (default)"), 0.0);
 			//Usual sections, in mm2
 		for (const auto section_ : TerminalCatalog::sections()) {
-			qcb->addItem(tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6)), section_);
+			qcb->addItem(TerminalCatalog::sectionText(section_, tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6))), section_);
 		}
 
 		return qcb;
@@ -1048,7 +1048,7 @@ void TerminalStripModelDelegate::setEditorData(QWidget *editor, const QModelInde
 			if (pos_ < 0)
 			{
 					//The section is not in the list (typed or pasted), keep it in the list
-				qcb->addItem(tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6)), section_);
+				qcb->addItem(TerminalCatalog::sectionText(section_, tr("%1 mm²").arg(QLocale().toString(section_, 'g', 6))), section_);
 				pos_ = qcb->count() - 1;
 			}
 			qcb->setCurrentIndex(pos_);
