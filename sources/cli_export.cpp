@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "projectlock.h"
 #include "bomexport.h"
 
 #include "bordertitleblock.h"
@@ -1053,6 +1054,7 @@ int run(const QStringList &args)
 	// --no-slaves and --no-junctions leave rows out of --export-bom.
 	const bool includeSlaves = filtered.removeAll("--no-slaves") == 0;
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
+	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1127,6 +1129,19 @@ int run(const QStringList &args)
 		return exportNets(project, output);
 	if (format == "links")
 		return exportLinks(project, output);
+		//The verbs that write a project file leave alone one that someone
+		//has open (their lock beside it), unless told to: the read-only
+		//verbs above never look at locks
+	if ((format == "resave" || format == "settb") && !ignoreLock) {
+		const ProjectLock::Holder holder = ProjectLock::liveHolder(output);
+		if (holder.valid) {
+			err << "'" << output << "' is open by " << holder.user << " on "
+				<< holder.host << " (lock file " << ProjectLock::lockPathFor(output)
+				<< "). Not writing it; close it there, write to another file, "
+				   "or pass --ignore-lock.\n";
+			return 1;
+		}
+	}
 	if (format == "resave")
 		return resaveProject(project, output);
 	if (format == "settb")

@@ -20,6 +20,7 @@
 
 #include "SearchAndReplace/ui/searchandreplacewidget.h"
 #include "diagramcontext.h"
+#include "projectlock.h"
 #include "qetmainwindow.h"
 
 #include <QActionGroup>
@@ -75,6 +76,8 @@ class QETDiagramEditor : public QETMainWindow
 		QList<ProjectView *> openedProjects    () const;
 		void                 addProjectView    (ProjectView *);
 		bool                 openAndAddProject (const QString &, bool = true);
+		enum class LockChoice {ReadOnly, OpenAnyway, Cancel};
+		LockChoice           askAboutLock (const QString &, const ProjectLock::Holder &);
 		QList<QString>       editedFiles       () const;
 		ProjectView         *viewForFile       (const QString &) const;
 		ProjectView *currentProjectView() const;

@@ -2805,6 +2805,10 @@ QETResult QETProject::write(bool overwrite_changed)
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
+		//Another session holds this file: it was opened read-only for that
+	if (!m_locked_out_path.isEmpty() && m_locked_out_path == m_file_path)
+		return(tr("%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.").arg(m_file_path));
+
 		//A project read from a .qet is saved as a .qetz beside it; the
 		//.qet stays as it was (stage D1). If the .qetz cannot be written
 		//(a read-only folder), the project stays the .qet it was.
@@ -2877,6 +2881,17 @@ QETResult QETProject::write(bool overwrite_changed)
 	if (isReadOnly())
 		setReadOnly(false);
 
+		//The file may be a new one (Save As, a .qet saved as .qetz): the lock
+		//follows it. A project that had none (new, or opened read-only for
+		//another's lock) takes one now. Never stops the save: it is done.
+	if (ProjectLock::mayTake()) {
+		if (!m_lock) m_lock = std::make_unique<ProjectLock>();
+		if (!m_lock->isHeld() || m_lock->projectPath() != m_file_path) {
+			if (m_lock->isHeld()) m_lock->moveTo(m_file_path);
+			else m_lock->acquire(m_file_path);
+		}
+	}
+
 		//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
 	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
@@ -2899,6 +2914,27 @@ QETResult QETProject::write(bool overwrite_changed)
 bool QETProject::isReadOnly() const
 {
 	return(m_read_only && read_only_file_path_ == m_file_path);
+}
+
+/**
+	@brief QETProject::setLock
+	Hand the lock sidecar taken for this project's file to the project: it
+	is released when the project is closed.
+*/
+void QETProject::setLock(std::unique_ptr<ProjectLock> lock)
+{
+	m_lock = std::move(lock);
+}
+
+/**
+	@brief QETProject::setOpenedReadOnlyByLock
+	Open this project read-only because another session has it: write()
+	does not write to this file (Save As to another file is allowed).
+*/
+void QETProject::setOpenedReadOnlyByLock(bool by_lock)
+{
+	m_locked_out_path = by_lock ? m_file_path : QString();
+	if (by_lock) setReadOnly(true);
 }
 
 /**

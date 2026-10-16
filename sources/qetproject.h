@@ -33,6 +33,7 @@
 #include "diagram.h"
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
+#include "projectlock.h"
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -342,6 +343,10 @@ class QETProject : public QObject
 			/// Opened from a .qetz of a later format (opened read-only)
 		bool isFromLaterVersion() const {return m_from_later_version;}
 		void setReadOnly(bool);
+			/// The lock sidecar this session holds on the project file, if any
+		ProjectLock *lock() const {return m_lock.get();}
+		void setLock(std::unique_ptr<ProjectLock> lock);
+		void setOpenedReadOnlyByLock(bool by_lock);
 		bool isEmpty() const;
 		ElementsLocation importElement(ElementsLocation &location);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
@@ -499,6 +504,11 @@ class QETProject : public QObject
 			/// Whether the project is read only
 		bool m_read_only = false;
 		bool m_from_later_version = false;
+			/// The lock sidecar of the project file (see ProjectLock)
+		std::unique_ptr<ProjectLock> m_lock;
+			/// File this project was opened read-only for, because another
+			/// session holds its lock: write() does not write to it
+		QString m_locked_out_path;
 			/// Filepath for which this project is considered read only
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project
