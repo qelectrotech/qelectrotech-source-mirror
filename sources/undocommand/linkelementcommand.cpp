@@ -399,7 +399,13 @@ bool LinkElementCommand::reportLinkNeedsPotentialChoice(Element *element_a, Elem
 	QStringList str_txt, str_funct, str_tens, str_color, str_style;
 	for (const Conductor *c : std::as_const(c_list))
 	{
-		str_txt   << c->properties().text;
+			//A conductor held by a cable shows the core's label
+			//(15W1:BN), which CableManager writes into its text: it names
+			//the core, not the potential, and the two sides of a report
+			//are often in two different cables. Only a wire number the
+			//user gave counts.
+		if (c->properties().m_cable_uuid.isNull())
+			str_txt << c->properties().text;
 		str_funct << c->properties().m_function;
 		str_tens  << c->properties().m_tension_protocol;
 		str_color << c->properties().color.name();
