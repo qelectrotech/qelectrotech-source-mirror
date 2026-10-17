@@ -41,6 +41,7 @@ class AddTerminalStripItemDialog : public QDialog
 		explicit AddTerminalStripItemDialog(QETProject *project, QWidget *parent = nullptr);
 		~AddTerminalStripItemDialog();
 		TerminalStrip *selectedTerminalStrip() const;
+		int selectedDrawStyle() const;
 		void fillComboBox();
 
 	private:

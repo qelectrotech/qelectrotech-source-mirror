@@ -267,6 +267,10 @@ endfunction()
 # alone and with a group.
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
+# Accepting the settings dialog writes qet-assistant.json with the
+# collection paths just chosen, not the ones they replace.
+qet_add_app_test(tst_assistantinfopaths tst_assistantinfopaths.cpp)
+
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)

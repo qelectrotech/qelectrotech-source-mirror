@@ -395,9 +395,6 @@ void GeneralConfigurationPage::applyConf()
 		if (!ui->m_live_assistant->isChecked()) LiveServer::instance().stop();
 #endif
 	}
-		//What an assistant reads about this QElectroTech follows the change
-	AssistantInfo::write();
-
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
 
@@ -565,6 +562,12 @@ void GeneralConfigurationPage::applyConf()
 			diagram->update();
 		}
 	}
+
+		//What an assistant reads about this QElectroTech follows the
+		//change. Written last: the collection and title block paths are
+		//applied above, and an assistant launching a headless run takes
+		//the user and company collections from this file.
+	AssistantInfo::write();
 }
 
 /**

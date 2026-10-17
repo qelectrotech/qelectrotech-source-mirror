@@ -168,6 +168,11 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->widthMm() : 0;
 	}
 
+	bool TrueRealTerminal::hasSeparatorAfter() const
+	{
+		return m_real ? m_real->hasSeparatorAfter() : false;
+	}
+
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
         m_bridge { bridge }
     {}

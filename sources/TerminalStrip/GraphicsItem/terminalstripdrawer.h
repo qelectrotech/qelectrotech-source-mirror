@@ -85,6 +85,8 @@ namespace TerminalStripDrawer
 			//Second color of a two-tone color (like green/yellow), drawn as stripes over color()
 			virtual QColor stripeColor() const { return QColor(); }
 			virtual qreal widthMm() const { return 0; }
+			//A separator plate is mounted after the terminal (drawn by the realistic styles)
+			virtual bool hasSeparatorAfter() const { return false; }
     };
 
 	class AbstractPhysicalTerminalInterface
@@ -121,10 +123,14 @@ namespace TerminalStripDrawer
 
 			void setPreviewDraw(bool draw = true);
 
+			void setDrawStyle(TerminalStripLayoutPattern::DrawStyle style);
+			TerminalStripLayoutPattern::DrawStyle drawStyle() const;
+
 			void setMouseHoverPos(const QPointF &pos);
 			bool mouseHoverXref() const;
 			bool needUpdate();
 			hoverTerminal hoveredXref() const;
+			hoverTerminal xrefAt(const QPointF &pos) const;
 			QVector<XrefRect> xrefRects() const;
 
         private:
@@ -135,6 +141,7 @@ namespace TerminalStripDrawer
             QSharedPointer <AbstractTerminalStripInterface> m_strip;
             QSharedPointer<TerminalStripLayoutPattern> m_pattern;
             bool m_preview_draw { false };
+			TerminalStripLayoutPattern::DrawStyle m_draw_style { TerminalStripLayoutPattern::DrawStyle::Schematic };
 			QPointF m_mouse_hover_pos;
 			QRectF m_united_xref_text_rect;
 			bool m_last_mouse_pos_in_xrefs_rect{false};

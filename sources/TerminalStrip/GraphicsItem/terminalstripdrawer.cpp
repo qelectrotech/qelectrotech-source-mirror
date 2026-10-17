@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripdrawer.h"
+#include "terminalstripdrawerhelpers.h"
+#include "realisticterminalstripdrawer.h"
 
 #include <QPainter>
 #include <QPolygonF>
@@ -834,12 +836,64 @@ QColor contrastColor(const QColor &background)
 
 } //End anonymous namespace
 
+/*
+ * Helpers : give to the other drawing styles access to
+ * the functions of the anonymous namespace.
+ */
+qreal Helpers::referenceTerminalWidthMm() {
+	return reference_terminal_width_mm;
+}
+
+void Helpers::terminalColors(const QSharedPointer<AbstractRealTerminalInterface> &real_t,
+							 QColor &fill, QColor &stripe)
+{
+	const auto colors_{::TerminalStripDrawer::terminalColors(real_t)};
+	fill = colors_.fill;
+	stripe = colors_.stripe;
+}
+
+QColor Helpers::contrastColor(const QColor &background) {
+	return ::TerminalStripDrawer::contrastColor(background);
+}
+
+QString Helpers::terminalNumber(const QString &label) {
+	return ::TerminalStripDrawer::terminalNumber(label);
+}
+
+void Helpers::drawTypeSymbol(QPainter *painter, const QRectF &box,
+							 ElementData::TerminalType type, bool led) {
+	::TerminalStripDrawer::drawTypeSymbol(painter, box, type, led);
+}
+
 /**
  * @brief TerminalStripDrawer::paint
  * @param painter
  */
 void TerminalStripDrawer::paint(QPainter *painter)
 {
+	if (m_strip && m_pattern && m_draw_style != TerminalStripLayoutPattern::DrawStyle::Schematic)
+	{
+			//The realistic styles don't write the xrefs, but each terminal
+			//is a clickable zone, like the xref text of the schematic style.
+		m_united_xref_text_rect = QRectF();
+		m_xref_rects.clear();
+		m_hovered_xref = hoverTerminal{};
+		Realistic::paint(painter, *m_strip, *m_pattern, m_draw_style, m_preview_draw,
+						 m_mouse_hover_pos, &m_xref_rects);
+		for (const auto &xref_rect : std::as_const(m_xref_rects))
+		{
+			m_united_xref_text_rect = m_united_xref_text_rect.isNull() ?
+										  xref_rect.rect :
+										  m_united_xref_text_rect.united(xref_rect.rect);
+			if (m_hovered_xref.physical < 0 && !m_mouse_hover_pos.isNull()
+				&& xref_rect.rect.contains(m_mouse_hover_pos)) {
+				m_hovered_xref.physical = xref_rect.physical;
+				m_hovered_xref.real = xref_rect.real;
+			}
+		}
+		return;
+	}
+
     if (m_strip && m_pattern)
     {
 		m_united_xref_text_rect = QRectF();
@@ -1195,6 +1249,25 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 painter->translate(terminal_rect.width(),0);
                 x_offset += terminal_rect.width();
             }
+
+				//Separator plate after the physical terminal : a thick line
+				//on the full height of the terminal, after its last level
+			const bool separator_after_ = std::any_of(real_terminal_vector.cbegin(), real_terminal_vector.cend(),
+													  [](const QSharedPointer<AbstractRealTerminalInterface> &real_t) {
+				return real_t && real_t->hasSeparatorAfter();
+			});
+			if (separator_after_ && real_t_count > 0 && offset_ >= 0 && offset_ < 4)
+			{
+				const auto &rect_{m_pattern->m_terminal_rect.at(offset_)};
+				painter->save();
+				QPen separator_pen_{painter->pen()};
+				separator_pen_.setColor(Qt::black);
+				separator_pen_.setWidthF(3);
+				separator_pen_.setCapStyle(Qt::FlatCap);
+				painter->setPen(separator_pen_);
+				painter->drawLine(QPointF{0, rect_.top() - 3}, QPointF{0, rect_.top() + rect_.height() + 3});
+				painter->restore();
+			}
 			physical_index++;
         }
         painter->restore();
@@ -1225,6 +1298,10 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 QRectF TerminalStripDrawer::boundingRect() const
 {
+	if (m_pattern && m_draw_style != TerminalStripLayoutPattern::DrawStyle::Schematic) {
+		return Realistic::boundingRect(m_strip.data(), *m_pattern);
+	}
+
 	QRectF rect_{0, 0, width(), height()};
 
 	if (m_pattern)
@@ -1290,6 +1367,35 @@ bool TerminalStripDrawer::haveLayout() const
 
 void TerminalStripDrawer::setPreviewDraw(bool draw) {
 	m_preview_draw = draw;
+}
+
+/**
+ * @brief TerminalStripDrawer::setDrawStyle
+ * Set how the terminals are drawn (schematic, realistic...).
+ * The values used by each style come from the layout.
+ */
+void TerminalStripDrawer::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style) {
+	m_draw_style = style;
+}
+
+TerminalStripLayoutPattern::DrawStyle TerminalStripDrawer::drawStyle() const {
+	return m_draw_style;
+}
+
+/**
+ * @brief TerminalStripDrawer::xrefAt
+ * @param pos : position in the coordinates of the item
+ * @return the physical and real index of the terminal whose xref zone
+ * (drawn by the last call of paint()) contains @a pos, or -1 if none.
+ */
+hoverTerminal TerminalStripDrawer::xrefAt(const QPointF &pos) const
+{
+	for (const auto &xref_rect : m_xref_rects) {
+		if (xref_rect.rect.contains(pos)) {
+			return hoverTerminal{xref_rect.physical, xref_rect.real};
+		}
+	}
+	return hoverTerminal{};
 }
 
 void TerminalStripDrawer::setMouseHoverPos(const QPointF &pos)

@@ -65,6 +65,7 @@ class TerminalStripModel : public QAbstractTableModel
 			Color = 15,
 			Section = 16,
 			Width = 17,
+			Separator = 18,
 			Invalid = 99
 		};
 

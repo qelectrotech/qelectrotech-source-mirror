@@ -142,12 +142,43 @@ void TerminalStripItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 	if (m_drawer.needUpdate()) {
 		update();
 	}
+
+		//The realistic styles don't write the xref : show it in a tool tip
+	if (m_drawer.drawStyle() != TerminalStripLayoutPattern::DrawStyle::Schematic) {
+		setToolTip(xrefToolTip(m_drawer.xrefAt(hoverMousePos())));
+	}
 }
 
 void TerminalStripItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	QetGraphicsItem::hoverLeaveEvent(event);
 	m_drawer.setMouseHoverPos(QPointF{});
+	setToolTip(QString());
+		//Remove the highlight of the xref (or of the terminal) under the mouse
+	update();
+}
+
+/**
+ * @brief TerminalStripItem::xrefToolTip
+ * @param terminal : physical and real index of a terminal of the strip
+ * @return the text of the tool tip of @a terminal : its label and its xref,
+ * or an empty string if @a terminal is invalid.
+ */
+QString TerminalStripItem::xrefToolTip(const TerminalStripDrawer::hoverTerminal &terminal) const
+{
+	if (!m_strip || terminal.physical < 0 || terminal.real < 0) {
+		return QString();
+	}
+	const auto physical_terminal{m_strip->physicalTerminal(terminal.physical)};
+	if (physical_terminal.isNull()) {
+		return QString();
+	}
+	const auto real_terminal{physical_terminal->realTerminal(terminal.real)};
+	if (real_terminal.isNull() || real_terminal->Xref().isEmpty()) {
+		return QString();
+	}
+	return tr("%1 : %2\nDouble-click to go to the element")
+			.arg(real_terminal->label(), real_terminal->Xref());
 }
 
 void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
@@ -203,6 +234,26 @@ void TerminalStripItem::refreshPending()
 void TerminalStripItem::setLayout(QSharedPointer<TerminalStripLayoutPattern> layout)
 {
 	m_drawer.setLayout(layout);
+}
+
+/**
+ * @brief TerminalStripItem::setDrawStyle
+ * Set how this item draw the terminals (schematic, realistic...).
+ * The style is chosen when the item is added to a folio and saved with the item.
+ * @param style
+ */
+void TerminalStripItem::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style)
+{
+	if (style == m_drawer.drawStyle()) {
+		return;
+	}
+	prepareGeometryChange();
+	m_drawer.setDrawStyle(style);
+	update();
+}
+
+TerminalStripLayoutPattern::DrawStyle TerminalStripItem::drawStyle() const {
+	return m_drawer.drawStyle();
 }
 
 void TerminalStripItem::setDefaultLayout()

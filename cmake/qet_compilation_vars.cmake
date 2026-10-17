@@ -760,6 +760,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripitem.h
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/trueterminalstrip.cpp
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/trueterminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/realisticterminalstripdrawer.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/realisticterminalstripdrawer.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawerhelpers.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/realisticterminalstripdrawer.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/realisticterminalstripdrawer.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawerhelpers.h
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawer.cpp
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawer.h
   ${QET_DIR}/sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.cpp
