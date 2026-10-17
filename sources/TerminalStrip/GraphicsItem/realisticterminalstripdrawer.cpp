@@ -66,6 +66,11 @@ struct PhysicalGeometry
 	qreal width_mm{0};
 	bool separator_after{false};	//A separator plate is mounted after this terminal
 	QVector<QSharedPointer<AbstractRealTerminalInterface>> reals;
+		//Index of the physical terminal in the strip, and of each real terminal
+		//in the physical terminal : the same indexes than the schematic style,
+		//used to find the element of a clicked terminal.
+	int physical_index{-1};
+	QVector<int> real_indexes;
 };
 
 /**
@@ -80,18 +85,24 @@ QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 		return geometry_;
 	}
 
+	int physical_index_{-1};
 	for (const auto &physical_t : strip->physicalTerminal())
 	{
+		++physical_index_;
 		if (!physical_t) {
 			continue;
 		}
 		PhysicalGeometry g_;
+		g_.physical_index = physical_index_;
+		int real_index_{-1};
 		for (const auto &real_t : physical_t->realTerminals())
 		{
+			++real_index_;
 			if (!real_t) {
 				continue;
 			}
 			g_.reals.append(real_t);
+			g_.real_indexes.append(real_index_);
 			g_.width_mm = std::max(g_.width_mm, real_t->widthMm());
 			g_.separator_after = g_.separator_after || real_t->hasSeparatorAfter();
 			if (g_.reals.size() == 4) {	//Same limit than the schematic style
@@ -384,7 +395,9 @@ void paint(QPainter *painter,
 		   const AbstractTerminalStripInterface &strip,
 		   const TerminalStripLayoutPattern &pattern,
 		   TerminalStripLayoutPattern::DrawStyle style,
-		   bool preview_draw)
+		   bool preview_draw,
+		   const QPointF &hover_pos,
+		   QVector<XrefRect> *xref_rects)
 {
 	const bool screw_{style == TerminalStripLayoutPattern::DrawStyle::RealisticScrew};
 	const qreal s_{pattern.m_realistic_px_per_mm};
@@ -508,6 +521,53 @@ void paint(QPainter *painter,
 		painter->restore();
 		drawVerticalText(painter, tag_, numbers_.join(QStringLiteral(" / ")),
 						 sectional_ ? QColor(Qt::white) : QColor(Qt::black));
+
+			//Clickable zones : the whole terminal for a terminal with one level,
+			//the rows of wire entries of the level (top and bottom) for a terminal with levels.
+			//Only the terminals with an xref (element placed on a folio) are clickable.
+		QVector<XrefRect> terminal_rects_;
+		for (int k = 0 ; k < levels_ ; ++k)
+		{
+			if (g_.reals.at(k)->xref().isEmpty()) {
+				continue;
+			}
+			const int physical_{g_.physical_index};
+			const int real_{g_.real_indexes.at(k)};
+			if (levels_ == 1) {
+				terminal_rects_.append({body_, physical_, real_});
+			} else {
+				const qreal top_h_{length_ * (band_top - entries_top) / levels_};
+				terminal_rects_.append({QRectF{x_, length_ * entries_top + k * top_h_, w_, top_h_}, physical_, real_});
+				terminal_rects_.append({QRectF{x_, length_ * (1 - entries_top) - (k + 1) * top_h_, w_, top_h_}, physical_, real_});
+			}
+		}
+		if (xref_rects) {
+			*xref_rects << terminal_rects_;
+		}
+
+			//Highlight the terminal under the mouse, like the xref of the schematic style
+		if (!hover_pos.isNull())
+		{
+			int hovered_real_{-1};
+			for (const auto &r_ : std::as_const(terminal_rects_)) {
+				if (r_.rect.contains(hover_pos)) {
+					hovered_real_ = r_.real;
+					break;
+				}
+			}
+			if (hovered_real_ >= 0)
+			{
+				painter->save();
+				painter->setPen(QPen(QColor(0, 90, 255), std::max<qreal>(1.0, 0.4 * s_)));
+				painter->setBrush(Qt::NoBrush);
+				for (const auto &r_ : std::as_const(terminal_rects_)) {
+					if (r_.real == hovered_real_) {
+						painter->drawRect(r_.rect.adjusted(0.5, 0.5, -0.5, -0.5));
+					}
+				}
+				painter->restore();
+			}
+		}
 
 			//Bridge points : one channel by level
 		for (int k = 0 ; k < levels_ ; ++k)

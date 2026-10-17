@@ -130,6 +130,7 @@ namespace TerminalStripDrawer
 			bool mouseHoverXref() const;
 			bool needUpdate();
 			hoverTerminal hoveredXref() const;
+			hoverTerminal xrefAt(const QPointF &pos) const;
 			QVector<XrefRect> xrefRects() const;
 
         private:

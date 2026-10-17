@@ -873,11 +873,24 @@ void TerminalStripDrawer::paint(QPainter *painter)
 {
 	if (m_strip && m_pattern && m_draw_style != TerminalStripLayoutPattern::DrawStyle::Schematic)
 	{
-			//No xref in the realistic styles
+			//The realistic styles don't write the xrefs, but each terminal
+			//is a clickable zone, like the xref text of the schematic style.
 		m_united_xref_text_rect = QRectF();
 		m_xref_rects.clear();
 		m_hovered_xref = hoverTerminal{};
-		Realistic::paint(painter, *m_strip, *m_pattern, m_draw_style, m_preview_draw);
+		Realistic::paint(painter, *m_strip, *m_pattern, m_draw_style, m_preview_draw,
+						 m_mouse_hover_pos, &m_xref_rects);
+		for (const auto &xref_rect : std::as_const(m_xref_rects))
+		{
+			m_united_xref_text_rect = m_united_xref_text_rect.isNull() ?
+										  xref_rect.rect :
+										  m_united_xref_text_rect.united(xref_rect.rect);
+			if (m_hovered_xref.physical < 0 && !m_mouse_hover_pos.isNull()
+				&& xref_rect.rect.contains(m_mouse_hover_pos)) {
+				m_hovered_xref.physical = xref_rect.physical;
+				m_hovered_xref.real = xref_rect.real;
+			}
+		}
 		return;
 	}
 
@@ -1367,6 +1380,22 @@ void TerminalStripDrawer::setDrawStyle(TerminalStripLayoutPattern::DrawStyle sty
 
 TerminalStripLayoutPattern::DrawStyle TerminalStripDrawer::drawStyle() const {
 	return m_draw_style;
+}
+
+/**
+ * @brief TerminalStripDrawer::xrefAt
+ * @param pos : position in the coordinates of the item
+ * @return the physical and real index of the terminal whose xref zone
+ * (drawn by the last call of paint()) contains @a pos, or -1 if none.
+ */
+hoverTerminal TerminalStripDrawer::xrefAt(const QPointF &pos) const
+{
+	for (const auto &xref_rect : m_xref_rects) {
+		if (xref_rect.rect.contains(pos)) {
+			return hoverTerminal{xref_rect.physical, xref_rect.real};
+		}
+	}
+	return hoverTerminal{};
 }
 
 void TerminalStripDrawer::setMouseHoverPos(const QPointF &pos)

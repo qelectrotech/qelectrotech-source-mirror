@@ -32,6 +32,11 @@ class QPainter;
  * The width of each terminal is its real width (mm) multiplied by the scale of the layout.
  * A terminal with several levels is drawn with one row of wire entries by level,
  * at the top and at the bottom.
+ *
+ * paint() fill @a xref_rects with the zone of each terminal which have an xref,
+ * with the same indexes than the schematic style : the item use them to go to the
+ * element on double click, to show the xref in a tool tip and to make clickable
+ * links in an exported PDF. The terminal under @a hover_pos is outlined in blue.
  */
 namespace TerminalStripDrawer
 {
@@ -43,7 +48,9 @@ namespace TerminalStripDrawer
 				   const AbstractTerminalStripInterface &strip,
 				   const TerminalStripLayoutPattern &pattern,
 				   TerminalStripLayoutPattern::DrawStyle style,
-				   bool preview_draw = false);
+				   bool preview_draw = false,
+				   const QPointF &hover_pos = QPointF(),
+				   QVector<XrefRect> *xref_rects = nullptr);
 	}
 }
 
