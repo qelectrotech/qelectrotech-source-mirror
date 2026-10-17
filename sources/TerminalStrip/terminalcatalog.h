@@ -93,13 +93,16 @@ namespace TerminalCatalog
 	inline const QVector<WidthEntry> &widthEntries()
 	{
 		static const QVector<WidthEntry> entries_ {
+			{4.2,  "Phoenix Contact ST 1,5", 1.5, "Phoenix Contact"},
 			{5.0,  "ABB Entrelec MA 2.5/5", 2.5, "ABB Entrelec"},
 			{5.1,  "Weidmüller WDU 2.5", 2.5, "Weidmüller"},
 			{5.2,  "WAGO 2002 (TOPJOB S)", 2.5, "WAGO"},
+			{5.2,  "Phoenix Contact ST 2,5 / ST 2,5-QUATTRO", 2.5, "Phoenix Contact"},
 			{6.0,  "ABB Entrelec M 4/6", 4.0, "ABB Entrelec"},
 			{6.0,  "Legrand Viking 3 (4 mm²)", 4.0, "Legrand"},
 			{6.1,  "Weidmüller WDU 4", 4.0, "Weidmüller"},
 			{6.2,  "Phoenix Contact UT 4", 4.0, "Phoenix Contact"},
+			{6.2,  "Phoenix Contact ST 4", 4.0, "Phoenix Contact"},
 			{7.5,  "WAGO 2006 (TOPJOB S)", 6.0, "WAGO"},
 			{7.9,  "Weidmüller WDU 6", 6.0, "Weidmüller"},
 			{8.0,  "ABB Entrelec M 6/8", 6.0, "ABB Entrelec"},
