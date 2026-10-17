@@ -214,7 +214,9 @@ class tst_projectlock : public QObject
 
 		void readOnlyFolderDoesNotBlock()
 		{
-#ifndef Q_OS_WIN
+#ifdef Q_OS_WIN
+			QSKIP("a read-only folder still takes new files on Windows");
+#else
 			if (geteuid() == 0)
 				QSKIP("root can write anywhere");
 #endif

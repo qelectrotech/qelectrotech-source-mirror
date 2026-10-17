@@ -69,10 +69,12 @@ private slots:
 		f.close();
 
 			// Columns numbered from 1, as QElectroTech's settings page
-			// shows by default
+			// shows by default. Written to an INI file QET_SETTINGS_DIR
+			// points at: on Windows the settings are in the registry
+			// otherwise, and the columns would count from 0
 		const QString home = m_dir.filePath(tag + QStringLiteral("-home"));
-		QVERIFY(QDir().mkpath(home + QStringLiteral("/config/QElectroTech")));
-		QFile conf(home + QStringLiteral("/config/QElectroTech/QElectroTech.conf"));
+		QVERIFY(QDir().mkpath(home + QStringLiteral("/settings/QElectroTech")));
+		QFile conf(home + QStringLiteral("/settings/QElectroTech/QElectroTech.ini"));
 		QVERIFY(conf.open(QIODevice::WriteOnly));
 		conf.write("[General]\nborder-columns_0=false\n");
 		conf.close();
@@ -80,6 +82,7 @@ private slots:
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		env.insert(QStringLiteral("QET_SETTINGS_DIR"), home + QStringLiteral("/settings"));
 		env.insert(QStringLiteral("HOME"), home);
 		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
 		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
