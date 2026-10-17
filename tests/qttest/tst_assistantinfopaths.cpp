@@ -25,7 +25,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QSignalBlocker>
-#include <QStandardPaths>
 
 /**
 	qet-assistant.json names the user and company collections, and the qet
@@ -88,13 +87,6 @@ private slots:
 	}
 };
 
-int main(int argc, char **argv)
-{
-		//AssistantInfo writes to the standard data folder, whatever
-		//--data-dir says, and QETApp writes it as its editor opens: test
-		//mode from the very start keeps the user's own file out of reach.
-	QStandardPaths::setTestModeEnabled(true);
-	return QetAppTest::run<tst_assistantinfopaths>(argc, argv);
-}
+QET_APP_TEST_MAIN(tst_assistantinfopaths)
 
 #include "tst_assistantinfopaths.moc"

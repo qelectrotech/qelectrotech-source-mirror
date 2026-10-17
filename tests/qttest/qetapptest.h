@@ -36,6 +36,7 @@
 #include <QApplication>
 #include <QCoreApplication>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -86,6 +87,11 @@ inline QAction *action(const QString &name)
 template <typename Test>
 int run(int argc, char **argv)
 {
+		//Some files are written to the standard folders whatever
+		//--data-dir says (qet-assistant.json, with the live-mode token, as
+		//the editor opens): test mode, before anything is written, keeps
+		//them away from the user's own
+	QStandardPaths::setTestModeEnabled(true);
 	QApplication app(argc, argv);
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setApplicationName("QElectroTech");
