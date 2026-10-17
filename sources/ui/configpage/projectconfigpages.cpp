@@ -187,6 +187,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto project_origin = ProjectOrigin::fromString(origin_cb_->currentData().toString());
+	if (m_project->Origin() != project_origin)
+	{
+		m_project->setOrigin(project_origin);
+		modified_project = true;
+	}
+
 	if (m_project -> uprightSymbolTexts() != upright_symbol_texts_cb_ -> isChecked()) {
 		m_project -> setUprightSymbolTexts(upright_symbol_texts_cb_ -> isChecked());
 		modified_project = true;
@@ -395,6 +402,9 @@ void ProjectMainConfigPage::readValuesFromProject()
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
 
+	const int project_origin_index = origin_cb_->findData(ProjectOrigin::toString(m_project->Origin()));
+	origin_cb_->setCurrentIndex(qMax(0, project_origin_index));
+
 		//The rules that apply: the project's own or the application's
 	const WiringRules::Settings wiring_rules = m_project -> wiringRules();
 	{
@@ -451,6 +461,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
+	origin_cb_->setDisabled(is_read_only);
 }
 
 //######################################################################################//

@@ -31,9 +31,13 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
+<<<<<<< HEAD
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
 #include "projectlock.h"
+=======
+#include "projectorigin.h"
+>>>>>>> dfbec9275 (Saving and reading the origin point setting)
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -330,6 +334,8 @@ class QETProject : public QObject
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
+		ProjectOrigin::Mode Origin() const;
+		void setOrigin(ProjectOrigin::Mode mode);
 
 		QDomDocument toXml(QHash<int, QByteArray> *kept_folios = nullptr,
 						   QStringList *kept_parts = nullptr);
@@ -449,6 +455,7 @@ class QETProject : public QObject
 		void readCableXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
+		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
 
@@ -456,6 +463,7 @@ class QETProject : public QObject
 		void writeDefaultPropertiesXml(QDomElement &);
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
+		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
@@ -591,6 +599,7 @@ class QETProject : public QObject
 		QByteArray m_opened_content;
 		bool m_auto_conductor = true;
 		WireHops::Mode m_wire_hops = WireHops::Mode::None;
+		ProjectOrigin::Mode m_origin = ProjectOrigin::Mode::TopLeft;
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
