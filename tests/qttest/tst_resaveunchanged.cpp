@@ -234,6 +234,65 @@ private slots:
 		QVERIFY(references > 0);
 	}
 
+	// Deleting the folio that holds the first part of a split table, with
+	// folios opened lazily (the default), then saving: the next part keeps
+	// the table's query (F121). The first part holds it; the next part takes
+	// it over only if it was built when the folio went, and it used to be
+	// built later, from the file, naming a part that was gone and saving no
+	// query. industrial.qet's folio 41 (index 40) holds the first part of its
+	// 10-part parts list. It is resaved first: its folios have no saved uuid,
+	// and such a project opens with every folio built. Every table in the
+	// file must name a table that is in it, or have a query.
+	void deletedFirstPartKeepsTableQuery()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString in = resave(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY(!in.isEmpty());
+		const QString out = m_dir.filePath(QStringLiteral("deleted_first_part.qet"));
+		const QString script = m_dir.filePath(QStringLiteral("deleted_first_part.js"));
+		QFile js(script);
+		QVERIFY(js.open(QIODevice::WriteOnly));
+		js.write(QStringLiteral("qet.log('REMOVED ' + qet.removeFolio(40));\n"
+								"qet.log('SAVED ' + qet.save('%1'));\n").arg(out).toUtf8());
+		js.close();
+		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
+		env.remove(QStringLiteral("QET_EAGER_FOLIOS"));
+		env.insert(QStringLiteral("HOME"), home);
+		env.insert(QStringLiteral("XDG_CONFIG_HOME"), home + QStringLiteral("/config"));
+		env.insert(QStringLiteral("XDG_DATA_HOME"), home + QStringLiteral("/data"));
+		QProcess proc;
+		proc.setProcessEnvironment(env);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH),
+				   {QStringLiteral("--run"), script, in});
+		QVERIFY(proc.waitForFinished(180000));
+		const QString log = QString::fromUtf8(proc.readAllStandardOutput() + proc.readAllStandardError());
+		QVERIFY2(log.contains(QStringLiteral("REMOVED true")) && log.contains(QStringLiteral("SAVED true")),
+				 qPrintable(log.right(400)));
+
+		const QString saved = QString::fromUtf8(read(out));
+		const QRegularExpression table_re(
+					QStringLiteral("<graphics_table [^>]*uuid=\"([^\"]+)\"[^>]*>(.*?)</graphics_table>"),
+					QRegularExpression::DotMatchesEverythingOption);
+		QHash<QString, QString> tables;   // uuid -> what is inside the table
+		for (const auto &m : table_re.globalMatch(saved))
+			tables.insert(m.captured(1), m.captured(2));
+		QVERIFY(tables.size() >= 9);
+		const QRegularExpression previous_re(QStringLiteral("<previous_table uuid=\"([^\"]+)\""));
+		const QRegularExpression query_re(QStringLiteral("<query>\\s*\\S"));
+		for (auto it = tables.cbegin() ; it != tables.cend() ; ++it) {
+			const auto previous = previous_re.match(it.value());
+			QVERIFY2(query_re.match(it.value()).hasMatch()
+					 || (previous.hasMatch() && tables.contains(previous.captured(1))),
+					 qPrintable(QStringLiteral("table %1 has no query and names no table in the file")
+								.arg(it.key())));
+		}
+	}
+
 	// A folio report arrow linked to one that has no terminal -- such as
 	// ref_voyant_2_h.elmt from the collection -- crashed QElectroTech on
 	// opening: the arrow's text looked for a wire on the other arrow's
