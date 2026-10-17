@@ -5828,6 +5828,22 @@ class Integration(unittest.TestCase):
         line = [l for l in (out["stdout"] + out["stderr"]).splitlines() if l.startswith("DB ")][0]
         self.assertEqual(json.loads(line[3:]), [{"wire_number": "W1"}])
 
+    def test_duplicate_labels_are_counted_per_location(self):
+        """-F1 in two distribution boards is two devices: the folio's
+        location (+UV1, +UV2) is part of the name, as %LM shows it. KM1 on
+        +UV1 and +UV2 is fine, a second KM1 on +UV2 is the finding."""
+        base = self.sb.new(folios=3)
+        ops = []
+        for folio, ort in enumerate(("UV1", "UV2", "UV2")):
+            ops += [{"op": "set_folio", "folio": folio, "property": "locmach", "value": ort},
+                    {"op": "add_element", "id": f"k{folio}", "folio": folio, "path": COIL,
+                     "x": 100, "y": 100},
+                    {"op": "set_label", "folio": folio, "element": f"$k{folio}", "label": "KM1"}]
+        r = self.ok(self.sb.edit(base, ops))
+        found = {f["check"]: f for f in m.tool_check(BINARY, r["output"])["findings"]}
+        self.assertEqual(found["duplicate_master_labels"]["rows"],
+                         [{"label": "KM1", "plant": "", "location": "UV2", "n": 2}])
+
     def test_check_fires_on_a_project_with_known_defects(self):
         """Newly placed elements store NULL where a loaded file stores '', and
         `col = ''` matches only the second: the first version of these checks

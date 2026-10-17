@@ -2772,22 +2772,34 @@ def tool_element_search(directory: str, query: str = "", link_type: str | None =
 #   either would bury the real findings.
 # - "simple" elements are checked for duplicates too but only as a warning:
 #   industrial.qet reuses V1..V6 across folios on purpose.
+#
+# A label names one device per place: the same "-F1" in two distribution
+# boards (+UV1-F1, +UV2-F1) is two devices, as in IEC 81346 / EPLAN. The
+# place is the element's own plant/location, else its folio's -- what the
+# label formulas %M/%LM show. element_nomenclature_view carries only the
+# element's, so these two checks read the tables.
+_LABELS_PER_PLACE_SQL = (
+    "SELECT ei.label AS label, "
+    "COALESCE(NULLIF(ei.plant,''), di.plant, '') AS plant, "
+    "COALESCE(NULLIF(ei.location,''), di.locmach, '') AS location, COUNT(*) AS n "
+    "FROM element_info ei JOIN element e ON ei.element_uuid = e.uuid "
+    "JOIN diagram_info di ON di.diagram_uuid = e.diagram_uuid "
+    "WHERE COALESCE(ei.label,'') <> '' AND e.type = '{type}' "
+    "AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on') "
+    "GROUP BY ei.label, 2, 3 HAVING n > 1 ORDER BY n DESC, ei.label")
+
 CHECKS = {
     "duplicate_master_labels": {
         "severity": "error",
         "note": "Two master elements with the same label are ambiguous in every "
                 "report that keys on it (BOM, cross-references, wiring list).",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'master' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="master"),
     },
     "duplicate_simple_labels": {
         "severity": "warning",
         "note": "Legitimate when a label is reused on purpose across folios "
                 "(industrial.qet does); worth a look otherwise.",
-        "sql": "SELECT label, COUNT(*) AS n FROM element_nomenclature_view "
-               "WHERE COALESCE(label,'') <> '' AND element_type = 'simple' "
-               "GROUP BY label HAVING n > 1 ORDER BY n DESC, label",
+        "sql": _LABELS_PER_PLACE_SQL.format(type="simple"),
     },
     "unlabelled_masters": {
         "severity": "warning",
