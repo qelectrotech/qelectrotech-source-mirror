@@ -665,6 +665,20 @@ target_link_libraries(tst_freetextwidth PRIVATE Qt::Test Qt::Gui Qt::Xml)
 target_compile_definitions(tst_freetextwidth PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+# A terminal in a symbol's definition with no orientation attribute faces
+# north instead of crashing the program on opening (Qet::orientationFromString()
+# read the first character of an empty string): the real binary's --resave
+# on fixtures/terminal_no_orientation.qet.
+add_executable(
+  tst_terminalnoorientation
+  tst_terminalnoorientation.cpp)
+add_test(NAME tst_terminalnoorientation COMMAND tst_terminalnoorientation)
+set_tests_properties(tst_terminalnoorientation PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+add_dependencies(tst_terminalnoorientation qelectrotech)
+target_link_libraries(tst_terminalnoorientation PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_terminalnoorientation PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
 # A free text whose x, y or rotation is "nan" or "inf" is loaded at 0 for
 # that number, so a resave and the SVG export carry no non-finite number:
 # the real binary on fixtures/free_text_nonfinite.qet.
