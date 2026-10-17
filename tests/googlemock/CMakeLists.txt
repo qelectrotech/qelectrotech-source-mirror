@@ -59,6 +59,10 @@ find_package(
  ${QET_COMPONENTS}
  REQUIRED)
 
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+endif()
+
 Include(FetchContent)
 
 FetchContent_Declare(

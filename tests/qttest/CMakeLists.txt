@@ -61,6 +61,10 @@ find_package(
  Test
  REQUIRED)
 
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+endif()
+
 include(../../cmake/fetch_kdeaddons.cmake)
 include(../../cmake/fetch_singleapplication.cmake)
 include(../../cmake/fetch_pugixml.cmake)
