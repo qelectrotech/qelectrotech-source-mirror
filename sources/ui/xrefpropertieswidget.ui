@@ -285,7 +285,8 @@
 %l: the row number
 %c: the column number
 %M: the installation
-%LM: the location</string>
+%LM: the location
+%T: the sheet title</string>
           </property>
          </widget>
         </item>

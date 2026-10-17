@@ -1261,6 +1261,8 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
 	}
+	if (other_diagram && string.contains("%T"))
+		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
 		connect(other_elmt, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))
@@ -1286,6 +1288,8 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+	if (other_diagram && string.contains("%T"))
+		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
 		disconnect(other_element, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))

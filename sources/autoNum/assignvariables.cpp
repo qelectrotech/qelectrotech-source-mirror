@@ -17,6 +17,8 @@
 */
 #include "assignvariables.h"
 
+#include <QRegularExpression>
+
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../qetapp.h"
@@ -229,6 +231,7 @@ namespace autonum
 		FormulaContext context;
 		const BorderTitleBlock &border = diagram->border_and_titleblock;
 		context.folio = border.folio();
+		context.folio_title = border.title();
 		context.folio_index = diagram->folioIndex();
 		context.folio_total = border.folioTotal();
 		context.plant = border.plant();
@@ -411,6 +414,9 @@ namespace autonum
 					 QString::number(m_context.folio_total));
 		m_assigned_label.replace("%M", m_context.plant);
 		m_assigned_label.replace("%LM", m_context.locmach);
+			//%T on its own only, not the start of a longer word
+		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
+		m_assigned_label.replace(folio_title, m_context.folio_title);
 
 		QSettings settings;
 		if (m_context.has_element)
