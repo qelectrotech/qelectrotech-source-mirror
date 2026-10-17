@@ -752,11 +752,24 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 	auto *self = const_cast<QETProject *>(this);
 	const ProjectState state = m_state;
 	self->m_state = ProjectParsingRunning;
+		//Batch the database's signals as a paste does
+		//(DiagramEventAddPaste): every symbol and wire built would emit
+		//dataBaseUpdated(), and every table already built would measure all
+		//its rows again each time -- minutes for a save building 40 folios
+		//with 10 parts-list folios built. The rows are still written as each
+		//item is built: only the signal waits, and is sent once at the end
+		//(updateDB() would fill the whole database again, every time).
+	const bool signals_were_blocked = self->m_data_base.signalsBlocked();
+	self->m_data_base.blockSignals(true);
 	QList<Diagram *> built;
 	for (Diagram *d : folios)
 		if (d->buildDeferred()) built << d;
 	for (Diagram *d : std::as_const(built))
 		self->folioLoaded(d);
+	self->m_data_base.blockSignals(signals_were_blocked);
+	if (!signals_were_blocked && !built.isEmpty()) {
+		emit self->m_data_base.dataBaseUpdated();
+	}
 		//A symbol built before still keeping the links it was saved with
 		//(a partner on a folio not built): its initLink() links those just
 		//built, puts its partners back in their saved order and drops what
@@ -3176,6 +3189,23 @@ void QETProject::buildFoliosHoldingTables()
 }
 
 /**
+	@brief QETProject::folioHoldsTablesOrSymbols
+	@return true if @p folio, built or not, has a drawn table or a symbol
+*/
+bool QETProject::folioHoldsTablesOrSymbols(Diagram *folio) const
+{
+	if (!folio->isLoaded()) {
+		const QDomElement xml = folio->deferredXml();
+		return !xml.elementsByTagName(QetGraphicsTableItem::xmlTagName()).isEmpty()
+			|| !xml.elementsByTagName(QStringLiteral("element")).isEmpty();
+	}
+	for (QGraphicsItem *item : folio->items())
+		if (item->type() == QetGraphicsTableItem::Type || item->type() == Element::Type)
+			return true;
+	return false;
+}
+
+/**
 	@brief QETProject::unbuiltFolioHasTables
 	@return true if @p folio, not built yet (lazy folios), has a drawn
 	table, read from its XML
@@ -4273,6 +4303,20 @@ void QETProject::detachDiagram(Diagram *diagram)
 		&QETProject::updateDiagramsFolioData);
 	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 		this, &QETProject::usedTitleBlockTemplateChanged);
+
+		//A folio that holds a table or a symbol is removed: tables on folios
+		//not built yet (lazy folios) are built while it is still in the
+		//project, as they are with every folio built (F121). A table split
+		//over several folios keeps its query in its first part, and the next
+		//part takes it over only if that part was built
+		//(QetGraphicsTableItem::toXml()); built later, from the file, it
+		//names a part that is gone and saves no query. A built table also
+		//follows the project's database, so a parts list that showed this
+		//folio's symbols is resized like every other. A folio with neither
+		//builds no other.
+	if (folioHoldsTablesOrSymbols(diagram)) {
+		buildFoliosHoldingTables();
+	}
 
 	m_diagrams_list.removeAll(diagram);
 	updateDiagramsFolioData();
