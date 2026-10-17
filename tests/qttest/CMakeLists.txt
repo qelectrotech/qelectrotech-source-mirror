@@ -1364,3 +1364,22 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_FIXTURES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/fixtures\"")
 endif()
+
+# A save with lazy folios equals one with every folio built (discussion
+# #1440): the same edits made twice on industrial.qet and affuteuse_250h.qet,
+# as .qet and as .qetz, and the saved files compared. The real binary's --run
+# and --resave.
+if(QET_HAS_SCRIPTING)
+  add_executable(
+    tst_lazysaveparity
+    tst_lazysaveparity.cpp
+    ${QET_DIR}/sources/container/qetzip.cpp
+    ${QET_DIR}/sources/container/miniz/miniz.c)
+  add_test(NAME tst_lazysaveparity COMMAND tst_lazysaveparity)
+  add_dependencies(tst_lazysaveparity qelectrotech)
+  target_include_directories(tst_lazysaveparity PRIVATE ${QET_DIR}/sources)
+  target_link_libraries(tst_lazysaveparity PRIVATE Qt::Test SQLite3::SQLite3)
+  target_compile_definitions(tst_lazysaveparity PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+endif()
