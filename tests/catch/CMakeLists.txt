@@ -109,7 +109,7 @@ target_link_libraries(
     PUBLIC
     Catch2::Catch2
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF6_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})
