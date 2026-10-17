@@ -22,6 +22,7 @@
 #include <QHash>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPair>
 #include <QScopedPointer>
 
 #include <algorithm>
@@ -56,6 +57,9 @@ const QColor band_color{85, 85, 85};
 const QColor channel_color{55, 55, 55};
 const QColor bridge_color{200, 30, 30};
 const QColor separator_color{196, 196, 198};
+const QColor fuse_holder_color{38, 38, 40};
+const QColor knife_color{240, 120, 0};
+const QColor led_color{220, 20, 20};
 
 /**
  * @brief The PhysicalGeometry struct
@@ -237,6 +241,148 @@ void drawEndStop(QPainter *painter, const QRectF &rect)
 	painter->drawRect(QRectF{cx_ - lock_w_ / 2, rect.top() + h_ * 0.68, lock_w_, h_ * 0.07});
 	painter->drawEllipse(QPointF{cx_, rect.top() + h_ * 0.79}, lock_w_ * 0.35, lock_w_ * 0.35);
 
+	painter->restore();
+}
+
+/**
+ * @brief leverZone
+ * Vertical zone (in fraction of the length of the terminal) of the lever of a
+ * fuse terminal or of the knife of a disconnect terminal, centered on the middle
+ * band. For a terminal with one level, the lever goes from a wire entry to the other
+ * (a bit shorter with screw clamps, whose screw heads are nearer the middle),
+ * for a terminal with levels it stay on the middle band, between the wire entries.
+ */
+QPair<qreal, qreal> leverZone(int levels, bool screw)
+{
+	if (levels > 1) {
+		return qMakePair(qreal(0.395), qreal(0.605));
+	}
+	return screw ? qMakePair(qreal(0.345), qreal(0.655))
+				 : qMakePair(qreal(0.315), qreal(0.685));
+}
+
+/**
+ * @brief drawFuseHolder
+ * Draw the hinged fuse holder of a fuse terminal, seen from above : a black lever
+ * on the middle of the terminal with its hinge pin, a window on the fuse,
+ * a ribbed grip at the other end and, for a fuse with led, the led.
+ * The marker tag and the symbol are drawn after, on the lever.
+ * @param x : left of the terminal
+ * @param w : width of the terminal
+ * @param length : length of the terminal
+ */
+void drawFuseHolder(QPainter *painter, qreal x, qreal w, qreal length, int levels, bool screw, bool led)
+{
+	const auto zone_{leverZone(levels, screw)};
+	const qreal top_{length * zone_.first};
+	const qreal bottom_{length * zone_.second};
+	const qreal inset_{w * 0.08};
+	const QRectF lever_{x + inset_, top_, w - 2 * inset_, bottom_ - top_};
+	const qreal cx_{x + w / 2};
+
+	painter->save();
+	painter->setPen(QPen(Qt::black, 0.5));
+	painter->setBrush(fuse_holder_color);
+	painter->drawRoundedRect(lever_, w * 0.12, w * 0.12);
+
+		//Hinge pin
+	const qreal pin_r_{w * 0.12};
+	painter->setPen(QPen(QColor(90, 90, 90), 0.4));
+	painter->setBrush(QColor(150, 150, 150));
+	painter->drawEllipse(QPointF{cx_, top_ + pin_r_ * 2}, pin_r_, pin_r_);
+
+		//Window on the fuse, under the hinge pin and above the marker tag,
+		//only when there is enough room
+	const qreal window_top_{std::max(length * 0.38, top_ + pin_r_ * 3.4)};
+	const qreal window_bottom_{length * 0.445};
+	if (levels == 1 && window_bottom_ - window_top_ > length * 0.03)
+	{
+		painter->setPen(QPen(QColor(110, 110, 110), 0.4));
+		painter->setBrush(QColor(205, 205, 200));
+		painter->drawRoundedRect(QRectF{cx_ - w * 0.25, window_top_, w * 0.5, window_bottom_ - window_top_}, 1, 1);
+			//The fuse in the window
+		painter->setPen(QPen(QColor(120, 90, 40), std::max<qreal>(0.5, w * 0.08)));
+		const qreal margin_{(window_bottom_ - window_top_) * 0.1};
+		painter->drawLine(QPointF{cx_, window_top_ + margin_}, QPointF{cx_, window_bottom_ - margin_});
+	}
+
+		//Ribbed grip at the other end
+	painter->setPen(QPen(QColor(110, 110, 110), 0.4));
+	const qreal grip_top_{bottom_ - (bottom_ - top_) * 0.13};
+	for (int i = 0 ; i < 3 ; ++i) {
+		const qreal y_{grip_top_ + i * (bottom_ - grip_top_) / 3};
+		painter->drawLine(QPointF{lever_.left() + w * 0.12, y_}, QPointF{lever_.right() - w * 0.12, y_});
+	}
+
+		//Led : lit when the fuse is blown. Between the type symbol
+		//(bottom of the middle band) and the grip, whatever the length of the lever.
+	const qreal symbol_bottom_{length * 0.595};
+	if (led && grip_top_ > symbol_bottom_)
+	{
+		const qreal led_r_{std::min({w * 0.13, length * 0.012, (grip_top_ - symbol_bottom_) * 0.45})};
+		painter->setPen(QPen(led_color.darker(160), 0.4));
+		painter->setBrush(led_color);
+		painter->drawEllipse(QPointF{cx_, (symbol_bottom_ + grip_top_) / 2}, led_r_, led_r_);
+	}
+	painter->restore();
+}
+
+/**
+ * @brief drawDisconnectKnife
+ * Draw the orange knife of a disconnect terminal, seen from above :
+ * a narrow lever on the middle of the terminal with its hinge and its grip.
+ */
+void drawDisconnectKnife(QPainter *painter, qreal x, qreal w, qreal length, int levels, bool screw)
+{
+	const auto zone_{leverZone(levels, screw)};
+	const qreal top_{length * zone_.first};
+	const qreal bottom_{length * zone_.second};
+	const qreal cx_{x + w / 2};
+	const qreal knife_w_{w * 0.56};
+
+	painter->save();
+	painter->setPen(QPen(knife_color.darker(170), 0.5));
+	painter->setBrush(knife_color);
+	painter->drawRoundedRect(QRectF{cx_ - knife_w_ / 2, top_, knife_w_, bottom_ - top_},
+							 knife_w_ * 0.3, knife_w_ * 0.3);
+
+		//Hinge
+	const qreal pin_r_{knife_w_ * 0.22};
+	painter->setBrush(knife_color.darker(150));
+	painter->drawEllipse(QPointF{cx_, top_ + pin_r_ * 2}, pin_r_, pin_r_);
+
+		//Grip
+	painter->setPen(QPen(knife_color.darker(190), 0.5));
+	const qreal grip_top_{bottom_ - (bottom_ - top_) * 0.12};
+	for (int i = 0 ; i < 3 ; ++i) {
+		const qreal y_{grip_top_ + i * (bottom_ - grip_top_) / 3};
+		painter->drawLine(QPointF{cx_ - knife_w_ * 0.3, y_}, QPointF{cx_ + knife_w_ * 0.3, y_});
+	}
+	painter->restore();
+}
+
+/**
+ * @brief drawTestSockets
+ * Draw the two test sockets of a test terminal : a brass ring with a black hole.
+ * For a terminal with one level they are between the wire entries and the middle band,
+ * for a terminal with levels (no room between the entries) they are in the middle band,
+ * in place of the bridge channels and of the type symbol.
+ */
+void drawTestSockets(QPainter *painter, qreal x, qreal w, qreal length, qreal s, int levels, bool screw, const QColor &fill)
+{
+	const qreal r_{std::min({w * 0.22, 1.2 * s, length * 0.018})};
+	const qreal offset_{levels > 1 ? 0.425 : (screw ? 0.37 : 0.355)};
+	painter->save();
+	for (const qreal f_ : {offset_, 1 - offset_})
+	{
+		const QPointF c_{x + w / 2, length * f_};
+		painter->setPen(QPen(fill.darker(200), 0.4));
+		painter->setBrush(QColor(200, 170, 60));	//Brass
+		painter->drawEllipse(c_, r_, r_);
+		painter->setPen(Qt::NoPen);
+		painter->setBrush(Qt::black);
+		painter->drawEllipse(c_, r_ * 0.55, r_ * 0.55);
+	}
 	painter->restore();
 }
 
@@ -493,14 +639,35 @@ void paint(QPainter *painter,
 		}
 		painter->restore();
 
+			//Specific parts of some types of terminal
+		const auto type_{first_->type()};
+		switch (type_)
+		{
+			case ElementData::TTFuse:
+				drawFuseHolder(painter, x_, w_, length_, levels_, screw_, first_->isLed());
+				break;
+			case ElementData::TTSectional:
+				drawDisconnectKnife(painter, x_, w_, length_, levels_, screw_);
+				break;
+			case ElementData::TTTestSocket:
+				drawTestSockets(painter, x_, w_, length_, s_, levels_, screw_, fill_);
+				break;
+			default:
+				break;
+		}
+
 			//Symbol of the type (fuse, led...), at the bottom of the band
-		const bool have_symbol_{first_->type() != ElementData::TTGeneric || first_->isLed()};
+			//A test terminal with levels have its test sockets in place of the symbol
+		const bool have_symbol_{(first_->type() != ElementData::TTGeneric || first_->isLed())
+								&& !(type_ == ElementData::TTTestSocket && levels_ > 1)};
 		const qreal tag_top_{length_ * 0.455};
-		const qreal tag_bottom_{length_ * (have_symbol_ ? 0.535 : 0.59)};
+		const bool sockets_in_band_{type_ == ElementData::TTTestSocket && levels_ > 1};
+		const qreal tag_bottom_{length_ * (have_symbol_ || sockets_in_band_ ? 0.535 : 0.59)};
 		if (have_symbol_)
 		{
 			painter->save();
-			painter->setPen(QPen(Qt::white, 0.5));
+				//Black on the orange knife, white on the dark band and on the fuse holder
+			painter->setPen(QPen(type_ == ElementData::TTSectional ? QColor(Qt::black) : QColor(Qt::white), 0.5));
 			Helpers::drawTypeSymbol(painter, QRectF{x_, length_ * 0.54, w_, length_ * 0.055},
 									first_->type(), first_->isLed());
 			painter->restore();
