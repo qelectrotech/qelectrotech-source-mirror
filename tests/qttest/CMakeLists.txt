@@ -889,6 +889,19 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # Deleting a symbol whose terminal held several wires joins them with a
+  # new wire; its uuid comes from its two ends, so the same deletion saves
+  # the same file every time (F115): examples/affuteuse_250h.qet.
+  add_executable(
+    tst_joinedwireuuid
+    tst_joinedwireuuid.cpp)
+  add_test(NAME tst_joinedwireuuid COMMAND tst_joinedwireuuid)
+  add_dependencies(tst_joinedwireuuid qelectrotech)
+  target_link_libraries(tst_joinedwireuuid PRIVATE Qt::Test)
+  target_compile_definitions(tst_joinedwireuuid PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # qet.terminalPosition() and qet.conductorPath(), checked against each
   # other on a fixture's conductors.
   add_executable(
