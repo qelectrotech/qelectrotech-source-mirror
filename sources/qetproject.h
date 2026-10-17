@@ -354,6 +354,7 @@ class QETProject : public QObject
 		QList <ElementsLocation> unusedElements() const;
 		QList<ElementsLocation> unbuiltFolioElements() const;
 		bool unbuiltFolioHasTables(Diagram *folio) const;
+		bool folioHoldsTablesOrSymbols(Diagram *folio) const;
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 		bool projectWasModified();
 		bool projectOptionsWereModified();
