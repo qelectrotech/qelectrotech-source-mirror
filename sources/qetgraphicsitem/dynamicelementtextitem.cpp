@@ -1143,7 +1143,12 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
 		
-		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+			//A report's %{label} is where its partner is, not its own
+			//label: the same text updateReportText() builds
+		if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport))
+			final_text = reportReplacedCompositeText();
+		else
+			final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
 	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
@@ -1584,6 +1589,13 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 			if(string.contains("%{conductor_section}"))
 				string.replace("%{conductor_section}", "");
 		}
+
+			//What is left is the report's own information, as in the
+			//composite text of any other element: a report can then say
+			//which device and terminal it leads to (%{comment}), the way
+			//EPLAN prints "-XS27:N 2 UG Raum - 1.1"
+		string = autonum::AssignVariables::replaceVariable(
+					string, m_parent_element.data()->elementInformations());
 	}
 	
 	return string;
