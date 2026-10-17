@@ -27,7 +27,7 @@
 #include "qetversion.h"
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
-
+#include "projectorigin.h"
 
 #include "diagram.h"
 #include "qetproject.h"
@@ -70,9 +70,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 
 	display_titleblock_ = true;
 	display_border_ = true;
-	QSettings settings;
-	reverse_order_col_ = settings.value("reverse_order_col", false).toBool();
-	reverse_order_row_ = settings.value("reverse_order_row", false).toBool();
 	setFolioData(1, 1);
 	updateRectangles();
 }
@@ -563,28 +560,6 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
-	@brief BorderTitleBlock::reverseOrderCol
-	@param db : true — counting direction inverted, false — otherwise
-*/
-void BorderTitleBlock::reverseOrderCol(bool db)
-{
-	bool change = (db != reverse_order_col_);
-	reverse_order_col_ = db;
-	if (change) emit(displayChanged());
-}
-
-/**
-	@brief BorderTitleBlock::reverseOrderRow
-	@param db : true — counting direction inverted, false — otherwise
-*/
-void BorderTitleBlock::reverseOrderRow(bool db)
-{
-	bool change = (db != reverse_order_row_);
-	reverse_order_row_ = db;
-	if (change) emit(displayChanged());
-}
-
-/**
 	@brief BorderTitleBlock::updateRectangles
 	This method update the diagram rect according
 	to the value of rows and columns (number and size)
@@ -617,10 +592,6 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> setBrush(Qt::NoBrush);
 
 	QSettings settings;
-
-	//Update columns and rows order settings
-	reverseOrderCol(settings.value("reverse_order_col", false).toBool());
-	reverseOrderRow(settings.value("reverse_order_row", false).toBool());
 
 	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
@@ -1194,4 +1165,27 @@ void BorderTitleBlock::setNextFolioNum(const QString &next)
 	DiagramContext context = m_titleblock_template_renderer->context();
 	context.addValue("next-folio-num", m_next_folio_num);
 	m_titleblock_template_renderer->setContext(context);
+}
+
+/**
+	@brief BorderTitleBlock::reversedIsColumns
+	@return true, for the sake of order, from right to left
+*/
+bool BorderTitleBlock::reversedIsColumns() const {
+	ProjectOrigin::Mode origin = m_owner_folio->project()->Origin();
+	return (
+		origin == ProjectOrigin::Mode::TopRight
+		|| origin == ProjectOrigin::Mode::BottomRight);
+}
+
+/**
+	@brief BorderTitleBlock::reversedIsRows
+	@return true, for the sake of order, from bottom to top
+*/
+bool BorderTitleBlock::reversedIsRows() const
+{
+	ProjectOrigin::Mode origin = m_owner_folio->project()->Origin();
+	return (
+		origin == ProjectOrigin::Mode::BottomLeft
+		|| origin == ProjectOrigin::Mode::BottomRight);
 }
