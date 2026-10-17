@@ -54,6 +54,8 @@ class TerminalStripItem : public QetGraphicsItem
         void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
         void refreshPending();
         void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+		void setDrawStyle(TerminalStripLayoutPattern::DrawStyle style);
+		TerminalStripLayoutPattern::DrawStyle drawStyle() const;
 
 		/**
 		 * @brief The PdfRef struct

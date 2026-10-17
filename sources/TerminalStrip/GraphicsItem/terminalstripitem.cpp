@@ -205,6 +205,26 @@ void TerminalStripItem::setLayout(QSharedPointer<TerminalStripLayoutPattern> lay
 	m_drawer.setLayout(layout);
 }
 
+/**
+ * @brief TerminalStripItem::setDrawStyle
+ * Set how this item draw the terminals (schematic, realistic...).
+ * The style is chosen when the item is added to a folio and saved with the item.
+ * @param style
+ */
+void TerminalStripItem::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style)
+{
+	if (style == m_drawer.drawStyle()) {
+		return;
+	}
+	prepareGeometryChange();
+	m_drawer.setDrawStyle(style);
+	update();
+}
+
+TerminalStripLayoutPattern::DrawStyle TerminalStripItem::drawStyle() const {
+	return m_drawer.drawStyle();
+}
+
 void TerminalStripItem::setDefaultLayout()
 {
 	if (m_strip && m_strip->project()) {

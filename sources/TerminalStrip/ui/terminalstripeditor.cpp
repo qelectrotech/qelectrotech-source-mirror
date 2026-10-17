@@ -222,6 +222,7 @@ void TerminalStripEditor::apply()
 					set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
 					set_info(RealTerminal::sectionInfoKey(), data_.section_ > 0 ? QString::number(data_.section_, 'g', 6) : QString());
 					set_info(RealTerminal::widthInfoKey(), data_.width_mm_ > 0 ? QString::number(data_.width_mm_, 'g', 6) : QString());
+					set_info(RealTerminal::separatorInfoKey(), data_.separator_ ? QStringLiteral("true") : QString());
 
 					if (element->elementData() != current_data)
 						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));

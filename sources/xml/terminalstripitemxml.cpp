@@ -95,6 +95,12 @@ QDomElement TerminalStripItemXml::toXml(TerminalStripItem *item, QDomDocument &d
 
 		dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
 
+			//Drawing style of the item, not saved for the default (schematic) style
+		if (item->drawStyle() != TerminalStripLayoutPattern::DrawStyle::Schematic) {
+			dom_element.setAttribute(QStringLiteral("draw_style"),
+									 TerminalStripLayoutPattern::drawStyleToString(item->drawStyle()));
+		}
+
 		return dom_element;
 	} else {
 		return QDomElement();
@@ -133,6 +139,11 @@ bool TerminalStripItemXml::fromXml(TerminalStripItem *item, QETProject *project,
 
 		bool b{QETXML::qGraphicsItemPosFromXml(item,
 											   xml_elmt.firstChildElement(QStringLiteral("pos")))};
+
+			//Item saved before the drawing styles : no attribute, schematic style
+		item->setDrawStyle(TerminalStripLayoutPattern::drawStyleFromString(
+							   xml_elmt.attribute(QStringLiteral("draw_style")),
+							   TerminalStripLayoutPattern::DrawStyle::Schematic));
 
 		return (a && b);
 	}

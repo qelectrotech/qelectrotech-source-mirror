@@ -265,6 +265,20 @@ qreal RealTerminal::widthMm() const
 }
 
 /**
+ * @brief RealTerminal::hasSeparatorAfter
+ * @return true if a separator plate (partition plate) is mounted
+ * after this terminal, between this terminal and the next one of the strip.
+ * Used to separate groups of terminals (voltages, functions...).
+ */
+bool RealTerminal::hasSeparatorAfter() const {
+	if (m_element) {
+		return QET::infoFlagIsTrue(
+			m_element->elementData().m_informations.value(separatorInfoKey()).toString());
+	}
+	return false;
+}
+
+/**
  * @brief RealTerminal::conductor
  * @return
  */

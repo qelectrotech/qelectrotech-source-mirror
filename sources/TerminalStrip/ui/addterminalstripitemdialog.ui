@@ -25,6 +25,35 @@
     <widget class="QComboBox" name="m_terminal_strip_cb"/>
    </item>
    <item>
+    <widget class="QLabel" name="label_draw_style">
+     <property name="text">
+      <string>Drawing style :</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="m_draw_style_cb">
+     <property name="toolTip">
+      <string>How the terminals are drawn. The realistic styles draw the strip at scale, seen from above, with the real width of each terminal.</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Schematic</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Realistic (push-in)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Realistic (screw)</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

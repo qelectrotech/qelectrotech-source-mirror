@@ -24,6 +24,8 @@
 #include "../../diagram.h"
 
 #include "../../qet.h"
+
+#include <algorithm>
 void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 {
 	AddTerminalStripItemDialog d(diagram->project(), parent);
@@ -33,6 +35,7 @@ void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 		if (strip_)
 		{
 			auto item_ = new TerminalStripItem(strip_);
+			item_->setDrawStyle(static_cast<TerminalStripLayoutPattern::DrawStyle>(d.selectedDrawStyle()));
 			diagram->addItem(item_);
 			item_->setPos(50, 50);
 
@@ -75,6 +78,16 @@ TerminalStrip *AddTerminalStripItemDialog::selectedTerminalStrip() const
 	}
 
 	return nullptr;
+}
+
+/**
+ * @brief AddTerminalStripItemDialog::selectedDrawStyle
+ * @return The drawing style chosen for the new item,
+ * as an int value of TerminalStripLayoutPattern::DrawStyle.
+ * The index of the combo box is the value of the enum.
+ */
+int AddTerminalStripItemDialog::selectedDrawStyle() const {
+	return std::clamp(ui->m_draw_style_cb->currentIndex(), 0, 2);
 }
 
 void AddTerminalStripItemDialog::fillComboBox()

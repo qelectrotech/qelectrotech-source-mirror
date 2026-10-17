@@ -17,6 +17,8 @@
 */
 #include <QFontDialog>
 
+#include <algorithm>
+
 #include "terminalstriplayouteditor.h"
 #include "ui_terminalstriplayouteditor.h"
 #include "../GraphicsItem/properties/terminalstriplayoutpattern.h"
@@ -33,6 +35,26 @@ TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStri
 	// the application palette.
 	ui->m_graphics_view->setBackgroundBrush(Qt::white);
 	ui->m_graphics_view->scene()->addItem(&m_preview_strip_item);
+
+		//Drawing style
+		//The style is chosen for each item when it is added to a folio,
+		//here it only change the preview, to see the values of each style.
+	connect(ui->m_draw_style_cb, &QComboBox::currentIndexChanged, this, [this](int index) {
+		m_preview_strip_item.prepareGeometryChange();
+		m_preview_strip_item.m_drawer.setDrawStyle(
+					static_cast<TerminalStripLayoutPattern::DrawStyle>(std::clamp(index, 0, 2)));
+		m_preview_strip_item.update();
+		updatePreview();
+	});
+	connect(ui->m_realistic_scale_sb, &QDoubleSpinBox::valueChanged,
+			this, &TerminalStripLayoutEditor::valueEdited);
+	connect(ui->m_realistic_length_sb, &QSpinBox::valueChanged,
+			this, &TerminalStripLayoutEditor::valueEdited);
+	connect(ui->m_realistic_end_stops_cb, &QCheckBox::toggled,
+			this, &TerminalStripLayoutEditor::valueEdited);
+	connect(ui->m_realistic_group_marker_cb, &QCheckBox::toggled,
+			this, &TerminalStripLayoutEditor::valueEdited);
+
 	updateUi();
 }
 
@@ -159,6 +181,12 @@ void TerminalStripLayoutEditor::valueEdited()
 	m_layout.data()->m_cable_length = ui->m_cable_length_sb->value();
 	m_layout.data()->m_cable_end_length = ui->m_cable_end_length_sb->value();
 
+		//Values of the realistic styles
+	m_layout.data()->m_realistic_px_per_mm = ui->m_realistic_scale_sb->value();
+	m_layout.data()->m_realistic_length_mm = ui->m_realistic_length_sb->value();
+	m_layout.data()->m_realistic_end_stops = ui->m_realistic_end_stops_cb->isChecked();
+	m_layout.data()->m_realistic_group_marker = ui->m_realistic_group_marker_cb->isChecked();
+
 	updateUi();
 	m_preview_strip_item.update();
 }
@@ -270,6 +298,12 @@ void TerminalStripLayoutEditor::updateUi()
 	ui->m_cable_wire_length_sb->setValue(data->m_cable_wire_length);
 	ui->m_cable_length_sb->setValue(data->m_cable_length);
 	ui->m_cable_end_length_sb->setValue(data->m_cable_end_length);
+
+		//Values of the realistic styles
+	ui->m_realistic_scale_sb->setValue(data->m_realistic_px_per_mm);
+	ui->m_realistic_length_sb->setValue(qRound(data->m_realistic_length_mm));
+	ui->m_realistic_end_stops_cb->setChecked(data->m_realistic_end_stops);
+	ui->m_realistic_group_marker_cb->setChecked(data->m_realistic_group_marker);
 
 	m_ui_updating = false;
 	updatePreview();

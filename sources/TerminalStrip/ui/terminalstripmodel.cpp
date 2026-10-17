@@ -55,8 +55,9 @@ const int SHIELD_CELL = 14;
 const int COLOR_CELL = 15;
 const int SECTION_CELL = 16;
 const int WIDTH_CELL = 17;
+const int SEPARATOR_CELL = 18;
 
-const int COLUMN_COUNT = 18;
+const int COLUMN_COUNT = 19;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR(COLUMN_COUNT, false);
 
@@ -130,6 +131,7 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
 			case 15 : return Color;
 			case 16 : return Section;
 			case 17 : return Width;
+			case 18 : return Separator;
 			default : return Invalid;
 		}
 	}
@@ -236,6 +238,11 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return mrtd.shield_ ? Qt::Checked : Qt::Unchecked;
 	}
+	else if (role == Qt::CheckStateRole &&
+			   index.column() == SEPARATOR_CELL)
+	{
+		return mrtd.separator_ ? Qt::Checked : Qt::Unchecked;
+	}
 	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
 	{
 		if (m_modified_cell.contains(mrtd.element_) &&
@@ -327,6 +334,12 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_ = true;
 		modified_cell = SHIELD_CELL;
 	}
+	else if (column_ == SEPARATOR_CELL)
+	{
+		mrtd.separator_ = value.toBool();
+		modified_ = true;
+		modified_cell = SEPARATOR_CELL;
+	}
 	else if (column_ == COLOR_CELL &&
 			 role == Qt::EditRole)
 	{
@@ -417,6 +430,7 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				case COLOR_CELL:      return tr("Color");
 				case SECTION_CELL:    return tr("Section (mm²)");
 				case WIDTH_CELL:      return tr("Width (mm)");
+				case SEPARATOR_CELL:  return tr("Separator plate after");
 				default : return QVariant();
 			}
 		}
@@ -434,7 +448,7 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 		|| c == CABLE_CELL || c == CABLE_WIRE_CELL
 		|| c == COLOR_CELL || c == SECTION_CELL || c == WIDTH_CELL)
 		flags = flags | Qt::ItemIsEditable;
-	if (c == LED_CELL || c == SHIELD_CELL) {
+	if (c == LED_CELL || c == SHIELD_CELL || c == SEPARATOR_CELL) {
 		flags = flags | Qt::ItemIsUserCheckable;
 	}
 	return flags;

@@ -67,6 +67,7 @@ namespace TerminalStripDrawer
 			QColor color() const override;
 			QColor stripeColor() const override;
 			qreal widthMm() const override;
+			bool hasSeparatorAfter() const override;
 
 		private:
 			QSharedPointer<RealTerminal> m_real;

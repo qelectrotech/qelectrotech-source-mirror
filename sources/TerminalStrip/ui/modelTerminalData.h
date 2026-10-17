@@ -38,6 +38,7 @@ struct modelRealTerminalData
 				mrtd.conductor_ = real_t->conductor();
 				mrtd.led_ = real_t->isLed();
 				mrtd.shield_ = real_t->isShield();
+				mrtd.separator_ = real_t->hasSeparatorAfter();
 				mrtd.color_ = real_t->color();
 				mrtd.stripe_color_ = real_t->stripeColor();
 				mrtd.section_ = real_t->section();
@@ -60,6 +61,7 @@ struct modelRealTerminalData
 		QString conductor_;
 		bool led_ = false;
 		bool shield_ = false;
+		bool separator_ = false;	//A separator plate is mounted after the terminal
 		QColor color_;		//Invalid = no color set by the user
 		QColor stripe_color_;	//Second color of a two-tone color, invalid if plain
 		qreal section_ = 0;	//In mm2, 0 = no section set by the user
