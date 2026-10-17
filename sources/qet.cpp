@@ -49,10 +49,11 @@
 	@return l'orientation designee par la chaine de caractere
 */
 Qet::Orientation Qet::orientationFromString(const QString &s) {
-	QChar c = s[0];
-	if (c == 'e') return(Qet::East);
-	else if (c == 's') return(Qet::South);
-	else if (c == 'w') return (Qet::West);
+		//An empty string (a terminal saved without its orientation) is
+		//an inconsistency too: s[0] would read past its end and crash
+	if (s.startsWith(QLatin1Char('e'))) return(Qet::East);
+	else if (s.startsWith(QLatin1Char('s'))) return(Qet::South);
+	else if (s.startsWith(QLatin1Char('w'))) return (Qet::West);
 	else return(Qet::North);
 }
 
