@@ -6626,6 +6626,23 @@ class ZippedProjects(unittest.TestCase):
         self.assertNotEqual(*rotated[0]["orientation"])
 
 
+class TestKeepTail(unittest.TestCase):
+    """A large edit logs more than the kept tail; the script's own report
+    lines must survive the cut, or qet_edit says the script never ran."""
+
+    def test_short_output_is_untouched(self):
+        self.assertEqual(m._keep_tail("a\nb", 100), "a\nb")
+
+    def test_marker_lines_survive_the_cut(self):
+        first = 'QETEDIT {"kind": "capabilities", "missing": []}'
+        text = first + "\n" + "x" * 1000 + "\n" + 'QETEDIT {"kind": "save", "result": true}'
+        kept = m._keep_tail(text, 100)
+        self.assertIn(first, kept)
+        self.assertIn('"kind": "save"', kept)
+        self.assertEqual(kept.count('"kind": "save"'), 1)
+        self.assertEqual(m._parse_script_output(kept).get("missing_methods"), [])
+
+
 if __name__ == "__main__":
     print(f"binary   : {BINARY or '(none: integration tests skipped)'}")
     print(f"elements : {ELEMENTS or '(none)'}")

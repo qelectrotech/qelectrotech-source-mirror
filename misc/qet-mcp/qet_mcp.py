@@ -1072,6 +1072,23 @@ def _user_collections() -> dict:
     return found
 
 
+def _keep_tail(text: str, tail: int) -> str:
+    """The last `tail` characters of a run's output, but every line an edit
+    script reported through its marker kept whole, wherever it stands.
+
+    A large qet_edit logs far more than `tail` characters; cut from the
+    front, it lost the capability report the script makes first, and the
+    tool then said the binary had never run the script."""
+    if len(text) <= tail:
+        return text
+    marked = [ln for ln in text.splitlines() if "QETEDIT " in ln]
+    rest = text[-tail:]
+    if not marked:
+        return rest
+    kept = set(rest.splitlines())
+    return "\n".join([ln for ln in marked if ln not in kept] + [rest])
+
+
 def _run_qet(binary: str, args: list[str], timeout: int = 180,
              elements_dir: str | None = None,
              script: str | None = None, tail: int = 4000,
@@ -1150,7 +1167,7 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
                     "hint": "a modal dialog during load will hang a headless "
                             "run; check the project's format version"}
         result = {"ok": p.returncode == 0, "exit_code": p.returncode,
-                  "stdout": p.stdout[-tail:], "stderr": p.stderr[-tail:]}
+                  "stdout": _keep_tail(p.stdout, tail), "stderr": _keep_tail(p.stderr, tail)}
         # QElectroTech refuses --run when scripting is switched off, which
         # it is by default. Its own message is clear but French, and it
         # names a settings dialog that nobody driving this server is
