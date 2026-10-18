@@ -313,7 +313,7 @@ ProjectLock::Result ProjectLock::acquire(const QString &project_path, bool take_
 
 /**
 	@brief ProjectLock::moveTo
-	The project is now @p project_path (Save As, .qet saved as .qetz): take
+	The project is now @p project_path (Save As): take
 	the new lock, then let the old one go. Nothing changes when the new one
 	cannot be had.
 	@return true when the lock is now on @p project_path

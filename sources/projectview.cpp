@@ -795,7 +795,7 @@ QETResult ProjectView::writeProject(bool *cancelled)
 		return(m_project -> write());
 	}
 
-	const QString name = QFileInfo(m_project -> writeTarget()).fileName();
+	const QString name = QFileInfo(m_project -> filePath()).fileName();
 	QMessageBox box(QMessageBox::Warning,
 					tr("File changed on disk", "message box title"),
 					tr("Someone else changed %1 on disk at %2 since you opened it.\n\n"
@@ -836,32 +836,6 @@ QETResult ProjectView::doSave()
 		// The project has not been saved to a file yet,
 		// so save() actually means saveAs().
 		return(saveAs());
-	}
-
-		//A project read from a .qet is saved as a .qetz beside it: say so,
-		//and ask before replacing a .qetz already there
-	if (m_project->savesBesideOpenedFile()) {
-		const QString beside = m_project->besideContainerPath();
-		if (!refuseIfLockedByOther(beside)) return(QETResult());
-		const QString message = tr("This project was opened from %1. It is saved as %2, "
-								   "beside it, in the zipped project format; %1 stays as "
-								   "it is.\n\nTo write a file for a version of "
-								   "QElectroTech that cannot open %2, use File > Save a "
-								   "copy for an older QElectroTech.")
-				.arg(QFileInfo(m_project->filePath()).fileName(), QFileInfo(beside).fileName());
-		if (QFileInfo::exists(beside)) {
-			if (QET::QetMessageBox::question(
-						this, tr("Save as a zipped project", "message box title"),
-						message + QStringLiteral("\n\n")
-						+ tr("%1 already exists. Replace it?").arg(QFileInfo(beside).fileName()),
-						QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel)
-					!= QMessageBox::Yes) {
-				return(QETResult());
-			}
-		} else {
-			QET::QetMessageBox::information(
-						this, tr("Save as a zipped project", "message box title"), message);
-		}
 	}
 
 	// write to file
