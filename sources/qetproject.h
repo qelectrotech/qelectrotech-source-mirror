@@ -441,6 +441,7 @@ class QETProject : public QObject
 		}
 
 	private:
+		bool stampSaved();
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
@@ -570,6 +571,10 @@ class QETProject : public QObject
 		bool m_kept_folios_trusted = false;
 			/// Read from a .qet whose path nobody chose since: saved beside it
 		bool m_opened_from_qet = false;
+			/// The file the saved date and path were set for, and the undo
+			/// index then: an unchanged project keeps them (stampSaved())
+		QString m_stamped_path;
+		int m_stamped_undo_index = 0;
 			/// The project file as this QET last read or wrote it, to see
 			/// whether something else changed it since (changedOnDisk())
 		QString m_disk_path;

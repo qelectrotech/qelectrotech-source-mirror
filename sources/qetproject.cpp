@@ -474,6 +474,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	}
 	QFileInfo fi(*file);
 	setFilePath(fi.absoluteFilePath());
+		//Saved again unchanged, the file keeps its saved date and path
+	m_stamped_path = m_file_path;
 
 		//Extract the content of the xml. The raw bytes are kept : a project
 		//file without a persisted uuid derives its uuid from them.
@@ -1161,16 +1163,8 @@ void QETProject::setFilePath(const QString &filepath)
 		setReadOnly(false);
 	}
 
-		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
-	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
-	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
-	m_project_properties.addValue("savedfilepath", filePath());
-
-
-
+		//The saved date, time and path of the title block are set by
+		//write(), when the project is saved (stampSaved())
 	emit projectFilePathChanged(this, m_file_path);
 	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
@@ -2802,6 +2796,33 @@ bool QETProject::changedOnDisk(QDateTime *when) const
 }
 
 /**
+	@brief QETProject::stampSaved
+	Set the title block variables of the save (saveddate, saveddate-eu,
+	saveddate-us, savedtime, savedfilename, savedfilepath) to now and to
+	the file being written, when there is something new to save: the
+	project changed since it was opened or last saved, or it is written to
+	another file. Otherwise they keep what the file holds, so saving an
+	unchanged project gives an identical file (F124).
+	@return true if they were set
+*/
+bool QETProject::stampSaved()
+{
+	const bool changed = m_modified || m_undo_stack->index() != m_stamped_undo_index;
+	if (!changed && m_file_path == m_stamped_path) {
+		return false;
+	}
+	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
+	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
+	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
+	m_project_properties.addValue("savedfilepath", filePath());
+	emit projectInformationsChanged(this);
+	updateDiagramsFolioData();
+	return true;
+}
+
+/**
 	@brief QETProject::write
 	Save the project in a file.
 	If the file was changed on disk since this QET read or wrote it, nothing
@@ -2868,13 +2889,28 @@ QETResult QETProject::write(bool overwrite_changed)
 	if (!PreviousVersions::keep(m_file_path, PreviousVersions::count(), &backup_error))
 		qWarning().noquote() << "Previous version of" << m_file_path << "not kept:" << backup_error;
 
+		//The saved date, time and path go into the file being written, and
+		//only when there is something new to save: an unchanged project
+		//saves to an identical file (F124, a project kept in git). A
+		//failed write puts the previous values back.
+	const DiagramContext stamped_before = m_project_properties;
+	const bool stamped = stampSaved();
+	const auto failed_stamped = [&](const QString &error) {
+		if (stamped) {
+			m_project_properties = stamped_before;
+			emit projectInformationsChanged(this);
+			updateDiagramsFolioData();
+		}
+		return failed(error);
+	};
+
 	QString error_message;
 	if (isContainerPath(m_file_path))
 	{
 			//A container is written from the whole document: every folio
 			//built (stage D4 writes it from the database)
 		if (!writeContainerFile(m_file_path, &error_message))
-			return(failed(error_message));
+			return(failed_stamped(error_message));
 	}
 	else
 	{
@@ -2884,7 +2920,7 @@ QETResult QETProject::write(bool overwrite_changed)
 		QDomDocument xml_project(toXml(&kept_folios));
 		if (!QET::writeXmlText(spliceKeptFolios(xml_project.toString(4), kept_folios),
 						   m_file_path, &error_message))
-			return(failed(error_message));
+			return(failed_stamped(error_message));
 	}
 
 	rememberDiskState();
@@ -2905,17 +2941,8 @@ QETResult QETProject::write(bool overwrite_changed)
 		}
 	}
 
-		//title block variables should be updated after file save dialog is confirmed, before file is saved.
-	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
-	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
-	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).completeBaseName());
-	m_project_properties.addValue("savedfilepath", filePath());
-
-	emit projectInformationsChanged(this);
-	updateDiagramsFolioData();
-
+	m_stamped_path = m_file_path;
+	m_stamped_undo_index = m_undo_stack->index();
 	setModified(false);
 	return(QETResult());
 }
