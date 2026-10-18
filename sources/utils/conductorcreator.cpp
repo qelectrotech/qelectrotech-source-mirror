@@ -134,10 +134,10 @@ bool ConductorCreator::needsPotentialChoice(const QList<Terminal *> &terminals_l
 /**
 	@brief ConductorCreator::inheritedProperties
 	The properties a new wire takes from @p conductor's potential. A
-	cable's core names the cable and the core in m_cable, m_cable_uuid,
-	m_cable_slot and, written by CableManager, in its text (15W1:BN): none
-	of that belongs to a new wire, which is in no cable yet. The text is
-	then left to the formula.
+	cable's core names the cable and the core in m_cable, m_cable_uuid
+	and m_cable_slot (written by CableManager): none of that belongs to a
+	new wire, which is in no cable yet. The text is the potential's wire
+	number and is kept, unless it only repeats the core label.
 	@param conductor : a conductor of the potential
 	@return the properties for a new conductor of that potential
 */
@@ -146,10 +146,11 @@ ConductorProperties ConductorCreator::inheritedProperties(const Conductor *condu
 	ConductorProperties properties = conductor->properties();
 	if (!properties.m_cable_uuid.isNull())
 	{
+		if (properties.text == properties.m_cable)
+			properties.text.clear();
 		properties.m_cable.clear();
 		properties.m_cable_uuid = QUuid();
 		properties.m_cable_slot = -1;
-		properties.text.clear();
 	}
 	return properties;
 }
