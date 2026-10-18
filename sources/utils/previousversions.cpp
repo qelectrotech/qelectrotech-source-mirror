@@ -67,8 +67,11 @@ QStringList PreviousVersions::kept(const QString &file_path)
 	const QDir dir(folder(file_path));
 		//Each copy has the time its version was saved (keep()); a .qet and
 		//a .qetz of the same project are versions of it alike
-	QStringList names = dir.entryList({versionPrefix(info) + QStringLiteral("????-??-?? ??-??-??*.qet"),
-									   versionPrefix(info) + QStringLiteral("????-??-?? ??-??-??*.qetz")},
+		//"????-??-?? ??-??-??" written with "\?", so that the compiler doesn't
+		//see the trigraph "??-" in it (-Wtrigraphs)
+	const QString stamp_ = QStringLiteral("?\?\?\?-?\?-?\? ?\?-?\?-?\?");
+	QStringList names = dir.entryList({versionPrefix(info) + stamp_ + QStringLiteral("*.qet"),
+									   versionPrefix(info) + stamp_ + QStringLiteral("*.qetz")},
 									  QDir::Files, QDir::Time);
 	QStringList paths;
 	for (const QString &name : std::as_const(names))
