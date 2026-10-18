@@ -395,10 +395,13 @@
   </action>
   <action name="m_zoom_fit_best_action">
    <property name="icon">
-    <iconset theme="zoom-fit-best"/>
+    <iconset theme="zoom-draw"/>
    </property>
    <property name="text">
-    <string>Fit in view</string>
+    <string>Zoom content</string>
+   </property>
+   <property name="statusTip">
+    <string>Adjusts the zoom to display the whole symbol</string>
    </property>
   </action>
   <action name="m_zoom_original_action">
