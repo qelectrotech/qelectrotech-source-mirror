@@ -2342,6 +2342,23 @@ bool Diagram::fromXml(QDomElement &document,
 						  << "wire end(s) on a terminal that moved since the project was saved,"
 						  << "matched to it by place";
 	}
+		//A copy of a symbol sharing its uuid with another (older versions'
+		//copies, F100) gets its own, now that its wires are connected to
+		//it: wires and links then name one symbol each
+		//(QETProject::renewedSharedUuid(), only while the project opens)
+	if (consider_informations && m_project) {
+		const int folio_index = m_project->folioIndex(this);
+		QHash<QUuid, int> ordinal;
+		for (Element *element : std::as_const(added_elements)) {
+			const QUuid shared = element->uuid();
+			const QUuid renewed = m_project->renewedSharedUuid(folio_index, ordinal[shared]++,
+															   shared, uuid());
+			if (!renewed.isNull()) {
+				element->setUuid(renewed);
+			}
+		}
+	}
+
 	if (consider_informations && !m_wires_not_reconnected.isEmpty()) {
 		qWarning().noquote() << "Diagram::fromXml():"
 							 << m_wires_not_reconnected.size()

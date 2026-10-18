@@ -1437,32 +1437,11 @@ QDomElement Element::toXml(
 	element.appendChild(inputs);
 
 	//if this element is linked to other elements,
-	//save the uuid of each other elements
-		//A partner on a folio not built yet (lazy folios), which this
-		//symbol will be linked to, is saved too, in the order the symbol was
-		//saved with: saving needs no partner built (stage D5a)
+	//save the uuid of each other elements (linksToSave())
 	QList<std::pair<QUuid, int>> links;
-	if (keepsSavedLinks() && diagram() && diagram()->project()) {
-		const QSet<QUuid> waiting = diagram()->project()->waitingLinkTargets();
-		QSet<Element *> written;
-		for (const auto &link_info : std::as_const(tmp_uuids_link)) {
-			Element *linked = nullptr;
-			for (Element *elmt : std::as_const(connected_elements))
-				if (elmt->uuid() == link_info.uuid && !written.contains(elmt)) { linked = elmt; break; }
-			if (linked) {
-				written.insert(linked);
-				links.append({linked->uuid(), m_group_index_map.value(linked, -1)});
-			} else if (waiting.contains(link_info.uuid)) {
-				links.append({link_info.uuid, link_info.group_index});
-			}
-		}
-		for (Element *elmt : std::as_const(connected_elements))
-			if (!written.contains(elmt))
-				links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
-	} else {
-		for (Element *elmt : std::as_const(connected_elements))
-			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
-	}
+	for (const SavedLink &link : linksToSave(diagram() && diagram()->project()
+											 ? diagram()->project()->waitingLinkTargets() : QSet<QUuid>()))
+		links.append({link.uuid, link.group_index});
 	if (!links.isEmpty()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
 		for (const auto &link : std::as_const(links)) {
@@ -1867,6 +1846,45 @@ void Element::initLink(QETProject *prj)
 	if (pendingLinks().isEmpty() || !prj->unloadedFolioCount()) {
 		tmp_uuids_link.clear();
 	}
+}
+
+/**
+	@brief Element::linksToSave
+	The partners this symbol saves, in the order it saves them: the order
+	it was saved with (tmp_uuids_link), then partners linked since. A
+	partner on a folio not built yet (lazy folios), which this symbol will
+	be linked to, is in the list too: saving needs no partner built (stage
+	D5a). toXml() writes this list, and the project database's link rows
+	are written from it, so the two are the same (QETZ-DB-FIRST stage 2a).
+	@param waiting the symbols on folios not built: a saved partner among
+	them is kept (QETProject::symbolsOnUnbuiltFolios())
+	@return each partner's uuid, its contact group (-1 if none), and the
+	partner itself when it is built (nullptr for one waiting)
+*/
+QList<Element::SavedLink> Element::linksToSave(const QSet<QUuid> &waiting) const
+{
+	QList<SavedLink> links;
+	if (keepsSavedLinks() && diagram() && diagram()->project()) {
+		QSet<Element *> written;
+		for (const auto &link_info : std::as_const(tmp_uuids_link)) {
+			Element *linked = nullptr;
+			for (Element *elmt : std::as_const(connected_elements))
+				if (elmt->uuid() == link_info.uuid && !written.contains(elmt)) { linked = elmt; break; }
+			if (linked) {
+				written.insert(linked);
+				links.append({linked->uuid(), m_group_index_map.value(linked, -1), linked});
+			} else if (waiting.contains(link_info.uuid)) {
+				links.append({link_info.uuid, link_info.group_index, nullptr});
+			}
+		}
+		for (Element *elmt : std::as_const(connected_elements))
+			if (!written.contains(elmt))
+				links.append({elmt->uuid(), m_group_index_map.value(elmt, -1), elmt});
+	} else {
+		for (Element *elmt : std::as_const(connected_elements))
+			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1), elmt});
+	}
+	return links;
 }
 
 /**

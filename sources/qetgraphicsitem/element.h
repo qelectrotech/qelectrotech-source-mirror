@@ -227,6 +227,13 @@ class Element : public QetGraphicsItem
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
 		QSet<QUuid> pendingLinks() const;
+			/// A partner as the symbol saves it (linksToSave())
+		struct SavedLink {
+			QUuid uuid;
+			int group_index = -1;
+			Element *built = nullptr;   ///< nullptr: on a folio not built yet
+		};
+		QList<SavedLink> linksToSave(const QSet<QUuid> &waiting) const;
 		bool keepsSavedLinks() const {return !tmp_uuids_link.isEmpty();}
 		QList<std::pair<QUuid, int>> waitingLinks() const;
 			/**

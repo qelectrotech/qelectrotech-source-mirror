@@ -889,6 +889,18 @@ if(QET_HAS_SCRIPTING)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
 
+  # The saved date, time and path of the title block change only when the
+  # project changed, and go into the file that save writes (F124): an
+  # unchanged project saved twice gives an identical file.
+  add_executable(
+    tst_savedstamps
+    tst_savedstamps.cpp)
+  add_test(NAME tst_savedstamps COMMAND tst_savedstamps)
+  add_dependencies(tst_savedstamps qelectrotech)
+  target_link_libraries(tst_savedstamps PRIVATE Qt::Test Qt::Xml)
+  target_compile_definitions(tst_savedstamps PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
   # Deleting a symbol whose terminal held several wires joins them with a
   # new wire; its uuid comes from its two ends, so the same deletion saves
   # the same file every time (F115): examples/affuteuse_250h.qet.

@@ -123,6 +123,8 @@ class QETProject : public QObject
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
+		QUuid renewedSharedUuid(int folio_index, int ordinal, const QUuid &uuid,
+								const QUuid &folio_uuid);
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
 		QString openError() const;
@@ -441,6 +443,7 @@ class QETProject : public QObject
 		}
 
 	private:
+		bool stampSaved();
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
@@ -570,6 +573,10 @@ class QETProject : public QObject
 		bool m_kept_folios_trusted = false;
 			/// Read from a .qet whose path nobody chose since: saved beside it
 		bool m_opened_from_qet = false;
+			/// The file the saved date and path were set for, and the undo
+			/// index then: an unchanged project keeps them (stampSaved())
+		QString m_stamped_path;
+		int m_stamped_undo_index = 0;
 			/// The project file as this QET last read or wrote it, to see
 			/// whether something else changed it since (changedOnDisk())
 		QString m_disk_path;
@@ -610,7 +617,11 @@ class QETProject : public QObject
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;
-		QSet<QUuid> m_saved_item_uuids;	//symbol and wire uuids the file carries, see derivedItemUuid()
+		QSet<QUuid> m_saved_item_uuids;
+			/// While opening: per uuid carried by several symbols, the copy
+			/// keeping it (folio index, ordinal on that folio), see
+			/// renewedSharedUuid()
+		QHash<QUuid, std::pair<int, int>> m_shared_uuid_keepers;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
 		QVector<Cable *> m_cables;
