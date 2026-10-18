@@ -290,6 +290,11 @@ qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
 # selection has nothing to edit for a moment (#1439).
 qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
 
+# Opening a project before the elements panel's first reload() left its tree
+# item detached, and selecting the item's first child crashed in QTreeModel
+# (pre-existing since a82f6de23).
+qet_add_app_test(tst_elementspanelprojectopen tst_elementspanelprojectopen.cpp)
+
 # SVG export with smaller pictures (--svg-small-pictures, the export dialog's
 # option): a picture drawn at a tenth of its size is stored at four times
 # that, a small one whole; without the option every picture is whole.
