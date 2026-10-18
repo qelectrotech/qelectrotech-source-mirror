@@ -123,6 +123,8 @@ class QETProject : public QObject
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		QUuid derivedItemUuid(const QString &kind, const QString &key);
+		QUuid renewedSharedUuid(int folio_index, int ordinal, const QUuid &uuid,
+								const QUuid &folio_uuid);
 		QByteArray containerPicture(const QString &file) const;
 		ProjectState state() const;
 		QString openError() const;
@@ -615,7 +617,11 @@ class QETProject : public QObject
 		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		QHash<QString, int> m_derived_uuid_keys;
-		QSet<QUuid> m_saved_item_uuids;	//symbol and wire uuids the file carries, see derivedItemUuid()
+		QSet<QUuid> m_saved_item_uuids;
+			/// While opening: per uuid carried by several symbols, the copy
+			/// keeping it (folio index, ordinal on that folio), see
+			/// renewedSharedUuid()
+		QHash<QUuid, std::pair<int, int>> m_shared_uuid_keepers;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
 		QVector<Cable *> m_cables;

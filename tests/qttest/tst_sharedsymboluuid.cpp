@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include <QtTest>
+#include <QSet>
 
 #include <QDomDocument>
 #include <QFile>
@@ -150,13 +151,66 @@ private slots:
 		QVERIFY(!twice.isEmpty());
 		QCOMPARE(nets(twice), expected);
 
-			//No wire names a lamp by the uuid they share
-		for (const QDomElement &c : childElements(firstDiagram(load(twice)),
-											 QStringLiteral("conductors"),
-											 QStringLiteral("conductor"))) {
-			QVERIFY(c.attribute(QStringLiteral("element1")) != shared);
-			QVERIFY(c.attribute(QStringLiteral("element2")) != shared);
+			//Each lamp has a uuid of its own after a save: one keeps the
+			//shared uuid, the others get one derived from it
+		QSet<QString> uuids;
+		for (const QDomElement &e : lamps(load(twice)))
+			uuids.insert(e.attribute(QStringLiteral("uuid")));
+		QCOMPARE(uuids.size(), 3);
+		QVERIFY(uuids.contains(shared));
+	}
+
+	// A linked contact and an unlinked symbol carrying the same uuid (a copy
+	// made by an older version): the linked one keeps the uuid, the other
+	// gets its own, and every link and wire stays where it was.
+	void linkedCopyKeepsUuid()
+	{
+		const QString source = QStringLiteral(QET_EXAMPLES_DIR "/affuteuse_250h.qet");
+		QDomDocument doc = load(source);
+		QList<QDomElement> all;
+		const QDomNodeList folios = doc.documentElement().elementsByTagName(QStringLiteral("diagram"));
+		for (int i = 0; i < folios.size(); ++i)
+			all << childElements(folios.at(i).toElement(), QStringLiteral("elements"),
+								 QStringLiteral("element"));
+		auto linked = [](const QDomElement &e) {
+			return !e.firstChildElement(QStringLiteral("links_uuids"))
+					.firstChildElement(QStringLiteral("link_uuid")).isNull();
+		};
+		QDomElement keeper, copy;
+		for (const QDomElement &e : std::as_const(all)) {
+			if (keeper.isNull() && linked(e)) keeper = e;
+			else if (copy.isNull() && !linked(e)) copy = e;
 		}
+		QVERIFY(!keeper.isNull() && !copy.isNull());
+		const QString shared = keeper.attribute(QStringLiteral("uuid"));
+		copy.setAttribute(QStringLiteral("uuid"), shared);
+		const int wires = doc.elementsByTagName(QStringLiteral("conductor")).size();
+
+		const QString saved = resave(write(doc));
+		QVERIFY(!saved.isEmpty());
+		const QDomDocument out = load(saved);
+		QHash<QString, QDomElement> by_uuid;
+		QList<std::pair<QString, QString>> links;
+		const QDomNodeList saved_folios = out.documentElement().elementsByTagName(QStringLiteral("diagram"));
+		for (int i = 0; i < saved_folios.size(); ++i)
+			for (const QDomElement &e : childElements(saved_folios.at(i).toElement(),
+													  QStringLiteral("elements"),
+													  QStringLiteral("element"))) {
+				const QString u = e.attribute(QStringLiteral("uuid"));
+				QVERIFY2(!by_uuid.contains(u), qPrintable(QStringLiteral("uuid still shared: ") + u));
+				by_uuid.insert(u, e);
+				for (QDomElement l = e.firstChildElement(QStringLiteral("links_uuids"))
+						 .firstChildElement(QStringLiteral("link_uuid"));
+					 !l.isNull(); l = l.nextSiblingElement(QStringLiteral("link_uuid")))
+					links.append({u, l.attribute(QStringLiteral("uuid"))});
+			}
+		QVERIFY(by_uuid.contains(shared));
+		QVERIFY(linked(by_uuid.value(shared)));
+		for (const auto &link : std::as_const(links)) {
+			QVERIFY2(by_uuid.contains(link.second), "a link names a symbol not in the project");
+			QVERIFY2(links.contains(std::make_pair(link.second, link.first)), "a link only one side has");
+		}
+		QCOMPARE(out.elementsByTagName(QStringLiteral("conductor")).size(), wires);
 	}
 
 	void savedByUuidReopensRight()
