@@ -407,6 +407,11 @@ void QETProject::init()
 		m_autosave_timer.setInterval(ms);
 		connect(&m_autosave_timer, &QTimer::timeout, this, [this]()
 		{
+				//Not while folios are being built (the event loop can run
+				//then, see setFolioBuildObserver()) : the next time
+			if (this->m_state == ProjectParsingRunning) {
+				return;
+			}
 			if(!this->m_file_path.isEmpty())
 			{
 					//No one is there to ask: a file changed behind this
@@ -763,6 +768,18 @@ void QETProject::loadFolios() const
 }
 
 /**
+	@brief QETProject::setFolioBuildObserver
+	@p observer is called after each folio built by buildFolios(), with the
+	number of folios built so far and the number to build : a long build
+	can show its progress, and keep the window system answered by running
+	the event loop (without the user input) in @p observer. The autosave
+	waits meanwhile. An empty function removes the observer.
+*/
+void QETProject::setFolioBuildObserver(std::function<void (int, int)> observer) {
+	m_folio_build_observer = std::move(observer);
+}
+
+/**
 	@brief QETProject::buildFolios
 	Build those of @p folios still waiting, as opening builds them: all
 	first, then what opening does after building (the cross-references of
@@ -785,8 +802,23 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 	const bool signals_were_blocked = self->m_data_base.signalsBlocked();
 	self->m_data_base.blockSignals(true);
 	QList<Diagram *> built;
+	int waiting_ = 0;
+	if (m_folio_build_observer) {
+		for (Diagram *d : folios)
+			if (!d->isLoaded()) ++waiting_;
+	}
 	for (Diagram *d : folios)
-		if (d->buildDeferred()) built << d;
+	{
+		if (d->buildDeferred())
+		{
+			built << d;
+				//Someone shows the progress (a long build, opening the
+				//terminal block manager...)
+			if (m_folio_build_observer) {
+				m_folio_build_observer(built.size(), waiting_);
+			}
+		}
+	}
 	for (Diagram *d : std::as_const(built))
 		self->folioLoaded(d);
 	self->m_data_base.blockSignals(signals_were_blocked);

@@ -52,6 +52,8 @@ TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *proje
 {
 	QProgressDialog busy_(tr("Opening the terminal block manager..."), QString(), 0, 0, parent);
 	busy_.setWindowTitle(tr("Terminal block manager"));
+		//Only a title : nothing to minimize, maximize or close
+	busy_.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 	busy_.setWindowModality(Qt::ApplicationModal);
 	busy_.setCancelButton(nullptr);
 	busy_.setMinimumDuration(0);
@@ -74,6 +76,23 @@ TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *proje
 	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 
+		//The folios not built yet (lazy folios) are built now : show the
+		//progress, and run the event loop between two folios, so that the
+		//window system still gets answers (else the message is said
+		//"not responding")
+	if (project)
+	{
+		project->setFolioBuildObserver([&busy_](int built, int total)
+		{
+			if (busy_.maximum() != total) {
+				busy_.setMaximum(total);
+			}
+			busy_.setLabelText(tr("Reading folio %1 of %2...").arg(built).arg(total));
+			busy_.setValue(built);
+			QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+		});
+	}
+
 	static QMutex mutex_;
 	if (!window_) {
 		mutex_.lock();
@@ -84,6 +103,9 @@ TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *proje
 		window_->setProject(project);
 	}
 
+	if (project) {
+		project->setFolioBuildObserver({});
+	}
 	QApplication::restoreOverrideCursor();
 	return window_;
 }

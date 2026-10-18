@@ -18,6 +18,7 @@
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
 
+#include <functional>
 #include "ElementsCollection/elementslocation.h"
 #include "NameList/nameslist.h"
 #include "project/projectpropertieshandler.h"
@@ -150,6 +151,7 @@ class QETProject : public QObject
 		QSet<Diagram *> tableChainFolios(Diagram *folio) const;
 		void loadFolios() const;
 		void buildFolios(const QList<Diagram *> &folios) const;
+		void setFolioBuildObserver(std::function<void(int, int)> observer);
 		void folioLoaded(Diagram *folio);
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
@@ -625,6 +627,8 @@ class QETProject : public QObject
 		QHash<QUuid, std::pair<int, int>> m_shared_uuid_keepers;	//symbol and wire uuids the file carries, see derivedItemUuid()
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
+			//Called after each folio built, see setFolioBuildObserver()
+		std::function<void(int, int)> m_folio_build_observer;
 		QVector<Cable *> m_cables;
 
 		ProjectPropertiesHandler m_project_properties_handler;
