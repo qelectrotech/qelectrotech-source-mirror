@@ -259,6 +259,22 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					qInfo() << "m_connected_terminals" << m_connected_terminals;
 					Conductor *new_cond = new Conductor(new_pair.first, new_pair.second);
 					new_cond->setProperties(properties);
+						//The wire that joins the two left by the removed
+						//symbol gets its uuid from its two ends, as a wire
+						//saved without one does on load (Diagram::fromXml()):
+						//the same deletion then saves the same file every
+						//time, not a random uuid each run (F115)
+					if (QETProject *wire_project = new_pair.second->diagram()
+							? new_pair.second->diagram()->project() : nullptr) {
+						auto end = [](const Terminal *t) {
+							return t->parentElement()->uuid().toString()
+									+ QLatin1Char('/') + t->stableUuid().toString();
+						};
+						QStringList ends{end(new_pair.first), end(new_pair.second)};
+						ends.sort();
+						new_cond->setUuid(wire_project->derivedItemUuid(
+								QStringLiteral("conductor"), ends.join(QLatin1Char('\n'))));
+					}
 					new AddGraphicsObjectCommand(new_cond, new_pair.second->diagram(), QPointF(), this);
 				}
 			}
