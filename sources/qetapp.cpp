@@ -3053,14 +3053,15 @@ void QETApp::initSystemTray()
 
 	// initialization of the systray icon
 	// initialisation de l'icone du systray
-		//Pixels only: the logo comes from QElectroTech's own icon theme,
-		//bundled in its resources, so it carries the theme name "qet".
-		//On Linux the tray (StatusNotifierItem) then sends only that name,
-		//which the panel -- another process, without those resources --
-		//cannot resolve, and the slot stays empty.
+	//Pixels only: the logo comes from QElectroTech's own icon theme,
+	//bundled in its resources, so it carries the theme name "qet".
+	//On Linux the tray (StatusNotifierItem) then sends only that name,
+	//which the panel -- another process, without those resources --
+	//cannot resolve, and the slot stays empty. Each size at a device
+	//pixel ratio of 1, so a HiDPI screen does not double them.
 	QIcon tray_icon;
 	for (int size : {16, 22, 24, 32, 48, 64, 128, 256}) {
-		const QPixmap pixmap = QET::Icons::QETLogo.pixmap(QSize(size, size));
+		const QPixmap pixmap = QET::Icons::QETLogo.pixmap(QSize(size, size), 1.0);
 		if (!pixmap.isNull())
 			tray_icon.addPixmap(pixmap);
 	}
