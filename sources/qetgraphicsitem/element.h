@@ -226,16 +226,12 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
-		QSet<QUuid> pendingLinks() const;
-			/// A partner as the symbol saves it (linksToSave())
-		struct SavedLink {
-			QUuid uuid;
-			int group_index = -1;
-			Element *built = nullptr;   ///< nullptr: on a folio not built yet
-		};
-		QList<SavedLink> linksToSave(const QSet<QUuid> &waiting) const;
-		bool keepsSavedLinks() const {return !tmp_uuids_link.isEmpty();}
-		QList<std::pair<QUuid, int>> waitingLinks() const;
+			/// The links this symbol was read with (its file's links_uuids),
+			/// until it is linked: the project database writes its link rows
+			/// from them while it holds none for it (opening)
+		QList<std::pair<QUuid, int>> savedLinkList() const;
+		void dropSavedLinks() {tmp_uuids_link.clear();}
+		void restoreLinkOrder(const QList<QUuid> &order);
 			/**
 				Resolve tmp_uuids_link against a caller-supplied candidate
 				list instead of a project-wide search (bugtracker #607).
@@ -359,7 +355,6 @@ class Element : public QetGraphicsItem
 		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
 
 	private:
-		void restoreSavedLinkOrder();
 		void storeInformation();
 		projectDataBase *placedStore() const;
 		bool m_must_highlight = false;

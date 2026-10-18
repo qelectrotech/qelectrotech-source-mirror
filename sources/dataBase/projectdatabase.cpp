@@ -17,7 +17,6 @@
 */
 #include "projectdatabase.h"
 #include "../qetversion.h"
-
 #include "sqlreadonly.h"
 
 #include "../autoNum/assignvariables.h"
@@ -54,6 +53,7 @@
 #include <QRegularExpression>
 #include <QSqlDriver>
 #include <QSqlError>
+#include <optional>
 
 
 
@@ -861,6 +861,7 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			}
 		}
 	}
+	m_holds_links = true;
 
 	for (const DocumentConductor &conductor : std::as_const(conductors))
 	{
@@ -1647,8 +1648,13 @@ void projectDataBase::addElement(Element *element)
 */
 void projectDataBase::removeElement(Element *element)
 {
-	m_content_changed = true;
 	const QUuid uuid = element->uuid();
+		//A symbol built alone as a partner (Diagram::buildSymbols()) was
+		//never placed: its rows are those of the symbol its folio builds
+	if (!m_placed_elements.contains(uuid, element)) {
+		return;
+	}
+	m_content_changed = true;
 	removeElementRows(uuid);
 	unplaceElement(element, uuid);
 		//Another symbol still holds the uuid (F100): the rows are its own.
@@ -3872,8 +3878,16 @@ QString projectDataBase::prefillReport() const
 void projectDataBase::populateLinkTable()
 {
 	m_dirty_link_elements.clear();
-	const QSet<QUuid> waiting = waitingSymbols();
+	const QSet<QUuid> waiting_symbols = waitingSymbols();
+	const auto waiting = [&waiting_symbols](const QUuid &uuid) {return waiting_symbols.contains(uuid);};
 	QSqlQuery query(m_data_base);
+		//The rows as they are: the order they give, and the partners on
+		//folios not built, which no built symbol knows
+	QHash<QUuid, QList<std::pair<QUuid, int>>> old_rows;
+	if (query.exec(QStringLiteral("SELECT element_uuid, linked_uuid, group_index FROM link ORDER BY ord, rowid")))
+		while (query.next())
+			old_rows[QUuid(query.value(0).toString())].append(
+					{QUuid(query.value(1).toString()), query.value(2).isNull() ? -1 : query.value(2).toInt()});
 	query.exec(QStringLiteral("DELETE FROM link"));
 	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
 								 "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
@@ -3890,8 +3904,11 @@ void projectDataBase::populateLinkTable()
 		}
 		const ElementProvider ep(diagram);
 		for (const auto &elmt : ep.find(allElementTypes()))
-			insertLinkRows(query, elmt, waiting);
+			insertLinkRows(query, elmt, waiting,
+						   old_rows.contains(elmt->uuid()) ? old_rows.value(elmt->uuid())
+														   : elmt->savedLinkList());
 	}
+	m_holds_links = true;
 }
 
 /**
@@ -3919,8 +3936,9 @@ void projectDataBase::queueLinks(Element *element)
 /**
 	@brief projectDataBase::linkRowMismatches
 	A test and debugging aid (QET_CHECK_LINK_ROWS): the placed
-	symbols whose link rows are not the links they save, in order
-	(Element::linksToSave(), insertLinkRows())
+	symbols whose link rows are not their links: each built partner, in
+	the order the symbol has them, and no other, but partners on folios
+	not built (QETZ-DB-FIRST stage 2a-3: the rows are what is saved)
 	@return one entry per such symbol: its uuid
 */
 QStringList projectDataBase::linkRowMismatches()
@@ -3928,26 +3946,29 @@ QStringList projectDataBase::linkRowMismatches()
 	flushLinks();
 	const QSet<QUuid> waiting = waitingSymbols();
 	QStringList mismatches;
-	QSqlQuery query(m_data_base);
-	query.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link "
-								 "WHERE element_uuid = :uuid ORDER BY ord, rowid"));
 	for (auto it = m_placed_elements.cbegin() ; it != m_placed_elements.cend() ; ++it)
 	{
 		Element *element = it.value();
 		if (!element) {
 			continue;
 		}
-		QList<std::pair<QString, int>> expected;
-		for (const Element::SavedLink &link : element->linksToSave(waiting))
-			if (!link.built || m_placed_elements.contains(link.uuid, link.built))
-				expected.append({link.uuid.toString(), link.group_index});
-		QList<std::pair<QString, int>> rows;
-		query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
-		if (query.exec())
-			while (query.next())
-				rows.append({query.value(0).toString(),
-							 query.value(1).isNull() ? -1 : query.value(1).toInt()});
-		if (rows != expected) {
+		QList<std::pair<QUuid, int>> expected;
+		for (Element *linked : element->linkedElements())
+			if (m_placed_elements.contains(linked->uuid(), linked) || builtAlone(linked))
+				expected.append({linked->uuid(), element->groupIndexForElement(linked)});
+		QList<std::pair<QUuid, int>> rows;
+		bool stray = false;
+		for (const auto &row : linkRowsOf(element->uuid())) {
+			bool built = false;
+			for (const auto &link : std::as_const(expected))
+				built |= link.first == row.first;
+			if (built) {
+				rows.append(row);
+			} else {
+				stray |= !waiting.contains(row.first);
+			}
+		}
+		if (stray || rows != expected) {
 			mismatches << element->uuid().toString();
 		}
 	}
@@ -3989,41 +4010,197 @@ bool projectDataBase::savedLinks(const Element *element, QList<std::pair<QUuid, 
 
 /**
 	@brief projectDataBase::waitingSymbols
-	@return the symbols on folios not built yet (lazy folios): partners a
-	symbol keeps its saved links to until they are built
+	@return the symbols on folios not built yet (lazy folios) and not
+	built alone as partners either (Diagram::buildSymbols()): partners a
+	symbol keeps its rows to until they are built
 */
 QSet<QUuid> projectDataBase::waitingSymbols() const
 {
-	return m_project && m_project->unloadedFolioCount() ? m_project->symbolsOnUnbuiltFolios()
-														: QSet<QUuid>();
+	if (!m_project || !m_project->unloadedFolioCount()) {
+		return QSet<QUuid>();
+	}
+		//Kept while the same folios are not built and as many symbols are
+		//built alone: finding them reads every such folio's rows
+	QList<Diagram *> unbuilt;
+	int alone = 0;
+	for (Diagram *diagram : m_project->folios())
+		if (!diagram->isLoaded()) {
+			unbuilt << diagram;
+			alone += int(diagram->partialElements().size());
+		}
+	if (unbuilt == m_waiting_folios && alone == m_waiting_alone) {
+		return m_waiting_symbols;
+	}
+		//Folios only built since: their symbols are not waiting any more
+	bool only_built = true;
+	for (Diagram *diagram : std::as_const(unbuilt))
+		only_built &= m_waiting_folios.contains(diagram);
+	for (Diagram *diagram : std::as_const(m_waiting_folios))
+		if (!unbuilt.contains(diagram))
+			only_built &= m_project->folios().contains(diagram) && diagram->isLoaded();
+	QSet<QUuid> waiting;
+	if (only_built && !m_waiting_folios.isEmpty()) {
+		waiting = m_waiting_symbols;
+		for (Diagram *diagram : std::as_const(m_waiting_folios))
+			if (!unbuilt.contains(diagram))
+				for (Element *element : diagram->elements())
+					waiting.remove(element->uuid());
+	} else {
+		waiting = m_project->symbolsOnUnbuiltFolios();
+	}
+	for (Diagram *diagram : std::as_const(unbuilt))
+		for (const QUuid &built : diagram->partialElements().keys())
+			waiting.remove(built);
+	m_waiting_folios = unbuilt;
+	m_waiting_alone = alone;
+	m_waiting_symbols = waiting;
+	return waiting;
+}
+
+/**
+	@brief projectDataBase::builtAlone
+	@return true if @p element is a symbol built alone, as a partner, on a
+	folio of the project not built (Diagram::buildSymbols())
+*/
+bool projectDataBase::builtAlone(Element *element) const
+{
+	Diagram *diagram = element->diagram();
+	return m_project && diagram && !diagram->isLoaded()
+			&& m_project->folios().contains(diagram)
+			&& diagram->partialElements().value(element->uuid()) == element;
+}
+
+/**
+	@brief projectDataBase::linksLater
+	@return true if a symbol of uuid @p uuid is placed but not linked from
+	its rows yet (Element::initLink(), as its folio is being built): it
+	links to the partners its rows and theirs name, so these are kept
+*/
+bool projectDataBase::linksLater(const QUuid &uuid) const
+{
+	for (const QPointer<Element> &element : m_placed_elements.values(uuid))
+		if (element && !element->savedLinkList().isEmpty())
+			return true;
+	return false;
+}
+
+/**
+	@brief projectDataBase::rowsToWrite
+	@return the link rows of @p element: its built partners, and the
+	partners on folios not built (@p waiting) that @p old_rows, its rows as
+	they were, name, and those placed but not linked yet (linksLater()).
+	The rows keep the order of @p old_rows, the order the file gave, and
+	partners linked since come after them: the order the symbol has its
+	partners in changes with the order symbols are built.
+	A built partner the project no longer has (on a removed folio, linked
+	still for the undo) gets no row.
+*/
+QList<std::pair<QUuid, int>> projectDataBase::rowsToWrite(Element *element, const std::function<bool(const QUuid &)> &waiting,
+														   const QList<std::pair<QUuid, int>> &old_rows) const
+{
+	QList<Element *> built;
+	for (Element *linked : element->linkedElements())
+		if (m_placed_elements.contains(linked->uuid(), linked) || builtAlone(linked))
+			built << linked;
+	QList<std::pair<QUuid, int>> rows;
+	QSet<Element *> written;
+	for (const auto &row : old_rows) {
+		Element *linked = nullptr;
+		for (Element *partner : std::as_const(built))
+			if (partner->uuid() == row.first && !written.contains(partner)) { linked = partner; break; }
+		if (linked) {
+			written.insert(linked);
+			rows.append({linked->uuid(), element->groupIndexForElement(linked)});
+		} else if (waiting(row.first) || linksLater(row.first)) {
+			rows.append(row);
+		}
+	}
+	for (Element *partner : std::as_const(built))
+		if (!written.contains(partner))
+			rows.append({partner->uuid(), element->groupIndexForElement(partner)});
+	return rows;
 }
 
 /**
 	@brief projectDataBase::insertLinkRows
 	Write @p element's link rows with @p insert (prepared with :element_uuid,
-	:linked_uuid, :group_index and :ord): its partners as it saves them
-	(Element::linksToSave()), in that order, so the rows and the file say
-	the same: @p waiting is the symbols on folios not built, as a save
-	takes them (waitingSymbols()). A built partner the project no longer has (on a removed
-	folio, linked still for the undo) gets no row.
+	:linked_uuid, :group_index and :ord), as rowsToWrite() gives them, in
+	that order: @p waiting is the symbols on folios not built
+	(waitingSymbols()) tells which, @p old_rows its rows before.
 */
-void projectDataBase::insertLinkRows(QSqlQuery &insert, Element *element,
-									 const QSet<QUuid> &waiting)
+void projectDataBase::insertLinkRows(QSqlQuery &insert, Element *element, const std::function<bool(const QUuid &)> &waiting,
+									 const QList<std::pair<QUuid, int>> &old_rows)
 {
 	int ord = 0;
-	for (const Element::SavedLink &link : element->linksToSave(waiting))
+	for (const auto &link : rowsToWrite(element, waiting, old_rows))
 	{
-		if (link.built && !m_placed_elements.contains(link.uuid, link.built)) {
-			continue;
-		}
 		insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
-		insert.bindValue(QStringLiteral(":linked_uuid"), link.uuid.toString());
-		insert.bindValue(QStringLiteral(":group_index"), link.group_index >= 0 ? QVariant(link.group_index) : QVariant());
+		insert.bindValue(QStringLiteral(":linked_uuid"), link.first.toString());
+		insert.bindValue(QStringLiteral(":group_index"), link.second >= 0 ? QVariant(link.second) : QVariant());
 		insert.bindValue(QStringLiteral(":ord"), ord++);
 		if (!insert.exec()) {
 			qDebug() << "projectDataBase::insertLinkRows insert error : " << insert.lastError();
 		}
 	}
+}
+
+/**
+	@brief projectDataBase::linkRowsOf
+	@return the link rows of @p element: each partner and its contact group
+	(-1 if none), in their order
+*/
+QList<std::pair<QUuid, int>> projectDataBase::linkRowsOf(const QUuid &element) const
+{
+	QList<std::pair<QUuid, int>> rows;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link "
+								 "WHERE element_uuid = :uuid ORDER BY ord, rowid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (query.exec())
+		while (query.next())
+			rows.append({QUuid(query.value(0).toString()),
+						 query.value(1).isNull() ? -1 : query.value(1).toInt()});
+	return rows;
+}
+
+/**
+	@brief projectDataBase::partnersToLink
+	@return the partners a symbol built links to (Element::initLink()): its
+	link rows, in their order, then the symbols whose rows name it (no
+	contact group: the group is the row owner's)
+*/
+QList<std::pair<QUuid, int>> projectDataBase::partnersToLink(const QUuid &element)
+{
+	flushLinks();
+	QList<std::pair<QUuid, int>> partners = linkRowsOf(element);
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT element_uuid FROM link WHERE linked_uuid = :uuid ORDER BY rowid"));
+	query.bindValue(QStringLiteral(":uuid"), element.toString());
+	if (query.exec())
+		while (query.next())
+			partners.append({QUuid(query.value(0).toString()), -1});
+	return partners;
+}
+
+/**
+	@brief projectDataBase::waitingPartners
+	@return the partners of @p element its link rows name among @p waiting,
+	the symbols on folios not built (waitingSymbols()): those it is not
+	linked to yet
+*/
+QSet<QUuid> projectDataBase::waitingPartners(const QUuid &element, const QSet<QUuid> &waiting)
+{
+	QSet<QUuid> partners;
+	if (waiting.isEmpty()) {
+		return partners;
+	}
+	flushLinks();
+		//A partner built alone (Diagram::buildSymbols()) is built: its
+		//folio, not built, still holds it
+	for (const auto &row : linkRowsOf(element))
+		if (waiting.contains(row.first) && waitingSymbols().contains(row.first))
+			partners.insert(row.first);
+	return partners;
 }
 
 /**
@@ -4038,17 +4215,41 @@ void projectDataBase::flushLinks()
 
 	const auto dirty = m_dirty_link_elements;
 	m_dirty_link_elements.clear();
-	const QSet<QUuid> waiting = waitingSymbols();
+		//The symbols on folios not built, looked up only when a row names
+		//a partner not linked: finding them reads every such folio's rows
+	std::optional<QSet<QUuid>> waiting_symbols;
+	const auto waiting = [this, &waiting_symbols](const QUuid &uuid) {
+		if (!waiting_symbols) {
+			waiting_symbols = waitingSymbols();
+		}
+		return waiting_symbols->contains(uuid);
+	};
 	const bool own_transaction = m_data_base.transaction();
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid"));
 	QSqlQuery insert(m_data_base);
 	insert.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
 								  "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
+	QList<QPointer<Element>> not_linked;
 	for (const QPointer<Element> &element : dirty)
 	{
 		if (!element) {
 			continue;
+		}
+		const bool placed = m_placed_elements.contains(element->uuid(), element);
+			//A symbol not linked from its rows yet (Element::initLink())
+			//keeps them as they are: a partner linking to it first has not
+			//given it its contact groups. Written once it is linked.
+		if (placed && m_holds_links && !element->savedLinkList().isEmpty()) {
+			not_linked << element;
+			continue;
+		}
+		QList<std::pair<QUuid, int>> old_rows;
+		if (placed) {
+			old_rows = linkRowsOf(element->uuid());
+			if (old_rows.isEmpty()) {
+				old_rows = element->savedLinkList();
+			}
 		}
 		remove.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
 		if (!remove.exec()) {
@@ -4057,14 +4258,15 @@ void projectDataBase::flushLinks()
 			//An element taken off its folio is unlinked first (Diagram::
 			//removeItem()), so it writes no rows here; one on a removed
 			//folio is not, and writes none either.
-		if (!m_placed_elements.contains(element->uuid(), element)) {
+		if (!placed) {
 			continue;
 		}
-		insertLinkRows(insert, element, waiting);
+		insertLinkRows(insert, element, waiting, old_rows);
 	}
 	if (own_transaction) {
 		m_data_base.commit();
 	}
+	m_dirty_link_elements << not_linked;
 }
 
 void projectDataBase::populateDiagramInfoTable()

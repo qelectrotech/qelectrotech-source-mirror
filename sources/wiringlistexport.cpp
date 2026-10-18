@@ -90,9 +90,11 @@ QDomDocument WiringListExport::projectDocument() const
         //Conductor::toXml(): the label of the last of the symbol's partners.
         //A symbol still waiting for a partner not built has its links as
         //saved, in the database
-    auto linked = [&built, database, &label](const QUuid &uuid) -> std::optional<QString> {
+    const QSet<QUuid> waiting = m_project->unloadedFolioCount() ? m_project->symbolsOnUnbuiltFolios()
+                                                                : QSet<QUuid>();
+    auto linked = [&built, database, &label, &waiting](const QUuid &uuid) -> std::optional<QString> {
         Element *element = built.value(uuid);
-        if (element && element->pendingLinks().isEmpty()) {
+        if (element && database->waitingPartners(uuid, waiting).isEmpty()) {
             if (element->linkedElements().isEmpty()) return std::nullopt;
             return element->linkedElements().last()->actualLabel();
         }

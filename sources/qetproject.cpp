@@ -793,15 +793,6 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 	if (!signals_were_blocked && !built.isEmpty()) {
 		emit self->m_data_base.dataBaseUpdated();
 	}
-		//A symbol built before still keeping the links it was saved with
-		//(a partner on a folio not built): its initLink() links those just
-		//built, puts its partners back in their saved order and drops what
-		//is done
-	for (Diagram *d : builtFolios())
-		if (!built.contains(d))
-			for (Element *elmt : d->elements())
-				if (elmt->keepsSavedLinks())
-					elmt->initLink(self);
 		//A linked folio report's texts show a wire's properties: the
 		//report's own wire, else its partner's. A report built alone
 		//first, as a partner (buildPartnerSymbols()), linked before it had
@@ -1051,9 +1042,17 @@ void QETProject::buildFolioToShow(Diagram *folio)
 		if (chained.contains(d))
 			first << d;
 	buildFolios(first);
+		//The partners its symbols' rows name, not linked: those on a
+		//folio not built are built alone below (the others are built)
 	QSet<QUuid> partners;
-	for (Element *elmt : folio->elements())
-		partners.unite(elmt->pendingLinks());
+	for (Element *elmt : folio->elements()) {
+		QSet<QUuid> linked;
+		for (Element *partner : elmt->linkedElements())
+			linked.insert(partner->uuid());
+		for (const auto &row : m_data_base.linkRowsOf(elmt->uuid()))
+			if (!linked.contains(row.first))
+				partners.insert(row.first);
+	}
 	const QSet<QUuid> folio_uuids = partners.isEmpty()
 			? QSet<QUuid>()
 			: m_data_base.folioUuidsOfElements(partners);
@@ -1095,12 +1094,6 @@ void QETProject::buildPartnerSymbols(const QList<Diagram *> &folios, const QSet<
 		for (auto &text : element->dynamicTextItems())
 			text->refreshLabelConnection();
 	}
-		//A built symbol linked to one of them puts its partners back in
-		//their saved order
-	for (Diagram *d : builtFolios())
-		for (Element *element : d->elements())
-			if (element->keepsSavedLinks())
-				element->initLink(this);
 	m_state = state;
 }
 
@@ -2456,10 +2449,11 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 			built = unloadedFolioCount();
 			QSet<QUuid> waiting;
 			QSet<Diagram *> chained;
+			const QSet<QUuid> unbuilt = kept_folios ? symbolsOnUnbuiltFolios() : QSet<QUuid>();
 			for (Diagram *diagram : builtFolios()) {
 				if (kept_folios)
 					for (Element *element : diagram->elements())
-						waiting.unite(element->pendingLinks());
+						waiting.unite(m_data_base.waitingPartners(element->uuid(), unbuilt));
 				for (Diagram *other : tableChainFolios(diagram))
 					if (!other->isLoaded()) chained.insert(other);
 			}
@@ -2473,7 +2467,6 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	} else {
 		loadFolios();
 	}
-	m_waiting_link_targets = unloadedFolioCount() ? symbolsOnUnbuiltFolios() : QSet<QUuid>();
 		//QET_CHECK_ELEMENT_INFO_STORE=1: say whether the stores of symbol
 		//information, folio title blocks and wire properties agree with every placed symbol, folio and
 		//wire, at each save. A test and debugging aid; it changes nothing.
@@ -2661,7 +2654,6 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 							 << links.mid(0, 5).join(QStringLiteral(", "));
 	}
 
-	m_waiting_link_targets.clear();
 	return(xml_doc);
 }
 
@@ -3215,15 +3207,12 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 /**
 	@brief QETProject::folioXml
 	@return the built folio @p folio written as saving writes it: its
-	symbols keep the links to partners on folios not built yet
-	(lazy folios), which Diagram::toXml() alone leaves out
+	symbols' links are their link rows, partners on folios not built yet
+	(lazy folios) included (Element::toXml())
 */
 QDomDocument QETProject::folioXml(Diagram *folio)
 {
-	m_waiting_link_targets = unloadedFolioCount() ? symbolsOnUnbuiltFolios() : QSet<QUuid>();
-	const QDomDocument xml = folio->toXml();
-	m_waiting_link_targets.clear();
-	return xml;
+	return folio->toXml();
 }
 
 /**
@@ -3519,6 +3508,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//complete rebuild of it. The content being loaded is the same for all
 		//of them, so a single rebuild once everything is in place is enough.
 	m_data_base.setUpdateBlocked(true);
+		//The symbols read link from their files' lists until the fill
+		//below writes the link rows (Element::initLink())
+	m_data_base.forgetLinks();
 
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
@@ -3602,6 +3594,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB(xml_project);
 	m_data_base.endPrefill(unloadedFolioCount() > 0);
+		//The link rows now hold the partners on folios not built: a
+		//symbol keeps no list of its own (QETZ-DB-FIRST stage 2a-3)
+	for (Diagram *diagram : builtFolios())
+		for (Element *element : diagram->elements())
+			element->dropSavedLinks();
 		//Saving may write the folios not built as they were read, when
 		//building them would write the same: a file written by this
 		//version, whose database rows came from it (toXml()). A .qet does
