@@ -85,6 +85,9 @@ namespace TerminalStripDrawer
 			//Second color of a two-tone color (like green/yellow), drawn as stripes over color()
 			virtual QColor stripeColor() const { return QColor(); }
 			virtual qreal widthMm() const { return 0; }
+			//Label of the terminal chosen in the catalog (TerminalCatalog), empty if unknown.
+			//The realistic styles draw its clamp (screw or push-in) instead of the one of the layout.
+			virtual QString catalogEntry() const { return QString(); }
 			//A separator plate is mounted after the terminal (drawn by the realistic styles)
 			virtual bool hasSeparatorAfter() const { return false; }
     };

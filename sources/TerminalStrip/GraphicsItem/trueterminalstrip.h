@@ -67,6 +67,7 @@ namespace TerminalStripDrawer
 			QColor color() const override;
 			QColor stripeColor() const override;
 			qreal widthMm() const override;
+			QString catalogEntry() const override;
 			bool hasSeparatorAfter() const override;
 
 		private:

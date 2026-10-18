@@ -17,6 +17,7 @@
 */
 #include "realisticterminalstripdrawer.h"
 #include "terminalstripdrawerhelpers.h"
+#include "../terminalcatalog.h"
 
 #include <QFontMetricsF>
 #include <QHash>
@@ -545,7 +546,8 @@ void paint(QPainter *painter,
 		   const QPointF &hover_pos,
 		   QVector<XrefRect> *xref_rects)
 {
-	const bool screw_{style == TerminalStripLayoutPattern::DrawStyle::RealisticScrew};
+		//Clamp of the layout, used for the terminals not chosen in the catalog
+	const bool layout_screw_{style == TerminalStripLayoutPattern::DrawStyle::RealisticScrew};
 	const qreal s_{pattern.m_realistic_px_per_mm};
 	const qreal length_{pattern.m_realistic_length_mm * s_};
 	if (s_ <= 0 || length_ <= 0) {
@@ -600,6 +602,13 @@ void paint(QPainter *painter,
 		const QRectF body_{x_, 0, w_, length_};
 		const auto first_{g_.reals.first()};
 		const int levels_{static_cast<int>(g_.reals.size())};
+
+			//A terminal chosen in the catalog is drawn with its own clamp, so that a strip
+			//mixing screw and spring terminals is drawn as it is. The spring-cage clamps
+			//(opened with a screwdriver) are drawn like the push-in ones.
+		const auto *catalog_entry_{TerminalCatalog::entryByLabel(first_->catalogEntry())};
+		const bool screw_{catalog_entry_ ? catalog_entry_->clamp == TerminalCatalog::Clamp::Screw
+										 : layout_screw_};
 
 		QColor fill_, stripe_;
 		Helpers::terminalColors(first_, fill_, stripe_);

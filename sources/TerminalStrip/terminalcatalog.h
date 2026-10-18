@@ -34,10 +34,20 @@
 namespace TerminalCatalog
 {
 	/**
+	 * How the wire is clamped in the terminal.
+	 * Used by the realistic drawing of the terminal strip.
+	 */
+	enum class Clamp {
+		Screw,	///< Screw clamp (Phoenix Contact UT, Weidmüller WDU...)
+		Spring,	///< Spring-cage clamp, opened with a screwdriver (Phoenix Contact ST)
+		PushIn	///< Push-in clamp (WAGO TOPJOB S)
+	};
+
+	/**
 	 * Width (mm) of a terminal sold by a manufacturer.
 	 * For ABB Entrelec the value is the spacing (pitch) given by the catalog.
 	 */
-	struct WidthEntry { double mm; const char *label; double section; const char *manufacturer; };
+	struct WidthEntry { double mm; const char *label; double section; const char *manufacturer; Clamp clamp; };
 
 	inline const QVector<double> &sections()
 	{
@@ -93,34 +103,34 @@ namespace TerminalCatalog
 	inline const QVector<WidthEntry> &widthEntries()
 	{
 		static const QVector<WidthEntry> entries_ {
-			{4.2,  "Phoenix Contact ST 1,5", 1.5, "Phoenix Contact"},
-			{5.0,  "ABB Entrelec MA 2.5/5", 2.5, "ABB Entrelec"},
-			{5.1,  "Weidmüller WDU 2.5", 2.5, "Weidmüller"},
-			{5.2,  "WAGO 2002 (TOPJOB S)", 2.5, "WAGO"},
-			{5.2,  "Phoenix Contact ST 2,5 / ST 2,5-QUATTRO", 2.5, "Phoenix Contact"},
-			{6.0,  "ABB Entrelec M 4/6", 4.0, "ABB Entrelec"},
-			{6.0,  "Legrand Viking 3 (4 mm²)", 4.0, "Legrand"},
-			{6.1,  "Weidmüller WDU 4", 4.0, "Weidmüller"},
-			{6.2,  "Phoenix Contact UT 4", 4.0, "Phoenix Contact"},
-			{6.2,  "Phoenix Contact ST 4", 4.0, "Phoenix Contact"},
-			{7.5,  "WAGO 2006 (TOPJOB S)", 6.0, "WAGO"},
-			{7.9,  "Weidmüller WDU 6", 6.0, "Weidmüller"},
-			{8.0,  "ABB Entrelec M 6/8", 6.0, "ABB Entrelec"},
-			{8.0,  "ABB Entrelec M 4/8", 4.0, "ABB Entrelec"},
-			{8.2,  "Phoenix Contact UT 6", 6.0, "Phoenix Contact"},
-			{10.0, "ABB Entrelec M 10/10", 10.0, "ABB Entrelec"},
-			{10.2, "Phoenix Contact UT 10", 10.0, "Phoenix Contact"},
-			{11.9, "Weidmüller WDU 16/ZA", 16.0, "Weidmüller"},
-			{12.0, "ABB Entrelec M 16/12", 16.0, "ABB Entrelec"},
-			{12.0, "Legrand Viking 3 (16 mm²)", 16.0, "Legrand"},
-			{12.2, "Phoenix Contact UT 16", 16.0, "Phoenix Contact"},
-			{16.0, "ABB Entrelec M 35/16", 35.0, "ABB Entrelec"},
-			{16.0, "Phoenix Contact UT 35", 35.0, "Phoenix Contact"},
-			{16.0, "Weidmüller WDU 35N", 35.0, "Weidmüller"},
-			{26.0, "ABB Entrelec M 35/26.FF", 35.0, "ABB Entrelec"},
-			{31.0, "ABB Entrelec M 70/31.AF", 70.0, "ABB Entrelec"},
-			{35.0, "ABB Entrelec M 120/35.F", 120.0, "ABB Entrelec"},
-			{42.0, "ABB Entrelec M 300/42.FF", 300.0, "ABB Entrelec"}
+			{4.2,  "Phoenix Contact ST 1,5", 1.5, "Phoenix Contact", Clamp::Spring},
+			{5.0,  "ABB Entrelec MA 2.5/5", 2.5, "ABB Entrelec", Clamp::Screw},
+			{5.1,  "Weidmüller WDU 2.5", 2.5, "Weidmüller", Clamp::Screw},
+			{5.2,  "WAGO 2002 (TOPJOB S)", 2.5, "WAGO", Clamp::PushIn},
+			{5.2,  "Phoenix Contact ST 2,5 / ST 2,5-QUATTRO", 2.5, "Phoenix Contact", Clamp::Spring},
+			{6.0,  "ABB Entrelec M 4/6", 4.0, "ABB Entrelec", Clamp::Screw},
+			{6.0,  "Legrand Viking 3 (4 mm²)", 4.0, "Legrand", Clamp::Screw},
+			{6.1,  "Weidmüller WDU 4", 4.0, "Weidmüller", Clamp::Screw},
+			{6.2,  "Phoenix Contact UT 4", 4.0, "Phoenix Contact", Clamp::Screw},
+			{6.2,  "Phoenix Contact ST 4", 4.0, "Phoenix Contact", Clamp::Spring},
+			{7.5,  "WAGO 2006 (TOPJOB S)", 6.0, "WAGO", Clamp::PushIn},
+			{7.9,  "Weidmüller WDU 6", 6.0, "Weidmüller", Clamp::Screw},
+			{8.0,  "ABB Entrelec M 6/8", 6.0, "ABB Entrelec", Clamp::Screw},
+			{8.0,  "ABB Entrelec M 4/8", 4.0, "ABB Entrelec", Clamp::Screw},
+			{8.2,  "Phoenix Contact UT 6", 6.0, "Phoenix Contact", Clamp::Screw},
+			{10.0, "ABB Entrelec M 10/10", 10.0, "ABB Entrelec", Clamp::Screw},
+			{10.2, "Phoenix Contact UT 10", 10.0, "Phoenix Contact", Clamp::Screw},
+			{11.9, "Weidmüller WDU 16/ZA", 16.0, "Weidmüller", Clamp::Screw},
+			{12.0, "ABB Entrelec M 16/12", 16.0, "ABB Entrelec", Clamp::Screw},
+			{12.0, "Legrand Viking 3 (16 mm²)", 16.0, "Legrand", Clamp::Screw},
+			{12.2, "Phoenix Contact UT 16", 16.0, "Phoenix Contact", Clamp::Screw},
+			{16.0, "ABB Entrelec M 35/16", 35.0, "ABB Entrelec", Clamp::Screw},
+			{16.0, "Phoenix Contact UT 35", 35.0, "Phoenix Contact", Clamp::Screw},
+			{16.0, "Weidmüller WDU 35N", 35.0, "Weidmüller", Clamp::Screw},
+			{26.0, "ABB Entrelec M 35/26.FF", 35.0, "ABB Entrelec", Clamp::Screw},
+			{31.0, "ABB Entrelec M 70/31.AF", 70.0, "ABB Entrelec", Clamp::Screw},
+			{35.0, "ABB Entrelec M 120/35.F", 120.0, "ABB Entrelec", Clamp::Screw},
+			{42.0, "ABB Entrelec M 300/42.FF", 300.0, "ABB Entrelec", Clamp::Screw}
 		};
 		return entries_;
 	}
