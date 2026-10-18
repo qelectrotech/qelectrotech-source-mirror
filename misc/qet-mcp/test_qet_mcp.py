@@ -4555,6 +4555,34 @@ class Integration(unittest.TestCase):
         rows = m.tool_conductors(r["output"])["conductors"]
         self.assertEqual([c["num"] for c in rows], ["W7", "W7"])
 
+    def test_new_conductor_inherits_a_potential_through_terminal_and_report(self):
+        """A wire drawn to the free side of a terminal element, or to a
+        report linked to a wired one, is on that potential already: it
+        takes the potential's number and line style, not the folio's
+        defaults (ConductorCreator::existingPotential)."""
+        base = self.sb.new()
+        ops = [{"op": "add_folio", "id": "f"}, {"op": "add_folio", "id": "g"},
+               {"op": "add_element", "id": "a", "folio": "$f", "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "t", "folio": "$f", "path": TERMINAL, "x": 300, "y": 300},
+               {"op": "add_element", "id": "b", "folio": "$f", "path": COIL, "x": 500, "y": 100},
+               {"op": "add_element", "id": "go", "folio": "$f", "path": NEXT_REPORT, "x": 700, "y": 100},
+               {"op": "add_element", "id": "in", "folio": "$g", "path": PREVIOUS_REPORT, "x": 100, "y": 100},
+               {"op": "add_element", "id": "c", "folio": "$g", "path": COIL, "x": 300, "y": 100},
+               {"op": "link_elements", "folio": "$f", "element": "$go", "to_folio": "$g", "to": "$in"},
+               {"op": "add_conductor", "folio": "$f", "from": "$a", "from_terminal": 0, "to": "$t", "to_terminal": 0},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "num", "value": "W7"},
+               {"op": "set_conductor", "folio": "$f", "element": "$a", "terminal": 0, "property": "style", "value": "dashed"},
+               # the terminal's other side, then on through the report
+               {"op": "add_conductor", "folio": "$f", "from": "$t", "from_terminal": 1, "to": "$b", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$f", "from": "$b", "from_terminal": 0, "to": "$go", "to_terminal": 0},
+               {"op": "add_conductor", "folio": "$g", "from": "$in", "from_terminal": 0, "to": "$c", "to_terminal": 0}]
+        r = self.ok(self.sb.edit(base, ops))
+        rows = m.tool_conductors(r["output"])["conductors"]
+        self.assertEqual([c["num"] for c in rows], ["W7"] * 4)
+        styles = {c["value"] for c in m.tool_conductors(r["output"], attribute="style")["conductors"]}
+        self.assertEqual(len(styles), 1, styles)
+        self.assertIn("dash", styles.pop())
+
     # ---- conductor manual routing ----
 
     def test_move_conductor_segment_reroutes_the_path(self):
