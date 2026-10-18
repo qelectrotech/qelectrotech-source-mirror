@@ -758,14 +758,11 @@ void DynamicElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 	if(isSelected())
 		return;
 	
-	if ((parentElement()->linkType() & Element::AllReport) && m_other_report)
+	if (linkedElementShown())
 	{
-		if( (m_text_from == ElementInfo && m_info_name == "label") ||
-			(m_text_from == CompositeText && m_composite_text.contains("%{label}")) )
-		{
-			m_user_color = color();
-			setDefaultTextColor(Qt::blue);
-		}
+		m_user_color = color();
+		setDefaultTextColor(Qt::blue);
+		setCursor(Qt::PointingHandCursor);
 	}
 }
 
@@ -781,6 +778,7 @@ void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 	{
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
+		unsetCursor();
 	}
 	
 }
@@ -1602,30 +1600,34 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 }
 
 /**
+	@brief DynamicElementTextItem::linkedElementShown
+	@return the element this text leads to: the master of a linked slave
+	or the other end of a linked folio report, when the text shows its
+	label; nullptr otherwise. Such a text turns blue under the mouse, shows
+	a pointing hand and jumps there on a double click.
+*/
+Element *DynamicElementTextItem::linkedElementShown() const
+{
+	if(!parentElement())
+		return nullptr;
+	if (!((m_text_from == ElementInfo && m_info_name == "label") ||
+		  (m_text_from == CompositeText && m_composite_text.contains("%{label}"))))
+		return nullptr;
+	if(parentElement()->linkType() == Element::Slave && m_master_element)
+		return m_master_element.data();
+	if((parentElement()->linkType() & Element::AllReport) && m_other_report)
+		return m_other_report.data();
+	return nullptr;
+}
+
+/**
 	@brief DynamicElementTextItem::zoomToLinkedElement
 	If the parent element is a folio report or a slave element,
 	and is linked, zoom to the linked element
 */
 void DynamicElementTextItem::zoomToLinkedElement()
 {
-	if(!parentElement())
-		return;
-	
-	Element *zoomed_element = nullptr;
-	
-	if(parentElement()->linkType() == Element::Slave && m_master_element)
-	{
-		if ((m_text_from == ElementInfo && m_info_name == "label") ||
-			(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
-			zoomed_element = m_master_element.data();
-	}
-	if((parentElement()->linkType() & Element::AllReport) && m_other_report)
-	{
-		if((m_text_from == ElementInfo && m_info_name == "label") ||
-		   (m_text_from == CompositeText && m_composite_text.contains("%{label}")))
-			zoomed_element = m_other_report.data();
-	}
-	
+	Element *zoomed_element = linkedElementShown();
 	if(zoomed_element)
 	{
 			//Unselect and ungrab mouse to prevent unwanted

@@ -176,6 +176,9 @@ class Element : public QetGraphicsItem
 		};
 		ReloadPictureResult reloadPicture();
 		virtual void setHighlighted(bool);
+		void showAsJumpTarget();
+		bool isShownAsJumpTarget() const { return m_jump_highlight > 0; }
+		Element *jumpTarget() const;
 		void displayHelpLine(bool b = true);
 		QSize size() const;
 		QPixmap pixmap();
@@ -316,6 +319,7 @@ class Element : public QetGraphicsItem
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(
 				QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -359,6 +363,8 @@ class Element : public QetGraphicsItem
 		void storeInformation();
 		projectDataBase *placedStore() const;
 		bool m_must_highlight = false;
+		int m_jump_highlight = 0;  ///< pending jump-target highlights, see showAsJumpTarget()
+		bool m_jump_cursor = false;
 		QSize   dimensions;
 		QPoint  hotspot_coord;
 		bool m_mouse_over = false;
