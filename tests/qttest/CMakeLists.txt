@@ -279,6 +279,10 @@ qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 # pixels and position; an <image> with no picture does not stop the others.
 qet_add_app_test(tst_folioimageload tst_folioimageload.cpp)
 
+# The Selection properties panel keeps the height the user gave it when the
+# selection has nothing to edit for a moment (#1439).
+qet_add_app_test(tst_selectionpanelheight tst_selectionpanelheight.cpp)
+
 # SVG export with smaller pictures (--svg-small-pictures, the export dialog's
 # option): a picture drawn at a tenth of its size is stored at four times
 # that, a small one whole; without the option every picture is whole.
