@@ -107,7 +107,8 @@ class TerminalStripModel : public QAbstractTableModel
 
 	private:
 		QPointer<TerminalStrip> m_terminal_strip;
-		QHash<QPointer<Element>, QVector<bool>> m_modified_cell;
+			//Modified cells of each real terminal (spare terminals have no element)
+		QHash<const RealTerminal *, QVector<bool>> m_modified_cell;
 		QVector<modelPhysicalTerminalData> m_physical_data;
 		struct BridgePixmap
 		{

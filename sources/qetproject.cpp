@@ -4506,7 +4506,28 @@ TerminalStrip *QETProject::newTerminalStrip(QString installation, QString locati
 								this);
 
 	m_terminal_strip_vector.append(ts);
+	watchTerminalStrip(ts);
 	return ts;
+}
+
+/**
+ * @brief QETProject::watchTerminalStrip
+ * The spare terminals of @a strip (on no folio) are lines of the
+ * nomenclature : keep the database up to date with them.
+ * @param strip
+ * @param watch : false to stop watching @a strip
+ */
+void QETProject::watchTerminalStrip(TerminalStrip *strip, bool watch)
+{
+	if (!strip) {
+		return;
+	}
+	disconnect(strip, nullptr, &m_data_base, nullptr);
+	if (watch) {
+		connect(strip, &TerminalStrip::orderChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
+		connect(strip, &TerminalStrip::dataChanged, &m_data_base, &projectDataBase::spareTerminalsChanged);
+	}
+	m_data_base.spareTerminalsChanged();
 }
 
 /**
@@ -4525,6 +4546,7 @@ bool QETProject::addTerminalStrip(TerminalStrip *strip)
 		return true;
 
 	m_terminal_strip_vector.append(strip);
+	watchTerminalStrip(strip);
 	return true;
 }
 
@@ -4535,8 +4557,13 @@ bool QETProject::addTerminalStrip(TerminalStrip *strip)
  * @param strip
  * @return true if successfully removed.
  */
-bool QETProject::removeTerminalStrip(TerminalStrip *strip) {
-	return m_terminal_strip_vector.removeOne(strip);
+bool QETProject::removeTerminalStrip(TerminalStrip *strip)
+{
+	const bool removed_ = m_terminal_strip_vector.removeOne(strip);
+	if (removed_) {
+		watchTerminalStrip(strip, false);
+	}
+	return removed_;
 }
 
 /**

@@ -40,6 +40,9 @@
 #include "../titleblockproperties.h"
 #include "../ElementsCollection/xmlelementcollection.h"
 #include "../properties/elementdata.h"
+#include "../TerminalStrip/terminalstrip.h"
+#include "../TerminalStrip/physicalterminal.h"
+#include "../TerminalStrip/realterminal.h"
 
 #include <QLocale>
 #include <QDate>
@@ -125,6 +128,10 @@ void projectDataBase::updateDB()
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
+		//Not the spare_terminal table : it is not built from the folios, and
+		//the database is made (and updateDB() called) by the constructor of the
+		//project, before its terminal strips exist. It is filled when a strip
+		//is added to the project or changed (spareTerminalsChanged()).
 	populateConductorTable();
 	populateLinkTable();
 	populateDrawingItemTables();
@@ -1694,6 +1701,70 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 	emit dataBaseUpdated();
 }
 
+/**
+	@brief projectDataBase::spareTerminalsChanged
+	The spare terminals of a terminal strip (on no folio) were added, removed
+	or changed : fill the spare_terminal table again.
+*/
+void projectDataBase::spareTerminalsChanged()
+{
+	populateSpareTerminalTable();
+	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::populateSpareTerminalTable
+	Fill the spare_terminal table with the spare terminals of the terminal
+	strips of the project, lines of the nomenclature like the terminals
+	drawn on the folios (see createElementNomenclatureView()).
+*/
+void projectDataBase::populateSpareTerminalTable()
+{
+	QSqlQuery query_(m_data_base);
+	query_.exec(QStringLiteral("DELETE FROM spare_terminal"));
+	if (!m_project) {
+		return;
+	}
+
+	const auto keys_ = QETInformation::elementInfoKeys();
+	QString insert_(QStringLiteral("INSERT INTO spare_terminal (uuid, diagram_position, title, folio, position"));
+	QString values_(QStringLiteral(" VALUES (:uuid, :diagram_position, :title, :folio, :position"));
+	for (const auto &key_ : keys_) {
+		insert_ += QStringLiteral(", ") + key_;
+		values_ += QStringLiteral(", :") + key_;
+	}
+	query_.prepare(insert_ + QStringLiteral(")") + values_ + QStringLiteral(")"));
+
+		//After the folios, strip by strip
+	int strip_index_ = 0;
+	for (const auto &strip_ : m_project->terminalStrip())
+	{
+		++strip_index_;
+		const auto physical_ = strip_->physicalTerminal();
+		for (int pos_ = 0 ; pos_ < physical_.size() ; ++pos_)
+		{
+			for (const auto &real_t : physical_.at(pos_)->realTerminals())
+			{
+				if (!real_t || !real_t->isSpare()) {
+					continue;
+				}
+				const auto informations_ = real_t->spareData().m_informations;
+				query_.bindValue(QStringLiteral(":uuid"), real_t->elementUuid().toString());
+				query_.bindValue(QStringLiteral(":diagram_position"), 1000000 + strip_index_);
+				query_.bindValue(QStringLiteral(":title"), QVariant());
+				query_.bindValue(QStringLiteral(":folio"), QVariant());
+				query_.bindValue(QStringLiteral(":position"), pos_);
+				for (const auto &key_ : keys_) {
+					query_.bindValue(QStringLiteral(":") + key_, informations_.value(key_).toString());
+				}
+				if (!query_.exec()) {
+					qDebug() << "projectDataBase::populateSpareTerminalTable insert error : " << query_.lastError();
+				}
+			}
+		}
+	}
+}
+
 void projectDataBase::addDiagram(Diagram *diagram)
 {
 	m_content_changed = true;
@@ -2698,6 +2769,21 @@ bool projectDataBase::createDataBase()
 		}
 	}
 
+		//The spare terminals of the terminal strips : terminals on no folio,
+		//lines of the nomenclature like the terminals drawn on the folios
+		//(see createElementNomenclatureView()). One column by information,
+		//like element_info.
+	QString spare_terminal_table(QStringLiteral(
+			"CREATE TABLE spare_terminal(uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+			"diagram_position INTEGER, title VARCHAR(100), folio VARCHAR(100), position INTEGER"));
+	for (const auto &key_ : QETInformation::elementInfoKeys()) {
+		spare_terminal_table += QStringLiteral(", ") + key_ + QStringLiteral(" VARCHAR(100)");
+	}
+	spare_terminal_table += QStringLiteral(")");
+	if (!query_.exec(spare_terminal_table)) {
+		qDebug() << " spare_terminal_table query : " << query_.lastError();
+	}
+
 	createElementNomenclatureView();
 	createSummaryView();
 	createWiringListView();
@@ -2800,6 +2886,27 @@ void projectDataBase::createElementNomenclatureView()
 							 //exclude_from_bom above, not by its base type.
 							 //See discussion #847.
 						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')");
+
+		//The spare terminals of the terminal strips (on no folio) are lines of
+		//the nomenclature too : the same columns, read in the spare_terminal
+		//table. They come after the folios (diagram_position), in the order
+		//of their strip (position).
+	{
+		const QString select_ = QStringLiteral(" AS SELECT ");
+		const auto begin_ = create_view.indexOf(select_) + select_.size();
+		const auto end_ = create_view.indexOf(QStringLiteral(" FROM element_info ei"));
+		QString columns_ = create_view.mid(begin_, end_ - begin_);
+		columns_.replace(QStringLiteral("ei."), QStringLiteral("st."));
+		columns_.replace(QStringLiteral("d.pos AS diagram_position"), QStringLiteral("st.diagram_position AS diagram_position"));
+		columns_.replace(QStringLiteral("e.type AS element_type"), QStringLiteral("'terminal' AS element_type"));
+		columns_.replace(QStringLiteral("e.sub_type AS element_sub_type"), QStringLiteral("NULL AS element_sub_type"));
+		columns_.replace(QStringLiteral("di.title AS title"), QStringLiteral("st.title AS title"));
+		columns_.replace(QStringLiteral("di.folio AS folio"), QStringLiteral("st.folio AS folio"));
+		columns_.replace(QStringLiteral("e.pos AS position"), QStringLiteral("st.position AS position"));
+		create_view += QStringLiteral(" UNION ALL SELECT ") + columns_ +
+					   QStringLiteral(" FROM spare_terminal st"
+									  " WHERE COALESCE(LOWER(TRIM(st.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on')");
+	}
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {

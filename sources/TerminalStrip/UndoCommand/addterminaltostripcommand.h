@@ -21,6 +21,8 @@
 #include <QUndoCommand>
 #include <QPointer>
 #include <QVector>
+#include <QSharedPointer>
+#include "../../properties/elementdata.h"
 
 class TerminalElement;
 class TerminalStrip;
@@ -87,6 +89,47 @@ class MoveTerminalCommand : public QUndoCommand
 		const QVector<QSharedPointer<PhysicalTerminal>> m_terminal;
 		QPointer<TerminalStrip> m_old_strip, m_new_strip;
 
+};
+
+/**
+ * @brief The AddSpareTerminalsCommand class
+ * Insert spare terminals (on no folio) in a terminal strip,
+ * at a position of the strip.
+ */
+class AddSpareTerminalsCommand : public QUndoCommand
+{
+	public:
+		AddSpareTerminalsCommand(TerminalStrip *strip, int pos,
+								 const QVector<QSharedPointer<RealTerminal>> &spare_terminals,
+								 QUndoCommand *parent = nullptr);
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<TerminalStrip> m_strip;
+		int m_pos = -1;
+		QVector<QSharedPointer<RealTerminal>> m_spare_terminals;
+		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
+};
+
+/**
+ * @brief The ChangeSpareTerminalDataCommand class
+ * Change the data (label, type, section...) of a spare terminal
+ */
+class ChangeSpareTerminalDataCommand : public QUndoCommand
+{
+	public:
+		ChangeSpareTerminalDataCommand(const QSharedPointer<RealTerminal> &spare_terminal,
+									   const ElementData &new_data,
+									   QUndoCommand *parent = nullptr);
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		QSharedPointer<RealTerminal> m_spare_terminal;
+		ElementData m_old_data, m_new_data;
 };
 
 #endif // ADDTERMINALTOSTRIPCOMMAND_H

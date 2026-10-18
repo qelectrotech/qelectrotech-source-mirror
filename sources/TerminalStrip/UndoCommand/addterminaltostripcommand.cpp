@@ -19,6 +19,7 @@
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../realterminal.h"
 #include "../physicalterminal.h"
+#include "../terminalstrip.h"
 
 /**
  * @brief AddTerminalToStripCommand::AddTerminalToStripCommand
@@ -233,4 +234,73 @@ void MoveTerminalCommand::redo()
 	if (m_new_strip) {
 		m_new_strip->addTerminals(m_terminal);
 	}
+}
+
+/**
+ * @brief AddSpareTerminalsCommand::AddSpareTerminalsCommand
+ * @param strip : the strip where the spare terminals are inserted
+ * @param pos : position of the first spare terminal in the strip,
+ * -1 to add them at the end of the strip
+ * @param spare_terminals : spare terminals made by RealTerminal::createSpare()
+ * @param parent : parent undo command
+ */
+AddSpareTerminalsCommand::AddSpareTerminalsCommand(TerminalStrip *strip, int pos,
+												   const QVector<QSharedPointer<RealTerminal>> &spare_terminals,
+												   QUndoCommand *parent) :
+	QUndoCommand{parent},
+	m_strip{strip},
+	m_pos{pos},
+	m_spare_terminals{spare_terminals}
+{
+	const auto count = spare_terminals.size();
+	const auto strip_name = strip ? strip->name() : QString();
+	setText(strip_name.isEmpty()
+		? QObject::tr("Add %n spare terminals", "", count)
+		: QObject::tr("Add %n spare terminals to terminal group %1", "", count).arg(strip_name));
+}
+
+void AddSpareTerminalsCommand::undo()
+{
+	if (m_strip) {
+		m_strip->removeTerminals(m_physical_terminals);
+	}
+}
+
+void AddSpareTerminalsCommand::redo()
+{
+	if (!m_strip) {
+		return;
+	}
+		//The first time the physical terminals are made,
+		//after an undo the same ones are inserted again
+	if (m_physical_terminals.isEmpty()) {
+		m_physical_terminals = m_strip->insertSpareTerminals(m_pos, m_spare_terminals);
+	} else {
+		m_strip->insertTerminals(m_pos, m_physical_terminals);
+	}
+}
+
+/**
+ * @brief ChangeSpareTerminalDataCommand::ChangeSpareTerminalDataCommand
+ * @param spare_terminal : the spare terminal to change
+ * @param new_data : the new data of the terminal
+ * @param parent : parent undo command
+ */
+ChangeSpareTerminalDataCommand::ChangeSpareTerminalDataCommand(const QSharedPointer<RealTerminal> &spare_terminal,
+															   const ElementData &new_data,
+															   QUndoCommand *parent) :
+	QUndoCommand{parent},
+	m_spare_terminal{spare_terminal},
+	m_old_data{spare_terminal->spareData()},
+	m_new_data{new_data}
+{
+	setText(QObject::tr("Modify the spare terminal %1").arg(spare_terminal->label()));
+}
+
+void ChangeSpareTerminalDataCommand::undo() {
+	m_spare_terminal->setSpareData(m_old_data);
+}
+
+void ChangeSpareTerminalDataCommand::redo() {
+	m_spare_terminal->setSpareData(m_new_data);
 }

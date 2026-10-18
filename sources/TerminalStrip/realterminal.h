@@ -21,6 +21,7 @@
 #include <QSharedPointer>
 #include <QColor>
 #include <QDomElement>
+#include <QUuid>
 #include "../properties/elementdata.h"
 
 class TerminalStrip;
@@ -56,6 +57,12 @@ class RealTerminal
 
 	public:
 		~RealTerminal();
+		static QSharedPointer<RealTerminal> createSpare(const ElementData &data, const QUuid &uuid = QUuid());
+		static QSharedPointer<RealTerminal> spareFromXml(const QDomElement &xml_element);
+		bool isSpare() const;
+		ElementData spareData() const;
+		void setSpareData(const ElementData &data);
+		ElementData terminalData() const;
 		TerminalStrip *parentStrip() const noexcept;
 		QSharedPointer<PhysicalTerminal> physicalTerminal() const noexcept;
 
@@ -107,7 +114,13 @@ class RealTerminal
 		static QString xmlTagName();
 
 	private :
+		bool hasData() const;
+
 		QPointer<Element> m_element;
+			//A spare terminal has no element : it is on no folio, its data are its own
+		bool m_spare = false;
+		QUuid m_spare_uuid;
+		ElementData m_spare_data;
 		QWeakPointer<RealTerminal> m_this_weak;
 		QSharedPointer<PhysicalTerminal> m_physical_terminal;
 };

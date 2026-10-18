@@ -443,6 +443,7 @@ class QETProject : public QObject
 		}
 
 	private:
+		void watchTerminalStrip(TerminalStrip *strip, bool watch = true);
 		bool stampSaved();
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);

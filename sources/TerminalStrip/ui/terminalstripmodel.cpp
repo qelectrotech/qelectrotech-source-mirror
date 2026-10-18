@@ -62,6 +62,14 @@ const int COLUMN_COUNT = 19;
 static QVector<bool> UNMODIFIED_CELL_VECTOR(COLUMN_COUNT, false);
 
 /**
+ * @brief modifiedCellKey
+ * @return the key of the real terminal of @a data in the modified cells
+ */
+static const RealTerminal *modifiedCellKey(const modelRealTerminalData &data) {
+	return data.real_terminal.toStrongRef().data();
+}
+
+/**
  * @brief parsePositiveNumber
  * Convert the text written by the user to a number >= 0
  * (a section in mm2 or a width in mm).
@@ -204,7 +212,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case LEVEL_CELL :      return mrtd.level_;
 			case LABEL_CELL :      return mrtd.label_;
 			case CONDUCTOR_CELL :  return mrtd.conductor_;
-			case XREF_CELL :       return mrtd.Xref_;
+			case XREF_CELL :       return mrtd.spare_ ? tr("Spare") : mrtd.Xref_;
 			case CABLE_CELL :      return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
 			case TYPE_CELL :       return ElementData::translatedTerminalType(mrtd.type_);
@@ -254,10 +262,16 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return mrtd.separator_ ? Qt::Checked : Qt::Unchecked;
 	}
+	else if (role == Qt::ForegroundRole &&
+			 index.column() == XREF_CELL && mrtd.spare_)
+	{
+		return QBrush(Qt::gray);	//"Spare" : not a reference to a folio
+	}
 	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
 	{
-		if (m_modified_cell.contains(mrtd.element_) &&
-			m_modified_cell.value(mrtd.element_).at(index.column()))
+		const auto key_ = modifiedCellKey(mrtd);
+		if (m_modified_cell.contains(key_) &&
+			m_modified_cell.value(key_).at(index.column()))
 		{
 			return QBrush(Qt::yellow);
 		}
@@ -425,17 +439,17 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 	{
 		replaceDataAtRow(mrtd, index.row());
 
-		if (mrtd.element_)
+		if (const auto key_ = modifiedCellKey(mrtd))
 		{
 			QVector<bool> vector_;
-			if (m_modified_cell.contains(mrtd.element_)) {
-				vector_ = m_modified_cell.value(mrtd.element_);
+			if (m_modified_cell.contains(key_)) {
+				vector_ = m_modified_cell.value(key_);
 			} else {
 				vector_ = UNMODIFIED_CELL_VECTOR;
 			}
 
 			vector_.replace(modified_cell, true);
-			m_modified_cell.insert(mrtd.element_, vector_);
+			m_modified_cell.insert(key_, vector_);
 		}
 		emit dataChanged(index, index);
 		return true;
@@ -509,7 +523,7 @@ QVector<modelRealTerminalData> TerminalStripModel::modifiedmodelRealTerminalData
 		for (auto j = 0 ; j < ptd_.real_data.size() ; ++j)
 		{
 			auto mrtd_ = ptd_.real_data.at(j);
-			if (modified_real_terminal.contains(mrtd_.element_))
+			if (modified_real_terminal.contains(modifiedCellKey(mrtd_)))
 			{
 				returned_vector.append(m_physical_data.at(i).real_data.at(j));
 			}

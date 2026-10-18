@@ -234,6 +234,7 @@ class projectDataBase : public QObject
 		void elementMoved();
 
 	public:
+		void spareTerminalsChanged();
 
 	signals:
 		void dataBaseUpdated();
@@ -250,6 +251,7 @@ class projectDataBase : public QObject
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateElementInfoTableFromFolios();
+		void populateSpareTerminalTable();
 		void populateDiagramInfoTable();
 		void populateConductorTable();
 		void populateLinkTable();

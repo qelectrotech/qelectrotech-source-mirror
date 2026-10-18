@@ -34,10 +34,18 @@
 #include "../terminalcolor.h"
 #include "../terminalcatalog.h"
 #include "../realterminal.h"
+#include "../../qetinformation.h"
 
 #include <QApplication>
+#include <QCheckBox>
 #include <QClipboard>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFormLayout>
 #include <QKeyEvent>
+#include <QLineEdit>
+#include <QRegularExpression>
+#include <QSpinBox>
 
 #include <algorithm>
 #include <limits>
@@ -218,37 +226,48 @@ void TerminalStripEditor::apply()
 		{
 			for (const auto &data_ : m_model->modifiedmodelRealTerminalData())
 			{
-				if (auto element = data_.element_)
-				{
-					auto current_data = element->elementData();
-					current_data.setTerminalType(data_.type_);
-					current_data.setTerminalFunction(data_.function_);
-					current_data.setTerminalLED(data_.led_);
-					current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
-					//The cable data are only stored when they are used
-					const auto set_info = [&current_data](const QString &key, const QString &value) {
-						if (!value.isEmpty() || current_data.m_informations.contains(key)) {
-							current_data.m_informations.addValue(key, value);
-						}
-					};
-					set_info(RealTerminal::cableInfoKey(), data_.cable_);
-					set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
-					set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
-					//The color and the section are stored with the dot as decimal separator, whatever the locale
-					set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
-					set_info(RealTerminal::sectionInfoKey(), data_.section_ > 0 ? QString::number(data_.section_, 'g', 6) : QString());
-					set_info(RealTerminal::widthInfoKey(), data_.width_mm_ > 0 ? QString::number(data_.width_mm_, 'g', 6) : QString());
-					//The terminal chosen in the catalog, its manufacturer and its reference
-					//(only written when the user didn't type them)
-					RealTerminal::applyCatalogEntry(current_data.m_informations,
-													data_.width_mm_ > 0 ? data_.catalog_entry_ : QString());
-					set_info(RealTerminal::separatorInfoKey(), data_.separator_ ? QStringLiteral("true") : QString());
-
-					if (element->elementData() != current_data)
-						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
-					if (data_.level_ != data_.real_terminal.toStrongRef()->level())
-						m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
+				const auto real_t = data_.real_terminal.toStrongRef();
+				auto element = data_.element_;
+					//A spare terminal (on no folio) has its own data, not the data of an element
+				if (!real_t || (!element && !data_.spare_)) {
+					continue;
 				}
+
+				const auto old_data = element ? element->elementData() : real_t->spareData();
+				auto current_data = old_data;
+				current_data.setTerminalType(data_.type_);
+				current_data.setTerminalFunction(data_.function_);
+				current_data.setTerminalLED(data_.led_);
+				current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
+				//The cable data are only stored when they are used
+				const auto set_info = [&current_data](const QString &key, const QString &value) {
+					if (!value.isEmpty() || current_data.m_informations.contains(key)) {
+						current_data.m_informations.addValue(key, value);
+					}
+				};
+				set_info(RealTerminal::cableInfoKey(), data_.cable_);
+				set_info(RealTerminal::cableWireInfoKey(), data_.cable_wire);
+				set_info(RealTerminal::shieldInfoKey(), data_.shield_ ? QStringLiteral("true") : QString());
+				//The color and the section are stored with the dot as decimal separator, whatever the locale
+				set_info(RealTerminal::colorInfoKey(), TerminalColor::toSpec(data_.color_, data_.stripe_color_));
+				set_info(RealTerminal::sectionInfoKey(), data_.section_ > 0 ? QString::number(data_.section_, 'g', 6) : QString());
+				set_info(RealTerminal::widthInfoKey(), data_.width_mm_ > 0 ? QString::number(data_.width_mm_, 'g', 6) : QString());
+				//The terminal chosen in the catalog, its manufacturer and its reference
+				//(only written when the user didn't type them)
+				RealTerminal::applyCatalogEntry(current_data.m_informations,
+												data_.width_mm_ > 0 ? data_.catalog_entry_ : QString());
+				set_info(RealTerminal::separatorInfoKey(), data_.separator_ ? QStringLiteral("true") : QString());
+
+				if (old_data != current_data)
+				{
+					if (element) {
+						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+					} else {
+						m_project->undoStack()->push(new ChangeSpareTerminalDataCommand(real_t, current_data));
+					}
+				}
+				if (data_.level_ != real_t->level())
+					m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
 			}
 		}
 
@@ -331,10 +350,12 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_bridge_terminals_pb  ->setDisabled(true);
 		ui->m_unbridge_terminals_pb->setDisabled(true);
 		ui->m_bridge_color_cb      ->setDisabled(true);
+		ui->m_add_spare_pb         ->setDisabled(true);
 		return;
 	}
 
 	ui->m_auto_ordering_pb->setEnabled(true);
+	ui->m_add_spare_pb    ->setEnabled(true);
 
 	const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
 
@@ -1028,3 +1049,170 @@ void TerminalStripEditor::on_m_move_to_pb_clicked()
 	}
 }
 
+
+namespace {
+/**
+ * @brief The NumberedLabel struct
+ * A terminal label split in a prefix and a number : "X1:12" is "X1:" and 12.
+ */
+struct NumberedLabel
+{
+		QString prefix;
+		int number = 0;		///< 0 if the label has no number
+		int width = 0;		///< Number of digits, to keep the leading zeros ("X1:05")
+};
+
+/**
+ * @brief splitLabel
+ * @param label : a terminal label, like "X1:12", "12" or "PE"
+ * @return the label split in a prefix and its last number
+ */
+NumberedLabel splitLabel(const QString &label)
+{
+	static const QRegularExpression re_(QStringLiteral("^(.*?)(\\d+)$"));
+	NumberedLabel numbered_;
+	const auto match_ = re_.match(label.trimmed());
+	if (match_.hasMatch())
+	{
+		numbered_.prefix = match_.captured(1);
+		numbered_.number = match_.captured(2).toInt();
+		const auto digits_ = match_.captured(2);
+		numbered_.width = digits_.startsWith(QLatin1Char('0')) ? digits_.size() : 0;
+	}
+	else {
+		numbered_.prefix = label.trimmed();
+	}
+	return numbered_;
+}
+
+/**
+ * @brief numberedLabel
+ * @return @a prefix followed by @a number, with leading zeros up to @a width digits
+ */
+QString numberedLabel(const QString &prefix, int number, int width) {
+	return prefix + QStringLiteral("%1").arg(number, width, 10, QLatin1Char('0'));
+}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_add_spare_pb_clicked
+ * Add spare terminals (on no folio) after the selected terminal,
+ * or at the end of the strip if no terminal is selected.
+ * The labels continue the number of the selected terminal ("X1:12" ->
+ * "X1:13", "X1:14"...), the user can change or remove them in the table.
+ * The properties of the selected terminal (type, section, width, terminal
+ * of the catalog, color, manufacturer...) can be copied to the spare terminals,
+ * which then are the same part in the bill of materials.
+ */
+void TerminalStripEditor::on_m_add_spare_pb_clicked()
+{
+	if (!m_model || !m_current_strip || !m_project) {
+		return;
+	}
+
+		//The last selected physical terminal in the strip, else the last one of the strip
+	int insert_pos_ = -1;
+	QSharedPointer<PhysicalTerminal> reference_;
+	const auto selected_ = m_model->modelPhysicalTerminalDataForIndex(
+							   ui->m_table_widget->selectionModel()->selectedIndexes());
+	for (const auto &data_ : selected_)
+	{
+		const auto phy_t = m_current_strip->physicalTerminal(data_.uuid_);
+		const auto pos_ = m_current_strip->pos(phy_t);
+		if (phy_t && pos_ >= insert_pos_) {
+			insert_pos_ = pos_;
+			reference_ = phy_t;
+		}
+	}
+	if (reference_) {
+		++insert_pos_;		//After the selected terminal
+	} else {
+		insert_pos_ = -1;	//At the end of the strip
+		if (m_current_strip->physicalTerminalCount()) {
+			reference_ = m_current_strip->physicalTerminal(m_current_strip->physicalTerminalCount() - 1);
+		}
+	}
+	QSharedPointer<RealTerminal> reference_real_;
+	if (reference_ && !reference_->realTerminals().isEmpty()) {
+		reference_real_ = reference_->realTerminals().last();
+	}
+
+		//Proposed numbering : the one of the reference terminal, continued
+	const auto numbered_ = splitLabel(reference_real_ ? reference_real_->label() : QString());
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Add spare terminals"));
+	auto layout_ = new QFormLayout(&dialog);
+
+	auto count_sb = new QSpinBox(&dialog);
+	count_sb->setRange(1, 999);
+	count_sb->setValue(1);
+	layout_->addRow(tr("Number of terminals :"), count_sb);
+
+	auto numbering_cb = new QCheckBox(tr("Number the terminals"), &dialog);
+	numbering_cb->setChecked(true);
+	layout_->addRow(numbering_cb);
+
+	auto prefix_le = new QLineEdit(numbered_.prefix, &dialog);
+	layout_->addRow(tr("Prefix :"), prefix_le);
+
+	auto first_sb = new QSpinBox(&dialog);
+	first_sb->setRange(0, 999999);
+	first_sb->setValue(numbered_.number + 1);
+	layout_->addRow(tr("First number :"), first_sb);
+
+	connect(numbering_cb, &QCheckBox::toggled, prefix_le, &QWidget::setEnabled);
+	connect(numbering_cb, &QCheckBox::toggled, first_sb, &QWidget::setEnabled);
+
+	auto copy_cb = new QCheckBox(tr("Same terminal as %1 (type, section, width, color, manufacturer...)")
+								 .arg(reference_real_ && !reference_real_->label().isEmpty()
+									  ? reference_real_->label() : tr("the selected terminal")),
+								 &dialog);
+	copy_cb->setChecked(!reference_real_.isNull());
+	copy_cb->setEnabled(!reference_real_.isNull());
+	layout_->addRow(copy_cb);
+
+	auto buttons_ = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+	connect(buttons_, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons_, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout_->addRow(buttons_);
+
+	if (dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+		//The data shared by every spare terminal
+	ElementData model_;
+	if (copy_cb->isChecked() && reference_real_)
+	{
+		const auto reference_data_ = reference_real_->terminalData();
+		model_.setTerminalType(reference_data_.terminalType());
+		model_.setTerminalFunction(reference_data_.terminalFunction());
+		model_.setTerminalLED(reference_data_.terminalLed());
+			//What makes the part, not what belongs to this terminal (label, cable...)
+		for (const auto &key_ : {RealTerminal::sectionInfoKey(), RealTerminal::widthInfoKey(),
+								 RealTerminal::catalogEntryInfoKey(), RealTerminal::colorInfoKey(),
+								 QETInformation::ELMT_MANUFACTURER, QETInformation::ELMT_MANUFACTURER_REF,
+								 QETInformation::ELMT_DESIGNATION, QETInformation::ELMT_PLANT,
+								 QETInformation::ELMT_LOCATION})
+		{
+			const auto value_ = reference_data_.m_informations.value(key_).toString();
+			if (!value_.isEmpty()) {
+				model_.m_informations.addValue(key_, value_);
+			}
+		}
+	}
+
+	QVector<QSharedPointer<RealTerminal>> spare_vector;
+	for (int i = 0 ; i < count_sb->value() ; ++i)
+	{
+		auto data_ = model_;
+		if (numbering_cb->isChecked()) {
+			data_.m_informations.addValue(QStringLiteral("label"),
+										  numberedLabel(prefix_le->text(), first_sb->value() + i, numbered_.width));
+		}
+		spare_vector.append(RealTerminal::createSpare(data_));
+	}
+
+	m_project->undoStack()->push(new AddSpareTerminalsCommand(m_current_strip, insert_pos_, spare_vector));
+}

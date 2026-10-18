@@ -95,6 +95,8 @@ class TerminalStrip : public QObject
 		void addTerminals (QVector<QSharedPointer<PhysicalTerminal>> phy_t_vector);
 		bool removeTerminal (QSharedPointer<PhysicalTerminal> phy_t);
 		void removeTerminals (QVector<QSharedPointer<PhysicalTerminal>> phy_t_vector);
+		QVector<QSharedPointer<PhysicalTerminal>> insertSpareTerminals(int pos, const QVector<QSharedPointer<RealTerminal>> &spare_terminals);
+		void insertTerminals(int pos, const QVector<QSharedPointer<PhysicalTerminal>> &phy_t_vector);
 
 		int pos(const QSharedPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
