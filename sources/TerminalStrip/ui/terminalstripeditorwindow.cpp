@@ -30,7 +30,10 @@
 #include "terminalstriptreedockwidget.h"
 
 #include <QApplication>
+#include <QElapsedTimer>
 #include <QProgressDialog>
+#include <QThread>
+#include <QWindow>
 
 QPointer<TerminalStripEditorWindow> TerminalStripEditorWindow::window_;
 
@@ -53,7 +56,21 @@ TerminalStripEditorWindow *TerminalStripEditorWindow::instance(QETProject *proje
 	busy_.setCancelButton(nullptr);
 	busy_.setMinimumDuration(0);
 	busy_.show();
-		//Paint the message before the long work starts
+		//Paint the message before the long work starts. One pass of the
+		//event loop is not enough : the window is shown by the window system
+		//(Wayland compositor...) a bit later. Wait for it to be exposed,
+		//a short time at most, then paint it.
+	QElapsedTimer timer_;
+	timer_.start();
+	while (timer_.elapsed() < 500)
+	{
+		QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents, 20);
+		if (busy_.windowHandle() && busy_.windowHandle()->isExposed()) {
+			break;
+		}
+		QThread::msleep(5);
+	}
+	busy_.repaint();
 	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 
