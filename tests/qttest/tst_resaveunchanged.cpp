@@ -411,14 +411,15 @@ private slots:
 
 	// QElectroTech run in a sandbox of its own with @p args, the store
 	// check on (QET_CHECK_ELEMENT_INFO_STORE); its output
-	QString runChecked(const QStringList &args, bool eager = false)
+	QString runChecked(const QStringList &args, bool eager = false,
+					   const char *check = "QET_CHECK_ELEMENT_INFO_STORE")
 	{
 		const QString home = m_dir.filePath(QStringLiteral("home%1").arg(m_run++));
 		QDir().mkpath(home);
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
 		env.insert(QStringLiteral("QET_ENABLE_SCRIPTING"), QStringLiteral("1"));
-		env.insert(QStringLiteral("QET_CHECK_ELEMENT_INFO_STORE"), QStringLiteral("1"));
+		env.insert(QString::fromLatin1(check), QStringLiteral("1"));
 		if (eager) {
 			env.insert(QStringLiteral("QET_EAGER_FOLIOS"), QStringLiteral("1")); //every folio built on opening
 		}
@@ -450,6 +451,31 @@ private slots:
 		QVERIFY2(out.contains(QStringLiteral("element information store: 0 differ")), qPrintable(out.right(600)));
 		QVERIFY2(out.contains(QStringLiteral("folio title block store: 0 differ")), qPrintable(out.right(600)));
 		QVERIFY2(out.contains(QStringLiteral("wire properties store: 0 differ")), qPrintable(out.right(600)));
+	}
+
+	// The link rows say what each symbol saves, in its order, also after
+	// an edit builds a partner's folio (lazy folios): m_000 as a .qetz
+	// saved with every folio built, a symbol of its middle folio moved. The rows used to follow the order
+	// the partners were built in (QETZ-DB-FIRST stage 2a).
+	void linkRowsAfterLazyEdit()
+	{
+		const QString qetz = m_dir.filePath(QStringLiteral("links%1.qetz").arg(m_run));
+		QVERIFY(!runChecked({QStringLiteral("--resave"),
+							 QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"), qetz}, true).isEmpty());
+		const QString saved = m_dir.filePath(QStringLiteral("links-moved%1.qetz").arg(m_run));
+		const QString js = m_dir.filePath(QStringLiteral("links%1.js").arg(m_run));
+		QFile script(js);
+		QVERIFY(script.open(QIODevice::WriteOnly));
+		script.write(QStringLiteral(
+			"var f = Math.floor(qet.folioCount() / 2);\n"
+			"var u = qet.elementUuids(f).slice().sort()[0];\n"
+			"qet.log('MOVED ' + qet.moveElement(f, u, 0, 100));\n"
+			"qet.save('%1');\n").arg(saved).toUtf8());
+		script.close();
+		const QString out = runChecked({QStringLiteral("--run"), js, qetz}, false,
+									   "QET_CHECK_LINK_ROWS");
+		QVERIFY2(out.contains(QStringLiteral("MOVED true")), qPrintable(out.right(600)));
+		QVERIFY2(out.contains(QStringLiteral("link rows: 0 differ")), qPrintable(out.right(600)));
 	}
 
 	// The stores filled from the document before the folios are built

@@ -2630,6 +2630,16 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
+		//QET_CHECK_LINK_ROWS=1: say whether the project database's link rows
+		//are the links each placed symbol saves, in its order, once the
+		//folios are written. Builds nothing (lazy folios stay as they are):
+		//a test and debugging aid; it changes nothing.
+	if (qEnvironmentVariableIntValue("QET_CHECK_LINK_ROWS") == 1) {
+		const QStringList links = m_data_base.linkRowMismatches();
+		qWarning().noquote() << "link rows:" << links.size() << "differ"
+							 << links.mid(0, 5).join(QStringLiteral(", "));
+	}
+
 	m_waiting_link_targets.clear();
 	return(xml_doc);
 }

@@ -847,13 +847,15 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 		}
 	}
 
-	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
-								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
+								 "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
 	for (const DocumentElement &element : std::as_const(elements)) {
+		int ord = 0;
 		for (const auto &link : element.links) {
 			query.bindValue(QStringLiteral(":element_uuid"), element.uuid);
 			query.bindValue(QStringLiteral(":linked_uuid"), link.first);
 			query.bindValue(QStringLiteral(":group_index"), link.second >= 0 ? QVariant(link.second) : QVariant());
+			query.bindValue(QStringLiteral(":ord"), ord++);
 			if (!query.exec()) {
 				qDebug() << "projectDataBase::populateFromDocument link insert error : " << query.lastError();
 			}
@@ -1092,7 +1094,7 @@ QList<QUuid> projectDataBase::linkedSymbols(const QUuid &element) const
 {
 	QList<QUuid> linked;
 	QSqlQuery query(m_data_base);
-	query.prepare(QStringLiteral("SELECT linked_uuid FROM link WHERE element_uuid = :uuid ORDER BY rowid"));
+	query.prepare(QStringLiteral("SELECT linked_uuid FROM link WHERE element_uuid = :uuid ORDER BY ord, rowid"));
 	query.bindValue(QStringLiteral(":uuid"), element.toString());
 	if (query.exec()) {
 		while (query.next())
@@ -2602,12 +2604,14 @@ bool projectDataBase::createDataBase()
 
 		//Create the link table: one row per element and element it is
 		//linked to -- a coil and its contacts, a pair of folio reports --
-		//from each side, with the contact group the element saved for it.
+		//from each side, with the contact group the element saved for it,
+		//and its place (ord) in the order the element saves its links.
 	const QString link_table(QStringLiteral(
 			"CREATE TABLE link ("
 			"element_uuid VARCHAR(50) NOT NULL, "
 			"linked_uuid VARCHAR(50) NOT NULL, "
 			"group_index INTEGER, "
+			"ord INTEGER NOT NULL DEFAULT 0, "
 			"PRIMARY KEY (element_uuid, linked_uuid), "
 			"FOREIGN KEY (element_uuid) REFERENCES element (uuid))"));
 	if (!query_.exec(link_table)) {
@@ -3868,10 +3872,11 @@ QString projectDataBase::prefillReport() const
 void projectDataBase::populateLinkTable()
 {
 	m_dirty_link_elements.clear();
+	const QSet<QUuid> waiting = waitingSymbols();
 	QSqlQuery query(m_data_base);
 	query.exec(QStringLiteral("DELETE FROM link"));
-	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
-								 "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+	query.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
+								 "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
 
 	for (const auto &diagram : m_project->folios())
 	{
@@ -3885,23 +3890,7 @@ void projectDataBase::populateLinkTable()
 		}
 		const ElementProvider ep(diagram);
 		for (const auto &elmt : ep.find(allElementTypes()))
-		{
-			QList<std::pair<QString, int>> rows;
-			for (Element *linked : elmt->linkedElements())
-				rows.append({linked->uuid().toString(), elmt->groupIndexForElement(linked)});
-				//Partners on a folio not built, which it will be linked to
-			for (const auto &waiting : elmt->waitingLinks())
-				rows.append({waiting.first.toString(), waiting.second});
-			for (const auto &row : std::as_const(rows))
-			{
-				query.bindValue(QStringLiteral(":element_uuid"), elmt->uuid().toString());
-				query.bindValue(QStringLiteral(":linked_uuid"), row.first);
-				query.bindValue(QStringLiteral(":group_index"), row.second >= 0 ? QVariant(row.second) : QVariant());
-				if (!query.exec()) {
-					qDebug() << "projectDataBase::populateLinkTable insert error : " << query.lastError();
-				}
-			}
-		}
+			insertLinkRows(query, elmt, waiting);
 	}
 }
 
@@ -3928,6 +3917,83 @@ void projectDataBase::queueLinks(Element *element)
 }
 
 /**
+	@brief projectDataBase::linkRowMismatches
+	A test and debugging aid (QET_CHECK_LINK_ROWS): the placed
+	symbols whose link rows are not the links they save, in order
+	(Element::linksToSave(), insertLinkRows())
+	@return one entry per such symbol: its uuid
+*/
+QStringList projectDataBase::linkRowMismatches()
+{
+	flushLinks();
+	const QSet<QUuid> waiting = waitingSymbols();
+	QStringList mismatches;
+	QSqlQuery query(m_data_base);
+	query.prepare(QStringLiteral("SELECT linked_uuid, group_index FROM link "
+								 "WHERE element_uuid = :uuid ORDER BY ord, rowid"));
+	for (auto it = m_placed_elements.cbegin() ; it != m_placed_elements.cend() ; ++it)
+	{
+		Element *element = it.value();
+		if (!element) {
+			continue;
+		}
+		QList<std::pair<QString, int>> expected;
+		for (const Element::SavedLink &link : element->linksToSave(waiting))
+			if (!link.built || m_placed_elements.contains(link.uuid, link.built))
+				expected.append({link.uuid.toString(), link.group_index});
+		QList<std::pair<QString, int>> rows;
+		query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+		if (query.exec())
+			while (query.next())
+				rows.append({query.value(0).toString(),
+							 query.value(1).isNull() ? -1 : query.value(1).toInt()});
+		if (rows != expected) {
+			mismatches << element->uuid().toString();
+		}
+	}
+	return mismatches;
+}
+
+/**
+	@brief projectDataBase::waitingSymbols
+	@return the symbols on folios not built yet (lazy folios): partners a
+	symbol keeps its saved links to until they are built
+*/
+QSet<QUuid> projectDataBase::waitingSymbols() const
+{
+	return m_project && m_project->unloadedFolioCount() ? m_project->symbolsOnUnbuiltFolios()
+														: QSet<QUuid>();
+}
+
+/**
+	@brief projectDataBase::insertLinkRows
+	Write @p element's link rows with @p insert (prepared with :element_uuid,
+	:linked_uuid, :group_index and :ord): its partners as it saves them
+	(Element::linksToSave()), in that order, so the rows and the file say
+	the same: @p waiting is the symbols on folios not built, as a save
+	takes them (waitingSymbols()). A built partner the project no longer has (on a removed
+	folio, linked still for the undo) gets no row.
+*/
+void projectDataBase::insertLinkRows(QSqlQuery &insert, Element *element,
+									 const QSet<QUuid> &waiting)
+{
+	int ord = 0;
+	for (const Element::SavedLink &link : element->linksToSave(waiting))
+	{
+		if (link.built && !m_placed_elements.contains(link.uuid, link.built)) {
+			continue;
+		}
+		insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
+		insert.bindValue(QStringLiteral(":linked_uuid"), link.uuid.toString());
+		insert.bindValue(QStringLiteral(":group_index"), link.group_index >= 0 ? QVariant(link.group_index) : QVariant());
+		insert.bindValue(QStringLiteral(":ord"), ord++);
+		if (!insert.exec()) {
+			qDebug() << "projectDataBase::insertLinkRows insert error : " << insert.lastError();
+		}
+	}
+}
+
+/**
 	@brief projectDataBase::flushLinks
 	Write the link rows of every element queued by linksChanged()
 */
@@ -3939,12 +4005,13 @@ void projectDataBase::flushLinks()
 
 	const auto dirty = m_dirty_link_elements;
 	m_dirty_link_elements.clear();
+	const QSet<QUuid> waiting = waitingSymbols();
 	const bool own_transaction = m_data_base.transaction();
 	QSqlQuery remove(m_data_base);
 	remove.prepare(QStringLiteral("DELETE FROM link WHERE element_uuid = :uuid"));
 	QSqlQuery insert(m_data_base);
-	insert.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index) "
-								  "VALUES (:element_uuid, :linked_uuid, :group_index)"));
+	insert.prepare(QStringLiteral("INSERT INTO link (element_uuid, linked_uuid, group_index, ord) "
+								  "VALUES (:element_uuid, :linked_uuid, :group_index, :ord)"));
 	for (const QPointer<Element> &element : dirty)
 	{
 		if (!element) {
@@ -3960,32 +4027,7 @@ void projectDataBase::flushLinks()
 		if (!m_placed_elements.contains(element->uuid(), element)) {
 			continue;
 		}
-		for (Element *linked : element->linkedElements())
-		{
-				//A symbol on a removed folio stays linked, for the undo,
-				//but the project no longer has it
-			if (!m_placed_elements.contains(linked->uuid(), linked)) {
-				continue;
-			}
-			const int group = element->groupIndexForElement(linked);
-			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
-			insert.bindValue(QStringLiteral(":linked_uuid"), linked->uuid().toString());
-			insert.bindValue(QStringLiteral(":group_index"), group >= 0 ? QVariant(group) : QVariant());
-			if (!insert.exec()) {
-				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
-			}
-		}
-			//Partners on a folio not built (lazy folios), which it will
-			//be linked to once that folio is
-		for (const auto &waiting : element->waitingLinks())
-		{
-			insert.bindValue(QStringLiteral(":element_uuid"), element->uuid().toString());
-			insert.bindValue(QStringLiteral(":linked_uuid"), waiting.first.toString());
-			insert.bindValue(QStringLiteral(":group_index"), waiting.second >= 0 ? QVariant(waiting.second) : QVariant());
-			if (!insert.exec()) {
-				qDebug() << "projectDataBase::flushLinks insert error : " << insert.lastError();
-			}
-		}
+		insertLinkRows(insert, element, waiting);
 	}
 	if (own_transaction) {
 		m_data_base.commit();
