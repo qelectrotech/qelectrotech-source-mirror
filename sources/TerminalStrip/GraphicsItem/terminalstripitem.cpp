@@ -39,6 +39,7 @@ TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip,
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 	setDefaultLayout();
+	connectStrip(strip);
 }
 
 TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
@@ -50,21 +51,8 @@ TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
 
 void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
 {
-	for (const auto &connection_ : std::as_const(m_strip_connections)) {
-		disconnect(connection_);
-	}
-	m_strip_connections.clear();
-
 	m_strip = strip;
-	if (strip)
-	{
-			//Redraw as soon as the strip or one of its terminals changes
-			//(terminal strip editor applied, undo, redo...)
-		m_strip_connections << connect(strip, &TerminalStrip::orderChanged, this, &TerminalStripItem::stripChanged)
-							<< connect(strip, &TerminalStrip::bridgeChanged, this, &TerminalStripItem::stripChanged)
-							<< connect(strip, &TerminalStrip::bridgeColorChanged, this, &TerminalStripItem::stripChanged)
-							<< connect(strip, &TerminalStrip::dataChanged, this, &TerminalStripItem::stripChanged);
-	}
+	connectStrip(strip);
 	m_drawer.setStrip(QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
 						  new TerminalStripDrawer::TrueTerminalStrip { strip }});
 	m_pending_strip_uuid = QUuid();
@@ -269,6 +257,29 @@ void TerminalStripItem::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style
 
 TerminalStripLayoutPattern::DrawStyle TerminalStripItem::drawStyle() const {
 	return m_drawer.drawStyle();
+}
+
+/**
+ * @brief TerminalStripItem::connectStrip
+ * Redraw this item as soon as @a strip or one of its terminals changes
+ * (terminal strip editor applied, undo, redo...).
+ * The connections to the previous strip are removed.
+ * @param strip
+ */
+void TerminalStripItem::connectStrip(TerminalStrip *strip)
+{
+	for (const auto &connection_ : std::as_const(m_strip_connections)) {
+		disconnect(connection_);
+	}
+	m_strip_connections.clear();
+
+	if (strip)
+	{
+		m_strip_connections << connect(strip, &TerminalStrip::orderChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::bridgeChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::bridgeColorChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::dataChanged, this, &TerminalStripItem::stripChanged);
+	}
 }
 
 /**
