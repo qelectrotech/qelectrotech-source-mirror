@@ -5379,6 +5379,15 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 			QHash<QString, QSet<QString>> distinct_values;
 			for (Conductor *pc : std::as_const(potential)) {
 				for (const QString &prop : checked_properties) {
+						//A conductor held by a cable carries its core's label
+						//(15W1:BN) in the cable field, written by CableManager:
+						//one conductor, one core. Two conductors of a potential
+						//running in two cables are the normal case, not a
+						//divergence.
+					if (prop == QLatin1String("cable")
+							&& !pc->properties().m_cable_uuid.isNull()) {
+						continue;
+					}
 					distinct_values[prop].insert(conductorPropertyValue(pc->properties(), prop));
 				}
 			}
