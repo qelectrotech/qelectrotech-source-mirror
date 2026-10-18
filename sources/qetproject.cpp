@@ -300,6 +300,27 @@ QByteArray QETProject::containerPicture(const QString &file) const
 }
 
 /**
+	@brief QETProject::renewedSharedUuid
+	While the project opens: the uuid of the @p ordinal -th symbol carrying
+	@p uuid on the folio at @p folio_index (in the file's order), when
+	other symbols of the project carry the same uuid and this copy is not
+	the one keeping it (readDiagramsXml()). Derived from the uuid and the
+	folio's uuid, so the same file gives the same uuid on every open.
+	@return a null uuid when this symbol keeps its uuid
+*/
+QUuid QETProject::renewedSharedUuid(int folio_index, int ordinal, const QUuid &uuid,
+									const QUuid &folio_uuid)
+{
+	const auto keeper = m_shared_uuid_keepers.constFind(uuid);
+	if (keeper == m_shared_uuid_keepers.constEnd()
+			|| (keeper->first == folio_index && keeper->second == ordinal)) {
+		return QUuid();
+	}
+	return derivedItemUuid(QStringLiteral("element-copy"),
+						   uuid.toString() + QLatin1Char('\n') + folio_uuid.toString());
+}
+
+/**
 	@brief QETProject::derivedItemUuid
 	A uuid for an item of this project that was saved without one, the same
 	on every load of the same file.
@@ -3664,6 +3685,41 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		}
 	}
 
+		//Symbols sharing a uuid (copies made by older versions, F100): the
+		//project database, links and wires name a symbol by its uuid, so
+		//each copy but one gets its own (renewedSharedUuid()). The copy
+		//that keeps it is the first one linked to another symbol (a
+		//partner's link names the uuid), else the first. The folios with
+		//a copy to renew are built now, also with lazy folios, so the
+		//whole project has one uuid per symbol from the start.
+	m_shared_uuid_keepers.clear();
+	QSet<int> build_now;
+	{
+		QHash<QUuid, QList<std::tuple<int, int, bool>>> copies;
+		for (int i = 0 ; i < diagram_nodes.length() ; ++i) {
+			const QDomElement elements = diagram_nodes.at(i).toElement()
+					.firstChildElement(QStringLiteral("elements"));
+			QHash<QUuid, int> ordinal;
+			for (QDomElement e = elements.firstChildElement(QStringLiteral("element"));
+				 !e.isNull() ; e = e.nextSiblingElement(QStringLiteral("element"))) {
+				const QUuid uuid(e.attribute(QStringLiteral("uuid")));
+				if (uuid.isNull()) continue;
+				const bool linked = !e.firstChildElement(QStringLiteral("links_uuids"))
+						.firstChildElement(QStringLiteral("link_uuid")).isNull();
+				copies[uuid].append({i, ordinal[uuid]++, linked});
+			}
+		}
+		for (auto it = copies.cbegin() ; it != copies.cend() ; ++it) {
+			if (it.value().size() < 2) continue;
+			auto keeper = it.value().first();
+			for (const auto &copy : it.value())
+				if (std::get<2>(copy)) { keeper = copy; break; }
+			m_shared_uuid_keepers.insert(it.key(), {std::get<0>(keeper), std::get<1>(keeper)});
+			for (const auto &copy : it.value())
+				if (copy != keeper) build_now.insert(std::get<0>(copy));
+		}
+	}
+
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
 
@@ -3717,7 +3773,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
 					this, &QETProject::usedTitleBlockTemplateChanged);
 
-			m_deferring_folios = m_lazy_open;
+			m_deferring_folios = m_lazy_open && !build_now.contains(i);
 			diagram->initFromXml(diagram_xml_element);
 			m_deferring_folios = false;
 			if (!diagram->isLoaded() && !line_starts.isEmpty())
@@ -3730,6 +3786,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		}
 	}
 
+	m_shared_uuid_keepers.clear();
 	updateDiagramsFolioData();
 
 		//Initialise links between elements in this project
