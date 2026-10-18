@@ -48,7 +48,8 @@ class TerminalStripData : public PropertiesInterface
 				m_location = QStringLiteral("+"),
 				m_name,
 				m_comment,
-				m_description;
+				m_description,
+				m_manufacturer;	//Manufacturer of the terminals proposed in the editor, empty = all
 		QUuid m_uuid = QUuid::createUuid();
 
 };

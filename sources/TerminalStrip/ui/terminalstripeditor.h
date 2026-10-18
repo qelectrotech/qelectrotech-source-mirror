@@ -54,6 +54,7 @@ class TerminalStripEditor : public QWidget
 		void pasteFromClipboard();
 		void clearSelectedTexts();
         void clear();
+		void setManufacturerFilter(const QString &manufacturer);
 		void spanMultiLevelTerminals();
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();

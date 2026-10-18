@@ -130,6 +130,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
+		setManufacturerFilter(strip_->manufacturer());
 		ui->m_move_to_cb->addItem(tr("Independent terminals"), QUuid());
 
 		const auto project_{strip_->project()};
@@ -202,12 +203,14 @@ void TerminalStripEditor::apply()
 	{
 		m_project->undoStack()->beginMacro(tr("Modify terminal strip properties"));
 
-		TerminalStripData data;
+			//Start from the current data : keep the uuid of the strip
+		TerminalStripData data = m_current_strip->data();
 		data.m_installation = ui->m_installation_le->text();
 		data.m_location     = ui->m_location_le->text();
 		data.m_name         = ui->m_name_le->text();
 		data.m_comment      = ui->m_comment_le->text();
 		data.m_description  = ui->m_description_te->toPlainText();
+		data.m_manufacturer = ui->m_manufacturer_cb->currentData().toString();
 
 		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
 
@@ -269,6 +272,21 @@ void TerminalStripEditor::clear()
         m_model->deleteLater();
         m_model = nullptr;
     }
+    setManufacturerFilter(QString());
+}
+
+/**
+ * @brief TerminalStripEditor::setManufacturerFilter
+ * Select @a manufacturer in the manufacturer combo box : only the terminals
+ * of this manufacturer are proposed in the Width column.
+ * Each terminal strip stores its own manufacturer (TerminalStripData),
+ * an empty or unknown manufacturer proposes all the manufacturers.
+ * @param manufacturer
+ */
+void TerminalStripEditor::setManufacturerFilter(const QString &manufacturer)
+{
+	const auto index_ = ui->m_manufacturer_cb->findData(manufacturer);
+	ui->m_manufacturer_cb->setCurrentIndex(index_ > 0 ? index_ : 0);
 }
 
 /**
