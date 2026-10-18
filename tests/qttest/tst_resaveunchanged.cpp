@@ -459,6 +459,9 @@ private slots:
 	// the partners were built in (QETZ-DB-FIRST stage 2a).
 	void linkRowsAfterLazyEdit()
 	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
 		const QString qetz = m_dir.filePath(QStringLiteral("links%1.qetz").arg(m_run));
 		QVERIFY(!runChecked({QStringLiteral("--resave"),
 							 QStringLiteral(QET_EXAMPLES_DIR "/m_000.qet"), qetz}, true).isEmpty());
