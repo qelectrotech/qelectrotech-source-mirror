@@ -36,6 +36,7 @@
 #include <QApplication>
 #include <QCoreApplication>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -83,9 +84,17 @@ inline QAction *action(const QString &name)
 /// Run @p test inside a QETApp whose settings, configuration and data
 /// live in a temporary folder, so that no test reads or changes the
 /// user's own.
+///
+/// QStandardPaths test mode as well: the editor window writes
+/// qet-assistant.json (AssistantInfo) to the standard data folder
+/// whatever --data-dir says, since that is where the qet MCP server looks
+/// for it. Without test mode every app test replaced the developer's own
+/// file -- collection paths, the program, the live mode token -- with its
+/// temporary one.
 template <typename Test>
 int run(int argc, char **argv)
 {
+	QStandardPaths::setTestModeEnabled(true);
 	QApplication app(argc, argv);
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setApplicationName("QElectroTech");
