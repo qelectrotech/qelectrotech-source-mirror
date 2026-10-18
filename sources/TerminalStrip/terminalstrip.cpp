@@ -100,6 +100,17 @@ TerminalStripData TerminalStrip::data() const {
  */
 void TerminalStrip::setData(const TerminalStripData &data) {
 	m_data = data;
+	emit dataChanged();
+}
+
+/**
+ * @brief TerminalStrip::terminalDataChanged
+ * Called when the data of the element of one of the terminals of this strip
+ * is changed (Element::setElementData(), Element::setElementInformations()) :
+ * the items which draw this strip on the folios are redrawn.
+ */
+void TerminalStrip::terminalDataChanged() {
+	emit dataChanged();
 }
 
 bool TerminalStrip::addTerminal(QSharedPointer<RealTerminal> real_t)

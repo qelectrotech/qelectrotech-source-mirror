@@ -76,9 +76,11 @@ class TerminalStripItem : public QetGraphicsItem
 	private:
 		void setDefaultLayout();
 		QString xrefToolTip(const TerminalStripDrawer::hoverTerminal &terminal) const;
+		void stripChanged();
 
 	private:
 		QPointer<TerminalStrip> m_strip;
+		QList<QMetaObject::Connection> m_strip_connections;
         TerminalStripDrawer::TerminalStripDrawer m_drawer;
         QUuid m_pending_strip_uuid;
 };

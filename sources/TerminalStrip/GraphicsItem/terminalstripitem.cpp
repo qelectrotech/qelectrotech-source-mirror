@@ -22,6 +22,7 @@
 #include "../../project/projectpropertieshandler.h"
 #include "../../qetgraphicsitem/qgraphicsitemutility.h"
 #include "../terminalstrip.h"
+#include "../terminalstripbridge.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
 #include "../ui/terminalstripeditorwindow.h"
@@ -49,7 +50,21 @@ TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
 
 void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
 {
+	for (const auto &connection_ : std::as_const(m_strip_connections)) {
+		disconnect(connection_);
+	}
+	m_strip_connections.clear();
+
 	m_strip = strip;
+	if (strip)
+	{
+			//Redraw as soon as the strip or one of its terminals changes
+			//(terminal strip editor applied, undo, redo...)
+		m_strip_connections << connect(strip, &TerminalStrip::orderChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::bridgeChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::bridgeColorChanged, this, &TerminalStripItem::stripChanged)
+							<< connect(strip, &TerminalStrip::dataChanged, this, &TerminalStripItem::stripChanged);
+	}
 	m_drawer.setStrip(QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
 						  new TerminalStripDrawer::TrueTerminalStrip { strip }});
 	m_pending_strip_uuid = QUuid();
@@ -254,6 +269,17 @@ void TerminalStripItem::setDrawStyle(TerminalStripLayoutPattern::DrawStyle style
 
 TerminalStripLayoutPattern::DrawStyle TerminalStripItem::drawStyle() const {
 	return m_drawer.drawStyle();
+}
+
+/**
+ * @brief TerminalStripItem::stripChanged
+ * The strip or one of its terminals changed : the size of the drawing
+ * can change (width of the terminals, number of terminals...), redraw it.
+ */
+void TerminalStripItem::stripChanged()
+{
+	prepareGeometryChange();
+	update();
 }
 
 void TerminalStripItem::setDefaultLayout()

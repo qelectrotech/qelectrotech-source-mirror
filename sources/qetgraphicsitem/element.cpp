@@ -39,6 +39,8 @@
 #include "../undocommand/changeelementinformationcommand.h"
 #include "../undocommand/setautonumcontextcommand.h"
 #include "crossrefitem.h"
+#include "terminalelement.h"
+#include "../TerminalStrip/terminalstrip.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
@@ -2087,6 +2089,22 @@ void Element::setUuid(const QUuid &uuid)
 		diagram()->project()->dataBase()->elementUuidChanged(this, old_uuid);
 }
 
+namespace {
+/**
+	@brief notifyTerminalStrip
+	If @a element is a terminal of a terminal strip, tell the strip that the
+	data of the terminal changed, so that the strip is redrawn on the folios.
+*/
+void notifyTerminalStrip(Element *element)
+{
+	if (auto terminal_ = dynamic_cast<TerminalElement *>(element)) {
+		if (auto strip_ = terminal_->parentTerminalStrip()) {
+			strip_->terminalDataChanged();
+		}
+	}
+}
+}
+
 /**
 	@brief Element::storeInformation
 	Write this symbol's information to its project's store, once it is
@@ -2116,6 +2134,7 @@ void Element::setElementInformations(DiagramContext dc)
 	}
 	storeInformation();
 	emit elementInfoChange(old_info, m_data.m_informations);
+	notifyTerminalStrip(this);
 
 	// Propagate label change to linked PLC slaves (label is changed via
 	// setElementInformations through the undo stack, not via setElementData)
@@ -2204,6 +2223,8 @@ void Element::setElementData(ElementData data)
 		}
 		emit elementInfoChange(old_info, m_data.m_informations);
 	}
+		//Type, function, led... of a terminal are not informations
+	notifyTerminalStrip(this);
 
 	// Propagate PLC master data changes to linked slaves
 	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)

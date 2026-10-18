@@ -53,6 +53,9 @@ class TerminalStrip : public QObject
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
 		void bridgeChanged();
 		void bridgeColorChanged(QSharedPointer<TerminalStripBridge> bridge);
+			//Emitted when the data of the strip (name...) or of one of its
+			//terminals (width, color, type...) is changed : what is drawn changes
+		void dataChanged();
 	public:
 
 		TerminalStrip(QETProject *project);
@@ -79,6 +82,7 @@ class TerminalStrip : public QObject
 
 		TerminalStripData data() const;
 		void setData(const TerminalStripData &data);
+		void terminalDataChanged();
 
 		bool addTerminal (QSharedPointer<RealTerminal> real_t);
 		void addTerminals (QVector<QSharedPointer<RealTerminal>> real_t_vector);
