@@ -4534,11 +4534,27 @@ class Integration(unittest.TestCase):
               for i in range(4)],
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
             {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "W2"},
             {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0},
         ], self.sb.p("conflict.qet"), elements_dir=ELEMENTS, timeout=60)
         self.assertFalse(r.get("timed_out"), "the call hung on a modal dialog")
         self.assertFalse(r["ok"])
         self.assertEqual(r["operations"][-1]["result"], False)
+
+    def test_joining_two_agreeing_potentials_asks_nothing(self):
+        """Two potentials with the same properties leave nothing to choose:
+        the wire joining them is drawn, headless as well."""
+        base = self.sb.new()
+        r = self.ok(self.sb.edit(base, [
+            {"op": "add_folio", "id": "f"},
+            *[{"op": "add_element", "id": f"e{i}", "folio": "$f", "path": COIL, "x": 100 + i * 200, "y": 100}
+              for i in range(4)],
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e1", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e0", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e2", "from_terminal": 0, "to": "$e3", "to_terminal": 0},
+            {"op": "set_conductor", "folio": "$f", "element": "$e2", "terminal": 0, "property": "num", "value": "N"},
+            {"op": "add_conductor", "folio": "$f", "from": "$e0", "from_terminal": 0, "to": "$e2", "to_terminal": 0}]))
+        self.assertEqual([c["num"] for c in m.tool_conductors(r["output"])["conductors"]], ["N"] * 3)
 
     # ---- edit: conductor properties, potentials ----
 

@@ -128,7 +128,49 @@ bool ConductorCreator::needsPotentialChoice(const QList<Terminal *> &terminals_l
 	if (terminals_list.size() <= 1) {
 		return false;
 	}
-	return existingPotential(terminals_list).size() >= 2;
+	return distinctProperties(existingPotential(terminals_list)).size() >= 2;
+}
+
+/**
+	@brief ConductorCreator::inheritedProperties
+	The properties a new wire takes from @p conductor's potential. A
+	cable's core names the cable and the core in m_cable, m_cable_uuid,
+	m_cable_slot and, written by CableManager, in its text (15W1:BN): none
+	of that belongs to a new wire, which is in no cable yet. The text is
+	then left to the formula.
+	@param conductor : a conductor of the potential
+	@return the properties for a new conductor of that potential
+*/
+ConductorProperties ConductorCreator::inheritedProperties(const Conductor *conductor)
+{
+	ConductorProperties properties = conductor->properties();
+	if (!properties.m_cable_uuid.isNull())
+	{
+		properties.m_cable.clear();
+		properties.m_cable_uuid = QUuid();
+		properties.m_cable_slot = -1;
+		properties.text.clear();
+	}
+	return properties;
+}
+
+/**
+	@brief ConductorCreator::distinctProperties
+	@param potentials : one conductor of each potential (existingPotential())
+	@return the properties a new wire could inherit from them, each once:
+	two potentials that agree leave nothing to choose
+*/
+QList<ConductorProperties> ConductorCreator::distinctProperties(const QList<Conductor *> &potentials)
+{
+	QList<ConductorProperties> list;
+	for (const Conductor *c : potentials)
+	{
+		const ConductorProperties properties = inheritedProperties(c);
+		if (!list.contains(properties)) {
+			list.append(properties);
+		}
+	}
+	return list;
 }
 
 /**
@@ -146,28 +188,24 @@ bool ConductorCreator::setUpPropertieToUse()
 		//we get one of them
 	if (!potentials.isEmpty())
 	{
-		if (potentials.size() >= 2)
+		const QList<ConductorProperties> cp_list = distinctProperties(potentials);
+		if (cp_list.size() >= 2)
 		{
-			QList <ConductorProperties> cp_list;
-			for(Conductor *c : potentials) {
-				cp_list.append(c->properties());
-			}
-
 			bool cancelled = false;
 			m_properties = PotentialSelectorDialog::chosenProperties(cp_list, nullptr, &cancelled);
 			if (cancelled) {
 				return false;
 			}
-			for (Conductor *c : potentials) {
-				if (c->properties() == m_properties) {
-					m_sequential_number = c->sequenceNum();
-				}
-			}
 		}
-		else if (potentials.size() == 1)
+		else
 		{
-			m_properties = potentials.first()->properties();
-			m_sequential_number = potentials.first()->sequenceNum();
+			m_properties = cp_list.first();
+		}
+		for (Conductor *c : potentials) {
+			if (inheritedProperties(c) == m_properties) {
+				m_sequential_number = c->sequenceNum();
+				break;
+			}
 		}
 		return true;
 	}
