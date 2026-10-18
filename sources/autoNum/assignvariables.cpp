@@ -414,9 +414,6 @@ namespace autonum
 					 QString::number(m_context.folio_total));
 		m_assigned_label.replace("%M", m_context.plant);
 		m_assigned_label.replace("%LM", m_context.locmach);
-			//%T on its own only, not the start of a longer word
-		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
-		m_assigned_label.replace(folio_title, m_context.folio_title);
 
 		QSettings settings;
 		if (m_context.has_element)
@@ -441,6 +438,12 @@ namespace autonum
 		assignTitleBlockVar();
 		assignProjectVar();
 		assignSequence();
+
+			//The folio title last: it is free text, and a title such as
+			//"Schema %c" must stay as typed, not have the variables in it
+			//replaced. %T on its own only, not the start of a longer word.
+		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
+		m_assigned_label.replace(folio_title, m_context.folio_title);
 	}
 
 	void AssignVariables::assignTitleBlockVar()

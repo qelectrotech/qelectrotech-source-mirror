@@ -24,7 +24,8 @@
 	%T in a folio report or cross reference formula is the title of the
 	folio the reference points to, so a reference can read like the ones
 	EPLAN prints: "+UV1/1 Versorgung UG/EG.0". %total and the title block
-	and project variables (lower case only) keep their own values.
+	and project variables (lower case only) keep their own values, and the
+	title itself is free text: variables in it stay as typed.
 */
 class tst_reportfoliotitle : public QObject
 {
@@ -60,6 +61,15 @@ private slots:
 		c.title_block_fields.addValue(QStringLiteral("typ"), QStringLiteral("SH363N"));
 		const QString result = label(QStringLiteral("%T / %total / %typ / %{typ}"), c);
 		QCOMPARE(result, QStringLiteral("Versorgung UG/EG / 23 / SH363N / SH363N"));
+	}
+
+	void titleKeepsTheVariablesItContains()
+	{
+		autonum::FormulaContext c = context();
+		c.folio_title = QStringLiteral("Schema %c %F %total %{typ}");
+		c.title_block_fields.addValue(QStringLiteral("typ"), QStringLiteral("SH363N"));
+		const QString result = label(QStringLiteral("%F %T"), c);
+		QCOMPARE(result, QStringLiteral("1 Schema %c %F %total %{typ}"));
 	}
 
 	void emptyTitleLeavesNothing()
