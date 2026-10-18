@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include <QtTest>
+#include <QSet>
 
 #include <QDir>
 #include <QFile>
@@ -479,6 +480,46 @@ private slots:
 									   "QET_CHECK_LINK_ROWS");
 		QVERIFY2(out.contains(QStringLiteral("MOVED true")), qPrintable(out.right(600)));
 		QVERIFY2(out.contains(QStringLiteral("link rows: 0 differ")), qPrintable(out.right(600)));
+	}
+
+	// Removing a folio with every folio built saves no link to its symbols:
+	// the save takes each symbol's links from the project database, which
+	// drops a partner the project no longer has (F113; lazy folios already
+	// saved it so). affuteuse_250h, folio 3 removed: its coil KA1 is linked
+	// to contacts on other folios.
+	void removedFolioLeavesNoLinkToIt()
+	{
+#ifndef QET_HAS_SCRIPTING
+		QSKIP("needs --run: this QElectroTech is built without Qt Qml");
+#endif
+		const QString saved = m_dir.filePath(QStringLiteral("removed%1.qet").arg(m_run));
+		const QString js = m_dir.filePath(QStringLiteral("removed%1.js").arg(m_run));
+		QFile script(js);
+		QVERIFY(script.open(QIODevice::WriteOnly));
+		script.write(QStringLiteral(
+			"qet.log('REMOVED ' + qet.removeFolio(3));\n"
+			"qet.save('%1');\n").arg(saved).toUtf8());
+		script.close();
+		const QString out = runChecked({QStringLiteral("--run"), js,
+										QStringLiteral(QET_EXAMPLES_DIR "/affuteuse_250h.qet")}, true);
+		QVERIFY2(out.contains(QStringLiteral("REMOVED true")), qPrintable(out.right(600)));
+
+		QFile file(saved);
+		QVERIFY(file.open(QIODevice::ReadOnly));
+		const QString text = QString::fromUtf8(file.readAll());
+			//Placed symbols carry a uuid; symbol definitions in the
+			//collection do not
+		QSet<QString> symbols;
+		auto it = QRegularExpression(QStringLiteral("<element [^>]*\\buuid=\"(\\{[0-9a-f-]+\\})\"")).globalMatch(text);
+		while (it.hasNext()) symbols.insert(it.next().captured(1));
+		QList<QString> links;
+		auto lt = QRegularExpression(QStringLiteral("<link_uuid [^>]*\\buuid=\"(\\{[0-9a-f-]+\\})\"")).globalMatch(text);
+		while (lt.hasNext()) links << lt.next().captured(1);
+		QVERIFY(!symbols.isEmpty() && !links.isEmpty());
+		int dangling = 0;
+		for (const QString &link : std::as_const(links))
+			if (!symbols.contains(link)) ++dangling;
+		QCOMPARE(dangling, 0);
 	}
 
 	// The stores filled from the document before the folios are built
